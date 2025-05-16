@@ -17,10 +17,10 @@ if ARGV[0].nil?
   exit 1
 elsif ARGV[0].start_with?('api_entreprise')
   api = 'api_entreprise'
-  schema = load_schema('api_entreprise')
+  schema = load_schema(ARGV[0])
 elsif ARGV[0].start_with?('api_particulier')
   api = 'api_particulier'
-  schema = load_schema('api_particulier')
+  schema = load_schema(ARGV[0])
 else
   puts "Unknown operation_id: #{ARGV[0]}"
   exit 3

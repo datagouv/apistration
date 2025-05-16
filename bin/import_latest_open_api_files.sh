@@ -9,3 +9,4 @@ path=$1
 
 cp $path/swagger/openapi-entreprise.yaml openapi_files/api_entreprise.yaml
 cp $path/swagger/openapi-particulier.yaml openapi_files/api_particulier.yaml
+cp $path/swagger/openapi-particulierv2.yaml openapi_files/api_particulier_v2.yaml

@@ -29,7 +29,7 @@ module OpenApiHelpers
     uri = case extract_open_api_name(operation_id)
           when 'api_particulier_v2'
             'https://staging.particulier.api.gouv.fr/api/open-api.yml'
-          when 'api_particulier_v3'
+          when 'api_particulier'
             'https://staging.particulier.api.gouv.fr/api/open-api-v3.yml'
           else
             'https://staging.entreprise.api.gouv.fr/open-api.yml'
@@ -44,15 +44,15 @@ module OpenApiHelpers
     if base_name.start_with?('api_particulier_v2')
       'api_particulier_v2'
     elsif base_name.start_with?('api_particulier_v3')
-      'api_particulier_v3'
+      'api_particulier'
     else
       'api_entreprise'
     end
   end
 
   def extract_path_spec_from_schema(operation_id, schema)
-    schema['paths'].find do |_, schema|
-      schema['get']['responses']['200']['x-operationId'] == operation_id
+    schema['paths'].find do |_, path|
+      path['get']['responses']['200']['x-operationId'] == operation_id
     end[1]['get']
   end
 

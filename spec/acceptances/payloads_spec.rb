@@ -1,9 +1,9 @@
 RSpec.describe 'Payload specs' do
-  Dir[File.join(root_path, 'payloads/*')].each do |operation_id|
-    next if operation_id.split('/')[-1] == 'france_connect'
+  Dir['payloads/*'].map { |path| path.gsub("payloads/", "") }.each do |operation_id|
+    next if %w[france_connect README.md].include?(operation_id)
 
-    describe operation_id.split('/')[-1] do
-      Dir[File.join(operation_id, '*.y*ml')].each do |payload|
+    describe do
+      Dir[File.join('payloads', operation_id, '*.y*ml')].each do |payload|
         describe "Payload #{File.basename(payload)}" do
           it 'is a valid YAML file' do
             expect { YAML.load_file(payload) }.not_to raise_error
@@ -37,7 +37,7 @@ RSpec.describe 'Payload specs' do
 
           it 'has valid params according to OpenAPI file' do
             params = YAML.load_file(payload)['params']
-            path_spec = extract_path_spec_from_schema(File.basename(operation_id), load_schema(operation_id))
+            path_spec = extract_path_spec_from_schema(operation_id, load_schema(operation_id))
             required_params = params.keys.reject do |param|
               valid_param = path_spec['parameters'].find { |p| p['name'] == param }
 
@@ -69,6 +69,7 @@ RSpec.describe 'Payload specs' do
 
             test = JSON::Validator.fully_validate(convert_open_api_3_to_json_schema(schema), JSON.parse(data['payload']))
             expect(test).to be_empty, "JSON schema validation failed: #{test}"
+
           end
         end
       end

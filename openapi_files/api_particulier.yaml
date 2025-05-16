@@ -26,7 +26,7 @@ info:
 
     ### Accéder à la version 2 de l'API
 
-    Vous pouvez accéder à la documentation v2 [ici](https://particulier.api.gouv.fr/developpeurs/openapi).
+    Vous pouvez accéder à la documentation v2 [ici](https://particulier.api.gouv.fr/developpeurs/openapi-v2).
 
     ### Périmètre des données retournées
 
@@ -343,8 +343,7 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de l'allocation adulte handicapé
-                          (AAH)
+                        title: Est bénéficiaire de l'allocation adulte handicapé (AAH)
                         type: boolean
                         example: true
                         description: Indique que le particulier est bénéficiaire de
@@ -558,6 +557,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
       description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH). \n\n
@@ -612,8 +618,7 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de l'allocation adulte handicapé
-                          (AAH)
+                        title: Est bénéficiaire de l'allocation adulte handicapé (AAH)
                         type: boolean
                         example: true
                         description: Indique que le particulier est bénéficiaire de
@@ -1003,7 +1008,7 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de l'allocation de soutien familial
+                        title: Est bénéficiaire de l'allocation de soutien familial
                           (ASF)
                         type: boolean
                         example: true
@@ -1218,6 +1223,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
       description: "Statut bénéficiaire de l'allocation de soutien familial (ASF).
@@ -1273,7 +1285,7 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de l'allocation de soutien familial
+                        title: Est bénéficiaire de l'allocation de soutien familial
                           (ASF)
                         type: boolean
                         example: true
@@ -1666,7 +1678,7 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de la complémentaire de santé solidaire
+                        title: Est bénéficiaire de la complémentaire de santé solidaire
                           (C2S)
                         type: boolean
                         example: true
@@ -1887,6 +1899,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
       description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
@@ -1944,7 +1963,7 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de la complémentaire de santé solidaire
+                        title: Est bénéficiaire de la complémentaire de santé solidaire
                           (C2S)
                         type: boolean
                         example: true
@@ -2055,9 +2074,9 @@ paths:
                     des données
               schema:
                 "$ref": "#/components/schemas/Error"
-  "/v3/dss/participation_familial_psu/identite":
+  "/v3/dss/participation_familiale_eaje/identite":
     get:
-      summary: "[Identité] API Prestation de service unique (PSU)"
+      summary: "[Identité] Participation familiale EAJE"
       tags:
       - Prochainement
       parameters:
@@ -2227,7 +2246,7 @@ paths:
         required: false
       security:
       - jwt_bearer_token: []
-      description: API Prestation de service unique (PSU)
+      description: Participation familiale EAJE
       responses:
         '401':
           description: Non autorisé
@@ -2346,7 +2365,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
-          x-operationId: api_particulier_v3_cnav_participation_familial_psu_with_civility
+          x-operationId: api_particulier_v3_cnav_participation_familiale_eaje_with_civility
           content:
             application/json:
               schema:
@@ -2367,7 +2386,7 @@ paths:
                           type: object
                           properties:
                             nom_naissance:
-                              title: Nom
+                              title: Nom de naissance
                               type: string
                               description: Nom de naissance de l'allocataire ou du
                                 conjoint.
@@ -2398,13 +2417,14 @@ paths:
                               - F
                               - M
                             code_cog_insee_commune_naissance:
-                              title: Code Cog de la ville de naissance
+                              title: COG de la commune de naissance
                               type: string
-                              description: Code Cog de la ville de naissance
+                              description: Code officiel géographique (COG) de la
+                                commune de naissance
                               example: '75113'
                       enfants:
                         type: array
-                        title: Données d'identité des enfants composant la famille
+                        title: Données d'identité des enfants
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -2443,9 +2463,10 @@ paths:
                               - F
                               - M
                             code_cog_insee_commune_naissance:
-                              title: Code Cog de la ville de naissance
+                              title: COG de la commune de naissance
                               type: string
-                              description: Code Cog de la ville de naissance
+                              description: Code officiel géographique (COG) de la
+                                commune de naissance
                               example: '75113'
                       adresse:
                         title: Adresse de la famille
@@ -2456,11 +2477,11 @@ paths:
                           la MSA, l'information sera donc obsolète.
                         properties:
                           destinataire:
-                            title: Identité du destinataire
+                            title: Destinataire
                             type: string
                             example: Monsieur JEAN JACQUES
-                            description: 'Identité du destinataire : Civilité, titre
-                              ou qualité + nom et prénom'
+                            description: Civilité, titre ou qualité, nom et prénom
+                              du destinataire.
                           complement_information:
                             title: Complément d'information du destinataire ou point
                               de remise
@@ -2502,7 +2523,7 @@ paths:
                         - lieu_dit
                         - code_postal_ville
                         - pays
-                      parametres_calcul_psu:
+                      parametres_calcul_participation_familiale:
                         title: Paramètre pris en compte pour le calcul du tarif
                         description: Liste des paramètres pris en compte lors du calcul
                           tarifaire de l'allocation
@@ -2552,7 +2573,7 @@ paths:
                     - allocataires
                     - enfants
                     - adresse
-                    - parametres_calcul_psu
+                    - parametres_calcul_participation_familiale
                     additionalProperties: false
                   links:
                     type: object
@@ -2676,9 +2697,9 @@ paths:
                     effectuées, veuillez réessayer plus tard.'
               schema:
                 "$ref": "#/components/schemas/Error"
-  "/v3/dss/participation_familial_psu/france_connect":
+  "/v3/dss/participation_familiale_eaje/france_connect":
     get:
-      summary: "[FranceConnect] API Prestation de service unique (PSU)"
+      summary: "[FranceConnect] Participation familiale EAJE"
       tags:
       - Prochainement
       parameters:
@@ -2692,9 +2713,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
-      description: API Prestation de service unique (PSU)
+      description: Participation familiale EAJE
       responses:
         '403':
           description: Accès interdit
@@ -2735,7 +2763,7 @@ paths:
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
                 ce header est vide (mais présent). La durée du cache est de 1 heure.
-          x-operationId: api_particulier_v3_cnav_participation_familial_psu_with_france_connect
+          x-operationId: api_particulier_v3_cnav_participation_familiale_eaje_with_france_connect
           content:
             application/json:
               schema:
@@ -2756,7 +2784,7 @@ paths:
                           type: object
                           properties:
                             nom_naissance:
-                              title: Nom
+                              title: Nom de naissance
                               type: string
                               description: Nom de naissance de l'allocataire ou du
                                 conjoint.
@@ -2787,13 +2815,14 @@ paths:
                               - F
                               - M
                             code_cog_insee_commune_naissance:
-                              title: Code Cog de la ville de naissance
+                              title: COG de la commune de naissance
                               type: string
-                              description: Code Cog de la ville de naissance
+                              description: Code officiel géographique (COG) de la
+                                commune de naissance
                               example: '75113'
                       enfants:
                         type: array
-                        title: Données d'identité des enfants composant la famille
+                        title: Données d'identité des enfants
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -2832,9 +2861,10 @@ paths:
                               - F
                               - M
                             code_cog_insee_commune_naissance:
-                              title: Code Cog de la ville de naissance
+                              title: COG de la commune de naissance
                               type: string
-                              description: Code Cog de la ville de naissance
+                              description: Code officiel géographique (COG) de la
+                                commune de naissance
                               example: '75113'
                       adresse:
                         title: Adresse de la famille
@@ -2845,11 +2875,11 @@ paths:
                           la MSA, l'information sera donc obsolète.
                         properties:
                           destinataire:
-                            title: Identité du destinataire
+                            title: Destinataire
                             type: string
                             example: Monsieur JEAN JACQUES
-                            description: 'Identité du destinataire : Civilité, titre
-                              ou qualité + nom et prénom'
+                            description: Civilité, titre ou qualité, nom et prénom
+                              du destinataire.
                           complement_information:
                             title: Complément d'information du destinataire ou point
                               de remise
@@ -2891,7 +2921,7 @@ paths:
                         - lieu_dit
                         - code_postal_ville
                         - pays
-                      parametres_calcul_psu:
+                      parametres_calcul_participation_familiale:
                         title: Paramètre pris en compte pour le calcul du tarif
                         description: Liste des paramètres pris en compte lors du calcul
                           tarifaire de l'allocation
@@ -2941,7 +2971,7 @@ paths:
                     - allocataires
                     - enfants
                     - adresse
-                    - parametres_calcul_psu
+                    - parametres_calcul_participation_familiale
                     additionalProperties: false
                   links:
                     type: object
@@ -3254,13 +3284,13 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de la prime d'activité
+                        title: Est bénéficiaire de la prime d'activité
                         type: boolean
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           la prime d'activité au moment de l'appel.
                       avec_majoration:
-                        title: Prime d'activité majorée
+                        title: Prime d'activité avec majoration
                         type: boolean
                         nullable: true
                         description: "Indique que la prime d'activité du particulier
@@ -3369,6 +3399,100 @@ paths:
                     des données
               schema:
                 "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '37002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '37001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '37004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+                provider_error:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/prime_activite/france_connect":
     get:
       summary: "[FranceConnect] Statut prime d'activité"
@@ -3383,6 +3507,13 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
         schema:
           type: string
       security:
@@ -3439,13 +3570,13 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire de la prime d'activité
+                        title: Est bénéficiaire de la prime d'activité
                         type: boolean
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           la prime d'activité au moment de l'appel.
                       avec_majoration:
-                        title: Prime d'activité majorée
+                        title: Prime d'activité avec majoration
                         type: boolean
                         nullable: true
                         description: "Indique que la prime d'activité du particulier
@@ -3818,6 +3949,23 @@ paths:
           et permet de retrouver le code COG avec le paramètre 'anneeDateNaissance'.\n\nNe
           pas remplir si la personne est née à l'étranger."
         required: false
+      - name: annee
+        in: query
+        description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
+          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
+          un historique de maximum 2 ans.
+        example: 2023
+        required: false
+        schema:
+          type: integer
+      - name: mois
+        in: query
+        description: Mois du quotient familial recherché. Si le mois n'est pas renseigné,
+          le mois utilisé par défaut est celui en cours.
+        example: 12
+        required: false
+        schema:
+          type: integer
       security:
       - jwt_bearer_token: []
       description: "Quotient familial délivré par la CAF ou la MSA et composition
@@ -3946,7 +4094,7 @@ paths:
                           type: object
                           properties:
                             nom_naissance:
-                              title: Nom
+                              title: Nom de naissance
                               type: string
                               description: Nom de naissance de l'allocataire ou du
                                 conjoint.
@@ -3978,7 +4126,7 @@ paths:
                               - M
                       enfants:
                         type: array
-                        title: Données d'identité des enfants composant la famille
+                        title: Données d'identité des enfants
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -4025,11 +4173,11 @@ paths:
                           la MSA, l'information sera donc obsolète.
                         properties:
                           destinataire:
-                            title: Identité du destinataire
+                            title: Destinataire
                             type: string
                             example: Monsieur JEAN JACQUES
-                            description: 'Identité du destinataire : Civilité, titre
-                              ou qualité + nom et prénom'
+                            description: Civilité, titre ou qualité, nom et prénom
+                              du destinataire.
                           complement_information:
                             title: Complément d'information du destinataire ou point
                               de remise
@@ -4089,8 +4237,8 @@ paths:
                           valeur:
                             title: Valeur du QF
                             type: integer
-                            description: Valeur du quotient familial calculé par la
-                              CAF ou la MSA.
+                            description: Valeur du quotient familial calculée par
+                              la CAF ou la MSA.
                             example: 1045
                           annee:
                             title: Année effective du QF
@@ -4363,6 +4511,30 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: annee
+        in: query
+        description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
+          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
+          un historique de maximum 2 ans.
+        example: 2023
+        required: false
+        schema:
+          type: integer
+      - name: mois
+        in: query
+        description: Mois du quotient familial recherché. Si le mois n'est pas renseigné,
+          le mois utilisé par défaut est celui en cours.
+        example: 12
+        required: false
+        schema:
+          type: integer
       security:
       - jwt_bearer_token: []
       description: "Quotient familial délivré par la CAF ou la MSA et composition
@@ -4430,7 +4602,7 @@ paths:
                           type: object
                           properties:
                             nom_naissance:
-                              title: Nom
+                              title: Nom de naissance
                               type: string
                               description: Nom de naissance de l'allocataire ou du
                                 conjoint.
@@ -4462,7 +4634,7 @@ paths:
                               - M
                       enfants:
                         type: array
-                        title: Données d'identité des enfants composant la famille
+                        title: Données d'identité des enfants
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -4509,11 +4681,11 @@ paths:
                           la MSA, l'information sera donc obsolète.
                         properties:
                           destinataire:
-                            title: Identité du destinataire
+                            title: Destinataire
                             type: string
                             example: Monsieur JEAN JACQUES
-                            description: 'Identité du destinataire : Civilité, titre
-                              ou qualité + nom et prénom'
+                            description: Civilité, titre ou qualité, nom et prénom
+                              du destinataire.
                           complement_information:
                             title: Complément d'information du destinataire ou point
                               de remise
@@ -4573,8 +4745,8 @@ paths:
                           valeur:
                             title: Valeur du QF
                             type: integer
-                            description: Valeur du quotient familial calculé par la
-                              CAF ou la MSA.
+                            description: Valeur du quotient familial calculée par
+                              la CAF ou la MSA.
                             example: 1045
                           annee:
                             title: Année effective du QF
@@ -5023,14 +5195,13 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire du revenu de solidarité active
-                          (RSA)
+                        title: Est bénéficiaire du revenu de solidarité active (RSA)
                         type: boolean
                         example: true
                         description: Indique que le particulier est bénéficiaire du
                           revenu de solidarité active au moment de l'appel.
                       avec_majoration:
-                        title: RSA majoré
+                        title: RSA avec majoration
                         type: boolean
                         nullable: true
                         description: "Indique que le RSA du particulier bénéficiaire
@@ -5248,6 +5419,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
       description: "Statut bénéficiaire du revenu de solidarité active (RSA), majoré
@@ -5303,14 +5481,13 @@ paths:
                     type: object
                     properties:
                       est_beneficiaire:
-                        title: Statut bénéficiaire du revenu de solidarité active
-                          (RSA)
+                        title: Est bénéficiaire du revenu de solidarité active (RSA)
                         type: boolean
                         example: true
                         description: Indique que le particulier est bénéficiaire du
                           revenu de solidarité active au moment de l'appel.
                       avec_majoration:
-                        title: RSA majoré
+                        title: RSA avec majoration
                         type: boolean
                         nullable: true
                         description: "Indique que le RSA du particulier bénéficiaire
@@ -5420,7 +5597,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/v3/cnous/etudiant_boursier/identite":
     get:
-      summary: "[Identité] Status étudiant boursier"
+      summary: "[Identité] Statut étudiant boursier"
       tags:
       - Statut étudiant boursier
       parameters:
@@ -5644,9 +5821,9 @@ paths:
                     type: object
                     properties:
                       est_boursier:
-                        title: Statut boursier
+                        title: Est boursier
                         type: boolean
-                        description: Indique si l'étudiant est boursier
+                        description: Indique que l'étudiant est boursier.
                         example: true
                       periode_versement_bourse:
                         title: Période de versement de la bourse
@@ -5674,25 +5851,25 @@ paths:
                       etablissement_etudes:
                         title: Établissement d'études de l'étudiant
                         description: Contient le détail des informations concernant
-                          l'établissement dans lequel l'étudiant fait ses études
+                          l'établissement dans lequel l'étudiant fait ses études.
                         type: object
                         properties:
                           nom_commune:
-                            title: Ville d'études
+                            title: Commune d'études
                             type: string
-                            description: Libellé de la ville d'études de l'étudiant
+                            description: Libellé de la commune d'études de l'étudiant
                             example: Brest
                           nom_etablissement:
                             title: Établissement d'études
                             type: string
-                            description: L'établissement d'études de l'étudiant
+                            description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
                         required:
                         - nom_commune
                         - nom_etablissement
                       echelon_bourse:
-                        title: Échelon de la bourse
-                        description: Informations relatives à l'échelon de la bourse
+                        title: Informations concernant l'échelon de la bourse
+                        description: Informations relatives à l'échelon de la bourse.
                         type: object
                         properties:
                           echelon:
@@ -5714,12 +5891,10 @@ paths:
                             - '6'
                             - '7'
                           echelon_bourse_regionale_provisoire:
-                            title: Statut provisoire de l'échelon (bourses régionales
-                              uniquement)
-                            description: Ce champs indique que l'échelon de la bourse
-                              est provisoire. Ce statut provisoire de l'échelon n'est
-                              effectif que pour les boursiers bénéficiaires d'une
-                              bourse régionale.
+                            title: Statut provisoire (bourses régionales uniquement)
+                            description: Ce champ indique que l'échelon de la bourse
+                              indiqué est provisoire. Ce statut provisoire n'est indiqué
+                              que pour les boursiers bénéficiaires d'une bourse régionale.
                             type: boolean
                             example: true
                             enum:
@@ -5904,7 +6079,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/v3/cnous/etudiant_boursier/france_connect":
     get:
-      summary: "[FranceConnect] Status étudiant boursier"
+      summary: "[FranceConnect] Statut étudiant boursier"
       tags:
       - Statut étudiant boursier
       parameters:
@@ -5954,9 +6129,9 @@ paths:
                     type: object
                     properties:
                       est_boursier:
-                        title: Statut boursier
+                        title: Est boursier
                         type: boolean
-                        description: Indique si l'étudiant est boursier
+                        description: Indique que l'étudiant est boursier.
                         example: true
                       periode_versement_bourse:
                         title: Période de versement de la bourse
@@ -5984,25 +6159,25 @@ paths:
                       etablissement_etudes:
                         title: Établissement d'études de l'étudiant
                         description: Contient le détail des informations concernant
-                          l'établissement dans lequel l'étudiant fait ses études
+                          l'établissement dans lequel l'étudiant fait ses études.
                         type: object
                         properties:
                           nom_commune:
-                            title: Ville d'études
+                            title: Commune d'études
                             type: string
-                            description: Libellé de la ville d'études de l'étudiant
+                            description: Libellé de la commune d'études de l'étudiant
                             example: Brest
                           nom_etablissement:
                             title: Établissement d'études
                             type: string
-                            description: L'établissement d'études de l'étudiant
+                            description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
                         required:
                         - nom_commune
                         - nom_etablissement
                       echelon_bourse:
-                        title: Échelon de la bourse
-                        description: Informations relatives à l'échelon de la bourse
+                        title: Informations concernant l'échelon de la bourse
+                        description: Informations relatives à l'échelon de la bourse.
                         type: object
                         properties:
                           echelon:
@@ -6024,12 +6199,10 @@ paths:
                             - '6'
                             - '7'
                           echelon_bourse_regionale_provisoire:
-                            title: Statut provisoire de l'échelon (bourses régionales
-                              uniquement)
-                            description: Ce champs indique que l'échelon de la bourse
-                              est provisoire. Ce statut provisoire de l'échelon n'est
-                              effectif que pour les boursiers bénéficiaires d'une
-                              bourse régionale.
+                            title: Statut provisoire (bourses régionales uniquement)
+                            description: Ce champ indique que l'échelon de la bourse
+                              indiqué est provisoire. Ce statut provisoire n'est indiqué
+                              que pour les boursiers bénéficiaires d'une bourse régionale.
                             type: boolean
                             example: true
                             enum:
@@ -6078,7 +6251,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/v3/cnous/etudiant_boursier/ine":
     get:
-      summary: "[INE] Status étudiant boursier"
+      summary: "[INE] Statut étudiant boursier"
       tags:
       - Statut étudiant boursier
       parameters:
@@ -6201,9 +6374,9 @@ paths:
                     type: object
                     properties:
                       est_boursier:
-                        title: Statut boursier
+                        title: Est boursier
                         type: boolean
-                        description: Indique si l'étudiant est boursier
+                        description: Indique que l'étudiant est boursier.
                         example: true
                       periode_versement_bourse:
                         title: Période de versement de la bourse
@@ -6231,25 +6404,25 @@ paths:
                       etablissement_etudes:
                         title: Établissement d'études de l'étudiant
                         description: Contient le détail des informations concernant
-                          l'établissement dans lequel l'étudiant fait ses études
+                          l'établissement dans lequel l'étudiant fait ses études.
                         type: object
                         properties:
                           nom_commune:
-                            title: Ville d'études
+                            title: Commune d'études
                             type: string
-                            description: Libellé de la ville d'études de l'étudiant
+                            description: Libellé de la commune d'études de l'étudiant
                             example: Brest
                           nom_etablissement:
                             title: Établissement d'études
                             type: string
-                            description: L'établissement d'études de l'étudiant
+                            description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
                         required:
                         - nom_commune
                         - nom_etablissement
                       echelon_bourse:
-                        title: Échelon de la bourse
-                        description: Informations relatives à l'échelon de la bourse
+                        title: Informations concernant l'échelon de la bourse
+                        description: Informations relatives à l'échelon de la bourse.
                         type: object
                         properties:
                           echelon:
@@ -6271,12 +6444,10 @@ paths:
                             - '6'
                             - '7'
                           echelon_bourse_regionale_provisoire:
-                            title: Statut provisoire de l'échelon (bourses régionales
-                              uniquement)
-                            description: Ce champs indique que l'échelon de la bourse
-                              est provisoire. Ce statut provisoire de l'échelon n'est
-                              effectif que pour les boursiers bénéficiaires d'une
-                              bourse régionale.
+                            title: Statut provisoire (bourses régionales uniquement)
+                            description: Ce champ indique que l'échelon de la bourse
+                              indiqué est provisoire. Ce statut provisoire n'est indiqué
+                              que pour les boursiers bénéficiaires d'une bourse régionale.
                             type: boolean
                             example: true
                             enum:
@@ -6463,9 +6634,9 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/v3/dsnj/service_national/identite":
     get:
-      summary: "[Identité] API Service National"
+      summary: "[Identité] API Service national"
       tags:
-      - Prochainement
+      - Statut Service national
       parameters:
       - name: recipient
         in: query
@@ -6576,7 +6747,8 @@ paths:
         required: true
       security:
       - jwt_bearer_token: []
-      description: API Service National
+      description: Statut de conformité au Service national des jeunes entre 16 et
+        25 ans.
       responses:
         '401':
           description: Non autorisé
@@ -6703,14 +6875,16 @@ paths:
                         - pas_en_regle
                         - indetermine
                         - non_concerne
-                      commmentaires:
-                        title: Commentaires
+                      commentaires:
+                        title: Commentaires de la DSNJ
                         type: string
-                        description: Commentaires sur la situation de la personne
-                        example: Commentaire sur la situation
+                        description: Commentaire indiqué par la direction du Service
+                          national et de la jeunesse (DSNJ), notamment pour les cas
+                          particuliers.
+                        nullable: true
                     required:
                     - statut_service_national
-                    - commmentaires
+                    - commentaires
                     additionalProperties: false
                   links:
                     type: object
@@ -6720,6 +6894,29 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_39003:
+                  value:
+                    errors:
+                    - code: '39003'
+                      title: Entité non trouvée
+                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                        ou ne comporte aucune information pour cet appel. Veuillez
+                        vérifier que l'identifiant correspond au périmètre couvert
+                        par l'API.
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Entité non trouvée
+                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
+                    que l'identifiant correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -6746,29 +6943,6 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '404':
-          description: Non trouvée
-          content:
-            application/json:
-              examples:
-                entite_non_trouvee_39003:
-                  value:
-                    errors:
-                    - code: '39003'
-                      title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
-                      source:
-                      meta:
-                        provider: DSNJ
-                  summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -6854,9 +7028,9 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/v3/dsnj/service_national/france_connect":
     get:
-      summary: "[FranceConnect] API Service National"
+      summary: "[FranceConnect] API Service national"
       tags:
-      - Prochainement
+      - Statut Service national
       parameters:
       - name: recipient
         in: query
@@ -6870,7 +7044,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: API Service National
+      description: Statut de conformité au Service national des jeunes entre 16 et
+        25 ans.
       responses:
         '403':
           description: Accès interdit
@@ -6936,14 +7111,16 @@ paths:
                         - pas_en_regle
                         - indetermine
                         - non_concerne
-                      commmentaires:
-                        title: Commentaires
+                      commentaires:
+                        title: Commentaires de la DSNJ
                         type: string
-                        description: Commentaires sur la situation de la personne
-                        example: Commentaire sur la situation
+                        description: Commentaire indiqué par la direction du Service
+                          national et de la jeunesse (DSNJ), notamment pour les cas
+                          particuliers.
+                        nullable: true
                     required:
                     - statut_service_national
-                    - commmentaires
+                    - commentaires
                     additionalProperties: false
                   links:
                     type: object
@@ -7099,10 +7276,10 @@ paths:
                       identifiant:
                         title: Nom d'utilisateur France Travail
                         type: string
-                        description: Identifiant France Travail, tel qu'il a été renseigné
-                          en paramètre d'appel. Cet identifiant est le nom d'utilisateur
-                          tel que choisi par le particulier lors de la création de
-                          son espace personnel en ligne.
+                        description: Identifiant du compte utilisateur France Travail,
+                          tel qu'il a été renseigné en paramètre d'appel. Cet identifiant
+                          est le nom d'utilisateur tel que choisi par le particulier
+                          lors de la création de son espace personnel en ligne.
                         example: jean.dupont33
                       paiements:
                         title: Liste des paiements versés
@@ -7398,10 +7575,10 @@ paths:
                     type: object
                     properties:
                       identifiant:
-                        title: Nom d'utilisateur France Travail
+                        title: Identifiant France Travail
                         type: string
                         description: |
-                          Identifiant France Travail, tel qu'il a été renseigné
+                          Identifiant du compte utilisateur France Travail, tel qu'il a été renseigné
                           en paramètre d'appel. Cet identifiant est le nom d'utilisateur
                           tel que choisi par le particulier lors de la création de son
                           espace personnel en ligne.
@@ -7410,7 +7587,7 @@ paths:
                         title: Données d'identité de l'utilisateur France Travail
                         description: 'Les informations d''identité retournées ici
                           sont issues de l''espace FranceTravail où l''utilisateur
-                          les a  saisies. Elles sont vérifiées par un agent, à l''aide
+                          les a saisies. Elles sont vérifiées par un agent, à l''aide
                           de la pièce d''identité fournie, et corrigées le cas échéant.
                           Les justificatifs d''identité qui servent à la vérification
                           des données sont listés ici : https://www.service-public.fr/particuliers/vosdroits/F24465'
@@ -7418,8 +7595,7 @@ paths:
                         properties:
                           civilite:
                             title: Civilité
-                            description: Civilité du demandeur d'emploi, Madame ou
-                              Monsieur.
+                            description: Civilité, Madame ou Monsieur.
                             type: string
                             example: M.
                             enum:
@@ -7428,31 +7604,29 @@ paths:
                           nom_naissance:
                             title: Nom de naissance
                             type: string
-                            description: Nom de naissance du demandeur d'emploi.
+                            description: Nom de naissance.
                             example: MARTIN
                           nom_usage:
                             title: Nom d'usage
                             type: string
-                            description: Nom d'usage du demandeur d'emploi.
+                            description: Nom d'usage.
                             nullable: true
                             example:
                           prenom:
                             title: Prénom
                             type: string
                             example: JACQUES
-                            description: Prénom ddu demandeur d'emploi, limité à 13
-                              caractères
+                            description: Prénom, limité à 13 caractères.
                           sexe:
                             title: Sexe
                             type: string
-                            description: Sexe du demandeur d'emploi.
+                            description: Sexe.
                             example: Masculin
                           date_naissance:
                             title: Date de naissance
                             format: date
                             type: string
-                            description: Date de naissance du demandeur d'emploi au
-                              format YYYY-MM-DD.
+                            description: Date de naissance au format YYYY-MM-DD.
                             example: '1995-02-02'
                         required:
                         - civilite
@@ -7462,28 +7636,26 @@ paths:
                         - sexe
                         - date_naissance
                       contact:
-                        title: Contact
-                        description: Données de contact de l'utilisateur France Travail.
+                        title: Données de contact
+                        description: Données de contact de l'utilisateur France Travail
                         type: object
                         properties:
                           telephone:
                             title: Téléphone principal
                             type: string
-                            description: Numéro de téléphone principal du demandeur
-                              d'emploi.
+                            description: Numéro de téléphone principal.
                             example: '0636676767'
                           telephone2:
                             title: Téléphone secondaire
                             type: string
-                            description: Numéro de téléphone secondaire du demandeur
-                              d'emploi.
+                            description: Numéro de téléphone secondaire.
                             nullable: true
                             example: '1122334455'
                           email:
                             title: E-mail
                             type: string
                             nullable: true
-                            description: Adresse e-mail du demandeur d'emploi.
+                            description: Adresse e-mail.
                             example: martin.jacques@france.fr
                         required:
                         - telephone
@@ -7492,16 +7664,17 @@ paths:
                       adresse:
                         title: Adresse
                         type: object
-                        description: Adresse du demandeur d'emploi, déclarée par le
-                          particulier lors de son inscription à France Travail ou
-                          suite à une déclaration de changement d’adresse.
+                        description: Adresse déclarée par le particulier lors de son
+                          inscription à France Travail ou suite à une déclaration
+                          de changement d’adresse.
                         properties:
                           code_postal:
                             type: string
                             title: Code postal
                             example: '75001'
                           code_cog_insee_commune:
-                            title: Code COG Insee de la commune
+                            title: COG de la commune
+                            description: Code officiel géographique (COG) de la commune
                             type: string
                             example: '75101'
                           localite:
@@ -7754,7 +7927,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/v3/men/scolarites/identite":
     get:
-      summary: Statut élève scolarisé
+      summary: Statut élève scolarisé et boursier
       tags:
       - Statut élève scolarisé
       parameters:
@@ -7861,7 +8034,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Statut scolarisé d'un élève du primaire, collège ou lycée.
+      description: Statut scolarisé d'un élève du primaire, collège ou lycée et statut
+        boursier.
       responses:
         '401':
           description: Non autorisé
@@ -7993,8 +8167,9 @@ paths:
                         - sexe
                         - date_naissance
                       module_elementaire_formation:
-                        title: Information MEF
-                        description: Les informations relatives aux données MEF
+                        title: Module élémentaire de formation (MEF)
+                        description: Libellé et code du module élémentaire de formation
+                          (MEF)
                         type: object
                         properties:
                           code_mef_stat:
@@ -8044,7 +8219,7 @@ paths:
                         pattern: "^\\d{4}$|^\\d{4}-\\d{4}$"
                         example: 2022-2023
                       est_scolarise:
-                        title: Statut scolarisé
+                        title: Est scolarisé
                         description: Indique si l'élève est scolarisé dans un établissement.
                         type: boolean
                         example: true
@@ -8080,6 +8255,32 @@ paths:
                         required:
                         - code
                         - libelle
+                      est_boursier:
+                        description: |
+                          Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées.
+
+                          ⚠️ Si le statut boursier est à "false" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
+
+                          Ce champs prend la valeur null lorsque l'on ne sait pas si l'élève est boursier ou non
+                        type: boolean
+                        example: true
+                        nullable: false
+                      echelon_bourse:
+                        description: |
+                          Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
+
+                          Il existe trois échelons de bourses pour les collégiens (1 à 3) et six échelons pour les lycéens (1 à 6), correspondant aux montants reçus par l'élève pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_2_api_particulier_endpoint_education_nationale_statut_eleve_scolarise"
+                        type: integer
+                        example: 1
+                        nullable: true
+                        enum:
+                        -
+                        - 1
+                        - 2
+                        - 3
+                        - 4
+                        - 5
+                        - 6
                     required:
                     - identite
                     - module_elementaire_formation
@@ -8087,6 +8288,8 @@ paths:
                     - annee_scolaire
                     - est_scolarise
                     - statut_eleve
+                    - est_boursier
+                    - echelon_bourse
                     additionalProperties: false
                   links:
                     type: object
@@ -8423,7 +8626,7 @@ paths:
                     type: object
                     properties:
                       admissions:
-                        title: Admissions de l'étudiant dans un ou plusieurs établissements
+                        title: Liste des admissions de l'étudiant dans les établissements
                         description: "Liste des admissions de l'étudiant dans un ou
                           plusieurs établissements d'enseignement supérieur pour l'année
                           en cours. \n\nChaque objet listé correspond à un établissement
@@ -8451,7 +8654,7 @@ paths:
                                 l'établissement.
                               example: '2023-08-31'
                             est_inscrit:
-                              title: Statut étudiant inscrit
+                              title: Est inscrit
                               type: boolean
                               example: true
                               enum:
@@ -8507,10 +8710,10 @@ paths:
                                   - RF6
                                   - RF7
                             code_cog_insee_commune:
-                              title: Commune de l'établissement d'études
+                              title: COG de la commune de l'établissement d'études
                               type: string
-                              description: Code Insee à 5 chiffres de la commune de
-                                l'établissement d'études de l'étudiant.
+                              description: Code officiel géographique (COG) de la
+                                commune de l'établissement d'études de l'étudiant.
                               example: '29085'
                             etablissement_etudes:
                               title: Établissement d'études
@@ -8741,7 +8944,7 @@ paths:
                     type: object
                     properties:
                       admissions:
-                        title: Admissions de l'étudiant dans un ou plusieurs établissements
+                        title: Liste des admissions de l'étudiant dans les établissements
                         description: "Liste des admissions de l'étudiant dans un ou
                           plusieurs établissements d'enseignement supérieur pour l'année
                           en cours. \n\nChaque objet listé correspond à un établissement
@@ -8769,7 +8972,7 @@ paths:
                                 l'établissement.
                               example: '2023-08-31'
                             est_inscrit:
-                              title: Statut étudiant inscrit
+                              title: Est inscrit
                               type: boolean
                               example: true
                               enum:
@@ -8825,10 +9028,10 @@ paths:
                                   - RF6
                                   - RF7
                             code_cog_insee_commune:
-                              title: Commune de l'établissement d'études
+                              title: COG de la commune de l'établissement d'études
                               type: string
-                              description: Code Insee à 5 chiffres de la commune de
-                                l'établissement d'études de l'étudiant.
+                              description: Code officiel géographique (COG) de la
+                                commune de l'établissement d'études de l'étudiant.
                               example: '29085'
                             etablissement_etudes:
                               title: Établissement d'études
@@ -9015,7 +9218,7 @@ paths:
                     type: object
                     properties:
                       admissions:
-                        title: Admissions de l'étudiant dans un ou plusieurs établissements
+                        title: Liste des admissions de l'étudiant dans les établissements
                         description: "Liste des admissions de l'étudiant dans un ou
                           plusieurs établissements d'enseignement supérieur pour l'année
                           en cours. \n\nChaque objet listé correspond à un établissement
@@ -9043,7 +9246,7 @@ paths:
                                 l'établissement.
                               example: '2023-08-31'
                             est_inscrit:
-                              title: Statut étudiant inscrit
+                              title: Est inscrit
                               type: boolean
                               example: true
                               enum:
@@ -9099,10 +9302,10 @@ paths:
                                   - RF6
                                   - RF7
                             code_cog_insee_commune:
-                              title: Commune de l'établissement d'études
+                              title: COG de la commune de l'établissement d'études
                               type: string
-                              description: Code Insee à 5 chiffres de la commune de
-                                l'établissement d'études de l'étudiant.
+                              description: Code officiel géographique (COG) de la
+                                commune de l'établissement d'études de l'étudiant.
                               example: '29085'
                             etablissement_etudes:
                               title: Établissement d'études
@@ -9280,6 +9483,580 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+  "/v3/sdh/statut_sportif/identifiant":
+    get:
+      summary: "[Identifiant] API Statut sportif de haut niveau et sur liste ministérielle"
+      tags:
+      - Prochainement
+      parameters:
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: identifiant
+        in: query
+        description: Identifiant du sportif dans le système d'information du Ministère
+          des Sports.
+        example: '123456789'
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Statut sportif de haut niveau, espoir, inscrits en liste des collectifs
+        nationaux ou en liste des arbitres et juges sportifs de haut-niveau.
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /api/introspect
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /api/introspect
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Sportif trouvé
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_particulier_v3_sdh_statut_sportif_with_identifiant
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      identite:
+                        title: Données d'identité du sportif
+                        type: object
+                        description: Informations d'identité du sportif.
+                        properties:
+                          nom_naissance:
+                            title: Nom de naissance
+                            type: string
+                            description: Nom de naissance du sportif.
+                            example: Dupont
+                          nom_usage:
+                            title: Nom d'usage
+                            type: string
+                            description: Nom d'usage du sportif.
+                            example: Martin
+                          prenoms:
+                            title: Prénoms
+                            type: string
+                            description: Prénoms du sportif.
+                            example: Jean Claude
+                          date_naissance:
+                            title: Date de naissance
+                            type: string
+                            format: date
+                            description: Date de naissance du sportif (format YYYY-MM-DD).
+                            example: '1990-05-15'
+                          sexe:
+                            title: Sexe
+                            type: string
+                            description: Sexe du sportif.
+                            example: M
+                            enum:
+                            - F
+                            - M
+                        required:
+                        - nom_naissance
+                        - nom_usage
+                        - prenoms
+                        - date_naissance
+                        - sexe
+                      est_sportif_de_haut_niveau:
+                        title: Est sportif de haut niveau
+                        type: boolean
+                        description: Indique si la personne est actuellement un sportif
+                          de haut niveau.
+                        example: true
+                      a_ete_sportif_de_haut_niveau:
+                        title: A été sportif de haut niveau
+                        type: boolean
+                        description: Indique si la personne a été un sportif de haut
+                          niveau dans le passé.
+                        example: true
+                      informations_statut:
+                        title: Informations du statut sportif
+                        type: object
+                        description: Détails du statut sportif actuel.
+                        properties:
+                          periode:
+                            title: Période du statut
+                            type: object
+                            description: Période de validité du statut sportif de
+                              haut niveau.
+                            properties:
+                              date_debut_statut:
+                                title: Date de début du statut
+                                type: string
+                                format: date-time
+                                description: Date de début du statut sportif de haut
+                                  niveau.
+                                example: '2023-01-01T00:00:00'
+                              date_fin_statut:
+                                title: Date de fin du statut
+                                type: string
+                                format: date-time
+                                description: Date de fin du statut sportif de haut
+                                  niveau.
+                                example: '2025-09-30T00:00:00'
+                            required:
+                            - date_debut_statut
+                            - date_fin_statut
+                          federation:
+                            title: Informations sur la fédération
+                            type: object
+                            description: Données d'identification de la fédération.
+                            properties:
+                              code_federation:
+                                title: Code fédération
+                                type: string
+                                description: Code de la fédération.
+                                example: '29'
+                              nom_federation:
+                                title: Nom de la fédération
+                                type: string
+                                description: Nom complet de la fédération.
+                                example: fédération française de handball
+                              nom_court_federation:
+                                title: Nom court de la fédération
+                                type: string
+                                description: Nom court de la fédération.
+                                example: HANDBALL
+                            required:
+                            - code_federation
+                            - nom_federation
+                            - nom_court_federation
+                          etablissement:
+                            title: Informations sur l'établissement
+                            type: object
+                            description: Données d'identification de l'établissement.
+                            properties:
+                              code_etablissement:
+                                title: Code établissement
+                                type: string
+                                description: Code de l'établissement.
+                                example: '2075'
+                              nom_etablissement:
+                                title: Nom de l'établissement
+                                type: string
+                                description: Nom de l'établissement.
+                                example: Maison de la Performance Nouvelle-Aquitaine
+                            required:
+                            - code_etablissement
+                            - nom_etablissement
+                          region:
+                            title: Informations sur la région
+                            type: object
+                            description: Données d'identification de la région.
+                            properties:
+                              code_region:
+                                title: Code région
+                                type: string
+                                description: Code de la région.
+                                example: '75'
+                              nom_region:
+                                title: Nom de la région
+                                type: string
+                                description: Nom de la région.
+                                example: Nouvelle-Aquitaine
+                            required:
+                            - code_region
+                            - nom_region
+                          categorie:
+                            title: Informations sur la catégorie
+                            type: object
+                            description: Données d'identification de la catégorie
+                              sportive.
+                            properties:
+                              code_categorie:
+                                title: Code catégorie
+                                type: string
+                                description: Code de la catégorie.
+                                example: '2'
+                              nom_categorie:
+                                title: Nom de la catégorie
+                                type: string
+                                description: Nom de la catégorie.
+                                example: elite
+                              valeur:
+                                title: Valeur
+                                type: string
+                                description: Valeur associée à la catégorie.
+                                example: '4'
+                            required:
+                            - code_categorie
+                            - nom_categorie
+                            - valeur
+                          sportif_de_haut_niveau:
+                            title: Sportif de haut niveau
+                            type: boolean
+                            description: Indique si ce statut correspond à un sportif
+                              de haut niveau.
+                            example: true
+                        required:
+                        - periode
+                        - federation
+                        - etablissement
+                        - region
+                        - categorie
+                        - sportif_de_haut_niveau
+                      informations_statuts_precedents:
+                        title: Historique des statuts précédents
+                        type: array
+                        description: Détails historiques des statuts sportifs précédents.
+                        items:
+                          type: object
+                          properties:
+                            fiche:
+                              title: Numéro de fiche
+                              type: integer
+                              description: Numéro de la fiche.
+                              example: 789456
+                            periode:
+                              title: Période du statut
+                              type: object
+                              description: Période de validité du statut sportif de
+                                haut niveau.
+                              properties:
+                                date_debut_statut:
+                                  title: Date de début du statut
+                                  type: string
+                                  format: date-time
+                                  description: Date de début du statut sportif de
+                                    haut niveau.
+                                  example: '2021-01-01T00:00:00'
+                                date_fin_statut:
+                                  title: Date de fin du statut
+                                  type: string
+                                  format: date-time
+                                  description: Date de fin du statut sportif de haut
+                                    niveau.
+                                  example: '2022-12-31T00:00:00'
+                            federation:
+                              title: Informations sur la fédération
+                              type: object
+                              description: Données d'identification de la fédération.
+                              properties:
+                                code_federation:
+                                  title: Code fédération
+                                  type: string
+                                  description: Code de la fédération.
+                                  example: '69'
+                                nom_federation:
+                                  title: Nom de la fédération
+                                  type: string
+                                  description: Nom complet de la fédération.
+                                  example: Fédération Française de Triathlon et Disciplines
+                                    Enchaînées
+                                nom_court_federation:
+                                  title: Nom court de la fédération
+                                  type: string
+                                  description: Nom court de la fédération.
+                                  example: TRIATHLON
+                            etablissement:
+                              title: Informations sur l'établissement
+                              type: object
+                              description: Données d'identification de l'établissement.
+                              properties:
+                                code_etablissement:
+                                  title: Code établissement
+                                  type: string
+                                  description: Code de l'établissement.
+                                  example: '1093'
+                                nom_etablissement:
+                                  title: Nom de l'établissement
+                                  type: string
+                                  description: Nom de l'établissement.
+                                  example: Maison de la Performance Occitanie
+                            region:
+                              title: Informations sur la région
+                              type: object
+                              description: Données d'identification de la région.
+                              properties:
+                                code_region:
+                                  title: Code région
+                                  type: string
+                                  description: Code de la région.
+                                  example: '76'
+                                nom_region:
+                                  title: Nom de la région
+                                  type: string
+                                  description: Nom de la région.
+                                  example: Occitanie
+                            categorie:
+                              title: Informations sur la catégorie
+                              type: object
+                              description: Données d'identification de la catégorie
+                                sportive.
+                              properties:
+                                code_categorie:
+                                  title: Code catégorie
+                                  type: string
+                                  description: Code de la catégorie.
+                                  example: '4'
+                                nom_categorie:
+                                  title: Nom de la catégorie
+                                  type: string
+                                  description: Nom de la catégorie.
+                                  example: Elite
+                                valeur:
+                                  title: Valeur
+                                  type: string
+                                  description: Valeur associée à la catégorie.
+                                  example: '128'
+                            sportif_de_haut_niveau:
+                              title: Sportif de haut niveau
+                              type: boolean
+                              description: Indique si ce statut correspond à un sportif
+                                de haut niveau.
+                              example: true
+                    required:
+                    - identite
+                    - est_sportif_de_haut_niveau
+                    - a_ete_sportif_de_haut_niveau
+                    - informations_statut
+                    - informations_statuts_precedents
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '404':
+          description: Non trouvé
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_41003:
+                  value:
+                    errors:
+                    - code: '41003'
+                      title: Entité non trouvée
+                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                        ou ne comporte aucune information pour cet appel. Veuillez
+                        vérifier que l'identifiant correspond au périmètre couvert
+                        par l'API.
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Entité non trouvée
+                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
+                    que l'identifiant correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_identifiant_error:
+                  value:
+                    errors:
+                    - code: '00380'
+                      title: Entité non traitable
+                      detail: L'identifiant est manquant
+                      source:
+                      meta: {}
+                  summary: Entité non traitable
+                  description: L'identifiant est manquant
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '41999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '41002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '41001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '41004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
 servers:
 - url: https://particulier.api.gouv.fr
   description: Environnement de production
@@ -9317,7 +10094,7 @@ components:
 
                 curl -X GET \
                 -H "Authorization: Bearer $token" \
-                --url "https://entreprise.api.gouv.fr/v3/..."
+                --url "https://particulier.api.gouv.fr/v3/..."
       name: Authorization
       in: header
       scheme: bearer

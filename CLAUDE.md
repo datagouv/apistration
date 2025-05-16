@@ -17,3 +17,4 @@
 - **Documentation**: Maintain README files in each endpoint directory
 - **Data Structure**: Validate payloads against OpenAPI specifications
 - **Best Practice**: Create summary.csv for each endpoint directory
+- **File Format**: All files must end with a newline
