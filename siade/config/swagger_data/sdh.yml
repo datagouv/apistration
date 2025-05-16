@@ -3,7 +3,7 @@ sdh:
     title: "API Statut sportif de haut niveau et sur liste ministérielle"
     tags:
       - "Prochainement"
-    description: "Statut sportif de haut niveau, espoir, inscrits en liste des collectifs nationaux ou en liste des arbitres et juges sportifs de haut-niveau."
+    description: "Statut sportif de haut niveau et toute catégorie inscrits en liste des collectifs nationaux ou en liste des arbitres et juges sportifs de haut-niveau."
     parameters:
       identifiant:
         title: "Identifiant SDH"
