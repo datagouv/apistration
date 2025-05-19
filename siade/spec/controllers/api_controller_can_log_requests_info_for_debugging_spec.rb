@@ -14,10 +14,12 @@ RSpec.describe APIController, 'log requests info for debugging' do
 
     def organizer
       @organizer ||= OpenStruct.new(
-        response: OpenStruct.new(
-          headers: { 'Content-Type' => 'application/json' },
-          body: { 'message' => 'I like providers\' tea' }.to_json,
-          status: 418
+        context: OpenStruct.new(
+          response: OpenStruct.new(
+            headers: { 'Content-Type' => 'application/json' },
+            body: { 'message' => 'I like providers\' tea' }.to_json,
+            status: 418
+          )
         )
       )
     end
@@ -103,10 +105,12 @@ RSpec.describe APIController, 'log requests info for debugging' do
 
       def organizer
         @organizer ||= OpenStruct.new(
-          response: OpenStruct.new(
-            headers: { 'Content-Type' => 'application/json' },
-            body: { 'message' => 'I like providers\' tea' }.to_json,
-            status: 418
+          context: OpenStruct.new(
+            response: OpenStruct.new(
+              headers: { 'Content-Type' => 'application/json' },
+              body: { 'message' => 'I like providers\' tea' }.to_json,
+              status: 418
+            )
           )
         )
       end

@@ -18,13 +18,21 @@ module CanLogRequestsInfoForDebugging
   end
 
   def provider_payload
-    return {} unless organizer.response
+    return {} unless organizer_response?
 
     {
-      header: organizer.response.try(:headers) || {},
-      body: Base64.strict_encode64(organizer.response.try(:body) || ''),
-      status: organizer.response.try(:status) || ''
+      header: organizer_response.try(:headers) || {},
+      body: Base64.strict_encode64(organizer_response.try(:body) || ''),
+      status: organizer_response.try(:status) || ''
     }
+  end
+
+  def organizer_response?
+    organizer&.context&.response
+  end
+
+  def organizer_response
+    organizer.context.response
   end
 
   def requests_debugging_enabled?
