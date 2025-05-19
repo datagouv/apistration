@@ -27,7 +27,7 @@ end
 # rubocop:enable RSpec/VariableName
 
 # rubocop:disable Metrics/MethodLength
-def build_rswag_error_entreprise(title: nil, detail: nil, code: nil)
+def build_rswag_error(title: nil, detail: nil, code: nil)
   {
     type: :object,
     properties: {
@@ -148,7 +148,7 @@ Il est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://git
       ],
       components: {
         schemas: {
-          Error: build_rswag_error_entreprise
+          Error: build_rswag_error
         },
         securitySchemes: {
           jwt_bearer_token: {
@@ -340,7 +340,7 @@ Lors de votre passage en production :
       ],
       components: {
         schemas: {
-          Error: build_rswag_error_entreprise
+          Error: build_rswag_error
         },
         securitySchemes: {
           jwt_bearer_token: {
@@ -351,7 +351,7 @@ Lors de votre passage en production :
 
         curl -X GET \\
         -H \"Authorization: Bearer $token\" \\
-        --url \"https://entreprise.api.gouv.fr/v3/...\"",
+        --url \"https://particulier.api.gouv.fr/v3/...\"",
             name: 'Authorization',
             in: :header,
             scheme: :bearer,
