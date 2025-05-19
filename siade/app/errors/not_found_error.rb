@@ -14,7 +14,7 @@ class NotFoundError < AbstractGenericProviderError
   end
 
   def detail
-    generated_message = @message || 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.'
+    generated_message = @message || 'L\identifiant indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.'
     generated_message += ' Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.' if @with_identifiant_message
 
     @detail ||= generated_message

@@ -515,7 +515,7 @@ paths:
                     errors:
                     - code: '04003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -523,7 +523,7 @@ paths:
                       meta:
                         provider: ACOSS
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -1040,7 +1040,7 @@ paths:
                     errors:
                     - code: '19003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -1048,7 +1048,7 @@ paths:
                       meta:
                         provider: ADEME
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -1701,7 +1701,7 @@ paths:
                     errors:
                     - code: '17003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -1709,7 +1709,7 @@ paths:
                       meta:
                         provider: Banque de France
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -2332,7 +2332,7 @@ paths:
                     errors:
                     - code: '33003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -2340,7 +2340,7 @@ paths:
                       meta:
                         provider: CARIF-OREF
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -2714,7 +2714,7 @@ paths:
                     errors:
                     - code: '38003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -2722,7 +2722,7 @@ paths:
                       meta:
                         provider: CIBTP
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -3121,7 +3121,7 @@ paths:
                     errors:
                     - code: '08003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -3129,7 +3129,7 @@ paths:
                       meta:
                         provider: CNETP
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -3484,7 +3484,7 @@ paths:
                     errors:
                     - code: '16003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -3492,7 +3492,7 @@ paths:
                       meta:
                         provider: DGDDI
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -3827,7 +3827,7 @@ paths:
                     errors:
                     - code: '03003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -3835,7 +3835,7 @@ paths:
                       meta:
                         provider: DGFIP - Adélie
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -4307,7 +4307,7 @@ paths:
                     errors:
                     - code: '03003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -4315,7 +4315,7 @@ paths:
                       meta:
                         provider: DGFIP - Adélie
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -4772,7 +4772,7 @@ paths:
                     errors:
                     - code: '03003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -4780,7 +4780,7 @@ paths:
                       meta:
                         provider: DGFIP - Adélie
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -5378,7 +5378,7 @@ paths:
                     errors:
                     - code: '03003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -5386,7 +5386,7 @@ paths:
                       meta:
                         provider: DGFIP - Adélie
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -6151,7 +6151,7 @@ paths:
                     errors:
                     - code: '03003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -6159,7 +6159,7 @@ paths:
                       meta:
                         provider: DGFIP - Adélie
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -8014,7 +8014,7 @@ paths:
                     errors:
                     - code: '29003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -8022,7 +8022,7 @@ paths:
                       meta:
                         provider: DJEPVA
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -9425,7 +9425,7 @@ paths:
                     errors:
                     - code: '29003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -9433,7 +9433,7 @@ paths:
                       meta:
                         provider: DJEPVA
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -9691,7 +9691,7 @@ paths:
                     errors:
                     - code: '28003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -9699,7 +9699,7 @@ paths:
                       meta:
                         provider: Commission Européenne
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -10175,7 +10175,7 @@ paths:
                     errors:
                     - code: '14003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -10183,7 +10183,7 @@ paths:
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -10605,7 +10605,7 @@ paths:
                     errors:
                     - code: '12003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -10613,7 +10613,7 @@ paths:
                       meta:
                         provider: FNTP
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -10990,7 +10990,7 @@ paths:
                     errors:
                     - code: '31003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -10998,7 +10998,7 @@ paths:
                       meta:
                         provider: GIP-MDS
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -11436,7 +11436,7 @@ paths:
                     errors:
                     - code: '31003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -11444,7 +11444,7 @@ paths:
                       meta:
                         provider: GIP-MDS
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -12243,7 +12243,7 @@ paths:
                     errors:
                     - code: '02003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -12251,7 +12251,7 @@ paths:
                       meta:
                         provider: Infogreffe
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -12774,7 +12774,7 @@ paths:
                     errors:
                     - code: '02003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -12782,7 +12782,7 @@ paths:
                       meta:
                         provider: Infogreffe
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -13236,7 +13236,7 @@ paths:
                     errors:
                     - code: '34003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -13244,7 +13244,7 @@ paths:
                       meta:
                         provider: INPI - RNE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -14264,7 +14264,7 @@ paths:
                     errors:
                     - code: '34003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -14272,7 +14272,7 @@ paths:
                       meta:
                         provider: INPI - RNE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -14929,7 +14929,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -14937,7 +14937,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -15573,7 +15573,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -15581,7 +15581,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -16921,7 +16921,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -16929,7 +16929,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -18323,7 +18323,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -18331,7 +18331,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -19717,7 +19717,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -19725,7 +19725,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -21064,7 +21064,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -21072,7 +21072,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -21435,7 +21435,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -21443,7 +21443,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -22320,7 +22320,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -22328,7 +22328,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -23178,7 +23178,7 @@ paths:
                     errors:
                     - code: '01003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -23186,7 +23186,7 @@ paths:
                       meta:
                         provider: INSEE
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -23690,7 +23690,7 @@ paths:
                     errors:
                     - code: '21003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -23698,7 +23698,7 @@ paths:
                       meta:
                         provider: MI
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -24155,7 +24155,7 @@ paths:
                     errors:
                     - code: '21003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -24163,7 +24163,7 @@ paths:
                       meta:
                         provider: MI
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -24525,7 +24525,7 @@ paths:
                     errors:
                     - code: '10003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -24533,7 +24533,7 @@ paths:
                       meta:
                         provider: MSA
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -24973,7 +24973,7 @@ paths:
                     errors:
                     - code: '11003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -24981,7 +24981,7 @@ paths:
                       meta:
                         provider: OPQIBI
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -25431,7 +25431,7 @@ paths:
                     errors:
                     - code: '09003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -25439,7 +25439,7 @@ paths:
                       meta:
                         provider: ProBTP
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -25746,7 +25746,7 @@ paths:
                     errors:
                     - code: '09003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -25754,7 +25754,7 @@ paths:
                       meta:
                         provider: ProBTP
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -26205,7 +26205,7 @@ paths:
                     errors:
                     - code: '06003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -26213,7 +26213,7 @@ paths:
                       meta:
                         provider: Qualibat
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -26763,7 +26763,7 @@ paths:
                     errors:
                     - code: '06003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -26771,7 +26771,7 @@ paths:
                       meta:
                         provider: Qualibat
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -27348,7 +27348,7 @@ paths:
                     errors:
                     - code: '32003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -27356,7 +27356,7 @@ paths:
                       meta:
                         provider: Qualifelec
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -27728,7 +27728,7 @@ paths:
                     errors:
                     - code: '22003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -27736,7 +27736,7 @@ paths:
                       meta:
                         provider: RNM
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
@@ -28309,7 +28309,7 @@ paths:
                     errors:
                     - code: '04003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                      detail: L\identifiant indiqué n'existe pas, n'est pas connu
                         ou ne comporte aucune information pour cet appel. Veuillez
                         vérifier que l'identifiant correspond au périmètre couvert
                         par l'API.
@@ -28317,7 +28317,7 @@ paths:
                       meta:
                         provider: ACOSS
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                  description: L\identifiant indiqué n'existe pas, n'est pas connu
                     ou ne comporte aucune information pour cet appel. Veuillez vérifier
                     que l'identifiant correspond au périmètre couvert par l'API.
               schema:
