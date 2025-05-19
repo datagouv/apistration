@@ -18,20 +18,20 @@ module CanLogRequestsInfoForDebugging
   end
 
   def provider_payload
-    return {} unless organizer_response?
+    return {} unless provider_response?
 
     {
-      header: organizer_response.try(:headers) || {},
-      body: Base64.strict_encode64(organizer_response.try(:body) || ''),
-      status: organizer_response.try(:status) || ''
+      header: provider_response.try(:headers) || {},
+      body: Base64.strict_encode64(provider_response.try(:body) || ''),
+      status: provider_response.try(:status) || ''
     }
   end
 
-  def organizer_response?
+  def provider_response?
     organizer&.context&.response
   end
 
-  def organizer_response
+  def provider_response
     organizer.context.response
   end
 

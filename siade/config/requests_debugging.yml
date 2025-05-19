@@ -52,7 +52,7 @@ sandbox:
   operation_ids: []
 
 production:
-  enable_until: '2025-05-03'
+  enable_until: '2025-05-21'
   operation_ids:
     - 'api_particulier_v2_cnav_complementaire_sante_solidaire'
 
