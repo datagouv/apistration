@@ -163,17 +163,9 @@ shared:
         name: "Ministère de l'Éducation nationale - Status élève scolarisé et boursier"
         alerts_wait: 10
       driver_params:
-        make_request: 'MEN::Scolarites::MakeRequest'
-        params:
-          nom_naissance: 'Dupont'
-          prenoms: ['Jean']
-          sexe_etat_civil: 'f'
-          annee_date_naissance: 2000
-          mois_date_naissance: 1
-          jour_date_naissance: 1
-          code_etablissement: '0511474A'
-          annee_scolaire: '<%= Date.today.year - 1 %>-<%= Date.today.year - 2 %>'
-        status_to_check: 404
+        make_request: 'MEN::Scolarites::PingMakeRequest'
+        status_to_check: 200
+        params: nil
         token_interactor: 'MEN::Scolarites::Authenticate'
 
     cnous_etudiant_boursier_ine:

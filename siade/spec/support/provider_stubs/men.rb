@@ -15,6 +15,17 @@ module ProviderStubs::MEN
     )
   end
 
+  def stub_men_scolarites_ping
+    stub_request(:get, Siade.credentials[:men_scolarites_ping_url]).with(
+      headers: {
+        'Authorization' => 'Bearer jwt-access-token'
+      }
+    ).to_return(
+      status: 200,
+      body: nil
+    )
+  end
+
   def stub_men_scolarites_not_found
     stub_request(:get, /#{Siade.credentials[:men_scolarites_url_v1]}/).to_return(
       status: 404,
