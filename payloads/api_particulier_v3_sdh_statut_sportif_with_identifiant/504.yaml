@@ -1,0 +1,20 @@
+---
+description: 'Délai d''attente dépassé'
+params:
+  recipient: "44022328800020"
+  identifiant: "13579"
+status: 504
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d'attente d'une réponse du fournisseur de données écoulé.",
+        "source": null,
+        "meta": {
+          "provider": "SDH"
+        }
+      }
+    ]
+  }

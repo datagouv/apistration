@@ -1,0 +1,75 @@
+---
+description: 'Statut sportif trouvé'
+params:
+  recipient: "13002798500013"
+  identifiant: "12345"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Dupont",
+        "nom_usage": "Martin",
+        "prenoms": "Jean Claude",
+        "date_naissance": "1990-05-15",
+        "sexe": "M"
+      },
+      "est_sportif_de_haut_niveau": true,
+      "a_ete_sportif_de_haut_niveau": true,
+      "informations_statut": {
+        "periode": {
+          "date_debut_statut": "2023-01-01",
+          "date_fin_statut": "2025-09-30"
+        },
+        "federation": {
+          "code_federation": "29",
+          "nom_federation": "fédération française de handball",
+          "nom_court_federation": "HANDBALL"
+        },
+        "etablissement": {
+          "code_etablissement": "2075",
+          "nom_etablissement": "Maison de la Performance Nouvelle-Aquitaine"
+        },
+        "region": {
+          "code_region": "75",
+          "nom_region": "Nouvelle-Aquitaine"
+        },
+        "categorie": {
+          "code_categorie": "2",
+          "nom_categorie": "elite",
+          "valeur": "4"
+        },
+        "sportif_de_haut_niveau": true
+      },
+      "informations_statuts_precedents": [
+        {
+          "fiche": 789456,
+          "periode": {
+            "date_debut_statut": "2021-01-01",
+            "date_fin_statut": "2022-12-31"
+          },
+          "federation": {
+            "code_federation": "69",
+            "nom_federation": "Fédération Française de Triathlon et Disciplines Enchaînées",
+            "nom_court_federation": "TRIATHLON"
+          },
+          "etablissement": {
+            "code_etablissement": "1093",
+            "nom_etablissement": "Maison de la Performance Occitanie"
+          },
+          "region": {
+            "code_region": "76",
+            "nom_region": "Occitanie"
+          },
+          "categorie": {
+            "code_categorie": "4",
+            "nom_categorie": "Elite",
+            "valeur": "128"
+          },
+          "sportif_de_haut_niveau": true
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

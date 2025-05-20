@@ -1,0 +1,18 @@
+---
+description: 'Trop de requêtes'
+params:
+  recipient: "13000705300014"
+  identifiant: "56789"
+status: 429
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00429",
+        "title": "Trop de requêtes",
+        "detail": "Vous avez effectué trop de requêtes",
+        "source": null,
+        "meta": {}
+      }
+    ]
+  }
