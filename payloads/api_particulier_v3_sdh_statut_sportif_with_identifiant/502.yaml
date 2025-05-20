@@ -1,0 +1,20 @@
+---
+description: 'Erreur du fournisseur de données'
+params:
+  recipient: "73282932000074"
+  identifiant: "24680"
+status: 502
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37999",
+        "title": "Erreur inconnue du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+        "source": null,
+        "meta": {
+          "provider": "SDH"
+        }
+      }
+    ]
+  }

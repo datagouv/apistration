@@ -4,7 +4,7 @@ RSpec.describe 'Payload specs' do
 
     describe do
       Dir[File.join('payloads', operation_id, '*.y*ml')].each do |payload|
-        describe "Payload #{File.basename(payload)}" do
+        describe "Payload #{File.basename(payload)} for #{operation_id}" do
           it 'is a valid YAML file' do
             expect { YAML.load_file(payload) }.not_to raise_error
           end
@@ -18,7 +18,7 @@ RSpec.describe 'Payload specs' do
           it 'has a valid status code' do
             data = YAML.load_file(payload)
 
-            expect([200, 400, 403, 404, 409, 429, 500, 502, 503, 504, 509]).to include(data['status'])
+            expect([200, 400, 403, 404, 409, 422, 429, 500, 502, 503, 504, 509]).to include(data['status'])
           end
 
           it 'has a use case description' do

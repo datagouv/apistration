@@ -6904,17 +6904,18 @@ paths:
                     errors:
                     - code: '39003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
                       source:
                       meta:
                         provider: DSNJ
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':
@@ -7140,17 +7141,18 @@ paths:
                     errors:
                     - code: '39003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
                       source:
                       meta:
                         provider: DSNJ
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/france_travail/indemnites/identifiant":
@@ -9688,17 +9690,17 @@ paths:
                               date_debut_statut:
                                 title: Date de début du statut
                                 type: string
-                                format: date-time
+                                format: date
                                 description: Date de début du statut sportif de haut
                                   niveau.
-                                example: '2023-01-01T00:00:00'
+                                example: '2023-01-01'
                               date_fin_statut:
                                 title: Date de fin du statut
                                 type: string
-                                format: date-time
+                                format: date
                                 description: Date de fin du statut sportif de haut
                                   niveau.
-                                example: '2025-09-30T00:00:00'
+                                example: '2025-09-30'
                             required:
                             - date_debut_statut
                             - date_fin_statut
@@ -9821,17 +9823,17 @@ paths:
                                 date_debut_statut:
                                   title: Date de début du statut
                                   type: string
-                                  format: date-time
+                                  format: date
                                   description: Date de début du statut sportif de
                                     haut niveau.
-                                  example: '2021-01-01T00:00:00'
+                                  example: '2021-01-01'
                                 date_fin_statut:
                                   title: Date de fin du statut
                                   type: string
-                                  format: date-time
+                                  format: date
                                   description: Date de fin du statut sportif de haut
                                     niveau.
-                                  example: '2022-12-31T00:00:00'
+                                  example: '2022-12-31'
                             federation:
                               title: Informations sur la fédération
                               type: object
@@ -9935,17 +9937,18 @@ paths:
                     errors:
                     - code: '41003'
                       title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
                       source:
                       meta:
                         provider: SDH
                   summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':
