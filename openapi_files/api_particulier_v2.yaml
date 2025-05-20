@@ -259,15 +259,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                     message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                   summary: Entité non trouvée
                   description: L'allocataire que vous cherchez n'a pas été reconnu
-                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
-                    par l'API.
+                    Veuillez vérifier que votre recherche est couverte par le périmètre
+                    de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -279,15 +279,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                     message: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                   summary: Entité non trouvée
                   description: L'allocataire n'est pas référencé auprès de la CNAF
-                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
-                    périmètre couvert par l'API.
+                    ni de la MSA Veuillez vérifier que votre recherche est couverte
+                    par le périmètre de l'API.
                 erreur_inattendue_35003:
                   value:
                     error: not_found
@@ -562,15 +562,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                     message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                   summary: Entité non trouvée
                   description: L'allocataire que vous cherchez n'a pas été reconnu
-                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
-                    par l'API.
+                    Veuillez vérifier que votre recherche est couverte par le périmètre
+                    de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -582,15 +582,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                     message: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                   summary: Entité non trouvée
                   description: L'allocataire n'est pas référencé auprès de la CNAF
-                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
-                    périmètre couvert par l'API.
+                    ni de la MSA Veuillez vérifier que votre recherche est couverte
+                    par le périmètre de l'API.
                 erreur_inattendue_35003:
                   value:
                     error: not_found
@@ -876,15 +876,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                     message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                   summary: Entité non trouvée
                   description: L'allocataire que vous cherchez n'a pas été reconnu
-                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
-                    par l'API.
+                    Veuillez vérifier que votre recherche est couverte par le périmètre
+                    de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -896,15 +896,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                     message: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                   summary: Entité non trouvée
                   description: L'allocataire n'est pas référencé auprès de la CNAF
-                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
-                    périmètre couvert par l'API.
+                    ni de la MSA Veuillez vérifier que votre recherche est couverte
+                    par le périmètre de l'API.
                 erreur_inattendue_40003:
                   value:
                     error: not_found
@@ -1187,15 +1187,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                     message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                   summary: Entité non trouvée
                   description: L'allocataire que vous cherchez n'a pas été reconnu
-                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
-                    par l'API.
+                    Veuillez vérifier que votre recherche est couverte par le périmètre
+                    de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -1207,15 +1207,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                     message: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                   summary: Entité non trouvée
                   description: L'allocataire n'est pas référencé auprès de la CNAF
-                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
-                    périmètre couvert par l'API.
+                    ni de la MSA Veuillez vérifier que votre recherche est couverte
+                    par le périmètre de l'API.
                 erreur_inattendue_35003:
                   value:
                     error: not_found
@@ -2053,15 +2053,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                     message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
-                      vérifier que l'identifiant correspond au périmètre couvert par
+                      vérifier que votre recherche est couverte par le périmètre de
                       l'API.
                   summary: Entité non trouvée
                   description: L'allocataire que vous cherchez n'a pas été reconnu
-                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
-                    par l'API.
+                    Veuillez vérifier que votre recherche est couverte par le périmètre
+                    de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -2073,15 +2073,15 @@ paths:
                   value:
                     error: not_found
                     reason: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                     message: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA Veuillez vérifier que l'identifiant correspond au
-                      périmètre couvert par l'API.
+                      de la MSA Veuillez vérifier que votre recherche est couverte
+                      par le périmètre de l'API.
                   summary: Entité non trouvée
                   description: L'allocataire n'est pas référencé auprès de la CNAF
-                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
-                    périmètre couvert par l'API.
+                    ni de la MSA Veuillez vérifier que votre recherche est couverte
+                    par le périmètre de l'API.
                 erreur_inattendue_35003:
                   value:
                     error: not_found
@@ -2364,15 +2364,15 @@ paths:
                   value:
                     error: not_found
                     reason: Aucun élève n'a pu être trouvé avec les critères de recherche
-                      fournis Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                      fournis Veuillez vérifier que votre recherche est couverte par
+                      le périmètre de l'API.
                     message: Aucun élève n'a pu être trouvé avec les critères de recherche
-                      fournis Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                      fournis Veuillez vérifier que votre recherche est couverte par
+                      le périmètre de l'API.
                   summary: Entité non trouvée
                   description: Aucun élève n'a pu être trouvé avec les critères de
-                    recherche fournis Veuillez vérifier que l'identifiant correspond
-                    au périmètre couvert par l'API.
+                    recherche fournis Veuillez vérifier que votre recherche est couverte
+                    par le périmètre de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -2526,15 +2526,15 @@ paths:
                   value:
                     error: not_found
                     reason: Aucune situation France Travail n'a pu être trouvée avec
-                      les critères de recherche fournis Veuillez vérifier que l'identifiant
-                      correspond au périmètre couvert par l'API.
+                      les critères de recherche fournis Veuillez vérifier que votre
+                      recherche est couverte par le périmètre de l'API.
                     message: Aucune situation France Travail n'a pu être trouvée avec
-                      les critères de recherche fournis Veuillez vérifier que l'identifiant
-                      correspond au périmètre couvert par l'API.
+                      les critères de recherche fournis Veuillez vérifier que votre
+                      recherche est couverte par le périmètre de l'API.
                   summary: Entité non trouvée
                   description: Aucune situation France Travail n'a pu être trouvée
-                    avec les critères de recherche fournis Veuillez vérifier que l'identifiant
-                    correspond au périmètre couvert par l'API.
+                    avec les critères de recherche fournis Veuillez vérifier que votre
+                    recherche est couverte par le périmètre de l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
