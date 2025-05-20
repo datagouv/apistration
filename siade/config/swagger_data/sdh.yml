@@ -70,13 +70,13 @@ sdh:
               date_debut_statut:
                 title: "Date de début du statut"
                 type: string
-                format: date-time
+                format: date
                 description: "Date de début du statut sportif de haut niveau."
                 example: "2023-01-01"
               date_fin_statut:
                 title: "Date de fin du statut"
                 type: string
-                format: date-time
+                format: date
                 description: "Date de fin du statut sportif de haut niveau."
                 example: "2025-09-30"
           federation:
@@ -175,13 +175,13 @@ sdh:
                 date_debut_statut:
                   title: "Date de début du statut"
                   type: string
-                  format: date-time
+                  format: date
                   description: "Date de début du statut sportif de haut niveau."
                   example: "2021-01-01"
                 date_fin_statut:
                   title: "Date de fin du statut"
                   type: string
-                  format: date-time
+                  format: date
                   description: "Date de fin du statut sportif de haut niveau."
                   example: "2022-12-31"
             federation:
