@@ -20,10 +20,9 @@
 - Naming: Snake_case for methods/variables, CamelCase for classes
 - Error handling: Create specific error classes in app/errors/ and use the config/errors.yml configuration
 - API responses: Follow REST/JSON:API format with data/links/meta structure
-- Tests: RSpec with VCR for HTTP mocking
+- Tests: RSpec with manual mocks for HTTP requests, sometimes VCR
 - Interactors: Use organizers pattern with small, focused interactors
 - APIs: Use the scaffold_resource generator for new APIs
 - Scopes: Define API access scopes in config/authorizations.yml
 - Maintenance: Configure provider maintenance in config/maintenances.yml
 - File Endings: Every file should end with a newline
-
