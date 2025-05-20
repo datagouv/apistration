@@ -44,7 +44,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
           its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
           it 'takes libelle retour message' do
-            expect(call.errors.first.detail).to eq('Dossier allocataire inexistant. Le document ne peut être édité. Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.')
+            expect(call.errors.first.detail).to eq('Dossier allocataire inexistant. Le document ne peut être édité. Veuillez vérifier que votre recherche est couverte par le périmètre de l\'API.')
           end
         end
 
@@ -56,7 +56,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
           its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
           it 'takes libelle retour message' do
-            expect(call.errors.first.detail).to eq('Dossier radié. Le document ne peut être édité. Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.')
+            expect(call.errors.first.detail).to eq('Dossier radié. Le document ne peut être édité. Veuillez vérifier que votre recherche est couverte par le périmètre de l\'API.')
           end
         end
 

@@ -40,7 +40,7 @@ RSpec.describe MSA::ConformitesCotisations, type: :retriever_organizer do
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to have_error('Le siret indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.') }
+      its(:errors) { is_expected.to have_error('Le siret indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l\'API.') }
     end
   end
 end

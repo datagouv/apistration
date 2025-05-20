@@ -25,7 +25,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to have_error("Le siret ou le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.") }
+      its(:errors) { is_expected.to have_error("Le siret ou le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.") }
     end
 
     describe 'STUBBED PROVIDER RESPONSES' do

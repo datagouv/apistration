@@ -14,8 +14,8 @@ class NotFoundError < AbstractGenericProviderError
   end
 
   def detail
-    generated_message = @message || 'L\identifiant indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.'
-    generated_message += ' Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.' if @with_identifiant_message
+    generated_message = @message || 'Le ou les paramètre(s) d\'entrée n\'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel.'
+    generated_message += ' Veuillez vérifier que votre recherche est couverte par le périmètre de l\'API.' if @with_identifiant_message
 
     @detail ||= generated_message
   end

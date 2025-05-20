@@ -37,8 +37,8 @@ RSpec.describe APIParticulier::V2::BaseController, 'errors rendering' do
     its(:body) do
       is_expected.to eq({
         error: 'not_found',
-        reason: 'message Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.',
-        message: 'message Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.'
+        reason: 'message Veuillez vérifier que votre recherche est couverte par le périmètre de l\'API.',
+        message: 'message Veuillez vérifier que votre recherche est couverte par le périmètre de l\'API.'
       }.to_json)
     end
   end

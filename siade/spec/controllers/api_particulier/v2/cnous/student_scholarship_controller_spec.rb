@@ -70,7 +70,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
         is_expected.to eq({
           error: 'not_found',
           reason: 'Scholarship not found',
-          message: "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API."
+          message: "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."
         }.to_json)
       end
     end
