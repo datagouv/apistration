@@ -10,7 +10,7 @@
 
   ```json
   {
-    "recipient": "13002798500013",
+    "recipient": "01300279850005",
     "identifiant": "12345"
   }
   ```
@@ -100,7 +100,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=13002798500013' -d 'identifiant=12345' \
+    -G -d 'recipient=13002526500013' -d 'recipient=01300279850005' -d 'identifiant=12345' \
     --url "https://staging.particulier.api.gouv.fr/v3/sdh/statut_sportif/identifiant"
   ```
 
@@ -117,7 +117,7 @@
 
   ```json
   {
-    "recipient": "30613890000143",
+    "recipient": "03061389000018",
     "identifiant": "98765"
   }
   ```
@@ -152,7 +152,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=30613890000143' -d 'identifiant=98765' \
+    -G -d 'recipient=13002526500013' -d 'recipient=03061389000018' -d 'identifiant=98765' \
     --url "https://staging.particulier.api.gouv.fr/v3/sdh/statut_sportif/identifiant"
   ```
 
@@ -169,7 +169,7 @@
 
   ```json
   {
-    "recipient": "40223288700020",
+    "recipient": "04022328870001",
     "identifiant": "54321"
   }
   ```
@@ -204,7 +204,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=40223288700020' -d 'identifiant=54321' \
+    -G -d 'recipient=13002526500013' -d 'recipient=04022328870001' -d 'identifiant=54321' \
     --url "https://staging.particulier.api.gouv.fr/v3/sdh/statut_sportif/identifiant"
   ```
 
@@ -271,7 +271,7 @@
 
   ```json
   {
-    "recipient": "13000705300014",
+    "recipient": "01300070530004",
     "identifiant": "56789"
   }
   ```
@@ -304,7 +304,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=13000705300014' -d 'identifiant=56789' \
+    -G -d 'recipient=13002526500013' -d 'recipient=01300070530004' -d 'identifiant=56789' \
     --url "https://staging.particulier.api.gouv.fr/v3/sdh/statut_sportif/identifiant"
   ```
 
@@ -373,7 +373,7 @@
 
   ```json
   {
-    "recipient": "44022328800020",
+    "recipient": "04402232880009",
     "identifiant": "13579"
   }
   ```
@@ -408,7 +408,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=44022328800020' -d 'identifiant=13579' \
+    -G -d 'recipient=13002526500013' -d 'recipient=04402232880009' -d 'identifiant=13579' \
     --url "https://staging.particulier.api.gouv.fr/v3/sdh/statut_sportif/identifiant"
   ```
 
