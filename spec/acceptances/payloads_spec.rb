@@ -4,7 +4,7 @@ RSpec.describe 'Payload specs' do
 
     describe do
       Dir[File.join('payloads', operation_id, '*.y*ml')].each do |payload|
-        describe "Payload #{File.basename(payload)}" do
+        describe "Payload #{File.basename(payload)} for #{operation_id}" do
           it 'is a valid YAML file' do
             expect { YAML.load_file(payload) }.not_to raise_error
           end
