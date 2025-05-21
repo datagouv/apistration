@@ -1,6 +1,18 @@
 class LogStasherFieldsBuilder
   attr_reader :controller, :fields
 
+  CONTROLLER_NOT_TO_STORE_IN_DATABASE = %w[
+    api_entreprise/inpi_proxy
+    api_entreprise/ping_providers
+    api_entreprise/proxied_files
+    api_particulier/france_connect_jwks
+    api_particulier/introspect
+    api_particulier/ping_providers
+    errors
+    ping
+    uptime
+  ].freeze
+
   delegate :bearer_token_from_headers,
     :request,
     :cached_retriever,
@@ -15,6 +27,7 @@ class LogStasherFieldsBuilder
 
   def perform
     add_api_version if api_entreprise? || api_particulier?
+    add_should_be_stored_in_database_flag
 
     api_entreprise_fields if api_entreprise?
 
@@ -31,6 +44,14 @@ class LogStasherFieldsBuilder
                            else
                              api_namespace
                            end
+  end
+
+  def add_should_be_stored_in_database_flag
+    fields[:should_be_stored_in_database] = should_be_stored_in_database?
+  end
+
+  def should_be_stored_in_database?
+    CONTROLLER_NOT_TO_STORE_IN_DATABASE.exclude?(controller_name)
   end
 
   def api_entreprise_fields

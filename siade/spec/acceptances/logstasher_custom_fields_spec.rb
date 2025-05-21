@@ -14,6 +14,7 @@ def define_dummy_controller(controller_klass)
     end
   end
 end
+
 # rubocop:enable Lint/NestedMethodDefinition
 
 RSpec.describe 'logstasher custom fields', type: :controller do
@@ -37,7 +38,8 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         hash_including(
           type: 'siade',
           domain: 'test.host',
-          user_agent_raw: 'Rails Testing'
+          user_agent_raw: 'Rails Testing',
+          should_be_stored_in_database: true
         ),
         anything
       )
@@ -54,6 +56,44 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       )
 
       make_call
+    end
+  end
+
+  describe 'add_should_be_stored_in_database_flag behavior' do
+    context 'when controller is in CONTROLLER_NOT_TO_STORE_IN_DATABASE list' do
+      before do
+        routes.draw { get 'index' => 'ping#index' }
+      end
+
+      define_dummy_controller(PingController)
+
+      it 'sets should_be_stored_in_database to false' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            should_be_stored_in_database: false
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+
+    context 'when controller is not in CONTROLLER_NOT_TO_STORE_IN_DATABASE list' do
+      before do
+        routes.draw { get 'index' => 'api#index' }
+      end
+
+      it 'sets should_be_stored_in_database to true' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            should_be_stored_in_database: true
+          ),
+          anything
+        )
+
+        make_call
+      end
     end
   end
 
