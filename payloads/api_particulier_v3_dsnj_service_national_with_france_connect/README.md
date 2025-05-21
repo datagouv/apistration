@@ -224,7 +224,7 @@
 
   </p>
   </details>
-* [404_not_found.yaml](404_not_found.yaml)
+* [404.yaml](404.yaml)
 
   Status `404`
 
