@@ -65,5 +65,20 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
         end
       end
     end
+
+    context 'when there is a ActiveRecord::StatementInvalid error, due to refreshing view and table not exists' do
+      before do
+        pg_error = PG::UndefinedTable.new('ERROR: relation "admin_apientreprise_production_access_logs_last_10_minutes" does not exist')
+        ar_error = ActiveRecord::StatementInvalid.new(pg_error.message)
+        ar_error.set_backtrace(caller)
+
+        allow(AccessLogPingView).to receive(:where).and_raise(ar_error)
+        allow(ar_error).to receive(:cause).and_return(pg_error)
+      end
+
+      it 'returns :unknown' do
+        expect(make_ping).to eq(:unknown)
+      end
+    end
   end
 end

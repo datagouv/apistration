@@ -9,6 +9,13 @@ class AccessLogPingDriver < ApplicationPingDriver
     else
       :unknown
     end
+  rescue ActiveRecord::StatementInvalid => e
+    case e.cause
+    when PG::UndefinedTable
+      :unknown
+    else
+      raise
+    end
   end
 
   private
