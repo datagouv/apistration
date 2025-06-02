@@ -1,0 +1,38 @@
+{
+  "user": {
+    "email": "datasubvention@lolilol.com",
+    "roles": [
+      "string"
+    ],
+    "firstName": "string",
+    "lastName": "string",
+    "agentConnectId": "string",
+    "_id": "string",
+    "active": true,
+    "signupAt": "2025-06-02T12:50:24.114Z",
+    "profileToComplete": true,
+    "disable": true,
+    "lastActivityDate": "2025-06-02T12:50:24.114Z",
+    "nbVisits": 0,
+    "agentType": "OPERATOR",
+    "jobType": [
+      "ADMINISTRATOR"
+    ],
+    "service": "string",
+    "phoneNumber": "string",
+    "structure": "string",
+    "region": "string",
+    "decentralizedLevel": "REGIONAL",
+    "decentralizedTerritory": "string",
+    "territorialScope": "REGIONAL",
+    "registrationSrc": [
+      "DEMO"
+    ],
+    "registrationSrcEmail": "string",
+    "registrationSrcDetails": "string",
+    "jwt": {
+      "expirateDate": "2025-06-02T12:50:24.114Z",
+      "token": "data_subvention_token"
+    }
+  }
+}
