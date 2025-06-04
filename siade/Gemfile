@@ -98,7 +98,6 @@ group :development, :test do
 
   gem 'guard'
   gem 'guard-rspec', require: false
-  # gem 'guard-livereload', '~> 2.4', require: false
 
   gem "openapi3_parser", "~> 0.10.1"
 
