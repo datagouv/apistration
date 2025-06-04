@@ -26,7 +26,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResourceCollection, type: :build_reso
   let(:valid_collection) do
     [
       {
-        url: 'https://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D71-Certificat-112379-MIXENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
+        url: 'https://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D75-Certificat-112379-EXEMPLE-ENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
         nom_certificat: 'QUALIBAT-RGE',
         domaine: 'Ventilation mécanique',
         meta_domaine: "Travaux d'efficacité énergétique",
@@ -44,7 +44,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResourceCollection, type: :build_reso
         }
       },
       {
-        url: 'https://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D71-Certificat-112379-MIXENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
+        url: 'https://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D75-Certificat-112379-EXEMPLE-ENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
         nom_certificat: 'QUALIBAT-RGE',
         domaine: 'Radiateurs électriques, dont régulation.',
         meta_domaine: "Travaux d'efficacité énergétique",

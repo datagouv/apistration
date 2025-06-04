@@ -22,22 +22,22 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
       let(:valid_pp) do
         {
           type: 'personne_physique',
-          nom: 'HISQUIN',
-          prenom: 'FRANCOIS',
+          nom: 'DURANT',
+          prenom: 'ALEX',
           fonction: 'PRESIDENT DU DIRECTOIRE',
-          date_naissance: '1965-01-27',
-          lieu_naissance: 'ROUBAIX',
+          date_naissance: '1980-02-15',
+          lieu_naissance: 'PARIS',
           pays_naissance: 'FRANCE',
           code_pays_naissance: 'FR',
           nationalite: 'FRANCAISE',
           code_nationalite: 'FR',
-          date_naissance_timestamp: -155_523_600
+          date_naissance_timestamp: 319_417_200
         }
       end
 
       let(:valid_pm) do
         {
-          numero_identification: '784824153',
+          numero_identification: '123456789',
           type: 'personne_morale',
           fonction: 'COMMISSAIRE AUX COMPTES TITULAIRE',
           raison_sociale: 'MAZARS - SOCIETE ANONYME',

@@ -17,35 +17,35 @@ RSpec.describe OPQIBI::CertificationsIngenierie::BuildResource, type: :build_res
 
   let(:valid_payload) do
     {
-      numero_certificat: '05 02 1690',
-      url: 'https://www.opqibi.com/fiche/1777',
-      date_delivrance_certificat: '2022-02-01',
+      numero_certificat: '12 34 5678',
+      url: 'https://www.opqibi.com/fiche/9876',
+      date_delivrance_certificat: '2021-06-15',
       duree_validite_certificat: 'valable un an',
-      assurances: 'MAF',
+      assurances: 'ANONYME',
       qualifications: [
         {
-          nom: 'Étude en acoustique',
-          code_qualification: '1601',
-          definition: 'Correction acoustique des salles',
+          nom: 'Étude en ingénierie thermique',
+          code_qualification: '2001',
+          definition: 'Optimisation énergétique des bâtiments',
           rge: false
         },
         {
-          nom: 'Ingénierie en acoustique des infrastructures de transport',
-          code_qualification: '1602',
-          definition: 'Maîtrise des bruits',
+          nom: 'Ingénierie en efficacité énergétique',
+          code_qualification: '2002',
+          definition: 'Amélioration de la performance',
           rge: false
         }
       ],
-      date_validite_qualifications: '2025-02-01',
+      date_validite_qualifications: '2024-06-15',
       qualifications_probatoires: [
         {
-          code_qualification: '1603',
-          nom: 'Ingénierie en acoustique industrielle',
-          definition: 'Maîtrise des bruits industriels',
+          code_qualification: '2003',
+          nom: 'Ingénierie en énergies renouvelables',
+          definition: 'Développement durable et écologie',
           rge: false
         }
       ],
-      date_validite_qualifications_probatoires: '2023-02-01'
+      date_validite_qualifications_probatoires: '2022-06-15'
     }
   end
 

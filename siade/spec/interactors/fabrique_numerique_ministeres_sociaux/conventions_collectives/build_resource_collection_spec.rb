@@ -27,15 +27,15 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::Build
     it 'builds valid resource items' do
       expect(resource_collection.first.to_h).to eq(
         {
-          id: 'KALICONT000005635173',
-          numero_idcc: 1486,
-          titre: 'Convention collective nationale des bureaux d\'études techniques, des cabinets d\'ingénieurs-conseils et des sociétés de conseils du 15 décembre 1987.',
-          titre_court: 'Bureaux d\'études techniques, cabinets d\'ingénieurs-conseils et sociétés de conseils',
+          id: 'ANONYME000001234567',
+          numero_idcc: 9876,
+          titre: 'Convention collective des bureaux de conseil en ingénierie du 28 février 2001.',
+          titre_court: 'Conseil en ingénierie industrielle et consulting technique',
           active: true,
-          etat: 'vigueur_etendue',
-          url: 'https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635173',
-          synonymes: ['syntec'],
-          date_publication: '1988-01-01'
+          etat: 'vigueur',
+          url: 'https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=ANONYME000001234567',
+          synonymes: ['anonyme'],
+          date_publication: '2001-05-15'
         }
       )
     end

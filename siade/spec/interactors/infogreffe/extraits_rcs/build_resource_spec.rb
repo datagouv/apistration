@@ -26,9 +26,9 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       subject { instance.bundled_data.data }
 
       its(:siren) { is_expected.to eq('418166096') }
-      its(:date_immatriculation) { is_expected.to eq('1998-03-27') }
+      its(:date_immatriculation) { is_expected.to eq('2000-01-15') }
       its(:date_extrait) { is_expected.to eq('30 MAI 2017') }
-      its(:nom_commercial) { is_expected.to eq('OCTO-TECHNOLOGY') }
+      its(:nom_commercial) { is_expected.to eq('EXEMPLE-TECHNOLOGIE') }
 
       its(:greffe) { is_expected.to be_an_instance_of(Hash) }
 
@@ -72,7 +72,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       describe 'capital' do
         subject(:capital) { instance.bundled_data.data.capital }
 
-        it { expect(capital[:montant]).to eq(509_525.3) }
+        it { expect(capital[:montant]).to eq(234_567.8) }
         it { expect(capital[:devise]).to eq('') }
         it { expect(capital[:code_devise]).to eq('') }
       end
@@ -84,7 +84,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
 
         it { expect(observation[:numero]).to eq('12197') }
         it { expect(observation[:libelle]).to eq('LA SOCIETE NE CONSERVE AUCUNE ACTIVITE A SON ANCIEN SIEGE') }
-        it { expect(observation[:date]).to eq('2000-02-23') }
+        it { expect(observation[:date]).to eq('2001-02-12') }
       end
 
       its(:mandataires_sociaux) { is_expected.to be_an_instance_of(Array) }
@@ -93,17 +93,17 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         subject(:mandataire_social) { instance.bundled_data.data.mandataires_sociaux[0] }
 
         it { expect(mandataire_social[:type]).to eq('personne_physique') }
-        it { expect(mandataire_social[:nom]).to eq('HISQUIN') }
-        it { expect(mandataire_social[:prenom]).to eq('FRANCOIS') }
+        it { expect(mandataire_social[:nom]).to eq('DURANT') }
+        it { expect(mandataire_social[:prenom]).to eq('ALEX') }
         it { expect(mandataire_social[:fonction]).to eq('PRESIDENT DU DIRECTOIRE') }
-        it { expect(mandataire_social[:date_naissance]).to eq('1965-01') }
+        it { expect(mandataire_social[:date_naissance]).to eq('1980-02') }
       end
 
       describe 'resource.mandataires_sociaux entry pm' do
         subject(:mandataire_social) { instance.bundled_data.data.mandataires_sociaux[9] }
 
         it { expect(mandataire_social[:type]).to eq('personne_morale') }
-        it { expect(mandataire_social[:numero_identification]).to eq('784824153') }
+        it { expect(mandataire_social[:numero_identification]).to eq('123456789') }
         it { expect(mandataire_social[:fonction]).to eq('COMMISSAIRE AUX COMPTES TITULAIRE') }
         it { expect(mandataire_social[:raison_sociale]).to eq('MAZARS - SOCIETE ANONYME') }
       end
@@ -112,8 +112,8 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     describe 'personne morale' do
       subject(:personne_morale) { instance.bundled_data.data.personne_morale }
 
-      it { expect(personne_morale[:denomination]).to eq('OCTO-TECHNOLOGY') }
-      it { expect(personne_morale[:date_fin_de_vie]).to eq('2097-03-26') }
+      it { expect(personne_morale[:denomination]).to eq('EXEMPLE-TECHNOLOGIE') }
+      it { expect(personne_morale[:date_fin_de_vie]).to eq('2099-01-15') }
       it { expect(personne_morale[:date_cloture_exercice_comptable]).to eq('12-31') }
 
       it { expect(personne_morale[:forme_juridique]).to be_an_instance_of(Hash) }

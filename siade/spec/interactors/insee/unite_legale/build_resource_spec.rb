@@ -53,7 +53,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
 
         its(:personne_morale_attributs) do
           is_expected.to eq({
-            raison_sociale: 'DECATHLON',
+            raison_sociale: 'SPORT-EXEMPLE',
             sigle: nil
           })
         end
