@@ -1,8 +1,8 @@
-actes_gone = ->(env) do
+actes_gone = lambda do |env|
   [410, {}, ['Cette route a été déplacée. Merci de mettre à jour votre application vers la nouvelle route. Vous pouvez consulter la documentation à l\'adresse suivante: https://entreprise.api.gouv.fr/catalogue/inpi/rne/actes_bilans']]
 end
 
-generic_gone = ->(env) do
+generic_gone = lambda do |env|
   [410, {}, ['Cette route n\'existe plus sur API Entreprise. Vous pouvez consulter la liste des routes sur notre documentation OpenAPI: https://entreprise.api.gouv.fr/developpeurs/openapi']]
 end
 
@@ -94,6 +94,8 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   get 'djepva/api-association/associations/:siren_or_rna', to: 'api_entreprise/v3_and_more/mi/unites_legales#show'
   get 'djepva/api-association/associations/open_data/:siren_or_rna', to: 'api_entreprise/v3_and_more/mi/unites_legales_open_data#show'
 
+  get 'data_subvention/subventions/:siren_or_siret_or_rna', to: 'api_entreprise/v3_and_more/data_subvention/subventions#show'
+
   namespace :msa do
     get 'etablissements/:siret/conformite_cotisations' => '/api_entreprise/v3_and_more/msa/conformites_cotisations#show'
   end
@@ -133,4 +135,4 @@ get 'ping/*provider_with_source', to: 'api_entreprise/ping_providers#show', as: 
 get 'pings', to: 'api_entreprise/ping_providers#index', as: 'api_entreprise_ping_providers', constraints: APIEntrepriseDomainConstraint.new
 get 'privileges', to: 'api_entreprise/privileges#index', as: 'api_entreprise_privileges', constraints: APIEntrepriseDomainConstraint.new
 
-mount Rswag::Api::Engine  => '/v3', constraints: APIEntrepriseDomainConstraint.new
+mount Rswag::Api::Engine => '/v3', constraints: APIEntrepriseDomainConstraint.new

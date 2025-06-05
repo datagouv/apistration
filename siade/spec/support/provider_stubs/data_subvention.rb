@@ -15,6 +15,20 @@ module ProviderStubs::DataSubvention
       )
   end
 
+  def stub_datasubvention_subventions_404(id: valid_siren, token: 'data_subvention_token')
+    stub_request(:get, "#{Siade.credentials[:data_subvention_url]}/association/#{id}/grants")
+      .with(
+        headers: {
+          'x-access-token' => token,
+          'Content-Type' => 'application/json'
+        }
+      )
+      .to_return(
+        status: 404,
+        body: read_payload_file('data_subvention/subventions/404.json')
+      )
+  end
+
   def stub_datasubvention_subventions_valid(id: valid_siren, token: 'data_subvention_token')
     stub_request(:get, "#{Siade.credentials[:data_subvention_url]}/association/#{id}/grants")
       .with(

@@ -85,6 +85,8 @@ shared:
   api_entreprise/v3_and_more/dgddi/eori:
     - eori_douanes
     - open_data
+  api_entreprise/v3_and_more/data_subvention/subventions:
+    - data_subvention_subventions
   api_entreprise/v3_and_more/dgfip/attestations_fiscales:
     - attestations_fiscales
     - attestation_fiscale_dgfip

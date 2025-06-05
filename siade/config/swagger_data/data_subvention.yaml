@@ -1,0 +1,185 @@
+data_subvention:
+  subventions:
+    title: Subventions des associations
+    description: "Listes des subventions accordées et distribuées aux associations"
+    tags:
+      - Subventions des associations
+    parameters:
+      siren_or_siret_or_rna:
+        type: string
+        description: "Siren, Siret ou RNA de l'association dont vous souhaitez obtenir les subventions."
+        example: "12345678901234"
+        required: true
+    attributes:
+      demande_subvention:
+        type: object
+        description: Informations complètes sur une demande de subvention
+        nullable: true
+        properties:
+          fournisseur:
+            type: string
+            description: Système fournisseur des données (OSIRIS, Chorus, etc.)
+            example: "OSIRIS"
+          date_mise_a_jour_information:
+            type: string
+            format: date-time
+            description: Date de dernière mise à jour des informations
+            example: "2019-01-01T00:00:00.000Z"
+          annee_exercice_demande:
+            type: number
+            description: Valeur de l'année
+            example: 2019
+          identifiant_engagement_juridique:
+            type: string
+            description: Numéro EJ
+            example: "19/0003456"
+            nullable: true
+          subvention_demandee:
+            type: object
+            description: Informations sur la subvention demandée
+            properties:
+              dispositif:
+                type: string
+                description: Nom du dispositif
+                example: "ANS - Projets Sportifs Territoriaux"
+              sous_dispositif:
+                type: string
+                description: Nom du sous-dispositif
+                example: "Aides territoriales (hors emploi)"
+              montant_demande:
+                type: number
+                description: Montant en euros
+                example: 2000
+          description_des_projets:
+            type: object
+            description: Description détaillée des projets financés
+            properties:
+              estimation_cout_total:
+                type: number
+                description: Coût en euros
+                example: 8500
+              projet:
+                type: array
+                description: Liste des projets/actions proposés
+                items:
+                  type: object
+                  description: Détails d'un projet ou action proposée
+                  properties:
+                    rang:
+                      type: number
+                      description: Numéro d'ordre
+                      example: 1
+                    intitule:
+                      type: string
+                      description: Titre du projet
+                      example: "Développement du football féminin"
+                    objectifs:
+                      type: string
+                      description: Description des objectifs
+                    objectifs_operationnels:
+                      type: string
+                      description: Objectifs opérationnels
+                      example: "Développement de la pratique"
+                    description:
+                      type: string
+                      description: Description complète
+                    aide:
+                      type: object
+                      description: "Description de l'aide"
+                      properties:
+                        nature:
+                          type: string
+                          description: Type d'aide
+                          example: "Projets sportifs territoriaux"
+                        modalite:
+                          type: string
+                          description: Modalité d'aide
+                          example: "Aide au projet"
+                    modalite_ou_dispositif:
+                      type: string
+                      description: Modalité ou dispositif
+                      example: "Développer la pratique féminine"
+                    indicateurs:
+                      type: string
+                      description: Indicateurs de performance
+                      nullable: true
+                    cofinanceurs:
+                      type: string
+                      description: Co-financeurs séparés par ';'
+                      example: "Conseil départemental du Nord;Ville de Lille"
+          instruction:
+            type: object
+            description: Informations sur l'instruction de la demande
+            properties:
+              service_instructeur:
+                type: string
+                description: Code du service instructeur
+                example: "DD59"
+              date_commission:
+                type: string
+                format: date-time
+                description: Date de commission
+                example: "2019-06-15T00:00:00.000Z"
+                nullable: true
+              statut_demande:
+                type: string
+                description: Statut de la demande
+                enum: ["Accordé", "En instruction", "Refusé", "En attente"]
+                example: "Accordé"
+              montant_accorde:
+                type: number
+                description: Montant accordé
+                example: 1800
+      paiements:
+        type: array
+        description: Liste des paiements effectués
+        items:
+          type: object
+          description: Informations sur un paiement effectué
+          properties:
+            fournisseur:
+              type: string
+              description: Système fournisseur des données de paiement
+              example: "Chorus"
+            date_mise_a_jour_information:
+              type: string
+              format: date-time
+              description: Date de dernière mise à jour des informations de paiement
+              example: "2021-03-15T00:00:00.000Z"
+            montant_verse:
+              type: number
+              description: Montant versé
+              example: 1250
+            date_versement:
+              type: string
+              format: date-time
+              description: Date de versement
+              example: "2021-03-15T00:00:00.000Z"
+            centre_financier:
+              type: string
+              description: Nom du centre financier
+              example: "UO Region BFC-FC"
+            domaine_fonctionnel:
+              type: string
+              description: Domaine fonctionnel
+              example: "sport handicap"
+            activitee:
+              type: string
+              description: Type d'activité
+              example: "handisport"
+            programme:
+              type: object
+              description: Informations sur le programme budgétaire
+              properties:
+                numero_programme:
+                  type: string
+                  description: Numéro de programme
+                  example: "219"
+                libelle_programme:
+                  type: string
+                  description: Nom du programme
+                  example: "Sport"
+                numero_bop:
+                  type: string
+                  description: Numéro BOP
+                  example: "219"

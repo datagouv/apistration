@@ -138,6 +138,12 @@
   source:
     parameter: 'id'
 
+- code: '00330'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siren ou le numéro de siret ou le numéro d'association indiqué n'est pas correctement formatté"
+  source:
+    parameter: 'id'
+
 - code: '00333'
   title: 'Entité non traitable'
   detail: "Le numéro de siren ou le numéro d'association indiqué n'est pas correctement formatté"

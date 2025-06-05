@@ -19,7 +19,7 @@ class GenerateCodeSampleFromPath
   def interpolated_path
     path.gsub(/\{[^}]+\}/) do |parameter|
       case parameter[1..-2]
-      when 'siret', 'siret_or_rna', 'siret_or_eori'
+      when 'siret', 'siret_or_rna', 'siret_or_eori', 'siren_or_siret_or_rna'
         example_siret
       when 'siren', 'siren_or_rna'
         example_siret.first(9)

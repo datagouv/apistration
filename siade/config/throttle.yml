@@ -48,6 +48,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/european_commission/vies', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/data_subvention/subventions', action: 'show' }
     limit: 250
     period: 60
   json_resources_particulier:
