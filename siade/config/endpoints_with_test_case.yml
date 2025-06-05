@@ -160,6 +160,10 @@
   api: 'entreprise'
   path: '/v4/djepva/api-association/associations/open_data/775719792'
 
+- name: "Datasubvention subventions"
+  api: 'entreprise'
+  path: '/v3/data_subvention/subventions/789510732'
+
 - name: "GIP-MDS effectifs annuel unité légale"
   api: 'entreprise'
   path: '/v3/gip_mds/unites_legales/552032534/effectifs_annuels/2020'
