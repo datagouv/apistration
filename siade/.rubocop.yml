@@ -132,6 +132,9 @@ Naming/MethodParameterName:
     - "nb"
     - "id"
 
+Naming/PredicateMethod:
+  Enabled: false
+
 Rails/HasManyOrHasOneDependent:
   Enabled: false
 
