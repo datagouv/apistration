@@ -60,15 +60,13 @@ module ResourceHelpers
   end
 
   def invalid_json?
-    json_body
-
-    false
-  rescue JSON::ParserError
-    true
+    !valid_json?
   end
 
   def valid_json?
-    !invalid_json?
+    json_body.present?
+  rescue JSON::ParserError
+    false
   end
 
   def xml_body_as_hash

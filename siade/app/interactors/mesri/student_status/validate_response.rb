@@ -2,7 +2,7 @@ class MESRI::StudentStatus::ValidateResponse < ValidateResponse
   def call
     resource_not_found! if http_not_found?
 
-    return if http_ok? && !invalid_json? && data_present?
+    return if http_ok? && valid_json? && data_present?
 
     unknown_provider_response!
   end

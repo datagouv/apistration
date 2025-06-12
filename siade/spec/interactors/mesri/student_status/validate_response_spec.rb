@@ -34,6 +34,14 @@ RSpec.describe MESRI::StudentStatus::ValidateResponse, type: :validate_response 
 
         its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
       end
+
+      context "with a 'null' body" do
+        let(:body) { 'null' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
     end
 
     context 'with a 404 code' do
