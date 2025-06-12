@@ -3,8 +3,8 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
     unknown_provider_response! unless http_ok?
 
     unknown_provider_response! if invalid_json?
-    provider_rate_limiting_error! if ip_banned?
-    provider_unavailable! if country_provider_error == 'MS_UNAVAILABLE'
+    provider_rate_limiting_error! if vies_rate_limiting_error?
+    provider_unavailable! if ms_unavailable?
     unknown_provider_response! if user_error_invalid? || valid_tva_number_boolean.nil?
 
     handle_valid_json
@@ -28,12 +28,24 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
     fail_with_error!(build_error(ProviderRateLimitingError))
   end
 
+  def vies_rate_limiting_error?
+    ip_banned? || max_concurrent_request?
+  end
+
   def ip_banned?
     json_body['userError'] == 'IP_BLOCKED'
   end
 
+  def max_concurrent_request?
+    json_body['userError'] == 'MS_MAX_CONCURRENT_REQ'
+  end
+
   def user_error_invalid?
     %w[INVALID VALID].exclude?(json_body['userError'])
+  end
+
+  def ms_unavailable?
+    country_provider_error == 'MS_UNAVAILABLE'
   end
 
   def country_provider_error

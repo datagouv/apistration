@@ -28,7 +28,7 @@ RSpec.describe EuropeanCommission::VIES::ValidateResponse, type: :validate_respo
       it { is_expected.to be_a_failure }
 
       its(:cacheable) { is_expected.to be(false) }
-      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderRateLimitingError)) }
     end
 
     context 'when body is an ip banned error' do
