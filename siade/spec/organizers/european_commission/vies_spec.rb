@@ -12,7 +12,7 @@ RSpec.describe EuropeanCommission::VIES, type: :retriever_organizer do
 
   describe '.call' do
     let!(:stubbed_request) do
-      stub_request(:get, "https://european_commission_vies_url.gouv.fr/#{tva_number[2..]}").to_return(
+      stub_request(:get, "#{Siade.credentials[:european_commission_vies_url]}/#{tva_number[2..]}").to_return(
         status: 200,
         body:
       )

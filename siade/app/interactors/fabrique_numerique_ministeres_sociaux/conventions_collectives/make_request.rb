@@ -2,7 +2,7 @@ class FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest < 
   protected
 
   def request_uri
-    URI("https://fabrique_numerique_conventions_collectives_url.gouv.fr/#{siret}")
+    URI("#{Siade.credentials[:fabrique_numerique_conventions_collectives_url]}/#{siret}")
   end
 
   def request_params

@@ -2,7 +2,7 @@ require_relative '../provider_stubs'
 
 module ProviderStubs::MSACotisations
   def mock_msa_cotisations(siret, status, allow_another_status: false)
-    stub_request(:get, "https://msa_conformites_cotisations_url.gouv.fr/#{siret}").and_return(
+    stub_request(:get, "#{Siade.credentials[:msa_conformites_cotisations_url]}/#{siret}").and_return(
       status: 200,
       body: msa_cotisations_payload(siret, status, allow_another_status:).to_json
     )

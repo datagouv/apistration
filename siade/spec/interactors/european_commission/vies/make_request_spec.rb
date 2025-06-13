@@ -6,7 +6,7 @@ RSpec.describe EuropeanCommission::VIES::MakeRequest, type: :make_request do
     let(:tva_number_without_fr) { danone_tva_number[2..] }
 
     let!(:stubbed_request) do
-      stub_request(:get, "https://european_commission_vies_url.gouv.fr/#{tva_number_without_fr}")
+      stub_request(:get, "#{Siade.credentials[:european_commission_vies_url]}/#{tva_number_without_fr}")
     end
 
     it { is_expected.to be_a_success }

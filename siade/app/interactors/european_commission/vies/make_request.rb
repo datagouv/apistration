@@ -38,7 +38,7 @@ class EuropeanCommission::VIES::MakeRequest < MakeRequest::Get
   private
 
   def european_commission_url
-    "https://european_commission_vies_url.gouv.fr/#{tva_number_without_fr}"
+    "#{Siade.credentials[:european_commission_vies_url]}/#{tva_number_without_fr}"
   end
 
   def tva_number_without_fr

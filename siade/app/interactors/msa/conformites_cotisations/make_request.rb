@@ -2,7 +2,7 @@ class MSA::ConformitesCotisations::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI("https://msa_conformites_cotisations_url.gouv.fr/#{siret}")
+    URI("#{Siade.credentials[:msa_conformites_cotisations_url]}/#{siret}")
   end
 
   def request_params
