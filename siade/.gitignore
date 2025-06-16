@@ -15,19 +15,12 @@
 /log/*.log*
 /tmp
 /coverage
-tests.sh
-start_server.sh
-models.png
-generate_models.sh
-rails_best_practices_output.html
 .byebug_history
 .tags
 .tags_sorted_by_file
 
 .token
 .token.*
-
-TODO
 
 # Database dumps
 *.dump
@@ -63,18 +56,6 @@ TODO
 ## File-based project format:
 *.ipr
 *.iws
-test.sh
-secret_token.rb
-api_secrets.yml
-url_secrets.yml
-vcr_credentials.yml
-DUMP_MSA
-
-doc/*.svg
-
-config/api_secrets.yml.bak
-config/fog_credentials.yml
-config/ssl_vars.yml
 vendor/bundle
 builds/
 
@@ -88,19 +69,10 @@ builds/
 !/config/credentials/development.key
 !/config/credentials/test.key
 
-swagger/v3/openapi-entreprise.yaml
-swagger/versionned/openapi-entreprise.yaml
-swagger/versionned/openapi-particulier.yaml
 config/credentials/staging.yml.enc
 
-sandbox/
-.deploy_token
-.sentry_token
-
-# Possible commit mistakes
-
-nodes_modules/
-package-lock.json
-package.json
-
 **/.claude/settings.local.json
+
+# Used by bin/test_swagger.sh
+swagger/versionned/openapi-entreprise.yaml
+swagger/versionned/openapi-particulier.yaml
