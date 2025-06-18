@@ -18,12 +18,6 @@ class DGFIP::ADELIE::MakeRequest < MakeRequest::Get
     super
   end
 
-  def http_options
-    super.merge(
-      verify_mode: OpenSSL::SSL::VERIFY_NONE
-    )
-  end
-
   def request_id
     @request_id ||= context.params.fetch(:request_id)
   end
