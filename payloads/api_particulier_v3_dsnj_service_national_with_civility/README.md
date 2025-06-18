@@ -16,7 +16,7 @@
       "JEAN",
       "MICHEL"
     ],
-    "anneeDateNaissance": 1990,
+    "anneeDateNaissance": 2006,
     "moisDateNaissance": 1,
     "jourDateNaissance": 15,
     "sexeEtatCivil": "M",
@@ -37,8 +37,10 @@
       "statut_service_national": "en_regle",
       "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -50,7 +52,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=78516753564212' -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JEAN' -d 'prenoms[][]=MICHEL' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
+    -G -d 'recipient=13002526500013' -d 'recipient=78516753564212' -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JEAN' -d 'prenoms[][]=MICHEL' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -94,8 +96,10 @@
       "statut_service_national": "indetermine",
       "commentaires": "Situation en cours de traitement"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -150,8 +154,10 @@
       "statut_service_national": "non_concerne",
       "commentaires": "Personne née avant 1978, non concernée par les obligations de service national"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -206,8 +212,10 @@
       "statut_service_national": "pas_en_regle",
       "commentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

@@ -87,8 +87,10 @@
         }
       ]
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -138,7 +140,8 @@
         "source": {
           "parameter": "token"
         },
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -240,7 +243,8 @@
         "title": "Entité non traitable",
         "detail": "Un ou plusieurs paramètres ne sont pas correctement formatés",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -290,7 +294,8 @@
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
