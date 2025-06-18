@@ -34,6 +34,11 @@ data_subvention:
             description: Numéro EJ
             example: "19/0003456"
             nullable: true
+          jointure_demandes_et_versements: 
+            type: string
+            description: "Donnée permettant de faire le lien entre une demande et un paiement"
+            nullable: true
+            example: "19/0003456"
           subvention_demandee:
             type: object
             description: Informations sur la subvention demandée
@@ -146,6 +151,11 @@ data_subvention:
               format: date-time
               description: Date de dernière mise à jour des informations de paiement
               example: "2021-03-15T00:00:00.000Z"
+            jointure_demandes_et_versements: 
+              type: string
+              nullable: true
+              description: "Donnée permettant de faire le lien entre une demande et un paiement"
+              example: "19/0003456"
             montant_verse:
               type: number
               description: Montant versé

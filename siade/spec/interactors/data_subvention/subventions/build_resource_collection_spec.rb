@@ -54,7 +54,8 @@ RSpec.describe DataSubvention::Subventions::BuildResourceCollection, type: :buil
             date_commission: '2019-06-15T00:00:00.000Z',
             statut_demande: 'Accordé',
             montant_accorde: 1800
-          }
+          },
+          jointure_demandes_et_versements: '19/0003456'
         },
         paiements: []
       },
@@ -78,7 +79,8 @@ RSpec.describe DataSubvention::Subventions::BuildResourceCollection, type: :buil
             date_commission: '2020-09-14T00:00:00.000Z',
             statut_demande: 'Accordé',
             montant_accorde: 2800
-          }
+          },
+          jointure_demandes_et_versements: '20/0008765'
         },
         paiements: []
       },
@@ -88,6 +90,7 @@ RSpec.describe DataSubvention::Subventions::BuildResourceCollection, type: :buil
           {
             fournisseur: 'Chorus',
             date_mise_a_jour_information: '2021-03-15T00:00:00.000Z',
+            jointure_demandes_et_versements: '2103847562',
             montant_verse: 1250,
             date_versement: '2021-03-15T00:00:00.000Z',
             centre_financier: 'UO Region BFC-FC',
@@ -121,7 +124,8 @@ RSpec.describe DataSubvention::Subventions::BuildResourceCollection, type: :buil
             date_commission: nil,
             statut_demande: 'En instruction',
             montant_accorde: 0
-          }
+          },
+          jointure_demandes_et_versements: nil
         },
         paiements: []
       },
@@ -160,7 +164,8 @@ RSpec.describe DataSubvention::Subventions::BuildResourceCollection, type: :buil
             date_commission: '2023-04-20T00:00:00.000Z',
             statut_demande: 'Accordé',
             montant_accorde: 9500
-          }
+          },
+          jointure_demandes_et_versements: '23/0015789'
         },
         paiements: []
       }

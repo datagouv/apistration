@@ -34,7 +34,8 @@ class DataSubvention::Subventions::BuildResourceCollection < BuildResourceCollec
       identifiant_engagement_juridique: extract_value(application, 'ej'),
       subvention_demandee: build_subvention_demandee(application),
       description_des_projets: build_description_projets(application),
-      instruction: build_instruction(application)
+      instruction: build_instruction(application),
+      jointure_demandes_et_versements: extract_value(application, 'versementKey')
     }
   end
 
@@ -97,6 +98,7 @@ class DataSubvention::Subventions::BuildResourceCollection < BuildResourceCollec
     result = {
       fournisseur: fournisseur,
       date_mise_a_jour_information: date_mise_a_jour,
+      jointure_demandes_et_versements: extract_value(paiement, 'versementKey'),
       montant_verse: extract_value(paiement, 'amount'),
       date_versement: extract_value(paiement, 'dateOperation'),
       centre_financier: extract_value(paiement, 'centreFinancier'),
