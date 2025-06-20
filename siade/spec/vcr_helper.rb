@@ -67,6 +67,15 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_QUALIBAT>') { Siade.credentials[:qualibat_url].to_s }
   c.filter_sensitive_data('<URL_MI>') { Siade.credentials[:mi_domain].to_s }
 
+  c.filter_sensitive_data('<CNOUS_AUTHENTICATE_URL>') { Siade.credentials[:cnous_authenticate_url].to_s }
+  c.filter_sensitive_data('<RNM_DOMAIN>') { Siade.credentials[:rnm_domain].to_s }
+  c.filter_sensitive_data('<ADEME_RGE_URL>') { Siade.credentials[:ademe_rge_url].to_s }
+  c.filter_sensitive_data('<CNETP_DOMAIN>') { Siade.credentials[:cnetp_domain].to_s }
+  c.filter_sensitive_data('<FNTP_DOMAIN>') { Siade.credentials[:fntp_domain].to_s }
+  c.filter_sensitive_data('<INFOGREFFE_URL_EXTRAIT_RCS>') { Siade.credentials[:infogreffe_url_extrait_rcs].to_s }
+  c.filter_sensitive_data('<PROBTP_DOMAIN>') { Siade.credentials[:probtp_domain].to_s }
+  c.filter_sensitive_data('<OPQIBI_DOMAIN>') { Siade.credentials[:opqibi_domain].to_s }
+
   c.filter_sensitive_data('<CNOUS_CREDENTIALS>') { Siade.credentials[:cnous_authenticate_credentials].to_s }
   c.filter_sensitive_data('<MEN_SCOLARITES_URL>') { Siade.credentials[:men_scolarites_url_v1].to_s }
   c.filter_sensitive_data('<MEN_SCOLARITES_URL_V2>') { Siade.credentials[:men_scolarites_url_v2].to_s }
