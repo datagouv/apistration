@@ -101,7 +101,7 @@ def non_existent_siret
 end
 
 def non_diffusable_siret
-  '00590011300027'
+  '78951073200017'
 end
 
 def old_non_diffusable_siret
@@ -110,7 +110,7 @@ end
 
 def confidential_siret(sample_type)
   samples = {
-    non_diffusable_ceased: '38829323500015',
+    non_diffusable_ceased: '78951073200025',
     gendarmerie_limousin: '15700033200013'
   }
 
