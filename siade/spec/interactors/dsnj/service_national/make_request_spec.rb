@@ -21,8 +21,7 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
   let(:headers) do
     {
       'Authorization' => "Bearer #{Siade.credentials[:dsnj_service_national_token]}",
-      'Content-Type' => 'application/json; charset=utf-8',
-      'User-Agent' => ''
+      'Content-Type' => 'application/json; charset=utf-8'
     }
   end
 
