@@ -13,47 +13,53 @@ data_subvention:
     attributes:
       demande_subvention:
         type: object
-        description: Informations complètes sur une demande de subvention
+        title: Liste des demandes de subventions de l'association et leur informations.
         nullable: true
         properties:
           fournisseur:
             type: string
-            description: Système fournisseur des données (OSIRIS, Chorus, etc.)
+            title: Fournisseur distribuant la donnée à Data Subvention
+            description: Origine de la donnée transmise (OSIRIS, Chorus, etc.)
             example: "OSIRIS"
           date_mise_a_jour_information:
             type: string
+            title: Date de dernière mise à jour
             format: date-time
-            description: Date de dernière mise à jour des informations
+            description: Date de dernière mise à jour des informations. La fréquence d'actualisation des données varie selon le fournisseur, elle est décrite dans la fiche métier de l'API.
             example: "2019-01-01T00:00:00.000Z"
           annee_exercice_demande:
             type: number
-            description: Valeur de l'année
+            title: Année de la demande de subvention
+            description: Année durant laquelle la subvention a été demandée par l'association.
             example: 2019
           identifiant_engagement_juridique:
             type: string
-            description: Numéro EJ
+            title: Numéro EJ
+            description: Numéro d'engagement juridique (EJ) associé à la demande. Cet identifiant est présent pour toutes les demandes de subventions, sauf celles issues du FONJEP.
             example: "19/0003456"
             nullable: true
           jointure_demandes_et_versements: 
             type: string
-            description: "Donnée permettant de faire le lien entre une demande et un paiement"
+            title: Identifiant de jointure entre demande et versement
+            description: "Identifiant créé par DataSubvention pour faire le lien entre une demande figurant dans cette liste et un paiement figurant dans la liste suivante. Pour toutes les demandes de subventions, sauf celle issues du FONJEP, cet identifiant est identique au numéro EJ. Pour les demandes issues du FONJEP, ce numéro correspond au code poste."
             nullable: true
             example: "19/0003456"
           subvention_demandee:
             type: object
-            description: Informations sur la subvention demandée
+            title: Informations sur la subvention demandée
             properties:
               dispositif:
                 type: string
-                description: Nom du dispositif
+                title: Nom du dispositif
                 example: "ANS - Projets Sportifs Territoriaux"
               sous_dispositif:
                 type: string
-                description: Nom du sous-dispositif
+                title: Nom du sous-dispositif
                 example: "Aides territoriales (hors emploi)"
               montant_demande:
                 type: number
-                description: Montant en euros
+                title: Montant de subvention demandé
+                description: Montant en euros de subvention demandé par l'association.
                 example: 2000
           description_des_projets:
             type: object
