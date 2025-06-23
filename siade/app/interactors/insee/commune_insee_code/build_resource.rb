@@ -14,9 +14,9 @@ class INSEE::CommuneINSEECode::BuildResource < BuildResource
   private
 
   def code_insee
-    if communes.count == 1
+    if communes.one?
       communes.first['code']
-    elsif communes.count > 1
+    elsif communes.many?
       find_commune_with_departement_code!
     else
       resource_not_found!

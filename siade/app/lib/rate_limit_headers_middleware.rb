@@ -28,7 +28,7 @@ class RateLimitHeadersMiddleware
   private
 
   def extract_throttle_data(throttle_raw_data)
-    if throttle_raw_data.count > 1
+    if throttle_raw_data.many?
       log_multiple_throttle(throttle_raw_data)
       nil
     else

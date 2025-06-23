@@ -10,7 +10,7 @@ class INSEE::Metadonnees::ValidateResponse < ValidateResponse
   private
 
   def valid_json?
-    json_body.count.positive? &&
+    json_body.any? &&
       json_body[0]['code'].present?
   end
 end

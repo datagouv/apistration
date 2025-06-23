@@ -17,7 +17,7 @@ class INSEE::SiegeUniteLegale::ValidateResponse < ValidateResponse
   private
 
   def more_than_one_siege?
-    json_body['etablissements'].count > 1
+    json_body['etablissements'].many?
   end
 
   def not_found_message(_resource)

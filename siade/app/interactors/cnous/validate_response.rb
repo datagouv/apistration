@@ -27,7 +27,7 @@ class CNOUS::ValidateResponse < ValidateResponse
   end
 
   def conflict?
-    !invalid_json? && Array.wrap(json_body).count > 1
+    !invalid_json? && Array.wrap(json_body).many?
   end
 
   def conflict!

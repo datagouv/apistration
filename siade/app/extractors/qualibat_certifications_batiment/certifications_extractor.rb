@@ -33,7 +33,7 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
   def extract_certification_information(certifications, code, page, chunks, chunks_offset)
     certification = find_certification_data_from_nomenclature(code)
 
-    chunks[chunks_offset..chunks_offset + 4].each do |chunk_date|
+    chunks[chunks_offset..(chunks_offset + 4)].each do |chunk_date|
       date = extract_certification_date(chunk_date)
 
       next unless date
