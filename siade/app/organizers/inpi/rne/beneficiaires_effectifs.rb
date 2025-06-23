@@ -1,7 +1,7 @@
 class INPI::RNE::BeneficiairesEffectifs < RetrieverOrganizer
   organize ValidateSiren,
     INPI::RNE::Authenticate,
-    INPI::RNE::BeneficiairesEffectifs::MakeRequest,
+    INPI::RNE::Company::MakeRequest,
     INPI::RNE::BeneficiairesEffectifs::ValidateResponse,
     INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection
 
