@@ -26,9 +26,9 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
       nomNaissance: context.params[:nom_naissance],
       nomUsage: context.params[:nom_usage],
       prenoms: context.params[:prenoms],
-      anneeDateNaissance: int_or_nil(date_naissance.split('-').first.to_i),
-      moisDateNaissance: int_or_nil(date_naissance.split('-').second.to_i),
-      jourDateNaissance: int_or_nil(date_naissance.split('-').last.to_i),
+      anneeDateNaissance: context.params[:annee_date_naissance]&.to_i,
+      moisDateNaissance: context.params[:mois_date_naissance]&.to_i,
+      jourDateNaissance: context.params[:jour_date_naissance]&.to_i,
       sexeEtatCivil: context.params[:sexe_etat_civil],
       codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
       codeCogInseeCommuneNaissance: code_cog_insee_commune_de_naissance
