@@ -1,50 +1,5 @@
 Titre,Description,Paramètres,Status,Réponse
-,Personne en règle avec ses obligations via FranceConnect,"{""recipient"":""78516753564212""}",200,"{
-  ""data"": {
-    ""statut_service_national"": ""en_regle"",
-    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2008""
-  },
-  ""links"": {},
-  ""meta"": {}
-}"
-,Statut indéterminé via FranceConnect,"{""recipient"":""03038047150369""}",200,"{
-  ""data"": {
-    ""statut_service_national"": ""indetermine"",
-    ""commentaires"": ""Situation en cours de traitement""
-  },
-  ""links"": {},
-  ""meta"": {}
-}"
-,Personne non concernée par les obligations via FranceConnect,"{""recipient"":""08607458113085""}",200,"{
-  ""data"": {
-    ""statut_service_national"": ""non_concerne"",
-    ""commentaires"": ""Personne née avant 1978, non concernée par les obligations de service national""
-  },
-  ""links"": {},
-  ""meta"": {}
-}"
-,Personne pas en règle avec ses obligations via FranceConnect,"{""recipient"":""02645955891635""}",200,"{
-  ""data"": {
-    ""statut_service_national"": ""pas_en_regle"",
-    ""commentaires"": ""Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023""
-  },
-  ""links"": {},
-  ""meta"": {}
-}"
-,Accès refusé - problème d'autorisation via FranceConnect,"{""recipient"":""86074581130863""}",403,"{
-  ""errors"": [
-    {
-      ""code"": ""39001"",
-      ""title"": ""Accès refusé"",
-      ""detail"": ""Le SIRET n'est pas autorisé à accéder à l'API"",
-      ""source"": null,
-      ""meta"": {
-        ""provider"": ""DSNJ""
-      }
-    }
-  ]
-}"
-,Personne non trouvée via FranceConnect,"{""recipient"":""30380471503680""}",404,"{
+,Personne non trouvée via FranceConnect,"{""nomNaissance"":""NOEL""}",404,"{
   ""errors"": [
     {
       ""code"": ""39003"",
@@ -56,4 +11,20 @@ Titre,Description,Paramètres,Status,Réponse
       }
     }
   ]
+}"
+,FranceConnect: Boursier échelon 5 (scope complet),"{""nomNaissance"":""Delatour"",""prenoms[]"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
+  ""data"": {
+    ""statut_service_national"": ""en_regle"",
+    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2008""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Personne en règle avec ses obligations via FranceConnect,"{""nomNaissance"":""DUBOIS"",""prenoms[]"":[""Angela"",""Claire"",""Louise""],""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75007""}",200,"{
+  ""data"": {
+    ""statut_service_national"": ""en_regle"",
+    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2008""
+  },
+  ""links"": {},
+  ""meta"": {}
 }"

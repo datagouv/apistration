@@ -1,7 +1,6 @@
 ---
 description: 'Personne non concernée par les obligations'
 params:
-  recipient: "08607458113085"
   nomNaissance: 'RICHARD'
   prenoms[]:
   - 'SOPHIE'

@@ -10,7 +10,6 @@
 
   ```json
   {
-    "recipient": "78516753564212",
     "nomNaissance": "MARTIN",
     "prenoms[]": [
       "JEAN",
@@ -52,7 +51,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=78516753564212' -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JEAN' -d 'prenoms[][]=MICHEL' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JEAN' -d 'prenoms[][]=MICHEL' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -69,7 +68,6 @@
 
   ```json
   {
-    "recipient": "03038047150369",
     "nomNaissance": "PETIT",
     "prenoms[]": [
       "MARIE",
@@ -111,7 +109,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=03038047150369' -d 'nomNaissance=PETIT' -d 'prenoms[][]=MARIE' -d 'prenoms[][]=CLARA' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=11' -d 'jourDateNaissance=8' -d 'sexeEtatCivil=F' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=13055' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=PETIT' -d 'prenoms[][]=MARIE' -d 'prenoms[][]=CLARA' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=11' -d 'jourDateNaissance=8' -d 'sexeEtatCivil=F' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=13055' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -128,7 +126,6 @@
 
   ```json
   {
-    "recipient": "08607458113085",
     "nomNaissance": "RICHARD",
     "prenoms[]": [
       "SOPHIE"
@@ -169,7 +166,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=08607458113085' -d 'nomNaissance=RICHARD' -d 'prenoms[][]=SOPHIE' -d 'anneeDateNaissance=1971' -d 'moisDateNaissance=3' -d 'jourDateNaissance=29' -d 'sexeEtatCivil=F' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=33063' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=RICHARD' -d 'prenoms[][]=SOPHIE' -d 'anneeDateNaissance=1971' -d 'moisDateNaissance=3' -d 'jourDateNaissance=29' -d 'sexeEtatCivil=F' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=33063' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -186,7 +183,6 @@
 
   ```json
   {
-    "recipient": "02645955891635",
     "nomNaissance": "DUBOIS",
     "prenoms[]": [
       "THOMAS"
@@ -227,7 +223,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=02645955891635' -d 'nomNaissance=DUBOIS' -d 'prenoms[][]=THOMAS' -d 'anneeDateNaissance=1995' -d 'moisDateNaissance=6' -d 'jourDateNaissance=22' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=69123' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUBOIS' -d 'prenoms[][]=THOMAS' -d 'anneeDateNaissance=1995' -d 'moisDateNaissance=6' -d 'jourDateNaissance=22' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=69123' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -244,7 +240,6 @@
 
   ```json
   {
-    "recipient": "26459558916365",
     "nomNaissance": "LEROY",
     "prenoms[]": [
       "ANTOINE"
@@ -288,7 +283,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=26459558916365' -d 'nomNaissance=LEROY' -d 'prenoms[][]=ANTOINE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=4' -d 'jourDateNaissance=5' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=69123' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEROY' -d 'prenoms[][]=ANTOINE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=4' -d 'jourDateNaissance=5' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=69123' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -305,7 +300,6 @@
 
   ```json
   {
-    "recipient": "78516753564212",
     "nomNaissance": "INCONNU",
     "prenoms[]": [
       "PERSONNAGE"
@@ -349,7 +343,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=78516753564212' -d 'nomNaissance=INCONNU' -d 'prenoms[][]=PERSONNAGE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=INCONNU' -d 'prenoms[][]=PERSONNAGE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -366,7 +360,6 @@
 
   ```json
   {
-    "recipient": "86074581130863",
     "nomNaissance": "DUPONT",
     "prenoms[]": [
       "PIERRE"
@@ -410,7 +403,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=86074581130863' -d 'nomNaissance=DUPONT' -d 'prenoms[][]=PIERRE' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=7' -d 'jourDateNaissance=14' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=35238' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[][]=PIERRE' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=7' -d 'jourDateNaissance=14' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=35238' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -427,7 +420,6 @@
 
   ```json
   {
-    "recipient": "78516753564212",
     "nomNaissance": "DURAND",
     "prenoms[]": [
       "PAUL"
@@ -471,7 +463,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=78516753564212' -d 'nomNaissance=DURAND' -d 'prenoms[][]=PAUL' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=8' -d 'jourDateNaissance=10' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DURAND' -d 'prenoms[][]=PAUL' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=8' -d 'jourDateNaissance=10' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=75056' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 
@@ -488,7 +480,6 @@
 
   ```json
   {
-    "recipient": "26459558916365",
     "nomNaissance": "BERNARD",
     "prenoms[]": [
       "JULIEN"
@@ -532,7 +523,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'recipient=26459558916365' -d 'nomNaissance=BERNARD' -d 'prenoms[][]=JULIEN' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=5' -d 'jourDateNaissance=20' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=92012' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BERNARD' -d 'prenoms[][]=JULIEN' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=5' -d 'jourDateNaissance=20' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=92012' \
     --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
   ```
 

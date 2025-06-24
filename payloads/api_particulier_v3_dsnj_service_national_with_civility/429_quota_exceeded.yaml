@@ -1,7 +1,6 @@
 ---
 description: 'Trop de requêtes - quota dépassé'
 params:
-  recipient: '86074581130863'
   nomNaissance: 'DUPONT'
   prenoms[]:
   - 'PIERRE'

@@ -1,7 +1,6 @@
 ---
 description: 'Statut indéterminé'
 params:
-  recipient: "03038047150369"
   nomNaissance: 'PETIT'
   prenoms[]:
   - 'MARIE'

@@ -1,7 +1,17 @@
 ---
 description: 'Personne en règle avec ses obligations via FranceConnect'
 params:
-  recipient: '78516753564212'
+  nomNaissance: "DUBOIS"
+  prenoms[]:
+  - 'Angela'
+  - 'Claire'
+  - 'Louise'
+  anneeDateNaissance: 1962
+  moisDateNaissance: 8
+  jourDateNaissance: 24
+  sexeEtatCivil: "F"
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: "75007"
 status: 200
 payload: |-
   {
