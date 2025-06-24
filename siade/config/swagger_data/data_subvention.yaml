@@ -204,11 +204,12 @@ data_subvention:
               example: "handisport"
             numero_bop:
               title: Numéro BOP
+              description: Numéro du budget opérationnel de programme (BOP) qui détermine la catégorie du poste de dépense de l'État.
               type: string
               example: "219"
             programme:
-              title: Informations sur le programme budgétaire
-              description: Informations sur le programme budgétaire auquel est rattaché le versement. Ces informations ne proviennent pas de Chorus.
+              title: Programme budgétaire
+              description: Libellé et numéro du programme budgétaire auquel est rattaché le versement. Ces informations sont tirées du fournisseur Data Bretagne à partir du numéro BOP du versement.
               type: object
               properties:
                 numero:
@@ -221,12 +222,12 @@ data_subvention:
                   example: "Sport"
                 fournisseur:
                   title: Fournisseur distribuant la donnée à Data Subvention
-                  description: Origine de la donnée transmise (OSIRIS, Chorus, etc.)
+                  description: Origine de la donnée transmise, il s'agit toujours de Data Bretagne.
                   type: string
                   example: "OSIRIS"
                 date_mise_a_jour_information:
                   title: Date de dernière mise à jour
-                  description: Date de dernière mise à jour des informations. La fréquence d'actualisation des données varie selon le fournisseur, elle est décrite dans la fiche métier de l'API.
+                  description: Date de dernière mise à jour des informations.
                   type: string
                   format: date-time
                   example: "2019-01-01T00:00:00.000Z"
