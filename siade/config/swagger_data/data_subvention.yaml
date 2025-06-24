@@ -202,20 +202,31 @@ data_subvention:
               title: Type d'activité
               type: string
               example: "handisport"
+            numero_bop:
+              title: Numéro BOP
+              type: string
+              example: "219"
             programme:
               title: Informations sur le programme budgétaire
               description: Informations sur le programme budgétaire auquel est rattaché le versement. Ces informations ne proviennent pas de Chorus.
               type: object
               properties:
-                numero_programme:
+                numero:
                   title: Numéro de programme
                   type: string
                   example: "219"
-                libelle_programme:
+                libelle:
                   title: Nom du programme
                   type: string
                   example: "Sport"
-                numero_bop:
-                  title: Numéro BOP
+                fournisseur:
+                  title: Fournisseur distribuant la donnée à Data Subvention
+                  description: Origine de la donnée transmise (OSIRIS, Chorus, etc.)
                   type: string
-                  example: "219"
+                  example: "OSIRIS"
+                date_mise_a_jour_information:
+                  title: Date de dernière mise à jour
+                  description: Date de dernière mise à jour des informations. La fréquence d'actualisation des données varie selon le fournisseur, elle est décrite dans la fiche métier de l'API.
+                  type: string
+                  format: date-time
+                  example: "2019-01-01T00:00:00.000Z"

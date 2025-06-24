@@ -103,7 +103,8 @@ class DataSubvention::Subventions::BuildResourceCollection < BuildResourceCollec
       date_versement: extract_value(paiement, 'dateOperation'),
       centre_financier: extract_value(paiement, 'centreFinancier'),
       domaine_fonctionnel: extract_value(paiement, 'domaineFonctionnel'),
-      activitee: extract_value(paiement, 'activitee')
+      activitee: extract_value(paiement, 'activitee'),
+      numero_bop: extract_value(paiement, 'bop')
     }
 
     result[:programme] = build_programme(paiement) if paiement['programme'] || paiement['libelleProgramme'] || paiement['bop']
@@ -115,7 +116,8 @@ class DataSubvention::Subventions::BuildResourceCollection < BuildResourceCollec
     {
       numero: extract_value(paiement, 'programme'),
       libelle: extract_value(paiement, 'libelleProgramme'),
-      numero_bop: extract_value(paiement, 'bop')
+      fournisseur: safe_extract(paiement, 'programme', 'provider'),
+      date_mise_a_jour_information: safe_extract(paiement, 'programme', 'last_update')
     }
   end
 

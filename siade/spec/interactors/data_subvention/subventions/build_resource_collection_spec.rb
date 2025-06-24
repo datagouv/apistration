@@ -96,10 +96,12 @@ RSpec.describe DataSubvention::Subventions::BuildResourceCollection, type: :buil
             centre_financier: 'UO Region BFC-FC',
             domaine_fonctionnel: 'sport handicap',
             activitee: 'handisport',
+            numero_bop: '219',
             programme: {
               numero: '219',
               libelle: 'Sport',
-              numero_bop: '219'
+              fournisseur: 'Data Bretagne',
+              date_mise_a_jour_information: '2021-03-15T00:00:00.000Z'
             }
           }
         ]
