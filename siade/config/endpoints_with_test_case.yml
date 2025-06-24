@@ -188,6 +188,10 @@
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/900225095/beneficiaires_effectifs'
 
+- name: "RNE INPI Extrait RNE"
+  api: 'entreprise'
+  path: '/v3/inpi/rne/unites_legales/900225095/extrait_rne'
+
 - name: "RNE INPI Actes Bilans"
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/open_data/542065479/actes_bilans'
