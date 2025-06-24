@@ -1,7 +1,6 @@
 ---
 description: "Accès refusé - problème d'autorisation"
 params:
-  recipient: '26459558916365'
   nomNaissance: 'LEROY'
   prenoms[]:
   - 'ANTOINE'

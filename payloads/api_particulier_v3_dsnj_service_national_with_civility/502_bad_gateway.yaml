@@ -1,7 +1,6 @@
 ---
 description: 'Erreur serveur - mauvaise passerelle'
 params:
-  recipient: '78516753564212'
   nomNaissance: 'DURAND'
   prenoms[]:
   - 'PAUL'

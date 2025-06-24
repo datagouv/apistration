@@ -64,7 +64,8 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
       "mesri_admission_inscrit",
       "mesri_admission_regime_formation",
       "mesri_admission_commune_etudes",
-      "mesri_admission_etablissement_etudes"
+      "mesri_admission_etablissement_etudes",
+      "dsnj_statut_service_national"
     ],
     "client": {
       "client_id": "client_id",

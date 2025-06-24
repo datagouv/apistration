@@ -1,7 +1,6 @@
 ---
 description: "Temps d'attente dépassé - gateway timeout"
 params:
-  recipient: '26459558916365'
   nomNaissance: 'BERNARD'
   prenoms[]:
   - 'JULIEN'

@@ -1,16 +1,15 @@
 ---
-description: 'Personne en règle avec ses obligations'
+description: 'FranceConnect: Boursier échelon 5 (scope complet)'
 params:
-  nomNaissance: 'MARTIN'
-  prenoms[]:
-  - 'JEAN'
-  - 'MICHEL'
-  anneeDateNaissance: 2006
-  moisDateNaissance: 1
-  jourDateNaissance: 15
-  sexeEtatCivil: 'M'
+  nomNaissance: "Delatour"
+  prenoms[]: 
+  - "Thomas"
+  anneeDateNaissance: 1994
+  moisDateNaissance: 4
+  jourDateNaissance: 16
+  sexeEtatCivil: "M"
   codeCogInseePaysNaissance: '99100'
-  codeCogInseeCommuneNaissance: '75056'
+  codeCogInseeCommuneNaissance: "75111"
 status: 200
 payload: |-
   {
