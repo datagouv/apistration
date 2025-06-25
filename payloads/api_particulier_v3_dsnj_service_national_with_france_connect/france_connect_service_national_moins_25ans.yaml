@@ -1,0 +1,23 @@
+---
+description: 'Personne de moins de 25 ans en règle avec ses obligations via FranceConnect'
+params:
+  nomNaissance: "CUILLERE"
+  prenoms[]:
+  - 'Paul'
+  anneeDateNaissance: 2007
+  moisDateNaissance: 01
+  jourDateNaissance: 23
+  sexeEtatCivil: "M"
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: "42218"
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "en_regle",
+      "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2025"
+    },
+    "links": {},
+    "meta": {}
+  }
+  
