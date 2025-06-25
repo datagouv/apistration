@@ -18,7 +18,7 @@ class DataSubvention::Subventions::Authenticate < AbstractGetToken
     "#{Siade.credentials[:data_subvention_url]}/auth/login"
   end
 
-  def form_data
+  def request_params
     {
       email: Siade.credentials[:data_subvention_email],
       password: Siade.credentials[:data_subvention_password]
