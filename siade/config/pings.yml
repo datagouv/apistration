@@ -399,41 +399,51 @@ shared:
       driver_params:
         routes:
           - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
+
     dgfip/attestation_fiscale:
-      kind: 'dgfip_attestation_fiscale'
+      kind: 'make_request'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Attestations fiscales'
         alerts_wait: 5
-      cache: <%= 15.minutes %>
-      driver_params: {}
+      cache: <%= 5.minutes %>
+      driver_params:
+        make_request: 'DGFIP::ADELIE::Ping::MakeRequest'
+        status_to_check: 200
+        token_interactor: 'DGFIP::ADELIE::Authenticate'
+        params:
+          request_id: '22222222-2222-2222-2222-222222222222'
+          user_id: '22222222-2222-2222-2222-222222222222'
+
     dgfip/chiffre_affaires:
-      kind: 'retriever'
+      kind: 'make_request'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Chiffre affaires'
         alerts_wait: 5
       cache: <%= 5.minutes %>
       driver_params:
-        retriever: 'DGFIP::ChiffresAffaires'
+        make_request: 'DGFIP::ADELIE::Ping::MakeRequest'
+        status_to_check: 200
+        token_interactor: 'DGFIP::ADELIE::Authenticate'
         params:
-          siret: '82152473300028'
-          user_id: '22222222-2222-2222-2222-222222222222'
           request_id: '22222222-2222-2222-2222-222222222222'
+          user_id: '22222222-2222-2222-2222-222222222222'
+
     dgfip/liasses_fiscales:
-      kind: 'retriever'
+      kind: 'make_request'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Liasses fiscales'
         alerts_wait: 5
-      cache: <%= 10.minutes %>
+      cache: <%= 5.minutes %>
       driver_params:
-        retriever: 'DGFIP::LiassesFiscales'
+        make_request: 'DGFIP::ADELIE::Ping::MakeRequest'
+        status_to_check: 200
+        token_interactor: 'DGFIP::ADELIE::Authenticate'
         params:
-          siren: '775670417'
-          year: '2022'
-          user_id: '22222222-2222-2222-2222-222222222222'
           request_id: '22222222-2222-2222-2222-222222222222'
+          user_id: '22222222-2222-2222-2222-222222222222'
 
     infogreffe/rcs:
       kind: 'retriever'
