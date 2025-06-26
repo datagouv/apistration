@@ -24,6 +24,8 @@ RSpec.describe CNAF::QuotientFamilial::MakeRequest, type: :make_request do
     stub_cnaf_quotient_familial_make_request_ssl_config
   end
 
+  it_behaves_like 'a make request with working mocking_params'
+
   it { is_expected.to be_a_success }
 
   its(:response) { is_expected.to be_a(Net::HTTPOK) }

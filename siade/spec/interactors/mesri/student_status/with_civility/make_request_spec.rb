@@ -8,6 +8,19 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
   let(:jour_date_naissance) { 1 }
   let(:sexe_etat_civil) { 'M' }
   let(:token_id) { SecureRandom.uuid }
+  let(:params) do
+    {
+      nom_naissance:,
+      prenoms:,
+      annee_date_naissance:,
+      mois_date_naissance:,
+      jour_date_naissance:,
+      sexe_etat_civil:,
+      token_id:
+    }
+  end
+
+  it_behaves_like 'a make request with working mocking_params'
 
   context 'with a birth place empty' do
     let(:params) do

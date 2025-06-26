@@ -2,6 +2,15 @@ RSpec.describe GIPMDS::Effectifs::MakeRequest, type: :make_request do
   subject { described_class.call(token:, params:) }
 
   let(:token) { GIPMDS::Authenticate.call.token }
+  let(:siren) { valid_siren }
+  let(:year) { '2020' }
+  let(:params) do
+    {
+      nature: :yearly,
+      siren:,
+      year:
+    }
+  end
 
   before do
     Timecop.freeze(Time.zone.local(2019, 1, 1, 12, 0, 0))
@@ -12,6 +21,8 @@ RSpec.describe GIPMDS::Effectifs::MakeRequest, type: :make_request do
   after do
     Timecop.return
   end
+
+  it_behaves_like 'a make request with working mocking_params'
 
   describe 'for annual data' do
     let!(:stubbed_request) do

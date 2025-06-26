@@ -26,6 +26,8 @@ RSpec.describe MESRI::StudentStatus::WithINE::MakeRequest, type: :make_request d
     )
   end
 
+  it_behaves_like 'a make request with working mocking_params'
+
   it { is_expected.to be_a_success }
 
   its(:response) { is_expected.to be_a(Net::HTTPOK) }

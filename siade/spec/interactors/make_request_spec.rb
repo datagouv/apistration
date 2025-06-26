@@ -30,6 +30,8 @@ RSpec.describe MakeRequest, type: :interactor do
   let(:operation_id) { 'operation_id' }
   let(:params) { { 'arg1' => 'value1' } }
 
+  it_behaves_like 'a make request with working mocking_params'
+
   describe 'when request succeed' do
     before do
       stub_request(:get, uri.to_s).to_return(

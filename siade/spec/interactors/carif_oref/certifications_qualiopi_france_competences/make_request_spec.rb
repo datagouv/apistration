@@ -2,15 +2,16 @@ RSpec.describe CarifOref::CertificationsQualiopiFranceCompetences::MakeRequest, 
   describe '.call' do
     subject { described_class.call(params:) }
 
+    let(:siret) { valid_siret(:carif_oref) }
     let(:params) do
       {
         siret:
       }
     end
 
-    context 'with a valid siret', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/valid_siret' } do
-      let(:siret) { valid_siret(:carif_oref) }
+    it_behaves_like 'a make request with working mocking_params'
 
+    context 'with a valid siret', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/valid_siret' } do
       it { is_expected.to be_a_success }
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }

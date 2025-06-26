@@ -1,6 +1,8 @@
 RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
+  let(:token) { 'token' }
+  let(:url) { Siade.credentials[:france_connect_sandbox_check_token_url] }
   let(:params) do
     {
       token:
@@ -18,9 +20,7 @@ RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::MakeRequest, ty
     )
   end
 
-  let(:url) { Siade.credentials[:france_connect_sandbox_check_token_url] }
-
-  let(:token) { 'token' }
+  it_behaves_like 'a make request with working mocking_params'
 
   context 'when in sandbox' do
     before do

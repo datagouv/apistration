@@ -2,6 +2,7 @@ RSpec.describe Qualifelec::Certificats::MakeRequest, type: :make_request do
   describe '.call' do
     subject(:make_call) { described_class.call(params:, token:) }
 
+    let(:siret) { valid_siret(:qualifelec) }
     let(:params) do
       {
         siret:
@@ -14,9 +15,9 @@ RSpec.describe Qualifelec::Certificats::MakeRequest, type: :make_request do
       stub_qualifelec_certificates
     end
 
-    context 'with a valid siret' do
-      let(:siret) { valid_siret(:qualifelec) }
+    it_behaves_like 'a make request with working mocking_params'
 
+    context 'with a valid siret' do
       it { is_expected.to be_a_success }
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }

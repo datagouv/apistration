@@ -1,14 +1,14 @@
 RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
+  let(:token) { 'token' }
+  let(:url) { Siade.credentials[:france_connect_v2_check_token_url] }
   let(:params) do
     {
       token:,
       api_name: 'quotient_familial'
     }
   end
-
-  let(:url) { Siade.credentials[:france_connect_v2_check_token_url] }
 
   let!(:stubbed_request) do
     stub_request(:post, url).with(
@@ -21,7 +21,7 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest, ty
     )
   end
 
-  let(:token) { 'token' }
+  it_behaves_like 'a make request with working mocking_params'
 
   context 'when in production' do
     before do

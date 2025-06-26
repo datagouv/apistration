@@ -4,6 +4,24 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
   let(:token) { 'super_valid_token' }
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
+  let(:mois) { 8 }
+  let(:params) do
+    {
+      nom_naissance: 'CHAMPION',
+      prenoms: ['JEAN-PASCAL'],
+      annee_date_naissance: 1980,
+      mois_date_naissance: 6,
+      jour_date_naissance: 12,
+      sexe_etat_civil: 'M',
+      code_cog_insee_pays_naissance: '99100',
+      code_cog_insee_commune_naissance: '17300',
+      annee: 2024,
+      mois:,
+      request_id:
+    }
+  end
+
+  it_behaves_like 'a make request with working mocking_params'
 
   describe 'with civility params' do
     let(:params) do

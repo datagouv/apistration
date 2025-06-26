@@ -23,6 +23,8 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
 
   let(:token) { 'dummy_oauth_token' }
 
+  it_behaves_like 'a make request with working mocking_params'
+
   context 'with all params' do
     let!(:stubbed_request) do
       stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).with(
