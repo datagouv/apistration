@@ -39,8 +39,16 @@ RSpec.describe DataSubvention::Subventions::ValidateResponse, type: :validate_re
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
-  context 'with an unknown error' do
+  context 'with an bad request error' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+  end
+
+  context 'with an unknown error' do
+    let(:response) { instance_double(Net::HTTPBadRequest, code: '500') }
 
     it { is_expected.to be_a_failure }
 
