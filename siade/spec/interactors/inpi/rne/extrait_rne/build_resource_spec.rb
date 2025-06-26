@@ -33,6 +33,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 code: '1000',
                 libelle: 'Entreprise individuelle'
               },
+              nature_entreprise: 'ARTISANALE',
+              associe_unique: false,
               date_immatriculation_rne: '2010-01-01',
               date_debut_activite: nil,
               date_fin_personne: nil,
@@ -44,8 +46,6 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 poursuite_activite: false,
                 avec_liquidation: nil
               },
-              nature_entreprise: 'ARTISANALE',
-              associe_unique: false,
               capital_social: {
                 montant: nil,
                 devise: 'EUR'
@@ -53,7 +53,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               activite_principales_objet_social: nil,
               code_APE: {
                 code: '3213Z',
-                libelle: 'Activité 3213Z'
+                libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
               },
               code_APRM: {
                 code: nil,
@@ -75,7 +75,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 date_debut_activite: '2010-01-15',
                 code_APE: {
                   code: '3213Z',
-                  libelle: 'Activité 3213Z'
+                  libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
                 },
                 code_APRM: {
                   code: nil,
@@ -237,6 +237,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 code: '1000',
                 libelle: 'Entreprise individuelle'
               },
+              nature_entreprise: 'INDEPENDANTE',
+              associe_unique: false,
               date_immatriculation_rne: '2024-01-01',
               date_debut_activite: nil,
               date_fin_personne: nil,
@@ -248,8 +250,6 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 poursuite_activite: false,
                 avec_liquidation: nil
               },
-              nature_entreprise: 'INDEPENDANTE',
-              associe_unique: false,
               capital_social: {
                 montant: nil,
                 devise: 'EUR'
@@ -257,7 +257,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               activite_principales_objet_social: nil,
               code_APE: {
                 code: '4520A',
-                libelle: 'Activité 4520A'
+                libelle: 'Entretien et réparation de véhicules automobiles légers'
               },
               code_APRM: {
                 code: nil,
@@ -279,7 +279,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 date_debut_activite: '2024-01-01',
                 code_APE: {
                   code: '4520A',
-                  libelle: 'Activité 4520A'
+                  libelle: 'Entretien et réparation de véhicules automobiles légers'
                 },
                 code_APRM: {
                   code: nil,

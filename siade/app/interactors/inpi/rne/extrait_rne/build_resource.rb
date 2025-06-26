@@ -265,7 +265,7 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
 
     {
       code: entreprise_data['codeAprm'],
-      libelle: nil
+      libelle: get_code_aprm_libelle(entreprise_data['codeAprm'])
     }
   end
 
@@ -518,14 +518,19 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def get_activite_libelle(code_ape)
-    case code_ape
-    when '6201Z' then 'Programmation informatique'
-    when '6202A' then 'Conseil en systèmes et logiciels informatiques'
-    when '7010Z' then 'Activités des sièges sociaux'
-    when '8559A' then 'Formation continue d\'adultes'
-    when '6630Z' then 'Gestion de fonds'
-    else "Activité #{code_ape}"
-    end
+    code_naf = Rails.application.config_for(:code_ape)[code_ape]
+
+    return "Activité #{code_ape}" if code_naf.nil?
+
+    code_naf
+  end
+
+  def get_code_aprm_libelle(code_aprm)
+    code_nafa = Rails.application.config_for(:code_aprm)[code_aprm]
+
+    return "Activité Art #{code_aprm}" if code_nafa.nil?
+
+    code_nafa
   end
 
   def get_origine_fonds(activite)
