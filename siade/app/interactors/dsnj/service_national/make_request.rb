@@ -31,7 +31,7 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
       jourDateNaissance: context.params[:jour_date_naissance]&.to_i,
       sexeEtatCivil: context.params[:sexe_etat_civil],
       codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
-      codeCogInseeCommuneNaissance: code_cog_insee_commune_de_naissance
+      codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
