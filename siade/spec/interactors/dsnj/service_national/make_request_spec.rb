@@ -14,6 +14,19 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
     }
   end
 
+  let(:code_cog_insee_pays_naissance) { '99100' }
+
+  let(:request_params) do
+    {
+      given_name: 'Jean',
+      family_name: 'DUPONT',
+      birthdate: '2000-10-01',
+      gender: 'male',
+      birthplace: '90000',
+      birthcountry: '99100'
+    }
+  end
+
   let(:body) do
     { identites_pivot: [request_params] }.to_json
   end
@@ -29,6 +42,18 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
     stub_request(:post, Siade.credentials[:dsnj_service_national_url]).with(
       body:, headers:
     )
+  end
+
+  it_behaves_like 'a make request with working mocking_params'
+
+  context 'when in france' do
+    it { is_expected.to be_a_success }
+
+    it 'calls url with valid body and headers, with birthplace' do
+      subject
+
+      expect(stubbed_request).to have_been_requested
+    end
   end
 
   context 'when not in france' do
@@ -48,29 +73,6 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
     it { is_expected.to be_a_success }
 
     it 'calls url with valid body and headers, without birthplace' do
-      subject
-
-      expect(stubbed_request).to have_been_requested
-    end
-  end
-
-  context 'when in france' do
-    let(:code_cog_insee_pays_naissance) { '99100' }
-
-    let(:request_params) do
-      {
-        given_name: 'Jean',
-        family_name: 'DUPONT',
-        birthdate: '2000-10-01',
-        gender: 'male',
-        birthplace: '90000',
-        birthcountry: '99100'
-      }
-    end
-
-    it { is_expected.to be_a_success }
-
-    it 'calls url with valid body and headers, with birthplace' do
       subject
 
       expect(stubbed_request).to have_been_requested
