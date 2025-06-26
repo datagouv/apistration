@@ -33,6 +33,8 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
     let(:token_sample) { yes_jwt }
     let(:another_token_sample) { TokenFactory.new([]).valid }
 
+    before { Rails.cache.clear }
+
     def call!(token)
       url = extract_without_context_url_for(**endpoint, only_path: true)
 
@@ -48,7 +50,9 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
     end
 
     context 'when the limit has been reached' do
-      before { limit.times { call!(token_sample) } }
+      before do
+        limit.times { call!(token_sample) }
+      end
 
       it 'rejects incoming requests after the limit' do
         call!(token_sample)
