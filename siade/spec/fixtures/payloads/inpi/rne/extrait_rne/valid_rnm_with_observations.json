@@ -1,0 +1,316 @@
+{
+  "updatedAt": "2025-01-15T10:00:00+01:00",
+  "nombreRepresentantsActifs": 0,
+  "nombreEtablissementsOuverts": 1,
+  "nombreBeneficiairesEffectifsActifs": 0,
+  "id": "600000000000000000000001",
+  "formality": {
+    "siren": "123456789",
+    "content": {
+      "succursaleOuFiliale": "AVEC_ETABLISSEMENT",
+      "formeExerciceActivitePrincipale": "INDEPENDANTE",
+      "natureCreation": {
+        "dateCreation": "2024-01-01",
+        "societeEtrangere": false,
+        "formeJuridique": "1000",
+        "formeJuridiqueInsee": "1000",
+        "microEntreprise": true,
+        "etablieEnFrance": true,
+        "salarieEnFrance": false,
+        "relieeEntrepriseAgricole": false,
+        "entrepriseAgricole": false,
+        "eirl": false
+      },
+      "personnePhysique": {
+        "adresseEntreprise": {
+          "caracteristiques": {
+            "ambulant": false,
+            "domiciliataire": false
+          },
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": true,
+            "indicateurValidationBANPresent": true,
+            "cedexPresent": false,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "Paris",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "de la Paix",
+            "numVoie": "10",
+            "caracteristiques": {
+              "domiciliataire": false
+            }
+          }
+        },
+        "etablissementPrincipal": {
+          "descriptionEtablissement": {
+            "rolePourEntreprise": "3",
+            "siret": "12345678900010",
+            "nomCommercial": "Test Artisan",
+            "indicateurEtablissementPrincipal": true,
+            "statutPourFormalite": "4",
+            "codeApe": "4520A",
+            "etablissementValidated": false,
+            "etablissementRdd": true
+          },
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": true,
+            "indicateurValidationBANPresent": true,
+            "cedexPresent": false,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "Paris",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "de la Paix",
+            "numVoie": "10",
+            "caracteristiques": {
+              "domiciliataire": false
+            }
+          },
+          "activites": [
+            {
+              "categoryCode": "04520100",
+              "activiteId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "indicateurPrincipal": true,
+              "indicateurProlongement": false,
+              "dateDebut": "2024-01-01",
+              "exerciceActivite": "P",
+              "indicateurNonSedentaire": false,
+              "formeExercice": "INDEPENDANTE",
+              "categorisationActivite1": "04",
+              "categorisationActivite2": "52",
+              "categorisationActivite3": "01",
+              "categorisationActivite4": "00",
+              "descriptionDetaillee": "reparation automobile et entretien vehicules",
+              "indicateurActiviteeApe": false,
+              "indicateurArtisteAuteur": false,
+              "indicateurMarinProfessionnel": false,
+              "rolePrincipalPourEntreprise": true,
+              "codeApe": "4520A",
+              "activiteRattacheeEirl": false,
+              "origine": {
+                "typeOrigine": "1"
+              },
+              "isLocationGeranceOrGeranceMandat": false,
+              "metierArt": true
+            }
+          ],
+          "isLocationGeranceOrGeranceMandat": false
+        },
+        "identite": {
+          "adresseCorrespondancePresent": true,
+          "entreprise": {
+            "siren": "123456789",
+            "nicSiege": "00010",
+            "codeApe": "4520A",
+            "entrepriseValidated": false,
+            "entrepriseRdd": true
+          },
+          "entrepreneur": {
+            "descriptionPersonne": {
+              "sirenPresent": false,
+              "dateEffetRoleDeclarantPresent": false,
+              "genrePresent": true,
+              "titrePresent": false,
+              "dateDeNaissance": "1980-01",
+              "dateDeNaissancePresent": true,
+              "paysNaissancePresent": true,
+              "codePaysNaissancePresent": false,
+              "lieuDeNaissancePresent": true,
+              "codePostalNaissancePresent": true,
+              "codeInseeGeographiquePresent": true,
+              "situationMatrimonialePresent": true,
+              "qualiteDeNonSedentaritePresent": false,
+              "indicateurDeNonSedentaritePresent": true,
+              "nom": "DUPONT",
+              "prenoms": [
+                "JEAN",
+                "MARIE"
+              ],
+              "genre": "1",
+              "pseudonyme": "Test Artisan",
+              "indicateurDeNonSedentarite": false
+            },
+            "adresseDomicile": {
+              "roleAdressePresent": false,
+              "codePostalPresent": true,
+              "communePresent": true,
+              "codeInseeCommunePresent": true,
+              "typeVoiePresent": true,
+              "voiePresent": true,
+              "voieCodifieePresent": false,
+              "numVoiePresent": true,
+              "indiceRepetitionPresent": false,
+              "distributionSpecialePresent": false,
+              "communeAnciennePresent": false,
+              "rgpdPresent": false,
+              "datePriseEffetAdressePresent": false,
+              "complementLocalisationPresent": false,
+              "communeDeRattachementPresent": false,
+              "caracteristiquesPresent": false,
+              "indicateurValidationBANPresent": true,
+              "cedexPresent": false,
+              "pays": "FRANCE",
+              "codePays": "FRA",
+              "codePostal": "75001",
+              "commune": "Paris",
+              "codeInseeCommune": "75101"
+            },
+            "regimeMicroSocial": {
+              "optionMicroSocial": true
+            },
+            "roleConjoint": "1",
+            "conjoint": {
+              "descriptionPersonne": {
+                "sirenPresent": false,
+                "dateEffetRoleDeclarantPresent": false,
+                "genrePresent": true,
+                "titrePresent": false,
+                "dateDeNaissance": "1985-06",
+                "dateDeNaissancePresent": true,
+                "paysNaissancePresent": true,
+                "codePaysNaissancePresent": false,
+                "lieuDeNaissancePresent": true,
+                "codePostalNaissancePresent": true,
+                "codeInseeGeographiquePresent": true,
+                "situationMatrimonialePresent": true,
+                "qualiteDeNonSedentaritePresent": false,
+                "indicateurDeNonSedentaritePresent": false,
+                "nom": "MARTIN",
+                "prenoms": [
+                  "SOPHIE"
+                ],
+                "genre": "2",
+                "pseudonyme": "Test Artisan"
+              },
+              "adresseDomicile": {
+                "roleAdressePresent": false,
+                "codePostalPresent": true,
+                "communePresent": true,
+                "codeInseeCommunePresent": true,
+                "typeVoiePresent": true,
+                "voiePresent": true,
+                "voieCodifieePresent": false,
+                "numVoiePresent": true,
+                "indiceRepetitionPresent": false,
+                "distributionSpecialePresent": false,
+                "communeAnciennePresent": false,
+                "rgpdPresent": false,
+                "datePriseEffetAdressePresent": false,
+                "complementLocalisationPresent": false,
+                "communeDeRattachementPresent": false,
+                "caracteristiquesPresent": false,
+                "indicateurValidationBANPresent": true,
+                "cedexPresent": false,
+                "pays": "FRANCE",
+                "codePays": "FRA",
+                "codePostal": "75001",
+                "commune": "Paris",
+                "codeInseeCommune": "75101"
+              },
+              "indicateurActifAgricole": false
+            }
+          },
+          "contratDAppuiDeclare": false
+        }
+      },
+      "registreAnterieur": {
+        "raa": {
+          "estPresent": false
+        },
+        "rnm": {
+          "estPresent": true,
+          "dateImmatriculation": "2024-01-01T00:00:00+01:00"
+        },
+        "rncs": {
+          "estPresent": false
+        }
+      },
+      "inscriptionsOffices": [
+        {
+          "dateEffet": "2024-06-15",
+          "partnerCenter": "CMAR Test",
+          "partnerCode": "M",
+          "observationComplementaire": "Inscription d'office de mentions - Qualité de la personne - Artisan - JEAN DUPONT (Entrepreneur) - Établissement - 12345678900010 - Entretien et réparation de véhicules automobiles"
+        },
+        {
+          "dateEffet": "2024-09-20",
+          "partnerCenter": "CMAR Test",
+          "partnerCode": "M",
+          "observationComplementaire": "Modification relative au conjoint collaborateur"
+        }
+      ]
+    },
+    "diffusionINSEE": "O",
+    "typePersonne": "P",
+    "diffusionCommerciale": true,
+    "historique": [
+      {
+        "dateIntegration": "2024-06-15T14:00:00+02:00",
+        "codeEvenement": "IN_02",
+        "libelleEvenement": "Inscription d'office de mentions - Qualité de la personne - Artisan - JEAN DUPONT (Entrepreneur) - Établissement - 12345678900010 - Entretien et réparation de véhicules automobiles",
+        "numeroLiasse": "J00012345678",
+        "patchId": "600000000000000000000001_1",
+        "dateEffet": "2024-06-15T00:00:00+02:00"
+      },
+      {
+        "dateIntegration": "2024-09-20T10:30:00+02:00",
+        "codeEvenement": "30P",
+        "libelleEvenement": "Modification relative au conjoint collaborateur",
+        "numeroLiasse": "J00023456789",
+        "patchId": "600000000000000000000001_2",
+        "dateEffet": "2024-09-15T00:00:00+02:00",
+        "cheminDateEffet": "content.personnePhysique.identite.entrepreneur.conjoint.dateEffet",
+        "cheminDateEffetId": "content.personnePhysique.identite.entrepreneur.conjoint.dateEffet"
+      },
+      {
+        "dateIntegration": "2025-01-10T09:00:00+01:00",
+        "codeEvenement": "60P",
+        "libelleEvenement": "Modification de l'identification de l'établissement",
+        "numeroLiasse": "J00034567890",
+        "patchId": "600000000000000000000001_3",
+        "dateEffet": "2025-01-05T00:00:00+01:00",
+        "cheminDateEffet": "content.personnePhysique.etablissementPrincipal.descriptionEtablissement.dateEffet60PMF",
+        "cheminDateEffetId": "content.personnePhysique.etablissementPrincipal.descriptionEtablissement.dateEffet60PMF"
+      }
+    ],
+    "formeJuridique": "1000",
+    "created": "2024-01-01T10:00:00+01:00",
+    "updated": "2025-01-15T10:00:00+01:00"
+  },
+  "siren": "123456789"
+}

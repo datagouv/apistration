@@ -1,4 +1,4 @@
-class INPI::RNE::BeneficiairesEffectifs::ValidateResponse < ValidateResponse
+class INPI::RNE::BeneficiairesEffectifs::ValidateResponse < INPI::RNE::Company::ValidateResponse
   def call
     resource_not_found! if http_not_found?
     unknown_provider_response! if invalid_json?

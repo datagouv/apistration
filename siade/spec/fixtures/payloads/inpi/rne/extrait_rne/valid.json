@@ -1,0 +1,236 @@
+{
+  "updatedAt": "2024-01-15T10:30:45+01:00",
+  "nombreRepresentantsActifs": 0,
+  "nombreEtablissementsOuverts": 0,
+  "nombreBeneficiairesEffectifsActifs": 0,
+  "id": "65a1b2c3d4e5f6789abcdef0",
+  "formality": {
+    "siren": "123456789",
+    "content": {
+      "succursaleOuFiliale": "AVEC_ETABLISSEMENT",
+      "formeExerciceActivitePrincipale": "ARTISANALE",
+      "natureCreation": {
+        "dateCreation": "2010-01-01",
+        "societeEtrangere": false,
+        "formeJuridique": "1000",
+        "formeJuridiqueInsee": "1000",
+        "microEntreprise": false,
+        "etablieEnFrance": true,
+        "salarieEnFrance": true,
+        "relieeEntrepriseAgricole": false,
+        "entrepriseAgricole": false,
+        "eirl": false
+      },
+      "personnePhysique": {
+        "adresseEntreprise": {
+          "caracteristiques": {
+            "ambulant": false
+          },
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": true,
+            "indicateurValidationBANPresent": true,
+            "cedexPresent": false,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "PARIS",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "DE LA PAIX",
+            "numVoie": "10",
+            "caracteristiques": {
+              "ambulant": false
+            }
+          }
+        },
+        "etablissementPrincipal": {
+          "descriptionEtablissement": {
+            "rolePourEntreprise": "3",
+            "siret": "12345678900001",
+            "activiteNonSedentaire": false,
+            "nomCommercial": "ENTREPRISE TEST",
+            "indicateurEtablissementPrincipal": true,
+            "statutPourFormalite": "4",
+            "codeApe": "3213Z",
+            "etablissementValidated": false,
+            "etablissementRdd": false
+          },
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": true,
+            "indicateurValidationBANPresent": true,
+            "cedexPresent": false,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "PARIS",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "DE LA PAIX",
+            "numVoie": "10",
+            "caracteristiques": {
+              "ambulant": false
+            }
+          },
+          "activites": [
+            {
+              "categoryCode": "02070700",
+              "activiteId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "indicateurPrincipal": true,
+              "indicateurProlongement": false,
+              "dateDebut": "2010-01-15",
+              "exerciceActivite": "P",
+              "indicateurNonSedentaire": false,
+              "formeExercice": "ARTISANALE",
+              "categorisationActivite1": "02",
+              "categorisationActivite2": "07",
+              "categorisationActivite3": "07",
+              "codeAprm": "3213ZZ",
+              "descriptionDetaillee": "FABRICATION D'ARTICLES DIVERS",
+              "indicateurActiviteeApe": false,
+              "precisionActivite": "04",
+              "indicateurArtisteAuteur": false,
+              "indicateurMarinProfessionnel": false,
+              "rolePrincipalPourEntreprise": true,
+              "codeApe": "3213Z",
+              "activiteRattacheeEirl": false,
+              "origine": {
+                "typeOrigine": "1"
+              },
+              "isLocationGeranceOrGeranceMandat": false,
+              "metierArt": true
+            }
+          ],
+          "isLocationGeranceOrGeranceMandat": false
+        },
+        "identite": {
+          "adresseCorrespondancePresent": false,
+          "entreprise": {
+            "siren": "123456789",
+            "formeJuridique": "1000",
+            "nicSiege": "00001",
+            "nomCommercial": "ENTREPRISE TEST",
+            "codeApe": "3213Z",
+            "entrepriseValidated": false,
+            "entrepriseRdd": false
+          },
+          "entrepreneur": {
+            "descriptionPersonne": {
+              "sirenPresent": false,
+              "dateEffetRoleDeclarantPresent": false,
+              "genrePresent": true,
+              "titrePresent": false,
+              "dateDeNaissance": "1970-01",
+              "dateDeNaissancePresent": true,
+              "paysNaissancePresent": false,
+              "codePaysNaissancePresent": false,
+              "lieuDeNaissancePresent": false,
+              "codePostalNaissancePresent": false,
+              "codeInseeGeographiquePresent": false,
+              "situationMatrimonialePresent": true,
+              "qualiteDeNonSedentaritePresent": false,
+              "indicateurDeNonSedentaritePresent": false,
+              "nom": "DUPONT",
+              "prenoms": [
+                "JEAN",
+                "PIERRE"
+              ],
+              "genre": "1",
+              "nomUsage": "DUPONT"
+            },
+            "adresseDomicile": {
+              "roleAdressePresent": false,
+              "codePostalPresent": true,
+              "communePresent": true,
+              "codeInseeCommunePresent": true,
+              "typeVoiePresent": true,
+              "voiePresent": true,
+              "voieCodifieePresent": false,
+              "numVoiePresent": true,
+              "indiceRepetitionPresent": false,
+              "distributionSpecialePresent": false,
+              "communeAnciennePresent": false,
+              "rgpdPresent": false,
+              "datePriseEffetAdressePresent": false,
+              "complementLocalisationPresent": false,
+              "communeDeRattachementPresent": false,
+              "caracteristiquesPresent": false,
+              "indicateurValidationBANPresent": true,
+              "cedexPresent": false,
+              "pays": "FRANCE",
+              "codePays": "FRA",
+              "codePostal": "75001",
+              "commune": "PARIS 01",
+              "codeInseeCommune": "75101"
+            },
+            "qualiteArtisan": "ARTISAN",
+            "mentionQualiteArtisanale": true
+          }
+        }
+      },
+      "registreAnterieur": {
+        "raa": {
+          "estPresent": false
+        },
+        "rnm": {
+          "estPresent": true,
+          "dateImmatriculation": "2010-01-01T00:00:00+01:00"
+        },
+        "rncs": {
+          "estPresent": false
+        }
+      },
+      "inscriptionsOffices": [
+        {
+          "dateEffet": "2024-01-01",
+          "partnerCenter": "CMAR TEST",
+          "partnerCode": "M"
+        }
+      ]
+    },
+    "diffusionINSEE": "N",
+    "typePersonne": "P",
+    "diffusionCommerciale": false,
+    "historique": [
+      {
+        "dateIntegration": "2024-01-01T12:00:00+01:00",
+        "codeEvenement": "IN_03",
+        "libelleEvenement": "En date du 01/01/2024 inscription d'office de mentions - Qualité de la personne - Artisan - JEAN DUPONT (Entrepreneur) - Établissement - 12345678900001 - Fabrication d'articles divers",
+        "numeroLiasse": "J00123456789",
+        "patchId": "65a1b2c3d4e5f6789abcdef0_1",
+        "dateEffet": "2024-01-01T00:00:00+01:00"
+      }
+    ],
+    "formeJuridique": "1000"
+  },
+  "siren": "123456789"
+}
