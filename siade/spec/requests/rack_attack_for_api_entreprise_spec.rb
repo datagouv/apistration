@@ -215,20 +215,6 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
         end
       end
 
-      describe 'JSON resources throttling Particulier', api: :particulier do
-        it_behaves_like 'throttling group of endpoints' do
-          let(:limit) { throttle_config.dig(:json_resources_particulier, :limit) }
-          let(:period) { throttle_config.dig(:json_resources_particulier, :period) }
-          let(:endpoint) do
-            {
-              controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine',
-              action: 'show',
-              api_version: 3,
-              ine: '1234567890G'
-            }
-          end
-        end
-      end
 
       describe 'endpoints exceptions' do
         describe 'very high latency endpoints' do
