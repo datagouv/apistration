@@ -25,4 +25,13 @@ module ProviderStubs::INPI::RNE
         status: 404
       )
   end
+
+  def stub_inpi_rne_extrait_download_valid(document_id:)
+    stub_request(:get, "https://data.inpi.fr/export/companies?format=pdf&ids=[\"#{document_id}\"]")
+      .to_return(
+        status: 200,
+        body: read_payload_file('pdf/dummy.pdf'),
+        headers: { 'Content-Type' => 'application/pdf' }
+      )
+  end
 end

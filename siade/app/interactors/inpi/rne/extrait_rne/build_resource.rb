@@ -1,4 +1,5 @@
 class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
+  include Rails.application.routes.url_helpers
   ROLE_MAPPING = {
     '40' => 'PRESIDENT',
     '41' => 'DIRECTEUR GENERAL',
@@ -75,7 +76,7 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
 
   def resource_attributes
     {
-      document_url: "https://data.inpi.fr/export/companies?format=pdf&ids=[\"#{siren}\"]",
+      document_url: link(target: 'extrait', document_id: siren),
       identite_entreprise: extract_entreprise,
       dirigeants_et_associes: extract_dirigeants,
       etablissements: extract_etablissements_actifs,
@@ -551,5 +552,39 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
     rescue Encoding::UndefinedConversionError, Encoding::InvalidByteSequenceError
       text.force_encoding('UTF-8').scrub
     end
+  end
+
+  def link(target:, document_id:)
+    url_for(
+      controller: 'api_entreprise/inpi_proxy',
+      action: 'show',
+      uuid: encrypted_uuid(target:, document_id:),
+      host:
+    )
+  end
+
+  def encrypted_uuid(target:, document_id:)
+    StringEncryptorService.instance.encrypt_url_safe(raw_uuid(target:, document_id:))
+  end
+
+  def raw_uuid(target:, document_id:)
+    {
+      target:,
+      document_id:,
+      timestamp:,
+      token_id:
+    }.to_json
+  end
+
+  def host
+    Rails.env.production? ? 'entreprise.api.gouv.fr' : "#{Rails.env}.entreprise.api.gouv.fr"
+  end
+
+  def timestamp
+    Time.zone.now.to_i
+  end
+
+  def token_id
+    context.params[:token_id]
   end
 end

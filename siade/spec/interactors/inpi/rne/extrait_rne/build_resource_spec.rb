@@ -7,14 +7,24 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
     instance_double(Net::HTTPOK, body:)
   end
 
+  let(:url_regexp) { %r{^http://test\.entreprise\.api\.gouv\.fr/proxy/inpi/download/\S*$} }
+
   let(:params) do
     {
-      annee: 2023,
-      mois: 6
+      siren: valid_siren(:inpi),
+      token_id: 'token-id'
     }
   end
 
   let(:body) { read_payload_file('inpi/rne/extrait_rne/valid.json') }
+
+  before(:all) do
+    Timecop.freeze
+  end
+
+  after(:all) do
+    Timecop.return
+  end
 
   it { is_expected.to be_a_success }
 
@@ -23,9 +33,9 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
 
     context 'with valid.json' do
       it do
-        expect(subject).to eq(
+        expect(subject[:document_url]).to match(url_regexp)
+        expect(subject).to include(
           {
-            document_url: 'https://data.inpi.fr/export/companies?format=pdf&ids=["123456789"]',
             identite_entreprise: {
               siren: '123456789',
               denomination: nil,
@@ -108,9 +118,9 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
       let(:body) { read_payload_file('inpi/rne/extrait_rne/valid_rcs_with_observations.json') }
 
       it do
-        expect(subject).to eq(
+        expect(subject[:document_url]).to match(url_regexp)
+        expect(subject).to include(
           {
-            document_url: 'https://data.inpi.fr/export/companies?format=pdf&ids=["987654321"]',
             identite_entreprise: {
               siren: '987654321',
               denomination: 'SOCIETE TEST',
@@ -227,9 +237,9 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
       let(:body) { read_payload_file('inpi/rne/extrait_rne/valid_rnm_with_observations.json') }
 
       it do
-        expect(subject).to eq(
+        expect(subject[:document_url]).to match(url_regexp)
+        expect(subject).to include(
           {
-            document_url: 'https://data.inpi.fr/export/companies?format=pdf&ids=["123456789"]',
             identite_entreprise: {
               siren: '123456789',
               denomination: nil,
