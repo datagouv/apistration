@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::INPI::RNE::ExtraitRNEController < APIEntreprise::V3AndMore::BaseController
+  include APIEntreprise::INPIRNECache
+
   def show
     if organizer.success?
       render json: serialize_data,
@@ -18,10 +20,6 @@ class APIEntreprise::V3AndMore::INPI::RNE::ExtraitRNEController < APIEntreprise:
 
   def serializer_module
     ::APIEntreprise::INPI::RNE::ExtraitRNESerializer
-  end
-
-  def expires_in
-    (Time.zone.now.end_of_day + 3.hours - Time.zone.now).to_i
   end
 
   def organizer
