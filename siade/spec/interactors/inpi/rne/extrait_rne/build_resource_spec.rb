@@ -1,0 +1,324 @@
+RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
+  subject { instance }
+
+  let(:instance) { described_class.call(params:, response:) }
+
+  let(:response) do
+    instance_double(Net::HTTPOK, body:)
+  end
+
+  let(:params) do
+    {
+      annee: 2023,
+      mois: 6
+    }
+  end
+
+  let(:body) { read_payload_file('inpi/rne/extrait_rne/valid.json') }
+
+  it { is_expected.to be_a_success }
+
+  describe 'resource' do
+    subject { instance.bundled_data.data.to_h }
+
+    context 'with valid.json' do
+      it do
+        expect(subject).to eq(
+          {
+            document_url: 'https://data.inpi.fr/export/companies?format=pdf&ids=["123456789"]',
+            identite_entreprise: {
+              siren: '123456789',
+              denomination: nil,
+              forme_juridique: {
+                code: '1000',
+                libelle: 'Entreprise individuelle'
+              },
+              date_immatriculation_rne: '2010-01-01',
+              date_debut_activite: nil,
+              date_fin_personne: nil,
+              date_cloture_exercice: nil,
+              date_premiere_cloture_exercice: nil,
+              detail_cessation: nil,
+              dissolution: {
+                date: nil,
+                poursuite_activite: false,
+                avec_liquidation: nil
+              },
+              nature_entreprise: 'ARTISANALE',
+              associe_unique: false,
+              capital_social: {
+                montant: nil,
+                devise: 'EUR'
+              },
+              activite_principales_objet_social: nil,
+              code_APE: {
+                code: '3213Z',
+                libelle: 'Activité 3213Z'
+              },
+              code_APRM: {
+                code: nil,
+                libelle: nil
+              },
+              adresse_siege_social: {
+                voie: '10 RUE DE LA PAIX',
+                code_postal: '75001',
+                commune: 'PARIS',
+                pays: 'FRANCE',
+                complement: nil
+              }
+            },
+            dirigeants_et_associes: [],
+            etablissements: [
+              {
+                siret: '12345678900001',
+                type_etablissement: 'Siège et principal',
+                date_debut_activite: '2010-01-15',
+                code_APE: {
+                  code: '3213Z',
+                  libelle: 'Activité 3213Z'
+                },
+                code_APRM: {
+                  code: nil,
+                  libelle: nil
+                },
+                origine_fonds: 'Création',
+                nature_etablissement: 'ARTISANALE',
+                activite_principale: 'FABRICATION D\'ARTICLES DIVERS',
+                autre_activite: nil,
+                adresse: {
+                  voie: '10 RUE DE LA PAIX',
+                  code_postal: '75001',
+                  commune: 'PARIS',
+                  pays: 'FRANCE',
+                  complement: nil
+                },
+                statut: 'actif'
+              }
+            ],
+            diffusion_commerciale: false,
+            diffusion_insee: false,
+            etablissements_fermes_total: 0,
+            observations: []
+          }
+        )
+      end
+    end
+
+    context 'with valid_rcs_with_observations.json' do
+      let(:body) { read_payload_file('inpi/rne/extrait_rne/valid_rcs_with_observations.json') }
+
+      it do
+        expect(subject).to eq(
+          {
+            document_url: 'https://data.inpi.fr/export/companies?format=pdf&ids=["987654321"]',
+            identite_entreprise: {
+              siren: '987654321',
+              denomination: 'SOCIETE TEST',
+              forme_juridique: {
+                code: '5710',
+                libelle: 'SAS, société par actions simplifiée'
+              },
+              date_immatriculation_rne: '2020-01-15',
+              date_debut_activite: nil,
+              date_fin_personne: nil,
+              date_cloture_exercice: nil,
+              date_premiere_cloture_exercice: nil,
+              detail_cessation: nil,
+              dissolution: {
+                date: nil,
+                poursuite_activite: false,
+                avec_liquidation: nil
+              },
+              nature_entreprise: 'COMMERCIALE',
+              associe_unique: false,
+              capital_social: {
+                montant: nil,
+                devise: 'EUR'
+              },
+              activite_principales_objet_social: nil,
+              code_APE: {
+                code: '7010Z',
+                libelle: 'Activités des sièges sociaux'
+              },
+              code_APRM: {
+                code: nil,
+                libelle: nil
+              },
+              adresse_siege_social: {
+                voie: '100 AV DES CHAMPS ELYSEES',
+                code_postal: '75008',
+                commune: 'PARIS',
+                pays: 'FRANCE',
+                complement: nil
+              }
+            },
+            dirigeants_et_associes: [
+              {
+                qualite: 'PRESIDENT',
+                nom: 'DURAND',
+                prenom: 'MARIE',
+                date_naissance: '05/1975',
+                commune_residence: 'PARIS'
+              },
+              {
+                qualite: 'DIRECTEUR GENERAL',
+                nom: 'BERNARD',
+                prenom: 'PIERRE',
+                date_naissance: '10/1980',
+                commune_residence: 'PARIS'
+              }
+            ],
+            etablissements: [
+              {
+                siret: '98765432100015',
+                type_etablissement: 'Siège et principal',
+                date_debut_activite: '2020-01-15',
+                code_APE: {
+                  code: '7010Z',
+                  libelle: 'Activités des sièges sociaux'
+                },
+                code_APRM: {
+                  code: nil,
+                  libelle: nil
+                },
+                origine_fonds: 'Création',
+                nature_etablissement: 'COMMERCIALE',
+                activite_principale: 'Activités des sièges sociaux',
+                autre_activite: nil,
+                adresse: {
+                  voie: '100 AV DES CHAMPS ELYSEES',
+                  code_postal: '75008',
+                  commune: 'PARIS',
+                  pays: 'FRANCE',
+                  complement: nil
+                },
+                statut: 'actif'
+              }
+            ],
+            diffusion_commerciale: true,
+            diffusion_insee: true,
+            etablissements_fermes_total: 0,
+            observations: [
+              {
+                fournisseur: 'rcs',
+                numero: nil,
+                date: '2020-01-15',
+                texte: 'Constitution de la société'
+              },
+              {
+                fournisseur: 'rcs',
+                numero: '1',
+                date: '2020-06-01',
+                texte: 'Nomination du directeur général'
+              },
+              {
+                fournisseur: 'rcs',
+                numero: '2',
+                date: '2021-03-15',
+                texte: 'Augmentation de capital social'
+              }
+            ]
+          }
+        )
+      end
+    end
+
+    context 'with valid_rnm_with_observations.json' do
+      let(:body) { read_payload_file('inpi/rne/extrait_rne/valid_rnm_with_observations.json') }
+
+      it do
+        expect(subject).to eq(
+          {
+            document_url: 'https://data.inpi.fr/export/companies?format=pdf&ids=["123456789"]',
+            identite_entreprise: {
+              siren: '123456789',
+              denomination: nil,
+              forme_juridique: {
+                code: '1000',
+                libelle: 'Entreprise individuelle'
+              },
+              date_immatriculation_rne: '2024-01-01',
+              date_debut_activite: nil,
+              date_fin_personne: nil,
+              date_cloture_exercice: nil,
+              date_premiere_cloture_exercice: nil,
+              detail_cessation: nil,
+              dissolution: {
+                date: nil,
+                poursuite_activite: false,
+                avec_liquidation: nil
+              },
+              nature_entreprise: 'INDEPENDANTE',
+              associe_unique: false,
+              capital_social: {
+                montant: nil,
+                devise: 'EUR'
+              },
+              activite_principales_objet_social: nil,
+              code_APE: {
+                code: '4520A',
+                libelle: 'Activité 4520A'
+              },
+              code_APRM: {
+                code: nil,
+                libelle: nil
+              },
+              adresse_siege_social: {
+                voie: '10 RUE DE LA PAIX',
+                code_postal: '75001',
+                commune: 'PARIS',
+                pays: 'FRANCE',
+                complement: nil
+              }
+            },
+            dirigeants_et_associes: [],
+            etablissements: [
+              {
+                siret: '12345678900010',
+                type_etablissement: 'Siège et principal',
+                date_debut_activite: '2024-01-01',
+                code_APE: {
+                  code: '4520A',
+                  libelle: 'Activité 4520A'
+                },
+                code_APRM: {
+                  code: nil,
+                  libelle: nil
+                },
+                origine_fonds: 'Création',
+                nature_etablissement: 'INDEPENDANTE',
+                activite_principale: 'reparation automobile et entretien vehicules',
+                autre_activite: nil,
+                adresse: {
+                  voie: '10 RUE DE LA PAIX',
+                  code_postal: '75001',
+                  commune: 'PARIS',
+                  pays: 'FRANCE',
+                  complement: nil
+                },
+                statut: 'actif'
+              }
+            ],
+            diffusion_commerciale: true,
+            diffusion_insee: true,
+            etablissements_fermes_total: 0,
+            observations: [
+              {
+                fournisseur: 'rnm',
+                numero: nil,
+                date: '2024-06-15',
+                texte: 'Inscription d\'office de mentions - Qualité de la personne - Artisan - JEAN DUPONT (Entrepreneur) - Établissement - 12345678900010 - Entretien et réparation de véhicules automobiles'
+              },
+              {
+                fournisseur: 'rnm',
+                numero: nil,
+                date: '2024-09-20',
+                texte: 'Modification relative au conjoint collaborateur'
+              }
+            ]
+          }
+        )
+      end
+    end
+  end
+end

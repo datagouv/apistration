@@ -208,14 +208,7 @@
         "rncs": {
           "estPresent": false
         }
-      },
-      "inscriptionsOffices": [
-        {
-          "dateEffet": "2024-01-01",
-          "partnerCenter": "CMAR TEST",
-          "partnerCode": "M"
-        }
-      ]
+      }
     },
     "diffusionINSEE": "N",
     "typePersonne": "P",
