@@ -67,9 +67,10 @@ class Rack::Attack
 
     headers = rate_limiting_service.build_rate_limit_headers(env['rack.attack.match_data'])
 
+    retry_after = [(headers['RateLimit-Reset'].to_i - Time.now.to_i), 0].max
     headers.merge!(
       'Content-Type' => 'application/json',
-      'Retry-After' => (headers['RateLimit-Reset'].to_i - Time.now.to_i).to_s,
+      'Retry-After' => retry_after.to_s
     )
 
     error_format = req.env['PATH_INFO'].include?('/api/v2/') ? 'flat' : 'json_api'
