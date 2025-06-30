@@ -203,7 +203,7 @@ GEM
     jsonapi-renderer (0.2.2)
     jwe (1.0.0)
       base64
-    jwt (2.10.1)
+    jwt (2.10.2)
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -509,7 +509,7 @@ DEPENDENCIES
   interactor
   json-schema
   jwe
-  jwt (~> 2.10, < 3.0)
+  jwt (~> 2.10)
   lockbox
   logstasher
   marcel
