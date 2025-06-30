@@ -94,7 +94,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   get 'djepva/api-association/associations/:siren_or_rna', to: 'api_entreprise/v3_and_more/mi/unites_legales#show'
   get 'djepva/api-association/associations/open_data/:siren_or_rna', to: 'api_entreprise/v3_and_more/mi/unites_legales_open_data#show'
 
-  get 'data_subvention/subventions/:siren_or_siret_or_rna', to: 'api_entreprise/v3_and_more/data_subvention/subventions#show'
+  get 'data_subvention/associations/:siren_or_siret_or_rna/subventions', to: 'api_entreprise/v3_and_more/data_subvention/subventions#show'
 
   namespace :msa do
     get 'etablissements/:siret/conformite_cotisations' => '/api_entreprise/v3_and_more/msa/conformites_cotisations#show'

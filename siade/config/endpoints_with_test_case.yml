@@ -162,7 +162,7 @@
 
 - name: "Datasubvention subventions"
   api: 'entreprise'
-  path: '/v3/data_subvention/subventions/789510732'
+  path: '/v3/data_subvention/associations/789510732/subventions'
 
 - name: "GIP-MDS effectifs annuel unité légale"
   api: 'entreprise'

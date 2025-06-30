@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'DataSubvention: Subventions', api: :entreprise, type: %i[request swagger] do
-  path '/v3/data_subvention/subventions/{siren_or_siret_or_rna}' do
+  path '/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions' do
     get SwaggerData.get('data_subvention.subventions.title') do
       tags(*SwaggerData.get('data_subvention.subventions.tags'))
 

@@ -3209,7 +3209,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/cnetp/unites_legales/130025265/attestation_cotisations_conges_payes_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/data_subvention/subventions/{siren_or_siret_or_rna}":
+  "/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions":
     get:
       summary: Subventions des associations
       tags:
@@ -3766,7 +3766,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/data_subvention/subventions/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/data_subvention/associations/13002526500013/subventions?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori":
     get:
       summary: Immatriculation EORI
