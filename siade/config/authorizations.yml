@@ -180,6 +180,8 @@ shared:
     - effectifs_urssaf
   api_entreprise/v3_and_more/qualifelec/certificats:
     - open_data
+  api_entreprise/v3_and_more/inpi/rne/extrait_rne:
+    - inpi_extrait_rne
   api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs:
     - beneficiaires_effectifs_inpi
   api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data:

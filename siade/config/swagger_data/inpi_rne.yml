@@ -1,4 +1,327 @@
 inpi_rne:
+  extrait_rne:
+    title: "Extrait RNE d'une unité légale"
+    description: "Extrait du répertoire national des entreprises (RNE) d'une unité légale. Expose le document ainsi que l'extraction des données présentes dans le document."
+    cache_duration: "Le cache est valide jusqu'à 3 heures du matin."
+    tags: 
+      - "Informations générales"
+    attributes:
+      document_url:
+        type: string
+        description: "URL de téléchargement de l'attestation d'immatriculation au registre national des entreprises (.pdf)"
+        example: https://data.inpi.fr/export/companies?format=pdf&ids=["123456789"]
+      identite_entreprise:
+        type: object
+        properties:
+          denomination:
+            type: string
+            nullable: true
+            description: Dénomination sociale de l'entreprise
+            example: "TECH SOLUTIONS FRANCE"
+          siren:
+            type: string
+            description: Numéro SIREN de l'entreprise
+            pattern: '^\d{9}$'
+            example: "123456789"
+          date_immatriculation_rne:
+            type: string
+            format: date
+            description: Date d'immatriculation au RNE
+            example: "2018-03-15"
+          date_debut_activite:
+            type: string
+            nullable: true
+            format: date
+            description: Date de début d'activité
+            example: "2018-04-01"
+          detail_cessation:
+            type: string
+            format: boolean
+            description: Indique la raison de cessation d'activité. Systématiquement à null, l'api ne fournist pas cette information.
+            example: null
+            nullable: true
+          dissolution:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+                description: Date de dissolution de l'entreprise
+                example: "2023-05-20"
+                nullable: true
+              poursuite_activite:
+                type: boolean
+                description: Indique si l'entreprise poursuit son activité après dissolution
+                example: false
+                nullable: true
+              avec_liquidation:
+                type: boolean
+                description: Indique si la dissolution est suivie d'une liquidation. Systématiquement à null, l'api ne fournist pas cette information.
+                example: true
+                nullable: true
+          date_fin_personne:
+            type: string
+            format: date
+            description: Date de fin prévue de la personne
+            example: "2117-03-14"
+            nullable: true
+          date_cloture_exercice:
+            type: string
+            description: Date de clôture de l'exercice (format DD/MM)
+            pattern: '^\d{2}/\d{2}$'
+            example: "30/06"
+            nullable: true
+          date_premiere_cloture_exercice:
+            title: "Date de première clôture d'exercice"
+            type: "string"
+            format: "date"
+            example: "2023-11-01"
+            nullable: true
+          nature_entreprise:
+            type: string
+            description: Nature de l'entreprise
+            enum: ["COMMERCIALE", "ARTISANALE", "AGRICOLE", "LIBERALE"]
+            example: "COMMERCIALE"
+          forme_juridique:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Code de la forme juridique
+                example: "5710"
+              libelle:
+                type: string
+                description: Libellé de la forme juridique
+                example: "SAS, société par actions simplifiée"
+          associe_unique:
+            type: boolean
+            description: Indique si l'entreprise a un associé unique
+            example: false
+          activite_principales_objet_social:
+            type: string
+            description: Objet social de l'activités principales de l'entreprise
+            example: "Développement, édition et commercialisation de logiciels informatiques"
+            nullable: true
+          code_APE:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Code APE/NAF de l'entreprise
+                pattern: '^\d{4}[A-Z]$'
+                example: "6201Z"
+              libelle:
+                type: string
+                description: Libellé de l'activité principale
+                example: "Programmation informatique"
+          code_APRM:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Code APRM (Activité Principale Réglementée du Métier)
+                pattern: '^\d{4}[A-Z]$'
+                example: "6202A"
+                nullable: true
+              libelle:
+                type: string
+                description: Libellé de l'activité APRM
+                example: "Conseil en systèmes et logiciels informatiques"
+                nullable: true
+          capital_social:
+            type: object
+            properties:
+              montant:
+                type: number
+                format: double
+                nullable: true
+                description: Montant du capital social
+                example: 50000.0
+              devise:
+                type: string
+                description: Devise du capital
+                example: "EUR"
+          adresse_siege_social:
+            type: object
+            properties:
+              voie:
+                type: string
+                description: Numéro et voie
+                example: "42 RUE DE L'INNOVATION"
+              code_postal:
+                type: string
+                description: Code postal
+                pattern: '^\d{5}$'
+                example: "69003"
+              commune:
+                type: string
+                description: Commune
+                example: "LYON 3E ARRONDISSEMENT"
+              pays:
+                type: string
+                description: Pays
+                example: "FRANCE"
+              complement:
+                type: string
+                description: Complément d'adresse
+                nullable: true
+                example: "Bâtiment B - 2ème étage"
+      dirigeants_et_associes:
+        type: array
+        description: Liste des dirigeants actifs de l'entreprise
+        items:
+          type: object
+          properties:
+            qualite:
+              type: string
+              description: Fonction dans l'entreprise
+              example: "Président"
+            nom:
+              type: string
+              description: Nom de famille
+              example: "MARTIN"
+            prenom:
+              type: string
+              description: Prénom
+              example: "SOPHIE"
+            date_naissance:
+              type: string
+              description: Date de naissance (format MM/YYYY)
+              pattern: '^\d{2}/\d{4}$'
+              example: "07/1985"
+            commune_residence:
+              type: string
+              description: Commune de résidence
+              example: "Lyon"
+      etablissements:
+        type: array
+        description: Liste des établissements actifs
+        items:
+          type: object
+          properties:
+            type_etablissement:
+              type: string
+              description: Type d'établissement
+              enum: ["Siège et principal", "Siège", "Secondaire"]
+              example: "Siège et principal"
+            date_debut_activite:
+              type: string
+              format: date
+              description: Date de début d'activité
+              example: "2018-04-01"
+            siret:
+              type: string
+              description: Numéro SIRET de l'établissement
+              pattern: '^\d{14}$'
+              example: "12345678900001"
+            code_APE:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Code APE/NAF de l'établissement
+                  pattern: '^\d{4}[A-Z]$'
+                  example: "6201Z"
+                libelle:
+                  type: string
+                  description: Libellé de l'activité principale
+                  example: "Programmation informatique"
+            code_APRM:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Code APRM (Activité Principale Réglementée du Métier)
+                  pattern: '^\d{4}[A-Z]$'
+                  example: "6202A"
+                  nullable: true
+                libelle:
+                  type: string
+                  description: Libellé de l'activité APRM
+                  example: "Conseil en systèmes et logiciels informatiques"
+                  nullable: true
+            nature_etablissement:
+              type: string
+              description: Nature de l'établissement
+              example: "COMMERCIALE"
+            activite_principale:
+              type: string
+              description: Description de l'activité
+              example: "Programmation informatique, développement de logiciels"
+            autre_activite:
+              type: string
+              description: Concaténation des autres activités non principales
+              example: "Conseil en systèmes informatiques, maintenance de logiciels"
+              nullable: true
+            adresse:
+              type: object
+              properties:
+                voie:
+                  type: string
+                  description: Numéro et voie
+                  example: "42 RUE DE L'INNOVATION"
+                code_postal:
+                  type: string
+                  description: Code postal
+                  pattern: '^\d{5}$'
+                  example: "69003"
+                commune:
+                  type: string
+                  description: Commune
+                  example: "LYON 3E ARRONDISSEMENT"
+                pays:
+                  type: string
+                  description: Pays
+                  example: "FRANCE"
+                complement:
+                  type: string
+                  nullable: true
+                  description: Complément d'adresse
+                  example: "Bâtiment B - 2ème étage"
+            statut:
+              type: string
+              description: Statut de l'établissement
+              enum: ["actif", "fermé"]
+              example: "actif"
+      diffusion_commerciale: 
+        type: boolean
+        description: Autorisation de diffusion des données à des fins commerciales
+        example: true
+      diffusion_insee:
+        type: boolean
+        description: Autorisation de diffusion des données à l'INSEE
+        example: true
+      etablissements_fermes_total:
+        type: integer
+        description: Nombre d'établissements fermés
+        minimum: 0
+        example: 1
+      observations:
+        type: array
+        description: Observations RCS/RNM
+        items:
+          type: object
+          properties:
+            fournisseur:
+              type: string
+              description: Fournisseur de l'observation
+              enum:
+                - "rcs"
+                - "rnm"
+              example: "rcs"
+            numero:
+              type: string
+              description: Numéro de l'observation
+              example: "2023-05-20-001"
+            date:
+              type: string
+              format: date
+              description: Date de l'observation
+              example: "2023-05-20"
+            texte:
+              type: string
+              description: Texte de l'observation
+              example: "Augmentation de capital de 50000 à 75000 EUR"
   beneficiaires_effectifs:
     title: "Bénéficiaires effectifs"
     description: "Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)."
@@ -482,6 +805,7 @@ inpi_rne:
               example: "2023-08-08"
             date_cloture:
               title: "Date de clôture du bilan"
+              nullbale: true
               type: "string"
               format: "date"
               example: "2023-08-08"

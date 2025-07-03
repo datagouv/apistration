@@ -89,6 +89,7 @@ shared:
     limit: 30
     period: 60
     endpoints:
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/extrait_rne', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
