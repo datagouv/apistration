@@ -95,6 +95,18 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken, type: :retrieve
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
+
+      it 'tracks the error on MonitoringService' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'error',
+          'FranceConnect v2 error',
+          {
+            error: InvalidFranceConnectAccessTokenError.new(:not_found_or_expired).to_h
+          }
+        )
+
+        subject
+      end
     end
 
     context 'when it is malformed' do
