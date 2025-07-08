@@ -22,7 +22,7 @@ class RetrieverOrganizer < ApplicationOrganizer
   end
 
   def rollback
-    track_providers_errors
+    track_errors
   end
 
   protected
@@ -33,10 +33,18 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   private
 
-  def track_providers_errors
-    provider_errors.each do |provider_error|
-      monitoring_service.track_provider_error(provider_error)
+  def track_errors
+    errors_to_track.each do |error|
+      track_error(error)
     end
+  end
+
+  def errors_to_track
+    provider_errors
+  end
+
+  def track_error(error)
+    monitoring_service.track_provider_error(error)
   end
 
   def provider_errors
