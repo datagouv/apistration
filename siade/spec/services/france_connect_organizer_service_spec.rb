@@ -202,9 +202,6 @@ RSpec.describe FranceConnectOrganizerService do
 
       allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_enabled).and_return(false)
 
-      @v2_data_fetcher = instance_double(FranceConnect::V2::DataFetcherThroughAccessToken)
-      @v1_data_fetcher = instance_double(FranceConnect::V1::DataFetcherThroughAccessToken)
-
       allow(FranceConnect::V2::DataFetcherThroughAccessToken).to receive(:call)
       allow(FranceConnect::V1::DataFetcherThroughAccessToken).to receive(:call)
     end
@@ -221,9 +218,6 @@ RSpec.describe FranceConnectOrganizerService do
     before do
       mock_valid_france_connect_v1_checktoken
       mock_valid_france_connect_v2_checktoken
-
-      @v2_data_fetcher = instance_double(FranceConnect::V2::DataFetcherThroughAccessToken)
-      @v1_data_fetcher = instance_double(FranceConnect::V1::DataFetcherThroughAccessToken)
 
       allow(FranceConnect::V2::DataFetcherThroughAccessToken).to receive(:call).and_call_original
       allow(FranceConnect::V1::DataFetcherThroughAccessToken).to receive(:call)
