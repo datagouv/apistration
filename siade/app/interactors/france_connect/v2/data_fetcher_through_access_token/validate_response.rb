@@ -9,6 +9,7 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
     unknown_provider_response! if [500].include?(http_code)
 
     if http_ok?
+      track_france_connect_response! if Rails.env.staging?
       fail_for_token_expired! unless token_valid?
 
       fail_if_unprocessable_params_in_response!
@@ -99,6 +100,16 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
 
   def fail_for_token_expired!
     fail_with_error!(InvalidFranceConnectAccessTokenError.new(:not_found_or_expired))
+  end
+
+  def track_france_connect_response!
+    MonitoringService.instance.track_with_added_context(
+      'info',
+      'FranceConnect v2 response',
+      {
+        json_body:
+      }
+    )
   end
 
   def token_valid?
