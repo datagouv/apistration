@@ -2,7 +2,7 @@
 description: 'Erreur serveur - mauvaise passerelle'
 params:
   nomNaissance: 'DURAND'
-  prenoms[]:
+  prenoms:
   - 'PAUL'
   anneeDateNaissance: 1985
   moisDateNaissance: 8

@@ -2,7 +2,7 @@
 description: 'Personne non concernée par les obligations'
 params:
   nomNaissance: 'RICHARD'
-  prenoms[]:
+  prenoms:
   - 'SOPHIE'
   anneeDateNaissance: 1971
   moisDateNaissance: 3

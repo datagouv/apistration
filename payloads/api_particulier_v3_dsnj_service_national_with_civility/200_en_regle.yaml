@@ -2,7 +2,7 @@
 description: 'Personne en règle avec ses obligations'
 params:
   nomNaissance: 'MARTIN'
-  prenoms[]:
+  prenoms:
   - 'JEAN'
   - 'MICHEL'
   anneeDateNaissance: 2006

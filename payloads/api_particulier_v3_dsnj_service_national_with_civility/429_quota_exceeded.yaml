@@ -2,7 +2,7 @@
 description: 'Trop de requêtes - quota dépassé'
 params:
   nomNaissance: 'DUPONT'
-  prenoms[]:
+  prenoms:
   - 'PIERRE'
   anneeDateNaissance: 1992
   moisDateNaissance: 7
