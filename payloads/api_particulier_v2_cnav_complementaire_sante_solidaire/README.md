@@ -594,6 +594,64 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [400.yaml](400.yaml)
+
+  Status `400`
+
+  # Bad Request - 400
+Ce cas permet de tester :
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] mauvaise requête
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUPONT",
+    "prenoms": [
+      "LAURE"
+    ],
+    "anneeDateDeNaissance": 1970,
+    "moisDateDeNaissance": 1,
+    "jourDateDeNaissance": 1,
+    "codeInseeLieuDeNaissance": "44109",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "bad_request",
+    "reason": " Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client.",
+    "message": "Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nomNaissance=DUPONT' -d 'prenoms[]=LAURE' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=1' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -684,6 +742,60 @@ Ce cas permet de tester :
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
+* [504.yaml](504.yaml)
+
+  Status `504`
+
+  # Gateway Timeout - 504
+Ce cas permet de tester :
+  - [Réponse] Délai d’attente dépassé avec un flux partenaire
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MARTIN",
+    "prenoms": [
+      "PAUL"
+    ],
+    "anneeDateDeNaissance": 1980,
+    "moisDateDeNaissance": 6,
+    "jourDateDeNaissance": 15,
+    "codeInseeLieuDeNaissance": "75056",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "gateway_timeout",
+    "reason": "Le serveur n’a pas reçu de réponse à temps d’un service tiers.",
+    "message": "Le délai d’attente pour la réponse du partenaire a été dépassé."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nomNaissance=MARTIN' -d 'prenoms[]=PAUL' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' -d 'jourDateDeNaissance=15' -d 'codeInseeLieuDeNaissance=75056' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 

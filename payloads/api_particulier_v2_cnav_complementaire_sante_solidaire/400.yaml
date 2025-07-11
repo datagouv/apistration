@@ -1,0 +1,26 @@
+---
+description: |-
+  # Bad Request - 400
+  Ce cas permet de tester :
+    - [Param. appel] Nom de naissance
+    - [Param. appel] Prénom
+    - [Param. appel] Date de naissance (jour,mois,année)
+    - [Param. appel] sexe féminin
+    - [Réponse] mauvaise requête
+params:
+  nomNaissance: 'DUPONT'
+  prenoms:
+    - 'LAURE'
+  anneeDateDeNaissance: 1970
+  moisDateDeNaissance: 1
+  jourDateDeNaissance: 1
+  codeInseeLieuDeNaissance: '44109'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'F'
+status: 400
+payload: |-
+  {
+    "error": "bad_request",
+    "reason": " Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client.",
+    "message": "Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client."
+  }

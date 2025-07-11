@@ -60,7 +60,7 @@
   ```json
   {
     "nomNaissance": "Delatour",
-    "prenoms[]": [
+    "prenoms": [
       "Thomas"
     ],
     "anneeDateNaissance": 1994,
@@ -103,29 +103,27 @@
 
   </p>
   </details>
-* [france_connect_service_national.yaml](france_connect_service_national.yaml)
+* [france_connect_service_national_moins_25ans.yaml](france_connect_service_national_moins_25ans.yaml)
 
   Status `200`
 
-  Personne en règle avec ses obligations via FranceConnect
+  Personne de moins de 25 ans en règle avec ses obligations via FranceConnect
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "nomNaissance": "DUBOIS",
-    "prenoms[]": [
-      "Angela",
-      "Claire",
-      "Louise"
+    "nomNaissance": "CUILLERE",
+    "prenoms": [
+      "Paul"
     ],
-    "anneeDateNaissance": 1962,
-    "moisDateNaissance": 8,
-    "jourDateNaissance": 24,
-    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2007,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 23,
+    "sexeEtatCivil": "M",
     "codeCogInseePaysNaissance": "99100",
-    "codeCogInseeCommuneNaissance": "75007"
+    "codeCogInseeCommuneNaissance": "42218"
   }
   ```
 
@@ -139,7 +137,7 @@
   {
     "data": {
       "statut_service_national": "en_regle",
-      "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
+      "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2025"
     },
     "links": {
     },

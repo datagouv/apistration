@@ -124,6 +124,17 @@ Ce cas permet de tester :
   ""dateDebut"": ""2024-08-01"",
   ""dateFin"":  ""2025-08-01""
 }"
+,"# Bad Request - 400
+Ce cas permet de tester :
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] mauvaise requête","{""nomNaissance"":""DUPONT"",""prenoms"":[""LAURE""],""anneeDateDeNaissance"":1970,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",400,"{
+  ""error"": ""bad_request"",
+  ""reason"": "" Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client."",
+  ""message"": ""Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client.""
+}"
 ,Dossier non trouvé,"{""nomNaissance"":""DUBOCHE"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
@@ -133,6 +144,13 @@ Ce cas permet de tester :
   ""error"": ""network_error"",
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,"# Gateway Timeout - 504
+Ce cas permet de tester :
+  - [Réponse] Délai d’attente dépassé avec un flux partenaire","{""nomNaissance"":""MARTIN"",""prenoms"":[""PAUL""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":6,""jourDateDeNaissance"":15,""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",504,"{
+  ""error"": ""gateway_timeout"",
+  ""reason"": ""Le serveur n’a pas reçu de réponse à temps d’un service tiers."",
+  ""message"": ""Le délai d’attente pour la réponse du partenaire a été dépassé.""
 }"
 ,"## Bénéficiaire né à l'étranger sans participation financière femme - 200
 
