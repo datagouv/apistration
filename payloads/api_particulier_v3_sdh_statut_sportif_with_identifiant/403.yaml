@@ -1,7 +1,6 @@
 ---
 description: 'Accès interdit'
 params:
-  recipient: "03061389000018"
   identifiant: "98765"
 status: 403
 payload: |-

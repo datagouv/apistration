@@ -1,7 +1,6 @@
 ---
 description: 'Erreur du fournisseur de données'
 params:
-  recipient: "73282932000074"
   identifiant: "24680"
 status: 502
 payload: |-

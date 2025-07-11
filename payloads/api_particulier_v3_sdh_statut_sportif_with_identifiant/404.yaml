@@ -1,7 +1,6 @@
 ---
 description: 'Statut sportif non trouvé'
 params:
-  recipient: "04022328870001"
   identifiant: "54321"
 status: 404
 payload: |-

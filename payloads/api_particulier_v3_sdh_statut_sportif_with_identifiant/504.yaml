@@ -1,7 +1,6 @@
 ---
-description: 'Délai d''attente dépassé'
+description: "Délai d'attente dépassé"
 params:
-  recipient: "04402232880009"
   identifiant: "13579"
 status: 504
 payload: |-

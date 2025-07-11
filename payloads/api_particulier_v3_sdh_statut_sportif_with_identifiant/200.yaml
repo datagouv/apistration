@@ -1,7 +1,6 @@
 ---
 description: 'Statut sportif trouvé'
 params:
-  recipient: "01300279850005"
   identifiant: "12345"
 status: 200
 payload: |-
