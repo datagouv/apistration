@@ -20,8 +20,7 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
     }
   end
 
-  # rubocop:disable Metrics/AbcSize
-  def mocking_params
+  def mocking_params # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     {
       nomNaissance: context.params[:nom_naissance]&.downcase,
       nomUsage: context.params[:nom_usage]&.downcase,
@@ -34,7 +33,6 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
       codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
     }.compact
   end
-  # rubocop:enable Metrics/AbcSize
 
   def extra_headers(request)
     request['Authorization'] = "Bearer #{Siade.credentials[:dsnj_service_national_token]}"
