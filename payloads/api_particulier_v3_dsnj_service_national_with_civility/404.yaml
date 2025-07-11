@@ -2,7 +2,7 @@
 description: 'Personne non trouvée'
 params:
   nomNaissance: 'INCONNU'
-  prenoms[]:
+  prenoms:
   - 'PERSONNAGE'
   anneeDateNaissance: 2000
   moisDateNaissance: 1

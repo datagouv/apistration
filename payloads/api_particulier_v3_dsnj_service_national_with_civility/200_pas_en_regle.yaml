@@ -2,7 +2,7 @@
 description: 'Personne pas en règle avec ses obligations'
 params:
   nomNaissance: 'DUBOIS'
-  prenoms[]:
+  prenoms:
   - 'THOMAS'
   anneeDateNaissance: 1995
   moisDateNaissance: 6

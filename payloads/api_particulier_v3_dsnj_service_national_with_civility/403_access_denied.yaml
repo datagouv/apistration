@@ -2,7 +2,7 @@
 description: "Accès refusé - problème d'autorisation"
 params:
   nomNaissance: 'LEROY'
-  prenoms[]:
+  prenoms:
   - 'ANTOINE'
   anneeDateNaissance: 1982
   moisDateNaissance: 4

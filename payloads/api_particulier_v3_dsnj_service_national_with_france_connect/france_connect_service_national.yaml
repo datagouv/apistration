@@ -2,7 +2,7 @@
 description: 'Personne en règle avec ses obligations via FranceConnect'
 params:
   nomNaissance: "DUBOIS"
-  prenoms[]:
+  prenoms:
   - 'Angela'
   - 'Claire'
   - 'Louise'

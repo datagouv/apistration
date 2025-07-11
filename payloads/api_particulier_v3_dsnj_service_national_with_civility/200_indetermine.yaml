@@ -2,7 +2,7 @@
 description: 'Statut indéterminé'
 params:
   nomNaissance: 'PETIT'
-  prenoms[]:
+  prenoms:
   - 'MARIE'
   - 'CLARA'
   anneeDateNaissance: 1992

@@ -2,7 +2,7 @@
 description: "Temps d'attente dépassé - gateway timeout"
 params:
   nomNaissance: 'BERNARD'
-  prenoms[]:
+  prenoms:
   - 'JULIEN'
   anneeDateNaissance: 1988
   moisDateNaissance: 5

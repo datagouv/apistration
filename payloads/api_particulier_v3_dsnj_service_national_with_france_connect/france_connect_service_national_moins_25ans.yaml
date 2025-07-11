@@ -2,7 +2,7 @@
 description: 'Personne de moins de 25 ans en règle avec ses obligations via FranceConnect'
 params:
   nomNaissance: "CUILLERE"
-  prenoms[]:
+  prenoms:
   - 'Paul'
   anneeDateNaissance: 2007
   moisDateNaissance: 01
