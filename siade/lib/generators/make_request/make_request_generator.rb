@@ -1,6 +1,12 @@
 class MakeRequestGenerator < BaseGenerator
   source_root File.expand_path('templates', __dir__)
 
+  class_option :api_kind,
+    type: :string,
+    default: 'entreprise',
+    desc: 'Which product ?',
+    enum: %w[entreprise particulier]
+
   class_option :verb,
     type: :string,
     default: 'GET',
@@ -21,6 +27,10 @@ class MakeRequestGenerator < BaseGenerator
 
   def get_request?
     options[:verb].upcase == 'GET'
+  end
+
+  def api_particulier?
+    options[:api_kind]&.downcase == 'particulier'
   end
 
   def civility_validation?

@@ -4,7 +4,20 @@ class <%= name %>::MakeRequest < MakeRequest::<%= get_request? ? 'Get' : 'Post' 
   def mocking_params
     # XXX You should remove request params which are not provided by the user
     # If you don't have to remove any params, you can remove this method
-    context.params
+    # Params here must be downcased because github returns downcased params when fetching payloads from siade_staging_data
+    <% if api_particulier? && civility_validation? %>
+    {
+      nomNaissance: context.params[:nom_naissance]&.downcase,
+      nomUsage: context.params[:nom_usage]&.downcase,
+      prenoms: context.params[:prenoms]&.map(&:downcase),
+      anneeDateNaissance: context.params[:annee_date_naissance]&.to_i,
+      moisDateNaissance: context.params[:mois_date_naissance]&.to_i,
+      jourDateNaissance: context.params[:jour_date_naissance]&.to_i,
+      sexeEtatCivil: context.params[:sexe_etat_civil]&.downcase,
+      codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
+      codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
+    }.compact
+    <% end %>
   end
 
   def request_uri
