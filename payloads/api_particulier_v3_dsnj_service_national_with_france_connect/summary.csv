@@ -12,7 +12,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,FranceConnect: Boursier échelon 5 (scope complet),"{""nomNaissance"":""Delatour"",""prenoms[]"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
+,FranceConnect: Boursier échelon 5 (scope complet),"{""nomNaissance"":""Delatour"",""prenoms"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
   ""data"": {
     ""statut_service_national"": ""en_regle"",
     ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2008""
@@ -20,10 +20,10 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Personne en règle avec ses obligations via FranceConnect,"{""nomNaissance"":""DUBOIS"",""prenoms[]"":[""Angela"",""Claire"",""Louise""],""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75007""}",200,"{
+,Personne de moins de 25 ans en règle avec ses obligations via FranceConnect,"{""nomNaissance"":""CUILLERE"",""prenoms"":[""Paul""],""anneeDateNaissance"":2007,""moisDateNaissance"":1,""jourDateNaissance"":23,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""42218""}",200,"{
   ""data"": {
     ""statut_service_national"": ""en_regle"",
-    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2008""
+    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2025""
   },
   ""links"": {},
   ""meta"": {}

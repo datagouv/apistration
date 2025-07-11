@@ -1,7 +1,6 @@
 ---
 description: 'Trop de requêtes'
 params:
-  recipient: "01300070530004"
   identifiant: "56789"
 status: 429
 payload: |-

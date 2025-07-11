@@ -1,5 +1,5 @@
 Titre,Description,Paramètres,Status,Réponse
-,Statut sportif trouvé,"{""recipient"":""01300279850005"",""identifiant"":""12345""}",200,"{
+,Statut sportif trouvé,"{""identifiant"":""12345""}",200,"{
   ""data"": {
     ""identite"": {
       ""nom_naissance"": ""Dupont"",
@@ -67,7 +67,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Accès interdit,"{""recipient"":""03061389000018"",""identifiant"":""98765""}",403,"{
+,Accès interdit,"{""identifiant"":""98765""}",403,"{
   ""errors"": [
     {
       ""code"": ""00100"",
@@ -80,7 +80,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Statut sportif non trouvé,"{""recipient"":""04022328870001"",""identifiant"":""54321""}",404,"{
+,Statut sportif non trouvé,"{""identifiant"":""54321""}",404,"{
   ""errors"": [
     {
       ""code"": ""37003"",
@@ -93,7 +93,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Paramètres invalides,"{""recipient"":""38418390400034"",""identifiant"":""43210""}",422,"{
+,Paramètres invalides,"{""identifiant"":""43210""}",422,"{
   ""errors"": [
     {
       ""code"": ""00366"",
@@ -104,7 +104,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Trop de requêtes,"{""recipient"":""01300070530004"",""identifiant"":""56789""}",429,"{
+,Trop de requêtes,"{""identifiant"":""56789""}",429,"{
   ""errors"": [
     {
       ""code"": ""00429"",
@@ -115,7 +115,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Erreur du fournisseur de données,"{""recipient"":""73282932000074"",""identifiant"":""24680""}",502,"{
+,Erreur du fournisseur de données,"{""identifiant"":""24680""}",502,"{
   ""errors"": [
     {
       ""code"": ""37999"",
@@ -128,7 +128,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Délai d'attente dépassé,"{""recipient"":""04402232880009"",""identifiant"":""13579""}",504,"{
+,Délai d'attente dépassé,"{""identifiant"":""13579""}",504,"{
   ""errors"": [
     {
       ""code"": ""37002"",

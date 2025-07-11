@@ -1,7 +1,6 @@
 ---
 description: 'Paramètres invalides'
 params:
-  recipient: "38418390400034"
   identifiant: "43210"
 status: 422
 payload: |-
