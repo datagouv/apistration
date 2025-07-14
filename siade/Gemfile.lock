@@ -197,7 +197,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.12.2)
-    json-schema (5.1.1)
+    json-schema (5.2.1)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
     jsonapi-renderer (0.2.2)
@@ -440,7 +440,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-cobertura (2.1.0)
+    simplecov-cobertura (3.0.0)
       rexml
       simplecov (~> 0.19)
     simplecov-html (0.13.1)
