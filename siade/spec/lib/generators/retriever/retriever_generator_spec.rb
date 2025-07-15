@@ -59,11 +59,11 @@ RSpec.describe RetrieverGenerator, type: :generator do
       it { is_expected.not_to contain(/UploadDocument/) }
     end
 
-    context 'with option: --prochainement' do
-      before { run_generator [resource_name, '--prochainement', 'true'] }
+    context 'without option: --prochainement' do
+      before { run_generator [resource_name, '--prochainement', 'false'] }
 
       it_behaves_like 'a valid RetrieverOrganizer'
-      it { is_expected.to contain(/MockedInteractor/) }
+      it { is_expected.to contain(/ValidateResponse/) }
     end
   end
 

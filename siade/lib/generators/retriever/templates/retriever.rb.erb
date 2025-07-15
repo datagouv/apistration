@@ -1,9 +1,6 @@
 class <%= name %> < RetrieverOrganizer
-  <% if prochainement? %>
   organize <%= validation_class %>,
-           MockedInteractor<% else %>
-  organize <%= validation_class %>,<% if document_resource? %>
-           <%= name %>::MakeRequest,<% end %>
+           <%= name %>::MakeRequest<% unless prochainement? %>,
            <%= name %>::ValidateResponse,<% if document_resource? %>
            <%= name %>::UploadDocument,<% end %><% if options[:is_collection] %>
            <%= name %>::BuildResourceCollection<% else %>

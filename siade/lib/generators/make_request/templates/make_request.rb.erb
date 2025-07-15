@@ -1,10 +1,11 @@
-class <%= name %>::MakeRequest < MakeRequest::<%= get_request? ? 'Get' : 'Post' %>
+class <%= name %>::MakeRequest < <%= prochainement? ? 'MockedInteractor' : "MakeRequest::#{get_request? ? 'Get' : 'Post'}" %>
   protected
 
   def mocking_params
     # XXX You should remove request params which are not provided by the user
     # If you don't have to remove any params, you can remove this method
     # Params here must be downcased because github returns downcased params when fetching payloads from siade_staging_data
+    # When you write this method, you can delete CustomizeMockParams
     <% if api_particulier? && civility_validation? %>
     {
       nomNaissance: context.params[:nom_naissance]&.downcase,

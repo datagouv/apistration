@@ -13,7 +13,7 @@ Si l'API n'est pas encore prête à être développée, la commande précédente
 
 Quand l'API est prête à rentrer en production, vous pouvez relancer la commande sans l'option `--prochainement`, attention à :
 1/ Ne pas écraser les fichiers existants
-2/ Bien modifier l'organizer pour ne plus utiliser MockedInteractor
+2/ Bien modifier le MakeRequest pour ne plus hériter de MockedInteractor
 
 ## État du mode prochainement
 

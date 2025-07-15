@@ -57,11 +57,11 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
     generate 'retriever', name, string_options
     generate 'validate_params', name, string_options if custom_validation?
     generate 'serializer', name, string_options
+    generate 'make_request', name, string_options
 
     return if prochainement?
 
     generate 'upload_document', name, string_options if document_resource?
-    generate 'make_request', name, string_options
     generate 'validate_response', name, string_options
     generate 'build_resource', name, string_options
   end

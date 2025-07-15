@@ -17,6 +17,11 @@ class MakeRequestGenerator < BaseGenerator
     default: 'siren',
     desc: 'Does the API needs to validate: siren, siret or custom ?'
 
+  class_option :prochainement,
+    type: :boolean,
+    default: false,
+    desc: 'Prepare the documentation and staging without a working API'
+
   desc 'See `bin/rails generate scaffold_resource --help` instead'
   def create_make_request
     template 'make_request.rb.erb', File.join('app/interactors', provider_namespace.underscore, resource_class.underscore, 'make_request.rb')
@@ -35,6 +40,10 @@ class MakeRequestGenerator < BaseGenerator
 
   def civility_validation?
     options[:validation_type]&.downcase == 'civility'
+  end
+
+  def prochainement?
+    options[:prochainement]
   end
 
   def id_name
