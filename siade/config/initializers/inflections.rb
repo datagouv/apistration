@@ -35,6 +35,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
 
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
+  inflect.acronym 'ANTS'
   inflect.acronym 'BDF'
   inflect.acronym 'CIBTP'
   inflect.acronym 'CNAF'
