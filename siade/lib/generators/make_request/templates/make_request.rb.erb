@@ -5,8 +5,7 @@ class <%= name %>::MakeRequest < <%= prochainement? ? 'MockedInteractor' : "Make
     # XXX You should remove request params which are not provided by the user
     # If you don't have to remove any params, you can remove this method
     # Params here must be downcased because github returns downcased params when fetching payloads from siade_staging_data
-    # When you write this method, you can delete CustomizeMockParams
-    <% if api_particulier? && civility_validation? %>
+<% if api_particulier? && civility_validation? -%>
     {
       nomNaissance: context.params[:nom_naissance]&.downcase,
       nomUsage: context.params[:nom_usage]&.downcase,
@@ -18,7 +17,7 @@ class <%= name %>::MakeRequest < <%= prochainement? ? 'MockedInteractor' : "Make
       codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
       codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
     }.compact
-    <% end %>
+<% end -%>
   end
 
   def request_uri

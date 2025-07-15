@@ -1,13 +1,13 @@
 class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource_class %>Controller < API<%= api.classify %>::V3AndMore::BaseController
   def show
     if organizer.success?
-      <% if prochainement? %>
+<% if prochainement? -%>
       render json: organizer[:payload],
         status: organizer[:status]
-      <% else %>
+<% else -%>
       render json: serialize_data,
         status: extract_http_code(organizer)
-    <% end %>
+<% end -%>
     else
       render_errors(organizer)
     end

@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger], api: :<%= api %> do
-<% if civility_validation? %>
+  <% if civility_validation? -%>
   path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>' do
     get SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
       tags(*SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
@@ -25,7 +25,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
       unauthorized_request
       forbidden_request
       too_many_requests(<%= name %>)
-<% else %>
+  <% else -%>
   path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>/{<%= params %>}' do
     get SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
       tags(*SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
@@ -45,15 +45,16 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
       too_many_requests(<%= name %>) do
         let(:<%= params %>) { valid_<%= params %>(:<%= provider_namespace.underscore %>) }
       end
-<% end %>
+  <% end -%>
 
       describe 'with valid token and mandatory params' do
-<% if civility_validation? %>
+        <% if civility_validation? -%>
         response '200', 'Données trouvées'<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
-          <% if prochainement? %>before do
-              allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          <% if prochainement? -%>
+          before do
+            allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
           end
-          <% end %>
+          <% end -%>
           description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
           rate_limit_headers
@@ -80,12 +81,13 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
 
             run_test!
           end
-<% else %>
+        <% else -%>
         response '200', 'Entreprise trouvée'<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
-          <% if prochainement? %>before do
-              allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          <% if prochainement? -%>
+          before do
+            allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
           end
-          <% end %>
+          <% end -%>
           description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
           rate_limit_headers
@@ -115,17 +117,17 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
 
             run_test!
           end
-<% end %>
+        <% end -%>
 
-          <% if document_resource? %>
+        <% if document_resource? -%>
           common_provider_errors_request(
             '<%= provider_namespace %>',
             <%= name %>,
             documents_errors('<%= provider_namespace %>')
           )
-        <% else %>
+        <% else -%>
           common_provider_errors_request('<%= provider_namespace %>', <%= name %>)
-        <% end %>
+        <% end -%>
           common_network_error_request('<%= provider_namespace %>', <%= name %>)
         end
       end

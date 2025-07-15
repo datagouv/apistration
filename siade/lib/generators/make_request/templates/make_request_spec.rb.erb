@@ -1,8 +1,9 @@
 RSpec.describe <%= name %>::MakeRequest, type: :make_request do
   describe '.call' do
     subject { described_class.call(params:) }
-<% if id_name %>
-    <% if civility_validation? %>
+
+<% if id_name -%>
+<% if civility_validation? %>
     let(:params) do
       {
         prenoms: %w[Jean Paul],
@@ -15,16 +16,16 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
         code_cog_insee_pays_naissance: '99100'
       }
     end
-    <% else %>
+<% else -%>
     let(:params) do
       {
         <%= id_name %>: 'value'
       }
     end
-    <% end %>
-<% else %>
+<% end -%>
+<% else -%>
     let(:params) { {} }
-<% end %>
+<% end -%>
     let!(:stubbed_request) do
       stub_request(<%= options[:verb].downcase.to_sym %>, Siade.credentials[:provider_url]).with(body:)
     end
@@ -34,7 +35,7 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
     end
 
     let(:request_params) do
-    <% if civility_validation? %>
+<% if civility_validation? -%>
       {
         given_name: 'Jean',
         family_name: 'DUPONT',
@@ -43,11 +44,11 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
         birthplace: nil,
         birthcountry: '12345'
       }
-    <% else %>
+<% else -%>
       {
         <%= id_name %>: 'value'
       }
-    <% end %>
+<% end -%>
     end
 
     it { is_expected.to be_a_success }

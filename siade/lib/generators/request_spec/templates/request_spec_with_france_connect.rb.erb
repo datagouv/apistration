@@ -19,7 +19,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With F
           mock_valid_france_connect_checktoken(scopes:)
         end
 
-        <% unless prochainement? %>
+        <% unless prochainement? -%>
         describe 'when identite is found' do
           before do
             stub_<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>_valid
@@ -51,12 +51,11 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With F
             run_test!
           end
         end
-        <% else %>
+        <% else -%>
         response '200', 'Identité trouvée', pending: 'Implement endpoint' do
           before do
             allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
           end
-          
           description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
           rate_limit_headers
@@ -67,7 +66,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With F
 
           run_test!
         end
-        <% end %>
+        <% end -%>
       end
     end
   end

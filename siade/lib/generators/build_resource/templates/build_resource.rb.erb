@@ -1,10 +1,13 @@
-class <%= name %>::BuildResource < BuildResource<% if document_resource? %>::Document<% end %><% if document_resource? %>
+class <%= name %>::BuildResource < BuildResource<%= '::Document' if document_resource? %>
+<% if document_resource? -%>
   def id
     fail NotImplementedError
-  end<% else %>
+  end
+<% else -%>
   protected
 
   def resource_attributes
     fail NotImplementedError
-  end<% end %>
+  end
+<% end -%>
 end
