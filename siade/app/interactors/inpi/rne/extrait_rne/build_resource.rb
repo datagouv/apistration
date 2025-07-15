@@ -71,6 +71,15 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   TYPE_PERSONNE_PHYSIQUE = 'P'.freeze
   TYPE_PERSONNE_MORALE = 'MORALE'.freeze
   DIFFUSION_INSEE_OUI = 'O'.freeze
+  STATUT_ACTIF = 'actif'.freeze
+  TYPE_ETABLISSEMENT_PRINCIPAL = 'Siège et principal'.freeze
+  TYPE_ETABLISSEMENT_SECONDAIRE = 'Secondaire'.freeze
+  ORIGINE_FONDS_DEFAULT = 'Création'.freeze
+  FOURNISSEUR_RCS = 'rcs'.freeze
+  FOURNISSEUR_RNM = 'rnm'.freeze
+  ENCODING_UTF8 = 'UTF-8'.freeze
+  ENCODING_ISO = 'ISO-8859-1'.freeze
+  PRODUCTION_HOST = 'entreprise.api.gouv.fr'.freeze
 
   protected
 
@@ -89,6 +98,7 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
 
   private
 
+  # Data accessor methods
   def formality
     @formality ||= json_body['formality'] || {}
   end
@@ -145,6 +155,8 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
     @description ||= identite['description'] || {}
   end
 
+  # Helper methods for data extraction
+
   def extract_if_personne_present(default_value = [])
     return default_value if personne.blank?
 
@@ -158,14 +170,20 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def build_person_base(person_data, additional_fields = {})
-    description = person_data['descriptionPersonne'] || {}
-    base = {
+    description = safe_get(person_data, 'descriptionPersonne')
+    base = build_person_identity_hash(description)
+    base.merge(additional_fields)
+  end
+
+  def build_person_identity_hash(description)
+    {
       nom: description['nom'],
       prenom: description.dig('prenoms', 0),
       date_naissance: format_date_naissance(description['dateDeNaissance'])
     }
-    base.merge(additional_fields)
   end
+
+  # Entreprise extraction methods
 
   def extract_entreprise
     extract_if_personne_present({}) { build_entreprise_hash }
@@ -189,7 +207,6 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
     }
   end
 
-  # rubocop:disable Metrics/AbcSize
   def build_entreprise_dates_hash
     {
       date_immatriculation_rne: build_date_immatriculation,
@@ -198,28 +215,23 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
       date_cloture_exercice: format_date_cloture(description['dateClotureExerciceSocial']),
       date_premiere_cloture_exercice: format_date(description['datePremiereCloture']),
       detail_cessation: nil,
-      dissolution: {
-        date: format_date(description['dateDissolutionDisparition']),
-        poursuite_activite: description['indicateurPoursuiteActivite'] || false,
-        avec_liquidation: nil
-      }
+      dissolution: build_dissolution_hash
     }
   end
-  # rubocop:enable Metrics/AbcSize
 
-  def detail_cessation_entreprise
-    return {} unless personne['detailCessationEntreprise']
-
-    personne['detailCessationEntreprise'] || {}
-  end
-
-  def build_dissolution_detail
+  def build_dissolution_hash
     {
-      date: format_date(detail_cessation_entreprise['dateDissolutionDisparition']) || nil,
-      poursuite_activite: detail_cessation_entreprise['indicateurPoursuiteActivite'] || false,
+      date: format_date(description['dateDissolutionDisparition']),
+      poursuite_activite: description['indicateurPoursuiteActivite'] || false,
       avec_liquidation: nil
     }
   end
+
+  def detail_cessation_entreprise
+    personne['detailCessationEntreprise'] || {}
+  end
+
+  # Code hash builders
 
   def build_entreprise_additional_hash
     {
@@ -255,24 +267,18 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def build_code_ape_hash
-    {
-      code: entreprise_data['codeApe'],
-      libelle: get_activite_libelle(entreprise_data['codeApe'])
-    }
+    build_code_hash(entreprise_data['codeApe'], :activite)
   end
 
   def build_code_aprm_hash
     return { code: nil, libelle: nil } unless entreprise_data['codeAprm']
 
-    {
-      code: entreprise_data['codeAprm'],
-      libelle: get_code_aprm_libelle(entreprise_data['codeAprm'])
-    }
+    build_code_hash(entreprise_data['codeAprm'], :aprm)
   end
 
   def extract_adresse_siege(personne)
-    adresse_entreprise = personne['adresseEntreprise'] || {}
-    adresse = adresse_entreprise['adresse'] || {}
+    adresse_entreprise = safe_get(personne, 'adresseEntreprise')
+    adresse = safe_get(adresse_entreprise, 'adresse')
 
     format_adresse(adresse)
   end
@@ -286,7 +292,6 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def pouvoir_actif_et_individu?(pouvoir)
-    role_code = pouvoir.dig('roleEntreprise', 'rolePersonne')
     pouvoir['actif'] != false &&
       pouvoir['typeDePersonne'] == TYPE_PERSONNE_PHYSIQUE &&
       pouvoir['individu']
@@ -294,15 +299,13 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
 
   def build_dirigeant(pouvoir)
     individu = pouvoir['individu']
-    role_entreprise = pouvoir['roleEntreprise'] || {}
+    role_entreprise = safe_get(pouvoir, 'roleEntreprise')
+    description = safe_get(individu, 'descriptionPersonne')
 
-    {
+    build_person_identity_hash(description).merge(
       qualite: extract_qualite(role_entreprise),
-      nom: individu.dig('descriptionPersonne', 'nom'),
-      prenom: individu.dig('descriptionPersonne', 'prenoms', 0),
-      date_naissance: format_date_naissance(individu.dig('descriptionPersonne', 'dateDeNaissance')),
       commune_residence: individu.dig('adresseDomicile', 'commune')
-    }
+    )
   end
 
   def extract_qualite(role_entreprise)
@@ -316,6 +319,8 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
       cac['entreprise']
   end
 
+  # Etablissements extraction methods
+
   def extract_etablissements_actifs
     extract_if_personne_present([]) do
       [
@@ -327,23 +332,23 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
 
   def process_etablissement_principal
     etab = personne['etablissementPrincipal']
-    format_etablissement(etab, 'Siège et principal') if etab && etablissement_actif?(etab)
+    format_etablissement(etab, TYPE_ETABLISSEMENT_PRINCIPAL) if etab && etablissement_actif?(etab)
   end
 
   def process_autres_etablissements
     (personne['autresEtablissements'] || [])
-      .filter_map { |e| format_etablissement(e, 'Secondaire') if etablissement_actif?(e) }
+      .filter_map { |e| format_etablissement(e, TYPE_ETABLISSEMENT_SECONDAIRE) if etablissement_actif?(e) }
   end
 
   def etablissement_actif?(etab)
-    desc = etab['descriptionEtablissement'] || {}
+    desc = safe_get(etab, 'descriptionEtablissement')
     desc['statutPourFormalite'] != STATUT_FERME && desc['dateEffetFermeture'].nil?
   end
 
   def format_etablissement(etab, type_default)
-    desc = etab['descriptionEtablissement'] || {}
-    adresse = etab['adresse'] || {}
-    activites = etab['activites'] || []
+    desc = safe_get(etab, 'descriptionEtablissement')
+    adresse = safe_get(etab, 'adresse')
+    activites = safe_get(etab, 'activites', [])
 
     build_etablissement_hash(
       desc,
@@ -363,18 +368,34 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def build_etablissement_hash(desc, adresse, activite_principale, autres_activites, type_default)
+    build_etablissement_base_hash(desc, type_default)
+      .merge(build_etablissement_activite_hash(desc, activite_principale, autres_activites))
+      .merge(build_etablissement_adresse_hash(adresse))
+  end
+
+  def build_etablissement_base_hash(desc, type_default)
     {
       siret: desc['siret'],
       type_etablissement: type_default,
+      statut: STATUT_ACTIF
+    }
+  end
+
+  def build_etablissement_activite_hash(desc, activite_principale, autres_activites)
+    {
       date_debut_activite: extract_date_debut_activite(desc, activite_principale),
       code_APE: build_code_ape_hash_from_desc(desc),
       code_APRM: build_code_aprm_hash_from_desc(desc),
       origine_fonds: get_origine_fonds(activite_principale),
       nature_etablissement: activite_principale&.dig('formeExercice'),
       activite_principale: fix_encoding(activite_principale&.dig('descriptionDetaillee')),
-      autre_activite: format_autres_activites(autres_activites),
-      adresse: format_adresse_etablissement(adresse),
-      statut: 'actif'
+      autre_activite: format_autres_activites(autres_activites)
+    }
+  end
+
+  def build_etablissement_adresse_hash(adresse)
+    {
+      adresse: format_adresse_etablissement(adresse)
     }
   end
 
@@ -383,10 +404,7 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def build_code_ape_hash_from_desc(desc)
-    {
-      code: desc['codeApe'],
-      libelle: get_activite_libelle(desc['codeApe'])
-    }
+    build_code_hash(desc['codeApe'], :activite)
   end
 
   def build_code_aprm_hash_from_desc(desc)
@@ -402,13 +420,40 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
     autres_activites.join(', ')
   end
 
-  def count_etablissements_fermes
-    extract_if_personne_present(0) do
-      principal_count = etablissement_actif?(personne['etablissementPrincipal']) ? 0 : 1
-      autres_count = (personne['autresEtablissements'] || []).count { |e| !etablissement_actif?(e) }
-      principal_count + autres_count
+  def build_code_hash(code, type)
+    {
+      code: code,
+      libelle: get_code_libelle(code, type)
+    }
+  end
+
+  def get_code_libelle(code, type)
+    case type
+    when :activite
+      get_activite_libelle(code)
+    when :aprm
+      get_code_aprm_libelle(code)
     end
   end
+
+  # Dirigeants extraction methods
+
+  def count_etablissements_fermes
+    extract_if_personne_present(0) do
+      count_closed_etablissement(personne['etablissementPrincipal']) +
+        count_closed_etablissements(personne['autresEtablissements'] || [])
+    end
+  end
+
+  def count_closed_etablissement(etablissement)
+    etablissement_actif?(etablissement) ? 0 : 1
+  end
+
+  def count_closed_etablissements(etablissements)
+    etablissements.count { |e| !etablissement_actif?(e) }
+  end
+
+  # Observations extraction methods
 
   def extract_observations
     rcs_observations + rnm_observations
@@ -426,39 +471,34 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
     content.dig('personneMorale', 'observations', 'rcs') || []
   end
 
+  def safe_get(hash, key, default = {})
+    return default unless hash
+
+    hash[key] || default
+  end
+
   def format_rnm_observations(observations)
     observations.map do |obs|
-      {
-        fournisseur: 'rnm',
-        numero: nil,
-        date: format_date(obs['dateEffet']),
-        texte: obs['observationComplementaire']
-      }
+      build_observation_hash(FOURNISSEUR_RNM, nil, obs['dateEffet'], obs['observationComplementaire'])
     end
   end
 
   def format_rcs_observations(observations)
     observations.map do |obs|
-      {
-        fournisseur: 'rcs',
-        numero: obs['numObservation'] || nil,
-        date: format_date(obs['dateAjout']),
-        texte: fix_encoding(obs['texte'])
-      }
+      build_observation_hash(FOURNISSEUR_RCS, obs['numObservation'], obs['dateAjout'], fix_encoding(obs['texte']))
     end
   end
 
-  def add_pourcentage_capital(additional, modalite)
-    return unless modalite['detentionPartTotale']&.positive?
-
-    additional[:pourcentage_capital] = modalite['detentionPartTotale']
+  def build_observation_hash(fournisseur, numero, date, texte)
+    {
+      fournisseur: fournisseur,
+      numero: numero,
+      date: format_date(date),
+      texte: texte
+    }
   end
 
-  def add_pourcentage_droits_vote(additional, modalite)
-    return unless modalite['detentionVoteTotal']&.positive?
-
-    additional[:pourcentage_droits_vote] = modalite['detentionVoteTotal']
-  end
+  # Formatting and utility methods
 
   def format_date(date_string, type: :iso)
     return nil if date_string.blank?
@@ -519,38 +559,35 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def get_activite_libelle(code_ape)
-    code_naf = Rails.application.config_for(:code_ape)[code_ape]
-
-    return "Activité #{code_ape}" if code_naf.nil?
-
-    code_naf
+    get_code_from_config(:code_ape, code_ape, "Activité #{code_ape}")
   end
 
   def get_code_aprm_libelle(code_aprm)
-    code_nafa = Rails.application.config_for(:code_aprm)[code_aprm]
+    get_code_from_config(:code_aprm, code_aprm, "Activité Art #{code_aprm}")
+  end
 
-    return "Activité Art #{code_aprm}" if code_nafa.nil?
-
-    code_nafa
+  def get_code_from_config(config_key, code, fallback)
+    config_value = Rails.application.config_for(config_key)[code]
+    config_value || fallback
   end
 
   def get_origine_fonds(activite)
-    origine = activite['origine'] || {}
-    ORIGINE_FONDS_MAPPING[origine['typeOrigine']] || 'Création'
+    origine = safe_get(activite, 'origine')
+    ORIGINE_FONDS_MAPPING[origine['typeOrigine']] || ORIGINE_FONDS_DEFAULT
   end
 
   def fix_encoding(text)
     return nil if text.nil?
 
     begin
-      text.force_encoding('UTF-8')
+      text.force_encoding(ENCODING_UTF8)
 
       return text.presence if text.valid_encoding?
 
-      converted_text = text.force_encoding('ISO-8859-1').encode('UTF-8')
+      converted_text = text.force_encoding(ENCODING_ISO).encode(ENCODING_UTF8)
       converted_text.presence
     rescue Encoding::UndefinedConversionError, Encoding::InvalidByteSequenceError
-      text.force_encoding('UTF-8').scrub
+      text.force_encoding(ENCODING_UTF8).scrub
     end
   end
 
@@ -577,7 +614,7 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
   end
 
   def host
-    Rails.env.production? ? 'entreprise.api.gouv.fr' : "#{Rails.env}.entreprise.api.gouv.fr"
+    Rails.env.production? ? PRODUCTION_HOST : "#{Rails.env}.#{PRODUCTION_HOST}"
   end
 
   def timestamp
