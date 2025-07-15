@@ -51,9 +51,9 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
 <% end -%>
     end
 
-    it { is_expected.to be_a_success }
+    it<%= prochainement? ? "(pending: 'Implement endpoint')" : '' %> { is_expected.to be_a_success }
 
-    it 'calls url with correct params' do
+    it 'calls url with correct params'<%= prochainement? ? ", pending: 'Implement endpoint'" : '' %> do
       subject
 
       expect(stubbed_request).to have_been_requested
