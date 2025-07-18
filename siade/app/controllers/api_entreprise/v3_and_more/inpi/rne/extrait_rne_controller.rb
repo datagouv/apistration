@@ -14,7 +14,8 @@ class APIEntreprise::V3AndMore::INPI::RNE::ExtraitRNEController < APIEntreprise:
 
   def organizer_params
     {
-      siren: params.require(:siren)
+      siren: params.require(:siren),
+      token_id: current_user.token_id
     }
   end
 
