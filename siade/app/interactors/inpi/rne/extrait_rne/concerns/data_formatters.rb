@@ -20,9 +20,9 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
       return nil if date.blank?
 
       if date =~ /^(\d{2})(\d{2})$/
-        "#{::Regexp.last_match(2)}/#{::Regexp.last_match(1)}"
+        "#{::Regexp.last_match(2)}-#{::Regexp.last_match(1)}"
       elsif date =~ /^(\d{4})$/
-        "#{date[0..1]}/#{date[2..3]}"
+        "#{date[0..1]}-#{date[2..3]}"
       else
         date
       end

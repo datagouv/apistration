@@ -135,7 +135,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               date_immatriculation_rne: '2020-01-15',
               date_debut_activite: '2020-01-15',
               date_fin_personne: '2119-01-14',
-              date_cloture_exercice: '12/31',
+              date_cloture_exercice: '12-31',
               date_premiere_cloture_exercice: '2021-12-31',
               detail_cessation: nil,
               dissolution: {
