@@ -30,7 +30,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   def build_entreprise_dates_hash
     {
       date_immatriculation_rne: build_date_immatriculation,
-      date_debut_activite: format_date(entreprise_data['dateDebutActiv']),
+      date_debut_activite: compute_date_debut_activite,
       date_fin_personne: format_date(description['dateFinExistence']),
       date_cloture_exercice: format_date_cloture(description['dateClotureExerciceSocial']),
       date_premiere_cloture_exercice: format_date(description['datePremiereCloture']),
@@ -127,6 +127,78 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
 
   def entrepreneur_description
     @entrepreneur_description ||= identite.dig('entrepreneur', 'descriptionPersonne') || {}
+  end
+
+  def compute_date_debut_activite
+    # First try to use the company-level date if available
+    company_date = entreprise_data['dateDebutActiv']
+
+    # For Entreprise Individuelle with closed establishments,
+    # we need to ensure we use the date from active establishments only
+    if entreprise_individuelle? && company_date && closed_establishments?
+      active_establishment_dates = collect_active_establishment_dates
+      return nil if active_establishment_dates.empty?
+
+      oldest_date = active_establishment_dates.min
+      return format_date(oldest_date)
+    end
+
+    # Otherwise use the company-level date
+    format_date(company_date)
+  end
+
+  def closed_establishments?
+    # Check if there are any closed establishments
+    autres = personne['autresEtablissements'] || []
+
+    # Check principal establishment
+    principal = personne['etablissementPrincipal']
+    return true if principal && !etablissement_actif?(principal)
+
+    # Check other establishments
+    autres.any? { |etab| !etablissement_actif?(etab) }
+  end
+
+  def entreprise_individuelle?
+    forme_juridique_code = entreprise_data['formeJuridique'] || nature_creation['formeJuridique']
+    forme_juridique_code == '1000'
+  end
+
+  def collect_active_establishment_dates
+    dates = []
+
+    # Check principal establishment
+    principal = personne['etablissementPrincipal']
+    dates.concat(extract_establishment_dates(principal)) if principal && etablissement_actif?(principal)
+
+    # Check other establishments
+    autres = personne['autresEtablissements'] || []
+    autres.each do |etab|
+      dates.concat(extract_establishment_dates(etab)) if etablissement_actif?(etab)
+    end
+
+    dates.compact
+  end
+
+  def extract_establishment_dates(etab)
+    dates = []
+
+    # Get date from establishment description
+    desc = etab['descriptionEtablissement'] || {}
+    dates << desc['dateDebutActivite'] if desc['dateDebutActivite']
+
+    # Get dates from activities
+    activites = etab['activites'] || []
+    activites.each do |activite|
+      dates << activite['dateDebut'] if activite['dateDebut']
+    end
+
+    dates
+  end
+
+  def etablissement_actif?(etab)
+    desc = etab['descriptionEtablissement'] || {}
+    desc['statutPourFormalite'] != STATUT_FERME && desc['dateEffetFermeture'].nil?
   end
 end
 # rubocop:enable Metrics/ModuleLength
