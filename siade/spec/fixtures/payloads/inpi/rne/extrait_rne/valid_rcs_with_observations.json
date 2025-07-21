@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2025-01-15T10:00:00+01:00",
+  "updatedAt": "2024-05-19T10:28:44+02:00",
   "nombreRepresentantsActifs": 2,
-  "nombreEtablissementsOuverts": 3,
-  "nombreBeneficiairesEffectifsActifs": 1,
-  "id": "600000000000000000000002",
+  "nombreEtablissementsOuverts": 0,
+  "nombreBeneficiairesEffectifsActifs": 2,
+  "id": "12345678901234567890abcd",
   "formality": {
     "siren": "987654321",
     "content": {
@@ -13,7 +13,6 @@
         "dateCreation": "2020-01-15",
         "societeEtrangere": false,
         "formeJuridique": "5710",
-        "formeJuridiqueInsee": "5710",
         "microEntreprise": false,
         "etablieEnFrance": true,
         "salarieEnFrance": true,
@@ -25,7 +24,7 @@
         "beneficiairesEffectifs": [
           {
             "actif": true,
-            "beneficiaireId": "b1234567-89ab-cdef-0123-456789abcdef",
+            "beneficiaireId": "11111111-1111-1111-1111-111111111111",
             "beneficiaire": {
               "descriptionPersonne": {
                 "sirenPresent": false,
@@ -36,9 +35,9 @@
                 "dateDeNaissancePresent": true,
                 "paysNaissancePresent": true,
                 "codePaysNaissancePresent": true,
-                "lieuDeNaissancePresent": true,
-                "codePostalNaissancePresent": true,
-                "codeInseeGeographiquePresent": true,
+                "lieuDeNaissancePresent": false,
+                "codePostalNaissancePresent": false,
+                "codeInseeGeographiquePresent": false,
                 "situationMatrimonialePresent": false,
                 "qualiteDeNonSedentaritePresent": false,
                 "indicateurDeNonSedentaritePresent": false,
@@ -66,15 +65,14 @@
                 "communeDeRattachementPresent": false,
                 "caracteristiquesPresent": false,
                 "indicateurValidationBANPresent": true,
-                "cedexPresent": false,
-                "pays": "FRANCE"
+                "cedexPresent": false
               },
               "indicateurActifAgricole": false
             },
             "modalite": {
-              "detentionPartDirecte": false,
-              "detentionPartDirecteRdd": 0.0,
-              "partsDirectesPleinePropriete": 0.0,
+              "detentionPartDirecte": true,
+              "detentionPartDirecteRdd": 49.0,
+              "partsDirectesPleinePropriete": 49.0,
               "partsDirectesNuePropriete": 0.0,
               "detentionPartIndirecte": false,
               "detentionPartIndirecteRdd": 0.0,
@@ -84,10 +82,10 @@
               "partsIndirectesPersonnesMorales": 0.0,
               "partsIndirectesPmoralesPleinePropriete": 0.0,
               "partsIndirectesPmoralesNuePropriete": 0.0,
-              "detentionPartTotale": 0.0,
-              "detentionVoteDirecte": false,
-              "detentionVoteDirecteRdd": 0.0,
-              "voteDirectePleinePropriete": 0.0,
+              "detentionPartTotale": 49.0,
+              "detentionVoteDirecte": true,
+              "detentionVoteDirecteRdd": 49.0,
+              "voteDirectePleinePropriete": 49.0,
               "voteDirecteNuePropriete": 0.0,
               "voteDirecteUsufruit": 0.0,
               "detentionVoteIndirecte": false,
@@ -114,11 +112,117 @@
               "detentionPouvoirDecisionAG": false,
               "detentionPouvoirNommageMembresConseilAdmin": false,
               "detentionAutresMoyensControle": false,
-              "beneficiaireRepresentantLegal": true,
+              "beneficiaireRepresentantLegal": false,
               "representantLegalPlacementSansGestionDelegue": false,
               "modalitesDeControle": [
-                "0"
+                "3"
               ],
+              "detention25pCapital": true,
+              "detention25pDroitVote": true,
+              "detentionCapitalIndirecteIndivision": false,
+              "detentionCapitalIndirectesPersonnesMorales": false,
+              "detentionVoteIndirecteIndivision": false,
+              "detentionVoteIndirectePersonnesMorales": false
+            }
+          },
+          {
+            "actif": true,
+            "beneficiaireId": "22222222-2222-2222-2222-222222222222",
+            "beneficiaire": {
+              "descriptionPersonne": {
+                "sirenPresent": false,
+                "dateEffetRoleDeclarantPresent": true,
+                "genrePresent": false,
+                "titrePresent": false,
+                "dateDeNaissance": "1980-10",
+                "dateDeNaissancePresent": true,
+                "paysNaissancePresent": true,
+                "codePaysNaissancePresent": true,
+                "lieuDeNaissancePresent": false,
+                "codePostalNaissancePresent": false,
+                "codeInseeGeographiquePresent": false,
+                "situationMatrimonialePresent": false,
+                "qualiteDeNonSedentaritePresent": false,
+                "indicateurDeNonSedentaritePresent": false,
+                "nom": "BERNARD",
+                "prenoms": [
+                  "PIERRE",
+                  "JEAN",
+                  "PAUL"
+                ]
+              },
+              "adresseDomicile": {
+                "roleAdressePresent": false,
+                "codePostalPresent": true,
+                "communePresent": true,
+                "codeInseeCommunePresent": false,
+                "typeVoiePresent": false,
+                "voiePresent": true,
+                "voieCodifieePresent": false,
+                "numVoiePresent": false,
+                "indiceRepetitionPresent": false,
+                "distributionSpecialePresent": false,
+                "communeAnciennePresent": false,
+                "rgpdPresent": false,
+                "datePriseEffetAdressePresent": false,
+                "complementLocalisationPresent": false,
+                "communeDeRattachementPresent": false,
+                "caracteristiquesPresent": false,
+                "indicateurValidationBANPresent": true,
+                "cedexPresent": false
+              },
+              "indicateurActifAgricole": false
+            },
+            "modalite": {
+              "detentionPartDirecte": true,
+              "detentionPartDirecteRdd": 51.0,
+              "partsDirectesPleinePropriete": 51.0,
+              "partsDirectesNuePropriete": 0.0,
+              "detentionPartIndirecte": false,
+              "detentionPartIndirecteRdd": 0.0,
+              "partsIndirectesIndivision": 0.0,
+              "partsIndirectesIndivisionPleinePropriete": 0.0,
+              "partsIndirectesIndivisionNuePropriete": 0.0,
+              "partsIndirectesPersonnesMorales": 0.0,
+              "partsIndirectesPmoralesPleinePropriete": 0.0,
+              "partsIndirectesPmoralesNuePropriete": 0.0,
+              "detentionPartTotale": 51.0,
+              "detentionVoteDirecte": true,
+              "detentionVoteDirecteRdd": 51.0,
+              "voteDirectePleinePropriete": 51.0,
+              "voteDirecteNuePropriete": 0.0,
+              "voteDirecteUsufruit": 0.0,
+              "detentionVoteIndirecte": false,
+              "detentionVoteIndirecteRdd": 0.0,
+              "voteIndirecteIndivision": 0.0,
+              "voteIndirecteIndivisionPleinePropriete": 0.0,
+              "voteIndirecteIndivisionNuePropriete": 0.0,
+              "voteIndirecteIndivisionUsufruit": 0.0,
+              "voteIndirectePersonnesMorales": 0.0,
+              "voteIndirectePmoralesPleinePropriete": 0.0,
+              "voteIndirectePmoralesNuePropriete": 0.0,
+              "voteIndirectePmoralesUsufruit": 0.0,
+              "vocationTitulaireDirectePleineProprieteRdd": false,
+              "vocationTitulaireDirectePleinePropriete": 0.0,
+              "vocationTitulaireDirecteNuePropriete": 0.0,
+              "vocationTitulaireIndirecteIndivision": 0.0,
+              "vocationTitulaireIndirectePleineProprieteRdd": false,
+              "vocationTitulaireIndirectePleinePropriete": 0.0,
+              "vocationTitulaireIndirecteNuePropriete": 0.0,
+              "vocationTitulaireIndirectePersonnesMorales": 0.0,
+              "vocationTitulaireIndirectePmoralesPleinePropriete": 0.0,
+              "vocationTitulaireIndirectePmoralesNuePropriete": 0.0,
+              "detentionVoteTotal": 0.0,
+              "detentionPouvoirDecisionAG": false,
+              "detentionPouvoirNommageMembresConseilAdmin": false,
+              "detentionAutresMoyensControle": false,
+              "beneficiaireRepresentantLegal": false,
+              "representantLegalPlacementSansGestionDelegue": false,
+              "modalitesDeControle": [
+                "3"
+              ],
+              "detention25pCapital": true,
+              "detention25pDroitVote": true,
               "detentionCapitalIndirecteIndivision": false,
               "detentionCapitalIndirectesPersonnesMorales": false,
               "detentionVoteIndirecteIndivision": false,
@@ -128,8 +232,7 @@
         ],
         "adresseEntreprise": {
           "caracteristiques": {
-            "ambulant": false,
-            "domiciliataire": false
+            "ambulant": false
           },
           "adresse": {
             "roleAdressePresent": false,
@@ -147,7 +250,7 @@
             "datePriseEffetAdressePresent": false,
             "complementLocalisationPresent": false,
             "communeDeRattachementPresent": false,
-            "caracteristiquesPresent": true,
+            "caracteristiquesPresent": false,
             "indicateurValidationBANPresent": true,
             "cedexPresent": false,
             "pays": "FRANCE",
@@ -157,20 +260,18 @@
             "codeInseeCommune": "75108",
             "typeVoie": "AV",
             "voie": "DES CHAMPS ELYSEES",
-            "numVoie": "100",
-            "caracteristiques": {
-              "domiciliataire": false
-            }
+            "numVoie": "100"
           }
         },
         "etablissementPrincipal": {
           "descriptionEtablissement": {
             "rolePourEntreprise": "2",
+            "pays": "FRANCE",
+            "codePays": "FRA",
             "siret": "98765432100015",
-            "sansActiviteAutreActiviteSiege": false,
+            "activiteNonSedentaire": false,
             "indicateurEtablissementPrincipal": true,
-            "statutPourFormalite": "4",
-            "etablissementCorrected": true,
+            "statutPourFormalite": "5",
             "codeApe": "7010Z",
             "etablissementValidated": false,
             "etablissementRdd": true
@@ -203,21 +304,24 @@
             "voie": "DES CHAMPS ELYSEES",
             "numVoie": "100",
             "caracteristiques": {
-              "domiciliataire": false
+              "ambulant": false
             }
           },
           "activites": [
             {
-              "categoryCode": "70100000",
-              "activiteId": "a1111111-2222-3333-4444-555555555555",
+              "categoryCode": "02080400",
+              "activiteId": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
               "indicateurPrincipal": true,
               "indicateurProlongement": false,
               "dateDebut": "2020-01-15",
               "exerciceActivite": "P",
               "indicateurNonSedentaire": false,
               "formeExercice": "COMMERCIALE",
-              "descriptionDetaillee": "Activités des sièges sociaux",
-              "indicateurActiviteeApe": true,
+              "categorisationActivite1": "02",
+              "categorisationActivite2": "08",
+              "categorisationActivite3": "04",
+              "descriptionDetaillee": "ActivitÃ©s des siÃ¨ges sociaux et conseil en gestion d'entreprise.",
+              "indicateurActiviteeApe": false,
               "indicateurArtisteAuteur": false,
               "indicateurMarinProfessionnel": false,
               "rolePrincipalPourEntreprise": true,
@@ -225,72 +329,61 @@
               "activiteRattacheeEirl": false,
               "origine": {
                 "typeOrigine": "1"
-              },
-              "isLocationGeranceOrGeranceMandat": false,
-              "metierArt": false
+              }
             }
           ],
-          "isLocationGeranceOrGeranceMandat": false
-        },
-        "identite": {
-          "adresseCorrespondancePresent": false,
-          "entreprise": {
-            "siren": "987654321",
-            "nicSiege": "00015",
-            "denomination": "SOCIETE TEST",
-            "denominationUsuelle": "TEST SA",
-            "nomCommercial": "TEST COMPANY",
-            "formeJuridique": "5710",
-            "codeApe": "7010Z",
-            "capitalVariable": false,
-            "capital": {
-              "montant": 100000.0,
-              "devise": "EUR",
-              "codeDevise": "EUR"
+          "registreAnterieur": {
+            "raa": {
+              "estPresent": false
             },
-            "dateClotureExercice": "31/12",
-            "entrepriseValidated": false,
-            "entrepriseRdd": true
+            "rnm": {
+              "estPresent": false
+            },
+            "rncs": {
+              "estPresent": true,
+              "dateDebut": "2021-06-07T00:00:00+02:00"
+            }
           }
         },
         "composition": {
           "pouvoirs": [
             {
-              "actif": true,
-              "representantId": "r1234567-89ab-cdef-0123-456789abcdef",
-              "typeDePersonne": "P",
+              "roleEntreprise": "73",
+              "typeDePersonne": "INDIVIDU",
+              "indicateurActifAgricole": false,
+              "representantId": "33333333-3333-3333-3333-333333333333",
               "individu": {
                 "descriptionPersonne": {
                   "sirenPresent": false,
                   "dateEffetRoleDeclarantPresent": false,
-                  "genrePresent": true,
+                  "genrePresent": false,
                   "titrePresent": false,
                   "dateDeNaissance": "1975-05",
                   "dateDeNaissancePresent": true,
                   "paysNaissancePresent": true,
-                  "codePaysNaissancePresent": false,
-                  "lieuDeNaissancePresent": true,
-                  "codePostalNaissancePresent": true,
-                  "codeInseeGeographiquePresent": true,
-                  "situationMatrimonialePresent": false,
+                  "codePaysNaissancePresent": true,
+                  "lieuDeNaissancePresent": false,
+                  "codePostalNaissancePresent": false,
+                  "codeInseeGeographiquePresent": false,
+                  "situationMatrimonialePresent": true,
                   "qualiteDeNonSedentaritePresent": false,
                   "indicateurDeNonSedentaritePresent": false,
+                  "role": "73",
                   "nom": "DURAND",
                   "prenoms": [
                     "MARIE",
                     "CLAIRE"
-                  ],
-                  "genre": "2"
+                  ]
                 },
                 "adresseDomicile": {
                   "roleAdressePresent": false,
                   "codePostalPresent": true,
                   "communePresent": true,
                   "codeInseeCommunePresent": true,
-                  "typeVoiePresent": true,
+                  "typeVoiePresent": false,
                   "voiePresent": true,
                   "voieCodifieePresent": false,
-                  "numVoiePresent": true,
+                  "numVoiePresent": false,
                   "indiceRepetitionPresent": false,
                   "distributionSpecialePresent": false,
                   "communeAnciennePresent": false,
@@ -306,53 +399,48 @@
                   "codePostal": "75008",
                   "commune": "PARIS",
                   "codeInseeCommune": "75108"
-                },
-                "indicateurActifAgricole": false
+                }
               },
-              "roleEntreprise": {
-                "rolePersonne": "40",
-                "denomination": "PRESIDENT",
-                "formeJuridique": "5710",
-                "dateEffet": "2020-01-15"
-              },
-              "indicateurActifAgricole": false,
-              "mentionDemissionOrdre": false
+              "actif": true
             },
             {
-              "actif": true,
-              "representantId": "r2234567-89ab-cdef-0123-456789abcdef",
-              "typeDePersonne": "P",
+              "roleEntreprise": "53",
+              "typeDePersonne": "INDIVIDU",
+              "indicateurActifAgricole": false,
+              "representantId": "44444444-4444-4444-4444-444444444444",
               "individu": {
                 "descriptionPersonne": {
                   "sirenPresent": false,
                   "dateEffetRoleDeclarantPresent": false,
-                  "genrePresent": true,
+                  "genrePresent": false,
                   "titrePresent": false,
-                  "dateDeNaissance": "1980-10",
+                  "dateDeNaissance": "1990-01",
                   "dateDeNaissancePresent": true,
                   "paysNaissancePresent": true,
-                  "codePaysNaissancePresent": false,
-                  "lieuDeNaissancePresent": true,
-                  "codePostalNaissancePresent": true,
-                  "codeInseeGeographiquePresent": true,
-                  "situationMatrimonialePresent": false,
+                  "codePaysNaissancePresent": true,
+                  "lieuDeNaissancePresent": false,
+                  "codePostalNaissancePresent": false,
+                  "codeInseeGeographiquePresent": false,
+                  "situationMatrimonialePresent": true,
                   "qualiteDeNonSedentaritePresent": false,
                   "indicateurDeNonSedentaritePresent": false,
+                  "role": "53",
                   "nom": "BERNARD",
                   "prenoms": [
-                    "PIERRE"
-                  ],
-                  "genre": "1"
+                    "PIERRE",
+                    "JEAN",
+                    "PAUL"
+                  ]
                 },
                 "adresseDomicile": {
                   "roleAdressePresent": false,
                   "codePostalPresent": true,
                   "communePresent": true,
                   "codeInseeCommunePresent": true,
-                  "typeVoiePresent": true,
+                  "typeVoiePresent": false,
                   "voiePresent": true,
                   "voieCodifieePresent": false,
-                  "numVoiePresent": true,
+                  "numVoiePresent": false,
                   "indiceRepetitionPresent": false,
                   "distributionSpecialePresent": false,
                   "communeAnciennePresent": false,
@@ -365,102 +453,76 @@
                   "cedexPresent": false,
                   "pays": "FRANCE",
                   "codePays": "FRA",
-                  "codePostal": "75016",
+                  "codePostal": "75008",
                   "commune": "PARIS",
-                  "codeInseeCommune": "75116"
-                },
-                "indicateurActifAgricole": false
+                  "codeInseeCommune": "75108"
+                }
               },
-              "roleEntreprise": {
-                "rolePersonne": "41",
-                "denomination": "DIRECTEUR GENERAL",
-                "formeJuridique": "5710",
-                "dateEffet": "2020-06-01"
-              },
-              "indicateurActifAgricole": false,
-              "mentionDemissionOrdre": false
+              "actif": true
             }
           ]
         },
         "observations": {
           "rcs": [
             {
+              "numObservation": "2020A123456",
               "dateAjout": "2020-01-15",
-              "texte": "Constitution de la société",
-              "dateGreffe": "2020-01-16",
+              "texte": "Constitution de la sociÃ©tÃ©",
+              "dateGreffe": "2020-01-15",
               "etatObs": "Ajout",
-              "dateDerModif": "2020-01-16"
-            },
-            {
-              "numObservation": "1",
-              "dateAjout": "2020-06-01",
-              "texte": "Nomination du directeur général",
-              "dateGreffe": "2020-06-02",
-              "etatObs": "Ajout",
-              "dateDerModif": "2020-06-02"
-            },
-            {
-              "numObservation": "2",
-              "dateAjout": "2021-03-15",
-              "texte": "Augmentation de capital social",
-              "dateGreffe": "2021-03-16",
-              "etatObs": "Ajout",
-              "dateDerModif": "2021-03-16"
+              "dateDerModif": "2020-01-15"
             }
           ]
+        },
+        "identite": {
+          "entreprise": {
+            "siren": "987654321",
+            "denomination": "SOCIETE TEST",
+            "formeJuridique": "5710",
+            "nicSiege": "00018",
+            "codeApe": "7010Z",
+            "dateImmat": "2020-01-15",
+            "dateDebutActiv": "2020-01-15",
+            "entrepriseValidated": false,
+            "entrepriseRdd": true
+          },
+          "description": {
+            "objet": "ActivitÃ©s des siÃ¨ges sociaux et conseil en gestion d'entreprise.",
+            "duree": 99,
+            "dateClotureExerciceSocial": "3112",
+            "datePremiereCloture": "2021-12-31",
+            "ess": false,
+            "capitalVariable": false,
+            "montantCapital": 1000.0,
+            "deviseCapital": "EUR",
+            "indicateurOrigineFusionScission": false,
+            "indicateurAssocieUnique": false,
+            "indicateurAssocieUniqueDirigeant": false,
+            "dateFinExistence": "2119-01-14"
+          }
         },
         "structureEntreprise": {
-          "societeDeParticipationFinanciereDesProfessionsLiberales": false,
-          "etablissementsOuverts": [
-            {
-              "nicEtablissement": "00015",
-              "rang": 1
-            },
-            {
-              "nicEtablissement": "00023",
-              "rang": 2
-            },
-            {
-              "nicEtablissement": "00031",
-              "rang": 3
-            }
-          ]
+          "indicateurPrincipalIdemSiege": true,
+          "aucuneActivite": false
+        }
+      },
+      "registreAnterieur": {
+        "raa": {
+          "estPresent": false
         },
-        "autresEtablissements": []
+        "rnm": {
+          "estPresent": false
+        },
+        "rncs": {
+          "estPresent": true,
+          "dateImmatriculation": "2021-06-10T00:00:00+02:00"
+        }
       }
     },
     "diffusionINSEE": "O",
     "typePersonne": "M",
     "diffusionCommerciale": true,
-    "historique": [
-      {
-        "dateIntegration": "2020-01-16T10:00:00+01:00",
-        "codeEvenement": "09M",
-        "libelleEvenement": "Immatriculation d'une personne morale",
-        "numeroLiasse": "M00012345678",
-        "patchId": "600000000000000000000002_1",
-        "dateEffet": "2020-01-15T00:00:00+01:00"
-      },
-      {
-        "dateIntegration": "2020-06-02T14:00:00+02:00",
-        "codeEvenement": "50M",
-        "libelleEvenement": "Modification relative aux dirigeants",
-        "numeroLiasse": "M00023456789",
-        "patchId": "600000000000000000000002_2",
-        "dateEffet": "2020-06-01T00:00:00+02:00"
-      },
-      {
-        "dateIntegration": "2021-03-16T09:00:00+01:00",
-        "codeEvenement": "22M",
-        "libelleEvenement": "Augmentation du capital social",
-        "numeroLiasse": "M00034567890",
-        "patchId": "600000000000000000000002_3",
-        "dateEffet": "2021-03-15T00:00:00+01:00"
-      }
-    ],
-    "formeJuridique": "5710",
-    "created": "2020-01-15T10:00:00+01:00",
-    "updated": "2025-01-15T10:00:00+01:00"
+    "formeJuridique": "5710"
   },
   "siren": "987654321"
 }

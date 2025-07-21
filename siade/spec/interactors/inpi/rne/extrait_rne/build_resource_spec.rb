@@ -133,7 +133,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 libelle: 'SAS, société par actions simplifiée'
               },
               date_immatriculation_rne: '2020-01-15',
-              date_debut_activite: nil,
+              date_debut_activite: '2020-01-15',
               date_fin_personne: nil,
               date_cloture_exercice: nil,
               date_premiere_cloture_exercice: nil,
@@ -146,10 +146,10 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               nature_entreprise: 'COMMERCIALE',
               associe_unique: false,
               capital_social: {
-                montant: nil,
+                montant: 1000.0,
                 devise: 'EUR'
               },
-              activite_principales_objet_social: nil,
+              activite_principales_objet_social: 'Activités des sièges sociaux et conseil en gestion d\'entreprise.',
               code_APE: {
                 code: '7010Z',
                 libelle: 'Activités des sièges sociaux'
@@ -178,7 +178,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 qualite: 'DIRECTEUR GENERAL',
                 nom: 'BERNARD',
                 prenom: 'PIERRE',
-                date_naissance: '10/1980',
+                date_naissance: '01/1990',
                 commune_residence: 'PARIS'
               }
             ],
@@ -198,7 +198,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 },
                 origine_fonds: 'Création',
                 nature_etablissement: 'COMMERCIALE',
-                activite_principale: 'Activités des sièges sociaux',
+                activite_principale: 'Activités des sièges sociaux et conseil en gestion d\'entreprise.',
                 autre_activite: nil,
                 adresse: {
                   voie: '100 AV DES CHAMPS ELYSEES',
@@ -215,21 +215,9 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
             observations: [
               {
                 fournisseur: 'rcs',
-                numero: nil,
+                numero: '2020A123456',
                 date: '2020-01-15',
                 texte: 'Constitution de la société'
-              },
-              {
-                fournisseur: 'rcs',
-                numero: '1',
-                date: '2020-06-01',
-                texte: 'Nomination du directeur général'
-              },
-              {
-                fournisseur: 'rcs',
-                numero: '2',
-                date: '2021-03-15',
-                texte: 'Augmentation de capital social'
               }
             ]
           }

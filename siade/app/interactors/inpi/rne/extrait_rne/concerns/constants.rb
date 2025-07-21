@@ -2,7 +2,8 @@ module INPI::RNE::ExtraitRNE::Concerns::Constants
   ROLE_MAPPING = {
     '40' => 'PRESIDENT',
     '41' => 'DIRECTEUR GENERAL',
-    '73' => 'Président',
+    '53' => 'DIRECTEUR GENERAL',
+    '73' => 'PRESIDENT',
     '6000' => 'Président',
     '6001' => 'Président du conseil d\'administration',
     '6002' => 'Président du conseil de surveillance',
@@ -40,6 +41,7 @@ module INPI::RNE::ExtraitRNE::Concerns::Constants
   DEFAULT_PAYS = 'FRANCE'.freeze
   STATUT_FERME = '6'.freeze
   TYPE_PERSONNE_PHYSIQUE = 'P'.freeze
+  TYPE_PERSONNE_INDIVIDU = 'INDIVIDU'.freeze
   TYPE_PERSONNE_MORALE = 'MORALE'.freeze
   DIFFUSION_INSEE_OUI = 'O'.freeze
   STATUT_ACTIF = 'actif'.freeze

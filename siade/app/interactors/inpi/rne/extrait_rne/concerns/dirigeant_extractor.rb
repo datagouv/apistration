@@ -12,7 +12,7 @@ module INPI::RNE::ExtraitRNE::Concerns::DirigeantExtractor
 
   def pouvoir_actif_et_individu?(pouvoir)
     pouvoir['actif'] != false &&
-      pouvoir['typeDePersonne'] == TYPE_PERSONNE_PHYSIQUE &&
+      [TYPE_PERSONNE_PHYSIQUE, TYPE_PERSONNE_INDIVIDU].include?(pouvoir['typeDePersonne']) &&
       pouvoir['individu']
   end
 
@@ -28,8 +28,15 @@ module INPI::RNE::ExtraitRNE::Concerns::DirigeantExtractor
   end
 
   def extract_qualite(role_entreprise)
-    role_code = role_entreprise['rolePersonne']
-    ROLE_MAPPING[role_code] || role_entreprise['denomination'] || role_code
+    if role_entreprise.is_a?(String)
+      # New format: roleEntreprise is a direct string
+      role_code = role_entreprise
+      ROLE_MAPPING[role_code] || role_code
+    else
+      # Old format: roleEntreprise is an object with rolePersonne field
+      role_code = role_entreprise['rolePersonne']
+      ROLE_MAPPING[role_code] || role_entreprise['denomination'] || role_code
+    end
   end
 
   def build_person_identity_hash(description)
