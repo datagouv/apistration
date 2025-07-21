@@ -39,6 +39,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
             identite_entreprise: {
               siren: '123456789',
               denomination: nil,
+              nom: 'DUPONT',
+              prenoms: %w[JEAN PIERRE],
               forme_juridique: {
                 code: '1000',
                 libelle: 'Entreprise individuelle'
@@ -82,6 +84,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               {
                 siret: '12345678900001',
                 type_etablissement: 'Siège et principal',
+                statut: 'actif',
                 date_debut_activite: '2010-01-15',
                 code_APE: {
                   code: '3213Z',
@@ -101,8 +104,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                   commune: 'PARIS',
                   pays: 'FRANCE',
                   complement: nil
-                },
-                statut: 'actif'
+                }
               }
             ],
             diffusion_commerciale: false,
@@ -124,6 +126,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
             identite_entreprise: {
               siren: '987654321',
               denomination: 'SOCIETE TEST',
+              nom: nil,
+              prenoms: nil,
               forme_juridique: {
                 code: '5710',
                 libelle: 'SAS, société par actions simplifiée'
@@ -182,6 +186,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               {
                 siret: '98765432100015',
                 type_etablissement: 'Siège et principal',
+                statut: 'actif',
                 date_debut_activite: '2020-01-15',
                 code_APE: {
                   code: '7010Z',
@@ -201,8 +206,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                   commune: 'PARIS',
                   pays: 'FRANCE',
                   complement: nil
-                },
-                statut: 'actif'
+                }
               }
             ],
             diffusion_commerciale: true,
@@ -243,6 +247,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
             identite_entreprise: {
               siren: '123456789',
               denomination: nil,
+              nom: 'DUPONT',
+              prenoms: %w[JEAN MARIE],
               forme_juridique: {
                 code: '1000',
                 libelle: 'Entreprise individuelle'
@@ -286,6 +292,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               {
                 siret: '12345678900010',
                 type_etablissement: 'Siège et principal',
+                statut: 'actif',
                 date_debut_activite: '2024-01-01',
                 code_APE: {
                   code: '4520A',
@@ -305,8 +312,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                   commune: 'PARIS',
                   pays: 'FRANCE',
                   complement: nil
-                },
-                statut: 'actif'
+                }
               }
             ],
             diffusion_commerciale: true,
@@ -341,6 +347,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
             identite_entreprise: {
               siren: '123456789',
               denomination: nil,
+              nom: 'MARTIN',
+              prenoms: %w[JEAN PIERRE HENRI],
               forme_juridique: {
                 code: '1000',
                 libelle: 'Entreprise individuelle'

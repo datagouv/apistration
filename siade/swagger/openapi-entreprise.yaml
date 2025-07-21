@@ -15299,6 +15299,23 @@ paths:
                             nullable: true
                             description: Dénomination sociale de l'entreprise
                             example: TECH SOLUTIONS FRANCE
+                          nom:
+                            type: string
+                            nullable: true
+                            description: Nom de famille de l'entrepreneur (pour les
+                              entreprises individuelles uniquement)
+                            example: MARTIN
+                          prenoms:
+                            type: array
+                            nullable: true
+                            description: Liste des prénoms de l'entrepreneur (pour
+                              les entreprises individuelles uniquement)
+                            items:
+                              type: string
+                            example:
+                            - JEAN
+                            - PIERRE
+                            - HENRI
                           siren:
                             type: string
                             description: Numéro SIREN de l'entreprise
@@ -15483,6 +15500,8 @@ paths:
                             - complement
                         required:
                         - denomination
+                        - nom
+                        - prenoms
                         - siren
                         - date_immatriculation_rne
                         - date_debut_activite

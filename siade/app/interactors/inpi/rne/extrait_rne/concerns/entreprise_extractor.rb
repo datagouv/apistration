@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   include INPI::RNE::ExtraitRNE::Concerns::Constants
   include INPI::RNE::ExtraitRNE::Concerns::DataFormatters
@@ -18,6 +19,8 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
     {
       siren: siren,
       denomination: entreprise_data['denomination'],
+      nom: extract_entrepreneur_nom,
+      prenoms: extract_entrepreneur_prenoms,
       forme_juridique: build_forme_juridique_hash_from_data,
       nature_entreprise: content['formeExerciceActivitePrincipale'],
       associe_unique: entreprise_data['indicateurAssocieUnique'] || false
@@ -113,4 +116,17 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   def detail_cessation_entreprise
     personne['detailCessationEntreprise'] || {}
   end
+
+  def extract_entrepreneur_nom
+    entrepreneur_description['nom']
+  end
+
+  def extract_entrepreneur_prenoms
+    entrepreneur_description['prenoms']
+  end
+
+  def entrepreneur_description
+    @entrepreneur_description ||= identite.dig('entrepreneur', 'descriptionPersonne') || {}
+  end
 end
+# rubocop:enable Metrics/ModuleLength
