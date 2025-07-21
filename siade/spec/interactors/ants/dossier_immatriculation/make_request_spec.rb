@@ -23,7 +23,9 @@ RSpec.describe ANTS::DossierImmatriculation::MakeRequest, type: :make_request do
       }
     end
 
-    it(pending: 'Implement endpoint') { is_expected.to be_a_success }
+    describe 'Implements endpoint', pending: 'Implement endpoint' do
+      it { is_expected.to be_a_success }
+    end
 
     it 'calls url with correct params', pending: 'Implement endpoint' do
       subject

@@ -51,7 +51,10 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
 <% end -%>
     end
 
-    it<%= prochainement? ? "(pending: 'Implement endpoint')" : '' %> { is_expected.to be_a_success }
+    <% if prochainement? -%>
+            describe 'Implements endpoint', pending: 'Implement endpoint' do<% end %>
+      it { is_expected.to be_a_success }
+      <% if prochainement? %>end<% end %>
 
     it 'calls url with correct params'<%= prochainement? ? ", pending: 'Implement endpoint'" : '' %> do
       subject
