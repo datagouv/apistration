@@ -50,7 +50,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   def build_entreprise_additional_hash
     {
       capital_social: build_capital_social_hash,
-      activite_principales_objet_social: description['objet'],
+      activite_principales_objet_social: extract_activite_principales_objet_social,
       code_APE: build_code_ape_hash,
       code_APRM: build_code_aprm_hash,
       adresse_siege_social: extract_adresse_siege(personne)
@@ -111,6 +111,16 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
     adresse = safe_get(adresse_entreprise, 'adresse')
 
     format_adresse(adresse)
+  end
+
+  def extract_activite_principales_objet_social
+    # Use the description objet first, fallback to APE libelle if nil
+    objet = description['objet']
+    return objet if objet.present?
+
+    # Fallback to APE code libelle
+    code_ape = entreprise_data['codeApe']
+    get_activite_libelle(code_ape) if code_ape
   end
 
   def detail_cessation_entreprise

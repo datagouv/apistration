@@ -62,7 +62,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 montant: nil,
                 devise: 'EUR'
               },
-              activite_principales_objet_social: nil,
+              activite_principales_objet_social: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires',
               code_APE: {
                 code: '3213Z',
                 libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
@@ -258,7 +258,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 montant: nil,
                 devise: 'EUR'
               },
-              activite_principales_objet_social: nil,
+              activite_principales_objet_social: 'Entretien et réparation de véhicules automobiles légers',
               code_APE: {
                 code: '4520A',
                 libelle: 'Entretien et réparation de véhicules automobiles légers'
@@ -358,7 +358,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 montant: nil,
                 devise: 'EUR'
               },
-              activite_principales_objet_social: nil,
+              activite_principales_objet_social: 'Programmation informatique',
               code_APE: {
                 code: '6201Z',
                 libelle: 'Programmation informatique'
