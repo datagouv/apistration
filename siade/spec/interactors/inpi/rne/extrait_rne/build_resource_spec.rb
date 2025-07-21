@@ -310,14 +310,14 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               {
                 fournisseur: 'rnm',
                 numero: nil,
-                date: '2024-06-15',
-                texte: 'Inscription d\'office de mentions - Qualité de la personne - Artisan - JEAN DUPONT (Entrepreneur) - Établissement - 12345678900010 - Entretien et réparation de véhicules automobiles'
+                date: '2024-09-20',
+                texte: 'Modification relative au conjoint collaborateur'
               },
               {
                 fournisseur: 'rnm',
                 numero: nil,
-                date: '2024-09-20',
-                texte: 'Modification relative au conjoint collaborateur'
+                date: '2024-06-15',
+                texte: 'Inscription d\'office de mentions - Qualité de la personne - Artisan - JEAN DUPONT (Entrepreneur) - Établissement - 12345678900010 - Entretien et réparation de véhicules automobiles'
               }
             ]
           }
