@@ -314,6 +314,10 @@
   title: 'Entité non traitable'
   detail: "Le code cog du département de naissance est manquant ou invalide"
 
+- code: '00450'
+  title: 'Entité non traitable'
+  detail: "L'immatriculation du véhicule est manquante"
+
 - code: '00402'
   title: Version d'API non prise en charge
 
