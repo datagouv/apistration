@@ -96,7 +96,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "M"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur CNAF MARTIN",
         "complement_information": null,
@@ -115,8 +117,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -177,7 +181,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "M"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur CNAF MARTIN",
         "complement_information": null,
@@ -196,8 +202,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -259,7 +267,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Madame DUBOIS ANGELA",
         "complement_information": null,
@@ -278,8 +288,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -380,8 +392,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -448,7 +462,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "M"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur MERCIER JEAN",
         "complement_information": null,
@@ -467,8 +483,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -577,8 +595,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -687,8 +707,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -797,8 +819,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -908,8 +932,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1018,8 +1044,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1141,8 +1169,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1243,8 +1273,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1366,8 +1398,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

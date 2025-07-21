@@ -84,8 +84,10 @@
       "statut_service_national": "en_regle",
       "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -137,8 +139,10 @@
       "statut_service_national": "en_regle",
       "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2025"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
