@@ -4,6 +4,13 @@ ants:
     tags:
       - "Prochainement"
     description: "Dossier d'immatriculation du véhicule avec l'identité du demandeur du dossier"
+    parameters:
+      immatriculation:
+        name: "Immatriculation"
+        type: "string"
+        description: "Identifiant de l'immatriculation du véhicule"
+        required: true
+        example: "AA-123-BB"
     attributes:
       statut_demandeur:
         title: "Statut du demandeur"
