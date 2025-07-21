@@ -23,7 +23,7 @@ class INPI::RNE::ExtraitRNE::BuildResource < BuildResource
       document_url: link(target: 'extrait', document_id: siren),
       identite_entreprise: extract_entreprise,
       dirigeants_et_associes: extract_dirigeants,
-      etablissements: extract_etablissements_actifs,
+      etablissements: extract_etablissements,
       diffusion_commerciale: formality['diffusionCommerciale'] || false,
       diffusion_insee: formality['diffusionINSEE'] == DIFFUSION_INSEE_OUI || false,
       etablissements_fermes_total: count_etablissements_fermes,

@@ -3,7 +3,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EtablissementExtractor
   include INPI::RNE::ExtraitRNE::Concerns::Constants
   include INPI::RNE::ExtraitRNE::Concerns::DataFormatters
 
-  def extract_etablissements_actifs
+  def extract_etablissements
     extract_if_personne_present([]) do
       [
         process_etablissement_principal,
@@ -19,7 +19,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EtablissementExtractor
 
   def process_autres_etablissements
     (personne['autresEtablissements'] || [])
-      .filter_map { |e| format_etablissement(e, TYPE_ETABLISSEMENT_SECONDAIRE) if etablissement_actif?(e) }
+      .filter_map { |e| format_etablissement(e, TYPE_ETABLISSEMENT_SECONDAIRE) }
   end
 
   def etablissement_actif?(etab)
@@ -59,8 +59,16 @@ module INPI::RNE::ExtraitRNE::Concerns::EtablissementExtractor
     {
       siret: desc['siret'],
       type_etablissement: type_default,
-      statut: STATUT_ACTIF
+      statut: get_etablissement_statut(desc)
     }
+  end
+
+  def get_etablissement_statut(desc)
+    if desc['statutPourFormalite'] == STATUT_FERME || desc['dateEffetFermeture'].present?
+      'fermé'
+    else
+      STATUT_ACTIF
+    end
   end
 
   def build_etablissement_activite_hash(desc, activite_principale, autres_activites)

@@ -1,0 +1,219 @@
+{
+  "updatedAt": "2024-11-25T19:44:47+01:00",
+  "nombreRepresentantsActifs": 0,
+  "nombreEtablissementsOuverts": 0,
+  "nombreBeneficiairesEffectifsActifs": 0,
+  "id": "63cfb424c1611dffe902f663",
+  "formality": {
+    "siren": "123456789",
+    "content": {
+      "succursaleOuFiliale": "AVEC_ETABLISSEMENT",
+      "formeExerciceActivitePrincipale": "LIBERALE_NON_REGLEMENTEE",
+      "natureCreation": {
+        "dateCreation": "2020-01-01",
+        "formeJuridique": "1000",
+        "microEntreprise": false,
+        "relieeEntrepriseAgricole": false,
+        "entrepriseAgricole": false,
+        "eirl": false
+      },
+      "personnePhysique": {
+        "adresseEntreprise": {
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": false,
+            "indicateurValidationBANPresent": true,
+            "cedexPresent": false,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "PARIS",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "DE LA PAIX",
+            "numVoie": "10"
+          }
+        },
+        "etablissementPrincipal": {
+          "descriptionEtablissement": {
+            "rolePourEntreprise": "3",
+            "siret": "12345678900001",
+            "indicateurEtablissementPrincipal": true,
+            "statutPourFormalite": "5",
+            "codeApe": "6201Z",
+            "etablissementValidated": false,
+            "etablissementRdd": true
+          },
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": true,
+            "indicateurValidationBANPresent": true,
+            "cedexPresent": false,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "PARIS",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "DE LA PAIX",
+            "numVoie": "10"
+          },
+          "activites": [
+            {
+              "categoryCode": "02080902",
+              "activiteId": "11111111-2222-3333-4444-555555555555",
+              "indicateurPrincipal": true,
+              "indicateurProlongement": false,
+              "dateDebut": "2020-01-07",
+              "formeExercice": "LIBERALE_NON_REGLEMENTEE",
+              "categorisationActivite1": "02",
+              "categorisationActivite2": "08",
+              "categorisationActivite3": "09",
+              "categorisationActivite4": "02",
+              "descriptionDetaillee": "Programmation informatique",
+              "indicateurActiviteeApe": true,
+              "indicateurArtisteAuteur": false,
+              "indicateurMarinProfessionnel": false,
+              "rolePrincipalPourEntreprise": true,
+              "codeApe": "6201Z",
+              "activiteRattacheeEirl": false
+            }
+          ]
+        },
+        "autresEtablissements": [
+          {
+            "descriptionEtablissement": {
+              "rolePourEntreprise": "14",
+              "siret": "12345678900002",
+              "indicateurEtablissementPrincipal": false,
+              "statutPourFormalite": "2",
+              "dateEffetFermeture": "2021-06-27",
+              "codeApe": "6201Z",
+              "etablissementValidated": false,
+              "etablissementRdd": true
+            },
+            "adresse": {
+              "roleAdressePresent": false,
+              "codePostalPresent": true,
+              "communePresent": true,
+              "codeInseeCommunePresent": true,
+              "typeVoiePresent": false,
+              "voiePresent": true,
+              "voieCodifieePresent": false,
+              "numVoiePresent": true,
+              "indiceRepetitionPresent": false,
+              "distributionSpecialePresent": false,
+              "communeAnciennePresent": false,
+              "rgpdPresent": false,
+              "datePriseEffetAdressePresent": false,
+              "complementLocalisationPresent": false,
+              "communeDeRattachementPresent": false,
+              "caracteristiquesPresent": false,
+              "indicateurValidationBANPresent": true,
+              "cedexPresent": false,
+              "pays": "FRANCE",
+              "codePays": "FRA",
+              "codePostal": "69001",
+              "commune": "LYON",
+              "codeInseeCommune": "69123",
+              "voie": "DES HALLES",
+              "numVoie": "5"
+            },
+            "activites": [
+              {
+                "categoryCode": "02080902",
+                "activiteId": "22222222-3333-4444-5555-666666666666",
+                "indicateurPrincipal": true,
+                "indicateurProlongement": false,
+                "dateDebut": "2020-01-01",
+                "dateFin": "2021-06-27",
+                "formeExercice": "LIBERALE_NON_REGLEMENTEE",
+                "categorisationActivite1": "02",
+                "categorisationActivite2": "08",
+                "categorisationActivite3": "09",
+                "categorisationActivite4": "02",
+                "descriptionDetaillee": "Programmation informatique",
+                "indicateurActiviteeApe": true,
+                "indicateurArtisteAuteur": false,
+                "indicateurMarinProfessionnel": false,
+                "rolePrincipalPourEntreprise": false,
+                "codeApe": "6201Z",
+                "activiteRattacheeEirl": false
+              }
+            ]
+          }
+        ],
+        "identite": {
+          "adresseCorrespondancePresent": false,
+          "entreprise": {
+            "siren": "123456789",
+            "formeJuridique": "1000",
+            "nicSiege": "00001",
+            "codeApe": "6201Z",
+            "dateImmat": "2020-01-01",
+            "dateDebutActiv": "2020-01-01",
+            "entrepriseValidated": false,
+            "entrepriseRdd": true
+          },
+          "entrepreneur": {
+            "descriptionPersonne": {
+              "sirenPresent": false,
+              "dateEffetRoleDeclarantPresent": false,
+              "genrePresent": true,
+              "titrePresent": false,
+              "dateDeNaissancePresent": false,
+              "paysNaissancePresent": false,
+              "codePaysNaissancePresent": false,
+              "lieuDeNaissancePresent": false,
+              "codePostalNaissancePresent": false,
+              "codeInseeGeographiquePresent": false,
+              "situationMatrimonialePresent": false,
+              "qualiteDeNonSedentaritePresent": false,
+              "indicateurDeNonSedentaritePresent": false,
+              "nom": "MARTIN",
+              "prenoms": [
+                "JEAN",
+                "PIERRE",
+                "HENRI"
+              ],
+              "genre": "1"
+            }
+          }
+        }
+      }
+    },
+    "diffusionINSEE": "N",
+    "typePersonne": "P",
+    "diffusionCommerciale": true,
+    "formeJuridique": "1000"
+  },
+  "siren": "123456789"
+}

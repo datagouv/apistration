@@ -330,5 +330,115 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
         )
       end
     end
+
+    context 'with valid_ei.json' do
+      let(:body) { read_payload_file('inpi/rne/extrait_rne/valid_ei.json') }
+
+      it do
+        expect(subject[:document_url]).to match(url_regexp)
+        expect(subject).to include(
+          {
+            identite_entreprise: {
+              siren: '123456789',
+              denomination: nil,
+              forme_juridique: {
+                code: '1000',
+                libelle: 'Entreprise individuelle'
+              },
+              nature_entreprise: 'LIBERALE_NON_REGLEMENTEE',
+              associe_unique: false,
+              date_immatriculation_rne: '2020-01-01',
+              date_debut_activite: '2020-01-01',
+              date_fin_personne: nil,
+              date_cloture_exercice: nil,
+              date_premiere_cloture_exercice: nil,
+              detail_cessation: nil,
+              dissolution: {
+                date: nil,
+                poursuite_activite: false,
+                avec_liquidation: nil
+              },
+              capital_social: {
+                montant: nil,
+                devise: 'EUR'
+              },
+              activite_principales_objet_social: nil,
+              code_APE: {
+                code: '6201Z',
+                libelle: 'Programmation informatique'
+              },
+              code_APRM: {
+                code: nil,
+                libelle: nil
+              },
+              adresse_siege_social: {
+                voie: '10 RUE DE LA PAIX',
+                code_postal: '75001',
+                commune: 'PARIS',
+                pays: 'FRANCE',
+                complement: nil
+              }
+            },
+            dirigeants_et_associes: [],
+            etablissements: [
+              {
+                siret: '12345678900001',
+                type_etablissement: 'Siège et principal',
+                date_debut_activite: '2020-01-07',
+                code_APE: {
+                  code: '6201Z',
+                  libelle: 'Programmation informatique'
+                },
+                code_APRM: {
+                  code: nil,
+                  libelle: nil
+                },
+                origine_fonds: 'Création',
+                nature_etablissement: 'LIBERALE_NON_REGLEMENTEE',
+                activite_principale: 'Programmation informatique',
+                autre_activite: nil,
+                adresse: {
+                  voie: '10 RUE DE LA PAIX',
+                  code_postal: '75001',
+                  commune: 'PARIS',
+                  pays: 'FRANCE',
+                  complement: nil
+                },
+                statut: 'actif'
+              },
+              {
+                siret: '12345678900002',
+                type_etablissement: 'Secondaire',
+                date_debut_activite: '2020-01-01',
+                code_APE: {
+                  code: '6201Z',
+                  libelle: 'Programmation informatique'
+                },
+                code_APRM: {
+                  code: nil,
+                  libelle: nil
+                },
+                origine_fonds: 'Création',
+                nature_etablissement: 'LIBERALE_NON_REGLEMENTEE',
+                activite_principale: 'Programmation informatique',
+                autre_activite: nil,
+                adresse: {
+                  voie: '5 DES HALLES',
+                  code_postal: '69001',
+                  commune: 'LYON',
+                  pays: 'FRANCE',
+                  complement: nil
+                },
+                statut: 'fermé'
+              }
+            ],
+            diffusion_commerciale: true,
+            diffusion_insee: false,
+            etablissements_fermes_total: 1,
+            observations: []
+          }
+        )
+      end
+    end
   end
 end
