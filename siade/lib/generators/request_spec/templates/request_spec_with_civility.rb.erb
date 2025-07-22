@@ -62,6 +62,23 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With C
             run_test!
           end
         end
+        <% else %>
+        response '200', 'Identité trouvée', pending: 'Implement endpoint' do
+          before do
+            allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          end
+
+          description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
+
+          rate_limit_headers
+
+          schema build_rswag_response(
+            attributes: SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
+          )
+
+          run_test!
+        end
+      <% end %>
 
         describe 'when not found' do
           before { stub_<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>_not_found }
@@ -74,23 +91,6 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With C
             run_test!
           end
         end
-        <% else %>
-        response '200', 'Identité trouvée', pending: 'Implement endpoint' do
-          before do
-            allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
-          end
-          
-          description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
-
-          rate_limit_headers
-
-          schema build_rswag_response(
-            attributes: SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
-          )
-
-          run_test!
-        end
-        <% end %>
 
         describe 'server errors' do
           unprocessable_entity_error_request(:sexe_etat_civil) do

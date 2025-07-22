@@ -37,20 +37,6 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With F
             run_test!
           end
         end
-
-        describe 'when identite is not found' do
-          before do
-            stub_<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>_not_found
-          end
-
-          response '404', 'Non trouvée' do
-            build_rswag_example(NotFoundError.new('<%= provider_namespace %>'))
-
-            schema '$ref' => '#/components/schemas/Error'
-
-            run_test!
-          end
-        end
         <% else -%>
         response '200', 'Identité trouvée', pending: 'Implement endpoint' do
           before do
@@ -66,7 +52,22 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With F
 
           run_test!
         end
-        <% end -%>
+      <% end -%>
+        describe 'when identite is not found' do
+          before do
+            stub_<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>_not_found
+          end
+
+          response '404', 'Non trouvée' do
+            build_rswag_example(NotFoundError.new('<%= provider_namespace %>'))
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+        end
+
+        # TODO: Waiting FCv2 to be merge to provide error examples
       end
     end
   end
