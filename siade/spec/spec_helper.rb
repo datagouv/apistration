@@ -105,6 +105,7 @@ RSpec.configure do |config|
   config.include CommonErrorsMessagesHelpers
   config.include TokenHelpers
 
+  config.include ProviderStubs::ANTS
   config.include ProviderStubs::MSACotisations
   config.include ProviderStubs::DGFIP
   config.include ProviderStubs::DSNJ
