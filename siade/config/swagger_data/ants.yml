@@ -15,7 +15,6 @@ ants:
       statut_demandeur:
         title: "Statut du demandeur"
         type: "string"
-        required: true
         description: "Le statut du demandeur du dossier d'immatriculation. Si le véhicule est en location longue durée (LLD, LCB, LCL), alors il s'agit du locataire. Dans les autres cas, c'est 'titulaire' ou 'cotitulaire'"
         enum:
           - locataire
@@ -25,139 +24,144 @@ ants:
       statut_location:
         title: "Statut de location"
         type: "object"
-        required: false
         description: "Le statut de location du véhicule, si applicable. Les codes LLD, LCB, LCL correspondent à une location longue durée"
+        required:
+          - code
+          - label
         properties:
           code:
             title: "Code du statut de location"
             type: "string"
-            required: true
             description: "Le code du statut de location selon la nomenclature officielle"
             example: "LLD"
+            nullable: true
           label:
             title: "Label du statut de location"
             type: "string"
-            required: true
             description: "Le label descriptif du statut de location"
             example: "Location Longue Durée"
+            nullable: true
       identite_demandeur:
         title: "Identité du demandeur du dossier d'immatriculation"
         type: "object"
-        required: true
         description: "Les nom, prénom et adresse dans l'État membre d'immatriculation, à la date de délivrance du document, du demandeur du dossier d'immatriculation (titulaire, cotitulaire ou locataire selon le statut)"
         properties:
           nom:
             title: "Nom"
             type: "string"
-            required: true
             description: "Le nom du demandeur du dossier d'immatriculation"
             example: "MARTIN"
           prenom:
             title: "Prénom"
             type: "string"
-            required: false
             description: "Le prénom du demandeur du dossier d'immatriculation (si personne physique)"
             example: "JEAN"
           adresse:
             title: "Adresse"
             type: "object"
-            required: true
             description: "L'adresse du demandeur dans l'État membre d'immatriculation"
             properties: &adresse_properties
               compl_adresse:
                 title: "Complément d'adresse"
                 type: "string"
-                required: false
+                nullable: true
                 description: "Complément d'adresse"
                 example: null
               num_voie:
                 title: "Numéro de voie"
                 type: "string"
-                required: false
+                nullable: true
                 description: "Numéro de voie"
                 example: "15"
               type_voie:
                 title: "Type de voie"
                 type: "string"
-                required: false
+                nullable: true
                 description: "Type de voie"
                 example: "RUE"
               libelle_voie:
                 title: "Libellé de voie"
                 type: "string"
-                required: false
+                nullable: true
                 description: "Libellé de voie"
                 example: "DE LA REPUBLIQUE"
               code_postal:
                 title: "Code postal"
                 type: "string"
-                required: false
+                nullable: true
                 description: "Code postal"
                 example: "75001"
               libelle_commune:
                 title: "Libellé de commune"
                 type: "string"
-                required: false
+                nullable: true
                 description: "Libellé de commune"
                 example: "PARIS"
       immatriculation:
         title: "Informations d'immatriculation"
         type: "object"
-        required: true
         description: "Informations relatives à l'immatriculation du véhicule"
+        required:
+          - numero_immatriculation
+          - date_premiere_immatriculation
         properties:
           numero_immatriculation:
             title: "Numéro d'immatriculation"
             type: "string"
-            required: true
             description: "Le numéro d'immatriculation du véhicule"
             example: "AA-123-BB"
           date_premiere_immatriculation:
             title: "Date de première immatriculation"
             type: "string"
-            required: true
             description: "La date de la première immatriculation du véhicule"
             example: "2024-01-15"
       vehicule:
         title: "Informations du véhicule"
         type: "object"
-        required: true
         description: "Informations techniques et caractéristiques du véhicule"
+        required:
+          - marque
+          - type_variante_version
+          - denomination_commerciale
+          - masse_charge_maximale
+          - categorie_vehicule
+          - genre_national
+          - cylindree
+          - type_carburant
+          - taux_co2
+          - classe_environnementale
         properties:
           marque:
             title: "Marque du véhicule"
             type: "string"
-            required: true
             description: "La marque du véhicule"
             example: "PEUGEOT"
           type_variante_version:
             title: "Type Variante Version"
             type: "string"
-            required: true
             description: "Les Type Variante Version (TVV) du véhicule"
             example: "ABCDEF-G1H234"
           denomination_commerciale:
             title: "Dénomination commerciale"
             type: "string"
-            required: true
             description: "La dénomination commerciale du véhicule"
             example: "308"
           masse_charge_maximale:
             title: "Masse en charge maximale"
             type: "number"
-            required: true
             description: "La masse en charge maximale admissible du véhicule en service dans l'État membre d'immatriculation"
             example: 1850
           categorie_vehicule:
             title: "Catégorie du véhicule"
             type: "object"
-            required: true
             description: "La catégorie du véhicule (CE)"
+            required:
+              - code
+              - label
             properties:
               code:
                 title: "Code de la catégorie du véhicule"
                 type: "string"
-                required: true
                 description: "Le code de la catégorie du véhicule selon la classification européenne"
                 enum:
                   - M1
@@ -181,19 +185,19 @@ ants:
               label:
                 title: "Label de la catégorie du véhicule"
                 type: "string"
-                required: true
                 description: "Le label de la catégorie du véhicule"
                 example: "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
           genre_national:
             title: "Genre national"
             type: "object"
-            required: true
             description: "Le genre national du véhicule"
+            required:
+              - code
+              - label
             properties:
               code:
                 title: "Code du genre national"
                 type: "string"
-                required: true
                 description: "Le code du genre national selon la classification française"
                 enum:
                   - VP
@@ -219,25 +223,24 @@ ants:
               label:
                 title: "Label du genre national"
                 type: "string"
-                required: true
                 description: "Le label du genre national"
                 example: "Véhicule Particulier"
           cylindree:
             title: "Cylindrée"
             type: "number"
-            required: true
             description: "La cylindrée (en cm3)"
             example: 1600
           type_carburant:
             title: "Type de carburant"
             type: "object"
-            required: true
             description: "Le type de carburant ou la source d'énergie"
+            required:
+              - code
+              - label
             properties:
               code:
                 title: "Code du type de carburant"
                 type: "string"
-                required: true
                 description: "Le code du type de carburant selon la nomenclature officielle"
                 enum:
                   - AC
@@ -281,25 +284,24 @@ ants:
               label:
                 title: "Label du type de carburant"
                 type: "string"
-                required: true
                 description: "Le label du type de carburant"
                 example: "Essence"
           taux_co2:
             title: "Taux de CO2"
             type: "number"
-            required: true
             description: "Le taux de CO2 (en g/km)"
             example: 120
           classe_environnementale:
             title: "Classe environnementale"
             type: "object"
-            required: true
             description: "L'indication de la classe environnementale de réception CE : mention de la version applicable en vertu de la directive 70/220/CEE ou de la directive 88/77/CEE"
+            required:
+              - code
+              - label
             properties:
               code:
                 title: "Code de la classe environnementale"
                 type: "string"
-                required: true
                 description: "Le code de la classe environnementale selon les normes européennes"
                 enum:
                   - Euro 1
@@ -320,6 +322,5 @@ ants:
               label:
                 title: "Label de la classe environnementale"
                 type: "string"
-                required: true
                 description: "Le label de la classe environnementale"
                 example: "Norme européenne d'émission Euro 6"
