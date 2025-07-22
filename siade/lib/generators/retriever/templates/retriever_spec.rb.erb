@@ -1,5 +1,9 @@
 RSpec.describe <%= name %>, type: :retriever_organizer do
-  subject { described_class.call(params:) }
+  <% if prochainement? %>
+    subject { described_class.call(params:, operation_id: 'INSERT OPERATION_ID', recipient: '13002526500013') }
+  <% else %>
+    subject { described_class.call(params:) }
+  <% end %>
 
   <% if civility_validation? %>
   let(:params) do
@@ -30,6 +34,30 @@ RSpec.describe <%= name %>, type: :retriever_organizer do
   end
   <% end %>
 
+
+  <% if prochainement? %>
+  describe 'valid params' do
+    before do
+      allow(Rails.env).to receive(:staging?).and_return(true)
+      allow(MockDataBackend).to receive(:get_response_for).and_return(
+        {
+          status: '200',
+          payload: {
+            test: 'lol'
+          }
+        }
+      )
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'retrieves the resource' do
+      resource = subject.mocked_data[:payload]
+
+      expect(resource).to be_present
+    end
+  end
+<% else %>
   before do
     #stub_provider_resource_valid
   end
@@ -45,4 +73,5 @@ RSpec.describe <%= name %>, type: :retriever_organizer do
       expect(resource).to be_present
     end
   end
+<% end %>
 end

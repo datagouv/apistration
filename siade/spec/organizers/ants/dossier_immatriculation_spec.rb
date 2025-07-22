@@ -1,5 +1,5 @@
 RSpec.describe ANTS::DossierImmatriculation, type: :retriever_organizer do
-  subject { described_class.call(params:) }
+  subject { described_class.call(params:, operation_id: 'api_particulier_v3_ants_dossier_immatriculation_with_civility', recipient: '13002526500013') }
 
   let(:params) do
     {
@@ -25,13 +25,23 @@ RSpec.describe ANTS::DossierImmatriculation, type: :retriever_organizer do
   let(:code_cog_insee_pays_naissance) { '99100' }
   let(:sexe_etat_civil) { 'M' }
 
-  describe 'happy path' do
-    before { pending 'Implement endpoint' }
+  describe 'valid params' do
+    before do
+      allow(Rails.env).to receive(:staging?).and_return(true)
+      allow(MockDataBackend).to receive(:get_response_for).and_return(
+        {
+          status: '200',
+          payload: {
+            test: 'lol'
+          }
+        }
+      )
+    end
 
     it { is_expected.to be_a_success }
 
     it 'retrieves the resource' do
-      resource = subject.bundled_data.data
+      resource = subject.mocked_data[:payload]
 
       expect(resource).to be_present
     end
