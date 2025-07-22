@@ -1,0 +1,26 @@
+---
+description: 'Trop de requêtes'
+params:
+  immatriculation: 'LM-429-IT'
+  nomNaissance: 'TROPDE'
+  prenoms[]:
+  - 'REQUETES'
+  anneeDateNaissance: 1995
+  moisDateNaissance: 2
+  jourDateNaissance: 14
+  sexeEtatCivil: F
+  codeCogInseeCommuneNaissance: '33063'
+  codeCogInseePaysNaissance: '99100'
+status: 429
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00429",
+        "title": "Trop de requêtes",
+        "detail": "Vous avez effectué trop de requêtes",
+        "source": null,
+        "meta": {}
+      }
+    ]
+  }
