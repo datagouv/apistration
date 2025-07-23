@@ -244,11 +244,13 @@ shared:
   api_particulier/v3_and_more/ants/dossier_immatriculation_with_civility:
     - ants_dossier_immatriculation_statut_demandeur
     - ants_dossier_immatriculation_identite_demandeur
+    - ants_dossier_immatriculation_adresse_demandeur
     - ants_dossier_immatriculation_immatriculation
     - ants_dossier_immatriculation_vehicule
   api_particulier/v3_and_more/ants/dossier_immatriculation_with_france_connect:
     - ants_dossier_immatriculation_statut_demandeur
     - ants_dossier_immatriculation_identite_demandeur
+    - ants_dossier_immatriculation_adresse_demandeur
     - ants_dossier_immatriculation_immatriculation
     - ants_dossier_immatriculation_vehicule
   api_particulier/v3_and_more/france_travail/indemnites_with_identifiant:

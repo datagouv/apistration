@@ -56,47 +56,63 @@ ants:
             type: "string"
             description: "Le prénom du demandeur du dossier d'immatriculation (si personne physique)"
             example: "JEAN"
-          adresse:
-            title: "Adresse"
-            type: "object"
-            description: "L'adresse du demandeur dans l'État membre d'immatriculation"
-            properties: &adresse_properties
-              compl_adresse:
-                title: "Complément d'adresse"
-                type: "string"
-                nullable: true
-                description: "Complément d'adresse"
-                example: null
-              num_voie:
-                title: "Numéro de voie"
-                type: "string"
-                nullable: true
-                description: "Numéro de voie"
-                example: "15"
-              type_voie:
-                title: "Type de voie"
-                type: "string"
-                nullable: true
-                description: "Type de voie"
-                example: "RUE"
-              libelle_voie:
-                title: "Libellé de voie"
-                type: "string"
-                nullable: true
-                description: "Libellé de voie"
-                example: "DE LA REPUBLIQUE"
-              code_postal:
-                title: "Code postal"
-                type: "string"
-                nullable: true
-                description: "Code postal"
-                example: "75001"
-              libelle_commune:
-                title: "Libellé de commune"
-                type: "string"
-                nullable: true
-                description: "Libellé de commune"
-                example: "PARIS"
+      adresse_demandeur:
+        title: "Adresse du demandeur du dossier d'immatriculation"
+        type: "object"
+        description: "L'adresse du demandeur dans l'État membre d'immatriculation"
+        properties:
+          complement_information:
+            title: "Complément information de l'adresse"
+            type: "string"
+            nullable: true
+            description: "Complément d'adresse"
+            example: null
+          num_voie:
+            title: "Numéro de voie"
+            type: "string"
+            nullable: true
+            description: "Numéro de voie"
+            example: "15"
+          type_voie:
+            title: "Type de voie"
+            type: "string"
+            nullable: true
+            description: "Type de voie"
+            example: "RUE"
+          libelle_voie:
+            title: "Libellé de voie"
+            type: "string"
+            nullable: true
+            description: "Libellé de voie"
+            example: "DE LA REPUBLIQUE"
+          code_postal_ville:
+            title: "Code postal"
+            type: "string"
+            description: "Code postal de la ville"
+            example: "75001"
+          libelle_commune:
+            title: "Libellé de commune"
+            type: "string"
+            description: "Libellé de commune"
+            example: "PARIS"
+          lieu_dit:
+            title: "Lieu-dit"
+            type: "string"
+            nullable: true
+            description: "Lieu-dit ou quartier"
+            example: null
+          etage_escalier_appartement:
+            title: "Étage, escalier ou appartement"
+            type: "string"
+            nullable: true
+            description: "Étage, escalier ou numéro d'appartement"
+            example: "ESCALIER 2"
+          extension:
+            title: "Extension de l'adresse"
+            type: "string"
+            nullable: true
+            description: "Extension de l'adresse, si applicable (Bis, Ter, etc.)"
+            example: "B"
       immatriculation:
         title: "Informations d'immatriculation"
         type: "object"
