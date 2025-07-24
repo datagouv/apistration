@@ -1,6 +1,6 @@
 class APIParticulier::ANTS::DossierImmatriculationSerializer::V3 < APIParticulier::V3AndMore::BaseSerializer
   attribute :statut_demandeur, if: -> { scope?(:ants_dossier_immatriculation_statut_demandeur) }
-  attribute :statut_location, if: -> { scope?(:ants_dossier_immatriculation_statut_demandeur) }
+  attribute :statut_location, if: -> { scope?(:ants_dossier_immatriculation_statut_location) }
   attribute :identite_demandeur, if: -> { scope?(:ants_dossier_immatriculation_identite_demandeur) }
   attribute :adresse_demandeur, if: -> { scope?(:ants_dossier_immatriculation_adresse_demandeur) }
   attribute :immatriculation, if: -> { scope?(:ants_dossier_immatriculation_immatriculation) }
