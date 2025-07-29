@@ -55,6 +55,8 @@ class UnprocessableEntityError < ApplicationError
       # MEN
       code_etablissement: '00410',
       annee_scolaire: '00411',
+      # ANTS - DossierImmatriculation
+      immatriculation: '00430',
       # INPI - RNE
       document_id: '00501',
       # CIVILITY API PART v3
