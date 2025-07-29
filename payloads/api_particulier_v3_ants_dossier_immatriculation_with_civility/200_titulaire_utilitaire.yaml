@@ -3,7 +3,7 @@ description: 'Titulaire homme camionnette diesel - Citroën Berlingo N1'
 params:
   immatriculation: 'QR-345-ST'
   nomNaissance: 'GARCIA'
-  prenoms[]:
+  prenoms:
   - 'CARLOS'
   anneeDateNaissance: 1980
   moisDateNaissance: 2

@@ -3,7 +3,7 @@ description: 'Titulaire femme véhicule particulier essence - Renault Clio'
 params:
   immatriculation: 'AB-123-CD'
   nomNaissance: 'DUPONT'
-  prenoms[]:
+  prenoms:
   - 'MARIE'
   - 'CLAIRE'
   anneeDateNaissance: 1985
