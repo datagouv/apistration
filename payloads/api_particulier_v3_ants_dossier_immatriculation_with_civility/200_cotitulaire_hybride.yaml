@@ -3,7 +3,7 @@ description: 'Cotitulaire femme véhicule particulier hybride électrique - Toyo
 params:
   immatriculation: 'IJ-789-KL'
   nomNaissance: 'LEFEBVRE'
-  prenoms[]:
+  prenoms:
   - 'SOPHIE'
   anneeDateNaissance: 1992
   moisDateNaissance: 7

@@ -12,7 +12,7 @@
   {
     "immatriculation": "IJ-789-KL",
     "nomNaissance": "LEFEBVRE",
-    "prenoms[]": [
+    "prenoms": [
       "SOPHIE"
     ],
     "anneeDateNaissance": 1992,
@@ -95,7 +95,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'immatriculation=IJ-789-KL' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[][]=SOPHIE' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=7' -d 'jourDateNaissance=4' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'immatriculation=IJ-789-KL' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=SOPHIE' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=7' -d 'jourDateNaissance=4' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/identite"
   ```
 
@@ -114,7 +114,7 @@
   {
     "immatriculation": "EF-456-GH",
     "nomNaissance": "BERNARD",
-    "prenoms[]": [
+    "prenoms": [
       "JACQUES",
       "HENRI",
       "LOUIS"
@@ -199,7 +199,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'immatriculation=EF-456-GH' -d 'nomNaissance=BERNARD' -d 'prenoms[][]=JACQUES' -d 'prenoms[][]=HENRI' -d 'prenoms[][]=LOUIS' -d 'anneeDateNaissance=1978' -d 'moisDateNaissance=11' -d 'jourDateNaissance=28' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=69123' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'immatriculation=EF-456-GH' -d 'nomNaissance=BERNARD' -d 'prenoms[]=JACQUES' -d 'prenoms[]=HENRI' -d 'prenoms[]=LOUIS' -d 'anneeDateNaissance=1978' -d 'moisDateNaissance=11' -d 'jourDateNaissance=28' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=69123' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/identite"
   ```
 
@@ -218,7 +218,7 @@
   {
     "immatriculation": "MN-012-OP",
     "nomNaissance": "MOREAU",
-    "prenoms[]": [
+    "prenoms": [
       "ANTOINE",
       "PAUL"
     ],
@@ -302,7 +302,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'immatriculation=MN-012-OP' -d 'nomNaissance=MOREAU' -d 'prenoms[][]=ANTOINE' -d 'prenoms[][]=PAUL' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=12' -d 'jourDateNaissance=31' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=33063' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'immatriculation=MN-012-OP' -d 'nomNaissance=MOREAU' -d 'prenoms[]=ANTOINE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=12' -d 'jourDateNaissance=31' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=33063' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/identite"
   ```
 
@@ -321,7 +321,7 @@
   {
     "immatriculation": "AB-123-CD",
     "nomNaissance": "DUPONT",
-    "prenoms[]": [
+    "prenoms": [
       "MARIE",
       "CLAIRE"
     ],
@@ -405,7 +405,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'immatriculation=AB-123-CD' -d 'nomNaissance=DUPONT' -d 'prenoms[][]=MARIE' -d 'prenoms[][]=CLAIRE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=3' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75056' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'immatriculation=AB-123-CD' -d 'nomNaissance=DUPONT' -d 'prenoms[]=MARIE' -d 'prenoms[]=CLAIRE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=3' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75056' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/identite"
   ```
 
@@ -424,7 +424,7 @@
   {
     "immatriculation": "QR-345-ST",
     "nomNaissance": "GARCIA",
-    "prenoms[]": [
+    "prenoms": [
       "CARLOS"
     ],
     "anneeDateNaissance": 1980,
@@ -507,7 +507,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'immatriculation=QR-345-ST' -d 'nomNaissance=GARCIA' -d 'prenoms[][]=CARLOS' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=2' -d 'jourDateNaissance=29' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'immatriculation=QR-345-ST' -d 'nomNaissance=GARCIA' -d 'prenoms[]=CARLOS' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=2' -d 'jourDateNaissance=29' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/identite"
   ```
 

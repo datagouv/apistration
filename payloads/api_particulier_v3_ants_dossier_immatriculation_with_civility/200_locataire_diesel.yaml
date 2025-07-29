@@ -3,7 +3,7 @@ description: 'Locataire LLD homme véhicule particulier diesel - Volkswagen Golf
 params:
   immatriculation: 'EF-456-GH'
   nomNaissance: 'BERNARD'
-  prenoms[]:
+  prenoms:
   - 'JACQUES'
   - 'HENRI'
   - 'LOUIS'

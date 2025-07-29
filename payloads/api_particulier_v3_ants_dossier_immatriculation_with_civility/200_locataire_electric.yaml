@@ -3,7 +3,7 @@ description: 'Locataire LCB homme véhicule particulier électrique - Tesla Mode
 params:
   immatriculation: 'MN-012-OP'
   nomNaissance: 'MOREAU'
-  prenoms[]:
+  prenoms:
   - 'ANTOINE'
   - 'PAUL'
   anneeDateNaissance: 1988
