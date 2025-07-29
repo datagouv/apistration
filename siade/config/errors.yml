@@ -314,7 +314,7 @@
   title: 'Entité non traitable'
   detail: "Le code cog du département de naissance est manquant ou invalide"
 
-- code: '00450'
+- code: '00430'
   title: 'Entité non traitable'
   detail: "L'immatriculation du véhicule est manquante"
 
