@@ -3,7 +3,7 @@ class ANTS::DossierImmatriculation::MakeRequest < MockedInteractor
 
   def mocking_params # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     {
-      immatriculation: context.params[:immatriculation],
+      immatriculation: context.params[:immatriculation].downcase,
       nomNaissance: context.params[:nom_naissance]&.downcase,
       nomUsage: context.params[:nom_usage]&.downcase,
       prenoms: context.params[:prenoms]&.map(&:downcase),
