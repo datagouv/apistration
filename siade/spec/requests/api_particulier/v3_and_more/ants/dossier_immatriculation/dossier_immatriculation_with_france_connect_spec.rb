@@ -22,12 +22,11 @@ RSpec.describe 'ANTS: Dossierimmatriculation With FranceConnect', api: :particul
 
       let(:scopes) do
         %i[
-          ants_dossier_immatriculation_statut_demandeur
-          ants_dossier_immatriculation_statut_location
-          ants_dossier_immatriculation_identite_demandeur
-          ants_dossier_immatriculation_adresse_demandeur
-          ants_dossier_immatriculation_immatriculation
-          ants_dossier_immatriculation_vehicule
+          ants_dossier_immatriculation_identite
+          ants_dossier_immatriculation_adresse
+          ants_dossier_immatriculation_statut_rattachement_vehicule
+          ants_dossier_immatriculation_extrait_immatriculation_vehicule
+          ants_dossier_immatriculation_extrait_caracteristiques_techniques_vehicule
         ]
       end
 

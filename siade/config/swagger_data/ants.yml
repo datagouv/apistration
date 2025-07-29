@@ -12,39 +12,10 @@ ants:
         required: true
         example: "AA-123-BB"
     attributes:
-      statut_demandeur:
-        title: "Statut du demandeur"
-        type: "string"
-        description: "Le statut du demandeur du dossier d'immatriculation. Si le véhicule est en location longue durée (LLD, LCB, LCL), alors il s'agit du locataire. Dans les autres cas, c'est 'titulaire' ou 'cotitulaire'"
-        enum:
-          - locataire
-          - titulaire
-          - cotitulaire
-        example: "titulaire"
-      statut_location:
-        title: "Statut de location"
+      identite:
+        title: "Identité"
         type: "object"
-        description: "Le statut de location du véhicule, si applicable. Les codes LLD, LCB, LCL correspondent à une location longue durée"
-        required:
-          - code
-          - label
-        properties:
-          code:
-            title: "Code du statut de location"
-            type: "string"
-            description: "Le code du statut de location selon la nomenclature officielle"
-            example: "LLD"
-            nullable: true
-          label:
-            title: "Label du statut de location"
-            type: "string"
-            description: "Le label descriptif du statut de location"
-            example: "Location Longue Durée"
-            nullable: true
-      identite_demandeur:
-        title: "Identité du demandeur du dossier d'immatriculation"
-        type: "object"
-        description: "Les nom, prénom et adresse dans l'État membre d'immatriculation, à la date de délivrance du document, du demandeur du dossier d'immatriculation (titulaire, cotitulaire ou locataire selon le statut)"
+        description: "Identité du demandeur du dossier d'immatriculation"
         properties:
           nom:
             title: "Nom"
@@ -56,8 +27,8 @@ ants:
             type: "string"
             description: "Le prénom du demandeur du dossier d'immatriculation (si personne physique)"
             example: "JEAN"
-      adresse_demandeur:
-        title: "Adresse du demandeur du dossier d'immatriculation"
+      adresse:
+        title: "Adresse"
         type: "object"
         description: "L'adresse du demandeur dans l'État membre d'immatriculation"
         properties:
@@ -113,13 +84,23 @@ ants:
             nullable: true
             description: "Extension de l'adresse, si applicable (Bis, Ter, etc.)"
             example: "B"
-      immatriculation:
-        title: "Informations d'immatriculation"
+      statut_rattachement_vehicule:
+        title: "Statut de rattachement au véhicule"
+        type: "string"
+        description: "Le statut du demandeur du dossier d'immatriculation. Si le véhicule est en location longue durée (LLD, LCB, LCL), alors il s'agit du locataire. Dans les autres cas, c'est 'titulaire' ou 'cotitulaire'"
+        enum:
+          - locataire
+          - titulaire
+          - cotitulaire
+        example: "titulaire"
+      extrait_immatriculation_vehicule:
+        title: "Extrait d'immatriculation du véhicule"
         type: "object"
         description: "Informations relatives à l'immatriculation du véhicule"
         required:
           - numero_immatriculation
           - date_premiere_immatriculation
+          - statut_location
         properties:
           numero_immatriculation:
             title: "Numéro d'immatriculation"
@@ -131,8 +112,28 @@ ants:
             type: "string"
             description: "La date de la première immatriculation du véhicule"
             example: "2024-01-15"
-      vehicule:
-        title: "Informations du véhicule"
+          statut_location:
+            title: "Statut de location"
+            type: "object"
+            description: "Le statut de location du véhicule, si applicable. Les codes LLD, LCB, LCL correspondent à une location longue durée"
+            required:
+              - code
+              - label
+            properties:
+              code:
+                title: "Code du statut de location"
+                type: "string"
+                description: "Le code du statut de location selon la nomenclature officielle"
+                example: "LLD"
+                nullable: true
+              label:
+                title: "Label du statut de location"
+                type: "string"
+                description: "Le label descriptif du statut de location"
+                example: "Location Longue Durée"
+                nullable: true
+      extrait_caracteristiques_techniques_vehicule:
+        title: "Extrait des caractéristiques techniques du véhicule"
         type: "object"
         description: "Informations techniques et caractéristiques du véhicule"
         required:
