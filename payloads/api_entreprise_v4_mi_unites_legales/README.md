@@ -60,12 +60,8 @@
         "code_postal": "30340",
         "commune": "Salindres"
       },
-      "composition_reseau": [
-  
-      ],
-      "agrements": [
-  
-      ],
+      "composition_reseau": [],
+      "agrements": [],
       "adresse_gestion": {
         "complement": null,
         "numero_voie": null,
@@ -180,18 +176,10 @@
             "code": "NN",
             "libelle": "Non référencé"
           },
-          "representants_legaux": [
-  
-          ],
-          "rhs": [
-  
-          ],
-          "comptes": [
-  
-          ],
-          "documents_dac": [
-  
-          ]
+          "representants_legaux": [],
+          "rhs": [],
+          "comptes": [],
+          "documents_dac": []
         },
         {
           "siren": "389486242",
@@ -248,9 +236,7 @@
               }
             }
           ],
-          "comptes": [
-  
-          ],
+          "comptes": [],
           "documents_dac": [
             {
               "nom": "M06_attestation_affiliation_structure.pdf",
@@ -351,9 +337,7 @@
               }
             }
           ],
-          "comptes": [
-  
-          ],
+          "comptes": [],
           "documents_dac": [
             {
               "nom": "ATTESTATION AFFILIATION.pdf",
@@ -569,9 +553,7 @@
         "code_postal": "67130",
         "commune": "SCHIRMECK"
       },
-      "composition_reseau": [
-  
-      ],
+      "composition_reseau": [],
       "agrements": [
         {
           "numero": "EspacedeVieSocial",
@@ -616,9 +598,7 @@
         "economie_sociale_et_solidaire": true,
         "date_appartenance_ess": "2016-01-01"
       },
-      "reseaux_affiliation": [
-  
-      ],
+      "reseaux_affiliation": [],
       "etablissements": [
         {
           "siren": "424179364",
@@ -913,23 +893,13 @@
             "code": "NN",
             "libelle": "Non référencé"
           },
-          "representants_legaux": [
-  
-          ],
-          "rhs": [
-  
-          ],
-          "comptes": [
-  
-          ],
-          "documents_dac": [
-  
-          ]
+          "representants_legaux": [],
+          "rhs": [],
+          "comptes": [],
+          "documents_dac": []
         }
       ],
-      "documents_rna": [
-  
-      ]
+      "documents_rna": []
     },
     "links": {
       "insee_siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/42417936400023",
@@ -1018,12 +988,8 @@
         "code_postal": "75002",
         "commune": "Paris"
       },
-      "composition_reseau": [
-  
-      ],
-      "agrements": [
-  
-      ],
+      "composition_reseau": [],
+      "agrements": [],
       "adresse_gestion": {
         "complement": null,
         "numero_voie": null,
@@ -1058,12 +1024,8 @@
         "economie_sociale_et_solidaire": false,
         "date_appartenance_ess": null
       },
-      "reseaux_affiliation": [
-  
-      ],
-      "etablissements": [
-  
-      ],
+      "reseaux_affiliation": [],
+      "etablissements": [],
       "documents_rna": [
         {
           "type": "Pièce",

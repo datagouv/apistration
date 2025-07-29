@@ -1,0 +1,71 @@
+---
+description: 'Locataire LLD véhicule particulier hybride via FranceConnect'
+params:
+  immatriculation: 'FC-456-CD'
+  prenoms:
+  - 'Angela'
+  - 'Claire'
+  - 'Louise'
+  nomNaissance: "DUBOIS"
+  anneeDateDeNaissance: 1962
+  moisDateDeNaissance: 8
+  jourDateDeNaissance: 24
+  sexe: "F"
+  codeInseeLieuDeNaissance: "75107"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "CUILLERE",
+        "prenom": "PAUL"
+      },
+      "adresse": {
+        "complement_information": "Résidence Jeunes",
+        "num_voie": "8",
+        "type_voie": "PLACE",
+        "libelle_voie": "DU MARCHE",
+        "code_postal_ville": "42000",
+        "libelle_commune": "SAINT-ETIENNE",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null
+      },
+      "statut_rattachement_vehicule": "locataire",
+      "extrait_immatriculation_vehicule": {
+        "numero_immatriculation": "FC-456-CD",
+        "date_premiere_immatriculation": "2024-01-23",
+        "statut_location": {
+          "code": "LLD",
+          "label": "Location Longue Durée"
+        }
+      },
+      "extrait_caracteristiques_techniques_vehicule": {
+        "marque": "TOYOTA",
+        "type_variante_version": "FCGHI-J2K567",
+        "denomination_commerciale": "COROLLA",
+        "masse_charge_maximale": 1610,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1800,
+        "type_carburant": {
+          "code": "HE",
+          "label": "Hybride électrique"
+        },
+        "taux_co2": 92,
+        "classe_environnementale": {
+          "code": "Euro 6e",
+          "label": "Norme européenne d'émission Euro 6e"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

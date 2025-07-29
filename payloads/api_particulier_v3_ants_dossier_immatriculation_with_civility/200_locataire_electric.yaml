@@ -1,0 +1,70 @@
+---
+description: 'Locataire LCB homme véhicule particulier électrique - Tesla Model 3'
+params:
+  immatriculation: 'MN-012-OP'
+  nomNaissance: 'MOREAU'
+  prenoms[]:
+  - 'ANTOINE'
+  - 'PAUL'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 12
+  jourDateNaissance: 31
+  sexeEtatCivil: M
+  codeCogInseeCommuneNaissance: '33063'
+  codeCogInseePaysNaissance: '99100'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "MOREAU",
+        "prenom": "ANTOINE"
+      },
+      "adresse": {
+        "complement_information": "Bâtiment C",
+        "num_voie": "23",
+        "type_voie": "ALLEE",
+        "libelle_voie": "DES MIMOSAS",
+        "code_postal_ville": "33000",
+        "libelle_commune": "BORDEAUX",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null
+      },
+      "statut_rattachement_vehicule": "locataire",
+      "extrait_immatriculation_vehicule": {
+        "numero_immatriculation": "MN-012-OP",
+        "date_premiere_immatriculation": "2024-01-05",
+        "statut_location": {
+          "code": "LCB",
+          "label": "Location avec option d'achat"
+        }
+      },
+      "extrait_caracteristiques_techniques_vehicule": {
+        "marque": "TESLA",
+        "type_variante_version": "DEFGH-I5J678",
+        "denomination_commerciale": "MODEL 3",
+        "masse_charge_maximale": 2165,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 0,
+        "type_carburant": {
+          "code": "EL",
+          "label": "Électrique"
+        },
+        "taux_co2": 0,
+        "classe_environnementale": {
+          "code": "Euro 6e",
+          "label": "Norme européenne d'émission Euro 6e"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

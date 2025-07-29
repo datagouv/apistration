@@ -1,0 +1,71 @@
+---
+description: 'Locataire LLD homme véhicule particulier diesel - Volkswagen Golf'
+params:
+  immatriculation: 'EF-456-GH'
+  nomNaissance: 'BERNARD'
+  prenoms[]:
+  - 'JACQUES'
+  - 'HENRI'
+  - 'LOUIS'
+  anneeDateNaissance: 1978
+  moisDateNaissance: 11
+  jourDateNaissance: 28
+  sexeEtatCivil: M
+  codeCogInseeCommuneNaissance: '69123'
+  codeCogInseePaysNaissance: '99100'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "BERNARD",
+        "prenom": "JACQUES"
+      },
+      "adresse": {
+        "complement_information": null,
+        "num_voie": "128",
+        "type_voie": "BOULEVARD",
+        "libelle_voie": "JEAN JAURES",
+        "code_postal_ville": "69003",
+        "libelle_commune": "LYON",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null
+      },
+      "statut_rattachement_vehicule": "locataire",
+      "extrait_immatriculation_vehicule": {
+        "numero_immatriculation": "EF-456-GH",
+        "date_premiere_immatriculation": "2023-02-10",
+        "statut_location": {
+          "code": "LLD",
+          "label": "Location Longue Durée"
+        }
+      },
+      "extrait_caracteristiques_techniques_vehicule": {
+        "marque": "VOLKSWAGEN",
+        "type_variante_version": "RSTUV-W3X456",
+        "denomination_commerciale": "GOLF",
+        "masse_charge_maximale": 1820,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 2000,
+        "type_carburant": {
+          "code": "GO",
+          "label": "Gazole"
+        },
+        "taux_co2": 125,
+        "classe_environnementale": {
+          "code": "Euro 6b",
+          "label": "Norme européenne d'émission Euro 6b"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
