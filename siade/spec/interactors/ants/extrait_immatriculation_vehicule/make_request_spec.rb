@@ -1,4 +1,4 @@
-RSpec.describe ANTS::DossierImmatriculation::MakeRequest, type: :make_request do
+RSpec.describe ANTS::ExtraitImmatriculationVehicule::MakeRequest, type: :make_request do
   describe '.call' do
     subject { described_class.call(params:) }
 

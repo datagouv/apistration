@@ -54,8 +54,8 @@ shared:
   json_resources_particulier:
     throttle_type: 'by_group_of_endpoints'
     endpoints:
-      - { controller: 'api_particulier/v3_and_more/ants/dossier_immatriculation_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/ants/dossier_immatriculation_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility', action: 'show' }

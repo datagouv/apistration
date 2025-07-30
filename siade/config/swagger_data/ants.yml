@@ -1,9 +1,9 @@
 ants:
-  dossier_immatriculation:
-    title: "Dossier d'immatriculation"
+  extrait_immatriculation_vehicule:
+    title: "Extrait d'immatriculation véhicule"
     tags:
       - "Prochainement"
-    description: "Dossier d'immatriculation du véhicule avec l'identité du demandeur du dossier"
+    description: "Extrait d'immatriculation du véhicule avec l'identité du demandeur du dossier"
     parameters:
       immatriculation:
         name: "Immatriculation"

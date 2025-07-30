@@ -1,4 +1,4 @@
-class ANTS::DossierImmatriculation::MakeRequest < MockedInteractor
+class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MockedInteractor
   protected
 
   def mocking_params # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

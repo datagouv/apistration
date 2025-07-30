@@ -1,4 +1,4 @@
-RSpec.describe ANTS::DossierImmatriculation::ValidateParams, type: :validate_params do
+RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateParams, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do

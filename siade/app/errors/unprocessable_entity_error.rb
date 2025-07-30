@@ -55,7 +55,7 @@ class UnprocessableEntityError < ApplicationError
       # MEN
       code_etablissement: '00410',
       annee_scolaire: '00411',
-      # ANTS - DossierImmatriculation
+      # ANTS - ExtraitImmatriculationVehicule
       immatriculation: '00430',
       # INPI - RNE
       document_id: '00501',

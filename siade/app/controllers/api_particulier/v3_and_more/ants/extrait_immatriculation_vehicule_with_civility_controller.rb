@@ -1,4 +1,4 @@
-class APIParticulier::V3AndMore::ANTS::DossierImmatriculationWithCivilityController < APIParticulier::V3AndMore::BaseController
+class APIParticulier::V3AndMore::ANTS::ExtraitImmatriculationVehiculeWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
   def show
@@ -21,10 +21,10 @@ class APIParticulier::V3AndMore::ANTS::DossierImmatriculationWithCivilityControl
   end
 
   def serializer_module
-    ::APIParticulier::ANTS::DossierImmatriculationSerializer
+    ::APIParticulier::ANTS::ExtraitImmatriculationVehiculeSerializer
   end
 
   def organizer
-    @organizer ||= retrieve_payload_data(::ANTS::DossierImmatriculation)
+    @organizer ||= retrieve_payload_data(::ANTS::ExtraitImmatriculationVehicule)
   end
 end

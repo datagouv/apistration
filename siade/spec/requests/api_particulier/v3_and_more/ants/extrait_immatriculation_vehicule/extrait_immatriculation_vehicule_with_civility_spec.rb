@@ -1,18 +1,18 @@
 require 'swagger_helper'
 
-RSpec.describe 'ANTS: Dossierimmatriculation With Civility', api: :particulier, type: %i[request swagger] do
-  path '/v3/ants/dossier_immatriculation/identite' do
-    get "[Identité] #{SwaggerData.get('ants.dossier_immatriculation.title')}" do
-      tags(*SwaggerData.get('ants.dossier_immatriculation.tags'))
+RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With Civility', api: :particulier, type: %i[request swagger] do
+  path '/v3/ants/extrait_immatriculation_vehicule/identite' do
+    get "[Identité] #{SwaggerData.get('ants.extrait_immatriculation_vehicule.title')}" do
+      tags(*SwaggerData.get('ants.extrait_immatriculation_vehicule.tags'))
 
       common_action_attributes
 
       parameter name: :immatriculation,
         in: :query,
-        type: SwaggerData.get('ants.dossier_immatriculation.parameters.immatriculation.type'),
-        description: SwaggerData.get('ants.dossier_immatriculation.parameters.immatriculation.description'),
-        example: SwaggerData.get('ants.dossier_immatriculation.parameters.immatriculation.example'),
-        required: SwaggerData.get('ants.dossier_immatriculation.parameters.immatriculation.required')
+        type: SwaggerData.get('ants.extrait_immatriculation_vehicule.parameters.immatriculation.type'),
+        description: SwaggerData.get('ants.extrait_immatriculation_vehicule.parameters.immatriculation.description'),
+        example: SwaggerData.get('ants.extrait_immatriculation_vehicule.parameters.immatriculation.example'),
+        required: SwaggerData.get('ants.extrait_immatriculation_vehicule.parameters.immatriculation.required')
 
       parameters_identite_pivot(
         params: %w[
@@ -49,15 +49,15 @@ RSpec.describe 'ANTS: Dossierimmatriculation With Civility', api: :particulier, 
 
       forbidden_request('api_particulier')
 
-      too_many_requests(ANTS::DossierImmatriculation)
+      too_many_requests(ANTS::ExtraitImmatriculationVehicule)
 
       let(:scopes) do
         %i[
-          ants_dossier_immatriculation_identite
-          ants_dossier_immatriculation_adresse
-          ants_dossier_immatriculation_statut_rattachement_vehicule
-          ants_dossier_immatriculation_extrait_immatriculation_vehicule
-          ants_dossier_immatriculation_extrait_caracteristiques_techniques_vehicule
+          ants_extrait_immatriculation_vehicule_identite
+          ants_extrait_immatriculation_vehicule_adresse
+          ants_extrait_immatriculation_vehicule_statut_rattachement_vehicule
+          ants_extrait_immatriculation_vehicule_extrait_immatriculation_vehicule
+          ants_extrait_immatriculation_vehicule_extrait_caracteristiques_techniques_vehicule
         ]
       end
 
@@ -67,19 +67,19 @@ RSpec.describe 'ANTS: Dossierimmatriculation With Civility', api: :particulier, 
             allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
           end
 
-          description SwaggerData.get('ants.dossier_immatriculation.description')
+          description SwaggerData.get('ants.extrait_immatriculation_vehicule.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('ants.dossier_immatriculation.attributes')
+            attributes: SwaggerData.get('ants.extrait_immatriculation_vehicule.attributes')
           )
 
           run_test!
         end
 
         describe 'when not found', pending: 'Get not found payload from FD' do
-          before { stub_ants_dossier_immatriculation_not_found }
+          before { stub_ants_extrait_immatriculation_vehicule_not_found }
 
           response '404', 'Non trouvée' do
             build_rswag_example(NotFoundError.new('ANTS'))
@@ -95,9 +95,9 @@ RSpec.describe 'ANTS: Dossierimmatriculation With Civility', api: :particulier, 
             let(:sexeEtatCivil) { 'lol' }
           end
 
-          common_provider_errors_request('ANTS', ANTS::DossierImmatriculation)
+          common_provider_errors_request('ANTS', ANTS::ExtraitImmatriculationVehicule)
 
-          common_network_error_request('ANTS', ANTS::DossierImmatriculation)
+          common_network_error_request('ANTS', ANTS::ExtraitImmatriculationVehicule)
         end
       end
     end

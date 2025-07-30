@@ -1,5 +1,5 @@
-RSpec.describe ANTS::DossierImmatriculation, type: :retriever_organizer do
-  subject { described_class.call(params:, operation_id: 'api_particulier_v3_ants_dossier_immatriculation_with_civility', recipient: '13002526500013') }
+RSpec.describe ANTS::ExtraitImmatriculationVehicule, type: :retriever_organizer do
+  subject { described_class.call(params:, operation_id: 'api_particulier_v3_ants_extrait_immatriculation_vehicule_with_civility', recipient: '13002526500013') }
 
   let(:params) do
     {

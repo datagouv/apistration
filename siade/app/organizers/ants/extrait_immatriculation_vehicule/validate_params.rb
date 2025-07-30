@@ -1,5 +1,5 @@
-class ANTS::DossierImmatriculation::ValidateParams < ValidateParamsOrganizer
-  organize ANTS::DossierImmatriculation::ValidateImmatriculationPresence,
+class ANTS::ExtraitImmatriculationVehicule::ValidateParams < ValidateParamsOrganizer
+  organize ANTS::ExtraitImmatriculationVehicule::ValidateImmatriculationPresence,
     Civility::ValidatePrenoms,
     Civility::ValidateNomNaissance,
     Civility::ValidateDateNaissance,

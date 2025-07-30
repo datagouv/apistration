@@ -3,8 +3,8 @@ svair_gone = lambda do |env|
 end
 
 scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_and_more: true) do
-  get 'ants/dossier_immatriculation/identite', to: 'api_particulier/v3_and_more/ants/dossier_immatriculation_with_civility#show'
-  get 'ants/dossier_immatriculation/france_connect', to: 'api_particulier/v3_and_more/ants/dossier_immatriculation_with_france_connect#show'
+  get 'ants/extrait_immatriculation_vehicule/identite', to: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_civility#show'
+  get 'ants/extrait_immatriculation_vehicule/france_connect', to: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect#show'
 
   get 'mesri/statut_etudiant/ine', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine#show'
   get 'mesri/statut_etudiant/france_connect', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect#show'

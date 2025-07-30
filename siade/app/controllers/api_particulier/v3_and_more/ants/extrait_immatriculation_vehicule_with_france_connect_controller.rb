@@ -1,4 +1,4 @@
-class APIParticulier::V3AndMore::ANTS::DossierImmatriculationWithFranceConnectController < APIParticulier::V3AndMore::BaseController
+class APIParticulier::V3AndMore::ANTS::ExtraitImmatriculationVehiculeWithFranceConnectController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::FranceConnectable
   include APIParticulier::CivilityParameters
 
@@ -18,10 +18,10 @@ class APIParticulier::V3AndMore::ANTS::DossierImmatriculationWithFranceConnectCo
   end
 
   def serializer_module
-    ::APIParticulier::ANTS::DossierImmatriculationSerializer
+    ::APIParticulier::ANTS::ExtraitImmatriculationVehiculeSerializer
   end
 
   def organizer
-    @organizer ||= retrieve_payload_data(::ANTS::DossierImmatriculation)
+    @organizer ||= retrieve_payload_data(::ANTS::ExtraitImmatriculationVehicule)
   end
 end
