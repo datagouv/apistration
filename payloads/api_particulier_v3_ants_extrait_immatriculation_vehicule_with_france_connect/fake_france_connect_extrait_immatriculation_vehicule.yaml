@@ -15,11 +15,11 @@ status: 200
 payload: |-
   {
     "data": {
-      "identite": {
+      "identite_particulier": {
         "nom": "DELATOUR",
         "prenom": "THOMAS"
       },
-      "adresse": {
+      "adresse_particulier": {
         "complement_information": null,
         "num_voie": "12",
         "type_voie": "RUE",
@@ -30,8 +30,8 @@ payload: |-
         "etage_escalier_appartement": null,
         "extension": null
       },
-      "statut_rattachement_vehicule": "titulaire",
-      "extrait_immatriculation_vehicule": {
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
         "numero_immatriculation": "FC-123-AB",
         "date_premiere_immatriculation": "2021-04-16",
         "statut_location": {
@@ -39,7 +39,7 @@ payload: |-
           "label": null
         }
       },
-      "extrait_caracteristiques_techniques_vehicule": {
+      "caracteristiques_techniques_vehicule": {
         "marque": "PEUGEOT",
         "type_variante_version": "FCDEF-G1H234",
         "denomination_commerciale": "3008",

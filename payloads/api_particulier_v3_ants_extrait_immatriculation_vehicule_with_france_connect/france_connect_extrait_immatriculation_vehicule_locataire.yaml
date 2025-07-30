@@ -17,11 +17,11 @@ status: 200
 payload: |-
   {
     "data": {
-      "identite": {
+      "identite_particulier": {
         "nom": "CUILLERE",
         "prenom": "PAUL"
       },
-      "adresse": {
+      "adresse_particulier": {
         "complement_information": "Résidence Jeunes",
         "num_voie": "8",
         "type_voie": "PLACE",
@@ -32,8 +32,8 @@ payload: |-
         "etage_escalier_appartement": null,
         "extension": null
       },
-      "statut_rattachement_vehicule": "locataire",
-      "extrait_immatriculation_vehicule": {
+      "statut_rattachement": "locataire",
+      "donnees_immatriculation_vehicule": {
         "numero_immatriculation": "FC-456-CD",
         "date_premiere_immatriculation": "2024-01-23",
         "statut_location": {
@@ -41,7 +41,7 @@ payload: |-
           "label": "Location Longue Durée"
         }
       },
-      "extrait_caracteristiques_techniques_vehicule": {
+      "caracteristiques_techniques_vehicule": {
         "marque": "TOYOTA",
         "type_variante_version": "FCGHI-J2K567",
         "denomination_commerciale": "COROLLA",

@@ -1,4 +1,4 @@
-# [FranceConnect] Dossier d'immatriculation
+# [FranceConnect] Extrait d'immatriculation véhicule
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -43,12 +43,12 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
   ```
 
   </p>
   </details>
-* [fake_france_connect_dossier_immatriculation.yaml](fake_france_connect_dossier_immatriculation.yaml)
+* [fake_france_connect_extrait_immatriculation_vehicule.yaml](fake_france_connect_extrait_immatriculation_vehicule.yaml)
 
   Status `200`
 
@@ -82,11 +82,11 @@
   ```json
   {
     "data": {
-      "identite": {
+      "identite_particulier": {
         "nom": "DELATOUR",
         "prenom": "THOMAS"
       },
-      "adresse": {
+      "adresse_particulier": {
         "complement_information": null,
         "num_voie": "12",
         "type_voie": "RUE",
@@ -97,8 +97,8 @@
         "etage_escalier_appartement": null,
         "extension": null
       },
-      "statut_rattachement_vehicule": "titulaire",
-      "extrait_immatriculation_vehicule": {
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
         "numero_immatriculation": "FC-123-AB",
         "date_premiere_immatriculation": "2021-04-16",
         "statut_location": {
@@ -106,7 +106,7 @@
           "label": null
         }
       },
-      "extrait_caracteristiques_techniques_vehicule": {
+      "caracteristiques_techniques_vehicule": {
         "marque": "PEUGEOT",
         "type_variante_version": "FCDEF-G1H234",
         "denomination_commerciale": "3008",
@@ -143,12 +143,12 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
   ```
 
   </p>
   </details>
-* [france_connect_dossier_immatriculation_locataire.yaml](france_connect_dossier_immatriculation_locataire.yaml)
+* [france_connect_extrait_immatriculation_vehicule_locataire.yaml](france_connect_extrait_immatriculation_vehicule_locataire.yaml)
 
   Status `200`
 
@@ -184,11 +184,11 @@
   ```json
   {
     "data": {
-      "identite": {
+      "identite_particulier": {
         "nom": "CUILLERE",
         "prenom": "PAUL"
       },
-      "adresse": {
+      "adresse_particulier": {
         "complement_information": "Résidence Jeunes",
         "num_voie": "8",
         "type_voie": "PLACE",
@@ -199,8 +199,8 @@
         "etage_escalier_appartement": null,
         "extension": null
       },
-      "statut_rattachement_vehicule": "locataire",
-      "extrait_immatriculation_vehicule": {
+      "statut_rattachement": "locataire",
+      "donnees_immatriculation_vehicule": {
         "numero_immatriculation": "FC-456-CD",
         "date_premiere_immatriculation": "2024-01-23",
         "statut_location": {
@@ -208,7 +208,7 @@
           "label": "Location Longue Durée"
         }
       },
-      "extrait_caracteristiques_techniques_vehicule": {
+      "caracteristiques_techniques_vehicule": {
         "marque": "TOYOTA",
         "type_variante_version": "FCGHI-J2K567",
         "denomination_commerciale": "COROLLA",
@@ -245,7 +245,7 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/dossier_immatriculation/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
   ```
 
   </p>
