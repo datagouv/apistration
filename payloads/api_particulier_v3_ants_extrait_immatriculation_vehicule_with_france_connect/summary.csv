@@ -14,11 +14,11 @@ Titre,Description,Paramètres,Status,Réponse
 }"
 ,FranceConnect: Titulaire véhicule particulier essence,"{""immatriculation"":""FC-123-AB"",""nomNaissance"":""Delatour"",""prenoms"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
   ""data"": {
-    ""identite"": {
+    ""identite_particulier"": {
       ""nom"": ""DELATOUR"",
       ""prenom"": ""THOMAS""
     },
-    ""adresse"": {
+    ""adresse_particulier"": {
       ""complement_information"": null,
       ""num_voie"": ""12"",
       ""type_voie"": ""RUE"",
@@ -29,8 +29,8 @@ Titre,Description,Paramètres,Status,Réponse
       ""etage_escalier_appartement"": null,
       ""extension"": null
     },
-    ""statut_rattachement_vehicule"": ""titulaire"",
-    ""extrait_immatriculation_vehicule"": {
+    ""statut_rattachement"": ""titulaire"",
+    ""donnees_immatriculation_vehicule"": {
       ""numero_immatriculation"": ""FC-123-AB"",
       ""date_premiere_immatriculation"": ""2021-04-16"",
       ""statut_location"": {
@@ -38,7 +38,7 @@ Titre,Description,Paramètres,Status,Réponse
         ""label"": null
       }
     },
-    ""extrait_caracteristiques_techniques_vehicule"": {
+    ""caracteristiques_techniques_vehicule"": {
       ""marque"": ""PEUGEOT"",
       ""type_variante_version"": ""FCDEF-G1H234"",
       ""denomination_commerciale"": ""3008"",
@@ -68,11 +68,11 @@ Titre,Description,Paramètres,Status,Réponse
 }"
 ,Locataire LLD véhicule particulier hybride via FranceConnect,"{""immatriculation"":""FC-456-CD"",""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateDeNaissance"":1962,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""sexe"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""data"": {
-    ""identite"": {
+    ""identite_particulier"": {
       ""nom"": ""CUILLERE"",
       ""prenom"": ""PAUL""
     },
-    ""adresse"": {
+    ""adresse_particulier"": {
       ""complement_information"": ""Résidence Jeunes"",
       ""num_voie"": ""8"",
       ""type_voie"": ""PLACE"",
@@ -83,8 +83,8 @@ Titre,Description,Paramètres,Status,Réponse
       ""etage_escalier_appartement"": null,
       ""extension"": null
     },
-    ""statut_rattachement_vehicule"": ""locataire"",
-    ""extrait_immatriculation_vehicule"": {
+    ""statut_rattachement"": ""locataire"",
+    ""donnees_immatriculation_vehicule"": {
       ""numero_immatriculation"": ""FC-456-CD"",
       ""date_premiere_immatriculation"": ""2024-01-23"",
       ""statut_location"": {
@@ -92,7 +92,7 @@ Titre,Description,Paramètres,Status,Réponse
         ""label"": ""Location Longue Durée""
       }
     },
-    ""extrait_caracteristiques_techniques_vehicule"": {
+    ""caracteristiques_techniques_vehicule"": {
       ""marque"": ""TOYOTA"",
       ""type_variante_version"": ""FCGHI-J2K567"",
       ""denomination_commerciale"": ""COROLLA"",
