@@ -241,12 +241,6 @@ shared:
     - men_statut_scolarite
     - men_statut_boursier
     - men_echelon_bourse
-  api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_civility:
-    - ants_extrait_immatriculation_vehicule_identite
-    - ants_extrait_immatriculation_vehicule_adresse
-    - ants_extrait_immatriculation_vehicule_statut_rattachement_vehicule
-    - ants_extrait_immatriculation_vehicule_extrait_immatriculation_vehicule
-    - ants_extrait_immatriculation_vehicule_extrait_caracteristiques_techniques_vehicule
   api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect:
     - ants_extrait_immatriculation_vehicule_identite
     - ants_extrait_immatriculation_vehicule_adresse
