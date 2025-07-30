@@ -22,11 +22,11 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
 
       let(:scopes) do
         %i[
-          ants_extrait_immatriculation_vehicule_identite
-          ants_extrait_immatriculation_vehicule_adresse
-          ants_extrait_immatriculation_vehicule_statut_rattachement_vehicule
-          ants_extrait_immatriculation_vehicule_extrait_immatriculation_vehicule
-          ants_extrait_immatriculation_vehicule_extrait_caracteristiques_techniques_vehicule
+          ants_extrait_immatriculation_vehicule_identite_particulier
+          ants_extrait_immatriculation_vehicule_adresse_particulier
+          ants_extrait_immatriculation_vehicule_statut_rattachement
+          ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule
+          ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
         ]
       end
 

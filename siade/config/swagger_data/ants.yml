@@ -12,7 +12,7 @@ ants:
         required: true
         example: "AA-123-BB"
     attributes:
-      identite:
+      identite_particulier:
         title: "Identité"
         type: "object"
         description: "Identité du demandeur du dossier d'immatriculation"
@@ -27,7 +27,7 @@ ants:
             type: "string"
             description: "Le prénom du demandeur du dossier d'immatriculation (si personne physique)"
             example: "JEAN"
-      adresse:
+      adresse_particulier:
         title: "Adresse"
         type: "object"
         description: "L'adresse du demandeur dans l'État membre d'immatriculation"
@@ -84,7 +84,7 @@ ants:
             nullable: true
             description: "Extension de l'adresse, si applicable (Bis, Ter, etc.)"
             example: "B"
-      statut_rattachement_vehicule:
+      statut_rattachement:
         title: "Statut de rattachement au véhicule"
         type: "string"
         description: "Le statut du demandeur du dossier d'immatriculation. Si le véhicule est en location longue durée (LLD, LCB, LCL), alors il s'agit du locataire. Dans les autres cas, c'est 'titulaire' ou 'cotitulaire'"
@@ -93,8 +93,8 @@ ants:
           - titulaire
           - cotitulaire
         example: "titulaire"
-      extrait_immatriculation_vehicule:
-        title: "Extrait d'immatriculation du véhicule"
+      donnees_immatriculation_vehicule:
+        title: "Données d'immatriculation du véhicule"
         type: "object"
         description: "Informations relatives à l'immatriculation du véhicule"
         required:
@@ -132,7 +132,7 @@ ants:
                 description: "Le label descriptif du statut de location"
                 example: "Location Longue Durée"
                 nullable: true
-      extrait_caracteristiques_techniques_vehicule:
+      caracteristiques_techniques_vehicule:
         title: "Extrait des caractéristiques techniques du véhicule"
         type: "object"
         description: "Informations techniques et caractéristiques du véhicule"
