@@ -41,12 +41,12 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         end
       end
 
-      context 'with RNCPS error' do
+      context 'with RNCPS 404 error, which translate an identity not found' do
         let(:response) do
           instance_double(Net::HTTPNotFound, code: 404, body:)
         end
 
-        let(:body) { read_payload_file('cnav/40406.json') }
+        let(:body) { read_payload_file('cnav/404-identity-not-found.json') }
 
         it { is_expected.to be_a_failure }
 
@@ -70,7 +70,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
-        it 'returns a CNAF error' do
+        it 'returns a CNAF error, which translates to an identity found but not within regimes' do
           expect(subject.errors.first.detail).to include('CNAF')
         end
       end
@@ -86,7 +86,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
-        it 'returns an MSA error' do
+        it 'returns an MSA error, which translates to an identity found but not within regimes' do
           expect(subject.errors.first.detail).to include('MSA')
         end
       end

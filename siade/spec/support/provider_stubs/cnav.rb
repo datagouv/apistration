@@ -89,7 +89,7 @@ module ProviderStubs::CNAV
     ).to_return(
       status: 404,
       headers: {},
-      body: read_payload_file('cnav/40406.json')
+      body: read_payload_file('cnav/404-identity-not-found.json')
     )
   end
 
