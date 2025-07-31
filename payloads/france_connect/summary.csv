@@ -36,7 +36,36 @@ CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher l'ens
     ""mesri_admission_regime_formation"",
     ""mesri_admission_commune_etudes"",
     ""mesri_admission_etablissement_etudes"",
-    ""dsnj_statut_service_national""
+    ""dsnj_statut_service_national"",
+    ""ants_extrait_immatriculation_vehicule_identite_particulier"",
+    ""ants_extrait_immatriculation_vehicule_adresse_particulier"",
+    ""ants_extrait_immatriculation_vehicule_statut_rattachement"",
+    ""ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule"",
+    ""ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule""
+  ],
+  ""client"": {
+    ""client_id"": ""client_id"",
+    ""client_name"": ""client_name""
+  },
+  ""identity"": {
+    ""given_name"": ""Thomas"",
+    ""family_name"": ""Delatour"",
+    ""birthdate"": ""1994-04-16"",
+    ""gender"": ""male"",
+    ""birthplace"": ""75111"",
+    ""birthcountry"": ""99100"",
+    ""preferred_username"": ""Delamouette""
+  }
+}"
+Faux Token FranceConnect pour ANTS Extrait Immatriculation Véhicule,Réponse FranceConnect permettant de déclencher la réponse de l'API ANTS Extrait Immatriculation Véhicule,"{""token"":""ants""}",200,"{
+  ""scope"": [
+    ""openid"",
+    ""identite_pivot"",
+    ""ants_extrait_immatriculation_vehicule_identite_particulier"",
+    ""ants_extrait_immatriculation_vehicule_adresse_particulier"",
+    ""ants_extrait_immatriculation_vehicule_statut_rattachement"",
+    ""ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule"",
+    ""ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule""
   ],
   ""client"": {
     ""client_id"": ""client_id"",
