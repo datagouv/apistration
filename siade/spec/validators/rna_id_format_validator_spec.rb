@@ -1,5 +1,6 @@
 class RNAIdFormatValidatable
   include ActiveModel::Validations
+
   attr_accessor :rna_id
 
   validates :rna_id, rna_id_format: true

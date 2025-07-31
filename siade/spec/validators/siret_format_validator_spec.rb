@@ -1,5 +1,6 @@
 class SiretFormatValidatable
   include ActiveModel::Validations
+
   attr_accessor :siret
 
   validates :siret, siret_format: true

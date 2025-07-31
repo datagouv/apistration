@@ -1,5 +1,6 @@
 class SirenFormatValidatable
   include ActiveModel::Validations
+
   attr_accessor :siren
 
   validates :siren, siren_format: true
