@@ -65,7 +65,12 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
       "mesri_admission_regime_formation",
       "mesri_admission_commune_etudes",
       "mesri_admission_etablissement_etudes",
-      "dsnj_statut_service_national"
+      "dsnj_statut_service_national",
+      "ants_extrait_immatriculation_vehicule_identite_particulier",
+      "ants_extrait_immatriculation_vehicule_adresse_particulier",
+      "ants_extrait_immatriculation_vehicule_statut_rattachement",
+      "ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule",
+      "ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule"
     ],
     "client": {
       "client_id": "client_id",
@@ -91,6 +96,66 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```bash
   curl -H "Authorization: Bearer all_fc" --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [ants.yml](ants.yml)
+
+  Status `200`
+
+  Réponse FranceConnect permettant de déclencher la réponse de l'API ANTS Extrait Immatriculation Véhicule
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "token": "ants"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "ants_extrait_immatriculation_vehicule_identite_particulier",
+      "ants_extrait_immatriculation_vehicule_adresse_particulier",
+      "ants_extrait_immatriculation_vehicule_statut_rattachement",
+      "ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule",
+      "ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Thomas",
+      "family_name": "Delatour",
+      "birthdate": "1994-04-16",
+      "gender": "male",
+      "birthplace": "75111",
+      "birthcountry": "99100",
+      "preferred_username": "Delamouette"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer ants" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
   ```
 
   </p>
