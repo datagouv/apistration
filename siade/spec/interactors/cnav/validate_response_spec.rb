@@ -25,12 +25,12 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
   context 'with not found response' do
     context 'with sub provider error' do
-      context 'with SNGI error' do
+      context 'with SNGI error, which translate an identity not found' do
         let(:response) do
           instance_double(Net::HTTPNotFound, code: 404, body:)
         end
 
-        let(:body) { read_payload_file('cnav/40409.json') }
+        let(:body) { read_payload_file('cnav/404-identity-not-found.json') }
 
         it { is_expected.to be_a_failure }
 
@@ -41,18 +41,18 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         end
       end
 
-      context 'with RNCPS 404 error, which translate an identity not found' do
+      context 'with RNCPS 404 error, which translate a regime not found' do
         let(:response) do
           instance_double(Net::HTTPNotFound, code: 404, body:)
         end
 
-        let(:body) { read_payload_file('cnav/404-identity-not-found.json') }
+        let(:body) { read_payload_file('cnav/404-regime-not-found.json') }
 
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
-        it 'returns a SNGI error' do
+        it 'returns a RNCPS error' do
           expect(subject.errors.first.detail).to include('éligibles')
         end
       end
