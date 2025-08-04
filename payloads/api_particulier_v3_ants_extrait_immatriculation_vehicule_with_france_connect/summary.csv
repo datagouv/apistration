@@ -12,7 +12,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,FranceConnect: Titulaire véhicule particulier essence,"{""immatriculation"":""FC-123-AB"",""nomNaissance"":""Delatour"",""prenoms"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
+,FranceConnect: Titulaire véhicule particulier essence,"{""immatriculation"":""FC-123-AB""}",200,"{
   ""data"": {
     ""identite_particulier"": {
       ""nom"": ""DELATOUR"",

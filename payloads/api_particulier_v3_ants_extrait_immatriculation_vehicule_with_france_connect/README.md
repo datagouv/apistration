@@ -59,17 +59,7 @@
 
   ```json
   {
-    "immatriculation": "FC-123-AB",
-    "nomNaissance": "Delatour",
-    "prenoms": [
-      "Thomas"
-    ],
-    "anneeDateNaissance": 1994,
-    "moisDateNaissance": 4,
-    "jourDateNaissance": 16,
-    "sexeEtatCivil": "M",
-    "codeCogInseePaysNaissance": "99100",
-    "codeCogInseeCommuneNaissance": "75111"
+    "immatriculation": "FC-123-AB"
   }
   ```
 
