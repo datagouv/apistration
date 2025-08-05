@@ -21,8 +21,8 @@ payload: |-
     "regime": "CNAF",
     "allocataires": [
       {
-        "nomNaissance": "DUBOIS",
-        "nomUsuel": "TROIS-DUPRE",
+        "nomNaissance": "TROIS-DUPRE",
+        "nomUsuel": "DUBOIS",
         "prenoms": "MELISSANDRE JULIETTE",
         "anneeDateDeNaissance": "1981",
         "moisDateDeNaissance": "07",
@@ -30,8 +30,8 @@ payload: |-
         "sexe": "F"
       },
       {
-        "nomNaissance": "TROIS-DUPRE",
-        "nomUsuel": "TROIS-DUPRE",
+        "nomNaissance": "DUBOIS",
+        "nomUsuel": "",
         "prenoms": "PAUL",
         "anneeDateDeNaissance": "1963",
         "moisDateDeNaissance": "10",
@@ -41,8 +41,8 @@ payload: |-
     ],
     "enfants": [
       {
-        "nomNaissance": "TROIS-DUPRE",
-        "nomUsuel": "TROIS-DUPRE",
+        "nomNaissance": "DUBOIS",
+        "nomUsuel": "",
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "01",
@@ -50,8 +50,8 @@ payload: |-
         "sexe": "M"
       },
       {
-        "nomNaissance": "TROIS-DUPRE",
-        "nomUsuel": "TROIS-DUPRE",
+        "nomNaissance": "DUBOIS",
+        "nomUsuel": "",
         "prenoms": "LOU",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "03",
@@ -59,8 +59,8 @@ payload: |-
         "sexe": "F"
       },
       {
-        "nomNaissance": "TROIS-DUPRE",
-        "nomUsuel": "TROIS-DUPRE",
+        "nomNaissance": "TDUBOIS",
+        "nomUsuel": "",
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",
@@ -69,7 +69,7 @@ payload: |-
       }
     ],
     "adresse": {
-      "identite": "Monsieur TROIS-DUPRE PAUL",
+      "identite": "Monsieur DUBOIS PAUL",
       "complementInformation": null,
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",

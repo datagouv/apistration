@@ -96,7 +96,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "M"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur CNAF MARTIN",
         "complement_information": null,
@@ -115,8 +117,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -177,7 +181,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "M"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur CNAF MARTIN",
         "complement_information": null,
@@ -196,8 +202,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -253,13 +261,15 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
-          "prenoms": "ANGELA",
+          "nom_usage": "",
+          "prenoms": "ANGELA CLAIRE LOUISE",
           "date_naissance": "1962-08-24",
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Madame DUBOIS ANGELA",
         "complement_information": null,
@@ -278,8 +288,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -333,7 +345,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "MERCIER",
-          "nom_usage": "MERCIER",
+          "nom_usage": "DUBOIS",
           "prenoms": "PIERRE",
           "date_naissance": "1969-03-17",
           "sexe": "M"
@@ -342,21 +354,21 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "enfants": [
         {
           "nom_naissance": "MERCIER",
-          "nom_usage": "MERCIER",
+          "nom_usage": "",
           "prenoms": "PIERRE",
           "date_naissance": "2018-01-10",
           "sexe": "M"
         },
         {
           "nom_naissance": "MERCIER",
-          "nom_usage": "MERCIER",
+          "nom_usage": "",
           "prenoms": "ROBERT",
           "date_naissance": "2020-03-15",
           "sexe": "M"
         },
         {
           "nom_naissance": "MERCIER",
-          "nom_usage": "MERCIER",
+          "nom_usage": "",
           "prenoms": "HENRY",
           "date_naissance": "2022-06-20",
           "sexe": "M"
@@ -380,8 +392,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -442,13 +456,15 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         },
         {
           "nom_naissance": "MERCIER",
-          "nom_usage": "MERCIER",
+          "nom_usage": "",
           "prenoms": "JEAN LOUIS",
           "date_naissance": "1945-10-12",
           "sexe": "M"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur MERCIER JEAN",
         "complement_information": null,
@@ -467,8 +483,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -484,7 +502,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   </p>
   </details>
-* [france_connect_200_cnaf_2_parents_1_mineur_2_majeurs.yml](france_connect_200_cnaf_2_parents_1_mineur_2_majeurs.yml)
+* [france_connect_200_cnaf_2_parents_2_mineurs_1_majeur.yml](france_connect_200_cnaf_2_parents_2_mineurs_1_majeur.yml)
 
   Status `200`
 
@@ -522,15 +540,15 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "data": {
       "allocataires": [
         {
-          "nom_naissance": "DUBOIS",
-          "nom_usage": "TROIS-DUPRE",
+          "nom_naissance": "TROIS-DUPRE",
+          "nom_usage": "DUBOIS",
           "prenoms": "MELISSANDRE JULIETTE",
           "date_naissance": "1981-07-27",
           "sexe": "F"
         },
         {
-          "nom_naissance": "TROIS-DUPRE",
-          "nom_usage": "TROIS-DUPRE",
+          "nom_naissance": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "PAUL",
           "date_naissance": "1963-10-12",
           "sexe": "M"
@@ -538,29 +556,29 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       ],
       "enfants": [
         {
-          "nom_naissance": "TROIS-DUPRE",
-          "nom_usage": "TROIS-DUPRE",
+          "nom_naissance": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "PIERRE",
           "date_naissance": "2004-01-10",
           "sexe": "M"
         },
         {
-          "nom_naissance": "TROIS-DUPRE",
-          "nom_usage": "TROIS-DUPRE",
+          "nom_naissance": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "LOU",
           "date_naissance": "2015-03-15",
           "sexe": "F"
         },
         {
-          "nom_naissance": "TROIS-DUPRE",
-          "nom_usage": "TROIS-DUPRE",
+          "nom_naissance": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "HENRY",
           "date_naissance": "2022-06-20",
           "sexe": "M"
         }
       ],
       "adresse": {
-        "destinataire": "Monsieur TROIS-DUPRE PAUL",
+        "destinataire": "Monsieur DUBOIS PAUL",
         "complement_information": null,
         "complement_information_geographique": null,
         "numero_libelle_voie": "1 RUE MONTORGUEIL",
@@ -577,8 +595,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -633,7 +653,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "DUPONT",
-          "nom_usage": "DUPONT",
+          "nom_usage": "",
           "prenoms": "PAUL LOUIS",
           "date_naissance": "1962-08-24",
           "sexe": "M"
@@ -649,21 +669,21 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "enfants": [
         {
           "nom_naissance": "DUPONT",
-          "nom_usage": "DUPONT",
+          "nom_usage": "",
           "prenoms": "PIERRE",
           "date_naissance": "2018-01-10",
           "sexe": "M"
         },
         {
           "nom_naissance": "DUPONT",
-          "nom_usage": "DUPONT",
+          "nom_usage": "",
           "prenoms": "ROBERT",
           "date_naissance": "2020-03-15",
           "sexe": "M"
         },
         {
           "nom_naissance": "DUPONT",
-          "nom_usage": "DUPONT",
+          "nom_usage": "",
           "prenoms": "HENRY",
           "date_naissance": "2022-06-20",
           "sexe": "M"
@@ -687,8 +707,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -743,8 +765,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "ANO'NYMOS-LONS",
-          "nom_usage": "ANO'NYMOS-LONS",
-          "prenoms": "OLIVIER",
+          "nom_usage": "",
+          "prenoms": "OLIVIER MARTIN",
           "date_naissance": "1980-05-24",
           "sexe": "M"
         },
@@ -759,21 +781,21 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "enfants": [
         {
           "nom_naissance": "ANO'NYMOS-LONS",
-          "nom_usage": "ANO'NYMOS-LONS",
+          "nom_usage": "",
           "prenoms": "Gabriel",
-          "date_naissance": "2010-02-02",
+          "date_naissance": "2015-02-02",
           "sexe": "M"
         },
         {
           "nom_naissance": "ANO'NYMOS-LONS",
-          "nom_usage": "ANO'NYMOS-LONS",
+          "nom_usage": "",
           "prenoms": "Jules",
           "date_naissance": "2013-03-03",
           "sexe": "M"
         },
         {
           "nom_naissance": "ANO'NYMOS-LONS",
-          "nom_usage": "ANO'NYMOS-LONS",
+          "nom_usage": "",
           "prenoms": "Simon",
           "date_naissance": "2017-12-05",
           "sexe": "M"
@@ -797,8 +819,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -854,8 +878,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "DELALALALANDE",
-          "nom_usage": "DELALALALANDE",
-          "prenoms": "EMMANUEL ALEXANDRE",
+          "nom_usage": "",
+          "prenoms": "EMMANUEL ALEXANDRE NICOLAS",
           "date_naissance": "1991-01-07",
           "sexe": "M"
         },
@@ -870,21 +894,21 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "enfants": [
         {
           "nom_naissance": "DELALALALANDE",
-          "nom_usage": "DELALALALANDE",
+          "nom_usage": "",
           "prenoms": "Alex",
           "date_naissance": "2015-02-15",
           "sexe": "M"
         },
         {
           "nom_naissance": "DELALALALANDE",
-          "nom_usage": "DELALALALANDE",
+          "nom_usage": "",
           "prenoms": "Léo",
           "date_naissance": "2017-02-02",
           "sexe": "M"
         },
         {
           "nom_naissance": "DELALALALANDE",
-          "nom_usage": "DELALALALANDE",
+          "nom_usage": "",
           "prenoms": "Laura",
           "date_naissance": "2019-12-31",
           "sexe": "F"
@@ -908,8 +932,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -970,8 +996,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "sexe": "F"
         },
         {
-          "nom_naissance": "LALI",
-          "nom_usage": "LALI",
+          "nom_naissance": "BOBO",
+          "nom_usage": "",
           "prenoms": "Mohamed",
           "date_naissance": "1983-05-15",
           "sexe": "M"
@@ -979,29 +1005,29 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       ],
       "enfants": [
         {
-          "nom_naissance": "LALI",
-          "nom_usage": "LALI",
+          "nom_naissance": "BOBO",
+          "nom_usage": "",
           "prenoms": "Inès",
-          "date_naissance": "2010-07-10",
+          "date_naissance": "2015-07-10",
           "sexe": "F"
         },
         {
-          "nom_naissance": "LALI",
-          "nom_usage": "LALI",
+          "nom_naissance": "BOBO",
+          "nom_usage": "",
           "prenoms": "Amir",
           "date_naissance": "2012-09-09",
           "sexe": "M"
         },
         {
-          "nom_naissance": "LALI",
-          "nom_usage": "LALI",
+          "nom_naissance": "BOBO",
+          "nom_usage": "",
           "prenoms": "Ibrahim",
           "date_naissance": "2020-00-00",
           "sexe": "M"
         }
       ],
       "adresse": {
-        "destinataire": "Monsieur et Madame Mohamed LALI",
+        "destinataire": "Monsieur et Madame Mohamed BOBO",
         "complement_information": null,
         "complement_information_geographique": null,
         "numero_libelle_voie": "Cours des 50 Otages",
@@ -1018,8 +1044,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1073,7 +1101,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "PENDERIE",
-          "nom_usage": "PENDERIE",
+          "nom_usage": "",
           "prenoms": "FABIEN",
           "date_naissance": "1986-03-25",
           "sexe": "M"
@@ -1083,41 +1111,41 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
           "nom_usage": "PENDERIE",
           "prenoms": "LUCIE",
           "date_naissance": "1987-08-08",
-          "sexe": "M"
+          "sexe": "F"
         }
       ],
       "enfants": [
         {
           "nom_naissance": "PENDERIE",
-          "nom_usage": "PENDERIE",
+          "nom_usage": "",
           "prenoms": "Léo",
           "date_naissance": "2020-01-01",
           "sexe": "M"
         },
         {
           "nom_naissance": "PENDERIE",
-          "nom_usage": "PENDERIE",
+          "nom_usage": "",
           "prenoms": "Léa",
           "date_naissance": "2021-07-17",
           "sexe": "F"
         },
         {
           "nom_naissance": "PENDERIE",
-          "nom_usage": "PENDERIE",
+          "nom_usage": "",
           "prenoms": "Hugo",
           "date_naissance": "2022-08-08",
           "sexe": "M"
         },
         {
           "nom_naissance": "PENDERIE",
-          "nom_usage": "PENDERIE",
+          "nom_usage": "",
           "prenoms": "Bérénice",
           "date_naissance": "2024-10-25",
           "sexe": "F"
         },
         {
           "nom_naissance": "PENDERIE",
-          "nom_usage": "PENDERIE",
+          "nom_usage": "",
           "prenoms": "Paul",
           "date_naissance": "2004-11-01",
           "sexe": "M"
@@ -1141,8 +1169,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1205,28 +1235,28 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "enfants": [
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "Alex",
           "date_naissance": "1999-01-01",
           "sexe": "M"
         },
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "Léo",
           "date_naissance": "2000-01-01",
           "sexe": "M"
         },
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_usage": "",
           "prenoms": "Alice",
           "date_naissance": "2024-02-02",
           "sexe": "F"
         }
       ],
       "adresse": {
-        "destinataire": "Monsieur Elsa DUBOIS",
+        "destinataire": "Madame Elsa DUBOIS",
         "complement_information": "Batiment 2",
         "complement_information_geographique": "Porte 8",
         "numero_libelle_voie": "20 AVENUE DE SEGUR",
@@ -1243,8 +1273,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1305,7 +1337,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         },
         {
           "nom_naissance": "LEMAITRE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "",
           "prenoms": "FRANCK",
           "date_naissance": "1990-12-30",
           "sexe": "M"
@@ -1314,35 +1346,35 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "enfants": [
         {
           "nom_naissance": "LEMAITRE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "",
           "prenoms": "Gaston",
           "date_naissance": "2021-05-01",
           "sexe": "M"
         },
         {
           "nom_naissance": "LEMAITRE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "",
           "prenoms": "Henri",
           "date_naissance": "2021-05-01",
           "sexe": "M"
         },
         {
           "nom_naissance": "LEMAITRE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "",
           "prenoms": "Robert",
           "date_naissance": "2021-05-01",
           "sexe": "M"
         },
         {
           "nom_naissance": "LEMAITRE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "",
           "prenoms": "Hugo",
           "date_naissance": "2022-04-30",
           "sexe": "M"
         },
         {
           "nom_naissance": "LEMAITRE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "",
           "prenoms": "Lucie",
           "date_naissance": "2023-10-01",
           "sexe": "F"
@@ -1366,8 +1398,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

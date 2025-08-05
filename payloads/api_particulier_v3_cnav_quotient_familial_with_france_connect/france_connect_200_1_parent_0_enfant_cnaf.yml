@@ -23,8 +23,8 @@ payload: |-
       "allocataires": [
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
-          "prenoms": "ANGELA",
+          "nom_usage": "",
+          "prenoms": "ANGELA CLAIRE LOUISE",
           "date_naissance": "1962-08-24",
           "sexe": "F"
         }

@@ -36,8 +36,10 @@
       "avec_majoration": true,
       "date_debut_droit": "1992-11-20"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -92,8 +94,10 @@
       "avec_majoration": false,
       "date_debut_droit": "1992-11-20"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -148,8 +152,10 @@
       "avec_majoration": null,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -265,7 +271,8 @@
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }

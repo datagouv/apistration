@@ -30,28 +30,28 @@ payload: |-
     "enfants": [
       {
         "nom_naissance": "DUBOIS",
-        "nom_usage": "DUBOIS",
+        "nom_usage": "",
         "prenoms": "Alex",
         "date_naissance": "1999-01-01",
         "sexe": "M"
       },
       {
         "nom_naissance": "DUBOIS",
-        "nom_usage": "DUBOIS",
+        "nom_usage": "",
         "prenoms": "Léo",
         "date_naissance": "2000-01-01",
         "sexe": "M"
       },
       {
         "nom_naissance": "DUBOIS",
-        "nom_usage": "DUBOIS",
+        "nom_usage": "",
         "prenoms": "Alice",
         "date_naissance": "2024-02-02",
         "sexe": "F"
       }
     ],
     "adresse": {
-      "destinataire": "Monsieur Elsa DUBOIS",
+      "destinataire": "Madame Elsa DUBOIS",
       "complement_information": "Batiment 2",
       "complement_information_geographique": "Porte 8",
       "numero_libelle_voie": "20 AVENUE DE SEGUR",

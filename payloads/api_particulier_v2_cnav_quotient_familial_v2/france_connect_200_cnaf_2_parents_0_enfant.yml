@@ -30,7 +30,7 @@ payload: |-
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsuel": "MERCIER",
+        "nomUsuel": "",
         "prenoms": "JEAN LOUIS",
         "anneeDateDeNaissance": "1945",
         "moisDateDeNaissance": "10",
