@@ -29,7 +29,7 @@ payload: |-
         },
         {
             "nom_naissance": "BOBO",
-            "nom_usage": "",
+            "nom_usage": null,
             "prenoms": "Mohamed",
             "date_naissance": "1983-05-15",
             "sexe": "M"
@@ -38,21 +38,21 @@ payload: |-
       "enfants": [
         {
             "nom_naissance": "BOBO",
-            "nom_usage": "",
+            "nom_usage": null,
             "prenoms": "Inès",
             "date_naissance": "2015-07-10",
             "sexe": "F"
         },
         {
             "nom_naissance": "BOBO",
-            "nom_usage": "",
+            "nom_usage": null,
             "prenoms": "Amir",
             "date_naissance": "2012-09-09",
             "sexe": "M"
         },
         {
             "nom_naissance": "BOBO",
-            "nom_usage": "",
+            "nom_usage": null,
             "prenoms": "Ibrahim",
             "date_naissance": "2020-00-00",
             "sexe": "M"

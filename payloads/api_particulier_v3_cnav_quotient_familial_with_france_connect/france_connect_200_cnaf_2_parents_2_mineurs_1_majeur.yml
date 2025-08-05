@@ -29,7 +29,7 @@ payload: |-
         },
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "",
+          "nom_usage": null,
           "prenoms": "PAUL",
           "date_naissance": "1963-10-12",
           "sexe": "M"
@@ -38,21 +38,21 @@ payload: |-
       "enfants": [
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "",
+          "nom_usage": null,
           "prenoms": "PIERRE",
           "date_naissance": "2004-01-10",
           "sexe": "M"
         },
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "",
+          "nom_usage": null,
           "prenoms": "LOU",
           "date_naissance": "2015-03-15",
           "sexe": "F"
         },
         {
           "nom_naissance": "DUBOIS",
-          "nom_usage": "",
+          "nom_usage": null,
           "prenoms": "HENRY",
           "date_naissance": "2022-06-20",
           "sexe": "M"

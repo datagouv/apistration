@@ -30,7 +30,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "FRANCK",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "12",
@@ -41,7 +41,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Gaston",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Henri",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -59,7 +59,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Robert",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -68,7 +68,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Hugo",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "04",
@@ -77,7 +77,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Lucie",
         "anneeDateDeNaissance": "2023",
         "moisDateDeNaissance": "10",

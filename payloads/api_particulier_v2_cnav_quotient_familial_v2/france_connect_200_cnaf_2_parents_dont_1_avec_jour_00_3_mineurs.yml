@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Jacob Henri",
         "anneeDateDeNaissance": "1981",
         "moisDateDeNaissance": "11",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Aiko",
         "anneeDateDeNaissance": "2017",
         "moisDateDeNaissance": "02",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Izumi",
         "anneeDateDeNaissance": "2019",
         "moisDateDeNaissance": "03",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Arata",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "08",

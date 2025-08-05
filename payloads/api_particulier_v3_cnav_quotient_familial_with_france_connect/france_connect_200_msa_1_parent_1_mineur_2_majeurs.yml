@@ -30,21 +30,21 @@ payload: |-
     "enfants": [
       {
         "nom_naissance": "DUBOIS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Alex",
         "date_naissance": "1999-01-01",
         "sexe": "M"
       },
       {
         "nom_naissance": "DUBOIS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Léo",
         "date_naissance": "2000-01-01",
         "sexe": "M"
       },
       {
         "nom_naissance": "DUBOIS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Alice",
         "date_naissance": "2024-02-02",
         "sexe": "F"

@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PAUL LOUIS",
         "anneeDateDeNaissance": "1962",
         "moisDateDeNaissance": "08",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2018",
         "moisDateDeNaissance": "01",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "ROBERT",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",

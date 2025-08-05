@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "THIBAULT",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "02",
@@ -41,7 +41,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "Emma",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "01",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "Rose",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "01",
@@ -59,7 +59,7 @@ payload: |-
       },
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "Jade",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "02",

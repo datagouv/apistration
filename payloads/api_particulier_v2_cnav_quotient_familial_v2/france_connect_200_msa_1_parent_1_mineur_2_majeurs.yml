@@ -32,7 +32,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alex",
         "anneeDateDeNaissance": "1999",
         "moisDateDeNaissance": "01",
@@ -41,7 +41,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2000",
         "moisDateDeNaissance": "01",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alice",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "02",
