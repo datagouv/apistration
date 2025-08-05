@@ -58,7 +58,9 @@ Ce cas permet de tester :
                 "label": "Colonnes Montantes"
               }
             ],
-            "domaines": [],
+            "domaines": [
+  
+            ],
             "classification": {
               "code": 1,
               "label": "Classe 12 - de 4 à 8 exécutants"
@@ -75,8 +77,10 @@ Ce cas permet de tester :
             "date_fin": "2024-01-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       },
       {
         "data": {
@@ -105,7 +109,9 @@ Ce cas permet de tester :
                 "label": "Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
               }
             ],
-            "domaines": [],
+            "domaines": [
+  
+            ],
             "classification": {
               "code": 1,
               "label": "Classe 1 - de 1 à 3 exécutants"
@@ -122,14 +128,17 @@ Ce cas permet de tester :
             "date_fin": "2024-07-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
     "meta": {
       "total": 8
     },
-    "links": {}
+    "links": {
+    }
   }
   ```
 
@@ -232,14 +241,17 @@ Ce cas permet de tester :
             "date_fin": "2024-01-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
     "meta": {
       "total": 8
     },
-    "links": {}
+    "links": {
+    }
   }
   ```
 
@@ -319,7 +331,9 @@ Ce cas permet de tester :
                 "label": "Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
               }
             ],
-            "domaines": [],
+            "domaines": [
+  
+            ],
             "classification": {
               "code": 1,
               "label": "Classe 1 - de 1 à 3 exécutants"
@@ -336,14 +350,17 @@ Ce cas permet de tester :
             "date_fin": "2024-01-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
     "meta": {
       "total": 8
     },
-    "links": {}
+    "links": {
+    }
   }
   ```
 

@@ -23,7 +23,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "ECETINSI",
+        "nomUsuel": "",
         "prenoms": "PIERRE-ALAIN MURIEL FLORIANT",
         "anneeDateDeNaissance": "2009",
         "moisDateDeNaissance": "07",
@@ -43,7 +43,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "ECETINSI",
+        "nomUsuel": "",
         "prenoms": "Alberto",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "01",
@@ -52,7 +52,7 @@ payload: |-
       },
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "ECETINSI",
+        "nomUsuel": "",
         "prenoms": "Henrico",
         "anneeDateDeNaissance": "2023",
         "moisDateDeNaissance": "01",
@@ -61,7 +61,7 @@ payload: |-
       },
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "ECETINSI",
+        "nomUsuel": "",
         "prenoms": "Gustave",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "12",

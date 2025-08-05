@@ -32,7 +32,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomUsuel": "",
         "prenoms": "Alex",
         "anneeDateDeNaissance": "1999",
         "moisDateDeNaissance": "01",
@@ -41,7 +41,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomUsuel": "",
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2000",
         "moisDateDeNaissance": "01",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomUsuel": "",
         "prenoms": "Alice",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "02",
@@ -59,7 +59,7 @@ payload: |-
       }
     ],
     "adresse": {
-      "identite": "Monsieur Elsa DUBOIS",
+      "identite": "Madame Elsa DUBOIS",
       "complementInformation": "Batiment 2",
       "complementInformationGeographique": "Porte 8",
       "numeroLibelleVoie": "20 AVENUE DE SEGUR",

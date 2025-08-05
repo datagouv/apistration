@@ -36,8 +36,10 @@
       "est_beneficiaire": true,
       "date_debut_droit": "1992-11-29"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -92,8 +94,10 @@
       "est_beneficiaire": false,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -209,7 +213,8 @@
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
