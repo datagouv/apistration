@@ -21,7 +21,7 @@ payload: |-
   "allocataires": [
       {
         "nom_naissance": "PENDERIE",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "FABIEN",
         "date_naissance": "1986-03-25",
         "sexe": "M"
@@ -37,35 +37,35 @@ payload: |-
     "enfants": [
       {
         "nom_naissance": "PENDERIE",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Léo",
         "date_naissance": "2020-01-01",
         "sexe": "M"
       },
       {
         "nom_naissance": "PENDERIE",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Léa",
         "date_naissance": "2021-07-17",
         "sexe": "F"
       },
       {
         "nom_naissance": "PENDERIE",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Hugo",
         "date_naissance": "2022-08-08",
         "sexe": "M"
       },
       {
         "nom_naissance": "PENDERIE",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Bérénice",
         "date_naissance": "2024-10-25",
         "sexe": "F"
       },
       {
         "nom_naissance": "PENDERIE",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Paul",
         "date_naissance": "2004-11-01",
         "sexe": "M"

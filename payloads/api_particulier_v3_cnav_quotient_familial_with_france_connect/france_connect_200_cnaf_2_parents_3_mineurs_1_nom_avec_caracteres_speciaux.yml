@@ -22,7 +22,7 @@ payload: |-
    "allocataires": [
       {
         "nom_naissance": "ANO'NYMOS-LONS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "OLIVIER MARTIN",
         "date_naissance": "1980-05-24",
         "sexe": "M"
@@ -38,21 +38,21 @@ payload: |-
     "enfants": [
       {
         "nom_naissance": "ANO'NYMOS-LONS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Gabriel",
         "date_naissance": "2015-02-02",
         "sexe": "M"
       },
       {
         "nom_naissance": "ANO'NYMOS-LONS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Jules",
         "date_naissance": "2013-03-03",
         "sexe": "M"
       },
       {
         "nom_naissance": "ANO'NYMOS-LONS",
-        "nom_usage": "",
+        "nom_usage": null,
         "prenoms": "Simon",
         "date_naissance": "2017-12-05",
         "sexe": "M"

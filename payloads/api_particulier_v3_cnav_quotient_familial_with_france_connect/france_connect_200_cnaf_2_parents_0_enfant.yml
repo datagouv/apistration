@@ -28,7 +28,7 @@ payload: |-
         },
         {
           "nom_naissance": "MERCIER",
-          "nom_usage": "",
+          "nom_usage": null,
           "prenoms": "JEAN LOUIS",
           "date_naissance": "1945-10-12",
           "sexe": "M"

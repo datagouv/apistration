@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PAUL",
         "anneeDateDeNaissance": "1963",
         "moisDateDeNaissance": "10",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "01",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "LOU",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "03",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "TDUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",

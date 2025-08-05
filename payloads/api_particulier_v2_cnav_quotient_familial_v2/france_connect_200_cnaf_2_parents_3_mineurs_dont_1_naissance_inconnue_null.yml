@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Mohamed",
         "anneeDateDeNaissance": "1983",
         "moisDateDeNaissance": "05",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Inès",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "07",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Amir",
         "anneeDateDeNaissance": "2012",
         "moisDateDeNaissance": "09",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Ibrahim",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": null,

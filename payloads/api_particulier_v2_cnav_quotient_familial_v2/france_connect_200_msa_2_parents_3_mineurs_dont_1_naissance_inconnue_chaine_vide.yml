@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Emoto",
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "01",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Rina",
         "anneeDateDeNaissance": "2016",
         "moisDateDeNaissance": "03",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Akihiro",
         "anneeDateDeNaissance": "2014",
         "moisDateDeNaissance": "02",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Haru",
         "anneeDateDeNaissance": "",
         "moisDateDeNaissance": "",

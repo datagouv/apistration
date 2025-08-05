@@ -2021,7 +2021,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "MERCIER",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2018",
         "moisDateDeNaissance": "01",
@@ -2030,7 +2030,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "ROBERT",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -2039,7 +2039,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",
@@ -2121,7 +2121,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "JEAN LOUIS",
         "anneeDateDeNaissance": "1945",
         "moisDateDeNaissance": "10",
@@ -2198,7 +2198,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "DUBINÔRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Joëlle Françoise",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "09",
@@ -2207,7 +2207,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LENOTRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léon",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "01",
@@ -2218,7 +2218,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "LENOTRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Gustave",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "08",
@@ -2227,7 +2227,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LENOTRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alphonse",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "08",
@@ -2310,7 +2310,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PAUL",
         "anneeDateDeNaissance": "1963",
         "moisDateDeNaissance": "10",
@@ -2321,7 +2321,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "01",
@@ -2330,7 +2330,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "LOU",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "03",
@@ -2339,7 +2339,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "TDUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",
@@ -2413,7 +2413,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PAUL LOUIS",
         "anneeDateDeNaissance": "1962",
         "moisDateDeNaissance": "08",
@@ -2433,7 +2433,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2018",
         "moisDateDeNaissance": "01",
@@ -2442,7 +2442,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "ROBERT",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -2451,7 +2451,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DUPONT",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",
@@ -2525,7 +2525,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "ANO'NYMOS-LONS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "OLIVIER MARTIN",
         "anneeDateDeNaissance": "1980",
         "moisDateDeNaissance": "05",
@@ -2545,7 +2545,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "ANO'NYMOS-LONS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Gabriel",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "02",
@@ -2554,7 +2554,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "ANO'NYMOS-LONS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Jules",
         "anneeDateDeNaissance": "2013",
         "moisDateDeNaissance": "03",
@@ -2563,7 +2563,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "ANO'NYMOS-LONS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Simon",
         "anneeDateDeNaissance": "2017",
         "moisDateDeNaissance": "12",
@@ -2638,7 +2638,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "EMMANUEL ALEXANDRE NICOLAS",
         "anneeDateDeNaissance": "1991",
         "moisDateDeNaissance": "01",
@@ -2658,7 +2658,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alex",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "02",
@@ -2667,7 +2667,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2017",
         "moisDateDeNaissance": "02",
@@ -2676,7 +2676,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Laura",
         "anneeDateDeNaissance": "2019",
         "moisDateDeNaissance": "12",
@@ -2759,7 +2759,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Mohamed",
         "anneeDateDeNaissance": "1983",
         "moisDateDeNaissance": "05",
@@ -2770,7 +2770,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Inès",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "07",
@@ -2779,7 +2779,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Amir",
         "anneeDateDeNaissance": "2012",
         "moisDateDeNaissance": "09",
@@ -2788,7 +2788,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Ibrahim",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": null,
@@ -2861,7 +2861,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "FABIEN",
         "anneeDateDeNaissance": "1986",
         "moisDateDeNaissance": "03",
@@ -2881,7 +2881,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "01",
@@ -2890,7 +2890,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léa",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "07",
@@ -2899,7 +2899,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Hugo",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "08",
@@ -2908,7 +2908,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Bérénice",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "10",
@@ -2917,7 +2917,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Paul",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "11",
@@ -2991,7 +2991,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Jacob Henri",
         "anneeDateDeNaissance": "1981",
         "moisDateDeNaissance": "11",
@@ -3011,7 +3011,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Aiko",
         "anneeDateDeNaissance": "2017",
         "moisDateDeNaissance": "02",
@@ -3020,7 +3020,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Izumi",
         "anneeDateDeNaissance": "2019",
         "moisDateDeNaissance": "03",
@@ -3029,7 +3029,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "BOBO",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Arata",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "08",
@@ -3113,7 +3113,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alex",
         "anneeDateDeNaissance": "1999",
         "moisDateDeNaissance": "01",
@@ -3122,7 +3122,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2000",
         "moisDateDeNaissance": "01",
@@ -3131,7 +3131,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alice",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "02",
@@ -3206,7 +3206,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "PIERRE-ALAIN MURIEL FLORIANT",
         "anneeDateDeNaissance": "2009",
         "moisDateDeNaissance": "07",
@@ -3226,7 +3226,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Alberto",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "01",
@@ -3235,7 +3235,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Henrico",
         "anneeDateDeNaissance": "2023",
         "moisDateDeNaissance": "01",
@@ -3244,7 +3244,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "ECETINSI",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Gustave",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "12",
@@ -3317,7 +3317,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "REVEIL",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Titouan",
         "anneeDateDeNaissance": "1998",
         "moisDateDeNaissance": "06",
@@ -3337,7 +3337,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "REVEIL",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Cheng",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -3346,7 +3346,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "REVEIL",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Bo",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "02",
@@ -3355,7 +3355,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "REVEIL",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Fu",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "00",
@@ -3438,7 +3438,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Emoto",
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "01",
@@ -3449,7 +3449,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Rina",
         "anneeDateDeNaissance": "2016",
         "moisDateDeNaissance": "03",
@@ -3458,7 +3458,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Akihiro",
         "anneeDateDeNaissance": "2014",
         "moisDateDeNaissance": "02",
@@ -3467,7 +3467,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Haru",
         "anneeDateDeNaissance": "",
         "moisDateDeNaissance": "",
@@ -3549,7 +3549,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "FRANCK",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "12",
@@ -3560,7 +3560,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Gaston",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -3569,7 +3569,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Henri",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -3578,7 +3578,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Robert",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -3587,7 +3587,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Hugo",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "04",
@@ -3596,7 +3596,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Lucie",
         "anneeDateDeNaissance": "2023",
         "moisDateDeNaissance": "10",
@@ -3671,7 +3671,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "ANGELA CLAIRE LOUISE",
         "anneeDateDeNaissance": "1962",
         "moisDateDeNaissance": "08",
@@ -3747,7 +3747,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "THIBAULT",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "02",
@@ -3767,7 +3767,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "enfants": [
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "Emma",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "01",
@@ -3776,7 +3776,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "Rose",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "01",
@@ -3785,7 +3785,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       {
         "nomNaissance": "TABLE",
-        "nomUsuel": "TABLE",
+        "nomUsuel": null,
         "prenoms": "Jade",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "02",

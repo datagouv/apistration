@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "FABIEN",
         "anneeDateDeNaissance": "1986",
         "moisDateDeNaissance": "03",
@@ -41,7 +41,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "01",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Léa",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "07",
@@ -59,7 +59,7 @@ payload: |-
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Hugo",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "08",
@@ -68,7 +68,7 @@ payload: |-
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Bérénice",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "10",
@@ -77,7 +77,7 @@ payload: |-
       },
       {
         "nomNaissance": "PENDERIE",
-        "nomUsuel": "",
+        "nomUsuel": null,
         "prenoms": "Paul",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "11",
