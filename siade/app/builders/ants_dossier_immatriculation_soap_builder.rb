@@ -86,7 +86,7 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   end
 
   def cert_der
-    Base64.strict_encode64(certificate.to_der)
+    Base64.strict_encode64(certificate.to_der).gsub("\n", '')
   end
 
   def digest

@@ -3,6 +3,17 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
 
   protected
 
+  def http_options
+    http_wildcard_ssl_options.merge(
+      ca_file: Siade.credentials[:ants_siv_certificate_chain_path]
+    )
+  end
+
+  def extra_headers(request)
+    request['Content-Type'] = 'application/soap+xml; charset=utf-8'
+    request['SOAPAction'] = ''
+  end
+
   def mocking_params
     {
       immatriculation: context.params[:immatriculation]
@@ -31,4 +42,5 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   def ants_domain
     Siade.credentials[:ants_domain]
   end
+
 end

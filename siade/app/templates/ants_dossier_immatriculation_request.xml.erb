@@ -25,7 +25,7 @@
         <ns1:type_operation>Consultation Dossier</ns1:type_operation>
         <ns1:numero_session><%= session_id %></ns1:numero_session>
         <ns1:date_envoi
-          ><%= Time.now.utc.strftime('%Y-%m-%dT%H:%M:%S') %></ns1:date_envoi
+          ><%= Time.zone.now.strftime('%Y-%m-%dT%H:%M:%S') %></ns1:date_envoi
         >
       </ns1:control>
       <ns1:requete>
