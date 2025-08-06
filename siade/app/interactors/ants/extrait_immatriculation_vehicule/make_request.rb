@@ -1,4 +1,6 @@
-class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MockedInteractor
+class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
+  include UseWildcardSSLCertificate
+
   protected
 
   def mocking_params
@@ -8,11 +10,20 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MockedInteractor
   end
 
   def request_uri
-    fail NotImplementedError
+    URI(Siade.credentials[:ants_siv_url])
   end
 
   def request_params
-    fail NotImplementedError
+    {}
+  end
+
+  def build_request_body
+    ANTSDossierImmatriculationSoapBuilder.new(
+      immatriculation: context.params[:immatriculation].upcase,
+      request_id: context.params[:request_id],
+      certificate: cert,
+      private_key: key
+    ).render
   end
 
   private
