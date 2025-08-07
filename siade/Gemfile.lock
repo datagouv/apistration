@@ -202,7 +202,7 @@ GEM
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
     jsonapi-renderer (0.2.2)
-    jwe (1.1.0)
+    jwe (1.1.1)
       base64
     jwt (2.10.2)
       base64
