@@ -57,7 +57,7 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   end
 
   def current_time
-    @current_time ||= Time.zone.now
+    @current_time ||= Time.now.utc
   end
 
   def assertion_id
@@ -67,6 +67,10 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
 
   def format_time(time)
     time.strftime('%Y-%m-%dT%H:%M:%SZ')
+  end
+
+  def date_envoi
+    current_time.strftime('%Y-%m-%dT%H:%M:%S')
   end
 
   def idp_name
@@ -94,7 +98,17 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   end
 
   def assertion_doc
-    @assertion_doc ||= Nokogiri::XML(assertion_without_signature)
+    # Build complete assertion with temporary signature values
+    assertion_with_temp_signature = render_partial('_ants_saml_assertion.xml.erb', 
+      assertion_params.merge(
+        digest: 'TEMP_DIGEST_VALUE',
+        signature: 'TEMP_SIGNATURE_VALUE'
+      )
+    )
+    doc = Nokogiri::XML(assertion_with_temp_signature)
+    # Apply enveloped-signature transform (remove Signature element)
+    doc.xpath('//ds:Signature', 'ds' => 'http://www.w3.org/2000/09/xmldsig#').remove
+    doc
   end
 
   def assertion_canonicalized
