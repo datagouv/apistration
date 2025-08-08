@@ -3540,7 +3540,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "allocataires": [
       {
         "nomNaissance": "COMMODE",
-        "nomUsuel": "LEMAITRE",
+        "nomUsuel": "ARMOIRE",
         "prenoms": "CINDY",
         "anneeDateDeNaissance": "1980",
         "moisDateDeNaissance": "06",
@@ -3548,7 +3548,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "F"
       },
       {
-        "nomNaissance": "LEMAITRE",
+        "nomNaissance": "ARMOIRE",
         "nomUsuel": null,
         "prenoms": "FRANCK",
         "anneeDateDeNaissance": "1990",
@@ -3559,7 +3559,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     ],
     "enfants": [
       {
-        "nomNaissance": "LEMAITRE",
+        "nomNaissance": "ARMOIRE",
         "nomUsuel": null,
         "prenoms": "Gaston",
         "anneeDateDeNaissance": "2021",
@@ -3568,7 +3568,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       },
       {
-        "nomNaissance": "LEMAITRE",
+        "nomNaissance": "ARMOIRE",
         "nomUsuel": null,
         "prenoms": "Henri",
         "anneeDateDeNaissance": "2021",
@@ -3577,7 +3577,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       },
       {
-        "nomNaissance": "LEMAITRE",
+        "nomNaissance": "ARMOIRE",
         "nomUsuel": null,
         "prenoms": "Robert",
         "anneeDateDeNaissance": "2021",
@@ -3586,7 +3586,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       },
       {
-        "nomNaissance": "LEMAITRE",
+        "nomNaissance": "ARMOIRE",
         "nomUsuel": null,
         "prenoms": "Hugo",
         "anneeDateDeNaissance": "2022",
@@ -3595,7 +3595,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       },
       {
-        "nomNaissance": "LEMAITRE",
+        "nomNaissance": "ARMOIRE",
         "nomUsuel": null,
         "prenoms": "Lucie",
         "anneeDateDeNaissance": "2023",
@@ -3605,7 +3605,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       }
     ],
     "adresse": {
-      "identite": "Monsieur Franck LEMAITRE",
+      "identite": "Monsieur Franck ARMOIRE",
       "complementInformation": null,
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "20 AVENUE DE SEGUR",
