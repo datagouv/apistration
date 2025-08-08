@@ -9,10 +9,6 @@ module PartialRendering
 
   private
 
-  def partial_path(partial_name)
-    @partial_path ||= Rails.root.join("app/templates/#{partial_name}")
-  end
-
   def template(partial_name)
     partial_path = Rails.root.join("app/templates/#{partial_name}")
 
