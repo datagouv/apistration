@@ -56,7 +56,6 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   end
 
   def assertion_id
-    # TODO: Make this according to specs
     @assertion_id ||= "_#{SecureRandom.hex(16)}"
   end
 
@@ -93,15 +92,12 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   end
 
   def assertion_doc
-    # Build complete assertion with temporary signature values
-    assertion_with_temp_signature = render_partial('_ants_saml_assertion.xml.erb', 
+    assertion_with_temp_signature = render_partial('_ants_saml_assertion.xml.erb',
       assertion_params.merge(
         digest: 'TEMP_DIGEST_VALUE',
         signature: 'TEMP_SIGNATURE_VALUE'
-      )
-    )
+      ))
     doc = Nokogiri::XML(assertion_with_temp_signature)
-    # Apply enveloped-signature transform (remove Signature element)
     doc.xpath('//ds:Signature', 'ds' => 'http://www.w3.org/2000/09/xmldsig#').remove
     doc
   end

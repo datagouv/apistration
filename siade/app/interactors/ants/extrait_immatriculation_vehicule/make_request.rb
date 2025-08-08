@@ -42,5 +42,4 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   def ants_domain
     Siade.credentials[:ants_domain]
   end
-
 end
