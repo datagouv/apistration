@@ -8,7 +8,7 @@
 <env:Body>
 <ns1:req_consulter_dossier xmlns:ns1="http://siv.mi.fr/DefinitionsServices/2007-06">
 <ns1:control>
-<ns1:code_partenaire><%= Siade.credentials[:ants_siv_code_partenaire] %></ns1:code_partenaire>
+<ns1:code_partenaire><%= code_partenaire %></ns1:code_partenaire>
 <ns1:code_miat><%= code_miat %></ns1:code_miat>
 <ns1:type_operation>Consultation Dossier</ns1:type_operation>
 <ns1:numero_session><%= session_id %></ns1:numero_session>

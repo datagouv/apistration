@@ -11,19 +11,18 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   end
 
   def session_id
-    @session_id ||= "#{request_id}----"
+    @session_id ||= "req_#{request_id}"
+  end
+
+  def render
+    assertion_with_temp_signature = build_saml_with_temporary_signature
+    @assertion_digest = build_digest(assertion_with_temp_signature)
+    @signature_value = build_signature_from_digest(@assertion_digest)
+    super
   end
 
   def saml_assertion
-    @saml_assertion ||= build_saml_assertion
-  end
-
-  def assertion_variables
-    @assertion_variables ||= compute_assertion_variables
-  end
-
-  def build_saml_assertion
-    render_partial('_ants_saml_assertion.xml.erb', assertion_variables)
+    @saml_assertion ||= render_partial('_ants_saml_assertion.xml.erb', assertion_variables)
   end
 
   protected
@@ -34,8 +33,31 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
 
   private
 
-  def compute_assertion_variables
-    assertion_params.merge(digest: digest, signature: signature)
+  def build_saml_with_temporary_signature
+    render_partial('_ants_saml_assertion.xml.erb',
+      assertion_params.merge(
+        digest: 'TEMP_DIGEST_VALUE',
+        signature: 'TEMP_SIGNATURE_VALUE'
+      ))
+  end
+
+  def build_digest(assertion_with_temp_signature)
+    doc = Nokogiri::XML(assertion_with_temp_signature)
+    doc.xpath('//ds:Signature', 'ds' => 'http://www.w3.org/2000/09/xmldsig#').remove
+    canonicalized = doc.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
+    Base64.strict_encode64(Digest::SHA256.digest(canonicalized))
+  end
+
+  def build_signature_from_digest(assertion_digest)
+    signed_info_xml = render_partial('_ants_signed_info.xml.erb', { assertion_id:, digest: assertion_digest })
+    signed_info_doc = Nokogiri::XML(signed_info_xml)
+    signed_info_canonicalized = signed_info_doc.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
+    digest = OpenSSL::Digest.new('SHA256')
+    Base64.strict_encode64(private_key.sign(digest, signed_info_canonicalized))
+  end
+
+  def assertion_variables
+    assertion_params.merge(digest: @assertion_digest, signature: @signature_value)
   end
 
   def assertion_params
@@ -85,48 +107,5 @@ class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
 
   def cert_der
     Base64.strict_encode64(certificate.to_der).gsub("\n", '')
-  end
-
-  def digest
-    Base64.strict_encode64(Digest::SHA256.digest(assertion_canonicalized))
-  end
-
-  def assertion_doc
-    assertion_with_temp_signature = render_partial('_ants_saml_assertion.xml.erb',
-      assertion_params.merge(
-        digest: 'TEMP_DIGEST_VALUE',
-        signature: 'TEMP_SIGNATURE_VALUE'
-      ))
-    doc = Nokogiri::XML(assertion_with_temp_signature)
-    doc.xpath('//ds:Signature', 'ds' => 'http://www.w3.org/2000/09/xmldsig#').remove
-    doc
-  end
-
-  def assertion_canonicalized
-    @assertion_canonicalized ||= assertion_doc.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
-  end
-
-  def assertion_without_signature
-    render_partial('_ants_saml_assertion_without_signature.xml.erb', assertion_params)
-  end
-
-  def signature
-    Base64.strict_encode64(private_key.sign(openssl_digest, signed_info_canonicalized))
-  end
-
-  def signed_info_doc
-    @signed_info_doc ||= Nokogiri::XML(signed_info_xml)
-  end
-
-  def signed_info_canonicalized
-    @signed_info_canonicalized ||= signed_info_doc.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
-  end
-
-  def openssl_digest
-    @openssl_digest ||= OpenSSL::Digest.new('SHA256')
-  end
-
-  def signed_info_xml
-    render_partial('_ants_signed_info.xml.erb', { assertion_id:, digest: })
   end
 end

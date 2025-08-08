@@ -2,23 +2,18 @@ RSpec.describe ANTSDossierImmatriculationSoapBuilder do
   subject(:builder) { described_class.new(immatriculation:, certificate:, private_key:, request_id:) }
 
   let(:immatriculation) { 'AA-123-AA' }
-  let(:certificate) { instance_double(OpenSSL::X509::Certificate) }
-  let(:private_key) { instance_double(OpenSSL::PKey::RSA) }
   let(:request_id) { 'test-request-123' }
+
+  let(:private_key) do
+    OpenSSL::PKey::RSA.new(File.read('spec/fixtures/ssl/certificat.key'))
+  end
+
+  let(:certificate) do
+    OpenSSL::X509::Certificate.new(File.read('spec/fixtures/ssl/certificat.crt'))
+  end
 
   before do
     Timecop.freeze(Time.new(2025, 1, 15, 10, 30, 0, '+00:00'))
-
-    allow(certificate).to receive(:to_der).and_return('mock_certificate_der_content')
-    allow(private_key).to receive(:sign).with(
-      instance_of(OpenSSL::Digest),
-      instance_of(String)
-    ).and_return('mock_signature_bytes')
-
-    allow(Base64).to receive(:strict_encode64).and_call_original
-    allow(Base64).to receive(:strict_encode64).with('mock_certificate_der_content').and_return('bW9ja19jZXJ0aWZpY2F0ZV9kZXJfY29udGVudA==')
-    allow(Base64).to receive(:strict_encode64).with('mock_signature_bytes').and_return('bW9ja19zaWduYXR1cmVfYnl0ZXM=')
-
     allow(SecureRandom).to receive(:hex).with(16).and_return('0123456789abcdef0123456789abcdef')
   end
 
@@ -27,7 +22,9 @@ RSpec.describe ANTSDossierImmatriculationSoapBuilder do
   end
 
   describe '#render' do
-    it 'generates the correct SOAP envelope structure' do
+    it 'generates the complete SOAP XML for ANTS request' do
+      rendered_xml = builder.render
+
       expected_xml = <<~XML
         <?xml version="1.0" encoding="UTF-8"?>
         <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="http://siv.mi.fr/DefinitionsServices/2007-06">
@@ -46,10 +43,10 @@ RSpec.describe ANTSDossierImmatriculationSoapBuilder do
         <ds:DigestValue>1gn32iYClqABmJS48aULv0t9huOvuDZI5bLufiOSA88=</ds:DigestValue>
         </ds:Reference>
         </ds:SignedInfo>
-        <ds:SignatureValue>bW9ja19zaWduYXR1cmVfYnl0ZXM=</ds:SignatureValue>
+        <ds:SignatureValue>EFQOgmt2yMeGb01mvlQq0SK7HyGJSZK/qP9j+yQkFEWhBNDyMCzb5Pi8/tax+RrG7kOj9eRaRlah0peiqCmun1b2FtgbvzfuG3gA5hbHZsYr2upLUakYqvYC2HEL1ilH4Pfjexzy+O8Yx08oivCn+wKOJImeTxCJvLByM8B3vXR/B4JLb4G+A/f/zlbD522X1MROzqgCyVPviz8p3p4W4yuXZWZ1Vqge74ECIxoERNJVO9mUlfXl4c9boAWPErvNpeCHxgjJ3fz+WMmWVH/e7oH8lZBZ1dPzLLvcgLR292FyYrUWYINSA4Lan7A0G6BKtLUEhgdRfhyWS1k7NqmZcQ==</ds:SignatureValue>
         <ds:KeyInfo>
         <ds:X509Data>
-        <ds:X509Certificate>bW9ja19jZXJ0aWZpY2F0ZV9kZXJfY29udGVudA==</ds:X509Certificate>
+        <ds:X509Certificate>MIIDrTCCApWgAwIBAgIUBsyCFwj45AFEZd7fKESr7NO/QLcwDQYJKoZIhvcNAQELBQAwZjELMAkGA1UEBhMCRlIxDjAMBgNVBAgMBVBhcmlzMQ4wDAYDVQQHDAVQYXJpczENMAsGA1UECgwEVGVzdDENMAsGA1UECwwEVGVzdDEZMBcGA1UEAwwQdGVzdC5leGFtcGxlLmNvbTAeFw0yNTA4MDgxMTU0MjRaFw0yNjA4MDgxMTU0MjRaMGYxCzAJBgNVBAYTAkZSMQ4wDAYDVQQIDAVQYXJpczEOMAwGA1UEBwwFUGFyaXMxDTALBgNVBAoMBFRlc3QxDTALBgNVBAsMBFRlc3QxGTAXBgNVBAMMEHRlc3QuZXhhbXBsZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDEpkPEyo5JGmxezgtpMhdJt62tNTNthF1UV6CVVq36TFj5KPniv/aL3hvCj65zNGf5gx8N6yv/5+5ES4LMSJvv2vi5mkhJ+acwdtRz/TlDufELoQL+yLaJNov6R1WUbjK07lsfK6trw3M6dZ8DxZg3FoZQr5ud2ZUo4kHXC2CvVpA3yb34PQsXr0kSaIXFT6t6MTqntGlwuGfQGFdnSfO9Fggo0XVoKH4sFf4UzEsZpFcy1pGbddvAEtvWWcKWEhsEHG0HShCbw4eR09mXePelTEiMidwNV5jw/JQYqLXoQ3dy6mHaeBM2axOaRLMUh/39WVRTuIVI0EudGDNUGVeFAgMBAAGjUzBRMB0GA1UdDgQWBBT/PiniqvCBOkIAUARCLFR/TxzjkTAfBgNVHSMEGDAWgBT/PiniqvCBOkIAUARCLFR/TxzjkTAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA1FnRAaSoeZ/OuJzNapBofehNsXB9FRViWp4toqIbACMEPe9JtWVk9qKIQqsjCiBcGQkmC22L4PXXaSzgWT1c1Yi82KZO2QYDC6K4x9VPHqGd3jx4RYCutayeiXK4tgIXghXUrCC7J4hPFhy+Vg+FSHVKTnwTANCh0gvAOEECftnLJqbW11XR2LUdc7WkXyK7fmP+KP4/9oPUeOX6kRVV2Fa4mFDlyxanOYBHzIs2ZtGtlc11KFeKV9TzZC6SA9FvV6rx2amL22txkimQjFiN69kEA7wZCkCmQRpUWZf+MHzXO2Yjzdb8lyQnT/H+8+TgMmkBy8vnOTFzBQZ7JtauO</ds:X509Certificate>
         </ds:X509Data>
         </ds:KeyInfo>
         </ds:Signature>
@@ -77,7 +74,7 @@ RSpec.describe ANTSDossierImmatriculationSoapBuilder do
         <ns1:code_partenaire>ants_siv_code_partenaire</ns1:code_partenaire>
         <ns1:code_miat>ants_siv_code_miat</ns1:code_miat>
         <ns1:type_operation>Consultation Dossier</ns1:type_operation>
-        <ns1:numero_session>test-request-123----</ns1:numero_session>
+        <ns1:numero_session>req_test-request-123</ns1:numero_session>
         <ns1:date_envoi>2025-01-15T10:30:00</ns1:date_envoi>
         </ns1:control>
         <ns1:requete>
@@ -91,7 +88,7 @@ RSpec.describe ANTSDossierImmatriculationSoapBuilder do
         </env:Envelope>
       XML
 
-      expect(builder.render).to eq(expected_xml)
+      expect(rendered_xml).to eq(expected_xml)
     end
   end
 end
