@@ -1,22 +1,17 @@
 class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   include PartialRendering
 
-  # TEMPORARY: request_id parameter added but not used in session_id yet
   attr_reader :immatriculation, :certificate, :private_key, :request_id
 
   def initialize(immatriculation:, certificate:, private_key:, request_id:)
     @immatriculation = immatriculation
     @certificate = certificate
     @private_key = private_key
-    # TEMPORARY: request_id stored but not used in session_id yet
     @request_id = request_id
   end
 
   def session_id
-    # TEMPORARY: Using old session_id format while request_id integration is being finalized
-    @session_id ||= "3-#{SecureRandom.hex(8)}.#{rand(10_000_000..99_999_999)}"
-    # TODO: Uncomment when ready to use request_id-based session_id
-    # @session_id ||= "#{request_id}_#{code_miat}"
+    @session_id ||= "#{request_id}----"
   end
 
   def saml_assertion
