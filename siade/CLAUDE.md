@@ -4,12 +4,12 @@
 
 - Install dependencies: `./bin/install.sh`
 - Seed database: `./bin/seeds.sh`
-- Run all tests: `rspec`
-- Run single test: `rspec path/to/file_spec.rb:line_number`
+- Run all tests: `bundle exec rspec`
+- Run single test: `bundle exec rspec path/to/file_spec.rb:line_number`
 - Run tests with coverage: `COVERAGE=true rspec`
 - Debug VCR cassettes: `DEBUG_VCR=true rspec`
 - Generate OpenAPI docs: `bin/generate_swagger.sh`
-- Run Rubocop: `rubocop`
+- Run Rubocop: `bundle exec rubocop`
 - Test specific endpoints: `bundle exec ruby bin/test_endpoints.rb`
 - Test ping endpoints: `bundle exec rails runner bin/test_pings.rb`
 
