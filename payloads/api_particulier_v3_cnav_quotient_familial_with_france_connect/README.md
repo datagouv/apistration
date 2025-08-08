@@ -1330,13 +1330,13 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "allocataires": [
         {
           "nom_naissance": "COMMODE",
-          "nom_usage": "LEMAITRE",
+          "nom_usage": "ARMOIRE",
           "prenoms": "CINDY",
           "date_naissance": "1980-06-27",
           "sexe": "F"
         },
         {
-          "nom_naissance": "LEMAITRE",
+          "nom_naissance": "ARMOIRE",
           "nom_usage": null,
           "prenoms": "FRANCK",
           "date_naissance": "1990-12-30",
@@ -1345,35 +1345,35 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       ],
       "enfants": [
         {
-          "nom_naissance": "LEMAITRE",
+          "nom_naissance": "ARMOIRE",
           "nom_usage": null,
           "prenoms": "Gaston",
           "date_naissance": "2021-05-01",
           "sexe": "M"
         },
         {
-          "nom_naissance": "LEMAITRE",
+          "nom_naissance": "ARMOIRE",
           "nom_usage": null,
           "prenoms": "Henri",
           "date_naissance": "2021-05-01",
           "sexe": "M"
         },
         {
-          "nom_naissance": "LEMAITRE",
+          "nom_naissance": "ARMOIRE",
           "nom_usage": null,
           "prenoms": "Robert",
           "date_naissance": "2021-05-01",
           "sexe": "M"
         },
         {
-          "nom_naissance": "LEMAITRE",
+          "nom_naissance": "ARMOIRE",
           "nom_usage": null,
           "prenoms": "Hugo",
           "date_naissance": "2022-04-30",
           "sexe": "M"
         },
         {
-          "nom_naissance": "LEMAITRE",
+          "nom_naissance": "ARMOIRE",
           "nom_usage": null,
           "prenoms": "Lucie",
           "date_naissance": "2023-10-01",
@@ -1381,7 +1381,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         }
       ],
       "adresse": {
-        "destinataire": "Monsieur Franck LEMAITRE",
+        "destinataire": "Monsieur Franck ARMOIRE",
         "complement_information": null,
         "complement_information_geographique": null,
         "numero_libelle_voie": "20 AVENUE DE SEGUR",
