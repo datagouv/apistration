@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Body>
+    <siv:rep_consulter_dossier xmlns:siv="http://siv.mi.fr/DefinitionsServices/2007-06">
+      <siv:control>
+        <siv:code_partenaire>131614</siv:code_partenaire>
+        <siv:code_miat>QSIV</siv:code_miat>
+        <siv:date_envoi>2025-08-11T11:20:12+02:00</siv:date_envoi>
+        <siv:type_operation>Consultation Dossier</siv:type_operation>
+        <siv:numero_session>req_27fcd8a7-2993-450e-8ccb-3caedb3fffdd</siv:numero_session>
+        <siv:code_traitement>1</siv:code_traitement>
+        <siv:code_erreur>20</siv:code_erreur>
+        <siv:description_erreur>
+          <siv:item_erreur>
+            <siv:message_erreur>Aucune réponse trouvée pour les critères en entrée.</siv:message_erreur>
+          </siv:item_erreur>
+        </siv:description_erreur>
+        <siv:code_operation>5082577</siv:code_operation>
+        <siv:date_reception>2025-08-11T13:20:12+02:00</siv:date_reception>
+        <siv:type_fichier_joint>xml</siv:type_fichier_joint>
+      </siv:control>
+    </siv:rep_consulter_dossier>
+  </soapenv:Body>
+</soapenv:Envelope>"
