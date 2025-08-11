@@ -37,6 +37,7 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
   def extra_headers(request)
     request['Authorization'] = "Bearer #{Siade.credentials[:dsnj_service_national_token]}"
     request['Content-Type'] = 'application/json; charset=utf-8'
+    request['User-Agent'] = 'curl/8.15.0'
   end
 
   private
