@@ -1,0 +1,18 @@
+---
+M1:	Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur
+M2:	Véhicule de transport de personnes ayant plus de 8 places assises outre le siège du conducteur et dont la masse maximale n'excède pas 5 tonnes
+M3:	Véhicule de transport de personnes ayant plus de 8 places assises outre le siège du conducteur et dont la masse maximale excède 5 tonnes
+N1:	Véhicule de transport de marchandises dont la masse maximale n'excède pas 3,5 tonnes
+N2:	Véhicule de transport de marchandises dont la masse maximale excède 3,5 tonnes mais n'excède pas 12 tonnes
+N3:	Véhicule de transport de marchandises dont la masse maximale excède 12 tonnes
+O1:	Remorque dont la masse maximale n'excède pas 0,75 tonne
+O2:	Remorque dont la masse maximale excède 0,75 tonne mais n'excède pas 3,5 tonnes
+O3:	Remorque dont la masse maximale excède 3,5 tonnes mais n'excède pas 10 tonnes
+O4:	Remorque dont la masse maximale excède 10 tonnes
+L1e:	Cyclomoteur à deux roues
+L2e:	Cyclomoteur à trois roues
+L3e:	Motocyclette à deux roues
+L4e:	Motocyclette à deux roues avec side-car
+L5e:	Motocyclette à trois roues
+L6e:	Quadricycle léger
+L7e:	Quadricycle lourd

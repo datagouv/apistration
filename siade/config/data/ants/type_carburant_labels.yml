@@ -1,0 +1,38 @@
+---
+AC:	Moteur à compression
+EE:	Essence-électricité
+EG:	Essence-gaz naturel
+EH:	Essence-électricité (hybride non rechargeable)
+EL:	Électricité
+EM:	Essence-gaz naturel-électricité
+EN:	Essence-gaz naturel
+EP:	Essence-GPL
+EQ:	Essence-gaz naturel-électricité (hybride non rechargeable)
+ER:	Essence-gaz naturel-électricité (hybride rechargeable)
+ES:	Essence
+ET:	Essence-électricité (hybride rechargeable)
+FE:	Superéthanol
+FG:	Bicarburation superéthanol-GPL
+FH:	Superéthanol-électricité (hybride non rechargeable)
+FL:	Superéthanol-électricité (hybride rechargeable)
+FN:	Bicarburation superéthanol-gaz naturel
+GA:	Gazogène
+GF:	Mélange de gazole et gaz naturel
+GG:	Mélange gazogène-gazole
+GH:	Gazole-électricité (hybride non rechargeable)
+GL:	Gazole-électricité (hybride rechargeable)
+GM:	Mélange de gazole et gaz naturel et électricité (hybride rechargeable)
+GN:	Gaz naturel
+GO:	Gazole
+GP:	Gaz de pétrole liquéfié
+GQ:	Mélange de gazole et gaz naturel et électricité (hybride non rechargeable)
+GZ:	Autres hydrocarbures gazeux comprimés
+H2:	Hydrogène
+HE:	Hydrogène-électricité
+HH:	Hydrogène-électricité (hybride non rechargeable)
+HY:	Hydrogène-électricité (hybride rechargeable)
+NE:	Gaz naturel-électricité (hybride rechargeable)
+NH:	Gaz naturel-électricité (hybride non rechargeable)
+PE:	Monocarburation GPL-électricité (hybride rechargeable)
+PH:	Monocarburation GPL-électricité (hybride non rechargeable)
+PL:	Monocarburation GPL
