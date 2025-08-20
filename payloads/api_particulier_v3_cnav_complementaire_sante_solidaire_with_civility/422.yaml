@@ -1,0 +1,26 @@
+---
+description: |-
+  ## Impossible d’identifier l’allocataire
+params:
+  nomNaissance: 'DUBOCHE'
+  prenoms:
+  - 'HELENE'
+  anneeDateNaissance: 2002
+  moisDateNaissance: 12
+  jourDateNaissance: 5
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 422
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00366",
+        "title": "Entité non traitable",
+        "detail": "Un ou plusieurs paramètres de civilité ne sont pas correctement formatés",
+        "source": null,
+        "meta": {}
+      }
+    ]
+  }
