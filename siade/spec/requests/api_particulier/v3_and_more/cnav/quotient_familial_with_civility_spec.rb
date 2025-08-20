@@ -74,6 +74,26 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           stub_cnav_valid('quotient_familial_v2', siret: '13002526500013')
         end
 
+        describe 'with transcogeage params' do
+          let(:codeCogInseeCommuneNaissance) { nil }
+          let(:nomCommuneNaissance) { 'LA ROCHELLE' }
+          let(:codeCogInseeDepartementNaissance) { '17' }
+
+          describe 'when the quotient familial is found' do
+            response '200', 'Quotient Familial active trouvée with birth location parameters' do
+              description SwaggerData.get('cnav.quotient_familial_v2.description')
+
+              cacheable_response(extra_description: SwaggerData.get('cnav.quotient_familial_v2.cache_duration'))
+
+              schema build_rswag_response(
+                attributes: SwaggerData.get('cnav.quotient_familial_v2.attributes')
+              )
+
+              run_test!
+            end
+          end
+        end
+
         describe 'when the quotient familial is found' do
           response '200', 'Quotient Familial active trouvée' do
             description SwaggerData.get('cnav.quotient_familial_v2.description')
