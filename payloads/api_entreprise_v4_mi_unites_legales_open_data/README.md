@@ -110,12 +110,8 @@
         "code_postal": "30340",
         "commune": "Salindres"
       },
-      "composition_reseau": [
-  
-      ],
-      "agrements": [
-  
-      ],
+      "composition_reseau": [],
+      "agrements": [],
       "adresse_gestion": {
         "complement": null,
         "numero_voie": null,
@@ -178,12 +174,8 @@
             "code": "NN",
             "libelle": "Non référencé"
           },
-          "rhs": [
-  
-          ],
-          "comptes": [
-  
-          ]
+          "rhs": [],
+          "comptes": []
         },
         {
           "siren": "389486242",
@@ -228,9 +220,7 @@
               }
             }
           ],
-          "comptes": [
-  
-          ]
+          "comptes": []
         },
         {
           "siren": "389486242",
@@ -289,9 +279,7 @@
               }
             }
           ],
-          "comptes": [
-  
-          ]
+          "comptes": []
         }
       ]
     },
@@ -382,9 +370,7 @@
         "code_postal": "67130",
         "commune": "SCHIRMECK"
       },
-      "composition_reseau": [
-  
-      ],
+      "composition_reseau": [],
       "agrements": [
         {
           "numero": "EspacedeVieSocial",
@@ -564,12 +550,8 @@
             "code": "NN",
             "libelle": "Non référencé"
           },
-          "rhs": [
-  
-          ],
-          "comptes": [
-  
-          ]
+          "rhs": [],
+          "comptes": []
         }
       ]
     },
@@ -660,12 +642,8 @@
         "code_postal": "75002",
         "commune": "Paris"
       },
-      "composition_reseau": [
-  
-      ],
-      "agrements": [
-  
-      ],
+      "composition_reseau": [],
+      "agrements": [],
       "adresse_gestion": {
         "complement": null,
         "numero_voie": null,
@@ -700,9 +678,7 @@
         "economie_sociale_et_solidaire": false,
         "date_appartenance_ess": null
       },
-      "etablissements": [
-  
-      ]
+      "etablissements": []
     },
     "links": {
       "insee_siege_social": null,

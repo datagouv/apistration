@@ -26,10 +26,8 @@
       "document_url": "https://entreprise.api.gouv.fr/files/attestation-sociale-urssaf-exemple.pdf",
       "expires_in": 7889238
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
