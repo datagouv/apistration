@@ -14,4 +14,8 @@ class APIParticulier::V3AndMore::CNAV::QuotientFamilialWithCivilityController < 
   def expires_in
     24.hours
   end
+
+  def transcogage?
+    true
+  end
 end
