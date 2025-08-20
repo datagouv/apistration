@@ -1,0 +1,29 @@
+---
+description: |-
+  ## 403 - Accès interdit
+params:
+  nomNaissance: "MARTINEZ"
+  prenoms:
+    - "GERARD"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 12
+  jourDateNaissance: 5
+  codeCogInseeCommuneNaissance: "08480"
+  codeCogInseePaysNaissance: "99100"
+  sexeEtatCivil: "M"
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00100",
+        "title": "Privilèges insuffisants",
+        "detail": "Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /api/introspect",
+        "source":
+          {
+            "parameter": "token"
+          },
+        "meta": {}
+      }
+    ]
+  }

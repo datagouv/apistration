@@ -43,6 +43,20 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
+,## 403 - Accès interdit,"{""nomNaissance"":""MARTINEZ"",""prenoms"":[""GERARD""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""00100"",
+      ""title"": ""Privilèges insuffisants"",
+      ""detail"": ""Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /api/introspect"",
+      ""source"":
+        {
+          ""parameter"": ""token""
+        },
+      ""meta"": {}
+    }
+  ]
+}"
 ,## Allocataire non trouvé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
   ""errors"": [
     {
@@ -53,6 +67,17 @@ Ce cas permet de tester :
       ""meta"": {
         ""provider"": ""CNAV""
       }
+    }
+  ]
+}"
+,## Impossible d’identifier l’allocataire,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""HELENE""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",422,"{
+  ""errors"": [
+    {
+      ""code"": ""00366"",
+      ""title"": ""Entité non traitable"",
+      ""detail"": ""Un ou plusieurs paramètres de civilité ne sont pas correctement formatés"",
+      ""source"": null,
+      ""meta"": {}
     }
   ]
 }"
