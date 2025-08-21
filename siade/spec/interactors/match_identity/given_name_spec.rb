@@ -1,0 +1,24 @@
+RSpec.describe MatchIdentity::GivenName do
+  subject { described_class.call(candidate_identity: identite, reference_identity: identite_pivot) }
+
+  let(:identite) { { prenoms: ['JEAN'] } }
+  let(:identite_pivot) { { prenoms: ['JEAN'] } }
+
+  describe 'when prenoms match' do
+    it { is_expected.to be_a_success }
+
+    it 'sets givenname matching to true' do
+      expect(subject.matchings['givenname']).to be true
+    end
+  end
+
+  describe 'when prenoms do not match' do
+    let(:identite) { { prenoms: ['PAUL'] } }
+
+    it { is_expected.to be_a_success }
+
+    it 'sets givenname matching to false' do
+      expect(subject.matchings['givenname']).to be false
+    end
+  end
+end

@@ -20,6 +20,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
       describe 'when response body matches the personne physique' do
         let(:body) { read_payload_file('ants/found_siv.xml') }
 
+        before do
+          allow(IdentityMatcher).to receive(:call)
+            .with(candidate_identity: anything, reference_identity: anything)
+            .and_return(instance_double(Interactor::Context, success?: true))
+        end
+
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
@@ -27,6 +33,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
 
       describe 'when response body doesnt match the personne physique' do
         let(:body) { read_payload_file('ants/found_personne_morale_siv.xml') }
+
+        before do
+          allow(IdentityMatcher).to receive(:call)
+            .with(candidate_identity: anything, reference_identity: anything)
+            .and_return(instance_double(Interactor::Context, success?: false))
+        end
 
         it { is_expected.to be_a_failure }
 
@@ -36,6 +48,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
 
     describe 'when response body has no match' do
       let(:body) { read_payload_file('ants/found_personne_morale_siv.xml') }
+
+      before do
+        allow(IdentityMatcher).to receive(:call)
+          .with(candidate_identity: anything, reference_identity: anything)
+          .and_return(instance_double(Interactor::Context, success?: false))
+      end
 
       it { is_expected.to be_a_failure }
 

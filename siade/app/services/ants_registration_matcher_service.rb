@@ -49,11 +49,11 @@ class ANTSRegistrationMatcherService
   end
 
   def identites_and_commune_match?(personne, identite_france_connect)
-    return false unless identite_france_connect.except(:code_cog_insee_commune_naissance) == identite_from_ants(personne).except(:code_departement_naissance)
-
-    return false unless identite_france_connect[:code_cog_insee_commune_naissance].start_with?(personne[:code_dep_naissance])
-
-    true
+    result = IdentityMatcher.call(
+      candidate_identity: identite_from_ants(personne),
+      reference_identity: identite_france_connect
+    )
+    result.success?
   end
 
   def personnes_physiques
