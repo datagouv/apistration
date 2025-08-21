@@ -10,6 +10,7 @@
 - Debug VCR cassettes: `DEBUG_VCR=true rspec`
 - Generate OpenAPI docs: `bin/generate_swagger.sh`
 - Run Rubocop: `bundle exec rubocop`
+- Auto-fix Rubocop issues: `bundle exec rubocop -A`
 - Test specific endpoints: `bundle exec ruby bin/test_endpoints.rb`
 - Test ping endpoints: `bundle exec rails runner bin/test_pings.rb`
 
