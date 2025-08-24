@@ -13795,7 +13795,7 @@ paths:
                               example: '2023-08-08'
                             date_cloture:
                               title: Date de clôture du bilan
-                              nullbale: true
+                              nullable: true
                               type: string
                               format: date
                               example: '2023-08-08'
@@ -15374,9 +15374,9 @@ paths:
                             nullable: true
                           date_cloture_exercice:
                             type: string
-                            description: Date de clôture de l'exercice (format DD/MM)
-                            pattern: "^\\d{2}/\\d{2}$"
-                            example: 30/06
+                            description: Date de clôture de l'exercice (format DD-MM)
+                            pattern: "^\\d{2}-\\d{2}$"
+                            example: 30-06
                             nullable: true
                           date_premiere_cloture_exercice:
                             title: Date de première clôture d'exercice
@@ -15440,7 +15440,7 @@ paths:
                                 type: string
                                 description: Code APRM (Activité Principale Réglementée
                                   du Métier)
-                                pattern: "^\\d{4}[A-Z]$"
+                                pattern: "^\\d{4}[A-Z]{2}$"
                                 example: 6202A
                                 nullable: true
                               libelle:
@@ -15538,9 +15538,9 @@ paths:
                               example: SOPHIE
                             date_naissance:
                               type: string
-                              description: Date de naissance (format MM/YYYY)
-                              pattern: "^\\d{2}/\\d{4}$"
-                              example: 07/1985
+                              description: Date de naissance (format MM-YYYY)
+                              pattern: "^\\d{2}-\\d{4}$"
+                              example: 07-1985
                             commune_residence:
                               type: string
                               description: Commune de résidence
@@ -15588,7 +15588,7 @@ paths:
                                   type: string
                                   description: Code APRM (Activité Principale Réglementée
                                     du Métier)
-                                  pattern: "^\\d{4}[A-Z]$"
+                                  pattern: "^\\d{4}[A-Z]{2}$"
                                   example: 6202A
                                   nullable: true
                                 libelle:
