@@ -171,14 +171,14 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 qualite: 'PRESIDENT',
                 nom: 'DURAND',
                 prenom: 'MARIE',
-                date_naissance: '05/1975',
+                date_naissance: '1975-05',
                 commune_residence: 'PARIS'
               },
               {
                 qualite: 'DIRECTEUR GENERAL',
                 nom: 'BERNARD',
                 prenom: 'PIERRE',
-                date_naissance: '01/1990',
+                date_naissance: '1990-01',
                 commune_residence: 'PARIS'
               }
             ],

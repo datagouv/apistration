@@ -14,7 +14,8 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
     naissance: lambda { |date|
       return nil if date.blank?
 
-      date.gsub(/^(\d{4})-(\d{2})$/, '\2/\1')
+      # Keep YYYY-MM format for partial dates (year-month only)
+      date
     },
     cloture: lambda { |date|
       return nil if date.blank?
