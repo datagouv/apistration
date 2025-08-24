@@ -75,7 +75,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EtablissementExtractor
     {
       date_debut_activite: extract_date_debut_activite(desc, activite_principale),
       code_APE: build_code_ape_hash_from_desc(desc),
-      code_APRM: build_code_aprm_hash_from_desc(desc),
+      code_APRM: build_code_aprm_hash_from_activity(activite_principale),
       origine_fonds: get_origine_fonds(activite_principale),
       nature_etablissement: activite_principale&.dig('formeExercice'),
       activite_principale: fix_encoding(activite_principale&.dig('descriptionDetaillee')),
@@ -97,11 +97,10 @@ module INPI::RNE::ExtraitRNE::Concerns::EtablissementExtractor
     build_code_hash(desc['codeApe'], :activite)
   end
 
-  def build_code_aprm_hash_from_desc(desc)
-    {
-      code: desc['codeAprm'],
-      libelle: nil
-    }
+  def build_code_aprm_hash_from_activity(activite_principale)
+    return { code: nil, libelle: nil } unless activite_principale&.dig('codeAprm')
+
+    build_code_hash(activite_principale['codeAprm'], :aprm)
   end
 
   def build_code_hash(code, type)

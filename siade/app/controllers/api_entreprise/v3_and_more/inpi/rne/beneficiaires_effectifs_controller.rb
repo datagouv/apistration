@@ -1,5 +1,6 @@
 class APIEntreprise::V3AndMore::INPI::RNE::BeneficiairesEffectifsController < APIEntreprise::V3AndMore::BaseController
   include APIEntreprise::INPIRNECache
+
   def show
     if organizer.success?
       render json: serialize_data,

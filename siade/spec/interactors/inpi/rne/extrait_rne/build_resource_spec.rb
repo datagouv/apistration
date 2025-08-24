@@ -68,8 +68,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                 libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
               },
               code_APRM: {
-                code: nil,
-                libelle: nil
+                code: '3213ZZ',
+                libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
               },
               adresse_siege_social: {
                 voie: '10 RUE DE LA PAIX',
@@ -91,8 +91,8 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
                   libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
                 },
                 code_APRM: {
-                  code: nil,
-                  libelle: nil
+                  code: '3213ZZ',
+                  libelle: 'Fabrication d\'articles de bijouterie fantaisie et articles similaires'
                 },
                 origine_fonds: 'Création',
                 nature_etablissement: 'ARTISANALE',

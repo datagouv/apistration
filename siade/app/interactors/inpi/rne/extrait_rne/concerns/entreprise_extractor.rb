@@ -85,9 +85,12 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   end
 
   def build_code_aprm_hash
-    return { code: nil, libelle: nil } unless entreprise_data['codeAprm']
+    return { code: nil, libelle: nil } if personne.blank?
 
-    build_code_hash(entreprise_data['codeAprm'], :aprm)
+    principal_activity = find_principal_establishment_main_activity
+    return { code: nil, libelle: nil } unless principal_activity&.dig('codeAprm')
+
+    build_code_hash(principal_activity['codeAprm'], :aprm)
   end
 
   def build_code_hash(code, type)
@@ -209,6 +212,14 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   def etablissement_actif?(etab)
     desc = etab['descriptionEtablissement'] || {}
     desc['statutPourFormalite'] != STATUT_FERME && desc['dateEffetFermeture'].nil?
+  end
+
+  def find_principal_establishment_main_activity
+    principal_establishment = personne['etablissementPrincipal']
+    return nil unless principal_establishment
+
+    activities = principal_establishment['activites'] || []
+    activities.find { |activity| activity['indicateurPrincipal'] }
   end
 end
 # rubocop:enable Metrics/ModuleLength
