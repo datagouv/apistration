@@ -323,7 +323,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -974,7 +974,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -985,7 +985,7 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le numéro de siren n'est pas correctement formatté
-                unprocessable_entity_error_limit_error:
+                unprocessable_content_error_limit_error:
                   value:
                     errors:
                     - code: '00313'
@@ -1647,7 +1647,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -2279,7 +2279,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -2627,7 +2627,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -2982,7 +2982,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -3687,7 +3687,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_or_siret_or_rna_error:
+                unprocessable_content_error_siren_or_siret_or_rna_error:
                   value:
                     errors:
                     - code: '00330'
@@ -4070,7 +4070,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_or_eori_error:
+                unprocessable_content_error_siret_or_eori_error:
                   value:
                     errors:
                     - code: '00304'
@@ -4491,7 +4491,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -4972,7 +4972,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -5438,7 +5438,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -6045,7 +6045,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -6819,7 +6819,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -8606,7 +8606,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_or_rna_error:
+                unprocessable_content_error_siren_or_rna_error:
                   value:
                     errors:
                     - code: '00333'
@@ -10018,7 +10018,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_or_rna_error:
+                unprocessable_content_error_siren_or_rna_error:
                   value:
                     errors:
                     - code: '00333'
@@ -10362,7 +10362,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -10772,7 +10772,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -11115,7 +11115,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -11589,7 +11589,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -12036,7 +12036,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -12844,7 +12844,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -13376,7 +13376,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -13840,7 +13840,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -14944,7 +14944,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -15731,7 +15731,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -16322,7 +16322,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -16967,7 +16967,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -18316,7 +18316,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -19719,7 +19719,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -21114,7 +21114,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -22462,7 +22462,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -22909,7 +22909,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -23720,7 +23720,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -24579,7 +24579,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -25002,7 +25002,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_or_rna_error:
+                unprocessable_content_error_siret_or_rna_error:
                   value:
                     errors:
                     - code: '00303'
@@ -25556,7 +25556,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_or_rna_error:
+                unprocessable_content_error_siret_or_rna_error:
                   value:
                     errors:
                     - code: '00303'
@@ -25929,7 +25929,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -26378,7 +26378,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -26749,7 +26749,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -27153,7 +27153,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -27525,7 +27525,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -28084,7 +28084,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -28741,7 +28741,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siret_error:
+                unprocessable_content_error_siret_error:
                   value:
                     errors:
                     - code: '00302'
@@ -29139,7 +29139,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'
@@ -29602,7 +29602,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_content_error_siren_error:
                   value:
                     errors:
                     - code: '00301'

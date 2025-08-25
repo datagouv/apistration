@@ -248,7 +248,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_gender_error:
+                unprocessable_content_error_gender_error:
                   value:
                     error: wrong_parameter
                     reason: Le sexe n'est pas correctement formaté (m ou f)
@@ -551,7 +551,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_gender_error:
+                unprocessable_content_error_gender_error:
                   value:
                     error: wrong_parameter
                     reason: Le sexe n'est pas correctement formaté (m ou f)
@@ -865,7 +865,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_gender_error:
+                unprocessable_content_error_gender_error:
                   value:
                     error: wrong_parameter
                     reason: Le sexe n'est pas correctement formaté (m ou f)
@@ -1176,7 +1176,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_gender_error:
+                unprocessable_content_error_gender_error:
                   value:
                     error: wrong_parameter
                     reason: Le sexe n'est pas correctement formaté (m ou f)
@@ -2042,7 +2042,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_gender_error:
+                unprocessable_content_error_gender_error:
                   value:
                     error: wrong_parameter
                     reason: Le sexe n'est pas correctement formaté (m ou f)
@@ -2346,7 +2346,7 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_gender_error:
+                unprocessable_content_error_gender_error:
                   value:
                     error: wrong_parameter
                     reason: Le sexe n'est pas correctement formaté (m ou f)
