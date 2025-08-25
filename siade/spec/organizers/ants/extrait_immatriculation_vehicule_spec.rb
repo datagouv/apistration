@@ -15,33 +15,25 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule, type: :retriever_organizer 
     }
   end
 
-  let(:immatriculation) { 'AA-123-AA' }
-  let(:nom_naissance) { 'Sekiro' }
-  let(:prenoms) { %w[Shinobi Wolf] }
-  let(:annee_date_naissance) { 2008 }
-  let(:mois_date_naissance) { 3 }
-  let(:jour_date_naissance) { 22 }
-  let(:code_cog_insee_commune_naissance) { '92036' }
+  let(:immatriculation) { 'TT-939-WA' }
+  let(:nom_naissance) { 'DUPONT' }
+  let(:prenoms) { %w[JEAN] }
+  let(:annee_date_naissance) { 2000 }
+  let(:mois_date_naissance) { 1 }
+  let(:jour_date_naissance) { 1 }
+  let(:code_cog_insee_commune_naissance) { '75101' }
   let(:code_cog_insee_pays_naissance) { '99100' }
   let(:sexe_etat_civil) { 'M' }
 
   describe 'valid params' do
     before do
-      allow(Rails.env).to receive(:staging?).and_return(true)
-      allow(MockDataBackend).to receive(:get_response_for).and_return(
-        {
-          status: '200',
-          payload: {
-            test: 'lol'
-          }
-        }
-      )
+      stub_ants_extrait_immatriculation_vehicule_valid
     end
 
     it { is_expected.to be_a_success }
 
     it 'retrieves the resource' do
-      resource = subject.mocked_data[:payload]
+      resource = subject.bundled_data.data
 
       expect(resource).to be_present
     end
