@@ -9,7 +9,7 @@ RSpec.describe Token do
     end
 
     let(:siret) { '23456141417862' }
-    let(:uid_regexp) { /^[0-9a-f\-]{36}$/ }
+    let(:uid_regexp) { /^[0-9a-f-]{36}$/ }
     let(:token) do
       described_class.create!(
         iat: 1.hour.ago.to_i,

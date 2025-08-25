@@ -33,7 +33,7 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
       it { is_expected.to be_present }
 
       describe 'following url', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
-        let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
+        let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9-]{36}} }
 
         context 'with token not in database' do
           before { Token.destroy_by(id: token_id) }

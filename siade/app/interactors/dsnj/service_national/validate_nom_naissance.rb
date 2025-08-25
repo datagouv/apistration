@@ -10,6 +10,6 @@ class DSNJ::ServiceNational::ValidateNomNaissance < ValidateParamInteractor
   end
 
   def valid_chars
-    /^[A-Za-zÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸàâäçéèêëîïôöùûüÿÆæ \-]+$/
+    /^[A-Za-zÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸàâäçéèêëîïôöùûüÿÆæ -]+$/
   end
 end

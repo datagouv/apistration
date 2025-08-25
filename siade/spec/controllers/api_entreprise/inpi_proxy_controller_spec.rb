@@ -18,7 +18,7 @@ RSpec.describe APIEntreprise::INPIProxyController do
     let(:document_id) { valid_rne_document_id }
     let(:token_id) { 'c1a72399-2fdd-427e-a9f7-dc480f158603' }
 
-    let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
+    let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9-]{36}} }
 
     before(:all) do
       Token.create!(
