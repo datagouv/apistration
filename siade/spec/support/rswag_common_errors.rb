@@ -96,7 +96,7 @@ module RSwagCommonErrors
     end
   end
 
-  def unprocessable_entity_error_request(params, &block)
+  def unprocessable_content_error_request(params, &block)
     response '422', 'Paramètre(s) invalide(s)' do
       block.call if block_given?
 
@@ -105,7 +105,7 @@ module RSwagCommonErrors
       Array(params).each do |param|
         let(param) { 'invalid' }
 
-        build_rswag_example(UnprocessableEntityError.new(param), :"unprocessable_entity_error_#{param}_error")
+        build_rswag_example(UnprocessableEntityError.new(param), :"unprocessable_content_error_#{param}_error")
       end
 
       mandatory_params.each do |field|

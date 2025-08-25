@@ -50,7 +50,7 @@ RSpec.shared_examples 'not_found' do |siret: nil, siren: nil, action: :show, **e
   end
 end
 
-RSpec.shared_examples 'unprocessable_entity' do |action = :show, kind = :siren, extra_get_params = {}|
+RSpec.shared_examples 'unprocessable_content' do |action = :show, kind = :siren, extra_get_params = {}|
   subject { response }
 
   let(:token) { yes_jwt }
@@ -145,7 +145,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
     let(:test_params) { { context: context_param, recipient: } }
 
     it 'returns 422 with error message' do
-      expect(response).to have_http_status :unprocessable_entity
+      expect(response).to have_http_status :unprocessable_content
       expect(subject).to have_json_error(detail: 'Le paramètre object est obligatoire')
     end
   end
@@ -154,7 +154,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
     let(:test_params) { { object:, recipient: } }
 
     it 'returns 422 with error message' do
-      expect(response).to have_http_status :unprocessable_entity
+      expect(response).to have_http_status :unprocessable_content
       expect(subject).to have_json_error(detail: 'Le paramètre context est obligatoire')
     end
   end
@@ -163,7 +163,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
     let(:test_params) { { object:, context: context_param } }
 
     it 'returns 422 with error message' do
-      expect(response).to have_http_status :unprocessable_entity
+      expect(response).to have_http_status :unprocessable_content
       expect(subject).to have_json_error(detail: 'Le paramètre recipient est obligatoire')
     end
   end

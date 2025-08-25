@@ -43,7 +43,7 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
         describe 'server errors' do
           let(:siret_or_rna) { valid_rna_id }
 
-          unprocessable_entity_error_request(:siret_or_rna)
+          unprocessable_content_error_request(:siret_or_rna)
 
           response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
             let(:siret_or_rna) { non_existing_rna_id }

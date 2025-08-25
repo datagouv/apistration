@@ -63,7 +63,7 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
         describe 'server errors' do
           let(:siren) { valid_siren(:liasse_fiscale) }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           common_provider_errors_request(
             'DGFIP - Adélie',

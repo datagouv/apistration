@@ -57,7 +57,7 @@ RSpec.describe 'INSEE: Successions', api: :entreprise, type: %i[request swagger]
             run_test!
           end
 
-          unprocessable_entity_error_request(:siret) do
+          unprocessable_content_error_request(:siret) do
             let(:siret) { 'lol' }
           end
 

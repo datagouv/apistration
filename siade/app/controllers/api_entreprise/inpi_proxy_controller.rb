@@ -31,7 +31,7 @@ class APIEntreprise::INPIProxyController < APIController
   def decrypt_params
     @decrypted_params ||= JSON.parse(StringEncryptorService.instance.decrypt_url_safe(uuid))
   rescue ActiveSupport::MessageEncryptor::InvalidMessage, ArgumentError
-    handle_params_error!([UnprocessableEntityError.new(:uuid)], :unprocessable_entity)
+    handle_params_error!([UnprocessableEntityError.new(:uuid)], :unprocessable_content)
   end
 
   def check_uuid_timestamp

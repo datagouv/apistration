@@ -44,7 +44,7 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
         end
 
         describe 'server errors' do
-          unprocessable_entity_error_request(:siret_or_rna)
+          unprocessable_content_error_request(:siret_or_rna)
 
           common_provider_errors_request(
             'MI',

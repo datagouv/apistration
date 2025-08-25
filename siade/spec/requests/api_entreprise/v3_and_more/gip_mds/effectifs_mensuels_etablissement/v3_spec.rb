@@ -60,7 +60,7 @@ RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, t
         describe 'server errors' do
           let(:siret) { valid_siret }
 
-          unprocessable_entity_error_request(:siret) do
+          unprocessable_content_error_request(:siret) do
             let(:siret) { 'lol' }
           end
 

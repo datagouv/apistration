@@ -67,7 +67,7 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
             context 'sexe invalide' do
               let(:sexe) { 'nope' }
 
-              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_content_error_gender_error)
 
               schema '$ref' => '#/components/schemas/Error'
 

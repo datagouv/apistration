@@ -37,7 +37,7 @@ RSpec.describe 'CIBTP: AttestationCotisationsCongesPayesChomageIntemperies', api
         describe 'server errors' do
           let(:siret) { valid_siret(:cibtp) }
 
-          unprocessable_entity_error_request(:siret) do
+          unprocessable_content_error_request(:siret) do
             let(:siret) { 'lol' }
           end
 

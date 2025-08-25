@@ -60,7 +60,7 @@ RSpec.describe 'SDH: Statut Sportif with identifiant SDH', api: :particulier, ty
         end
 
         describe 'server errors' do
-          unprocessable_entity_error_request(:identifiant) do
+          unprocessable_content_error_request(:identifiant) do
             let(:identifiant) { 'lol' }
           end
 

@@ -53,7 +53,7 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
         describe 'server errors' do
           let(:siren) { valid_siren(:rge_ademe) }
 
-          unprocessable_entity_error_request(%i[siren limit])
+          unprocessable_content_error_request(%i[siren limit])
 
           response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do
             let(:siret) { not_found_siret(:rge_ademe) }

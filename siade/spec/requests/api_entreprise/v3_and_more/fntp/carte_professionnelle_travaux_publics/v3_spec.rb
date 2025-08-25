@@ -37,7 +37,7 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, 
         describe 'server errors' do
           let(:siren) { valid_siren(:fntp) }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           common_provider_errors_request(
             'FNTP',

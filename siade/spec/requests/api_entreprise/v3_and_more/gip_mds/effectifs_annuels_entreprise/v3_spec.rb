@@ -58,7 +58,7 @@ RSpec.describe 'GIP-MDS: effectifs annuel unité légale', api: :entreprise, typ
         describe 'server errors' do
           let(:siren) { valid_siren }
 
-          unprocessable_entity_error_request(:siren) do
+          unprocessable_content_error_request(:siren) do
             let(:siren) { 'lol' }
           end
 

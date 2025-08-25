@@ -52,7 +52,7 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
         describe 'server errors' do
           let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 
-          unprocessable_entity_error_request(:siren) do
+          unprocessable_content_error_request(:siren) do
             let(:siren) { 'lol' }
           end
 

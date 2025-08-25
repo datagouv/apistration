@@ -64,7 +64,7 @@ RSpec.describe 'DGFIP: Lienscapitalistiques', api: :entreprise, type: %i[request
         end
 
         describe 'server errors' do
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           common_provider_errors_request('DGFIP - Adélie', DGFIP::LiensCapitalistiques)
           common_network_error_request('DGFIP - Adélie', DGFIP::LiensCapitalistiques)

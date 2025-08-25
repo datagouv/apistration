@@ -37,7 +37,7 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', api: :entreprise, typ
         describe 'server errors' do
           let(:siret) { eligible_siret(:probtp) }
 
-          unprocessable_entity_error_request(:siret)
+          unprocessable_content_error_request(:siret)
 
           response '404', 'Non trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
             let(:siret) { not_found_siret(:probtp) }

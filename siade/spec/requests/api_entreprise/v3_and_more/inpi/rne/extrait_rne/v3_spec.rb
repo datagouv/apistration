@@ -69,7 +69,7 @@ RSpec.describe 'INPI RNE: Extrait RNE', api: :entreprise, type: %i[request swagg
         describe 'server errors' do
           let(:siren) { valid_siren }
 
-          unprocessable_entity_error_request(:siren) do
+          unprocessable_content_error_request(:siren) do
             let(:siren) { 'lol' }
           end
 

@@ -39,7 +39,7 @@ RSpec.describe 'INPI::RNE: Actesbilans', api: :entreprise, type: %i[request swag
         describe 'server errors' do
           let(:siren) { valid_siren(:inpi) }
 
-          unprocessable_entity_error_request(:siren) do
+          unprocessable_content_error_request(:siren) do
             let(:siren) { 'lol' }
           end
 

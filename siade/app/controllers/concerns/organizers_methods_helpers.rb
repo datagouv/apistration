@@ -6,7 +6,7 @@ module OrganizersMethodsHelpers
     if retriever.errors.blank?
       :ok
     elsif at_least_one_error_kind_of?(:wrong_parameter, retriever)
-      :unprocessable_entity
+      :unprocessable_content
     elsif at_least_one_error_kind_of?(%i[network_error provider_error provider_unknown_error], retriever)
       :bad_gateway
     elsif at_least_one_error_kind_of?(:timeout_error, retriever)

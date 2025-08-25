@@ -40,7 +40,7 @@ RSpec.describe 'MSA: Conformitescotisations', api: :entreprise, type: %i[request
         describe 'server errors' do
           let(:siret) { valid_siret(:msa) }
 
-          unprocessable_entity_error_request(:siret)
+          unprocessable_content_error_request(:siret)
 
           response '404', 'Non trouvée' do
             before do

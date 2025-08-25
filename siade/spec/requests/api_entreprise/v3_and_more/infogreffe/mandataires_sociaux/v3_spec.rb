@@ -40,7 +40,7 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', api: :entreprise, type: %i[req
         describe 'server errors' do
           let(:siren) { valid_siren(:extrait_rcs) }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
             let(:siren) { not_found_siren(:extrait_rcs) }

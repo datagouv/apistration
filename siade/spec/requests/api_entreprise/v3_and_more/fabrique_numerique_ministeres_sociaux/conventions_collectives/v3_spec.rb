@@ -40,7 +40,7 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', api
         describe 'server errors' do
           let(:siret) { valid_siret(:conventions_collectives) }
 
-          unprocessable_entity_error_request(:siret)
+          unprocessable_content_error_request(:siret)
 
           response '404', 'Non trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
             let(:siret) { not_found_siret(:conventions_collectives) }

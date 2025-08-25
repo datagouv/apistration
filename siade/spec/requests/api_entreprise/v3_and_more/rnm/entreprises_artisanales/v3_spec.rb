@@ -39,7 +39,7 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
         describe 'server errors' do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
             let(:siren) { not_found_siren(:rnm_cma) }

@@ -20,7 +20,7 @@ RSpec.describe APIEntrepriseController do
 
     it 'runs mandatory params before trying to mock response' do
       get :index, params: { token: }
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
 
     it 'check scopes before trying to mock response' do

@@ -9,7 +9,7 @@ module RecipientManagement
 
   def raise_invalid_recipient!(error_klass)
     render json: ErrorsSerializer.new([error_klass.new], format: error_format).as_json,
-      status: :unprocessable_entity
+      status: :unprocessable_content
   end
 
   private

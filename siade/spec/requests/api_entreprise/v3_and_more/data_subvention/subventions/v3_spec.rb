@@ -53,7 +53,7 @@ RSpec.describe 'DataSubvention: Subventions', api: :entreprise, type: %i[request
       describe 'server errors', :valid do
         let(:siren_or_siret_or_rna) { valid_siren }
 
-        unprocessable_entity_error_request(:siren_or_siret_or_rna) do
+        unprocessable_content_error_request(:siren_or_siret_or_rna) do
           let(:siren_or_siret_or_rna) { 'lol' }
         end
 

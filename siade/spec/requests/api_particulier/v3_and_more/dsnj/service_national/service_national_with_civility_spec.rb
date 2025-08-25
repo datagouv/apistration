@@ -75,7 +75,7 @@ RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: 
         end
 
         describe 'server errors' do
-          unprocessable_entity_error_request(:sexe_etat_civil) do
+          unprocessable_content_error_request(:sexe_etat_civil) do
             let(:sexeEtatCivil) { 'lol' }
           end
 

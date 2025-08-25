@@ -38,7 +38,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
         describe 'server errors' do
           let(:siret) { valid_siret(:qualibat) }
 
-          unprocessable_entity_error_request(:siret)
+          unprocessable_content_error_request(:siret)
 
           common_provider_errors_request(
             'Qualibat',

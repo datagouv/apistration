@@ -11,7 +11,7 @@ module APIEntreprise::HasMandatoryParams
 
   def not_acceptable
     render json:   ErrorsSerializer.new(errors).as_json,
-      status: :unprocessable_entity
+      status: :unprocessable_content
   end
 
   private

@@ -68,7 +68,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
         end
 
         describe 'server errors' do
-          unprocessable_entity_error_request(:nom_naissance) do
+          unprocessable_content_error_request(:nom_naissance) do
             let(:nom_naissance) { '' }
           end
 
@@ -104,7 +104,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
         describe 'server errors' do
           let(:<%= params %>) { valid_<%= params %>(:<%= provider_namespace.underscore %>) }
 
-          unprocessable_entity_error_request(:<%= params %>) do
+          unprocessable_content_error_request(:<%= params %>) do
             let(:<%= params %>) { 'lol' }
           end
 

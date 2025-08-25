@@ -41,7 +41,7 @@ RSpec.describe 'INSEE: Unités légales diffusibles', api: :entreprise, type: %i
         describe 'server errors' do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
             let(:siren) { non_diffusable_siren }

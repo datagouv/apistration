@@ -57,7 +57,7 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
       end
 
       describe 'server errors', :valid do
-        unprocessable_entity_error_request(:siren) do
+        unprocessable_content_error_request(:siren) do
           let(:siren) { danone_siren }
         end
 

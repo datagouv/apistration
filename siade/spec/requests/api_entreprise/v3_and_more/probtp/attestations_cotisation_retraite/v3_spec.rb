@@ -37,7 +37,7 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', api: :entreprise, t
         describe 'server errors' do
           let(:siret) { eligible_siret(:probtp) }
 
-          unprocessable_entity_error_request(:siret)
+          unprocessable_content_error_request(:siret)
 
           common_provider_errors_request(
             'ProBTP',

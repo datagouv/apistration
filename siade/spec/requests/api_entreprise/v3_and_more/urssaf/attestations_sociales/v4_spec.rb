@@ -41,7 +41,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
         describe 'server errors' do
           let(:siren) { valid_siren(:acoss) }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           common_provider_errors_request(
             'ACOSS',

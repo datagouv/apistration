@@ -43,7 +43,7 @@ RSpec.describe 'Qualifelec: Certificats', api: :entreprise, type: %i[request swa
         describe 'server errors' do
           let(:siret) { valid_siret(:qualifelec) }
 
-          unprocessable_entity_error_request(:siret) do
+          unprocessable_content_error_request(:siret) do
             let(:siret) { 'lol' }
           end
 
@@ -65,7 +65,7 @@ RSpec.describe 'Qualifelec: Certificats', api: :entreprise, type: %i[request swa
             run_test!
           end
 
-          unprocessable_entity_error_request(%i[siret])
+          unprocessable_content_error_request(%i[siret])
           common_provider_errors_request('Qualifelec', Qualifelec::Certificats)
           common_network_error_request('Qualifelec', Qualifelec::Certificats)
         end

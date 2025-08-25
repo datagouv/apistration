@@ -37,7 +37,7 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[re
         describe 'server errors' do
           let(:siren) { valid_siren(:opqibi_with_probatoire) }
 
-          unprocessable_entity_error_request(:siren)
+          unprocessable_content_error_request(:siren)
 
           response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
             let(:siren) { not_found_siren }

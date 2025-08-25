@@ -37,7 +37,7 @@ RSpec.describe 'INSEE: Adresse Etablissement', api: :entreprise, type: %i[reques
         describe 'server errors' do
           let(:siret) { sirets_insee_v3[:active_GE] }
 
-          unprocessable_entity_error_request(:siret)
+          unprocessable_content_error_request(:siret)
 
           response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siret/non_existent_with_token' } do
             let(:siret) { non_existent_siret }
