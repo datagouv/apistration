@@ -41,6 +41,10 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
     it { is_expected.to be_a_success }
 
     its(:errors) { is_expected.to be_empty }
+
+    it 'stores the matched identity in the context' do
+      expect(subject.matched_identity).to eq(extracted_identities.first)
+    end
   end
 
   describe 'when no identity matches' do

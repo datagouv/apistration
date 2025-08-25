@@ -1,12 +1,18 @@
 class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < ValidateResponse
   def call
-    resource_not_found! unless matching_identity_exists?
+    matching_identity = find_matching_identity
+
+    if matching_identity
+      context.matched_identity = matching_identity
+    else
+      resource_not_found!
+    end
   end
 
   private
 
-  def matching_identity_exists?
-    context.extracted_identities.any? do |identity|
+  def find_matching_identity
+    context.extracted_identities.find do |identity|
       result = IdentityMatcher.call(
         candidate_identity: identity[:identite_from_ants],
         reference_identity: identite_pivot

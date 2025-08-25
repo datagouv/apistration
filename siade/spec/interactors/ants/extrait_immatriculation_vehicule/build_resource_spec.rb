@@ -1,5 +1,5 @@
 RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build_resource do
-  subject(:instance) { described_class.call(response:, params:) }
+  subject(:instance) { described_class.call(response:, params:, matched_identity:) }
 
   let(:response) { instance_double(Net::HTTPOK, body:) }
   let(:body) { read_payload_file('ants/found_siv.xml') }
@@ -15,20 +15,17 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
     }
   end
 
-  before do
-    matcher_service = instance_double(ANTSRegistrationMatcherService)
-    allow(ANTSRegistrationMatcherService).to receive(:new).and_return(matcher_service)
-    allow(matcher_service).to receive(:match_data).and_return({
-      success: true,
-      type_match: 'titulaire',
+  let(:matched_identity) do
+    {
+      libelle_type_personne: 'titulaire',
       identite_from_ants: {
         nom_naissance: 'DUPONT',
         prenoms: ['JEAN'],
         sexe_etat_civil: 'M',
-        annee_date_naissance: 1955,
-        mois_date_naissance: 12,
-        jour_date_naissance: 8,
-        code_departement_naissance: '59'
+        annee_date_naissance: 2000,
+        mois_date_naissance: 1,
+        jour_date_naissance: 1,
+        code_departement_naissance: '75'
       },
       address_from_ants: {
         complement_information: nil,
@@ -42,7 +39,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
         extension: nil,
         pays: 'FRANCE'
       }
-    })
+    }
   end
 
   it { is_expected.to be_a_success }
@@ -57,10 +54,10 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
             nom: 'DUPONT',
             prenom: 'JEAN',
             sexe_etat_civil: 'M',
-            annee_date_naissance: 1955,
-            mois_date_naissance: 12,
-            jour_date_naissance: 8,
-            code_departement_naissance: '59'
+            annee_date_naissance: 2000,
+            mois_date_naissance: 1,
+            jour_date_naissance: 1,
+            code_departement_naissance: '75'
           },
           adresse_particulier: {
             complement_information: nil,

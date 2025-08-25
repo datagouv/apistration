@@ -26,19 +26,33 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
   end
 
   def adresse_particulier
-    match_data[:address_from_ants] || {}
+    address = matching_identity[:address_from_ants] || {}
+
+    # Ensure all required schema fields are present
+    {
+      complement_information: address[:complement_information],
+      num_voie: address[:num_voie],
+      type_voie: address[:type_voie],
+      libelle_voie: address[:libelle_voie],
+      code_postal_ville: address[:code_postal_ville],
+      libelle_commune: address[:libelle_commune],
+      lieu_dit: address[:lieu_dit],
+      etage_escalier_appartement: address[:etage_escalier_appartement],
+      extension: address[:extension],
+      pays: address[:pays]
+    }
   end
 
   def statut_rattachement
-    match_data[:type_match]
-  end
-
-  def match_data
-    @match_data ||= matcher_service.match_data
+    matching_identity[:libelle_type_personne]
   end
 
   def identite_data
-    match_data[:identite_from_ants]
+    matching_identity[:identite_from_ants]
+  end
+
+  def matching_identity
+    @matching_identity ||= context.matched_identity
   end
 
   def xml_doc
@@ -127,9 +141,5 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
 
   def load_yaml_data(file_path)
     YAML.load_file(Rails.root.join('config', 'data', file_path))
-  end
-
-  def matcher_service
-    @matcher_service ||= ANTSRegistrationMatcherService.new(context: context)
   end
 end
