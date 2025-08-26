@@ -70,10 +70,10 @@
                   <siv:nom_naiss>DUPONT</siv:nom_naiss>
                   <siv:prenom>JEAN</siv:prenom>
                   <siv:sexe>M</siv:sexe>
-                  <siv:date_naissance>1955-12-08</siv:date_naissance>
+                  <siv:date_naissance>2000-01-01</siv:date_naissance>
                   <siv:lieu_naissance>PARIS</siv:lieu_naissance>
-                  <siv:code_dep_naissance>59</siv:code_dep_naissance>
-                  <siv:libelle_dep_naissance>NORD</siv:libelle_dep_naissance>
+                  <siv:code_dep_naissance>75</siv:code_dep_naissance>
+                  <siv:libelle_dep_naissance>PARIS</siv:libelle_dep_naissance>
                 </siv:identite_personne>
                 <siv:adresse_personne>
                   <siv:num_voie>12</siv:num_voie>

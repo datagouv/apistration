@@ -15,7 +15,7 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
         required: SwaggerData.get('ants.extrait_immatriculation_vehicule.parameters.immatriculation.required')
 
       let(:recipient) { valid_siret(:recipient) }
-      let(:immatriculation) { 'AA-123-AA' }
+      let(:immatriculation) { 'TT-939-WA' }
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
@@ -33,12 +33,10 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
       describe 'with a FranceConnect token' do
         before do
           mock_valid_france_connect_checktoken(scopes:)
-          allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          stub_ants_extrait_immatriculation_vehicule_valid
         end
 
-        response '200', 'Identité trouvée', pending: 'Implement endpoint' do
-          # before { stub_ants_extrait_immatriculation_vehicule_found }
-
+        response '200', 'Identité trouvée' do
           description SwaggerData.get('ants.extrait_immatriculation_vehicule.description')
 
           rate_limit_headers
@@ -50,7 +48,7 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
           run_test!
         end
 
-        describe 'when not found', pending: 'Get not found payload from FD' do
+        describe 'when not found' do
           before { stub_ants_extrait_immatriculation_vehicule_not_found }
 
           response '404', 'Non trouvée' do
