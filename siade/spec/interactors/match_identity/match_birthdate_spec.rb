@@ -39,4 +39,18 @@ RSpec.describe MatchIdentity::MatchBirthdate do
       expect(subject.matchings['matchbirthdate']).to be false
     end
   end
+
+  describe 'normalization' do
+    let(:identite) do
+      {
+        annee_date_naissance: '1955',
+        mois_date_naissance: '12',
+        jour_date_naissance: '8'
+      }
+    end
+
+    it 'matches string numbers with integers' do
+      expect(subject.matchings['matchbirthdate']).to be true
+    end
+  end
 end

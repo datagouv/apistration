@@ -21,4 +21,13 @@ RSpec.describe MatchIdentity::GivenName do
       expect(subject.matchings['givenname']).to be false
     end
   end
+
+  describe 'normalization' do
+    let(:identite) { { prenoms: 'jean' } }
+    let(:identite_pivot) { { prenoms: 'JEAN' } }
+
+    it 'matches case-insensitively' do
+      expect(subject.matchings['givenname']).to be true
+    end
+  end
 end

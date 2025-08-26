@@ -28,7 +28,6 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
   def adresse_particulier
     address = matching_identity[:address_from_ants] || {}
 
-    # Ensure all required schema fields are present
     {
       complement_information: address[:complement_information],
       num_voie: address[:num_voie],
