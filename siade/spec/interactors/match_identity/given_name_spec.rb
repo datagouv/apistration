@@ -29,5 +29,14 @@ RSpec.describe MatchIdentity::GivenName do
     it 'matches case-insensitively' do
       expect(subject.matchings['givenname']).to be true
     end
+
+    context 'with array vs string' do
+      let(:identite) { { prenoms: 'JEAN' } }
+      let(:identite_pivot) { { prenoms: %w[Jean Martin] } }
+
+      it 'matches when string is in array' do
+        expect(subject.matchings['givenname']).to be true
+      end
+    end
   end
 end
