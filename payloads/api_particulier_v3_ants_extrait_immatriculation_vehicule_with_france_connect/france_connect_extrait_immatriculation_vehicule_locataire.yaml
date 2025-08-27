@@ -2,17 +2,6 @@
 description: 'Locataire LLD véhicule particulier hybride via FranceConnect'
 params:
   immatriculation: 'FC-456-CD'
-  prenoms:
-  - 'Angela'
-  - 'Claire'
-  - 'Louise'
-  nomNaissance: "DUBOIS"
-  anneeDateDeNaissance: 1962
-  moisDateDeNaissance: 8
-  jourDateDeNaissance: 24
-  sexe: "F"
-  codeInseeLieuDeNaissance: "75107"
-  codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-
   {
