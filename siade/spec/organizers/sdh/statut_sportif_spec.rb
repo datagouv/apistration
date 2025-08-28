@@ -3,18 +3,16 @@ RSpec.describe SDH::StatutSportif, type: :retriever_organizer do
 
   let(:params) do
     {
-      identifiant:
+      identifiant: '123456789'
     }
   end
 
   before do
     stub_sdh_authenticate
-    stub_sdh_statut_sportif_valid
+    stub_sdh_statut_sportif_valid('123456789')
   end
 
   describe 'happy path' do
-    before { pending 'Implement endpoint' }
-
     it { is_expected.to be_a_success }
 
     it 'retrieves the resource' do
