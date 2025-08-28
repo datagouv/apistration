@@ -20,7 +20,7 @@
 - Naming: Snake_case for methods/variables, CamelCase for classes
 - Error handling: Create specific error classes in app/errors/ and use the config/errors.yml configuration
 - API responses: Follow REST/JSON:API format with data/links/meta structure
-- Tests: RSpec with manual mocks for HTTP requests, sometimes VCR
+- Tests: RSpec with manually stubbed requests using WebMock. VCR is legacy - do NOT use VCR for new implementations, always use manual stubs
 - Interactors: Use organizers pattern with small, focused interactors
 - APIs: Use the scaffold_resource generator for new APIs
 - Scopes: Define API access scopes in config/authorizations.yml
