@@ -36,7 +36,12 @@ RSpec.describe 'SDH: Statut Sportif with identifiant SDH', api: :particulier, ty
 
       describe 'with valid token and mandatory params', :valid do
         describe 'when found' do
-          response '200', 'Sportif trouvé', pending: 'Implement Endpoint' do
+          before do
+            stub_sdh_authenticate
+            stub_sdh_statut_sportif_valid('12345')
+          end
+
+          response '200', 'Sportif trouvé' do
             description SwaggerData.get('sdh.statut_sportif.description')
 
             rate_limit_headers
@@ -50,7 +55,12 @@ RSpec.describe 'SDH: Statut Sportif with identifiant SDH', api: :particulier, ty
         end
 
         describe 'when not found' do
-          response '404', 'Non trouvé', pending: 'Implement Endpoint' do
+          before do
+            stub_sdh_authenticate
+            stub_sdh_statut_sportif_not_found('12345')
+          end
+
+          response '404', 'Non trouvé' do
             build_rswag_example(NotFoundError.new('SDH'))
 
             schema '$ref' => '#/components/schemas/Error'
@@ -60,6 +70,11 @@ RSpec.describe 'SDH: Statut Sportif with identifiant SDH', api: :particulier, ty
         end
 
         describe 'server errors' do
+          before do
+            stub_sdh_authenticate
+            stub_sdh_statut_sportif_valid('12345')
+          end
+
           unprocessable_content_error_request(:identifiant) do
             let(:identifiant) { 'lol' }
           end

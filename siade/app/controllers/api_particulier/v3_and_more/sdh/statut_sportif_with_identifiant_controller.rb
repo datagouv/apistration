@@ -1,10 +1,8 @@
 class APIParticulier::V3AndMore::SDH::StatutSportifWithIdentifiantController < APIParticulier::V3AndMore::BaseController
   def show
     if organizer.success?
-
-      render json: organizer[:payload],
-        status: organizer[:status]
-
+      render json: serialize_data,
+        status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end

@@ -27,7 +27,7 @@ module ProviderStubs::SDH
 
   def stub_sdh_statut_sportif_not_found(identifiant)
     stub_request(:get, "#{Siade.credentials[:sdh_endpoint_url]}/v1/statut-sportif/#{identifiant}").to_return(
-      status: 200,
+      status: 404,
       body: read_payload_file('sdh/statut_sportif/not_found.json')
     )
   end
