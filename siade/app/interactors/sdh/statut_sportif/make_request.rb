@@ -3,7 +3,7 @@ class SDH::StatutSportif::MakeRequest < MakeRequest::Get
 
   def mocking_params
     {
-      identifiant: context.params[:identifiant]
+      identifiant:
     }
   end
 

@@ -37,62 +37,28 @@ class SDH::StatutSportif::BuildResource < BuildResource
     fiches_haut_niveau.any? { |fiche| fiche['hautNiveau'] }
   end
 
-  def informations_statut # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+  def informations_statut
     return unless current_fiche_haut_niveau
 
     {
-      periode: {
-        date_debut_statut: format_date(current_fiche_haut_niveau['debutDroits']),
-        date_fin_statut: format_date(current_fiche_haut_niveau['finDroits'])
-      },
-      federation: {
-        code_federation: current_fiche_haut_niveau['federation'].to_s,
-        nom_federation: current_fiche_haut_niveau['nomFederation'],
-        nom_court_federation: current_fiche_haut_niveau['nomCourtFederation']
-      },
-      etablissement: {
-        code_etablissement: current_fiche_sportif&.dig('etablissement')&.to_s,
-        nom_etablissement: current_fiche_sportif&.dig('nomEtablissement')
-      },
-      region: {
-        code_region: current_fiche_sportif&.dig('region')&.to_s,
-        nom_region: current_fiche_sportif&.dig('nomRegion')
-      },
-      categorie: {
-        code_categorie: current_fiche_haut_niveau['categorie'].to_s,
-        nom_categorie: current_fiche_haut_niveau['libCategorie'],
-        valeur: current_fiche_haut_niveau['valeur'].to_s
-      },
-      sportif_de_haut_niveau: current_fiche_haut_niveau['hautNiveau']
+      periode:,
+      federation:,
+      etablissement:,
+      region:,
+      categorie:,
+      sportif_de_haut_niveau:
     }
   end
 
-  def informations_statuts_precedents # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
-    previous_fiches_haut_niveau.map do |fiche| # rubocop:disable Metrics/BlockLength
+  def informations_statuts_precedents
+    previous_fiches_haut_niveau.map do |fiche|
       {
         fiche: fiche['fiche'],
-        periode: {
-          date_debut_statut: format_date(fiche['debutDroits']),
-          date_fin_statut: format_date(fiche['finDroits'])
-        },
-        federation: {
-          code_federation: fiche['federation'].to_s,
-          nom_federation: fiche['nomFederation'],
-          nom_court_federation: fiche['nomCourtFederation']
-        },
-        etablissement: {
-          code_etablissement: current_fiche_sportif&.dig('etablissement')&.to_s,
-          nom_etablissement: current_fiche_sportif&.dig('nomEtablissement')
-        },
-        region: {
-          code_region: current_fiche_sportif&.dig('region')&.to_s,
-          nom_region: current_fiche_sportif&.dig('nomRegion')
-        },
-        categorie: {
-          code_categorie: fiche['categorie'].to_s,
-          nom_categorie: fiche['libCategorie'],
-          valeur: fiche['valeur'].to_s
-        },
+        periode: periode_for_fiche(fiche),
+        federation: federation_for_fiche(fiche),
+        etablissement:,
+        region:,
+        categorie: categorie_for_fiche(fiche),
         sportif_de_haut_niveau: fiche['hautNiveau']
       }
     end
@@ -118,7 +84,7 @@ class SDH::StatutSportif::BuildResource < BuildResource
       current_date.between?(date_debut, date_fin)
     end
 
-    alert_multiple_current_fiches if current_fiches.length > 1
+    alert_multiple_current_fiches(current_fiches, current_date) if current_fiches.length > 1
 
     current_fiches.first
   end
@@ -145,5 +111,69 @@ class SDH::StatutSportif::BuildResource < BuildResource
 
   def fiches_sportif
     @fiches_sportif ||= json_body['fichesSportif'] || []
+  end
+
+  def periode
+    {
+      date_debut_statut: format_date(current_fiche_haut_niveau['debutDroits']),
+      date_fin_statut: format_date(current_fiche_haut_niveau['finDroits'])
+    }
+  end
+
+  def federation
+    {
+      code_federation: current_fiche_haut_niveau['federation'].to_s,
+      nom_federation: current_fiche_haut_niveau['nomFederation'],
+      nom_court_federation: current_fiche_haut_niveau['nomCourtFederation']
+    }
+  end
+
+  def etablissement
+    {
+      code_etablissement: current_fiche_sportif&.dig('etablissement')&.to_s,
+      nom_etablissement: current_fiche_sportif&.dig('nomEtablissement')
+    }
+  end
+
+  def region
+    {
+      code_region: current_fiche_sportif&.dig('region')&.to_s,
+      nom_region: current_fiche_sportif&.dig('nomRegion')
+    }
+  end
+
+  def categorie
+    {
+      code_categorie: current_fiche_haut_niveau['categorie'].to_s,
+      nom_categorie: current_fiche_haut_niveau['libCategorie'],
+      valeur: current_fiche_haut_niveau['valeur'].to_s
+    }
+  end
+
+  def sportif_de_haut_niveau
+    current_fiche_haut_niveau['hautNiveau']
+  end
+
+  def periode_for_fiche(fiche)
+    {
+      date_debut_statut: format_date(fiche['debutDroits']),
+      date_fin_statut: format_date(fiche['finDroits'])
+    }
+  end
+
+  def federation_for_fiche(fiche)
+    {
+      code_federation: fiche['federation'].to_s,
+      nom_federation: fiche['nomFederation'],
+      nom_court_federation: fiche['nomCourtFederation']
+    }
+  end
+
+  def categorie_for_fiche(fiche)
+    {
+      code_categorie: fiche['categorie'].to_s,
+      nom_categorie: fiche['libCategorie'],
+      valeur: fiche['valeur'].to_s
+    }
   end
 end
