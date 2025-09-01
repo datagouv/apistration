@@ -75,6 +75,12 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
         end
 
         describe 'with transcogeage params' do
+          around do |example|
+            Timecop.freeze(Date.new(2025, 8, 15)) do
+              example.run
+            end
+          end
+
           let(:codeCogInseeCommuneNaissance) { nil }
           let(:nomCommuneNaissance) { 'Gennevilliers' }
           let(:codeCogInseeDepartementNaissance) { '92' }
