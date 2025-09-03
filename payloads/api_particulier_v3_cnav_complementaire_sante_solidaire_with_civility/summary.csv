@@ -43,7 +43,7 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
-,## 403 - Accès interdit,"{""nomNaissance"":""MARTINEZ"",""prenoms"":[""GERARD""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+,## 403 - Accès interdit,"{""nomNaissance"":""MARTINEZ"",""prenoms"":[""GERARD""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",403,"{
   ""errors"": [
     {
       ""code"": ""00100"",
@@ -296,6 +296,23 @@ Ce cas permet de tester :
 - [Param. appel] Date de naissance (jour,mois,année)
 - [Param. appel] sexe masculin
 - [Réponse] Non bénéficiaire de la complémentaire santé solidaire","{""nomUsage"":""VERTIN"",""nomNaissance"":""HUBOT"",""prenoms"":[""PIERRE-MARIE"",""JEREMY""],""anneeDateNaissance"":1968,""moisDateNaissance"":11,""jourDateNaissance"":15,""codeCogInseeCommuneNaissance"":""33063"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": false,
+    ""avec_participation"": false,
+    ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Non bénéficiaire - masculin
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] 1 prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Param. appel] cog 
+- [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""PAULO"",""prenoms"":[""PAUL""],""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1}",200,"{
   ""data"": {
     ""est_beneficiaire"": false,
     ""avec_participation"": false,

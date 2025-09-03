@@ -42,8 +42,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2023-06-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -104,8 +106,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2023-02-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -164,8 +168,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -185,7 +191,7 @@ Ce cas permet de tester :
   </details>
 * [403.yaml](403.yaml)
 
-  Status `404`
+  Status `403`
 
   ## 403 - Accès interdit
 
@@ -223,7 +229,8 @@ Ce cas permet de tester :
         "source": {
           "parameter": "token"
         },
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -341,7 +348,8 @@ Ce cas permet de tester :
         "title": "Entité non traitable",
         "detail": "Un ou plusieurs paramètres de civilité ne sont pas correctement formatés",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -399,7 +407,8 @@ Ce cas permet de tester :
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -585,8 +594,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2024-10-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -649,8 +660,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2023-08-25"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -715,8 +728,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2024-06-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -782,8 +797,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-08-25"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -847,8 +864,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-08-25"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -911,8 +930,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-08-30"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -975,8 +996,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-11-05"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1038,8 +1061,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-09-05"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1104,8 +1129,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2026-09-29"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1169,8 +1196,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-02-02"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1235,8 +1264,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1249,6 +1280,72 @@ Ce cas permet de tester :
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomUsage=VERTIN' -d 'nomNaissance=HUBOT' -d 'prenoms[]=PIERRE-MARIE' -d 'prenoms[]=JEREMY' -d 'anneeDateNaissance=1968' -d 'moisDateNaissance=11' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=33063' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [non_beneficiaire_200.yaml](non_beneficiaire_200.yaml)
+
+  Status `200`
+
+  ## Non bénéficiaire - masculin
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] 1 prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Param. appel] cog 
+- [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "PAULO",
+    "prenoms": [
+      "PAUL"
+    ],
+    "anneeDateNaissance": 2000,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 1
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=PAULO' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 

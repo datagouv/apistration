@@ -27,7 +27,8 @@
         "code": "42003",
         "title": "Entité non trouvée",
         "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
-        "source": {},
+        "source": {
+        },
         "meta": {
           "provider": "ANTS"
         }
@@ -121,8 +122,10 @@
         }
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -149,19 +152,7 @@
 
   ```json
   {
-    "immatriculation": "FC-456-CD",
-    "prenoms": [
-      "Angela",
-      "Claire",
-      "Louise"
-    ],
-    "nomNaissance": "DUBOIS",
-    "anneeDateDeNaissance": 1962,
-    "moisDateDeNaissance": 8,
-    "jourDateDeNaissance": 24,
-    "sexe": "F",
-    "codeInseeLieuDeNaissance": "75107",
-    "codePaysLieuDeNaissance": "99100"
+    "immatriculation": "FC-456-CD"
   }
   ```
 
@@ -223,8 +214,10 @@
         }
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
