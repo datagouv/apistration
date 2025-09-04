@@ -65,6 +65,10 @@ class ValidateResponse < ApplicationInteractor
 
   def encrypt_params
     DataEncryptor.new(context.params.to_json).encrypt
+  rescue GPGME::Error::InvalidValue
+    MonitoringService.instance.track(:error, 'GPGME::Error::InvalidValue')
+
+    {}
   end
 
   def api_particulier?
