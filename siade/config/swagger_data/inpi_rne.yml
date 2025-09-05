@@ -1,7 +1,7 @@
 inpi_rne:
   extrait_rne:
-    title: "Extrait RNE d'une unité légale"
-    description: "Extrait du répertoire national des entreprises (RNE) d'une unité légale. Expose le document ainsi que l'extraction des données présentes dans le document."
+    title: "Attestation d'immatriculation RNE"
+    description: "Données figurant sur l'attestation d'immatriculation au registre national des entreprises et lien vers le document au format PDF."
     cache_duration: "Le cache est valide jusqu'à 3 heures du matin."
     tags: 
       - "Informations générales"
