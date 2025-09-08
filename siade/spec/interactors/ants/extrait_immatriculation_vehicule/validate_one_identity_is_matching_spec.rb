@@ -67,6 +67,14 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+    it 'returns the specific error message for no matching identity' do
+      expect(subject.errors.first.detail).to eq('Immatriculation trouvée mais aucune identité ne correspond')
+    end
+
+    it 'returns the specific subcode for no matching identity' do
+      expect(subject.errors.first.subcode).to eq('005')
+    end
   end
 
   describe 'when extracted identities is empty' do

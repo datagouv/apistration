@@ -5,7 +5,7 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
     if matching_identity
       context.matched_identity = matching_identity
     else
-      resource_not_found!
+      no_matching_identity!
     end
   end
 
@@ -35,5 +35,17 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
       jour_date_naissance
       code_cog_insee_commune_naissance
     ]
+  end
+
+  def no_matching_identity!
+    fail_with_error!(
+      ::NotFoundError.new(
+        context.provider_name,
+        'Immatriculation trouvée mais aucune identité ne correspond',
+        title: 'Identité non trouvée',
+        subcode: '005',
+        with_identifiant_message: false
+      )
+    )
   end
 end
