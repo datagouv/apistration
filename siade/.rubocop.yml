@@ -25,6 +25,7 @@ AllCops:
     - "vendor/**/*"
     - "sandbox/**/*"
     - "spec/requests/ping_routes_spec.rb"
+    - "app/templates/**/*.erb"
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation

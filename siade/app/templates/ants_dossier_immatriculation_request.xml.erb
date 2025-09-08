@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope
+  xmlns:env="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:ns1="http://siv.mi.fr/DefinitionsServices/2007-06"
+>
+  <env:Header>
+    <wsse:Security
+      actor=""
+      mustUnderstand="1"
+      xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    >
+      <%= saml_assertion.html_safe %>
+    </wsse:Security>
+  </env:Header>
+  <env:Body>
+    <ns1:req_consulter_dossier
+      xmlns:ns1="http://siv.mi.fr/DefinitionsServices/2007-06"
+    >
+      <ns1:control>
+        <ns1:code_partenaire
+          ><%= Siade.credentials[:ants_siv_code_partenaire]
+          %></ns1:code_partenaire
+        >
+        <ns1:code_miat><%= code_miat %></ns1:code_miat>
+        <ns1:type_operation>Consultation Dossier</ns1:type_operation>
+        <ns1:numero_session><%= session_id %></ns1:numero_session>
+        <ns1:date_envoi
+          ><%= Time.now.utc.strftime('%Y-%m-%dT%H:%M:%S') %></ns1:date_envoi
+        >
+      </ns1:control>
+      <ns1:requete>
+        <ns1:mode_appel>L</ns1:mode_appel>
+        <ns1:informations>
+          <ns1:num_immat><%= immatriculation %></ns1:num_immat>
+        </ns1:informations>
+      </ns1:requete>
+    </ns1:req_consulter_dossier>
+  </env:Body>
+</env:Envelope>

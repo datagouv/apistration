@@ -1,0 +1,38 @@
+<saml:Assertion ID="<%= assertion_id %>" IssueInstant="<%= issue_instant %>" Version="2.0" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+  <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"><%= idp_name %></saml:Issuer>
+  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <ds:Reference URI="#<%= assertion_id %>">
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <ds:DigestValue><%= digest %></ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue><%= signature %></ds:SignatureValue>
+    <ds:KeyInfo>
+      <ds:X509Data>
+        <ds:X509Certificate><%= cert_der %></ds:X509Certificate>
+      </ds:X509Data>
+    </ds:KeyInfo>
+  </ds:Signature>
+  <saml:Subject>
+    <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified"><%= idp_name %></saml:NameID>
+    <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:sender-vouches"/>
+  </saml:Subject>
+  <saml:Conditions NotBefore="<%= not_before %>" NotOnOrAfter="<%= not_on_or_after %>"/>
+  <saml:AuthnStatement AuthnInstant="<%= issue_instant %>">
+    <saml:AuthnContext>
+      <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:XMLDSig</saml:AuthnContextClassRef>
+    </saml:AuthnContext>
+  </saml:AuthnStatement>
+  <saml:AttributeStatement>
+    <saml:Attribute Name="CodePartenaire" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue><%= code_concentrateur %></saml:AttributeValue>
+    </saml:Attribute>
+  </saml:AttributeStatement>
+</saml:Assertion>

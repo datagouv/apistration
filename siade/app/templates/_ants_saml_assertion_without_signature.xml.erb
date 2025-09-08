@@ -1,0 +1,37 @@
+<saml:Assertion
+  ID="<%= assertion_id %>"
+  IssueInstant="<%= issue_instant %>"
+  Version="2.0"
+  xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+>
+  <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+    ><%= idp_name %></saml:Issuer
+  >
+  <saml:Subject>
+    <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified"
+      ><%= idp_name %></saml:NameID
+    >
+    <saml:SubjectConfirmation
+      Method="urn:oasis:names:tc:SAML:2.0:cm:sender-vouches"
+    />
+  </saml:Subject>
+  <saml:Conditions
+    NotBefore="<%= not_before %>"
+    NotOnOrAfter="<%= not_on_or_after %>"
+  />
+  <saml:AuthnStatement AuthnInstant="<%= issue_instant %>">
+    <saml:AuthnContext>
+      <saml:AuthnContextClassRef
+        >urn:oasis:names:tc:SAML:2.0:ac:classes:XMLDSig</saml:AuthnContextClassRef
+      >
+    </saml:AuthnContext>
+  </saml:AuthnStatement>
+  <saml:AttributeStatement>
+    <saml:Attribute
+      Name="CodePartenaire"
+      NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+    >
+      <saml:AttributeValue><%= code_concentrateur %></saml:AttributeValue>
+    </saml:Attribute>
+  </saml:AttributeStatement>
+</saml:Assertion>
