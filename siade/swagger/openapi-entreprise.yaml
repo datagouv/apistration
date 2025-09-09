@@ -15080,7 +15080,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/130025265/beneficiaires_effectifs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/rne/unites_legales/{siren}/extrait_rne":
     get:
-      summary: Extrait RNE d'une unité légale
+      summary: Attestation d'immatriculation RNE
       tags:
       - Informations générales
       parameters:
@@ -15155,9 +15155,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Extrait du répertoire national des entreprises (RNE) d'une unité
-        légale. Expose le document ainsi que l'extraction des données présentes dans
-        le document.
+      description: Données figurant sur l'attestation d'immatriculation au registre
+        national des entreprises et lien vers le document au format PDF.
       responses:
         '401':
           description: Non autorisé
@@ -15292,20 +15291,24 @@ paths:
                           au registre national des entreprises (.pdf)
                         example: https://data.inpi.fr/export/companies?format=pdf&ids=["123456789"]
                       identite_entreprise:
+                        title: Identité de l'entreprise
                         type: object
                         properties:
                           denomination:
+                            title: Dénomination
                             type: string
                             nullable: true
                             description: Dénomination sociale de l'entreprise
                             example: TECH SOLUTIONS FRANCE
                           nom:
+                            title: Nom
                             type: string
                             nullable: true
                             description: Nom de famille de l'entrepreneur (pour les
                               entreprises individuelles uniquement)
                             example: MARTIN
                           prenoms:
+                            title: Prénom(s)
                             type: array
                             nullable: true
                             description: Liste des prénoms de l'entrepreneur (pour
@@ -15317,16 +15320,19 @@ paths:
                             - PIERRE
                             - HENRI
                           siren:
+                            title: SIREN (Siège)
                             type: string
                             description: Numéro SIREN de l'entreprise
                             pattern: "^\\d{9}$"
                             example: '123456789'
                           date_immatriculation_rne:
+                            title: Date d'immatriculation au RNE
                             type: string
                             format: date
                             description: Date d'immatriculation au RNE
                             example: '2018-03-15'
                           date_debut_activite:
+                            title: Date d'activité
                             type: string
                             nullable: true
                             format: date
@@ -15336,7 +15342,7 @@ paths:
                             type: string
                             format: boolean
                             description: Indique la raison de cessation d'activité.
-                              Systématiquement à null, l'api ne fournist pas cette
+                              Systématiquement à null, l'API ne fournit pas cette
                               information.
                             example:
                             nullable: true
@@ -15358,8 +15364,8 @@ paths:
                               avec_liquidation:
                                 type: boolean
                                 description: Indique si la dissolution est suivie
-                                  d'une liquidation. Systématiquement à null, l'api
-                                  ne fournist pas cette information.
+                                  d'une liquidation. Systématiquement à null, l'API
+                                  ne fournit pas cette information.
                                 example: true
                                 nullable: true
                             required:
@@ -15367,12 +15373,14 @@ paths:
                             - poursuite_activite
                             - avec_liquidation
                           date_fin_personne:
+                            title: Date de fin de la personne morale
                             type: string
                             format: date
-                            description: Date de fin prévue de la personne
+                            description: Date de fin de la personne morale
                             example: '2117-03-14'
                             nullable: true
                           date_cloture_exercice:
+                            title: Date de clôture
                             type: string
                             description: Date de clôture de l'exercice (format DD-MM)
                             pattern: "^\\d{2}-\\d{2}$"
@@ -15385,6 +15393,7 @@ paths:
                             example: '2023-11-01'
                             nullable: true
                           nature_entreprise:
+                            title: Nature de l'activité principale
                             type: string
                             description: Nature de l'entreprise
                             enum:
@@ -15394,6 +15403,7 @@ paths:
                             - LIBERALE
                             example: COMMERCIALE
                           forme_juridique:
+                            title: Forme juridique
                             type: object
                             properties:
                               code:
@@ -15408,10 +15418,12 @@ paths:
                             - code
                             - libelle
                           associe_unique:
+                            title: Associé unique
                             type: boolean
                             description: Indique si l'entreprise a un associé unique
                             example: false
                           activite_principales_objet_social:
+                            title: Activités principales de l'objet social
                             type: string
                             description: Objet social de l'activités principales de
                               l'entreprise
@@ -15419,6 +15431,7 @@ paths:
                               logiciels informatiques
                             nullable: true
                           code_APE:
+                            title: Code APE
                             type: object
                             properties:
                               code:
@@ -15428,30 +15441,34 @@ paths:
                                 example: 6201Z
                               libelle:
                                 type: string
-                                description: Libellé de l'activité principale
+                                description: Libellé de l'activité principale associé
+                                  au code
                                 example: Programmation informatique
                             required:
                             - code
                             - libelle
                           code_APRM:
+                            title: Code APRM
                             type: object
                             properties:
                               code:
                                 type: string
                                 description: Code APRM (Activité Principale Réglementée
-                                  du Métier)
+                                  du Métier).
                                 pattern: "^\\d{4}[A-Z]{2}$"
                                 example: 6202A
                                 nullable: true
                               libelle:
                                 type: string
-                                description: Libellé de l'activité APRM
+                                description: Libellé de l'activité APRM associé au
+                                  code.
                                 example: Conseil en systèmes et logiciels informatiques
                                 nullable: true
                             required:
                             - code
                             - libelle
                           capital_social:
+                            title: Capital social
                             type: object
                             properties:
                               montant:
@@ -15462,12 +15479,13 @@ paths:
                                 example: 50000.0
                               devise:
                                 type: string
-                                description: Devise du capital
+                                description: Devise du capital social
                                 example: EUR
                             required:
                             - montant
                             - devise
                           adresse_siege_social:
+                            title: Adresse du siège
                             type: object
                             properties:
                               voie:
@@ -15519,39 +15537,47 @@ paths:
                         - capital_social
                         - adresse_siege_social
                       dirigeants_et_associes:
+                        title: Gestion et Direction
                         type: array
                         description: Liste des dirigeants actifs de l'entreprise
                         items:
                           type: object
                           properties:
                             qualite:
+                              title: Qualité
                               type: string
                               description: Fonction dans l'entreprise
                               example: Président
                             nom:
+                              title: Nom
                               type: string
                               description: Nom de famille
                               example: MARTIN
                             prenom:
+                              title: Prénom(s)
                               type: string
                               description: Prénom
                               example: SOPHIE
                             date_naissance:
+                              title: Date de naissance (mm/aaaa)
                               type: string
                               description: Date de naissance (format MM-YYYY)
                               pattern: "^\\d{2}-\\d{4}$"
                               example: 07-1985
                             commune_residence:
+                              title: Commune de résidence
                               type: string
                               description: Commune de résidence
                               example: Lyon
                       etablissements:
+                        title: Établissements
                         type: array
                         description: Liste des établissements actifs
                         items:
                           type: object
                           properties:
                             type_etablissement:
+                              title: Type d'établissement
                               type: string
                               description: Type d'établissement
                               enum:
@@ -15560,16 +15586,19 @@ paths:
                               - Secondaire
                               example: Siège et principal
                             date_debut_activite:
+                              title: Date début activité
                               type: string
                               format: date
                               description: Date de début d'activité
                               example: '2018-04-01'
                             siret:
+                              title: Siret
                               type: string
                               description: Numéro SIRET de l'établissement
                               pattern: "^\\d{14}$"
                               example: '12345678900001'
                             code_APE:
+                              title: Code APE
                               type: object
                               properties:
                                 code:
@@ -15579,9 +15608,11 @@ paths:
                                   example: 6201Z
                                 libelle:
                                   type: string
-                                  description: Libellé de l'activité principale
+                                  description: Libellé de l'activité principale associé
+                                    au code
                                   example: Programmation informatique
                             code_APRM:
+                              title: Code APRM
                               type: object
                               properties:
                                 code:
@@ -15593,14 +15624,17 @@ paths:
                                   nullable: true
                                 libelle:
                                   type: string
-                                  description: Libellé de l'activité APRM
+                                  description: Libellé de l'activité APRM associé
+                                    au code
                                   example: Conseil en systèmes et logiciels informatiques
                                   nullable: true
                             nature_etablissement:
+                              title: Nature de l'établissement
                               type: string
                               description: Nature de l'établissement
                               example: COMMERCIALE
                             activite_principale:
+                              title: Activité principale
                               type: string
                               description: Description de l'activité
                               example: Programmation informatique, développement de
@@ -15613,6 +15647,7 @@ paths:
                                 de logiciels
                               nullable: true
                             adresse:
+                              title: Adresse
                               type: object
                               properties:
                                 voie:
@@ -15638,27 +15673,36 @@ paths:
                                   description: Complément d'adresse
                                   example: Bâtiment B - 2ème étage
                             statut:
+                              title: Statut de l'établissement
                               type: string
-                              description: Statut de l'établissement
                               enum:
                               - actif
                               - fermé
                               example: actif
                       diffusion_commerciale:
+                        title: Autorisation d'utilisation des données à des fins commerciales
+                          (statut indiqué par l'Inpi)
                         type: boolean
-                        description: Autorisation de diffusion des données à des fins
-                          commerciales
+                        description: Si le champ est à true, l'utilisation des données
+                          à des fins commerciales est permise.
                         example: true
                       diffusion_insee:
+                        title: Autorisation de diffusion du répertoire Sirene de l'Insee
                         type: boolean
-                        description: Autorisation de diffusion des données à l'INSEE
+                        description: Indique le statut de diffusion demandée par l'entreprise
+                          à l'Insee vis à vis du répertoire Sirene. Si le champ est
+                          à true, la diffusion est autorisée car le statut de l'entreprise
+                          est en diffusion totale. Si le champ est à false, la diffusion
+                          n'est pas autorisée pour la totalité des données car le
+                          statut de l'entreprise est en diffusion partielle.
                         example: true
                       etablissements_fermes_total:
+                        title: Nombre d'établissements fermés
                         type: integer
-                        description: Nombre d'établissements fermés
                         minimum: 0
                         example: 1
                       observations:
+                        title: Observations
                         type: array
                         description: Observations RCS/RNM
                         items:
