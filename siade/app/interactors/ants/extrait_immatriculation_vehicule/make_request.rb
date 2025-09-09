@@ -1,7 +1,7 @@
 class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   include UseWildcardSSLCertificate
 
-  protected
+  private
 
   def http_options
     http_wildcard_ssl_options.merge(
@@ -35,11 +35,5 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
       certificate: cert,
       private_key: key
     ).render
-  end
-
-  private
-
-  def ants_domain
-    Siade.credentials[:ants_domain]
   end
 end

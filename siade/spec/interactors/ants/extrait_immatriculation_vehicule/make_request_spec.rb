@@ -24,14 +24,6 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::MakeRequest, type: :make_re
     let(:immatriculation) { 'AA-123-AA' }
     let(:request_id) { SecureRandom.uuid }
 
-    before do
-      # Mock the SSL fixture file paths to point to our test fixtures
-      allow(Siade.credentials).to receive(:[]).and_call_original
-      allow(Siade.credentials).to receive(:[]).with(:ssl_wildcard_certif_key_path).and_return('spec/fixtures/ssl/certificat.key')
-      allow(Siade.credentials).to receive(:[]).with(:ssl_wildcard_certif_crt_path).and_return('spec/fixtures/ssl/certificat.crt')
-      allow(Siade.credentials).to receive(:[]).with(:ants_siv_certificate_chain_path).and_return('spec/fixtures/ssl/ants_certificate_chain.pem')
-    end
-
     it { is_expected.to be_a_success }
 
     it 'calls url with correct params' do
