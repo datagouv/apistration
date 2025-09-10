@@ -14,7 +14,12 @@ class APIParticulier::V3AndMore::ANTS::ExtraitImmatriculationVehiculeWithFranceC
   private
 
   def organizer_params
-    civility_parameters_from_france_connect.merge({ immatriculation: params[:immatriculation] })
+    civility_parameters_from_france_connect.merge(
+      {
+        immatriculation: params[:immatriculation],
+        request_id: request.request_id
+      }
+    )
   end
 
   def serializer_module
