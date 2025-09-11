@@ -13,8 +13,6 @@ class MatchIdentity::DeduceMatch < ApplicationInteractor
     matchings = context.matchings || {}
     matchings['familyname'] &&
       matchings['givenname'] &&
-      matchings['matchsexe'] &&
-      matchings['matchbirthdate'] &&
-      matchings['matchcommune']
+      matchings['matchbirthdate']
   end
 end

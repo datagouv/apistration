@@ -5,11 +5,9 @@ RSpec.describe IdentityMatcher do
     {
       nom_naissance: 'DUPONT',
       prenoms: ['JEAN'],
-      sexe_etat_civil: 'M',
       annee_date_naissance: 1955,
       mois_date_naissance: 12,
-      jour_date_naissance: 8,
-      code_departement_naissance: '59'
+      jour_date_naissance: 8
     }
   end
 
@@ -17,11 +15,9 @@ RSpec.describe IdentityMatcher do
     {
       nom_naissance: 'DUPONT',
       prenoms: ['JEAN'],
-      sexe_etat_civil: 'M',
       annee_date_naissance: 1955,
       mois_date_naissance: 12,
-      jour_date_naissance: 8,
-      code_cog_insee_commune_naissance: '59001'
+      jour_date_naissance: 8
     }
   end
 
@@ -38,11 +34,9 @@ RSpec.describe IdentityMatcher do
       {
         nom_naissance: 'MARTIN',
         prenoms: ['JEAN'],
-        sexe_etat_civil: 'M',
         annee_date_naissance: 1955,
         mois_date_naissance: 12,
-        jour_date_naissance: 8,
-        code_departement_naissance: '59'
+        jour_date_naissance: 8
       }
     end
 
