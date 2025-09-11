@@ -4,24 +4,20 @@ class MatchIdentity::GivenName < MatchIdentity::Base
   protected
 
   def match?
-    normalized_candidate_names.any? do |candidate_name|
-      normalized_reference_names.any? do |reference_name|
-        candidate_name == reference_name
-      end
-    end
+    candidate_names.any? { |candidate_name| matches_any_reference?(candidate_name) }
   end
 
   private
 
-  def normalized_candidate_names
-    normalize_names(context.candidate_identity[:prenoms])
+  def matches_any_reference?(candidate_name)
+    reference_names.any? { |reference_name| reference_name.split.include?(candidate_name) }
   end
 
-  def normalized_reference_names
-    normalize_names(context.reference_identity[:prenoms])
+  def candidate_names
+    Array(context.candidate_identity[:prenoms]).map { |name| normalize_string(name) }
   end
 
-  def normalize_names(names)
-    Array(names).map { |name| normalize_string(name) }
+  def reference_names
+    Array(context.reference_identity[:prenoms]).map { |name| normalize_string(name) }
   end
 end

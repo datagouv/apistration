@@ -39,4 +39,33 @@ RSpec.describe MatchIdentity::GivenName do
       end
     end
   end
+
+  describe 'asymetric composed name matching' do
+    context 'when candidate match with a composed name in reference' do
+      let(:identite) { { prenoms: ['JEAN'] } }
+      let(:identite_pivot) { { prenoms: %w[JEAN-PAUL JACQUES] } }
+
+      it 'matches' do
+        expect(subject.matchings['givenname']).to be true
+      end
+    end
+
+    context 'when candidate match with a single name in reference' do
+      let(:identite) { { prenoms: ['JACQUES'] } }
+      let(:identite_pivot) { { prenoms: %w[JEAN-PAUL JACQUES] } }
+
+      it 'matches' do
+        expect(subject.matchings['givenname']).to be true
+      end
+    end
+
+    context 'when reference match with a single name in candidate' do
+      let(:identite) { { prenoms: ['JEAN-PAUL'] } }
+      let(:identite_pivot) { { prenoms: ['JEAN'] } }
+
+      it 'does not match this way' do
+        expect(subject.matchings['givenname']).to be false
+      end
+    end
+  end
 end
