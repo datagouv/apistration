@@ -32,7 +32,7 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
 
       describe 'with a FranceConnect token' do
         before do
-          mock_valid_france_connect_checktoken(scopes:)
+          mock_valid_france_connect_v2_checktoken(scopes:)
           stub_ants_extrait_immatriculation_vehicule_valid
         end
 
@@ -51,7 +51,7 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
         describe 'when not found' do
           before { stub_ants_extrait_immatriculation_vehicule_not_found }
 
-          response '404', 'Non trouvée' do
+          response '404', 'Immatriculation non trouvée ou identité non trouvée pour cette immatriculation' do
             build_rswag_example(NotFoundError.new('ANTS'))
 
             schema '$ref' => '#/components/schemas/Error'
