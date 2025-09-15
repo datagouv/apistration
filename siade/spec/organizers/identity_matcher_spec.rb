@@ -1,7 +1,7 @@
 RSpec.describe IdentityMatcher do
-  subject { described_class.call(candidate_identity: identite, reference_identity: identite_pivot) }
+  subject { described_class.call(candidate_identity:, reference_identity:) }
 
-  let(:identite) do
+  let(:candidate_identity) do
     {
       nom_naissance: 'DUPONT',
       prenoms: ['JEAN'],
@@ -11,7 +11,7 @@ RSpec.describe IdentityMatcher do
     }
   end
 
-  let(:identite_pivot) do
+  let(:reference_identity) do
     {
       nom_naissance: 'DUPONT',
       prenoms: ['JEAN'],
@@ -29,8 +29,26 @@ RSpec.describe IdentityMatcher do
     end
   end
 
+  describe 'when one of the given_names match any in reference_identity' do
+    let(:reference_identity) do
+      {
+        nom_naissance: 'DUPONT',
+        prenoms: ['JACQUES-JEAN-PASCAL'],
+        annee_date_naissance: 1955,
+        mois_date_naissance: 12,
+        jour_date_naissance: 8
+      }
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'sets matches to true' do
+      expect(subject.matches).to be true
+    end
+  end
+
   describe 'when name does not match' do
-    let(:identite) do
+    let(:candidate_identity) do
       {
         nom_naissance: 'MARTIN',
         prenoms: ['JEAN'],
