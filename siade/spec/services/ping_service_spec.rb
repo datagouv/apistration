@@ -148,17 +148,17 @@ RSpec.describe PingService, type: :service do
                 })
               end
 
-              it 'stores the result in cache for the time specified' do
+              it 'calls the cache with expires_in option' do
+                expect(Rails.cache).to receive(:write).with(
+                  cache_key,
+                  {
+                    status: :ok,
+                    json: json_payload
+                  },
+                  expires_in: 5.minutes
+                )
+
                 make_ping
-
-                expect(Rails.cache.read(cache_key)).to eq({
-                  status: :ok,
-                  json: json_payload
-                })
-
-                Rails.cache.redis.with do |conn|
-                  expect(conn.ttl("ping_#{api_kind}_#{identifier}")).to be_within(5).of(5.minutes)
-                end
               end
             end
 

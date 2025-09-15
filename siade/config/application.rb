@@ -53,7 +53,9 @@ module Siade
     config.jwt_whitelist = config_for(:jwt_whitelist)
     config.requests_debugging = config_for(:requests_debugging)
 
-    config.cache_store = :redis_cache_store, config_for(:cache_redis)
+    config.cache_store = :redis_cache_store, config_for(:cache_redis).merge(
+      namespace: "siade_cache_#{Rails.env}_#{Time.now.to_i}"
+    )
 
     config.active_record.schema_format = :sql
 

@@ -120,6 +120,7 @@ RSpec.describe EncryptedCache, type: :service do
     context 'when key exists and has an expiration sets' do
       before do
         described_class.write(key, 'whatever', expires_in: 9001)
+        byebug
       end
 
       it { is_expected.to be_within(10).of(9000) }

@@ -33,7 +33,10 @@ class EncryptedCache
     @ttl = nil
 
     cache.redis.with do |r|
-      @ttl = r.ttl(hashed_key(key))
+      namespace = Rails.cache.options[:namespace]
+      hashed_key = namespace ? "#{namespace}:#{hashed_key(key)}" : hashed_key(key)
+
+      @ttl = r.ttl(hashed_key)
     end
 
     return if @ttl.negative?
