@@ -64,6 +64,8 @@ gem 'pdf-reader'
 
 gem 'gpgme'
 
+gem 'mcp'
+
 group :test do
   gem 'rswag-specs', github: 'rswag/rswag'
 

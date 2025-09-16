@@ -201,6 +201,7 @@ GEM
     json-schema (5.2.2)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
+    json_rpc_handler (0.1.1)
     jsonapi-renderer (0.2.2)
     jwe (1.1.1)
       base64
@@ -221,6 +222,9 @@ GEM
       nokogiri (>= 1.12.0)
     lumberjack (1.2.10)
     marcel (1.1.0)
+    mcp (0.3.0)
+      json-schema (>= 4.1)
+      json_rpc_handler (~> 0.1)
     memory_profiler (1.1.0)
     method_source (1.1.0)
     mime-types (3.7.0)
@@ -518,6 +522,7 @@ DEPENDENCIES
   lockbox
   logstasher
   marcel
+  mcp
   nokogiri
   oauth2 (~> 2.0)
   octokit (~> 10.0)
