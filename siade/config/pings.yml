@@ -352,6 +352,19 @@ shared:
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
 
+    sdh_statut_sportif:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'SDH'
+      status_page:
+        name: "SDH - Statut sportif"
+        alerts_wait: 5
+      driver_params:
+        make_request: 'SDH::StatutSportif::MakeRequest'
+        params:
+          identifiant: '735319'
+        status_to_check: 404
+
     franceconnect:
       kind: 'make_request'
       cache: <%= 2.minutes %>
