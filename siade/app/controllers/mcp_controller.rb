@@ -13,7 +13,7 @@ class McpController < ActionController::API
     MCP::Server.new(
       name: 'siade',
       version: '1.0.0',
-      tools: [INSEE::UniteLegaleDiffusableTool, QUALIBAT::CertificationsBatimentTool]
+      tools: [INSEE::UniteLegaleDiffusableTool, QUALIBAT::CertificationsBatimentTool, Infogreffe::ExtraitsRCSTool]
     )
   end
 end
