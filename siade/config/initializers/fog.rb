@@ -1,5 +1,5 @@
 # :nocov:
-if Rails.env.test? || Rails.env.development?
+if (Rails.env.test? || Rails.env.development?) && ENV['SKIP_MOCKS'].blank?
   Fog.mock!
 end
 
