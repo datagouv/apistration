@@ -364,6 +364,7 @@ shared:
         params:
           identifiant: '735319'
         status_to_check: 404
+        token_interactor: 'SDH::StatutSportif::Authenticate'
 
     franceconnect:
       kind: 'make_request'
