@@ -54,7 +54,8 @@ module Siade
     config.requests_debugging = config_for(:requests_debugging)
 
     config.cache_store = :redis_cache_store, config_for(:cache_redis).merge(
-      namespace: "siade_cache_#{Rails.env}_#{Time.now.to_i}"
+      namespace: "siade_cache_#{Rails.env}_#{Time.now.to_i}",
+      expires_in: (7 * 24 * 60 * 60),
     )
 
     config.active_record.schema_format = :sql
