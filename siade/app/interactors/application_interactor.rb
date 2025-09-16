@@ -4,6 +4,9 @@ class ApplicationInteractor
   protected
 
   def use_mocked_data?
-    Rails.env.staging? || Rails.env.development?
+    return false if ENV['SKIP_MOCKS'].present?
+
+    Rails.env.staging? ||
+      Rails.env.development?
   end
 end
