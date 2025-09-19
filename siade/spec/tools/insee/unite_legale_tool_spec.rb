@@ -1,6 +1,6 @@
-RSpec.describe INSEE::UniteLegaleDiffusableTool, type: :tool do
+RSpec.describe INSEE::UniteLegaleTool, type: :tool do
   it_behaves_like 'valid MCP tool',
-    retriever: INSEE::UniteLegaleDiffusable,
+    retriever: INSEE::UniteLegale,
     tool_params: {
       siren: valid_siren
     },

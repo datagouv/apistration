@@ -1,6 +1,6 @@
-class INSEE::UniteLegaleDiffusableTool < ApplicationTool
-  title 'INSEE - Unités légales diffusables'
-  tool_name 'insee_unite_legale_diffusable'
+class INSEE::UniteLegaleTool < ApplicationTool
+  title 'INSEE - Unités légales'
+  tool_name 'insee_unite_legale'
   description "Permet d'obtenir les informations issue du répertoire SIRENE de l'INSEE d'une unité légale à partir de son SIREN"
 
   input_schema(
@@ -11,6 +11,6 @@ class INSEE::UniteLegaleDiffusableTool < ApplicationTool
   )
 
   def self.organizer_class
-    INSEE::UniteLegaleDiffusable
+    INSEE::UniteLegale
   end
 end
