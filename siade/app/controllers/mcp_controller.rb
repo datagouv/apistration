@@ -1,4 +1,4 @@
-class McpController < ActionController::API
+class MCPController < ActionController::API
   def handle
     if params[:method] == 'notifications/initialized'
       head :accepted
@@ -13,7 +13,7 @@ class McpController < ActionController::API
     MCP::Server.new(
       name: 'siade',
       version: '1.0.0',
-      tools: [INSEE::UniteLegaleDiffusableTool, QUALIBAT::CertificationsBatimentTool, Infogreffe::ExtraitsRCSTool]
+      tools: AvailableMCPTools.instance.perform
     )
   end
 end
