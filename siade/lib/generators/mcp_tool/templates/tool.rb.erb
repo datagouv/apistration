@@ -1,0 +1,16 @@
+class <%= retriever %>Tool < ApplicationTool
+  title '<%= retriever.split('::').join(' ').humanize%>'
+  tool_name '<%= retriever.underscore %>'
+  description "<%= description.present? ? description : 'FEEDME' %>"
+
+  input_schema(
+    properties: {
+      <%= param %>: { type: 'string', pattern: '<%= pattern %>' }
+    },
+    required: %w[<%= param %>]
+  )
+
+  def self.organizer_class
+    <%= retriever %>
+  end
+end

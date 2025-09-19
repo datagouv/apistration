@@ -1,0 +1,10 @@
+RSpec.describe <%= retriever %>Tool, type: :tool do
+  it_behaves_like 'valid MCP tool',
+    retriever: <%= retriever %>,
+    tool_params: {
+      <%= param %>: valid_<%= param %>
+    },
+    retriever_params: {
+      <%= param %>: valid_<%= param %>
+    }
+end
