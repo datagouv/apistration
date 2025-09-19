@@ -1,4 +1,5 @@
 class INSEE::UniteLegaleDiffusableTool < ApplicationTool
+  title 'INSEE - Unités légales diffusables'
   tool_name 'insee_unite_legale_diffusable'
   description "Permet d'obtenir les informations issue du répertoire SIRENE de l'INSEE d'une unité légale à partir de son SIREN"
 
