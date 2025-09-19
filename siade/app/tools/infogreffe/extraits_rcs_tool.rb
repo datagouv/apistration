@@ -1,6 +1,6 @@
 class Infogreffe::ExtraitsRCSTool < ApplicationTool
   title 'Infogreffe - Extraits RCS / KBIS'
-  tool_name 'infogreffe_extraits_rcs'
+  tool_name 'infogreffe/extraits_rcs'
   description "Permet d'obtenir les extraits RCS et KBIS d'une entreprise à partir de son SIREN"
 
   input_schema(

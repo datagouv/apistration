@@ -1,6 +1,6 @@
 class QUALIBAT::CertificationsBatimentTool < ApplicationTool
   title 'QUALIBAT - Certifications bâtiment'
-  tool_name 'qualibat_certifications_batiment'
+  tool_name 'qualibat/certifications_batiment'
   description "Permet d'obtenir les certifications bâtiment d'une entreprise à partir de son SIREN sous format PDF"
 
   input_schema(
