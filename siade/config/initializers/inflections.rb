@@ -18,6 +18,7 @@
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'API'
+  inflect.acronym 'MCP'
   inflect.acronym 'ELK'
   inflect.acronym 'HTTP'
   inflect.acronym 'JSONAPI'
