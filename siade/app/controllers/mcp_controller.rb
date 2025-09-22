@@ -15,12 +15,12 @@ class MCPController < ActionController::API
     MCP::Server.new(
       name: 'siade',
       version: '1.0.0',
-      tools: AvailableMCPTools.instance.perform
+      tools: AvailableMCPTools.instance.perform(protected_data: current_mcp_token.fetch(:protected_data, false))
     )
   end
 
   def authenticate_user!
-    return if Siade.credentials[:mcp_token] == bearer_token_from_headers
+    return if mcp_tokens.any? { |t| t[:value] == bearer_token_from_headers }
 
     render json: { error: 'Unauthorized' }, status: :unauthorized
 
@@ -34,5 +34,13 @@ class MCPController < ActionController::API
 
     matchs = auth.match(/\ABearer (.+)\z/)
     matchs[1] if matchs
+  end
+
+  def current_mcp_token
+    @current_mcp_token ||= mcp_tokens.find { |t| t[:value] == bearer_token_from_headers }
+  end
+
+  def mcp_tokens
+    @mcp_tokens ||= Siade.credentials[:mcp_tokens]
   end
 end
