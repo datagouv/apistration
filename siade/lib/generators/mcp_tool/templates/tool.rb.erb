@@ -13,4 +13,8 @@ class <%= retriever %>Tool < ApplicationTool
   def self.organizer_class
     <%= retriever %>
   end
+
+  def self.protected_data?
+    true
+  end
 end

@@ -14,6 +14,10 @@ class QUALIBAT::CertificationsBatimentTool < ApplicationTool
     QUALIBAT::CertificationsBatiment
   end
 
+  def self.protected_data?
+    false
+  end
+
   def self.format_params(params)
     params.merge(api_version: '4')
   end

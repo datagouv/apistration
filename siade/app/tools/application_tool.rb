@@ -24,6 +24,10 @@ class ApplicationTool < MCP::Tool
     text_response(::ErrorsSerializer.new(organizer.errors).as_json.to_s)
   end
 
+  def self.protected_data?
+    true
+  end
+
   def self.text_response(text)
     MCP::Tool::Response.new([{ type: 'text', text: }])
   end

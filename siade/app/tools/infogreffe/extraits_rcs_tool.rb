@@ -13,4 +13,8 @@ class Infogreffe::ExtraitsRCSTool < ApplicationTool
   def self.organizer_class
     Infogreffe::ExtraitsRCS
   end
+
+  def self.protected_data?
+    false
+  end
 end
