@@ -112,6 +112,12 @@ shared:
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement', action: 'show' }
+  mcp:
+    throttle_type: 'by_single_endpoint'
+    limit: 100
+    period: 60
+    endpoints:
+      - { controller: 'mcp', action: 'handle' }
 
 test:
   low_latency_documents:
