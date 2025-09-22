@@ -7,7 +7,8 @@ class AvailableMCPTools
     end
   end
 
-  def perform
-    MCP::Tool.descendants - [ApplicationTool]
+  def perform(protected_data: false)
+    all_available_tools = MCP::Tool.descendants - [ApplicationTool]
+    protected_data ? all_available_tools : all_available_tools.reject(&:protected_data?)
   end
 end
