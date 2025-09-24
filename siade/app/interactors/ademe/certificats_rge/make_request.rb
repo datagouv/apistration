@@ -13,6 +13,7 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
   end
 
   def extra_headers(request)
+    request['x-apiKey'] = ademe_token
     request['Referer'] = current_host_url
     super
   end
@@ -21,6 +22,10 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
 
   def ademe_rge_url
     Siade.credentials[:ademe_rge_url]
+  end
+
+  def ademe_token
+    Siade.credentials[:ademe_rge_token]
   end
 
   def siret
