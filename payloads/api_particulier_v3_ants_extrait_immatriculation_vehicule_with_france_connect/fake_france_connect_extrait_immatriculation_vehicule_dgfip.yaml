@@ -1,0 +1,60 @@
+---
+description: 'FranceConnect: Titulaire véhicule particulier essence lié DGFIP'
+params:
+  immatriculation: 'ZA-387-DK'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS CINQUANTESEPT",
+        "prenom": "PRENOM CHARLES"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "5",
+        "type_voie": "PLACE",
+        "libelle_voie": "BERTONE",
+        "code_postal_ville": "69004",
+        "libelle_commune": "LYON",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-387-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "VOLKSWAGEN",
+        "type_variante_version": "16AACCZAX0FM6FM62Q030N7MGVIVR0",
+        "denomination_commerciale": "JETTA",
+        "masse_charge_maximale": 1920,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1984,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 167,
+        "classe_environnementale": {
+          "code": "Euro 5",
+          "label": "Norme européenne d'émission Euro 5"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
