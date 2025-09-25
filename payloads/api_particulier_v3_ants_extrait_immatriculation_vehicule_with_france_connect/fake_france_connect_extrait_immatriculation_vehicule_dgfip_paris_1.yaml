@@ -1,0 +1,60 @@
+---
+description: 'FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien'
+params:
+  immatriculation: 'ZA-378-DK'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-378-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "MAZDA",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "MAZDA",
+        "masse_charge_maximale": 2090,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 190,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
