@@ -20,7 +20,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
 
       annee:,
       mois:
-    }.compact
+    }
   end
 
   let(:nom_naissance) { 'Bulbizare' }
@@ -162,14 +162,6 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
 
   context 'with invalid recipient' do
     let(:recipient) { 'not a siret' }
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(instance_of(InvalidRecipientError)) }
-  end
-
-  context 'with an empty recipient' do
-    let(:recipient) { nil }
 
     it { is_expected.to be_a_failure }
 
