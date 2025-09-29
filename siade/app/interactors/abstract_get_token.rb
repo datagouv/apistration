@@ -42,11 +42,15 @@ class AbstractGetToken < MakeRequest::Post
 
     token = access_token(response)
 
-    fail_to_request_provider!(ProviderUnknownError) if token.blank?
+    handle_empty_token(token, response)
 
     cache.write(cache_key, token, expires_in: [expires_in(response).to_i - 10, 0].max)
 
     token
+  end
+
+  def handle_empty_token(token, _response)
+    fail_to_request_provider!(ProviderUnknownError) if token.blank?
   end
 
   def token_from_cache
