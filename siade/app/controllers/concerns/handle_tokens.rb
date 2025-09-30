@@ -15,10 +15,6 @@ module HandleTokens
     rescue_from ::JWT::ExpiredSignature, with: :user_no_longer_authorized
   end
 
-  def jwt?
-    jwt_token_service.valid?
-  end
-
   def bearer_token_from_headers
     auth = request.headers['Authorization']
 
