@@ -7,15 +7,15 @@ class TokenFactory
     @scopes = Array(scopes).map(&:to_s) || []
   end
 
-  def valid(uid: default_uid)
-    encode(payload(uid:))
+  def valid(uid: default_uid, mcp: false)
+    encode(payload(uid:, mcp:))
   end
 
   def expired(uid: default_uid)
     encode(payload(uid:, exp: 1.year.ago.to_i))
   end
 
-  def payload(uid: default_uid, exp: 1.year.from_now.to_i)
+  def payload(uid: default_uid, exp: 1.year.from_now.to_i, mcp: false)
     {
       uid:,
       jti: uid,
@@ -23,7 +23,8 @@ class TokenFactory
       sub: 'whatever',
       version: '1.0',
       iat: 1.year.ago.to_i,
-      exp:
+      exp:,
+      mcp:
     }
   end
 

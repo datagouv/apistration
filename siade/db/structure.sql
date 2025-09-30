@@ -18,7 +18,8 @@ CREATE TABLE public.tokens (
     temp_use_case character varying,
     authorization_request_model_id uuid NOT NULL,
     extra_info json,
-    scopes jsonb DEFAULT '[]'::jsonb NOT NULL
+    scopes jsonb DEFAULT '[]'::jsonb NOT NULL,
+    mcp boolean DEFAULT false
 );
 
 ALTER TABLE ONLY public.tokens ADD CONSTRAINT tokens_pkey PRIMARY KEY (id);

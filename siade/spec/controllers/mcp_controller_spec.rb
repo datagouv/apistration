@@ -25,7 +25,7 @@ RSpec.describe MCPController do
     context 'with valid authorization header' do
       before { request.headers['Authorization'] = "Bearer #{token}" }
 
-      let(:token) { TokenFactory.new(%w[mcp_scope1 mcp_scope2]).valid }
+      let(:token) { TokenFactory.new(%w[mcp_scope1 mcp_scope2]).valid(mcp: true) }
 
       it {
         subject
@@ -85,17 +85,37 @@ RSpec.describe MCPController do
 
     describe 'tool access' do
       context 'when user has no scope for the tool' do
-        let(:token) { TokenFactory.new(%w[mcp_scope2]).valid }
+        let(:token) { TokenFactory.new(%w[mcp_scope2]).valid(mcp: true) }
 
         it {
           subject
           expect(response).to have_http_status(:unauthorized)
         }
       end
+
+      context 'when user has at least one scope for the tool' do
+        context 'when mcp is enabled on token' do
+          let(:token) { TokenFactory.new(%w[mcp_scope1]).valid(mcp: true) }
+
+          it {
+            subject
+            expect(response).to have_http_status(:ok)
+          }
+        end
+
+        context 'when mcp is not enabled on token' do
+          let(:token) { TokenFactory.new(%w[mcp_scope1]).valid(mcp: false) }
+
+          it {
+            subject
+            expect(response).to have_http_status(:unauthorized)
+          }
+        end
+      end
     end
 
     describe 'server context' do
-      let(:token) { TokenFactory.new(%w[mcp_scope1]).valid }
+      let(:token) { TokenFactory.new(%w[mcp_scope1]).valid(mcp: true) }
       let(:request_id) { SecureRandom.uuid }
 
       before do

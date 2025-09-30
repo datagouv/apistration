@@ -25,6 +25,12 @@ class MCPController < ActionController::API
     )
   end
 
+  def authenticate_user!
+    super
+
+    raise NotAuthorizedError unless current_user.mcp?
+  end
+
   def user_not_authorized
     render json: { error: 'not_authorized' }, status: :unauthorized
   end

@@ -13,7 +13,7 @@ class JwtTokenService
 
     decoded_token = decode_token(jwt_token)
 
-    jwt_data = decoded_token.slice(:uid, :roles, :scopes, :jti, :iat, :exp)
+    jwt_data = decoded_token.slice(:uid, :roles, :scopes, :jti, :iat, :exp, :mcp)
 
     jwt_data[:scopes] ||= jwt_data.delete(:roles) if jwt_data[:roles].present?
 
@@ -67,6 +67,7 @@ class JwtTokenService
     jwt_data[:scopes] = token.scopes
     jwt_data[:blacklisted] = token.blacklisted?
     jwt_data[:exp] = token.exp
+    jwt_data[:mcp] = jwt_data[:mcp] || token.mcp
 
     jwt_data
   end

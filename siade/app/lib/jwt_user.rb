@@ -1,5 +1,5 @@
 class JwtUser
-  attr_reader :id, :jti, :scopes, :iat, :siret, :exp
+  attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp
 
   def self.debugger_id
     '00000000-0000-0000-0000-000000000000'
@@ -9,7 +9,7 @@ class JwtUser
     '11111111-1111-1111-1111-111111111111'
   end
 
-  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil)
+  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false)
     @id = uid
     @scopes = scopes
     @jti = jti
@@ -17,6 +17,7 @@ class JwtUser
     @exp = exp
     @blacklisted = blacklisted
     @siret = siret
+    @mcp = mcp
   end
 
   def has_access?(scope)
@@ -33,6 +34,10 @@ class JwtUser
 
   def blacklisted?
     @blacklisted
+  end
+
+  def mcp?
+    @mcp
   end
 
   def not_expired!
