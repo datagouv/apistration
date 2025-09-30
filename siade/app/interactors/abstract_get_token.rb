@@ -42,11 +42,17 @@ class AbstractGetToken < MakeRequest::Post
 
     token = access_token(response)
 
-    handle_empty_token(token, response)
+    alternative_token = handle_empty_token(token, response)
 
+    final_token = alternative_token || token
+
+    save_token_to_cache(final_token, response) unless alternative_token
+
+    final_token
+  end
+
+  def save_token_to_cache(token, response)
     cache.write(cache_key, token, expires_in: [expires_in(response).to_i - 10, 0].max)
-
-    token
   end
 
   def handle_empty_token(token, _response)
