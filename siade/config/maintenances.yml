@@ -24,14 +24,6 @@ production: &shared
       - day: '2025-03-20'
         from_hour: '13:00'
         to_hour: '17:00'
-  'INPI - RNE':
-    dates:
-      - day: '2025-09-29'
-        from_hour: '00:01'
-        to_hour:  '23:59'
-      - day: '2025-09-30'
-        from_hour: '00:01'
-        to_hour:  '23:59'
 
 sandbox: *shared
 staging: *shared
