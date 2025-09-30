@@ -363,6 +363,18 @@ shared:
     - sdh_statut_sportif_a_ete_sportif_de_haut_niveau
     - sdh_statut_sportif_informations_statut
     - sdh_statut_sportif_informations_statuts_precedents
+
+
+  mcp/insee/unite_legale:
+    - unites_legales_etablissements_insee
+  mcp/insee/unite_legale_diffusable:
+    - open_data
+  mcp/urssaf/attestations_sociales:
+    - attestation_sociale_urssaf
+  mcp/infogreffe/extraits_rcs:
+    - open_data
+  mcp/qualibat/certifications_batiment:
+    - open_data
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope

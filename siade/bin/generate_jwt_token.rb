@@ -48,7 +48,8 @@ token_payload = {
   sub: "#{env} development",
   iat: Time.now.to_i,
   version: '1.0',
-  exp: exp
+  exp: exp,
+  mcp: true
 }.compact
 
 token = JWT.encode(token_payload, jwt_hash_secret, jwt_hash_algo)
