@@ -7,8 +7,13 @@ class AvailableMCPTools
     end
   end
 
-  def perform(protected_data: false)
-    all_available_tools = MCP::Tool.descendants - [ApplicationTool]
-    protected_data ? all_available_tools : all_available_tools.reject(&:protected_data?)
+  def perform(scopes:)
+    all_available_tools.select do |tool|
+      tool.scopes.intersect?(scopes)
+    end
+  end
+
+  def all_available_tools
+    @all_available_tools ||= MCP::Tool.descendants - [ApplicationTool]
   end
 end

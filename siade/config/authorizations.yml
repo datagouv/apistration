@@ -377,3 +377,10 @@ test:
   api_particulier/v2/dummy: *default_test_scopes
   api_particulier/v2/cnav/abstract: *default_test_scopes
   api_particulier/v3_and_more/base: *default_test_scopes
+  mcp/whatever/resource: *default_test_scopes
+  mcp/insee/unite_legale:
+    - mcp_scope1
+  mcp/urssaf/attestations_sociales:
+    - mcp_scope2
+  mcp/infogreffe/extraits_rcs:
+    - mcp_scope3

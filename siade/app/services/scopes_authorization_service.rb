@@ -1,9 +1,11 @@
 class ScopesAuthorizationService
-  attr_reader :controller_name, :user_scopes
+  attr_reader :resource_name, :user_scopes
 
-  def initialize(user_scopes, controller_name)
+  class ResourceNameInvalidError < StandardError; end
+
+  def initialize(user_scopes, resource_name)
     @user_scopes = user_scopes
-    @controller_name = controller_name
+    @resource_name = resource_name
   end
 
   def allow?
@@ -14,15 +16,21 @@ class ScopesAuthorizationService
   private
 
   def scopes
-    @scopes ||= config[controller_name_sanitizied] || raise_no_authorization
+    @scopes ||= config[resource_name_sanitizied] || raise_no_authorization
   end
 
   def raise_no_authorization
-    raise "No authorization config for controller #{controller_name}\nPlease fill the config/authorizations.yml file for '#{controller_name_sanitizied}'"
+    raise "No authorization config for resource #{resource_name}\nPlease fill the config/authorizations.yml file for '#{resource_name_sanitizied}'"
   end
 
-  def controller_name_sanitizied
-    controller_name.underscore.sub('_controller', '')
+  def resource_name_sanitizied
+    if resource_name.end_with?('Controller')
+      resource_name.underscore.sub('_controller', '')
+    elsif resource_name.start_with?('mcp/')
+      resource_name
+    else
+      raise ResourceNameInvalidError, "Resource name '#{resource_name}' is not valid. It should end with 'Controller' or start with 'mcp/'"
+    end
   end
 
   def config

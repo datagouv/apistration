@@ -25,35 +25,31 @@ RSpec.describe MCPController do
     context 'with valid authorization header' do
       before { request.headers['Authorization'] = "Bearer #{token}" }
 
-      describe 'with token which has full access (mcp_token)' do
-        let(:token) { 'mcp_token' }
+      let(:token) { TokenFactory.new(%w[mcp_scope1 mcp_scope2]).valid }
 
-        it {
-          subject
-          expect(response).to have_http_status(:ok)
-        }
+      it {
+        subject
+        expect(response).to have_http_status(:ok)
+      }
 
-        it 'renders all tools' do
-          subject
-          expect(response.parsed_body['result']['tools']).to be_present
-          expect(response.parsed_body['result']['tools'].pluck('name')).to include('urssaf/attestations_sociales')
-        end
+      it 'renders all tools' do
+        subject
+        expect(response.parsed_body['result']['tools']).to be_present
+        expect(response.parsed_body['result']['tools'].pluck('name')).to include('urssaf/attestations_sociales')
+        expect(response.parsed_body['result']['tools'].pluck('name')).to include('insee/unite_legale')
+        expect(response.parsed_body['result']['tools'].pluck('name')).not_to include('infogreffe/extraits_rcs')
       end
+    end
 
-      describe 'with token which is open data only' do
-        let(:token) { 'open_data_mcp_token' }
+    describe 'with expired token' do
+      before { request.headers['Authorization'] = "Bearer #{token}" }
 
-        it {
-          subject
-          expect(response).to have_http_status(:ok)
-        }
+      let(:token) { TokenFactory.new(%w[mcp_scope1 mcp_scope2]).expired }
 
-        it 'renders only open data tools' do
-          subject
-          expect(response.parsed_body['result']['tools']).to be_present
-          expect(response.parsed_body['result']['tools'].pluck('name')).not_to include('urssaf/attestations_sociales')
-        end
-      end
+      it {
+        subject
+        expect(response).to have_http_status(:unauthorized)
+      }
     end
   end
 
@@ -83,20 +79,40 @@ RSpec.describe MCPController do
       }
     end
 
-    let(:request_id) { SecureRandom.uuid }
-
     before do
-      request.headers['Authorization'] = 'Bearer mcp_token'
-      allow_any_instance_of(ActionController::TestRequest).to receive(:request_id).and_return(request_id) # rubocop:disable RSpec/AnyInstance
+      request.headers['Authorization'] = "Bearer #{token}"
     end
 
-    it 'calls the tool with context which includes request_id' do
-      expect(INSEE::UniteLegaleTool).to receive(:call).with(
-        siren: '130025265',
-        server_context: hash_including(request_id: request_id)
-      )
+    describe 'tool access' do
+      context 'when user has no scope for the tool' do
+        let(:token) { TokenFactory.new(%w[mcp_scope2]).valid }
 
-      subject
+        it {
+          subject
+          expect(response).to have_http_status(:unauthorized)
+        }
+      end
+    end
+
+    describe 'server context' do
+      let(:token) { TokenFactory.new(%w[mcp_scope1]).valid }
+      let(:request_id) { SecureRandom.uuid }
+
+      before do
+        allow_any_instance_of(ActionController::TestRequest).to receive(:request_id).and_return(request_id) # rubocop:disable RSpec/AnyInstance
+      end
+
+      it 'calls the tool with context which includes request_id and user_id' do
+        expect(INSEE::UniteLegaleTool).to receive(:call).with(
+          siren: '130025265',
+          server_context: hash_including(
+            request_id: request_id,
+            user_id: '00000000-0000-0000-0000-000000000000'
+          )
+        )
+
+        subject
+      end
     end
   end
 end

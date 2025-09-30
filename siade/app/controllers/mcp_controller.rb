@@ -1,5 +1,7 @@
 class MCPController < ActionController::API
-  before_action :authenticate_user!
+  include HandleTokens
+
+  skip_before_action :authorize_access_to_resource!, unless: :tool_calling?
 
   def handle
     if params[:method] == 'notifications/initialized'
@@ -15,35 +17,35 @@ class MCPController < ActionController::API
     MCP::Server.new(
       name: 'siade',
       version: '1.0.0',
-      tools: AvailableMCPTools.instance.perform(protected_data: current_mcp_token.fetch(:protected_data, false)),
+      tools: AvailableMCPTools.instance.perform(scopes: current_user.scopes),
       server_context: {
-        request_id: request.request_id
+        request_id: request.request_id,
+        user_id: current_user.id
       }
     )
   end
 
-  def authenticate_user!
-    return if mcp_tokens.any? { |t| t[:value] == bearer_token_from_headers }
-
-    render json: { error: 'Unauthorized' }, status: :unauthorized
-
-    false
+  def user_not_authorized
+    render json: { error: 'not_authorized' }, status: :unauthorized
   end
 
-  def bearer_token_from_headers
-    auth = request.headers['Authorization']
-
-    return unless auth
-
-    matchs = auth.match(/\ABearer (.+)\z/)
-    matchs[1] if matchs
+  def user_no_longer_authorized
+    render json: { error: 'token_expired' }, status: :unauthorized
   end
 
-  def current_mcp_token
-    @current_mcp_token ||= mcp_tokens.find { |t| t[:value] == bearer_token_from_headers }
+  def tool_calling?
+    mcp_params[:method] == 'tools/call'
   end
 
-  def mcp_tokens
-    @mcp_tokens ||= Siade.credentials[:mcp_tokens]
+  def resource_name
+    "mcp/#{mcp_params[:params][:name]}"
+  end
+
+  def mcp_params
+    if params[:mcp]
+      params.expect(mcp: [:method, { params: {} }])
+    else
+      params.permit(:method, params: {})
+    end
   end
 end

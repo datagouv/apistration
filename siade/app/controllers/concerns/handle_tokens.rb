@@ -28,10 +28,16 @@ module HandleTokens
     @token ||= retrieve_token
   end
 
+  protected
+
+  def resource_name
+    self.class.name
+  end
+
   private
 
   def authorize_access_to_resource!
-    return if ScopesAuthorizationService.new(current_user.scopes, self.class.name).allow?
+    return if ScopesAuthorizationService.new(current_user.scopes, resource_name).allow?
 
     raise NotAuthorizedError
   end

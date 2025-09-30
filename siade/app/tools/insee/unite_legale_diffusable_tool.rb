@@ -13,8 +13,4 @@ class INSEE::UniteLegaleDiffusableTool < ApplicationTool
   def self.organizer_class
     INSEE::UniteLegaleDiffusable
   end
-
-  def self.protected_data?
-    false
-  end
 end

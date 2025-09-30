@@ -18,6 +18,12 @@ class McpToolGenerator < Rails::Generators::NamedBase
     template 'test_tool.rb.erb', File.join('spec/tools', "#{retriever.underscore}_tool_spec.rb")
   end
 
+  def insert_authorization
+    inject_into_file 'config/authorizations.yml', before: 'test:' do
+      "    'mcp/#{retriever.underscore}': [valid_scope]\n"
+    end
+  end
+
   private
 
   def retriever

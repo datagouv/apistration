@@ -1,20 +1,14 @@
 RSpec.describe AvailableMCPTools do
   describe '#perform' do
-    subject { described_class.instance.perform(protected_data:) }
+    subject { described_class.instance.perform(scopes:) }
 
-    context 'when protected_data is true' do
-      let(:protected_data) { true }
+    let(:scopes) { %w[mcp_scope1 mcp_scope2 other_scope] }
 
-      it { is_expected.to include(Infogreffe::ExtraitsRCSTool) }
-      it { is_expected.to include(URSSAF::AttestationsSocialesTool) }
-      it { is_expected.not_to include(ApplicationTool) }
-    end
-
-    context 'when protected_data is false' do
-      let(:protected_data) { false }
-
-      it { is_expected.to include(Infogreffe::ExtraitsRCSTool) }
-      it { is_expected.not_to include(URSSAF::AttestationsSocialesTool) }
+    it 'returns tools related to the given scopes' do
+      expect(subject).to contain_exactly(
+        URSSAF::AttestationsSocialesTool,
+        INSEE::UniteLegaleTool
+      )
     end
   end
 end

@@ -28,8 +28,8 @@ class ApplicationTool < MCP::Tool
     text_response(::ErrorsSerializer.new(organizer.errors).as_json.to_s)
   end
 
-  def self.protected_data?
-    true
+  def self.scopes
+    Rails.application.config_for(:authorizations)["mcp/#{tool_name}"] || []
   end
 
   def self.text_response(text)
