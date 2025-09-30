@@ -26,6 +26,29 @@ class LogStasherFieldsBuilder
   end
 
   def perform
+    if mcp?
+      handle_mcp
+    else
+      handle_api
+    end
+  end
+
+  private
+
+  def mcp?
+    controller.controller_name == 'mcp'
+  end
+
+  def handle_mcp
+    if mcp_tool_calling?
+      fields[:route] = mcp_params.dig(:params, :name)
+      fields[:parameters] = mcp_params.dig(:params, :arguments)
+    else
+      fields[:should_be_stored_in_database] = false
+    end
+  end
+
+  def handle_api
     add_api_version if api_entreprise? || api_particulier?
     add_should_be_stored_in_database_flag
 
@@ -35,8 +58,6 @@ class LogStasherFieldsBuilder
 
     api_particulier_fields
   end
-
-  private
 
   def add_api_version
     fields[:api_version] = if api_namespace == 'v3_and_more'
@@ -141,6 +162,18 @@ class LogStasherFieldsBuilder
   def add_param_field(key, value)
     fields[:parameters] ||= {}
     fields[:parameters][key] = value
+  end
+
+  def mcp_params
+    params.fetch(:mcp, {
+      method: params.fetch(:method, nil),
+      params: params.fetch(:params, {})
+    }).permit(:name, params: {}).to_h
+  end
+
+  def mcp_tool_calling?
+    params[:method].present? &&
+      params[:method] == 'tools/call'
   end
 
   def hashed_for_logs(data)

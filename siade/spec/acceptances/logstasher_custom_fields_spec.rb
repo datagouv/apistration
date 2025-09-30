@@ -378,4 +378,73 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       end
     end
   end
+
+  describe 'mcp controller' do
+    subject(:make_call) do
+      get :index, params:
+    end
+
+    let(:params) do
+      mcp_params.merge(
+        'jsonrpc' => '2.0',
+        'id' => 7,
+        'mcp' => mcp_params.merge(
+          'jsonrpc' => '2.0',
+          'id' => 7
+        )
+      )
+    end
+
+    before do
+      routes.draw { get 'index' => 'mcp#index' }
+    end
+
+    define_dummy_controller(MCPController)
+
+    context 'with tool call' do
+      let(:mcp_params) do
+        {
+          'method' => 'tools/call',
+          'params' => {
+            'name' => 'insee/unite_legale',
+            'arguments' => {
+              'siren' => '130025265'
+            }
+          }
+        }
+      end
+
+      it 'overrides route with tool name and params with arguments' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            route: 'insee/unite_legale',
+            parameters: { 'siren' => '130025265' }
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+
+    context 'with another call' do
+      let(:mcp_params) do
+        {
+          'method' => 'tools/list',
+          'params' => {}
+        }
+      end
+
+      it 'sets should_be_stored_in_database to false' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            should_be_stored_in_database: false
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+  end
 end
