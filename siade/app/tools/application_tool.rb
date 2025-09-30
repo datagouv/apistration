@@ -1,6 +1,10 @@
 class ApplicationTool < MCP::Tool
   def self.call(**params)
-    organizer = retriever(format_params(params))
+    params[:context] = params.delete(:server_context) || {}
+    params = format_params(params)
+    params.delete(:context)
+
+    organizer = retriever(params)
 
     if organizer.success?
       text_response(organizer.bundled_data.data.to_json)

@@ -56,4 +56,47 @@ RSpec.describe MCPController do
       end
     end
   end
+
+  describe 'tools calling' do
+    subject { post :handle, params:, as: :json }
+
+    let(:params) do
+      mcp_params.merge(
+        'jsonrpc' => '2.0',
+        'id' => 7,
+        'mcp' => mcp_params.merge(
+          'jsonrpc' => '2.0',
+          'id' => 7
+        )
+      )
+    end
+
+    let(:mcp_params) do
+      {
+        'method' => 'tools/call',
+        'params' => {
+          'name' => 'insee/unite_legale',
+          'arguments' => {
+            'siren' => '130025265'
+          }
+        }
+      }
+    end
+
+    let(:request_id) { SecureRandom.uuid }
+
+    before do
+      request.headers['Authorization'] = 'Bearer mcp_token'
+      allow_any_instance_of(ActionController::TestRequest).to receive(:request_id).and_return(request_id) # rubocop:disable RSpec/AnyInstance
+    end
+
+    it 'calls the tool with context which includes request_id' do
+      expect(INSEE::UniteLegaleTool).to receive(:call).with(
+        siren: '130025265',
+        server_context: hash_including(request_id: request_id)
+      )
+
+      subject
+    end
+  end
 end

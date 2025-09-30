@@ -15,7 +15,10 @@ class MCPController < ActionController::API
     MCP::Server.new(
       name: 'siade',
       version: '1.0.0',
-      tools: AvailableMCPTools.instance.perform(protected_data: current_mcp_token.fetch(:protected_data, false))
+      tools: AvailableMCPTools.instance.perform(protected_data: current_mcp_token.fetch(:protected_data, false)),
+      server_context: {
+        request_id: request.request_id
+      }
     )
   end
 
