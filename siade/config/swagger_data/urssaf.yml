@@ -33,7 +33,8 @@ urssaf:
           - description
       date_debut_validite:
         title: "Date de début de validité"
-        type: "date"
+        type: "string"
+        format: "date"
         nullable: true
         description: "Cette date est présente en fin de document dans le paragraphe « Attestation de l'union de recouvrement ».
         \n
@@ -42,7 +43,8 @@ urssaf:
         example: "2022-12-03"
       date_fin_validite:
         title: "Date de fin de validité"
-        type: "date"
+        type: "string"
+        format: "date"
         nullable: true
         description: "Cette date est obtenue à l'aide de la date de début de validité.
           \n

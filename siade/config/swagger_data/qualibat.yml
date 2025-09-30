@@ -25,12 +25,14 @@ qualibat:
         example: 86400
       date_emission:
         title: "Date d'émission du document"
-        type: "date"
+        type: "string"
+        format: "date"
         nullable: true
         example: "2023-01-01"
       date_fin_validite:
         title: "Date de fin de validité du document"
-        type: "date"
+        type: "string"
+        format: "date"
         nullable: true
         example: "2024-02-02"
       entity:
@@ -83,7 +85,8 @@ qualibat:
                     - false
                 date_attribution:
                   title: "Date d'attribution"
-                  type: "date"
+                  type: "string"
+                  format: "date"
                   example: "2022-03-03"
 
 
