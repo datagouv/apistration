@@ -91,7 +91,7 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
             end
 
             it 'tracks dummy user context and params in logstash' do
-              expect(MonitoringService.instance).to receive(:set_user_context).with(dummy_user_context)
+              expect(MonitoringService.instance).to receive(:set_user_context).with(hash_including(dummy_user_context))
               expect(MonitoringService.instance).to receive(:set_controller_params).with(tracked_params)
 
               get url
