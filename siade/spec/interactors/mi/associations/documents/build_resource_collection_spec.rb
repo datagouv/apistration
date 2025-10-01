@@ -55,7 +55,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
           {
             id: 'much_id_2',
             timestamp: '1418807674',
-            url: 'https://mi_domain.gouv.fr/apim/api-asso/great',
+            url: "#{Siade.credentials[:mi_domain]}/apim/api-asso/great",
             type: 'Statuts',
             expires_in: 1.day.to_i,
             errors: []

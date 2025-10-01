@@ -33,8 +33,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
       let(:stubbed_response) { { status: 200, body: mocked_body } }
 
       before do
-        url = 'https://probtp_domain.gouv.fr/ws_ext/rest/certauth/mpsservices/getAttestationCotisation'
-        stub_request(:post, url)
+        stub_request(:post, "#{Siade.credentials[:probtp_domain]}/ws_ext/rest/certauth/mpsservices/getAttestationCotisation")
           .with(
             body: { corps: siret }.to_json,
             headers: { 'Content-Type' => 'application/json' }
