@@ -16,14 +16,14 @@ class ScopesAuthorizationService
   private
 
   def scopes
-    @scopes ||= config[resource_name_sanitizied] || raise_no_authorization
+    @scopes ||= config[resource_name_sanitized] || raise_no_authorization
   end
 
   def raise_no_authorization
-    raise "No authorization config for resource #{resource_name}\nPlease fill the config/authorizations.yml file for '#{resource_name_sanitizied}'"
+    raise "No authorization config for resource #{resource_name}\nPlease fill the config/authorizations.yml file for '#{resource_name_sanitized}'"
   end
 
-  def resource_name_sanitizied
+  def resource_name_sanitized
     if resource_name.end_with?('Controller')
       resource_name.underscore.sub('_controller', '')
     elsif resource_name.start_with?('mcp/')
