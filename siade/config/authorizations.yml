@@ -369,6 +369,8 @@ shared:
     - unites_legales_etablissements_insee
   mcp/insee/unite_legale_diffusable:
     - open_data
+  mcp/insee/etablissement:
+    - unites_legales_etablissements_insee
   mcp/urssaf/attestations_sociales:
     - attestation_sociale_urssaf
   mcp/infogreffe/extraits_rcs:
