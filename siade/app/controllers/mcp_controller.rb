@@ -18,6 +18,7 @@ class MCPController < ActionController::API
       name: 'siade',
       version: '1.0.0',
       tools: MCP::AvailableTools.instance.perform(scopes: current_user.scopes),
+      resources: MCP::AvailableResources.instance.perform,
       server_context: {
         request_id: request.request_id,
         user_id: current_user.id

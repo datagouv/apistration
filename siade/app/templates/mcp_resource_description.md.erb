@@ -1,0 +1,21 @@
+# Documentation tool: <%= tool_name %> (nom technique : `<%= tool_technical_name %>`)
+
+## Vue d'ensemble
+
+<%= summary %>
+
+<% if documentation_url.present? %>
+Pour plus de détails, voir la documentation complète [ici](<%= documentation_url %>).
+<% end %>
+
+## Description des champs de la réponse en succès (code http 200)
+
+```json
+<%= success_response_schema.to_json %>
+```
+
+## Exemple (code http 200)
+
+```json
+<%= example.to_json %>
+```
