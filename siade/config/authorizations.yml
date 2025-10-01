@@ -375,6 +375,8 @@ shared:
     - attestation_sociale_urssaf
   mcp/infogreffe/extraits_rcs:
     - open_data
+  mcp/infogreffe/mandataires_sociaux:
+    - mandataires_sociaux_infogreffe
   mcp/qualibat/certifications_batiment:
     - open_data
   mcp/dgfip/liasses_fiscales:
