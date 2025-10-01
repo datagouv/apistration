@@ -1,4 +1,4 @@
-class AvailableMCPTools
+class MCP::AvailableTools
   include Singleton
 
   def initialize

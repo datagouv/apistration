@@ -17,7 +17,7 @@ class MCPController < ActionController::API
     MCP::Server.new(
       name: 'siade',
       version: '1.0.0',
-      tools: AvailableMCPTools.instance.perform(scopes: current_user.scopes),
+      tools: MCP::AvailableTools.instance.perform(scopes: current_user.scopes),
       server_context: {
         request_id: request.request_id,
         user_id: current_user.id
