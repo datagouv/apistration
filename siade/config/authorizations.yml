@@ -388,6 +388,8 @@ shared:
   mcp/dgfip/liens_capitalistiques:
     - liasses_fiscales_dgfip
     - liens_capitalistiques_dgfip
+  mcp/inpi/rne/beneficiaires_effectifs:
+    - beneficiaires_effectifs_inpi
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
