@@ -375,6 +375,15 @@ shared:
     - open_data
   mcp/qualibat/certifications_batiment:
     - open_data
+  mcp/dgfip/liasses_fiscales:
+    - liasses_fiscales_dgfip
+  mcp/dgfip/attestation_fiscale:
+    - attestation_fiscale_dgfip
+  mcp/dgfip/chiffres_affaires:
+    - chiffre_affaires_dgfip
+  mcp/dgfip/liens_capitalistiques:
+    - liasses_fiscales_dgfip
+    - liens_capitalistiques_dgfip
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
