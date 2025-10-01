@@ -20,7 +20,7 @@ class McpToolGenerator < Rails::Generators::NamedBase
 
   def insert_authorization
     inject_into_file 'config/authorizations.yml', before: 'test:' do
-      "    'mcp/#{retriever.underscore}': [valid_scope]\n"
+      "  mcp/#{retriever.underscore}:\n    - scope1\n"
     end
   end
 
