@@ -36,6 +36,13 @@ module ProviderStubs::Qualifelec
     )
   end
 
+  def stub_qualifelec_no_certificates(siret: not_found_siret)
+    stub_request(:get, "#{Siade.credentials[:qualifelec_certificates_url]}/#{siret}").to_return(
+      status: 200,
+      body: '[]'
+    )
+  end
+
   def qualifelec_jwt_bearer
     @qualifelec_jwt_bearer ||= build_qualifelec_jwt_bearer
   end

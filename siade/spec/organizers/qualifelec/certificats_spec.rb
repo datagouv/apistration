@@ -38,4 +38,16 @@ RSpec.describe Qualifelec::Certificats, type: :organizer do
 
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
+
+  context 'when siren is found but has no certificates' do
+    before do
+      stub_qualifelec_no_certificates
+    end
+
+    let(:siret) { not_found_siret }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+  end
 end
