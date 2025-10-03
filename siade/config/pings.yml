@@ -267,6 +267,7 @@ shared:
         make_request: 'CNAV::QuotientFamilialV2::MakeRequest'
         organizer_params:
           dss_prestation_name: 'quotient_familial_v2'
+          recipient: '13001922700011'
         params: &cnav_driver_params
           nom_naissance: 'DUPONT'
           prenoms:
@@ -292,6 +293,7 @@ shared:
         make_request: 'CNAV::MakeRequest'
         organizer_params:
           dss_prestation_name: 'complementaire_sante_solidaire'
+          recipient: '13001922700011'
         params: *cnav_driver_params
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
@@ -306,6 +308,7 @@ shared:
         make_request: 'CNAV::MakeRequest'
         organizer_params:
           dss_prestation_name: 'revenu_solidarite_active'
+          recipient: '13001922700011'
         params: *cnav_driver_params
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
@@ -320,6 +323,7 @@ shared:
         make_request: 'CNAV::MakeRequest'
         organizer_params:
           dss_prestation_name: 'allocation_soutien_familial'
+          recipient: '13001922700011'
         params: *cnav_driver_params
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
@@ -334,6 +338,7 @@ shared:
         make_request: 'CNAV::MakeRequest'
         organizer_params:
           dss_prestation_name: 'allocation_adulte_handicape'
+          recipient: '13001922700011'
         params: *cnav_driver_params
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
@@ -348,6 +353,7 @@ shared:
         make_request: 'CNAV::MakeRequest'
         organizer_params:
           dss_prestation_name: 'prime_activite'
+          recipient: '13001922700011'
         params: *cnav_driver_params
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
