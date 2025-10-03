@@ -1,6 +1,12 @@
 class CNAV::MakeRequest < MakeRequest::Get
   protected
 
+  def call
+    track_dinum_siret if context.recipient == JwtTokenService::DINUM_SIRET
+
+    super
+  end
+
   def request_uri
     URI(Siade.credentials[:"cnav_#{context.dss_prestation_name}_url"])
   end
@@ -92,5 +98,12 @@ class CNAV::MakeRequest < MakeRequest::Get
 
   def country_is_france?
     context.params[:code_cog_insee_pays_naissance] == '99100'
+  end
+
+  def track_dinum_siret
+    MonitoringService.instance.track(
+      'info',
+      'CNAV request with DINUM SIRET'
+    )
   end
 end
