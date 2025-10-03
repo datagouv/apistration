@@ -16,7 +16,7 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
       typeAttestation: 'AVG_UR',
       siren:,
       idClient: context.params[:user_id],
-      beneficiaire: context.params[:recipient]
+      beneficiaire: context.recipient
     }
   end
 

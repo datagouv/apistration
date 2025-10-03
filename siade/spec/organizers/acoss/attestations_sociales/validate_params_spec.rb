@@ -1,17 +1,16 @@
 RSpec.describe ACOSS::AttestationsSociales::ValidateParams, type: :validate_params do
-  subject { described_class.call(params:) }
+  subject { described_class.call(params:, recipient:) }
 
   let(:params) do
     {
       siren:,
-      user_id:,
-      recipient:
+      user_id:
     }
   end
 
   let(:siren) { valid_siren }
   let(:user_id) { '9001' }
-  let(:recipient) { 'DINUM' }
+  let(:recipient) { valid_siret }
 
   context 'with valid params' do
     it { is_expected.to be_a_success }

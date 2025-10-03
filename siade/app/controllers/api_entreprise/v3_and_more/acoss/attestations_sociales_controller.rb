@@ -13,8 +13,7 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
   def organizer_params
     {
       siren: params.require(:siren),
-      user_id: current_user.logstash_id,
-      recipient: params[:recipient]
+      user_id: current_user.logstash_id
     }
   end
 

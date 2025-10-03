@@ -1,12 +1,12 @@
 RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
   describe '.call' do
-    subject { described_class.call(params:) }
+    subject { described_class.call(params:, recipient:) }
 
+    let(:recipient) { valid_siret }
     let(:params) do
       {
         siren:,
-        user_id: '1',
-        recipient: '1'
+        user_id: '1'
       }
     end
 

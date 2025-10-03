@@ -1,16 +1,15 @@
 RSpec.describe ACOSS::AttestationsSociales::MakeRequest, type: :make_request do
-  subject { described_class.call(token:, params:) }
+  subject { described_class.call(token:, params:, recipient:) }
 
   let(:siren) { valid_siren(:acoss) }
   let(:user_id) { '1' }
-  let(:recipient) { '1' }
+  let(:recipient) { '78951073200017' }
   let(:token) { 'VmZMhhLEzMsp5A3Lo52Jt-KYQBuu1NwyONm4yYwj99U' }
 
   let(:params) do
     {
       siren:,
-      user_id:,
-      recipient:
+      user_id:
     }
   end
 

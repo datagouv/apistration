@@ -28,7 +28,7 @@ class APIParticulier::V3AndMore::CNAV::AbstractCivilityController < APIParticuli
 
   def organizer_params
     api_params
-      .merge({ recipient: current_user.siret, request_id: request.request_id })
+      .merge({ request_id: request.request_id })
   end
 
   def organizer_class

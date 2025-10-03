@@ -46,7 +46,6 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
         sexe: 'M',
         codePaysLieuDeNaissance: '99100',
         codeInseeLieuDeNaissance: '17300',
-        recipient:,
         annee: 2024,
         mois: 12,
         token:
@@ -63,7 +62,6 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
         jour_date_naissance: '12',
         code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
-        recipient:,
         code_cog_insee_commune_naissance: '17300',
         code_cog_insee_departement_naissance: nil,
         nom_commune_naissance: nil,

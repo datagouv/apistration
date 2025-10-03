@@ -48,7 +48,6 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       code_cog_insee_commune_naissance: france_connect_service_user_identity.birthplace,
       code_cog_insee_pays_naissance: france_connect_service_user_identity.birthcountry,
       sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
-      recipient: params[:recipient],
       france_connect: true
     }
   end
@@ -65,8 +64,7 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       code_cog_insee_commune_naissance: params[:codeInseeLieuDeNaissance],
       code_cog_insee_departement_naissance: params[:codeInseeDepartementNaissance],
       nom_commune_naissance: params[:nomCommuneNaissance],
-      sexe_etat_civil: params[:sexe],
-      recipient: current_user.siret
+      sexe_etat_civil: params[:sexe]
     }
   end
   # rubocop:enable Metrics/AbcSize

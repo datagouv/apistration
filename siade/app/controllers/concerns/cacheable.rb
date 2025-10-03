@@ -60,8 +60,25 @@ module Cacheable
   end
 
   def recipient
-    recipient = params.fetch(:recipient, current_user.siret)
+    @recipient ||= fetch_recipient
+  end
 
-    recipient || JwtTokenService::DINUM_SIRET
+  def fetch_recipient
+    recipient = if france_connect?
+                  params.fetch(:recipient, nil)
+                else
+                  params.fetch(:recipient, current_user.siret)
+                end
+
+    track_empty_recipient if recipient.blank?
+
+    recipient
+  end
+
+  def track_empty_recipient
+    monitoring_service.track(
+      :warning,
+      'Empty recipient'
+    )
   end
 end

@@ -39,6 +39,10 @@ class APIController < ApplicationController
       status:  organizer.http_code
   end
 
+  def france_connect?
+    false
+  end
+
   private
 
   def user_not_authorized(exception)
