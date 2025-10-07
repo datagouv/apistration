@@ -15,7 +15,7 @@ ants:
       identite_particulier:
         title: "Identité"
         type: "object"
-        description: "Identité du demandeur du dossier d'immatriculation tel que renseignée dans l'État membre d'immatriculation. Ces données ne proviennent pas de FranceConnect et sont fournies à des fins de vérification de l'identité du demandeur"
+        description: "Identité du demandeur du dossier d'immatriculation. Ces données ne proviennent pas de FranceConnect et sont fournies à des fins de vérification de l'identité du demandeur"
         properties:
           nom:
             title: "Nom"
@@ -62,7 +62,7 @@ ants:
       adresse_particulier:
         title: "Adresse"
         type: "object"
-        description: "L'adresse du demandeur dans l'État membre d'immatriculation"
+        description: "L'adresse du demandeur"
         properties:
           complement_information:
             title: "Complément information de l'adresse"
@@ -204,7 +204,7 @@ ants:
           masse_charge_maximale:
             title: "Masse en charge maximale"
             type: "number"
-            description: "La masse en charge maximale admissible du véhicule en service dans l'État membre d'immatriculation"
+            description: "La masse en charge maximale admissible du véhicule en service"
             example: 1850
           categorie_vehicule:
             title: "Catégorie du véhicule"
