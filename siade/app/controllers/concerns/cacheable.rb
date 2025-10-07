@@ -77,7 +77,7 @@ module Cacheable
 
   def track_empty_recipient
     monitoring_service.track(
-      :warning,
+      :warn,
       'Empty recipient'
     )
   end
