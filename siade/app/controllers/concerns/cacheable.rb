@@ -76,9 +76,15 @@ module Cacheable
   end
 
   def track_empty_recipient
-    monitoring_service.track(
+    monitoring_service.track_with_added_context(
       :warn,
-      'Empty recipient'
+      'Empty recipient',
+      {
+        france_connect: france_connect?,
+        user_id: current_user&.id,
+        user_siret: current_user&.siret,
+        recipient_param: params[:recipient].presence
+      }
     )
   end
 end
