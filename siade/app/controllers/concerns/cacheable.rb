@@ -64,15 +64,15 @@ module Cacheable
   end
 
   def fetch_recipient
-    recipient = if france_connect?
-                  params.fetch(:recipient, nil)
-                else
-                  params.fetch(:recipient, current_user.siret)
-                end
+    recipient_from_context = if france_connect?
+                               params.fetch(:recipient, nil)
+                             else
+                               params.fetch(:recipient, current_user.siret)
+                             end
 
-    track_empty_recipient if recipient.blank?
+    track_empty_recipient if recipient_from_context.blank?
 
-    recipient
+    recipient_from_context
   end
 
   def track_empty_recipient
