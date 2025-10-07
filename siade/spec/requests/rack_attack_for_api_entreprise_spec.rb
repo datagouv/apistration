@@ -215,7 +215,6 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
         end
       end
 
-
       describe 'endpoints exceptions' do
         describe 'very high latency endpoints' do
           let(:limit) { throttle_config.dig(:high_latency_documents, :limit) }
