@@ -1,8 +1,8 @@
 RSpec.describe ANTSDossierImmatriculationSoapBuilder do
-  subject(:builder) { described_class.new(immatriculation:, certificate:, private_key:, request_id:) }
+  subject(:builder) { described_class.new(immatriculation:, certificate:, private_key:, ants_request_id:) }
 
   let(:immatriculation) { 'AA-123-AA' }
-  let(:request_id) { 'test-request-123' }
+  let(:ants_request_id) { 'req_test-request-123' }
 
   let(:private_key) do
     OpenSSL::PKey::RSA.new(File.read('spec/fixtures/ssl/certificat.key'))

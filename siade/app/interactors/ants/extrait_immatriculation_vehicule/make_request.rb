@@ -31,9 +31,13 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   def build_request_body
     ANTSDossierImmatriculationSoapBuilder.new(
       immatriculation: context.params[:immatriculation].upcase,
-      request_id: context.params[:request_id],
+      ants_request_id:,
       certificate: cert,
       private_key: key
     ).render
+  end
+
+  def ants_request_id
+    context.params[:request_id] ? "req_#{context.params[:request_id]}" : "rnd_#{SecureRandom.uuid}"
   end
 end

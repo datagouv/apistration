@@ -1,17 +1,13 @@
 class ANTSDossierImmatriculationSoapBuilder < ApplicationBuilder
   include PartialRendering
 
-  attr_reader :immatriculation, :certificate, :private_key, :request_id
+  attr_reader :immatriculation, :certificate, :private_key, :ants_request_id
 
-  def initialize(immatriculation:, certificate:, private_key:, request_id:)
+  def initialize(immatriculation:, certificate:, private_key:, ants_request_id:)
     @immatriculation = immatriculation
     @certificate = certificate
     @private_key = private_key
-    @request_id = request_id
-  end
-
-  def session_id
-    @session_id ||= "req_#{request_id}"
+    @ants_request_id = ants_request_id
   end
 
   def render

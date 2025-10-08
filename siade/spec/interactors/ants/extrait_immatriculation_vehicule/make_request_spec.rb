@@ -6,7 +6,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::MakeRequest, type: :make_re
     let(:body) do
       ANTSDossierImmatriculationSoapBuilder.new(
         immatriculation:,
-        request_id:,
+        ants_request_id: "req_#{request_id}",
         certificate:,
         private_key:
       ).render
