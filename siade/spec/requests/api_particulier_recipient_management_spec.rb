@@ -23,12 +23,40 @@ RSpec.describe 'API Particulier: recipient management' do
       let(:params) { { what: 'ever' } }
       let(:headers) { { 'X-Api-Key' => jwt_token } }
 
-      it 'calls organizer with recipient as siret from token' do
-        expect(CNAV::QuotientFamilialV2).to receive(:call).with(
-          hash_including(recipient: siret)
-        )
+      context 'when recipient param is missing' do
+        it 'calls organizer with recipient as siret from token' do
+          expect(CNAV::QuotientFamilialV2).to receive(:call).with(
+            hash_including(recipient: siret)
+          )
 
-        make_request
+          make_request
+        end
+      end
+
+      context 'when recipient param is present' do
+        context 'when recipient is different from siret in token' do
+          let(:params) { { what: 'ever', recipient: valid_siret } }
+
+          it 'calls organizer with recipient as siret from params' do
+            expect(CNAV::QuotientFamilialV2).to receive(:call).with(
+              hash_including(recipient: valid_siret)
+            )
+
+            make_request
+          end
+        end
+
+        context 'when recipient is empty' do
+          let(:params) { { what: 'ever', recipient: nil } }
+
+          it 'calls organizer with recipient as siret from token' do
+            expect(CNAV::QuotientFamilialV2).to receive(:call).with(
+              hash_including(recipient: siret)
+            )
+
+            make_request
+          end
+        end
       end
     end
 

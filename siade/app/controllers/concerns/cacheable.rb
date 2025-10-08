@@ -67,7 +67,7 @@ module Cacheable
     recipient = if france_connect?
                   params.fetch(:recipient, nil)
                 else
-                  params.fetch(:recipient, current_user.siret)
+                  params[:recipient].presence || current_user.siret
                 end
 
     track_empty_recipient if recipient.blank?
