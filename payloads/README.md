@@ -75,7 +75,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Mandataires sociaux (`/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux`)
 * [Actes et bilans](api_entreprise_v3_inpi_rne_actes_bilans) (`/v3/inpi/rne/unites_legales/open_data/{siren}/actes_bilans`)
 * [Bénéficiaires effectifs](api_entreprise_v3_inpi_rne_beneficiaires_effectifs) (`/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs`)
-* Extrait RNE d'une unité légale (`/v3/inpi/rne/unites_legales/{siren}/extrait_rne`)
+* Attestation d'immatriculation RNE (`/v3/inpi/rne/unites_legales/{siren}/extrait_rne`)
 * [Adresse établissement](api_entreprise_v3_insee_adresses_etablissements) (`/v3/insee/sirene/etablissements/{siret}/adresse`)
 * [Adresse établissement en open data](api_entreprise_v3_insee_adresses_etablissements_diffusables) (`/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse`)
 * [Données établissement](api_entreprise_v3_insee_etablissements) (`/v3/insee/sirene/etablissements/{siret}`)

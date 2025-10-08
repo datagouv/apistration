@@ -8,7 +8,12 @@ payload: |-
     "data": {
       "identite_particulier": {
         "nom": "CIS QUARANTESEPT",
-        "prenom": "PRENOM YVES"
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
       },
       "adresse_particulier": {
         "complement_information": null,
@@ -19,7 +24,8 @@ payload: |-
         "libelle_commune": "PARIS",
         "lieu_dit": null,
         "etage_escalier_appartement": null,
-        "extension": null
+        "extension": null,
+        "pays": "FRANCE"
       },
       "statut_rattachement": "titulaire",
       "donnees_immatriculation_vehicule": {

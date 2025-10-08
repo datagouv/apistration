@@ -8,7 +8,12 @@ payload: |-
     "data": {
       "identite_particulier": {
         "nom": "CIS CINQUANTESEPT",
-        "prenom": "PRENOM CHARLES"
+        "prenom": "PRENOM CHARLES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1957,
+        "mois_date_naissance": 7,
+        "jour_date_naissance": 12,
+        "code_departement_naissance": "69"
       },
       "adresse_particulier": {
         "complement_information": null,
@@ -19,7 +24,8 @@ payload: |-
         "libelle_commune": "LYON",
         "lieu_dit": null,
         "etage_escalier_appartement": "APPARTEMENT A56",
-        "extension": null
+        "extension": null,
+        "pays": "FRANCE"
       },
       "statut_rattachement": "titulaire",
       "donnees_immatriculation_vehicule": {

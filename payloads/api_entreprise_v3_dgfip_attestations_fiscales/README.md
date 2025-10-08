@@ -26,10 +26,8 @@
       "document_url": "https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf",
       "expires_in": 1234567
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -124,10 +122,8 @@
       "document_url": "https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf",
       "expires_in": 1234567
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 

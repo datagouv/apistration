@@ -27,8 +27,7 @@
         "code": "42003",
         "title": "Entité non trouvée",
         "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
-        "source": {
-        },
+        "source": {},
         "meta": {
           "provider": "ANTS"
         }
@@ -75,7 +74,12 @@
     "data": {
       "identite_particulier": {
         "nom": "DELATOUR",
-        "prenom": "THOMAS"
+        "prenom": "THOMAS",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1985,
+        "mois_date_naissance": 3,
+        "jour_date_naissance": 15,
+        "code_departement_naissance": "75"
       },
       "adresse_particulier": {
         "complement_information": null,
@@ -86,7 +90,8 @@
         "libelle_commune": "PARIS",
         "lieu_dit": null,
         "etage_escalier_appartement": null,
-        "extension": null
+        "extension": null,
+        "pays": "FRANCE"
       },
       "statut_rattachement": "titulaire",
       "donnees_immatriculation_vehicule": {
@@ -122,10 +127,296 @@
         }
       }
     },
-    "links": {
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_extrait_immatriculation_vehicule_dgfip_lyon_1.yaml](fake_france_connect_extrait_immatriculation_vehicule_dgfip_lyon_1.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Lyon
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-387-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS CINQUANTESEPT",
+        "prenom": "PRENOM CHARLES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1957,
+        "mois_date_naissance": 7,
+        "jour_date_naissance": 12,
+        "code_departement_naissance": "69"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "5",
+        "type_voie": "PLACE",
+        "libelle_voie": "BERTONE",
+        "code_postal_ville": "69004",
+        "libelle_commune": "LYON",
+        "lieu_dit": null,
+        "etage_escalier_appartement": "APPARTEMENT A56",
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-387-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "VOLKSWAGEN",
+        "type_variante_version": "16AACCZAX0FM6FM62Q030N7MGVIVR0",
+        "denomination_commerciale": "JETTA",
+        "masse_charge_maximale": 1920,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1984,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 167,
+        "classe_environnementale": {
+          "code": "Euro 5",
+          "label": "Norme européenne d'émission Euro 5"
+        }
+      }
     },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_extrait_immatriculation_vehicule_dgfip_paris_1.yaml](fake_france_connect_extrait_immatriculation_vehicule_dgfip_paris_1.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-378-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-378-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "MAZDA",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "MAZDA",
+        "masse_charge_maximale": 2090,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 190,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_extrait_immatriculation_vehicule_dgfip_paris_2.yaml](fake_france_connect_extrait_immatriculation_vehicule_dgfip_paris_2.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-383-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS CINQUANTEUN",
+        "prenom": "PRENOM GAUTIER",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1951,
+        "mois_date_naissance": 8,
+        "jour_date_naissance": 25,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "172",
+        "type_voie": "BOULEVARD",
+        "libelle_voie": "SAINT GERMAIN",
+        "code_postal_ville": "75006",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-383-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PORSCHE",
+        "type_variante_version": "9PAED2202",
+        "denomination_commerciale": "CAYENNE",
+        "masse_charge_maximale": 3080,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 4511,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 378,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -167,7 +458,12 @@
     "data": {
       "identite_particulier": {
         "nom": "CUILLERE",
-        "prenom": "PAUL"
+        "prenom": "PAUL",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1992,
+        "mois_date_naissance": 11,
+        "jour_date_naissance": 8,
+        "code_departement_naissance": "42"
       },
       "adresse_particulier": {
         "complement_information": "Résidence Jeunes",
@@ -178,7 +474,8 @@
         "libelle_commune": "SAINT-ETIENNE",
         "lieu_dit": null,
         "etage_escalier_appartement": null,
-        "extension": null
+        "extension": null,
+        "pays": "FRANCE"
       },
       "statut_rattachement": "locataire",
       "donnees_immatriculation_vehicule": {
@@ -214,10 +511,8 @@
         }
       }
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
