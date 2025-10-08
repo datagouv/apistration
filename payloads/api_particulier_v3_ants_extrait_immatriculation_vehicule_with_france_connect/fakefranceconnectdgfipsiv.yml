@@ -1,0 +1,65 @@
+description: 'FranceConnect: Titulaire véhicule particulier essence PLACEHOLDER'
+params:
+  immatriculation: 'BB-555-GG'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "DELATOUR",
+        "prenom": "THOMAS",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1985,
+        "mois_date_naissance": 3,
+        "jour_date_naissance": 15,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "12",
+        "type_voie": "RUE",
+        "libelle_voie": "DE LA PAIX",
+        "code_postal_ville": "75011",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "FC-123-AB",
+        "date_premiere_immatriculation": "2021-04-16",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PEUGEOT",
+        "type_variante_version": "FCDEF-G1H234",
+        "denomination_commerciale": "3008",
+        "masse_charge_maximale": 1890,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1600,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 115,
+        "classe_environnementale": {
+          "code": "Euro 6d",
+          "label": "Norme européenne d'émission Euro 6d"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
