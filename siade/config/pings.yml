@@ -101,6 +101,18 @@ test:
 
 shared:
   api_particulier:
+    ants:
+      kind: 'make_request'
+      cache: <%= 5.minutes %>
+      provider: 'ANTS'
+      status_page:
+        name: "ANTS - Extrait Immatriculation Vehicule"
+        alerts_wait: 5
+      driver_params:
+        make_request: 'ANTS::ExtraitImmatriculationVehicule::MakeRequest'
+        params:
+          immatriculation: 'AAA-000-AAA'
+        status_to_check: 200
     caf:
       kind: 'retriever'
       cache: <%= 2.minutes %>
