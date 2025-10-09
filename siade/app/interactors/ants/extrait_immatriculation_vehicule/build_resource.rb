@@ -112,7 +112,7 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
     raw_code = xml_doc.at_xpath('//classe_environnement_ce')&.text
 
     classe_environnementale_code_mappings.each do |pattern, mapped_code|
-      return mapped_code if raw_code.match?(pattern)
+      return mapped_code if raw_code&.match?(pattern)
     end
 
     raw_code

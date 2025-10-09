@@ -107,5 +107,13 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
         }
       )
     end
+
+    describe 'when raw_code is nil' do
+      let(:body) { read_payload_file('ants/found_siv_no_raw_code.xml') }
+
+      it 'doesnt error' do
+        expect { subject }.not_to raise_error
+      end
+    end
   end
 end
