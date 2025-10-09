@@ -38,4 +38,21 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule, type: :retriever_organizer 
       expect(resource).to be_present
     end
   end
+
+  describe 'with a binary ASCII-8BIT response' do
+    before do
+      stub_request(:post, Siade.credentials[:ants_siv_url]).to_return(
+        status: 200,
+        body: read_payload_file('ants/found_siv.xml').force_encoding('ASCII-8BIT')
+      )
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_present
+    end
+  end
 end

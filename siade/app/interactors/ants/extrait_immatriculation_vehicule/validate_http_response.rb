@@ -8,6 +8,6 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse < ValidateRespo
   private
 
   def not_found_in_response?
-    response.body.include?('Aucune réponse trouvée pour les critères en entrée')
+    response.body.force_encoding('UTF-8').include?('Aucune réponse trouvée pour les critères en entrée')
   end
 end

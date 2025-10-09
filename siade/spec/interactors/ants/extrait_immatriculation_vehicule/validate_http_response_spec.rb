@@ -30,6 +30,18 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse, type:
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+      context 'with binary encoding (ASCII-8BIT)' do
+        let(:body) { read_payload_file('ants/not_found.xml').force_encoding('ASCII-8BIT') }
+
+        it 'handles encoding compatibility without error' do
+          expect { subject }.not_to raise_error
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
     end
   end
 
