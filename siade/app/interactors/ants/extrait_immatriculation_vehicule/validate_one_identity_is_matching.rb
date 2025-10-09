@@ -29,11 +29,9 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
     %i[
       nom_naissance
       prenoms
-      sexe_etat_civil
       annee_date_naissance
       mois_date_naissance
       jour_date_naissance
-      code_cog_insee_commune_naissance
     ]
   end
 

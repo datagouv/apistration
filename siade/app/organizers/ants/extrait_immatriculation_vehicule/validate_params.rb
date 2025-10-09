@@ -2,8 +2,5 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateParams < ValidateParamsOrgan
   organize ANTS::ExtraitImmatriculationVehicule::ValidateImmatriculationPresence,
     Civility::ValidatePrenoms,
     Civility::ValidateNomNaissance,
-    Civility::ValidateDateNaissance,
-    Civility::ValidateSexeEtatCivil,
-    Civility::ValidateCodeCogINSEECommuneNaissance,
-    Civility::ValidateCodeCogINSEEPaysNaissance
+    Civility::ValidateDateNaissance
 end
