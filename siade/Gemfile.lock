@@ -474,7 +474,7 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
     unindent (1.0)
-    uri (1.0.3)
+    uri (1.0.4)
     useragent (0.16.11)
     utf8-cleaner (1.0.0)
       activesupport
@@ -562,7 +562,7 @@ DEPENDENCIES
   super_diff
   timecop
   unindent
-  uri (= 1.0.3)
+  uri (= 1.0.4)
   utf8-cleaner
   vcr
   webmock (~> 3.25)
