@@ -51,11 +51,7 @@ class HyperpingAPI
   def http_wrapper(path, &block)
     uri = URI.parse("#{base_url}/#{path}")
 
-    Net::HTTP.start(uri.host, uri.port, {
-      use_ssl: true,
-      open_timeout: 5,
-      read_timeout: 5
-    }) do |http|
+    Net::HTTP.start(uri.host, uri.port, { use_ssl: true }) do |http|
       request = block.call(uri)
 
       request['Authorization'] = "Bearer #{api_key}"
