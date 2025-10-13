@@ -1,5 +1,5 @@
 class SyncPingsWithMonitorsRemoteService
-  def perform
+  def perform # rubocop:disable Metrics/AbcSize
     return if in_progress?
 
     mark_as_in_progress!
@@ -17,6 +17,9 @@ class SyncPingsWithMonitorsRemoteService
     clear_in_progress!
 
     logger.info('End syncing pings with monitors')
+  rescue Net::OpenTimeout, Net::ReadTimeout, HyperpingAPI::Error => e
+    clear_in_progress!
+    logger.error("Failed to sync pings with monitors: #{e.class} - #{e.message}")
   end
 
   private
