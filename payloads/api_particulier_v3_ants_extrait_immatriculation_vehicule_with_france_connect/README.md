@@ -1,4 +1,388 @@
 # [FranceConnect] Extrait d'immatriculation véhicule
+* [1.2_Parisien_VP_ES.yaml](1.2_Parisien_VP_ES.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZB-383-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS CINQUANTEUN",
+        "prenom": "PRENOM GAUTIER",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1951,
+        "mois_date_naissance": 8,
+        "jour_date_naissance": 25,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "172",
+        "type_voie": "BOULEVARD",
+        "libelle_voie": "SAINT GERMAIN",
+        "code_postal_ville": "75006",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-383-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PORSCHE",
+        "type_variante_version": "9PAED2202",
+        "denomination_commerciale": "CAYENNE",
+        "masse_charge_maximale": 3080,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 4511,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 378,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [1_Parisien_VP_ES.yaml](1_Parisien_VP_ES.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZC-378-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-378-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "MAZDA",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "MAZDA",
+        "masse_charge_maximale": 2090,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 190,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [2_N-Parisien_VP_ES.yaml](2_N-Parisien_VP_ES.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-377-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESIX",
+        "prenom": "PNM EMMA",
+        "sexe_etat_civil": "F",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "100",
+        "type_voie": "BOULEVARD",
+        "libelle_voie": "BAILLE",
+        "code_postal_ville": "13005",
+        "libelle_commune": "MARSEILLE",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-377-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "MAZDA",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "MAZDA",
+        "masse_charge_maximale": 2090,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 190,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [3_Parisien_VP_EL.yaml](3_Parisien_VP_EL.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-381-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-381-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PEUGEOT",
+        "type_variante_version": "WB9HR8",
+        "denomination_commerciale": "207",
+        "masse_charge_maximale": 1500,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "EL",
+          "label": "Électricité"
+        },
+        "taux_co2": 0,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -33,6 +417,294 @@
         }
       }
     ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [4_Parisien_VP_VBE_Multicritère.yaml](4_Parisien_VP_VBE_Multicritère.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-380-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-380-DK",
+        "date_premiere_immatriculation": "2020-03-30",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PEUGEOT",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "WB9HR8",
+        "masse_charge_maximale": 2090,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "CTTE",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 120,
+        "type_carburant": {
+          "code": "EG",
+          "label": "Bicarburation essence-GPL"
+        },
+        "taux_co2": 120,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [5_Parisien_incoherence.yaml](5_Parisien_incoherence.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-382-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "9",
+        "type_voie": "RUE",
+        "libelle_voie": "FRANKLIN",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-382-DK",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "MAZDA",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "MAZDA",
+        "masse_charge_maximale": 2090,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 190,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [6_Parisien_2RM.yaml](6_Parisien_2RM.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "ZA-379-DK"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS QUARANTESEPT",
+        "prenom": "PRENOM YVES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1947,
+        "mois_date_naissance": 5,
+        "jour_date_naissance": 20,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "ZA-379-DK",
+        "date_premiere_immatriculation": "2022-07-20",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "MAZDA",
+        "type_variante_version": "CR1L8DXFABAAAAN",
+        "denomination_commerciale": "MAZDA",
+        "masse_charge_maximale": 342,
+        "categorie_vehicule": {
+          "code": "L3e",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "MTL",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 125,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 54,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
   }
   ```
 
