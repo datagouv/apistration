@@ -176,7 +176,7 @@ Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section
 
 Vous pouvez utiliser la documentation de FranceConnect pour construire votre propre environnement d'intégration pour tester de bout-en-bout, ou pour un rapide test vous pouvez utiliser l'espace d'intégration d'exemple de FranceConnect :
 
-Exemple step-by-step avec l'endpoint ANTS `/v3/ants/extrait_immatriculation_vehicule/france_connect`):
+Exemple step-by-step avec l'endpoint ANTS `/v3/ants/extrait_immatriculation_vehicule/france_connect` :
 
 1.  Récupérer un access_token sur FC v2 sandbox
 
