@@ -174,23 +174,31 @@ Il est possible d'utiliser les alias de scope tel que précisé dans la document
 
 Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section [Ajouter des données de test](#ajouter-donnees-de-test).
 
-Instructions step-by-step pour faire un appel avec un jeton FranceConnect d'integration (exemple avec l'endpoint ANTS `/v3/ants/extrait_immatriculation_vehicule/france_connect`):
+Vous pouvez utiliser la documentation de FranceConnect pour construire votre propre environnement d'intégration pour tester de bout-en-bout, ou pour un rapide test vous pouvez utiliser l'espace d'intégration d'exemple de FranceConnect :
 
-1. Récupérer un access_token sur FC v2 sandbox
+Exemple step-by-step avec l'endpoint ANTS `/v3/ants/extrait_immatriculation_vehicule/france_connect`):
 
-a. Ouvrir la page du fournisseur de service de démonstration
+1.  Récupérer un access_token sur FC v2 sandbox
 
-    https://fsp1-low.sbx.fcp.fournisseur-de-service.fr/login
+    a. Ouvrir la page du fournisseur de service de démonstration
 
-b. Ajouter les scopes ants demandés pour le token
+        https://fsp1-low.sbx.fcp.fournisseur-de-service.fr/login
 
-    openid ants_extrait_immatriculation_vehicule_identite_particulier ants_extrait_immatriculation_vehicule_adresse_particulier ants_extrait_immatriculation_vehicule_statut_rattachement ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
+    b. Ajouter les scopes ants demandés pour le token
 
-c. Cliquer sur le bouton FranceConnect pour commencer la cinématique
-d. Sélectionner le fournisseur d'identité fip1-low
-e. Utiliser le compte "test" avec mot de passe "123"
-d. Finaliser la cinématique
-e. Copier l'access_token reçu 2. Appeler API SIV géré par API Particulier
+        openid ants_extrait_immatriculation_vehicule_identite_particulier ants_extrait_immatriculation_vehicule_adresse_particulier ants_extrait_immatriculation_vehicule_statut_rattachement ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
+
+    c. Cliquer sur le bouton FranceConnect pour commencer la cinématique
+
+    d. Sélectionner le fournisseur d'identité fip1-low
+
+    e. Utiliser le compte "test" avec mot de passe "123"
+
+    d. Finaliser la cinématique
+
+    e. Copier l'access_token reçu
+
+2.  Appeler API SIV géré par API Particulier
 
     curl "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013&immatriculation=FC-456-CD" -H "Authorization: Bearer $access_token"
 
