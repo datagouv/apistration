@@ -174,6 +174,26 @@ Il est possible d'utiliser les alias de scope tel que précisé dans la document
 
 Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section [Ajouter des données de test](#ajouter-donnees-de-test).
 
+Instructions step-by-step pour faire un appel avec un jeton FranceConnect d'integration (exemple avec l'endpoint ANTS `/v3/ants/extrait_immatriculation_vehicule/france_connect`):
+
+1. Récupérer un access_token sur FC v2 sandbox
+
+a. Ouvrir la page du fournisseur de service de démonstration
+
+    https://fsp1-low.sbx.fcp.fournisseur-de-service.fr/login
+
+b. Ajouter les scopes ants demandés pour le token
+
+    openid ants_extrait_immatriculation_vehicule_identite_particulier ants_extrait_immatriculation_vehicule_adresse_particulier ants_extrait_immatriculation_vehicule_statut_rattachement ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
+
+c. Cliquer sur le bouton FranceConnect pour commencer la cinématique
+d. Sélectionner le fournisseur d'identité fip1-low
+e. Utiliser le compte "test" avec mot de passe "123"
+d. Finaliser la cinématique
+e. Copier l'access_token reçu 2. Appeler API SIV géré par API Particulier
+
+    curl "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013&immatriculation=FC-456-CD" -H "Authorization: Bearer $access_token"
+
 #### En utilisant les faux jetons FranceConnect
 
 Les données de tests de FranceConnect se trouvent dans le dossier
