@@ -1,0 +1,66 @@
+---
+description: 'FranceConnect: Titulaire Parisien VP EL'
+params:
+  immatriculation: 'TM-003-KB'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS CINQUANTESEPT",
+        "prenom": "PRENOM CHARLES",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1960,
+        "mois_date_naissance": 4,
+        "jour_date_naissance": 19,
+        "code_departement_naissance": "70"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "8",
+        "type_voie": "RUE",
+        "libelle_voie": "JULIEN LACROIX",
+        "code_postal_ville": "75020",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "TM-003-KB",
+        "date_premiere_immatriculation": "2021-01-01",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PEUGEOT",
+        "type_variante_version": "WB9HR8",
+        "denomination_commerciale": "207",
+        "masse_charge_maximale": 1500,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 1798,
+        "type_carburant": {
+          "code": "EL",
+          "label": "Électricité"
+        },
+        "taux_co2": 0,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
