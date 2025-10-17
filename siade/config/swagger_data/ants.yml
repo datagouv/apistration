@@ -40,6 +40,7 @@ ants:
             type: "integer"
             description: "L'année de naissance du demandeur."
             example: 1990
+            nullable: true
           mois_date_naissance:
             title: "Mois de naissance"
             type: "integer"
@@ -47,6 +48,7 @@ ants:
             minimum: 1
             maximum: 12
             example: 3
+            nullable: true
           jour_date_naissance:
             title: "Jour de naissance"
             type: "integer"
@@ -54,6 +56,7 @@ ants:
             minimum: 1
             maximum: 31
             example: 15
+            nullable: true
           code_departement_naissance:
             title: "Code département de naissance"
             type: "string"

@@ -55,4 +55,31 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule, type: :retriever_organizer 
       expect(resource).to be_present
     end
   end
+
+  describe 'with cotitulaire without date_naissance' do
+    let(:immatriculation) { 'AA-123-BB' }
+    let(:nom_naissance) { 'SHEPARD' }
+    let(:prenoms) { %w[JOHN] }
+    let(:annee_date_naissance) { 1987 }
+    let(:mois_date_naissance) { 8 }
+    let(:jour_date_naissance) { 9 }
+    let(:code_cog_insee_commune_naissance) { nil }
+    let(:code_cog_insee_pays_naissance) { nil }
+    let(:sexe_etat_civil) { 'M' }
+
+    before do
+      stub_request(:post, Siade.credentials[:ants_siv_url]).to_return(
+        status: 200,
+        body: read_payload_file('ants/found_siv_with_cotitulaire.xml')
+      )
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_present
+    end
+  end
 end

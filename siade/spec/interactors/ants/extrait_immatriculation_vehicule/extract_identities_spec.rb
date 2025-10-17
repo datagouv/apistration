@@ -56,4 +56,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ExtractIdentities do
       expect(subject.extracted_identities).to eq([])
     end
   end
+
+  describe 'when cotitulaire has no date_naissance' do
+    let(:body) { read_payload_file('ants/found_siv_with_cotitulaire.xml') }
+
+    it 'doesnt error' do
+      expect { subject }.not_to raise_error
+    end
+  end
 end

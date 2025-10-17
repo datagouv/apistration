@@ -83,9 +83,9 @@ class ANTS::ExtraitImmatriculationVehicule::ExtractIdentities < ApplicationInter
       nom_naissance: nom_from_ants(personne),
       prenoms: prenoms_from_ants(personne),
       sexe_etat_civil: personne[:sexe],
-      annee_date_naissance: date_parts[0]&.to_i,
-      mois_date_naissance: date_parts[1]&.to_i,
-      jour_date_naissance: date_parts[2]&.to_i,
+      annee_date_naissance: date_parts&.[](0)&.to_i,
+      mois_date_naissance: date_parts&.[](1)&.to_i,
+      jour_date_naissance: date_parts&.[](2)&.to_i,
       code_departement_naissance: personne[:code_dep_naissance]
     }.compact
   end
