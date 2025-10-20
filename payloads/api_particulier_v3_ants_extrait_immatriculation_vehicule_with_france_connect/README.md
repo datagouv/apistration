@@ -697,7 +697,7 @@
         "denomination_commerciale": "MAZDA",
         "masse_charge_maximale": 342,
         "categorie_vehicule": {
-          "code": "L3e-A1",
+          "code": "L3e",
           "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
         },
         "genre_national": {
@@ -714,11 +714,11 @@
           "code": "Euro 4",
           "label": "Norme européenne d'émission Euro 4"
         }
-      },
-      "links": {
-      },
-      "meta": {
       }
+    },
+    "links": {
+    },
+    "meta": {
     }
   }
   ```
