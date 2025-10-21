@@ -92,7 +92,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Conformité cotisations retraite bâtiment (`/v3/probtp/etablissements/{siret}/attestation_cotisations_retraite`)
 * Conformité cotisations retraite complémentaire (`/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite`)
 * Certification Qualibat (PDF seulement) (`/v3/qualibat/etablissements/{siret}/certification_batiment`)
-* Certification Qualibat (`/v4/qualibat/etablissements/{siret}/certification_batiment`)
+* [Certification Qualibat](api_entreprise_v4_qualibat_certifications_batiment) (`/v4/qualibat/etablissements/{siret}/certification_batiment`)
 * [Certification Qualifelec](api_entreprise_v3_qualifelec_certificats) (`/v3/qualifelec/etablissements/{siret}/certificats`)
 * Données du RNM d'une entreprise artisanale (`/v3/cma_france/rnm/unites_legales/{siren}`)
 * [Attestation de vigilance](api_entreprise_v4_acoss_attestations_sociales) (`/v4/urssaf/unites_legales/{siren}/attestation_vigilance`)

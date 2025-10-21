@@ -1,0 +1,42 @@
+Titre,Description,Paramètres,Status,Réponse
+,Association non trouvé par la DJEPVA,"{""siret"":""30613890001294""}",200,"{
+  ""data"": {
+    ""document_url"": ""https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v4_qualibat_certifications_batiment//exemple-qualibat.png"",
+    ""document_url_expires_in"": 86400,
+    ""date_emission"": ""2023-01-01"",
+    ""date_fin_validite"": ""2024-02-02"",
+    ""entity"": {
+      ""assurance_responsabilite_travaux"": {
+        ""nom"": ""GROUPAMA"",
+        ""identifiant"": ""1234567890""
+      },
+      ""assurance_responsabilite_civile"": {
+        ""nom"": ""GROUPAMA"",
+        ""identifiant"": ""1234567890""
+      },
+      ""certifications"": [
+        {
+          ""code"": ""4322"",
+          ""libelle"": ""Fabrication et pose de menuiserie intérieure en bois"",
+          ""rge"": false,
+          ""date_attribution"": ""2022-03-03""
+        }
+      ]
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Entité non trouvée,"{""siret"":""552032534""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""06003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""Qualibat""
+      }
+    }
+  ]
+}"
