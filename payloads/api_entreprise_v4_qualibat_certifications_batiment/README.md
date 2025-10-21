@@ -23,7 +23,7 @@
   ```json
   {
     "data": {
-      "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v4_qualibat_certifications_batiment//exemple-qualibat.png",
+      "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v4_qualibat_certifications_batiment//exemple-qualibat.png?raw=true",
       "document_url_expires_in": 86400,
       "date_emission": "2023-01-01",
       "date_fin_validite": "2024-02-02",
