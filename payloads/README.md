@@ -62,7 +62,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
 * Attestation fiscale (`/v4/dgfip/unites_legales/{siren}/attestation_fiscale`)
 * Chiffre d'affaires (`/v3/dgfip/etablissements/{siret}/chiffres_affaires`)
-* Liasses fiscales (`/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
+* [Liasses fiscales](api_entreprise_v3_dgfip_liasses_fiscales) (`/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
 * Liens capitalistiques (`/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}`)
 * [Données association](api_entreprise_v4_mi_unites_legales) (`/v4/djepva/api-association/associations/{siren_or_rna}`)
 * [Données association en open data](api_entreprise_v4_mi_unites_legales_open_data) (`/v4/djepva/api-association/associations/open_data/{siren_or_rna}`)
