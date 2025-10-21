@@ -3,7 +3,7 @@
 
   Status `200`
 
-  Association non trouvé par la DJEPVA
+  Entreprise trouvée QUALIBAT
 
   <details><summary>Paramètres</summary>
   <p>
@@ -78,7 +78,7 @@
 
   ```json
   {
-    "siret": "552032534"
+    "siret": "55203253400001"
   }
   ```
 
@@ -113,7 +113,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v4/qualibat/etablissements/552032534/certification_batiment"
+    --url "https://staging.entreprise.api.gouv.fr/v4/qualibat/etablissements/55203253400001/certification_batiment"
   ```
 
   </p>

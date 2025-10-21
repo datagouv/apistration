@@ -1,18 +1,19 @@
 ---
 description: "Entité non trouvée"
 params:
-  siret: '55203253400001'
+  siren: '552032534'
+  year: 2024
 status: 404
 payload: |-
   {
     "errors": [
       {
-        "code": "06003",
+        "code": "03003",
         "title": "Entité non trouvée",
         "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
         "source": null,
         "meta": {
-          "provider": "Qualibat"
+          "provider": "DGFIP - Adélie"
         }
       }
     ]
