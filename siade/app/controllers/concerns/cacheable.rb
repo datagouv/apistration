@@ -38,7 +38,7 @@ module Cacheable
   end
 
   def bypass_cache?
-    request.headers['Cache-Control'] == 'no-cache' || clogged_env?
+    request.headers['Cache-Control'] == 'no-cache' || use_mocked_data?
   end
 
   def mark_response_as_cached_in_response!
