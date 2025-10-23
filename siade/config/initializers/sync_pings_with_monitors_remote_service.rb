@@ -1,3 +1,3 @@
 Rails.application.config.after_initialize do
-  SyncPingsWithMonitorsRemoteService.new.perform if Rails.env.production?
+  Thread.new { SyncPingsWithMonitorsRemoteService.new.perform } if Rails.env.production?
 end
