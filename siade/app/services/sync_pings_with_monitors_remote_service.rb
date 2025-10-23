@@ -39,6 +39,7 @@ class SyncPingsWithMonitorsRemoteService
         extract_ping_config(ping_config)
       )
     )
+    logger.info("Monitor created for #{api_kind} #{ping_identifier}")
   end
 
   def update_monitor(ping_config, remote_monitor)
@@ -48,6 +49,7 @@ class SyncPingsWithMonitorsRemoteService
         extract_ping_config(ping_config)
       )
     )
+    logger.info("Monitor updated: #{remote_monitor['name']} (#{remote_monitor['uuid']})")
   end
 
   def url_for(api_kind, identifier)
