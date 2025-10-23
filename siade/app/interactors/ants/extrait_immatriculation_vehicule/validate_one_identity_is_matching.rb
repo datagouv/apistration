@@ -36,6 +36,8 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
   end
 
   def no_matching_identity!
+    track_no_matching_identity
+
     fail_with_error!(
       ::NotFoundError.new(
         context.provider_name,
@@ -45,5 +47,17 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
         with_identifiant_message: false
       )
     )
+  end
+
+  def track_no_matching_identity
+    MonitoringService.instance.track_with_added_context(
+      'info',
+      "[#{context.provider_name}] No matching identity found",
+      { encrypted_params: }
+    )
+  end
+
+  def encrypted_params
+    DataEncryptor.new(context.params.to_json).encrypt.to_s
   end
 end

@@ -1,5 +1,7 @@
 RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching, type: :validate_response do
-  subject { described_class.call(extracted_identities:, params:) }
+  subject { described_class.call(extracted_identities:, params:, provider_name:) }
+
+  let(:provider_name) { 'ANTS' }
 
   let(:params) do
     {
@@ -64,6 +66,13 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
       }]
     end
 
+    let(:encrypted_data) { 'encrypted_params_data' }
+    let(:data_encryptor) { instance_double(DataEncryptor, encrypt: encrypted_data) }
+
+    before do
+      allow(DataEncryptor).to receive(:new).and_return(data_encryptor)
+    end
+
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
@@ -74,6 +83,22 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
 
     it 'returns the specific subcode for no matching identity' do
       expect(subject.errors.first.subcode).to eq('005')
+    end
+
+    it 'tracks monitoring with encrypted params' do
+      expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+        'info',
+        '[ANTS] No matching identity found',
+        { encrypted_params: encrypted_data }
+      )
+
+      subject
+    end
+
+    it 'calls DataEncryptor with params as json' do
+      expect(DataEncryptor).to receive(:new).with(params.to_json)
+
+      subject
     end
   end
 
