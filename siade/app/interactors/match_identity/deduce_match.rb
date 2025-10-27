@@ -11,8 +11,8 @@ class MatchIdentity::DeduceMatch < ApplicationInteractor
 
   def all_fields_match?
     matchings = context.matchings || {}
+    # NOTE: Birthdate matching is no longer required for identity validation
     matchings['familyname'] &&
-      matchings['givenname'] &&
-      matchings['matchbirthdate']
+      matchings['givenname']
   end
 end
