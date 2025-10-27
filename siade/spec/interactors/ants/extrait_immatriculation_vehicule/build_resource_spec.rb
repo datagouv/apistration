@@ -1,5 +1,5 @@
 RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build_resource do
-  subject(:instance) { described_class.call(response:, params:, matched_identity:) }
+  subject(:instance) { described_class.call(response:, params:, matched_identity:, matchings:, matches:) }
 
   let(:response) { instance_double(Net::HTTPOK, body:) }
   let(:body) { read_payload_file('ants/found_siv.xml') }
@@ -41,6 +41,15 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
       }
     }
   end
+
+  let(:matchings) do
+    {
+      'familyname' => true,
+      'givenname' => true
+    }
+  end
+
+  let(:matches) { true }
 
   it { is_expected.to be_a_success }
 
@@ -103,7 +112,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
               code: 'Euro 4',
               label: 'Norme européenne d\'émission Euro 4'
             }
-          }
+          },
+          matchings: {
+            'familyname' => true,
+            'givenname' => true
+          },
+          matches: true
         }
       )
     end

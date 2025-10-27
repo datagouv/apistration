@@ -21,9 +21,11 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
         let(:body) { read_payload_file('ants/found_siv.xml') }
 
         before do
+          success_context = Interactor::Context.new(matchings: { 'familyname' => true, 'givenname' => true }, matches: true)
+
           allow(IdentityMatcher).to receive(:call)
             .with(candidate_identity: anything, reference_identity: anything)
-            .and_return(instance_double(Interactor::Context, success?: true))
+            .and_return(success_context)
         end
 
         it { is_expected.to be_a_success }
@@ -35,9 +37,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
         let(:body) { read_payload_file('ants/found_personne_morale_siv.xml') }
 
         before do
+          failed_context = Interactor::Context.new(matchings: {}, matches: false)
+          allow(failed_context).to receive(:success?).and_return(false)
+
           allow(IdentityMatcher).to receive(:call)
             .with(candidate_identity: anything, reference_identity: anything)
-            .and_return(instance_double(Interactor::Context, success?: false))
+            .and_return(failed_context)
         end
 
         it { is_expected.to be_a_failure }
@@ -50,9 +55,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
       let(:body) { read_payload_file('ants/found_personne_morale_siv.xml') }
 
       before do
+        failed_context = Interactor::Context.new(matchings: {}, matches: false)
+        allow(failed_context).to receive(:success?).and_return(false)
+
         allow(IdentityMatcher).to receive(:call)
           .with(candidate_identity: anything, reference_identity: anything)
-          .and_return(instance_double(Interactor::Context, success?: false))
+          .and_return(failed_context)
       end
 
       it { is_expected.to be_a_failure }

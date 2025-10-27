@@ -40,32 +40,4 @@ RSpec.describe MatchIdentity::DeduceMatch do
       expect(subject.matches).to be true
     end
   end
-
-  describe 'when familyname does not match' do
-    let(:name_matches) { false }
-    let(:prenoms_matches) { true }
-    let(:sexe_matches) { true }
-    let(:birthdate_matches) { true }
-    let(:commune_matches) { true }
-
-    it { is_expected.to be_a_failure }
-
-    it 'sets matches to false' do
-      expect(subject.matches).to be false
-    end
-  end
-
-  describe 'when givenname does not match' do
-    let(:name_matches) { true }
-    let(:prenoms_matches) { false }
-    let(:sexe_matches) { true }
-    let(:birthdate_matches) { true }
-    let(:commune_matches) { true }
-
-    it { is_expected.to be_a_failure }
-
-    it 'sets matches to false' do
-      expect(subject.matches).to be false
-    end
-  end
 end

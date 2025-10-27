@@ -15,16 +15,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
     }
   end
 
-  let(:match_identity_result) { instance_double(Interactor::Context, success?: match_result) }
-
-  before do
-    allow(IdentityMatcher).to receive(:call)
-      .with(candidate_identity: anything, reference_identity: anything)
-      .and_return(match_identity_result)
-  end
-
   describe 'when identity matches' do
-    let(:match_result) { true }
     let(:extracted_identities) do
       [{
         libelle_type_personne: 'Proprietaire',
@@ -40,6 +31,12 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
       }]
     end
 
+    before do
+      allow(IdentityMatcher).to receive(:call)
+        .with(candidate_identity: anything, reference_identity: anything)
+        .and_return(Interactor::Context.new(matchings: { 'familyname' => true, 'givenname' => true }, matches: true))
+    end
+
     it { is_expected.to be_a_success }
 
     its(:errors) { is_expected.to be_empty }
@@ -50,7 +47,6 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
   end
 
   describe 'when no identity matches' do
-    let(:match_result) { false }
     let(:extracted_identities) do
       [{
         libelle_type_personne: 'Proprietaire',
@@ -70,6 +66,13 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
     let(:data_encryptor) { instance_double(DataEncryptor, encrypt: encrypted_data) }
 
     before do
+      failed_context = Interactor::Context.new(matchings: {}, matches: false)
+      allow(failed_context).to receive(:success?).and_return(false)
+
+      allow(IdentityMatcher).to receive(:call)
+        .with(candidate_identity: anything, reference_identity: anything)
+        .and_return(failed_context)
+
       allow(DataEncryptor).to receive(:new).and_return(data_encryptor)
     end
 
@@ -104,7 +107,6 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
 
   describe 'when extracted identities is empty' do
     let(:extracted_identities) { [] }
-    let(:match_result) { false }
 
     it { is_expected.to be_a_failure }
 

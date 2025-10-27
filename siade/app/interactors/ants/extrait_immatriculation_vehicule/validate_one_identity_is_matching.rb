@@ -17,7 +17,14 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
         candidate_identity: identity[:identite_from_ants],
         reference_identity: identite_pivot
       )
-      result.success?
+
+      if result.success?
+        context.matchings = result.matchings
+        context.matches = result.matches
+        true
+      else
+        false
+      end
     end
   end
 

@@ -7,7 +7,9 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
       adresse_particulier:,
       statut_rattachement:,
       donnees_immatriculation_vehicule:,
-      caracteristiques_techniques_vehicule:
+      caracteristiques_techniques_vehicule:,
+      matchings: context.matchings,
+      matches: context.matches
     }
   end
 

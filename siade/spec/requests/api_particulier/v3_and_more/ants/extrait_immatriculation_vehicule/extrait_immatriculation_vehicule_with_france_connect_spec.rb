@@ -42,7 +42,8 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('ants.extrait_immatriculation_vehicule.attributes')
+            attributes: SwaggerData.get('ants.extrait_immatriculation_vehicule.attributes'),
+            meta: SwaggerData.get('ants.extrait_immatriculation_vehicule.meta')
           )
 
           run_test!
