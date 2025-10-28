@@ -4,7 +4,7 @@ API Manager pour API Entreprise et API Particulier
 
 ## Requirements
 
-- ruby 3.4.1
+- ruby 3.4.7
 - postgresql >= 9
 - redis-server >= 5
 - gnugpg and gpgme (installed with script below)
