@@ -6,7 +6,7 @@ RSpec.describe RetrieverPayloadPingDriver, type: :ping_driver do
       Rails.application.config_for(:pings)[:api_kind][:with_retriever_payload][:driver_params]
     end
 
-    let(:retriever) { CNAF::QuotientFamilial }
+    let(:retriever) { INPI::RNE::BeneficiairesEffectifs }
     let(:interactor_context) { Interactor::Context.new }
 
     before do
@@ -20,11 +20,12 @@ RSpec.describe RetrieverPayloadPingDriver, type: :ping_driver do
 
       expect(retriever).to have_received(:call).with(
         params: {
-          beneficiary_number: Siade.credentials[:ping_cnaf_numero_allocataire],
-          postal_code: Siade.credentials[:ping_cnaf_postal_code]
+          inpi_rne_login_password: Siade.credentials[:inpi_rne_login_ping_password],
+          inpi_rne_login_username: Siade.credentials[:inpi_rne_login_ping_username],
+          siren: '900225095'
         },
         recipient: JwtTokenService::DINUM_SIRET,
-        operation_id: 'ping_cnaf_quotient_familial'
+        operation_id: 'ping_inpi_rne_beneficiaires_effectifs'
       )
     end
 

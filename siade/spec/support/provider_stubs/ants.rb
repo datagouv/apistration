@@ -14,4 +14,10 @@ module ProviderStubs::ANTS
       body: read_payload_file('ants/not_found.xml')
     )
   end
+
+  def stub_ants_extrait_immatriculation_vehicule_invalid(status:)
+    stub_request(:post, Siade.credentials[:ants_siv_url]).to_return(
+      status:
+    )
+  end
 end

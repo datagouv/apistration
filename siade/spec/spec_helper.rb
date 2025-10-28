@@ -111,7 +111,6 @@ RSpec.configure do |config|
   config.include ProviderStubs::DSNJ
   config.include ProviderStubs::Infogreffe
   config.include ProviderStubs::CIBTP
-  config.include ProviderStubs::CNAFQuotientFamilial
   config.include ProviderStubs::CNAV
   config.include ProviderStubs::FranceConnect
   config.include ProviderStubs::FranceConnect::V1

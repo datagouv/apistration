@@ -9,7 +9,7 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
 
     context 'with valid response from provider' do
       let!(:stubbed_request) do
-        mock_valid_cnaf_quotient_familial(status:)
+        stub_ants_extrait_immatriculation_vehicule_invalid(status:)
       end
 
       it 'calls the API' do
@@ -19,7 +19,7 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
       end
 
       context 'when status matches' do
-        let(:status) { 404 }
+        let(:status) { 200 }
 
         it { is_expected.to eq(:ok) }
       end
@@ -103,7 +103,7 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
 
     context 'when there is no response from organizer' do
       before do
-        allow(CNAF::QuotientFamilial).to receive(:call).and_return(Interactor::Context.new)
+        allow(ANTS::ExtraitImmatriculationVehicule::MakeRequest).to receive(:call).and_return(Interactor::Context.new)
       end
 
       it { is_expected.to eq(:bad_gateway) }

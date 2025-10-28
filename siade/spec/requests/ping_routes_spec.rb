@@ -194,7 +194,7 @@ RSpec.describe 'Ping routes' do
         end
 
         context 'with valid provider' do
-          let(:route) { '/api/caf/ping' }
+          let(:route) { '/api/pole_emploi_status/ping' }
 
           it 'renders 200' do
             ping

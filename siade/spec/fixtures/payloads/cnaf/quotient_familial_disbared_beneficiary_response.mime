@@ -1,6 +1,0 @@
---MIMEBoundary_fb158903c5ad547a61d8e52af63f2b6819da46040db69a9b
-Content-Type: application/xop+xml; charset=utf-8; type="text/xml"
-Content-Transfer-Encoding: binary
-Content-ID: <0.8b158903c5ad547a61d8e52af63f2b6819da46040db69a9b@apache.org>
-
-<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns2:demanderDocumentWebResponse xmlns:ns2="http://v1.ws.wsdemandedocumentcafweb.cnaf/"><return><beanRetourDemandeDocumentWeb><codeRetour>101</codeRetour><libelleRetour>Dossier radié. Le document ne peut être édité.</libelleRetour></beanRetourDemandeDocumentWeb></return></ns2:demanderDocumentWebResponse></soapenv:Body></soapenv:Envelope>

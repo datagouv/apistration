@@ -39,7 +39,7 @@ RSpec.describe PingService, type: :service do
 
     context 'with valid identifier' do
       let(:identifier) { 'with_retriever' }
-      let(:retriever) { CNAF::QuotientFamilial }
+      let(:retriever) { INPI::RNE::BeneficiairesEffectifs }
       let(:ping_driver) { instance_double(RetrieverPingDriver, perform: status) }
       let(:status) { :whatever }
 
@@ -75,10 +75,11 @@ RSpec.describe PingService, type: :service do
           make_ping
 
           expect(RetrieverPingDriver).to have_received(:new).with(
-            retriever: 'CNAF::QuotientFamilial',
+            retriever: 'INPI::RNE::BeneficiairesEffectifs',
             params: {
-              beneficiary_number: Siade.credentials[:ping_cnaf_numero_allocataire],
-              postal_code: Siade.credentials[:ping_cnaf_postal_code]
+              inpi_rne_login_password: Siade.credentials[:inpi_rne_login_ping_password],
+              inpi_rne_login_username: Siade.credentials[:inpi_rne_login_ping_username],
+              siren: '900225095'
             }
           )
         end

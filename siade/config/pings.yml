@@ -8,18 +8,21 @@ test:
         name: "With Retriever"
         alerts_wait: 5
       driver_params:
-        retriever: 'CNAF::QuotientFamilial'
+        retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
-          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+          siren: '900225095'
+          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
+          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+
     with_retriever_payload:
       kind: 'retriever_payload'
       provider: 'whatever'
       driver_params:
-        retriever: 'CNAF::QuotientFamilial'
+        retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
-          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+          siren: '900225095'
+          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
+          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
         key_to_dig: 'a.b.c'
         method_to_test_on_payload: 'any?'
 
@@ -29,20 +32,23 @@ test:
       status_page:
         name: "With Retriever and Maintenance"
       driver_params:
-        retriever: 'CNAF::QuotientFamilial'
+        retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
-          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+          siren: '900225095'
+          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
+          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
 
     with_retriever_and_cache:
       kind: 'retriever'
       cache: <%= 5.minutes %>
       provider: 'whatever'
       driver_params:
-        retriever: 'CNAF::QuotientFamilial'
+        retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
-          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+          siren: '900225095'
+          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
+          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+
     with_access_logs:
       kind: 'access_logs'
       provider: 'whatever'
@@ -50,6 +56,7 @@ test:
         routes:
           - 'api_kind/api1/source1#show'
           - 'api_kind/api2/source2#show'
+
     with_access_logs_and_excluded_status:
       kind: 'access_logs'
       provider: 'whatever'
@@ -62,11 +69,11 @@ test:
       kind: 'make_request'
       provider: 'whatever'
       driver_params:
-        make_request: 'CNAF::QuotientFamilial'
-        status_to_check: 404
+        make_request: 'ANTS::ExtraitImmatriculationVehicule::MakeRequest'
         params:
-          postal_code: '75001'
-          beneficiary_number: '1234567'
+          immatriculation: 'AAA-000-AAA'
+        status_to_check: 200
+
     with_make_request_and_token:
       kind: 'make_request'
       provider: 'whatever'
@@ -77,6 +84,7 @@ test:
           identifiant: 'identifiant'
           user_id: '22222222-2222-2222-2222-222222222222'
         token_interactor: 'FranceTravail::Authenticate'
+
     with_make_request_and_organizer_params:
       kind: 'make_request'
       provider: 'whatever'
@@ -113,17 +121,6 @@ shared:
         params:
           immatriculation: 'AAA-000-AAA'
         status_to_check: 200
-    caf:
-      kind: 'retriever'
-      cache: <%= 2.minutes %>
-      provider: 'CNAF'
-      status_page:
-        name: "CAF - Quotient Familial v1 (déprécié)"
-      driver_params:
-        retriever: 'CNAF::QuotientFamilial'
-        params:
-          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
     dsnj_service_national:
       kind: 'make_request'
       cache: <%= 2.minutes %>
