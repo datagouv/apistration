@@ -29,10 +29,6 @@ RSpec.describe 'Mocking in staging for each routes' do
     end
 
     {
-      '/api/v2/composition-familiale' => {
-        'numeroAllocataire' => '1234567',
-        'codePostal' => '75001'
-      },
       '/api/v2/situations-pole-emploi' => {
         'identifiant' => '1234567890'
       },

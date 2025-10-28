@@ -2,6 +2,10 @@ svair_gone = lambda do |env|
   [410, {}, ["Cette URL n'existe plus sur API Particulier depuis le 8 janvier 2024. Veuillez mettre à jour votre application."]]
 end
 
+qf_v1_gone = lambda do |env|
+  [410, {}, ["L'API Quotient Familial v1 n'est plus disponible depuis le 31/10/2025. Veuillez utiliser l'API v2 : https://particulier.api.gouv.fr/catalogue/cnav/quotient_familial"]]
+end
+
 scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_and_more: true) do
   get 'ants/extrait_immatriculation_vehicule/france_connect', to: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect#show'
 
@@ -61,7 +65,7 @@ namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   get 'france-connect/open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
 
   namespace '/v2' do
-    get 'composition-familiale' => '/api_particulier/v2/cnaf/quotient_familial#show'
+    get 'composition-familiale', to: qf_v1_gone
 
     get 'complementaire-sante-solidaire' => '/api_particulier/v2/cnav/complementaire_sante_solidaire#show'
     get 'composition-familiale-v2' => '/api_particulier/v2/cnav/quotient_familial_v2#show'
