@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 1234567891B inscrit (appel par INE), année scolaire 2025 à Toulouse'
+params:
+  ine: '1234567891B'
+status: 200
+payload: |-
+  {
+    "ine": "1234567891B",
+    "nom": "Bel aalia",
+    "prenom": "Sahra",
+    "dateNaissance": "2005-01-03",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-08-31",
+        "statut": "inscrit",
+        "codeCommune": "31555",
+        "etablissement": {
+          "uai": "0313124C",
+          "nomEtablissement": "Université Toulouse Capitole"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

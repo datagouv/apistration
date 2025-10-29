@@ -1,0 +1,33 @@
+---
+description: 'Identifiant 123457A, inscrite, toulouse 2025'
+params:
+  identifiant: '1234567'
+status: 200
+payload: |-
+  {
+    "identifiant": "123457A",
+    "civilite": "M.",
+    "nom": "Desnoyer",
+    "nomUsage": null,
+    "prenom": "Daniel",
+    "sexe": "Masculin",
+    "codeCertificationCNAV": "VC",
+    "libelleCategorieInscription": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+    "email": "daniel.desnoyers@fake.fr",
+    "telephone": "0601020304",
+    "telephone2": null,
+    "adresse": {
+      "INSEECommune": "31555",
+      "codePostal": "31400",
+      "ligneComplementAdresse": null,
+      "ligneComplementDestinataire": "APPARTEMENT 42",
+      "ligneComplementDistribution": null,
+      "ligneNom": "Courtet",
+      "ligneVoie": "11 Rue Capus",
+      "localite": "31400 TOULOUSE"
+    },
+    "dateNaissance": "1989-01-18",
+    "dateInscription": "2025-09-01",
+    "dateCessationInscription": null,
+    "codeCategorieInscription": 1
+  }

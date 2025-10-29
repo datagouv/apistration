@@ -1,0 +1,33 @@
+---
+description: 'Identifiant 123461A, desinscrit, toulouse, 2025'
+params:
+  identifiant: '123461A'
+status: 200
+payload: |-
+  {
+    "identifiant": "123461A",
+    "civilite": "M.",
+    "nom": "Mallette",
+    "nomUsage": null,
+    "prenom": "Alex",
+    "sexe": "Féminin",
+    "codeCertificationCNAV": "VC",
+    "libelleCategorieInscription": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+    "email": "alex.mallette@fake.fr",
+    "telephone": "0601020304",
+    "telephone2": null,
+    "adresse": {
+      "INSEECommune": "31555",
+      "codePostal": "31400",
+      "ligneComplementAdresse": null,
+      "ligneComplementDestinataire": "APPARTEMENT 42",
+      "ligneComplementDistribution": null,
+      "ligneNom": "Courtet",
+      "ligneVoie": "11 Rue Capus",
+      "localite": "31400 TOULOUSE"
+    },
+    "dateNaissance": "1992-08-15",
+    "dateInscription": "2024-09-01",
+    "dateCessationInscription": "2025-09-01",
+    "codeCategorieInscription": 1
+  }
