@@ -4444,7 +4444,7 @@ paths:
                         title: URL de téléchargement de l'attestation fiscale (.pdf)
                         description: Ce lien donne accès à l'attestation fiscale au
                           format PDF.
-                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf
+                        example: https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf
                       expires_in:
                         type: integer
                         example: 7889238
@@ -4907,7 +4907,7 @@ paths:
                         type: string
                         description: Ce lien donne accès à l'attestation fiscale au
                           format PDF.
-                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf
+                        example: https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf
                       document_url_expires_in:
                         title: Délai avant expiration de l'URL de téléchargement du
                           document'

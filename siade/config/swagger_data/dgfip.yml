@@ -9,7 +9,7 @@ dgfip:
         title: "URL de téléchargement de l'attestation fiscale (.pdf)"
         type: 'string'
         description: "Ce lien donne accès à l'attestation fiscale au format PDF."
-        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf"
+        example: "https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf"
     v4:
       title: *dgfip_attestations_fiscales_title
       description: *dgfip_attestations_fiscales_description
