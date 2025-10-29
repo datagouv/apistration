@@ -10,7 +10,9 @@ class MatchIdentity::GivenName < MatchIdentity::Base
   private
 
   def matches_any_reference?(candidate_name)
-    reference_names.any? { |reference_name| reference_name.split.include?(candidate_name) }
+    reference_names.any? do |reference_name|
+      candidate_name == reference_name || reference_name.split.include?(candidate_name)
+    end
   end
 
   def candidate_names

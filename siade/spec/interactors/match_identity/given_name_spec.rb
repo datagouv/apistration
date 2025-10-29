@@ -67,5 +67,14 @@ RSpec.describe MatchIdentity::GivenName do
         expect(subject.matchings['givenname']).to be false
       end
     end
+
+    context 'when candidate has composed given name matching reference' do
+      let(:candidate_identity) { { prenoms: ['JEAN-PHILIPPE'] } }
+      let(:reference_identity) { { prenoms: %w[Jean-Philippe] } }
+
+      it 'matches' do
+        expect(subject.matchings['givenname']).to be true
+      end
+    end
   end
 end
