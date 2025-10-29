@@ -60,7 +60,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Subventions des associations (`/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions`)
 * Immatriculation EORI (`/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori`)
 * [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
-* Attestation fiscale (`/v4/dgfip/unites_legales/{siren}/attestation_fiscale`)
+* [Attestation fiscale](api_entreprise_v4_dgfip_attestations_fiscales) (`/v4/dgfip/unites_legales/{siren}/attestation_fiscale`)
 * Chiffre d'affaires (`/v3/dgfip/etablissements/{siret}/chiffres_affaires`)
 * [Liasses fiscales](api_entreprise_v3_dgfip_liasses_fiscales) (`/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
 * Liens capitalistiques (`/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}`)

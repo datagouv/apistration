@@ -24,7 +24,9 @@
   {
     "data": {
       "document_url": "https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf",
-      "expires_in": 1234567
+      "document_url_expires_in": 1234567,
+      "date_delivrance_attestation": "2023-04-11",
+      "date_periode_analysee": "2023-03-31"
     },
     "links": {
     },
@@ -42,7 +44,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/418166096/attestation_fiscale"
+    --url "https://staging.entreprise.api.gouv.fr/v4/dgfip/unites_legales/418166096/attestation_fiscale"
   ```
 
   </p>
@@ -92,7 +94,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000000/attestation_fiscale"
+    --url "https://staging.entreprise.api.gouv.fr/v4/dgfip/unites_legales/000000000/attestation_fiscale"
   ```
 
   </p>
@@ -122,7 +124,7 @@
   {
     "data": {
       "document_url": "https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf",
-      "expires_in": 1234567,
+      "document_url_expires_in": 1234567,
       "date_delivrance_attestation": "2023-04-11",
       "date_periode_analysee": "2023-03-31"
     },
@@ -142,7 +144,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000001/attestation_fiscale"
+    --url "https://staging.entreprise.api.gouv.fr/v4/dgfip/unites_legales/000000001/attestation_fiscale"
   ```
 
   </p>
@@ -192,7 +194,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000002/attestation_fiscale"
+    --url "https://staging.entreprise.api.gouv.fr/v4/dgfip/unites_legales/000000002/attestation_fiscale"
   ```
 
   </p>
