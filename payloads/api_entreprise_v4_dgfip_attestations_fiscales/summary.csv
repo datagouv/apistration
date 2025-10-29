@@ -2,7 +2,9 @@ Titre,Description,Paramètres,Status,Réponse
 ,Entreprise à jour PDF disponible,"{""siren"":""418166096""}",200,"{
   ""data"": {
     ""document_url"": ""https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf"",
-    ""expires_in"": 1234567
+    ""document_url_expires_in"": 1234567,
+    ""date_delivrance_attestation"": ""2023-04-11"",
+    ""date_periode_analysee"": ""2023-03-31""
   },
   ""links"": {},
   ""meta"": {}
@@ -22,7 +24,7 @@ Titre,Description,Paramètres,Status,Réponse
 ,Entreprise à jour PDF disponible,"{""siren"":""000000001""}",200,"{
   ""data"": {
     ""document_url"": ""https://entreprise.api.gouv.fr/files/attestation-fiscale-dgfip-exemple.pdf"",
-    ""expires_in"": 1234567,
+    ""document_url_expires_in"": 1234567,
     ""date_delivrance_attestation"": ""2023-04-11"",
     ""date_periode_analysee"": ""2023-03-31""
   },
