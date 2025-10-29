@@ -1,0 +1,29 @@
+---
+description: |-
+  ## retour 404
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] 1 prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe masculin
+  - [Réponse] 404
+params:
+  nomUsage: 'QUATRECENTQUATRE'
+  nomNaissance: 'TEST'
+  prenoms:
+    - 'PRENOM'
+  anneeDateDeNaissance: 1978
+  moisDateDeNaissance: 4
+  jourDateDeNaissance: 4
+  codeInseeLieuDeNaissance: '44109'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'M'
+status: 404
+payload: |-
+  {
+    "status": "error_404",
+    "reason": "dossier_introuvable",
+    "message": "dossier_introuvable"
+  }
