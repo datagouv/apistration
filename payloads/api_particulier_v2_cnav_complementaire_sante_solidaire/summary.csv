@@ -152,6 +152,19 @@ Ce cas permet de tester :
   ""reason"": ""Le serveur n’a pas reçu de réponse à temps d’un service tiers."",
   ""message"": ""Le délai d’attente pour la réponse du partenaire a été dépassé.""
 }"
+,"## retour 404
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] 1 prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] 404","{""nomUsage"":""QUATRECENTQUATRE"",""nomNaissance"":""TEST"",""prenoms"":[""PRENOM""],""anneeDateDeNaissance"":1978,""moisDateDeNaissance"":4,""jourDateDeNaissance"":4,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",404,"{
+  ""status"": ""error_404"",
+  ""reason"": ""dossier_introuvable"",
+  ""message"": ""dossier_introuvable""
+}"
 ,"## Bénéficiaire né à l'étranger sans participation financière femme - 200
 
 Ce cas permet de tester :

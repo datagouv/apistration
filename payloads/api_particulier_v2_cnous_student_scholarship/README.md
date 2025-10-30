@@ -680,3 +680,223 @@
 
   </p>
   </details>
+* [ine_1234567891A_level_6_toulouse_2025.yml](ine_1234567891A_level_6_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891A)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Simon",
+    "prenom": "Lilian",
+    "prenom2": "",
+    "dateNaissance": "2005-01-03",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "lilian.simon@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891A' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891B_level_6_toulouse_2025.yml](ine_1234567891B_level_6_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891B)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891B"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Bel Aalia",
+    "prenom": "Sahra",
+    "prenom2": "",
+    "dateNaissance": "2005-01-03",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "sahra.bel.aalian@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891B' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891C_level_7_toulouse_2025.yml](ine_1234567891C_level_7_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891C)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891C"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Vaillancourt",
+    "prenom": "Gael",
+    "prenom2": "",
+    "dateNaissance": "1999-06-21",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "7",
+    "email": "gael.vaillancourt@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891C' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891D_level_7_toulouse_2025.yml](ine_1234567891D_level_7_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891D)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891D"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Puges",
+    "prenom": "Aurelie",
+    "prenom2": "",
+    "dateNaissance": "1999-06-21",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "7",
+    "email": "aurelie.puges@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891D' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>

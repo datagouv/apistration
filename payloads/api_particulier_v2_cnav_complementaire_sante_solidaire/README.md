@@ -801,6 +801,67 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [TST_404.yaml](TST_404.yaml)
+
+  Status `404`
+
+  ## retour 404
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] 1 prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] 404
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomUsage": "QUATRECENTQUATRE",
+    "nomNaissance": "TEST",
+    "prenoms": [
+      "PRENOM"
+    ],
+    "anneeDateDeNaissance": 1978,
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 4,
+    "codeInseeLieuDeNaissance": "44109",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "status": "error_404",
+    "reason": "dossier_introuvable",
+    "message": "dossier_introuvable"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nomUsage=QUATRECENTQUATRE' -d 'nomNaissance=TEST' -d 'prenoms[]=PRENOM' -d 'anneeDateDeNaissance=1978' -d 'moisDateDeNaissance=4' -d 'jourDateDeNaissance=4' -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
 * [beneficiaire_avec_participation_financiere_etranger_femme_200.yml](beneficiaire_avec_participation_financiere_etranger_femme_200.yml)
 
   Status `200`

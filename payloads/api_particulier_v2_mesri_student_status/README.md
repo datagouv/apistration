@@ -2110,6 +2110,234 @@
 
   </p>
   </details>
+* [ine_1234567891A_2025_toulouse.yaml](ine_1234567891A_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891A inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891A",
+    "nom": "Simon",
+    "prenom": "Lilian",
+    "dateNaissance": "2005-01-03",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-08-31",
+        "statut": "inscrit",
+        "codeCommune": "31555",
+        "etablissement": {
+          "uai": "0313124C",
+          "nomEtablissement": "Université Toulouse Capitole"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891A' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891B_2025_toulouse.yaml](ine_1234567891B_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891B inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891B"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891B",
+    "nom": "Bel aalia",
+    "prenom": "Sahra",
+    "dateNaissance": "2005-01-03",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-08-31",
+        "statut": "inscrit",
+        "codeCommune": "31555",
+        "etablissement": {
+          "uai": "0313124C",
+          "nomEtablissement": "Université Toulouse Capitole"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891B' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891C_2025_toulouse.yaml](ine_1234567891C_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891C inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891C"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891C",
+    "nom": "Vaillancourt",
+    "prenom": "Gael",
+    "dateNaissance": "1999-06-21",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-08-31",
+        "statut": "inscrit",
+        "codeCommune": "31555",
+        "etablissement": {
+          "uai": "0313124C",
+          "nomEtablissement": "Université Toulouse Capitole"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891C' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891D_2025_toulouse.yaml](ine_1234567891D_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891D inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891D"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891D",
+    "nom": "Puges",
+    "prenom": "Aurelie",
+    "dateNaissance": "1999-06-21",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-08-31",
+        "statut": "inscrit",
+        "codeCommune": "31555",
+        "etablissement": {
+          "uai": "0313124C",
+          "nomEtablissement": "Université Toulouse Capitole"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891D' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [ine_655888578AE.yaml](ine_655888578AE.yaml)
 
   Status `200`

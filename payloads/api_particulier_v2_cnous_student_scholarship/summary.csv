@@ -166,3 +166,71 @@ Titre,Description,Paramètres,Status,Réponse
   ""villeEtudes"": ""Toulouse"",
   ""etablissement"": ""Jean Jaurès""
 }"
+,"Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891A)","{""ine"":""1234567891A""}",200,"{
+  ""nom"": ""Simon"",
+  ""prenom"": ""Lilian"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""2005-01-03"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""M"",
+  ""boursier"": true,
+  ""echelonBourse"": ""6"",
+  ""email"": ""lilian.simon@fake.fr"",
+  ""dateDeRentree"": ""2025-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"
+,"Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891B)","{""ine"":""1234567891B""}",200,"{
+  ""nom"": ""Bel Aalia"",
+  ""prenom"": ""Sahra"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""2005-01-03"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""F"",
+  ""boursier"": true,
+  ""echelonBourse"": ""6"",
+  ""email"": ""sahra.bel.aalian@fake.fr"",
+  ""dateDeRentree"": ""2025-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"
+,"Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891C)","{""ine"":""1234567891C""}",200,"{
+  ""nom"": ""Vaillancourt"",
+  ""prenom"": ""Gael"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""1999-06-21"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""M"",
+  ""boursier"": true,
+  ""echelonBourse"": ""7"",
+  ""email"": ""gael.vaillancourt@fake.fr"",
+  ""dateDeRentree"": ""2025-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"
+,"Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891D)","{""ine"":""1234567891D""}",200,"{
+  ""nom"": ""Puges"",
+  ""prenom"": ""Aurelie"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""1999-06-21"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""M"",
+  ""boursier"": true,
+  ""echelonBourse"": ""7"",
+  ""email"": ""aurelie.puges@fake.fr"",
+  ""dateDeRentree"": ""2025-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"

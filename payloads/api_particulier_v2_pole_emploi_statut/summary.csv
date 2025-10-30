@@ -68,3 +68,165 @@ Titre,Description,Paramètres,Status,Réponse
   ""dateCessationInscription"": null,
   ""codeCategorieInscription"": 1
 }"
+,"Identifiant 123457A, inscrite, toulouse 2025","{""identifiant"":""1234567""}",200,"{
+  ""identifiant"": ""123457A"",
+  ""civilite"": ""M."",
+  ""nom"": ""Desnoyer"",
+  ""nomUsage"": null,
+  ""prenom"": ""Daniel"",
+  ""sexe"": ""Masculin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""daniel.desnoyers@fake.fr"",
+  ""telephone"": ""0601020304"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""31555"",
+    ""codePostal"": ""31400"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""Courtet"",
+    ""ligneVoie"": ""11 Rue Capus"",
+    ""localite"": ""31400 TOULOUSE""
+  },
+  ""dateNaissance"": ""1989-01-18"",
+  ""dateInscription"": ""2025-09-01"",
+  ""dateCessationInscription"": null,
+  ""codeCategorieInscription"": 1
+}"
+,"Identifiant 123458A, inscrite, toulouse, 2025","{""identifiant"":""123458A""}",200,"{
+  ""identifiant"": ""123458A"",
+  ""civilite"": ""MME"",
+  ""nom"": ""Gallois"",
+  ""nomUsage"": null,
+  ""prenom"": ""Anais"",
+  ""sexe"": ""Féminin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""anais.gallois@fake.fr"",
+  ""telephone"": ""0601020304"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""31555"",
+    ""codePostal"": ""31400"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""Courtet"",
+    ""ligneVoie"": ""11 Rue Capus"",
+    ""localite"": ""31400 TOULOUSE""
+  },
+  ""dateNaissance"": ""1989-01-18"",
+  ""dateInscription"": ""2025-09-01"",
+  ""dateCessationInscription"": null,
+  ""codeCategorieInscription"": 1
+}"
+,"Identifiant 123459A, inscrite, toulouse, 2025","{""identifiant"":""123459A""}",200,"{
+  ""identifiant"": ""123459A"",
+  ""civilite"": ""M."",
+  ""nom"": ""Genest"",
+  ""nomUsage"": null,
+  ""prenom"": ""Ludovic"",
+  ""sexe"": ""Féminin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""ludovic.genest@fake.fr"",
+  ""telephone"": ""0601020304"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""31555"",
+    ""codePostal"": ""31400"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""Courtet"",
+    ""ligneVoie"": ""11 Rue Capus"",
+    ""localite"": ""31400 TOULOUSE""
+  },
+  ""dateNaissance"": ""1992-08-15"",
+  ""dateInscription"": ""2025-09-01"",
+  ""dateCessationInscription"": null,
+  ""codeCategorieInscription"": 1
+}"
+,"Identifiant 123460A, inscrite, toulouse, 2025","{""identifiant"":""123460A""}",200,"{
+  ""identifiant"": ""123460A"",
+  ""civilite"": ""MME"",
+  ""nom"": ""Vega"",
+  ""nomUsage"": null,
+  ""prenom"": ""Tiphaine"",
+  ""sexe"": ""Féminin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""tifaine.vega@fake.fr"",
+  ""telephone"": ""0601020304"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""31555"",
+    ""codePostal"": ""31400"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""Courtet"",
+    ""ligneVoie"": ""11 Rue Capus"",
+    ""localite"": ""31400 TOULOUSE""
+  },
+  ""dateNaissance"": ""1992-08-15"",
+  ""dateInscription"": ""2025-09-01"",
+  ""dateCessationInscription"": null,
+  ""codeCategorieInscription"": 1
+}"
+,"Identifiant 123461A, desinscrit, toulouse, 2025","{""identifiant"":""123461A""}",200,"{
+  ""identifiant"": ""123461A"",
+  ""civilite"": ""M."",
+  ""nom"": ""Mallette"",
+  ""nomUsage"": null,
+  ""prenom"": ""Alex"",
+  ""sexe"": ""Féminin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""alex.mallette@fake.fr"",
+  ""telephone"": ""0601020304"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""31555"",
+    ""codePostal"": ""31400"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""Courtet"",
+    ""ligneVoie"": ""11 Rue Capus"",
+    ""localite"": ""31400 TOULOUSE""
+  },
+  ""dateNaissance"": ""1992-08-15"",
+  ""dateInscription"": ""2024-09-01"",
+  ""dateCessationInscription"": ""2025-09-01"",
+  ""codeCategorieInscription"": 1
+}"
+,"Identifiant 123462A, desinscrit, toulouse, 2025","{""identifiant"":""123462A""}",200,"{
+  ""identifiant"": ""123462A"",
+  ""civilite"": ""M."",
+  ""nom"": ""Fornaro"",
+  ""nomUsage"": null,
+  ""prenom"": ""Yoann"",
+  ""sexe"": ""Féminin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""yoann.fornano@fake.fr"",
+  ""telephone"": ""0601020304"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""31555"",
+    ""codePostal"": ""31400"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""Courtet"",
+    ""ligneVoie"": ""11 Rue Capus"",
+    ""localite"": ""31400 TOULOUSE""
+  },
+  ""dateNaissance"": ""1992-08-15"",
+  ""dateInscription"": ""2024-09-01"",
+  ""dateCessationInscription"": ""2025-09-01"",
+  ""codeCategorieInscription"": 1
+}"
