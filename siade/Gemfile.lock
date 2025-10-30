@@ -505,6 +505,7 @@ DEPENDENCIES
   activerecord (~> 8.0)
   activesupport (~> 8.0)
   ammeter
+  bigdecimal
   brakeman
   colorize
   csv

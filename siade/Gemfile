@@ -66,6 +66,8 @@ gem 'gpgme'
 
 gem 'mcp'
 
+gem 'bigdecimal'
+
 group :test do
   gem 'rswag-specs', github: 'rswag/rswag'
 
