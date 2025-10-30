@@ -1,5 +1,5 @@
 Titre,Description,Paramètres,Status,Réponse
-,,"{""siret"":""20005379100014""}",200,"{
+Conformité à jour,Succès 200 - La conformité de l'entreprise est à jour,"{""siret"":""20005379100014""}",200,"{
   ""data"": {
     ""status"": ""up_to_date""
   },
@@ -8,7 +8,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""meta"": {
   }
 }"
-,,"{""siret"":""13002526500013""}",404,"{
+Entité non trouvée,"Erreur 404 - Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.","{""siret"":""13002526500013""}",404,"{
   ""errors"": [
     {
       ""code"": ""10003"",

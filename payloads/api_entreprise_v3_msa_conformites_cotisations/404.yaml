@@ -1,4 +1,6 @@
 ---
+title: "Entité non trouvée"
+description: "Erreur 404 - Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."
 params:
   siret: '13002526500013'
 status: 404

@@ -3,7 +3,7 @@
 
   Status `200`
 
-  
+  Succès 200 - La conformité de l'entreprise est à jour
 
   <details><summary>Paramètres</summary>
   <p>
@@ -50,7 +50,7 @@
 
   Status `404`
 
-  
+  Erreur 404 - Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.
 
   <details><summary>Paramètres</summary>
   <p>
