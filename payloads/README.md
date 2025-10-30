@@ -87,7 +87,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Données unité légale en open data](api_entreprise_v3_insee_unites_legales_diffusables) (`/v3/insee/sirene/unites_legales/diffusibles/{siren}`)
 * Divers documents d'une association (`/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents`)
 * Données du RNA d'une association (`/v3/ministere_interieur/rna/associations/{siret_or_rna}`)
-* Conformité cotisations de sécurité sociale agricole (`/v3/msa/etablissements/{siret}/conformite_cotisations`)
+* [Conformité cotisations de sécurité sociale agricole](api_entreprise_v3_msa_conformites_cotisations) (`/v3/msa/etablissements/{siret}/conformite_cotisations`)
 * Certification d'ingénierie OPQIBI (`/v3/opqibi/unites_legales/{siren}/certification_ingenierie`)
 * Conformité cotisations retraite bâtiment (`/v3/probtp/etablissements/{siret}/attestation_cotisations_retraite`)
 * Conformité cotisations retraite complémentaire (`/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite`)

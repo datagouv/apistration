@@ -1,0 +1,14 @@
+---
+params:
+  siret: '20005379100014'
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "up_to_date"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }

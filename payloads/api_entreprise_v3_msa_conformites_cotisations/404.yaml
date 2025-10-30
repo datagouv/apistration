@@ -1,0 +1,17 @@
+---
+params:
+  siret: '13002526500013'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "10003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "meta": {
+          "provider": "MSA"
+        }
+      }
+    ]
+  }
