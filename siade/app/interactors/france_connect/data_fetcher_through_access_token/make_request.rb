@@ -16,7 +16,7 @@ class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::P
   end
 
   def operation_id
-    'france_connect_v2'
+    'france_connect'
   end
 
   def request_uri
