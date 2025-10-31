@@ -105,7 +105,7 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < FranceCon
   def track_france_connect_response!
     MonitoringService.instance.track_with_added_context(
       'info',
-      'FranceConnect v2 response',
+      'FranceConnect response',
       {
         json_body:
       }

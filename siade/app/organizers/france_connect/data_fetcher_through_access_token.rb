@@ -6,7 +6,7 @@ class FranceConnect::DataFetcherThroughAccessToken < RetrieverOrganizer
     FranceConnect::DataFetcherThroughAccessToken::BuildClientAttributes
 
   def provider_name
-    'FranceConnect v2'
+    'FranceConnect'
   end
 
   def errors_to_track
@@ -16,7 +16,7 @@ class FranceConnect::DataFetcherThroughAccessToken < RetrieverOrganizer
   def track_error(error)
     monitoring_service.track_with_added_context(
       'error',
-      'FranceConnect v2 error',
+      'FranceConnect error',
       {
         error: error.to_h
       }

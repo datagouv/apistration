@@ -384,9 +384,9 @@ shared:
     franceconnect:
       kind: 'make_request'
       cache: <%= 2.minutes %>
-      provider: 'FranceConnect V2'
+      provider: 'FranceConnect'
       status_page:
-        name: "FranceConnect V2"
+        name: "FranceConnect"
       driver_params:
         make_request: 'FranceConnect::DataFetcherThroughAccessToken::MakeRequest'
         params:

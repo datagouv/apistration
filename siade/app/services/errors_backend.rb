@@ -78,7 +78,7 @@ class ErrorsBackend
       '40' => 'RNCPS',
       '41' => 'SDH',
       '42' => 'ANTS',
-      '51' => 'FranceConnect v2',
+      '51' => 'FranceConnect',
       '52' => 'DataSubvention'
     }
   end

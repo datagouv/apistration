@@ -99,7 +99,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
       it 'tracks the error on MonitoringService' do
         expect(MonitoringService.instance).to receive(:track_with_added_context).with(
           'error',
-          'FranceConnect v2 error',
+          'FranceConnect error',
           {
             error: InvalidFranceConnectAccessTokenError.new(:not_found_or_expired).to_h
           }
