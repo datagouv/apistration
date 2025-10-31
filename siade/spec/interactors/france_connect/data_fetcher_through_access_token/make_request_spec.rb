@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest, type: :make_request do
+RSpec.describe FranceConnect::DataFetcherThroughAccessToken::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
   let(:token) { 'token' }
@@ -17,7 +17,7 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest, ty
       )
     ).to_return(
       status: 200,
-      body: france_connect_v2_checktoken_payload.to_json
+      body: france_connect_checktoken_payload.to_json
     )
   end
 

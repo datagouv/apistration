@@ -1,8 +1,8 @@
-RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::BuildUser, type: :interactor do
+RSpec.describe FranceConnect::DataFetcherThroughAccessToken::BuildUser, type: :interactor do
   describe '.call' do
     subject(:call) { described_class.call(json_body:, params: { api_version: }) }
 
-    let(:json_body) { france_connect_v2_decrypted_payload(scopes:).deep_stringify_keys }
+    let(:json_body) { france_connect_decrypted_payload(scopes:).deep_stringify_keys }
     let(:scopes) { 'mesri_identifiant openid identite_pivot api_name_identite' }
     let(:api_version) { '2' }
 

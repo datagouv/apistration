@@ -32,7 +32,7 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
 
       describe 'with a FranceConnect token' do
         before do
-          mock_valid_france_connect_v2_checktoken(scopes:)
+          mock_valid_france_connect_checktoken(scopes:)
           stub_ants_extrait_immatriculation_vehicule_valid
         end
 

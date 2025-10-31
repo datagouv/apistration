@@ -8,7 +8,7 @@ module APIParticulier::FranceConnectable
   end
 
   def france_connect_organizer
-    @france_connect_organizer ||= FranceConnect::V2::DataFetcherThroughAccessToken.call(
+    @france_connect_organizer ||= FranceConnect::DataFetcherThroughAccessToken.call(
       params: { token: bearer_token_from_headers, api_name:, api_version: }
     )
   end

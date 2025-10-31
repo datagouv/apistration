@@ -22,7 +22,7 @@ module RSwagCommonErrors
     describe 'with valid mandatory params but insufficient privileges on token' do
       response '403', 'Accès interdit' do
         before do
-          mock_valid_france_connect_v2_checktoken
+          mock_valid_france_connect_checktoken
         end
 
         block.call if block_given?

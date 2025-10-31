@@ -388,7 +388,7 @@ shared:
       status_page:
         name: "FranceConnect V2"
       driver_params:
-        make_request: 'FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest'
+        make_request: 'FranceConnect::DataFetcherThroughAccessToken::MakeRequest'
         params:
           token: 'token'
         status_to_check: 400

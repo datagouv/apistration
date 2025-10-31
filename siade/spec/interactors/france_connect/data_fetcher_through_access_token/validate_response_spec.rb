@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse, type: :validate_response do
+RSpec.describe FranceConnect::DataFetcherThroughAccessToken::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject(:call) { described_class.call(response:, provider_name: 'FranceConnect') }
 
@@ -66,7 +66,7 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateRespons
       let(:code) { '200' }
 
       context 'when the token is valid' do
-        let(:body) { france_connect_v2_checktoken_payload(scopes:) }
+        let(:body) { france_connect_checktoken_payload(scopes:) }
         let(:scopes) { 'openid' }
 
         it { is_expected.to be_a_success }
@@ -75,7 +75,7 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateRespons
       end
 
       context 'when the token is expired' do
-        let(:body) { france_connect_v2_checktoken_invalid_payload }
+        let(:body) { france_connect_checktoken_invalid_payload }
         let(:scopes) { 'openid' }
 
         it { is_expected.to be_a_failure }
@@ -84,7 +84,7 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateRespons
       end
 
       context 'when FranceConnect token has wrong params' do
-        let(:body) { france_connect_v2_checktoken_invalid_parameter_payload }
+        let(:body) { france_connect_checktoken_invalid_parameter_payload }
 
         it { is_expected.to be_a_failure }
 

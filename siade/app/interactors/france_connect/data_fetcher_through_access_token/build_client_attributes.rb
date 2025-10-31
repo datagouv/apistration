@@ -1,4 +1,4 @@
-class FranceConnect::V2::DataFetcherThroughAccessToken::BuildClientAttributes < FranceConnect::V2::DataFetcherThroughAccessToken::BuildDataFromAccessTokenInteractor
+class FranceConnect::DataFetcherThroughAccessToken::BuildClientAttributes < FranceConnect::DataFetcherThroughAccessToken::BuildDataFromAccessTokenInteractor
   def call
     context.client_attributes = Resource.new(client_attributes)
   end

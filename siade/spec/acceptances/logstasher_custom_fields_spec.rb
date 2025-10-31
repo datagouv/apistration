@@ -238,7 +238,7 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         allow(MockDataBackend).to receive(:get_response_for).with('france_connect_v2', anything).and_return(
           {
             status: 200,
-            payload: france_connect_v2_decrypted_payload(scopes: ['allowed_scope']).deep_stringify_keys
+            payload: france_connect_decrypted_payload(scopes: ['allowed_scope']).deep_stringify_keys
           }
         )
       end

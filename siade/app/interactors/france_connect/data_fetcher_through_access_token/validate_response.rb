@@ -3,7 +3,7 @@ require 'jwt'
 require 'net/http'
 require 'uri'
 
-class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < FranceConnect::ValidateResponse
+class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < FranceConnect::ValidateResponse
   def call
     handle_invalid_token_error if [400, 401].include?(http_code)
     unknown_provider_response! if [500].include?(http_code)
