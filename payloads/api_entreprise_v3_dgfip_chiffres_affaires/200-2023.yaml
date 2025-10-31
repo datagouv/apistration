@@ -1,0 +1,21 @@
+---
+description: 'GIP-MDS effectifs annuels entreprise 200'
+params:
+  siret: '13002526500001'
+  year: '2023'
+status: 200
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "chiffre_affaires": 900001,
+          "date_fin_exercice": "2023-12-01"
+        },
+        "links": {},
+        "meta": {}
+      }
+    ],
+    "meta": {},
+    "links": {}
+  }

@@ -1,4 +1,4 @@
-# Effectifs annuels d'une unité légale
+# Chiffre d'affaires
 * [200-2022.yaml](200-2022.yaml)
 
   Status `200`
@@ -10,7 +10,7 @@
 
   ```json
   {
-    "siren": "130025265",
+    "siret": "13002526500001",
     "year": "2022"
   }
   ```
@@ -23,27 +23,21 @@
 
   ```json
   {
-    "data": {
-      "siren": "130025265",
-      "annee": "2022",
-      "effectifs_annuel": [
-        {
-          "regime": "regime_general",
-          "value": 12.34,
-          "nature": "effectif_moyen_annuel",
-          "date_derniere_mise_a_jour": "2018-01-01"
+    "data": [
+      {
+        "data": {
+          "chiffre_affaires": 900001,
+          "date_fin_exercice": "2022-12-01"
         },
-        {
-          "regime": "regime_agricole",
-          "nature": "effectif_moyen_annuel",
-          "value": null,
-          "date_derniere_mise_a_jour": null
+        "links": {
+        },
+        "meta": {
         }
-      ]
+      }
+    ],
+    "meta": {
     },
     "links": {
-    },
-    "meta": {
     }
   }
   ```
@@ -57,7 +51,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/gip_mds/unites_legales/130025265/effectifs_annuels/2022"
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/etablissements/13002526500001/chiffres_affaires"
   ```
 
   </p>
@@ -73,7 +67,7 @@
 
   ```json
   {
-    "siren": "130025265",
+    "siret": "13002526500001",
     "year": "2023"
   }
   ```
@@ -86,27 +80,21 @@
 
   ```json
   {
-    "data": {
-      "siren": "130025265",
-      "annee": "2023",
-      "effectifs_annuel": [
-        {
-          "regime": "regime_general",
-          "value": 12.34,
-          "nature": "effectif_moyen_annuel",
-          "date_derniere_mise_a_jour": "2018-01-01"
+    "data": [
+      {
+        "data": {
+          "chiffre_affaires": 900001,
+          "date_fin_exercice": "2023-12-01"
         },
-        {
-          "regime": "regime_agricole",
-          "nature": "effectif_moyen_annuel",
-          "value": null,
-          "date_derniere_mise_a_jour": null
+        "links": {
+        },
+        "meta": {
         }
-      ]
+      }
+    ],
+    "meta": {
     },
     "links": {
-    },
-    "meta": {
     }
   }
   ```
@@ -120,7 +108,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/gip_mds/unites_legales/130025265/effectifs_annuels/2023"
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/etablissements/13002526500001/chiffres_affaires"
   ```
 
   </p>
@@ -136,7 +124,7 @@
 
   ```json
   {
-    "siren": "130025265",
+    "siret": "13002526500001",
     "year": "2024"
   }
   ```
@@ -149,27 +137,21 @@
 
   ```json
   {
-    "data": {
-      "siren": "130025265",
-      "annee": "2024",
-      "effectifs_annuel": [
-        {
-          "regime": "regime_general",
-          "value": 12.34,
-          "nature": "effectif_moyen_annuel",
-          "date_derniere_mise_a_jour": "2018-01-01"
+    "data": [
+      {
+        "data": {
+          "chiffre_affaires": 900001,
+          "date_fin_exercice": "2024-12-01"
         },
-        {
-          "regime": "regime_agricole",
-          "nature": "effectif_moyen_annuel",
-          "value": null,
-          "date_derniere_mise_a_jour": null
+        "links": {
+        },
+        "meta": {
         }
-      ]
+      }
+    ],
+    "meta": {
     },
     "links": {
-    },
-    "meta": {
     }
   }
   ```
@@ -183,7 +165,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/gip_mds/unites_legales/130025265/effectifs_annuels/2024"
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/etablissements/13002526500001/chiffres_affaires"
   ```
 
   </p>
@@ -192,15 +174,14 @@
 
   Status `404`
 
-  Chiffre d'affaire annuels entreprise 404
+  Entreprise non trouvée ou non à jour
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "siren": "000000000",
-    "year": "2020"
+    "siret": "00000000000000"
   }
   ```
 
@@ -235,7 +216,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/gip_mds/unites_legales/000000000/effectifs_annuels/2020"
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/etablissements/00000000000000/chiffres_affaires"
   ```
 
   </p>
