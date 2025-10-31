@@ -384,11 +384,11 @@ shared:
     franceconnect:
       kind: 'make_request'
       cache: <%= 2.minutes %>
-      provider: 'FranceConnectV1'
+      provider: 'FranceConnect V2'
       status_page:
-        name: "FranceConnect v1"
+        name: "FranceConnect V2"
       driver_params:
-        make_request: 'FranceConnect::V1::DataFetcherThroughAccessToken::MakeRequest'
+        make_request: 'FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest'
         params:
           token: 'token'
         status_to_check: 400

@@ -7,7 +7,6 @@ module ProviderStubs::FranceConnect
 
   def mock_invalid_france_connect_checktoken(kind = :expired_or_not_found)
     mock_invalid_france_connect_v2_checktoken(kind)
-    mock_invalid_france_connect_v1_checktoken(kind)
   end
 
   def france_connect_checktoken_payload(scopes: nil)
