@@ -8,7 +8,9 @@ module APIParticulier::FranceConnectable
   end
 
   def france_connect_organizer
-    @france_connect_organizer ||= FranceConnectOrganizerService.new(bearer_token_from_headers, api_name, api_version).fetch
+    @france_connect_organizer ||= FranceConnect::V2::DataFetcherThroughAccessToken.call(
+      params: { token: bearer_token_from_headers, api_name:, api_version: }
+    )
   end
 
   # rubocop:disable Metrics/AbcSize
