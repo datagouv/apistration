@@ -1,5 +1,5 @@
 ---
-description: 'GIP-MDS effectifs annuels entreprise 404'
+description: "Chiffre d'affaire annuels entreprise 404"
 params:
   siren: '000000000'
   year: '2020'
@@ -8,11 +8,12 @@ payload: |-
   {
     "errors": [
       {
-        "code": "31003",
+        "code": "03003",
         "title": "Entité non trouvée",
-        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "source": null,
         "meta": {
-          "provider": "GIP-MDS"
+          "provider": "DGFIP - Adélie"
         }
       }
     ]
