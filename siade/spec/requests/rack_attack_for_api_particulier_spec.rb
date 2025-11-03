@@ -5,7 +5,7 @@ RSpec.describe 'Rack::Attack config', api: :particulier do
     url_for(options.merge(_recall: {}))
   end
 
-  RSpec.shared_examples 'returns a 401 error' do
+  RSpec.shared_examples 'returns a 401 error (particulier)' do
     let(:endpoint) do
       {
         controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine',
@@ -30,26 +30,26 @@ RSpec.describe 'Rack::Attack config', api: :particulier do
   end
 
   context 'when the Authorization header format (Bearer) is not respected' do
-    it_behaves_like 'returns a 401 error' do
+    it_behaves_like 'returns a 401 error (particulier)' do
       let(:headers_params) { { 'Authorization' => 'Beer hour' } }
     end
   end
 
   context 'when the Authorization header is absent' do
-    it_behaves_like 'returns a 401 error' do
+    it_behaves_like 'returns a 401 error (particulier)' do
       let(:headers_params) { { 'Umad' => 'Beer hour' } }
     end
   end
 
   context 'when Authorization header format (Bearer) is valid' do
     context 'when the provided token is not a valid JWT' do
-      it_behaves_like 'returns a 401 error' do
+      it_behaves_like 'returns a 401 error (particulier)' do
         let(:headers_params) { { 'Umad' => 'Bearer hour' } }
       end
     end
 
     context 'when the token is absent' do
-      it_behaves_like 'returns a 401 error' do
+      it_behaves_like 'returns a 401 error (particulier)' do
         let(:headers_params) { { 'Umad' => 'Bearer ' } }
       end
     end
