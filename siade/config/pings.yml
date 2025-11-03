@@ -391,7 +391,8 @@ shared:
         make_request: 'FranceConnect::DataFetcherThroughAccessToken::MakeRequest'
         params:
           token: 'token'
-        status_to_check: 400
+          api_name: 'quotient_familial'
+        status_to_check: 200
 
     insee_metadonnees:
       kind: 'retriever'
