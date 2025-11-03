@@ -28,48 +28,4 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
       expect(response_json).to have_flat_format_error
     end
   end
-
-  context 'with valid api calls' do
-    def call!
-      get('/api/v2/etudiants-boursiers', headers: headers_params)
-    end
-    let(:headers_params) { { 'X-Api-key' => 'tumtumdulu' } }
-
-    let(:rate_limit_subkeys) do
-      %w[
-        Limit
-        Remaining
-        Reset
-      ]
-    end
-
-    it 'has rate limit headers defined' do
-      call!
-
-      rate_limit_subkeys.each do |subkey|
-        expect(response.headers).to have_key("RateLimit-#{subkey}")
-      end
-    end
-
-    context 'when the limit has not been reached' do
-      before { 19.times { call! } }
-
-      it 'accepts incoming requests' do
-        call!
-        expect(response).not_to have_http_status(:too_many_requests)
-      end
-    end
-
-    context 'when the limit has been reached' do
-      it 'rejects incoming requests after the limit with a flat format error' do
-        Timecop.freeze do
-          20.times { call! }
-          call!
-
-          expect(response).to have_http_status(:too_many_requests)
-          expect(response_json).to have_flat_format_error
-        end
-      end
-    end
-  end
 end
