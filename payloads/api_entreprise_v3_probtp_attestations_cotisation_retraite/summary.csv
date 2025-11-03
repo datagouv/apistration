@@ -1,0 +1,25 @@
+Titre,Description,Paramètres,Status,Réponse
+,Entreprise trouvée QUALIBAT,"{""siret"":""30613890001294""}",200,"{
+  ""data"": 
+  {
+
+      ""document_url"": ""https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf.pdf?raw=true"",
+      ""expires_in"": 7889238
+
+  },
+  ""links"": { },
+  ""meta"": { }
+}"
+,Entité non trouvée,"{""siret"":""55203253400001""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""09003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""ProBTP""
+      }
+    }
+  ]
+}"

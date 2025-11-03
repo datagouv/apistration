@@ -1,8 +1,7 @@
 ---
-description: "Chiffre d'affaire annuels entreprise 404"
+description: 'Entreprise non trouvée ou non à jour'
 params:
-  siren: '000000000'
-  year: '2020'
+  siret: '00000000000000'
 status: 404
 payload: |-
   {
