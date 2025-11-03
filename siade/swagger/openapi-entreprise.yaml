@@ -26770,7 +26770,7 @@ paths:
                         title: Lien vers l'attestation de cotisation retraite ProBTP
                         description: Ce document est automatiquement supprimé au bout
                           de 3 mois.
-                        example: https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf.pdf?raw=true
+                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf
                       expires_in:
                         type: integer
                         example: 7889238
