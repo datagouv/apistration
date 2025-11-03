@@ -474,10 +474,11 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
     unindent (1.0)
-    uri (1.0.4)
+    uri (1.1.0)
     useragent (0.16.11)
-    utf8-cleaner (1.0.0)
+    utf8-cleaner (2.0.1)
       activesupport
+      rack (~> 3.0)
     vcr (6.3.1)
       base64
     version_gem (1.1.9)
@@ -563,7 +564,7 @@ DEPENDENCIES
   super_diff
   timecop
   unindent
-  uri (= 1.0.4)
+  uri (= 1.1.0)
   utf8-cleaner
   vcr
   webmock (~> 3.26)
