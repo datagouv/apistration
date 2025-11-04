@@ -12,6 +12,7 @@ module APIParticulier::CivilityParameters
       sexeEtatCivil
       nomCommuneNaissance
       codeCogInseePaysNaissance
+      codeCogInseeDepartementNaissance
     ].each do |param|
       civility[to_snake_case_sym(param)] = civility_param(param)
     end
