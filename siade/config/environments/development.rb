@@ -1,5 +1,6 @@
 Rails.application.configure do
   config.hosts << /.*\.ngrok-free\.app/
+  config.hosts << /(entreprise|particulier)\.api\.localtest\.me/
 
   # Settings specified here will take precedence over those in config/application.rb.
 
