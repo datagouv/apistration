@@ -82,26 +82,8 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           end
 
           let(:codeCogInseeCommuneNaissance) { nil }
-          let(:nomCommuneNaissance) { 'Gennevilliers' }
-          let(:codeCogInseeDepartementNaissance) { '92' }
-
-          before do
-            stub_request(:get, %r{metadata\.api\.insee\.fr/geo/communes})
-              .with(query: hash_including(filtreNom: 'Gennevilliers'))
-              .to_return(
-                status: 200,
-                body: '[{"code":"92036","uri":"http://id.insee.fr/geo/commune/4d55e21e-aae2-4d7c-8544-b5eb5165a920","type":"Commune","dateCreation":"1968-01-01","intituleSansArticle":"Gennevilliers","typeArticle":"0","intitule":"Gennevilliers"}]'
-              )
-
-            stub_cnav_valid('quotient_familial_v2',
-              siret: '13002526500013',
-              extra_params: {
-                codeLieuNaissance: '92036',
-                villeNaissance: 'Gennevilliers',
-                anneeDemandee: '2025',
-                moisDemande: '08'
-              })
-          end
+          let(:nomCommuneNaissance) { 'LA ROCHELLE' }
+          let(:codeCogInseeDepartementNaissance) { '17' }
 
           describe 'when the quotient familial is found' do
             response '200', 'Quotient Familial active trouvée with birth location parameters' do
@@ -118,97 +100,95 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           end
         end
 
-        describe 'without transcogeage params' do
-          describe 'when the quotient familial is found' do
-            response '200', 'Quotient Familial active trouvée' do
-              description SwaggerData.get('cnav.quotient_familial_v2.description')
+        describe 'when the quotient familial is found' do
+          response '200', 'Quotient Familial active trouvée' do
+            description SwaggerData.get('cnav.quotient_familial_v2.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.quotient_familial_v2.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.quotient_familial_v2.cache_duration'))
 
-              schema build_rswag_response(
-                attributes: SwaggerData.get('cnav.quotient_familial_v2.attributes')
-              )
+            schema build_rswag_response(
+              attributes: SwaggerData.get('cnav.quotient_familial_v2.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'when the user is not found' do
+          response '422', "Impossible d'identifier l'allocataire" do
+            let(:codeCogInseePaysNaissance) { '99623' }
+            # rubocop:disable RSpec/ContextWording
+            context 'Allocataire non identifié' do
+              before do
+                stub_sngi_404('quotient_familial_v2')
+              end
+
+              build_rswag_example(UnprocessableEntityError.new(:civility))
+
+              schema '$ref' => '#/components/schemas/Error'
 
               run_test!
             end
           end
-
-          describe 'when the user is not found' do
-            response '422', "Impossible d'identifier l'allocataire" do
-              let(:codeCogInseePaysNaissance) { '99623' }
-              # rubocop:disable RSpec/ContextWording
-              context 'Allocataire non identifié' do
-                before do
-                  stub_sngi_404('quotient_familial_v2')
-                end
-
-                build_rswag_example(UnprocessableEntityError.new(:civility))
-
-                schema '$ref' => '#/components/schemas/Error'
-
-                run_test!
-              end
-            end
-            # rubocop:enable RSpec/ContextWording
-          end
-
-          describe 'when the quotient familial is not found' do
-            # rubocop:disable RSpec/ContextWording
-            response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
-              context 'Dossier non trouvé MSA' do
-                before do
-                  stub_cnav_404('quotient_familial_v2', 'MSA')
-                end
-
-                build_rswag_example(NotFoundError.new('MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false))
-
-                schema '$ref' => '#/components/schemas/Error'
-
-                run_test!
-              end
-
-              context 'Dossier non trouvé CNAF' do
-                before do
-                  stub_cnav_404('quotient_familial_v2', 'CNAF')
-                end
-
-                build_rswag_example(NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false))
-
-                schema '$ref' => '#/components/schemas/Error'
-
-                run_test!
-              end
-
-              context 'Allocataire non référencé' do
-                before do
-                  stub_rncps_404('quotient_familial_v2')
-                end
-
-                build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false))
-
-                schema '$ref' => '#/components/schemas/Error'
-
-                run_test!
-              end
-
-              context 'Erreur inattendue' do
-                before do
-                  stub_cnav_404('quotient_familial_v2')
-                end
-
-                build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
-
-                schema '$ref' => '#/components/schemas/Error'
-
-                run_test!
-              end
-            end
-            # rubocop:enable RSpec/ContextWording
-          end
-
-          common_provider_errors_request('CNAV', CNAV::QuotientFamilialV2)
-          common_network_error_request('CNAV', CNAV::QuotientFamilialV2)
+          # rubocop:enable RSpec/ContextWording
         end
+
+        describe 'when the quotient familial is not found' do
+          # rubocop:disable RSpec/ContextWording
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            context 'Dossier non trouvé MSA' do
+              before do
+                stub_cnav_404('quotient_familial_v2', 'MSA')
+              end
+
+              build_rswag_example(NotFoundError.new('MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Dossier non trouvé CNAF' do
+              before do
+                stub_cnav_404('quotient_familial_v2', 'CNAF')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Allocataire non référencé' do
+              before do
+                stub_rncps_404('quotient_familial_v2')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Erreur inattendue' do
+              before do
+                stub_cnav_404('quotient_familial_v2')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+          end
+          # rubocop:enable RSpec/ContextWording
+        end
+
+        common_provider_errors_request('CNAV', CNAV::QuotientFamilialV2)
+        common_network_error_request('CNAV', CNAV::QuotientFamilialV2)
       end
     end
   end
