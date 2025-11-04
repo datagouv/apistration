@@ -70,15 +70,9 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
       end
 
       describe 'with valid token and mandatory params', :valid do
-        before do
-          stub_cnav_valid('quotient_familial_v2', siret: '13002526500013')
-        end
-
         describe 'with transcogeage params' do
-          around do |example|
-            Timecop.freeze(Date.new(2025, 8, 15)) do
-              example.run
-            end
+          before do
+            stub_cnav_valid_with_transcogage('quotient_familial_v2', siret: '13002526500013')
           end
 
           let(:codeCogInseeCommuneNaissance) { nil }
@@ -100,7 +94,11 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           end
         end
 
-        describe 'when the quotient familial is found' do
+        describe 'without transcogeage param' do
+          before do
+            stub_cnav_valid('quotient_familial_v2', siret: '13002526500013')
+          end
+
           response '200', 'Quotient Familial active trouvée' do
             description SwaggerData.get('cnav.quotient_familial_v2.description')
 

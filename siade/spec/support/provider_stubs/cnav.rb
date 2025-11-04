@@ -26,6 +26,31 @@ module ProviderStubs::CNAV
     )
   end
 
+  def stub_cnav_valid_with_transcogage(api, siret: valid_siret, extra_params: {})
+    stub_request(:get, cnav_url(api)).with(
+      query: hash_including({
+        nomNaissance: 'CHAMPION',
+        listePrenoms: 'JEAN-PASCAL',
+        dateNaissance: '1980-06-12',
+        genre: 'M',
+        codePaysNaissance: '99100',
+        villeNaissance: 'LA ROCHELLE',
+        depNaissance: '17'
+      }.merge(extra_params)),
+      headers: {
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer super_valid_token',
+        'X-APIPART-FSFINAL' => siret
+      }
+    ).to_return(
+      status: 200,
+      body: read_payload_file("cnav/#{api}/make_request_valid.json"),
+      headers: {
+        'X-APISECU-FD' => '00810011'
+      }
+    )
+  end
+
   def stub_cnav_valid_with_franceconnect_data(api, siret: valid_siret)
     stub_request(:get, cnav_url(api)).with(
       query: hash_including({
