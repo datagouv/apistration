@@ -136,7 +136,7 @@ class MockDataBackend
 
   def github_client_options
     {
-      access_token: Siade.credentials[:github_personal_access_token]
+      access_token: ENV.fetch('GITHUB_PERSONAL_ACCESS_TOKEN', Siade.credentials[:github_personal_access_token])
     }
   rescue KeyError
     {}

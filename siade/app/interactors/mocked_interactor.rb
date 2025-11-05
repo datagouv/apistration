@@ -3,7 +3,7 @@ class MockedInteractor < MakeRequest
 
   # rubocop:disable Metrics/AbcSize
   def call
-    raise EndpointNotYetImplemented unless Rails.env.staging? || Rails.env.test?
+    raise EndpointNotYetImplemented unless Rails.env.staging? || Rails.env.test? || ENV['STAGING'] == 'true'
 
     context.mocked_data = MockService.new(operation_id, mocking_params).mock
     context.status = context.mocked_data[:status]
