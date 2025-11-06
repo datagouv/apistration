@@ -1,0 +1,43 @@
+Titre,Description,Paramètres,Status,Réponse
+,Appel réussi,"{""siren"":""130025265""}",200,"{
+  ""data"": {
+    ""numero_certificat"": ""string"",
+    ""url"": ""https://www.opqibi.com/fiche/1777"",
+    ""date_delivrance_certificat"": ""2021-01-28"",
+    ""duree_validite_certificat"": ""valable un an"",
+    ""assurances"": ""ALLIANZ - XL INSURANCE"",
+    ""qualifications"": [
+      {
+        ""nom"": ""Etude thermique réglementaire \""maison individuelle\"""",
+        ""code_qualification"": ""1331"",
+        ""definition"": ""Cette qualification correspond à la réalisation des calculs thermiques réglementaires pour les constructions neuves."",
+        ""rge"": false
+      }
+    ],
+    ""date_validite_qualifications"": ""2025-02-21"",
+    ""qualifications_probatoires"": [
+      {
+        ""nom"": ""Etude thermique réglementaire \""maison individuelle\"""",
+        ""code_qualification"": ""1331"",
+        ""definition"": ""Cette qualification correspond à la réalisation des calculs thermiques réglementaires pour les constructions neuves."",
+        ""rge"": false
+      }
+    ],
+    ""date_validite_qualifications_probatoires"": ""2025-02-21""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Établissement non trouvé,"{""siren"":""844451564""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""11003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""OPQIBI""
+      }
+    }
+  ]
+}"

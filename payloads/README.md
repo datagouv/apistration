@@ -88,7 +88,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Divers documents d'une association (`/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents`)
 * Données du RNA d'une association (`/v3/ministere_interieur/rna/associations/{siret_or_rna}`)
 * [Conformité cotisations de sécurité sociale agricole](api_entreprise_v3_msa_conformites_cotisations) (`/v3/msa/etablissements/{siret}/conformite_cotisations`)
-* Certification d'ingénierie OPQIBI (`/v3/opqibi/unites_legales/{siren}/certification_ingenierie`)
+* [Certification d'ingénierie OPQIBI](api_entreprise_v3_opqibi_certifications_ingenierie) (`/v3/opqibi/unites_legales/{siren}/certification_ingenierie`)
 * [Conformité cotisations retraite bâtiment](api_entreprise_v3_probtp_attestations_cotisation_retraite) (`/v3/probtp/etablissements/{siret}/attestation_cotisations_retraite`)
 * Conformité cotisations retraite complémentaire (`/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite`)
 * Certification Qualibat (PDF seulement) (`/v3/qualibat/etablissements/{siret}/certification_batiment`)
