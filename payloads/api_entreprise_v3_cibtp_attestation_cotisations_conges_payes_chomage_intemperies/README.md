@@ -23,7 +23,7 @@
   ```json
   {
     "data": {
-      "document_url": "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cibtp.pdf",
+      "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies/test_cibtp_certificat.pdf",
       "expires_in": 600
     },
     "links": {
