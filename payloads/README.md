@@ -52,7 +52,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 * Privileges associés au jeton (`/privileges`)
 * [Attestation de vigilance](api_entreprise_v3_acoss_attestations_sociales) (`/v3/urssaf/unites_legales/{siren}/attestation_vigilance`)
-* Certification RGE (`/v3/ademe/etablissements/{siret}/certification_rge`)
+* [Certification RGE](api_entreprise_v3_ademe_certificats_rge) (`/v3/ademe/etablissements/{siret}/certification_rge`)
 * 3 derniers bilans annuels (`/v3/banque_de_france/unites_legales/{siren}/bilans`)
 * Qualiopi & habilitations France compétences (`/v3/carif_oref/etablissements/{siret}/certifications_qualiopi_france_competences`)
 * [Certificat cotisations CIBTP](api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies) (`/v3/cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies`)
