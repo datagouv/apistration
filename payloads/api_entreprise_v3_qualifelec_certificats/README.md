@@ -33,7 +33,7 @@ Ce cas permet de tester :
     "data": [
       {
         "data": {
-          "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2840,
           "rge": false,
           "date_debut": "2023-02-01",
@@ -190,7 +190,7 @@ Ce cas permet de tester :
     "data": [
       {
         "data": {
-          "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2840,
           "rge": true,
           "date_debut": "2023-02-01",
@@ -302,7 +302,7 @@ Ce cas permet de tester :
     "data": [
       {
         "data": {
-          "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2840,
           "rge": true,
           "date_debut": "2023-02-01",

@@ -1,0 +1,22 @@
+Titre,Description,Paramètres,Status,Réponse
+,Appel réussi,"{""siren"":""130025265""}",200,"{
+  ""data"": {
+    ""document_url"": ""https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf"",
+    ""expires_in"": 7889238
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Établissement non trouvé,"{""siren"":""844451564""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""12003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""FNTP""
+      }
+    }
+  ]
+}"

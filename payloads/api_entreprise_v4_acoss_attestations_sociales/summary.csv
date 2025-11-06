@@ -1,7 +1,7 @@
 Titre,Description,Paramètres,Status,Réponse
 ,Entreprise à jour de ses cotisations,"{""siren"":""000000001""}",200,"{
   ""data"": {
-    ""document_url"": ""https://storage.entreprise.api.gouv.fr/url-de-telechargement-attestation-vigilance.pdf"",
+    ""document_url"": ""https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf"",
     ""document_url_expires_in"": 86400,
     ""date_debut_validite"": ""2023-01-31"",
     ""date_fin_validite"": ""2023-07-31"",

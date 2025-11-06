@@ -1,4 +1,4 @@
-# Certificat cotisations CIBTP
+# Certificat cotisations CNETP
 * [200.yaml](200.yaml)
 
   Status `200`
@@ -10,7 +10,7 @@
 
   ```json
   {
-    "siret": "13002526500013"
+    "siren": "130025265"
   }
   ```
 
@@ -23,7 +23,7 @@
   ```json
   {
     "data": {
-      "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies/test_cibtp_certificat.pdf",
+      "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf",
       "expires_in": 600
     },
     "links": {
@@ -42,7 +42,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/cibtp/etablissements/13002526500013/attestation_cotisations_conges_payes_chomage_intemperies"
+    --url "https://staging.entreprise.api.gouv.fr/v3/cnetp/unites_legales/130025265/attestation_cotisations_conges_payes_chomage_intemperies"
   ```
 
   </p>
@@ -58,7 +58,7 @@
 
   ```json
   {
-    "siret": "84445156452589"
+    "siren": "844451564"
   }
   ```
 
@@ -76,7 +76,7 @@
         "title": "Entité non trouvée",
         "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
         "meta": {
-          "provider": "CIBTP"
+          "provider": "CNETP"
         }
       }
     ]
@@ -92,7 +92,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/cibtp/etablissements/84445156452589/attestation_cotisations_conges_payes_chomage_intemperies"
+    --url "https://staging.entreprise.api.gouv.fr/v3/cnetp/unites_legales/844451564/attestation_cotisations_conges_payes_chomage_intemperies"
   ```
 
   </p>
@@ -108,7 +108,7 @@
 
   ```json
   {
-    "siret": "20459446201414"
+    "siren": "204594462"
   }
   ```
 
@@ -126,7 +126,7 @@
         "title": "Intermédiaire hors-délai",
         "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
         "meta": {
-          "provider": "CIBTP"
+          "provider": "CNETP"
         }
       }
     ]
@@ -142,7 +142,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/cibtp/etablissements/20459446201414/attestation_cotisations_conges_payes_chomage_intemperies"
+    --url "https://staging.entreprise.api.gouv.fr/v3/cnetp/unites_legales/204594462/attestation_cotisations_conges_payes_chomage_intemperies"
   ```
 
   </p>
