@@ -28534,7 +28534,7 @@ paths:
                               description: Ce lien délivre le certificat Qualifelec
                                 de l'entreprise au format PDF tel qu'accessible depuis
                                 le site https://www.qualifelec.fr/.
-                              example: https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg
+                              example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg
                             numero:
                               title: Numéro du certificat
                               type: number
