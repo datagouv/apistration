@@ -68,7 +68,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Données association en open data](api_entreprise_v4_mi_unites_legales_open_data) (`/v4/djepva/api-association/associations/open_data/{siren_or_rna}`)
 * N°TVA intracommunautaire français (`/v3/european_commission/unites_legales/{siren}/numero_tva`)
 * Conventions collectives (`/v3/fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives`)
-* Carte professionnelle travaux publics (`/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics`)
+* [Carte professionnelle travaux publics](api_entreprise_v3_fntp_carte_professionnelle_travaux_publics) (`/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics`)
 * [Effectifs annuels d'une unité légale](api_entreprise_v3_gip_mds_effectifs_annuels_entreprise) (`/v3/gip_mds/unites_legales/{siren}/effectifs_annuels/{year}`)
 * [Effectifs mensuels d'un établissement](api_entreprise_v3_gip_mds_effectifs_mensuels_etablissement) (`/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}`)
 * Extrait RCS (`/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`)
