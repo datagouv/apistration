@@ -10,6 +10,6 @@ acoss:
       \n
       \n
       Plus d'informations sur le site de l'URSSAF : https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html"
-      example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf"
+      example: "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf"
     document_url_expires_in:
       title: "Nombre de secondes avant expiration du lien URL"
