@@ -1,0 +1,18 @@
+---
+params:
+  siren: '204594462'
+status: 504
+description: 'Intermédiaire hors-délai'
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "38002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
+        "meta": {
+          "provider": "CNETP"
+        }
+      }
+    ]
+  }

@@ -56,7 +56,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * 3 derniers bilans annuels (`/v3/banque_de_france/unites_legales/{siren}/bilans`)
 * Qualiopi & habilitations France compétences (`/v3/carif_oref/etablissements/{siret}/certifications_qualiopi_france_competences`)
 * [Certificat cotisations CIBTP](api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies) (`/v3/cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies`)
-* Certificat cotisations CNETP (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
+* [Certificat cotisations CNETP](api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies) (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
 * Subventions des associations (`/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions`)
 * Immatriculation EORI (`/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori`)
 * [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
