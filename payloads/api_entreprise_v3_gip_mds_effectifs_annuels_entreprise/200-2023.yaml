@@ -12,15 +12,21 @@ payload: |-
       "effectifs_annuel": [
         {
           "regime": "regime_general",
-          "value": 12.34,
+          "value": 13,
           "nature": "effectif_moyen_annuel",
-          "date_derniere_mise_a_jour": "2018-01-01"
+          "date_derniere_mise_a_jour": "2023-01-01"
         },
         {
           "regime": "regime_agricole",
           "nature": "effectif_moyen_annuel",
           "value": null,
-          "date_derniere_mise_a_jour": null
+          "date_derniere_mise_a_jour": "2023-05-09"
+        },
+        {
+          "regime": "regime_agricole",
+          "nature": "effectif_moyen_annuel",
+          "value": 12,
+          "date_derniere_mise_a_jour": "2023-02-09"
         }
       ]
     },
