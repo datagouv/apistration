@@ -55,8 +55,19 @@ class AbstractGetToken < MakeRequest::Post
     cache.write(cache_key, token, expires_in: [expires_in(response).to_i - 10, 0].max)
   end
 
-  def handle_empty_token(token, _response)
-    fail_to_request_provider!(ProviderUnknownError) if token.blank?
+  def handle_empty_token(token, response)
+    return if token.present?
+
+    error = ProviderUnknownError.new(context.provider_name)
+
+    error.add_to_monitoring_private_context({
+      http_response_code: response.code,
+      http_response_body: response.body,
+      http_response_headers: response.to_hash
+    })
+
+    context.errors << error
+    context.fail!
   end
 
   def token_from_cache

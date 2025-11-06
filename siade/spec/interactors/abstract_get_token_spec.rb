@@ -54,6 +54,16 @@ RSpec.describe AbstractGetToken, type: :interactor do
       it 'adds ProviderUnknownError to errors' do
         expect(subject.errors).to include(instance_of(ProviderUnknownError))
       end
+
+      it 'adds response body to monitoring context' do
+        error = subject.errors.first
+
+        expect(error.monitoring_private_context).to include(
+          http_response_code: '200',
+          http_response_body: response_body.to_json
+        )
+        expect(error.monitoring_private_context).to have_key(:http_response_headers)
+      end
     end
 
     context 'when the token is not stored in cache' do
