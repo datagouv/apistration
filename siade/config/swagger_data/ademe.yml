@@ -15,7 +15,7 @@ ademe:
         title: "URL Certificat"
         description: "URL de téléchargement du certificat"
         type: "string"
-        example: "https://www.qualypso.fr/download_file.php?id=545cf132-b12f-445d-bcde-56a5b235b1d0"
+        example: "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualibat.pdf"
       nom_certificat:
         title: "Nom du certificat"
         description: "libéllé du certificat"
