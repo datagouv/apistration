@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
   include INPI::RNE::ExtraitRNE::Concerns::Constants
 
@@ -112,6 +113,8 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
   end
 
   def get_code_from_config(config_key, code, fallback)
+    return fallback if code.blank?
+
     config_value = Rails.application.config_for(config_key)[code]
     config_value || fallback
   end
@@ -127,3 +130,4 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
     hash[key] || default
   end
 end
+# rubocop:enable Metrics/ModuleLength
