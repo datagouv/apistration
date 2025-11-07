@@ -97,10 +97,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "avec_participation": false,
       "date_debut_droit": "2021-05-05"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -156,10 +154,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "avec_participation": false,
       "date_debut_droit": "2021-05-05"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -216,10 +212,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "avec_participation": false,
       "date_debut_droit": "2023-02-01"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 

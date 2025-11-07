@@ -29,61 +29,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "revenu_solidarite_active",
-      "revenu_solidarite_active_majoration",
-      "prime_activite",
-      "prime_activite_majoration",
-      "allocation_soutien_familial",
-      "allocation_adulte_handicape",
-      "complementaire_sante_solidaire",
-      "cnaf_quotient_familial",
-      "cnaf_allocataires",
-      "cnaf_enfants",
-      "cnaf_adresse",
-      "eaje_allocataires",
-      "eaje_enfants",
-      "eaje_adresse",
-      "eaje_parametres_calcul_participation_familial",
-      "cnous_statut_boursier",
-      "cnous_echelon_bourse",
-      "cnous_email",
-      "cnous_periode_versement",
-      "cnous_statut_bourse",
-      "cnous_ville_etudes",
-      "cnous_identite",
-      "mesri_identifiant",
-      "mesri_identite",
-      "mesri_inscription_etudiant",
-      "mesri_inscription_autre",
-      "mesri_admission",
-      "mesri_etablissements",
-      "mesri_admissions",
-      "mesri_admission_inscrit",
-      "mesri_admission_regime_formation",
-      "mesri_admission_commune_etudes",
-      "mesri_admission_etablissement_etudes",
-      "dsnj_statut_service_national",
-      "ants_extrait_immatriculation_vehicule_identite_particulier",
-      "ants_extrait_immatriculation_vehicule_adresse_particulier",
-      "ants_extrait_immatriculation_vehicule_statut_rattachement",
-      "ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule",
-      "ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Thomas",
-      "family_name": "Delatour",
-      "birthdate": "1994-04-16",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot revenu_solidarite_active revenu_solidarite_active_majoration prime_activite prime_activite_majoration allocation_soutien_familial allocation_adulte_handicape complementaire_sante_solidaire cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse eaje_allocataires eaje_enfants eaje_adresse eaje_parametres_calcul_participation_familial cnous_statut_boursier cnous_echelon_bourse cnous_email cnous_periode_versement cnous_statut_bourse cnous_ville_etudes cnous_identite mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements mesri_admissions mesri_admission_inscrit mesri_admission_regime_formation mesri_admission_commune_etudes mesri_admission_etablissement_etudes dsnj_statut_service_national ants_extrait_immatriculation_vehicule_identite_particulier ants_extrait_immatriculation_vehicule_adresse_particulier ants_extrait_immatriculation_vehicule_statut_rattachement ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule",
       "gender": "male",
+      "family_name": "Delatour",
+      "given_name": "Thomas",
+      "given_name_array": [
+        "Thomas"
+      ],
+      "birthdate": "1994-04-16",
       "birthplace": "75111",
-      "birthcountry": "99100",
-      "preferred_username": "Delamouette"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -123,27 +89,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "ants_extrait_immatriculation_vehicule_identite_particulier",
-      "ants_extrait_immatriculation_vehicule_adresse_particulier",
-      "ants_extrait_immatriculation_vehicule_statut_rattachement",
-      "ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule",
-      "ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Thomas",
-      "family_name": "Delatour",
-      "birthdate": "1994-04-16",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot ants_extrait_immatriculation_vehicule_identite_particulier ants_extrait_immatriculation_vehicule_adresse_particulier ants_extrait_immatriculation_vehicule_statut_rattachement ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule",
       "gender": "male",
+      "family_name": "Delatour",
+      "given_name": "Thomas",
+      "given_name_array": [
+        "Thomas"
+      ],
+      "birthdate": "1994-04-16",
       "birthplace": "75111",
-      "birthcountry": "99100",
-      "preferred_username": "Delamouette"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -183,23 +149,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "complementaire_sante_solidaire"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Georges",
-      "family_name": "CNAF",
-      "birthdate": "2002-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot complementaire_sante_solidaire",
       "gender": "male",
+      "family_name": "CNAF",
+      "given_name": "Georges",
+      "given_name_array": [
+        "Georges"
+      ],
+      "birthdate": "2002-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "MARTIN"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -239,26 +209,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "cnaf_quotient_familial",
-      "cnaf_allocataires",
-      "cnaf_enfants",
-      "cnaf_adresse"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Georges",
-      "family_name": "CNAF",
-      "birthdate": "2002-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse",
       "gender": "male",
+      "family_name": "CNAF",
+      "given_name": "Georges",
+      "given_name_array": [
+        "Georges"
+      ],
+      "birthdate": "2002-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "MARTIN"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -298,26 +269,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "cnaf_quotient_familial",
-      "cnaf_allocataires",
-      "cnaf_enfants",
-      "cnaf_adresse"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Georges",
-      "family_name": "CNAF",
-      "birthdate": "2002-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse",
       "gender": "male",
+      "family_name": "CNAF",
+      "given_name": "Georges",
+      "given_name_array": [
+        "Georges"
+      ],
+      "birthdate": "2002-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "MARTIN"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -357,29 +329,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "cnous_statut_boursier",
-      "cnous_echelon_bourse",
-      "cnous_email",
-      "cnous_periode_versement",
-      "cnous_statut_bourse",
-      "cnous_ville_etudes",
-      "cnous_identite"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Jean",
-      "family_name": "MARTIN",
-      "birthdate": "2001-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot cnous_statut_boursier cnous_echelon_bourse cnous_email cnous_periode_versement cnous_statut_bourse cnous_ville_etudes cnous_identite",
       "gender": "male",
+      "family_name": "MARTIN",
+      "given_name": "Jean",
+      "given_name_array": [
+        "Jean"
+      ],
+      "birthdate": "2001-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "jmartin_cnous"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -419,28 +389,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "cnous_statut_boursier",
-      "cnous_echelon_bourse",
-      "cnous_email",
-      "cnous_periode_versement",
-      "cnous_statut_bourse",
-      "cnous_ville_etudes"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Jean",
-      "family_name": "MARTIN",
-      "birthdate": "2001-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot cnous_statut_boursier cnous_echelon_bourse cnous_email cnous_periode_versement cnous_statut_bourse cnous_ville_etudes",
       "gender": "male",
+      "family_name": "MARTIN",
+      "given_name": "Jean",
+      "given_name_array": [
+        "Jean"
+      ],
+      "birthdate": "2001-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "jmartin_cnous_with_less_scopes"
+      "birthcountry": "99100"
     }
   }
   ```
@@ -480,33 +449,27 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "mesri_identifiant",
-      "mesri_identite",
-      "mesri_inscription_etudiant",
-      "mesri_inscription_autre",
-      "mesri_admission",
-      "mesri_etablissements",
-      "mesri_admissions",
-      "mesri_admission_inscrit",
-      "mesri_admission_regime_formation",
-      "mesri_admission_commune_etudes",
-      "mesri_admission_etablissement_etudes"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Jean",
-      "family_name": "MESRI",
-      "birthdate": "2002-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements mesri_admissions mesri_admission_inscrit mesri_admission_regime_formation mesri_admission_commune_etudes mesri_admission_etablissement_etudes",
       "gender": "male",
+      "family_name": "MESRI",
+      "given_name": "Jean",
+      "given_name_array": [
+        "Jean"
+      ],
+      "birthdate": "2002-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "jean_mesri"
+      "birthcountry": "99100"
     }
   }
   ```

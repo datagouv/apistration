@@ -111,10 +111,8 @@
             "representant_legal_placement_sans_gestion_deleguee": false
           }
         },
-        "links": {
-        },
-        "meta": {
-        }
+        "links": {},
+        "meta": {}
       },
       {
         "data": {
@@ -204,20 +202,15 @@
             "representant_legal_placement_sans_gestion_deleguee": false
           }
         },
-        "links": {
-        },
-        "meta": {
-        }
+        "links": {},
+        "meta": {}
       }
     ],
     "meta": {
       "count": 2,
-      "beneficiaires_sans_modalites_uuids": [
-  
-      ]
+      "beneficiaires_sans_modalites_uuids": []
     },
-    "links": {
-    }
+    "links": {}
   }
   ```
 
