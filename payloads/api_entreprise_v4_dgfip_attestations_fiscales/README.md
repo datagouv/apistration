@@ -28,10 +28,8 @@
       "date_delivrance_attestation": "2023-04-11",
       "date_periode_analysee": "2023-03-31"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -128,10 +126,8 @@
       "date_delivrance_attestation": "2023-04-11",
       "date_periode_analysee": "2023-03-31"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 

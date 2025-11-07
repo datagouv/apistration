@@ -1,43 +1,48 @@
 {
   "type": "object",
   "properties": {
-    "scope": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 2
-      }
+    "aud": {
+      "type": "string",
+      "minLength": 2
     },
-    "client": {
+    "iat": {
+      "type": "integer"
+    },
+    "iss": {
+      "type": "string",
+      "minLength": 2
+    },
+    "token_introspection": {
       "type": "object",
       "properties": {
-        "client_id": {
+        "active": {
+          "type": "boolean"
+        },
+        "aud": {
           "type": "string",
           "minLength": 2
         },
-        "client_name": {
-          "type": "string",
-          "minLength": 2
-        }
-      },
-      "required": [
-        "client_id",
-        "client_name"
-      ]
-    },
-    "identity": {
-      "type": "object",
-      "properties": {
-        "given_name": {
+        "sub": {
           "type": "string",
           "minLength": 2
         },
-        "family_name": {
+        "iat": {
+          "type": "integer"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "acr": {
           "type": "string",
           "minLength": 2
         },
-        "birthdate": {
-          "type": "date"
+        "jti": {
+          "type": "string",
+          "minLength": 2
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 2
         },
         "gender": {
           "type": "string",
@@ -46,29 +51,54 @@
             "female"
           ]
         },
+        "family_name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "given_name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "given_name_array": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "birthdate": {
+          "type": "string"
+        },
         "birthplace": {
           "type": "string"
         },
         "birthcountry": {
           "type": "string"
-        },
-        "preferred_username": {
-          "type": "string"
         }
       },
       "required": [
-        "given_name",
-        "family_name",
-        "birthdate",
+        "active",
+        "aud",
+        "sub",
+        "iat",
+        "exp",
+        "acr",
+        "jti",
+        "scope",
         "gender",
+        "family_name",
+        "given_name",
+        "given_name_array",
+        "birthdate",
         "birthplace",
         "birthcountry"
       ]
     }
   },
   "required": [
-    "scope",
-    "client",
-    "identity"
+    "aud",
+    "iat",
+    "iss",
+    "token_introspection"
   ]
 }
