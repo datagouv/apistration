@@ -8,22 +8,24 @@ description: 'Réponse FranceConnect permettant de déclencher la réponse de [`
 status: 200
 payload: |-
   {
-    "scope": [
-      "openid",
-      "identite_pivot",
-      "complementaire_sante_solidaire"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Georges",
-      "family_name": "CNAF",
-      "birthdate": "2002-01-01",
+    "aud": "423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0",
+    "iat": 1704965332,
+    "iss": "https://fcp-low.integ01.dev-franceconnect.fr/api/v2",
+    "token_introspection": {
+      "active": true,
+      "aud": "6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950",
+      "sub": "2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1",
+      "iat": 1704965328,
+      "exp": 1704965388,
+      "acr": "eidas1",
+      "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
+      "scope": "openid identite_pivot complementaire_sante_solidaire",
       "gender": "male",
+      "family_name": "CNAF",
+      "given_name": "Georges",
+      "given_name_array": ["Georges"],
+      "birthdate": "2002-01-01",
       "birthplace": "75002",
-      "birthcountry": "99100",
-      "preferred_username": "MARTIN"
+      "birthcountry": "99100"
     }
   }
