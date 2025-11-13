@@ -68,7 +68,7 @@ urssaf:
         type: 'string'
         nullable: true
         description: "Ce lien délivre l'attestation de vigilance de l'entreprise au format PDF."
-        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf"
+        example: "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf"
       document_url_expires_in:
         title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
         description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de debut ou de fin de validité."
