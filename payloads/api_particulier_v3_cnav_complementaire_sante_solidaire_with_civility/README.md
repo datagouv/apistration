@@ -42,8 +42,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2023-06-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -104,8 +106,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2023-02-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -164,8 +168,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -223,7 +229,8 @@ Ce cas permet de tester :
         "source": {
           "parameter": "token"
         },
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -341,7 +348,8 @@ Ce cas permet de tester :
         "title": "Entité non traitable",
         "detail": "Un ou plusieurs paramètres de civilité ne sont pas correctement formatés",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -399,7 +407,8 @@ Ce cas permet de tester :
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
@@ -585,8 +594,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2024-10-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -649,8 +660,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2023-08-25"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -715,8 +728,10 @@ Ce cas permet de tester :
       "avec_participation": true,
       "date_debut_droit": "2024-06-01"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -782,8 +797,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-08-25"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -847,8 +864,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-08-25"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -911,8 +930,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-08-30"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -975,8 +996,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-11-05"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1038,8 +1061,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-09-05"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1104,8 +1129,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2026-09-29"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1169,8 +1196,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": "2024-02-02"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1235,8 +1264,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1299,8 +1330,10 @@ Ce cas permet de tester :
       "avec_participation": false,
       "date_debut_droit": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

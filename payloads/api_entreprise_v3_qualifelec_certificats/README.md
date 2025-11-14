@@ -58,7 +58,9 @@ Ce cas permet de tester :
                 "label": "Colonnes Montantes"
               }
             ],
-            "domaines": [],
+            "domaines": [
+  
+            ],
             "classification": {
               "code": 1,
               "label": "Classe 12 - de 4 à 8 exécutants"
@@ -75,12 +77,14 @@ Ce cas permet de tester :
             "date_fin": "2024-01-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       },
       {
         "data": {
-          "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2841,
           "rge": false,
           "date_debut": "2023-08-01",
@@ -105,7 +109,9 @@ Ce cas permet de tester :
                 "label": "Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
               }
             ],
-            "domaines": [],
+            "domaines": [
+  
+            ],
             "classification": {
               "code": 1,
               "label": "Classe 1 - de 1 à 3 exécutants"
@@ -122,14 +128,17 @@ Ce cas permet de tester :
             "date_fin": "2024-07-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
     "meta": {
       "total": 8
     },
-    "links": {}
+    "links": {
+    }
   }
   ```
 
@@ -232,14 +241,17 @@ Ce cas permet de tester :
             "date_fin": "2024-01-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
     "meta": {
       "total": 8
     },
-    "links": {}
+    "links": {
+    }
   }
   ```
 
@@ -319,7 +331,9 @@ Ce cas permet de tester :
                 "label": "Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
               }
             ],
-            "domaines": [],
+            "domaines": [
+  
+            ],
             "classification": {
               "code": 1,
               "label": "Classe 1 - de 1 à 3 exécutants"
@@ -336,14 +350,17 @@ Ce cas permet de tester :
             "date_fin": "2024-01-31"
           }
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
     "meta": {
       "total": 8
     },
-    "links": {}
+    "links": {
+    }
   }
   ```
 
