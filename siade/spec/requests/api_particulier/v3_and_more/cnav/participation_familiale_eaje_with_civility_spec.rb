@@ -51,27 +51,43 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
       let(:scopes) { %i[eaje_allocataires eaje_enfants eaje_adresse eaje_parametres_calcul_participation_familiale] }
 
+      before do
+        stub_cnav_authenticate('participation_familiale_eaje')
+      end
+
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Dossier trouvé', pending: 'Implement Endpoint' do
-          description SwaggerData.get('cnav.eaje.description')
-
-          cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
-
-          rate_limit_headers
-
-          schema build_rswag_response(
-            attributes: SwaggerData.get('cnav.eaje.attributes')
-          )
-
-          run_test!
+        before do
+          stub_cnav_authenticate('participation_familiale_eaje')
         end
 
-        response '404', 'Dossier non trouvé', pending: 'Implement Endpoint' do
-          build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
+        context 'when found' do
+          before { stub_cnav_valid('participation_familiale_eaje', siret: '13002526500013') }
 
-          schema '$ref' => '#/components/schemas/Error'
+          response '200', 'Dossier trouvé' do
+            description SwaggerData.get('cnav.eaje.description')
 
-          run_test!
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
+            rate_limit_headers
+
+            schema build_rswag_response(
+              attributes: SwaggerData.get('cnav.eaje.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        context 'when not found' do
+          before { stub_cnav_404('participation_familiale_eaje') }
+
+          response '404', 'Dossier non trouvé' do
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
         end
 
         common_provider_errors_request('CNAV', CNAV::ParticipationFamilialeEAJE)

@@ -16,34 +16,38 @@ RSpec.describe 'API Particulier: CNAV: Participation familial EAJE with FranceCo
 
       forbidden_france_connect_request
 
-      before do
-        allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
-        allow(Rails.env).to receive_messages(env: 'staging', staging?: true)
-        allow(Siade.credentials).to receive(:[]).and_call_original
-        allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_whatever_client_id).and_return('345')
-        allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_whatever_client_secret).and_return('345')
-        allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_enabled).and_return(true)
-      end
-
       describe 'with a FranceConnect token' do
-        response '200', 'Dossier trouvé', pending: 'Implement Endpoint' do
-          description SwaggerData.get('cnav.eaje.description')
-
-          cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
-
-          schema build_rswag_response(
-            attributes: SwaggerData.get('cnav.eaje.attributes')
-          )
-
-          run_test!
+        before do
+          mock_valid_france_connect_checktoken(scopes:)
+          stub_cnav_authenticate('participation_familiale_eaje')
         end
 
-        response '404', 'Dossier non trouvé', pending: 'Implement Endpoint' do
-          schema '$ref' => '#/components/schemas/Error'
+        context 'when found' do
+          before { stub_cnav_valid_with_franceconnect_data('participation_familiale_eaje', siret: recipient) }
 
-          build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant.', with_identifiant_message: false))
+          response '200', 'Dossier trouvé' do
+            description SwaggerData.get('cnav.eaje.description')
 
-          run_test!
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
+            schema build_rswag_response(
+              attributes: SwaggerData.get('cnav.eaje.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        context 'when not found' do
+          before { stub_cnav_404('participation_familiale_eaje') }
+
+          response '404', 'Dossier non trouvé' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant.', with_identifiant_message: false))
+
+            run_test!
+          end
         end
       end
     end
