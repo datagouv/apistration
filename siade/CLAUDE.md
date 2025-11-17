@@ -7,7 +7,7 @@
 - Run all tests: `bundle exec rspec`
 - Run single test: `bundle exec rspec path/to/file_spec.rb:line_number`
 - Run tests with coverage: `COVERAGE=true rspec`
-- Debug VCR cassettes: `DEBUG_VCR=true rspec`
+- Debug VCR cassettes or WebMock stubbing issues: `DEBUG_VCR=true rspec`
 - Generate OpenAPI docs: `bin/generate_swagger.sh`
 - Run Rubocop: `bundle exec rubocop`
 - Auto-fix Rubocop issues: `bundle exec rubocop -A`
