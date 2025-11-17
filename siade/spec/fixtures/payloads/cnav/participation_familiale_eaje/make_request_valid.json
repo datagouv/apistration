@@ -1,0 +1,35 @@
+{
+  "allocataires": [
+    {
+      "nomNaissance": "DUPOND",
+      "nomUsage": "DUPOND",
+      "listePrenoms": "Jean-Michel",
+      "dateNaissance": "1981-06-30",
+      "genre": "M",
+      "cogNaissance": "75113"
+    }
+  ],
+  "enfants": [
+    {
+      "nomNaissance": "DUPOND",
+      "nomUsage": "DUPOND",
+      "listePrenoms": "Marie",
+      "dateNaissance": "2020-03-15",
+      "genre": "F",
+      "cogNaissance": "75113"
+    }
+  ],
+  "adresse": {
+    "identite": "M. DUPOND Jean-Michel",
+    "complementInformation": "Appt 55",
+    "complementInformationGeo": "Bat Les Alizes",
+    "numeroLibelleVoie": "32 ter rue du Pont du Roy",
+    "lieuDit": "Au trou salé",
+    "codePostalVille": "02100 Bohain en Vermandois",
+    "pays": "France"
+  },
+  "nombreBeneficiaireAEEH": 0,
+  "nombreEnfantsACharge": 1,
+  "montantRessources": 1500,
+  "annee": 2024
+}
