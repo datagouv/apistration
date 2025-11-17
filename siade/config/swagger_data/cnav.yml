@@ -143,7 +143,7 @@ cnav:
             description: "Nombre d'enfants à charge des allocataires"
             type: integer
             example: 2
-          nombre_enfants_beneficiaire_AEEH:
+          nombre_enfants_beneficiaire_aeeh:
             title: Nombre d'enfants beneficiaire de l'AEEH
             description: Nombre d'enfants beneficiaire de l'AEEH
             type: integer
