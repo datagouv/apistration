@@ -52,8 +52,8 @@ gem 'jwe'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 
-gem 'rswag-api', github: 'rswag/rswag'
-gem 'rswag-ui', github: 'rswag/rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
 
 gem 'lockbox'
 
@@ -69,7 +69,7 @@ gem 'mcp'
 gem 'bigdecimal'
 
 group :test do
-  gem 'rswag-specs', github: 'rswag/rswag'
+  gem 'rswag-specs'
 
   gem 'json-schema'
   gem 'timecop'
