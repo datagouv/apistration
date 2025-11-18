@@ -510,6 +510,41 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1992-11-20'
+
+  aeeh:
+    title: Statut allocation d'éducation de l'enfant handicapé (AEEH)
+    description: "Statut bénéficiaire de l'allocation d'éducation de l'enfant handicapé (AEEH).
+      \n\n
+      Retourne également des informations sur les prestations et les dates d'ouverture des droits.
+      \n
+      L'indicateur précise si le particulier est allocataire, ouvrant droit ou non bénéficiaire de l'AEEH."
+    tags:
+      - Prochainement
+    attributes:
+      status:
+        title: "Statut bénéficiaire de l'allocation d'éducation de l'enfant handicapé (AEEH)"
+        type: string
+        description: "Indique si le particulier est bénéficiaire de l'allocation d'éducation de l'enfant handicapé au moment de l'appel.
+          \n
+          \n
+          - Si le statut est 'allocataire', cela signifie que le particulier est l'allocataire de l'AEEH (qualité bénéficiaire 105). Cela concerne généralement le parent ou le tuteur légal de l'enfant handicapé.
+          \n
+          - Si le statut est 'ouvrant_droit', cela signifie que le particulier est ouvrant droit de l'AEEH (qualité bénéficiaire 205). Cela concerne généralement l'enfant handicapé lui-même.
+          \n
+          - Si le statut est 'non_beneficiaire', cela signifie que le particulier n'est pas concerné par l'AEEH."
+        enum:
+          - "allocataire"
+          - "ouvrant_droit"
+          - "non_beneficiaire"
+      date_debut_droit:
+        title: "Date d'ouverture du droit à l'AEEH"
+        type: string
+        nullable: true
+        description: "Date de début de droit à l'allocation enfant handicapé du particulier bénéficiaire.
+          \n
+          Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'AEEH."
+        example: '1992-11-29'
+
   v2:
     commons:
       cache_duration: "La durée du cache est de 1 heure."
