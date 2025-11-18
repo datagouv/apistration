@@ -20,14 +20,14 @@ RSpec.describe APIEntrepriseController do
 
     it 'runs mandatory params before trying to mock response' do
       get :index, params: { token: }
-      assert_response :unprocessable_content
+      expect(response).to have_http_status(:unprocessable_content)
     end
 
     it 'check scopes before trying to mock response' do
       affect_scopes_to_yes_jwt_token(['not_allowed'])
 
       get :index, params: { token: TokenFactory.new('not_allowed').valid }
-      assert_response :forbidden
+      expect(response).to have_http_status(:forbidden)
 
       reset_yes_jwt_token_scopes!
     end

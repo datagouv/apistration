@@ -51,7 +51,7 @@ RSpec.describe APIController do
 
       get :show, params: { siret: }
 
-      assert_response :bad_request
+      expect(response).to have_http_status(:bad_request)
     end
   end
 
@@ -65,20 +65,20 @@ RSpec.describe APIController do
 
       get :index
 
-      assert_response :bad_request
+      expect(response).to have_http_status(:bad_request)
     end
   end
 
   describe 'malformatted requests' do
     it 'returns 401 when token is missing' do
       get :index
-      assert_response :unauthorized
+      expect(response).to have_http_status(:unauthorized)
     end
 
     it 'returns 401 with bad header naming' do
       request.headers['Authorization'] = "FuBearer #{yes_jwt}"
       get :index
-      assert_response :unauthorized
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
@@ -91,7 +91,7 @@ RSpec.describe APIController do
 
         it 'returns 200' do
           get :index, params: api_entreprise_mandatory_params
-          assert_response :ok
+          expect(response).to have_http_status(:ok)
         end
       end
 
@@ -100,7 +100,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index, params: api_entreprise_mandatory_params
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -109,7 +109,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index, params: api_entreprise_mandatory_params
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -118,7 +118,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -127,7 +127,7 @@ RSpec.describe APIController do
 
         it 'returns 200' do
           get :index
-          assert_response :ok
+          expect(response).to have_http_status(:ok)
         end
       end
 
@@ -136,7 +136,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -145,7 +145,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -154,7 +154,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
     end
@@ -165,7 +165,7 @@ RSpec.describe APIController do
 
         it 'returns 200' do
           get :index, params: { token: }.merge(api_entreprise_mandatory_params)
-          assert_response :ok
+          expect(response).to have_http_status(:ok)
         end
       end
 
@@ -174,7 +174,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -183,7 +183,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
 
@@ -192,7 +192,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response :unauthorized
+          expect(response).to have_http_status(:unauthorized)
         end
       end
     end
@@ -251,7 +251,7 @@ RSpec.describe APIController do
       it 'renders a 200' do
         double_call
 
-        assert_response :ok
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -264,7 +264,7 @@ RSpec.describe APIController do
         it 'renders a 200' do
           double_call
 
-          assert_response :ok
+          expect(response).to have_http_status(:ok)
         end
       end
 
@@ -272,7 +272,7 @@ RSpec.describe APIController do
         it 'renders a conflict' do
           double_call
 
-          assert_response :conflict
+          expect(response).to have_http_status(:conflict)
         end
       end
     end
