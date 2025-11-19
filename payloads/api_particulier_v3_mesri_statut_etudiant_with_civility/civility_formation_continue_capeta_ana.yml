@@ -1,0 +1,40 @@
+---
+description: Étudiant formation continue Capeta Ana
+params:
+  nomNaissance: "Capeta"
+  prenoms:
+  - "Ana"
+  anneeDateNaissance: 2001
+  moisDateNaissance: 5
+  jourDateNaissance: 30
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "99208"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Capeta",
+        "prenom": "Ana",
+        "date_naissance": "2001-05-30"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-12-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation continue",
+            "code": "RF5"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

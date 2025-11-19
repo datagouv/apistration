@@ -55,10 +55,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 

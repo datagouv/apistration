@@ -1,0 +1,40 @@
+---
+description: Étudiant admis Nani Luis
+params:
+  nomNaissance: "Nani"
+  prenoms:
+  - "Luis"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 4
+  jourDateNaissance: 25
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "99331"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Nani",
+        "prenom": "Luis",
+        "date_naissance": "2002-04-25"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-12-31",
+          "est_inscrit": false,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

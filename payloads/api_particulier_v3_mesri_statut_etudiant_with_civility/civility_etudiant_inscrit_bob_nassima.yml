@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit Bob Nassima
+params:
+  nomNaissance: "Bob"
+  prenoms:
+  - "Nassima"
+  anneeDateNaissance: 2004
+  moisDateNaissance: 12
+  jourDateNaissance: 4
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "99335"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Bob",
+        "prenom": "Nassima",
+        "date_naissance": "2004-12-04"
+      },
+      "admissions": [
+        {
+          "date_debut": "2024-09-01",
+          "date_fin": "2025-09-01",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit Delin Antoine
+params:
+  nomNaissance: "Delin"
+  prenoms:
+  - "Antoine"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 12
+  jourDateNaissance: 3
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "99139"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Delin",
+        "prenom": "Antoine",
+        "date_naissance": "2000-12-03"
+      },
+      "admissions": [
+        {
+          "date_debut": "2026-12-31",
+          "date_fin": "2027-06-12",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit Dupré Hind
+params:
+  nomNaissance: "Dupré"
+  prenoms:
+  - "Hind"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 12
+  jourDateNaissance: 8
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "99138"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Dupré",
+        "prenom": "Hind",
+        "date_naissance": "2000-12-08"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-07-30",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

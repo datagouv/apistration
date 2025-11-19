@@ -26,10 +26,8 @@
       "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf",
       "expires_in": 600
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
