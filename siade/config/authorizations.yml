@@ -348,15 +348,15 @@ shared:
   api_particulier/v3_and_more/dsnj/service_national_with_france_connect:
     - dsnj_statut_service_national
   api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility:
-    - eaje_allocataires
-    - eaje_enfants
-    - eaje_adresse
-    - eaje_parametres_calcul_participation_familiale
+    - cnav_participation_familiale_eaje_allocataires
+    - cnav_participation_familiale_eaje_enfants
+    - cnav_participation_familiale_eaje_adresse
+    - cnav_participation_familiale_eaje_parametres_calcul
   api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect:
-    - eaje_allocataires
-    - eaje_enfants
-    - eaje_adresse
-    - eaje_parametres_calcul_participation_familiale
+    - cnav_participation_familiale_eaje_allocataires
+    - cnav_participation_familiale_eaje_enfants
+    - cnav_participation_familiale_eaje_adresse
+    - cnav_participation_familiale_eaje_parametres_calcul
   api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant:
     - sdh_statut_sportif_identite
     - sdh_statut_sportif_est_sportif_de_haut_niveau
