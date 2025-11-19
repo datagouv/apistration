@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit Pereira Maoris
+params:
+  nomNaissance: "Pereira"
+  prenoms:
+  - "Maoris"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 8
+  jourDateNaissance: 5
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "99131"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Pereira",
+        "prenom": "Maoris",
+        "date_naissance": "2002-08-05"
+      },
+      "admissions": [
+        {
+          "date_debut": "2024-10-10",
+          "date_fin": "2025-10-10",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
