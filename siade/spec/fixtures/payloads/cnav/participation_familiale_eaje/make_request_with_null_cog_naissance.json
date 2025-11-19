@@ -7,6 +7,14 @@
       "dateNaissance": "1981-06-30",
       "genre": "M",
       "cogNaissance": "75113"
+    },
+    {
+      "nomNaissance": "MARTIN",
+      "nomUsage": "MARTIN",
+      "listePrenoms": "Sophie",
+      "dateNaissance": "1982-08-15",
+      "genre": "F",
+      "cogNaissance": null
     }
   ],
   "enfants": [
@@ -16,6 +24,14 @@
       "listePrenoms": "Marie",
       "dateNaissance": "2020-03-15",
       "genre": "F",
+      "cogNaissance": null
+    },
+    {
+      "nomNaissance": "DUPOND",
+      "nomUsage": "DUPOND",
+      "listePrenoms": "Paul",
+      "dateNaissance": "2022-01-10",
+      "genre": "M",
       "cogNaissance": null
     }
   ],
@@ -29,7 +45,7 @@
     "pays": "France"
   },
   "nombreBeneficiaireAEEH": 0,
-  "nombreEnfantsACharge": 1,
-  "montantRessources": 1500,
+  "nombreEnfantsACharge": 2,
+  "montantRessources": 2500,
   "annee": 2024
 }

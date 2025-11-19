@@ -47,7 +47,8 @@ cnav:
             code_cog_insee_commune_naissance:
               title: COG de la commune de naissance
               type: string
-              description: Code officiel géographique (COG) de la commune de naissance
+              nullable: true
+              description: "Code officiel géographique (COG) de la commune de naissance. Ce champ peut être null, notamment pour les co-allocataires (il n'est généralement renvoyé que pour l'allocataire principal demandé)."
               example: '75113'
       enfants:
         type: array
@@ -88,8 +89,9 @@ cnav:
             code_cog_insee_commune_naissance:
               title: COG de la commune de naissance
               type: string
-              description: Code officiel géographique (COG) de la commune de naissance
-              example: '75113'
+              nullable: true
+              description: "Code officiel géographique (COG) de la commune de naissance. Ce champ peut être null pour les enfants (il n'est généralement renvoyé que pour l'allocataire principal demandé)."
+              example: null
       adresse:
         title: "Adresse de la famille"
         type: object
