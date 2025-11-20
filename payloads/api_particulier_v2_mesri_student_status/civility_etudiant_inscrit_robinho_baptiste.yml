@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit ROBINHO BAPTISTE
+params:
+  nom: "ROBINHO"
+  prenom: "BAPTISTE"
+  dateDeNaissance: "2001-01-12"
+  sexe: "m"
+  lieuDeNaissance: "99139"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "ROBINHO",
+    "prenom": "BAPTISTE",
+    "dateNaissance": "2001-01-12",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-06-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

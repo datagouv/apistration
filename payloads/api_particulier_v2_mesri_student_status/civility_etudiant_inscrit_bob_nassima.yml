@@ -1,26 +1,26 @@
 ---
-description: Étudiant inscrit
+description: Étudiant inscrit Bob Nassima
 params:
-  nom: "CALIDONE"
-  prenom: "Lola"
-  dateDeNaissance: "2005-01-01"
+  nom: "Bob"
+  prenom: "Nassima"
+  dateDeNaissance: "2004-12-04"
   sexe: "f"
-  lieuDeNaissance: "75109"
+  lieuDeNaissance: "99335"
 status: 200
 payload: |-
   {
     "ine": "1234567890Y",
-    "nomFamille": "CALIDONE",
-    "prenom": "Lola",
-    "dateNaissance": "2005-01-01",
+    "nomFamille": "Bob",
+    "prenom": "Nassima",
+    "dateNaissance": "2004-12-04",
     "inscriptions": [
       {
         "dateDebutInscription": "2024-09-01",
-        "dateFinInscription": "2025-07-31",
+        "dateFinInscription": "2025-09-01",
         "statut": "inscrit",
-        "codeCommune": "92000",
+        "codeCommune": "75009",
         "etablissement": {
-          "uai": "0334523W",
+          "uai": "0331023W",
           "nomEtablissement": "Université Paris Nanterre"
         },
         "regime": "formation initiale"

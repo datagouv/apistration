@@ -1,26 +1,26 @@
 ---
-description: Étudiant inscrit
+description: Étudiant inscrit RLUHDEFKWR NOLAN
 params:
-  nom: "JUIN"
-  prenom: "Esmeralda"
-  dateDeNaissance: "2000-12-24"
-  sexe: "f"
-  lieuDeNaissance: "75113"
+  nom: "RLUHDEFKWR"
+  prenom: "NOLAN"
+  dateDeNaissance: "2001-06-11"
+  sexe: "m"
+  lieuDeNaissance: "93010"
 status: 200
 payload: |-
   {
     "ine": "1234567890Y",
-    "nomFamille": "Juin",
-    "prenom": "Esmeralda",
-    "dateNaissance": "2000-12-24",
+    "nomFamille": "RLUHDEFKWR",
+    "prenom": "NOLAN",
+    "dateNaissance": "2001-06-11",
     "inscriptions": [
       {
         "dateDebutInscription": "2024-10-01",
         "dateFinInscription": "2025-08-31",
         "statut": "inscrit",
-        "codeCommune": "92000",
+        "codeCommune": "75009",
         "etablissement": {
-          "uai": "0330023W",
+          "uai": "0331023W",
           "nomEtablissement": "Université Paris Nanterre"
         },
         "regime": "formation initiale"

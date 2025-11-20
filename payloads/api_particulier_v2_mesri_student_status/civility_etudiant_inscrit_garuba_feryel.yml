@@ -1,18 +1,18 @@
 ---
-description: Étudiant inscrit
+description: Étudiant inscrit Garuba Feryel
 params:
-  nom: "YOLAN"
-  prenom: "JOHN"
-  dateDeNaissance: "2007-01-01"
+  nom: "Garuba"
+  prenom: "Feryel"
+  dateDeNaissance: "2001-01-11"
   sexe: "f"
-  lieuDeNaissance: "75109"
+  lieuDeNaissance: "99331"
 status: 200
 payload: |-
   {
     "ine": "1234567890Y",
-    "nomFamille": "YOLAN",
-    "prenom": "JOHN",
-    "dateNaissance": "2007-01-01",
+    "nomFamille": "Garuba",
+    "prenom": "Feryel",
+    "dateNaissance": "2001-01-11",
     "inscriptions": [
       {
         "dateDebutInscription": "2024-10-01",
@@ -20,8 +20,8 @@ payload: |-
         "statut": "inscrit",
         "codeCommune": "75009",
         "etablissement": {
-          "uai": "0320613W",
-          "nomEtablissement": "ESCG"
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
         },
         "regime": "formation initiale"
       }

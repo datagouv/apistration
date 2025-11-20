@@ -1,0 +1,29 @@
+---
+description: Étudiant admis Nani Luis
+params:
+  nom: "Nani"
+  prenom: "Luis"
+  dateDeNaissance: "2002-04-25"
+  sexe: "m"
+  lieuDeNaissance: "99331"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Nani",
+    "prenom": "Luis",
+    "dateNaissance": "2002-04-25",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-12-31",
+        "statut": "admis",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

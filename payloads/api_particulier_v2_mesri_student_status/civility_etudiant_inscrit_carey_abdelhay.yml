@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Carey Abdelhay
+params:
+  nom: "Carey"
+  prenom: "Abdelhay"
+  dateDeNaissance: "2003-07-11"
+  sexe: "m"
+  lieuDeNaissance: "77373"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Carey",
+    "prenom": "Abdelhay",
+    "dateNaissance": "2003-07-11",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

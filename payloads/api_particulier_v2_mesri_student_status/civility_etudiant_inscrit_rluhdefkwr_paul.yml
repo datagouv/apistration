@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit RLUHDEFKWR PAUL
+params:
+  nom: "RLUHDEFKWR"
+  prenom: "PAUL"
+  dateDeNaissance: "2000-09-20"
+  sexe: "m"
+  lieuDeNaissance: "93010"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "RLUHDEFKWR",
+    "prenom": "PAUL",
+    "dateNaissance": "2000-09-20",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-06-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

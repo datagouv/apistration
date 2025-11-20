@@ -1,5 +1,5 @@
 ---
-description: 'Étudiant inscrit'
+description: Étudiant inscrit
 params:
   nom: "CLERMONT"
   prenom: "Louis"
@@ -9,7 +9,7 @@ params:
 status: 200
 payload: |-
   {
-    "ine": "1884567890Y",
+    "ine": "1234567890Y",
     "nomFamille": "CLERMONT",
     "prenom": "Louis",
     "dateNaissance": "2000-01-01",
@@ -27,4 +27,3 @@ payload: |-
       }
     ]
   }
-
