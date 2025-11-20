@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit De Carvalho Alexandra
+params:
+  nom: "De Carvalho"
+  prenom: "Alexandra"
+  dateDeNaissance: "2000-03-14"
+  sexe: "f"
+  lieuDeNaissance: "69123"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "De Carvalho",
+    "prenom": "Alexandra",
+    "dateNaissance": "2000-03-14",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-11-01",
+        "dateFinInscription": "2026-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

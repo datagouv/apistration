@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Pereira Maoris
+params:
+  nom: "Pereira"
+  prenom: "Maoris"
+  dateDeNaissance: "2002-08-05"
+  sexe: "m"
+  lieuDeNaissance: "99131"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Pereira",
+    "prenom": "Maoris",
+    "dateNaissance": "2002-08-05",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-10-10",
+        "dateFinInscription": "2025-10-10",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

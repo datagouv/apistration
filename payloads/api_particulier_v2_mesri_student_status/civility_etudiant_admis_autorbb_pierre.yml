@@ -1,0 +1,29 @@
+---
+description: Étudiant admis AUTORBB PIERRE
+params:
+  nom: "AUTORBB"
+  prenom: "PIERRE"
+  dateDeNaissance: "2001-02-05"
+  sexe: "m"
+  lieuDeNaissance: "99424"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "AUTORBB",
+    "prenom": "PIERRE",
+    "dateNaissance": "2001-02-05",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-12-31",
+        "statut": "admis",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

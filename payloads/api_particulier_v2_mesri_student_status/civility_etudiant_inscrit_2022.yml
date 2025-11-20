@@ -1,6 +1,6 @@
 ---
-description : Étudiant inscrit 2022
-params :
+description: Étudiant inscrit 2022
+params:
   nom: "SOULI"
   prenom: "Asma"
   dateDeNaissance: "2002-01-01"
@@ -10,7 +10,7 @@ status: 200
 payload: |-
   {
     "ine": "1234567890Y",
-    "nomFamille": " SOULI ",
+    "nomFamille": "SOULI",
     "prenom": "Asma",
     "dateNaissance": "2002-01-01",
     "inscriptions": [

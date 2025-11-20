@@ -1,5 +1,5 @@
 ---
-description: 'Étudiant inscrit'
+description: Étudiant inscrit
 params:
   nom: "BRETAGNE"
   prenom: "Lisa"
@@ -9,7 +9,7 @@ params:
 status: 200
 payload: |-
   {
-    "ine": "1296522890Y",
+    "ine": "1234567890Y",
     "nomFamille": "BRETAGNE",
     "prenom": "Lisa",
     "dateNaissance": "2005-06-01",

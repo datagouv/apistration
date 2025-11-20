@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Nom Narjes
+params:
+  nom: "Nom"
+  prenom: "Narjes"
+  dateDeNaissance: "2006-01-06"
+  sexe: "f"
+  lieuDeNaissance: "99424"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Nom",
+    "prenom": "Narjes",
+    "dateNaissance": "2006-01-06",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-12-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

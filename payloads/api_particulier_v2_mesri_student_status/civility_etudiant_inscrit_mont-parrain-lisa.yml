@@ -1,15 +1,15 @@
 ---
-description: 'Etudiant inscrit'
+description: Etudiant inscrit
 params:
   nom: "MONT-PARRAIN"
   prenom: "Lisa"
   dateDeNaissance: "2000-01-01"
   sexe: "f"
-  lieuDeNaissance: " 99109"
+  lieuDeNaissance: "99109"
 status: 200
 payload: |-
   {
-    "ine": "1274451233Y",
+    "ine": "1234567890Y",
     "nomFamille": "MONT-PARRAIN",
     "prenom": "Lisa",
     "dateNaissance": "2000-01-01",
