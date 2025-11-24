@@ -25,10 +25,6 @@ class INSEE::Authenticate < AbstractGetToken
     }
   end
 
-  def client_credentials_header
-    Base64.strict_encode64("#{client_id}:#{client_secret}")
-  end
-
   def client_id
     Siade.credentials[:insee_sirene_client_id]
   end
