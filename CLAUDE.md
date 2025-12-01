@@ -18,3 +18,5 @@
 - **Data Structure**: Validate payloads against OpenAPI specifications
 - **Best Practice**: Create summary.csv for each endpoint directory
 - **File Format**: All files must end with a newline
+
+IMPORTANT! Every payload file in a given folder must have a unique set of parameters. Duplicate parameter sets across files in the same folder are not allowed.
