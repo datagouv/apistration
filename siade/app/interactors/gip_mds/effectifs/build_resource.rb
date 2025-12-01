@@ -37,12 +37,16 @@ class GIPMDS::Effectifs::BuildResource < BuildResource
     end
   end
 
-  def extract_nature_from_effectif(effectif)
+  def extract_nature_from_effectif(effectif) # rubocop:disable Metrics/CyclomaticComplexity
     case effectif['nature']
-    when 'A01'
-      'effectif_moyen_annuel'
-    when 'M01'
-      'effectif_moyen_mensuel'
+    when 'A01' then 'effectif_moyen_annuel'
+    when 'A02' then 'effectif_boeth_annuel'
+    when 'A03' then 'effectif_ecap_annuel'
+    when 'A04' then 'effectif_assujettissement_oeth_annuel'
+    when 'M01' then 'effectif_moyen_mensuel'
+    when 'M02' then 'effectif_boeth_mensuel'
+    when 'M03' then 'effectif_ecap_mensuel'
+    when 'M04' then 'effectif_assujettissement_oeth_mensuel'
     else
       raise "Unknown type #{effectif['nature']}"
     end

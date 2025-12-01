@@ -49,5 +49,51 @@ RSpec.describe GIPMDS::EffectifsAnnuelsEntreprise::BuildResource, type: :build_r
         }
       )
     end
+
+    context 'with nature_effectif parameter' do
+      let(:params) do
+        {
+          siren:,
+          year:,
+          nature_effectif: 'boeth'
+        }
+      end
+
+      let(:body) do
+        gip_mds_stubbed_payload_for_annuel(
+          siren:,
+          year:,
+          nature: 'A02',
+          regime_agricole_effectifs: nil,
+          regime_general_effectifs: '16.64'
+        ).to_json
+      end
+
+      it 'builds payload with correct nature' do
+        expect(subject.to_h).to eq(
+          {
+            siren:,
+            effectifs_annuel: [
+              {
+                regime: 'regime_agricole',
+                year:,
+                nature: 'effectif_boeth_annuel',
+                month: '12',
+                value: nil,
+                date_derniere_mise_a_jour: nil
+              },
+              {
+                regime: 'regime_general',
+                year:,
+                nature: 'effectif_boeth_annuel',
+                month: '12',
+                value: 16.64,
+                date_derniere_mise_a_jour: Time.zone.today
+              }
+            ]
+          }
+        )
+      end
+    end
   end
 end

@@ -61,47 +61,49 @@ module ProviderStubs::GIPMDS
     )
   end
 
-  def gip_mds_stubbed_payload_for_annuel(siren:, year:, regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
+  def gip_mds_stubbed_payload_for_annuel(siren:, year:, nature: 'A01', regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
     [
       build_gip_mds_effectif_payload(
         effectifs: regime_agricole_effectifs
       ).merge(
         siren:,
         periode: "#{year}1231",
-        nature: 'A01',
+        nature:,
         source: 'RA'
       ),
       build_gip_mds_effectif_payload(
         effectifs: regime_general_effectifs
       ).merge(
         siren:,
-        nature: 'A01',
+        nature:,
         periode: "#{year}1231",
         source: 'RG'
       )
     ]
   end
 
-  def gip_mds_stubbed_payload_for_mensuel(siret:, year:, month:, regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
+  # rubocop:disable Metrics/ParameterLists
+  def gip_mds_stubbed_payload_for_mensuel(siret:, year:, month:, nature: 'M01', regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
     [
       build_gip_mds_effectif_payload(
         effectifs: regime_agricole_effectifs
       ).merge(
         siret:,
         periode: "#{year}#{month}01",
-        nature: 'M01',
+        nature:,
         source: 'RA'
       ),
       build_gip_mds_effectif_payload(
         effectifs: regime_general_effectifs
       ).merge(
         siret:,
-        nature: 'M01',
+        nature:,
         periode: "#{year}#{month}01",
         source: 'RG'
       )
     ]
   end
+  # rubocop:enable Metrics/ParameterLists
   # rubocop:enable Metrics/MethodLength
 
   def build_gip_mds_effectif_payload(effectifs:, updated_at: nil)
