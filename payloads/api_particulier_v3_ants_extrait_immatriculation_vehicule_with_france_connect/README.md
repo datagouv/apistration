@@ -79,7 +79,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -175,7 +182,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -271,7 +285,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -367,7 +388,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -512,7 +540,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -608,7 +643,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -704,7 +746,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -800,7 +849,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -896,7 +952,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -992,7 +1055,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -1088,7 +1158,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -1184,7 +1261,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 
@@ -1280,7 +1364,14 @@
       }
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
   }
   ```
 

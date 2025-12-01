@@ -57,7 +57,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire Parisien VP ES,"{""immatriculation"":""TM-001-KB""}",200,"{
   ""data"": {
@@ -117,7 +124,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire véhicule particulier essence lié DGFIP non-Parisien,"{""immatriculation"":""TM-002-KB""}",200,"{
   ""data"": {
@@ -177,7 +191,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire Parisien VP EL,"{""immatriculation"":""TM-003-KB""}",200,"{
   ""data"": {
@@ -237,7 +258,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,Dossier d'immatriculation non trouvé via FranceConnect,"{""immatriculation"":""XX-404-FC""}",404,"{
   ""errors"": [
@@ -310,7 +338,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,"FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien, avec incohérence entre adresse dgfip et siv","{""immatriculation"":""TM-005-KB""}",200,"{
   ""data"": {
@@ -370,7 +405,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire 2RM Parisien,"{""immatriculation"":""TM-006-KB""}",200,"{
   ""data"": {
@@ -430,7 +472,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire non-Parisien VP ES,"{""immatriculation"":""TM-008-KB""}",200,"{
   ""data"": {
@@ -490,7 +539,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire véhicule particulier essence,"{""immatriculation"":""FC-123-AB""}",200,"{
   ""data"": {
@@ -550,7 +606,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire véhicule particulier essence lié DGFIP Lyon,"{""immatriculation"":""ZA-387-DK""}",200,"{
   ""data"": {
@@ -610,7 +673,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien,"{""immatriculation"":""ZA-378-DK""}",200,"{
   ""data"": {
@@ -670,7 +740,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien,"{""immatriculation"":""ZA-383-DK""}",200,"{
   ""data"": {
@@ -730,7 +807,14 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
 ,Locataire LLD véhicule particulier hybride via FranceConnect,"{""immatriculation"":""FC-456-CD""}",200,"{
   ""data"": {
@@ -790,5 +874,12 @@ Titre,Description,Paramètres,Status,Réponse
     }
   },
   ""links"": {},
-  ""meta"": {}
+  ""meta"": {
+    ""identity_matching"": {
+      ""family_name"": 1.0,
+      ""given_name"": 1.0,
+      ""birth_date"": 1.0,
+      ""overall_match"": true
+    }
+  }
 }"
