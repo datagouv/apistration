@@ -19,9 +19,11 @@ RSpec.describe 'GIP-MDS: effectifs annuel unité légale', api: :entreprise, typ
 
       parameter_siren
       parameter name: :year, in: :path, type: :string
+      parameter({ name: :nature_effectif, in: :query }.merge(SwaggerData.get('gip_mds.effectifs_annuels_entreprise.parameters.nature_effectif')))
 
       let(:year) { 2020 }
       let(:siren) { valid_siren }
+      let(:nature_effectif) { nil }
 
       unauthorized_request do
         let(:siren) { valid_siren }

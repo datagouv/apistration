@@ -13,7 +13,8 @@ class APIEntreprise::V3AndMore::GIPMDS::EffectifsAnnuelsEntrepriseController < A
   def organizer_params
     {
       siren: params[:siren],
-      year: params[:year]
+      year: params[:year],
+      nature_effectif: params[:nature_effectif]
     }
   end
 

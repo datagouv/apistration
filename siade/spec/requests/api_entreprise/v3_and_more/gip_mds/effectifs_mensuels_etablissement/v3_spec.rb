@@ -22,11 +22,13 @@ RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, t
       parameter name: :year, in: :path, type: :string
       parameter name: :month, in: :path, type: :string
       parameter({ name: :profondeur, in: :query }.merge(SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.parameters.profondeur')))
+      parameter({ name: :nature_effectif, in: :query }.merge(SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.parameters.nature_effectif')))
 
       let(:year) { '2020' }
       let(:month) { '01' }
       let(:siret) { valid_siret }
       let(:profondeur) { 1 }
+      let(:nature_effectif) { nil }
 
       unauthorized_request do
         let(:siret) { valid_siret }

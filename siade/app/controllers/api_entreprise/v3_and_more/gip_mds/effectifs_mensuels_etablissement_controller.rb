@@ -15,7 +15,8 @@ class APIEntreprise::V3AndMore::GIPMDS::EffectifsMensuelsEtablissementController
       siret: params[:siret],
       year: params[:year],
       month: params[:month],
-      depth: params[:profondeur]
+      depth: params[:profondeur],
+      nature_effectif: params[:nature_effectif]
     }
   end
 
