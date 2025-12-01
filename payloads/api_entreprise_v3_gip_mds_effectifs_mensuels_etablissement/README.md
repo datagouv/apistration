@@ -1,4 +1,70 @@
 # Effectifs mensuels d'un établissement
+* [200-boeth.yaml](200-boeth.yaml)
+
+  Status `200`
+
+  GIP-MDS effectifs mensuels établissement 200 avec nature_effectif boeth
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siret": "13002526500013",
+    "year": "2024",
+    "month": "06",
+    "nature_effectif": "boeth"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "siret": "13002526500013",
+      "effectifs_mensuels": [
+        {
+          "regime": "regime_general",
+          "annee": "2024",
+          "mois": "06",
+          "nature": "effectif_moyen_mensuel",
+          "value": 2,
+          "date_derniere_mise_a_jour": "2024-07-10"
+        },
+        {
+          "regime": "regime_agricole",
+          "annee": "2024",
+          "mois": "06",
+          "nature": "effectif_moyen_mensuel",
+          "value": null,
+          "date_derniere_mise_a_jour": null
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/gip_mds/etablissements/13002526500013/effectifs_mensuels/06/annee/2024"
+  ```
+
+  </p>
+  </details>
 * [200.yaml](200.yaml)
 
   Status `200`

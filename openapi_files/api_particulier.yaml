@@ -62,7 +62,7 @@ paths:
     get:
       summary: "[FranceConnect] Extrait d'immatriculation véhicule"
       tags:
-      - Prochainement
+      - Extrait d'immatriculation véhicule
       parameters:
       - name: recipient
         in: query
@@ -166,6 +166,7 @@ paths:
                             type: integer
                             description: L'année de naissance du demandeur.
                             example: 1990
+                            nullable: true
                           mois_date_naissance:
                             title: Mois de naissance
                             type: integer
@@ -173,6 +174,7 @@ paths:
                             minimum: 1
                             maximum: 12
                             example: 3
+                            nullable: true
                           jour_date_naissance:
                             title: Jour de naissance
                             type: integer
@@ -180,6 +182,7 @@ paths:
                             minimum: 1
                             maximum: 31
                             example: 15
+                            nullable: true
                           code_departement_naissance:
                             title: Code département de naissance
                             type: string
@@ -555,6 +558,47 @@ paths:
                     type: object
                   meta:
                     type: object
+                    properties:
+                      identity_matching:
+                        title: Résultats de la vérification d'identité
+                        type: object
+                        description: Résultats de la comparaison entre l'identité
+                          FranceConnect et l'identité du demandeur d'immatriculation.
+                          A noter que la validation demande exclusivement une correspondance
+                          sur le nom de famille et le prénom. La correspondance sur
+                          la date de naissance n'est pas prise en compte dans cette
+                          validation mais est fournie à titre informatif.
+                        properties:
+                          family_name:
+                            title: Nom de famille correspond
+                            type: number
+                            format: float
+                            description: Indique si le nom de famille correspond entre
+                              FranceConnect et l'identité ANTS.
+                            example: 1.0
+                          given_name:
+                            title: Prénom correspond
+                            type: number
+                            format: float
+                            description: Indique si le prénom correspond entre FranceConnect
+                              et l'identité ANTS.
+                            example: 1.0
+                          birth_date:
+                            title: Date de naissance correspond
+                            type: number
+                            format: float
+                            description: Indique si la date de naissance correspond
+                              entre FranceConnect et l'identité ANTS.
+                            example: 0.0
+                          overall_match:
+                            title: Correspondance globale
+                            type: boolean
+                            description: Indique si l'identité correspond globalement
+                              (nom de famille et prénom).
+                            example: true
+                    required:
+                    - identity_matching
+                    additionalProperties: false
                 required:
                 - data
                 - links

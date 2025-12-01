@@ -1,0 +1,34 @@
+---
+description: 'GIP-MDS effectifs mensuels établissement 200 avec nature_effectif boeth'
+params:
+  siret: '13002526500013'
+  year: '2024'
+  month: '06'
+  nature_effectif: boeth
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "13002526500013",
+      "effectifs_mensuels": [
+        {
+          "regime": "regime_general",
+          "annee": "2024",
+          "mois": "06",
+          "nature": "effectif_moyen_mensuel",
+          "value": 2,
+          "date_derniere_mise_a_jour": "2024-07-10"
+        },
+        {
+          "regime": "regime_agricole",
+          "annee": "2024",
+          "mois": "06",
+          "nature": "effectif_moyen_mensuel",
+          "value": null,
+          "date_derniere_mise_a_jour": null
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
