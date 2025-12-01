@@ -65,6 +65,24 @@ Titre,Description,Paramètres,Status,Réponse
   ""meta"": {
   }
 }"
+,GIP-MDS effectifs annuels entreprise 200 avec nature_effectif boeth,"{""siren"":""130025265"",""year"":""2024"",""nature_effectif"":""boeth""}",200,"{
+  ""data"": {
+    ""siren"": ""130025265"",
+    ""annee"": ""2024"",
+    ""effectifs_annuel"": [
+      {
+        ""regime"": ""regime_general"",
+        ""value"": 3,
+        ""nature"": ""effectif_moyen_annuel"",
+        ""date_derniere_mise_a_jour"": ""2024-01-01""
+      }
+    ]
+  },
+  ""links"": {
+  },
+  ""meta"": {
+  }
+}"
 ,Chiffre d'affaire annuels entreprise 404,"{""siren"":""000000000"",""year"":""2020""}",404,"{
   ""errors"": [
     {

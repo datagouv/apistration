@@ -176,6 +176,62 @@
 
   </p>
   </details>
+* [200-boeth.yaml](200-boeth.yaml)
+
+  Status `200`
+
+  GIP-MDS effectifs annuels entreprise 200 avec nature_effectif boeth
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren": "130025265",
+    "year": "2024",
+    "nature_effectif": "boeth"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "siren": "130025265",
+      "annee": "2024",
+      "effectifs_annuel": [
+        {
+          "regime": "regime_general",
+          "value": 3,
+          "nature": "effectif_moyen_annuel",
+          "date_derniere_mise_a_jour": "2024-01-01"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/gip_mds/unites_legales/130025265/effectifs_annuels/2024"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
