@@ -305,6 +305,10 @@ shared:
     - allocation_adulte_handicape
   api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect:
     - allocation_adulte_handicape
+  api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility:
+    - cnav_allocation_enfant_handicape
+  api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect:
+    - cnav_allocation_enfant_handicape
   api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility:
     - complementaire_sante_solidaire
   api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect:
