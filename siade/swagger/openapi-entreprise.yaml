@@ -11412,6 +11412,18 @@ paths:
         required: true
         schema:
           type: string
+      - name: nature_effectif
+        in: query
+        description: Nature de l'effectif demandé. Par défaut, l'effectif moyen est
+          renvoyé.
+        schema:
+          type: string
+          default: moyen
+          enum:
+          - moyen
+          - boeth
+          - ecap
+          - assujettissement_oeth
       security:
       - jwt_bearer_token: []
       description: Effectifs annuels des régimes général et agricole d'une unité légale,
@@ -11566,6 +11578,9 @@ paths:
                               type: string
                               enum:
                               - effectif_moyen_annuel
+                              - effectif_boeth_annuel
+                              - effectif_ecap_annuel
+                              - effectif_assujettissement_oeth_annuel
                             date_derniere_mise_a_jour:
                               title: Date de la dernière mise à jour de la donnée
                               type: string
@@ -11837,6 +11852,18 @@ paths:
           default: 0
           minimum: 0
           maximum: 12
+      - name: nature_effectif
+        in: query
+        description: Nature de l'effectif demandé. Par défaut, l'effectif moyen est
+          renvoyé.
+        schema:
+          type: string
+          default: moyen
+          enum:
+          - moyen
+          - boeth
+          - ecap
+          - assujettissement_oeth
       security:
       - jwt_bearer_token: []
       description: Effectifs mensuels des régimes général et agricole d'un établissement,
@@ -11989,6 +12016,9 @@ paths:
                               type: string
                               enum:
                               - effectif_moyen_mensuel
+                              - effectif_boeth_mensuel
+                              - effectif_ecap_mensuel
+                              - effectif_assujettissement_oeth_mensuel
                             annee:
                               title: Année
                               type: string
