@@ -1,0 +1,25 @@
+{
+  "indicateur": "OUVRANT_DROIT",
+  "dateIndicateur": "2021-01-01",
+  "listePrestation": [
+    {
+      "cd": "MA1510",
+      "libelle": "AEEH",
+      "qualiteBeneficiaire": "205",
+      "dtOuvertureDroit": "2021-01-01",
+      "etat": {
+        "cd": 10,
+        "libelle": "Actif",
+        "dtEffet": "2021-06-01"
+      },
+      "organismeRattachement": {
+        "cd": 17,
+        "libelle": "CAISSE CENTRALE DE MUTUALITE SOCIALE AGRICOLE"
+      },
+      "organismeGestionnaire": {
+        "cd": 2915,
+        "libelle": "MUTUALITE SOCIALE AGRICOLE AIN-RHONE"
+      }
+    }
+  ]
+}
