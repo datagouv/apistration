@@ -63,6 +63,8 @@ shared:
       - { controller: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_france_connect', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility', action: 'show' }
