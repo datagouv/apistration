@@ -1,4 +1,9 @@
 class GIPMDS::Effectifs::MakeRequest < MakeRequest::Get
+  MOYEN_EFFECTIF_CODE = 1
+  BOETH_EFFECTIF_CODE = 2
+  ECAP_EFFECTIF_CODE = 3
+  ASSUJETTISSEMENT_OETH_EFFECTIF_CODE = 4
+
   protected
 
   def request_uri
@@ -47,11 +52,20 @@ class GIPMDS::Effectifs::MakeRequest < MakeRequest::Get
   end
 
   def nature
-    case context.params[:nature]
-    when :yearly
-      'A01'
-    when :monthly
-      'M01'
+    prefix = context.params[:nature] == :yearly ? 'A' : 'M'
+    "#{prefix}0#{nature_effectif_code}"
+  end
+
+  def nature_effectif_code
+    case context.params[:nature_effectif]
+    when 'boeth'
+      BOETH_EFFECTIF_CODE
+    when 'ecap'
+      ECAP_EFFECTIF_CODE
+    when 'assujettissement_oeth'
+      ASSUJETTISSEMENT_OETH_EFFECTIF_CODE
+    else
+      MOYEN_EFFECTIF_CODE
     end
   end
 
