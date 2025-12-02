@@ -52,8 +52,8 @@ gip_mds:
                 - 'regime_general'
                 - 'regime_agricole'
             value:
-              title: "Valeur"
-              description: "Cette valeur est à null si il n'y a pas d'effectif dans le régime"
+              title: "Valeur de l'effectif"
+              description: "Valeur de l'effectif annuel. Cette valeur est à null s'il n'y a pas d'effectif dans le régime."
               type: "number"
               example: 12.34
               nullable: true
@@ -137,8 +137,8 @@ gip_mds:
                 - 'regime_general'
                 - 'regime_agricole'
             value:
-              title: "Valeur"
-              description: "Cette valeur est à null si il n'y a pas d'effectif dans le régime"
+              title: "Valeur de l'effectif"
+              description: "Valeur de l'effectif mensuel. Cette valeur est à null s'il n'y a pas d'effectif dans le régime."
               type: "number"
               example: 12.34
               nullable: true
@@ -160,13 +160,13 @@ gip_mds:
                 - 'effectif_ecap_mensuel'
                 - 'effectif_assujettissement_oeth_mensuel'
             annee:
-              title: "Année"
+              title: "Année de l'effectif"
               type: "string"
               maxLength: 4
               minLength: 4
               example: "2021"
             mois:
-              title: "Mois"
+              title: "Mois de l'effectif"
               type: "string"
               example: "01"
               maxLength: 2
