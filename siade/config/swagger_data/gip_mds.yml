@@ -30,6 +30,7 @@ gip_mds:
         example: "130025265"
       annee:
         title: "Année de référence"
+        description: "Année des effectifs renvoyés, c'est-à-dire l'année N-1 si aucune année n'a été précisée en paramètre d'appel, ou bien l'année mentionnée en appel."
         type: "string"
         example: "2017"
       effectifs_annuel:
