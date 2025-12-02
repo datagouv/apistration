@@ -6,7 +6,15 @@ gip_mds:
     description: "Effectifs annuels des régimes général et agricole d'une unité légale, issus du répertoire commun des déclarants (RCD)."
     parameters:
       nature_effectif:
-        description: "Nature de l'effectif demandé. Par défaut, l'effectif moyen est renvoyé."
+        description: "Indique la nature de l'effectif transmis. Si ce paramètre n'est pas complété en appel, l'effectif moyen annuel (EMA) sera renvoyé par défaut. L'API permet d'accéder à 4 natures d'effectif :
+           \n
+           - Effectif moyen annuel (EMA), c'est-à-dire le nombre de salariés en contrat "actif"  hors exclusions. Ces exclusions sont décrites dans la documentation.
+           \n
+           - Effectif BOETH annuel (EMA BOTEH), c'est-à-dire le nombre de salariés de l'entreprise (salariés, stagiaires et PMSMP) qui sont bénéficiaires de l'obligation d’emploi des travailleurs handicapés (BOETH). Ce statut recouvre plusieurs situations décrites dans la documentation.
+           \n
+           - Effectif ECAP annuel (EMA ECAP), c'est-à-dire le nombre de salariés de l'entreprise occupant un emploi qui, de par ses exigences en matière d'aptitude, rend difficile un recrutement de travailleurs handicapés. Cet effectif est utilisé par l'URSSAF pour calculer une réduction de la contribution employeur si l'entreprise n'emploie pas assez de travailleurs handicapés.
+           \n
+           - Effectif d'assujettissement OETH annuel (EMA OETH), c'est-à-dire le nombre de salariés en contrat "actif", hors exclusions, différentes de celles de l'effectif moyen mensuel (EMM). Cet effectif est utilisé par l'URSSAF pour calculer le niveau d'obligation d'emploi de travailleurs handicapés de l'entreprise."
         schema:
           type: 'string'
           default: 'moyen'
@@ -51,6 +59,15 @@ gip_mds:
               nullable: true
             nature:
               title: "Nature de l'effectif"
+              description: "Indique la nature de l'effectif transmis. Quatre natures d'effectif sont renvoyées par l'API :
+           \n
+           - Effectif moyen annuel (EMA), c'est-à-dire le nombre de salariés en contrat "actif"  hors exclusions. Ces exclusions sont décrites dans la documentation.
+           \n
+           - Effectif BOETH annuel (EMA BOTEH), c'est-à-dire le nombre de salariés de l'entreprise (salariés, stagiaires et PMSMP) qui sont bénéficiaires de l'obligation d’emploi des travailleurs handicapés (BOETH). Ce statut recouvre plusieurs situations décrites dans la documentation.
+           \n
+           - Effectif ECAP annuel (EMA ECAP), c'est-à-dire le nombre de salariés de l'entreprise occupant un emploi qui, de par ses exigences en matière d'aptitude, rend difficile un recrutement de travailleurs handicapés. Cet effectif est utilisé par l'URSSAF pour calculer une réduction de la contribution employeur si l'entreprise n'emploie pas assez de travailleurs handicapés.
+           \n
+           - Effectif d'assujettissement OETH annuel (EMA OETH), c'est-à-dire le nombre de salariés en contrat "actif", hors exclusions, différentes de celles de l'effectif moyen mensuel (EMM). Cet effectif est utilisé par l'URSSAF pour calculer le niveau d'obligation d'emploi de travailleurs handicapés de l'entreprise."
               type: "string"
               enum:
                 - 'effectif_moyen_annuel'
@@ -66,7 +83,7 @@ gip_mds:
     title: "Effectifs mensuels d'un établissement"
     tags:
       - "Informations générales"
-    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus du répertoire commun des déclarants (RCD)."
+    description: "Effectifs mensuels des régimes général et agricole d'un établissement (effectif moyen, BOETH,  issus du répertoire commun des déclarants (RCD)."
     parameters:
       profondeur:
         description: "Nombre de mois à remonter dans le temps. Par défaut cette valeur est à 0, ce renvoi le mois en cours. Il n'est pas possible de remonter à plus de 13 mois."
@@ -76,7 +93,15 @@ gip_mds:
           minimum: 0
           maximum: 12
       nature_effectif:
-        description: "Nature de l'effectif demandé. Par défaut, l'effectif moyen est renvoyé."
+        description: "Indique la nature de l'effectif transmis. Si ce paramètre n'est pas complété en appel, l'effectif moyen mensuel (EMM) sera renvoyé par défaut. L'API permet d'accéder à 4 natures d'effectif :
+           \n
+           - Effectif moyen mensuel (EMM), c'est-à-dire le nombre de salariés en contrat "actif"  hors exclusions. Ces exclusions sont décrites dans la documentation.
+           \n
+           - Effectif BOETH mensuel (EMM BOTEH), c'est-à-dire le nombre de salariés de l'entreprise (salariés, stagiaires et PMSMP) qui sont bénéficiaires de l'obligation d’emploi des travailleurs handicapés (BOETH). Ce statut recouvre plusieurs situations décrites dans la documentation.
+           \n
+           - Effectif ECAP mensuel (EMM ECAP), c'est-à-dire le nombre de salariés de l'entreprise occupant un emploi qui, de par ses exigences en matière d'aptitude, rend difficile un recrutement de travailleurs handicapés. Cet effectif est utilisé par l'URSSAF pour calculer une réduction de la contribution employeur si l'entreprise n'emploie pas assez de travailleurs handicapés.
+           \n
+           - Effectif d'assujettissement OETH mensuel (EMM OETH), c'est-à-dire le nombre de salariés en contrat "actif", hors exclusions, différentes de celles de l'effectif moyen mensuel (EMM). Cet effectif est utilisé par l'URSSAF pour calculer le niveau d'obligation d'emploi de travailleurs handicapés de l'entreprise."
         schema:
           type: 'string'
           default: 'moyen'
@@ -119,6 +144,15 @@ gip_mds:
               nullable: true
             nature:
               title: "Nature de l'effectif"
+              description: "Indique la nature de l'effectif transmis. Quatre natures d'effectif sont renvoyées par l'API : 
+                 \n
+                 - Effectif moyen mensuel (EMM), c'est-à-dire le nombre de salariés en contrat "actif"  hors exclusions. Ces exclusions sont décrites dans la documentation.
+                 \n
+                 - Effectif BOETH mensuel (EMM BOTEH), c'est-à-dire le nombre de salariés de l'entreprise (salariés, stagiaires et PMSMP) qui sont bénéficiaires de l'obligation d’emploi des travailleurs handicapés (BOETH). Ce statut recouvre plusieurs situations décrites dans la documentation.
+                 \n
+                 - Effectif ECAP mensuel (EMM ECAP), c'est-à-dire le nombre de salariés de l'entreprise occupant un emploi qui, de par ses exigences en matière d'aptitude, rend difficile un recrutement de travailleurs handicapés. Cet effectif est utilisé par l'URSSAF pour calculer une réduction de la contribution employeur si l'entreprise n'emploie pas assez de travailleurs handicapés.
+                 \n
+                 - Effectif d'assujettissement OETH mensuel (EMM OETH), c'est-à-dire le nombre de salariés en contrat "actif", hors exclusions, différentes de celles de l'effectif moyen mensuel (EMM). Cet effectif est utilisé par l'URSSAF pour calculer le niveau d'obligation d'emploi de travailleurs handicapés de l'entreprise."
               type: "string"
               enum:
                 - 'effectif_moyen_mensuel'
