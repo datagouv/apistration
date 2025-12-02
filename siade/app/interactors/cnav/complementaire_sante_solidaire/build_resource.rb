@@ -1,22 +1,20 @@
-class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
+class CNAV::ComplementaireSanteSolidaire::BuildResource < BuildResource
   protected
+
+  DATE_FORMAT = '%Y-%m-%d'.freeze
 
   def resource_attributes
     {
       status:,
       est_beneficiaire: !non_beneficiary?,
       avec_participation: beneficiary_with_participation?,
-      date_debut_droit: date_debut,
+      date_debut_droit:,
       date_fin_droit: nil
     }
   end
 
-  def beneficiary_with_participation_code
-    %w[MMN1001 MMN1510 MMN1515 MMN1517]
-  end
-
-  def beneficiary_without_participation_code
-    %w[MMN1501 MMN1502]
+  def status
+    json_body['indicateur'].downcase
   end
 
   def beneficiary_with_participation?
@@ -25,18 +23,14 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
     json_body['indicateur'] == 'BENEFICIAIRE_AVEC_PARTICIPATION_FINANCIERE'
   end
 
-  def beneficiary_without_participation?
-    json_body['indicateur'] == 'BENEFICIAIRE_SANS_PARTICIPATION_FINANCIERE'
-  end
-
-  def matching_prestations
-    return beneficiary_with_participation_code if beneficiary_with_participation?
-    return beneficiary_without_participation_code if beneficiary_without_participation?
-
-    []
-  end
-
   def non_beneficiary?
     json_body['indicateur'] == 'NON_BENEFICIAIRE_CSS'
+  end
+
+  def date_debut_droit
+    return nil if non_beneficiary?
+    return nil if json_body['dateIndicateur'].blank?
+
+    Date.parse(json_body['dateIndicateur']).strftime(DATE_FORMAT)
   end
 end
