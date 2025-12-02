@@ -10,8 +10,24 @@ RSpec.describe Civility::ValidateCodeCogINSEEPaysNaissance, type: :validate_para
   end
 
   context 'when attribute is present' do
-    context 'when it is 5 valid digits' do
+    context 'when it is 5 valid digits starting with 99' do
       let(:code_cog_insee_pays_naissance) { '99345' }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
+
+    context 'when it is 5 valid digits starting with not 99' do
+      let(:code_cog_insee_pays_naissance) { '90345' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when it is French Algeria' do
+      let(:code_cog_insee_pays_naissance) { '92352' }
 
       it { is_expected.to be_a_success }
 

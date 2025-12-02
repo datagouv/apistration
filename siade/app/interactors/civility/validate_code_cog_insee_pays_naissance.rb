@@ -10,6 +10,15 @@ class Civility::ValidateCodeCogINSEEPaysNaissance < ValidateParamInteractor
   def valid?
     param(:code_cog_insee_pays_naissance).present? &&
       param(:code_cog_insee_pays_naissance).to_s =~ /^\d{5}$/ &&
-      param(:code_cog_insee_pays_naissance).to_s.first(2) == '99'
+      starts_with_99_or_french_algeria?
+  end
+
+  def starts_with_99_or_french_algeria?
+    param(:code_cog_insee_pays_naissance).to_s.first(2) == '99' ||
+      french_algeria?
+  end
+
+  def french_algeria?
+    param(:code_cog_insee_pays_naissance).to_s == '92352'
   end
 end
