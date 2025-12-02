@@ -3,7 +3,7 @@ gip_mds:
     title: "Effectifs annuels d'une unité légale"
     tags:
       - "Informations générales"
-    description: "Effectifs annuels des régimes général et agricole d'une unité légale, issus du répertoire commun des déclarants (RCD), dont l'effectif moyen (EMA) ou les effectifs liés à l'obligation travailleurs handicapés (EMA BOETH, EMA OETH, EMA ECAP)."
+    description: "Effectifs annuels des régimes général et agricole d'une unité légale, issus du répertoire commun des déclarants (RCD), dont l'effectif moyen (EMA) ou les effectifs liés à l'obligation d'emploi des travailleurs handicapés (EMA BOETH, EMA OETH, EMA ECAP)."
     parameters:
       nature_effectif:
         description: "Indique la nature de l'effectif transmis. Si ce paramètre n'est pas complété en appel, l'effectif moyen annuel (EMA) sera renvoyé par défaut. L'API permet d'accéder à 4 natures d'effectif :
@@ -84,7 +84,7 @@ gip_mds:
     title: "Effectifs mensuels d'un établissement"
     tags:
       - "Informations générales"
-    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus du répertoire commun des déclarants (RCD), dont l'effectif moyen (EMM) ou les effectifs liés à l'obligation travailleurs handicapés (EMM BOETH, EMM OETH, EMM ECAP)."
+    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus du répertoire commun des déclarants (RCD), dont l'effectif moyen (EMM) ou les effectifs liés à l'obligation d'emploi travailleurs handicapés (EMM BOETH, EMM OETH, EMM ECAP)."
     parameters:
       profondeur:
         description: "Nombre de mois à remonter dans le temps. Par défaut cette valeur est à 0, ce renvoi le mois en cours. Il n'est pas possible de remonter à plus de 13 mois."
