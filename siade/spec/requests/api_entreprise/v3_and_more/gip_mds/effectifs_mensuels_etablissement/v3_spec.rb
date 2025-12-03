@@ -19,8 +19,8 @@ RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, t
 
       parameter_siret
 
-      parameter name: :year, in: :path, type: :string
-      parameter name: :month, in: :path, type: :string
+      parameter({ name: :year, in: :path }.merge(SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.parameters.year')))
+      parameter({ name: :month, in: :path }.merge(SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.parameters.month')))
       parameter({ name: :profondeur, in: :query }.merge(SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.parameters.profondeur')))
       parameter({ name: :nature_effectif, in: :query }.merge(SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.parameters.nature_effectif')))
 

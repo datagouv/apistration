@@ -11409,9 +11409,11 @@ paths:
           type: string
       - name: year
         in: path
-        required: true
+        description: Année de référence des effectifs.
         schema:
           type: string
+          example: '2020'
+        required: true
       - name: nature_effectif
         in: query
         description: Nature de l'effectif demandé. Par défaut, l'effectif moyen est
@@ -11834,14 +11836,31 @@ paths:
           type: string
       - name: year
         in: path
-        required: true
+        description: Année de référence des effectifs.
         schema:
           type: string
+          example: '2020'
+        required: true
       - name: month
         in: path
-        required: true
+        description: 'Mois de référence des effectifs (format: 01 à 12).'
         schema:
           type: string
+          example: '01'
+          enum:
+          - '01'
+          - '02'
+          - '03'
+          - '04'
+          - '05'
+          - '06'
+          - '07'
+          - '08'
+          - '09'
+          - '10'
+          - '11'
+          - '12'
+        required: true
       - name: profondeur
         in: query
         description: Nombre de mois à remonter dans le temps. Par défaut cette valeur
