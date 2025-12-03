@@ -1,0 +1,45 @@
+---
+description: 'Identifiant 123458A, inscrite, toulouse, 2025'
+params:
+  identifiant: '123458A'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiant": "123458A",
+      "identite": {
+        "civilite": "MME",
+        "nom_naissance": "Gallois",
+        "nom_usage": null,
+        "prenom": "Anais",
+        "sexe": "Féminin",
+        "date_naissance": "1989-01-18"
+      },
+      "contact": {
+        "email": "anais.gallois@fake.fr",
+        "telephone": "0601020304",
+        "telephone2": null
+      },
+      "adresse": {
+        "code_cog_insee_commune": "31555",
+        "code_postal": "31400",
+        "ligne_complement_adresse": null,
+        "ligne_complement_destinataire": "APPARTEMENT 42",
+        "ligne_complement_distribution": null,
+        "ligne_nom": "Gallois",
+        "ligne_voie": "11 Rue Capus",
+        "localite": "31400 TOULOUSE"
+      },
+      "inscription": {
+        "date_debut": "2025-09-01",
+        "date_fin": null,
+        "code_certification_cnav": "VC",
+        "categorie": {
+          "code": 1,
+          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
