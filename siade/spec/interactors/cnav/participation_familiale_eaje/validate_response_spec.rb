@@ -25,6 +25,15 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
         expect(subject.errors.first.provider_name).to eq('CNAV')
         expect(subject.errors.first.detail).to include('participation familiale EAJE')
       end
+
+      it 'logs potential unauthorized API usage' do
+        expect(MonitoringService.instance).to receive(:track).with(
+          'info',
+          'Potential unauthorized API use: CNAV EAJE: allocataire found but no kids under 7'
+        )
+
+        subject
+      end
     end
   end
 end

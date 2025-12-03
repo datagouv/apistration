@@ -7,6 +7,7 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
   private
 
   def no_kids_under_7_error!
+    MonitoringService.instance.track('info', 'Potential unauthorized API use: CNAV EAJE: allocataire found but no kids under 7')
     fail_with_error!(build_qfv2_error(
       ::NotFoundError,
       'CNAV',
