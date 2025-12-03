@@ -9,7 +9,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation enfant handicapé (AEEH) with 
 
       cacheable_request
 
-      let(:scopes) { %i[allocation_enfant_handicape] }
+      let(:scopes) { %i[cnav_allocation_enfant_handicape] }
 
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }

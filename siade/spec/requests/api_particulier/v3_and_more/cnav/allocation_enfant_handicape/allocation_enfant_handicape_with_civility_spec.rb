@@ -49,7 +49,7 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
 
       too_many_requests(CNAV::AllocationEnfantHandicape)
 
-      let(:scopes) { %i[allocation_enfant_handicape] }
+      let(:scopes) { %i[cnav_allocation_enfant_handicape] }
 
       before do
         stub_cnav_authenticate('allocation_enfant_handicape')
