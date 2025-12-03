@@ -35,7 +35,7 @@ gip_mds:
         example: "130025265"
       annee:
         title: "Année de référence"
-        description: "Année des effectifs renvoyés, c'est-à-dire l'année N-1 si aucune année n'a été précisée en paramètre d'appel, ou bien l'année mentionnée en appel."
+        description: "Année des effectifs renvoyés, c'est-à-dire l'année mentionnée en appel. Les effectifs annuels sont disponibles seulement une fois l'année écoulée (fin janvier N+1). Pour avoir le dernier effectif disponible, il est donc recommandé d'appeler l'année N-1."
         type: "string"
         example: "2017"
       effectifs_annuel:
@@ -115,7 +115,7 @@ gip_mds:
             - '11'
             - '12'
       profondeur:
-        description: "Nombre de mois à remonter dans le temps. Par défaut cette valeur est à 0, ce renvoi le mois en cours. Il n'est pas possible de remonter à plus de 13 mois."
+        description: "Nombre de mois à renvoyer. Ce paramètre permet de renvoyer les effectifs de plusieurs mois en même temps, au maximum 13 mois."
         schema:
           type: 'integer'
           default: 0
