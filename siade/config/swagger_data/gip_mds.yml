@@ -115,7 +115,7 @@ gip_mds:
             - '11'
             - '12'
       profondeur:
-        description: "Nombre de mois à renvoyer. Ce paramètre permet de renvoyer les effectifs de plusieurs mois en même temps, au maximum 13 mois."
+        description: "Nombre de mois à renvoyer, en amont de la date choisie. Ce paramètre permet de renvoyer les effectifs de plusieurs mois en même temps, antérieurs à la date choisie, et au maximum 13 mois. Par exemple si la date indiquée est 03/2025 et ce paramètre de profondeur est 3. Les effectifs de janvier, février et mars 2025 seront renvoyés."
         schema:
           type: 'integer'
           default: 0
