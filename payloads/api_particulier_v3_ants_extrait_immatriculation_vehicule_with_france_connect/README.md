@@ -872,6 +872,109 @@
 
   </p>
   </details>
+* [Test-Yves.yaml](Test-Yves.yaml)
+
+  Status `200`
+
+  FranceConnect: Titulaire véhicule particulier essence lié DGFIP Parisien
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "immatriculation": "YZ-191-YC"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite_particulier": {
+        "nom": "CIS CINQUANTEUN",
+        "prenom": "PRENOM GAUTIER",
+        "sexe_etat_civil": "M",
+        "annee_date_naissance": 1951,
+        "mois_date_naissance": 8,
+        "jour_date_naissance": 25,
+        "code_departement_naissance": "75"
+      },
+      "adresse_particulier": {
+        "complement_information": null,
+        "num_voie": "172",
+        "type_voie": "BOULEVARD",
+        "libelle_voie": "SAINT GERMAIN",
+        "code_postal_ville": "75006",
+        "libelle_commune": "PARIS",
+        "lieu_dit": null,
+        "etage_escalier_appartement": null,
+        "extension": null,
+        "pays": "FRANCE"
+      },
+      "statut_rattachement": "titulaire",
+      "donnees_immatriculation_vehicule": {
+        "numero_immatriculation": "YB-999-YB",
+        "date_premiere_immatriculation": "2017-01-19",
+        "statut_location": {
+          "code": null,
+          "label": null
+        }
+      },
+      "caracteristiques_techniques_vehicule": {
+        "marque": "PORSCHE",
+        "type_variante_version": "9PAED2202",
+        "denomination_commerciale": "CAYENNE",
+        "masse_charge_maximale": 3080,
+        "categorie_vehicule": {
+          "code": "M1",
+          "label": "Véhicule de transport de personnes comportant au maximum 8 places assises outre le siège du conducteur"
+        },
+        "genre_national": {
+          "code": "VP",
+          "label": "Véhicule Particulier"
+        },
+        "cylindree": 4511,
+        "type_carburant": {
+          "code": "ES",
+          "label": "Essence"
+        },
+        "taux_co2": 378,
+        "classe_environnementale": {
+          "code": "Euro 4",
+          "label": "Norme européenne d'émission Euro 4"
+        }
+      }
+    },
+    "links": {},
+    "meta": {
+      "identity_matching": {
+        "family_name": 1.0,
+        "given_name": 1.0,
+        "birth_date": 1.0,
+        "overall_match": true
+      }
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/ants/extrait_immatriculation_vehicule/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_extrait_immatriculation_vehicule.yaml](fake_france_connect_extrait_immatriculation_vehicule.yaml)
 
   Status `200`
