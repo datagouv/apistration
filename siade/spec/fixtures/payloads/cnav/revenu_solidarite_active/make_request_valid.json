@@ -1,5 +1,6 @@
 {
   "indicateur": "BENEFICIAIRE",
+  "dateIndicateur": "2024-04-01",
   "listePrestation": [
     {
       "cd": "FA3102",

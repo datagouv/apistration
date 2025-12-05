@@ -11,16 +11,11 @@ class CNAV::BuildResource < BuildResource
     json_body['indicateur'].downcase
   end
 
-  def date_debut
+  def date_debut_droit
     return nil if non_beneficiary?
+    return nil if json_body['dateIndicateur'].blank?
 
-    @date_debut ||= Date.parse(latest_open_prestation['dtOuvertureDroit']).strftime(DATE_FORMAT)
-  end
-
-  def add_to_date_debut(months: 0, years: 0)
-    return nil unless date_debut
-
-    Date.parse(date_debut).advance(months:, years:).strftime(DATE_FORMAT)
+    Date.parse(json_body['dateIndicateur']).strftime(DATE_FORMAT)
   end
 
   def matching_prestations

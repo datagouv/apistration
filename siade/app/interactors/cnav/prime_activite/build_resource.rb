@@ -6,7 +6,7 @@ class CNAV::PrimeActivite::BuildResource < CNAV::BuildResource
       status:,
       est_beneficiaire: !non_beneficiary?,
       avec_majoration:,
-      date_debut_droit: date_debut,
+      date_debut_droit:,
       date_fin_droit: nil
     }
   end

@@ -5,13 +5,7 @@ class CNAV::AllocationAdulteHandicape::BuildResource < CNAV::BuildResource
     {
       status:,
       est_beneficiaire: !non_beneficiary?,
-      date_debut_droit: date_debut
+      date_debut_droit:
     }
-  end
-
-  private
-
-  def matching_prestations
-    %w[FA1001]
   end
 end
