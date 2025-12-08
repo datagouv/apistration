@@ -77,7 +77,6 @@ VCR.configure do |c|
   c.filter_sensitive_data('<PROBTP_DOMAIN>') { Siade.credentials[:probtp_domain].to_s }
   c.filter_sensitive_data('<OPQIBI_DOMAIN>') { Siade.credentials[:opqibi_domain].to_s }
 
-  c.filter_sensitive_data('<CNOUS_CREDENTIALS>') { Siade.credentials[:cnous_authenticate_credentials].to_s }
   c.filter_sensitive_data('<MEN_SCOLARITES_URL>') { Siade.credentials[:men_scolarites_url_v1].to_s }
   c.filter_sensitive_data('<MEN_SCOLARITES_URL_V2>') { Siade.credentials[:men_scolarites_url_v2].to_s }
   c.filter_sensitive_data('<MEN_SCOLARITES_CLIENT_SECRET>') { Siade.credentials[:men_scolarites_client_secret].to_s }
