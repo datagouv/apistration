@@ -15595,8 +15595,9 @@ paths:
                             properties:
                               code:
                                 type: string
-                                description: Code APRM (Activité Principale Réglementée
-                                  du Métier).
+                                description: Code de l'activité principale au répertoire
+                                  des métiers (APRM) s'appuyant sur le nomenclature
+                                  d'activité française pour l'artisanat (NAFA).
                                 pattern: "^\\d{4}[A-Z]{2}$"
                                 example: 6202A
                                 nullable: true
