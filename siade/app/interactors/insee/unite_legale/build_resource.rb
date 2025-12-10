@@ -34,11 +34,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
         'categorie_juridique',
         code: categorie_juridique
       ),
-      activite_principale: referential(
-        'activite_principale',
-        code: unite_legale['activitePrincipaleUniteLegale'],
-        nomenclature: unite_legale['nomenclatureActivitePrincipaleUniteLegale']
-      ),
+      activite_principale: activite_principale_naf2025.to_h,
+      activite_principale_naf_rev2: activite_principale_naf_rev2.to_h,
       tranche_effectif_salarie: referential(
         'tranche_effectif_salarie',
         code: unite_legale['trancheEffectifsUniteLegale'],
@@ -127,5 +124,19 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
   def etablissement
     json_body['etablissement'] || json_body['etablissements'][0]
+  end
+
+  def activite_principale_naf2025
+    @activite_principale_naf2025 ||= Referentials::ActivitePrincipale.new(
+      code: unite_legale['activitePrincipaleNAF25UniteLegale'],
+      nomenclature: 'NAF2025'
+    )
+  end
+
+  def activite_principale_naf_rev2
+    @activite_principale_naf_rev2 ||= Referentials::ActivitePrincipale.new(
+      code: unite_legale['activitePrincipaleUniteLegale'],
+      nomenclature: 'NAFRev2'
+    )
   end
 end

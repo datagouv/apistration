@@ -81,8 +81,16 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
 
         its(:activite_principale) do
           is_expected.to eq({
+            code: '46.49Y',
+            libelle: "Commerce de gros d\u2019autres biens domestiques",
+            nomenclature: 'NAF2025'
+          })
+        end
+
+        its(:activite_principale_naf_rev2) do
+          is_expected.to eq({
             code: '46.49Z',
-            libelle: 'Commerce de gros (commerce interentreprises) d\'autres biens domestiques',
+            libelle: "Commerce de gros (commerce interentreprises) d'autres biens domestiques",
             nomenclature: 'NAFRev2'
           })
         end

@@ -14,11 +14,8 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
 
       enseigne: build_enseigne,
 
-      activite_principale: referential(
-        'activite_principale',
-        code: latest_info_on_etablissement['activitePrincipaleEtablissement'],
-        nomenclature: latest_info_on_etablissement['nomenclatureActivitePrincipaleEtablissement']
-      ),
+      activite_principale: activite_principale_naf2025.to_h,
+      activite_principale_naf_rev2: activite_principale_naf_rev2.to_h,
 
       tranche_effectif_salarie: referential(
         'tranche_effectif_salarie',
@@ -90,5 +87,19 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
     etablissement['periodesEtablissement'].find do |periode|
       periode['changementEtatAdministratifEtablissement']
     end
+  end
+
+  def activite_principale_naf2025
+    @activite_principale_naf2025 ||= Referentials::ActivitePrincipale.new(
+      code: etablissement['activitePrincipaleNAF25Etablissement'],
+      nomenclature: 'NAF2025'
+    )
+  end
+
+  def activite_principale_naf_rev2
+    @activite_principale_naf_rev2 ||= Referentials::ActivitePrincipale.new(
+      code: latest_info_on_etablissement['activitePrincipaleEtablissement'],
+      nomenclature: 'NAFRev2'
+    )
   end
 end

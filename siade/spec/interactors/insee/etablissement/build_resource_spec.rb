@@ -47,6 +47,14 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
 
       its(:activite_principale) do
         is_expected.to eq({
+          code: '47.64Y',
+          libelle: 'Commerce de détail de jeux et jouets',
+          nomenclature: 'NAF2025'
+        })
+      end
+
+      its(:activite_principale_naf_rev2) do
+        is_expected.to eq({
           code: '47.64Z',
           libelle: "Commerce de détail d'articles de sport en magasin spécialisé",
           nomenclature: 'NAFRev2'
