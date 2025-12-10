@@ -43,7 +43,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               prenoms: %w[JEAN PIERRE],
               forme_juridique: {
                 code: '1000',
-                libelle: 'Entreprise individuelle'
+                libelle: 'Entrepreneur individuel'
               },
               nature_entreprise: 'ARTISANALE',
               associe_unique: false,
@@ -168,14 +168,14 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
             },
             dirigeants_et_associes: [
               {
-                qualite: 'PRESIDENT',
+                qualite: 'Président de SAS',
                 nom: 'DURAND',
                 prenom: 'MARIE',
                 date_naissance: '1975-05',
                 commune_residence: 'PARIS'
               },
               {
-                qualite: 'DIRECTEUR GENERAL',
+                qualite: 'Directeur Général',
                 nom: 'BERNARD',
                 prenom: 'PIERRE',
                 date_naissance: '1990-01',
@@ -239,7 +239,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               prenoms: %w[JEAN MARIE],
               forme_juridique: {
                 code: '1000',
-                libelle: 'Entreprise individuelle'
+                libelle: 'Entrepreneur individuel'
               },
               nature_entreprise: 'INDEPENDANTE',
               associe_unique: false,
@@ -339,7 +339,7 @@ RSpec.describe INPI::RNE::ExtraitRNE::BuildResource, type: :build_resource do
               prenoms: %w[JEAN PIERRE HENRI],
               forme_juridique: {
                 code: '1000',
-                libelle: 'Entreprise individuelle'
+                libelle: 'Entrepreneur individuel'
               },
               nature_entreprise: 'LIBERALE_NON_REGLEMENTEE',
               associe_unique: false,
