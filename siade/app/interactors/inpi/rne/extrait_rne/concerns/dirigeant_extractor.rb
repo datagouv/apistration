@@ -29,14 +29,18 @@ module INPI::RNE::ExtraitRNE::Concerns::DirigeantExtractor
 
   def extract_qualite(role_entreprise)
     if role_entreprise.is_a?(String)
-      # New format: roleEntreprise is a direct string
-      role_code = role_entreprise
-      ROLE_MAPPING[role_code] || role_code
+      get_role_libelle(role_entreprise)
     else
-      # Old format: roleEntreprise is an object with rolePersonne field
-      role_code = role_entreprise['rolePersonne']
-      ROLE_MAPPING[role_code] || role_entreprise['denomination'] || role_code
+      extract_qualite_from_object(role_entreprise)
     end
+  end
+
+  def extract_qualite_from_object(role_entreprise)
+    role_code = role_entreprise['rolePersonne']
+    libelle = get_role_libelle(role_code)
+    return libelle unless libelle == role_code && role_entreprise['denomination']
+
+    role_entreprise['denomination']
   end
 
   def build_person_identity_hash(description)
