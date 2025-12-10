@@ -10,13 +10,20 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     :status_diffusion,
     :date_creation
 
+  attribute :activite_principale do
+    data.activite_principale_naf_rev2
+  end
+
   attribute :unite_legale do
-    data.unite_legale.to_h.except(
+    unite_legale_hash = data.unite_legale.to_h.except(
       :id,
       :date_cessation,
       :date_derniere_mise_a_jour,
-      :redirect_from_siren
+      :redirect_from_siren,
+      :activite_principale_naf_rev2
     )
+    unite_legale_hash[:activite_principale] = data.unite_legale.activite_principale_naf_rev2
+    unite_legale_hash
   end
 
   attribute :adresse do

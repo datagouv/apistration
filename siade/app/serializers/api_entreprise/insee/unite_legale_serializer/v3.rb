@@ -16,6 +16,10 @@ class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore
     :date_cessation,
     :date_creation
 
+  attribute :activite_principale do
+    data.activite_principale_naf_rev2
+  end
+
   link :siege_social do
     url_for(
       controller: 'api_entreprise/v3_and_more/insee/etablissements',
