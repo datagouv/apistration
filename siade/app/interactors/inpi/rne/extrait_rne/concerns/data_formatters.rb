@@ -101,7 +101,11 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
   end
 
   def get_forme_juridique_libelle(code)
-    FORME_JURIDIQUE_MAPPING[code] || "Forme juridique #{code}"
+    get_code_from_config(:forme_juridique, code, "Forme juridique #{code}")
+  end
+
+  def get_role_libelle(code)
+    get_code_from_config(:role_entreprise, code, code)
   end
 
   def get_activite_libelle(code_ape)
