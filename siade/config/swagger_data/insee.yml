@@ -1140,4 +1140,3 @@ insee:
             date_succession: *date_succession_properties
             transfert_siege: *transfert_siege_properties
             continuite_economique: *continuite_economique_properties
-
