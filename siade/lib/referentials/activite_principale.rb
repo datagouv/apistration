@@ -10,71 +10,45 @@ class Referentials::ActivitePrincipale
     @nomenclature = nomenclature
   end
 
-  def valid?
-    if latest_nomenclature?
-      track_deprecated_data(nomenclature, code) unless valid_naf?
-      valid_naf?
-    else
-      false
-    end
-  end
-
-  def found?
-    return false unless valid?
-
-    found = !result.nil?
-    track_deprecated_data(nomenclature, code) unless found
-    found
-  end
-
-  def libelle
-    if found?
-      result.strip
-    else
-      latest_nomenclature? ? 'non référencé' : "ancienne révision NAF (#{@nomenclature}) non supportée"
-    end
-  end
-
-  def code_dotless
-    @code&.delete('.')
-  end
-
-  def as_json
+  def to_h
     {
-      code:,
-      nomenclature:,
-      libelle:
+      code: @code,
+      nomenclature: @nomenclature,
+      libelle: libelle
     }
   end
 
   private
 
-  def valid_naf?
-    @code.is_a?(String) && @code.length == 6
+  def libelle
+    @libelle ||= find_libelle || 'non référencé'
   end
 
-  def latest_nomenclature?
-    @nomenclature == 'NAFRev2'
-  end
-
-  def result
-    return unless valid?
-
-    @result ||= find_in_csv || find_in_exceptions
-  end
-
-  def find_in_csv
-    CSV.foreach(file_name, headers: true) do |row|
-      hash = row.to_hash.symbolize_keys
-      return hash[:' Intitulés de la  NAF rév. 2, version finale '] if hash[:Code] == @code
+  def find_libelle
+    case @nomenclature
+    when 'NAF2025'
+      find_libelle_naf2025
+    when 'NAFRev2'
+      find_libelle_nafrev2
     end
   end
 
-  def find_in_exceptions
-    'En instance de chiffrement' if @code == '00.00Z'
+  def find_libelle_naf2025
+    CSV.foreach(csv_path('NAF2025.csv'), headers: true, col_sep: ',') do |row|
+      return row[2]&.strip if row[1]&.strip == @code
+    end
+    nil
   end
 
-  def file_name
-    Rails.root.join('lib/referentials/files/NAFRev2.csv')
+  def find_libelle_nafrev2
+    CSV.foreach(csv_path('NAFRev2.csv'), headers: true, col_sep: ',') do |row|
+      data = row.to_hash.symbolize_keys
+      return data[:' Intitulés de la  NAF rév. 2, version finale ']&.strip if data[:Code]&.strip == @code
+    end
+    nil
+  end
+
+  def csv_path(filename)
+    Rails.root.join("lib/referentials/files/#{filename}")
   end
 end
