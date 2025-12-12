@@ -1,7 +1,8 @@
 class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateResponse
   def call
-    no_kids_under_7_error! unless kids_under_7?
     super
+
+    no_kids_under_7_error! unless kids_under_7?
   end
 
   private
