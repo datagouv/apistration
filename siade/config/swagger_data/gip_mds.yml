@@ -218,3 +218,94 @@ gip_mds:
               type: "string"
               example: "2018-01-01"
               nullable: true
+  service_civique:
+    title: "Statut service civique"
+    tags:
+      - "Service civique"
+      - "jeune"
+      - "engagement"
+      - "mission"
+      - "intérêt général"
+      - "citoyenneté"
+    description: "Informations relatives au contrat de service civique d'un particulier, issues des déclarations sociales nominatives (DSN) transmises au GIP-MDS. Permet de vérifier si une personne est ou a été engagée dans un service civique et d'obtenir les détails du contrat."
+    attributes:
+      statut_actuel:
+        title: "Statut actuel"
+        description: "Informations sur le contrat de service civique en cours. Accessible avec le scope 'service_civique_actuel'."
+        type: "object"
+        properties:
+          contrat_trouve:
+            title: "Contrat en cours trouvé"
+            description: "Indique si le particulier est actuellement en service civique. Un contrat est considéré en cours en absence de date de fin, ou lorsque le motif de rupture transmis par le GIP-MDS est 99 (contrat non rompu) ou 100 (fin de contrat non encore déclarée)."
+            type: "boolean"
+            example: true
+          organisme_accueil:
+            title: "Organisme d'accueil"
+            description: "Informations sur l'administration ou l'association qui accueille le volontaire en service civique. Null si aucun contrat en cours."
+            type: "object"
+            nullable: true
+            properties:
+              siret:
+                title: "SIRET de l'organisme d'accueil"
+                description: "Numéro SIRET de l'administration ou de l'association qui accueille le volontaire en service civique."
+                type: "string"
+                example: "13002526500013"
+              raison_sociale:
+                title: "Raison sociale de l'organisme d'accueil"
+                description: "Nom officiel de l'administration ou de l'association qui accueille le volontaire en service civique."
+                type: "string"
+                example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+          date_debut_contrat:
+            title: "Date de début du contrat"
+            description: "Premier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat en cours."
+            type: "string"
+            format: "date"
+            example: "2024-01-15"
+            nullable: true
+          date_fin_contrat:
+            title: "Date de fin du contrat"
+            description: "Date de fin prévue du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat en cours ou si la date de fin n'est pas encore définie."
+            type: "string"
+            format: "date"
+            example: "2024-07-14"
+            nullable: true
+      statut_passe:
+        title: "Statut passé"
+        description: "Informations sur le contrat de service civique terminé. Accessible avec le scope 'service_civique_passe'."
+        type: "object"
+        properties:
+          contrat_trouve:
+            title: "Contrat passé trouvé"
+            description: "Indique si le particulier a effectué un service civique par le passé (contrat terminé)."
+            type: "boolean"
+            example: true
+          organisme_accueil:
+            title: "Organisme d'accueil"
+            description: "Informations sur l'administration ou l'association qui a accueilli le volontaire en service civique. Null si aucun contrat passé."
+            type: "object"
+            nullable: true
+            properties:
+              siret:
+                title: "SIRET de l'organisme d'accueil"
+                description: "Numéro SIRET de l'administration ou de l'association qui a accueilli le volontaire en service civique."
+                type: "string"
+                example: "13002526500013"
+              raison_sociale:
+                title: "Raison sociale de l'organisme d'accueil"
+                description: "Nom officiel de l'administration ou de l'association qui a accueilli le volontaire en service civique."
+                type: "string"
+                example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+          date_debut_contrat:
+            title: "Date de début du contrat"
+            description: "Premier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat passé."
+            type: "string"
+            format: "date"
+            example: "2024-01-15"
+            nullable: true
+          date_fin_contrat:
+            title: "Date de fin du contrat"
+            description: "Dernier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat passé."
+            type: "string"
+            format: "date"
+            example: "2024-07-14"
+            nullable: true
