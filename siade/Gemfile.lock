@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/rails-api/active_model_serializers.git
-  revision: b7b12f79a9a9aa800a72515ade99c0ddb2fb5c29
+  revision: 6934c8bd31f4025fe7548a07d50a82f18df8e689
   branch: 0-10-stable
   specs:
-    active_model_serializers (0.10.15)
+    active_model_serializers (0.10.16)
       actionpack (>= 4.1)
       activemodel (>= 4.1)
       case_transform (>= 0.2)
@@ -48,8 +48,8 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    addressable (2.8.8)
+      public_suffix (>= 2.0.2, < 8.0)
     afm (1.0.0)
     ammeter (1.1.7)
       activesupport (>= 3.0)
@@ -69,18 +69,20 @@ GEM
     cmdparse (3.0.7)
     coderay (1.1.3)
     colorize (1.1.0)
-    commonmarker (2.5.0)
-      rb_sys (~> 0.9)
-    commonmarker (2.5.0-aarch64-linux)
-    commonmarker (2.5.0-x86_64-linux)
-    concurrent-ruby (1.3.5)
-    connection_pool (2.5.5)
+    commonmarker (2.6.0-aarch64-linux)
+    commonmarker (2.6.0-aarch64-linux-musl)
+    commonmarker (2.6.0-arm64-darwin)
+    commonmarker (2.6.0-x86_64-darwin)
+    commonmarker (2.6.0-x86_64-linux)
+    commonmarker (2.6.0-x86_64-linux-musl)
+    concurrent-ruby (1.3.6)
+    connection_pool (3.0.2)
     crack (1.0.1)
       bigdecimal
       rexml
     crass (1.0.6)
     csv (3.3.5)
-    date (3.5.0)
+    date (3.5.1)
     derailed_benchmarks (2.2.1)
       base64
       benchmark-ips (~> 2)
@@ -103,9 +105,9 @@ GEM
     docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.3)
-    erb (6.0.0)
+    erb (6.0.1)
     erubi (1.13.1)
-    excon (1.3.1)
+    excon (1.3.2)
       logger
     faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
@@ -115,13 +117,12 @@ GEM
       net-http (~> 0.5)
     faraday-retry (2.3.2)
       faraday (~> 2.0)
-    ffi (1.17.2)
     ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-arm-linux-gnu)
+    ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86-linux-gnu)
     ffi (1.17.2-x86_64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-musl)
     fog-core (2.6.0)
       builder
       excon (~> 1.0)
@@ -162,7 +163,7 @@ GEM
     hashie (5.0.0)
     heapy (0.2.0)
       thor
-    hexapdf (1.4.1)
+    hexapdf (1.5.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -174,12 +175,12 @@ GEM
       concurrent-ruby (~> 1.0)
     interactor (3.2.0)
       ostruct
-    io-console (0.8.1)
+    io-console (0.8.2)
     irb (1.15.3)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.16.0)
+    json (2.18.0)
     json-schema (6.0.0)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
@@ -215,8 +216,8 @@ GEM
     mime-types-data (3.2025.0924)
     mini_histogram (0.3.1)
     mini_portile2 (2.8.9)
-    minitest (5.26.2)
-    multi_json (1.17.0)
+    minitest (5.27.0)
+    multi_json (1.18.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
@@ -225,18 +226,17 @@ GEM
       uri (>= 0.11.1)
     netrc (0.11.0)
     nio4r (2.7.5)
-    nokogiri (1.18.10)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.18.10-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.10-arm-linux-gnu)
+    nokogiri (1.18.10-aarch64-linux-musl)
       racc (~> 1.4)
     nokogiri (1.18.10-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.10-x86_64-linux-musl)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -254,7 +254,7 @@ GEM
       sawyer (~> 0.9)
     openapi3_parser (0.10.1)
       commonmarker (>= 1.0)
-    openssl (3.3.2)
+    openssl (4.0.0)
     optimist (3.2.1)
     ostruct (0.6.3)
     ox (2.14.23)
@@ -271,11 +271,12 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pg (1.6.2)
     pg (1.6.2-aarch64-linux)
+    pg (1.6.2-aarch64-linux-musl)
     pg (1.6.2-arm64-darwin)
     pg (1.6.2-x86_64-darwin)
     pg (1.6.2-x86_64-linux)
+    pg (1.6.2-x86_64-linux-musl)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -286,10 +287,10 @@ GEM
     pry-byebug (3.11.0)
       byebug (~> 12.0)
       pry (>= 0.13, < 0.16)
-    psych (5.2.6)
+    psych (5.3.0)
       date
       stringio
-    public_suffix (6.0.2)
+    public_suffix (7.0.0)
     puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -304,7 +305,7 @@ GEM
       rack (>= 3.0.0)
     rack-test (2.2.0)
       rack (>= 1.3)
-    rackup (2.2.1)
+    rackup (2.3.1)
       rack (>= 3)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
@@ -328,20 +329,17 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rake-compiler-dock (1.9.1)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     rb-readline (0.5.5)
-    rb_sys (0.9.117)
-      rake-compiler-dock (= 1.9.1)
-    rdoc (6.15.1)
+    rdoc (6.17.0)
       erb
       psych (>= 4.0.0)
       tsort
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.26.1)
+    redis-client (0.26.2)
       connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
@@ -452,7 +450,7 @@ GEM
     snaky_hash (2.0.3)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
-    stringio (3.1.8)
+    stringio (3.1.9)
     strscan (3.1.5)
     super_diff (0.18.0)
       attr_extras (>= 6.2.4)
@@ -460,7 +458,7 @@ GEM
       patience_diff
     thor (1.4.0)
     timecop (0.9.10)
-    timeout (0.4.4)
+    timeout (0.5.0)
     tsort (0.2.0)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
@@ -488,12 +486,12 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  arm-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
   arm64-darwin
-  ruby
-  x86-linux
   x86_64-darwin
-  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   actionpack (~> 8.1)
