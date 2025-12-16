@@ -363,7 +363,16 @@ shared:
     - sdh_statut_sportif_a_ete_sportif_de_haut_niveau
     - sdh_statut_sportif_informations_statut
     - sdh_statut_sportif_informations_statuts_precedents
-
+  api_particulier/v3_and_more/gip_mds/service_civique_with_civility:
+    - gip_mds_service_civique_statut_actuel
+    - gip_mds_service_civique_statut_passe
+    - gip_mds_service_civique_organisme_accueil
+    - gip_mds_service_civique_dates
+  api_particulier/v3_and_more/gip_mds/service_civique_with_france_connect:
+    - gip_mds_service_civique_statut_actuel
+    - gip_mds_service_civique_statut_passe
+    - gip_mds_service_civique_organisme_accueil
+    - gip_mds_service_civique_dates
 
   mcp/insee/unite_legale:
     - unites_legales_etablissements_insee
