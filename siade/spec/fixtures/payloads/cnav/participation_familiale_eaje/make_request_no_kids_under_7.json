@@ -36,8 +36,8 @@
     "codePostalVille": "02100 Bohain en Vermandois",
     "pays": "France"
   },
-  "nombreBeneficiaireAEEH": 0,
-  "nombreEnfantsACharge": 2,
+  "nombreBeneficiaireAEH": 0,
+  "nombreEnfantACharge": 2,
   "montantRessources": 1500,
   "annee": 2024
 }
