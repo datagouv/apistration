@@ -44,7 +44,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE do
           hash_including(nom_naissance: 'DUPOND')
         ),
         adresse: hash_including(destinataire: 'M. DUPOND Jean-Michel'),
-        parametres_calcul_participation_familiale: hash_including(annee: 2024)
+        parametres_calcul_participation_familiale: hash_including(nombre_enfants_a_charge: 1)
       )
     end
   end

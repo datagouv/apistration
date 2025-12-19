@@ -55,8 +55,7 @@ class CNAV::ParticipationFamilialeEAJE::BuildResource < BuildResource
     {
       nombre_enfants_beneficiaire_aeeh: json_body['nombreBeneficiaireAEH'],
       nombre_enfants_a_charge: json_body['nombreEnfantACharge'],
-      base_ressources_annuelles: build_base_ressources,
-      annee: json_body['annee']
+      base_ressources_annuelles: build_base_ressources
     }
   end
 

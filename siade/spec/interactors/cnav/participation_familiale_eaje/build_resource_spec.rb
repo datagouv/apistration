@@ -49,8 +49,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildResource, type: :build_res
             base_ressources_annuelles: {
               valeur: 1500,
               annee_calcul: 2024
-            },
-            annee: 2024
+            }
           }
         }
       )
@@ -119,8 +118,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildResource, type: :build_res
               base_ressources_annuelles: {
                 valeur: 2500,
                 annee_calcul: 2024
-              },
-              annee: 2024
+              }
             }
           }
         )
