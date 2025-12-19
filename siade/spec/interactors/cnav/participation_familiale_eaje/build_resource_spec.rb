@@ -56,6 +56,16 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildResource, type: :build_res
     end
   end
 
+  context 'when annee is provided as a string' do
+    let(:body) { read_payload_file('cnav/participation_familiale_eaje/make_request_valid.json').gsub('"annee": 2024', '"annee": "2024"') }
+
+    it 'converts annee_calcul to integer' do
+      annee_calcul = instance.bundled_data.data.to_h.dig(:parametres_calcul_participation_familiale, :base_ressources_annuelles, :annee_calcul)
+
+      expect(annee_calcul).to be_a(Integer)
+    end
+  end
+
   context 'when cogNaissance is null for children and co-allocataires' do
     let(:body) { read_payload_file('cnav/participation_familiale_eaje/make_request_with_null_cog_naissance.json') }
 

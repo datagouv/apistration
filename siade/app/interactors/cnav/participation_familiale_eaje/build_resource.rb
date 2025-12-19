@@ -63,7 +63,7 @@ class CNAV::ParticipationFamilialeEAJE::BuildResource < BuildResource
     montant = json_body['montantRessources']
     {
       valeur: montant,
-      annee_calcul: json_body['annee']
+      annee_calcul: json_body['annee'].to_i
     }
   end
 end
