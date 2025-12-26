@@ -1,0 +1,8 @@
+{
+  "erreurs": [
+    {
+      "code": "NOT_FOUND_INDIVIDU",
+      "message": "Aucun individu ne répond aux critères saisis."
+    }
+  ]
+}

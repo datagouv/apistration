@@ -1,0 +1,8 @@
+{
+  "erreurs": [
+    {
+      "code": "NOT_FOUND_CONTRAT",
+      "message": "Aucun contrat trouve"
+    }
+  ]
+}

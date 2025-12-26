@@ -1,0 +1,25 @@
+{
+  "individu": {
+    "entreprise": [
+      {
+        "siren": "130025265",
+        "raisonSociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
+        "etablissement": [
+          {
+            "siret": "13002526500013",
+            "contrat": [
+              {
+                "dateDebutContrat": "2024-01-15",
+                "dateFinContrat": null,
+                "motifRupture": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "retour": {
+    "codeRetour": "OK"
+  }
+}

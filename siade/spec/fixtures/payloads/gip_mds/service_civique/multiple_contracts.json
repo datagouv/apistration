@@ -1,0 +1,28 @@
+{
+  "individu": {
+    "entreprise": [
+      {
+        "siren": "130025265",
+        "raisonSociale": "AGENCE DU SERVICE CIVIQUE",
+        "etablissement": [
+          {
+            "siret": "13002526500013",
+            "contrat": [
+              {
+                "dateDebutContrat": "2024-01-15",
+                "dateFinContrat": null
+              },
+              {
+                "dateDebutContrat": "2020-01-15",
+                "dateFinContrat": "2020-07-14"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "retour": {
+    "codeRetour": "OK"
+  }
+}
