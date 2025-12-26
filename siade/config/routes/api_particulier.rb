@@ -48,6 +48,9 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'france_travail/indemnites/identifiant', to: 'api_particulier/v3_and_more/france_travail/indemnites_with_identifiant#show'
 
   get 'sdh/statut_sportif/identifiant', to: 'api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant#show'
+
+  get 'gip_mds/service_civique/identite', to: 'api_particulier/v3_and_more/gip_mds/service_civique_with_civility#show'
+  get 'gip_mds/service_civique/france_connect', to: 'api_particulier/v3_and_more/gip_mds/service_civique_with_france_connect#show'
 end
 
 namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
