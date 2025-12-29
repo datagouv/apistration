@@ -60,6 +60,10 @@
   api: 'entreprise'
   path: '/v3/insee/sirene/etablissements/30613890002979'
 
+- name: 'INSEE Etablissements V4'
+  api: 'entreprise'
+  path: '/v4/insee/sirene/etablissements/30613890002979'
+
 - name: 'INSEE Etablissements Adresse'
   api: 'entreprise'
   path: '/v3/insee/sirene/etablissements/30613890002979/adresse'
@@ -67,6 +71,10 @@
 - name: 'INSEE Unites Legales'
   api: 'entreprise'
   path: '/v3/insee/sirene/unites_legales/306138900'
+
+- name: 'INSEE Unites Legales V4'
+  api: 'entreprise'
+  path: '/v4/insee/sirene/unites_legales/306138900'
 
 - name: 'INSEE Unites Legales diffusibles'
   api: 'entreprise'
