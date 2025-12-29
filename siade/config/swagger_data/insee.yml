@@ -989,6 +989,50 @@ insee:
     diffusable_commercialement:
       *diffusable_commercialement
 
+  activite_principale_naf_rev2_property: &activite_principale_naf_rev2_property
+    title: "Attributs de l'activité principale en nomenclature NAFRev2"
+    type: "object"
+    additionalProperties: false
+    description: "Ce champ permet de retrouver le code APE dans l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité."
+    properties:
+      code:
+        title: "Code de l'activité principale (APE) en NAFRev2"
+        type: "string"
+        example: "8411Z"
+        nullable: true
+      libelle:
+        title: "Libellé associé au code APE NAFRev2"
+        type: "string"
+        nullable: false
+        example: "Administration publique générale"
+      nomenclature:
+        title: "Nomenclature associée au code"
+        type: "string"
+        nullable: true
+        example: "NAFRev2"
+
+  shared_insee_unite_legale_attributes_v4: &shared_insee_unite_legale_attributes_v4
+    <<: *shared_insee_unite_legale_attributes
+    activite_principale_naf_rev2: *activite_principale_naf_rev2_property
+
+  insee_unite_legale_attributes_v4: &insee_unite_legale_attributes_v4
+    <<: *shared_insee_unite_legale_attributes_v4
+    date_cessation:
+      title: "Date de cessation de l'unité légale"
+      type: "integer"
+      nullable: true
+      example: 1634133818
+      description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
+
+  insee_etablissement_attributes_v4: &insee_etablissement_attributes_v4
+    <<: *insee_etablissement_attributes
+    activite_principale_naf_rev2: *activite_principale_naf_rev2_property
+    unite_legale:
+      type: "object"
+      additionalProperties: false
+      title: "Unité légale de l'établissement"
+      properties: *shared_insee_unite_legale_attributes_v4
+
   adresse_etablissement:
     title: "Adresse établissement"
     description: "Adresse d'un établissement inscrit au répertoire Sirene, y compris celle des établissements en diffusion partielle."
@@ -1140,3 +1184,17 @@ insee:
             date_succession: *date_succession_properties
             transfert_siege: *transfert_siege_properties
             continuite_economique: *continuite_economique_properties
+
+  unite_legale_v4:
+    title: "Données unité légale"
+    description: "Informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Avec les données protégées des unités légales en diffusion partielle. Cette version utilise la nomenclature NAF2025 pour l'activité principale."
+    tags:
+      - "Informations générales"
+    attributes: *insee_unite_legale_attributes_v4
+
+  etablissement_v4:
+    title: "Données établissement"
+    description: "Informations générales concernant un établissement inscrit au répertoire Sirene. Avec les données protégées des établissements en diffusion partielle. Cette version utilise la nomenclature NAF2025 pour l'activité principale."
+    tags:
+      - "Informations générales"
+    attributes: *insee_etablissement_attributes_v4
