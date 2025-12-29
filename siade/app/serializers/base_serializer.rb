@@ -66,8 +66,18 @@ class BaseSerializer
     {
       data: compute_attributes(:__attributes, model),
       links: compute_attributes(:__links, model),
-      meta: self.class.__meta.try(:call, model) || {}
+      meta: inherited_meta&.call(model) || {}
     }
+  end
+
+  def inherited_meta
+    klass = self.class
+    while klass.respond_to?(:__meta)
+      return klass.__meta if klass.__meta
+
+      klass = klass.superclass
+    end
+    nil
   end
 
   def compute_attributes(kind, model)
@@ -77,8 +87,19 @@ class BaseSerializer
   end
 
   def filtered_attributes(kind, _model)
-    (self.class.public_send(kind) || {}).select do |_attr, blocks|
+    inherited_attrs(kind).select do |_attr, blocks|
       blocks[:if].nil? || instance_exec(&blocks[:if])
     end
+  end
+
+  def inherited_attrs(kind)
+    result = {}
+    klass = self.class
+    while klass.respond_to?(kind)
+      attrs = klass.public_send(kind)
+      result = attrs.merge(result) if attrs
+      klass = klass.superclass
+    end
+    result
   end
 end
