@@ -5,6 +5,8 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
   let(:recipient) { valid_siret }
 
   describe '.call with civility params' do
+    let(:valid_year) { Time.zone.today.year - 1 }
+
     let(:common_params) do
       {
         nom_naissance: 'CHAMPION',
@@ -15,7 +17,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
         sexe_etat_civil:,
         code_cog_insee_pays_naissance: '99100',
         request_id:,
-        annee: 2023,
+        annee: valid_year,
         mois: 5
       }
     end
@@ -32,7 +34,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
       describe 'happy path' do
         before do
           stub_cnav_authenticate('quotient_familial_v2')
-          stub_cnav_valid('quotient_familial_v2', extra_params: { anneeDemandee: '2023', moisDemande: '05' })
+          stub_cnav_valid('quotient_familial_v2', extra_params: { anneeDemandee: valid_year.to_s, moisDemande: '05' })
         end
 
         it { is_expected.to be_a_success }
@@ -126,7 +128,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
         nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: ['Jean Martin'],
-        annee_date_naissance: 2000,
+        annee_date_naissance: Time.zone.today.year - 20,
         mois_date_naissance: 1,
         jour_date_naissance: 1,
         code_cog_insee_commune_naissance: '75101',

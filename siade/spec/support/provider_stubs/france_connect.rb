@@ -94,12 +94,16 @@ module ProviderStubs::FranceConnect
       given_name: 'Jean Martin',
       given_name_array: %w[Jean Martin],
       family_name: 'DUPONT',
-      birthdate: '2000-01-01',
+      birthdate: france_connect_default_birthdate,
       gender: 'male',
       birthplace: '75101',
       birthcountry: '99100',
       preferred_username: nil
     }
+  end
+
+  def france_connect_default_birthdate
+    "#{Time.zone.today.year - 20}-01-01"
   end
   # rubocop:enable Metrics/MethodLength
 

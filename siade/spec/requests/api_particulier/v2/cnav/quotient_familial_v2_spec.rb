@@ -56,7 +56,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
         let(:jourDateDeNaissance) { 12 }
         let(:codePaysLieuDeNaissance) { '99100' }
         let(:mois) { 12 }
-        let(:annee) { 2023 }
+        let(:annee) { Time.zone.today.year - 1 }
 
         after do |example|
           example.metadata[:response][:content] = {

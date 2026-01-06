@@ -23,8 +23,8 @@ RSpec.describe SDH::StatutSportif::BuildResource, type: :build_resource do
           a_ete_sportif_de_haut_niveau: true,
           informations_statut: {
             periode: {
-              date_debut_statut: '2025-01-01',
-              date_fin_statut: '2025-12-31'
+              date_debut_statut: '2026-01-01',
+              date_fin_statut: '2026-12-31'
             },
             federation: {
               code_federation: '68',
@@ -50,8 +50,8 @@ RSpec.describe SDH::StatutSportif::BuildResource, type: :build_resource do
             {
               fiche: 861_867,
               periode: {
-                date_debut_statut: '2024-01-01',
-                date_fin_statut: '2024-12-31'
+                date_debut_statut: '2025-01-01',
+                date_fin_statut: '2025-12-31'
               },
               federation: {
                 code_federation: '68',

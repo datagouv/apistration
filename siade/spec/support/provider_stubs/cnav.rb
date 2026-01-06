@@ -57,7 +57,7 @@ module ProviderStubs::CNAV
       query: hash_including({
         codeLieuNaissance: '75101',
         codePaysNaissance: '99100',
-        dateNaissance: '2000-01-01',
+        dateNaissance: france_connect_default_birthdate,
         genre: 'M',
         listePrenoms: 'Jean Martin',
         nomNaissance: 'DUPONT'
@@ -73,6 +73,10 @@ module ProviderStubs::CNAV
         'X-APISECU-FD' => '00810011'
       }
     )
+  end
+
+  def france_connect_default_birthdate
+    "#{Time.zone.today.year - 20}-01-01"
   end
   # rubocop:enable Metrics/MethodLength
 

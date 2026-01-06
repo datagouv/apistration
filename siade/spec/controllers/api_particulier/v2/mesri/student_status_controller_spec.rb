@@ -155,7 +155,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       {
         given_name: 'Jean Martin',
         family_name: 'DUPONT',
-        birthdate: '2000-01-01',
+        birthdate: france_connect_default_birthdate,
         gender: 'male',
         birthplace: '75101',
         birthcountry: '99100'

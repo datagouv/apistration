@@ -125,7 +125,7 @@ RSpec.describe CNAV::PrimeActivite, type: :retriever_organizer do
         nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: ['Jean Martin'],
-        annee_date_naissance: 2000,
+        annee_date_naissance: Time.zone.today.year - 20,
         mois_date_naissance: 1,
         jour_date_naissance: 1,
         code_cog_insee_commune_naissance: '75101',

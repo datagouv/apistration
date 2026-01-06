@@ -189,11 +189,32 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
       let(:token) { 'token' }
 
+      let(:expected_france_connect_params_hash) do
+        identity = {
+          gender: 'male',
+          family_name: 'DUPONT',
+          given_name: 'Jean Martin',
+          given_name_array: %w[Jean Martin],
+          birthdate: france_connect_default_birthdate,
+          birthplace: '75101',
+          birthcountry: '99100',
+          preferred_username: nil
+        }
+
+        france_connect_params = {
+          id: '6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950',
+          name: 'no_data_from_fc_v2',
+          identity:
+        }
+
+        Digest::SHA512.hexdigest("#{Siade.credentials[:api_particulier_log_salt_key]}:#{france_connect_params}")
+      end
+
       it 'adds hashed_france_connect_token to parameters' do
         expect(LogStasher).to receive(:build_logstash_event).with(
           hash_including(
             parameters: hash_including(
-              hashed_params: 'aa9022aec702705816119e95d76bbb46041394c43460499fe0fc7dad55ce8866cd0a57514e1659db4d9b91c9026c7ea36bda53f254ad1471858cd0bd31a750fc'
+              hashed_params: expected_france_connect_params_hash
             )
           ),
           anything
