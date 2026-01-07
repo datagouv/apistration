@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 6 - Dupré Hind'
+params:
+  nomNaissance: "Dupré"
+  prenoms:
+    - "Hind"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 12
+  jourDateNaissance: 8
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Dupré",
+        "prenom": "Hind",
+        "sexe": "F",
+        "date_naissance": "2000-12-08"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 6
+    },
+    "links": {},
+    "meta": {}
+  }

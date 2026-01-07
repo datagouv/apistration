@@ -1,0 +1,42 @@
+---
+description: 'Élève non boursier - Sales Lisa'
+params:
+  nomNaissance: "Sales"
+  prenoms:
+    - "Lisa"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 2
+  jourDateNaissance: 12
+  codeEtablissement: "0911028Y"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Sales",
+        "prenom": "Lisa",
+        "sexe": "F",
+        "date_naissance": "2000-02-12"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10310019110",
+        "libelle": "3EME GENERALE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0911028Y",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 4 - Nom Narjes'
+params:
+  nomNaissance: "Nom"
+  prenoms:
+    - "Narjes"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2006
+  moisDateNaissance: 1
+  jourDateNaissance: 6
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Nom",
+        "prenom": "Narjes",
+        "sexe": "F",
+        "date_naissance": "2006-01-06"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 4
+    },
+    "links": {},
+    "meta": {}
+  }

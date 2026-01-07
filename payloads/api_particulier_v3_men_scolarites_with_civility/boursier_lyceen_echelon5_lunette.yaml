@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 5 - Lunette Zahid'
+params:
+  nomNaissance: "Lunette"
+  prenoms:
+    - "Zahid"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 12
+  jourDateNaissance: 7
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Lunette",
+        "prenom": "Zahid",
+        "sexe": "M",
+        "date_naissance": "2000-12-07"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 5
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier collégien échelon 2 - Depuis Scavi'
+params:
+  nomNaissance: "Depuis"
+  prenoms:
+    - "Scavi"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 2
+  jourDateNaissance: 8
+  codeEtablissement: "0750611G"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Depuis",
+        "prenom": "Scavi",
+        "sexe": "M",
+        "date_naissance": "2002-02-08"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10310019110",
+        "libelle": "3EME GENERALE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0750611G",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 1 - Perrier Alex'
+params:
+  nomNaissance: "Perrier"
+  prenoms:
+    - "Alex"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 2
+  jourDateNaissance: 2
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Perrier",
+        "prenom": "Alex",
+        "sexe": "M",
+        "date_naissance": "2002-02-02"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }

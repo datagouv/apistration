@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier collégien échelon 1 - Dupont Nouhe'
+params:
+  nomNaissance: "Dupont"
+  prenoms:
+    - "Nouhe"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2007
+  moisDateNaissance: 12
+  jourDateNaissance: 9
+  codeEtablissement: "0921236U"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Dupont",
+        "prenom": "Nouhe",
+        "sexe": "M",
+        "date_naissance": "2007-12-09"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10310019110",
+        "libelle": "3EME GENERALE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0921236U",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }

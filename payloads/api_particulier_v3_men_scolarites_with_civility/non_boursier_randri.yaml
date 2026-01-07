@@ -1,0 +1,42 @@
+---
+description: 'Élève non boursier - Randri Ishan'
+params:
+  nomNaissance: "Randri"
+  prenoms:
+    - "Ishan"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2003
+  moisDateNaissance: 6
+  jourDateNaissance: 17
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Randri",
+        "prenom": "Ishan",
+        "sexe": "M",
+        "date_naissance": "2003-06-17"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
