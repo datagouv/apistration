@@ -1040,6 +1040,88 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-usager-base-france_connect.yaml](200-usager-base-france_connect.yaml)
+
+  Status `200`
+
+  ## Identité connue de la base de test de France Connect
+
+Ce cas permet de tester un appel à partir notamment des données de l'identité
+pivot France Connect.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "DUBOIS",
+    "prenoms": [
+      "ANGELA",
+      "CLAIRE",
+      "LOUISE"
+    ],
+    "anneeDateNaissance": 1962,
+    "moisDateNaissance": 8,
+    "jourDateNaissance": 24
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "DUBOIS",
+          "nom_usage": null,
+          "prenoms": "ANGELA CLAIRE LOUISE",
+          "date_naissance": "1962-08-24",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Madame DUBOIS ANGELA CLAIRE LOUISE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "19 RUE ARISTIDE BRIAND",
+        "lieu_dit": null,
+        "code_postal_ville": "92330 SCEAUX",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 4270,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [404-identite-cas-limite-erreur-phonetique.yaml](404-identite-cas-limite-erreur-phonetique.yaml)
 
   Status `404`

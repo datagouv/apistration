@@ -126,7 +126,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 2,
-        "nombre_enfants_beneficiaire_AEEH": 1,
+        "nombre_enfants_beneficiaire_aeeh": 1,
         "base_ressources_annuelles": {
           "valeur": 16123,
           "annee_calcul": 2024
@@ -225,7 +225,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 2,
-        "nombre_enfants_beneficiaire_AEEH": 1,
+        "nombre_enfants_beneficiaire_aeeh": 1,
         "base_ressources_annuelles": {
           "valeur": 16123,
           "annee_calcul": 2024
@@ -317,7 +317,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       },
       "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 1,
-        "nombre_enfants_beneficiaire_AEEH": 1,
+        "nombre_enfants_beneficiaire_aeeh": 1,
         "base_ressources_annuelles": {
           "valeur": 98342,
           "annee_calcul": 2024

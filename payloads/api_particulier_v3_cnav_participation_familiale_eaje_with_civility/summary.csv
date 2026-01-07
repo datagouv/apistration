@@ -39,7 +39,7 @@ d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNais
     },
     ""parametres_calcul_participation_familiale"": {
       ""nombre_enfants_a_charge"": 1,
-      ""nombre_enfants_beneficiaire_AEEH"": 1,
+      ""nombre_enfants_beneficiaire_aeeh"": 1,
       ""base_ressources_annuelles"": {
         ""valeur"": 40923,
         ""annee_calcul"": 2023

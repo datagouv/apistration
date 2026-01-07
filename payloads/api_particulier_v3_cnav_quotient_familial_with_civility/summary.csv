@@ -518,6 +518,42 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
+,"## Identité connue de la base de test de France Connect
+
+Ce cas permet de tester un appel à partir notamment des données de l'identité
+pivot France Connect.","{""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""DUBOIS"",""prenoms"":[""ANGELA"",""CLAIRE"",""LOUISE""],""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""DUBOIS"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ANGELA CLAIRE LOUISE"",
+        ""date_naissance"": ""1962-08-24"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Madame DUBOIS ANGELA CLAIRE LOUISE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""19 RUE ARISTIDE BRIAND"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""92330 SCEAUX"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 4270,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## IDENTITÉ CAS NOMINAL
 
 Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
