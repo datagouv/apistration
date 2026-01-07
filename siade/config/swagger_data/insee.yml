@@ -494,23 +494,20 @@ insee:
         \n
         Plus d'informations sur les conditions de diffusion : https://sirene.fr/static-resources/htm/v_sommaire.htm#26"
 
+  date_cessation_property: &date_cessation_property
+    title: "Date de cessation de l'unité légale"
+    type: "integer"
+    nullable: true
+    example: 1634133818
+    description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
+
   insee_unite_legale_attributes: &insee_unite_legale_attributes
     <<: *shared_insee_unite_legale_attributes
-    date_cessation:
-      title: "Date de cessation de l'unité légale"
-      type: "integer"
-      nullable: true
-      example: 1634133818
-      description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
+    date_cessation: *date_cessation_property
 
   insee_unite_legale_attributes_diffusible: &insee_unite_legale_attributes_diffusible
     <<: *shared_insee_unite_legale_attributes_diffusible
-    date_cessation:
-      title: "Date de cessation de l'unité légale"
-      type: "integer"
-      nullable: true
-      example: 1634133818
-      description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
+    date_cessation: *date_cessation_property
 
   insee_adresse_etablissement_attributes: &insee_adresse_etablissement_attributes
     numero_voie: &insee_adresse_etablissement_numero_voie_property
@@ -1017,12 +1014,7 @@ insee:
 
   insee_unite_legale_attributes_v4: &insee_unite_legale_attributes_v4
     <<: *shared_insee_unite_legale_attributes_v4
-    date_cessation:
-      title: "Date de cessation de l'unité légale"
-      type: "integer"
-      nullable: true
-      example: 1634133818
-      description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
+    date_cessation: *date_cessation_property
 
   insee_etablissement_attributes_v4: &insee_etablissement_attributes_v4
     <<: *insee_etablissement_attributes
