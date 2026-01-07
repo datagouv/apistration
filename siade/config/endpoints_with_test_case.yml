@@ -84,9 +84,17 @@
   api: 'entreprise'
   path: '/v3/insee/sirene/unites_legales/306138900/siege_social'
 
+- name: 'INSEE Unites Legales Siege social V4'
+  api: 'entreprise'
+  path: '/v4/insee/sirene/unites_legales/306138900/siege_social'
+
 - name: 'INSEE Unites Legales Siege social diffusibles'
   api: 'entreprise'
   path: '/v3/insee/sirene/unites_legales/diffusibles/306138900/siege_social'
+
+- name: 'INSEE Unites Legales Siege social diffusibles V4'
+  api: 'entreprise'
+  path: '/v4/insee/sirene/unites_legales/diffusibles/306138900/siege_social'
 
 - name: 'INSEE Successions'
   api: 'entreprise'
@@ -155,6 +163,10 @@
 - name: 'INSEE Etablissements diffusibles Adresse'
   api: 'entreprise'
   path: '/v3/insee/sirene/etablissements/diffusibles/41816609600069/adresse'
+
+- name: 'INSEE Etablissements diffusibles V4'
+  api: 'entreprise'
+  path: '/v4/insee/sirene/etablissements/diffusibles/41816609600069'
 
 - name: 'MSA Conformité cotisations'
   api: 'entreprise'
