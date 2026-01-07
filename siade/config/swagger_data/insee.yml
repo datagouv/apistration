@@ -1025,6 +1025,23 @@ insee:
       title: "Unité légale de l'établissement"
       properties: *shared_insee_unite_legale_attributes_v4
 
+  shared_insee_unite_legale_attributes_diffusible_v4: &shared_insee_unite_legale_attributes_diffusible_v4
+    <<: *shared_insee_unite_legale_attributes_diffusible
+    activite_principale_naf_rev2: *activite_principale_naf_rev2_property
+
+  insee_unite_legale_attributes_diffusible_v4: &insee_unite_legale_attributes_diffusible_v4
+    <<: *shared_insee_unite_legale_attributes_diffusible_v4
+    date_cessation: *date_cessation_property
+
+  insee_etablissement_attributes_diffusible_v4: &insee_etablissement_attributes_diffusible_v4
+    <<: *insee_etablissement_attributes_diffusible
+    activite_principale_naf_rev2: *activite_principale_naf_rev2_property
+    unite_legale:
+      type: "object"
+      additionalProperties: false
+      title: "Unité légale de l'établissement"
+      properties: *shared_insee_unite_legale_attributes_diffusible_v4
+
   adresse_etablissement:
     title: "Adresse établissement"
     description: "Adresse d'un établissement inscrit au répertoire Sirene, y compris celle des établissements en diffusion partielle."
@@ -1190,3 +1207,29 @@ insee:
     tags:
       - "Informations générales"
     attributes: *insee_etablissement_attributes_v4
+
+  unite_legale_diffusable_v4:
+    title: "Données unité légale en open data"
+    description: "Informations de référence publiques d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Cette version utilise la nomenclature NAF2025 pour l'activité principale."
+    tags:
+      - "Informations générales"
+    attributes: *insee_unite_legale_attributes_diffusible_v4
+
+  etablissement_diffusable_v4:
+    title: "Données établissement en open data"
+    description: "Informations générales publiques concernant un établissement inscrit au répertoire Sirene. Cette version utilise la nomenclature NAF2025 pour l'activité principale."
+    tags:
+      - "Informations générales"
+    attributes: *insee_etablissement_attributes_diffusible_v4
+
+  siege_unite_legale_v4:
+    title: "Données siège social"
+    description: "Informations générales concernant le siège social d'une unité légale inscrite au répertoire Sirene. Avec les données protégées des sièges sociaux en diffusion partielle. Cette version utilise la nomenclature NAF2025 pour l'activité principale."
+    tags:
+      - "Informations générales"
+
+  siege_diffusable_unite_legale_v4:
+    title: "Données siège social en open data"
+    description: "Informations générales publiques concernant le siège d'une unité légale inscrite au répertoire Sirene. Cette version utilise la nomenclature NAF2025 pour l'activité principale."
+    tags:
+      - "Informations générales"
