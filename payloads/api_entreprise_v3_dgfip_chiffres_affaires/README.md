@@ -29,12 +29,16 @@
           "chiffre_affaires": 900001,
           "date_fin_exercice": "2022-12-01"
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
-    "meta": {},
-    "links": {}
+    "meta": {
+    },
+    "links": {
+    }
   }
   ```
 
@@ -82,12 +86,16 @@
           "chiffre_affaires": 900001,
           "date_fin_exercice": "2023-12-01"
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
-    "meta": {},
-    "links": {}
+    "meta": {
+    },
+    "links": {
+    }
   }
   ```
 
@@ -135,12 +143,16 @@
           "chiffre_affaires": 900001,
           "date_fin_exercice": "2024-12-01"
         },
-        "links": {},
-        "meta": {}
+        "links": {
+        },
+        "meta": {
+        }
       }
     ],
-    "meta": {},
-    "links": {}
+    "meta": {
+    },
+    "links": {
+    }
   }
   ```
 

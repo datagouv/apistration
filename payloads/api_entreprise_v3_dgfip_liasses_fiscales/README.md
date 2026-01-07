@@ -61,7 +61,8 @@
         }
       ]
     },
-    "links": {},
+    "links": {
+    },
     "meta": {
       "internal_id_itip": "100004763104"
     }

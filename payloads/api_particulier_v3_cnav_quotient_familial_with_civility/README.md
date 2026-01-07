@@ -95,8 +95,10 @@ Ce cas permet de tester :
         "pays": "FRANCE"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -207,8 +209,10 @@ Ce cas permet de tester :
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -311,8 +315,10 @@ Ce cas permet de tester :
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -376,7 +382,9 @@ et la réponse lorsque celui ci est trouvé.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur FAKOR EYMEN MOHAMED",
         "complement_information": null,
@@ -395,8 +403,10 @@ et la réponse lorsque celui ci est trouvé.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -466,7 +476,9 @@ d'erreur selon les informations que vous fournirez.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
         "complement_information": null,
@@ -485,8 +497,10 @@ d'erreur selon les informations que vous fournirez.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -556,7 +570,9 @@ d'erreur selon les informations que vous fournirez.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
         "complement_information": null,
@@ -575,8 +591,10 @@ d'erreur selon les informations que vous fournirez.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -645,7 +663,9 @@ d'erreur selon les informations que vous fournirez.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
         "complement_information": null,
@@ -664,8 +684,10 @@ d'erreur selon les informations que vous fournirez.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -734,7 +756,9 @@ d'erreur selon les informations que vous fournirez.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
         "complement_information": null,
@@ -753,8 +777,10 @@ d'erreur selon les informations que vous fournirez.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -823,7 +849,9 @@ d'erreur selon les informations que vous fournirez.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
         "complement_information": null,
@@ -842,8 +870,10 @@ d'erreur selon les informations que vous fournirez.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -935,8 +965,10 @@ Ce cas permet de tester :
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1002,7 +1034,9 @@ Ce cas permet de tester :
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Monsieur LEFEBVRE ALEXIS",
         "complement_information": null,
@@ -1021,8 +1055,10 @@ Ce cas permet de tester :
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1086,7 +1122,9 @@ pivot France Connect.
           "sexe": "F"
         }
       ],
-      "enfants": [],
+      "enfants": [
+  
+      ],
       "adresse": {
         "destinataire": "Madame DUBOIS ANGELA CLAIRE LOUISE",
         "complement_information": null,
@@ -1105,8 +1143,10 @@ pivot France Connect.
         "mois_calcul": 12
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1475,7 +1515,8 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {}
+        "meta": {
+        }
       }
     ]
   }
