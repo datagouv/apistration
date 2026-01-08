@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 5 - Boucher Gabrielle'
+params:
+  nomNaissance: "Boucher"
+  prenoms:
+    - "Gabrielle"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 2
+  jourDateNaissance: 5
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Boucher",
+        "prenom": "Gabrielle",
+        "sexe": "F",
+        "date_naissance": "2002-02-05"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 5
+    },
+    "links": {},
+    "meta": {}
+  }

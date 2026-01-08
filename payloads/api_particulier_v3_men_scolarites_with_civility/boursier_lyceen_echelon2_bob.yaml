@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 2 - Bob Nassima'
+params:
+  nomNaissance: "Bob"
+  prenoms:
+    - "Nassima"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2004
+  moisDateNaissance: 12
+  jourDateNaissance: 4
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Bob",
+        "prenom": "Nassima",
+        "sexe": "F",
+        "date_naissance": "2004-12-04"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }

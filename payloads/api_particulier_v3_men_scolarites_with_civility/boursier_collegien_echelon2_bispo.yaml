@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier collégien échelon 2 - Bispo-Antoinette Hanan'
+params:
+  nomNaissance: "Bispo-Antoinette"
+  prenoms:
+    - "Hanan"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 1999
+  moisDateNaissance: 12
+  jourDateNaissance: 24
+  codeEtablissement: "0941035P"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Bispo-Antoinette",
+        "prenom": "Hanan",
+        "sexe": "F",
+        "date_naissance": "1999-12-24"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10310019110",
+        "libelle": "3EME GENERALE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0941035P",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }

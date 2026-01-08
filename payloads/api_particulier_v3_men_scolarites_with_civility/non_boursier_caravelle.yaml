@@ -1,0 +1,42 @@
+---
+description: 'Élève non boursier - Caravelle Marc-Antoine'
+params:
+  nomNaissance: "Caravelle"
+  prenoms:
+    - "Marc-Antoine"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 4
+  jourDateNaissance: 15
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Caravelle",
+        "prenom": "Marc-Antoine",
+        "sexe": "M",
+        "date_naissance": "2002-04-15"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

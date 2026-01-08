@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 3 - Pereira Maoris'
+params:
+  nomNaissance: "Pereira"
+  prenoms:
+    - "Maoris"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 8
+  jourDateNaissance: 5
+  codeEtablissement: "0782567S"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Pereira",
+        "prenom": "Maoris",
+        "sexe": "M",
+        "date_naissance": "2002-08-05"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0782567S",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 3
+    },
+    "links": {},
+    "meta": {}
+  }

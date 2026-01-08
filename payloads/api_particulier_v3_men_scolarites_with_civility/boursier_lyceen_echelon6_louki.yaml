@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 6 - Louki Ahmed'
+params:
+  nomNaissance: "Louki"
+  prenoms:
+    - "Ahmed"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 2
+  jourDateNaissance: 6
+  codeEtablissement: "0921236U"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Louki",
+        "prenom": "Ahmed",
+        "sexe": "M",
+        "date_naissance": "2002-02-06"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0921236U",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 6
+    },
+    "links": {},
+    "meta": {}
+  }

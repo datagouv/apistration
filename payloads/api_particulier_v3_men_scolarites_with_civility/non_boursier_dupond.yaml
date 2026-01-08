@@ -1,0 +1,42 @@
+---
+description: 'Élève non boursier - Dupond Nicolas'
+params:
+  nomNaissance: "Dupond"
+  prenoms:
+    - "Nicolas"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 2
+  jourDateNaissance: 2
+  codeEtablissement: "0931190N"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Dupond",
+        "prenom": "Nicolas",
+        "sexe": "M",
+        "date_naissance": "2002-02-02"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0931190N",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

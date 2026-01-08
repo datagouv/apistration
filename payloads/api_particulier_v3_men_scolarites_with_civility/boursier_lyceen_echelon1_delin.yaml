@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier lycéen échelon 1 - Delin Antoine'
+params:
+  nomNaissance: "Delin"
+  prenoms:
+    - "Antoine"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 12
+  jourDateNaissance: 3
+  codeEtablissement: "0931190N"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Delin",
+        "prenom": "Antoine",
+        "sexe": "M",
+        "date_naissance": "2000-12-03"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0931190N",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }

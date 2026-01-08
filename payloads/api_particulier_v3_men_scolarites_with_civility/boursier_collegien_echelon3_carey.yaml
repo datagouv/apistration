@@ -1,0 +1,42 @@
+---
+description: 'Élève boursier collégien échelon 3 - Carey Abdelhay'
+params:
+  nomNaissance: "Carey"
+  prenoms:
+    - "Abdelhay"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2003
+  moisDateNaissance: 7
+  jourDateNaissance: 11
+  codeEtablissement: "0750611G"
+  anneeScolaire: "2024"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Carey",
+        "prenom": "Abdelhay",
+        "sexe": "M",
+        "date_naissance": "2003-07-11"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10310019110",
+        "libelle": "3EME GENERALE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0750611G",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 3
+    },
+    "links": {},
+    "meta": {}
+  }
