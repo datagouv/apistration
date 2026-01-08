@@ -341,6 +341,31 @@
   title: 'Fonctionnalité non implémentée'
   detail: 'Fonctionnalité non implémentée pour le moment'
 
+## Proxy file errors (006xx)
+- code: '00601'
+  title: 'Accès au fichier refusé'
+  detail: "L'accès au fichier distant a été refusé par le fournisseur."
+
+- code: '00602'
+  title: 'Trop de requêtes'
+  detail: "Le fournisseur du fichier a rejeté la requête car le quota est dépassé. Veuillez réessayer ultérieurement."
+
+- code: '00603'
+  title: 'Erreur interne du fournisseur de fichier'
+  detail: "Le fournisseur du fichier a rencontré une erreur interne."
+
+- code: '00604'
+  title: 'Passerelle invalide'
+  detail: "Une erreur de passerelle s'est produite lors de la récupération du fichier."
+
+- code: '00605'
+  title: 'Service de fichier indisponible'
+  detail: "Le service de fichier est temporairement indisponible. Veuillez réessayer ultérieurement."
+
+- code: '00606'
+  title: 'Délai de récupération dépassé'
+  detail: "Le fournisseur du fichier n'a pas répondu dans le délai imparti."
+
 ## Providers
 ### INSEE
 

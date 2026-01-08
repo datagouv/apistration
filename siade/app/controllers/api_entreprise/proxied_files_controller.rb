@@ -36,20 +36,19 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
   end
 
   def handle_http_error(exception, url)
-    case exception.io.status[0]
-    when '404'
-      head :not_found
-    when '504'
-      track_invalid_proxied_file('504', url)
+    status_code = exception.io.status[0]
 
-      head :bad_gateway
-    else
-      raise exception
-    end
+    return head(:not_found) if status_code == '404'
+
+    error = ProxyFileError.from_http_status(status_code, url:)
+    raise exception unless error
+
+    track_invalid_proxied_file(error, status_code, url)
+    render json: { errors: [error.to_h] }, status: error.http_status
   end
 
-  def track_invalid_proxied_file(status, url)
-    MonitoringService.instance.track_with_added_context('info', 'Proxied file error', { status:, url: })
+  def track_invalid_proxied_file(error, status, url)
+    MonitoringService.instance.track_with_added_context('info', 'Proxied file error', { code: error.code, status:, url: })
   end
 
   def extract_filename_from_url(url)
