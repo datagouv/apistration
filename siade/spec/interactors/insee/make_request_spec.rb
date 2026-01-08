@@ -89,5 +89,36 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
         expect { make_request }.not_to(change { EncryptedCache.read('insee/authenticate') })
       end
     end
+
+    context 'when 401 but another thread already refreshed the token' do
+      let(:token_from_other_thread) { 'token_from_other_thread' }
+
+      before do
+        stub_request(:get, /#{insee_sirene_url}/)
+          .with(headers: { 'Authorization' => "Bearer #{token}" })
+          .to_return(status: 401, body: '{"header":{"statut":401,"message":"Jeton invalide ou jeton expiré"}}')
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .with(headers: { 'Authorization' => "Bearer #{token_from_other_thread}" })
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+
+        EncryptedCache.write(INSEE::Authenticate::CACHE_KEY, token_from_other_thread)
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'uses the fresh token from cache without OAuth call' do
+        make_request
+
+        expect(WebMock).not_to have_requested(:post, /#{insee_oauth_url}/)
+      end
+
+      it 'retries with the fresh cached token' do
+        make_request
+
+        expect(WebMock).to have_requested(:get, /#{insee_sirene_url}/)
+          .with(headers: { 'Authorization' => "Bearer #{token_from_other_thread}" })
+      end
+    end
   end
 end

@@ -43,8 +43,14 @@ class INSEE::MakeRequest < MakeRequest::Get
 
   def retry_with_new_token!
     context.token_refresh_attempted = true
-    INSEE::Authenticate.invalidate_token_cache!
-    INSEE::Authenticate.call!(context)
+
+    fresh_token = EncryptedCache.read(INSEE::Authenticate::CACHE_KEY)
+    if fresh_token && fresh_token != context.token
+      context.token = fresh_token
+    else
+      INSEE::Authenticate.invalidate_token_cache!
+      INSEE::Authenticate.call!(context)
+    end
 
     api_call_with_error_handling
   end
