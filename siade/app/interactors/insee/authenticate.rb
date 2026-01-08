@@ -1,4 +1,10 @@
 class INSEE::Authenticate < AbstractGetToken
+  CACHE_KEY = :'insee/authenticate'
+
+  def self.invalidate_token_cache!
+    EncryptedCache.write(CACHE_KEY, nil)
+  end
+
   protected
 
   def client_url

@@ -1,4 +1,10 @@
 class INSEE::MakeRequest < MakeRequest::Get
+  def call
+    super
+
+    retry_with_new_token! if should_retry_with_new_token?
+  end
+
   protected
 
   def extra_headers(request)
@@ -23,5 +29,23 @@ class INSEE::MakeRequest < MakeRequest::Get
 
   def base_uri
     Siade.credentials[:insee_sirene_url]
+  end
+
+  private
+
+  def should_retry_with_new_token?
+    token_expired_response? && !context.token_refresh_attempted
+  end
+
+  def token_expired_response?
+    context.response&.code&.to_i == 401
+  end
+
+  def retry_with_new_token!
+    context.token_refresh_attempted = true
+    INSEE::Authenticate.invalidate_token_cache!
+    INSEE::Authenticate.call!(context)
+
+    api_call_with_error_handling
   end
 end
