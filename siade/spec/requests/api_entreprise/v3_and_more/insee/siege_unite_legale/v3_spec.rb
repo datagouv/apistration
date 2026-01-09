@@ -8,6 +8,7 @@ RSpec.describe 'INSEE: Siège Unité Légale', api: :entreprise, type: %i[reques
       tags 'Informations générales'
 
       parameter_siren
+      deprecated true
 
       common_action_attributes
 

@@ -6,6 +6,7 @@ RSpec.describe 'INSEE: EtablissementDiffusable diffusibbles', api: :entreprise, 
       tags(*SwaggerData.get('insee.etablissement_diffusable.tags'))
 
       parameter_siret
+      deprecated true
 
       common_action_attributes
 

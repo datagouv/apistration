@@ -8,6 +8,7 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', api: :entreprise, type
       tags 'Informations générales'
 
       parameter_siren
+      deprecated true
 
       common_action_attributes
 
