@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Enfant bénéficiaire du statut C2S (parent de NICOLAS GARNIER)
+
+  Ce cas permet de tester :
+  * la gestion d'un enfant bénéficiaire du statut C2S sans participation financière
+  * cas où l'enfant et son parent ont tous deux le statut C2S
+params:
+  codeCogInseeCommuneNaissance: '13054'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'GARNIER'
+  prenoms:
+    - 'LEO'
+  anneeDateNaissance: 2007
+  moisDateNaissance: 5
+  jourDateNaissance: 27
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {},
+    "meta": {}
+  }

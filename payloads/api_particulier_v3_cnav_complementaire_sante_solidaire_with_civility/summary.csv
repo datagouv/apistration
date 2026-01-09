@@ -29,6 +29,58 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
+,"## Enfant bénéficiaire du statut C2S (parent de LUCAS DURAND)
+
+Ce cas permet de tester :
+* la gestion d'un enfant bénéficiaire du statut C2S avec participation financière
+* cas où l'enfant et son parent ont tous deux le statut C2S","{""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""DURAND"",""prenoms"":[""ALEXIS"",""VINCENT""],""anneeDateNaissance"":2006,""moisDateNaissance"":4,""jourDateNaissance"":20}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2023-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Enfant bénéficiaire du statut C2S (parent de NICOLAS GARNIER)
+
+Ce cas permet de tester :
+* la gestion d'un enfant bénéficiaire du statut C2S sans participation financière
+* cas où l'enfant et son parent ont tous deux le statut C2S","{""codeCogInseeCommuneNaissance"":""13054"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""GARNIER"",""prenoms"":[""LEO""],""anneeDateNaissance"":2007,""moisDateNaissance"":5,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2023-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Enfant majeur bénéficiaire du statut C2S (parent de NASSIM FABRE)
+
+Ce cas permet de tester :
+* la gestion d'un enfant majeur bénéficiaire du statut C2S
+* cas où l'enfant majeur a le statut C2S mais pas son parent","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""FABRE"",""prenoms"":[""MAYA"",""LINA""],""anneeDateNaissance"":2005,""moisDateNaissance"":3,""jourDateNaissance"":9}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2023-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Enfant non bénéficiaire du statut C2S (parent de NICOLAS GARNIER)
+
+Ce cas permet de tester :
+* la gestion d'un enfant non bénéficiaire du statut C2S
+* cas où le parent a le statut C2S mais pas l'enfant","{""codeCogInseeCommuneNaissance"":""13054"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""GARNIER"",""prenoms"":[""NOLAN""],""anneeDateNaissance"":2011,""moisDateNaissance"":3,""jourDateNaissance"":19}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": false,
+    ""avec_participation"": false,
+    ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Non bénéficiaire - masculin
 
 Ce cas permet de tester :
@@ -39,6 +91,58 @@ Ce cas permet de tester :
     ""est_beneficiaire"": false,
     ""avec_participation"": false,
     ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Parent avec un enfant, bénéficiaire du statut C2S
+
+Ce cas permet de tester :
+* la gestion d'un parent bénéficiaire du statut C2S avec participation financière
+* un parent qui a un enfant","{""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""DURAND"",""prenoms"":[""LUCAS""],""anneeDateNaissance"":1999,""moisDateNaissance"":3,""jourDateNaissance"":12}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2023-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Parent bénéficiaire du statut C2S avec deux enfants
+
+Ce cas permet de tester :
+* la gestion d'un parent bénéficiaire du statut C2S sans participation financière
+* un parent qui a deux enfants","{""codeCogInseeCommuneNaissance"":""13054"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""GARNIER"",""prenoms"":[""NICOLAS""],""anneeDateNaissance"":1997,""moisDateNaissance"":9,""jourDateNaissance"":30}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2023-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Parent non bénéficiaire du statut C2S avec un enfant
+
+Ce cas permet de tester :
+* la gestion d'un parent non bénéficiaire du statut C2S
+* un parent qui a un enfant","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""FABRE"",""prenoms"":[""NASSIM""],""anneeDateNaissance"":1996,""moisDateNaissance"":10,""jourDateNaissance"":18}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": false,
+    ""avec_participation"": false,
+    ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Parent sans enfant bénéficiaire du statut C2S
+
+Ce cas permet de tester :
+* la gestion d'un parent sans enfant
+* la prise en compte du statut C2S","{""codeCogInseeCommuneNaissance"":""13005"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""MOREL"",""prenoms"":[""EMILIE""],""anneeDateNaissance"":2000,""moisDateNaissance"":2,""jourDateNaissance"":5}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2023-06-01""
   },
   ""links"": {},
   ""meta"": {}
