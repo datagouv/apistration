@@ -146,6 +146,10 @@ Rails/Inquiry:
 RSpec/NestedGroups:
   Enabled: false
 
+RSpec/Output:
+  Exclude:
+    - "spec/vcr_helper.rb"
+
 RSpec/ScatteredSetup:
   Exclude:
     - "spec/requests/api/v3_and_more/**/*_spec.rb"
