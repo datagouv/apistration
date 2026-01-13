@@ -17,10 +17,10 @@ RSpec.describe GIPMDS::ServiceCivique::BuildResource, type: :build_resource do
             statut_actuel: {
               contrat_trouve: true,
               organisme_accueil: {
-                siret: '13002526500013',
-                raison_sociale: 'DIRECTION INTERMINISTERIELLE DU NUMERIQUE'
+                siret: '34442248200013',
+                raison_sociale: 'ROBEZ YVETTE LOUISE C'
               },
-              date_debut_contrat: '2024-01-15',
+              date_debut_contrat: '2025-12-01',
               date_fin_contrat: nil
             },
             statut_passe: {

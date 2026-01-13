@@ -21,7 +21,7 @@ class GIPMDS::ServiceCivique::MakeRequest < MakeRequest::Get
       prenom: context.params[:prenoms]&.first,
       dateNaissance: formatted_date_naissance,
       listeCodeNature: SERVICE_CIVIQUE_CODE,
-      dateDebutPeriode: 5.years.ago.to_date.strftime('%Y-%m-%d')
+      comparaisonCertifiee: '1'
     }
   end
 

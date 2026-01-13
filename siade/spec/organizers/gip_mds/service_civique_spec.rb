@@ -34,7 +34,7 @@ RSpec.describe GIPMDS::ServiceCivique, type: :retriever_organizer do
           prenom: 'Jean',
           dateNaissance: '25061990',
           listeCodeNature: '89',
-          dateDebutPeriode: 5.years.ago.to_date.strftime('%Y-%m-%d')
+          comparaisonCertifiee: '1'
         }
       ).and_return(
         status: 200,

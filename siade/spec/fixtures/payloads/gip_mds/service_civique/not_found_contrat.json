@@ -2,7 +2,7 @@
   "erreurs": [
     {
       "code": "NOT_FOUND_CONTRAT",
-      "message": "Aucun contrat trouve"
+      "message": "Aucun contrat trouvé conforme aux critères saisis pour l'individu MARCHAND, SYLVAIN, 03041979."
     }
   ]
 }

@@ -32,7 +32,7 @@ RSpec.describe GIPMDS::ServiceCivique::MakeRequest, type: :make_request do
           prenom: 'Jean',
           dateNaissance: '01102000',
           listeCodeNature: '89',
-          dateDebutPeriode: 5.years.ago.to_date.strftime('%Y-%m-%d')
+          comparaisonCertifiee: '1'
         },
         headers: {
           'Content-Type' => 'application/json',

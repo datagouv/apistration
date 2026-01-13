@@ -1,15 +1,20 @@
 {
   "individu": {
+    "nomFamille": "Delaforet",
+    "prenoms": "MANU",
+    "dateNaissance": "03051990",
     "entreprise": [
       {
-        "siren": "130025265",
-        "raisonSociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
+        "siren": "344422482",
+        "raisonSociale": "ROBEZ YVETTE LOUISE C",
         "etablissement": [
           {
-            "siret": "13002526500013",
+            "siret": "34442248200013",
             "contrat": [
               {
-                "dateDebutContrat": "2024-01-15",
+                "dateDebutContrat": "2025-12-01",
+                "natureContrat": "89",
+                "dateFinPrevisionnelle": "2026-05-05",
                 "dateFinContrat": null,
                 "motifRupture": null
               }
@@ -20,6 +25,7 @@
     ]
   },
   "retour": {
-    "codeRetour": "OK"
+    "codeRetour": "OK",
+    "message": "Pas d'erreur."
   }
 }
