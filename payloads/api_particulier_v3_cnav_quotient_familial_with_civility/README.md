@@ -336,6 +336,121 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-famille-4_enfants.yaml](200-famille-4_enfants.yaml)
+
+  Status `200`
+
+  ## Famille avec quatre enfants (scolarisé / boursier / non boursier / majeur)
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* la prise en compte de profils enfants différents (scolarisé, boursier, non boursier/scolarisé, majeur)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13001",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "DUPONT",
+    "prenoms": [
+      "SOPHIE"
+    ],
+    "anneeDateNaissance": 1982,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 3
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "SOPHIE",
+          "date_naissance": "1982-09-03",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "CLARA",
+          "date_naissance": "2003-11-15",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "LOUISE",
+          "date_naissance": "2010-06-22",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2016-12-03",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "MAXIME",
+          "date_naissance": "2015-09-01",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame DUPONT SOPHIE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "15 COURS JULIEN",
+        "lieu_dit": null,
+        "code_postal_ville": "13006 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 900,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13001' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=DUPONT' -d 'prenoms[]=SOPHIE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=9' -d 'jourDateNaissance=3' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
 * [200-identite-cas-etranger.yaml](200-identite-cas-etranger.yaml)
 
   Status `200`
@@ -886,6 +1001,308 @@ d'erreur selon les informations que vous fournirez.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=12' -d 'jourDateNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-1_enfant_non_scolarise.yaml](200-parent-1_enfant_non_scolarise.yaml)
+
+  Status `200`
+
+  ## Parent avec un enfant non scolarisé
+
+Ce cas permet de tester :
+* la gestion d'un parent avec un enfant non scolarisé
+* la non-éligibilité au statut famille nombreuse pour ce profil
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13055",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "ROCHER",
+    "prenoms": [
+      "SANDRINE"
+    ],
+    "anneeDateNaissance": 1986,
+    "moisDateNaissance": 11,
+    "jourDateNaissance": 9
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROCHER",
+          "nom_usage": null,
+          "prenoms": "SANDRINE",
+          "date_naissance": "1986-11-09",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROCHER",
+          "nom_usage": null,
+          "prenoms": "LUCIE",
+          "date_naissance": "2009-05-14",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame ROCHER SANDRINE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "10 RUE SAINTE",
+        "lieu_dit": null,
+        "code_postal_ville": "13001 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 800,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=ROCHER' -d 'prenoms[]=SANDRINE' -d 'anneeDateNaissance=1986' -d 'moisDateNaissance=11' -d 'jourDateNaissance=9' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-2_enfants.yaml](200-parent-2_enfants.yaml)
+
+  Status `200`
+
+  ## Parent avec deux enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec deux enfants
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13090",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "BERNARD",
+    "prenoms": [
+      "JULIEN"
+    ],
+    "anneeDateNaissance": 1979,
+    "moisDateNaissance": 2,
+    "jourDateNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "BERNARD",
+          "nom_usage": null,
+          "prenoms": "JULIEN",
+          "date_naissance": "1979-02-27",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "BERNARD",
+          "nom_usage": null,
+          "prenoms": "THOMAS",
+          "date_naissance": "2006-06-08",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "BERNARD",
+          "nom_usage": null,
+          "prenoms": "LEO",
+          "date_naissance": "2011-03-19",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur BERNARD JULIEN",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "28 BOULEVARD MICHELET",
+        "lieu_dit": null,
+        "code_postal_ville": "13008 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1050,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13090' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=BERNARD' -d 'prenoms[]=JULIEN' -d 'anneeDateNaissance=1979' -d 'moisDateNaissance=2' -d 'jourDateNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-3_enfants.yaml](200-parent-3_enfants.yaml)
+
+  Status `200`
+
+  ## Famille avec trois enfants (boursier / non boursier / majeur)
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* la prise en compte de statuts différents (boursier, non boursier, enfant majeur)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13055",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "MARTIN",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateNaissance": 1985,
+    "moisDateNaissance": 6,
+    "jourDateNaissance": 12
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "PIERRE",
+          "date_naissance": "1985-06-12",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "LUCAS",
+          "date_naissance": "2005-04-20",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "EMMA",
+          "date_naissance": "2012-08-15",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "NOAH",
+          "date_naissance": "2015-01-10",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur MARTIN PIERRE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "42 AVENUE DE LA RÉPUBLIQUE",
+        "lieu_dit": null,
+        "code_postal_ville": "13001 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1200,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MARTIN' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=6' -d 'jourDateNaissance=12' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 

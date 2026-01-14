@@ -127,6 +127,256 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-enfant-beneficiaire-c2s-alexis-durand.yaml](200-enfant-beneficiaire-c2s-alexis-durand.yaml)
+
+  Status `200`
+
+  ## Enfant bénéficiaire du statut C2S (parent de LUCAS DURAND)
+
+Ce cas permet de tester :
+* la gestion d'un enfant bénéficiaire du statut C2S avec participation financière
+* cas où l'enfant et son parent ont tous deux le statut C2S
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13055",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "DURAND",
+    "prenoms": [
+      "ALEXIS",
+      "VINCENT"
+    ],
+    "anneeDateNaissance": 2006,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 20
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": true,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=DURAND' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=VINCENT' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=4' -d 'jourDateNaissance=20' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-enfant-beneficiaire-c2s-leo-garnier.yaml](200-enfant-beneficiaire-c2s-leo-garnier.yaml)
+
+  Status `200`
+
+  ## Enfant bénéficiaire du statut C2S (parent de NICOLAS GARNIER)
+
+Ce cas permet de tester :
+* la gestion d'un enfant bénéficiaire du statut C2S sans participation financière
+* cas où l'enfant et son parent ont tous deux le statut C2S
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13054",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "GARNIER",
+    "prenoms": [
+      "LEO"
+    ],
+    "anneeDateNaissance": 2007,
+    "moisDateNaissance": 5,
+    "jourDateNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13054' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=GARNIER' -d 'prenoms[]=LEO' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=5' -d 'jourDateNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-enfant-majeur-beneficiaire-c2s.yaml](200-enfant-majeur-beneficiaire-c2s.yaml)
+
+  Status `200`
+
+  ## Enfant majeur bénéficiaire du statut C2S (parent de NASSIM FABRE)
+
+Ce cas permet de tester :
+* la gestion d'un enfant majeur bénéficiaire du statut C2S
+* cas où l'enfant majeur a le statut C2S mais pas son parent
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13001",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "FABRE",
+    "prenoms": [
+      "MAYA",
+      "LINA"
+    ],
+    "anneeDateNaissance": 2005,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 9
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13001' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=FABRE' -d 'prenoms[]=MAYA' -d 'prenoms[]=LINA' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=3' -d 'jourDateNaissance=9' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-enfant-non-beneficiaire-c2s-nolan-garnier.yaml](200-enfant-non-beneficiaire-c2s-nolan-garnier.yaml)
+
+  Status `200`
+
+  ## Enfant non bénéficiaire du statut C2S (parent de NICOLAS GARNIER)
+
+Ce cas permet de tester :
+* la gestion d'un enfant non bénéficiaire du statut C2S
+* cas où le parent a le statut C2S mais pas l'enfant
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13054",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "GARNIER",
+    "prenoms": [
+      "NOLAN"
+    ],
+    "anneeDateNaissance": 2011,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 19
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13054' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=GARNIER' -d 'prenoms[]=NOLAN' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=3' -d 'jourDateNaissance=19' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
 * [200-non-beneficiaire_masculin.yaml](200-non-beneficiaire_masculin.yaml)
 
   Status `200`
@@ -184,6 +434,254 @@ Ce cas permet de tester :
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1966' -d 'moisDateNaissance=6' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-1_enfant-beneficiaires-c2s.yaml](200-parent-1_enfant-beneficiaires-c2s.yaml)
+
+  Status `200`
+
+  ## Parent avec un enfant, bénéficiaire du statut C2S
+
+Ce cas permet de tester :
+* la gestion d'un parent bénéficiaire du statut C2S avec participation financière
+* un parent qui a un enfant
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13055",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "DURAND",
+    "prenoms": [
+      "LUCAS"
+    ],
+    "anneeDateNaissance": 1999,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 12
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": true,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=DURAND' -d 'prenoms[]=LUCAS' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=3' -d 'jourDateNaissance=12' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-beneficiaire-2_enfants-statuts-differents.yaml](200-parent-beneficiaire-2_enfants-statuts-differents.yaml)
+
+  Status `200`
+
+  ## Parent bénéficiaire du statut C2S avec deux enfants
+
+Ce cas permet de tester :
+* la gestion d'un parent bénéficiaire du statut C2S sans participation financière
+* un parent qui a deux enfants
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13054",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "GARNIER",
+    "prenoms": [
+      "NICOLAS"
+    ],
+    "anneeDateNaissance": 1997,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 30
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13054' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=GARNIER' -d 'prenoms[]=NICOLAS' -d 'anneeDateNaissance=1997' -d 'moisDateNaissance=9' -d 'jourDateNaissance=30' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-non-beneficiaire-enfant-majeur-beneficiaire.yaml](200-parent-non-beneficiaire-enfant-majeur-beneficiaire.yaml)
+
+  Status `200`
+
+  ## Parent non bénéficiaire du statut C2S avec un enfant
+
+Ce cas permet de tester :
+* la gestion d'un parent non bénéficiaire du statut C2S
+* un parent qui a un enfant
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13001",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "FABRE",
+    "prenoms": [
+      "NASSIM"
+    ],
+    "anneeDateNaissance": 1996,
+    "moisDateNaissance": 10,
+    "jourDateNaissance": 18
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13001' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=FABRE' -d 'prenoms[]=NASSIM' -d 'anneeDateNaissance=1996' -d 'moisDateNaissance=10' -d 'jourDateNaissance=18' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+  ```
+
+  </p>
+  </details>
+* [200-parent-sans-enfant-beneficiaire-c2s.yaml](200-parent-sans-enfant-beneficiaire-c2s.yaml)
+
+  Status `200`
+
+  ## Parent sans enfant bénéficiaire du statut C2S
+
+Ce cas permet de tester :
+* la gestion d'un parent sans enfant
+* la prise en compte du statut C2S
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "13005",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "MOREL",
+    "prenoms": [
+      "EMILIE"
+    ],
+    "anneeDateNaissance": 2000,
+    "moisDateNaissance": 2,
+    "jourDateNaissance": 5
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13005' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=MOREL' -d 'prenoms[]=EMILIE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 

@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Parent non bénéficiaire du statut C2S avec un enfant
+
+  Ce cas permet de tester :
+  * la gestion d'un parent non bénéficiaire du statut C2S
+  * un parent qui a un enfant
+params:
+  codeCogInseeCommuneNaissance: '13001'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'FABRE'
+  prenoms:
+    - 'NASSIM'
+  anneeDateNaissance: 1996
+  moisDateNaissance: 10
+  jourDateNaissance: 18
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {},
+    "meta": {}
+  }

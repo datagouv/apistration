@@ -1,0 +1,43 @@
+---
+description: 'Élève non boursier non scolarisé'
+params:
+  nomNaissance: "FERRAND"
+  prenoms: 
+    - 'ELISE'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2004
+  moisDateNaissance: 9
+  jourDateNaissance: 27
+  codeEtablissement: "0130001F"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "FERRAND",
+        "prenom": "ELISE",
+        "sexe": "F",
+        "date_naissance": "2004-09-27"
+      },
+      "module_elementaire_formation": {
+          "code_mef_stat": "211324099991",
+          "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": false,
+      "statut_eleve": {
+        "code": "NS",
+        "libelle": "Non scolarisé"
+      },
+      "etablissement": {
+          "code_uai": "0130001F",
+          "nom": "Lycée polyvalent Émile Zola",
+          "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
