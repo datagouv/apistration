@@ -7,51 +7,18 @@ RSpec.describe URSSAF::AttestationsSociales::ValidateResponse::PDF, type: :valid
     end
     let(:code) { 200 }
 
-    context 'with a base64 body' do
-      let(:extractor) { instance_double(URSSAFAttestationVigilanceExtractor, perform: extractor_data) }
+    context 'with a valid base64 body' do
       let(:body) { Base64.strict_encode64('whatever') }
-      let(:extractor_data) { {} }
 
-      before do
-        allow(URSSAFAttestationVigilanceExtractor).to receive(:new).and_return(extractor)
-      end
+      it { is_expected.to be_a_success }
 
-      context 'when extractor returns valid data' do
-        let(:extractor_data) do
-          {
-            code_securite: 'QWERTYUYTREWERT',
-            date_debut_validite: Date.new(2022, 12, 31)
-          }
-        end
-
-        it { is_expected.to be_a_success }
-
-        its(:errors) { is_expected.to be_empty }
-        its(:cacheable) { is_expected.to be(true) }
-
-        it 'calls the extractor with body decrypted' do
-          expect(URSSAFAttestationVigilanceExtractor).to receive(:new).with('whatever')
-
-          subject
-        end
-      end
-
-      context 'when extractor raises an exception' do
-        before do
-          allow(extractor).to receive(:perform).and_raise(URSSAFAttestationVigilanceExtractor::InvalidAttestationVigilance)
-        end
-
-        it { is_expected.to be_a_failure }
-
-        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
-
-        its(:cacheable) { is_expected.to be(false) }
-      end
+      its(:errors) { is_expected.to be_empty }
+      its(:cacheable) { is_expected.to be(true) }
     end
 
     context 'when body is not a base64 string' do
       context 'when body is not a FUNC502 error' do
-        let(:body) { 'Nonsense' }
+        let(:body) { '!!!invalid-base64!!!' }
 
         it { is_expected.to be_a_failure }
 

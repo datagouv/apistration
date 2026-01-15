@@ -1,12 +1,8 @@
 class URSSAF::AttestationsSociales::ValidateResponse::PDF < ValidateResponse
   def call
-    context.decoded_body = Base64.strict_decode64(context.response.body)
-
-    URSSAFAttestationVigilanceExtractor.new(context.decoded_body).perform
+    Base64.strict_decode64(context.response.body)
   rescue ArgumentError
     handle_potential_soft_error
-  rescue URSSAFAttestationVigilanceExtractor::InvalidFile
-    unknown_provider_response!
   end
 
   private

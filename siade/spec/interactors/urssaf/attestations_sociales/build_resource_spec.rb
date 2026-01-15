@@ -1,7 +1,8 @@
 RSpec.describe URSSAF::AttestationsSociales::BuildResource, type: :build_resource do
   describe '.call' do
-    subject { described_class.call(response:, url:) }
+    subject { described_class.call(response:, url:, params:) }
 
+    let(:params) { { siren: '123456789' } }
     let(:extractor) do
       instance_double(URSSAFAttestationVigilanceExtractor, perform: extractor_data)
     end
@@ -39,6 +40,45 @@ RSpec.describe URSSAF::AttestationsSociales::BuildResource, type: :build_resourc
           date_fin_validite: Date.new(2023, 6, 30),
           code_securite: 'QWERTYUIOIUYTRE'
         )
+      end
+
+      it 'does not include extractor_error key' do
+        expect(subject.bundled_data.data.to_h[:extractor_error]).to be_nil
+      end
+    end
+
+    context 'when extractor raises InvalidFile' do
+      let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
+      let(:url) { 'https://entreprise.api.gouv.fr/file/attestation.pdf' }
+      let(:body) { Base64.strict_encode64('invalid pdf content') }
+
+      before do
+        allow(extractor).to receive(:perform).and_raise(PDFExtractor::InvalidFile)
+      end
+
+      it { is_expected.to be_success }
+
+      it 'builds resource with extractor_error and without extraction fields' do
+        data = subject.bundled_data.data.to_h
+
+        expect(data).to include(
+          entity_status_code: 'ok',
+          document_url: url,
+          extractor_error: 'invalid_file'
+        )
+        expect(data).not_to have_key(:date_debut_validite)
+        expect(data).not_to have_key(:date_fin_validite)
+        expect(data).not_to have_key(:code_securite)
+      end
+
+      it 'tracks the error with SIREN in context' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'info',
+          '[URSSAF] PDF extraction failed',
+          { siren: '123456789' }
+        )
+
+        subject
       end
     end
 
