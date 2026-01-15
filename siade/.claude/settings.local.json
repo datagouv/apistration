@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rspec:*)",
+      "Bash(mkdir:*)",
+      "Bash(git mv:*)"
+    ],
+    "deny": [
+      "Read(./.sentry_token)",
+      "Read(./.token*)"
+    ],
+    "ask": []
+  }
+}
