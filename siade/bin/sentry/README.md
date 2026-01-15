@@ -44,14 +44,32 @@ bin/sentry/events 123456 --full             # Avec détails complets
 ```bash
 bin/sentry/export 123456                    # -> tmp/sentry_123456.csv
 bin/sentry/export 123456 -p 5               # 500 events
+bin/sentry/export 123456 --full             # Avec http_response_body (lent)
 bin/sentry/export 123456 -o rapport.csv     # Fichier custom
 ```
 
 Colonnes: event_id, date, http_status, http_body, controller, action.
 
+Note: Sans `--full`, http_body sera vide. Utiliser `--full` pour récupérer
+les `http_response_body` des Provider errors (fetch chaque event).
+
+## Erreurs fournisseurs (Provider errors)
+
+Les erreurs fournisseurs sont stockées dans le context `Provider error` avec:
+- `http_response_code` - Code HTTP de la réponse
+- `http_response_body` - Corps de la réponse (JSON, HTML, PDF base64...)
+- `http_response_headers` - Headers de la réponse
+
+Les noms de providers sont définis dans `app/services/errors_backend.rb`.
+
 ## Exemples de queries Sentry
 
 ```bash
+# Par provider (voir app/services/errors_backend.rb pour les noms)
+bin/sentry/issues -q "provider:ACOSS"
+bin/sentry/issues -q "provider:INSEE"
+bin/sentry/issues -q "provider:DGFIP"
+
 # Par code HTTP
 bin/sentry/issues -q "http_response_code:502"
 bin/sentry/issues -q "http_response_code:400"
@@ -65,6 +83,7 @@ bin/sentry/issues -q "is:unresolved level:error"
 bin/sentry/issues -q "is:unresolved level:warning"
 
 # Combiné
+bin/sentry/issues -q "is:unresolved provider:ACOSS level:error"
 bin/sentry/issues -q "is:unresolved http_response_code:502" -p 24h
 ```
 

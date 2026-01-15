@@ -11,11 +11,13 @@ USAGE = <<~USAGE.freeze
   Options:
     -p, --pages NUM     Number of pages to fetch (100 events/page, default: 1)
     -o, --output FILE   Output file (default: tmp/sentry_<ISSUE_ID>.csv)
+    --full              Fetch full event details (slower, includes http_response_body)
     -h, --help          Show this help
 
   Examples:
     bin/sentry/export 123456
     bin/sentry/export 123456 -p 5
+    bin/sentry/export 123456 --full
     bin/sentry/export 123456 -o my_export.csv
 USAGE
 
@@ -27,6 +29,7 @@ end
 issue_id = ARGV[0]
 pages = 1
 output_file = nil
+full_mode = false
 
 args = ARGV[1..]
 while args&.any?
@@ -35,6 +38,8 @@ while args&.any?
     pages = args.shift.to_i
   when '-o', '--output'
     output_file = args.shift
+  when '--full'
+    full_mode = true
   end
 end
 
@@ -57,15 +62,25 @@ if all_events.empty?
   exit 0
 end
 
+if full_mode
+  puts 'Fetching full event details...'
+  all_events = all_events.map.with_index do |event, i|
+    print '.' if (i % 10).zero?
+    client.event(event['eventID'])
+  end
+  puts ' done'
+end
+
 rows = all_events.map do |event|
-  context = event['context'] || {}
+  provider_error = client.extract_provider_error(event) || {}
+  controller_params = event.dig('contexts', 'Controller params', 'params') || {}
   {
     event_id: event['eventID'],
     date: event['dateCreated'],
-    http_status: context['http_response_code'],
-    http_body: context['http_response_body'].to_s[0, 500],
-    controller: context.dig('params', 'controller'),
-    action: context.dig('params', 'action')
+    http_status: provider_error['http_response_code'],
+    http_body: provider_error['http_response_body'].to_s[0, 500],
+    controller: controller_params['controller'],
+    action: controller_params['action']
   }
 end
 

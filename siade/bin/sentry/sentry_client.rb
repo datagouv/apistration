@@ -38,6 +38,15 @@ class SentryClient
     response.body
   end
 
+  def event(event_id)
+    response = @connection.get("/api/0/projects/#{ORG_SLUG}/#{PROJECT_SLUG}/events/#{event_id}/")
+    response.body
+  end
+
+  def extract_provider_error(event)
+    event.dig('contexts', 'Provider error')
+  end
+
   def extract_stacktrace(event)
     threads_entry = event['entries']&.find { |e| e['type'] == 'threads' }
     exception_entry = event['entries']&.find { |e| e['type'] == 'exception' }
