@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+require_relative 'sentry_client'
+require 'csv'
+require 'fileutils'
+
+USAGE = <<~USAGE.freeze
+  Usage: bin/sentry/export <ISSUE_ID> [OPTIONS]
+
+  Export Sentry events to CSV.
+
+  Options:
+    -p, --pages NUM     Number of pages to fetch (100 events/page, default: 1)
+    -o, --output FILE   Output file (default: tmp/sentry_<ISSUE_ID>.csv)
+    -h, --help          Show this help
+
+  Examples:
+    bin/sentry/export 123456
+    bin/sentry/export 123456 -p 5
+    bin/sentry/export 123456 -o my_export.csv
+USAGE
+
+if ARGV.empty? || ARGV.include?('-h') || ARGV.include?('--help')
+  puts USAGE
+  exit ARGV.empty? ? 1 : 0
+end
+
+issue_id = ARGV[0]
+pages = 1
+output_file = nil
+
+args = ARGV[1..]
+while args&.any?
+  case args.shift
+  when '-p', '--pages'
+    pages = args.shift.to_i
+  when '-o', '--output'
+    output_file = args.shift
+  end
+end
+
+output_file ||= "tmp/sentry_#{issue_id}.csv"
+
+client = SentryClient.new
+
+puts "Fetching events for issue #{issue_id} (#{pages} page(s))..."
+
+all_events = []
+pages.times do |page|
+  events = client.events(issue_id, page: page)
+  all_events.concat(events)
+  print '.'
+end
+puts " #{all_events.count} events"
+
+if all_events.empty?
+  puts 'No events found'
+  exit 0
+end
+
+rows = all_events.map do |event|
+  context = event['context'] || {}
+  {
+    event_id: event['eventID'],
+    date: event['dateCreated'],
+    http_status: context['http_response_code'],
+    http_body: context['http_response_body'].to_s[0, 500],
+    controller: context.dig('params', 'controller'),
+    action: context.dig('params', 'action')
+  }
+end
+
+rows.uniq!
+
+FileUtils.mkdir_p(File.dirname(output_file))
+
+CSV.open(output_file, 'wb:UTF-8') do |csv|
+  csv << rows.first.keys
+  rows.each do |row|
+    csv << row.values.map { |v| v.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?') }
+  end
+end
+
+puts "Exported #{rows.count} rows to #{output_file}"

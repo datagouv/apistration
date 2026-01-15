@@ -1,4 +1,4 @@
-require File.expand_path('../../config/application', __FILE__)
+require File.expand_path('../config/application', __dir__)
 
 require 'faraday'
 require 'yaml'
@@ -30,7 +30,7 @@ page_count = ARGV.fetch(1, 1).to_i
 
 print "Extracting events for issue #{issue_id} for #{page_count} pages...\n"
 
-select_condition = ->(event) do
+select_condition = lambda do |event|
   # event['context']['http_response_code'] == '400' &&
   #   event['context']['http_response_body'].include?('au serveur ADELIE est mal')
   return true unless api_particulier?(event)
@@ -43,11 +43,11 @@ select_condition = ->(event) do
   true
 end
 
-to_extract = ->(event) do
+to_extract = lambda do |event|
   hash = {
     http_status: event['context']['http_response_code'],
     http_body: event['context']['http_response_body'],
-    date: event['dateCreated'],
+    date: event['dateCreated']
   }.compact
 
   if event['context']['params']['controller'].include?('api_particulier') && !event['context']['encrypted_params'].nil?
@@ -55,7 +55,7 @@ to_extract = ->(event) do
 
     begin
       hash[:params] = EncryptData.new(encrypted_params).decrypt
-    rescue => e
+    rescue StandardError
       byebug
     end
   elsif event['context']['params']['controller'].include?('api_entreprise')
@@ -88,9 +88,9 @@ page_count.times do |page|
     select_condition.call(event)
   end
 
-  final_data = final_data | valid_events.map do |event|
+  final_data |= valid_events.map { |event|
     to_extract.call(event)
-  end.dup
+  }.dup
 end
 
 final_data.uniq!
@@ -108,7 +108,7 @@ end
 
 filename = "tmp/issues_#{issue_id}.csv"
 
-CSV.open(filename, "wb:UTF-8") do |csv|
+CSV.open(filename, 'wb:UTF-8') do |csv|
   csv << final_data.first.keys
 
   final_data.each do |data|

@@ -21,6 +21,7 @@
 
 .token
 .token.*
+.sentry_token
 
 # Database dumps
 *.dump

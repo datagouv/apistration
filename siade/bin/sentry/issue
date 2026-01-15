@@ -1,0 +1,150 @@
+#!/usr/bin/env ruby
+require_relative 'sentry_client'
+
+USAGE = <<~USAGE.freeze
+  Usage: bin/sentry/issue <ISSUE_ID> [OPTIONS]
+
+  Show details of a Sentry issue with latest event info.
+
+  Options:
+    -o, --output FILE  Save markdown to file (default: stdout)
+    -h, --help         Show this help
+
+  Examples:
+    bin/sentry/issue 123456
+    bin/sentry/issue 123456 -o tmp/issue.md
+USAGE
+
+if ARGV.empty? || ARGV.include?('-h') || ARGV.include?('--help')
+  puts USAGE
+  exit ARGV.empty? ? 1 : 0
+end
+
+issue_id = ARGV[0]
+output_file = nil
+
+args = ARGV[1..]
+while args&.any?
+  case args.shift
+  when '-o', '--output'
+    output_file = args.shift
+  end
+end
+
+def format_context_value(value)
+  case value
+  when Hash
+    JSON.pretty_generate(value)
+  when Array
+    value.join(', ')
+  else
+    value.to_s
+  end
+end
+
+def generate_markdown(client, issue, event)
+  md = []
+  md << "# #{issue['title']}"
+  md << ''
+  md << '## Info'
+  md << ''
+  md << "- **ID**: #{issue['id']}"
+  md << "- **Events**: #{issue['count']}"
+  md << "- **Users affected**: #{issue['userCount']}"
+  md << "- **First seen**: #{issue['firstSeen']}"
+  md << "- **Last seen**: #{issue['lastSeen']}"
+  md << "- **Culprit**: `#{issue['culprit']}`"
+  md << "- **Link**: #{issue['permalink']}"
+
+  exceptions = client.extract_exception(event)
+  if exceptions&.any?
+    md << ''
+    md << '## Exception'
+    md << ''
+    exceptions.each do |exc|
+      md << "**#{exc[:type]}**"
+      md << ''
+      md << '```'
+      md << exc[:value]
+      md << '```'
+    end
+  end
+
+  request = client.extract_request(event)
+  if request
+    md << ''
+    md << '## Request'
+    md << ''
+    md << "- **Method**: #{request[:method]}"
+    md << "- **URL**: `#{request[:url]}`"
+    md << "- **Query**: `#{request[:query_string]}`" if request[:query_string]&.any?
+  end
+
+  contexts = event['contexts']
+  if contexts&.any?
+    skip_keys = %w[browser os runtime trace]
+    relevant = contexts.except(*skip_keys)
+
+    if relevant.any?
+      md << ''
+      md << '## Contexts'
+
+      relevant.each do |name, data|
+        md << ''
+        md << "### #{name}"
+        md << ''
+
+        data.each do |key, value|
+          next if key == 'type'
+
+          formatted = format_context_value(value)
+          if formatted.include?("\n")
+            md << "**#{key}**:"
+            md << '```json'
+            md << formatted
+            md << '```'
+          else
+            md << "- **#{key}**: `#{formatted}`"
+          end
+        end
+      end
+    end
+  end
+
+  tags = event['tags']
+  if tags&.any?
+    md << ''
+    md << '## Tags'
+    md << ''
+    tags.each { |tag| md << "- **#{tag['key']}**: #{tag['value']}" }
+  end
+
+  stacktrace = client.extract_stacktrace(event)
+  if stacktrace&.any?
+    md << ''
+    md << '## Stacktrace'
+    md << ''
+    md << '```ruby'
+    md << client.format_stacktrace(stacktrace)
+    md << '```'
+  end
+
+  "#{md.join("\n")}\n"
+end
+
+client = SentryClient.new
+
+print "Fetching issue #{issue_id}..."
+issue = client.issue(issue_id)
+event = client.latest_event(issue_id)
+puts ' done'
+
+content = generate_markdown(client, issue, event)
+
+if output_file
+  File.write(output_file, content)
+  puts "Saved to #{output_file}"
+else
+  puts ''
+  puts content
+end

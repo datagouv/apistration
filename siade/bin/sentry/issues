@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+require_relative 'sentry_client'
+
+USAGE = <<~USAGE.freeze
+  Usage: bin/sentry/issues [OPTIONS]
+
+  List unresolved Sentry issues.
+
+  Options:
+    -q, --query QUERY    Sentry search query (default: is:unresolved)
+    -p, --period PERIOD  Stats period: 24h, 14d (default: 14d)
+    -h, --help           Show this help
+
+  Examples:
+    bin/sentry/issues
+    bin/sentry/issues -q "is:unresolved http_response_code:502"
+    bin/sentry/issues -p 24h
+USAGE
+
+query = 'is:unresolved'
+period = '14d'
+
+args = ARGV.dup
+while args.any?
+  case args.shift
+  when '-h', '--help'
+    puts USAGE
+    exit 0
+  when '-q', '--query'
+    query = args.shift
+  when '-p', '--period'
+    period = args.shift
+  end
+end
+
+client = SentryClient.new
+issues = client.issues(query: query, stats_period: period)
+
+if issues.empty?
+  puts 'No issues found'
+  exit 0
+end
+
+puts "Found #{issues.count} issues (#{period})\n\n"
+
+issues.each do |issue|
+  id = issue['id'].ljust(10)
+  count = issue['count'].to_s.rjust(5)
+  users = issue['userCount'].to_s.rjust(4)
+  title = issue['title'][0, 60]
+  last_seen = issue['lastSeen'][0, 10]
+
+  puts "#{id} | #{count} events | #{users} users | #{last_seen} | #{title}"
+end
+
+puts "\nUse 'bin/sentry/issue <ID>' for details"

@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+require_relative 'sentry_client'
+
+USAGE = <<~USAGE.freeze
+  Usage: bin/sentry/events <ISSUE_ID> [OPTIONS]
+
+  List events for a Sentry issue.
+
+  Options:
+    -p, --pages NUM    Number of pages to fetch (100 events/page, default: 1)
+    -f, --full         Fetch full event details
+    -h, --help         Show this help
+
+  Examples:
+    bin/sentry/events 123456
+    bin/sentry/events 123456 -p 5
+    bin/sentry/events 123456 --full
+USAGE
+
+if ARGV.empty? || ARGV.include?('-h') || ARGV.include?('--help')
+  puts USAGE
+  exit ARGV.empty? ? 1 : 0
+end
+
+issue_id = ARGV[0]
+pages = 1
+full = false
+
+args = ARGV[1..]
+while args&.any?
+  case args.shift
+  when '-p', '--pages'
+    pages = args.shift.to_i
+  when '-f', '--full'
+    full = true
+  end
+end
+
+client = SentryClient.new
+
+puts "Fetching events for issue #{issue_id} (#{pages} page(s))...\n\n"
+
+all_events = []
+pages.times do |page|
+  events = client.events(issue_id, page: page, full: full)
+  all_events.concat(events)
+  print '.'
+end
+puts " #{all_events.count} events\n\n"
+
+all_events.each do |event|
+  id = event['eventID'][0, 12]
+  date = event['dateCreated'][0, 19].gsub('T', ' ')
+  context = event['context'] || {}
+
+  http_code = context['http_response_code']
+  controller = context.dig('params', 'controller')
+
+  info = [http_code, controller].compact.join(' | ')
+
+  puts "#{id} | #{date} | #{info}"
+end
+
+puts "\nUse 'bin/sentry/export #{issue_id}' to export to CSV"

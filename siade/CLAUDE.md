@@ -27,3 +27,7 @@
 - Scopes: Define API access scopes in config/authorizations.yml
 - Maintenance: Configure provider maintenance in config/maintenances.yml
 - File Endings: Every file should end with a newline
+
+## Sentry / Production Errors
+
+Pour accéder aux erreurs de production ou si l'utilisateur mentionne Sentry, lire `bin/sentry/README.md`.
