@@ -107,6 +107,30 @@ RSpec.describe URSSAF::AttestationsSociales::ValidateResponse::RawBody, type: :v
         its(:errors) { is_expected.to include(have_attributes(code: '04502')) }
       end
 
+      context 'when rate limited (FUNC429)' do
+        subject { described_class.call(response:, provider_name: 'ACOSS', params: { siren: '123456789' }) }
+
+        let(:json_errors) do
+          [
+            { code: 'FUNC429', message: 'rate limited', description: 'too many requests' }
+          ]
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderRateLimitingError)) }
+
+        it 'tracks as warning with SIREN' do
+          expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+            'warning',
+            '[URSSAF] Rate limited (FUNC429)',
+            { siren: '123456789' }
+          )
+
+          subject
+        end
+      end
+
       context 'when company situation do not permit to deliver the document' do
         let(:json_errors) do
           [

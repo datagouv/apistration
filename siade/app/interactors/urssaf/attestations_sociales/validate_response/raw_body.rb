@@ -18,6 +18,9 @@ class URSSAF::AttestationsSociales::ValidateResponse::RawBody < ValidateResponse
       fail_with_error!(ACOSSError.new(:manual_verification_asked))
     elsif ongoing_manual_verification?
       fail_with_error!(ACOSSError.new(:ongoing_manual_verification))
+    elsif rate_limited?
+      track_rate_limit
+      build_and_fail!(ProviderRateLimitingError)
     elsif internal_error?
       build_and_fail!(ProviderInternalServerError)
     elsif not_found?
@@ -89,12 +92,32 @@ class URSSAF::AttestationsSociales::ValidateResponse::RawBody < ValidateResponse
     %w[FUNC502].intersect?(errors_codes)
   end
 
+  def rate_limited?
+    %w[FUNC429].intersect?(errors_codes)
+  end
+
+  def track_rate_limit
+    monitoring_service.track_with_added_context(
+      'warning',
+      '[URSSAF] Rate limited (FUNC429)',
+      { siren: }
+    )
+  end
+
+  def siren
+    context.params[:siren]
+  end
+
+  def monitoring_service
+    @monitoring_service ||= MonitoringService.instance
+  end
+
   def errors_codes
     @errors_codes ||= json_errors.pluck(:code)
   end
 
   def error_code_acoss_for_503
-    %w[FUNC510 FUNC511 FUNC512 FUNC513 FUNC514 FUNC515 FUNC516 FUNC429]
+    %w[FUNC510 FUNC511 FUNC512 FUNC513 FUNC514 FUNC515 FUNC516]
   end
 
   def error_code_acoss_for_404
