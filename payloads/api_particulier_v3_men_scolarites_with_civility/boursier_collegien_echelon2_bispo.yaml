@@ -24,7 +24,7 @@ payload: |-
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",

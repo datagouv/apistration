@@ -742,7 +742,7 @@ Ce cas permet de tester :
 ,"## Identité connue de la base de test de France Connect
 
 Ce cas permet de tester un appel à partir notamment des données de l'identité
-pivot France Connect.","{""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""DUBOIS"",""prenoms"":[""ANGELA"",""CLAIRE"",""LOUISE""],""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24}",200,"{
+pivot France Connect.","{""codeCogInseeCommuneNaissance"":""75107"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""DUBOIS"",""prenoms"":[""ANGELA"",""CLAIRE"",""LOUISE""],""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24}",200,"{
   ""data"": {
     ""allocataires"": [
       {
