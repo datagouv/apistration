@@ -134,5 +134,13 @@ module ProviderStubs::GIPMDS
       body: read_payload_file('gip_mds/service_civique/not_found.json')
     )
   end
+
+  def stub_gip_mds_service_civique_too_many_individus
+    mock_gip_mds_authenticate
+    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/contrats-generique}).and_return(
+      status: 413,
+      body: read_payload_file('gip_mds/service_civique/too_many_individus.json')
+    )
+  end
 end
 # rubocop:enable Metrics/ModuleLength

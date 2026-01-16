@@ -262,6 +262,10 @@
   title: 'Entité non traitable'
   detail: "La valeur de la profondeur n'est pas valide: celle-ci doit être comprise entre 1 et 13"
 
+- code: '00391'
+  title: 'Entité non traitable'
+  detail: "Les paramètres d'identité correspondent à plusieurs personnes. Nous ne pouvons pas fournir les informations de service civique pour cet individu."
+
 - code: '00400'
   title: 'Entité non traitable'
   detail: "Le code pays INSEE n'est pas correctement formaté"

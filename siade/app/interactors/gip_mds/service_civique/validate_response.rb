@@ -6,6 +6,7 @@ class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
     return if not_found_contrat?
 
     resource_not_found! if not_found_individu?
+    too_many_individus! if too_many_individus?
 
     unknown_provider_response!
   end
@@ -53,6 +54,14 @@ class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
 
   def not_found_contrat?
     http_code == 404 && error_code == 'NOT_FOUND_CONTRAT'
+  end
+
+  def too_many_individus?
+    http_code == 413 && error_code == 'TOO_MANY_INDIVIDU'
+  end
+
+  def too_many_individus!
+    fail_with_error!(::UnprocessableEntityError.new(:gip_mds_too_many_individus))
   end
 
   def error_code

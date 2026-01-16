@@ -50,6 +50,7 @@ class UnprocessableEntityError < ApplicationError
       identifiant: '00380',
       # GIP-MDS
       gip_mds_depth: '00390',
+      gip_mds_too_many_individus: '00391',
       insee_country_code: '00400',
       request_id: '00401',
       # MEN

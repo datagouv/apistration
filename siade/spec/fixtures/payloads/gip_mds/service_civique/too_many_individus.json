@@ -1,0 +1,8 @@
+{
+  "erreurs": [
+    {
+      "code": "TOO_MANY_INDIVIDU",
+      "message": "Plus d'un individu a été trouvé. Veuillez affinez la recherche en sélectionnant plus de critères."
+    }
+  ]
+}

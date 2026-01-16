@@ -44,6 +44,15 @@ RSpec.describe GIPMDS::ServiceCivique::ValidateResponse, type: :validate_respons
     its(:errors) { is_expected.to be_empty }
   end
 
+  context 'with TOO_MANY_INDIVIDU response' do
+    let(:code) { '413' }
+    let(:body) { read_payload_file('gip_mds/service_civique/too_many_individus.json') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
   context 'with an unknown error' do
     let(:code) { '400' }
     let(:body) { ''.to_json }
