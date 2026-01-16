@@ -1507,6 +1507,7 @@ pivot France Connect.
 
   ```json
   {
+    "codeCogInseeCommuneNaissance": "75107",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "F",
     "nomNaissance": "DUBOIS",
