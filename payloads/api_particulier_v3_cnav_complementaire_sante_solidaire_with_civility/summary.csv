@@ -29,6 +29,49 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
+,"## Bénéficiaire AVEC participation financière - masculin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France (Marseille 13090)
+- [Param. appel] sexe masculin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13090"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""BERNANRD"",""prenoms"":[""JULIEN""],""anneeDateNaissance"":1979,""moisDateNaissance"":2,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Enfant bénéficiaire AVEC participation financière - masculin (famille BERNANRD)
+
+Ce cas permet de tester :
+- [Param. appel] enfant de la famille BERNANRD
+- [Param. appel] sexe masculin
+- [Param. appel] lieu de naissance en France (Marseille)
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13090"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""BERNANRD"",""prenoms"":[""MAXIME""],""anneeDateNaissance"":2015,""moisDateNaissance"":9,""jourDateNaissance"":1}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Bénéficiaire AVEC participation financière - féminin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France (code commune 13103)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13103"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""DUPONT"",""prenoms"":[""LAURA""],""anneeDateNaissance"":2013,""moisDateNaissance"":11,""jourDateNaissance"":15}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Enfant bénéficiaire du statut C2S (parent de LUCAS DURAND)
 
 Ce cas permet de tester :
@@ -77,6 +120,78 @@ Ce cas permet de tester :
     ""est_beneficiaire"": false,
     ""avec_participation"": false,
     ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Bénéficiaire AVEC participation financière - féminin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France (Aix-en-Provence)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""FAVRE"",""prenoms"":[""SARAH""],""anneeDateNaissance"":2001,""moisDateNaissance"":7,""jourDateNaissance"":8}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Bénéficiaire AVEC participation financière - féminin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France (Aubagne 13002)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13002"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""GIRAUD"",""prenoms"":[""ANNE""],""anneeDateNaissance"":1988,""moisDateNaissance"":12,""jourDateNaissance"":1}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Enfant bénéficiaire AVEC participation financière - féminin (famille GIRAUD)
+
+Ce cas permet de tester :
+- [Param. appel] enfant de la famille GIRAUD
+- [Param. appel] lieu de naissance en France (code commune 13015)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13002"",""sexeEtatCivil"":""F"",""nomNaissance"":""GIRAUD"",""prenoms"":[""INES""],""anneeDateNaissance"":2004,""moisDateNaissance"":3,""jourDateNaissance"":30}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Enfant bénéficiaire AVEC participation financière - masculin (famille MARTIN)
+
+Ce cas permet de tester :
+- [Param. appel] enfant de la famille MARTIN
+- [Param. appel] sexe masculin
+- [Param. appel] lieu de naissance en France (Aix-en-Provence)
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MARTIN"",""prenoms"":[""LUCAS""],""anneeDateNaissance"":2005,""moisDateNaissance"":4,""jourDateNaissance"":20}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2025-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Bénéficiaire AVEC participation financière - masculin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France (Marseille 13055)
+- [Param. appel] sexe masculin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MARTIN"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1987,""moisDateNaissance"":6,""jourDateNaissance"":12}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": true,
+    ""date_debut_droit"": ""2025-06-01""
   },
   ""links"": {},
   ""meta"": {}
@@ -143,6 +258,20 @@ Ce cas permet de tester :
     ""est_beneficiaire"": true,
     ""avec_participation"": false,
     ""date_debut_droit"": ""2023-06-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Bénéficiaire AVEC participation financière - masculin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France (Arles)
+- [Param. appel] sexe masculin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeCogInseeCommuneNaissance"":""13054"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""ROUSSEAU"",""prenoms"":[""THOMAS""],""anneeDateNaissance"":1998,""moisDateNaissance"":11,""jourDateNaissance"":22}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_participation"": false,
+    ""date_debut_droit"": ""2025-06-01""
   },
   ""links"": {},
   ""meta"": {}

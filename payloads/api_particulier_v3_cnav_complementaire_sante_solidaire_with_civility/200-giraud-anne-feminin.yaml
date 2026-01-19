@@ -1,0 +1,29 @@
+---
+description: |-
+  ## Bénéficiaire AVEC participation financière - féminin
+  
+  Ce cas permet de tester :
+  - [Param. appel] lieu de naissance en France (Aubagne 13002)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
+params:
+  codeCogInseeCommuneNaissance: '13002'
+  codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
+  sexeEtatCivil: 'F'
+  nomNaissance: 'GIRAUD'
+  prenoms:
+    - 'ANNE'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 12
+  jourDateNaissance: 1
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2025-06-01"
+    },
+    "links": {},
+    "meta": {}
+  }

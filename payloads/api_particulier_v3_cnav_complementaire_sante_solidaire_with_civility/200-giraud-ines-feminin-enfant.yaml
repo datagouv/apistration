@@ -1,0 +1,29 @@
+---
+description: |-
+  ## Enfant bénéficiaire AVEC participation financière - féminin (famille GIRAUD)
+  
+  Ce cas permet de tester :
+  - [Param. appel] enfant de la famille GIRAUD
+  - [Param. appel] lieu de naissance en France (code commune 13015)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
+params:
+  codeCogInseeCommuneNaissance: '13002'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'GIRAUD'
+  prenoms:
+    - 'INES'
+  anneeDateNaissance: 2004
+  moisDateNaissance: 3
+  jourDateNaissance: 30
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": true,
+      "date_debut_droit": "2025-06-01"
+    },
+    "links": {},
+    "meta": {}
+  }

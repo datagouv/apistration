@@ -1,0 +1,43 @@
+---
+description: 'Élève non boursier'
+params:
+  nomNaissance: "GIRAUD"
+  prenoms: 
+    - 'LEA'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2018
+  moisDateNaissance: 11
+  jourDateNaissance: 25
+  codeEtablissement: "0132409Y"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "GIRAUD",
+        "prenom": "LEA",
+        "sexe": "F",
+        "date_naissance": "2018-11-25"
+      },
+      "module_elementaire_formation": {
+          "code_mef_stat": "211324099991",
+          "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+          "code_uai": "0132409Y",
+          "nom": "Collège Alphonse Daudet",
+          "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
