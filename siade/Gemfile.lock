@@ -63,7 +63,8 @@ GEM
     brakeman (7.1.2)
       racc
     builder (3.3.0)
-    byebug (12.0.0)
+    byebug (13.0.0)
+      reline (>= 0.6.0)
     case_transform (0.2)
       activesupport
     cmdparse (3.0.7)
@@ -117,12 +118,12 @@ GEM
       net-http (~> 0.5)
     faraday-retry (2.4.0)
       faraday (~> 2.0)
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86_64-darwin)
-    ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-aarch64-linux-musl)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
+    ffi (1.17.3-x86_64-linux-musl)
     fog-core (2.6.0)
       builder
       excon (~> 1.0)
@@ -142,14 +143,13 @@ GEM
       ffi (~> 1.0)
     gpgme (2.0.25)
       mini_portile2 (~> 2.7)
-    guard (2.19.1)
+    guard (2.20.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       logger (~> 1.6)
       lumberjack (>= 1.0.12, < 2.0)
       nenv (~> 0.1)
       notiffany (~> 0.0)
-      ostruct (~> 0.6)
       pry (>= 0.13.0)
       shellany (~> 0.0)
       thor (>= 0.18.1)
@@ -192,7 +192,8 @@ GEM
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
-    listen (3.9.0)
+    listen (3.10.0)
+      logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (2.1.0)
@@ -282,12 +283,13 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.7.0)
-    pry (0.15.2)
+    pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-byebug (3.11.0)
-      byebug (~> 12.0)
-      pry (>= 0.13, < 0.16)
+      reline (>= 0.6.0)
+    pry-byebug (3.12.0)
+      byebug (~> 13.0)
+      pry (>= 0.13, < 0.17)
     psych (5.3.0)
       date
       stringio
@@ -457,7 +459,7 @@ GEM
       attr_extras (>= 6.2.4)
       diff-lcs
       patience_diff
-    thor (1.4.0)
+    thor (1.5.0)
     timecop (0.9.10)
     timeout (0.5.0)
     tsort (0.2.0)
