@@ -1,4 +1,91 @@
 Titre,Description,Paramètres,Status,Réponse
+,Élève boursier,"{""nomNaissance"":""BENALI"",""prenoms"":[""AMINE""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2015,""moisDateNaissance"":12,""jourDateNaissance"":11,""codeEtablissement"":""0132634T"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""BENALI"",
+      ""prenom"": ""AMINE"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2015-12-11""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132634T"",
+        ""nom"": ""Collège André Malraux"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève boursier,"{""nomNaissance"":""RIVIERE"",""prenoms"":[""CHLOE""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2016,""moisDateNaissance"":7,""jourDateNaissance"":6,""codeEtablissement"":""0131328Y"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""RIVIERE"",
+      ""prenom"": ""CHLOE"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2016-07-06""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0131328Y"",
+        ""nom"": ""Lycée Paul Melizan"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève boursier,"{""nomNaissance"":""FERRAND"",""prenoms"":[""ELISE""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2014,""moisDateNaissance"":9,""jourDateNaissance"":27,""codeEtablissement"":""0132733A"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""FERRAND"",
+      ""prenom"": ""ELISE"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2014-09-27""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132733A"",
+        ""nom"": ""Lycée Polyvalent Antonin Artaud"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Élève boursier,"{""nomNaissance"":""MARTIN"",""prenoms"":[""EMMA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2012,""moisDateNaissance"":8,""jourDateNaissance"":15,""codeEtablissement"":""0132733A"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
@@ -57,6 +144,180 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Élève boursier,"{""nomNaissance"":""DUPONT"",""prenoms"":[""MAXIME""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2015,""moisDateNaissance"":9,""jourDateNaissance"":1,""codeEtablissement"":""0130002G"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""DUPONT"",
+      ""prenom"": ""MAXIME"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2015-09-01""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0130002G"",
+        ""nom"": ""Lycée Paul Cézanne"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève boursier,"{""nomNaissance"":""GIRAUD"",""prenoms"":[""SARAH""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2012,""moisDateNaissance"":7,""jourDateNaissance"":12,""codeEtablissement"":""0132409Y"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""GIRAUD"",
+      ""prenom"": ""SARAH"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2012-07-12""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132409Y"",
+        ""nom"": ""Collège Alphonse Daudet"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève boursier,"{""nomNaissance"":""CARON"",""prenoms"":[""YASSINE""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2010,""moisDateNaissance"":2,""jourDateNaissance"":2,""codeEtablissement"":""0132733A"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""CARON"",
+      ""prenom"": ""YASSINE"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2010-02-02""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132733A"",
+        ""nom"": ""Lycée Polyvalent Antonin Artaud"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""SAYDOU"",""prenoms"":[""ADAM""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2017,""moisDateNaissance"":6,""jourDateNaissance"":3,""codeEtablissement"":""0132326H"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""SAYDOU"",
+      ""prenom"": ""ADAM"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2017-06-03""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132326H"",
+        ""nom"": ""Collège Albert Camus"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""ROBERT"",""prenoms"":[""CLARA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2005,""moisDateNaissance"":9,""jourDateNaissance"":21,""codeEtablissement"":""0130039X"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""ROBERT"",
+      ""prenom"": ""CLARA"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2005-09-21""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0130039X"",
+        ""nom"": ""Lycée Saint-Charles"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""LEROY"",""prenoms"":[""HUGO""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2008,""moisDateNaissance"":6,""jourDateNaissance"":18,""codeEtablissement"":""0130136C"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""LEROY"",
+      ""prenom"": ""HUGO"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2008-06-18""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0130136C"",
+        ""nom"": ""Collège Vieux Port"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Élève non boursier,"{""nomNaissance"":""DUPONT"",""prenoms"":[""INES""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2016,""moisDateNaissance"":12,""jourDateNaissance"":3,""codeEtablissement"":""0130002G"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
@@ -78,6 +339,93 @@ Titre,Description,Paramètres,Status,Réponse
     ""etablissement"": {
         ""code_uai"": ""0130002G"",
         ""nom"": ""Lycée Paul Cézanne"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""MARTINE"",""prenoms"":[""JUSTINE""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2006,""moisDateNaissance"":1,""jourDateNaissance"":15,""codeEtablissement"":""0130040Y"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""MARTINE"",
+      ""prenom"": ""JUSTINE"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2006-01-15""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0130040Y"",
+        ""nom"": ""Lycée Thiers"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""GIRAUD"",""prenoms"":[""LEA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2018,""moisDateNaissance"":11,""jourDateNaissance"":25,""codeEtablissement"":""0132409Y"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""GIRAUD"",
+      ""prenom"": ""LEA"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2018-11-25""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132409Y"",
+        ""nom"": ""Collège Alphonse Daudet"",
+        ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""PETIT"",""prenoms"":[""LOUIS""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2007,""moisDateNaissance"":4,""jourDateNaissance"":9,""codeEtablissement"":""0132327J"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""PETIT"",
+      ""prenom"": ""LOUIS"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2007-04-09""
+    },
+    ""module_elementaire_formation"": {
+        ""code_mef_stat"": ""211324099991"",
+        ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+        ""code_uai"": ""0132327J"",
+        ""nom"": ""Collège Miramaris"",
         ""code_ministere_tutelle"": ""06""
     },
     ""est_boursier"": false,

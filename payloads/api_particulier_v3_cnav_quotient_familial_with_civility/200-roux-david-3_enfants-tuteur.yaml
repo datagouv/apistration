@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille ROUX avec trois enfants (tuteur légal)
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants de noms différents
+  * parent/tuteur légal : ROUX David
+
+params:
+  codeCogInseeCommuneNaissance: '13054'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'ROUX'
+  prenoms:
+    - 'DAVID'
+  anneeDateNaissance: 1983
+  moisDateNaissance: 5
+  jourDateNaissance: 19
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROUX",
+          "nom_usage": null,
+          "prenoms": "DAVID",
+          "date_naissance": "1983-05-19",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROLLAND",
+          "nom_usage": null,
+          "prenoms": "MATHIS",
+          "date_naissance": "2011-09-12",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "LECLERC",
+          "nom_usage": null,
+          "prenoms": "ENZO",
+          "date_naissance": "2014-01-28",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "SAYDOU",
+          "nom_usage": null,
+          "prenoms": "ADAM",
+          "date_naissance": "2017-06-03",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur ROUX DAVID",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "31 AVENUE DE MARSEILLE",
+        "lieu_dit": null,
+        "code_postal_ville": "13127 VITROLLES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1200,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
