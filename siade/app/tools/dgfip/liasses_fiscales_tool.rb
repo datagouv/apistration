@@ -1,6 +1,6 @@
 class DGFIP::LiassesFiscalesTool < DGFIP::AbstractDGFIPTool
   title 'DGFIP - Liasses fiscales'
-  tool_name 'dgfip/liasses_fiscales'
+  tool_name 'dgfip.liasses_fiscales'
   description "Informations renseignées dans les liasses fiscales, issues des déclarations de résultat d'une entreprise auprès de la Direction générale des finances publiques (DGFIP)."
 
   input_schema(

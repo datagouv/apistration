@@ -1,6 +1,6 @@
 class DGFIP::ChiffresAffairesTool < DGFIP::AbstractDGFIPTool
   title "DGFIP - Chiffres d'affaires"
-  tool_name 'dgfip/chiffres_affaires'
+  tool_name 'dgfip.chiffres_affaires'
   description "Déclarations de chiffre d'affaires, des trois derniers exercices, faites auprès de la Direction générale des finances publiques (DGFIP)."
 
   input_schema(

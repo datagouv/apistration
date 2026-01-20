@@ -1,6 +1,6 @@
 class DGFIP::LiensCapitalistiquesTool < DGFIP::AbstractDGFIPTool
   title 'DGFIP lienscapitalistiques'
-  tool_name 'dgfip/liens_capitalistiques'
+  tool_name 'dgfip.liens_capitalistiques'
   description "Actionnaires et filiales de l'entreprise déclarés dans les CERFA 2059F et 2059G des liasses fiscales de la DGFIP.
 "
 

@@ -1,6 +1,6 @@
 class INPI::RNE::BeneficiairesEffectifsTool < ApplicationTool
   title 'INPI RNE - Bénéficiaires effectifs'
-  tool_name 'inpi/rne/beneficiaires_effectifs'
+  tool_name 'inpi.rne.beneficiaires_effectifs'
   description "Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)."
 
   input_schema(

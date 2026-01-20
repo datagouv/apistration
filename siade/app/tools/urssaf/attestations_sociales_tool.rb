@@ -1,6 +1,6 @@
 class URSSAF::AttestationsSocialesTool < ApplicationTool
   title 'URSSAF - Attestation sociale'
-  tool_name 'urssaf/attestations_sociales'
+  tool_name 'urssaf.attestations_sociales'
   description 'Retourne l\'attestation sociale délivrée à une entreprise acquittée de ses obligations de cotisations et contributions sociales auprès de l\'URSSAF Caisse nationale.'
 
   input_schema(
