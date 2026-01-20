@@ -56,10 +56,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -134,10 +132,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -212,10 +208,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -290,10 +284,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -368,10 +360,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -446,10 +436,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -524,10 +512,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -602,10 +588,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -680,10 +664,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -758,10 +740,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -836,10 +816,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -914,10 +892,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -992,10 +968,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1070,10 +1044,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1148,10 +1120,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1226,10 +1196,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1303,10 +1271,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1464,7 +1430,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 9,
     "codeEtablissement": "0921236U",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1500,10 +1466,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1515,7 +1479,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1541,7 +1505,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 7,
     "codeEtablissement": "0941035P",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1577,10 +1541,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1592,7 +1554,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1618,7 +1580,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 24,
     "codeEtablissement": "0941035P",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1654,10 +1616,8 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1669,7 +1629,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1695,7 +1655,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 8,
     "codeEtablissement": "0750611G",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1731,10 +1691,8 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1746,7 +1704,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1772,7 +1730,7 @@
     "moisDateNaissance": 7,
     "jourDateNaissance": 11,
     "codeEtablissement": "0750611G",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1808,10 +1766,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1823,7 +1779,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1849,7 +1805,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 9,
     "codeEtablissement": "0911028Y",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1885,10 +1841,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1900,7 +1854,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1926,7 +1880,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 3,
     "codeEtablissement": "0931190N",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1962,10 +1916,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1977,7 +1929,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2003,7 +1955,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 2,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2039,10 +1991,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2054,7 +2004,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2080,7 +2030,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 4,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2116,10 +2066,8 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2131,7 +2079,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2157,7 +2105,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 3,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2193,10 +2141,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2208,7 +2154,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2234,7 +2180,7 @@
     "moisDateNaissance": 8,
     "jourDateNaissance": 5,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2270,10 +2216,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2285,7 +2229,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2311,7 +2255,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 4,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2347,10 +2291,8 @@
       "est_boursier": true,
       "echelon_bourse": 4
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2362,7 +2304,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2388,7 +2330,7 @@
     "moisDateNaissance": 1,
     "jourDateNaissance": 6,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2424,10 +2366,8 @@
       "est_boursier": true,
       "echelon_bourse": 4
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2439,7 +2379,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2465,7 +2405,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 5,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2501,10 +2441,8 @@
       "est_boursier": true,
       "echelon_bourse": 5
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2516,7 +2454,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2542,7 +2480,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 7,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2578,10 +2516,8 @@
       "est_boursier": true,
       "echelon_bourse": 5
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2593,7 +2529,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2619,7 +2555,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 8,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2655,10 +2591,8 @@
       "est_boursier": true,
       "echelon_bourse": 6
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2670,7 +2604,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2696,7 +2630,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 6,
     "codeEtablissement": "0921236U",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2732,10 +2666,8 @@
       "est_boursier": true,
       "echelon_bourse": 6
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2747,7 +2679,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2773,7 +2705,7 @@
     "moisDateNaissance": 4,
     "jourDateNaissance": 15,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2809,10 +2741,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2824,7 +2754,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2850,7 +2780,7 @@
     "moisDateNaissance": 3,
     "jourDateNaissance": 14,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2886,10 +2816,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2901,7 +2829,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2927,7 +2855,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 2,
     "codeEtablissement": "0931190N",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2963,10 +2891,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2978,7 +2904,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -3004,7 +2930,7 @@
     "moisDateNaissance": 7,
     "jourDateNaissance": 18,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -3040,10 +2966,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3055,7 +2979,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -3081,7 +3005,7 @@
     "moisDateNaissance": 6,
     "jourDateNaissance": 17,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -3117,10 +3041,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3132,7 +3054,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -3158,7 +3080,7 @@
     "moisDateNaissance": 5,
     "jourDateNaissance": 16,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -3194,10 +3116,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3209,7 +3129,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -3235,7 +3155,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 12,
     "codeEtablissement": "0911028Y",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -3271,10 +3191,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3286,7 +3204,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -3312,7 +3230,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 13,
     "codeEtablissement": "0931190N",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -3348,10 +3266,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3363,7 +3279,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 

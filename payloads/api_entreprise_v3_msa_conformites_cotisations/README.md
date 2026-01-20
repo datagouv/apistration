@@ -25,10 +25,8 @@
     "data": {
       "status": "up_to_date"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
