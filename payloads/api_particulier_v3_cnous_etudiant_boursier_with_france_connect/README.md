@@ -93,10 +93,8 @@
       },
       "email": "jean@dupont.fr"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -157,10 +155,8 @@
       },
       "email": "jean@dupont.fr"
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -221,10 +217,8 @@
       },
       "email": "wossewodda-3728@yopmail.com "
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 

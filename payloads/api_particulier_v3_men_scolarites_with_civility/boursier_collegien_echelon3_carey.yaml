@@ -9,7 +9,7 @@ params:
   moisDateNaissance: 7
   jourDateNaissance: 11
   codeEtablissement: "0750611G"
-  anneeScolaire: "2024"
+  anneeScolaire: "2025"
 status: 200
 payload: |-
   {

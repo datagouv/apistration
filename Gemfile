@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'activesupport'
+gem 'benchmark'
 gem 'bigdecimal'
+gem 'logger'
 gem 'csv'
 gem 'jwt'
 gem 'mutex_m'

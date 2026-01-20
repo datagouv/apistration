@@ -42,10 +42,8 @@
             "archived": false
           }
         },
-        "links": {
-        },
-        "meta": {
-        }
+        "links": {},
+        "meta": {}
       },
       {
         "data": {
@@ -66,16 +64,12 @@
             "archived": false
           }
         },
-        "links": {
-        },
-        "meta": {
-        }
+        "links": {},
+        "meta": {}
       }
     ],
-    "meta": {
-    },
-    "links": {
-    }
+    "meta": {},
+    "links": {}
   }
   ```
 

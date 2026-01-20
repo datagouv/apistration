@@ -78,8 +78,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -182,8 +181,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -286,8 +284,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -390,8 +387,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -443,8 +439,7 @@
         "code": "42003",
         "title": "Entité non trouvée",
         "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
-        "source": {
-        },
+        "source": {},
         "meta": {
           "provider": "ANTS"
         }
@@ -544,8 +539,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -648,8 +642,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -752,8 +745,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -856,8 +848,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -960,8 +951,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -1064,8 +1054,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -1168,8 +1157,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -1272,8 +1260,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -1376,8 +1363,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
@@ -1480,8 +1466,7 @@
         }
       }
     },
-    "links": {
-    },
+    "links": {},
     "meta": {
       "identity_matching": {
         "family_name": 1.0,
