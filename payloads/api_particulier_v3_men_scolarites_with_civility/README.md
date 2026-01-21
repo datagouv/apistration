@@ -56,8 +56,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -132,8 +134,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -208,8 +212,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -284,8 +290,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -360,8 +368,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -436,8 +446,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -512,8 +524,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -588,8 +602,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -664,8 +680,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -740,8 +758,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -816,8 +836,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -892,8 +914,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -968,8 +992,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1044,8 +1070,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1120,8 +1148,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1196,8 +1226,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1271,8 +1303,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1466,8 +1500,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1541,8 +1577,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1616,8 +1654,10 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1691,8 +1731,10 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1766,8 +1808,10 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1841,8 +1885,10 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1916,8 +1962,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1991,8 +2039,10 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2066,8 +2116,10 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2141,8 +2193,10 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2216,8 +2270,10 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2291,8 +2347,10 @@
       "est_boursier": true,
       "echelon_bourse": 4
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2366,8 +2424,10 @@
       "est_boursier": true,
       "echelon_bourse": 4
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2441,8 +2501,10 @@
       "est_boursier": true,
       "echelon_bourse": 5
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2516,8 +2578,10 @@
       "est_boursier": true,
       "echelon_bourse": 5
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2591,8 +2655,10 @@
       "est_boursier": true,
       "echelon_bourse": 6
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2666,8 +2732,10 @@
       "est_boursier": true,
       "echelon_bourse": 6
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2741,8 +2809,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2816,8 +2886,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2891,8 +2963,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -2966,8 +3040,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -3041,8 +3117,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -3116,8 +3194,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -3191,8 +3271,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -3266,8 +3348,10 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

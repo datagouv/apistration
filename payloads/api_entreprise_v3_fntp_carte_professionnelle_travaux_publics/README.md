@@ -26,8 +26,10 @@
       "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf",
       "expires_in": 7889238
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

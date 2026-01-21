@@ -26,8 +26,10 @@
       "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf",
       "expires_in": 7889238
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 

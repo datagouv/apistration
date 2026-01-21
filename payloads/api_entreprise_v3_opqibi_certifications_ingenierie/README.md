@@ -47,8 +47,10 @@
       ],
       "date_validite_qualifications_probatoires": "2025-02-21"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
