@@ -79,10 +79,8 @@ d'erreur selon les informations que vous fournirez.
         }
       }
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -192,8 +190,7 @@ d'erreur selon les informations que vous fournirez.
         "title": "Trop de requêtes",
         "detail": "Vous avez effectué trop de requêtes",
         "source": null,
-        "meta": {
-        }
+        "meta": {}
       }
     ]
   }
