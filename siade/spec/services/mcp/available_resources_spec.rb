@@ -17,7 +17,7 @@ RSpec.describe MCP::AvailableResources do
         subject(:description) { resource.description }
 
         it 'includes name of the tool with technical name' do
-          expect(description).to include('INSEE - Unités légales (nom technique : `insee/unite_legale`)')
+          expect(description).to include('INSEE - Unités légales (nom technique : `insee.unite_legale`)')
         end
 
         it 'includes description from swagger' do

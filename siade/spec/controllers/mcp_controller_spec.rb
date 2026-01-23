@@ -35,9 +35,9 @@ RSpec.describe MCPController do
       it 'renders all tools' do
         subject
         expect(response.parsed_body['result']['tools']).to be_present
-        expect(response.parsed_body['result']['tools'].pluck('name')).to include('urssaf/attestations_sociales')
-        expect(response.parsed_body['result']['tools'].pluck('name')).to include('insee/unite_legale')
-        expect(response.parsed_body['result']['tools'].pluck('name')).not_to include('infogreffe/extraits_rcs')
+        expect(response.parsed_body['result']['tools'].pluck('name')).to include('urssaf.attestations_sociales')
+        expect(response.parsed_body['result']['tools'].pluck('name')).to include('insee.unite_legale')
+        expect(response.parsed_body['result']['tools'].pluck('name')).not_to include('infogreffe.extraits_rcs')
       end
     end
 
@@ -71,7 +71,7 @@ RSpec.describe MCPController do
       {
         'method' => 'tools/call',
         'params' => {
-          'name' => 'insee/unite_legale',
+          'name' => 'insee.unite_legale',
           'arguments' => {
             'siren' => '130025265'
           }

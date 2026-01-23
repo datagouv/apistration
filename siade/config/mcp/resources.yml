@@ -1,16 +1,16 @@
 shared:
-  insee/unite_legale:
+  insee.unite_legale:
     url_path: '/v3/insee/sirene/unites_legales/{siren}'
     documentation_url: "https://entreprise.api.gouv.fr/catalogue/insee/unites_legales"
-  urssaf/attestations_sociales:
+  urssaf.attestations_sociales:
     url_path: '/v4/urssaf/unites_legales/{siren}/attestation_vigilance'
     documentation_url: 'https://entreprise.api.gouv.fr/catalogue/urssaf/attestation_vigilance'
-  insee/unite_legale_diffusable:
+  insee.unite_legale_diffusable:
     url_path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}'
     documentation_url: 'https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles'
-  infogreffe/extraits_rcs:
+  infogreffe.extraits_rcs:
     url_path: '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
     documentation_url: 'https://entreprise.api.gouv.fr/catalogue/infogreffe/rcs/extrait'
-  qualibat/certifications_batiment:
+  qualibat.certifications_batiment:
     url_path: '/v4/qualibat/etablissements/{siret}/certification_batiment'
     documentation_url: 'https://entreprise.api.gouv.fr/catalogue/qualibat/certifications_batiment'

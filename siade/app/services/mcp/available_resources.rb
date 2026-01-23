@@ -14,10 +14,11 @@ class MCP::AvailableResources
   end
 
   def build_tool_resource(resource_name)
-    tool = Kernel.const_get("#{resource_name.camelize}Tool")
+    class_name = resource_name.tr('.', '/').camelize
+    tool = Kernel.const_get("#{class_name}Tool")
 
     MCP::Resource.new(
-      uri: "tool://api-entreprise/#{resource_name.underscore.gsub('/', '_')}/documentation",
+      uri: "tool://api-entreprise/#{resource_name.tr('.', '_')}/documentation",
       name: tool.title,
       description: build_tool_description(tool),
       mime_type: 'text/markdown'

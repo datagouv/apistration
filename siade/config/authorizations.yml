@@ -374,30 +374,30 @@ shared:
     - gip_mds_service_civique_organisme_accueil
     - gip_mds_service_civique_dates
 
-  mcp/insee/unite_legale:
+  mcp/insee.unite_legale:
     - unites_legales_etablissements_insee
-  mcp/insee/unite_legale_diffusable:
+  mcp/insee.unite_legale_diffusable:
     - open_data
-  mcp/insee/etablissement:
+  mcp/insee.etablissement:
     - unites_legales_etablissements_insee
-  mcp/urssaf/attestations_sociales:
+  mcp/urssaf.attestations_sociales:
     - attestation_sociale_urssaf
-  mcp/infogreffe/extraits_rcs:
+  mcp/infogreffe.extraits_rcs:
     - open_data
-  mcp/infogreffe/mandataires_sociaux:
+  mcp/infogreffe.mandataires_sociaux:
     - mandataires_sociaux_infogreffe
-  mcp/qualibat/certifications_batiment:
+  mcp/qualibat.certifications_batiment:
     - open_data
-  mcp/dgfip/liasses_fiscales:
+  mcp/dgfip.liasses_fiscales:
     - liasses_fiscales_dgfip
-  mcp/dgfip/attestation_fiscale:
+  mcp/dgfip.attestation_fiscale:
     - attestation_fiscale_dgfip
-  mcp/dgfip/chiffres_affaires:
+  mcp/dgfip.chiffres_affaires:
     - chiffre_affaires_dgfip
-  mcp/dgfip/liens_capitalistiques:
+  mcp/dgfip.liens_capitalistiques:
     - liasses_fiscales_dgfip
     - liens_capitalistiques_dgfip
-  mcp/inpi/rne/beneficiaires_effectifs:
+  mcp/inpi.rne.beneficiaires_effectifs:
     - beneficiaires_effectifs_inpi
 test:
   api_whatever/whatever_resource: &default_test_scopes
@@ -414,10 +414,10 @@ test:
   api_particulier/v2/cnav/abstract: *default_test_scopes
   api_particulier/v3_and_more/base: *default_test_scopes
   api_particulier/v3_and_more/cnav/abstract_civility: *default_test_scopes
-  mcp/whatever/resource: *default_test_scopes
-  mcp/insee/unite_legale:
+  mcp/whatever.resource: *default_test_scopes
+  mcp/insee.unite_legale:
     - mcp_scope1
-  mcp/urssaf/attestations_sociales:
+  mcp/urssaf.attestations_sociales:
     - mcp_scope2
-  mcp/infogreffe/extraits_rcs:
+  mcp/infogreffe.extraits_rcs:
     - mcp_scope3
