@@ -1,0 +1,41 @@
+---
+description: |-
+  ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF
+
+  Ce cas représente une personne actuellement engagée dans un service civique.
+  Le contrat est en cours auprès de la DINUM.
+
+params:
+  nomNaissance: 'DUPONT'
+  prenoms:
+    - 'MARIE'
+    - 'LOUISE'
+  anneeDateNaissance: 1998
+  moisDateNaissance: 3
+  jourDateNaissance: 15
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "13002526500013",
+          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+        },
+        "date_debut_contrat": "2024-09-01",
+        "date_fin_contrat": "2025-06-30"
+      },
+      "statut_passe": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
