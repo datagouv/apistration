@@ -25,7 +25,10 @@ RSpec.describe GIPMDS::ServiceCivique::BuildResource, type: :build_resource do
             },
             statut_passe: {
               contrat_trouve: false,
-              organisme_accueil: nil,
+              organisme_accueil: {
+                siret: nil,
+                raison_sociale: nil
+              },
               date_debut_contrat: nil,
               date_fin_contrat: nil
             }
@@ -72,7 +75,10 @@ RSpec.describe GIPMDS::ServiceCivique::BuildResource, type: :build_resource do
           {
             statut_actuel: {
               contrat_trouve: false,
-              organisme_accueil: nil,
+              organisme_accueil: {
+                siret: nil,
+                raison_sociale: nil
+              },
               date_debut_contrat: nil,
               date_fin_contrat: nil
             },
@@ -103,13 +109,19 @@ RSpec.describe GIPMDS::ServiceCivique::BuildResource, type: :build_resource do
           {
             statut_actuel: {
               contrat_trouve: false,
-              organisme_accueil: nil,
+              organisme_accueil: {
+                siret: nil,
+                raison_sociale: nil
+              },
               date_debut_contrat: nil,
               date_fin_contrat: nil
             },
             statut_passe: {
               contrat_trouve: false,
-              organisme_accueil: nil,
+              organisme_accueil: {
+                siret: nil,
+                raison_sociale: nil
+              },
               date_debut_contrat: nil,
               date_fin_contrat: nil
             }

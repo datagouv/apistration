@@ -241,20 +241,21 @@ gip_mds:
             example: true
           organisme_accueil:
             title: "Organisme d'accueil"
-            description: "Informations sur l'administration ou l'association qui accueille le volontaire en service civique. Null si aucun contrat en cours."
+            description: "Informations sur l'administration ou l'association qui accueille le volontaire en service civique."
             type: "object"
-            nullable: true
             properties:
               siret:
                 title: "SIRET de l'organisme d'accueil"
-                description: "Numéro SIRET de l'administration ou de l'association qui accueille le volontaire en service civique."
+                description: "Numéro SIRET de l'administration ou de l'association qui accueille le volontaire en service civique. Null si aucun contrat en cours."
                 type: "string"
                 example: "13002526500013"
+                nullable: true
               raison_sociale:
                 title: "Raison sociale de l'organisme d'accueil"
-                description: "Nom officiel de l'administration ou de l'association qui accueille le volontaire en service civique."
+                description: "Nom officiel de l'administration ou de l'association qui accueille le volontaire en service civique. Null si aucun contrat en cours."
                 type: "string"
                 example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+                nullable: true
           date_debut_contrat:
             title: "Date de début du contrat"
             description: "Premier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat en cours."
@@ -281,20 +282,21 @@ gip_mds:
             example: true
           organisme_accueil:
             title: "Organisme d'accueil"
-            description: "Informations sur l'administration ou l'association qui a accueilli le volontaire en service civique. Null si aucun contrat passé."
+            description: "Informations sur l'administration ou l'association qui a accueilli le volontaire en service civique."
             type: "object"
-            nullable: true
             properties:
               siret:
                 title: "SIRET de l'organisme d'accueil"
-                description: "Numéro SIRET de l'administration ou de l'association qui a accueilli le volontaire en service civique."
+                description: "Numéro SIRET de l'administration ou de l'association qui a accueilli le volontaire en service civique. Null si aucun contrat passé."
                 type: "string"
                 example: "13002526500013"
+                nullable: true
               raison_sociale:
                 title: "Raison sociale de l'organisme d'accueil"
-                description: "Nom officiel de l'administration ou de l'association qui a accueilli le volontaire en service civique."
+                description: "Nom officiel de l'administration ou de l'association qui a accueilli le volontaire en service civique. Null si aucun contrat passé."
                 type: "string"
                 example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+                nullable: true
           date_debut_contrat:
             title: "Date de début du contrat"
             description: "Premier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat passé."
