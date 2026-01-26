@@ -10,7 +10,7 @@ class GIPMDS::ServiceCivique::MakeRequest < MakeRequest::Get
   def mocking_params # rubocop:disable Metrics/AbcSize
     {
       nomNaissance: context.params[:nom_naissance],
-      prenoms: context.params[:prenoms]&.first,
+      prenoms: context.params[:prenoms],
       anneeDateNaissance: context.params[:annee_date_naissance].to_i,
       moisDateNaissance: context.params[:mois_date_naissance].to_i,
       jourDateNaissance: context.params[:jour_date_naissance].to_i
