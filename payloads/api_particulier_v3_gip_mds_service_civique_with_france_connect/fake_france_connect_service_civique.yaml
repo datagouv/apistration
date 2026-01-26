@@ -1,0 +1,41 @@
+---
+description: |-
+  ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token service_civique)
+
+  Ce cas représente une personne actuellement engagée dans un service civique.
+  Le contrat est en cours auprès de la DINUM.
+  Identité FranceConnect: Jean SERVICE CIVIQUE (token service_civique).
+
+params:
+  prenoms:
+    - 'Jean'
+  nomNaissance: "Service Civique"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "13002526500013",
+          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+        },
+        "date_debut_contrat": "2024-09-01",
+        "date_fin_contrat": "2025-06-30"
+      },
+      "statut_passe": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
