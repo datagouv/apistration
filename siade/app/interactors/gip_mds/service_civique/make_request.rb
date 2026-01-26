@@ -7,11 +7,13 @@ class GIPMDS::ServiceCivique::MakeRequest < MakeRequest::Get
     URI("#{gip_mds_domain}/contrats-generique")
   end
 
-  def mocking_params
+  def mocking_params # rubocop:disable Metrics/AbcSize
     {
-      nom: context.params[:nom_naissance],
-      prenom: context.params[:prenoms]&.first,
-      date_naissance: formatted_date_naissance
+      nomNaissance: context.params[:nom_naissance],
+      prenoms: context.params[:prenoms]&.first,
+      anneeDateNaissance: context.params[:annee_date_naissance].to_i,
+      moisDateNaissance: context.params[:mois_date_naissance].to_i,
+      jourDateNaissance: context.params[:jour_date_naissance].to_i
     }
   end
 
