@@ -336,3 +336,215 @@ Identité FranceConnect: Marie COMMODE.
 
   </p>
   </details>
+* [fake_france_connect_all_fc.yaml](fake_france_connect_all_fc.yaml)
+
+  Status `200`
+
+  ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token all_fc)
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Thomas DELATOUR (token all_fc).
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Thomas"
+    ],
+    "nomNaissance": "Delatour",
+    "anneeDateNaissance": 1994,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 16
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "13002526500013",
+          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+        },
+        "date_debut_contrat": "2024-09-01",
+        "date_fin_contrat": "2025-06-30"
+      },
+      "statut_passe": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_service_civique.yaml](fake_france_connect_service_civique.yaml)
+
+  Status `200`
+
+  ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token service_civique)
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Jean SERVICE CIVIQUE (token service_civique).
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Jean"
+    ],
+    "nomNaissance": "Service Civique",
+    "anneeDateNaissance": 2002,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 1
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "13002526500013",
+          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+        },
+        "date_debut_contrat": "2024-09-01",
+        "date_fin_contrat": "2025-06-30"
+      },
+      "statut_passe": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_service_civique.yaml](france_connect_service_civique.yaml)
+
+  Status `200`
+
+  ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (FranceConnect)
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Angela DUBOIS.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Angela",
+      "Claire",
+      "Louise"
+    ],
+    "nomNaissance": "DUBOIS",
+    "anneeDateNaissance": 1962,
+    "moisDateNaissance": 8,
+    "jourDateNaissance": 24
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "13002526500013",
+          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+        },
+        "date_debut_contrat": "2024-09-01",
+        "date_fin_contrat": "2025-06-30"
+      },
+      "statut_passe": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
