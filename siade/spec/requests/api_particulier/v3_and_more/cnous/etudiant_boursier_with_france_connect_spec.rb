@@ -49,6 +49,20 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with FranceConnect', api
             run_test!
           end
         end
+
+        context 'when the provider returns a bad request' do
+          before do
+            mock_cnous_bad_request_call('france_connect')
+          end
+
+          response '422', 'Paramètres invalides' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(UnprocessableEntityError.new(:civility))
+
+            run_test!
+          end
+        end
       end
 
       # TODO: Waiting FCv2 to be merge to provide error examples

@@ -79,6 +79,20 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
           end
         end
 
+        context 'when the provider returns a bad request' do
+          before do
+            mock_cnous_bad_request_call('civility')
+          end
+
+          response '422', 'Paramètres invalides' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(UnprocessableEntityError.new(:civility))
+
+            run_test!
+          end
+        end
+
         common_provider_errors_request('CNOUS', CNOUS::StudentScholarshipWithCivility)
         common_network_error_request('CNOUS', CNOUS::StudentScholarshipWithCivility)
       end
