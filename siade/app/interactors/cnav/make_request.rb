@@ -56,6 +56,8 @@ class CNAV::MakeRequest < MakeRequest::Get
 
   # rubocop:disable Metrics/AbcSize
   def request_params
+    return request_params_with_nir if context.params[:nir].present?
+
     {
       nomUsage: transliterate(context.params[:nom_usage]),
       nomNaissance: transliterate(context.params[:nom_naissance]),
@@ -69,6 +71,14 @@ class CNAV::MakeRequest < MakeRequest::Get
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
+
+  def request_params_with_nir
+    {
+      numAssure: context.params[:nir],
+      nomNaissance: context.params[:nom_naissance],
+      listePrenoms: liste_prenoms
+    }.compact
+  end
 
   private
 
