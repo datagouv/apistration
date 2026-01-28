@@ -1,0 +1,59 @@
+responses:
+  '401':
+    description: Non autorisé
+    examples:
+      invalid_token_error:
+        error_class: InvalidTokenError
+      expired_token_error:
+        error_class: ExpiredTokenError
+      blacklisted_token_error:
+        error_class: BlacklistedTokenError
+        args: ['particulier']
+
+  '403':
+    description: Accès interdit
+    examples:
+      insufficient_privileges_error:
+        error_class: InsufficientPrivilegesError
+        args: ['api_particulier']
+
+  '409':
+    description: Conflit
+    examples:
+      conflict_error:
+        error_class: ConflictError
+
+  '422':
+    description: Paramètre(s) invalide(s)
+    mandatory_params:
+      - recipient
+
+  '429':
+    description: Trop de requêtes
+    examples:
+      too_many_requests_error:
+        error_class: TooManyRequestsError
+
+  '502':
+    description: Erreur du fournisseur
+    requires_provider: true
+    examples:
+      provider_unknown_error:
+        error_class: ProviderUnknownError
+        args: ['%<provider>s']
+
+  '504':
+    description: Erreur d'intermédiaire
+    requires_provider: true
+    examples:
+      timeout_error:
+        error_class: ProviderTimeoutError
+        args: ['%<provider>s']
+      provider_unavailable_error:
+        error_class: ProviderUnavailable
+        args: ['%<provider>s']
+      network_error:
+        error_class: NetworkError
+      dns_resolution_error:
+        error_class: DnsResolutionError
+        args: ['%<provider>s']
