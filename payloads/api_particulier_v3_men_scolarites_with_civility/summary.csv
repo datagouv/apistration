@@ -689,6 +689,35 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Élève boursier - Garcia Mateo (moins de 16 ans),"{""nomNaissance"":""Garcia"",""prenoms"":[""Mateo""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2012,""moisDateNaissance"":3,""jourDateNaissance"":7,""codeEtablissement"":""0130032P"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""Garcia"",
+      ""prenom"": ""Mateo"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2012-03-07""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""20010000210"",
+      ""libelle"": ""4EME""
+    },
+    ""annee_scolaire"": ""2024-2025"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0130032P"",
+      ""nom"": ""Collège Collines Durance"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Élève boursier lycéen échelon 1 - Delin Antoine,"{""nomNaissance"":""Delin"",""prenoms"":[""Antoine""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2000,""moisDateNaissance"":12,""jourDateNaissance"":3,""codeEtablissement"":""0931190N"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
@@ -997,6 +1026,64 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Élève boursier - Nguyen Adam (moins de 16 ans),"{""nomNaissance"":""Nguyen"",""prenoms"":[""Adam""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2011,""moisDateNaissance"":1,""jourDateNaissance"":5,""codeEtablissement"":""0133510V"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""Nguyen"",
+      ""prenom"": ""Adam"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2011-01-05""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""20010000410"",
+      ""libelle"": ""6EME""
+    },
+    ""annee_scolaire"": ""2024-2025"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0133510V"",
+      ""nom"": ""Collège Ubelka"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier - Benzarte Lana (moins de 16 ans),"{""nomNaissance"":""Benzarte"",""prenoms"":[""Lana""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2011,""moisDateNaissance"":11,""jourDateNaissance"":18,""codeEtablissement"":""0130022D"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""Benzarte"",
+      ""prenom"": ""Lana"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2011-11-18""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""20010000110"",
+      ""libelle"": ""5EME""
+    },
+    ""annee_scolaire"": ""2024-2025"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0130022D"",
+      ""nom"": ""Collège Alice Guy (anciennement Virebelle)"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Élève non boursier - Caravelle Marc-Antoine,"{""nomNaissance"":""Caravelle"",""prenoms"":[""Marc-Antoine""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2002,""moisDateNaissance"":4,""jourDateNaissance"":15,""codeEtablissement"":""0782567S"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
@@ -1053,6 +1140,35 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Élève non boursier - Diallo Felixia (moins de 16 ans),"{""nomNaissance"":""Diallo"",""prenoms"":[""Felixia""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2010,""moisDateNaissance"":9,""jourDateNaissance"":30,""codeEtablissement"":""0131705H"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""Diallo"",
+      ""prenom"": ""Felixia"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2010-09-30""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""20010000310"",
+      ""libelle"": ""3EME""
+    },
+    ""annee_scolaire"": ""2024-2025"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0131705H"",
+      ""nom"": ""Collège Fernand Léger"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Élève non boursier - Dupond Nicolas,"{""nomNaissance"":""Dupond"",""prenoms"":[""Nicolas""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2002,""moisDateNaissance"":2,""jourDateNaissance"":2,""codeEtablissement"":""0931190N"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
@@ -1101,6 +1217,35 @@ Titre,Description,Paramètres,Status,Réponse
     },
     ""etablissement"": {
       ""code_uai"": ""0782567S"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier - Lopez Sofia (moins de 16 ans),"{""nomNaissance"":""Lopez"",""prenoms"":[""Sofia""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2010,""moisDateNaissance"":2,""jourDateNaissance"":14,""codeEtablissement"":""0131367R"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""Lopez"",
+      ""prenom"": ""Sofia"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2010-02-14""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""10010012110"",
+      ""libelle"": ""2NDE GENERALE ET TECHNOLOGIQUE""
+    },
+    ""annee_scolaire"": ""2024-2025"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0131367R"",
+      ""nom"": ""Collège Saint-Louis"",
       ""code_ministere_tutelle"": ""06""
     },
     ""est_boursier"": false,
