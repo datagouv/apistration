@@ -1,0 +1,24 @@
+---
+description: "Erreur du fournisseur GIP-MDS"
+params:
+  nomNaissance: 'ERREUR'
+  prenoms:
+    - 'FOURNISSEUR'
+  anneeDateNaissance: 1992
+  moisDateNaissance: 2
+  jourDateNaissance: 2
+status: 502
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "31999",
+        "title": "Erreur inconnue du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+        "source": null,
+        "meta": {
+          "provider": "GIP-MDS"
+        }
+      }
+    ]
+  }

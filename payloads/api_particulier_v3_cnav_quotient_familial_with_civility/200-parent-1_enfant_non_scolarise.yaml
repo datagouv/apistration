@@ -1,0 +1,61 @@
+---
+description: |-
+  ## Parent avec un enfant non scolarisé
+
+  Ce cas permet de tester :
+  * la gestion d'un parent avec un enfant non scolarisé
+  * la non-éligibilité au statut famille nombreuse pour ce profil
+
+params:
+  codeCogInseeCommuneNaissance: '13055'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'ROCHER'
+  prenoms:
+    - 'SANDRINE'
+  anneeDateNaissance: 1986
+  moisDateNaissance: 11
+  jourDateNaissance: 9
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROCHER",
+          "nom_usage": null,
+          "prenoms": "SANDRINE",
+          "date_naissance": "1986-11-09",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROCHER",
+          "nom_usage": null,
+          "prenoms": "LUCIE",
+          "date_naissance": "2009-05-14",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame ROCHER SANDRINE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "10 RUE SAINTE",
+        "lieu_dit": null,
+        "code_postal_ville": "13001 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 800,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

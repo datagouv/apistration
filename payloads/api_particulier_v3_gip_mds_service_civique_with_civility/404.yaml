@@ -1,0 +1,24 @@
+---
+description: "Personne non trouvée"
+params:
+  nomNaissance: 'INCONNU'
+  prenoms:
+    - 'PERSONNE'
+  anneeDateNaissance: 1990
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "31003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "source": null,
+        "meta": {
+          "provider": "GIP-MDS"
+        }
+      }
+    ]
+  }

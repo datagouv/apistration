@@ -6,6 +6,7 @@ description: |-
   pivot France Connect.
 
 params:
+  codeCogInseeCommuneNaissance: '75107'
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'F'
   nomNaissance: 'DUBOIS'

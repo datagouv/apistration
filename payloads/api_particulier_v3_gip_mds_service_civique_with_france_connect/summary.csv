@@ -1,0 +1,210 @@
+Titre,Description,Paramètres,Status,Réponse
+,"## VOLONTAIRE AVEC CONTRAT ACTIF ET PASSÉ
+
+Ce cas représente une personne ayant effectué un premier service civique
+par le passé et actuellement engagée dans un second service civique.
+Identité FranceConnect: Lucie PLACARD.","{""prenoms"":[""Lucie""],""nomNaissance"":""PLACARD"",""anneeDateNaissance"":1987,""moisDateNaissance"":4,""jourDateNaissance"":13}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""18009202500059"",
+        ""raison_sociale"": ""MINISTERE DE L EDUCATION NATIONALE""
+      },
+      ""date_debut_contrat"": ""2024-10-01"",
+      ""date_fin_contrat"": ""2025-07-31""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""42229566900026"",
+        ""raison_sociale"": ""UNIS CITE""
+      },
+      ""date_debut_contrat"": ""2021-03-15"",
+      ""date_fin_contrat"": ""2021-11-14""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## VOLONTAIRE EN SERVICE CIVIQUE ACTIF
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Angela DUBOIS.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""13002526500013"",
+        ""raison_sociale"": ""DIRECTION INTERMINISTERIELLE DU NUMERIQUE""
+      },
+      ""date_debut_contrat"": ""2024-09-01"",
+      ""date_fin_contrat"": ""2025-06-30""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## ANCIEN VOLONTAIRE SERVICE CIVIQUE
+
+Ce cas représente une personne ayant effectué un service civique par le passé.
+Le contrat est terminé, la personne n'a pas de contrat actif.
+Identité FranceConnect: Jean MERCIER.","{""prenoms"":[""Jean""],""nomNaissance"":""MERCIER"",""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""77567227221138"",
+        ""raison_sociale"": ""CROIX ROUGE FRANCAISE""
+      },
+      ""date_debut_contrat"": ""2022-01-10"",
+      ""date_fin_contrat"": ""2022-09-09""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## PERSONNE SANS CONTRAT SERVICE CIVIQUE
+
+Ce cas représente une personne connue du système mais qui n'a jamais
+effectué de service civique (ni actif, ni passé).
+Identité FranceConnect: Marie COMMODE.","{""prenoms"":[""Marie""],""nomNaissance"":""COMMODE"",""anneeDateNaissance"":1980,""moisDateNaissance"":6,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Personne non trouvée,"{""prenoms"":[""Inconnu""],""nomNaissance"":""LEFEBVRE"",""anneeDateNaissance"":1990,""moisDateNaissance"":1,""jourDateNaissance"":1}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""31003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""GIP-MDS""
+      }
+    }
+  ]
+}"
+,"## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token all_fc)
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Thomas DELATOUR (token all_fc).","{""prenoms"":[""Thomas""],""nomNaissance"":""Delatour"",""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""13002526500013"",
+        ""raison_sociale"": ""DIRECTION INTERMINISTERIELLE DU NUMERIQUE""
+      },
+      ""date_debut_contrat"": ""2024-09-01"",
+      ""date_fin_contrat"": ""2025-06-30""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token service_civique)
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Jean SERVICE CIVIQUE (token service_civique).","{""prenoms"":[""Jean""],""nomNaissance"":""Service Civique"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""13002526500013"",
+        ""raison_sociale"": ""DIRECTION INTERMINISTERIELLE DU NUMERIQUE""
+      },
+      ""date_debut_contrat"": ""2024-09-01"",
+      ""date_fin_contrat"": ""2025-06-30""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (FranceConnect)
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.
+Identité FranceConnect: Angela DUBOIS.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""13002526500013"",
+        ""raison_sociale"": ""DIRECTION INTERMINISTERIELLE DU NUMERIQUE""
+      },
+      ""date_debut_contrat"": ""2024-09-01"",
+      ""date_fin_contrat"": ""2025-06-30""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

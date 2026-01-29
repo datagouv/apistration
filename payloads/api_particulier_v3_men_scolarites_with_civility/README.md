@@ -1,4 +1,1220 @@
 # Statut élève scolarisé et boursier
+* [200-eleve-boursier-amine-benali.yaml](200-eleve-boursier-amine-benali.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "BENALI",
+    "prenoms": [
+      "AMINE"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2015,
+    "moisDateNaissance": 12,
+    "jourDateNaissance": 11,
+    "codeEtablissement": "0132634T",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "BENALI",
+        "prenom": "AMINE",
+        "sexe": "M",
+        "date_naissance": "2015-12-11"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132634T",
+        "nom": "Collège André Malraux",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENALI' -d 'prenoms[]=AMINE' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2015' -d 'moisDateNaissance=12' -d 'jourDateNaissance=11' -d 'codeEtablissement=0132634T' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-chloe-riviere.yaml](200-eleve-boursier-chloe-riviere.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "RIVIERE",
+    "prenoms": [
+      "CHLOE"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2016,
+    "moisDateNaissance": 7,
+    "jourDateNaissance": 6,
+    "codeEtablissement": "0131328Y",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "RIVIERE",
+        "prenom": "CHLOE",
+        "sexe": "F",
+        "date_naissance": "2016-07-06"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131328Y",
+        "nom": "Lycée Paul Melizan",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=RIVIERE' -d 'prenoms[]=CHLOE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=7' -d 'jourDateNaissance=6' -d 'codeEtablissement=0131328Y' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-elise-ferrand.yaml](200-eleve-boursier-elise-ferrand.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "FERRAND",
+    "prenoms": [
+      "ELISE"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2014,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 27,
+    "codeEtablissement": "0132733A",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "FERRAND",
+        "prenom": "ELISE",
+        "sexe": "F",
+        "date_naissance": "2014-09-27"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132733A",
+        "nom": "Lycée Polyvalent Antonin Artaud",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=ELISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2014' -d 'moisDateNaissance=9' -d 'jourDateNaissance=27' -d 'codeEtablissement=0132733A' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-emma-martin.yaml](200-eleve-boursier-emma-martin.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MARTIN",
+    "prenoms": [
+      "EMMA"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2012,
+    "moisDateNaissance": 8,
+    "jourDateNaissance": 15,
+    "codeEtablissement": "0132733A",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "MARTIN",
+        "prenom": "EMMA",
+        "sexe": "F",
+        "date_naissance": "2012-08-15"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132733A",
+        "nom": "Lycée Polyvalent Antonin Artaud",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=EMMA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=8' -d 'jourDateNaissance=15' -d 'codeEtablissement=0132733A' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-louise-dupont.yaml](200-eleve-boursier-louise-dupont.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUPONT",
+    "prenoms": [
+      "LOUISE"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2010,
+    "moisDateNaissance": 6,
+    "jourDateNaissance": 22,
+    "codeEtablissement": "0130043B",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "DUPONT",
+        "prenom": "LOUISE",
+        "sexe": "F",
+        "date_naissance": "2010-06-22"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130043B",
+        "nom": "Lycée Victor Hugo",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=LOUISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=6' -d 'jourDateNaissance=22' -d 'codeEtablissement=0130043B' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-maxime-dupont.yaml](200-eleve-boursier-maxime-dupont.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUPONT",
+    "prenoms": [
+      "MAXIME"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2015,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 1,
+    "codeEtablissement": "0130002G",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "DUPONT",
+        "prenom": "MAXIME",
+        "sexe": "M",
+        "date_naissance": "2015-09-01"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130002G",
+        "nom": "Lycée Paul Cézanne",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=MAXIME' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2015' -d 'moisDateNaissance=9' -d 'jourDateNaissance=1' -d 'codeEtablissement=0130002G' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-sarah-giraud.yaml](200-eleve-boursier-sarah-giraud.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "GIRAUD",
+    "prenoms": [
+      "SARAH"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2012,
+    "moisDateNaissance": 7,
+    "jourDateNaissance": 12,
+    "codeEtablissement": "0132409Y",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "GIRAUD",
+        "prenom": "SARAH",
+        "sexe": "F",
+        "date_naissance": "2012-07-12"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132409Y",
+        "nom": "Collège Alphonse Daudet",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=SARAH' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'codeEtablissement=0132409Y' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-boursier-yassine-caron.yaml](200-eleve-boursier-yassine-caron.yaml)
+
+  Status `200`
+
+  Élève boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "CARON",
+    "prenoms": [
+      "YASSINE"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2010,
+    "moisDateNaissance": 2,
+    "jourDateNaissance": 2,
+    "codeEtablissement": "0132733A",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "CARON",
+        "prenom": "YASSINE",
+        "sexe": "M",
+        "date_naissance": "2010-02-02"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132733A",
+        "nom": "Lycée Polyvalent Antonin Artaud",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CARON' -d 'prenoms[]=YASSINE' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0132733A' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-adam-saydou.yaml](200-eleve-non-boursier-adam-saydou.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "SAYDOU",
+    "prenoms": [
+      "ADAM"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2017,
+    "moisDateNaissance": 6,
+    "jourDateNaissance": 3,
+    "codeEtablissement": "0132326H",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "SAYDOU",
+        "prenom": "ADAM",
+        "sexe": "M",
+        "date_naissance": "2017-06-03"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132326H",
+        "nom": "Collège Albert Camus",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SAYDOU' -d 'prenoms[]=ADAM' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2017' -d 'moisDateNaissance=6' -d 'jourDateNaissance=3' -d 'codeEtablissement=0132326H' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-clara-robert.yaml](200-eleve-non-boursier-clara-robert.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "ROBERT",
+    "prenoms": [
+      "CLARA"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2005,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 21,
+    "codeEtablissement": "0130039X",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "ROBERT",
+        "prenom": "CLARA",
+        "sexe": "F",
+        "date_naissance": "2005-09-21"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130039X",
+        "nom": "Lycée Saint-Charles",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROBERT' -d 'prenoms[]=CLARA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=9' -d 'jourDateNaissance=21' -d 'codeEtablissement=0130039X' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-hugo-leroy.yaml](200-eleve-non-boursier-hugo-leroy.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "LEROY",
+    "prenoms": [
+      "HUGO"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2008,
+    "moisDateNaissance": 6,
+    "jourDateNaissance": 18,
+    "codeEtablissement": "0130136C",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "LEROY",
+        "prenom": "HUGO",
+        "sexe": "M",
+        "date_naissance": "2008-06-18"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130136C",
+        "nom": "Collège Vieux Port",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEROY' -d 'prenoms[]=HUGO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2008' -d 'moisDateNaissance=6' -d 'jourDateNaissance=18' -d 'codeEtablissement=0130136C' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-ines-dupont.yaml](200-eleve-non-boursier-ines-dupont.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUPONT",
+    "prenoms": [
+      "INES"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2016,
+    "moisDateNaissance": 12,
+    "jourDateNaissance": 3,
+    "codeEtablissement": "0130002G",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "DUPONT",
+        "prenom": "INES",
+        "sexe": "F",
+        "date_naissance": "2016-12-03"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130002G",
+        "nom": "Lycée Paul Cézanne",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'codeEtablissement=0130002G' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-justine-martine.yaml](200-eleve-non-boursier-justine-martine.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MARTINE",
+    "prenoms": [
+      "JUSTINE"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2006,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 15,
+    "codeEtablissement": "0130040Y",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "MARTINE",
+        "prenom": "JUSTINE",
+        "sexe": "F",
+        "date_naissance": "2006-01-15"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130040Y",
+        "nom": "Lycée Thiers",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTINE' -d 'prenoms[]=JUSTINE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'codeEtablissement=0130040Y' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-lea-giraud.yaml](200-eleve-non-boursier-lea-giraud.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "GIRAUD",
+    "prenoms": [
+      "LEA"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2018,
+    "moisDateNaissance": 11,
+    "jourDateNaissance": 25,
+    "codeEtablissement": "0132409Y",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "GIRAUD",
+        "prenom": "LEA",
+        "sexe": "F",
+        "date_naissance": "2018-11-25"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132409Y",
+        "nom": "Collège Alphonse Daudet",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=LEA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2018' -d 'moisDateNaissance=11' -d 'jourDateNaissance=25' -d 'codeEtablissement=0132409Y' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-louis-petit.yaml](200-eleve-non-boursier-louis-petit.yaml)
+
+  Status `200`
+
+  Élève non boursier
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "PETIT",
+    "prenoms": [
+      "LOUIS"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2007,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 9,
+    "codeEtablissement": "0132327J",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "PETIT",
+        "prenom": "LOUIS",
+        "sexe": "M",
+        "date_naissance": "2007-04-09"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132327J",
+        "nom": "Collège Miramaris",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=PETIT' -d 'prenoms[]=LOUIS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=4' -d 'jourDateNaissance=9' -d 'codeEtablissement=0132327J' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [200-eleve-non-boursier-non-scolarise-elise-ferrand.yaml](200-eleve-non-boursier-non-scolarise-elise-ferrand.yaml)
+
+  Status `200`
+
+  Élève non boursier non scolarisé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "FERRAND",
+    "prenoms": [
+      "ELISE"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2004,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 27,
+    "codeEtablissement": "0130001F",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "FERRAND",
+        "prenom": "ELISE",
+        "sexe": "F",
+        "date_naissance": "2004-09-27"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": false,
+      "statut_eleve": {
+        "code": "NS",
+        "libelle": "Non scolarisé"
+      },
+      "etablissement": {
+        "code_uai": "0130001F",
+        "nom": "Lycée polyvalent Émile Zola",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=ELISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=9' -d 'jourDateNaissance=27' -d 'codeEtablissement=0130001F' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
 * [200.yaml](200.yaml)
 
   Status `200`
@@ -55,10 +1271,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -216,7 +1430,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 9,
     "codeEtablissement": "0921236U",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -239,7 +1453,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -252,10 +1466,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -267,7 +1479,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -293,7 +1505,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 7,
     "codeEtablissement": "0941035P",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -316,7 +1528,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -329,10 +1541,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -344,7 +1554,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -370,7 +1580,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 24,
     "codeEtablissement": "0941035P",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -393,7 +1603,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -406,10 +1616,8 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -421,7 +1629,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -447,7 +1655,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 8,
     "codeEtablissement": "0750611G",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -470,7 +1678,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -483,10 +1691,8 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -498,7 +1704,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -524,7 +1730,7 @@
     "moisDateNaissance": 7,
     "jourDateNaissance": 11,
     "codeEtablissement": "0750611G",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -547,7 +1753,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -560,10 +1766,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -575,7 +1779,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -601,7 +1805,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 9,
     "codeEtablissement": "0911028Y",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -624,7 +1828,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -637,10 +1841,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -652,7 +1854,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -756,7 +1958,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 3,
     "codeEtablissement": "0931190N",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -779,7 +1981,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -792,10 +1994,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -807,7 +2007,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -833,7 +2033,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 2,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -856,7 +2056,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -869,10 +2069,8 @@
       "est_boursier": true,
       "echelon_bourse": 1
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -884,7 +2082,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -910,7 +2108,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 4,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -933,7 +2131,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -946,10 +2144,8 @@
       "est_boursier": true,
       "echelon_bourse": 2
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -961,7 +2157,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -987,7 +2183,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 3,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1010,7 +2206,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1023,10 +2219,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1038,7 +2232,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1064,7 +2258,7 @@
     "moisDateNaissance": 8,
     "jourDateNaissance": 5,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1087,7 +2281,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1100,10 +2294,8 @@
       "est_boursier": true,
       "echelon_bourse": 3
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1115,7 +2307,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1141,7 +2333,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 4,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1164,7 +2356,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1177,10 +2369,8 @@
       "est_boursier": true,
       "echelon_bourse": 4
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1192,7 +2382,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1218,7 +2408,7 @@
     "moisDateNaissance": 1,
     "jourDateNaissance": 6,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1241,7 +2431,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1254,10 +2444,8 @@
       "est_boursier": true,
       "echelon_bourse": 4
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1269,7 +2457,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1295,7 +2483,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 5,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1318,7 +2506,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1331,10 +2519,8 @@
       "est_boursier": true,
       "echelon_bourse": 5
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1346,7 +2532,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1372,7 +2558,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 7,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1395,7 +2581,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1408,10 +2594,8 @@
       "est_boursier": true,
       "echelon_bourse": 5
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1423,7 +2607,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1449,7 +2633,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 8,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1472,7 +2656,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1485,10 +2669,8 @@
       "est_boursier": true,
       "echelon_bourse": 6
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1500,7 +2682,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1526,7 +2708,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 6,
     "codeEtablissement": "0921236U",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1549,7 +2731,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1562,10 +2744,8 @@
       "est_boursier": true,
       "echelon_bourse": 6
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1577,7 +2757,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1759,7 +2939,7 @@
     "moisDateNaissance": 4,
     "jourDateNaissance": 15,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1782,7 +2962,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1795,10 +2975,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1810,7 +2988,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1836,7 +3014,7 @@
     "moisDateNaissance": 3,
     "jourDateNaissance": 14,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -1859,7 +3037,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -1872,10 +3050,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -1887,7 +3063,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -1991,7 +3167,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 2,
     "codeEtablissement": "0931190N",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2014,7 +3190,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -2027,10 +3203,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2042,7 +3216,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2068,7 +3242,7 @@
     "moisDateNaissance": 7,
     "jourDateNaissance": 18,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2091,7 +3265,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -2104,10 +3278,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2119,7 +3291,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2223,7 +3395,7 @@
     "moisDateNaissance": 6,
     "jourDateNaissance": 17,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2246,7 +3418,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -2259,10 +3431,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2274,7 +3444,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2300,7 +3470,7 @@
     "moisDateNaissance": 5,
     "jourDateNaissance": 16,
     "codeEtablissement": "0782567S",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2323,7 +3493,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -2336,10 +3506,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2351,7 +3519,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2377,7 +3545,7 @@
     "moisDateNaissance": 2,
     "jourDateNaissance": 12,
     "codeEtablissement": "0911028Y",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2400,7 +3568,7 @@
         "code_mef_stat": "10310019110",
         "libelle": "3EME GENERALE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -2413,10 +3581,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2428,7 +3594,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
@@ -2454,7 +3620,7 @@
     "moisDateNaissance": 12,
     "jourDateNaissance": 13,
     "codeEtablissement": "0931190N",
-    "anneeScolaire": "2024"
+    "anneeScolaire": "2025"
   }
   ```
 
@@ -2477,7 +3643,7 @@
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
@@ -2490,10 +3656,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2505,7 +3669,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2024' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 

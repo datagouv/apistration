@@ -702,9 +702,7 @@ et la réponse lorsque celui ci est trouvé.
         "sexe": "M"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur TEMIMI MOHAMED AZIZ",
       "complementInformation": null,
@@ -782,9 +780,7 @@ et la réponse lorsque celui ci est trouvé.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur FAKOR EYMEN MOHAMED",
       "complementInformation": null,
@@ -868,9 +864,7 @@ d'erreur selon les informations que vous fournirez.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
       "complementInformation": null,
@@ -954,9 +948,7 @@ d'erreur selon les informations que vous fournirez.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
       "complementInformation": null,
@@ -1039,9 +1031,7 @@ d'erreur selon les informations que vous fournirez.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
       "complementInformation": null,
@@ -1124,9 +1114,7 @@ d'erreur selon les informations que vous fournirez.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
       "complementInformation": null,
@@ -1209,9 +1197,7 @@ d'erreur selon les informations que vous fournirez.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
       "complementInformation": null,
@@ -1383,9 +1369,7 @@ Ce cas permet de tester :
         "sexe": "M"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE NICOLAS",
       "complementInformation": null,
@@ -1465,9 +1449,7 @@ Ce cas permet de tester :
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS",
       "complementInformation": null,
@@ -1865,9 +1847,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur CNAF MARTIN",
       "complementInformation": null,
@@ -1942,9 +1922,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur CNAF MARTIN",
       "complementInformation": null,
@@ -2129,9 +2107,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "M"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur MERCIER JEAN",
       "complementInformation": null,
@@ -3679,9 +3655,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "sexe": "F"
       }
     ],
-    "enfants": [
-  
-    ],
+    "enfants": [],
     "adresse": {
       "identite": "Madame DUBOIS ANGELA",
       "complementInformation": null,

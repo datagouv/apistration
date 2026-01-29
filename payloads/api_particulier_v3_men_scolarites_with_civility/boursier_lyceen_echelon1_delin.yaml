@@ -9,7 +9,7 @@ params:
   moisDateNaissance: 12
   jourDateNaissance: 3
   codeEtablissement: "0931190N"
-  anneeScolaire: "2024"
+  anneeScolaire: "2025"
 status: 200
 payload: |-
   {
@@ -24,7 +24,7 @@ payload: |-
         "code_mef_stat": "10010012110",
         "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
       },
-      "annee_scolaire": "2024-2025",
+      "annee_scolaire": "2025",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",

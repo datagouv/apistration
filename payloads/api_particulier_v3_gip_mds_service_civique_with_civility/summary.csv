@@ -1,0 +1,159 @@
+Titre,Description,Paramètres,Status,Réponse
+,"## VOLONTAIRE AVEC CONTRAT ACTIF ET PASSÉ
+
+Ce cas représente une personne ayant effectué un premier service civique
+par le passé et actuellement engagée dans un second service civique.","{""nomNaissance"":""BERNARD"",""prenoms"":[""SOPHIE""],""anneeDateNaissance"":1999,""moisDateNaissance"":11,""jourDateNaissance"":8}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""18009202500059"",
+        ""raison_sociale"": ""MINISTERE DE L EDUCATION NATIONALE""
+      },
+      ""date_debut_contrat"": ""2024-10-01"",
+      ""date_fin_contrat"": ""2025-07-31""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""42229566900026"",
+        ""raison_sociale"": ""UNIS CITE""
+      },
+      ""date_debut_contrat"": ""2021-03-15"",
+      ""date_fin_contrat"": ""2021-11-14""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## VOLONTAIRE EN SERVICE CIVIQUE ACTIF
+
+Ce cas représente une personne actuellement engagée dans un service civique.
+Le contrat est en cours auprès de la DINUM.","{""nomNaissance"":""DUPONT"",""prenoms"":[""MARIE"",""LOUISE""],""anneeDateNaissance"":1998,""moisDateNaissance"":3,""jourDateNaissance"":15}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""13002526500013"",
+        ""raison_sociale"": ""DIRECTION INTERMINISTERIELLE DU NUMERIQUE""
+      },
+      ""date_debut_contrat"": ""2024-09-01"",
+      ""date_fin_contrat"": ""2025-06-30""
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## ANCIEN VOLONTAIRE SERVICE CIVIQUE
+
+Ce cas représente une personne ayant effectué un service civique par le passé.
+Le contrat est terminé, la personne n'a pas de contrat actif.","{""nomNaissance"":""MARTIN"",""prenoms"":[""JEAN"",""PIERRE""],""anneeDateNaissance"":1995,""moisDateNaissance"":7,""jourDateNaissance"":22}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": true,
+      ""organisme_accueil"": {
+        ""siret"": ""77567227221138"",
+        ""raison_sociale"": ""CROIX ROUGE FRANCAISE""
+      },
+      ""date_debut_contrat"": ""2022-01-10"",
+      ""date_fin_contrat"": ""2022-09-09""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## PERSONNE SANS CONTRAT SERVICE CIVIQUE
+
+Ce cas représente une personne connue du système mais qui n'a jamais
+effectué de service civique (ni actif, ni passé).","{""nomNaissance"":""PETIT"",""prenoms"":[""LUCAS"",""ANTOINE""],""anneeDateNaissance"":2000,""moisDateNaissance"":5,""jourDateNaissance"":12}",200,"{
+  ""data"": {
+    ""statut_actuel"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    },
+    ""statut_passe"": {
+      ""contrat_trouve"": false,
+      ""organisme_accueil"": {
+        ""siret"": null,
+        ""raison_sociale"": null
+      },
+      ""date_debut_contrat"": null,
+      ""date_fin_contrat"": null
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Personne non trouvée,"{""nomNaissance"":""INCONNU"",""prenoms"":[""PERSONNE""],""anneeDateNaissance"":1990,""moisDateNaissance"":1,""jourDateNaissance"":1}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""31003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""GIP-MDS""
+      }
+    }
+  ]
+}"
+,Identité ambiguë - correspond à plusieurs personnes,"{""nomNaissance"":""DURAND"",""prenoms"":[""JEAN""],""anneeDateNaissance"":1985,""moisDateNaissance"":6,""jourDateNaissance"":15}",422,"{
+  ""errors"": [
+    {
+      ""code"": ""00391"",
+      ""title"": ""Entité non traitable"",
+      ""detail"": ""Les paramètres d'identité correspondent à plusieurs personnes. Nous ne pouvons pas fournir les informations de service civique pour cet individu."",
+      ""source"": null,
+      ""meta"": {}
+    }
+  ]
+}"
+,Erreur du fournisseur GIP-MDS,"{""nomNaissance"":""ERREUR"",""prenoms"":[""FOURNISSEUR""],""anneeDateNaissance"":1992,""moisDateNaissance"":2,""jourDateNaissance"":2}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""31999"",
+      ""title"": ""Erreur inconnue du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""GIP-MDS""
+      }
+    }
+  ]
+}"
+,Timeout du fournisseur GIP-MDS,"{""nomNaissance"":""TIMEOUT"",""prenoms"":[""SERVEUR""],""anneeDateNaissance"":1993,""moisDateNaissance"":3,""jourDateNaissance"":3}",504,"{
+  ""errors"": [
+    {
+      ""code"": ""31002"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d'attente d'une réponse du fournisseur de données écoulé."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""GIP-MDS""
+      }
+    }
+  ]
+}"
