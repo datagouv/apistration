@@ -1,0 +1,43 @@
+---
+description: "Élève non boursier - Lopez Sofia (moins de 16 ans)"
+params:
+  nomNaissance: "Lopez"
+  prenoms:
+    - "Sofia"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2010
+  moisDateNaissance: 2
+  jourDateNaissance: 14
+  codeEtablissement: "0131367R"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Lopez",
+        "prenom": "Sofia",
+        "sexe": "F",
+        "date_naissance": "2010-02-14"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131367R",
+        "nom": "Collège Saint-Louis",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,43 @@
+---
+description: "Élève non boursier - Diallo Felixia (moins de 16 ans)"
+params:
+  nomNaissance: "Diallo"
+  prenoms:
+    - "Felixia"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2010
+  moisDateNaissance: 9
+  jourDateNaissance: 30
+  codeEtablissement: "0131705H"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Diallo",
+        "prenom": "Felixia",
+        "sexe": "F",
+        "date_naissance": "2010-09-30"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010000310",
+        "libelle": "3EME"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131705H",
+        "nom": "Collège Fernand Léger",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

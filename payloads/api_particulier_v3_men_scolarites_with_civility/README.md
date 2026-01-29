@@ -658,6 +658,84 @@
 
   </p>
   </details>
+* [boursier_garcia.yaml](boursier_garcia.yaml)
+
+  Status `200`
+
+  Élève boursier - Garcia Mateo (moins de 16 ans)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Garcia",
+    "prenoms": [
+      "Mateo"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2012,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 7,
+    "codeEtablissement": "0130032P",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "Garcia",
+        "prenom": "Mateo",
+        "sexe": "M",
+        "date_naissance": "2012-03-07"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010000210",
+        "libelle": "4EME"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130032P",
+        "nom": "Collège Collines Durance",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Garcia' -d 'prenoms[]=Mateo' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=3' -d 'jourDateNaissance=7' -d 'codeEtablissement=0130032P' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
 * [boursier_lyceen_echelon1_delin.yaml](boursier_lyceen_echelon1_delin.yaml)
 
   Status `200`
@@ -1505,6 +1583,162 @@
 
   </p>
   </details>
+* [boursier_nguyen.yaml](boursier_nguyen.yaml)
+
+  Status `200`
+
+  Élève boursier - Nguyen Adam (moins de 16 ans)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Nguyen",
+    "prenoms": [
+      "Adam"
+    ],
+    "sexeEtatCivil": "M",
+    "anneeDateNaissance": 2011,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 5,
+    "codeEtablissement": "0133510V",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "Nguyen",
+        "prenom": "Adam",
+        "sexe": "M",
+        "date_naissance": "2011-01-05"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010000410",
+        "libelle": "6EME"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0133510V",
+        "nom": "Collège Ubelka",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nguyen' -d 'prenoms[]=Adam' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=1' -d 'jourDateNaissance=5' -d 'codeEtablissement=0133510V' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [non_boursier_benzarte.yaml](non_boursier_benzarte.yaml)
+
+  Status `200`
+
+  Élève non boursier - Benzarte Lana (moins de 16 ans)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Benzarte",
+    "prenoms": [
+      "Lana"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2011,
+    "moisDateNaissance": 11,
+    "jourDateNaissance": 18,
+    "codeEtablissement": "0130022D",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "Benzarte",
+        "prenom": "Lana",
+        "sexe": "F",
+        "date_naissance": "2011-11-18"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010000110",
+        "libelle": "5EME"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130022D",
+        "nom": "Collège Alice Guy (anciennement Virebelle)",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Benzarte' -d 'prenoms[]=Lana' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=11' -d 'jourDateNaissance=18' -d 'codeEtablissement=0130022D' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
 * [non_boursier_caravelle.yaml](non_boursier_caravelle.yaml)
 
   Status `200`
@@ -1659,6 +1893,84 @@
 
   </p>
   </details>
+* [non_boursier_diallo.yaml](non_boursier_diallo.yaml)
+
+  Status `200`
+
+  Élève non boursier - Diallo Felixia (moins de 16 ans)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Diallo",
+    "prenoms": [
+      "Felixia"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2010,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 30,
+    "codeEtablissement": "0131705H",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "Diallo",
+        "prenom": "Felixia",
+        "sexe": "F",
+        "date_naissance": "2010-09-30"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010000310",
+        "libelle": "3EME"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131705H",
+        "nom": "Collège Fernand Léger",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Diallo' -d 'prenoms[]=Felixia' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=9' -d 'jourDateNaissance=30' -d 'codeEtablissement=0131705H' -d 'anneeScolaire=2025' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
 * [non_boursier_dupond.yaml](non_boursier_dupond.yaml)
 
   Status `200`
@@ -1808,6 +2120,84 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2024' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+  ```
+
+  </p>
+  </details>
+* [non_boursier_lopez.yaml](non_boursier_lopez.yaml)
+
+  Status `200`
+
+  Élève non boursier - Lopez Sofia (moins de 16 ans)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Lopez",
+    "prenoms": [
+      "Sofia"
+    ],
+    "sexeEtatCivil": "F",
+    "anneeDateNaissance": 2010,
+    "moisDateNaissance": 2,
+    "jourDateNaissance": 14,
+    "codeEtablissement": "0131367R",
+    "anneeScolaire": "2025"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom": "Lopez",
+        "prenom": "Sofia",
+        "sexe": "F",
+        "date_naissance": "2010-02-14"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10010012110",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131367R",
+        "nom": "Collège Saint-Louis",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lopez' -d 'prenoms[]=Sofia' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=2' -d 'jourDateNaissance=14' -d 'codeEtablissement=0131367R' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
   ```
 
