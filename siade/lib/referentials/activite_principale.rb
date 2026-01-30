@@ -14,7 +14,7 @@ class Referentials::ActivitePrincipale
     {
       code: @code,
       nomenclature: @nomenclature,
-      libelle: libelle
+      libelle:
     }
   end
 

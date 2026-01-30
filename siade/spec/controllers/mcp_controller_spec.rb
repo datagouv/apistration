@@ -126,7 +126,7 @@ RSpec.describe MCPController do
         expect(INSEE::UniteLegaleTool).to receive(:call).with(
           siren: '130025265',
           server_context: hash_including(
-            request_id: request_id,
+            request_id:,
             user_id: '00000000-0000-0000-0000-000000000000'
           )
         )

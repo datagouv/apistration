@@ -52,7 +52,7 @@ class Openapi::ErrorInjector
 
     path_params = extract_path_params(path)
     mandatory_params = error_config['mandatory_params'].map(&:to_sym)
-    examples.merge!(builder.build_422_for_params(path_params: path_params, mandatory_params: mandatory_params))
+    examples.merge!(builder.build_422_for_params(path_params:, mandatory_params:))
   end
 
   def response_hash(description, examples)

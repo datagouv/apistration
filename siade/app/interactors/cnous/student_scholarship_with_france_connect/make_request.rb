@@ -16,7 +16,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   def mocking_params
     {
       nomNaissance: nom_naissance,
-      prenoms: prenoms,
+      prenoms:,
       anneeDateNaissance: year,
       moisDateNaissance: month,
       jourDateNaissance: day,
@@ -62,7 +62,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year: year, month: month, day: day)
+    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year:, month:, day:)
   end
 
   def year

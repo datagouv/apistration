@@ -50,6 +50,9 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: space
 
+Style/HashSyntax:
+  EnforcedShorthandSyntax: always
+
 # Necessary to use NotImplementedError
 Lint/InheritException:
   Enabled: false

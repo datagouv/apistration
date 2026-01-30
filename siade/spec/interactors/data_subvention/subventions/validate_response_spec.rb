@@ -1,5 +1,5 @@
 RSpec.describe DataSubvention::Subventions::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'DataSubvention') }
+  subject { described_class.call(response:, provider_name: 'DataSubvention') }
 
   context 'with a http ok' do
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }

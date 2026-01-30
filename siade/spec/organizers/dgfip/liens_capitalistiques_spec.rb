@@ -1,5 +1,5 @@
 RSpec.describe DGFIP::LiensCapitalistiques, type: :retriever_organizer do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:annee) { 2017 }
   let(:siren) { valid_siren(:liasse_fiscale) }

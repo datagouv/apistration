@@ -17,7 +17,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
 
   def build_entreprise_base_hash
     {
-      siren: siren,
+      siren:,
       denomination: entreprise_data['denomination'],
       nom: extract_entrepreneur_nom,
       prenoms: extract_entrepreneur_prenoms,
@@ -95,7 +95,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
 
   def build_code_hash(code, type)
     {
-      code: code,
+      code:,
       libelle: get_code_libelle(code, type)
     }
   end

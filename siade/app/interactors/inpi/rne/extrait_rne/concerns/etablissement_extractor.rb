@@ -105,7 +105,7 @@ module INPI::RNE::ExtraitRNE::Concerns::EtablissementExtractor
 
   def build_code_hash(code, type)
     {
-      code: code,
+      code:,
       libelle: get_code_libelle(code, type)
     }
   end

@@ -32,10 +32,10 @@ module INPI::RNE::ExtraitRNE::Concerns::ObservationExtractor
 
   def build_observation_hash(fournisseur, numero, date, texte)
     {
-      fournisseur: fournisseur,
-      numero: numero,
+      fournisseur:,
+      numero:,
       date: format_date(date),
-      texte: texte
+      texte:
     }
   end
 

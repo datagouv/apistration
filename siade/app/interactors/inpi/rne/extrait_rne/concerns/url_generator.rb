@@ -6,7 +6,7 @@ module INPI::RNE::ExtraitRNE::Concerns::UrlGenerator
       controller: 'api_entreprise/inpi_proxy',
       action: 'show',
       uuid: encrypted_uuid(target:, document_id:),
-      host: host
+      host:
     )
   end
 
@@ -16,10 +16,10 @@ module INPI::RNE::ExtraitRNE::Concerns::UrlGenerator
 
   def raw_uuid(target:, document_id:)
     {
-      target: target,
-      document_id: document_id,
-      timestamp: timestamp,
-      token_id: token_id
+      target:,
+      document_id:,
+      timestamp:,
+      token_id:
     }.to_json
   end
 

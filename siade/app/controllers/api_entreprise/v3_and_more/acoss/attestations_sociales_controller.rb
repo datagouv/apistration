@@ -34,6 +34,6 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
   end
 
   def organizer
-    @organizer ||= retrieve_payload_data(retrieve_organizer_based_on_version, cache: true, expires_in: expires_in)
+    @organizer ||= retrieve_payload_data(retrieve_organizer_based_on_version, cache: true, expires_in:)
   end
 end

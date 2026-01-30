@@ -28,7 +28,7 @@ class DataSubvention::Subventions::BuildResourceCollection < BuildResourceCollec
     date_mise_a_jour = safe_extract(application, 'siret', 'last_update')
 
     {
-      fournisseur: fournisseur,
+      fournisseur:,
       date_mise_a_jour_information: date_mise_a_jour,
       annee_exercice_demande: extract_value(application, 'annee_demande'),
       identifiant_engagement_juridique: extract_value(application, 'ej'),
@@ -96,7 +96,7 @@ class DataSubvention::Subventions::BuildResourceCollection < BuildResourceCollec
     date_mise_a_jour = safe_extract(paiement, 'ej', 'last_update')
 
     result = {
-      fournisseur: fournisseur,
+      fournisseur:,
       date_mise_a_jour_information: date_mise_a_jour,
       jointure_demandes_et_versements: extract_value(paiement, 'versementKey'),
       montant_verse: extract_value(paiement, 'amount'),

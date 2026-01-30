@@ -20,7 +20,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'injects all error responses' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         responses = open_api.dig('paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses')
 
@@ -34,7 +34,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'produces valid example structure for 401' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -52,7 +52,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'includes siren in 422 path params' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -66,7 +66,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'uses provider name in 502/504 examples' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         examples_502 = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -94,7 +94,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'skips 502 and 504' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
@@ -103,7 +103,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'still injects 401, 403, 409, 429' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
@@ -131,7 +131,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'does not overwrite existing responses' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         response_401 = open_api.dig('paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses', '401')
         expect(response_401['description']).to eq('Custom 401')
@@ -164,7 +164,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'merges 422 examples without overwriting existing ones' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -194,7 +194,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'uses particulier mandatory params (only recipient)' do
-        described_class.new(open_api, config_path: config_path).perform
+        described_class.new(open_api, config_path:).perform
 
         examples = open_api.dig(
           'paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses',
