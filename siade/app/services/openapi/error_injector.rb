@@ -106,7 +106,7 @@ class Openapi::ErrorInjector
 
     path_params = extract_path_params(path)
     mandatory_params = error_config['mandatory_params'].map(&:to_sym)
-    extra_examples = builder.build_422_for_params(path_params: path_params, mandatory_params: mandatory_params)
+    extra_examples = builder.build_422_for_params(path_params:, mandatory_params:)
 
     existing_examples = responses.dig('422', 'content', 'application/json', 'examples') || {}
     extra_examples.each do |key, value|
