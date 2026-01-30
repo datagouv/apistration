@@ -158,7 +158,7 @@ mi:
         description: "Numéro identifiant de toute association inscrite au répertoire national des associations (RNA). Il est constitué de la lettre W suivie de 9 chiffres.
 \n
 \n
-Cas particulier : Si l'association relève du droit local d'Alsace-Moselle, elle n'est pas immatriculée au RNA et ne possède donc pas de numéro RNA. Dans ce cas, le champ est vide.
+Cas particulier : Si l'association relève du droit local d'Alsace-Moselle, elle n'est pas immatriculée au RNA et ne possède donc pas de numéro RNA. Dans ce cas, le champ est vide."
         example: "W751080001"
         nullable: true
       ancien_id:

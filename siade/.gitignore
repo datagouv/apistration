@@ -74,7 +74,5 @@ config/credentials/staging.yml.enc
 
 **/.claude/settings.local.json
 
-# Used by bin/test_swagger.sh
-swagger/versionned/openapi-entreprise.yaml
-swagger/versionned/openapi-particulier.yaml
 sandbox/
+swagger/versionned/

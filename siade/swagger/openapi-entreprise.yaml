@@ -7571,8 +7571,7 @@ paths:
                           de la lettre W suivie de 9 chiffres. \n \n Cas particulier
                           : Si l'association relève du droit local d'Alsace-Moselle,
                           elle n'est pas immatriculée au RNA et ne possède donc pas
-                          de numéro RNA. Dans ce cas, le champ est vide. \n \n En
-                          savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
+                          de numéro RNA. Dans ce cas, le champ est vide."
                         example: W751080001
                         nullable: true
                       ancien_id:
@@ -7584,10 +7583,10 @@ paths:
                       siren:
                         type: string
                         title: Numéro SIREN
-                        description: "Numéro identifiant des associations inscrites
-                          au répertoire Sirene. Cet enregistrement n'est pas obligatoire
-                          : pour les associations qui n'ont pas de numéro SIREN, le
-                          champ est vide. \n \n En savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
+                        description: 'Numéro identifiant des associations inscrites
+                          au répertoire Sirene. Cet enregistrement n''est pas obligatoire
+                          : pour les associations qui n''ont pas de numéro SIREN,
+                          le champ est vide.'
                         example: '751080001'
                         nullable: true
                       nom:
@@ -9379,8 +9378,7 @@ paths:
                           de la lettre W suivie de 9 chiffres. \n \n Cas particulier
                           : Si l'association relève du droit local d'Alsace-Moselle,
                           elle n'est pas immatriculée au RNA et ne possède donc pas
-                          de numéro RNA. Dans ce cas, le champ est vide. \n \n En
-                          savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
+                          de numéro RNA. Dans ce cas, le champ est vide."
                         example: W751080001
                         nullable: true
                       ancien_id:
@@ -9392,10 +9390,10 @@ paths:
                       siren:
                         type: string
                         title: Numéro SIREN
-                        description: "Numéro identifiant des associations inscrites
-                          au répertoire Sirene. Cet enregistrement n'est pas obligatoire
-                          : pour les associations qui n'ont pas de numéro SIREN, le
-                          champ est vide. \n \n En savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
+                        description: 'Numéro identifiant des associations inscrites
+                          au répertoire Sirene. Cet enregistrement n''est pas obligatoire
+                          : pour les associations qui n''ont pas de numéro SIREN,
+                          le champ est vide.'
                         example: '751080001'
                         nullable: true
                       nom:
