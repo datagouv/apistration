@@ -4,6 +4,7 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
   path '/v3/cnous/etudiant_boursier/identite' do
     get "[Identité] #{SwaggerData.get('cnous.commons.title')}" do
       tags(*SwaggerData.get('cnous.commons.tags'))
+      deprecated true
 
       common_action_attributes
 

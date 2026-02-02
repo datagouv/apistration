@@ -42,6 +42,10 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
             etablissement_etudes: {
               nom_commune: 'MONTPELLIER',
               nom_etablissement: 'UFR SCIENCES TECHNOLOG SANTE'
+            },
+            radiation: {
+              est_radie: false,
+              date_radiation: nil
             }
           }
         )
@@ -84,7 +88,30 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
             etablissement_etudes: {
               nom_commune: 'MONTPELLIER',
               nom_etablissement: 'UFR SCIENCES TECHNOLOG SANTE'
+            },
+            radiation: {
+              est_radie: false,
+              date_radiation: nil
             }
+          }
+        )
+      end
+    end
+  end
+
+  context 'when response has a removed student' do
+    let(:body) { read_payload_file('cnous/student_scholarship_valid_response_removed.json') }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject { instance.bundled_data.data.to_h }
+
+      it 'has radiation data' do
+        expect(subject[:radiation]).to eq(
+          {
+            est_radie: true,
+            date_radiation: '2023-06-15'
           }
         )
       end

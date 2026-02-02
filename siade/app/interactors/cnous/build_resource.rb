@@ -7,7 +7,8 @@ class CNOUS::BuildResource < BuildResource
       email: valid_payload['email'],
       periode_versement_bourse:,
       etablissement_etudes:,
-      statut_bourse:
+      statut_bourse:,
+      radiation:
     }
   end
 
@@ -69,5 +70,18 @@ class CNOUS::BuildResource < BuildResource
 
   def statut_libelle
     valid_payload['grantStatus'].zero? ? 'définitif' : 'provisoire (conditionnel)'
+  end
+
+  def radiation
+    {
+      est_radie: valid_payload['removed'] == 'O',
+      date_radiation: format_date_or_nil(valid_payload['removalDate'])
+    }
+  end
+
+  def format_date_or_nil(date)
+    return nil if date.blank?
+
+    Date.parse(date).strftime('%Y-%m-%d')
   end
 end

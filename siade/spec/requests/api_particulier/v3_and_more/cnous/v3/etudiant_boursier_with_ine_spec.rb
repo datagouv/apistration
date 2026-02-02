@@ -4,6 +4,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE', api: :particu
   path '/v3/cnous/etudiant_boursier/ine' do
     get "[INE] #{SwaggerData.get('cnous.commons.title')}" do
       tags(*SwaggerData.get('cnous.commons.tags'))
+      deprecated true
 
       common_action_attributes
 

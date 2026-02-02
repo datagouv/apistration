@@ -4,6 +4,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with FranceConnect', api
   path '/v3/cnous/etudiant_boursier/france_connect' do
     get "[FranceConnect] #{SwaggerData.get('cnous.commons.title')}" do
       tags(*SwaggerData.get('cnous.commons.tags'))
+      deprecated true
 
       common_action_attributes
 
