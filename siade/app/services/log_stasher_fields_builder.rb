@@ -135,7 +135,7 @@ class LogStasherFieldsBuilder
   end
 
   def france_connectable?
-    controller.class.included_modules.include?(APIParticulier::FranceConnectable) &&
+    controller.class.include?(APIParticulier::FranceConnectable) &&
       bearer_token_from_headers.present?
   end
 
