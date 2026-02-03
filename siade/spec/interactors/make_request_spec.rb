@@ -171,10 +171,11 @@ RSpec.describe MakeRequest, type: :interactor do
       end
 
       [
-        'getaddrinfo: nodename nor servname provided, or not known',
-        'getaddrinfo: No address associated with hostname',
-        'getaddrinfo: Name or service not known',
-        'getaddrinfo: Temporary failure in name resolution'
+        'nodename nor servname provided, or not known',
+        'No address associated with hostname',
+        'Name or service not known',
+        'Temporary failure in name resolution',
+        'getaddrinfo(3): Temporary failure in name resolution'
       ].each do |dns_error_message|
         context 'for a DNS resolution fail (no address associated)' do
           let(:socket_error_message) { "Failed to open TCP connection to www.google.com:443 (#{dns_error_message})" }
@@ -195,6 +196,20 @@ RSpec.describe MakeRequest, type: :interactor do
             subject
           }.to raise_error(SocketError)
         end
+      end
+    end
+
+    context 'for a Socket::ResolutionError (Ruby 3.x)' do
+      before do
+        stub_request(:get, uri.to_s).to_raise(
+          Socket::ResolutionError.new('Temporary failure in name resolution')
+        )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds DnsResolutionError to errors' do
+        expect(subject.errors).to include(instance_of(DnsResolutionError))
       end
     end
 

@@ -142,10 +142,10 @@ class MakeRequest < ApplicationInteractor
 
   def dns_lookup_errors_string
     [
-      'getaddrinfo: nodename nor servname provided, or not known',
-      'getaddrinfo: No address associated with hostname',
-      'getaddrinfo: Name or service not known',
-      'getaddrinfo: Temporary failure in name resolution'
+      'nodename nor servname provided, or not known',
+      'No address associated with hostname',
+      'Name or service not known',
+      'Temporary failure in name resolution'
     ]
   end
 
