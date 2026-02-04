@@ -3,7 +3,7 @@ gip_mds:
     title: "Effectifs annuels d'une unité légale"
     tags:
       - "Informations générales"
-    description: "Effectifs annuels des régimes général et agricole d'une unité légale, issus du répertoire commun des déclarants (RCD), dont l'effectif moyen (EMA) ou les effectifs liés à l'obligation d'emploi des travailleurs handicapés (EMA BOETH, EMA OETH, EMA ECAP)."
+    description: "Effectifs annuels des régimes général et agricole d'une unité légale, issus de l'Urssaf et de la MSA depuis le répertoire commun des déclarants (RCD). Inclut l'effectif moyen et les effectifs liés à l'obligation d'emploi des travailleurs handicapés."
     parameters:
       year:
         description: "Année de référence des effectifs."
@@ -89,7 +89,7 @@ gip_mds:
     title: "Effectifs mensuels d'un établissement"
     tags:
       - "Informations générales"
-    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus du répertoire commun des déclarants (RCD), dont l'effectif moyen (EMM) ou les effectifs liés à l'obligation d'emploi travailleurs handicapés (EMM BOETH, EMM OETH, EMM ECAP)."
+    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus de l'Urssaf et de la MSA depuis le répertoire commun des déclarants (RCD). Inclut l'effectif moyen et les effectifs liés à l'obligation d'emploi travailleurs handicapés."
     parameters:
       year:
         description: "Année de référence des effectifs."
