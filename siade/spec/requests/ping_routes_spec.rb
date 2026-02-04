@@ -26,6 +26,16 @@ RSpec.describe 'Ping routes' do
             )
           )
         end
+      when 'dgfip'
+        allow(DGFIP::ADELIE::Authenticate).to receive(:call).and_return(
+          Interactor::Context.new(token: 'token')
+        )
+        allow(DGFIP::ADELIE::Ping::MakeRequest).to receive(:call).and_return(
+          Interactor::Context.new(response: OpenStruct.new(code: '200'))
+        )
+        allow(AccessLogPingView).to receive(:where).and_return(
+          AccessLogPingView.none
+        )
       end
     end
   end

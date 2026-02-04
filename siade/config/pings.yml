@@ -107,6 +107,13 @@ test:
           request_id: '22222222-2222-2222-2222-222222222222'
         token_interactor: 'CNAV::Authenticate'
 
+    with_dgfip:
+      kind: 'dgfip'
+      provider: 'DGFIP - Adélie'
+      driver_params:
+        routes:
+          - 'api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
+
 shared:
   api_particulier:
     ants:
@@ -446,49 +453,37 @@ shared:
           - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
 
     dgfip/attestation_fiscale:
-      kind: 'make_request'
+      kind: 'dgfip'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Attestations fiscales'
         alerts_wait: 5
       cache: <%= 5.minutes %>
       driver_params:
-        make_request: 'DGFIP::ADELIE::Ping::MakeRequest'
-        status_to_check: 200
-        token_interactor: 'DGFIP::ADELIE::Authenticate'
-        params:
-          request_id: '22222222-2222-2222-2222-222222222222'
-          user_id: '22222222-2222-2222-2222-222222222222'
+        routes:
+          - 'api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
 
     dgfip/chiffre_affaires:
-      kind: 'make_request'
+      kind: 'dgfip'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Chiffre affaires'
         alerts_wait: 5
       cache: <%= 5.minutes %>
       driver_params:
-        make_request: 'DGFIP::ADELIE::Ping::MakeRequest'
-        status_to_check: 200
-        token_interactor: 'DGFIP::ADELIE::Authenticate'
-        params:
-          request_id: '22222222-2222-2222-2222-222222222222'
-          user_id: '22222222-2222-2222-2222-222222222222'
+        routes:
+          - 'api_entreprise/v3_and_more/dgfip/chiffres_affaires#show'
 
     dgfip/liasses_fiscales:
-      kind: 'make_request'
+      kind: 'dgfip'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Liasses fiscales'
         alerts_wait: 5
       cache: <%= 5.minutes %>
       driver_params:
-        make_request: 'DGFIP::ADELIE::Ping::MakeRequest'
-        status_to_check: 200
-        token_interactor: 'DGFIP::ADELIE::Authenticate'
-        params:
-          request_id: '22222222-2222-2222-2222-222222222222'
-          user_id: '22222222-2222-2222-2222-222222222222'
+        routes:
+          - 'api_entreprise/v3_and_more/dgfip/liasses_fiscales#show'
 
     infogreffe/rcs:
       kind: 'retriever'
