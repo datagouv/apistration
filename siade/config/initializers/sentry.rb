@@ -1,5 +1,5 @@
 Sentry.init do |config|
-  config.dsn = Siade.credentials[:sentry_url]
+  config.dsn = Siade.credentials[:sentry_url] unless ENV['DISABLE_SENTRY'] == 'true'
 
   config.breadcrumbs_logger = [:active_support_logger]
   config.enabled_environments = %w[production staging sandbox]
