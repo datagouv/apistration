@@ -1,8 +1,11 @@
 require 'rack/utils'
 require 'digest/sha2'
 
-require_relative '../../app/services/rate_limiting_service.rb'
-require_relative '../../app/lib/rate_limit_headers_middleware.rb'
+require_relative '../../app/services/rate_limiting_service'
+require_relative '../../app/lib/rate_limit_headers_middleware'
+require_relative '../../app/errors/application_error'
+require_relative '../../app/errors/forbidden_error'
+require_relative '../../app/errors/forbidden_ip_error'
 
 class Rack::Attack
   class << self
@@ -37,6 +40,21 @@ class Rack::Attack
     rate_limiting_service.blacklisted_access?(req)
   end
 
+  blocklist('IP whitelist') do |req|
+    rate_limiting_service.ip_forbidden_access?(req)
+  end
+
+  throttle(
+    'custom_rate_limit',
+    limit: proc { |req| rate_limiting_service.custom_rate_limit_for(req) || Float::INFINITY },
+    period: 60
+  ) do |req|
+    next nil unless rate_limiting_service.custom_rate_limit?(req)
+
+    jwt = rate_limiting_service.extract_token_from_request(req)
+    Digest::SHA256.hexdigest(jwt) if jwt
+  end
+
   throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
     next if request.get_header('HTTP_X_API_KEY').blank? || !request.path.include?('/api/v2/') || !(request.host =~ /particulier/)
 
@@ -51,15 +69,23 @@ class Rack::Attack
   end
 
   self.blocklisted_responder = lambda do |req|
+    matched = req.env['rack.attack.matched']
     api = req.host.split('.').first
-
     error_format = req.env['PATH_INFO'].include?('/api/v2/') ? 'flat' : 'json_api'
 
-    [
-      401,
-      { 'Content-Type' => 'application/json' },
-      [ErrorsSerializer.new([BlacklistedTokenError.new(api)], format: error_format).to_json]
-    ]
+    if matched == 'IP whitelist'
+      [
+        403,
+        { 'Content-Type' => 'application/json' },
+        [ErrorsSerializer.new([ForbiddenIpError.new(api)], format: error_format).to_json]
+      ]
+    else
+      [
+        401,
+        { 'Content-Type' => 'application/json' },
+        [ErrorsSerializer.new([BlacklistedTokenError.new(api)], format: error_format).to_json]
+      ]
+    end
   end
 
   self.throttled_responder = lambda do |req|

@@ -69,7 +69,17 @@ class JwtTokenService
     jwt_data[:exp] = token.exp
     jwt_data[:mcp] = jwt_data[:mcp] || token.mcp
 
+    enrich_with_security_settings(jwt_data, token)
+
     jwt_data
+  end
+
+  def enrich_with_security_settings(jwt_data, token)
+    security_settings = token.authorization_request&.security_settings
+    return unless security_settings
+
+    jwt_data[:rate_limit_per_minute] = security_settings.rate_limit_per_minute
+    jwt_data[:allowed_ips] = security_settings.allowed_ips
   end
 
   def build_and_cache_user!(jwt_token, jwt_data)

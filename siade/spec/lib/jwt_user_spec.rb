@@ -77,4 +77,64 @@ RSpec.describe JwtUser do
       expect(jwt_user).to respond_to(:scopes)
     end
   end
+
+  describe '#ip_allowed?' do
+    context 'with allowed_ips configured' do
+      let(:jwt_user) { described_class.new(**jwt_payload, allowed_ips: ['192.168.1.0/24', '10.0.0.1']) }
+
+      it 'allows IP in CIDR range' do
+        expect(jwt_user.ip_allowed?('192.168.1.50')).to be true
+      end
+
+      it 'allows exact IP match' do
+        expect(jwt_user.ip_allowed?('10.0.0.1')).to be true
+      end
+
+      it 'denies IP not in whitelist' do
+        expect(jwt_user.ip_allowed?('8.8.8.8')).to be false
+      end
+    end
+
+    context 'without allowed_ips' do
+      let(:jwt_user) { described_class.new(**jwt_payload, allowed_ips: nil) }
+
+      it 'allows any IP' do
+        expect(jwt_user.ip_allowed?('8.8.8.8')).to be true
+      end
+    end
+
+    context 'with empty allowed_ips' do
+      let(:jwt_user) { described_class.new(**jwt_payload, allowed_ips: []) }
+
+      it 'allows any IP' do
+        expect(jwt_user.ip_allowed?('8.8.8.8')).to be true
+      end
+    end
+
+    context 'with invalid request IP' do
+      let(:jwt_user) { described_class.new(**jwt_payload, allowed_ips: ['192.168.1.0/24']) }
+
+      it 'returns false' do
+        expect(jwt_user.ip_allowed?('not_an_ip')).to be false
+      end
+    end
+  end
+
+  describe '#has_custom_rate_limit?' do
+    context 'with rate_limit_per_minute set' do
+      let(:jwt_user) { described_class.new(**jwt_payload, rate_limit_per_minute: 100) }
+
+      it 'returns true' do
+        expect(jwt_user.has_custom_rate_limit?).to be true
+      end
+    end
+
+    context 'without rate_limit_per_minute' do
+      let(:jwt_user) { described_class.new(**jwt_payload, rate_limit_per_minute: nil) }
+
+      it 'returns false' do
+        expect(jwt_user.has_custom_rate_limit?).to be false
+      end
+    end
+  end
 end

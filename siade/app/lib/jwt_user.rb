@@ -1,5 +1,6 @@
 class JwtUser
-  attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp
+  attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp,
+    :rate_limit_per_minute, :allowed_ips
 
   def self.debugger_id
     '00000000-0000-0000-0000-000000000000'
@@ -9,7 +10,8 @@ class JwtUser
     '11111111-1111-1111-1111-111111111111'
   end
 
-  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false)
+  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false,
+                 rate_limit_per_minute: nil, allowed_ips: nil)
     @id = uid
     @scopes = scopes
     @jti = jti
@@ -18,6 +20,16 @@ class JwtUser
     @blacklisted = blacklisted
     @siret = siret
     @mcp = mcp
+    @rate_limit_per_minute = rate_limit_per_minute
+    @allowed_ips = allowed_ips
+  end
+
+  def ip_allowed?(request_ip)
+    IpWhitelist.allowed?(allowed_ips, request_ip)
+  end
+
+  def has_custom_rate_limit?
+    rate_limit_per_minute.present?
   end
 
   def has_access?(scope)

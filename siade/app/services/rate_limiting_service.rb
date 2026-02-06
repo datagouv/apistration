@@ -20,12 +20,38 @@ class RateLimitingService
     token_blacklisted_from_database?(jwt)
   end
 
+  def ip_forbidden_access?(req)
+    jwt = extract_token_from_request(req)
+    user = user_from_jwt(jwt)
+
+    return false if user.blank?
+    return false if user.allowed_ips.blank?
+
+    !user.ip_allowed?(req.ip)
+  end
+
+  def custom_rate_limit_for(req)
+    jwt = extract_token_from_request(req)
+    user = user_from_jwt(jwt)
+
+    user&.rate_limit_per_minute
+  end
+
+  def custom_rate_limit?(req)
+    custom_rate_limit_for(req).present?
+  end
+
   def build_rate_limit_headers(data)
     {
       'RateLimit-Limit' => data[:limit].to_s,
       'RateLimit-Remaining' => compute_remaining(data),
       'RateLimit-Reset' => compute_reset(data)
     }
+  end
+
+  def extract_token_from_request(request)
+    extract_token_from_header(request) ||
+      extract_token_from_query_params(request)
   end
 
   private
@@ -46,11 +72,6 @@ class RateLimitingService
     Rails.application.routes.recognize_path(url)
   rescue ActionController::RoutingError
     {}
-  end
-
-  def extract_token_from_request(request)
-    extract_token_from_header(request) ||
-      extract_token_from_query_params(request)
   end
 
   def extract_token_from_header(request)

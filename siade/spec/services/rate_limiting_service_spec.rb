@@ -148,4 +148,146 @@ RSpec.describe RateLimitingService do
       end
     end
   end
+
+  describe '#ip_forbidden_access?' do
+    subject { described_class.new.ip_forbidden_access?(req) }
+
+    before do
+      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+      allow(req).to receive(:ip).and_return(request_ip)
+    end
+
+    let(:request_ip) { '8.8.8.8' }
+
+    context 'when authorization header is not set' do
+      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
+
+      it { is_expected.to be(false) }
+    end
+
+    context 'with a valid token' do
+      let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
+      let(:token_record) do
+        Token.create!(
+          iat: 1.day.ago.to_i,
+          exp: 1.year.from_now.to_i,
+          scopes: [],
+          authorization_request_model_id: authorization_request.id
+        )
+      end
+      let(:token) { TokenFactory.new([]).valid(uid: token_record.id) }
+
+      before do
+        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}")
+      end
+
+      context 'without IP whitelist configured' do
+        it { is_expected.to be(false) }
+      end
+
+      context 'with IP whitelist configured' do
+        before do
+          AuthorizationRequestSecuritySettings.create!(
+            authorization_request:,
+            allowed_ips: ['192.168.1.0/24']
+          )
+        end
+
+        context 'when request IP is allowed' do
+          let(:request_ip) { '192.168.1.50' }
+
+          it { is_expected.to be(false) }
+        end
+
+        context 'when request IP is not allowed' do
+          let(:request_ip) { '8.8.8.8' }
+
+          it { is_expected.to be(true) }
+        end
+      end
+    end
+  end
+
+  describe '#custom_rate_limit_for' do
+    subject { described_class.new.custom_rate_limit_for(req) }
+
+    before do
+      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+    end
+
+    context 'when authorization header is not set' do
+      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'with a valid token' do
+      let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
+      let(:token_record) do
+        Token.create!(
+          iat: 1.day.ago.to_i,
+          exp: 1.year.from_now.to_i,
+          scopes: [],
+          authorization_request_model_id: authorization_request.id
+        )
+      end
+      let(:token) { TokenFactory.new([]).valid(uid: token_record.id) }
+
+      before do
+        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}")
+      end
+
+      context 'without custom rate limit configured' do
+        it { is_expected.to be_nil }
+      end
+
+      context 'with custom rate limit configured' do
+        before do
+          AuthorizationRequestSecuritySettings.create!(
+            authorization_request:,
+            rate_limit_per_minute: 100
+          )
+        end
+
+        it { is_expected.to eq(100) }
+      end
+    end
+  end
+
+  describe '#custom_rate_limit?' do
+    subject { described_class.new.custom_rate_limit?(req) }
+
+    before do
+      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+    end
+
+    context 'when authorization header is not set' do
+      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
+
+      it { is_expected.to be(false) }
+    end
+
+    context 'with a valid token with custom rate limit' do
+      let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
+      let(:token_record) do
+        Token.create!(
+          iat: 1.day.ago.to_i,
+          exp: 1.year.from_now.to_i,
+          scopes: [],
+          authorization_request_model_id: authorization_request.id
+        )
+      end
+      let(:token) { TokenFactory.new([]).valid(uid: token_record.id) }
+
+      before do
+        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}")
+        AuthorizationRequestSecuritySettings.create!(
+          authorization_request:,
+          rate_limit_per_minute: 100
+        )
+      end
+
+      it { is_expected.to be(true) }
+    end
+  end
 end

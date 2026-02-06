@@ -90,6 +90,12 @@
   detail: "Votre jeton n'a pas été trouvé dans la base de données. Il s'agit probablement d'un jeton sans habilitation. Vous devez effectuer une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/"
   source: *source_token
 
+- code: '00107'
+  title: 'Adresse IP non autorisée'
+  detail: "Votre adresse IP n'est pas autorisée à utiliser ce jeton."
+  source:
+    header: 'X-Forwarded-For'
+
 - code: '00201'
   title: 'Entité non traitable'
   detail: "Le paramètre context est obligatoire"
