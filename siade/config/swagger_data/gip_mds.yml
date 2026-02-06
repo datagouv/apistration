@@ -89,7 +89,7 @@ gip_mds:
     title: "Effectifs mensuels d'un établissement"
     tags:
       - "Informations générales"
-    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus de l'Urssaf et de la MSA depuis le répertoire commun des déclarants (RCD). Inclut l'effectif moyen et les effectifs liés à l'obligation d'emploi travailleurs handicapés."
+    description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus de l'Urssaf et de la MSA depuis le répertoire commun des déclarants opéré par le GIP-MDS. Inclut l'effectif moyen et les effectifs liés à l'obligation d'emploi travailleurs handicapés."
     parameters:
       year:
         description: "Année de référence des effectifs."
