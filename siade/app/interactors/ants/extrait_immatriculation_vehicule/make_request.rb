@@ -4,9 +4,7 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   private
 
   def http_options
-    http_wildcard_ssl_options.merge(
-      ca_file: Siade.credentials[:ants_siv_certificate_chain_path]
-    )
+    http_wildcard_ssl_options
   end
 
   def extra_headers(request)
