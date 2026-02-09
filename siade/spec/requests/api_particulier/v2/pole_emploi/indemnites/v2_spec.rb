@@ -25,10 +25,7 @@ RSpec.describe 'Pole Emploi: Indemnites', api: :particulierv2, type: %i[request 
         example: SwaggerData.get('france_travail.commons.parameters.identifiant.example'),
         required: SwaggerData.get('france_travail.commons.parameters.identifiant.required')
 
-      # rubocop:disable RSpec/VariableName
       let(:'X-Api-Key') { x_api_key }
-      # rubocop:enable RSpec/VariableName
-
       let(:identifiant) { 'whatever' }
 
       let(:x_api_key) { nil }

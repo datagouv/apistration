@@ -66,8 +66,8 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
 
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
-        .merge(**api_entreprise_mandatory_params)
-        .merge(recipient:, siret:)
+                      .merge(**api_entreprise_mandatory_params)
+                      .merge(recipient:, siret:)
     end
 
     context 'with valid siret as recipient' do
@@ -105,8 +105,8 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
   describe 'recipient param with a siren resource ID' do
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
-        .merge(**api_entreprise_mandatory_params)
-        .merge(recipient:, siren:)
+                      .merge(**api_entreprise_mandatory_params)
+                      .merge(recipient:, siren:)
     end
 
     context 'when identical' do

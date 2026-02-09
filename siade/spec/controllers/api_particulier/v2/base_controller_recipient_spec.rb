@@ -9,7 +9,7 @@ RSpec.describe APIParticulier::V2::BaseController, 'recipient' do
 
   before do
     get :index, params: { api_version: 42, token: yes_jwt }
-      .merge(recipient:)
+                    .merge(recipient:)
   end
 
   context 'with valid siret as recipient' do

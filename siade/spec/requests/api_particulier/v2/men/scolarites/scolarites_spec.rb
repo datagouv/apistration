@@ -60,13 +60,11 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
         example: SwaggerData.get('men.scolarite.v2.parameters.annee_scolaire.examples.long.value'),
         required: SwaggerData.get('men.scolarite.v2.parameters.annee_scolaire.required')
 
-      # rubocop:disable RSpec/VariableName
       let(:'X-Api-Key') { x_api_key }
 
       let(:dateNaissance) { '2000-06-10' }
       let(:codeEtablissement) { '0511474A' }
       let(:anneeScolaire) { '2021' }
-      # rubocop:enable RSpec/VariableName
       let(:nom) { 'NOMFAMILLE' }
       let(:prenom) { 'prenom' }
       let(:sexe) { 'f' }

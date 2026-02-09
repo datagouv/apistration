@@ -24,8 +24,8 @@ RSpec.describe APIParticulier::V3AndMore::BaseController do
   describe 'error format (with missing recipient error)' do
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
-        .merge(**api_particulier_mandatory_params)
-        .merge(recipient: 'wrong')
+                      .merge(**api_particulier_mandatory_params)
+                      .merge(recipient: 'wrong')
     end
 
     it 'renders json_api format errors' do
@@ -76,8 +76,8 @@ RSpec.describe APIParticulier::V3AndMore::BaseController do
 
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
-        .merge(**api_particulier_mandatory_params)
-        .merge(recipient:, siret:)
+                      .merge(**api_particulier_mandatory_params)
+                      .merge(recipient:, siret:)
     end
 
     context 'with valid siret as recipient' do
