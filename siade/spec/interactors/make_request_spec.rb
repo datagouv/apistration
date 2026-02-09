@@ -140,6 +140,16 @@ RSpec.describe MakeRequest, type: :interactor do
         end
       end
 
+      context 'when it is a "certificate verify failed" error' do
+        let(:ssl_error_message) { 'SSL_connect returned=1 errno=0 peeraddr=1.2.3.4:443 state=error: certificate verify failed (certificate has expired)' }
+
+        it { is_expected.to be_a_failure }
+
+        it 'adds SSLCertificateError to errors' do
+          expect(subject.errors).to include(instance_of(SSLCertificateError))
+        end
+      end
+
       context 'when it is a "unexpected eof while reading" error' do
         let(:ssl_error_message) { 'unexpected eof while reading' }
 

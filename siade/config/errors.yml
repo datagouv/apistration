@@ -36,6 +36,10 @@
 - subcode: '008'
   title: 'Erreur auprès du fournisseur de données : trop de requêtes'
 
+- subcode: '009'
+  title: "Erreur de certificat SSL du fournisseur de données"
+  detail: "Le certificat SSL du fournisseur de données est invalide ou expiré."
+
 - subcode: '010'
   title: 'Contenu partiel'
   detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."

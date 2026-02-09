@@ -71,6 +71,8 @@ class MakeRequest < ApplicationInteractor
     if open_ssl_network_error?(e)
       context.errors << NetworkError.new
       context.fail!
+    elsif open_ssl_certificate_error?(e)
+      fail_to_request_provider!(SSLCertificateError)
     elsif open_ssl_temporary_error?(e) && context.http_retry_count < 2
       context.http_retry_count += 1
 
@@ -171,6 +173,10 @@ class MakeRequest < ApplicationInteractor
     ].any? do |error_message|
       exception.message.include?(error_message)
     end
+  end
+
+  def open_ssl_certificate_error?(exception)
+    exception.message.include?('certificate verify failed')
   end
 
   def open_ssl_temporary_error?(exception)
