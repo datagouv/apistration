@@ -45,7 +45,7 @@ class APIEntreprise::INPIProxyController < APIController
   end
 
   def organizer
-    retriever.call(params: organizer_params)
+    @organizer ||= retriever.call(params: organizer_params)
   end
 
   def retriever
