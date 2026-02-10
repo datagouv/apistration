@@ -59,7 +59,7 @@ namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   get 'introspect' => '/api_particulier/v2/introspect#show'
   get 'france_connect_jwks' => '/api_particulier/france_connect_jwks#show'
 
-  get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
+  get 'caf/famille', to: qf_v1_gone
   get 'impots/svair', to: svair_gone
 
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
