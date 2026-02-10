@@ -13,7 +13,7 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
   protected
 
   def cache_key
-    "#{request.path}:#{user_identity_params.to_query}"
+    "#{request.path}:#{Digest::SHA256.hexdigest(user_identity_params.to_json)}"
   end
 
   def operation_id
