@@ -108,6 +108,35 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
         expect(data['get']['description']).not_to eq(description_inherited_by_latest_response_definition), "#{path} has an invalid description"
       end
     end
+
+    it 'marks version N-1 as deprecated when version N exists' do
+      paths = YAML.load_file(definition_path)['paths']
+      paths_by_suffix_and_version = Hash.new { |hash, key| hash[key] = {} }
+
+      paths.each do |path, data|
+        match = path.match(%r{\A/v(?<version>\d+)(?<suffix>/.*)\z})
+        next unless match
+        next unless data['get']
+
+        version = match[:version].to_i
+        suffix = match[:suffix]
+        paths_by_suffix_and_version[suffix][version] = data['get']
+      end
+
+      errors = []
+
+      paths_by_suffix_and_version.each do |suffix, versions|
+        versions.keys.sort.each do |version|
+          previous_version = version - 1
+          next unless versions.key?(previous_version)
+          next if versions[previous_version]['deprecated'] == true
+
+          errors << "/v#{previous_version}#{suffix} should be deprecated because /v#{version}#{suffix} exists"
+        end
+      end
+
+      expect(errors).to be_empty, errors.join("\n")
+    end
   end
 end
 # rubocop:enable Rails/DeprecatedActiveModelErrorsMethods
