@@ -6,6 +6,7 @@ RSpec.describe 'INSEE: Unités légales', api: :entreprise, type: %i[request swa
       tags(*SwaggerData.get('insee.unite_legale.tags'))
 
       parameter_siren
+      deprecated true
 
       common_action_attributes
 
