@@ -1,15 +1,26 @@
 class APIEntreprise::ACOSS::AttestationSocialeSerializer::V4 < APIEntreprise::V3AndMore::BaseSerializer
   attributes :document_url,
-    :document_url_expires_in,
-    :date_debut_validite,
-    :date_fin_validite,
-    :code_securite
+    :document_url_expires_in
+
+  attribute :date_debut_validite do
+    safe_data_attribute(:date_debut_validite)
+  end
+
+  attribute :date_fin_validite do
+    safe_data_attribute(:date_fin_validite)
+  end
+
+  attribute :code_securite do
+    safe_data_attribute(:code_securite)
+  end
 
   attribute :entity_status do
+    code = safe_data_attribute(:entity_status_code)
+
     {
-      code: data.entity_status_code
-    }.merge(
-      extract_entity_status_humanized_info(data.entity_status_code)
+      code:
+    }.compact.merge(
+      extract_entity_status_humanized_info(code)
     )
   end
 
@@ -28,5 +39,13 @@ class APIEntreprise::ACOSS::AttestationSocialeSerializer::V4 < APIEntreprise::V3
     else
       {}
     end
+  end
+
+  private
+
+  def safe_data_attribute(attribute)
+    return unless data.respond_to?(attribute)
+
+    data.public_send(attribute)
   end
 end

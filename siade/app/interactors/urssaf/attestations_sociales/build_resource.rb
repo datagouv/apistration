@@ -11,7 +11,9 @@ class URSSAF::AttestationsSociales::BuildResource < BuildResource
         code_securite: document_data[:code_securite],
         date_fin_validite: extract_date_fin_validite(document_data[:date_debut_validite]),
         extractor_error: document_data[:extractor_error]
-      }.compact
+      }.tap do |attributes|
+        attributes.delete(:extractor_error) if attributes[:extractor_error].nil?
+      end
     elsif cannot_deliver_document?
       {
         entity_status_code: 'refus_de_delivrance'

@@ -64,11 +64,17 @@ RSpec.describe URSSAF::AttestationsSociales::BuildResource, type: :build_resourc
         expect(data).to include(
           entity_status_code: 'ok',
           document_url: url,
+          date_debut_validite: nil,
+          date_fin_validite: nil,
+          code_securite: nil,
           extractor_error: 'invalid_file'
         )
-        expect(data).not_to have_key(:date_debut_validite)
-        expect(data).not_to have_key(:date_fin_validite)
-        expect(data).not_to have_key(:code_securite)
+      end
+
+      it 'keeps serializer fields available' do
+        expect(subject.bundled_data.data.date_debut_validite).to be_nil
+        expect(subject.bundled_data.data.date_fin_validite).to be_nil
+        expect(subject.bundled_data.data.code_securite).to be_nil
       end
 
       it 'tracks the error with SIREN in context' do
