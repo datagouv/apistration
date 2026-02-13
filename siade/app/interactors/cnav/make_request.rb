@@ -55,9 +55,9 @@ class CNAV::MakeRequest < MakeRequest::Get
   # rubocop:disable Metrics/AbcSize
   def request_params
     {
-      nomUsage: context.params[:nom_usage],
-      nomNaissance: context.params[:nom_naissance],
-      listePrenoms: liste_prenoms,
+      nomUsage: transliterate(context.params[:nom_usage]),
+      nomNaissance: transliterate(context.params[:nom_naissance]),
+      listePrenoms: transliterate(liste_prenoms),
       dateNaissance: date_naissance,
       codeLieuNaissance: code_cog_insee_commune_de_naissance,
       codePaysNaissance: context.params[:code_cog_insee_pays_naissance],
@@ -76,6 +76,12 @@ class CNAV::MakeRequest < MakeRequest::Get
 
   def liste_prenoms
     context.params[:prenoms].try(:join, ' ')
+  end
+
+  def transliterate(value)
+    return value if value.nil?
+
+    ActiveSupport::Inflector.transliterate(value)
   end
 
   def date_naissance

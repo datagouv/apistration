@@ -196,6 +196,50 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
     end
   end
 
+  describe 'with non-French Latin characters in names' do
+    let(:params) do
+      {
+        nom_naissance: 'CAÑIZARES',
+        prenoms: ['João-Félix'],
+        annee_date_naissance: 1980,
+        mois_date_naissance: 6,
+        jour_date_naissance: 12,
+        sexe_etat_civil: 'M',
+        code_cog_insee_pays_naissance: '99100',
+        code_cog_insee_commune_naissance: '17300',
+        request_id:
+      }
+    end
+
+    let!(:stubbed_request) do
+      stub_request(:get, Siade.credentials[:cnav_complementaire_sante_solidaire_url]).with(
+        query: {
+          codeLieuNaissance: '17300',
+          codePaysNaissance: '99100',
+          dateNaissance: '1980-06-12',
+          genre: 'M',
+          listePrenoms: 'Joao-Felix',
+          nomNaissance: 'CANIZARES'
+        },
+        headers: {
+          'Content-Type' => 'application/json',
+          'Authorization' => 'Bearer super_valid_token',
+          'X-APIPART-FSFINAL' => valid_siret,
+          'X-Correlation-ID' => request_id
+        }
+      ).to_return(
+        status: 200,
+        body: read_payload_file('cnav/complementaire_sante_solidaire/make_request_valid.json')
+      )
+    end
+
+    it 'transliterates non-French characters before sending the request' do
+      make_call
+
+      expect(stubbed_request).to have_been_requested
+    end
+  end
+
   describe 'when not from france' do
     let(:params) do
       {
