@@ -57,6 +57,32 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
     end
   end
 
+  context 'with non-French Latin characters in names' do
+    let(:params) do
+      super().merge(
+        prenoms: ['João'],
+        nom_naissance: 'Cañizares'
+      )
+    end
+
+    let(:request_params) do
+      {
+        given_name: 'Joao',
+        family_name: 'CANIZARES',
+        birthdate: '2000-10-01',
+        gender: 'male',
+        birthplace: '90000',
+        birthcountry: '99100'
+      }
+    end
+
+    it 'transliterates non-French characters before sending the request' do
+      subject
+
+      expect(stubbed_request).to have_been_requested
+    end
+  end
+
   context 'when not in france' do
     let(:code_cog_insee_pays_naissance) { '12345' }
 

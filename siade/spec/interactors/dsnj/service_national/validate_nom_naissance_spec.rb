@@ -26,6 +26,12 @@ RSpec.describe DSNJ::ServiceNational::ValidateNomNaissance, type: :validate_para
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
+  context 'with non-French Latin characters' do
+    let(:nom_naissance) { 'RUIZ CAÑIZARES' }
+
+    it { is_expected.to be_a_success }
+  end
+
   context 'when nom_naissance contains a forbidden character' do
     let(:nom_naissance) { 'Dark Souls 1' }
 

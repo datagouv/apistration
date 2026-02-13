@@ -5,12 +5,12 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
     URI(Siade.credentials[:dsnj_service_national_url])
   end
 
-  def request_params
+  def request_params # rubocop:disable Metrics/AbcSize
     {
       identites_pivot: [
         {
-          given_name: context.params[:prenoms].first&.capitalize,
-          family_name: context.params[:nom_naissance].upcase,
+          given_name: transliterate(context.params[:prenoms].first&.capitalize),
+          family_name: transliterate(context.params[:nom_naissance].upcase),
           birthdate:,
           gender:,
           birthplace: birthplace_only_if_france,
@@ -52,6 +52,12 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
 
   def birthplace_only_if_france
     context.params[:code_cog_insee_pays_naissance] == '99100' ? context.params[:code_cog_insee_commune_naissance] : nil
+  end
+
+  def transliterate(value)
+    return value if value.nil?
+
+    ActiveSupport::Inflector.transliterate(value)
   end
 
   def gender

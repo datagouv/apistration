@@ -26,6 +26,12 @@ RSpec.describe DSNJ::ServiceNational::ValidatePrenoms, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
+  context 'with non-French Latin characters' do
+    let(:prenoms) { ['Zuriñe'] }
+
+    it { is_expected.to be_a_success }
+  end
+
   context 'when prenoms contains a forbidden character' do
     let(:prenoms) { ['François 1er'] }
 
