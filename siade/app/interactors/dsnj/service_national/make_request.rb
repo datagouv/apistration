@@ -1,4 +1,6 @@
 class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
+  include Transliterator
+
   protected
 
   def request_uri
@@ -52,12 +54,6 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
 
   def birthplace_only_if_france
     context.params[:code_cog_insee_pays_naissance] == '99100' ? context.params[:code_cog_insee_commune_naissance] : nil
-  end
-
-  def transliterate(value)
-    return value if value.nil?
-
-    ActiveSupport::Inflector.transliterate(value)
   end
 
   def gender

@@ -1,4 +1,6 @@
 class CNAV::MakeRequest < MakeRequest::Get
+  include Transliterator
+
   protected
 
   def call
@@ -76,12 +78,6 @@ class CNAV::MakeRequest < MakeRequest::Get
 
   def liste_prenoms
     context.params[:prenoms].try(:join, ' ')
-  end
-
-  def transliterate(value)
-    return value if value.nil?
-
-    ActiveSupport::Inflector.transliterate(value)
   end
 
   def date_naissance
