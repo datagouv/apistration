@@ -39,6 +39,57 @@ RSpec.describe DSNJ::ServiceNational::ValidateResponse, type: :validate_response
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
 
+  context 'when response is found and params contain apostrophe' do
+    subject { described_class.call(response:, provider_name: 'DSNJ', params:) }
+
+    let(:response) { instance_double(Net::HTTPOK, code: 200, body:) }
+    let(:body) { read_payload_file('dsnj/service_national/found.json') }
+    let(:params) { { nom_naissance: "N'DIAYE", prenoms: ['Amadou'] } }
+    let(:data_encryptor) { instance_double(DataEncryptor, encrypt: 'encrypted') }
+
+    before do
+      allow(DataEncryptor).to receive(:new).and_return(data_encryptor)
+    end
+
+    it 'tracks apostrophe match on MonitoringService' do
+      expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+        'info',
+        'DSNJ ServiceNational: successful match with apostrophe in name or first_name',
+        { encrypted_params: 'encrypted' }
+      )
+
+      subject
+    end
+  end
+
+  context 'when response is found and params do not contain apostrophe' do
+    subject { described_class.call(response:, provider_name: 'DSNJ', params:) }
+
+    let(:response) { instance_double(Net::HTTPOK, code: 200, body:) }
+    let(:body) { read_payload_file('dsnj/service_national/found.json') }
+    let(:params) { { nom_naissance: 'DUPONT', prenoms: ['Jean'] } }
+
+    it 'does not track on MonitoringService' do
+      expect(MonitoringService.instance).not_to receive(:track_with_added_context)
+
+      subject
+    end
+  end
+
+  context 'when response is not found and params contain apostrophe' do
+    subject { described_class.call(response:, provider_name: 'DSNJ', params:) }
+
+    let(:response) { instance_double(Net::HTTPOK, code: 200, body:) }
+    let(:body) { read_payload_file('dsnj/service_national/not_found.json') }
+    let(:params) { { nom_naissance: "N'DIAYE", prenoms: ['Amadou'] } }
+
+    it 'does not track on MonitoringService' do
+      expect(MonitoringService.instance).not_to receive(:track_with_added_context)
+
+      subject
+    end
+  end
+
   context 'with more than one result' do
     let(:response) { instance_double(Net::HTTPOK, code: 200, body:) }
     let(:body) { read_payload_file('dsnj/service_national/found_multiple.json') }

@@ -32,6 +32,12 @@ RSpec.describe DSNJ::ServiceNational::ValidatePrenoms, type: :validate_params do
     it { is_expected.to be_a_success }
   end
 
+  context 'with apostrophe' do
+    let(:prenoms) { ["Mah'Ell"] }
+
+    it { is_expected.to be_a_success }
+  end
+
   context 'when prenoms contains a forbidden character' do
     let(:prenoms) { ['François 1er'] }
 

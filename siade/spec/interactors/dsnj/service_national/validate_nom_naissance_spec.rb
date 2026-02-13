@@ -32,6 +32,12 @@ RSpec.describe DSNJ::ServiceNational::ValidateNomNaissance, type: :validate_para
     it { is_expected.to be_a_success }
   end
 
+  context 'with apostrophe' do
+    let(:nom_naissance) { "N'DIAYE" }
+
+    it { is_expected.to be_a_success }
+  end
+
   context 'when nom_naissance contains a forbidden character' do
     let(:nom_naissance) { 'Dark Souls 1' }
 

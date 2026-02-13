@@ -10,6 +10,6 @@ class DSNJ::ServiceNational::ValidatePrenoms < ValidateParamInteractor
   end
 
   def valid_chars
-    /^[a-zA-ZÀ-ÖØ-öø-ÿÆæ -]+$/
+    /^[a-zA-ZÀ-ÖØ-öø-ÿÆæ' -]+$/
   end
 end
