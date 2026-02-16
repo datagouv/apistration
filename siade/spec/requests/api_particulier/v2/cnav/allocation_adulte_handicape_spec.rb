@@ -22,7 +22,7 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
         example: SwaggerData.get('parameters.recipient_FC.example'),
         required: false
 
-      security [franceConnectToken: [], apiKey: []]
+      security [{ franceConnectToken: [], apiKey: [] }]
 
       let(:scopes) { %i[allocation_adulte_handicape] }
 

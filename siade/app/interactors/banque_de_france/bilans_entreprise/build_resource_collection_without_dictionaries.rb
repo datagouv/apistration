@@ -51,42 +51,42 @@ class BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionari
         }
       ],
       valeurs_calculees: [
-        disponibilites: {
-          valeur: convert_to_euros(item['disponibilites']),
-          evolution: build_percent(item['evolutionDisponibilites'])
-        },
-        total_dettes_stables: {
-          valeur: convert_to_euros(item['totalDettesStables']),
-          evolution: build_percent(item['evolutionTotaltotalDettesStables'])
-        },
-        valeur_ajoutee_bdf: {
-          valeur: convert_to_euros(item['valeurAjouteeBdf']),
-          evolution: build_percent(item['evolutionValeurAjouteeBdf'])
-        },
-        besoin_en_fonds_de_roulement: {
-          valeur: convert_to_euros(item['besoinEnFondsDeRoulement']),
-          evolution: build_percent(item['evolutionBesoinEnFondsDeRoulement'])
-        },
-        excedent_brut_exploitation: {
-          valeur: convert_to_euros(item['ebe']),
-          evolution: build_percent(item['evolutionEbe'])
-        },
-        capacite_autofinancement: {
-          valeur: convert_to_euros(item['caf']),
-          evolution: build_percent(item['evolutionCaf'])
-        },
-        fonds_roulement_net_global: {
-          valeur: convert_to_euros(item['frng']),
-          evolution: build_percent(item['evolutionFrng'])
-        },
-        ratio_fonds_roulement_net_global_sur_besoin_en_fonds_de_roulement: {
-          valeur: build_percent(item['frng/bfr']),
-          evolution: build_percent(item['evolutionFrng/Bfr'])
-        },
-        dettes4_maturite_a_un_an_au_plus: {
-          valeur: convert_to_euros(item['dettes4DontAUnAnAuPlus']),
-          evolution: build_percent(item['evolutionDettes4DontAUnAnAuPlus'])
-        }
+        { disponibilites: {
+            valeur: convert_to_euros(item['disponibilites']),
+            evolution: build_percent(item['evolutionDisponibilites'])
+          },
+          total_dettes_stables: {
+            valeur: convert_to_euros(item['totalDettesStables']),
+            evolution: build_percent(item['evolutionTotaltotalDettesStables'])
+          },
+          valeur_ajoutee_bdf: {
+            valeur: convert_to_euros(item['valeurAjouteeBdf']),
+            evolution: build_percent(item['evolutionValeurAjouteeBdf'])
+          },
+          besoin_en_fonds_de_roulement: {
+            valeur: convert_to_euros(item['besoinEnFondsDeRoulement']),
+            evolution: build_percent(item['evolutionBesoinEnFondsDeRoulement'])
+          },
+          excedent_brut_exploitation: {
+            valeur: convert_to_euros(item['ebe']),
+            evolution: build_percent(item['evolutionEbe'])
+          },
+          capacite_autofinancement: {
+            valeur: convert_to_euros(item['caf']),
+            evolution: build_percent(item['evolutionCaf'])
+          },
+          fonds_roulement_net_global: {
+            valeur: convert_to_euros(item['frng']),
+            evolution: build_percent(item['evolutionFrng'])
+          },
+          ratio_fonds_roulement_net_global_sur_besoin_en_fonds_de_roulement: {
+            valeur: build_percent(item['frng/bfr']),
+            evolution: build_percent(item['evolutionFrng/Bfr'])
+          },
+          dettes4_maturite_a_un_an_au_plus: {
+            valeur: convert_to_euros(item['dettes4DontAUnAnAuPlus']),
+            evolution: build_percent(item['evolutionDettes4DontAUnAnAuPlus'])
+          } }
       ]
     }
   end

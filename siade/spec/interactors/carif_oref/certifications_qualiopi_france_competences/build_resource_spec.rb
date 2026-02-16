@@ -40,16 +40,16 @@ RSpec.describe CarifOref::CertificationsQualiopiFranceCompetences::BuildResource
         }
       ],
       habilitations_france_competence: [
-        code: 'RNCP09001',
-        actif: true,
-        date_actif: nil,
-        date_fin_enregistrement: '2024-01-01',
-        date_decision: nil,
-        habilitation_pour_former: true,
-        habilitation_pour_organiser_l_evaluation: true,
-        sirets_organismes_certificateurs: [
-          '13002526500013'
-        ]
+        { code: 'RNCP09001',
+          actif: true,
+          date_actif: nil,
+          date_fin_enregistrement: '2024-01-01',
+          date_decision: nil,
+          habilitation_pour_former: true,
+          habilitation_pour_organiser_l_evaluation: true,
+          sirets_organismes_certificateurs: [
+            '13002526500013'
+          ] }
       ]
     }
   end

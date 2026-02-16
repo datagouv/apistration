@@ -12,7 +12,7 @@ module RSwagCommonResponses
 
     specific_api_entreprise_action_attributes if describe.metadata[:api] == :entreprise
 
-    security [jwt_bearer_token: []]
+    security [{ jwt_bearer_token: [] }]
   end
 
   def specific_api_entreprise_action_attributes
@@ -41,7 +41,7 @@ module RSwagCommonResponses
       example: SwaggerData.get('parameters.recipient.example'),
       required: true
 
-    security [jwt_bearer_token: []]
+    security [{ jwt_bearer_token: [] }]
   end
 
   def cacheable_request

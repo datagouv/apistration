@@ -233,7 +233,7 @@ Lors de votre passage en production :
       tags: [],
       paths: {},
       security: [
-        apiKey: []
+        { apiKey: [] }
       ],
       servers: [
         {

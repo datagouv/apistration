@@ -59,13 +59,13 @@ RSpec.describe INPI::RNE::ActesBilans::BuildResource, type: :build_resource do
               }
             ],
             bilans: [
-              id: '999999d56fcc04967005a999',
-              nom_document: 'CA_123456789_7501_K00059794156_2023_D',
-              date_depot: '2024-03-01',
-              date_cloture: '2023-08-31',
-              date_mise_a_jour: '2024-04-12',
-              type: 'bilan complet',
-              url: a_string_matching(url_regexp)
+              { id: '999999d56fcc04967005a999',
+                nom_document: 'CA_123456789_7501_K00059794156_2023_D',
+                date_depot: '2024-03-01',
+                date_cloture: '2023-08-31',
+                date_mise_a_jour: '2024-04-12',
+                type: 'bilan complet',
+                url: a_string_matching(url_regexp) }
             ]
           }
         )

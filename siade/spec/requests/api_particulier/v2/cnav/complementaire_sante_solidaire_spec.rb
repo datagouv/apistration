@@ -20,7 +20,7 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
         example: SwaggerData.get('parameters.recipient_FC.example'),
         required: false
 
-      security [franceConnectToken: [], apiKey: []]
+      security [{ franceConnectToken: [], apiKey: [] }]
 
       parameters_cnav_identite_pivot_v2
 

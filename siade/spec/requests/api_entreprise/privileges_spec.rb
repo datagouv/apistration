@@ -5,7 +5,7 @@ RSpec.describe 'Privileges', api: :entreprise, type: %i[request swagger] do
     get 'Privileges associés au jeton' do
       description 'Renvoi la liste des droits associé au jeton'
 
-      security [jwt_bearer_token: []]
+      security [{ jwt_bearer_token: [] }]
 
       response '200', 'Liste des droits' do
         # rubocop:disable RSpec/VariableName

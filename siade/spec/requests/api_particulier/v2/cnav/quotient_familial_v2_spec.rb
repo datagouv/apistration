@@ -20,7 +20,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
         example: SwaggerData.get('parameters.recipient_FC.example'),
         required: false
 
-      security [franceConnectToken: [], apiKey: []]
+      security [{ franceConnectToken: [], apiKey: [] }]
 
       parameters_cnav_identite_pivot_v2
 
