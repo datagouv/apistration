@@ -88,7 +88,7 @@ shared:
 
   inpi_rne:
     throttle_type: 'by_single_endpoint'
-    limit: 30
+    limit: 15
     period: 60
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/extrait_rne', action: 'show' }
