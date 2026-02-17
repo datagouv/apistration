@@ -5001,7 +5001,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
-        to_hour: '02:15'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -5503,7 +5503,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
-        to_hour: '02:15'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -5924,7 +5924,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
-        to_hour: '02:15'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -6579,7 +6579,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
-        to_hour: '02:15'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -7367,7 +7367,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
-        to_hour: '02:15'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
