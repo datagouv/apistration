@@ -5,10 +5,13 @@ class DGFIPPingDriver < ApplicationPingDriver
   }.freeze
   ERROR_RATIO_THRESHOLD = 0.1
 
+  PROVIDER = 'DGFIP - Adélie'.freeze
+
   attr_reader :routes
 
   def perform
     return :bad_gateway unless etat_sante_ok?
+    return :ok if recently_out_of_maintenance?
     return :bad_gateway if error_ratio_too_high?
 
     :ok
@@ -23,6 +26,16 @@ class DGFIPPingDriver < ApplicationPingDriver
       recipient: JwtTokenService::DINUM_SIRET
     )
     interactor.response&.code == '200'
+  end
+
+  def recently_out_of_maintenance?
+    maintenance = MaintenanceService.new(PROVIDER)
+    end_time = maintenance.to_hour
+    now = Time.zone.now
+
+    now >= end_time && now < end_time + 10.minutes
+  rescue StandardError
+    false
   end
 
   def error_ratio_too_high?

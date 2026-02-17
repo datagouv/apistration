@@ -5,7 +5,7 @@ production: &shared
     to_hour: '06:30'
   'DGFIP - Adélie':
     from_hour: '01:00'
-    to_hour: '02:15'
+    to_hour: '02:00'
   'MEN':
     from_hour: '01:10'
     to_hour: '02:30'
@@ -29,6 +29,9 @@ sandbox: *shared
 staging: *shared
 development: *shared
 test:
+  'DGFIP - Adélie':
+    from_hour: '01:00'
+    to_hour: '02:00'
   'provider_which_has_a_window_within_same_day':
     from_hour: '01:00'
     to_hour: '02:00'

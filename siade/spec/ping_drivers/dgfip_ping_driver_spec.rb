@@ -27,6 +27,34 @@ RSpec.describe DGFIPPingDriver, type: :ping_driver do
         stub_request(:get, etat_sante_url).to_return(status: 200)
       end
 
+      context 'when recently out of maintenance' do
+        let(:maintenance) { instance_double(MaintenanceService, to_hour: 5.minutes.ago) }
+
+        before do
+          allow(MaintenanceService).to receive(:new).with(DGFIPPingDriver::PROVIDER).and_return(maintenance)
+          5.times { AccessLog.create!(route: routes.first, status: '503', timestamp: 1.minute.ago) }
+          AccessLogPingView.refresh!
+        end
+
+        it 'returns :ok despite high error ratio' do
+          expect(subject).to eq(:ok)
+        end
+      end
+
+      context 'when maintenance ended more than 10 minutes ago' do
+        let(:maintenance) { instance_double(MaintenanceService, to_hour: 15.minutes.ago) }
+
+        before do
+          allow(MaintenanceService).to receive(:new).with(DGFIPPingDriver::PROVIDER).and_return(maintenance)
+          5.times { AccessLog.create!(route: routes.first, status: '503', timestamp: 1.minute.ago) }
+          AccessLogPingView.refresh!
+        end
+
+        it 'returns :bad_gateway due to high error ratio' do
+          expect(subject).to eq(:bad_gateway)
+        end
+      end
+
       context 'when there is no data in access_logs' do
         it { is_expected.to eq(:ok) }
       end
