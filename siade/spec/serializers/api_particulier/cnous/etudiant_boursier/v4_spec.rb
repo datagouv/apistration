@@ -15,24 +15,23 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V4, type: :serializer do
     context 'with cnous_statut_boursier scope' do
       let(:scopes) { %w[cnous_statut_boursier] }
 
-      it 'has radiation fields' do
-        expect(subject[:data]).to have_key(:est_boursier)
-        expect(subject[:data]).to have_key(:est_radie)
-        expect(subject[:data]).to have_key(:date_radiation)
-      end
+      it 'nests est_boursier and radiation fields under statut_boursier' do
+        expect(subject[:data]).to have_key(:statut_boursier)
+        expect(subject[:data]).not_to have_key(:est_boursier)
 
-      it 'returns correct values for non-removed student' do
-        expect(subject[:data][:est_radie]).to be false
-        expect(subject[:data][:date_radiation]).to be_nil
+        statut = subject[:data][:statut_boursier]
+        expect(statut[:est_boursier]).to be true
+        expect(statut[:est_radie]).to be false
+        expect(statut[:date_radiation]).to be_nil
       end
     end
 
     context 'without cnous_statut_boursier scope' do
       let(:scopes) { %w[cnous_identite] }
 
-      it 'does not have radiation fields' do
-        expect(subject[:data]).not_to have_key(:est_radie)
-        expect(subject[:data]).not_to have_key(:date_radiation)
+      it 'does not have statut_boursier' do
+        expect(subject[:data]).not_to have_key(:statut_boursier)
+        expect(subject[:data]).not_to have_key(:est_boursier)
       end
     end
   end
@@ -44,8 +43,9 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V4, type: :serializer do
       let(:scopes) { %w[cnous_statut_boursier] }
 
       it 'returns correct values for removed student' do
-        expect(subject[:data][:est_radie]).to be true
-        expect(subject[:data][:date_radiation]).to eq('2023-06-15')
+        statut = subject[:data][:statut_boursier]
+        expect(statut[:est_radie]).to be true
+        expect(statut[:date_radiation]).to eq('2023-06-15')
       end
     end
   end

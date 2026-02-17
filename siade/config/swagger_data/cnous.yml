@@ -46,17 +46,18 @@ cnous:
             enum:
             - M
             - F
-    attributes_without_identity: &attributes_without_identity
+    boursier_attribute: &boursier_attribute
       est_boursier:
         title: Est boursier
         type: boolean
         description: Indique que l'étudiant est boursier.
         example: true
+    common_attributes: &common_attributes
       periode_versement_bourse:
         title: Période de versement de la bourse
         description: Informations relatives à la période de versement de la bourse de l'étudiant.
         type: object
-        properties: 
+        properties:
           date_rentree:
             title: Date de rentrée
             type: string
@@ -117,25 +118,37 @@ cnous:
         type: string
         description: Adresse e-mail de l'étudiant boursier.
         example: georges@moustaki.fr
-    radiation_attributes: &radiation_attributes
-      est_radie:
-        title: Est radié
-        type: boolean
-        description: "Indique si l'étudiant a été radié. Si true, le champ date_radiation contient la date de radiation."
-        example: false
-      date_radiation:
-        title: Date de radiation
-        type: string
-        format: date
-        nullable: true
-        description: "Date de radiation. Renseignée uniquement si est_radie est true."
-        example: null
+    attributes_without_identity: &attributes_without_identity
+      <<: [*boursier_attribute, *common_attributes]
+    statut_boursier_attributes: &statut_boursier_attributes
+      statut_boursier:
+        title: Statut boursier
+        description: Informations relatives au statut boursier de l'étudiant, incluant la radiation éventuelle.
+        type: object
+        properties:
+          est_boursier:
+            title: Est boursier
+            type: boolean
+            description: Indique que l'étudiant est boursier.
+            example: true
+          est_radie:
+            title: Est radié
+            type: boolean
+            description: "Indique si l'étudiant a été radié. Si true, le champ date_radiation contient la date de radiation."
+            example: false
+          date_radiation:
+            title: Date de radiation
+            type: string
+            format: date
+            nullable: true
+            description: "Date de radiation. Renseignée uniquement si est_radie est true."
+            example: null
     attributes:
       <<: [*identity_attributes, *attributes_without_identity]
     v4_attributes:
-      <<: [*identity_attributes, *attributes_without_identity, *radiation_attributes]
+      <<: [*identity_attributes, *common_attributes, *statut_boursier_attributes]
     v4_attributes_without_identity:
-      <<: [*attributes_without_identity, *radiation_attributes]
+      <<: [*common_attributes, *statut_boursier_attributes]
 
   etudiant_boursier:
     parameters:
