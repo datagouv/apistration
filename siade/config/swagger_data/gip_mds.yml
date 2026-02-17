@@ -221,12 +221,7 @@ gip_mds:
   service_civique:
     title: "Statut service civique"
     tags:
-      - "Service civique"
-      - "jeune"
-      - "engagement"
-      - "mission"
-      - "intérêt général"
-      - "citoyenneté"
+      - "Statut service civique"
     description: "Informations relatives au contrat de service civique d'un particulier, issues des déclarations sociales nominatives (DSN) transmises au GIP-MDS. Permet de vérifier si une personne est ou a été engagée dans un service civique et d'obtenir les détails du contrat."
     attributes:
       statut_actuel:
