@@ -2,6 +2,8 @@ require 'jwt'
 
 class INPI::RNE::Authenticate < AbstractGetToken
   def call
+    randomize_account!
+
     return try_fallback_or_fail if primary_username_failed_in_cache?
 
     super
@@ -31,19 +33,27 @@ class INPI::RNE::Authenticate < AbstractGetToken
   end
 
   def username
-    params[:inpi_rne_login_username].presence || Siade.credentials[:inpi_rne_login_username]
+    return params[:inpi_rne_login_username] if params[:inpi_rne_login_username].present?
+
+    Siade.credentials[:"inpi_rne_login_username#{@account_suffix}"]
   end
 
   def password
-    params[:inpi_rne_login_password].presence || Siade.credentials[:inpi_rne_login_password]
+    return params[:inpi_rne_login_password] if params[:inpi_rne_login_password].present?
+
+    Siade.credentials[:"inpi_rne_login_password#{@account_suffix}"]
   end
 
   def username_fallback
-    params[:inpi_rne_login_username_fallback].presence || Siade.credentials[:inpi_rne_login_username_fallback]
+    return params[:inpi_rne_login_username_fallback] if params[:inpi_rne_login_username_fallback].present?
+
+    Siade.credentials[:"inpi_rne_login_username#{fallback_account_suffix}"]
   end
 
   def password_fallback
-    params[:inpi_rne_login_password_fallback] || Siade.credentials[:inpi_rne_login_password_fallback]
+    return params[:inpi_rne_login_password_fallback] if params[:inpi_rne_login_password_fallback]
+
+    Siade.credentials[:"inpi_rne_login_password#{fallback_account_suffix}"]
   end
 
   def cache_key
@@ -80,7 +90,9 @@ class INPI::RNE::Authenticate < AbstractGetToken
     result = self.class.call(
       params: {
         inpi_rne_login_username: username_fallback,
-        inpi_rne_login_password: password_fallback
+        inpi_rne_login_password: password_fallback,
+        inpi_rne_login_username_fallback: username_fallback,
+        inpi_rne_login_password_fallback: password_fallback
       }
     )
 
@@ -127,5 +139,19 @@ class INPI::RNE::Authenticate < AbstractGetToken
 
   def params
     context.params || {}
+  end
+
+  private
+
+  def randomize_account!
+    @account_suffix = ['', '_fallback'].sample unless explicit_credentials?
+  end
+
+  def explicit_credentials?
+    params[:inpi_rne_login_username].present?
+  end
+
+  def fallback_account_suffix
+    @account_suffix == '_fallback' ? '' : '_fallback'
   end
 end

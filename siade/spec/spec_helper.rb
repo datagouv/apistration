@@ -135,6 +135,10 @@ RSpec.configure do |config|
     example.run
   end
 
+  config.before do
+    allow_any_instance_of(INPI::RNE::Authenticate).to receive(:randomize_account!)
+  end
+
   config.before(type: :request, api: :entreprise) do
     host! 'entreprise.api.localtest.me'
   end
