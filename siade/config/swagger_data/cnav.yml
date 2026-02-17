@@ -5,7 +5,7 @@ cnav:
     title: Participation familiale EAJE
     description: "Participation familiale EAJE"
     tags:
-      - Prochainement
+      - Participation familiale EAJE
     attributes:
       allocataires:
         title: "Données d'identité de l'allocataire et du conjoint"
@@ -165,7 +165,7 @@ cnav:
                 type: integer
                 description: "Année lors de laquelle le calcul du quotient familial demandé a été effectué. Cette année peut différer de l'année effective du quotient familial.
                   \n\n
-                  Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire. 
+                  Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire.
                   \n
                   Pour la MSA, le quotient familial est systématiquement recalculé ; l'année correspond donc toujours à l'année courante."
                 example: 2023
@@ -192,7 +192,7 @@ cnav:
         example: false
         nullable: true
         description: "Indique que la C2S du particulier bénéficiaire est avec participation financière.
-          \n 
+          \n
           Si ce champ est à false, cela signifie que la C2S est sans participation financière de la part de l'allocataire.
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
@@ -390,7 +390,7 @@ cnav:
             type: integer
             description: "Année lors de laquelle le calcul du quotient familial demandé a été effectué. Cette année peut différer de l'année effective du quotient familial.
               \n\n
-              Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire. 
+              Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire.
               \n
               Pour la MSA, le quotient familial est systématiquement recalculé ; l'année correspond donc toujours à l'année courante."
             example: 2023
@@ -399,7 +399,7 @@ cnav:
             type: integer
             description: "Mois lors duquel le calcul du quotient familial demandé a été effectué. Ce mois peut différer du mois effectif du quotient familial.
               \n\n
-              Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire. 
+              Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire.
               \n
               Pour la MSA, le quotient familial est systématiquement recalculé ; le mois correspond donc toujours au mois en cours."
             example: 9
@@ -422,7 +422,7 @@ cnav:
         type: boolean
         nullable: true
         description: "Indique que le RSA du particulier bénéficiaire est majoré au moment de l'appel.
-          \n 
+          \n
           Si ce champ est à false, cela signifie que le RSA n'est pas majoré.
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
@@ -438,7 +438,7 @@ cnav:
 
   aah:
     title: Statut allocation adulte handicapé (AAH)
-    description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).      
+    description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
@@ -460,7 +460,7 @@ cnav:
 
   asf:
     title: Statut allocation de soutien familial (ASF)
-    description: "Statut bénéficiaire de l'allocation de soutien familial (ASF). 
+    description: "Statut bénéficiaire de l'allocation de soutien familial (ASF).
       \n\n Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
     tags:
       - Statut Allocation Soutien Familial (ASF)
@@ -497,7 +497,7 @@ cnav:
         type: boolean
         nullable: true
         description: "Indique que la prime d'activité du particulier bénéficiaire est majorée au moment de l'appel.
-          \n 
+          \n
           Si ce champ est à false, cela signifie que la prime d'activité n'est pas majorée.
           \n
           Ce champ sera null si le particulier n'est pas bénéficiaire de la prime d'activité."
@@ -792,7 +792,7 @@ cnav:
         annee:
           title: "Année effective du QF"
           type: integer
-          description: "Année effective du quotient familial appelé. 
+          description: "Année effective du quotient familial appelé.
             \n\n
             - Si aucune année et aucun mois n'ont été renseignés en paramètres d'appel, le quotient familial retourné sera celui du mois de l'année en cours.
             - Si aucune année, ni aucun mois sont renseignés, l'appel est effectué par défaut avec l'année et le mois en cours.
@@ -802,7 +802,7 @@ cnav:
         mois:
           title: "Mois effectif du QF"
           type: integer
-          description: "Mois effectif du quotient familial. 
+          description: "Mois effectif du quotient familial.
             \n\n
             - Si aucun mois n'est renseigné, le mois en cours est utilisé par défaut.
             - Si le mois renseigné est postérieur au mois en cours, et qu'il compose une date dans le futur avec l'année appelée, l'API renvoie une erreur 400.
@@ -861,7 +861,7 @@ cnav:
 
     aah:
       title: Statut allocation adulte handicapé (AAH)
-      description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).      
+      description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).
         \n\n
         Retourne également des informations sur les dates d'ouverture des droits."
       tags:
