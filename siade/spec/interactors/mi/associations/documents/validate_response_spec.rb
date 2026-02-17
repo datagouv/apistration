@@ -96,6 +96,15 @@ RSpec.describe MI::Associations::Documents::ValidateResponse, type: :validate_re
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
+    context 'with a 404 proxy error (No service was found)' do
+      let(:code) { '404' }
+      let(:body) { '<html><body>No service was found.</body></html>' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+    end
+
     context 'with a valid code and a body containing nonsense' do
       let(:code) { '200' }
       let(:body) { 'Nonsense' }
