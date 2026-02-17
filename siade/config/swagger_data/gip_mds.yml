@@ -173,7 +173,7 @@ gip_mds:
               nullable: true
             nature:
               title: "Nature de l'effectif"
-              description: "Indique la nature de l'effectif transmis. Quatre natures d'effectif sont renvoyées par l'API : 
+              description: "Indique la nature de l'effectif transmis. Quatre natures d'effectif sont renvoyées par l'API :
                  \n
                  - Effectif moyen mensuel (EMM), c'est-à-dire le nombre de salariés en contrat 'actif'  hors exclusions. Ces exclusions sont décrites dans la documentation.
                  \n
