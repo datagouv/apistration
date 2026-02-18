@@ -32,4 +32,18 @@ module ProviderStubs::MEN
       body: open_payload_file('men/scolarites/not_found.json')
     )
   end
+
+  def stub_men_scolarites_perimetre_valid
+    stub_request(:post, "#{Siade.credentials[:men_scolarites_url_v2]}/perimetre").to_return(
+      status: 200,
+      body: open_payload_file('men/scolarites/valid_v2_with_bourse.json')
+    )
+  end
+
+  def stub_men_scolarites_perimetre_not_found
+    stub_request(:post, "#{Siade.credentials[:men_scolarites_url_v2]}/perimetre").to_return(
+      status: 404,
+      body: open_payload_file('men/scolarites/not_found.json')
+    )
+  end
 end
