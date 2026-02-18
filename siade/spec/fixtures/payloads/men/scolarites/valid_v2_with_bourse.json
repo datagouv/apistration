@@ -1,0 +1,29 @@
+{
+  "identification": {
+    "nom": "Martin",
+    "prenom": "Camille",
+    "prenom2": "Christine",
+    "prenom3": "Sandrine",
+    "sexe": 1,
+    "date-naissance": "2007-07-07",
+    "etablissement": {
+      "code-uai": "0890003V",
+      "ministere-tutelle": "06"
+    },
+    "annee-scolaire": "2023"
+  },
+  "info-scolarite": {
+    "est-scolarise": true,
+    "code-mef-stat": "211324099991",
+    "libelle-long-mef": "1CAP1 STAFFEUR ORNEMANISTE",
+    "code-regime": "0",
+    "statut-eleve": {
+      "code": "ST",
+      "libelle": "SCOLAIRE"
+    }
+  },
+  "info-bourse": {
+    "est-boursier": true,
+    "niveau-bourse": 2
+  }
+}
