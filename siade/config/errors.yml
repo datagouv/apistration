@@ -300,6 +300,14 @@
   title: 'Entité non traitable'
   detail: "Le degré d'établissement n'est pas correctement formaté: doit être 1D ou 2D"
 
+- code: '00413'
+  title: 'Entité non traitable'
+  detail: "Le périmètre géographique est invalide: exactement un type de périmètre doit être fourni"
+
+- code: '00414'
+  title: 'Entité non traitable'
+  detail: "Les valeurs du périmètre sont invalides: doit être un tableau non vide"
+
 - code: '00420'
   title: 'Entité non traitable'
   detail: "Le nom de naissance est manquant"

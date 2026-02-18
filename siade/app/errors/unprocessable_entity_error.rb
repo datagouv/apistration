@@ -63,6 +63,8 @@ class UnprocessableEntityError < ApplicationError
       code_etablissement: '00410',
       annee_scolaire: '00411',
       degre_etablissement: '00412',
+      perimetre: '00413',
+      perimetre_valeurs: '00414',
       # ANTS - ExtraitImmatriculationVehicule
       immatriculation: '00430',
       # INPI - RNE
