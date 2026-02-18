@@ -296,6 +296,10 @@
   title: 'Entité non traitable'
   detail: "L'année scolaire n'est pas correctement formatée: doit être sur le format YYYY ou YYYY-YYYY)"
 
+- code: '00412'
+  title: 'Entité non traitable'
+  detail: "Le degré d'établissement n'est pas correctement formaté: doit être 1D ou 2D"
+
 - code: '00420'
   title: 'Entité non traitable'
   detail: "Le nom de naissance est manquant"
