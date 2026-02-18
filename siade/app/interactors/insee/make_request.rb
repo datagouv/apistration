@@ -53,5 +53,16 @@ class INSEE::MakeRequest < MakeRequest::Get
     end
 
     api_call_with_error_handling
+    fail_with_temporary_auth_error! if token_expired_response?
+  end
+
+  def fail_with_temporary_auth_error!
+    error = ProviderTemporaryError.new(
+      context.provider_name,
+      "Erreur d'authentification temporaire auprès de l'INSEE, merci de réessayer votre appel"
+    )
+    error.add_meta(retry_in: 10)
+    context.errors << error
+    context.fail!
   end
 end

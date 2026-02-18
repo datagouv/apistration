@@ -59,7 +59,7 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
           )
       end
 
-      it { is_expected.to be_a_success }
+      it { is_expected.to be_a_failure }
 
       it 'only retries once' do
         make_request
@@ -68,7 +68,19 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
         expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).once
       end
 
-      its(:response) { is_expected.to be_a(Net::HTTPUnauthorized) }
+      it 'fails with a ProviderTemporaryError' do
+        expect(make_request.errors.first).to be_a(ProviderTemporaryError)
+      end
+
+      it 'has a custom detail message' do
+        expect(make_request.errors.first.detail).to eq(
+          "Erreur d'authentification temporaire auprès de l'INSEE, merci de réessayer votre appel"
+        )
+      end
+
+      it 'includes retry_in in meta' do
+        expect(make_request.errors.first.meta).to include(retry_in: 10)
+      end
     end
 
     context 'when first request succeeds' do
