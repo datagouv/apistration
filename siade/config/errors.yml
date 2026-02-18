@@ -308,6 +308,22 @@
   title: 'Entité non traitable'
   detail: "Les valeurs du périmètre sont invalides: doit être un tableau non vide"
 
+- code: '00415'
+  title: 'Entité non traitable'
+  detail: "Le code commune INSEE (COG) est invalide: attendu 5 caractères alphanumériques"
+
+- code: '00416'
+  title: 'Entité non traitable'
+  detail: "Le code département BCN MEN est invalide: valeur non reconnue"
+
+- code: '00417'
+  title: 'Entité non traitable'
+  detail: "Le code région BCN MEN est invalide: valeur non reconnue"
+
+- code: '00418'
+  title: 'Entité non traitable'
+  detail: "L'identifiant SIREN de l'intercommunalité est invalide: attendu 9 chiffres (format SIREN)"
+
 - code: '00420'
   title: 'Entité non traitable'
   detail: "Le nom de naissance est manquant"

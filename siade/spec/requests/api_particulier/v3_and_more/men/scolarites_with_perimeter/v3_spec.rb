@@ -122,6 +122,10 @@ RSpec.describe 'MEN: Scolarites with perimeter', api: :particulier, type: %i[req
             let(:degreEtablissement) { 'invalid' }
           end
 
+          unprocessable_content_error_request(:codes_cog_insee_communes) do
+            let(:'codesCogInseeCommunes[]') { %w[ABCDE] }
+          end
+
           common_provider_errors_request('MEN', MEN::ScolaritesPerimetre)
 
           common_network_error_request('MEN', MEN::ScolaritesPerimetre)

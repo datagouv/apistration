@@ -86,5 +86,49 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
 
       it { is_expected.to be_a_failure }
     end
+
+    context 'with invalid commune code format' do
+      let(:codes_cog_insee_communes) { %w[ABCDE] }
+
+      it { is_expected.to be_a_failure }
+
+      it 'returns codes_cog_insee_communes error' do
+        error = subject.errors.find { |e| e.code == '00415' }
+        expect(error).to be_present
+      end
+    end
+
+    context 'with invalid departement code format' do
+      let(:codes_bcn_men_departements) { %w[999] }
+
+      it { is_expected.to be_a_failure }
+
+      it 'returns codes_bcn_men_departements error' do
+        error = subject.errors.find { |e| e.code == '00416' }
+        expect(error).to be_present
+      end
+    end
+
+    context 'with invalid region code format' do
+      let(:codes_bcn_men_regions) { %w[99] }
+
+      it { is_expected.to be_a_failure }
+
+      it 'returns codes_bcn_men_regions error' do
+        error = subject.errors.find { |e| e.code == '00417' }
+        expect(error).to be_present
+      end
+    end
+
+    context 'with invalid SIREN intercommunalite' do
+      let(:identifiants_siren_intercommunalites) { %w[123456789] }
+
+      it { is_expected.to be_a_failure }
+
+      it 'returns identifiants_siren_intercommunalites error' do
+        error = subject.errors.find { |e| e.code == '00418' }
+        expect(error).to be_present
+      end
+    end
   end
 end

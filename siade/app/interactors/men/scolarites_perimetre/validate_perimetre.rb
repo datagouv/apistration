@@ -6,6 +6,13 @@ class MEN::ScolaritesPerimetre::ValidatePerimetre < ValidateParamInteractor
     identifiants_siren_intercommunalites: 'communaute_commune'
   }.freeze
 
+  VALIDATORS = {
+    codes_cog_insee_communes: MEN::ScolaritesPerimetre::Validators::CommuneValidator,
+    codes_bcn_men_departements: MEN::ScolaritesPerimetre::Validators::DepartementValidator,
+    codes_bcn_men_regions: MEN::ScolaritesPerimetre::Validators::RegionValidator,
+    identifiants_siren_intercommunalites: MEN::ScolaritesPerimetre::Validators::SirenIntercommunaliteValidator
+  }.freeze
+
   def call
     provided = provided_perimetres
 
@@ -13,13 +20,18 @@ class MEN::ScolaritesPerimetre::ValidatePerimetre < ValidateParamInteractor
 
     perimetre_key, values = provided.first
 
-    return invalid_param!(:perimetre_valeurs) if values.blank? || !values.is_a?(Array) || values.any?(&:blank?)
+    return invalid_param!(:perimetre_valeurs) unless valid_array?(values)
+    return invalid_param!(perimetre_key) unless VALIDATORS.fetch(perimetre_key).valid?(values)
 
     context.perimetre_type = PERIMETRE_MAPPING.fetch(perimetre_key)
     context.perimetre_valeurs = values
   end
 
   private
+
+  def valid_array?(values)
+    values.present? && values == [*values] && values.none?(&:blank?)
+  end
 
   def provided_perimetres
     PERIMETRE_MAPPING.keys.filter_map do |key|
