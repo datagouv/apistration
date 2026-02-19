@@ -5,7 +5,7 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
     let(:response) do
       instance_double(Net::HTTPOK, code:, body:)
     end
-    let(:code) { 200 }
+    let(:code) { '200' }
 
     context 'with a valid body, which is an encode 64 string' do
       let(:body) { Base64.strict_encode64('whatever') }

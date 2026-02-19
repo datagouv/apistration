@@ -77,7 +77,7 @@ class URSSAF::AttestationsSociales::ValidateResponse::RawBody < ValidateResponse
   end
 
   def provider_server_error?
-    body.include?('Une erreur est survenue sur le serveur') && response.code == 404
+    body.include?('Une erreur est survenue sur le serveur') && http_not_found?
   end
 
   def manual_verification_asked?

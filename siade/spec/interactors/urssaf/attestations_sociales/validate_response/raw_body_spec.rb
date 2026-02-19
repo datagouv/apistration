@@ -5,7 +5,7 @@ RSpec.describe URSSAF::AttestationsSociales::ValidateResponse::RawBody, type: :v
     let(:response) do
       instance_double(Net::HTTPOK, code:, body:)
     end
-    let(:code) { 200 }
+    let(:code) { '200' }
 
     context 'with a valid body, which is an encode 64 string' do
       let(:body) { Base64.strict_encode64('whatever') }
@@ -29,7 +29,7 @@ RSpec.describe URSSAF::AttestationsSociales::ValidateResponse::RawBody, type: :v
 
     context 'with an HTML body error and a 404 response' do
       let(:body) { read_payload_file('urssaf/server_error.html') }
-      let(:code) { 404 }
+      let(:code) { '404' }
 
       it { is_expected.to be_a_failure }
 
