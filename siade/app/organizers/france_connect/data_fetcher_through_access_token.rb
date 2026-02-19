@@ -10,16 +10,15 @@ class FranceConnect::DataFetcherThroughAccessToken < RetrieverOrganizer
   end
 
   def errors_to_track
-    context.errors
+    context.errors.reject { |error| error.code == '50002' }
   end
 
   def track_error(error)
+    error_hash = error.to_h
     monitoring_service.track_with_added_context(
       'error',
-      'FranceConnect error',
-      {
-        error: error.to_h
-      }
+      "FranceConnect error: #{error_hash[:title]} (#{error_hash[:code]})",
+      { error: error_hash }
     )
   end
 end
