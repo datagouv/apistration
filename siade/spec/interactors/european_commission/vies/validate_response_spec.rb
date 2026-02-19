@@ -49,6 +49,15 @@ RSpec.describe EuropeanCommission::VIES::ValidateResponse, type: :validate_respo
       its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
     end
 
+    context 'when body is a network proxy block' do
+      let(:body) { '<HTML><BODY>For assistance, contact your network support team.</BODY></HTML>' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:cacheable) { is_expected.to be(false) }
+      its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+    end
+
     context 'when body is a not valid' do
       let(:body) { 'whatever' }
 

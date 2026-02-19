@@ -1,7 +1,9 @@
 class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
+  # rubocop:disable Metrics/CyclomaticComplexity
   def call
     unknown_provider_response! unless http_ok?
 
+    provider_unavailable! if network_proxy_block?
     unknown_provider_response! if invalid_json?
     provider_rate_limiting_error! if vies_rate_limiting_error?
     provider_unavailable! if ms_unavailable?
@@ -9,6 +11,7 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
 
     handle_valid_json
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
@@ -54,5 +57,9 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
 
   def valid_tva_number_boolean
     json_body['isValid']
+  end
+
+  def network_proxy_block?
+    body.include?('contact your network support team')
   end
 end
