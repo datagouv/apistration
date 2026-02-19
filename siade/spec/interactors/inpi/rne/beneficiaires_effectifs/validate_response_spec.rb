@@ -49,6 +49,22 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'with a 200 WAF response (invalid JSON)' do
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body: '<html>WAF blocked</html>') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+  end
+
+  context 'with a 429 error' do
+    let(:response) { instance_double(Net::HTTPTooManyRequests, code: '429') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderRateLimitingError)) }
+  end
+
   context 'with an unknown http code' do
     let(:response) { instance_double(Net::HTTPForbidden, code: '403') }
 

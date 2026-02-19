@@ -14,12 +14,28 @@ RSpec.describe INPI::RNE::Company::ValidateResponse, type: :validate_response do
     end
   end
 
+  context 'with a 200 WAF response (invalid JSON)' do
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body: '<html>WAF blocked</html>') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+  end
+
   context 'with a http not found' do
     let(:response) { instance_double(Net::HTTPNotFound, code: '404') }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+  end
+
+  context 'with a 429 error' do
+    let(:response) { instance_double(Net::HTTPTooManyRequests, code: '429') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderRateLimitingError)) }
   end
 
   context 'with an unknown http code' do

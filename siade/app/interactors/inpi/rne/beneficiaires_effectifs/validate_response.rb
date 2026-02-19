@@ -1,10 +1,10 @@
-class INPI::RNE::BeneficiairesEffectifs::ValidateResponse < ValidateResponse
+class INPI::RNE::BeneficiairesEffectifs::ValidateResponse < INPI::RNE::Company::ValidateResponse
   def call
-    resource_not_found! if http_not_found?
-    unknown_provider_response! if invalid_json?
-    resource_not_found! if http_ok? && unite_legale_has_no_beneficiaires_effectifs?
+    super
 
-    return if http_ok? && personne_morale_has_beneficiaires_effectifs?
+    resource_not_found! if unite_legale_has_no_beneficiaires_effectifs?
+
+    return if personne_morale_has_beneficiaires_effectifs?
 
     unknown_provider_response!
   end

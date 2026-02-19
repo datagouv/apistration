@@ -85,6 +85,10 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
+  def rate_limited!
+    fail_with_error!(build_error(ProviderRateLimitingError))
+  end
+
   def provider_internal_error!
     context.errors << ProviderInternalServerError.new(context.provider_name)
     context.fail!
