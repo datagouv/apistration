@@ -3,6 +3,7 @@ class CNAV::ValidateResponse < ValidateResponse
     resource_not_found! if http_not_found?
     unprocessable_entity_error! if http_bad_request?
     handle_http_too_many_requests! if http_too_many_requests?
+    handle_internal_server_error! if http_internal_error?
     unknown_provider_response! if !http_ok? || invalid_json?
   end
 
@@ -45,7 +46,28 @@ class CNAV::ValidateResponse < ValidateResponse
     CNAV::RetrieverOrganizer::REGIME_CODE_LABEL[response.header['X-APISECU-FD']] if response.header['X-APISECU-FD'].present?
   end
 
+  def handle_internal_server_error!
+    MonitoringService.instance.track_with_added_context(
+      'warning',
+      "[#{context.provider_name}] Internal server error (#{error_code_from_body})",
+      {
+        http_response_code: context.response.code,
+        http_response_body: context.response.body,
+        regime:,
+        encrypted_params: encrypt_params.to_s
+      }
+    )
+
+    internal_server_error!
+  end
+
   private
+
+  def error_code_from_body
+    json_body['errorCode']
+  rescue JSON::ParserError
+    'unparseable'
+  end
 
   def sub_provider_error_from_sngi?
     [40_409].include?(json_body['errorCode'])

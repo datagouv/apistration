@@ -125,6 +125,26 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
     end
   end
 
+  context 'with 500 http code response' do
+    let(:response) do
+      instance_double(Net::HTTPInternalServerError, code: 500, body: '{"error":"Erreur technique non spécifiée","errorCode":50001}', header: { 'X-APISECU-FD' => '99430000' })
+    end
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+
+    it 'tracks warning with response context and encrypted params' do
+      expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+        'warning',
+        '[CNAV] Internal server error (50001)',
+        hash_including(:http_response_code, :http_response_body, :encrypted_params)
+      )
+
+      subject
+    end
+  end
+
   context 'with random http code response' do
     let(:response) do
       instance_double(Net::HTTPOK, code: 401)

@@ -39,15 +39,15 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
 
   context 'with 500 response' do
     let(:response) do
-      instance_double(Net::HTTPInternalServerError, code: 500)
+      instance_double(Net::HTTPInternalServerError, code: 500, body: '{"error":"Erreur technique","errorCode":50001}', header: { 'X-APISECU-FD' => '99430000' })
     end
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
 
     it 'returns the parent 500 error, not the no_kids_under_7 error' do
-      expect(subject.errors.first).to be_a(ProviderUnknownError)
+      expect(subject.errors.first).to be_a(ProviderInternalServerError)
       expect(subject.errors.first).not_to be_a(NotFoundError)
     end
   end
