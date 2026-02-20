@@ -15,7 +15,7 @@ class INPI::RNE::Download::ValidateResponse < ValidateResponse
     MonitoringService.instance.track_with_added_context(
       'warning',
       'INPI RNE Download: Cloudflare 403',
-      { document_id: context.params[:document_id] }
+      { document_id: context.params[:document_id], url: context.request_url }
     )
 
     provider_unavailable!

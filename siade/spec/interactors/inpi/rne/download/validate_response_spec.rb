@@ -1,7 +1,8 @@
 RSpec.describe INPI::RNE::Download::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'INPI - RNE', params:) }
+  subject { described_class.call(response:, provider_name: 'INPI - RNE', params:, request_url:) }
 
   let(:params) { { document_id: 'some-uuid' } }
+  let(:request_url) { 'https://inpi_rne_url.gouv.fr/api/actes/some-uuid/download' }
 
   context 'with a http ok' do
     let(:response) { instance_double(Net::HTTPOK, code: '200') }
@@ -30,7 +31,7 @@ RSpec.describe INPI::RNE::Download::ValidateResponse, type: :validate_response d
       expect(MonitoringService.instance).to receive(:track_with_added_context).with(
         'warning',
         'INPI RNE Download: Cloudflare 403',
-        { document_id: 'some-uuid' }
+        { document_id: 'some-uuid', url: 'https://inpi_rne_url.gouv.fr/api/actes/some-uuid/download' }
       )
 
       subject
