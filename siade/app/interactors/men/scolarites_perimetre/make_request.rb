@@ -50,8 +50,10 @@ class MEN::ScolaritesPerimetre::MakeRequest < MakeRequest::Post
     {
       anneeScolaire: params[:annee_scolaire],
       degreEtablissement: params[:degre_etablissement],
-      typePerimetre: context.perimetre_type,
-      valeursPerimetre: context.perimetre_valeurs
+      codesCogInseeCommunes: params[:codes_cog_insee_communes],
+      codesBcnDepartements: params[:codes_bcn_departements],
+      codesBcnRegions: params[:codes_bcn_regions],
+      identifiantsSirenIntercommunalites: params[:identifiants_siren_intercommunalites]
     }
   end
 

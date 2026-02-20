@@ -1,15 +1,15 @@
 class MEN::ScolaritesPerimetre::ValidatePerimetre < ValidateParamInteractor
   PERIMETRE_MAPPING = {
     codes_cog_insee_communes: 'commune',
-    codes_bcn_men_departements: 'departement',
-    codes_bcn_men_regions: 'region',
+    codes_bcn_departements: 'departement',
+    codes_bcn_regions: 'region',
     identifiants_siren_intercommunalites: 'communaute_commune'
   }.freeze
 
   VALIDATORS = {
     codes_cog_insee_communes: MEN::ScolaritesPerimetre::Validators::CommuneValidator,
-    codes_bcn_men_departements: MEN::ScolaritesPerimetre::Validators::DepartementValidator,
-    codes_bcn_men_regions: MEN::ScolaritesPerimetre::Validators::RegionValidator,
+    codes_bcn_departements: MEN::ScolaritesPerimetre::Validators::DepartementValidator,
+    codes_bcn_regions: MEN::ScolaritesPerimetre::Validators::RegionValidator,
     identifiants_siren_intercommunalites: MEN::ScolaritesPerimetre::Validators::SirenIntercommunaliteValidator
   }.freeze
 

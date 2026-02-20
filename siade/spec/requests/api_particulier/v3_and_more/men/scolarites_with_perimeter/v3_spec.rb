@@ -42,29 +42,25 @@ RSpec.describe 'MEN: Scolarites with perimeter', api: :particulier, type: %i[req
 
       parameter name: :'codesCogInseeCommunes[]',
         in: :query,
-        type: :array,
-        items: { type: :string },
+        schema: { type: :array, items: { type: :string } },
         description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_cog_insee_communes.description'),
         required: false
 
-      parameter name: :'codesBcnMenDepartements[]',
+      parameter name: :'codesBcnDepartements[]',
         in: :query,
-        type: :array,
-        items: { type: :string },
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_men_departements.description'),
+        schema: { type: :array, items: { type: :string } },
+        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_departements.description'),
         required: false
 
-      parameter name: :'codesBcnMenRegions[]',
+      parameter name: :'codesBcnRegions[]',
         in: :query,
-        type: :array,
-        items: { type: :string },
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_men_regions.description'),
+        schema: { type: :array, items: { type: :string } },
+        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_regions.description'),
         required: false
 
       parameter name: :'identifiantsSirenIntercommunalites[]',
         in: :query,
-        type: :array,
-        items: { type: :string },
+        schema: { type: :array, items: { type: :string } },
         description: SwaggerData.get('men.scolarite_perimetre.parameters.identifiants_siren_intercommunalites.description'),
         required: false
 

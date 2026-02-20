@@ -22,8 +22,8 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithPerimeterController < APIPar
         annee_scolaire: params[:anneeScolaire],
         degre_etablissement: params[:degreEtablissement],
         codes_cog_insee_communes: params[:codesCogInseeCommunes],
-        codes_bcn_men_departements: params[:codesBcnMenDepartements],
-        codes_bcn_men_regions: params[:codesBcnMenRegions],
+        codes_bcn_departements: params[:codesBcnDepartements],
+        codes_bcn_regions: params[:codesBcnRegions],
         identifiants_siren_intercommunalites: params[:identifiantsSirenIntercommunalites],
         provider_api_version: 'v2'
       })

@@ -5,15 +5,15 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
     let(:params) do
       {
         codes_cog_insee_communes:,
-        codes_bcn_men_departements:,
-        codes_bcn_men_regions:,
+        codes_bcn_departements:,
+        codes_bcn_regions:,
         identifiants_siren_intercommunalites:
       }
     end
 
     let(:codes_cog_insee_communes) { nil }
-    let(:codes_bcn_men_departements) { nil }
-    let(:codes_bcn_men_regions) { nil }
+    let(:codes_bcn_departements) { nil }
+    let(:codes_bcn_regions) { nil }
     let(:identifiants_siren_intercommunalites) { nil }
 
     context 'with one commune perimetre' do
@@ -31,7 +31,7 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
     end
 
     context 'with one departement perimetre' do
-      let(:codes_bcn_men_departements) { %w[075] }
+      let(:codes_bcn_departements) { %w[075] }
 
       it { is_expected.to be_a_success }
 
@@ -41,7 +41,7 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
     end
 
     context 'with one region perimetre' do
-      let(:codes_bcn_men_regions) { %w[11] }
+      let(:codes_bcn_regions) { %w[11] }
 
       it { is_expected.to be_a_success }
 
@@ -68,7 +68,7 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
 
     context 'with two perimetres provided' do
       let(:codes_cog_insee_communes) { %w[75056] }
-      let(:codes_bcn_men_departements) { %w[075] }
+      let(:codes_bcn_departements) { %w[075] }
 
       it { is_expected.to be_a_failure }
 
@@ -99,22 +99,22 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
     end
 
     context 'with invalid departement code format' do
-      let(:codes_bcn_men_departements) { %w[999] }
+      let(:codes_bcn_departements) { %w[999] }
 
       it { is_expected.to be_a_failure }
 
-      it 'returns codes_bcn_men_departements error' do
+      it 'returns codes_bcn_departements error' do
         error = subject.errors.find { |e| e.code == '00416' }
         expect(error).to be_present
       end
     end
 
     context 'with invalid region code format' do
-      let(:codes_bcn_men_regions) { %w[99] }
+      let(:codes_bcn_regions) { %w[99] }
 
       it { is_expected.to be_a_failure }
 
-      it 'returns codes_bcn_men_regions error' do
+      it 'returns codes_bcn_regions error' do
         error = subject.errors.find { |e| e.code == '00417' }
         expect(error).to be_present
       end

@@ -66,8 +66,8 @@ class UnprocessableEntityError < ApplicationError
       perimetre: '00413',
       perimetre_valeurs: '00414',
       codes_cog_insee_communes: '00415',
-      codes_bcn_men_departements: '00416',
-      codes_bcn_men_regions: '00417',
+      codes_bcn_departements: '00416',
+      codes_bcn_regions: '00417',
       identifiants_siren_intercommunalites: '00418',
       # ANTS - ExtraitImmatriculationVehicule
       immatriculation: '00430',

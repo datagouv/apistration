@@ -15,7 +15,8 @@ RSpec.describe MEN::ScolaritesPerimetre::MakeRequest, type: :make_request do
         mois_date_naissance: '06',
         annee_date_naissance: '2000',
         annee_scolaire: '2021',
-        degre_etablissement: '2D'
+        degre_etablissement: '2D',
+        codes_cog_insee_communes: %w[75056]
       }
     end
 

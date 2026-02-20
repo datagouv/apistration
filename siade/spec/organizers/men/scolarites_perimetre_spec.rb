@@ -13,8 +13,8 @@ RSpec.describe MEN::ScolaritesPerimetre, type: :retriever_organizer do
         annee_scolaire: '2021',
         degre_etablissement: '2D',
         codes_cog_insee_communes: %w[75056],
-        codes_bcn_men_departements: nil,
-        codes_bcn_men_regions: nil,
+        codes_bcn_departements: nil,
+        codes_bcn_regions: nil,
         identifiants_siren_intercommunalites: nil,
         provider_api_version: 'v2'
       }
