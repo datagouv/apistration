@@ -19,7 +19,8 @@ class MonitoringService
 
     track(
       error.tracking_level,
-      "[#{current_provider}] Error: #{error.detail}"
+      "[#{current_provider}] Error: #{error.detail}",
+      fingerprint: ['provider-error', error.code]
     )
   end
 
@@ -58,8 +59,10 @@ class MonitoringService
     set_context('Retriever', context.to_h)
   end
 
-  def track(level, message)
-    capture_message(message, level:)
+  def track(level, message, fingerprint: nil)
+    options = { level: }
+    options[:fingerprint] = fingerprint if fingerprint
+    capture_message(message, **options)
 
     Rails.logger.public_send(extract_logger_level(level), message)
   end

@@ -53,7 +53,18 @@ RSpec.describe MonitoringService, type: :service do
           hash_including(
             level: 'warning'
           )
-        ).at_least(1)
+        )
+
+        subject
+      end
+
+      it 'tracks event with fingerprint grouped by provider error code' do
+        expect(Sentry).to receive(:capture_message).with(
+          /#{provider}.*#{error.detail}/,
+          hash_including(
+            fingerprint: ['provider-error', error.code]
+          )
+        )
 
         subject
       end
