@@ -84,19 +84,19 @@ class SDH::StatutSportif::BuildResource < BuildResource
       current_date.between?(date_debut, date_fin)
     end
 
-    alert_multiple_current_fiches(current_fiches, current_date) if current_fiches.length > 1
+    alert_multiple_current_fiches(current_fiches) if current_fiches.length > 1
 
     current_fiches.first
   end
 
-  def alert_multiple_current_fiches(current_fiches, current_date)
+  def alert_multiple_current_fiches(current_fiches)
     MonitoringService.instance.track_with_added_context(
       'warning',
       '[SDH] Multiple current fiches haut niveau found',
       {
         fiches_count: current_fiches.length,
         fiches_ids: current_fiches.pluck('fiche'),
-        current_date: current_date.to_s
+        encrypted_params: DataEncryptor.new(context.params.to_json).encrypt.to_s
       }
     )
   end
