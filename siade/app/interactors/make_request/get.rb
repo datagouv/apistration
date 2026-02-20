@@ -16,8 +16,11 @@ class MakeRequest::Get < MakeRequest
   private
 
   def api_call
+    uri = build_request
+    context.request_url = uri.to_s
+
     context.response = http_wrapper do
-      Net::HTTP::Get.new(build_request).tap do |req|
+      Net::HTTP::Get.new(uri).tap do |req|
         req.body = request_body
       end
     end
