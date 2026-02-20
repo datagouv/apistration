@@ -48,6 +48,43 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
     end
   end
 
+  describe 'when custom_rate_limit is present alongside another throttle' do
+    let(:custom_throttle_data) do
+      {
+        discriminator: '1234567890',
+        count: 3,
+        limit: 10,
+        period: 60,
+        epoch_time: Time.now.to_i
+      }
+    end
+
+    let(:env) do
+      {
+        'rack.attack.throttle_data' => {
+          'json_resources_entreprise' => throttle_data,
+          'custom_rate_limit' => custom_throttle_data
+        }
+      }
+    end
+
+    it 'adds RateLimit headers based on custom_rate_limit data' do
+      _status, headers, _body = subject
+
+      rate_limit_subkeys.each do |subkey|
+        expect(headers).to have_key("RateLimit-#{subkey}")
+      end
+
+      expect(headers['RateLimit-Limit']).to eq('10')
+    end
+
+    it 'does not log through monitoring service' do
+      subject
+
+      expect(MonitoringService.instance).not_to have_received(:track_with_added_context)
+    end
+  end
+
   describe 'when there is multiple throttle defined' do
     let(:env) do
       {

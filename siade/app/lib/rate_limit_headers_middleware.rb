@@ -28,7 +28,9 @@ class RateLimitHeadersMiddleware
   private
 
   def extract_throttle_data(throttle_raw_data)
-    if throttle_raw_data.many?
+    if throttle_raw_data.key?('custom_rate_limit')
+      throttle_raw_data['custom_rate_limit']
+    elsif throttle_raw_data.many?
       log_multiple_throttle(throttle_raw_data)
       nil
     else
