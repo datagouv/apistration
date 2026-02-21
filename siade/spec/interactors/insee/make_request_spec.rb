@@ -83,6 +83,96 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
       end
     end
 
+    context 'when first request returns 401 and OAuth authentication fails temporarily' do
+      let(:created_instances) { [] }
+
+      before do
+        allow(INSEE::UniteLegale::MakeRequest).to receive(:new).and_wrap_original do |method, *args|
+          method.call(*args).tap do |instance|
+            allow(instance).to receive(:sleep)
+            created_instances << instance
+          end
+        end
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .with(headers: { 'Authorization' => "Bearer #{token}" })
+          .to_return(status: 401, body: '{"header":{"statut":401,"message":"Jeton invalide ou jeton expiré"}}')
+
+        stub_request(:post, /#{insee_oauth_url}/)
+          .to_return(
+            status: 401,
+            body: { error: 'invalid_grant', error_description: 'Invalid user credentials' }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'retries authentication 5 times before giving up' do
+        make_request
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(5)
+      end
+
+      it 'sleeps between auth retries' do
+        make_request
+
+        expect(created_instances.last).to have_received(:sleep).with(0.2).exactly(4).times
+      end
+
+      it 'fails with a ProviderTemporaryError' do
+        expect(make_request.errors.first).to be_a(ProviderTemporaryError)
+      end
+
+      it 'does not retry the API call after auth failure' do
+        make_request
+
+        expect(WebMock).to have_requested(:get, /#{insee_sirene_url}/).once
+      end
+    end
+
+    context 'when first request returns 401 and OAuth fails then succeeds' do
+      let(:created_instances) { [] }
+
+      before do
+        allow(INSEE::UniteLegale::MakeRequest).to receive(:new).and_wrap_original do |method, *args|
+          method.call(*args).tap do |instance|
+            allow(instance).to receive(:sleep)
+            created_instances << instance
+          end
+        end
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .with(headers: { 'Authorization' => "Bearer #{token}" })
+          .to_return(status: 401, body: '{"header":{"statut":401,"message":"Jeton invalide ou jeton expiré"}}')
+
+        stub_request(:post, /#{insee_oauth_url}/)
+          .to_return(
+            { status: 401, body: { error: 'invalid_grant' }.to_json, headers: { 'Content-Type' => 'application/json' } },
+            { status: 401, body: { error: 'invalid_grant' }.to_json, headers: { 'Content-Type' => 'application/json' } },
+            { status: 200, body: { access_token: new_token, expires_in: 3600 }.to_json, headers: { 'Content-Type' => 'application/json' } }
+          )
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .with(headers: { 'Authorization' => "Bearer #{new_token}" })
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'retries authentication until it succeeds' do
+        make_request
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+      end
+
+      it 'sleeps between failed auth attempts' do
+        make_request
+
+        expect(created_instances.last).to have_received(:sleep).with(0.2).twice
+      end
+    end
+
     context 'when first request succeeds' do
       before do
         stub_request(:get, /#{insee_sirene_url}/)

@@ -48,12 +48,29 @@ class INSEE::MakeRequest < MakeRequest::Get
     if fresh_token && fresh_token != context.token
       context.token = fresh_token
     else
-      INSEE::Authenticate.invalidate_token_cache!
-      INSEE::Authenticate.call!(context)
+      authenticate_with_retries!
     end
 
     api_call_with_error_handling
     fail_with_temporary_auth_error! if token_expired_response?
+  end
+
+  def authenticate_with_retries!
+    INSEE::Authenticate.invalidate_token_cache!
+
+    max_auth_attempts = 5
+
+    max_auth_attempts.times do |attempt|
+      auth_context = INSEE::Authenticate.call(provider_name: context.provider_name)
+
+      if auth_context.success?
+        context.token = auth_context.token
+        break
+      end
+
+      fail_with_temporary_auth_error! if attempt == max_auth_attempts - 1
+      sleep(0.2)
+    end
   end
 
   def fail_with_temporary_auth_error!
