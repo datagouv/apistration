@@ -153,12 +153,13 @@ RSpec.describe MakeRequest, type: :interactor do
       context 'when it is a "unexpected eof while reading" error' do
         let(:ssl_error_message) { 'unexpected eof while reading' }
 
-        it 'raises this error after retrying' do
-          expect {
-            subject
-          }.to raise_error(OpenSSL::SSL::SSLError)
+        it { is_expected.to be_a_failure }
+
+        it 'retries 3 times then adds ProviderUnavailable to errors' do
+          subject
 
           expect(stubbed_request).to have_been_requested.times(3)
+          expect(subject.errors).to include(instance_of(ProviderUnavailable))
         end
       end
 

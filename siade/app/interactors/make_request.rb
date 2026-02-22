@@ -73,10 +73,14 @@ class MakeRequest < ApplicationInteractor
       context.fail!
     elsif open_ssl_certificate_error?(e)
       fail_to_request_provider!(SSLCertificateError)
-    elsif open_ssl_temporary_error?(e) && context.http_retry_count < 2
-      context.http_retry_count += 1
+    elsif open_ssl_temporary_error?(e)
+      if context.http_retry_count < 2
+        context.http_retry_count += 1
 
-      retry
+        retry
+      else
+        fail_to_request_provider!(ProviderUnavailable)
+      end
     else
       raise
     end
