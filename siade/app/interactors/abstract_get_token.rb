@@ -1,4 +1,7 @@
 class AbstractGetToken < MakeRequest::Post
+  MAX_AUTH_ATTEMPTS = 5
+  AUTH_RETRY_DELAY = 0.2
+
   def call
     return if use_mocked_data?
 
@@ -38,6 +41,8 @@ class AbstractGetToken < MakeRequest::Post
   end
 
   def retrieve_and_save_token
+    @auth_attempt_count ||= 0
+
     response = api_call_with_error_handling
 
     token = access_token(response)
@@ -49,6 +54,28 @@ class AbstractGetToken < MakeRequest::Post
     save_token_to_cache(final_token, response) unless alternative_token
 
     final_token
+  rescue JSON::ParserError
+    @auth_attempt_count += 1
+
+    if @auth_attempt_count < MAX_AUTH_ATTEMPTS
+      sleep(AUTH_RETRY_DELAY)
+      retry
+    end
+
+    fail_with_non_json_auth_response!(response)
+  end
+
+  def fail_with_non_json_auth_response!(response)
+    error = ProviderUnknownError.new(context.provider_name)
+
+    error.add_to_monitoring_private_context({
+      http_response_code: response.code,
+      http_response_body: response.body,
+      http_response_headers: response.to_hash
+    })
+
+    context.errors << error
+    context.fail!
   end
 
   def save_token_to_cache(token, response)
