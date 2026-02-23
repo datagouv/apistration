@@ -24,6 +24,7 @@ class UnprocessableEntityError < ApplicationError
       uuid: '00314',
       # DGFIP entreprise
       year: '00307',
+      dgfip_year: '00315',
       user_id: '00308',
       request_name: '00309',
       siren_is: '00311',

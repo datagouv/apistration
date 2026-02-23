@@ -180,6 +180,10 @@
   title: 'Entité non traitable'
   detail: "L'année n'est pas correctement formatée"
 
+- code: '00315'
+  title: 'Entité non traitable'
+  detail: "L'année n'est pas valide : elle doit être comprise entre 2006 et l'année précédente"
+
 - code: '00308'
   title: 'Entité non traitable'
   detail: "Le user_id n'est pas correctement formaté"
