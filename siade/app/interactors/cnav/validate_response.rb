@@ -39,7 +39,10 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   def unprocessable_entity_error!
-    fail_with_error!(::UnprocessableEntityError.new(:civility))
+    fail_with_error!(::UnprocessableEntityError.new(:civility, meta: {
+      provider_error_code: error_code_from_body,
+      provider_error_message: error_message_from_body
+    }))
   end
 
   def regime
@@ -65,6 +68,12 @@ class CNAV::ValidateResponse < ValidateResponse
 
   def error_code_from_body
     json_body['errorCode']
+  rescue JSON::ParserError
+    'unparseable'
+  end
+
+  def error_message_from_body
+    json_body['error']
   rescue JSON::ParserError
     'unparseable'
   end

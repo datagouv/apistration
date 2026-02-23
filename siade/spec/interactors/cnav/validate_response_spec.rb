@@ -167,11 +167,18 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
   context 'with 400 http code response' do
     let(:response) do
-      instance_double(Net::HTTPTooManyRequests, code: 400)
+      instance_double(Net::HTTPBadRequest, code: 400, body: '{"errorCode":40001,"error":"Civilité invalide"}')
     end
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+    it 'includes provider error code and message in meta' do
+      expect(subject.errors.first.meta).to eq(
+        provider_error_code: 40_001,
+        provider_error_message: 'Civilité invalide'
+      )
+    end
   end
 end
