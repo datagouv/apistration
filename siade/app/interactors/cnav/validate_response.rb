@@ -38,7 +38,11 @@ class CNAV::ValidateResponse < ValidateResponse
     fail_with_error!(build_error(ProviderRateLimitingError))
   end
 
+  EXPECTED_BAD_REQUEST_CODES = [40_013].freeze
+
   def unprocessable_entity_error!
+    track_unexpected_bad_request! unless EXPECTED_BAD_REQUEST_CODES.include?(error_code_from_body)
+
     fail_with_error!(::UnprocessableEntityError.new(:civility, meta: {
       provider_error_code: error_code_from_body,
       provider_error_message: error_message_from_body
@@ -65,6 +69,18 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def track_unexpected_bad_request!
+    MonitoringService.instance.track_with_added_context(
+      'warning',
+      "[#{context.provider_name}] Unexpected bad request (#{error_code_from_body})",
+      {
+        http_response_code: context.response.code,
+        http_response_body: context.response.body,
+        encrypted_params: encrypt_params.to_s
+      }
+    )
+  end
 
   def error_code_from_body
     json_body['errorCode']

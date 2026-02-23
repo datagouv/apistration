@@ -167,18 +167,48 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
   context 'with 400 http code response' do
     let(:response) do
-      instance_double(Net::HTTPBadRequest, code: 400, body: '{"errorCode":40001,"error":"Civilité invalide"}')
+      instance_double(Net::HTTPBadRequest, code: 400, body:)
     end
+    let(:body) { '{"errorCode":40013,"error":"Civilité invalide"}' }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
 
-    it 'includes provider error code and message in meta' do
-      expect(subject.errors.first.meta).to eq(
-        provider_error_code: 40_001,
-        provider_error_message: 'Civilité invalide'
-      )
+    context 'with expected error code' do
+      it 'does not track to monitoring' do
+        expect(MonitoringService.instance).not_to receive(:track_with_added_context)
+
+        subject
+      end
+
+      it 'includes provider error code and message in meta' do
+        expect(subject.errors.first.meta).to eq(
+          provider_error_code: 40_013,
+          provider_error_message: 'Civilité invalide'
+        )
+      end
+    end
+
+    context 'with unexpected error code' do
+      let(:body) { '{"errorCode":40001,"error":"Civilité invalide"}' }
+
+      it 'tracks warning with encrypted params' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'warning',
+          '[CNAV] Unexpected bad request (40001)',
+          hash_including(:http_response_code, :http_response_body, :encrypted_params)
+        )
+
+        subject
+      end
+
+      it 'includes provider error code and message in meta' do
+        expect(subject.errors.first.meta).to eq(
+          provider_error_code: 40_001,
+          provider_error_message: 'Civilité invalide'
+        )
+      end
     end
   end
 end
