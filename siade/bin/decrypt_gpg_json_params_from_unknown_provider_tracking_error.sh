@@ -13,7 +13,7 @@ if [ -f "$file" ] ; then
   echo -ne "Notes:\n1. File should begins with '-----BEGIN PGP MESSAGE-----'\n2. You need to get the passphrase from the ansible repository\n   > ansible-vault view secrets/siade_gpg_infos.yml\n\n--------------------\n"
   decrypted_string=$(gpg --decrypt $file 2> /dev/null)
 
-  echo $decrypted_string | python -m json.tool
+  echo $decrypted_string | jq .
 else
   echo "Usage: $0 /path/to/encrypted_json_params.gpg"
 fi
