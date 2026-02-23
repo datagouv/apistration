@@ -6,11 +6,23 @@ class MonitoringService
   include Singleton
   extend Forwardable
 
+  RESPONSE_BODY_KEYS = %i[http_response_body body].freeze
+
+  PERSONAL_DATA_JSON_KEYS = %w[
+    nom prenom prenoms nomNaissance nomUsage
+    email telephone dateNaissance adresse civilite sexe
+  ].freeze
+
+  PERSONAL_DATA_THRESHOLD = 2
+
   def_delegators :Sentry,
     :capture_message,
-    :set_context,
     :set_user,
     :set_tags
+
+  def set_context(title, context)
+    Sentry.set_context(title, sanitize_personal_data(context))
+  end
 
   def track_provider_error(error)
     extra_context = error.to_h.merge(error.monitoring_private_context)
@@ -68,6 +80,25 @@ class MonitoringService
   end
 
   private
+
+  def sanitize_personal_data(context)
+    body_key = RESPONSE_BODY_KEYS.find { |k| context[k].present? }
+    return context unless body_key
+    return context unless contains_personal_data?(context[body_key])
+
+    context.merge(body_key => encrypt_body(context[body_key]))
+  end
+
+  def contains_personal_data?(body)
+    PERSONAL_DATA_JSON_KEYS.count { |key| body.match?(/"#{key}"\s*:/i) } >= PERSONAL_DATA_THRESHOLD
+  end
+
+  def encrypt_body(body)
+    DataEncryptor.new(body).encrypt.to_s
+  rescue GPGME::Error => e
+    track(:error, "Failed to encrypt personal data in response body: #{e.message}")
+    '[personal data detected but encryption failed]'
+  end
 
   def set_extra_context(title, context)
     with_scope do |scope|

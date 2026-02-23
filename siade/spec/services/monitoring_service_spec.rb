@@ -226,5 +226,95 @@ RSpec.describe MonitoringService, type: :service do
         subject
       end
     end
+
+    describe '#set_context' do
+      subject { instance.set_context(title, context) }
+
+      let(:title) { 'Provider error' }
+
+      context 'when context contains http_response_body with personal data' do
+        let(:body) { '{"nom": "Dupont", "prenom": "Jean", "dateNaissance": "1990-01-01"}' }
+        let(:context) { { http_response_body: body, status: 200 } }
+
+        it 'encrypts the body before sending to Sentry' do
+          encrypted = 'encrypted_data'
+          data_encryptor = instance_double(DataEncryptor, encrypt: encrypted)
+          allow(DataEncryptor).to receive(:new).with(body).and_return(data_encryptor)
+
+          expect(Sentry).to receive(:set_context).with(
+            title,
+            { http_response_body: encrypted, status: 200 }
+          )
+
+          subject
+        end
+      end
+
+      context 'when context contains body key with personal data' do
+        let(:body) { '{"nom": "Dupont", "prenom": "Jean"}' }
+        let(:context) { { body:, status: 200 } }
+
+        it 'encrypts the body before sending to Sentry' do
+          encrypted = 'encrypted_data'
+          data_encryptor = instance_double(DataEncryptor, encrypt: encrypted)
+          allow(DataEncryptor).to receive(:new).with(body).and_return(data_encryptor)
+
+          expect(Sentry).to receive(:set_context).with(
+            title,
+            { body: encrypted, status: 200 }
+          )
+
+          subject
+        end
+      end
+
+      context 'when context contains body without personal data' do
+        let(:context) { { http_response_body: '{"error": "not_found"}', status: 404 } }
+
+        it 'sends context as-is to Sentry' do
+          expect(Sentry).to receive(:set_context).with(title, context)
+
+          subject
+        end
+      end
+
+      context 'when context has only one personal data key (below threshold)' do
+        let(:context) { { http_response_body: '{"nom": "Dupont", "code": "123"}', status: 200 } }
+
+        it 'does not encrypt' do
+          expect(Sentry).to receive(:set_context).with(title, context)
+
+          subject
+        end
+      end
+
+      context 'when context has no body key' do
+        let(:context) { { status: 200, message: 'ok' } }
+
+        it 'sends context as-is to Sentry' do
+          expect(Sentry).to receive(:set_context).with(title, context)
+
+          subject
+        end
+      end
+
+      context 'when encryption fails with GPGME::Error' do
+        let(:body) { '{"nom": "Dupont", "prenom": "Jean"}' }
+        let(:context) { { http_response_body: body, status: 200 } }
+
+        before do
+          allow(DataEncryptor).to receive(:new).and_raise(GPGME::Error.new(0))
+        end
+
+        it 'replaces body with failure message' do
+          expect(Sentry).to receive(:set_context).with(
+            title,
+            { http_response_body: '[personal data detected but encryption failed]', status: 200 }
+          )
+
+          subject
+        end
+      end
+    end
   end
 end
