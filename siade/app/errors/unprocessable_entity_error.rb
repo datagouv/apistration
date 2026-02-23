@@ -1,8 +1,13 @@
 class UnprocessableEntityError < ApplicationError
   attr_reader :field
 
-  def initialize(field)
+  def initialize(field, meta: {})
     @field = field.to_sym
+    @meta = meta
+  end
+
+  def meta
+    @meta || {}
   end
 
   # rubocop:disable Metrics/MethodLength
