@@ -1,5 +1,7 @@
 class Civility::ValidatePrenoms < ValidateParamInteractor
+  include ValidatePrenomsFormat
+
   def call
-    invalid_param!(:prenoms) if param(:prenoms).blank? || !param(:prenoms).is_a?(Array)
+    invalid_param!(:prenoms) unless valid_prenoms_format?
   end
 end

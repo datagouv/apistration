@@ -1,15 +1,15 @@
 class DSNJ::ServiceNational::ValidatePrenoms < ValidateParamInteractor
+  include ValidatePrenomsFormat
+
   def call
-    invalid_param!(:prenoms) if param(:prenoms).blank? || !param(:prenoms).is_a?(Array) || !valid_characters?
+    return invalid_param!(:prenoms) unless valid_prenoms_format?
+
+    invalid_param!(:prenoms) unless valid_characters?
   end
 
   private
 
   def valid_characters?
-    param(:prenoms).all? { |prenom| prenom.match?(valid_chars) }
-  end
-
-  def valid_chars
-    /^[a-zA-ZÀ-ÖØ-öø-ÿÆæ' -]+$/
+    param(:prenoms).all? { |p| p.match?(/\A[a-zA-ZÀ-ÖØ-öø-ÿÆæ' -]+\z/) }
   end
 end

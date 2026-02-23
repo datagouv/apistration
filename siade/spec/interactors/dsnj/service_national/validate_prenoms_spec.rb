@@ -45,4 +45,12 @@ RSpec.describe DSNJ::ServiceNational::ValidatePrenoms, type: :validate_params do
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
+
+  context 'when prenoms array contains a non-string element' do
+    let(:prenoms) { ['Jean', { 'foo' => 'bar' }] }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
 end
