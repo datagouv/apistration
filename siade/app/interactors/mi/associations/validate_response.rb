@@ -18,7 +18,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def check_body_integrity!
-    xml_body_as_hash
+    temporary_error! if xml_body_as_hash.nil?
   rescue Ox::ParseError
     unknown_provider_response!
   end
@@ -60,13 +60,13 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def not_found_in_body?
-    return false if xml_body_as_hash.dig(:asso, :erreur, :proxy_correspondance).blank?
+    return false if xml_body_as_hash&.dig(:asso, :erreur, :proxy_correspondance).blank?
 
     xml_body_as_hash[:asso][:erreur][:proxy_correspondance]['with statusCode: 404']
   end
 
   def payload_present?
-    xml_body_as_hash[:asso].present?
+    xml_body_as_hash&.dig(:asso).present?
   end
 
   def payload_has_id_correspondance?

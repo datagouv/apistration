@@ -118,6 +118,14 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
 
+      context 'with an empty body' do
+        let(:body) { '' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderTemporaryError)) }
+      end
+
       context 'with a body containing nonsense' do
         let(:code) { '200' }
         let(:body) { 'Nonsense' }
