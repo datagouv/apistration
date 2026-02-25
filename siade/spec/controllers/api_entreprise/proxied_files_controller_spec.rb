@@ -177,6 +177,27 @@ RSpec.describe APIEntreprise::ProxiedFilesController do
         end
       end
 
+      context 'when url renders a 405' do
+        before do
+          stub_request(:any, 'https://example.com/url.pdf').to_return(status: 405)
+        end
+
+        it { is_expected.to have_http_status(:bad_gateway) }
+
+        it 'returns JSON error with code 00011' do
+          subject
+
+          expect(response.parsed_body['errors'].first['code']).to eq('00011')
+        end
+
+        it 'tracks the error' do
+          expect(MonitoringService.instance).to receive(:track_with_added_context)
+            .with('info', 'Proxied file error', { code: '00011', status: '405', url: 'https://example.com/url.pdf' })
+
+          subject
+        end
+      end
+
       context 'when url renders an unhandled HTTP error' do
         before do
           stub_request(:any, 'https://example.com/url.pdf').to_return(status: 418)

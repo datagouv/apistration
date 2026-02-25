@@ -39,12 +39,19 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
     status_code = exception.io.status[0]
 
     return head(:not_found) if status_code == '404'
+    return handle_temporary_provider_error(status_code, url) if status_code == '405'
 
     error = ProxyFileError.from_http_status(status_code, url:)
     raise exception unless error
 
     track_invalid_proxied_file(error, status_code, url)
     render json: { errors: [error.to_h] }, status: error.http_status
+  end
+
+  def handle_temporary_provider_error(status_code, url)
+    error = ProviderTemporaryError.new('API Entreprise')
+    track_invalid_proxied_file(error, status_code, url)
+    render json: { errors: [error.to_h] }, status: :bad_gateway
   end
 
   def track_invalid_proxied_file(error, status, url)
