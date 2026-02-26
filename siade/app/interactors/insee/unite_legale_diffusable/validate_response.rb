@@ -1,6 +1,6 @@
 class INSEE::UniteLegaleDiffusable::ValidateResponse < INSEE::UniteLegale::ValidateResponse
   def call
-    resource_not_found! if http_ok? && non_diffusable?
+    resource_not_found! if http_ok? && valid_json? && non_diffusable?
 
     super
   end

@@ -1,6 +1,6 @@
 class INSEE::UniteLegale::ValidateResponse < ValidateResponse
   def call
-    return if http_ok?
+    return if http_ok? && valid_json?
 
     if http_not_found?
       resource_not_found!

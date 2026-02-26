@@ -1,6 +1,6 @@
 class INSEE::SiegeUniteLegale::ValidateResponse < ValidateResponse
   def call
-    if http_ok?
+    if http_ok? && valid_json?
       if more_than_one_siege?
         context.errors << INSEEError.new(:more_than_one_siege)
         context.fail!

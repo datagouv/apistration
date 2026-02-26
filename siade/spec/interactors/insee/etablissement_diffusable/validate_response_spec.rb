@@ -37,6 +37,14 @@ RSpec.describe INSEE::EtablissementDiffusable::ValidateResponse, type: :validate
     end
   end
 
+  context 'with a http ok but HTML body' do
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body: '<!DOCTYPE html><html></html>', to_hash: {}) }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
+
   context 'with a not found response' do
     let(:response) { instance_double(Net::HTTPNotFound, code: '404') }
 
