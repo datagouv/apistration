@@ -1,9 +1,2 @@
-class INSEE::Successions::ValidateResponse < ValidateResponse
-  def call
-    resource_not_found! if http_not_found?
-
-    return if http_ok?
-
-    unknown_provider_response!
-  end
+class INSEE::Successions::ValidateResponse < INSEE::ValidateResponse
 end

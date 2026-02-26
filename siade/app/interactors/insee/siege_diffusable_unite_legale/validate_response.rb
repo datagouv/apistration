@@ -1,11 +1,11 @@
 class INSEE::SiegeDiffusableUniteLegale::ValidateResponse < INSEE::SiegeUniteLegale::ValidateResponse
-  def call
+  private
+
+  def validate_ok_response
     super
 
     resource_not_found! if siege_non_diffusable?
   end
-
-  private
 
   def siege_non_diffusable?
     %w[N].include?(etablissement['statutDiffusionEtablissement'])

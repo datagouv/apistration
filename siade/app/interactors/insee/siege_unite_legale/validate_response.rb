@@ -1,20 +1,12 @@
-class INSEE::SiegeUniteLegale::ValidateResponse < ValidateResponse
-  def call
-    if http_ok? && valid_json?
-      if more_than_one_siege?
-        context.errors << INSEEError.new(:more_than_one_siege)
-        context.fail!
-      end
-    elsif http_not_found?
-      resource_not_found!
-    elsif http_internal_error?
-      internal_server_error!
-    else
-      unknown_provider_response!
-    end
-  end
-
+class INSEE::SiegeUniteLegale::ValidateResponse < INSEE::ValidateResponse
   private
+
+  def validate_ok_response
+    return unless more_than_one_siege?
+
+    context.errors << INSEEError.new(:more_than_one_siege)
+    context.fail!
+  end
 
   def more_than_one_siege?
     json_body['etablissements'].many?

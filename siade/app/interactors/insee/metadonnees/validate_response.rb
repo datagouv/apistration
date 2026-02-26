@@ -1,12 +1,4 @@
-class INSEE::Metadonnees::ValidateResponse < ValidateResponse
-  def call
-    return if http_ok? && valid_json?
-
-    resource_not_found! if http_not_found?
-
-    unknown_provider_response!
-  end
-
+class INSEE::Metadonnees::ValidateResponse < INSEE::ValidateResponse
   private
 
   def valid_json?

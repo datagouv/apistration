@@ -83,6 +83,14 @@ RSpec.describe INSEE::SiegeDiffusableUniteLegale::ValidateResponse, type: :valid
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
 
+  context 'with a 500 error' do
+    let(:response) { instance_double(Net::HTTPInternalServerError, code: '500') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
 
