@@ -237,7 +237,7 @@ cnav:
         title: "Données d'identité de l'allocataire et du conjoint"
         type: array
         minItems: 1
-        description: "Liste des données d'identité de l'allocataire appelé et de celles du conjoint le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA."
+        description: "Liste des données d'identité de l'allocataire appelé et de celles du conjoint le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA. Les membres de la famille listés sont toujours ceux du mois en cours, y compris en cas d'appel sur une date antérieure."
         items:
           type: object
           properties:
@@ -273,7 +273,7 @@ cnav:
       enfants:
         type: array
         title: "Données d'identité des enfants"
-        description: "Liste des données d'identité des enfants composant la famille, le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA."
+        description: "Liste des données d'identité des enfants composant la famille, le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA. Les membres de la famille listés sont toujours ceux du mois en cours, y compris en cas d'appel sur une date antérieure."
         items:
           type: object
           properties:
