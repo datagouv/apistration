@@ -1,9 +1,9 @@
-RSpec.describe MEN::ScolaritesPerimetre::Validators::DepartementValidator do
+RSpec.describe MEN::Scolarites::Validators::RegionValidator do
   describe '.valid?' do
     subject { described_class.valid?(values) }
 
     context 'with valid codes' do
-      %w[069 02A 971].each do |code|
+      %w[01 10 18].each do |code|
         context "when value is #{code}" do
           let(:values) { [code] }
 
@@ -14,8 +14,8 @@ RSpec.describe MEN::ScolaritesPerimetre::Validators::DepartementValidator do
 
     context 'with invalid codes' do
       {
-        '999' => 'not in BCN list',
-        '69' => 'too short (2 chars)',
+        '99' => 'not in BCN list',
+        '1' => 'too short (1 char)',
         'ABC' => 'letters only',
         '' => 'empty string'
       }.each do |code, reason|
@@ -28,7 +28,7 @@ RSpec.describe MEN::ScolaritesPerimetre::Validators::DepartementValidator do
     end
 
     context 'with mix of valid and invalid' do
-      let(:values) { %w[069 999] }
+      let(:values) { %w[11 99] }
 
       it { is_expected.to be false }
     end

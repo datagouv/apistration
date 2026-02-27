@@ -1,4 +1,4 @@
-class MEN::ScolaritesPerimetre::Validators::RegionValidator
+class MEN::Scolarites::Validators::RegionValidator
   VALID_CODES = YAML.load_file(Rails.root.join('config/data/men/codes_bcn_regions.yml')).freeze
 
   def self.valid?(values)

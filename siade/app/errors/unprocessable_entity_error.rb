@@ -65,10 +65,9 @@ class UnprocessableEntityError < ApplicationError
       degre_etablissement: '00412',
       perimetre: '00413',
       perimetre_valeurs: '00414',
-      codes_cog_insee_communes: '00415',
       codes_bcn_departements: '00416',
       codes_bcn_regions: '00417',
-      identifiants_siren_intercommunalites: '00418',
+      code_etablissement_et_perimetre: '00419',
       # ANTS - ExtraitImmatriculationVehicule
       immatriculation: '00430',
       # INPI - RNE

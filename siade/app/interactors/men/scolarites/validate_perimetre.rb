@@ -1,12 +1,12 @@
-class MEN::ScolaritesPerimetre::ValidatePerimetre < ValidateParamInteractor
+class MEN::Scolarites::ValidatePerimetre < ValidateParamInteractor
   PERIMETRE_MAPPING = {
     codes_bcn_departements: 'departement',
     codes_bcn_regions: 'region'
   }.freeze
 
   VALIDATORS = {
-    codes_bcn_departements: MEN::ScolaritesPerimetre::Validators::DepartementValidator,
-    codes_bcn_regions: MEN::ScolaritesPerimetre::Validators::RegionValidator
+    codes_bcn_departements: MEN::Scolarites::Validators::DepartementValidator,
+    codes_bcn_regions: MEN::Scolarites::Validators::RegionValidator
   }.freeze
 
   def call

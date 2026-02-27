@@ -1,4 +1,4 @@
-RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_param_interactor do
+RSpec.describe MEN::Scolarites::ValidatePerimetre, type: :validate_param_interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 

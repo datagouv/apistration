@@ -304,6 +304,10 @@
   title: 'Entité non traitable'
   detail: "Le périmètre géographique est invalide: exactement un type de périmètre doit être fourni"
 
+- code: '00419'
+  title: 'Entité non traitable'
+  detail: "Les paramètres codeEtablissement et périmètre (codesBcnRegions/codesBcnDepartements) sont mutuellement exclusifs"
+
 - code: '00414'
   title: 'Entité non traitable'
   detail: "Les valeurs du périmètre sont invalides: doit être un tableau non vide"

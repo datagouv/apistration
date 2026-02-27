@@ -1,4 +1,4 @@
-RSpec.describe MEN::ScolaritesPerimetre::ValidateDegreEtablissement, type: :validate_param_interactor do
+RSpec.describe MEN::Scolarites::ValidateDegreEtablissement, type: :validate_param_interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 

@@ -21,6 +21,9 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIPart
       .merge({
         annee_scolaire: params[:anneeScolaire],
         code_etablissement: params[:codeEtablissement],
+        degre_etablissement: params[:degreEtablissement],
+        codes_bcn_departements: params[:codesBcnDepartements],
+        codes_bcn_regions: params[:codesBcnRegions],
         provider_api_version: 'v2'
       })
   end

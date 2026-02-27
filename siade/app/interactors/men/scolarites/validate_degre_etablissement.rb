@@ -1,4 +1,4 @@
-class MEN::ScolaritesPerimetre::ValidateDegreEtablissement < ValidateParamInteractor
+class MEN::Scolarites::ValidateDegreEtablissement < ValidateParamInteractor
   VALID_VALUES = %w[1D 2D].freeze
 
   def call

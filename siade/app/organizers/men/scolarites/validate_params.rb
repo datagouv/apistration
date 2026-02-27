@@ -3,6 +3,6 @@ class MEN::Scolarites::ValidateParams < ValidateParamsOrganizer
     Civility::ValidatePrenoms,
     Civility::ValidateDateNaissance,
     Civility::ValidateSexeEtatCivil,
-    MEN::Scolarites::ValidateCodeEtablissement,
+    MEN::Scolarites::ValidateSearchParams,
     MEN::Scolarites::ValidateAnneeScolaire
 end

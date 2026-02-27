@@ -14,7 +14,6 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'mesri/statut_etudiant/identite', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility#show'
 
   get 'men/scolarites/identite', to: 'api_particulier/v3_and_more/men/scolarites_with_civility#show'
-  get 'men/scolarites/identite_perimetre', to: 'api_particulier/v3_and_more/men/scolarites_with_perimeter#show'
 
   get 'cnous/etudiant_boursier/ine', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine#show'
   get 'cnous/etudiant_boursier/identite', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility#show'
