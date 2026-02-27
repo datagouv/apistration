@@ -12,10 +12,8 @@ RSpec.describe MEN::ScolaritesPerimetre, type: :retriever_organizer do
         jour_date_naissance: '10',
         annee_scolaire: '2021',
         degre_etablissement: '2D',
-        codes_cog_insee_communes: %w[75056],
         codes_bcn_departements: nil,
-        codes_bcn_regions: nil,
-        identifiants_siren_intercommunalites: nil,
+        codes_bcn_regions: %w[11],
         provider_api_version: 'v2'
       }
     end

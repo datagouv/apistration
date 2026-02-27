@@ -4,8 +4,8 @@ RSpec.describe MEN::ScolaritesPerimetre::MakeRequest, type: :make_request do
 
     let(:token) { 'jwt-access-token' }
     let(:recipient) { '13002526500013' }
-    let(:perimetre_type) { 'commune' }
-    let(:perimetre_valeurs) { %w[75056] }
+    let(:perimetre_type) { 'region' }
+    let(:perimetre_valeurs) { %w[11] }
     let(:params) do
       {
         nom_naissance: 'NOMFAMILLE',
@@ -16,7 +16,7 @@ RSpec.describe MEN::ScolaritesPerimetre::MakeRequest, type: :make_request do
         annee_date_naissance: '2000',
         annee_scolaire: '2021',
         degre_etablissement: '2D',
-        codes_cog_insee_communes: %w[75056]
+        codes_bcn_regions: %w[11]
       }
     end
 
@@ -40,8 +40,8 @@ RSpec.describe MEN::ScolaritesPerimetre::MakeRequest, type: :make_request do
           'annee-scolaire': '2021',
           scope: 'men_statut_scolarite',
           'degre-etablissement': '2D',
-          'type-perimetre': 'commune',
-          'valeurs-perimetre': %w[75056]
+          'type-perimetre': 'region',
+          'valeurs-perimetre': %w[11]
         }
 
         expect(

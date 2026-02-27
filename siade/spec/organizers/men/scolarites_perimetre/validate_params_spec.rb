@@ -11,10 +11,8 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidateParams, type: :validate_params 
       jour_date_naissance:,
       annee_scolaire:,
       degre_etablissement:,
-      codes_cog_insee_communes:,
       codes_bcn_departements:,
-      codes_bcn_regions:,
-      identifiants_siren_intercommunalites:
+      codes_bcn_regions:
     }
   end
 
@@ -26,10 +24,8 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidateParams, type: :validate_params 
   let(:jour_date_naissance) { '01' }
   let(:annee_scolaire) { '2022' }
   let(:degre_etablissement) { '2D' }
-  let(:codes_cog_insee_communes) { %w[75056] }
   let(:codes_bcn_departements) { nil }
-  let(:codes_bcn_regions) { nil }
-  let(:identifiants_siren_intercommunalites) { nil }
+  let(:codes_bcn_regions) { %w[11] }
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }
@@ -76,7 +72,7 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidateParams, type: :validate_params 
   end
 
   context 'with no perimetre' do
-    let(:codes_cog_insee_communes) { nil }
+    let(:codes_bcn_regions) { nil }
 
     it { is_expected.to be_a_failure }
 

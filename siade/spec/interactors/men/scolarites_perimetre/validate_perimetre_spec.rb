@@ -4,31 +4,13 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
 
     let(:params) do
       {
-        codes_cog_insee_communes:,
         codes_bcn_departements:,
-        codes_bcn_regions:,
-        identifiants_siren_intercommunalites:
+        codes_bcn_regions:
       }
     end
 
-    let(:codes_cog_insee_communes) { nil }
     let(:codes_bcn_departements) { nil }
     let(:codes_bcn_regions) { nil }
-    let(:identifiants_siren_intercommunalites) { nil }
-
-    context 'with one commune perimetre' do
-      let(:codes_cog_insee_communes) { %w[75056] }
-
-      it { is_expected.to be_a_success }
-
-      it 'sets perimetre_type' do
-        expect(subject.perimetre_type).to eq('commune')
-      end
-
-      it 'sets perimetre_valeurs' do
-        expect(subject.perimetre_valeurs).to eq(%w[75056])
-      end
-    end
 
     context 'with one departement perimetre' do
       let(:codes_bcn_departements) { %w[075] }
@@ -48,15 +30,9 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
       it 'sets perimetre_type' do
         expect(subject.perimetre_type).to eq('region')
       end
-    end
 
-    context 'with one intercommunalite perimetre' do
-      let(:identifiants_siren_intercommunalites) { %w[200054781] }
-
-      it { is_expected.to be_a_success }
-
-      it 'sets perimetre_type' do
-        expect(subject.perimetre_type).to eq('communaute_commune')
+      it 'sets perimetre_valeurs' do
+        expect(subject.perimetre_valeurs).to eq(%w[11])
       end
     end
 
@@ -67,8 +43,8 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
     end
 
     context 'with two perimetres provided' do
-      let(:codes_cog_insee_communes) { %w[75056] }
       let(:codes_bcn_departements) { %w[075] }
+      let(:codes_bcn_regions) { %w[11] }
 
       it { is_expected.to be_a_failure }
 
@@ -76,26 +52,15 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
     end
 
     context 'with empty array perimetre' do
-      let(:codes_cog_insee_communes) { [] }
+      let(:codes_bcn_regions) { [] }
 
       it { is_expected.to be_a_failure }
     end
 
     context 'with array containing blank value' do
-      let(:codes_cog_insee_communes) { [''] }
+      let(:codes_bcn_regions) { [''] }
 
       it { is_expected.to be_a_failure }
-    end
-
-    context 'with invalid commune code format' do
-      let(:codes_cog_insee_communes) { %w[ABCDE] }
-
-      it { is_expected.to be_a_failure }
-
-      it 'returns codes_cog_insee_communes error' do
-        error = subject.errors.find { |e| e.code == '00415' }
-        expect(error).to be_present
-      end
     end
 
     context 'with invalid departement code format' do
@@ -116,17 +81,6 @@ RSpec.describe MEN::ScolaritesPerimetre::ValidatePerimetre, type: :validate_para
 
       it 'returns codes_bcn_regions error' do
         error = subject.errors.find { |e| e.code == '00417' }
-        expect(error).to be_present
-      end
-    end
-
-    context 'with invalid SIREN intercommunalite' do
-      let(:identifiants_siren_intercommunalites) { %w[123456789] }
-
-      it { is_expected.to be_a_failure }
-
-      it 'returns identifiants_siren_intercommunalites error' do
-        error = subject.errors.find { |e| e.code == '00418' }
         expect(error).to be_present
       end
     end

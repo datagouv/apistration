@@ -40,12 +40,6 @@ RSpec.describe 'MEN: Scolarites with perimeter', api: :particulier, type: %i[req
         example: SwaggerData.get('men.scolarite_perimetre.parameters.degre_etablissement.example'),
         required: true
 
-      parameter name: :'codesCogInseeCommunes[]',
-        in: :query,
-        schema: { type: :array, items: { type: :string } },
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_cog_insee_communes.description'),
-        required: false
-
       parameter name: :'codesBcnDepartements[]',
         in: :query,
         schema: { type: :array, items: { type: :string } },
@@ -58,12 +52,6 @@ RSpec.describe 'MEN: Scolarites with perimeter', api: :particulier, type: %i[req
         description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_regions.description'),
         required: false
 
-      parameter name: :'identifiantsSirenIntercommunalites[]',
-        in: :query,
-        schema: { type: :array, items: { type: :string } },
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.identifiants_siren_intercommunalites.description'),
-        required: false
-
       let(:nomNaissance) { 'NOMFAMILLE' }
       let(:'prenoms[]') { %w[prenom] }
       let(:anneeDateNaissance) { '2000' }
@@ -72,7 +60,7 @@ RSpec.describe 'MEN: Scolarites with perimeter', api: :particulier, type: %i[req
       let(:sexeEtatCivil) { 'f' }
       let(:anneeScolaire) { '2021' }
       let(:degreEtablissement) { '2D' }
-      let(:'codesCogInseeCommunes[]') { %w[75056] }
+      let(:'codesBcnRegions[]') { %w[11] }
 
       unauthorized_request
 
@@ -116,10 +104,6 @@ RSpec.describe 'MEN: Scolarites with perimeter', api: :particulier, type: %i[req
         describe 'server errors' do
           unprocessable_content_error_request(:degre_etablissement) do
             let(:degreEtablissement) { 'invalid' }
-          end
-
-          unprocessable_content_error_request(:codes_cog_insee_communes) do
-            let(:'codesCogInseeCommunes[]') { %w[ABCDE] }
           end
 
           common_provider_errors_request('MEN', MEN::ScolaritesPerimetre)
