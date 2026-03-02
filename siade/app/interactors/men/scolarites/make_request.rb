@@ -45,15 +45,12 @@ class MEN::Scolarites::MakeRequest < MakeRequest
   end
 
   def mocking_search_params
-    if context.perimetre_type
-      {
-        degreEtablissement: params[:degre_etablissement],
-        codesBcnDepartements: params[:codes_bcn_departements],
-        codesBcnRegions: params[:codes_bcn_regions]
-      }
-    else
-      { codeEtablissement: params[:code_etablissement] }
-    end
+    {
+      codeEtablissement: params[:code_etablissement],
+      degreEtablissement: params[:degre_etablissement],
+      codesBcnDepartements: params[:codes_bcn_departements],
+      codesBcnRegions: params[:codes_bcn_regions]
+    }
   end
 
   def api_call
