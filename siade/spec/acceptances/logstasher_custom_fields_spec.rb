@@ -1,3 +1,4 @@
+# rubocop:disable Style/OneClassPerFile
 class APIParticulier::V2::DummyController < APIParticulier::V2::BaseController; end
 
 class APIParticulier::V2::DummyFranceConnectedController < APIParticulier::V2::BaseController
@@ -5,6 +6,7 @@ class APIParticulier::V2::DummyFranceConnectedController < APIParticulier::V2::B
 end
 
 class APIEntreprise::V3AndMore::DummyController < APIController; end
+# rubocop:enable Style/OneClassPerFile
 
 # rubocop:disable Lint/NestedMethodDefinition
 def define_dummy_controller(controller_klass)

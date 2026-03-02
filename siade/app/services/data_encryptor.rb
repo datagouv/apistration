@@ -44,7 +44,7 @@ class DataEncryptor
 
   def public_key_ids
     Dir['config/gpg_public_keys_for_data_encryption/*.asc'].map do |key|
-      GPGME::Key.import(File.open(key)).imports.first.fpr
+      GPGME::Key.import(File.read(key)).imports.first.fpr
     end
   end
 

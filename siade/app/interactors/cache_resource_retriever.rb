@@ -118,6 +118,6 @@ class CacheResourceRetriever < ApplicationInteractor
       ForbiddenError,
       MaintenanceError,
       NotImplementedError
-    ].any? { |error| retrieved_context.errors.any? { |e| e.is_a?(error) } }
+    ].any? { |error| retrieved_context.errors.any?(error) }
   end
 end

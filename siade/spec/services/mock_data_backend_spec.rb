@@ -73,8 +73,8 @@ RSpec.describe MockDataBackend, type: :service do
       context 'with endpoint1 example' do
         let(:operation_id) { 'whatever_endpoint1' }
         let(:params) do
-          %w[arg1 arg2 arg3].shuffle.each_with_object({}) do |arg, hash|
-            hash[arg] = arg
+          %w[arg1 arg2 arg3].shuffle.to_h do |arg|
+            [arg, arg]
           end
         end
 
@@ -104,8 +104,8 @@ RSpec.describe MockDataBackend, type: :service do
 
         context 'when 2 params match (in whatever order)' do
           let(:params) do
-            %w[arg1 arg2].shuffle.each_with_object({}) do |arg, hash|
-              hash[arg] = arg
+            %w[arg1 arg2].shuffle.to_h do |arg|
+              [arg, arg]
             end
           end
 
