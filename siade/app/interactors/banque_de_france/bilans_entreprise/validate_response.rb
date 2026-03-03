@@ -1,6 +1,6 @@
 class BanqueDeFrance::BilansEntreprise::ValidateResponse < ValidateResponse
   def call
-    internal_server_error! if http_code == 408
+    internal_server_error! if provider_internal_error?
 
     unknown_provider_response! if !http_ok? || invalid_json?
 
@@ -13,6 +13,10 @@ class BanqueDeFrance::BilansEntreprise::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def provider_internal_error?
+    http_code == 408 || http_internal_error?
+  end
 
   def not_found?
     [
