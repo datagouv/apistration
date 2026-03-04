@@ -1,8 +1,8 @@
 {
   "individu": {
-    "nomFamille": "Delaforet",
-    "prenoms": "MANU",
-    "dateNaissance": "03051990",
+    "nomFamilleSngi": "Delaforet",
+    "prenomsSngi": "MANU",
+    "dateNaissanceSngi": "03051990",
     "entreprise": [
       {
         "siren": "344422482",
