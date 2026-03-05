@@ -58,8 +58,7 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
               id: 'c1a72399-2fdd-427e-a9f7-dc480f158603',
               iat: 2.hours.ago.to_i,
               exp: 3.hours.from_now.to_i,
-              authorization_request_model_id: AuthorizationRequest.create.id,
-              scopes: %w[open_data]
+              authorization_request_model_id: AuthorizationRequest.create!(scopes: %w[open_data]).id
             )
           end
 

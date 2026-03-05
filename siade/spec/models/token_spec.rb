@@ -13,10 +13,9 @@ RSpec.describe Token do
     let(:token) do
       described_class.create!(
         iat: 1.hour.ago.to_i,
-        scopes: %(open_data),
         exp: 5.hours.from_now.to_i,
         blacklisted_at: nil,
-        authorization_request_model_id: AuthorizationRequest.create!(siret:).id
+        authorization_request_model_id: AuthorizationRequest.create!(siret:, scopes: %(open_data)).id
       )
     end
     let(:jwt_user_attributes) do

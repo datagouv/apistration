@@ -1,6 +1,8 @@
 class Token < ApplicationRecord
   belongs_to :authorization_request, foreign_key: 'authorization_request_model_id', inverse_of: :tokens
 
+  delegate :scopes, to: :authorization_request
+
   def siret
     authorization_request.try(:siret)
   end

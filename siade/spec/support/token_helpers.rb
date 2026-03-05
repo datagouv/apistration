@@ -1,10 +1,10 @@
 module TokenHelpers
   def affect_scopes_to_yes_jwt_token(scopes)
-    yes_jwt_token_database_model.update!(scopes:)
+    yes_jwt_token_database_model.authorization_request.update!(scopes:)
   end
 
   def reset_yes_jwt_token_scopes!
-    yes_jwt_token_database_model.update!(scopes: Scope.all)
+    yes_jwt_token_database_model.authorization_request.update!(scopes: Scope.all)
   end
 
   private

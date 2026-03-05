@@ -5,12 +5,11 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
     url_for(options.merge(_recall: {}))
   end
 
-  let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
+  let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234', scopes: Scope.all) }
   let(:token_record) do
     Token.create!(
       iat: 1.day.ago.to_i,
       exp: 1.year.from_now.to_i,
-      scopes: Scope.all,
       authorization_request_model_id: authorization_request.id
     )
   end

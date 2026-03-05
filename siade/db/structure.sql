@@ -37,9 +37,10 @@ CREATE TABLE public.authorization_requests (
     created_at timestamp without time zone,
     -- user_id uuid NOT NULL,
     -- previous_external_id character varying,
-    siret character varying
+    siret character varying,
     -- api character varying NOT NULL,
     -- demarche character varying
+    scopes jsonb DEFAULT '[]'::jsonb NOT NULL
 );
 
 ALTER TABLE ONLY public.authorization_requests ADD CONSTRAINT authorization_requests_pkey PRIMARY KEY (id);
