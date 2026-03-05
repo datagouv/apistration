@@ -389,6 +389,21 @@ shared:
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
 
+    cnav_allocation_enfant_handicape:
+      kind: 'make_request'
+      cache: <%= 30.minutes %>
+      provider: 'CNAV'
+      status_page:
+        name: "CNAV - Allocation Enfant Handicapé (AEEH)"
+      driver_params:
+        make_request: 'CNAV::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'allocation_enfant_handicape'
+          recipient: '13001922700011'
+        params: *cnav_driver_params
+        status_to_check: 404
+        token_interactor: 'CNAV::Authenticate'
+
     sdh_statut_sportif:
       kind: 'make_request'
       cache: <%= 2.minutes %>
