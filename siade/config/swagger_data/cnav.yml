@@ -519,7 +519,7 @@ cnav:
       \n
       L'indicateur précise si le particulier est allocataire, ouvrant droit ou non bénéficiaire de l'AEEH."
     tags:
-      - Prochainement
+      - Statut Allocation d'Éducation de l'Enfant Handicapé (AEEH)
     attributes:
       status:
         title: "Statut bénéficiaire de l'allocation d'éducation de l'enfant handicapé (AEEH)"
