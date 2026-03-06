@@ -12,6 +12,7 @@ API Entreprise :
 API Particulier :
 
 - FranceConnect ;
+- GIP-MDS ;
 - Quotient Familial v2 ;
 - Complémentaire Santé Solidaire
 
