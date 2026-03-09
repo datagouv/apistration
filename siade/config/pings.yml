@@ -647,7 +647,7 @@ shared:
         retriever: 'GIPMDS::EffectifsAnnuelsEntreprise'
         params:
           siren: '552032534'
-          year: '2020'
+          year: '2024'
     fabrique_numerique_ministeres_sociaux/conventions_collectives:
       kind: 'retriever'
       cache: <%= 1.minute %>
