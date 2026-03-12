@@ -1,0 +1,74 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "34d5a05061a26c43b6f481a69e605642db95006dc57434a7239872f92e1226b7",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/ping_drivers/abstract_ping_driver.rb",
+      "line": 41,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Arel.sql(\"COUNT(*), COUNT(*) FILTER (WHERE status IN (#{error_statuses.map do\n \"'#{s}'\"\n end.join(\", \")}))\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AbstractPingDriver",
+        "method": "error_ratio_too_high?"
+      },
+      "user_input": "error_statuses.map do\n \"'#{s}'\"\n end.join(\", \")",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 25,
+      "fingerprint": "731049e7eb9aedaa3997bbc85a64724785cddaa50598a10c85c4e146bcc8d0d1",
+      "check_name": "Deserialize",
+      "message": "Use of `Marshal.load` may be dangerous",
+      "file": "app/services/encrypted_cache.rb",
+      "line": 77,
+      "link": "https://brakemanscanner.org/docs/warning_types/unsafe_deserialization",
+      "code": "Marshal.load(value)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "EncryptedCache",
+        "method": "unmarshal"
+      },
+      "user_input": null,
+      "confidence": "Weak",
+      "cwe_id": [
+        502
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 25,
+      "fingerprint": "8f35007ed505360537dfaa83e80c84327bd3cf5e05a94368f83daa76187fd1af",
+      "check_name": "Deserialize",
+      "message": "Use of `Marshal.restore` may be dangerous",
+      "file": "app/services/redis_service.rb",
+      "line": 10,
+      "link": "https://brakemanscanner.org/docs/warning_types/unsafe_deserialization",
+      "code": "Marshal.restore(safe_run(:get, key))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RedisService",
+        "method": "restore"
+      },
+      "user_input": null,
+      "confidence": "Weak",
+      "cwe_id": [
+        502
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "8.0.4"
+}
