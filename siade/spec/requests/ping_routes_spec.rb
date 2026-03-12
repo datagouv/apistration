@@ -36,6 +36,19 @@ RSpec.describe 'Ping routes' do
         allow(AccessLogPingView).to receive(:where).and_return(
           AccessLogPingView.none
         )
+      when 'cnav'
+        token_interactor = Kernel.const_get(ping_config[:driver_params][:token_interactor])
+        make_request_interactor = Kernel.const_get(ping_config[:driver_params][:make_request])
+
+        allow(token_interactor).to receive(:call).and_return(
+          Interactor::Context.new(token: 'token')
+        )
+        allow(make_request_interactor).to receive(:call).and_return(
+          Interactor::Context.new(response: OpenStruct.new(code: '404'))
+        )
+        allow(AccessLogPingView).to receive(:where).and_return(
+          AccessLogPingView.none
+        )
       end
     end
   end

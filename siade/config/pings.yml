@@ -114,6 +114,32 @@ test:
         routes:
           - 'api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
 
+    with_cnav:
+      kind: 'cnav'
+      provider: 'CNAV'
+      driver_params:
+        make_request: 'CNAV::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'complementaire_sante_solidaire'
+        params:
+          nom_naissance: 'DUPONT'
+          prenoms:
+            - 'JEAN'
+          annee_date_naissance: 2000
+          mois_date_naissance: 1
+          jour_date_naissance: 1
+          sexe_etat_civil: 'M'
+          code_cog_insee_pays_naissance: '99100'
+          code_cog_insee_commune_naissance: '17300'
+          user_id: 'PING_DINUM'
+          request_id: '22222222-2222-2222-2222-222222222222'
+        token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAV'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect#show'
+          - 'api_particulier/v2/cnav/complementaire_sante_solidaire#show'
+
 shared:
   api_particulier:
     ants:
@@ -274,7 +300,7 @@ shared:
         status_to_check: 404
 
     cnaf_msa_quotient_familial:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAF & MSA'
       status_page:
@@ -296,11 +322,15 @@ shared:
           code_cog_insee_commune_naissance: '17300'
           user_id: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAF & MSA'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect#show'
+          - 'api_particulier/v2/cnav/quotient_familial_v2#show'
 
     securite_sociale_complementaire_sante_solidaire:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'Sécurité sociale'
       status_page:
@@ -311,11 +341,15 @@ shared:
           dss_prestation_name: 'complementaire_sante_solidaire'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'Sécurité sociale'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect#show'
+          - 'api_particulier/v2/cnav/complementaire_sante_solidaire#show'
 
     cnaf_msa_revenu_solidarite_active:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAF & MSA'
       status_page:
@@ -326,11 +360,15 @@ shared:
           dss_prestation_name: 'revenu_solidarite_active'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAF & MSA'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect#show'
+          - 'api_particulier/v2/cnav/revenu_solidarite_active#show'
 
     cnaf_msa_allocation_soutien_familial:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAF & MSA'
       status_page:
@@ -341,11 +379,15 @@ shared:
           dss_prestation_name: 'allocation_soutien_familial'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAF & MSA'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_france_connect#show'
+          - 'api_particulier/v2/cnav/allocation_soutien_familial#show'
 
     cnaf_msa_allocation_adulte_handicape:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAF & MSA'
       status_page:
@@ -356,11 +398,15 @@ shared:
           dss_prestation_name: 'allocation_adulte_handicape'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAF & MSA'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect#show'
+          - 'api_particulier/v2/cnav/allocation_adulte_handicape#show'
 
     cnaf_msa_prime_activite:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAF & MSA'
       status_page:
@@ -371,11 +417,15 @@ shared:
           dss_prestation_name: 'prime_activite'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAF & MSA'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/prime_activite_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/prime_activite_with_france_connect#show'
+          - 'api_particulier/v2/cnav/prime_activite#show'
 
     cnaf_msa_participation_familiale_eaje:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAF & MSA'
       status_page:
@@ -386,11 +436,14 @@ shared:
           dss_prestation_name: 'participation_familiale_eaje'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAF & MSA'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect#show'
 
     cnav_allocation_enfant_handicape:
-      kind: 'make_request'
+      kind: 'cnav'
       cache: <%= 30.minutes %>
       provider: 'CNAV'
       status_page:
@@ -401,8 +454,11 @@ shared:
           dss_prestation_name: 'allocation_enfant_handicape'
           recipient: '13001922700011'
         params: *cnav_driver_params
-        status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
+        provider: 'CNAV'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect#show'
 
     sdh_statut_sportif:
       kind: 'make_request'
