@@ -45,9 +45,11 @@ class PingService
   end
 
   def status
-    @status ||= ping_driver.new(ping_config.fetch(:driver_params)).perform
+    @status ||= Timeout.timeout(5) { ping_driver.new(ping_config.fetch(:driver_params)).perform }
   rescue KeyError
     :not_found
+  rescue Timeout::Error
+    :bad_gateway
   end
 
   def ping_driver

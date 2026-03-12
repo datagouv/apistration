@@ -107,6 +107,21 @@ RSpec.describe PingService, type: :service do
           end
         end
 
+        context 'when driver times out' do
+          let(:status) { :bad_gateway }
+
+          before do
+            allow(RetrieverPingDriver).to receive(:new).and_raise(Timeout::Error)
+          end
+
+          it do
+            expect(make_ping).to eq({
+              status: :bad_gateway,
+              json: json_payload
+            })
+          end
+        end
+
         describe 'with cache' do
           let(:identifier) { 'with_retriever_and_cache' }
           let(:cache_key) { "ping_#{api_kind}_#{identifier}" }
