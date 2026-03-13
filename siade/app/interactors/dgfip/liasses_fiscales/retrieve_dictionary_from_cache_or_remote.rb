@@ -1,12 +1,11 @@
 class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationInteractor
   def call
-    if retriever.success?
-      affect_dictionary_from_retriever
-    elsif local_file_exists?
-      affect_dictionary_from_local
-    else
-      handle_errors
-    end
+    return affect_dictionary_from_local if load_local_dgfip_dictionnaries? && local_file_exists?
+    return handle_missing_local_file if load_local_dgfip_dictionnaries?
+    return affect_dictionary_from_retriever if retriever.success?
+    return affect_dictionary_from_local if local_file_exists?
+
+    handle_errors
   end
 
   private
@@ -23,6 +22,11 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
 
   def handle_errors
     context.errors = retriever.errors
+    context.fail!
+  end
+
+  def handle_missing_local_file
+    context.errors = [ProviderUnavailable.new('DGFIP - Adélie')]
     context.fail!
   end
 
@@ -81,6 +85,10 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
 
   def request_id
     context.params.fetch(:request_id)
+  end
+
+  def load_local_dgfip_dictionnaries?
+    Rails.application.config_for(:features)[:load_local_dgfip_dictionnaries]
   end
 
   def expires_in

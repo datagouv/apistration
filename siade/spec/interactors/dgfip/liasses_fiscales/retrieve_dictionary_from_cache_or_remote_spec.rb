@@ -94,4 +94,30 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
       its(:dictionary) { is_expected.to be_nil }
     end
   end
+
+  describe 'when load_local_dgfip_dictionnaries feature flag is enabled' do
+    before do
+      allow(Rails.application).to receive(:config_for).and_call_original
+      allow(Rails.application).to receive(:config_for).with(:features).and_return(load_local_dgfip_dictionnaries: true)
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'does not call DGFIP remote' do
+      expect(CacheResourceRetriever).not_to receive(:call)
+
+      subject
+    end
+
+    it 'loads dictionary from local file' do
+      expect(subject.dictionary).to be_an(Array)
+      expect(subject.dictionary.first).to have_key('numero_imprime')
+    end
+
+    context 'when local file does not exist' do
+      let(:year) { 1990 }
+
+      it { is_expected.to be_a_failure }
+    end
+  end
 end

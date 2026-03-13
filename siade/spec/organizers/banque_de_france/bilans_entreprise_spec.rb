@@ -53,5 +53,29 @@ RSpec.describe BanqueDeFrance::BilansEntreprise, type: :retriever_organizer do
         expect(resource_collection.first.declarations).to be_present
       end
     end
+
+    context 'when load_local_dgfip_dictionnaries feature flag is enabled' do
+      let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+
+      before do
+        mock_valid_banque_de_france
+
+        allow(Rails.application).to receive(:config_for).and_call_original
+        allow(Rails.application).to receive(:config_for).with(:features).and_return(load_local_dgfip_dictionnaries: true)
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'does not call DGFIP' do
+        expect(CacheResourceRetriever).not_to receive(:call)
+
+        subject
+      end
+
+      it 'retrieves the resource collection with enriched declarations' do
+        expect(resource_collection).to be_present
+        expect(resource_collection.first.declarations).to be_present
+      end
+    end
   end
 end
