@@ -1,3 +1,6 @@
 ---
 shared:
   load_local_dgfip_dictionnaries: false
+
+production:
+  load_local_dgfip_dictionnaries: true
