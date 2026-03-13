@@ -33,5 +33,25 @@ RSpec.describe BanqueDeFrance::BilansEntreprise, type: :retriever_organizer do
         expect(resource_collection).to be_present
       end
     end
+
+    context 'when DGFIP is down and dictionaries fall back to local files' do
+      let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+
+      before do
+        mock_valid_banque_de_france
+
+        stub_request(:post, "#{Siade.credentials[:dgfip_apim_base_url]}/token")
+          .to_return(status: 503)
+        stub_request(:get, %r{#{Siade.credentials[:dgfip_apim_base_url]}/adelie/v1/dictionnaire})
+          .to_return(status: 503)
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'retrieves the resource collection with enriched declarations' do
+        expect(resource_collection).to be_present
+        expect(resource_collection.first.declarations).to be_present
+      end
+    end
   end
 end

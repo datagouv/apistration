@@ -70,7 +70,8 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
       let(:year) { 2019 }
 
       it 'renders valid dictionary' do
-        expect(subject.dictionary['dictionnaire']).to be_present
+        expect(subject.dictionary).to be_an(Array)
+        expect(subject.dictionary.first).to have_key('numero_imprime')
       end
 
       it 'tracks the fetch from local data' do

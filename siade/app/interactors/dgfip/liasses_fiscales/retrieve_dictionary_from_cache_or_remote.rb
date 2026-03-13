@@ -16,7 +16,7 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
   end
 
   def affect_dictionary_from_local
-    context.dictionary = JSON.parse(File.read(local_file_path))
+    context.dictionary = JSON.parse(File.read(local_file_path))['dictionnaire']
 
     track_local_load
   end
