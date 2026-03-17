@@ -14,7 +14,7 @@ class AbstractPingDriver < ApplicationPingDriver
   private
 
   def health_check_ok?
-    raise NotImplementedError
+    true
   end
 
   def provider

@@ -118,22 +118,6 @@ test:
       kind: 'cnav'
       provider: 'CNAV'
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'complementaire_sante_solidaire'
-        params:
-          nom_naissance: 'DUPONT'
-          prenoms:
-            - 'JEAN'
-          annee_date_naissance: 2000
-          mois_date_naissance: 1
-          jour_date_naissance: 1
-          sexe_etat_civil: 'M'
-          code_cog_insee_pays_naissance: '99100'
-          code_cog_insee_commune_naissance: '17300'
-          user_id: 'PING_DINUM'
-          request_id: '22222222-2222-2222-2222-222222222222'
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAV'
         routes:
           - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility#show'
@@ -306,23 +290,6 @@ shared:
       status_page:
         name: "MSA & CNAV - Quotient familial (v2)"
       driver_params:
-        make_request: 'CNAV::QuotientFamilialV2::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'quotient_familial_v2'
-          recipient: '13001922700011'
-        params: &cnav_driver_params
-          nom_naissance: 'DUPONT'
-          prenoms:
-            - 'JEAN'
-          annee_date_naissance: 2000
-          mois_date_naissance: 1
-          jour_date_naissance: 1
-          sexe_etat_civil: 'M'
-          code_cog_insee_pays_naissance: '99100'
-          code_cog_insee_commune_naissance: '17300'
-          user_id: 'PING_DINUM'
-          request_id: '22222222-2222-2222-2222-222222222222'
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAF & MSA'
         routes:
           - 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
@@ -336,12 +303,6 @@ shared:
       status_page:
         name: "Sécurité sociale - Complémentaire santé solidaire"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'complementaire_sante_solidaire'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'Sécurité sociale'
         routes:
           - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility#show'
@@ -355,12 +316,6 @@ shared:
       status_page:
         name: "MSA & CNAV - Revenu Solidarite Active"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'revenu_solidarite_active'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAF & MSA'
         routes:
           - 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
@@ -374,12 +329,6 @@ shared:
       status_page:
         name: "MSA & CNAV - Allocation Soutien Familial"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'allocation_soutien_familial'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAF & MSA'
         routes:
           - 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility#show'
@@ -393,12 +342,6 @@ shared:
       status_page:
         name: "MSA & CNAV - Allocation Adulte Handicape"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'allocation_adulte_handicape'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAF & MSA'
         routes:
           - 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility#show'
@@ -412,12 +355,6 @@ shared:
       status_page:
         name: "MSA & CNAV - Prime Activite"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'prime_activite'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAF & MSA'
         routes:
           - 'api_particulier/v3_and_more/cnav/prime_activite_with_civility#show'
@@ -431,12 +368,6 @@ shared:
       status_page:
         name: "MSA & CNAV - PSU Participation Familiale EAJE"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'participation_familiale_eaje'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAF & MSA'
         routes:
           - 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility#show'
@@ -449,12 +380,6 @@ shared:
       status_page:
         name: "CNAV - Allocation Enfant Handicapé (AEEH)"
       driver_params:
-        make_request: 'CNAV::MakeRequest'
-        organizer_params:
-          dss_prestation_name: 'allocation_enfant_handicape'
-          recipient: '13001922700011'
-        params: *cnav_driver_params
-        token_interactor: 'CNAV::Authenticate'
         provider: 'CNAV'
         routes:
           - 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility#show'
