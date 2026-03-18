@@ -2,6 +2,10 @@ env:
   CI: true
   COVERAGE: true
 
+defaults:
+  run:
+    working-directory: siade
+
 name: CI - CD
 on:
   pull_request:
@@ -21,6 +25,8 @@ jobs:
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
+        with:
+          working-directory: siade
 
       - name: Brakeman
         uses: reviewdog/action-brakeman@v2
@@ -39,6 +45,7 @@ jobs:
       with:
         bundler-cache: true
         cache-version: 347
+        working-directory: siade
 
     - name: Run RuboCop
       run: bundle exec rubocop --parallel
@@ -74,6 +81,7 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 322
+          working-directory: siade
 
       - name: Run install.sh
         run: ./bin/install.sh
@@ -93,6 +101,7 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 322
+          working-directory: siade
 
       - name: Check Zeitwerk
         run: |
@@ -137,6 +146,7 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 322
+          working-directory: siade
 
       - name: Update repository
         run: sudo apt-get update
@@ -176,6 +186,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Force push develop to master
+        working-directory: .
         run: |
           git push --force origin develop:master
 
@@ -206,6 +217,7 @@ jobs:
     steps:
       - name: Download and run deploy script
         shell: bash
+        working-directory: .
         run: |
           git clone https://github.com/etalab/api-entreprise-integration
           cd api-entreprise-integration
@@ -240,6 +252,7 @@ jobs:
     steps:
       - name: Download and run deploy script
         shell: bash
+        working-directory: .
         run: |
           git clone https://github.com/etalab/api-entreprise-integration
           cd api-entreprise-integration

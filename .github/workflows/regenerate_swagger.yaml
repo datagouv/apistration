@@ -42,14 +42,18 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 322
+          working-directory: siade
 
       - name: Run install.sh
         run: ./bin/install.sh
+        working-directory: siade
 
       - name: Regenerate Swagger
         run: ./bin/generate_swagger.sh
+        working-directory: siade
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Regenerate Swagger (from Github Actions)"
+          repository: siade

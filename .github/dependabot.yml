@@ -11,7 +11,7 @@ updates:
       rubocop:
         patterns:
         - "rubocop*"
-    directory: "/"
+    directory: "/siade"
     schedule:
       day: "monday"
       time: "05:00"
