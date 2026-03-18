@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_MI>/apim/api-asso-partenaires/api/structure/W432543654?proxy_only=true"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      X-Gravitee-Api-Key:
+      - "<MI_API_KEY>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Jul 2022 07:45:52 GMT
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '321'
+      Connection:
+      - keep-alive
+      X-Gravitee-Transaction-Id:
+      - ad79c818-9589-438e-b9c8-189589638e10
+      X-Gravitee-Request-Id:
+      - ad79c818-9589-438e-b9c8-189589638e10
+      Set-Cookie:
+      - BIGipServerpool-siva-esb.cegedim.cloud-TCP8181=!v7qrK2ig4lGqfNC057/oC+DRUtJHDCW+BaJp/hw/GFPrnEmVu0TKO8Z8QTMNNDGjGfuYQEdeKX9JJr6f+YsWT9BaNF5OHtulTUPTL6fsJjDSqBJJCPntU/bI3wLfOE7rC0oJPypkoID2qkY+GpfNbn+I6CXUUA6mx/OP3kB37X/capCbbepwAw8lcQD2;
+        path=/; Httponly; Secure
+      - BIGipServerpool-siva-production.cegedim.cloud-HTTP=!fbPFEv/iFgPeI+C057/oC+DRUtJHDPiB3XxkhHg/f7J4bV/rqhEIPd5n0PsNsNWmyMqDoC+vMrD8mhyK5GphOiTTFPkk;
+        path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        <asso>
+        <erreur>
+        <proxy_correspondance>org.apache.camel.http.common.HttpOperationFailedException: HTTP operation failed invoking http://localhost:8181/services/proxy_db_asso/correspondance/idsByRna/W432543654 with statusCode: 404</proxy_correspondance>
+        </erreur>
+        <identite>
+        <id_rna>W432543654</id_rna>
+        </identite>
+        </asso>
+  recorded_at: Mon, 04 Jul 2022 07:45:52 GMT
+recorded_with: VCR 6.1.0

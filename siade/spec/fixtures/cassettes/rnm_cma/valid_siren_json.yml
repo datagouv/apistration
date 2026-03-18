@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <RNM_DOMAIN>/v2/entreprises/301123626?format=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/10.0
+      X-Aspnetmvc-Version:
+      - '5.2'
+      X-Aspnet-Version:
+      - 4.0.30319
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Thu, 14 Jan 2021 09:32:11 GMT
+      Content-Length:
+      - '1979'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6MTkxMzksImVudF9pZF9udW1fZ2VzdGlvbiI6IjE3OTQ1NjQ3NSIsImVudF9pZF9zaXJlbiI6IjMwMTEyMzYyNiIsImVudF9pZF9vcmlnaW5lIjoiMyIsImVudF9hZHJfbnVtZXJvX3ZvaWUiOiIxMTEiLCJlbnRfYWRyX2luZGljZV9yZXBldGl0aW9uIjoiIiwiZW50X2Fkcl90eXBlX3ZvaWUiOiJSVUUiLCJlbnRfYWRyX2FkcmVzc2UiOiJERSBCRUxMRVZJTExFIiwiZW50X2Fkcl9hZHJlc3NlX2NvbXBsZW1lbnQiOiIiLCJlbnRfYWRyX2NvZGVfcG9zdGFsIjoiNzUwMTkiLCJlbnRfYWRyX2NvbW11bmUiOiJQQVJJUyIsImVudF9hZHJfY29tbXVuZV9jb2ciOiI3NTExOSIsImVudF9hY3RfY29kZV9uYWZhX3ByaW5jaXBhbCI6Ijk2MDJBQSIsImVudF9hY3RfY29kZV9uYWZhX3NlY29uZGFpcmVfMSI6IiIsImVudF9hY3RfY29kZV9uYWZhX3NlY29uZGFpcmVfMiI6IiIsImVudF9hY3RfY29kZV9uYWZhX3NlY29uZGFpcmVfMyI6IiIsImVudF9hY3RfZGF0ZV9pbW1hdF9ybSI6IjE5NjQtMDYtMDNUMTI6MDA6MDBaIiwiZW50X2FjdF9kYXRlX3JhZGlhdGlvbiI6bnVsbCwiZW50X2FjdF9kYXRlX2RlYnV0X2FjdGl2aXRlIjoiMTk2NC0wMy0wMlQxMjowMDowMFoiLCJlbnRfYWN0X2RhdGVfY2Vzc2F0aW9uX2FjdGl2aXRlIjpudWxsLCJlbnRfYWN0X2RhdGVfY2xvdHVyZV9saXF1aWRhdGlvbiI6bnVsbCwiZW50X2FjdF9kYXRlX3RyYW5zZmVydF9wYXRyaW1vaW5lIjpudWxsLCJlbnRfYWN0X2RhdGVfZGlzc29sdXRpb24iOm51bGwsImVudF9hY3RfbW9kYWxpdGVfZXhlcmNpY2UiOiJQIiwiZW50X2FjdF9ub25fc2VkZW50YWlyZSI6IjAiLCJlbnRfYWN0X2FjdGl2aXRlX2FydGlzYW5hbGVzX2RlY2xhcmVlcyI6IlBSRVNUQVRJT04gREUgU0VSVklDRSBDT01NRVJDRSBDUkVBVElPTiBBQ1FVSVNJVElPTiBFVCBFWFBMT0lUQVRJT04gREUgVE9VVCBTQUxPTiBERSBDT0lGRlVSRSBEQU1FUyBNQU5VQ1VSRSBQRURJQ1VSRSBTT0lOUyBERSBCRUFVVEUgRVNUSCIsImVudF9hY3RfZGVub21pbmF0aW9uX3NvY2lhbGUiOiJDSFJJU1RJQU4gTEFDT1VUIiwiZW50X2FjdF9zaWdsZSI6IiIsImVudF9hY3RfZm9ybWVfanVyaWRpcXVlIjoiNTQ5OSIsImVudF9lZmZfc2FsYXJpZSI6IjEyIiwiZW50X2VmZl9hcHByZW50aSI6IjAiLCJlbnRfanVnX3Byb2NlZHVyZXMiOiIiLCJnZXN0X21hal9maWNoaWVyIjoiMjAyMS0wMS0xNFQwMjowMDoxNFoiLCJnZXN0X2RhdGVfbWFqIjoiMjAxOS0xMS0wMlQwOTowOToyNVoiLCJkaXJfcWFfcXVhbGlmaWNhdGlvbiI6Ik1BSVRSRSBBUlRJU0FOIiwiZGlyX2lkX25vbV9uYWlzc2FuY2UiOm51bGwsImRpcl9pZF9ub21fdXNhZ2UiOm51bGwsImRpcl9pZF9wcmVub21fMSI6bnVsbCwiZGlyX2lkX3ByZW5vbV8yIjpudWxsLCJkaXJfaWRfcHJlbm9tXzMiOm51bGwsImRpcl9pZF9wc2V1ZG9ueW1lIjpudWxsLCJkaXJfaWRfZGF0ZV9uYWlzc2FuY2UiOm51bGwsImRpcl9pZF9saWV1X25haXNzYW5jZSI6bnVsbCwiZWlybF9pbml0X25vbV9yZWdpc3RyZSI6bnVsbCwiZWlybF9kZW5vbWluYXRpb24iOm51bGwsImVpcmxfb2JqZXRfZGFwIjpudWxsLCJlaXJsX2RhdGVfZGVwb3QiOm51bGwsImdlc3RfbmFyXzQiOiJTRVJWSUNFUyIsImdlc3RfbmFyXzIwIjoiQkxBTkNISVNTRVJJRSwgVEVJTlRVUkVSSUUsIFNPSU5TIEEgTEEgUEVSU09OTkUiLCJnZXN0X2xpYmVsbGVfY29kZV9uYWZhIjoiQ29pZmZ1cmUgZW4gc2Fsb24gIiwiZ2VzdF9kZXB0IjoiUEFSSVMiLCJnZXN0X3JlZyI6IklMRS1ERS1GUkFOQ0UiLCJnZXN0X2VtZXR0ZXVyIjoiTTc1MDEiLCJnZXN0X2NhdGVnb3JpZSI6IlBNIiwiZ2VzdF9sYWJlbF9mb3JtZV9qdXJpZGlxdWUiOiJTb2Npw6l0w6kgw6AgcmVzcG9uc2FiaWxpdMOpIGxpbWl0w6llIChzYW5zIGF1dHJlIGluZGljYXRpb24pIiwiZXBjaSI6Ik3DqXRyb3BvbGUgZHUgR3JhbmQgUGFyaXMiLCJlbnRfYWN0X2NvZGVfYXBlbiI6bnVsbH0=
+    http_version:
+  recorded_at: Thu, 14 Jan 2021 09:32:11 GMT
+recorded_with: VCR 3.0.3

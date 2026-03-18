@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_INSEE_AUTH>"
+    body:
+      encoding: US-ASCII
+      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=insee_apim_password
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - no-store
+      X-Content-Type-Options:
+      - nosniff
+      Set-Cookie:
+      - INSEE=1880501002.58148.0000; expires=Fri, 19-Nov-2021 12:30:13 GMT; path=/;
+        Httponly; Secure
+      - pdapimgateway=1846946570.22560.0000; expires=Fri, 19-Nov-2021 12:30:13 GMT;
+        path=/; Httponly; Secure
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 19 Nov 2021 12:10:12 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"<INSEE_TOKEN>","scope":"am_application_scope
+        default","token_type":"Bearer","expires_in":341279}'
+  recorded_at: Fri, 19 Nov 2021 12:10:12 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret?q=etablissementSiege:true%20AND%20siren:306138900"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST,GET
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000; expires=Fri, 19-Nov-2021 12:30:13 GMT; path=/;
+        Httponly; Secure
+      - pdapimgateway=1846946570.22560.0000; expires=Fri, 19-Nov-2021 12:30:13 GMT;
+        path=/; Httponly; Secure
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      X-Total-Count:
+      - '1'
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Link:
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=etablissementSiege%3Atrue+AND+siren%3A306138900&debut=0&nombre=1>;
+        rel="first"
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=etablissementSiege%3Atrue+AND+siren%3A306138900&debut=0&nombre=1>;
+        rel="last"
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 19 Nov 2021 12:10:12 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"header":{"statut":200,"message":"OK","total":1,"debut":0,"nombre":1},"etablissements":[{"siren":"306138900","nic":"01294","siret":"30613890001294","statutDiffusionEtablissement":"O","dateCreationEtablissement":"2008-04-21","trancheEffectifsEtablissement":"51","anneeEffectifsEtablissement":"2019","activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2021-10-27T08:15:52","etablissementSiege":true,"nombrePeriodesEtablissement":4,"uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1977-01-01","categorieJuridiqueUniteLegale":"5800","denominationUniteLegale":"SPORT-EXEMPLE","sigleUniteLegale":null,"denominationUsuelle1UniteLegale":"SPORT-EXEMPLE","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"68.20B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":"N","caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"51","anneeEffectifsUniteLegale":"2019","nicSiegeUniteLegale":"01294","dateDernierTraitementUniteLegale":"2021-10-27T08:15:52","categorieEntreprise":"GE","anneeCategorieEntreprise":"2019"},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"123","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"DE
+        LA PAIX","codePostalEtablissement":"75001","libelleCommuneEtablissement":"PARIS","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":"BP
+        123","codeCommuneEtablissement":"75001","codeCedexEtablissement":"75001","libelleCedexEtablissement":"PARIS
+        CEDEX 01","codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.10Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2007-12-31","dateDebut":"2002-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"74.1J","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2002-12-24","dateDebut":"1998-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"1998-12-24","dateDebut":"1994-12-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false}]}]}'
+  recorded_at: Fri, 19 Nov 2021 12:10:13 GMT
+recorded_with: VCR 6.0.0

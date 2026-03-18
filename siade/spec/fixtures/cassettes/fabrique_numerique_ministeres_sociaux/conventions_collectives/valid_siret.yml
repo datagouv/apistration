@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <FABRIQUE_NUMERIQUE_CONVENTIONS_COLLECTIVES_URL>/82161143100015
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 15 Mar 2021 14:22:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"277-Fh7kPWXaalqOsg52Id5EhWCHS6w"
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siY29udmVudGlvbnMiOlt7ImFjdGl2ZSI6dHJ1ZSwiZGF0ZV9wdWJsaSI6IjIwMDEtMDUtMTVUMDA6MDA6MDAuMDAwWiIsImVmZmVjdGlmIjoxMjM0NTYsImV0YXQiOiJ2aWd1ZXVyIiwiaWQiOiJBTk9OWU1FMDAwMDAxMjM0NTY3IiwibXRpbWUiOjE2MTIzNDU2NzgsIm5hdHVyZSI6IkNDT0xMIiwibnVtIjo5ODc2LCJzaG9ydFRpdGxlIjoiQ29uc2VpbCBlbiBpbmfDqW5pZXJpZSBpbmR1c3RyaWVsbGUgZXQgY29uc3VsdGluZyB0ZWNobmlxdWUiLCJ0ZXh0ZV9kZV9iYXNlIjoiQU5PTllNRTE1NDM4NzY5MjEiLCJ0aXRsZSI6IkNvbnZlbnRpb24gY29sbGVjdGl2ZSBkZXMgYnVyZWF1eCBkZSBjb25zZWlsIGVuIGluZ8OpbmllcmllIGR1IDI4IGbDqXZyaWVyIDIwMDEuICIsInVybCI6Imh0dHBzOi8vd3d3LmxlZ2lmcmFuY2UuZ291di5mci9hZmZpY2hJRENDLmRvP2lkQ29udmVudGlvbj1BTk9OWU1FMDAwMDAxMjM0NTY3Iiwic3lub255bWVzIjpbImFub255bWUiXX1dLCJzaXJldCI6IjgyMTYxMTQzMTAwMDE1In1dCg==
+  recorded_at: Mon, 15 Mar 2021 14:22:30 GMT
+recorded_with: VCR 6.0.0

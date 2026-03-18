@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <ADEME_RGE_URL>?qs=siret:50530961700023%20AND%20traitement_termine:false&size=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-Apikey:
+      - "<RGE_ADEME_TOKEN>"
+      Referer:
+      - https://test.entreprise.api.gouv.fr
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 09 May 2022 14:11:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2830'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Resource:
+      - '{"type":"datasets","id":"historique-rge","title":"Historique%20des%20entreprises%20RGE%20depuis%202014"}'
+      X-Owner:
+      - '{"type":"organization","id":"g1pKfMqaE"}'
+      X-Operation:
+      - '{"class":"read","id":"readLines","track":"readDataAPI"}'
+      Last-Modified:
+      - Mon, 09 May 2022 04:02:44 GMT
+      Cache-Control:
+      - must-revalidate, public, max-age=20
+      Link:
+      - "<https://ademe_rge_url.gouv.fr?size=2&qs=siret%3A50530961700023+AND+traitement_termine%3Afalse&after=1648613513153%2C27360441349058>;
+        rel=next"
+      Etag:
+      - W/"b0e-vUFnyIa+ivQbmdfGi+VPK5kuAeU"
+      X-Cache-Status:
+      - REVALIDATED
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ0b3RhbCI6IDksCiAgIm5leHQiOiAiaHR0cHM6Ly9kYXRhLmFkZW1lLmZyL2RhdGEtZmFpci9hcGkvdjEvZGF0YXNldHMvaGlzdG9yaXF1ZS1yZ2UvbGluZXM/c2l6ZT0yJnFzPXNpcmV0JTNBMTIzNDU2Nzg5MDEyMzQrQU5EK3RyYWl0ZW1lbnRfdGVybWluZSUzQWZhbHNlJmFmdGVyPTE2NDg2MTM1MTMxNTMlMkMyNzM2MDQ0MTM0OTA1OCIsCiAgInJlc3VsdHMiOiBbCiAgICB7CiAgICAgICJzaXRlX2ludGVybmV0IjogImh0dHA6Ly93d3cuZXhlbXBsZS1lbmVyZ2llLmZyIiwKICAgICAgImxpZW5fZGF0ZV9maW4iOiAiMjAyMy0wMi0wNCIsCiAgICAgICJjb21tdW5lIjogIlBBUklTIiwKICAgICAgImxhdGl0dWRlIjogNDguODU2NjE0LAogICAgICAiZGF0ZV9kZWJ1dCI6ICIyMDIyLTAzLTMwIiwKICAgICAgIm9yZ2FuaXNtZSI6ICJxdWFsaWJhdCIsCiAgICAgICJ1cmxfcXVhbGlmaWNhdGlvbiI6ICJodHRwczovL3d3dy5xdWFsaWJhdC5jb20vVmlld3MvR2V0RmljaGllci5hc3B4P2ZuPTIwMjJcXEQ3NS1DZXJ0aWZpY2F0LTExMjM3OS1FWEVNUExFLUVORVJHSUUtRTExMjM3OS0yLTIwMjIwMjE0LVJHRUFubmV4ZS5wZGYiLAogICAgICAic2lyZXQiOiAiMTIzNDU2Nzg5MDEyMzQiLAogICAgICAibWV0YV9kb21haW5lIjogIlRyYXZhdXggZCdlZmZpY2FjaXTDqSDDqW5lcmfDqXRpcXVlIiwKICAgICAgImNvZGVfcXVhbGlmaWNhdGlvbiI6ICI4NjExTTEyRDEwOCIsCiAgICAgICJwYXJ0aWN1bGllciI6IHRydWUsCiAgICAgICJtb3RpZl9pbnNlcnRpb24iOiAidXJsX3F1YWxpZmljYXRpb24iLAogICAgICAiZGF0ZV9maW4iOiAiMjAyMy0wMi0wNCIsCiAgICAgICJfdXBkYXRlZEF0IjogIjIwMjItMDMtMzBUMDQ6MTE6NTMuMTUzWiIsCiAgICAgICJlbWFpbCI6ICJjb250YWN0QGV4ZW1wbGUtZW5lcmdpZS5mciIsCiAgICAgICJsb25naXR1ZGUiOiAyLjM1MjIyMiwKICAgICAgImNvZGVfcG9zdGFsIjogIjc1MDAxIiwKICAgICAgIl9nZW9wb2ludCI6ICI0OC44NTY2MTQsMi4zNTIyMjIiLAogICAgICAiZG9tYWluZSI6ICJWZW50aWxhdGlvbiBtw6ljYW5pcXVlIiwKICAgICAgIm5vbV9lbnRyZXByaXNlIjogIkVYRU1QTEUtRU5FUkdJRSIsCiAgICAgICJub21fcXVhbGlmaWNhdGlvbiI6ICJFZmZpY2FjaXTDqSDDqW5lcmfDqXRpcXVlIC0gXCJFQ08gQXJ0aXNhbsKuXCIgLSBDaGF1ZmZhZ2lzdGUgKDg2MTFNMTJEMTA4KSIsCiAgICAgICJ0ZWxlcGhvbmUiOiAiMDEgMjMgNDUgNjcgODkiLAogICAgICAiX2kiOiAyNzM2MDQ0MTM0OTA2MCwKICAgICAgInRyYWl0ZW1lbnRfdGVybWluZSI6IGZhbHNlLAogICAgICAiX3JhbmQiOiA2MDAxNjYsCiAgICAgICJhZHJlc3NlIjogIjEyMyBSVUUgREUgTEEgUEFJWCIsCiAgICAgICJub21fY2VydGlmaWNhdCI6ICJRVUFMSUJBVC1SR0UiLAogICAgICAibGllbl9kYXRlX2RlYnV0IjogIjIwMTktMDEtMjQiLAogICAgICAiX3Njb3JlIjogbnVsbCwKICAgICAgIl9pZCI6ICJRMTEyMzc5LTg2MTFNMTJEMTA4LTIwMjItMDMtMzAiCiAgICB9LAogICAgewogICAgICAic2l0ZV9pbnRlcm5ldCI6ICJodHRwOi8vd3d3LmV4ZW1wbGUtZW5lcmdpZS5mciIsCiAgICAgICJsaWVuX2RhdGVfZmluIjogIjIwMjMtMDItMDQiLAogICAgICAiY29tbXVuZSI6ICJQQVJJUyIsCiAgICAgICJsYXRpdHVkZSI6IDQ4Ljg1NjYxNCwKICAgICAgImRhdGVfZGVidXQiOiAiMjAyMi0wMy0zMCIsCiAgICAgICJvcmdhbmlzbWUiOiAicXVhbGliYXQiLAogICAgICAidXJsX3F1YWxpZmljYXRpb24iOiAiaHR0cHM6Ly93d3cucXVhbGliYXQuY29tL1ZpZXdzL0dldEZpY2hpZXIuYXNweD9mbj0yMDIyXFxENzUtQ2VydGlmaWNhdC0xMTIzNzktRVhFTVBMRS1FTkVSR0lFLUUxMTIzNzktMi0yMDIyMDIxNC1SR0VBbm5leGUucGRmIiwKICAgICAgInNpcmV0IjogIjEyMzQ1Njc4OTAxMjM0IiwKICAgICAgIm1ldGFfZG9tYWluZSI6ICJUcmF2YXV4IGQnZWZmaWNhY2l0w6kgw6luZXJnw6l0aXF1ZSIsCiAgICAgICJjb2RlX3F1YWxpZmljYXRpb24iOiAiODYxMU0xMkQxMDciLAogICAgICAicGFydGljdWxpZXIiOiB0cnVlLAogICAgICAibW90aWZfaW5zZXJ0aW9uIjogInVybF9xdWFsaWZpY2F0aW9uIiwKICAgICAgImRhdGVfZmluIjogIjIwMjMtMDItMDQiLAogICAgICAiX3VwZGF0ZWRBdCI6ICIyMDIyLTAzLTMwVDA0OjExOjUzLjE1M1oiLAogICAgICAiZW1haWwiOiAiY29udGFjdEBleGVtcGxlLWVuZXJnaWUuZnIiLAogICAgICAibG9uZ2l0dWRlIjogMi4zNTIyMjIsCiAgICAgICJjb2RlX3Bvc3RhbCI6ICI3NTAwMSIsCiAgICAgICJfZ2VvcG9pbnQiOiAiNDguODU2NjE0LDIuMzUyMjIyIiwKICAgICAgImRvbWFpbmUiOiAiUmFkaWF0ZXVycyDDqWxlY3RyaXF1ZXMsIGRvbnQgcsOpZ3VsYXRpb24uIiwKICAgICAgIm5vbV9lbnRyZXByaXNlIjogIkVYRU1QTEUtRU5FUkdJRSIsCiAgICAgICJub21fcXVhbGlmaWNhdGlvbiI6ICJFZmZpY2FjaXTDqSDDqW5lcmfDqXRpcXVlIC0gXCJFQ08gQXJ0aXNhbsKuXCIgLSBDaGF1ZmZhZ2lzdGUgKDg2MTFNMTJEMTA3KSIsCiAgICAgICJ0ZWxlcGhvbmUiOiAiMDEgMjMgNDUgNjcgODkiLAogICAgICAiX2kiOiAyNzM2MDQ0MTM0OTA1OCwKICAgICAgInRyYWl0ZW1lbnRfdGVybWluZSI6IGZhbHNlLAogICAgICAiX3JhbmQiOiAxMDE0MTgsCiAgICAgICJhZHJlc3NlIjogIjEyMyBSVUUgREUgTEEgUEFJWCIsCiAgICAgICJub21fY2VydGlmaWNhdCI6ICJRVUFMSUJBVC1SR0UiLAogICAgICAibGllbl9kYXRlX2RlYnV0IjogIjIwMTktMDEtMjQiLAogICAgICAiX3Njb3JlIjogbnVsbCwKICAgICAgIl9pZCI6ICJRMTEyMzc5LTg2MTFNMTJEMTA3LTIwMjItMDMtMzAiCiAgICB9CiAgXQp9
+  recorded_at: Mon, 09 May 2022 14:11:06 GMT
+- request:
+    method: get
+    uri: <ADEME_RGE_URL>?qs=siret:50530961700023%20AND%20traitement_termine:false&size=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-Apikey:
+      - "<RGE_ADEME_TOKEN>"
+      Referer:
+      - https://test.entreprise.api.gouv.fr
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 09 May 2022 14:11:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2830'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Resource:
+      - '{"type":"datasets","id":"historique-rge","title":"Historique%20des%20entreprises%20RGE%20depuis%202014"}'
+      X-Owner:
+      - '{"type":"organization","id":"g1pKfMqaE"}'
+      X-Operation:
+      - '{"class":"read","id":"readLines","track":"readDataAPI"}'
+      Last-Modified:
+      - Mon, 09 May 2022 04:02:44 GMT
+      Cache-Control:
+      - must-revalidate, public, max-age=20
+      Link:
+      - "<https://ademe_rge_url.gouv.fr?size=2&qs=siret%3A50530961700023+AND+traitement_termine%3Afalse&after=1648613513153%2C27360441349058>;
+        rel=next"
+      Etag:
+      - W/"b0e-vUFnyIa+ivQbmdfGi+VPK5kuAeU"
+      X-Cache-Status:
+      - HIT
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ0b3RhbCI6IDksCiAgIm5leHQiOiAiaHR0cHM6Ly9kYXRhLmFkZW1lLmZyL2RhdGEtZmFpci9hcGkvdjEvZGF0YXNldHMvaGlzdG9yaXF1ZS1yZ2UvbGluZXM/c2l6ZT0yJnFzPXNpcmV0JTNBMTIzNDU2Nzg5MDEyMzQrQU5EK3RyYWl0ZW1lbnRfdGVybWluZSUzQWZhbHNlJmFmdGVyPTE2NDg2MTM1MTMxNTMlMkMyNzM2MDQ0MTM0OTA1OCIsCiAgInJlc3VsdHMiOiBbCiAgICB7CiAgICAgICJzaXRlX2ludGVybmV0IjogImh0dHA6Ly93d3cuZXhlbXBsZS1lbmVyZ2llLmZyIiwKICAgICAgImxpZW5fZGF0ZV9maW4iOiAiMjAyMy0wMi0wNCIsCiAgICAgICJjb21tdW5lIjogIlBBUklTIiwKICAgICAgImxhdGl0dWRlIjogNDguODU2NjE0LAogICAgICAiZGF0ZV9kZWJ1dCI6ICIyMDIyLTAzLTMwIiwKICAgICAgIm9yZ2FuaXNtZSI6ICJxdWFsaWJhdCIsCiAgICAgICJ1cmxfcXVhbGlmaWNhdGlvbiI6ICJodHRwczovL3d3dy5xdWFsaWJhdC5jb20vVmlld3MvR2V0RmljaGllci5hc3B4P2ZuPTIwMjJcXEQ3NS1DZXJ0aWZpY2F0LTExMjM3OS1FWEVNUExFLUVORVJHSUUtRTExMjM3OS0yLTIwMjIwMjE0LVJHRUFubmV4ZS5wZGYiLAogICAgICAic2lyZXQiOiAiMTIzNDU2Nzg5MDEyMzQiLAogICAgICAibWV0YV9kb21haW5lIjogIlRyYXZhdXggZCdlZmZpY2FjaXTDqSDDqW5lcmfDqXRpcXVlIiwKICAgICAgImNvZGVfcXVhbGlmaWNhdGlvbiI6ICI4NjExTTEyRDEwOCIsCiAgICAgICJwYXJ0aWN1bGllciI6IHRydWUsCiAgICAgICJtb3RpZl9pbnNlcnRpb24iOiAidXJsX3F1YWxpZmljYXRpb24iLAogICAgICAiZGF0ZV9maW4iOiAiMjAyMy0wMi0wNCIsCiAgICAgICJfdXBkYXRlZEF0IjogIjIwMjItMDMtMzBUMDQ6MTE6NTMuMTUzWiIsCiAgICAgICJlbWFpbCI6ICJjb250YWN0QGV4ZW1wbGUtZW5lcmdpZS5mciIsCiAgICAgICJsb25naXR1ZGUiOiAyLjM1MjIyMiwKICAgICAgImNvZGVfcG9zdGFsIjogIjc1MDAxIiwKICAgICAgIl9nZW9wb2ludCI6ICI0OC44NTY2MTQsMi4zNTIyMjIiLAogICAgICAiZG9tYWluZSI6ICJWZW50aWxhdGlvbiBtw6ljYW5pcXVlIiwKICAgICAgIm5vbV9lbnRyZXByaXNlIjogIkVYRU1QTEUtRU5FUkdJRSIsCiAgICAgICJub21fcXVhbGlmaWNhdGlvbiI6ICJFZmZpY2FjaXTDqSDDqW5lcmfDqXRpcXVlIC0gXCJFQ08gQXJ0aXNhbsKuXCIgLSBDaGF1ZmZhZ2lzdGUgKDg2MTFNMTJEMTA4KSIsCiAgICAgICJ0ZWxlcGhvbmUiOiAiMDEgMjMgNDUgNjcgODkiLAogICAgICAiX2kiOiAyNzM2MDQ0MTM0OTA2MCwKICAgICAgInRyYWl0ZW1lbnRfdGVybWluZSI6IGZhbHNlLAogICAgICAiX3JhbmQiOiA2MDAxNjYsCiAgICAgICJhZHJlc3NlIjogIjEyMyBSVUUgREUgTEEgUEFJWCIsCiAgICAgICJub21fY2VydGlmaWNhdCI6ICJRVUFMSUJBVC1SR0UiLAogICAgICAibGllbl9kYXRlX2RlYnV0IjogIjIwMTktMDEtMjQiLAogICAgICAiX3Njb3JlIjogbnVsbCwKICAgICAgIl9pZCI6ICJRMTEyMzc5LTg2MTFNMTJEMTA4LTIwMjItMDMtMzAiCiAgICB9LAogICAgewogICAgICAic2l0ZV9pbnRlcm5ldCI6ICJodHRwOi8vd3d3LmV4ZW1wbGUtZW5lcmdpZS5mciIsCiAgICAgICJsaWVuX2RhdGVfZmluIjogIjIwMjMtMDItMDQiLAogICAgICAiY29tbXVuZSI6ICJQQVJJUyIsCiAgICAgICJsYXRpdHVkZSI6IDQ4Ljg1NjYxNCwKICAgICAgImRhdGVfZGVidXQiOiAiMjAyMi0wMy0zMCIsCiAgICAgICJvcmdhbmlzbWUiOiAicXVhbGliYXQiLAogICAgICAidXJsX3F1YWxpZmljYXRpb24iOiAiaHR0cHM6Ly93d3cucXVhbGliYXQuY29tL1ZpZXdzL0dldEZpY2hpZXIuYXNweD9mbj0yMDIyXFxENzUtQ2VydGlmaWNhdC0xMTIzNzktRVhFTVBMRS1FTkVSR0lFLUUxMTIzNzktMi0yMDIyMDIxNC1SR0VBbm5leGUucGRmIiwKICAgICAgInNpcmV0IjogIjEyMzQ1Njc4OTAxMjM0IiwKICAgICAgIm1ldGFfZG9tYWluZSI6ICJUcmF2YXV4IGQnZWZmaWNhY2l0w6kgw6luZXJnw6l0aXF1ZSIsCiAgICAgICJjb2RlX3F1YWxpZmljYXRpb24iOiAiODYxMU0xMkQxMDciLAogICAgICAicGFydGljdWxpZXIiOiB0cnVlLAogICAgICAibW90aWZfaW5zZXJ0aW9uIjogInVybF9xdWFsaWZpY2F0aW9uIiwKICAgICAgImRhdGVfZmluIjogIjIwMjMtMDItMDQiLAogICAgICAiX3VwZGF0ZWRBdCI6ICIyMDIyLTAzLTMwVDA0OjExOjUzLjE1M1oiLAogICAgICAiZW1haWwiOiAiY29udGFjdEBleGVtcGxlLWVuZXJnaWUuZnIiLAogICAgICAibG9uZ2l0dWRlIjogMi4zNTIyMjIsCiAgICAgICJjb2RlX3Bvc3RhbCI6ICI3NTAwMSIsCiAgICAgICJfZ2VvcG9pbnQiOiAiNDguODU2NjE0LDIuMzUyMjIyIiwKICAgICAgImRvbWFpbmUiOiAiUmFkaWF0ZXVycyDDqWxlY3RyaXF1ZXMsIGRvbnQgcsOpZ3VsYXRpb24uIiwKICAgICAgIm5vbV9lbnRyZXByaXNlIjogIkVYRU1QTEUtRU5FUkdJRSIsCiAgICAgICJub21fcXVhbGlmaWNhdGlvbiI6ICJFZmZpY2FjaXTDqSDDqW5lcmfDqXRpcXVlIC0gXCJFQ08gQXJ0aXNhbsKuXCIgLSBDaGF1ZmZhZ2lzdGUgKDg2MTFNMTJEMTA3KSIsCiAgICAgICJ0ZWxlcGhvbmUiOiAiMDEgMjMgNDUgNjcgODkiLAogICAgICAiX2kiOiAyNzM2MDQ0MTM0OTA1OCwKICAgICAgInRyYWl0ZW1lbnRfdGVybWluZSI6IGZhbHNlLAogICAgICAiX3JhbmQiOiAxMDE0MTgsCiAgICAgICJhZHJlc3NlIjogIjEyMyBSVUUgREUgTEEgUEFJWCIsCiAgICAgICJub21fY2VydGlmaWNhdCI6ICJRVUFMSUJBVC1SR0UiLAogICAgICAibGllbl9kYXRlX2RlYnV0IjogIjIwMTktMDEtMjQiLAogICAgICAiX3Njb3JlIjogbnVsbCwKICAgICAgIl9pZCI6ICJRMTEyMzc5LTg2MTFNMTJEMTA3LTIwMjItMDMtMzAiCiAgICB9CiAgXQp9
+  recorded_at: Mon, 09 May 2022 14:11:06 GMT
+recorded_with: VCR 6.1.0

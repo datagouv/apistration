@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <INFOGREFFE_URL_EXTRAIT_RCS>
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'
+        xmlns:urn='urn:WebServicesProduits'> <soapenv:Header/> <soapenv:Body> <urn:getProduitsWebServicesXML
+        soapenv:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'> <arg0 xsi:type='xsd:string'>
+        <demande> <emetteur> <code_abonne><INFOGREFFE_CODE_ABONNE></code_abonne> <mot_passe><INFOGREFFE_MOT_PASSE></mot_passe>
+        <code_requete> <type_profil>A</type_profil> <origine_emetteur>IC</origine_emetteur>
+        <nature_requete>C</nature_requete> <type_document>KB</type_document> <type_requete>S</type_requete>
+        <mode_diffusion> <mode type='XL'/> </mode_diffusion> <media>WS</media> </code_requete>
+        </emetteur> <commande> <num_siren>403860265</num_siren> </commande> </demande>
+        </arg0> </urn:getProduitsWebServicesXML> </soapenv:Body> </soapenv:Envelope>\n"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - text/xml
+      Charset:
+      - utf-8
+      Soapaction:
+      - getProduitsWebServicesXML
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 May 2017 10:49:33 GMT
+      Server:
+      - Apache/2.2.3 (CentOS)
+      Content-Length:
+      - '11360'
+      X-Powered-By:
+      - Servlet/2.5 JSP/2.1
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Set-Cookie:
+      - BIGIPSESSION=rd1o00000000000000000000ffffac164b3do8002; expires=Wed, 31-May-2017
+        11:49:40 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: "<?xml version='1.0' encoding='UTF-8'?><SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema'><SOAP-ENV:Body><ns0:getProduitsWebServicesXMLResponse xmlns:ns0='urn:local' SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'><return xsi:type='xsd:string'><Extrait type=\"1\"><dossier id_adr_greffe=\"AD1\" date_immat=\"09 JUILLET 2013\" dateISO_immat=\"2013-07-09\" date_extrait=\"10 MAI 2022\"><entreprise><greffe code=\"2041\">UNEVILLE</greffe><num_ident siren=\"403860265\"/><num_gest numGreffe=\"2041\"><millesime>2016</millesime><statut>A</statut><chrono>01092</chrono></num_gest><pp nationalite=\"FRANCAISE\" codeNationalite=\"FR\" adresse=\"AD2\" civilite=\"MONSIEUR\"><nom>SPLOUSHY</nom><prenom>FANCY MCFACE</prenom><naissance pays=\"FRANCE\" codePays=\"FR\"><date dateISO=\"1971-02-26\">26 FEVRIER 1971</date><lieu>UNEVILLE</lieu></naissance></pp></entreprise><etablissement type=\"1\" mode=\"0\" adresse=\"AD3\"><activite date_debut=\"11 JANVIER 2010\" dateISO_debut=\"2016-02-15\">UNE ACTIVITE</activite><origine_fonds>CREATION</origine_fonds><mode_exploit>EXPLOITATION DIRECTE</mode_exploit><codeAPE>4781Z</codeAPE></etablissement></dossier><adresse id=\"AD3\"><nompostal/><numero/><type/><voie>UN ENDROIT </voie><ligne1/><ligne2>UN ENDROIT </ligne2><localite/><code_postal>30140</code_postal><bureau_distributeur>BUREAU</bureau_distributeur><pays>FRANCE</pays></adresse><adresse id=\"AD2\"><nompostal/><numero/><type/><voie>UN ENDROIT </voie><ligne1/><ligne2>UN ENDROIT </ligne2><localite/><code_postal>40440</code_postal><bureau_distributeur>UNBUREAU</bureau_distributeur><pays/></adresse><adresse id=\"AD1\"><nompostal/><numero/><type/><voie>12 RUE DE LAVENUE </voie><ligne1/><ligne2>12 RUE DE LAVENUE </ligne2><localite/><code_postal>40000</code_postal><bureau_distributeur>UNEVILLE</bureau_distributeur><pays/></adresse></Extrait></return></ns0:getProduitsWebServicesXMLResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+    http_version:
+  recorded_at: Wed, 31 May 2017 10:49:40 GMT
+recorded_with: VCR 3.0.3

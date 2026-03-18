@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/78365263900015"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Content-Type:
+      - application/json
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Thu, 30-Aug-2018 10:11:30 GMT;
+        path=/
+      - INSEE=1846946570.22560.0000;secure; expires=Thu, 30-Aug-2018 10:11:30 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 30 Aug 2018 09:51:30 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"783652639","nic":"00015","siret":"78365263900015","statutDiffusionEtablissement":"O","dateCreationEtablissement":null,"trancheEffectifsEtablissement":"NN","anneeEffectifsEtablissement":null,"activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2006-11-25T22:15:41","etablissementSiege":true,"nombrePeriodesEtablissement":1,"uniteLegale":{"etatAdministratifUniteLegale":"C","statutDiffusionUniteLegale":"O","unitePurgeeUniteLegale":true,"dateCreationUniteLegale":"1900-01-01","categorieJuridiqueUniteLegale":"9220","denominationUniteLegale":"MUTUELLE CENTRALE ELECTRIQUE","sigleUniteLegale":null,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"97.23","nomenclatureActivitePrincipaleUniteLegale":"NAP","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":null,"caractereEmployeurUniteLegale":"N","trancheEffectifsUniteLegale":null,"anneeEffectifsUniteLegale":null,"nicSiegeUniteLegale":"00015","dateDernierTraitementUniteLegale":"2006-11-25T22:15:41","categorieEntreprise":null,"anneeCategorieEntreprise":null},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":null,"indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"PAUL LAFARGUE","codePostalEtablissement":"59171","libelleCommuneEtablissement":"HORNAING","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"59314","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":null,"etatAdministratifEtablissement":"F","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"97.23","nomenclatureActivitePrincipaleEtablissement":"NAP","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":false}]}}
+    http_version:
+  recorded_at: Thu, 30 Aug 2018 09:51:30 GMT
+recorded_with: VCR 3.0.3

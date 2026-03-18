@@ -1,0 +1,161 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siren/412288383"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1627925258.20480.0000;secure; expires=Tue, 17-Jul-2018 09:12:20 GMT;
+        path=/
+      - INSEE=1830169354.22560.0000;secure; expires=Tue, 17-Jul-2018 09:12:20 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 17 Jul 2018 08:52:20 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"OK"},"uniteLegale":{"siren":"412288383","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1982-12-31","sigleUniteLegale":null,"sexeUniteLegale":"F","prenom1UniteLegale":"ODILE","prenom2UniteLegale":"RENEE","prenom3UniteLegale":"JANINE","prenom4UniteLegale":null,"prenomUsuelUniteLegale":"ODILE","pseudonymeUniteLegale":null,"identifiantAssociationUniteLegale":null,"trancheEffectifsUniteLegale":"NN","anneeEffectifsUniteLegale":null,"dateDernierTraitementUniteLegale":"2017-05-20","nombrePeriodesUniteLegale":3,"categorieEntreprise":null,"anneeCategorieEntreprise":null,"periodesUniteLegale":[{"dateFin":null,"dateDebut":"2008-01-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":"BIDAU","changementNomUniteLegale":false,"nomUsageUniteLegale":"BAROIN","changementNomUsageUniteLegale":false,"denominationUniteLegale":null,"changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"1000","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"01.43Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":true,"nicSiegeUniteLegale":"00018","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2007-12-31","dateDebut":"1997-12-25","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":"BIDAU","changementNomUniteLegale":false,"nomUsageUniteLegale":"BAROIN","changementNomUsageUniteLegale":false,"denominationUniteLegale":null,"changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"1000","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"01.1A","nomenclatureActivitePrincipaleUniteLegale":"NAF1993","changementActivitePrincipaleUniteLegale":true,"nicSiegeUniteLegale":"00018","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":false},{"dateFin":"1997-12-24","dateDebut":"1982-12-31","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":true,"nomUniteLegale":"BIDAU","changementNomUniteLegale":true,"nomUsageUniteLegale":"BAROIN","changementNomUsageUniteLegale":true,"denominationUniteLegale":null,"changementDenominationUniteLegale":true,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":true,"categorieJuridiqueUniteLegale":"1000","changementCategorieJuridiqueUniteLegale":true,"activitePrincipaleUniteLegale":null,"nomenclatureActivitePrincipaleUniteLegale":null,"changementActivitePrincipaleUniteLegale":true,"nicSiegeUniteLegale":"00018","changementNicSiegeUniteLegale":true,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":true,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":true}]}}
+    http_version:
+  recorded_at: Tue, 17 Jul 2018 08:52:20 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/41228838300018"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Tue, 17-Jul-2018 09:12:20 GMT;
+        path=/
+      - INSEE=1830169354.22560.0000;secure; expires=Tue, 17-Jul-2018 09:12:20 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 17 Jul 2018 08:52:20 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"412288383","nic":"00018","siret":"41228838300018","statutDiffusionEtablissement":"O","dateCreationEtablissement":"1982-12-31","trancheEffectifsEtablissement":"NN","anneeEffectifsEtablissement":null,"activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2008-01-04","etablissementSiege":true,"nombrePeriodesEtablissement":3,"uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1982-12-31","categorieJuridiqueUniteLegale":"1000","denominationUniteLegale":null,"sigleUniteLegale":null,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":"F","nomUniteLegale":"BIDAU","nomUsageUniteLegale":"BAROIN","prenom1UniteLegale":"ODILE","prenom2UniteLegale":"RENEE","prenom3UniteLegale":"JANINE","prenom4UniteLegale":null,"prenomUsuelUniteLegale":"ODILE","pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"01.43Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":null,"caractereEmployeurUniteLegale":"N","trancheEffectifsUniteLegale":"NN","anneeEffectifsUniteLegale":null,"nicSiegeUniteLegale":"00018","dateDernierTraitementUniteLegale":"2017-05-20","categorieEntreprise":null,"anneeCategorieEntreprise":null},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":null,"indiceRepetitionEtablissement":null,"typeVoieEtablissement":null,"libelleVoieEtablissement":"SOUVERT","codePostalEtablissement":"71540","libelleCommuneEtablissement":"CHISSEY EN MORVAN","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"71129","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"01.43Y","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":false},{"dateFin":"2007-12-31","dateDebut":"1997-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"01.1A","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":false},{"dateFin":"1997-12-24","dateDebut":"1982-12-31","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":true,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":true,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":true,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":true}]}}
+    http_version:
+  recorded_at: Tue, 17 Jul 2018 08:52:20 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/71129?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Tue, 17 Jul 2018 08:52:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"96-pqg+auQcypQeEo/1pkMWSa6TUP8"
+      Strict-Transport-Security:
+      - max-age=15552000
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"nom":"Chissey-en-Morvan","code":"71129","departement":{"code":"71","nom":"Saône-et-Loire"},"region":{"code":"27","nom":"Bourgogne-Franche-Comté"}}
+    http_version:
+  recorded_at: Tue, 17 Jul 2018 08:52:21 GMT
+recorded_with: VCR 3.0.3

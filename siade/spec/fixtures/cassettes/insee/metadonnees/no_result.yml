@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_METADATA_URL>/geo/communes?com=false&date=2000-01-01&filtreNom=invalid"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 11 Mar 2024 17:03:35 GMT
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - pdapimgateway=rd4o00000000000000000000ffff0ac348aco8280; expires=Mon, 11-Mar-2024
+        17:23:35 GMT; path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 11 Mar 2024 17:03:35 GMT
+recorded_with: VCR 6.2.0

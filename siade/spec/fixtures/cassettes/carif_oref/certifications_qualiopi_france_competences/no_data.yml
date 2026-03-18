@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<CARIF_OREF_QUIFORME_URL>/organisme/00000000000000"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Token-Connexion:
+      - "<CARIF_OREF_QUIFORME_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 Oct 2023 15:29:10 GMT
+      Server:
+      - uvicorn
+      Content-Length:
+      - '1511'
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"siret_actif":null,"etablissement":{"siren":null,"denomination":null,"enseigne":null,"code_ape":null,"adresse_insee":null,"uai":null,"siret_siege":null,"siret_successeur":null,"date_creation":null,"date_fermeture":null,"etat_diffusible":null},"unite_legale":{"raison_sociale":null,"cat_juridique":null,"libelle_cat_juridique":null,"ape":null,"pseudonyme":null,"sigle":null,"nom_commercial":null,"multinda":null},"adresse_ban":[{"adresse_editorialisee":null,"adresse_type":null,"adresse_score":null,"adresse_nom":null,"type_voie":null,"adresse_numero":null,"indice_repetition":null,"adresse_voie":null,"adresse_codepostal":null,"adresse_commune":null,"adresse_codecommune":null,"adresse_num_departement":null,"adresse_departement":null,"adresse_region":null,"adresse_pays":null,"adresse_geoloc":null,"adresse_latitude":null,"adresse_longitude":null,"adresse_id_ban":null}],"nda":[{"nda":null,"cfa":null,"actif":null,"date_derniere_declaration":null,"debut_exercice":null,"fin_exercice":null,"code_specialite_1":null,"libelle_specialite_1":null,"code_specialite_2":null,"libelle_specialite_2":null,"code_specialite_3":null,"libelle_specialite_3":null,"qualiopi_action_formation":null,"qualiopi_bilan_competence":null,"qualiopi_vae":null,"qualiopi_apprentissage":null,"obtention_qualiopi":null}],"habilitations":[{"code_fc":null,"actif":null,"etat_habilitation":null,"date_habilitation":null,"date_fin_enregistrement":null,"date_decision":null,"a_former":null,"a_organiser":null,"certificateur":[{"siret":null}]}]}'
+  recorded_at: Tue, 03 Oct 2023 15:29:11 GMT
+recorded_with: VCR 6.2.0

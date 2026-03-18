@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_ACOSS>/api/oauth/v1/token"
+    body:
+      encoding: UTF-8
+      string: client_id=<ACOSS_CLIENT_ID>&client_secret=<ACOSS_CLIENT_SECRET>&grant_type=client_credentials&scope=attn.api_entreprise
+    headers:
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: '200'
+    headers:
+      X-Rate-Limit:
+      - '[{"window":0,"type":"throttle","remaining":1999}]'
+      Via:
+      - 1.1 hwi31ginmedserbogwc1 (), 1.1 hwi31ginmedserfogwc1 ()
+      Max-Forwards:
+      - '19'
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Correlationid:
+      - Id-30a35b5f37e00da17556efa7 0; Id-30a35b5f50f05191520cbe76 0
+      Accept:
+      - application/json
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - origin, content-type, accept, authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, PUT, OPTIONS, HEAD
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Date:
+      - Fri, 11 Sep 2020 16:17:52 GMT
+      Expires:
+      - '0'
+      P3p:
+      - CP="COR CAO PSA OUR"
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhY29zcy1hcGkiLCJzdWIiOiJhcGktZXF1aXZhbGVuY2UiLCJhdWQiOiJhcGktZW50cmVwcmlzZSIsImV4cCI6MTY0MjAwMDAwMCwiaWF0IjoxNjQxOTk2NDAwfQ.fake_signature_for_anonymized_token","token_type":"Bearer","expires_in":3600}'
+    http_version:
+  recorded_at: Fri, 11 Sep 2020 16:17:52 GMT
+recorded_with: VCR 3.0.3

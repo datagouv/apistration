@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<CARIF_OREF_QUIFORME_URL>/organisme/81841109200013"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Token-Connexion:
+      - "<CARIF_OREF_QUIFORME_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 Oct 2023 15:29:08 GMT
+      Server:
+      - uvicorn
+      Content-Length:
+      - '1852'
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"siret_actif":"81841109200013","etablissement":{"siren":"818411092","denomination":"EXEMPLE-CONSEIL","enseigne":null,"code_ape":"62.02A","adresse_insee":"19
+        RUE DE LA PAIX 75001 PARIS","uai":null,"siret_siege":null,"siret_successeur":null,"date_creation":"2016-02-15","date_fermeture":null,"etat_diffusible":true},"unite_legale":{"raison_sociale":"EXEMPLE-CONSEIL","cat_juridique":"5710","libelle_cat_juridique":"SAS,
+        société par actions simplifiée","ape":"62.02A","pseudonyme":null,"sigle":null,"nom_commercial":null,"multinda":false},"adresse_ban":[{"adresse_editorialisee":"19
+        Rue de la Paix 75001 Paris","adresse_type":"housenumber","adresse_score":"0.8081063628196716","adresse_nom":"19
+        Rue de la Paix","type_voie":"RUE","adresse_numero":"123","indice_repetition":null,"adresse_voie":"Allée
+        des Briolettes","adresse_codepostal":"75001","adresse_commune":"Paris","adresse_codecommune":"75101","adresse_num_departement":"75","adresse_departement":"Paris","adresse_region":"Île-de-France","adresse_pays":"FRANCE","adresse_geoloc":"Point","adresse_latitude":"48.856614","adresse_longitude":"2.352222","adresse_id_ban":"75101_0123_00123"}],"nda":[{"nda":"23456765341","cfa":false,"actif":true,"date_derniere_declaration":"2021-01-01","debut_exercice":"2022-01-01","fin_exercice":"2022-12-31","code_specialite_1":"313","libelle_specialite_1":"Finances,
+        banque, assurances","code_specialite_2":"326","libelle_specialite_2":"Informatique,
+        traitement de l''information, réseaux de transmission des données","code_specialite_3":null,"libelle_specialite_3":null,"qualiopi_action_formation":false,"qualiopi_bilan_competence":false,"qualiopi_vae":false,"qualiopi_apprentissage":false,"obtention_qualiopi":"Qualiopi
+        direct sur le NDA"}],"habilitations":[]}'
+  recorded_at: Tue, 03 Oct 2023 15:29:11 GMT
+recorded_with: VCR 6.2.0

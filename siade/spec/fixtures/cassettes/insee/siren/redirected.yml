@@ -1,0 +1,271 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_INSEE_AUTH>"
+    body:
+      encoding: US-ASCII
+      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=insee_apim_password
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - no-store
+      X-Content-Type-Options:
+      - nosniff
+      Set-Cookie:
+      - INSEE=1863723786.58148.0000;secure; expires=Wed, 03-Jun-2020 10:43:42 GMT;
+        path=/
+      - pdapimgateway=1830169354.22560.0000;secure; expires=Wed, 03-Jun-2020 10:43:42
+        GMT; path=/
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 03 Jun 2020 10:23:41 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"<INSEE_TOKEN>","scope":"am_application_scope default","token_type":"Bearer","expires_in":603541}'
+    http_version:
+  recorded_at: Wed, 03 Jun 2020 10:23:42 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siren/532221694"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 301
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Location:
+      - "<URL_INSEE_V3>/entreprises/sirene/V3.11/siren/778870675"
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Wed, 03-Jun-2020 10:43:42 GMT;
+        path=/
+      - pdapimgateway=1830169354.22560.0000;secure; expires=Wed, 03-Jun-2020 10:43:42
+        GMT; path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Wed, 03 Jun 2020 10:23:41 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":0,"message":"Unité légale doublon, redirection vers l'unité légale : 778870675"}}
+    http_version:
+  recorded_at: Wed, 03 Jun 2020 10:23:42 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siren/778870675"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Wed, 03-Jun-2020 10:43:42 GMT;
+        path=/
+      - pdapimgateway=1830169354.22560.0000;secure; expires=Wed, 03-Jun-2020 10:43:42
+        GMT; path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Wed, 03 Jun 2020 10:23:42 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"OK"},"uniteLegale":{"siren":"778870675","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1900-01-01","sigleUniteLegale":null,"sexeUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"identifiantAssociationUniteLegale":null,"trancheEffectifsUniteLegale":"21","anneeEffectifsUniteLegale":"2017","dateDernierTraitementUniteLegale":"2019-06-24T13:45:17","nombrePeriodesUniteLegale":7,"categorieEntreprise":"PME","anneeCategorieEntreprise":"2017","periodesUniteLegale":[{"dateFin":null,"dateDebut":"2016-01-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"88.99B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00015","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":"O","changementEconomieSocialeSolidaireUniteLegale":true,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2015-12-31","dateDebut":"2012-12-31","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"88.99B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00015","changementNicSiegeUniteLegale":true,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2012-12-30","dateDebut":"2012-01-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"88.99B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00031","changementNicSiegeUniteLegale":true,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2011-12-31","dateDebut":"2008-01-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"88.99B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":true,"nicSiegeUniteLegale":"00015","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2007-12-31","dateDebut":"1996-12-25","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"85.3K","nomenclatureActivitePrincipaleUniteLegale":"NAF1993","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00015","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":true},{"dateFin":"1996-12-24","dateDebut":"1986-12-25","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"85.3K","nomenclatureActivitePrincipaleUniteLegale":"NAF1993","changementActivitePrincipaleUniteLegale":true,"nicSiegeUniteLegale":"00015","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":null,"changementCaractereEmployeurUniteLegale":false},{"dateFin":"1986-12-24","dateDebut":"1900-01-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"9260","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":null,"nomenclatureActivitePrincipaleUniteLegale":null,"changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00015","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":null,"changementCaractereEmployeurUniteLegale":false}]}}
+    http_version:
+  recorded_at: Wed, 03 Jun 2020 10:23:42 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/77887067500015"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Wed, 03-Jun-2020 10:43:43 GMT;
+        path=/
+      - pdapimgateway=1830169354.22560.0000;secure; expires=Wed, 03-Jun-2020 10:43:43
+        GMT; path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Wed, 03 Jun 2020 10:23:42 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"778870675","nic":"00015","siret":"77887067500015","statutDiffusionEtablissement":"O","dateCreationEtablissement":"1900-01-01","trancheEffectifsEtablissement":"12","anneeEffectifsEtablissement":"2017","activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2019-06-24T13:45:17","etablissementSiege":true,"nombrePeriodesEtablissement":4,"uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1900-01-01","categorieJuridiqueUniteLegale":"9260","denominationUniteLegale":"ASSOCIATION POPULAIRE JOIE ET SANTE","sigleUniteLegale":null,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"88.99B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":"O","caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"21","anneeEffectifsUniteLegale":"2017","nicSiegeUniteLegale":"00015","dateDernierTraitementUniteLegale":"2019-06-24T13:45:17","categorieEntreprise":"PME","anneeCategorieEntreprise":"2017"},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"41","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"VIRGILE","codePostalEtablissement":"67200","libelleCommuneEtablissement":"STRASBOURG","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"67482","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"88.99B","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2007-12-31","dateDebut":"1996-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"85.3K","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"1996-12-24","dateDebut":"1986-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"85.3K","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false},{"dateFin":"1986-12-24","dateDebut":"1900-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false}]}}
+    http_version:
+  recorded_at: Wed, 03 Jun 2020 10:23:43 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/67482?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 03 Jun 2020 10:23:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Powered-By:
+      - Express
+      Etag:
+      - W/"79-eZoKVXxseKnUMFWfT8YjE3ogrds"
+      Strict-Transport-Security:
+      - max-age=15552000
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA6tWysvPVbJSCi4pSixOyi8tSlfSUUrOT0kFipmZm1gYAbkpqQWJRSWpual5JUpW1QhZoBREs1NisW5QRmaeUq2OUlFqemZ+HpI6ExO4OveixLwUBdfiEqXaWgCiyBVXeQAAAA==
+    http_version:
+  recorded_at: Wed, 03 Jun 2020 10:23:43 GMT
+recorded_with: VCR 3.0.3

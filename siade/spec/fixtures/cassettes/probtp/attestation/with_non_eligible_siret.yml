@@ -1,0 +1,146 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <PROBTP_DOMAIN>/ws_ext/rest/certauth/mpsservices/getAttestationCotisation
+    body:
+      encoding: UTF-8
+      string: '{"corps":"73582032600040"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 08 May 2017 08:29:39 GMT
+      Content-Length:
+      - '90'
+      X-Jersey-Tracing-000:
+      - START       [ ---- /  ---- ms |  ---- %] baseUri=[https://probtp_domain.gouv.fr/ws_ext/rest/]
+        requestUri=[https://probtp_domain.gouv.fr/ws_ext/rest/certauth/mpsservices/getAttestationCotisation]
+        method=[POST] authScheme=[n/a] accept=[*/*] accept-encoding=[gzip;q=1.0,deflate;q=0.6,identity;q=0.3]
+        accept-charset=n/a accept-language=n/a content-type=[application/json] content-length=[26]
+      X-Jersey-Tracing-001:
+      - 'PRE-MATCH   [ 0,09 /  0,32 ms |  0,04 %] Filter by [com.probtp.webservices.rest.Log4j2JerseyLoggingFilter
+        @60ca60ca #-2147483648]'
+      X-Jersey-Tracing-002:
+      - 'PRE-MATCH   [ 0,10 /  0,32 ms |  0,05 %] PreMatchRequest summary: 1 filters'
+      X-Jersey-Tracing-003:
+      - MATCH       [ ---- /  0,36 ms |  ---- %] Matching path [/certauth/mpsservices/getAttestationCotisation]
+      X-Jersey-Tracing-004:
+      - MATCH       [ ---- /  0,37 ms |  ---- %] Pattern [/certauth/mpsservices(/.*)?]
+        IS selected
+      X-Jersey-Tracing-005:
+      - 'MATCH       [ ---- /  0,39 ms |  ---- %] Matched resource: template=[/certauth/mpsservices]
+        regexp=[/certauth/mpsservices(/.*)?] matches=[/certauth/mpsservices] from=[/certauth/mpsservices/getAttestationCotisation]'
+      X-Jersey-Tracing-006:
+      - MATCH       [ ---- /  0,40 ms |  ---- %] Matching path [/getAttestationCotisation]
+      X-Jersey-Tracing-007:
+      - MATCH       [ ---- /  0,41 ms |  ---- %] Pattern [/getAttestationCotisation(/)?]
+        IS selected
+      X-Jersey-Tracing-008:
+      - 'MATCH       [ ---- /  0,42 ms |  ---- %] Matched resource: template=[/getAttestationCotisation]
+        regexp=[/getAttestationCotisation(/.*)?] matches=[/getAttestationCotisation]
+        from=[/getAttestationCotisation]'
+      X-Jersey-Tracing-009:
+      - 'MATCH       [ ---- /  0,48 ms |  ---- %] Matched method  : public com.probtp.webservices.publics.cotisation.data.AttestationPdfReponse
+        com.probtp.webservices.rest.certauth.mps.AttestationServicesRest.getAttestationCotisation(com.probtp.webservices.utils.SimpleQuestion)'
+      X-Jersey-Tracing-010:
+      - 'MATCH       [ ---- /  0,52 ms |  ---- %] Resource instance: [com.probtp.webservices.rest.certauth.mps.AttestationServicesRest
+        @60a260a2]'
+      X-Jersey-Tracing-011:
+      - MATCH       [ 0,21 /  0,53 ms |  0,10 %] RequestMatching summary
+      X-Jersey-Tracing-012:
+      - REQ-FILTER  [ 0,86 /  1,40 ms |  0,40 %] Filter by [com.probtp.webservices.rest.JerseyStatisticsFilter
+        @616d616d]
+      X-Jersey-Tracing-013:
+      - 'REQ-FILTER  [ 0,86 /  1,40 ms |  0,40 %] Request summary: 1 filters'
+      X-Jersey-Tracing-014:
+      - 'RI          [ 0,00 /  1,46 ms |  0,00 %] [org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor
+        @19951995 #10] BEFORE context.proceed()'
+      X-Jersey-Tracing-015:
+      - MBR         [ ---- /  1,47 ms |  ---- %] Find MBR for type=[com.probtp.webservices.utils.SimpleQuestion]
+        genericType=[com.probtp.webservices.utils.SimpleQuestion] mediaType=[application/json]
+        annotations=[]
+      X-Jersey-Tracing-016:
+      - MBR         [ ---- /  1,49 ms |  ---- %] [org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider
+        @2a542a54] IS readable
+      X-Jersey-Tracing-017:
+      - MBR         [ 0,04 /  1,53 ms |  0,02 %] ReadFrom by [org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider
+        @2a542a54]
+      X-Jersey-Tracing-018:
+      - 'RI          [ 0,00 /  1,53 ms |  0,00 %] [org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor
+        @19951995 #10] AFTER context.proceed()'
+      X-Jersey-Tracing-019:
+      - 'RI          [ 0,08 /  1,54 ms |  0,04 %] ReadFrom summary: 1 interceptors'
+      X-Jersey-Tracing-020:
+      - INVOKE      [213,47 / 215,03 ms | 99,13 %] Resource [com.probtp.webservices.rest.certauth.mps.AttestationServicesRest
+        @60a260a2] method=[public com.probtp.webservices.publics.cotisation.data.AttestationPdfReponse
+        com.probtp.webservices.rest.certauth.mps.AttestationServicesRest.getAttestationCotisation(com.probtp.webservices.utils.SimpleQuestion)]
+      X-Jersey-Tracing-021:
+      - 'INVOKE      [ ---- / 215,05 ms |  ---- %] Response: [org.glassfish.jersey.message.internal.OutboundJaxrsResponse
+        @4e1f4e1f <200/SUCCESSFUL|OK|com.probtp.webservices.publics.cotisation.data.AttestationPdfReponse
+        @483e483e>]'
+      X-Jersey-Tracing-022:
+      - 'RESP-FILTER [ 0,04 / 215,14 ms |  0,02 %] Filter by [com.probtp.webservices.rest.Log4j2JerseyLoggingFilter
+        @54125412 #-2147483648]'
+      X-Jersey-Tracing-023:
+      - RESP-FILTER [ 0,04 / 215,18 ms |  0,02 %] Filter by [com.probtp.webservices.rest.JerseyStatisticsFilter
+        @54b254b2]
+      X-Jersey-Tracing-024:
+      - 'RESP-FILTER [ 0,09 / 215,19 ms |  0,04 %] Response summary: 2 filters'
+      X-Jersey-Tracing-025:
+      - 'WI          [ 0,00 / 215,21 ms |  0,00 %] [org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor
+        @19951995 #10] BEFORE context.proceed()'
+      X-Jersey-Tracing-026:
+      - 'WI          [ 0,00 / 215,22 ms |  0,00 %] [org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor
+        @4b494b49 #3000] BEFORE context.proceed()'
+      X-Jersey-Tracing-027:
+      - 'WI          [ 0,00 / 215,22 ms |  0,00 %] [com.probtp.webservices.rest.Log4j2JerseyLoggingFilter
+        @498c498c #-2147483648] BEFORE context.proceed()'
+      X-Jersey-Tracing-028:
+      - MBW         [ ---- / 215,27 ms |  ---- %] Find MBW for type=[com.probtp.webservices.publics.cotisation.data.AttestationPdfReponse]
+        genericType=[com.probtp.webservices.publics.cotisation.data.AttestationPdfReponse]
+        mediaType=[[javax.ws.rs.core.MediaType @1dab1dab]] annotations=[@javax.ws.rs.POST(),
+        @javax.ws.rs.Path(value=/getAttestationCotisation), @javax.ws.rs.Consumes(value=[application/json]),
+        @javax.ws.rs.Produces(value=[application/json])]
+      X-Jersey-Tracing-029:
+      - MBW         [ ---- / 215,28 ms |  ---- %] [org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider
+        @63326332] IS writeable
+      X-Jersey-Tracing-030:
+      - MBW         [ 0,05 / 215,33 ms |  0,02 %] WriteTo by [org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider
+        @63326332]
+      X-Jersey-Tracing-031:
+      - 'WI          [ 0,00 / 215,33 ms |  0,00 %] [com.probtp.webservices.rest.Log4j2JerseyLoggingFilter
+        @498c498c #-2147483648] AFTER context.proceed()'
+      X-Jersey-Tracing-032:
+      - 'WI          [ 0,00 / 215,33 ms |  0,00 %] [org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor
+        @4b494b49 #3000] AFTER context.proceed()'
+      X-Jersey-Tracing-033:
+      - 'WI          [ 0,00 / 215,34 ms |  0,00 %] [org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor
+        @19951995 #10] AFTER context.proceed()'
+      X-Jersey-Tracing-034:
+      - 'WI          [ 0,13 / 215,34 ms |  0,06 %] WriteTo summary: 3 interceptors'
+      X-Jersey-Tracing-035:
+      - 'FINISHED    [ ---- / 215,34 ms |  ---- %] Response status: 200/SUCCESSFUL|OK'
+      Content-Type:
+      - application/json
+      Content-Language:
+      - fr-FR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJlbnRldGUiOnsiY29kZSI6IjgiLCJtZXNzYWdlIjoiMDEgQ29tcHRlIG5v
+        biDDqWxpZ2libGUgcG91ciBhdHRlc3RhdGlvbiBkZSBjb3Rpc2F0aW9uIn19
+    http_version: 
+  recorded_at: Mon, 08 May 2017 08:29:39 GMT
+recorded_with: VCR 3.0.3

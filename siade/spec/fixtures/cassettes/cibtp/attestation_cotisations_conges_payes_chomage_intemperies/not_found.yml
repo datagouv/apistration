@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <URL_CIBTP>/apientreprise/token
+    body:
+      encoding: UTF-8
+      string: '{"client_id":"<CIBTP_CLIENT_ID>","client_secret":"<CIBTP_CLIENT_SECRET>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.27.0
+      Date:
+      - Thu, 11 Jul 2024 08:08:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","expires_in":3599,"ext_expires_in":3599,"access_token":"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjI2MDB9.CgYnySeq5b12uwu8Wd_HSVizyzv_SEqjxxG5T4kw3Nc"}'
+  recorded_at: Thu, 11 Jul 2024 08:08:31 GMT
+- request:
+    method: get
+    uri: <URL_CIBTP>/apientreprise/attestationmarche?siret=77566487304147
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjI2MDB9.CgYnySeq5b12uwu8Wd_HSVizyzv_SEqjxxG5T4kw3Nc
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/1.27.0
+      Date:
+      - Thu, 11 Jul 2024 08:08:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"type":"Fonctionnelle","message":"L''entreprise appartient au réseau
+        CIBTP mais n’est pas connecté à cette API."}'
+  recorded_at: Thu, 11 Jul 2024 08:08:33 GMT
+recorded_with: VCR 6.2.0

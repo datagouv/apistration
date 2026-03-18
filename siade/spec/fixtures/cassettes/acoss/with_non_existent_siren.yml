@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_ACOSS>/api/oauth/v1/token"
+    body:
+      encoding: UTF-8
+      string: client_id=<ACOSS_CLIENT_ID>&client_secret=<ACOSS_CLIENT_SECRET>&grant_type=client_credentials&scope=attn.api_entreprise
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: '200'
+    headers:
+      X-Rate-Limit:
+      - '[{"window":0,"type":"throttle","remaining":1999}]'
+      Max-Forwards:
+      - '20'
+      Via:
+      - 1.1 hwi31ginmedserfogwc1 ()
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Correlationid:
+      - Id-e9ae5b5ffbef16f3f726d73b 0
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - origin, content-type, accept, authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, PUT, OPTIONS, HEAD
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Date:
+      - Fri, 11 Sep 2020 17:07:53 GMT
+      Expires:
+      - '0'
+      P3p:
+      - CP="COR CAO PSA OUR"
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"XqfD4Lsax4mmg89y6oEjUlLWBq16Xvs5fd-NsbmCdwo","token_type":"Bearer","expires_in":3600}'
+    http_version:
+  recorded_at: Fri, 11 Sep 2020 17:07:53 GMT
+- request:
+    method: post
+    uri: "<URL_ACOSS>/attn/entreprise/v1/demandes/api_entreprise"
+    body:
+      encoding: UTF-8
+      string: '{"typeAttestation":"AVG_UR","siren":"000000000","idClient":"1","beneficiaire":"78951073200017"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer XqfD4Lsax4mmg89y6oEjUlLWBq16Xvs5fd-NsbmCdwo
+  response:
+    status:
+      code: 400
+      message: '400'
+    headers:
+      X-Rate-Limit:
+      - '[{"window":0,"type":"throttle","remaining":1998}]'
+      Max-Forwards:
+      - '19'
+      Via:
+      - 1.1 hwi31ginmedserbogwc1 (), 1.1 hwi31ginmedserfogwc1 ()
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Correlationid:
+      - Id-e9ae5b5ffcef665614c40bef 0; Id-e9ae5b5f0cfb651213302d40 0
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Date:
+      - Fri, 11 Sep 2020 17:07:53 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - JSESSIONID=E26050A05D0B3267FDAC5AEE2EFC6243.hwi31gin01attestzbeapplitbe01;
+        Path=/attn_be; HttpOnly
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siY29kZSI6IkZVTkM1MTciLCJtZXNzYWdlIjoiTGUgU2lyZW4gZXN0IGluY29ubnUiLCJkZXNjcmlwdGlvbiI6IkxlIHNpcmVuIGVzdCBpbmNvbm51IGR1IFNJIEF0dGVzdGF0aW9ucywgcmFkacOpIG91IGhvcnMgcMOpcmltw6h0cmUifV0=
+    http_version:
+  recorded_at: Fri, 11 Sep 2020 17:07:54 GMT
+recorded_with: VCR 3.0.3

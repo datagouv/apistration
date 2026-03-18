@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <FABRIQUE_NUMERIQUE_CONVENTIONS_COLLECTIVES_URL>/82525962500028
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 21 Jan 2022 18:37:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"2d-/in4SQA+6vbGI2x9kztQ78Ami78"
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '[{"conventions":[],"siret":"82525962500028"}]'
+  recorded_at: Fri, 21 Jan 2022 18:37:17 GMT
+recorded_with: VCR 6.0.0

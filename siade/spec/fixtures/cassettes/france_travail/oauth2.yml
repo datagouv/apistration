@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<FRANCE_TRAVAIL_AUTHENTICATE_URL>"
+    body:
+      encoding: US-ASCII
+      string: client_id=<FRANCE_TRAVAIL_CLIENT_ID>&client_secret=<FRANCE_TRAVAIL_CLIENT_SECRET>&grant_type=client_credentials&scope=api_statutaugmentev1+api_liste-paiementsv1+individuStatutAugmente+application_<FRANCE_TRAVAIL_CLIENT_ID>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Content-Length:
+      - '259'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Thu, 13 Jul 2023 16:28:28 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Set-Cookie:
+      - BIGipServerPOOL_PROD02-SDDC-K8S_HTTPS=!eYWycdzsVGB9EShRqEhkI+kwdf49cLQSfDWUJRVD+xM8SUx0vP94FzBsHs/CIrTJwtZ/p/EmSBTHwQ==;
+        path=/; Httponly; Secure
+      - TS0188135e=01b3abf0a2d09ec5b0be24bed1f0c72f322e223adb17fbd7820a573d9bda7699b6f26416d8c6db6a02f973c3a74027bd5151ca3021;
+        Path=/; Domain=.entreprise.pole-emploi.fr; Secure; HTTPOnly
+      - so007-peame-affinity-prod-p=f9d387161c6de670; Path=/; HTTPonly; Secure;
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"anonymized_france_travail_token_ABC123DEF456GHI789","scope":"api_statutaugmentev1
+        api_liste-paiementsv1 individuStatutAugmente application_<FRANCE_TRAVAIL_CLIENT_ID>","token_type":"Bearer","expires_in":1499}'
+  recorded_at: Thu, 13 Jul 2023 16:28:28 GMT
+recorded_with: VCR 6.2.0

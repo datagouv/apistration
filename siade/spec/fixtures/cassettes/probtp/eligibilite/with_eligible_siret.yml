@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <PROBTP_DOMAIN>/ws_ext/rest/certauth/mpsservices/getStatutCotisation
+    body:
+      encoding: UTF-8
+      string: '{"corps":"34909797200021"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 18 Oct 2020 12:42:46 GMT
+      X-Powered-By:
+      - Servlet/3.1
+      Content-Length:
+      - '84'
+      Content-Type:
+      - application/json
+      Content-Language:
+      - en-US
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJlbnRldGUiOnsiY29kZSI6IjAifSwiY29ycHMiOiIwMCBDb21wdGUgw6lsaWdpYmxlIHBvdXIgYXR0ZXN0YXRpb24gZGUgY290aXNhdGlvbiJ9
+    http_version:
+  recorded_at: Sun, 18 Oct 2020 12:42:47 GMT
+recorded_with: VCR 3.0.3

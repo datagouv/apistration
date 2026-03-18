@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_INSEE_AUTH>"
+    body:
+      encoding: US-ASCII
+      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=insee_apim_password
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - no-store
+      X-Content-Type-Options:
+      - nosniff
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 13 Jul 2018 13:53:29 GMT
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - INSEE=1830169354.22560.0000;secure; expires=Fri, 13-Jul-2018 14:13:29 GMT;
+        path=/
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"anonymized-insee-token-12345678-abcd-efgh-ijkl-9876543210fe","scope":"am_application_scope
+        default","token_type":"Bearer","expires_in":598077}'
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 13:53:30 GMT
+recorded_with: VCR 3.0.3

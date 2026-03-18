@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <MEN_SCOLARITES_AUTHENTICATE_URL>
+    body:
+      encoding: US-ASCII
+      string: client_id=api-particuliers-tests&client_secret=<MEN_SCOLARITES_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Gravitee-Transaction-Id:
+      - 76080498-1ac7-4dff-8804-981ac71dffa1
+      X-Gravitee-Request-Id:
+      - 76080498-1ac7-4dff-8804-981ac71dffa1
+      Cache-Control:
+      - no-store
+      Set-Cookie:
+      - BIGipServerJ9zphd2TVx8/atjmRQ/Xew=!oe+7z6svgdzjHQs/D8/NErg9RsTL26NI4pblUkm/C6mkx7/cWnUBH3SFLdrZWumqkAyMV2DWmVq/thXYPmePYod/2N7Ph6XqRVWA4cYA4w==;
+        path=/; Httponly; Secure
+      - BIGipServereDCM4K/cL+R4L3GPwKnhsg=!zDJ/LbG/GDmNIJ8/D8/NErg9RsTL21nDo2m3mNe5R6wtxCtOzY9sDjqsNUNPeqp1YARC3JnR1MT2nBV6QsEyimOQEViuW9oOU7HDPPqOtQ==;
+        path=/; Httponly; Secure
+      - KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0;
+        Path=/auth/realms/omogen/; Secure; HttpOnly
+      X-Xss-Protection:
+      - 1; mode=block
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Referrer-Policy:
+      - no-referrer
+      Date:
+      - Fri, 13 Jan 2023 10:43:19 GMT
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=16070400
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1048'
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"jwt-access-token","expires_in":300,"refresh_expires_in":0,"token_type":"Bearer","not-before-policy":0,"scope":""}'
+  recorded_at: Fri, 13 Jan 2023 10:43:19 GMT
+- request:
+    method: get
+    uri: <MEN_SCOLARITES_URL>?annee-scolaire=2021&code-uai=0511474A&date-naissance=2000-06-10&nom=NOMFAMILLE&prenom=prenom&sexe=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer jwt-access-token
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Gravitee-Transaction-Id:
+      - afb3f075-0192-41f2-b3f0-750192f1f2e3
+      X-Gravitee-Request-Id:
+      - afb3f075-0192-41f2-b3f0-750192f1f2e3
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Date:
+      - Tue, 17 Jan 2023 11:47:06 GMT
+      X-Haproxy-Backend:
+      - server
+      Content-Length:
+      - '277'
+      Set-Cookie:
+      - cookie;
+        path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "identification": {
+            "nom": "NOMFAMILLE",
+            "prenom": "prenom",
+            "sexe": 2,
+            "date-naissance": "2000-06-10",
+            "etablissement": {
+              "code-uai": "0511474A"
+            },
+            "annee-scolaire": "2021"
+          },
+          "info-scolarite": {
+            "est-scolarise": true,
+            "statut-eleve": {
+              "code": "ST",
+              "libelle": "SCOLAIRE"
+            }
+          },
+          "info-bourse": {
+            "est-boursier": false
+          }
+        }
+  recorded_at: Tue, 17 Jan 2023 11:47:06 GMT
+recorded_with: VCR 6.1.0

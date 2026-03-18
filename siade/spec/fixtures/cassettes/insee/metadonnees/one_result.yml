@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_METADATA_URL>/geo/communes?com=false&date=2000-01-01&filtreNom=Gennevilliers"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 11 Mar 2024 17:03:33 GMT
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - pdapimgateway=rd4o00000000000000000000ffff0ac348aco8280; expires=Mon, 11-Mar-2024
+        17:23:33 GMT; path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '[{"code":"92036","uri":"http://id.insee.fr/geo/commune/4d55e21e-aae2-4d7c-8544-b5eb5165a920","type":"Commune","dateCreation":"1968-01-01","intituleSansArticle":"Gennevilliers","typeArticle":"0","intitule":"Gennevilliers"}]'
+  recorded_at: Mon, 11 Mar 2024 17:03:33 GMT
+recorded_with: VCR 6.2.0

@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <CNETP_DOMAIN>/webservice/doc/attestations/entreprises?id=<CNETP_CLIENT_NUMBER>&jeton=<CNETP_TOKEN>&siren=000000000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.7.2p137
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - Apache
+      Date:
+      - Wed, 17 Feb 2021 13:53:02 GMT
+      Content-Length:
+      - '58'
+      X-Bw6:
+      - v=6.0.18.5,qh=frontend
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, max-age=0
+      Keep-Alive:
+      - timeout=300, max=100
+      Content-Type:
+      - application/pdf;charset=ISO-8859-1
+      X-Frame-Options:
+      - DENY
+      Pragma:
+      - no-cache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Application-Context:
+      - application:prod:8683
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        TGUgU0lSRU4gb3UgbGUgU0lSRVQgbidlc3QgcGFzIHLpZulyZW5j6SBkYW5zIG5vcyBmaWNoaWVycw==
+  recorded_at: Wed, 17 Feb 2021 13:52:38 GMT
+recorded_with: VCR 6.0.0

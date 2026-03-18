@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<GIP_MDS_DOMAIN>/token"
+    body:
+      encoding: UTF-8
+      string: client_id=<GIP_MDS_CLIENT_ID>&client_secret=<GIP_MDS_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v1.7.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 02 Sep 2021 13:08:41 GMT
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=3600; includeSubDomains; preload
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - no-store
+      X-Content-Type-Options:
+      - nosniff
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFub255bWl6ZWRfa2V5X2lkXzEyMzQ1In0.eyJzdWIiOiJhbm9ueW1pemVkX3VzZXJAYW5vbi5jb20iLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6ImFub255bWl6ZWRfY2xpZW50X2lkXzY3ODkwIiwibmJmIjoxNjMwNTg4MTIxLCJhenAiOiJhbm9ueW1pemVkX2NsaWVudF9pZF82Nzg5MCIsInNjb3BlIjoiYW1fYXBwbGljYXRpb25fc2NvcGUgZGVmYXVsdCIsImlzcyI6Imh0dHBzOi8vYW5vbnltaXplZC5naXBtZHMuZnIvb2F1dGgyL3Rva2VuIiwiZXhwIjoxNjMwNTkxNzIxLCJpYXQiOjE2MzA1ODgxMjEsImp0aSI6ImFub255bWl6ZWRfandlYl90b2tlbl9pZCJ9.anonymized_signature_gip_mds_this_is_fake_jwt_token_for_testing_anonymization_purposes_only","scope":"am_application_scope
+        default","token_type":"Bearer","expires_in":3600}'
+  recorded_at: Thu, 02 Sep 2021 13:08:41 GMT
+recorded_with: VCR 6.0.0

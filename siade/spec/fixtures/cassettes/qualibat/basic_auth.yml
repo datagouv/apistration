@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<QUALIBAT_URL>/token"
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <QUALIBAT_BASIC_AUTH>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Jun 2023 11:54:11 GMT
+      Server:
+      - uvicorn
+      Content-Length:
+      - '189'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbm9ueW1pemVkX3F1YWxpYmF0X3VzZXIiLCJleHAiOjE2ODgwNDE0NTJ9.anonymized_qualibat_jwt_signature_fake_token_for_testing","token_type":"bearer","expires_in":1800.0}'
+  recorded_at: Thu, 29 Jun 2023 11:56:21 GMT
+recorded_with: VCR 6.1.0

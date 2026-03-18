@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<INPI_RNE_LOGIN_URL>"
+    body:
+      encoding: UTF-8
+      string: '{"username":"<INPI_RNE_LOGIN_USERNAME>","password":"<INPI_RNE_LOGIN_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/8.3.6
+      Cache-Control:
+      - no-cache
+      Date:
+      - Fri, 14 Jun 2024 07:25:12 GMT
+      Allow:
+      - POST
+      Expires:
+      - Fri, 14 Jun 2024 07:25:11 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Referrer-Policy:
+      - same-origin
+      Content-Security-Policy:
+      - 'default-src ''self''; connect-src ''self'' https://api-adresse.data.gouv.fr;
+        script-src ''self'' ''unsafe-inline'' ''unsafe-eval''; style-src ''self''
+        ''unsafe-inline''; img-src ''self'' blob: data:;'
+    body:
+      encoding: UTF-8
+      string: '{"token":"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjI2MDB9.CgYnySeq5b12uwu8Wd_HSVizyzv_SEqjxxG5T4kw3Nc","user":{"roles":["ROLE_NIVEAU_1_COMPANIES_METADATA","ROLE_NIVEAU_1_ACTES_PDF","ROLE_NIVEAU_1_BILANS_PDF","ROLE_NIVEAU_1_BILANS_SAISIES_PDF","ROLE_SFTP","ROLE_API"],"id":254192,"email":"<INPI_RNE_LOGIN_USERNAME>","firstname":"John","lastname":"Darksouls","civilityCode":"MR","address1":"20
+        avenue de S\u00e9gur","zipCode":"75007","city":"Paris","countryCode":"FR","isManager":false,"mobilePhone":"<PHONE_NUMBER>","lastLogin":"2024-06-14T09:25:12+02:00","active":true}}'
+  recorded_at: Fri, 14 Jun 2024 07:25:29 GMT
+- request:
+    method: get
+    uri: "<INPI_RNE_URL>/api/companies/000000000/attachments"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjI2MDB9.CgYnySeq5b12uwu8Wd_HSVizyzv_SEqjxxG5T4kw3Nc
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/8.3.6
+      Cache-Control:
+      - no-cache, private
+      Date:
+      - Fri, 14 Jun 2024 07:25:09 GMT
+      Allow:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"code":"404","webserviceCode":"api_company_attachments","errorCode":"404","message":"Impossible
+        de trouver la ressource demand\u00e9e","type":"notFound"}'
+  recorded_at: Fri, 14 Jun 2024 07:25:30 GMT
+recorded_with: VCR 6.2.0

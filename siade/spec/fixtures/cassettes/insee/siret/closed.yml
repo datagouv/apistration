@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/49081738400020"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Content-Type:
+      - application/json
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Thu, 30-Aug-2018 10:11:30 GMT;
+        path=/
+      - INSEE=1846946570.22560.0000;secure; expires=Thu, 30-Aug-2018 10:11:30 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 30 Aug 2018 09:51:30 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"490817384","nic":"00020","siret":"49081738400020","statutDiffusionEtablissement":"O","dateCreationEtablissement":"2007-06-29","trancheEffectifsEtablissement":"NN","anneeEffectifsEtablissement":null,"activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2012-04-26","etablissementSiege":true,"nombrePeriodesEtablissement":5,"uniteLegale":{"etatAdministratifUniteLegale":"C","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"2006-06-01","categorieJuridiqueUniteLegale":"5499","denominationUniteLegale":"BUSINESS &DECISION CONSULTING","sigleUniteLegale":"B &D CONSULTING","denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"70.22Y","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":null,"caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"NN","anneeEffectifsUniteLegale":null,"nicSiegeUniteLegale":"00020","dateDernierTraitementUniteLegale":"2013-12-11","categorieEntreprise":null,"anneeCategorieEntreprise":null},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"153","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"DE COURCELLES","codePostalEtablissement":"75017","libelleCommuneEtablissement":"PARIS 17","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"75117","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2011-09-05","etatAdministratifEtablissement":"F","changementEtatAdministratifEtablissement":true,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2011-09-04","dateDebut":"2010-10-03","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"2010-10-02","dateDebut":"2008-09-30","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":true},{"dateFin":"2008-09-29","dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"2007-12-31","dateDebut":"2007-06-29","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"74.1G","nomenclatureActivitePrincipaleEtablissement":"NAFRev1","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":false}]}}
+    http_version:
+  recorded_at: Thu, 30 Aug 2018 09:51:30 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/75117?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 25 Nov 2019 11:58:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Powered-By:
+      - Express
+      Etag:
+      - W/"89-oVDvIH+0/RQry4IA+IODHLUDMps"
+      Strict-Transport-Security:
+      - max-age=15552000
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"nom":"Paris 17e Arrondissement","code":"75117","departement":{"code":"75","nom":"Paris"},"region":{"code":"11","nom":"Île-de-France"}}
+    http_version:
+  recorded_at: Mon, 25 Nov 2019 11:58:58 GMT
+recorded_with: VCR 3.0.3

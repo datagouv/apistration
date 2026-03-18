@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/78951073200017"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Mon, 25-Nov-2019 11:57:08 GMT;
+        path=/
+      - pdapimgateway=1846946570.22560.0000;secure; expires=Mon, 25-Nov-2019 11:57:08
+        GMT; path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 25 Nov 2019 11:37:08 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"789510732","nic":"00027","siret":"78951073200017","statutDiffusionEtablissement":"N","dateCreationEtablissement":"2000-01-01","trancheEffectifsEtablissement":null,"anneeEffectifsEtablissement":null,"activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2020-01-01T14:00:38","etablissementSiege":true,"nombrePeriodesEtablissement":3,"uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"N","dateCreationUniteLegale":"2000-01-01","categorieJuridiqueUniteLegale":"1000","denominationUniteLegale":null,"sigleUniteLegale":null,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":"M","nomUniteLegale":"DUPONT","nomUsageUniteLegale":null,"prenom1UniteLegale":"JEAN","prenom2UniteLegale":"PAUL","prenom3UniteLegale":"MARIE","prenom4UniteLegale":null,"prenomUsuelUniteLegale":"JEAN","pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"70.2A","nomenclatureActivitePrincipaleUniteLegale":"NAFRev1","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":null,"caractereEmployeurUniteLegale":"N","trancheEffectifsUniteLegale":null,"anneeEffectifsUniteLegale":null,"nicSiegeUniteLegale":"00027","dateDernierTraitementUniteLegale":null,"categorieEntreprise":null,"anneeCategorieEntreprise":null},"adresseEtablissement":{"complementAdresseEtablissement":"ETAGE 1","numeroVoieEtablissement":"123","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"DE LA PAIX","codePostalEtablissement":"75001","libelleCommuneEtablissement":"PARIS 1ER","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"75101","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2010-12-25","etatAdministratifEtablissement":"F","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.2A","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":true},{"dateFin":"2010-12-24","dateDebut":"2005-12-31","etatAdministratifEtablissement":"F","changementEtatAdministratifEtablissement":true,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false},{"dateFin":"2005-12-30","dateDebut":"2000-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false}]}}
+    http_version:
+  recorded_at: Mon, 25 Nov 2019 11:37:08 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/75101?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 25 Nov 2019 11:37:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Powered-By:
+      - Express
+      Etag:
+      - W/"90-XQqQUNN1v9RzI+3tZrqB9g0gKT8"
+      Strict-Transport-Security:
+      - max-age=15552000
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"nom":"Paris 1er Arrondissement","code":"75101","departement":{"code":"75","nom":"Paris"},"region":{"code":"11","nom":"Île-de-France"}}
+    http_version:
+  recorded_at: Mon, 25 Nov 2019 11:37:09 GMT
+recorded_with: VCR 3.0.3

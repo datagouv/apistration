@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/50056940503239"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Content-Type:
+      - application/json
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1627925258.20480.0000;secure; expires=Fri, 13-Jul-2018 14:52:08 GMT;
+        path=/
+      - INSEE=1846946570.22560.0000;secure; expires=Fri, 13-Jul-2018 14:52:08 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 13 Jul 2018 14:32:08 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"500569405","nic":"03239","siret":"50056940503239","statutDiffusionEtablissement":"O","dateCreationEtablissement":"2014-09-01","trancheEffectifsEtablissement":"32","anneeEffectifsEtablissement":"2016","activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2018-06-30","etablissementSiege":true,"nombrePeriodesEtablissement":1,"uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"2007-10-05","categorieJuridiqueUniteLegale":"5720","denominationUniteLegale":"DECATHLON FRANCE","sigleUniteLegale":null,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"52.10B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":"N","caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"53","anneeEffectifsUniteLegale":"2016","nicSiegeUniteLegale":"03239","dateDernierTraitementUniteLegale":"2018-07-02","categorieEntreprise":null,"anneeCategorieEntreprise":null},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"4","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"BD","libelleVoieEtablissement":"DE MONS","codePostalEtablissement":"59650","libelleCommuneEtablissement":"VILLENEUVE D'ASCQ","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"59009","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2014-09-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":true,"enseigne1Etablissement":"DECATHLON DIRECTION GENERALE FRANCE","enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":true,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":true,"activitePrincipaleEtablissement":"47.64Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true}]}}
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 14:32:08 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/59009?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Fri, 13 Jul 2018 14:32:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"82-Uhns324FP8s6/O1/IPeFvt9mKpg"
+      Strict-Transport-Security:
+      - max-age=15552000
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"nom":"Villeneuve-d'Ascq","code":"59009","departement":{"code":"59","nom":"Nord"},"region":{"code":"32","nom":"Hauts-de-France"}}
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 14:32:33 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret?q=siren:500569405"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Fri, 13-Jul-2018 14:52:48 GMT;
+        path=/
+      - INSEE=1830169354.22560.0000;secure; expires=Fri, 13-Jul-2018 14:52:48 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      X-Total-Count:
+      - '374'
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Link:
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=siren%3A500569405&debut=0&nombre=20>;
+        rel="first"
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=siren%3A500569405&debut=20&nombre=20>;
+        rel="next"
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=siren%3A500569405&debut=360&nombre=14>;
+        rel="last"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 13 Jul 2018 14:32:48 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAO2dXXOiSBSG/wrFzd7ELRpQIHctdhJmESzA7Ga29sLRToYqg1nUrZ2amv++3YCJH62wY5SEnItUKjlN2+Dh9POe/vouf6WjCU3ly+/yfDFaLBfypaooF/Ijnc9HD1S+lP3f5At5MVuMpvKlZugX8oR+4cVYoWT2+CWl/IofFzJdjL5M4/mcPtJkMZcv/2Q1xilNWBVtRWl3LF1ps5qSeMz+oyDV0NlfvMRivcSzIWtML76/X87jWULWK+eNYkUmowW1UzpaCOzsHsyWordUxBufjpLxV0ru7+l4Ed/Ptwt7His0ShK6t0iynE5ZEWb6J17QQRon4/hpNKUBfYjni5T26SKmqfgq3sweTRNWIEpH7HJu3G0vQll7NXnrSYYx5V/D/Wg6p6snPqBpPJvQ7c9TL+Rlwj7ApQ+sbfwrZTUt8OQxTngr2YO6H67bZbz7oDcLbD/mTSt7yEYLKa3sex2zYg+zNKaflmk8if9e0s3CbUNVeG2U3UKcCGrrERtHN67vSVcB9mySecfDdLOa4pGuVzJf0umUomrF1GrFNEGxOf1X1BZ27Z7/8vdHYHpK+eeJ2ptbRE3MLaJW5RZ9ryW7IZF1TpeTWfLtUdTEXUff+i7VX5HSlbPbpMl4yjwopbjkIg9fBfQflV0VsyfOfDEeJQs8n8/G8a435O2g4xn/amjIy0zZr2k8GbGIsVVx5n0pazRNKXl8ms6+0WW668jbYWDrnrSdILDt7aiTx6/sldw0KpqqWfKel32nHhaajJairr81JGFh5CmN5y9fAm+Lvc/OAu5okrIgTbeCwHd5PGPPIPsLC0sUHrp8pOnsdhaLzXEyiccsvj2xyCYIsHmhxbcnKqhBdnvs1qbxF/4qiez2DR72iedHUjgMpEFAXP62j1lIG8xYPJpul2/rpqK8VGnPHh+XyW6tvnflYi+UiCd9woHnhHeCa5gTPNBUHKl5lIxZ58buN3yimc8JC/KW7mlEW0dap7gZm07ov8IKVo3aWyB7FqNv84PtLWopKcc85UncX7AemvvrVZxs9lVZ986ju9VivZKm5F3SZkeyfd9X/J6/8jYU3dvB4ot0yTozmsxp/JBQtF3Zc1cgvxRShY9gZdXET/GlQUW5rWJFryroAUrq65VeUVS9G0q3b1Y3fjVMuzSY7kDLczh9aVXpVUWjdqOliK9e6rXLymf1/rhY86dn91FfwuKzX72gWalf4XfpV3k7TuFWec1vy6vyNr26U/Fqf/zFveqAjlBM0xTqiJXhjDoCqWU6YgURp1USxnrY/iklgUBJgJIAJQFKom4lEUTksJToEenKHwZMUfS7eOhGh3WEicxyHdHHwec6lIOJOkpTlAMQ3jkIr6N/bj7hqchEQsJbGc5IeFmhUsJrn4HwlDZr9BGEpwHhAeEB4QHhvQfCuyV3fcJe9OuSNLFRBe8iEtw6rktqIDyj02lKbhh1WorWUqxz54Y34a3JSeGzwd1Zk8KF35jCpLCVB7pXlgzF/YFHvXuPyvTC9ihD7jfozYwynMGfQHwKnGP7Zl9JfbZNQ6w+CwOML8D4AqhPUJ+gPl9ffcphJA0cEgT8FTuhCN2QTMIJTVgauOxVvyFRdFiDmnq7wlSlrs8EqFeDBDV1BVkNkaAwyPAhOe8kgwzI6IgHGVaGNzfIAJgHmAeYB5jXBMwj4QDbRLL9fp8EtoNdyb7BXkQCfFruk/FtydjDULpmnBawFvWIdI2HbslMdUtVtXL8Y3V6hA9CMLYNzw+Blqo0Z446QOA5IPBDzCVWDaSIc32F4VgI5GiitVQdIBAgECAQIBAgcC3YfMY2hyz3F2IP78ipU35yMCyZdxL6AXGlKMD23UHk0y2tyuLEG98l0flZT7cUqykJv7XuE1gPEn7HJfy0LG4KEn6FARJ+wHrAesB6wHqnYb2aR3S7vucRKeRLxw5n9BBCFfDOw0FW4/kBDyG1ozYE8CCZB4D3WoCntbPwtgt4K8PRyTwjUyNqOeCtRdM6NxjjAb+lmoB3gHeAd4B3tS0ak/ldnjZ3l+cRr7HrlE3XU6rQHe52SU1rxkxFydY2NAHv1nrMD453Gy0CyjtiyNZC4u2fVoajKQ/xpFhWFyzPAM4DzgPOA86rxnlnyOK5JJRszMjMH/5xkPM6ahXOs7GLnRom5LHWWVpTIO+lw/zgkAc5vKM392zvGaRdGWDxLdAd0B3QHdDdiSbk2f4wwkHPIQEnLVvqur4TSuqhwVtZNY7O71XaE8rr+f3D2T2dQV859WWZvS4O/OH5yU9HqgFLMYD8gPy2yK+jidfjrgxAfkB+QH5AfkB+5x+/Rbp6+hHcoTQgQYBL1l7oVdZeeHwtcQ1pPZ3xZ1PWXgDcAdy9Gtzppnhq3spwTriDtRcAdwB3AHcAd2vmkw7a3tqSi/PX3HEdkq+aOLClClLVCjvqBSRyrr277ERRP7iuYaqehZDSlFFcwD3AvVfDvTzFLcC9wvDhjnpv8+N70DHH98BR7wB7AHsAe8dm8k6ex/tEsCd18SBywojv8Od2SXD4kEbDqjJo6zl+UMN2KoaFrMYsx9C4b6paFcaD493FVb8tyjvvST65+6gyaAfQDifTDvn4jkA7FIYPpx1QtoZOA+0A2gG0A2iHU2/IOJSuiOcP+RTJSHL9SEJIOvWu3FWmf9o48PLVs3uFhKbrRrmQGJDAd2uYHKDpyDIboiR4J2q2snm/oCRASfxfJVG4TweUBCiJ0ymJtrZn0klhgA0/f0JLwKQT0BKgJUBLlGmJwJOysd7aNwu4wcM++91jP1FAuKwJD4oIZFY50CfEjhdJPX/osg8IeudXE6yZeUhsiJoA6gPqe539oUxNSH0rw9H7Q6k8H5uFCJhqDNQH1AfUB9S3EZYObBSgHz39pEqm+Ab3B13i+U5YMvHEQJ0K+eLAv3W8GhLGhqEZTVlNttZrAuIB4h13kg/aM0VgZYDEHiAeIB4gHiBeE1eT2VGQnRyenR2JJZd8xkHv8Ioyo6Na5aDX973Iqe+QbqOj60ZDcA8yeoB7r7czlLFnHLcwAO79BO7BnFDAPcA9wL1jM3qnX1DWG0qczKRPvnOY8jqqalYdue3jIHI8qesPXf+6jlMcO6rRbspsUNTh3VG1dWX/j/aKnqx+3Hsj00EN037XwCdeV5a7D6wrq0FFPBNIdYfabsubFg/IMgxxrrgwnFM8NGZbWRAPIB5APIB4OFY8HH0uKL4tnQ3wO74OcP9weph1C2b5PAAcOKEkKnfqxHAbKQ2TCjpIhVNLhfeeGz4kFTSQCvUMOLx3/VlNM5jaHs1QGOAoip/QDDC/BDQDaAbQDJU2oSCh1MVRRIIwW61V43STNXYWagcWGitsXtcld54f1rB9nYIUHbYoBsb7eIz314//AGAqf1Dr1gAA
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 14:32:49 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_INSEE_AUTH>"
+    body:
+      encoding: US-ASCII
+      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=insee_apim_password
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - no-store
+      X-Content-Type-Options:
+      - nosniff
+      Set-Cookie:
+      - INSEE=rd4o00000000000000000000ffff0ac348b0o9443; expires=Mon, 24-Apr-2023
+        10:12:38 GMT; path=/; Httponly; Secure
+      - pdapimgateway=rd4o00000000000000000000ffff0ac348ado8280; expires=Mon, 24-Apr-2023
+        10:12:38 GMT; path=/; Httponly; Secure
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 24 Apr 2023 09:52:38 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"<INSEE_TOKEN>","scope":"am_application_scope
+        default","token_type":"Bearer","expires_in":601355}'
+  recorded_at: Mon, 24 Apr 2023 09:52:38 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/53222169400013"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 301
+      message: ''
+    headers:
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Location:
+      - "<URL_INSEE_V3>/entreprises/sirene/ws/siret/77887067500015"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 24 Apr 2023 09:52:38 GMT
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - pdapimgateway=rd4o00000000000000000000ffff0ac348aco8280; expires=Mon, 24-Apr-2023
+        10:12:38 GMT; path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"header":{"statut":301,"message":"Unité légale doublon, redirection
+        vers l''établissement siège de l''unité légale : 778870675"}}'
+  recorded_at: Mon, 24 Apr 2023 09:52:38 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/77887067500015"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 24 Apr 2023 09:52:38 GMT
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - pdapimgateway=rd4o00000000000000000000ffff0ac348ado8280; expires=Mon, 24-Apr-2023
+        10:12:38 GMT; path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"778870675","nic":"00015","siret":"77887067500015","statutDiffusionEtablissement":"O","dateCreationEtablissement":"1900-01-01","trancheEffectifsEtablissement":"21","anneeEffectifsEtablissement":"2020","activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2022-08-29T09:45:14","etablissementSiege":true,"nombrePeriodesEtablissement":4,"uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1900-01-01","categorieJuridiqueUniteLegale":"9260","denominationUniteLegale":"ASSOCIATION
+        POPULAIRE JOIE ET SANTE","sigleUniteLegale":null,"denominationUsuelle1UniteLegale":null,"denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"88.99B","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":"O","societeMissionUniteLegale":null,"caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"21","anneeEffectifsUniteLegale":"2020","nicSiegeUniteLegale":"00015","dateDernierTraitementUniteLegale":"2022-08-29T09:45:14","categorieEntreprise":"PME","anneeCategorieEntreprise":"2020"},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"41","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"VIRGILE","codePostalEtablissement":"67200","libelleCommuneEtablissement":"STRASBOURG","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"67482","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"88.99B","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2007-12-31","dateDebut":"1996-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"85.3K","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"1996-12-24","dateDebut":"1986-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"85.3K","nomenclatureActivitePrincipaleEtablissement":"NAF1993","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false},{"dateFin":"1986-12-24","dateDebut":"1900-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":false}]}}'
+  recorded_at: Mon, 24 Apr 2023 09:52:38 GMT
+recorded_with: VCR 6.1.0

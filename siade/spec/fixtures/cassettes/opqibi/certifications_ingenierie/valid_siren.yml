@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <OPQIBI_DOMAIN>/certificats/434717997
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Apr 2022 10:12:40 GMT
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache, private, max-age=3600
+      Set-Cookie:
+      - device_view=full; expires=Fri, 13-May-2022 10:12:40 GMT; Max-Age=2592000;
+        path=/; httponly
+      Expires:
+      - Wed, 13 Apr 2022 11:12:40 GMT
+      X-Request-Id:
+      - '342917799'
+      Vary:
+      - Accept-Encoding
+      X-Cdn-Pop:
+      - rbx1
+      X-Cdn-Pop-Ip:
+      - 51.254.41.128/25
+      X-Cacheable:
+      - Cacheable
+      Accept-Ranges:
+      - bytes
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"numero_certificat":"12 34 5678","date_de_delivrance_du_certificat":"15\/06\/2021","duree_de_validite_du_certificat":"valable
+        un an","assurance":"ANONYME","url":"https:\/\/www.opqibi.com\/fiche\/9876","qualifications":[{"CodeQualification":"2001","Nom":"\u00c9tude
+        en ing\u00e9nierie thermique","Definition":"Optimisation \u00e9nerg\u00e9tique des b\u00e2timents","rge":"0"},{"CodeQualification":"2002","Nom":"Ing\u00e9nierie
+        en efficacit\u00e9 \u00e9nerg\u00e9tique","Definition":"Am\u00e9lioration
+        de la performance","rge":"0"}],"date_de_validite_des_qualification":"15\/06\/2024","qualifications_probatoires":[{"CodeQualification":"2003","Nom":"Ing\u00e9nierie
+        en \u00e9nergies renouvelables","Definition":"D\u00e9veloppement durable et \u00e9cologie","rge":"0"}],"date_de_validite_des_qualifications_probatoires":"15\/06\/2022"}'
+  recorded_at: Wed, 13 Apr 2022 10:12:40 GMT
+recorded_with: VCR 6.1.0

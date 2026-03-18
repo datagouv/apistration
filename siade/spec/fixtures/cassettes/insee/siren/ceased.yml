@@ -1,0 +1,160 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siren/490817384"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Thu, 30-Aug-2018 11:45:19 GMT;
+        path=/
+      - INSEE=1846946570.22560.0000;secure; expires=Thu, 30-Aug-2018 11:45:19 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 30 Aug 2018 11:25:19 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"OK"},"uniteLegale":{"siren":"490817384","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"2006-06-01","sigleUniteLegale":"B &D CONSULTING","sexeUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"identifiantAssociationUniteLegale":null,"trancheEffectifsUniteLegale":"NN","anneeEffectifsUniteLegale":null,"dateDernierTraitementUniteLegale":"2013-12-11","nombrePeriodesUniteLegale":9,"categorieEntreprise":null,"anneeCategorieEntreprise":null,"periodesUniteLegale":[{"dateFin":null,"dateDebut":"2011-09-05","etatAdministratifUniteLegale":"C","changementEtatAdministratifUniteLegale":true,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS &DECISION CONSULTING","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2011-09-04","dateDebut":"2010-10-03","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS &DECISION CONSULTING","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":true},{"dateFin":"2010-10-02","dateDebut":"2009-04-09","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS &DECISION CONSULTING","changementDenominationUniteLegale":true,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2009-04-08","dateDebut":"2008-12-29","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS & DECISION CONSO","changementDenominationUniteLegale":true,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":false},{"dateFin":"2008-12-28","dateDebut":"2008-09-30","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS ET DECISION CONSEIL","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":true},{"dateFin":"2008-09-29","dateDebut":"2008-01-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS ET DECISION CONSEIL","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","changementActivitePrincipaleUniteLegale":true,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":true},{"dateFin":"2007-12-31","dateDebut":"2007-06-29","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"BUSINESS ET DECISION CONSEIL","changementDenominationUniteLegale":true,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"74.1G","nomenclatureActivitePrincipaleUniteLegale":"NAFRev1","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00020","changementNicSiegeUniteLegale":true,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":true},{"dateFin":"2007-06-28","dateDebut":"2006-07-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"MC CONSEIL","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"74.1G","nomenclatureActivitePrincipaleUniteLegale":"NAFRev1","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00012","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"O","changementCaractereEmployeurUniteLegale":true},{"dateFin":"2006-06-30","dateDebut":"2006-06-01","etatAdministratifUniteLegale":"A","changementEtatAdministratifUniteLegale":false,"nomUniteLegale":null,"changementNomUniteLegale":false,"nomUsageUniteLegale":null,"changementNomUsageUniteLegale":false,"denominationUniteLegale":"MC CONSEIL","changementDenominationUniteLegale":false,"denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"changementDenominationUsuelleUniteLegale":false,"categorieJuridiqueUniteLegale":"5499","changementCategorieJuridiqueUniteLegale":false,"activitePrincipaleUniteLegale":"74.1G","nomenclatureActivitePrincipaleUniteLegale":"NAFRev1","changementActivitePrincipaleUniteLegale":false,"nicSiegeUniteLegale":"00012","changementNicSiegeUniteLegale":false,"economieSocialeSolidaireUniteLegale":null,"changementEconomieSocialeSolidaireUniteLegale":false,"caractereEmployeurUniteLegale":"N","changementCaractereEmployeurUniteLegale":false}]}}
+    http_version:
+  recorded_at: Thu, 30 Aug 2018 11:25:19 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/49081738400020"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Thu, 04-Oct-2018 11:52:06 GMT;
+        path=/
+      - INSEE=1830169354.22560.0000;secure; expires=Thu, 04-Oct-2018 11:52:06 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Thu, 04 Oct 2018 11:32:05 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"490817384","nic":"00020","siret":"49081738400020","statutDiffusionEtablissement":"O","dateCreationEtablissement":"2007-06-29","trancheEffectifsEtablissement":"NN","anneeEffectifsEtablissement":null,"activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2012-04-26","etablissementSiege":true,"nombrePeriodesEtablissement":5,"uniteLegale":{"etatAdministratifUniteLegale":"C","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"2006-06-01","categorieJuridiqueUniteLegale":"5499","denominationUniteLegale":"BUSINESS &DECISION CONSULTING","sigleUniteLegale":"B &D CONSULTING","denominationUsuelle1UniteLegale":"MC CONSEIL","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"70.22Z","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":null,"caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"NN","anneeEffectifsUniteLegale":null,"nicSiegeUniteLegale":"00020","dateDernierTraitementUniteLegale":"2013-12-11","categorieEntreprise":null,"anneeCategorieEntreprise":null},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"153","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"DE COURCELLES","codePostalEtablissement":"75017","libelleCommuneEtablissement":"PARIS 17","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"75117","codeCedexEtablissement":null,"libelleCedexEtablissement":null,"codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"adresse2Etablissement":{"complementAdresse2Etablissement":null,"numeroVoie2Etablissement":null,"indiceRepetition2Etablissement":null,"typeVoie2Etablissement":null,"libelleVoie2Etablissement":null,"codePostal2Etablissement":null,"libelleCommune2Etablissement":null,"libelleCommuneEtranger2Etablissement":null,"distributionSpeciale2Etablissement":null,"codeCommune2Etablissement":null,"codeCedex2Etablissement":null,"libelleCedex2Etablissement":null,"codePaysEtranger2Etablissement":null,"libellePaysEtranger2Etablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2011-09-05","etatAdministratifEtablissement":"F","changementEtatAdministratifEtablissement":true,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Y","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2011-09-04","dateDebut":"2010-10-03","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Y","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"2010-10-02","dateDebut":"2008-09-30","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Y","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":true},{"dateFin":"2008-09-29","dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"70.22Y","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"2007-12-31","dateDebut":"2007-06-29","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"74.1G","nomenclatureActivitePrincipaleEtablissement":"NAFRev1","changementActivitePrincipaleEtablissement":false,"caractereEmployeurEtablissement":"N","changementCaractereEmployeurEtablissement":false}]}}
+    http_version:
+  recorded_at: Thu, 04 Oct 2018 11:32:06 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/75117?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 04 Oct 2018 11:32:07 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '9'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"9-0gXL1ngzMqISxa6S1zx3F4wtLyg"
+      Strict-Transport-Security:
+      - max-age=15552000
+    body:
+      encoding: UTF-8
+      string: Not Found
+    http_version:
+  recorded_at: Thu, 04 Oct 2018 11:32:07 GMT
+recorded_with: VCR 3.0.3

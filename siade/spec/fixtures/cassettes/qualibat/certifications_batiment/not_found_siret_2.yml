@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<QUALIBAT_URL>/token"
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <QUALIBAT_BASIC_AUTH>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Jun 2023 12:21:16 GMT
+      Server:
+      - uvicorn
+      Content-Length:
+      - '189'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhcGlnb3V2MSIsImV4cCI6MTY4ODA0MzA3N30.d7NErx73YVwC7ti0TZLYydEeyFtJ3s68cfSSKcp9Slo","token_type":"bearer","expires_in":1800.0}'
+  recorded_at: Thu, 29 Jun 2023 12:23:27 GMT
+- request:
+    method: get
+    uri: "<QUALIBAT_URL>/certificat/55203253400646"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhcGlnb3V2MSIsImV4cCI6MTY4ODA0MzA3N30.d7NErx73YVwC7ti0TZLYydEeyFtJ3s68cfSSKcp9Slo
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Jun 2023 12:21:17 GMT
+      Server:
+      - uvicorn
+      Content-Length:
+      - '77'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"status_code":404,"error":"Not Found","message":"Entreprise non certifiée"}'
+  recorded_at: Thu, 29 Jun 2023 12:23:27 GMT
+recorded_with: VCR 6.1.0

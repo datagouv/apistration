@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <INFOGREFFE_URL_EXTRAIT_RCS>
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'
+        xmlns:urn='urn:WebServicesProduits'> <soapenv:Header/> <soapenv:Body> <urn:getProduitsWebServicesXML
+        soapenv:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'> <arg0 xsi:type='xsd:string'>
+        <demande> <emetteur> <code_abonne><INFOGREFFE_CODE_ABONNE></code_abonne> <mot_passe><INFOGREFFE_MOT_PASSE></mot_passe>
+        <code_requete> <type_profil>A</type_profil> <origine_emetteur>IC</origine_emetteur>
+        <nature_requete>C</nature_requete> <type_document>KB</type_document> <type_requete>S</type_requete>
+        <mode_diffusion> <mode type='XL'/> </mode_diffusion> <media>WS</media> </code_requete>
+        </emetteur> <commande> <num_siren>432268993</num_siren> </commande> </demande>
+        </arg0> </urn:getProduitsWebServicesXML> </soapenv:Body> </soapenv:Envelope>\n"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - text/xml
+      Charset:
+      - utf-8
+      Soapaction:
+      - getProduitsWebServicesXML
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 May 2017 10:49:40 GMT
+      Server:
+      - Apache/2.2.3 (CentOS)
+      Content-Length:
+      - '580'
+      X-Powered-By:
+      - Servlet/2.5 JSP/2.1
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Set-Cookie:
+      - BIGIPSESSION=rd1o00000000000000000000ffffac164b3eo8002; expires=Wed, 31-May-2017
+        11:49:41 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: "<?xml version='1.0' encoding='UTF-8'?><SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/'
+        xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns:xsd='http://www.w3.org/2001/XMLSchema'><SOAP-ENV:Body><ns0:getProduitsWebServicesXMLResponse
+        xmlns:ns0='urn:local' SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'><return
+        xsi:type='xsd:string'>006 -DOSSIER NON TROUVE DANS LA BASE DE GREFFES-</return></ns0:getProduitsWebServicesXMLResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+    http_version: 
+  recorded_at: Wed, 31 May 2017 10:49:41 GMT
+recorded_with: VCR 3.0.3

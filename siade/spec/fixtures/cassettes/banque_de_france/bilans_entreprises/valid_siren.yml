@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <BANQUE_DE_FRANCE_BILANS_URL>/356000000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 CET
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - No-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '1030'
+      Set-Cookie:
+      - BIGipServerp-PU2C-HERMES-RI=3993786122.45602.0000; path=/; Httponly; Secure
+      - TS01e1fe8e=01728bec499b015fb35ce289864469d4def127572fa9b4ff245be6d7fd9268c335822c0ce7dc55e4e74e9eb377da33f805ef8132cc3bacda8efc290d60e02417485c3b56e4;
+        Path=/; Domain=.banque-france.fr
+    body:
+      encoding: ASCII-8BIT
+      string: "{\"siren\":\"356000000\",\"denominationSociale\":\"COURRIER-EXEMPLE\",\"code-retour\":200,\"message\":\"Service Web OK\",\"date\":\"21 mai 2018 08:46:42\",\"monnaie\":\"kEuros\",\"bilans\":[{\"dateArrete\":\"201712\",\"dureeExercice\":\"12\",\"caHT\":\"5432100\",\"valeurAjouteeBdf\":\"3456789\",\"ebe\":\"-987654\",\"caf\":\"345678\",\"resultatExercice\":\"234567\",\"capitauxPropresEtAssimiles\":\"2345678\",\"dontCapitalSocial\":\"1500000\",\"dontAutresFondsPropres\":\"0\",\"totalProvisionsPourRisquesEtCharges\":\"789123\",\"dettes1EmpruntsObligatairesEtConvertibles\":\"0\",\"dettes2AutresEmpruntsObligataires\":\"2345678\",\"dettes3EmruntsEtDettesAupresDesEtablissementsdeCredit\":\"0\",\"dettes4DontAUnAnAuPlus\":\"0\",\"totalDettesStables\":\"2345678\",\"empruntsEtDettesFinancieresDivers\":\"456789\",\"groupesEtAssocies\":\"0\",\"frng\":\"678912\",\"besoinEnFondsDeRoulement\":\"-234567\",\"frng/bfr\":\"-\",\"disponibilites\":\"567890\",\"totalPassif\":\"7890123\",\"evolutionCaHT\":\"-2,34%\",\"evolutionValeurAjouteeBdf\":\"-5,67%\",\"evolutionEbe\":\"-8,90%\",\"evolutionCaf\":\"-12,34%\",\"evolutionResultatExercice\":\"+156,78%\",\"evolutionCapitauxPropresEtAssimiles\":\"+9,01%\",\"evolutionDontCapitalSocial\":\"0,00%\",\"evolutionDontAutresFondsPropres\":\"\",\"evolutionTotalProvisionsPourRisquesEtCharges\":\"-13,45%\",\"evolutionDettes1EmpruntsObligatairesEtConvertibles\":\"\",\"evolutionDettes2AutresEmpruntsObligataires\":\"-15,67%\",\"evolutionDettes3EmpruntsEtDettesAupresDesEtablissementsdeCredit\":\"\",\"evolutionDettes4DontAUnAnAuPlus\":\"\",\"evolutionTotaltotalDettesStables\":\"-15,67%\",\"evolutionEmpruntsEtDettesFinancieresDivers\":\"+23,45%\",\"evolutionGroupesEtAssocies\":\"\",\"evolutionFrng\":\"-34,56%\",\"evolutionBesoinEnFondsDeRoulement\":\"-6,78%\",\"evolutionFrng/Bfr\":\"\",\"evolutionDisponibilites\":\"-28,90%\",\"evolutionTotalPassif\":\"-4,56%\"},{\"dateArrete\":\"201612\",\"dureeExercice\":\"12\",\"caHT\":\"5678901\",\"valeurAjouteeBdf\":\"3678901\",\"ebe\":\"-890123\",\"caf\":\"376890\",\"resultatExercice\":\"123456\",\"capitauxPropresEtAssimiles\":\"2456789\",\"dontCapitalSocial\":\"1500000\",\"dontAutresFondsPropres\":\"0\",\"totalProvisionsPourRisquesEtCharges\":\"890123\",\"dettes1EmpruntsObligatairesEtConvertibles\":\"0\",\"dettes2AutresEmpruntsObligataires\":\"2567890\",\"dettes3EmruntsEtDettesAupresDesEtablissementsdeCredit\":\"0\",\"dettes4DontAUnAnAuPlus\":\"0\",\"totalDettesStables\":\"2567890\",\"empruntsEtDettesFinancieresDivers\":\"378901\",\"groupesEtAssocies\":\"0\",\"frng\":\"890123\",\"besoinEnFondsDeRoulement\":\"-234567\",\"frng/bfr\":\"-\",\"disponibilites\":\"789012\",\"totalPassif\":\"8123456\",\"evolutionCaHT\":\"-3,45%\",\"evolutionValeurAjouteeBdf\":\"-6,78%\",\"evolutionEbe\":\"-9,01%\",\"evolutionCaf\":\"-14,56%\",\"evolutionResultatExercice\":\"-23,45%\",\"evolutionCapitauxPropresEtAssimiles\":\"+2,34%\",\"evolutionDontCapitalSocial\":\"0,00%\",\"evolutionDontAutresFondsPropres\":\"\",\"evolutionTotalProvisionsPourRisquesEtCharges\":\"+10,23%\",\"evolutionDettes1EmpruntsObligatairesEtConvertibles\":\"\",\"evolutionDettes2AutresEmpruntsObligataires\":\"-16,78%\",\"evolutionDettes3EmpruntsEtDettesAupresDesEtablissementsdeCredit\":\"\",\"evolutionDettes4DontAUnAnAuPlus\":\"\",\"evolutionTotaltotalDettesStables\":\"-16,78%\",\"evolutionEmpruntsEtDettesFinancieresDivers\":\"+97,89%\",\"evolutionGroupesEtAssocies\":\"\",\"evolutionFrng\":\"-17,89%\",\"evolutionBesoinEnFondsDeRoulement\":\"+28,90%\",\"evolutionFrng/Bfr\":\"\",\"evolutionDisponibilites\":\"-5,67%\",\"evolutionTotalPassif\":\"-2,34%\"},{\"dateArrete\":\"201512\",\"dureeExercice\":\"12\",\"caHT\":\"5789012\",\"valeurAjouteeBdf\":\"3789012\",\"ebe\":\"-789012\",\"caf\":\"389012\",\"resultatExercice\":\"156789\",\"capitauxPropresEtAssimiles\":\"2567890\",\"dontCapitalSocial\":\"1500000\",\"dontAutresFondsPropres\":\"0\",\"totalProvisionsPourRisquesEtCharges\":\"901234\",\"dettes1EmpruntsObligatairesEtConvertibles\":\"0\",\"dettes2AutresEmpruntsObligataires\":\"2678901\",\"dettes3EmruntsEtDettesAupresDesEtablissementsdeCredit\":\"0\",\"dettes4DontAUnAnAuPlus\":\"0\",\"totalDettesStables\":\"2678901\",\"empruntsEtDettesFinancieresDivers\":\"189012\",\"groupesEtAssocies\":\"0\",\"frng\":\"901234\",\"besoinEnFondsDeRoulement\":\"-345678\",\"frng/bfr\":\"-\",\"disponibilites\":\"890123\",\"totalPassif\":\"8234567\",\"evolutionCaHT\":\"\",\"evolutionValeurAjouteeBdf\":\"\",\"evolutionEbe\":\"\",\"evolutionCaf\":\"\",\"evolutionResultatExercice\":\"\",\"evolutionCapitauxPropresEtAssimiles\":\"\",\"evolutionDontCapitalSocial\":\"\",\"evolutionDontAutresFondsPropres\":\"\",\"evolutionTotalProvisionsPourRisquesEtCharges\":\"\",\"evolutionDettes1EmpruntsObligatairesEtConvertibles\":\"\",\"evolutionDettes2AutresEmpruntsObligataires\":\"\",\"evolutionDettes3EmpruntsEtDettesAupresDesEtablissementsdeCredit\":\"\",\"evolutionDettes4DontAUnAnAuPlus\":\"\",\"evolutionTotaltotalDettesStables\":\"\",\"evolutionEmpruntsEtDettesFinancieresDivers\":\"\",\"evolutionGroupesEtAssocies\":\"\",\"evolutionFrng\":\"\",\"evolutionBesoinEnFondsDeRoulement\":\"\",\"evolutionFrng/Bfr\":\"\",\"evolutionDisponibilites\":\"\",\"evolutionTotalPassif\":\"\"}]}"
+    http_version:
+  recorded_at: Mon, 21 May 2018 06:46:43 GMT
+recorded_with: VCR 3.0.3

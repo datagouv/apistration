@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siren/789510732"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 403
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Set-Cookie:
+      - INSEE=1627925258.20480.0000;secure; expires=Fri, 15-Jan-2021 14:23:14 GMT;
+        path=/
+      - pdapimgateway=1830169354.22560.0000;secure; expires=Fri, 15-Jan-2021 14:23:14
+        GMT; path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 15 Jan 2021 14:03:14 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJoZWFkZXIiOnsic3RhdHV0Ijo0MDMsIm1lc3NhZ2UiOiJVbml0w6kgbMOpZ2FsZSBub24gZGlmZnVzYWJsZSAoMTIzNDU2Nzg5KSJ9fQ==
+    http_version:
+  recorded_at: Fri, 15 Jan 2021 14:03:14 GMT
+recorded_with: VCR 3.0.3

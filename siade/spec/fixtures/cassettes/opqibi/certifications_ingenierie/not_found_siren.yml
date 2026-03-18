@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <OPQIBI_DOMAIN>/certificats/000000000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: !binary |-
+        cmVxdcOpdGUgaW5jb3JyZWN0ZSwgc2lyZXQgaW5jb3JyZWN0LCBwYXJhbcOpdHJlIG1hbnF1YW50
+    headers:
+      Date:
+      - Wed, 13 Apr 2022 14:28:39 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Request-Id:
+      - '878281349'
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Cdn-Pop:
+      - rbx1
+      X-Cdn-Pop-Ip:
+      - 51.254.41.128/25
+      X-Cacheable:
+      - Cacheable
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        cmVxdcOpdGUgaW5jb3JyZWN0ZSwgc2lyZXQgaW5jb3JyZWN0LCBwYXJhbcOpdHJlIG1hbnF1YW50
+  recorded_at: Wed, 13 Apr 2022 14:28:39 GMT
+recorded_with: VCR 6.1.0

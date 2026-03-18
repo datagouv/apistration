@@ -1,0 +1,150 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <INFOGREFFE_URL_EXTRAIT_RCS>
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'
+        xmlns:urn='urn:WebServicesProduits'> <soapenv:Header/> <soapenv:Body> <urn:getProduitsWebServicesXML
+        soapenv:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'> <arg0 xsi:type='xsd:string'>
+        <demande> <emetteur> <code_abonne><INFOGREFFE_CODE_ABONNE></code_abonne> <mot_passe><INFOGREFFE_MOT_PASSE></mot_passe>
+        <code_requete> <type_profil>A</type_profil> <origine_emetteur>IC</origine_emetteur>
+        <nature_requete>C</nature_requete> <type_document>KB</type_document> <type_requete>S</type_requete>
+        <mode_diffusion> <mode type='XL'/> </mode_diffusion> <media>WS</media> </code_requete>
+        </emetteur> <commande> <num_siren>418166096</num_siren> </commande> </demande>
+        </arg0> </urn:getProduitsWebServicesXML> </soapenv:Body> </soapenv:Envelope>\n"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - text/xml
+      Charset:
+      - utf-8
+      Soapaction:
+      - getProduitsWebServicesXML
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 May 2017 10:49:33 GMT
+      Server:
+      - Apache/2.2.3 (CentOS)
+      Content-Length:
+      - '11360'
+      X-Powered-By:
+      - Servlet/2.5 JSP/2.1
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Set-Cookie:
+      - BIGIPSESSION=rd1o00000000000000000000ffffac164b3do8002; expires=Wed, 31-May-2017
+        11:49:40 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: '<?xml version=''1.0'' encoding=''UTF-8''?><SOAP-ENV:Envelope xmlns:SOAP-ENV=''http://schemas.xmlsoap.org/soap/envelope/''
+        xmlns:SOAP-ENC=''http://schemas.xmlsoap.org/soap/encoding/'' xmlns:xsi=''http://www.w3.org/2001/XMLSchema-instance''
+        xmlns:xsd=''http://www.w3.org/2001/XMLSchema''><SOAP-ENV:Body><ns0:getProduitsWebServicesXMLResponse
+        xmlns:ns0=''urn:local'' SOAP-ENV:encodingStyle=''http://schemas.xmlsoap.org/soap/encoding/''><return
+        xsi:type=''xsd:string''><Extrait type="2"><dossier id_adr_greffe="AD1" date_immat="27
+        MARS 1998" dateISO_immat="2000-01-15" date_extrait="30 MAI 2017"><entreprise
+        id_adr_siege="AD2"><greffe code="7501">PARIS</greffe><num_ident siren="418166096"></num_ident><num_gest
+        numGreffe="7501"><millesime>2000</millesime><statut>B</statut><chrono>03162</chrono></num_gest><pm
+        forme_juridique="SOCIETE ANONYME" codeFormeJuridique="SAh"><denomination>EXEMPLE-TECHNOLOGIE</denomination><capital><montant
+        devise="EUROS" codeDevise="EUR" valeur="234567.8">234 567,80</montant></capital><duree_ste><valeur_duree
+        dateISO="2099-01-15">JUSQU''AU 26 MARS 2097</valeur_duree></duree_ste><date_cloture
+        dateISO="12-31"></date_cloture><acte_const greffe="NANTERRE" codeGreffe="9201"
+        num_depot="" greffe_dossier="false"><date_depot dateISO="2000-01-15">27 MARS
+        1998</date_depot><journal_parution libelle="AFFICHES PARISIENNES" date_debut="25
+        MARS 1998" dateISO_debut="2000-01-10"></journal_parution></acte_const><acte_trans
+        greffe="NANTERRE" codeGreffe="9201"><depot greffe="PARIS" codeGreffe="7501"
+        num_depot=""><date_depot>23 FEVRIER 2000</date_depot></depot></acte_trans></pm></entreprise><liste_dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="PREDIROH">PRESIDENT DU DIRECTOIRE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD3" civilite=""><nom>DURANT</nom><prenom>ALEX</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1980-02-15">15 FEVRIER 1980</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="PRECSH">PRESIDENT DU CONSEIL DE SURVEILLANCE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD4" civilite=""><nom>MOREAU</nom><prenom>PAUL</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1975-03-20">20 MARS 1975</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="VPREH">VICE-PRESIDENT</qualite><pp nationalite="FRANCAISE"
+        codeNationalite="FR" adresse="AD5" civilite=""><nom>LEROY</nom><prenom>MARC</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1970-04-25">25 AVRIL 1970</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="MEMDIROH">MEMBRE DU DIRECTOIRE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD6" civilite=""><nom>ROUX</nom><prenom>ANTOINE</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1985-05-10">10 MAI 1985</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="MEMCONSURH">MEMBRE DU CONSEIL DE SURVEILLANCE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD7" civilite=""><nom>LEROY</nom><prenom>MARC</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1970-04-25">25 AVRIL 1970</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="MEMCONSURH">MEMBRE DU CONSEIL DE SURVEILLANCE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD8" civilite=""><nom>SIMON</nom><prenom>CLAIRE</prenom><nom_usage>MARTIN</nom_usage><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1978-06-12">12 JUIN 1978</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="MEMCONSURH">MEMBRE DU CONSEIL DE SURVEILLANCE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD9" civilite=""><nom>ROBIN</nom><prenom>THOMAS</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1972-07-18">18 JUILLET 1972</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="MEMCONSURH">MEMBRE DU CONSEIL DE SURVEILLANCE</qualite><pp
+        nationalite="ROYAUME UNI" codeNationalite="GB" adresse="AD10" civilite=""><nom>DUBOIS</nom><prenom>NICOLAS</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1973-08-22">22 AOUT 1973</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="CACTITH">COMMISSAIRE AUX COMPTES TITULAIRE</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD11" civilite=""><nom>BERNARD</nom><prenom>PHILIPPE</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1974-09-15">15 SEPTEMBRE 1974</date><lieu>PARIS</lieu></naissance></pp></dirigeant><dirigeant type="PM"><qualite code="CACTITH">COMMISSAIRE
+        AUX COMPTES TITULAIRE</qualite><pm adresse_siege="AD12"><denomination>MAZARS
+        - SOCIETE ANONYME</denomination><num_ident>123456789</num_ident></pm></dirigeant><dirigeant
+        type="PM"><qualite code="CACSUPH">COMMISSAIRE AUX COMPTES SUPPLEANT</qualite><pm
+        adresse_siege="AD13"><denomination>BCRH &amp; ASSOCIES - SOCIETE A RESPONSABILITE
+        LIMITEE</denomination><num_ident>987654321</num_ident></pm></dirigeant><dirigeant
+        type="PP" refugie="0"><qualite code="CACSUPH">COMMISSAIRE AUX COMPTES SUPPLEANT</qualite><pp
+        nationalite="FRANCAISE" codeNationalite="FR" adresse="AD14" civilite=""><nom>ROUX</nom><prenom>ANTOINE</prenom><naissance
+        pays="FRANCE" codePays="FR"><date dateISO="1976-10-30">30 OCTOBRE 1976</date><lieu>PARIS</lieu></naissance></pp></dirigeant></liste_dirigeant><liste_observations><observation
+        dateISO="2000-02-23" numero="12197"><libelle position=" "> LA SOCIETE NE CONSERVE
+        AUCUNE ACTIVITE A SON ANCIEN SIEGE </libelle></observation></liste_observations><etablissement
+        type="1" mode="0" adresse="AD15"><nom_commercial>EXEMPLE-TECHNOLOGIE</nom_commercial><origine_societe><libelle>TRANSFERT
+        DU SIEGE SOCIAL</libelle><adresse>101 AVENUE DE LA REPUBLIQUE 75011 PARIS
+        FRANCE</adresse><date_transfert dateISO="2000-02-23">23 FEVRIER 2000</date_transfert><ancienRCS></ancienRCS></origine_societe><activite
+        date_debut="01 AVRIL 1998" dateISO_debut="1998-04-01">TANT EN FRANCE QU''A
+        L''ETRANGER : LA MISE EN OEUVRE DE SYSTEMES D''INFORMATION PAR NOTAMMENT,
+        LE CONSEIL, L''INGENIERIE INFORMATIQUE ET DE DEVELOPPEMENT, LA DISTRIBUTION
+        ET LA VENTE DE LOGICIELS OU DE MATERIELS INFORMATIQUES ; A TITRE ACCESSOIRE
+        OU CONNEXE, L''EXPLOITATION PAR TOUT MOYEN ET SOUS TOUTE FORME, NOTAMMENT
+        LA REDACTION, LA PUBLICATION, LA DIFFUSION, D''OUVRAGES RELATIFS A L''OBJET
+        SOCIAL</activite><origine_fonds>CREATION</origine_fonds><mode_exploit>EXPLOITATION
+        DIRECTE</mode_exploit><codeAPE>6202A</codeAPE></etablissement></dossier><adresse
+        id="AD8"><nompostal>12 RUE DE LA PAIX</nompostal><numero></numero><type></type><voie></voie><ligne1>12
+        RUE DE LA PAIX</ligne1><ligne2>75001 PARIS (FRANCE) </ligne2><code_postal>75001</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD7"><nompostal>34 RUE DE RIVOLI</nompostal><numero></numero><type></type><voie></voie><ligne1>34
+        RUE DE RIVOLI</ligne1><ligne2>75001 PARIS (FRANCE) </ligne2><code_postal>75001</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD6"><nompostal>56 RUE DE LOUVRE</nompostal><numero></numero><type></type><voie></voie><ligne1>56
+        RUE DE LOUVRE</ligne1><ligne2>75001 PARIS (FRANCE) </ligne2><code_postal>75001</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse id="AD5"><nompostal>7
+        BIS RUE MERIMEE</nompostal><numero></numero><type></type><voie></voie><ligne1>34
+        RUE DE RIVOLI</ligne1><ligne2>75001 PARIS (FRANCE) </ligne2><code_postal>75001</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD4"><nompostal>78 AVENUE DES CHAMPS ELYSEES</nompostal><numero></numero><type></type><voie></voie><ligne1>78
+        AVENUE DES CHAMPS ELYSEES</ligne1><ligne2>75008 PARIS (FRANCE) </ligne2><code_postal>75009</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse id="AD3"><nompostal>90
+        BOULEVARD SAINT GERMAIN</nompostal><numero></numero><type></type><voie></voie><ligne1>90
+        BOULEVARD SAINT GERMAIN</ligne1><ligne2>75006 PARIS (FRANCE) </ligne2><code_postal>75009</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse id="AD2"><nompostal>34
+        AVENUE DE L''OPERA</nompostal><numero></numero><type></type><voie></voie><ligne1>34
+        AVENUE DE L''OPERA</ligne1><ligne2>75002 PARIS (FRANCE) </ligne2><code_postal>75002</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD1"><nompostal></nompostal><numero>1</numero><type>QU</type><voie>DE
+        LA CORSE</voie><ligne1></ligne1><ligne2>1 QU DE LA CORSE 75198 PARIS CEDEX
+        04 </ligne2><code_postal>75198</code_postal><bureau_distributeur>PARIS CEDEX
+        04</bureau_distributeur><pays></pays></adresse><adresse id="AD15"><nompostal>34
+        AVENUE DE L''OPERA</nompostal><numero></numero><type></type><voie></voie><ligne1>34
+        AVENUE DE L''OPERA</ligne1><ligne2>75002 PARIS (FRANCE) </ligne2><code_postal>75002</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD14"><nompostal>123 RUE DE LA REPUBLIQUE</nompostal><numero></numero><type></type><voie></voie><ligne1>123
+        RUE DE LA REPUBLIQUE</ligne1><ligne2>75003 PARIS (FRANCE) </ligne2><code_postal>75003</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD13"><nompostal>45 RUE DE LA VICTOIRE</nompostal><numero></numero><type></type><voie></voie><ligne1>45
+        RUE DE LA VICTOIRE</ligne1><ligne2>75009 PARIS (FRANCE) </ligne2><code_postal>75009</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD12"><nompostal>123 RUE DE LA REPUBLIQUE</nompostal><numero></numero><type></type><voie></voie><ligne1>123
+        RUE DE LA REPUBLIQUE</ligne1><ligne2>75003 PARIS (FRANCE) </ligne2><code_postal>75003</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD11"><nompostal>45 RUE DE LA VICTOIRE</nompostal><numero></numero><type></type><voie></voie><ligne1>45
+        RUE DE LA VICTOIRE</ligne1><ligne2>75009 PARIS (FRANCE) </ligne2><code_postal>75009</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD10"><nompostal>67 RUE DE TURBIGO</nompostal><numero></numero><type></type><voie></voie><ligne1>67
+        RUE DE TURBIGO</ligne1><ligne2>75003 PARIS (FRANCE) </ligne2><code_postal>75003</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse><adresse
+        id="AD9"><nompostal>89 BOULEVARD VOLTAIRE</nompostal><numero></numero><type></type><voie></voie><ligne1>89
+        BOULEVARD VOLTAIRE</ligne1><ligne2>75011 PARIS (FRANCE) </ligne2><code_postal>75001</code_postal><bureau_distributeur>PARIS</bureau_distributeur><pays>FRANCE</pays></adresse></Extrait></return></ns0:getProduitsWebServicesXMLResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>'
+    http_version:
+  recorded_at: Wed, 31 May 2017 10:49:40 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,169 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret/30613890002979"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000;secure; expires=Fri, 13-Jul-2018 14:52:08 GMT;
+        path=/
+      - INSEE=1830169354.22560.0000;secure; expires=Fri, 13-Jul-2018 14:52:08 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 13 Jul 2018 14:32:08 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"header":{"statut":200,"message":"ok"},"etablissement":{"siren":"306138900","nic":"02979","siret":"30613890002979","statutDiffusionEtablissement":"O","dateCreationEtablissement":"2004-05-26","trancheEffectifsEtablissement":"NN","anneeEffectifsEtablissement":null,"activitePrincipaleRegistreMetiersEtablissement":null,"dateDernierTraitementEtablissement":"2010-04-18","etablissementSiege":false,"nombrePeriodesEtablissement":3,"activitePrincipaleNAF25Etablissement":"47.64Y","uniteLegale":{"etatAdministratifUniteLegale":"A","statutDiffusionUniteLegale":"O","dateCreationUniteLegale":"1977-01-01","categorieJuridiqueUniteLegale":"5599","denominationUniteLegale":"SPORT-EXEMPLE","sigleUniteLegale":null,"denominationUsuelle1UniteLegale":"SPORT-EXEMPLE","denominationUsuelle2UniteLegale":null,"denominationUsuelle3UniteLegale":null,"sexeUniteLegale":null,"nomUniteLegale":null,"nomUsageUniteLegale":null,"prenom1UniteLegale":null,"prenom2UniteLegale":null,"prenom3UniteLegale":null,"prenom4UniteLegale":null,"prenomUsuelUniteLegale":null,"pseudonymeUniteLegale":null,"activitePrincipaleUniteLegale":"46.49Y","nomenclatureActivitePrincipaleUniteLegale":"NAF2025","identifiantAssociationUniteLegale":null,"economieSocialeSolidaireUniteLegale":null,"caractereEmployeurUniteLegale":"O","trancheEffectifsUniteLegale":"51","anneeEffectifsUniteLegale":"2016","nicSiegeUniteLegale":"01294","dateDernierTraitementUniteLegale":"2018-02-13","categorieEntreprise":"GE","anneeCategorieEntreprise":"2015","activitePrincipaleNAF25UniteLegale":"46.49Y"},"adresseEtablissement":{"complementAdresseEtablissement":null,"numeroVoieEtablissement":"123","indiceRepetitionEtablissement":null,"typeVoieEtablissement":"RUE","libelleVoieEtablissement":"DE LA PAIX","codePostalEtablissement":"75001","libelleCommuneEtablissement":"PARIS","libelleCommuneEtrangerEtablissement":null,"distributionSpecialeEtablissement":null,"codeCommuneEtablissement":"75001","codeCedexEtablissement":"75001","libelleCedexEtablissement":"PARIS CEDEX 1","codePaysEtrangerEtablissement":null,"libellePaysEtrangerEtablissement":null},"periodesEtablissement":[{"dateFin":null,"dateDebut":"2008-01-01","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"47.64Z","nomenclatureActivitePrincipaleEtablissement":"NAF2025","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":false},{"dateFin":"2007-12-31","dateDebut":"2004-12-25","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":false,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":false,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":false,"activitePrincipaleEtablissement":"52.4W","nomenclatureActivitePrincipaleEtablissement":"NAFRev1","changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":"O","changementCaractereEmployeurEtablissement":true},{"dateFin":"2004-12-24","dateDebut":"2004-05-26","etatAdministratifEtablissement":"A","changementEtatAdministratifEtablissement":true,"enseigne1Etablissement":null,"enseigne2Etablissement":null,"enseigne3Etablissement":null,"changementEnseigneEtablissement":true,"denominationUsuelleEtablissement":null,"changementDenominationUsuelleEtablissement":true,"activitePrincipaleEtablissement":null,"nomenclatureActivitePrincipaleEtablissement":null,"changementActivitePrincipaleEtablissement":true,"caractereEmployeurEtablissement":null,"changementCaractereEmployeurEtablissement":true}]}}'
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 14:32:09 GMT
+- request:
+    method: get
+    uri: "<URL_GEO_API>/communes/75001?fields=nom,codePostal,region,departement"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Fri, 13 Jul 2018 14:32:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"88-2erDg8FmtCFe9kzKR1Eb0OoO4us"
+      Strict-Transport-Security:
+      - max-age=15552000
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"nom":"Paris","code":"75001","departement":{"code":"75","nom":"Paris"},"region":{"code":"11","nom":"Île-de-France"}}
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 14:32:10 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret?q=siren:306138900"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.2p198
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Timeout:
+      - '10'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Content-Encoding:
+      - gzip
+      Set-Cookie:
+      - INSEE=1627925258.20480.0000;secure; expires=Fri, 13-Jul-2018 14:52:16 GMT;
+        path=/
+      - INSEE=1846946570.22560.0000;secure; expires=Fri, 13-Jul-2018 14:52:16 GMT;
+        path=/
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      X-Total-Count:
+      - '363'
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Link:
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=siren%3A306138900&debut=0&nombre=20>;
+        rel="first"
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=siren%3A306138900&debut=20&nombre=20>;
+        rel="next"
+      - <<URL_INSEE_V3>/entreprises/sirene/siret?q=siren%3A306138900&debut=360&nombre=3>;
+        rel="last"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 13 Jul 2018 14:32:15 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version:
+  recorded_at: Fri, 13 Jul 2018 14:32:16 GMT
+recorded_with: VCR 3.0.3

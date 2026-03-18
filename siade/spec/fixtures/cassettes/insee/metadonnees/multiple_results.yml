@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<URL_INSEE_METADATA_URL>/geo/communes?com=false&date=2000-01-01&filtreNom=La%20Rochette"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 11 Mar 2024 17:03:36 GMT
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - pdapimgateway=rd4o00000000000000000000ffff0ac348ado8280; expires=Mon, 11-Mar-2024
+        17:23:37 GMT; path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '[{"code":"04170","uri":"http://id.insee.fr/geo/commune/7a3fdd0d-14a1-49d6-9c1c-4264eaf68863","type":"Commune","dateCreation":"1943-01-01","intituleSansArticle":"Rochette","typeArticle":"3","intitule":"La
+        Rochette"},{"code":"05124","uri":"http://id.insee.fr/geo/commune/5e43e3e9-b9c4-4c03-b2f3-491fd2d1cac6","type":"Commune","dateCreation":"1943-01-01","intituleSansArticle":"Rochette","typeArticle":"3","intitule":"La
+        Rochette"},{"code":"07195","uri":"http://id.insee.fr/geo/commune/ddff463c-8d8e-4966-8242-905de189b829","type":"Commune","dateCreation":"1943-01-01","intituleSansArticle":"Rochette","typeArticle":"3","intitule":"La
+        Rochette"},{"code":"16282","uri":"http://id.insee.fr/geo/commune/0a4c7bd8-4ff8-4728-9f23-50c0f4f72690","type":"Commune","dateCreation":"1943-01-01","intituleSansArticle":"Rochette","typeArticle":"3","intitule":"La
+        Rochette"},{"code":"26279","uri":"http://id.insee.fr/geo/commune/b1c9d62c-94d5-42de-a5a3-26364bf5dd58","type":"Commune","dateCreation":"1943-01-01","intituleSansArticle":"Rochette-du-Buis","typeArticle":"3","intitule":"La
+        Rochette-du-Buis"},{"code":"73215","uri":"http://id.insee.fr/geo/commune/ae77baa4-f0ae-4b10-a28e-8e21aa313f11","type":"Commune","dateCreation":"1943-01-01","dateSuppression":"2019-01-01","intituleSansArticle":"Rochette","typeArticle":"3","intitule":"La
+        Rochette"},{"code":"77389","uri":"http://id.insee.fr/geo/commune/51dfcb93-4a1f-4ea1-9cca-d9f2c2efcc40","type":"Commune","dateCreation":"1943-01-01","intituleSansArticle":"Rochette","typeArticle":"3","intitule":"La
+        Rochette"}]'
+  recorded_at: Mon, 11 Mar 2024 17:03:37 GMT
+recorded_with: VCR 6.2.0

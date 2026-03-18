@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<URL_INSEE_AUTH>"
+    body:
+      encoding: US-ASCII
+      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=insee_apim_password
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - no-store
+      X-Content-Type-Options:
+      - nosniff
+      Set-Cookie:
+      - INSEE=1880501002.58148.0000; expires=Fri, 19-Nov-2021 12:30:12 GMT; path=/;
+        Httponly; Secure
+      - pdapimgateway=1830169354.22560.0000; expires=Fri, 19-Nov-2021 12:30:12 GMT;
+        path=/; Httponly; Secure
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 19 Nov 2021 12:10:11 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"<INSEE_TOKEN>","scope":"am_application_scope
+        default","token_type":"Bearer","expires_in":341279}'
+  recorded_at: Fri, 19 Nov 2021 12:10:12 GMT
+- request:
+    method: get
+    uri: "<URL_INSEE_V3>/api-sirene/prive/3.11/siret?q=etablissementSiege:true%20AND%20siren:532221694"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <INSEE_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST,GET
+      Set-Cookie:
+      - INSEE=1644702474.20480.0000; expires=Fri, 19-Nov-2021 12:30:12 GMT; path=/;
+        Httponly; Secure
+      - pdapimgateway=1846946570.22560.0000; expires=Fri, 19-Nov-2021 12:30:12 GMT;
+        path=/; Httponly; Secure
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Thu, 01 Jan 1970 01:00:00 GMT
+      Access-Control-Allow-Headers:
+      - authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 19 Nov 2021 12:10:12 GMT
+      Transfer-Encoding:
+      - chunked
+      Strict-Transport-Security:
+      - max-age=100000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJoZWFkZXIiOnsic3RhdHV0Ijo0MDQsIm1lc3NhZ2UiOiJBdWN1biDDqWzDqW1lbnQgdHJvdXbDqSBwb3VyIHE9ZXRhYmxpc3NlbWVudFNpZWdlOnRydWUgQU5EIHNpcmVuOjUzMjIyMTY5NCJ9fQ==
+  recorded_at: Fri, 19 Nov 2021 12:10:12 GMT
+recorded_with: VCR 6.0.0

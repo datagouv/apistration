@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<MEN_SCOLARITES_AUTHENTICATE_URL>"
+    body:
+      encoding: US-ASCII
+      string: client_id=api-particuliers-tests&client_secret=<MEN_SCOLARITES_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Set-Cookie:
+      - BIGipServerJ9zphd2TVx8/atjmRQ/Xew=!loJyXTjcOUQhp/o/D8/NErg9RsTL2/Tj8l3JhtKED5E3zZa3pXXgnk8I4RzJk+efGCJyXx6CfO5agA060/ByG3Rt3zl7rcG+/IEPFfEv9A==;
+        path=/; Httponly; Secure
+      - BIGipServereDCM4K/cL+R4L3GPwKnhsg=!L2uYaSMizRV76No/D8/NErg9RsTL23bjWGvvSlLnAnjSlBMcrezyVlp8Qnd7bM8ze4vYmrgIpLD358ebqeFpaS0+xIwrKZTa2gr+XugFmA==;
+        path=/; Httponly; Secure
+      - KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0;
+        Path=/auth/realms/omogen/; Secure; HttpOnly
+      X-Xss-Protection:
+      - 1; mode=block
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Referrer-Policy:
+      - no-referrer
+      Date:
+      - Thu, 27 Apr 2023 10:20:03 GMT
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=16070400
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1024'
+      X-Gravitee-Transaction-Id:
+      - 735b0d32-55ff-4484-9b0d-3255ff6484a7
+      X-Gravitee-Request-Id:
+      - 735b0d32-55ff-4484-9b0d-3255ff6484a7
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"jwt-access-token","expires_in":300,"refresh_expires_in":0,"token_type":"Bearer","not-before-policy":0,"scope":""}'
+  recorded_at: Thu, 27 Apr 2023 10:20:06 GMT
+- request:
+    method: get
+    uri: "<MEN_SCOLARITES_URL>?annee-scolaire=2021&code-uai=0511474A&date-naissance=2000-06-10&nom=NOMFAMILLE&prenom=prenom&sexe=2"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer jwt-access-token
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Apr 2023 10:20:03 GMT
+      X-Haproxy-Backend:
+      - server
+      X-Gravitee-Transaction-Id:
+      - 77881797-6807-4f5a-8817-9768074f5adb
+      X-Gravitee-Request-Id:
+      - 77881797-6807-4f5a-8817-9768074f5adb
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - BIGipServerJ9zphd2TVx8/atjmRQ/Xew=!/403a7FHboqKo14/D8/NErg9RsTL2/agrpW+Wu54EYrjJGgYY59RdjN/AIWYL5axmg/D7WL0tTaXt3ndXcqvC7CTE6Ywu/Th12ovVUskPQ==;
+        path=/; Httponly; Secure
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: '{"type":"Erreur backend","title":"Un service web répond avec une erreur","detail":"ramsese
+        mock ne trouve pas l''etablissement","instance":"/anges/v1/mock/ramsese/ramsese/0511474A","status":"NOT_FOUND","date-time":"2023-04-27"}'
+  recorded_at: Thu, 27 Apr 2023 10:20:06 GMT
+recorded_with: VCR 6.1.0
