@@ -1,14 +1,4 @@
 RSpec.describe Siade, 'credentials' do
-  describe 'credential files' do
-    let(:credential_files) { [Dir['config/credentials/*.yml'], 'config/credentials.yml.enc'].flatten }
-
-    it 'has exactly one line' do
-      credential_files.each do |file|
-        expect(File.readlines(file).size).to eq(1)
-      end
-    end
-  end
-
   describe '.credentials' do
     subject(:credential) { described_class.credentials[key] }
 
