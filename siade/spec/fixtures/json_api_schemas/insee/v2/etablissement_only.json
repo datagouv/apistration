@@ -1,0 +1,160 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["siege_social", "siret", "naf", "libelle_naf", "date_mise_a_jour", "tranche_effectif_salarie_etablissement", "date_creation_etablissement", "region_implantation", "commune_implantation", "pays_implantation", "diffusable_commercialement", "enseigne", "adresse", "etat_administratif"],
+  "properties": {
+    "siege_social": {
+      "type": "boolean"
+    },
+    "siret": {
+      "type": "string"
+    },
+    "naf": {
+      "type": "string"
+    },
+    "libelle_naf": {
+      "type": "string"
+    },
+    "date_mise_a_jour": {
+      "type": "integer"
+    },
+    "tranche_effectif_salarie_etablissement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["de", "a", "code", "date_reference", "intitule"],
+
+      "properties": {
+        "de": {
+          "type": ["null", "integer"]
+        },
+        "a": {
+          "type": ["null", "integer"]
+        },
+        "code": {
+          "type": ["null", "string"]
+        },
+        "date_reference": {
+          "type": ["null", "string"]
+        },
+        "intitule": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "date_creation_etablissement": {
+      "type": "integer"
+    },
+    "region_implantation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "value"],
+
+      "properties": {
+        "code": {
+          "type": ["null", "string"]
+        },
+        "value": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "commune_implantation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "value"],
+      "properties": {
+        "code": {
+          "type": ["null", "string"]
+        },
+        "value": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "pays_implantation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "value"],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "diffusable_commercialement": {
+      "type": "boolean"
+    },
+    "enseigne": {
+      "type": ["string", "null"]
+    },
+    "adresse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["l1", "l2", "l3", "l4", "l5", "l6", "l7", "numero_voie", "type_voie", "nom_voie", "complement_adresse", "code_postal", "localite", "code_insee_localite", "cedex"],
+      "properties": {
+        "l1": {
+          "type": "string"
+        },
+        "l2": {
+          "type": ["null", "string"]
+        },
+        "l3": {
+          "type": ["null", "string"]
+        },
+        "l4": {
+          "type": "string"
+        },
+        "l5": {
+          "type": ["null", "string"]
+        },
+        "l6": {
+          "type": ["null", "string"]
+        },
+        "l7": {
+          "type": "string"
+        },
+        "numero_voie": {
+          "type": ["null", "string"]
+        },
+        "type_voie": {
+          "type": ["null", "string"]
+        },
+        "nom_voie": {
+          "type": ["null", "string"]
+        },
+        "complement_adresse": {
+          "type": ["null", "string"]
+        },
+        "code_postal": {
+          "type": ["null", "string"]
+        },
+        "localite": {
+          "type": ["null", "string"]
+        },
+        "code_insee_localite": {
+          "type": ["null", "string"]
+        },
+        "cedex": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "etat_administratif": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "date_fermeture"],
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": ["A", "F"]
+        },
+        "date_fermeture": {
+          "type": ["null", "integer"]
+        }
+      }
+    }
+  }
+}

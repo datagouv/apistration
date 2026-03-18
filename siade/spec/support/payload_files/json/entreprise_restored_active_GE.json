@@ -1,0 +1,251 @@
+{
+  "entreprise": {
+    "siren": "306138900",
+    "capital_social": 10450000,
+    "numero_tva_intracommunautaire": "FR51306138900",
+    "forme_juridique": "SA à conseil d'administration (s.a.i.)",
+    "forme_juridique_code": "5599",
+    "nom_commercial": "DECATHLON",
+    "procedure_collective": false,
+    "enseigne": null,
+    "libelle_naf_entreprise": "Commerce de gros (commerce interentreprises) d'autres biens domestiques ",
+    "naf_entreprise": "4649Z",
+    "raison_sociale": "DECATHLON",
+    "siret_siege_social": "30613890001294",
+    "code_effectif_entreprise": "51",
+    "date_creation": 220921200,
+    "nom": null,
+    "prenom": null,
+    "date_radiation": null,
+    "categorie_entreprise": "GE",
+    "tranche_effectif_salarie_entreprise": {
+      "de": 2000,
+      "a": 4999,
+      "code": "51",
+      "date_reference": "2016",
+      "intitule": "2 000 à 4 999 salariés"
+    },
+    "mandataires_sociaux": [
+      {
+        "nom": "LECLERCQ",
+        "prenom": "MATHIEU",
+        "fonction": "PRESIDENT DU CONSEIL D'ADMINISTRATION",
+        "date_naissance": "1969-06-14",
+        "date_naissance_timestamp": -17370000,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "ABALLEA",
+        "prenom": "MICHEL",
+        "fonction": "DIRECTEUR GENERAL",
+        "date_naissance": "1967-06-13",
+        "date_naissance_timestamp": -80614800,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "DE WITTE",
+        "prenom": "FRANCOIS",
+        "fonction": "DIRECTEUR GENERAL DELEGUE",
+        "date_naissance": "1968-01-03",
+        "date_naissance_timestamp": -62989200,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "VIGO",
+        "prenom": "FRANCK",
+        "fonction": "DIRECTEUR GENERAL DELEGUE",
+        "date_naissance": "1966-06-22",
+        "date_naissance_timestamp": -111373200,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "LECLERCQ",
+        "prenom": "MATHIEU",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "1969-06-14",
+        "date_naissance_timestamp": -17370000,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "",
+        "prenom": "",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "",
+        "date_naissance_timestamp": 0,
+        "dirigeant": true,
+        "raison_sociale": "HOLYMPIADES - SOCIETE PAR ACTIONS SIMPLIFIEE",
+        "identifiant": "510575384",
+        "type": "PM"
+      },
+      {
+        "nom": "MULLIEZ",
+        "prenom": "THIERRY",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "1954-08-26",
+        "date_naissance_timestamp": -484448400,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "MULLIEZ",
+        "prenom": "ROMAIN",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "1973-09-28",
+        "date_naissance_timestamp": 118018800,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "",
+        "prenom": "",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "",
+        "date_naissance_timestamp": 0,
+        "dirigeant": true,
+        "raison_sociale": "AFIR HOLDING & MANAGEMENT COMPANY - SOCIETE DE DROIT ETRANGER",
+        "identifiant": "",
+        "type": "PM"
+      },
+      {
+        "nom": "",
+        "prenom": "",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "",
+        "date_naissance_timestamp": 0,
+        "dirigeant": true,
+        "raison_sociale": "SOPARTHLON B - SOCIETE EN COMMANDITE PAR ACTIONS",
+        "identifiant": "351819248",
+        "type": "PM"
+      },
+      {
+        "nom": "ROSE",
+        "prenom": "BRUNO",
+        "fonction": "ADMINISTRATEUR",
+        "date_naissance": "1956-04-19",
+        "date_naissance_timestamp": -432435600,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "",
+        "prenom": "",
+        "fonction": "COMMISSAIRE AUX COMPTES TITULAIRE",
+        "date_naissance": "",
+        "date_naissance_timestamp": 0,
+        "dirigeant": true,
+        "raison_sociale": "MAZARS ACEA - SOCIETE PAR ACTIONS SIMPLIFIEE",
+        "identifiant": "326637204",
+        "type": "PM"
+      },
+      {
+        "nom": "",
+        "prenom": "",
+        "fonction": "COMMISSAIRE AUX COMPTES TITULAIRE",
+        "date_naissance": "",
+        "date_naissance_timestamp": 0,
+        "dirigeant": true,
+        "raison_sociale": "PRICEWATERHOUSECOOPERS AUDIT - SOCIETE PAR ACTIONS SIMPLIFIEE",
+        "identifiant": "672006483",
+        "type": "PM"
+      },
+      {
+        "nom": "GEORGHIOU",
+        "prenom": "JEAN-CHRISTOPHE",
+        "fonction": "COMMISSAIRE AUX COMPTES SUPPLEANT",
+        "date_naissance": "1965-05-04",
+        "date_naissance_timestamp": -147142800,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      },
+      {
+        "nom": "DIJK",
+        "prenom": "JEAN PHILIPPE",
+        "fonction": "COMMISSAIRE AUX COMPTES SUPPLEANT",
+        "date_naissance": "1968-05-28",
+        "date_naissance_timestamp": -50374800,
+        "dirigeant": true,
+        "raison_sociale": "",
+        "identifiant": "",
+        "type": "PP"
+      }
+    ],
+    "etat_administratif": {
+      "value": "A",
+      "date_cessation": null
+    }
+  },
+  "etablissement_siege": {
+    "siege_social": true,
+    "siret": "30613890001294",
+    "naf": "7010Z",
+    "libelle_naf": "Activités des sièges sociaux",
+    "date_mise_a_jour": 1514934000,
+    "tranche_effectif_salarie_etablissement": {
+      "de": 1000,
+      "a": 1999,
+      "code": "42",
+      "date_reference": "2016",
+      "intitule": "1 000 à 1 999 salariés"
+    },
+    "date_creation_etablissement": 1208728800,
+    "region_implantation": {
+      "code": "32",
+      "value": "Hauts-de-France"
+    },
+    "commune_implantation": {
+      "code": "59009",
+      "value": "Villeneuve-d'Ascq"
+    },
+    "pays_implantation": {
+      "code": "FR",
+      "value": "FRANCE"
+    },
+    "diffusable_commercialement": true,
+    "enseigne": null,
+    "adresse": {
+      "l1": "DECATHLON",
+      "l2": "DECATHLON",
+      "l3": null,
+      "l4": "4 BD DE MONS",
+      "l5": "BP 299",
+      "l6": "59665 VILLENEUVE D ASCQ CEDEX",
+      "l7": "FRANCE",
+      "numero_voie": "4",
+      "type_voie": "BD",
+      "nom_voie": "DE MONS",
+      "complement_adresse": null,
+      "code_postal": "59650",
+      "localite": "VILLENEUVE D'ASCQ",
+      "code_insee_localite": "59009",
+      "cedex": "59665"
+    },
+    "etat_administratif": {
+      "value": "A",
+      "date_fermeture": null
+    }
+  },
+  "gateway_error": false
+}

@@ -1,0 +1,85 @@
+{
+  "entreprise": {
+    "siren": "412288383",
+    "capital_social": null,
+    "numero_tva_intracommunautaire": "FR22412288383",
+    "forme_juridique": "Entrepreneur individuel",
+    "forme_juridique_code": "1000",
+    "nom_commercial": "",
+    "procedure_collective": false,
+    "enseigne": null,
+    "libelle_naf_entreprise": "Élevage de chevaux et d'autres équidés",
+    "naf_entreprise": "0143Z",
+    "raison_sociale": "BIDAU*BAROIN/ODILE RENEE JANINE/",
+    "siret_siege_social": "41228838300018",
+    "code_effectif_entreprise": "NN",
+    "date_creation": 410137200,
+    "nom": "BIDAU",
+    "prenom": "ODILE",
+    "date_radiation": null,
+    "categorie_entreprise": null,
+    "tranche_effectif_salarie_entreprise": {
+      "de": null,
+      "a": null,
+      "code": "NN",
+      "date_reference": null,
+      "intitule": "Unités non employeuses"
+    },
+    "mandataires_sociaux": [],
+    "etat_administratif": {
+      "value": "A",
+      "date_cessation": null
+    }
+  },
+  "etablissement_siege": {
+    "siege_social": true,
+    "siret": "41228838300018",
+    "naf": "0143Z",
+    "libelle_naf": "Élevage de chevaux et d'autres équidés",
+    "date_mise_a_jour": 1199401200,
+    "tranche_effectif_salarie_etablissement": {
+      "de": null,
+      "a": null,
+      "code": "NN",
+      "date_reference": null,
+      "intitule": "Unités non employeuses"
+    },
+    "date_creation_etablissement": 410137200,
+    "region_implantation": {
+      "code": "27",
+      "value": "Bourgogne-Franche-Comté"
+    },
+    "commune_implantation": {
+      "code": "71129",
+      "value": "Chissey-en-Morvan"
+    },
+    "pays_implantation": {
+      "code": "FR",
+      "value": "FRANCE"
+    },
+    "diffusable_commercialement": true,
+    "enseigne": null,
+    "adresse": {
+      "l1": "MADAME ODILE BAROIN",
+      "l2": null,
+      "l3": null,
+      "l4": "SOUVERT",
+      "l5": null,
+      "l6": "71540 CHISSEY EN MORVAN",
+      "l7": "FRANCE",
+      "numero_voie": null,
+      "type_voie": null,
+      "nom_voie": "SOUVERT",
+      "complement_adresse": null,
+      "code_postal": "71540",
+      "localite": "CHISSEY EN MORVAN",
+      "code_insee_localite": "71129",
+      "cedex": null
+    },
+    "etat_administratif": {
+      "value": "A",
+      "date_fermeture": null
+    }
+  },
+  "gateway_error": false
+}

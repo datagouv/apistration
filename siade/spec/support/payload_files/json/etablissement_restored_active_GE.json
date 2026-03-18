@@ -1,0 +1,53 @@
+{
+  "etablissement": {
+    "siege_social": false,
+    "siret": "30613890002979",
+    "naf": "4764Z",
+    "libelle_naf": "Commerce de détail d'articles de sport en magasin spécialisé",
+    "date_mise_a_jour": 1271541600,
+    "tranche_effectif_salarie_etablissement": {
+      "de": null,
+      "a": null,
+      "code": "NN",
+      "date_reference": null,
+      "intitule": "Unités non employeuses"
+    },
+    "date_creation_etablissement": 1085522400,
+    "region_implantation": {
+      "code": "93",
+      "value": "Provence-Alpes-Côte d'Azur"
+    },
+    "commune_implantation": {
+      "code": "84007",
+      "value": "Avignon"
+    },
+    "pays_implantation": {
+      "code": "FR",
+      "value": "FRANCE"
+    },
+    "diffusable_commercialement": true,
+    "enseigne": null,
+    "adresse": {
+      "l1": "DECATHLON",
+      "l2": "DECATHLON",
+      "l3": null,
+      "l4": "330 AV MARCOU DELANGLADE",
+      "l5": null,
+      "l6": "84014 AVIGNON CEDEX 1",
+      "l7": "FRANCE",
+      "numero_voie": "330",
+      "type_voie": "AV",
+      "nom_voie": "MARCOU DELANGLADE",
+      "complement_adresse": null,
+      "code_postal": "84140",
+      "localite": "AVIGNON",
+      "code_insee_localite": "84007",
+      "cedex": "84014"
+    },
+    "etat_administratif": {
+      "value": "A",
+      "date_fermeture": null
+    }
+  },
+  "gateway_error": false
+}

@@ -1,0 +1,24 @@
+RSpec.describe JwtTokenService do
+  subject(:helper) { described_class.new(jwt: jwt) }
+
+  context 'when created with a valid jwt' do
+    let(:jwt) { yes_jwt }
+
+    its(:valid?) { is_expected.to be_truthy }
+    its(:jwt_user) { is_expected.to be_a(JwtUser) }
+
+    describe 'Jwt User' do
+      subject { helper.jwt_user }
+
+      its(:id) { is_expected.to eq('f5d5cb02-185a-426f-b3f4-99a25ce6cdf4') }
+      its(:jti) { is_expected.to eq('3d4706c4-7f5e-4442-a734-00d6c675f3c9') }
+    end
+  end
+
+  context 'when created with an invalid jwt' do
+    let(:jwt) { 'not a valid jwt token' }
+
+    its(:valid?) { is_expected.to be_falsey }
+    its(:jwt_user) { is_expected.to be_nil }
+  end
+end

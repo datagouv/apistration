@@ -1,0 +1,207 @@
+{
+  "type": "object",
+  "$id": "entreprise",
+  "additionalProperties": false,
+  "required": ["siren", "nic_siege_social", "date_creation", "date_mise_a_jour", "raison_sociale", "diffusable_commercialement", "sigle", "capital_social", "etat_administratif", "numero_tva_intracommunautaire", "economie_sociale_et_solidaire", "caractere_employeur", "date_radiation", "nombre_etablissements_actifs", "nom_commercial", "id_rna", "sexe", "nom", "nom_usage", "prenom_1", "prenom_2", "prenom_3", "prenom_4", "prenom_usuel", "pseudonyme", "forme_juridique", "naf", "tranche_effectif_salarie", "mandataires_sociaux", "categorie_entreprise"],
+  "properties": {
+    "siren": {
+      "type": "string",
+      "title": "Siren de l'entreprise",
+      "pattern": "\\d{9}",
+      "examples": ["130022585"]
+    },
+    "nic_siege_social": {
+      "$id": "nic_siege_social",
+      "type": "string",
+      "title": "Code NIC du siège social",
+      "pattern": "\\d{5}",
+      "examples": ["00017"]
+    },
+    "date_creation": {
+      "type": "integer",
+      "title": "Date de création de l'entreprise",
+      "examples": [410137200]
+    },
+    "date_mise_a_jour": {
+      "type": "integer",
+      "title": "Date de dernière mise à jour de l'entreprise",
+      "examples": [410137200]
+    },
+    "raison_sociale": {
+      "$id": "raison_sociale",
+      "type": ["null", "string"],
+      "title": "Raison sociale de l'entreprise",
+      "examples": ["GROUPEMENT DE COOPERATION SANITAIRE CIAQA"]
+    },
+    "diffusable_commercialement": {
+      "$id": "diffusable_commercialement",
+      "type": "boolean",
+      "title": "Informations diffusable commercialement ?"
+    },
+    "sigle": {
+      "type": ["null", "string"],
+      "title": "sigle de l'entreprise "
+    },
+    "capital_social": {
+      "type": ["null", "integer"],
+      "title": "Capital social de l'entreprise "
+    },
+    "etat_administratif": {
+      "$id": "etat_administratif_entreprise",
+      "type": "string",
+      "title": "La Etat_administratif de l'entreprise",
+      "enum": ["A", "C"],
+      "examples": ["A", "C"]
+    },
+    "numero_tva_intracommunautaire": {
+      "type": ["null", "string"],
+      "title": "Le numéro de TVA intracommunautaire de l'entreprise",
+      "patern": "FR\\d{11}",
+      "examples": ["FR22412288383"]
+    },
+    "economie_sociale_et_solidaire": {
+      "$id": "economie_sociale_et_solidaire",
+      "type": ["null", "string"],
+      "title": "La Economie_sociale_et_solidaire de l'entreprise",
+      "enum": ["O", "N", null]
+    },
+    "caractere_employeur": {
+      "$id": "caractere_employeur",
+      "type": "string",
+      "title": "L'entreprise emploie-t-elle ?",
+      "enum": ["O", "N"],
+      "examples": ["O", "N"]
+    },
+    "date_radiation": {
+      "type": ["null", "integer"],
+      "title": "La date de radiation de l'entreprise",
+      "examples": [410137200]
+    },
+    "nombre_etablissements_actifs": {
+      "type": "integer",
+      "title": "La Nombre_etablissements_actifs de l'entreprise",
+      "examples": [3]
+    },
+    "nom_commercial": {
+      "type": "string",
+      "title": "Le nom commercial de l'entreprise"
+    },
+    "id_rna": {
+      "type": ["null", "string"],
+      "title": "L'ID RNA de l'entreprise",
+      "description": "L'identifiant au registre national des associations de l'entreprise si c'est une association (il n'est pas toujours renseigné)"
+    },
+    "sexe": {
+      "type": ["null","string"],
+      "title": "Le sexe de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique",
+      "enum": ["F", "M", null]
+    },
+    "nom": {
+      "$id": "nom_pp",
+      "type": ["null","string"],
+      "title": "Le nom de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "nom_usage": {
+      "$id": "nom_usage_pp",
+      "type": ["null","string"],
+      "title": "Le num d'usage de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "prenom_1": {
+      "type": ["null","string"],
+      "title": "Le premier prénom de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "prenom_2": {
+      "type": ["null","string"],
+      "title": "Le second prénom de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "prenom_3": {
+      "type": ["null","string"],
+      "title": "Le troisième prénom de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "prenom_4": {
+      "type": ["null","string"],
+      "title": "Le quatrième prénom de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "prenom_usuel": {
+      "type": ["null","string"],
+      "title": "Le prénom usuel de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "pseudonyme": {
+      "type": ["null","string"],
+      "title": "Le pseudonyme de la personne physique",
+      "description": "N'est renseigné QUE pour les personnes physique"
+    },
+    "forme_juridique": {
+      "$ref": "./forme_juridique.json"
+    },
+    "naf": {
+      "$ref": "./naf.json"
+    },
+    "tranche_effectif_salarie": {
+      "$ref": "./tranche_effectif_salarie.json"
+    },
+    "mandataires_sociaux": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["nom", "prenom", "fonction", "date_naissance", "date_naissance_timestamp", "dirigeant", "raison_sociale", "identifiant", "type"],
+        "properties": {
+          "nom": {
+            "type": "string",
+            "title": "Le nom du mandataire social"
+          },
+          "prenom": {
+            "type": "string",
+            "title": "Le prénom du mandataire social"
+          },
+          "fonction": {
+            "type": "string",
+            "title": "La fonction du mandataire social",
+            "examples": ["PRESIDENT DU CONSEIL D'ADMINISTRATION"]
+          },
+          "date_naissance": {
+            "type": "string",
+            "title": "La date de naissance du mandataire social au format YYYY-MM-DD",
+            "examples": ["1969-06-14"]
+          },
+          "date_naissance_timestamp": {
+            "type": "integer",
+            "title": "La date de naissance du mandataire social en timestamp",
+            "examples": [-17370000]
+          },
+          "dirigeant": {
+            "type": "boolean",
+            "title": "Est-ce le dirigeant ?"
+          },
+          "raison_sociale": {
+            "type": "string",
+            "title": "La raison sociale du mandataire"
+          },
+          "identifiant": {
+            "type": "string",
+            "title": "l'identifiant du mandataire social"
+          },
+          "type": {
+            "type": "string",
+            "title": "Le type de mandataire social",
+            "description": "Personne morale ou personne physique",
+            "enum": ["PP", "PM"],
+            "examples": ["PP", "PM"]
+          }
+        }
+      }
+    },
+    "categorie_entreprise": {
+      "$ref": "./categorie_entreprise.json"
+    }
+  }
+}

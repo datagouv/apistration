@@ -1,0 +1,31 @@
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+
+require File.expand_path('../config/application', __FILE__)
+
+Siade::Application.load_tasks
+
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
+production1 = 'production1.entreprise.api.gouv.fr'
+production2 = 'production2.entreprise.api.gouv.fr'
+
+domains = [production1, production2]
+
+task :setup do
+  domains.each do |domain|
+    sh "mina setup domain=#{domain}"
+  end
+end
+
+task :deploy do
+  domains.each do |domain|
+    sh "mina deploy domain=#{domain}"
+  end
+end
+
+task default: %i[spec]

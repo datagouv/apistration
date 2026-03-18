@@ -1,0 +1,2 @@
+class ProviderUnknownError < ProviderInternalServerError
+end

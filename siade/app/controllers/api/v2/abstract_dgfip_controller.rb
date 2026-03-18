@@ -1,0 +1,44 @@
+class API::V2::AbstractDGFIPController < API::AuthenticateEntityController
+  before_action :authenticate_dgfip_service
+
+  def authenticate_dgfip_service
+    dgfip_service.authenticate!
+
+    unless dgfip_service.success?
+      render_dgfip_authentication_failed
+      false
+    end
+  rescue NoMethodError => e
+    if no_cookie_on_provider_connection_refused_response?(e)
+      render_dgfip_authentication_failed
+      false
+    else
+      raise
+    end
+  end
+
+  def render_dgfip_authentication_failed
+    render json:   authenticate_errors,
+           status: 502
+  end
+
+  def dgfip_service
+    @dgfip_service ||= AuthenticateDGFIPService.new
+  end
+
+  def authenticate_errors
+    ErrorsSerializer.new(
+      [
+        ProviderAuthenticationError.new('DGFIP'),
+      ],
+      format: error_format,
+    ).as_json
+  end
+
+  private
+
+  def no_cookie_on_provider_connection_refused_response?(exception)
+    exception.name == :cookie &&
+      exception.receiver.instance_of?(SIADE::V2::Responses::ServiceUnavailable)
+  end
+end

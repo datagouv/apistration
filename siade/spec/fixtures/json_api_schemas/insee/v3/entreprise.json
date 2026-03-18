@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entreprise", "nombre_periodes_entreprise", "periodes_entreprise", "etablissement_siege"],
+  "properties": {
+    "entreprise": {
+      "$ref": "./entreprise_only.json"
+    },
+    "nombre_periodes_entreprise": {
+      "type": "integer",
+      "title": "Le nombre périodes de l'entreprise",
+      "description": "Chaque période correspond à l’intervalle de temps pendant lequel la totalité des variables historisées de l’unité légale n’ont pas été modifiées."
+    },
+    "periodes_entreprises": {
+      "$ref": "./periode_entreprise.json"
+    },
+    "etablissement_siege": {
+      "$ref": "./etablissement_only.json"
+    }
+  }
+}

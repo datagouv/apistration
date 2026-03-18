@@ -1,0 +1,151 @@
+{
+  "type": "object",
+  "required": ["entreprise", "etablissement_siege", "gateway_error"],
+  "additionalProperties": false,
+  "properties": {
+    "entreprise": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["siren", "capital_social", "numero_tva_intracommunautaire", "forme_juridique", "forme_juridique_code", "nom_commercial", "procedure_collective", "enseigne", "libelle_naf_entreprise", "naf_entreprise", "raison_sociale", "siret_siege_social", "code_effectif_entreprise", "date_creation", "nom", "prenom", "date_radiation", "categorie_entreprise", "tranche_effectif_salarie_entreprise", "mandataires_sociaux", "etat_administratif"],
+      "additionalProperties": true,
+      "properties": {
+        "siren": {
+          "type": "string"
+        },
+        "capital_social": {
+          "type": ["null", "integer"]
+        },
+        "numero_tva_intracommunautaire": {
+          "type": ["null", "string"]
+        },
+        "forme_juridique": {
+          "type": "string"
+        },
+        "forme_juridique_code": {
+          "type": "string"
+        },
+        "nom_commercial": {
+          "type": "string"
+        },
+        "procedure_collective": {
+          "type": "boolean"
+        },
+        "enseigne": {
+          "type": ["null", "string"]
+        },
+        "libelle_naf_entreprise": {
+          "type": "string"
+        },
+        "naf_entreprise": {
+          "type": "string"
+        },
+        "raison_sociale": {
+          "type": ["null", "string"]
+        },
+        "siret_siege_social": {
+          "type": "string"
+        },
+        "code_effectif_entreprise": {
+          "type": ["null", "string"]
+        },
+        "date_creation": {
+          "type": "integer"
+        },
+        "nom": {
+          "type": ["null", "string"]
+        },
+        "prenom": {
+          "type": ["null", "string"]
+        },
+        "date_radiation": {
+          "type": ["null", "string"]
+        },
+        "categorie_entreprise": {
+          "type": ["null", "string"]
+        },
+        "tranche_effectif_salarie_entreprise": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["de", "a", "code", "date_reference", "intitule"],
+          "properties": {
+            "de": {
+              "type": ["null", "integer"]
+            },
+            "a": {
+              "type": ["null", "integer"]
+            },
+            "code": {
+              "type": ["null", "string"]
+            },
+            "date_reference": {
+              "type": ["null", "string"]
+            },
+            "intitule": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "mandataires_sociaux": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nom", "prenom", "fonction", "date_naissance", "date_naissance_timestamp", "dirigeant", "raison_sociale", "identifiant", "type"],
+            "properties": {
+              "nom": {
+                "type": "string"
+              },
+              "prenom": {
+                "type": "string"
+              },
+              "fonction": {
+                "type": "string"
+              },
+              "date_naissance": {
+                "type": "string"
+              },
+              "date_naissance_timestamp": {
+                "type": "integer"
+              },
+              "dirigeant": {
+                "type": "boolean"
+              },
+              "raison_sociale": {
+                "type": "string"
+              },
+              "identifiant": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "etat_administratif": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "date_cessation"],
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": ["A", "C"]
+            },
+            "date_cessation": {
+              "type": ["null", "integer"]
+            }
+          }
+        },
+        "diffusable_commercialement": {
+          "type": "boolean"
+        }
+      }
+    },
+    "etablissement_siege": {
+      "$ref": "./etablissement_only.json"
+    },
+    "gateway_error": {
+      "type": "boolean"
+    }
+  }
+}

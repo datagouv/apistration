@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "$id": "forme_juridique",
+  "additionalProperties": false,
+  "required": ["code", "libelle"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "title": "Le code forme juridique",
+      "pattern": "\\d{4}",
+      "examples": ["6565"]
+    },
+    "libelle": {
+      "type": "string",
+      "title": "Le Libelle du code juridique",
+      "examples": ["SCP de notaires"]
+    }
+  }
+}

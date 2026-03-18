@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["etablissement", "gateway_error"],
+  "properties": {
+    "etablissement": {
+      "$ref": "./etablissement_only.json"
+   },
+    "gateway_error": {
+      "type": "boolean"
+    }
+  }
+}

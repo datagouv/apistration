@@ -1,0 +1,146 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entreprise", "declarations"],
+  "properties": {
+    "entreprise": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["denomination", "siren", "itip", "setOcfis"],
+      "properties": {
+        "denomination": {
+          "type": "string",
+          "title": "The Denomination Schema"
+        },
+        "siren": {
+          "type": "string",
+          "title": "The Siren Schema"
+        },
+        "itip": {
+          "type": "string",
+          "title": "Identifiant Fiscal National Individuel"
+        },
+        "setOcfis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["codeNace", "codeObf", "dateDebut", "dateDebutPourAttestationRegularite", "nbRof", "numOcfi", "ROF", "regime", "texteExploitation"],
+          "properties": {
+            "codeNace": {
+              "type": "string",
+              "title": "The Codenace Schema"
+            },
+            "codeObf": {
+              "type": "string",
+              "title": "The Codeobf Schema"
+            },
+            "dateDebut": {
+              "type": "string",
+              "title": "The Datedebut Schema"
+            },
+            "dateDebutPourAttestationRegularite": {
+              "type": "string",
+              "title": "The Datedebutpourattestationregularite Schema"
+            },
+            "nbRof": {
+              "type": "string",
+              "title": "The Nbrof Schema"
+            },
+            "numOcfi": {
+              "type": "string",
+              "title": "The Numocfi Schema"
+            },
+            "ROF": {
+              "type": "string",
+              "title": "The Rof Schema"
+            },
+            "regime": {
+              "type": "string",
+              "title": "The Regime Schema"
+            },
+            "texteExploitation": {
+              "type": "string",
+              "title": "The Texteexploitation Schema"
+            }
+          }
+        }
+      }
+    },
+    "declarations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code_regime", "date_declaration", "fin_exercice", "duree_exercice", "millesime", "numero_imprime", "imprime"],
+        "properties": {
+          "code_regime": {
+            "type": "string",
+            "title": "The Code_regime Schema"
+          },
+          "date_declaration": {
+            "type": "string",
+            "title": "The Date_declaration Schema"
+          },
+          "fin_exercice": {
+            "type": "string",
+            "title": "The Fin_exercice Schema"
+          },
+          "duree_exercice": {
+            "type": "string",
+            "title": "The Duree_exercice Schema"
+          },
+          "millesime": {
+            "type": "string",
+            "title": "The Millesime Schema"
+          },
+          "numero_imprime": {
+            "type": "string",
+            "title": "The Numero_imprime Schema"
+          },
+          "imprime": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["donnees"],
+            "properties": {
+              "donnees": {
+                "type": ["array", "object"],
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["code_nref"],
+                  "properties": {
+                    "code_nref": {
+                      "type": "string",
+                      "title": "The Code_nref Schema"
+                    }
+                  },
+                  "additionalProperties": {
+                    "valeur": {
+                      "type": "string",
+                      "title": "The Valeur Schema"
+                    },
+                    "valeurs": {
+                      "type": "object",
+                      "title": "The Valeurs Schema",
+                      "additionalProperties": false,
+                      "required": ["indiceRepetition", "valeur"],
+                      "properties": {
+                        "indiceRepetition": {
+                          "type": "string",
+                          "title": "The Indicerepetition Schema"
+                        },
+                        "valeur": {
+                          "type": "string",
+                          "title": "The Valeur Schema"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

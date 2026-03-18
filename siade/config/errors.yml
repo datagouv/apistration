@@ -1,0 +1,181 @@
+---
+## Erreurs communes
+- subcode: '000'
+  title: 'Erreur inconnue'
+  detail: 'Mauvaise réponse envoyée par le fournisseur de données'
+
+- subcode: '001'
+  title: 'Service non disponible'
+  detail: 'Service du fournisseur de données temporairement indisponible ou en maintenance.'
+
+- subcode: '002'
+  title: 'Intermédiaire hors-délai'
+  detail: 'Temps d’attente d’une réponse du fournisseur de données écoulé.'
+
+- subcode: '003'
+  title: 'Ressource non trouvée'
+
+- subcode: '004'
+  title: 'Erreur de résolution DNS'
+  detail: "Problème de résolution DNS de l'adresse du serveur"
+
+- subcode: '005'
+  title: 'Indisponible pour des raisons légales'
+  detail: "Problème de résolution DNS de l'adresse du serveur"
+
+- subcode: '006'
+  title: "Erreur d'authentification auprès du fournisseur de données"
+
+- subcode: '010'
+  title: 'Contenu partiel'
+  detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."
+
+- code: '00100'
+  title: 'Privilèges insuffisants'
+  detail: 'Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN'
+  source: &source_token
+    parameter: 'token'
+
+- code: '00101'
+  title: 'Interdit'
+  detail: "Votre token n'est pas valide ou n'est pas renseigné"
+  source: *source_token
+
+- code: '00102'
+  title: 'Format de jeton plus supporté'
+  detail: "Vous avez utilisé un token à l'ancien format. Ce format n'est plus supporté depuis avril 2019. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/"
+  source: *source_token
+
+- code: '00103'
+  title: 'Jeton expiré'
+  detail: "Votre token est expiré. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token."
+  source: *source_token
+
+- code: '00201'
+  title: 'Entité non traitable'
+  detail: "Le paramètre context est obligatoire"
+  source:
+    parameter: 'context'
+
+- code: '00202'
+  title: 'Entité non traitable'
+  detail: "Le paramètre object est obligatoire"
+  source:
+    parameter: 'object'
+
+- code: '00203'
+  title: 'Entité non traitable'
+  detail: "Le paramètre recipient est obligatoire"
+  source:
+    parameter: 'recipient'
+
+- code: '00301'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siren n'est pas correctement formatté"
+  source:
+    parameter: 'siren'
+
+- code: '00302'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siret n'est pas correctement formatté"
+  source:
+    parameter: 'siret'
+
+- code: '00303'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siret ou le numéro d'association indiqué n'est pas correctement formatté"
+  source:
+    parameter: 'id'
+
+- code: '00304'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siret ou le numéro EORI n'est pas correctement formatté"
+  source:
+    parameter: 'id'
+
+- code: '00305'
+  title: 'Entité non traitable'
+  detail: "Le format du mois n'est pas valide"
+  source:
+    parameter: 'month'
+
+- code: '00306'
+  title: 'Entité non traitable'
+  detail: "Le code INSEE commune n'est pas correctement formaté"
+
+- code: '00307'
+  title: 'Entité non traitable'
+  detail: "L'année n'est pas correctement formatée"
+
+- code: '00308'
+  title: 'Entité non traitable'
+  detail: "Le user_id n'est pas correctement formaté"
+
+- code: '00309'
+  title: 'Entité non traitable'
+  detail: 'Invalide request_name'
+
+- code: '00310'
+  title: 'Entité non traitable'
+  detail: "Le type d'attestation indiqué n'est pas correctement formatté (uniquement: AVG_UR)"
+
+- code: '00311'
+  title: 'Entité non traitable'
+  detail: "Le siren_is n'est pas correctement formatté"
+  source:
+    parameter: 'siren_is'
+
+- code: '00312'
+  title: 'Entité non traitable'
+  detail: "Le siren_tva n'est pas correctement formatté"
+  source:
+    parameter: 'siren_tva'
+
+## Providers
+### RNA
+
+- code: '07501'
+  title: 'Mauvaise réponse du fournisseur de données'
+  detail: "Echec lors du parcours du fichier XML rna association."
+
+## INPI
+
+- code: '05501'
+  title: 'Mauvaise réponse du fournisseur de données'
+  detail: "Les IDs fichiers renvoyés par l'INPI sont incorrects"
+
+- code: '05502'
+  title: 'Mauvaise réponse du fournisseur de données'
+  detail: 'Echec lors du parsing de la réponse JSON des brevets INPI'
+
+- code: '05503'
+  title: 'Mauvaise réponse du fournisseur de données'
+  detail: 'Echec lors du parsing de la réponse JSON des modèles INPI'
+
+- code: '05504'
+  title: 'Mauvaise réponse du fournisseur de données'
+  detail: 'Echec lors du parsing de la réponse JSON des marques INPI'
+
+## DGFIP
+
+- code: '03501'
+  title: 'Potentielle ressource non trouvée'
+  detail: "Le serveur a renvoyé une erreur interne, mais cela peut aussi indiquer que le siret ou siren renseigné n'existe pas, n'est pas connu, n'est pas en règle de ses obligations fiscales ou ne comporte aucune information pour cet appel."
+
+## BDF
+
+- code: '17501'
+  title: 'Erreur de base de données de la Banque de France'
+  detail: "Les serveurs de la Banque de France rencontrent une erreur de base de données"
+
+- code: '17502'
+  title: 'Erreur interne de la Banque de France'
+  detail: "Les serveurs de la Banque de France rencontrent une erreur interne"
+
+## ACOSS
+
+- code: '04101'
+  title: 'Réponse invalide'
+
+- code: '04102'
+  title: 'Code erreur non supporté'

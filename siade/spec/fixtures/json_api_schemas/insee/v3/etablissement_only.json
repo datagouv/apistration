@@ -1,0 +1,69 @@
+{
+  "type": "object",
+  "$id": "etablissement",
+  "additionalProperties": false,
+  "required": ["siege_social", "siren", "nic", "siret", "etat_administratif", "diffusable_commercialement", "date_creation", "date_mise_a_jour", "enseignes", "caractere_employeur", "tranche_effectif_salarie", "naf", "adresse"],
+  "properties": {
+    "siege_social": {
+      "type": "boolean",
+      "title": "Est-ce le siège social de l'entreprise ?"
+    },
+    "siren": {
+      "type": "string",
+      "title": "Le siren de l'établissement",
+      "pattern": "\\d{9}",
+      "examples": ["306138900"]
+    },
+    "nic": {
+      "type": "string",
+      "title": "Le NIC de l'établissement",
+      "pattern": "\\d{5}",
+      "examples": ["02979"]
+    },
+    "siret": {
+      "type": "string",
+      "title": "Le siret de l'établissement",
+      "pattern": "\\d{14}",
+      "examples": ["30613890002979"]
+    },
+    "etat_administratif": {
+      "type": "string",
+      "title": "L'état administratif de l'établissement",
+      "enum": ["A", "F"],
+      "examples": ["A", "F"]
+    },
+    "diffusable_commercialement": {
+      "type": "boolean",
+      "title": "Informations diffusable commercialement ?"
+    },
+    "date_creation": {
+      "type": "integer",
+      "title": "La date de création de l'établissement",
+      "examples": [1085522400]
+    },
+    "date_mise_a_jour": {
+      "type": "integer",
+      "title": "La date de mise à jour de l'établissement",
+      "examples": [1085522400]
+    },
+    "enseignes": {
+      "type": "string",
+      "title": "La concaténation des enseignes de l'établissement (3)"
+    },
+    "caractere_employeur": {
+      "type": "string",
+      "title": "L'entreprise emploie-t-elle ?",
+      "enum": ["O", "N"],
+      "examples": ["O","N"]
+    },
+    "tranche_effectif_salarie": {
+      "$ref": "./tranche_effectif_salarie.json"
+    },
+    "naf": {
+      "$ref": "./naf.json"
+    },
+    "adresse": {
+      "$ref": "./adresse.json"
+    }
+  }
+}

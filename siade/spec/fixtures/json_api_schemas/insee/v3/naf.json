@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$id": "naf",
+  "additionalProperties": false,
+  "required": ["code", "nomenclature", "libelle"],
+  "properties": {
+    "code": {
+      "type": ["null", "string"],
+      "title": "Le code d'activité princiaple de l'entreprise (code NAF/APE)",
+      "examples": ["4649Z"]
+    },
+    "nomenclature": {
+      "type": ["null", "string"],
+      "title": "Le nomenclature NAF/APE",
+      "pattern": "(NAFRev2|NAFRev1|NAF1993)",
+      "examples": ["NAFRev2"]
+    },
+    "libelle": {
+      "type": "string",
+      "title": "Le libelle de l'activité principale de l'entreprise (NAF/APE)",
+      "description": "Seule le libelle de la nomenclature NAVRev2 sera renseignée",
+      "examples": ["Commerce de détail d'articles de sport en magasin spécialisé"]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "$id": "tranche_effectif_salarie",
+  "description": "https://www.sirene.fr/sirene/public/variable/tefen",
+  "additionalProperties": false,
+  "required": ["de", "a", "code", "date_reference", "intitule"],
+  "properties": {
+    "de": {
+      "type": ["null", "integer"],
+      "title": "minimun d'employés"
+    },
+    "a": {
+      "type": ["null", "integer"],
+      "title": "maximum d'employés"
+    },
+    "code": {
+      "type": ["null", "string"],
+      "title": "Le code de la tranche d'effectifs salarié de l'entreprise",
+      "description": "",
+      "pattern": "^(NN|\\d{1,2})$",
+      "examples": ["00"]
+    },
+    "date_reference": {
+      "type": ["null", "string"],
+      "title": "La date de reference du calcul de l'effectifs salarié de l'entreprise",
+      "examples": ["2008"]
+    },
+    "intitule": {
+      "type": ["null", "string"],
+      "title": "L'intitulé de la tranche d'effectifs salarié de l'entreprise",
+      "examples": ["0 salarié"]
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "type": "array",
+  "$id": "periode_etablissement",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["date_fin", "date_debut", "etat_administratif", "changement_etat_administratif", "enseigne_1", "enseigne_2", "enseigne_3", "changement_enseigne", "naf", "changement_naf", "caractere_employeur", "changement_caractere_employeur"],
+    "properties": {
+      "date_fin": {
+        "type": ["null","integer"],
+        "title": "La date de fin de la période en timestamp",
+        "examples": [1085522300]
+      },
+      "date_debut": {
+        "type": "integer",
+        "title": "La date de début de la période en timestamp",
+        "examples": [1085521400]
+      },
+      "etat_administratif": {
+        "type": ["null", "string"],
+        "title": "L'état administratif de l'établissement",
+        "enum": ["A", "F", null]
+      },
+      "changement_etat_administratif": {
+        "type": "boolean",
+        "title": "Changement de l'état administratif depuis la période précédente ?"
+      },
+      "enseigne_1": {
+        "type": ["null", "string"],
+        "title": "L'enseigne de l'établissement (1/3)"
+      },
+      "enseigne_2": {
+        "type": ["null", "string"],
+        "title": "L'enseigne de l'établissement (2/3)"
+      },
+      "enseigne_3": {
+        "type": ["null", "string"],
+        "title": "L'enseigne de l'établissement (3/3)"
+      },
+      "changement_enseigne": {
+        "type": "boolean",
+        "title": "Changement d'enseigne sur la période ?"
+      },
+      "naf": {
+        "$ref": "./naf.json"
+      },
+      "changement_naf": {
+        "type": "boolean",
+        "title": "Changement de NAF/APE sur la période ?"
+      },
+      "caractere_employeur": {
+        "type": ["null", "string"],
+        "title": "L'entreprise emploie-t-elle ?",
+        "enum": ["O", "N", null]
+      },
+      "changement_caractere_employeur": {
+        "type": "boolean",
+        "title": "Changement de caractère employeur sur la période ?"
+      }
+    }
+  }
+}

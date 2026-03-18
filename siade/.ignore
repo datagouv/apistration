@@ -1,0 +1,6 @@
+./spec/support/payload_files/**/*.pdf
+./spec/support/payload_files/**/*.json
+./spec/fixtures/cassettes/*.yml
+./public/documentation/**/*.js
+./static_site/assets
+*.svg

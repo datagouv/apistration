@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "$id": "categorie_entreprise",
+  "required": ["libelle", "annee"],
+  "properties": {
+    "libelle": {
+      "type": ["null", "string"],
+      "title": "Le Libelle de la catégorie entreprise",
+      "examples": ["GE"]
+    },
+    "annee": {
+      "type": ["null", "string"],
+      "title": "L'année de calcul",
+      "pattern": "\\d{4}",
+      "examples": ["2015"]
+    }
+  }
+
+}

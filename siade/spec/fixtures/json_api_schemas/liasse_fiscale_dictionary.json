@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dictionnaire"],
+  "properties": {
+    "dictionnaire": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["numero_imprime", "millesimes"],
+        "properties": {
+          "numero_imprime": {
+            "type": "string",
+            "title": "The Numero_imprime Schema"
+          },
+          "millesimes": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["millesime", "statut_version", "declaration"],
+            "properties": {
+              "millesime": {
+                "type": "string",
+                "title": "The Millesime Schema"
+              },
+              "statut_version": {
+                "type": "string",
+                "title": "The Statut_version Schema"
+              },
+              "declaration": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["code_absolu", "code_EDI", "code", "intitule", "code_type_donnee", "code_nref"],
+                  "properties": {
+                    "code_absolu": {
+                      "type": "string",
+                      "title": "The Code_absolu Schema"
+                    },
+                    "code_EDI": {
+                      "type": "string",
+                      "title": "The Code_edi Schema"
+                    },
+                    "code": {
+                      "type": "string",
+                      "title": "The Code Schema"
+                    },
+                    "intitule": {
+                      "type": "string",
+                      "title": "The Intitule Schema"
+                    },
+                    "code_type_donnee": {
+                      "type": "string",
+                      "title": "The Code_type_donnee Schema"
+                    },
+                    "code_nref": {
+                      "type": "string",
+                      "title": "The Code_nref Schema"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

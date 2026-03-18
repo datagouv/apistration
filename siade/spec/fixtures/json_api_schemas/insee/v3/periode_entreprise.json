@@ -1,0 +1,97 @@
+{
+  "type": "array",
+  "$id": "periode_entreprise",
+  "items": {
+    "type": "object",
+    "description": "Chaque période correspond à l’intervalle de temps pendant lequel la totalité des variables historisées de l’unité légale n’ont pas été modifiées.",
+    "additionalProperties": false,
+    "required": ["date_fin", "date_debut", "etat_administratif", "changement_etat_administratif", "nic_siege_social", "changement_nic_siege_social", "nom", "changement_nom", "nom_usage", "changement_nom_usage", "raison_sociale", "changement_raison_sociale", "economie_sociale_et_solidaire", "changement_economie_sociale_et_solidaire", "forme_juridique", "changement_forme_juridique", "naf", "changement_naf", "caractere_employeur", "changement_caractere_employeur"],
+    "properties": {
+      "date_fin": {
+        "type": "integer",
+        "title": "La date de fin de la période en timestamp",
+        "examples": [1085522300]
+      },
+      "date_debut": {
+        "type": "integer",
+        "title": "La date de début de la période en timestamp",
+        "examples": [1085521400]
+      },
+      "etat_administratif": {
+        "$ref": "#/etat_administratif"
+      },
+      "changement_etat_administratif": {
+        "type": "boolean",
+        "title": "Changement de l'état administratif depuis la période précédente ?"
+      },
+      "nic_siege_social": {
+        "$ref": "#/nic_siege_social"
+      },
+      "changement_nic_siege_social": {
+        "type": "boolean",
+        "title": "Changement du NIC siège social de l'entreprise depuis la période précédente ?"
+      },
+      "nom": {
+        "$ref": "#/nom_pp"
+      },
+      "changement_nom": {
+        "type": "boolean",
+        "title": "Changement du nom de la personne physique depuis la période précdénte ?"
+      },
+      "nom_usage": {
+        "$ref": "#/nom_usage_pp"
+      },
+      "changement_nom_usage": {
+        "type": "boolean",
+        "title": "Changement du nom d'usage depuis la période précédente ?"
+      },
+      "raison_sociale": {
+        "$ref": "#/raison_sociale"
+      },
+      "raison_sociale_usuelle_1": {
+        "type": "string",
+        "title": "Raison sociale usuelle 1 de l'entreprise"
+      },
+      "raison_sociale_usuelle_2": {
+        "type": "string",
+        "title": "Raison sociale usuelle 2 de l'entreprise"
+      },
+      "raison_sociale_usuelle_3": {
+        "type": "string",
+        "title": "Raison sociale usuelle 3 de l'entreprise"
+      },
+      "changement_raison_sociale": {
+        "type": "boolean",
+        "title": "Changement raison sociale de l'entreprise depuis la période précédente ?"
+      },
+      "economie_sociale_et_solidaire": {
+        "$ref": "#/economie_sociale_et_solidaire"
+      },
+      "changement_economie_sociale_et_solidaire": {
+        "type": "boolean",
+        "title": "Changement économie sociale et solidaire de l'entreprise depuis la dernière période"
+      },
+      "forme_juridique": {
+        "$ref": "#/forme_juridique"
+      },
+      "changement_forme_juridique": {
+        "type": "boolean",
+        "title": "Changement de forme juridique de l'entreprise depuis la dernière période"
+      },
+      "naf": {
+        "$ref": "#/naf"
+      },
+      "changement_naf": {
+        "type": "boolean",
+        "title": "Changement de naf de l'entreprise depuis la dernière période"
+      },
+      "caractere_employeur": {
+        "$ref": "#/caractere_employeur"
+      },
+      "changement_caractere_employeur": {
+        "type": "boolean",
+        "title": "Changement de caractere employeur de l'entreprise depuis la dernière période ?"
+      }
+    }
+  }
+}

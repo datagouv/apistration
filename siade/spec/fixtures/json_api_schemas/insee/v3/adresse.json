@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["adresse_francaise", "complement_adresse", "numero_voie", "indice_repetition", "type_voie", "libelle_voie", "code_postal", "libelle_commune", "libelle_commune_etranger", "distribution_speciale", "code_cedex", "commune", "region", "pays"],
+  "properties": {
+    "adresse_francaise": {
+      "type": "boolean",
+      "description": "Est-ce une adresse française ?"
+    },
+    "complement_adresse": {
+      "type": ["null", "string"]
+    },
+    "numero_voie": {
+      "type": ["null", "string"]
+    },
+    "indice_repetition": {
+      "type": ["null", "string"]
+    },
+    "type_voie": {
+      "type": ["null", "string"]
+    },
+    "libelle_voie": {
+      "type": ["null", "string"]
+    },
+    "code_postal": {
+      "type": ["null", "string"]
+    },
+    "libelle_commune": {
+      "type": ["null", "string"]
+    },
+    "libelle_commune_etranger": {
+      "type": ["null", "string"]
+    },
+    "distribution_speciale": {
+      "type": ["null", "string"]
+    },
+    "code_cedex": {
+      "type": ["null", "string"]
+    },
+    "libelle_cedex": {
+      "type": ["null", "string"]
+    },
+    "commune": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "données générées",
+      "required": ["code", "value"],
+      "properties": {
+        "code": {
+          "type": ["null", "string"]
+        },
+        "value": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "données générées",
+      "required": ["code", "value"],
+      "properties": {
+        "code": {
+          "type": ["null", "string"]
+        },
+        "value": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "pays": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "données générées",
+      "required": ["code", "value"],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

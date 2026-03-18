@@ -1,0 +1,39 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/**/*
+    - vendor/**/*
+
+Layout/LineLength:
+  Enabled: false
+
+# Ruby 3.0 feature related stuff, will see later
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+# Do not force use of fail or raise only both have their use
+Style/SignalException:
+  Enabled: false
+
+# Do not force documentation at the top of classes
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table

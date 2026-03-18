@@ -1,0 +1,101 @@
+source 'https://rubygems.org'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+#gem 'rails', '~> 6.1.0'
+
+version = '~> 6.1.0'
+[
+'activesupport',
+'actionpack',
+#'actionview',
+'activemodel',
+#'activerecord',
+#'actionmailer',
+#'activejob',
+#'actioncable',
+#'activestorage',
+#'actionmailbox',
+#'actiontext',
+'railties'
+].each do |rails_subgem|
+  gem rails_subgem, version
+end
+
+
+gem 'rest-client'
+
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'logstasher'
+gem 'nokogiri'
+gem 'oauth2'
+gem 'redis'
+gem 'unindent'
+gem 'rack-cors'
+gem 'utf8-cleaner'
+gem 'rack-attack', git: 'https://github.com/rack/rack-attack', ref: '2257f00'
+gem 'marcel'
+
+gem 'fog-openstack', '1.0.11'
+
+# allow to retry a block n times if exception occurs https://github.com/nfedyashev/retryable
+gem 'retryable'
+
+# Authorization
+gem 'pundit', '1.0.0'
+gem 'jwt', '~> 2.2'
+
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
+group :test do
+  gem 'json-schema'
+  gem 'timecop'
+  gem 'mock_redis'
+  gem 'vcr'
+  gem 'webmock', '~> 3.13'
+
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-json_expectations'
+  gem 'rspec-collection_matchers'
+  gem 'shoulda-matchers'
+
+  gem 'rails-controller-testing'
+
+  gem 'simplecov', require: false
+  gem 'simplecov-cobertura'
+end
+
+group :development, :test, :sandbox do
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'rb-readline'
+end
+
+group :development, :test do
+  gem 'colorize'
+
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  # gem 'guard-livereload', '~> 2.4', require: false
+
+  gem 'spring'
+  gem 'spring-commands-rspec'
+
+  gem "openapi3_parser", "~> 0.9.0"
+end
+
+group :development do
+  gem 'brakeman', require: false
+
+  gem 'derailed_benchmarks'
+
+  gem 'mina'
+  gem 'rails_best_practices'
+
+  # ruby syntax analyze
+  gem 'rubocop', require: false
+  gem 'rubocop-checkstyle_formatter', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rails', require: false
+end

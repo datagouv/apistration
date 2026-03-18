@@ -1,0 +1,32 @@
+---
+variables:
+  BUNDLER_VERSION: "2.2.4"
+  CI: "true"
+  CODE_COVERAGE: "true"
+  MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR: "true"
+
+stages:
+  - test
+
+test:
+  stage: test
+  image: ruby:2.7.2
+  cache:
+    key: "siade"
+    paths:
+      - vendor/ruby
+    policy: pull
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq qpdf libmagic-dev
+    - gem update --system
+    - gem install bundler -v $BUNDLER_VERSION --no-document
+    - bundle install --full-index --path=vendor
+    - bundle exec rake dev:init
+  script:
+    - bundle exec rspec
+  artifacts:
+    reports:
+      cobertura: coverage/coverage.xml
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
