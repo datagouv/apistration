@@ -1,9 +1,9 @@
 men:
   scolarite:
     title: "Statut élève scolarisé et boursier"
-    description: "Statut scolarisé et statut boursier d'un élève du primaire, collège ou lycée."
+    description: "Statut scolarisé d'un élève du primaire, collège ou lycée et statut boursier."
     tags:
-      - Statut élève scolarisé et boursier
+      - Statut élève scolarisé
     parameters:
       nom:
         title: "Nom"
@@ -37,15 +37,15 @@ men:
         description: |+
           Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
 
-          Pour retrouver facilement le code UAI d'un établissement à partir d' informations plus facilement connues des usagers (commune, code postal, etc.), vous pouvez utiliser l'[API \"Annuaire de l'éducation nationale\" ](https://api.gouv.fr/les-api/api-annuaire-education).
+          Pour retrouver facilement le code UAI d'un établissement à partir d'informations plus facilement connues des usagers (commune, code postal, etc.), vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education).
 
           ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe pas dans l'API annuaire de l'éducation nationale, il faudra donc compléter la liste des établissements avec une ligne CNED à laquelle sera associée le code UAI qui sera en passé en entrée.
         type: string
         pattern: '^\d{7}\w$'
-        example: "0890003V"
+        example: "0210015C"
       annee_scolaire:
         title: "Année scolaire"
-        description: "Format AAAA-AAAA ou AAAA"
+        description: "Année scolaire recherchée au format AAAA-AAAA ou AAAA. Les informations connues par l'API concerne surtout l'année en cours et parfois l'année scolaire à venir. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_0_api_particulier_endpoint_education_nationale_statut_eleve_scolarise."
         type: string
         pattern: '^(\d{4}$|^\d{4}-\d{4})$'
         examples:
@@ -58,24 +58,24 @@ men:
         required: true
 
     attributes:
-      eleve:
-        title: "Informations sur l'élève"
-        description: "Les informations retournées ici sont celles transmises en paramètre d'appel. S'il y a eu des erreurs de frappe à la saisie, elles seront renvoyées."
+      identite:
+        title: "Données d'identité de l'élève"
+        description: "Les informations d'identité retournées ici sont issues de la base de données des établissemets scolaires (API SIGNE) où les élèves sont inscrits et proviennent des pièces d'identité que les parents doivent fournir à l'établissement pour inscrire leur enfant."
         type: object
         properties:
           nom:
             title: "Nom"
-            description: "Nom de l'élève"
+            description: "Nom de l'élève."
             type: string
             example: "Martin"
           prenom:
             title: "Prénom"
-            description: "Prénom de l'élève"
+            description: "Prénom de l'élève."
             type: string
             example: "Justine"
           sexe:
             title: "Sexe"
-            description: "Sexe de l'élève, masculin ou féminin"
+            description: "Sexe de l'élève, masculin ou féminin."
             type: string
             example: "F"
             enum:
@@ -86,28 +86,96 @@ men:
             description: "Date de naissance de l'élève au format AAAA-MM-JJ"
             type: string
             example: "2000-01-20"
-      code_etablissement: *code_etablissement
+      module_elementaire_formation:
+        title: Module élémentaire de formation (MEF)
+        description: "Libellé et code du module élémentaire de formation (MEF)"
+        type: object
+        properties:
+          code_mef_stat: 
+            title: "Code MEF"
+            description: "Code Mef Stat 11, selon la BCN"
+            type: string
+            example: "211324099991"
+            nullable: true
+          libelle: 
+            title: "Libéllé long, selon la BCN"
+            description: "Libellé long, selon la BCN"
+            type: string
+            example: "1CAP1 STAFFEUR ORNEMANISTE"
+            nullable: true
+      etablissement:
+        title: "Établissement d'études"
+        description: "Les informations relatives à l'établissement"
+        type: object
+        properties:
+          code_uai: 
+            title: "Code UAI de l'établissement"
+            description: |+
+              Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
+
+              Pour retrouver le nom de l'établissement, vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education) ou le site https://annuaire-education.fr.
+            type: string
+            pattern: '^\d{7}\w$'
+            example: "0210015C"
+          code_ministere_tutelle:
+            title: "Code de l'établissement auprès du ministère de tutelle"
+            description: "Code ministère de tutelle principale composé de 2 chiffres, selon la BCN"
+            type: string
+            example: '06'
+            nullable: true
       annee_scolaire:
         title: "Année scolaire"
-        description: "Année scolaire de l'élève au format AAAA-AAAA"
+        description: "Année scolaire de l'élève au format AAAA-AAAA."
         type: string
         pattern: '^\d{4}$|^\d{4}-\d{4}$'
         example: "2022-2023"
       est_scolarise:
-        description: "Indique si l'élève est scolarisé dans l'établissement."
+        title: "Est scolarisé"
+        description: "Indique si l'élève est scolarisé dans un établissement."
         type: boolean
         example: true
+      statut_eleve:
+        title: "Statut de l'élève"
+        description: |+
+          Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs sont susceptibles d'évoluer :
+
+          - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves.
+          - AP : Apprenti
+          - CQ : Contrat de qualification
+          - FC : Formation continue
+          - ED : Enseignement à distance
+          - IN : Candidat individuel
+          - FQ : Stagiaire de la formation Professionnelle
+          - SC : Scolaire ou formation initiale
+          - CP : Contrat de professionnalisation.
+          - NC : Non connu ou non communiqué.
+        type: object
+        properties:
+          code:
+            title: "Code"
+            description: "Code du statut sous lequel l'élève est scolarisé dans l'établissement."
+            type: string
+            example: 'ST'
+          libelle:
+            title: "Libellé"
+            description: "Libellé du statut sous lequel l'élève est scolarisé dans l'établissement."
+            type: string
+            example: 'SCOLAIRE'
       est_boursier:
         description: |+
           Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées.
-          \n
-          ⚠️ Si le statut boursier est à \"false\" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
+
+          ⚠️ Si le statut boursier est à "false" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
+
+          Ce champs prend la valeur null lorsque l'on ne sait pas si l'élève est boursier ou non
         type: boolean
         example: true
-      niveau_bourse:
-        description: "Indique l'échelon de la bourse de l'élève. Est à \"null\" quand \"est_boursier\" est \"false\". Les bourses concernent uniquement les élèves des collèges et lycées. 
-        \n 
-        Il existe trois échelons de bourses pour les collégiens (1 à 3) et six échelons pour les lycéens (1 à 6), correspondant aux montants reçus par l'élève pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_2_api_particulier_endpoint_education_nationale_statut_eleve_scolarise"
+        nullable: false
+      echelon_bourse:
+        description: |+
+          Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
+
+          Il existe trois échelons de bourses pour les collégiens (1 à 3) et six échelons pour les lycéens (1 à 6), correspondant aux montants reçus par l'élève pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_2_api_particulier_endpoint_education_nationale_statut_eleve_scolarise"
         type: integer
         example: 1
         nullable: true
@@ -119,23 +187,205 @@ men:
           - 4
           - 5
           - 6
-      status_eleve:
-        title: "Statut de l'élève"
+
+    v2:
+      title: "Statut élève scolarisé"
+      description: "Statut scolarisé d'un élève du primaire, collège ou lycée."
+      tags:
+        - Statut élève scolarisé
+      parameters:
+        nom:
+          title: "Nom"
+          description: "Nom de l'élève"
+          type: string
+          example: "Martin"
+          required: true
+        prenom:
+          title: "Prénom"
+          description: "Prénom de l'élève"
+          type: string
+          example: "Justine"
+          required: true
+        sexe:
+          title: "Sexe"
+          description: "Sexe de l'élève, masculin ou féminin"
+          type: string
+          enum:
+            - "m"
+            - "f"
+          example: 'm'
+          required: true
+        date_naissance:
+          title: "Date de naissance"
+          description: "Date de naissance de l'élève au format AAAA-MM-JJ"
+          type: string
+          example: "2000-01-20"
+          required: true
+        code_etablissement: &code_etablissement
+          title: "Code UAI de l'établissement"
+          description: |+
+            Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
+
+            Pour retrouver facilement le code UAI d'un établissement à partir d' informations plus facilement connues des usagers (commune, code postal, etc.), vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education).
+
+            ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe pas dans l'API annuaire de l'éducation nationale, il faudra donc compléter la liste des établissements avec une ligne CNED à laquelle sera associée le code UAI qui sera en passé en entrée.
+          type: string
+          pattern: '^\d{7}\w$'
+          example: "0210015C"
+        annee_scolaire:
+          title: "Année scolaire"
+          description: "Année scolaire recherchée au format AAAA-AAAA ou AAAA. Les informations connues par l'API concerne surtout l'année en cours et parfois l'année scolaire à venir. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_0_api_particulier_endpoint_education_nationale_statut_eleve_scolarise."
+          type: string
+          pattern: '^(\d{4}$|^\d{4}-\d{4})$'
+          examples:
+            court:
+              summary: "format court"
+              value: "2022"
+            long:
+              summary: "format long"
+              value: "2022-2023"
+          required: true
+
+      attributes:
+        eleve:
+          title: "Informations sur l'élève"
+          description: "Les informations retournées ici sont celles transmises en paramètre d'appel. S'il y a eu des erreurs de frappe à la saisie, elles seront renvoyées."
+          type: object
+          properties:
+            nom:
+              title: "Nom"
+              description: "Nom de l'élève"
+              type: string
+              example: "Martin"
+            prenom:
+              title: "Prénom"
+              description: "Prénom de l'élève"
+              type: string
+              example: "Justine"
+            sexe:
+              title: "Sexe"
+              description: "Sexe de l'élève, masculin ou féminin"
+              type: string
+              example: "F"
+              enum:
+                - "M"
+                - "F"
+            date_naissance:
+              title: "Date de naissance"
+              description: "Date de naissance de l'élève au format AAAA-MM-JJ"
+              type: string
+              example: "2000-01-20"
+        code_etablissement: *code_etablissement
+        annee_scolaire:
+          title: "Année scolaire"
+          description: "Année scolaire de l'élève au format AAAA-AAAA"
+          type: string
+          pattern: '^\d{4}$|^\d{4}-\d{4}$'
+          example: "2022-2023"
+        est_scolarise:
+          description: "Indique si l'élève est scolarisé dans l'établissement."
+          type: boolean
+          example: true
+
+        est_boursier:
+          description: |+
+            Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées.
+
+            ⚠️ Si le statut boursier est à "false" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
+
+            Ce champs prend la valeur null lorsque l'on ne sait pas si l'élève est boursier ou non
+          type: boolean
+          example: true
+          nullable: true
+        niveau_bourse:
+          description: |+
+            Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
+
+            Il existe trois échelons de bourses pour les collégiens (1 à 3) et six échelons pour les lycéens (1 à 6), correspondant aux montants reçus par l'élève pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_2_api_particulier_endpoint_education_nationale_statut_eleve_scolarise"
+          type: integer
+          example: 1
+          nullable: true
+          enum:
+            - null
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+        statut_eleve:
+          title: "Statut de l'élève"
+          description: |+
+            Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs sont susceptibles d'évoluer :
+
+            - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves.
+            - AP : Apprenti
+            - CQ : Contrat de qualification
+            - FC : Formation continue
+            - ED : Enseignement à distance
+            - IN : Candidat individuel
+            - FQ : Stagiaire de la formation Professionnelle
+            - SC : Scolaire ou formation initiale
+            - CP : Contrat de professionnalisation.
+            - NC : Non connu ou non communiqué.
+          type: object
+          properties:
+            code:
+              title: "Code statut de l'élève"
+              description: "Code du statut sous lequel l'élève est scolarisé dans l'établissement."
+              type: string
+              example: 'ST'
+            libelle:
+              title: "Libellé du statut de l'élève"
+              description: "Libellé du statut sous lequel l'élève est scolarisé dans l'établissement."
+              type: string
+              example: 'SCOLAIRE'
+
+  scolarite_perimetre:
+    title: "Statut élève scolarisé et boursier - recherche par périmètre géographique"
+    description: "Statut scolarisé d'un élève du primaire, collège ou lycée et statut boursier, recherché sur un périmètre géographique (département ou région) sans connaître l'établissement exact."
+    tags:
+      - Statut élève scolarisé
+    parameters:
+      annee_scolaire:
+        title: "Année scolaire"
+        description: "Année scolaire recherchée au format AAAA-AAAA ou AAAA."
+        type: string
+        pattern: '^(\d{4}$|^\d{4}-\d{4})$'
+        examples:
+          court:
+            summary: "format court"
+            value: "2022"
+          long:
+            summary: "format long"
+            value: "2022-2023"
+        required: true
+      degre_etablissement:
+        title: "Degré d'établissement"
+        description: "Degré de l'établissement scolaire : 1D pour le premier degré (écoles maternelles et élémentaires) ou 2D pour le second degré (collèges et lycées)."
+        type: string
+        enum:
+          - "1D"
+          - "2D"
+        example: "2D"
+        required: true
+      codes_bcn_departements:
+        title: "Codes BCN des départements"
         description: |+
-          Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont&nbsp;:&nbsp;(non exhaustif)
-          - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves. Ce statut concerne également les élèves qui suivent le CNED (Centre national d'éducation à distance). Ceux-ci peuvent être distingués par l'établissement car ils sont tous affectés au même : `0861288H (CNED DIRECTION GENERALE)`.
-          - AP : Apprenti
-          - CQ : Contrat de qualification
-          - FC : Formation continue
-        type: object
-        properties:
-          code:
-            title: "Code statut de l'élève"
-            description: "Code du statut sous lequel l'élève est scolarisé dans l'établissement."
-            type: string
-            example: 'ST'
-          libelle:
-            title: "Libellé du statut de l'élève"
-            description: "Libellé du statut sous lequel l'élève est scolarisé dans l'établissement."
-            type: string
-            example: 'SCOLAIRE'
+          Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
+
+          Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
+        type: array
+        items:
+          type: string
+        example: ["075"]
+      codes_bcn_regions:
+        title: "Codes BCN des régions académiques"
+        description: |+
+          Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
+
+          Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
+        type: array
+        items:
+          type: string
+        example: ["10"]
