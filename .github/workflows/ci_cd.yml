@@ -109,6 +109,7 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     services:
       postgres:
         image: postgres:latest
@@ -163,11 +164,13 @@ jobs:
       - name: Run tests
         run: COVERAGE=true bundle exec rspec
 
-      - uses: joshmfrankel/simplecov-check-action@main
+      - name: SimpleCov check
         if: "${{ github.actor != 'dependabot[bot]' }}"
+        uses: joshmfrankel/simplecov-check-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_suite_coverage: 95
+          coverage_path: siade/coverage/.last_run.json
 
   merge-with-master:
     name: Merge develop with master
