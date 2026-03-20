@@ -172,8 +172,8 @@ jobs:
           minimum_suite_coverage: 95
           coverage_path: siade/coverage/.last_run.json
 
-  merge-with-master:
-    name: Merge develop with master
+  merge-with-main:
+    name: Merge develop with main
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
     needs:
@@ -186,10 +186,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Force push develop to master
+      - name: Force push develop to main
         working-directory: .
         run: |
-          git push --force origin develop:master
+          git push --force origin develop:main
 
   continuous-deployment-staging:
     name: Continuous deployment on staging
@@ -202,7 +202,7 @@ jobs:
       - check-swagger
       - check-zeitwerk
       - tests
-      - merge-with-master
+      - merge-with-main
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
@@ -235,7 +235,7 @@ jobs:
       - check-swagger
       - check-zeitwerk
       - tests
-      - merge-with-master
+      - merge-with-main
       - continuous-deployment-staging
     strategy:
       matrix:
