@@ -8,12 +8,7 @@ defaults:
 
 name: CI - CD
 on:
-  pull_request:
-    types: [opened, reopened]
   push:
-    branches:
-      - develop
-      - master
 jobs:
   security:
     name: Brakeman
