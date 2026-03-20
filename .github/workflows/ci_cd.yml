@@ -25,6 +25,8 @@ jobs:
 
       - name: Brakeman
         uses: reviewdog/action-brakeman@v2
+        with:
+          workdir: siade
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
