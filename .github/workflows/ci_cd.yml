@@ -134,6 +134,7 @@ jobs:
 
     steps:
       - name: Dump Github context
+        working-directory: .
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
