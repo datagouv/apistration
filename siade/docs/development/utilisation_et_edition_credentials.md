@@ -4,12 +4,10 @@ Avant toute chose, lisez la partie sur la gestion des credentials chiffré dans
 la [doc officielle de
 Rails](https://edgeguides.rubyonrails.org/security.html#environmental-security)
 
-Les credentials sont séparés en 3 fichiers:
+Les credentials sont séparés en 2 fichiers:
 
-1. Pour les machines de production, qui regroupent les environnements
-   `production`, `staging` et `sandbox`
-2. Un fichier pour le développement
-3. Un fichier pour les tests
+1. Pour les machines de production, qui regroupent les environnements `production` et `sandbox`
+2. Pour le test et le développement, qui regroupent les environnements `test`, `development` et `staging`
 
 Le format des fichiers sont les suivants:
 
