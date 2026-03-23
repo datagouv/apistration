@@ -8,12 +8,7 @@ defaults:
 
 name: CI - CD
 on:
-  pull_request:
-    types: [opened, reopened]
   push:
-    branches:
-      - develop
-      - master
 jobs:
   security:
     name: Brakeman
@@ -30,6 +25,8 @@ jobs:
 
       - name: Brakeman
         uses: reviewdog/action-brakeman@v2
+        with:
+          workdir: siade
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -112,6 +109,7 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     services:
       postgres:
         image: postgres:latest
@@ -134,6 +132,7 @@ jobs:
 
     steps:
       - name: Dump Github context
+        working-directory: .
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
@@ -165,14 +164,16 @@ jobs:
       - name: Run tests
         run: COVERAGE=true bundle exec rspec
 
-      - uses: joshmfrankel/simplecov-check-action@main
+      - name: SimpleCov check
         if: "${{ github.actor != 'dependabot[bot]' }}"
+        uses: joshmfrankel/simplecov-check-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_suite_coverage: 95
+          coverage_path: siade/coverage/.last_run.json
 
-  merge-with-master:
-    name: Merge develop with master
+  merge-with-main:
+    name: Merge develop with main
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
     needs:
@@ -185,10 +186,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Force push develop to master
+      - name: Force push develop to main
         working-directory: .
         run: |
-          git push --force origin develop:master
+          git push --force origin develop:main
 
   continuous-deployment-staging:
     name: Continuous deployment on staging
@@ -201,7 +202,7 @@ jobs:
       - check-swagger
       - check-zeitwerk
       - tests
-      - merge-with-master
+      - merge-with-main
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
@@ -234,7 +235,7 @@ jobs:
       - check-swagger
       - check-zeitwerk
       - tests
-      - merge-with-master
+      - merge-with-main
       - continuous-deployment-staging
     strategy:
       matrix:
