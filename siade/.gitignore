@@ -67,10 +67,6 @@ builds/
 # production.key and sandbox.key in this repo are a symlink to master.key
 !/config/credentials/sandbox.key
 !/config/credentials/production.key
-!/config/credentials/development.key
-!/config/credentials/test.key
-
-config/credentials/staging.yml.enc
 
 **/.claude/settings.local.json
 
