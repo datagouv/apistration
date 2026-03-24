@@ -1,0 +1,33 @@
+---
+description: 'Étudiant 1234567890E inscrit (appel par INE), année scolaire 2023 à Paris'
+params:
+  ine: '1234567891E'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Bertillon",
+        "prenom": "Adele",
+        "date_naissance": "2001-01-04"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75020",
+          "etablissement_etudes": {
+            "uai": "0750106H",
+            "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
