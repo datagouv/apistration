@@ -18,7 +18,7 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siade_sandbox
+      DEPLOY_APP: siadelibre_sandbox
       DEPLOY_BRANCH: ${{ github.ref_name }}
     steps:
       - name: Download and run deploy script
