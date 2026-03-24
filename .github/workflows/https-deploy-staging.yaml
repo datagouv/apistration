@@ -18,7 +18,7 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siade_staging
+      DEPLOY_APP: siadelibre_staging
     steps:
       - name: Download and run deploy script
         shell: bash
