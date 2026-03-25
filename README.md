@@ -283,7 +283,7 @@ bundle exec ruby bin/reload_mock_backend.rb
 
 #### Dépendances
 
-- ruby 3.2.0
+- ruby 4.0.1
 
 ```sh
 bundle install
