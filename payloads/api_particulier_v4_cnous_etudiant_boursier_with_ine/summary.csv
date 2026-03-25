@@ -1,0 +1,67 @@
+Titre,Description,Paramètres,Status,Réponse
+,Boursier avec INE,"{""ine"":""1234567890A""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2023-09-01"",
+      ""duree"": 10
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Université Toulouse III - Paul Sabatier""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""4"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""etudiant@univ-tlse3.fr"",
+    ""identite"": {
+      ""nom"": ""LEROY"",
+      ""prenoms"": [
+        ""THOMAS""
+      ],
+      ""date_naissance"": ""2001-05-18"",
+      ""nom_commune_naissance"": ""Toulouse"",
+      ""sexe"": ""M""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier radié,"{""ine"":""0987654321B""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": false,
+      ""est_radie"": true,
+      ""date_radiation"": ""2023-12-01""
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2023-09-01"",
+      ""duree"": 3
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Bordeaux"",
+      ""nom_etablissement"": ""Université de Bordeaux""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""2"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""etudiant@u-bordeaux.fr"",
+    ""identite"": {
+      ""nom"": ""PETIT"",
+      ""prenoms"": [
+        ""CAMILLE""
+      ],
+      ""date_naissance"": ""2000-11-03"",
+      ""nom_commune_naissance"": ""Bordeaux"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

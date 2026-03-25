@@ -1,0 +1,25 @@
+---
+description: |-
+  Cas de test avec jeton FranceConnect.
+  Les données proviennent de nos propres jetons FranceConnect de test.
+params:
+  prenoms:
+  - "Georges"
+  nomNaissance: "CNAF"
+  nomUsage: "MARTIN"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "75002"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "ouvrant_droit",
+      "date_debut_droit": "2021-05-05"
+    },
+    "links": {},
+    "meta": {}
+  }

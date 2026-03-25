@@ -1917,10 +1917,8 @@
       "est_boursier": true,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2820,10 +2818,8 @@
       "est_boursier": true,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -2898,10 +2894,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3126,10 +3120,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 
@@ -3354,10 +3346,8 @@
       "est_boursier": false,
       "echelon_bourse": null
     },
-    "links": {
-    },
-    "meta": {
-    }
+    "links": {},
+    "meta": {}
   }
   ```
 

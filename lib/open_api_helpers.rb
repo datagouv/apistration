@@ -43,7 +43,7 @@ module OpenApiHelpers
     base_name = File.basename(operation_id)
     if base_name.start_with?('api_particulier_v2')
       'api_particulier_v2'
-    elsif base_name.start_with?('api_particulier_v3')
+    elsif base_name.match?(/\Aapi_particulier_v[3-9]/) || base_name.match?(/\Aapi_particulier_v\d{2,}/)
       'api_particulier'
     else
       'api_entreprise'

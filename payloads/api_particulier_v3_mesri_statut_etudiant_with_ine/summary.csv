@@ -255,6 +255,141 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,"Étudiant 1234567891A inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891A""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Simon"",
+      ""prenom"": ""Lilian"",
+      ""date_naissance"": ""2005-01-03""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-09-01"",
+        ""date_fin"": ""2026-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""31555"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0313124C"",
+          ""nom"": ""Université Toulouse Capitole""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Étudiant 1234567891B inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891B""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Bel aalia"",
+      ""prenom"": ""Sahra"",
+      ""date_naissance"": ""2005-01-03""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-09-01"",
+        ""date_fin"": ""2026-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""31555"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0313124C"",
+          ""nom"": ""Université Toulouse Capitole""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Étudiant 1234567891C inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891C""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Vaillancourt"",
+      ""prenom"": ""Gael"",
+      ""date_naissance"": ""1999-06-21""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-09-01"",
+        ""date_fin"": ""2026-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""31555"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0313124C"",
+          ""nom"": ""Université Toulouse Capitole""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Étudiant 1234567891D inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891D""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Puges"",
+      ""prenom"": ""Aurelie"",
+      ""date_naissance"": ""1999-06-21""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-09-01"",
+        ""date_fin"": ""2026-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""31555"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0313124C"",
+          ""nom"": ""Université Toulouse Capitole""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Étudiant 1234567890E inscrit (appel par INE), année scolaire 2023 à Paris","{""ine"":""1234567891E""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Bertillon"",
+      ""prenom"": ""Adele"",
+      ""date_naissance"": ""2001-01-04""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-09-01"",
+        ""date_fin"": ""2026-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75020"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0750106H"",
+          ""nom"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Étudiant 655888578AE inscrit (appel par INE),"{""ine"":""655888578AE""}",200,"{
   ""data"": {
     ""identite"": {

@@ -51,3 +51,276 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,"Identifiant 123456A, inscrite, toulouse","{""identifiant"":""123456A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123456A"",
+    ""identite"": {
+      ""civilite"": ""MME"",
+      ""nom_naissance"": ""Courtet"",
+      ""nom_usage"": null,
+      ""prenom"": ""Martine"",
+      ""sexe"": ""Féminin"",
+      ""date_naissance"": ""1990-01-06""
+    },
+    ""contact"": {
+      ""email"": ""martine.courtet@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Courtet"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2024-01-01"",
+      ""date_fin"": null,
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Identifiant 123457A, inscrite, toulouse 2025","{""identifiant"":""123457A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123457A"",
+    ""identite"": {
+      ""civilite"": ""MME"",
+      ""nom_naissance"": ""Desnoyer"",
+      ""nom_usage"": null,
+      ""prenom"": ""Daniel"",
+      ""sexe"": ""Masculin"",
+      ""date_naissance"": ""1989-01-18""
+    },
+    ""contact"": {
+      ""email"": ""daniel.desnoyers@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Desnoyer"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2025-09-01"",
+      ""date_fin"": null,
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Identifiant 123458A, inscrite, toulouse, 2025","{""identifiant"":""123458A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123458A"",
+    ""identite"": {
+      ""civilite"": ""MME"",
+      ""nom_naissance"": ""Gallois"",
+      ""nom_usage"": null,
+      ""prenom"": ""Anais"",
+      ""sexe"": ""Féminin"",
+      ""date_naissance"": ""1989-01-18""
+    },
+    ""contact"": {
+      ""email"": ""anais.gallois@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Gallois"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2025-09-01"",
+      ""date_fin"": null,
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Identifiant 123459A, inscrite, toulouse, 2025","{""identifiant"":""123459A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123459A"",
+    ""identite"": {
+      ""civilite"": ""M."",
+      ""nom_naissance"": ""Genest"",
+      ""nom_usage"": null,
+      ""prenom"": ""Ludovic"",
+      ""sexe"": ""Masculin"",
+      ""date_naissance"": ""1992-08-15""
+    },
+    ""contact"": {
+      ""email"": ""ludovic.genest@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Genest"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2025-09-01"",
+      ""date_fin"": null,
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Identifiant 123460A, inscrite, toulouse, 2025","{""identifiant"":""123460A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123460A"",
+    ""identite"": {
+      ""civilite"": ""MME"",
+      ""nom_naissance"": ""Vega"",
+      ""nom_usage"": null,
+      ""prenom"": ""Tiphaine"",
+      ""sexe"": ""Féminin"",
+      ""date_naissance"": ""1992-08-15""
+    },
+    ""contact"": {
+      ""email"": ""tifaine.vega@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Vega"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2025-09-01"",
+      ""date_fin"": null,
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Identifiant 123461A, desinscrit, toulouse, 2025","{""identifiant"":""123461A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123461A"",
+    ""identite"": {
+      ""civilite"": ""M."",
+      ""nom_naissance"": ""Mallette"",
+      ""nom_usage"": null,
+      ""prenom"": ""Alex"",
+      ""sexe"": ""Féminin"",
+      ""date_naissance"": ""1992-08-15""
+    },
+    ""contact"": {
+      ""email"": ""alex.mallette@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Vega"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2024-09-01"",
+      ""date_fin"": ""2025-09-01"",
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Identifiant 123462A, desinscrit, toulouse, 2025","{""identifiant"":""123462A""}",200,"{
+  ""data"": {
+    ""identifiant"": ""123462A"",
+    ""identite"": {
+      ""civilite"": ""M."",
+      ""nom_naissance"": ""Fornaro"",
+      ""nom_usage"": null,
+      ""prenom"": ""Yoann"",
+      ""sexe"": ""Masculin"",
+      ""date_naissance"": ""1992-08-15""
+    },
+    ""contact"": {
+      ""email"": ""yoann.fornano@fake.fr"",
+      ""telephone"": ""0601020304"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""31555"",
+      ""code_postal"": ""31400"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""Vega"",
+      ""ligne_voie"": ""11 Rue Capus"",
+      ""localite"": ""31400 TOULOUSE""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2024-09-01"",
+      ""date_fin"": ""2025-09-01"",
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

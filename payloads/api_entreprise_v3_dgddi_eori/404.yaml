@@ -1,0 +1,19 @@
+---
+description: 'EORI non trouvé'
+params:
+  siret_or_eori: '00000000000000'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "33003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret ou le numéro EORI indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "source": null,
+        "meta": {
+          "provider": "Douanes"
+        }
+      }
+    ]
+  }

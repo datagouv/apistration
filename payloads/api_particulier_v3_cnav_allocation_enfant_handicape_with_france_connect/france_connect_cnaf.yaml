@@ -1,0 +1,26 @@
+---
+description: |-
+  Cas de test avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+params:
+  prenoms:
+  - 'Angela'
+  - 'Claire'
+  - 'Louise'
+  nomNaissance: "DUBOIS"
+  anneeDateNaissance: 1962
+  moisDateNaissance: 8
+  jourDateNaissance: 24
+  sexeEtatCivil: "F"
+  codeInseeLieuDeNaissance: "75107"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2023-02-01"
+    },
+    "links": {},
+    "meta": {}
+  }

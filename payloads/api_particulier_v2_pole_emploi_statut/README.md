@@ -269,7 +269,7 @@
 
   ```json
   {
-    "identifiant": "1234567"
+    "identifiant": "123457A"
   }
   ```
 
@@ -317,7 +317,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'identifiant=1234567' \
+    -G -d 'identifiant=123457A' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/situations-pole-emploi"
   ```
 

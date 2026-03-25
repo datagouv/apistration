@@ -1,0 +1,46 @@
+---
+description: 'Non boursier'
+params:
+  nomNaissance: 'Durand'
+  prenoms:
+    - 'Sophie'
+  anneeDateNaissance: 2000
+  moisDateNaissance: 3
+  jourDateNaissance: 25
+  codeCogInseeCommuneNaissance: '69123'
+  sexeEtatCivil: 'F'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": false,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2021-09-01",
+        "duree": 0
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Lyon",
+        "nom_etablissement": "Université Claude Bernard Lyon 1"
+      },
+      "echelon_bourse": {
+        "echelon": "0bis",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "sophie.durand@univ-lyon1.fr",
+      "identite": {
+        "nom": "DURAND",
+        "prenoms": [
+          "SOPHIE"
+        ],
+        "date_naissance": "2000-03-25",
+        "nom_commune_naissance": "Lyon",
+        "sexe": "F"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

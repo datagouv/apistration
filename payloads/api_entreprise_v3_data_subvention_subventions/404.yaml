@@ -1,0 +1,19 @@
+---
+description: 'Association non trouvée'
+params:
+  siren_or_siret_or_rna: 'W000000000'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "28003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "source": null,
+        "meta": {
+          "provider": "Data Subvention"
+        }
+      }
+    ]
+  }
