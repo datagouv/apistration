@@ -1,0 +1,162 @@
+# Liens capitalistiques
+* [200.yaml](200.yaml)
+
+  Status `200`
+
+  Liens capitalistiques trouvés
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren": "552049447",
+    "year": 2022
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "capital": {
+        "actionnaires": [
+          {
+            "type": "personne_morale",
+            "pourcentage": 100.0,
+            "nombre_parts": 1000,
+            "personne_physique_attributes": {
+              "civilite": null,
+              "nom_patronymique_et_prenoms": null,
+              "nom_marital": null,
+              "date_naissance": {
+                "annee": null,
+                "mois": null
+              }
+            },
+            "personne_morale_attributes": {
+              "siren": "519243024",
+              "denomination": "SNCF PARTICIPATIONS",
+              "complement_denomination": null,
+              "forme_juridique": "SAS"
+            },
+            "adresse": {
+              "numero": "0002",
+              "voie": "PLACE AUX ETOILES",
+              "lieu_dit_hameau": null,
+              "code_postal": "93200",
+              "ville": "SAINT-DENIS",
+              "pays": "FR"
+            }
+          }
+        ],
+        "repartition": {
+          "personnes_physiques": {
+            "total_actions": null,
+            "nombre": null
+          },
+          "personnes_morales": {
+            "total_actions": 1000,
+            "nombre": 1
+          }
+        },
+        "depose_neant": false
+      },
+      "participations": {
+        "filiales": [
+          {
+            "siren": "130007669",
+            "denomination": "ANSII",
+            "complement_denomination": null,
+            "forme_juridique": "SA",
+            "pourcentage_detention": 42.0,
+            "adresse": {
+              "numero": "0051 BOULEVARD DE LA TOUR-MAUBOURG",
+              "voie": null,
+              "lieu_dit_hameau": null,
+              "code_postal": "75007",
+              "ville": "PARIS",
+              "pays": "FR"
+            }
+          }
+        ],
+        "nombre_filiales": 1,
+        "depose_neant": false
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/552049447/liens_capitalistiques/2022"
+  ```
+
+  </p>
+  </details>
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Entreprise non trouvée
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren": "000000000",
+    "year": 2022
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "03003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "source": null,
+        "meta": {
+          "provider": "DGFIP - Adélie"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000000/liens_capitalistiques/2022"
+  ```
+
+  </p>
+  </details>

@@ -180,31 +180,3 @@ Identité FranceConnect: Jean SERVICE CIVIQUE (token service_civique).","{""pren
   ""links"": {},
   ""meta"": {}
 }"
-,"## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (FranceConnect)
-
-Ce cas représente une personne actuellement engagée dans un service civique.
-Le contrat est en cours auprès de la DINUM.
-Identité FranceConnect: Angela DUBOIS.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24}",200,"{
-  ""data"": {
-    ""statut_actuel"": {
-      ""contrat_trouve"": true,
-      ""organisme_accueil"": {
-        ""siret"": ""13002526500013"",
-        ""raison_sociale"": ""DIRECTION INTERMINISTERIELLE DU NUMERIQUE""
-      },
-      ""date_debut_contrat"": ""2024-09-01"",
-      ""date_fin_contrat"": ""2025-06-30""
-    },
-    ""statut_passe"": {
-      ""contrat_trouve"": false,
-      ""organisme_accueil"": {
-        ""siret"": null,
-        ""raison_sociale"": null
-      },
-      ""date_debut_contrat"": null,
-      ""date_fin_contrat"": null
-    }
-  },
-  ""links"": {},
-  ""meta"": {}
-}"

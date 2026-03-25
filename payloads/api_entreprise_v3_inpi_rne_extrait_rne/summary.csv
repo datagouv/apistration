@@ -1,0 +1,110 @@
+Titre,Description,Paramètres,Status,Réponse
+,Extrait RNE trouvé,"{""siren"":""552049447""}",200,"{
+  ""data"": {
+    ""document_url"": ""https://data.inpi.fr/export/companies?format=pdf&ids=[\""552049447\""]"",
+    ""identite_entreprise"": {
+      ""denomination"": ""SOCIETE NATIONALE SNCF"",
+      ""nom"": null,
+      ""prenoms"": [],
+      ""siren"": ""552049447"",
+      ""date_immatriculation_rne"": ""1983-01-01"",
+      ""date_debut_activite"": ""1983-01-15"",
+      ""detail_cessation"": null,
+      ""dissolution"": {
+        ""date"": null,
+        ""poursuite_activite"": null,
+        ""avec_liquidation"": null
+      },
+      ""date_fin_personne"": ""2117-03-14"",
+      ""date_cloture_exercice"": ""12-31"",
+      ""date_premiere_cloture_exercice"": ""1983-12-31"",
+      ""nature_entreprise"": ""COMMERCIALE"",
+      ""forme_juridique"": {
+        ""code"": ""5710"",
+        ""libelle"": ""SAS, société par actions simplifiée""
+      },
+      ""associe_unique"": false,
+      ""activite_principales_objet_social"": ""Transport ferroviaire interurbain de voyageurs"",
+      ""code_APE"": {
+        ""code"": ""4910Z"",
+        ""libelle"": ""Transport ferroviaire interurbain de voyageurs""
+      },
+      ""code_APRM"": {
+        ""code"": null,
+        ""libelle"": null
+      },
+      ""capital_social"": {
+        ""montant"": 50000.0,
+        ""devise"": ""EUR""
+      },
+      ""adresse_siege_social"": {
+        ""voie"": ""2 PLACE AUX ETOILES"",
+        ""code_postal"": ""93200"",
+        ""commune"": ""SAINT-DENIS"",
+        ""pays"": ""FRANCE"",
+        ""complement"": null
+      }
+    },
+    ""dirigeants_et_associes"": [
+      {
+        ""qualite"": ""Président"",
+        ""nom"": ""DUPONT"",
+        ""prenom"": ""JEAN"",
+        ""date_naissance"": ""07-1985"",
+        ""commune_residence"": ""Paris""
+      }
+    ],
+    ""etablissements"": [
+      {
+        ""type_etablissement"": ""Siège et principal"",
+        ""date_debut_activite"": ""1983-01-15"",
+        ""siret"": ""55204944700001"",
+        ""code_APE"": {
+          ""code"": ""4910Z"",
+          ""libelle"": ""Transport ferroviaire interurbain de voyageurs""
+        },
+        ""code_APRM"": {
+          ""code"": null,
+          ""libelle"": null
+        },
+        ""nature_etablissement"": ""COMMERCIALE"",
+        ""activite_principale"": ""Transport ferroviaire interurbain de voyageurs"",
+        ""autre_activite"": null,
+        ""adresse"": {
+          ""voie"": ""2 PLACE AUX ETOILES"",
+          ""code_postal"": ""93200"",
+          ""commune"": ""SAINT-DENIS"",
+          ""pays"": ""FRANCE"",
+          ""complement"": null
+        },
+        ""statut"": ""actif""
+      }
+    ],
+    ""diffusion_commerciale"": true,
+    ""diffusion_insee"": true,
+    ""etablissements_fermes_total"": 0,
+    ""observations"": [
+      {
+        ""fournisseur"": ""rcs"",
+        ""numero"": ""2023-05-20-001"",
+        ""date"": ""2023-05-20"",
+        ""texte"": ""Augmentation de capital de 50000 à 75000 EUR""
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Entreprise non trouvée au RNE,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""07003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""INPI""
+      }
+    }
+  ]
+}"

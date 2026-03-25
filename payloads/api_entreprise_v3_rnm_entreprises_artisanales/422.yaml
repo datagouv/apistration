@@ -1,0 +1,19 @@
+---
+description: 'Paramètres invalides'
+params:
+  siren: 'invalid'
+status: 422
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "31001",
+        "title": "Paramètre invalide",
+        "detail": "Le paramètre siren n'est pas au bon format.",
+        "source": null,
+        "meta": {
+          "provider": "CMA France"
+        }
+      }
+    ]
+  }

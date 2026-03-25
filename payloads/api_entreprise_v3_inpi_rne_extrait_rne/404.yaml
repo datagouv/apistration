@@ -1,0 +1,19 @@
+---
+description: 'Entreprise non trouvée au RNE'
+params:
+  siren: '000000000'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "07003",
+        "title": "Entité non trouvée",
+        "detail": "Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "source": null,
+        "meta": {
+          "provider": "INPI"
+        }
+      }
+    ]
+  }

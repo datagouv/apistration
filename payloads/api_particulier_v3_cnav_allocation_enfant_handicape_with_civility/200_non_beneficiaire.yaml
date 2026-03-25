@@ -1,0 +1,23 @@
+---
+description: |-
+  ## Non bénéficiaire
+params:
+  nomNaissance: 'BERNARD'
+  prenoms:
+  - 'LUCAS'
+  anneeDateNaissance: 2010
+  moisDateNaissance: 1
+  jourDateNaissance: 5
+  codeCogInseeCommuneNaissance: '13055'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "non_beneficiaire",
+      "date_debut_droit": null
+    },
+    "links": {},
+    "meta": {}
+  }

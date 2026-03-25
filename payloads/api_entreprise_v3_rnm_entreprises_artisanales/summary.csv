@@ -1,0 +1,35 @@
+Titre,Description,Paramètres,Status,Réponse
+,Entreprise artisanale trouvée,"{""siren"":""552049447""}",200,"{
+  ""data"": {
+    ""modalite_exercice"": ""P"",
+    ""non_sedentaire"": ""0""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Entreprise non trouvée au RNM,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""31003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CMA France""
+      }
+    }
+  ]
+}"
+,Paramètres invalides,"{""siren"":""invalid""}",422,"{
+  ""errors"": [
+    {
+      ""code"": ""31001"",
+      ""title"": ""Paramètre invalide"",
+      ""detail"": ""Le paramètre siren n'est pas au bon format."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CMA France""
+      }
+    }
+  ]
+}"

@@ -1,0 +1,42 @@
+Titre,Description,Paramètres,Status,Réponse
+,Association trouvée,"{""siret_or_rna"":""W751234567""}",200,"{
+  ""data"": {
+    ""rna_id"": ""W751234567"",
+    ""titre"": ""ASSOCIATION POUR LE DEVELOPPEMENT DU NUMERIQUE"",
+    ""objet"": ""Promotion et développement des usages du numérique"",
+    ""siret"": null,
+    ""siret_siege_social"": ""44306184100028"",
+    ""date_creation"": ""2001-05-15"",
+    ""date_declaration"": ""2023-01-10"",
+    ""date_publication"": null,
+    ""date_dissolution"": null,
+    ""adresse_siege"": {
+      ""complement"": null,
+      ""numero_voie"": ""20"",
+      ""type_voie"": ""Avenue"",
+      ""libelle_voie"": ""de Ségur"",
+      ""distribution"": null,
+      ""code_insee"": ""75107"",
+      ""code_postal"": ""75007"",
+      ""commune"": ""Paris""
+    },
+    ""etat"": true,
+    ""groupement"": null,
+    ""mise_a_jour"": ""2023-01-10""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Association non trouvée,"{""siret_or_rna"":""W000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""24003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""Ministère de l'Intérieur""
+      }
+    }
+  ]
+}"

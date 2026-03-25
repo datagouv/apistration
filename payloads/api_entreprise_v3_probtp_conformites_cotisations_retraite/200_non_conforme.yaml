@@ -1,0 +1,13 @@
+---
+description: 'Établissement non conforme'
+params:
+  siret: '55204944776279'
+status: 200
+payload: |-
+  {
+    "data": {
+      "eligible": false
+    },
+    "links": {},
+    "meta": {}
+  }

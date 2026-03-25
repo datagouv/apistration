@@ -1,0 +1,21 @@
+Titre,Description,Paramètres,Status,Réponse
+,Numéro TVA trouvé,"{""siren"":""552049447""}",200,"{
+  ""data"": {
+    ""tva_number"": ""FR82552049447""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Entreprise non trouvée,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""32003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""Commission Européenne""
+      }
+    }
+  ]
+}"

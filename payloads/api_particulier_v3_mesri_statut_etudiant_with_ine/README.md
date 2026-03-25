@@ -635,6 +635,331 @@
 
   </p>
   </details>
+* [ine_1234567891A_2025_toulouse.yaml](ine_1234567891A_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891A inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Simon",
+        "prenom": "Lilian",
+        "date_naissance": "2005-01-03"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "31555",
+          "etablissement_etudes": {
+            "uai": "0313124C",
+            "nom": "Université Toulouse Capitole"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567891A' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891B_2025_toulouse.yaml](ine_1234567891B_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891B inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891B"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Bel aalia",
+        "prenom": "Sahra",
+        "date_naissance": "2005-01-03"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "31555",
+          "etablissement_etudes": {
+            "uai": "0313124C",
+            "nom": "Université Toulouse Capitole"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567891B' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891C_2025_toulouse.yaml](ine_1234567891C_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891C inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891C"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Vaillancourt",
+        "prenom": "Gael",
+        "date_naissance": "1999-06-21"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "31555",
+          "etablissement_etudes": {
+            "uai": "0313124C",
+            "nom": "Université Toulouse Capitole"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567891C' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891D_2025_toulouse.yaml](ine_1234567891D_2025_toulouse.yaml)
+
+  Status `200`
+
+  Étudiant 1234567891D inscrit (appel par INE), année scolaire 2025 à Toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891D"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Puges",
+        "prenom": "Aurelie",
+        "date_naissance": "1999-06-21"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "31555",
+          "etablissement_etudes": {
+            "uai": "0313124C",
+            "nom": "Université Toulouse Capitole"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567891D' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891E_2025_paris.yaml](ine_1234567891E_2025_paris.yaml)
+
+  Status `200`
+
+  Étudiant 1234567890E inscrit (appel par INE), année scolaire 2023 à Paris
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891E"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Bertillon",
+        "prenom": "Adele",
+        "date_naissance": "2001-01-04"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75020",
+          "etablissement_etudes": {
+            "uai": "0750106H",
+            "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567891E' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
+  ```
+
+  </p>
+  </details>
 * [ine_655888578AE.yaml](ine_655888578AE.yaml)
 
   Status `200`

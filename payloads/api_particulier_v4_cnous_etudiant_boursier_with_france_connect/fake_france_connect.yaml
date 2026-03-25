@@ -1,0 +1,40 @@
+---
+description: |-
+  Cas de test avec jeton FranceConnect de test - Non boursier
+params:
+  prenoms:
+  - "Georges"
+  nomNaissance: "CNAF"
+  nomUsage: "MARTIN"
+  anneeDateNaissance: 2002
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "75002"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": false,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2021-09-01",
+        "duree": 0
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Marseille",
+        "nom_etablissement": "Aix-Marseille Université"
+      },
+      "echelon_bourse": {
+        "echelon": "0bis",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "georges.martin@univ-amu.fr"
+    },
+    "links": {},
+    "meta": {}
+  }
