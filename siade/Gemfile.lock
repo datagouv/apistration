@@ -59,7 +59,7 @@ GEM
     attr_extras (7.1.0)
     base64 (0.3.0)
     benchmark-ips (2.14.0)
-    bigdecimal (4.0.1)
+    bigdecimal (4.1.0)
     brakeman (8.0.4)
       racc
     builder (3.3.0)
@@ -144,7 +144,7 @@ GEM
     get_process_mem (1.0.0)
       bigdecimal (>= 2.0)
       ffi (~> 1.0)
-    gpgme (2.0.25)
+    gpgme (2.0.26)
       mini_portile2 (~> 2.7)
     guard (2.20.1)
       formatador (>= 0.2.4)
@@ -191,7 +191,7 @@ GEM
     jsonapi-renderer (0.2.2)
     jwe (1.1.1)
       base64
-    jwt (2.10.2)
+    jwt (3.1.2)
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -209,7 +209,7 @@ GEM
       nokogiri (>= 1.12.0)
     lumberjack (1.4.2)
     marcel (1.1.0)
-    mcp (0.8.0)
+    mcp (0.10.0)
       json-schema (>= 4.1)
     memory_profiler (1.1.0)
     method_source (1.1.0)
@@ -231,21 +231,21 @@ GEM
       uri (>= 0.11.1)
     netrc (0.11.0)
     nio4r (2.7.5)
-    nokogiri (1.19.1-aarch64-linux-gnu)
+    nokogiri (1.19.2-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.1-aarch64-linux-musl)
+    nokogiri (1.19.2-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.1-arm-linux-gnu)
+    nokogiri (1.19.2-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.1-arm-linux-musl)
+    nokogiri (1.19.2-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.1-arm64-darwin)
+    nokogiri (1.19.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.1-x86_64-darwin)
+    nokogiri (1.19.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.1-x86_64-linux-gnu)
+    nokogiri (1.19.2-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.1-x86_64-linux-musl)
+    nokogiri (1.19.2-x86_64-linux-musl)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -441,10 +441,10 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.4.1)
-    sentry-rails (6.4.1)
+    sentry-rails (6.5.0)
       railties (>= 5.2.0)
-      sentry-ruby (~> 6.4.1)
-    sentry-ruby (6.4.1)
+      sentry-ruby (~> 6.5.0)
+    sentry-ruby (6.5.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
@@ -530,7 +530,7 @@ DEPENDENCIES
   interactor
   json-schema
   jwe
-  jwt (~> 2.10)
+  jwt (~> 3.1)
   lockbox
   logstasher
   marcel
