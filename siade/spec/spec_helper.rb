@@ -89,15 +89,8 @@ RSpec.configure do |config|
   #     end
   config.infer_spec_type_from_file_location!
 
-  # Defer garbage collection to prevent it from running randomly as usual and slowing testing
   config.before(:all) do
-    DeferredGarbageCollection.start
-
     Rails.cache.clear
-  end
-
-  config.after(:all) do
-    DeferredGarbageCollection.reconsider
   end
 
   config.include ResponsesHelper, type: :controller
