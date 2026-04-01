@@ -163,6 +163,10 @@ RSpec.configure do |config|
         'header' => 'value'
       })
     end
+
+    allow(DataEncryptor).to receive(:new).and_return(
+      instance_double(DataEncryptor, encrypt: 'stubbed_encrypted_data')
+    )
   end
 
   config.after(type: :swagger) do |example|

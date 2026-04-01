@@ -41,6 +41,10 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateIdentityMatching do
       allow(IdentityMatcher).to receive(:call)
         .with(candidate_identity: anything, reference_identity: anything)
         .and_return(failed_context)
+
+      allow(DataEncryptor).to receive(:new).and_return(
+        instance_double(DataEncryptor, encrypt: 'stubbed_encrypted_data')
+      )
     end
 
     it { is_expected.to be_a_failure }
