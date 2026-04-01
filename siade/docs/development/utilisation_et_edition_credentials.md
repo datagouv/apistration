@@ -4,48 +4,38 @@ Avant toute chose, lisez la partie sur la gestion des credentials chiffré dans
 la [doc officielle de
 Rails](https://edgeguides.rubyonrails.org/security.html#environmental-security)
 
-Les credentials sont séparés en 2 fichiers:
+## Production et sandbox
 
-1. Pour les machines de production, qui regroupent les environnements `production` et `sandbox`
-2. Pour le test et le développement, qui regroupent les environnements `test`, `development` et `staging`
+Les credentials de production et sandbox sont dans un fichier unique géré dans
+le dépôt `very_ansible`.
 
-Le format des fichiers sont les suivants:
+## Staging
 
-```yaml
-# environment == production, sandbox, development ...
-environment:
-  key: value
-```
+Le staging a son propre fichier de credentials, également géré dans
+`very_ansible`.
 
-En effet étant donné que les apps partagent pas mal de credentials en commun,
-c'est une manière simple de partager les données entre des environments
-similaire.
+## Développement et test
 
-Nous avons donc pour les machines de production le fichier
-`config/credentials.yml.enc`, dont la master key (à placer dans
-`config/master.key`) est chiffré dans le dépôt very_ansible
+Il n'y a pas de fichier de credentials pour dev/test. Le dossier
+`config/credentials/` a été supprimé du dépôt.
 
-Vous pouvez utiliser le script `./bin/retrieve_master_key.sh` pour importer
-automatiquement la clé.
+En dev/test, `Siade.credentials[:une_cle]` retourne une valeur générée
+automatiquement selon le suffixe de la clé :
 
-Pour éditer les credentials des machines de production:
+- Clés contenant `_url` ou terminant par `_domain` → `https://test.host/<nom_cle>`
+- Toutes les autres clés → `test_<nom_cle>`
 
-```sh
-rails credentials:edit
-```
+Les clés nécessitant une valeur spécifique (clés RSA, chemins SSL, valeurs
+correspondant aux cassettes VCR, etc.) sont définies dans
+`spec/support/helpers/test_credentials_setup.rb`.
 
-Pour test et development, il y a en réalité 1 seul fichier et un lien symbolique
-de development vers test. A noter que la master key est ici versionnée (car les
-données sont non sensibles)
+### Ajouter une nouvelle clé de credential
 
-Pour éditer les credentials de dev/test:
-
-```sh
-rails credentials:edit --environment development
-```
-
-**Il ne faut absolument pas mettre de véritable credentials dans ce fichier,
-uniquement dans ceux de productions**
+1. Ajouter la vraie valeur dans les credentials de production (via `very_ansible`)
+2. Si la valeur générée automatiquement ne convient pas pour les tests, ajouter
+   une valeur spécifique dans `spec/support/helpers/test_credentials_setup.rb`
+3. Si un test spécifique a besoin d'une valeur particulière, utiliser le helper
+   `stub_credential(:ma_cle, 'ma_valeur')` dans le test
 
 ## D'où viennent les credentials
 

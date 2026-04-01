@@ -1,7 +1,8 @@
 # :nocov:
-if (Rails.env.test? || Rails.env.development?) && ENV['SKIP_MOCKS'].blank?
+if Rails.env.local? && ENV['SKIP_MOCKS'].blank?
   Fog.mock!
+  Fog.credentials = { openstack_auth_url: 'http://localhost' }
+else
+  Fog.credentials = Siade.credentials[:fog_credentials]
 end
-
-Fog.credentials = Siade.credentials[:fog_credentials]
 # :nocov:

@@ -10,7 +10,7 @@ module ProviderStubs::BanqueDeFrance
   end
 
   def mock_banque_de_france(data)
-    stub_request(:get, /banque-france.fr/).and_return(
+    stub_request(:get, /banque_de_france/).and_return(
       status: 200,
       body: data
     )

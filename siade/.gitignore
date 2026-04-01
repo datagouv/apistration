@@ -60,13 +60,9 @@
 vendor/bundle
 builds/
 
-/config/credentials/*.key
-
-/config/master.key
-
-# production.key and sandbox.key in this repo are a symlink to master.key
-!/config/credentials/sandbox.key
-!/config/credentials/production.key
+config/credentials/
+config/credentials.yml.enc
+config/master.key
 
 **/.claude/settings.local.json
 

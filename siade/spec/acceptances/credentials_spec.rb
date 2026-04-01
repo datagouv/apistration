@@ -1,22 +1,18 @@
 RSpec.describe Siade, 'credentials' do
   describe '.credentials' do
-    subject(:credential) { described_class.credentials[key] }
+    context 'when key does not exist and is a url' do
+      subject(:credential) { described_class.credentials[:lolilol_url] }
 
-    context 'when key exists' do
-      let(:key) { :jwt_hash_secret }
-
-      it 'renders value' do
-        expect(credential).to eq('this_is_a_valid_jwt_hash_for_spec')
+      it 'returns a generated url' do
+        expect(credential).to eq('https://lolilol_url.gouv.fr')
       end
     end
 
     context 'when key does not exist' do
-      let(:key) { :lolilol }
+      subject(:credential) { described_class.credentials[:lolilol] }
 
-      it 'raises KeyError error' do
-        expect {
-          credential
-        }.to raise_error(KeyError)
+      it 'returns the key itself' do
+        expect(credential).to eq('lolilol')
       end
     end
   end

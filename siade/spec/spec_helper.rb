@@ -34,6 +34,12 @@ RSpec.configure do |config|
   end
 
   config.include(SelfHostedDoc, :self_hosted_doc)
+  config.before do
+    allow_any_instance_of(Documents::Upload).to receive(:document_public_url) do |upload|
+      url = upload.send(:document_url)
+      url.sub(%r{https?.*?/AUTH_[[:alnum:]]*/}, 'https://my_example_storage.fr/')
+    end
+  end
   config.default_formatter = config.files_to_run.one? ? 'doc' : 'progress'
 
   # TODO: move this conf somewhere else
@@ -43,6 +49,19 @@ RSpec.configure do |config|
       allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
       allow_any_instance_of(PROBTP::ConformitesCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
     end
+  end
+
+  config.before(:suite) do
+    rsa_key = OpenSSL::PKey::RSA.generate(2048)
+
+    Siade.credentials[:jwt_hash_algo] = 'HS256'
+    Siade.credentials[:france_connect_v2_signing_algorithm] = 'prime256v1'
+    Siade.credentials[:france_connect_v2_decipher_algorithm] = 'ES256'
+    Siade.credentials[:france_connect_v2_rsa_private] = rsa_key.to_pem
+    Siade.credentials[:france_connect_v2_rsa_public] = rsa_key.public_key.to_pem
+    Siade.credentials[:ssl_wildcard_certif_crt_path] = Rails.root.join('spec/fixtures/ssl/certificat.crt').to_s
+    Siade.credentials[:ssl_wildcard_certif_key_path] = Rails.root.join('spec/fixtures/ssl/certificat.key').to_s
+    Siade.credentials[:men_scolarites_client_id] = 'api-particuliers-tests'
   end
 
   config.before(:all) do
