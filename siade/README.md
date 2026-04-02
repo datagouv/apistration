@@ -1,6 +1,6 @@
 # SIADE : Système d'Information des API de l'État [![CI](https://github.com/etalab/siade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/etalab/siade/actions/workflows/ci.yml)
 
-API Manager pour API Entreprise et API Particulier
+API pour API Entreprise et API Particulier
 
 ## Requirements
 
