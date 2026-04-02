@@ -214,7 +214,7 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_${{ matrix.deploy_env }}
+      DEPLOY_APP: siadelibre_staging
     steps:
       - name: Download and run deploy script
         shell: bash
@@ -240,7 +240,6 @@ jobs:
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
-        deploy_env: [production]
       fail-fast: false
     environment: production
     env:
@@ -249,7 +248,7 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_${{ matrix.deploy_env }}
+      DEPLOY_APP: siadelibre_production
     steps:
       - name: Download and run deploy script
         shell: bash
