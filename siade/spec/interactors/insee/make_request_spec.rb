@@ -7,6 +7,11 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
   let(:insee_sirene_url) { Siade.credentials[:insee_sirene_url] }
   let(:insee_oauth_url) { Siade.credentials[:insee_oauth_url] }
 
+  def jwt_token_with_pwd_changed_time(time_string)
+    payload = { 'pwdChangedTime' => time_string }
+    JWT.encode(payload, nil, 'none')
+  end
+
   describe 'retry on 401 token expired' do
     before do
       EncryptedCache.write('insee/authenticate', token)
@@ -220,6 +225,110 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
 
         expect(WebMock).to have_requested(:get, /#{insee_sirene_url}/)
           .with(headers: { 'Authorization' => "Bearer #{token_from_other_thread}" })
+      end
+    end
+  end
+
+  describe 'password rotation' do
+    let(:renew_url) { %r{#{insee_sirene_url}/api-sirene/prive/3.11/renouvellement} }
+
+    before do
+      EncryptedCache.write('insee/authenticate', token)
+    end
+
+    after do
+      Timecop.return
+      RedisService.new.del(INSEE::MakeRequest::ROTATION_LOCK_KEY)
+    end
+
+    context 'when pwdChangedTime is in a previous bimester' do
+      let(:token) { jwt_token_with_pwd_changed_time('2026-08-15T10:00:00Z') }
+
+      before do
+        Timecop.freeze(Date.new(2026, 9, 15))
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+
+        stub_request(:post, renew_url)
+          .to_return(status: 200, body: '{}')
+      end
+
+      it 'calls the renewal API' do
+        make_request
+
+        expect(WebMock).to have_requested(:post, renew_url)
+      end
+
+      it 'sends old and new passwords' do
+        make_request
+
+        expect(WebMock).to have_requested(:post, renew_url)
+          .with(body: {
+            oldPassword: INSEE::PasswordDerivation.previous_password,
+            newPassword: INSEE::PasswordDerivation.current_password
+          }.to_json)
+      end
+
+    end
+
+    context 'when pwdChangedTime is in the current bimester' do
+      let(:token) { jwt_token_with_pwd_changed_time('2026-09-10T10:00:00Z') }
+
+      before do
+        Timecop.freeze(Date.new(2026, 9, 15))
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+      end
+
+      it 'does not call the renewal API' do
+        make_request
+
+        expect(WebMock).not_to have_requested(:post, renew_url)
+      end
+    end
+
+    context 'when the token is not a valid JWT' do
+      let(:token) { 'not-a-jwt' }
+
+      before do
+        stub_request(:get, /#{insee_sirene_url}/)
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+      end
+
+      it 'does not attempt rotation' do
+        make_request
+
+        expect(WebMock).not_to have_requested(:post, renew_url)
+      end
+    end
+
+    context 'when the rotation lock is already held' do
+      let(:token) { jwt_token_with_pwd_changed_time('2026-08-15T10:00:00Z') }
+
+      before do
+        Timecop.freeze(Date.new(2026, 9, 15))
+
+        RedisService.new.set(
+          INSEE::MakeRequest::ROTATION_LOCK_KEY,
+          true,
+          nx: true,
+          ex: INSEE::MakeRequest::ROTATION_LOCK_TTL
+        )
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+      end
+
+      after do
+        RedisService.new.del(INSEE::MakeRequest::ROTATION_LOCK_KEY)
+      end
+
+      it 'does not call the renewal API' do
+        make_request
+
+        expect(WebMock).not_to have_requested(:post, renew_url)
       end
     end
   end
