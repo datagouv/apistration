@@ -44,6 +44,6 @@ class INSEE::Authenticate < AbstractGetToken
   end
 
   def password
-    Siade.credentials[:insee_apim_password]
+    INSEE::PasswordDerivation.current_password
   end
 end
