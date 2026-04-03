@@ -97,7 +97,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest
       sexe:,
       'date-naissance': date_naissance,
       'annee-scolaire': params[:annee_scolaire],
-      scope: 'men_statut_scolarite',
+      scope: 'men_statut_scolarite,men_statut_boursier,men_echelon_bourse',
       'degre-etablissement': params[:degre_etablissement],
       'type-perimetre': context.perimetre_type,
       'valeurs-perimetre': context.perimetre_valeurs
@@ -133,7 +133,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest
   end
 
   def scope_param
-    return { scope: 'men_statut_scolarite' } if provider_api_version == 'v2'
+    return { scope: 'men_statut_scolarite,men_statut_boursier,men_echelon_bourse' } if provider_api_version == 'v2'
 
     {}
   end
