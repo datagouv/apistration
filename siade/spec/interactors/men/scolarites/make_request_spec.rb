@@ -103,7 +103,7 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           sexe: 2,
           'date-naissance': '2000-06-10',
           'annee-scolaire': '2021',
-          scope: 'men_statut_scolarite',
+          scope: 'men_statut_scolarite,men_statut_boursier,men_echelon_bourse',
           'degre-etablissement': '2D',
           'type-perimetre': 'region',
           'valeurs-perimetre': %w[11]
