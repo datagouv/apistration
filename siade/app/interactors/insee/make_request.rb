@@ -1,6 +1,6 @@
 class INSEE::MakeRequest < MakeRequest::Get
   ROTATION_LOCK_KEY = 'insee/password_rotation_lock'.freeze
-  ROTATION_LOCK_TTL = 10
+  ROTATION_LOCK_TTL = 30
 
   def call
     super
@@ -80,17 +80,16 @@ class INSEE::MakeRequest < MakeRequest::Get
   def rotate_password_if_needed!
     return unless password_rotation_needed?
 
-    lock_acquired = acquire_rotation_lock!
-    return unless lock_acquired
+    return unless acquire_rotation_lock!
 
-    INSEE::RenewPassword.call(
+    renew_context = INSEE::RenewPassword.call(
       token: context.token,
       old_password: INSEE::PasswordDerivation.previous_password,
       new_password: INSEE::PasswordDerivation.current_password,
       provider_name: context.provider_name
     )
-  ensure
-    release_rotation_lock! if lock_acquired
+
+    INSEE::Authenticate.invalidate_token_cache! if renew_context.success?
   end
 
   def password_rotation_needed?
@@ -116,10 +115,6 @@ class INSEE::MakeRequest < MakeRequest::Get
 
   def acquire_rotation_lock!
     rotation_redis.set(ROTATION_LOCK_KEY, Process.pid, nx: true, ex: ROTATION_LOCK_TTL)
-  end
-
-  def release_rotation_lock!
-    rotation_redis.del(ROTATION_LOCK_KEY)
   end
 
   def rotation_redis
