@@ -270,6 +270,11 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
           }.to_json)
       end
 
+      it 'invalidates the token cache so next auth gets a fresh JWT' do
+        make_request
+
+        expect(EncryptedCache.read('insee/authenticate')).to be_nil
+      end
     end
 
     context 'when pwdChangedTime is in the current bimester' do
