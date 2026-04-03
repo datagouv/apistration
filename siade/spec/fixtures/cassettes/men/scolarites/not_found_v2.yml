@@ -59,7 +59,7 @@ http_interactions:
   recorded_at: Thu, 27 Apr 2023 10:20:06 GMT
 - request:
     method: get
-    uri: "<MEN_SCOLARITES_URL_V2>?annee-scolaire=2021&code-uai=0511474A&date-naissance=2000-06-10&nom=NOMFAMILLE&prenom=prenom&scope=men_statut_scolarite&sexe=2"
+    uri: "<MEN_SCOLARITES_URL_V2>?annee-scolaire=2021&code-uai=0511474A&date-naissance=2000-06-10&nom=NOMFAMILLE&prenom=prenom&scope=men_statut_scolarite,men_statut_boursier,men_echelon_bourse&sexe=2"
     body:
       encoding: US-ASCII
       string: ''
