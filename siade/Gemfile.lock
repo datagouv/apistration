@@ -59,7 +59,7 @@ GEM
     attr_extras (7.1.0)
     base64 (0.3.0)
     benchmark-ips (2.14.0)
-    bigdecimal (4.1.0)
+    bigdecimal (4.1.1)
     brakeman (8.0.4)
       racc
     builder (3.3.0)
@@ -199,7 +199,7 @@ GEM
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lockbox (2.1.0)
+    lockbox (2.2.0)
     logger (1.7.0)
     logstasher (3.0.0)
       activesupport (>= 7.0)
