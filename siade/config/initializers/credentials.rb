@@ -13,7 +13,7 @@ module Siade
       end
 
       unless ENV['ZEITWERK_CHECK']
-        if Rails.env.local?
+        if Rails.env.local? || Rails.env.staging?
           credentials.default_proc = proc do |hash, key|
             is_url_or_domain = key.to_s.include?('_url') || key.to_s.end_with?('_domain')
 
