@@ -29,7 +29,7 @@ class ApplicationTool < MCP::Tool
   end
 
   def self.scopes
-    Rails.application.config_for(:authorizations)["mcp/#{tool_name}"] || []
+    Scope.config["mcp/#{tool_name}"] || []
   end
 
   def self.text_response(text)
