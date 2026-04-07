@@ -61,6 +61,7 @@ vendor/bundle
 builds/
 
 config/credentials/
+config/credentials.yml
 config/credentials.yml.enc
 config/master.key
 
