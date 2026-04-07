@@ -1,7 +1,16 @@
 module Siade
   def self.credentials
     @credentials ||= begin
-      credentials = Rails.application.credentials.config[Rails.env.to_sym] || {}
+      env_file = Rails.root.join('config', 'credentials', "#{Rails.env}.yml")
+      base_file = Rails.root.join('config', 'credentials.yml')
+
+      credentials = if env_file.exist?
+        YAML.safe_load_file(env_file, symbolize_names: true, aliases: true) || {}
+      elsif base_file.exist?
+        YAML.safe_load_file(base_file, symbolize_names: true, aliases: true)[Rails.env.to_sym] || {}
+      else
+        {}
+      end
 
       unless ENV['ZEITWERK_CHECK']
         if Rails.env.local?
