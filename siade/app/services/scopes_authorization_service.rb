@@ -34,6 +34,6 @@ class ScopesAuthorizationService
   end
 
   def config
-    Rails.application.config_for(:authorizations)
+    Scope.config
   end
 end

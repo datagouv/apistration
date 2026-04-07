@@ -35,7 +35,7 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildUser < FranceConnect::D
   end
 
   def scopes_for(controller_name)
-    Rails.application.config_for(:authorizations)[controller_name]
+    Scope.config[controller_name]
   end
 
   def remove_api_identity_scopes(scopes)
