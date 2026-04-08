@@ -4,9 +4,9 @@ env:
 
 defaults:
   run:
-    working-directory: siade
+    working-directory: site
 
-name: CI - CD
+name: "Site: CI - CD"
 on:
   push:
 jobs:
@@ -21,12 +21,12 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          working-directory: siade
+          working-directory: site
 
       - name: Brakeman
         uses: reviewdog/action-brakeman@v2
         with:
-          workdir: siade
+          workdir: site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -42,69 +42,10 @@ jobs:
       with:
         bundler-cache: true
         cache-version: 347
-        working-directory: siade
+        working-directory: site
 
     - name: Run RuboCop
       run: bundle exec rubocop --parallel
-
-  check-swagger:
-    name: Check Swagger generation
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: siade
-          POSTGRES_DB: siade_test
-          POSTGRES_PASSWORD: wow*verysecret
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-      redis:
-        image: redis
-        ports: ["6379:6379"]
-        options: --entrypoint redis-server
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          cache-version: 322
-          working-directory: siade
-
-      - name: Run install.sh
-        run: ./bin/install.sh
-
-      - name: Check Swagger file is up-to-date
-        run: ./bin/test_swagger.sh
-
-  check-zeitwerk:
-    name: Check Zeitwerk
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          cache-version: 322
-          working-directory: siade
-
-      - name: Check Zeitwerk
-        run: |
-          bundle exec rails runner 'Zeitwerk::Loader.eager_load_all'
-        env:
-          ZEITWERK_CHECK: true
 
   tests:
     name: Tests
@@ -114,9 +55,10 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: siade
-          POSTGRES_DB: siade_test
+          POSTGRES_USER: admin_apientreprise
           POSTGRES_PASSWORD: wow*verysecret
+          POSTGRES_DB: admin_apientreprise_test
+          POSTGRES_PORT: 5432
         ports:
           - 5432:5432
         options: >-
@@ -145,32 +87,37 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 322
-          working-directory: siade
+          working-directory: site
 
-      - name: Update repository
-        run: sudo apt-get update
+      - name: Setup Nodejs
+        uses: actions/setup-node@v6
 
-      - name: Install dependencies
-        run: sudo apt-get install libgpgme11-dev
+      - name: Install mjml dependency
+        run: npm install mjml
 
-      - name: Run install.sh
-        run: ./bin/install.sh
+      - name: Install postgres client
+        run: sudo apt-get install libpq-dev
 
-      - name: set timezone
-        uses: szenius/set-timezone@v2.0
-        with:
-          timezoneLinux: "Europe/Paris"
+      - name: Create database users
+        env:
+          POSTGRES_USER: admin_apientreprise
+          POSTGRES_DB: admin_apientreprise_test
+          PGPASSWORD: wow*verysecret
+        run: |
+          psql -h localhost -U ${{ env.POSTGRES_USER }} -d ${{ env.POSTGRES_DB }} -f `pwd`/postgresql_setup.txt
+
+      - name: Create database
+        run: bundle exec rails db:create db:schema:load RAILS_ENV=test
 
       - name: Run tests
-        run: COVERAGE=true bundle exec rspec
+        run: bundle exec rspec
 
-      - name: SimpleCov check
+      - uses: joshmfrankel/simplecov-check-action@main
         if: "${{ github.actor != 'dependabot[bot]' }}"
-        uses: joshmfrankel/simplecov-check-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_suite_coverage: 95
-          coverage_path: siade/coverage/.last_run.json
+          minimum_suite_coverage: 90
+          coverage_path: site/coverage/.last_run.json
 
   merge-with-main:
     name: Merge develop with main
@@ -179,8 +126,6 @@ jobs:
     needs:
       - security
       - lint
-      - check-swagger
-      - check-zeitwerk
       - tests
     steps:
       - name: Checkout code
@@ -195,14 +140,12 @@ jobs:
     name: Continuous deployment on staging
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
-    timeout-minutes: 10
     needs:
       - security
       - lint
-      - check-swagger
-      - check-zeitwerk
       - tests
       - merge-with-main
+    timeout-minutes: 10
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
@@ -214,7 +157,7 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_staging
+      DEPLOY_APP: admin_apientreprise_staging
     steps:
       - name: Download and run deploy script
         shell: bash
@@ -228,15 +171,13 @@ jobs:
     name: Continuous deployment on production
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
-    timeout-minutes: 20
     needs:
       - security
       - lint
-      - check-swagger
-      - check-zeitwerk
       - tests
       - merge-with-main
       - continuous-deployment-staging
+    timeout-minutes: 20
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
@@ -248,7 +189,7 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_production
+      DEPLOY_APP: admin_apientreprise_production
     steps:
       - name: Download and run deploy script
         shell: bash

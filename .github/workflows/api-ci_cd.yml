@@ -2,8 +2,13 @@ env:
   CI: true
   COVERAGE: true
 
-name: CI - CD
-on: [push]
+defaults:
+  run:
+    working-directory: siade
+
+name: "API: CI - CD"
+on:
+  push:
 jobs:
   security:
     name: Brakeman
@@ -16,10 +21,12 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 4.0.1
+          working-directory: siade
 
       - name: Brakeman
         uses: reviewdog/action-brakeman@v2
+        with:
+          workdir: siade
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -27,16 +34,77 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - name: Checkout code
+      uses: actions/checkout@v6
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
         cache-version: 347
+        working-directory: siade
 
     - name: Run RuboCop
       run: bundle exec rubocop --parallel
+
+  check-swagger:
+    name: Check Swagger generation
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: siade
+          POSTGRES_DB: siade_test
+          POSTGRES_PASSWORD: wow*verysecret
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis
+        ports: ["6379:6379"]
+        options: --entrypoint redis-server
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 322
+          working-directory: siade
+
+      - name: Run install.sh
+        run: ./bin/install.sh
+
+      - name: Check Swagger file is up-to-date
+        run: ./bin/test_swagger.sh
+
+  check-zeitwerk:
+    name: Check Zeitwerk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 322
+          working-directory: siade
+
+      - name: Check Zeitwerk
+        run: |
+          bundle exec rails runner 'Zeitwerk::Loader.eager_load_all'
+        env:
+          ZEITWERK_CHECK: true
 
   tests:
     name: Tests
@@ -46,10 +114,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: admin_apientreprise
+          POSTGRES_USER: siade
+          POSTGRES_DB: siade_test
           POSTGRES_PASSWORD: wow*verysecret
-          POSTGRES_DB: admin_apientreprise_test
-          POSTGRES_PORT: 5432
         ports:
           - 5432:5432
         options: >-
@@ -65,6 +132,7 @@ jobs:
 
     steps:
       - name: Dump Github context
+        working-directory: .
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
@@ -77,77 +145,64 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 322
+          working-directory: siade
 
-      - name: Setup Nodejs
-        uses: actions/setup-node@v6
+      - name: Update repository
+        run: sudo apt-get update
 
-      - name: Install mjml dependency
-        run: npm install mjml
+      - name: Install dependencies
+        run: sudo apt-get install libgpgme11-dev
 
-      - name: Install postgres client #and imagemagick
-        run: sudo apt-get install libpq-dev #imagemagick
+      - name: Run install.sh
+        run: ./bin/install.sh
 
-      - name: Create database users
-        env:
-          POSTGRES_USER: admin_apientreprise
-          POSTGRES_DB: admin_apientreprise_test
-          PGPASSWORD: wow*verysecret
-        run: |
-          psql -h localhost -U ${{ env.POSTGRES_USER }} -d ${{ env.POSTGRES_DB }} -f `pwd`/postgresql_setup.txt
-
-      - name: Create database
-        run: bundle exec rails db:create db:schema:load RAILS_ENV=test
+      - name: set timezone
+        uses: szenius/set-timezone@v2.0
+        with:
+          timezoneLinux: "Europe/Paris"
 
       - name: Run tests
-        run: bundle exec rspec
+        run: COVERAGE=true bundle exec rspec
 
-      - uses: joshmfrankel/simplecov-check-action@main
+      - name: SimpleCov check
         if: "${{ github.actor != 'dependabot[bot]' }}"
+        uses: joshmfrankel/simplecov-check-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_suite_coverage: 90
+          minimum_suite_coverage: 95
+          coverage_path: siade/coverage/.last_run.json
 
-  merge-with-master:
-    name: Merge develop with master
+  merge-with-main:
+    name: Merge develop with main
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
     needs:
       - security
       - lint
+      - check-swagger
+      - check-zeitwerk
       - tests
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Import GPG key to sign master push
-        if: github.ref == 'refs/heads/develop'
-        id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@v7
-        with:
-          gpg_private_key: ${{ secrets.GPG_SECRET_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-
-      - name: Force push develop to master
-        if: github.ref == 'refs/heads/develop'
+      - name: Force push develop to main
+        working-directory: .
         run: |
-          git reset --hard && \
-            git push --force origin develop:master && \
-            git fetch && \
-            [[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow
-          exit 0
+          git push --force origin develop:main
 
   continuous-deployment-staging:
     name: Continuous deployment on staging
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
+    timeout-minutes: 10
     needs:
       - security
       - lint
+      - check-swagger
+      - check-zeitwerk
       - tests
-      - merge-with-master
-    timeout-minutes: 10
+      - merge-with-main
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
@@ -159,10 +214,11 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: admin_apientreprise_staging
+      DEPLOY_APP: siadelibre_staging
     steps:
       - name: Download and run deploy script
         shell: bash
+        working-directory: .
         run: |
           git clone https://github.com/etalab/api-entreprise-integration
           cd api-entreprise-integration
@@ -172,17 +228,18 @@ jobs:
     name: Continuous deployment on production
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
+    timeout-minutes: 20
     needs:
       - security
       - lint
+      - check-swagger
+      - check-zeitwerk
       - tests
-      - merge-with-master
+      - merge-with-main
       - continuous-deployment-staging
-    timeout-minutes: 20
     strategy:
       matrix:
         host: [watchdoge3, watchdoge4]
-        deploy_env: [production]
       fail-fast: false
     environment: production
     env:
@@ -191,10 +248,11 @@ jobs:
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: admin_apientreprise_${{ matrix.deploy_env }}
+      DEPLOY_APP: siadelibre_production
     steps:
       - name: Download and run deploy script
         shell: bash
+        working-directory: .
         run: |
           git clone https://github.com/etalab/api-entreprise-integration
           cd api-entreprise-integration

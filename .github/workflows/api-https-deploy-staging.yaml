@@ -1,4 +1,4 @@
-name: Deployment via HTTPS (sandbox)
+name: "API: Deployment via HTTPS (staging)"
 
 on:
   workflow_dispatch: ~
@@ -11,15 +11,14 @@ jobs:
       matrix:
         host: [watchdoge3, watchdoge4]
       fail-fast: false
-    environment: sandbox
+    environment: staging
     env:
       DEPLOY_HTTPS_LOGIN: ${{ secrets.DEPLOY_HTTPS_LOGIN }}
       DEPLOY_HTTPS_PASSWORD: ${{ secrets.DEPLOY_HTTPS_PASSWORD }}
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_sandbox
-      DEPLOY_BRANCH: ${{ github.ref_name }}
+      DEPLOY_APP: siadelibre_staging
     steps:
       - name: Download and run deploy script
         shell: bash

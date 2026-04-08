@@ -1,4 +1,4 @@
-name: Regenerate and commit Swagger
+name: "API: Regenerate and commit Swagger"
 on:
   workflow_dispatch:
     inputs:
