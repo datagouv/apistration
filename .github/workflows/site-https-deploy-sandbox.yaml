@@ -1,7 +1,9 @@
-name: Deployment via HTTPS (staging)
+name: "Site: Deployment via HTTPS (sandbox)"
 
 on:
-  workflow_dispatch: ~
+  workflow_dispatch:
+    branches:
+      - '*'
 
 jobs:
   deployment:
@@ -11,14 +13,15 @@ jobs:
       matrix:
         host: [watchdoge3, watchdoge4]
       fail-fast: false
-    environment: staging
+    environment: sandbox
     env:
       DEPLOY_HTTPS_LOGIN: ${{ secrets.DEPLOY_HTTPS_LOGIN }}
       DEPLOY_HTTPS_PASSWORD: ${{ secrets.DEPLOY_HTTPS_PASSWORD }}
       DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
       DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
       DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: admin_apientreprise_staging
+      DEPLOY_APP: admin_apientreprise_sandbox
+      DEPLOY_BRANCH: ${{ github.ref_name }}
     steps:
       - name: Download and run deploy script
         shell: bash
