@@ -1,0 +1,147 @@
+---
+- uid: 'djepva/associations'
+  path: '/v4/djepva/api-association/associations/{siren_or_rna}'
+  ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
+  position: 150
+  perimeter: &association_perimeter
+    entity_type_description: &association_entity_type_description |+
+      Cette API concerne ✅ **les associations** inscrites au répertoire national des associations (RNA) et/ou au répertoire Sirene.
+
+    geographical_scope_description: &association_geographical_scope_description |+
+      - ✅ **Métropole**, y compris Alsace-Moselle. <br> Les associations qui relèvent du **régime de droit local d'Alsace-Moselle** sont couvertes par l'API dès lors qu'elles sont immatriculées au répertoire Sirene ;
+      - ✅ **DROM-COM** sauf ❌ les associations de Nouvelle-Calédonie, de la Polynésie française et de Wallis-et-Futuna qui ne sont pas immatriculées à l’INSEE, mais dans des bases locales.
+
+    updating_rules_description: &association_updating_rules_description |+
+      Les données sont **mises à jour quotidiennement** :
+
+      - Les créations et modifications validées par les greffes des associations sont déversées et disponibles le lendemain dans le RNA. Les données du RNA sont transmises deux fois par jour à la DJEPVA pour être intégrées dans cette API.
+      - Pour le répertoire Sirene, la mise à jour des données est faite quotidiennement entre 0h et 3h à l'Insee.
+    know_more_description: &association_know_more_description |+
+
+      Documentation sur le [site asssociations.gouv.fr](https://www.associations.gouv.fr/les-api-et-autres-outils.html){:target="_blank"}.
+
+      {:.fr-icon-arrow-right-line .fr-link--icon-right}
+      [✒️ **Inciter vos usagers à mettre à jour leurs informations dans le répertoire RNA** - Lire la publication du 02/06/2023](https://entreprise.api.gouv.fr/blog/references-sites-modification-donnees)
+    entities: &association_entities
+      - associations
+  call_id: &call_id "SIREN / RNA"
+  provider_uids: &association_provider_uids
+    - 'djepva'
+  keywords: &association_keywords
+    - 'association'
+    - 'forme juridique'
+    - 'statut'
+    - 'agrément'
+    - 'effectif'
+    - 'bénévoles'
+    - 'salariés'
+    - 'adhérents'
+    - 'volontaires'
+    - 'actif'
+    - 'fermé'
+    - 'utilité publique'
+    - 'affiliation'
+    - 'fédération'
+    - 'union'
+    - 'réseau'
+    - 'activité'
+    - 'naf'
+    - 'régime'
+    - 'alsace-moselle'
+    - 'adresse'
+    - 'établissements'
+    - 'compte'
+    - 'résultat'
+    - 'financement'
+    - 'dac'
+    - 'documents administratifs'
+    - 'représentants'
+    - 'mandataires'
+  data:
+    description: |+
+      {:.fr-highlight.fr-highlight--caution}
+      ⚠️ **Le type et la quantité d'informations disponibles par association est variable** car de nombreuses ressources sont déclaratives ou déposées par les associations dans le cadre de démarches en ligne.
+
+
+      **Cette API délivre des informations sur l'unité légale de l'association** :
+      - identité et statuts (forme juridique, dates clés, état de l'association, statut utilité publique, régime, adresse de gestion) ;
+      - tranche effectif de salariés ;
+      - activités principales ;
+      - agréments ;
+      - affiliations à des unions, fédérations ou réseaux, ainsi que des informations à leur sujet.
+
+      <br>
+      **Et sur les établissements de l'association** :
+      - état et adresse ;
+      - activités principales ;
+      - représentants légaux, identité et fonction ;
+      - effectifs salariés, bénévoles et volontaires ;
+      - comptes de résultats et financement ;
+      - tout autre document (DAC) déposé par l'association lors de démarches en ligne.
+
+      <br>
+      **Ces données sont issues de trois bases de ressources différentes** :
+      - le répertoire national des associations (RNA) ;
+      - le répertoire Sirene ;
+      - les données saisies par les associations dans [Le compte Asso](https://lecompteasso.associations.gouv.fr){:target="_blank"}, nommées documents administratifs complémentaires (DAC).
+
+  opening: protected
+  format: &association_format
+    - Donnée structurée JSON
+  parameters: &association_parameters
+    - Numéro de SIREN ou numéro RNA de l’association
+  faq: &association_faq
+    - q: Une association utilisatrice de votre démarche s'est aperçue que ses informations ne sont plus à jour ?
+      a: |+
+        Vous pouvez l'orienter vers le [site officiel Le compte Asso](https://lecompteasso.associations.gouv.fr/declarer-un-changement-de-situation-de-mon-association/){:target="_blank"} où elle pourra déclarer son changement de situation.
+- uid: 'djepva/associations_open_data'
+  path: '/v4/djepva/api-association/associations/open_data/{siren_or_rna}'
+  ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
+  old_endpoint_uids:
+    - 'ministere_interieur/rna'
+    - 'ministere_interieur/documents_associations'
+  position: 151
+  perimeter: *association_perimeter
+  call_id: *call_id
+  provider_uids: *association_provider_uids
+  parameters: *association_parameters
+  keywords: *association_keywords
+  data:
+    description: |+
+      {:.fr-highlight.fr-highlight--caution}
+      ⚠️ **Le type et la quantité d'informations disponibles par association est variable** car de nombreuses ressources sont déclaratives ou déposées par les associations dans le cadre de démarches en ligne.
+
+      **Cette API délivre des informations publiques sur l'unité légale de l'association** :
+      - identité et statuts (forme juridique, dates clés, état de l'association, statut utilité publique, régime, adresse de gestion) ;
+      - tranche effectif de salariés ;
+      - activités principales ;
+      - agréments ;
+      - affiliations à des unions, fédérations ou réseaux, ainsi que des informations à leur sujet.
+
+      <br>
+      **Et sur les établissements de l'association** :
+      - état et adresse ;
+      - activités principales ;
+      - effectifs salariés, bénévoles et volontaires ;
+      - agréments.
+
+      <br>
+      **Ces données sont issues de deux bases de ressources différentes** :
+      - le répertoire national des associations (RNA) ;
+      - le répertoire Sirene.
+
+  opening: public
+  format: *association_format
+  faq: *association_faq
+  historique: |+
+    **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
+    - Nouvelle structure de donnée : cette API réunit au même endroit les informations et documents des associations en open data. L'API propose plus de données&nbsp;;
+    - Nouvelle API source et nouveau fournisseur de donnée : la DJEPVA au travers de l'[API association](https://www.associations.gouv.fr/les-api-et-autres-outils.html){:target="_blank"}
+    - Le SIREN ou RNA en paramètre d'appel.
+
+    **Ce qui ne change pas:**
+    - Les informations concernent l'unité légale ET les établissements de l'association. Vous pouvez donc toujours retrouver les informations relatives à un SIRET&nbsp;;
+    - L'API distribue les données du RNA&nbsp;;
+    - La donnée est en open data.
+
+

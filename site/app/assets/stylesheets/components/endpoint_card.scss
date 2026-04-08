@@ -1,0 +1,49 @@
+.endpoint-card {
+  background-color: var(--w);
+  box-shadow: var(--card-box-shadow);
+
+  $card-padding: 20px;
+
+  margin: 15px;
+
+  header, section, footer {
+    padding: 0 $card-padding;
+  }
+
+  header {
+    padding-top: $card-padding;
+    min-height: 150px;
+  }
+
+  header h3 {
+    $h-size: 1.1rem;
+    font-size: $h-size;
+    line-height: $h-size + 0.2rem;
+    margin-bottom: 0;
+  }
+
+  header img.provider {
+    float: right;
+
+    max-height: 80px;
+    max-width: 80px;
+  }
+
+  section.body {
+    padding-top: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  section.metadata {
+    background-color: var(--grey-950-100);
+
+    padding: 5px $card-padding;
+  }
+
+  footer {
+    padding-top: 5px;
+  }
+}

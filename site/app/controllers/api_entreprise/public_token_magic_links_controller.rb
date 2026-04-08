@@ -1,0 +1,3 @@
+class APIEntreprise::PublicTokenMagicLinksController < APIEntrepriseController
+  include PublicTokenMagicLinksManagement
+end

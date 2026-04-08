@@ -1,0 +1,52 @@
+<div id="<%= "property_#{kind}_#{key}" %>" class="attribute fr-mb-3w">
+  <div class="fr-mb-1w">
+    <% if kind != 'array' %>
+      <div class="fr-tag fr-text--bold">
+        <%= properties['title'] || key.humanize %>
+      </div>
+    <% end %>
+
+    <% if properties['example'] %>
+      <span class="fr-ml-2w fr-ml-md-0 fr-text--regular fr-text--alt">
+        <%= t('.example.label') %>
+        <%= properties['example'] %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="fr-pl-2w">
+    <% if properties['description'] %>
+      <div class="description fr-highlight--beige-gris-galet fr-text--sm fr-pl-2w">
+        <%= simple_format(auto_link(properties['description'], target: '_blank'), {}, wrapper_tag: 'div') %>
+      </div>
+    <% end %>
+
+    <% if properties['type'] == 'object' %>
+      <div class="sub-properties fr-mt-1w">
+        <% properties['properties'].each do |sub_key, sub_properties| %>
+          <%=
+            render partial: 'shared/endpoints/property', locals: {
+              key: sub_key,
+              kind: key,
+              properties: sub_properties
+            }
+          %>
+        <% end %>
+      </div>
+    <% elsif properties['type'] == 'array' %>
+      <div class="sub-properties fr-mt-1w">
+        <div class="fr-text--xs">
+          <%= t('.array.label') %>
+        </div>
+
+        <%=
+          render partial: 'shared/endpoints/property', locals: {
+            key: "items_#{key}",
+            kind: 'array',
+            properties: properties['items']
+          }
+        %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,323 @@
+<% layout_main_bloc = 8 %>
+<article id="<%= dom_id(@endpoint) %>" class="endpoint">
+  <h1>
+    <%= @endpoint.title %>
+    <%= endpoint_status_badge(@endpoint) %>
+  </h1>
+
+  <div class="fr-grid-row fr-pb-2w">
+    <div class="fr-col-md-<%= layout_main_bloc %> fr-col-12">
+      <p class="fr-text--lead fr-mt-md-2w">
+        <%= @endpoint.description %>
+
+
+      <% if @endpoint.extra_description.present? %>
+          <%= markdown_to_html(@endpoint.extra_description) %>
+        <% end %>
+      </p>
+
+
+        <% if @endpoint.incoming? %>
+          <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-2w">
+            <p class="fr-alert__title">
+              <%= t('.incoming.title') %>
+            </p>
+            <p>
+              <%= t('.incoming.description') %>
+
+              <p class="fr-text--sm fr-mt-2w">
+                <%= t('.incoming.link_documentation').html_safe %> <%= link_to t('.incoming.cta'), developers_openapi_path(anchor: @endpoint.redoc_anchor), data: { turbo: false }, class: %() %>
+              </p>
+            </p>
+          </div>
+        <% elsif @endpoint.beta? %>
+          <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-2w">
+            <p class="fr-alert__title">
+              <%= t('shared.endpoints.show.beta.title') %>
+            </p>
+            <p>
+              <%= t('shared.endpoints.show.beta.description').html_safe %>
+            </p>
+          </div>
+        <% end %>
+      </p>
+
+
+      <nav class="" role="navigation">
+        <ul class="">
+            <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#perimetre">Périmètre de l'API</a>
+            </li>
+            <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#parameters_details">Modalités d'appel</a>
+            </li>
+            <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#donnees">Données distribuées</a>
+            </li>
+            <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#faq">Q & R</a>
+            </li>
+             <% if @endpoint.historicized? %>
+             <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#historique">Historique de version</a>
+            </li>
+            <% end %>
+            <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#cgu">Conditions d'utilisation</a>
+            </li>
+          </ul>
+      </nav>
+    </div>
+
+    <div class="providers fr-col-md-<%= 12 - layout_main_bloc %> fr-col-12">
+      <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
+        <div class="fr-col-md-5 fr-col-12 logos">
+          <% @endpoint.providers.each do |provider| %>
+            <%= image_tag(provider.image_path, alt: 'Logo du fournisseur de données') %>
+          <% end %>
+        </div>
+
+        <div class="text fr-col-md-7 fr-col-12">
+          <div class="fr-text--sm fr-mb-2w">
+            <%= t('.providers.description', count: @endpoint.providers.count) %>
+          </div>
+
+          <p class="fr-text--lg fr-text--bold">
+            <% provider_names = @endpoint.providers.map do |provider| %>
+              <%= provider.name %>
+            <% end %>
+
+            <%= provider_names.join(' & ') %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="separator fr-unhidden-md fr-hidden">
+
+  <div class="fr-grid-row">
+    <div class="fr-col-md-<%= layout_main_bloc %> fr-col-12 fr-pt-2w fr-mt-md-0 fr-pr-md-2w fr-pr-0">
+      <% if @endpoint.alert.present? %>
+        <div class="fr-mt-4w fr-mb-4w">
+          <div class="fr-alert fr-alert--warning fr-mb-2w">
+            <h3 class="fr-alert__title">
+              <%= raw @endpoint.alert['title'] %>
+            </h3>
+            <p>
+              <%= markdown_to_html(@endpoint.alert['description']) %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <% if @endpoint.deprecated? %>
+        <div class="fr-alert fr-alert--error fr-mb-2w">
+          <p class="fr-alert__title">
+            <%= t('.deprecated.title') %>
+          </p>
+
+          <p>
+            <%= t('.deprecated.description') %>
+            <ul>
+              <% @endpoint.new_endpoints.each do |endpoint| %>
+                <li>
+                  <%= link_to endpoint.uid, endpoint_path(uid: endpoint.uid) %>
+                </li>
+              <% end %>
+            </ul>
+          </p>
+        </div>
+      <% end %>
+      <h2 id="perimetre">
+        <%= t('.perimeter.title') %>
+      </h2>
+
+      <% if @endpoint.perimeter['description'].present? %>
+        <div>
+          <%= markdown_to_html(@endpoint.perimeter['description']) %>
+        </div>
+      <% end %>
+      <% if @endpoint.perimeter['entity_type_description'].present? %>
+        <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="perimetre_entites_concernees">
+          <%= t('.perimeter.entity_type_title') %>
+        </h3>
+
+        <div>
+          <%= markdown_to_html(@endpoint.perimeter['entity_type_description']) %>
+        </div>
+      <% end %>
+      <% if @endpoint.perimeter['geographical_scope_description'].present? %>
+        <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="perimetre_geographique">
+          <%= t('.perimeter.geographical_scope_title') %>
+        </h3>
+
+        <div>
+          <%= markdown_to_html(@endpoint.perimeter['geographical_scope_description']) %>
+        </div>
+      <% end %>
+      <% if @endpoint.perimeter['updating_rules_description'].present? %>
+        <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="perimetre_regles_mise_a_jour">
+          <%= t('.perimeter.updating_rules_title') %>
+        </h3>
+
+        <div>
+          <%= markdown_to_html(@endpoint.perimeter['updating_rules_description']) %>
+        </div>
+      <% end %>
+      <% if @endpoint.perimeter['know_more_description'].present? %>
+        <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="perimetre_en_savoir_plus">
+          <%= t('.perimeter.know_more_title') %>
+        </h3>
+
+        <div>
+          <%= markdown_to_html(@endpoint.perimeter['know_more_description']) %>
+        </div>
+      <% end %>
+
+      <%= render partial: 'use_cases', locals: { id: 'use_cases_mobile', extra_classes: 'fr-hidden-md' } %>
+      <%= render partial: 'details', locals: { id: 'use_cases_mobile', extra_classes: 'fr-mb-3w fr-hidden-md' } %>
+
+
+        <h2 id="parameters_details" class="fr-mt-md-5w fr-mt-8w">
+        <%= t('.parameters_details.title') %>
+        </h2>
+
+        <% if @endpoint.parameters_details.present? && @endpoint.parameters_details['description'].present? %>
+          <div>
+            <%= markdown_to_html(@endpoint.parameters_details['description']) %>
+          </div>
+        <% end %>
+
+        <h2 id="donnees" class="fr-mt-md-5w fr-mt-8w">
+          <%= t('.data.title') %>
+        </h2>
+
+        <% if @endpoint.data.present? && @endpoint.data['description'].present? %>
+          <div>
+            <%= markdown_to_html(@endpoint.data['description']) %>
+          </div>
+        <% end %>
+
+        <h3 id="donnees_attributs" class="fr-h6 fr-mb-1w fr-mt-3w">
+          <%= t('.attributes.title') %>
+        </h3>
+
+        <div class="fr-mt-2w fr-mb-6w">
+          <a href="<%= endpoint_example_path(uid: @endpoint.uid) %>" id="example_link" class="fr-btn fr-btn--secondary fr-icon-eye-line fr-btn--icon-left fr-mt-2w" aria-controls="main-modal" data-fr-opened="false" data-turbo-frame="main-modal-content">
+            Aperçu d'un exemple de réponse JSON
+          </a>
+        </div>
+
+        <div class="keep-within-block-mobile">
+          <% @endpoint.attributes.each do |key, properties| %>
+            <%=
+              render partial: 'shared/endpoints/property', locals: {
+                key: key,
+                kind: 'attribute',
+                properties: properties
+              }
+            %>
+          <% end %>
+        </div>
+
+        <% if @endpoint.faq.any? %>
+          <h2 id="faq" class="fr-mt-md-5w fr-mt-8w">
+            <%= t('.faq.title') %>
+          </h2>
+
+          <div class="fr-accordions-group">
+            <% @endpoint.faq.each_with_index do |faq_entry, index| %>
+              <section class="fr-accordion faq-entry" id="<%= dom_id(@endpoint, "faq_entry_#{index}") %>">
+                <h3 class="fr-accordion__title">
+                  <button class="fr-accordion__btn" aria-expanded="false" aria-controls="<%= dom_id(@endpoint, "faq_entry_answer_#{index}") %>">
+                    <div>
+                      <%= raw faq_entry['question'] %>
+                    </div>
+                  </button>
+                </h3>
+
+                <div class="fr-collapse" id="<%= dom_id(@endpoint, "faq_entry_answer_#{index}") %>">
+                  <%= raw faq_entry['answer'] %>
+                </div>
+              </section>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @endpoint.historicized? %>
+          <h2 id="historique" class="fr-mt-md-5w fr-mt-8w">
+            <%= t('.historique.title') %>
+          </h2>
+          <%= markdown_to_html(@endpoint.historique) %>
+          <% if @endpoint.old_endpoints.any? %>
+            <p class="fr-text--bold fr-mb-1v fr-mt-4w"><%= t('.historique.old_endpoints.description') %></p>
+            <ul>
+              <% @endpoint.old_endpoints.each do |endpoint| %>
+                <li>
+                  <%= link_to endpoint.uid, endpoint_path(uid: endpoint.uid) %>
+                </li>
+              <% end %>
+            </ul>
+            <p class="fr-text--sm fr-mt-4w"><%= t('.historique.old_endpoints.link_documentation').html_safe %></p>
+          <% end %>
+        <% end %>
+
+
+        <h2 id="cgu" class="fr-mt-md-5w fr-mt-8w">
+          <%= t('.cgu.title') %>
+        </h2>
+
+        <h3 class="fr-h6 fr-mb-1w fr-mt-3w">
+          <%= t('.cgu.main_title_opening') %>
+        </h3>
+
+        <div>
+          <span class="fr-icon-lock-fill fr-icon--sm" aria-hidden="true"></span> Donnée protégée
+        </div>
+
+        <% if @endpoint.api_cgu.present? %>
+          <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="api_cgu">
+            <%= t('.cgu.api_cgu_title') %>
+          </h3>
+          <div>
+            <%= markdown_to_html(@endpoint.api_cgu['description']) %>
+          </div>
+        <% end %>
+
+        <h3 class="fr-h6 fr-mb-1w fr-mt-3w">
+          <%= t('.cgu.main_title') %>
+        </h3>
+
+        <p>
+          Cette API et l’utilisation de ses données est soumise aux CGU générales d’API Particulier, dont voici les principaux éléments auxquels vous vous engagez :
+
+          <ul>
+            <li>
+              <strong>ne demander que les données strictement nécessaires</strong> ;
+            </li>
+            <li>
+              <strong>ne pas utiliser votre jeton d’accès pour une démarche différente</strong> de celle indiquée lors de votre demande (le cas échéant le jeton sera révoqué) ;
+            </li>
+            <li>
+              <strong>présenter les données obtenues uniquement aux seuls agents habilités</strong> et à tracer l’accès de ces agents aux données ;
+            </li>
+            <li>
+              <strong>ne pas commercialiser les données</strong> reçues et à ne pas les communiquer à des tiers en dehors des cas prévus par la loi.
+            </li>
+          </ul>
+
+          L’ensemble des conditions sont consultables et téléchargeables ci-dessous :
+
+          <br>
+          <br>
+
+          <%= link_to t('.cgu.cta'), cgu_path, id: 'cgu_link', class: %w(fr-btn fr-btn--secondary fr-btn--icon-right fr-icon-eye-line) %>
+        </p>
+
+    </div>
+
+    <div class="fr-col-md-<%= 12 - layout_main_bloc %>">
+      <%= render partial: 'use_cases', locals: { id: 'use_cases_desktop', extra_classes: 'fr-hidden fr-unhidden-md' } %>
+      <%= render partial: 'details', locals: { id: 'details_desktop', extra_classes: 'fr-hidden fr-unhidden-md' } %>
+    </div>
+  </div>
+</article>

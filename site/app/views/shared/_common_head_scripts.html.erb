@@ -1,0 +1,15 @@
+<script type="module">
+  import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+
+  window.Stimulus = Application.start()
+  window.StimulusController = Controller;
+
+  document.addEventListener('turbo:frame-missing', (event) => {
+    const { detail: { response, visit } } = event
+    event.preventDefault()
+    visit(response)
+  })
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

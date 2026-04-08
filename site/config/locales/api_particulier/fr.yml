@@ -1,0 +1,472 @@
+fr:
+  layouts:
+    api_particulier:
+      application:
+        title: API Particulier
+
+  shared:
+    public_token_magic_links:
+      show:
+        error:
+          expired:
+            title: Lien expiré
+            description: Le lien d'accès au jeton a expiré. Les liens magiques ont une durée de vie de %{initial_expiration_delay_in_hours} heures. Veuillez redemander un accès à votre responsable de compte.
+          unknown:
+            title: Une erreur est survenue à la récupération du jeton.
+            description: Une erreur inconnue est survenue. Veuillez contacter le support à api-particulier@api.gouv.fr
+          missing:
+            title: Jeton(s) non trouvés
+            description: Le jeton ou les jetons demandé(s) n'ont pas été trouvés. Veuillez contacter le support à api-particulier@api.gouv.fr
+        disclaimer:
+          title: Durée de validité du lien
+          description: Cette page contient votre jeton d'accès à API Particulier et ne doit en aucun cas être partagée avec un tiers non habilité ! Ce lien expirera dans %{expiration_time}.
+    api_particulier:
+      header:
+        title: API Particulier
+        tagline: Les données des particuliers <strong>pour les administrations</strong>
+        tools:
+          links:
+            faq_contact:
+              title: "FAQ & Contact"
+              icon: "question-fill"
+            sign_in:
+              title: "Se connecter"
+              icon: "lock-fill"
+            user_connected:
+              icon: "user-fill"
+            sign_out:
+              title: "Se déconnecter"
+              icon: "logout-box-r-fill"
+        menu:
+          catalogue: "<strong>Catalogue des API</strong><br> & documentation des données"
+          usages: "<strong>Cas d'usages</strong><br> & modalités d'appel"
+          developer: "<strong>Espace développeur</strong><br> & spécifications techniques"
+          ask_access: "<strong>Demander un accès</strong><br>🔑 Vérifier votre éligibilité"
+          banner: 
+            default: "<strong>Nouvelle API quotient familial CAF & MSA</strong> : Bureau ouvert <a href='https://webinaire.numerique.gouv.fr/meeting/signin/21835/creator/2466/hash/4ca2f92df7a5e7e9a27ea7e46dfba7e30ea6e41b'>en visio</a> le %{date} à 10 heures."
+            tech: "<strong>La V.3 est disponible !</strong> Bureau ouvert <a href='https://webconf.numerique.gouv.fr/APIEntreprise00Version3'>en visio</a> le %{date} à 10 heures. <strong>🔄 <a href='/blog/migration-api-particulier-v3'>Guide de migration V.3</a></strong>"
+
+      footer:
+        tagline: Accédez aux données familiales, aux statuts élève, étudiant, boursier, complémentaire santé solidaire et demandeur d'emploi des particuliers pour simplifier leurs démarches administratives.
+        external_links:
+          - info.gouv.fr
+          - service-public.fr
+          - legifrance.gouv.fr
+          - data.gouv.fr
+
+  api_particulier:
+    pages:
+      home:
+        section_welcome:
+          title: <strong>Vous êtes un acteur public ?</strong><br />Gagnez du temps dans vos démarches<br />auprès des particuliers !
+          subtitle: Intégrez l'API Particulier 👇
+          button_endpoints: Les données disponibles
+          button_developers: Kit d'intégration
+        section_access:
+          title_access: Un bouquet d'API pour les agents publics vers les informations administratives des citoyens
+          info_data_title: Des données certifiées sans solliciter le citoyen
+          info_data_description: Les données sont prises à la source. Plus besoin de demander certains justificatifs aux particuliers. Terminé les fautes de frappes et la vérification manuelle car l’information est certifiée et fait foi.
+          info_provider_title: Les fournisseurs de données regroupés
+          info_provider_description: API Particulier recherche et démarche pour vous les organisations publiques ayant des données administratives sur les citoyens.
+          info_account_title: Un seul interlocuteur à un seul endroit
+          info_account_description: API Particulier agrège et restitue les connaissances techniques et fonctionnelles au même endroit. Vous n'avez plus besoin de gérer plusieurs contacts techniques et fonctionnels.
+          info_technical_title: Un seul interfaçage technique
+          info_technical_description: L’interfaçage est unique et dans des standards à jour des contraintes industrielles. Il n'est plus nécessaire de lire et comprendre les documentations des différentes DSI.
+          card_documentation_title: Une documentation métier de chaque API
+          card_documentation_description: Liste des données, périmètre de l’API, conditions d’utilisations,&nbsp;...
+          card_developers_title: Un espace développeur
+          card_developers_description: Spécifications techniques générales et dédiées à chaque API, Swagger, Kit de mise en production,&nbsp;...
+          link_faq: "Qu'est-ce qu'une API ?"
+        section_use_cases:
+          title: Cas d'usages
+          description: <strong>Une fois l'API Particulier intégrée dans votre système d'information</strong>&nbsp;:&nbsp;<br>À de l'identité pivot du particulier, d'un identifiant ou avec FranceConnect, les informations sont automatiquement saisies dans les formulaires de vos usagers et en back-office pour vos agents. Cet accès direct aux données administratives facilite de nombreux cas d'usages&nbsp;:&nbsp;
+          cards:
+            aides_facultatives:
+              title: "Aides facultatives à la scolarité"
+            cantines-colleges-lycees-tarification:
+              title: "Tarification cantine"
+            ccas:
+              title: "Aides sociales des CCAS"
+            tarification_transports:
+              title: "Tarification des transports"
+            tarification_municipale_enfance:
+              title: "Portail famille des communes"
+            stationnement-residentiel:
+              title: "Stationnement résidentiel"
+            modalite_appel_france_connect:
+              title: "Modalité d'appel : FranceConnect"
+            modalite_formulaire_qf:
+              title: "Modalité d'appel : Formulaire de collecte du QF"
+          link: "Tous les cas d'usages"
+        section_demonstrateur:
+          demo_title: Inspirez-vous avec le démonstrateur API Particulier 💡
+          demo_description: |-
+              Parcourez des exemples d'interfaces fictives pour comprendre comment API Particulier peut simplifier vos démarches en ligne :
+          demo_link: https://demonstrateur.particulier.api.gouv.fr
+          demo_link_title: Consulter le démonstrateur
+        section_partners:
+          title: Ils partagent les données au travers d’API Particulier&nbsp;:&nbsp;
+          subtitle: Découvrez les API de chaque fournisseur de données.
+          link_endpoints: Consulter toutes les API
+          link_new_api: Proposer une nouvelle API
+        section_developers:
+          title: Un espace développeur 🛠 <br>pour intégrer et maintenir l’API
+          description: Une documentation technique précise dédiée aux équipes d’intégration.
+          prerequisites_link: Les prérequis techniques
+          prerequisites_description: La liste des fondamentaux techniques à maitriser, avant de demander un d’accès à l’API Particulier.
+          integration_link: Kit d’intégration
+          integration_description: Un pas à pas pour intégrer et mettre en production l’API Particulier
+          swagger_link: Spécifications techniques de chaque API
+          swagger_description: Utilisez notre Swagger (OpenAPI)
+      newsletter:
+        banner:
+          title: Restez informé des nouveautés de l'API Particulier
+          description: Recevez les dernières actualités de l'API Particulier et des informations sur les nouvelles API disponibles.
+        main:
+          newsletter_description: Recevez les dernières actualités de l'API Particulier et des informations sur les nouvelles API disponibles.
+          newsletter_title: Inscrivez-vous à la newsletter
+
+    endpoints:
+      index:
+        title: Catalogue des API
+        search:
+          label: "Rechercher une API"
+          placeholder: "Rechercher par nom, description ou fournisseur..."
+          button: "Rechercher"
+          no_results: "Aucune API ne correspond à votre recherche."
+      endpoint:
+        cta:
+          swagger: Swagger
+          documentation: Documentation
+      show:
+        error:
+          record_not_found: "L'API que vous essayez d'accéder est introuvable."
+        deprecated:
+          title: "Cette API est dépréciée"
+          description: "Cette API est une ancienne version, nous vous invitons à utiliser ces API les plus récentes :"
+        incoming:
+          title: "Cette API est bientôt disponible, testez-là !"
+          description: "Cette API est en cours de conception et va bientôt rejoindre le catalogue d'API Particulier."
+          link_documentation: |-
+            En plus de cette documentation, un environnement technique de test est déjà disponible&nbsp;:&nbsp;
+          cta: "Consulter le swagger"
+        providers:
+          description:
+            one: "Fournisseur de la donnée"
+            other: "Fournisseurs de la donnée"
+        perimeter:
+          title: "Périmètre"
+          entity_type_title: "Particuliers concernés :"
+          geographical_scope_title: "Périmètre géographique :"
+          updating_rules_title: "Actualisation de la donnée :"
+          know_more_title: "En savoir plus :"
+        parameters_details:
+          title: Modalités d'appel
+        data:
+          title: "Les données"
+        attributes:
+          title: "Informations renvoyées en JSON :"
+        faq:
+          title: "Questions & réponses"
+        historique:
+          title: "Historique"
+          old_endpoints:
+            description: "Documentations des anciennes API :"
+            link_documentation: |-
+              Plus d'informations sur la gestion de version API&nbsp;Particulier dans cette <a href='/developpeurs#gerer-les-evolutions-de-version' target='_blank'>documentation</a>.
+        cgu:
+          title: "Conditions d'utilisation des données"
+          main_title_opening: "Ouverture de la donnée :"
+          api_cgu_title: "Conditions spécifiques à cette API :"
+          main_title: "Conditions générales :"
+          cta: "CGU API Particulier"
+      use_cases:
+        main:
+          title: "Cas d'usages"
+          description: "API utile pour :"
+        optional:
+          description: "API parfois utile pour :"
+      details:
+        title: "Spécifications de l'API"
+        format:
+          title: "Format de l'information"
+        availability:
+          title: "Disponibilité"
+          link: "Page de statut des API"
+          maintenance: "En maintenance tous les jours de %{from_hour} à %{to_hour}"
+          no_maintenance: "Disponible 24h/24 et 7j/7"
+        parameters:
+          title:
+            one: "Modalité d'appel"
+            other: "Modalités d'appel"
+          link: "Détails des modalités"
+        technical_specifications:
+          title: "Spécifications techniques :"
+          cta: "Consulter le swagger"
+        test_cases: "Cas de tests"
+    faq:
+      index:
+        title: "FAQ & contact"
+
+    cas_usages:
+      index:
+        title: "Cas d'usages & modalités d'appel"
+        description: "Consultez les <strong>fiches pratiques des cas d’usages & les guides des modalités d'appel</strong> de l’API Particulier"
+        cards:
+          aides_facultatives:
+            title: "Aides facultatives"
+            description: "Simplifiez l'attribution des aides facultatives départementales et régionales"
+          cantines-colleges-lycees-tarification:
+            title: "Tarification cantine"
+            description: "Calculez automatiquement le tarif de restauration scolaire des collégiens et lycéens"
+          ccas:
+            title: "Aides sociales des CCAS"
+            description: "Simplifiez le dépôt et l'instruction des dossiers d'aides sociales"
+          tarification_transports:
+            title: "Tarification des transports"
+            description: "Obtenez automatiquement les données nécessaires à l'attribution des tarifs réduits de transports collectifs"
+          tarification_municipale_enfance:
+            title: "Tarification sociale municipale de l'enfance"
+            description: "Calculez automatiquement le tarif des services municipaux à l'enfance - crèche, cantine, périscolaire, etc."
+          gestion_rh_secteur_public:
+            title: "Gestion RH secteur public"
+            description: "Facilitez le recrutement et la gestion administrative des agents publics"
+          stationnement-residentiel:
+            title: "Tarification du stationnement résidentiel"
+            description: "Automatisez la tarification du stationnement résidentiel par rapport au véhicule du particulier"
+          modalite_appel_france_connect:
+            title: "FranceConnect"
+            description: "Proposer FranceConnect comme modalité d'appel pour simplifier l'authentification des particuliers"
+          modalite_formulaire_qf:
+            title: "Formulaire de collecte du QF"
+            description: "Collecter facilement le quotient familial CAF ou MSA des particuliers"
+    tokens:
+      token:
+        scope:
+          cnaf_quotient_familial:
+            label: CNAF & MSA || API Quotient familial || QF
+          cnaf_allocataires:
+            label: CNAF & MSA || API Quotient familial || Identités allocataire et conjoint
+          cnaf_enfants:
+            label: CNAF & MSA || API Quotient familial || Identités enfants
+          cnaf_adresse:
+            label: CNAF & MSA || API Quotient familial || Adresse du foyer
+          pole_emploi_identite:
+            label: France Travail || API statut demandeur d'emploi || Statut et identité du demandeur
+          pole_emploi_contact:
+            label: France Travail || API statut demandeur d'emploi || Téléphone et e-mail
+          pole_emploi_adresse:
+            label: France Travail || API statut demandeur d'emploi || Adresse
+          pole_emploi_inscription:
+            label: France Travail || API statut demandeur d'emploi || Date d'inscription et de cessation, catégorie du demandeur d'emploi
+          pole_emploi_paiements:
+            label: France Travail || API paiements France Travail
+          men_statut_scolarite:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier || Statut scolarisé et identité de l'élève
+          men_statut_boursier:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier || Statut boursier
+          men_echelon_bourse:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier ||  Échelon de la bourse
+          mesri_identite:
+            label: Min. enseignement supérieur || API Statut étudiant || Statut inscrit et identité de l'étudiant
+          mesri_admission:
+            label: Min. enseignement supérieur || API Statut étudiant || Périmètre étudiants admis
+          mesri_inscription_etudiant:
+            label: Min. enseignement supérieur || API Statut étudiant || Périmètre étudiants en formation initiale
+          mesri_inscription_autre:
+            label: Min. enseignement supérieur || API Statut étudiant || Périmètre étudiants en formation continue
+          mesri_etablissements:
+            label: Min. enseignement supérieur || API Statut étudiant || Liste des établissements
+          cnous_statut_boursier:
+            label: Cnous || API Statut étudiant boursier || Statut boursier
+          cnous_echelon_bourse:
+            label: Cnous || API Statut étudiant boursier || Échelon de la bourse
+          cnous_identite:
+            label: Cnous || API Statut étudiant boursier || Identité du boursier
+          cnous_email:
+            label: Cnous || API Statut étudiant boursier || E-mail
+          cnous_periode_versement:
+            label: Cnous || API Statut étudiant boursier || Période de versement
+          cnous_statut_bourse:
+            label: Cnous || API Statut étudiant boursier || Statut définitif de la bourse
+          cnous_ville_etudes:
+            label: Cnous || API Statut étudiant boursier || Ville d'études et établissement
+          complementaire_sante_solidaire:
+            label: Sécurité sociale || API Complémentaire santé solidaire
+          prime_activite:
+            label: CNAF & MSA || API Prime activité || Statut Prime activité
+          prime_activite_majoration:
+            label: CNAF & MSA || API Prime activité || Prime activité majoration
+          allocation_adulte_handicape:
+            label: CNAF & MSA || API Allocation adulte handicape (AAH) || Statut Allocation adulte handicape
+          allocation_soutien_familial:
+            label: CNAF & MSA || API Allocation soutien familial (ASF) || Statut Allocation Allocation soutien familial
+          revenu_solidarite_active:
+            label: CNAF & MSA || API Revenu solidarite active || Statut Revenu solidarite active
+          revenu_solidarite_active_majoration:
+            label: CNAF & MSA || API Revenu solidarite active || Revenu solidarite active majoration
+          dsnj_statut_service_national:
+            label: DSNJ || API Service national || Statut service national
+          cnav_participation_familiale_eaje_allocataires:
+            label: CNAV || API Participation familiale Eaje || Identités allocataires
+          cnav_participation_familiale_eaje_enfants:
+            label: CNAV || API Participation familiale Eaje || Identités enfants
+          cnav_participation_familiale_eaje_adresse:
+            label: CNAV || API Participation familiale Eaje || Adresse du foyer
+          cnav_participation_familiale_eaje_parametres_calcul:
+            label: CNAV || API Participation familiale Eaje || Paramètres de calcul
+          cnav_allocation_enfant_handicape:
+            label: CNAV || API Allocation enfant handicapé || Statut Allocation enfant handicapé
+
+          mesri_identifiant:
+            label: Min. enseignement supérieur || API Statut étudiant || INE
+            tag:
+              - obsolete
+          dgfip_declarant1_nom:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 1 || Nom
+            tag:
+              - obsolete
+          dgfip_declarant1_nom_naissance:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 1 || Nom de naissance
+            tag:
+              - obsolete
+          dgfip_declarant1_prenoms:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 1 || Prénom(s)
+            tag:
+              - obsolete
+          dgfip_declarant1_date_naissance:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 1 || Date de naissance
+            tag:
+              - obsolete
+          dgfip_declarant2_nom:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 2 || Nom
+            tag:
+              - obsolete
+          dgfip_declarant2_nom_naissance:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 2 || Nom de naissance
+            tag:
+              - obsolete
+          dgfip_declarant2_prenoms:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 2 || Prénom(s)
+            tag:
+              - obsolete
+          dgfip_declarant2_date_naissance:
+            label: DGFIP || API Revenu fiscal de référence || État civil || déclarant 2 || Date de naissance
+            tag:
+              - obsolete
+          dgfip_date_recouvrement:
+            label: DGFIP || API Revenu fiscal de référence || Échéances de l’avis d’imposition || Date de recouvrement
+            tag:
+              - obsolete
+          dgfip_date_etablissement:
+            label: DGFIP || API Revenu fiscal de référence || Échéances de l’avis d’imposition || Date d'établissement
+            tag:
+              - obsolete
+          dgfip_adresse_fiscale_taxation:
+            label: DGFIP || API Revenu fiscal de référence || Situation du foyer fiscal || Adresse
+            tag:
+              - obsolete
+          dgfip_adresse_fiscale_annee:
+            label: DGFIP || API Revenu fiscal de référence || Situation du foyer fiscal || Année de déclaration
+            tag:
+              - obsolete
+          dgfip_nombre_parts:
+            label: DGFIP || API Revenu fiscal de référence || Situation du foyer fiscal || Nombre de parts
+            tag:
+              - obsolete
+          dgfip_nombre_personnes_a_charge:
+            label: DGFIP || API Revenu fiscal de référence || Situation du foyer fiscal || Nombre de personnes à charge
+            tag:
+              - obsolete
+          dgfip_situation_familiale:
+            label: DGFIP || API Revenu fiscal de référence || Situation du foyer fiscal || Situation de famille
+            tag:
+              - obsolete
+          dgfip_revenu_brut_global:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Revenu brut global
+            tag:
+              - obsolete
+          dgfip_revenu_imposable:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Revenu imposable
+            tag:
+              - obsolete
+          dgfip_impot_revenu_net_avant_corrections:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Impôt sur le revenun et avant corrections
+            tag:
+              - obsolete
+          dgfip_montant_impot:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Montant de l'impôt
+            tag:
+              - obsolete
+          dgfip_revenu_fiscal_reference:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Revenu fiscal de référence
+            tag:
+              - obsolete
+          dgfip_annee_impot:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Année de l'impôt
+            tag:
+              - obsolete
+          dgfip_annee_revenus:
+            label: DGFIP || API Revenu fiscal de référence || Agrégats fiscaux || Année des revenus
+            tag:
+              - obsolete
+          dgfip_erreur_correctif:
+            label: DGFIP || API Revenu fiscal de référence || Compléments || Erreur correctif
+            tag:
+              - obsolete
+          dgfip_situation_partielle:
+            label: DGFIP || API Revenu fiscal de référence || Compléments || Situation partielle
+            tag:
+              - obsolete
+          sdh_statut_sportif_identite:
+            label: Sport Data Hub || API Statut sportif || Identité du sportif
+          sdh_statut_sportif_est_sportif_de_haut_niveau:
+            label: Sport Data Hub || API Statut sportif || Statut haut niveau
+          sdh_statut_sportif_a_ete_sportif_de_haut_niveau:
+            label: Sport Data Hub || API Statut sportif || Historique statut haut niveau
+          sdh_statut_sportif_informations_statut:
+            label: Sport Data Hub || API Statut sportif || Informations statut sportif
+          sdh_statut_sportif_informations_statuts_precedents:
+            label: Sport Data Hub || API Statut sportif || Historique informations statut sportif
+    sessions:
+      create_from_oauth:
+        not_found:
+          title: "Votre compte ne semble pas être rattaché à une habilitation API Particulier."
+          description: "Veuillez vérifier que l'e-mail %{email} utilisé ici correspond à l'e-mail utilisé lors de votre demande d'habilitation API Particulier \n\n
+            Si vous êtes un nouvel utilisateur, veuillez déposer une demande en suivant le lien suivant : https://datapass.api.gouv.fr/api-particulier\n
+            Après validation de celle-ci, vous pourrez vous connecter au compte API Particulier."
+      failure:
+        unknown: Une erreur inconnue est survenue, veuillez contacter le support.
+      after_logout:
+        success: Déconnexion réussie.
+    documentation:
+      index:
+        card_swagger_link: 🕹 Swagger
+        card_swagger_description: Spécifications techniques de chacune des API&nbsp;:&nbsp;<br/>- Paramètres d’appels<br/>- Détail de la réponse JSON<br/>- Codes erreurs
+      menu:
+        swagger: Swagger
+      banner:
+        link_specs: 🎛 Spécifications générales
+        link_preprod: 🧪 Environnement de test
+        link_kit: 🚀 Kit de mise en production
+        link_migration: 🔄 Guide de migration V.3
+  beta:
+    label: Version beta
+    title: Cette API est disponible dans une version non-définitive
+    color: purple-glycine
+  incoming:
+    label: prochainement
+    title: Cette API arrivera prochainement dans le catalogue, dîtes-nous ce que vous pensez de la structure proposée
+    color: yellow-moutarde
+  novelty:
+    label: Nouveauté
+    title: Cette API est nouvelle dans le catalogue
+    color: blue-ecume
+  new_version:
+    label: Nouvelle version
+    title: Une nouvelle version de cette API est disponible
+    color: blue-ecume
+  deprecated:
+    label: Déprécié
+    title: Cette API est dépreciée
+    color: pink-macaron

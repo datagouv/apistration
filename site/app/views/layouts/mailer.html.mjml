@@ -1,0 +1,118 @@
+<mjml owa="desktop" version="4.14.1">
+  <mj-head>
+    <mj-font
+      name="Open Sans"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" />
+    <mj-attributes>
+      <mj-text font-size="15px" font-family="Open Sans, Helvetica Neue, Helvetica, sans-serif" padding="0px 25px 0px 25px"/>
+      <mj-all font-family="Open Sans, Helvetica Neue, Helvetica, sans-serif"/>
+      <mj-section background-color="#ffffff" />
+      <mj-divider
+        border-color="#a6b0d2"
+        border-style="solid"
+        border-width="1px"
+        padding="0px 0px 0px 0px"
+        width="100%" />
+      <mj-button
+        background-color="#000091"
+        border-radius="3px"
+        color="#ffffff"
+        font-size="16px"
+        font-weight="bold"
+        inner-padding="10px 25px 10px 25px"
+        padding="10px 25px 10px 25px" />
+      <mj-image fluid-on-mobile="false" />
+      <mj-class name="section-banner" padding="0px 0px 0px 20px" />
+      <mj-class name="section-main" padding="10px 20px 10px 20px" />
+      <mj-class name="section-block" background-color="#ffffff" padding="0px 40px 30px 40px" />
+      <mj-class name="section-block-gris" background-color="#ededf2" padding="10px 20px 10px 20px" />
+      <mj-class name="section-block-gris-clair" background-color="#F5F5FE" padding="10px 20px 10px 20px" />
+      <mj-class name="block-beige" container-background-color="#f0f0f0" padding="0px 30px 0px 30px" />
+      <mj-class name="block-beige-button" container-background-color="#f0f0f0" padding="0px 30px 20px 30px" />
+      <mj-class name="block-blue" container-background-color="#d5dbef" padding="20px 30px 20px 30px" />
+      <mj-class name="button-secondary" color="#000091" background-color="transparent" border="2px solid #000091" />
+      <mj-class name="secondary-link" font-size="12px" margin-top="0px" padding-top="0px" align="center" />
+    </mj-attributes>
+    <mj-style>
+      .footer-divider {
+        border-color: #2a15a3;
+        border-style: solid;
+        border-width: 2px";
+      }
+      .footer-list {
+        list-style-type: none;
+        padding-left: 15px;
+      }
+      .footer-list li a {
+        color: #000000;
+        font-weight: bold;
+      }
+      .warning-red {
+        color: #c9191e;
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-weight: normal;
+      }
+      h2 {
+        font-size: 23px;
+        line-height: 26px;
+        font-weight: normal;
+      }
+      h3 {
+        font-size: 18px;
+        line-height: 26px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 23px;
+      }
+      a {
+        color: #000091;
+      }
+      li {
+        line-height: 26px;
+        margin-bottom: 10px;
+      }
+      b {
+        font-weight: 900;
+      }
+      .quote-block {
+        border-left: 4px solid #000091;
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        margin: 15px 0;
+        font-style: italic;
+        line-height: 1.6;
+      }
+      .highlight {
+        border-left: 4px solid #ce0500;
+        color: #ce0500;
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        margin: 15px 0;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #f1f3f4;
+        border: 1px solid #e1e5e9;
+        border-radius: 4px;
+        padding: 12px 16px;
+        margin: 10px 0;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .code-block pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F4F4F4"><%= yield %></mj-body>
+</mjml>

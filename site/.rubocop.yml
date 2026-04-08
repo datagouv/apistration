@@ -1,0 +1,231 @@
+plugins:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
+
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "Gemfile"
+    - "Guardfile"
+    - "Rakefile"
+    - "bin/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "vendor/**/*"
+    - "sandbox/**/*"
+
+Capybara/ClickLinkOrButtonStyle:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Lint/EmptyClass:
+  Exclude:
+    - 'app/policies/application_policy.rb'
+
+Lint/MissingSuper:
+  Enabled: false
+
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Lint/InheritException:
+  Enabled: false
+
+Lint/SuppressedException:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/spec_helper.rb"
+    - "spec/support/shared_examples/*"
+    - "spec/factories/**/*"
+  AllowedMethods:
+    - "describe"
+    - "context"
+    - "namespace"
+    - "shared_examples"
+    - "let"
+    - "path"
+    - "get"
+    - "response"
+
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - "app/lib/seeds.rb"
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - "_"
+    - "nb"
+    - "id"
+    - "to"
+    - "cc"
+
+Metrics/MethodLength:
+  Max:
+    15
+  CountAsOne:
+    - hash
+    - array
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - "spec/**/*hubee*"
+
+Naming/VariableNumber:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - "spec/spec_helper.rb"
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GlobalVars:
+  AllowedVariables:
+    - $elastic
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - sandbox
+    - development
+    - test
+
+Rails/UnusedIgnoredColumns:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Enabled: False
+
+RSpec/DescribedClass:
+  SkipBlocks: true
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - "spec/requests/**/*"
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: False
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/RepeatedDescription:
+  Enabled: false
+
+RSpec/DescribeClass:
+  IgnoredMetadata:
+    type:
+      - acceptance
+      - request
+      - controller
+      - feature
+      - rake
+
+RSpec/ExpectOutput:
+  Exclude:
+    - "spec/support/shared_context/mute_rake_tasks.rb"
+
+RSpec/LetSetup:
+  Enabled: false
+
+Style/OpenStructUse:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+RSpec/MissingExampleGroupArgument:
+  Exclude:
+    - "spec/factories/**/*.rb"
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/FindEach:
+  Enabled: false
+
+Rails/RedundantActiveRecordAllMethod:
+  Exclude:
+      - "spec/**/*"

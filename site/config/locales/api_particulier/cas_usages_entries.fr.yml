@@ -1,0 +1,1350 @@
+fr:
+  api_particulier:
+    cas_usages_entries:
+      tarification_municipale_enfance:
+        user_types:
+          - communes
+          - intercommunalités
+        name: 'Tarification sociale des services municipaux à l’enfance'
+        endpoints:
+          - cnav/quotient_familial
+        endpoints_optional:
+          - cnav/revenu_solidarite_active
+        endpoints_forbidden:
+          - cnous/statut_etudiant_boursier
+          - education_nationale/statut_eleve_scolarise
+          - mesri/statut_etudiant
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/prime_activite
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+          - cnav/allocation_soutien_familial
+        comments_endpoints:
+            "cnav/quotient_familial" : "Permet de récupérer le quotient familial CAF ou MSA.<br/><br/>Les données d'identité des membres de la famille et l'adresse postale sont aussi disponibles sous réserve d'un cadre légal précis."
+            "cnous/statut_etudiant_boursier" : ""
+            "education_nationale/statut_eleve_scolarise" : ""
+            "mesri/statut_etudiant" : ""
+            "pole_emploi/situation" : ""
+            "pole_emploi/indemnites" : ""
+            "cnav/prime_activite" : ""
+            "cnav/revenu_solidarite_active" : ""
+            "cnav/complementaire_sante_solidaire" : ""
+            "cnav/allocation_adulte_handicape" : ""
+            "cnav/allocation_soutien_familial" : ""
+        introduction:
+          title: Simplifiez la tarification des services municipaux à l'enfance pour les familles
+          content: |
+            {:.fr-text--lead}
+            Communes et intercommunalités, avec API Particulier, accédez directement au quotient familial CAF/MSA et à la situation des familles pour calculer leur tarif de restauration scolaire, de crèches ou d'activités périscolaires ou municipales.
+
+             <span class="fr-accordion__title">
+                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-106"><span class="fr-icon-questionnaire-fill fr-mr-1w" aria-hidden="true"></span>Qu'est-ce que la tarification des services municipaux à l'enfance ?</button>
+            </span>
+            <div class="fr-collapse" id="accordion-106">
+              <p>
+                Les communes et intercommunalités ont pour compétences l'attribution et la tarification de différents services : la crèche, l'halte-garderie, les centres de loisirs, la restauration scolaire, les goûters, les études, le conservatoire, l'atelier beaux-arts etc..
+              </p>
+              <p>
+                De nombreuses communes permettent aux habitants d'accéder à ces services directement depuis un portail, souvent appelé "Portail familles", pour gérer l'inscription et la facturation des services proposés. Ce type de portail permet généralement de réserver et payer en ligne les factures liées aux activités péri- et extra-scolaires, de suivre les paiements et de gérer les informations liées au compte de la famille. La tarification de ces activités est adaptée aux ressources de la famille.
+              </p>
+              <p>
+                D'autres communes utilisent des logiciels de gestion en back-office.
+              </p>
+              <p>
+              Selon la politique tarifaire choisie, le calcul des tarifs est réalisé grâce au quotient familial de la Caisse d’allocations familiales (CAF) ou de la sécurité sociale agricole (MSA) et/ou du revenu fiscal de référence figurant sur l'avis d'imposition du foyer. L'API Particulier permet d'accéder facilement au quotient familial de la CAF et de la MSA.
+              </p>
+            </div>
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+            {:.fr-text--lg}
+              Communes et intercommunalités, en intégrant la brique API Particulier dans votre système d'information&nbsp;:
+
+              - 😃 **Pour instruire les dossiers, il n'est plus nécessaire de collecter auprès des familles** l'attestation quotient familial de la CAF ou de la MSA.
+
+              - ⏰ **Vous accélérez ou même automatisez l'instruction** car vos agents instructeurs n'ont plus à vérifier les pièces justificatives fournies, les informations obtenues de l'API Particulier étant certifiées 🔎 ;
+
+              - 🎢 **Vous augmentez le pourcentage des démarches finalisées** car vous faîtes gagner du temps à l'usager ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L114-8 du Code des relations entre le public et l’administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}.
+
+              {:.fr-highlight}
+              > **Votre tarification sociale est également calculée à partir du revenu fiscal de référence ?**
+              > L'API Particulier ne propose pas cette donnée. Vous pouvez demander l'accès à l'[API Impôt Particulier](https://www.data.gouv.fr/dataservices/api-impot-particulier/){:target="_blank"} pour récupérer le revenu fiscal de référence de la famille.
+              > ⚠️ **Les données de l’API Impôt particulier ne permettent pas de calculer les tarifs en établissement d'accueil du jeune enfant** (crèche, multi-accueil, halte-garderie…). Elles ne doivent donc pas être utilisées pour le calcul des participations familiales en Eaje. Une API spécifique est en cours de préparation.
+
+              {:.fr-highlight}
+              > **Vous cherchez à simplifier la tarification des collèges ou lycées ?** Veuillez consulter le cas d'usage [Tarification cantines des collèges et lycées](<%= cas_usages_path('cantines-colleges-lycees-tarification') %>).
+        use_case_examples:
+          title: Exemples d'applications
+          anchor: 'use_case_examples'
+          content: |+
+            {:.fr-h5}
+            ### Parcours de Camille et Kevin sur le démonstrateur API Particulier&nbsp;:
+
+            <button class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line" href="https://demonstrateur.particulier.api.gouv.fr/cantine/choix-personnage">
+                Commencer la démo
+            </button>
+
+
+            {:.fr-h5}
+            ### Un parent souhaite inscrire son enfant à la crèche, sur le portail famille de sa commune connecté à l'API Particulier&nbsp;:
+
+            1. **Étape 1&nbsp;:** Le parent se connecte à son espace personnel sur le site de la région, il clique sur la démarche dédiée à l'inscription crèche, il s'identifie via FranceConnect ou en renseignant ses données d'identité _nom de naissance, prénom, sexe, lieu et date de naissance_&nbsp;:
+
+               {:.fr-highlight.fr-highlight--example}
+               ⚙️ **En arrière-plan** : Un appel à l'API quotient familial CAF du bouquet API Particulier est effectué et permet de récupérer le quotient familial du mois en cours ou choisi.
+
+            2. **Étape 2&nbsp;:** Le parent est automatiquement positionné dans la grille tarifaire de la collectivité. Le parent n'a plus qu'à terminer l'envoi de sa demande d'inscription.
+
+            {:.fr-h5}
+            ### Un parent souhaite inscire son enfant à la cantine de l'école, sa commune est connectée à l'API Particulier via un back-office et va traiter son dossier&nbsp;:
+
+            1. **Étape 1&nbsp;:** L'école envoie un e-mail aux parents pour leurs demander de transmettre leur quotient familial CAF ou MSA via le [formulaire de collecte](<=% cas_usage_path('formulaire_qf') %>). _Une alternative sur place à l'école ou par e-mail est proposée car ce formulaire est disponible uniquement via FranceConnect_.
+
+            2. **Étape 3&nbsp;:** Le parent se rend sur [Quotient-familial.numerique.gouv.fr](<=% cas_usage_path('formulaire_qf') %>). Il se FranceConnecte, ses données d'identité et son quotient familial récupérés grâce à FranceConnect et API Particulier sont affichés. Il valide pour envoyer ces informations à la commune.
+
+               {:.fr-highlight.fr-highlight--example}
+               ⚙️ **En arrière-plan** : Un appel à l'API quotient familial CAF du bouquet API Particulier est effectué au moment de la FranceConnexion du parent. Les données sont stockées dans Hubee le temps que l'éditeur de la commune les récupère et les affiche dans le back-office de la commune
+
+            2. **Étape 4&nbsp;:**Le logiciel de la commune reçoit les informations, et calcule automatiquement le tarif de la cantine. L'envoi de ce tarif est directement transmis à l'école.&nbsp;:
+
+               {:.fr-highlight.fr-highlight--example}
+               ⚙️ **En arrière-plan** : Cette étape est réalisée par le logiciel de la commune et plus ou moins automatisée. Les données peuvent aussi être traitées par un agent.
+
+            2. **Étape 3&nbsp;:** Le parent reçoit un e-mail de confirmation de l'école avec le tarif de la cantine. Il n'a plus qu'à payer.
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+
+        users:
+          title: Ils utilisent l’API Particulier
+          anchor: 'users'
+          content: |+
+            {:.fr-h5}
+            ### Témoignage
+
+            <figure class="fr-quote--column ">
+            {:.fr-quote}
+            >
+            > <blockquote>«&nbsp;Le calcul du quotient familial municipal sert à obtenir des réductions sur le prix des repas de la cantine scolaire dans les écoles publiques ou privées, sur les tarifs des activités de Divertisport, des Mercredis de Lyon, des Vendredis aprèm et des classes transplantées. Il est déterminé en fonction des revenus et de la composition de la famille.&nbsp;»
+            > </blockquote>
+            >
+            > <figcaption>
+            > Ville de Lyon
+            > {:.fr-quote__author}
+            >
+            > [Accéder à la démarche](https://www.lyon.fr/demarche/vie-scolaire/calcul-du-quotient-familial-municipal){:target="_blank"}
+            > {:.fr-quote__source}
+            >
+            > {:.fr-quote__image}
+            >  ![Logo de la ville de Lyon](<%= image_path('api_particulier/cas_usages/images/logo-ville-lyon.svg') %>){:width="100px"}
+            > </figcaption>
+            >
+            </figure>
+
+            {:.fr-h5}
+            ### Éditeurs
+
+            De nombreux éditeurs de logiciels de gestion de la restauration scolaire et des activités périscolaires utilisent déjà des API et ont ainsi dématérialisé la tarification des services proposés par les communes et intercommunalités :
+
+            {:.fr-table}
+            | Éditeur                      | Nom de la solution            |
+            | ---------------------------- | ----------------------------- |
+            | Agora Plus                   | Agor@Famille Premium          |
+            | Ciril Group                  | Civil Enfance                 |
+            | JVS                          | Parascol – MonEspaceFamille   |
+            | Arpège                       | Concerto                      |
+            | NFI Nord France Informatique |                               |
+            | Entr'ouvert                  | Publik                        |
+            | Berger Levrault              | BL Enfance                    |
+            | Jdéalise                     | Cantine de France             |
+            | Mushroom                     | CityFamily                    |
+            | TeamNet                      | Axel                          |
+            | Abelium                      | Domino Web                    |
+            | Waigéo                       | MyPérischool                  |
+            | AIGA                         | iNoé                          |
+            | Qiis                         | eTicket                       |
+            | JVS-Mairistem                | Parascol                      |
+            | 3D Ouest                     | P3D Ouest                     |
+            | Amiciel                      | Malice                        |
+            | Cosoluce                     | Fluo                          |
+
+            Vous êtes un éditeur et vous souhaitez apparaître dans cette liste ? Écrivez-nous à [api-particulier@api.gouv.fr](api-particulier@api.gouv.fr)
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier en justifiant du cadre légal de l'utilisation des données :
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadre spécifique** : _Référence législative à venir_
+            - **Délibération** : Une délibération est nécessaire lors de votre demande d'habilitation pour justifier de l'utilisation des données demandées pour la tarification. [En savoir plus sur la délibération attendue pour être habilité](<%= faq_index_path(anchor: 'qu-est-ce-qu-une-bonne-deliberation-pour-acceder-a-api-particulier') %>).
+
+        request_access:
+          link_datapass: "<%= datapass_base_url %>/api-particulier?demarche=tarification_municipale_enfance_departement"
+
+
+      cantines-colleges-lycees-tarification:
+        user_types:
+          - régions
+          - départements
+        name: 'Tarification cantine'
+        endpoints:
+          - cnav/quotient_familial
+        endpoints_optional:
+          - education_nationale/statut_eleve_scolarise
+        endpoints_forbidden:
+          - cnous/statut_etudiant_boursier
+          - mesri/statut_etudiant
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/prime_activite
+          - cnav/revenu_solidarite_active
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+          - cnav/allocation_soutien_familial
+        comments_endpoints:
+            "cnav/quotient_familial" : "Permet de récupérer le quotient familial CAF ou MSA.<br/><br/>Les données d'identité des membres de la famille et l'adresse postale sont aussi disponibles sous réserve d'un cadre légal précis."
+            "cnous/statut_etudiant_boursier" : ""
+            "education_nationale/statut_eleve_scolarise" : "Permet de savoir si l'enfant est scolarisé au primaire, collège ou lycée et s'il est boursier."
+            "mesri/statut_etudiant" : ""
+            "pole_emploi/situation" : ""
+            "pole_emploi/indemnites" : ""
+            "cnav/prime_activite" : ""
+            "cnav/revenu_solidarite_active" : ""
+            "cnav/complementaire_sante_solidaire" : ""
+            "cnav/allocation_adulte_handicape" : ""
+            "cnav/allocation_soutien_familial" : ""
+        introduction:
+          title: Simplifiez les démarches des familles en calculant automatiquement le tarif de restauration scolaire des collégiens et lycéens
+          content: |
+            {:.fr-text--lead}
+            Départements et régions, API Particulier permet d'accéder directement au quotient familial CAF/MSA des familles.
+
+            <span class="fr-accordion__title">
+                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-106"><span class="fr-icon-questionnaire-fill fr-mr-1w" aria-hidden="true"></span>Comment fonctionne la tarification des cantines dans les collèges et lycée ?</button>
+            </span>
+            <div class="fr-collapse" id="accordion-106">
+              <p>Les départements sont en charge des cantines des collèges, et les régions, des cantines des lycées. Dans ce cadre, ce sont ces collectivités qui fixent les tarifs de la restauration scolaire et qui peuvent décider d'appliquer une tarification sociale sur la base des revenus de la famille.
+              <br/>
+              Pour en savoir plus, consulter cette page de <a href="https://www.service-public.fr/particuliers/vosdroits/F24569">Service-Public.fr</a>
+              </p>
+            </div>
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+             {:.fr-text--lg}
+              Départements et régions, en intégrant la brique API Particulier dans votre système d'information&nbsp;:
+
+              - 😃 **Pour instruire les dossiers d'inscription à la cantine, il n'est plus nécessaire de collecter** l'attestation quotient familial de la CAF ou de la MSA.
+
+              - ⏰ **Vous accélérez ou même automatisez l'instruction** car vos agents instructeurs n'ont plus à vérifier les pièces justificatives fournies, les informations obtenues de l'API Particulier étant certifiées 🔎 ;
+
+              - 🎢 **Vous augmentez le pourcentage des démarches finalisées** car vous faîtes gagner du temps à l'usager ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L113-12 du Code des relations entre le public et l’administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037313155){:target="_blank"}.
+
+              {:.fr-highlight}
+              > **Votre tarification sociale est également calculée à partir du revenu fiscal de référence ?**
+              > L'API Particulier ne propose pas cette donnée. Vous pouvez demander l'accès à l'[API Impôt Particulier](https://www.data.gouv.fr/dataservices/api-impot-particulier/){:target="_blank"} pour récupérer le revenu fiscal de référence de la famille.
+
+
+              {:.fr-highlight}
+              > **Vous cherchez à simplifier la tarification des cantines du primaire ?** Veuillez consulter le cas d'usage [Tarification sociale des services municipaux à l'enfance](<%= cas_usages_path('tarification_municipale_enfance') %>).
+        use_case_examples:
+          title: Exemples d'applications
+          anchor: 'use_case_examples'
+          content: |+
+            {:.fr-h5}
+            ### Parcours de Camille et Kevin sur le démonstrateur API Particulier&nbsp;:
+
+            <button class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line" href="https://demonstrateur.particulier.api.gouv.fr/cantine/choix-personnage">
+                Commencer la démo
+            </button>
+
+            {:.fr-h5}
+            ### Un parent souhaite inscrire son enfant à la cantine du lycée depuis le site de sa région connecté à l'API Particulier&nbsp;:
+
+            1. **Étape 1&nbsp;:** Le parent se connecte à son espace personnel sur le site de la région, il clique sur la démarche dédiée à l'inscription cantine scolaire, il s'identifie via FranceConnect ou en renseignant ses données d'identité _nom de naissance, prénom, sexe, lieu et date de naissance_&nbsp;:
+
+               {:.fr-highlight.fr-highlight--example}
+               ⚙️ **En arrière-plan** : Un appel à l'API quotient familial CAF du bouquet API Particulier est effectué et permet de récupérer le quotient familial du mois en cours ou choisi.
+
+            2. **Étape 2&nbsp;:** La tarification de la cantine scolaire est automatiquement calculée en fonction du quotient familial. Le parent n'a plus qu'à terminer l'inscription.
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier en justifiant du cadre légal de l'utilisation des données :
+
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadre légal spécifique aux régions :** [Article L216-6 du Code de l'éducation](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027682699/2013-07-10){:target="_blank"} donne compétence aux lycées pour la gestion des cantines.
+            - **Cadre légal spécifique aux départements :** [Article R531-52 du Code de l'éducation](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020743085){:target="_blank"} donne compétence aux collectivités pour fixer les tarifs des cantines.
+            - **Délibération** : Une délibération est nécessaire lors de votre demande d'habilitation pour justifier de l'utilisation des données demandées pour la tarification. [En savoir plus sur la délibération attendue pour être habilité](<%= faq_index_path(anchor: 'qu-est-ce-qu-une-bonne-deliberation-pour-acceder-a-api-particulier') %>).
+        request_access:
+          link_datapass: "<%= datapass_base_url %>/api-particulier?demarche=cantines-colleges-lycees-tarification"
+
+
+      aides_facultatives:
+        user_types:
+          - départements
+          - régions
+        name: 'Aides facultatives départementales et régionales'
+        endpoints:
+        endpoints_optional:
+          - cnav/quotient_familial
+          - cnous/statut_etudiant_boursier
+          - education_nationale/statut_eleve_scolarise
+          - mesri/statut_etudiant
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/prime_activite
+          - cnav/revenu_solidarite_active
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+          - cnav/allocation_soutien_familial
+        endpoints_forbidden:
+        comments_endpoints:
+            "cnav/quotient_familial" : "Permet de récupérer le quotient familial CAF ou MSA.<br/><br/>Les données d'identité des membres de la famille et l'adresse postale sont aussi disponibles sous réserve d'un cadre légal précis."
+            "cnous/statut_etudiant_boursier" : "Aides études supérieures</span> Indique si le particulier est étudiant boursier et donne l'échelon de sa bourse."
+            "education_nationale/statut_eleve_scolarise" : "Indique si l'élève est scolarisé au primaire, collège ou lycée. Précise si l'élève est boursier et donne l'échelon de sa bourse."
+            "mesri/statut_etudiant" : "Indique si le particulier est étudiant et peut préciser l'établissement où il est inscrit."
+            "pole_emploi/situation" : "Indique si le particulier est demandeur d'emploi."
+            "pole_emploi/indemnites" : "Liste les paiements effectués par FranceTravail."
+            "cnav/prime_activite" : "Indique si le particulier est bénéficiaire de la prime d'activité."
+            "cnav/revenu_solidarite_active" : "Indique si le particulier est bénéficiaire du RSA."
+            "cnav/complementaire_sante_solidaire" : "Indique si le particulier est bénéficiaire de la C2S."
+            "cnav/allocation_adulte_handicape" : "Indique si le particulier est bénéficiaire de l'AAH."
+            "cnav/allocation_soutien_familial" : "Indique si le particulier est bénéficiaire de l'allocation de soutien familial."
+        introduction:
+          title: Simplifiez l'attribution des aides facultatives
+          content: |+
+            {:.fr-text--lead}
+            Départements et régions, avec API Particulier, récupérez directement les certificats de scolarité des élèves et étudiants ; ainsi que les justificatifs de bourse et leur quotient familial CAF/MSA.
+
+            <span class="fr-accordion__title">
+                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-106"><span class="fr-icon-questionnaire-fill fr-mr-1w" aria-hidden="true"></span>Qu'est-ce que les aides facultatives départementales et régionales ?</button>
+            </span>
+            <div class="fr-collapse" id="accordion-106">
+              <p>Les départements et régions ont mis en place des aides facultatives pour aider les familles à financer la scolarité, la culture, l'activité sportive des enfants ou des étudiants.
+              <br/>
+              Ces aides facultatives prennent différentes formes :
+              - aide financière,
+              - fourniture de matériel informatique,
+              - bon d’achat pour des livres,
+              - remboursement d'une partie de la licence sportive, etc...
+              <br/>
+              Elle sont conditionnées à certains critères sociaux qui sont définis dans les délibérations des collectivités.
+              </p>
+            </div>
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+              {:.fr-text--lg}
+              Collectivités, en intégrant la brique API Particulier dans vos formulaires en ligne et votre système d'information&nbsp;:
+
+              - 🗄 **Vous accédez facilement aux données des enfants et des jeunes issues de différentes administrations** telles que les ministères de l'éducation nationale et l'enseignement supérieur, le Cnous, la CAF, la MSA, FranceTravail... ;
+
+              - 😃 **Pour instruire les dossiers, il n'est plus nécessaire de collecter** :
+                - l'attestation quotient familial de la CAF ou de la MSA.
+                - les certificats de scolarité des élèves et/ou carte d'étudiant ;
+                - les justificatifs de bourse ;
+                - le statut demandeur d'emploi des parents ;
+                - le statut de bénéficiaire de différentes prestations : RSA, prime d'activité, AAH, allocation de soutien familial ou encore complémentaire santé solidaire.
+
+              - ⏰ **Vous accélérez ou même automatisez l'instruction** car vos agents instructeurs n'ont plus à vérifier les pièces justificatives fournies, les informations obtenues de l'API Particulier étant certifiées 🔎 ;
+
+              - 🎢 **Vous augmentez le pourcentage des démarches finalisées** et participez ainsi à la réduction du non-recours car vous faîtes gagner du temps à l'usager ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L114-8 du Code des relations entre le public et l’administration.](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}.
+
+
+              {:.fr-highlight}
+              > **Vous êtes un centre communal d'action sociale (CCAS) et distribuez des aides facultatives ?** Veuillez consulter le [cas d'usage dédié aux CCAS](<%= cas_usages_path('ccas') %>).
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+        users:
+          title: Ils utilisent l’API Particulier
+          anchor: 'users'
+          content: |+
+            <figure class="fr-quote--column ">
+            {:.fr-quote}
+            >
+            > <blockquote>«&nbsp;Nous utilisons l'API Particulier pour délivrer des bourses aux collégiens. Cette aide est soumise à un barème dépendant des ressources de la famille. L'API Particulier est utilisée actuellement pour récupérer le quotient familial CAF et la composition de la famille.&nbsp;»
+            > </blockquote>
+            >
+            > <figcaption>
+            > Département de la Drôme - Bourse départementale des collèges
+            > {:.fr-quote__author}
+            >
+            > [Lire la suite du témoignage](https://www.ladrome.fr/mon-quotidien/education/le-departement-aide){:target="_blank"}
+            > {:.fr-quote__source}
+            >
+            > {:.fr-quote__image}
+            >  ![Logo de la drôme](<%= image_path('api_particulier/cas_usages/images/logo-dep-drome.png') %>){:width="100px"}
+            > </figcaption>
+            >
+            </figure>
+
+            <figure class="fr-quote--column ">
+            {:.fr-quote}
+            >
+            > <blockquote>«&nbsp;Nous utilisons l'API Particulier pour connaître le quotient familial d'un étudiant ou de ses parents (s'il en est dépendant fiscalement) afin de vérifier l'éligibilité de sa demande de prêt.&nbsp;»
+            > </blockquote>
+            >
+            > <figcaption>
+            > Département de la Haute-Savoie - Délivrer des prêts étudiants
+            > {:.fr-quote__author}
+            >
+            > [Lire la suite du témoignage](https://actu.hautesavoie.fr/explorez-actu/le-pret-etudiant-il-est-encore-temps){:target="_blank"}
+            > {:.fr-quote__source}
+            >
+            > {:.fr-quote__image}
+            >  ![Logo de la Haute Savoie](<%= image_path('api_particulier/cas_usages/images/logo-dep-haute-savoie.png') %>){:width="100px"}
+            > </figcaption>
+            >
+            </figure>
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier et/ou des autres API en justifiant du cadre légal de l'utilisation des données :
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadre légal spécifique aux régions :** _Référence à venir_ ;
+            - **Cadre légal spécifique aux départements :** _Référence à venir_ ;
+            - **Délibération** : Une délibération est nécessaire lors de votre demande d'habilitation pour justifier de l'utilisation des données demandées pour l'attribution des aides. [En savoir plus sur la délibération attendue pour être habilité](<%= faq_index_path(anchor: 'qu-est-ce-qu-une-bonne-deliberation-pour-acceder-a-api-particulier') %>).
+        request_access:
+          link_datapass: "<%= datapass_base_url %>/api-particulier?demarche=aides_scolarite"
+
+      ccas:
+        user_types:
+          - ccas
+        name: "Aides sociales des CCAS"
+        endpoints:
+          - cnav/quotient_familial
+        endpoints_optional:
+          - cnous/statut_etudiant_boursier
+          - education_nationale/statut_eleve_scolarise
+          - mesri/statut_etudiant
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/prime_activite
+          - cnav/revenu_solidarite_active
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+          - cnav/allocation_soutien_familial
+        comments_endpoints:
+            "cnav/quotient_familial" : "Permet de récupérer le quotient familial CAF ou MSA.<br/><br/>Les données d'identité des membres de la famille et l'adresse postale sont aussi disponibles sous réserve d'un cadre légal précis."
+            "cnous/statut_etudiant_boursier" : "Aides études supérieures</span> Indique si le particulier est étudiant boursier et donne l'échelon de sa bourse."
+            "education_nationale/statut_eleve_scolarise" : "Indique si l'élève est scolarisé au primaire, collège ou lycée. Précise si l'élève est boursier et donne l'échelon de sa bourse."
+            "mesri/statut_etudiant" : "Indique si le particulier est étudiant et peut préciser l'établissement où il est inscrit."
+            "pole_emploi/situation" : "Indique si le particulier est demandeur d'emploi."
+            "pole_emploi/indemnites" : "Liste les paiements effectués par FranceTravail."
+            "cnav/prime_activite" : "Indique si le particulier est bénéficiaire de la prime d'activité."
+            "cnav/revenu_solidarite_active" : "Indique si le particulier est bénéficiaire du RSA."
+            "cnav/complementaire_sante_solidaire" : "Indique si le particulier est bénéficiaire de la C2S."
+            "cnav/allocation_adulte_handicape" : "Indique si le particulier est bénéficiaire de l'AAH."
+            "cnav/allocation_soutien_familial" : "Indique si le particulier est bénéficiaire de l'allocation de soutien familial."
+        endpoints_forbidden:
+        introduction:
+          title: Simplifiez le dépôt et l'instruction des dossiers d'aides sociales
+          content: |
+            {:.fr-text--lead}
+            CCAS, avec API Particulier, accédez directement au quotient familial et aux statuts des particuliers que vous aidez.
+
+            <span class="fr-accordion__title">
+                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-106"><span class="fr-icon-questionnaire-fill fr-mr-1w" aria-hidden="true"></span>Quelle est la mission des centres communaux d'action sociale ?</button>
+            </span>
+            <div class="fr-collapse" id="accordion-106">
+              <p>Les centres communaux d'action sociale (CCAS) sont amenés à instruire de nombreux dossiers d'obtention d'aide sociale pour leurs usagers : aide sociale légale, aide alimentaire, chèque énergie, aide au bus, etc..
+              <br/>
+              Ces dossiers utilisent généralement les données d’état-civil, l'adresse, le quotient familial de la Caisse d’allocations familiales (CAF), la composition du foyer, l'avis d'imposition.
+              </p>
+            </div>
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+            {:.fr-text--lg}
+              Centres communaux d'action sociale (CCAS), en intégrant la brique API Particulier dans vos outils en back-office à destination de vos agents&nbsp;:
+
+              - 🗄 **Vos agents accèderont facilement aux données des particuliers issues de différentes administrations** telles que FranceTravail, les ministères de l'éducation nationale et l'enseignement supérieur, le Cnous, la CAF, la MSA... ;
+
+              - 😃 **Pour aider les citoyens à réaliser leur démarche, vos agents sur place n'ont plus besoin de collecter** :
+                - l'attestation quotient familial de la CAF ou de la MSA.
+                - le statut bénéficiaire de différentes prestations : RSA, prime d'activité, AAH, allocation de soutien familial ou encore complémentaire santé solidaire ;
+                - le statut demandeur d'emploi ;
+                - le certificat de scolarité collège/lycée et le statut élève boursier ;
+                - le certificat de scolarité étudiant et le statut étudiant boursier.
+
+              - ⏰ **Vous accélérez le traitement des dossiers** car vos agents instructeurs n'ont plus à vérifier les pièces justificatives fournies, les informations obtenues de l'API Particulier étant certifiées 🔎 ;
+
+              - 🎢 **Vous augmentez le pourcentage des démarches finalisées** et participez ainsi à la réduction du non-recours car vous faîtes gagner du temps à vos usagers ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L114-8 du Code des relations entre le public et l’administration.](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}.
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+        users:
+          title: Ils utilisent l’API Particulier
+          anchor: 'users'
+          content: |+
+            <figure class="fr-quote--column ">
+            {:.fr-quote}
+            >
+            > <blockquote>«&nbsp;Le principe du "Dites-le nous une fois" (...) permet aux citoyens de ne pas avoir à donner leur consentement mais d'être simplement informés de l'utilisation de leurs pièces. C'est dans ce cadre que le SITIV intègre directement au logiciel métier les informations des usagers (...) Les saisies dans les dossiers usagers sont ainsi facilitées et certifiées.&nbsp;»
+            > </blockquote>
+            >
+            > <figcaption>
+            > Le SITIV - Membre du réseau Déclic
+            > {:.fr-quote__author}
+            >
+            > [Lire la suite du témoignage](https://www.sitiv.fr/Actualites/L-action-sociale-des-villes-du-SITIV-integre-le-dispositif-Dites-le-nous-une-fois){:target="_blank"}
+            > {:.fr-quote__source}
+            >
+            > {:.fr-quote__image}
+            > ![Logo du Sitiv](<%= image_path('api_particulier/cas_usages/images/sitiv.png') %>){:width="100px"}
+            > </figcaption>
+            >
+            </figure>
+
+            {:.fr-h5}
+            ### Liste des éditeurs
+
+            {:.fr-table}
+            | Éditeur | Nom de la solution |
+            |---------|--------------------|
+            |ArcheMC2| ArcheMC2 Social |
+            |Arpège|Sonate Opus |
+
+            Vous êtes un éditeur et vous souhaitez apparaître dans cette liste ? Écrivez-nous à [api-particulier@api.gouv.fr](api-particulier@api.gouv.fr)
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier en justifiant du cadre légal de l'utilisation des données :
+
+
+
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadre légal général des CCAS** : [Article L.123-5](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031106561/){:target="_blank"} et [article R.123-2](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006904984/){:target="_blank"} du Code de l’Action Sociale et des familles qui confient aux CCAS la charge de mener une action générale de prévention et de développement social dans la commune par le biais de prestations en espèces , remboursables ou non et de prestations en nature
+            - **Si votre cas d'usage concerne aussi des aides facultatives, hors du champ de compétence classique des CCAS :**
+              - **Cadre légal spécifique :** [Article R.123-21 du Code de l’Action Sociale et des familles](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020528436/){:target="_blank"} donnant toute liberté au CCAS pour définir les conditions d’attribution des aides sociales facultatives ;
+              - **Délibération du conseil d'administration :** une délibération précisant les données nécessaires à l'attribution des aides facultatives est nécessaire pour être habilité.
+
+
+        request_access:
+          link_datapass: "<%= datapass_base_url %>/api-particulier?demarche=ccas"
+
+
+      tarification_transports:
+        user_types:
+          - AOM
+        name: 'Tarification des transports'
+        endpoints:
+        endpoints_optional:
+          - cnav/quotient_familial
+          - cnous/statut_etudiant_boursier
+          - education_nationale/statut_eleve_scolarise
+          - mesri/statut_etudiant
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/revenu_solidarite_active
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+        endpoints_forbidden:
+          - cnav/prime_activite
+          - cnav/allocation_soutien_familial
+        comments_endpoints:
+            "cnav/quotient_familial" : "<span class='fr-badge fr-badge--sm fr-badge--green-archipel fr-badge--new'>Tarification solidaire</span> Permet de récupérer le quotient familial CAF ou MSA.<br/><br/>Les données d'identité des membres de la famille et l'adresse postale sont aussi disponibles sous réserve d'un cadre légal précis."
+            "cnaf/quotient_familial" : "Indique le quotient familial CAF, ainsi que les données d'identité de membres de la famille et l'adresse déclarée à la caisse."
+            "cnous/statut_etudiant_boursier" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si l'étudiant est boursier et l'échelon de sa bourse."
+            "education_nationale/statut_eleve_scolarise" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si l'élève est scolarisé au primaire, collège ou lycée. Précise si l'élève est boursier et l'échelon de sa bourse."
+            "mesri/statut_etudiant" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si un étudiant est inscrit dans un établissement."
+            "pole_emploi/situation" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si la personne est demandeur d'emploi."
+            "pole_emploi/indemnites" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique le montant des paiements effectués par France Travail."
+            "cnav/prime_activite" : "N'est pas utile pour déterminer la tarification."
+            "cnav/revenu_solidarite_active" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si le particulier est bénéficiaire du revenu de solidarité active, majoré ou non."
+            "cnav/complementaire_sante_solidaire" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si le particulier est bénéficiaire de la complémentaire santé solidaire avec ou sans participation."
+            "cnav/allocation_adulte_handicape" : "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Tarification sociale</span> Indique si le particulier est bénéficiaire de l'allocation adulte handicapé."
+            "cnav/allocation_soutien_familial" : "N'est pas utile pour déterminer la tarification."
+        introduction:
+          title: Simplifiez les démarches des particuliers en calculant automatiquement leur tarif de transports collectifs
+          content: |
+            {:.fr-text--lead}
+            AOM, avec API Particilier, accédez directement au quotient familial et à la situation des particuliers pour leur appliquer la tarification sociale ou solidaire adéquate.
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+            {:.fr-text--lg}
+              Autorités organisatrices de mobilité (AOM), en intégrant la brique API Particulier dans vos formulaires en ligne et votre système d'information&nbsp;:
+
+              - 🗄 **Vous accédez facilement aux données des particuliers issues de différentes administrations** telles que France travail, les ministères de l'éducation nationale et l'enseignement supérieur, le Cnous, la CAF, la MSA... ;
+
+              - 😃 **Pour mettre en oeuvre une tarification sociale**, il n'est plus nécessaire de collecter :
+                - le statut demandeur d'emploi ;
+                - le certificat de scolarité collège/lycée et le statut élève boursier ;
+                - le certificat de scolarité étudiant et le statut étudiant boursier ;
+                - le statut bénéficiaire de différentes prestation : allocation adulte handicapé (AAH), prime d'activité, allocation de soutien familial, complémentaire santé solidaire avec ou sans participation.
+
+              - 😃 **Pour mettre en oeuvre une tarification solidaire**, il n'est plus nécessaire de collecter le quotient familial CAF & MSA.
+
+              - ⏰ **Vous dématérialisez totalement votre service en ligne** car vos agents instructeurs n'ont plus à vérifier les pièces justificatives fournies, les informations obtenues de l'API Particulier étant certifiées 🔎 ;
+
+              - 👨‍💼 **Une utilisation logicielle au guichet est aussi possible**, tout en évitant le stock des pièces justificatives, les erreurs de saisie et les fraudes.
+
+              - 🎢 **Vous augmentez le pourcentage des démarches finalisées** et participez ainsi à la réduction du non-recours aux aides car vous faîtes gagner du temps à l'usager ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L114-8 du Code des relations entre le public et l’administration.](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}.
+        use_case_examples:
+           title: Exemples d'applications
+           anchor: 'use_case_examples'
+           content: |+
+            {:.fr-h5}
+            ### Parcours de Nicolas et Juilette sur le démonstrateur API Particulier&nbsp;:
+
+            <button class="fr-btn" href="https://api-particulier-demonstrateur.osc-secnum-fr1.scalingo.io/transport/choix-personnage">
+                Commencer la démo
+            </button>
+
+            {:.fr-h5}
+            ### Un usager demandeur d'emploi souhaite obtenir un titre de transport&nbsp;:
+
+            1. **Étape 1&nbsp;:** L'usager se connecte à son espace personnel, via FranceConnect, sur le site de la démarche en ligne. Son statut de demandeur d'emploi est automatiquement reconnu.&nbsp;:
+
+               {:.fr-highlight.fr-highlight--example}
+               ⚙️ **En arrière-plan** : Un appel à l'API statut demandeur d'emploi du bouquet API Particulier est effectué et permet de confirmer le statut.
+
+            2. **Étape 2&nbsp;:** La réduction est automatiquement attribuée. L'usager n'a plus qu'à régler son titre.
+            Selon la tarification appliquée, différentes API peuvent être utiles et sont détaillées ci-après.
+
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+
+            {:.fr-highlight}
+            > **La définition des besoins de pièces justificatives nécessaires à ce cas d'usage est en cours** par un groupe de travail coordonné par la DINUM.
+            > Une première [étude auprès de 20 autorités organisatrices de la mobilité (AOM)](/files/api-particulier-tarification-transports-rapport-gart.pdf){:target="_blank"}.
+            > **👋 Pour participer à ce groupe de travail**, écrivez-nous ici : contact@api.gouv.fr.
+        users:
+          title: Ils utilisent l’API Particulier
+          anchor: 'users'
+          content: |+
+            De nombreuses autorités d'organisation de la mobilité (AOM) utilisent déjà des API et ont ainsi dématérialisé la tarification de leurs titres de transport :
+
+            {:.fr-table}
+            | AOM | Type de transport  |
+            | --- | --- |
+            | Transports Agglomération Montpellier | Transports publics |
+            | Commune d'Issoire   | Transports scolaires |
+            | Région Provence-Alpes-Côte-d'Azur | Transports publics |
+            | Syndicat des Mobilités Pays Basque-Adour | Transports publics |
+            | Bordeaux Métropole   | Transports publics |
+            | Syndicat Mixte des Mobilités de l'Aire Grenobloise | Transports publics |
+            | Grand Angoulême | transports scolaires |
+            | Département de la Gironde  | Transport scolaire adapté |
+            | CA du Grand Cognac | transports scolaires |
+            | Région Nouvelle Aquitaine  | Tarifications transports |
+            | Autorité organisatrice des mobilités des territoires lyonnais | Transports publics |
+            | Île de France Mobilités | Transports publics |
+            | Syndicat mixte des mobilités de l'aire Grenobloise | Transports publics |
+
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier en justifiant du cadre légal de l'utilisation des données :
+
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadres légaux spécifiques :**
+              - transports en commun : [Articles L1231-1 et L1231-3 du Code des transports](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000023086525/LEGISCTA000023069255/#LEGISCTA000023085815){:target="_blank"}
+              - transports scolaires : [Article L. 3111-7 du Code des transports](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043343069){:target="_blank"} et [article L. 214-18 du Code de l'éducation](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030999998){:target="_blank"}
+              - Utilisation de la complémentaire santé solidaire comme critère de tarification : [Article L1113-1 du Code des transports](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042005921){:target="_blank"}.
+            - **Délibération** : Une délibération est nécessaire lors de votre demande d'habilitation pour justifier de l'utilisation des données dans votre tarification. [En savoir plus sur la délibération attendue pour être habilité](<%= faq_index_path(anchor: 'qu-est-ce-qu-une-bonne-deliberation-pour-acceder-a-api-particulier') %>).
+
+
+        request_access:
+          link_datapass: "<%= datapass_base_url %>/api-particulier?demarche=tarification_transports"
+
+          
+      stationnement-residentiel:
+        user_types:
+          - communes
+        name: 'Stationnement résidentiel'
+        endpoints:
+          - ants/extrait_immatriculation_vehicule
+        endpoints_optional:
+         - mesri/statut_etudiant
+         - cnav/quotient_familial
+        endpoints_forbidden:
+          - cnous/statut_etudiant_boursier
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/prime_activite
+          - cnav/revenu_solidarite_active
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+          - cnav/allocation_soutien_familial
+          - sport_data_hub/statut_sportif
+          - dsnj/service_national
+          - education_nationale/statut_eleve_scolarise
+          - cnav/psu
+        comments_endpoints:
+            "ants/extrait_immatriculation_vehicule" : "Permet de récupérer toutes les informations présentes sur la carte grise d'un véhicule"
+            "cnav/quotient_familial" : "Permet de récupérer le quotient familial CAF ou MSA.<br/><br/>Les données d'identité des membres de la famille et l'adresse postale sont aussi disponibles sous réserve d'un cadre légal précis."
+            "cnous/statut_etudiant_boursier" : "Aides études supérieures</span> Indique si le particulier est étudiant boursier et donne l'échelon de sa bourse."
+            "education_nationale/statut_eleve_scolarise" : "Indique si l'élève est scolarisé au primaire, collège ou lycée. Précise si l'élève est boursier et donne l'échelon de sa bourse."
+            "mesri/statut_etudiant" : "Indique si le particulier est étudiant et peut préciser l'établissement où il est inscrit."
+            "pole_emploi/situation" : "Indique si le particulier est demandeur d'emploi."
+            "pole_emploi/indemnites" : "Liste les paiements effectués par FranceTravail."
+            "cnav/prime_activite" : "Indique si le particulier est bénéficiaire de la prime d'activité."
+            "cnav/revenu_solidarite_active" : "Indique si le particulier est bénéficiaire du RSA."
+            "cnav/complementaire_sante_solidaire" : "Indique si le particulier est bénéficiaire de la C2S."
+            "cnav/allocation_adulte_handicape" : "Indique si le particulier est bénéficiaire de l'AAH."
+            "cnav/allocation_soutien_familial" : "Indique si le particulier est bénéficiaire de l'allocation de soutien familial."
+            "sport_data_hub/statut_sportif" : "Permet de vérifier si une personne a ou a déjà eu un statut sportif de haut niveau et toute catégorie inscrits en liste des collectifs nationaux ou en liste des arbitres et juges sportifs de haut-niveau."
+            "dsnj/service_national" : "Permet de connaître le statut de conformité au Service national des jeunes entre 16 et 25 ans."
+            "cnav/psu" : "Permet de calculer la participation familiale dans les établissements d'accueil du jeune enfant"
+
+        introduction:
+          title: Simplifiez les démarches des résidents en calculant la tarification pour l’abonnement et le droit au stationnement résidentiel à un tarif préférentiel.
+          content: |
+            {:.fr-text--lead}
+            Communes, avec API Particulier, traitez automatiquement les demandes d’abonnement pour le stationnement résidentiel réalisées via FranceConnect.
+
+            <span class="fr-accordion__title">
+                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-106"><span class="fr-icon-questionnaire-fill fr-mr-1w" aria-hidden="true"></span>Comment fonctionne la tarification résidentielle ?</button>
+            </span>
+            <div class="fr-collapse" id="accordion-106">
+              <p>Les communes ont la possibilité de proposer un droit de stationnement à tarif préférentiel « résident ». Cela permet aux habitants de la commune (généralement dans une zone payante) de stationner leur véhicule à un tarif réduit, souvent sous forme d’un abonnement mensuel, trimestriel ou annuel, dans leur secteur de résidence.
+              <br/>
+              Le stationnement résidentiel permet aux résidents de stationner dans la commune à un tarif réduit mais ne garantit pas une place réservée.
+              <br/>
+              <br/>
+              La tarification d’un abonnement de stationnement résidentiel pour les résidents d’une commune varie selon les municipalités.
+              <br/>
+              <b>Le fonctionnement repose généralement sur les principes suivants :</b> 
+              </p>
+              <ul>
+                <li><b>Pour pouvoir souscrire à un abonnement résidentiel, l’usager doit :</b>
+                  <ul>
+                    <li>être domicilié dans la commune ;</li>
+                    <li>être propriétaire d’un véhicule avec une carte grise à l’adresse du domicile ou être locataire (longue durée) d’un véhicule.</li>
+                  </ul>
+                </li>
+
+                <li><b>La tarification peut dépendre de plusieurs critères :</b>
+                  <ul>
+                    <li>Forfait mensuel, trimestriel ou annuel ou un tarif dégressif selon la durée stationnement ;</li>                   
+                    <li> Nombre de véhicules par foyer : Le premier véhicule bénéficie du tarif résident le plus avantageux ; le second véhicule peut être plus cher, voire non éligible. Il peut également y avoir un droit de stationnement par personne, peu importe le nombre de véhicules.</li>
+                    <li>Délimitation par zone géographique : Les résidents d’une zone ne peuvent stationner à tarif réduit que dans leur propre secteur ;</li>
+                    <li>Revenus ou statut social : certaines villes appliquent des tarifs sociaux (réduction pour faibles revenus, personnes âgées, étudiants etc.) ;</li>
+                    <li>Type de véhicule : Pour les véhicules électriques ou hybrides, le tarif est parfois réduit voire gratuit. Pour les véhicules polluants, le tarif est parfois majoré, voire le véhicule est exclu.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <p>Lorsqu'elle n'est pas simplifiée, la demande d’abonnement se fait en ligne ou par courrier avec un droit par personne et plusieurs justificatifs à fournir (carte d'identité, carte grise du véhicule, justificatif de situation comme le certificat de scolarité, etc.).
+              <b>Pour en savoir plus</b>, consulter cette page de <a href="https://www.service-public.fr/particuliers/vosdroits/F33963">Service-Public.fr</a>.
+              </p>
+            </div>
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+             {:.fr-text--lg}
+
+             Communes, en intégrant l’API Extrait SIV pour stationnement résidentiel et d'autres API du bouquet API Particulier dans votre système d’information :
+
+              - 😃 **Pour instruire les demandes d’abonnement résidentiel, il n’est plus nécessaire de collecter** : 
+                - ✅ la carte grise,
+                - ✅ l’identité de l’usager,
+                - ✅ ainsi que le quotient familial et le statut étudiant, demandeur d'emploi et/ou bénéficiaire d'une prestation sociale (RSA, AAH, Prime d'activité, etc) si votre tarification est sur critères sociaux.
+              
+
+              - ⏰ **Vous automatisez l’instruction car vos agents instructeurs n’ont plus à vérifier les pièces justificatives fournies**, les informations obtenues de l’API Particulier étant certifiées 🔎 ;
+
+              - 🎢 **Vous augmentez le pourcentage des démarches finalisées** car vous faîtes gagner du temps à l'usager ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L113-12 du Code des relations entre le public et l’administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037313155){:target="_blank"}.
+
+
+              {:.fr-highlight.fr-highlight--caution}
+              > **La mise en œuvre de l'API SIV ne peut se faire que si l’usager [s’identifie sur votre service en ligne (ou pour la démarche stationnement résidentiel) via FranceConnect.](https://particulier.api.gouv.fr/cas_usages/modalite_appel_france_connect#3-fonctionnement-api-franceconnectees). Il est donc nécessaire de faire une demande de raccordement à FranceConnect préalablement à votre demande d'accès à l'API SIV.**
+              > **Cette API est déployée progressivement pour garantir la qualité du service. Par conséquent, vous ne pourrez pas accéder aux données directement après la validation de votre demande comme pour les autres données. Vous serez notifiés de la date à partir de laquelle vous pourrez y accéder.**
+
+
+              {:.fr-highlight}
+              > ****Votre réglementation du stationnement nécessite l'adresse fiscale ou revenu fiscal de référence ?**
+              > L'API Particulier ne propose pas cette donnée. Vous pouvez demander l'accès à l'[API Impôt Particulier](https://www.data.gouv.fr/dataservices/api-impot-particulier/){:target="_blank"} pour récupérer le revenu fiscal de référence de la famille.
+
+
+        use_case_examples:
+          title: Exemples d'applications
+          anchor: 'use_case_examples'
+          content: |+
+            {:.fr-h5}
+            ### Un résident de Paris souhaite bénéficier de l’abonnement stationnement résidentiel
+            
+            Il est propriétaire d’un véhicule 4 roues, inférieur à 3,5 tonnes de catégorie M1 :
+             
+             1. **Étape 1&nbsp;:** Le particulier se connecte depuis son compte “[Mon Paris](https://v70-auth.paris.fr/auth/realms/paris/protocol/openid-connect/auth?client_id=moncompte&response_type=code&redirect_uri=https%3A%2F%2Fmoncompte.paris.fr%2Fmoncompte%2Fservlet%2Fplugins%2Foauth2%2Fcallback%3Fdata_client%3DauthData&scope=openid&state=13b549627bfd1&nonce=2158d3f8c051d)”, connecté à l’API Particulier. Il clique sur la démarche dédiée à la demande d’abonnement résidentiel, choisit l'option "Etudiant", et s’identifie via FranceConnect.
+
+              {:.fr-highlight.fr-highlight--example}
+              > ⚙️ **En arrière-plan** : Un appel à l’API Extrait immatriculation véhicule et à l'API impôt particulier (hors API particulier)est effectué et permet de récupérer les données en lien : 
+                    - le véhicule : nom et prénom du propriétaire ou locataire, adresse postale et caractéristiques du véhicule (marque, catégorie du véhicule, genre national, type de carburant, taux d’émission de co2, classe environnementale ;
+                    - l'adresse fiscale 
+
+            2. **Étape 2 :** L’abonnement résidentiel est automatiquement attribué selon la catégorie du véhicule. Le résident reçoit sa carte à son domicile.
+
+
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier en justifiant du cadre légal de l'utilisation des données :
+
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadre légal spécifique aux communes :** [Article L2333-87 du Code général des collectivités territoriales](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049919622) (CGCT)], [Article L2333-87-3 du Code général des collectivités territoriales](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049919622#:~:text=%2DLe%20forfait%20de%20post%2Dstationnement,est%20affect%C3%A9%20%C3%A0%20l'Etat) (CGCT)
+            - **Délibération** : Une délibération est nécessaire lors de votre demande d'habilitation pour justifier de l'utilisation des données demandées pour la tarification. [En savoir plus sur la délibération attendue pour être habilité](<%= faq_index_path(anchor: 'qu-est-ce-qu-une-bonne-deliberation-pour-acceder-a-api-particulier') %>).
+        request_access:
+          link_datapass: "Lien à venir"
+
+
+
+      gestion_rh_secteur_public:
+        user_types:
+          - administrations
+        name: 'Gestion RH secteur public'
+        endpoints:
+        endpoints_optional:
+          - mesri/statut_etudiant
+        endpoints_forbidden:
+          - cnous/statut_etudiant_boursier
+          - education_nationale/statut_eleve_scolarise
+          - pole_emploi/situation
+          - pole_emploi/indemnites
+          - cnav/revenu_solidarite_active
+          - cnav/complementaire_sante_solidaire
+          - cnav/allocation_adulte_handicape
+          - cnav/prime_activite
+          - cnav/allocation_soutien_familial
+          - sport_data_hub/statut_sportif
+        comments_endpoints:
+            "cnav/quotient_familial" : ""
+            "cnous/statut_etudiant_boursier" : ""
+            "education_nationale/statut_eleve_scolarise" : ""
+            "mesri/statut_etudiant" : "Indique si un étudiant est inscrit dans un établissement."
+            "pole_emploi/situation" : ""
+            "pole_emploi/indemnites" : ""
+            "cnav/prime_activite" : ""
+            "cnav/revenu_solidarite_active" : ""
+            "cnav/complementaire_sante_solidaire" : ""
+            "cnav/allocation_adulte_handicape" : ""
+            "cnav/allocation_soutien_familial" : ""
+        introduction:
+          title: Facilitez le recrutement et la gestion administrative des agents publics !
+          content: |
+            {:.fr-text--lead}
+            Administrations, avec API Particulier, accédez directement aux données des particuliers pour simplifier le recrutement et la gestion administratives des agents publics.
+        role:
+          title: Une simplification des démarches
+          anchor: 'simplification-des-demarches'
+          content: |+
+            {:.fr-text--lg}
+              Administrations, en intégrant la brique API Particulier dans votre système d'information&nbsp;:
+
+              - 😃 **Il n'est plus nécessaire de collecter** :
+                - **Pour le recrutement (fonctionnaire, agent contractuel, alternant) :** le certificat étudiant et, bientôt, - _intégration à venir_ - l'attestation de la journée défense et citoyenneté (JDC).
+                - **Pour la gestion administrative des agents :** les données de la CAF (quotient familial et composition de la famille) notamment pour le calcul des primes, ainsi que le certificat de scolarité des enfants.
+
+              - ⏰ **Vous accélérez la gestion des carrières dans votre administration** car vos agents RH n'ont plus à vérifier les pièces justificatives fournies, les informations obtenues de l'API Particulier étant certifiées 🔎 ;
+
+              - 🎢 **Vous faîtes gagner du temps à vos agents publics, à vos candidats et à votre service RH** ;
+
+              - 🎯 **Enfin, vous participez à la simplification des démarches pour les citoyens** en mettant en oeuvre le [«&nbsp;Dites-le-nous une fois&nbsp;»](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"}, en application de l'[article L114-8 du Code des relations entre le public et l’administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}.
+
+              <div class="fr-callout fr-fi-information-line">
+               <h3 class="fr-callout__title fr-h5">L'API Particulier recense vos besoins !</h3>
+               <p class="fr-callout__text fr-text--md fr-mb-1w">
+                  Suite à des premiers retours concernant ce cas d'usage, nous avons identifié que les données suivantes pourraient être utiles : diplômes, relevés de carrières, confirmation de la journée d'appel. Nous sommes en phase d'investigation pour identifier les API qui pourraient répondre à ces besoins.
+                  <br/>
+                  <br/>
+                  <strong>👋 Pour participer à ce recensement, écrivez-nous ici : <a href="mailto:api-particulier@api.gouv.fr">api-particulier@api.gouv.fr</a></strong>
+               </p>
+              </div>
+
+        list_api:
+          content: |+
+            Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
+            Les API **️<span style="color:#1f8d49" class="fr-icon-checkbox-circle-line" aria-hidden="true"></span> utiles** seront à cocher par vos soins si votre cas d'usage le justifie.
+            Les API **<span style="color:#d64d00" class="fr-icon-close-circle-line" aria-hidden="true"></span> injustifiées** ne peuvent être demandées pour ce cas d'usage.
+
+            {:.fr-highlight.fr-highlight--caution}
+            Lors de votre demande d'habilitation, **vous vous engagez à ne demander que les données strictement nécessaires** à la réalisation de la démarche administrative. Consulter [nos conditions générales d'utilisation](<%= cgu_path %>){:target="_blank"}.
+
+        users:
+          title: Ils utilisent l’API Particulier
+          anchor: 'users'
+          content: |+
+            <figure class="fr-quote--column ">
+            {:.fr-quote}
+            >
+            > <blockquote>«&nbsp;La Gendarmerie nationale utilisera l'API Particulier pour limiter les informations demandées aux futurs candidats, sur le site qui leur est dédié ainsi que dans les outils de back-office des gestionnaires du recrutement.&nbsp;»
+            > </blockquote>
+            >
+            > <figcaption>
+            > Gendarmerie nationale
+            > {:.fr-quote__author}
+            >
+            > {:.fr-quote__image}
+            >  ![Logo de la Gendarmerie nationale](<%= image_path('api_particulier/cas_usages/images/logo-gendarmerie-nationale.svg') %>){:width="100px"}
+            > </figcaption>
+            >
+            </figure>
+
+          #<figure class="fr-quote--column ">
+          #{:.fr-quote}
+          #>
+          #> <blockquote>«&nbsp;TODO&nbsp;»
+          #> </blockquote>
+          #>
+          #> <figcaption>
+          #> Ministère de l'Europe et des Affaires étrangères
+          #> {:.fr-quote__author}
+          #>
+          #> [Lire la suite du témoignage](TODO){:target="_blank"}
+          #> {:.fr-quote__source}
+          #>
+          #> {:.fr-quote__image}
+          #>  ![Logo du Ministère de l'Europe et des Affaires étrangères](<%= image_path('api_particulier/cas_usages/images/logo-ministere-europe-aff-etrangeres.svg') %>){:width="100px"}
+          #> </figcaption>
+          #>
+          #</figure>
+        legal_context:
+          content: |+
+            L'utilisation des données est encadrée légalement. Vous devez formuler une demande auprès de l'API Particulier en justifiant du cadre légal de l'utilisation des données :
+
+            - **Cadre légal général** : [Article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"} fixe le cadre général qui oblige l’administration à échanger des données lors d’une démarche d’un usager ;
+            - **Cadre légal spécifique :** _Référence à venir_.
+
+        request_access:
+          link_datapass: "<%= datapass_base_url %>/api-particulier?demarche=gestion_rh_secteur_public"
+
+      modalite_appel_france_connect:
+        user_types:
+          - modalité d’appel
+        name: "Modalité d'appel FranceConnect"
+        introduction:
+          title: Simplifiez les démarches de vos usagers en proposant FranceConnect comme modalité d'appel
+          content: |
+            {:.fr-text--lead}
+            Intégrez les versions FranceConnectées des API Particulier pour proposer cette modalité d'appel et accélérer les démarches de vos usagers.
+        role:
+          title: Modalité d'appel FranceConnect
+          anchor: 'modalite-appel-franceconnect'
+          content: |+
+            <nav class="fr-summary" role="navigation" aria-labelledby="fr-summary-title">
+              <p class="fr-summary__title fr-text--lg" id="fr-summary-title">Sommaire</p>
+              <ol class="fr-summary__list">
+                  <li>
+                      <a class="fr-summary__link fr-text--md" href="#1-modalite-appel-majeure">Une modalité d'appel majeure aux données API Particulier</a>
+                  </li>
+                  <li>
+                      <a class="fr-summary__link fr-text--md" href="#2-ce-que-cela-change-pour-vous">Ce que cela change pour vous et vos usagers</a>
+                  </li>
+                  <li>
+                      <a class="fr-summary__link fr-text--md" href="#3-fonctionnement-api-franceconnectees">Fonctionnement des API FranceConnectées</a>
+                  </li>
+                  <li>
+                      <a class="fr-summary__link fr-text--md" href="#4-synthese">Synthèse : FranceConnect VS les autres modalités</a>
+                  </li>
+                  <li>
+                      <a class="fr-summary__link fr-text--md" href="#5-acces-implementation">Étapes d'accès et d'intégration</a>
+                  </li>
+              </ol>
+            </nav>
+
+            {:.fr-h3}
+            ## <a name="1-modalite-appel-majeure"></a>Une modalité d'appel majeure aux données API Particulier
+
+            {:.fr-h6}
+            ### Qu'est-ce qu'une modalité d'appel ?
+
+            {:.fr-text--lg}
+            Pour accéder aux données de l'API Particulier, votre service doit fournir des paramètres permettant d'**identifier le particulier** dont vous souhaitez récupérer les données.
+            _Du côté de l'usager qui utilise votre service_, cela signifie qu'il va devoir communiquer des informations le concernant, pour bénéficier de l'accès à ses données personnelles par le biais de l'API Particulier.
+
+            **Les données d'API Particulier peuvent être appelées par le biais de trois modalités d'appel&nbsp;:**
+            - **L'identité pivot** : <br/> ✒️ L'usager saisit son nom, son prénom, sa date et son lieu de naissance. <br/> ⚙️ Ces informations sont renseignées en paramètre d'appel de l'API par votre SI.
+            - **Un identifiant spécifique** :<br/>  ✒️ Pour certaines API, l'usager saisit un numéro d'identification propre aux données demandées (par exemple l'identifiant France Travail). <br/> ⚙️ Cet identifiant est renseigné en paramètre d'appel de l'API par votre SI.
+            - **FranceConnect** : <br/> ✒️ L'usager se connecte à FranceConnect pour la transmission de ses données. <br/> ⚙️ Votre SI interragit avec FranceConnect. L'appel est effectué sans aucun paramètre renseigné par l'usager.
+
+            {:.fr-text--lg}
+            **Par conséquent, dans le cas de la modalité d'appel FranceConnect**, l'usager, en cliquant sur le bouton FranceConnect, permet à FranceConnect de transmettre ses informations pour appeler l'API. L'identité pivot de l'usager ne transitera pas par votre système d'information, ce qui constitue un avantage d'un point de vue de la sécurité des données personnelles.
+
+            {:.fr-h6}
+            ### FranceConnect : une modalité d'appel majeure, à proposer avec les autres modalités
+
+            {:.fr-text--lg}
+            Le périmètre de la modalité d'appel FranceConnect est étendu à plus 40 millions d’usagers uniques actifs.
+            Une alternative d'appel est donc obligatoire afin de ne pas exclure les usagers qui n'utilisent pas FranceConnect ou qui ne sont pas éligibles.
+
+            **Les particuliers suivants ne peuvent pas utiliser FranceConnect** :
+            - Les personnes homonymes ou sans prénom ou sans nom de famille (environ 200 000 personnes) ne sont pas éligibles ;
+            - Les personnes mineures sont peu utilisatrices, même si FranceConnect est accessible théoriquement à partir de 16 ans ;
+            - Les personnes de nationalité étrangère, qui n'ont jamais travaillé ou été soignées en France ne sont pas éligibles. _A contrario, les citoyens étrangers ayant un compte Ameli ou un titre de séjour de plus de 5 ans, sont référencés dans le RNIPP et peuvent donc utiliser FranceConnect_.
+
+
+            Par ailleurs, toutes les API du bouquet API Particulier ne bénéficient pas de la modalité d'appel FranceConnect :
+
+            {:.fr-h6}
+            ### <a name="liste-api-particulier-franceconnectees"></a>Liste des API FranceConnectées
+
+            {:.fr-table}
+            |  API du bouquet API Particulier |   Modalité d'appel <br/>Identité pivot ou Indentifiant   | Modalité d'appel <br/>FranceConnect |
+            | :--------------- | :--------------------------------: | :-----------: |
+            |  **Quotient familial MSA & CAF** - Cnaf & msa<br/> [Fiche métier](<%= endpoint_path(uid: 'cnav/quotient_familial') %>) |  Identité pivot |   ![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="40px"} |
+            |  **Statut étudiant** - Mesri<br/> [Fiche métier](<%= endpoint_path(uid: 'mesri/statut_etudiant') %>) |  Identité pivot & Identifiant INE | ![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="40px"} |
+            |  **Statut étudiant boursier** - Cnous<br/> [Fiche métier](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>) | Identité pivot & Identifiant INE | ![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="40px"} |
+            |  **Statut élève scolarisé et boursier** - Ministère de l'éducation nationale<br/> [Fiche métier](<%= endpoint_path(uid: 'cnous/education_nationale/statut_eleve_scolarise') %>) | Identité pivot | ❌ N'est pas FranceConnectée |
+            |  **Statut demandeur d'emploi** - France Travail<br/> [Fiche métier](<%= endpoint_path(uid: 'cnous/education_nationale/statut_eleve_scolarise') %>) | Identifiant France Travail | ❌ FranceConnect sur API Particulier <br/> ✅ FranceConnect en dehors du bouquet avec l'[API statut demandeur d'emploi](https://www.data.gouv.fr/dataservices/api-statut-demandeur-demploi/){:target="_blank"} |
+            |  **Paiements versés par France Travail** - France Travail<br/> [Fiche métier](<%= endpoint_path(uid: 'cnous/education_nationale/statut_eleve_scolarise') %>) | Identifiant France Travail | ❌ FranceConnect sur API Particulier <br/> ✅ FranceConnect en dehors du bouquet avec l'[API Indemnisation France Travail](https://www.data.gouv.fr/dataservices/api-liste-des-paiements/){:target="_blank"} |
+            |  **Complémentaire santé solidaire** - La sécurité sociale<br/> [Fiche métier](<%= endpoint_path(uid: 'cnav/complementaire_sante_solidaire') %>) | Identité pivot | ![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="40px"} |
+
+
+            {:.fr-h3}
+            ## <a name="2-ce-que-cela-change-pour-vous"></a>Ce que cela change pour vous et vos usagers
+
+            {:.fr-h6}
+            ### Pour vos usagers : un accès simple et instantané aux données API&nbsp;Particulier
+
+            **Pour vos usagers, proposer la modalité d'appel FranceConnect, c'est&nbsp;:**
+
+            - **⭐️ un mode de connexion répandu et populaire**. Vos usagers en sont familiers et l'utiliseront facilement ;
+            - **🔐 aucun nouveau mot de passe** ; l'usager se connecte avec l'identifiant et le mot de passe d'un service administratif qu'il choisit&nbsp;: le compte impots.gouv.fr, ameli.fr, l'Identité Numérique La Poste, msa.fr et Yris. Pour en savoir plus sur les étapes de connection à FranceConnect pour vos usagers, veuillez lire [ce guide FranceConnect](https://franceconnect.gouv.fr/franceconnect){:target="_blank"}.
+            - **🎯 un traitement instantané de la démarche**. L'usager étant authentifié par FranceConnect, il n'y a pas de temps de traitement manuel à effectuer par vos agents. Par conséquent, les données API Particulier peuvent être versées instantanément dans la démarche, ce qui permet à l'usager de la terminer dans la foulée.
+
+            {:.fr-h6}
+            ### Pour votre service : moins de traitement pour vos agents
+
+            **Pour votre service et vos agents, proposer la modalité d'appel FranceConnect, c'est&nbsp;:**
+
+            - **🔎 aucune identification à effectuer** : FranceConnect s'assure que les données retournées par l'API sont bien celles de l'internaute connecté. Contrairement aux autres modalités d'appel, vos agents n'ont donc pas besoin de vérifier cette adéquation.
+            - **🎢 une augmentation des démarches accomplies** : La simplification du parcours pour les usagers évite les erreurs de saisie, les arrêts de parcours et les besoins de relance.
+            - **⚙️ une intégration moins contraignante dans votre SI** qui n'aura pas à gérer le formatage des données personnelles en appel qui peut être fastidieux (accents, tirets, etc.).
+
+
+            {:.fr-h3}
+            ## <a name="3-fonctionnement-api-franceconnectees"></a>Fonctionnement des API FranceConnectées
+
+            {:.fr-h6}
+            ### Du côté de l'usager : les boutons FranceConnect
+
+            {:.fr-text--lg}
+            Plutôt que de renseigner ses données personnelles dans différents champs de saisie, vos usagers auront simplement à utiliser les boutons FranceConnect pour récupérer leurs données API Particulier. L'appel aux données de l'API Particulier par le biais de FranceConnect peut se faire à deux moments différents de la démarche en ligne :
+
+             <div class="fr-grid-row fr-grid-row--gutters">
+              <div class="fr-col-md-6 fr-col-12">
+              ![Schéma illustrant les écrans que va rencontrer l'usager lors de sa récupération de données par FranceConnect](<%= image_path('api_particulier/parcours-usagers-franceconnect.png') %>)
+              <div class="fr-download fr-mb-1v">
+              <a href="<%= image_path('api_particulier/parcours-usagers-franceconnect.png') %>" download class="fr-download__link">Télécharger l'image du parcours usager
+                <span class="fr-download__detail">PNG – 272 ko</span>
+              </a>
+              </div>
+              </div>
+              <div class="fr-col-12 fr-col-md-6">
+              <p class="fr-text--lg">
+              **Au moment de la connexion** :
+              </p>
+              <button class="fr-connect fr-mt-2w">
+                <span class="fr-connect__login">S’identifier avec</span>
+                <span class="fr-connect__brand">FranceConnect</span>
+              </button>En cliquant sur le bouton _"S'identifier avec FranceConnect"_, les données API Particulier nécessaires sont téléchargées en parallèle de l'authentification de l'usager.<br/>
+              <div class="fr-highlight">
+              <p class="fr-text--sm">
+              ℹ️ L'utilisation de la modalité d'appel FranceConnect pour récupérer les données de l'API Particulier n'oblige pas votre service à utiliser FranceConnect comme mode d'identification de vos comptes utilisateurs. Vous pourrez alors utiliser le second bouton ci-contre.
+              </p>
+              </div>
+              <br/>
+              <p class="fr-text--lg">
+              **Au cours de la démarche, après la connexion** :
+              </p>
+              <button class="fr-connect fr-mt-2w">
+                <span class="fr-connect__login">Récupérer ses données avec</span>
+                <span class="fr-connect__brand">FranceConnect</span>
+              </button>
+              <ul>
+              <li><i>Si l'usager s'est déjà FranceConnecté en début de démarche</i> et a besoin d'informations supplémentaires à celles récupérées au moment de sa FranceConnection, il peut relancer un appel à API Particulier en cliquant sur le bouton <i>"Récupérer mes données avec FranceConnect"</i>.<br/>
+
+              <p class="fr-text--sm fr-mt-2v">
+              ⏳ Si cette nouvelle demande de donnée intervient dans les 30 minutes après la première FranceConnexion, l'usager n'aura pas à se reconnecter. Il n'aura qu'une seule étape à faire : confirmer le transfert de ses données.
+              </p>
+
+              </li>
+              <li>
+              <i>Si l'usager utilise un autre mode de connexion que FranceConnect</i>, l'usager effectuera les étapes d'authentification FranceConnect pour débloquer la récupération des documents. Votre service devra s'assurer de l'adéquation entre le compte de l'usager et FranceConnect.</li>
+              </ul>
+              </div>
+            </div>
+
+
+
+            <br/>
+            📟 **D'un point de vue technique**, ces deux boutons sont identiques et nécessitent la même intégration. [Consulter la documentation technique de FranceConnect](https://docs.partenaires.franceconnect.gouv.fr/fs/){:target="_blank""}
+
+
+            {:.fr-h6}
+            ### En arrière-plan : votre SI, FranceConnect, API Particulier et les fournisseurs de données
+
+            {:.fr-text--lg}
+            Ce schéma présente les interractions entre les différents acteurs impliqués dans les API Particulier FranceConnectées et leur utilisation par l'usager durant vos démarches :
+
+            ![Diagramme expliquant le rôle d'API Particulier, de FranceConnect, du fournisseur de service et du fournisseur de données à chaque étape du parcours usager](<%= image_path('api_particulier/diagramme-modalite-appel-france-connect.png') %>)
+
+            <div class="fr-download fr-m-2w">
+            <a href="<%= image_path('api_particulier/diagramme-modalite-appel-france-connect.png') %>" download class="fr-download__link">Télécharger le diagramme de fonctionnement
+              <span class="fr-download__detail">PNG – 455 ko</span>
+            </a>
+            </div>
+
+            <section class="fr-accordion fr-p-0">
+            <h3 class="fr-accordion__title fr-m-0">
+            <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1">
+            Version écrite : Étapes de fonctionnement des API Particulier FranceConnectées
+            </button>
+            </h3>
+            <div class="fr-collapse" id="accordion-1">
+
+              **Étape 1 :**  Le particulier entame sa démarche sur votre service.
+
+              **Étape 2 :**  Pour récupérer ses données API Particulier, il clique sur le bouton FranceConnect _"S'identifier avec FranceConnect"_ ou _"Récupérer mes données avec FranceConnect"_.
+
+              **Étape 3 :**  La fenêtre FranceConnect s'ouvre, l'usager choisit sur la mire son fournisseur d'identité ; par exemple _le compte impots.gouv.fr_, _le compte Ameli_ ou _l'Identité numérique de la Poste_. L'usager entre alors son identifiant et son mot de passe du compte choisit. [Plus d'information sur les fédérateurs d'identité de FranceConnect](https://franceconnect.gouv.fr/franceconnect#partner-info){:target="_blank"}.
+              <p class="fr-text--sm fr">
+              ⚙️ **En arrière plan :** Votre système d'information demande à FranceConnect un accès à la donnée personnelle de l'usager.
+              </p>
+
+              **Étape 4 :**  L'usager confirme le transfert de ses données personnelles en cliquant sur _"Continuer"_.
+              <p class="fr-text--sm">
+              ⚙️ **En arrière plan :** <br/>
+              1. FranceConnect affiche à l'usager la liste de ses données personnelles, dont celles d'API Particulier, qui vont être transmises à votre service si il continue. Lorsque l'usager clique sur _"Continuer"_., FranceConnect récupère la confirmation de l'usager.<br/>
+              2. FranceConnect donne un jeton de consentement à votre Système d'information (SI).<br/>
+              3. Votre SI utilise ce jeton pour appeler l'API Particulier.<br/>
+              4. API particulier transmet le jeton à FranceConnect. <br/>
+              5. FC vérifie le jeton et retourne l'identité pivot et le périmètre des données demandées par votre service.<br/>
+              6. Avec l'identité pivot, API Particulier demande les données à l'administration fournisseur des données (FD) présentent sur API Particulier.<br/>
+              7. Le FD retourne les données du particulier à API Particulier.<br/>
+              8. API Particulier transmet les données du particulier à votre SI.
+              </p>
+
+              **Étape 5 :** Les données API Particulier de l'usager sont renseignées dans votre démarche.
+
+            </div>
+            </section>
+
+            {:.fr-h3}
+            ## <a name="4-synthese"></a>Synthèse : FranceConnect VS les autres modalités
+
+            {:.fr-table}
+            |   |   Modalité d'appel <br/>Identité pivot ou Indentifiant   | Modalité d'appel <br/>FranceConnect |
+            | :--------------- | :--------------------------------: | :-----------: |
+            |  **Action de l'usager** | L'usager renseigne ses informations identifiantes | L'usager se connecte à FranceConnect |
+            |  **Authentification de l'usager** | ❌ À vérifier par vos agents | ✅ Comprise avec la connexion |
+            |  **Délivrance instantanée de la donnée API&nbsp;Particulier** | ❌ Uniquement après vérification de l'identité de l'internaute par vos agents | ✅ Oui |
+            |  **Moins de données personnelles dans votre système d'information** | ❌ Les données personnelles renseignées par l'usager pour appeler l'API Particulier transitent par votre SI | ✅ L'identité pivot ne transite pas par vos systèmes |
+            |  **Périmètre des usagers couverts** | ✅ La totalité | ⚠️ Seulement les usagers ayant FranceConnect |
+            |  **Démonstrateur API Particulier** |  Kevin bénéficie du tarif réduit pour la cantine de ses enfants, grâce à API Particulier. Il renseigne son **identité pivot** <br/><br/>[Voir la démo](https://demonstrateur.particulier.api.gouv.fr/cantine/souscription?user=4){:.fr-btn}{:target="_blank"} | Camille bénéficie du tarif réduit pour la cantine de ses enfants, grâce à API Particulier. Elle utilise la **modalité d'appel FranceConnect** <br/>[Voir la démo](https://demonstrateur.particulier.api.gouv.fr/cantine/souscription?user=3){:.fr-btn}{:target="_blank"}  |
+
+
+            {:.fr-h3}
+            ## <a name="5-acces-implementation"></a>Étapes d'accès et d'intégration
+
+            {:.fr-h4}
+            ### Je suis un acteur public
+
+            {:.fr-h6}
+            #### Avec un éditeur
+
+            {:.fr-text--lg}
+            **Cas n°1 : Mon éditeur propose déjà les API Particulier FranceConnectées :**
+
+            Si votre éditeur a déjà intégré la modalité d'appel FranceConnect pour API Particulier, cela signifie que l'intégration technique est déjà disponible et que le logiciel de votre éditeur a déjà été certifié par FranceConnect. Il ne manque que les droits d'accès aux données, que votre service (et non votre éditeur) doit demander :
+            1. **Habilitation FranceConnect**&nbsp;: Soumettez une [demande d’habilitation FranceConnect avec le formulaire de votre éditeur](https://datapass.api.gouv.fr/demandes/france-connect/nouveau){:target="_blank"}{:rel="noopener external"}. L'instruction est de 7 jours ouvrés en moyenne. ⚠️ Le contact technique doit être le responsable technique de votre éditeur et non de votre organisation.
+            > {:.fr-highlight.fr-highlight--example}
+            > ☑️ **Données à demander :** Pour que l'appel aux API FranceConnectées soit possible, il est impératif de cocher l'ensemble des données de la section _Identité Pivot_, c'est-à-dire : _Nom de naissance_, _Prénoms_, _Date de naissance_, _Ville de naissance_, _Pays de naissance_ et _Sexe_.
+            2. **Habilitation API Particulier** : Soumettez votre [demande d'accès API Particulier avec le formulaire de votre éditeur](https://datapass.api.gouv.fr/api-particulier){:target="_blank"}{:rel="noopener external"}. Une fois la validation reçue, écrivez à [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr){:target="_blank"}{:rel="noopener external"} pour demander la modalité FranceConnect. Vous serez recontacté par le service API Particulier effectuera l'appariemment de vos deux demandes.
+            3. **Mise en production** : Une fois l'appariemment effectué, votre éditeur, qui aura été mentionné en tant que contact technique dans chacune des deux demandes recevra le jeton API Particulier et les accès FranceConnect pour les intégrer dans votre SI.
+
+            <br/>
+
+            {:.fr-text--lg}
+            **Cas n°2 : Mon éditeur n'a pas encore intégré les API Particulier FranceConnectées :**
+
+            Contactez-nous à [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr){:target="_blank"}{:rel="noopener external"} en mentionnant le nom de votre éditeur et ses coordonnées, nous prendrons attache avec lui.
+
+            {:.fr-h6 }
+            ### Sans éditeur
+
+            _Votre service implémente lui-même les API Particulier FranceConnectée ?_ Pour y accéder, vous devez être habilité à FranceConnect et à API Particulier. Voici les étapes :
+
+            1. **Habilitation FranceConnect**&nbsp;: Soumettez une [demande d’habilitation FranceConnect](https://datapass.api.gouv.fr/demandes/france-connect/nouveau){:target="_blank"}{:rel="noopener external"}, en mentionnant pour cadre juridique l’[arrêté du 8 novembre 2018 relatif à FranceConnect](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000037611479){:target="_blank"}{:rel="noopener external"} qui confirme que toute administration publique peut utiliser FranceConnect.
+            > {:.fr-highlight.fr-highlight--example}
+            > ☑️ **Données à demander :** Pour que l'appel aux API FranceConnectées soit possible, il est impératif de cocher l'ensemble des données de la section _Identité Pivot_, c'est-à-dire : _Nom de naissance_, _Prénoms_, _Date de naissance_, _Ville de naissance_, _Pays de naissance_ et _Sexe_.
+            2. **Habilitation API Particulier** : Soumettez votre [demande d'accès API Particulier](https://datapass.api.gouv.fr/api-particulier){:target="_blank"}{:rel="noopener external"}. Une fois la validation reçue, écrivez à [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr){:target="_blank"}{:rel="noopener external"} pour demander la modalité FranceConnect. Vous serez recontacté par le service API Particulier effectuera l'appariemment de vos deux demandes.
+            3. **Mise en production**&nbsp;: la mise en production des API FranceConnectées nécessite d'effectuer l'intégration côté FranceConnect et l'intégration du côté d'API Particulier.
+                - **Mise en production API Particulier** : Consultez notre [Kit d'intégration](<%= developers_path(anchor: 'kit-de-mise-en-production') %>).
+                - **Mise en production FranceConnect** :
+                      1. **Intégration et tests** : Accéder à votre [espace partenaire](https://partenaires.franceconnect.gouv.fr/login){:target="_blank"}{:rel="noopener external"} avec le mail de confirmation envoyé par FranceConnect au contact technique renseigné dans la demande. Vous pouvez mettre en place les développements nécessaires dont l'intégration du ou des [boutons FranceConnect](#du-côté-de-lusager--les-boutons-franceconnect) grâce aux ressources et environnement de test disponibles.
+                      2. **Certification de votre intégration** : Présentez vos développements à FranceConnect pour une qualification en complétant ce [formulaire](https://www.demarches-simplifiees.fr/commencer/demande-qualification-fs){:target="_blank"}{:rel="noopener external"}
+                      3. **Demande de mise en production**&nbsp;: Votre implémentation est validée par notre équipe. Remplissez le [formulaire de demande de mise en production](https://partenaires.franceconnect.gouv.fr/){:target="_blank"}{:rel="noopener external"} sur votre espace partenaire à l'onglet « Paramétrer mon FS en Production ».
+                      4. **Mise en production**&nbsp;: Après 7 jours ouvrés, vous recevez vos secrets pour passer en production. Le responsable technique reçoit le `client_id` par mail et le `client_secret` par SMS.
+
+
+            {:.fr-h4}
+            ### Je suis un éditeur de logiciel
+
+
+            {:.fr-highlight.fr-highlight--caution}
+            Attention, en tant qu'éditeur, **vous ne pouvez en aucun cas être destinataire des données** issues de l’API Particulier et de FranceConnect.
+
+            Vous éditez un logiciel pour un service public et vous souhaitez proposer API Particulier à vos clients avec la modalité d'appel FranceConnect ? Voici les étapes à suivre :
+            1. **Demande FranceConnect**&nbsp;: Soumettez une [demande FranceConnect](https://datapass.api.gouv.fr/demandes/france-connect/nouveau){:target="_blank"}{:rel="noopener external"} en précisant dans la description à FranceConnect qu'il s'agit d'une demande :
+            - pour FranceConnecter API Particulier ;
+            - en vue d'une qualification seulement (les accès pour la mise en production seront demandés par vos clients publics).
+            > {:.fr-highlight.fr-highlight--example}
+            > ☑️ **Données à demander :** Pour que l'appel aux API FranceConnectées soit possible, il est impératif de cocher l'ensemble des données de la section _Identité Pivot_, c'est-à-dire : _Nom de naissance_, _Prénoms_, _Date de naissance_, _Ville de naissance_, _Pays de naissance_ et _Sexe_.
+            2. **Demande API Particulier** : Complétez le [formulaire de prise de contact](https://datapass.api.gouv.fr/api-particulier){:target="_blank"}{:rel="noopener external"} dans l'objectif d'être référencé par API Particulier et de pouvoir proposer un formulaire d'habilitation rapide pour vos clients.
+            3. **Configuration de votre logiciel** :
+                - **Développement API Particulier** : Consultez notre [Kit d'intégration](<%= developers_path(anchor: 'kit-de-mise-en-production') %>).
+                - **Développement FranceConnect** :
+                      1. **Intégration et tests** : Accéder à votre [espace partenaire](https://partenaires.franceconnect.gouv.fr/login){:target="_blank"}{:rel="noopener external"} avec le mail de confirmation envoyé par FranceConnect. Vous pouvez mettre en place les développements nécessaires dont l'intégration du ou des [boutons FranceConnect](#du-côté-de-lusager--les-boutons-franceconnect) grâce aux ressources et environnement de test disponibles.
+                      2. **Certification de votre intégration** : Présentez vos développements à FranceConnect pour une qualification en complétant ce [formulaire](https://www.demarches-simplifiees.fr/commencer/demande-qualification-fs){:target="_blank"}{:rel="noopener external"}
+            4. **Mise en production pour vos clients** : vos clients publics devront effectuer les demandes d'habiliation API Particulier et FranceConnect en utilisant les formulaires configurés pour votre logiciel, [en savoir plus sur les étapes pour vos clients](#avec-un-éditeur). Une fois leur habilitation délivrée, les accès techniques vous seront transmis.
+      modalite_formulaire_qf:
+        user_types:
+          - modalité d’appel
+        name: "Formulaire de collecte du quotient familial"
+        introduction:
+          title: Collectez facilement le quotient familial CAF ou MSA de vos usagers
+          content: |
+            {:.fr-text--lead}
+            Transmettez le formulaire _quotient-familial.numerique.gouv.fr_ à vos usagers pour collecter leur quotient familial et leur identité pivot. Utilisez ensuite l'API Particulier pour mettre à jour ces informations.
+        role:
+          title: Un formulaire via FranceConnect
+          anchor: 'introduction-formulaire-qf'
+          content: |+
+            <div class="fr-callout">
+              <p class="fr-callout__title">Une solution en cours de déploiement</p>
+              <p class="fr-callout__text">
+                  La solution _quotient-familial.numerique.gouv.fr_ est en cours de déploiement auprès d'éditeurs et de communes pilotes.
+              </p>
+            </div>
+
+            {:.fr-text--lg}
+            API Particulier propose une solution pour collecter le quotient familial des usagers et leur identité pivot, via FranceConnect. Cette solution est composée de deux éléments&nbsp;:
+            - Un formulaire à destination des usagers est disponible sur _[quotient-familial.numerique.gouv.fr](https://quotient-familial.numerique.gouv.fr){:target="_blank"}_ ;
+            - Un espace de stockage temporaire de la donnée, sur [Hubee](https://www.hubee.numerique.gouv.fr/){:target="_blank"}, permettant aux collectivités de récupérer les informations collectées.
+
+            {:.fr-text--lg}
+            Cette solution interroge l'[API quotient familial MSA & CAF](<%= endpoint_path(uid: 'cnav/quotient_familial') %>) et FranceConnect pour récupérer les informations de l'usager, à savoir son identité pivot, celles des membres de sa famille et son quotient familial. La collectivité pourra ensuite utiliser l'identité pivot pour mettre à jour les quotients familiaux.
+
+            Cette solution permet ainsi à la collectvité d'interroger l'[API quotient familial MSA & CAF](<%= endpoint_path(uid: 'cnav/quotient_familial') %>) avec une identité pivot vérifiée, sans avoir à intégrer tout de suite la [modalité d'appel FranceConnect](<%= cas_usage_path('modalite-appel-franceconnect') %>).
+
+
+
+            ## <a name="kit-communication"></a>Kit de communication auprès des particuliers
+
+
+            <div class="fr-card fr-enlarge-link fr-card--download">
+            <div class="fr-card__body">
+             <div class="fr-card__content">
+              <p class="fr-card__title">
+               <a download href="/files/modalite_formulaire_qf_kit_communication.pptx">
+                  Télécharger le kit de communication
+               </a>
+              </p>
+              <p class="fr-card__desc">Ce kit vous donne accès à des modèles textuels de présentation pour vos sites mails et affiches</p>
+              <div class="fr-card__end">
+               <p class="fr-card__detail">PowerPoint .pptx – 1,7 Mo</p>
+              </div>
+             </div>
+            </div>
+            </div>
+
+
+            ## <a name="guide-utilisation-collectivites"></a>Guide d'utilisation pour les collectivités
+
+            <div class="fr-card fr-enlarge-link fr-card--download">
+            <div class="fr-card__body">
+             <div class="fr-card__content">
+              <p class="fr-card__title">
+               <a download href="/files/modalite_formulaire_qf_guide_collectivites.pdf">
+                  Télécharger le guide d'utilisation - Collectivités
+               </a>
+              </p>
+              <p class="fr-card__desc">Ce guide est à destination des collectivités qui souhaitent accéder au service.</p>
+              <div class="fr-card__end">
+               <p class="fr-card__detail">PDF – 2,3 Mo</p>
+              </div>
+             </div>
+            </div>
+            </div>
+
+            ## <a name="guide-integration-editeur"></a>Guide d'intégration pour les éditeurs
+
+            <div class="fr-card fr-enlarge-link fr-card--download">
+            <div class="fr-card__body">
+             <div class="fr-card__content">
+              <p class="fr-card__title">
+               <a download href="/files/modalite_formulaire_qf_guide_editeurs.pdf">
+                  Télécharger le guide d'intégration - Éditeurs
+               </a>
+              </p>
+              <p class="fr-card__desc">Ce guide est à destination des éditeurs souhaitant proposer cette solution à leurs collectivités clientes.</p>
+              <div class="fr-card__end">
+               <p class="fr-card__detail">PDF – 2,4 Mo</p>
+              </div>
+             </div>
+            </div>
+            </div>
+
+
+            ## <a name="cgu"></a>Conditions d'utilisation du service
+
+            En utilisant cette solution, l'administration s'engage à respecter les conditions générales d'utilisation (CGU) des services suivants&nbsp;:
+
+            - [CGU de la solution à destination des administrations](https://quotient-familial.numerique.gouv.fr/cgu_administrations){:target="_blank"}
+            - [CGU API Particulier](<%= cgu_path %>){:target="_blank"}
+            - [CGU FranceConnect](https://franceconnect.gouv.fr/cgu){:target="_blank"}
+            - [CGU Hubee](https://www.hubee.numerique.gouv.fr/cgu){:target="_blank"}

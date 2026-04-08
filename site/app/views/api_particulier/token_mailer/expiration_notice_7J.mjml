@@ -1,0 +1,44 @@
+<%= render partial: "shared/api_particulier/mailers/header" %>
+<%= render partial: "banner",
+    locals: {
+      color: '#ffe5cf',
+      title: "🔑🚨⚠️ Votre accès à l'API Particulier <b>expire dans une semaine</b>",
+      subtitle: "Faîtes votre demande de prolongation maintenant&nbsp;⬇️"
+    }
+%>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <p>Bonjour <%= @full_name %>,</p>
+     <p>
+       <b>⚠️ &nbsp;Complétez maintenant votre demande de prolongation pour éviter la coupure de service !</b>
+      </p>
+      <p>
+        Passée la date du <%= @expiration_date %>, les appels à API Particulier avec votre jeton (cadre d'utilisation : "<%= @intitule %>") seront rejetés.
+      </p>
+      <p>
+        <b>
+          À 7 jours de l'expiration, il n'est plus possible de vous garantir que votre jeton sera prolongé avant son expiration.
+        </b>
+      </p>
+      <p>Nous ferons néanmoins notre possible ! Il vous faut soumettre votre demande de prolongation maintenant :</p>
+    </mj-text>
+    <mj-button href="<%= @prolong_token_url %>">
+      <b>Demander la prolongation du jeton d'accès&nbsp;🔑</b>
+    </mj-button>
+    <mj-text mj-class="secondary-link">
+      <a target="_blank" href="<%= @prolong_token_url %>">
+        <%= @prolong_token_url %>
+      </a>
+    </mj-text>
+    <mj-text>
+      <p>
+        À bientôt 👋
+        <br />
+        <b>L'équipe API Particulier</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "block_help_renewal" %>
+<%= render partial: "shared/api_particulier/mailers/footer" %>

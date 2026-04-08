@@ -1,0 +1,53 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-pb-2w">
+    <div class="fr-card fr-card--horizontal fr-card--no-arrow">
+      <div class="fr-card__body">
+        <div class="fr-card__content">
+          <h4 class="fr-card__title">
+            <%= t('.title', title: @token.intitule) %>
+
+            <span class="fr-text--sm fr-m-0 pull-right">
+              <%= link_to t('.links.user_tokens', external_id: @token.authorization_request.external_id).html_safe, authorization_request_path(id: @token.authorization_request.id), id: :user_tokens_link, class: %w(fr-link fr-link--sm fr-icon-arrow-right-line fr-link--icon-right) %>
+            </span>
+          </h4>
+
+          <div class="fr-card__desc">
+            <ul>
+              <li>
+                <span><%= t('.details.internal_id', id: @token.id) %></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-col-12 fr-pb-2w">
+    <div class="fr-tabs">
+      <ul class="fr-tabs__list" role="tablist" aria-label="stats-for-period-tabs">
+        <% @stats_facade.stats_metabase_urls.keys.each_with_index do |period, index| %>
+          <li role="presentation">
+          <button id="tabpanel-<%= period %>" class="fr-tabs__tab fr-icon-checkbox-line fr-tabs__tab--icon-left" tabindex="<%= index == 0 ? '0' : '-1' %>" role="tab" aria-selected="<%= index == 0 ? "true" : "false" %>" aria-controls="tabpanel-<%= period %>-panel">
+              <%= t(".tabs.#{period}") %>
+            </button>
+          </li>
+        <% end %>
+      </ul>
+
+      <% @stats_facade.stats_metabase_urls.each_with_index do |(period, metabase_url), index| %>
+        <div id="tabpanel-<%= period %>-panel" class="fr-tabs__panel <%= index == 0 ? 'fr-tabs__panel--selected' : '' %>" role="tabpanel" aria-labelledby="tabpanel-<%= period %>" tabindex="0">
+          <%= render partial: 'shared/metabase', locals: { metabase_url: metabase_url } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="fr-col-12 fr-pb-2w">
+    <h5>
+      <%= t('.requests_details.title', limit: @stats_facade.last_requests_limit) %>
+    </h5>
+
+    <%= render partial: 'shared/metabase', locals: { metabase_url: @stats_facade.last_requests_metabase_url, height: '430px' } %>
+  </div>
+</div>
