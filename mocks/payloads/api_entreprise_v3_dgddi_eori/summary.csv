@@ -1,0 +1,28 @@
+Titre,Description,Paramètres,Status,Réponse
+,Immatriculation EORI trouvée,"{""siret_or_eori"":""30613890001294""}",200,"{
+  ""data"": {
+    ""id"": ""FR30613890001294"",
+    ""actif"": true,
+    ""code_pays"": ""FR"",
+    ""code_postal"": ""75007"",
+    ""libelle"": ""DINUM"",
+    ""pays"": ""France"",
+    ""rue"": ""20 avenue de Ségur"",
+    ""ville"": ""Paris""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,EORI non trouvé,"{""siret_or_eori"":""00000000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""33003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siret ou le numéro EORI indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""Douanes""
+      }
+    }
+  ]
+}"

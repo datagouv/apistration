@@ -1,0 +1,30 @@
+---
+description: |-
+  ## Bénéficiaire AVEC participation financière - féminin
+  
+  Ce cas permet de tester :
+  - [Param. appel] lieu de naissance en France
+  - [Param. appel] sexe féminin
+  - [Param. appel] Deux prénoms
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
+  sexeEtatCivil: 'F'
+  nomNaissance: 'DUPONT'
+  prenoms:
+    - 'JEANNE'
+    - 'LAURE'
+  anneeDateNaissance: 1993
+  moisDateNaissance: 8
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": true,
+      "date_debut_droit": "2023-06-01"
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,32 @@
+---
+description: |-
+  ## IDENTITÉ CAS NOMINAL
+
+  Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+  Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données
+
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'DUPONT'
+  prenoms:
+    - 'ALEXIS'
+  anneeDateNaissance: 1982
+  moisDateNaissance: 12
+  jourDateNaissance: 27
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Dossier allocataire absent CNAV",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }

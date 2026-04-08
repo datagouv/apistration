@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Chateau Elyes
+params:
+  nom: "Chateau"
+  prenom: "Elyes"
+  dateDeNaissance: "2006-07-25"
+  sexe: "m"
+  lieuDeNaissance: "75105"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Chateau",
+    "prenom": "Elyes",
+    "dateNaissance": "2006-07-25",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

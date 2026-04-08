@@ -1,0 +1,32 @@
+Titre,Description,Paramètres,Status,Réponse
+,## Allocataire non trouvé via FranceConnect,"{""prenoms"":[""Jean""],""nomNaissance"":""INCONNU"",""anneeDateNaissance"":1990,""moisDateNaissance"":6,""jourDateNaissance"":15,""sexeEtatCivil"":""M"",""codeInseeLieuDeNaissance"":""75101"",""codePaysLieuDeNaissance"":""99100""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent de nos propres jetons FranceConnect de test.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""nomUsage"":""MARTIN"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+  ""data"": {
+    ""status"": ""ouvrant_droit"",
+    ""date_debut_droit"": ""2021-05-05""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+  ""data"": {
+    ""status"": ""allocataire"",
+    ""date_debut_droit"": ""2023-02-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

@@ -1,0 +1,82 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Titouan'
+  nomNaissance: "REVEIL"
+  anneeDateDeNaissance: 1998
+  moisDateDeNaissance: 6
+  jourDateDeNaissance: 18
+  sexe: "M"
+  codeInseeLieuDeNaissance: "98729"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsuel": null,
+        "prenoms": "Titouan",
+        "anneeDateDeNaissance": "1998",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "18",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsuel": "REVEIL",
+        "prenoms": "LEE",
+        "anneeDateDeNaissance": "1999",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsuel": null,
+        "prenoms": "Cheng",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsuel": null,
+        "prenoms": "Bo",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsuel": null,
+        "prenoms": "Fu",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "00",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Titouan REVEIL",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

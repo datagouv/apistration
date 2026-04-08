@@ -1,0 +1,13 @@
+---
+description: 'Conformité cotisations retraite vérifiée'
+params:
+  siret: '30613890001294'
+status: 200
+payload: |-
+  {
+    "data": {
+      "eligible": true
+    },
+    "links": {},
+    "meta": {}
+  }

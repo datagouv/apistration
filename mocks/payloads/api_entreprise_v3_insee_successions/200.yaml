@@ -1,0 +1,29 @@
+---
+title: 'Réponse 200'
+params:
+  siret: '30613890001286'
+description: 'INSEE Liens de successions - Réponse 200'
+status: 200
+payload: |-
+  {
+    "data": {
+      "predecesseurs": [
+        {
+          "siret": "30613890001278",
+          "date_succession": "2021-10-15",
+          "transfert_siege": true,
+          "continuite_economique": true
+        }
+      ],
+      "successeurs": [
+        {
+          "siret": "30613890001294",
+          "date_succession": "2022-12-15",
+          "transfert_siege": true,
+          "continuite_economique": true
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,29 @@
+---
+description: |-
+  ## Bénéficiaire sans participation financière femme - 200
+
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
+params:
+  nomNaissance: 'TOUR'
+  prenoms:
+    - 'LIDIA'
+  anneeDateDeNaissance: 1970
+  moisDateDeNaissance: 1
+  jourDateDeNaissance: 1
+  codeInseeLieuDeNaissance: '44109'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'F'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2025-01-01",
+    "dateFin": null
+  }
+

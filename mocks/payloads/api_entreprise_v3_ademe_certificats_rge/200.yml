@@ -1,0 +1,56 @@
+params:
+  siret: '13002526500013'
+status: 200
+description: 'Appel réussi'
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualibat.pdf",
+          "nom_certificat": "Qualisol CESI",
+          "domaine": "Fenêtres, volets, portes extérieures 2020",
+          "meta_domaine": "anciens domaines avant 2021",
+          "qualification": {
+            "code": "32",
+            "nom": "QualiPV Elec - Pose de générateur photovoltaïque raccordé au réseau (32)"
+          },
+          "organisme": "qualibat",
+          "date_attribution": "2020-12-24",
+          "date_expiration": "2025-08-01",
+          "meta": {
+            "internal_id": "Q112379-8611M12D10-2017-03-23",
+            "updated_at": "2021-02-25",
+            "archived": false
+          }
+        },
+        "links": {},
+        "meta": {}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualifelec.pdf",
+          "nom_certificat": "Qualisol CESI",
+          "domaine": "Fenêtres, volets, portes extérieures 2020",
+          "meta_domaine": "anciens domaines avant 2021",
+          "qualification": {
+            "code": "32",
+            "nom": "QualiPV Elec - Pose de générateur photovoltaïque raccordé au réseau (32)"
+          },
+          "organisme": "qualifelec",
+          "date_attribution": "2020-12-24",
+          "date_expiration": "2025-08-01",
+          "meta": {
+            "internal_id": "Q112379-8611M12D10-2017-03-23",
+            "updated_at": "2021-02-25",
+            "archived": false
+          }
+        },
+        "links": {},
+        "meta": {}
+      }
+
+    ],
+    "meta": {},
+    "links": {}
+  }

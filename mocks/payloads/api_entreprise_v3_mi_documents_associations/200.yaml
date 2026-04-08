@@ -1,0 +1,37 @@
+---
+description: 'Documents association trouvés'
+params:
+  siret_or_rna: 'W751234567'
+status: 200
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "timestamp": "1631182730",
+          "type": "Statuts",
+          "url": "https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf",
+          "expires_in": 86400,
+          "errors": []
+        },
+        "links": {},
+        "meta": {}
+      },
+      {
+        "data": {
+          "timestamp": "1687269600",
+          "type": "Récépissé de modification",
+          "url": "https://storage.entreprise.api.gouv.fr/siade/1635505765-modif-document_asso.pdf",
+          "expires_in": 86400,
+          "errors": []
+        },
+        "links": {},
+        "meta": {}
+      }
+    ],
+    "meta": {
+      "nombre_documents": 2,
+      "nombre_documents_deficients": 0
+    },
+    "links": {}
+  }

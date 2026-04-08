@@ -1,0 +1,16 @@
+---
+title: 'Conformité à jour'
+description: "Succès 200 - La conformité de l'entreprise est à jour"
+params:
+  siret: '20005379100014'
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "up_to_date"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }

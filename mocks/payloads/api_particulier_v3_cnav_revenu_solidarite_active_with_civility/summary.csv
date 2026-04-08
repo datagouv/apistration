@@ -1,0 +1,78 @@
+Titre,Description,Paramètres,Status,Réponse
+,## Bénéficiaire avec majoration,"{""nomNaissance"":""MARTIN"",""prenoms"":[""SAMUEL""],""anneeDateNaissance"":1980,""moisDateNaissance"":9,""jourDateNaissance"":20,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_majoration"": true,
+    ""date_debut_droit"": ""1992-11-20""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Bénéficiaire sans majoration,"{""nomNaissance"":""GONTRAND"",""prenoms"":[""YVES""],""anneeDateNaissance"":1980,""moisDateNaissance"":9,""jourDateNaissance"":20,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""avec_majoration"": false,
+    ""date_debut_droit"": ""1992-11-20""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Non bénéficiaire,"{""nomNaissance"":""LAGAFFE"",""prenoms"":[""GASTON""],""anneeDateNaissance"":1980,""moisDateNaissance"":9,""jourDateNaissance"":20,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": false,
+    ""avec_majoration"": null,
+    ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""anneeDateDaissance"":2002,""moisDateDaissance"":12,""jourDateDaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DESFOUIN"",""prenoms"":[""René""],""anneeDateDaissance"":2002,""moisDateDaissance"":12,""jourDateDaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",429,"{
+  ""errors"": [
+    {
+      ""code"": ""00429"",
+      ""title"": ""Trop de requêtes"",
+      ""detail"": ""Vous avez effectué trop de requêtes"",
+      ""source"": null,
+      ""meta"": {}
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DELANOUE"",""prenoms"":[""Jean-Marie""],""anneeDateDaissance"":2002,""moisDateDaissance"":12,""jourDateDaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""37999"",
+      ""title"": ""Erreur inconnue du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""SITUDI"",""prenoms"":[""Clément""],""anneeDateDaissance"":2002,""moisDateDaissance"":12,""jourDateDaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",504,"{
+  ""errors"": [
+    {
+      ""code"": ""37002"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"

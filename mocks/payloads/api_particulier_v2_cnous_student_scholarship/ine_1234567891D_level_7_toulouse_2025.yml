@@ -1,0 +1,23 @@
+---
+description: 'Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891D)'
+params:
+  ine: '1234567891D'
+status: 200
+payload: |-
+  {
+    "nom": "Puges",
+    "prenom": "Aurelie",
+    "prenom2": "",
+    "dateNaissance": "1999-06-21",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "7",
+    "email": "aurelie.puges@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }

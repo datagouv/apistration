@@ -1,0 +1,53 @@
+Titre,Description,Paramètres,Status,Réponse
+,Mandataires sociaux trouvés,"{""siren"":""552049447""}",200,"{
+  ""data"": [
+    {
+      ""data"": {
+        ""type"": ""personne_physique"",
+        ""fonction"": ""PRESIDENT"",
+        ""nom"": ""DUPONT"",
+        ""prenom"": ""Jean"",
+        ""date_naissance"": ""1965-03-15"",
+        ""date_naissance_timestamp"": -151200000,
+        ""lieu_naissance"": ""PARIS"",
+        ""pays_naissance"": ""FRANCE"",
+        ""code_pays_naissance"": ""FR"",
+        ""nationalite"": ""FRANCAISE"",
+        ""code_nationalite"": ""FR""
+      },
+      ""links"": {},
+      ""meta"": {}
+    },
+    {
+      ""data"": {
+        ""numero_identification"": ""784824153"",
+        ""type"": ""personne_morale"",
+        ""fonction"": ""COMMISSAIRE AUX COMPTES TITULAIRE"",
+        ""raison_sociale"": ""MAZARS - SOCIETE ANONYME A DIRECTOIRE ET CONSEIL DE SURVEILLANCE"",
+        ""code_greffe"": ""9201"",
+        ""libelle_greffe"": ""NANTERRE""
+      },
+      ""links"": {},
+      ""meta"": {}
+    }
+  ],
+  ""links"": {},
+  ""meta"": {
+    ""personnes_physiques_count"": 1,
+    ""personnes_morales_count"": 1,
+    ""count"": 2
+  }
+}"
+,Entreprise non trouvée,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""08003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""Infogreffe""
+      }
+    }
+  ]
+}"

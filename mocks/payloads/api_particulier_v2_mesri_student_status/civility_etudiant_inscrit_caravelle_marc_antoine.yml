@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Caravelle Marc-Antoine
+params:
+  nom: "Caravelle"
+  prenom: "Marc-Antoine"
+  dateDeNaissance: "2002-04-15"
+  sexe: "m"
+  lieuDeNaissance: "75110"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Caravelle",
+    "prenom": "Marc-Antoine",
+    "dateNaissance": "2002-04-15",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

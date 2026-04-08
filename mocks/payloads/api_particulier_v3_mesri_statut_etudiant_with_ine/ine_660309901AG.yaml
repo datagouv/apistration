@@ -1,0 +1,33 @@
+---
+description: 'Étudiant 660309901AG inscrit (appel par INE), ne renvoie pas d''INE'
+params:
+  ine: '660309901AG'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "LEBRETON",
+        "prenom": "Arnaud",
+        "date_naissance": "1988-09-10"
+      },
+      "admissions": [
+        {
+          "date_debut": "2021-09-16",
+          "date_fin": "2023-07-25",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75020",
+          "etablissement_etudes": {
+            "uai": "0750106H",
+            "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

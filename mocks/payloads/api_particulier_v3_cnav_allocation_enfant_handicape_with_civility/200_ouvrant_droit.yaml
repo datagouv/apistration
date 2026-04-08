@@ -1,0 +1,24 @@
+---
+description: |-
+  ## Ouvrant droit
+params:
+  nomNaissance: 'MARTIN'
+  prenoms:
+  - 'SOPHIE'
+  - 'MARIE'
+  anneeDateNaissance: 2012
+  moisDateNaissance: 7
+  jourDateNaissance: 22
+  codeCogInseeCommuneNaissance: '69123'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "ouvrant_droit",
+      "date_debut_droit": "2022-11-29"
+    },
+    "links": {},
+    "meta": {}
+  }

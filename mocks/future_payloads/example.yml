@@ -1,0 +1,9 @@
+---
+params:
+  param1: 1234567890
+  param2: qwerty
+status: 200
+payload: |-
+  {
+    "hello": "world"
+  }

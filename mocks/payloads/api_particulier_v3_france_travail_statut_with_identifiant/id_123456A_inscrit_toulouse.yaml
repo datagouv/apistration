@@ -1,0 +1,45 @@
+---
+description: 'Identifiant 123456A, inscrite, toulouse'
+params:
+  identifiant: '123456A'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiant": "123456A",
+      "identite": {
+        "civilite": "MME",
+        "nom_naissance": "Courtet",
+        "nom_usage": null,
+        "prenom": "Martine",
+        "sexe": "Féminin",
+        "date_naissance": "1990-01-06"
+      },
+      "contact": {
+        "email": "martine.courtet@fake.fr",
+        "telephone": "0601020304",
+        "telephone2": null
+      },
+      "adresse": {
+        "code_cog_insee_commune": "31555",
+        "code_postal": "31400",
+        "ligne_complement_adresse": null,
+        "ligne_complement_destinataire": "APPARTEMENT 42",
+        "ligne_complement_distribution": null,
+        "ligne_nom": "Courtet",
+        "ligne_voie": "11 Rue Capus",
+        "localite": "31400 TOULOUSE"
+      },
+      "inscription": {
+        "date_debut": "2024-01-01",
+        "date_fin": null,
+        "code_certification_cnav": "VC",
+        "categorie": {
+          "code": 1,
+          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

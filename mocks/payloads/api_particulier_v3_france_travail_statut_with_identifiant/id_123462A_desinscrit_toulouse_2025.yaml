@@ -1,0 +1,45 @@
+---
+description: 'Identifiant 123462A, desinscrit, toulouse, 2025'
+params:
+  identifiant: '123462A'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiant": "123462A",
+      "identite": {
+        "civilite": "M.",
+        "nom_naissance": "Fornaro",
+        "nom_usage": null,
+        "prenom": "Yoann",
+        "sexe": "Masculin",
+        "date_naissance": "1992-08-15"
+      },
+      "contact": {
+        "email": "yoann.fornano@fake.fr",
+        "telephone": "0601020304",
+        "telephone2": null
+      },
+      "adresse": {
+        "code_cog_insee_commune": "31555",
+        "code_postal": "31400",
+        "ligne_complement_adresse": null,
+        "ligne_complement_destinataire": "APPARTEMENT 42",
+        "ligne_complement_distribution": null,
+        "ligne_nom": "Vega",
+        "ligne_voie": "11 Rue Capus",
+        "localite": "31400 TOULOUSE"
+      },
+      "inscription": {
+        "date_debut": "2024-09-01",
+        "date_fin": "2025-09-01",
+        "code_certification_cnav": "VC",
+        "categorie": {
+          "code": 1,
+          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

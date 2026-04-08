@@ -1,0 +1,30 @@
+Titre,Description,Paramètres,Status,Réponse
+,Personne non trouvée via FranceConnect,"{""nomNaissance"":""NOEL""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""39003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""DSNJ""
+      }
+    }
+  ]
+}"
+,FranceConnect: Boursier échelon 5 (scope complet),"{""nomNaissance"":""Delatour"",""prenoms"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
+  ""data"": {
+    ""statut_service_national"": ""en_regle"",
+    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2008""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Personne de moins de 25 ans en règle avec ses obligations via FranceConnect,"{""nomNaissance"":""CUILLERE"",""prenoms"":[""Paul""],""anneeDateNaissance"":2007,""moisDateNaissance"":1,""jourDateNaissance"":23,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""42218""}",200,"{
+  ""data"": {
+    ""statut_service_national"": ""en_regle"",
+    ""commentaires"": ""Journée Défense et Citoyenneté effectuée le 15/06/2025""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

@@ -1,0 +1,902 @@
+# Statut étudiant boursier
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Dossier non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567404G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Scholarship not found",
+    "message": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567404G' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [409.yaml](409.yaml)
+
+  Status `409`
+
+  Plusieurs identités ont été trouvé avec ces paramètres d'appels
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Homonyme",
+    "prenoms": "Stéphanie",
+    "dateDeNaissance": "1995-01-01",
+    "lieuDeNaissance": "75001",
+    "sexe": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "conflict",
+    "reason": "Plusieurs ressources correspondent aux critères",
+    "message": "Plusieurs ressources correspondent aux critères"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=Homonyme' -d 'prenoms=St%C3%A9phanie' -d 'dateDeNaissance=1995-01-01' -d 'lieuDeNaissance=75001' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [500.yaml](500.yaml)
+
+  Status `500`
+
+  Erreur interne du serveur
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567500G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567500G' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [503.yaml](503.yaml)
+
+  Status `503`
+
+  Timeout - délai d'attente dépassé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567503G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "network_error",
+    "reason": "timeout of 10000 ms exceeded",
+    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567503G' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [civility.yml](civility.yml)
+
+  Status `200`
+
+  Boursier échelon 5
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Pagnol",
+    "prenoms": "Marcel",
+    "dateDeNaissance": "1998-07-12",
+    "lieuDeNaissance": "75000",
+    "sexe": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Pagnol",
+    "prenom": "Marcel",
+    "prenom2": "",
+    "dateNaissance": "1998-07-12",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "marcel@pagnol.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Evry",
+    "etablissement": "ENSIIE"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=Pagnol' -d 'prenoms=Marcel' -d 'dateDeNaissance=1998-07-12' -d 'lieuDeNaissance=75000' -d 'sexe=M' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_cnous.yml](fake_france_connect_cnous.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Jean",
+    "family_name": "MARTIN",
+    "birthdate": "01/01/2001",
+    "gender": "M",
+    "birthplace": "75002"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "DUPONT",
+    "prenom": "Jean",
+    "prenom2": "Martin",
+    "dateNaissance": "2000-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "jean@dupont.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_cnous_2.yml](fake_france_connect_cnous_2.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Thomas",
+    "family_name": "Delatour",
+    "birthdate": "16/04/1994",
+    "gender": "M",
+    "birthplace": "75111"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "DUPONT",
+    "prenom": "Jean",
+    "prenom2": "Martin",
+    "dateNaissance": "2000-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "jean@dupont.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_cnous_with_less_scopes.yml](fake_france_connect_cnous_with_less_scopes.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope partiel)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Jean",
+    "family_name": "MARTIN",
+    "birthdate": "2001-01-01",
+    "gender": "male",
+    "birthplace": "75002",
+    "birthcountry": "99100",
+    "preferred_username": "jmartin_cnous_with_less_scopes"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "jean@dupont.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_cnous.yml](france_connect_cnous.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Angela Claire Louise",
+    "family_name": "DUBOIS",
+    "birthdate": "1962-08-24",
+    "gender": "female",
+    "birthplace": "75107",
+    "birthcountry": "99100",
+    "preferred_username": ""
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "DUBOIS",
+    "prenom": "Angela",
+    "prenom2": "Claire",
+    "dateNaissance": "1962-08-24",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "wossewodda-3728@yopmail.com ",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [ine.yml](ine.yml)
+
+  Status `200`
+
+  Boursier échelon 6 (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Durand",
+    "prenom": "Géraldine",
+    "prenom2": "",
+    "dateNaissance": "1990-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "geraldine@@durand.fr",
+    "dateDeRentree": "2018-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Marseille",
+    "etablissement": "Pagnol"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567890A' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567890B_expired.yml](ine_1234567890B_expired.yml)
+
+  Status `200`
+
+  Boursier échelon 6, année scolaire antérieure (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890B"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Longchambon",
+    "prenom": "Thomas",
+    "prenom2": "",
+    "dateNaissance": "2001-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "thomas.longchambon@fake.fr",
+    "dateDeRentree": "2022-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567890B' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567890C_level_6.yml](ine_1234567890C_level_6.yml)
+
+  Status `200`
+
+  Boursier échelon 6, année scolaire en cours (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890C"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Charbonneau",
+    "prenom": "Axelle",
+    "prenom2": "",
+    "dateNaissance": "2001-01-02",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "axelle.charbonneau@fake.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567890C' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567890D_level_7.yml](ine_1234567890D_level_7.yml)
+
+  Status `200`
+
+  Boursier échelon 7, année scolaire en cours (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890D"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Montgomery",
+    "prenom": "Marie",
+    "prenom2": "",
+    "dateNaissance": "2001-01-03",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "7",
+    "email": "marie.montgomery@fake.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567890D' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891A_level_6_toulouse_2025.yml](ine_1234567891A_level_6_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891A)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Simon",
+    "prenom": "Lilian",
+    "prenom2": "",
+    "dateNaissance": "2005-01-03",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "lilian.simon@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891A' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891B_level_6_toulouse_2025.yml](ine_1234567891B_level_6_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891B)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891B"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Bel Aalia",
+    "prenom": "Sahra",
+    "prenom2": "",
+    "dateNaissance": "2005-01-03",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "sahra.bel.aalian@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891B' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891C_level_7_toulouse_2025.yml](ine_1234567891C_level_7_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891C)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891C"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Vaillancourt",
+    "prenom": "Gael",
+    "prenom2": "",
+    "dateNaissance": "1999-06-21",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "7",
+    "email": "gael.vaillancourt@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891C' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [ine_1234567891D_level_7_toulouse_2025.yml](ine_1234567891D_level_7_toulouse_2025.yml)
+
+  Status `200`
+
+  Boursier échelon 7, année scolaire 2025 (appel par INE: 1234567891D)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567891D"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Puges",
+    "prenom": "Aurelie",
+    "prenom2": "",
+    "dateNaissance": "1999-06-21",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "7",
+    "email": "aurelie.puges@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567891D' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>

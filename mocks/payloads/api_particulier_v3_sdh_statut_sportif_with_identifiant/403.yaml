@@ -1,0 +1,19 @@
+---
+description: 'Accès interdit'
+params:
+  identifiant: "98765"
+status: 403
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00100",
+        "title": "Privilèges insuffisants",
+        "detail": "Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /api/introspect",
+        "source": {
+          "parameter": "token"
+        },
+        "meta": {}
+      }
+    ]
+  }

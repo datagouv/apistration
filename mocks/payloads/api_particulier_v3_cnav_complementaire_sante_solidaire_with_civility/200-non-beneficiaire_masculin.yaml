@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Non bénéficiaire - masculin
+  
+  Ce cas permet de tester :
+  - [Param. appel] lieu de naissance en France
+  - [Param. appel] sexe masculin
+  - [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100' #Code 99100 pour la France
+  sexeEtatCivil: 'M'
+  nomNaissance: 'DUPONT'
+  prenoms:
+    - 'PIERRE'
+  anneeDateNaissance: 1966
+  moisDateNaissance: 6
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {},
+    "meta": {}
+  }

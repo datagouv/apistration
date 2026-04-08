@@ -1,0 +1,35 @@
+---
+description: 'Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891B)'
+params:
+  ine: '1234567891B'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_boursier": true,
+      "periode_versement_bourse": {
+        "date_rentree": "2025-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Toulouse",
+        "nom_etablissement": "Jean Jaurès"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "sahra.bel.aalian@fake.fr",
+      "identite": {
+        "nom": "Bel Aalia",
+        "prenoms": [
+          "Sahra"
+        ],
+        "date_naissance": "2005-01-03",
+        "nom_commune_naissance": "Paris",
+        "sexe": "F"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,83 @@
+---
+description: |-
+  ## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2023
+
+  Ce cas permet de tester :
+  - [Param. appel] Mois et année du QF recherché 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe feminin
+  - [Param. appel] Deux prénoms
+  - [Réponse] Tableau d'informations car couple
+  - [Réponse] Tableau d'informations car deux enfants
+  - [Réponse] Régime MSA
+  - [Réponse] Quotient familial de 150
+  - [Réponse] Quotient familial ancien de mai 2023
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'ROUX'
+  prenoms:
+    - 'JEANNE'
+    - 'STEPHANIE'
+  anneeDateNaissance: 1987
+  moisDateNaissance: 6
+  annee: 2023
+  mois: 5
+status: 200
+payload: |-
+  {
+    "data": {
+      "quotient_familial": {
+        "fournisseur": "MSA",
+        "valeur": 150,
+        "annee": 2023,
+        "mois": 5,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      },
+      "allocataires": [
+        {
+          "nom_naissance": "ROUX",
+          "nom_usage": null,
+          "prenoms": "JEANNE STEPHANIE",
+          "date_naissance": "1987-06-27",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROUX",
+          "nom_usage": null,
+          "prenoms": "LOIC NATHAN",
+          "date_naissance": "1979-05-19",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROUX",
+          "nom_usage": null,
+          "prenoms": "ALEXIS VINCENT",
+          "date_naissance": "2006-04-20",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "ROUX",
+          "nom_usage": null,
+          "prenoms": "FLEUR EDITH",
+          "date_naissance": "2004-04-20",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame ROUX JEANNE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE MONTORGUEIL",
+        "lieu_dit": null,
+        "code_postal_ville": "75002 PARIS",
+        "pays": "FRANCE"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

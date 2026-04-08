@@ -1,0 +1,24 @@
+---
+description: "Timeout du fournisseur GIP-MDS"
+params:
+  nomNaissance: 'TIMEOUT'
+  prenoms:
+    - 'SERVEUR'
+  anneeDateNaissance: 1993
+  moisDateNaissance: 3
+  jourDateNaissance: 3
+status: 504
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "31002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d'attente d'une réponse du fournisseur de données écoulé.",
+        "source": null,
+        "meta": {
+          "provider": "GIP-MDS"
+        }
+      }
+    ]
+  }

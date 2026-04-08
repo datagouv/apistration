@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400109
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1400,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "SIMON NATHALIE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "SIMON NATHAN",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "SIMON LÉA",
+        "dateDeNaissance": "05062005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "SIMON CAMILLE",
+        "dateDeNaissance": "05062005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "SIMON NATHAN & NATHALIE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }

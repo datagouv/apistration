@@ -1,0 +1,67 @@
+Titre,Description,Paramètres,Status,Réponse
+,Certifications Qualiopi trouvées,"{""siret"":""30613890001294""}",200,"{
+  ""data"": {
+    ""siret"": ""30613890001294"",
+    ""code_uai"": null,
+    ""unite_legale_avec_plusieurs_nda"": false,
+    ""declarations_activites_etablissement"": [
+      {
+        ""numero_de_declaration"": ""11910843391"",
+        ""actif"": true,
+        ""date_derniere_declaration"": ""2021-01-30"",
+        ""date_debut_exercice"": ""2021-01-30"",
+        ""date_fin_exercice"": ""2021-12-31"",
+        ""certification_qualiopi"": {
+          ""action_formation"": true,
+          ""bilan_competences"": false,
+          ""validation_acquis_experience"": false,
+          ""apprentissage"": false,
+          ""obtention_via_unite_legale"": true
+        },
+        ""specialites"": {
+          ""specialite_1"": {
+            ""code"": ""313"",
+            ""libelle"": ""Finances, banque, assurances""
+          },
+          ""specialite_2"": {
+            ""code"": ""326"",
+            ""libelle"": ""Informatique, traitement de l'information, réseaux de transmission des données""
+          },
+          ""specialite_3"": {
+            ""code"": null,
+            ""libelle"": null
+          }
+        }
+      }
+    ],
+    ""habilitations_france_competence"": [
+      {
+        ""code"": ""RNCP10013"",
+        ""actif"": true,
+        ""date_actif"": ""2020-01-30"",
+        ""date_fin_enregistrement"": ""2030-01-30"",
+        ""date_decision"": ""2020-01-30"",
+        ""habilitation_pour_former"": true,
+        ""habilitation_pour_organiser_l_evaluation"": true,
+        ""sirets_organismes_certificateurs"": [
+          ""12345678901234""
+        ]
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Établissement non trouvé,"{""siret"":""00000000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""36003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CARIF-OREF""
+      }
+    }
+  ]
+}"

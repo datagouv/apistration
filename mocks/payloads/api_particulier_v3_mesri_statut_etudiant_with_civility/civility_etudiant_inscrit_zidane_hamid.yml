@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit Zidane Hamid
+params:
+  nomNaissance: "Zidane"
+  prenoms:
+  - "Hamid"
+  anneeDateNaissance: 2005
+  moisDateNaissance: 12
+  jourDateNaissance: 13
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "97206"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Zidane",
+        "prenom": "Hamid",
+        "date_naissance": "2005-12-13"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-10-01",
+          "date_fin": "2026-07-30",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,40 @@
+---
+description: Étudiant formation continue AUTORBB DAVID
+params:
+  nomNaissance: "AUTORBB"
+  prenoms:
+  - "DAVID"
+  anneeDateNaissance: 2001
+  moisDateNaissance: 2
+  jourDateNaissance: 5
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "99241"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "AUTORBB",
+        "prenom": "DAVID",
+        "date_naissance": "2001-02-05"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-12-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation continue",
+            "code": "RF5"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

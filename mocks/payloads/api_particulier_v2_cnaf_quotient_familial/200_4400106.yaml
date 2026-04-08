@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400106
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1080,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "MOREAU ANDRÉ",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOREAU ANGEL",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "MOREAU ADRIEN",
+        "dateDeNaissance": "05112005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOREAU VALENTIN",
+        "dateDeNaissance": "05112005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "MOREAU ANDRÉ & ANGEL",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }

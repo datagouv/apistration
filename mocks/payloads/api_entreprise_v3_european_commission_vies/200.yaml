@@ -1,0 +1,13 @@
+---
+description: 'Numéro TVA trouvé'
+params:
+  siren: '552049447'
+status: 200
+payload: |-
+  {
+    "data": {
+      "tva_number": "FR82552049447"
+    },
+    "links": {},
+    "meta": {}
+  }

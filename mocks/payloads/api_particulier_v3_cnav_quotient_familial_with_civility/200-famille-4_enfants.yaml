@@ -1,0 +1,82 @@
+---
+description: |-
+  ## Famille avec quatre enfants (scolarisé / boursier / non boursier / majeur)
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec quatre enfants
+  * la prise en compte de profils enfants différents (scolarisé, boursier, non boursier/scolarisé, majeur)
+
+params:
+  codeCogInseeCommuneNaissance: '13001'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'DUPONT'
+  prenoms:
+    - 'SOPHIE'
+  anneeDateNaissance: 1982
+  moisDateNaissance: 9
+  jourDateNaissance: 3
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "SOPHIE",
+          "date_naissance": "1982-09-03",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "LOUISE",
+          "date_naissance": "2007-06-22",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "LAURA",
+          "date_naissance": "2013-11-15",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2016-12-03",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "MAXIME",
+          "date_naissance": "2015-09-01",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame DUPONT SOPHIE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "15 COURS JULIEN",
+        "lieu_dit": null,
+        "code_postal_ville": "13006 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 900,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

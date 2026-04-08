@@ -1,0 +1,17 @@
+---
+description: 'Paramètres invalides'
+params:
+  identifiant: "43210"
+status: 422
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00366",
+        "title": "Entité non traitable",
+        "detail": "Un ou plusieurs paramètres ne sont pas correctement formatés",
+        "source": null,
+        "meta": {}
+      }
+    ]
+  }

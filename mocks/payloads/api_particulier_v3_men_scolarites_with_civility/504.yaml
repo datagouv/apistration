@@ -1,0 +1,27 @@
+---
+description: 'Erreur serveur'
+params:
+  nomNaissance: "Faure"
+  prenoms: 
+    - "Felix"
+  sexe: "M"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 20
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 504
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "30002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
+        "source": null,
+        "meta": {
+          "provider": "MEN"
+        }
+      }
+    ]
+  }

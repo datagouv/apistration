@@ -1,0 +1,23 @@
+---
+description: |-
+  ## Bénéficiaire
+params:
+  nomNaissance: 'DUPONT'
+  prenoms:
+  - 'PIERRE'
+  anneeDateNaissance: 2015
+  moisDateNaissance: 3
+  jourDateNaissance: 12
+  codeCogInseeCommuneNaissance: '75112'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2023-06-15"
+    },
+    "links": {},
+    "meta": {}
+  }

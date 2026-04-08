@@ -1,0 +1,43 @@
+---
+description: 'Élève non boursier'
+params:
+  nomNaissance: "ROBERT"
+  prenoms: 
+    - 'CLARA'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2005
+  moisDateNaissance: 9
+  jourDateNaissance: 21
+  codeEtablissement: "0130039X"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "ROBERT",
+        "prenom": "CLARA",
+        "sexe": "F",
+        "date_naissance": "2005-09-21"
+      },
+      "module_elementaire_formation": {
+          "code_mef_stat": "211324099991",
+          "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+          "code_uai": "0130039X",
+          "nom": "Lycée Saint-Charles",
+          "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

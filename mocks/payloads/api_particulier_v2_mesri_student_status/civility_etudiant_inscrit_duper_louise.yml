@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Duper Louise
+params:
+  nom: "Duper"
+  prenom: "Louise"
+  dateDeNaissance: "2001-01-10"
+  sexe: "f"
+  lieuDeNaissance: "99208"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Duper",
+    "prenom": "Louise",
+    "dateNaissance": "2001-01-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-06-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

@@ -1,0 +1,43 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "MARTIN"
+  prenoms: 
+    - 'EMMA'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2012
+  moisDateNaissance: 8
+  jourDateNaissance: 15
+  codeEtablissement: "0132733A"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "MARTIN",
+        "prenom": "EMMA",
+        "sexe": "F",
+        "date_naissance": "2012-08-15"
+      },
+      "module_elementaire_formation": {
+          "code_mef_stat": "211324099991",
+          "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+          "code_uai": "0132733A",
+          "nom": "Lycée Polyvalent Antonin Artaud",
+          "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
+    },
+    "links": {},
+    "meta": {}
+  }

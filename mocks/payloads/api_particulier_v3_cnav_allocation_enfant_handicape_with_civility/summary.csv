@@ -1,0 +1,51 @@
+Titre,Description,Paramètres,Status,Réponse
+,## Bénéficiaire,"{""nomNaissance"":""DUPONT"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":2015,""moisDateNaissance"":3,""jourDateNaissance"":12,""codeCogInseeCommuneNaissance"":""75112"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""status"": ""allocataire"",
+    ""date_debut_droit"": ""2023-06-15""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Non bénéficiaire,"{""nomNaissance"":""BERNARD"",""prenoms"":[""LUCAS""],""anneeDateNaissance"":2010,""moisDateNaissance"":1,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""status"": ""non_beneficiaire"",
+    ""date_debut_droit"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Ouvrant droit,"{""nomNaissance"":""MARTIN"",""prenoms"":[""SOPHIE"",""MARIE""],""anneeDateNaissance"":2012,""moisDateNaissance"":7,""jourDateNaissance"":22,""codeCogInseeCommuneNaissance"":""69123"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",200,"{
+  ""data"": {
+    ""status"": ""ouvrant_droit"",
+    ""date_debut_droit"": ""2022-11-29""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Erreur fournisseur,"{""nomNaissance"":""DELANOUE"",""prenoms"":[""Jean-Marie""],""anneeDateNaissance"":2008,""moisDateNaissance"":6,""jourDateNaissance"":15,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""37999"",
+      ""title"": ""Erreur inconnue du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"

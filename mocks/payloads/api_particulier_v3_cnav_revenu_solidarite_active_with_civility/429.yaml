@@ -1,0 +1,26 @@
+---
+description: |-
+  ## Allocataire non trouvé
+params:
+  nomNaissance: 'DESFOUIN'
+  prenoms:
+  - 'René'
+  anneeDateDaissance: 2002
+  moisDateDaissance: 12
+  jourDateDaissance: 5
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 429
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00429",
+        "title": "Trop de requêtes",
+        "detail": "Vous avez effectué trop de requêtes",
+        "source": null,
+        "meta": {}
+      }
+    ]
+  }

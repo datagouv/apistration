@@ -1,0 +1,29 @@
+---
+description: Étudiant admis AUTORBB LANCE
+params:
+  nom: "AUTORBB"
+  prenom: "LANCE"
+  dateDeNaissance: "2005-02-05"
+  sexe: "m"
+  lieuDeNaissance: "99138"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "AUTORBB",
+    "prenom": "LANCE",
+    "dateNaissance": "2005-02-05",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-12-31",
+        "statut": "admis",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation continue"
+      }
+    ]
+  }

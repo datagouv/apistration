@@ -1,0 +1,27 @@
+---
+description: 'Boursier échelon 5'
+params:
+  nom: 'Pagnol'
+  prenoms: 'Marcel'
+  dateDeNaissance: '1998-07-12'
+  lieuDeNaissance: '75000'
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "nom": "Pagnol",
+    "prenom": "Marcel",
+    "prenom2": "",
+    "dateNaissance": "1998-07-12",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "marcel@pagnol.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Evry",
+    "etablissement": "ENSIIE"
+  }

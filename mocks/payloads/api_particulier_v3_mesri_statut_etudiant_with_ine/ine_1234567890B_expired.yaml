@@ -1,0 +1,33 @@
+---
+description: 'Étudiant 1234567890B inscrit (appel par INE), année scolaire 2022 à Toulouse'
+params:
+  ine: '1234567890B'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Longchambon",
+        "prenom": "Thomas",
+        "date_naissance": "2001-01-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2022-09-01",
+          "date_fin": "2023-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "31555",
+          "etablissement_etudes": {
+            "uai": "0313124C",
+            "nom": "Université Toulouse Capitole"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,18 @@
+---
+params:
+  siren: '844451564'
+status: 404
+description: 'Établissement non trouvé'
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "38003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
+        "meta": {
+          "provider": "CNETP"
+        }
+      }
+    ]
+  }

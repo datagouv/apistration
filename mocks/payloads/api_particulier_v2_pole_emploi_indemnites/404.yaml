@@ -1,0 +1,11 @@
+---
+description: "Identifiant non trouvé"
+params:
+  identifiant: 'inconnu'
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+    "message": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."
+  }

@@ -1,0 +1,83 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Jacob'
+    - 'Henri'
+  nomNaissance: "BOBO"
+  anneeDateDeNaissance: 1981
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 2
+  sexe: "M"
+  codeInseeLieuDeNaissance: "21331"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "BOBO",
+        "nomUsuel": null,
+        "prenoms": "Jacob Henri",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MIZUKI",
+        "nomUsuel": "BOBO",
+        "prenoms": "Akari",
+        "anneeDateDeNaissance": "1995",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "12",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "BOBO",
+        "nomUsuel": null,
+        "prenoms": "Aiko",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "03",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "BOBO",
+        "nomUsuel": null,
+        "prenoms": "Izumi",
+        "anneeDateDeNaissance": "2019",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "BOBO",
+        "nomUsuel": null,
+        "prenoms": "Arata",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Jacob BOBO",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE DE LILLE",
+      "lieuDit": null,
+      "codePostalVille": "75001 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

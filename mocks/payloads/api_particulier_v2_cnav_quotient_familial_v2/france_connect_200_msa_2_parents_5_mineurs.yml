@@ -1,0 +1,100 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'CINDY'
+  nomNaissance: "COMMODE"
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 6
+  jourDateDeNaissance: 27
+  sexe: "F"
+  codeInseeLieuDeNaissance: "57431"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "COMMODE",
+        "nomUsuel": "ARMOIRE",
+        "prenoms": "CINDY",
+        "anneeDateDeNaissance": "1980",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "ARMOIRE",
+        "nomUsuel": null,
+        "prenoms": "FRANCK",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "30",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "ARMOIRE",
+        "nomUsuel": null,
+        "prenoms": "Gaston",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ARMOIRE",
+        "nomUsuel": null,
+        "prenoms": "Henri",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ARMOIRE",
+        "nomUsuel": null,
+        "prenoms": "Robert",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ARMOIRE",
+        "nomUsuel": null,
+        "prenoms": "Hugo",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "30",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ARMOIRE",
+        "nomUsuel": null,
+        "prenoms": "Lucie",
+        "anneeDateDeNaissance": "2023",
+        "moisDateDeNaissance": "10",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Franck ARMOIRE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

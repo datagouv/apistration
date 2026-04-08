@@ -1,0 +1,51 @@
+---
+description: "Entreprise trouvée liasses fiscales"
+params:
+  siren: '306138900'
+  year: 2024
+status: 200
+payload: |-
+  {
+    "data": {
+      "obligations_fiscales": [
+        {
+          "id": "100209489259",
+          "code": "IS",
+          "libelle": "Impôt sur les sociétés",
+          "reference": "IS1",
+          "regime": "string"
+        }
+      ],
+      "declarations": [
+        {
+          "numero_imprime": "2033A",
+          "regime": {
+            "code": "RN",
+            "libelle": "Réel simplifié"
+          },
+          "date_declaration": "2012-12-26",
+          "date_fin_exercice": "2012-12-31",
+          "duree_exercice": 365,
+          "millesime": "201701",
+          "donnees": [
+            {
+              "code": "GR",
+              "code_EDI": "GR:C889:7111:1:TBX",
+              "code_absolu": "2006744",
+              "code_type_donnee": "CCI",
+              "intitule": "Déposé néant",
+              "code_nref": "304651",
+              "valeurs": [
+                "4245",
+                "5672"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "internal_id_itip": "100004763104"
+    }
+  }

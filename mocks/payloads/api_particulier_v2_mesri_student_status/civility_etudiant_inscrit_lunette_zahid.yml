@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Lunette Zahid
+params:
+  nom: "Lunette"
+  prenom: "Zahid"
+  dateDeNaissance: "2000-12-07"
+  sexe: "m"
+  lieuDeNaissance: "99241"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Lunette",
+    "prenom": "Zahid",
+    "dateNaissance": "2000-12-07",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2026-12-01",
+        "dateFinInscription": "2027-03-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

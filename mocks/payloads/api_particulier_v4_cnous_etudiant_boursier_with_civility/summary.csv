@@ -1,0 +1,67 @@
+Titre,Description,Paramètres,Status,Réponse
+,Boursier échelon 5,"{""nomNaissance"":""Pagnol"",""prenoms"":[""Marcel""],""anneeDateNaissance"":1998,""moisDateNaissance"":7,""jourDateNaissance"":12,""codeCogInseeCommuneNaissance"":""75000"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2020-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Evry"",
+      ""nom_etablissement"": ""ENSIIE""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""5"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""marcel@pagnol.fr"",
+    ""identite"": {
+      ""nom"": ""PAGNOL"",
+      ""prenoms"": [
+        ""MARCEL""
+      ],
+      ""date_naissance"": ""1998-07-12"",
+      ""nom_commune_naissance"": ""Paris"",
+      ""sexe"": ""M""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Non boursier,"{""nomNaissance"":""Durand"",""prenoms"":[""Sophie""],""anneeDateNaissance"":2000,""moisDateNaissance"":3,""jourDateNaissance"":25,""codeCogInseeCommuneNaissance"":""69123"",""sexeEtatCivil"":""F""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": false,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2021-09-01"",
+      ""duree"": 0
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Lyon"",
+      ""nom_etablissement"": ""Université Claude Bernard Lyon 1""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""0bis"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""sophie.durand@univ-lyon1.fr"",
+    ""identite"": {
+      ""nom"": ""DURAND"",
+      ""prenoms"": [
+        ""SOPHIE""
+      ],
+      ""date_naissance"": ""2000-03-25"",
+      ""nom_commune_naissance"": ""Lyon"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

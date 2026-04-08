@@ -1,0 +1,73 @@
+---
+description: 'Subventions trouvées'
+params:
+  siren_or_siret_or_rna: 'W751234567'
+status: 200
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "demande_subvention": {
+            "fournisseur": "OSIRIS",
+            "date_mise_a_jour_information": "2023-01-01T00:00:00.000Z",
+            "annee_exercice_demande": 2023,
+            "identifiant_engagement_juridique": "23/0001234",
+            "jointure_demandes_et_versements": "23/0001234",
+            "subvention_demandee": {
+              "dispositif": "Fonds de développement de la vie associative",
+              "sous_dispositif": "Aides territoriales (hors emploi)",
+              "montant_demande": 15000
+            },
+            "description_des_projets": {
+              "estimation_cout_total": 25000,
+              "projet": [
+                {
+                  "rang": 1,
+                  "intitule": "Développement du numérique associatif",
+                  "objectifs": "Favoriser l'inclusion numérique",
+                  "objectifs_operationnels": "Formation des bénévoles",
+                  "description": "Programme de formation au numérique",
+                  "aide": {
+                    "nature": "Projets associatifs",
+                    "modalite": "Aide au projet"
+                  },
+                  "modalite_ou_dispositif": "Développement numérique",
+                  "indicateurs": null,
+                  "cofinanceurs": "Conseil départemental"
+                }
+              ]
+            },
+            "instruction": {
+              "service_instructeur": "DRAJES Île-de-France",
+              "date_commission": "2023-06-15T00:00:00.000Z",
+              "statut_demande": "Accordé",
+              "montant_accorde": 10000
+            }
+          },
+          "paiements": [
+            {
+              "fournisseur": "Chorus",
+              "date_mise_a_jour_information": "2023-07-15T00:00:00.000Z",
+              "jointure_demandes_et_versements": "23/0001234",
+              "montant_verse": 10000,
+              "date_versement": "2023-07-15T00:00:00.000Z",
+              "centre_financier": "UO Region IDF",
+              "domaine_fonctionnel": "vie associative",
+              "activitee": "formation",
+              "numero_bop": "163",
+              "programme": {
+                "numero": "163",
+                "libelle": "Jeunesse et vie associative",
+                "fournisseur": "Data Bretagne"
+              }
+            }
+          ]
+        },
+        "links": {},
+        "meta": {}
+      }
+    ],
+    "meta": {},
+    "links": {}
+  }

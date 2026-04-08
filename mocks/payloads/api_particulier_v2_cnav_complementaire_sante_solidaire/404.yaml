@@ -1,0 +1,14 @@
+---
+description: 'Dossier non trouvé'
+params:
+  nomNaissance: 'DUBOCHE'
+  codeInseeLieuDeNaissance: '00404'
+  codePaysLieuDeNaissance: '99100'
+  sexe: F
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
