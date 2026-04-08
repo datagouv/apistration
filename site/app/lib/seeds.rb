@@ -25,6 +25,7 @@ class Seeds
     ProlongTokenWizard.destroy_all
 
     ActiveRecord::Base.connection.transaction do
+      MagicLink.delete_all
       ApplicationRecord.descendants.each(&:delete_all)
       AccessLog.delete_all
     end
