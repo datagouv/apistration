@@ -1,0 +1,16 @@
+<div class="fr-alert fr-alert--info fr-mb-8v">
+  <p class="fr-alert__title"><%= t('.disclaimer.title') %></p>
+  <p>
+    <%= t('.disclaimer.description', expiration_time: distance_of_time_in_words(Time.zone.now, @magic_link.expires_at), api_name: t("#{namespace}.name")) %>
+  </p>
+</div>
+
+<div class="fr-highlight fr-highlight--pink-tuile fr-ml-0">
+  <p>
+    <%= t('.notice').html_safe %>
+  </p>
+</div>
+
+<div class="fr-col-12 fr-pb-2w">
+  <%= render partial: 'shared/tokens/show', locals: { token: @magic_link.token.decorate } %>
+</div>

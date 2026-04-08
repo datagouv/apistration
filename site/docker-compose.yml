@@ -1,0 +1,46 @@
+version: "3"
+services:
+  db:
+    image: postgres:12.4
+    environment:
+      - POSTGRES_USER=admin_apientreprise
+      - POSTGRES_PASSWORD=wow*verysecret
+      - POSTGRES_DB=admin_apientreprise_development
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./docker/db/:/docker-entrypoint-initdb.d
+  redis:
+    image: "redis:6.2-alpine"
+    command: redis-server
+  web:
+    build: .
+    command: bin/rails server --port 5000 --binding 0.0.0.0
+    volumes:
+      - .:/app:consistent
+    ports:
+      - "5000:5000"
+    environment:
+      - POSTGRES_HOST=db
+      - REDIS_HOST=redis
+      - RAILS_ENV=development
+    depends_on:
+      - db
+      - redis
+    links:
+      - db
+      - redis
+  workers:
+    build: .
+    command: bundle exec good_job start
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    links:
+      - db
+      - redis
+    environment:
+      - RAILS_ENV=development
+      - POSTGRES_HOST=db
+      - REDIS_HOST=redis

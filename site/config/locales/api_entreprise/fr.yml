@@ -1,0 +1,438 @@
+fr:
+  application_controller:
+    error:
+      unauthorize: "Vous n'avez les autorisations pour accéder à ces informations"
+      record_not_found: "L'élément auquel vous essayez d'accéder est introuvable"
+  concerns:
+    authorization_requests_management:
+      show:
+        error:
+          title: "Le jeton n'est pas accessible"
+  layouts:
+    api_entreprise:
+      application:
+        title: API Entreprise
+  shared:
+    api_entreprise:
+      header:
+        title: API Entreprise
+        tagline: Les données des entreprises et des associations <strong>pour les administrations</strong>
+        tools:
+          links:
+            faq_contact:
+              title: "FAQ & Contact"
+              icon: "question-fill"
+            sign_in:
+              title: "Se connecter"
+              icon: "lock-fill"
+            user_connected:
+              icon: "user-fill"
+            sign_out:
+              title: "Se déconnecter"
+              icon: "logout-box-r-fill"
+        menu:
+          catalogue: "<strong>Catalogue des API</strong><br> & documentation des données"
+          usages: "<strong>Cas d'usages</strong><br> Fiches pratiques"
+          developer: "<strong>Espace développeur</strong><br> & spécifications techniques"
+          ask_access: "<strong>Demander un accès</strong><br>🔑 Vérifier votre éligibilité"
+          banner:
+            default: "<strong>Bureau ouvert</strong> <a href='https://webinaire.numerique.gouv.fr/meeting/signin/21835/creator/2466/hash/4ca2f92df7a5e7e9a27ea7e46dfba7e30ea6e41b'>en visio</a> le %{date} à 10 heures. <a href='/faq#quand-et-pourquoi-un-bureau-ouvert'>En savoir plus ➜</a>"
+            tech: "<strong>Une question ?</strong> Un tech et un métier vous répondent au bureau ouvert <a href='https://webinaire.numerique.gouv.fr/meeting/signin/21835/creator/2466/hash/4ca2f92df7a5e7e9a27ea7e46dfba7e30ea6e41b'>en visio</a> le %{date} à 10 heures. <a href='/faq#quand-et-pourquoi-un-bureau-ouvert'>En savoir plus ➜</a>"
+      footer:
+        tagline: API Entreprise, un <strong>service de l'écosystème des API et de la circulation des données</strong> au sein des administrations.
+        external_links:
+          - info.gouv.fr
+          - service-public.fr
+          - legifrance.gouv.fr
+          - data.gouv.fr
+
+  user_authorization_request_roles:
+    role:
+      demandeur: demandeur
+      contact_technique: contact technique
+      contact_metier: contact métier
+
+  api_entreprise:
+    download_attestations:
+      new:
+        interface: "Interface d'appel"
+        description: "Récupérez les attestations sociales ou fiscales d'une entreprise ou d'une association, en entrant son numéro SIREN."
+        description_cgu_html: "Pour rappel, les %{href} vous engagent à <strong>ne pas diffuser les données reçues, ici les attestations fiscales et sociales, à des tiers non-autorisés</strong>."
+        description_cgu_link_text: "conditions d'utilisation de l'API Entreprise"
+        authorization_request_number: "Demande n°%{external_id} - %{intitule}"
+        search: 'Rechercher'
+        token:
+          label: "🔑 Jeton d'habilitation :"
+        siren_number:
+          label: 'Numéro de SIREN :'
+      result:
+        download_attestation_fiscale_cta: 'Attestation fiscale (PDF)'
+        download_attestation_sociale_cta: 'Attestation sociale (PDF)'
+        company_type:
+          label: 'Nature juridique :'
+        company_category:
+          label: "Catégorie d'entreprise :"
+        naf_code:
+          label: 'Code NAF :'
+        attestation_sociale_not_downloadable: "Attestation sociale non‑téléchargeable"
+        attestation_fiscale_not_downloadable: 'Attestation fiscale non‑téléchargeable'
+    tokens:
+      token:
+        scope:
+          etablissements:
+            label: INSEE || API Données établissements dont les non diffusibles
+          entreprises:
+            label: INSEE || API Données unités légales dont les non diffusibles
+          unites_legales_etablissements_insee:
+            label: INSEE || API Données unités légales et établissements dont les non diffusibles
+          extraits_rcs:
+            label: Infogreffe || API Extrait RCS
+          mandataires_sociaux_infogreffe:
+            label: Infogreffe || API Mandataires sociaux
+          associations_donnees_protegees:
+            label: Djepva || API Données association
+          associations_djepva:
+            label: Djepva || API Données ouvertes association
+            tags:
+              - open data
+          associations:
+            label: Djepva || API Données ouvertes association
+            tags:
+              - open data
+          documents_association:
+            label: Djepva || API Données ouvertes association
+            tags:
+              - open data
+          effectifs_urssaf:
+            label: GIP-MDS || API Effectifs unité légale et établissement
+          conventions_collectives:
+            label: FabNum des ministères sociaux || API Conventions Collectives
+            tags:
+              - open data
+          eori_douanes:
+            label: Douanes || API Immatriculation EORI
+            tags:
+              - open data
+          exercices:
+            label: Exercice
+          chiffre_affaires_dgfip:
+            label: DGFIP || API Chiffre d'affaires
+          bilans_entreprise_bdf:
+            label: Banque de France || API 3 derniers bilans annuels
+          bilans_bdf:
+            label: Banque de France || API 3 derniers bilans annuels
+          liasse_fiscale:
+            label: DGFIP || API Liasses fiscales
+          liasses_fiscales_dgfip:
+            label: DGFIP || API Liasses fiscales
+          liens_capitalistiques_dgfip:
+            label: DGFIP || API Liens capitalistiques
+          attestations_fiscales:
+            label: DGFIP || API Attestation fiscale
+          attestation_fiscale_dgfip:
+            label: DGFIP || API Attestation fiscale
+          attestations_sociales:
+            label: URSSAF || API Attestation de vigilance
+          attestation_sociale_urssaf:
+            label: URSSAF || API Attestation de vigilance
+          msa_cotisations:
+            label: MSA || API Conformité cotisations de sécurité sociale agricole
+          cotisations_msa:
+            label: MSA || API Conformité cotisations de sécurité sociale agricole
+          probtp:
+            label: PROBTP || API Conformité cotisations retraite complémentaire
+          cotisations_probtp:
+            label: PROBTP || API Conformité cotisations retraite complémentaire
+          certifications_qualiopi_france_competences:
+            label: Carif-Oref || API Qualiopi & habilitations France compétences
+          fntp_carte_pro:
+            label: FNTP || API Carte professionnelle travaux publics
+            tags:
+              - open data
+          certificat_cnetp:
+            label: CNETP || API Attestation de cotisations congés payés & chômage-intempéries
+          certification_cnetp:
+            label: CNETP || API Attestation de cotisations congés payés & chômage-intempéries
+          certificat_agence_bio:
+            label: Agence BIO || API Certificats en BIO
+            tags:
+              - open data
+          certificat_rge_ademe:
+            label: ADEME || API Certification RGE
+            tags:
+              - open data
+          qualibat:
+            label: Qualibat || API Certification Qualibat
+            tags:
+              - open data
+          certificat_opqibi:
+            label: OPQIBI || API Certification d'ingénierie OPQIBI
+            tags:
+              - open data
+          open_data:
+            label: API dont les données sont publiques
+            tags:
+              - open data
+          entreprises_artisanales:
+            label: CMA France || API Données entreprises artisanales
+            tags:
+              - obsolete
+          beneficiaires_effectifs_inpi:
+            label: INPI || API Bénéficiaires effectifs
+
+    sessions:
+      create_from_oauth:
+        not_found:
+          title: "Votre compte ne semble pas être rattaché à une habilitation API Entreprise."
+          description: "Veuillez vérifier que l'e-mail %{email} utilisé ici correspond à l'e-mail utilisé lors de votre demande d'habilitation API Entreprise. \n\n
+            Si vous êtes un nouvel utilisateur, veuillez déposer une demande en suivant le lien suivant : https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau\n
+            Après validation de celle-ci, vous pourrez vous connecter au compte API Entreprise."
+
+      failure:
+        unknown: Une erreur inconnue est survenue, veuillez contacter le support.
+      after_logout:
+        success: Déconnexion réussie.
+
+    public_token_magic_links:
+      show:
+        error:
+          expired:
+            title: Lien expiré
+            description: Le lien d'accès au jeton a expiré. Les liens magiques ont une durée de vie de %{initial_expiration_delay_in_hours} heures. Veuillez redemander un accès à votre responsable de compte.
+          unknown:
+            title: Une erreur est survenue à la récupération du jeton.
+            description: Une erreur inconnue est survenue. Veuillez contacter le support à support@entreprise.api.gouv.fr
+          missing:
+            title: Jeton(s) non trouvés
+            description: Le jeton ou les jetons demandé(s) n'ont pas été trouvés. Veuillez contacter le support à support@entreprise.api.gouv.fr
+        disclaimer:
+          title: Durée de validité du lien
+          description: Cette page contient votre jeton d'accès à API Entreprise et ne doit en aucun cas être partagée avec un tiers non habilité ! Ce lien expirera dans %{expiration_time}.
+
+    endpoints:
+      index:
+        title: "Catalogue des API"
+        search:
+          label: "Rechercher une API"
+          placeholder: "Rechercher par nom, description ou fournisseur..."
+          button: "Rechercher"
+          no_results: "Aucune API ne correspond à votre recherche."
+      endpoint:
+        cta:
+          documentation: "Documentation"
+          swagger: "Swagger"
+
+      show:
+        error:
+          record_not_found: "L'API que vous essayez d'accéder est introuvable."
+        deprecated:
+          title: "Cette API est dépréciée"
+          description: "Cette API est une ancienne version, nous vous invitons à utiliser ces API les plus récentes :"
+          link_documentation: |-
+            Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank'>documentation</a>.
+        incoming:
+          title: "Cette API est bientôt disponible, testez-là !"
+          description: "Cette API est en cours de conception et va bientôt rejoindre le catalogue d'API Entreprise."
+          link_documentation: |-
+            En plus de cette documentation, un environnement technique de test est déjà disponible&nbsp;:&nbsp;
+          cta: "Consulter le swagger"
+        providers:
+          description:
+            one: "Fournisseur de la donnée"
+            other: "Fournisseurs de la donnée"
+        perimeter:
+          title: "Périmètre"
+          entity_type_title: "Entreprises ou associations concernées :"
+          geographical_scope_title: "Périmètre géographique :"
+          updating_rules_title: "Actualisation de la donnée :"
+          know_more_title: "En savoir plus :"
+        data:
+          title: "Les données"
+        attributes:
+          title: "Informations renvoyées en JSON :"
+        collection:
+          subtitle: "Ces informations sont renvoyées sous forme de tableau dont les éléments ont les spécifications suivantes :"
+        root_links:
+          title: "Liens à la racine :"
+          description: "Ces liens sont présents dans la réponse et permettent d'appeler automatiquement d'autres API du catalogue en lien avec celle-ci."
+        root_meta:
+          title: "Métadonnées racine :"
+          description: "Les métadonnées sont des données généralement liées au contexte de la ressource : mise à jour chez le fournisseurs, informations système, etc..."
+        provider_errors:
+          title: "Erreurs spécifiques"
+          description_html: "Lorsque l'API ne peut pas retourner les informations demandées, un message d'erreur est transmis.
+            <br>
+            <br>Les erreurs, spécifiques à cette API et au fournisseur de données %{provider_name}, sont listées ici :"
+          others_in_swagger_html: "L'intégralité des messages d'erreurs relatifs à cette API est consultable dans la %{link}."
+          documentation_link: "documentation technique"
+        faq:
+          title: "Questions & réponses"
+        historique:
+          title: "Historique"
+          old_endpoints:
+            description: "Documentations des anciennes API :"
+            link_documentation: |-
+              Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank'>documentation</a>.
+        cgu:
+          title: "Conditions d'utilisation des données"
+          main_title_opening: "Utilisation possible de la donnée :"
+          api_cgu_title: "Conditions spécifiques à cette API :"
+          main_title: "Conditions générales :"
+          cta: "CGU API Entreprise"
+      use_cases:
+        main:
+          title: "Cas d'usages"
+          description: "API utile pour :"
+        optional:
+          description: "API parfois utile pour :"
+      details:
+        title: "Détails de l'API"
+        format:
+          title: "Format de l'information"
+        availability:
+          title: "Disponibilité"
+          link: "Page de statut des API"
+          maintenance: "En maintenance tous les jours de %{from_hour} à %{to_hour}"
+          no_maintenance: "Disponible 24h/24 et 7j/7"
+        parameters:
+          title:
+            one: "Identifiant d'appel"
+            other: "Identifiants d'appel"
+        technical_specifications:
+          title: "Spécifications techniques :"
+          cta: "Consulter le swagger"
+        test_cases: "Cas de tests"
+    faq:
+      index:
+        title: "FAQ & contact"
+
+    cas_usages:
+      index:
+        title: "Cas d'usages"
+        description: "Consultez les <strong>fiches pratiques des cas d’utilisation</strong> de l’API Entreprise.<br>Retrouvez, entre autres, les <strong>données utiles</strong> pour les cas d’usages."
+        cards:
+          marches_publics:
+            title: "Marchés publics"
+            description: "Facilitez le dépôt des candidatures et récupérez les justificatifs administratifs de vos utilisateurs."
+          aides_publiques:
+            title: "Aides publiques"
+            description: "Facilitez le dépôt des demandes et récupérez les justificatifs administratifs de vos utilisateurs."
+          subventions_associations:
+            title: "Subventions fonctionnement associations"
+            description: "Facilitez la saisie et l'instruction du formulaire unique de demande des associations."
+          socle_de_base:
+            title: "Socle de base DLNUF"
+            description: "Accédez aux données de base de mise en oeuvre du « Dites-le nous une fois »"
+          fraude:
+            title: "Détection de la fraude"
+            description: "Accédez rapidement à des informations sociales, financières et économiques."
+          editeur:
+            title: "Accès éditeurs de logiciels"
+            description: "Donnez accès à l'API Entreprise à vos clients publics."
+    pages:
+      newsletter:
+        main:
+          title: Abonnez-vous à nos lettres d'infos&nbsp;!
+          newsletter_title: 💌 Actualités et guides pratiques&nbsp;:&nbsp;
+          newsletter_description: Restez informé des dernières API disponibles, des nouvelles fonctionnalités et en cas de rupture de service majeure&nbsp;:&nbsp;
+          operations_title: 🚧 Maintenance & incidents&nbsp;:&nbsp;
+          operations_description: Soyez notifié des incidents et opérations de maintenance des API de votre choix&nbsp;:&nbsp;
+          operations_button: S'abonner aux incidents
+          archives_title: 🕰 Archives de toutes nos communication&nbsp;:&nbsp;
+          archives_description: Nous archivons toutes nos communications dans <a href="https://v2.entreprise.api.gouv.fr/infolettres/" target="_blank">notre page infolettre</a>
+        banner:
+          title: Lettres d'information
+          description: Abonnez-vous à nos différentes lettres d'informations pour être informé <strong>des actualités, des évènements, des nouveautés et des ruptures de service.</strong>
+      home:
+        section_welcome:
+          title: <strong>Vous êtes un acteur public ?</strong><br>Gagnez du temps dans vos démarches<br> entreprises & associations&nbsp;!
+          subtitle: <br><strong>Intégrez l'API&nbsp;Entreprise👇</strong>
+          button_endpoints: Les données disponibles
+          button_developers: Kit d'intégration
+          link_faq: API Entreprise, c'est quoi ?
+        section_access:
+          title_access: Un bouquet d'API pour les agents publics vers les informations administratives des entreprises/associations
+          info_data_title: Des données certifiées
+          info_data_description: Les données sont prises à la source. Terminé les fautes de frappes et la vérification manuelle de l'authenticité d'une attestation, l’information est certifiée et fait foi.
+          info_provider_title: Les fournisseurs de données regroupés
+          info_provider_description: API Entreprise recherche et démarche pour vous les organisations publiques ayant des données administratives sur les entreprises et les associations.
+          info_account_title: Un seul interlocuteur à un seul endroit
+          info_account_description: API Entreprise agrège et restitue les connaissances techniques et fonctionnelles au même endroit. Vous n'avez plus besoin de gérer plusieurs contacts techniques et fonctionnels.
+          info_technical_title: Un seul interfaçage technique
+          info_technical_description: L’interfaçage est unique et dans des standards à jour des contraintes industrielles. Il n'est plus nécessaire de lire et comprendre les documentations des différentes DSI.
+          card_documentation_title: Une documentation métier de chaque API
+          card_documentation_description: Liste des données, périmètre de l’API, conditions d’utilisations,&nbsp;...
+          card_developers_title: Un espace développeur
+          card_developers_description: Spécifications techniques générales et dédiées à chaque API, Swagger, Kit de mise en production,&nbsp;...
+          link_faq: "Qu'est-ce qu'une API ?"
+        section_use_cases:
+          title: Cas d'usages
+          description: <strong>Une fois l'API Entreprise intégrée dans votre système d'information</strong>&nbsp;:&nbsp;<br>À partir d'un SIRET/SIREN/RNA, les informations sont automatiquement saisies dans les formulaires de vos usagers et en back-office pour vos agents. Cet accès direct aux données administratives facilite de nombreux cas d'usages&nbsp;:&nbsp;
+          cards:
+            marches_publics:
+              title: "Marchés publics"
+            aides_publiques:
+              title: "Aides publiques"
+            subventions_associations:
+              title: "Subventions associations"
+            socle_de_base:
+              title: "Socle de base DLNUF"
+            fraude:
+              title: "Détection de la fraude"
+            editeur:
+              title: "Accès éditeurs de logiciels"
+          link: "Tous les cas d'usages"
+        section_howto:
+          title: Comment obtenir un accès ?
+          description: Seules les entités administratives sont éligibles ✅.<br>Les éditeurs de solutions logicielles à destination des administrations peuvent également l’être.
+          check_eligibity: Vérifier son éligibilité et demander un accès
+          cgu_link: Conditions détaillées d'utilisation du service
+          cgu_description: Votre administration est-elle éligible ? Quels sont les prérequis techniques ? Quels sont vos engagements ?
+          annuaire_data_link: Vous n’êtes pas une administration ?
+          annuaire_data_description: Retrouvez certaines informations sur les entreprises et les associations sur un autre site&nbsp;:&nbsp;l’Annuaire des entreprises.
+          access_account_title: Accéder à mon compte et aux jetons 🔑
+          access_account_description: Votre demande d’accès à l’API Entreprise a été acceptée par notre pôle juridique, connectez-vous pour&nbsp;:&nbsp;
+          access_account_list_token: Récupérer et prolonger les <strong>jetons d’accès</strong> ;
+          access_account_list_stats: Consulter les <strong>statistiques d’utilisation</strong> ;
+          access_account_list_content: <strong>Personnaliser le contenu du site</strong> API Entreprise en fonction de vos habilitations.
+          connect: Se connecter
+        section_partners:
+          title: Ils partagent les données au travers d’API Entreprise&nbsp;:&nbsp;
+          subtitle: Découvrez les API de chaque fournisseur de données.
+          link_endpoints: Consulter toutes les API
+          link_new_api: Proposer une nouvelle API
+        section_endpoints:
+          title: De nombreuses données sur les entreprises et associations&nbsp;:&nbsp;
+          link_endpoints: Consulter le catalogue des données
+        section_developers:
+          title: Un espace développeur 🛠 <br>pour intégrer et maintenir l’API
+          description: Une documentation technique précise dédiée aux équipes d’intégration.
+          prerequisites_link: Les prérequis techniques
+          prerequisites_description: La liste des fondamentaux techniques à maitriser, avant de demander un d’accès à l’API Entreprise.
+          integration_link: Kit d’intégration
+          integration_description: Un pas à pas pour intégrer et mettre en production l’API Entreprise
+          swagger_link: Spécifications techniques de chaque API
+          swagger_description: Utilisez notre Swagger (OpenApi)
+          status_link: Statuts des API
+    documentation:
+      index:
+        card_swagger_link: 🕹 Swagger
+        card_swagger_description: Spécifications techniques de chacune des API&nbsp;:&nbsp;<br/>- Paramètres d’appels<br/>- Détail de la réponse JSON<br/>- Codes erreurs
+      menu:
+        swagger: Swagger
+      banner:
+        link_specs: 🎛 Spécifications générales
+        link_kit: 🚀 Kit de mise en production
+        link_preprod: 🧪 Environnement de test
+  beta:
+    label: Version beta
+    color: purple-glycine
+  incoming:
+    label: prochainement
+    color: yellow-moutarde
+  novelty:
+    label: Nouveauté
+    color: blue-ecume
+  new_version:
+    label: Nouvelle version
+    color: blue-ecume

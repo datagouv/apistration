@@ -1,0 +1,117 @@
+---
+- uid: 'cma_france/rnm'
+  path: '/v3/cma_france/rnm/unites_legales/{siren}'
+  position: 180
+  perimeter:
+    entity_type_description: |+
+      Cette API couvre toutes les entreprises enregistrées au répertoire national des métiers (RNM):
+      - **Sont obligatoirement immatriculées** au répertoire des métiers ✅ les entreprises individuelles ou les sociétés qui emploient moins de onze salariés et exercent à titre principal ou secondaire une activité artisanale de production, de transformation, de réparation ou de prestation de service figurant en [annexe du décret du 2 avril 1998](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000021964896/2009-02-02/){:target="_blank"}).
+      - **Peuvent être immatriculées** au RNM, ✅ les entreprises qui dépassent le seuil de dix salariés si leur dirigeant peut se prévaloir de la qualité d'artisan, d'artisan d'art ou de maitre artisan.
+    updating_rules_description: |+
+      La fraîcheur des données de cette API correspond à la date de mise à jour du répertoire RNM par les nouvelles déclarations de l'entrepreneur.
+
+      Dans le cas où il n'y a pas encore eu de changement répertorié, la date d'import fait alors référence.
+
+      {:.fr-highlight.fr-highlight--caution}
+      > ⚠️ Cependant, la date de mise à jour ne garantit pas que toutes les données ont été actualisées à cette période. Leur mise à jour n'est en effet pas toujours obligatoire.
+      > Les données d'effectifs salariés et apprentis sont notamment à prendre avec vigilance car elles peuvent dater de la première déclaration.
+
+      **Liste des évènements qui doivent être obligatoirement déclarés :**
+      - changement d'adresse ;
+      - changement de nom commercial ;
+      - changement d'enseigne ;
+      - modification d'activité(s) de l'entreprise ;
+      - mise en location gérance, mention de conjoint collaborateur ;
+      - ouverture ou fermeture d'un établissement ;
+      - changement de la forme juridique ;
+      - changement de dirigeant ;
+      - dissolution de la société ;
+      - cessation temporaire ou totale d'activité ;
+      - régularisation d'immatriculation pour les micro-entrepreneurs.
+
+      **L'entrepreneur n'a pas d'obligation légale à déclarer un changement d'effectif**.
+      De fait, l'actualisation de cette donnée dépend du bon vouloir de l'entrepreneur à revérifier tous les champs du formulaire au moment de la déclaration d'un changement. **Généralement**, étant donné que toute modification du répertoire implique des coûts, **l'entreprise met à jour l'ensemble de ses données**.
+    entities:
+      - entreprises
+  call_id: "SIREN"
+  provider_uids:
+    - 'cma'
+  data:
+    description: |+
+      Cette API délivre des informations de référence sur les entreprises artisanales, données fournies par la Chambre des Métiers et de l'Artisanat France (CMA France), telles que :
+      - des **informations générales et juridiques**, telles que le nom de l'entreprise, le statut personne physique ou morale, la forme juridique, l'effectif et l'origine du fond de commerce ;
+      - des données définissant le **type d'activité** de l'entreprise, telles que le code NAFA, le secteur d'activité (NAR), et l'indication si l'activité est permanente ou saisonnière et/ou ambulante ;
+      - des **informations géographiques**, notamment l'adresse ;
+      - des informations sur les **dirigeants** ;
+      - les **dates clés** (immatriculation, radiation, début d'activité …) ainsi que le code du centre de formalité des entreprises (CFE) ;
+      - des informations en cas de double immatriculation ;
+      - des informations spécifiques au RNM (identifiants, dates d'import et date de mise à jour des données).
+  opening: public
+  format:
+    - Donnée structurée JSON
+  parameters:
+    - Numéro de SIREN de l'entreprise
+  faq:
+    - q: Qu'est ce que les codes NAFA, NAR 4 et NAR 20 ?
+      a: |+
+        ###### Le code NAFA
+
+        Le code NAFA est un identifiant permettant de naviguer dans la Nomenclature d'Activités Françaises de l'Artisanat qui décrit les activités artisanales.
+        Il est composé de six caractères, quatre chiffres et deux lettres.
+        Les cinq premiers caractères sont ceux de l'Activité Principale de l'Entreprise (APE) et correspondent au code NAF. La lettre située en sixième position permet de préciser le contenu du poste NAFA par rapport à la classe NAF.
+
+        **Pour en savoir plus :**
+
+        - La [page dédiée du Ministère de l'économie, des finances et de la relance](https://www.entreprises.gouv.fr/fr/commerce-et-artisanat/la-nomenclature-d-activites-francaise-de-l-artisanat){:target="_blank"}) détaille les règles ayant défini cette nomenclature. Vous y trouverez également plus d'informations sur le lien entre code NAF et NAFA.
+        - CMA France propose un [registre de la nomenclature](http://nafa.apcma.fr/jlbweb/jlbWeb?html=NAFA/accueil){:target="_blank"}), qui donne un descriptif précis de chaque activité.
+
+        ###### Les codes NAR 4 et 20
+
+        Les codes NAR sont issus des Nomenclatures Artisanales Regroupées. Ils permettent de connaître le secteur d'activité de l'entreprise artisanale.
+        Le numéro associé correspond au degré de précision en nombre de secteurs.
+        La NAR 4 comprend quatre secteurs d'activités, qui regroupent les vingt secteurs plus précis de la NAR 20.
+
+        **Pour en savoir plus :**
+
+        - Le site de CMA France tient un [registre de tous les codes NAFA](http://nafa.apcma.fr/jlbweb/jlbWeb?html=NAFA/accueil){:target="_blank"}), accompagné des codes NAR 4 et 20, et même des code NAR 8 et 80.
+        - Une [liste (non-officielle)](https://entreprise.api.gouv.fr/assets/pdf/liste-nar.pdf){:target="_blank"}) est consultable.
+
+
+    - q: Quelles sont les différents types de déclarations renvoyées ?
+      a: |+
+        La clé `declaration_procedures` permet d'obtenir différents types de déclarations :
+        - les déclarations de **cessation des paiements** et les décisions intervenues dans les **procédures de règlement judiciaire et de liquidation des biens** en application de la [loi n° 67-563 du 13 juillet 1967](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006398426/1980-05-13/){:target="_blank"}) ;
+        - les déclarations intervenues dans les procédures ouvertes en application de l'ordonnance n° 67-820 du 23 septembre 1967 tendant à faciliter le **redressement économique et financier** ;
+        - les déclarations de **cessation des paiements** et les décisions suivantes intervenues dans les procédures de **redressement** ou de **liquidation judiciaires** des entreprises ouvertes avant le 1er janvier 2006 en application du code de commerce ;
+        - les déclarations intervenues dans les procédures de **sauvegarde**, de **redressement judiciaire** ou de **liquidation judiciaire** ouvertes à compter du 1er janvier 2006.
+    - q: Quelle est la distinciton entre un nom de naissance, d'usage ou un pseudonyme ?
+      a: |+
+        Cette API délivre plusieurs types de noms et prénoms du dirigeant.
+
+        ##### Le nom de naissance
+
+        La clé `dirigeant_nom_de_naissance` délivre le nom de famille **donné à la personne le jour de la déclaration de sa naissance**.
+        Ce peut être :
+        - soit le nom du père,
+        - soit le nom de la mère,
+        - soit leurs deux noms accolés dans l'ordre choisi par eux dans la limite d'un nom de famille pour chacun d'eux (Article 311-21 du code civil).
+
+        Le nom de naissance est aussi le nom qui figure au registre de l'état civil. Cette législation est récente et a pris effet au 1er septembre 2003.
+        ⚠️ Ce nom **peut être différent du nom de famille** (qui n'est pas donné par l'API) dans le cas où la personne a demandé un changement de nom.
+
+        ##### Le nom d'usage
+
+        La clé `dirigeant_nom_usage` indique le nom que la personne a **choisi d'utiliser dans la vie quotidienne**.
+        Toutefois, ne sont autorisées que **trois formes de noms d'usage** :
+        - un double nom composé du nom de famille de la personne et du nom du parent qui n'a pas transmis son nom à la naissance.
+        - un double nom composé du nom de famille de la personne et du nom de la personne avec qui elle est mariée.
+        - le nom de la personne avec qui la personne est mariée, ce nom peut alors aussi être dénommé \"nom marital\".
+
+          Le nom d'usage **ne figure ni à l'état civil ni sur le livret de famille** ; il peut figurer sur la carte d'identité ou le passeport. Les administrations se doivent de l'utiliser si cela est demandé par la personne.
+
+        ##### Le pseudonyme
+
+        La clé `dirigeant_pseudonyme` indique le **nom d'emprunt utilisé par le dirigeant pour se désigner dans l'exercice de son activité**, généralement littéraire ou artistique.
+
+        Le pseudonyme ne correspond pas à un changement de nom, et son choix doit remplir certaines conditions. Il ne doit pas porter atteinte à l'ordre public et il ne doit pas permettre à la personne de s'approprier la renommée ou la parenté d'une personne tiers.
+        Le pseudonyme peut être protégé en étant déposé sous la forme d'une marque à l'INPI.

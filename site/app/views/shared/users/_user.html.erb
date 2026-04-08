@@ -1,0 +1,65 @@
+<div class="fr-container" id="user_details">
+  <div class="fr-grid-row">
+   <%= link_to t('.links.authorization_requests'), authorization_requests_path, class: %w(fr-link fr-icon-arrow-left-line fr-link--icon-left fr-text--lg pull-right fr-mb-2w) %>
+    <div class="fr-col-12">
+      <h1 class="fr-h1 fr-mb-4w">
+        <%= t('.title').html_safe %>
+      </h1>
+    </div>
+  </div>
+  <div class="main-content fr-p-4w" style="background-color: var(--background-default-grey)">
+    <h2>
+      <%= user.full_name %>
+
+      <% if user_roles.include?(:demandeur) %>
+        <span class="fr-tag">
+          <%= t('.demandeur') %>
+        </span>
+      <% end %>
+
+      <% if user_roles.include?(:contact_metier) %>
+        <span class="fr-tag">
+          <%= t('.contact_metier') %>
+        </span>
+      <% end %>
+
+      <% if user_roles.include?(:contact_technique) %>
+        <span class="fr-tag">
+          <%= t('.contact_technique') %>
+        </span>
+      <% end %>
+    </h2>
+    <div class="fr-col-12 fr-mb-3w">
+      <ul class="list-unstyled user-general-infos">
+        <li>
+          <%= icon('fr-icon-mail-line') %>
+          <%= user.email %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <section class="fr-accordion fr-mt-2w">
+    <h2 class="fr-accordion__title" id="transfer_account">
+        <button id="transfer_account_accordion" class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1"><%= t('.transfer_account.title').html_safe %></button>
+    </h2>
+    <div class="fr-collapse" id="accordion-1">
+         <ul>
+      <li>
+      <h3 class="fr-h6"> <%= t('.transfer_account.subtitle_if_demandeur').html_safe %>
+      </h3>
+        <p class="fr-mb-1w">
+          <%= t('.transfer_account.description_if_demandeur', api: namespace.gsub('_', '-')).html_safe %>
+        </p>
+      </li>
+      <li>
+        <h3 class="fr-h6">
+          <%= t('.transfer_account.subtitle_if_other_roles').html_safe %>
+        </h3>
+        <p class="fr-mb-1w">
+          <%= t('.transfer_account.description_if_other_roles', api: t("#{namespace}.api")).html_safe %>
+        </p>
+      </li>
+    </ul>
+    </div>
+  </section>
+</div>

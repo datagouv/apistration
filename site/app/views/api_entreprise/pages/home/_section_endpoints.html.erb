@@ -1,0 +1,16 @@
+<section id="section-endpoints" class="fr-pt-8v fr-pb-8v">
+  <div class="fr-container">
+
+    <div class="fr-grid-row">
+      <h2 class="fr-h3"><%= t('.title').html_safe %></h2>
+
+      <%= render @endpoints_sample %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to endpoints_path, class: "fr-btn fr-m-1w" do %>
+        <%= t('.link_endpoints') %>&nbsp;<span class="fr-icon-arrow-right-line" aria-hidden="true"></span>
+      <% end %>
+    </div>
+  </div>
+</section>

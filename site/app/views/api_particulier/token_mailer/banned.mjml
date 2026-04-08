@@ -1,0 +1,35 @@
+<%= render partial: "shared/api_particulier/mailers/header" %>
+<mj-section mj-class="section-main" background-color="#ffe5cf">
+  <mj-column>
+    <mj-text mj-class="title" color="#000091">
+      <h2>🔑⚠️ Votre token d'accès a été banni</h2>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <p>Bonjour,</p>
+      <p>
+        Votre token d'accès concernant la demande <b>"<%= @intitule %>"</b> a été banni par un administrateur.
+        L'ancien token sera définitivement banni le <%= @blacklisted_at %>.
+      </p>
+      <% if @token.present? %>
+        <p>
+          <b>Un nouveau token a été automatiquement généré pour vous.</b>
+          Veuillez mettre à jour votre application avec le nouveau token dès que possible.
+        </p>
+      <% end %>
+      <% if @comment.present? %>
+        <p>
+          <b>Commentaire de l'administrateur :</b><br />
+          <%= @comment %>
+        </p>
+      <% end %>
+      <p>
+        <b>L'équipe API Particulier</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "shared/api_particulier/mailers/footer" %>

@@ -1,0 +1,429 @@
+---
+fr:
+  api_entreprise:
+    documentation_pages:
+      developers:
+        title: Espace développeurs&nbsp;🛠
+        sections:
+          - anchor: 'prerequis-techniques'
+            title: Prérequis techniques
+            content: |+
+              Voici la liste des **fondamentaux techniques à mettre en place pour le bon fonctionnement de l’API&nbsp;Entreprise**&nbsp;:
+
+              - ☑️ Être en mesure de gérer le protocole HTTPS ;
+              - ☑️ Avoir une version de langage récente. Si vous utilisez Java, une version >= 1.8 est nécessaire (pour la gestion des certificats de +1024 bit, du TLS 1.2 minimum et des suites cryptographiques - ciphers) ;
+              - ☑️ S’assurer que nos Autorités de Certification (AC) pour les certificats SSL sont autorisées par vos systèmes ;
+              - ☑️ L'API&nbsp;Entreprise est uniquement accessible par internet. Si vous avez un pare-feu, il faut donc prévoir de whitelister l'adresse IP du service API Entreprise ;
+              - ☑️ Il est interdit d'interroger l'API&nbsp;Entreprise depuis un site web en front-end, car le jeton d'accès serait alors divulgué. Il vous faut donc interroger nos API depuis une application en back-end. Nous n'autoriserons pas le CORS (CORS - Cross Origin Ressource Sharing) ;
+              - ☑️ Prévoir non seulement les coûts de développement mais également les coûts de maintenance ;
+              - ☑️ Être en capacité de gérer les mises à jour de l'API&nbsp;Entreprise.
+
+              <br>
+              💡 Pour mieux comprendre l'API&nbsp;Entreprise avant de demander un accès, **vous pouvez utiliser [notre environnement de test](<%= developers_path(anchor: 'tester-api-preproduction') %>)**.
+
+          - anchor: 'specifications-generales'
+            title: Spécifications générales&nbsp;🎛
+            subsections:
+              - title: Respecter la volumétrie
+                anchor: 'respecter-la-volumétrie'
+                content: |+
+                  #### Les plafonds
+
+                  Les limites de volumétrie sur API&nbsp;Entreprise se décomposent en deux règles principales&nbsp;:&nbsp;
+
+                  - **Un plafond général par IP de 1000 requêtes/minute**.
+
+                  - **Une volumétrie par jeton par groupe d’endpoints&nbsp;:**
+                        - **1er groupe**&nbsp;:&nbsp;Les endpoints renvoyant du JSON constituent un premier groupe. Vous pouvez effectuer jusqu’à 250 requêtes/min/jeton sur ce groupe.
+                        - **2ème groupe**&nbsp;:&nbsp;Les endpoints transmettant des documents constituent un autre groupe. La volumétrie maximale d’appel concernant ce groupe est de 50 requêtes/min/jeton.
+                        - **Exceptions**&nbsp;:&nbsp;Certains endpoints échappent à cette règle et présentent une volumétrie spécifique par endpoint. Il s'agit notamment de l’[API attestation fiscale de la DGFIP](<%= developers_openapi_path(anchor: 'tag/Attestations-sociales-et-fiscales/paths/~1v4~1dgfip~1unites_legales~1{siren}~1attestation_fiscale/get') %>){:target="_blank"}, de l'[API dépréciée Actes de l’INPI](<%= developers_openapi_path(anchor: 'tag/Informations-generales/paths/~1v3~1inpi~1unites_legales~1{siren}~1actes/get') %>){:target="_blank"}{:target="_blank"} ou encore des [API effectifs du GIP-MDS](<%= developers_openapi_path(anchor: 'tag/Informations-generales/paths/~1v3~1gip_mds~1unites_legales~1{siren}~1effectifs_annuels~1{year}/get') %>){:target="_blank"}. Comme pour toutes les API du bouquet, la volumétrie exacte figure dans le header.
+
+                  #### Informations volumétrie dans le header
+
+                  ##### Pour toutes les réponses&nbsp;:
+
+                  Dans toutes les réponses de nos API, le header vous transmet des informations sur la volumétrie&nbsp;:
+
+                  {:.fr-table}
+                  | Champs du header    |   Signification    |     Format           |
+                  |:------------------------------|:------------------|:------------:|
+                  | `RateLimit-Limit` |La **limite** concernant l'endpoint appelé, soit le nombre de requête/minute. | Nombre|
+                  | `RateLimit-Remaining` |Le **nombre d'appels restants** durant la période courante d'une minute. | Nombre |
+                  | `RateLimit-Reset` |La **fin de la période** courante. | Timestamp |
+
+                  {:.fr-highlight.fr-highlight--example}
+                  >**Exemple&nbsp;:**
+                  >Considérons un endpoint ayant une limite de 50 appels /minute.
+                  >Vous faîtes un premier appel à 10h00 pile, et effectuez un second appel 20 secondes plus tard, puis un troisième 10 secondes plus tard, vous aurez les valeurs suivantes :
+                  > - `RateLimit-Limit` : 50 ;
+                  > - `RateLimit-Remaining` : 47 (50 moins les 3 appels effectués) ;
+                  > - `RateLimit-Reset` : [*Timestamp correspondant au jour présent à 10h01*]. Le premier appel initialise le compteur (à 10h00 pile), la période se termine 1min plus tard.
+                  >
+                  > Vous pouvez donc jusqu'à 10h01 pile effectuer 47 appels, le compteur sera réinitialisé à 50 à ce moment-là.
+
+                  ##### En cas de dépassement :
+
+                  Si vous dépassez le nombre d'appels autorisés (`RateLimit-Remaining = 0`), le serveur répondra avec le `status 429` sur tous les appels suivants dans la même période.
+
+                  Le header associé à ce code erreur `429` sera accompagné&nbsp;:&nbsp;
+                  - des trois champs précédents ;
+                  - d'un champ supplémentaire indiquant le temps à attendre avant de pouvoir effectuer des nouveaux appels.
+
+                  {:.fr-table}
+                  | Champs du header    |   Signification    |     Format           |
+                  |:------------------------------|:------------------|:------------:|
+                  | `RateLimit-Limit` |La **limite** concernant l'endpoint appelé, soit le nombre de requête/minute. | Nombre|
+                  | `RateLimit-Remaining` |Le **nombre d'appels restants** durant la période courante d'une minute. | Nombre |
+                  | `RateLimit-Reset` |La **fin de la période** courante. | Timestamp |
+                  | *Uniquement pour le header associé au code erreur 429* <br> `Retry-after`| **Décompte du nombre de secondes restantes** avant la prochaine période | Secondes |
+
+                  Vous pouvez donc **utiliser les champs du header pour optimiser votre consommation de l'API&nbsp;Entreprise**.
+
+                  #### Règles de bannissement en cas de surconsommation
+
+                  En cas de non prise en compte des codes erreurs `429` ou en cas de dépassement de la limite de volumétrie globale, **votre IP sera temporairement bannie de nos serveurs pour une durée fixe et non révocable de 12h**. Si vous avez plusieurs jetons, tous seront donc bloqués pendant ce laps de temps.
+
+                  Les appels depuis une IP bannie ne renvoient pas de codes HTTP, le serveur ne répond tout simplement pas.
+                  Vous pouvez en revanche vérifier si vous avez dépassé ce seuil depuis votre [compte utilisateur](<%= authorization_requests_path %>){:target="_blank"}.
+
+                  {:.fr-highlight}
+                  > ℹ️ Au bout de ces 12 heures, vos accès sont automatiquement rétablis ; **il est donc inutile d'écrire au support**.
+
+                  Nous vous invitons à prendre les mesures nécessaires car le dépassement intervient généralement chez nos utilisateurs lorsque leur programme n'a pas été correctement configuré.
+
+                  Pour les appels de traitement de masse, il est souhaitable que vous fassiez vos **batchs automatiques la nuit ou durant les heures creuses** afin de ne pas affecter la qualité du service pour le reste des usagers.
+
+              - title: Configurer vos timeout
+                anchor: 'configurer-vos-timeout'
+                content: |+
+                  Le timeout est le temps d'attente maximal de réponse à une requête. Il vous permet de ne pas immobiliser votre logiciel en le laissant bloqué sur un appel sans réponse.
+
+                  De façon générale, nous vous recommandons un timeout&nbsp;:&nbsp;
+                  - de **5 secondes** pour les appels de données structurées JSON ;
+                  - de **12 secondes** pour les appels retournant un PDF ou un ZIP.
+
+                  De même, pour ne pas immobiliser nos serveurs, nous attendons les réponses de nos fournisseurs un maximum de 10 secondes avant de vous les retransmettre. Si ce délai d’attente est dépassé un code erreur HTTP `504` vous sera renvoyé.
+
+              - title: Autoriser nos Autorités de Certifications
+                anchor: 'autoriser-nos-autorités-de-certifications'
+                content: |+
+                  API&nbsp;Entreprise utilise [DHIMYOTIS](https://www.dhimyotis.com/) comme organisme de délivrance de ses certificats SSL principaux ainsi que [Let's Encrypt](https://letsencrypt.org/) pour certains services secondaires.
+
+                  Il est conseillé d'ajouter ces Autorités de Certifications (AC) à votre base de confiance si vous en avez une. Une solution idéale est d'utiliser un paquet d'autorités mises à jour automatiquement ([Mozilla par exemple](https://wiki.mozilla.org/CA/Included_Certificates))
+
+                  API&nbsp;Entreprise utilise des certificats multi-domaines ; c'est-à-dire avec un "nom courant" (_common name - CN_) et plusieurs "noms alternatifs du sujet" (_subject alternatives names - SAN_), **soyez certains que vos outils fonctionnent correctement avec**.
+
+              - title: Gérer les erreurs - codes HTTPS
+                anchor: 'gérer-les-erreurs---codes-https'
+                content: |+
+                  #### Un code standard HTTPS pour catégoriser le statut de l'appel
+                  Toutes les réponse de l’API&nbsp;Entreprise sont envoyées avec un code HTTPS. **Ces codes permettent de se renseigner sur le statut de l’appel**, et sont harmonisés pour l'ensemble des API quelque soir le fournisseur de données.
+                  Pour en savoir plus sur les codes HTTPS, cet article de [Wikipedia](https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP){:target="_blank"} constitue une bonne base explicative.
+
+                  ##### En cas de succès, le code HTTP commence par 2 :
+
+                  {:.fr-table}
+                  | Code HTTPS                                       |      Signification                 |
+                  |--------------------------------------------------|------------------------------------|
+                  |`200` | **Tout va bien.**|
+
+                  ##### En cas d’échec, si l’erreur vient de votre côté, le code HTTP commence par 4 :
+
+                  {:.fr-table}
+                  | Code HTTP                       |      Signification                     |
+                  |---------------------------------|----------------------------------------|
+                  |`400` | **Mauvaise requête** – La syntaxe de votre requête est erronée.|
+                  |`401` | **Non autorisé** – Votre token est invalide ou manquant.|
+                  |`403` | **Interdit** – Le serveur a compris votre requête mais refuse de l’exécuter car votre jeton ne vous donne pas accès à cette ressource.|
+                  |`404` | **Non trouvé** – La ressource (l'entreprise, le certificat, …) demandée n'a pas été trouvée. Cette erreur intervient par exemple lors de l’entrée d’un numéro de SIREN qui n’existe pas, mais bien plus fréquemment lorsque l’entreprise qu’il designe est en dehors du périmètre de l’endpoint. ⚠️ Veuillez bien vérifier si l'entité appelée correspond au périmètre décrit dans la documentation métier de l'API. |
+                  |`409` | **Conflit** – Une requête associée à votre jeton est déjà en cours de traitement pour ces paramètres. Veuillez attendre la fin du traitement avant d'effectuer une nouvelle requête.|
+                  |`422` | **Entité non traitable** – Le format de la donnée passée en paramètre n'est pas accepté. Par exemple, si vous entrez 20 chiffres dans le paramètre SIREN, votre requête est automatiquement rejetée, car un SIREN fait obligatoirement 9 chiffres.|
+                  |`451` | **Indisponible pour raisons légales** - ce code est spécifiquement renvoyé lorsque vous demandez les informations d’une entreprise ou d’un établissement qui n'est jamais diffusé au travers des endpoints de l’Insee. Les données de ces établissements ne sont pas distribuées. Pour rappel, les statuts de diffusion de l'Insee sont "diffusion totale" (toutes les données de l'établissement sont diffusables), "diffusion partielle" (certaines données ne doivent pas être diffusées) et les cas particuliers dont nous parlons ici, qui ne sont jamais diffusés. Pour en savoir plus, consulter la seconde partie de cette [documentation "Qu'est-ce qu'un établissement en diffusion partielle ?"](<%= endpoint_path(uid: 'insee/etablissements', anchor: 'definition-diffusion-partielle') %>).|
+
+
+                  ###### En cas d’échec, si l’erreur provient d’API&nbsp;Entreprise ou bien des fournisseurs de données, le code HTTP commence par 5 :
+
+                  {:.fr-table}
+                  | Code HTTP                        |      Signification                     |
+                  |----------------------------------|----------------------------------------|
+                  |`500` | **Erreur interne à API&nbsp;Entreprise** – Une erreur interne du serveur d’API&nbsp;Entreprise est survenue. [Consultez votre compte utilisateur](<%= authorization_requests_path %>){:target="_blank"}, l’historique de l’incident devrait y être affiché ; ainsi que les actions à venir.
+                  |`502` | **Erreur interne fournisseur** – Une erreur interne du serveur du ou des fournisseurs est survenue. [Consultez votre compte utilisateur](<%= authorization_requests_path %>){:target="_blank"}, l’historique de l’incident devrait y être affiché ; ainsi que les actions à venir.
+                  |`503` | **Service non disponible** – Le service est temporairement indisponible ou en maintenance. Pour connaître l’historique de disponibilité et les incidents type de l’endpoint, vous pouvez [consulter le catalogue de données](../catalogue/).
+                  |`504` | **Intermédiaire hors délai** – Le(s) producteur(s) de données ont mis trop de temps à répondre. Notre temps d’attente, nous permettant de ne pas immobiliser le serveur sur un appel sans réponse, est fixé à 10 secondes et a été dépassé.|
+
+
+                  #### Un code supplémentaire pour préciser l'erreur et enclencher une action
+
+                  Tous les codes erreur HTTPS sont accompagnés de **codes plus précis, spécifiques à chaque situation d’erreur**. Une explication en toutes lettres est également donnée dans la payload. Enfin, dans certains cas, une métadonnée actionnable est disponible.
+
+                  Dans l’exemple ci-dessous, la clé `retry_in` permet justement de relancer un appel après le nombre de secondes indiquées.
+
+                  >_Exemple de payload d'un code HTTPS 502 :_
+                  >```
+                  >{
+                  >    "errors": [
+                  >       {
+                  >            "code": "04501",
+                  >            "title": "Analyse de la situation du compte en cours",
+                  >            "detail": "La situation de l'entreprise requiert une analyse manuelle d'un agent de l'URSSAF. Une >demande d'analyse vient d'être envoyée, cela prend au maximum 2 jours.",
+                  >            "meta": {
+                  >                "provider": "ACOSS",
+                  >                "retry_in": 172800
+                  >           }
+                  >        }
+                  >    ]
+                  >}
+                  >```
+
+
+                  Retrouvez tous les codes erreurs pour chaque endpoint dans [notre swagger, partie "Response samples"](<%= developers_openapi_path %>){:target="_blank"}.
+                  La liste des codes spécifiques à chaque endpoint y est disponible.
+
+
+              - title: Renseigner les paramètres d'appel et de traçabilité
+                anchor: 'renseigner-les-paramètres-dappel-et-de-traçabilité'
+                content: |+
+                  API&nbsp;Entreprise vous permet d’accéder à des données protégées. C’est pourquoi, dans un **objectif de traçabilité**, nous vous demandons de renseigner dans chacune de vos requêtes, non seulement un jeton d’accès, mais aussi **certaines informations qualifiant votre requête**.
+
+
+                  {:.fr-highlight.fr-highlight--caution}
+                  > ⚠️ **Ces paramètres sont obligatoires**. Les appels ne comportant pas ces paramètres sont rejetés, et un code erreur vous est renvoyé.
+
+
+                  Pour chaque endpoint, nous précisons dans le [swagger, rubrique "Query parameters"](<%= developers_openapi_path %>){:target="_blank"} les paramètres obligatoires spécifiques, ci-dessous une explication détaillée des éléments à fournir pour chaque paramètre de traçabilité :
+
+                  {:.fr-table}
+                  | Paramètre                                                  |      Information à renseigner           |
+                  |:----------------------------------------------------------:|-----------------------------------------|
+                  |`&context=CadreDeLaRequête`|**Le cadre de la requête** <br><br>Par exemple : aides publiques, marchés publics ou gestion d'un référentiel tiers utilisé pour tel type d'application*.*
+                  |`&recipient=BénéficaireDeL'Appel`|**Le bénéficiaire de l'appel** <br><br>Ce paramètre permet la traçabilité de l'appel et doit correspondre au _SIRET de l'organisation publique habilitée à utiliser la donnée_. <br><br>Si vous êtes une collectivité ou une administration, ce paramètre doit donc être votre numéro de SIRET. Si vous êtes un éditeur, il s'agit du SIRET de l'organisation publique cliente demandant la donnée.<br><br>Une vérification est effectuée par API Entreprise pour refuser tout format qui ne serait pas un numéro de SIRET et pour refuser un SIRET qui serait identique à l'entité appelée.
+                  |`&object= RaisonDeL'AppelOuIdentifiant`|**La raison de l'appel** <br> ou l'identifiant de la procédure. <br><br> L'identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l'essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l'appel. En effet, vous devez pouvoir justifier de la raison d'un appel auprès du fournisseur de données. <br> Description courte (< 50 caractères).
+
+              - title: Gérer les évolutions de version
+                anchor: 'gerer-les-evolutions-de-version'
+                content: |+
+                  Il est fréquent que les API évoluent et que, par conséquent, de nouvelles versions soient publiées.
+                  La version majeure V.3 de l'API&nbsp;Entreprise permet de créer facilement de nouvelles versions, tout en gardant les précédentes, rendant ainsi accessibles rapidement les évolutions qu'API Entreprise obtient de ses fournisseurs.
+
+                  {:.fr-h5}
+                  #### Toute évolution implique une montée de version
+
+                  Les montés de version d'une API interviennent pour toute évolution, c'est-à-dire :
+                  - l'ajout d'un nouveau champ par le fournisseur de la donnée ;
+
+                    {:.fr-highlight.fr-highlight--example}
+                    > Par exemple : Ajout du champ "économie sociale et solidaire" lors d'une évolution mineure par l'Insee.
+
+                  - la transformation de la structure de l'API par le fournisseur de la donnée ;
+
+                    {:.fr-highlight.fr-highlight--example}
+                    > Par exemple : Sortie d'une évolution majeure chez le fournisseur donnée.
+
+                  - l'ajout d'une fonctionnalité par API&nbsp;Entreprise
+
+                    {:.fr-highlight.fr-highlight--example}
+                    > Par exemple : Délivrance d'un nouveau champ "Certification valide" pour une API qui ne renvoyait avant que l'URL de téléchargement de l'attestation.
+
+                  Pour comprendre comment monter en version, [consultez la rubrique suivante](#changer-de-version).
+
+                  {:.fr-h5}
+                  #### Les anciennes versions maintenues tant que le fournisseur de la donnée le permet
+
+                  Depuis la V.3 de l'API&nbsp;Entreprise, les anciennes versions sont maintenues par le service API Entreprise tant que cela est possible.
+                  En pratique, cela signifie que :
+                  - tant que le fournisseur continue d'envoyer la strcuture de données de l'ancienne version, cette ancienne version est maintenue par l'API&nbsp;Entreprise ;
+                  - si le fournisseur ne renvoie plus la même structure de donnée, API&nbsp;Entreprise supprimera l'ancienne version car la maintenir reviendrait à renvoyer des champs vides.
+
+              - title: Changer de version
+                anchor: 'changer-de-version'
+                content: |+
+                  Depuis la version 3 de l'API&nbsp;Entreprise, toutes les API peuvent évoluer indépendamment les unes des autres. Les anciennes versions (à partir de la V.3) restent donc toujours disponibles si le fournisseur de la donnée continue de transmettre les informations.
+                  Depuis la version 3, le numéro de version est un paramètre de l’appel et non plus une valeur fixe pour toutes les API comme en version 1 et 2 (Les versions 1 et 2 sont définitivement dépréciées).
+
+                  >_Exemple d'utilisation du paramètre d'appel de version :_
+                  > Imaginons un exemple fictif : l'API documents, cette API est disponible en v.3 et une nouvelle version est sortie, la V.4.
+                  > Pour appeler la version souhaitée, il vous faudra directement inscrire le numéro de la version dans l'URL : `https://entreprise.api.gouv.fr/v3/...` pour la V.3 ou `https://entreprise.api.gouv.fr/v4/...` pour la V.4.
+
+                  {:.fr-highlight}
+                  📩 Une lettre d'information annonce systématiquement les nouvelles évolutions. Vous pouvez vous abonner [ici](<%= newsletter_path %>).
+              - title: Surveiller l'état des fournisseurs
+                anchor: 'surveillance-etat-fournisseurs'
+                content: |+
+                  API Entreprise met à disposition un ensemble de routes de "pings" permettant de récupérer l'état des services fournis par les différents fournisseurs de données.
+                  L'ensemble des routes est disponible à l'adresse suivante: [Routes de pings (format JSON)](https://entreprise.api.gouv.fr/pings).
+
+                  Pour chacune de ces routes, l'équipe d'API Entreprise effectue des vérifications spécifiques au fournisseur, permettant d'être au plus près de la réalité quand à la santé dudît fournisseur.
+                  Chacune de ces routes renvoi un json sous le format suivant:
+
+                  ```json
+                  {
+                    "status": "ok",
+                    "last_update": "2023-11-03T12:24:07.185+01:00",
+                    "last_ok_status": "2023-11-03T12:24:07.185+01:00"
+                  }
+                  ```
+
+                  Avec:
+                  - `status`, `string`, qui peut avoir 3 valeurs: `ok` quand tout est OK, `bad_gateway` quand il y a un souci, `unknown` quand on ne peut pas déterminer le status ;
+                  - `last_update`, `datetime`, date de la dernière mise à jour: pour éviter de surcharger nos systèmes nous effectuons de la mise en cache sur les pings ;
+                  - `last_ok_update`, `datetime`, date de la dernière mise à jour en OK: permet de savoir depuis quand le service est en défaut.
+
+                  A noter que le status http est à 200 pour `ok` et `unknown`, 502 pour `bad_gateway` : cela permet à nos systèmes de monitoring de ne pas lever d'alertes en cas de données insuffisantes (et ainsi éviter des potentiels faux positifs).
+
+                  Nous vous conseillons de passer par ces routes de surveillances, et ceci pour plusieurs raisons:
+
+                  1. API Entreprise s'occupe de la complexité vis-à-vis de la disponibilité de certains partenaires (limitation sur le nombre d'appels sur certains identifiants, échecs aléatoires etc..) ;
+                  2. Il n'y a pas de limitations sur ces routes
+                  3. L'implémentation est plus simple que d'utiliser les routes officieles
+                  4. Un `bad gateway` d'une route de ping a de forte chance d'être un vrai positif, contrairement à un échec sur les endpoints qui peut être dû à des erreurs réseaux/temporaires.
+
+              - title: Retrouver les droits d'un jeton JWT
+                anchor: 'retrouver-les-droits-dun-jeton-jwt'
+                content: |+
+                  Pour connaître **la liste des APIs auxquelles vous avez le droit** avec votre jeton d'accès, vous pouvez le vérifier avec l'API `/privileges`.
+
+                  Si vous gérez les tokens pour vos utilisateurs, vous pouvez aussi utiliser cette API pour vérifier les droits associés à leurs tokens.
+
+                  {:.fr-h5}
+                  #### La requête HTTP :
+
+                  ```
+                  https://entreprise.api.gouv.fr/privileges?token=LeTokenATester
+                  ```
+
+                  Le paramètre d'appel à renseigner est le token dont vous souhaitez connaître les droits.
+
+                  > **Exemple de réponse JSON :**
+                  >```
+                  >{
+                  >  "privileges": [
+                  >    "attestations_agefiph",
+                  >    [...]
+                  >    "actes_bilans_inpi"
+                  >  ]
+                  >}
+                  > ```
+
+                  La réponse JSON renvoie la liste des API autorisées. Retrouvez-leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
+
+          - anchor: 'kit-de-mise-en-production'
+            title: Kit de mise en production&nbsp;🚀
+            subsections:
+              - title: Tester l'API en préproduction
+                anchor: 'tester-api-preproduction'
+                content: |+
+                  {:.fr-text--lg}
+                  L'API&nbsp;Entreprise propose un environnement de test ou bac à sable pour vous permettre de tester le branchement de l'API avec votre système d'informations. 
+                  
+                  {:.fr-highlight}
+                  > 💡 L'environnement de test est une fonctionnalité à destination des usagers techniques. Si vous êtes un profil métier, veuillez vous référer aux fiches métier de chaque API disponibles depuis le [catalogue](<%= endpoints_path %>).
+
+                  {:.fr-text--lg}
+                  **Les informations essentielles du bac à sable :**
+
+                  - **Une URL :** L''environnement de staging est appelable avec `https://staging.entreprise.api.gouv.fr`.
+
+                  - **Les jetons d'accès** : Pour être fidèle au fonctionnement de l'API en production, cet environnement de test nécessite aussi un jeton d'accès, mais celui-ci, contrairement aux [jetons de production](#récupérer-le-jeton-jwt), est public car la donnée renvoyée en bac à sable est fictive. Un jeton ayant tous les droits est accessible [ici](https://github.com/etalab/siade_staging_data/blob/develop/tokens/default){:target="_blank"}. Pour générer un jeton spécifique, veuillez vous référer à ce [tutoriel](https://github.com/etalab/siade_staging_data/tree/develop/tokens){:target="_blank"}.
+                  
+                  - **Les données fictives de réponse :** Les données retournées par cet environnement de test sont totalement fictives et disponibles depuis [ce dépôt](https://github.com/etalab/siade_staging_data/tree/develop/payloads){:target="_blank"}.
+
+                  - **Pour rappel, le fichier OpenAPI est disponible depuis le [swagger](<%= developers_openapi_path %>)**, avec le bouton "Download" situé en début de page.
+
+                  **Pour en savoir plus, veuillez consulter le [README du dépôt Github](https://github.com/etalab/siade_staging_data){:target="_blank"}.**
+
+              - title: Récupérer le jeton JWT&nbsp;🔑
+                anchor: 'récupérer-le-jeton-jwt'
+                content: |+
+                  Seule la personne ayant fait la demande d'habilitation a accès au token, au travers du [compte utilisateur API&nbsp;Entreprise](<%= authorization_requests_path %>){:target="_blank"}.
+
+                  - _Si vous avez réalisé la demande d'habilitation_, vous pouvez **récupérer vos tokens ou jetons d'accès directement depuis votre [compte](<%= authorization_requests_path %>){:target="_blank"}**.
+
+                  - _Si vous n'avez pas réalisé la demande d'habilitation mais que vous êtes la personne en charge d'intégrer l'API&nbsp;Entreprise_, **la personne ayant effectué la demande d'habilitation peut vous transmettre le token de façon sécurisée depuis son [compte](<%= authorization_requests_path %>){:target="_blank"}**, en cliquant sur le bouton _"Transmettre le jeton à mon équipe technique"_. Vous recevrez alors, **par e-mail, un lien d'une durée de 4 heures** vous donnant accès au jeton.
+
+                  {:.fr-highlight.fr-highlight--caution}
+                  > ⚠️ L'utilisation de cette fonctionnalité du compte utilisateur doit avoir pour unique objectif la transmission sécurisée de la clé aux services techniques qui intégreront l'API&nbsp;Entreprise. **Le jeton JWT ne doit jamais être transmis par e-mail.**
+
+              - title: Faire sa première requête
+                anchor: 'faire-sa-première-requête'
+                content: |+
+                  #### Utiliser l'environnement de production - _Swagger_
+
+                  Après avoir récupéré votre jeton, vous pouvez faire un premier appel de test.
+
+                  Utilisez l'[environnement de production documenté (_Swagger_)](https://api.gouv.fr/documentation/api-entreprise}{:target="_blank"}), disponible sur api.gouv.fr.
+                  Il permet, à l'aide d'un token d'authentification valide 🔑, d'effectuer directement depuis le navigateur des tests de l'API. Les données confidentielles restent bien protégées. Vous y trouverez aussi la spécification technique téléchargeable sous format YAML afin de pouvoir accélérer le développement de vos outils d'interfaçage avec API&nbsp;Entreprise.
+
+                  {:.fr-highlight.fr-highlight--caution}
+                  > ⚠️ Attention, pour rappel, vous ne devez jamais copier-coller un token dans la barre de recherche classique d'un moteur de recherche ou dans un e-mail. Pour récupérer votre jeton de façon sécurisée, consultez cette [rubrique](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-tout-securite') %>){:target="_blank"}.
+
+
+                  #### Éléments constitutifs de la requête HTTP d'API&nbsp;Entreprise
+
+                  Chaque URL de requête est spécifiée dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"},
+
+                  {:.fr-h6}
+                  ##### Exemple de requête :
+
+                  ```
+                  https://entreprise.api.gouv.fr/v3/attestation_fiscales_dgfip/SirenDeL’Entreprise?token=📝&user_id=📝&context=📝&recipient=📝&object=📝
+                  ```
+
+                  {:.fr-table}
+                  | Éléments composant la requête              |   État    | Exemples      |
+                  |--------------------------------------------|-----------|---------------|
+                  |**Domaine** <br>(ou préfixe) <br>qui conduit à l'API de façon sécurisée| prédéfini par endpoint|`https://entreprise.api.gouv.fr`|
+                  |**Numéro de la version** <br>(par défaut désormais en V3)| prédéfini par endpoint| `/v3`|
+                  |**Nom de la donnée recherchée** <br>(ou *endpoint*)| prédéfini par endpoint| `/attestation_fiscale_dgfip`|
+                  |**Identité de l'établissement concerné** <br>(souvent SIREN ou SIRET)| à choisir 📝|`/SIRENouSIRETdeL'Etablissement`|
+                  |**Votre jeton d'accès**| à renseigner 📝|`?token=JetonD'Habilitation`|
+                  |**Des paramètres de traçabilité**| à renseigner 📝| `&context=CadreDeLaRequête`<br> ℹ️ Plus d'informations disponibles dans la partie [Instruire les paramètres de traçabilité](<%= developers_path(anchor: 'renseigner-les-paramètres-dappel-et-de-traçabilité') %>){:target="_blank"}|
+
+                  #### Constatez votre première trace d’appel depuis le compte utilisateur
+
+                  Une fois que vous avez fait un premier appel, celui-ci est **répertorié** dans votre [compte utilisateur](<%= authorization_requests_path %>){:target="_blank"}, dans la page détaillée de l'habilitation concernée, au niveau du jeton. Un lien vous permet d'accéder aux statistiques.
+
+              - title: Configurer le logiciel métier
+                anchor: 'configurer-le-logiciel-métier'
+                content: |+
+                  Documentation en construction&nbsp;🚧
+
+              - title: Monitorer la disponibilité des API
+                anchor: 'monitorer-la-disponibilité-des-api'
+                content: |+
+                  Dès l'intégration d'API Entreprise, prenez un temps pour vous assurer d'être informé de la disponibilité de nos API&nbsp;:
+                  - Ajoutez des routes de pings pour automatiser la surveillance des API par vous-même. Pour en savoir plus, consulter la rubrique [_"surveiller l'état des fournisseurs"_](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>) ;
+                  - abonnez-vous aux incidents et opérations de maintenance directement depuis notre [page de statut](https://status.entreprise.api.gouv.fr/){:target="_blank"}.
+
+          - anchor: 'incidents-et-maintenances'
+            title: Incidents et maintenances&nbsp;🚧
+            subsections:
+              - title: Que faire en cas de rupture de service ?
+                anchor: 'que-faire-en-cas-de-rupture-de-service-'
+                content: |+
+                  Le service ne répond plus ? consultez [cette rubrique de notre FAQ](<%= faq_index_path(anchor: 'le-service-ne-repond-plus-que-faire') %>){:target="_blank"}.
+
+              - title: Être informé des ruptures de service
+                anchor: 'être-informé-des-ruptures-de-service'
+                content: |+
+                  1. **Abonnez-vous aux notifications** par e-mail depuis [notre page de statut](https://status.entreprise.api.gouv.fr/subscribe/email){:target="_blank"}.
+
+                  2. **Ajoutez des routes de pings pour automatiser la surveillance** des API par vous-même. Plutôt que de consulter ponctuellement notre page de statuts, vous pouvez vous branchez directement à nos routes afin d'avoir un suivi encore plus précis. Pour en savoir plus, consulter la rubrique [surveiller l'état des fournisseurs](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>).
+
+              - title: Informations à transmettre en cas de problème
+                anchor: 'informations-à-transmettre-en-cas-de-problème'
+                content: |+
+                  Chaque réponse de l'API est accompagnée d'un header `X-Request-ID` qui est un identifiant unique de la requête. Ce header est très important car il nous permet de tracer votre appel dans nos systèmes.
+                  Pour nous aider à diagnostiquer un problème, merci de nous transmettre&nbsp;:
+                  - Le header 'X-Request-ID' de la réponse
+                  - l'URL complète de votre requête
+                  - le code HTTP renvoyé par l'API
+                  - Toute information complémentaire qui vous semble utile (heure de l'appel, payload renvoyée, etc.)
+
+                  {:.fr-highlight}
+                  > 💡Pour des soucis de traçabilité, nous vous recommandons de bien logger le header `X-Request-ID` de chaque appel que vous faites à l'API.
+
+          - anchor: 'prolongation-du-jwt'
+            title: Prolongation de la durée de vie du JWT&nbsp;🔑
+            content: >-
+              Pour comprendre comment prolonger votre jeton, consultez [cette rubrique de notre FAQ](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>){:target="_blank"}.
+

@@ -1,0 +1,14 @@
+<mj-button href=<%= login_url %>>
+  <% if entity == "editeur" %>
+    Se connecter au compte API Entreprise
+    <br />
+    et récupérer/transmettre ma clé d'accès &nbsp;🔑
+  <% else %>
+    Se connecter
+    <br />
+    au compte API Entreprise
+  <% end %>
+</mj-button>
+<mj-text mj-class="secondary-link">
+  <a target="_blank" href="<%= login_url %>"><%= login_url %></a>
+</mj-text>
