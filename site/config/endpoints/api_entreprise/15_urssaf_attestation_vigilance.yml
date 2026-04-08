@@ -1,0 +1,215 @@
+---
+- uid: 'urssaf/attestation_vigilance'
+  ping_url: 'https://entreprise.api.gouv.fr/ping/urssaf/attestation_sociale'
+  old_endpoint_uids:
+    - 'urssaf/v3/attestation_vigilance'
+  position: 260
+  path: '/v4/urssaf/unites_legales/{siren}/attestation_vigilance'
+  perimeter: &urssaf_attestation_perimeter
+    entity_type_description: |+
+      - ✅ les entreprises du régime général ;
+      - ✅ les associations du régime général, inscrites au répertoire Sirene et ayant donc un SIREN ;
+      - ✅ les très grandes entreprises ;
+      - ✅ les professions libérales (certaines n'ont pas de SIREN et ne seront donc pas trouvées par l'API) ;
+      - ✅ les micro-entrepreneurs de type "profession libérale" ;
+      - ✅ les firmes étrangères ;
+      - ✅ les administrations et collectivités territoriales.
+      <br />
+
+      **Ne sont pas concernées par l'API&nbsp;:**
+      - ❌ les micro-entrepreneurs qui ne sont pas en profession libérale et ❌ les artisans-commerçants. _Ces deux catégories ne sont pas appelables avec un numéro de SIREN_ ;
+      - ❌ les artistes-auteurs ;
+      - ❌ les entreprises utilisant le titre-emploi-service (TESE) et ❌ les associations et fondations utilisant le chèque-emploi associatif (CEA). _Ces deux catégories ne sont pas appelables car elles ont des déclarations apériodiques_.
+      - ❌ les entreprises qui ne sont pas soumises à cotisations, comme ❌ les entreprises n'employant aucun salarié ou les entreprises radiées.
+
+
+    geographical_scope_description: |+
+       - ✅ France métropolitaine ;
+       - ✅ DROM COM ;
+       - ✅ Firmes étrangères établies en France.
+
+    updating_rules_description: |+
+      Les données sont **mises à jour chaque nuit**, directement auprès du système d'information de l'Urssaf. Il peut donc exister un décalage de 24h au maximum entre les données de l'API et le SI de l'Urssaf.
+    entities:
+      - entreprises
+      - associations
+  opening: &urssaf_attestation_opening protected
+  call_id: &urssaf_attestation_call_id "SIREN"
+  parameters: &urssaf_attestation_parameters
+    - Numéro de SIREN de l'entreprise
+  format:
+    - URL vers l'attestation en PDF
+  provider_uids: &urssaf_attestation_provider_uids
+    - 'acoss'
+  keywords: &urssaf_attestations_keywords
+    - 'conformité'
+    - 'conforme'
+    - 'obligations'
+    - 'cotisations'
+    - 'decret janvier 2019'
+    - 'marchés publics'
+    - 'Aides publiques'
+    - 'fraude'
+  data: &urssaf_attestations_data
+    description: |+
+      Cette API permet de :
+      - **savoir si l'attestation de vigilance est délivrée par l'Urssaf** et obtenir l'URL de téléchargement de l'**attestation, au format PDF**.
+
+        {:.fr-highlight}
+        >⚠️ La délivrance de l'attestation ne veut pas forcément dire que l'entité est jour de ses cotisations. L'attestation de vigilance est délivrée sous [certaines conditions](#faq_entry_0_endpoint_urssaf_attestation_vigilance) ; entre autres, si l'entreprise s'est acquitée de ses cotisations et contributions.
+
+      - **obtenir la date de début et de fin de validité de l'attestation**. L'attestation a une durée de validité légale de 6 mois à compter de la date d'analyse indiquée sur le document et qui est différente de la date de délivrance du document. [En&nbsp;savoir&nbsp;plus](#faq_entry_1_endpoint_urssaf_attestation_vigilance).
+
+        {:.fr-highlight.fr-highlight--example}
+        >💡 Cette donnée structurée vous permet de reprogrammer automatiquement un appel avant la fin de validité du document
+
+      - **obtenir le code de sécurité de l'attestation** : ce code vous permet d'accéder aux informations de l'URSSAF associées à l'attestation (date de certification, période concernée, organisme émetteur, effectif et masse salariale, etc.).
+
+      - **savoir si l'entité n'est pas à jour de ses cotisations**, avec le code statut `refus_de_delivrance`.
+
+        {:.fr-highlight.fr-highlight--example}
+        >💡 Cette donnée structurée vous permet d'indiquer automatiquement sur votre logiciel que l'entreprise n'est pas en règle.
+
+
+      <section class="fr-accordion">
+        <h3 class="fr-accordion__title">
+          <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1">Liste des informations disponibles sur l'attestation PDF</button>
+        </h3>
+        <div class="fr-collapse" id="accordion-1">
+
+        - **Des informations sur l'entreprise&nbsp;:**
+          - Nom de l'unité légale&nbsp;;
+          - adresse du siège social&nbsp;;
+          - numéro de SIREN&nbsp;;
+          - La date de début de la centralisation des obligations sociales de l'entreprise par l'organisme émetteur.
+
+        - **La liste des établissements concernés** par l'attestation de vigilance et leur numéro de SIRET. _S'ils sont tous concernés, une mention l'indique_.
+
+        - Pour les entreprises ayant des salariés :
+          - l'**effectif moyen mensuel** calculé par l'Urssaf à partir des données issues de la déclaration sociale nominative (DSN)&nbsp;;
+          - la **masse salariale**, c'est à dire le total des rémunérations déclarées sur le dernier bordereau récapitulatif des cotisations Urssaf.
+
+        - **Un paragraphe listant les obligations sociales en règle**, qui peuvent être différentes selon l'entité analysée&nbsp;;
+
+        - **Des informations relatives à l'attestation&nbsp;:**
+          - date et lieu de délivrance&nbsp;;
+          - code sécurité - 💡 _Grâce à API Entreprise vous n'avez pas besoin d'utiliser ce code pour vérifier l'authenticité des documents car toutes nos attestations sont issues directement à l'Urssaf et donc certifiées !_
+          - adresse, courriel et téléphone du service gestionnaire de l'Urssaf.
+        </div>
+      </section>
+
+      {:.fr-h6 .fr-mt-4w}
+      ### Exemple d'attestation PDF&nbsp;:
+
+      <div class="fr-download">
+      <p>
+        <a href="/files/exemple-urssaf-attestation-sociale.pdf" download class="fr-download__link">
+        Télécharger un exemple d'attestation de vigilance
+        <span class="fr-download__detail">
+        PDF – 843 Ko
+        </span>
+        </a>
+      </p>
+      </div>
+  faq: &urssaf_attestations_faq
+    - q: &urssaf_attestations_faq_q1 Sous quelles conditions l'attestation est délivrée ?
+      a: &urssaf_attestations_faq_a1 |+
+        L'attestation est délivrée si l'entreprise :
+        - s'est acquitée des cotisations et contributions dues à leur date normale d'exigibilité ;
+        - a souscrit un plan d'apurement (planification des remboursements) des cotisations et contributions restant dues, qu'elle respecte ;
+        - s'est acquitée des cotisations et contributions dues, mais n'est pas à jour dans le paiement des majorations et pénalités ;
+        - ne s'est pas acquittée des cotisations et contributions dues mais en conteste le montant par recours contentieux.
+
+        Le cadre précis de délivrance de l'attestation est expliqué sur le [site de l'Urssaf](https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html){:target="_blank"}.
+
+        {:.fr-highlight}
+        > Depuis 2021, la contribution annuelle de l'OETH (Obligation d'Emploi de Travailleur Handicapé), fait partie des contribution dues pour obtenir l'attestation.
+        > Cette compétence était auparavant attribuée à l'AGEFIPH.
+
+    - q: &urssaf_attestations_faq_q2 Combien de temps est valide l'attestation de vigilance ?
+      a: &urssaf_attestations_faq_a2 |+
+        L'attestation de vigilance est valide 6 mois à compter de la date de fin de période analysée figurant sur l'attestation. Cette date est lisible en fin de seconde page, à la suite du paragraphe indiquant les obligations sociales.
+        ⚠️ Cette date est différente de la date d'édition de l'attestation.
+
+        L'API transmet des attestations dont la date de période analysée est inférieure à 3 mois. Par conséquent, la période de validité d'une attestation récupérée sur l'API Entreprise peut varier entre 3 et 6 mois.
+
+    - q: &urssaf_attestations_faq_q3 L'API ne renvoie pas de pièce, peut-on considérer que l'entreprise n'est pas à jour ?
+      a: &urssaf_attestations_faq_a3 |+
+        Non, dans certain cas, l'API ne peut pas délivrer l'attestation, cela ne signifie pas que l'entreprise n'est pas à jour.
+  historique: |+
+    **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
+    Ajout d'informations au format stucturé JSON :
+    - Un statut `entity_status` permettant d'indiquer qu'une entité n'est pas à jour de ses cotisations ;
+    - Les dates de début et de fin de validité de l'attestation pour relancer un appel avant expiration de l'attestation ;
+    - Le code de sécurité de l'attestation.
+
+    **Ce qui ne change pas :**
+    À part l'ajout des champs précédents, rien n'a changé. L'attestation est toujours disponible en PDF par URL. Cette montée en version n'est pas dûe à une évolution de l'API de l'URSSAF, par conséquent, la version précédente est maintenue par API&nbsp;Entreprise.
+- uid: 'urssaf/v3/attestation_vigilance'
+  position: 9001
+  ping_url: 'https://entreprise.api.gouv.fr/ping/urssaf/attestation_sociale'
+  new_endpoint_uids:
+    - 'urssaf/attestation_vigilance'
+  path: '/v3/urssaf/unites_legales/{siren}/attestation_vigilance'
+  perimeter: *urssaf_attestation_perimeter
+  opening: *urssaf_attestation_opening
+  call_id: *urssaf_attestation_call_id
+  parameters: *urssaf_attestation_parameters
+  format:
+    - Payload JSON
+  provider_uids: *urssaf_attestation_provider_uids
+  keywords: *urssaf_attestations_keywords
+  data:
+    description: |+
+      Cette API permet de **savoir si l'attestation de vigilance est délivrée par l'Urssaf** ou refusée. En cas de délivrance de l'attestation l'API transmet une **URL de téléchargement de l'attestation, au format PDF**.
+
+      L'attestation de vigilance est **délivrée sous [certaines conditions](#faq_entry_0_endpoint_urssaf_attestation_vigilance)** ; entre autres, si l'entreprise s'est acquitée de ses cotisations et contributions.
+
+      Elle a une **durée de validité légale de 6 mois** à compter de la date d'analyse indiquée sur le document et qui est différente de la date de délivrance du document. [En&nbsp;savoir&nbsp;plus](#faq_entry_1_endpoint_urssaf_attestation_vigilance).
+
+      <section class="fr-accordion">
+        <h3 class="fr-accordion__title">
+          <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1">Liste des informations disponibles sur l'attestation</button>
+        </h3>
+        <div class="fr-collapse" id="accordion-1">
+
+        - **Des informations sur l'entreprise&nbsp;:**
+          - Nom de l'unité légale&nbsp;;
+          - adresse du siège social&nbsp;;
+          - numéro de SIREN&nbsp;;
+          - La date de début de la centralisation des obligations sociales de l'entreprise par l'organisme émetteur.
+
+        - **La liste des établissements concernés** par l'attestation de vigilance et leur numéro de SIRET. _S'ils sont tous concernés, une mention l'indique_.
+
+        - Pour les entreprises ayant des salariés :
+          - l'**effectif moyen mensuel** calculé par l'Urssaf à partir des données issues de la déclaration sociale nominative (DSN)&nbsp;;
+          - la **masse salariale**, c'est à dire le total des rémunérations déclarées sur le dernier bordereau récapitulatif des cotisations Urssaf.
+
+        - **Un paragraphe listant les obligations sociales en règle**, qui peuvent être différentes selon l'entité analysée&nbsp;;
+
+        - **Des informations relatives à l'attestation&nbsp;:**
+          - date et lieu de délivrance&nbsp;;
+          - code sécurité - 💡 _Grâce à API Entreprise vous n'avez pas besoin d'utiliser ce code pour vérifier l'authenticité des documents car toutes nos attestations sont issues directement à l'Urssaf et donc certifiées !_
+          - adresse, courriel et téléphone du service gestionnaire de l'Urssaf.
+        </div>
+      </section>
+
+      {:.fr-h6 .fr-mt-4w}
+      ### Exemple d'attestation PDF&nbsp;:
+
+      <div class="fr-download">
+       <p>
+        <a href="/files/exemple-urssaf-attestation-sociale.pdf" download class="fr-download__link">
+         Télécharger un exemple d'attestation de vigilance
+         <span class="fr-download__detail">
+         PDF – 843 Ko
+         </span>
+        </a>
+       </p>
+      </div>
+  faq:
+    - q: *urssaf_attestations_faq_q1
+      a: *urssaf_attestations_faq_a1
+    - q: *urssaf_attestations_faq_q3
+      a: *urssaf_attestations_faq_a3
+

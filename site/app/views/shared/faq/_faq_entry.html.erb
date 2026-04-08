@@ -1,0 +1,13 @@
+<section class="fr-accordion faq-entry" id="<%= faq_entry.id %>">
+  <h3 class="fr-accordion__title">
+    <button class="fr-accordion__btn" aria-expanded="false" aria-controls="<%= dom_id(faq_entry, :answer) %>">
+      <div>
+        <%= faq_entry.question %>
+      </div>
+    </button>
+  </h3>
+  <div class="fr-collapse" id="<%= dom_id(faq_entry, :answer) %>">
+    <%= raw faq_entry.answer_markdownify %>
+  </div>
+</section>
+

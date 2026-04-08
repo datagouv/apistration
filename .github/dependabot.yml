@@ -16,6 +16,22 @@ updates:
       day: "monday"
       time: "05:00"
       interval: "weekly"
+  - package-ecosystem: "bundler"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
+        exclude-patterns:
+        - "rubocop*"
+      rubocop:
+        patterns:
+        - "rubocop*"
+    directory: "/site"
+    schedule:
+      day: "monday"
+      time: "05:00"
+      interval: "weekly"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

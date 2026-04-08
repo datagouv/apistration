@@ -1,0 +1,54 @@
+<%= render partial: "shared/api_entreprise/mailers/header" %>
+<%= render partial: "banner_demande_valide", locals: { entity: "editeur" } %>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <%= render partial: "greetings", locals: { entity: "demandeur" } %>
+      <p>
+        Votre
+        <b>demande d’habilitation n°<%= @authorization_request.external_id %> a bien été validée</b>
+        par notre service juridique !
+      </p>
+      <p class="warning-red">
+        ⚠️ Attention, vous êtes désormais connecté à l’API Entreprise en tant que prestataire d'une organisation publique
+        habilitée à utiliser les données.
+        <b>Vous ne devez en aucun cas être destinataire des données issues de l’API Entreprise.</b>
+        <br />
+        Si votre logiciel éditeur s’adresse aussi à des utilisateurs non-éligibles, tels que des acteurs privés, vous
+        devez vous assurer que les données de l’API Entreprise seront accessibles uniquement à des utilisateurs
+        habilités.
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-section mj-class="section-block-gris-clair">
+  <mj-column>
+    <mj-text>
+      <h2>
+        <b>1. Commencez dès maintenant à intégrer l'API Entreprise&nbsp;en récupérant votre jeton d'accès&nbsp;🔑&nbsp;:</b>
+      </h2>
+    </mj-text>
+    <%= render partial: "button_login", locals: { entity: "editeur" } %>
+    <mj-text>
+      <p>
+        <b>Vous avez besoin de transmettre le jeton dans le cadre de l'intégration ?&nbsp;</b>
+        <br />
+        Une fois connecté, utilisez le bouton prévu à cet effet "Transmettre le jeton à mon équipe technique".<br /><span class="warning-red">⚠️&nbsp;
+        Ce jeton ne doit jamais être relayé autrement que par cette fonctionnalité.</span>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+  <%= render partial: "block_mise_en_production" %>
+<mj-section>
+  <mj-column>
+    <%= render partial: "list_scopes" %>
+    <%= render partial:
+    "embarquement_valide_welcome" %>
+  </mj-column>
+</mj-section>
+<%= render partial: "block_subscribed_newsletter" %>
+<%= render partial: "block_questions" %>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>
+
+

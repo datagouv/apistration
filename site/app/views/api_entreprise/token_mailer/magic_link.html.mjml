@@ -1,0 +1,26 @@
+<%= render partial: "shared/api_entreprise/mailers/header" %>
+<mj-section padding-top="0px" padding-bottom="30px">
+  <mj-column>
+    <mj-divider mj-class="footer-divider" />
+    <mj-text padding-top="30px" > <p>Bonjour,</p></mj-text>
+    <mj-text>
+      <p>
+        <%= t('.link_description') %>&nbsp;<%= link_to('suivant',
+        token_show_magic_link_url(host: @host, access_token: @magic_link.access_token)) %>.
+      </p>
+    </mj-text>
+    <mj-text>
+      <p>
+        Ce lien est temporaire. Il est valable jusqu'au <%= friendly_format_from_timestamp(@magic_link.expires_at) %>
+      </p>
+    </mj-text>
+    <mj-text>
+      <p>
+        À bientôt 👋
+        <br />
+        <b>L'équipe API Entreprise</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>

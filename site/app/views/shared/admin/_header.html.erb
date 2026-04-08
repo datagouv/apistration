@@ -1,0 +1,82 @@
+<header class="fr-header">
+  <div class="fr-header__body">
+    <div class="fr-container">
+      <div class="fr-header__body-row">
+        <div class="fr-header__brand fr-enlarge-link">
+          <div class="fr-header__brand-top">
+            <div class="fr-header__logo">
+              <p class="fr-logo">
+              République
+              <br>Française
+              </p>
+            </div>
+            <div class="fr-header__navbar">
+              <!-- <button class="fr&#45;btn&#45;&#45;search fr&#45;btn" data&#45;fr&#45;opened="false" aria&#45;controls="modal&#45;866" title="Rechercher"> -->
+              <!--   Rechercher -->
+              <!-- </button> -->
+              <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-header-menu" aria-haspopup="menu" title="Menu" id="fr-btn-menu-mobile-1">
+                Menu
+              </button>
+            </div>
+          </div>
+
+          <div class="fr-header__service">
+            <a href="/" title="Accueil - Admin API Entreculier">
+              <p class="fr-header__service-title">
+                Admin - API Entreculier
+              </p>
+              <p class="fr-header__service-tagline">
+                C'est ici la puissance
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-header__menu fr-modal" id="modal-header-menu" aria-labelledby="fr-btn-menu-mobile-1">
+    <div class="fr-container">
+      <button class="fr-link--close fr-link" aria-controls="modal-header-menu">
+        Fermer
+      </button>
+
+      <div class="fr-header__menu-links"></div>
+        <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal">
+          <ul class="fr-nav__list">
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= admin_users_path %>" target="_self" >
+                Utilisateurs
+              </a>
+            </li>
+
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= admin_editors_path %>" target="_self" >
+                Éditeurs
+              </a>
+            </li>
+
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= admin_provider_dashboards_path %>" target="_self" >
+                Fournisseurs
+              </a>
+            </li>
+            
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= admin_audit_notifications_path %>" target="_self" >
+                Notifications d'audit
+              </a>
+            </li>
+
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= admin_api_requests_path %>" target="_self" >
+                Requêtes API
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+</header>

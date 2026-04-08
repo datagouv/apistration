@@ -1,0 +1,17 @@
+<div class="fr-follow">
+  <div class="fr-container">
+    <div class="fr-grid-row">
+      <div class="fr-col-12">
+        <div class="fr-follow__newsletter">
+          <div>
+            <h2 class="fr-h5 fr-follow__title"><%= t('.title')%></h2>
+            <p class="fr-text--sm fr-follow__desc"><%= t('.description')%></p>
+          </div>
+          <div>
+            <%= link_to t('.button'), newsletter_path, class: %w(fr-btn) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

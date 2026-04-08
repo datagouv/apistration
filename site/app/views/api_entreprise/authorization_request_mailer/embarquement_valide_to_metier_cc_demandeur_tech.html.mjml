@@ -1,0 +1,31 @@
+<%= render partial: "shared/api_entreprise/mailers/header" %>
+<%= render partial: "banner_demande_valide", locals: { entity: "contact_metier" } %>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <%= render partial: "greetings", locals: { entity: "contact_metier" } %>
+      <p>
+        La demande d’habilitation n°<%= @authorization_request.external_id %> à l’API Entreprise, effectuée par un
+        service de votre organisation a bien été validée ✅.
+      </p>
+      <p>
+        <b>Vous avez été désigné contact métier par le demandeur</b>
+        qui nous a transmis vos coordonnées. Vous serez contacté en cas de nouvelles fonctionnalités API Entreprise ou
+        en cas d'incidents majeurs sur nos API.
+      </p>
+      <p>Cette habilitation concerne&nbsp;:</p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "block_authorization_request", locals: { authorization_request: @authorization_request } %>
+<mj-section>
+  <mj-column>
+    <%= render partial: "list_scopes" %>
+    <%= render partial: "embarquement_valide_welcome" %>
+    <%= render partial: "info_you_dont_understand" %>
+  </mj-column>
+</mj-section>
+<%= render partial: "block_subscribed_newsletter" %>
+<%= render partial: "block_analytics" %>
+<%= render partial: "block_questions" %>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>

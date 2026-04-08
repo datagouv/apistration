@@ -1,0 +1,29 @@
+name: "API: Deployment via HTTPS (production)"
+
+on:
+  workflow_dispatch: ~
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        host: [watchdoge3, watchdoge4]
+        deploy_env: [staging, production]
+      fail-fast: false
+    environment: production
+    env:
+      DEPLOY_HTTPS_LOGIN: ${{ secrets.DEPLOY_HTTPS_LOGIN }}
+      DEPLOY_HTTPS_PASSWORD: ${{ secrets.DEPLOY_HTTPS_PASSWORD }}
+      DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
+      DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
+      DEPLOY_HOST: host_${{ matrix.host }}
+      DEPLOY_APP: siadelibre_${{ matrix.deploy_env }}
+    steps:
+      - name: Download and run deploy script
+        shell: bash
+        run: |
+          git clone https://github.com/etalab/api-entreprise-integration
+          cd api-entreprise-integration
+          ./deploy-parteprise.sh

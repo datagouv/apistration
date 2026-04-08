@@ -1,0 +1,515 @@
+fr:
+  api_entreprise:
+    api: entreprise
+    name: API Entreprise
+    support_email: support@entreprise.api.gouv.fr
+  api_particulier:
+    api: particulier
+    name: API Particulier
+    support_email: api-particulier@api.gouv.fr
+  datetime: &datetime_format
+    formats:
+      compact: "%d/%m/%Y"
+      compact_with_hours: "%d/%m/%Y à %H:%M:%S"
+  time: *datetime_format
+
+  concerns:
+    delegations_management:
+      create:
+        success:
+          title: Délégation ajoutée
+      destroy:
+        success:
+          title: Délégation révoquée
+    sessions_management:
+      login:
+        error:
+          title: La connection a échouée.
+          description: Votre lien est peut-être expiré. Si cela n'est pas le cas, veuillez vous rapprocher de nos services.
+      failure:
+        unknown: Une erreur inconnue est survenue, veuillez contacter le support.
+      unauthorized:
+        signed_out:
+          error:
+            title: Veuillez vous connecter pour accéder à cette page.
+        signed_in:
+          error:
+            title: Vous n'avez pas les droits pour accéder à cette page.
+  shared:
+    cas_usages:
+      show:
+        label: "Cas d'usage"
+        link_access: "Demander un accès"
+        link_list_api: "Liste des API utiles"
+        legal_context:
+          title: "Cadre juridique"
+        request_access:
+          title: "Demander un accès"
+          description: "Ce cas d’utilisation correspond à votre besoin ? Rendez-vous sur Datapass pour effectuer votre demande d'habilitation :"
+          sub_description: "Sur Datapass, vous pourrez sélectionner le formulaire adapté à votre situation technique, notamment si vous avez ou non un éditeur."
+          link: "Remplir une demande"
+      others:
+        title: "D'autres cas d'usages&nbsp;:"
+        link: "En savoir plus"
+        marches_publics:
+          title: "Marchés publics"
+          description: "Faciliter la candidature et l'instruction"
+        aides_publiques:
+          title: "Aides publiques"
+          description: "Faciliter le dépôt et l'instruction"
+        subventions_associations:
+          title: "Subventions fonctionnement associations"
+          description: "Faciliter la saisie du formulaire unique et l'instruction"
+        socle_de_base:
+          title: "Socle de base DLNUF"
+          description: "Accéder aux données de base de mise en oeuvre du « Dites-le nous une fois »"
+        fraude:
+          title: "Détection de la fraude"
+          description: "Accéder rapidement aux informations-clés"
+        editeur:
+            title: "Accès éditeurs de logiciels"
+            description: "Proposer API Entreprise aux clients publics"
+        aides_facultatives:
+          title: "Aides facultatives"
+          description: "Simplifiez l'attribution des aides facultatives départementales et régionales"
+        cantines-colleges-lycees-tarification:
+          title: "Tarification cantine"
+          description: "Calculez automatiquement le tarif de restauration scolaire des collégiens et lycéens"
+        ccas:
+          title: "Aides CCAS"
+          description: "Simplifiez le dépôt et l'instruction des dossiers d'aides sociales"
+        tarification_transports:
+          title: "Tarification transport"
+          description: "Obtenez automatiquement les données nécessaires à l'attribution des tarifs réduits de transports collectifs"
+        tarification_municipale_enfance:
+          title: "Tarification enfance"
+          description: "Calculez automatiquement le tarif des services municipaux à l'enfance"
+        gestion_rh_secteur_public:
+          title: "Gestion RH secteur public"
+          description: "Facilitez le recrutement et la gestion administrative des agents publics"
+        stationnement-residentiel:
+          title: "Tarification du stationnement résidentiel"
+          description: "Automatisez la tarification du stationnement résidentiel par rapport au véhicule du particulier"
+        modalite_appel_france_connect:
+          title: "FranceConnect"
+          description: "Proposez FranceConnect comme modalité d'appel pour simplifier l'authentification de vos usagers"
+        modalite_formulaire_qf:
+          title: "Formulaire QF"
+          description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
+      list-api:
+        col_endpoint: "API"
+        col_useful: "Utilité"
+        col_opening: "Ouverture"
+        col_links: "Documentations"
+        col_comments: "Commentaires"
+        col_call_id: "Identifiant d'appel"
+        documentation: "📖 Fiche métier"
+        swagger: "📟 Swagger"
+    links:
+      to_datapass: "N<sup>o</sup>%{external_id}"
+    transfer_tokens:
+      create:
+        success:
+          title: Le jeton a été transféré avec succès à l'adresse %{target_email}
+        error:
+          title: Une erreur est survenue lors du transfert du jeton. Vérifiez que l'adresse e-mail est valide ou contactez le support à %{support_email} si le problème persiste.
+      new:
+        modal:
+          transfer:
+            title: Transférer le jeton d'accès
+            description: Cette fonctionnalité vous permet d'envoyer un e-mail contenant un lien d'accès au jeton. L'URL transmise a une durée limitée de 4 heures.
+              <br>
+              <br>
+              Attention, nos <a href="https://entreprise.api.gouv.fr/cgu/">CGU</a> vous engagent ! Vous ne devez pas divulguer cet accès à des tiers non-habilités. Pour en savoir plus, consultez <a href='https://entreprise.api.gouv.fr/faq#comment-transmettre-le-jeton-d-acces-en-tout-securite' target='_blank'>cette rubrique de notre FAQ</a>.
+            email:
+              label: Adresse e-mail du destinataire
+              placeholder: jean@dupont.fr
+            cta: Envoyer le lien d'accès au jeton
+            confirm: Êtes-vous sûr de vouloir transférer votre jeton à cette adresse ?
+    wizard:
+      next_step: "Étape suivante :"
+    prolong_token_wizard:
+      display_cta: Prolonger le jeton
+      requires_update_cta: Terminer la mise à jour pour prolonger votre jeton
+      updates_requested_cta: Demande de mise à jour de l'habilitation en attente d'instruction
+      header:
+        title: Prolonger le jeton
+        description: Votre jeton expire le %{humanize_date}. Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions indiquées dans votre habilitation %{link_to_datapass} ont évolué.
+          Veuillez répondre aux questions suivantes, ce formulaire vous engage en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU d'%{api_name}</a>
+      steps:
+        owner: Responsable de la demande
+        project_purpose: Vérification du projet
+        contacts: Vérification des contacts
+        summary: Bilan et confirmation
+      prolonged:
+        title: Votre jeton a été prolongé jusqu'au %{humanized_date}
+        description: Merci ! Suite à vos réponses, les conditions de votre habilitation a l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
+        link:
+          authorization_request: Revenir à votre demande d'habilitation
+      summary:
+        prolonged:
+          owner_not_in_charge: "Suite aux réponses indiquées, vous declarez que le contact principal à changé. Bien que cela ne soit pas bloquant pour
+            poursuivre la prolongation de votre jetons, l'équipe support vous contactera rapidement afin de procéder au transfert de vos habilitations. Vous pouvez démarrer cette démarche en autonomie
+            via votre <a href='https://%{api}.api.gouv.fr/compte'>espace personnel</a>."
+          description: Suite aux réponses indiquées, déclare qu'aucune des informations indiquées dans votre habilitation n<sup>o</sup>%{external_id} n'a évolué.
+          cgu: ⚠️  Vos réponses vous engagent en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU</a>
+          finished: Confirmer
+        requires_update:
+          description: "Suite aux réponses indiquées, vous declarez que des changements ont eu lieu au niveau&nbsp;:"
+          owner: du contact principal
+          project_purpose: de la nature du projet (titre et description)
+          contact_metier: du contact métier
+          contact_technique: du contact technique
+          finished: Confirmer et apporter les modifications
+        previous: Précédent
+      contact:
+        first_name: Prénom :&nbsp;
+        last_name: Nom :&nbsp;
+        email: E-mail :&nbsp;
+        contact_metier:
+          no_contact: Vous n'avez aucun contact métier renseigné
+        contact_technique:
+          no_contact: Vous n'avez aucun contact métier renseigné
+      contacts:
+        contact_metier:
+          label: "Contact métier :"
+        contact_technique:
+          label: "Contact technique :"
+        subtitle: "Vérifier si les contacts sont bien les mêmes et que leurs coordonnées n'ont pas changé :"
+        radio:
+          contact_technique: Valide
+          contact_metier: Valide
+          change_contact_technique: A changé
+          change_contact_metier: A changé
+      project_purpose:
+        label: "Cette habilitation a été attribuée pour la finalité suivante :"
+        no_description: Vous n'avez pas renseigné de description pour cette habilitation.
+        radio:
+          project_purpose: Oui, le projet bénéficiant de cette habilitation a toujours la même finalité.
+          change_project_purpose: Non, le projet a changé.
+      owner:
+        label: Êtes vous toujours en charge de la demande %{link_to_datapass} ?
+        radio:
+          still_in_charge: Oui, je suis toujours en charge
+          will_change_soon: Oui, je suis toujours en charge mais pourrais passer la main d'ici quelques mois
+          not_in_charge: Non, je ne suis plus en charge de cette habilitation %{api}
+        not_in_charge_alert:
+          text: Si vous n'êtes plus en charge de cette habilitation, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
+      build:
+        wizard_buttons:
+          previous: Précédent
+          next: Suivant
+    users:
+      user:
+        links:
+          authorization_requests: Vos habilitations
+        title: "Vos&nbsp;informations"
+        transfer_account:
+          title: "Votre équipe évolue ? Vous quittez votre service ? Transmettez vos habilitations à une autre personne&nbsp;:"
+          subtitle_if_demandeur: "Habilitations où je suis demandeur&nbsp;:"
+          description_if_demandeur: Pour transmettre votre rôle de demandeur à une autre personne de votre organisation, veuillez vous rendre sur <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a> et transférer chacune de vos habilitations.
+          subtitle_if_other_roles: "Habilitations où je ne suis pas demandeur&nbsp;:"
+          description_if_other_roles: "Vous êtes contact métier et/ou technique d'une habilitation et souhaitez léguer ce rôle à une autre personne de votre organisation ? C'est au demandeur de l'habilitation d'effectuer une demande de modification des contacts. <a href='https://%{api}.api.gouv.fr/faq#comment-transferer-mon-compte-a-une-autre-personne'>En savoir plus</a>."
+        demandeur: "Demandeur"
+        contact_metier: "Contact métier"
+        contact_technique: "Contact technique"
+    sessions:
+      new:
+        title: Accéder à mon compte<br>et aux jetons d'accès 🔑
+        faq: Une difficulté à vous connecter ? Consultez %{link}
+        faq_link: notre FAQ
+    public_token_magic_links:
+      show:
+        notice: <strong>Ne transmettez jamais votre jeton par email</strong>, il permet d'accéder à des informations sensibles et vous êtes responsable de l'utilisation qui en est faite. Utilisez le bouton "Transmettre le jeton" ou utilisez une messagerie sécurisée.
+        disclaimer:
+          title: Durée de validité du lien
+          description: Cette page contient votre jeton d'accès à %{api_name} et ne doit en aucun cas être partagée avec un tiers non habilité ! Ce lien expirera dans %{expiration_time}.
+        error:
+          expired:
+            title: Lien expiré
+            description: Le lien d'accès au jeton a expiré. Les liens magiques ont une durée de vie de %{initial_expiration_delay_in_hours} heures. Veuillez redemander un accès à votre responsable de compte.
+          unknown:
+            title: Une erreur est survenue à la récupération du jeton.
+            description: Une erreur inconnue est survenue. Veuillez contacter le support à api-particulier@api.gouv.fr
+          missing:
+            title: Jeton(s) non trouvés
+            description: Le jeton ou les jetons demandé(s) n'ont pas été trouvés. Veuillez contacter <a href='https://%{api}.api.gouv.fr/faq#une-autre-question'>le support</a>.
+    tokens:
+      renew:
+        title: Demander l'accès à d'autres API
+        description: |+
+          Vous souhaitez demander de nouvelles API pour le même cas d'usage ? Cette fonctionnalité vous permet de <strong>demander une mise à jour de votre habilitation, dans laquelle vous pourrez cocher de nouvelles API</strong>.
+          <br>
+          <strong>En cliquant sur "Continuer" vous serez transféré sur le site DataPass</strong>.
+          <br>
+          Pour en savoir plus, consultez <a href='https://%{api}.api.gouv.fr/faq#comment-elargir-le-perimetre-des-api-disponibles-avec-mon-jeton-obtenir-de-nouvelles-donnees' target='_blank'>cette rubrique de notre FAQ</a>.
+        continue: ⬜ Continuer
+      stats:
+        title: "Cas d'usage du jeton : %{title}"
+        tabs:
+          last_10_minutes: 10 dernières minutes
+          last_30_hours: 30 dernières heures
+          last_8_days: 8 derniers jours
+        links:
+          user_tokens: Retour à l'habilitation N<sup>o</sup>%{external_id}
+        details:
+          internal_id: "Identifiant technique du jeton : %{id}"
+        requests_details:
+          title: Détails des %{limit} dernières requêtes
+      cannot_show:
+        title: Utiliser le jeton
+        description: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
+          Si le jeton arrive à expriation ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette habilitation :"
+        demandeur: "<strong>demandeur</strong> : %{demandeur}"
+        contact_technique: "<strong>Contact technique</strong> : %{contact_technique}"
+        authorization_request_link: "<strong>Lien de l'habilitation à transmettre :</strong>"
+      ask_for_prolongation:
+        title: Relancer le demandeur
+        description: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
+          celui-ci expirera dans %{remaining_time}. Seul le demandeur peut prolonger le jeton.
+          <strong>Écrivez-lui en lui transmettant le lien vers le formulaire de prolongation :</strong>"
+        demandeur: "<strong>demandeur</strong> : %{demandeur}"
+        ask_for_token_prolongation_description: "<strong>Lien du questionnaire de prolongation</strong> :"
+      show:
+        title: Utiliser le jeton
+        warning: "Vous ne devez <strong> jamais copier-coller un token
+          dans un moteur de recherche on dans un email.</strong> L'usage de votre token
+          se fait uniquement dans votre logiciel métier sécurisé utilisé pour réaliser vos appels.
+          Pour transmettre ce jeton, <strong>merci d'utiliser la fonctionnalité prévue ci-dessous :</strong>"
+        token_label: "Jeton d'accès (identifiant technique :<strong>%{token_id}</strong>)"
+        cta: Copier le jeton
+        status:
+          color:
+            revoked: pink-tuile
+            revoked_later: pink-tuile
+            expired: no-specific-color
+            active: green-emeraude
+            new_token: green-emeraude
+          label:
+            revoked: 🚫 Banni
+            revoked_later: 🚫 Banni
+            expired: ☠️  Expiré
+            active: 🔑 Actif
+            new_token: 🔑 Nouveau jeton à utiliser
+        modal:
+          transfer:
+            display_cta: 'Transmettre le jeton en sécurité'
+      prolong:
+        title: Prolonger le jeton
+        description:
+          future: "Votre jeton expire dans %{remaining_time}.
+            Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
+            indiquées dans votre habilitation %{link_to_datapass}
+            ont évolué."
+          past: "Votre jeton a expiré il y a %{remaining_time}.
+            Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
+            indiquées dans votre habilitation %{link_to_datapass}
+            ont évolué."
+        warning_description: "Pour prolonger votre jeton, veuillez compléter le formulaire suivant :"
+        warning: ⚠️ Vos réponses au formulaire <strong>vous engagent</strong> en regard des CGU d'%{api_name}.
+        cta: Compléter le formulaire de prolongation
+      detail_short:
+        no_token:
+          title: Aucun jeton actif
+          description: Cette demande %{status}, aucun jeton ne peut être demandé
+          status:
+            draft: étant en brouillon
+            revoked: ayant été revoquée
+            archived: ayant été archivée
+            submitted: ayant été soumise
+        expiration_date: "Expire le : <strong>%{expiration_date}</strong>"
+        status:
+          color:
+            draft: ''
+            revoked: pink-tuile
+            revoked_later: pink-tuile
+            expired: no-specific-color
+            active: green-emeraude
+            new_token: green-emeraude
+          label:
+            draft: ''
+            revoked: 🚫 Banni
+            revoked_later: 🚫 Banni
+            expired: ☠️  Expiré
+            active: 🔑 Actif
+            new_token: 🔑 Nouveau jeton à utiliser
+      detail:
+        links:
+          stats: Voir les statistiques
+        remaining_time:
+          new_token: "Durée restante du jeton : <strong>%{remaining_time}</strong>"
+          active: "Durée restante du jeton : <strong>%{remaining_time}</strong>"
+          expired: "Durée restante du jeton : <strong>Expiré</strong> ☠️"
+          revoked_later: "Durée restante du jeton : 🔥 <strong>%{remaining_time}</strong>"
+          revoked: "Durée restante du jeton : <strong>Banni</strong> ☠️"
+        call_for_a_week:
+          zero: "%{count} appel les 7 derniers jours"
+          one: "%{count} appel les 7 derniers jours"
+          other: "%{count} appels les 7 derniers jours"
+        status:
+          color:
+            revoked: pink-tuile
+            revoked_later: pink-tuile
+            expired: no-specific-color
+            active: green-emeraude
+            new_token: green-emeraude
+          label:
+            revoked: 🚫 Banni
+            revoked_later: 🚫 Banni
+            expired: ☠️  Expiré
+            active: 🔑 Actif
+            new_token: 🔑 Nouveau jeton à utiliser
+    authorization_requests:
+      index:
+        modal:
+          show:
+            display_cta_replace_legacy: "Remplacer votre ancien jeton avec le nouveau jeton"
+            display_cta_new_token: "Utiliser le nouveau jeton"
+            display_cta_replace: "Remplacer le jeton banni par le nouveau jeton"
+        no_authorization_requests: "Vous n'avez aucune habilitation"
+        title: "Habilitations %{api_label} (%{count})"
+        entreprise: API&nbsp;Entreprise
+        particulier: API&nbsp;Particulier
+        no_action: Aucune action attendue
+        links:
+          to_datapass: "Datapass n°%{external_id}"
+          profile: Vos informations
+        table:
+          head:
+            authorization_request: "Habilitation"
+            token: Jeton principal
+            actions: Actions attendues
+            detail: Page détaillée
+      breadcrumb:
+        index: Habilitations
+        current_page: Habilitation n°%{datapass_id}
+      summary:
+        access: Droits d'accès
+        active_tokens: Jetons
+        attestations: Attestation sociales et fiscales
+        contacts: Contacts
+        delegations: Délégations
+      status:
+        color:
+          refused: pink-tuile
+          revoked: pink-tuile
+          archived: no-specific-color
+          validated: green-emeraude
+          submitted: yellow-canari
+        label:
+          refused: 📃 Demande refusée
+          revoked: 📃 Habilitation révoquée
+          archived: 📃 Habilitation archivée
+          validated: 📃 Habilitation active
+          submitted: 🕐 Habilitation en cours d'instruction
+      header:
+        delivered_at: "Délivré le : %{humanized_date}"
+      show:
+        access: "Vos droits d'accès&nbsp;:"
+        modal:
+          renew:
+            display_cta: Demander l'accès à d'autres API
+          show:
+            display_cta: "Voir le jeton"
+          ask_for_prolongation:
+            display_cta: Relancer le demandeur pour prolonger le jeton
+        main_token:
+          title: "Jeton principal&nbsp;:"
+        attestations:
+          title: "Télécharger manuellement les attestations sociales et fiscales"
+          description: "Saississez manuellement le SIREN de l'unite légale recherchée et vous aurez directement accès aux PDF des attestations&nbsp;:"
+          cta: "Utiliser l'interface de téléchargement"
+        other_tokens:
+          title: Voir les autres jetons
+          table:
+            identifier: "Identifiant du jeton"
+            status: "Statut"
+            created_at: "Date de délivrance"
+            exp: "Date d'expiration"
+            see_more: "Voir plus"
+        contacts:
+          title: "Contacts associés&nbsp;:"
+          demandeur:
+            title: "Demandeur&nbsp;:"
+          contact_technique:
+            title: "Contact technique&nbsp;:"
+          contact_metier:
+            title: "Contact metier&nbsp;:"
+          its_me: "✋ C'est moi !"
+        delegations:
+          title: "Délégations&nbsp;:"
+          description: "Vous pouvez déléguer votre habilitation à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
+          editor: Éditeur
+          status: Statut
+          actions: Actions
+          status_active: Actif
+          revoke: Révoquer
+          add_label: Ajouter une délégation
+          select_prompt: Sélectionner un éditeur
+          add_submit: Ajouter
+    pages:
+      redoc:
+        title: "Swagger 📟"
+        description: |-
+          Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
+          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
+      redoc_v2:
+        title: "Swagger 📟"
+        description: |-
+          Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
+          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
+      current_status:
+        title: "Statuts des API"
+      redoc_v3:
+        title: "Swagger 📟"
+        description: |-
+          Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
+          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
+    endpoints:
+      status:
+        real_time: "Temps réel"
+      property:
+        array:
+          label: "Cette propriété contient 1 ou plusieurs éléments ayant les spécifications suivantes :"
+        example:
+          label: 'ex:'
+      example:
+        title: "Exemple de réponse (JSON)"
+      show:
+        beta:
+          title: "Cette API est en bêta test"
+          description: "Elle est en production et fonctionnelle, mais succeptible de changer en fonction des retours des utilisateurs et du fournisseur de données.
+            <br />
+            <br />
+            Vous serez bien entendu informé des changements en amont le cas échéant. N'hésitez pas à contacter le support si vous avez des questions."
+    newsletter_banner:
+      title: "Abonnez-vous à nos lettres d’information"
+      description: "Restez informés des dernières API disponibles, des nouvelles fonctionnalités et évolutions techniques, ou encore des opérations de maintenance et incidents."
+      button: "S'abonner"
+
+  editor:
+    delegations:
+      index:
+        title: Délégations
+        table:
+          datapass_id: DataPass ID
+          intitule: Intitulé
+          organization: Organisation
+          demandeur: Demandeur
+          status: Statut
+        status_active: Actif
+        status_revoked: Révoqué
+  provider:
+    dashboard:
+      show:
+        title: Statistiques et habilitations pour le fournisseur %{name}
+        stats:
+          main:
+            title: Globales
+            description: Statistiques globales d'utilisation permettant d'avoir un aperçu de l'usage des divers endpoints implémentés au sein d'API Entreprise
+          users:
+            title: Consommateurs
+            description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous)
+          habilitations:
+            title: Demandes et habilitations
+            description: Ensemble des demandes et habilitations ayant accès aux données lié à votre source de données.

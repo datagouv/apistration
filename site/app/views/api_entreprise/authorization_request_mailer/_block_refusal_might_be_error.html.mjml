@@ -1,0 +1,51 @@
+<mj-section mj-class="block-section">
+  <mj-column>
+    <mj-text mj-class="block-beige">
+      <h2>🖐 Vous pensez qu’il s’agit d’une erreur ?</h2>
+      <p>
+        Nous vous invitons à consulter les contenus suivants, votre dossier  ayant probablement été refusé pour ces
+        raisons :&nbsp;
+      </p>
+      <ul>
+        <li>
+          <b>Vous ne faîtes pas partie des organisations éligibles,</b>
+          vérifiez votre éligibilité
+          <a target="_blank" href="https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau">
+          ici
+          </a>
+          et consultez 
+          <a target="_blank" href="<%= faq_index_url %>/#conditions-d-utilisation-de-l-api-entreprise">
+            nos conditions d'accès
+          </a>.
+        </li>
+        <li>
+          <b>Votre cadre juridique ne démontre pas la légitimité de votre demande,</b>
+          nous détaillons les éléments nécessaires pour remplir la demande d'habilitation dans la rubrique
+          <a target="_blank" href="<%= faq_index_url %>/#api_entreprise_faq_entry_quelles-informations-me-seront-demandees">
+            "Demande d'habilitation - Quelles informations me seront demandées ?"
+          </a>
+          de notre FAQ.
+        </li>
+        <li>
+          <b>Les données demandées ne sont pas justifiées</b>
+          par la nature de votre service. Pour circonscrire le périmètre de votre demande, vous pouvez vous aider du
+          <a target="_blank" href="<%= endpoints_url %>">
+            <span>catalogue des API</span>
+          </a>
+          et des cas d’usage.
+        </li>
+        <li>
+          <b>Votre demande est en attente depuis plus de trois mois.</b>
+          Cette dernière est restée en brouillon ou bien les demandes d'informations additionnelles de l'instructeur
+          n'ont fait l'objet d'aucune réponse de votre part.
+        </li>
+      </ul>
+      <p>
+        <span>
+          En dernier recours, vous pouvez nous recontacter  pour demander une révision de votre dossier depuis notre 
+        </span>
+        <a target="_blank" href="<%= faq_index_url %>">page FAQ et support.</a>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>

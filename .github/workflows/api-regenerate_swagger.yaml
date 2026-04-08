@@ -1,0 +1,59 @@
+name: "API: Regenerate and commit Swagger"
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request number to apply changes to'
+        required: true
+        type: number
+jobs:
+  regenerate-swagger-and-commit:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: siade
+          POSTGRES_DB: siade_test
+          POSTGRES_PASSWORD: wow*verysecret
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports: ["6379:6379"]
+        options: --entrypoint redis-server
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Checkout PR branch
+        run: |
+          gh pr checkout ${{ github.event.inputs.pr_number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 322
+          working-directory: siade
+
+      - name: Run install.sh
+        run: ./bin/install.sh
+        working-directory: siade
+
+      - name: Regenerate Swagger
+        run: ./bin/generate_swagger.sh
+        working-directory: siade
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Regenerate Swagger (from Github Actions)"
+          repository: siade

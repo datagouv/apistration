@@ -1,0 +1,19 @@
+<% if token.authorization_request.status != 'validated' %>
+  <strong> <%= t(".no_token.title") %></strong>
+  <br />
+  <%= t(".no_token.description", status: t(".no_token.status.#{token.authorization_request.status}")) %>
+<% else %>
+  <% unless t(".status.label.#{token.status}").blank? %>
+    <p class="fr-badge fr-badge--<%= t(".status.color.#{token.status}") %>">
+      <%= t(".status.label.#{token.status}") %>
+    </p>
+  <% end %>
+  <span class="fr-mb-1v fr-text--sm">
+    | <%= t(".expiration_date",
+      expiration_date: friendly_date_from_timestamp(token.end_timestamp)
+    ).html_safe %>
+  </span>
+  <% unless local_assigns[:hide_reveal_token] %>
+    <%= render partial: "shared/tokens/reveal_token_button", locals: { token: token } %>
+  <% end %>
+<% end %>

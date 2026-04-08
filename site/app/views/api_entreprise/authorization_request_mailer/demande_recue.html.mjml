@@ -1,0 +1,39 @@
+<%= render partial: "shared/api_entreprise/mailers/header" %>
+<mj-section mj-class="section-banner" background-color="#d5dbef">
+  <mj-column>
+    <mj-divider />
+    <mj-text>
+      <h1>
+        Votre demande d'accès <b>a bien été reçue par nos services</b>&nbsp;📬
+      </h1>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <%= render partial: "greetings", locals: { entity: "demandeur" } %>
+      <p>
+        <b>
+          Votre demande d’habilitation API Entreprise n°<%= @authorization_request.external_id %> a bien été
+          enregistrée.
+        </b>
+        Notre service juridique va en prendre connaissance dans les meilleurs délais.&nbsp;
+      </p>
+      <p>
+        📝 Vous pouvez continuer à consulter et modifier votre demande à tout moment en suivant le lien suivant&nbsp;:
+        <a target="_blank" href="<%= @authorization_request_datapass_url %>">
+          <%= @authorization_request_datapass_url %>
+        </a>
+      </p>
+      <p style="margin-top: 20px;">
+        À bientôt 👋
+        <br />
+        <b>API Entreprise</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "block_accelerer_demande" %>
+<%= render partial: "block_newsletter" %>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>

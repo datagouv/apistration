@@ -1,0 +1,10 @@
+<% width = local_assigns[:width] || '100%' %>
+<% height = local_assigns[:height] || '300px' %>
+
+<iframe
+    src="<%= metabase_url %>"
+    frameborder="0"
+    width="<%= width %>"
+    height="<%= height %>"
+    allowtransparency
+></iframe>
