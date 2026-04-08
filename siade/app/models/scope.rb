@@ -8,6 +8,6 @@ class Scope
   end
 
   def self.config
-    Rails.application.config_for(:authorizations)
+    @config ||= Rails.application.config_for(:authorizations)
   end
 end
