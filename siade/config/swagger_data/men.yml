@@ -57,7 +57,7 @@ men:
             value: "2022-2023"
         required: true
 
-    attributes:
+    attributes: &men_scolarite_attributes
       identite:
         title: "Données d'identité de l'élève"
         description: "Les informations d'identité retournées ici sont issues de la base de données des établissemets scolaires (API SIGNE) où les élèves sont inscrits et proviennent des pièces d'identité que les parents doivent fournir à l'établissement pour inscrire leur enfant."
@@ -187,6 +187,44 @@ men:
           - 4
           - 5
           - 6
+    regime_pensionnat_attribute: &regime_pensionnat_attribute
+      regime_pensionnat:
+        title: "Régime de pensionnat"
+        description: |+
+          Indique le régime de pensionnat de l'élève dans l'établissement. Ce champ est à "null" lorsque l'information n'est pas disponible. Les valeurs possibles sont :
+
+          - 0 : Externe libre
+          - 1 : Externe surveillé
+          - 2 : Demi-pensionnaire dans l'établissement
+          - 3 : Interne dans l'établissement
+          - 4 : Interne externé
+          - 5 : Interne hébergé
+          - 6 : Demi-pensionnaire hors l'établissement
+        type: object
+        nullable: true
+        properties:
+          code:
+            title: "Code"
+            description: "Code du régime de pensionnat de l'élève sur 1 caractère, selon la nomenclature BCN."
+            type: string
+            example: '0'
+            enum:
+              - '0'
+              - '1'
+              - '2'
+              - '3'
+              - '4'
+              - '5'
+              - '6'
+          libelle:
+            title: "Libellé"
+            description: "Libellé du régime de pensionnat de l'élève."
+            type: string
+            example: 'Externe libre'
+            nullable: true
+
+    v5_attributes:
+      <<: [*men_scolarite_attributes, *regime_pensionnat_attribute]
 
     v2:
       title: "Statut élève scolarisé"

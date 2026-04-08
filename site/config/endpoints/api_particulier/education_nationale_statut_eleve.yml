@@ -3,23 +3,23 @@
   opening: protected
   new_version: true
   old_endpoint_uids:
-    - 'education_nationale/statut_eleve_scolarise_v3'
-  path: '/v4/men/scolarites/identite'
+    - 'education_nationale/statut_eleve_scolarise_v4'
+  path: '/v5/men/scolarites/identite'
   ping_url: &men_scolarite_ping_url 'https://particulier.api.gouv.fr/api/men_scolarite/ping'
-  position: 500
+  position: 499
   alert: &men_scolarite_alert
     title: "💡 Données de bourse bientôt disponibles"
     description: |+
       Le statut boursier et l'échelon de bourse de l'élève seront bientôt redistribués par le fournisseur de données. La mise en production de ces nouvelles données est attendue pour juin.
   historique: |+
-    **Ce que change le passage à la V.4 par rapport à la V.3 :**
+    **Ce que change le passage à la V.5 par rapport à la V.4 :**
 
-    - Ajout de nouvelles modalités de périmètre géographique : en plus du code UAI de l'établissement, il est désormais possible d'interroger l'API avec un code région ou un code département.
+    - Ajout du **régime de pensionnat** de l'élève (externe, demi-pensionnaire, interne, etc.).
 
     **Ce qui ne change pas :**
 
-    - Les données renvoyées restent identiques.
-    - La modalité d'appel par code UAI de l'établissement reste disponible.
+    - Les données précédemment renvoyées restent identiques.
+    - Les modalités d'appel restent les mêmes.
   perimeter: &men_scolarite_perimeter
     entity_type_description: |+
       Cette API concerne les **✅ élèves de la maternelle, du primaire, du collège et du lycée**.
@@ -67,6 +67,7 @@
     description: |+
       Cette API **indique si l'élève est scolarisé et sous quel statut** pour l'[année scolaire en cours et bientôt N+1](#annee-scolaire-donnees).
       Le **statut boursier ainsi que l'échelon de bourse** est également précisé le cas échéant.
+      Le **régime de pensionnat** (externe, demi-pensionnaire, interne, etc.) est disponible à partir de la V.5.
   provider_uids: &men_scolarite_provider_uids
     - 'education_nationale'
   keywords: &men_scolarite_keywords []
@@ -109,11 +110,66 @@
     - q: <a name="definition-echelons-bourse"></a>À quoi correspondent les échelons de bourse ?
       a:
         "Il existe trois échelons de bourses pour les collégiens, de 1 à 3 et six échelons pour les lycéens, de 1 à 6. Chaque échelon de bourse indique **le montant reçu par l'élève pour l'année scolaire**. Le montant de la bourse dépend d'un barème en fonction du revenu fiscal et du nombre enfants à charge du foyer."
+    - q: <a name="definition-regime-pensionnat"></a>À quoi correspondent les codes de régime de pensionnat ?
+      a: |+
+        Le régime de pensionnat indique le mode d'hébergement et de restauration de l'élève dans son établissement. Il est codé sur un caractère selon la nomenclature BCN (Base Centrale de Nomenclatures) :
+
+        | Code | Libellé | Description |
+        |------|---------|-------------|
+        | 0 | Externe libre | L'élève ne prend pas de repas dans l'établissement et n'est pas tenu d'y rester en dehors des heures de cours. |
+        | 1 | Externe surveillé | L'élève ne prend pas de repas dans l'établissement mais reste dans l'établissement entre les cours (études surveillées). |
+        | 2 | Demi-pensionnaire dans l'établissement | L'élève prend le repas du midi dans l'établissement où il est scolarisé. |
+        | 3 | Interne dans l'établissement | L'élève est hébergé et prend ses repas dans l'établissement où il est scolarisé. |
+        | 4 | Interne externé | L'élève est inscrit en internat mais ne dort pas dans l'établissement (par exemple, retour au domicile le soir). |
+        | 5 | Interne hébergé | L'élève est hébergé dans un autre établissement que celui où il est scolarisé (internat d'un établissement voisin). |
+        | 6 | Demi-pensionnaire hors l'établissement | L'élève prend le repas du midi dans un autre établissement que celui où il est scolarisé. |
+
+        Cette donnée est notamment utile pour le calcul des **bourses départementales**, dont le montant peut varier selon le régime de pensionnat de l'élève.
+
+- uid: 'education_nationale/statut_eleve_scolarise_v4'
+  opening: protected
+  new_endpoint_uids:
+    - 'education_nationale/statut_eleve_scolarise'
+  old_endpoint_uids:
+    - 'education_nationale/statut_eleve_scolarise_v3'
+  path: '/v4/men/scolarites/identite'
+  ping_url: *men_scolarite_ping_url
+  position: 500
+  alert: *men_scolarite_alert
+  historique: |+
+    **Ce que change le passage à la V.4 par rapport à la V.3 :**
+
+    - Ajout de nouvelles modalités de périmètre géographique : en plus du code UAI de l'établissement, il est désormais possible d'interroger l'API avec un code région ou un code département.
+
+    **Ce qui ne change pas :**
+
+    - Les données renvoyées restent identiques.
+    - La modalité d'appel par code UAI de l'établissement reste disponible.
+  perimeter: *men_scolarite_perimeter
+  parameters_details:
+    description: |+
+      Cette API propose une modalité d'appel :
+      <p class="fr-badge fr-badge--brown-cafe-creme">Identité pivot</p>
+      **Avec les données d'identité** : Nom<sup>\*</sup>, prénom<sup>\*</sup>, sexe<sup>\*</sup> et date de naissance de l'élève<sup>\*</sup>, l'année scolaire<sup>\*</sup> souhaitée, ainsi qu'un périmètre géographique<sup>\*\*</sup> :
+      - soit le code UAI de l'établissement ;
+      - soit le code région ;
+      - soit le code département.
+
+      <span class="fr-text--xs">
+      <sup>\*</sup> Obligatoire.
+      <sup>\*\*</sup> Un seul des trois paramètres de périmètre géographique doit être renseigné.
+      </span>
+  data: *men_scolarite_data
+  provider_uids: *men_scolarite_provider_uids
+  keywords: *men_scolarite_keywords
+  call_id: *men_scolarite_call_id
+  parameters: *men_scolarite_parameters
+  faq: *men_scolarite_faq
 
 - uid: 'education_nationale/statut_eleve_scolarise_v3'
   opening: protected
   new_endpoint_uids:
-    - 'education_nationale/statut_eleve_scolarise'
+    - 'education_nationale/statut_eleve_scolarise_v4'
   old_endpoint_uids:
     - 'education_nationale/v2/statut_eleve_scolarise'
   path: '/v3/men/scolarites/identite'

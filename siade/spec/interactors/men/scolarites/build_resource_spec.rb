@@ -37,7 +37,8 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
             statut_eleve: {
               code: 'ST',
               libelle: 'SCOLAIRE'
-            }
+            },
+            regime_pensionnat: nil
           }
         end
 
@@ -69,7 +70,8 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
             statut_eleve: {
               code: 'ST',
               libelle: 'SCOLAIRE'
-            }
+            },
+            regime_pensionnat: nil
           }
         end
 
@@ -101,7 +103,8 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
             statut_eleve: {
               code: 'ST',
               libelle: 'SCOLAIRE'
-            }
+            },
+            regime_pensionnat: nil
           }
         end
 
@@ -141,6 +144,10 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           statut_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
+          },
+          regime_pensionnat: {
+            code: '0',
+            libelle: 'Externe libre'
           }
         }
       end
