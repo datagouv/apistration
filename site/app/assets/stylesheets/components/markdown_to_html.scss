@@ -1,0 +1,59 @@
+.doc_markdown_to_html {
+
+  a:not(.fr-btn) {
+    color: var(--background-action-high-blue-france);
+  }
+
+  a.fr-btn {
+    color: white;
+  }
+
+  h1, h2 {
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+
+  h3, h4 {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  h5, h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 2.2rem;
+
+    @media(max-width: 576px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-weight: 900;
+    font-size: 1rem;
+    text-decoration: solid underline #a3b4b2 5%;
+  }
+
+  &--emphasize-titles {
+    h2 {
+      background-color: #d1dad8;
+    }
+
+    h3 {
+      text-decoration: solid underline #d1dad8 30%;
+    }
+  }
+}

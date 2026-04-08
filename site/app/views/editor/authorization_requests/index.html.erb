@@ -1,0 +1,79 @@
+<%= search_form_for(@q, url: editor_authorization_requests_path, html: { method: :get, data: { turbo: false }, class: %w[search-box] }) do |f| %>
+  <div class="fr-input-group input">
+    <%= f.search_field :siret_or_external_id_or_intitule_or_demandeur_email_eq, placeholder: 'demandeur email, siret, datapass id..', id: 'search_main_input', class: %[fr-input] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Rechercher', class: %w[fr-btn fr-btn--primary] %>
+    <%= link_to 'Télécharger les demandes validées en CSV', editor_authorization_requests_path(format: :csv), class: 'fr-btn fr-btn--secondary fr-icon-download-line fr-btn--icon-right' %>
+  </div>
+<% end %>
+
+<div class="fr-table fr-table--bordered fr-table--layout-fixed">
+  <table>
+    <caption>
+      Habilitations
+    </caption>
+    <thead>
+      <tr>
+        <%
+          [
+            'DataPass ID',
+            'Intitule',
+            'Jeton principal',
+            'Organization',
+            'Demandeur',
+          ].each do |attr|
+        %>
+          <th scope="col">
+            <%= attr %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @authorization_requests.each do |authorization_request| %>
+        <tr id="<%= dom_id(authorization_request) %>" class="authorization-request">
+          <td class="authorization_request-external_id">
+            <%= link_to("DataPass ##{authorization_request.external_id}", "#{datapass_v2_base_url(authorization_request.api)}/public/demandes/#{authorization_request.public_id}", target: '_blank')%>
+          </td>
+          <td class="authorization_request-intitule">
+            <%= authorization_request.intitule %>
+          </td>
+          <td class="authorization_request-token">
+            <% if authorization_request.token %>
+              <%= render partial: 'shared/tokens/detail_short', locals: { token: authorization_request.token.decorate, hide_reveal_token: true } %>
+            <% end %>
+            <% if current_editor.copy_token? %>
+              <div class="copy-token" data-controller="clipboard" data-clipboard-alert-message-value="Jeton copié">
+                <%= button_tag 'Copier le jeton', class: 'fr-btn fr-btn--sm fr-icon-window-fill fr-btn--icon-right', id: dom_id(authorization_request.token, :copy_token_button), data: { action: 'click->clipboard#copy' } %>
+
+                <% hashed_value = true_user == current_user ? authorization_request.token.rehash : 'NotAValidValue' %>
+                <input id="<%= dom_id(authorization_request.token, :token_hash) %>" class="fr-input" style="position: absolute; left: -9999px" type="text" data-clipboard-target="source" readonly value="<%= hashed_value %>" />
+              </div>
+            <% end %>
+          </td>
+          <td class="authorization_request-siret">
+            <% if authorization_request.organization %>
+              <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
+                <%= authorization_request.organization.denomination %> (<%= authorization_request.siret %>)
+              </a>
+            <% elsif authorization_request.siret.present? %>
+              <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
+                <%= authorization_request.siret %>
+              </a>
+            <% else %>
+              SIRET non renseigné
+            <% end %>
+          </td>
+          <td class="authorization_request-demandeur_email">
+            <%= authorization_request.demandeur.try(:email) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= paginate @authorization_requests %>

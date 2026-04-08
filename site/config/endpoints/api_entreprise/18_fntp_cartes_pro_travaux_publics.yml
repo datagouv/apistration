@@ -1,0 +1,51 @@
+---
+- uid: 'fntp/carte_professionnelle_travaux_public'
+  path: '/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics'
+  ping_url: 'https://entreprise.api.gouv.fr/ping/fntp/carte_professionnelle_travaux_publics'
+  position: 290
+  perimeter:
+    entity_type_description: |+
+      Toutes les **entreprises de travaux publics** sont éligibles à demander une carte professionnelle à la FNTP.
+      Au mois d'avril 2022, 7400 entreprises possédaient une carte professionnelle.
+
+      ℹ️ Plus d'informations sur le [site de la FNTP](https://www.fntp.fr/outils/carte-professionnelle/tout-savoir-sur-la-carte-pro){:target="_blank"}
+    entities:
+      - entreprises
+  call_id: "SIREN"
+  provider_uids:
+    - 'fntp'
+  keywords:
+    - 'conformité'
+    - 'conforme'
+    - 'obligations'
+    - 'cotisations'
+    - 'btp'
+    - 'bâtiment'
+    - 'travaux'
+    - 'decret janvier 2019'
+    - 'marchés publics'
+    - 'Aides publiques'
+    - 'fraude'
+  data:
+    description: |+
+      Cette API délivre la carte professionnelle de travaux publics d'une entreprise, au format PDF, lorsque cette dernière est à jour de ses cotisations professionnelles Travaux Publics auprès de sa caisse de congés payés.
+
+      {:.fr-h6 .fr-mt-4w}
+      ### Exemple d'attestation PDF&nbsp;:
+
+      <div class="fr-download">
+       <p>
+        <a href="/files/exemple-fntp-carte-professionnelle-travaux-publics.pdf" download class="fr-download__link">
+         Télécharger un exemple de carte professionnelle FNTP
+         <span class="fr-download__detail">
+         PDF – 623 Ko
+         </span>
+        </a>
+       </p>
+      </div>
+
+  opening: public
+  format:
+    - URL vers le document en PDF
+  parameters:
+    - Numéro de SIREN de l'entreprise

@@ -1,0 +1,34 @@
+<%= render partial: "shared/api_particulier/mailers/header" %>
+<%= render partial: "banner",
+    locals: {
+      color: '#ffdbd2',
+      title: "<b>🔒⚠️ Votre jeton a expiré</b>",
+      subtitle: "Vous n'avez plus accès à l'API Particulier."
+    }
+%>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <p>Bonjour <%= @full_name %>,</p>
+      <p>Votre jeton au <b>cadre d'utilisation "<%= @intitule %>"</b> a expiré. Votre accès à l'API Particulier est coupé.</p>
+      <p>restaurer votre jeton, veuillez faire une demande de prolongation d'accès&nbsp;:</p>
+    </mj-text>
+    <mj-button href="<%= @prolong_token_url %>">
+      <b>Demander la prolongation du jeton d'accès&nbsp;🔑</b>
+    </mj-button>
+    <mj-text mj-class="secondary-link">
+      <a target="_blank" href="<%= @prolong_token_url %>">
+        <%= @prolong_token_url %>
+      </a>
+    </mj-text>
+    <mj-text>
+      <p>
+        À bientôt 👋
+        <br />
+        <b>L'équipe API Particulier</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "block_help_renewal" %>
+<%= render partial: "shared/api_particulier/mailers/footer" %>

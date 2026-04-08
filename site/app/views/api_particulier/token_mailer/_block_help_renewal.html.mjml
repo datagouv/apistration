@@ -1,0 +1,19 @@
+<mj-section mj-class="section-block">
+  <mj-column>
+    <mj-text mj-class="block-beige">
+      <h3>ℹ️ En savoir plus sur la démarche de prolongation de votre jeton</h3>
+      <p>
+       ⌛️ Tous les jetons API Particulier ont une durée de vie de 18 mois.
+        <b>Cette durée de vie peut être prolongée de 18 mois en effectuant la démarche de demande de prolongation.</b>
+      </p>
+      <p>
+        Pour mieux comprendre les étapes d'une prolongation de jeton, veuillez consulter <a target="_blank" href="<%= faq_index_url %>/#comment-prolonger-mon-jeton-arrivant-a-expiration">
+           cette FAQ
+        </a>.
+      </p>
+      <p>
+        Si malgré tout vous rencontrez une difficulté, n'hésitez pas à utiliser la messagerie pour échanger avec les instructeurs API&nbsp;Entreprise ou répondre à cet e-mail.
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>

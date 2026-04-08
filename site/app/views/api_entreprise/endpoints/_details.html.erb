@@ -1,0 +1,76 @@
+<% extra_classes ||= '' %>
+
+<div class="use-cases <%= extra_classes %>">
+  <h2 class="fr-h3 fr-mb-2v" id="<%= id %>">
+    <%= t('.title') %>
+  </h2>
+
+  <h3 class="fr-h6 fr-pt-2w fr-mb-1v">
+    <%= t('.format.title') %>
+  </h3>
+
+  <% @endpoint.format.each do |format| %>
+    <div>
+      <%= format %>
+    </div>
+  <% end %>
+
+  <h3 class="fr-h6 fr-pt-2w fr-mb-1v">
+    <%= t('.parameters.title', count: @endpoint.parameters.count) %>
+  </h3>
+
+  <% @endpoint.parameters.each do |parameter| %>
+    <div>
+      <%= parameter %>
+    </div>
+  <% end %>
+
+  <h3 class="fr-h6 fr-pt-2w fr-mb-1v">
+    <%= t('.availability.title') %>
+  </h3>
+  <turbo-frame id="endpoint_status" src="<%= endpoint_status_path(uid: @endpoint.uid) %>">
+    <div class="fr-pb-1w" style="color: grey;">Loading...</div>
+  </turbo-frame>
+  <a class="fr-link" title="API Entreprise Status Page" href="https://status.entreprise.api.gouv.fr" target="_blank">
+    <%= t('.availability.link') %>
+  </a>
+  <div class="fr-pt-1w">
+    <% if @endpoint.maintenances.present? %>
+      <%= t('.availability.maintenance', from_hour: @endpoint.maintenances['from_hour'], to_hour: @endpoint.maintenances['to_hour']) %>
+    <% else %>
+      <%= t('.availability.no_maintenance') %>
+    <% end %>
+  </div>
+
+  <% if @endpoint.implemented? && !@endpoint.deprecated? %>
+    <h3 class="fr-h5 fr-pt-2w">
+      <%= t('.technical_specifications.title') %>
+    </h3>
+
+    <%= link_to t('.technical_specifications.cta'), developers_openapi_path(anchor: @endpoint.redoc_anchor), data: { turbo: false }, class: %(fr-btn fr-btn--icon-right fr-icon-arrow-right-line) %>
+
+    <a href="<%= @endpoint.test_cases_external_url %>" target="_blank" class="fr-btn fr-btn--secondary fr-mt-2w">
+      <%= t('.test_cases') %>
+    </a>
+  <% end %>
+
+  <!-- <h5 class="fr&#45;mt&#45;3w"> -->
+  <!--   <%= t('.availability.title') %> -->
+  <!-- </h5> -->
+  <!--  -->
+  <!-- <div> -->
+  <!--   Taux moyen sur 6 mois -->
+  <!--   <span class="circle circle&#45;success"></span> <strong>99.98%</strong> -->
+  <!--   <br> -->
+  <!--   <br> -->
+  <!--   Temps réel: <strong>UP</strong> -->
+  <!--   <br> -->
+  <!--   <a href="https://status.entreprise.api.gouv.fr" alt="API Entreprise Status Page" target="_blank"> -->
+  <!--     Page d'état des APIs -->
+  <!--   </a> -->
+  <!--   <br> -->
+  <!--   <br> -->
+  <!--   Horaires de fonctionnement : <br> -->
+  <!--   7jours/7 24h/24 -->
+  <!-- </div> -->
+</div>

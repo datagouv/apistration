@@ -1,0 +1,87 @@
+<div class="fr-container">
+  <div class="fr-grid-row">
+    <div class="fr-col-12">
+    <%= link_to t('.links.profile'), user_profile_path, class: %w(fr-link fr-icon-account-fill fr-link--icon-left fr-text--lg pull-right fr-mb-2w ) %>
+    </div>
+    <div class="fr-col-12">
+      <h1 class="fr-h1 fr-mb-4w">
+        <% if @authorization_requests.empty? %>
+          <%= t('.no_authorization_requests') %>
+        <% else %>
+          <%= t('.title', api_label: t(".#{@authorization_requests.first.api}"), count: @authorization_requests.count).html_safe %>
+        <% end %>
+      </h1>
+    </div>
+  </div>
+  <div class="fr-row">
+    <div class="fr-col-12">
+      <div class="fr-container fr-container--bordered fr-p-0">
+        <div class="fr-grid-row fr-p-4v fr-grid-row--middle fr-grid-row--gutters">
+          <div class="fr-col-12 fr-col-sm-3">
+            <strong><%= t('.table.head.authorization_request') %></strong>
+          </div>
+          <div class="fr-col-12 fr-col-sm-4">
+            <strong><%= t('.table.head.token') %></strong>
+          </div>
+          <div class="fr-col-12 fr-col-sm">
+              <strong><%= t('.table.head.actions') %></strong>
+          </div>
+          <div class="fr-col-12 fr-col-sm">
+              <strong><%= t('.table.head.detail') %></strong>
+          </div>
+        </div>
+        <% @authorization_requests.each do |authorization_request| %>
+          <div id="<%= dom_id(authorization_request) %>" class="fr-grid-row fr-grid-row--gutters fr-grid-row--middle fr-p-4v">
+            <div class="fr-col-12 fr-col-sm-3">
+              <h2 class="fr-h6 fr-mb-0"><%= authorization_request.intitule %></h2>
+              <%= authorization_request_status_badge(authorization_request) %>
+              <span class="fr-hint-text">
+                <%= link_to t('.links.to_datapass', external_id: authorization_request.external_id).html_safe,
+                  datapass_authorization_request_url(authorization_request),
+                  id: dom_id(authorization_request, :authorization_request_link),
+                  class: %w(fr-link fr-text--sm fr-mt-2v),
+                  target: '_blank'
+                %>
+              </span>
+              <span class="fr-text--xs"><span class="fr-icon-user-fill fr-icon--xs fr-pr-1v" aria-hidden="true"></span>Vous êtes
+                <%= authorization_request.user_authorization_request_roles.for_user(@current_user).map { |uarr|
+                  I18n.t("user_authorization_request_roles.role.#{uarr.role}")
+                  }.join(', ')
+                %>
+              </span>
+            </div>
+            <div class="fr-col-12 fr-col-sm-4">
+              <% if authorization_request.token %>
+                <div id="<%= dom_id(authorization_request.token) %>">
+                  <%= render partial: 'shared/tokens/detail_short',
+                    locals: {
+                      token: authorization_request.token.decorate
+                    }
+                  %>
+                </div>
+              <% end %>
+
+              <% authorization_request.tokens.blacklisted_later.decorate.each do |banned_token| %>
+                <div id="<%= dom_id(banned_token) %>" class="fr-pt-6v">
+                  <%= render partial: 'shared/tokens/detail_short',
+                    locals: {
+                      token: banned_token.decorate
+                    }
+                  %>
+                </div>
+            <% end %>
+            </div>
+            <div class="fr-col-12 fr-col-sm">
+              <% authorization_request_expected_actions(authorization_request, current_user).each do |action| %>
+                <%= render partial: "shared/authorization_requests/actions/#{action[:action]}", locals: { label: action[:label], authorization_request:, to_datapass_reopen: action[:to_datapass_reopen] } %>
+              <% end %>
+            </div>
+            <div class="fr-col-12 fr-col-sm">
+              <%= link_to "Plus d'informations", authorization_request_path(authorization_request), class: %w[fr-btn fr-btn--tertiary center] %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

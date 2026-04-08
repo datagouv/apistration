@@ -1,0 +1,85 @@
+<div class="fr-header__menu fr-modal" id="modal-header-menu" aria-labelledby="fr-btn-menu-mobile-1">
+
+  <div class="fr-container">
+    <button class="fr-link--close fr-link" aria-controls="modal-header-menu">
+      Fermer
+    </button>
+
+    <div class="fr-header__menu-links"></div>
+    <% if main_site? %>
+      <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal">
+        <ul class="fr-nav__list">
+          <li class="fr-nav__item">
+            <a class="fr-nav__link center" href="<%= endpoints_path %>" target="_self" <%= active_link_attribute('catalogue', request.url) %>>
+              <%= t('.catalogue').html_safe %>
+            </a>
+          </li>
+
+          <li class="fr-nav__item">
+            <a class="fr-nav__link center" href="<%= cas_usages_path %>" target="_self" <%= active_link_attribute('cas_usages', request.url) %>>
+              <%= t('.usages').html_safe %>
+            </a>
+          </li>
+
+          <li class="fr-nav__item">
+            <a class="fr-nav__link center" href="<%= developers_path %>" target="_self" <%= active_link_attribute('developer', request.url) %>>
+              <%= t('.developer').html_safe %>
+            </a>
+          </li>
+
+          <% if user_signed_in? && current_user.admin? %>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= admin_path %>" target="_self">
+                <strong>Espace admin</strong>
+                <br />
+                La puissance est par là
+              </a>
+            </li>
+          <% end %>
+
+          <% if user_signed_in? && current_user.editor? %>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= editor_path %>" target="_self">
+                <strong>Espace éditeurs</strong>
+                <br />
+                Gestion clients
+              </a>
+            </li>
+          <% end %>
+
+          <% if user_signed_in? && current_user.provider? %>
+            <li class="fr-nav__item">
+              <a class="fr-nav__link center" href="<%= provider_path %>" target="_self">
+                <strong>Espace fournisseur de données</strong>
+                <br />
+                Statistiques
+              </a>
+            </li>
+          <% end %>
+
+          <li class="ask-access-link fr-nav__item">
+            <a class="fr-nav__link center" href="https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau" target="_blank">
+              <%= t('.ask_access').html_safe %>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+  </div>
+
+  <% if Date.today >= Date.new(2024, 8, 21) %>
+    <div class="fr-notice fr-notice--info">
+      <div class="fr-container">
+        <div class="fr-notice__body">
+          <p class="fr-notice__title fr-text--regular">
+            <% if action_name == 'developers'%>
+              <%= t('.banner.tech', date: OpenBureauDate.new.next_date.strftime('%d/%m/%Y')).html_safe %>
+            <% else %>
+              <%= t('.banner.default', date: OpenBureauDate.new.next_date.strftime('%d/%m/%Y')).html_safe %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
