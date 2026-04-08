@@ -455,6 +455,10 @@
   title: 'Entité non traitable'
   detail: "L'année demandée n'est pas correctement formatée ou est dans le futur."
 
+- code: '00356'
+  title: 'Entité non traitable'
+  detail: "L'année demandée doit être l'année en cours (N), N-1 ou N-2."
+
 - code: '00354'
   title: 'Entité non traitable'
   detail: "Le mois demandé est incorrect ou est dans le futur."

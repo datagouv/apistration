@@ -30,7 +30,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateYear, type: :validate_param_int
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
 
       it 'error has correct error code (non-regression)' do
-        expect(subject.errors.first.code).to eq('00353')
+        expect(subject.errors.first.code).to eq('00356')
       end
     end
 
