@@ -53,7 +53,7 @@ class MockDataBackend
 
   def extract_payloads_files_for(operation_id)
     fetch_payloads_paths.select do |file|
-      file[:path].starts_with?("payloads/#{operation_id}/") &&
+      file[:path].starts_with?("mocks/payloads/#{operation_id}/") &&
         yaml_file?(file[:path])
     end
   end
@@ -82,13 +82,13 @@ class MockDataBackend
 
   def fetch_payloads_paths_from_github
     github_files.select do |file|
-      file[:path].starts_with?('payloads/') &&
+      file[:path].starts_with?('mocks/payloads/') &&
         yaml_file?(file[:path])
     end
   end
 
   def extract_content_from_github(sha)
-    content_response = github_client.blob('etalab/siade_staging_data', sha)
+    content_response = github_client.blob('datagouv/apistration', sha)
 
     if content_response[:encoding] == 'base64'
       Base64.decode64(content_response[:content])
@@ -116,9 +116,9 @@ class MockDataBackend
 
   def clean_all_operations!
     (redis_service.restore('mock_data_backend:payloads_paths') || []).each do |file|
-      next unless file[:path].starts_with?('payloads/')
+      next unless file[:path].starts_with?('mocks/payloads/')
 
-      redis_service.del("mock_data_backend:payloads:#{file[:path].split('/')[1]}")
+      redis_service.del("mock_data_backend:payloads:#{file[:path].split('/')[2]}")
     end
   end
 
@@ -127,7 +127,7 @@ class MockDataBackend
   end
 
   def github_files
-    @github_files ||= github_client.tree('etalab/siade_staging_data', 'HEAD', recursive: true)[:tree]
+    @github_files ||= github_client.tree('datagouv/apistration', 'HEAD', recursive: true)[:tree]
   end
 
   def github_client

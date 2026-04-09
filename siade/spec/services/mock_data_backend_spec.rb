@@ -2,7 +2,7 @@ RSpec.describe MockDataBackend, type: :service do
   let(:github_client) { instance_double(Octokit::Client) }
 
   def mock_sha_github(sha)
-    allow(github_client).to receive(:blob).with('etalab/siade_staging_data', sha).and_return(
+    allow(github_client).to receive(:blob).with('datagouv/apistration', sha).and_return(
       {
         encoding: 'base64',
         content: Base64.encode64(Rails.root.join("spec/fixtures/github_mocks/endpoints#{sha}.yaml").read)
@@ -18,37 +18,37 @@ RSpec.describe MockDataBackend, type: :service do
       tree: [
         {
           sha: '00',
-          path: 'payloads/whatever_endpoint/1.yaml',
+          path: 'mocks/payloads/whatever_endpoint/1.yaml',
           type: 'blob'
         },
         {
           sha: '01',
-          path: 'payloads/whatever_endpoint1',
+          path: 'mocks/payloads/whatever_endpoint1',
           type: 'tree'
         },
         {
           sha: '11',
-          path: 'payloads/whatever_endpoint1/1.yaml',
+          path: 'mocks/payloads/whatever_endpoint1/1.yaml',
           type: 'blob'
         },
         {
           sha: '12',
-          path: 'payloads/whatever_endpoint1/2.yaml',
+          path: 'mocks/payloads/whatever_endpoint1/2.yaml',
           type: 'blob'
         },
         {
           sha: '02',
-          path: 'payloads/whatever_endpoint2',
+          path: 'mocks/payloads/whatever_endpoint2',
           type: 'tree'
         },
         {
           sha: '21',
-          path: 'payloads/whatever_endpoint2/1.yaml',
+          path: 'mocks/payloads/whatever_endpoint2/1.yaml',
           type: 'blob'
         },
         {
           sha: '404',
-          path: 'payloads/whatever_endpoint2/404.yaml',
+          path: 'mocks/payloads/whatever_endpoint2/404.yaml',
           type: 'blob'
         }
       ]
