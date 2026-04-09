@@ -108,7 +108,7 @@ RSpec.configure do |config|
 
 Il est possible de tester les API via notre environnement de **staging** qui vous retournera systématiquement des données fictives. Référez vous à la [documentation](https://entreprise.api.gouv.fr/developpeurs#tester-api-preproduction).
 
-Il est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://github.com/etalab/siade_staging_data/tree/develop/tokens
+Il est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://github.com/datagouv/apistration/tree/develop/mocks/tokens
       ",
         termsOfService: 'https://entreprise.api.gouv.fr/cgu/',
         contact:
@@ -192,7 +192,7 @@ Le bac à sable et l'API de production sont appelables par deux adresses distinc
 
 Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
-Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
+Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [datagouv/apistration](https://github.com/datagouv/apistration/tree/develop/mocks/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/datagouv/apistration/tree/develop/mocks/tokens)
 
 ### Accéder à la version 3 de l'API
 
@@ -288,7 +288,7 @@ Le bac à sable et l'API de production sont appelables par deux adresses distinc
 
 Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
-Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
+Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [datagouv/apistration](https://github.com/datagouv/apistration/tree/develop/mocks/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/datagouv/apistration/tree/develop/mocks/tokens)
 
 ### Accéder à la version 2 de l'API
 

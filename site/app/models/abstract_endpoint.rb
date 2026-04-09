@@ -200,7 +200,7 @@ class AbstractEndpoint
   end
 
   def test_cases_external_url
-    "https://github.com/etalab/siade_staging_data/tree/develop/payloads/#{operation_id}"
+    "https://github.com/datagouv/apistration/tree/develop/mocks/payloads/#{operation_id}"
   end
 
   def operation_id

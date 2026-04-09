@@ -9,7 +9,7 @@ info:
     d'une clé d'accès (jeton).\n\n### Comment tester l'API ?\n\nIl est possible de
     tester les API via notre environnement de **staging** qui vous retournera systématiquement
     des données fictives. Référez vous à la [documentation](https://entreprise.api.gouv.fr/developpeurs#tester-api-preproduction).\n\nIl
-    est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://github.com/etalab/siade_staging_data/tree/develop/tokens\n
+    est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://github.com/datagouv/apistration/tree/develop/mocks/tokens\n
     \     "
   termsOfService: https://entreprise.api.gouv.fr/cgu/
   contact:
@@ -398,7 +398,7 @@ paths:
                           enregistrée dans le système. Elle est donc variable d'une
                           entreprise à l'autre. \n \n Plus d'informations sur le site
                           de l'URSSAF : https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html"
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf
                       expires_in:
                         type: integer
                         example: 7889238
@@ -915,7 +915,7 @@ paths:
                               title: URL Certificat
                               description: URL de téléchargement du certificat
                               type: string
-                              example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualibat.pdf
+                              example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualibat.pdf
                             nom_certificat:
                               title: Nom du certificat
                               description: libéllé du certificat
@@ -2793,7 +2793,7 @@ paths:
                         nullable: true
                         description: Ce lien délivre l'attestation au format PDF.
                           Ce document est automatiquement supprimé après 10 minutes.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies/test_cibtp_certificat.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies/test_cibtp_certificat.pdf
                       expires_in:
                         title: Expiration du lien
                         description: Nombre de secondes avant expiration du document
@@ -3173,7 +3173,7 @@ paths:
                         title: Lien vers le certificat CNETP
                         description: Ce lien délivre l'attestation au format PDF.
                           Ce document est automatiquement supprimé après 24h.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf
                       expires_in:
                         type: integer
                         example: 7889238
@@ -11613,7 +11613,7 @@ paths:
                         title: Lien vers la carte professionnelle
                         description: Ce document est automatiquement supprimé au bout
                           de 3 mois.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf
                       expires_in:
                         type: integer
                         example: 7889238
@@ -35523,7 +35523,7 @@ paths:
                         title: Lien vers l'attestation de cotisation retraite ProBTP
                         description: Ce document est automatiquement supprimé au bout
                           de 3 mois.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf
                       expires_in:
                         type: integer
                         example: 7889238
@@ -36341,7 +36341,7 @@ paths:
                         title: Lien vers la certification batiment Qualibat
                         description: Cette URL permet de télécharger la certification
                           Qualibat au format PDF.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf
                       expires_in:
                         type: integer
                         example: 7889238
@@ -36823,7 +36823,7 @@ paths:
                         type: string
                         description: Cette URL permet de télécharger la certification
                           Qualibat au format PDF.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf
                       document_url_expires_in:
                         title: Nombre de secondes avant expiration du document référencé
                           dans 'document_url'
@@ -37371,7 +37371,7 @@ paths:
                               description: Ce lien délivre le certificat Qualifelec
                                 de l'entreprise au format PDF tel qu'accessible depuis
                                 le site https://www.qualifelec.fr/.
-                              example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg
+                              example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg
                             numero:
                               title: Numéro du certificat
                               type: number
@@ -38499,7 +38499,7 @@ paths:
                         nullable: true
                         description: Ce lien délivre l'attestation de vigilance de
                           l'entreprise au format PDF.
-                        example: https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf
+                        example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf
                       document_url_expires_in:
                         title: Nombre de secondes avant expiration du document référencé
                           dans 'document_url'

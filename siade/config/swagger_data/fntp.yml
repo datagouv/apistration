@@ -7,4 +7,4 @@ fntp:
     document_url_properties:
       title: "Lien vers la carte professionnelle"
       description: "Ce document est automatiquement supprimé au bout de 3 mois."
-      example: "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf"
+      example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf"

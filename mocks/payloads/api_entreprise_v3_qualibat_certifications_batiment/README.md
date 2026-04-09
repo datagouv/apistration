@@ -23,7 +23,7 @@
   ```json
   {
     "data": {
-      "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf",
+      "document_url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf",
       "expires_in": 7889238
     },
     "links": {},

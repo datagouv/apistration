@@ -35,7 +35,7 @@
               "type_decision": "Augmentation du capital social"
             }
           ],
-          "url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
         }
       ],
       "bilans": [
@@ -46,7 +46,7 @@
           "date_cloture": "2022-12-31",
           "date_mise_a_jour": "2023-11-01",
           "type": "bilan complet",
-          "url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
         },
         {
           "id": "65419234a1f7d1f2ba09bd8d",
@@ -55,7 +55,7 @@
           "date_cloture": "2021-12-31",
           "date_mise_a_jour": "2022-11-05",
           "type": "bilan complet",
-          "url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
         },
         {
           "id": "65419234a1f7d1f2ba09bd8e",
@@ -64,7 +64,7 @@
           "date_cloture": "2020-12-31",
           "date_mise_a_jour": "2021-11-10",
           "type": "bilan simplifié",
-          "url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf"
         }
       ]
     },

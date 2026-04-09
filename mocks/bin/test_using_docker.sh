@@ -6,8 +6,8 @@ SCRIPT_NAME="$(basename "$SCRIPT")"
 SCRIPT_PATH="$(realpath "$(dirname "$SCRIPT")")"
 PROJECT_PATH="$(realpath "$SCRIPT_PATH/..")"
 RUBY_VERSION="$(cat "$PROJECT_PATH/.ruby-version" | head -n1)"
-TMP_FOLDER="/tmp/siade_staging_data_test_bundler_cache"
-CONTAINER_NAME="siade_staging_data_test"
+TMP_FOLDER="/tmp/apistration_mocks_test_bundler_cache"
+CONTAINER_NAME="apistration_mocks_test"
 
 mkdir -p "$TMP_FOLDER" || exit 1
 

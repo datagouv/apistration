@@ -33,7 +33,7 @@ Ce cas permet de tester :
     "data": [
       {
         "data": {
-          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2840,
           "rge": false,
           "date_debut": "2023-02-01",
@@ -80,7 +80,7 @@ Ce cas permet de tester :
       },
       {
         "data": {
-          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2841,
           "rge": false,
           "date_debut": "2023-08-01",
@@ -181,7 +181,7 @@ Ce cas permet de tester :
     "data": [
       {
         "data": {
-          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2840,
           "rge": true,
           "date_debut": "2023-02-01",
@@ -290,7 +290,7 @@ Ce cas permet de tester :
     "data": [
       {
         "data": {
-          "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+          "document_url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": 2840,
           "rge": true,
           "date_debut": "2023-02-01",

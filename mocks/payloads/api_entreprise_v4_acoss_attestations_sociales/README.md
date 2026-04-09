@@ -23,7 +23,7 @@
   ```json
   {
     "data": {
-      "document_url": "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf",
+      "document_url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf",
       "document_url_expires_in": 86400,
       "date_debut_validite": "2023-01-31",
       "date_fin_validite": "2023-07-31",

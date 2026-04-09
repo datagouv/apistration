@@ -30,7 +30,7 @@ RSpec.describe APIParticulier::EndpointV2 do
   describe '#test_cases_external_url' do
     subject { described_class.find(uid).test_cases_external_url }
 
-    it { is_expected.to eq('https://github.com/etalab/siade_staging_data/tree/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2') }
+    it { is_expected.to eq('https://github.com/datagouv/apistration/tree/develop/mocks/payloads/api_particulier_v2_cnav_quotient_familial_v2') }
   end
 
   describe '#redoc_anchor' do
