@@ -131,14 +131,17 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
     it 'creates a token with the authorization request scopes' do
       authorization_request.update!(scopes: %w[unites_legales associations])
 
-      visit admin_user_tokens_path(user)
-      click_on 'create-token'
+      Timecop.freeze(2.seconds.from_now) do
+        visit admin_user_tokens_path(user)
+        click_on 'create-token'
 
-      within('#main-modal-content') do
-        click_button 'Créer le jeton'
+        within('#main-modal-content') do
+          click_button 'Créer le jeton'
+        end
+
+        expect(page).to have_css('.fr-alert.fr-alert--success')
       end
 
-      expect(page).to have_css('.fr-alert.fr-alert--success')
       new_token = user.tokens.order(:created_at).last
       expect(new_token.scopes).to eq(%w[unites_legales associations])
     end
@@ -146,15 +149,18 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
     it 'creates a token with a custom expiration date' do
       custom_date = 6.months.from_now.to_date
 
-      visit admin_user_tokens_path(user)
-      click_on 'create-token'
+      Timecop.freeze(2.seconds.from_now) do
+        visit admin_user_tokens_path(user)
+        click_on 'create-token'
 
-      within('#main-modal-content') do
-        fill_in 'exp', with: custom_date.strftime('%Y-%m-%d')
-        click_button 'Créer le jeton'
+        within('#main-modal-content') do
+          fill_in 'exp', with: custom_date.strftime('%Y-%m-%d')
+          click_button 'Créer le jeton'
+        end
+
+        expect(page).to have_css('.fr-alert.fr-alert--success')
       end
 
-      expect(page).to have_css('.fr-alert.fr-alert--success')
       new_token = user.tokens.order(:created_at).last
       expect(Time.zone.at(new_token.exp).to_date).to eq(custom_date)
     end
