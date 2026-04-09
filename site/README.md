@@ -130,9 +130,6 @@ Pour lancer le server:
 
 ```sh
 ./bin/local.sh
-
-# Pour load le fichier OpenAPI local:
-LOAD_LOCAL_OPEN_API_DEFINITIONS=true ./bin/local.sh
 ```
 
 Vous pouvez accéder ensuite accéder au site via les adresses suivantes:

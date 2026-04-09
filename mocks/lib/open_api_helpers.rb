@@ -1,7 +1,6 @@
 require 'yaml'
 require 'json'
 require 'date'
-require 'open-uri'
 
 module OpenApiHelpers
   def root_path
@@ -11,37 +10,14 @@ module OpenApiHelpers
   def load_schema(operation_id)
     @api_kind_to_schema ||= {}
 
-    if ENV['LOCAL']
-      content_schema = load_local_schema(operation_id)
-    else
-      content_schema = load_schema_from_remote(operation_id)
-    end
-
-    @api_kind_to_schema[extract_open_api_name(operation_id)] ||= YAML.load(content_schema, aliases: true, permitted_classes: [Date])
-  end
-
-  def load_local_schema(operation_id)
     name = extract_open_api_name(operation_id)
     relative = case name
                when 'api_entreprise'      then 'commons/swagger/openapi-entreprise.yaml'
                when 'api_particulier'     then 'commons/swagger/openapi-particulier.yaml'
                when 'api_particulier_v2'  then 'commons/swagger/api_particulier_open_api_static/v2.yaml'
                end
-    File.read(File.join(root_path, relative))
-  end
 
-  def load_schema_from_remote(operation_id)
-    uri = case extract_open_api_name(operation_id)
-          when 'api_particulier_v2'
-            'https://staging.particulier.api.gouv.fr/api/open-api.yml'
-          when 'api_particulier'
-            'https://staging.particulier.api.gouv.fr/api/open-api-v3.yml'
-          else
-            'https://staging.entreprise.api.gouv.fr/open-api.yml'
-          end
-
-    $remote_schemas ||= {}
-    $remote_schemas[uri] ||= URI.open(uri).read
+    @api_kind_to_schema[name] ||= YAML.load(File.read(File.join(root_path, relative)), aliases: true, permitted_classes: [Date])
   end
 
   def extract_open_api_name(operation_id)

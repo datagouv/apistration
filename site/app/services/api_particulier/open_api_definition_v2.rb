@@ -1,5 +1,7 @@
 class APIParticulier::OpenAPIDefinitionV2 < APIParticulier::OpenAPIDefinition
-  def remote_url(_)
-    super('v2')
+  protected
+
+  def local_path
+    Rails.root.join('config/api-particulier-openapi.yml')
   end
 end

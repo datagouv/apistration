@@ -171,10 +171,10 @@ If a new version prefix appears (e.g. `api_particulier_v5`), add it here.
 ## Step 5: Run Tests and Fix
 
 ```bash
-LOCAL=1 bundle exec rspec
+bundle exec rspec
 ```
 
-Use `LOCAL=1` to validate against local OpenAPI files (not remote).
+Tests validate payloads against the OpenAPI files in `commons/swagger/`.
 
 **Common validation failures:**
 - Missing required fields in payload - read OpenAPI schema and add them
