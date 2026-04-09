@@ -1,0 +1,5 @@
+# Each line is "source:destination" where source is relative to the repository
+# root and destination is relative to this app's build directory. The deploy
+# script replaces the destination path with a real copy of source at deploy
+# time. Lines starting with '#' and blank lines are ignored. When destination
+# is omitted, source is used for both.
