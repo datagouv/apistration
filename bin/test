@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+LOG_DIR="$ROOT_DIR/tmp/test_logs"
+mkdir -p "$LOG_DIR"
+
+SIADE_LOG="$LOG_DIR/siade_${TIMESTAMP}.log"
+SITE_LOG="$LOG_DIR/site_${TIMESTAMP}.log"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+YELLOW='\033[0;33m'
+BOLD='\033[1m'
+RESET='\033[0m'
+
+format_duration() {
+  local seconds=$1
+  if [ $seconds -ge 60 ]; then
+    printf "%dm%02ds" $((seconds / 60)) $((seconds % 60))
+  else
+    printf "%ds" $seconds
+  fi
+}
+
+prefix_output() {
+  local color="$1"
+  local label="$2"
+  while IFS= read -r line; do
+    printf "${color}${BOLD}[%-5s]${RESET} %s\n" "$label" "$line"
+  done
+}
+
+START_TOTAL=$SECONDS
+
+echo -e "${BOLD}Running tests in parallel...${RESET}"
+echo -e "Logs: ${CYAN}${SIADE_LOG}${RESET}"
+echo -e "      ${CYAN}${SITE_LOG}${RESET}"
+echo ""
+
+START_SIADE=$SECONDS
+(cd "$ROOT_DIR/siade" && bundle exec rspec "$@" 2>&1 | tee "$SIADE_LOG" | prefix_output "$CYAN" "siade") &
+PID_SIADE=$!
+
+START_SITE=$SECONDS
+(cd "$ROOT_DIR/site" && bundle exec rspec "$@" 2>&1 | tee "$SITE_LOG" | prefix_output "$YELLOW" "site") &
+PID_SITE=$!
+
+SIADE_EXIT=0
+SITE_EXIT=0
+
+wait $PID_SIADE || SIADE_EXIT=$?
+DURATION_SIADE=$((SECONDS - START_SIADE))
+
+wait $PID_SITE || SITE_EXIT=$?
+DURATION_SITE=$((SECONDS - START_SITE))
+
+DURATION_TOTAL=$((SECONDS - START_TOTAL))
+
+echo ""
+echo -e "${BOLD}=== Results ===${RESET}"
+
+if [ $SIADE_EXIT -eq 0 ]; then
+  echo -e "  ${GREEN}siade  ✔${RESET}  $(format_duration $DURATION_SIADE)  (log: $SIADE_LOG)"
+else
+  echo -e "  ${RED}siade  ✘${RESET}  $(format_duration $DURATION_SIADE)  (log: $SIADE_LOG)"
+fi
+
+if [ $SITE_EXIT -eq 0 ]; then
+  echo -e "  ${GREEN}site   ✔${RESET}  $(format_duration $DURATION_SITE)  (log: $SITE_LOG)"
+else
+  echo -e "  ${RED}site   ✘${RESET}  $(format_duration $DURATION_SITE)  (log: $SITE_LOG)"
+fi
+
+echo -e "\n  ${BOLD}Total: $(format_duration $DURATION_TOTAL)${RESET}"
+
+if [ $SIADE_EXIT -ne 0 ] || [ $SITE_EXIT -ne 0 ]; then
+  exit 1
+fi
