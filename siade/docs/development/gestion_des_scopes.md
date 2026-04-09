@@ -6,7 +6,8 @@ Lors de la création d'une nouvelle ressource, il faut souvent créer
 un (voir plusieurs pour API Particulier) nouveau(x) scopes.
 
 L'ensemble des scopes doivent être regroupés dans le fichier
-[`config/authorizations.yml`](./config/authorizations.yml).
+[`commons/data/authorizations.yml`](../../commons/data/authorizations.yml)
+(à la racine du dépôt, partagé avec mocks).
 
 Le format est le suivant:
 

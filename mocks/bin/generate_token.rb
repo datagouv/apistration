@@ -8,7 +8,7 @@ jwt_hash_secret = 'ea0a029b813836b17cb574fa53d7a626302389f2fa16a7b0596e47c317ebd
 jwt_hash_algo = 'HS256'
 
 root_path = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-all_scopes = YAML.load_file(File.join(root_path, 'data', 'siade_authorizations.yml'), aliases: true)['shared'].values.flatten.uniq
+all_scopes = YAML.load_file(File.join(root_path, 'commons', 'data', 'authorizations.yml'), aliases: true)['shared'].values.flatten.uniq
 
 scopes = ARGV.count == 0 ? all_scopes : ARGV
 

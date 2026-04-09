@@ -85,6 +85,8 @@ shared:
   api_entreprise/v3_and_more/dgddi/eori:
     - eori_douanes
     - open_data
+  api_entreprise/v3_and_more/data_subvention/subventions:
+    - data_subvention_subventions
   api_entreprise/v3_and_more/dgfip/attestations_fiscales:
     - attestations_fiscales
     - attestation_fiscale_dgfip
@@ -94,6 +96,10 @@ shared:
   api_entreprise/v3_and_more/dgfip/liasses_fiscales:
     - liasse_fiscale
     - liasses_fiscales_dgfip
+  api_entreprise/v3_and_more/dgfip/liens_capitalistiques:
+    - liasse_fiscale
+    - liasses_fiscales_dgfip
+    - liens_capitalistiques_dgfip
   api_entreprise/v3_and_more/european_commission/vies: []
   api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives:
     - conventions_collectives
@@ -174,6 +180,8 @@ shared:
     - effectifs_urssaf
   api_entreprise/v3_and_more/qualifelec/certificats:
     - open_data
+  api_entreprise/v3_and_more/inpi/rne/extrait_rne:
+    - unites_legales_etablissements_insee
   api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs:
     - beneficiaires_effectifs_inpi
   api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data:
@@ -235,6 +243,12 @@ shared:
     - men_statut_scolarite
     - men_statut_boursier
     - men_echelon_bourse
+  api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect:
+    - ants_extrait_immatriculation_vehicule_identite_particulier
+    - ants_extrait_immatriculation_vehicule_adresse_particulier
+    - ants_extrait_immatriculation_vehicule_statut_rattachement
+    - ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule
+    - ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
   api_particulier/v3_and_more/france_travail/indemnites_with_identifiant:
     - pole_emploi_paiements
   api_particulier/v3_and_more/france_travail/statut_with_identifiant:
@@ -246,23 +260,32 @@ shared:
   api_particulier/v3_and_more/men/scolarites_with_civility:
     - men_statut_identite
     - men_statut_scolarite
+    - men_statut_etablissement
+    - men_statut_module_elementaire_formation
     - men_statut_boursier
     - men_echelon_bourse
+    - men_regime_pensionnat
   api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
     - mesri_identite
-    - mesri_inscription
-    - mesri_regime
-    - mesri_etablissements
+    - mesri_admissions
+    - mesri_admission_inscrit
+    - mesri_admission_regime_formation
+    - mesri_admission_commune_etudes
+    - mesri_admission_etablissement_etudes
   api_particulier/v3_and_more/mesri/statut_etudiant_with_civility:
     - mesri_identite
-    - mesri_inscription
-    - mesri_regime
-    - mesri_etablissements
+    - mesri_admissions
+    - mesri_admission_inscrit
+    - mesri_admission_regime_formation
+    - mesri_admission_commune_etudes
+    - mesri_admission_etablissement_etudes
   api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect:
     - mesri_identite
-    - mesri_inscription
-    - mesri_regime
-    - mesri_etablissements
+    - mesri_admissions
+    - mesri_admission_inscrit
+    - mesri_admission_regime_formation
+    - mesri_admission_commune_etudes
+    - mesri_admission_etablissement_etudes
   api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect:
     - revenu_solidarite_active
     - revenu_solidarite_active_majoration
@@ -283,6 +306,10 @@ shared:
     - allocation_adulte_handicape
   api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect:
     - allocation_adulte_handicape
+  api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility:
+    - cnav_allocation_enfant_handicape
+  api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect:
+    - cnav_allocation_enfant_handicape
   api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility:
     - complementaire_sante_solidaire
   api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect:
@@ -321,6 +348,62 @@ shared:
     - cnous_statut_bourse
     - cnous_ville_etudes
     - cnous_identite
+  api_particulier/v3_and_more/dsnj/service_national_with_civility:
+    - dsnj_statut_service_national
+  api_particulier/v3_and_more/dsnj/service_national_with_france_connect:
+    - dsnj_statut_service_national
+  api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility:
+    - cnav_participation_familiale_eaje_allocataires
+    - cnav_participation_familiale_eaje_enfants
+    - cnav_participation_familiale_eaje_adresse
+    - cnav_participation_familiale_eaje_parametres_calcul
+  api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect:
+    - cnav_participation_familiale_eaje_allocataires
+    - cnav_participation_familiale_eaje_enfants
+    - cnav_participation_familiale_eaje_adresse
+    - cnav_participation_familiale_eaje_parametres_calcul
+  api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant:
+    - sdh_statut_sportif_identite
+    - sdh_statut_sportif_est_sportif_de_haut_niveau
+    - sdh_statut_sportif_a_ete_sportif_de_haut_niveau
+    - sdh_statut_sportif_informations_statut
+    - sdh_statut_sportif_informations_statuts_precedents
+  api_particulier/v3_and_more/gip_mds/service_civique_with_civility:
+    - gip_mds_service_civique_statut_actuel
+    - gip_mds_service_civique_statut_passe
+    - gip_mds_service_civique_organisme_accueil
+    - gip_mds_service_civique_dates
+  api_particulier/v3_and_more/gip_mds/service_civique_with_france_connect:
+    - gip_mds_service_civique_statut_actuel
+    - gip_mds_service_civique_statut_passe
+    - gip_mds_service_civique_organisme_accueil
+    - gip_mds_service_civique_dates
+
+  mcp/insee.unite_legale:
+    - unites_legales_etablissements_insee
+  mcp/insee.unite_legale_diffusable:
+    - open_data
+  mcp/insee.etablissement:
+    - unites_legales_etablissements_insee
+  mcp/urssaf.attestations_sociales:
+    - attestation_sociale_urssaf
+  mcp/infogreffe.extraits_rcs:
+    - open_data
+  mcp/infogreffe.mandataires_sociaux:
+    - mandataires_sociaux_infogreffe
+  mcp/qualibat.certifications_batiment:
+    - open_data
+  mcp/dgfip.liasses_fiscales:
+    - liasses_fiscales_dgfip
+  mcp/dgfip.attestation_fiscale:
+    - attestation_fiscale_dgfip
+  mcp/dgfip.chiffres_affaires:
+    - chiffre_affaires_dgfip
+  mcp/dgfip.liens_capitalistiques:
+    - liasses_fiscales_dgfip
+    - liens_capitalistiques_dgfip
+  mcp/inpi.rne.beneficiaires_effectifs:
+    - beneficiaires_effectifs_inpi
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
@@ -335,3 +418,11 @@ test:
   api_particulier/v2/dummy: *default_test_scopes
   api_particulier/v2/cnav/abstract: *default_test_scopes
   api_particulier/v3_and_more/base: *default_test_scopes
+  api_particulier/v3_and_more/cnav/abstract_civility: *default_test_scopes
+  mcp/whatever.resource: *default_test_scopes
+  mcp/insee.unite_legale:
+    - mcp_scope1
+  mcp/urssaf.attestations_sociales:
+    - mcp_scope2
+  mcp/infogreffe.extraits_rcs:
+    - mcp_scope3

@@ -7,3 +7,4 @@ commons/swagger/openapi-entreprise.yaml:swagger/openapi-entreprise.yaml
 commons/swagger/openapi-particulier.yaml:swagger/openapi-particulier.yaml
 commons/swagger/openapi-particulierv2.yaml:swagger/openapi-particulierv2.yaml
 commons/swagger/api_particulier_open_api_static/v2.yaml:swagger/api_particulier_open_api_static/v2.yaml
+commons/data/authorizations.yml:config/authorizations.yml

@@ -45,7 +45,7 @@ Bien ajouter le provider dans les fichiers suivants:
 à répéter autant de fois que de modalités d'appels sont intégrées (ex: civilité + franceconnect) :
 
 - Ajouter la ou les routes adéquates.
-- Ajouter les scopes dans le fichier `config/authorizations.yml`.
+- Ajouter les scopes dans le fichier `commons/data/authorizations.yml` (à la racine du dépôt).
 - Ajouter le(s) throttles adéquat dans le fichier `config/throttles.yml`.
 
 ## Autres tâches à effectuer plus tard
