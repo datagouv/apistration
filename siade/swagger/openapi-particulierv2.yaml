@@ -23,7 +23,7 @@ info:
 
     Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
-    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
+    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [datagouv/apistration](https://github.com/datagouv/apistration/tree/develop/mocks/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/datagouv/apistration/tree/develop/mocks/tokens)
 
     ### Accéder à la version 3 de l'API
 
@@ -800,7 +800,7 @@ paths:
         \n\n Retourne également des informations sur les dates d'ouverture des droits.
         \n Pour plus d'informations sur cette API et obtenir un accès en avant-première,
         veuillez contacter l'équipe API Particulier. \n **Données disponibles en bac
-        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
+        à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/complementaire_sante_solidaire)"
       responses:
         '200':
           description: Complementaire Santé Solidaire trouvée
@@ -1441,7 +1441,7 @@ paths:
       description: "Quotient familial et composition de la famille d'un allocataire
         du régime agricole (régime général à venir). \n Pour plus d'informations sur
         cette API et obtenir un accès en avant-première, veuillez contacter l'équipe
-        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
       responses:
         '200':
           description: Quotient Familial trouvé

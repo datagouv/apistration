@@ -18,12 +18,12 @@ Ce service tente séquentiellement:
 
 Pour 1., `MockDataBackend` utilise l'identifiant `operation_id` (générer à
 l'aide du chemin du controller) ainsi que les paramètres d'appel afin
-d'identifier dans le dépôt [siade_staging_data](https://github.com/etalab/siade_staging_data)
+d'identifier dans le dépôt [apistration](https://github.com/datagouv/apistration/tree/develop/mocks)
 la payload correspondante.
 
 Par exemple pour le endpoint `/v2/etudiants` de API Particulier, avec en
 paramètres `ine=1234567890G`, la réponse renvoyée correspond à cette
-[payload](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status/ine.yaml)
+[payload](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_mesri_student_status/ine.yaml)
 
 Il est possible via ce système de simuler des réponses (couple `(status, payload)`)
 différentes en fonction des paramètres.

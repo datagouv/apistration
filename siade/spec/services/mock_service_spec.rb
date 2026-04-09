@@ -46,7 +46,7 @@ RSpec.describe MockService, type: :service do
             status: 200,
             payload: {
               'data' => {
-                'document_url' => 'https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf',
+                'document_url' => 'https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf',
                 'expires_in' => 7_889_238
               },
               'links' => {},

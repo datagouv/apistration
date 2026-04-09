@@ -45,7 +45,7 @@ RSpec.shared_examples 'an endpoint model' do |uid_method, opts = {}|
   describe '#test_cases_external_url' do
     subject { described_class.find(default_uid).test_cases_external_url }
 
-    it { is_expected.to match(%r{https://github.com/etalab/siade_staging_data/tree/develop/payloads/}) }
+    it { is_expected.to match(%r{https://github.com/datagouv/apistration/tree/develop/mocks/payloads/}) }
   end
 
   describe '#redoc_anchor' do

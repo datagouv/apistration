@@ -23,7 +23,7 @@ info:
 
     Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
-    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
+    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [datagouv/apistration](https://github.com/datagouv/apistration/tree/develop/mocks/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/datagouv/apistration/tree/develop/mocks/tokens)
 
     ### Accéder à la version 3 de l'API
 
@@ -719,7 +719,7 @@ paths:
         \n\n Retourne également des informations sur les dates d'ouverture des droits.
         \n Pour plus d'informations sur cette API et obtenir un accès en avant-première,
         veuillez contacter l'équipe API Particulier. \n **Données disponibles en bac
-        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
+        à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/complementaire_sante_solidaire)
         \n L'API peut être appellée avec les données identité pivot ou avec un jeton
         FranceConnect."
       responses:
@@ -1279,7 +1279,7 @@ paths:
       description: "Quotient familial et composition de la famille d'un allocataire
         du régime agricole (régime général à venir). \n Pour plus d'informations sur
         cette API et obtenir un accès en avant-première, veuillez contacter l'équipe
-        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_cnav_quotient_familial_v2)
         \n L'API peut être appellée avec les données identité pivot ou avec un jeton
         FranceConnect."
       responses:
@@ -2310,7 +2310,7 @@ paths:
 
         **Paramètres d'appel :** numéro d'allocataire et code postal
 
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial)
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_cnaf_quotient_familial)
       parameters:
       - name: Cache-Control
         in: header
@@ -2566,7 +2566,7 @@ paths:
       description: |-
         Données d'identité, de contact et de statut du demandeur d'emploi.
         **Paramètres d'appel :** Nom d’utilisateur France Travail choisi par le particulier lors de la création de son espace personnel en ligne
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_pole_emploi_statut)
       parameters:
       - name: identifiant
         required: true
@@ -2875,7 +2875,7 @@ paths:
          - INE, l'identifiant national étudiant ;
          - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
 
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_mesri_student_status)
       security:
       - franceConnectToken: []
         apiKey: []
@@ -3060,7 +3060,7 @@ paths:
          - INE, l'identifiant national étudiant ;
          - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe (optionnel) et lieu de naissance (optionnel).
 
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnous_student_scholarship)
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_cnous_student_scholarship)
       security:
       - franceConnectToken: []
         apiKey: []

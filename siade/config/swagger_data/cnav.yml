@@ -177,7 +177,7 @@ cnav:
       \n
       Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
       \n
-      **Données disponibles en bac à sable :** [Liste de payloads de test](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
+      **Données disponibles en bac à sable :** [Liste de payloads de test](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/complementaire_sante_solidaire)"
     tags:
       - Statut Complémentaire Santé Solidaire (C2S)
     attributes:
@@ -228,7 +228,7 @@ cnav:
       \n
       Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
       \n
-      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
+      **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
     cache_duration: "La durée du cache est de 24 heure."
     tags:
       - Quotient familial CAF & MSA
@@ -613,7 +613,7 @@ cnav:
         \n
         Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
         \n
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/complementaire_sante_solidaire)"
       tags:
         - Statut Complémentaire Santé Solidaire (C2S)
       parameters:
@@ -654,7 +654,7 @@ cnav:
         \n
         Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
         \n
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
       cache_duration: "La durée du cache est de 24 heure."
       tags:
         - Quotient familial MSA & CAF

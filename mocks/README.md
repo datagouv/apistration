@@ -1,6 +1,6 @@
 # Données de tests API Entreprise v3+ & API Particulier / Utilisation de l'environnement de test
 
-[![Tests](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml/badge.svg)](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml)
+[![Tests](https://github.com/datagouv/apistration/actions/workflows/tests.yml/badge.svg)](https://github.com/datagouv/apistration/actions/workflows/tests.yml)
 
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
 à sable d'API Entreprise (seulement pour la v3+)
@@ -29,7 +29,7 @@ Particulier ( https://staging.particulier.api.gouv.fr ).
 Récupération d'un jeton:
 
 ```sh
-token=`curl https://raw.githubusercontent.com/etalab/siade_staging_data/develop/tokens/default`
+token=`curl https://raw.githubusercontent.com/datagouv/apistration/develop/mocks/tokens/default`
 ```
 
 Test d'API Entreprise:
@@ -55,12 +55,12 @@ Les exemples sont dans les accordéons "Commande cURL" dans les dossiers de
 
 ### <a name="1endpoint-1dossier"></a> Un dossier de cas de tests pour chaque endpoint :
 
-Chaque endpoint de l'API Entreprise ou de l'API Particulier, pour lesquels des cas de tests ont été proposés, possède un dossier dans [`payloads/`](https://github.com/etalab/siade_staging_data/tree/develop/payloads), où sont regroupés ses cas de tests.
+Chaque endpoint de l'API Entreprise ou de l'API Particulier, pour lesquels des cas de tests ont été proposés, possède un dossier dans [`payloads/`](https://github.com/datagouv/apistration/tree/develop/mocks/payloads), où sont regroupés ses cas de tests.
 
 Le nom de ce dossier a la forme suivante : `bouquetapi_version_endpointname`.
 
 Une table de correspondance _url de l'endpoint_ <-> _nom du dossier_ est disponible à la
-racine du dossier [`payloads/`](https://github.com/etalab/siade_staging_data/tree/develop/payloads) : [README.md](./payloads/README.md) (généré
+racine du dossier [`payloads/`](https://github.com/datagouv/apistration/tree/develop/mocks/payloads) : [README.md](./payloads/README.md) (généré
 automatiquement par `bin/generate_payload_readme.rb`)
 
 **Pour API Entreprise :**
@@ -69,7 +69,7 @@ Nom type du dossier d'un endpoint : `api_entreprise_version_endpointname`
 
 > Par exemple : `api_entreprise_v3_insee_unite_legale`
 
-➡️ [Liens des dossiers d'endpoints de l'API Entreprise](https://github.com/etalab/siade_staging_data/blob/develop/payloads/README.md#api-entreprise-v3)
+➡️ [Liens des dossiers d'endpoints de l'API Entreprise](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/README.md#api-entreprise-v3)
 
 **Pour API Particulier :**
 
@@ -77,7 +77,7 @@ Nom type du sous-dossier d'une payload : `api_particulier_version_endpointname`
 
 > Par exemple : `api_particulier_v2_dgfip_svair`
 
-➡️ [Liens des dossiers d'endpoints de l'API Particulier](https://github.com/etalab/siade_staging_data/blob/develop/payloads/README.md#api-particulier)
+➡️ [Liens des dossiers d'endpoints de l'API Particulier](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/README.md#api-particulier)
 
 ### <a name="format-cas-test"></a> Format des cas de test :
 
@@ -272,10 +272,10 @@ bundle exec ruby bin/reload_mock_backend.rb
 
 - Pour un endpoint ayant déjà un dossier dans [`payloads/`](./payloads) :
   - Si vous êtes à l'aise avec Github, vous pouvez ajouter vous-même les fichiers des cas de tests que vous souhaitez, au travers d'une Pull Request ;
-  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md)
+  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/datagouv/apistration/issues/new?template=ajout-payloads.md)
 - Pour un endpoint n'ayant pas encore de dossier dans [`payloads/`](./payloads) :
   - Si vous êtes à l'aise avec Github, vous pouvez créer un dossier dans [`future_payloads/`](./future_payloads) à l'aide d'une Pull Request ;
-  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md).
+  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/datagouv/apistration/issues/new?template=proposer-une-am-lioration.md).
 
 ## <a name="developpement"></a> Développement
 
@@ -329,4 +329,4 @@ Pour utiliser les fichiers openapi locaux (dossier `openapi_files`), utilisez la
   être nécessaires.
 
 Si ces limitations sont problématiques pour votre développement et intégration,
-nous vous invitons à [ouvrir un ticket](https://github.com/etalab/siade_staging_data/issues/new).
+nous vous invitons à [ouvrir un ticket](https://github.com/datagouv/apistration/issues/new).

@@ -7,4 +7,4 @@ cnetp:
     document_url_properties:
       title: "Lien vers le certificat CNETP"
       description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 24h."
-      example: "https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf"
+      example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf"

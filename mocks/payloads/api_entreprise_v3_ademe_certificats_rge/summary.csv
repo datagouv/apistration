@@ -3,7 +3,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""data"": [
     {
       ""data"": {
-        ""url"": ""https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualibat.pdf"",
+        ""url"": ""https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualibat.pdf"",
         ""nom_certificat"": ""Qualisol CESI"",
         ""domaine"": ""Fenêtres, volets, portes extérieures 2020"",
         ""meta_domaine"": ""anciens domaines avant 2021"",
@@ -25,7 +25,7 @@ Titre,Description,Paramètres,Status,Réponse
     },
     {
       ""data"": {
-        ""url"": ""https://raw.githubusercontent.com/etalab/siade_staging_data/refs/heads/develop/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualifelec.pdf"",
+        ""url"": ""https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_ademe_certificats_rge/exemple-ademe-rge-certificat_qualifelec.pdf"",
         ""nom_certificat"": ""Qualisol CESI"",
         ""domaine"": ""Fenêtres, volets, portes extérieures 2020"",
         ""meta_domaine"": ""anciens domaines avant 2021"",

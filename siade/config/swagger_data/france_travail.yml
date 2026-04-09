@@ -13,7 +13,7 @@ france_travail:
     description: |
         Statut demandeur d'emploi, données relatives à l'inscription FranceTravail, ainsi que données d'identité de contact.
         **Paramètres d'appel :** Nom d’utilisateur France Travail choisi par le particulier lors de la création de son espace personnel en ligne
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
+        **Données disponibles en bac à sable :** [liste](https://github.com/datagouv/apistration/blob/develop/mocks/payloads/api_particulier_v2_pole_emploi_statut)
 
     tags:
       - Statut demandeurs d'emploi
