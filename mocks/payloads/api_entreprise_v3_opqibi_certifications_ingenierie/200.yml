@@ -1,0 +1,34 @@
+params:
+  siren: '130025265'
+status: 200
+description: 'Appel réussi'
+payload: |-
+  {
+    "data": {
+      "numero_certificat": "string",
+      "url": "https://www.opqibi.com/fiche/1777",
+      "date_delivrance_certificat": "2021-01-28",
+      "duree_validite_certificat": "valable un an",
+      "assurances": "ALLIANZ - XL INSURANCE",
+      "qualifications": [
+        {
+          "nom": "Etude thermique réglementaire \"maison individuelle\"",
+          "code_qualification": "1331",
+          "definition": "Cette qualification correspond à la réalisation des calculs thermiques réglementaires pour les constructions neuves.",
+          "rge": false
+        }
+      ],
+      "date_validite_qualifications": "2025-02-21",
+      "qualifications_probatoires": [
+        {
+          "nom": "Etude thermique réglementaire \"maison individuelle\"",
+          "code_qualification": "1331",
+          "definition": "Cette qualification correspond à la réalisation des calculs thermiques réglementaires pour les constructions neuves.",
+          "rge": false
+        }
+      ],
+      "date_validite_qualifications_probatoires": "2025-02-21"
+    },
+    "links": {},
+    "meta": {}
+  }

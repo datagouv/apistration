@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Allocataire non trouvé
+params:
+  nomNaissance: 'DUBOCHE'
+  prenoms:
+  - 'JEROME'
+  anneeDateNaissance: 2002
+  moisDateNaissance: 12
+  jourDateNaissance: 5
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Entité non trouvée",
+        "detail": "Dossier allocataire inexistant. Le document ne peut être édité.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }

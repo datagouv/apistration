@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Bispo-Antoinette Hanan
+params:
+  nom: "Bispo-Antoinette"
+  prenom: "Hanan"
+  dateDeNaissance: "1999-12-24"
+  sexe: "f"
+  lieuDeNaissance: "93010"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Bispo-Antoinette",
+    "prenom": "Hanan",
+    "dateNaissance": "1999-12-24",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

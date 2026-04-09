@@ -1,0 +1,41 @@
+---
+description: |-
+  ## PERSONNE SANS CONTRAT SERVICE CIVIQUE
+
+  Ce cas représente une personne connue du système mais qui n'a jamais
+  effectué de service civique (ni actif, ni passé).
+
+params:
+  nomNaissance: 'PETIT'
+  prenoms:
+    - 'LUCAS'
+    - 'ANTOINE'
+  anneeDateNaissance: 2000
+  moisDateNaissance: 5
+  jourDateNaissance: 12
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      },
+      "statut_passe": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,40 @@
+---
+description: Étudiant admis Figo Luis
+params:
+  nomNaissance: "Figo"
+  prenoms:
+  - "Luis"
+  anneeDateNaissance: 2003
+  moisDateNaissance: 6
+  jourDateNaissance: 27
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "59350"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Figo",
+        "prenom": "Luis",
+        "date_naissance": "2003-06-27"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-12-31",
+          "est_inscrit": false,
+          "regime_formation": {
+            "libelle": "formation continue",
+            "code": "RF5"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

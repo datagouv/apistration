@@ -1,0 +1,81 @@
+---
+description: 'Bilans entreprise trouvés'
+params:
+  siren: '552049447'
+status: 200
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "annee": "2022",
+          "date_arrete_exercice": "202212",
+          "valeurs_calculees": [
+            {
+              "disponibilites": {
+                "valeur": "9001",
+                "evolution": 12.34
+              },
+              "total_dettes_stables": {
+                "valeur": "15000",
+                "evolution": 5.67
+              },
+              "valeur_ajoutee_bdf": {
+                "valeur": "35000",
+                "evolution": 8.12
+              },
+              "besoin_en_fonds_de_roulement": {
+                "valeur": "12000",
+                "evolution": -3.45
+              },
+              "excedent_brut_exploitation": {
+                "valeur": "18000",
+                "evolution": 6.78
+              },
+              "capacite_autofinancement": {
+                "valeur": "14000",
+                "evolution": 4.56
+              },
+              "fonds_roulement_net_global": {
+                "valeur": "22000",
+                "evolution": 7.89
+              },
+              "ratio_fonds_roulement_net_global_sur_besoin_en_fonds_de_roulement": {
+                "valeur": 23.45,
+                "evolution": 12.34
+              },
+              "dettes4_maturite_a_un_an_au_plus": {
+                "valeur": "8000",
+                "evolution": -2.34
+              }
+            }
+          ],
+          "declarations": [
+            {
+              "numero_imprime": "2051",
+              "donnees": [
+                {
+                  "code": "GR",
+                  "code_EDI": "GR:C889:7111:1:TBX",
+                  "evolution": 4.56,
+                  "code_absolu": "2006744",
+                  "code_type_donnee": "CCI",
+                  "intitule": "Déposé néant",
+                  "code_nref": "304651",
+                  "valeurs": [
+                    "4245"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "links": {},
+        "meta": {}
+      }
+    ],
+    "links": {},
+    "meta": {
+      "count": 1
+    }
+  }

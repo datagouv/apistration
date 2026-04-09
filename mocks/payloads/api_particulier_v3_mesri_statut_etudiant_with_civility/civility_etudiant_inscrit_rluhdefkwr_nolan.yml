@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit RLUHDEFKWR NOLAN
+params:
+  nomNaissance: "RLUHDEFKWR"
+  prenoms:
+  - "NOLAN"
+  anneeDateNaissance: 2001
+  moisDateNaissance: 6
+  jourDateNaissance: 11
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "93010"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "RLUHDEFKWR",
+        "prenom": "NOLAN",
+        "date_naissance": "2001-06-11"
+      },
+      "admissions": [
+        {
+          "date_debut": "2024-10-01",
+          "date_fin": "2025-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

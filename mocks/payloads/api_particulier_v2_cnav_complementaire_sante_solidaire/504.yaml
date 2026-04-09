@@ -1,0 +1,25 @@
+---
+
+description: |-
+  # Gateway Timeout - 504
+  Ce cas permet de tester :
+    - [Réponse] Délai d’attente dépassé avec un flux partenaire
+params:
+  nomNaissance: 'MARTIN'
+  prenoms:
+    - 'PAUL'
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 6
+  jourDateDeNaissance: 15
+  codeInseeLieuDeNaissance: '75056'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+status: 504
+payload: |-
+  {
+    "error": "gateway_timeout",
+    "reason": "Le serveur n’a pas reçu de réponse à temps d’un service tiers.",
+    "message": "Le délai d’attente pour la réponse du partenaire a été dépassé."
+  }
+
+

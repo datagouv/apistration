@@ -1,0 +1,43 @@
+---
+description: 'Élève non boursier'
+params:
+  nomNaissance: "LEROY"
+  prenoms: 
+    - 'HUGO'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2008
+  moisDateNaissance: 6
+  jourDateNaissance: 18
+  codeEtablissement: "0130136C"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "LEROY",
+        "prenom": "HUGO",
+        "sexe": "M",
+        "date_naissance": "2008-06-18"
+      },
+      "module_elementaire_formation": {
+          "code_mef_stat": "211324099991",
+          "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+          "code_uai": "0130136C",
+          "nom": "Collège Vieux Port",
+          "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

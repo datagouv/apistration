@@ -1,0 +1,43 @@
+---
+description: "Élève boursier - Nguyen Adam (moins de 16 ans)"
+params:
+  nomNaissance: "Nguyen"
+  prenoms:
+    - "Adam"
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2011
+  moisDateNaissance: 1
+  jourDateNaissance: 5
+  codeEtablissement: "0133510V"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "Nguyen",
+        "prenom": "Adam",
+        "sexe": "M",
+        "date_naissance": "2011-01-05"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010000410",
+        "libelle": "6EME"
+      },
+      "annee_scolaire": "2024-2025",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0133510V",
+        "nom": "Collège Ubelka",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

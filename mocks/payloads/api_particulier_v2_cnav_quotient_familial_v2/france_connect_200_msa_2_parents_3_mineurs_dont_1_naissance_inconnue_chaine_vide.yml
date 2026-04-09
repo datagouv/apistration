@@ -1,0 +1,83 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Lady'
+    - 'Di'
+  nomNaissance: "NUM"
+  anneeDateDeNaissance: 1962
+  moisDateDeNaissance: 8
+  jourDateDeNaissance: 24
+  sexe: "F"
+  codeInseeLieuDeNaissance: "29200"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "NUM",
+        "nomUsuel": "MASARU",
+        "prenoms": "Lady Di",
+        "anneeDateDeNaissance": "1962",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsuel": null,
+        "prenoms": "Emoto",
+        "anneeDateDeNaissance": "1970",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MASARU",
+        "nomUsuel": null,
+        "prenoms": "Rina",
+        "anneeDateDeNaissance": "2016",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsuel": null,
+        "prenoms": "Akihiro",
+        "anneeDateDeNaissance": "2014",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsuel": null,
+        "prenoms": "Haru",
+        "anneeDateDeNaissance": "",
+        "moisDateDeNaissance": "",
+        "jourDateDeNaissance": "",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Emoto MASARU",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

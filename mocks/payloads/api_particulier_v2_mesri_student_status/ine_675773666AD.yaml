@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 675773666AD inscrit (appel par INE)'
+params:
+  ine: '675773666AD'
+status: 200
+payload: |-
+  {
+    "ine": "675773666AD",
+    "nom": "Moreau",
+    "prenom": "Aurélie",
+    "dateNaissance": "2002-01-02",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-06-31",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

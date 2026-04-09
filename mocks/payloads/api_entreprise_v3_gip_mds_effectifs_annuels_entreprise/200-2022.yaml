@@ -1,0 +1,25 @@
+---
+description: 'GIP-MDS effectifs annuels entreprise 200'
+params:
+  siren: '130025265'
+  year: '2022'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "130025265",
+      "annee": "2022",
+      "effectifs_annuel": [
+        {
+          "regime": "regime_general",
+          "value": 12,
+          "nature": "effectif_moyen_annuel",
+          "date_derniere_mise_a_jour": "2022-01-01"
+        }
+      ]
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }

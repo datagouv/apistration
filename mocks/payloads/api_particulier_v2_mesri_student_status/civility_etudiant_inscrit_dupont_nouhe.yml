@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Dupont Nouhe
+params:
+  nom: "Dupont"
+  prenom: "Nouhe"
+  dateDeNaissance: "2007-12-09"
+  sexe: "m"
+  lieuDeNaissance: "92073"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Dupont",
+    "prenom": "Nouhe",
+    "dateNaissance": "2007-12-09",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-12-01",
+        "dateFinInscription": "2026-12-10",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

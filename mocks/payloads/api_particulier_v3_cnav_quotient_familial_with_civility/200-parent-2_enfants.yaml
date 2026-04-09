@@ -1,0 +1,67 @@
+---
+description: |-
+  ## Parent avec deux enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec deux enfants
+
+params:
+  codeCogInseeCommuneNaissance: '13090'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'BERNANRD'
+  prenoms:
+    - 'JULIEN'
+  anneeDateNaissance: 1979
+  moisDateNaissance: 2
+  jourDateNaissance: 27
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "BERNANRD",
+          "nom_usage": null,
+          "prenoms": "JULIEN",
+          "date_naissance": "1979-02-27",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "BERNANRD",
+          "nom_usage": null,
+          "prenoms": "THOMAS",
+          "date_naissance": "2006-06-08",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "BERNANRD",
+          "nom_usage": null,
+          "prenoms": "MAXIME",
+          "date_naissance": "2015-09-01",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur BERNANRD JULIEN",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "28 BOULEVARD MICHELET",
+        "lieu_dit": null,
+        "code_postal_ville": "13008 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1050,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

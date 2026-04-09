@@ -1,0 +1,29 @@
+---
+description: Étudiant inscrit Randri Ishan
+params:
+  nom: "Randri"
+  prenom: "Ishan"
+  dateDeNaissance: "2003-06-17"
+  sexe: "m"
+  lieuDeNaissance: "75112"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Randri",
+    "prenom": "Ishan",
+    "dateNaissance": "2003-06-17",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-09-01",
+        "dateFinInscription": "2026-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

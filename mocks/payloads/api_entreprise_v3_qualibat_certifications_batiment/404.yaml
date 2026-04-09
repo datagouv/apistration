@@ -1,0 +1,19 @@
+---
+description: 'Établissement non trouvé Qualibat'
+params:
+  siret: '00000000000000'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "10003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "source": null,
+        "meta": {
+          "provider": "Qualibat"
+        }
+      }
+    ]
+  }

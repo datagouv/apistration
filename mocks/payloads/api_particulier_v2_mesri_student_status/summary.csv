@@ -1,0 +1,1545 @@
+Titre,Description,Paramètres,Status,Réponse
+,Étudiant non trouvé,"{""ine"":""1234567404G""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Student not found"",
+  ""message"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis""
+}"
+,Erreur interne du serveur,"{""ine"":""1234567500G""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Timeout - délai d'attente dépassé,"{""ine"":""1234567503G""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,Étudiant inscrit formation continue,"{""nom"":""SOULI"",""prenom"":""Walid"",""dateDeNaissance"":""1998-01-01"",""sexe"":""m"",""lieuDeNaissance"":""78000""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": "" SOULI "",
+  ""prenom"": ""Walid"",
+  ""dateNaissance"": ""1998-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-07-01"",
+      ""dateFinInscription"": ""2024-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Saclay""
+      },
+      ""regime"": ""formation continue""
+    }
+  ]
+}"
+,Étudiant ADMIS,"{""nom"":""MELINARD"",""prenom"":""PATRICK"",""dateDeNaissance"":""1990-01-01"",""sexe"":""m"",""lieuDeNaissance"":""78000""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""MELINARD"",
+  ""prenom"": ""PATRICK"",
+  ""dateNaissance"": ""1990-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-07-01"",
+      ""dateFinInscription"": ""2024-08-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Saclay""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant admis AUTORBB LANCE,"{""nom"":""AUTORBB"",""prenom"":""LANCE"",""dateDeNaissance"":""2005-02-05"",""sexe"":""m"",""lieuDeNaissance"":""99138""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""AUTORBB"",
+  ""prenom"": ""LANCE"",
+  ""dateNaissance"": ""2005-02-05"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation continue""
+    }
+  ]
+}"
+,Étudiant admis AUTORBB PIERRE,"{""nom"":""AUTORBB"",""prenom"":""PIERRE"",""dateDeNaissance"":""2001-02-05"",""sexe"":""m"",""lieuDeNaissance"":""99424""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""AUTORBB"",
+  ""prenom"": ""PIERRE"",
+  ""dateNaissance"": ""2001-02-05"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant admis,"{""nom"":""Avérone"",""prenom"":""Denis"",""dateDeNaissance"":""2005-08-01"",""sexe"":""m"",""lieuDeNaissance"":""78646""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Avérone"",
+  ""prenom"": ""Denis"",
+  ""dateNaissance"": ""2005-08-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""93430"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Sorbonne Paris Nord""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant admis Figo Luis,"{""nom"":""Figo"",""prenom"":""Luis"",""dateDeNaissance"":""2003-06-27"",""sexe"":""m"",""lieuDeNaissance"":""59350""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Figo"",
+  ""prenom"": ""Luis"",
+  ""dateNaissance"": ""2003-06-27"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation continue""
+    }
+  ]
+}"
+,Étudiant admis Nani Luis,"{""nom"":""Nani"",""prenom"":""Luis"",""dateDeNaissance"":""2002-04-25"",""sexe"":""m"",""lieuDeNaissance"":""99331""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Nani"",
+  ""prenom"": ""Luis"",
+  ""dateNaissance"": ""2002-04-25"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""CALIDONE"",""prenom"":""Lola"",""dateDeNaissance"":""2005-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""CALIDONE"",
+  ""prenom"": ""Lola"",
+  ""dateNaissance"": ""2005-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0334523W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2004-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75102""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Martin"",
+  ""prenom"": ""Jacques"",
+  ""dateNaissance"": ""2004-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit 2022,"{""nom"":""SOULI"",""prenom"":""Asma"",""dateDeNaissance"":""2002-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75002""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""SOULI"",
+  ""prenom"": ""Asma"",
+  ""dateNaissance"": ""2002-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2022-07-01"",
+      ""dateFinInscription"": ""2023-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Saclay""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""BRETAGNE"",""prenom"":""Lisa"",""dateDeNaissance"":""2005-06-01"",""sexe"":""f"",""lieuDeNaissance"":""93008""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""BRETAGNE"",
+  ""prenom"": ""Lisa"",
+  ""dateNaissance"": ""2005-06-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-09-01"",
+      ""dateFinInscription"": ""2024-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""93430"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": "" Université Sorbonne Paris Nord""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""JUIN"",""prenom"":""Romuald"",""dateDeNaissance"":""2005-06-15"",""sexe"":""m"",""lieuDeNaissance"":""75115""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Juin"",
+  ""prenom"": ""Romuald"",
+  ""dateNaissance"": ""2005-06-15"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""AUVERNE"",""prenom"":""Luc"",""dateDeNaissance"":""2006-02-01"",""sexe"":""m"",""lieuDeNaissance"":""95018""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""AUVERNE"",
+  ""prenom"": ""Luc"",
+  ""dateNaissance"": ""2006-02-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-01-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""78000"",
+      ""etablissement"": {
+        ""uai"": ""0331034W"",
+        ""nomEtablissement"": "" Université de Versailles""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""JUIN"",""prenom"":""Esmeralda"",""dateDeNaissance"":""2000-12-24"",""sexe"":""f"",""lieuDeNaissance"":""75113""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Juin"",
+  ""prenom"": ""Esmeralda"",
+  ""dateNaissance"": ""2000-12-24"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""BECKER"",""prenom"":""VALIRIANNE"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""BECKER"",
+  ""prenom"": ""VALIRIANNE"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Bispo-Antoinette Hanan,"{""nom"":""Bispo-Antoinette"",""prenom"":""Hanan"",""dateDeNaissance"":""1999-12-24"",""sexe"":""f"",""lieuDeNaissance"":""93010""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Bispo-Antoinette"",
+  ""prenom"": ""Hanan"",
+  ""dateNaissance"": ""1999-12-24"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit blobla Lina,"{""nom"":""blobla"",""prenom"":""Lina"",""dateDeNaissance"":""2002-07-25"",""sexe"":""f"",""lieuDeNaissance"":""67482""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""blobla"",
+  ""prenom"": ""Lina"",
+  ""dateNaissance"": ""2002-07-25"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2027-01-01"",
+      ""dateFinInscription"": ""2027-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Bob Nassima,"{""nom"":""Bob"",""prenom"":""Nassima"",""dateDeNaissance"":""2004-12-04"",""sexe"":""f"",""lieuDeNaissance"":""99335""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Bob"",
+  ""prenom"": ""Nassima"",
+  ""dateNaissance"": ""2004-12-04"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-09-01"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Caravelle Marc-Antoine,"{""nom"":""Caravelle"",""prenom"":""Marc-Antoine"",""dateDeNaissance"":""2002-04-15"",""sexe"":""m"",""lieuDeNaissance"":""75110""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Caravelle"",
+  ""prenom"": ""Marc-Antoine"",
+  ""dateNaissance"": ""2002-04-15"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Carey Abdelhay,"{""nom"":""Carey"",""prenom"":""Abdelhay"",""dateDeNaissance"":""2003-07-11"",""sexe"":""m"",""lieuDeNaissance"":""77373""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Carey"",
+  ""prenom"": ""Abdelhay"",
+  ""dateNaissance"": ""2003-07-11"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Chateau Elyes,"{""nom"":""Chateau"",""prenom"":""Elyes"",""dateDeNaissance"":""2006-07-25"",""sexe"":""m"",""lieuDeNaissance"":""75105""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Chateau"",
+  ""prenom"": ""Elyes"",
+  ""dateNaissance"": ""2006-07-25"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""CLERMONT"",""prenom"":""Louis"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""78646""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""CLERMONT"",
+  ""prenom"": ""Louis"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-09-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""78100"",
+      ""etablissement"": {
+        ""uai"": ""0309023W"",
+        ""nomEtablissement"": "" Sciences Po""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit De Carvalho Alexandra,"{""nom"":""De Carvalho"",""prenom"":""Alexandra"",""dateDeNaissance"":""2000-03-14"",""sexe"":""f"",""lieuDeNaissance"":""69123""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""De Carvalho"",
+  ""prenom"": ""Alexandra"",
+  ""dateNaissance"": ""2000-03-14"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-11-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Delin Antoine,"{""nom"":""Delin"",""prenom"":""Antoine"",""dateDeNaissance"":""2000-12-03"",""sexe"":""m"",""lieuDeNaissance"":""99139""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Delin"",
+  ""prenom"": ""Antoine"",
+  ""dateNaissance"": ""2000-12-03"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2026-12-31"",
+      ""dateFinInscription"": ""2027-06-12"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Duper Louise,"{""nom"":""Duper"",""prenom"":""Louise"",""dateDeNaissance"":""2001-01-10"",""sexe"":""f"",""lieuDeNaissance"":""99208""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Duper"",
+  ""prenom"": ""Louise"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Dupont Nouhe,"{""nom"":""Dupont"",""prenom"":""Nouhe"",""dateDeNaissance"":""2007-12-09"",""sexe"":""m"",""lieuDeNaissance"":""92073""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Dupont"",
+  ""prenom"": ""Nouhe"",
+  ""dateNaissance"": ""2007-12-09"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-12-01"",
+      ""dateFinInscription"": ""2026-12-10"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Dupré Hind,"{""nom"":""Dupré"",""prenom"":""Hind"",""dateDeNaissance"":""2000-12-08"",""sexe"":""f"",""lieuDeNaissance"":""99138""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Dupré"",
+  ""prenom"": ""Hind"",
+  ""dateNaissance"": ""2000-12-08"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Garuba Feryel,"{""nom"":""Garuba"",""prenom"":""Feryel"",""dateDeNaissance"":""2001-01-11"",""sexe"":""f"",""lieuDeNaissance"":""99331""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Garuba"",
+  ""prenom"": ""Feryel"",
+  ""dateNaissance"": ""2001-01-11"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-09-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Hamilton Nicole,"{""nom"":""Hamilton"",""prenom"":""Nicole"",""dateDeNaissance"":""2002-07-18"",""sexe"":""f"",""lieuDeNaissance"":""75113""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Hamilton"",
+  ""prenom"": ""Nicole"",
+  ""dateNaissance"": ""2002-07-18"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""IBARRA"",""prenom"":""JENNYFER"",""dateDeNaissance"":""2004-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""IBARRA"",
+  ""prenom"": ""JENNYFER"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-01-01"",
+      ""dateFinInscription"": ""2025-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0361113W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""IZAK"",""prenom"":""John"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""IZAK"",
+  ""prenom"": ""John"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331313W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Lenovo Charles,"{""nom"":""Lenovo"",""prenom"":""Charles"",""dateDeNaissance"":""2001-01-10"",""sexe"":""m"",""lieuDeNaissance"":""67482""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Lenovo"",
+  ""prenom"": ""Charles"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""LETERIEN"",""prenom"":""Clémentine"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":""99404""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""LETERIEN"",
+  ""prenom"": ""Clémentine"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""DE JEAN"",""prenom"":""LUC"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""99352""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""DE JEAN"",
+  ""prenom"": ""LUC"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Lunette Zahid,"{""nom"":""Lunette"",""prenom"":""Zahid"",""dateDeNaissance"":""2000-12-07"",""sexe"":""m"",""lieuDeNaissance"":""99241""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Lunette"",
+  ""prenom"": ""Zahid"",
+  ""dateNaissance"": ""2000-12-07"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2026-12-01"",
+      ""dateFinInscription"": ""2027-03-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""MAYVILLE"",""prenom"":""TINA"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""MAYVILLE"",
+  ""prenom"": ""Tina"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0366313W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""MEDIZ"",""prenom"":""Louis"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""MEDIZ"",
+  ""prenom"": ""Louis"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292613W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Etudiant inscrit,"{""nom"":""MONT-PARRAIN"",""prenom"":""Lisa"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":""99109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""MONT-PARRAIN"",
+  ""prenom"": ""Lisa"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Nom Narjes,"{""nom"":""Nom"",""prenom"":""Narjes"",""dateDeNaissance"":""2006-01-06"",""sexe"":""f"",""lieuDeNaissance"":""99424""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Nom"",
+  ""prenom"": ""Narjes"",
+  ""dateNaissance"": ""2006-01-06"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Pereira Maoris,"{""nom"":""Pereira"",""prenom"":""Maoris"",""dateDeNaissance"":""2002-08-05"",""sexe"":""m"",""lieuDeNaissance"":""99131""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Pereira"",
+  ""prenom"": ""Maoris"",
+  ""dateNaissance"": ""2002-08-05"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-10"",
+      ""dateFinInscription"": ""2025-10-10"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RAMSON ASSYA,"{""nom"":""RAMSON"",""prenom"":""ASSYA"",""dateDeNaissance"":""2001-03-12"",""sexe"":""f"",""lieuDeNaissance"":""75112""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RAMSON"",
+  ""prenom"": ""ASSYA"",
+  ""dateNaissance"": ""2001-03-12"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Randri Ishan,"{""nom"":""Randri"",""prenom"":""Ishan"",""dateDeNaissance"":""2003-06-17"",""sexe"":""m"",""lieuDeNaissance"":""75112""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Randri"",
+  ""prenom"": ""Ishan"",
+  ""dateNaissance"": ""2003-06-17"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR ARNAUD,"{""nom"":""RLUHDEFKWR"",""prenom"":""ARNAUD"",""dateDeNaissance"":""2001-01-10"",""sexe"":""m"",""lieuDeNaissance"":""97206""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""ARNAUD"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR AUDE,"{""nom"":""RLUHDEFKWR"",""prenom"":""AUDE"",""dateDeNaissance"":""2001-01-10"",""sexe"":""f"",""lieuDeNaissance"":""92073""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""AUDE"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2027-01-01"",
+      ""dateFinInscription"": ""2027-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR CORENTIN,"{""nom"":""RLUHDEFKWR"",""prenom"":""CORENTIN"",""dateDeNaissance"":""2001-01-10"",""sexe"":""m"",""lieuDeNaissance"":""97120""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""CORENTIN"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR ELISE,"{""nom"":""RLUHDEFKWR"",""prenom"":""ELISE"",""dateDeNaissance"":""2001-01-10"",""sexe"":""f"",""lieuDeNaissance"":""75105""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""ELISE"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR FLAVIEN,"{""nom"":""RLUHDEFKWR"",""prenom"":""FLAVIEN"",""dateDeNaissance"":""2001-01-15"",""sexe"":""m"",""lieuDeNaissance"":""75110""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""FLAVIEN"",
+  ""dateNaissance"": ""2001-01-15"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR ISABELLE,"{""nom"":""RLUHDEFKWR"",""prenom"":""ISABELLE"",""dateDeNaissance"":""2001-01-13"",""sexe"":""f"",""lieuDeNaissance"":""69123""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""ISABELLE"",
+  ""dateNaissance"": ""2001-01-13"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR NATHANAEL,"{""nom"":""RLUHDEFKWR"",""prenom"":""NATHANAEL"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75111""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""NATHANAEL"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR NOLAN,"{""nom"":""RLUHDEFKWR"",""prenom"":""NOLAN"",""dateDeNaissance"":""2001-06-11"",""sexe"":""m"",""lieuDeNaissance"":""93010""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""NOLAN"",
+  ""dateNaissance"": ""2001-06-11"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR PAUL,"{""nom"":""RLUHDEFKWR"",""prenom"":""PAUL"",""dateDeNaissance"":""2000-09-20"",""sexe"":""m"",""lieuDeNaissance"":""93010""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""PAUL"",
+  ""dateNaissance"": ""2000-09-20"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR PAULINE,"{""nom"":""RLUHDEFKWR"",""prenom"":""PAULINE"",""dateDeNaissance"":""2001-01-20"",""sexe"":""f"",""lieuDeNaissance"":""75113""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""PAULINE"",
+  ""dateNaissance"": ""2001-01-20"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit RLUHDEFKWR TERRENCE,"{""nom"":""RLUHDEFKWR"",""prenom"":""TERRENCE"",""dateDeNaissance"":""2001-01-10"",""sexe"":""m"",""lieuDeNaissance"":""59350""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""RLUHDEFKWR"",
+  ""prenom"": ""TERRENCE"",
+  ""dateNaissance"": ""2001-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit ROBINHO BAPTISTE,"{""nom"":""ROBINHO"",""prenom"":""BAPTISTE"",""dateDeNaissance"":""2001-01-12"",""sexe"":""m"",""lieuDeNaissance"":""99139""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""ROBINHO"",
+  ""prenom"": ""BAPTISTE"",
+  ""dateNaissance"": ""2001-01-12"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Ronaldo Marie Davida,"{""nom"":""Ronaldo"",""prenom"":""Marie Davida"",""dateDeNaissance"":""2001-05-16"",""sexe"":""f"",""lieuDeNaissance"":""75111""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Ronaldo"",
+  ""prenom"": ""Marie Davida"",
+  ""dateNaissance"": ""2001-05-16"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Sales Lisa,"{""nom"":""Sales"",""prenom"":""Lisa"",""dateDeNaissance"":""2000-02-12"",""sexe"":""f"",""lieuDeNaissance"":""97120""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Sales"",
+  ""prenom"": ""Lisa"",
+  ""dateNaissance"": ""2000-02-12"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""YOLAN"",""prenom"":""JOHN"",""dateDeNaissance"":""2007-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""YOLAN"",
+  ""prenom"": ""JOHN"",
+  ""dateNaissance"": ""2007-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-09-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0320613W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit Zidane Hamid,"{""nom"":""Zidane"",""prenom"":""Hamid"",""dateDeNaissance"":""2005-12-13"",""sexe"":""m"",""lieuDeNaissance"":""97206""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Zidane"",
+  ""prenom"": ""Hamid"",
+  ""dateNaissance"": ""2005-12-13"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-10-01"",
+      ""dateFinInscription"": ""2026-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant formation continue AUTORBB DAVID,"{""nom"":""AUTORBB"",""prenom"":""DAVID"",""dateDeNaissance"":""2001-02-05"",""sexe"":""m"",""lieuDeNaissance"":""99241""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""AUTORBB"",
+  ""prenom"": ""DAVID"",
+  ""dateNaissance"": ""2001-02-05"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation continue""
+    }
+  ]
+}"
+,Étudiant formation continue Capeta Ana,"{""nom"":""Capeta"",""prenom"":""Ana"",""dateDeNaissance"":""2001-05-30"",""sexe"":""f"",""lieuDeNaissance"":""99208""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Capeta"",
+  ""prenom"": ""Ana"",
+  ""dateNaissance"": ""2001-05-30"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation continue""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""COLONEL"",""prenom"":""Jean"",""dateDeNaissance"":""2005-08-01"",""sexe"":""m"",""lieuDeNaissance"":""78646""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""COLONEL"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2005-08-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""93430"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": "" Université Sorbonne Paris Nord""
+      },
+      ""regime"": ""formation continue""
+    }
+  ]
+}"
+,FranceConnect: étudiant inscrit,"{""given_name"":""Jean"",""family_name"":""MESRI"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002""}",200,"{
+  ""ine"": ""1234567890T"",
+  ""nomFamille"": ""Mesri"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2002-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,FranceConnect: étudiant inscrit,"{""given_name"":""Thomas"",""family_name"":""Delatour"",""birthdate"":""1994-04-16"",""gender"":""male"",""birthplace"":""75111"",""prenoms"":[""Thomas""],""nomNaissance"":""Delatour"",""nomUsage"":""Delamouette"",""anneeDateDeNaissance"":1994,""moisDateDeNaissance"":4,""jourDateDeNaissance"":16,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75111"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+  ""ine"": ""1234567890T"",
+  ""nomFamille"": ""Mesri"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2002-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,FranceConnect: étudiant inscrit,"{""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107""}",200,"{
+  ""ine"": ""1234567890T"",
+  ""nomFamille"": ""DUBOIS"",
+  ""prenom"": ""Angela Claire Louise"",
+  ""dateNaissance"": ""1962-08-24"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit (appel par INE),"{""ine"":""1234567890A""}",200,"{
+  ""ine"": ""1234567890A"",
+  ""nomFamille"": ""Dupont"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2002-02-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-09-01"",
+      ""dateFinInscription"": ""2021-06-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33199"",
+      ""etablissement"": {
+        ""uai"": ""0332870R"",
+        ""nomEtablissement"": ""LPO LYCEE DES METIERS DE LA MER""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 0100007108D inscrit (appel par INE),"{""ine"":""0100007108D""}",200,"{
+  ""ine"": ""0100007108D"",
+  ""nom"": ""MARTIN"",
+  ""prenom"": ""Jeanne"",
+  ""dateNaissance"": ""2001-11-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-08-01"",
+      ""dateFinInscription"": ""2025-09-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 0100008010J inscrit (appel par INE),"{""ine"":""0100008010J""}",200,"{
+  ""ine"": ""0100008010J"",
+  ""nom"": ""Petit"",
+  ""prenom"": ""Thomas"",
+  ""dateNaissance"": ""2000-02-12"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2019-02-16"",
+      ""dateFinInscription"": ""2021-05-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 012345678AA inscrit (appel par INE),"{""ine"":""012345678AA""}",200,"{
+  ""ine"": ""012345678AA"",
+  ""nom"": ""DUBOIS"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2003-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-09-11"",
+      ""dateFinInscription"": ""2022-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567890B inscrit (appel par INE), année scolaire 2022 à Toulouse","{""ine"":""1234567890B""}",200,"{
+  ""ine"": ""1234567890B"",
+  ""nom"": ""Longchambon"",
+  ""prenom"": ""Thomas"",
+  ""dateNaissance"": ""2001-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2022-09-01"",
+      ""dateFinInscription"": ""2023-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567890C inscrit (appel par INE), année scolaire 2023 à Toulouse","{""ine"":""1234567890C""}",200,"{
+  ""ine"": ""1234567890C"",
+  ""nom"": ""Charbonneau"",
+  ""prenom"": ""Axelle"",
+  ""dateNaissance"": ""2001-01-02"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-09-01"",
+      ""dateFinInscription"": ""2024-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567890D inscrit (appel par INE), année scolaire 2023 à Toulouse","{""ine"":""1234567890D""}",200,"{
+  ""ine"": ""1234567890D"",
+  ""nom"": ""Montgomery"",
+  ""prenom"": ""Marie"",
+  ""dateNaissance"": ""2001-01-03"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-09-01"",
+      ""dateFinInscription"": ""2024-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567890E inscrit (appel par INE), année scolaire 2023 à Paris","{""ine"":""1234567890E""}",200,"{
+  ""ine"": ""1234567890E"",
+  ""nom"": ""Granet"",
+  ""prenom"": ""Cyril"",
+  ""dateNaissance"": ""2001-01-04"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-09-01"",
+      ""dateFinInscription"": ""2024-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567890F inscrit (appel par INE), année scolaire 2024 à Toulouse","{""ine"":""1234567890F""}",200,"{
+  ""ine"": ""1234567890F"",
+  ""nom"": ""Le Tonnelier"",
+  ""prenom"": ""Pierre-Marie"",
+  ""dateNaissance"": ""2001-01-03"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567891A inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891A""}",200,"{
+  ""ine"": ""1234567891A"",
+  ""nom"": ""Simon"",
+  ""prenom"": ""Lilian"",
+  ""dateNaissance"": ""2005-01-03"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567891B inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891B""}",200,"{
+  ""ine"": ""1234567891B"",
+  ""nom"": ""Bel aalia"",
+  ""prenom"": ""Sahra"",
+  ""dateNaissance"": ""2005-01-03"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567891C inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891C""}",200,"{
+  ""ine"": ""1234567891C"",
+  ""nom"": ""Vaillancourt"",
+  ""prenom"": ""Gael"",
+  ""dateNaissance"": ""1999-06-21"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 1234567891D inscrit (appel par INE), année scolaire 2025 à Toulouse","{""ine"":""1234567891D""}",200,"{
+  ""ine"": ""1234567891D"",
+  ""nom"": ""Puges"",
+  ""prenom"": ""Aurelie"",
+  ""dateNaissance"": ""1999-06-21"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-09-01"",
+      ""dateFinInscription"": ""2026-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""31555"",
+      ""etablissement"": {
+        ""uai"": ""0313124C"",
+        ""nomEtablissement"": ""Université Toulouse Capitole""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 655888578AE inscrit (appel par INE),"{""ine"":""655888578AE""}",200,"{
+  ""ine"": ""655888578AE"",
+  ""nom"": ""KOSAKAMI"",
+  ""prenom"": ""Korako"",
+  ""dateNaissance"": ""2002-10-13"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-06-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,"Étudiant 660309901AG inscrit (appel par INE), ne renvoie pas d'INE","{""ine"":""660309901AG""}",200,"{
+  ""nom"": ""LEBRETON"",
+  ""prenom"": ""Arnaud"",
+  ""dateNaissance"": ""1988-09-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-06-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 675773666AD inscrit (appel par INE),"{""ine"":""675773666AD""}",200,"{
+  ""ine"": ""675773666AD"",
+  ""nom"": ""Moreau"",
+  ""prenom"": ""Aurélie"",
+  ""dateNaissance"": ""2002-01-02"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-06-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 697720085AL inscrit (appel par INE) : erreur interne serveur,"{""ine"":""697720085AL""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Étudiant 697720085AO (appel par INE) : Étudiant non trouvé,"{""ine"":""697720085AO""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Student not found"",
+  ""message"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis""
+}"

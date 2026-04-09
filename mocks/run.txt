@@ -1,0 +1,1030 @@
+Found 6 curl examples in api_entreprise_v3_insee_unites_legales
+
+❌ Command failed in api_entreprise_v3_insee_unites_legales
+Testing: personne_physique_non-diffusible.yaml
+Context: Personne physique (PP) - non diffusible
+Expected status: 200, Actual status: 404
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350042925"
+
+Output:
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:39 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 202
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 250
+ratelimit-remaining: 201
+ratelimit-reset: 1742984820
+cache-control: no-cache
+x-request-id: 484a4a72-1528-4e91-abcd-b28850f9daa5
+x-runtime: 0.016895
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"01003","title":"Entité non trouvée","detail":"L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.","meta":{"provider":"INSEE"}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   202  100   202    0     0   1811      0 --:--:-- --:--:-- --:--:--  1819
+NOTE: YAML file 'personne_physique_non-diffusible.yaml' has status 200
+Found 6 curl examples in api_entreprise_v3_insee_unites_legales_diffusables
+Found 4 curl examples in api_entreprise_v3_qualifelec_certificats
+Found 3 curl examples in api_entreprise_v4_acoss_attestations_sociales
+
+❌ Command failed in api_entreprise_v4_acoss_attestations_sociales
+Testing: attestation_delivree.yaml
+Context: Entreprise à jour de ses cotisations
+Expected status: 200, Actual status: 422
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v4/urssaf/unites_legales/000000001/attestation_vigilance"
+
+Output:
+HTTP/1.1 422 Unprocessable Content
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:41 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 166
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 100
+ratelimit-remaining: 97
+ratelimit-reset: 1742984820
+cache-control: no-cache
+x-request-id: edd8d914-e5cb-4b2e-adbe-34ad13025599
+x-runtime: 0.020999
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"00301","title":"Entité non traitable","detail":"Le numéro de siren n'est pas correctement formatté","source":{"parameter":"siren"},"meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   166  100   166    0     0   1412      0 --:--:-- --:--:-- --:--:--  1418
+NOTE: YAML file 'attestation_delivree.yaml' has status 200
+Found 3 curl examples in api_entreprise_v4_mi_unites_legales
+Found 4 curl examples in api_entreprise_v4_mi_unites_legales_open_data
+Found 22 curl examples in api_particulier_v2_cnaf_quotient_familial
+Found 7 curl examples in api_particulier_v2_cnav_allocation_adulte_handicape
+
+❌ Command failed in api_particulier_v2_cnav_allocation_adulte_handicape
+Testing: fake_france_connect_cnaf.yml
+Context: Cas de test avec jeton FranceConnect. Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml). L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+Expected status: 200, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-adulte-handicape?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:45 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 120
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+cache-control: no-cache
+x-request-id: 5861857b-d97f-4bfd-bb70-932654c110f0
+x-runtime: 0.532992
+Strict-Transport-Security: max-age=63072000
+
+{"error":"access_denied","reason":"Le jeton d'accès est mal formaté.","message":"Le jeton d'accès est mal formaté."}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   120  100   120    0     0    192      0 --:--:-- --:--:-- --:--:--   192100   120  100   120    0     0    192      0 --:--:-- --:--:-- --:--:--   192
+NOTE: YAML file 'fake_france_connect_cnaf.yml' has status 200
+Found 7 curl examples in api_particulier_v2_cnav_allocation_soutien_familial
+
+❌ Command failed in api_particulier_v2_cnav_allocation_soutien_familial
+Testing: fake_france_connect_cnaf.yml
+Context: Cas de test avec jeton FranceConnect. Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml). L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+Expected status: 200, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-soutien-familial?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:47 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 120
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+cache-control: no-cache
+x-request-id: 5993db5d-005f-4e21-8f64-c144616db087
+x-runtime: 0.417238
+Strict-Transport-Security: max-age=63072000
+
+{"error":"access_denied","reason":"Le jeton d'accès est mal formaté.","message":"Le jeton d'accès est mal formaté."}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   120  100   120    0     0    191      0 --:--:-- --:--:-- --:--:--   191
+NOTE: YAML file 'fake_france_connect_cnaf.yml' has status 200
+Found 35 curl examples in api_particulier_v2_cnav_complementaire_sante_solidaire
+
+❌ Command failed in api_particulier_v2_cnav_complementaire_sante_solidaire
+Testing: 200-beneficiaire_sans_participation-masculin-pays_etranger.yaml
+Context: ## Bénéficiaire SANS participation financière - masculin - né dans un pays étranger Ce cas permet de tester : - [Param. appel] Pays de naissance autre que la France - [Param. appel] sexe masculin - [Param. appel] Deux prénoms - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
+Expected status: 200, Actual status: 404
+
+Failed command:
+curl -i -H "X-Api-Key: eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'codeInseeLieuDeNaissance=08481' -d 'codePaysLieuDeNaissance=99127' -d 'sexe=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateDeNaissance=1984' -d 'moisDateDeNaissance=12' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+
+Output:
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:47 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 178
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 18
+ratelimit-reset: 1742984808
+cache-control: no-cache
+x-request-id: 5d338e62-8f16-4ce7-8084-b418f7984e2a
+x-runtime: 0.016720
+Strict-Transport-Security: max-age=63072000
+
+{"error":"not_found","reason":"Dossier allocataire inexistant. Le document ne peut être édité.","message":"Dossier allocataire inexistant. Le document ne peut être édité."}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   178  100   178    0     0   1692      0 --:--:-- --:--:-- --:--:--  1679
+NOTE: YAML file '200-beneficiaire_sans_participation-masculin-pays_etranger.yaml' has status 200
+Found 8 curl examples in api_particulier_v2_cnav_prime_activite
+
+❌ Command failed in api_particulier_v2_cnav_prime_activite
+Testing: fake_france_connect_cnaf.yml
+Context: Cas de test avec jeton FranceConnect. Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml). L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+Expected status: 200, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:48 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 120
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+cache-control: no-cache
+x-request-id: 44159fbb-d01e-4ce7-bc67-410350d6ca14
+x-runtime: 0.405705
+Strict-Transport-Security: max-age=63072000
+
+{"error":"access_denied","reason":"Le jeton d'accès est mal formaté.","message":"Le jeton d'accès est mal formaté."}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   120  100   120    0     0    238      0 --:--:-- --:--:-- --:--:--   238100   120  100   120    0     0    238      0 --:--:-- --:--:-- --:--:--   238
+NOTE: YAML file 'fake_france_connect_cnaf.yml' has status 200
+Found 41 curl examples in api_particulier_v2_cnav_quotient_familial_v2
+
+❌ Command failed in api_particulier_v2_cnav_quotient_familial_v2
+Testing: 200-couple-2_enfants-cas-etranger-qf_msa_600.yaml
+Context: ## IDENTITÉ CAS ETRANGER - Date de naissance inconnue - QF CAF en cours de 600 - avec un second allocataire et deux enfants Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite. Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres et la réponse lorsque celui ci est trouvé.
+Expected status: 200, Actual status: 400
+
+Failed command:
+curl -i -H "X-Api-Key: eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'codePaysLieuDeNaissance=99351' -d 'sexe=M' -d 'nomNaissange=TOUNSI' -d 'prenoms[]=HOUSSEM' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+
+Output:
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:48 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 112
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 17
+ratelimit-reset: 1742984809
+cache-control: no-cache
+x-request-id: 6203a17b-02d0-4c6a-9b94-c8fb2c500699
+x-runtime: 0.008644
+Strict-Transport-Security: max-age=63072000
+
+{"error":"bad_request","reason":"Le nom de naissance est manquant","message":"Le nom de naissance est manquant"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   112  100   112    0     0    964      0 --:--:-- --:--:-- --:--:--   973
+NOTE: YAML file '200-couple-2_enfants-cas-etranger-qf_msa_600.yaml' has status 200
+Found 8 curl examples in api_particulier_v2_cnav_revenu_solidarite_active
+
+❌ Command failed in api_particulier_v2_cnav_revenu_solidarite_active
+Testing: fake_france_connect_cnaf.yml
+Context: Cas de test avec jeton FranceConnect. Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml). L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+Expected status: 200, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/revenu-solidarite-active?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:50 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 120
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+cache-control: no-cache
+x-request-id: a52c18e7-612c-488d-ab8f-ba54c8cc34a7
+x-runtime: 0.394226
+Strict-Transport-Security: max-age=63072000
+
+{"error":"access_denied","reason":"Le jeton d'accès est mal formaté.","message":"Le jeton d'accès est mal formaté."}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   120  100   120    0     0    244      0 --:--:-- --:--:-- --:--:--   244
+NOTE: YAML file 'fake_france_connect_cnaf.yml' has status 200
+Found 13 curl examples in api_particulier_v2_cnous_student_scholarship
+
+❌ Command failed in api_particulier_v2_cnous_student_scholarship
+Testing: 409.yaml
+Context: Plusieurs identités ont été trouvé avec ces paramètres d'appels
+Expected status: 409, Actual status: 404
+
+Failed command:
+curl -i -H "X-Api-Key: eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'nom=Homonyme' -d 'prenoms=St%C3%A9phanie' -d 'dateDeNaissance=1995-01-01' -d 'lieuDeNaissance=75001' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+
+Output:
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:50 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 152
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 18
+ratelimit-reset: 1742984811
+cache-control: no-cache
+x-request-id: cdb6499b-825a-4b64-a80a-80bb2c00c3f4
+x-runtime: 0.019291
+Strict-Transport-Security: max-age=63072000
+
+{"error":"not_found","reason":"Scholarship not found","message":"Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   152  100   152    0     0   1179      0 --:--:-- --:--:-- --:--:--  1187
+NOTE: YAML file '409.yaml' has status 409
+Found 5 curl examples in api_particulier_v2_men_scolarites
+Found 41 curl examples in api_particulier_v2_mesri_student_status
+
+❌ Command failed in api_particulier_v2_mesri_student_status
+Testing: civility_etudiant_inscrit_leterien_clementine.yml
+Context: Étudiant inscrit
+Expected status: 200, Actual status: 400
+
+Failed command:
+curl -i -H "X-Api-Key: eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'nom=LETERIEN' -d 'prenom=Cl%C3%A9mentine' -d 'dateDeNaissance=2000-01-01' -d 'sexe=f' -d 'lieuDeNaissance=+99404' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+
+Output:
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:53 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 152
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 18
+ratelimit-reset: 1742984814
+cache-control: no-cache
+x-request-id: 695b9810-2619-4506-8a9e-4af8d58aa17b
+x-runtime: 0.008986
+Strict-Transport-Security: max-age=63072000
+
+{"error":"bad_request","reason":"Le lieu de naissance n'est pas correctement formaté","message":"Le lieu de naissance n'est pas correctement formaté"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   152  100   152    0     0   1114      0 --:--:-- --:--:-- --:--:--  1117
+NOTE: YAML file 'civility_etudiant_inscrit_leterien_clementine.yml' has status 200
+Found 2 curl examples in api_particulier_v2_pole_emploi_indemnites
+Found 5 curl examples in api_particulier_v2_pole_emploi_statut
+Found 6 curl examples in api_particulier_v3_cnav_allocation_adulte_handicape_with_civility
+Found 4 curl examples in api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect
+Testing: 404.yaml
+Context: ## Allocataire non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:55 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984816
+cache-control: no-cache
+x-request-id: 96aec6c7-7722-4088-a6ce-eac3e631616f
+x-runtime: 0.272267
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    310      0 --:--:-- --:--:-- --:--:--   309100   117  100   117    0     0    310      0 --:--:-- --:--:-- --:--:--   309
+NOTE: YAML file '404.yaml' has status 404
+Found 6 curl examples in api_particulier_v3_cnav_allocation_soutien_familial_with_civility
+Found 4 curl examples in api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect
+Testing: 404.yaml
+Context: ## Allocataire non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:57 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984817
+cache-control: no-cache
+x-request-id: c62d90a3-471a-45c6-862f-c04e97cc9621
+x-runtime: 0.360829
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    239      0 --:--:-- --:--:-- --:--:--   240
+NOTE: YAML file '404.yaml' has status 404
+Found 18 curl examples in api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility
+
+❌ Command failed in api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility
+Testing: 200-beneficiaire_sans_participation-masculin-pays_etranger.yaml
+Context: ## Bénéficiaire SANS participation financière - masculin - né dans un pays étranger Ce cas permet de tester : - [Param. appel] Pays de naissance autre que la France - [Param. appel] sexe masculin - [Param. appel] Deux prénoms - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
+Expected status: 200, Actual status: 404
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08481' -d 'codeCogInseePaysNaissance=99127' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1984' -d 'moisDateNaissance=12' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
+
+Output:
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:57 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 179
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 18
+ratelimit-reset: 1742984818
+cache-control: no-cache
+x-request-id: 57c6d5bf-4646-4b1d-9e51-a8a3fc3f6ba3
+x-runtime: 0.022239
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"37003","title":"Entité non trouvée","detail":"Dossier allocataire inexistant. Le document ne peut être édité.","source":null,"meta":{"provider":"CNAV"}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   179  100   179    0     0   1504      0 --:--:-- --:--:-- --:--:--  1516
+NOTE: YAML file '200-beneficiaire_sans_participation-masculin-pays_etranger.yaml' has status 200
+Found 4 curl examples in api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect
+Testing: 404.yaml
+Context: ## Allocataire non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:57 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984818
+cache-control: no-cache
+x-request-id: 9f6cd598-68a3-4d24-836b-9102367ddfff
+x-runtime: 0.332856
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    215      0 --:--:-- --:--:-- --:--:--   215100   117  100   117    0     0    215      0 --:--:-- --:--:-- --:--:--   215
+NOTE: YAML file '404.yaml' has status 404
+Found 5 curl examples in api_particulier_v3_cnav_participation_familial_psu_with_civility
+
+❌ Command failed in api_particulier_v3_cnav_participation_familial_psu_with_civility
+Testing: 200-identite-cas-nominal.yaml
+Context: ## IDENTITÉ CAS NOMINAL Ce cas est le cas nominal de l'ensemble des cas de test d'identité/limite. Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres et la réponse lorsque celui ci est trouvé. Vous trouverez des variations des paramètres d'entré ainsi que les différents cas d'erreur selon les informations que vous fournirez.
+Expected status: 200, Actual status: 403
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=12' -d 'jourDateNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/identite"
+
+Output:
+HTTP/1.1 403 Forbidden
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:58 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 222
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984819
+cache-control: no-cache
+x-request-id: b3b1d823-9657-4d65-a2a5-f783f92c63f1
+x-runtime: 0.007131
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"00100","title":"Privilèges insuffisants","detail":"Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /api/introspect","source":{"parameter":"token"},"meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   222  100   222    0     0   1803      0 --:--:-- --:--:-- --:--:--  1804
+NOTE: YAML file '200-identite-cas-nominal.yaml' has status 200
+Found 4 curl examples in api_particulier_v3_cnav_participation_familial_psu_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_participation_familial_psu_with_france_connect
+Testing: 404.yaml
+Context: Dossier non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:58 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984819
+cache-control: no-cache
+x-request-id: e702b354-b840-4a44-8225-8ddeeedf061d
+x-runtime: 0.138980
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    323      0 --:--:-- --:--:-- --:--:--   324
+NOTE: YAML file '404.yaml' has status 404
+Found 7 curl examples in api_particulier_v3_cnav_prime_activite_with_civility
+Found 4 curl examples in api_particulier_v3_cnav_prime_activite_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_prime_activite_with_france_connect
+Testing: 404.yaml
+Context: ## Allocataire non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/prime_activite/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:26:59 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984820
+cache-control: no-cache
+x-request-id: f744ca9b-7ebc-4d41-ac73-1c585e48ced0
+x-runtime: 0.329469
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    217      0 --:--:-- --:--:-- --:--:--   217
+NOTE: YAML file '404.yaml' has status 404
+Found 19 curl examples in api_particulier_v3_cnav_quotient_familial_with_civility
+Found 8 curl examples in api_particulier_v3_cnav_quotient_familial_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_quotient_familial_with_france_connect
+Testing: 404.yaml
+Context: Dossier non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:03 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984823
+cache-control: no-cache
+x-request-id: 7ae32fc3-2f96-4bd0-b7a6-d484548ec76c
+x-runtime: 0.283577
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    263      0 --:--:-- --:--:-- --:--:--   264
+NOTE: YAML file '404.yaml' has status 404
+Found 7 curl examples in api_particulier_v3_cnav_revenu_solidarite_active_with_civility
+
+❌ Command failed in api_particulier_v3_cnav_revenu_solidarite_active_with_civility
+Testing: 429.yaml
+Context: ## Allocataire non trouvé
+Expected status: 429, Actual status: 404
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DESFOUIN' -d 'prenoms[]=Ren%C3%A9' -d 'anneeDateDaissance=2002' -d 'moisDateDaissance=12' -d 'jourDateDaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/revenu_solidarite_active/identite"
+
+Output:
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:03 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 179
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 15
+ratelimit-reset: 1742984824
+cache-control: no-cache
+x-request-id: f808ebe3-3df6-445d-8c8a-c802f5d08e36
+x-runtime: 0.019703
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"37003","title":"Entité non trouvée","detail":"Dossier allocataire inexistant. Le document ne peut être édité.","source":null,"meta":{"provider":"CNAV"}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   179  100   179    0     0   1638      0 --:--:-- --:--:-- --:--:--  1642
+NOTE: YAML file '429.yaml' has status 429
+Found 4 curl examples in api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect
+Testing: 404.yaml
+Context: ## Allocataire non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/revenu_solidarite_active/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:04 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984825
+cache-control: no-cache
+x-request-id: 14cc7500-6725-4b29-b335-569e3b0d5a74
+x-runtime: 0.289506
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    273      0 --:--:-- --:--:-- --:--:--   273
+NOTE: YAML file '404.yaml' has status 404
+Found 2 curl examples in api_particulier_v3_cnous_etudiant_boursier_with_civility
+
+❌ Command failed in api_particulier_v3_cnous_etudiant_boursier_with_civility
+Testing: 404.yaml
+Context: Dossier non trouvé
+Expected status: 404, Actual status: 422
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=NOEL' \
+    --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/identite"
+
+Output:
+HTTP/1.1 422 Unprocessable Content
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:04 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 216
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984825
+cache-control: no-cache
+x-request-id: 809c44f5-a840-4c82-8b7f-5d1b41df2edf
+x-runtime: 0.014170
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"00421","title":"Entité non traitable","detail":"Le(s) prenom(s) est manquant","meta":{}},{"code":"00422","title":"Entité non traitable","detail":"L'annee de naissance est manquante","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   216  100   216    0     0   1964      0 --:--:-- --:--:-- --:--:--  1981
+NOTE: YAML file '404.yaml' has status 404
+Found 4 curl examples in api_particulier_v3_cnous_etudiant_boursier_with_france_connect
+
+❌ Command failed in api_particulier_v3_cnous_etudiant_boursier_with_france_connect
+Testing: 404.yaml
+Context: Dossier non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:04 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 18
+ratelimit-reset: 1742984825
+cache-control: no-cache
+x-request-id: 48bb2339-3e3a-4fd9-882b-9329b4a57b2e
+x-runtime: 0.275978
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    239      0 --:--:-- --:--:-- --:--:--   239
+NOTE: YAML file '404.yaml' has status 404
+Found 5 curl examples in api_particulier_v3_cnous_etudiant_boursier_with_ine
+
+❌ Command failed in api_particulier_v3_cnous_etudiant_boursier_with_ine
+Testing: 404.yaml
+Context: Dossier non trouvé
+Expected status: 404, Actual status: 422
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=NOEL' \
+    --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
+
+Output:
+HTTP/1.1 422 Unprocessable Content
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:05 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 132
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984826
+cache-control: no-cache
+x-request-id: 5467b0ce-29b7-4b36-9980-b22b5030b73b
+x-runtime: 0.014184
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"00360","title":"Entité non traitable","detail":"Le numéro d'INE n'est pas correctement formatté","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   132  100   132    0     0   1086      0 --:--:-- --:--:-- --:--:--  1090
+NOTE: YAML file '404.yaml' has status 404
+Found 2 curl examples in api_particulier_v3_france_travail_indemnites_with_identifiant
+Found 2 curl examples in api_particulier_v3_france_travail_statut_with_identifiant
+Found 3 curl examples in api_particulier_v3_men_scolarites_with_civility
+
+❌ Command failed in api_particulier_v3_men_scolarites_with_civility
+Testing: 504.yaml
+Context: Erreur serveur
+Expected status: 504, Actual status: 422
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Faure' -d 'prenoms[]=Felix' -d 'sexe=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    --url "https://staging.particulier.api.gouv.fr/v3/men/scolarites/identite"
+
+Output:
+HTTP/1.1 422 Unprocessable Content
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:05 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 120
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984827
+cache-control: no-cache
+x-request-id: 03fa0766-ff5a-429b-8213-988484293a34
+x-runtime: 0.008708
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"00427","title":"Entité non traitable","detail":"Le sexe de l'état civil est manquant","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   120  100   120    0     0   1102      0 --:--:-- --:--:-- --:--:--  1111
+NOTE: YAML file '504.yaml' has status 504
+Found 22 curl examples in api_particulier_v3_mesri_statut_etudiant_with_civility
+
+❌ Command failed in api_particulier_v3_mesri_statut_etudiant_with_civility
+Testing: 404.yaml
+Context: Étudiant non trouvé
+Expected status: 404, Actual status: 422
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567404G' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
+
+Output:
+HTTP/1.1 422 Unprocessable Content
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:06 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 427
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+x-response-cached: false
+x-cache-expires-in: 
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 18
+ratelimit-reset: 1742984827
+cache-control: no-cache
+x-request-id: 805edbb6-f439-4200-80fe-a9c8344599d7
+x-runtime: 0.013443
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"00420","title":"Entité non traitable","detail":"Le nom de naissance est manquant","meta":{}},{"code":"00421","title":"Entité non traitable","detail":"Le(s) prenom(s) est manquant","meta":{}},{"code":"00422","title":"Entité non traitable","detail":"L'annee de naissance est manquante","meta":{}},{"code":"00427","title":"Entité non traitable","detail":"Le sexe de l'état civil est manquant","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   427  100   427    0     0   3909      0 --:--:-- --:--:-- --:--:--  3917
+NOTE: YAML file '404.yaml' has status 404
+Found 4 curl examples in api_particulier_v3_mesri_statut_etudiant_with_france_connect
+
+❌ Command failed in api_particulier_v3_mesri_statut_etudiant_with_france_connect
+Testing: 404.yaml
+Context: Étudiant non trouvé
+Expected status: 404, Actual status: 401
+
+Failed command:
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMjczYzEzZS1mOGYwLTQzYWYtYjZkMi1jMTMzMDNiNzg2ODIiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiYXR0ZXN0YXRpb25fY290aXNhdGlvbnNfY29uZ2VzX3BheWVzX2Nob21hZ2VfaW50ZW1wZXJpZXNfY2lidHBfY25ldHAiLCJlb3JpX2RvdWFuZXMiLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsIm1hbmRhdGFpcmVzX3NvY2lhdXhfaW5mb2dyZWZmZSIsImFjdGVzX2lucGkiLCJhc3NvY2lhdGlvbnNfZG9ubmVlc19wcm90ZWdlZXMiLCJhc3NvY2lhdGlvbnNfZGplcHZhIiwibXNhX2NvdGlzYXRpb25zIiwiY290aXNhdGlvbnNfbXNhIiwiY2VydGlmaWNhdGlvbl9vcHFpYmkiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImVmZmVjdGlmc191cnNzYWYiLCJiZW5lZmljaWFpcmVzX2VmZmVjdGlmc19pbnBpIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIiwicG9sZV9lbXBsb2lfaWRlbnRpZmlhbnQiLCJtZW5fc3RhdHV0X2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb24iLCJtZXNyaV9yZWdpbWUiXSwic3ViIjoic3RhZ2luZyIsImlhdCI6MTc0MTY5MDcwNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MjA1NzIyMzUwNH0.6ZZpYCgdPissUTRoQB4NXyNW2d12tL7ycdpDGn-Okjo%_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/france_connect?recipient=13002526500013"
+
+Output:
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:06 GMT
+Content-Type: application/vnd.api+json; charset=utf-8
+Content-Length: 117
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+ratelimit-limit: 20
+ratelimit-remaining: 19
+ratelimit-reset: 1742984827
+cache-control: no-cache
+x-request-id: 9f203e9b-db27-433b-aaa1-62760db53dda
+x-runtime: 0.325746
+Strict-Transport-Security: max-age=63072000
+
+{"errors":[{"code":"50001","title":"Accès non autorisé","detail":"Le jeton d'accès est mal formaté.","meta":{}}]}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   117  100   117    0     0    245      0 --:--:-- --:--:-- --:--:--   245100   117  100   117    0     0    245      0 --:--:-- --:--:-- --:--:--   245
+NOTE: YAML file '404.yaml' has status 404
+Found 13 curl examples in api_particulier_v3_mesri_statut_etudiant_with_ine
+Found 7 curl examples in france_connect
+
+❌ Command failed in france_connect
+Testing: all_fc.yml
+Context: Réponse FranceConnect permettant de déclencher l'ensemble des réponses aux apis france connectée
+Expected status: 200, Actual status: 404
+
+Failed command:
+curl -i -H "Authorization: Bearer all_fc" --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2?recipient=13002526500013"
+
+Output:
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Wed, 26 Mar 2025 10:27:08 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 73
+Connection: keep-alive
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept, Origin
+cache-control: no-cache
+x-request-id: 1f73186f-b80e-4af1-b7fb-30740eb8665f
+x-runtime: 0.004633
+Strict-Transport-Security: max-age=63072000
+
+Cette URL n'existe pas sur API particulier, veuillez vérifier votre URL.  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    73  100    73    0     0    649      0 --:--:-- --:--:-- --:--:--   646
+NOTE: YAML file 'all_fc.yml' has status 200
+
+===== Execution Summary =====
+Total commands executed: 240
+Successful executions: 212
+Failed executions: 28
+
+===== Failed Tests =====
+- api_entreprise_v3_dgfip_attestations_fiscales: 404.yaml (Expected: 404, Got: 422)
+- api_entreprise_v3_insee_unites_legales: personne_physique_non-diffusible.yaml (Expected: 200, Got: 404)
+- api_entreprise_v4_acoss_attestations_sociales: attestation_delivree.yaml (Expected: 200, Got: 422)
+- api_particulier_v2_cnav_allocation_adulte_handicape: fake_france_connect_cnaf.yml (Expected: 200, Got: 401)
+- api_particulier_v2_cnav_allocation_soutien_familial: fake_france_connect_cnaf.yml (Expected: 200, Got: 401)
+- api_particulier_v2_cnav_complementaire_sante_solidaire: 200-beneficiaire_sans_participation-masculin-pays_etranger.yaml (Expected: 200, Got: 404)
+- api_particulier_v2_cnav_prime_activite: fake_france_connect_cnaf.yml (Expected: 200, Got: 401)
+- api_particulier_v2_cnav_quotient_familial_v2: 200-couple-2_enfants-cas-etranger-qf_msa_600.yaml (Expected: 200, Got: 400)
+- api_particulier_v2_cnav_revenu_solidarite_active: fake_france_connect_cnaf.yml (Expected: 200, Got: 401)
+- api_particulier_v2_cnous_student_scholarship: 409.yaml (Expected: 409, Got: 404)
+- api_particulier_v2_mesri_student_status: civility_etudiant_inscrit_leterien_clementine.yml (Expected: 200, Got: 400)
+- api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility: 200-beneficiaire_sans_participation-masculin-pays_etranger.yaml (Expected: 200, Got: 404)
+- api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnav_participation_familial_psu_with_civility: 200-identite-cas-nominal.yaml (Expected: 200, Got: 403)
+- api_particulier_v3_cnav_participation_familial_psu_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnav_prime_activite_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnav_quotient_familial_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnav_revenu_solidarite_active_with_civility: 429.yaml (Expected: 429, Got: 404)
+- api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnous_etudiant_boursier_with_civility: 404.yaml (Expected: 404, Got: 422)
+- api_particulier_v3_cnous_etudiant_boursier_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- api_particulier_v3_cnous_etudiant_boursier_with_ine: 404.yaml (Expected: 404, Got: 422)
+- api_particulier_v3_men_scolarites_with_civility: 504.yaml (Expected: 504, Got: 422)
+- api_particulier_v3_mesri_statut_etudiant_with_civility: 404.yaml (Expected: 404, Got: 422)
+- api_particulier_v3_mesri_statut_etudiant_with_france_connect: 404.yaml (Expected: 404, Got: 401)
+- france_connect: all_fc.yml (Expected: 200, Got: 404)

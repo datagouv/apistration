@@ -1,0 +1,31 @@
+---
+description: |-
+  ## IDENTITÉ CAS NOMINAL
+
+  Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+  Les données concernant la date de naissance ont été retirée
+
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'LEFEBVRE'
+  prenoms:
+    - 'ALEXIS'
+    - 'GÉRÔME'
+    - 'JEAN-PHILIPPE'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Dossier allocataire absent CNAV",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,30 @@
+---
+description: |-
+  ## Enfant bénéficiaire AVEC participation financière - masculin (famille BERNANRD)
+  
+  Ce cas permet de tester :
+  - [Param. appel] enfant de la famille BERNANRD
+  - [Param. appel] sexe masculin
+  - [Param. appel] lieu de naissance en France (Marseille)
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
+params:
+  codeCogInseeCommuneNaissance: '13090'
+  codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
+  sexeEtatCivil: 'M'
+  nomNaissance: 'BERNANRD'
+  prenoms:
+    - 'MAXIME'
+  anneeDateNaissance: 2015
+  moisDateNaissance: 9
+  jourDateNaissance: 1
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2025-06-01"
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,25 @@
+name: "Mocks: Tests"
+
+defaults:
+  run:
+    working-directory: mocks
+
+on:
+  push:
+
+jobs:
+  tests:
+    name: Tests (RSpec)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: mocks
+
+      - name: Run tests
+        run: bundle exec rspec

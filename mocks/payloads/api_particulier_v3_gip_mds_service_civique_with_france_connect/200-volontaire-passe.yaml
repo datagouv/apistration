@@ -1,0 +1,41 @@
+---
+description: |-
+  ## ANCIEN VOLONTAIRE SERVICE CIVIQUE
+
+  Ce cas représente une personne ayant effectué un service civique par le passé.
+  Le contrat est terminé, la personne n'a pas de contrat actif.
+  Identité FranceConnect: Jean MERCIER.
+
+params:
+  prenoms:
+    - 'Jean'
+  nomNaissance: "MERCIER"
+  anneeDateNaissance: 1969
+  moisDateNaissance: 3
+  jourDateNaissance: 17
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": false,
+        "organisme_accueil": {
+          "siret": null,
+          "raison_sociale": null
+        },
+        "date_debut_contrat": null,
+        "date_fin_contrat": null
+      },
+      "statut_passe": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "77567227221138",
+          "raison_sociale": "CROIX ROUGE FRANCAISE"
+        },
+        "date_debut_contrat": "2022-01-10",
+        "date_fin_contrat": "2022-09-09"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

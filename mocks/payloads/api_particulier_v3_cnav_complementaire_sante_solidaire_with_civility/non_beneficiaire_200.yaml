@@ -1,0 +1,32 @@
+---
+description: |-
+  ## Non bénéficiaire - masculin
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] 1 prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe masculin
+  - [Param. appel] cog 
+  - [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100' # Code 99100 pour la France
+  sexeEtatCivil: 'M'
+  nomNaissance: 'PAULO'
+  prenoms:
+    - 'PAUL'
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {},
+    "meta": {}
+  }

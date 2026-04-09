@@ -1,0 +1,39 @@
+Titre,Description,Paramètres,Status,Réponse
+,Conventions collectives trouvées,"{""siret"":""30613890001294""}",200,"{
+  ""data"": [
+    {
+      ""data"": {
+        ""type"": ""convention_collective"",
+        ""titre"": ""Convention collective nationale des bureaux d'études techniques, des cabinets d'ingénieurs-conseils et des sociétés de conseils du 15 décembre 1987."",
+        ""titre_court"": ""Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils"",
+        ""numero_idcc"": 1486,
+        ""active"": true,
+        ""etat"": ""vigueur_etendue"",
+        ""synonymes"": [
+          ""syntec""
+        ],
+        ""url"": ""https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635173"",
+        ""date_publication"": ""1988-01-01""
+      },
+      ""links"": {},
+      ""meta"": {
+        ""internal_id"": ""KALICONT000005635173""
+      }
+    }
+  ],
+  ""links"": {},
+  ""meta"": {}
+}"
+,Établissement non trouvé,"{""siret"":""00000000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""35003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""Fabrique numérique des ministères sociaux""
+      }
+    }
+  ]
+}"

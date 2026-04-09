@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Allocataire non trouvé
+params:
+  nomNaissance: 'SITUDI'
+  prenoms:
+  - 'Clément'
+  anneeDateDaissance: 2002
+  moisDateDaissance: 12
+  jourDateDaissance: 5
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 504
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }

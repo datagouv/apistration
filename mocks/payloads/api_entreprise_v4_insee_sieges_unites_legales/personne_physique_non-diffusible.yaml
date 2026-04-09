@@ -1,0 +1,116 @@
+---
+description: 'Personne physique (PP) - non diffusible'
+params:
+  siren: '350042925'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "35004292500031",
+      "siege_social": true,
+      "etat_administratif": "A",
+      "date_fermeture": null,
+      "status_diffusion": "partiellement_diffusible",
+      "enseigne": null,
+      "activite_principale": {
+        "code": "74.10Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Activités spécialisées de design"
+      },
+      "activite_principale_naf_rev2": {
+        "code": "74.10Z",
+        "libelle": "Activités spécialisées de design",
+        "nomenclature": "NAFRev2"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": null,
+        "date_reference": null,
+        "intitule": null
+      },
+      "diffusable_commercialement": false,
+      "date_creation": 1396303200,
+      "unite_legale": {
+        "siren": "350042925",
+        "rna": null,
+        "siret_siege_social": "35004292500031",
+        "status_diffusion": "partiellement_diffusible",
+        "type": "personne_physique",
+        "personne_morale_attributs": {
+          "raison_sociale": null,
+          "sigle": null
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": null,
+          "prenom_usuel": "AURELIE",
+          "prenom_1": "AURELIE",
+          "prenom_2": "JAQUELINE",
+          "prenom_3": "NADIA",
+          "prenom_4": null,
+          "nom_usage": null,
+          "nom_naissance": "MOREAU",
+          "sexe": "F"
+        },
+        "categorie_entreprise": "PME",
+        "diffusable_commercialement": false,
+        "forme_juridique": {
+          "code": "1000",
+          "libelle": "Entrepreneur individuel"
+        },
+        "activite_principale": {
+          "code": "74.10Z",
+          "nomenclature": "NAFRev2",
+          "libelle": "Activités spécialisées de design"
+        },
+        "activite_principale_naf_rev2": {
+          "code": "74.10Z",
+          "libelle": "Activités spécialisées de design",
+          "nomenclature": "NAFRev2"
+        },
+        "tranche_effectif_salarie": {
+          "de": null,
+          "a": null,
+          "code": null,
+          "date_reference": null,
+          "intitule": null
+        },
+        "economie_sociale_et_solidaire": null,
+        "date_creation": 1326303200,
+        "etat_administratif": "A"
+      },
+      "adresse": {
+        "complement_adresse": null,
+        "numero_voie": "346",
+        "indice_repetition_voie": null,
+        "type_voie": "ALLÉE",
+        "libelle_voie": "DE LA PLAGE",
+        "code_postal": "16210",
+        "libelle_commune": "MEDILLAC",
+        "libelle_commune_etranger": null,
+        "distribution_speciale": null,
+        "code_commune": "16399",
+        "status_diffusion": "partiellement_diffusible",
+        "code_cedex": null,
+        "libelle_cedex": null,
+        "code_pays_etranger": null,
+        "libelle_pays_etranger": null,
+        "acheminement_postal": {
+          "l1": "",
+          "l2": "MOREAU AURELIE",
+          "l3": "",
+          "l4": "346 ALLÉE DE LA PLAGE",
+          "l5": "",
+          "l6": "16210 MEDILLAC",
+          "l7": "FRANCE"
+        }
+      }
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v4/insee/sirene/unites_legales/350042925"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 267038293600,
+      "redirect_from_siret": null
+    }
+  }

@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400112
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1700,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "MOULIN ANTOINE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOULIN ANTOINETTE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "MOULIN HUGO",
+        "dateDeNaissance": "05092005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOULIN ÉMILIE",
+        "dateDeNaissance": "05092005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "MOULIN ANTOINETTE & ANTOINE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }

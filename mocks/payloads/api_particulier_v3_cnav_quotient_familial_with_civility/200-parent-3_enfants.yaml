@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille avec trois enfants (boursier / non boursier / majeur)
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * la prise en compte de statuts différents (boursier, non boursier, enfant majeur)
+
+params:
+  codeCogInseeCommuneNaissance: '13055'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'MARTIN'
+  prenoms:
+    - 'PIERRE'
+  anneeDateNaissance: 1985
+  moisDateNaissance: 6
+  jourDateNaissance: 12
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "PIERRE",
+          "date_naissance": "1985-06-12",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "LUCAS",
+          "date_naissance": "2005-04-20",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "EMMA",
+          "date_naissance": "2012-08-15",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "NOAH",
+          "date_naissance": "2015-01-10",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur MARTIN PIERRE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "42 AVENUE DE LA RÉPUBLIQUE",
+        "lieu_dit": null,
+        "code_postal_ville": "13001 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1200,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

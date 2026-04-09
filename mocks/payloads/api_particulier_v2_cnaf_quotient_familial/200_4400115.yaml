@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400115
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1717,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "GAUTIER ÉMILIE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "GAUTIER SOAZIG",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "GAUTIER OCÉANE",
+        "dateDeNaissance": "05122005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "GAUTIER NOÉMIE",
+        "dateDeNaissance": "05122005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "GAUTIER SOAZIG & ÉMILIE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }

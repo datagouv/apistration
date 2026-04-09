@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille GIRAUD avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : GIRAUD Anne
+
+params:
+  codeCogInseeCommuneNaissance: '13002'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'GIRAUD'
+  prenoms:
+    - 'ANNE'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 12
+  jourDateNaissance: 1
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "GIRAUD",
+          "nom_usage": null,
+          "prenoms": "ANNE",
+          "date_naissance": "1988-12-01",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "GIRAUD",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2004-03-30",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "GIRAUD",
+          "nom_usage": null,
+          "prenoms": "SARAH",
+          "date_naissance": "2012-07-12",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "GIRAUD",
+          "nom_usage": null,
+          "prenoms": "LEA",
+          "date_naissance": "2018-11-25",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame GIRAUD ANNE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "8 BOULEVARD JEAN JAURÈS",
+        "lieu_dit": null,
+        "code_postal_ville": "13400 AUBAGNE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1200,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

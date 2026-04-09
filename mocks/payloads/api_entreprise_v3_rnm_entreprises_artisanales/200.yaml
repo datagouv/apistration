@@ -1,0 +1,14 @@
+---
+description: 'Entreprise artisanale trouvée'
+params:
+  siren: '552049447'
+status: 200
+payload: |-
+  {
+    "data": {
+      "modalite_exercice": "P",
+      "non_sedentaire": "0"
+    },
+    "links": {},
+    "meta": {}
+  }

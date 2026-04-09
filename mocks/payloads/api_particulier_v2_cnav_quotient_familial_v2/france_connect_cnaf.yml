@@ -1,0 +1,47 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms: 
+  - 'Angela' 
+  - 'Claire' 
+  - 'Louise'
+  nomNaissance: "DUBOIS"
+  anneeDateDeNaissance: 1962
+  moisDateDeNaissance: 8
+  jourDateDeNaissance: 24
+  sexe: "F"
+  codeInseeLieuDeNaissance: "75107"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsuel": null,
+        "prenoms": "ANGELA CLAIRE LOUISE",
+        "anneeDateDeNaissance": "1962",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [],
+    "adresse": {
+      "identite": "Madame DUBOIS ANGELA",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

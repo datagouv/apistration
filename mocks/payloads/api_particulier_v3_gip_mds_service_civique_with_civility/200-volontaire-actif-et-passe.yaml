@@ -1,0 +1,40 @@
+---
+description: |-
+  ## VOLONTAIRE AVEC CONTRAT ACTIF ET PASSÉ
+
+  Ce cas représente une personne ayant effectué un premier service civique
+  par le passé et actuellement engagée dans un second service civique.
+
+params:
+  nomNaissance: 'BERNARD'
+  prenoms:
+    - 'SOPHIE'
+  anneeDateNaissance: 1999
+  moisDateNaissance: 11
+  jourDateNaissance: 8
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_actuel": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "18009202500059",
+          "raison_sociale": "MINISTERE DE L EDUCATION NATIONALE"
+        },
+        "date_debut_contrat": "2024-10-01",
+        "date_fin_contrat": "2025-07-31"
+      },
+      "statut_passe": {
+        "contrat_trouve": true,
+        "organisme_accueil": {
+          "siret": "42229566900026",
+          "raison_sociale": "UNIS CITE"
+        },
+        "date_debut_contrat": "2021-03-15",
+        "date_fin_contrat": "2021-11-14"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

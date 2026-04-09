@@ -1,0 +1,22 @@
+---
+description: "Dossier non trouvé"
+params:
+  nomNaissance: 'LEFEBVRE'
+  codeCogInseeCommuneNaissance: '00404'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Dossier allocataire absent CNAV",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }

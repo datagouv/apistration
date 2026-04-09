@@ -1,0 +1,19 @@
+---
+description: 'Statut sportif non trouvé'
+params:
+  identifiant: "54321"
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun statut sportif n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "SDH"
+        }
+      }
+    ]
+  }

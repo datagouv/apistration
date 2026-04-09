@@ -1,0 +1,22 @@
+---
+description: "Identité ambiguë - correspond à plusieurs personnes"
+params:
+  nomNaissance: 'DURAND'
+  prenoms:
+    - 'JEAN'
+  anneeDateNaissance: 1985
+  moisDateNaissance: 6
+  jourDateNaissance: 15
+status: 422
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "00391",
+        "title": "Entité non traitable",
+        "detail": "Les paramètres d'identité correspondent à plusieurs personnes. Nous ne pouvons pas fournir les informations de service civique pour cet individu.",
+        "source": null,
+        "meta": {}
+      }
+    ]
+  }

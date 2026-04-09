@@ -1,0 +1,18 @@
+---
+description: 'Personne physique (PP) - non diffusible'
+params:
+  siret: '35004292500031'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "01003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "INSEE"
+        }
+      }
+    ]
+  }

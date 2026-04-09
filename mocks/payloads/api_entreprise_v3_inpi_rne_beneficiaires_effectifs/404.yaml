@@ -1,0 +1,18 @@
+---
+params:
+  siren: '813914819'
+status: 404
+description: 'Bénéficiaires non trouvés'
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "34003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "INPI - RNE"
+        }
+      }
+    ]
+  }

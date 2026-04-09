@@ -1,0 +1,40 @@
+---
+description: Étudiant inscrit Ronaldo Marie Davida
+params:
+  nomNaissance: "Ronaldo"
+  prenoms:
+  - "Marie Davida"
+  anneeDateNaissance: 2001
+  moisDateNaissance: 5
+  jourDateNaissance: 16
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "75111"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Ronaldo",
+        "prenom": "Marie Davida",
+        "date_naissance": "2001-05-16"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-09-01",
+          "date_fin": "2026-07-30",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Nanterre"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

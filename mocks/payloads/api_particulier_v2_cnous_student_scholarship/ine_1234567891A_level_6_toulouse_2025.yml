@@ -1,0 +1,23 @@
+---
+description: 'Boursier échelon 6, année scolaire 2025 (appel par INE: 1234567891A)'
+params:
+  ine: '1234567891A'
+status: 200
+payload: |-
+  {
+    "nom": "Simon",
+    "prenom": "Lilian",
+    "prenom2": "",
+    "dateNaissance": "2005-01-03",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "lilian.simon@fake.fr",
+    "dateDeRentree": "2025-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Toulouse",
+    "etablissement": "Jean Jaurès"
+  }

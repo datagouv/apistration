@@ -1,0 +1,43 @@
+---
+description: 'Élève non boursier'
+params:
+  nomNaissance: "PETIT"
+  prenoms: 
+    - 'LOUIS'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2007
+  moisDateNaissance: 4
+  jourDateNaissance: 9
+  codeEtablissement: "0132327J"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "PETIT",
+        "prenom": "LOUIS",
+        "sexe": "M",
+        "date_naissance": "2007-04-09"
+      },
+      "module_elementaire_formation": {
+          "code_mef_stat": "211324099991",
+          "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+          "code_uai": "0132327J",
+          "nom": "Collège Miramaris",
+          "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

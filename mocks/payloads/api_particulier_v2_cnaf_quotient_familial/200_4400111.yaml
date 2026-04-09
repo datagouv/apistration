@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400111
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1448,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "BOUCHER CHLOÉ",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "BOUCHER CORENTIN",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "BOUCHER ZOÉ",
+        "dateDeNaissance": "05082005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "BOUCHER ANAÏS",
+        "dateDeNaissance": "05082005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "BOUCHER CORENTIN & CHLOÉ",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }

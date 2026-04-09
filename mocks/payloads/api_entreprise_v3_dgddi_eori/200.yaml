@@ -1,0 +1,20 @@
+---
+description: 'Immatriculation EORI trouvée'
+params:
+  siret_or_eori: '30613890001294'
+status: 200
+payload: |-
+  {
+    "data": {
+      "id": "FR30613890001294",
+      "actif": true,
+      "code_pays": "FR",
+      "code_postal": "75007",
+      "libelle": "DINUM",
+      "pays": "France",
+      "rue": "20 avenue de Ségur",
+      "ville": "Paris"
+    },
+    "links": {},
+    "meta": {}
+  }

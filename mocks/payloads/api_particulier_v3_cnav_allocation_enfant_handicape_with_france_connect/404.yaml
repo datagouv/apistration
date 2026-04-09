@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Allocataire non trouvé via FranceConnect
+params:
+  prenoms:
+  - "Jean"
+  nomNaissance: "INCONNU"
+  anneeDateNaissance: 1990
+  moisDateNaissance: 6
+  jourDateNaissance: 15
+  sexeEtatCivil: "M"
+  codeInseeLieuDeNaissance: "75101"
+  codePaysLieuDeNaissance: "99100"
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Entité non trouvée",
+        "detail": "Dossier allocataire inexistant. Le document ne peut être édité.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
