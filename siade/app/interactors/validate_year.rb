@@ -2,13 +2,17 @@ class ValidateYear < ValidateParamInteractor
   def call
     return if valid?
 
-    invalid_param!(year_param_name)
+    invalid_param!(error_field)
   end
 
   protected
 
   def year_param_name
     :year
+  end
+
+  def error_field
+    year_param_name
   end
 
   def start_year

@@ -38,6 +38,7 @@ class UnprocessableEntityError < ApplicationError
       cnaf_beneficiary_number: '00352',
       # CNAV
       annee: '00353',
+      annee_cnav: '00356',
       mois: '00354',
       sngi: '00355',
       # MESRI / MEN / CNOUS

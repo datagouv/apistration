@@ -1737,10 +1737,10 @@ paths:
                 Mois invalide:
                   value:
                     error: bad_request
-                    reason: L'année demandée n'est pas correctement formatée ou est
-                      dans le futur.
-                    message: L'année demandée n'est pas correctement formatée ou est
-                      dans le futur.
+                    reason: L'année demandée doit être l'année en cours (N), N-1 ou
+                      N-2.
+                    message: L'année demandée doit être l'année en cours (N), N-1
+                      ou N-2.
                 Allocataire non identifié:
                   value:
                     error: not_found

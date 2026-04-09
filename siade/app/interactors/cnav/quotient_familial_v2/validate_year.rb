@@ -11,6 +11,10 @@ class CNAV::QuotientFamilialV2::ValidateYear < ValidateYear
     :annee
   end
 
+  def error_field
+    :annee_cnav
+  end
+
   def start_year
     current_year - 2
   end
