@@ -308,7 +308,7 @@ operation_id` ;
    que la suite de tests passe (cf plus bas).
 
 Par défaut, la commande se base sur les fichiers OpenAPI en staging.
-Pour utiliser les fichiers openapi locaux (dossier `openapi_files`), utilisez la variable d'environnement `LOCAL=true`
+Pour utiliser les fichiers openapi locaux (dossier `commons/swagger/` à la racine du dépôt, généré par siade), utilisez la variable d'environnement `LOCAL=true`
 
 ## Limitations
 

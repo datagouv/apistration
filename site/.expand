@@ -3,3 +3,6 @@
 # script replaces the destination path with a real copy of source at deploy
 # time. Lines starting with '#' and blank lines are ignored. When destination
 # is omitted, source is used for both.
+commons/swagger/openapi-entreprise.yaml:config/api-entreprise-v3-openapi.yml
+commons/swagger/openapi-particulier.yaml:config/api-particulier-openapi-v3.yml
+commons/swagger/api_particulier_open_api_static/v2.yaml:config/api-particulier-openapi.yml

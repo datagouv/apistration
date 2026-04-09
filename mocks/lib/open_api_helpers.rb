@@ -21,8 +21,13 @@ module OpenApiHelpers
   end
 
   def load_local_schema(operation_id)
-    file_path = File.join(root_path, 'openapi_files', "#{extract_open_api_name(operation_id)}.yaml")
-    File.read(file_path)
+    name = extract_open_api_name(operation_id)
+    relative = case name
+               when 'api_entreprise'      then 'commons/swagger/openapi-entreprise.yaml'
+               when 'api_particulier'     then 'commons/swagger/openapi-particulier.yaml'
+               when 'api_particulier_v2'  then 'commons/swagger/api_particulier_open_api_static/v2.yaml'
+               end
+    File.read(File.join(root_path, relative))
   end
 
   def load_schema_from_remote(operation_id)
