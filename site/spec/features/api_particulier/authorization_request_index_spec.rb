@@ -114,7 +114,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         )
       end
 
-      let!(:prolong_wizard) { create(:prolong_token_wizard, :requires_update, token: token_active, status:) }
+      let!(:prolong_wizard) { create(:prolong_token_wizard, :requires_update, token: authorization_request_active.token, status:) }
       let!(:status) { 'owner' }
 
       let!(:approved_authorization_request_without_token) do
