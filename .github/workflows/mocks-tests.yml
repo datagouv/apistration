@@ -23,3 +23,5 @@ jobs:
 
       - name: Run tests
         run: bundle exec rspec
+        env:
+          LOCAL: true

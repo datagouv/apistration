@@ -1,4 +1,14 @@
 class MEN::Scolarites::BuildResource < BuildResource
+  REGIME_PENSIONNAT_LIBELLES = {
+    '0' => 'Externe libre',
+    '1' => 'Externe surveillé',
+    '2' => "Demi-pensionnaire dans l'établissement",
+    '3' => "Interne dans l'établissement",
+    '4' => 'Interne externé',
+    '5' => 'Interne hébergé',
+    '6' => "Demi-pensionnaire hors l'établissement"
+  }.freeze
+
   protected
 
   def resource_attributes
@@ -24,7 +34,8 @@ class MEN::Scolarites::BuildResource < BuildResource
       etablissement: {
         code_uai: json_body['identification']['etablissement']['code-uai'],
         code_ministere_tutelle: json_body['identification']['etablissement']['ministere-tutelle']
-      }
+      },
+      regime_pensionnat:
     }
   end
 
@@ -32,5 +43,15 @@ class MEN::Scolarites::BuildResource < BuildResource
 
   def sexe
     json_body['identification']['sexe'] == 1 ? 'M' : 'F'
+  end
+
+  def regime_pensionnat
+    code = json_body['info-scolarite']['code-regime']
+    return nil if code.nil?
+
+    {
+      code:,
+      libelle: REGIME_PENSIONNAT_LIBELLES[code]
+    }
   end
 end

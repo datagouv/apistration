@@ -1,0 +1,77 @@
+Titre,Description,Paramètres,Status,Réponse
+,Élève boursier,"{""nomNaissance"":""MARTIN"",""prenoms"":[""EMMA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2012,""moisDateNaissance"":8,""jourDateNaissance"":15,""codeEtablissement"":""0132733A"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""MARTIN"",
+      ""prenom"": ""EMMA"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2012-08-15""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""211324099991"",
+      ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0132733A"",
+      ""nom"": ""Lycée Polyvalent Antonin Artaud"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1,
+    ""regime_pensionnat"": {
+      ""code"": ""2"",
+      ""libelle"": ""Demi-pensionnaire dans l'établissement""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non boursier,"{""nomNaissance"":""ROBERT"",""prenoms"":[""CLARA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2005,""moisDateNaissance"":9,""jourDateNaissance"":21,""codeEtablissement"":""0130039X"",""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""ROBERT"",
+      ""prenom"": ""CLARA"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2005-09-21""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""211324099991"",
+      ""libelle"": ""1CAP1 STAFFEUR ORNEMANISTE""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0130039X"",
+      ""nom"": ""Lycée Saint-Charles"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null,
+    ""regime_pensionnat"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non trouvé,"{""nomNaissance"":""Martin"",""prenoms"":[""Jerome""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":20,""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""30003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun élève n'a pu être trouvé avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""MEN""
+      }
+    }
+  ]
+}"

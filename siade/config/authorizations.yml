@@ -264,6 +264,7 @@ shared:
     - men_statut_module_elementaire_formation
     - men_statut_boursier
     - men_echelon_bourse
+    - men_regime_pensionnat
   api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
     - mesri_identite
     - mesri_admissions
