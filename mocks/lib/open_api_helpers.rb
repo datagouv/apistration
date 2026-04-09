@@ -66,6 +66,11 @@ module OpenApiHelpers
           hash[key] = convert_open_api_3_to_json_schema(value)
         end
       end
+
+      if open_api_schema['nullable']
+        open_api_schema['type'] = [open_api_schema['type'], 'null']
+        open_api_schema.delete('nullable')
+      end
     else
       if open_api_schema['nullable']
         open_api_schema['type'] = [open_api_schema['type'], 'null']
