@@ -51,6 +51,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [[FranceConnect] Statut service civique](api_particulier_v3_gip_mds_service_civique_with_france_connect) (`/v3/gip_mds/service_civique/france_connect`)
 * [Statut élève scolarisé et boursier](api_particulier_v3_men_scolarites_with_civility) (`/v3/men/scolarites/identite`)
 * [Statut élève scolarisé et boursier](api_particulier_v4_men_scolarites_with_civility) (`/v4/men/scolarites/identite`)
+* [Statut élève scolarisé et boursier](api_particulier_v5_men_scolarites_with_civility) (`/v5/men/scolarites/identite`)
 * [[Identité] Statut étudiant](api_particulier_v3_mesri_statut_etudiant_with_civility) (`/v3/mesri/statut_etudiant/identite`)
 * [[FranceConnect] Statut étudiant](api_particulier_v3_mesri_statut_etudiant_with_france_connect) (`/v3/mesri/statut_etudiant/france_connect`)
 * [[INE] Statut étudiant](api_particulier_v3_mesri_statut_etudiant_with_ine) (`/v3/mesri/statut_etudiant/ine`)
