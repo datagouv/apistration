@@ -45,7 +45,7 @@ module HandlePingProviders
   end
 
   def valid_pings
-    Rails.application.config_for(:pings)[api_kind].each_with_object([]) do |(provider, config), result|
+    PingService.config[api_kind].each_with_object([]) do |(provider, config), result|
       next unless config[:status_page].present? && config[:status_page][:name].present?
 
       result << {
@@ -56,7 +56,7 @@ module HandlePingProviders
   end
 
   def provider_exists?
-    Rails.application.config_for(:pings)[api_kind].key?(provider_param.to_sym)
+    PingService.config[api_kind].key?(provider_param.to_sym)
   end
 
   def ping_url(provider)

@@ -7,6 +7,10 @@ class MCPResourceDescriptionBuilder < ApplicationBuilder
     @swagger_data = swagger['paths'][resource_data[:url_path]]
   end
 
+  def self.resources_config
+    @resources_config ||= Rails.application.config_for('mcp/resources').deep_stringify_keys
+  end
+
   protected
 
   def tool_name
@@ -44,6 +48,6 @@ class MCPResourceDescriptionBuilder < ApplicationBuilder
   end
 
   def extract_resource_data(tool_name)
-    Rails.application.config_for('mcp/resources').deep_stringify_keys[tool_name]
+    self.class.resources_config[tool_name]
   end
 end

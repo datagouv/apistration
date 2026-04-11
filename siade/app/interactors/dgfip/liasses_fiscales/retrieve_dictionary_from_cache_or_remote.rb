@@ -8,6 +8,10 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
     handle_errors
   end
 
+  def self.features_config
+    @features_config ||= Rails.application.config_for(:features)
+  end
+
   private
 
   def affect_dictionary_from_retriever
@@ -88,7 +92,7 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
   end
 
   def load_local_dgfip_dictionnaries?
-    Rails.application.config_for(:features)[:load_local_dgfip_dictionnaries]
+    self.class.features_config[:load_local_dgfip_dictionnaries]
   end
 
   def expires_in

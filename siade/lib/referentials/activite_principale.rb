@@ -18,6 +18,29 @@ class Referentials::ActivitePrincipale
     }
   end
 
+  def self.naf2025
+    @naf2025 ||= CSV.read(
+      Rails.root.join('lib/referentials/files/NAF2025.csv'),
+      headers: true,
+      col_sep: ','
+    ).each_with_object({}) { |row, acc|
+      key = row[1]&.strip
+      acc[key] = row[2]&.strip if key
+    }.freeze
+  end
+
+  def self.nafrev2
+    @nafrev2 ||= CSV.read(
+      Rails.root.join('lib/referentials/files/NAFRev2.csv'),
+      headers: true,
+      col_sep: ','
+    ).each_with_object({}) { |row, acc|
+      data = row.to_hash.symbolize_keys
+      key = data[:Code]&.strip
+      acc[key] = data[:' Intitulés de la  NAF rév. 2, version finale ']&.strip if key
+    }.freeze
+  end
+
   private
 
   def libelle
@@ -27,28 +50,9 @@ class Referentials::ActivitePrincipale
   def find_libelle
     case @nomenclature
     when 'NAF2025'
-      find_libelle_naf2025
+      self.class.naf2025[@code]
     when 'NAFRev2'
-      find_libelle_nafrev2
+      self.class.nafrev2[@code]
     end
-  end
-
-  def find_libelle_naf2025
-    CSV.foreach(csv_path('NAF2025.csv'), headers: true, col_sep: ',') do |row|
-      return row[2]&.strip if row[1]&.strip == @code
-    end
-    nil
-  end
-
-  def find_libelle_nafrev2
-    CSV.foreach(csv_path('NAFRev2.csv'), headers: true, col_sep: ',') do |row|
-      data = row.to_hash.symbolize_keys
-      return data[:' Intitulés de la  NAF rév. 2, version finale ']&.strip if data[:Code]&.strip == @code
-    end
-    nil
-  end
-
-  def csv_path(filename)
-    Rails.root.join("lib/referentials/files/#{filename}")
   end
 end

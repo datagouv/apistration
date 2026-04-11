@@ -3,6 +3,10 @@ class QUALIBATCertificationsBatiment::InsurancesExtractor < PDFExtractor
     @extract ||= assurances
   end
 
+  def self.insurances_names
+    @insurances_names ||= Rails.application.config_for('qualibat/insurance_names')
+  end
+
   private
 
   def assurances
@@ -76,6 +80,6 @@ class QUALIBATCertificationsBatiment::InsurancesExtractor < PDFExtractor
   end
 
   def insurances_names
-    Rails.application.config_for('qualibat/insurance_names')
+    self.class.insurances_names
   end
 end

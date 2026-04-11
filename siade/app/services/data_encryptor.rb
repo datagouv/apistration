@@ -11,6 +11,10 @@ class DataEncryptor
     crypto.decrypt(GPGME::Data.new(@data), decrypt_options)
   end
 
+  def self.signer_info
+    @signer_info ||= Rails.application.config_for(:encrypt_data_signer_data)
+  end
+
   private
 
   def crypto
@@ -53,6 +57,6 @@ class DataEncryptor
   end
 
   def signer_info
-    Rails.application.config_for(:encrypt_data_signer_data)
+    self.class.signer_info
   end
 end

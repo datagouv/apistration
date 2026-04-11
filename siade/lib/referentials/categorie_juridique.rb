@@ -38,18 +38,21 @@ class Referentials::CategorieJuridique
     }
   end
 
+  def self.table
+    @table ||= CSV.read(
+      Rails.root.join('lib/referentials/files/categorie_juridique.csv'),
+      headers: true
+    ).each_with_object({}) { |row, acc|
+      hash = row.to_hash.symbolize_keys
+      acc[hash[:Code]] = hash if hash[:Code]
+    }.freeze
+  end
+
   private
 
   def result
     return unless valid?
 
-    @result ||= CSV.foreach(file_name, headers: true) do |row|
-      hash = row.to_hash.symbolize_keys
-      return hash if hash[:Code] == @code
-    end
-  end
-
-  def file_name
-    Rails.root.join('lib/referentials/files/categorie_juridique.csv')
+    self.class.table[@code]
   end
 end
