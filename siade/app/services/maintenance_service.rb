@@ -38,7 +38,7 @@ class MaintenanceService
   end
 
   def self.config
-    @config ||= Rails.application.config_for(:maintenances)
+    AppConfig.config_for(:maintenances)
   end
 
   private

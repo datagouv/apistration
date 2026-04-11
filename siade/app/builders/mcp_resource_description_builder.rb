@@ -8,7 +8,9 @@ class MCPResourceDescriptionBuilder < ApplicationBuilder
   end
 
   def self.resources_config
-    @resources_config ||= Rails.application.config_for('mcp/resources').deep_stringify_keys
+    AppConfig.fetch('mcp/resources#stringify_keys') do
+      Rails.application.config_for('mcp/resources').deep_stringify_keys
+    end
   end
 
   protected

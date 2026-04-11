@@ -119,13 +119,8 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
   def get_code_from_config(config_key, code, fallback)
     return fallback if code.blank?
 
-    config_value = INPI::RNE::ExtraitRNE::Concerns::DataFormatters.cached_config(config_key)[code]
+    config_value = AppConfig.config_for(config_key)[code]
     config_value || fallback
-  end
-
-  def self.cached_config(config_key)
-    @cached_configs ||= {}
-    @cached_configs[config_key] ||= Rails.application.config_for(config_key)
   end
 
   def get_origine_fonds(activite)

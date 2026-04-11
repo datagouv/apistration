@@ -9,7 +9,7 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
   end
 
   def self.features_config
-    @features_config ||= Rails.application.config_for(:features)
+    AppConfig.config_for(:features)
   end
 
   private

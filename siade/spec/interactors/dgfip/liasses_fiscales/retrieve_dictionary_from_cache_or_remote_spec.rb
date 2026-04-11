@@ -16,11 +16,11 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
   before do
     mock_valid_dgfip_dictionnaire(2019)
-    described_class.instance_variable_set(:@features_config, nil)
+    AppConfig.reset(:features)
   end
 
   after do
-    described_class.instance_variable_set(:@features_config, nil)
+    AppConfig.reset(:features)
   end
 
   describe 'happy path' do

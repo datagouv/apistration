@@ -1,26 +1,26 @@
 class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
   def self.categorie_vehicule_labels
-    @categorie_vehicule_labels ||= load_yaml_data('ants/categorie_vehicule_labels.yml')
+    load_yaml_data('ants/categorie_vehicule_labels.yml')
   end
 
   def self.genre_national_labels
-    @genre_national_labels ||= load_yaml_data('ants/genre_national_labels.yml')
+    load_yaml_data('ants/genre_national_labels.yml')
   end
 
   def self.type_carburant_labels
-    @type_carburant_labels ||= load_yaml_data('ants/type_carburant_labels.yml')
+    load_yaml_data('ants/type_carburant_labels.yml')
   end
 
   def self.classe_environnementale_labels
-    @classe_environnementale_labels ||= load_yaml_data('ants/classe_environnementale_labels.yml')
+    load_yaml_data('ants/classe_environnementale_labels.yml')
   end
 
   def self.classe_environnementale_code_mappings
-    @classe_environnementale_code_mappings ||= load_yaml_data('ants/classe_environnementale_code_mappings.yml')
+    load_yaml_data('ants/classe_environnementale_code_mappings.yml')
   end
 
   def self.load_yaml_data(file_path)
-    YAML.load_file(Rails.root.join('config', 'data', file_path)).freeze
+    AppConfig.yaml_file(Rails.root.join('config', 'data', file_path))
   end
 
   protected

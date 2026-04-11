@@ -31,8 +31,7 @@ class MockService
   end
 
   def self.open_api_schema(schema_path)
-    @open_api_schemas ||= {}
-    @open_api_schemas[schema_path.to_s] ||= YAML.load_file(schema_path, aliases: true, permitted_classes: [Date])
+    AppConfig.yaml_file(schema_path, aliases: true, permitted_classes: [Date])
   end
 
   private

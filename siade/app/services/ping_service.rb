@@ -17,7 +17,7 @@ class PingService
   end
 
   def self.config
-    @config ||= Rails.application.config_for(:pings)
+    AppConfig.config_for(:pings)
   end
 
   private

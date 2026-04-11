@@ -12,7 +12,7 @@ class DataEncryptor
   end
 
   def self.signer_info
-    @signer_info ||= Rails.application.config_for(:encrypt_data_signer_data)
+    AppConfig.config_for(:encrypt_data_signer_data)
   end
 
   private

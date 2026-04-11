@@ -31,7 +31,7 @@ class RedisService
   # rubocop:enable Naming/MethodParameterName
 
   def self.redis_options
-    @redis_options ||= Rails.application.config_for(:redis)
+    AppConfig.config_for(:redis)
   end
 
   private

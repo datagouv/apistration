@@ -1,10 +1,10 @@
 class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildResource
   def self.types_de_voie
-    @types_de_voie ||= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).freeze
+    AppConfig.yaml_file(Rails.root.join('config/data/insee/types_de_voie.yml'))
   end
 
   def self.indices_repetition_de_voie
-    @indices_repetition_de_voie ||= YAML.load_file(Rails.root.join('config/data/insee/indices_repetition_de_voie.yml')).freeze
+    AppConfig.yaml_file(Rails.root.join('config/data/insee/indices_repetition_de_voie.yml'))
   end
 
   protected
