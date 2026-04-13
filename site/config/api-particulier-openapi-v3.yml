@@ -12701,6 +12701,7 @@ paths:
   "/v3/men/scolarites/identite":
     get:
       summary: Statut élève scolarisé et boursier
+      deprecated: true
       tags:
       - Statut élève scolarisé
       parameters:
@@ -13258,6 +13259,7 @@ paths:
   "/v4/men/scolarites/identite":
     get:
       summary: Statut élève scolarisé et boursier
+      deprecated: true
       tags:
       - Statut élève scolarisé
       parameters:
