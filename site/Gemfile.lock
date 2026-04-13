@@ -191,7 +191,7 @@ GEM
       rails (>= 4.0.0)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    good_job (4.14.2)
+    good_job (4.15.0)
       activejob (>= 6.1.0)
       activerecord (>= 6.1.0)
       concurrent-ruby (>= 1.3.1)
@@ -402,7 +402,7 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (7.2.0)
+    puma (8.0.0)
       nio4r (~> 2.0)
     pundit (2.5.2)
       activesupport (>= 3.0.0)
@@ -680,7 +680,7 @@ DEPENDENCIES
   faraday-net_http
   faraday-retry
   gaffe
-  good_job (~> 4.14)
+  good_job (~> 4.15)
   guard-rspec
   i18n-tasks
   interactor
