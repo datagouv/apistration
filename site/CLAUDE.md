@@ -15,7 +15,6 @@
 
 ### Development
 - Start server: `./bin/local.sh`
-- Start server with local OpenAPI: `LOAD_LOCAL_OPEN_API_DEFINITIONS=true ./bin/local.sh`
 - Run with Docker: `make start`
 
 ## Workflow

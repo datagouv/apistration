@@ -24,7 +24,7 @@
 - Tests: RSpec with manually stubbed requests using WebMock. VCR is legacy - do NOT use VCR for new implementations, always use manual stubs
 - Interactors: Use organizers pattern with small, focused interactors
 - APIs: Use the scaffold_resource generator for new APIs
-- Scopes: Define API access scopes in config/authorizations.yml
+- Scopes: Define API access scopes in commons/data/authorizations.yml (repo root, shared with mocks)
 - Maintenance: Configure provider maintenance in config/maintenances.yml
 - File Endings: Every file should end with a newline
 

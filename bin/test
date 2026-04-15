@@ -9,11 +9,13 @@ mkdir -p "$LOG_DIR"
 
 SIADE_LOG="$LOG_DIR/siade_${TIMESTAMP}.log"
 SITE_LOG="$LOG_DIR/site_${TIMESTAMP}.log"
+MOCKS_LOG="$LOG_DIR/mocks_${TIMESTAMP}.log"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 YELLOW='\033[0;33m'
+MAGENTA='\033[0;35m'
 BOLD='\033[1m'
 RESET='\033[0m'
 
@@ -39,6 +41,7 @@ START_TOTAL=$SECONDS
 echo -e "${BOLD}Running tests in parallel...${RESET}"
 echo -e "Logs: ${CYAN}${SIADE_LOG}${RESET}"
 echo -e "      ${CYAN}${SITE_LOG}${RESET}"
+echo -e "      ${CYAN}${MOCKS_LOG}${RESET}"
 echo ""
 
 START_SIADE=$SECONDS
@@ -49,14 +52,22 @@ START_SITE=$SECONDS
 (cd "$ROOT_DIR/site" && bundle exec rspec "$@" 2>&1 | tee "$SITE_LOG" | prefix_output "$YELLOW" "site") &
 PID_SITE=$!
 
+START_MOCKS=$SECONDS
+(cd "$ROOT_DIR/mocks" && bundle exec rspec "$@" 2>&1 | tee "$MOCKS_LOG" | prefix_output "$MAGENTA" "mocks") &
+PID_MOCKS=$!
+
 SIADE_EXIT=0
 SITE_EXIT=0
+MOCKS_EXIT=0
 
 wait $PID_SIADE || SIADE_EXIT=$?
 DURATION_SIADE=$((SECONDS - START_SIADE))
 
 wait $PID_SITE || SITE_EXIT=$?
 DURATION_SITE=$((SECONDS - START_SITE))
+
+wait $PID_MOCKS || MOCKS_EXIT=$?
+DURATION_MOCKS=$((SECONDS - START_MOCKS))
 
 DURATION_TOTAL=$((SECONDS - START_TOTAL))
 
@@ -75,8 +86,14 @@ else
   echo -e "  ${RED}site   ✘${RESET}  $(format_duration $DURATION_SITE)  (log: $SITE_LOG)"
 fi
 
+if [ $MOCKS_EXIT -eq 0 ]; then
+  echo -e "  ${GREEN}mocks  ✔${RESET}  $(format_duration $DURATION_MOCKS)  (log: $MOCKS_LOG)"
+else
+  echo -e "  ${RED}mocks  ✘${RESET}  $(format_duration $DURATION_MOCKS)  (log: $MOCKS_LOG)"
+fi
+
 echo -e "\n  ${BOLD}Total: $(format_duration $DURATION_TOTAL)${RESET}"
 
-if [ $SIADE_EXIT -ne 0 ] || [ $SITE_EXIT -ne 0 ]; then
+if [ $SIADE_EXIT -ne 0 ] || [ $SITE_EXIT -ne 0 ] || [ $MOCKS_EXIT -ne 0 ]; then
   exit 1
 fi

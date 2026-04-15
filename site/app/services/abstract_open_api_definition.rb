@@ -1,5 +1,4 @@
 require 'singleton'
-require 'open-uri'
 
 class AbstractOpenAPIDefinition
   include Singleton
@@ -43,37 +42,12 @@ class AbstractOpenAPIDefinition
   end
 
   def open_api_definition_content
-    open_api_remote_url_definition_content(remote_url)
+    local_path.read
   end
-
-  # rubocop:disable Security/Open
-  def open_api_remote_url_definition_content(url)
-    if load_local?
-      local_path(url).read
-    else
-      Rails.cache.fetch(url, expires_in: 1.hour) do
-        URI.open(url).read
-      end
-    end
-  rescue StandardError, OpenURI::HTTPError => e
-    Sentry.capture_exception(e)
-    local_path(url).read
-  end
-  # rubocop:enable Security/Open
 
   protected
 
-  def local_path(url)
+  def local_path
     fail NotImplementedError
-  end
-
-  def remote_url
-    fail NotImplementedError
-  end
-
-  private
-
-  def load_local?
-    ENV['LOAD_LOCAL_OPEN_API_DEFINITIONS'].present?
   end
 end

@@ -128,26 +128,6 @@ RSpec.configure do |config|
   end
 
   config.before do
-    stub_request(:get, 'https://entreprise.api.gouv.fr/v3/openapi-entreprise.yaml').and_return(
-      status: 200,
-      body: Rails.root.join('config/api-entreprise-v3-openapi.yml').read
-    )
-
-    stub_request(:get, 'https://particulier.api.gouv.fr/api/open-api.yml').and_return(
-      status: 200,
-      body: Rails.root.join('config/api-particulier-openapi.yml').read
-    )
-
-    stub_request(:get, 'https://particulier.api.gouv.fr/api/open-api-v2.yml').and_return(
-      status: 200,
-      body: Rails.root.join('config/api-particulier-openapi-v2.yml').read
-    )
-
-    stub_request(:get, 'https://particulier.api.gouv.fr/api/open-api-v3.yml').and_return(
-      status: 200,
-      body: Rails.root.join('config/api-particulier-openapi-v3.yml').read
-    )
-
     stub_request(:get, %r{/.well-known/openid-configuration}).and_return(
       status: 200,
       body: { authorization_endpoint: 'https://proconnect.test/authorize' }.to_json
