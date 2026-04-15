@@ -35,7 +35,7 @@ Each sub-project documents its own stack, commands, and conventions. Follow them
 ## Reporting bugs and security issues
 
 - **Bugs and feature requests:** open a [GitHub issue](https://github.com/datagouv/apistration/issues). Maintainers are reachable through issues — no private channel.
-- **Security vulnerabilities:** please do **not** open a public issue for a suspected vulnerability. Contact the maintainers privately first so the issue can be triaged and fixed before disclosure.
+- **Security vulnerabilities:** please do **not** open a public issue for a suspected vulnerability. Contact the maintainers privately first (equipe@entreprise.api.gouv.fr) so the issue can be triaged and fixed before disclosure.
 
 ## License
 
