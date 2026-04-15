@@ -1,0 +1,14 @@
+<% banner = AnnouncementBanner.instance %>
+<% if banner.active? %>
+  <div class="fr-notice fr-notice--info">
+    <div class="fr-container">
+      <div class="fr-notice__body">
+        <p>
+          <span class="fr-notice__title"><%= banner.title %></span>
+          <span class="fr-notice__desc"><%= banner.description %></span>
+        </p>
+        <button title="Masquer le message" onclick="const notice = this.parentNode.parentNode.parentNode; notice.parentNode.removeChild(notice)" type="button" class="fr-btn--close fr-btn">Masquer le message</button>
+      </div>
+    </div>
+  </div>
+<% end %>
