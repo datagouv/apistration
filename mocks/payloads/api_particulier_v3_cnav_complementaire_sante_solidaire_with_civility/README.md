@@ -78,7 +78,6 @@ Ce cas permet de tester :
 
   ```json
   {
-    "codeCogInseeCommuneNaissance": "08481",
     "codeCogInseePaysNaissance": "99127",
     "sexeEtatCivil": "M",
     "nomNaissance": "DUPONT",
@@ -87,7 +86,8 @@ Ce cas permet de tester :
       "PAUL"
     ],
     "anneeDateNaissance": 1984,
-    "moisDateNaissance": 12
+    "moisDateNaissance": 12,
+    "jourDateNaissance": 1
   }
   ```
 
@@ -117,7 +117,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08481' -d 'codeCogInseePaysNaissance=99127' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1984' -d 'moisDateNaissance=12' \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseePaysNaissance=99127' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1984' -d 'moisDateNaissance=12' -d 'jourDateNaissance=1' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 

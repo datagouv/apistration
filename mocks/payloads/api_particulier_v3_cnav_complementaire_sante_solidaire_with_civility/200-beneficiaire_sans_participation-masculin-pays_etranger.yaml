@@ -8,7 +8,6 @@ description: |-
   - [Param. appel] Deux prénoms
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
-  codeCogInseeCommuneNaissance: '08481'
   codeCogInseePaysNaissance: '99127'
   sexeEtatCivil: 'M'
   nomNaissance: 'DUPONT'
@@ -17,6 +16,7 @@ params:
     - 'PAUL'
   anneeDateNaissance: 1984
   moisDateNaissance: 12
+  jourDateNaissance: 1
 status: 200
 payload: |-
   {
