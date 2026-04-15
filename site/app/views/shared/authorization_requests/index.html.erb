@@ -51,25 +51,13 @@
               </span>
             </div>
             <div class="fr-col-12 fr-col-sm-4">
-              <% if authorization_request.token %>
-                <div id="<%= dom_id(authorization_request.token) %>">
-                  <%= render partial: 'shared/tokens/detail_short',
-                    locals: {
-                      token: authorization_request.token.decorate
-                    }
-                  %>
+              <% displayed_tokens = authorization_request.tokens.active.to_a %>
+              <% displayed_tokens = [authorization_request.token].compact if displayed_tokens.empty? %>
+              <% displayed_tokens.each_with_index do |token, index| %>
+                <div id="<%= dom_id(token) %>" class="<%= 'fr-pt-6v' if index.positive? %>">
+                  <%= render partial: 'shared/tokens/detail_short', locals: { token: token.decorate } %>
                 </div>
               <% end %>
-
-              <% authorization_request.tokens.blacklisted_later.decorate.each do |banned_token| %>
-                <div id="<%= dom_id(banned_token) %>" class="fr-pt-6v">
-                  <%= render partial: 'shared/tokens/detail_short',
-                    locals: {
-                      token: banned_token.decorate
-                    }
-                  %>
-                </div>
-            <% end %>
             </div>
             <div class="fr-col-12 fr-col-sm">
               <% authorization_request_expected_actions(authorization_request, current_user).each do |action| %>

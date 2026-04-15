@@ -63,8 +63,8 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         ]
       end
 
-      let!(:token_active) { create(:token, authorization_request:, exp: 70.days.from_now) }
       let!(:token_blacklisted_later) { create(:token, :blacklisted, blacklisted_at: 1.day.from_now, authorization_request:) }
+      let!(:token_active) { create(:token, authorization_request:, exp: 70.days.from_now) }
       let!(:authorization_request_active) do
         create(
           :authorization_request,
