@@ -1,5 +1,10 @@
 shared:
-  start:
-  end:
-  title:
-  description:
+  start: "2026-04-22 00:00"
+  end: "2026-04-23 19:30"
+  title: "Maintenance ProConnect le jeudi 23 avril 2026 à 18h00"
+  description: "Une opération de maintenance sera effectuée par ProConnect,
+    le service de connexion à API Entreprise et API Particulier,
+    le jeudi 23 avril 2026 à partir de 18h00. Aucune connexion ne sera
+    possible alors, et ce pour une durée d’1h environ : nous vous
+    conseillons de ne pas utiliser le service durant ce laps de temps,
+    afin d’éviter tout désagrément."
