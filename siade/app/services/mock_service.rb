@@ -30,6 +30,10 @@ class MockService
     }
   end
 
+  def self.open_api_schema(schema_path)
+    AppConfig.yaml_file(schema_path, aliases: true, permitted_classes: [Date])
+  end
+
   private
 
   def mock_404
@@ -49,7 +53,7 @@ class MockService
   end
 
   def open_api_schema
-    YAML.load_file(schema_path, aliases: true, permitted_classes: [Date])
+    self.class.open_api_schema(schema_path)
   end
 
   def schema_path

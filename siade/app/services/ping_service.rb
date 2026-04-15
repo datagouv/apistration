@@ -16,6 +16,10 @@ class PingService
     data
   end
 
+  def self.config
+    AppConfig.config_for(:pings)
+  end
+
   private
 
   def data
@@ -134,6 +138,6 @@ class PingService
   end
 
   def pings_global_config
-    Rails.application.config_for(:pings)[api_kind]
+    self.class.config[api_kind]
   end
 end

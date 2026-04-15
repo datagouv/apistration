@@ -37,6 +37,10 @@ class MaintenanceService
     end
   end
 
+  def self.config
+    AppConfig.config_for(:maintenances)
+  end
+
   private
 
   def valid_date?
@@ -100,6 +104,6 @@ class MaintenanceService
   end
 
   def config
-    Rails.application.config_for(:maintenances)
+    self.class.config
   end
 end

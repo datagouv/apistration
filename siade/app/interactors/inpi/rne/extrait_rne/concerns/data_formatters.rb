@@ -119,7 +119,7 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
   def get_code_from_config(config_key, code, fallback)
     return fallback if code.blank?
 
-    config_value = Rails.application.config_for(config_key)[code]
+    config_value = AppConfig.config_for(config_key)[code]
     config_value || fallback
   end
 

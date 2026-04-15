@@ -60,8 +60,13 @@ RSpec.describe BanqueDeFrance::BilansEntreprise, type: :retriever_organizer do
       before do
         mock_valid_banque_de_france
 
+        AppConfig.reset(:features)
         allow(Rails.application).to receive(:config_for).and_call_original
         allow(Rails.application).to receive(:config_for).with(:features).and_return(load_local_dgfip_dictionnaries: true)
+      end
+
+      after do
+        AppConfig.reset(:features)
       end
 
       it { is_expected.to be_a_success }

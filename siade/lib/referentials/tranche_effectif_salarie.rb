@@ -58,18 +58,23 @@ class Referentials::TrancheEffectifSalarie
     }
   end
 
+  def self.table
+    AppConfig.fetch(:referentials_tranche_effectif_salarie) do
+      CSV.read(
+        Rails.root.join('lib/referentials/files/tranche_effectif_salarie.csv'),
+        headers: true
+      ).each_with_object({}) { |row, acc|
+        hash = row.to_hash.symbolize_keys
+        acc[hash[:code]] = hash if hash[:code]
+      }.freeze
+    end
+  end
+
   private
 
   def result
     return unless valid?
 
-    @result ||= CSV.foreach(file_name, headers: true).find do |row|
-      hash = row.to_hash.symbolize_keys
-      return hash if hash[:code] == @code
-    end
-  end
-
-  def file_name
-    Rails.root.join('lib/referentials/files/tranche_effectif_salarie.csv')
+    self.class.table[@code]
   end
 end

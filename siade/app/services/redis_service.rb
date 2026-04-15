@@ -30,6 +30,10 @@ class RedisService
   end
   # rubocop:enable Naming/MethodParameterName
 
+  def self.redis_options
+    AppConfig.config_for(:redis)
+  end
+
   private
 
   def safe_run(command, *)
@@ -43,7 +47,7 @@ class RedisService
   end
 
   def redis_options
-    Rails.application.config_for(:redis)
+    self.class.redis_options
   end
 
   def redis_errors
