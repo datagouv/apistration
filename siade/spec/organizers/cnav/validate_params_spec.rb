@@ -69,6 +69,12 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
+  context 'with empty sexe_etat_civil' do
+    let(:sexe_etat_civil) { nil }
+
+    it { is_expected.to be_a_success }
+  end
+
   context 'with invalid code_cog_insee_pays_naissance' do
     let(:code_cog_insee_pays_naissance) { '123Q5' }
 
