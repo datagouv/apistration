@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+require 'api_particulier'
+
+client = ApiParticulier::Client.new(
+  environment: :staging,
+  default_params: { recipient: '13002526500013' }
+)
+
+response = client.ants.extrait_immatriculation_vehicule(immatriculation: 'AA-123-BB')
+puts "status=#{response.http_status} remaining=#{response.rate_limit&.remaining} keys=#{response.data&.keys&.first(5).inspect}"
