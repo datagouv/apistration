@@ -16,6 +16,10 @@ Built and maintained by [DINUM](https://www.numerique.gouv.fr/) (Direction Inter
 - Site: see [`site/README.md`](site/README.md)
 - Mocks: see [`mocks/README.md`](mocks/README.md)
 
+## Contributing
+
+External contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for ground rules, workflow, and requirements (signed-off commits, tests, green CI, RGAA accessibility).
+
 ## License
 
 [MIT](LICENSE)
