@@ -22,7 +22,15 @@ class APIEntreprise::V3AndMore::GIPMDS::EffectifsAnnuelsEntrepriseController < A
     ::APIEntreprise::GIPMDS::EffectifsAnnuelsEntrepriseSerializer
   end
 
+  def expires_in
+    (Time.zone.now.end_of_day - Time.zone.now).to_i
+  end
+
+  def cache_key
+    [request.path, params[:nature_effectif]].compact.join('/')
+  end
+
   def organizer
-    @organizer ||= retrieve_payload_data(::GIPMDS::EffectifsAnnuelsEntreprise)
+    @organizer ||= retrieve_payload_data(::GIPMDS::EffectifsAnnuelsEntreprise, cache: true, expires_in:)
   end
 end
