@@ -90,7 +90,7 @@ jobs:
           working-directory: site
 
       - name: Setup Nodejs
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v6.3.0
 
       - name: Install mjml dependency
         run: npm install mjml
