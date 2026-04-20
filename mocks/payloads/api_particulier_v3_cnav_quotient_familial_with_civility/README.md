@@ -1186,6 +1186,96 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-nom-usage-femme-seule-qf_caf_800.yaml](200-nom-usage-femme-seule-qf_caf_800.yaml)
+
+  Status `200`
+
+  ## Femme seule avec nom d'usage - QF CAF de 800
+
+Ce cas permet de tester :
+- [Param. appel] Utilisation du paramètre nomUsage
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe féminin
+- [Réponse] Nom d'usage présent dans la réponse
+- [Réponse] Régime CAF
+- [Réponse] Quotient familial de 800
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "DURAND",
+    "nomUsage": "MARTIN",
+    "prenoms": [
+      "SOPHIE",
+      "MARIE"
+    ],
+    "anneeDateNaissance": 1985,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 15
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "DURAND",
+          "nom_usage": "MARTIN",
+          "prenoms": "SOPHIE MARIE",
+          "date_naissance": "1985-03-15",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Madame MARTIN SOPHIE MARIE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "12 AVENUE DES CHAMPS ELYSEES",
+        "lieu_dit": null,
+        "code_postal_ville": "75008 PARIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 800,
+        "annee": 2024,
+        "mois": 3,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=DURAND' -d 'nomUsage=MARTIN' -d 'prenoms[]=SOPHIE' -d 'prenoms[]=MARIE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=3' -d 'jourDateNaissance=15' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
 * [200-parent-1_enfant_non_scolarise.yaml](200-parent-1_enfant_non_scolarise.yaml)
 
   Status `200`
