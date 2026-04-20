@@ -153,6 +153,8 @@ fr:
             label: CNETP || API Attestation de cotisations congés payés & chômage-intempéries
           certification_cnetp:
             label: CNETP || API Attestation de cotisations congés payés & chômage-intempéries
+          attestation_cotisations_conges_payes_chomage_intemperies_cibtp_cnetp:
+            label: CIBTP/CNETP || API Attestation de cotisations congés payés & chômage-intempéries
           certificat_agence_bio:
             label: Agence BIO || API Certificats en BIO
             tags:
@@ -169,6 +171,10 @@ fr:
             label: OPQIBI || API Certification d'ingénierie OPQIBI
             tags:
               - open data
+          certification_opqibi:
+            label: OPQIBI || API Certification d'ingénierie OPQIBI
+            tags:
+              - open data
           open_data:
             label: API dont les données sont publiques
             tags:
@@ -179,6 +185,12 @@ fr:
               - obsolete
           beneficiaires_effectifs_inpi:
             label: INPI || API Bénéficiaires effectifs
+          actes_inpi:
+            label: INPI || API Actes
+            tags:
+              - open data
+          data_subvention_subventions:
+            label: Data Subvention || API Subventions
 
     sessions:
       create_from_oauth:
