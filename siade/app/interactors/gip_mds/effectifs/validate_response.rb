@@ -45,8 +45,15 @@ class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
 
   def quota_error!
     retry_date_string = Rack::Utils.parse_nested_query(response.body)['nextAccessTime']
+    retry_date = DateTime.parse(retry_date_string)
 
-    context.errors << GIPMDSError.new(:quota_error, DateTime.parse(retry_date_string))
+    MonitoringService.instance.track_with_added_context(
+      'warning',
+      '[GIP-MDS] Quota exceeded',
+      { next_access_time: retry_date_string }
+    )
+
+    context.errors << GIPMDSError.new(:quota_error, retry_date)
     context.fail!
   end
 

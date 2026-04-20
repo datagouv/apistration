@@ -125,6 +125,18 @@ RSpec.describe GIPMDS::Effectifs::ValidateResponse, type: :validate_response do
     it 'sets a retry_in on the error' do
       expect(subject.errors.first.meta[:retry_in]).to eq(3.minutes.to_i + 2.hours.to_i)
     end
+
+    it 'tracks the quota error via MonitoringService' do
+      allow(MonitoringService.instance).to receive(:track_with_added_context)
+
+      subject
+
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+        'warning',
+        '[GIP-MDS] Quota exceeded',
+        { next_access_time: '2023-Oct-12 20:43:00+0000 UTC' }
+      )
+    end
   end
 
   context 'with a 500 status' do
