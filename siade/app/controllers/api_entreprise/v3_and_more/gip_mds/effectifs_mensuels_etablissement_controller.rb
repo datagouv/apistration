@@ -24,7 +24,15 @@ class APIEntreprise::V3AndMore::GIPMDS::EffectifsMensuelsEtablissementController
     ::APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer
   end
 
+  def expires_in
+    (Time.zone.now.end_of_day - Time.zone.now).to_i
+  end
+
+  def cache_key
+    [request.path, params[:profondeur], params[:nature_effectif]].compact.join('/')
+  end
+
   def organizer
-    @organizer ||= retrieve_payload_data(::GIPMDS::EffectifsMensuelsEtablissement)
+    @organizer ||= retrieve_payload_data(::GIPMDS::EffectifsMensuelsEtablissement, cache: true, expires_in:)
   end
 end
