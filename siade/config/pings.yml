@@ -697,3 +697,14 @@ shared:
           siret: '19753471200017'
         key_to_dig: 'habilitations_france_competence'
         method_to_test_on_payload: 'any?'
+    data_subvention/subventions:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      provider: 'DataSubvention'
+      status_page:
+        name: "DataSubvention - Subventions"
+        alerts_wait: 5
+      driver_params:
+        retriever: 'DataSubvention::Subventions'
+        params:
+          siren_or_siret_or_rna: '780603734'
