@@ -2,6 +2,7 @@ require 'rack/utils'
 require 'digest/sha2'
 
 require_relative '../../app/services/rate_limiting_service'
+require_relative '../../app/services/operation_id_resolver'
 require_relative '../../app/lib/rate_limit_headers_middleware'
 require_relative '../../app/errors/application_error'
 require_relative '../../app/errors/forbidden_error'
@@ -10,7 +11,7 @@ require_relative '../../app/errors/forbidden_ip_error'
 class Rack::Attack
   class << self
     def throttle_by_group_of_endpoints(group_name:, limit:, endpoints:, period:)
-      throttle(group_name, limit: limit, period: period) do |req|
+      throttle(group_name, limit:, period:) do |req|
         rate_limiting_service.discriminate_by_jwt_for_endpoints(req, endpoints)
       end
     end
@@ -19,7 +20,7 @@ class Rack::Attack
       endpoints.each do |endpoint|
         identifier = [endpoint[:controller], endpoint[:action]].join('_')
 
-        throttle(identifier, limit: limit, period: period) do |req|
+        throttle(identifier, limit:, period:) do |req|
           rate_limiting_service.discriminate_by_jwt_for_endpoints(req, [endpoint])
         end
       end
@@ -32,11 +33,11 @@ class Rack::Attack
     end
   end
 
-  self.safelist('JWT whitelist') do |req|
+  safelist('JWT whitelist') do |req|
     rate_limiting_service.whitelisted_access?(req)
   end
 
-  self.blocklist('JWT blacklist') do |req|
+  blocklist('JWT blacklist') do |req|
     rate_limiting_service.blacklisted_access?(req)
   end
 
@@ -56,16 +57,30 @@ class Rack::Attack
   end
 
   throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
-    next if request.get_header('HTTP_X_API_KEY').blank? || !request.path.include?('/api/v2/') || !(request.host =~ /particulier/)
+    next if request.get_header('HTTP_X_API_KEY').blank? || request.path.exclude?('/api/v2/') || request.host !~ /particulier/
 
     Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY'))
   end
 
   Rails.configuration.throttle.each do |name, config|
-    params = config.slice(:limit, :period, :endpoints)
+    operation_ids = config[:endpoints]
+    params = { limit: config[:limit], period: config[:period] }
     params[:group_name] = name if config[:throttle_type] == 'by_group_of_endpoints'
 
-    public_send("throttle_#{config[:throttle_type]}", **params)
+    case config[:throttle_type]
+    when 'by_group_of_endpoints'
+      throttle(name, limit: config[:limit], period: config[:period]) do |req|
+        endpoints = operation_ids.map { |op_id| OperationIdResolver.resolve(op_id) }
+        rate_limiting_service.discriminate_by_jwt_for_endpoints(req, endpoints)
+      end
+    when 'by_single_endpoint'
+      operation_ids.each do |op_id|
+        throttle(op_id, limit: config[:limit], period: config[:period]) do |req|
+          endpoint = OperationIdResolver.resolve(op_id)
+          rate_limiting_service.discriminate_by_jwt_for_endpoints(req, [endpoint])
+        end
+      end
+    end
   end
 
   self.blocklisted_responder = lambda do |req|
@@ -113,7 +128,7 @@ Rails.configuration.middleware.insert_after Rack::Attack, RateLimitHeadersMiddle
 
 ActiveSupport::Notifications.subscribe('rack.attack') do |_name, _start, _finish, _request_id, req|
   req = req[:request]
-  msg = ['BLOCKED', req.env['rack.attack.match_type'], req.ip, req.request_method, req.fullpath, ('"' + req.user_agent.to_s + '"')].join(' ')
+  msg = ['BLOCKED', req.env['rack.attack.match_type'], req.ip, req.request_method, req.fullpath, "\"#{req.user_agent}\""].join(' ')
 
   if %i[throttle blocklist].include?(req.env['rack.attack.match_type'])
     Rails.logger.error(msg)
