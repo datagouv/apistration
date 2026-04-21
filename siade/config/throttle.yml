@@ -2,89 +2,89 @@ shared:
   low_latency_documents:
     throttle_type: 'by_group_of_endpoints'
     endpoints:
-      - { controller: 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/fntp/carte_professionnelle_travaux_publics', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/qualibat/certifications_batiment', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/mi/documents_associations', action: 'show' }
-      - { controller: 'api_entreprise/inpi_proxy', action: 'show' }
+      - api_entreprise_v3_probtp_attestations_cotisation_retraite
+      - api_entreprise_v3_fntp_carte_professionnelle_travaux_publics
+      - api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies
+      - api_entreprise_v3_qualibat_certifications_batiment
+      - api_entreprise_v3_mi_documents_associations
+      - api_entreprise_inpi_proxy
     limit: 50
     period: 60
   high_latency_documents:
     throttle_type: 'by_single_endpoint'
     endpoints:
-      - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
+      - api_entreprise_v3_dgfip_attestations_fiscales
+      - api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies
     limit: 5
     period: 60
   json_resources_entreprise:
     throttle_type: 'by_group_of_endpoints'
     endpoints:
-      - { controller: 'api_entreprise/v3_and_more/ademe/certificats_rge', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/rnm/entreprises_artisanales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/mi/associations', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/mi/unites_legales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/mi/unites_legales_open_data', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/dgddi/eori', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/infogreffe/mandataires_sociaux', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/infogreffe/extraits_rcs', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/unites_legales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/etablissements', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/etablissements_diffusables', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/adresses_etablissements', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/adresses_etablissements_diffusables', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/sieges_unites_legales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/sieges_diffusables_unites_legales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/insee/successions', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/dgfip/liens_capitalistiques', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/dgfip/chiffres_affaires', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/msa/conformites_cotisations', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/european_commission/vies', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/data_subvention/subventions', action: 'show' }
+      - api_entreprise_v3_ademe_certificats_rge
+      - api_entreprise_v3_carif_oref_certifications_qualiopi_france_competences
+      - api_entreprise_v3_rnm_entreprises_artisanales
+      - api_entreprise_v3_mi_associations
+      - api_entreprise_v3_mi_unites_legales
+      - api_entreprise_v3_mi_unites_legales_open_data
+      - api_entreprise_v3_dgddi_eori
+      - api_entreprise_v3_infogreffe_mandataires_sociaux
+      - api_entreprise_v3_infogreffe_extraits_rcs
+      - api_entreprise_v3_insee_unites_legales
+      - api_entreprise_v3_insee_unites_legales_diffusables
+      - api_entreprise_v3_insee_etablissements
+      - api_entreprise_v3_insee_etablissements_diffusables
+      - api_entreprise_v3_insee_adresses_etablissements
+      - api_entreprise_v3_insee_adresses_etablissements_diffusables
+      - api_entreprise_v3_insee_sieges_unites_legales
+      - api_entreprise_v3_insee_sieges_diffusables_unites_legales
+      - api_entreprise_v3_insee_successions
+      - api_entreprise_v3_opqibi_certifications_ingenierie
+      - api_entreprise_v3_probtp_conformites_cotisations_retraite
+      - api_entreprise_v3_dgfip_liasses_fiscales
+      - api_entreprise_v3_dgfip_liens_capitalistiques
+      - api_entreprise_v3_dgfip_chiffres_affaires
+      - api_entreprise_v3_msa_conformites_cotisations
+      - api_entreprise_v3_fabrique_numerique_ministeres_sociaux_conventions_collectives
+      - api_entreprise_v3_european_commission_vies
+      - api_entreprise_v3_banque_de_france_bilans_entreprise
+      - api_entreprise_v3_qualifelec_certificats
+      - api_entreprise_v3_data_subvention_subventions
     limit: 250
     period: 60
   json_resources_particulier:
     throttle_type: 'by_group_of_endpoints'
     endpoints:
-      - { controller: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/dsnj/service_national_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/dsnj/service_national_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/france_travail/indemnites_with_identifiant', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/france_travail/statut_with_identifiant', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/men/scolarites_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/gip_mds/service_civique_with_civility', action: 'show' }
-      - { controller: 'api_particulier/v3_and_more/gip_mds/service_civique_with_france_connect', action: 'show' }
+      - api_particulier_v3_ants_extrait_immatriculation_vehicule_with_france_connect
+      - api_particulier_v3_cnav_allocation_adulte_handicape_with_civility
+      - api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect
+      - api_particulier_v3_cnav_allocation_soutien_familial_with_civility
+      - api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect
+      - api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility
+      - api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect
+      - api_particulier_v3_cnav_participation_familiale_eaje_with_civility
+      - api_particulier_v3_cnav_participation_familiale_eaje_with_france_connect
+      - api_particulier_v3_cnav_allocation_enfant_handicape_with_civility
+      - api_particulier_v3_cnav_allocation_enfant_handicape_with_france_connect
+      - api_particulier_v3_cnav_prime_activite_with_civility
+      - api_particulier_v3_cnav_prime_activite_with_france_connect
+      - api_particulier_v3_cnav_quotient_familial_with_civility
+      - api_particulier_v3_cnav_quotient_familial_with_france_connect
+      - api_particulier_v3_cnav_revenu_solidarite_active_with_civility
+      - api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect
+      - api_particulier_v3_cnous_etudiant_boursier_with_civility
+      - api_particulier_v3_cnous_etudiant_boursier_with_france_connect
+      - api_particulier_v3_cnous_etudiant_boursier_with_ine
+      - api_particulier_v3_dsnj_service_national_with_civility
+      - api_particulier_v3_dsnj_service_national_with_france_connect
+      - api_particulier_v3_france_travail_indemnites_with_identifiant
+      - api_particulier_v3_france_travail_statut_with_identifiant
+      - api_particulier_v3_men_scolarites_with_civility
+      - api_particulier_v3_mesri_statut_etudiant_with_civility
+      - api_particulier_v3_mesri_statut_etudiant_with_france_connect
+      - api_particulier_v3_mesri_statut_etudiant_with_ine
+      - api_particulier_v3_sdh_statut_sportif_with_identifiant
+      - api_particulier_v3_gip_mds_service_civique_with_civility
+      - api_particulier_v3_gip_mds_service_civique_with_france_connect
     limit: 20
     period: 1
 
@@ -93,20 +93,20 @@ shared:
     limit: 15
     period: 60
     endpoints:
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/extrait_rne', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
+      - api_entreprise_v3_inpi_rne_extrait_rne
+      - api_entreprise_v3_inpi_rne_beneficiaires_effectifs
+      - api_entreprise_v3_inpi_rne_beneficiaires_effectifs_open_data
+      - api_entreprise_v3_inpi_rne_actes_bilans
   urssaf_attestation_sociales:
     throttle_type: 'by_single_endpoint'
     limit: 100
     period: 60
     endpoints:
-      - { controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales', action: 'show' }
+      - api_entreprise_v3_acoss_attestations_sociales
   proxied_files:
     throttle_type: 'by_single_endpoint'
     endpoints:
-      - { controller: 'api_entreprise/proxied_files', action: 'show' }
+      - api_entreprise_proxied_files
     limit: 50
     period: 60
   gip_mds:
@@ -114,14 +114,14 @@ shared:
     limit: 100
     period: 60
     endpoints:
-      - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement', action: 'show' }
+      - api_entreprise_v3_gip_mds_effectifs_annuels_entreprise
+      - api_entreprise_v3_gip_mds_effectifs_mensuels_etablissement
   mcp:
     throttle_type: 'by_single_endpoint'
     limit: 100
     period: 60
     endpoints:
-      - { controller: 'mcp', action: 'handle' }
+      - mcp
 
 test:
   low_latency_documents:

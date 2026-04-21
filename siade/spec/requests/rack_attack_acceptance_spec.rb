@@ -48,17 +48,11 @@ RSpec.describe 'Rack::Attack acceptance' do
         end
       end
 
-      it 'has properly structured endpoints' do
+      it 'has operation_id strings as endpoints' do
         throttle_config.each do |group_name, config|
-          config[:endpoints].each_with_index do |endpoint, index|
-            expect(endpoint).to have_key(:controller),
-              "Group '#{group_name}', endpoint #{index}: missing controller"
-            expect(endpoint).to have_key(:action),
-              "Group '#{group_name}', endpoint #{index}: missing action"
-            expect(endpoint[:controller]).to be_a(String).and(be_present),
-              "Group '#{group_name}', endpoint #{index}: controller must be a non-empty string"
-            expect(endpoint[:action]).to be_a(String).and(be_present),
-              "Group '#{group_name}', endpoint #{index}: action must be a non-empty string"
+          config[:endpoints].each_with_index do |operation_id, index|
+            expect(operation_id).to be_a(String).and(be_present),
+              "Group '#{group_name}', endpoint #{index}: must be a non-empty operation_id string"
           end
         end
       end
@@ -66,32 +60,73 @@ RSpec.describe 'Rack::Attack acceptance' do
   end
 
   describe 'endpoint definitions' do
-    let(:all_config_endpoints) do
+    let(:all_operation_ids) do
       throttle_config.values.flat_map { |config| config[:endpoints] }
     end
 
     it 'has no duplicate endpoints across all throttle groups' do
-      endpoint_keys = all_config_endpoints.map { |e| "#{e[:controller]}##{e[:action]}" }
-      duplicates = endpoint_keys.select { |e| endpoint_keys.count(e) > 1 }.uniq
+      duplicates = all_operation_ids.select { |e| all_operation_ids.count(e) > 1 }.uniq
 
       expect(duplicates).to be_empty,
-        "Found duplicate endpoints in config: #{duplicates.join(', ')}"
+        "Found duplicate operation_ids in config: #{duplicates.join(', ')}"
     end
 
-    it 'all configured endpoints exist as actual routes' do
-      all_route_endpoints = Rails.application.routes.routes.map { |route|
-        next if route.defaults.empty?
+    it 'all configured operation_ids resolve to actual routes' do
+      all_operation_ids.each do |operation_id|
+        expect { OperationIdResolver.resolve(operation_id) }.not_to raise_error,
+          "operation_id '#{operation_id}' does not resolve to any route"
+      end
+    end
 
-        {
-          controller: route.defaults[:controller],
-          action: route.defaults[:action]
-        }
-      }.compact
+    describe 'consistency with OpenAPI specs' do
+      let(:swagger_operation_ids) do
+        %w[openapi-entreprise.yaml openapi-particulier.yaml].flat_map { |file|
+          spec = YAML.safe_load_file(Rails.root.join('swagger', file), aliases: true, permitted_classes: [Date])
 
-      all_config_endpoints.each do |config_endpoint|
-        expect(all_route_endpoints).to include(config_endpoint),
-          "Endpoint #{config_endpoint[:controller]}##{config_endpoint[:action]} " \
-          'is defined in throttle config but does not exist as a route'
+          spec['paths'].flat_map do |_path, methods|
+            methods.filter_map do |_verb, definition|
+              definition.dig('responses', '200', 'x-operationId') if definition.is_a?(Hash)
+            end
+          end
+        }.compact
+      end
+
+      let(:non_swagger_operation_ids) do
+        %w[
+          api_entreprise_inpi_proxy
+          api_entreprise_proxied_files
+          api_entreprise_v3_inpi_rne_beneficiaires_effectifs_open_data
+          mcp
+        ]
+      end
+
+      let(:non_throttled_swagger_operation_ids) do
+        %w[api_entreprise_vrivileges_]
+      end
+
+      it 'all throttled operation_ids exist in the OpenAPI specs (except internal endpoints)' do
+        missing = all_operation_ids
+          .reject { |op_id| non_swagger_operation_ids.include?(op_id) }
+          .reject do |op_id|
+            swagger_operation_ids.any? do |swagger_op_id|
+              swagger_op_id == op_id || swagger_op_id == op_id.sub('_v3_', '_v4_')
+            end
+          end
+
+        expect(missing).to be_empty,
+          "operation_ids in throttle.yml not found in OpenAPI specs: #{missing.join(', ')}"
+      end
+
+      it 'all OpenAPI endpoints have a throttle config' do
+        unthrottled = swagger_operation_ids
+          .reject { |op_id| non_throttled_swagger_operation_ids.include?(op_id) }
+          .reject do |swagger_op_id|
+            normalized = swagger_op_id.sub(/_v\d+_/, '_v3_')
+            all_operation_ids.include?(swagger_op_id) || all_operation_ids.include?(normalized)
+          end
+
+        expect(unthrottled).to be_empty,
+          "OpenAPI endpoints missing from throttle.yml: #{unthrottled.join(', ')}"
       end
     end
   end
@@ -160,9 +195,9 @@ RSpec.describe 'Rack::Attack acceptance' do
     end
 
     let(:throttled_endpoints) do
-      config = throttle_config.values.pluck(:endpoints).flatten
-
-      config.map { |conf| conf.slice(:controller, :action) }.uniq
+      throttle_config.values.flat_map { |config|
+        config[:endpoints].map { |op_id| OperationIdResolver.resolve(op_id) }
+      }.uniq
     end
 
     it 'ensures all routes (except non-throttled) are defined in throttle config' do
