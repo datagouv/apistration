@@ -24,10 +24,6 @@ module HandleTokens
     matchs[1] if matchs
   end
 
-  def token
-    @token ||= retrieve_token
-  end
-
   protected
 
   def resource_name
@@ -43,46 +39,35 @@ module HandleTokens
   end
 
   def authenticate_user!
-    raise NotValidTokenError unless token
-
-    extract_user
+    @current_user = request.env[UserResolutionMiddleware::USER_ENV_KEY] || extract_user_from_token
 
     raise NotValidTokenError if current_user.blank? || current_user.invalid?
+
+    instrument_user_access
 
     current_user.not_expired!
 
     true
   end
 
-  def extract_user
-    @current_user = jwt_token_service.extract_user(token)
-  end
-
-  def retrieve_token
-    token_from_query_params || token_from_headers
-  end
-
-  def token_from_query_params
-    params[:token]
-  end
-
-  def token_from_headers
-    bearer_token_from_headers
-  end
-
-  def jwt_token_service
-    ::JwtTokenService.instance
+  def extract_user_from_token
+    token = params[:token] || bearer_token_from_headers
+    JwtTokenService.instance.extract_user(token) if token
   end
 
   def set_monitoring_context
     return if current_user.blank?
 
-    monitoring_service.set_user_context(
-      current_user.as_json.symbolize_keys!
-    )
+    monitoring_service.set_user_context(current_user.as_json.symbolize_keys!)
+    monitoring_service.set_controller_params(params.to_unsafe_h)
+  end
 
-    monitoring_service.set_controller_params(
-      params.to_unsafe_h
+  def instrument_user_access
+    ActiveSupport::Notifications.instrument(
+      'user_access',
+      user: current_user.logstash_id,
+      jti: current_user.token_id,
+      iat: current_user.iat
     )
   end
 
