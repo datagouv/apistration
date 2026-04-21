@@ -111,7 +111,7 @@ shared:
     period: 60
   gip_mds:
     throttle_type: 'by_group_of_endpoints'
-    limit: 100
+    limit: 50
     period: 60
     endpoints:
       - api_entreprise_v3_gip_mds_effectifs_annuels_entreprise
