@@ -6,3 +6,4 @@
 commons/swagger/openapi-entreprise.yaml:config/api-entreprise-v3-openapi.yml
 commons/swagger/openapi-particulier.yaml:config/api-particulier-openapi-v3.yml
 commons/swagger/api_particulier_open_api_static/v2.yaml:config/api-particulier-openapi.yml
+commons/data/throttle.yml:config/throttle.yml
