@@ -200,6 +200,15 @@ fr:
             one: "Modalité d'appel"
             other: "Modalités d'appel"
           link: "Détails des modalités"
+        rate_limiting:
+          title: "Limite d'appels"
+          len_per_second:
+            one: "%{count} requête / seconde"
+            other: "%{count} requêtes / seconde"
+          len_per_minute:
+            one: "%{count} requête / minute"
+            other: "%{count} requêtes / minute"
+          shared: "(partagé entre API du groupe)"
         technical_specifications:
           title: "Spécifications techniques :"
           cta: "Consulter le swagger"

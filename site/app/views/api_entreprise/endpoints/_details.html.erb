@@ -42,6 +42,22 @@
     <% end %>
   </div>
 
+  <% if @endpoint.throttle %>
+    <h3 class="fr-h6 fr-pt-2w fr-mb-1v">
+      <%= t('.rate_limiting.title') %>
+    </h3>
+    <div>
+      <% if @endpoint.throttle[:period] >= 60 %>
+        <%= t('.rate_limiting.len_per_minute', count: @endpoint.throttle[:limit]) %>
+      <% else %>
+        <%= t('.rate_limiting.len_per_second', count: @endpoint.throttle[:limit]) %>
+      <% end %>
+      <% if @endpoint.throttle[:throttle_type] == 'by_group_of_endpoints' %>
+        <br><span class="fr-text--xs fr-text--light"><%= t('.rate_limiting.shared') %></span>
+      <% end %>
+    </div>
+  <% end %>
+
   <% if @endpoint.implemented? && !@endpoint.deprecated? %>
     <h3 class="fr-h5 fr-pt-2w">
       <%= t('.technical_specifications.title') %>

@@ -183,6 +183,12 @@ class AbstractEndpoint
     @open_api_definition ||= Kernel.const_get(self.class.name.split('::')[0])::OpenAPIDefinition.get(path)
   end
 
+  def throttle
+    return unless operation_id
+
+    @throttle ||= ThrottleStore.for_operation_id(operation_id.sub(/_v\d+_/, '_v3_'))
+  end
+
   def providers
     Kernel.const_get(api.classify)::Provider.filter_by_uid(provider_uids)
   end
@@ -204,7 +210,7 @@ class AbstractEndpoint
   end
 
   def operation_id
-    open_api_definition['responses']['200']['x-operationId']
+    open_api_definition.dig('responses', '200', 'x-operationId')
   end
 
   private
