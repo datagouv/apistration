@@ -2,10 +2,18 @@ class RateLimitingService
   include Rails.application.routes.url_helpers
 
   def discriminate_by_jwt_for_endpoints(req, endpoints_list)
-    jwt = extract_token_from_request(req)
     endpoint = extract_endpoint_from_url(req.url).slice(:controller, :action)
 
-    Digest::SHA256.hexdigest(jwt) if jwt && endpoints_list.include?(endpoint)
+    return nil unless endpoints_list.include?(endpoint)
+
+    user = resolved_user(req)
+
+    if user
+      Digest::SHA256.hexdigest(user.token_id)
+    else
+      token = extract_token_from_request(req)
+      Digest::SHA256.hexdigest(token) if token.present?
+    end
   end
 
   def whitelisted_access?(req)
@@ -15,14 +23,13 @@ class RateLimitingService
   end
 
   def blacklisted_access?(req)
-    jwt = extract_token_from_request(req)
+    user = resolved_user(req)
 
-    token_blacklisted_from_database?(jwt)
+    user.present? && user.blacklisted?
   end
 
   def ip_forbidden_access?(req)
-    jwt = extract_token_from_request(req)
-    user = user_from_jwt(jwt)
+    user = resolved_user(req)
 
     return false if user.blank?
     return false if user.allowed_ips.blank?
@@ -31,10 +38,7 @@ class RateLimitingService
   end
 
   def custom_rate_limit_for(req)
-    jwt = extract_token_from_request(req)
-    user = user_from_jwt(jwt)
-
-    user&.rate_limit_per_minute
+    resolved_user(req)&.rate_limit_per_minute
   end
 
   def custom_rate_limit?(req)
@@ -55,6 +59,10 @@ class RateLimitingService
   end
 
   private
+
+  def resolved_user(req)
+    req.env[UserResolutionMiddleware::USER_ENV_KEY]
+  end
 
   def compute_reset(data)
     now = data[:epoch_time]
@@ -87,17 +95,6 @@ class RateLimitingService
 
   def extract_token_from_query_params(request)
     request.params.fetch('token', nil)
-  end
-
-  def token_blacklisted_from_database?(jwt)
-    user = user_from_jwt(jwt)
-
-    user.present? &&
-      user.blacklisted?
-  end
-
-  def user_from_jwt(jwt)
-    JwtTokenService.instance.extract_user(jwt)
   end
 
   def whitelist
