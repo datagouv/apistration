@@ -1,0 +1,71 @@
+---
+description: |-
+  ## IDENTITÉ CAS NOMINAL
+
+  Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+  Les deuxième et troisième prenoms ont été retiré des données.
+
+  Il y a suffisament de donnée de naissance dans cet ensemble de paramètre pour permettre
+  de compenser les données manquantes.
+
+  Ce cas répond au besoin des applications qui ne transmettent qu'un seul prénom
+  pour les parents lors d'un appel à l'API Particulier EAJE (Identité).
+
+  Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+  d'erreur selon les informations que vous fournirez.
+
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'LEFEBVRE'
+  prenoms:
+    - 'ALEXIS'
+  anneeDateNaissance: 1982
+  moisDateNaissance: 12
+  jourDateNaissance: 27
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "LEFEBVRE",
+          "nom_usage": null,
+          "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+          "date_naissance": "1982-12-27",
+          "sexe": "F",
+          "code_cog_insee_commune_naissance": "08480"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "LEFEBVRE",
+          "nom_usage": null,
+          "prenoms": "JEAN-PIERRE THOMAS JUNIOR",
+          "date_naissance": "2010-05-14",
+          "sexe": "M",
+          "code_cog_insee_commune_naissance": "75113"
+        }
+      ],
+      "adresse": {
+          "destinataire": "Madame ALEXIS GÉRÔME JEAN-PHILIPPE LEFEBVRE",
+          "complement_information": null,
+          "complement_information_geographique": null,
+          "numero_libelle_voie": "1 RUE DE LA GARE",
+          "lieu_dit": null,
+          "code_postal_ville": "75002",
+          "pays": "FRANCE"
+      },
+      "parametres_calcul_participation_familiale": {
+        "nombre_enfants_a_charge": 1,
+        "nombre_enfants_beneficiaire_aeeh": 1,
+        "base_ressources_annuelles": {
+          "valeur": 40923,
+          "annee_calcul": 2023
+        }
+      }
+    },
+    "links": { },
+    "meta": { }
+  }
