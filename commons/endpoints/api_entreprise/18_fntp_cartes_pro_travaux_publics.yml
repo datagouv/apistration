@@ -51,13 +51,13 @@ fiche:
     parameters:
       - Numéro de SIREN de l'entreprise
     swagger:
-      fntp:
-        carte_professionnelle_travaux_publics:
-          title: "Carte professionnelle travaux publics"
-          description: "Carte professionnelle d'entrepreneur de travaux publics, délivrée à une entreprise en règle de ses obligations sociales, administratives et juridiques."
-          tags:
-            - "Attestations sociales et fiscales"
-          document_url_properties:
-            title: "Lien vers la carte professionnelle"
-            description: "Ce document est automatiquement supprimé au bout de 3 mois."
-            example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf"
+      fntp.carte_professionnelle_travaux_publics:
+        title: Carte professionnelle travaux publics
+        description: Carte professionnelle d'entrepreneur de travaux publics, délivrée à une
+          entreprise en règle de ses obligations sociales, administratives et juridiques.
+        tags:
+        - Attestations sociales et fiscales
+        document_url_properties:
+          title: Lien vers la carte professionnelle
+          description: Ce document est automatiquement supprimé au bout de 3 mois.
+          example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_fntp_carte_professionnelle_travaux_publics/carte_professionnelle_tp_test.pdf

@@ -117,44 +117,29 @@ fiche:
           Le pseudonyme ne correspond pas à un changement de nom, et son choix doit remplir certaines conditions. Il ne doit pas porter atteinte à l'ordre public et il ne doit pas permettre à la personne de s'approprier la renommée ou la parenté d'une personne tiers.
           Le pseudonyme peut être protégé en étant déposé sous la forme d'une marque à l'INPI.
     swagger:
-      rnm:
-        entreprise_artisanale:
-          title: "Données du RNM d'une entreprise artisanale"
-          description: "Informations de référence d'une entreprise artisanale enregistrée au répertoire national des métiers (RNM)."
-          tags:
-            - "Informations générales"
-          attributes:
-            modalite_exercice:
-              type: "string"
-              example: "P"
-              description:
-                "Détermine si l'entreprise a une activité permanente ou saisonnière.
-                \n
-                L'activité est dite saisonnière si chaque année, l'entreprise cesse totalement ses activités pendant plus de 3 mois consécutifs.
-                \n
-                \n
-                Les valeurs possibles sont:
-                \n
-                - P => Permanent
-                \n
-                - S => Saisonnière
-                \n
-                - NR => Non renseignée"
-              enum:
-                - "P"
-                - "S"
-                - "NR"
-            non_sedentaire:
-              type: "string"
-              example: "0"
-              description: "Indique si l'entreprise a une activité ambulante.
-                \n
-                \n
-                Les valeurs possibles sont:
-                \n
-                - 0 => sédentaire
-                \n
-                - 1 => non-sédentaire"
-              enum:
-                - "0"
-                - "1"
+      rnm.entreprise_artisanale:
+        title: Données du RNM d'une entreprise artisanale
+        description: Informations de référence d'une entreprise artisanale enregistrée au
+          répertoire national des métiers (RNM).
+        tags:
+        - Informations générales
+        attributes:
+          modalite_exercice:
+            type: string
+            example: P
+            description: "Détermine si l'entreprise a une activité permanente ou saisonnière.
+              \n L'activité est dite saisonnière si chaque année, l'entreprise cesse totalement
+              ses activités pendant plus de 3 mois consécutifs. \n \n Les valeurs possibles
+              sont: \n - P => Permanent \n - S => Saisonnière \n - NR => Non renseignée"
+            enum:
+            - P
+            - S
+            - NR
+          non_sedentaire:
+            type: string
+            example: '0'
+            description: "Indique si l'entreprise a une activité ambulante. \n \n Les valeurs
+              possibles sont: \n - 0 => sédentaire \n - 1 => non-sédentaire"
+            enum:
+            - '0'
+            - '1'

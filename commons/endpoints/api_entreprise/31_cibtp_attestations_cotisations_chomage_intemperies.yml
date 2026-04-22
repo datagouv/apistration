@@ -105,22 +105,26 @@ fiche:
 
           Pour ses cotisations congés payés et chômage-intempéries, une unité légale **ne peut être adhérente qu'à une seule caisse du réseau CIBTP**.
     swagger:
-      cibtp:
-        attestation_cotisations_conges_payes_chomage_intemperies:
-          title: "Certificat cotisations CIBTP"
-          description: "Certificat indiquant qu'une entreprise du bâtiment, affiliée à la majorité des caisses du réseau CIBTP France, est en règle de ses cotisations congés payés et chômage-intempéries."
-          tags:
-            - "Attestations sociales et fiscales"
-          attributes:
-            document_url:
-              title: "Lien vers le certificat CIBTP"
-              type: 'string'
-              nullable: true
-              description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 10 minutes."
-              example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies/test_cibtp_certificat.pdf"
-            expires_in:
-              title: "Expiration du lien"
-              description: "Nombre de secondes avant expiration du document référencé dans 'document_url'. Il s'agit d'une expiration technique. Ce champ n'est pas une date de fin de validité de l'attestation"
-              type: 'integer'
-              nullable: true
-              example: 600
+      cibtp.attestation_cotisations_conges_payes_chomage_intemperies:
+        title: Certificat cotisations CIBTP
+        description: Certificat indiquant qu'une entreprise du bâtiment, affiliée à la majorité
+          des caisses du réseau CIBTP France, est en règle de ses cotisations congés payés
+          et chômage-intempéries.
+        tags:
+        - Attestations sociales et fiscales
+        attributes:
+          document_url:
+            title: Lien vers le certificat CIBTP
+            type: string
+            nullable: true
+            description: Ce lien délivre l'attestation au format PDF. Ce document est automatiquement
+              supprimé après 10 minutes.
+            example: https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies/test_cibtp_certificat.pdf
+          expires_in:
+            title: Expiration du lien
+            description: Nombre de secondes avant expiration du document référencé dans 'document_url'.
+              Il s'agit d'une expiration technique. Ce champ n'est pas une date de fin de
+              validité de l'attestation
+            type: integer
+            nullable: true
+            example: 600

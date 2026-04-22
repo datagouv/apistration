@@ -95,264 +95,263 @@ fiche:
       description: |+
           Les conditions d'utilisations spécifiques à l'API
     swagger:
-      sdh:
-        statut_sportif:
-          title: "API Statut sportif de haut niveau et sur liste ministérielle"
-          tags:
-            - "Statut Sportif"
-          description: "Statut sportif de haut niveau et toute catégorie inscrits en liste des collectifs nationaux ou en liste des arbitres et juges sportifs de haut-niveau."
-          parameters:
-            identifiant:
-              title: "Identifiant SDH"
-              type: "string"
-              description: "Identifiant du sportif dans le système d'information du Ministère des Sports."
-              example: "123456789"
-              required: true
-
-          attributes:
-            identite:
-              title: "Données d'identité du sportif"
+      sdh.statut_sportif:
+        title: API Statut sportif de haut niveau et sur liste ministérielle
+        tags:
+        - Statut Sportif
+        description: Statut sportif de haut niveau et toute catégorie inscrits en liste des
+          collectifs nationaux ou en liste des arbitres et juges sportifs de haut-niveau.
+        parameters:
+          identifiant:
+            title: Identifiant SDH
+            type: string
+            description: Identifiant du sportif dans le système d'information du Ministère
+              des Sports.
+            example: '123456789'
+            required: true
+        attributes:
+          identite:
+            title: Données d'identité du sportif
+            type: object
+            description: Informations d'identité du sportif.
+            properties:
+              nom_naissance:
+                title: Nom de naissance
+                type: string
+                description: Nom de naissance du sportif.
+                example: Dupont
+              nom_usage:
+                title: Nom d'usage
+                type: string
+                description: Nom d'usage du sportif.
+                example: Martin
+              prenoms:
+                title: Prénoms
+                type: string
+                description: Prénoms du sportif.
+                example: Jean Claude
+              date_naissance:
+                title: Date de naissance
+                type: string
+                format: date
+                description: Date de naissance du sportif (format YYYY-MM-DD).
+                example: '1990-05-15'
+              sexe:
+                title: Sexe
+                type: string
+                description: Sexe du sportif.
+                example: M
+                enum:
+                - F
+                - M
+          est_sportif_de_haut_niveau:
+            title: Est sportif de haut niveau
+            type: boolean
+            description: Indique si la personne est actuellement un sportif de haut niveau.
+            example: true
+          a_ete_sportif_de_haut_niveau:
+            title: A été sportif de haut niveau
+            type: boolean
+            description: Indique si la personne a été un sportif de haut niveau dans le passé.
+            example: true
+          informations_statut:
+            title: Informations du statut sportif
+            type: object
+            description: Détails du statut sportif actuel.
+            properties:
+              periode:
+                title: Période du statut
+                type: object
+                description: Période de validité du statut sportif de haut niveau.
+                properties:
+                  date_debut_statut:
+                    title: Date de début du statut
+                    type: string
+                    format: date
+                    description: Date de début du statut sportif de haut niveau.
+                    example: '2023-01-01'
+                  date_fin_statut:
+                    title: Date de fin du statut
+                    type: string
+                    format: date
+                    description: Date de fin du statut sportif de haut niveau.
+                    example: '2025-09-30'
+              federation:
+                title: Informations sur la fédération
+                type: object
+                description: Données d'identification de la fédération.
+                properties:
+                  code_federation:
+                    title: Code fédération
+                    type: string
+                    description: Code de la fédération.
+                    example: '29'
+                  nom_federation:
+                    title: Nom de la fédération
+                    type: string
+                    description: Nom complet de la fédération.
+                    example: fédération française de handball
+                  nom_court_federation:
+                    title: Nom court de la fédération
+                    type: string
+                    description: Nom court de la fédération.
+                    example: HANDBALL
+              etablissement:
+                title: Informations sur l'établissement
+                type: object
+                description: Données d'identification de l'établissement.
+                properties:
+                  code_etablissement:
+                    title: Code établissement
+                    type: string
+                    description: Code de l'établissement.
+                    example: '2075'
+                  nom_etablissement:
+                    title: Nom de l'établissement
+                    type: string
+                    description: Nom de l'établissement.
+                    example: Maison de la Performance Nouvelle-Aquitaine
+              region:
+                title: Informations sur la région
+                type: object
+                description: Données d'identification de la région.
+                properties:
+                  code_region:
+                    title: Code région
+                    type: string
+                    description: Code de la région.
+                    example: '75'
+                  nom_region:
+                    title: Nom de la région
+                    type: string
+                    description: Nom de la région.
+                    example: Nouvelle-Aquitaine
+              categorie:
+                title: Informations sur la catégorie
+                type: object
+                description: Données d'identification de la catégorie sportive.
+                properties:
+                  code_categorie:
+                    title: Code catégorie
+                    type: string
+                    description: Code de la catégorie.
+                    example: '2'
+                  nom_categorie:
+                    title: Nom de la catégorie
+                    type: string
+                    description: Nom de la catégorie.
+                    example: elite
+                  valeur:
+                    title: Valeur
+                    type: string
+                    description: Valeur associée à la catégorie.
+                    example: '4'
+              sportif_de_haut_niveau:
+                title: Sportif de haut niveau
+                type: boolean
+                description: Indique si ce statut correspond à un sportif de haut niveau.
+                example: true
+          informations_statuts_precedents:
+            title: Historique des statuts précédents
+            type: array
+            description: Détails historiques des statuts sportifs précédents.
+            items:
               type: object
-              description: "Informations d'identité du sportif."
               properties:
-                nom_naissance:
-                  title: "Nom de naissance"
-                  type: string
-                  description: "Nom de naissance du sportif."
-                  example: "Dupont"
-                nom_usage:
-                  title: "Nom d'usage"
-                  type: string
-                  description: "Nom d'usage du sportif."
-                  example: "Martin"
-                prenoms:
-                  title: "Prénoms"
-                  type: string
-                  description: "Prénoms du sportif."
-                  example: "Jean Claude"
-                date_naissance:
-                  title: "Date de naissance"
-                  type: string
-                  format: date
-                  description: "Date de naissance du sportif (format YYYY-MM-DD)."
-                  example: "1990-05-15"
-                sexe:
-                  title: "Sexe"
-                  type: string
-                  description: "Sexe du sportif."
-                  example: "M"
-                  enum:
-                    - "F"
-                    - "M"
-            est_sportif_de_haut_niveau:
-              title: "Est sportif de haut niveau"
-              type: boolean
-              description: "Indique si la personne est actuellement un sportif de haut niveau."
-              example: true
-            a_ete_sportif_de_haut_niveau:
-              title: "A été sportif de haut niveau"
-              type: boolean
-              description: "Indique si la personne a été un sportif de haut niveau dans le passé."
-              example: true
-            informations_statut:
-              title: "Informations du statut sportif"
-              type: object
-              description: "Détails du statut sportif actuel."
-              properties:
+                fiche:
+                  title: Numéro de fiche
+                  type: integer
+                  description: Numéro de la fiche.
+                  example: 789456
                 periode:
-                  title: "Période du statut"
+                  title: Période du statut
                   type: object
-                  description: "Période de validité du statut sportif de haut niveau."
+                  description: Période de validité du statut sportif de haut niveau.
                   properties:
                     date_debut_statut:
-                      title: "Date de début du statut"
+                      title: Date de début du statut
                       type: string
                       format: date
-                      description: "Date de début du statut sportif de haut niveau."
-                      example: "2023-01-01"
+                      description: Date de début du statut sportif de haut niveau.
+                      example: '2021-01-01'
                     date_fin_statut:
-                      title: "Date de fin du statut"
+                      title: Date de fin du statut
                       type: string
                       format: date
-                      description: "Date de fin du statut sportif de haut niveau."
-                      example: "2025-09-30"
+                      description: Date de fin du statut sportif de haut niveau.
+                      example: '2022-12-31'
                 federation:
-                  title: "Informations sur la fédération"
+                  title: Informations sur la fédération
                   type: object
-                  description: "Données d'identification de la fédération."
+                  description: Données d'identification de la fédération.
                   properties:
                     code_federation:
-                      title: "Code fédération"
+                      title: Code fédération
                       type: string
-                      description: "Code de la fédération."
-                      example: "29"
+                      description: Code de la fédération.
+                      example: '69'
                     nom_federation:
-                      title: "Nom de la fédération"
+                      title: Nom de la fédération
                       type: string
-                      description: "Nom complet de la fédération."
-                      example: "fédération française de handball"
+                      description: Nom complet de la fédération.
+                      example: Fédération Française de Triathlon et Disciplines Enchaînées
                     nom_court_federation:
-                      title: "Nom court de la fédération"
+                      title: Nom court de la fédération
                       type: string
-                      description: "Nom court de la fédération."
-                      example: "HANDBALL"
+                      description: Nom court de la fédération.
+                      example: TRIATHLON
                 etablissement:
-                  title: "Informations sur l'établissement"
+                  title: Informations sur l'établissement
                   type: object
-                  description: "Données d'identification de l'établissement."
+                  description: Données d'identification de l'établissement.
                   properties:
                     code_etablissement:
-                      title: "Code établissement"
+                      title: Code établissement
                       type: string
-                      description: "Code de l'établissement."
-                      example: "2075"
+                      description: Code de l'établissement.
+                      example: '1093'
                     nom_etablissement:
-                      title: "Nom de l'établissement"
+                      title: Nom de l'établissement
                       type: string
-                      description: "Nom de l'établissement."
-                      example: "Maison de la Performance Nouvelle-Aquitaine"
+                      description: Nom de l'établissement.
+                      example: Maison de la Performance Occitanie
                 region:
-                  title: "Informations sur la région"
+                  title: Informations sur la région
                   type: object
-                  description: "Données d'identification de la région."
+                  description: Données d'identification de la région.
                   properties:
                     code_region:
-                      title: "Code région"
+                      title: Code région
                       type: string
-                      description: "Code de la région."
-                      example: "75"
+                      description: Code de la région.
+                      example: '76'
                     nom_region:
-                      title: "Nom de la région"
+                      title: Nom de la région
                       type: string
-                      description: "Nom de la région."
-                      example: "Nouvelle-Aquitaine"
+                      description: Nom de la région.
+                      example: Occitanie
                 categorie:
-                  title: "Informations sur la catégorie"
+                  title: Informations sur la catégorie
                   type: object
-                  description: "Données d'identification de la catégorie sportive."
+                  description: Données d'identification de la catégorie sportive.
                   properties:
                     code_categorie:
-                      title: "Code catégorie"
+                      title: Code catégorie
                       type: string
-                      description: "Code de la catégorie."
-                      example: "2"
+                      description: Code de la catégorie.
+                      example: '4'
                     nom_categorie:
-                      title: "Nom de la catégorie"
+                      title: Nom de la catégorie
                       type: string
-                      description: "Nom de la catégorie."
-                      example: "elite"
+                      description: Nom de la catégorie.
+                      example: Elite
                     valeur:
-                      title: "Valeur"
+                      title: Valeur
                       type: string
-                      description: "Valeur associée à la catégorie."
-                      example: "4"
+                      description: Valeur associée à la catégorie.
+                      example: '128'
                 sportif_de_haut_niveau:
-                  title: "Sportif de haut niveau"
+                  title: Sportif de haut niveau
                   type: boolean
-                  description: "Indique si ce statut correspond à un sportif de haut niveau."
+                  description: Indique si ce statut correspond à un sportif de haut niveau.
                   example: true
-
-            informations_statuts_precedents:
-              title: "Historique des statuts précédents"
-              type: array
-              description: "Détails historiques des statuts sportifs précédents."
-              items:
-                type: object
-                properties:
-                  fiche:
-                    title: "Numéro de fiche"
-                    type: integer
-                    description: "Numéro de la fiche."
-                    example: 789456
-                  periode:
-                    title: "Période du statut"
-                    type: object
-                    description: "Période de validité du statut sportif de haut niveau."
-                    properties:
-                      date_debut_statut:
-                        title: "Date de début du statut"
-                        type: string
-                        format: date
-                        description: "Date de début du statut sportif de haut niveau."
-                        example: "2021-01-01"
-                      date_fin_statut:
-                        title: "Date de fin du statut"
-                        type: string
-                        format: date
-                        description: "Date de fin du statut sportif de haut niveau."
-                        example: "2022-12-31"
-                  federation:
-                    title: "Informations sur la fédération"
-                    type: object
-                    description: "Données d'identification de la fédération."
-                    properties:
-                      code_federation:
-                        title: "Code fédération"
-                        type: string
-                        description: "Code de la fédération."
-                        example: "69"
-                      nom_federation:
-                        title: "Nom de la fédération"
-                        type: string
-                        description: "Nom complet de la fédération."
-                        example: "Fédération Française de Triathlon et Disciplines Enchaînées"
-                      nom_court_federation:
-                        title: "Nom court de la fédération"
-                        type: string
-                        description: "Nom court de la fédération."
-                        example: "TRIATHLON"
-                  etablissement:
-                    title: "Informations sur l'établissement"
-                    type: object
-                    description: "Données d'identification de l'établissement."
-                    properties:
-                      code_etablissement:
-                        title: "Code établissement"
-                        type: string
-                        description: "Code de l'établissement."
-                        example: "1093"
-                      nom_etablissement:
-                        title: "Nom de l'établissement"
-                        type: string
-                        description: "Nom de l'établissement."
-                        example: "Maison de la Performance Occitanie"
-                  region:
-                    title: "Informations sur la région"
-                    type: object
-                    description: "Données d'identification de la région."
-                    properties:
-                      code_region:
-                        title: "Code région"
-                        type: string
-                        description: "Code de la région."
-                        example: "76"
-                      nom_region:
-                        title: "Nom de la région"
-                        type: string
-                        description: "Nom de la région."
-                        example: "Occitanie"
-                  categorie:
-                    title: "Informations sur la catégorie"
-                    type: object
-                    description: "Données d'identification de la catégorie sportive."
-                    properties:
-                      code_categorie:
-                        title: "Code catégorie"
-                        type: string
-                        description: "Code de la catégorie."
-                        example: "4"
-                      nom_categorie:
-                        title: "Nom de la catégorie"
-                        type: string
-                        description: "Nom de la catégorie."
-                        example: "Elite"
-                      valeur:
-                        title: "Valeur"
-                        type: string
-                        description: "Valeur associée à la catégorie."
-                        example: "128"
-                  sportif_de_haut_niveau:
-                    title: "Sportif de haut niveau"
-                    type: boolean
-                    description: "Indique si ce statut correspond à un sportif de haut niveau."
-                    example: true

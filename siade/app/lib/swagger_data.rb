@@ -35,7 +35,10 @@ class SwaggerData
       fiches.each do |fiche|
         next unless fiche['swagger']
 
-        result.deep_merge!(fiche['swagger'])
+        fiche['swagger'].each do |dotted_key, props|
+          nested = dotted_key.split('.').reverse.inject(props) { |val, key| { key => val } }
+          result.deep_merge!(nested)
+        end
       end
     end
   end

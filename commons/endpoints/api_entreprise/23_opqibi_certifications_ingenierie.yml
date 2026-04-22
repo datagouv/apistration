@@ -113,112 +113,118 @@ fiche:
 
           **Source: [Opqibi.fr, rubrique "Certificats OPQIBI et marché publics"](https://www.opqibi.com/page/certificats-opqibi-et-marche-publics){:target="_blank"}.**
     swagger:
-      opqibi:
-        certifications_ingenierie:
-          title: "Certification d'ingénierie OPQIBI"
-          type: "certificat_ingenierie"
-          id:
-            title: "Numéro du certificat"
-            description: "Numéro du présent certificat"
-            type: "string"
-            example: "14 12 2819"
-          description: |+
-            Certification délivrée par l'association OPQIBI, attestant des différentes qualifications d'ingénierie d'une unité légale.
-          tags:
-            - "Certifications professionnelles"
-          attributes:
-            numero_certificat:
-              title: "Numéro de certificat"
-              type: "string"
-            url:
-              title: "URL Certificat"
-              description: "URL pour consulter ce certificat sur le site de l'OPQIBI"
-              type: "string"
-              example: "https://www.opqibi.com/fiche/1777"
-            date_delivrance_certificat:
-              title: "Date de délivrance du certificat"
-              description: "Date à laquelle a été délivré le certificat"
-              type: "string"
-              example: "2021-01-28"
-            duree_validite_certificat:
-              title: "Durée de validité du certificat"
-              description: "Durée pendant laquelle le certificat est valide"
-              type: "string"
-              example: "valable un an"
-            assurances:
-              title: "Assurance(s)"
-              description: "Liste d'assurances reconnaissant le certificat (i.e pour avantages tarifaires). Les noms sont séparés par un tiret."
-              type: "string"
-              example: "ALLIANZ - XL INSURANCE"
-            qualifications:
-              title: "Qualifications"
-              description: |
-                Qualifications de l'entreprise. Un certificat de qualification atteste qu'une
-                structure possède l'aptitude à réaliser et a déjà réalisé les prestations
-                pour lesquelles elle est qualifiée.
-              type: "array"
-              items:
-                type: "object"
-                additionalProperties: false
-                properties:
-                  nom:
-                    title: "Nom"
-                    description: "Nom de la qualification"
-                    type: "string"
-                    example: "Etude thermique réglementaire \"maison individuelle\""
-                  code_qualification:
-                    title: "Code"
-                    description: "Code de la qualification"
-                    type: "string"
-                    example: "1331"
-                  definition:
-                    title: "Définition"
-                    description: "Définition de la qualification"
-                    type: "string"
-                    example: "Cette qualification correspond à la réalisation des calculs thermiques réglementaires pour les constructions neuves."
-                  rge:
-                    title: "RGE"
-                    description: "Précise si la qualification porte la mention RGE (Reconnu Garant de l'Environnement)"
-                    type: "boolean"
-                    example: false
-            date_validite_qualifications:
-              title: "Date de validité des qualifications"
-              description: "Date jusqu'à laquelle les qualifications sont valables"
-              type: "string"
-              example: "2025-02-21"
-            qualifications_probatoires:
-              description: |
-                Qualifications de l'entreprise. Un certificat de qualification probatoire atteste qu'une
-                structure possède l'aptitude à réaliser les prestations pour lesquelles elle est qualifiée,
-                mais qu'elle ne les a pas encore ou pas suffisamment réalisées.
-              type: "array"
-              items:
-                type: "object"
-                additionalProperties: false
-                properties:
-                  nom:
-                    title: "Nom"
-                    description: "Nom de la qualification"
-                    type: "string"
-                    example: "Etude thermique réglementaire \"maison individuelle\""
-                  code_qualification:
-                    title: "Code"
-                    description: "Code de la qualification"
-                    type: "string"
-                    example: "1331"
-                  definition:
-                    title: "Définition"
-                    description: "Définition de la qualification"
-                    type: "string"
-                    example: "Cette qualification correspond à la réalisation des calculs thermiques réglementaires pour les constructions neuves."
-                  rge:
-                    title: "RGE"
-                    description: "Précise si la qualification porte la mention RGE (Reconnu Garant de l'Environnement)"
-                    type: "boolean"
-                    example: false
-            date_validite_qualifications_probatoires:
-              title: "Date de validité des qualifications probatoires"
-              description: "Date jusqu'à laquelle les qualifications probatoires sont valables"
-              type: "string"
-              example: "2025-02-21"
-              nullable: true
+      opqibi.certifications_ingenierie:
+        title: Certification d'ingénierie OPQIBI
+        type: certificat_ingenierie
+        id:
+          title: Numéro du certificat
+          description: Numéro du présent certificat
+          type: string
+          example: 14 12 2819
+        description: 'Certification délivrée par l''association OPQIBI, attestant des différentes
+          qualifications d''ingénierie d''une unité légale.
+        
+          '
+        tags:
+        - Certifications professionnelles
+        attributes:
+          numero_certificat:
+            title: Numéro de certificat
+            type: string
+          url:
+            title: URL Certificat
+            description: URL pour consulter ce certificat sur le site de l'OPQIBI
+            type: string
+            example: https://www.opqibi.com/fiche/1777
+          date_delivrance_certificat:
+            title: Date de délivrance du certificat
+            description: Date à laquelle a été délivré le certificat
+            type: string
+            example: '2021-01-28'
+          duree_validite_certificat:
+            title: Durée de validité du certificat
+            description: Durée pendant laquelle le certificat est valide
+            type: string
+            example: valable un an
+          assurances:
+            title: Assurance(s)
+            description: Liste d'assurances reconnaissant le certificat (i.e pour avantages
+              tarifaires). Les noms sont séparés par un tiret.
+            type: string
+            example: ALLIANZ - XL INSURANCE
+          qualifications:
+            title: Qualifications
+            description: |
+              Qualifications de l'entreprise. Un certificat de qualification atteste qu'une
+              structure possède l'aptitude à réaliser et a déjà réalisé les prestations
+              pour lesquelles elle est qualifiée.
+            type: array
+            items:
+              type: object
+              additionalProperties: false
+              properties:
+                nom:
+                  title: Nom
+                  description: Nom de la qualification
+                  type: string
+                  example: Etude thermique réglementaire "maison individuelle"
+                code_qualification:
+                  title: Code
+                  description: Code de la qualification
+                  type: string
+                  example: '1331'
+                definition:
+                  title: Définition
+                  description: Définition de la qualification
+                  type: string
+                  example: Cette qualification correspond à la réalisation des calculs thermiques
+                    réglementaires pour les constructions neuves.
+                rge:
+                  title: RGE
+                  description: Précise si la qualification porte la mention RGE (Reconnu Garant
+                    de l'Environnement)
+                  type: boolean
+                  example: false
+          date_validite_qualifications:
+            title: Date de validité des qualifications
+            description: Date jusqu'à laquelle les qualifications sont valables
+            type: string
+            example: '2025-02-21'
+          qualifications_probatoires:
+            description: |
+              Qualifications de l'entreprise. Un certificat de qualification probatoire atteste qu'une
+              structure possède l'aptitude à réaliser les prestations pour lesquelles elle est qualifiée,
+              mais qu'elle ne les a pas encore ou pas suffisamment réalisées.
+            type: array
+            items:
+              type: object
+              additionalProperties: false
+              properties:
+                nom:
+                  title: Nom
+                  description: Nom de la qualification
+                  type: string
+                  example: Etude thermique réglementaire "maison individuelle"
+                code_qualification:
+                  title: Code
+                  description: Code de la qualification
+                  type: string
+                  example: '1331'
+                definition:
+                  title: Définition
+                  description: Définition de la qualification
+                  type: string
+                  example: Cette qualification correspond à la réalisation des calculs thermiques
+                    réglementaires pour les constructions neuves.
+                rge:
+                  title: RGE
+                  description: Précise si la qualification porte la mention RGE (Reconnu Garant
+                    de l'Environnement)
+                  type: boolean
+                  example: false
+          date_validite_qualifications_probatoires:
+            title: Date de validité des qualifications probatoires
+            description: Date jusqu'à laquelle les qualifications probatoires sont valables
+            type: string
+            example: '2025-02-21'
+            nullable: true
