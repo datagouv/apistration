@@ -1,0 +1,46 @@
+---
+description: |-
+  ## IDENTITÉ CAS ETRANGER
+
+  Permet de tester un appel pour une personne née à l'étranger (Italie) sans fourniture de date de naissance
+params:
+  codeCogInseePaysNaissance: '99127'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'LISA'
+  prenoms:
+    - 'MONA'
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "LISA",
+          "nom_usage": null,
+          "prenoms": "MONA",
+          "date_naissance": "1980-01-12",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Madame Mona Lisa",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "Place du musée du Louvres",
+        "lieu_dit": null,
+        "code_postal_ville": "75001 Paris",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 4270,
+        "annee": 2026,
+        "mois": 4,
+        "annee_calcul": 2026,
+        "mois_calcul": 4
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

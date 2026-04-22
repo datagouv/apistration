@@ -1,4 +1,165 @@
 # [Identité] Quotient familial CAF & MSA
+* [200-QF-150-CNAF.yaml](200-QF-150-CNAF.yaml)
+
+  Status `200`
+
+  ## QF 150
+
+Permet de tester la fourniture d'un quotient familial de 150
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "35238",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "MARTIN",
+    "prenoms": [
+      "AXELLE",
+      "LAURENCE"
+    ],
+    "anneeDateNaissance": 1989,
+    "moisDateNaissance": 12,
+    "jourDateNaissance": 3
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "AXELLE LAURENCE",
+          "date_naissance": "1989-12-03",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Madame MARTIN AXELLE LAURENCE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE DE SAINT-MALO",
+        "lieu_dit": null,
+        "code_postal_ville": "35000 RENNES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 150,
+        "annee": 2026,
+        "mois": 4,
+        "annee_calcul": 2026,
+        "mois_calcul": 4
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=35238' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=MARTIN' -d 'prenoms[]=AXELLE' -d 'prenoms[]=LAURENCE' -d 'anneeDateNaissance=1989' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
+* [200-QF-CNAF-etranger-pas-de-date-naissance.yaml](200-QF-CNAF-etranger-pas-de-date-naissance.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS ETRANGER
+
+Permet de tester un appel pour une personne née à l'étranger (Italie) sans fourniture de date de naissance
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseePaysNaissance": "99127",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "LISA",
+    "prenoms": [
+      "MONA"
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "LISA",
+          "nom_usage": null,
+          "prenoms": "MONA",
+          "date_naissance": "1980-01-12",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Madame Mona Lisa",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "Place du musée du Louvres",
+        "lieu_dit": null,
+        "code_postal_ville": "75001 Paris",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 4270,
+        "annee": 2026,
+        "mois": 4,
+        "annee_calcul": 2026,
+        "mois_calcul": 4
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseePaysNaissance=99127' -d 'sexeEtatCivil=F' -d 'nomNaissance=LISA' -d 'prenoms[]=MONA' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
 * [200-couple-2_enfants-qf_msa_150_mai26.yaml](200-couple-2_enfants-qf_msa_150_mai26.yaml)
 
   Status `200`
