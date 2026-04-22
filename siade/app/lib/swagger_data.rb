@@ -29,21 +29,15 @@ class SwaggerData
   end
 
   def load_from_endpoints
-    prefix = shared_raw
-    exclude = load_shared.keys + ['fiche']
-    endpoint_files.inject({}) do |result, file|
-      content = File.read(file).sub(/\A---\n/, '')
-      raw = "#{prefix}\n#{content}"
-      data = YAML.safe_load(raw, permitted_classes: [Date], aliases: true)
-      swagger_keys = data.except(*exclude)
-      next result if swagger_keys.empty?
+    endpoint_files.each_with_object({}) do |file, result|
+      data = YAML.safe_load_file(file, aliases: true)
+      fiches = [*data['fiche']]
+      fiches.each do |fiche|
+        next unless fiche['swagger']
 
-      result.deep_merge(swagger_keys)
+        result.deep_merge!(fiche['swagger'])
+      end
     end
-  end
-
-  def shared_raw
-    @shared_raw ||= shared_files.sort.map { |f| "#{File.read(f)}\n" }.reduce(:+) || ''
   end
 
   def shared_files

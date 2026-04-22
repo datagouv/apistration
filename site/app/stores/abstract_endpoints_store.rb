@@ -39,7 +39,7 @@ class AbstractEndpointsStore
     }.sort { |endpoint1, endpoint2| # rubocop:todo Style/MultilineBlockChain
       order_by_position(endpoint1, endpoint2)
     }.map do |endpoint| # rubocop:todo Style/MultilineBlockChain
-      endpoint.except('position')
+      endpoint.except('position', 'swagger')
     end
   end
 

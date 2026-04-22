@@ -56,26 +56,26 @@ fiche:
       - Donnée structurée JSON
     parameters:
       - Numéro de SIRET de l'établissement
-
-msa:
-  conformites_cotisations:
-    title: "Conformité cotisations de sécurité sociale agricole"
-    description: "Statut des cotisations sociales d'une entreprise indiquant si elle est en règle auprès de la sécurité sociale agricole (MSA)."
-    tags:
-      - "Attestations sociales et fiscales"
-    attributes:
-      status:
-        type: "string"
-        title: "Status"
-        description: "Détermine le statut des cotisations, les valeurs possibles:
-          \n
-          \n
-          * up_to_date : l'entreprise est à jour de ses cotisations
-          \n
-          * outdated : l'entreprise n'est pas à jour de ses cotisations
-          \n
-          * under_investigation : l'entreprise est en cours d'analyse par un agent de la MSA"
-        enum:
-          - up_to_date
-          - outdated
-          - under_investigation
+    swagger:
+      msa:
+        conformites_cotisations:
+          title: "Conformité cotisations de sécurité sociale agricole"
+          description: "Statut des cotisations sociales d'une entreprise indiquant si elle est en règle auprès de la sécurité sociale agricole (MSA)."
+          tags:
+            - "Attestations sociales et fiscales"
+          attributes:
+            status:
+              type: "string"
+              title: "Status"
+              description: "Détermine le statut des cotisations, les valeurs possibles:
+                \n
+                \n
+                * up_to_date : l'entreprise est à jour de ses cotisations
+                \n
+                * outdated : l'entreprise n'est pas à jour de ses cotisations
+                \n
+                * under_investigation : l'entreprise est en cours d'analyse par un agent de la MSA"
+              enum:
+                - up_to_date
+                - outdated
+                - under_investigation

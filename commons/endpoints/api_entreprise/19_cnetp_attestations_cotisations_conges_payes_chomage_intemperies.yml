@@ -79,14 +79,14 @@ fiche:
       - q: L'API ne renvoie pas de pièce, peut-on considérer que l'entreprise n'est pas à jour ?
         a: |+
           Non, dans certains cas nous ne pouvons pas récupérer l’attestation. Notamment, cette API ne permet de récupérer les attestations des entreprises réglant leurs cotisations à la CNETP au travers de l'URSSAF (dans le cadre du TESE).
-
-cnetp:
-  attestation_cotisations_conges_payes_chomage_intemperies:
-    title: "Certificat cotisations CNETP"
-    description: "Certificat indiquant qu'une entreprise de travaux publics affiliée à la caisse CNETP est en règle de ses cotisations congés payés et chômage-intempéries."
-    tags:
-      - "Attestations sociales et fiscales"
-    document_url_properties:
-      title: "Lien vers le certificat CNETP"
-      description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 24h."
-      example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf"
+    swagger:
+      cnetp:
+        attestation_cotisations_conges_payes_chomage_intemperies:
+          title: "Certificat cotisations CNETP"
+          description: "Certificat indiquant qu'une entreprise de travaux publics affiliée à la caisse CNETP est en règle de ses cotisations congés payés et chômage-intempéries."
+          tags:
+            - "Attestations sociales et fiscales"
+          document_url_properties:
+            title: "Lien vers le certificat CNETP"
+            description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 24h."
+            example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies/test_cnetp_certificat.pdf"

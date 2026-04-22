@@ -64,27 +64,27 @@ fiche:
       - Donnée structurée JSON
     parameters:
       - Numéro de SIRET de l'établissement
-
-probtp:
-  attestation_cotisation_retraite:
-    title: "Conformité cotisations retraite bâtiment"
-    description: "Attestation délivrée par la Protection sociale du bâtiment et des travaux publics (PROBTP), indiquant que l'entreprise est à jour de ses cotisations."
-    tags:
-      - "Attestations sociales et fiscales"
-    document_url_properties:
-      title: "Lien vers l'attestation de cotisation retraite ProBTP"
-      description: "Ce document est automatiquement supprimé au bout de 3 mois."
-      example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf"
-  conformites_cotisations_retraite:
-    title: "Conformité cotisations retraite complémentaire"
-    description: "Régularité des cotisations de retraite complémentaire auprès de la Protection Sociale du Bâtiment et des Travaux publics (ProBTP)."
-    tags:
-      - "Attestations sociales et fiscales"
-    attributes:
-      eligible:
-        type: "boolean"
-        example: true
-        enum:
-          - true
-          - false
-        description: "Détermine si une entreprise est éligible ou non aux cotisations retraites de ProBTP."
+    swagger:
+      probtp:
+        attestation_cotisation_retraite:
+          title: "Conformité cotisations retraite bâtiment"
+          description: "Attestation délivrée par la Protection sociale du bâtiment et des travaux publics (PROBTP), indiquant que l'entreprise est à jour de ses cotisations."
+          tags:
+            - "Attestations sociales et fiscales"
+          document_url_properties:
+            title: "Lien vers l'attestation de cotisation retraite ProBTP"
+            description: "Ce document est automatiquement supprimé au bout de 3 mois."
+            example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_probtp_attestations_cotisation_retraite/test_probtp_attestation.pdf"
+        conformites_cotisations_retraite:
+          title: "Conformité cotisations retraite complémentaire"
+          description: "Régularité des cotisations de retraite complémentaire auprès de la Protection Sociale du Bâtiment et des Travaux publics (ProBTP)."
+          tags:
+            - "Attestations sociales et fiscales"
+          attributes:
+            eligible:
+              type: "boolean"
+              example: true
+              enum:
+                - true
+                - false
+              description: "Détermine si une entreprise est éligible ou non aux cotisations retraites de ProBTP."

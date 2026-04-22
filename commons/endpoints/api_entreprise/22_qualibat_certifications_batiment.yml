@@ -87,6 +87,98 @@ fiche:
       - URL vers le certificat en PDF
     parameters: &qualibat_parameters
       - Numéro de SIRET de l'établissement
+    swagger:
+      qualibat:
+        certifications_batiment:
+          title:
+            v3: "Certification Qualibat (PDF seulement)"
+            v4: "Certification Qualibat"
+          description: "Certification délivrée par l'association Qualibat, attestant de la qualification d’une entreprise dans le bâtiment."
+          cache_duration: "Le cache est valide jusqu'à la fin de la journée"
+          tags:
+            - "Certifications professionnelles"
+          document_url_properties:
+            title: "Lien vers la certification batiment Qualibat"
+            description: "Cette URL permet de télécharger la certification Qualibat au format PDF."
+            example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf"
+
+          properties:
+            document_url:
+              title: "Lien vers la certification batiment Qualibat"
+              type: "string"
+              description: "Cette URL permet de télécharger la certification Qualibat au format PDF."
+              example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf"
+            document_url_expires_in:
+              title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
+              description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de fin de validité ou d'émission."
+              type: 'integer'
+              example: 86400
+            date_emission:
+              title: "Date d'émission du document"
+              type: "string"
+              format: "date"
+              nullable: true
+              example: "2023-01-01"
+            date_fin_validite:
+              title: "Date de fin de validité du document"
+              type: "string"
+              format: "date"
+              nullable: true
+              example: "2024-02-02"
+            entity:
+              type: "object"
+              title: "Informations sur l'entité référencée dans le document"
+              properties:
+                assurance_responsabilite_travaux:
+                  title: "Informations relatives à l'assurance responsabilité travaux"
+                  description: &qualibat_assurance_description "Les attributs peuvent être nuls si les informations sont absentes du PDF ou si l'assurance est inconnue de notre service."
+                  type: "object"
+                  properties: &assurance_properties
+                    nom:
+                      title: "Nom de l'assurance"
+                      example: "GROUPAMA"
+                      type: "string"
+                      nullable: true
+                    identifiant:
+                      title: "Numéro d'identification de l'entité enregistrée auprès de l'assurance"
+                      example: "1234567890"
+                      type: "string"
+                      nullable: true
+                assurance_responsabilite_civile:
+                  title: "Informations relatives à l'assurance responsabilité civile"
+                  type: "object"
+                  description: *qualibat_assurance_description
+                  properties: *assurance_properties
+                certifications:
+                  type: "array"
+                  title: "Tableau des certifications associées à l'entité"
+                  items:
+                    type: "object"
+                    title: "Certification"
+                    nullable: true
+                    properties:
+                      code:
+                        type: "string"
+                        title: "Code associé à la certification"
+                        example: "4322"
+                      libelle:
+                        title: "Libellé de la certification"
+                        type: "string"
+                        example: "Fabrication et pose de menuiserie intérieure en bois"
+                      rge:
+                        title: "Indique si la certification est RGE"
+                        description: "Ce champ indique si la certification est labellisée RGE (reconnu garant de l'environnement)"
+                        type: "boolean"
+                        example: false
+                        enum:
+                          - true
+                          - false
+                      date_attribution:
+                        title: "Date d'attribution"
+                        type: "string"
+                        format: "date"
+                        example: "2022-03-03"
+
   - uid: 'qualibat/certifications_batiment'
     new_version: true
     old_endpoint_uids:
@@ -172,99 +264,3 @@ fiche:
       - q: <a name="difference-api-rge"></a>Périmètre de cette API par rapport à l'API Certification RGE de l'Ademe
         a: |+
           L'[API Certification RGE](<%= endpoint_path(uid: 'ademe/certifications_rge') %>) délivre également des certificats Qualibat. Cependant, elle ne couvre que les certifications Qualibat labellisées RGE et ne vous permet donc pas d'accéder à la totalité des certificats Qualibat.
-
-
-qualibat:
-  certifications_batiment:
-    title:
-      v3: "Certification Qualibat (PDF seulement)"
-      v4: "Certification Qualibat"
-    description: "Certification délivrée par l'association Qualibat, attestant de la qualification d’une entreprise dans le bâtiment."
-    cache_duration: "Le cache est valide jusqu'à la fin de la journée"
-    tags:
-      - "Certifications professionnelles"
-    document_url_properties:
-      title: "Lien vers la certification batiment Qualibat"
-      description: "Cette URL permet de télécharger la certification Qualibat au format PDF."
-      example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf"
-
-    properties:
-      document_url:
-        title: "Lien vers la certification batiment Qualibat"
-        type: "string"
-        description: "Cette URL permet de télécharger la certification Qualibat au format PDF."
-        example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_qualibat_certifications_batiment/exemple-qualibat.pdf"
-      document_url_expires_in:
-        title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
-        description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de fin de validité ou d'émission."
-        type: 'integer'
-        example: 86400
-      date_emission:
-        title: "Date d'émission du document"
-        type: "string"
-        format: "date"
-        nullable: true
-        example: "2023-01-01"
-      date_fin_validite:
-        title: "Date de fin de validité du document"
-        type: "string"
-        format: "date"
-        nullable: true
-        example: "2024-02-02"
-      entity:
-        type: "object"
-        title: "Informations sur l'entité référencée dans le document"
-        properties:
-          assurance_responsabilite_travaux:
-            title: "Informations relatives à l'assurance responsabilité travaux"
-            description: &qualibat_assurance_description "Les attributs peuvent être nuls si les informations sont absentes du PDF ou si l'assurance est inconnue de notre service."
-            type: "object"
-            properties: &assurance_properties
-              nom:
-                title: "Nom de l'assurance"
-                example: "GROUPAMA"
-                type: "string"
-                nullable: true
-              identifiant:
-                title: "Numéro d'identification de l'entité enregistrée auprès de l'assurance"
-                example: "1234567890"
-                type: "string"
-                nullable: true
-          assurance_responsabilite_civile:
-            title: "Informations relatives à l'assurance responsabilité civile"
-            type: "object"
-            description: *qualibat_assurance_description
-            properties: *assurance_properties
-          certifications:
-            type: "array"
-            title: "Tableau des certifications associées à l'entité"
-            items:
-              type: "object"
-              title: "Certification"
-              nullable: true
-              properties:
-                code:
-                  type: "string"
-                  title: "Code associé à la certification"
-                  example: "4322"
-                libelle:
-                  title: "Libellé de la certification"
-                  type: "string"
-                  example: "Fabrication et pose de menuiserie intérieure en bois"
-                rge:
-                  title: "Indique si la certification est RGE"
-                  description: "Ce champ indique si la certification est labellisée RGE (reconnu garant de l'environnement)"
-                  type: "boolean"
-                  example: false
-                  enum:
-                    - true
-                    - false
-                date_attribution:
-                  title: "Date d'attribution"
-                  type: "string"
-                  format: "date"
-                  example: "2022-03-03"
-
-
-
-
