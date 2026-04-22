@@ -30,7 +30,7 @@ Selon la documentation disponible du provider, et si l'analyse de l'API provider
 
 ## Données du swagger
 
-Créer le fichier `config/swagger_data/<provider>.yml` (voir section doc correspondante)
+Ajouter les données swagger dans le fichier endpoint `commons/endpoints/api_*/` ou dans `commons/endpoints/_swagger_shared/<provider>.yml` (voir section doc correspondante)
 Lancer `bin/generate_swagger.sh` incluera l'API en mode prochainement dans le fichier OpenAPI correspondant.
 
 ## Nouveau provider
