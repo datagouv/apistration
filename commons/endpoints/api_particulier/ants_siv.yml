@@ -1,75 +1,76 @@
 ---
-- uid: 'ants/extrait_immatriculation_vehicule'
-  opening: protected
-  call_id:
-    - FranceConnect + Identifiant de l'immatriculation du véhicule
-  parameters:
-    - FranceConnect + Identifiant de l'immatriculation du véhicule
-  path: '/v3/ants/extrait_immatriculation_vehicule/france_connect'
-  ping_url: 'https://particulier.api.gouv.fr/api/v3/ants/extrait_immatriculation_vehicule/ping'
-  position: 603
-  novelty: true
-  alert:
-    title: "Conditions d'utilisation spécifiques pour cette API :"
-    description: |+
-      - **à destination exclusive des collectivités dans la cadre de la tarification du stationnement résidentiel**. Elle ne peut être utilisée pour contrôler _a posteriori_ le droit de stationnement.
-      - **ne fonctionne que si l’usager s’identifie via FranceConnect**. Il est donc nécessaire de faire une demande de raccordement à FranceConnect préalablement à votre demande d'habilitation.
-      - **déployée progressivement pour garantir la qualité du service**. Par conséquent, vous ne pourrez pas accéder aux données directement après la validation de votre demande comme pour les autres données. Vous serez notifiés par mail de la date à partir de laquelle vous pourrez y accéder.
+fiche:
+  - uid: 'ants/extrait_immatriculation_vehicule'
+    opening: protected
+    call_id:
+      - FranceConnect + Identifiant de l'immatriculation du véhicule
+    parameters:
+      - FranceConnect + Identifiant de l'immatriculation du véhicule
+    path: '/v3/ants/extrait_immatriculation_vehicule/france_connect'
+    ping_url: 'https://particulier.api.gouv.fr/api/v3/ants/extrait_immatriculation_vehicule/ping'
+    position: 603
+    novelty: true
+    alert:
+      title: "Conditions d'utilisation spécifiques pour cette API :"
+      description: |+
+        - **à destination exclusive des collectivités dans la cadre de la tarification du stationnement résidentiel**. Elle ne peut être utilisée pour contrôler _a posteriori_ le droit de stationnement.
+        - **ne fonctionne que si l’usager s’identifie via FranceConnect**. Il est donc nécessaire de faire une demande de raccordement à FranceConnect préalablement à votre demande d'habilitation.
+        - **déployée progressivement pour garantir la qualité du service**. Par conséquent, vous ne pourrez pas accéder aux données directement après la validation de votre demande comme pour les autres données. Vous serez notifiés par mail de la date à partir de laquelle vous pourrez y accéder.
 
-  perimeter:
-    entity_type_description: |+
-      **Cette API concerne les particuliers effectuant la démarche pour un véhicule dont ils sont&nbsp;:&nbsp;**
-      - ✅ propriétaire ;
-      - ✅ co-titulaire ;
-      - ✅ locataire en location longue durée (LLD, LCB, LCL).
+    perimeter:
+      entity_type_description: |+
+        **Cette API concerne les particuliers effectuant la démarche pour un véhicule dont ils sont&nbsp;:&nbsp;**
+        - ✅ propriétaire ;
+        - ✅ co-titulaire ;
+        - ✅ locataire en location longue durée (LLD, LCB, LCL).
 
-      ❌ **Elle ne concerne pas** les particuliers effectuant la démarche pour un véhicule d'entreprise ou de fonction.
+        ❌ **Elle ne concerne pas** les particuliers effectuant la démarche pour un véhicule d'entreprise ou de fonction.
 
-    geographical_scope_description:  |+
-      ✅ **Cette API concerne les véhicules immatriculés en France métropolitaine et dans les DROM**. C'est-à-dire dont la plaque d'immatriculation est de type `123 ABC 12` avant 2009 ou `AB-123-AB` après 2009.
+      geographical_scope_description:  |+
+        ✅ **Cette API concerne les véhicules immatriculés en France métropolitaine et dans les DROM**. C'est-à-dire dont la plaque d'immatriculation est de type `123 ABC 12` avant 2009 ou `AB-123-AB` après 2009.
 
-      ❌ **Elle ne couvre pas les véhicules immatriculés dans les collectivités d'Outre-Mer** car elles disposent de leurs propres systèmes d'immatriculation. 
+        ❌ **Elle ne couvre pas les véhicules immatriculés dans les collectivités d'Outre-Mer** car elles disposent de leurs propres systèmes d'immatriculation. 
 
-    updating_rules_description: |+
-      Les données sont **mises à jour en temps réel et reflètent la situation telle que connue dans le système d'immatriculation des véhicules (SIV)**. 
-      
-      En cas de changements (déménagement, nouveau véhicule...), la donnée est disponible dans l'API dès que celle-ci est enregistrée dans le SIV. Cela signifie que la situation obtenue par l'API à un instant T peut différer de la situation de l'usager si ses informations n'ont pas encore été enregistrées dans le SIV.
-      
-      {:.fr-highlight}
-      > **L'API est connectée directement au SIV et dispose donc de la donnée la plus à jour possible.**
-      > Les données exposées par cette API proviennent du SIV placé sous la responsabilité du Ministère de l’intérieur.
+      updating_rules_description: |+
+        Les données sont **mises à jour en temps réel et reflètent la situation telle que connue dans le système d'immatriculation des véhicules (SIV)**. 
+        
+        En cas de changements (déménagement, nouveau véhicule...), la donnée est disponible dans l'API dès que celle-ci est enregistrée dans le SIV. Cela signifie que la situation obtenue par l'API à un instant T peut différer de la situation de l'usager si ses informations n'ont pas encore été enregistrées dans le SIV.
+        
+        {:.fr-highlight}
+        > **L'API est connectée directement au SIV et dispose donc de la donnée la plus à jour possible.**
+        > Les données exposées par cette API proviennent du SIV placé sous la responsabilité du Ministère de l’intérieur.
 
 
-  parameters_details:
-    description: |+
-      Cette API propose une modalité d'appel :
-      
-      <p class="fr-badge fr-badge--blue-ecume">![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="20px"} FranceConnect + ID immatriculation</p>
-      **Appel uniquement avec le couple** : [FranceConnect](<%= cas_usage_path('modalite_appel_france_connect') %>) + identifiant d'immatriculation du véhicule (exemple : AA-123-BB)
- 
-  data:
-    description: |+
-      Cette API délivre, à destination exclusive des collectivités dans la cadre de la tarification du stationnement résidentiel :
-      - **le nom, prénom et l'adresse postale du particulier demandeur** du dossier d'immatriculation ;
-      - **le statut de rattachement de cette personne au véhicule** : titulaire, cotitulaire ou locataire ; 
-      - **les données d'immatriculation du véhicule** dont numéro d'immatriculation et  date de première immatriculation ;
-      - **les caractéristiques et informations techniques du véhicule**.
-    know_more_description: |+
-      [Informations présentes sur la carte grise qui sont dans le SIV](https://www.eplaque.fr/carte-grise/lire-une-carte-grise)
+    parameters_details:
+      description: |+
+        Cette API propose une modalité d'appel :
+        
+        <p class="fr-badge fr-badge--blue-ecume">![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="20px"} FranceConnect + ID immatriculation</p>
+        **Appel uniquement avec le couple** : [FranceConnect](<%= cas_usage_path('modalite_appel_france_connect') %>) + identifiant d'immatriculation du véhicule (exemple : AA-123-BB)
+   
+    data:
+      description: |+
+        Cette API délivre, à destination exclusive des collectivités dans la cadre de la tarification du stationnement résidentiel :
+        - **le nom, prénom et l'adresse postale du particulier demandeur** du dossier d'immatriculation ;
+        - **le statut de rattachement de cette personne au véhicule** : titulaire, cotitulaire ou locataire ; 
+        - **les données d'immatriculation du véhicule** dont numéro d'immatriculation et  date de première immatriculation ;
+        - **les caractéristiques et informations techniques du véhicule**.
+      know_more_description: |+
+        [Informations présentes sur la carte grise qui sont dans le SIV](https://www.eplaque.fr/carte-grise/lire-une-carte-grise)
 
-  # La liste des clés disponible est stockée dans la locale `provider_uids` du fichier provider_uids.fr.yml
-  provider_uids:
-    - 'ants'
-  keywords:
-    - 'immatriculation'
-    - 'siv'
-    - 'carte grise'
-    - 'stationnement résidentiel'
-  faq:
-    - q: "Question ?"
-      a: |+
-        Réponse à la question. Le markdown GFM est supporté ici.
-  api_cgu:
-    description: |+
-        Les conditions d'utilisations spécifiques à l'API
+    # La liste des clés disponible est stockée dans la locale `provider_uids` du fichier provider_uids.fr.yml
+    provider_uids:
+      - 'ants'
+    keywords:
+      - 'immatriculation'
+      - 'siv'
+      - 'carte grise'
+      - 'stationnement résidentiel'
+    faq:
+      - q: "Question ?"
+        a: |+
+          Réponse à la question. Le markdown GFM est supporté ici.
+    api_cgu:
+      description: |+
+          Les conditions d'utilisations spécifiques à l'API
 

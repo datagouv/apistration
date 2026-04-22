@@ -1,76 +1,77 @@
 ---
-- uid: 'douanes/immatriculation_eori'
-  path: '/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori'
-  ping_url: 'https://entreprise.api.gouv.fr/ping/douanes/immatriculations_eori'
-  position: 200
-  perimeter:
-    entity_type_description: |+
-      Cette API couvre ✅ **toutes les entreprises faisant des échanges commerciaux** entrant et sortant au sein de l'Union Européenne.
-      Le périmètre des entreprises concernées par cette API est cependant différent selon si l'appel est effectué avec le numéro EORI ou le SIRET de l'entreprise :
+fiche:
+  - uid: 'douanes/immatriculation_eori'
+    path: '/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/douanes/immatriculations_eori'
+    position: 200
+    perimeter:
+      entity_type_description: |+
+        Cette API couvre ✅ **toutes les entreprises faisant des échanges commerciaux** entrant et sortant au sein de l'Union Européenne.
+        Le périmètre des entreprises concernées par cette API est cependant différent selon si l'appel est effectué avec le numéro EORI ou le SIRET de l'entreprise :
 
-      **Appel avec un numéro EORI&nbsp;:**
+        **Appel avec un numéro EORI&nbsp;:**
 
-      Avec le numéro EORI de l'entreprise, vous accédez au statut de l'immatriculation de ✅ toutes les entreprises de la base des douanes.
+        Avec le numéro EORI de l'entreprise, vous accédez au statut de l'immatriculation de ✅ toutes les entreprises de la base des douanes.
 
-      **Appel avec un numéro de SIRET&nbsp;:**
+        **Appel avec un numéro de SIRET&nbsp;:**
 
-      - Pour les ✅ entreprises ayant réalisé leur immatriculation EORI en France, vous pouvez utiliser le numéro de SIRET comme paramètre d'appel.
-      - Pour les ❌ entreprises françaises immatriculées EORI dans un autre pays européen ; l'appel par SIRET ne fonctionne pas. Il renverra toujours un négatif, même si l'entreprise possède un numéro EORI actif.
+        - Pour les ✅ entreprises ayant réalisé leur immatriculation EORI en France, vous pouvez utiliser le numéro de SIRET comme paramètre d'appel.
+        - Pour les ❌ entreprises françaises immatriculées EORI dans un autre pays européen ; l'appel par SIRET ne fonctionne pas. Il renverra toujours un négatif, même si l'entreprise possède un numéro EORI actif.
 
-    updating_rules_description: |+
-      Le numéro EORI est un numéro unique d'identification, il n'a donc pas vocation à changer durant la vie de l'entreprise. En revanche, la base de données EORI évolue au fil des enregistrements des entreprises auprès de la douane, des modifications et radiations des entreprises. 
-      
-      Les données sont mises à jour :
-      - au fil de l'eau pour les numéros EORI des opérateurs économiques établis en France, lorsque la téléprocédure douanière de demande de création ou de modification a été validée ;
-      - par un système de push de la commission européenne pour les EORI étrangers sur un rythme aléatoire.
-    know_more_description: |+
-      {:.fr-highlight}
-      > **L'immatriculation EORI bascule du numéro de SIRET au numéro de SIREN**. Par souci de simplification et d'harmonisation avec les autres États-membre, tel qu'expliqué sur le [site de la Douane](https://www.douane.gouv.fr/vers-un-eori-siren-unique-et-un-portail-europeen-pour-les-autorisations-douanieres){:target="_blank"}, le numério EORI ne sera plus rattaché au SIRET de l'établissement mais au SIREN de l'entreprise.
-      > **Ce changement n'a pas d'impact sur l'API**, qui continue d'être appelable avec le numéro de SIRET, et renvoie le numéro EORI rattaché au SIREN.
+      updating_rules_description: |+
+        Le numéro EORI est un numéro unique d'identification, il n'a donc pas vocation à changer durant la vie de l'entreprise. En revanche, la base de données EORI évolue au fil des enregistrements des entreprises auprès de la douane, des modifications et radiations des entreprises. 
+        
+        Les données sont mises à jour :
+        - au fil de l'eau pour les numéros EORI des opérateurs économiques établis en France, lorsque la téléprocédure douanière de demande de création ou de modification a été validée ;
+        - par un système de push de la commission européenne pour les EORI étrangers sur un rythme aléatoire.
+      know_more_description: |+
+        {:.fr-highlight}
+        > **L'immatriculation EORI bascule du numéro de SIRET au numéro de SIREN**. Par souci de simplification et d'harmonisation avec les autres États-membre, tel qu'expliqué sur le [site de la Douane](https://www.douane.gouv.fr/vers-un-eori-siren-unique-et-un-portail-europeen-pour-les-autorisations-douanieres){:target="_blank"}, le numério EORI ne sera plus rattaché au SIRET de l'établissement mais au SIREN de l'entreprise.
+        > **Ce changement n'a pas d'impact sur l'API**, qui continue d'être appelable avec le numéro de SIRET, et renvoie le numéro EORI rattaché au SIREN.
 
-      ℹ️ **Liens utiles :** 
-      - [Site des douanes](https://www.douane.gouv.fr/fiche/numero-eori-economic-operator-registration-and-identification){:target="_blank"} 
-      - [Site de l'Union européenne](https://ec.europa.eu/taxation_customs/business/customs-procedures/general-overview/economic-operators-registration-identification-number-eori_fr){:target="_blank"}. 
-      - Vérification en ligne d'un numéro EORI avec le [site de la Commission Européenne](https://ec.europa.eu/taxation_customs/dds2/eos/eori_validation.jsp?Lang=fr){:target="_blank"}.
-    entities:
-      - entreprises
-  call_id: "N°EORI / SIRET"
-  provider_uids:
-    - 'douanes'
-  data:
-    description: |+
-      Cette API délivre :
-      - le statut **actif ou non du numéro EORI** de l'entreprise. Si le numéro EORI n'est plus actif, cela signifie que l'entreprise n'est plus autorisée à importer ou exporter en Union Européenne.
-      - La raison sociale et l'adresse de l'entreprise telles qu'enregistrée auprès des douanes sont aussi précisées.
+        ℹ️ **Liens utiles :** 
+        - [Site des douanes](https://www.douane.gouv.fr/fiche/numero-eori-economic-operator-registration-and-identification){:target="_blank"} 
+        - [Site de l'Union européenne](https://ec.europa.eu/taxation_customs/business/customs-procedures/general-overview/economic-operators-registration-identification-number-eori_fr){:target="_blank"}. 
+        - Vérification en ligne d'un numéro EORI avec le [site de la Commission Européenne](https://ec.europa.eu/taxation_customs/dds2/eos/eori_validation.jsp?Lang=fr){:target="_blank"}.
+      entities:
+        - entreprises
+    call_id: "N°EORI / SIRET"
+    provider_uids:
+      - 'douanes'
+    data:
+      description: |+
+        Cette API délivre :
+        - le statut **actif ou non du numéro EORI** de l'entreprise. Si le numéro EORI n'est plus actif, cela signifie que l'entreprise n'est plus autorisée à importer ou exporter en Union Européenne.
+        - La raison sociale et l'adresse de l'entreprise telles qu'enregistrée auprès des douanes sont aussi précisées.
 
-
-      {:.fr-highlight.fr-highlight--caution}
-      > ⚠️ Une réponse **statut inactif peut être un faux négatif** : Si vous utilisez le SIRET d'une entreprise dont vous ne connaissez pas le pays d'immatriculation, il se peut que le statut inactif corresponde au fait que l'appel ne fonctionne pas (dans le cas où l'entreprise n'a pas été immatriculée en France).
-
-  opening: public
-  format:
-    - Donnée structurée JSON
-  parameters:
-    - Numéro EORI de l'entreprise ou SIRET si elle est immatriculée en France.
-  faq:
-    - q: À quoi ressemble un numéro EORI ?
-      a: |+
-        Pour les entreprises françaises ayant fait leur demande de numéro EORI auprès des douanes françaises, sa composition est FR + Numéro de SIRET :
-
-        {:.fr-highlight.fr-highlight--example}
-        > Exemple : `FR16002307300010`
-
-        Dans les autres cas, le numéro est composé des deux lettres du pays émetteur suivi d’un code ou d’un numéro unique dans cet État membre :
-
-        {:.fr-highlight.fr-highlight--example}
-        > Exemple : `ES12345678`
-
-
-    - q: Je ne connais pas le numéro EORI de l'entreprise
-      a: |+
-        Vous pouvez **appeler cette entreprise avec son numéro de SIRET**, si celle-ci a effectué sa demande d’attribution de numéro EORI en France.
-
-        Cependant si cette entreprise a fait sa demande d’attribution de numéro EORI dans un autre pays membre de l’Union Européenne, il vous faudra demander ce numéro directement à l’entreprise. Il n’existe aucun moyen de trouver ce numéro.
 
         {:.fr-highlight.fr-highlight--caution}
-        > ⚠️ Si vous ne savez pas si l’entreprise française a effectué son immatriculation en France, une réponse négative de l'API n'est pas fiable car il peut s'agir d'un faux négatif.
+        > ⚠️ Une réponse **statut inactif peut être un faux négatif** : Si vous utilisez le SIRET d'une entreprise dont vous ne connaissez pas le pays d'immatriculation, il se peut que le statut inactif corresponde au fait que l'appel ne fonctionne pas (dans le cas où l'entreprise n'a pas été immatriculée en France).
+
+    opening: public
+    format:
+      - Donnée structurée JSON
+    parameters:
+      - Numéro EORI de l'entreprise ou SIRET si elle est immatriculée en France.
+    faq:
+      - q: À quoi ressemble un numéro EORI ?
+        a: |+
+          Pour les entreprises françaises ayant fait leur demande de numéro EORI auprès des douanes françaises, sa composition est FR + Numéro de SIRET :
+
+          {:.fr-highlight.fr-highlight--example}
+          > Exemple : `FR16002307300010`
+
+          Dans les autres cas, le numéro est composé des deux lettres du pays émetteur suivi d’un code ou d’un numéro unique dans cet État membre :
+
+          {:.fr-highlight.fr-highlight--example}
+          > Exemple : `ES12345678`
+
+
+      - q: Je ne connais pas le numéro EORI de l'entreprise
+        a: |+
+          Vous pouvez **appeler cette entreprise avec son numéro de SIRET**, si celle-ci a effectué sa demande d’attribution de numéro EORI en France.
+
+          Cependant si cette entreprise a fait sa demande d’attribution de numéro EORI dans un autre pays membre de l’Union Européenne, il vous faudra demander ce numéro directement à l’entreprise. Il n’existe aucun moyen de trouver ce numéro.
+
+          {:.fr-highlight.fr-highlight--caution}
+          > ⚠️ Si vous ne savez pas si l’entreprise française a effectué son immatriculation en France, une réponse négative de l'API n'est pas fiable car il peut s'agir d'un faux négatif.

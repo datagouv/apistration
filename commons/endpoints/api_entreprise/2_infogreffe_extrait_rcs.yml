@@ -1,75 +1,76 @@
 ---
-- uid: 'infogreffe/rcs/extrait'
-  path: '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
-  ping_url: 'https://entreprise.api.gouv.fr/ping/infogreffe/rcs'
-  position: 110
-  perimeter:
-    entity_type_description: |+
-      Cette API concerne ✅ **toutes les entreprises inscrites au registre du commerce et des sociétés (RCS)**.
-      Il s'agit des entreprises ayant une activité commerciale. Pour plus de détails, consulter [le site du ministère de l'économie](https://www.economie.gouv.fr/entreprises/registre-commerce-societes-rcs){:target="_blank"}.
-    updating_rules_description: |+
-      Les données sont **mises à jour en temps réel avec les greffes**. La donnée est donc la plus récente possible, _modulo_ le temps de saisie nécessaire pour les greffiers.
-    entities:
-      - entreprises
-  call_id: "SIREN"
-  provider_uids:
-    - 'infogreffe'
-  keywords:
-    - 'decret janvier 2019'
-    - 'kbis'
-    - 'fusion'
-    - 'redressement'
-    - 'cessation'
-    - 'clôture'
-    - 'liquidation'
-    - 'mandataire'
-    - 'capital'
-    - 'naf'
-    - 'ape'
-    - 'activité'
-    - 'immatriculation'
-  data:
-    description: |+
-      Cette API délivre :
-      - un **extrait des données** présentes dans le registre du commerce et des sociétés. ⚠️ Cette API n'est pas une réplique exacte d'un Kbis, même si la majorité des données sont présentes.
-      - **tous les commentaires laissés par les greffiers**. Ces observations concernent, entre autres, les changements de capital, les transferts de siège, les fusions, les redressements et liquidations judiciaires (si la donnée est publique).
+fiche:
+  - uid: 'infogreffe/rcs/extrait'
+    path: '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/infogreffe/rcs'
+    position: 110
+    perimeter:
+      entity_type_description: |+
+        Cette API concerne ✅ **toutes les entreprises inscrites au registre du commerce et des sociétés (RCS)**.
+        Il s'agit des entreprises ayant une activité commerciale. Pour plus de détails, consulter [le site du ministère de l'économie](https://www.economie.gouv.fr/entreprises/registre-commerce-societes-rcs){:target="_blank"}.
+      updating_rules_description: |+
+        Les données sont **mises à jour en temps réel avec les greffes**. La donnée est donc la plus récente possible, _modulo_ le temps de saisie nécessaire pour les greffiers.
+      entities:
+        - entreprises
+    call_id: "SIREN"
+    provider_uids:
+      - 'infogreffe'
+    keywords:
+      - 'decret janvier 2019'
+      - 'kbis'
+      - 'fusion'
+      - 'redressement'
+      - 'cessation'
+      - 'clôture'
+      - 'liquidation'
+      - 'mandataire'
+      - 'capital'
+      - 'naf'
+      - 'ape'
+      - 'activité'
+      - 'immatriculation'
+    data:
+      description: |+
+        Cette API délivre :
+        - un **extrait des données** présentes dans le registre du commerce et des sociétés. ⚠️ Cette API n'est pas une réplique exacte d'un Kbis, même si la majorité des données sont présentes.
+        - **tous les commentaires laissés par les greffiers**. Ces observations concernent, entre autres, les changements de capital, les transferts de siège, les fusions, les redressements et liquidations judiciaires (si la donnée est publique).
 
-      <br/>
-      **Données du K-bis qui ne figurent pas ou seulement partiellement dans cette API&nbsp;:**
-
-      {:.fr-table}
-      | Donnée présente dans le K-bis              |   Équivalence sur API Entreprise              |
-      |:-------------------------------------------|:-----------------------------------------------|
-      | Adresse du siège social                    |   Cette API délivre l'adresse de l'établissement principal. L'adresse du siège social est appelable avec l'[API siège social - Insee](<%= endpoint_path(uid: 'insee/siege_social') %>).      |
-      | Activités principales de l'entreprise      |   Cette API délivre uniquement les activités de l'établissement principal (Code APE et libellé)         |
-      | Informations sur les mandataires sociaux   |   L'information délivrée par cette API est partielle, pour obtenir l'exhaustivité des données disponibles sur les mandataires sociaux, dont le jour et lieu de naissance et la nationalité, nous vous pouvez interroger l'[API Mandataires sociaux - Infogreffe](<%= endpoint_path(uid: '/infogreffe/mandataires_sociaux') %>).    |
-      | Date de commencement de l'activité         |   ❌ Cette date n'est pas disponible sur API Entreprise. Une autre date, la date de création de l'établissement est accessible depuis l'[API Établissements - Insee](<%= endpoint_path(uid: '/insee/etablissements') %>).    |
-      | Référence des autorisations obligatoires pour les professions réglementées     |   ❌ Ces informations ne sont pas disponibles sur API Entreprise.      |
-      | Capital variable (minimum)<br/>_donnée parfois disponible sur le K-Bis_    |   ❌ Cette information n'est pas disponible sur API Entreprise.<br/>Le capital, tout court, est néanmoins disponible.      |
-      | Date de clôture du 1er exercice social <br/>_donnée parfois disponible sur le K-Bis_    |   ❌ Cette information n'est pas disponible sur API Entreprise.<br/>La date de clôture de l'exercice social est toutefois disponible.   |
-
-
-  opening: public
-  format:
-    - Donnée structurée JSON
-  parameters:
-    - Numéro de SIREN de l'unité légale
-  faq:
-    - q: "Quelle différence entre la liste des mandataires sociaux disponible dans cette API et les données de l'API Mandataires sociaux d'Infogreffe ?"
-      a: |+
-        L'[API Mandataires sociaux - Infogreffe](<%= endpoint_path(uid: 'insee/infogreffe/mandataires_sociaux') %>) permet aussi d'accéder à la liste des mandataires sociaux d'une unité légale. Issues du même fournisseur Infogreffe, la différence se trouve au niveau de l'ouverture et de la précision des données.
-
-        ❌ L'API Extrait RCS ne permet pas d'accéder aux données protégées des personnes physiques :
-        - le lieu de naissance (commune et pays) ;
-        - le jour de naissance ;
-        - la nationalité.
         <br/>
+        **Données du K-bis qui ne figurent pas ou seulement partiellement dans cette API&nbsp;:**
 
-        {:.fr-highlight}
-        **Contrairement à l'API Mandataires sociaux, L'API Extrait RCS est adaptée pour du préremplissage**. Composée uniquement de données ouvertes, vous pouvez l'utiliser pour apporter une aide à la saisie à vos utilisateurs, sans authentification préalable. Elle fait partie des API disponibles dans le [socle de base DLNUF](<%= cas_usage_path('socle_de_base') %>).
-    - q: "Qu'est-ce que l'établissement principal (quid du siège social) ?"
-      a: |+
-        Cette API délivre les informations de l'établissement principal d'une unité légale.
-        **L'établissement principal n'est pas forcément le siège social.** Il s'agit du lieu où l'activité est exercée, alors que le siège social correspond à l'adresse administrative de la société où se tiennent les assemblées générales et détermine la nationalité de la société.
+        {:.fr-table}
+        | Donnée présente dans le K-bis              |   Équivalence sur API Entreprise              |
+        |:-------------------------------------------|:-----------------------------------------------|
+        | Adresse du siège social                    |   Cette API délivre l'adresse de l'établissement principal. L'adresse du siège social est appelable avec l'[API siège social - Insee](<%= endpoint_path(uid: 'insee/siege_social') %>).      |
+        | Activités principales de l'entreprise      |   Cette API délivre uniquement les activités de l'établissement principal (Code APE et libellé)         |
+        | Informations sur les mandataires sociaux   |   L'information délivrée par cette API est partielle, pour obtenir l'exhaustivité des données disponibles sur les mandataires sociaux, dont le jour et lieu de naissance et la nationalité, nous vous pouvez interroger l'[API Mandataires sociaux - Infogreffe](<%= endpoint_path(uid: '/infogreffe/mandataires_sociaux') %>).    |
+        | Date de commencement de l'activité         |   ❌ Cette date n'est pas disponible sur API Entreprise. Une autre date, la date de création de l'établissement est accessible depuis l'[API Établissements - Insee](<%= endpoint_path(uid: '/insee/etablissements') %>).    |
+        | Référence des autorisations obligatoires pour les professions réglementées     |   ❌ Ces informations ne sont pas disponibles sur API Entreprise.      |
+        | Capital variable (minimum)<br/>_donnée parfois disponible sur le K-Bis_    |   ❌ Cette information n'est pas disponible sur API Entreprise.<br/>Le capital, tout court, est néanmoins disponible.      |
+        | Date de clôture du 1er exercice social <br/>_donnée parfois disponible sur le K-Bis_    |   ❌ Cette information n'est pas disponible sur API Entreprise.<br/>La date de clôture de l'exercice social est toutefois disponible.   |
 
-        Pour en savoir plus, [consultez cet article de BPI France](https://bpifrance-creation.fr/encyclopedie/locaux-lentreprise/quels-locaux-jeune-entreprise/siege-social-letablissement-principal){:target="_blank"}.
+
+    opening: public
+    format:
+      - Donnée structurée JSON
+    parameters:
+      - Numéro de SIREN de l'unité légale
+    faq:
+      - q: "Quelle différence entre la liste des mandataires sociaux disponible dans cette API et les données de l'API Mandataires sociaux d'Infogreffe ?"
+        a: |+
+          L'[API Mandataires sociaux - Infogreffe](<%= endpoint_path(uid: 'insee/infogreffe/mandataires_sociaux') %>) permet aussi d'accéder à la liste des mandataires sociaux d'une unité légale. Issues du même fournisseur Infogreffe, la différence se trouve au niveau de l'ouverture et de la précision des données.
+
+          ❌ L'API Extrait RCS ne permet pas d'accéder aux données protégées des personnes physiques :
+          - le lieu de naissance (commune et pays) ;
+          - le jour de naissance ;
+          - la nationalité.
+          <br/>
+
+          {:.fr-highlight}
+          **Contrairement à l'API Mandataires sociaux, L'API Extrait RCS est adaptée pour du préremplissage**. Composée uniquement de données ouvertes, vous pouvez l'utiliser pour apporter une aide à la saisie à vos utilisateurs, sans authentification préalable. Elle fait partie des API disponibles dans le [socle de base DLNUF](<%= cas_usage_path('socle_de_base') %>).
+      - q: "Qu'est-ce que l'établissement principal (quid du siège social) ?"
+        a: |+
+          Cette API délivre les informations de l'établissement principal d'une unité légale.
+          **L'établissement principal n'est pas forcément le siège social.** Il s'agit du lieu où l'activité est exercée, alors que le siège social correspond à l'adresse administrative de la société où se tiennent les assemblées générales et détermine la nationalité de la société.
+
+          Pour en savoir plus, [consultez cet article de BPI France](https://bpifrance-creation.fr/encyclopedie/locaux-lentreprise/quels-locaux-jeune-entreprise/siege-social-letablissement-principal){:target="_blank"}.

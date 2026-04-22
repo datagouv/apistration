@@ -1,61 +1,62 @@
 ---
-- uid: 'banque_de_france/bilans'
-  path: '/v3/banque_de_france/unites_legales/{siren}/bilans'
-  ping_url: 'https://entreprise.api.gouv.fr/ping/banque_de_france/bilans'
-  position: 220
-  perimeter:
-    entity_type_description: |+
-      Cette API concerne **✅ les entreprises et associations pour lesquelles la Banque de France a attribué une cotation approfondie reposant sur l'examen des documents comptables.**. 
+fiche:
+  - uid: 'banque_de_france/bilans'
+    path: '/v3/banque_de_france/unites_legales/{siren}/bilans'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/banque_de_france/bilans'
+    position: 220
+    perimeter:
+      entity_type_description: |+
+        Cette API concerne **✅ les entreprises et associations pour lesquelles la Banque de France a attribué une cotation approfondie reposant sur l'examen des documents comptables.**. 
 
-      **Pour les entreprises** : 
-      - ✅ il s'agit uniquement des entreprises réalisant un chiffre d’affaire supérieur à 1 250 000 euros et ayant _a minima_ trois bilans ;
-      - ❌ les entreprises ayant moins de trois bilans ne sont pas concernées (même si la Banque de France peut connaître les deux premiers bilans) ;
-      - ❌ les entreprises réalisant un chiffre d'affaire inférieur au seuil de cotation. Ce seuil est [passé de 750 000 euros à 1 250 000 euros en janvier 2025](https://www.banque-france.fr/fr/a-votre-service/entreprises/rehaussement-du-seuil-de-cotation#:~:text=Dans%20ce%20contexte%2C%20la%20Banque,vigueur%20le%2012%20janvier%202025){:target="_blank"}.
+        **Pour les entreprises** : 
+        - ✅ il s'agit uniquement des entreprises réalisant un chiffre d’affaire supérieur à 1 250 000 euros et ayant _a minima_ trois bilans ;
+        - ❌ les entreprises ayant moins de trois bilans ne sont pas concernées (même si la Banque de France peut connaître les deux premiers bilans) ;
+        - ❌ les entreprises réalisant un chiffre d'affaire inférieur au seuil de cotation. Ce seuil est [passé de 750 000 euros à 1 250 000 euros en janvier 2025](https://www.banque-france.fr/fr/a-votre-service/entreprises/rehaussement-du-seuil-de-cotation#:~:text=Dans%20ce%20contexte%2C%20la%20Banque,vigueur%20le%2012%20janvier%202025){:target="_blank"}.
 
-      **Pour les associations (une fraction minime, environ 2000):**
-      Les associations côtées par la Banque de France et donc disponibles dans l'API ne sont pas déterminées sur la base de critères restrictifs précis, mais il s'agit globalement des associations : 
-        - ✅ ayant une activité à dimention économique significative ;
-        - ❌ n'exerçant pas une mission de service public, c'est-à-dire que sont écartées les associations dont l'activité revêt un caractère d’intérêt général et dont la gestion n'est pas autonome ;
-        - ❌ n'appartenant pas aux catégories juridiques suivantes : 9210, _association non déclarée_ ; 9224, _associations soumises au régime des sociétés de participation et n’ayant pas de personnalité morale_ ; 9240, _congrégations_.
-    entities:
-      - entreprises
-      - associations
-  call_id: "SIRET"
-  provider_uids:
-    - 'bdf'
-  keywords:
-    - 'finances'
-    - 'financier'
-    - 'résultat'
-    - 'exercice'
-    - 'liasse'
-    - 'fiscal'
-    - 'chiffre d’affaires'
-    - 'déclaration'
-    - 'bilan'
-    - 'passif'
-    - 'actif'
-    - 'dette'
-    - 'créance'
-    - 'fraude'
-  data:
-    description: |+
-      Cette API délivre les bilans dont la date d’arrêté est comprise entre le mois en cours [MM/AAAA] et 4 ans en arrière [MM+1/AAAA-4].
+        **Pour les associations (une fraction minime, environ 2000):**
+        Les associations côtées par la Banque de France et donc disponibles dans l'API ne sont pas déterminées sur la base de critères restrictifs précis, mais il s'agit globalement des associations : 
+          - ✅ ayant une activité à dimention économique significative ;
+          - ❌ n'exerçant pas une mission de service public, c'est-à-dire que sont écartées les associations dont l'activité revêt un caractère d’intérêt général et dont la gestion n'est pas autonome ;
+          - ❌ n'appartenant pas aux catégories juridiques suivantes : 9210, _association non déclarée_ ; 9224, _associations soumises au régime des sociétés de participation et n’ayant pas de personnalité morale_ ; 9240, _congrégations_.
+      entities:
+        - entreprises
+        - associations
+    call_id: "SIRET"
+    provider_uids:
+      - 'bdf'
+    keywords:
+      - 'finances'
+      - 'financier'
+      - 'résultat'
+      - 'exercice'
+      - 'liasse'
+      - 'fiscal'
+      - 'chiffre d’affaires'
+      - 'déclaration'
+      - 'bilan'
+      - 'passif'
+      - 'actif'
+      - 'dette'
+      - 'créance'
+      - 'fraude'
+    data:
+      description: |+
+        Cette API délivre les bilans dont la date d’arrêté est comprise entre le mois en cours [MM/AAAA] et 4 ans en arrière [MM+1/AAAA-4].
 
-      {:.fr-highlight.fr-highlight--example}
-      > Par exemple pour un appel le 17 janvier 2022, les bilans retenus ont une date d’arrêt comprise entre le 1er février 2018 et le 17 janvier 2022.
+        {:.fr-highlight.fr-highlight--example}
+        > Par exemple pour un appel le 17 janvier 2022, les bilans retenus ont une date d’arrêt comprise entre le 1er février 2018 et le 17 janvier 2022.
 
-      Ces bilans permettent d’accéder à certaines informations contenues dans la liasse fiscale : bilans, compte de résultat et annexes confondus. Ces données proviennent de la base FIBEN (Fichier bancaire des entreprises) - hors cotation
+        Ces bilans permettent d’accéder à certaines informations contenues dans la liasse fiscale : bilans, compte de résultat et annexes confondus. Ces données proviennent de la base FIBEN (Fichier bancaire des entreprises) - hors cotation
 
-      Les trois bilans de la Banque de France sont listés les uns après les autres, le premier étant le plus récent. Chacun d’eux est accompagné d’informations en partie tirées :
-      - des bilans (passif de l’entreprise - liasse 2051) ;
-      - des comptes de résultat (liasse 2052 et liasse 2053) ;
-      - de l’annexe 2057 concernant l’état des échéances des créances et des dettes à la clôture de l’exercice.
+        Les trois bilans de la Banque de France sont listés les uns après les autres, le premier étant le plus récent. Chacun d’eux est accompagné d’informations en partie tirées :
+        - des bilans (passif de l’entreprise - liasse 2051) ;
+        - des comptes de résultat (liasse 2052 et liasse 2053) ;
+        - de l’annexe 2057 concernant l’état des échéances des créances et des dettes à la clôture de l’exercice.
 
-      La Banque de France délivre également une évolution des montants de l’exercice concerné avec l’année N-1, quand les durées d’exercices sont identiques.
-  opening: protected
-  format:
-    - Donnée structurée JSON
-  parameters:
-    - Numéro de SIRET de l'établissement.
- 
+        La Banque de France délivre également une évolution des montants de l’exercice concerné avec l’année N-1, quand les durées d’exercices sont identiques.
+    opening: protected
+    format:
+      - Donnée structurée JSON
+    parameters:
+      - Numéro de SIRET de l'établissement.
+   

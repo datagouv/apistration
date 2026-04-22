@@ -1,156 +1,157 @@
 ---
-- uid: 'ademe/certifications_rge'
-  path: '/v3/ademe/etablissements/{siret}/certification_rge'
-  ping_url: 'https://entreprise.api.gouv.fr/ping/ademe/certification_rge'
-  position: 320
-  perimeter:
-    entity_type_description: |+
-      Établissements du secteur de la **rénovation énergétique labellisés RGE** par l'ADEME **depuis 2014** :
-      - ✅ **95% des établissements en base chez l'ADEME** sont disponibles au travers de cette API.
-      - ✅ Les certificats RGE des organismes **Certibat, CNOA, Qualitenr, Qualibat, Qualifelec** sont disponibles.
-      - ❌ Les certificats RGE d'Afnor, Cequami, Cerqual, lne et Opqibi ne sont pas disponibles.
+fiche:
+  - uid: 'ademe/certifications_rge'
+    path: '/v3/ademe/etablissements/{siret}/certification_rge'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/ademe/certification_rge'
+    position: 320
+    perimeter:
+      entity_type_description: |+
+        Établissements du secteur de la **rénovation énergétique labellisés RGE** par l'ADEME **depuis 2014** :
+        - ✅ **95% des établissements en base chez l'ADEME** sont disponibles au travers de cette API.
+        - ✅ Les certificats RGE des organismes **Certibat, CNOA, Qualitenr, Qualibat, Qualifelec** sont disponibles.
+        - ❌ Les certificats RGE d'Afnor, Cequami, Cerqual, lne et Opqibi ne sont pas disponibles.
 
-      Le label RGE (Reconnu Garant de l'Environnement) est délivré à une entreprise qui remplit certains critères lors de la réalisation de travaux d'économie d'énergie dans les logements (_isolation des murs ou de la toiture, installation d'un équipement utilisant  une énergie renouvelable, etc._). Il s'agit d'un dispositif reconnu par l'État.
-      En 2021, 64 790 établissements étaient labellisés RGE selon les statistiques données par le [site de data.ademe.fr](https://data.ademe.fr/reuses/nombre-d'entreprises-rge){:target="_blank"}.
-    know_more_description: |+
-     [Différence entre le périmètre de cette API et ceux des API Qualibat ou Qualifelec](#difference-api-qualibat-qualifelec).
-    entities:
-      - entreprises
-      - associations
-  call_id: "SIRET"
-  provider_uids:
-    - 'ademe'
-  keywords:
-    - 'btp'
-    - 'bâtiment'
-    - 'travaux'
-    - 'environnement'
-    - 'rénovation'
-    - 'énergie'
-    - 'écologie'
-    - 'marchés publics'
-    - 'rge'
-    - 'qualibois'
-    - 'qualipac'
+        Le label RGE (Reconnu Garant de l'Environnement) est délivré à une entreprise qui remplit certains critères lors de la réalisation de travaux d'économie d'énergie dans les logements (_isolation des murs ou de la toiture, installation d'un équipement utilisant  une énergie renouvelable, etc._). Il s'agit d'un dispositif reconnu par l'État.
+        En 2021, 64 790 établissements étaient labellisés RGE selon les statistiques données par le [site de data.ademe.fr](https://data.ademe.fr/reuses/nombre-d'entreprises-rge){:target="_blank"}.
+      know_more_description: |+
+       [Différence entre le périmètre de cette API et ceux des API Qualibat ou Qualifelec](#difference-api-qualibat-qualifelec).
+      entities:
+        - entreprises
+        - associations
+    call_id: "SIRET"
+    provider_uids:
+      - 'ademe'
+    keywords:
+      - 'btp'
+      - 'bâtiment'
+      - 'travaux'
+      - 'environnement'
+      - 'rénovation'
+      - 'énergie'
+      - 'écologie'
+      - 'marchés publics'
+      - 'rge'
+      - 'qualibois'
+      - 'qualipac'
 
-  data:
-    description: |+
-      Cette API permet de connaître **tous les certificats RGE obtenus depuis 2014** par l'établissement, y compris les certificats expirés. Pour chaque certificat, l'API délivre les données suivantes :
-      - des **informations relatives au certificat** : libellé, organisme de certification, qualifications, domaine d'intervention, etc.&nbsp;;
-      - l'url de téléchargement de l'**attestation au format PDF**.
+    data:
+      description: |+
+        Cette API permet de connaître **tous les certificats RGE obtenus depuis 2014** par l'établissement, y compris les certificats expirés. Pour chaque certificat, l'API délivre les données suivantes :
+        - des **informations relatives au certificat** : libellé, organisme de certification, qualifications, domaine d'intervention, etc.&nbsp;;
+        - l'url de téléchargement de l'**attestation au format PDF**.
 
-      <section class="fr-accordion">
-        <h3 class="fr-accordion__title">
-          <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1">Liste des organismes et des certificats disponibles</button>
-        </h3>
-        <div class="fr-collapse" id="accordion-1">
+        <section class="fr-accordion">
+          <h3 class="fr-accordion__title">
+            <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1">Liste des organismes et des certificats disponibles</button>
+          </h3>
+          <div class="fr-collapse" id="accordion-1">
 
-        - **Organisme _Certibat_** : Certibat RGE
-        - **Organisme _CNOA_** : Tableau de l'ordre
-        - **Organisme _Qualibat_** : Qualibat RGE
-        - **Organisme _Qualifelec_** : Qualifelec RGE
-        - **Organisme _Qualitenr_** :
-          - Qualibois module Eau
-          - Qualibois module Air
-          - Qualibois module Nappe
-          - Qualibois module Sonde
-          - QualiPAC Chauffage
-          - QualiPAC module CET
-          - QualiPV 36
-          - QualiPV500
-          - Qualisol CESI
-          - Qualisol collectif
-          - Qualisol Combi
-          - Chauffage +
-          - Ventilation +
+          - **Organisme _Certibat_** : Certibat RGE
+          - **Organisme _CNOA_** : Tableau de l'ordre
+          - **Organisme _Qualibat_** : Qualibat RGE
+          - **Organisme _Qualifelec_** : Qualifelec RGE
+          - **Organisme _Qualitenr_** :
+            - Qualibois module Eau
+            - Qualibois module Air
+            - Qualibois module Nappe
+            - Qualibois module Sonde
+            - QualiPAC Chauffage
+            - QualiPAC module CET
+            - QualiPV 36
+            - QualiPV500
+            - Qualisol CESI
+            - Qualisol collectif
+            - Qualisol Combi
+            - Chauffage +
+            - Ventilation +
+          </div>
+        </section>
+
+        {:.fr-h6 .fr-mt-4w}
+        ### Exemples de certificats PDF&nbsp;:
+
+        <div>
+          <ul>
+           <li>
+            <div class="fr-download fr-mb-1v">
+             <p>
+              <a href="/files/exemple-ademe-rge-certificat-certibat.pdf" download class="fr-download__link">
+               Télécharger un exemple de certificats RGE de Certibat
+               <span class="fr-download__detail">
+               PDF – 1,3 Mo
+               </span>
+              </a>
+             </p>
+            </div>
+           </li>
+           <li>
+            <div class="fr-download fr-mb-1v">
+             <p>
+              <a href="/files/exemple-ademe-rge-certificat_tableau-de-l-ordre.pdf" download class="fr-download__link">
+               Télécharger un exemple de certificat RGE de CNOA
+               <span class="fr-download__detail">
+               PDF – 478 Ko
+               </span>
+              </a>
+             </p>
+            </div>
+           </li>
+           <li>
+            <div class="fr-download">
+             <p>
+              <a href="/files/exemple-ademe-rge-certificat_qualibat.pdf" download class="fr-download__link">
+               Télécharger un exemple de certificat RGE de Qualibat
+               <span class="fr-download__detail">
+               PDF – 118 Ko
+               </span>
+              </a>
+             </p>
+            </div>
+           </li>
+           <li>
+            <div class="fr-download fr-mb-1v">
+             <p>
+              <a href="/files/exemple-ademe-rge-certificat-qualifelec.pdf" download class="fr-download__link">
+               Télécharger un exemple de certificat RGE de Qualifelec
+               <span class="fr-download__detail">
+               PDF – 1,5 Mo
+               </span>
+              </a>
+             </p>
+            </div>
+           </li>
+           <li>
+            <div class="fr-download fr-mb-1v">
+             <p>
+              <a href="/files/exemple-ademe-rge-certificats-organisme-qualitenr.pdf" download class="fr-download__link">
+               Télécharger des exemples de certificats RGE de Qualitenr
+               <span class="fr-download__detail">
+               PDF – 4,2 Mo
+               </span>
+              </a>
+             </p>
+            </div>
+           </li>
+          </ul>
         </div>
-      </section>
+    faq:
+      - q: Quels sont les différents types de certifications ?
+        a: |+
+          - _Qualit'EnR_ pour les installations d'équipements valorisant les énergies renouvelables.
+          - _Qualifelec_ pour les travaux électriques en matière d'efficacité énergétique et/ou d'installation des énergies renouvelables.
+          - _RGE Eco-artisan_ pour des prestations de conseil dans le domaine de la performance énergétique, par le biais d'une évaluation thermique ou des travaux d'efficacité énergétique.
+          - _Qualibat_ pour des travaux liés à la performance énergétique (construction ou rénovation).
+          - _Céquami_ délivre des certifications à des professionnels à même de proposer des travaux de rénovation lourde dans le cadre d'une rénovation énergétique globale du logement.
+          - _Certibat_ délivre des certifications aux professionnels du bâtiment en mesure de réaliser des offres globales de rénovation énergétique
+      - q: <a name="difference-api-qualibat-qualifelec"></a>Périmètre de cette API par rapport aux API Qualibat ou Qualifelec
+        a: |+
+          L'API Certification RGE délivre des certificats Qualibat et Qualifelec. Cependant, elle ne couvre que les certifications labellisées RGE et ne vous permet donc pas d'accéder à la totalité des certificats de ces deux organismes. Si vous avez besoin de connaître l'ensemble des certifications Qualibat ou Qualifelec, vous devrez appeler les API suivantes :
+          - [API Certification Qualibat](<%= endpoint_path(uid: 'qualibat/certifications_batiment') %>)
+          - [API Certification Qualifelec](<%= endpoint_path(uid: 'qualifelec/certificats') %>)
+    opening: public
+    format:
+      - Donnée structurée JSON et URL vers le certificat en PDF
+    parameters:
+      - Numéro de SIRET de l'établissement
 
-      {:.fr-h6 .fr-mt-4w}
-      ### Exemples de certificats PDF&nbsp;:
-
-      <div>
-        <ul>
-         <li>
-          <div class="fr-download fr-mb-1v">
-           <p>
-            <a href="/files/exemple-ademe-rge-certificat-certibat.pdf" download class="fr-download__link">
-             Télécharger un exemple de certificats RGE de Certibat
-             <span class="fr-download__detail">
-             PDF – 1,3 Mo
-             </span>
-            </a>
-           </p>
-          </div>
-         </li>
-         <li>
-          <div class="fr-download fr-mb-1v">
-           <p>
-            <a href="/files/exemple-ademe-rge-certificat_tableau-de-l-ordre.pdf" download class="fr-download__link">
-             Télécharger un exemple de certificat RGE de CNOA
-             <span class="fr-download__detail">
-             PDF – 478 Ko
-             </span>
-            </a>
-           </p>
-          </div>
-         </li>
-         <li>
-          <div class="fr-download">
-           <p>
-            <a href="/files/exemple-ademe-rge-certificat_qualibat.pdf" download class="fr-download__link">
-             Télécharger un exemple de certificat RGE de Qualibat
-             <span class="fr-download__detail">
-             PDF – 118 Ko
-             </span>
-            </a>
-           </p>
-          </div>
-         </li>
-         <li>
-          <div class="fr-download fr-mb-1v">
-           <p>
-            <a href="/files/exemple-ademe-rge-certificat-qualifelec.pdf" download class="fr-download__link">
-             Télécharger un exemple de certificat RGE de Qualifelec
-             <span class="fr-download__detail">
-             PDF – 1,5 Mo
-             </span>
-            </a>
-           </p>
-          </div>
-         </li>
-         <li>
-          <div class="fr-download fr-mb-1v">
-           <p>
-            <a href="/files/exemple-ademe-rge-certificats-organisme-qualitenr.pdf" download class="fr-download__link">
-             Télécharger des exemples de certificats RGE de Qualitenr
-             <span class="fr-download__detail">
-             PDF – 4,2 Mo
-             </span>
-            </a>
-           </p>
-          </div>
-         </li>
-        </ul>
-      </div>
-  faq:
-    - q: Quels sont les différents types de certifications ?
-      a: |+
-        - _Qualit'EnR_ pour les installations d'équipements valorisant les énergies renouvelables.
-        - _Qualifelec_ pour les travaux électriques en matière d'efficacité énergétique et/ou d'installation des énergies renouvelables.
-        - _RGE Eco-artisan_ pour des prestations de conseil dans le domaine de la performance énergétique, par le biais d'une évaluation thermique ou des travaux d'efficacité énergétique.
-        - _Qualibat_ pour des travaux liés à la performance énergétique (construction ou rénovation).
-        - _Céquami_ délivre des certifications à des professionnels à même de proposer des travaux de rénovation lourde dans le cadre d'une rénovation énergétique globale du logement.
-        - _Certibat_ délivre des certifications aux professionnels du bâtiment en mesure de réaliser des offres globales de rénovation énergétique
-    - q: <a name="difference-api-qualibat-qualifelec"></a>Périmètre de cette API par rapport aux API Qualibat ou Qualifelec
-      a: |+
-        L'API Certification RGE délivre des certificats Qualibat et Qualifelec. Cependant, elle ne couvre que les certifications labellisées RGE et ne vous permet donc pas d'accéder à la totalité des certificats de ces deux organismes. Si vous avez besoin de connaître l'ensemble des certifications Qualibat ou Qualifelec, vous devrez appeler les API suivantes :
-        - [API Certification Qualibat](<%= endpoint_path(uid: 'qualibat/certifications_batiment') %>)
-        - [API Certification Qualifelec](<%= endpoint_path(uid: 'qualifelec/certificats') %>)
-  opening: public
-  format:
-    - Donnée structurée JSON et URL vers le certificat en PDF
-  parameters:
-    - Numéro de SIRET de l'établissement
-
-    
+      
