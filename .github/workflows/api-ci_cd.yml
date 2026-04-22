@@ -9,6 +9,9 @@ defaults:
 name: "API: CI - CD"
 on:
   push:
+    paths:
+      - 'siade/**'
+      - 'commons/**'
 jobs:
   security:
     name: Brakeman
