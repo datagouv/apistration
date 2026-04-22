@@ -1,0 +1,51 @@
+---
+description: |-
+  ## QF 150
+
+  Permet de tester la fourniture d'un quotient familial de 150
+params:
+  codeCogInseeCommuneNaissance: '35238'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'MARTIN'
+  prenoms:
+    - 'AXELLE'
+    - 'LAURENCE'
+  anneeDateNaissance: 1989
+  moisDateNaissance: 12
+  jourDateNaissance: 3
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "AXELLE LAURENCE",
+          "date_naissance": "1989-12-03",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Madame MARTIN AXELLE LAURENCE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE DE SAINT-MALO",
+        "lieu_dit": null,
+        "code_postal_ville": "35000 RENNES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 150,
+        "annee": 2026,
+        "mois": 4,
+        "annee_calcul": 2026,
+        "mois_calcul": 4
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,4 +1,74 @@
 Titre,Description,Paramètres,Status,Réponse
+,"## QF 150
+
+Permet de tester la fourniture d'un quotient familial de 150","{""codeCogInseeCommuneNaissance"":""35238"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""MARTIN"",""prenoms"":[""AXELLE"",""LAURENCE""],""anneeDateNaissance"":1989,""moisDateNaissance"":12,""jourDateNaissance"":3}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""AXELLE LAURENCE"",
+        ""date_naissance"": ""1989-12-03"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Madame MARTIN AXELLE LAURENCE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE DE SAINT-MALO"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""35000 RENNES"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 150,
+      ""annee"": 2026,
+      ""mois"": 4,
+      ""annee_calcul"": 2026,
+      ""mois_calcul"": 4
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS ETRANGER
+
+Permet de tester un appel pour une personne née à l'étranger (Italie) sans fourniture de date de naissance","{""codeCogInseePaysNaissance"":""99127"",""sexeEtatCivil"":""F"",""nomNaissance"":""LISA"",""prenoms"":[""MONA""]}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LISA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MONA"",
+        ""date_naissance"": ""1980-01-12"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Madame Mona Lisa"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""Place du musée du Louvres"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75001 Paris"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 4270,
+      ""annee"": 2026,
+      ""mois"": 4,
+      ""annee_calcul"": 2026,
+      ""mois_calcul"": 4
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2026
 
 Ce cas permet de tester :
