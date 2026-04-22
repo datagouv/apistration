@@ -214,3 +214,97 @@ fiche:
       - q: *urssaf_attestations_faq_q3
         a: *urssaf_attestations_faq_a3
 
+
+acoss:
+  attestation_sociale:
+    title: "Attestation de vigilance"
+    description: "Attestation sociale délivrée à une entreprise acquittée de ses obligations de cotisations et contributions sociales auprès de l'URSSAF Caisse nationale."
+    tags:
+      - "Attestations sociales et fiscales"
+    document_url_properties:
+      title: "URL de téléchargement de l'attestation de vigilance"
+      description: "Ce lien délivre l'attestation de vigilance de l'entreprise au format PDF. La date du document dépend de la situation de chaque entreprise, et de la dernière déclaration enregistrée dans le système. Elle est donc variable d'une entreprise à l'autre.
+      \n
+      \n
+      Plus d'informations sur le site de l'URSSAF : https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html"
+      example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf"
+    document_url_expires_in:
+      title: "Nombre de secondes avant expiration du lien URL"
+
+urssaf:
+  attestation_sociale:
+    title: "Attestation de vigilance"
+    description: "Attestation sociale délivrée à une entreprise acquittée de ses obligations de cotisations et contributions sociales auprès de l'URSSAF Caisse nationale."
+    cache_duration: "Le cache est valide jusqu'au lendemain 8h."
+    tags:
+      - "Attestations sociales et fiscales"
+    attributes:
+      entity_status:
+        title: "Status de l'entreprise vis-à-vis de ses obligations sociales"
+        type: 'object'
+        additionalProperties: false
+        properties:
+          code:
+            type: 'string'
+            title: "Code du status"
+            description: "Cette valeur ne peut être actuellement que 'ok' ou 'refus_de_delivrance'. Pour ce dernier cas, cela signifie que l'entité n'est pas à jour de ses cotisations."
+            enum:
+              - 'ok'
+              - 'refus_de_delivrance'
+            example: 'ok'
+          libelle:
+            type: 'string'
+            title: "Libellé associé au code"
+            example: "Attestation délivrée par l'Urssaf"
+          description:
+            type: 'string'
+            title: "Description associé au code"
+            example: "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales."
+        required:
+          - code
+          - libelle
+          - description
+      date_debut_validite:
+        title: "Date de début de validité"
+        type: "string"
+        format: "date"
+        nullable: true
+        description: "Cette date est présente en fin de document dans le paragraphe « Attestation de l'union de recouvrement ».
+        \n
+        \n
+        Cette donnée est extraire du document PDF par API Entreprise."
+        example: "2022-12-03"
+      date_fin_validite:
+        title: "Date de fin de validité"
+        type: "string"
+        format: "date"
+        nullable: true
+        description: "Cette date est obtenue à l'aide de la date de début de validité.
+          \n
+          \n
+          La règle de calcul est la suivante: 6 mois après la date de début de validité, à la fin du mois. Par exemple si une date de début de validité est le 03/12/2022, alors la date de fin de validité est le 30/06/2023.
+          \n
+          Cette donnée est calculée par API Entreprise."
+        example: '2023-06-30'
+
+      code_securite:
+        title: "Code de sécurité"
+        type: "string"
+        nullable: true
+        description: "Ce code de sécurité permet de vérifier auprès de l'URSSAF la véracité des informations du document. Vous pouvez faire cette vérification sur le lien suivant: https://www.urssaf.fr/portail/home/utile-et-pratique/verification-attestation.html
+        \n
+        \n
+        Cette donnée est extraire du document PDF par API Entreprise."
+        example: "GB1QWERTYJJEX1O"
+      document_url:
+        title: "URL de téléchargement de l'attestation de vigilance"
+        type: 'string'
+        nullable: true
+        description: "Ce lien délivre l'attestation de vigilance de l'entreprise au format PDF."
+        example: "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf"
+      document_url_expires_in:
+        title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
+        description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de debut ou de fin de validité."
+        type: 'integer'
+        nullable: true
+        example: 86400

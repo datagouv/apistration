@@ -18,16 +18,39 @@ class SwaggerData
   end
 
   def yaml_backend
-    @yaml_backend ||= YAML.safe_load(yaml_backend_interpolated, permitted_classes: [Date], aliases: true)
+    @yaml_backend ||= load_shared.deep_merge(load_from_endpoints)
   end
 
-  def yaml_backend_interpolated
-    ERB.new(yaml_backend_raw).result
+  def load_shared
+    raw = shared_files.sort.map { |f| "#{File.read(f)}\n" }.reduce(:+)
+    return {} unless raw
+
+    YAML.safe_load(ERB.new(raw).result, permitted_classes: [Date], aliases: true) || {}
   end
 
-  def yaml_backend_raw
-    yaml_files = Dir.glob('config/swagger_data/**/*')
+  def load_from_endpoints
+    prefix = shared_raw
+    exclude = load_shared.keys + ['fiche']
+    endpoint_files.inject({}) do |result, file|
+      content = File.read(file).sub(/\A---\n/, '')
+      raw = "#{prefix}\n#{content}"
+      data = YAML.safe_load(raw, permitted_classes: [Date], aliases: true)
+      swagger_keys = data.except(*exclude)
+      next result if swagger_keys.empty?
 
-    yaml_files.map { |file_path| "#{File.read(file_path)}\n" }.reduce(:+)
+      result.deep_merge(swagger_keys)
+    end
+  end
+
+  def shared_raw
+    @shared_raw ||= shared_files.sort.map { |f| "#{File.read(f)}\n" }.reduce(:+) || ''
+  end
+
+  def shared_files
+    Dir.glob('config/swagger_data/**/*.{yml,yaml}')
+  end
+
+  def endpoint_files
+    Dir.glob('config/endpoints/api_*/**/*.yml')
   end
 end

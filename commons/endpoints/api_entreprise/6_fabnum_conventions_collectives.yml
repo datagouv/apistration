@@ -42,3 +42,60 @@ fiche:
           Cette API est fournie par la fabrique numérique des ministères sociaux qui s'appuie sur plusieurs sources de données :
           - les données d'affiliation des établissements aux conventions sont issues de la DARES, direction d'études et statistiques du Ministère du Travail, publiées sur sur **[data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-conventions-collectives-par-entreprise-siret/){:target="_blank"})** ;
           - Les informations relatives aux conventions collectives (numéro identifiant, titre, lien vers le texte légal, …) sont issues de la **base [KALI](https://www.data.gouv.fr/fr/datasets/kali-conventions-collectives-nationales/){:target="_blank"}** diffusée par la [DILA](https://www.dila.premier-ministre.gouv.fr/){:target="_blank"}, direction de l’information légale et administrative.
+
+fabrique_numerique_ministeres_sociaux:
+  conventions_collectives:
+    title: "Conventions collectives"
+    description: "Identifiants des conventions collectives d’un établissement et lien vers les textes en vigueur."
+    tags:
+      - "Informations générales"
+    attributes:
+      type:
+        title: 'Convention collective'
+        type: 'string'
+        example: 'convention_collective'
+        enum:
+          - 'convention_collective'
+      titre:
+        type: 'string'
+        description: "Titre historique de la convention collective"
+        example: "Convention collective nationale des bureaux d'études techniques, des cabinets d'ingénieurs-conseils et des sociétés de conseils du 15 décembre 1987."
+      titre_court:
+        type: 'string'
+        description: "Titre abrégé / d'usage"
+        example: "Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils"
+      numero_idcc:
+        type: 'number'
+        description: "Numéro IDCC"
+        example: 1486
+      active:
+        type: 'boolean'
+        description: "Détermine si la convention est toujours active"
+        example: true
+      etat:
+        type: 'string'
+        enum:
+          - 'vigueur'
+          - 'vigueur_etendue'
+        description: "État de la convention. Si celle-ci est en vigueur elle est seulement obligatoire pour les signataires. Si celle-ci est en vigueur étendue, elle est obligatoire pour tous les employeurs de la branche."
+        example: 'vigueur_etendue'
+      synonymes:
+        type: 'array'
+        description: "Liste de synonymes connus de la convention"
+        items:
+          type: 'string'
+        example:
+          - 'syntec'
+      url:
+        type: 'string'
+        description: "Lien vers le texte en vigueur de la convention collective sur Legifrance"
+        example: 'https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635173'
+      date_publication:
+        type: 'string'
+        description: 'Date de la dernière mise à jour de la convention'
+        example: '1988-01-01'
+    meta:
+      internal_id:
+        type: 'string'
+        description: "Identifiant interne (DILA) de la convention"
+        example: 'KALICONT000005635173'

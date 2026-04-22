@@ -10,3 +10,5 @@ commons/swagger/api_particulier_open_api_static/v2.yaml:swagger/api_particulier_
 commons/data/authorizations.yml:config/authorizations.yml
 commons/data/throttle.yml:config/throttle.yml
 commons/endpoints/_swagger_shared:config/swagger_data
+commons/endpoints/api_entreprise:config/endpoints/api_entreprise
+commons/endpoints/api_particulier:config/endpoints/api_particulier

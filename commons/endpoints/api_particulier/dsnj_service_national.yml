@@ -167,3 +167,26 @@ fiche:
       - q: Une personne qui a une dérogation de faire la journée défense et citoyenneté, pour cause médicale par exemple, est elle remontée comme étant en règle ? 
         a: |+
           **Un jeune exempté de la JDC apparaîtra comme étant en règle dans l'API**.
+
+dsnj:
+  service_national:
+    title: 'API Service national'
+    tags:
+      - "Statut Service national"
+    description: Statut de conformité au Service national des jeunes entre 16 et 25 ans.
+    attributes:
+      statut_service_national:
+        title: Statut service national
+        type: string
+        description: Indique si la personne est en règle de ses obligations de service national. "en_regle" si la personne est en règle, "pas_en_regle" si la personne n'est pas en règle, "indetermine" si l'information n'est pas connue, "non_concerne" si la personne n'est pas concernée par les obligations de service national.
+        example: en_regle
+        enum:
+          - en_regle
+          - pas_en_regle
+          - indetermine
+          - non_concerne
+      commentaires:
+        title: Commentaires de la DSNJ
+        type: string
+        description: Commentaire indiqué par la direction du Service national et de la jeunesse (DSNJ), notamment pour les cas particuliers.
+        nullable: true

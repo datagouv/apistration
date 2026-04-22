@@ -47,3 +47,16 @@ fiche:
           {:.fr-highlight}
           Si vous avez un doute, vous pouvez vérifier vous-même le numéro de TVA à partir du [service VIES](https://ec.europa.eu/taxation_customs/vies/#/vat-validation){:target="_blank"}.
 
+
+european_commission:
+  vies:
+    title: "N°TVA intracommunautaire français"
+    description: "Numéro de TVA intracommunautaire français, vérifié auprès de la Commission européenne."
+    tags:
+      - "Informations générales"
+    attributes:
+      tva_number:
+        title: "Numéro de TVA intracommunautaire français"
+        type: "string"
+        description: "Ce numéro de TVA est extrait du numéro de SIREN, à l'aide de la règle de calcul du numéro de TVA, et validé auprès du service VIES de la Commission européenne. Ce numéro de TVA est forcément un numéro de TVA français."
+        example: "FR48672039971"
