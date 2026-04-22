@@ -2,10 +2,10 @@ cnav:
   commons:
     cache_duration: "La durée du cache est de 1 heure."
   eaje:
-    title: Participation familiale EAJE
-    description: "Participation familiale EAJE"
+    title: API critères de calcul de la participation familiale
+    description: "Critères utilisés par les établissements d'accueil d'enfants : Ressources N-2, nombre d'enfants à charge et bénéficiaires de l'AEEH"
     tags:
-      - Participation familiale EAJE
+      - Critères de calcul de la participation familiale
     attributes:
       allocataires:
         title: "Données d'identité de l'allocataire et du conjoint"
