@@ -81,7 +81,7 @@ paths:
                         example: "PME"
                       code_effectif_entreprise:
                         type: "string"
-                        description: "Le code effectif correspond à une fourchette de nombre de salariés, celle-ci est indiquée un peu plus loin au champ 'tranche_effectif_salarie_entreprise'. Ce code respecte la nomenclature de l'INSEE disponible à cette adresse : http://www.sirene.fr/sirene/public/variable/tefen"
+                        description: "Le code effectif correspond à une fourchette de nombre de salariés, celle-ci est indiquée un peu plus loin au champ 'tranche_effectif_salarie_entreprise'. Ce code respecte la nomenclature de l'INSEE disponible à cette adresse : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale"
                         example: "31"
                       date_creation:
                         type: "integer"
