@@ -3,7 +3,10 @@ require 'digest/sha2'
 
 require_relative '../../app/services/rate_limiting_service'
 require_relative '../../app/services/operation_id_resolver'
+require_relative '../../app/lib/user_resolution_middleware'
 require_relative '../../app/lib/rate_limit_headers_middleware'
+
+Rails.configuration.middleware.insert_before Rack::Attack, UserResolutionMiddleware
 require_relative '../../app/errors/application_error'
 require_relative '../../app/errors/forbidden_error'
 require_relative '../../app/errors/forbidden_ip_error'

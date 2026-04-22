@@ -5,11 +5,7 @@ class JwtTokenService
 
   def extract_user(jwt_token)
     cached_token = cached_user(jwt_token)
-
-    if cached_token.present?
-      add_user_access_to_logger(cached_token)
-      return cached_user(jwt_token)
-    end
+    return cached_token if cached_token.present?
 
     decoded_token = decode_token(jwt_token)
 
@@ -19,11 +15,7 @@ class JwtTokenService
 
     jwt_data = enhance_jwt_data(jwt_data, decoded_token)
 
-    jwt_user = build_and_cache_user!(jwt_token, jwt_data)
-
-    add_user_access_to_logger(jwt_user)
-
-    jwt_user
+    build_and_cache_user!(jwt_token, jwt_data)
   rescue JWT::DecodeError, ActiveRecord::RecordNotFound
     nil
   end
@@ -32,17 +24,6 @@ class JwtTokenService
 
   def cache
     EncryptedCache.instance
-  end
-
-  def add_user_access_to_logger(jwt_user)
-    return if jwt_user.blank?
-
-    ActiveSupport::Notifications.instrument(
-      'user_access',
-      user: jwt_user.logstash_id,
-      jti: jwt_user.token_id,
-      iat: jwt_user.iat
-    )
   end
 
   def enhance_jwt_data(jwt_data, decoded_token)

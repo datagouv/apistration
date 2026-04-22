@@ -1,8 +1,9 @@
 RSpec.describe RateLimitingService do
   let(:req) { instance_double(Rack::Request) }
+  let(:env) { {} }
 
   before do
-    allow(req).to receive(:params).and_return({})
+    allow(req).to receive_messages(params: {}, env:)
   end
 
   describe '#discriminate_by_jwt_for_endpoints' do
@@ -30,43 +31,49 @@ RSpec.describe RateLimitingService do
     before do
       allow(req).to receive(:url).and_return("#{base_path}/random/path")
       allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+      allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil)
     end
 
-    context 'when authorization header is not set' do
-      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
-
+    context 'when no user is resolved' do
       it { is_expected.to be_nil }
     end
 
-    context 'when authorization header is set' do
-      context 'when the Bearer format is not respected' do
-        before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return('Beer hour') }
+    context 'when the token does not resolve to a user (opaque token)' do
+      let(:opaque_token) { 'random.opaque.token' }
 
-        it { is_expected.to be_nil }
+      before do
+        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{opaque_token}")
+        allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001")
       end
 
-      context 'when the Bearer is well formed' do
-        let(:token_value) { 'wow token' }
+      it 'falls back to the token hash' do
+        expect(subject).to eq(Digest::SHA256.hexdigest(opaque_token))
+      end
+    end
 
-        before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token_value}") }
+    context 'with a resolved user' do
+      let(:user) do
+        JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i)
+      end
 
-        context 'when the request path matches one of the endpoint\'s URL in the list' do
-          before { allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001") }
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
 
-          it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
-        end
+      context 'when the request path matches one of the endpoints in the list' do
+        before { allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001") }
 
-        describe 'non-regression test: when the request path matches dgfip v3 attestations_fiscales' do
-          before { allow(req).to receive(:url).and_return("#{base_path}/v3/dgfip/unites_legales/301028346/liasses_fiscales/2017") }
+        it { is_expected.to eq(Digest::SHA256.hexdigest(user.token_id)) }
+      end
 
-          it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
-        end
+      describe 'non-regression: dgfip v3 attestations_fiscales' do
+        before { allow(req).to receive(:url).and_return("#{base_path}/v3/dgfip/unites_legales/301028346/liasses_fiscales/2017") }
 
-        context 'when the request path does not match any of the endpoints in the list' do
-          before { allow(req).to receive(:url).and_return("#{base_path}/not/in/the/list") }
+        it { is_expected.to eq(Digest::SHA256.hexdigest(user.token_id)) }
+      end
 
-          it { is_expected.to be_nil }
-        end
+      context 'when the request path does not match any of the endpoints in the list' do
+        before { allow(req).to receive(:url).and_return("#{base_path}/not/in/the/list") }
+
+        it { is_expected.to be_nil }
       end
     end
   end
@@ -112,86 +119,62 @@ RSpec.describe RateLimitingService do
   describe '#blacklisted_access?' do
     subject { described_class.new.blacklisted_access?(req) }
 
-    before do
-      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
-    end
-
-    context 'when authorization header is not set' do
-      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
-
+    context 'when no user is resolved' do
       it { is_expected.to be(false) }
     end
 
-    context 'when authorization header is set' do
-      context 'when the Bearer format is not respected' do
-        before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return('Beer hour') }
-
-        it { is_expected.to be(false) }
+    context 'when user is resolved and blacklisted' do
+      let(:user) do
+        JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i, blacklisted: true)
       end
 
-      context 'when the Bearer is well formed' do
-        before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}") }
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
 
-        context 'when the token is blacklisted' do
-          context 'when it is a token from the database' do
-            let(:token) { TokenFactory.new([]).valid(uid: Seeds.new.blacklisted_jwt_id) }
+      it { is_expected.to be(true) }
+    end
 
-            it { is_expected.to be(true) }
-          end
-        end
-
-        context 'when the token is not blacklisted' do
-          let(:token) { 'random token' }
-
-          it { is_expected.to be(false) }
-        end
+    context 'when user is resolved and not blacklisted' do
+      let(:user) do
+        JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i)
       end
+
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
+
+      it { is_expected.to be(false) }
     end
   end
 
   describe '#ip_forbidden_access?' do
     subject { described_class.new.ip_forbidden_access?(req) }
 
-    before do
-      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
-      allow(req).to receive(:ip).and_return(request_ip)
-    end
+    before { allow(req).to receive(:ip).and_return(request_ip) }
 
     let(:request_ip) { '8.8.8.8' }
 
-    context 'when authorization header is not set' do
-      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
-
+    context 'when no user is resolved' do
       it { is_expected.to be(false) }
     end
 
-    context 'with a valid token' do
-      let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
-      let(:token_record) do
-        Token.create!(
-          iat: 1.day.ago.to_i,
-          exp: 1.year.from_now.to_i,
-          scopes: [],
-          authorization_request_model_id: authorization_request.id
-        )
-      end
-      let(:token) { TokenFactory.new([]).valid(uid: token_record.id) }
-
-      before do
-        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}")
-      end
-
+    context 'with a resolved user' do
       context 'without IP whitelist configured' do
+        let(:user) do
+          JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i)
+        end
+
+        before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
+
         it { is_expected.to be(false) }
       end
 
       context 'with IP whitelist configured' do
-        before do
-          AuthorizationRequestSecuritySettings.create!(
-            authorization_request:,
+        let(:user) do
+          JwtUser.new(
+            uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
             allowed_ips: ['192.168.1.0/24']
           )
         end
+
+        before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
 
         context 'when request IP is allowed' do
           let(:request_ip) { '192.168.1.50' }
@@ -211,81 +194,50 @@ RSpec.describe RateLimitingService do
   describe '#custom_rate_limit_for' do
     subject { described_class.new.custom_rate_limit_for(req) }
 
-    before do
-      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+    context 'when no user is resolved' do
+      it { is_expected.to be_nil }
     end
 
-    context 'when authorization header is not set' do
-      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
+    context 'with a resolved user without custom rate limit' do
+      let(:user) do
+        JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i)
+      end
+
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
 
       it { is_expected.to be_nil }
     end
 
-    context 'with a valid token' do
-      let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
-      let(:token_record) do
-        Token.create!(
-          iat: 1.day.ago.to_i,
-          exp: 1.year.from_now.to_i,
-          scopes: [],
-          authorization_request_model_id: authorization_request.id
+    context 'with a resolved user with custom rate limit' do
+      let(:user) do
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+          rate_limit_per_minute: 100
         )
       end
-      let(:token) { TokenFactory.new([]).valid(uid: token_record.id) }
 
-      before do
-        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}")
-      end
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
 
-      context 'without custom rate limit configured' do
-        it { is_expected.to be_nil }
-      end
-
-      context 'with custom rate limit configured' do
-        before do
-          AuthorizationRequestSecuritySettings.create!(
-            authorization_request:,
-            rate_limit_per_minute: 100
-          )
-        end
-
-        it { is_expected.to eq(100) }
-      end
+      it { is_expected.to eq(100) }
     end
   end
 
   describe '#custom_rate_limit?' do
     subject { described_class.new.custom_rate_limit?(req) }
 
-    before do
-      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
-    end
-
-    context 'when authorization header is not set' do
-      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
-
+    context 'when no user is resolved' do
       it { is_expected.to be(false) }
     end
 
-    context 'with a valid token with custom rate limit' do
-      let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234') }
-      let(:token_record) do
-        Token.create!(
-          iat: 1.day.ago.to_i,
-          exp: 1.year.from_now.to_i,
-          scopes: [],
-          authorization_request_model_id: authorization_request.id
-        )
-      end
-      let(:token) { TokenFactory.new([]).valid(uid: token_record.id) }
-
-      before do
-        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}")
-        AuthorizationRequestSecuritySettings.create!(
-          authorization_request:,
+    context 'with a resolved user with custom rate limit' do
+      let(:user) do
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
           rate_limit_per_minute: 100
         )
       end
+
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
 
       it { is_expected.to be(true) }
     end
