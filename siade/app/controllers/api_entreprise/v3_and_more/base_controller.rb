@@ -5,6 +5,9 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   before_action :verify_api_version!
   before_action :verify_recipient_is_a_siret!
+
+  include HandleEditorDelegation
+
   before_action :set_content_type_header!
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response

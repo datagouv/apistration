@@ -1,5 +1,7 @@
 class UserResolutionMiddleware
   USER_ENV_KEY = 'siade.current_user'.freeze
+  DELEGATION_ENV_KEY = 'siade.editor_delegation'.freeze
+  DELEGATION_AMBIGUOUS_ENV_KEY = 'siade.editor_delegation_ambiguous'.freeze
 
   def initialize(app)
     @app = app
@@ -19,7 +21,20 @@ class UserResolutionMiddleware
     user = JwtTokenService.instance.extract_user(token)
     return if user.blank?
 
-    env[USER_ENV_KEY] = user
+    if user.editor?
+      resolve_editor(user, env)
+    else
+      env[USER_ENV_KEY] = user
+    end
+  end
+
+  def resolve_editor(user, env)
+    resolver = EditorDelegationResolver.new(user, Rack::Request.new(env).params)
+    resolver.resolve
+
+    env[USER_ENV_KEY] = resolver.enriched_user
+    env[DELEGATION_ENV_KEY] = resolver.delegation if resolver.delegation
+    env[DELEGATION_AMBIGUOUS_ENV_KEY] = true if resolver.ambiguous
   end
 
   def extract_token(env)

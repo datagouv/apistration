@@ -67,7 +67,8 @@ module HandleTokens
       'user_access',
       user: current_user.logstash_id,
       jti: current_user.token_id,
-      iat: current_user.iat
+      iat: current_user.iat,
+      authorization_request_id: current_user.authorization_request_id
     )
   end
 
