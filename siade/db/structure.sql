@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS public.editor_tokens;
+DROP TABLE IF EXISTS public.editor_delegations;
+DROP TABLE IF EXISTS public.editors;
 DROP TABLE IF EXISTS public.authorization_request_security_settings;
 DROP TABLE IF EXISTS public.tokens;
 DROP TABLE IF EXISTS public.authorization_requests;
@@ -57,6 +60,42 @@ CREATE TABLE public.authorization_request_security_settings (
 ALTER TABLE ONLY public.authorization_request_security_settings ADD CONSTRAINT authorization_request_security_settings_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.authorization_request_security_settings ADD CONSTRAINT fk_authorization_request FOREIGN KEY (authorization_request_id) REFERENCES public.authorization_requests(id);
 CREATE UNIQUE INDEX index_arss_on_authorization_request_id ON public.authorization_request_security_settings USING btree (authorization_request_id);
+
+CREATE TABLE public.editors (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    name character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY public.editors ADD CONSTRAINT editors_pkey PRIMARY KEY (id);
+
+CREATE TABLE public.editor_delegations (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    editor_id uuid NOT NULL,
+    authorization_request_id uuid NOT NULL,
+    revoked_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY public.editor_delegations ADD CONSTRAINT editor_delegations_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.editor_delegations ADD CONSTRAINT fk_editor_delegations_editor FOREIGN KEY (editor_id) REFERENCES public.editors(id);
+ALTER TABLE ONLY public.editor_delegations ADD CONSTRAINT fk_editor_delegations_authorization_request FOREIGN KEY (authorization_request_id) REFERENCES public.authorization_requests(id);
+CREATE UNIQUE INDEX index_editor_delegations_on_editor_id_and_authorization_request_id ON public.editor_delegations USING btree (editor_id, authorization_request_id);
+
+CREATE TABLE public.editor_tokens (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    editor_id uuid NOT NULL,
+    iat integer,
+    exp integer NOT NULL,
+    blacklisted_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY public.editor_tokens ADD CONSTRAINT editor_tokens_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.editor_tokens ADD CONSTRAINT fk_editor_tokens_editor FOREIGN KEY (editor_id) REFERENCES public.editors(id);
 
 CREATE TABLE public.access_logs (
   timestamp timestamp with time zone,

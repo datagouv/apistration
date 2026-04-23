@@ -1,6 +1,7 @@
 class JwtUser
   attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp,
-    :rate_limit_per_minute, :allowed_ips
+    :rate_limit_per_minute, :allowed_ips, :editor_id,
+    :authorization_request_id
 
   def self.debugger_id
     '00000000-0000-0000-0000-000000000000'
@@ -11,7 +12,8 @@ class JwtUser
   end
 
   def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false,
-                 rate_limit_per_minute: nil, allowed_ips: nil)
+                 rate_limit_per_minute: nil, allowed_ips: nil, editor_id: nil,
+                 authorization_request_id: nil)
     @id = uid
     @scopes = scopes
     @jti = jti
@@ -22,6 +24,29 @@ class JwtUser
     @mcp = mcp
     @rate_limit_per_minute = rate_limit_per_minute
     @allowed_ips = allowed_ips
+    @editor_id = editor_id
+    @authorization_request_id = authorization_request_id
+  end
+
+  def editor?
+    @editor_id.present?
+  end
+
+  def with_delegation(authorization_request_id:, scopes:, allowed_ips:, rate_limit_per_minute:)
+    self.class.new(
+      uid: id,
+      jti:,
+      scopes:,
+      iat: iat.to_i,
+      exp:,
+      blacklisted: blacklisted?,
+      siret:,
+      mcp: mcp?,
+      editor_id:,
+      authorization_request_id:,
+      allowed_ips:,
+      rate_limit_per_minute:
+    )
   end
 
   def ip_allowed?(request_ip)
