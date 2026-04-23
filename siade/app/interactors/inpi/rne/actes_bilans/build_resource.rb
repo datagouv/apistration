@@ -91,7 +91,9 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
       target:,
       document_id:,
       timestamp:,
-      token_id:
+      token_id:,
+      token_type:,
+      authorization_request_id:
     }.to_json
   end
 
@@ -105,5 +107,13 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
 
   def token_id
     context.params[:token_id]
+  end
+
+  def token_type
+    context.params[:token_type]
+  end
+
+  def authorization_request_id
+    context.params[:authorization_request_id]
   end
 end

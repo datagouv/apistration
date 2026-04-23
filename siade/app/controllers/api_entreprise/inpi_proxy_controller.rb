@@ -39,9 +39,25 @@ class APIEntreprise::INPIProxyController < APIController
   end
 
   def authenticate_user!
-    @current_user = JwtUser.new(**Token.find(token_id).to_jwt_user_attributes)
+    user = JwtUser.new(**token_model.find(token_id).to_jwt_user_attributes)
+    @current_user = enrich_with_delegation(user)
   rescue ActiveRecord::RecordNotFound
     handle_params_error!([TokenNotFoundError.new], :unauthorized)
+  end
+
+  def enrich_with_delegation(user)
+    ar_id = authorization_request_id
+    return user unless ar_id
+
+    ar = AuthorizationRequest.find(ar_id)
+    security_settings = ar.security_settings
+
+    user.with_delegation(
+      authorization_request_id: ar.id,
+      scopes: ar.scopes,
+      allowed_ips: security_settings&.allowed_ips,
+      rate_limit_per_minute: security_settings&.rate_limit_per_minute
+    )
   end
 
   def organizer
@@ -76,6 +92,18 @@ class APIEntreprise::INPIProxyController < APIController
 
   def token_id
     decrypted_params['token_id']
+  end
+
+  def token_type
+    decrypted_params['token_type']
+  end
+
+  def authorization_request_id
+    decrypted_params['authorization_request_id']
+  end
+
+  def token_model
+    token_type == 'editor' ? EditorToken : Token
   end
 
   def expired_uuid?
