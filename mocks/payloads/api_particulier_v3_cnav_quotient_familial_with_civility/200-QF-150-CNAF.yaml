@@ -10,7 +10,6 @@ params:
   nomNaissance: 'MARTIN'
   prenoms:
     - 'AXELLE'
-    - 'LAURENCE'
   anneeDateNaissance: 1989
   moisDateNaissance: 12
   jourDateNaissance: 3
@@ -22,7 +21,7 @@ payload: |-
         {
           "nom_naissance": "MARTIN",
           "nom_usage": null,
-          "prenoms": "AXELLE LAURENCE",
+          "prenoms": "AXELLE",
           "date_naissance": "1989-12-03",
           "sexe": "F"
         }
