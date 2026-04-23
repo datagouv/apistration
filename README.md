@@ -16,6 +16,10 @@ Built and maintained by [DINUM](https://www.numerique.gouv.fr/) (Direction Inter
 - Site: see [`site/README.md`](site/README.md)
 - Mocks: see [`mocks/README.md`](mocks/README.md)
 
+## Scripts
+
+- [`bin/setup_worktree.sh`](bin/setup_worktree.sh) `<path> [branch]` — crée un git worktree et génère des `.env.local` dans `site/` et `siade/` pour isoler les bases Postgres (dev/test) par worktree (via `dotenv-rails`).
+
 ## Contributing
 
 External contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for ground rules, workflow, and requirements (signed-off commits, tests, green CI, RGAA accessibility).
