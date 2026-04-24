@@ -20,4 +20,4 @@ adheres to [Semantic Versioning](https://semver.org/).
 - Opt-in retry middleware via `faraday-retry`.
 - 9 resource modules scaffolded from the OpenAPI spec, grouped by provider.
 - Logging middleware redacts query strings by default (PII protection).
-- `bin/smoke` + `examples/{basic,error_handling,retry}.rb`.
+- `examples/{basic,error_handling,retry}.rb`.

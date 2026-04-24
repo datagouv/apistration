@@ -503,10 +503,10 @@ At least one stub example MUST show a 200 and one MUST show a 429 with
 
 ### 12.4 Manual & CI
 
-- Each client ships a `bin/smoke` (or equivalent) that hits **one** staging
-  endpoint with the public test token and prints `http_status`,
-  `rate_limit.remaining`, and top-level `data` keys — for release-time manual
-  checks, not CI.
+- Manual staging conformance runs through [`TESTING.md`](TESTING.md) — a
+  one-shot "tap one endpoint and exit 0" smoke script is more cargo-cult
+  than proof, since the same happy path is already covered by stubbed
+  unit tests. Don't ship one.
 - CI MUST run unit + integration tests on the two newest supported runtimes;
   minimum supported version is declared in the package metadata.
 
@@ -600,8 +600,8 @@ A reviewer certifying a new client ticks each item.
       `User-Agent` set.
 - [ ] Immutable `Configuration` with `with()` / `copy()`; ENV vars honoured.
 - [ ] Unit tests cover every surface listed in §12.1; integration tests
-      cover 200 / 422 / 429 / 502 on both APIs; `bin/smoke` ships; README
-      has a stub example.
+      cover 200 / 422 / 429 / 502 on both APIs; staging conformance run
+      from TESTING.md passes; README has a stub example.
 - [ ] `Client` shareable across threads; no process-global mutable state.
 - [ ] TLS verification non-disableable; `nil` params dropped; proxy env
       vars honoured; no response caching.

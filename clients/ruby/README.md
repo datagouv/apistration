@@ -24,14 +24,13 @@ ruby/
       commons.rb                # entry-point du commons vendorisé
       commons/                  # (généré) copie + namespace réécrit
       resources/                # (généré) 1 fichier par provider
-    spec/                       # 32 specs : envs, matrice 200/422/429/502,
+    spec/                       # 40 specs : envs, matrice 200/422/429/502,
                                 # validation locale, smoke 23 providers
     examples/{basic,error_handling,retry}.rb
-    bin/smoke                   # check release contre staging
     README.md
 
   api_particulier/              # gem publié (9 providers, 36 endpoints)
-    … structure symétrique, 18 specs, examples + smoke …
+    … structure symétrique, 18 specs, examples …
 
   bin/
     sync_commons                # vendorise commons/ dans chaque gem
@@ -60,11 +59,13 @@ ruby/
 - **Toutes les validations locales avant l'appel HTTP** : SIRET (Luhn + La
   Poste), SIREN (Luhn), `recipient` / `context` / `object` requis sur
   Entreprise, `recipient` requis sur Particulier.
-- **Faraday 2** + middlewares maison (`authentication`, `logging` avec
-  redaction query-string pour Particulier, `api_gouv_rate_limit`,
-  `api_gouv_error_handler`, `api_gouv_envelope`) + `faraday-retry` optionnel
-  opt-in (exceptions = `RateLimitError`, `ProviderError`,
-  `ProviderUnavailableError`, `TransportError`).
+- **Faraday 2** + middlewares maison (`Authentication`, `Logging` avec
+  redaction query-string pour Particulier, `RateLimitParser`, `ErrorHandler`,
+  `Envelope`), attachés par référence de classe (pas de `register_middleware`
+  global, pour garantir l'isolation quand les deux gems sont chargés dans le
+  même processus — voir SPECS §17.1), + `faraday-retry` optionnel opt-in
+  (exceptions = `RateLimitError`, `ProviderError`, `ProviderUnavailableError`,
+  `TransportError`).
 - **RSpec + WebMock**, pas de VCR (aligné avec la consigne du repo).
 
 ## Workflows
@@ -79,7 +80,7 @@ cd clients/ruby/api_particulier && bundle && bundle exec rspec  # 18 / 18
 
 ### Lancer les exemples
 
-Ne nécessitent pas de réseau (sauf `basic.rb` et `bin/smoke`) :
+Ne nécessitent pas de réseau (sauf `basic.rb`) :
 
 ```sh
 cd clients/ruby/api_entreprise
@@ -93,11 +94,11 @@ Avec un jeton de staging :
 TOKEN=$(curl -s https://raw.githubusercontent.com/datagouv/apistration/develop/mocks/tokens/default)
 
 API_ENTREPRISE_TOKEN=$TOKEN bundle exec ruby clients/ruby/api_entreprise/examples/basic.rb
-API_ENTREPRISE_TOKEN=$TOKEN clients/ruby/api_entreprise/bin/smoke
-
 API_PARTICULIER_TOKEN=$TOKEN bundle exec ruby clients/ruby/api_particulier/examples/basic.rb
-API_PARTICULIER_TOKEN=$TOKEN clients/ruby/api_particulier/bin/smoke
 ```
+
+Pour une validation pré-release complète contre staging, dérouler
+[`../TESTING.md`](../TESTING.md).
 
 ### Régénérer après un changement
 

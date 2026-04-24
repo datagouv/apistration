@@ -39,7 +39,7 @@ cd clients/ruby/api_entreprise && bundle && bundle exec rspec   # 32 / 32
 cd clients/ruby/api_particulier && bundle && bundle exec rspec  # 18 / 18
 ```
 
-### Exemples (lancés sans réseau grâce à WebMock, sauf les `basic.rb` et `bin/smoke`)
+### Exemples (lancés sans réseau grâce à WebMock, sauf les `basic.rb`)
 
 ```sh
 cd clients/ruby/api_entreprise
@@ -51,14 +51,18 @@ bundle exec ruby examples/error_handling.rb
 bundle exec ruby examples/retry.rb
 ```
 
-Les `examples/basic.rb` et `bin/smoke` de chaque gem tapent sur le bac à sable
-et requièrent un jeton :
+Les `examples/basic.rb` de chaque gem tapent sur le bac à sable staging et
+requièrent un jeton :
 
 ```sh
 TOKEN=$(curl -s https://raw.githubusercontent.com/datagouv/apistration/develop/mocks/tokens/default)
 API_ENTREPRISE_TOKEN=$TOKEN bundle exec ruby clients/ruby/api_entreprise/examples/basic.rb
 API_PARTICULIER_TOKEN=$TOKEN bundle exec ruby clients/ruby/api_particulier/examples/basic.rb
 ```
+
+Pour un run de conformité complet contre staging avant release, suivre
+[`TESTING.md`](TESTING.md) — c'est la playbook qui remplace les anciens
+`bin/smoke` (trop superficiels pour catcher autre chose qu'une panne infra).
 
 ### Régénérer après un changement de spec OpenAPI
 
@@ -78,8 +82,7 @@ clients/ruby/bin/scaffold_resources --api all
    rate-limit, retry, redaction des logs PII, signatures des resources).
 4. Couvrir les 4 cas bout-en-bout §12.2 (200, 422, 429 avec `retry_after`,
    502 avec `meta.retry_in`) contre un stub HTTP.
-5. Publier un `bin/smoke`, un README avec un exemple de stub, un
-   `CHANGELOG.md`.
+5. Publier un README avec un exemple de stub, un `CHANGELOG.md`.
 6. Cocher la checklist §20 avant merge.
 
 ## CI

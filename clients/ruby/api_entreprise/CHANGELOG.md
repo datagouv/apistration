@@ -26,4 +26,4 @@ adheres to [Semantic Versioning](https://semver.org/).
 - Versioned endpoints: each method accepts a `version:` kwarg; default is
   the latest available version; unknown version raises `ArgumentError`;
   deprecated versions emit a language-native `warn` on call.
-- `bin/smoke` + `examples/{basic,error_handling,retry}.rb`.
+- `examples/{basic,error_handling,retry}.rb`.
