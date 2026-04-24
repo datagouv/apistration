@@ -25,8 +25,10 @@ fiche:
         - ✅ France métropolitaine
         - ✅ DROM-COM
       updating_rules_description: |+
-        L'effectif de l'année N d'une unité légale est mis à disposition **fin janvier de l'année N+1**.
-        L'effectif d'une même année **peut évoluer au cours du temps**, car les régularisations _a posteriori_ sont possibles.
+        L'effectif de l'année N d'une unité légale est valorisé pour sa très grande majorité **fin janvier de l'année N+1**, à travers deux vagues principales successives liées aux échéances DSN.
+        Les mises à jour ultérieures sont effectuées **à la fin de chaque mois**, car les régularisations _a posteriori_ sont possibles.
+
+        La réponse est mise en cache jusqu'à la fin du mois courant, en phase avec le cycle de mise à jour des données.
       entities:
         - entreprises
         - associations
@@ -181,9 +183,11 @@ fiche:
         - ✅ France métropolitaine
         - ✅ DROM-COM
       updating_rules_description: |+
-        L'effectif du mois M d'un établissement est mis à disposition **à la fin du mois M+1** ; par exemple, l'effectif du mois de février est disponible fin mars. Il n'est donc pas possible d'obtenir l'effectif du mois courant.
+        L'effectif du mois M d'un établissement est collecté et mis à disposition **à la fin du mois M+1** ; par exemple, l'effectif du mois de février est disponible fin mars. Il n'est donc pas possible d'obtenir l'effectif du mois courant.
 
         L'effectif d'un même mois **peut évoluer au cours du temps**, car les régularisations _a posteriori_ sont possibles.
+
+        La réponse est mise en cache jusqu'à la fin du mois courant, en phase avec le cycle de mise à jour des données.
       entities:
         - entreprises
         - associations
