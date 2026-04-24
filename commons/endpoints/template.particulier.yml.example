@@ -84,5 +84,19 @@ fiche:
     api_cgu:
       description: |+
           Les conditions d'utilisations spécifiques à l'API
-
-
+    # Données swagger/OpenAPI pour cet endpoint.
+    # La clé dottée correspond au chemin SwaggerData.get('provider.resource.property') utilisé dans les specs rswag.
+    # Les définitions partagées entre plusieurs endpoints (paramètres d'identité pivot, headers de cache,
+    # schémas réutilisés via ancres YAML) sont dans _swagger_shared/ et accessibles par SwaggerData.get.
+    swagger:
+      provider.resource:
+        title: "Nom de l'API affiché dans le swagger"
+        description: "Description technique de l'endpoint"
+        tags:
+          - "Catégorie dans le swagger"
+        attributes:
+          champ_exemple:
+            title: "Titre du champ"
+            type: "string"
+            description: "Description du champ"
+            example: "valeur_exemple"
