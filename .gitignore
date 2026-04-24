@@ -1,2 +1,5 @@
 sandbox/
 tmp/
+siade/.env.local
+site/.env.local
+.env.local
