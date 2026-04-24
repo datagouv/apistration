@@ -1,0 +1,326 @@
+---
+fiche:
+  - uid: 'data_subvention/subventions'
+    path: '/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions'
+    position: 152
+    beta: true
+    novelty: true # ou new_version: true / ou beta: true
+    extra_description: |+
+      Informations des dossiers de subventions déposés par les associations et de l'instruction avec les montants finalement accordés, avec parfois des données sur le paiement.
+    perimeter:
+      entity_type_description: |+
+        Cette API concerne ✅ **les associations** ayant déposé des demandes de subventions depuis 2018 (historique pouvant parfois être antérieur).
+
+        **L'API couvre une partie des demandes et versements de subventions :**
+        - ✅ **100% des demandes de subventions auprès de l'État** et ✅ 100% des paiements versés par Chorus associés ;
+        - ⚙️ **45% des demandes de subventions auprès des collectivités**, [périmètre détaillé disponible sur Data.subvention](https://www.canva.com/design/DAGWjlwgSCU/3LZsqnQk2D0U1itFNKu9mw/view){:target="_blank"}, ❌ les paiements ne sont pas disponibles  ;
+        - ⚙️ **4% des demandes de subventions auprès des opérateurs et Caisses** ; ⚙️ les paiements sont uniquement disponibles pour :
+          - les contrats aidés proposés par le fonds de coopération de la jeunesse et de l’éducation populaire (FONJEP) ;
+          - la direction régionale de l'environnement, de l'aménagement et du logement (Dreal), qui fait exception car ses demandes de subventions ne sont pas disponibles (seulement les paiements).
+
+      geographical_scope_description:  |+
+        - ✅ **Métropole**, y compris Alsace-Moselle. <br> Les associations qui relèvent du **régime de droit local d'Alsace-Moselle** sont couvertes par l'API dès lors qu'elles sont immatriculées au répertoire Sirene ;
+        - ✅ **DROM-COM** sauf ❌ les associations de Nouvelle-Calédonie, de la Polynésie française et de Wallis-et-Futuna qui ne sont pas immatriculées à l’INSEE, mais dans des bases locales.
+      updating_rules_description: |+
+        La date de mise à jour des données est spécifiée dans la réponse de l'API. La fréquence de mise à jour dépend du fournisseur et du type de données :
+
+        **Données des demandes de subventions** :
+        - Les données issues du Fonds de coopération de la jeunesse et de l’éducation populaire (FONJEP) sont **mises à jour trimestriellement** ;
+        - Les données issues du compte Asso concernant surtout les demandes de subventions Jeunesse et Sports (FDVA, Partenariat JEP) sont **mises à jour trimestriellement** aussi ;
+        - Les données issues des demandes effectuées sur démarches-simplifiées.fr, notamment utilisé par les DRAC, la DIHAL, certaines DREETS et DDETS, sont **mises à jour en temps réel** ;
+        - Les données des subventions versées au titre du Fonds interministériel de prévention contre la délinquance et la radicalisation (CIPDR) issues de l'outil Subventia, sont **mises à jour bi-annuellement** ;
+        - La mise à jour des données des demandes de subventions Politique de la Ville, issues de Dauphin, est inconnue.
+
+        **Données de paiements :** Elles proviennent toutes du logiciel Chorus, et sont **mises à jour hebdomadairement chaque lundi**.
+
+      know_more_description: |+
+        [Cet article de Data.subvention](https://datasubvention.beta.gouv.fr/article-source-de-donnees-datasubvention/#elementor-toc__heading-anchor-2) détaille les sources de données de l'API.
+      entities:
+        - associations
+    call_id: "SIRET / SIREN / RNA"
+    # La liste des clés disponible est stockée dans la locale `provider_uids` du fichier provider_uids.fr.yml
+    provider_uids:
+      - 'data_subvention'
+    keywords:
+      - 'subvention'
+      - 'chorus'
+      - 'association'
+      - 'aide'
+      - 'osiris'
+      - 'fonjep'
+      - 'subventia'
+      - 'DS'
+    data:
+      description: |+
+        **Cette API délivre pour chaque association appelée :**
+        - **la liste de ses demandes de subventions depuis 2018, [lorsque disponibles dans l'API](#perimetre_entites_concernees)&nbsp;:**
+          - informations issues de la demande déposée : intitulé officiel de la subvention demandée, montant demandé par l'association et descriptif des projets renseignés par l'association ;
+          - informations issues de l'instruction du dossier : service instructeur, date, statut de la demande (accordé ou non), et la valeur du montant accordé le cas échéant.
+        - **la liste des payements versés à l'association&nbsp;:**
+          - date du versement ;
+          - centre financier ayant effectué le versement ;
+          - domaine et programme auxquels le versement est rattaché.
+
+        **Un identifiant permet de faire la jointure entre les demandes et les versements.** Mais il est fréquent que des demandes n'aient pas de versement, et vice versa.
+    opening: protected
+    parameters:
+      - SIRET/SIREN/RNA de l'association
+    format:
+      - Donnée structurée JSON
+    swagger:
+      data_subvention.subventions:
+        title: Subventions des associations
+        description: Listes des subventions accordées et distribuées aux associations
+        tags:
+        - Subventions des associations
+        parameters:
+          siren_or_siret_or_rna:
+            type: string
+            description: Siren, Siret ou RNA de l'association dont vous souhaitez obtenir
+              les subventions.
+            example: '12345678901234'
+            required: true
+        attributes:
+          demande_subvention:
+            title: Liste des demandes de subventions de l'association et leur informations.
+            type: object
+            nullable: true
+            properties:
+              fournisseur:
+                title: Fournisseur distribuant la donnée à Data Subvention
+                description: Origine de la donnée transmise (OSIRIS, Chorus, etc.)
+                type: string
+                example: OSIRIS
+              date_mise_a_jour_information:
+                title: Date de dernière mise à jour
+                description: Date de dernière mise à jour des informations. La fréquence d'actualisation
+                  des données varie selon le fournisseur, elle est décrite dans la fiche métier
+                  de l'API.
+                type: string
+                format: date-time
+                example: '2019-01-01T00:00:00.000Z'
+              annee_exercice_demande:
+                title: Année de la demande de subvention
+                description: Année durant laquelle la subvention a été demandée par l'association.
+                type: number
+                example: 2019
+              identifiant_engagement_juridique:
+                title: Numéro EJ
+                description: Numéro d'engagement juridique (EJ) associé à la demande. Cet
+                  identifiant est présent pour toutes les demandes de subventions, sauf celles
+                  issues du FONJEP.
+                type: string
+                nullable: true
+                example: 19/0003456
+              jointure_demandes_et_versements:
+                title: Identifiant de jointure entre demande et versement
+                description: Identifiant créé par DataSubvention pour faire le lien entre
+                  une demande figurant dans cette liste et un paiement figurant dans la liste
+                  suivante. Pour toutes les demandes de subventions, sauf celle issues du
+                  FONJEP, cet identifiant est identique au numéro EJ. Pour les demandes issues
+                  du FONJEP, ce numéro correspond au code poste.
+                type: string
+                nullable: true
+                example: 19/0003456
+              subvention_demandee:
+                title: Informations sur la subvention demandée
+                type: object
+                properties:
+                  dispositif:
+                    title: Nom du dispositif
+                    type: string
+                    example: ANS - Projets Sportifs Territoriaux
+                  sous_dispositif:
+                    title: Nom du sous-dispositif
+                    type: string
+                    example: Aides territoriales (hors emploi)
+                  montant_demande:
+                    title: Montant de subvention demandé
+                    description: Montant en euros de subvention demandé par l'association.
+                    type: number
+                    example: 2000
+              description_des_projets:
+                title: Éléments déclaratifs des projets
+                description: Description détaillée par l'association des projets qui visent
+                  à être financés par l'association.
+                type: object
+                properties:
+                  estimation_cout_total:
+                    title: Estimation du coût total du projet
+                    description: Lorsqu'il est renseigné, ce montant indique le coût global
+                      du ou des projets évalué par le déclarant afin d'informer l'instructeur
+                      de l'ampleur du projet.
+                    type: number
+                    example: 8500
+                  projet:
+                    title: Liste des projets et actions proposés
+                    type: array
+                    items:
+                      title: Détails d'un projet ou action proposée
+                      type: object
+                      properties:
+                        rang:
+                          title: Rang du projet
+                          description: Numéro d'ordre du projet par rapport aux autres projets.
+                          type: number
+                          example: 1
+                        intitule:
+                          title: Titre du projet
+                          type: string
+                          example: Développement du football féminin
+                        objectifs:
+                          title: Objectif du projet
+                          description: Description de l'objectif du projet
+                          type: string
+                          example: Notre objectif est de  continuer à faire connaitre [...]
+                        objectifs_operationnels:
+                          title: Objectifs opérationnels
+                          type: string
+                          example: Développement de la pratique
+                        description:
+                          title: Description détaillée du projet
+                          type: string
+                          example: Depuis plusieurs années nous intervenons auprès [...]
+                        aide:
+                          title: Description de l'aide
+                          description: TODO
+                          type: object
+                          properties:
+                            nature:
+                              title: Type d'aide
+                              type: string
+                              example: Projets sportifs territoriaux
+                            modalite:
+                              title: Modalité d'aide
+                              type: string
+                              example: Aide au projet
+                        modalite_ou_dispositif:
+                          title: Modalité ou dispositif
+                          type: string
+                          example: Développer la pratique féminine
+                        indicateurs:
+                          title: Indicateurs de performance
+                          type: string
+                          nullable: true
+                        cofinanceurs:
+                          title: Co-financeurs
+                          description: Co-financeurs séparés par ';'
+                          type: string
+                          example: Conseil départemental du Nord;Ville de Lille;Fédération
+                            française d'aviron - Hauts-de-France
+              instruction:
+                title: Informations et résultats de l'instruction de la demande
+                type: object
+                properties:
+                  service_instructeur:
+                    title: Code du service instructeur
+                    description: TODO
+                    type: string
+                    example: DD59
+                  date_commission:
+                    title: Date de commission
+                    description: Date à laquelle la commission d'instruction a eu lieu.
+                    type: string
+                    format: date-time
+                    nullable: true
+                    example: '2019-06-15T00:00:00.000Z'
+                  statut_demande:
+                    title: Statut de la demande
+                    description: Statut de la demande accordé par le service instructeur.
+                    type: string
+                    enum:
+                    - Accordé
+                    - En instruction
+                    - Refusé
+                    - En attente
+                    example: Accordé
+                  montant_accorde:
+                    title: Montant accordé à l'association
+                    description: Montant en euros de la subvention accordée à l'association.
+                    type: number
+                    example: 1800
+          paiements:
+            title: Liste des paiements effectués
+            type: array
+            items:
+              title: Informations du paiement effectué
+              type: object
+              properties:
+                fournisseur:
+                  title: Fournisseur distribuant la donnée à Data Subvention
+                  description: Origine de la donnée transmise, il s'agit toujours de Chorus.
+                  type: string
+                  example: Chorus
+                date_mise_a_jour_information:
+                  title: Date de dernière mise à jour
+                  description: Date de dernière mise à jour des informations. Les données
+                    de Chorus sont mises à jour tous les lundis.
+                  type: string
+                  format: date-time
+                  example: '2021-03-15T00:00:00.000Z'
+                jointure_demandes_et_versements:
+                  title: Identifiant de jointure entre demande et versement
+                  description: Identifiant créé par DataSubvention pour faire le lien entre
+                    un paiement figurant dans cette liste et une demande figurant dans la
+                    liste précédente.
+                  type: string
+                  nullable: true
+                  example: 19/0003456
+                montant_verse:
+                  title: Montant versé
+                  description: Montant en euros qui a été versé à l'association.
+                  type: number
+                  example: 1250
+                date_versement:
+                  title: Date de versement
+                  description: Date du versement à l'association.
+                  type: string
+                  format: date-time
+                  example: '2021-03-15T00:00:00.000Z'
+                centre_financier:
+                  title: Nom du centre financier
+                  description: Centre ayant effectué le versement de la subvention. Il ne
+                    s'agit pas forcément de celui qui donne la subvention.
+                  type: string
+                  example: UO Region BFC-FC
+                domaine_fonctionnel:
+                  title: Domaine fonctionnel
+                  type: string
+                  example: sport handicap
+                activitee:
+                  title: Type d'activité
+                  type: string
+                  example: handisport
+                numero_bop:
+                  title: Numéro BOP
+                  description: Numéro du budget opérationnel de programme (BOP) qui détermine
+                    la catégorie du poste de dépense de l'État.
+                  type: string
+                  example: '219'
+                programme:
+                  title: Programme budgétaire
+                  description: Libellé et numéro du programme budgétaire auquel est rattaché
+                    le versement. Ces informations sont tirées du fournisseur Data Bretagne
+                    à partir du numéro BOP du versement.
+                  type: object
+                  properties:
+                    numero:
+                      title: Numéro de programme
+                      type: string
+                      example: '219'
+                    libelle:
+                      title: Nom du programme
+                      type: string
+                      example: Sport
+                    fournisseur:
+                      title: Fournisseur distribuant la donnée à Data Subvention
+                      description: Origine de la donnée transmise, il s'agit toujours de Data
+                        Bretagne.
+                      type: string
+                      example: OSIRIS
+                    date_mise_a_jour_information:
+                      title: Date de dernière mise à jour
+                      description: Date de dernière mise à jour des informations.
+                      type: string
+                      format: date-time
+                      example: '2019-01-01T00:00:00.000Z'

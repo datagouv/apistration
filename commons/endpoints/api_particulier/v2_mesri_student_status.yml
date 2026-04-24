@@ -1,0 +1,97 @@
+---
+fiche:
+  - uid: 'mesri/v2/statut_etudiant'
+    opening: protected
+    new_endpoint_uids: 
+      - 'mesri/statut_etudiant'
+    path: '/api/v2/etudiants'
+    position: 300
+    ping_url: 'https://particulier.api.gouv.fr/api/mesri_statut_etudiant_ine/ping'
+    perimeter:
+      entity_type_description: |+
+        Cette API permet d'accéder aux **admissions et inscriptions de 1,3 million d'étudiants** (_Nombre de septembre 2024 - statistique à jour [ici](https://statutetudiant.esr.gouv.fr/){:target="_blank"}_) sur les un peu moins de 3 millions d'étudiants scolarisés dans l'enseignement supérieur (_[Statistique Insee 2022](https://www.insee.fr/fr/statistiques/2387291#tableau-figure1){:target="_blank"}_). 
+
+        **Cette API concerne :**
+        - ✅ **les étudiants admis ou inscrits dans les établissements sous tutelle du ministère de l'enseignement supérieur** (_avec pour objectif, à terme, de couvrir les tutelles de tous les ministères  et les établissements privés_), ayant au minimum une admission ou inscription dans l'année en cours et quelque soit leur régime : formation initiale, apprentissage, stagiaire de la formation continue, contrat de professionnalisation...
+        - ✅ **80% des étudiants en formation sanitaire**. Même si ces formations dépendent de la région, elles sont à 80% remontées par les universités dans le cadre de l’universitarisation de ces formations ;
+        - ✅ **les étudiants du secondaire** (BTS, classes préparatoires,...) _à partir de la rentrée 2023_.
+
+        **Sont couverts partiellement**, les étudiants des établissements :
+        - *️⃣ sous tutelle du ministère de l'agriculture ;
+        - *️⃣ sous tutelle du ministère de la culture ;
+        - *️⃣ privés.
+
+        **Ne sont pas couverts**, les étudiants des établissements :
+        - ❌ les étudiants en service civique ;
+        - ❌ les étudiants en formation sociale.
+
+        {:.fr-highlight}
+        > ⚠️ **Tous les établissements ne délivrent pas les informations des étudiants admis**. Par conséquent si l'API ne vous renvoie pas d'informations concernant un particulier, il n'est pas possible de considérer de façon définitive que cet étudiant n'est pas admis.
+        >
+        > En savoir plus sur la [différence entre le statut inscrit et admis](#faq_entry_0_api_particulier_endpoint_mesri_statut_etudiant).
+
+      geographical_scope_description:  |+
+        Cette API délivre les informations des **✅étudiants français et étrangers**.
+        
+        Par ailleurs, le référentiel national du statut étudiant couvre **✅ une partie des établissements de métropole et de Martinique, Guadeloupe, Guyane et Réunion**. [Voir une cartographie des établissements couverts](https://statutetudiant.esr.gouv.fr/pages/dataviz){:target="_blank"}
+
+        Ne sont pas couverts :
+        - ❌ les collectivités d’outre-mer Mayotte, Polynésie française, Saint-Barthélemy, Saint-Martin, Saint-Pierre-et-Miquelon, Wallis-et-Futuna ;
+        - ❌ les établissements français de l'étranger.
+
+        {:.fr-highlight}
+        > ℹ️ Le MESRI précise que l'ambition de cette API est bien de couvrir tous les établissements situées en France métropolitaine et d’outre-mer, y compris les collectivités d’outre-mer. Les établissements français de l'étranger ne seront pas contre pas couverts.
+
+
+      updating_rules_description: |+
+        La mise à jour des informations est **variable selon les établissements** car tous les établissements ne procèdent pas de la même manière pour fournir les données d'admission et d’inscription :
+
+        - Pour les **grandes universités**, le délai peut être en **temps réel** ;
+        - Pour les petits établissements, le délai est probablement plus long.
+
+        Des inscriptions peuvent avoir lieu toute l'année, et la transmission de ces informations par les établissements se fait elle aussi tout au long de l'année.
+    parameters_details:
+      description: |+
+        Cette API propose trois modalités d'appel :
+        <p class="fr-badge fr-badge--blue-ecume">![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="20px"} FranceConnect</p>
+        **Avec la [modalité d'appel FranceConnect](<%= cas_usage_path('modalite_appel_france_connect') %>)**.
+
+        <p class="fr-badge fr-badge--purple-glycine">Identifiant</p>
+        **Avec l'Identifiant National Étudiant (INE)** : Cet identifiant unique figure notamment sur la carte étudiant.
+
+        <p class="fr-badge fr-badge--brown-cafe-creme">Identité pivot</p>
+        **Avec les données d'identité** : Nom, prénom, sexe, date de naissance et lieu de naissance de l'étudiant (Code COG de la commune ou du pays de naissance)<sup>\*</sup>.
+        <span class="fr-text--xs">
+        <sup>\*</sup>Tous les champs sont facultatifs.
+        </span>
+        
+        {:.fr-icon-arrow-right-line .fr-link--icon-right}
+        [✒️ **Aider les usagers à renseigner leur lieu de naissance par code COG** - Lire la publication du 08/11/2023](https://particulier.api.gouv.fr/blog/parametre-lieu-naissance-code-cog){:target="_blank"}
+    data:
+      description: |+
+        Cette API délivre la **liste des inscriptions et admissions d'un étudiant**, en précisant les dates de début et de fin d'études, le régime de formation et le l'établisssement. L'obtention de ces informations permet d'éviter de demander un certificat étudiant.
+    provider_uids:
+      - 'mesri'
+    keywords: []
+    call_id:
+      - Identité pivot
+      - INE
+      - FranceConnect
+    parameters:
+      - Identité pivot
+      - INE
+      - FranceConnect
+    faq:
+      - q: Quelle différence entre le statut "admis" et le statut "inscrit" ?
+        a:
+          "Lorsque la candidature ou la demande de l'étudiant à rejoindre un établissement d'enseignement supérieur est accordée, le statut d'inscription est \"admis\".
+
+
+          À partir du moment où toute la procédure d'inscription est terminée et où **l'étudiant est en règle de ses droits d'inscription, le statut de l'étudiant passe alors à \"inscrit\"**. Selon les règles de l'établissement et le statut de l'étudiant, le passage du statut \"admis\" au statut \"inscrit\" se réalise après règlement total des droits, un premier versement ou l'acquittement.
+
+
+          Un étudiant peut être inscrit dans différents établissements."
+
+      - q: Quelle différence entre formation initiale et formation continue ?
+        a:
+          La distinction principale entre formation initiale et formation continue est le **critère de conventionnement spécifique à la formation continue** et qui se traduit par la signature d’une convention ou d’un contrat de formation professionnelle entre la personne et l’établissement formateur tel qu’il est décrit dans les [articles L.6353-1 à L. 6353-7 du Code du travail](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178215/#LEGISCTA000006178215) et l’[article D. 714-62 du Code de l’éducation](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027866356/).

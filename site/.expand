@@ -7,3 +7,7 @@ commons/swagger/openapi-entreprise.yaml:config/api-entreprise-v3-openapi.yml
 commons/swagger/openapi-particulier.yaml:config/api-particulier-openapi-v3.yml
 commons/swagger/api_particulier_open_api_static/v2.yaml:config/api-particulier-openapi.yml
 commons/data/throttle.yml:config/throttle.yml
+commons/endpoints/api_entreprise:config/endpoints/api_entreprise
+commons/endpoints/api_particulier:config/endpoints/api_particulier
+commons/endpoints/template.entreprise.yml.example:config/endpoints/template.entreprise.yml.example
+commons/endpoints/template.particulier.yml.example:config/endpoints/template.particulier.yml.example

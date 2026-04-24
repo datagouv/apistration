@@ -18,16 +18,36 @@ class SwaggerData
   end
 
   def yaml_backend
-    @yaml_backend ||= YAML.safe_load(yaml_backend_interpolated, permitted_classes: [Date], aliases: true)
+    @yaml_backend ||= load_shared.deep_merge(load_from_endpoints)
   end
 
-  def yaml_backend_interpolated
-    ERB.new(yaml_backend_raw).result
+  def load_shared
+    raw = shared_files.sort.map { |f| "#{File.read(f)}\n" }.reduce(:+)
+    return {} unless raw
+
+    YAML.safe_load(ERB.new(raw).result, permitted_classes: [Date], aliases: true) || {}
   end
 
-  def yaml_backend_raw
-    yaml_files = Dir.glob('config/swagger_data/**/*')
+  def load_from_endpoints
+    endpoint_files.each_with_object({}) do |file, result|
+      data = YAML.safe_load_file(file, aliases: true)
+      fiches = [*data['fiche']]
+      fiches.each do |fiche|
+        next unless fiche['swagger']
 
-    yaml_files.map { |file_path| "#{File.read(file_path)}\n" }.reduce(:+)
+        fiche['swagger'].each do |dotted_key, props|
+          nested = dotted_key.split('.').reverse.inject(props) { |val, key| { key => val } }
+          result.deep_merge!(nested)
+        end
+      end
+    end
+  end
+
+  def shared_files
+    Dir.glob('config/swagger_data/**/*.{yml,yaml}')
+  end
+
+  def endpoint_files
+    Dir.glob('config/endpoints/api_*/**/*.yml')
   end
 end

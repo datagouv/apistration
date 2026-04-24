@@ -4,7 +4,7 @@
 
 Le fichier OpenAPI est généré de la façon suivante :
 
-1. Un fichier par provider doit être crée dans le dossier `config/swagger_data/` au format `provider-name.yml`.
+1. Les données swagger sont définies soit directement dans le fichier endpoint (`commons/endpoints/api_*/`) pour les providers simples, soit dans `commons/endpoints/_swagger_shared/` pour les providers multi-endpoints.
 
 Ce fichier sert à définir la payload de sortie de nos endpoints.
 
@@ -140,7 +140,7 @@ subventions:
                 example: 123.4
 ```
 
-2. Les données du fichier `config/swagger_data/provider.yml` sont utilisées dans le fichier de spec `spec/requests/api_particulier/v3_and_more/provider/endpoint_spec.rb`
+2. Les données swagger sont utilisées dans le fichier de spec `spec/requests/api_particulier/v3_and_more/provider/endpoint_spec.rb`
 
 Ce fichier de spec a plusieurs rôles :
 
@@ -151,7 +151,7 @@ Ce fichier de spec a plusieurs rôles :
 
 ## Génération du fichier OpenAPI et push sur Github
 
-Si vous éditez un fichier `config/swagger_data/*.yml` il faut régénerer le fichier swagger (et le commit avec le changement) ou le CI échouera lors du push sur Github.
+Si vous éditez un fichier swagger (dans `commons/endpoints/`) il faut régénérer le fichier swagger (et le commit avec le changement) ou le CI échouera lors du push sur Github.
 
 Les tests vérifient que le fichier Swagger est valide, le CI/CD vérifie que la version du Swagger est à jour.
 

@@ -23,6 +23,49 @@ deploy time, two things are wired up:
    destination path (which is a symlink on disk) with a real copy of the
    source taken from the repository root.
 
+### `commons/endpoints/`
+
+Toutes les données d'un endpoint API (fiche métier + schéma swagger) sont
+regroupées ici. Structure :
+
+```
+commons/endpoints/
+├── api_entreprise/          # Un fichier par endpoint (ou groupe de versions)
+├── api_particulier/
+├── _swagger_shared/         # Définitions swagger partagées entre plusieurs endpoints
+│                            # (paramètres SIREN/SIRET, identité pivot, schémas avec
+│                            # ancres YAML réutilisées). Accessibles via SwaggerData.get.
+├── template.entreprise.yml.example
+└── template.particulier.yml.example
+```
+
+Chaque fichier endpoint a le format suivant :
+
+```yaml
+fiche:
+  - uid: 'provider/resource'
+    path: '/v3/provider/resource/{param}'
+    perimeter: ...
+    keywords: [...]
+    swagger:
+      provider.resource_name:          # clé dottée = chemin SwaggerData.get
+        title: "Nom dans le swagger"
+        description: "..."
+        tags: ["Catégorie"]
+        attributes:
+          champ:
+            type: "string"
+            example: "valeur"
+```
+
+- **`fiche:`** — données métier (périmètre, FAQ, keywords…), lues par `EndpointsStore` (site)
+- **`swagger:`** — schéma OpenAPI, lu par `SwaggerData` (siade). La clé dottée
+  (`provider.resource_name`) correspond au chemin d'accès
+  `SwaggerData.get('provider.resource_name.property')` utilisé dans les specs rswag.
+- **`_swagger_shared/`** — définitions partagées entre plusieurs endpoints d'un même
+  fournisseur (ancres YAML, paramètres communs). Ces fichiers sont aussi lus par
+  `SwaggerData` et servent de fallback/compléments aux swagger embarqués.
+
 ### Adding a new shared file
 
 1. Put it under `commons/` (or anywhere at the repo root).
