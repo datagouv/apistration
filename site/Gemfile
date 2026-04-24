@@ -54,6 +54,7 @@ gem 'connection_pool', '< 4.0'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'dotenv-rails'
   gem 'brakeman'
   gem 'bullet'
   gem 'colorize'

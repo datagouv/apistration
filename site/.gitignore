@@ -46,3 +46,7 @@ TODO
 /public/sitemaps
 .deploy_token
 sandbox/*
+
+# dotenv local overrides (per-worktree DB configuration, etc.)
+/.env.local
+/.env.*.local

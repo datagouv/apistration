@@ -69,3 +69,7 @@ config/master.key
 
 sandbox/
 swagger/versionned/
+
+# dotenv local overrides (per-worktree DB configuration, etc.)
+/.env.local
+/.env.*.local

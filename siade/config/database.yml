@@ -8,11 +8,11 @@ default: &default
 development:
   <<: *default
   host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
-  database: siade_development
+  database: <%= ENV.fetch("DATABASE_NAME_DEVELOPMENT") { 'siade_development' } %>
 
 test: &test
   <<: *default
-  host: localhost
-  database: siade_test
+  host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
+  database: <%= ENV.fetch("DATABASE_NAME_TEST") { 'siade_test' } %>
 
 production: *test
