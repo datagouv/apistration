@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 3f647e0d78209049ba64ba642be269590d3af52a).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: bbd1e5a224301367f0fb64b119ec11cb4398c172).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -62,7 +62,7 @@ module ApiEntreprise::Commons
         when 429 then ApiEntreprise::Commons::RateLimitError
         when 400..499 then ApiEntreprise::Commons::ClientError
         when 502 then ApiEntreprise::Commons::ProviderError
-        when 503 then ApiEntreprise::Commons::ProviderUnavailableError
+        when 503, 504 then ApiEntreprise::Commons::ProviderUnavailableError
         when 500..599 then ApiEntreprise::Commons::ServerError
         end
       end
@@ -85,7 +85,7 @@ module ApiEntreprise::Commons
         from_headers = ApiEntreprise::Commons::RateLimit.from_headers(env.response_headers)&.retry_after
         return from_headers if from_headers && from_headers.positive?
 
-        provider_retry(errors) || from_headers || 0
+        provider_retry(errors) || from_headers
       end
 
       def provider_retry(errors)

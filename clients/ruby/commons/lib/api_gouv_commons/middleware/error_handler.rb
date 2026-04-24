@@ -58,7 +58,7 @@ module ApiGouvCommons
         when 429 then ApiGouvCommons::RateLimitError
         when 400..499 then ApiGouvCommons::ClientError
         when 502 then ApiGouvCommons::ProviderError
-        when 503 then ApiGouvCommons::ProviderUnavailableError
+        when 503, 504 then ApiGouvCommons::ProviderUnavailableError
         when 500..599 then ApiGouvCommons::ServerError
         end
       end
@@ -81,7 +81,7 @@ module ApiGouvCommons
         from_headers = ApiGouvCommons::RateLimit.from_headers(env.response_headers)&.retry_after
         return from_headers if from_headers && from_headers.positive?
 
-        provider_retry(errors) || from_headers || 0
+        provider_retry(errors) || from_headers
       end
 
       def provider_retry(errors)
