@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 7fba210b2ead8fd60ba2fa3ebe31d341c1229cc4).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 3f647e0d78209049ba64ba642be269590d3af52a).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -116,9 +116,9 @@ module ApiEntreprise::Commons
         conn.use Middleware::Authentication, auth_strategy: cfg.auth_strategy
         conn.use Middleware::Logging, logger: cfg.logger, redact_query: @product == :particulier
 
-        conn.response :api_gouv_rate_limit
-        conn.response :api_gouv_error_handler
-        conn.response :api_gouv_envelope
+        conn.use Middleware::RateLimitParser
+        conn.use Middleware::ErrorHandler
+        conn.use Middleware::Envelope
 
         conn.adapter(cfg.adapter || Faraday.default_adapter)
       end

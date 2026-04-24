@@ -97,5 +97,6 @@ module ApiGouvCommons
     end
   end
 end
-
-Faraday::Response.register_middleware(api_gouv_error_handler: ApiGouvCommons::Middleware::ErrorHandler)
+# No Faraday.register_middleware: symbols are process-global and collide when
+# multiple gouv.fr gems are loaded in the same process. Clients pass the class
+# directly to conn.response / conn.use.

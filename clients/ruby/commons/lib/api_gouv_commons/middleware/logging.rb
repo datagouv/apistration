@@ -64,5 +64,3 @@ module ApiGouvCommons
     end
   end
 end
-
-Faraday::Request.register_middleware(api_gouv_logging: ApiGouvCommons::Middleware::Logging)

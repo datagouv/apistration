@@ -112,9 +112,9 @@ module ApiGouvCommons
         conn.use Middleware::Authentication, auth_strategy: cfg.auth_strategy
         conn.use Middleware::Logging, logger: cfg.logger, redact_query: @product == :particulier
 
-        conn.response :api_gouv_rate_limit
-        conn.response :api_gouv_error_handler
-        conn.response :api_gouv_envelope
+        conn.use Middleware::RateLimitParser
+        conn.use Middleware::ErrorHandler
+        conn.use Middleware::Envelope
 
         conn.adapter(cfg.adapter || Faraday.default_adapter)
       end

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 7fba210b2ead8fd60ba2fa3ebe31d341c1229cc4).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 3f647e0d78209049ba64ba642be269590d3af52a).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -47,5 +47,3 @@ module ApiParticulier::Commons
     end
   end
 end
-
-Faraday::Request.register_middleware(api_gouv_authentication: ApiParticulier::Commons::Middleware::Authentication)

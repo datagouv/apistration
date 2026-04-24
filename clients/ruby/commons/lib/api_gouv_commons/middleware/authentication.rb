@@ -43,5 +43,3 @@ module ApiGouvCommons
     end
   end
 end
-
-Faraday::Request.register_middleware(api_gouv_authentication: ApiGouvCommons::Middleware::Authentication)

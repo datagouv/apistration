@@ -25,5 +25,3 @@ module ApiGouvCommons
     end
   end
 end
-
-Faraday::Response.register_middleware(api_gouv_envelope: ApiGouvCommons::Middleware::Envelope)
