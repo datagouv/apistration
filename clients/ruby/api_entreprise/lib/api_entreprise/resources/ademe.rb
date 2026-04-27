@@ -13,7 +13,7 @@ module ApiEntreprise
       # Certification RGE
       # Logical endpoint: /ademe/etablissements/{siret}/certification_rge
       # Versions available: [3] — default: 3
-      def certification_rge(siret, version: nil, limit: nil)
+      def certification_rge(siret, version: nil, recipient: nil, context: nil, object: nil, limit: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -22,7 +22,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /ademe/etablissements/{siret}/certification_rge; supported: [3]"
           end
-        @client.get(path, params: { "limit" => limit }.compact)
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object, "limit" => limit }.compact)
       end
     end
   end

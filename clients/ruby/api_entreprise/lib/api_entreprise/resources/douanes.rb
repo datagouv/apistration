@@ -13,7 +13,7 @@ module ApiEntreprise
       # Immatriculation EORI
       # Logical endpoint: /douanes/etablissements/{siret_or_eori}/immatriculations_eori
       # Versions available: [3] — default: 3
-      def immatriculations_eori(siret_or_eori, version: nil)
+      def immatriculations_eori(siret_or_eori, version: nil, recipient: nil, context: nil, object: nil)
         path =
           case version || 3
           when 3
@@ -21,7 +21,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /douanes/etablissements/{siret_or_eori}/immatriculations_eori; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

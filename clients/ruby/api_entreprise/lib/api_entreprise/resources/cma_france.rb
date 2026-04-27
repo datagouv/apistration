@@ -13,7 +13,7 @@ module ApiEntreprise
       # Données du RNM d'une entreprise artisanale
       # Logical endpoint: /cma_france/rnm/unites_legales/{siren}
       # Versions available: [3] — default: 3 (deprecated)
-      def unites_legales(siren, version: nil)
+      def unites_legales(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -23,7 +23,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /cma_france/rnm/unites_legales/{siren}; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

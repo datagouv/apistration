@@ -13,7 +13,7 @@ module ApiEntreprise
       # Actes et bilans
       # Logical endpoint: /inpi/rne/unites_legales/open_data/{siren}/actes_bilans
       # Versions available: [3] — default: 3
-      def actes_bilans(siren, version: nil)
+      def actes_bilans(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -22,13 +22,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /inpi/rne/unites_legales/open_data/{siren}/actes_bilans; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Bénéficiaires effectifs
       # Logical endpoint: /inpi/rne/unites_legales/{siren}/beneficiaires_effectifs
       # Versions available: [3] — default: 3
-      def beneficiaires_effectifs(siren, version: nil)
+      def beneficiaires_effectifs(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -37,13 +37,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /inpi/rne/unites_legales/{siren}/beneficiaires_effectifs; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Attestation d'immatriculation RNE
       # Logical endpoint: /inpi/rne/unites_legales/{siren}/extrait_rne
       # Versions available: [3] — default: 3
-      def extrait_rne(siren, version: nil)
+      def extrait_rne(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -52,7 +52,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /inpi/rne/unites_legales/{siren}/extrait_rne; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

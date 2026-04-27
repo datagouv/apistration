@@ -13,7 +13,7 @@ module ApiEntreprise
       # Subventions des associations
       # Logical endpoint: /data_subvention/associations/{siren_or_siret_or_rna}/subventions
       # Versions available: [3] — default: 3
-      def subventions(siren_or_siret_or_rna, version: nil)
+      def subventions(siren_or_siret_or_rna, version: nil, recipient: nil, context: nil, object: nil)
         path =
           case version || 3
           when 3
@@ -21,7 +21,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /data_subvention/associations/{siren_or_siret_or_rna}/subventions; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

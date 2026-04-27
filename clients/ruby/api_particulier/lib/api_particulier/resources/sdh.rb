@@ -13,7 +13,7 @@ module ApiParticulier
       # [Identifiant] API Statut sportif de haut niveau et sur liste ministérielle
       # Logical endpoint: /sdh/statut_sportif/identifiant
       # Versions available: [3] — default: 3
-      def statut_sportif(version: nil, identifiant: nil)
+      def statut_sportif(version: nil, recipient: nil, identifiant:)
         path =
           case version || 3
           when 3
@@ -21,7 +21,7 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /sdh/statut_sportif/identifiant; supported: [3]"
           end
-        @client.get(path, params: { "identifiant" => identifiant }.compact)
+        @client.get(path, params: { "recipient" => recipient, "identifiant" => identifiant }.compact)
       end
     end
   end

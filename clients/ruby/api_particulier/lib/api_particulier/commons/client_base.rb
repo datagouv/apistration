@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: bbd1e5a224301367f0fb64b119ec11cb4398c172).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: a892f7b7177b8df6fa167cfcce18cf92ef23c6b5).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -44,7 +44,8 @@ module ApiParticulier::Commons
     private
 
     def merge_params(params)
-      @configuration.default_params.merge(params || {})
+      defaults = @configuration.default_params.transform_keys(&:to_s)
+      defaults.merge((params || {}).transform_keys(&:to_s))
     end
 
     def required_params_for(_params)
@@ -57,7 +58,7 @@ module ApiParticulier::Commons
 
     def validate_required!(params)
       required_params_for(params).each do |key|
-        next unless blank?(params[key]) && blank?(params[key.to_s])
+        next unless blank?(params[key.to_s])
 
         raise MissingParameterError, "required parameter #{key.inspect} is missing"
       end
@@ -65,7 +66,7 @@ module ApiParticulier::Commons
 
     def validate_sirets!(params)
       siret_params_for(params).each do |key|
-        value = params[key] || params[key.to_s]
+        value = params[key.to_s]
         next if value.nil?
 
         Siret.validate!(value, parameter: key)

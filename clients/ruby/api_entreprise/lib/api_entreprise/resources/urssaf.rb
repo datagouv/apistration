@@ -13,7 +13,7 @@ module ApiEntreprise
       # Attestation de vigilance
       # Logical endpoint: /urssaf/unites_legales/{siren}/attestation_vigilance
       # Versions available: [3, 4] — default: 4
-      def attestation_vigilance(siren, version: nil)
+      def attestation_vigilance(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 4
@@ -25,7 +25,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /urssaf/unites_legales/{siren}/attestation_vigilance; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

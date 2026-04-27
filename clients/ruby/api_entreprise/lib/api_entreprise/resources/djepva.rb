@@ -13,7 +13,7 @@ module ApiEntreprise
       # Données association en open data
       # Logical endpoint: /djepva/api-association/associations/open_data/{siren_or_rna}
       # Versions available: [4] — default: 4
-      def open_data(siren_or_rna, version: nil)
+      def open_data(siren_or_rna, version: nil, recipient: nil, context: nil, object: nil)
         path =
           case version || 4
           when 4
@@ -21,13 +21,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /djepva/api-association/associations/open_data/{siren_or_rna}; supported: [4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Données association
       # Logical endpoint: /djepva/api-association/associations/{siren_or_rna}
       # Versions available: [4] — default: 4
-      def associations(siren_or_rna, version: nil)
+      def associations(siren_or_rna, version: nil, recipient: nil, context: nil, object: nil)
         path =
           case version || 4
           when 4
@@ -35,7 +35,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /djepva/api-association/associations/{siren_or_rna}; supported: [4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

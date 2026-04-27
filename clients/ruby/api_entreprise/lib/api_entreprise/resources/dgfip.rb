@@ -13,7 +13,7 @@ module ApiEntreprise
       # Chiffre d'affaires
       # Logical endpoint: /dgfip/etablissements/{siret}/chiffres_affaires
       # Versions available: [3] — default: 3
-      def chiffres_affaires(siret, version: nil)
+      def chiffres_affaires(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -22,13 +22,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /dgfip/etablissements/{siret}/chiffres_affaires; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Attestation fiscale
       # Logical endpoint: /dgfip/unites_legales/{siren}/attestation_fiscale
       # Versions available: [3, 4] — default: 4
-      def attestation_fiscale(siren, version: nil)
+      def attestation_fiscale(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 4
@@ -40,13 +40,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/attestation_fiscale; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Liasses fiscales
       # Logical endpoint: /dgfip/unites_legales/{siren}/liasses_fiscales/{year}
       # Versions available: [3] — default: 3
-      def liasses_fiscales(siren, year, version: nil)
+      def liasses_fiscales(siren, year, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -55,13 +55,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/liasses_fiscales/{year}; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Liens capitalistiques
       # Logical endpoint: /dgfip/unites_legales/{siren}/liens_capitalistiques/{year}
       # Versions available: [3] — default: 3
-      def liens_capitalistiques(siren, year, version: nil)
+      def liens_capitalistiques(siren, year, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -70,7 +70,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/liens_capitalistiques/{year}; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

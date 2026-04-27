@@ -113,12 +113,21 @@ def build_method(logical, variants, existing_names)
     end
   end
 
-  qparams = query_params(operation).reject { |p| %w[recipient context object].include?(p['name']) }
-  kwargs = qparams.map { |p| "#{kwarg_name(p['name'])}: nil" }
+  qparams = query_params(operation)
+  audit_params = %w[recipient context object]
+  kwargs = qparams.map { |p|
+    required = p['required'] && !audit_params.include?(p['name'])
+    required ? "#{kwarg_name(p['name'])}:" : "#{kwarg_name(p['name'])}: nil"
+  }
   kwargs = ['version: nil'] + kwargs
   signature = (positional + kwargs).join(', ')
 
-  param_hash = qparams.map { |p| "\"#{p['name']}\" => #{kwarg_name(p['name'])}" }.join(', ')
+  param_hash = qparams.map { |p|
+    # Strip trailing [] from array-type param names: Faraday auto-appends [] to
+    # array values, so keeping it here produces prenoms[][] on the wire.
+    wire_name = p['name'].sub(/\[\]\z/, '')
+    "\"#{wire_name}\" => #{kwarg_name(p['name'])}"
+  }.join(', ')
   query_merge = param_hash.empty? ? '{}' : "{ #{param_hash} }.compact"
 
   case_lines = sorted_versions.map do |v|

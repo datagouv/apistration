@@ -13,7 +13,7 @@ module ApiEntreprise
       # Conventions collectives
       # Logical endpoint: /fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives
       # Versions available: [3] — default: 3 (deprecated)
-      def conventions_collectives(siret, version: nil)
+      def conventions_collectives(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -23,7 +23,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

@@ -13,7 +13,7 @@ module ApiEntreprise
       # Certification Qualibat
       # Logical endpoint: /qualibat/etablissements/{siret}/certification_batiment
       # Versions available: [3, 4] — default: 4
-      def certification_batiment(siret, version: nil)
+      def certification_batiment(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 4
@@ -25,7 +25,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /qualibat/etablissements/{siret}/certification_batiment; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

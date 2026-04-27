@@ -13,7 +13,7 @@ module ApiEntreprise
       # Données établissement en open data
       # Logical endpoint: /insee/sirene/etablissements/diffusibles/{siret}
       # Versions available: [3, 4] — default: 4
-      def diffusibles(siret, version: nil)
+      def diffusibles(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 4
@@ -25,13 +25,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/etablissements/diffusibles/{siret}; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Adresse établissement en open data
       # Logical endpoint: /insee/sirene/etablissements/diffusibles/{siret}/adresse
       # Versions available: [3] — default: 3
-      def adresse(siret, version: nil)
+      def adresse(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -40,13 +40,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/etablissements/diffusibles/{siret}/adresse; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Données établissement
       # Logical endpoint: /insee/sirene/etablissements/{siret}
       # Versions available: [3, 4] — default: 4
-      def etablissements(siret, version: nil)
+      def etablissements(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 4
@@ -58,13 +58,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/etablissements/{siret}; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Adresse établissement
       # Logical endpoint: /insee/sirene/etablissements/{siret}/adresse
       # Versions available: [3] — default: 3
-      def sirene_etablissements_adresse(siret, version: nil)
+      def sirene_etablissements_adresse(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -73,13 +73,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/etablissements/{siret}/adresse; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Liens de succession
       # Logical endpoint: /insee/sirene/etablissements/{siret}/successions
       # Versions available: [3] — default: 3
-      def successions(siret, version: nil)
+      def successions(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -88,13 +88,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/etablissements/{siret}/successions; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Données unité légale en open data
       # Logical endpoint: /insee/sirene/unites_legales/diffusibles/{siren}
       # Versions available: [3, 4] — default: 4
-      def sirene_unites_legales_diffusibles(siren, version: nil)
+      def sirene_unites_legales_diffusibles(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 4
@@ -106,13 +106,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/unites_legales/diffusibles/{siren}; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Données siège social en open data
       # Logical endpoint: /insee/sirene/unites_legales/diffusibles/{siren}/siege_social
       # Versions available: [3, 4] — default: 4
-      def siege_social(siren, version: nil)
+      def siege_social(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 4
@@ -124,13 +124,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/unites_legales/diffusibles/{siren}/siege_social; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Données unité légale
       # Logical endpoint: /insee/sirene/unites_legales/{siren}
       # Versions available: [3, 4] — default: 4
-      def unites_legales(siren, version: nil)
+      def unites_legales(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 4
@@ -142,13 +142,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/unites_legales/{siren}; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Données siège social
       # Logical endpoint: /insee/sirene/unites_legales/{siren}/siege_social
       # Versions available: [3, 4] — default: 4
-      def sirene_unites_legales_siege_social(siren, version: nil)
+      def sirene_unites_legales_siege_social(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 4
@@ -160,7 +160,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /insee/sirene/unites_legales/{siren}/siege_social; supported: [3, 4]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

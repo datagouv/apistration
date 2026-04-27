@@ -13,7 +13,7 @@ module ApiEntreprise
       # Certification d'ingénierie OPQIBI
       # Logical endpoint: /opqibi/unites_legales/{siren}/certification_ingenierie
       # Versions available: [3] — default: 3
-      def certification_ingenierie(siren, version: nil)
+      def certification_ingenierie(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -22,7 +22,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /opqibi/unites_legales/{siren}/certification_ingenierie; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

@@ -13,7 +13,7 @@ module ApiEntreprise
       # Conformité cotisations de sécurité sociale agricole
       # Logical endpoint: /msa/etablissements/{siret}/conformite_cotisations
       # Versions available: [3] — default: 3
-      def conformite_cotisations(siret, version: nil)
+      def conformite_cotisations(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -22,7 +22,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /msa/etablissements/{siret}/conformite_cotisations; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

@@ -13,7 +13,7 @@ module ApiParticulier
       # Paiements versés par France Travail
       # Logical endpoint: /france_travail/indemnites/identifiant
       # Versions available: [3] — default: 3
-      def indemnites(version: nil, identifiant: nil)
+      def indemnites(version: nil, recipient: nil, identifiant:)
         path =
           case version || 3
           when 3
@@ -21,13 +21,13 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /france_travail/indemnites/identifiant; supported: [3]"
           end
-        @client.get(path, params: { "identifiant" => identifiant }.compact)
+        @client.get(path, params: { "recipient" => recipient, "identifiant" => identifiant }.compact)
       end
 
       # Statut demandeur d'emploi
       # Logical endpoint: /france_travail/statut/identifiant
       # Versions available: [3] — default: 3
-      def statut(version: nil, identifiant: nil)
+      def statut(version: nil, recipient: nil, identifiant:)
         path =
           case version || 3
           when 3
@@ -35,7 +35,7 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /france_travail/statut/identifiant; supported: [3]"
           end
-        @client.get(path, params: { "identifiant" => identifiant }.compact)
+        @client.get(path, params: { "recipient" => recipient, "identifiant" => identifiant }.compact)
       end
     end
   end

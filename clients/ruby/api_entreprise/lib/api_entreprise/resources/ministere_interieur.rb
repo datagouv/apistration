@@ -13,7 +13,7 @@ module ApiEntreprise
       # Données du RNA d'une association
       # Logical endpoint: /ministere_interieur/rna/associations/{siret_or_rna}
       # Versions available: [3] — default: 3 (deprecated)
-      def associations(siret_or_rna, version: nil)
+      def associations(siret_or_rna, version: nil, recipient: nil, context: nil, object: nil)
         path =
           case version || 3
           when 3
@@ -22,13 +22,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /ministere_interieur/rna/associations/{siret_or_rna}; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Divers documents d'une association
       # Logical endpoint: /ministere_interieur/rna/associations/{siret_or_rna}/documents
       # Versions available: [3] — default: 3 (deprecated)
-      def documents(siret_or_rna, version: nil)
+      def documents(siret_or_rna, version: nil, recipient: nil, context: nil, object: nil)
         path =
           case version || 3
           when 3
@@ -37,7 +37,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /ministere_interieur/rna/associations/{siret_or_rna}/documents; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

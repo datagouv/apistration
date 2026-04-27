@@ -40,7 +40,8 @@ module ApiGouvCommons
     private
 
     def merge_params(params)
-      @configuration.default_params.merge(params || {})
+      defaults = @configuration.default_params.transform_keys(&:to_s)
+      defaults.merge((params || {}).transform_keys(&:to_s))
     end
 
     def required_params_for(_params)
@@ -53,7 +54,7 @@ module ApiGouvCommons
 
     def validate_required!(params)
       required_params_for(params).each do |key|
-        next unless blank?(params[key]) && blank?(params[key.to_s])
+        next unless blank?(params[key.to_s])
 
         raise MissingParameterError, "required parameter #{key.inspect} is missing"
       end
@@ -61,7 +62,7 @@ module ApiGouvCommons
 
     def validate_sirets!(params)
       siret_params_for(params).each do |key|
-        value = params[key] || params[key.to_s]
+        value = params[key.to_s]
         next if value.nil?
 
         Siret.validate!(value, parameter: key)

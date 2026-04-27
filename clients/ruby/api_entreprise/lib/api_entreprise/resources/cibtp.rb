@@ -13,7 +13,7 @@ module ApiEntreprise
       # Certificat cotisations CIBTP
       # Logical endpoint: /cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies
       # Versions available: [3] — default: 3
-      def attestation_cotisations_conges_payes_chomage_intemperies(siret, version: nil)
+      def attestation_cotisations_conges_payes_chomage_intemperies(siret, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siret.validate!(siret, parameter: :siret)
         path =
           case version || 3
@@ -22,7 +22,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end

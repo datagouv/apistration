@@ -13,7 +13,7 @@ module ApiEntreprise
       # Extrait RCS
       # Logical endpoint: /infogreffe/rcs/unites_legales/{siren}/extrait_kbis
       # Versions available: [3] — default: 3
-      def extrait_kbis(siren, version: nil)
+      def extrait_kbis(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -22,13 +22,13 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /infogreffe/rcs/unites_legales/{siren}/extrait_kbis; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
       # Mandataires sociaux
       # Logical endpoint: /infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux
       # Versions available: [3] — default: 3
-      def mandataires_sociaux(siren, version: nil)
+      def mandataires_sociaux(siren, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -37,7 +37,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux; supported: [3]"
           end
-        @client.get(path, params: {})
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
     end
   end
