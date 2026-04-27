@@ -58,9 +58,6 @@ gem 'rswag-ui'
 
 gem 'lockbox'
 
-gem 'octokit', '~> 10.0'
-gem 'faraday-retry'
-
 gem 'pdf-reader'
 
 gem 'gpgme'

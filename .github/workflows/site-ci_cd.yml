@@ -9,6 +9,9 @@ defaults:
 name: "Site: CI - CD"
 on:
   push:
+    paths:
+      - 'site/**'
+      - 'commons/**'
 jobs:
   security:
     name: Brakeman

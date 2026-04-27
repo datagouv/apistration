@@ -6,6 +6,9 @@ defaults:
 
 on:
   push:
+    paths:
+      - 'mocks/**'
+      - 'commons/**'
 
 jobs:
   tests:
