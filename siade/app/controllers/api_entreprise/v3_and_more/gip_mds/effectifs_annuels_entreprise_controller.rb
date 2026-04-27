@@ -23,7 +23,7 @@ class APIEntreprise::V3AndMore::GIPMDS::EffectifsAnnuelsEntrepriseController < A
   end
 
   def expires_in
-    (Time.zone.now.end_of_day - Time.zone.now).to_i
+    (Time.zone.now.end_of_month - Time.zone.now).to_i
   end
 
   def cache_key
