@@ -164,10 +164,6 @@ RSpec.describe 'Rack::Attack acceptance' do
           action: 'gone'
         },
         {
-          controller: 'reload_mock_backend',
-          action: 'create'
-        },
-        {
           controller: 'api_entreprise/ping_providers',
           action: 'show'
         },

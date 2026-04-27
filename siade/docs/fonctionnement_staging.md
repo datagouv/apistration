@@ -18,8 +18,9 @@ Ce service tente séquentiellement:
 
 Pour 1., `MockDataBackend` utilise l'identifiant `operation_id` (générer à
 l'aide du chemin du controller) ainsi que les paramètres d'appel afin
-d'identifier dans le dépôt [apistration](https://github.com/datagouv/apistration/tree/develop/mocks)
-la payload correspondante.
+d'identifier la payload correspondante. Les payloads sont lues depuis
+`config/mock_payloads/` (alimenté au build par `mocks/payloads/` via
+`siade/.expand`, voir [`commons/README.md`](../../commons/README.md)).
 
 Par exemple pour le endpoint `/v2/etudiants` de API Particulier, avec en
 paramètres `ine=1234567890G`, la réponse renvoyée correspond à cette
@@ -45,11 +46,9 @@ On renvoi une réponse vide avec le status 200
 ## Tests en local
 
 ```sh
-# Pour récupérer le jeton GitHub
-rails credentials:show --environment staging | grep github_personal_access_token
 # Pour générer un jeton en local
 bundle exec ruby bin/generate_jwt_token.rb development > .token.development
-STAGING=true GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxxxxx rails s
+STAGING=true rails s
 ```
 
 Puis copiez les urls sur le dépôt et remplacer l'url de base par
