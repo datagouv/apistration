@@ -9,7 +9,8 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
       firstNames: prenoms,
       birthDate: date_naissance,
       birthPlace: code_cog_insee_commune_naissance,
-      civility: gender
+      civility: gender,
+      campaignYear: campaign_year
     }.compact
   end
 
@@ -21,7 +22,8 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
       moisDateNaissance: month,
       jourDateNaissance: day,
       sexeEtatCivil: gender,
-      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
+      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance,
+      campaignYear: campaign_year
     }.compact
   end
 
@@ -33,6 +35,10 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
 
   def nom_naissance
     context.params[:nom_naissance]
+  end
+
+  def campaign_year
+    context.params[:campaign_year].presence&.to_i
   end
 
   def prenoms

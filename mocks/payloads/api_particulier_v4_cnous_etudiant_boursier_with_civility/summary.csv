@@ -32,6 +32,39 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Boursier sur une campagne antérieure ciblée via campaignYear,"{""nomNaissance"":""Pagnol"",""prenoms"":[""Marcel""],""anneeDateNaissance"":1998,""moisDateNaissance"":7,""jourDateNaissance"":12,""codeCogInseeCommuneNaissance"":""75000"",""sexeEtatCivil"":""M"",""campaignYear"":2022}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2022-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Evry"",
+      ""nom_etablissement"": ""ENSIIE""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""4"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""marcel@pagnol.fr"",
+    ""identite"": {
+      ""nom"": ""PAGNOL"",
+      ""prenoms"": [
+        ""MARCEL""
+      ],
+      ""date_naissance"": ""1998-07-12"",
+      ""nom_commune_naissance"": ""Paris"",
+      ""sexe"": ""M""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Non boursier,"{""nomNaissance"":""Durand"",""prenoms"":[""Sophie""],""anneeDateNaissance"":2000,""moisDateNaissance"":3,""jourDateNaissance"":25,""codeCogInseeCommuneNaissance"":""69123"",""sexeEtatCivil"":""F""}",200,"{
   ""data"": {
     ""statut_boursier"": {

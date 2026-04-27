@@ -28,6 +28,16 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility v4', api
         ]
       )
 
+      parameter name: :campaignYear,
+        in: :query,
+        description: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.description'),
+        example: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.example'),
+        schema: {
+          type: :integer,
+          minimum: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.minimum')
+        },
+        required: false
+
       let(:nomNaissance) { 'Dupont' }
       let(:'prenoms[]') { %w[Jean Charlie] }
       let(:anneeDateNaissance) { 2000 }

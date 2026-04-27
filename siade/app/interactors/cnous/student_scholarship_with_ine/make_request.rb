@@ -4,13 +4,14 @@ class CNOUS::StudentScholarshipWithINE::MakeRequest < MakeRequest::Get
   protected
 
   def request_params
-    {}
+    { campaignYear: campaign_year }.compact
   end
 
   def mocking_params
     {
-      ine: ine_number
-    }
+      ine: ine_number,
+      campaignYear: campaign_year
+    }.compact
   end
 
   def request_uri
@@ -21,5 +22,9 @@ class CNOUS::StudentScholarshipWithINE::MakeRequest < MakeRequest::Get
 
   def ine_number
     context.params[:ine]
+  end
+
+  def campaign_year
+    context.params[:campaign_year].presence&.to_i
   end
 end

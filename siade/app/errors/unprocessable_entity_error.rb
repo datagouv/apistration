@@ -50,6 +50,7 @@ class UnprocessableEntityError < ApplicationError
       gender: '00364',
       birth_place: '00365',
       civility: '00366',
+      campaign_year: '00368',
       # DGFIP usager
       tax_number: '00370',
       tax_notice_number: '00371',

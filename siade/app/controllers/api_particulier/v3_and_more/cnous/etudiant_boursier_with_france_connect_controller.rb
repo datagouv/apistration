@@ -13,7 +13,10 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithFranceConnectControl
   private
 
   def organizer_params
-    civility_parameters_from_france_connect.merge({ token_id: current_user.token_id })
+    civility_parameters_from_france_connect.merge(
+      token_id: current_user.token_id,
+      campaign_year: params[:campaignYear]
+    )
   end
 
   def serializer_module

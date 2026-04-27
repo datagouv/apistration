@@ -78,6 +78,86 @@
 
   </p>
   </details>
+* [200_boursier_campagne_anterieure.yaml](200_boursier_campagne_anterieure.yaml)
+
+  Status `200`
+
+  Boursier sur une campagne antérieure ciblée via campaignYear
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Pagnol",
+    "prenoms": [
+      "Marcel"
+    ],
+    "anneeDateNaissance": 1998,
+    "moisDateNaissance": 7,
+    "jourDateNaissance": 12,
+    "codeCogInseeCommuneNaissance": "75000",
+    "sexeEtatCivil": "M",
+    "campaignYear": 2022
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2022-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Evry",
+        "nom_etablissement": "ENSIIE"
+      },
+      "echelon_bourse": {
+        "echelon": "4",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "marcel@pagnol.fr",
+      "identite": {
+        "nom": "PAGNOL",
+        "prenoms": [
+          "MARCEL"
+        ],
+        "date_naissance": "1998-07-12",
+        "nom_commune_naissance": "Paris",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pagnol' -d 'prenoms[]=Marcel' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'codeCogInseeCommuneNaissance=75000' -d 'sexeEtatCivil=M' -d 'campaignYear=2022' \
+    --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/identite"
+  ```
+
+  </p>
+  </details>
 * [200_non_boursier.yaml](200_non_boursier.yaml)
 
   Status `200`

@@ -9375,6 +9375,21 @@ paths:
           et permet de retrouver le code COG avec le paramètre 'anneeDateNaissance'.\n\nNe
           pas remplir si la personne est née à l'étranger."
         required: false
+      - name: campaignYear
+        in: query
+        description: |
+          **Année de référence de la campagne scolaire** (paramètre optionnel).
+
+          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+
+          Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
+        example: 2024
+        schema:
+          type: integer
+          minimum: 2021
+        required: false
       security:
       - jwt_bearer_token: []
       description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
@@ -9706,6 +9721,21 @@ paths:
         required: true
         schema:
           type: string
+      - name: campaignYear
+        in: query
+        description: |
+          **Année de référence de la campagne scolaire** (paramètre optionnel).
+
+          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+
+          Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
+        example: 2024
+        schema:
+          type: integer
+          minimum: 2021
+        required: false
       security:
       - jwt_bearer_token: []
       description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
@@ -9996,6 +10026,21 @@ paths:
           type: string
           pattern: "^[0-9a-zA-Z]{11}$"
         required: true
+      - name: campaignYear
+        in: query
+        description: |
+          **Année de référence de la campagne scolaire** (paramètre optionnel).
+
+          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+
+          Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
+        example: 2024
+        schema:
+          type: integer
+          minimum: 2021
+        required: false
       security:
       - jwt_bearer_token: []
       description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous.

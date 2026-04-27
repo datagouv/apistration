@@ -9,8 +9,9 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
       family_name: nom_naissance,
       birthdate: date_naissance,
       gender:,
-      birthplace: code_cog_insee_commune_naissance
-    }.to_json
+      birthplace: code_cog_insee_commune_naissance,
+      campaignYear: campaign_year
+    }.compact.to_json
   end
 
   def mocking_params
@@ -21,7 +22,8 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
       moisDateNaissance: month,
       jourDateNaissance: day,
       sexeEtatCivil: gender,
-      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
+      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance,
+      campaignYear: campaign_year
     }.compact
   end
 
@@ -31,8 +33,9 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
       family_name: nom_naissance,
       birthdate: date_naissance,
       gender:,
-      birthplace: code_cog_insee_commune_naissance
-    }
+      birthplace: code_cog_insee_commune_naissance,
+      campaignYear: campaign_year
+    }.compact
   end
 
   def request_params
@@ -47,6 +50,10 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
 
   def nom_naissance
     context.params[:nom_naissance]
+  end
+
+  def campaign_year
+    context.params[:campaign_year].presence&.to_i
   end
 
   def prenoms

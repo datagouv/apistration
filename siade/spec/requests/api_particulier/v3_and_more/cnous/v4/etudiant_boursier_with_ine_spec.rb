@@ -17,6 +17,16 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE v4', api: :part
         },
         required: true
 
+      parameter name: :campaignYear,
+        in: :query,
+        description: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.description'),
+        example: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.example'),
+        schema: {
+          type: :integer,
+          minimum: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.minimum')
+        },
+        required: false
+
       let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
 
       let(:ine) { '1234567890A' }

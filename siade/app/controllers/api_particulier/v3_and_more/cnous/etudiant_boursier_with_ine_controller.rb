@@ -12,7 +12,8 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithINEController < APIP
 
   def organizer_params
     {
-      ine: params[:ine]
+      ine: params[:ine],
+      campaign_year: params[:campaignYear]
     }
   end
 

@@ -70,6 +70,78 @@
 
   </p>
   </details>
+* [200_boursier_campagne_anterieure.yaml](200_boursier_campagne_anterieure.yaml)
+
+  Status `200`
+
+  Boursier sur une campagne antérieure ciblée via campaignYear
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890A",
+    "campaignYear": 2022
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2022-09-01",
+        "duree": 10
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Toulouse",
+        "nom_etablissement": "Université Toulouse III - Paul Sabatier"
+      },
+      "echelon_bourse": {
+        "echelon": "3",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "etudiant@univ-tlse3.fr",
+      "identite": {
+        "nom": "LEROY",
+        "prenoms": [
+          "THOMAS"
+        ],
+        "date_naissance": "2001-05-18",
+        "nom_commune_naissance": "Toulouse",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890A' -d 'campaignYear=2022' \
+    --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/ine"
+  ```
+
+  </p>
+  </details>
 * [200_radie.yaml](200_radie.yaml)
 
   Status `200`
