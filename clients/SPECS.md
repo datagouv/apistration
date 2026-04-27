@@ -156,9 +156,12 @@ Every 2xx response is a JSON object with exactly these keys:
 {
   "data":  { /* or array */ },
   "links": { /* navigation / document URLs */ },
-  "meta":  { /* provider, cache, correlation info */ }
+  "meta":  { /* technical info exploitable by the caller — e.g. date_derniere_mise_a_jour, redirect_from_siren, redirect_from_siret. May be empty. */ }
 }
 ```
+
+Clients MUST surface `meta` verbatim even when empty; callers rely on the
+stable shape.
 
 The client's `Response` object MUST expose, at minimum:
 
@@ -186,15 +189,26 @@ All 4xx/5xx responses follow the JSON:API error envelope:
       "title":  "Privilèges insuffisants",
       "detail": "Votre token est valide mais vos privilèges sont insuffisants.",
       "source": { "parameter": "recipient" },
-      "meta":   { "retry_in": 10 }
+      "meta":   { "provider": "INSEE", "retry_in": 10 }
     }
   ]
 }
 ```
 
-`source` and `meta` are optional; when `meta.retry_in` is present it is
-expressed in **seconds** (seen on 502 provider errors) — the client MUST
-preserve the original unit and surface it as-is on the exception.
+`source` and `meta` are optional. `meta` carries provider-scoped diagnostics:
+
+- `meta.provider` — upstream data provider name (e.g. `"INSEE"`, `"DGFIP"`,
+  `"Douanes"`, `"URSSAF"`). Set whenever the error originates from (or is
+  attributed to) a specific upstream; absent on generic platform errors
+  (auth, rate-limit, input validation). Clients MUST surface it verbatim on
+  the exception (e.g. `error.provider` / `error.errors.first['meta']['provider']`).
+- `meta.retry_in` — when present, expressed in **seconds** (seen on 502
+  provider errors); the client MUST preserve the unit and surface it as-is.
+
+Provider-scoped errors come from `AbstractGenericProviderError` /
+`AbstractSpecificProviderError` in the reference Rails app (siade) — see
+`siade/app/errors/abstract_generic_provider_error.rb` and
+`siade/app/serializers/errors_serializer.rb`.
 
 ### 6.1 Exception hierarchy (normative)
 
@@ -212,7 +226,7 @@ Error                          (base)
 │   └── RateLimitError         429  (code  00429)
 ├── ServerError                 (5xx)
 │   ├── ProviderError          502  (codes 04xxx)
-│   └── ProviderUnavailableError 503
+│   └── ProviderUnavailableError 503, 504
 └── TransportError              (timeout, DNS, TLS, connection reset)
 ```
 
@@ -239,7 +253,7 @@ elif http_status == 422 → ValidationError
 elif http_status == 429 → RateLimitError
 elif 400 ≤ http_status < 500 → ClientError
 elif http_status == 502 → ProviderError
-elif http_status == 503 → ProviderUnavailableError
+elif http_status in (503, 504) → ProviderUnavailableError
 elif 500 ≤ http_status < 600 → ServerError
 else (network / transport failure) → TransportError
 ```
@@ -270,6 +284,9 @@ unparseable headers yield `nil`.
 - `RateLimitError.retry_after` (seconds) is computed from `RateLimit-Reset -
   now`, falling back to `meta.retry_in` when present. It MUST never be
   negative; clamp at zero.
+- When no source is available, `retry_after` MUST be the idiomatic
+  "unknown" value (`nil` / `None` / `null`) — **never `0`**, which would
+  incorrectly suggest "retry immediately".
 - The client MUST NOT retry automatically by default.
 
 ### 7.3 Optional retry middleware
@@ -361,6 +378,29 @@ Each generated method MUST:
    exception.
 2. Drop `nil`/`None` optional parameters from the query string.
 3. Not coerce types beyond what the language natively does.
+
+### 9.4 Array-valued parameters
+
+OpenAPI declares array query parameters with a trailing `[]` in the name
+(e.g. `prenoms[]`). On the wire, each element is emitted as its own
+`key[]=value` pair:
+
+```
+?prenoms[]=Jean&prenoms[]=Paul
+```
+
+The client MUST produce exactly that encoding — **one** pair of brackets per
+element, never `prenoms[][]=Jean`. When the HTTP library being used appends
+`[]` automatically for array values (e.g. Ruby's Faraday), the scaffolder
+MUST strip the trailing `[]` from the OpenAPI name before handing the value
+to the library. When it does not, the `[]` stays on the key.
+
+Method signatures expose the language-idiomatic kwarg name **without** the
+brackets:
+
+```ruby
+client.dss.allocation_adulte_handicape_identite(prenoms: ['Jean', 'Paul'], …)
+```
 
 ---
 
@@ -501,6 +541,11 @@ example using the language-idiomatic tool:
 At least one stub example MUST show a 200 and one MUST show a 429 with
 `RateLimit-Reset` populated.
 
+See [`TESTING.md`](TESTING.md) for the full staging conformance playbook —
+which fixtures to drive, what to assert, and which sections are unit-only.
+Every new language client MUST pass that playbook before being declared
+SPECS-conformant.
+
 ### 12.4 Manual & CI
 
 - Manual staging conformance runs through [`TESTING.md`](TESTING.md) — a
@@ -575,6 +620,21 @@ Each language subfolder SHOULD mirror this layout: a `commons/` source of
 truth, one package per API, and a build-time vendoring step (not a runtime
 dependency) to avoid cross-package release coupling.
 
+### 17.1 Isolation between sibling packages
+
+Consumers frequently load **both** packages (`api_entreprise` + `api_particulier`)
+in the same process. Nothing in either package may rely on process-global
+registries keyed by symbol — that includes Faraday middleware registration
+(`Faraday.register_middleware`), Guzzle handler stacks, Axios global
+interceptors, etc. The last package loaded would silently overwrite the
+other's handlers, causing the wrong exception classes (or envelopes, or auth)
+to be applied.
+
+Middlewares, interceptors, and plugins MUST be attached to the client's own
+connection/stack by explicit reference (class / instance), not by
+globally-registered name. The vendored commons MAY expose helpers, but the
+wiring must be package-scoped.
+
 ---
 
 ## 18. Conformance checklist
@@ -591,7 +651,13 @@ A reviewer certifying a new client ticks each item.
 - [ ] Exception hierarchy (§6.1) and mapping rule (§6.2) implemented;
       `first_error_*` accessors present.
 - [ ] `RateLimit-*` headers parsed on every response; `RateLimitError.
-      retry_after` ≥ 0; retry middleware opt-in and never retries non-429 4xx.
+      retry_after` ≥ 0 when known, `nil` when unknown (never `0` as a
+      fallback); retry middleware opt-in and never retries non-429 4xx.
+- [ ] Array-valued query params emitted as `?key[]=v1&key[]=v2`, never
+      `?key[][]=…` (§9.4).
+- [ ] No process-global middleware / interceptor registration; wiring is
+      package-scoped so loading sibling clients together does not collide
+      (§17.1).
 - [ ] 5 s connect / 30 s read timeouts, overridable.
 - [ ] Resources grouped by provider (2nd path segment under `/v3/`);
       snake-cased method names from the last meaningful path segments;
