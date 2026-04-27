@@ -8217,7 +8217,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale."
                                 enum:
                                 - NN
                                 - '00'
@@ -8442,7 +8442,7 @@ paths:
                                     \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5 000
                                     à 9 999 salariés \n - 53 : 10 000 salariés et
                                     plus \n \n Plus d'informations dans la documentation
-                                    Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
+                                    Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale."
                                   enum:
                                   - NN
                                   - '00'
@@ -10024,7 +10024,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale."
                                 enum:
                                 - NN
                                 - '00'
@@ -10247,7 +10247,7 @@ paths:
                                     \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5 000
                                     à 9 999 salariés \n - 53 : 10 000 salariés et
                                     plus \n \n Plus d'informations dans la documentation
-                                    Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
+                                    Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale."
                                   enum:
                                   - NN
                                   - '00'
@@ -16946,7 +16946,7 @@ paths:
                       indice_repetition_voie:
                         title: Indice de répétition du numéro dans la voie
                         description: 'Plus d''informations dans la documentation Insee
-                          de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                          de l''API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement'
                         type: string
                         nullable: true
                         enum:
@@ -16962,7 +16962,7 @@ paths:
                           en abrégé et en majuscules. L'information n'est pas toujours
                           renseignée. Pour certaines petites communes, l'information
                           n'existe pas. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement"
                         type: string
                         nullable: true
                         enum:
@@ -17047,8 +17047,7 @@ paths:
                           particuliers qui accompagnent une adresse de distribution
                           spéciale, la modalité la plus connue étant les adresses
                           en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                          * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement"
                       code_cedex:
                         title: Code cedex
                         type: string
@@ -17584,7 +17583,7 @@ paths:
                       indice_repetition_voie:
                         title: Indice de répétition du numéro dans la voie
                         description: "Plus d'informations dans la documentation Insee
-                          de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                          de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement
                           \n Si la personne morale est en diffusion partielle, la
                           valeur est remplacée par \"[ND]\"."
                         type: string
@@ -17602,7 +17601,7 @@ paths:
                           en abrégé et en majuscules. L'information n'est pas toujours
                           renseignée. Pour certaines petites communes, l'information
                           n'existe pas. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement
                           \n Si la personne morale est en diffusion partielle, la
                           valeur est remplacée par \"[ND]\"."
                         type: string
@@ -17696,10 +17695,9 @@ paths:
                           particuliers qui accompagnent une adresse de distribution
                           \  spéciale, la modalité la plus connue étant les adresses
                           en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                          * https://www.sirene.fr/sirene/public/variable/l5-disp \n
-                          Si la personne morale est en diffusion partielle, la valeur
-                          est remplacée par \"[ND]\"."
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement
+                          \n Si la personne morale est en diffusion partielle, la
+                          valeur est remplacée par \"[ND]\"."
                       code_cedex:
                         title: Code cedex
                         type: string
@@ -18288,7 +18286,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -18375,7 +18373,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -18471,7 +18469,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement"
                         example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
@@ -18796,7 +18794,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -18870,7 +18868,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -18888,7 +18886,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -18910,7 +18908,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                         required:
                         - siren
                         - rna
@@ -18939,7 +18937,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: 'Plus d''informations dans la documentation
-                              Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                              Insee de l''API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement'
                             type: string
                             nullable: true
                             enum:
@@ -18955,7 +18953,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement"
                             type: string
                             nullable: true
                             enum:
@@ -19042,8 +19040,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement"
                           code_cedex:
                             title: Code cedex
                             type: string
@@ -19203,7 +19200,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                     required:
                     - siret
                     - siege_social
@@ -19665,7 +19662,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -19752,7 +19749,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -19848,7 +19845,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement"
                         example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
@@ -20173,7 +20170,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -20247,7 +20244,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -20265,7 +20262,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -20287,7 +20284,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                           activite_principale_naf_rev2:
                             title: Attributs de l'activité principale en nomenclature
                               NAFRev2
@@ -20345,7 +20342,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: 'Plus d''informations dans la documentation
-                              Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                              Insee de l''API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement'
                             type: string
                             nullable: true
                             enum:
@@ -20361,7 +20358,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement"
                             type: string
                             nullable: true
                             enum:
@@ -20448,8 +20445,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement"
                           code_cedex:
                             title: Code cedex
                             type: string
@@ -20609,7 +20605,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       activite_principale_naf_rev2:
                         title: Attributs de l'activité principale en nomenclature
                           NAFRev2
@@ -21099,7 +21095,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -21186,7 +21182,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -21282,7 +21278,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement
                           \n Si la personne morale est en diffusion partielle, l'enseigne
                           n'est pas renvoyée, et la valeur est remplacée par \"[ND]\"."
                         example: Coiff Land, CoiffureLand
@@ -21627,7 +21623,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -21701,7 +21697,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -21719,7 +21715,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -21741,7 +21737,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                         required:
                         - siren
                         - rna
@@ -21772,7 +21768,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: "Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -21790,7 +21786,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -21885,8 +21881,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               \  spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                           code_cedex:
@@ -22062,7 +22057,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                     required:
                     - siret
                     - siege_social
@@ -22518,7 +22513,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -22605,7 +22600,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -22701,7 +22696,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement
                           \n Si la personne morale est en diffusion partielle, l'enseigne
                           n'est pas renvoyée, et la valeur est remplacée par \"[ND]\"."
                         example: Coiff Land, CoiffureLand
@@ -23046,7 +23041,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -23120,7 +23115,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -23138,7 +23133,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -23160,7 +23155,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                           activite_principale_naf_rev2:
                             title: Attributs de l'activité principale en nomenclature
                               NAFRev2
@@ -23220,7 +23215,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: "Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -23238,7 +23233,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -23333,8 +23328,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               \  spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                           code_cedex:
@@ -23510,7 +23504,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       activite_principale_naf_rev2:
                         title: Attributs de l'activité principale en nomenclature
                           NAFRev2
@@ -23992,7 +23986,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -24079,7 +24073,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -24175,7 +24169,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement
                           \n Si la personne morale est en diffusion partielle, l'enseigne
                           n'est pas renvoyée, et la valeur est remplacée par \"[ND]\"."
                         example: Coiff Land, CoiffureLand
@@ -24520,7 +24514,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -24594,7 +24588,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -24612,7 +24606,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -24634,7 +24628,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                         required:
                         - siren
                         - rna
@@ -24665,7 +24659,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: "Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -24683,7 +24677,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -24778,8 +24772,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               \  spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                           code_cedex:
@@ -24955,7 +24948,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                     required:
                     - siret
                     - siege_social
@@ -25409,7 +25402,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -25496,7 +25489,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -25592,7 +25585,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement
                           \n Si la personne morale est en diffusion partielle, l'enseigne
                           n'est pas renvoyée, et la valeur est remplacée par \"[ND]\"."
                         example: Coiff Land, CoiffureLand
@@ -25937,7 +25930,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -26011,7 +26004,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -26029,7 +26022,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -26051,7 +26044,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                           activite_principale_naf_rev2:
                             title: Attributs de l'activité principale en nomenclature
                               NAFRev2
@@ -26111,7 +26104,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: "Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -26129,7 +26122,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                             type: string
@@ -26224,8 +26217,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               \  spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
                           code_cedex:
@@ -26401,7 +26393,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       activite_principale_naf_rev2:
                         title: Attributs de l'activité principale en nomenclature
                           NAFRev2
@@ -26884,7 +26876,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -26971,7 +26963,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -27067,7 +27059,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement"
                         example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
@@ -27392,7 +27384,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -27466,7 +27458,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -27484,7 +27476,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -27506,7 +27498,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                         required:
                         - siren
                         - rna
@@ -27535,7 +27527,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: 'Plus d''informations dans la documentation
-                              Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                              Insee de l''API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement'
                             type: string
                             nullable: true
                             enum:
@@ -27551,7 +27543,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement"
                             type: string
                             nullable: true
                             enum:
@@ -27638,8 +27630,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement"
                           code_cedex:
                             title: Code cedex
                             type: string
@@ -27799,7 +27790,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                     required:
                     - siret
                     - siege_social
@@ -28254,7 +28245,7 @@ paths:
                           est à l'état 'actif'\n\n - fermé. Cet état découle de la
                           prise en compte d'une déclaration de fermeture. Un établissement
                           fermé peut être rouvert. \n \n Plus d'informations dans
-                          la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+                          la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#etatadministratifetablissement"
                       date_fermeture:
                         title: Date de fermeture de l'établissement
                         type: integer
@@ -28341,7 +28332,7 @@ paths:
                               \n - 42 : 1 000 à 1 999 salariés \n - 51 : 2 000 à 4
                               999 salariés \n - 52 : 5 000 à 9 999 salariés \n - 53
                               : 10 000 salariés et plus \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
                               nationale](TODO). Si votre jeton contient ce droit d'accès,
@@ -28437,7 +28428,7 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                          ici: https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#enseigne1etablissement-enseigne2etablissement-enseigne3etablissement"
                         example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
@@ -28762,7 +28753,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                  de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                                   \n \n L'effectif exact de l'entreprise, mensuel
                                   et annuel, est disponible au travers de l'API Effectifs
                                   - URSSAF Caisse nationale. Si votre jeton contient
@@ -28836,7 +28827,7 @@ paths:
                               dépose une cessation d'activité. \n \n En dehors de
                               ces cas, l'état administratif de l'unité légale est
                               toujours « actif ». \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -28854,7 +28845,7 @@ paths:
                               Ces conditions cumulatives sont explicitées à l'[Article
                               1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                               \n \n Plus d'informations dans la documentation INSEE
-                              de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                              de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                             type: boolean
                             example: true
                             nullable: true
@@ -28876,7 +28867,7 @@ paths:
                               la date de création n'est jamais à 'null'. Si elle est
                               non renseignée, elle sera au 01/01/1900. \n \n Plus
                               d'informations dans la documentation Insee de l'API
-                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                           activite_principale_naf_rev2:
                             title: Attributs de l'activité principale en nomenclature
                               NAFRev2
@@ -28934,7 +28925,7 @@ paths:
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
                             description: 'Plus d''informations dans la documentation
-                              Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                              Insee de l''API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#indicerepetitionetablissement'
                             type: string
                             nullable: true
                             enum:
@@ -28950,7 +28941,7 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                              dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#typevoieetablissement"
                             type: string
                             nullable: true
                             enum:
@@ -29037,8 +29028,7 @@ paths:
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=10aae456-565f-4961-aae4-56565fa9617a#distributionspecialeetablissement"
                           code_cedex:
                             title: Code cedex
                             type: string
@@ -29198,7 +29188,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       activite_principale_naf_rev2:
                         title: Attributs de l'activité principale en nomenclature
                           NAFRev2
@@ -30403,7 +30393,7 @@ paths:
                               salariés \n - 51 : 2 000 à 4 999 salariés \n - 52 :
                               5 000 à 9 999 salariés \n - 53 : 10 000 salariés et
                               plus \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                               \n \n L'effectif exact de l'entreprise, mensuel et annuel,
                               est disponible au travers de l'API Effectifs - URSSAF
                               Caisse nationale. Si votre jeton contient ce droit d'accès,
@@ -30476,7 +30466,7 @@ paths:
                           cessation d'activité. \n \n En dehors de ces cas, l'état
                           administratif de l'unité légale est toujours « actif ».
                           \n \n Plus d'informations dans la documentation Insee de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                       economie_sociale_et_solidaire:
                         title: Unité légale de l'économie sociale et solidaire (ESS)
                         description: "Indique si l'unité légale est une ESS : \n \n
@@ -30492,7 +30482,7 @@ paths:
                           Ces conditions cumulatives sont explicitées à l'[Article
                           1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                           \n \n Plus d'informations dans la documentation INSEE de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                         type: boolean
                         example: true
                         nullable: true
@@ -30513,7 +30503,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       date_cessation:
                         title: Date de cessation de l'unité légale
                         type: integer
@@ -31266,7 +31256,7 @@ paths:
                               salariés \n - 51 : 2 000 à 4 999 salariés \n - 52 :
                               5 000 à 9 999 salariés \n - 53 : 10 000 salariés et
                               plus \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                               \n \n L'effectif exact de l'entreprise, mensuel et annuel,
                               est disponible au travers de l'API Effectifs - URSSAF
                               Caisse nationale. Si votre jeton contient ce droit d'accès,
@@ -31339,7 +31329,7 @@ paths:
                           cessation d'activité. \n \n En dehors de ces cas, l'état
                           administratif de l'unité légale est toujours « actif ».
                           \n \n Plus d'informations dans la documentation Insee de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                       economie_sociale_et_solidaire:
                         title: Unité légale de l'économie sociale et solidaire (ESS)
                         description: "Indique si l'unité légale est une ESS : \n \n
@@ -31355,7 +31345,7 @@ paths:
                           Ces conditions cumulatives sont explicitées à l'[Article
                           1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                           \n \n Plus d'informations dans la documentation INSEE de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                         type: boolean
                         example: true
                         nullable: true
@@ -31376,7 +31366,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       activite_principale_naf_rev2:
                         title: Attributs de l'activité principale en nomenclature
                           NAFRev2
@@ -32175,7 +32165,7 @@ paths:
                               salariés \n - 51 : 2 000 à 4 999 salariés \n - 52 :
                               5 000 à 9 999 salariés \n - 53 : 10 000 salariés et
                               plus \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                               \n \n L'effectif exact de l'entreprise, mensuel et annuel,
                               est disponible au travers de l'API Effectifs - URSSAF
                               Caisse nationale. Si votre jeton contient ce droit d'accès,
@@ -32248,7 +32238,7 @@ paths:
                           cessation d'activité. \n \n En dehors de ces cas, l'état
                           administratif de l'unité légale est toujours « actif ».
                           \n \n Plus d'informations dans la documentation Insee de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                       economie_sociale_et_solidaire:
                         title: Unité légale de l'économie sociale et solidaire (ESS)
                         description: "Indique si l'unité légale est une ESS : \n \n
@@ -32264,7 +32254,7 @@ paths:
                           Ces conditions cumulatives sont explicitées à l'[Article
                           1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                           \n \n Plus d'informations dans la documentation INSEE de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                         type: boolean
                         example: true
                         nullable: true
@@ -32285,7 +32275,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       date_cessation:
                         title: Date de cessation de l'unité légale
                         type: integer
@@ -33056,7 +33046,7 @@ paths:
                               salariés \n - 51 : 2 000 à 4 999 salariés \n - 52 :
                               5 000 à 9 999 salariés \n - 53 : 10 000 salariés et
                               plus \n \n Plus d'informations dans la documentation
-                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                              Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale.
                               \n \n L'effectif exact de l'entreprise, mensuel et annuel,
                               est disponible au travers de l'API Effectifs - URSSAF
                               Caisse nationale. Si votre jeton contient ce droit d'accès,
@@ -33129,7 +33119,7 @@ paths:
                           cessation d'activité. \n \n En dehors de ces cas, l'état
                           administratif de l'unité légale est toujours « actif ».
                           \n \n Plus d'informations dans la documentation Insee de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#etatadministratifunitelegale"
                       economie_sociale_et_solidaire:
                         title: Unité légale de l'économie sociale et solidaire (ESS)
                         description: "Indique si l'unité légale est une ESS : \n \n
@@ -33145,7 +33135,7 @@ paths:
                           Ces conditions cumulatives sont explicitées à l'[Article
                           1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
                           \n \n Plus d'informations dans la documentation INSEE de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
+                          l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#economiesocialesolidaireunitelegale"
                         type: boolean
                         example: true
                         nullable: true
@@ -33166,7 +33156,7 @@ paths:
                           nulle. \n Pour les unités purgées, la date de création n'est
                           jamais à 'null'. Si elle est non renseignée, elle sera au
                           01/01/1900. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#datecreationunitelegale"
                       activite_principale_naf_rev2:
                         title: Attributs de l'activité principale en nomenclature
                           NAFRev2

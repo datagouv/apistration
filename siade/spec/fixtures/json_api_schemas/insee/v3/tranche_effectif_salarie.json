@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$id": "tranche_effectif_salarie",
-  "description": "https://www.sirene.fr/sirene/public/variable/tefen",
+  "description": "https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=e5ad6542-3cac-4840-ad65-423cacf8408d#trancheeffectifsunitelegale",
   "additionalProperties": false,
   "required": ["de", "a", "code", "date_reference", "intitule"],
   "properties": {
