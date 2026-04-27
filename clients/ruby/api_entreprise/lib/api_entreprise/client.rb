@@ -37,13 +37,14 @@ module ApiEntreprise
     REQUIRED_PARAMS = %i[recipient context object].freeze
     SIRET_PARAMS = %i[recipient].freeze
 
-    def initialize(token: nil, environment: :production, default_params: {}, base_url: nil, **opts)
+    def initialize(token: nil, environment: nil, default_params: {}, base_url: nil, auth_strategy: nil, **opts)
       env_token = token || ENV.fetch('API_ENTREPRISE_TOKEN', nil)
-      env_env = environment || ENV.fetch('API_ENTREPRISE_ENV', :production).to_sym
+      env_env = (environment || ENV.fetch('API_ENTREPRISE_ENV', :production)).to_sym
 
       config = Commons::Configuration.new(
         base_urls: BASE_URLS,
         token: env_token,
+        auth_strategy: auth_strategy,
         environment: env_env,
         base_url: base_url || ENV.fetch('API_ENTREPRISE_BASE_URL', nil),
         default_params: default_params,

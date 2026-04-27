@@ -37,6 +37,7 @@ module ApiGouvCommons
       @base_urls = base_urls
       resolved_env = resolve_environment(environment)
       @environment = resolved_env
+      @explicit_base_url = !base_url.nil?
       @base_url = base_url || base_urls.fetch(resolved_env)
       @auth_strategy = auth_strategy || build_bearer_strategy(token)
       @default_params = default_params.freeze
@@ -69,7 +70,7 @@ module ApiGouvCommons
         base_urls: @base_urls,
         auth_strategy: auth_strategy,
         environment: environment,
-        base_url: base_url,
+        base_url: @explicit_base_url ? base_url : nil,
         default_params: default_params,
         open_timeout: open_timeout,
         read_timeout: read_timeout,
