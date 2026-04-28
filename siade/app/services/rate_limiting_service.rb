@@ -1,19 +1,14 @@
 class RateLimitingService
   include Rails.application.routes.url_helpers
 
-  def discriminate_by_jwt_for_endpoints(req, endpoints_list)
+  DISCRIMINATOR_ENV_KEY = 'siade.rate_limiting.authorization_request_discriminator'.freeze
+
+  def discriminate_by_authorization_request_for_endpoints(req, endpoints_list)
     endpoint = extract_endpoint_from_url(req.url).slice(:controller, :action)
 
     return nil unless endpoints_list.include?(endpoint)
 
-    user = resolved_user(req)
-
-    if user
-      Digest::SHA256.hexdigest(user.token_id)
-    else
-      token = extract_token_from_request(req)
-      Digest::SHA256.hexdigest(token) if token.present?
-    end
+    authorization_request_discriminator(req)
   end
 
   def whitelisted_access?(req)
@@ -45,6 +40,12 @@ class RateLimitingService
     custom_rate_limit_for(req).present?
   end
 
+  def authorization_request_discriminator(req)
+    return req.env[DISCRIMINATOR_ENV_KEY] if req.env.key?(DISCRIMINATOR_ENV_KEY)
+
+    req.env[DISCRIMINATOR_ENV_KEY] = compute_authorization_request_discriminator(req)
+  end
+
   def build_rate_limit_headers(data)
     {
       'RateLimit-Limit' => data[:limit].to_s,
@@ -59,6 +60,29 @@ class RateLimitingService
   end
 
   private
+
+  def compute_authorization_request_discriminator(req)
+    user = resolved_user(req)
+
+    if user
+      user.authorization_request_id || fallback_discriminator(user)
+    else
+      opaque_token_discriminator(req)
+    end
+  end
+
+  def fallback_discriminator(user)
+    if user.editor?
+      "editor:#{user.editor_id}"
+    else
+      "token:#{user.token_id}"
+    end
+  end
+
+  def opaque_token_discriminator(req)
+    token = extract_token_from_request(req)
+    Digest::SHA256.hexdigest(token) if token.present?
+  end
 
   def resolved_user(req)
     req.env[UserResolutionMiddleware::USER_ENV_KEY]

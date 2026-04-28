@@ -15,7 +15,7 @@ class Rack::Attack
   class << self
     def throttle_by_group_of_endpoints(group_name:, limit:, endpoints:, period:)
       throttle(group_name, limit:, period:) do |req|
-        rate_limiting_service.discriminate_by_jwt_for_endpoints(req, endpoints)
+        rate_limiting_service.discriminate_by_authorization_request_for_endpoints(req, endpoints)
       end
     end
 
@@ -24,7 +24,7 @@ class Rack::Attack
         identifier = [endpoint[:controller], endpoint[:action]].join('_')
 
         throttle(identifier, limit:, period:) do |req|
-          rate_limiting_service.discriminate_by_jwt_for_endpoints(req, [endpoint])
+          rate_limiting_service.discriminate_by_authorization_request_for_endpoints(req, [endpoint])
         end
       end
     end
@@ -55,8 +55,7 @@ class Rack::Attack
   ) do |req|
     next nil unless rate_limiting_service.custom_rate_limit?(req)
 
-    jwt = rate_limiting_service.extract_token_from_request(req)
-    Digest::SHA256.hexdigest(jwt) if jwt
+    rate_limiting_service.authorization_request_discriminator(req)
   end
 
   throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
@@ -67,20 +66,18 @@ class Rack::Attack
 
   Rails.configuration.throttle.each do |name, config|
     operation_ids = config[:endpoints]
-    params = { limit: config[:limit], period: config[:period] }
-    params[:group_name] = name if config[:throttle_type] == 'by_group_of_endpoints'
 
     case config[:throttle_type]
     when 'by_group_of_endpoints'
       throttle(name, limit: config[:limit], period: config[:period]) do |req|
         endpoints = operation_ids.map { |op_id| OperationIdResolver.resolve(op_id) }
-        rate_limiting_service.discriminate_by_jwt_for_endpoints(req, endpoints)
+        rate_limiting_service.discriminate_by_authorization_request_for_endpoints(req, endpoints)
       end
     when 'by_single_endpoint'
       operation_ids.each do |op_id|
         throttle(op_id, limit: config[:limit], period: config[:period]) do |req|
           endpoint = OperationIdResolver.resolve(op_id)
-          rate_limiting_service.discriminate_by_jwt_for_endpoints(req, [endpoint])
+          rate_limiting_service.discriminate_by_authorization_request_for_endpoints(req, [endpoint])
         end
       end
     end

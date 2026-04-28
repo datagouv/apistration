@@ -14,6 +14,7 @@ class Seeds
     create_data_for_api_particulier
     create_data_shared
     create_editor_delegations
+    create_editor_token
     create_audit_notifications
   end
 
@@ -124,6 +125,15 @@ class Seeds
   def create_editor_delegations
     ar = AuthorizationRequest.find_by(demarche: 'umadcorp-form-api-entreprise')
     EditorDelegation.create!(editor: @editor, authorization_request: ar) if ar
+  end
+
+  def create_editor_token
+    EditorToken.create!(
+      id: '00000000-0000-0000-0000-000000000001',
+      editor: @editor,
+      iat: Time.zone.now.to_i,
+      exp: 18.months.from_now.to_i
+    )
   end
 
   def create_magic_link

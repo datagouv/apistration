@@ -120,6 +120,33 @@ RSpec.describe JwtUser do
     end
   end
 
+  describe '#editor?' do
+    context 'with editor_id' do
+      let(:jwt_user) { described_class.new(**jwt_payload, editor_id: SecureRandom.uuid) }
+
+      it 'returns true' do
+        expect(jwt_user).to be_editor
+      end
+    end
+
+    context 'without editor_id' do
+      let(:jwt_user) { described_class.new(**jwt_payload) }
+
+      it 'returns false' do
+        expect(jwt_user).not_to be_editor
+      end
+    end
+  end
+
+  describe '#editor_id' do
+    let(:id) { SecureRandom.uuid }
+    let(:jwt_user) { described_class.new(**jwt_payload, editor_id: id) }
+
+    it 'returns the editor_id' do
+      expect(jwt_user.editor_id).to eq(id)
+    end
+  end
+
   describe '#has_custom_rate_limit?' do
     context 'with rate_limit_per_minute set' do
       let(:jwt_user) { described_class.new(**jwt_payload, rate_limit_per_minute: 100) }
