@@ -1,0 +1,79 @@
+name: "Clients Ruby: Tests"
+
+on:
+  push:
+    paths:
+      - 'clients/**'
+      - 'commons/swagger/**'
+      - '.github/workflows/clients-ruby-tests.yml'
+
+jobs:
+  commons:
+    name: commons (RSpec)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clients/ruby/commons
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['3.2', '3.3']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+          working-directory: clients/ruby/commons
+      - run: bundle exec rspec
+
+  api_entreprise:
+    name: api_entreprise (RSpec)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clients/ruby/api_entreprise
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['3.2', '3.3']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+          working-directory: clients/ruby/api_entreprise
+      - run: bundle exec rspec
+
+  api_particulier:
+    name: api_particulier (RSpec)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clients/ruby/api_particulier
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['3.2', '3.3']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+          working-directory: clients/ruby/api_particulier
+      - run: bundle exec rspec
+
+  sync_check:
+    name: sync_commons & scaffold_resources freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Verify vendored commons is up to date
+        run: clients/ruby/bin/sync_commons --check
+      - name: Verify scaffolded resources are up to date
+        run: clients/ruby/bin/scaffold_resources --api all --check

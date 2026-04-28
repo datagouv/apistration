@@ -10,7 +10,10 @@ payload: |-
       {
         "title": "Service non disponible",
         "detail": "Service du fournisseur de données temporairement indisponible ou en maintenance.",
-        "code": "01001"
+        "code": "01001",
+        "meta": {
+          "provider": "INSEE"
+        }
       }
     ]
   }

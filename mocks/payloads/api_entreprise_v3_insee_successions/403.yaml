@@ -10,7 +10,7 @@ payload: |-
       {
         "title": "Privilèges insuffisants",
         "detail": "Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /v2/privileges",
-        "code": "0100"
+        "code": "00100"
       }
     ]
   }
