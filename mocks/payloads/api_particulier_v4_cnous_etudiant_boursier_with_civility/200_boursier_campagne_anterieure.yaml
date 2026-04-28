@@ -1,0 +1,47 @@
+---
+description: 'Boursier sur une campagne antérieure ciblée via campaignYear'
+params:
+  nomNaissance: 'Pagnol'
+  prenoms:
+    - 'Marcel'
+  anneeDateNaissance: 1998
+  moisDateNaissance: 7
+  jourDateNaissance: 12
+  codeCogInseeCommuneNaissance: '75000'
+  sexeEtatCivil: 'M'
+  campaignYear: 2022
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2022-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Evry",
+        "nom_etablissement": "ENSIIE"
+      },
+      "echelon_bourse": {
+        "echelon": "4",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "marcel@pagnol.fr",
+      "identite": {
+        "nom": "PAGNOL",
+        "prenoms": [
+          "MARCEL"
+        ],
+        "date_naissance": "1998-07-12",
+        "nom_commune_naissance": "Paris",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

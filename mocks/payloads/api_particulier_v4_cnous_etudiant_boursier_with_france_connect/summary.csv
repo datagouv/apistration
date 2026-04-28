@@ -1,4 +1,28 @@
 Titre,Description,Paramètres,Status,Réponse
+,Cas de test avec jeton FranceConnect - Boursier sur une campagne antérieure ciblée via campaignYear,"{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100"",""campaignYear"":2022}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2022-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Paris"",
+      ""nom_etablissement"": ""Sorbonne Université""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""4"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""angela.dubois@sorbonne.fr""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Cas de test avec jeton FranceConnect de test - Non boursier,"{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""nomUsage"":""MARTIN"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
     ""statut_boursier"": {

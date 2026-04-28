@@ -1,5 +1,6 @@
 class CNOUS::StudentScholarshipWithFranceConnect < RetrieverOrganizer
-  organize CNOUS::Authenticate,
+  organize CNOUS::ValidateCampaignYear,
+    CNOUS::Authenticate,
     CNOUS::StudentScholarshipWithFranceConnect::MakeRequest,
     CNOUS::ValidateResponse,
     CNOUS::BuildResource

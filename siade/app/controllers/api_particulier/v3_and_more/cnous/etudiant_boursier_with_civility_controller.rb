@@ -19,7 +19,7 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
   private
 
   def organizer_params
-    civility_parameters
+    civility_parameters.merge(campaign_year: params[:campaignYear])
   end
 
   def serializer_module

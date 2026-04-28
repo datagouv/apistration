@@ -7,6 +7,16 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with FranceConnect v4', 
 
       common_action_attributes
 
+      parameter name: :campaignYear,
+        in: :query,
+        description: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.description'),
+        example: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.example'),
+        schema: {
+          type: :integer,
+          minimum: SwaggerData.get('cnous.etudiant_boursier.parameters.campaignYear.minimum')
+        },
+        required: false
+
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }
 

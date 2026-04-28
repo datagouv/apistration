@@ -152,7 +152,7 @@ cnous:
 
   etudiant_boursier:
     parameters:
-      ine: 
+      ine:
         title: INE
         description: Identifiant National Étudiant (INE). Cet identifiant est unique
           à chaque étudiant sur le territoire français. Il est composé de 11 caractères,
@@ -161,8 +161,20 @@ cnous:
           et leur certificat de scolarité.
         pattern: "^[0-9a-zA-Z]{11}$"
         example: 1234567890G
+      campaignYear:
+        title: Année de campagne
+        description: |+
+          **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-  v2: 
+          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+
+          Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
+        minimum: 2021
+        example: 2024
+
+  v2:
     commons:
       title: Status étudiant boursier
       description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous
