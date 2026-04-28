@@ -481,10 +481,24 @@ fr:
                 anchor: 'surveillance-etat-fournisseurs'
                 content: |+
                   API Particulier met à disposition un ensemble de routes de "pings" permettant de récupérer l'état des services fournis par les différents fournisseurs de données.
-                  L'ensemble des routes est disponible à l'adresse suivante: [Routes de pings (format JSON)](https://particulier.api.gouv.fr/api/pings).
+                  L'ensemble des routes est disponible à l'adresse suivante : [Routes de pings (format JSON)](https://particulier.api.gouv.fr/api/pings).
 
-                  Pour chacune de ces routes, l'équipe d'API Particulier effectue des vérifications spécifiques au fournisseur, permettant d'être au plus près de la réalité quand à la santé dudît fournisseur.
-                  Chacune de ces routes renvoi un json sous le format suivant:
+                  {:.fr-highlight}
+                  > **Privilégiez les routes de ping** plutôt que des appels récurrents sur les véritables endpoints pour surveiller la disponibilité des fournisseurs. Les routes de ping sont spécifiquement conçues pour le monitoring, sans limitation d'appels, et ne consomment pas vos quotas.
+
+                  {:.fr-h5}
+                  #### Mécanismes de vérification
+
+                  Pour chacune de ces routes, l'équipe d'API Particulier effectue des vérifications spécifiques au fournisseur, permettant d'être au plus près de la réalité quant à la santé dudit fournisseur. Selon le fournisseur, plusieurs stratégies sont utilisées :
+
+                  - **Appel direct au fournisseur** : un appel réel est effectué avec des données de test vers le système du fournisseur, permettant de vérifier que toute la chaîne de communication fonctionne (authentification, requête, réponse) ;
+                  - **Analyse des logs d'accès** : pour certains fournisseurs, la disponibilité est déduite de l'analyse des appels réels effectués dans les 10 dernières minutes, en observant le ratio de succès/échecs. Cela permet de refléter la réalité d'usage plutôt qu'un simple test unitaire ;
+                  - **Vérification combinée** : certains fournisseurs combinent un appel de santé dédié avec une analyse du taux d'erreur sur les logs d'accès récents. Si le taux d'erreur dépasse un seuil, le fournisseur est considéré en défaut même si l'appel de santé répond correctement.
+
+                  {:.fr-h5}
+                  #### Format de la réponse
+
+                  Chacune de ces routes renvoie un JSON sous le format suivant :
 
                   ```json
                   {
@@ -494,19 +508,27 @@ fr:
                   }
                   ```
 
-                  Avec:
-                  - `status`, `string`, qui peut avoir 3 valeurs: `ok` quand tout est OK, `bad_gateway` quand il y a un souci, `unknown` quand on ne peut pas déterminer le status ;
-                  - `last_update`, `datetime`, date de la dernière mise à jour: pour éviter de surcharger nos systèmes nous effectuons de la mise en cache sur les pings ;
-                  - `last_ok_update`, `datetime`, date de la dernière mise à jour en OK: permet de savoir depuis quand le service est en défaut.
+                  Avec :
+                  - `status`, `string`, les valeurs possibles sont :
+                    - `ok` : le fournisseur fonctionne correctement ;
+                    - `bad_gateway` : le fournisseur est en défaut ;
+                    - `maintenance` : le fournisseur est dans une fenêtre de maintenance planifiée. Un champ `until` est alors ajouté, indiquant la fin prévue de la maintenance ;
+                    - `unknown` : les données sont insuffisantes pour déterminer le statut (pas de faux positif).
+                  - `last_update`, `datetime`, date de la dernière vérification. Les résultats sont mis en cache pendant quelques minutes afin de ne pas surcharger les systèmes des fournisseurs ;
+                  - `last_ok_status`, `datetime`, date de la dernière vérification en succès. Permet de savoir depuis quand le service est en défaut.
 
-                  A noter que le status http est à 200 pour `ok` et `unknown`, 502 pour `bad_gateway` : cela permet à nos systèmes de monitoring de ne pas lever d'alertes en cas de données insuffisantes (et ainsi éviter des potentiels faux positifs).
+                  Le code HTTP de la réponse est `200` pour `ok`, `unknown` et `maintenance`, et `502` pour `bad_gateway`. Le code `200` pour `unknown` permet de ne pas lever de fausses alertes dans vos systèmes de monitoring en cas de données insuffisantes.
 
-                  Nous vous conseillons de passer par ces routes de surveillances, et ceci pour plusieurs raisons:
+                  {:.fr-h5}
+                  #### Pourquoi préférer les routes de ping
 
-                  1. API Particulier s'occupe de la complexité vis-à-vis de la disponibilité de certains partenaires (limitation sur le nombre d'appels sur certains identifiants, échecs aléatoires etc..) ;
-                  2. Il n'y a pas de limitations sur ces routes
-                  3. L'implémentation est plus simple que d'utiliser les routes officieles
-                  4. Un `bad gateway` d'une route de ping a de forte chance d'être un vrai positif, contrairement à un échec sur les endpoints qui peut être dû à des erreurs réseaux/temporaires.
+                  Nous vous recommandons fortement de passer par ces routes de surveillance plutôt que d'effectuer des appels récurrents sur les véritables endpoints, et ce pour plusieurs raisons :
+
+                  1. **Pas de limitation d'appels** : contrairement aux endpoints de données, les routes de ping n'ont aucune restriction de débit ;
+                  2. **Gestion de la complexité** : API Particulier gère pour vous les spécificités de chaque fournisseur (limitation sur le nombre d'appels, échecs aléatoires, authentifications multiples, etc.) ;
+                  3. **Fiabilité du diagnostic** : un `bad_gateway` sur une route de ping a de fortes chances d'être un vrai positif. Un échec sur un endpoint de données peut être dû à des erreurs réseau temporaires, des données invalides, ou des erreurs de paramétrage ;
+                  4. **Fenêtres de maintenance** : les routes de ping intègrent les fenêtres de maintenance planifiées des fournisseurs, ce qui évite de lever des alertes inutiles pendant ces périodes ;
+                  5. **Implémentation plus simple** : pas besoin de jeton d'accès ni de paramètres métier, un simple appel HTTP suffit.
 
               - title: Retrouver les droits d'un jeton
                 anchor: 'retrouver-les-droits-dun-jeton'
