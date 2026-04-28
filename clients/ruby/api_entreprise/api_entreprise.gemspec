@@ -8,9 +8,18 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Official Ruby client for API Entreprise v3'
   spec.description = 'Idiomatic Ruby client for https://entreprise.api.gouv.fr — auth, envelope, error normalisation, rate limit.'
   spec.homepage    = 'https://github.com/datagouv/apistration'
-  spec.license     = 'AGPL-3.0-only'
+  spec.license     = 'MIT'
 
   spec.required_ruby_version = '>= 3.1'
+
+  spec.metadata = {
+    'homepage_uri'      => 'https://github.com/datagouv/apistration',
+    'source_code_uri'   => 'https://github.com/datagouv/apistration/tree/main/clients/ruby/api_entreprise',
+    'changelog_uri'     => 'https://github.com/datagouv/apistration/blob/main/clients/ruby/api_entreprise/CHANGELOG.md',
+    'bug_tracker_uri'   => 'https://github.com/datagouv/apistration/issues',
+    'documentation_uri' => 'https://entreprise.api.gouv.fr/v3/',
+    'rubygems_mfa_required' => 'true'
+  }
 
   spec.files = Dir['lib/**/*.rb', 'README.md', 'CHANGELOG.md', 'LICENSE']
   spec.require_paths = ['lib']

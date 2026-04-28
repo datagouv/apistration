@@ -1,0 +1,62 @@
+name: "Clients Ruby: Release gem"
+
+on:
+  push:
+    tags:
+      - 'ruby-api-entreprise-v*'
+      - 'ruby-api-particulier-v*'
+
+jobs:
+  release:
+    name: Build & push to rubygems.org
+    runs-on: ubuntu-latest
+    environment: rubygems
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Resolve gem from tag
+        id: gem
+        run: |
+          case "$GITHUB_REF_NAME" in
+            ruby-api-entreprise-v*)
+              echo "name=api_entreprise" >>"$GITHUB_OUTPUT"
+              echo "dir=clients/ruby/api_entreprise" >>"$GITHUB_OUTPUT"
+              ;;
+            ruby-api-particulier-v*)
+              echo "name=api_particulier" >>"$GITHUB_OUTPUT"
+              echo "dir=clients/ruby/api_particulier" >>"$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "Unsupported tag: $GITHUB_REF_NAME" >&2
+              exit 1
+              ;;
+          esac
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+          working-directory: ${{ steps.gem.outputs.dir }}
+
+      - name: Verify tag version matches gemspec version
+        working-directory: ${{ steps.gem.outputs.dir }}
+        run: |
+          tag_version="${GITHUB_REF_NAME##*-v}"
+          gem_version=$(ruby -e 'puts Gem::Specification.load("${{ steps.gem.outputs.name }}.gemspec").version')
+          if [ "$tag_version" != "$gem_version" ]; then
+            echo "Tag version '$tag_version' does not match gemspec version '$gem_version'" >&2
+            exit 1
+          fi
+          echo "Releasing ${{ steps.gem.outputs.name }} $gem_version"
+
+      - name: Run rspec
+        working-directory: ${{ steps.gem.outputs.dir }}
+        run: bundle exec rspec
+
+      - uses: rubygems/release-gem@v1
+        with:
+          working-directory: ${{ steps.gem.outputs.dir }}

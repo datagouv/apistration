@@ -146,6 +146,58 @@ Gestion des erreurs et stubs dans les READMEs de chaque gem :
 [`api_entreprise/README.md`](./api_entreprise/README.md),
 [`api_particulier/README.md`](./api_particulier/README.md).
 
+## Publier une version sur rubygems.org
+
+### Prérequis (one-shot)
+
+1. Compte rubygems.org avec MFA actif (les gemspecs déclarent
+   `rubygems_mfa_required = true`).
+2. **Premier release manuel** pour réserver les noms (avant que le trusted
+   publishing prenne le relais). Depuis un poste connecté à rubygems
+   (`gem signin`) :
+   ```sh
+   cd clients/ruby/api_entreprise && gem build api_entreprise.gemspec && gem push api_entreprise-0.1.0.gem
+   cd ../api_particulier         && gem build api_particulier.gemspec  && gem push api_particulier-0.1.0.gem
+   ```
+3. **Configurer le trusted publisher OIDC** sur rubygems
+   (`https://rubygems.org/profile/oidc/trusted_publishers/new`) pour chaque
+   gem :
+
+   | Champ | Valeur |
+   |---|---|
+   | Repository owner | `datagouv` |
+   | Repository name | `apistration` |
+   | Workflow filename | `clients-ruby-release.yml` |
+   | Environment | `rubygems` |
+
+4. Côté GitHub : créer l'environment `rubygems` (Settings → Environments)
+   avec un protection rule "required reviewers" si on veut une approbation
+   manuelle avant push.
+
+### Cycle de release
+
+```sh
+# 1. bump
+$EDITOR clients/ruby/api_entreprise/lib/api_entreprise/version.rb     # 0.1.0 → 0.2.0
+$EDITOR clients/ruby/api_entreprise/CHANGELOG.md                       # add entry
+git add -A && git commit -m "Release api_entreprise 0.2.0"
+
+# 2. tag (le préfixe identifie la gem ; le suffixe doit matcher la version)
+git tag ruby-api-entreprise-v0.2.0
+git push origin main --tags
+
+# → .github/workflows/clients-ruby-release.yml :
+#    - vérifie que le tag matche la version dans le gemspec
+#    - lance rspec
+#    - build + push via rubygems/release-gem (OIDC, pas de secret en clair)
+#    - crée la release GitHub associée au tag
+```
+
+Tags reconnus :
+
+- `ruby-api-entreprise-v<X.Y.Z>` → publie `api_entreprise`
+- `ruby-api-particulier-v<X.Y.Z>` → publie `api_particulier`
+
 ## Ajouter / corriger une resource à la main
 
 Les fichiers sous `lib/*/resources/*.rb` portent un header `DO NOT EDIT`. Si
