@@ -1,4 +1,8 @@
 class AbstractSpecificProviderError < ApplicationError
+  def self.build_example(kind:, **)
+    new(kind)
+  end
+
   def initialize(kind)
     @kind = kind.to_sym
   end

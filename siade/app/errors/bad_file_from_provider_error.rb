@@ -1,4 +1,8 @@
 class BadFileFromProviderError < ApplicationError
+  def self.build_example(provider_name:, kind:, **)
+    new(provider_name, kind)
+  end
+
   KIND_TO_SUBCODE = {
     invalid_base64: {
       subcode: '051',
