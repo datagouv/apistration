@@ -1,4 +1,6 @@
 class Documents::Base64Decode < ApplicationInteractor
+  raises BadFileFromProviderError, kind: :invalid_base64
+
   before do
     context.errors ||= []
   end

@@ -1,4 +1,6 @@
 class ACOSS::AttestationsSociales::ValidateResponse < URSSAF::AttestationsSociales::ValidateResponse::RawBody
+  raises ACOSSError, kind: :cannot_deliver_document
+
   def handle_errors
     if cannot_deliver_document?
       fail_with_error!(ACOSSError.new(:cannot_deliver_document))

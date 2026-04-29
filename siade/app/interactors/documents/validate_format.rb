@@ -1,4 +1,6 @@
 class Documents::ValidateFormat < ApplicationInteractor
+  raises BadFileFromProviderError, kind: :invalid_extension
+
   before do
     context.errors ||= []
   end
