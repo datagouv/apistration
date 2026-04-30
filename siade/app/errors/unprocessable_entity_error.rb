@@ -1,4 +1,8 @@
 class UnprocessableEntityError < ApplicationError
+  def self.build_example(field:, **)
+    new(field)
+  end
+
   attr_reader :field
 
   def initialize(field, meta: {})

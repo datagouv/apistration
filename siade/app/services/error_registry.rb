@@ -33,7 +33,7 @@ class ErrorRegistry
       target = http_status.to_i
 
       declarations_for_organizer(organizer_class).filter_map do |decl|
-        example = decl.error_class.build_example(provider_name:, kind: decl.options[:kind])
+        example = decl.error_class.build_example(provider_name:, **decl.options)
         next unless status_code(example) == target
 
         example

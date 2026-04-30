@@ -1,4 +1,8 @@
 class InvalidFranceConnectAccessTokenError < UnauthorizedError
+  def self.build_example(type:, **)
+    new(type)
+  end
+
   attr_reader :type, :scopes
 
   def initialize(type, scopes: [])
