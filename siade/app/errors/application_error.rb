@@ -1,4 +1,8 @@
 class ApplicationError
+  def self.build_example(**)
+    new
+  end
+
   def code
     raise 'It should be override in inherited classes'
   end

@@ -1,6 +1,10 @@
 class AbstractGenericProviderError < ApplicationError
   class UnknownProviderCode < StandardError; end
 
+  def self.build_example(provider_name:, **)
+    new(provider_name)
+  end
+
   attr_reader :provider_name
 
   def initialize(provider_name, message = nil)

@@ -27,6 +27,9 @@ class APIEntreprise::Endpoint < AbstractEndpoint
     @custom_provider_errors ||= error_examples('502').reject { |error_payload|
       %w[
         000
+        008
+        009
+        011
         051
         052
         053

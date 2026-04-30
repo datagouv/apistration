@@ -1,5 +1,20 @@
 # rubocop:disable Metrics/ModuleLength
 module RSwagCommonErrors
+  BASELINE_PROVIDER_ERROR_CLASSES = [
+    ProviderUnknownError,
+    ProviderInternalServerError,
+    ProviderRateLimitingError,
+    ProviderTemporaryError,
+    SSLCertificateError
+  ].freeze
+
+  BASELINE_NETWORK_ERROR_CLASSES = [
+    ProviderTimeoutError,
+    ProviderUnavailable,
+    NetworkError,
+    DnsResolutionError
+  ].freeze
+
   def unauthorized_request(&block)
     describe 'with valid mandatory params but invalid token' do
       include_context 'Valid mandatory params and no token'
@@ -73,20 +88,17 @@ module RSwagCommonErrors
     end
   end
 
-  def common_provider_errors_request(provider_name, organizer_klass, extra_errors = [], &block)
+  def common_provider_errors_request(provider_name, organizer_klass, extra_errors = nil, &block)
     response '502', 'Erreur du fournisseur' do
-      provider_unknown_error = ProviderUnknownError.new(provider_name)
+      baseline_errors = BASELINE_PROVIDER_ERROR_CLASSES.map { |klass| klass.new(provider_name) }
 
-      stubbed_organizer_error(
-        organizer_klass,
-        provider_unknown_error
-      )
+      stubbed_organizer_error(organizer_klass, baseline_errors.first)
 
       schema '$ref' => '#/components/schemas/Error'
 
-      build_rswag_example(provider_unknown_error, :provider_unknown_error)
+      registry_errors = ErrorRegistry.examples_for_status(organizer_klass, 502, provider_name:)
 
-      Array(extra_errors).each do |error|
+      (baseline_errors + Array(extra_errors) + registry_errors).uniq(&:code).each do |error|
         build_rswag_example(error)
       end
 

@@ -1133,7 +1133,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -1148,6 +1148,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1937,7 +1991,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -1952,6 +2006,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -2744,7 +2852,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -2759,6 +2867,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -3545,7 +3707,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -3560,6 +3722,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -4479,7 +4695,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -4494,6 +4710,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -5431,7 +5701,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -5446,6 +5716,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -5749,7 +6073,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -5764,6 +6088,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -6562,7 +6940,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -6577,6 +6955,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -7599,7 +8031,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
                     - code: '37999'
@@ -7614,6 +8046,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -8431,7 +8917,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_26999:
                   value:
                     errors:
                     - code: '26999'
@@ -8446,6 +8932,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_26000:
+                  value:
+                    errors:
+                    - code: '26000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_26008:
+                  value:
+                    errors:
+                    - code: '26008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_26011:
+                  value:
+                    errors:
+                    - code: '26011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_26009:
+                  value:
+                    errors:
+                    - code: '26009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -9149,7 +9689,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_26999:
                   value:
                     errors:
                     - code: '26999'
@@ -9164,6 +9704,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_26000:
+                  value:
+                    errors:
+                    - code: '26000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_26008:
+                  value:
+                    errors:
+                    - code: '26008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_26011:
+                  value:
+                    errors:
+                    - code: '26011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_26009:
+                  value:
+                    errors:
+                    - code: '26009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -10675,7 +11269,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_39999:
                   value:
                     errors:
                     - code: '39999'
@@ -10690,6 +11284,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_39000:
+                  value:
+                    errors:
+                    - code: '39000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_39008:
+                  value:
+                    errors:
+                    - code: '39008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_39011:
+                  value:
+                    errors:
+                    - code: '39011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_39009:
+                  value:
+                    errors:
+                    - code: '39009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -11222,7 +11870,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_24999:
                   value:
                     errors:
                     - code: '24999'
@@ -11237,6 +11885,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_24000:
+                  value:
+                    errors:
+                    - code: '24000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_24008:
+                  value:
+                    errors:
+                    - code: '24008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_24011:
+                  value:
+                    errors:
+                    - code: '24011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_24009:
+                  value:
+                    errors:
+                    - code: '24009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -11735,7 +12437,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_24999:
                   value:
                     errors:
                     - code: '24999'
@@ -11750,6 +12452,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_24000:
+                  value:
+                    errors:
+                    - code: '24000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_24008:
+                  value:
+                    errors:
+                    - code: '24008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_24011:
+                  value:
+                    errors:
+                    - code: '24011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_24009:
+                  value:
+                    errors:
+                    - code: '24009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -12233,7 +12989,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_31999:
                   value:
                     errors:
                     - code: '31999'
@@ -12248,6 +13004,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_31000:
+                  value:
+                    errors:
+                    - code: '31000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_31008:
+                  value:
+                    errors:
+                    - code: '31008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_31011:
+                  value:
+                    errors:
+                    - code: '31011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_31009:
+                  value:
+                    errors:
+                    - code: '31009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -13204,7 +14014,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_30999:
                   value:
                     errors:
                     - code: '30999'
@@ -13219,6 +14029,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_30000:
+                  value:
+                    errors:
+                    - code: '30000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_30008:
+                  value:
+                    errors:
+                    - code: '30008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_30011:
+                  value:
+                    errors:
+                    - code: '30011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_30009:
+                  value:
+                    errors:
+                    - code: '30009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -13762,7 +14626,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_30999:
                   value:
                     errors:
                     - code: '30999'
@@ -13777,6 +14641,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_30000:
+                  value:
+                    errors:
+                    - code: '30000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_30008:
+                  value:
+                    errors:
+                    - code: '30008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_30011:
+                  value:
+                    errors:
+                    - code: '30011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_30009:
+                  value:
+                    errors:
+                    - code: '30009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -14358,7 +15276,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_30999:
                   value:
                     errors:
                     - code: '30999'
@@ -14373,6 +15291,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_30000:
+                  value:
+                    errors:
+                    - code: '30000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_30008:
+                  value:
+                    errors:
+                    - code: '30008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_30011:
+                  value:
+                    errors:
+                    - code: '30011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_30009:
+                  value:
+                    errors:
+                    - code: '30009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -14870,7 +15842,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_25999:
                   value:
                     errors:
                     - code: '25999'
@@ -14885,6 +15857,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_25000:
+                  value:
+                    errors:
+                    - code: '25000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_25008:
+                  value:
+                    errors:
+                    - code: '25008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_25011:
+                  value:
+                    errors:
+                    - code: '25011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_25009:
+                  value:
+                    errors:
+                    - code: '25009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -15601,7 +16627,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_25999:
                   value:
                     errors:
                     - code: '25999'
@@ -15616,6 +16642,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_25000:
+                  value:
+                    errors:
+                    - code: '25000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_25008:
+                  value:
+                    errors:
+                    - code: '25008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_25011:
+                  value:
+                    errors:
+                    - code: '25011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_25009:
+                  value:
+                    errors:
+                    - code: '25009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -16215,7 +17295,7 @@ paths:
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_41999:
                   value:
                     errors:
                     - code: '41999'
@@ -16230,6 +17310,60 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_41000:
+                  value:
+                    errors:
+                    - code: '41000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_41008:
+                  value:
+                    errors:
+                    - code: '41008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_41011:
+                  value:
+                    errors:
+                    - code: '41011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_41009:
+                  value:
+                    errors:
+                    - code: '41009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':

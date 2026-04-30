@@ -1,4 +1,7 @@
 class URSSAF::AttestationsSociales::ValidateResponse::RawBody < ValidateResponse
+  raises ACOSSError, kind: :manual_verification_asked
+  raises ACOSSError, kind: :ongoing_manual_verification
+
   def call
     if body.blank?
       internal_server_error!('Le corps de la réponse est vide, il s\'agit d\'une erreur interne du fournisseur')

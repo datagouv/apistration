@@ -1,4 +1,6 @@
 class Documents::Upload < ApplicationInteractor
+  raises HostingServiceError
+
   before do
     context.errors ||= []
   end
