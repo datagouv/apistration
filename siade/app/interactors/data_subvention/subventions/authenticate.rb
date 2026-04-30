@@ -7,11 +7,11 @@ class DataSubvention::Subventions::Authenticate < AbstractGetToken
   end
 
   def access_token(response)
-    JSON.parse(response.body)['user']['jwt']['token']
+    JSON.parse(response.body).dig('user', 'jwt', 'token')
   end
 
   def expires_in(response)
-    JSON.parse(response.body)['user']['jwt']['expirateDate']
+    JSON.parse(response.body).dig('user', 'jwt', 'expirateDate')
   end
 
   def client_url
