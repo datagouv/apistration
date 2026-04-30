@@ -1,0 +1,65 @@
+description: |-
+  ## Famille CHAMPS BERGER avec trois enfants  
+Ce cas permet de tester :
+  * la gestion d'un nom de famille avec un espace
+
+  
+params:
+  codeCogInseeCommuneNaissance: '57463'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'CHAMPS BERGER'
+  prenoms:
+    - 'MARIE'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 12
+  jourDateNaissance: 1
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "MARIE",
+          "date_naissance": "1988-12-01",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2004-03-30",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "SARAH SOFIA",
+          "date_naissance": "2012-07-12",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "LEA SOPHIE",
+          "date_naissance": "2018-11-25",
+          "sexe": "F"
+        }
+      ],
+      
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 689,
+        "annee": 2026,
+        "mois": 04,
+        "annee_calcul": 2026,
+        "mois_calcul": 04
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
