@@ -7,6 +7,10 @@ avec les conventions spécifiques :
 - `site/CLAUDE.md` — admin SIADE (front + back-office)
 - `mocks/CLAUDE.md` — mocks fournisseurs
 
+## Conventions transverses
+
+- Messages de commit rédigés en anglais.
+
 ## Outils partagés
 
 ### Sentry / Production Errors
