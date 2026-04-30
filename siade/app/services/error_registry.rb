@@ -9,8 +9,20 @@ class ErrorRegistry
       decl
     end
 
+    def mark_guarded(validator_class)
+      declarations[validator_class] ||= []
+    end
+
+    def guarded?(validator_class)
+      validator_class.ancestors.any? { |klass| declarations.key?(klass) }
+    end
+
     def declarations_for(validator_class)
       validator_class.ancestors.flat_map { |klass| declarations.fetch(klass, []) }.uniq
+    end
+
+    def direct_declarations_for(validator_class)
+      declarations.fetch(validator_class, [])
     end
 
     def declarations_for_organizer(organizer_class)
