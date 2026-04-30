@@ -9,18 +9,22 @@ USAGE = <<~USAGE.freeze
   Options:
     -q, --query QUERY    Sentry search query (default: is:unresolved)
     -p, --period PERIOD  Stats period: 24h, 14d (default: 14d)
+  #{SentryCli.project_help}
     -h, --help           Show this help
 
   Examples:
     bin/sentry/issues
+    bin/sentry/issues -P siade-site
     bin/sentry/issues -q "is:unresolved http_response_code:502"
     bin/sentry/issues -p 24h
 USAGE
 
+args = ARGV.dup
+project = SentryCli.parse_project!(args)
+
 query = 'is:unresolved'
 period = '14d'
 
-args = ARGV.dup
 while args.any?
   case args.shift
   when '-h', '--help'
@@ -33,7 +37,7 @@ while args.any?
   end
 end
 
-client = SentryClient.new
+client = SentryClient.new(project: project)
 issues = client.issues(query: query, stats_period: period)
 
 if issues.empty?
@@ -41,7 +45,7 @@ if issues.empty?
   exit 0
 end
 
-puts "Found #{issues.count} issues (#{period})\n\n"
+puts "Found #{issues.count} issues on #{project} (#{period})\n\n"
 
 issues.each do |issue|
   id = issue['id'].ljust(10)

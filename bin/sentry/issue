@@ -8,23 +8,27 @@ USAGE = <<~USAGE.freeze
 
   Options:
     -o, --output FILE  Save markdown to file (default: stdout)
+  #{SentryCli.project_help}
     -h, --help         Show this help
 
   Examples:
     bin/sentry/issue 123456
+    bin/sentry/issue 123456 -P siade-site
     bin/sentry/issue 123456 -o tmp/issue.md
 USAGE
 
-if ARGV.empty? || ARGV.include?('-h') || ARGV.include?('--help')
+args = ARGV.dup
+project = SentryCli.parse_project!(args)
+
+if args.empty? || args.include?('-h') || args.include?('--help')
   puts USAGE
-  exit ARGV.empty? ? 1 : 0
+  exit args.empty? ? 1 : 0
 end
 
-issue_id = ARGV[0]
+issue_id = args.shift
 output_file = nil
 
-args = ARGV[1..]
-while args&.any?
+while args.any?
   case args.shift
   when '-o', '--output'
     output_file = args.shift
@@ -49,6 +53,7 @@ def generate_markdown(client, issue, event)
   md << '## Info'
   md << ''
   md << "- **ID**: #{issue['id']}"
+  md << "- **Project**: #{client.project}"
   md << "- **Events**: #{issue['count']}"
   md << "- **Users affected**: #{issue['userCount']}"
   md << "- **First seen**: #{issue['firstSeen']}"
@@ -132,9 +137,9 @@ def generate_markdown(client, issue, event)
   "#{md.join("\n")}\n"
 end
 
-client = SentryClient.new
+client = SentryClient.new(project: project)
 
-print "Fetching issue #{issue_id}..."
+print "Fetching issue #{issue_id} on #{project}..."
 issue = client.issue(issue_id)
 event = client.latest_event(issue_id)
 puts ' done'

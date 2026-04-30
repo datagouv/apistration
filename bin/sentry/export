@@ -11,28 +11,32 @@ USAGE = <<~USAGE.freeze
   Options:
     -p, --pages NUM     Number of pages to fetch (100 events/page, default: 1)
     -o, --output FILE   Output file (default: tmp/sentry_<ISSUE_ID>.csv)
-    --full              Fetch full event details (slower, includes http_response_body)
+    --full              Fetch full event details (slower; siade-backend: includes http_response_body)
+  #{SentryCli.project_help}
     -h, --help          Show this help
 
   Examples:
     bin/sentry/export 123456
+    bin/sentry/export 123456 -P siade-site
     bin/sentry/export 123456 -p 5
     bin/sentry/export 123456 --full
     bin/sentry/export 123456 -o my_export.csv
 USAGE
 
-if ARGV.empty? || ARGV.include?('-h') || ARGV.include?('--help')
+args = ARGV.dup
+project = SentryCli.parse_project!(args)
+
+if args.empty? || args.include?('-h') || args.include?('--help')
   puts USAGE
-  exit ARGV.empty? ? 1 : 0
+  exit args.empty? ? 1 : 0
 end
 
-issue_id = ARGV[0]
+issue_id = args.shift
 pages = 1
 output_file = nil
 full_mode = false
 
-args = ARGV[1..]
-while args&.any?
+while args.any?
   case args.shift
   when '-p', '--pages'
     pages = args.shift.to_i
@@ -45,9 +49,9 @@ end
 
 output_file ||= "tmp/sentry_#{issue_id}.csv"
 
-client = SentryClient.new
+client = SentryClient.new(project: project)
 
-puts "Fetching events for issue #{issue_id} (#{pages} page(s))..."
+puts "Fetching events for issue #{issue_id} on #{project} (#{pages} page(s))..."
 
 all_events = []
 pages.times do |page|
@@ -71,7 +75,7 @@ if full_mode
   puts ' done'
 end
 
-rows = all_events.map do |event|
+backend_row = lambda do |event|
   provider_error = client.extract_provider_error(event) || {}
   controller_params = event.dig('contexts', 'Controller params', 'params') || {}
   {
@@ -84,6 +88,19 @@ rows = all_events.map do |event|
   }
 end
 
+generic_row = lambda do |event|
+  request = event['entries']&.find { |e| e['type'] == 'request' }
+  {
+    event_id: event['eventID'],
+    date: event['dateCreated'],
+    title: event['title'],
+    message: event['message'].to_s[0, 500],
+    url: request&.dig('data', 'url')
+  }
+end
+
+row_builder = client.backend? ? backend_row : generic_row
+rows = all_events.map { |event| row_builder.call(event) }
 rows.uniq!
 
 FileUtils.mkdir_p(File.dirname(output_file))

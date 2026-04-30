@@ -4,17 +4,28 @@ require 'json'
 class SentryClient
   BASE_URI = 'https://errors.data.gouv.fr'.freeze
   ORG_SLUG = 'sentry'.freeze
-  PROJECT_SLUG = 'siade-backend'.freeze
   TOKEN_FILE = '.sentry_token'.freeze
+  PROJECTS = %w[siade-backend siade-site].freeze
+  DEFAULT_PROJECT = 'siade-backend'.freeze
 
-  def initialize
+  attr_reader :project
+
+  def initialize(project: DEFAULT_PROJECT)
+    unless PROJECTS.include?(project)
+      abort "Unknown project: #{project}. Valid: #{PROJECTS.join(', ')}"
+    end
+    @project = project
     @token = load_token
     @connection = build_connection
   end
 
+  def backend?
+    @project == 'siade-backend'
+  end
+
   def issues(query: 'is:unresolved', stats_period: '14d')
     response = @connection.get(
-      "/api/0/projects/#{ORG_SLUG}/#{PROJECT_SLUG}/issues/",
+      "/api/0/projects/#{ORG_SLUG}/#{@project}/issues/",
       { statsPeriod: stats_period, query: query }
     )
     response.body
@@ -39,7 +50,7 @@ class SentryClient
   end
 
   def event(event_id)
-    response = @connection.get("/api/0/projects/#{ORG_SLUG}/#{PROJECT_SLUG}/events/#{event_id}/")
+    response = @connection.get("/api/0/projects/#{ORG_SLUG}/#{@project}/events/#{event_id}/")
     response.body
   end
 
@@ -93,19 +104,27 @@ class SentryClient
   private
 
   def load_token
-    token_path = File.expand_path(TOKEN_FILE, Dir.pwd)
-    unless File.exist?(token_path)
+    candidates = [
+      File.expand_path(TOKEN_FILE, Dir.pwd),
+      File.expand_path("../../#{TOKEN_FILE}", __dir__)
+    ].uniq
+
+    path = candidates.find { |p| File.exist?(p) }
+    unless path
       abort <<~MSG
         #{TOKEN_FILE} not found.
+
+        Searched:
+        #{candidates.map { |c| "  - #{c}" }.join("\n")}
 
         Create a token at: #{BASE_URI}/settings/account/api/auth-tokens/
         Required scopes: event:read, project:read
 
-        Save token to #{TOKEN_FILE}:
+        Save token to #{TOKEN_FILE} (in repo root or current dir):
           echo "your_token" > #{TOKEN_FILE}
       MSG
     end
-    File.read(token_path).strip
+    File.read(path).strip
   end
 
   def build_connection
@@ -116,5 +135,31 @@ class SentryClient
       conn.options.timeout = 30
       conn.request :authorization, 'Bearer', @token
     end
+  end
+end
+
+module SentryCli
+  module_function
+
+  def parse_project!(args)
+    project = ENV['SENTRY_PROJECT'] || SentryClient::DEFAULT_PROJECT
+    remaining = []
+    while (arg = args.shift)
+      case arg
+      when '-P', '--project'
+        project = args.shift
+      else
+        remaining << arg
+      end
+    end
+    args.replace(remaining)
+    project
+  end
+
+  def project_help
+    [
+      "  -P, --project NAME   Sentry project: #{SentryClient::PROJECTS.join(', ')}",
+      "                       (default: #{SentryClient::DEFAULT_PROJECT}, or $SENTRY_PROJECT)"
+    ].join("\n")
   end
 end
