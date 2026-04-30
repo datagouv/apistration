@@ -9,25 +9,29 @@ USAGE = <<~USAGE.freeze
   Options:
     -p, --pages NUM    Number of pages to fetch (100 events/page, default: 1)
     -f, --full         Fetch full event details
+  #{SentryCli.project_help}
     -h, --help         Show this help
 
   Examples:
     bin/sentry/events 123456
+    bin/sentry/events 123456 -P siade-site
     bin/sentry/events 123456 -p 5
     bin/sentry/events 123456 --full
 USAGE
 
-if ARGV.empty? || ARGV.include?('-h') || ARGV.include?('--help')
+args = ARGV.dup
+project = SentryCli.parse_project!(args)
+
+if args.empty? || args.include?('-h') || args.include?('--help')
   puts USAGE
-  exit ARGV.empty? ? 1 : 0
+  exit args.empty? ? 1 : 0
 end
 
-issue_id = ARGV[0]
+issue_id = args.shift
 pages = 1
 full = false
 
-args = ARGV[1..]
-while args&.any?
+while args.any?
   case args.shift
   when '-p', '--pages'
     pages = args.shift.to_i
@@ -36,9 +40,9 @@ while args&.any?
   end
 end
 
-client = SentryClient.new
+client = SentryClient.new(project: project)
 
-puts "Fetching events for issue #{issue_id} (#{pages} page(s))...\n\n"
+puts "Fetching events for issue #{issue_id} on #{project} (#{pages} page(s))...\n\n"
 
 all_events = []
 pages.times do |page|
@@ -48,15 +52,23 @@ pages.times do |page|
 end
 puts " #{all_events.count} events\n\n"
 
+format_backend = lambda do |event|
+  context = event['context'] || {}
+  http_code = context['http_response_code']
+  controller = context.dig('params', 'controller')
+  [http_code, controller].compact.join(' | ')
+end
+
+format_generic = lambda do |event|
+  [event['title'], event['message']].compact.reject(&:empty?).first.to_s[0, 80]
+end
+
+formatter = client.backend? ? format_backend : format_generic
+
 all_events.each do |event|
   id = event['eventID'][0, 12]
   date = event['dateCreated'][0, 19].gsub('T', ' ')
-  context = event['context'] || {}
-
-  http_code = context['http_response_code']
-  controller = context.dig('params', 'controller')
-
-  info = [http_code, controller].compact.join(' | ')
+  info = formatter.call(event)
 
   puts "#{id} | #{date} | #{info}"
 end

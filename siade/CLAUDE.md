@@ -31,4 +31,4 @@
 
 ## Sentry / Production Errors
 
-Pour accéder aux erreurs de production ou si l'utilisateur mentionne Sentry, lire `bin/sentry/README.md`.
+Pour accéder aux erreurs de production ou si l'utilisateur mentionne Sentry, utiliser les scripts à la racine du repo : `../bin/sentry/` (voir `../bin/sentry/README.md`). Projet par défaut : `siade-backend`.

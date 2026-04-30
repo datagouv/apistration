@@ -44,3 +44,7 @@ After each iteration:
 Bypass ProConnect via: `/compte/dev-login?email=user@yopmail.com`
 
 Available test emails: `user@yopmail.com`, `contact_technique@yopmail.com`, `editeur@yopmail.com`, `user10@yopmail.com`
+
+## Sentry / Production Errors
+
+Pour accéder aux erreurs de production ou si l'utilisateur mentionne Sentry, utiliser les scripts à la racine du repo : `../bin/sentry/` (voir `../bin/sentry/README.md`). Toujours passer `-P siade-site` (ou `SENTRY_PROJECT=siade-site`) — le défaut est `siade-backend`.
