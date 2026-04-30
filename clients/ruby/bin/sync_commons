@@ -1,0 +1,143 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'digest'
+require 'fileutils'
+require 'optparse'
+
+ROOT = File.expand_path('..', __dir__)
+COMMONS_DIR = File.join(ROOT, 'commons', 'lib', 'api_gouv_commons')
+
+TARGETS = {
+  'api_entreprise' => { outer: 'ApiEntreprise', inner: 'Commons' },
+  'api_particulier' => { outer: 'ApiParticulier', inner: 'Commons' }
+}.freeze
+
+def camel_to_snake(name)
+  name.gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+      .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+      .downcase
+end
+
+def rewrite(content, namespace:)
+  rewritten = content.dup
+  rewritten.gsub!('ApiGouvCommons', namespace)
+  rewritten
+end
+
+def source_digest
+  paths = Dir.glob(File.join(COMMONS_DIR, '**', '*.rb')).sort
+  Digest::SHA1.hexdigest(paths.map { |p| File.read(p) }.join)
+end
+
+def header(digest)
+  <<~HEADER
+    # frozen_string_literal: true
+    # DO NOT EDIT — generated from clients/ruby/commons/ (source digest: #{digest}).
+    # Regenerate via clients/ruby/bin/sync_commons.
+
+  HEADER
+end
+
+def each_source
+  Dir.glob(File.join(COMMONS_DIR, '**', '*.rb')).sort.each do |src|
+    relative = src.sub("#{COMMONS_DIR}/", '')
+    yield src, relative
+  end
+end
+
+def load_order
+  requires = [
+    'version',
+    'errors',
+    'siret',
+    'siren',
+    'rate_limit',
+    'response',
+    'user_agent',
+    'auth/strategy',
+    'auth/bearer_token',
+    'middleware/authentication',
+    'middleware/envelope',
+    'middleware/error_handler',
+    'middleware/rate_limit',
+    'middleware/logging',
+    'configuration',
+    'client_base'
+  ]
+  requires
+end
+
+def build_entry(outer:, inner:, digest:)
+  inner_snake = camel_to_snake(inner)
+  lines = [
+    header(digest).rstrip,
+    '',
+    "module #{outer}; end",
+    "module #{outer}::#{inner}; end",
+    ''
+  ]
+  load_order.each do |path|
+    lines << "require_relative '#{inner_snake}/#{path}'"
+  end
+  lines.join("\n") + "\n"
+end
+
+def sync_target(gem_dir, outer:, inner:, digest:, check:)
+  inner_snake = camel_to_snake(inner)
+  target_lib = File.join(ROOT, gem_dir, 'lib', camel_to_snake(outer), inner_snake)
+  entry_file = File.join(ROOT, gem_dir, 'lib', camel_to_snake(outer), "#{inner_snake}.rb")
+  namespace = "#{outer}::#{inner}"
+  drift = false
+
+  unless check
+    FileUtils.rm_rf(target_lib)
+    FileUtils.mkdir_p(target_lib)
+  end
+
+  each_source do |src, relative|
+    dest = File.join(target_lib, relative)
+    content = header(digest) + rewrite(File.read(src), namespace: namespace)
+
+    if check
+      existing = File.exist?(dest) ? File.read(dest) : ''
+      drift = true if existing != content
+    else
+      FileUtils.mkdir_p(File.dirname(dest))
+      File.write(dest, content)
+    end
+  end
+
+  entry_content = build_entry(outer: outer, inner: inner, digest: digest)
+  if check
+    existing = File.exist?(entry_file) ? File.read(entry_file) : ''
+    drift = true if existing != entry_content
+  else
+    File.write(entry_file, entry_content)
+  end
+
+  drift
+end
+
+options = { check: false }
+OptionParser.new do |opts|
+  opts.banner = 'Usage: bin/sync_commons [--check]'
+  opts.on('--check', 'Exit non-zero if vendored copies are stale') { options[:check] = true }
+end.parse!
+
+digest = source_digest
+drift = false
+
+TARGETS.each do |gem_dir, cfg|
+  drift |= sync_target(gem_dir, digest: digest, check: options[:check], **cfg)
+end
+
+if options[:check]
+  if drift
+    warn 'sync_commons: vendored copies are stale — run clients/ruby/bin/sync_commons'
+    exit 1
+  end
+  puts 'sync_commons: vendored copies are up to date.'
+else
+  puts "sync_commons: synced commons@#{digest[0, 10]} to #{TARGETS.keys.join(', ')}"
+end

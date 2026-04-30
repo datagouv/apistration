@@ -1,0 +1,296 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml'
+require 'fileutils'
+require 'optparse'
+
+ROOT = File.expand_path('..', __dir__)
+COMMONS_SWAGGER = File.expand_path('../../commons/swagger', ROOT)
+
+SPECS = {
+  entreprise: {
+    file: File.join(COMMONS_SWAGGER, 'openapi-entreprise.yaml'),
+    gem: 'api_entreprise',
+    namespace: 'ApiEntreprise'
+  },
+  particulier: {
+    file: File.join(COMMONS_SWAGGER, 'openapi-particulier.yaml'),
+    gem: 'api_particulier',
+    namespace: 'ApiParticulier'
+  }
+}.freeze
+
+VERSION_PATH_RE = %r{\A/v(\d+)/}.freeze
+MIN_SUPPORTED_VERSION = 3
+
+STOP_WORDS = %w[identite identifiant france_connect].freeze
+SIRET_PARAMS = %w[siret].freeze
+SIREN_PARAMS = %w[siren].freeze
+
+def snake(str)
+  str.to_s.gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+     .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+     .tr('-', '_')
+     .downcase
+end
+
+def kwarg_name(raw)
+  snake(raw.to_s.sub(/\[\]\z/, ''))
+end
+
+def camel(str)
+  str.to_s.split('_').map(&:capitalize).join
+end
+
+def path_segments(path)
+  path.split('/').reject(&:empty?)
+end
+
+def provider_from_path(path)
+  segs = path_segments(path)
+  segs[1] || segs[0]
+end
+
+def logical_path(path)
+  path.sub(VERSION_PATH_RE, '/')
+end
+
+def version_of(path)
+  m = path.match(VERSION_PATH_RE)
+  m && m[1].to_i
+end
+
+def method_name_for(path, existing_names)
+  segs = path_segments(path)
+  # drop version prefix
+  segs = segs.drop(1) if segs.first&.match?(/\Av\d+\z/)
+  # drop provider
+  segs = segs.drop(1)
+  # turn templates {foo} into nil markers
+  usable = segs.map { |s| s.start_with?('{') ? nil : s }
+  non_templated = usable.compact
+
+  candidate = non_templated.last
+  candidate = non_templated[-2] if STOP_WORDS.include?(candidate) && non_templated.size > 1
+
+  name = snake(candidate.to_s)
+  return name unless name.empty? || existing_names.include?(name)
+
+  # Disambiguate with preceding segments.
+  tail = non_templated.reverse.take(3).reverse
+  candidate_full = snake(tail.join('_'))
+  candidate_full = "endpoint_#{existing_names.size + 1}" if candidate_full.empty?
+  candidate_full
+end
+
+def path_params(operation)
+  (operation['parameters'] || []).select { |p| p['in'] == 'path' }
+end
+
+def query_params(operation)
+  (operation['parameters'] || []).select { |p| p['in'] == 'query' }
+end
+
+def build_method(logical, variants, existing_names)
+  sorted_versions = variants.keys.sort
+  default_version = pick_default_version(variants)
+  reference = variants[default_version]
+  operation = reference[:operation]
+
+  path_vars = path_params(operation).map { |p| p['name'] }
+  method_name = method_name_for(logical, existing_names)
+  existing_names << method_name
+
+  positional = path_vars.map { |v| snake(v) }
+
+  validations = path_vars.filter_map do |name|
+    sn = snake(name)
+    if SIRET_PARAMS.include?(sn)
+      "Commons::Siret.validate!(#{sn}, parameter: :#{sn})"
+    elsif SIREN_PARAMS.include?(sn)
+      "Commons::Siren.validate!(#{sn}, parameter: :#{sn})"
+    end
+  end
+
+  qparams = query_params(operation)
+  audit_params = %w[recipient context object]
+  kwargs = qparams.map { |p|
+    required = p['required'] && !audit_params.include?(p['name'])
+    required ? "#{kwarg_name(p['name'])}:" : "#{kwarg_name(p['name'])}: nil"
+  }
+  kwargs = ['version: nil'] + kwargs
+  signature = (positional + kwargs).join(', ')
+
+  param_hash = qparams.map { |p|
+    # Strip trailing [] from array-type param names: Faraday auto-appends [] to
+    # array values, so keeping it here produces prenoms[][] on the wire.
+    wire_name = p['name'].sub(/\[\]\z/, '')
+    "\"#{wire_name}\" => #{kwarg_name(p['name'])}"
+  }.join(', ')
+  query_merge = param_hash.empty? ? '{}' : "{ #{param_hash} }.compact"
+
+  case_lines = sorted_versions.map do |v|
+    info = variants[v]
+    interpolated = info[:path].gsub(/\{(\w+)\}/) { "\#{#{snake(Regexp.last_match(1))}}" }
+    branch = ["when #{v}"]
+    if info[:operation]['deprecated']
+      branch << "  warn \"[DEPRECATED] #{info[:path]} (##{method_name}): marked deprecated in the OpenAPI spec.\", uplevel: 1"
+    end
+    branch << "  \"#{interpolated}\""
+    branch.join("\n")
+  end
+
+  body = []
+  validations.each { |v| body << v }
+  body << 'path ='
+  body << "  case version || #{default_version}"
+  case_lines.each { |b| body << b.split("\n").map { |l| "  #{l}" }.join("\n") }
+  body << '  else'
+  body << "    raise ArgumentError, \"version \#{version.inspect} not available for #{logical}; supported: #{sorted_versions.inspect}\""
+  body << '  end'
+  body << "@client.get(path, params: #{query_merge})"
+
+  comment_lines = []
+  comment_lines << "# #{operation['summary']}" if operation['summary']
+  comment_lines << "# Logical endpoint: #{logical}"
+  deprecated_note = variants[default_version][:operation]['deprecated'] ? ' (deprecated)' : ''
+  comment_lines << "# Versions available: #{sorted_versions.inspect} — default: #{default_version}#{deprecated_note}"
+
+  [
+    *comment_lines,
+    "def #{method_name}(#{signature})",
+    *body.map { |l| "  #{l}" },
+    'end'
+  ].join("\n")
+end
+
+def pick_default_version(variants)
+  variants.keys.max
+end
+
+def render_resource(provider:, namespace:, endpoints:)
+  class_name = camel(provider)
+  existing = []
+  methods = endpoints.map { |logical, variants| build_method(logical, variants, existing) }
+
+  methods_block = methods.map { |m| indent(m, 6) }.join("\n\n")
+  <<~RUBY
+    # frozen_string_literal: true
+    # DO NOT EDIT — generated from commons/swagger/openapi-*.yaml by
+    # clients/ruby/bin/scaffold_resources. Edit the OpenAPI spec or the scaffold
+    # script instead.
+
+    module #{namespace}
+      module Resources
+        class #{class_name}
+          def initialize(client)
+            @client = client
+          end
+
+    #{methods_block}
+        end
+      end
+    end
+  RUBY
+end
+
+def indent(text, spaces)
+  pad = ' ' * spaces
+  text.split("\n").map { |line| line.empty? ? '' : pad + line }.join("\n")
+end
+
+def scaffold(api:, check:)
+  spec = SPECS.fetch(api)
+  doc = YAML.load_file(spec[:file])
+  # grouped[provider][logical_path][version] = {path:, operation:}
+  grouped = Hash.new { |h, k| h[k] = Hash.new { |hh, kk| hh[kk] = {} } }
+
+  doc['paths'].each do |path, node|
+    v = version_of(path)
+    next if v.nil? || v < MIN_SUPPORTED_VERSION
+
+    node.each do |verb, operation|
+      next unless verb == 'get'
+      next unless operation.is_a?(Hash)
+
+      provider = provider_from_path(path)
+      logical = logical_path(path)
+      grouped[provider][logical][v] = { path: path, operation: operation }
+    end
+  end
+
+  target_dir = File.join(ROOT, spec[:gem], 'lib', snake(spec[:namespace]), 'resources')
+  client_path = File.join(ROOT, spec[:gem], 'lib', snake(spec[:namespace]), 'client.rb')
+  drift = false
+
+  unless check
+    FileUtils.mkdir_p(target_dir)
+    Dir.glob(File.join(target_dir, '*.rb')).each { |f| File.delete(f) unless File.basename(f) == 'README.md' }
+  end
+
+  grouped.keys.sort.each do |provider|
+    endpoints = grouped[provider].sort_by { |logical, _| logical }
+    content = render_resource(provider: provider, namespace: spec[:namespace], endpoints: endpoints)
+    file = File.join(target_dir, "#{snake(provider)}.rb")
+
+    if check
+      existing_content = File.exist?(file) ? File.read(file) : ''
+      drift = true if existing_content != content
+    else
+      File.write(file, content)
+    end
+  end
+
+  providers = grouped.keys.sort
+  unless check
+    update_client_dispatcher(client_path: client_path, namespace: spec[:namespace], providers: providers)
+  end
+
+  [providers, drift]
+end
+
+def update_client_dispatcher(client_path:, namespace:, providers:)
+  src = File.read(client_path)
+  marker_begin = '    # <scaffold:resources:begin>'
+  marker_end = '    # <scaffold:resources:end>'
+  dispatchers = providers.map do |p|
+    "    def #{snake(p)}\n      @#{snake(p)} ||= Resources::#{camel(p)}.new(self)\n    end"
+  end
+  requires = providers.map { |p| "require_relative 'resources/#{snake(p)}'" }
+
+  block = [marker_begin, *dispatchers, marker_end].join("\n")
+  requires_block = ["# <scaffold:requires:begin>", *requires, "# <scaffold:requires:end>"].join("\n")
+
+  if src.include?(marker_begin)
+    src.sub!(/#{Regexp.escape(marker_begin)}.*#{Regexp.escape(marker_end)}/m, block)
+  else
+    src.sub!(/^  end\n^end\n?\z/, "#{block}\n  end\nend\n")
+  end
+
+  if src.include?('# <scaffold:requires:begin>')
+    src.sub!(/# <scaffold:requires:begin>.*# <scaffold:requires:end>/m, requires_block)
+  else
+    src.sub!(/^require_relative 'resources\/[^']+'\n/, "#{requires_block}\n")
+  end
+
+  File.write(client_path, src)
+end
+
+options = { api: :entreprise, check: false }
+OptionParser.new do |opts|
+  opts.banner = 'Usage: bin/scaffold_resources [--api entreprise|particulier|all] [--check]'
+  opts.on('--api API', %w[entreprise particulier all]) { |v| options[:api] = v.to_sym }
+  opts.on('--check') { options[:check] = true }
+end.parse!
+
+targets = options[:api] == :all ? %i[entreprise particulier] : [options[:api]]
+drift = false
+
+targets.each do |api|
+  providers, d = scaffold(api: api, check: options[:check])
+  drift ||= d
+  puts "#{api}: #{providers.size} providers (#{providers.join(', ')})"
+end
+
+exit(drift ? 1 : 0) if options[:check]
