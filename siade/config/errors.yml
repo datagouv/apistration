@@ -130,6 +130,12 @@
   source:
     parameter: 'recipient'
 
+- code: '00212'
+  title: 'Entité non traitable'
+  detail: "Plusieurs délégations actives existent pour ce SIRET. Le paramètre delegation_id est requis pour identifier la délégation."
+  source:
+    parameter: 'delegation_id'
+
 - code: '00301'
   title: 'Entité non traitable'
   detail: "Le numéro de siren n'est pas correctement formatté"

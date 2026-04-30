@@ -27,11 +27,25 @@ class JwtTokenService
   end
 
   def enhance_jwt_data(jwt_data, decoded_token)
-    if internal_token?(decoded_token[:jti])
+    if decoded_token[:editor]
+      enhanced_jwt_data_for_editor_token(jwt_data, decoded_token)
+    elsif internal_token?(decoded_token[:jti])
       enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
     else
       enhanced_jwt_data_with_token_from_database(jwt_data, decoded_token)
     end
+  end
+
+  def enhanced_jwt_data_for_editor_token(jwt_data, decoded_token)
+    editor_token = EditorToken.find(decoded_token[:jti])
+    editor = editor_token.editor
+
+    jwt_data[:scopes] = []
+    jwt_data[:blacklisted] = editor_token.blacklisted?
+    jwt_data[:exp] = editor_token.exp
+    jwt_data[:editor_id] = editor.id
+
+    jwt_data
   end
 
   def enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
@@ -49,6 +63,7 @@ class JwtTokenService
     jwt_data[:blacklisted] = token.blacklisted?
     jwt_data[:exp] = token.exp
     jwt_data[:mcp] = jwt_data[:mcp] || token.mcp
+    jwt_data[:authorization_request_id] = token.authorization_request_model_id
 
     enrich_with_security_settings(jwt_data, token)
 

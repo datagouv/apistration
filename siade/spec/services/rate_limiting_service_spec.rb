@@ -6,8 +6,8 @@ RSpec.describe RateLimitingService do
     allow(req).to receive_messages(params: {}, env:)
   end
 
-  describe '#discriminate_by_jwt_for_endpoints' do
-    subject { described_class.new.discriminate_by_jwt_for_endpoints(req, endpoints) }
+  describe '#discriminate_by_authorization_request_for_endpoints' do
+    subject { described_class.new.discriminate_by_authorization_request_for_endpoints(req, endpoints) }
 
     let(:endpoints) do
       [
@@ -51,9 +51,13 @@ RSpec.describe RateLimitingService do
       end
     end
 
-    context 'with a resolved user' do
+    context 'with a resolved user having an authorization_request_id' do
+      let(:authorization_request_id) { 42 }
       let(:user) do
-        JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i)
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+          authorization_request_id:
+        )
       end
 
       before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
@@ -61,19 +65,73 @@ RSpec.describe RateLimitingService do
       context 'when the request path matches one of the endpoints in the list' do
         before { allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001") }
 
-        it { is_expected.to eq(Digest::SHA256.hexdigest(user.token_id)) }
+        it { is_expected.to eq(authorization_request_id) }
       end
 
       describe 'non-regression: dgfip v3 attestations_fiscales' do
         before { allow(req).to receive(:url).and_return("#{base_path}/v3/dgfip/unites_legales/301028346/liasses_fiscales/2017") }
 
-        it { is_expected.to eq(Digest::SHA256.hexdigest(user.token_id)) }
+        it { is_expected.to eq(authorization_request_id) }
       end
 
       context 'when the request path does not match any of the endpoints in the list' do
         before { allow(req).to receive(:url).and_return("#{base_path}/not/in/the/list") }
 
         it { is_expected.to be_nil }
+      end
+    end
+
+    context 'with a resolved user without authorization_request_id' do
+      let(:user) do
+        JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i)
+      end
+
+      before do
+        env[UserResolutionMiddleware::USER_ENV_KEY] = user
+        allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001")
+      end
+
+      it 'falls back to token identifier' do
+        expect(subject).to eq("token:#{user.token_id}")
+      end
+    end
+
+    context 'with an editor user having a resolved authorization_request_id' do
+      let(:editor_id) { SecureRandom.uuid }
+      let(:authorization_request_id) { 42 }
+      let(:user) do
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+          editor_id:, authorization_request_id:
+        )
+      end
+
+      before do
+        env[UserResolutionMiddleware::USER_ENV_KEY] = user
+        allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001")
+      end
+
+      it 'uses the resolved authorization request as discriminator' do
+        expect(subject).to eq(authorization_request_id)
+      end
+    end
+
+    context 'with an editor user without a resolved authorization request' do
+      let(:editor_id) { SecureRandom.uuid }
+      let(:user) do
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+          editor_id:
+        )
+      end
+
+      before do
+        env[UserResolutionMiddleware::USER_ENV_KEY] = user
+        allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001")
+      end
+
+      it 'falls back to the editor identifier' do
+        expect(subject).to eq("editor:#{editor_id}")
       end
     end
   end

@@ -11,6 +11,10 @@ class TokenFactory
     encode(payload(uid:, mcp:))
   end
 
+  def editor_valid(uid: default_uid)
+    encode(payload(uid:).merge(editor: true))
+  end
+
   def expired(uid: default_uid)
     encode(payload(uid:, exp: 1.year.ago.to_i))
   end

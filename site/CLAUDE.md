@@ -29,7 +29,7 @@ After each iteration:
 - **String Literals**: Single quotes for regular strings, double quotes for interpolation
 - **Method Length**: Keep under 15 lines when possible
 - **Naming**: Use snake_case for methods and variables, CamelCase for classes
-- **Testing**: RSpec, feature tests with Capybara
+- **Testing**: RSpec, feature tests with Capybara. Do NOT test ActiveRecord associations — only test custom behavior. Ensure factories are valid instead.
 - **Error Handling**: Use explicit error classes and meaningful error messages
 - **Database**: Follow Rails conventions, use strong_migrations for safe changes
 - **Indent Style**: 2 spaces, consistent indentation for multiline

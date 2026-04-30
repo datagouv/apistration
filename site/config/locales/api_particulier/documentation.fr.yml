@@ -301,7 +301,10 @@ fr:
 
                   - **Un plafond général par IP de 1000 requêtes/minute** ;
 
-                  - **Une volumétrie par jeton&nbsp;:** 20 requêtes/secondes.
+                  - **Une volumétrie par habilitation&nbsp;:** 20 requêtes/secondes.
+
+                  {:.fr-highlight}
+                  > ℹ️ Si une habilitation possède **plusieurs jetons** (par exemple un jeton classique et un jeton éditeur délégué), **la limite est partagée** entre tous&nbsp;: les appels de chaque jeton s'additionnent sur un même compteur.
 
                   #### Informations volumétrie dans le header
 

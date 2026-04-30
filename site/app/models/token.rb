@@ -1,19 +1,17 @@
 class Token < ApplicationRecord
+  include JwtTokenLifecycle
+
   self.ignored_columns += %w[authorization_request_id]
 
   belongs_to :authorization_request, foreign_key: 'authorization_request_model_id', inverse_of: :tokens
   has_many :prolong_token_wizards, inverse_of: :token, dependent: :destroy
-  validates :exp, presence: true
 
   scope :issued_in_last_seven_days, -> { where(created_at: 3.weeks.ago..1.week.ago) }
-  scope :unexpired, -> { where('exp > ?', Time.zone.now.to_i) }
   scope :expired, -> { where(exp: ...Time.zone.now.to_i) }
 
   scope :blacklisted, -> { where(blacklisted_at: ...Time.zone.now) }
   scope :blacklisted_later, -> { where('blacklisted_at > ?', Time.zone.now) }
-  scope :not_blacklisted, -> { blacklisted_later.or(where(blacklisted_at: nil)) }
 
-  scope :active, -> { not_blacklisted.unexpired }
   scope :inactive, -> { blacklisted.or(expired) }
   scope :active_for, ->(api) { distinct.active.joins(:authorization_request).where(authorization_request: { api: }).reorder(created_at: :desc) }
 
@@ -26,16 +24,8 @@ class Token < ApplicationRecord
   has_one :demandeur, through: :authorization_request
   delegate :contacts_no_demandeur, :archived?, to: :authorization_request
 
-  def rehash
-    AccessToken.create(jwt_data)
-  end
-
   def access_scopes
     scopes.pluck(:code)
-  end
-
-  def expired?
-    exp < Time.zone.now.to_i
   end
 
   def used?
@@ -44,10 +34,6 @@ class Token < ApplicationRecord
     result = !access_logs.where(timestamp: 30.days.ago..).limit(1).empty? || !access_logs.limit(1).empty?
     update(used: true) if result
     result
-  end
-
-  def active?
-    !blacklisted? && !expired?
   end
 
   delegate :api, to: :authorization_request
@@ -73,11 +59,6 @@ class Token < ApplicationRecord
 
   def legacy_token_migrated?
     extra_info['legacy_token_migrated'].present?
-  end
-
-  def blacklisted?
-    blacklisted_at.present? &&
-      blacklisted_at < Time.zone.now
   end
 
   def blacklisted_later?
