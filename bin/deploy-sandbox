@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<EOF
+Usage: $(basename "$0") <branch> [app]
+
+  branch  branche à déployer en sandbox
+  app     siade | site (défaut: les deux)
+EOF
+  exit 1
+}
+
+[[ $# -ge 1 && $# -le 2 ]] || usage
+
+branch=$1
+app=${2:-all}
+
+deploy() {
+  local script=$1
+  ssh watchdoge -- sudo "RAILS_APP_BRANCH=${branch}" -u ci_deploy "$script"
+}
+
+case "$app" in
+  siade)
+    deploy /usr/local/bin/rails_deploy_siadelibre_sandbox.sh
+    ;;
+  site)
+    deploy /usr/local/bin/rails_deploy_admin_apientreprise_sandbox.sh
+    ;;
+  *)
+    deploy /usr/local/bin/rails_deploy_siadelibre_sandbox.sh
+    deploy /usr/local/bin/rails_deploy_admin_apientreprise_sandbox.sh
+    ;;
+esac
