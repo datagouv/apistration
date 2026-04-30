@@ -1,0 +1,44 @@
+name: "Clients Ruby"
+
+on:
+  push:
+    paths:
+      - 'clients/ruby/**'
+      - 'commons/swagger/**'
+      - '.github/workflows/clients-ruby.yml'
+
+jobs:
+  rspec:
+    name: RSpec (Ruby ${{ matrix.ruby }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['3.2', '3.3', '4.0']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: commons
+        working-directory: clients/ruby/commons
+        run: bundle install && bundle exec rspec
+      - name: api_entreprise
+        working-directory: clients/ruby/api_entreprise
+        run: bundle install && bundle exec rspec
+      - name: api_particulier
+        working-directory: clients/ruby/api_particulier
+        run: bundle install && bundle exec rspec
+
+  freshness:
+    name: sync_commons & scaffold_resources freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Verify vendored commons is up to date
+        run: clients/ruby/bin/sync_commons --check
+      - name: Verify scaffolded resources are up to date
+        run: clients/ruby/bin/scaffold_resources --api all --check
