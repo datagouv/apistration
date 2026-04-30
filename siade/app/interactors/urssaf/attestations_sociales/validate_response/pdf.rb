@@ -1,4 +1,6 @@
 class URSSAF::AttestationsSociales::ValidateResponse::PDF < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     Base64.strict_decode64(context.response.body)
   rescue ArgumentError

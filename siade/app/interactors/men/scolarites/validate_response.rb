@@ -1,4 +1,6 @@
 class MEN::Scolarites::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     resource_not_found! if http_not_found?
     scolarite_not_found! if no_scolarite?

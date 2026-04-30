@@ -1,4 +1,6 @@
 class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
   def call
     resource_not_found! if [204, 404].include?(http_code)

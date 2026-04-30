@@ -1,4 +1,7 @@
 class CNAV::ValidateResponse < ValidateResponse
+  raises UnprocessableEntityError, field: :sngi
+  raises UnprocessableEntityError, field: :civility
+
   def call
     resource_not_found! if http_not_found?
     unprocessable_entity_error! if http_bad_request?

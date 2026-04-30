@@ -1,4 +1,6 @@
 class DGFIP::LiassesFiscales::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     if http_unavailable?
       provider_unavailable!

@@ -1,4 +1,6 @@
 class Infogreffe::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     return if http_ok? && payload_has_siren?
 

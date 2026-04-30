@@ -1,4 +1,6 @@
 class DGFIP::LiensCapitalistiques::ValidateResponse < DGFIP::LiassesFiscales::ValidateResponse
+  declares_no_specific_errors!
+
   def call
     super
 

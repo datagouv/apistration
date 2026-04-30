@@ -1,4 +1,6 @@
 class DGFIP::ChiffresAffaires::ValidateResponse < DGFIP::ValidateResponse
+  declares_no_specific_errors!
+
   def call
     handle_errors
 

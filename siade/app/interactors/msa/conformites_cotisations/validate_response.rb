@@ -1,4 +1,6 @@
 class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   class InvalidStatus < StandardError; end
 
   def call

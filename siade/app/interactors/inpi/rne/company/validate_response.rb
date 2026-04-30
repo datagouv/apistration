@@ -1,4 +1,6 @@
 class INPI::RNE::Company::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     resource_not_found! if http_not_found?
     provider_unavailable! if http_ok? && invalid_json?

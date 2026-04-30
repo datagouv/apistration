@@ -1,4 +1,6 @@
 class INPI::RNE::BeneficiairesEffectifs::ValidateResponse < INPI::RNE::Company::ValidateResponse
+  declares_no_specific_errors!
+
   def call
     super
 

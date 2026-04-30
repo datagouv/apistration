@@ -1,4 +1,6 @@
 class OPQIBI::CertificationsIngenierie::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     return if http_ok?
 

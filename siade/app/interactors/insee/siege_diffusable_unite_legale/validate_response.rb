@@ -1,4 +1,6 @@
 class INSEE::SiegeDiffusableUniteLegale::ValidateResponse < INSEE::SiegeUniteLegale::ValidateResponse
+  declares_no_specific_errors!
+
   private
 
   def validate_ok_response

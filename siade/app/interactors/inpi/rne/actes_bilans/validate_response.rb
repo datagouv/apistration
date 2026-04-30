@@ -1,4 +1,6 @@
 class INPI::RNE::ActesBilans::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   # rubocop:disable Metrics/CyclomaticComplexity
   def call
     resource_not_found! if (http_ok? && json_body.empty?) || http_not_found?

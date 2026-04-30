@@ -1,4 +1,6 @@
 class Infogreffe::MandatairesSociaux::ValidateResponse < Infogreffe::ValidateResponse
+  declares_no_specific_errors!
+
   include Infogreffe::Concerns::MandatairesSociaux
 
   def call
