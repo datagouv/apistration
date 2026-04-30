@@ -8,39 +8,42 @@ module ValidateResponseEmissionGuard
     [NotFoundError]
   ).freeze
 
-  def self.instrument(validator_class)
-    return if INSTRUMENTED.include?(validator_class)
-
-    INSTRUMENTED << validator_class
-
-    validator_class.prepend(
-      Module.new do
-        define_method(:fail_with_error!) do |error|
-          kind = (error.instance_variable_get(:@kind) if error.instance_variables.include?(:@kind))
-          ValidateResponseEmissionGuard::EMISSIONS[self.class] << [error.class, kind]
-          super(error)
-        end
-      end
-    )
+  Tracker = Module.new do
+    def fail_with_error!(error)
+      kind = error.instance_variable_get(:@kind) if error.instance_variable_defined?(:@kind)
+      EMISSIONS[self.class] << [error.class, kind]
+      super
+    end
   end
 
-  def self.verify!(validator_class) # rubocop:disable Metrics/AbcSize
-    declared = ErrorRegistry
-      .declarations_for(validator_class)
-      .to_set { |decl| [decl.error_class, decl.options[:kind]] }
+  def self.instrument(validator_class)
+    validator_class.prepend(Tracker) if INSTRUMENTED.add?(validator_class)
+  end
 
+  def self.verify!(validator_class)
+    declared = declared_set(validator_class)
     return if declared.empty?
 
     emitted = EMISSIONS[validator_class]
-
-    not_emitted = declared - emitted
-    undeclared = emitted.reject { |klass, _kind| UNIVERSAL_ERRORS.include?(klass) }.to_set - declared # rubocop:disable Style/HashExcept
-
-    failures = []
-    failures << "[#{validator_class}] declared via raises but never emitted in spec: #{not_emitted.to_a.inspect}" if not_emitted.any?
-    failures << "[#{validator_class}] emitted but not declared via raises (and not part of the universal baseline): #{undeclared.to_a.inspect}" if undeclared.any?
-
+    failures = format_failures(validator_class, declared - emitted, undeclared_extras(emitted, declared))
     raise failures.join("\n") if failures.any?
+  end
+
+  def self.declared_set(validator_class)
+    ErrorRegistry
+      .declarations_for(validator_class)
+      .to_set { |decl| [decl.error_class, decl.options[:kind]] }
+  end
+
+  def self.undeclared_extras(emitted, declared)
+    (emitted - declared).reject { |entry| UNIVERSAL_ERRORS.include?(entry.first) }
+  end
+
+  def self.format_failures(validator_class, missing, extra)
+    failures = []
+    failures << "[#{validator_class}] declared via raises but never emitted in spec: #{missing.to_a.inspect}" if missing.any?
+    failures << "[#{validator_class}] emitted but not declared via raises (and not part of the universal baseline): #{extra.inspect}" if extra.any?
+    failures
   end
 end
 
