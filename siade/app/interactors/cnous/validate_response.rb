@@ -1,4 +1,8 @@
 class CNOUS::ValidateResponse < ValidateResponse
+  raises ProviderConflictError
+  raises UnprocessableEntityError, field: :ine
+  raises UnprocessableEntityError, field: :civility
+
   # rubocop:disable Metrics/CyclomaticComplexity
   def call
     resource_not_found! if http_not_found?

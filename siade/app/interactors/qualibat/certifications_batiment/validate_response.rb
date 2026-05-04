@@ -1,4 +1,6 @@
 class QUALIBAT::CertificationsBatiment::ValidateResponse < ValidateResponse
+  raises BadFileFromProviderError, kind: :empty_file
+
   def call
     internal_server_error! if http_internal_error?
     resource_not_found! if http_not_found? || json_has_errors?

@@ -9,8 +9,20 @@ class ErrorRegistry
       decl
     end
 
+    def mark_guarded(validator_class)
+      declarations[validator_class] ||= []
+    end
+
+    def guarded?(validator_class)
+      validator_class.ancestors.any? { |klass| declarations.key?(klass) }
+    end
+
     def declarations_for(validator_class)
       validator_class.ancestors.flat_map { |klass| declarations.fetch(klass, []) }.uniq
+    end
+
+    def direct_declarations_for(validator_class)
+      declarations.fetch(validator_class, [])
     end
 
     def declarations_for_organizer(organizer_class)
@@ -21,7 +33,7 @@ class ErrorRegistry
       target = http_status.to_i
 
       declarations_for_organizer(organizer_class).filter_map do |decl|
-        example = decl.error_class.build_example(provider_name:, kind: decl.options[:kind])
+        example = decl.error_class.build_example(provider_name:, **decl.options)
         next unless status_code(example) == target
 
         example

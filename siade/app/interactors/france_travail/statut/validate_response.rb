@@ -1,4 +1,6 @@
 class FranceTravail::Statut::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     resource_not_found! if http_not_found? || http_code == 206
     handle_timeout! if france_travail_timeout?

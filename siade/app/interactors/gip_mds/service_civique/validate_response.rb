@@ -1,4 +1,6 @@
 class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
+  raises UnprocessableEntityError, field: :gip_mds_too_many_individus
+
   def call
     monitor_multiple_contracts if multiple_contracts?
 

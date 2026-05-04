@@ -1,4 +1,6 @@
 class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateResponse
+  declares_no_specific_errors!
+
   def call
     super
 

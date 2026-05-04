@@ -1,4 +1,6 @@
 class ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     unknown_provider_response! if http_internal_error?
 

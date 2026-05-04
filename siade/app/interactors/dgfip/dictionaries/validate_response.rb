@@ -1,4 +1,6 @@
 class DGFIP::Dictionaries::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     unknown_provider_response! unless http_ok? && dictionary_in_body?
   end

@@ -1,4 +1,6 @@
 class INPI::RNE::Download::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     return if http_ok?
 

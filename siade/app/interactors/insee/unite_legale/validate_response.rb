@@ -1,4 +1,6 @@
 class INSEE::UniteLegale::ValidateResponse < INSEE::ValidateResponse
+  raises ::UnavailableForLegalReasonsError
+
   private
 
   def handle_forbidden!

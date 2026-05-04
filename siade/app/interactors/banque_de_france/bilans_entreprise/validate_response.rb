@@ -1,4 +1,6 @@
 class BanqueDeFrance::BilansEntreprise::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     internal_server_error! if provider_internal_error?
 

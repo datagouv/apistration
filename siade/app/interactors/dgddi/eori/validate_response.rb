@@ -1,4 +1,6 @@
 class DGDDI::EORI::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     return if http_ok?
 

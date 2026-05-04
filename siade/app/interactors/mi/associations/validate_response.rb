@@ -1,4 +1,6 @@
 class MI::Associations::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     check_body_integrity!
 

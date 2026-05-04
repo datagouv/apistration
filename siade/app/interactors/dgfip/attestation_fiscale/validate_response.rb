@@ -1,4 +1,6 @@
 class DGFIP::AttestationFiscale::ValidateResponse < DGFIP::ValidateResponse
+  declares_no_specific_errors!
+
   def call
     resource_not_found! if http_not_found? || pdf_not_delivered?
     temporary_error! if runtime_error?

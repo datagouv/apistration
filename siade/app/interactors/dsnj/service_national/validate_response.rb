@@ -1,4 +1,6 @@
 class DSNJ::ServiceNational::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     unknown_provider_response! if !return_code_ok? || json_body['results'].many?
 

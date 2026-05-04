@@ -21,18 +21,17 @@ module ValidateResponseEmissionGuard
   end
 
   def self.verify!(validator_class)
-    declared = declared_set(validator_class)
-    return if declared.empty?
+    return unless ErrorRegistry.guarded?(validator_class)
 
+    direct = declared_set(ErrorRegistry.direct_declarations_for(validator_class))
+    inherited = declared_set(ErrorRegistry.declarations_for(validator_class))
     emitted = EMISSIONS[validator_class]
-    failures = format_failures(validator_class, declared - emitted, undeclared_extras(emitted, declared))
+    failures = format_failures(validator_class, direct - emitted, undeclared_extras(emitted, inherited))
     raise failures.join("\n") if failures.any?
   end
 
-  def self.declared_set(validator_class)
-    ErrorRegistry
-      .declarations_for(validator_class)
-      .to_set { |decl| [decl.error_class, decl.options[:kind]] }
+  def self.declared_set(declarations)
+    declarations.to_set { |decl| [decl.error_class, decl.options[:kind]] }
   end
 
   def self.undeclared_extras(emitted, declared)

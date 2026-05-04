@@ -1,4 +1,6 @@
 class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     matching_identity = find_matching_identity
 

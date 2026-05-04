@@ -1,4 +1,6 @@
 class ADEME::CertificatsRGE::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     unknown_provider_response! unless http_ok?
 

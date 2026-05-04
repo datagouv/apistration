@@ -1,4 +1,6 @@
 class INSEE::EtablissementDiffusable::ValidateResponse < INSEE::Etablissement::ValidateResponse
+  declares_no_specific_errors!
+
   private
 
   def validate_ok_response
