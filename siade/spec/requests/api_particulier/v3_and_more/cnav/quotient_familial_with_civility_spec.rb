@@ -27,7 +27,6 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           nomNaissance
           prenoms
           sexeEtatCivil
-          codeCogInseePaysNaissance
         ],
         api: 'cnav'
       )

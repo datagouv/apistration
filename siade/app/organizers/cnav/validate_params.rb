@@ -2,7 +2,7 @@ class CNAV::ValidateParams < ValidateParamsOrganizer
   organize ValidateRecipient,
     CNAV::ValidateSexeEtatCivil,
     CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams,
-    Civility::ValidateCodeCogINSEEPaysNaissance,
+    CNAV::ValidateCodeCogINSEEPaysNaissance,
     CNAV::ValidateDateNaissance,
     CNAV::ValidateRequestId,
     CNAV::ValidatePrenoms,

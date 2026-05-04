@@ -853,7 +853,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -1696,7 +1696,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -2570,7 +2570,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -3417,7 +3417,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -4280,7 +4280,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -5410,7 +5410,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -6423,7 +6423,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:
@@ -7740,7 +7740,7 @@ paths:
 
           - Code Insee France = 99100 ;
           - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
-        required: true
+        required: false
       - name: codeCogInseeCommuneNaissance
         in: query
         schema:

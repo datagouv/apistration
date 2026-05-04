@@ -27,7 +27,6 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
           nomNaissance
           prenoms
           sexeEtatCivil
-          codeCogInseePaysNaissance
         ],
         api: 'cnav'
       )
