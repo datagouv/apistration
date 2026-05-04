@@ -208,6 +208,9 @@ fiche:
 
           {:.fr-highlight}
           > **Le code COG du pays de naissance est obligatoire pour tous les appels.** Pour simplifier le parcours des usagers, évitez de demander aux particuliers nés en France de saisir leur pays de naissance, puisque vous pouvez le paramétrer directement -code COG pays France `99100`-, dès qu'un particuloer renseigne les informations de sa commune de naissance (forcément en France).
+      - q: Comment connaître la caisse de rattachement (CNAF, MSA, RNCPS) en cas de 404 ?
+        a: |+
+          En cas de réponse 404 _(dossier allocataire absent)_, la caisse effectivement interrogée est indiquée dans le champ `meta.provider` de la réponse. Sa valeur peut être `CNAF`, `MSA` ou `RNCPS` selon la caisse de rattachement de l'allocataire.
 
     historique: |+
       **Ce que change le passage à la V.3 d'API Particulier:**

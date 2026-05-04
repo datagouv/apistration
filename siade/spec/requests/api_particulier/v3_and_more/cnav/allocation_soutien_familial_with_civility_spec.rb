@@ -96,12 +96,12 @@ RSpec.describe 'API Particulier CNAV: allocation soutien familial with civility'
         describe 'when the asf is not found' do
           # rubocop:disable RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            build_dossier_allocataire_absent_rswag_example
+
             context 'Dossier non trouvé MSA' do
               before do
                 stub_cnav_404('allocation_soutien_familial', 'MSA')
               end
-
-              build_rswag_example(NotFoundError.new('MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 
@@ -112,8 +112,6 @@ RSpec.describe 'API Particulier CNAV: allocation soutien familial with civility'
               before do
                 stub_cnav_404('allocation_soutien_familial', 'CNAF')
               end
-
-              build_rswag_example(NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 
