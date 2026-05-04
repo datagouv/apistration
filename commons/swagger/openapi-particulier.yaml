@@ -1074,32 +1074,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -1435,32 +1422,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -1932,32 +1906,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -2309,32 +2270,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -2793,32 +2741,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -3156,32 +3091,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -3661,19 +3583,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_rncps_40003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '40003'
-                      title: Dossier allocataire absent RNCPS
-                      detail: Le dossier allocataire n'a pas été trouvé auprès du
-                        RNCPS.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: RNCPS
-                  summary: Dossier allocataire absent RNCPS
-                  description: Le dossier allocataire n'a pas été trouvé auprès du
-                    RNCPS.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_40003:
                   value:
                     errors:
@@ -4032,19 +3954,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_rncps_40003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '40003'
-                      title: Dossier allocataire absent RNCPS
-                      detail: Le dossier allocataire n'a pas été trouvé auprès du
-                        RNCPS
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: RNCPS
-                  summary: Dossier allocataire absent RNCPS
-                  description: Le dossier allocataire n'a pas été trouvé auprès du
-                    RNCPS
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -5642,32 +5564,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -6014,32 +5923,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -7972,32 +7868,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:
@@ -8344,32 +8227,19 @@ paths:
           content:
             application/json:
               examples:
-                dossier_allocataire_absent_msa_10003:
+                dossier_allocataire_absent:
                   value:
                     errors:
-                    - code: '10003'
-                      title: Dossier allocataire absent MSA
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la MSA.
+                    - code: '36003'
+                      title: Dossier allocataire absent
+                      detail: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                        de données est précisé dans 'meta.provider'.
                       source:
                       meta:
-                        provider: MSA
-                  summary: Dossier allocataire absent MSA
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la MSA.
-                dossier_allocataire_absent_cnaf_23003:
-                  value:
-                    errors:
-                    - code: '23003'
-                      title: Dossier allocataire absent CNAF
-                      detail: Le dossier allocataire n'a pas été trouvé auprès de
-                        la CNAF.
-                      source:
-                      meta:
-                        provider: CNAF
-                  summary: Dossier allocataire absent CNAF
-                  description: Le dossier allocataire n'a pas été trouvé auprès de
-                    la CNAF.
+                        provider: Sécurité sociale
+                  summary: Dossier allocataire absent
+                  description: Le dossier allocataire n'a pas été trouvé. Le fournisseur
+                    de données est précisé dans 'meta.provider'.
                 allocataire_non_reference_35003:
                   value:
                     errors:

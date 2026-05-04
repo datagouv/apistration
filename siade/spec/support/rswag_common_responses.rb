@@ -106,6 +106,28 @@ module RSwagCommonResponses
   end
 
   # rubocop:disable Metrics/MethodLength
+  def build_dossier_allocataire_absent_rswag_example
+    title = 'Dossier allocataire absent'
+    detail = "Le dossier allocataire n'a pas été trouvé. Le fournisseur de données est précisé dans 'meta.provider'."
+
+    example 'application/json', :dossier_allocataire_absent,
+      {
+        errors: [
+          {
+            code: '36003',
+            title:,
+            detail:,
+            source: nil,
+            meta: { provider: 'Sécurité sociale' }
+          }
+        ]
+      },
+      title,
+      detail
+  end
+  # rubocop:enable Metrics/MethodLength
+
+  # rubocop:disable Metrics/MethodLength
   def build_rswag_example(error, key = nil)
     payload = if metadata[:api] == :particulierv2
                 {

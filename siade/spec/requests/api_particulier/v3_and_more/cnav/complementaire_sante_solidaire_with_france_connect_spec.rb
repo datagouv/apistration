@@ -62,12 +62,12 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
         describe 'when the css is not found' do
           # rubocop:disable RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            build_dossier_allocataire_absent_rswag_example
+
             context 'Dossier non trouvé RNCPS' do
               before do
                 stub_cnav_404('complementaire_sante_solidaire', 'RNCPS')
               end
-
-              build_rswag_example(NotFoundError.new('RNCPS', "Le dossier allocataire n'a pas été trouvé auprès du RNCPS", title: 'Dossier allocataire absent RNCPS', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 
