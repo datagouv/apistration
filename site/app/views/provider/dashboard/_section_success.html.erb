@@ -1,0 +1,46 @@
+<%# locals: (query:, filter:) -%>
+<%
+  fmt = ->(b) { dashboard_bucket_label(b, filter.interval) }
+  breakdown = query.success_breakdown
+  total = [breakdown[:total], 1].max.to_f
+  metrics = %i[success not_found errors]
+%>
+<section class="fr-mt-4w">
+  <h2><%= t('.title') %></h2>
+  <p><%= t('.description') %></p>
+
+  <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+    <% metrics.each do |k| %>
+      <%= render 'shared/dsfr_chart/kpi',
+        label: t("provider.dashboard.show.kpis.#{k}"),
+        value: number_with_delimiter(breakdown[k]) %>
+    <% end %>
+  </div>
+  <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+    <% metrics.each do |k| %>
+      <%= render 'shared/dsfr_chart/kpi',
+        label: t("provider.dashboard.show.kpis.#{k}_pct"),
+        value: number_to_percentage(100.0 * breakdown[k] / total, precision: 2) %>
+    <% end %>
+  </div>
+
+  <%= render 'shared/dsfr_chart/bar',
+    title: t('.charts.evolution_success'),
+    categories: query.evolution_success.map { |r| fmt.call(r[:bucket]) },
+    series: metrics.map { |k|
+      { label: t("provider.dashboard.show.kpis.#{k}"),
+        values: query.evolution_success.map { |r| r[k] } }
+    },
+    stacked: true,
+    palette: 'divergentDescending' %>
+
+  <%= render 'shared/dsfr_chart/bar',
+    title: t('.charts.success_per_endpoint'),
+    categories: query.success_per_endpoint.map { |r| r[:endpoint] },
+    series: metrics.map { |k|
+      { label: t("provider.dashboard.show.kpis.#{k}"),
+        values: query.success_per_endpoint.map { |r| r[k] } }
+    },
+    stacked: true,
+    palette: 'divergentDescending' %>
+</section>

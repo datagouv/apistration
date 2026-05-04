@@ -1,0 +1,34 @@
+<div class="fr-table fr-table--bordered fr-table--layout-fixed">
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.datapass_id') %></th>
+        <th><%= t('.intitule') %></th>
+        <th><%= t('.siret') %></th>
+        <th><%= t('.denomination') %></th>
+        <th><%= t('.email') %></th>
+        <th><%= t('.status') %></th>
+        <th><%= t('.scopes') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if habilitations.empty? %>
+        <tr><td colspan="7"><%= t('.empty') %></td></tr>
+      <% else %>
+        <% habilitations.each do |h| %>
+          <tr>
+            <td>
+              <%= link_to h[:external_id], "https://api-entreprise.v2.datapass.api.gouv.fr/public/demandes/#{h[:public_id]}", target: '_blank', rel: 'noopener' %>
+            </td>
+            <td><%= h[:intitule] %></td>
+            <td><%= h[:siret] %></td>
+            <td><%= h[:denomination] %></td>
+            <td><%= h[:email] %></td>
+            <td><%= t(".statuses.#{h[:status]}", default: h[:status]) %></td>
+            <td><%= Array(h[:scopes]).join(', ') %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

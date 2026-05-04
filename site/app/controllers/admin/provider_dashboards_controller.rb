@@ -1,11 +1,13 @@
 class Admin::ProviderDashboardsController < AdminController
+  include ProviderDashboardFiltering
+
   def index
     @providers = provider_klass.all
   end
 
   def show
     @provider = provider_klass.find(params[:id])
-    @stats_facade = ProviderStatsFacade.new(@provider)
+    build_dashboard(@provider)
 
     render 'provider/dashboard/show'
   end

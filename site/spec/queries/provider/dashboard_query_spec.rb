@@ -2,7 +2,7 @@ RSpec.describe Provider::DashboardQuery do
   subject(:query) { described_class.new(provider, filter) }
 
   let(:provider) { APIEntreprise::Provider.find('insee') }
-  let(:filter) { Provider::DashboardFilter.new(provider) }
+  let(:filter) { Provider::DashboardFilter.new(provider, 'entreprise') }
 
   let(:insee_etablissements) { 'api_entreprise/v3_and_more/insee/etablissements' }
   let(:insee_unites) { 'api_entreprise/v3_and_more/insee/unites_legales' }
@@ -30,17 +30,17 @@ RSpec.describe Provider::DashboardQuery do
     end
 
     it 'ignores filter.routes outside the provider scope (cross-provider leakage guard)' do
-      foreign = Provider::DashboardFilter.new(provider, routes: [dgfip_chiffres])
+      foreign = Provider::DashboardFilter.new(provider, 'entreprise', routes: [dgfip_chiffres])
       expect(described_class.new(provider, foreign).total_calls).to eq(0)
     end
 
     it 'narrows when filter.routes intersects the provider scope' do
-      narrow = Provider::DashboardFilter.new(provider, routes: [insee_etablissements])
+      narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [insee_etablissements])
       expect(described_class.new(provider, narrow).total_calls).to eq(3)
     end
 
     it 'excludes calls outside the date range' do
-      old = Provider::DashboardFilter.new(provider, date_from: 2.months.ago.to_date, date_to: 2.months.ago.to_date)
+      old = Provider::DashboardFilter.new(provider, 'entreprise', date_from: 2.months.ago.to_date, date_to: 2.months.ago.to_date)
       expect(described_class.new(provider, old).total_calls).to eq(0)
     end
   end

@@ -1,4 +1,6 @@
 class Provider::DashboardController < ProviderController
+  include ProviderDashboardFiltering
+
   before_action :user_is_provider?, only: [:index]
   before_action :user_is_current_provider?, only: [:show]
 
@@ -11,6 +13,6 @@ class Provider::DashboardController < ProviderController
   end
 
   def show
-    @stats_facade = ProviderStatsFacade.new(current_provider)
+    build_dashboard(current_provider)
   end
 end

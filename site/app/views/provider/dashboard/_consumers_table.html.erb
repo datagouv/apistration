@@ -1,0 +1,34 @@
+<div class="fr-table fr-table--bordered fr-table--layout-fixed">
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.datapass_id') %></th>
+        <th><%= t('.intitule') %></th>
+        <th><%= t('.email') %></th>
+        <th><%= t('.siret') %></th>
+        <th><%= t('.denomination') %></th>
+        <th class="fr-text--right"><%= t('.total') %></th>
+        <th class="fr-text--right"><%= t('.unique') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if consumers.empty? %>
+        <tr><td colspan="7"><%= t('.empty') %></td></tr>
+      <% else %>
+        <% consumers.each do |c| %>
+          <tr>
+            <td>
+              <%= link_to c[:external_id], "https://api-entreprise.v2.datapass.api.gouv.fr/public/demandes/#{c[:public_id]}", target: '_blank', rel: 'noopener' %>
+            </td>
+            <td><%= c[:intitule] %></td>
+            <td><%= c[:email] %></td>
+            <td><%= c[:siret] %></td>
+            <td><%= c[:denomination] %></td>
+            <td class="fr-text--right"><%= number_with_delimiter(c[:total]) %></td>
+            <td class="fr-text--right"><%= number_with_delimiter(c[:unique]) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

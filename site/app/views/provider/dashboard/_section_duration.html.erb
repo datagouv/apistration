@@ -1,0 +1,28 @@
+<%# locals: (query:, filter:) -%>
+<%
+  fmt = ->(b) { dashboard_bucket_label(b, filter.interval) }
+  avg_label = t('provider.dashboard.show.kpis.avg_duration')
+%>
+<section class="fr-mt-4w">
+  <h2><%= t('.title') %></h2>
+  <p><%= t('.description') %></p>
+
+  <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+    <%= render 'shared/dsfr_chart/kpi',
+      label: avg_label,
+      value: t('provider.dashboard.show.kpis.ms', value: query.avg_duration.to_i) %>
+  </div>
+
+  <%= render 'shared/dsfr_chart/line',
+    title: t('.charts.evolution'),
+    series: [{ label: avg_label,
+               points: query.avg_duration_evolution.map { |p| [fmt.call(p[:bucket]), p[:value].round(2)] } }],
+    unit: 'ms' %>
+
+  <%= render 'shared/dsfr_chart/bar',
+    title: t('.charts.per_endpoint'),
+    categories: query.avg_duration_per_endpoint.map { |r| r[:endpoint] },
+    series: [{ label: avg_label,
+               values: query.avg_duration_per_endpoint.map { |r| r[:value].round(2) } }],
+    unit: 'ms' %>
+</section>

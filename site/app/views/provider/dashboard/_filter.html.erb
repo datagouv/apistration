@@ -1,0 +1,44 @@
+<%= form_with model: filter, scope: :filter, method: :get, url: request.path, local: true, class: 'fr-mb-3w' do |f| %>
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-3">
+      <div class="fr-input-group">
+        <%= f.label :date_from, t('.date_from'), class: 'fr-label' %>
+        <%= f.date_field :date_from, class: 'fr-input' %>
+      </div>
+    </div>
+    <div class="fr-col-12 fr-col-md-3">
+      <div class="fr-input-group">
+        <%= f.label :date_to, t('.date_to'), class: 'fr-label' %>
+        <%= f.date_field :date_to, class: 'fr-input' %>
+      </div>
+    </div>
+    <div class="fr-col-12 fr-col-md-3">
+      <div class="fr-select-group">
+        <%= f.label :interval, t('.interval'), class: 'fr-label' %>
+        <%= f.select :interval, Provider::DashboardFilter::INTERVALS.map { |i| [t(".intervals.#{i}"), i] }, {}, class: 'fr-select' %>
+      </div>
+    </div>
+  </div>
+
+  <% if filter.endpoint_options.any? %>
+    <fieldset class="fr-fieldset fr-mt-2w" id="filter-routes">
+      <legend class="fr-fieldset__legend fr-text--regular"><%= t('.routes') %></legend>
+      <%= hidden_field_tag 'filter[routes][]', '' %>
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <% filter.endpoint_options.each_with_index do |(value, label), idx| %>
+          <div class="fr-col-12 fr-col-md-6">
+            <div class="fr-checkbox-group">
+              <%= check_box_tag 'filter[routes][]', value, filter.route_checked?(value), id: "filter_route_#{idx}" %>
+              <label class="fr-label" for="filter_route_<%= idx %>"><%= label %></label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <ul class="fr-btns-group fr-btns-group--inline-md fr-mt-2w">
+    <li><%= f.submit t('.apply'), class: 'fr-btn' %></li>
+    <li><%= link_to t('.reset'), request.path, class: 'fr-btn fr-btn--secondary' %></li>
+  </ul>
+<% end %>

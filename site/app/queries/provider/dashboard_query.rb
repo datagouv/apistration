@@ -202,8 +202,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def requested_controllers
-    return nil if filter.routes.blank? && provider_controllers.empty?
-    return provider_controllers if filter.routes.blank?
+    return nil if !filter.routes_submitted? && provider_controllers.empty?
+    return provider_controllers unless filter.routes_submitted?
 
     @requested_controllers ||= filter.routes & provider_controllers
   end
@@ -231,17 +231,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def provider_controllers
-    @provider_controllers ||= provider_endpoints.filter_map(&:controller).uniq
-  end
-
-  def provider_endpoints
-    @provider_endpoints ||= endpoint_klass.all.select { |e| e.provider_uids.to_a.include?(provider.uid) }
-  rescue NameError
-    []
-  end
-
-  def endpoint_klass
-    Kernel.const_get("#{provider.class.name.split('::').first}::Endpoint")
+    @provider_controllers ||= filter.provider_endpoints.filter_map(&:controller).uniq
   end
 
   def date_trunc_sql
@@ -253,7 +243,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def endpoint_titles
-    @endpoint_titles ||= provider_endpoints
+    @endpoint_titles ||= filter.provider_endpoints
       .filter_map { |e| [e.controller, e.title] if e.controller.present? }
       .uniq(&:first)
       .to_h
@@ -268,10 +258,6 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def filter_apis
-    case provider.class.name
-    when 'APIEntreprise::Provider' then ['entreprise']
-    when 'APIParticulier::Provider' then ['particulier']
-    else AuthorizationRequest.distinct.pluck(:api)
-    end
+    [filter.api.to_s]
   end
 end
