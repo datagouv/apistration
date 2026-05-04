@@ -1,15 +1,15 @@
 shared:
-  start: "2025-04-22 00:00"
-  end: "2025-04-23 19:30"
+  start: "2025-05-04 00:00"
+  end: "2025-05-04 23:30"
   title: "title"
   description: "description"
 production:
   start: "2026-04-24 00:00"
   end: "2026-04-27 19:30"
-  title: "Maintenance ProConnect le lundi 27 avril 2026 à 18h00"
+  title: "Maintenance ProConnect le lundi 4 mai 2026 à 19h00"
   description: "Une opération de maintenance sera effectuée par ProConnect,
     le service de connexion à API Entreprise et API Particulier,
-    le lundi 27 avril 2026 à partir de 18h00. Aucune connexion ne sera
+    le lundi 4 mai 2026 à partir de 19h00. Aucune connexion ne sera
     possible alors, et ce pour une durée d’1h environ : nous vous
     conseillons de ne pas utiliser le service durant ce laps de temps,
     afin d’éviter tout désagrément."
