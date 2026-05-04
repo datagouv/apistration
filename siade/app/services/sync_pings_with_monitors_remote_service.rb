@@ -1,8 +1,6 @@
 class SyncPingsWithMonitorsRemoteService
   def perform
-    return if in_progress?
-
-    mark_as_in_progress!
+    return unless acquire_lock!
 
     logger.info('Start syncing pings with monitors')
 
@@ -14,7 +12,7 @@ class SyncPingsWithMonitorsRemoteService
       end
     end
 
-    clear_in_progress!
+    release_lock!
 
     logger.info('End syncing pings with monitors')
   end
@@ -102,15 +100,11 @@ class SyncPingsWithMonitorsRemoteService
     @logger ||= ActiveSupport::TaggedLogging.new(Logger.new(Rails.root.join('log/hyperping.log')))
   end
 
-  def in_progress?
-    Rails.cache.read('sync_pings_with_monitors_in_progress').present?
+  def acquire_lock!
+    Rails.cache.write('sync_pings_with_monitors_in_progress', true, unless_exist: true, expires_in: 1.hour)
   end
 
-  def mark_as_in_progress!
-    Rails.cache.write('sync_pings_with_monitors_in_progress', true, expires_in: 1.hour)
-  end
-
-  def clear_in_progress!
+  def release_lock!
     Rails.cache.delete('sync_pings_with_monitors_in_progress')
   end
 
