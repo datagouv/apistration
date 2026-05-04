@@ -2,6 +2,7 @@
 fiche:
   - uid: 'infogreffe/rcs/extrait'
     path: '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
+    controller: 'api_entreprise/v3_and_more/infogreffe/extraits_rcs'
     ping_url: 'https://entreprise.api.gouv.fr/ping/infogreffe/rcs'
     position: 110
     perimeter:

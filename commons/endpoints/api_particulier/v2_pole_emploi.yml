@@ -5,6 +5,7 @@ fiche:
     new_endpoint_uids: 
       - 'pole_emploi/situation'
     path: '/api/v2/situations-pole-emploi'
+    controller: 'api_particulier/v2/pole_emploi/statut'
     ping_url: 'https://particulier.api.gouv.fr/api/pole_emploi_status/ping'
     position: 501
     perimeter:
@@ -86,6 +87,7 @@ fiche:
     new_endpoint_uids: 
       - 'pole_emploi/indemnites'
     path: '/api/v2/paiements-pole-emploi'
+    controller: 'api_particulier/v2/pole_emploi/indemnites'
     
     ping_url: 'https://particulier.api.gouv.fr/api/pole_emploi_indemnites/ping'
     position: 502

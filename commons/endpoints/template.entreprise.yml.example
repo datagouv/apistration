@@ -7,6 +7,12 @@ fiche:
     # Voir le swagger ici https://github.com/etalab/siade/blob/272aa40577802afe59ebc5f3cded39d2c25107ae/swagger/openapi-entreprise.yaml#L85
     # Le path est '/v3/urssaf/unites_legales/{siren}/attestation_vigilance' (copier ligne 85)
     path: '/v3/urssaf/unites_legales/{siren}/attestation_vigilance'
+    # Controller: nom du controller Rails qui sert cette route côté siade.
+    # Sert à corréler une fiche aux logs de consommation (`access_logs.controller`)
+    # pour les filtres du dashboard fournisseur.
+    # Format : 'api_entreprise/v3_and_more/<provider>/<controller_class>'
+    # Cherchez la route dans siade/config/routes/api_entreprise.rb pour la valeur exacte.
+    controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales'
     # Position au sein de l'index
     # Ce chiffre détermine l'ordre d'affichage dans le catalogue : La fiche avec position 1 sera avant la fiche 2
     position: 501

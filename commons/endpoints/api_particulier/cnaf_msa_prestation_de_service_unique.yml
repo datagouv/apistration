@@ -10,6 +10,7 @@ fiche:
       - Identité pivot
       - FranceConnect
     path: '/v3/dss/participation_familiale_eaje/identite'
+    controller: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility'
     position: 602
     alert:
       title: |+

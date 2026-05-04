@@ -4,6 +4,7 @@ fiche:
     position: 141
     ping_url: 'https://entreprise.api.gouv.fr/ping/insee/sirene'
     path: '/v3/insee/sirene/etablissements/{siret}/adresse'
+    controller: 'api_entreprise/v3_and_more/insee/adresses_etablissements'
     perimeter:
       entity_type_description: |+
         **Cette API concerne les établissements inscrits au répertoire Sirene** :
@@ -103,6 +104,7 @@ fiche:
     position: 140
     ping_url: 'https://entreprise.api.gouv.fr/ping/insee/sirene'
     path: '/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse'
+    controller: 'api_entreprise/v3_and_more/insee/adresses_etablissements_diffusables'
     perimeter:
       entity_type_description: |+
         **Cette API concerne les établissements inscrits au répertoire Sirene** :

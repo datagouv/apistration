@@ -5,6 +5,7 @@ fiche:
     new_endpoint_uids:
       - 'cnav/revenu_solidarite_active'
     path: '/api/v2/revenu-solidarite-active'
+    controller: 'api_particulier/v2/cnav/revenu_solidarite_active'
     ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
     position: 600
     perimeter:

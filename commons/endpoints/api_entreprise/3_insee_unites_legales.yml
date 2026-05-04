@@ -4,6 +4,7 @@ fiche:
     old_endpoint_uids:
       - 'insee/unites_legales_v3'
     path: '/v4/insee/sirene/unites_legales/{siren}'
+    controller: 'api_entreprise/v3_and_more/insee/unites_legales'
     position: 124
     ping_url: &insee_unites_legales_ping_url 'https://entreprise.api.gouv.fr/ping/insee/sirene'
     historique: &insee_v4_unites_legales_historique |+
@@ -165,6 +166,7 @@ fiche:
     old_endpoint_uids:
       - 'insee/unites_legales_diffusibles_v3'
     path: '/v4/insee/sirene/unites_legales/diffusibles/{siren}'
+    controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables'
     position: 119
     ping_url: *insee_unites_legales_ping_url
     historique: *insee_v4_unites_legales_historique
@@ -223,6 +225,7 @@ fiche:
 
   - uid: 'insee/unites_legales_v3'
     path: '/v3/insee/sirene/unites_legales/{siren}'
+    controller: 'api_entreprise/v3_and_more/insee/unites_legales'
     position: 125
     ping_url: *insee_unites_legales_ping_url
     perimeter: *insee_unites_legales_perimeter
@@ -250,6 +253,7 @@ fiche:
 
   - uid: 'insee/unites_legales_diffusibles_v3'
     path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}'
+    controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables'
     position: 120
     ping_url: *insee_unites_legales_ping_url
     perimeter:

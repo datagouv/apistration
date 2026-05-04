@@ -3,6 +3,7 @@ fiche:
   - uid: 'msa/conformites_cotisations'
     ping_url: 'https://entreprise.api.gouv.fr/ping/msa/conformite_cotisations'
     path: '/v3/msa/etablissements/{siret}/conformite_cotisations'
+    controller: 'api_entreprise/v3_and_more/msa/conformites_cotisations'
     position: 270
     perimeter:
       entity_type_description: |+

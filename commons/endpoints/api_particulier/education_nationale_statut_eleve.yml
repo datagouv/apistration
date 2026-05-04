@@ -6,6 +6,7 @@ fiche:
     old_endpoint_uids:
       - 'education_nationale/statut_eleve_scolarise_v4'
     path: '/v5/men/scolarites/identite'
+    controller: 'api_particulier/v3_and_more/men/scolarites_with_civility'
     ping_url: &men_scolarite_ping_url 'https://particulier.api.gouv.fr/api/men_scolarite/ping'
     position: 499
     alert: &men_scolarite_alert
@@ -134,6 +135,7 @@ fiche:
     old_endpoint_uids:
       - 'education_nationale/statut_eleve_scolarise_v3'
     path: '/v4/men/scolarites/identite'
+    controller: 'api_particulier/v3_and_more/men/scolarites_with_civility'
     ping_url: *men_scolarite_ping_url
     position: 500
     alert: *men_scolarite_alert
@@ -174,6 +176,7 @@ fiche:
     old_endpoint_uids:
       - 'education_nationale/v2/statut_eleve_scolarise'
     path: '/v3/men/scolarites/identite'
+    controller: 'api_particulier/v3_and_more/men/scolarites_with_civility'
     ping_url: *men_scolarite_ping_url
     position: 501
     alert: *men_scolarite_alert

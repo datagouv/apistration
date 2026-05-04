@@ -2,6 +2,7 @@
 fiche:
   - uid: 'fntp/carte_professionnelle_travaux_public'
     path: '/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics'
+    controller: 'api_entreprise/v3_and_more/fntp/carte_professionnelle_travaux_publics'
     ping_url: 'https://entreprise.api.gouv.fr/ping/fntp/carte_professionnelle_travaux_publics'
     position: 290
     perimeter:

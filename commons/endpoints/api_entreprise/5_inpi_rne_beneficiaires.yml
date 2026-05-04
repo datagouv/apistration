@@ -2,6 +2,7 @@
 fiche:
   - uid: 'inpi/rne/beneficiaires_effectifs'
     path: '/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs'
+    controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs'
     ping_url: 'https://entreprise.api.gouv.fr/ping/inpi/rne'
     position: 112
     perimeter:

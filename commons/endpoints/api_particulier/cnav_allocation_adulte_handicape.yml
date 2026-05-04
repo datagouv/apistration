@@ -5,6 +5,7 @@ fiche:
     old_endpoint_uids:
       - 'cnav/v2/allocation_adulte_handicape'
     path: '/v3/dss/allocation_adulte_handicape/identite'
+    controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility'
     ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
     position: 800
     perimeter:

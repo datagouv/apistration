@@ -2,6 +2,7 @@
 fiche:
   - uid: 'data_subvention/subventions'
     path: '/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions'
+    controller: 'api_entreprise/v3_and_more/data_subvention/subventions'
     position: 152
     beta: true
     novelty: true # ou new_version: true / ou beta: true

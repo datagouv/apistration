@@ -5,6 +5,7 @@ fiche:
     old_endpoint_uids:
       - 'cnav/v2/prime_activite'
     path: '/v3/dss/prime_activite/identite'
+    controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility'
     ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
     position: 700
     perimeter:

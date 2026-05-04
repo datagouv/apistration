@@ -4,6 +4,7 @@ fiche:
     opening: protected
     novelty: true
     path: '/v3/dsnj/service_national/identite'
+    controller: 'api_particulier/v3_and_more/dsnj/service_national_with_civility'
     ping_url: 'https://particulier.api.gouv.fr/api/dsnj_service_national/ping'
     position: 600
     perimeter:
