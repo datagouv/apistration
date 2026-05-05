@@ -5,13 +5,16 @@
         🔔 Lettres d'informations et notifications
       </h3>
       <p>
-        <b>Vous êtes par défaut abonné à nos lettres d'informations.</b>
-        <br />
-          Pour être informé des maintenances et des incidents de l'API Entreprise, abonnez-vous dès maintenant depuis
-          notre page d'état des API :
+        Pour être informé des maintenances et des incidents de l'API Entreprise, abonnez-vous depuis notre page d'état des API&nbsp;:
         <a target="_blank" href="https://status.entreprise.api.gouv.fr/">
           <b><u>status.entreprise.api.gouv.fr</u></b>
         </a>
+      </p>
+      <p>
+        Pour recevoir chaque lundi le récapitulatif des nouveautés techniques, inscrivez-vous à notre newsletter hebdomadaire automatique sur
+        <a target="_blank" href="<%= changelogs_url %>">
+          <b><u>la page des nouveautés</u></b>
+        </a>.
       </p>
     </mj-text>
   </mj-column>
