@@ -26,7 +26,7 @@ constraints(APIParticulierDomainConstraint.new) do
 
     get '/open-api.yml', to: ->(env) { [200, {}, [APIParticulier::OpenAPIDefinition.instance.open_api_definition_content]] }, as: :openapi_definition
     get '/open-api-v2.yml', to: ->(env) { [200, {}, [APIParticulier::OpenAPIDefinition.instance.open_api_v2_definition_content]] }, as: :openapi_v2_definition
-    get '/open-api-v3.yml', to: ->(env) { [200, {}, [APIParticulier::OpenAPIDefinition.instance.open_api_v3_definition_content]] }, as: :openapi_v3_definition
+    get '/open-api-v3.yml', to: 'open_api#show', as: :openapi_v3_definition
     get '/open-api-without-deprecated-paths.yml', to: ->(env) { [200, {}, [APIParticulier::OpenAPIDefinition.instance.open_api_without_deprecated_paths_definition_content]] }, as: :openapi_without_deprecated_definition
 
     get '/faq', to: 'faq#index', as: :faq_index
