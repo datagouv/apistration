@@ -480,6 +480,8 @@ fr:
 
                   {:.fr-highlight}
                   📩 Une lettre d'information annonce systématiquement les nouvelles évolutions. Vous pouvez vous abonner [ici](<%= newsletter_path %>).
+                  >
+                  > 🆕 Pour retrouver l'historique complet des évolutions (nouvelles API, montées de version, dépréciations, changements de paramètres...), consultez la page [Nouveautés](<%= changelogs_path %>).
               - title: Surveiller l'état des fournisseurs
                 anchor: 'surveillance-etat-fournisseurs'
                 content: |+
