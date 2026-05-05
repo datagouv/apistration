@@ -12,6 +12,13 @@ avec les conventions spécifiques :
 ## Conventions transverses
 
 - Messages de commit rédigés en anglais.
+- **Toute itération sur une signature d'API publique** (nouveau endpoint,
+  nouvelle version, paramètre ajouté/supprimé/renommé/rendu optionnel,
+  changement de format de réponse, dépréciation) doit s'accompagner d'une
+  itération sur les clients officiels dans `clients/` — au minimum
+  régénération du scaffolding (`clients/ruby/bin/scaffold_resources`) et
+  release SemVer-correcte (cf. skill `release-new-version`). Un changement
+  serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
 
 ## Outils partagés
 
