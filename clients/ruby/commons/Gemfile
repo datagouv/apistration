@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+gem 'faraday', '~> 2.0'
+gem 'faraday-retry', '~> 2.0'
+
+group :test do
+  gem 'rspec', '~> 3.12'
+  gem 'webmock', '~> 3.19'
+end
