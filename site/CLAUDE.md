@@ -22,6 +22,20 @@
 After each iteration:
 1. Run `bundle exec rubocop` and fix any offenses
 2. Run relevant tests with `bundle exec rspec spec/path/to/file_spec.rb`
+3. Si l'itération est visible côté utilisateur (nouvel endpoint, nouvelle
+   version de fiche, dépréciation, changement de paramètre ou de format
+   de réponse, évolution du catalogue ou de la FAQ, etc.), ajouter une
+   entrée dans `config/changelogs.yml` avec :
+   - `date` (ISO `YYYY-MM-DD`)
+   - `scope` : `api_entreprise`, `api_particulier` ou `both`
+   - `title` court et factuel
+   - `description` en markdown, **en liant les fiches mentionnées** vers
+     `/catalogue/<uid>` (ex.
+     `[étudiant boursier CNOUS](/catalogue/cnous/statut_etudiant_boursier)`)
+
+   Pas d'entrée pour les commits internes (refacto, tests, bumps de
+   dépendances, fix de pings fournisseur, etc.) — uniquement ce qui
+   change l'expérience d'un consommateur d'API.
 
 ## Code Style Guidelines
 
