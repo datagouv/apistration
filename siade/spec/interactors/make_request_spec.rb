@@ -107,6 +107,21 @@ RSpec.describe MakeRequest, type: :interactor do
       end
     end
 
+    context 'for an EBADF (bad file descriptor) error' do
+      let!(:stubbed_request) do
+        stub_request(:get, uri.to_s).to_raise(Errno::EBADF)
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'retries once then adds ProviderUnavailable to errors' do
+        subject
+
+        expect(stubbed_request).to have_been_requested.times(2)
+        expect(subject.errors).to include(instance_of(ProviderUnavailable))
+      end
+    end
+
     context 'for a network unreachable error' do
       before do
         stub_request(:get, uri.to_s).to_raise(
