@@ -50,6 +50,9 @@ fr:
         link_description: Un lien vers un jeton d'accès API Entreprise vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
       banned:
         subject: 🔑⚠️ Votre token d'accès API Entreprise a été banni
+    changelog_mailer:
+      weekly:
+        subject: 📰 Les nouveautés API Entreprise de la semaine
 
   api_particulier:
     authorization_request_mailer:
@@ -101,6 +104,10 @@ fr:
         subject: Une nouvelle demande a été déposé pour API Particulier
       approve:
         subject: Une nouvelle demande a été validé pour API Particulier
+
+    changelog_mailer:
+      weekly:
+        subject: 📰 Les nouveautés API Particulier de la semaine
   shared:
     audit_mailer:
       notify:

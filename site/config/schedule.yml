@@ -2,6 +2,9 @@ development:
   token_expiration_notice:
     cron: '0 1 * * *'
     class: 'TokenExpirationNoticeJob'
+  weekly_changelog_digest:
+    cron: '0 2 * * 1'
+    class: 'WeeklyChangelogDigestJob'
 
 production: &deployed
   token_expiration_notice:
@@ -10,6 +13,9 @@ production: &deployed
   healthcheck:
     cron: '*/5 * * * *'
     class: 'HealthcheckJob'
+  weekly_changelog_digest:
+    cron: '0 2 * * 1'
+    class: 'WeeklyChangelogDigestJob'
 
 staging: *deployed
 sandbox: *deployed
