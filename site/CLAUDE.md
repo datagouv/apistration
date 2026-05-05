@@ -29,9 +29,13 @@ After each iteration:
    - `date` (ISO `YYYY-MM-DD`)
    - `scope` : `api_entreprise`, `api_particulier` ou `both`
    - `title` court et factuel
-   - `description` en markdown, **en liant les fiches mentionnées** vers
-     `/catalogue/<uid>` (ex.
-     `[étudiant boursier CNOUS](/catalogue/cnous/statut_etudiant_boursier)`)
+   - `description` en markdown, **en liant les fiches mentionnées** via
+     les Rails URL helpers (interpolés en ERB par `MarkdownInterpolator`),
+     ex.
+     `[étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>)`,
+     `[catalogue](<%= endpoints_path %>)`,
+     `[FAQ](<%= faq_index_path %>)`. Pas de chemin en dur — si un helper
+     change, tout suit.
 
    Pas d'entrée pour les commits internes (refacto, tests, bumps de
    dépendances, fix de pings fournisseur, etc.) — uniquement ce qui
