@@ -6,6 +6,8 @@ avec les conventions spécifiques :
 - `siade/CLAUDE.md` — backend SIADE (API Entreprise / API Particulier)
 - `site/CLAUDE.md` — admin SIADE (front + back-office)
 - `mocks/CLAUDE.md` — mocks fournisseurs
+- `clients/` — SDKs officiels (`clients/SPECS.md` normatif, `clients/ruby/`
+  implémentation de référence ; autres langages à venir)
 
 ## Conventions transverses
 

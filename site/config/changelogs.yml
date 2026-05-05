@@ -1,3 +1,11 @@
+- date: 2026-05-05
+  scope: both
+  title: "SDKs officiels : Ruby disponible"
+  description: |
+    Une famille de **SDKs officiels** est désormais publiée dans le dossier [`clients/`](https://github.com/datagouv/apistration/tree/develop/clients) du dépôt, construite au-dessus des specs OpenAPI versionnées. Première implémentation disponible : **Ruby** ([`clients/ruby/`](https://github.com/datagouv/apistration/tree/develop/clients/ruby)), avec les gems `api_entreprise` et `api_particulier` (auth, enveloppe JSON:API, hiérarchie d'erreurs, rate-limit, retry opt-in, validateurs SIRET/SIREN).
+
+    Les ports dans d'autres langages (Node, Python, PHP, Java) suivront le contrat normatif [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md).
+
 - date: 2026-05-04
   scope: api_particulier
   title: "CNAV : lieu de naissance optionnel"

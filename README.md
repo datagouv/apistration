@@ -9,12 +9,14 @@ Built and maintained by [DINUM](https://www.numerique.gouv.fr/) (Direction Inter
 - [`siade/`](siade/) — API application (Système d'Information des API de l'État)
 - [`site/`](site/) — Admin / APIM / documentation (formerly [`etalab/admin_api_entreprise`](https://github.com/etalab/admin_api_entreprise))
 - [`mocks/`](mocks/) — Test data and sandbox mock server for API Entreprise (v3+) and API Particulier staging environments
+- [`clients/`](clients/) — SDKs officiels construits sur les specs OpenAPI versionnées dans [`commons/swagger/`](commons/swagger). Implémentation de référence en Ruby dans [`clients/ruby/`](clients/ruby) ; autres langages à venir en suivant [`clients/SPECS.md`](clients/SPECS.md).
 
 ## Getting started
 
 - API: see [`siade/README.md`](siade/README.md)
 - Site: see [`site/README.md`](site/README.md)
 - Mocks: see [`mocks/README.md`](mocks/README.md)
+- Clients: see [`clients/README.md`](clients/README.md)
 
 ## Scripts
 

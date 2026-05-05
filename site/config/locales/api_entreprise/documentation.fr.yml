@@ -332,6 +332,24 @@ fr:
 
                   La réponse JSON renvoie la liste des API autorisées. Retrouvez-leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
 
+          - anchor: 'sdks-officiels'
+            title: SDKs officiels&nbsp;📦
+            content: |+
+              Des **SDKs officiels** construits sur le [Swagger](<%= developers_openapi_path %>) sont publiés dans le dossier [`clients/`](https://github.com/datagouv/apistration/tree/develop/clients){:target="_blank"} du dépôt. Ils encapsulent l'authentification, l'enveloppe JSON:API, la hiérarchie d'erreurs, le rate-limit (avec retry opt-in sur 429&nbsp;/ 502&nbsp;/ 503) et les validateurs SIRET&nbsp;/ SIREN&nbsp;: vous écrivez du code métier, le SDK gère la plomberie HTTP.
+
+              {:.fr-highlight}
+              > Le contrat normatif langage-agnostique est décrit dans [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md){:target="_blank"}. Les implémentations qui le suivent sont garanties iso-comportementales d'un langage à l'autre.
+
+              **Implémentations disponibles&nbsp;:**
+
+              {:.fr-table}
+              | Langage | Statut | Lien |
+              |---|---|---|
+              | Ruby | ✅ Disponible — implémentation de référence | [`clients/ruby/api_entreprise`](https://github.com/datagouv/apistration/tree/develop/clients/ruby/api_entreprise){:target="_blank"} |
+              | Node, Python, PHP, Java | 🚧 À venir | — |
+
+              Vous souhaitez contribuer un port dans un autre langage&nbsp;? Suivez la checklist de conformité de [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md){:target="_blank"} et inspirez-vous de l'implémentation Ruby.
+
           - anchor: 'kit-de-mise-en-production'
             title: Kit de mise en production&nbsp;🚀
             subsections:
