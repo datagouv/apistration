@@ -6,6 +6,15 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-05
+
+### Changed
+- CNAF DSS (`dss.*_identite`) : `code_cog_insee_pays_naissance` is now
+  optional, mirroring the upstream OpenAPI change that made the lieu de
+  naissance attributes facultatifs.
+
+## [0.1.0]
+
 ### Added
 - Initial release — conforms to `clients/SPECS.md` §1–§20.
 - `production` / `staging` environments with `base_url` override.
