@@ -1,3 +1,10 @@
 # frozen_string_literal: true
 
 require 'bundler/gem_tasks'
+
+if ENV['CI']
+  Rake::Task['release:source_control_push'].clear
+  task 'release:source_control_push' do
+    puts 'Skipping release:source_control_push (CI: tag is the workflow trigger, already on origin).'
+  end
+end
