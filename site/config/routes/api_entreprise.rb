@@ -69,7 +69,7 @@ constraints(APIEntrepriseDomainConstraint.new) do
 
     get '/apis/status', to: 'pages#current_status', as: :current_status
 
-    get '/open-api.yml', to: ->(env) { [200, {}, [APIEntreprise::OpenAPIDefinition.instance.open_api_definition_content]] }, as: :openapi_definition
+    get '/open-api.yml', to: 'open_api#show', as: :openapi_definition
     get '/open-api-without-deprecated-paths.yml', to: ->(env) { [200, {}, [APIEntreprise::OpenAPIDefinition.instance.open_api_without_deprecated_paths_definition_content]] }, as: :openapi_without_deprecated_definition
     get '/robots.txt', to: ->(env) { [200, {}, [File.read('config/seo/robots.txt') % { app: 'entreprise' }]] }
 
