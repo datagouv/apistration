@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :tokens, through: :authorization_requests
 
+  has_many :changelog_subscriptions, dependent: :destroy
+
   belongs_to :editor,
     optional: true
 
@@ -42,6 +44,10 @@ class User < ApplicationRecord
 
   def confirmed?
     oauth_api_gouv_id.present?
+  end
+
+  def subscribed_to_changelog?(scope)
+    changelog_subscriptions.active.exists?(scope: scope.to_s)
   end
 
   def full_name
