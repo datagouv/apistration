@@ -1,29 +1,22 @@
+<%
+  filter_query = request.query_parameters.except('controller', 'action').to_query
+  section_url = ->(action) {
+    base = controller_path == 'admin/provider_dashboards' \
+      ? url_for(controller: '/admin/provider_dashboards', action: "#{action}_section", id: current_provider.uid, only_path: true) \
+      : url_for(controller: '/provider/dashboard', action: "#{action}_section", provider_uid: current_provider.uid, only_path: true)
+    filter_query.empty? ? base : "#{base}?#{filter_query}"
+  }
+%>
 <div class="fr-grid-row fr-grid-row--gutters">
   <div class="fr-col-12">
     <h1><%= t('.title', name: current_provider.name) %></h1>
 
     <%= render 'provider/dashboard/filter', filter: @filter, provider: current_provider %>
 
-    <% if @query.total_calls.zero? %>
-      <div class="fr-callout fr-mb-3w">
-        <p class="fr-callout__text"><%= t('.empty_period') %></p>
-      </div>
-    <% else %>
-      <%= render 'provider/dashboard/section_global', query: @query, filter: @filter %>
-      <%= render 'provider/dashboard/section_success', query: @query, filter: @filter %>
-      <%= render 'provider/dashboard/section_duration', query: @query, filter: @filter %>
+    <% ProviderDashboardFiltering::SECTIONS.each do |section| %>
+      <%= turbo_frame_tag "dashboard_#{section}", src: section_url.call(section), loading: :lazy do %>
+        <%= render 'provider/dashboard/loading', section: section %>
+      <% end %>
     <% end %>
-
-    <section class="fr-mt-4w">
-      <h2><%= t('.sections.consumers.title') %></h2>
-      <p><%= t('.sections.consumers.description') %></p>
-      <%= render 'provider/dashboard/consumers_table', consumers: @query.consumers %>
-    </section>
-
-    <section class="fr-mt-4w">
-      <h2><%= t('.sections.habilitations.title') %></h2>
-      <p><%= t('.sections.habilitations.description') %></p>
-      <%= render 'provider/dashboard/habilitations_table', habilitations: @query.habilitations %>
-    </section>
   </div>
 </div>

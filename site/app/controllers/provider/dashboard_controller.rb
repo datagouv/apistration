@@ -1,8 +1,9 @@
 class Provider::DashboardController < ProviderController
   include ProviderDashboardFiltering
 
-  before_action :user_is_provider?, only: [:index]
-  before_action :user_is_current_provider?, only: [:show]
+  before_action :user_is_provider?, only: :index
+  before_action :user_is_current_provider?, except: :index
+  before_action -> { build_dashboard(current_provider) }, except: :index
 
   def index
     @providers = provider_klass.filter_by_uid(current_user.provider_uids)
@@ -12,7 +13,11 @@ class Provider::DashboardController < ProviderController
     redirect_to provider_dashboard_path(provider_uid: @providers.first.uid)
   end
 
-  def show
-    build_dashboard(current_provider)
-  end
+  def show; end
+
+  def global_section        = render_section(:global)
+  def success_section       = render_section(:success)
+  def duration_section      = render_section(:duration)
+  def consumers_section     = render_section(:consumers)
+  def habilitations_section = render_section(:habilitations)
 end

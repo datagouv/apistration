@@ -80,8 +80,12 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # card 554
-  def consumers # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-    @consumers ||= match_routes(
+  def consumers(page: 1, per: 25)
+    Kaminari.paginate_array(consumers_rows).page(page).per(per)
+  end
+
+  def consumers_rows # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    @consumers_rows ||= match_routes(
       ConsumptionSummary
         .where(date: filter.date_from..filter.date_to)
         .where(source_type: 'token')
@@ -129,8 +133,12 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # card 547
-  def habilitations # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-    @habilitations ||= AuthorizationRequest
+  def habilitations(page: 1, per: 25)
+    Kaminari.paginate_array(habilitations_rows).page(page).per(per)
+  end
+
+  def habilitations_rows # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    @habilitations_rows ||= AuthorizationRequest
       .joins(<<~SQL.squish)
         LEFT JOIN user_authorization_request_roles
           ON user_authorization_request_roles.authorization_request_id = authorization_requests.id

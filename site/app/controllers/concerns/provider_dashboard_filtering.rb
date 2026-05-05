@@ -1,6 +1,8 @@
 module ProviderDashboardFiltering
   extend ActiveSupport::Concern
 
+  SECTIONS = %i[global success duration consumers habilitations].freeze
+
   private
 
   def filter_params
@@ -12,5 +14,9 @@ module ProviderDashboardFiltering
   def build_dashboard(provider, api: namespace)
     @filter = Provider::DashboardFilter.new(provider, api, filter_params)
     @query = Provider::DashboardQuery.new(provider, @filter)
+  end
+
+  def render_section(name)
+    render "provider/dashboard/section_#{name}", layout: false
   end
 end

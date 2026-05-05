@@ -1,0 +1,9 @@
+<% consumers = @query.consumers(page: params[:page]) %>
+<%= turbo_frame_tag 'dashboard_consumers' do %>
+  <section class="fr-mt-4w">
+    <h2><%= t('.title') %></h2>
+    <p><%= t('.description') %></p>
+    <%= render 'provider/dashboard/consumers_table', consumers: consumers %>
+    <%= paginate consumers %>
+  </section>
+<% end %>

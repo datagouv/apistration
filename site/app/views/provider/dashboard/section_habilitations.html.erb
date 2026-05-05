@@ -1,0 +1,9 @@
+<% habilitations = @query.habilitations(page: params[:page]) %>
+<%= turbo_frame_tag 'dashboard_habilitations' do %>
+  <section class="fr-mt-4w">
+    <h2><%= t('.title') %></h2>
+    <p><%= t('.description') %></p>
+    <%= render 'provider/dashboard/habilitations_table', habilitations: habilitations %>
+    <%= paginate habilitations %>
+  </section>
+<% end %>

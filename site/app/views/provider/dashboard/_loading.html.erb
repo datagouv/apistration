@@ -1,0 +1,5 @@
+<%# locals: (section:) -%>
+<div class="fr-py-4w fr-grid-row fr-grid-row--center" role="status" aria-live="polite">
+  <%= image_tag('loading.gif', size: '36x36', alt: '') %>
+  <span class="fr-sr-only"><%= t('provider.dashboard.show.loading', section: section) %></span>
+</div>

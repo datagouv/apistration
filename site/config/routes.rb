@@ -18,7 +18,15 @@ Rails.application.routes.draw do
     resources :editors, only: %i[index edit update] do
       resources :editor_tokens, only: %i[create]
     end
-    resources :provider_dashboards, only: %i[index show], path: 'providers'
+    resources :provider_dashboards, only: %i[index show], path: 'providers' do
+      member do
+        get :global_section
+        get :success_section
+        get :duration_section
+        get :consumers_section
+        get :habilitations_section
+      end
+    end
     resources :audit_notifications, only: %i[index new create]
     resources :api_requests, only: %i[index create]
   end
@@ -34,6 +42,11 @@ Rails.application.routes.draw do
 
   scope path: 'fournisseur/:provider_uid', as: :provider do
     get '/tableau-de-bord', to: 'provider/dashboard#show', as: :dashboard
+    get '/tableau-de-bord/global', to: 'provider/dashboard#global_section', as: :dashboard_global
+    get '/tableau-de-bord/success', to: 'provider/dashboard#success_section', as: :dashboard_success
+    get '/tableau-de-bord/duration', to: 'provider/dashboard#duration_section', as: :dashboard_duration
+    get '/tableau-de-bord/consumers', to: 'provider/dashboard#consumers_section', as: :dashboard_consumers
+    get '/tableau-de-bord/habilitations', to: 'provider/dashboard#habilitations_section', as: :dashboard_habilitations
   end
 
   namespace :api do

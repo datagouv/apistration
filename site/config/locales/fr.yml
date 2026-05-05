@@ -515,14 +515,7 @@ fr:
     dashboard:
       show:
         title: Statistiques et habilitations pour le fournisseur %{name}
-        empty_period: Aucun appel sur la période sélectionnée pour ce fournisseur. Élargissez la plage de dates ou ajustez les routes.
-        sections:
-          consumers:
-            title: Consommateurs
-            description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
-          habilitations:
-            title: Demandes et habilitations
-            description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
+        loading: Chargement de la section %{section}…
         kpis:
           total: Appels totaux
           unique: Appels uniques
@@ -557,6 +550,12 @@ fr:
         charts:
           evolution: Évolution durée d'appel moyenne
           per_endpoint: Durée moyenne d'appel par endpoint
+      section_consumers:
+        title: Consommateurs
+        description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
+      section_habilitations:
+        title: Demandes et habilitations
+        description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
       filter:
         date_from: Date de début
         date_to: Date de fin
