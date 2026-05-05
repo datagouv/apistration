@@ -72,6 +72,8 @@ constraints(APIParticulierDomainConstraint.new) do
 
     get '/blog/:id', to: 'blog_posts#show', as: :blog_post
 
+    get '/nouveautes', to: 'changelogs#index', as: :changelogs
+
     get '/infolettre', to: 'pages#newsletter', as: :newsletter
     get '/mentions-legales', to: 'pages#mentions', as: :mentions
     get '/cgu', to: 'pages#cgu', as: :cgu

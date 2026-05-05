@@ -1,0 +1,121 @@
+- date: 2026-05-04
+  scope: api_particulier
+  title: "CNAV : lieu de naissance optionnel"
+  description: |
+    Le **lieu de naissance** n'est désormais plus obligatoire dans les appels aux endpoints CNAV. L'algorithme d'identification de l'individu fonctionne avec une précision suffisante en s'appuyant sur les autres traits d'identité.
+
+    Voir la [FAQ dédiée](<%= faq_index_path %>) pour plus de détails sur l'algorithme d'identification.
+
+- date: 2026-04-27
+  scope: api_particulier
+  title: "CNOUS : nouveau paramètre `campaignYear`"
+  description: |
+    L'endpoint [étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>) accepte désormais un paramètre `campaignYear` permettant de cibler l'année de campagne souhaitée.
+
+- date: 2026-04-08
+  scope: api_particulier
+  title: "Inscription scolaire : régime d'internat exposé"
+  description: |
+    L'API [statut élève scolarisé (v5)](<%= endpoint_path(uid: 'education_nationale/statut_eleve_scolarise') %>) expose désormais le régime d'internat de l'élève.
+
+- date: 2026-02-27
+  scope: api_particulier
+  title: "MEN scolarité : passage en v4 avec périmètre géographique"
+  description: |
+    La fiche [statut élève scolarisé](<%= endpoint_path(uid: 'education_nationale/statut_eleve_scolarise_v4') %>) passe en v4 et inclut un périmètre géographique. La [v3](<%= endpoint_path(uid: 'education_nationale/statut_eleve_scolarise_v3') %>) reste accessible en mode legacy.
+
+- date: 2026-02-18
+  scope: api_particulier
+  title: "CNOUS étudiant boursier : nouvelle version v4"
+  description: |
+    Nouvelle version v4 de la fiche [étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>), avec ajout des champs liés à la radiation. La [v3](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier_v3') %>) reste accessible.
+
+- date: 2026-02-17
+  scope: api_particulier
+  title: "Catalogue : retrait des endpoints dépréciés"
+  description: |
+    Les endpoints dépréciés ne sont plus listés dans le [catalogue](<%= endpoints_path %>) API Particulier. Ils restent accessibles via les fiches legacy pour les consommateurs existants.
+
+- date: 2026-01-19
+  scope: api_particulier
+  title: "Quotient familial : nouvelles données"
+  description: |
+    Ajout de nouvelles données dans la fiche [quotient familial](<%= endpoint_path(uid: 'cnav/quotient_familial') %>) et la fiche [complémentaire santé solidaire](<%= endpoint_path(uid: 'cnav/complementaire_sante_solidaire') %>).
+
+- date: 2026-01-13
+  scope: both
+  title: "Catalogue : recherche par attributs"
+  description: |
+    La recherche dans le [catalogue](<%= endpoints_path %>) prend désormais en compte les **clés d'attributs** retournées par les API, en plus des titres et descriptions de fiche.
+
+- date: 2026-01-09
+  scope: api_entreprise
+  title: "INSEE Sirene : v4 avec NAF Rév. 2025"
+  description: |
+    La fiche [INSEE Sirene établissements](<%= endpoint_path(uid: 'insee/etablissements') %>) passe en v4 et intègre la nomenclature NAF Rév. 2025.
+
+- date: 2025-12-03
+  scope: api_entreprise
+  title: "Effectifs : ajout des données OETH"
+  description: |
+    Les fiches [effectifs annuels](<%= endpoint_path(uid: 'gip_mds/effectifs_annuels_unite_legale') %>) et [effectifs mensuels](<%= endpoint_path(uid: 'gip_mds/effectifs_mensuels_etablissement') %>) exposent désormais les données relatives à l'**Obligation d'Emploi des Travailleurs Handicapés** (OETH).
+
+- date: 2025-12-01
+  scope: api_particulier
+  title: "Nouvelle API : Allocation d'éducation de l'enfant handicapé (AEEH)"
+  description: |
+    Mise en service de la fiche [allocation d'éducation de l'enfant handicapé](<%= endpoint_path(uid: 'cnav/aeeh') %>), qui permet de récupérer le statut de bénéficiaire de l'AEEH auprès de la CNAV.
+
+- date: 2025-11-14
+  scope: api_entreprise
+  title: "INSEE Sirene : code erreur 451 pour les unités en diffusion partielle"
+  description: |
+    Les API [Sirene établissements](<%= endpoint_path(uid: 'insee/etablissements') %>) et [unités légales](<%= endpoint_path(uid: 'insee/unites_legales') %>) retournent désormais un code HTTP **451** explicite pour les entités en diffusion partielle, à la place d'une 404 ambiguë. La [FAQ](<%= faq_index_path %>) a été mise à jour pour expliquer comment gérer ce cas.
+
+- date: 2025-10-13
+  scope: api_particulier
+  title: "Nouvelle API : extrait d'immatriculation véhicule (ANTS / SIV)"
+  description: |
+    Mise en service de la fiche [extrait d'immatriculation véhicule](<%= endpoint_path(uid: 'ants/extrait_immatriculation_vehicule') %>), basée sur le **Système d'Immatriculation des Véhicules** (SIV) de l'ANTS. Premier déploiement restreint avant un déploiement plus large prévu au premier trimestre 2026.
+
+- date: 2025-10-09
+  scope: both
+  title: "Traçabilité : entête `X-Request-Id`"
+  description: |
+    Toutes les API renvoient et propagent désormais l'entête **`X-Request-Id`**. Vous pouvez l'envoyer dans vos requêtes pour faciliter le diagnostic côté support, ou récupérer celui généré côté serveur dans la réponse.
+
+- date: 2025-09-16
+  scope: api_particulier
+  title: "Nouvelle API : statut sportif de haut niveau (SDH)"
+  description: |
+    Mise en service de la fiche [statut sportif de haut niveau](<%= endpoint_path(uid: 'sport_data_hub/statut_sportif') %>), exposée via le **Sport Data Hub**. Permet de vérifier l'inscription d'un individu sur les listes ministérielles des sportifs de haut niveau.
+
+- date: 2025-09-09
+  scope: api_entreprise
+  title: "INPI : documentation de l'extrait RNE"
+  description: |
+    La fiche [extrait RNE](<%= endpoint_path(uid: 'inpi/rne/attestation_immatriculation') %>) bénéficie d'une documentation enrichie&nbsp;: périmètre, contenu de l'attestation, gestion des immatriculations radiées et exemples d'appel.
+
+- date: 2025-08-06
+  scope: both
+  title: "Authentification : passage à ProConnect"
+  description: |
+    La connexion à l'espace utilisateur s'effectue désormais via **ProConnect**, le service d'authentification interministériel. Les comptes existants sont automatiquement migrés à la première reconnexion.
+
+- date: 2025-07-04
+  scope: api_entreprise
+  title: "Attestation fiscale : périmètre associations clarifié"
+  description: |
+    La documentation de la fiche [attestation fiscale DGFiP](<%= endpoint_path(uid: 'dgfip/attestation_fiscale') %>) précise désormais le périmètre applicable aux **associations** et inclut une section Q&R dédiée.
+
+- date: 2025-06-30
+  scope: api_entreprise
+  title: "Nouvelle API : liens capitalistiques (DGFiP)"
+  description: |
+    Mise en service de la fiche [liens capitalistiques](<%= endpoint_path(uid: 'dgfip/liens_capitalistiques') %>), qui expose les liens de détention capitalistique entre unités légales tels que connus par la DGFiP.
+
+- date: 2025-02-19
+  scope: api_particulier
+  title: "Nouvelle API : Prestation de Service Unique (PSU)"
+  description: |
+    Première itération de la documentation de la fiche [prestation de service unique](<%= endpoint_path(uid: 'cnav/psu') %>), qui permet de vérifier le bénéfice de la PSU auprès de la CNAF/MSA pour la facturation des établissements d'accueil du jeune enfant.
