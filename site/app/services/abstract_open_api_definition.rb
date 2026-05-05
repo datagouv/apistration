@@ -45,9 +45,21 @@ class AbstractOpenAPIDefinition
     local_path.read
   end
 
+  def open_api_filtered_by_provider_definition_content(provider)
+    paths = backend['paths'].select { |path, _| path_provider_slug(path) == provider }
+
+    backend.merge('paths' => paths).to_yaml
+  end
+
   protected
 
   def local_path
     fail NotImplementedError
+  end
+
+  private
+
+  def path_provider_slug(path)
+    path.split('/')[2]
   end
 end
