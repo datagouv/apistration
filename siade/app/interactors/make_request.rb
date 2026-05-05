@@ -62,6 +62,16 @@ class MakeRequest < ApplicationInteractor
     fail_to_request_provider!(ProviderTimeoutError)
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
     fail_to_request_provider!(ProviderUnavailable)
+  rescue Errno::EBADF
+    context.http_retry_count ||= 0
+
+    if context.http_retry_count < 1
+      context.http_retry_count += 1
+
+      retry
+    else
+      fail_to_request_provider!(ProviderUnavailable)
+    end
   rescue Errno::ENETUNREACH
     context.errors << NetworkError.new
     context.fail!
