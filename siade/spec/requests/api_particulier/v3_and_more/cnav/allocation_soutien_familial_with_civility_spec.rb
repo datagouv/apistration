@@ -27,7 +27,6 @@ RSpec.describe 'API Particulier CNAV: allocation soutien familial with civility'
           nomNaissance
           prenoms
           sexeEtatCivil
-          codeCogInseePaysNaissance
         ],
         api: 'cnav'
       )

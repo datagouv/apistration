@@ -27,7 +27,6 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
           nomNaissance
           prenoms
           sexeEtatCivil
-          codeCogInseePaysNaissance
         ],
         api: 'cnav'
       )
