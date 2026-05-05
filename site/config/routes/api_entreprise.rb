@@ -65,6 +65,8 @@ constraints(APIEntrepriseDomainConstraint.new) do
 
     get '/blog/:id', to: 'blog_posts#show', as: :blog_post
 
+    get '/nouveautes', to: 'changelogs#index', as: :changelogs
+
     get '/apis/status', to: 'pages#current_status', as: :current_status
 
     get '/open-api.yml', to: ->(env) { [200, {}, [APIEntreprise::OpenAPIDefinition.instance.open_api_definition_content]] }, as: :openapi_definition

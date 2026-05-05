@@ -23,11 +23,11 @@ module ApplicationHelper
     request.subdomain.split('.')[0] != 'dashboard'
   end
 
-  def markdown_to_html(content)
+  def markdown_to_html(content, hard_wrap: true)
     return unless content
 
     content_tag(:div, class: %(markdown-wrapper)) do
-      MarkdownInterpolator.new(content).perform.html_safe
+      MarkdownInterpolator.new(content, hard_wrap: hard_wrap).perform.html_safe
     end
   end
 

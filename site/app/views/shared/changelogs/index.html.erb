@@ -1,0 +1,41 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-9 fr-col-lg-8">
+    <h1 class="fr-mb-2w">
+      <%= t('.title') %>
+    </h1>
+
+    <p class="fr-text--lead fr-mb-6w">
+      <%= t('.description').html_safe %>
+    </p>
+
+    <% if @entries_by_year.empty? %>
+      <p><%= t('.empty') %></p>
+    <% else %>
+      <% @entries_by_year.each do |year, entries| %>
+        <div class="changelog-year fr-mb-4w">
+          <h2 class="fr-h3 fr-mb-3w changelog-year__heading">
+            <%= year %>
+          </h2>
+
+          <ul class="changelog-entries">
+            <% entries.each do |entry| %>
+              <li class="changelog-entry">
+                <time class="changelog-entry__date" datetime="<%= entry.date.iso8601 %>">
+                  <%= l(entry.date, format: :long) %>
+                </time>
+
+                <h3 class="fr-h5 changelog-entry__title">
+                  <%= entry.title %>
+                </h3>
+
+                <div class="changelog-entry__body">
+                  <%= markdown_to_html(entry.description, hard_wrap: false) %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -36,6 +36,11 @@ fr:
           error:
             title: Vous n'avez pas les droits pour accéder à cette page.
   shared:
+    changelogs:
+      index:
+        title: "Nouveautés"
+        description: "L'historique des évolutions du service&nbsp;: nouvelles API, mises à jour de fiches, dépréciations et améliorations."
+        empty: "Aucune nouveauté à afficher pour le moment."
     cas_usages:
       show:
         label: "Cas d'usage"

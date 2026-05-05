@@ -5,8 +5,9 @@ class MarkdownInterpolator
   include Rails.application.routes.url_helpers
   include ExternalUrlHelper
 
-  def initialize(content)
+  def initialize(content, hard_wrap: true)
     @content = content
+    @hard_wrap = hard_wrap
   end
 
   def perform
@@ -15,7 +16,8 @@ class MarkdownInterpolator
     Kramdown::Document.new(
       content_interpolated,
       input: 'GFM',
-      parse_block_html: true
+      parse_block_html: true,
+      hard_wrap: @hard_wrap
     ).to_html
   end
 

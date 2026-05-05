@@ -1,0 +1,52 @@
+.changelog-year__heading {
+  border-bottom: 1px solid var(--border-default-grey);
+  padding-bottom: 0.5rem;
+  color: var(--text-mention-grey);
+  font-weight: 600;
+}
+
+.changelog-entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.changelog-entry {
+  position: relative;
+  padding: 0 0 2.5rem 2rem;
+  border-left: 2px solid var(--border-default-blue-france);
+}
+
+.changelog-entry:last-child {
+  padding-bottom: 0.5rem;
+}
+
+.changelog-entry::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  left: -0.5rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background-color: var(--background-action-high-blue-france);
+  border: 2px solid var(--background-default-grey);
+}
+
+.changelog-entry__date {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mention-grey);
+  margin-bottom: 0.25rem;
+}
+
+.changelog-entry__title {
+  margin-bottom: 0.75rem;
+}
+
+.changelog-entry__body p:last-child {
+  margin-bottom: 0;
+}
