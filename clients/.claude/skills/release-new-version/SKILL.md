@@ -13,6 +13,38 @@ Source of truth for Ruby : [`clients/ruby/README.md`](../../../ruby/README.md)
 One gem at a time. `api_entreprise` and `api_particulier` versionnent
 indépendamment — ne jamais coupler les deux dans une même release.
 
+## Prérequis par gem (à valider au moins une fois)
+
+Ces points sont des **prérequis externes au repo**. Si l'un manque, le
+workflow échoue de façon souvent silencieuse ou cryptique. Vérifier
+**avant** de pousser un tag sur un gem qui n'a jamais été release via le
+workflow.
+
+1. **Trusted publisher OIDC sur rubygems** —
+   `https://rubygems.org/profile/oidc/trusted_publishers` doit avoir une
+   entrée pour le gem avec **exactement** :
+   - GitHub Repository : `datagouv/apistration`
+   - Workflow Filename : `clients-ruby.yml` (pas `clients-ruby-release.yml`,
+     pas autre chose — doit matcher le nom de fichier sous
+     `.github/workflows/`)
+   - Environment : `rubygems`
+
+   Mismatch → erreur explicite à l'étape `configure-rubygems-credentials` :
+   `No trusted publisher configured for this workflow found on
+   https://rubygems.org for audience rubygems.org`.
+
+2. **Branch policy de l'environment `rubygems`** typée `tag` (cf. Gotchas).
+
+3. **Rakefile + `rake` dev dep** dans le gem
+   (`clients/ruby/<gem>/Rakefile` + `gem 'rake'` dans le Gemfile group
+   `:development`). Le Rakefile doit `require 'bundler/gem_tasks'` et,
+   pour fonctionner avec `rubygems/release-gem@v1`, no-op
+   `release:source_control_push` quand `CI=true` (cf. Rakefile en place).
+   Sans Rakefile : `can't find executable rake for gem rake`.
+
+4. **Premier release manuel** déjà effectué pour réserver le nom du gem
+   sur rubygems (cf. `clients/ruby/README.md` §Prérequis).
+
 ## Workflow (Ruby)
 
 1. **Branche release dédiée**
@@ -104,6 +136,26 @@ Tag invalide → step "Resolve gem from tag" échoue et stoppe le workflow.
 - Le run reste en `waiting` tant que (1) le `wait_timer` (15 min) n'est pas
   écoulé et (2) un reviewer de la liste `rubygems` n'a pas approuvé. Voir
   `gh api repos/datagouv/apistration/actions/runs/<id>/pending_deployments`.
+- **Trusted publisher Workflow Filename qui ne matche pas** : `No trusted
+  publisher configured for this workflow found on https://rubygems.org`.
+  Bug courant : entrée rubygems pointe sur un nom de workflow obsolète
+  (`clients-ruby-release.yml`) alors que le fichier réel est
+  `clients-ruby.yml`. Corriger sur rubygems, puis `gh run rerun <id>`.
+- **`rake aborted!` sur `release:source_control_push`** avec
+  `error: src refspec refs/heads/HEAD does not match any` : `rubygems/release-gem@v1`
+  checkout le tag (detached HEAD) puis lance `bundle exec rake release`,
+  ce qui chaîne `release:source_control_push` qui essaie un
+  `git push origin HEAD` impossible. Le Rakefile doit no-op cette tâche
+  quand `CI=true` (le tag est déjà sur origin, c'est lui qui a déclenché
+  la run).
+- **Re-trigger d'un workflow tag-based après fix** : ne pas re-tagger en
+  `vX.Y.Z+1`. Force-déplacer le tag existant vers le nouveau merge commit :
+  ```sh
+  git tag -f ruby-api-<gem>-v<X.Y.Z> <new-merge-sha>
+  git push --force origin ruby-api-<gem>-v<X.Y.Z>
+  ```
+  Le push tag ré-émet l'event GitHub et redéclenche le workflow. Tant que
+  la version n'a pas réellement été publiée sur rubygems, c'est légitime.
 
 ## Étendre ce skill
 
