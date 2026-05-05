@@ -10,9 +10,9 @@
   scope: api_particulier
   title: "CNAV : lieu de naissance optionnel"
   description: |
-    Le **lieu de naissance** n'est désormais plus obligatoire dans les appels aux endpoints CNAV. L'algorithme d'identification de l'individu fonctionne avec une précision suffisante en s'appuyant sur les autres traits d'identité.
+    Le **lieu de naissance** n'est désormais plus obligatoire dans les appels aux endpoints CNAV (allocation adulte handicapé, prime d'activité, RSA, allocation de soutien familial, complémentaire santé solidaire). Il reste néanmoins **fortement recommandé** : le nom de naissance, l'année de naissance et le lieu de naissance sont les paramètres qui pèsent le plus dans l'algorithme d'identification du fournisseur.
 
-    Voir la [FAQ dédiée](<%= faq_index_path %>) pour plus de détails sur l'algorithme d'identification.
+    Consultez la FAQ « Quels paramètres ont le plus de poids dans l'algorithme d'identification ? » disponible sur chaque [fiche CNAV](<%= endpoint_path(uid: 'cnav/allocation_adulte_handicape') %>) pour plus de détails.
 
 - date: 2026-04-27
   scope: api_particulier
