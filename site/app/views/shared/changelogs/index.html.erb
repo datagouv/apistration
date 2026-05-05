@@ -8,6 +8,8 @@
       <%= t('.description').html_safe %>
     </p>
 
+    <%= render 'shared/changelogs/subscription' %>
+
     <% if @entries_by_year.empty? %>
       <p><%= t('.empty') %></p>
     <% else %>

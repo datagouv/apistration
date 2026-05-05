@@ -1,0 +1,21 @@
+<div class="fr-callout fr-mb-6w">
+  <% if !user_signed_in? %>
+    <p class="fr-callout__text">
+      <%= t('.anonymous_html', login_url: login_path).html_safe %>
+    </p>
+  <% elsif current_user.subscribed_to_changelog?(namespace) %>
+    <h2 class="fr-callout__title fr-h4"><%= t('.subscribed.heading') %></h2>
+    <p class="fr-callout__text"><%= t('.subscribed.description') %></p>
+    <%= button_to t('.subscribed.submit'),
+                   changelog_unsubscribe_path,
+                   method: :delete,
+                   class: 'fr-btn fr-btn--secondary' %>
+  <% else %>
+    <h2 class="fr-callout__title fr-h4"><%= t('.subscribe.heading') %></h2>
+    <p class="fr-callout__text"><%= t('.subscribe.description').html_safe %></p>
+    <%= button_to t('.subscribe.submit'),
+                   changelog_subscribe_path,
+                   method: :post,
+                   class: 'fr-btn' %>
+  <% end %>
+</div>
