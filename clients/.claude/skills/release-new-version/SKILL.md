@@ -86,6 +86,24 @@ Tag invalide → step "Resolve gem from tag" échoue et stoppe le workflow.
 - Le `CHANGELOG.md` initial des gems publiait le contenu sous `[Unreleased]`
   alors que `0.1.0` était déjà sur rubygems. Au premier patch, convertir
   `[Unreleased]` → `[0.1.0]` puis ajouter `[0.1.1]` au-dessus.
+- **Branch policy de l'environment `rubygems` doit être de type `tag`, pas
+  `branch`.** Si la policy `ruby-api-<gem>-v*` est typée `branch` (cas
+  rencontré sur `api_particulier` à la 0.1.1), GitHub rejette le déploiement
+  instantanément : zéro step exécuté, log introuvable (`log not found`),
+  steps array vide via API. Vérifier :
+  ```sh
+  gh api repos/datagouv/apistration/environments/rubygems/deployment-branch-policies
+  ```
+  Si une entrée est mal typée :
+  ```sh
+  gh api -X DELETE repos/datagouv/apistration/environments/rubygems/deployment-branch-policies/<id>
+  gh api -X POST   repos/datagouv/apistration/environments/rubygems/deployment-branch-policies \
+    -f 'name=ruby-api-<gem>-v*' -f 'type=tag'
+  ```
+  Puis `gh run rerun <run-id>`.
+- Le run reste en `waiting` tant que (1) le `wait_timer` (15 min) n'est pas
+  écoulé et (2) un reviewer de la liste `rubygems` n'a pas approuvé. Voir
+  `gh api repos/datagouv/apistration/actions/runs/<id>/pending_deployments`.
 
 ## Étendre ce skill
 
