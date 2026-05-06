@@ -175,9 +175,8 @@ jobs:
           minimum_suite_coverage: 95
           coverage_path: siade/coverage/.last_run.json
 
-  merge-with-main:
-    name: Merge develop with main
-    runs-on: ubuntu-latest
+  deploy:
+    name: Deploy
     if: github.ref == 'refs/heads/develop'
     needs:
       - security
@@ -185,78 +184,5 @@ jobs:
       - check-swagger
       - check-zeitwerk
       - tests
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Force push develop to main
-        working-directory: .
-        run: |
-          git push --force origin develop:main
-
-  continuous-deployment-staging:
-    name: Continuous deployment on staging
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
-    timeout-minutes: 10
-    needs:
-      - security
-      - lint
-      - check-swagger
-      - check-zeitwerk
-      - tests
-      - merge-with-main
-    strategy:
-      matrix:
-        host: [watchdoge3, watchdoge4]
-      fail-fast: false
-    environment: staging
-    env:
-      DEPLOY_HTTPS_LOGIN: ${{ secrets.DEPLOY_HTTPS_LOGIN }}
-      DEPLOY_HTTPS_PASSWORD: ${{ secrets.DEPLOY_HTTPS_PASSWORD }}
-      DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
-      DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
-      DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_staging
-    steps:
-      - name: Download and run deploy script
-        shell: bash
-        working-directory: .
-        run: |
-          git clone https://github.com/etalab/api-entreprise-integration
-          cd api-entreprise-integration
-          ./deploy-parteprise.sh
-
-  continuous-deployment-production:
-    name: Continuous deployment on production
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
-    timeout-minutes: 20
-    needs:
-      - security
-      - lint
-      - check-swagger
-      - check-zeitwerk
-      - tests
-      - merge-with-main
-      - continuous-deployment-staging
-    strategy:
-      matrix:
-        host: [watchdoge3, watchdoge4]
-      fail-fast: false
-    environment: production
-    env:
-      DEPLOY_HTTPS_LOGIN: ${{ secrets.DEPLOY_HTTPS_LOGIN }}
-      DEPLOY_HTTPS_PASSWORD: ${{ secrets.DEPLOY_HTTPS_PASSWORD }}
-      DEPLOY_HTTPS_REQUEST_URL: ${{ vars.DEPLOY_HTTPS_REQUEST_URL }}
-      DEPLOY_HTTPS_RESPONSE_URL: ${{ vars.DEPLOY_HTTPS_RESPONSE_URL }}
-      DEPLOY_HOST: host_${{ matrix.host }}
-      DEPLOY_APP: siadelibre_production
-    steps:
-      - name: Download and run deploy script
-        shell: bash
-        working-directory: .
-        run: |
-          git clone https://github.com/etalab/api-entreprise-integration
-          cd api-entreprise-integration
-          ./deploy-parteprise.sh
+    uses: ./.github/workflows/_api-deploy.yml
+    secrets: inherit
