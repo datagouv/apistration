@@ -47,6 +47,8 @@ Rails.application.routes.draw do
     get '/tableau-de-bord/duration', to: 'provider/dashboard#duration_section', as: :dashboard_duration
     get '/tableau-de-bord/consumers', to: 'provider/dashboard#consumers_section', as: :dashboard_consumers
     get '/tableau-de-bord/habilitations', to: 'provider/dashboard#habilitations_section', as: :dashboard_habilitations
+    get '/consumers.csv', to: 'provider/dashboard#consumers_export', as: :consumers_csv
+    get '/habilitations.csv', to: 'provider/dashboard#habilitations_export', as: :habilitations_csv
   end
 
   namespace :api do

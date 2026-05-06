@@ -80,7 +80,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # card 554
-  def consumers(page: 1, per: 25)
+  def consumers(page: 1, per: 10)
     Kaminari.paginate_array(consumers_rows).page(page).per(per)
   end
 
@@ -133,7 +133,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # card 547
-  def habilitations(page: 1, per: 25)
+  def habilitations(page: 1, per: 10)
     Kaminari.paginate_array(habilitations_rows).page(page).per(per)
   end
 

@@ -20,4 +20,14 @@ class Provider::DashboardController < ProviderController
   def duration_section      = render_section(:duration)
   def consumers_section     = render_section(:consumers)
   def habilitations_section = render_section(:habilitations)
+
+  def consumers_export
+    formatter = Provider::ConsumersCsvFormatter.new(@query.consumers_rows)
+    send_data formatter.to_csv, filename: formatter.filename, type: 'text/csv; charset=utf-8'
+  end
+
+  def habilitations_export
+    formatter = Provider::HabilitationsCsvFormatter.new(@query.habilitations_rows)
+    send_data formatter.to_csv, filename: formatter.filename, type: 'text/csv; charset=utf-8'
+  end
 end

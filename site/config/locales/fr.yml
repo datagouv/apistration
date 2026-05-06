@@ -553,9 +553,11 @@ fr:
       section_consumers:
         title: Consommateurs
         description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
+        download_csv: Télécharger en CSV
       section_habilitations:
         title: Demandes et habilitations
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
+        download_csv: Télécharger en CSV
       filter:
         presets:
           1m: 1 mois

@@ -3,6 +3,12 @@
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
     <p><%= t('.description') %></p>
+    <p>
+      <%= link_to t('.download_csv'),
+                  provider_habilitations_csv_path(provider_uid: @filter.provider.uid, filter: filter_params),
+                  class: 'fr-btn fr-btn--secondary fr-icon-download-line fr-btn--icon-left',
+                  data: { turbo: false } %>
+    </p>
     <%= render 'provider/dashboard/habilitations_table', habilitations: habilitations %>
     <%= paginate habilitations %>
   </section>
