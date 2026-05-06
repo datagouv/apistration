@@ -4,4 +4,4 @@ siade/.env.local
 site/.env.local
 .env.local
 site/node_modules/
-.sentry_token
+.*_token
