@@ -557,6 +557,12 @@ fr:
         title: Demandes et habilitations
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
       filter:
+        presets:
+          1m: 1 mois
+          3m: 3 mois
+          6m: 6 mois
+          12m: 12 mois
+          last_year: Année précédente
         date_from: Date de début
         date_to: Date de fin
         interval: Intervalle

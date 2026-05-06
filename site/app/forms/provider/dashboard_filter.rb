@@ -10,6 +10,16 @@ class Provider::DashboardFilter
     'mois' => 'month'
   }.freeze
 
+  def self.date_presets(today: Date.current)
+    {
+      '1m' => [today - 1.month, today],
+      '3m' => [today - 3.months, today],
+      '6m' => [today - 6.months, today],
+      '12m' => [today - 12.months, today],
+      'last_year' => [today.last_year.beginning_of_year, today.last_year.end_of_year]
+    }
+  end
+
   attr_reader :provider, :api
 
   attribute :date_from, :date
@@ -33,6 +43,11 @@ class Provider::DashboardFilter
   end
 
   def routes_submitted? = @routes_submitted
+
+  def matches_preset?(key)
+    from, to = self.class.date_presets[key]
+    from == date_from && to == date_to
+  end
 
   def route_checked?(value)
     return true unless routes_submitted?
