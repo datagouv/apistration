@@ -1,10 +1,6 @@
 class Provider::ConsumersCsvFormatter < CsvFormatter
   private
 
-  def i18n_scope
-    'provider.dashboard.consumers_csv'
-  end
-
   def columns
     {
       datapass_id: ->(row) { row[:external_id] },

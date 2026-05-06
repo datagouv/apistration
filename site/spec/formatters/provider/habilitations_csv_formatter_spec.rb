@@ -17,7 +17,7 @@ RSpec.describe Provider::HabilitationsCsvFormatter do
     expect(csv).to include('ext-1;Demande X;12345678900010;ACME;demandeur@example.org;Validée;scope_a|scope_b')
   end
 
-  it 'translates headers from provider.dashboard.habilitations_csv scope' do
+  it 'translates headers from formatters.provider.habilitations_csv scope' do
     csv = described_class.new([]).to_csv
     expect(csv).to include('DataPass ID;Intitulé;SIRET;Raison sociale;Email demandeur;Statut;Scopes')
   end

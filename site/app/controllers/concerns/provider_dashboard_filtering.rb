@@ -3,6 +3,10 @@ module ProviderDashboardFiltering
 
   SECTIONS = %i[global success duration consumers habilitations].freeze
 
+  included do
+    helper_method :filter_params
+  end
+
   private
 
   def filter_params

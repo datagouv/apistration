@@ -9,10 +9,6 @@ class Provider::HabilitationsCsvFormatter < CsvFormatter
 
   private
 
-  def i18n_scope
-    'provider.dashboard.habilitations_csv'
-  end
-
   def columns
     COLUMN_KEYS.transform_values { |key| ->(row) { row[key] } }.merge(
       status: ->(row) { I18n.t("provider.dashboard.habilitations_table.statuses.#{row[:status]}", default: row[:status]) },

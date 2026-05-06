@@ -1,0 +1,21 @@
+fr:
+  formatters:
+    provider:
+      consumers_csv:
+        headers:
+          datapass_id: DataPass ID
+          intitule: Intitulé
+          email: Email demandeur
+          siret: SIRET
+          denomination: Raison sociale
+          total: Total
+          unique: Unique
+      habilitations_csv:
+        headers:
+          datapass_id: DataPass ID
+          intitule: Intitulé
+          siret: SIRET
+          denomination: Raison sociale
+          email: Email demandeur
+          status: Statut
+          scopes: Scopes

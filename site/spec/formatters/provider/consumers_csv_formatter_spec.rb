@@ -17,7 +17,7 @@ RSpec.describe Provider::ConsumersCsvFormatter do
     expect(csv).to include('ext-1;Demande X;demandeur@example.org;12345678900010;ACME;42;17')
   end
 
-  it 'translates headers from provider.dashboard.consumers_csv scope' do
+  it 'translates headers from formatters.provider.consumers_csv scope' do
     csv = described_class.new([]).to_csv
     expect(csv).to include('DataPass ID;Intitulé;Email demandeur;SIRET;Raison sociale;Total;Unique')
   end
