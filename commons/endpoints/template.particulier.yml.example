@@ -23,6 +23,13 @@ fiche:
     # Swagger Particulier v3 ici : https://github.com/etalab/siade/blob/develop/swagger/openapi-particulier.yaml
     # En cas de 2 routes selon modalité Identité VS FranceConnect, mettre la route qui finit en /identite
     path: '/api/v2/paiements-pole-emploi'
+    # Controller: nom du controller Rails qui sert cette route côté siade.
+    # Sert à corréler une fiche aux logs de consommation (`access_logs.controller`)
+    # pour les filtres du dashboard fournisseur.
+    # Format v2 (legacy) : 'api_particulier/v2/<provider>/<controller_class>'
+    # Format v3+         : 'api_particulier/v3_and_more/<provider>/<controller_class>'
+    # Cherchez la route dans siade/config/routes/api_particulier.rb pour la valeur exacte.
+    controller: 'api_particulier/v2/pole_emploi/indemnites'
     # Route de ping
     # Optionnel
     # La route complète vers l'endpoint avec /ping à la fin

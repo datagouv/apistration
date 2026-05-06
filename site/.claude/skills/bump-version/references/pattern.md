@@ -19,6 +19,7 @@ Each YAML file contains one or more endpoint entries (array of hashes).
   old_endpoint_uids:
     - 'provider/vN-2/resource'
   path: '/vN-1/provider/resource/...'
+  controller: 'api_<api>/v3_and_more/provider/resource'  # or v2 for particulier legacy
   position: 400
   ping_url: 'https://...'
   perimeter:
@@ -58,6 +59,7 @@ Each YAML file contains one or more endpoint entries (array of hashes).
   old_endpoint_uids:
     - 'provider/resource_vN-1'          # points to new legacy uid
   path: '/vN/provider/resource/...'     # bumped path
+  controller: 'api_<api>/v3_and_more/provider/resource'  # souvent inchangé entre versions
   position: 400
   ping_url: &provider_ping_url 'https://...'   # anchor
   historique: |+                                 # NEW historique for vN
@@ -98,6 +100,7 @@ Each YAML file contains one or more endpoint entries (array of hashes).
   old_endpoint_uids:
     - 'provider/vN-2/resource'          # preserved from original
   path: '/vN-1/provider/resource/...'   # unchanged
+  controller: 'api_<api>/v3_and_more/provider/resource'  # même controller que vN si non renommé
   position: 401                         # main position + 1
   ping_url: *provider_ping_url          # alias
   perimeter: *provider_perimeter
@@ -124,6 +127,7 @@ Each YAML file contains one or more endpoint entries (array of hashes).
 8. **YAML aliases** (`*name`): used in the vN-1 entry for all shared fields.
 9. **historique**: vN gets a new one; vN-1 keeps the original.
 10. **path**: only the vN entry gets the bumped path.
+11. **controller**: nom du controller Rails siade (sans `#action`) — généralement identique entre vN et vN-1, mais à vérifier dans `siade/config/routes/api_<api>.rb`. Sert au dashboard fournisseur pour relier la fiche aux access_logs.
 11. **Anchor naming**: use a short prefix based on provider/resource (e.g. `&cnous_`, `&insee_etablissements_`).
 
 ## Validation

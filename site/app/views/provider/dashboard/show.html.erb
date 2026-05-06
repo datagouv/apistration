@@ -1,23 +1,22 @@
+<%
+  filter_query = request.query_parameters.except('controller', 'action').to_query
+  section_url = ->(action) {
+    base = controller_path == 'admin/provider_dashboards' \
+      ? url_for(controller: '/admin/provider_dashboards', action: "#{action}_section", id: current_provider.uid, only_path: true) \
+      : url_for(controller: '/provider/dashboard', action: "#{action}_section", provider_uid: current_provider.uid, only_path: true)
+    filter_query.empty? ? base : "#{base}?#{filter_query}"
+  }
+%>
 <div class="fr-grid-row fr-grid-row--gutters">
   <div class="fr-col-12">
-    <div class="fr-grid-row fr-grid-row--middle fr-mb-2w">
-      <div class="fr-col">
-        <h1><%= t('.title', name: current_provider.name) %></h1>
-      </div>
-    </div>
+    <h1><%= t('.title', name: current_provider.name) %></h1>
 
-    <div class="fr-grid-row">
-      <% @stats_facade.stats_metabase_urls.each do |kind, attributes| %>
-        <div class="fr-col-12 fr-mt-2v">
-          <h2>
-            <%= t(".stats.#{kind}.title") %>
-          </h2>
-          <p>
-            <%= t(".stats.#{kind}.description") %>
-          </p>
-          <%= render partial: 'shared/metabase', locals: attributes %>
-        </div>
+    <%= render 'provider/dashboard/filter', filter: @filter, provider: current_provider %>
+
+    <% ProviderDashboardFiltering::SECTIONS.each do |section| %>
+      <%= turbo_frame_tag "dashboard_#{section}", src: section_url.call(section), loading: :lazy do %>
+        <%= render 'provider/dashboard/loading', section: section %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

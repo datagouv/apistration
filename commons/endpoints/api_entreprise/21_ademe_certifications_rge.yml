@@ -2,6 +2,7 @@
 fiche:
   - uid: 'ademe/certifications_rge'
     path: '/v3/ademe/etablissements/{siret}/certification_rge'
+    controller: 'api_entreprise/v3_and_more/ademe/certificats_rge'
     ping_url: 'https://entreprise.api.gouv.fr/ping/ademe/certification_rge'
     position: 320
     perimeter:

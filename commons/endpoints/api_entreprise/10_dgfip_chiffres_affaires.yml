@@ -2,6 +2,7 @@
 fiche:
   - uid: 'dgfip/chiffres_affaires'
     path: '/v3/dgfip/etablissements/{siret}/chiffres_affaires'
+    controller: 'api_entreprise/v3_and_more/dgfip/chiffres_affaires'
     ping_url: 'https://entreprise.api.gouv.fr/ping/dgfip/chiffre_affaires'
     position: 210
     perimeter:

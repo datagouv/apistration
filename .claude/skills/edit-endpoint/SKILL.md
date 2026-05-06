@@ -34,6 +34,7 @@ grep -r "uid: 'provider/resource'" commons/endpoints/
 fiche:
   - uid: 'provider/resource'
     path: '/v3/provider/resource/{param}'
+    controller: 'api_entreprise/v3_and_more/provider/resource'  # cf. section dediee
     position: 501                    # ordre dans le catalogue
     opening: protected               # protected ou public
     provider_uids: ['provider']
@@ -66,6 +67,21 @@ fiche:
             title: "Titre"
             example: "valeur"
 ```
+
+## Champ `controller`
+
+Le `controller` doit pointer vers le controller Rails reel cote siade (sans
+`#action`). Sert au dashboard fournisseur pour relier la fiche aux
+`access_logs.controller`. Pour le retrouver :
+
+```bash
+cd siade && bundle exec rails routes | grep '<provider>'
+```
+
+Exemples :
+- `api_entreprise/v3_and_more/insee/etablissements`        (entreprise v3+)
+- `api_particulier/v3_and_more/cnav/quotient_familial`     (particulier v3+)
+- `api_particulier/v2/cnav/quotient_familial`              (particulier v2 legacy)
 
 ## Fiche metier
 

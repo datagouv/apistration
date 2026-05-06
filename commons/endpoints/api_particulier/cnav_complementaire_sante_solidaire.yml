@@ -5,6 +5,7 @@ fiche:
     old_endpoint_uids:
       - 'cnav/v2/complementaire_sante_solidaire'
     path: '/v3/dss/complementaire_sante_solidaire/identite'
+    controller: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility'
     position: 950
     ping_url: 'https://particulier.api.gouv.fr/api/securite_sociale_complementaire_sante_solidaire/ping'
 

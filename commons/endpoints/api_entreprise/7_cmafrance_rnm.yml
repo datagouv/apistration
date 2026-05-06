@@ -2,6 +2,7 @@
 fiche:
   - uid: 'cma_france/rnm'
     path: '/v3/cma_france/rnm/unites_legales/{siren}'
+    controller: 'api_entreprise/v3_and_more/rnm/entreprises_artisanales'
     position: 180
     perimeter:
       entity_type_description: |+

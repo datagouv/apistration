@@ -5,6 +5,7 @@ fiche:
     new_endpoint_uids: 
       - 'mesri/statut_etudiant'
     path: '/api/v2/etudiants'
+    controller: 'api_particulier/v2/mesri/student_status'
     position: 300
     ping_url: 'https://particulier.api.gouv.fr/api/mesri_statut_etudiant_ine/ping'
     perimeter:

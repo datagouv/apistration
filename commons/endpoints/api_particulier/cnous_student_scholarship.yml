@@ -6,6 +6,7 @@ fiche:
     old_endpoint_uids:
       - 'cnous/statut_etudiant_boursier_v3'
     path: '/v4/cnous/etudiant_boursier/identite'
+    controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility'
     position: 400
     ping_url: &cnous_ping_url 'https://particulier.api.gouv.fr/api/cnous_etudiant_boursier_ine/ping'
     historique: |+
@@ -85,6 +86,7 @@ fiche:
     old_endpoint_uids:
       - 'cnous/v2/statut_etudiant_boursier'
     path: '/v3/cnous/etudiant_boursier/identite'
+    controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility'
     position: 401
     ping_url: *cnous_ping_url
     perimeter: *cnous_perimeter

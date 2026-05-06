@@ -5,6 +5,7 @@ fiche:
     new_endpoint_uids:
       - 'education_nationale/statut_eleve_scolarise'
     path: '/api/v2/scolarites'
+    controller: 'api_particulier/v2/men/scolarites'
     ping_url: 'https://particulier.api.gouv.fr/api/men_scolarite/ping'
     position: 500
     alert:

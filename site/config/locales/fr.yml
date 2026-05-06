@@ -515,13 +515,85 @@ fr:
     dashboard:
       show:
         title: Statistiques et habilitations pour le fournisseur %{name}
-        stats:
-          main:
-            title: Globales
-            description: Statistiques globales d'utilisation permettant d'avoir un aperçu de l'usage des divers endpoints implémentés au sein d'API Entreprise
-          users:
-            title: Consommateurs
-            description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous)
-          habilitations:
-            title: Demandes et habilitations
-            description: Ensemble des demandes et habilitations ayant accès aux données lié à votre source de données.
+        loading: Chargement de la section %{section}…
+        kpis:
+          total: Appels totaux
+          unique: Appels uniques
+          cached: Appels en cache
+          success: Nombre d'appels en succès
+          not_found: Nombre d'appels non trouvé
+          errors: Nombre d'appels en échec
+          success_pct: Pourcentage d'appels en succès
+          not_found_pct: Pourcentage d'appels non trouvé
+          errors_pct: Pourcentage d'appels en échec
+          avg_duration: Moyenne de la durée d'appel
+          ms: "%{value} ms"
+      section_global:
+        title: Appels globaux
+        description: Inclut l'ensemble des appels sans disjonction, même ceux n'atteignant pas les serveurs du fournisseur de données (401, 403, 422).
+        charts:
+          evolution: Évolution nombre d'appels (total, unique et en cache)
+          per_endpoint: Nombre d'appels par endpoint
+          evolution_per_endpoint:
+            total: Évolution nombre d'appels total par endpoint
+            unique: Évolution nombre d'appels uniques par endpoint
+            cached: Évolution nombre d'appels en cache par endpoint
+      section_success:
+        title: Répartition succès / non-trouvés / erreurs
+        description: Inclut uniquement les appels résultant à un appel au fournisseur de données sous-jacent.
+        charts:
+          evolution_success: Évolution nombre d'appels (succès, non trouvé, erreur fournisseur)
+          success_per_endpoint: Nombre d'appels par endpoint (succès, non trouvé, erreur fournisseur)
+      section_duration:
+        title: Temps moyens
+        description: Inclut uniquement les appels en succès et non-trouvés.
+        charts:
+          evolution: Évolution durée d'appel moyenne
+          per_endpoint: Durée moyenne d'appel par endpoint
+      section_consumers:
+        title: Consommateurs
+        description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
+      section_habilitations:
+        title: Demandes et habilitations
+        description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
+      filter:
+        presets:
+          1m: 1 mois
+          3m: 3 mois
+          6m: 6 mois
+          12m: 12 mois
+          last_year: Année précédente
+        date_from: Date de début
+        date_to: Date de fin
+        interval: Intervalle
+        intervals:
+          jour: Jour
+          semaine: Semaine
+          mois: Mois
+        routes: Endpoints
+        apply: Appliquer
+        reset: Réinitialiser
+      consumers_table:
+        datapass_id: DataPass ID
+        intitule: Intitulé
+        email: Email demandeur
+        siret: SIRET
+        denomination: Raison sociale
+        total: Total
+        unique: Unique
+        empty: Aucun consommateur sur la période sélectionnée.
+      habilitations_table:
+        datapass_id: DataPass ID
+        intitule: Intitulé
+        siret: SIRET
+        denomination: Raison sociale
+        email: Email demandeur
+        status: Statut
+        scopes: Scopes
+        empty: Aucune habilitation correspondante.
+        statuses:
+          validated: Validée
+          submitted: Soumise
+          changes_requested: Modifications demandées
+          refused: Refusée
+          revoked: Révoquée

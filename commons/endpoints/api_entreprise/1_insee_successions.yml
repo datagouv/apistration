@@ -4,6 +4,7 @@ fiche:
     position: 143
     novelty: true
     path: "/v3/insee/sirene/etablissements/{siret}/successions"
+    controller: 'api_entreprise/v3_and_more/insee/successions'
     ping_url: "https://entreprise.api.gouv.fr/ping/insee/sirene"
     perimeter:
       entity_type_description: |+

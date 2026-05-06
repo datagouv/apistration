@@ -3,6 +3,7 @@ fiche:
   - uid: 'cnetp/attestations_cotisations_conges_payes_chomage_intemperies'
     ping_url: 'https://entreprise.api.gouv.fr/ping/cnetp/attestation_cotisations_conges_payes_chomage_intemperies'
     path: '/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies'
+    controller: 'api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies'
     position: 300
     perimeter:
       entity_type_description: |+

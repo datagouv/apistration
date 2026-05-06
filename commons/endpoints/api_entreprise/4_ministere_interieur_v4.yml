@@ -2,6 +2,7 @@
 fiche:
   - uid: 'djepva/associations'
     path: '/v4/djepva/api-association/associations/{siren_or_rna}'
+    controller: 'api_entreprise/v3_and_more/mi/unites_legales'
     ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
     position: 150
     perimeter: &association_perimeter
@@ -97,6 +98,7 @@ fiche:
           Vous pouvez l'orienter vers le [site officiel Le compte Asso](https://lecompteasso.associations.gouv.fr/declarer-un-changement-de-situation-de-mon-association/){:target="_blank"} où elle pourra déclarer son changement de situation.
   - uid: 'djepva/associations_open_data'
     path: '/v4/djepva/api-association/associations/open_data/{siren_or_rna}'
+    controller: 'api_entreprise/v3_and_more/mi/unites_legales_open_data'
     ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
     old_endpoint_uids:
       - 'ministere_interieur/rna'

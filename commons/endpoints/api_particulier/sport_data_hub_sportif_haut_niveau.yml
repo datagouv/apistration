@@ -8,6 +8,7 @@ fiche:
     parameters:
       - Identifiant PSQS
     path: '/v3/sdh/statut_sportif/identifiant'
+    controller: 'api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant'
     position: 601
     perimeter:
       entity_type_description: |+

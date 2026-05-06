@@ -5,6 +5,7 @@ fiche:
     new_endpoint_uids:
       - 'cnav/allocation_soutien_familial'
     path: '/api/v2/allocation-soutien-familial'
+    controller: 'api_particulier/v2/cnav/allocation_soutien_familial'
     ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
     position: 900
     perimeter:

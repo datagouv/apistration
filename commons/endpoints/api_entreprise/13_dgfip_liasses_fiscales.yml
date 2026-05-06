@@ -2,6 +2,7 @@
 fiche:
   - uid: "dgfip/liasses_fiscales"
     path: "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}"
+    controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales'
     ping_url: "https://entreprise.api.gouv.fr/ping/dgfip/liasses_fiscales"
     position: 240
     perimeter:

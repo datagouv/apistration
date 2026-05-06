@@ -23,7 +23,8 @@ RSpec.describe 'Admin: provider dashboards', app: :api_entreprise do
       first(:link, 'Tableau de bord').click
 
       expect(page).to have_css('h1')
-      expect(page).to have_css('iframe')
+      expect(page).to have_css('form')
+      expect(page).to have_content('Date de début')
     end
   end
 end

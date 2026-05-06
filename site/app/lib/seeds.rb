@@ -16,6 +16,7 @@ class Seeds
     create_editor_delegations
     create_editor_token
     create_audit_notifications
+    create_provider_dashboard_data
   end
 
   def flushdb
@@ -27,7 +28,8 @@ class Seeds
 
     ActiveRecord::Base.connection.transaction do
       MagicLink.delete_all
-      ApplicationRecord.descendants.each(&:delete_all)
+      views = ActiveRecord::Base.connection.views
+      ApplicationRecord.descendants.reject { |k| views.include?(k.table_name) }.each(&:delete_all)
       AccessLog.delete_all
     end
   end
@@ -340,6 +342,99 @@ class Seeds
     end
   end
   # rubocop:enable Metrics/AbcSize
+
+  # rubocop:disable Lint/UselessConstantScoping
+  INSEE_ENDPOINTS = %w[
+    api_entreprise/v3_and_more/insee/etablissements
+    api_entreprise/v3_and_more/insee/unites_legales
+    api_entreprise/v3_and_more/insee/successions
+  ].freeze
+
+  INSEE_SCOPES = %w[unites_legales_etablissements_insee open_data_unites_legales_etablissements_insee].freeze
+
+  INSEE_CONSUMERS = [
+    { external_id: '50001', intitule: 'Mairie de Bruges', siret: '21330075900015', email: 'demandeur1@yopmail.com' },
+    { external_id: '50002', intitule: 'Mairie de Paris', siret: '21750001600019', email: 'demandeur2@yopmail.com' },
+    { external_id: '50003', intitule: 'Mairie de Montpellier', siret: '21340172201787', email: 'demandeur3@yopmail.com' }
+  ].freeze
+  # rubocop:enable Lint/UselessConstantScoping
+
+  def create_provider_dashboard_data
+    return if AccessLog.new.readonly?
+
+    consumers = INSEE_CONSUMERS.map { |attrs| create_insee_consumer(attrs) }
+    consumers.each { |token| seed_access_logs_for(token) }
+    create_pending_insee_habilitations
+  end
+
+  def create_insee_consumer(attrs)
+    user = User.find_by(email: attrs[:email]) || create_user(
+      email: attrs[:email],
+      first_name: 'Demandeur',
+      last_name: attrs[:intitule]
+    )
+
+    create_token(
+      INSEE_SCOPES,
+      'entreprise',
+      demandeur: user,
+      authorization_request_params: {
+        intitule: attrs[:intitule],
+        external_id: attrs[:external_id],
+        status: :validated,
+        validated_at: 1.month.ago,
+        first_submitted_at: 1.month.ago,
+        siret: attrs[:siret]
+      }
+    )
+  end
+
+  def seed_access_logs_for(token)
+    14.times do |day_offset|
+      INSEE_ENDPOINTS.each do |controller|
+        per_day = rand(15..60)
+
+        per_day.times do
+          AccessLog.create!(seed_access_log_attributes(token, controller, day_offset))
+        end
+      end
+    end
+  end
+
+  def seed_access_log_attributes(token, controller, day_offset) # rubocop:disable Metrics/AbcSize
+    status = %w[200 200 200 200 200 200 200 404 404 502].sample
+    api_version = controller.start_with?('api_entreprise') ? 'v3' : 'v2'
+
+    {
+      timestamp: day_offset.days.ago - rand(0..23).hours - rand(0..59).minutes,
+      request_id: SecureRandom.uuid,
+      token:,
+      path: "/v3/#{controller.split('/').last}/#{rand(10_000_000..99_999_999)}",
+      controller:,
+      status:,
+      api_version:,
+      duration: rand(80..1500).to_s,
+      cached: rand < 0.15,
+      params: { 'recipient' => '13002526500013' }
+    }
+  end
+
+  def create_pending_insee_habilitations
+    [
+      { external_id: '50100', intitule: "Conseil départemental de l'Hérault", siret: '12000101100010', status: :submitted },
+      { external_id: '50101', intitule: 'Région Occitanie', siret: '13002526500013', status: :changes_requested }
+    ].each do |attrs|
+      create_authorization_request(
+        api: 'entreprise',
+        intitule: attrs[:intitule],
+        external_id: attrs[:external_id],
+        status: attrs[:status],
+        scopes: INSEE_SCOPES,
+        first_submitted_at: 1.week.ago,
+        siret: attrs[:siret]
+      )
+    end
+  end
 
   def load_all_models!
     Rails.root.glob('app/models/**/*.rb').each { |f| require f }

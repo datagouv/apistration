@@ -2,6 +2,7 @@
 fiche:
   - uid: 'inpi/rne/attestation_immatriculation'
     path: '/v3/inpi/rne/unites_legales/{siren}/extrait_rne'
+    controller: 'api_entreprise/v3_and_more/inpi/rne/extrait_rne'
     position: 102
     beta: true
     perimeter:

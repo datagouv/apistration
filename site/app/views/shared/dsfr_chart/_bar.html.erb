@@ -1,0 +1,18 @@
+<%# locals: (title:, categories:, series:, unit: nil, palette: nil, stacked: false) -%>
+<%# Each series: { label:, values: [...] } aligned with categories. -%>
+<%
+  x = [categories.map(&:to_s)]
+  y = series.map { |s| s[:values] }
+  names = series.map { |s| s[:label] }
+%>
+<figure class="fr-mb-3w">
+  <figcaption class="fr-text--lead"><%= title %></figcaption>
+  <bar-chart
+    x="<%= x.to_json %>"
+    y="<%= y.to_json %>"
+    name="<%= names.to_json %>"
+    <% if unit %>unit-tooltip="<%= unit %>"<% end %>
+    <% if palette %>selected-palette="<%= palette %>"<% end %>
+    <%= 'stacked="true"' if stacked %>>
+  </bar-chart>
+</figure>

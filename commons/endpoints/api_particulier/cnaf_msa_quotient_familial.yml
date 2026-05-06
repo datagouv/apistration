@@ -5,6 +5,7 @@ fiche:
     old_endpoint_uids:
       - 'cnav/v2/quotient_familial_v2'
     path: '/v3/dss/quotient_familial/identite'
+    controller: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility'
     ping_url: 'https://particulier.api.gouv.fr/api/cnaf_msa_quotient_familial/ping'
     position: 200
     perimeter:

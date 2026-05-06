@@ -2,6 +2,7 @@
 fiche:
   - uid: 'qualibat/v3/certifications_batiment'
     path: '/v3/qualibat/etablissements/{siret}/certification_batiment'
+    controller: 'api_entreprise/v3_and_more/qualibat/certifications_batiment'
     new_endpoint_uids:
       - 'qualibat/certifications_batiment'
     ping_url: &qualibat_ping_url 'https://entreprise.api.gouv.fr/ping/qualibat/certifications'
@@ -188,6 +189,7 @@ fiche:
     old_endpoint_uids:
       - 'qualibat/v3/certifications_batiment'
     path: '/v4/qualibat/etablissements/{siret}/certification_batiment'
+    controller: 'api_entreprise/v3_and_more/qualibat/certifications_batiment'
     historique: |+
       **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
       L'ajout de données extraites directement du PDF.

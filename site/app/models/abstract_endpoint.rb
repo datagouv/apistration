@@ -5,6 +5,7 @@ class AbstractEndpoint
 
   attr_accessor :uid,
     :path,
+    :controller,
     :beta,
     :alert,
     :novelty,

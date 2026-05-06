@@ -8,5 +8,5 @@
     remote:        data-remote
 -%>
 <li>
-  <%= link_to page, url, {remote: remote, rel: page.rel, 'aria-current': page.current?, class: 'fr-pagination__link' } %>
+  <%= link_to page, url, { remote: remote, rel: page.rel, 'aria-current': (page.current? ? 'page' : nil), class: 'fr-pagination__link' } %>
 </li>

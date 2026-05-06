@@ -5,6 +5,7 @@ fiche:
     old_endpoint_uids:
       - 'dgfip/v3/attestations_fiscales'
     path: '/v4/dgfip/unites_legales/{siren}/attestation_fiscale'
+    controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales'
     ping_url: &dgfip_attestation_ping_url 'https://entreprise.api.gouv.fr/ping/dgfip/attestation_fiscale'
     perimeter: &dgfip_attestation_perimeter
       entity_type_description: |+
@@ -168,6 +169,7 @@ fiche:
     new_endpoint_uids:
       - 'dgfip/attestations_fiscales'
     path: '/v3/dgfip/unites_legales/{siren}/attestation_fiscale'
+    controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales'
     ping_url: *dgfip_attestation_ping_url
     perimeter: *dgfip_attestation_perimeter
     opening: *dgfip_attestation_opening

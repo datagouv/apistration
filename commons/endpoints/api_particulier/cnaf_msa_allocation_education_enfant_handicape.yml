@@ -3,6 +3,7 @@ fiche:
   - uid: 'cnav/aeeh'
     opening: protected
     path: '/v3/dss/allocation_enfant_handicape/identite'
+    controller: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility'
     beta: true
     ping_url: https://particulier.api.gouv.fr/api/cnav_allocation_enfant_handicape/ping
     position: 501

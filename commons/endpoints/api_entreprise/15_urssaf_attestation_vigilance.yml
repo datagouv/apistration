@@ -6,6 +6,7 @@ fiche:
       - 'urssaf/v3/attestation_vigilance'
     position: 260
     path: '/v4/urssaf/unites_legales/{siren}/attestation_vigilance'
+    controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales'
     perimeter: &urssaf_attestation_perimeter
       entity_type_description: |+
         - ✅ les entreprises du régime général ;
@@ -247,6 +248,7 @@ fiche:
     new_endpoint_uids:
       - 'urssaf/attestation_vigilance'
     path: '/v3/urssaf/unites_legales/{siren}/attestation_vigilance'
+    controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales'
     perimeter: *urssaf_attestation_perimeter
     opening: *urssaf_attestation_opening
     call_id: *urssaf_attestation_call_id

@@ -10,15 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_15_133412) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
 
   create_table "access_logs", id: false, force: :cascade do |t|
+    t.string "api_version"
+    t.boolean "cached", default: false, null: false
+    t.string "controller"
+    t.string "duration"
+    t.jsonb "params", default: {}
     t.string "path", null: false
     t.uuid "request_id", null: false
+    t.string "status"
     t.timestamptz "timestamp", null: false
     t.uuid "token_id"
   end
@@ -317,4 +323,52 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_133412) do
   add_foreign_key "prolong_token_wizards", "tokens"
   add_foreign_key "user_authorization_request_roles", "authorization_requests"
   add_foreign_key "user_authorization_request_roles", "users"
+
+  create_view "consumption_summary", sql_definition: <<-SQL
+      SELECT date(al."timestamp") AS date,
+          CASE
+              WHEN (ar.external_id IS NOT NULL) THEN 'token'::text
+              ELSE 'france_connect'::text
+          END AS source_type,
+      COALESCE(ar.external_id, (((al.params -> 'france_connect_client'::text) ->> 'id'::text))::character varying) AS source_id,
+      al.controller AS api,
+      max((u.email)::text) AS email_demandeur,
+      max((ar.demarche)::text) AS demarche,
+      count(*) AS appels_totaux,
+      sum(
+          CASE
+              WHEN ((al.status)::text = '200'::text) THEN 1
+              ELSE 0
+          END) AS appels_succes,
+      sum(
+          CASE
+              WHEN ((al.status)::text = '404'::text) THEN 1
+              ELSE 0
+          END) AS appels_echecs,
+      sum(
+          CASE
+              WHEN al.cached THEN 1
+              ELSE 0
+          END) AS appels_cache,
+      count(DISTINCT COALESCE((al.params ->> 'hashed_params'::text), (al.path)::text)) AS appels_uniques,
+      (count(*) - count(DISTINCT COALESCE((al.params ->> 'hashed_params'::text), (al.path)::text))) AS appels_non_uniques,
+      avg(
+          CASE
+              WHEN ((al.status)::text = ANY ((ARRAY['200'::character varying, '404'::character varying])::text[])) THEN (al.duration)::double precision
+              ELSE NULL::double precision
+          END) AS avg_duration,
+      sum(
+          CASE
+              WHEN (((al.api_version)::text ~ '^v([3-9]|[1-9][0-9]+)$'::text) AND ((al.status)::text = '502'::text)) THEN 1
+              WHEN (((al.api_version)::text = 'v2'::text) AND ((al.status)::text = ANY ((ARRAY['503'::character varying, '504'::character varying])::text[]))) THEN 1
+              ELSE 0
+          END) AS appels_erreurs_fournisseur
+     FROM ((((access_logs al
+       LEFT JOIN tokens t ON ((al.token_id = t.id)))
+       LEFT JOIN authorization_requests ar ON ((t.authorization_request_model_id = ar.id)))
+       LEFT JOIN user_authorization_request_roles uar ON (((ar.id = uar.authorization_request_id) AND ((uar.role)::text = 'demandeur'::text))))
+       LEFT JOIN users u ON ((u.id = uar.user_id)))
+    WHERE ((al."timestamp" >= (now() + 'P-1Y-6M'::interval)) AND ((al.controller)::text <> ALL ((ARRAY['uptime'::character varying, 'ping'::character varying, 'errors'::character varying, 'api_particulier/introspect'::character varying, 'api_entreprise/proxied_files'::character varying, 'api_particulier/ping_providers'::character varying, 'api_entreprise/ping_providers'::character varying, 'api_entreprise/inpi_proxy'::character varying, 'api_particulier/france_connect_jwks'::character varying])::text[])))
+    GROUP BY (date(al."timestamp")), ar.external_id, COALESCE(ar.external_id, (((al.params -> 'france_connect_client'::text) ->> 'id'::text))::character varying), al.controller;
+  SQL
 end
