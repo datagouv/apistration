@@ -1,7 +1,11 @@
 class INSEE::MakeRequest < MakeRequest::Get
+  ROTATION_LOCK_KEY = 'insee/password_rotation_lock'.freeze
+  ROTATION_LOCK_TTL = 30
+
   def call
     super
 
+    rotate_password_if_needed!
     retry_with_new_token! if should_retry_with_new_token?
   end
 
@@ -71,6 +75,50 @@ class INSEE::MakeRequest < MakeRequest::Get
       fail_with_temporary_auth_error! if attempt == max_auth_attempts - 1
       sleep(0.2)
     end
+  end
+
+  def rotate_password_if_needed!
+    return unless password_rotation_needed?
+
+    return unless acquire_rotation_lock!
+
+    renew_context = INSEE::RenewPassword.call(
+      token: context.token,
+      old_password: INSEE::PasswordDerivation.previous_password,
+      new_password: INSEE::PasswordDerivation.current_password,
+      provider_name: context.provider_name
+    )
+
+    INSEE::Authenticate.invalidate_token_cache! if renew_context.success?
+  end
+
+  def password_rotation_needed?
+    return false if context.token.blank?
+    return false if INSEE::PasswordDerivation.current_period < INSEE::PasswordDerivation::DERIVATION_START
+
+    pwd_changed_period = pwd_changed_period_from_token
+    return false if pwd_changed_period.nil?
+
+    pwd_changed_period < INSEE::PasswordDerivation.current_period
+  end
+
+  def pwd_changed_period_from_token
+    payload = JWT.decode(context.token, nil, false).first
+    pwd_changed_time = payload['pwdChangedTime']
+    return if pwd_changed_time.nil?
+
+    date = Time.zone.parse(pwd_changed_time).to_date
+    INSEE::PasswordDerivation.send(:period_for, date)
+  rescue JWT::DecodeError
+    nil
+  end
+
+  def acquire_rotation_lock!
+    rotation_redis.set(ROTATION_LOCK_KEY, Process.pid, nx: true, ex: ROTATION_LOCK_TTL)
+  end
+
+  def rotation_redis
+    @rotation_redis ||= RedisService.new
   end
 
   def fail_with_temporary_auth_error!
