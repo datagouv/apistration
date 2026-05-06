@@ -12,7 +12,6 @@ on:
     paths:
       - 'siade/**'
       - 'commons/**'
-      - 'mocks/**'
 jobs:
   security:
     name: Brakeman
