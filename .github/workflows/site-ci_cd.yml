@@ -92,12 +92,6 @@ jobs:
           cache-version: 322
           working-directory: site
 
-      - name: Setup Nodejs
-        uses: actions/setup-node@v6.4.0
-
-      - name: Install mjml dependency
-        run: npm install mjml@4
-
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
 

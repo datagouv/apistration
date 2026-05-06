@@ -1,4 +1,4 @@
-<mj-button href=<%= login_url %>>
+<mj-button href="<%= login_url %>">
   <% if entity == "editeur" %>
     Se connecter au compte API Particulier
     <br />

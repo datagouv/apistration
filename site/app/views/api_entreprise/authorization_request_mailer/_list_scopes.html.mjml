@@ -1,7 +1,7 @@
 <% if @authorization_request_scopes %>
   <mj-text mj-class="section-block">
     <h2>
-      🔐 Cette habilitation donne accès aux API suivantes&nbsp;:</b>
+      🔐 Cette habilitation donne accès aux API suivantes&nbsp;:
     </h2>
     <ul>
       <% @all_scopes.each do |scope_key, scope_data| %>

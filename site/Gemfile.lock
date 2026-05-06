@@ -311,6 +311,13 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     mjml-rails (4.16.0)
+    mrml (1.10.0-aarch64-linux)
+    mrml (1.10.0-aarch64-linux-musl)
+    mrml (1.10.0-arm-linux)
+    mrml (1.10.0-arm64-darwin)
+    mrml (1.10.0-x86_64-darwin)
+    mrml (1.10.0-x86_64-linux)
+    mrml (1.10.0-x86_64-linux-musl)
     msgpack (1.8.0)
     multi_xml (0.8.0)
       bigdecimal (>= 3.1, < 5)
@@ -697,6 +704,7 @@ DEPENDENCIES
   logstasher (~> 3.0)
   mailjet
   mjml-rails
+  mrml
   omniauth-oauth2
   omniauth-proconnect
   omniauth-rails_csrf_protection
