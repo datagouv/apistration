@@ -324,7 +324,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
   add_foreign_key "user_authorization_request_roles", "authorization_requests"
   add_foreign_key "user_authorization_request_roles", "users"
 
-  create_view "consumption_summary", sql_definition: <<-SQL
+  create_view "admin_apientreprise_#{Rails.env}_access_logs_consumption_summary", sql_definition: <<-SQL
       SELECT date(al."timestamp") AS date,
           CASE
               WHEN (ar.external_id IS NOT NULL) THEN 'token'::text
