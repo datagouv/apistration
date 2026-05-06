@@ -1,0 +1,14 @@
+name: "API: Deploy on mocks change"
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'mocks/**'
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/_api-deploy.yml
+    secrets: inherit
+    with:
+      skip_production: true
