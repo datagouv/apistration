@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_100000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -70,6 +70,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
     t.index ["scopes"], name: "index_authorization_requests_on_scopes", using: :gin
   end
 
+  create_table "changelog_subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "disabled_at"
+    t.string "scope", null: false
+    t.string "unsubscribe_token", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.index ["unsubscribe_token"], name: "index_changelog_subscriptions_on_unsubscribe_token", unique: true
+    t.index ["user_id", "scope"], name: "index_changelog_subscriptions_on_user_id_and_scope_active", unique: true, where: "(disabled_at IS NULL)"
+  end
+
   create_table "editor_delegations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "authorization_request_id", null: false
     t.datetime "created_at", null: false
@@ -85,7 +96,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
     t.uuid "editor_id", null: false
     t.integer "exp", null: false
     t.integer "iat"
+    t.jsonb "scopes", default: [], null: false
     t.datetime "updated_at", null: false
+    t.index ["scopes"], name: "index_editor_tokens_on_scopes", using: :gin
   end
 
   create_table "editors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -208,6 +221,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
     t.string "scopes", default: "", null: false
     t.string "state"
     t.string "token", null: false
+    t.jsonb "token_ids", default: [], null: false
     t.index ["application_id"], name: "index_oauth_access_grants_on_application_id"
     t.index ["resource_owner_id"], name: "index_oauth_access_grants_on_resource_owner_id"
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
@@ -223,6 +237,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
     t.datetime "revoked_at"
     t.string "scopes"
     t.string "token", null: false
+    t.jsonb "token_ids", default: [], null: false
     t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
     t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
     t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
@@ -232,14 +247,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
   create_table "oauth_applications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "confidential", default: true, null: false
     t.datetime "created_at", null: false
-    t.uuid "editor_id"
     t.string "name", null: false
     t.text "redirect_uri", null: false
     t.string "scopes", default: "", null: false
     t.string "secret", null: false
     t.string "uid", null: false
     t.datetime "updated_at", null: false
-    t.index ["editor_id"], name: "index_oauth_applications_on_editor_id"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
@@ -312,9 +325,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_100001) do
   end
 
   add_foreign_key "authorization_request_security_settings", "authorization_requests"
+  add_foreign_key "changelog_subscriptions", "users", validate: false
   add_foreign_key "editor_delegations", "authorization_requests"
   add_foreign_key "editor_delegations", "editors"
-  add_foreign_key "editor_tokens", "editors"
   add_foreign_key "magic_links", "tokens"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"

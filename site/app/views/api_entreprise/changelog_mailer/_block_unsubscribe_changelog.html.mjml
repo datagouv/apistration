@@ -1,0 +1,12 @@
+<mj-section mj-class="section-block">
+  <mj-column>
+    <mj-text mj-class="secondary-link">
+      <p>
+        Vous recevez cet email car vous êtes inscrit à la newsletter hebdomadaire des nouveautés d'API Entreprise.
+        <a target="_blank" href="<%= changelog_unsubscribe_token_url(token: @subscription.unsubscribe_token) %>">
+          Se désinscrire
+        </a>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>

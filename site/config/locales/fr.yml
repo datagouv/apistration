@@ -41,6 +41,28 @@ fr:
         title: "Nouveautés"
         description: "L'historique des évolutions du service&nbsp;: nouvelles API, mises à jour de fiches, dépréciations et améliorations."
         empty: "Aucune nouveauté à afficher pour le moment."
+      subscription:
+        anonymous_html: "Vous pouvez recevoir les nouveautés par email&nbsp;: <a href=\"%{login_url}\">connectez-vous</a> pour vous inscrire à notre newsletter hebdomadaire automatique."
+        subscribe:
+          heading: "Recevoir les nouveautés par email"
+          description: "Inscrivez-vous à notre newsletter&nbsp;: un récapitulatif automatique des dernières nouveautés vous sera envoyé chaque lundi à 2h."
+          submit: "S'inscrire à la newsletter hebdomadaire"
+        subscribed:
+          heading: "Vous êtes inscrit à la newsletter"
+          description: "Vous recevez chaque lundi à 2h un récapitulatif automatique des nouveautés de la semaine précédente."
+          submit: "Se désinscrire"
+    changelog_subscriptions:
+      create:
+        success:
+          title: "Vous êtes inscrit à la newsletter des nouveautés."
+      destroy:
+        success:
+          title: "Vous êtes désinscrit de la newsletter des nouveautés."
+      destroy_via_token:
+        success:
+          title: "Vous êtes désinscrit de la newsletter des nouveautés."
+        error:
+          title: "Lien de désinscription invalide ou déjà utilisé."
     cas_usages:
       show:
         label: "Cas d'usage"

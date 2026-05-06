@@ -66,6 +66,9 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/blog/:id', to: 'blog_posts#show', as: :blog_post
 
     get '/nouveautes', to: 'changelogs#index', as: :changelogs
+    post '/nouveautes/inscription', to: 'changelog_subscriptions#create', as: :changelog_subscribe
+    delete '/nouveautes/inscription', to: 'changelog_subscriptions#destroy', as: :changelog_unsubscribe
+    get '/nouveautes/desinscription/:token', to: 'changelog_subscriptions#destroy_via_token', as: :changelog_unsubscribe_token
 
     get '/apis/status', to: 'pages#current_status', as: :current_status
 
