@@ -17,8 +17,7 @@ Permet de tester la fourniture d'un quotient familial de 150
     "sexeEtatCivil": "F",
     "nomNaissance": "MARTIN",
     "prenoms": [
-      "AXELLE",
-      "LAURENCE"
+      "AXELLE"
     ],
     "anneeDateNaissance": 1989,
     "moisDateNaissance": 12,
@@ -39,7 +38,7 @@ Permet de tester la fourniture d'un quotient familial de 150
         {
           "nom_naissance": "MARTIN",
           "nom_usage": null,
-          "prenoms": "AXELLE LAURENCE",
+          "prenoms": "AXELLE",
           "date_naissance": "1989-12-03",
           "sexe": "F"
         }
@@ -76,7 +75,7 @@ Permet de tester la fourniture d'un quotient familial de 150
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=35238' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=MARTIN' -d 'prenoms[]=AXELLE' -d 'prenoms[]=LAURENCE' -d 'anneeDateNaissance=1989' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=35238' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=MARTIN' -d 'prenoms[]=AXELLE' -d 'anneeDateNaissance=1989' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 
@@ -599,6 +598,111 @@ Ce cas permet de tester :
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13001' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=DUPONT' -d 'prenoms[]=SOPHIE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=9' -d 'jourDateNaissance=3' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
+* [200-famille-avec_espace_dans_le_nom.yaml](200-famille-avec_espace_dans_le_nom.yaml)
+
+  Status `200`
+
+  ## Famille CHAMPS BERGER avec trois enfants
+
+Ce cas permet de tester :
+- la gestion d'un nom de famille avec un espace
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "57463",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F",
+    "nomNaissance": "CHAMPS BERGER",
+    "prenoms": [
+      "MARIE"
+    ],
+    "anneeDateNaissance": 1988,
+    "moisDateNaissance": 12,
+    "jourDateNaissance": 1
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "MARIE",
+          "date_naissance": "1988-12-01",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2004-03-30",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "SARAH SOFIA",
+          "date_naissance": "2012-07-12",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "CHAMPS BERGER",
+          "nom_usage": null,
+          "prenoms": "LEA SOPHIE",
+          "date_naissance": "2018-11-25",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame CHAMPS BERGER MARIE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "12 RUE DE LA PAIX",
+        "lieu_dit": null,
+        "code_postal_ville": "57000 METZ",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 689,
+        "annee": 2026,
+        "mois": 4,
+        "annee_calcul": 2026,
+        "mois_calcul": 4
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=57463' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=CHAMPS+BERGER' -d 'prenoms[]=MARIE' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=12' -d 'jourDateNaissance=1' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 
