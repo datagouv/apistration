@@ -91,7 +91,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
         .where(source_type: 'token')
         .joins(<<~SQL.squish)
           JOIN authorization_requests
-            ON authorization_requests.external_id = consumption_summary.source_id
+            ON authorization_requests.external_id = #{ConsumptionSummary.table_name}.source_id
           JOIN user_authorization_request_roles
             ON user_authorization_request_roles.authorization_request_id = authorization_requests.id
             AND user_authorization_request_roles.role = 'demandeur'
@@ -107,7 +107,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
         'users.email',
         'organizations.insee_payload'
       )
-      .order(Arel.sql('COALESCE(SUM(consumption_summary.appels_totaux), 0) DESC'))
+      .order(Arel.sql("COALESCE(SUM(#{ConsumptionSummary.table_name}.appels_totaux), 0) DESC"))
       .pluck(
         'authorization_requests.external_id',
         'authorization_requests.public_id',
@@ -115,8 +115,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
         'authorization_requests.intitule',
         'users.email',
         Arel.sql("organizations.insee_payload->'etablissement'->'uniteLegale'->>'denominationUniteLegale'"),
-        Arel.sql('COALESCE(SUM(consumption_summary.appels_totaux), 0)'),
-        Arel.sql('COALESCE(SUM(consumption_summary.appels_uniques), 0)')
+        Arel.sql("COALESCE(SUM(#{ConsumptionSummary.table_name}.appels_totaux), 0)"),
+        Arel.sql("COALESCE(SUM(#{ConsumptionSummary.table_name}.appels_uniques), 0)")
       )
       .map do |row|
         {
