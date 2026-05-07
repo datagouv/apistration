@@ -70,6 +70,15 @@ fiche:
       - Identité pivot
       - FranceConnect
     faq:
+      - q: <a name="poids-parametres-identification"></a> Quels paramètres ont le plus de poids dans l'algorithme d'identification ?
+        a: |+
+          L'algorithme d'identification du fournisseur de données s'appuie sur l'ensemble des paramètres d'entrée, mais certains ont un **poids plus important** :
+
+          - **Nom de naissance** ;
+          - **Année de naissance** ;
+          - **Lieu de naissance**.
+
+          Si ces trois informations sont correctement fournies, le particulier peut être identifié même si les autres paramètres comportent des erreurs. En revanche, si ces informations ne sont pas renseignées ou sont erronées, **le risque de recevoir une réponse 404** _(dossier allocataire absent)_ **augmente significativement**.
       - q: <a name="renseigner-lieu-de-naissance"></a> Appel avec l'identité pivot, comment renseigner le lieu de naissance ?
         a: |+
          Lorsque l'API est appelée avec l'identité pivot, pour identifier correctement le particulier, le système d'information a besoin de récupérer le lieu de naissance du particulier.
