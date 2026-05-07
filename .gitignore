@@ -5,3 +5,4 @@ site/.env.local
 .env.local
 site/node_modules/
 .*_token
+.metabase
