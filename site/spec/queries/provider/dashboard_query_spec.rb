@@ -159,6 +159,22 @@ RSpec.describe Provider::DashboardQuery do
       expect(hab[:scopes]).to include('unites_legales_etablissements_insee')
     end
 
+    it 'narrows habilitations to scopes mapped to the selected routes' do
+      create(:authorization_request, :with_organization,
+        intitule: 'Unites only', external_id: 'AR-UNITES', api: 'entreprise',
+        siret: '13002526500013', scopes: ['entreprises'], status: :validated)
+
+      narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [insee_etablissements])
+      external_ids = described_class.new(provider, narrow).habilitations.pluck(:external_id)
+      expect(external_ids).to include('AR-1')
+      expect(external_ids).not_to include('AR-UNITES')
+    end
+
+    it 'returns no habilitation when the route filter excludes every provider controller' do
+      foreign = Provider::DashboardFilter.new(provider, 'entreprise', routes: [dgfip_chiffres])
+      expect(described_class.new(provider, foreign).habilitations).to be_empty
+    end
+
     it 'excludes draft and archived habilitations' do
       create(:authorization_request,
         intitule: 'Draft',

@@ -258,11 +258,19 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def habilitation_scope_clause
-    scopes = provider.scopes.presence
+    scopes = habilitation_scopes.presence
     return Arel.sql('1=0') if scopes.blank?
 
     array_literal = ActiveRecord::Base.sanitize_sql_array(['ARRAY[?]::text[]', scopes])
     Arel.sql("scopes ?| #{array_literal}")
+  end
+
+  def habilitation_scopes
+    controllers = requested_controllers
+    return provider.scopes if controllers.nil?
+    return [] if controllers.empty?
+
+    RouteScopesStore.scopes_for_controllers(controllers)
   end
 
   def filter_apis
