@@ -34,4 +34,24 @@ RSpec.describe '.expand file', type: :acceptance do
 
     expect(duplicates).to be_empty, "Duplicate destinations in .expand: #{duplicates.join(', ')}"
   end
+
+  it 'declares every symlink escaping the app root' do
+    app_root = Rails.root
+    dev_only = %w[AGENTS.md commons].map { |p| app_root.join(p).to_s }
+    declared = entries.to_set { |_src, dst| app_root.join(dst).cleanpath.to_s }
+
+    undeclared = Dir.glob(app_root.join('**/*'), File::FNM_DOTMATCH).filter_map do |path|
+      next unless File.symlink?(path)
+      next if dev_only.include?(path)
+
+      lexical_target = Pathname.new(File.expand_path(File.readlink(path), File.dirname(path))).cleanpath.to_s
+      next if lexical_target == app_root.to_s || lexical_target.start_with?("#{app_root}/")
+      next if declared.include?(Pathname.new(path).cleanpath.to_s)
+
+      Pathname.new(path).relative_path_from(app_root).to_s
+    end
+
+    expect(undeclared).to be_empty,
+      "Symlinks escaping the app root must be declared in .expand: #{undeclared.join(', ')}"
+  end
 end
