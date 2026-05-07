@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-07
+
+### Fixed
+- CNAV DSS (`dss.*_identite`) : `code_cog_insee_pays_naissance` is
+  required again — the 0.1.1 change was incorrect and has been reverted
+  upstream.
+
 ## [0.1.1] - 2026-05-05
 
 ### Changed
