@@ -34,26 +34,6 @@ RSpec.describe APIParticulier::V3AndMore::CNAV::AbstractCivilityController do
   let(:token) { yes_jwt }
 
   describe '#show' do
-    context 'with valid params without birth place' do
-      let(:params) do
-        {
-          recipient:,
-          nomNaissance: 'DUPONT',
-          prenoms: %w[MARIE CLAIRE],
-          anneeDateNaissance: '1990',
-          moisDateNaissance: '03',
-          jourDateNaissance: '15',
-          sexeEtatCivil: 'F'
-        }
-      end
-
-      it 'returns 200' do
-        subject
-
-        expect(response).to have_http_status(:ok)
-      end
-    end
-
     context 'with valid params without transcogage' do
       let(:params) do
         {
