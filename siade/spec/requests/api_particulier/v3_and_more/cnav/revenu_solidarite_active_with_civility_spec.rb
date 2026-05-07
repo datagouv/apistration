@@ -27,6 +27,7 @@ RSpec.describe 'API Particulier CNAV: Revenu de solidarité active with civility
           nomNaissance
           prenoms
           sexeEtatCivil
+          codeCogInseePaysNaissance
         ],
         api: 'cnav'
       )

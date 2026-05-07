@@ -6,14 +6,6 @@
 
     Les ports dans d'autres langages (Node, Python, PHP, Java) suivront le contrat normatif [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md).
 
-- date: 2026-05-04
-  scope: api_particulier
-  title: "CNAV : lieu de naissance optionnel"
-  description: |
-    Le **lieu de naissance** n'est désormais plus obligatoire dans les appels aux endpoints CNAV (allocation adulte handicapé, prime d'activité, RSA, allocation de soutien familial, complémentaire santé solidaire). Il reste néanmoins **fortement recommandé** : le nom de naissance, l'année de naissance et le lieu de naissance sont les paramètres qui pèsent le plus dans l'algorithme d'identification du fournisseur.
-
-    Consultez la FAQ « Quels paramètres ont le plus de poids dans l'algorithme d'identification ? » disponible sur chaque [fiche CNAV](<%= endpoint_path(uid: 'cnav/allocation_adulte_handicape') %>) pour plus de détails.
-
 - date: 2026-04-27
   scope: api_particulier
   title: "CNOUS : nouveau paramètre `campaignYear`"

@@ -1,14 +1,6 @@
 RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams, type: :validate_param_interactor do
   subject { described_class.call(params:) }
 
-  describe 'without any birth place info' do
-    let(:params) { {} }
-
-    it { is_expected.to be_a_success }
-
-    its(:errors) { is_expected.to be_empty }
-  end
-
   describe 'with code insee lieu de naissance' do
     let(:params) { { code_cog_insee_commune_naissance:, code_cog_insee_pays_naissance: '99100' } }
 

@@ -11,8 +11,6 @@ class CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams < ValidatePa
   private
 
   def call_validator
-    return nil if no_birth_place_info?
-
     if code_cog_insee_commune_naissance? || !france?
       CNAV::ValidateCodeCogINSEECommuneNaissance.call(params: context.params)
     elsif transcogage_params?
@@ -20,10 +18,6 @@ class CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams < ValidatePa
     else
       invalid_param!(:birth_place)
     end
-  end
-
-  def no_birth_place_info?
-    code_cog_insee_pays_naissance.blank?
   end
 
   def code_cog_insee_commune_naissance?
