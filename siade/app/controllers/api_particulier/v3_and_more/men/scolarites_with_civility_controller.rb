@@ -12,10 +12,6 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIPart
 
   private
 
-  def transcogage?
-    false
-  end
-
   def organizer_params
     civility_parameters
       .merge({
