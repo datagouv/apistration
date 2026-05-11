@@ -12,10 +12,6 @@ class APIParticulier::V3AndMore::GIPMDS::ServiceCiviqueWithCivilityController < 
 
   private
 
-  def transcogage?
-    false
-  end
-
   def organizer_params
     civility_parameters
   end

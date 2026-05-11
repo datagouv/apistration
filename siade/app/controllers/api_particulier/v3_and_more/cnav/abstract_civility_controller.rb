@@ -12,10 +12,6 @@ class APIParticulier::V3AndMore::CNAV::AbstractCivilityController < APIParticuli
 
   protected
 
-  def transcogage?
-    false
-  end
-
   def cache_key
     "#{request.path}:#{api_params.to_query}"
   end

@@ -1,5 +1,6 @@
 class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
+  include APIParticulier::Transcogage
 
   def show
     if organizer.success?
@@ -8,12 +9,6 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
     else
       render_errors(organizer)
     end
-  end
-
-  protected
-
-  def transcogage?
-    true
   end
 
   private
