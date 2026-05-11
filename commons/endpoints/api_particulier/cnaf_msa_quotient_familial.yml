@@ -203,7 +203,7 @@ fiche:
                 {:.fr-icon-arrow-right-line .fr-link--icon-right}
                 [✒️ **Aider les usagers à renseigner leur lieu de naissance par code COG** - Lire la publication du 08/11/2023](https://particulier.api.gouv.fr/blog/parametre-lieu-naissance-code-cog){:target="_blank"}
 
-              - *Option 2 : L'API est appelée avec le nom de la commune de naissance et le code du département de naissance*. La date de naissance est obligatoire car c'est elle qui permettra à l'API de faire la correspondance avec le bon code COG.
+              - *Option 2 : L'API est appelée avec le nom de la commune de naissance et le code du département de naissance*. La date de naissance (a minima l'année) est obligatoire car c'est elle qui permettra à l'API de faire la correspondance avec le bon code COG. Ce mécanisme est appelé **transcogage** : à partir du triplet _(nom de la commune de naissance, année de naissance, code du département de naissance)_, l'API interroge le référentiel des métadonnées de l'INSEE pour retrouver le code COG de la commune à l'année de naissance. Si plusieurs communes correspondent au nom fourni, le code département permet de lever l'ambiguïté. Cette option ne fonctionne que pour les particuliers nés en France.
 
           - **Pour les particuliers nés à l'étranger**: le code COG pays est obigatoire.
 
