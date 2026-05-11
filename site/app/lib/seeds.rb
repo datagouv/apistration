@@ -353,17 +353,26 @@ class Seeds
   INSEE_SCOPES = %w[unites_legales_etablissements_insee open_data_unites_legales_etablissements_insee].freeze
 
   INSEE_CONSUMERS = [
-    { external_id: '50001', intitule: 'Mairie de Bruges', siret: '21330075900015', email: 'demandeur1@yopmail.com' },
-    { external_id: '50002', intitule: 'Mairie de Paris', siret: '21750001600019', email: 'demandeur2@yopmail.com' },
-    { external_id: '50003', intitule: 'Mairie de Montpellier', siret: '21340172201787', email: 'demandeur3@yopmail.com' }
+    { external_id: '50001', intitule: 'Mairie de Bruges', siret: '21330075900015', email: 'demandeur1@yopmail.com', validated_days_ago: 70 },
+    { external_id: '50002', intitule: 'Mairie de Paris', siret: '21750001600019', email: 'demandeur2@yopmail.com', validated_days_ago: 35 },
+    { external_id: '50003', intitule: 'Mairie de Montpellier', siret: '21340172201787', email: 'demandeur3@yopmail.com', validated_days_ago: 5 }
+  ].freeze
+
+  INSEE_PENDING_HABILITATIONS = [
+    { external_id: '50100', intitule: "Conseil départemental de l'Hérault", siret: '12000101100010', status: :submitted, submitted_days_ago: 2 },
+    { external_id: '50101', intitule: 'Région Occitanie', siret: '13002526500013', status: :changes_requested, submitted_days_ago: 20 },
+    { external_id: '50102', intitule: 'Ville de Toulouse', siret: '21310555400017', status: :refused, submitted_days_ago: 50, validated_days_ago: nil },
+    { external_id: '50103', intitule: 'Métropole de Lille', siret: '21590350200014', status: :revoked, submitted_days_ago: 80, validated_days_ago: 75 }
   ].freeze
   # rubocop:enable Lint/UselessConstantScoping
 
   def create_provider_dashboard_data
     return if AccessLog.new.readonly?
 
-    consumers = INSEE_CONSUMERS.map { |attrs| create_insee_consumer(attrs) }
-    consumers.each { |token| seed_access_logs_for(token) }
+    INSEE_CONSUMERS.each do |attrs|
+      token = create_insee_consumer(attrs)
+      seed_access_logs_for(token, attrs[:validated_days_ago])
+    end
     create_pending_insee_habilitations
   end
 
@@ -374,6 +383,8 @@ class Seeds
       last_name: attrs[:intitule]
     )
 
+    submitted_at = (attrs[:validated_days_ago] + 7).days.ago
+
     create_token(
       INSEE_SCOPES,
       'entreprise',
@@ -382,17 +393,17 @@ class Seeds
         intitule: attrs[:intitule],
         external_id: attrs[:external_id],
         status: :validated,
-        validated_at: 1.month.ago,
-        first_submitted_at: 1.month.ago,
+        validated_at: attrs[:validated_days_ago].days.ago,
+        first_submitted_at: submitted_at,
         siret: attrs[:siret]
       }
     )
   end
 
-  def seed_access_logs_for(token)
-    14.times do |day_offset|
+  def seed_access_logs_for(token, since_days_ago)
+    since_days_ago.times do |day_offset|
       INSEE_ENDPOINTS.each do |controller|
-        per_day = rand(15..60)
+        per_day = rand(3..15)
 
         per_day.times do
           AccessLog.create!(seed_access_log_attributes(token, controller, day_offset))
@@ -420,17 +431,15 @@ class Seeds
   end
 
   def create_pending_insee_habilitations
-    [
-      { external_id: '50100', intitule: "Conseil départemental de l'Hérault", siret: '12000101100010', status: :submitted },
-      { external_id: '50101', intitule: 'Région Occitanie', siret: '13002526500013', status: :changes_requested }
-    ].each do |attrs|
+    INSEE_PENDING_HABILITATIONS.each do |attrs|
       create_authorization_request(
         api: 'entreprise',
         intitule: attrs[:intitule],
         external_id: attrs[:external_id],
         status: attrs[:status],
         scopes: INSEE_SCOPES,
-        first_submitted_at: 1.week.ago,
+        first_submitted_at: attrs[:submitted_days_ago].days.ago,
+        validated_at: attrs[:validated_days_ago]&.days&.ago,
         siret: attrs[:siret]
       )
     end
