@@ -136,6 +136,7 @@ RSpec.describe Provider::DashboardQuery do
         api: 'entreprise',
         siret: '13002526500013',
         scopes: ['unites_legales_etablissements_insee'],
+        first_submitted_at: 1.day.ago,
         status: :validated)
     end
 
@@ -162,6 +163,7 @@ RSpec.describe Provider::DashboardQuery do
     it 'narrows habilitations to scopes mapped to the selected routes' do
       create(:authorization_request, :with_organization,
         intitule: 'Unites only', external_id: 'AR-UNITES', api: 'entreprise',
+        first_submitted_at: 1.day.ago,
         siret: '13002526500013', scopes: ['entreprises'], status: :validated)
 
       narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [insee_etablissements])
@@ -173,6 +175,42 @@ RSpec.describe Provider::DashboardQuery do
     it 'returns no habilitation when the route filter excludes every provider controller' do
       foreign = Provider::DashboardFilter.new(provider, 'entreprise', routes: [dgfip_chiffres])
       expect(described_class.new(provider, foreign).habilitations).to be_empty
+    end
+
+    describe 'consumers_evolution' do
+      it 'counts distinct token consumers per bucket' do
+        result = query.consumers_evolution
+        expect(result).to be_present
+        expect(result.first.keys).to contain_exactly(:bucket, :value)
+        expect(result.sum { |r| r[:value] }).to be_positive
+      end
+    end
+
+    describe 'habilitations_evolution' do
+      it 'counts validated habilitations per bucket, ignoring revoked' do
+        authorization_request.update!(validated_at: 3.days.ago)
+        create(:authorization_request,
+          intitule: 'Revoked',
+          external_id: 'AR-REVOKED',
+          api: 'entreprise',
+          siret: '13002526500013',
+          scopes: ['unites_legales_etablissements_insee'],
+          validated_at: 2.days.ago,
+          status: :revoked)
+
+        result = query.habilitations_evolution
+        expect(result.sum { |r| r[:value] }).to eq(1)
+      end
+
+      it 'excludes habilitations validated outside the date range' do
+        authorization_request.update!(validated_at: 2.months.ago)
+        expect(query.habilitations_evolution).to be_empty
+      end
+    end
+
+    it 'excludes habilitations submitted outside the date range' do
+      authorization_request.update!(first_submitted_at: 2.months.ago)
+      expect(query.habilitations.pluck(:external_id)).not_to include('AR-1')
     end
 
     it 'excludes draft and archived habilitations' do

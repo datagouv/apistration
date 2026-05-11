@@ -1,8 +1,19 @@
-<% habilitations = @query.habilitations(page: params[:page]) %>
+<%
+  habilitations = @query.habilitations(page: params[:page])
+  fmt = ->(b) { dashboard_bucket_label(b, @filter.interval) }
+%>
 <%= turbo_frame_tag 'dashboard_habilitations' do %>
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
     <p><%= t('.description') %></p>
+
+    <%= render 'shared/dsfr_chart/line',
+      title: t('.charts.evolution'),
+      series: [
+        { label: t('.charts.evolution_series'),
+          points: @query.habilitations_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } }
+      ] %>
+
     <p>
       <%= link_to t('.download_csv'),
                   provider_habilitations_csv_path(provider_uid: @filter.provider.uid, filter: filter_params),
