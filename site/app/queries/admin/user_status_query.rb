@@ -72,7 +72,7 @@ class Admin::UserStatusQuery
 
     now = Time.current.to_i
     active = scope.where(blacklisted_at: nil).where('exp > ?', now).count
-    expired = scope.where(blacklisted_at: nil).where('exp <= ?', now).count
+    expired = scope.where(blacklisted_at: nil).where(exp: ..now).count
     blacklisted = scope.where.not(blacklisted_at: nil).count
 
     [
