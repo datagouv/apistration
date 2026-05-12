@@ -21,8 +21,8 @@ RSpec.describe 'API Particulier', app: :api_particulier do
 
       expect(page.html).to include('metabase.entreprise.api.gouv.fr')
 
-      expect(page).to have_content('Quotient Familial')
-      expect(page).to have_no_content('France travail')
+      expect(page).to have_text('Quotient Familial')
+      expect(page).to have_no_text('France travail')
     end
   end
 
@@ -36,8 +36,8 @@ RSpec.describe 'API Particulier', app: :api_particulier do
 
       expect(page.html).to include('metabase.entreprise.api.gouv.fr')
 
-      expect(page).to have_content('Quotient Familial')
-      expect(page).to have_content('France travail')
+      expect(page).to have_text('Quotient Familial')
+      expect(page).to have_text('France travail')
     end
   end
 

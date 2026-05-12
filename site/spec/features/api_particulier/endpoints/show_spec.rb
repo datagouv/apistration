@@ -21,7 +21,7 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
   end
 
   it "displays cas d'usage" do
-    expect(page).to have_content('Tarification cantine')
+    expect(page).to have_text('Tarification cantine')
   end
 
   describe 'each endpoint V2' do

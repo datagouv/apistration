@@ -20,7 +20,7 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
     expect(page).to have_css('#property_attribute_type')
 
     within('#property_attribute_type') do
-      expect(page).to have_content(endpoint.attributes['type']['description'])
+      expect(page).to have_text(endpoint.attributes['type']['description'])
     end
   end
 
@@ -62,8 +62,8 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
         click_link 'example_link'
 
         within('#main-modal-content') do
-          expect(page).to have_content('"type": "personne_morale"')
-          expect(page).to have_content('"type": "personne_physique"')
+          expect(page).to have_text('"type": "personne_morale"')
+          expect(page).to have_text('"type": "personne_physique"')
         end
       end
     end
@@ -73,7 +73,7 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
         click_link 'cgu_link'
 
         within('#main-modal-content') do
-          expect(page).to have_content('Conditions générales')
+          expect(page).to have_text('Conditions générales')
         end
       end
     end

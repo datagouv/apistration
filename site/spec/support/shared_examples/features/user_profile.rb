@@ -33,7 +33,7 @@ RSpec.shared_examples 'a user profile feature' do |options = {}|
       it 'displays the user infos' do
         go_to_profile
 
-        expect(page).to have_content(user.email)
+        expect(page).to have_text(user.email)
       end
     end
   end

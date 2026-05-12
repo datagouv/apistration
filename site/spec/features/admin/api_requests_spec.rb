@@ -22,7 +22,7 @@ RSpec.describe 'Admin: API requests' do
       it 'displays the API requests form with endpoint selector' do
         visit admin_api_requests_path
 
-        expect(page).to have_content('Requêtes API')
+        expect(page).to have_text('Requêtes API')
         expect(page).to have_select('endpoint_uid')
         expect(page).to have_no_select('api')
         expect(page).to have_field('Contexte', with: 'Débugging')
@@ -49,10 +49,10 @@ RSpec.describe 'Admin: API requests' do
         fill_in 'siren', with: '130025265'
         click_on 'Envoyer la requête'
 
-        expect(page).to have_content('200')
-        expect(page).to have_content('130025265')
-        expect(page).to have_no_content('"context"')
-        expect(page).to have_no_content('"object"')
+        expect(page).to have_text('200')
+        expect(page).to have_text('130025265')
+        expect(page).to have_no_text('"context"')
+        expect(page).to have_no_text('"object"')
 
         expect(
           a_request(:get, %r{#{siade_entreprise_url}/v3/insee/sirene/unites_legales/130025265})
@@ -72,9 +72,9 @@ RSpec.describe 'Admin: API requests' do
           }
         )
 
-        expect(page).to have_content('200')
-        expect(page).to have_no_content('"object"')
-        expect(page).to have_no_content('hacked_object')
+        expect(page).to have_text('200')
+        expect(page).to have_no_text('"object"')
+        expect(page).to have_no_text('hacked_object')
 
         expect(
           a_request(:get, %r{#{siade_entreprise_url}/v3/insee/sirene/unites_legales/130025265})
@@ -88,7 +88,7 @@ RSpec.describe 'Admin: API requests' do
         visit admin_api_requests_path(endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}')
 
         expect(page).to have_field('siren')
-        expect(page).to have_content('siren')
+        expect(page).to have_text('siren')
       end
     end
   end
@@ -119,8 +119,8 @@ RSpec.describe 'Admin: API requests' do
 
         click_on 'Envoyer la requête'
 
-        expect(page).to have_content('200')
-        expect(page).to have_content('1500')
+        expect(page).to have_text('200')
+        expect(page).to have_text('1500')
 
         expect(
           a_request(:get, %r{#{siade_particulier_url}/v3/dss/quotient_familial/identite})
@@ -143,7 +143,7 @@ RSpec.describe 'Admin: API requests' do
         visit admin_api_requests_path(endpoint_uid: '/v3/dss/quotient_familial/identite')
 
         expect(page).to have_field('nomNaissance')
-        expect(page).to have_content('nomNaissance')
+        expect(page).to have_text('nomNaissance')
       end
     end
   end

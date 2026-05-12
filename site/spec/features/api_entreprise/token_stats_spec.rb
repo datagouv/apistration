@@ -11,8 +11,8 @@ RSpec.describe 'Stats page for a token', app: :api_entreprise do
   end
 
   it 'displays the token details (happy path)' do
-    expect(page).to have_content(token.intitule)
-    expect(page).to have_content(token.id)
+    expect(page).to have_text(token.intitule)
+    expect(page).to have_text(token.id)
   end
 
   context 'with another user' do

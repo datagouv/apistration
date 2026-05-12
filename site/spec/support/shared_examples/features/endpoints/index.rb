@@ -40,7 +40,7 @@ RSpec.shared_examples 'an endpoints index feature' do |api_module|
     expect(page).to have_css("##{dom_id(sample_endpoint)}")
 
     within("##{dom_id(sample_endpoint)}") do
-      expect(page).to have_content(sample_endpoint.title)
+      expect(page).to have_text(sample_endpoint.title)
       expect(page).to have_link('', href: endpoint_path(uid: sample_endpoint.uid))
     end
   end

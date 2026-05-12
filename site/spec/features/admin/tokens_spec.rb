@@ -18,9 +18,9 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
       view_tokens
 
       expect(page).to have_current_path(admin_user_tokens_path(user))
-      expect(page).to have_content(user.email)
+      expect(page).to have_text(user.email)
       expect(page).to have_css('.token', count: 1)
-      expect(page).to have_content(authorization_request.intitule)
+      expect(page).to have_text(authorization_request.intitule)
     end
 
     it 'displays obfuscated token rehash' do
@@ -28,14 +28,14 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
 
       rehash = token.rehash
       obfuscated = "...#{rehash[-30..]}"
-      expect(page).to have_content(obfuscated)
+      expect(page).to have_text(obfuscated)
     end
 
     it 'shows active status for active tokens' do
       view_tokens
 
       within("##{dom_id(token)}") do
-        expect(page).to have_content('Actif')
+        expect(page).to have_text('Actif')
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
         view_tokens
 
         within("##{dom_id(token)}") do
-          expect(page).to have_content('Inactif')
+          expect(page).to have_text('Inactif')
           expect(page).to have_no_link('Bannir')
         end
       end
@@ -178,7 +178,7 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
       click_on 'create-token'
 
       within('#main-modal-content') do
-        expect(page).to have_content('unites_legales, associations')
+        expect(page).to have_text('unites_legales, associations')
       end
     end
 
@@ -222,9 +222,9 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
         expect(page).to have_select('authorization_request_id', with_options: [
           "#{authorization_request.intitule} (DataPass ##{authorization_request.external_id})"
         ])
-        expect(page).to have_no_content(revoked_ar.intitule)
-        expect(page).to have_no_content(archived_ar.intitule)
-        expect(page).to have_no_content(draft_ar.intitule)
+        expect(page).to have_no_text(revoked_ar.intitule)
+        expect(page).to have_no_text(archived_ar.intitule)
+        expect(page).to have_no_text(draft_ar.intitule)
       end
     end
   end

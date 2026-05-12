@@ -24,7 +24,7 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
       click_on 'Ajouter'
 
       expect(page).to have_css('.fr-alert--success')
-      expect(page).to have_content('UMAD Corp')
+      expect(page).to have_text('UMAD Corp')
       expect(page).to have_css('.fr-badge--green-emeraude', text: 'Actif')
     end
 
@@ -34,7 +34,7 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
       it 'displays the active delegation' do
         visit authorization_request_path(authorization_request)
 
-        expect(page).to have_content('UMAD Corp')
+        expect(page).to have_text('UMAD Corp')
         expect(page).to have_css('.fr-badge--green-emeraude', text: 'Actif')
       end
 

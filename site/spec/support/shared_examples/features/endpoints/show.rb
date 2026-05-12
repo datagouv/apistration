@@ -12,7 +12,7 @@ RSpec.shared_examples 'an endpoints show feature' do |api_module, default_uid, e
   end
 
   it 'displays basic information' do
-    expect(page).to have_content(endpoint.title)
+    expect(page).to have_text(endpoint.title)
   end
 
   it 'displays link to test cases' do
@@ -53,7 +53,7 @@ RSpec.shared_examples 'an endpoints show feature' do |api_module, default_uid, e
         click_link 'example_link'
 
         within('#main-modal-content') do
-          expect(page).to have_content(example_content)
+          expect(page).to have_text(example_content)
         end
       end
     end

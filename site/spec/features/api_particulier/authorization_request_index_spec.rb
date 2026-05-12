@@ -49,7 +49,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         go_to_authorization_requests_index
         expect(page).to have_current_path(api_particulier_authorization_requests_path, ignore_query: true)
 
-        expect(page).to have_content("Vous n'avez aucune habilitation")
+        expect(page).to have_text("Vous n'avez aucune habilitation")
       end
     end
 
@@ -128,7 +128,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
 
         expect(page).to have_current_path(api_particulier_authorization_requests_path, ignore_query: true)
 
-        expect(page).to have_content('Habilitations API Particulier (5)')
+        expect(page).to have_text('Habilitations API Particulier (5)')
 
         authorization_requests.each do |ar|
           expect(page).to have_css('#' << dom_id(ar))

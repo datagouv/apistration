@@ -107,7 +107,7 @@ RSpec.describe 'follows the prolong token wizard' do
 
             click_link('finished_prolong_token_wizard')
 
-            expect(page).to have_content('Votre jeton a été prolongé')
+            expect(page).to have_text('Votre jeton a été prolongé')
             expect(token.reload.exp).to eq(18.months.from_now.to_i)
             expect(token.reload.days_left_notification_sent).to be_empty
           end
@@ -121,7 +121,7 @@ RSpec.describe 'follows the prolong token wizard' do
           it 'follows update path' do
             fill_wizard
 
-            expect(page).to have_content('de la nature du projet (titre et description)')
+            expect(page).to have_text('de la nature du projet (titre et description)')
 
             expect(token.reload.exp).to eq(exp)
           end
@@ -157,7 +157,7 @@ RSpec.describe 'follows the prolong token wizard' do
 
             click_link('finished_prolong_token_wizard')
 
-            expect(page).to have_content('Votre jeton a été prolongé')
+            expect(page).to have_text('Votre jeton a été prolongé')
             expect(page).to have_css('#prolonged_to_authorization_request')
 
             expect(token.reload.exp).to be_within(2.seconds).of(18.months.from_now.to_i)
@@ -171,7 +171,7 @@ RSpec.describe 'follows the prolong token wizard' do
           it 'follows update path' do
             fill_wizard
 
-            expect(page).to have_content('de la nature du projet (titre et description)')
+            expect(page).to have_text('de la nature du projet (titre et description)')
 
             expect(token.reload.exp).to eq(exp)
           end

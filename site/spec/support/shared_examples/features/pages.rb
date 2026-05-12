@@ -21,8 +21,8 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
       it "mentions #{options[:expected_api_name]} and not #{options[:unexpected_api_name]}" do
         visit newsletter_path
 
-        expect(page).to have_content(options[:expected_api_name])
-        expect(page).to have_no_content(options[:unexpected_api_name])
+        expect(page).to have_text(options[:expected_api_name])
+        expect(page).to have_no_text(options[:unexpected_api_name])
       end
     end
   end
@@ -33,7 +33,7 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
       it 'does not raise error and shows correct API name' do
         visit root_path
 
-        expect(page).to have_content(options[:expected_api_name])
+        expect(page).to have_text(options[:expected_api_name])
       end
     end
   end
@@ -46,7 +46,7 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
           visit '/compte'
         }.not_to raise_error
 
-        expect(page).to have_content(options[:expected_api_name])
+        expect(page).to have_text(options[:expected_api_name])
       end
     end
   end
@@ -59,7 +59,7 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
           visit developers_openapi_path
         }.not_to raise_error
 
-        expect(page).to have_content(options[:developers_content]) if options[:developers_content]
+        expect(page).to have_text(options[:developers_content]) if options[:developers_content]
       end
     end
   end
@@ -76,7 +76,7 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
           end
         }.not_to raise_error
 
-        expect(page).to have_content(page_config[:content]) if page_config[:content]
+        expect(page).to have_text(page_config[:content]) if page_config[:content]
       end
     end
   end

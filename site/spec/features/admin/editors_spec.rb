@@ -16,9 +16,9 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     it 'displays editors' do
       expect(page).to have_css('.editor', count: 1)
 
-      expect(page).to have_content(editor.name)
-      expect(page).to have_content(editor_user.email)
-      expect(page).to have_content(editor.form_uids.first)
+      expect(page).to have_text(editor.name)
+      expect(page).to have_text(editor_user.email)
+      expect(page).to have_text(editor.form_uids.first)
     end
   end
 
