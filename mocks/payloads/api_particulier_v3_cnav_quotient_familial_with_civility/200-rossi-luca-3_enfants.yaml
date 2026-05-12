@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille ROSSI avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : ROSSI Luca
+
+params:
+  codeCogInseeCommuneNaissance: '13028'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'ROSSI'
+  prenoms:
+    - 'LUCA'
+  anneeDateNaissance: 2011
+  moisDateNaissance: 6
+  jourDateNaissance: 15
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "LUCA",
+          "date_naissance": "2011-06-15",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "NINA",
+          "date_naissance": "2017-04-08",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "MATTEO",
+          "date_naissance": "2019-09-14",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "LENA",
+          "date_naissance": "2021-01-27",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur ROSSI LUCA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "18 CHEMIN DES OLIVIERS",
+        "lieu_dit": null,
+        "code_postal_ville": "13600 LA CIOTAT",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1290,
+        "annee": 2024,
+        "mois": 9,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

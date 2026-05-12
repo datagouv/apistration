@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille KHELIFI avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : KHELIFI Sofia
+
+params:
+  codeCogInseeCommuneNaissance: '13047'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'KHELIFI'
+  prenoms:
+    - 'SOFIA'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 5
+  jourDateNaissance: 9
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "KHELIFI",
+          "nom_usage": null,
+          "prenoms": "SOFIA",
+          "date_naissance": "1988-05-09",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "KHELIFI",
+          "nom_usage": null,
+          "prenoms": "SARAH",
+          "date_naissance": "2012-02-08",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "KHELIFI",
+          "nom_usage": null,
+          "prenoms": "YANE",
+          "date_naissance": "2012-02-24",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "KHELIFI",
+          "nom_usage": null,
+          "prenoms": "NADIR",
+          "date_naissance": "2017-10-14",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame KHELIFI SOFIA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "5 ALLEE DES PINS",
+        "lieu_dit": null,
+        "code_postal_ville": "13120 GARDANNE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1180,
+        "annee": 2024,
+        "mois": 9,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

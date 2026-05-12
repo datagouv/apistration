@@ -1,0 +1,43 @@
+---
+description: 'Élève scolaire'
+params:
+  nomNaissance: "KHELIFI"
+  prenoms:
+    - 'SARAH'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2012
+  moisDateNaissance: 2
+  jourDateNaissance: 8
+  codeEtablissement: "0130143K"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "KHELIFI",
+        "prenom": "SARAH",
+        "sexe": "F",
+        "date_naissance": "2012-02-08"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010002210",
+        "libelle": "6EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130143K",
+        "nom": "Lycée polyvalent Paul Langevin",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null
+    },
+    "links": {},
+    "meta": {}
+  }

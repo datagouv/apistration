@@ -1,0 +1,43 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "SAIDI"
+  prenoms:
+    - 'YANIS'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2012
+  moisDateNaissance: 7
+  jourDateNaissance: 10
+  codeEtablissement: "0130032P"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "SAIDI",
+        "prenom": "YANIS",
+        "sexe": "M",
+        "date_naissance": "2012-07-10"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010001510",
+        "libelle": "6EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0130032P",
+        "nom": "Collège Collines Durance",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 3
+    },
+    "links": {},
+    "meta": {}
+  }

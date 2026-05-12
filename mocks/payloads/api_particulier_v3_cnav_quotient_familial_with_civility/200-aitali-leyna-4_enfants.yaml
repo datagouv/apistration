@@ -1,0 +1,82 @@
+---
+description: |-
+  ## Famille AITALI avec quatre enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec quatre enfants
+  * parent : AITALI Leyna
+
+params:
+  codeCogInseeCommuneNaissance: '13001'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'AITALI'
+  prenoms:
+    - 'LEYNA'
+  anneeDateNaissance: 2010
+  moisDateNaissance: 7
+  jourDateNaissance: 11
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "LEYNA",
+          "date_naissance": "2010-07-11",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "RAYANE",
+          "date_naissance": "2012-08-12",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2015-03-19",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "AMIR",
+          "date_naissance": "2017-11-06",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "LINA",
+          "date_naissance": "2020-05-14",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame AITALI LEYNA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "18 AVENUE DE MARSEILLE",
+        "lieu_dit": null,
+        "code_postal_ville": "13127 VITROLLES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 810,
+        "annee": 2024,
+        "mois": 11,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

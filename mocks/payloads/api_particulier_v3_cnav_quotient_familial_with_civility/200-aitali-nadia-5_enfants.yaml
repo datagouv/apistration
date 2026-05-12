@@ -1,0 +1,89 @@
+---
+description: |-
+  ## Famille AITALI avec cinq enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec cinq enfants
+  * parent : AITALI Nadia
+
+params:
+  codeCogInseeCommuneNaissance: '13001'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'AITALI'
+  prenoms:
+    - 'NADIA'
+  anneeDateNaissance: 1980
+  moisDateNaissance: 11
+  jourDateNaissance: 18
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "NADIA",
+          "date_naissance": "1980-11-18",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "SAMY",
+          "date_naissance": "2011-08-28",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "LEYNA",
+          "date_naissance": "2010-07-11",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "RAYANE",
+          "date_naissance": "2012-08-12",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "SARA",
+          "date_naissance": "2016-06-06",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "MALIK",
+          "date_naissance": "2019-09-21",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame AITALI NADIA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "12 RUE DES FRERES",
+        "lieu_dit": null,
+        "code_postal_ville": "13127 VITROLLES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 720,
+        "annee": 2024,
+        "mois": 10,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

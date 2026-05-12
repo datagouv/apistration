@@ -1,0 +1,82 @@
+---
+description: |-
+  ## Famille FERREIRA avec quatre enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec quatre enfants
+  * parent : FERREIRA Ana
+
+params:
+  codeCogInseeCommuneNaissance: '13002'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'FERREIRA'
+  prenoms:
+    - 'ANA'
+  anneeDateNaissance: 1986
+  moisDateNaissance: 8
+  jourDateNaissance: 31
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "FERREIRA",
+          "nom_usage": null,
+          "prenoms": "ANA",
+          "date_naissance": "1986-08-31",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "FERREIRA",
+          "nom_usage": null,
+          "prenoms": "MAYA",
+          "date_naissance": "2011-12-19",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "FERREIRA",
+          "nom_usage": null,
+          "prenoms": "KAIS",
+          "date_naissance": "2011-01-06",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "FERREIRA",
+          "nom_usage": null,
+          "prenoms": "MATEO",
+          "date_naissance": "2013-04-17",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "FERREIRA",
+          "nom_usage": null,
+          "prenoms": "ELIA",
+          "date_naissance": "2018-12-10",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame FERREIRA ANA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "8 BOULEVARD JEAN JAURES",
+        "lieu_dit": null,
+        "code_postal_ville": "13400 AUBAGNE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1020,
+        "annee": 2024,
+        "mois": 11,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

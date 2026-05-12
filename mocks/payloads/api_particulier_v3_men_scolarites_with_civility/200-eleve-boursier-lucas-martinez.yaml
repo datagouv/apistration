@@ -1,0 +1,43 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "MARTINEZ"
+  prenoms:
+    - 'LUCAS'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2011
+  moisDateNaissance: 9
+  jourDateNaissance: 22
+  codeEtablissement: "0133374X"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "MARTINEZ",
+        "prenom": "LUCAS",
+        "sexe": "M",
+        "date_naissance": "2011-09-22"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010001310",
+        "libelle": "4EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0133374X",
+        "nom": "Collège Ami",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }

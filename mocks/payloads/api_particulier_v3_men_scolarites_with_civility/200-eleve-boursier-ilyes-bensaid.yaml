@@ -1,0 +1,43 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "BENSAID"
+  prenoms:
+    - 'ILYES'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2010
+  moisDateNaissance: 3
+  jourDateNaissance: 25
+  codeEtablissement: "0132634T"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "BENSAID",
+        "prenom": "ILYES",
+        "sexe": "M",
+        "date_naissance": "2010-03-25"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010002410",
+        "libelle": "2NDE GENERALE ET TECHNOLOGIQUE"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132634T",
+        "nom": "Collège André Malraux",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }
