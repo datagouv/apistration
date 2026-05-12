@@ -72,7 +72,7 @@
                 <td><code><%= token.token_id %></code></td>
                 <td><%= token.external_id %></td>
                 <td><%= token.intitule %></td>
-                <td><%= token.exp&.strftime('%d/%m/%Y') %></td>
+                <td><%= token.exp ? Time.zone.at(token.exp).strftime('%d/%m/%Y') : '' %></td>
                 <td><%= token.blacklisted_at&.strftime('%d/%m/%Y') %></td>
               </tr>
             <% end %>

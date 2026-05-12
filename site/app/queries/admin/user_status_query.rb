@@ -70,8 +70,9 @@ class Admin::UserStatusQuery
     scope = Token.all
     scope = scope.joins(authorization_request: :users).where(users: { email: filter.email }) if filter.email.present?
 
-    active = scope.where(blacklisted_at: nil).where('exp > ?', Time.current).count
-    expired = scope.where(blacklisted_at: nil).where(exp: ..Time.current).count
+    now = Time.current.to_i
+    active = scope.where(blacklisted_at: nil).where('exp > ?', now).count
+    expired = scope.where(blacklisted_at: nil).where('exp <= ?', now).count
     blacklisted = scope.where.not(blacklisted_at: nil).count
 
     [
