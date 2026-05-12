@@ -29,7 +29,7 @@ class Seeds
     ActiveRecord::Base.connection.transaction do
       MagicLink.delete_all
       views = ActiveRecord::Base.connection.views
-      ApplicationRecord.descendants.reject { |k| views.include?(k.table_name) }.each(&:delete_all)
+      ApplicationRecord.descendants.reject { |k| k.abstract_class? || views.include?(k.table_name) }.each(&:delete_all)
       AccessLog.delete_all
     end
   end
