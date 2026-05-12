@@ -29,19 +29,7 @@ Rails.application.routes.draw do
     end
     resources :audit_notifications, only: %i[index new create]
     resources :api_requests, only: %i[index create]
-    resources :statistics, only: %i[index] do
-      collection do
-        get :kpi
-        get :token_consumption
-        get :top_users
-        get :api_health
-        get :api_status
-        get :annual_stats
-        get :api_consumers
-        get :users_overview
-        get :user_status
-      end
-    end
+    resources :statistics, only: %i[index show], param: :page
   end
 
   get '/editeur', to: redirect('/editeur/habilitations'), as: :editor

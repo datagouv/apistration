@@ -11,22 +11,24 @@ class Admin::StatisticsController < AdminController
     user_status: { title: 'Status utilisateur', description: 'Recherche par email : habilitations, jetons et statuts' }
   }.freeze
 
-  before_action :build_filter, except: :index
-  before_action :build_query, except: :index
+  before_action :set_page, only: :show
+  before_action :build_filter, only: :show
+  before_action :build_query, only: :show
 
   def index; end
 
-  def kpi; end
-  def token_consumption; end
-  def top_users; end
-  def api_health; end
-  def api_status; end
-  def annual_stats; end
-  def api_consumers; end
-  def users_overview; end
-  def user_status; end
+  def show
+    render page
+  end
 
   private
+
+  attr_reader :page
+
+  def set_page
+    @page = params[:page].to_sym
+    raise ActionController::RoutingError, 'Not Found' unless PAGES.key?(@page)
+  end
 
   def build_filter
     @filter = Admin::StatisticsFilter.new(filter_params)
@@ -37,7 +39,7 @@ class Admin::StatisticsController < AdminController
   end
 
   def query_class
-    "Admin::#{action_name.classify}Query".constantize
+    "Admin::#{page.to_s.classify}Query".constantize
   end
 
   def filter_params
