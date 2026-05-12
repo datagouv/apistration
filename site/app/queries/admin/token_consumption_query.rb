@@ -90,6 +90,8 @@ class Admin::TokenConsumptionQuery
   end
 
   def token_filter
+    raise ActiveRecord::RecordNotFound unless filter.token_id.match?(/\A[0-9a-f-]{36}\z/i)
+
     ['tokens.id = ?::uuid', filter.token_id]
   end
 
