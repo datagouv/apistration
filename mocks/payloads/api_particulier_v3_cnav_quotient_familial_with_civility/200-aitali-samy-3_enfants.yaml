@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille AITALI avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : AITALI Samy
+
+params:
+  codeCogInseeCommuneNaissance: '13001'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'AITALI'
+  prenoms:
+    - 'SAMY'
+  anneeDateNaissance: 2011
+  moisDateNaissance: 8
+  jourDateNaissance: 28
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "SAMY",
+          "date_naissance": "2011-08-28",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "NADIR",
+          "date_naissance": "2016-04-12",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "SARA",
+          "date_naissance": "2018-09-03",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "AITALI",
+          "nom_usage": null,
+          "prenoms": "MALIK",
+          "date_naissance": "2020-01-21",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur AITALI SAMY",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "12 RUE DES FRERES",
+        "lieu_dit": null,
+        "code_postal_ville": "13127 VITROLLES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 720,
+        "annee": 2024,
+        "mois": 10,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

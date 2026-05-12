@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille MOREAU avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : MOREAU Emma
+
+params:
+  codeCogInseeCommuneNaissance: '13103'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'MOREAU'
+  prenoms:
+    - 'EMMA'
+  anneeDateNaissance: 2012
+  moisDateNaissance: 8
+  jourDateNaissance: 14
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MOREAU",
+          "nom_usage": null,
+          "prenoms": "EMMA",
+          "date_naissance": "2012-08-14",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "MOREAU",
+          "nom_usage": null,
+          "prenoms": "LEA",
+          "date_naissance": "2017-09-09",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "MOREAU",
+          "nom_usage": null,
+          "prenoms": "NOAH",
+          "date_naissance": "2013-06-27",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "MOREAU",
+          "nom_usage": null,
+          "prenoms": "LOUIS",
+          "date_naissance": "2020-02-18",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame MOREAU EMMA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "11 AVENUE VICTOR HUGO",
+        "lieu_dit": null,
+        "code_postal_ville": "13500 MARTIGUES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1180,
+        "annee": 2024,
+        "mois": 10,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

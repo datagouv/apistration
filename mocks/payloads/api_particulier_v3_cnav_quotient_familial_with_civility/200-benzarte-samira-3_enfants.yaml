@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille BENZARTE avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : BENZARTE Samira
+
+params:
+  codeCogInseeCommuneNaissance: '13055'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'BENZARTE'
+  prenoms:
+    - 'SAMIRA'
+  anneeDateNaissance: 1986
+  moisDateNaissance: 4
+  jourDateNaissance: 12
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "BENZARTE",
+          "nom_usage": null,
+          "prenoms": "SAMIRA",
+          "date_naissance": "1986-04-12",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "BENZARTE",
+          "nom_usage": null,
+          "prenoms": "LANA",
+          "date_naissance": "2011-11-18",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "BENZARTE",
+          "nom_usage": null,
+          "prenoms": "NASSIM",
+          "date_naissance": "2014-01-13",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "BENZARTE",
+          "nom_usage": null,
+          "prenoms": "YANIS",
+          "date_naissance": "2018-06-04",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame BENZARTE SAMIRA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "14 RUE SAINT-PIERRE",
+        "lieu_dit": null,
+        "code_postal_ville": "13005 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 980,
+        "annee": 2024,
+        "mois": 9,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

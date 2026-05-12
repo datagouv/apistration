@@ -1,0 +1,89 @@
+---
+description: |-
+  ## Famille ROSSI avec cinq enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec cinq enfants
+  * parent : ROSSI Emma
+
+params:
+  codeCogInseeCommuneNaissance: '13028'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'ROSSI'
+  prenoms:
+    - 'EMMA'
+  anneeDateNaissance: 2011
+  moisDateNaissance: 3
+  jourDateNaissance: 17
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "EMMA",
+          "date_naissance": "2011-03-17",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "LINA",
+          "date_naissance": "2015-02-05",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "GABRIEL",
+          "date_naissance": "2016-08-19",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "MIA",
+          "date_naissance": "2018-11-23",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "LEO",
+          "date_naissance": "2020-04-12",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "NINA",
+          "date_naissance": "2022-09-30",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame ROSSI EMMA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "5 IMPASSE DU PORT",
+        "lieu_dit": null,
+        "code_postal_ville": "13600 LA CIOTAT",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 870,
+        "annee": 2024,
+        "mois": 11,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

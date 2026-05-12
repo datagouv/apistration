@@ -1,0 +1,89 @@
+---
+description: |-
+  ## Famille SAIDI avec cinq enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec cinq enfants
+  * parent : SAIDI Karima
+
+params:
+  codeCogInseeCommuneNaissance: '13055'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'SAIDI'
+  prenoms:
+    - 'KARIMA'
+  anneeDateNaissance: 1983
+  moisDateNaissance: 10
+  jourDateNaissance: 8
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "SAIDI",
+          "nom_usage": null,
+          "prenoms": "KARIMA",
+          "date_naissance": "1983-10-08",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "SAIDI",
+          "nom_usage": null,
+          "prenoms": "NOUR",
+          "date_naissance": "2010-12-02",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "SAIDI",
+          "nom_usage": null,
+          "prenoms": "YANIS",
+          "date_naissance": "2012-07-10",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "SAIDI",
+          "nom_usage": null,
+          "prenoms": "MAYA",
+          "date_naissance": "2011-11-02",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "SAIDI",
+          "nom_usage": null,
+          "prenoms": "ILYANA",
+          "date_naissance": "2016-02-26",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "SAIDI",
+          "nom_usage": null,
+          "prenoms": "AMIR",
+          "date_naissance": "2020-04-11",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame SAIDI KARIMA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "45 RUE DE LYON",
+        "lieu_dit": null,
+        "code_postal_ville": "13015 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 690,
+        "annee": 2024,
+        "mois": 6,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

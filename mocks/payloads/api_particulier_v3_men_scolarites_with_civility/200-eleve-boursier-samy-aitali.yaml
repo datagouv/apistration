@@ -1,0 +1,43 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "AITALI"
+  prenoms:
+    - 'SAMY'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2011
+  moisDateNaissance: 8
+  jourDateNaissance: 28
+  codeEtablissement: "0132634T"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "AITALI",
+        "prenom": "SAMY",
+        "sexe": "M",
+        "date_naissance": "2011-08-28"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010001810",
+        "libelle": "4EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0132634T",
+        "nom": "Collège André Malraux",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }

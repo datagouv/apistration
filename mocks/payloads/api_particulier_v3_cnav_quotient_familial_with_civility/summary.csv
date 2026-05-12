@@ -69,6 +69,263 @@ Permet de tester un appel pour une personne née à l'étranger (Italie) sans fo
   ""links"": {},
   ""meta"": {}
 }"
+,"## Famille AITALI avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : AITALI Leyna","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""AITALI"",""prenoms"":[""LEYNA""],""anneeDateNaissance"":2010,""moisDateNaissance"":7,""jourDateNaissance"":11}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEYNA"",
+        ""date_naissance"": ""2010-07-11"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""RAYANE"",
+        ""date_naissance"": ""2012-08-12"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""INES"",
+        ""date_naissance"": ""2015-03-19"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""AMIR"",
+        ""date_naissance"": ""2017-11-06"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LINA"",
+        ""date_naissance"": ""2020-05-14"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame AITALI LEYNA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""18 AVENUE DE MARSEILLE"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13127 VITROLLES"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 810,
+      ""annee"": 2024,
+      ""mois"": 11,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille AITALI avec cinq enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec cinq enfants
+* parent : AITALI Nadia","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""AITALI"",""prenoms"":[""NADIA""],""anneeDateNaissance"":1980,""moisDateNaissance"":11,""jourDateNaissance"":18}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NADIA"",
+        ""date_naissance"": ""1980-11-18"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SAMY"",
+        ""date_naissance"": ""2011-08-28"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEYNA"",
+        ""date_naissance"": ""2010-07-11"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""RAYANE"",
+        ""date_naissance"": ""2012-08-12"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SARA"",
+        ""date_naissance"": ""2016-06-06"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MALIK"",
+        ""date_naissance"": ""2019-09-21"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame AITALI NADIA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""12 RUE DES FRERES"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13127 VITROLLES"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 720,
+      ""annee"": 2024,
+      ""mois"": 10,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille AITALI avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : AITALI Samy","{""codeCogInseeCommuneNaissance"":""13001"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""AITALI"",""prenoms"":[""SAMY""],""anneeDateNaissance"":2011,""moisDateNaissance"":8,""jourDateNaissance"":28}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SAMY"",
+        ""date_naissance"": ""2011-08-28"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NADIR"",
+        ""date_naissance"": ""2016-04-12"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SARA"",
+        ""date_naissance"": ""2018-09-03"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""AITALI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MALIK"",
+        ""date_naissance"": ""2020-01-21"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur AITALI SAMY"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""12 RUE DES FRERES"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13127 VITROLLES"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 720,
+      ""annee"": 2024,
+      ""mois"": 10,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille BENZARTE avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : BENZARTE Samira","{""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""BENZARTE"",""prenoms"":[""SAMIRA""],""anneeDateNaissance"":1986,""moisDateNaissance"":4,""jourDateNaissance"":12}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""BENZARTE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SAMIRA"",
+        ""date_naissance"": ""1986-04-12"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""BENZARTE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LANA"",
+        ""date_naissance"": ""2011-11-18"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""BENZARTE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NASSIM"",
+        ""date_naissance"": ""2014-01-13"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""BENZARTE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""YANIS"",
+        ""date_naissance"": ""2018-06-04"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame BENZARTE SAMIRA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""14 RUE SAINT-PIERRE"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13005 MARSEILLE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 980,
+      ""annee"": 2024,
+      ""mois"": 9,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2026
 
 Ce cas permet de tester :
@@ -195,6 +452,79 @@ Ce cas permet de tester :
       ""mois"": 9,
       ""annee_calcul"": 2024,
       ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille DIALLO avec cinq enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec cinq enfants
+* parent : DIALLO Aminata","{""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""DIALLO"",""prenoms"":[""AMINATA""],""anneeDateNaissance"":1982,""moisDateNaissance"":2,""jourDateNaissance"":7}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""DIALLO"",
+        ""nom_usage"": null,
+        ""prenoms"": ""AMINATA"",
+        ""date_naissance"": ""1982-02-07"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""DIALLO"",
+        ""nom_usage"": null,
+        ""prenoms"": ""FELIXIA"",
+        ""date_naissance"": ""2010-09-30"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""DIALLO"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ISMAEL"",
+        ""date_naissance"": ""2015-07-09"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""DIALLO"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NOUR"",
+        ""date_naissance"": ""2012-01-14"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""DIALLO"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ADAMA"",
+        ""date_naissance"": ""2017-03-16"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""DIALLO"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MARIAM"",
+        ""date_naissance"": ""2020-08-05"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame DIALLO AMINATA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""6 RUE DES ABEILLES"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13001 MARSEILLE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 760,
+      ""annee"": 2024,
+      ""mois"": 8,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
     }
   },
   ""links"": {},
@@ -382,6 +712,138 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
+,"## Famille FERREIRA avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : FERREIRA Ana","{""codeCogInseeCommuneNaissance"":""13002"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""FERREIRA"",""prenoms"":[""ANA""],""anneeDateNaissance"":1986,""moisDateNaissance"":8,""jourDateNaissance"":31}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""FERREIRA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ANA"",
+        ""date_naissance"": ""1986-08-31"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""FERREIRA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MAYA"",
+        ""date_naissance"": ""2011-12-19"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""FERREIRA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""KAIS"",
+        ""date_naissance"": ""2011-01-06"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""FERREIRA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MATEO"",
+        ""date_naissance"": ""2013-04-17"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""FERREIRA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ELIA"",
+        ""date_naissance"": ""2018-12-10"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame FERREIRA ANA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""8 BOULEVARD JEAN JAURES"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13400 AUBAGNE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1020,
+      ""annee"": 2024,
+      ""mois"": 11,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille GARCIA avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : GARCIA Maria","{""codeCogInseeCommuneNaissance"":""13090"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""GARCIA"",""prenoms"":[""MARIA""],""anneeDateNaissance"":1984,""moisDateNaissance"":9,""jourDateNaissance"":23}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""GARCIA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MARIA"",
+        ""date_naissance"": ""1984-09-23"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""GARCIA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MATEO"",
+        ""date_naissance"": ""2012-03-07"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""GARCIA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ELENA"",
+        ""date_naissance"": ""2013-05-21"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""GARCIA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NOAH"",
+        ""date_naissance"": ""2016-10-02"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""GARCIA"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LUCIE"",
+        ""date_naissance"": ""2019-01-18"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame GARCIA MARIA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""22 AVENUE DE LA REPUBLIQUE"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13190 ALLAUCH"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1120,
+      ""annee"": 2024,
+      ""mois"": 10,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Famille GIRAUD avec trois enfants
 
 Ce cas permet de tester :
@@ -436,6 +898,211 @@ Ce cas permet de tester :
       ""mois"": 6,
       ""annee_calcul"": 2024,
       ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille HADDAD avec cinq enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec cinq enfants
+* parent : HADDAD Leyna","{""codeCogInseeCommuneNaissance"":""13056"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""HADDAD"",""prenoms"":[""LEYNA""],""anneeDateNaissance"":2010,""moisDateNaissance"":11,""jourDateNaissance"":6}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEYNA"",
+        ""date_naissance"": ""2010-11-06"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""YANIS"",
+        ""date_naissance"": ""2011-02-19"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""INES"",
+        ""date_naissance"": ""2015-02-08"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SAMIR"",
+        ""date_naissance"": ""2018-07-17"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""AMEL"",
+        ""date_naissance"": ""2020-10-04"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NADIR"",
+        ""date_naissance"": ""2022-01-15"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame HADDAD LEYNA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""31 RUE DES ECOLES"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13003 MARSEILLE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 790,
+      ""annee"": 2024,
+      ""mois"": 12,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille HADDAD avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : HADDAD Rachid","{""codeCogInseeCommuneNaissance"":""13056"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""HADDAD"",""prenoms"":[""RACHID""],""anneeDateNaissance"":1981,""moisDateNaissance"":7,""jourDateNaissance"":5}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""RACHID"",
+        ""date_naissance"": ""1981-07-05"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""YANIS"",
+        ""date_naissance"": ""2011-02-19"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEYNA"",
+        ""date_naissance"": ""2010-11-06"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""INES"",
+        ""date_naissance"": ""2015-02-08"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SAMIR"",
+        ""date_naissance"": ""2018-07-17"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur HADDAD RACHID"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""27 BOULEVARD NATIONAL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13003 MARSEILLE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 850,
+      ""annee"": 2024,
+      ""mois"": 12,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille HADDAD avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : HADDAD Yanis","{""codeCogInseeCommuneNaissance"":""13056"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""HADDAD"",""prenoms"":[""YANIS""],""anneeDateNaissance"":2011,""moisDateNaissance"":2,""jourDateNaissance"":19}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""YANIS"",
+        ""date_naissance"": ""2011-02-19"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""INES"",
+        ""date_naissance"": ""2015-02-08"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SAMIR"",
+        ""date_naissance"": ""2018-07-17"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""AMEL"",
+        ""date_naissance"": ""2020-10-04"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""HADDAD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NADIR"",
+        ""date_naissance"": ""2022-01-15"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur HADDAD YANIS"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""27 BOULEVARD NATIONAL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13003 MARSEILLE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 850,
+      ""annee"": 2024,
+      ""mois"": 12,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
     }
   },
   ""links"": {},
@@ -684,6 +1351,131 @@ d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNais
   ""links"": {},
   ""meta"": {}
 }"
+,"## Famille KHELIFI avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : KHELIFI Sofia","{""codeCogInseeCommuneNaissance"":""13047"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""KHELIFI"",""prenoms"":[""SOFIA""],""anneeDateNaissance"":1988,""moisDateNaissance"":5,""jourDateNaissance"":9}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""KHELIFI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SOFIA"",
+        ""date_naissance"": ""1988-05-09"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""KHELIFI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""SARAH"",
+        ""date_naissance"": ""2012-02-08"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""KHELIFI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""YANE"",
+        ""date_naissance"": ""2012-02-24"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""KHELIFI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NADIR"",
+        ""date_naissance"": ""2017-10-14"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame KHELIFI SOFIA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""5 ALLEE DES PINS"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13120 GARDANNE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1180,
+      ""annee"": 2024,
+      ""mois"": 9,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille MARTIN avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : MARTIN Julien","{""codeCogInseeCommuneNaissance"":""13005"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MARTIN"",""prenoms"":[""JULIEN""],""anneeDateNaissance"":1985,""moisDateNaissance"":1,""jourDateNaissance"":29}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""JULIEN"",
+        ""date_naissance"": ""1985-01-29"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LINA"",
+        ""date_naissance"": ""2011-04-09"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""THEO"",
+        ""date_naissance"": ""2014-09-18"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""CAMILLE"",
+        ""date_naissance"": ""2016-05-22"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""RAPHAEL"",
+        ""date_naissance"": ""2019-12-03"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur MARTIN JULIEN"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""3 PLACE DE LA MAIRIE"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13260 CASSIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1480,
+      ""annee"": 2024,
+      ""mois"": 11,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Famille MARTIN avec trois enfants
 
 Ce cas permet de tester :
@@ -738,6 +1530,124 @@ Ce cas permet de tester :
       ""mois"": 6,
       ""annee_calcul"": 2024,
       ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille MOREAU avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : MOREAU Claire","{""codeCogInseeCommuneNaissance"":""13103"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""MOREAU"",""prenoms"":[""CLAIRE""],""anneeDateNaissance"":1989,""moisDateNaissance"":3,""jourDateNaissance"":19}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""CLAIRE"",
+        ""date_naissance"": ""1989-03-19"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""EMMA"",
+        ""date_naissance"": ""2012-08-14"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NOAH"",
+        ""date_naissance"": ""2013-06-27"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEA"",
+        ""date_naissance"": ""2017-09-09"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame MOREAU CLAIRE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""9 AVENUE VICTOR HUGO"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13500 MARTIGUES"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1260,
+      ""annee"": 2024,
+      ""mois"": 9,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille MOREAU avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : MOREAU Emma","{""codeCogInseeCommuneNaissance"":""13103"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""MOREAU"",""prenoms"":[""EMMA""],""anneeDateNaissance"":2012,""moisDateNaissance"":8,""jourDateNaissance"":14}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""EMMA"",
+        ""date_naissance"": ""2012-08-14"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEA"",
+        ""date_naissance"": ""2017-09-09"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NOAH"",
+        ""date_naissance"": ""2013-06-27"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""MOREAU"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LOUIS"",
+        ""date_naissance"": ""2020-02-18"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame MOREAU EMMA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""11 AVENUE VICTOR HUGO"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13500 MARTIGUES"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1180,
+      ""annee"": 2024,
+      ""mois"": 10,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
     }
   },
   ""links"": {},
@@ -939,6 +1849,263 @@ Ce cas permet de tester :
   ""links"": {},
   ""meta"": {}
 }"
+,"## Famille ROSSI avec quatre enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec quatre enfants
+* parent : ROSSI Chiara","{""codeCogInseeCommuneNaissance"":""13028"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""ROSSI"",""prenoms"":[""CHIARA""],""anneeDateNaissance"":2012,""moisDateNaissance"":3,""jourDateNaissance"":30}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""CHIARA"",
+        ""date_naissance"": ""2012-03-30"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NOAH"",
+        ""date_naissance"": ""2016-06-11"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""INES"",
+        ""date_naissance"": ""2018-12-02"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LOU"",
+        ""date_naissance"": ""2020-05-09"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ENZO"",
+        ""date_naissance"": ""2022-07-21"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame ROSSI CHIARA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""22 AVENUE DES PINS"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13600 LA CIOTAT"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 980,
+      ""annee"": 2024,
+      ""mois"": 10,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille ROSSI avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : ROSSI Clara","{""codeCogInseeCommuneNaissance"":""13028"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""ROSSI"",""prenoms"":[""CLARA""],""anneeDateNaissance"":1987,""moisDateNaissance"":6,""jourDateNaissance"":14}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""CLARA"",
+        ""date_naissance"": ""1987-06-14"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LUCA"",
+        ""date_naissance"": ""2011-06-15"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""CHIARA"",
+        ""date_naissance"": ""2012-03-30"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""EMMA"",
+        ""date_naissance"": ""2011-03-17"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame ROSSI CLARA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""18 CHEMIN DES OLIVIERS"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13600 LA CIOTAT"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1340,
+      ""annee"": 2024,
+      ""mois"": 7,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille ROSSI avec cinq enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec cinq enfants
+* parent : ROSSI Emma","{""codeCogInseeCommuneNaissance"":""13028"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""ROSSI"",""prenoms"":[""EMMA""],""anneeDateNaissance"":2011,""moisDateNaissance"":3,""jourDateNaissance"":17}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""EMMA"",
+        ""date_naissance"": ""2011-03-17"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LINA"",
+        ""date_naissance"": ""2015-02-05"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""GABRIEL"",
+        ""date_naissance"": ""2016-08-19"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MIA"",
+        ""date_naissance"": ""2018-11-23"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEO"",
+        ""date_naissance"": ""2020-04-12"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NINA"",
+        ""date_naissance"": ""2022-09-30"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame ROSSI EMMA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""5 IMPASSE DU PORT"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13600 LA CIOTAT"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 870,
+      ""annee"": 2024,
+      ""mois"": 11,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille ROSSI avec trois enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec trois enfants
+* parent : ROSSI Luca","{""codeCogInseeCommuneNaissance"":""13028"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""ROSSI"",""prenoms"":[""LUCA""],""anneeDateNaissance"":2011,""moisDateNaissance"":6,""jourDateNaissance"":15}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LUCA"",
+        ""date_naissance"": ""2011-06-15"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NINA"",
+        ""date_naissance"": ""2017-04-08"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MATTEO"",
+        ""date_naissance"": ""2019-09-14"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""ROSSI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LENA"",
+        ""date_naissance"": ""2021-01-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur ROSSI LUCA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""18 CHEMIN DES OLIVIERS"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13600 LA CIOTAT"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 1290,
+      ""annee"": 2024,
+      ""mois"": 9,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## Famille ROUX avec trois enfants (tuteur légal)
 
 Ce cas permet de tester :
@@ -993,6 +2160,79 @@ Ce cas permet de tester :
       ""mois"": 6,
       ""annee_calcul"": 2024,
       ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille SAIDI avec cinq enfants
+
+Ce cas permet de tester :
+* la gestion d'une famille avec cinq enfants
+* parent : SAIDI Karima","{""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""SAIDI"",""prenoms"":[""KARIMA""],""anneeDateNaissance"":1983,""moisDateNaissance"":10,""jourDateNaissance"":8}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""SAIDI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""KARIMA"",
+        ""date_naissance"": ""1983-10-08"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""SAIDI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""NOUR"",
+        ""date_naissance"": ""2010-12-02"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""SAIDI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""YANIS"",
+        ""date_naissance"": ""2012-07-10"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""SAIDI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""MAYA"",
+        ""date_naissance"": ""2011-11-02"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""SAIDI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ILYANA"",
+        ""date_naissance"": ""2016-02-26"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""SAIDI"",
+        ""nom_usage"": null,
+        ""prenoms"": ""AMIR"",
+        ""date_naissance"": ""2020-04-11"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame SAIDI KARIMA"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""45 RUE DE LYON"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""13015 MARSEILLE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 690,
+      ""annee"": 2024,
+      ""mois"": 6,
+      ""annee_calcul"": 2025,
+      ""mois_calcul"": 1
     }
   },
   ""links"": {},

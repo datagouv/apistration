@@ -1,0 +1,75 @@
+---
+description: |-
+  ## Famille ROSSI avec trois enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec trois enfants
+  * parent : ROSSI Clara
+
+params:
+  codeCogInseeCommuneNaissance: '13028'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'ROSSI'
+  prenoms:
+    - 'CLARA'
+  anneeDateNaissance: 1987
+  moisDateNaissance: 6
+  jourDateNaissance: 14
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "CLARA",
+          "date_naissance": "1987-06-14",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "LUCA",
+          "date_naissance": "2011-06-15",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "CHIARA",
+          "date_naissance": "2012-03-30",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "EMMA",
+          "date_naissance": "2011-03-17",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame ROSSI CLARA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "18 CHEMIN DES OLIVIERS",
+        "lieu_dit": null,
+        "code_postal_ville": "13600 LA CIOTAT",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1340,
+        "annee": 2024,
+        "mois": 7,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,82 @@
+---
+description: |-
+  ## Famille HADDAD avec quatre enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec quatre enfants
+  * parent : HADDAD Yanis
+
+params:
+  codeCogInseeCommuneNaissance: '13056'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'HADDAD'
+  prenoms:
+    - 'YANIS'
+  anneeDateNaissance: 2011
+  moisDateNaissance: 2
+  jourDateNaissance: 19
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "HADDAD",
+          "nom_usage": null,
+          "prenoms": "YANIS",
+          "date_naissance": "2011-02-19",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "HADDAD",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2015-02-08",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "HADDAD",
+          "nom_usage": null,
+          "prenoms": "SAMIR",
+          "date_naissance": "2018-07-17",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "HADDAD",
+          "nom_usage": null,
+          "prenoms": "AMEL",
+          "date_naissance": "2020-10-04",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "HADDAD",
+          "nom_usage": null,
+          "prenoms": "NADIR",
+          "date_naissance": "2022-01-15",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur HADDAD YANIS",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "27 BOULEVARD NATIONAL",
+        "lieu_dit": null,
+        "code_postal_ville": "13003 MARSEILLE",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 850,
+        "annee": 2024,
+        "mois": 12,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
