@@ -38,7 +38,7 @@ fr:
   shared:
     changelogs:
       index:
-        title: "Nouveautés"
+        title: "Nouveautés / changelog"
         description: "L'historique des évolutions du service&nbsp;: nouvelles API, mises à jour de fiches, dépréciations et améliorations."
         empty: "Aucune nouveauté à afficher pour le moment."
       subscription:
