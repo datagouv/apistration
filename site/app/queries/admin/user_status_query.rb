@@ -81,4 +81,8 @@ class Admin::UserStatusQuery
       { label: 'Bloqué', value: blacklisted }
     ]
   end
+
+  private
+
+  attr_reader :filter
 end

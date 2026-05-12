@@ -27,4 +27,8 @@ class Admin::UsersOverviewQuery
       .distinct
       .count
   end
+
+  private
+
+  attr_reader :filter
 end
