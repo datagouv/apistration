@@ -72,7 +72,10 @@ class Provider::DashboardFilter
   end
 
   def provider_endpoints
-    @provider_endpoints ||= endpoint_klass.all.select { |endpoint| endpoint.provider_uids.to_a.include?(provider.uid) }
+    @provider_endpoints ||= begin
+      all = endpoint_klass.all
+      provider.uid == 'all' ? all : all.select { |endpoint| endpoint.provider_uids.to_a.include?(provider.uid) }
+    end
   end
 
   private

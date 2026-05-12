@@ -21,7 +21,7 @@ class Admin::ProviderDashboardsController < AdminController
   private
 
   def load_provider
-    @provider = provider_klass.find(params[:id])
+    @provider = params[:id] == 'all' ? Provider::All.new(namespace) : provider_klass.find(params[:id])
   end
 
   def provider_klass
