@@ -139,9 +139,8 @@ paths:
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne.
           Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
-          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
-          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
-          si la personne est née en France
+          FranceConnect. Fortement recommandé pour les personnes nées en France afin
+          de maximiser les chances d'identification.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -170,9 +169,9 @@ paths:
           type: string
           minLength: 1
           example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
+        description: Nom de la commune de naissance. Fortement recommandé pour les
+          personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser
+          avec codeInseeDepartementNaissance et la date de naissance complète.
         required: false
       - name: codeInseeDepartementNaissance
         in: query
@@ -181,9 +180,9 @@ paths:
           minLength: 2
           maxLength: 3
           example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
+        description: Code INSEE du département de naissance. Fortement recommandé
+          pour les personnes nées en France. À utiliser avec nomCommuneNaissance et
+          la date de naissance complète.
         required: false
       - name: recipient
         in: query
@@ -444,9 +443,8 @@ paths:
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne.
           Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
-          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
-          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
-          si la personne est née en France
+          FranceConnect. Fortement recommandé pour les personnes nées en France afin
+          de maximiser les chances d'identification.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -475,9 +473,9 @@ paths:
           type: string
           minLength: 1
           example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
+        description: Nom de la commune de naissance. Fortement recommandé pour les
+          personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser
+          avec codeInseeDepartementNaissance et la date de naissance complète.
         required: false
       - name: codeInseeDepartementNaissance
         in: query
@@ -486,9 +484,9 @@ paths:
           minLength: 2
           maxLength: 3
           example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
+        description: Code INSEE du département de naissance. Fortement recommandé
+          pour les personnes nées en France. À utiliser avec nomCommuneNaissance et
+          la date de naissance complète.
         required: false
       security:
       - franceConnectToken: []
@@ -747,9 +745,8 @@ paths:
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne.
           Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
-          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
-          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
-          si la personne est née en France
+          FranceConnect. Fortement recommandé pour les personnes nées en France afin
+          de maximiser les chances d'identification.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -778,9 +775,9 @@ paths:
           type: string
           minLength: 1
           example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
+        description: Nom de la commune de naissance. Fortement recommandé pour les
+          personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser
+          avec codeInseeDepartementNaissance et la date de naissance complète.
         required: false
       - name: codeInseeDepartementNaissance
         in: query
@@ -789,9 +786,9 @@ paths:
           minLength: 2
           maxLength: 3
           example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
+        description: Code INSEE du département de naissance. Fortement recommandé
+          pour les personnes nées en France. À utiliser avec nomCommuneNaissance et
+          la date de naissance complète.
         required: false
       security:
       - franceConnectToken: []
@@ -1061,9 +1058,8 @@ paths:
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne.
           Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
-          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
-          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
-          si la personne est née en France
+          FranceConnect. Fortement recommandé pour les personnes nées en France afin
+          de maximiser les chances d'identification.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -1092,9 +1088,9 @@ paths:
           type: string
           minLength: 1
           example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
+        description: Nom de la commune de naissance. Fortement recommandé pour les
+          personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser
+          avec codeInseeDepartementNaissance et la date de naissance complète.
         required: false
       - name: codeInseeDepartementNaissance
         in: query
@@ -1103,9 +1099,9 @@ paths:
           minLength: 2
           maxLength: 3
           example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
+        description: Code INSEE du département de naissance. Fortement recommandé
+          pour les personnes nées en France. À utiliser avec nomCommuneNaissance et
+          la date de naissance complète.
         required: false
       security:
       - franceConnectToken: []
@@ -1372,9 +1368,8 @@ paths:
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne.
           Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
-          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
-          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
-          si la personne est née en France
+          FranceConnect. Fortement recommandé pour les personnes nées en France afin
+          de maximiser les chances d'identification.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -1403,9 +1398,9 @@ paths:
           type: string
           minLength: 1
           example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
+        description: Nom de la commune de naissance. Fortement recommandé pour les
+          personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser
+          avec codeInseeDepartementNaissance et la date de naissance complète.
         required: false
       - name: codeInseeDepartementNaissance
         in: query
@@ -1414,9 +1409,9 @@ paths:
           minLength: 2
           maxLength: 3
           example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
+        description: Code INSEE du département de naissance. Fortement recommandé
+          pour les personnes nées en France. À utiliser avec nomCommuneNaissance et
+          la date de naissance complète.
         required: false
       - name: annee
         in: query
@@ -1928,9 +1923,8 @@ paths:
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne.
           Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
-          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
-          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
-          si la personne est née en France
+          FranceConnect. Fortement recommandé pour les personnes nées en France afin
+          de maximiser les chances d'identification.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -1959,9 +1953,9 @@ paths:
           type: string
           minLength: 1
           example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
+        description: Nom de la commune de naissance. Fortement recommandé pour les
+          personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser
+          avec codeInseeDepartementNaissance et la date de naissance complète.
         required: false
       - name: codeInseeDepartementNaissance
         in: query
@@ -1970,9 +1964,9 @@ paths:
           minLength: 2
           maxLength: 3
           example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
+        description: Code INSEE du département de naissance. Fortement recommandé
+          pour les personnes nées en France. À utiliser avec nomCommuneNaissance et
+          la date de naissance complète.
         required: false
       security:
       - franceConnectToken: []

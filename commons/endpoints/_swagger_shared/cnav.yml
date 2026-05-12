@@ -579,7 +579,7 @@ cnav:
           minLength: 5
           maxLength: 5
           example: '08480'
-          description: "Code Insee à 5 chiffres du lieu de naissance de la personne. Ne pas remplir si la personne est née à l'étranger ou si présence de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
+          description: "Code Insee à 5 chiffres du lieu de naissance de la personne. Ne pas remplir si la personne est née à l'étranger ou si présence de jeton FranceConnect. Fortement recommandé pour les personnes nées en France afin de maximiser les chances d'identification."
         codePaysLieuDeNaissance:
           description: "Code Insee à 5 chiffres du pays de naissance (France = 99100). Obligatoire si absence de jeton FranceConnect."
           type: string
@@ -597,13 +597,13 @@ cnav:
           type: string
           minLength: 1
           example: 'Gennevilliers'
-          description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+          description: "Nom de la commune de naissance. Fortement recommandé pour les personnes nées en France. Alternative au codeInseeLieuDeNaissance, à utiliser avec codeInseeDepartementNaissance et la date de naissance complète."
         codeInseeDepartementNaissance:
           type: string
           minLength: 2
           maxLength: 3
           example: '92'
-          description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+          description: "Code INSEE du département de naissance. Fortement recommandé pour les personnes nées en France. À utiliser avec nomCommuneNaissance et la date de naissance complète."
 
     c2s:
       title: Statut complémentaire santé solidaire (C2S)
