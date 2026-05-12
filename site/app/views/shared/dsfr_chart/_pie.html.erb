@@ -1,0 +1,13 @@
+<%# locals: (title:, segments:) -%>
+<%# Each segment: { label:, value: } -%>
+<%
+  x = segments.map { |s| s[:label].to_s }
+  y = segments.map { |s| s[:value] }
+%>
+<figure class="fr-mb-3w">
+  <figcaption class="fr-text--lead"><%= title %></figcaption>
+  <pie-chart
+    x="<%= [x].to_json %>"
+    y="<%= [y].to_json %>">
+  </pie-chart>
+</figure>
