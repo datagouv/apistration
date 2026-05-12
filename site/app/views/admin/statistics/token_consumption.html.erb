@@ -1,0 +1,115 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Consommation d'un token</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: false, show_interval: false,
+      show_token: true, show_external_id: true, show_email: true %>
+
+    <h2>Habilitations</h2>
+    <div class="fr-table">
+      <table>
+        <thead>
+          <tr>
+            <th>External ID</th>
+            <th>Intitulé</th>
+            <th>API</th>
+            <th>Statut</th>
+            <th>Appels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.habilitations.each do |row| %>
+            <tr>
+              <td><%= row.external_id %></td>
+              <td><%= row.intitule %></td>
+              <td><%= row.api %></td>
+              <td><%= row.status %></td>
+              <td><%= number_with_delimiter(row.calls_count) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="fr-mt-4w">Jetons et consommation</h2>
+    <div class="fr-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Token ID</th>
+            <th>External ID</th>
+            <th>Intitulé</th>
+            <th>API</th>
+            <th>Appels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.tokens_with_consumption.each do |row| %>
+            <tr>
+              <td><code><%= row.token_id %></code></td>
+              <td><%= row.external_id %></td>
+              <td><%= row.intitule %></td>
+              <td><%= row.api %></td>
+              <td><%= number_with_delimiter(row.calls_count) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @filter.token_id.present? %>
+      <h2 class="fr-mt-4w">Consommation par jour</h2>
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Appels uniques vs non-uniques par jour',
+        categories: @query.consumption_by_day.map { |r| r[:bucket].strftime('%d/%m') },
+        series: [
+          { label: 'Uniques', values: @query.consumption_by_day.map { |r| r[:unique] } },
+          { label: 'Non uniques', values: @query.consumption_by_day.map { |r| r[:non_unique] } }
+        ],
+        stacked: true %>
+
+      <h2 class="fr-mt-4w">Consommation par API et code erreur</h2>
+      <%
+        by_api = @query.consumption_by_api_and_status
+        controllers = by_api.map { |r| r[:controller] }.uniq
+        statuses = by_api.map { |r| r[:status] }.uniq.sort
+      %>
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Appels par API et statut HTTP',
+        categories: controllers,
+        series: statuses.map { |s|
+          { label: s, values: controllers.map { |c| by_api.find { |r| r[:controller] == c && r[:status] == s }&.dig(:count) || 0 } }
+        },
+        stacked: true %>
+
+      <h2 class="fr-mt-4w">200 dernières requêtes</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Controller</th>
+              <th>Statut</th>
+              <th>Durée (ms)</th>
+              <th>Chemin</th>
+              <th>Cache</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.recent_requests.each do |log| %>
+              <tr>
+                <td><%= log.timestamp.strftime('%d/%m %H:%M') %></td>
+                <td><%= log.controller %></td>
+                <td><%= log.status %></td>
+                <td><%= log.duration %></td>
+                <td><code><%= truncate(log.path, length: 60) %></code></td>
+                <td><%= log.cached ? 'Oui' : 'Non' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

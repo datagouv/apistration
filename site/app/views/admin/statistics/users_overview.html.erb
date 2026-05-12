@@ -1,0 +1,20 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Vue générale des utilisateurs</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: false, show_interval: false %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Nombre total d\'utilisateurs', value: number_with_delimiter(@query.total_users) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Nombre total d\'habilitations', value: number_with_delimiter(@query.total_habilitations) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Nombre total de jetons', value: number_with_delimiter(@query.total_tokens) %>
+    </div>
+
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <%= render 'shared/dsfr_chart/kpi',
+        label: 'Habilitations avec au moins 1 appel réussi (depuis la date de début)',
+        value: number_with_delimiter(@query.habilitations_with_successful_call) %>
+    </div>
+  </div>
+</div>

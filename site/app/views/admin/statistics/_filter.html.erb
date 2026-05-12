@@ -1,0 +1,85 @@
+<%# locals: (filter:, show_domaine: true, show_interval: true, show_email: false, show_token: false, show_external_id: false, show_api: false) -%>
+<%= form_with model: filter, scope: :filter, method: :get, url: request.path, local: true, class: 'fr-mb-3w' do |f| %>
+  <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--sm fr-mb-2w">
+    <% Admin::StatisticsFilter.date_presets.each do |key, (from, to)| %>
+      <% active = filter.matches_preset?(key) %>
+      <li>
+        <%= link_to key,
+                    url_for(request.query_parameters.deep_merge(filter: { date_from: from.iso8601, date_to: to.iso8601 })),
+                    class: "fr-btn fr-btn--sm #{'fr-btn--secondary' unless active}".strip %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-3">
+      <div class="fr-input-group">
+        <%= f.label :date_from, 'Date de début', class: 'fr-label' %>
+        <%= f.date_field :date_from, class: 'fr-input' %>
+      </div>
+    </div>
+    <div class="fr-col-12 fr-col-md-3">
+      <div class="fr-input-group">
+        <%= f.label :date_to, 'Date de fin', class: 'fr-label' %>
+        <%= f.date_field :date_to, class: 'fr-input' %>
+      </div>
+    </div>
+    <% if show_interval %>
+      <div class="fr-col-12 fr-col-md-2">
+        <div class="fr-select-group">
+          <%= f.label :interval, 'Intervalle', class: 'fr-label' %>
+          <%= f.select :interval,
+                       Admin::StatisticsFilter::INTERVALS.map { |i| [i.capitalize, i] },
+                       {}, class: 'fr-select' %>
+        </div>
+      </div>
+    <% end %>
+    <% if show_domaine %>
+      <div class="fr-col-12 fr-col-md-2">
+        <div class="fr-select-group">
+          <%= f.label :domaine, 'Domaine', class: 'fr-label' %>
+          <%= f.select :domaine,
+                       [['Tous', ''], ['Entreprise', 'entreprise'], ['Particulier', 'particulier']],
+                       {}, class: 'fr-select' %>
+        </div>
+      </div>
+    <% end %>
+    <% if show_api %>
+      <div class="fr-col-12 fr-col-md-3">
+        <div class="fr-input-group">
+          <%= f.label :api, 'API (controller)', class: 'fr-label' %>
+          <%= f.text_field :api, class: 'fr-input', placeholder: 'ex: api_entreprise/v3/insee/sirene' %>
+        </div>
+      </div>
+    <% end %>
+    <% if show_email %>
+      <div class="fr-col-12 fr-col-md-3">
+        <div class="fr-input-group">
+          <%= f.label :email, 'Email', class: 'fr-label' %>
+          <%= f.email_field :email, class: 'fr-input' %>
+        </div>
+      </div>
+    <% end %>
+    <% if show_external_id %>
+      <div class="fr-col-12 fr-col-md-3">
+        <div class="fr-input-group">
+          <%= f.label :external_id, 'External ID (datapass)', class: 'fr-label' %>
+          <%= f.text_field :external_id, class: 'fr-input' %>
+        </div>
+      </div>
+    <% end %>
+    <% if show_token %>
+      <div class="fr-col-12 fr-col-md-3">
+        <div class="fr-input-group">
+          <%= f.label :token_id, 'Token ID', class: 'fr-label' %>
+          <%= f.text_field :token_id, class: 'fr-input' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <ul class="fr-btns-group fr-btns-group--inline-md fr-mt-2w">
+    <li><%= f.submit 'Appliquer', class: 'fr-btn' %></li>
+    <li><%= link_to 'Réinitialiser', request.path, class: 'fr-btn fr-btn--secondary' %></li>
+  </ul>
+<% end %>

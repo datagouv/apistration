@@ -1,0 +1,38 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Statut d'une API</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: true, show_interval: true, show_api: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels totaux', value: number_with_delimiter(@query.total_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels uniques', value: number_with_delimiter(@query.unique_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels en cache', value: number_with_delimiter(@query.cached_calls) %>
+    </div>
+
+    <%= render 'shared/dsfr_chart/line',
+      title: 'Appels totaux vs uniques',
+      series: [
+        { label: 'Total', points: @query.calls_vs_unique_evolution.map { |r| [bucket_label(r[:bucket], @filter.interval), r[:total]] } },
+        { label: 'Uniques', points: @query.calls_vs_unique_evolution.map { |r| [bucket_label(r[:bucket], @filter.interval), r[:unique]] } }
+      ] %>
+
+    <%= render 'shared/dsfr_chart/line',
+      title: 'Appels en cache',
+      series: [
+        { label: 'Cache', points: @query.cached_evolution.map { |r| [bucket_label(r[:bucket], @filter.interval), r[:total]] } }
+      ] %>
+
+    <%= render 'shared/dsfr_chart/line',
+      title: 'Durée moyenne des appels',
+      series: [
+        { label: 'Durée (ms)', points: @query.duration_evolution.map { |r| [bucket_label(r[:bucket], @filter.interval), r[:value]] } }
+      ],
+      unit: 'ms' %>
+
+    <%= render 'shared/dsfr_chart/pie',
+      title: 'Répartition des codes HTTP',
+      segments: @query.http_code_breakdown %>
+  </div>
+</div>

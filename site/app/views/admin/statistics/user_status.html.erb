@@ -1,0 +1,97 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Status utilisateur, datapass et jetons</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: false, show_interval: false, show_email: true, show_external_id: true %>
+
+    <% if @filter.email.present? %>
+      <h2>Informations utilisateur</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Créé le</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.user_info.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td><%= user.created_at.strftime('%d/%m/%Y') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="fr-mt-4w">Habilitations</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th>External ID</th>
+              <th>Intitulé</th>
+              <th>API</th>
+              <th>Statut</th>
+              <th>SIRET</th>
+              <th>Créé le</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.user_habilitations.each do |ar| %>
+              <tr>
+                <td><%= ar.external_id %></td>
+                <td><%= ar.intitule %></td>
+                <td><%= ar.api %></td>
+                <td><%= ar.status %></td>
+                <td><%= ar.siret %></td>
+                <td><%= ar.created_at.strftime('%d/%m/%Y') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="fr-mt-4w">Jetons</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Token ID</th>
+              <th>External ID</th>
+              <th>Intitulé</th>
+              <th>Expiration</th>
+              <th>Bloqué le</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.user_tokens.each do |token| %>
+              <tr>
+                <td><code><%= token.token_id %></code></td>
+                <td><%= token.external_id %></td>
+                <td><%= token.intitule %></td>
+                <td><%= token.exp&.strftime('%d/%m/%Y') %></td>
+                <td><%= token.blacklisted_at&.strftime('%d/%m/%Y') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mt-4w">
+      <div class="fr-col-12 fr-col-md-6">
+        <%= render 'shared/dsfr_chart/pie',
+          title: 'Statut des habilitations',
+          segments: @query.habilitation_status_breakdown %>
+      </div>
+      <div class="fr-col-12 fr-col-md-6">
+        <%= render 'shared/dsfr_chart/pie',
+          title: 'Statut des jetons',
+          segments: @query.token_status_breakdown %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>KPI & Statistiques</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter, show_domaine: true, show_interval: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels totaux', value: number_with_delimiter(@query.total_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels uniques', value: number_with_delimiter(@query.unique_calls) %>
+    </div>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels totaux par période',
+      categories: @query.calls_by_period.map { |r| bucket_label(r[:bucket], @filter.interval) },
+      series: [{ label: 'Appels totaux', values: @query.calls_by_period.map { |r| r[:total] } }] %>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels uniques par période',
+      categories: @query.unique_calls_by_period.map { |r| bucket_label(r[:bucket], @filter.interval) },
+      series: [{ label: 'Appels uniques', values: @query.unique_calls_by_period.map { |r| r[:total] } }] %>
+
+    <%= render 'shared/dsfr_chart/pie',
+      title: 'Répartition succès / erreurs',
+      segments: @query.error_breakdown %>
+
+    <% if !@filter.domaine? || @filter.domaine == 'entreprise' %>
+      <h2 class="fr-mt-4w">KPIs API Entreprise</h2>
+
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Nombre d\'entreprises aidées (KPI 1)',
+        categories: @query.kpi1_series.map { |r| bucket_label(r[:bucket], @filter.interval) },
+        series: [{ label: 'Entreprises', values: @query.kpi1_series.map { |r| r[:value] } }] %>
+
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Nombre d\'informations non redemandées (KPI 2)',
+        categories: @query.kpi2_series.map { |r| bucket_label(r[:bucket], @filter.interval) },
+        series: [{ label: 'Chemins uniques', values: @query.kpi2_series.map { |r| r[:value] } }] %>
+
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Nombre d\'établissements aidés (KPI 3)',
+        categories: @query.kpi3_series.map { |r| bucket_label(r[:bucket], @filter.interval) },
+        series: [{ label: 'Établissements', values: @query.kpi3_series.map { |r| r[:value] } }] %>
+    <% end %>
+
+    <h2 class="fr-mt-4w">Top 10 des variations</h2>
+    <div class="fr-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Datapass</th>
+            <th>Appels actuels</th>
+            <th>Appels précédents</th>
+            <th>Variation %</th>
+            <th>Variation brute</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.top_variations.each do |row| %>
+            <tr>
+              <td><%= row[:source_id] %></td>
+              <td><%= number_with_delimiter(row[:current]) %></td>
+              <td><%= number_with_delimiter(row[:previous]) %></td>
+              <td><%= row[:variation] %>%</td>
+              <td><%= number_with_delimiter(row[:variation_brute]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
