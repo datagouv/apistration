@@ -178,6 +178,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   attr_reader :provider, :filter
 
+  def all_provider? = provider.uid == 'all'
+
   ENDPOINT_METRIC_COLUMNS = { # rubocop:disable Lint/UselessConstantScoping
     total: 'appels_totaux',
     unique: 'appels_uniques',
@@ -203,17 +205,26 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def match_routes(relation, column = nil)
     api_col = column || "#{relation.klass.table_name}.api"
-    return restrict_by_provider_uid(relation, api_col) if requested_controllers.nil?
+    return relation if requested_controllers.nil?
     return relation.where('1 = 0') if requested_controllers.empty?
 
     relation.where("#{api_col} = ANY(ARRAY[?]::text[])", requested_controllers)
   end
 
   def requested_controllers
+    @requested_controllers ||= compute_requested_controllers
+  end
+
+  def compute_requested_controllers
+    return all_provider_controllers if all_provider?
     return nil if !filter.routes_submitted? && provider_controllers.empty?
     return provider_controllers unless filter.routes_submitted?
 
-    @requested_controllers ||= filter.routes & provider_controllers
+    filter.routes & provider_controllers
+  end
+
+  def all_provider_controllers
+    filter.routes_submitted? ? filter.routes : provider_controllers
   end
 
   def restrict_by_provider_uid(relation, api_col)

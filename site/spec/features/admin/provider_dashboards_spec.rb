@@ -27,4 +27,22 @@ RSpec.describe 'Admin: provider dashboards', app: :api_entreprise do
       expect(page).to have_text('Date de début')
     end
   end
+
+  describe 'all providers page' do
+    it 'renders the global dashboard with all endpoints' do
+      visit admin_provider_dashboard_path('all')
+
+      expect(page).to have_css('h1', text: 'Tous les fournisseurs')
+      expect(page).to have_css('form')
+      expect(page).to have_text('Date de début')
+    end
+
+    it 'is accessible from the index page' do
+      visit admin_provider_dashboards_path
+
+      click_link 'Tableau de bord global (tous les fournisseurs)'
+
+      expect(page).to have_css('h1', text: 'Tous les fournisseurs')
+    end
+  end
 end
