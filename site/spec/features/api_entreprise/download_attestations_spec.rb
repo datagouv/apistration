@@ -94,7 +94,7 @@ RSpec.describe 'Download attestations', app: :api_entreprise do
       it 'shows company name with valid link to download attestations' do
         search
 
-        expect(page).to have_content(entreprise.raison_sociale)
+        expect(page).to have_text(entreprise.raison_sociale)
         expect(page).to have_no_link('attestation-sociale-download')
         expect(page).to have_link('attestation-fiscale-download', href: 'https://attestation-fiscale.com/file.pdf')
       end
@@ -106,9 +106,9 @@ RSpec.describe 'Download attestations', app: :api_entreprise do
       it 'shows error message and no company data' do
         search
 
-        expect(page).to have_content('Some error')
+        expect(page).to have_text('Some error')
 
-        expect(page).to have_no_content(entreprise.raison_sociale)
+        expect(page).to have_no_text(entreprise.raison_sociale)
         expect(page).to have_no_link('attestation-sociale-download')
         expect(page).to have_no_link('attestation-fiscale-download')
       end
@@ -128,11 +128,11 @@ RSpec.describe 'Download attestations', app: :api_entreprise do
 
       click_on dom_id(user, :impersonate)
 
-      expect(page).to have_content("connecté en tant que #{user.email}")
+      expect(page).to have_text("connecté en tant que #{user.email}")
 
       visit attestations_path
 
-      expect(page).to have_content("Vous n'avez pas les droits pour accéder à cette page")
+      expect(page).to have_text("Vous n'avez pas les droits pour accéder à cette page")
       expect(page).to have_no_current_path(attestations_path)
     end
   end

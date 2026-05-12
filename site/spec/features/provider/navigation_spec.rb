@@ -32,8 +32,8 @@ RSpec.describe 'Provider space navigation', app: :api_entreprise do
       it 'shows list of providers' do
         visit provider_path
 
-        expect(page).to have_content('INSEE')
-        expect(page).to have_content('DGFIP')
+        expect(page).to have_text('INSEE')
+        expect(page).to have_text('DGFIP')
 
         expect(page).to have_link(href: provider_dashboard_path(provider_uid: 'insee'))
         expect(page).to have_link(href: provider_dashboard_path(provider_uid: 'dgfip'))

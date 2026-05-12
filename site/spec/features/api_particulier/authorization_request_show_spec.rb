@@ -120,19 +120,19 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
           it 'diplays basic information on the page' do
             expect(page).to have_current_path(api_particulier_authorization_request_path(id: authorization_request.id), ignore_query: true)
-            expect(page).to have_content('Habilitation active')
+            expect(page).to have_text('Habilitation active')
             expect(page).to have_link(href: datapass_authorization_request_url(authorization_request))
-            expect(page).to have_content(friendly_format_from_timestamp(authorization_request.created_at))
+            expect(page).to have_text(friendly_format_from_timestamp(authorization_request.created_at))
 
-            expect(page).to have_content('Jeton principal :')
-            expect(page).to have_content('Actif')
-            expect(page).to have_content('4 appels les 7 derniers jours')
-            expect(page).to have_content(distance_of_time_in_words(Time.zone.now, token.exp))
+            expect(page).to have_text('Jeton principal :')
+            expect(page).to have_text('Actif')
+            expect(page).to have_text('4 appels les 7 derniers jours')
+            expect(page).to have_text(distance_of_time_in_words(Time.zone.now, token.exp))
 
             expect(page).to have_css('#' << dom_id(token, :stats_link))
 
-            expect(page).to have_content('Banni')
-            expect(page).to have_content(distance_of_time_in_words(Time.zone.now, banned_token.blacklisted_at))
+            expect(page).to have_text('Banni')
+            expect(page).to have_text(distance_of_time_in_words(Time.zone.now, banned_token.blacklisted_at))
           end
 
           describe 'when the user is demandeur' do
@@ -142,7 +142,7 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
                 click_link 'prolong-token-modal-link'
 
-                expect(page).to have_content('Prolonger le jeton')
+                expect(page).to have_text('Prolonger le jeton')
               end
             end
 
@@ -159,8 +159,8 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
               click_link dom_id(token, :show)
 
-              expect(page).to have_content('Utiliser le jeton')
-              expect(page).to have_content("Jeton d'accès")
+              expect(page).to have_text('Utiliser le jeton')
+              expect(page).to have_text("Jeton d'accès")
             end
 
             it 'does not displays the ask for prolongation modal button' do
@@ -224,8 +224,8 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
               click_link dom_id(token, :show)
 
-              expect(page).to have_content('Utiliser le jeton')
-              expect(page).to have_content("Jeton d'accès")
+              expect(page).to have_text('Utiliser le jeton')
+              expect(page).to have_text("Jeton d'accès")
             end
 
             it 'displays the ask for prolongation modal button' do
@@ -233,7 +233,7 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
               click_link 'ask-for-prolongation-token-modal-link'
 
-              expect(page).to have_content('Relancer le demandeur')
+              expect(page).to have_text('Relancer le demandeur')
             end
 
             describe 'when the token has no attestations scopes' do
@@ -298,8 +298,8 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
               click_link dom_id(token, :show)
 
-              expect(page).to have_content('Utiliser le jeton')
-              expect(page).to have_content('demandeur')
+              expect(page).to have_text('Utiliser le jeton')
+              expect(page).to have_text('demandeur')
             end
 
             it 'displays the ask for prolongation modal button' do
@@ -307,7 +307,7 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
               click_link 'ask-for-prolongation-token-modal-link'
 
-              expect(page).to have_content('Relancer le demandeur')
+              expect(page).to have_text('Relancer le demandeur')
             end
 
             describe 'when the token has no attestations scopes' do

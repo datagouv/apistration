@@ -17,7 +17,7 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
     it 'redirects to user\'s account as the user, with a warning' do
       impersonate
 
-      expect(page).to have_content("connecté en tant que #{user.email}")
+      expect(page).to have_text("connecté en tant que #{user.email}")
       expect(page).to have_current_path(authorization_requests_path)
     end
   end
@@ -38,8 +38,8 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
       search
 
       expect(page).to have_css('.user', count: 1)
-      expect(page).to have_content(valid_user.email)
-      expect(page).to have_no_content(invalid_user.email)
+      expect(page).to have_text(valid_user.email)
+      expect(page).to have_no_text(invalid_user.email)
     end
   end
 
@@ -75,15 +75,15 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
 
         within("##{dom_id(user_with_providers)}") do
           within('.user-providers') do
-            expect(page).to have_content('INSEE')
-            expect(page).to have_content('DGFIP')
+            expect(page).to have_text('INSEE')
+            expect(page).to have_text('DGFIP')
           end
         end
 
         within("##{dom_id(user_without_providers)}") do
           within('.user-providers') do
-            expect(page).to have_no_content('INSEE')
-            expect(page).to have_no_content('DGFIP')
+            expect(page).to have_no_text('INSEE')
+            expect(page).to have_no_text('DGFIP')
           end
         end
       end
@@ -110,8 +110,8 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
 
         within("##{dom_id(user)}") do
           within('.user-providers') do
-            expect(page).to have_content('INSEE')
-            expect(page).to have_content('DGFIP')
+            expect(page).to have_text('INSEE')
+            expect(page).to have_text('DGFIP')
           end
         end
       end
@@ -137,7 +137,7 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
 
           within("##{dom_id(user)}") do
             within('.user-providers') do
-              expect(page).to have_no_content('INSEE')
+              expect(page).to have_no_text('INSEE')
             end
           end
         end

@@ -31,7 +31,7 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
       expect(page).to have_css('#' << dom_id(valid_authorization_requests[0]))
       expect(page).to have_css('#' << dom_id(valid_authorization_requests[1]))
 
-      expect(page).to have_content('Nouveau jeton à utiliser')
+      expect(page).to have_text('Nouveau jeton à utiliser')
     end
 
     describe 'copy token behaviour' do
@@ -100,7 +100,7 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
       search
 
       expect(page).to have_css('.authorization-request', count: 1)
-      expect(page).to have_content(valid_authorization_request.demandeur.email)
+      expect(page).to have_text(valid_authorization_request.demandeur.email)
     end
   end
 end

@@ -11,14 +11,14 @@ RSpec.shared_examples 'a changelogs feature' do
     it 'renders the page title' do
       visit_changelogs
 
-      expect(page).to have_content(I18n.t('shared.changelogs.index.title'))
+      expect(page).to have_text(I18n.t('shared.changelogs.index.title'))
     end
 
     it 'renders entries relevant to the API' do
       visit_changelogs
 
       ChangelogEntry.for(api).first(3).each do |entry|
-        expect(page).to have_content(entry.title)
+        expect(page).to have_text(entry.title)
       end
     end
   end

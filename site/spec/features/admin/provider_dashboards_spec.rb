@@ -9,10 +9,10 @@ RSpec.describe 'Admin: provider dashboards', app: :api_entreprise do
     it 'displays the providers list linked to API Entreprise' do
       visit admin_provider_dashboards_path
 
-      expect(page).to have_content('Tableaux de bords des fournisseurs')
+      expect(page).to have_text('Tableaux de bords des fournisseurs')
 
-      expect(page).to have_content('INSEE')
-      expect(page).to have_no_content('France Travail')
+      expect(page).to have_text('INSEE')
+      expect(page).to have_no_text('France Travail')
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe 'Admin: provider dashboards', app: :api_entreprise do
 
       expect(page).to have_css('h1')
       expect(page).to have_css('form')
-      expect(page).to have_content('Date de début')
+      expect(page).to have_text('Date de début')
     end
   end
 end

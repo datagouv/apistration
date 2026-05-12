@@ -13,10 +13,10 @@ RSpec.describe 'Admin: audit notifications', app: :api_entreprise do
     end
 
     it 'displays audit notifications' do
-      expect(page).to have_content(audit_notification.authorization_request_external_id)
-      expect(page).to have_content(audit_notification.reason)
-      expect(page).to have_content(audit_notification.request_id_access_logs.size.to_s)
-      expect(page).to have_content(audit_notification.contact_emails.join(', '))
+      expect(page).to have_text(audit_notification.authorization_request_external_id)
+      expect(page).to have_text(audit_notification.reason)
+      expect(page).to have_text(audit_notification.request_id_access_logs.size.to_s)
+      expect(page).to have_text(audit_notification.contact_emails.join(', '))
     end
   end
 
@@ -55,11 +55,11 @@ RSpec.describe 'Admin: audit notifications', app: :api_entreprise do
         click_button 'Envoyer la notification'
 
         expect(page).to have_css('.fr-alert.fr-alert--error')
-        expect(page).to have_content('Le formulaire contient des erreurs')
+        expect(page).to have_text('Le formulaire contient des erreurs')
 
-        expect(page).to have_content('Identifiant de la demande d\'habilitation doit être rempli(e)')
-        expect(page).to have_content('Raison de l\'audit doit être rempli(e)')
-        expect(page).to have_content('Identifiants des logs d\'accès doit être rempli(e)')
+        expect(page).to have_text('Identifiant de la demande d\'habilitation doit être rempli(e)')
+        expect(page).to have_text('Raison de l\'audit doit être rempli(e)')
+        expect(page).to have_text('Identifiants des logs d\'accès doit être rempli(e)')
 
         expect(AuditNotification.count).to eq(0)
       end

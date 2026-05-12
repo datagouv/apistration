@@ -17,7 +17,7 @@ RSpec.shared_examples 'a blog feature' do
       it 'renders the blog post' do
         show_blog_post
 
-        expect(page).to have_content(valid_text)
+        expect(page).to have_text(valid_text)
       end
     end
 

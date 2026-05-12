@@ -30,7 +30,7 @@ RSpec.describe 'show token from magic link', app: :api_entreprise do
           subject
           expiration_time = distance_of_time_in_words(Time.zone.now, magic_link.expires_at)
 
-          expect(page).to have_content(expiration_time)
+          expect(page).to have_text(expiration_time)
         end
       end
     end
