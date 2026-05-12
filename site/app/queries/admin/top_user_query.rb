@@ -1,4 +1,4 @@
-class Admin::TopUsersQuery
+class Admin::TopUserQuery
   def initialize(filter)
     @filter = filter
   end

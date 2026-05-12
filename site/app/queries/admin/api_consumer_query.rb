@@ -1,4 +1,4 @@
-class Admin::ApiConsumersQuery
+class Admin::APIConsumerQuery
   def initialize(filter)
     @filter = filter
   end
@@ -82,7 +82,7 @@ class Admin::ApiConsumersQuery
   def scoped # rubocop:disable Metrics/AbcSize
     scope = AccessLog
       .where(timestamp: filter.date_from.beginning_of_day..filter.date_to.end_of_day)
-      .where("status NOT IN ('401', '403')")
+      .where("access_logs.status NOT IN ('401', '403')")
       .where.not(controller: excluded_controllers)
 
     scope = scope.where(controller: filter.api) if filter.api.present?

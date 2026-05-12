@@ -1,4 +1,4 @@
-class Admin::ApiHealthQuery
+class Admin::APIHealthQuery
   def initialize(filter)
     @filter = filter
   end

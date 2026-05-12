@@ -1,4 +1,4 @@
-class Admin::AnnualStatsQuery
+class Admin::AnnualStatQuery
   def initialize(filter)
     @filter = filter
   end
@@ -94,7 +94,7 @@ class Admin::AnnualStatsQuery
     scope = AccessLog
       .where("timestamp >= date_trunc('month', ?::date::timestamp)", filter.date_from)
       .where("timestamp < date_trunc('month', CURRENT_DATE)")
-      .where("status NOT IN ('401', '403')")
+      .where("access_logs.status NOT IN ('401', '403')")
       .where.not(controller: excluded_controllers)
 
     scope = scope.where(controller: filter.api) if filter.api.present?
