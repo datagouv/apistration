@@ -75,7 +75,7 @@ class Admin::KpiQuery
   # card 597
   def top_variations # rubocop:disable Metrics/AbcSize
     current = consumption_for_period(filter.date_from, filter.date_to)
-    duration = (filter.date_to - filter.date_from).to_i
+    duration = (filter.date_to - filter.date_from).to_i + 1
     previous = consumption_for_period(filter.date_from - duration.days, filter.date_from - 1.day)
 
     merged = (current.keys | previous.keys).map do |source_id|
