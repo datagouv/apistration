@@ -3,14 +3,17 @@ class Admin::KpiQuery
     @filter = filter
   end
 
+  # card 480
   def total_calls
     scoped.sum(:appels_totaux)
   end
 
+  # card 538
   def unique_calls
     scoped.sum(:appels_uniques)
   end
 
+  # card 481
   def calls_by_period
     scoped
       .group(date_trunc_sql)
@@ -19,6 +22,7 @@ class Admin::KpiQuery
       .map { |bucket, total| { bucket:, total: total.to_i } }
   end
 
+  # card 537
   def unique_calls_by_period
     scoped
       .group(date_trunc_sql)
@@ -27,6 +31,7 @@ class Admin::KpiQuery
       .map { |bucket, total| { bucket:, total: total.to_i } }
   end
 
+  # card 482
   def error_breakdown
     success = scoped.sum(:appels_succes).to_i
     not_found = scoped.sum(:appels_echecs).to_i
@@ -40,6 +45,7 @@ class Admin::KpiQuery
     ]
   end
 
+  # card 29
   def kpi1_series
     KpiView::Kpi1
       .where(semaine: filter.date_from..filter.date_to)
@@ -48,6 +54,7 @@ class Admin::KpiQuery
       .map { |s, v| { bucket: s, value: v.to_i } }
   end
 
+  # card 30
   def kpi2_series
     KpiView::Kpi2
       .where(semaine: filter.date_from..filter.date_to)
@@ -56,6 +63,7 @@ class Admin::KpiQuery
       .map { |s, v| { bucket: s, value: v.to_i } }
   end
 
+  # card 553
   def kpi3_series
     KpiView::Kpi3
       .where(semaine: filter.date_from..filter.date_to)
@@ -64,6 +72,7 @@ class Admin::KpiQuery
       .map { |s, v| { bucket: s, value: v.to_i } }
   end
 
+  # card 597
   def top_variations # rubocop:disable Metrics/AbcSize
     current = consumption_for_period(filter.date_from, filter.date_to)
     duration = (filter.date_to - filter.date_from).to_i
@@ -84,6 +93,7 @@ class Admin::KpiQuery
     merged.sort_by { |r| -r[:variation_brute].abs }.first(10)
   end
 
+  # card 478
   def api_list
     scope = ControllerName.all
     scope = scope.where("split_part(controller, '/', 1) = ?", filter.domaine_prefix) if filter.domaine?

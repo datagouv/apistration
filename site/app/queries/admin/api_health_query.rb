@@ -3,6 +3,7 @@ class Admin::ApiHealthQuery
     @filter = filter
   end
 
+  # card 413
   def instant_status
     instant_status_scope
       .select(*instant_status_columns)
@@ -11,6 +12,7 @@ class Admin::ApiHealthQuery
       .map { |r| format_instant_row(r) }
   end
 
+  # card 483
   def api_list
     scope = ControllerName.all
     scope = scope.where("split_part(controller, '/', 1) = ?", filter.domaine_prefix) if filter.domaine?

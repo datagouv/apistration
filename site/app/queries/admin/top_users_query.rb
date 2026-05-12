@@ -3,14 +3,17 @@ class Admin::TopUsersQuery
     @filter = filter
   end
 
+  # cards 475 / 474
   def top_tokens(api_domain)
     top_by(api_domain, 'tokens.id', 'tokens.id AS identifier')
   end
 
+  # cards 473 / 472
   def top_datapass(api_domain)
     top_by(api_domain, 'authorization_requests.external_id', 'authorization_requests.external_id AS identifier')
   end
 
+  # cards 485 / 468
   def top_editors(api_domain) # rubocop:disable Metrics/AbcSize
     AccessLog
       .joins('INNER JOIN tokens ON tokens.id = access_logs.token_id')
@@ -27,6 +30,7 @@ class Admin::TopUsersQuery
       .map { |r| { identifier: r.identifier, calls: r.calls_count.to_i } }
   end
 
+  # cards 470 / 471
   def top_ips(api_domain)
     AccessLog
       .where(timestamp: date_range)

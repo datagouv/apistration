@@ -3,6 +3,7 @@ class Admin::TokenConsumptionQuery
     @filter = filter
   end
 
+  # card 463
   def habilitations # rubocop:disable Metrics/AbcSize
     scope = AuthorizationRequest
       .joins(:tokens)
@@ -22,6 +23,7 @@ class Admin::TokenConsumptionQuery
     scope
   end
 
+  # card 461
   def tokens_with_consumption # rubocop:disable Metrics/AbcSize
     scope = Token
       .joins(:authorization_request)
@@ -41,6 +43,7 @@ class Admin::TokenConsumptionQuery
     scope.limit(50)
   end
 
+  # card 462
   def consumption_by_day
     scope = access_logs_scoped
       .select(
@@ -54,6 +57,7 @@ class Admin::TokenConsumptionQuery
     scope.map { |r| { bucket: r.period, unique: r.unique_calls.to_i, non_unique: r.non_unique_calls.to_i } }
   end
 
+  # card 460
   def consumption_by_api_and_status
     scope = access_logs_scoped
       .where.not(controller: excluded_controllers)
@@ -64,6 +68,7 @@ class Admin::TokenConsumptionQuery
     scope.map { |r| { controller: r.controller, status: r.status, count: r.calls_count.to_i } }
   end
 
+  # card 486
   def recent_requests
     access_logs_scoped
       .where.not(controller: excluded_controllers)

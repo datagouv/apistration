@@ -3,18 +3,22 @@ class Admin::ApiStatusQuery
     @filter = filter
   end
 
+  # card 420
   def total_calls
     scoped.count
   end
 
+  # card 419
   def unique_calls
     scoped.select("DISTINCT COALESCE(params->>'hashed_params', path)").count
   end
 
+  # card 415
   def cached_calls
     scoped.where(cached: true).count
   end
 
+  # card 422
   def calls_vs_unique_evolution
     scoped
       .select(
@@ -27,6 +31,7 @@ class Admin::ApiStatusQuery
       .map { |r| { bucket: r.period, total: r.total.to_i, unique: r.unique_count.to_i } }
   end
 
+  # card 421
   def cached_evolution
     scoped
       .where(cached: true)
@@ -39,6 +44,7 @@ class Admin::ApiStatusQuery
       .map { |r| { bucket: r.period, total: r.total.to_i } }
   end
 
+  # card 423
   def duration_evolution
     scoped
       .where("status IN ('200', '404')")
@@ -51,6 +57,7 @@ class Admin::ApiStatusQuery
       .map { |r| { bucket: r.period, value: r.avg_dur&.to_f || 0 } }
   end
 
+  # card 424
   def http_code_breakdown
     scoped
       .select('status', 'COUNT(*) AS total')
@@ -59,6 +66,7 @@ class Admin::ApiStatusQuery
       .map { |r| { label: r.status, value: r.total.to_i } }
   end
 
+  # card 478
   def api_list
     scope = ControllerName.all
     scope = scope.where("split_part(controller, '/', 1) = ?", filter.domaine_prefix) if filter.domaine?

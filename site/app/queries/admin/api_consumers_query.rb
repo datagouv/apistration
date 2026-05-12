@@ -3,10 +3,12 @@ class Admin::ApiConsumersQuery
     @filter = filter
   end
 
+  # card 420
   def total_calls
     scoped.count
   end
 
+  # card 414
   def success_breakdown
     total = scoped.count
     success = scoped.where(status: '200').count
@@ -20,6 +22,7 @@ class Admin::ApiConsumersQuery
     ]
   end
 
+  # card 371
   def calls_by_period
     scoped
       .select("date_trunc('#{filter.pg_interval_unit}', timestamp) AS period", 'COUNT(*) AS total')
@@ -28,6 +31,7 @@ class Admin::ApiConsumersQuery
       .map { |r| { bucket: r.period, value: r.total.to_i } }
   end
 
+  # card 361
   def consumer_habilitations # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     scoped
       .joins('INNER JOIN tokens ON tokens.id = access_logs.token_id')
@@ -64,6 +68,7 @@ class Admin::ApiConsumersQuery
       end
   end
 
+  # card 483
   def api_list
     scope = ControllerName.all
     scope = scope.where("split_part(controller, '/', 1) = ?", filter.domaine_prefix) if filter.domaine?

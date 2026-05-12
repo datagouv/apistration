@@ -3,18 +3,22 @@ class Admin::UsersOverviewQuery
     @filter = filter
   end
 
+  # card 329
   def total_users
     User.count
   end
 
+  # card 330
   def total_habilitations
     AuthorizationRequest.count
   end
 
+  # card 331
   def total_tokens
     Token.count
   end
 
+  # card 612
   def habilitations_with_successful_call
     AuthorizationRequest
       .joins(:tokens)

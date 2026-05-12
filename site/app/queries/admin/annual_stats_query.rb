@@ -3,18 +3,22 @@ class Admin::AnnualStatsQuery
     @filter = filter
   end
 
+  # card 440
   def total_calls
     scoped.count
   end
 
+  # card 441
   def unique_calls
     scoped.select("DISTINCT COALESCE(params->>'hashed_params', path)").count
   end
 
+  # card 442
   def cached_calls
     scoped.where(cached: true).count
   end
 
+  # card 465
   def total_users
     scoped
       .joins('INNER JOIN tokens ON tokens.id = access_logs.token_id')
@@ -23,6 +27,7 @@ class Admin::AnnualStatsQuery
       .count
   end
 
+  # card 464
   def success_rate_breakdown
     total = scoped.count
     success = scoped.where(status: '200').count
@@ -36,6 +41,7 @@ class Admin::AnnualStatsQuery
     ]
   end
 
+  # card 518
   def unique_sirets
     scoped
       .where("params->>'siret' IS NOT NULL")
@@ -43,6 +49,7 @@ class Admin::AnnualStatsQuery
       .count
   end
 
+  # card 434
   def calls_by_month
     scoped
       .select("date_trunc('month', timestamp) AS period", 'COUNT(*) AS total')
@@ -51,6 +58,7 @@ class Admin::AnnualStatsQuery
       .map { |r| { bucket: r.period, value: r.total.to_i } }
   end
 
+  # card 432
   def cumulative_calls_by_month
     monthly = calls_by_month
     cumul = 0
@@ -60,6 +68,7 @@ class Admin::AnnualStatsQuery
     end
   end
 
+  # card 433
   def users_by_month
     scoped
       .joins('INNER JOIN tokens ON tokens.id = access_logs.token_id')
@@ -70,6 +79,7 @@ class Admin::AnnualStatsQuery
       .map { |r| { bucket: r.period, value: r.total.to_i } }
   end
 
+  # card 478
   def api_list_by_domain
     scope = ControllerName.all
     scope = scope.where("split_part(controller, '/', 1) = ?", filter.domaine_prefix) if filter.domaine?
