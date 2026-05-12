@@ -19,7 +19,7 @@ class Seeds
     create_provider_dashboard_data
   end
 
-  def flushdb
+  def flushdb # rubocop:disable Metrics/AbcSize
     raise 'Not in production!' if Rails.env.production?
 
     load_all_models!
