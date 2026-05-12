@@ -1,0 +1,77 @@
+class Admin::UserStatusQuery
+  def initialize(filter)
+    @filter = filter
+  end
+
+  def user_info
+    return [] if filter.email.blank?
+
+    User
+      .where(email: filter.email)
+      .select(:id, :email, :created_at)
+  end
+
+  def user_habilitations
+    return [] if filter.email.blank?
+
+    AuthorizationRequest
+      .joins(:users)
+      .where(users: { email: filter.email })
+      .select(
+        'authorization_requests.external_id',
+        'authorization_requests.intitule',
+        'authorization_requests.api',
+        'authorization_requests.status',
+        'authorization_requests.siret',
+        'authorization_requests.scopes',
+        'authorization_requests.created_at'
+      )
+      .order(created_at: :desc)
+  end
+
+  def user_tokens
+    return [] if filter.email.blank?
+
+    Token
+      .joins(authorization_request: :users)
+      .where(users: { email: filter.email })
+      .select(
+        'tokens.id AS token_id',
+        'tokens.exp',
+        'tokens.blacklisted_at',
+        'authorization_requests.external_id',
+        'authorization_requests.intitule'
+      )
+      .order('tokens.exp DESC')
+  end
+
+  def habilitations_count
+    scope = AuthorizationRequest.all
+    scope = scope.where(authorization_requests: { external_id: filter.external_id }) if filter.external_id.present?
+    scope.count
+  end
+
+  def habilitation_status_breakdown
+    scope = AuthorizationRequest.all
+    scope = scope.joins(:users).where(users: { email: filter.email }) if filter.email.present?
+    scope
+      .group(:status)
+      .count
+      .map { |status, count| { label: status, value: count } }
+  end
+
+  def token_status_breakdown # rubocop:disable Metrics/AbcSize
+    scope = Token.all
+    scope = scope.joins(authorization_request: :users).where(users: { email: filter.email }) if filter.email.present?
+
+    active = scope.where(blacklisted_at: nil).where('exp > ?', Time.current).count
+    expired = scope.where(blacklisted_at: nil).where(exp: ..Time.current).count
+    blacklisted = scope.where.not(blacklisted_at: nil).count
+
+    [
+      { label: 'Actif', value: active },
+      { label: 'Expiré', value: expired },
+      { label: 'Bloqué', value: blacklisted }
+    ]
+  end
+end
