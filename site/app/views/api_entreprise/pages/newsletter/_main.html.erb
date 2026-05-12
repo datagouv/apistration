@@ -21,6 +21,10 @@
         <p><%= t('.operations_description').html_safe %></p>
         <a href="https://status.entreprise.api.gouv.fr/subscribe/email" class="fr-btn fr-btn--secondary fr-mb-8v" target="_blank"><%= t('.operations_button') %></a>
 
+        <h3 class="fr-h4"><%= t('.changelog_title').html_safe %></h3>
+        <p><%= t('.changelog_description').html_safe %></p>
+        <a href="<%= changelogs_path %>" class="fr-btn fr-btn--secondary fr-mb-8v"><%= t('.changelog_button') %></a>
+
         <h3 class="fr-h4 fr-hidden"><%= t('.archives_title').html_safe %></h3>
         <p class="fr-hidden"><%= t('.archives_description').html_safe %></p>
       </div>

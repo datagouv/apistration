@@ -10,6 +10,11 @@
           <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
         </div>
       </div>
+      <div class="fr-col-12 fr-mt-4w">
+        <h3 class="fr-h4"><%= t('.changelog_title').html_safe %></h3>
+        <p><%= t('.changelog_description').html_safe %></p>
+        <a href="<%= changelogs_path %>" class="fr-btn fr-btn--secondary"><%= t('.changelog_button') %></a>
+      </div>
     </div>
   </div>
 </section>
