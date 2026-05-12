@@ -85,7 +85,7 @@ class Admin::TokenConsumptionQuery
     scope = AccessLog.where(timestamp: filter.date_from.beginning_of_day..filter.date_to.end_of_day)
     scope = scope.joins('INNER JOIN tokens ON tokens.id = access_logs.token_id') if filter.token_id.present?
     scope = scope.where('tokens.id = ?::uuid', filter.token_id) if filter.token_id.present?
-    scope = scope.where("status NOT IN ('401', '403')") if filter.token_id.blank?
+    scope = scope.where("access_logs.status NOT IN ('401', '403')") if filter.token_id.blank?
     scope
   end
 
