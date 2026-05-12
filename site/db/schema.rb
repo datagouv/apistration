@@ -337,6 +337,50 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_100000) do
   add_foreign_key "user_authorization_request_roles", "authorization_requests"
   add_foreign_key "user_authorization_request_roles", "users"
 
+  create_view "admin_apientreprise_#{Rails.env}_access_logs_controller_name", sql_definition: <<-SQL
+      SELECT DISTINCT (al.controller) AS controller
+       FROM access_logs al
+      WHERE ((al."timestamp" >= (now() + '-183 days'::interval))
+        AND ((al.controller)::text <> ALL ((ARRAY['uptime'::character varying, 'ping'::character varying, 'errors'::character varying, 'api_particulier/introspect'::character varying, 'api_entreprise/proxied_files'::character varying, 'api_particulier/ping_providers'::character varying, 'api_entreprise/ping_providers'::character varying, 'api_entreprise/inpi_proxy'::character varying, 'api_particulier/france_connect_jwks'::character varying])::text[])))
+      ORDER BY al.controller DESC;
+  SQL
+
+  create_view "admin_apientreprise_#{Rails.env}_access_logs_kpi1", sql_definition: <<-SQL
+      SELECT filtered.semaine, count(filtered.siren) AS entreprises
+       FROM ( SELECT DISTINCT date_trunc('week'::text, al."timestamp") AS semaine, (al.params -> 'siren'::text) AS siren
+               FROM access_logs al
+              WHERE ((al."timestamp" >= (now() + '-183 days'::interval))
+                AND (split_part((al.controller)::text, '/'::text, 1) = 'api_entreprise'::text)
+                AND ((al.status)::integer <> ALL (ARRAY[401, 403]))
+                AND ((al.path)::text !~~ ALL ((ARRAY['%/ping'::character varying, '%/uptime'::character varying])::text[])))) filtered
+      GROUP BY filtered.semaine
+      ORDER BY filtered.semaine;
+  SQL
+
+  create_view "admin_apientreprise_#{Rails.env}_access_logs_kpi2", sql_definition: <<-SQL
+      SELECT filtered.semaine, count(filtered.path) AS distinct_hits
+       FROM ( SELECT DISTINCT date_trunc('week'::text, al."timestamp") AS semaine, al.path
+               FROM access_logs al
+              WHERE ((al."timestamp" >= (now() + '-183 days'::interval))
+                AND (split_part((al.controller)::text, '/'::text, 1) = 'api_entreprise'::text)
+                AND ((al.status)::integer <> ALL (ARRAY[401, 403]))
+                AND ((al.path)::text !~~ ALL ((ARRAY['%/ping'::character varying, '%/uptime'::character varying])::text[])))) filtered
+      GROUP BY filtered.semaine
+      ORDER BY filtered.semaine;
+  SQL
+
+  create_view "admin_apientreprise_#{Rails.env}_access_logs_kpi3", sql_definition: <<-SQL
+      SELECT filtered.semaine, count(filtered.siret) AS entreprises
+       FROM ( SELECT DISTINCT date_trunc('week'::text, al."timestamp") AS semaine, (al.params -> 'siret'::text) AS siret
+               FROM access_logs al
+              WHERE ((al."timestamp" >= (now() + '-183 days'::interval))
+                AND (split_part((al.controller)::text, '/'::text, 1) = 'api_entreprise'::text)
+                AND ((al.status)::integer <> ALL (ARRAY[401, 403]))
+                AND ((al.path)::text !~~ ALL ((ARRAY['%/ping'::character varying, '%/uptime'::character varying])::text[])))) filtered
+      GROUP BY filtered.semaine
+      ORDER BY filtered.semaine;
+  SQL
+
   create_view "admin_apientreprise_#{Rails.env}_access_logs_consumption_summary", sql_definition: <<-SQL
       SELECT date(al."timestamp") AS date,
           CASE
