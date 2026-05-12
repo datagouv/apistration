@@ -88,6 +88,10 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .map { |bucket, value| { bucket:, value: value.to_i } }
   end
 
+  def consumers_cumulative_evolution
+    @consumers_cumulative_evolution ||= cumulate(consumers_evolution)
+  end
+
   # card 554
   def consumers(page: 1, per: 10)
     Kaminari.paginate_array(consumers_rows).page(page).per(per)
@@ -151,6 +155,10 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .order(Arel.sql(habilitations_date_trunc_sql))
       .pluck(Arel.sql(habilitations_date_trunc_sql), Arel.sql('COUNT(*)'))
       .map { |bucket, value| { bucket:, value: value.to_i } }
+  end
+
+  def habilitations_cumulative_evolution
+    @habilitations_cumulative_evolution ||= cumulate(habilitations_evolution)
   end
 
   # card 547
@@ -266,6 +274,11 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def date_trunc_sql
     "date_trunc('#{filter.pg_interval_unit}', date)"
+  end
+
+  def cumulate(series)
+    running = 0
+    series.map { |point| { bucket: point[:bucket], value: running += point[:value] } }
   end
 
   def habilitations_date_trunc_sql

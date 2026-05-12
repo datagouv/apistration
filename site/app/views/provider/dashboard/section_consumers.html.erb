@@ -10,7 +10,9 @@
       title: t('.charts.evolution'),
       series: [
         { label: t('.charts.evolution_series'),
-          points: @query.consumers_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } }
+          points: @query.consumers_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } },
+        { label: t('.charts.cumulative_series'),
+          points: @query.consumers_cumulative_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } }
       ] %>
 
     <p><%= t('.description') %></p>
