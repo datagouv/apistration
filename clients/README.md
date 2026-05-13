@@ -10,7 +10,8 @@ des specs OpenAPI versionnées dans [`commons/swagger/`](../commons/swagger).
 |---|---|
 | [`SPECS.md`](./SPECS.md) | Contrat normatif (langage-agnostique) que tout client doit respecter : environnements, auth, enveloppe, erreurs, rate-limit, testing, packaging, checklist de conformité. |
 | `ruby/` | Implémentation de référence en Ruby. |
-| `node/`, `python/`, `php/`, `java/` | *(à venir)* — ports à produire en suivant `SPECS.md` et en s'inspirant de `ruby/`. |
+| `node/` | Client Node.js (TypeScript) — `@api-gouv/api-entreprise` + `@api-gouv/api-particulier`. Zéro deps runtime (fetch natif Node 18+). |
+| `python/`, `php/`, `java/` | *(à venir)* — ports à produire en suivant `SPECS.md` et en s'inspirant de `ruby/`. |
 
 ## L'implémentation de référence : `ruby/`
 
