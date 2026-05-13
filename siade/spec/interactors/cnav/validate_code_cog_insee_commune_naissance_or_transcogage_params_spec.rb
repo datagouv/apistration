@@ -4,8 +4,14 @@ RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams, ty
   describe 'with code insee lieu de naissance' do
     let(:params) { { code_cog_insee_commune_naissance:, code_cog_insee_pays_naissance: '99100' } }
 
-    context 'when it is not valid' do
+    context 'when it is not provided' do
       let(:code_cog_insee_commune_naissance) { nil }
+
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is provided but invalid' do
+      let(:code_cog_insee_commune_naissance) { 'invalid' }
 
       it { is_expected.to be_a_failure }
 
@@ -48,17 +54,13 @@ RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams, ty
     describe 'when in france' do
       let(:params) { { code_cog_insee_pays_naissance: '99100' } }
 
-      it { is_expected.to be_a_failure }
-
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      it { is_expected.to be_a_success }
     end
 
     describe 'when not in france' do
       let(:params) { { code_cog_insee_pays_naissance: '99345' } }
 
       it { is_expected.to be_a_success }
-
-      its(:errors) { is_expected.to be_empty }
     end
   end
 end

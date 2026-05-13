@@ -79,7 +79,7 @@ RSpec.describe APIParticulier::V3AndMore::CNAV::AbstractCivilityController do
       end
     end
 
-    context 'with missing required param for transcogage (departement naissance)' do
+    context 'with missing departement naissance (commune params are optional)' do
       let(:params) do
         {
           recipient:,
@@ -94,10 +94,10 @@ RSpec.describe APIParticulier::V3AndMore::CNAV::AbstractCivilityController do
         }
       end
 
-      it 'returns 422' do
+      it 'returns 200' do
         subject
 
-        expect(response).to have_http_status(:unprocessable_content)
+        expect(response).to have_http_status(:ok)
       end
     end
   end
