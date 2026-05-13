@@ -355,7 +355,12 @@ client.<resource>.<operation>(<path_params>, <kwargs>) → Response
   version that does not exist for the endpoint MUST raise the
   language-native argument error. Calling a version marked
   `deprecated: true` in the OpenAPI spec MUST emit a deprecation warning
-  through the language-native channel.
+  through the language-native channel (Ruby: `warn` with `uplevel: 1`;
+  Node.js: `process.emitWarning` with type `'DeprecationWarning'`;
+  Python: `warnings.warn` with `DeprecationWarning`). The message MUST
+  include the full path template (e.g. `/v3/insee/sirene/etablissements/{siret}`)
+  and the method name (e.g. `#etablissements`) so the caller can identify
+  which call to migrate.
 
 Example (Ruby, normative for other languages' idiomatic translation):
 
