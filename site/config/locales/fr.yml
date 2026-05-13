@@ -578,6 +578,7 @@ fr:
         download_csv: Télécharger en CSV
         charts:
           evolution: Évolution des consommateurs actifs
+          includes_france_connect: incl. FranceConnect
           evolution_series: Par période
           cumulative_series: Cumulé
       section_habilitations:

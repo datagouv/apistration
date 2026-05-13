@@ -6,8 +6,10 @@
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
 
+    <% chart_title = t('.charts.evolution') %>
+    <% chart_title += " (#{t('.charts.includes_france_connect')})" if @filter.api.to_s == 'particulier' %>
     <%= render 'shared/dsfr_chart/line',
-      title: t('.charts.evolution'),
+      title: chart_title,
       series: [
         { label: t('.charts.evolution_series'),
           points: @query.consumers_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } },

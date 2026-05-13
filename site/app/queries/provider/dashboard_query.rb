@@ -81,7 +81,6 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def consumers_evolution
     @consumers_evolution ||= scoped
-      .where(source_type: 'token')
       .group(date_trunc_sql)
       .order(Arel.sql(date_trunc_sql))
       .pluck(Arel.sql(date_trunc_sql), Arel.sql('COUNT(DISTINCT source_id)'))
@@ -94,7 +93,6 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def new_consumers_per_bucket
     @new_consumers_per_bucket ||= scoped
-      .where(source_type: 'token')
       .group(:source_id)
       .select("source_id, #{date_trunc_sql} AS bucket")
       .order(Arel.sql("MIN(#{date_trunc_sql})"))
