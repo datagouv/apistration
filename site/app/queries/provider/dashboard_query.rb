@@ -79,6 +79,19 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .map { |row| { endpoint: endpoint_title(row[0]), value: weighted_avg([row[1], row[2]]) } }
   end
 
+  def consumers_evolution
+    @consumers_evolution ||= scoped
+      .where(source_type: 'token')
+      .group(date_trunc_sql)
+      .order(Arel.sql(date_trunc_sql))
+      .pluck(Arel.sql(date_trunc_sql), Arel.sql('COUNT(DISTINCT source_id)'))
+      .map { |bucket, value| { bucket:, value: value.to_i } }
+  end
+
+  def consumers_cumulative_evolution
+    @consumers_cumulative_evolution ||= cumulate(consumers_evolution)
+  end
+
   # card 554
   def consumers(page: 1, per: 10)
     Kaminari.paginate_array(consumers_rows).page(page).per(per)
@@ -132,6 +145,22 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       end
   end
 
+  def habilitations_evolution # rubocop:disable Metrics/AbcSize
+    @habilitations_evolution ||= AuthorizationRequest
+      .where(api: filter_apis)
+      .where(habilitation_scope_clause)
+      .where(status: 'validated')
+      .where(validated_at: filter.date_range)
+      .group(habilitations_date_trunc_sql)
+      .order(Arel.sql(habilitations_date_trunc_sql))
+      .pluck(Arel.sql(habilitations_date_trunc_sql), Arel.sql('COUNT(*)'))
+      .map { |bucket, value| { bucket:, value: value.to_i } }
+  end
+
+  def habilitations_cumulative_evolution
+    @habilitations_cumulative_evolution ||= cumulate(habilitations_evolution)
+  end
+
   # card 547
   def habilitations(page: 1, per: 10)
     Kaminari.paginate_array(habilitations_rows).page(page).per(per)
@@ -149,6 +178,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .where(api: filter_apis)
       .where(habilitation_scope_clause)
       .where.not(status: %w[draft archived])
+      .where(first_submitted_at: filter.date_range)
       .order(created_at: :desc)
       .pluck(
         :external_id,
@@ -259,6 +289,15 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def date_trunc_sql
     "date_trunc('#{filter.pg_interval_unit}', date)"
+  end
+
+  def cumulate(series)
+    running = 0
+    series.map { |point| { bucket: point[:bucket], value: running += point[:value] } }
+  end
+
+  def habilitations_date_trunc_sql
+    "date_trunc('#{filter.pg_interval_unit}', validated_at)"
   end
 
   def endpoint_title(api)

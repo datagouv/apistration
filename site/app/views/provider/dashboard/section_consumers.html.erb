@@ -1,7 +1,20 @@
-<% consumers = @query.consumers(page: params[:page]) %>
+<%
+  consumers = @query.consumers(page: params[:page])
+  fmt = ->(b) { dashboard_bucket_label(b, @filter.interval) }
+%>
 <%= turbo_frame_tag 'dashboard_consumers' do %>
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
+
+    <%= render 'shared/dsfr_chart/line',
+      title: t('.charts.evolution'),
+      series: [
+        { label: t('.charts.evolution_series'),
+          points: @query.consumers_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } },
+        { label: t('.charts.cumulative_series'),
+          points: @query.consumers_cumulative_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } }
+      ] %>
+
     <p><%= t('.description') %></p>
     <p>
       <%= link_to t('.download_csv'),

@@ -576,10 +576,18 @@ fr:
         title: Consommateurs
         description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
         download_csv: Télécharger en CSV
+        charts:
+          evolution: Évolution des consommateurs actifs
+          evolution_series: Par période
+          cumulative_series: Cumulé
       section_habilitations:
         title: Demandes et habilitations
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
         download_csv: Télécharger en CSV
+        charts:
+          evolution: Évolution des habilitations validées
+          evolution_series: Par période
+          cumulative_series: Cumulé
       filter:
         presets:
           1m: 1 mois
