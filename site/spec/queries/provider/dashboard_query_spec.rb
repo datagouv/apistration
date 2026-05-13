@@ -186,6 +186,33 @@ RSpec.describe Provider::DashboardQuery do
       end
     end
 
+    describe 'consumers_evolution_per_endpoint' do
+      let(:provider) { APIEntreprise::Provider.find('insee') }
+      let(:filter) { Provider::DashboardFilter.new(provider, 'entreprise') }
+
+      it 'groups consumers by endpoint and bucket' do
+        token2 = create(:token, authorization_request: authorization_request)
+        create(:access_log, controller: insee_unites, status: '200', api_version: 'v3', cached: false, duration: '100', token: token2)
+
+        result = query.consumers_evolution_per_endpoint
+        expect(result).to be_present
+        expect(result.first.keys).to contain_exactly(:endpoint, :bucket, :value)
+        endpoints = result.pluck(:endpoint).uniq
+        expect(endpoints.size).to be >= 2
+      end
+    end
+
+    describe 'multiple_endpoints?' do
+      it 'returns true when no route filter applied' do
+        expect(query.multiple_endpoints?).to be true
+      end
+
+      it 'returns false when filtering on a single route' do
+        narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [insee_etablissements])
+        expect(described_class.new(provider, narrow).multiple_endpoints?).to be false
+      end
+    end
+
     describe 'habilitations_evolution' do
       it 'counts validated habilitations per bucket, ignoring revoked' do
         authorization_request.update!(validated_at: 3.days.ago)

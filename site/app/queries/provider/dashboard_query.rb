@@ -108,6 +108,41 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .map { |bucket, value| { bucket:, value: value.to_i } }
   end
 
+  def consumers_evolution_per_endpoint # rubocop:disable Metrics/AbcSize
+    @consumers_evolution_per_endpoint ||= scoped
+      .group(:api, date_trunc_sql)
+      .order(Arel.sql(date_trunc_sql))
+      .pluck(:api, Arel.sql(date_trunc_sql), Arel.sql('COUNT(DISTINCT source_id)'))
+      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
+      .group_by { |r| [r[:endpoint], r[:bucket]] }
+      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
+  end
+
+  def consumers_evolution_per_endpoint_series(&) # rubocop:disable Metrics/AbcSize
+    rows = consumers_evolution_per_endpoint
+    buckets = rows.pluck(:bucket).uniq.sort
+
+    rows.pluck(:endpoint).uniq.map do |endpoint|
+      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
+      { label: endpoint, points: buckets.map { |b| [yield(b), points.dig(b, :value).to_i] } }
+    end
+  end
+
+  def consumers_cumulative_evolution_per_endpoint_series(&) # rubocop:disable Metrics/AbcSize
+    rows = new_consumers_per_bucket_per_endpoint
+    buckets = rows.pluck(:bucket).uniq.sort
+
+    rows.pluck(:endpoint).uniq.map do |endpoint|
+      running = 0
+      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
+      { label: endpoint, points: buckets.map { |b| [yield(b), running += points.dig(b, :value).to_i] } }
+    end
+  end
+
+  def multiple_endpoints?
+    requested_controllers.nil? || requested_controllers.size > 1
+  end
+
   def consumers_cumulative_evolution
     @consumers_cumulative_evolution ||= cumulate(new_consumers_per_bucket)
   end
@@ -121,6 +156,18 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .tally
       .sort
       .map { |bucket, count| { bucket:, value: count } }
+  end
+
+  def new_consumers_per_bucket_per_endpoint # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+    @new_consumers_per_bucket_per_endpoint ||= scoped
+      .group(:api, :source_id)
+      .pluck(:api, :source_id, Arel.sql("MIN(#{date_trunc_sql})"))
+      .map { |api, source_id, bucket| [endpoint_title(api), source_id, bucket] }
+      .group_by { |endpoint, source_id, _| [endpoint, source_id] }
+      .map { |(endpoint, _), rows| [endpoint, rows.min_by { |_, _, b| b }[2]] }
+      .tally
+      .sort_by(&:first)
+      .map { |(endpoint, bucket), count| { endpoint:, bucket:, value: count } }
   end
 
   # card 554

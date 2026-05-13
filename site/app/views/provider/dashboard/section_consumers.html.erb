@@ -24,6 +24,16 @@
           points: @query.consumers_cumulative_evolution.map { |p| [fmt.call(p[:bucket]), p[:value]] } }
       ] %>
 
+    <% if @query.multiple_endpoints? %>
+      <%= render 'shared/dsfr_chart/line',
+        title: t('.charts.evolution_per_endpoint'),
+        series: @query.consumers_evolution_per_endpoint_series(&fmt) %>
+
+      <%= render 'shared/dsfr_chart/line',
+        title: t('.charts.cumulative_per_endpoint'),
+        series: @query.consumers_cumulative_evolution_per_endpoint_series(&fmt) %>
+    <% end %>
+
     <p><%= t('.description') %></p>
     <p>
       <% csv_path = controller_path == 'admin/provider_dashboards' \

@@ -587,6 +587,8 @@ fr:
           includes_france_connect: incl. FranceConnect
           evolution_series: Par période
           cumulative_series: Cumulé
+          evolution_per_endpoint: Évolution des consommateurs actifs par endpoint
+          cumulative_per_endpoint: Évolution cumulée des consommateurs par endpoint
       section_habilitations:
         title: Demandes et habilitations
         total_count:
