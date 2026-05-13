@@ -25,25 +25,13 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # cards 613 / 614 / 625
-  def evolution_per_endpoint(metric) # rubocop:disable Metrics/AbcSize
+  def evolution_per_endpoint(metric)
     @evolution_per_endpoint ||= {}
-    @evolution_per_endpoint[metric] ||= scoped
-      .group(:api, date_trunc_sql)
-      .order(Arel.sql(date_trunc_sql))
-      .pluck(:api, Arel.sql(date_trunc_sql), coalesce_sum(ENDPOINT_METRIC_COLUMNS.fetch(metric)))
-      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
-      .group_by { |r| [r[:endpoint], r[:bucket]] }
-      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
+    @evolution_per_endpoint[metric] ||= per_endpoint_time_series(coalesce_sum(ENDPOINT_METRIC_COLUMNS.fetch(metric)))
   end
 
-  def evolution_per_endpoint_series(metric, &) # rubocop:disable Metrics/AbcSize
-    rows = evolution_per_endpoint(metric)
-    buckets = rows.pluck(:bucket).uniq.sort
-
-    rows.pluck(:endpoint).uniq.map do |endpoint|
-      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
-      { label: endpoint, points: buckets.map { |b| [yield(b), points.dig(b, :value).to_i] } }
-    end
+  def evolution_per_endpoint_series(metric, &)
+    build_series(evolution_per_endpoint(metric), &)
   end
 
   # cards 555..560
@@ -108,35 +96,16 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .map { |bucket, value| { bucket:, value: value.to_i } }
   end
 
-  def consumers_evolution_per_endpoint # rubocop:disable Metrics/AbcSize
-    @consumers_evolution_per_endpoint ||= scoped
-      .group(:api, date_trunc_sql)
-      .order(Arel.sql(date_trunc_sql))
-      .pluck(:api, Arel.sql(date_trunc_sql), Arel.sql('COUNT(DISTINCT source_id)'))
-      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
-      .group_by { |r| [r[:endpoint], r[:bucket]] }
-      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
+  def consumers_evolution_per_endpoint
+    @consumers_evolution_per_endpoint ||= per_endpoint_time_series(Arel.sql('COUNT(DISTINCT source_id)'))
   end
 
-  def consumers_evolution_per_endpoint_series(&) # rubocop:disable Metrics/AbcSize
-    rows = consumers_evolution_per_endpoint
-    buckets = rows.pluck(:bucket).uniq.sort
-
-    rows.pluck(:endpoint).uniq.map do |endpoint|
-      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
-      { label: endpoint, points: buckets.map { |b| [yield(b), points.dig(b, :value).to_i] } }
-    end
+  def consumers_evolution_per_endpoint_series(&)
+    build_series(consumers_evolution_per_endpoint, &)
   end
 
-  def consumers_cumulative_evolution_per_endpoint_series(&) # rubocop:disable Metrics/AbcSize
-    rows = new_consumers_per_bucket_per_endpoint
-    buckets = rows.pluck(:bucket).uniq.sort
-
-    rows.pluck(:endpoint).uniq.map do |endpoint|
-      running = 0
-      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
-      { label: endpoint, points: buckets.map { |b| [yield(b), running += points.dig(b, :value).to_i] } }
-    end
+  def consumers_cumulative_evolution_per_endpoint_series(&)
+    build_cumulative_series(new_consumers_per_bucket_per_endpoint, &)
   end
 
   def multiple_endpoints?
@@ -316,6 +285,32 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def per_api(*sql_aggregates)
     scoped.group(:api).pluck(:api, *sql_aggregates)
+  end
+
+  def per_endpoint_time_series(aggregate_sql) # rubocop:disable Metrics/AbcSize
+    scoped
+      .group(:api, date_trunc_sql)
+      .order(Arel.sql(date_trunc_sql))
+      .pluck(:api, Arel.sql(date_trunc_sql), aggregate_sql)
+      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
+      .group_by { |r| [r[:endpoint], r[:bucket]] }
+      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
+  end
+
+  def build_series(rows)
+    buckets = rows.pluck(:bucket).uniq.sort
+
+    rows.pluck(:endpoint).uniq.map do |endpoint|
+      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
+      { label: endpoint, points: buckets.map { |b| [yield(b), points.dig(b, :value).to_i] } }
+    end
+  end
+
+  def build_cumulative_series(rows, &)
+    build_series(rows, &).each do |series|
+      running = 0
+      series[:points].map! { |label, value| [label, running += value] }
+    end
   end
 
   def coalesce_sum(column) = Arel.sql("COALESCE(SUM(#{column}), 0)")
