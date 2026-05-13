@@ -5,7 +5,8 @@ document.addEventListener("turbo:load", function () {
       static targets = ["chart"];
       static values = { title: String };
 
-      download() {
+      download(event) {
+        event.preventDefault();
         const chart = this.chartTarget.querySelector(
           "line-chart, bar-chart"
         );

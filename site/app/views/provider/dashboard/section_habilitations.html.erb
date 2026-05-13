@@ -6,9 +6,7 @@
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
 
-    <ul class="fr-text--sm fr-mb-2w">
-      <li><%= t('.total_count', count: @query.total_habilitations) %></li>
-    </ul>
+    <p class="fr-text--sm fr-text--bold fr-mb-2w"><%= t('.total_count', count: @query.total_habilitations) %></p>
 
     <%= render 'shared/dsfr_chart/line',
       title: t('.charts.evolution'),
@@ -20,16 +18,16 @@
       ] %>
 
     <p><%= t('.description') %></p>
-    <p>
+    <%= render 'provider/dashboard/habilitations_table', habilitations: habilitations %>
+    <%= paginate habilitations %>
+    <p class="fr-mt-1w">
       <% csv_path = controller_path == 'admin/provider_dashboards' \
            ? habilitations_export_admin_provider_dashboard_path(id: @filter.provider.uid, filter: filter_params) \
            : provider_habilitations_csv_path(provider_uid: @filter.provider.uid, filter: filter_params) %>
-      <%= link_to t('.download_csv'),
-                  csv_path,
-                  class: 'fr-btn fr-btn--secondary fr-icon-download-line fr-btn--icon-left',
-                  data: { turbo: false } %>
+      <%= link_to csv_path, class: 'fr-link fr-link--download', data: { turbo: false } do %>
+        Télécharger la liste complète
+        <span class="fr-link__detail">CSV</span>
+      <% end %>
     </p>
-    <%= render 'provider/dashboard/habilitations_table', habilitations: habilitations %>
-    <%= paginate habilitations %>
   </section>
 <% end %>

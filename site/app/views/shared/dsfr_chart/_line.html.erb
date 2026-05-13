@@ -11,7 +11,17 @@
   names = series.map { |s| s[:label] }
 %>
 <figure class="fr-mb-3w" data-controller="chart-download" data-chart-download-title-value="<%= title %>">
-  <figcaption class="fr-text--lead"><%= title %></figcaption>
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <figcaption class="fr-text--lead"><%= title %></figcaption>
+    <% if downloadable %>
+      <a href="#" role="button"
+         class="fr-link fr-link--download fr-link--sm"
+         data-action="chart-download#download">
+        Télécharger
+        <span class="fr-link__detail">CSV</span>
+      </a>
+    <% end %>
+  </div>
   <div data-chart-download-target="chart">
     <line-chart
       x="<%= x.to_json %>"
@@ -20,11 +30,4 @@
       <% if unit %>unit-tooltip="<%= unit %>"<% end %>>
     </line-chart>
   </div>
-  <% if downloadable %>
-    <button type="button"
-            class="fr-btn fr-btn--tertiary fr-btn--sm fr-icon-download-line fr-btn--icon-left fr-mt-1w"
-            data-action="chart-download#download">
-      CSV
-    </button>
-  <% end %>
 </figure>
