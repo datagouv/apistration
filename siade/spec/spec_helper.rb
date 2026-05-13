@@ -184,7 +184,10 @@ RSpec.configure do |config|
   config.after(type: :swagger) do |example|
     next unless example.metadata[:response][:code].dup.to_s == '200'
 
-    controller = request.controller_class.new
+    controller_class = request.controller_class
+    next unless controller_class.method_defined?(:operation_id) || controller_class.private_method_defined?(:operation_id)
+
+    controller = controller_class.new
 
     split_path_item = example.metadata[:path_item][:template].split('/')
     api_version = if example.metadata[:api] == :particulierv2

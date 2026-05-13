@@ -24,6 +24,12 @@
   description: |
     Les éditeurs SaaS disposent désormais d'une **API dédiée pour récupérer la liste de leurs délégations** (`GET /editeur/api/v1/delegations`), authentifiée par leur token éditeur en bearer JWT. L'endpoint est servi à la fois sur `entreprise.api.gouv.fr` et `particulier.api.gouv.fr` et ne renvoie que les délégations associées à l'API du host appelé. La réponse expose l'`id` de la délégation (à passer dans l'en-tête `X-Delegation-Id` sur les appels métier), le SIRET du client, l'intitulé de l'habilitation DataPass, les scopes accessibles, le statut (`active` / `revoked`), la date de création et l'ID DataPass. La documentation OpenAPI est exposée sur `/editeur/api-docs`. Le mapping `siret → id` peut désormais se faire entièrement par API, sans passer par le dashboard web.
 
+- date: 2026-05-15
+  scope: both
+  title: "Documentation des endpoints de disponibilité (ping) dans le fichier OpenAPI"
+  description: |
+    Les endpoints de vérification de disponibilité (ping) sont désormais documentés dans les spécifications OpenAPI des deux API. Cela inclut le ping global de l'API, la liste des pings fournisseurs et le ping individuel par fournisseur.
+
 - date: 2026-05-13
   scope: both
   title: "SDKs officiels : Node.js disponible"

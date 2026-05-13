@@ -56,8 +56,100 @@ info:
   license:
     name: GNU Affero General Public License v3.0
     url: https://github.com/betagouv/api-particulier/blob/master/LICENSE
-tags: []
+tags:
+- name: Disponibilité
 paths:
+  "/api/ping":
+    get:
+      summary: Ping de l'API
+      tags:
+      - Disponibilité
+      description: |-
+        Vérifie que l'API est accessible et fonctionnelle. Retourne un code HTTP 200 si l'API est opérationnelle.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      responses:
+        '200':
+          description: L'API est opérationnelle
+  "/api/pings":
+    get:
+      summary: Liste des pings fournisseurs disponibles
+      tags:
+      - Disponibilité
+      description: |-
+        Retourne la liste des fournisseurs disposant d'un endpoint de ping, avec leur nom et l'URL du ping associé.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      responses:
+        '200':
+          description: Liste des pings fournisseurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Nom du fournisseur sur la page de statut
+                      example: CNAV - Quotient familial
+                    url:
+                      type: string
+                      description: URL du ping fournisseur
+                      example: https://particulier.api.gouv.fr/api/cnaf_msa_quotient_familial/ping
+                  required:
+                  - name
+                  - url
+  "/api/{provider}/ping":
+    get:
+      summary: Ping d'un fournisseur de données
+      tags:
+      - Disponibilité
+      description: |-
+        Vérifie la disponibilité d'un fournisseur de données spécifique. Retourne le statut du fournisseur ainsi que la date de dernière vérification.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      parameters:
+      - name: provider
+        in: path
+        required: true
+        description: Identifiant du fournisseur (tel que retourné par `/api/pings`)
+        example: cnaf_msa_quotient_familial
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Le fournisseur est disponible
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - ok
+                    - maintenance
+                    - unknown
+                    description: Statut du fournisseur
+                  last_update:
+                    type: string
+                    format: date-time
+                    description: Date de la dernière vérification
+                  last_ok_status:
+                    type: string
+                    format: date-time
+                    description: Date du dernier statut OK connu
+                  until:
+                    type: string
+                    format: date-time
+                    description: Date de fin de maintenance (uniquement si status=maintenance)
+        '404':
+          description: Fournisseur inconnu
   "/v3/ants/extrait_immatriculation_vehicule/france_connect":
     get:
       summary: "[FranceConnect] Extrait d'immatriculation véhicule"
