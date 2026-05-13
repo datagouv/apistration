@@ -571,7 +571,11 @@ auth state).
 - **TLS verification** is mandatory and MUST NOT be disableable from public
   configuration. Custom CAs via the language's standard mechanism
   (`SSL_CERT_FILE`, truststore) are fine.
-- `nil`/`None` query parameters are **dropped** (not sent as empty).
+- `nil`/`None`/`undefined` query parameters are **dropped** (not sent as
+  empty). Importantly, per-call parameters MUST be stripped of nil values
+  **before** merging with client-level defaults — otherwise a nil override
+  silently erases the default (e.g. `{ ...defaults, ...{ recipient: undefined } }`
+  in JavaScript loses the `recipient` default).
 - `HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY` env vars are honoured (HTTP-lib
   default in every target language).
 - The client MUST NOT cache responses.
