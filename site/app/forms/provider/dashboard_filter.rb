@@ -65,10 +65,17 @@ class Provider::DashboardFilter
 
   def endpoint_options
     @endpoint_options ||= provider_endpoints
-      .reject(&:deprecated?)
       .filter_map { |endpoint| [endpoint.controller, endpoint.title] if endpoint.controller.present? }
       .uniq(&:first)
       .sort_by(&:second)
+  end
+
+  def controllers_with_legacy
+    @controllers_with_legacy ||= provider_endpoints.each_with_object({}) do |endpoint, map|
+      next if endpoint.controller.blank?
+
+      map[endpoint.controller] = [endpoint.controller, *legacy_controllers(endpoint)].uniq
+    end
   end
 
   def provider_endpoints
@@ -79,6 +86,14 @@ class Provider::DashboardFilter
   end
 
   private
+
+  def legacy_controllers(endpoint)
+    endpoint.old_endpoints.filter_map do |old|
+      next old.controller if old.controller.present? && old.controller != 'Inline'
+
+      nil
+    end
+  end
 
   def endpoint_klass
     Kernel.const_get("API#{api.to_s.classify}::Endpoint")
