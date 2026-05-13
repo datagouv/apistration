@@ -26,8 +26,11 @@
 
     <p><%= t('.description') %></p>
     <p>
+      <% csv_path = controller_path == 'admin/provider_dashboards' \
+           ? consumers_export_admin_provider_dashboard_path(id: @filter.provider.uid, filter: filter_params) \
+           : provider_consumers_csv_path(provider_uid: @filter.provider.uid, filter: filter_params) %>
       <%= link_to t('.download_csv'),
-                  provider_consumers_csv_path(provider_uid: @filter.provider.uid, filter: filter_params),
+                  csv_path,
                   class: 'fr-btn fr-btn--secondary fr-icon-download-line fr-btn--icon-left',
                   data: { turbo: false } %>
     </p>
