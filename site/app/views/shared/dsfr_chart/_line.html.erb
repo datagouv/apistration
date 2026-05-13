@@ -1,4 +1,4 @@
-<%# locals: (title:, series:, unit: nil) -%>
+<%# locals: (title:, series:, unit: nil, downloadable: true) -%>
 <%# Each series: { label:, points: [[x, y], ...] }. Callers must align points
     positionally across series (same x-axis sequence in the same order); we
     never key by formatted label so colliding labels (e.g. "05/05" two years
@@ -10,12 +10,21 @@
   y = series.map { |s| s[:points].map(&:last) }
   names = series.map { |s| s[:label] }
 %>
-<figure class="fr-mb-3w">
+<figure class="fr-mb-3w" data-controller="chart-download" data-chart-download-title-value="<%= title %>">
   <figcaption class="fr-text--lead"><%= title %></figcaption>
-  <line-chart
-    x="<%= x.to_json %>"
-    y="<%= y.to_json %>"
-    name="<%= names.to_json %>"
-    <% if unit %>unit-tooltip="<%= unit %>"<% end %>>
-  </line-chart>
+  <div data-chart-download-target="chart">
+    <line-chart
+      x="<%= x.to_json %>"
+      y="<%= y.to_json %>"
+      name="<%= names.to_json %>"
+      <% if unit %>unit-tooltip="<%= unit %>"<% end %>>
+    </line-chart>
+  </div>
+  <% if downloadable %>
+    <button type="button"
+            class="fr-btn fr-btn--tertiary fr-btn--sm fr-icon-download-line fr-btn--icon-left fr-mt-1w"
+            data-action="chart-download#download">
+      CSV
+    </button>
+  <% end %>
 </figure>
