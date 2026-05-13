@@ -20,6 +20,16 @@ avec les conventions spécifiques :
   release SemVer-correcte (cf. skill `release-new-version`). Un changement
   serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
 
+## Ressources partagées (`commons/`)
+
+- `commons/endpoints/` — fiches descriptives des endpoints (YAML). Contient
+  la documentation utilisateur (périmètre, paramètres, FAQ, historique des
+  versions) affichée sur le site. C'est ici qu'il faut modifier la doc
+  d'un endpoint.
+- `commons/swagger/` — fichiers OpenAPI générés (ne pas éditer à la main,
+  régénérer via `siade/bin/generate_swagger.sh`).
+- `commons/data/authorizations.yml` — scopes d'accès API.
+
 ## Outils partagés
 
 ### Sentry / Production Errors
