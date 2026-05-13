@@ -202,8 +202,12 @@ All 4xx/5xx responses follow the JSON:API error envelope:
   attributed to) a specific upstream; absent on generic platform errors
   (auth, rate-limit, input validation). Clients MUST surface it verbatim on
   the exception (e.g. `error.provider` / `error.errors.first['meta']['provider']`).
-- `meta.retry_in` — when present, expressed in **seconds** (seen on 502
-  provider errors); the client MUST preserve the unit and surface it as-is.
+- `meta.retry_in` — when present, expressed in **seconds** as a numeric value
+  (integer or fractional, seen on 502 provider errors); the client MUST
+  preserve the unit and surface it as-is. Implementers beware: when the
+  retry delay feeds into a sleep/timer function, ensure the seconds-to-
+  milliseconds conversion happens exactly once — a common bug is to multiply
+  by 1000 both when computing the delay and again inside the sleep helper.
 
 Provider-scoped errors come from `AbstractGenericProviderError` /
 `AbstractSpecificProviderError` in the reference Rails app (siade) — see
