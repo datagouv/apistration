@@ -89,7 +89,19 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def consumers_cumulative_evolution
-    @consumers_cumulative_evolution ||= cumulate(consumers_evolution)
+    @consumers_cumulative_evolution ||= cumulate(new_consumers_per_bucket)
+  end
+
+  def new_consumers_per_bucket
+    @new_consumers_per_bucket ||= scoped
+      .where(source_type: 'token')
+      .group(:source_id)
+      .select("source_id, #{date_trunc_sql} AS bucket")
+      .order(Arel.sql("MIN(#{date_trunc_sql})"))
+      .pluck(Arel.sql("MIN(#{date_trunc_sql})"))
+      .tally
+      .sort
+      .map { |bucket, count| { bucket:, value: count } }
   end
 
   # card 554

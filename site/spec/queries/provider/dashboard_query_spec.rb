@@ -225,6 +225,42 @@ RSpec.describe Provider::DashboardQuery do
     end
   end
 
+  describe 'consumers cumulative evolution' do
+    let(:provider) { APIParticulier::Provider.find('cnav') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+    let(:qf_controller) { 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility' }
+
+    it 'counts each token only once even if active across multiple buckets' do
+      token_a = create(:token)
+      token_b = create(:token)
+
+      Timecop.freeze(5.days.ago) do
+        create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_a)
+        create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_b)
+      end
+
+      create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_a)
+
+      cumulative = query.consumers_cumulative_evolution
+      expect(cumulative.last[:value]).to eq(2)
+    end
+
+    it 'grows when a genuinely new consumer appears in a later bucket' do
+      token_a = create(:token)
+      token_b = create(:token)
+
+      Timecop.freeze(5.days.ago) do
+        create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_a)
+      end
+
+      create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_b)
+
+      cumulative = query.consumers_cumulative_evolution
+      expect(cumulative.last[:value]).to eq(2)
+      expect(cumulative.first[:value]).to eq(1)
+    end
+  end
+
   describe 'legacy endpoint aggregation' do
     let(:provider) { APIParticulier::Provider.find('cnav') }
     let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
