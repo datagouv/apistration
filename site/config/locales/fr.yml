@@ -574,6 +574,12 @@ fr:
           per_endpoint: Durée moyenne d'appel par endpoint
       section_consumers:
         title: Consommateurs
+        total_count:
+          one: "%{count} consommateur distinct sur la période"
+          other: "%{count} consommateurs distincts sur la période"
+        france_connect_count:
+          one: "dont %{count} via FranceConnect"
+          other: "dont %{count} via FranceConnect"
         description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
         download_csv: Télécharger en CSV
         charts:
@@ -583,6 +589,9 @@ fr:
           cumulative_series: Cumulé
       section_habilitations:
         title: Demandes et habilitations
+        total_count:
+          one: "%{count} demande sur la période"
+          other: "%{count} demandes sur la période"
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
         download_csv: Télécharger en CSV
         charts:

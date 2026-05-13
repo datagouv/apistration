@@ -6,6 +6,10 @@
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
 
+    <ul class="fr-text--sm fr-mb-2w">
+      <li><%= t('.total_count', count: @query.total_habilitations) %></li>
+    </ul>
+
     <%= render 'shared/dsfr_chart/line',
       title: t('.charts.evolution'),
       series: [

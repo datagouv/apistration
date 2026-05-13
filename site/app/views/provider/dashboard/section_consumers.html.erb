@@ -6,6 +6,13 @@
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
 
+    <ul class="fr-text--sm fr-mb-2w">
+      <li><%= t('.total_count', count: @query.total_consumers) %></li>
+      <% if @filter.api.to_s == 'particulier' && @query.france_connect_consumers.positive? %>
+        <li><%= t('.france_connect_count', count: @query.france_connect_consumers) %></li>
+      <% end %>
+    </ul>
+
     <% chart_title = t('.charts.evolution') %>
     <% chart_title += " (#{t('.charts.includes_france_connect')})" if @filter.api.to_s == 'particulier' %>
     <%= render 'shared/dsfr_chart/line',

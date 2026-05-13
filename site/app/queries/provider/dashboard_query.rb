@@ -79,6 +79,17 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .map { |row| { endpoint: endpoint_title(row[0]), value: weighted_avg([row[1], row[2]]) } }
   end
 
+  def total_consumers
+    @total_consumers ||= scoped.select('COUNT(DISTINCT source_id)').pick(Arel.sql('COUNT(DISTINCT source_id)')).to_i
+  end
+
+  def france_connect_consumers
+    @france_connect_consumers ||= scoped
+      .where(source_type: 'france_connect')
+      .select('COUNT(DISTINCT source_id)')
+      .pick(Arel.sql('COUNT(DISTINCT source_id)')).to_i
+  end
+
   def consumers_evolution
     @consumers_evolution ||= scoped
       .group(date_trunc_sql)
@@ -165,6 +176,15 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .order(Arel.sql(habilitations_date_trunc_sql))
       .pluck(Arel.sql(habilitations_date_trunc_sql), Arel.sql('COUNT(*)'))
       .map { |bucket, value| { bucket:, value: value.to_i } }
+  end
+
+  def total_habilitations
+    @total_habilitations ||= AuthorizationRequest
+      .where(api: filter_apis)
+      .where(habilitation_scope_clause)
+      .where.not(status: %w[draft archived])
+      .where(first_submitted_at: filter.date_range)
+      .count
   end
 
   def habilitations_cumulative_evolution
