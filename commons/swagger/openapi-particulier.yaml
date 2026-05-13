@@ -13550,6 +13550,8 @@ paths:
           Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
+        example:
+        - '075'
         required: false
       - name: codesBcnRegions[]
         in: query
@@ -13561,6 +13563,8 @@ paths:
           Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
+        example:
+        - '10'
         required: false
       security:
       - jwt_bearer_token: []
@@ -14162,6 +14166,8 @@ paths:
           Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
+        example:
+        - '075'
         required: false
       - name: codesBcnRegions[]
         in: query
@@ -14173,6 +14179,8 @@ paths:
           Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
+        example:
+        - '10'
         required: false
       security:
       - jwt_bearer_token: []
@@ -14773,6 +14781,8 @@ paths:
           Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
+        example:
+        - '075'
         required: false
       - name: codesBcnRegions[]
         in: query
@@ -14784,6 +14794,8 @@ paths:
           Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
+        example:
+        - '10'
         required: false
       security:
       - jwt_bearer_token: []

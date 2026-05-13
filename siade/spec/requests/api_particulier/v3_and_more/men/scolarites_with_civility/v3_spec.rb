@@ -53,12 +53,14 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
         in: :query,
         schema: { type: :array, items: { type: :string } },
         description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_departements.description'),
+        example: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_departements.example'),
         required: false
 
       parameter name: :'codesBcnRegions[]',
         in: :query,
         schema: { type: :array, items: { type: :string } },
         description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_regions.description'),
+        example: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_regions.example'),
         required: false
 
       let(:nomNaissance) { 'NOMFAMILLE' }
