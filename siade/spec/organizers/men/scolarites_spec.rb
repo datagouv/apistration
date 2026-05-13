@@ -35,6 +35,33 @@ RSpec.describe MEN::Scolarites, type: :retriever_organizer do
       end
     end
 
+    context 'with no search criteria' do
+      let(:params) do
+        {
+          nom_naissance: 'NOMFAMILLE',
+          prenoms: ['prenom'],
+          sexe_etat_civil: 'f',
+          annee_date_naissance: '2000',
+          mois_date_naissance: '06',
+          jour_date_naissance: '10',
+          code_etablissement: nil,
+          annee_scolaire: '2021',
+          degre_etablissement: nil,
+          codes_bcn_departements: nil,
+          codes_bcn_regions: nil,
+          provider_api_version: 'v1'
+        }
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'returns the critere_recherche_manquant error' do
+        errors = subject.errors
+        expect(errors.first).to be_a(UnprocessableEntityError)
+        expect(errors.first.code).to eq('00415')
+      end
+    end
+
     context 'with perimetre mode' do
       let(:params) do
         {

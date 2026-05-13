@@ -73,6 +73,7 @@ class UnprocessableEntityError < ApplicationError
       perimetre_valeurs: '00414',
       codes_bcn_departements: '00416',
       codes_bcn_regions: '00417',
+      critere_recherche_manquant: '00415',
       code_etablissement_et_perimetre: '00419',
       # ANTS - ExtraitImmatriculationVehicule
       immatriculation: '00430',
