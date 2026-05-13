@@ -71,7 +71,7 @@ RSpec.describe Admin::UserStatusQuery do
     it 'groups by status' do
       result = query.habilitation_status_breakdown
 
-      expect(result.map { |r| r[:label] }).to contain_exactly('validated', 'draft')
+      expect(result.pluck(:label)).to contain_exactly('validated', 'draft')
     end
   end
 

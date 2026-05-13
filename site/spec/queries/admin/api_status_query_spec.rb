@@ -67,7 +67,7 @@ RSpec.describe Admin::APIStatusQuery do
     it 'groups by HTTP status code' do
       result = query.http_code_breakdown
 
-      expect(result.map { |r| r[:label] }).to contain_exactly('200', '404', '502')
+      expect(result.pluck(:label)).to contain_exactly('200', '404', '502')
     end
   end
 

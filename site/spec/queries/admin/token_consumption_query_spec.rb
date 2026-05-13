@@ -44,7 +44,7 @@ RSpec.describe Admin::TokenConsumptionQuery do
         result = query.consumption_by_api_and_status
 
         expect(result.size).to eq(2)
-        expect(result.map { |r| r[:status] }).to contain_exactly('200', '404')
+        expect(result.pluck(:status)).to contain_exactly('200', '404')
       end
     end
 

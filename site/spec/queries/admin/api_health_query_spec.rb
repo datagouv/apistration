@@ -38,7 +38,7 @@ RSpec.describe Admin::APIHealthQuery do
     it 'excludes ping/uptime controllers' do
       create(:access_log, controller: 'ping', status: '200', duration: '10', timestamp: 1.minute.ago)
 
-      controllers = query.instant_status.map { |r| r[:controller] }
+      controllers = query.instant_status.pluck(:controller)
       expect(controllers).not_to include('ping')
     end
   end
