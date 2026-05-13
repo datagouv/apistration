@@ -220,11 +220,15 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     return nil if !filter.routes_submitted? && provider_controllers.empty?
     return provider_controllers unless filter.routes_submitted?
 
-    filter.routes & provider_controllers
+    expand_routes(filter.routes) & provider_controllers
   end
 
   def all_provider_controllers
-    filter.routes_submitted? ? filter.routes : provider_controllers
+    filter.routes_submitted? ? expand_routes(filter.routes) : provider_controllers
+  end
+
+  def expand_routes(routes)
+    routes.flat_map { |r| filter.controllers_with_legacy.fetch(r, [r]) }.uniq
   end
 
   def restrict_by_provider_uid(relation, api_col)
@@ -250,7 +254,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def provider_controllers
-    @provider_controllers ||= filter.provider_endpoints.filter_map(&:controller).uniq
+    @provider_controllers ||= filter.controllers_with_legacy.values.flatten.uniq
   end
 
   def date_trunc_sql
@@ -262,10 +266,14 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def endpoint_titles
-    @endpoint_titles ||= filter.provider_endpoints
-      .filter_map { |e| [e.controller, e.title] if e.controller.present? }
-      .uniq(&:first)
-      .to_h
+    @endpoint_titles ||= build_endpoint_titles
+  end
+
+  def build_endpoint_titles
+    filter.controllers_with_legacy.each_with_object({}) do |(controller, all_controllers), map|
+      title = filter.provider_endpoints.find { |e| e.controller == controller }&.title || controller
+      all_controllers.each { |c| map[c] ||= title }
+    end
   end
 
   def habilitation_scope_clause

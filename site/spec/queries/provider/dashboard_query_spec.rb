@@ -187,6 +187,29 @@ RSpec.describe Provider::DashboardQuery do
     end
   end
 
+  describe 'legacy endpoint aggregation' do
+    let(:provider) { APIParticulier::Provider.find('cnav') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+    let(:current_qf) { 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility' }
+    let(:legacy_qf) { 'api_particulier/v2/cnav/quotient_familial_v2' }
+
+    before do
+      create(:access_log, controller: current_qf, status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: legacy_qf, status: '200', api_version: 'v2', cached: false, duration: '200')
+    end
+
+    it 'includes v2 calls when filtering on the v3 controller' do
+      narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: [current_qf])
+      expect(described_class.new(provider, narrow).total_calls).to eq(2)
+    end
+
+    it 'labels v2 calls with the v3 endpoint title' do
+      rows = query.per_endpoint
+      titles = rows.pluck(:endpoint)
+      expect(titles.uniq.count { |t| t.include?('Quotient familial') }).to eq(1)
+    end
+  end
+
   describe 'excluded controllers' do
     it 'ignores ping/uptime traffic' do
       create(:access_log, controller: 'uptime', status: '200', api_version: 'v3', cached: false, duration: '10')
