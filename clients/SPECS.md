@@ -407,10 +407,19 @@ OpenAPI declares array query parameters with a trailing `[]` in the name
 ```
 
 The client MUST produce exactly that encoding — **one** pair of brackets per
-element, never `prenoms[][]=Jean`. When the HTTP library being used appends
-`[]` automatically for array values (e.g. Ruby's Faraday), the scaffolder
-MUST strip the trailing `[]` from the OpenAPI name before handing the value
-to the library. When it does not, the `[]` stays on the key.
+element, never `prenoms[][]=Jean`. The wire key is always `key[]`; how that
+is achieved depends on the HTTP library:
+
+| HTTP library | Array behavior | Scaffolder action |
+|---|---|---|
+| Ruby Faraday | Auto-appends `[]` to array values | Strip `[]` from OpenAPI name |
+| Node.js `URLSearchParams` | Sends the key as-is | Keep `[]` on the key, call `append('key[]', v)` per element |
+| Python `requests` / `httpx` | Auto-appends `[]` with `params={'key': [v1, v2]}` | Strip `[]` from OpenAPI name |
+| PHP Guzzle | Uses `key[0]=v1&key[1]=v2` by default | Build query string manually with `key[]=v` |
+
+When in doubt, generate a test that asserts the wire format matches
+`?key[]=v1&key[]=v2` exactly — bracket handling is the #1 source of
+silent serialization bugs across language ports.
 
 Method signatures expose the language-idiomatic kwarg name **without** the
 brackets:
