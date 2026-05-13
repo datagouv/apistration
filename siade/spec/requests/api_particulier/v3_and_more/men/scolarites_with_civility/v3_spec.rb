@@ -33,7 +33,7 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
         type: SwaggerData.get('men.scolarite.parameters.code_etablissement.type'),
         description: SwaggerData.get('men.scolarite.parameters.code_etablissement.description'),
         example: SwaggerData.get('men.scolarite.parameters.code_etablissement.example'),
-        required: false
+        required: true
 
       parameter name: :anneeScolaire,
         in: :query,
@@ -41,27 +41,6 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
         description: SwaggerData.get('men.scolarite.parameters.annee_scolaire.description'),
         example: SwaggerData.get('men.scolarite.parameters.annee_scolaire.examples.long.value'),
         required: true
-
-      parameter name: :degreEtablissement,
-        in: :query,
-        type: SwaggerData.get('men.scolarite_perimetre.parameters.degre_etablissement.type'),
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.degre_etablissement.description'),
-        example: SwaggerData.get('men.scolarite_perimetre.parameters.degre_etablissement.example'),
-        required: false
-
-      parameter name: :'codesBcnDepartements[]',
-        in: :query,
-        schema: { type: :array, items: { type: :string } },
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_departements.description'),
-        example: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_departements.example'),
-        required: false
-
-      parameter name: :'codesBcnRegions[]',
-        in: :query,
-        schema: { type: :array, items: { type: :string } },
-        description: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_regions.description'),
-        example: SwaggerData.get('men.scolarite_perimetre.parameters.codes_bcn_regions.example'),
-        required: false
 
       let(:nomNaissance) { 'NOMFAMILLE' }
       let(:'prenoms[]') { %w[prenom] }
@@ -100,47 +79,6 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
 
             run_test!
           end
-        end
-
-        describe 'with perimetre mode' do
-          let(:codeEtablissement) { nil }
-          let(:degreEtablissement) { '2D' }
-          let(:'codesBcnRegions[]') { %w[11] }
-
-          before do
-            stub_men_scolarites_auth
-          end
-
-          describe 'when found' do
-            before { stub_men_scolarites_perimetre_valid }
-
-            response '200', 'Scolarite trouvee par perimetre' do
-              schema build_rswag_response(
-                attributes: SwaggerData.get('men.scolarite.attributes')
-              )
-
-              run_test!
-            end
-          end
-
-          describe 'when not found' do
-            before { stub_men_scolarites_perimetre_not_found }
-
-            response '404', 'Non trouvee par perimetre' do
-              build_rswag_example(NotFoundError.new('MEN', "Aucun eleve n'a pu etre trouve avec les criteres de recherche fournis", with_identifiant_message: false))
-
-              schema '$ref' => '#/components/schemas/Error'
-
-              run_test!
-            end
-          end
-        end
-
-        describe 'with mutual exclusivity error' do
-          let(:codeEtablissement) { '0511474A' }
-          let(:'codesBcnRegions[]') { %w[11] }
-
-          unprocessable_content_error_request(:code_etablissement_et_perimetre)
         end
 
         common_provider_errors_request('MEN', MEN::Scolarites)
