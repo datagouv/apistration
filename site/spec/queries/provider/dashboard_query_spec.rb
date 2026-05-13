@@ -282,6 +282,30 @@ RSpec.describe Provider::DashboardQuery do
       titles = rows.pluck(:endpoint)
       expect(titles.uniq.count { |t| t.include?('Quotient familial') }).to eq(1)
     end
+
+    it 'merges v2 and v3 into a single row in per_endpoint' do
+      rows = query.per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:total]).to eq(2)
+    end
+
+    it 'merges v2 and v3 in success_per_endpoint' do
+      rows = query.success_per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:success]).to eq(2)
+    end
+
+    it 'merges v2 and v3 in avg_duration_per_endpoint' do
+      rows = query.avg_duration_per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:value]).to be_within(0.01).of(150.0)
+    end
+
+    it 'merges v2 and v3 in evolution_per_endpoint' do
+      rows = query.evolution_per_endpoint(:total).select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:value]).to eq(2)
+    end
   end
 
   describe 'excluded controllers' do

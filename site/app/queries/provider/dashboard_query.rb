@@ -17,8 +17,11 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   # card 552
   def per_endpoint
-    @per_endpoint ||= per_api(coalesce_sum(:appels_totaux), coalesce_sum(:appels_uniques), coalesce_sum(:appels_cache))
-      .map { |row| { endpoint: endpoint_title(row[0]), total: row[1].to_i, unique: row[2].to_i, cached: row[3].to_i } }
+    @per_endpoint ||= merge_by_endpoint(
+      per_api(coalesce_sum(:appels_totaux), coalesce_sum(:appels_uniques), coalesce_sum(:appels_cache))
+        .map { |row| { endpoint: endpoint_title(row[0]), total: row[1].to_i, unique: row[2].to_i, cached: row[3].to_i } },
+      sum_keys: %i[total unique cached]
+    )
   end
 
   # cards 613 / 614 / 625
@@ -29,6 +32,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .order(Arel.sql(date_trunc_sql))
       .pluck(:api, Arel.sql(date_trunc_sql), coalesce_sum(ENDPOINT_METRIC_COLUMNS.fetch(metric)))
       .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
+      .group_by { |r| [r[:endpoint], r[:bucket]] }
+      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
   end
 
   def evolution_per_endpoint_series(metric, &) # rubocop:disable Metrics/AbcSize
@@ -58,8 +63,11 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   # card 562
   def success_per_endpoint
-    @success_per_endpoint ||= per_api(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur))
-      .map { |row| { endpoint: endpoint_title(row[0]), success: row[1].to_i, not_found: row[2].to_i, errors: row[3].to_i } }
+    @success_per_endpoint ||= merge_by_endpoint(
+      per_api(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur))
+        .map { |row| { endpoint: endpoint_title(row[0]), success: row[1].to_i, not_found: row[2].to_i, errors: row[3].to_i } },
+      sum_keys: %i[success not_found errors]
+    )
   end
 
   # card 563
@@ -74,9 +82,11 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # card 565
-  def avg_duration_per_endpoint
+  def avg_duration_per_endpoint # rubocop:disable Metrics/AbcSize
     @avg_duration_per_endpoint ||= per_api(weighted_duration_sum_sql, weighted_duration_weight_sql)
-      .map { |row| { endpoint: endpoint_title(row[0]), value: weighted_avg([row[1], row[2]]) } }
+      .map { |row| { endpoint: endpoint_title(row[0]), w_sum: row[1].to_f, w_weight: row[2].to_f } }
+      .group_by { |r| r[:endpoint] }
+      .map { |endpoint, rows| { endpoint:, value: weighted_avg([rows.sum { |r| r[:w_sum] }, rows.sum { |r| r[:w_weight] }]) } }
   end
 
   def total_consumers
@@ -319,6 +329,12 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def date_trunc_sql
     "date_trunc('#{filter.pg_interval_unit}', date)"
+  end
+
+  def merge_by_endpoint(rows, sum_keys:)
+    rows.group_by { |r| r[:endpoint] }.map do |endpoint, grouped|
+      sum_keys.each_with_object({ endpoint: }) { |k, h| h[k] = grouped.sum { |r| r[k] } }
+    end
   end
 
   def cumulate(series)
