@@ -313,6 +313,14 @@ be overridable per client instance (via `Configuration`). Per-call overrides
 are OPTIONAL — a language MAY expose them if idiomatic, but the default is
 client-wide only.
 
+Some HTTP primitives (notably the WHATWG `fetch` API used in Node.js 18+,
+Deno, and browsers) only expose a single `AbortController`-based timeout
+that covers the entire request lifecycle — they have no separate connect
+timeout knob. In that case the client MUST still accept `open_timeout` /
+`read_timeout` in `Configuration` for interface consistency, but MAY apply
+only the read timeout to the underlying transport. This deviation SHOULD be
+documented in the package README.
+
 On timeout, raise `TransportError` with `method`, `url`, and the underlying
 cause chained where the language supports it.
 
