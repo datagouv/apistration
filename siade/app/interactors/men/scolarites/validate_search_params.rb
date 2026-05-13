@@ -8,7 +8,7 @@ class MEN::Scolarites::ValidateSearchParams < ValidateParamInteractor
       MEN::Scolarites::ValidateDegreEtablissement.call!(context)
       MEN::Scolarites::ValidatePerimetre.call!(context)
     else
-      invalid_param!(:code_etablissement)
+      invalid_param!(:critere_recherche_manquant)
     end
   end
 
