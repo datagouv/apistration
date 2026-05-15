@@ -581,19 +581,19 @@ fr:
           one: "dont %{count} via FranceConnect"
           other: "dont %{count} via FranceConnect"
         description: Ensemble des consommateurs de l'API (lié à une habilitation validée ci-dessous).
-        download_csv: Télécharger en CSV
         charts:
           evolution: Évolution des consommateurs actifs
           includes_france_connect: incl. FranceConnect
           evolution_series: Par période
           cumulative_series: Cumulé
+          evolution_per_endpoint: Évolution des consommateurs actifs par endpoint
+          cumulative_per_endpoint: Évolution cumulée des consommateurs par endpoint
       section_habilitations:
         title: Demandes et habilitations
         total_count:
           one: "%{count} demande sur la période"
           other: "%{count} demandes sur la période"
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
-        download_csv: Télécharger en CSV
         charts:
           evolution: Évolution des habilitations validées
           evolution_series: Par période
