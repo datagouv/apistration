@@ -1,3 +1,11 @@
+- date: 2026-05-13
+  scope: both
+  title: "SDKs officiels : Node.js disponible"
+  description: |
+    Le **SDK officiel Node.js** (TypeScript) rejoint la famille des clients officiels : [`clients/node/`](https://github.com/datagouv/apistration/tree/develop/clients/node) — packages `@api-gouv-dinum/api-entreprise` et `@api-gouv-dinum/api-particulier`. Zéro dépendances runtime (fetch natif Node 18+), même contrat que le SDK Ruby : auth, enveloppe JSON:API, hiérarchie d'erreurs, rate-limit, retry opt-in, validateurs SIRET/SIREN.
+
+    Les ports dans d'autres langages (Python, PHP, Java) suivront le contrat normatif [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md).
+
 - date: 2026-05-12
   scope: api_particulier
   title: "Endpoints CNAV : paramètres de lieu de naissance désormais fortement recommandés"

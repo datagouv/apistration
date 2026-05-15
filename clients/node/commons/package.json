@@ -1,0 +1,21 @@
+{
+  "name": "@api-gouv-dinum/commons",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.4.0",
+    "vitest": "^3.0.0",
+    "yaml": "^2.9.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

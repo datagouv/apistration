@@ -1,0 +1,128 @@
+name: "Clients Node"
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'clients/node/**'
+      - 'commons/swagger/**'
+      - '.github/workflows/clients-node.yml'
+    tags:
+      - 'node-api-*-v*'
+
+jobs:
+  test:
+    name: Test (Node ${{ matrix.node }})
+    if: github.ref_type != 'tag'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install root devDependencies
+        working-directory: clients/node
+        run: npm ci
+
+      - name: commons
+        working-directory: clients/node/commons
+        run: npm ci && npm test
+
+      - name: api-entreprise
+        working-directory: clients/node/api-entreprise
+        run: npm ci && npm test
+
+      - name: api-particulier
+        working-directory: clients/node/api-particulier
+        run: npm ci && npm test
+
+  freshness:
+    name: sync-commons & scaffold-resources freshness
+    if: github.ref_type != 'tag'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install root devDependencies
+        working-directory: clients/node
+        run: npm ci
+
+      - name: Verify vendored commons is up to date
+        run: npx tsx clients/node/bin/sync-commons.ts --check
+
+      - name: Verify scaffolded resources are up to date
+        run: npx tsx clients/node/bin/scaffold-resources.ts --api all --check
+
+  release:
+    name: Build & publish to npm
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Resolve package from tag
+        id: pkg
+        run: |
+          case "$GITHUB_REF_NAME" in
+            node-api-entreprise-v*)
+              echo "dir=clients/node/api-entreprise" >>"$GITHUB_OUTPUT"
+              ;;
+            node-api-particulier-v*)
+              echo "dir=clients/node/api-particulier" >>"$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "Unsupported tag: $GITHUB_REF_NAME" >&2
+              exit 1
+              ;;
+          esac
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Verify tag version matches package.json version
+        working-directory: ${{ steps.pkg.outputs.dir }}
+        run: |
+          tag_version="${GITHUB_REF_NAME##*-v}"
+          pkg_version=$(node -p "require('./package.json').version")
+          if [ "$tag_version" != "$pkg_version" ]; then
+            echo "Tag version '$tag_version' does not match package.json version '$pkg_version'" >&2
+            exit 1
+          fi
+          echo "Releasing $(node -p "require('./package.json').name") $pkg_version"
+
+      - name: Install and test
+        working-directory: ${{ steps.pkg.outputs.dir }}
+        run: npm ci && npm test
+
+      - name: Build
+        working-directory: ${{ steps.pkg.outputs.dir }}
+        run: npm run build
+
+      - name: Mint OIDC token for npm
+        id: npm-oidc
+        run: |
+          response=$(curl -sS -f \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            -H "Accept: application/json" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://registry.npmjs.org")
+          echo "token=$(echo "$response" | jq -r '.value')" >> "$GITHUB_OUTPUT"
+
+      - name: Publish
+        working-directory: ${{ steps.pkg.outputs.dir }}
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ steps.npm-oidc.outputs.token }}
