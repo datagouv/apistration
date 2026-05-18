@@ -46,9 +46,9 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
   def date_naissance_params
     if params[:dateNaissance].present?
       return {
-        annee_date_naissance: params[:dateNaissance].split('-').first,
-        mois_date_naissance: params[:dateNaissance].split('-').second,
-        jour_date_naissance: params[:dateNaissance].split('-').third
+        annee_date_naissance: params.expect(:dateNaissance).split('-').first,
+        mois_date_naissance: params.expect(:dateNaissance).split('-').second,
+        jour_date_naissance: params.expect(:dateNaissance).split('-').third
       }
     end
 
