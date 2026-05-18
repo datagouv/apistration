@@ -4,11 +4,11 @@ class Admin::EditorsController < AdminController
   end
 
   def edit
-    @editor = Editor.find(params[:id])
+    @editor = Editor.find(params.expect(:id))
   end
 
   def update
-    @editor = Editor.find(params[:id])
+    @editor = Editor.find(params.expect(:id))
 
     if @editor.update(editor_update_params)
       success_message(title: 'Éditeur mis à jour')

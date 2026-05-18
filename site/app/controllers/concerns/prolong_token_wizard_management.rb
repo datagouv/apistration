@@ -49,7 +49,7 @@ module ProlongTokenWizardManagement
   end
 
   def find_token
-    @token = Token.find(params[:token_id])
+    @token = Token.find(params.expect(:token_id))
     authorize @token, :prolong?
   end
 

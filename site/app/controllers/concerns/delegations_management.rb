@@ -41,7 +41,7 @@ module DelegationsManagement
     @authorization_request = current_user
       .authorization_requests
       .where(api:)
-      .find(params[:authorization_request_id])
+      .find(params.expect(:authorization_request_id))
   end
 
   def api

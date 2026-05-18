@@ -8,7 +8,7 @@ class ProviderController < ApplicationController
   protected
 
   def current_provider
-    @current_provider ||= provider_klass.find(params[:provider_uid])
+    @current_provider ||= provider_klass.find(params[:provider_uid]) # rubocop:disable Rails/StrongParametersExpect
   end
 
   def user_is_provider?

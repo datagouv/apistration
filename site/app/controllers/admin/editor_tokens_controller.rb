@@ -1,6 +1,6 @@
 class Admin::EditorTokensController < AdminController
   def create
-    @editor = Editor.find(params[:editor_id])
+    @editor = Editor.find(params.expect(:editor_id))
 
     @editor.tokens.create!(
       iat: Time.zone.now.to_i,
