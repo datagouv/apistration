@@ -58,9 +58,9 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
 
   def date_naissance
     {
-      annee_date_naissance: params[:dateDeNaissance]&.split('-')&.first,
-      mois_date_naissance: params[:dateDeNaissance]&.split('-')&.second,
-      jour_date_naissance: params[:dateDeNaissance]&.split('-')&.third
+      annee_date_naissance: params.expect(:dateDeNaissance)&.split('-')&.first,
+      mois_date_naissance: params.expect(:dateDeNaissance)&.split('-')&.second,
+      jour_date_naissance: params.expect(:dateDeNaissance)&.split('-')&.third
     }
   end
 
