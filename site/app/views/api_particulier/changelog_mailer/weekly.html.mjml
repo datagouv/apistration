@@ -32,7 +32,7 @@
 <% end %>
 <mj-section mj-class="section-block">
   <mj-column>
-    <mj-button href="<%= changelogs_url %>">
+    <mj-button href="<%= api_particulier_changelogs_url %>">
       Voir toutes les nouveautés
     </mj-button>
   </mj-column>
