@@ -39,7 +39,7 @@ module AuthorizationRequestsManagement
       .authorization_requests
       .where(api:)
       .viewable_by_users
-      .find(params[:id])
+      .find(params.expect(:id))
   end
 
   def api

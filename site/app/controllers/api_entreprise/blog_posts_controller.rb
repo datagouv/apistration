@@ -2,7 +2,7 @@
 
 class APIEntreprise::BlogPostsController < APIEntrepriseController
   def show
-    @blog_post = APIEntreprise::BlogPost.find(params[:id])
+    @blog_post = APIEntreprise::BlogPost.find(params.expect(:id))
 
     render 'shared/blog_posts/show'
   end

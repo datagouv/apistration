@@ -1,12 +1,12 @@
 module TransferTokensManagement
   def new
-    @token = Token.find(params[:id])
+    @token = Token.find(params.expect(:id))
 
     render 'shared/transfer_tokens/new'
   end
 
   def create
-    @token = Token.find(params[:id])
+    @token = Token.find(params.expect(:id))
 
     if access_allowed_for_current_user?
       if organizer.success?

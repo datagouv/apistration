@@ -12,7 +12,7 @@ class Admin::TokensController < AdminController
 
   def create
     result = Admin::Tokens::Create.call(
-      authorization_request: @user.authorization_requests.eligible_for_token_creation.find(params[:authorization_request_id]),
+      authorization_request: @user.authorization_requests.eligible_for_token_creation.find(params.expect(:authorization_request_id)),
       exp_date: params[:exp],
       admin: current_user
     )
@@ -29,6 +29,6 @@ class Admin::TokensController < AdminController
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params.expect(:user_id))
   end
 end

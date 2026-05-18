@@ -6,13 +6,13 @@ class Admin::UsersController < AdminController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params.expect(:id))
     @editors = Editor.all
     @providers = provider_klass.all
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params.expect(:id))
 
     if @user.update(user_update_params)
       success_message(title: "Utilisateur #{@user.email} a bien été modifié")
@@ -24,7 +24,7 @@ class Admin::UsersController < AdminController
   end
 
   def impersonate
-    user = User.find(params[:id])
+    user = User.find(params.expect(:id))
 
     impersonate_user(user)
 
@@ -45,7 +45,7 @@ class Admin::UsersController < AdminController
 
   def user_update_params
     update_params = user_params
-    update_params[:provider_uids] = [] unless params[:user].key?(:provider_uids)
+    update_params[:provider_uids] = [] unless params[:user]&.key?(:provider_uids) # rubocop:disable Rails/StrongParametersExpect
     update_params
   end
 
@@ -54,6 +54,6 @@ class Admin::UsersController < AdminController
   end
 
   def downcase_params
-    params[:q][:email_or_authorization_requests_siret_or_authorization_requests_external_id_eq] = params[:q][:email_or_authorization_requests_siret_or_authorization_requests_external_id_eq].downcase if params[:q][:email_or_authorization_requests_siret_or_authorization_requests_external_id_eq].present?
+    params[:q][:email_or_authorization_requests_siret_or_authorization_requests_external_id_eq] = params[:q][:email_or_authorization_requests_siret_or_authorization_requests_external_id_eq].downcase if params[:q][:email_or_authorization_requests_siret_or_authorization_requests_external_id_eq].present? # rubocop:disable Rails/StrongParametersExpect
   end
 end
