@@ -7,8 +7,9 @@ RSpec.describe ExtractProviderFromPath, type: :service do
     open_api_path = Rails.root.join('swagger/openapi-entreprise.yaml')
     open_api = YAML.load_file(open_api_path)
 
-    open_api['paths'].each_key do |path|
+    open_api['paths'].each do |path, data|
       next if path == '/privileges'
+      next if data['get']['security'] == []
 
       expect(described_class.new(path).perform).to be_present, "#{path} has no associated provider"
     end

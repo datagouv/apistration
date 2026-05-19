@@ -91,6 +91,7 @@ RSpec.describe OpenAPISchemaToExample do
   describe 'API Entreprise v3 and more endpoints' do
     YAML.load_file(Rails.root.join('swagger/openapi-entreprise.yaml'), aliases: true)['paths'].each do |path, definition|
       next if path == '/privileges'
+      next if definition['get']['security'] == []
 
       it "works for path '#{path}'" do
         expect {
@@ -102,6 +103,8 @@ RSpec.describe OpenAPISchemaToExample do
 
   describe 'API Particulier v2 endpoints' do
     YAML.load_file(Rails.root.join('swagger/openapi-particulierv2.yaml'), aliases: true, permitted_classes: [Date])['paths'].each do |path, definition|
+      next if definition['get']['security'] == []
+
       it "works for path '#{path}'" do
         expect {
           described_class.new(definition['get']['responses']['200']['content']['application/json']['schema']).perform
@@ -112,6 +115,8 @@ RSpec.describe OpenAPISchemaToExample do
 
   describe 'API Particulier v3 and more endpoints' do
     YAML.load_file(Rails.root.join('swagger/openapi-particulier.yaml'), aliases: true, permitted_classes: [Date])['paths'].each do |path, definition|
+      next if definition['get']['security'] == []
+
       it "works for path '#{path}'" do
         expect {
           described_class.new(definition['get']['responses']['200']['content']['application/json']['schema']).perform

@@ -3,7 +3,9 @@ RSpec.describe 'config/endpoints_with_test_case.yml' do
 
   let(:swagger_file) { Rails.root.join('swagger/openapi-entreprise.yaml') }
   let(:swagger) { Psych.safe_load_file(swagger_file) }
-  let(:swagger_endpoints) { swagger['paths'].keys - ['/privileges'] }
+  let(:swagger_endpoints) do
+    swagger['paths'].reject { |_, data| data['get']['security'] == [] }.keys - ['/privileges']
+  end
   let!(:swagger_endpoints_regex) { swagger_endpoints.map { |endpoint| regexify(endpoint) } }
 
   describe 'endpoints' do

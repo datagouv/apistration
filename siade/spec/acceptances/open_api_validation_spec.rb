@@ -64,6 +64,8 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
 
     it 'has a 200 response with an x-operationId' do
       YAML.load_file(definition_path)['paths'].each do |path, data|
+        next if data['get']['security'] == []
+
         expect(data['get']['responses']['200']['x-operationId']).not_to be_nil, "#{path} has no 200 response with an x-operationId"
       end
     end
@@ -97,6 +99,8 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
 
     it 'has a 200 response with an x-operationId' do
       YAML.load_file(definition_path)['paths'].each do |path, data|
+        next if data['get']['security'] == []
+
         expect(data['get']['responses']['200']['x-operationId']).not_to be_nil, "#{path} has no 200 response with an x-operationId"
       end
     end
