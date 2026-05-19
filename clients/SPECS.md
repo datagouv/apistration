@@ -24,6 +24,8 @@
 - `https://entreprise.api.gouv.fr` / `https://particulier.api.gouv.fr`
 - Token-based bearer authentication with an extensibility seam for future auth
   strategies (OAuth2, mTLS, rotating providers).
+- Public (unauthenticated) monitoring endpoints: `ping`, `pings`,
+  `ping_provider` (see §9.5).
 
 **Out of scope**
 
@@ -443,6 +445,41 @@ brackets:
 client.dss.allocation_adulte_handicape_identite(prenoms: ['Jean', 'Paul'], …)
 ```
 
+### 9.5 Public (unauthenticated) endpoints — Ping
+
+Both APIs expose monitoring endpoints marked `security: []` in the OpenAPI
+spec. These endpoints require **no token**, **no audit parameters**
+(`recipient`, `context`, `object`), and return plain JSON (no
+`data`/`links`/`meta` envelope).
+
+Clients MUST expose three methods **directly on the client instance** (not
+under a resource module):
+
+| Method | API Entreprise path | API Particulier path |
+|---|---|---|
+| `ping` | `GET /v3/ping` | `GET /api/ping` |
+| `pings` | `GET /pings` | `GET /api/pings` |
+| `ping_provider(provider)` | `GET /ping/{provider}` | `GET /api/{provider}/ping` |
+
+Implementation requirements:
+
+1. Use a **public connection** (`get_public` / `getPublic`) that skips
+   authentication headers and audit-parameter validation.
+2. The public connection still applies: User-Agent, timeouts, logging,
+   error mapping.
+3. The public connection does NOT apply: auth middleware, rate-limit
+   parsing, envelope unwrapping (responses are not wrapped in
+   `data`/`links`/`meta`).
+4. The scaffold scripts (`bin/scaffold_resources`,
+   `bin/scaffold-resources.ts`) MUST skip operations with `security: []`
+   — these endpoints are not data-provider resources.
+
+```ruby
+client.ping                                  # → Response (HTTP 200, body: {})
+client.pings                                 # → Response (HTTP 200, body: [{name:, url:}, …])
+client.ping_provider('insee/sirene')         # → Response (HTTP 200, body: {status:, …})
+```
+
 ---
 
 ## 10. Logging & observability
@@ -710,6 +747,8 @@ A reviewer certifying a new client ticks each item.
 - [ ] Logging hook with §10 fields; Particulier query string redacted;
       `User-Agent` set.
 - [ ] Immutable `Configuration` with `with()` / `copy()`; ENV vars honoured.
+- [ ] Public ping endpoints (`ping`, `pings`, `ping_provider`) exposed on
+      the client; no auth header or audit params sent (§9.5).
 - [ ] Unit tests cover every surface listed in §12.1; integration tests
       cover 200 / 422 / 429 / 502 on both APIs; staging conformance run
       from TESTING.md passes; README has a stub example.

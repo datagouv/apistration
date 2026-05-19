@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+### Added
+- `ping()`, `pings()`, `pingProvider()` methods for unauthenticated monitoring
+  endpoints (SPECS.md §9.5). These use a dedicated public connection that
+  skips auth and audit-parameter validation.
+
 ## 0.1.1
 
 - Initial release

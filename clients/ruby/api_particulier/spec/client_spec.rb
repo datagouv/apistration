@@ -74,6 +74,33 @@ RSpec.describe ApiParticulier::Client do
     end
   end
 
+  describe 'ping (public endpoints)' do
+    let(:client) do
+      described_class.new(token: 't', environment: :staging, default_params: default_params)
+    end
+
+    it 'ping calls /api/ping without auth' do
+      stub = stub_request(:get, 'https://staging.particulier.api.gouv.fr/api/ping')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.ping
+      expect(stub).to have_been_requested
+    end
+
+    it 'pings calls /api/pings' do
+      stub = stub_request(:get, 'https://staging.particulier.api.gouv.fr/api/pings')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '[]')
+      client.pings
+      expect(stub).to have_been_requested
+    end
+
+    it 'ping_provider calls /api/:provider/ping' do
+      stub = stub_request(:get, 'https://staging.particulier.api.gouv.fr/api/cnaf_msa_quotient_familial/ping')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.ping_provider('cnaf_msa_quotient_familial')
+      expect(stub).to have_been_requested
+    end
+  end
+
   describe 'local validation' do
     it 'rejects a bad recipient SIRET before any HTTP call' do
       bad = described_class.new(token: 't', default_params: { recipient: '13002526500014' })

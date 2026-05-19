@@ -71,6 +71,18 @@ export class Client extends ClientBase {
     super(config, { product: 'entreprise' as Product, requiredParams: ['recipient', 'context', 'object'], siretParams: ['recipient'] });
   }
 
+  async ping() {
+    return this.getPublic('/v3/ping');
+  }
+
+  async pings() {
+    return this.getPublic('/pings');
+  }
+
+  async pingProvider(provider: string) {
+    return this.getPublic(`/ping/${provider}`);
+  }
+
   // <scaffold:fields:begin>
   private _ademe?: Ademe;
   private _banque_de_france?: BanqueDeFrance;

@@ -131,6 +131,36 @@ describe('ApiParticulier Client', () => {
     });
   });
 
+  describe('ping (public endpoints)', () => {
+    it('ping() calls /api/ping without Authorization', async () => {
+      const fetchMock = mockFetch(200, {});
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.ping();
+      const [url, opts] = fetchMock.mock.calls[0];
+      expect(url).toContain('/api/ping');
+      expect(opts.headers['Authorization']).toBeUndefined();
+    });
+
+    it('pings() calls /api/pings', async () => {
+      const fetchMock = mockFetch(200, []);
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.pings();
+      const [url] = fetchMock.mock.calls[0];
+      expect(url).toContain('/api/pings');
+    });
+
+    it('pingProvider() calls /api/:provider/ping', async () => {
+      const fetchMock = mockFetch(200, {});
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.pingProvider('cnaf_msa_quotient_familial');
+      const [url] = fetchMock.mock.calls[0];
+      expect(url).toContain('/api/cnaf_msa_quotient_familial/ping');
+    });
+  });
+
   describe('integration: errors', () => {
     it('422 → ValidationError', async () => {
       globalThis.fetch = mockFetch(422, {
