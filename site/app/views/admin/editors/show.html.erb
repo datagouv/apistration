@@ -1,0 +1,205 @@
+<div class="fr-grid-row fr-grid-row--gutters fr-grid-row--middle fr-mb-4w">
+  <div class="fr-col">
+    <h1 class="fr-mb-0"><%= @editor.name %></h1>
+  </div>
+  <div class="fr-col-auto">
+    <%= link_to 'Modifier', edit_admin_editor_path(@editor), class: 'fr-btn fr-btn--secondary' %>
+  </div>
+</div>
+
+<% if @editor.description.present? %>
+  <p class="fr-text--lg fr-mb-4w"><%= @editor.description %></p>
+<% end %>
+
+<ol class="fr-mb-4w">
+  <li><strong>Rôle :</strong> <%= editor_role_label(@editor) %></li>
+  <li><strong>Type de déploiement :</strong> <%= editor_deployment_label(@editor) %></li>
+  <li><strong>Copie du jeton client :</strong> <%= @editor.copy_token? ? 'autorisée' : 'interdite' %></li>
+  <li><strong>Délégations :</strong> <%= @editor.delegations_enabled? ? 'activées' : 'désactivées' %></li>
+</ol>
+
+<div class="fr-grid-row fr-grid-row--gutters fr-mb-4w">
+  <div class="fr-col-6">
+    <h2>Informations</h2>
+    <div class="fr-table fr-table--bordered fr-table--no-caption">
+      <div class="fr-table__wrapper">
+        <div class="fr-table__container">
+          <div class="fr-table__content">
+            <table>
+              <caption>Informations éditeur</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">SIRET</th>
+                  <td>
+                    <% if @editor.siret.present? %>
+                      <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= @editor.siret %>" target="_blank" class="fr-link">
+                        <%= @editor.siret %>
+                      </a>
+                    <% else %>
+                      <span class="fr-text--light">Non renseigné</span>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Domaine</th>
+                  <td><%= @editor.domain.presence || content_tag(:span, 'Non renseigné', class: 'fr-text--light') %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Langages</th>
+                  <td><%= @editor.languages.presence || content_tag(:span, 'Non renseigné', class: 'fr-text--light') %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-col-6">
+    <h2>Contact</h2>
+    <div class="fr-table fr-table--bordered fr-table--no-caption">
+      <div class="fr-table__wrapper">
+        <div class="fr-table__container">
+          <div class="fr-table__content">
+            <table>
+              <caption>Contact éditeur</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">Email</th>
+                  <td>
+                    <% if @editor.contact_email.present? %>
+                      <a href="mailto:<%= @editor.contact_email %>" class="fr-link"><%= @editor.contact_email %></a>
+                    <% else %>
+                      <span class="fr-text--light">Non renseigné</span>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Téléphone</th>
+                  <td><%= @editor.contact_phone.presence || content_tag(:span, 'Non renseigné', class: 'fr-text--light') %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @editor.form_uids.any? %>
+  <h2>Formulaires DataPass</h2>
+  <ul class="fr-tags-group fr-mb-4w">
+    <% @editor.form_uids.each do |form_uid| %>
+      <li>
+        <a href="<%= datapass_v2_base_url(namespace) %>/formulaires/<%= form_uid %>/demande/nouveau"
+           target="_blank"
+           class="fr-tag">
+          <%= form_uid %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @editor.allowed_ips.any? %>
+  <h2>IPs autorisées</h2>
+  <ul class="fr-tags-group fr-mb-4w">
+    <% @editor.allowed_ips.each do |ip| %>
+      <li><p class="fr-tag"><%= ip %></p></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @editor.setup_instructions.present? %>
+  <h2>Instructions de configuration</h2>
+  <div class="fr-callout fr-mb-4w">
+    <p class="fr-callout__text"><%= simple_format(@editor.setup_instructions) %></p>
+  </div>
+<% end %>
+
+<h2>Membres (<%= @editor.users.count %>)</h2>
+
+<% if @editor.users.any? %>
+  <div class="fr-table fr-table--bordered fr-table--no-caption fr-table--layout-fixed">
+    <table>
+      <caption>Membres de l'éditeur</caption>
+      <thead>
+        <tr>
+          <th scope="col">Email</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @editor.users.order(:email).each do |user| %>
+          <tr>
+            <td><%= link_to user.email, edit_admin_user_path(user), class: 'fr-link' %></td>
+            <td><%= [user.first_name, user.last_name].compact.join(' ') %></td>
+            <td>
+              <%= button_to 'Retirer',
+                    admin_editor_member_path(@editor, user),
+                    method: :delete,
+                    class: 'fr-btn fr-btn--sm fr-btn--tertiary',
+                    data: { turbo_confirm: "Retirer #{user.email} de l'éditeur ?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<%= form_with url: admin_editor_members_path(@editor), method: :post, class: 'fr-mb-4w' do |f| %>
+  <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--bottom">
+    <div class="fr-col-8">
+      <div class="fr-input-group">
+        <%= f.label :email, 'Ajouter un membre par email', class: 'fr-label' %>
+        <%= f.email_field :email, class: 'fr-input', placeholder: 'utilisateur@exemple.fr' %>
+      </div>
+    </div>
+    <div class="fr-col-4">
+      <%= f.submit 'Ajouter', class: 'fr-btn fr-btn--secondary' %>
+    </div>
+  </div>
+<% end %>
+
+<h2>Jetons éditeur (<%= @editor.tokens.count %>)</h2>
+
+<% if @editor.tokens.any? %>
+  <div class="fr-table fr-table--bordered fr-table--no-caption fr-table--layout-fixed">
+    <table>
+      <caption>Jetons éditeur</caption>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Créé le</th>
+          <th scope="col">Expiration</th>
+          <th scope="col">Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @editor.tokens.order(created_at: :desc).each do |editor_token| %>
+          <tr>
+            <td><%= editor_token.id.first(8) %>&hellip;</td>
+            <td><%= l(editor_token.created_at, format: :short) %></td>
+            <td><%= friendly_date_from_timestamp(editor_token.exp) %></td>
+            <td>
+              <% if editor_token.active? %>
+                <p class="fr-badge fr-badge--green-emeraude">Actif</p>
+              <% else %>
+                <p class="fr-badge fr-badge--pink-tuile">Inactif</p>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<%= button_to 'Générer un nouveau jeton éditeur',
+    admin_editor_editor_tokens_path(@editor),
+    method: :post,
+    class: 'fr-btn fr-btn--secondary' %>

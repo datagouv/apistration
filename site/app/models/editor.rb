@@ -1,6 +1,6 @@
 class Editor < ApplicationRecord
-  ROLES = %w[manages_token client_manages_token legacy_token].freeze
-  DEPLOYMENT_TYPES = %w[saas on_premise].freeze
+  ROLES = %w[manages_token client_manages_token both].freeze
+  DEPLOYMENT_TYPES = %w[saas on_premise both].freeze
 
   has_many :users,
     dependent: :nullify
@@ -42,8 +42,8 @@ class Editor < ApplicationRecord
     role == 'client_manages_token'
   end
 
-  def legacy_token?
-    role == 'legacy_token'
+  def both_roles?
+    role == 'both'
   end
 
   def saas?
@@ -52,5 +52,9 @@ class Editor < ApplicationRecord
 
   def on_premise?
     deployment_type == 'on_premise'
+  end
+
+  def both_deployments?
+    deployment_type == 'both'
   end
 end

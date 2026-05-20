@@ -1,65 +1,84 @@
+<div class="fr-grid-row fr-grid-row--middle fr-mb-4w">
+  <div class="fr-col">
+    <h1 class="fr-mb-0">Éditeurs</h1>
+  </div>
+  <div class="fr-col-auto">
+    <%= link_to 'Nouvel éditeur', new_admin_editor_path, class: 'fr-btn' %>
+  </div>
+</div>
+
+<%= form_with url: admin_editors_path, method: :get, data: { turbo: false }, class: 'fr-mb-4w' do |f| %>
+  <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--bottom">
+    <div class="fr-col-4">
+      <div class="fr-input-group">
+        <%= f.label :search, 'Rechercher par nom', class: 'fr-label' %>
+        <%= f.text_field :search, value: params[:search], class: 'fr-input' %>
+      </div>
+    </div>
+    <div class="fr-col-3">
+      <div class="fr-select-group">
+        <%= f.label :role, 'Rôle', class: 'fr-label' %>
+        <%= f.select :role,
+              options_for_select(
+                [['Tous', '']] + EditorHelper::ROLE_CONFIG.map { |k, v| [v[:label], k] },
+                params[:role]
+              ),
+              {},
+              class: 'fr-select' %>
+      </div>
+    </div>
+    <div class="fr-col-3">
+      <div class="fr-select-group">
+        <%= f.label :deployment_type, 'Déploiement', class: 'fr-label' %>
+        <%= f.select :deployment_type,
+              options_for_select(
+                [['Tous', '']] + EditorHelper::DEPLOYMENT_CONFIG.map { |k, v| [v[:label], k] },
+                params[:deployment_type]
+              ),
+              {},
+              class: 'fr-select' %>
+      </div>
+    </div>
+    <div class="fr-col-2">
+      <%= f.submit 'Filtrer', class: 'fr-btn' %>
+    </div>
+  </div>
+<% end %>
+
 <div class="fr-table fr-table--bordered fr-table--layout-fixed">
   <table>
-    <caption>
-      Éditeurs
-    </caption>
+    <caption>Éditeurs (<%= @editors.total_count %>)</caption>
     <thead>
       <tr>
-        <%
-          [
-            'ID',
-            'Nom',
-            'Formulaires',
-            'Features',
-            'Emails',
-            'Actions',
-          ].each do |attr|
-        %>
-          <th scope="col">
-            <%= attr %>
-          </th>
-        <% end %>
+        <th scope="col">Nom</th>
+        <th scope="col">SIRET</th>
+        <th scope="col">Rôle</th>
+        <th scope="col">Déploiement</th>
+        <th scope="col">Formulaires</th>
+        <th scope="col">Membres</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
-
     <tbody>
       <% @editors.each do |editor| %>
-        <tr id="<%= dom_id(editor) %>" class="editor">
-          <td class="editor-id">
-            <%= editor.id %>
+        <tr id="<%= dom_id(editor) %>">
+          <td>
+            <%= link_to editor.name, admin_editor_path(editor), class: 'fr-link' %>
           </td>
-          <td class="editor-name">
-            <%= editor.name %>
-          </td>
-          <td class="editor-form_uids">
-            <ul>
-              <% editor.form_uids.each do |form_uid| %>
-                <% url = "#{datapass_v2_base_url(namespace)}/formulaires/#{form_uid}/demande/nouveau" %>
-                <li>
-                  <%= link_to form_uid, url, target: '_blank' %>
-                </li>
-              <% end %>
-            </ul>
-          </td>
-          <td class="editor-feature-enabled">
-            <ul>
-              <li>Copier jeton : <%= editor.copy_token? ? '✅' : '❌' %></li>
-              <li>Délégations : <%= editor.delegations_enabled? ? '✅' : '❌' %></li>
-            </ul>
-          </td>
-          <td class="editor-emails">
-            <% if editor.users %>
-              <ul>
-                <% editor.users.each do |user| %>
-                  <li>
-                    <%= user.email %>
-                  </li>
-                <% end %>
-              </ul>
+          <td>
+            <% if editor.siret.present? %>
+              <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= editor.siret %>" target="_blank" class="fr-link">
+                <%= editor.siret %>
+              </a>
             <% end %>
           </td>
-          <td class="editor-actions">
-            <%= link_to 'Mettre à jour', edit_admin_editor_path(editor), id: dom_id(editor, :edit), class: %w[fr-btn] %>
+          <td><%= editor_role_badge_sm(editor) %></td>
+          <td><%= editor_deployment_badge_sm(editor) %></td>
+          <td><%= editor.form_uids.size %></td>
+          <td><%= @users_counts.fetch(editor.id, 0) %></td>
+          <td>
+            <%= link_to 'Voir', admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--tertiary' %>
+            <%= link_to 'Modifier', edit_admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--secondary' %>
           </td>
         </tr>
       <% end %>
