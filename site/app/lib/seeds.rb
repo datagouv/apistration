@@ -52,6 +52,7 @@ class Seeds
     create_api_entreprise_token_blacklisted
     create_api_entreprise_token_expired
     create_api_entreprise_authorization_refused
+    create_api_entreprise_contact_technique_only
   end
 
   def create_data_for_api_particulier
@@ -262,6 +263,22 @@ class Seeds
         siret: '21330075900015'
       ),
       role: 'demandeur'
+    )
+  end
+
+  def create_api_entreprise_contact_technique_only
+    create_token(
+      @scopes_entreprise.sample(3),
+      'entreprise',
+      demandeur: @contact,
+      contact_technique: @user,
+      authorization_request_params: {
+        intitule: 'Mairie de Nantes',
+        external_id: 107,
+        status: :validated,
+        validated_at: 1.month.ago,
+        first_submitted_at: 1.month.ago
+      }
     )
   end
 
