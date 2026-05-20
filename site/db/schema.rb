@@ -119,11 +119,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_05_120000) do
   end
 
   create_table "editors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.jsonb "allowed_ips", default: [], null: false
+    t.string "contact_email"
+    t.string "contact_phone"
     t.boolean "copy_token", default: false, null: false
     t.datetime "created_at", null: false
     t.boolean "delegations_enabled", default: false, null: false
+    t.string "deployment_type"
+    t.text "description"
+    t.string "domain"
     t.string "form_uids", default: [], array: true
+    t.string "languages"
     t.string "name", null: false
+    t.string "role"
+    t.text "setup_instructions"
+    t.string "siret"
     t.datetime "updated_at", null: false
   end
 
