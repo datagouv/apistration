@@ -172,3 +172,9 @@
 .nav-link-two-lines {
   display: block;
 }
+
+.fr-enlarge-link .fr-card__detail a,
+.fr-enlarge-link .fr-card__footer a {
+  position: relative;
+  z-index: 2;
+}
