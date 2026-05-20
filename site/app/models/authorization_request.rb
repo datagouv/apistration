@@ -65,7 +65,7 @@ class AuthorizationRequest < ApplicationRecord
   scope :archived, -> { where(status: 'archived') }
   scope :eligible_for_token_creation, -> { where.not(validated_at: nil).where.not(status: %w[archived revoked]) }
   scope :for_api, ->(api) { where(api:) }
-  scope :viewable_by_users, -> { where('status in (?) or validated_at is not null', %w[archived revoked validated]) }
+  scope :viewable_by_users, -> { where('(status in (?) or validated_at is not null) and status != ?', %w[archived revoked validated], 'refused') }
 
   def token
     active_token || most_recent_token
