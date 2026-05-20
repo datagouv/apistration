@@ -102,6 +102,41 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         expect(page).not_to expose_window_opener
       end
 
+      it 'hides refused demandes, which users cannot act on' do
+        refused_authorization_request = create(
+          :authorization_request,
+          :with_demandeur,
+          :submitted,
+          status: 'refused',
+          validated_at: 1.month.ago,
+          intitule: 'Ma demande refusée',
+          demandeur: authenticated_user,
+          api: 'particulier'
+        )
+
+        go_to_authorization_requests_index
+
+        expect(page).to have_css('#' << dom_id(authorization_request_active))
+        expect(page).to have_no_css('#' << dom_id(refused_authorization_request))
+        expect(page).to have_no_text('Ma demande refusée')
+      end
+
+      it 'keeps a validated demande that has no status' do
+        authorization_request_without_status = create(
+          :authorization_request,
+          :with_demandeur,
+          :validated,
+          intitule: 'Ma demande sans statut',
+          demandeur: authenticated_user,
+          api: 'particulier'
+        )
+        authorization_request_without_status.update_column(:status, nil)
+
+        go_to_authorization_requests_index
+
+        expect(page).to have_css('#' << dom_id(authorization_request_without_status))
+      end
+
       it 'links to the authorization request detail page' do
         go_to_authorization_requests_index
 
