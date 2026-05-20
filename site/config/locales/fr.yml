@@ -437,37 +437,28 @@ fr:
       header:
         delivered_at: "Délivré le : %{humanized_date}"
       show:
-        access: "Vos droits d'accès&nbsp;:"
-        modal:
-          renew:
-            display_cta: Demander l'accès à d'autres API
-          show:
-            display_cta: "Voir le jeton"
-          ask_for_prolongation:
-            display_cta: Relancer le demandeur pour prolonger le jeton
-        main_token:
-          title: "Jeton principal&nbsp;:"
-        attestations:
-          title: "Télécharger manuellement les attestations sociales et fiscales"
-          description: "Saisissez manuellement le SIREN de l'unité légale recherchée et vous aurez directement accès aux PDF des attestations&nbsp;:"
-          cta: "Utiliser l'interface de téléchargement"
-        other_tokens:
-          title: Voir les autres jetons
+        datapass_cta: "Voir sur DataPass n°%{external_id}"
+        tokens:
+          title: "Jetons"
           table:
-            identifier: "Identifiant du jeton"
+            identifier: "Identifiant"
             status: "Statut"
             created_at: "Date de délivrance"
             exp: "Date d'expiration"
-            see_more: "Voir plus"
+            actions: "Actions"
+            stats: "Statistiques"
+            transfer: "Transmettre"
         contacts:
           title: "Contacts associés&nbsp;:"
+          description: "Vous pouvez modifier ces contacts en amendant votre habilitation sur DataPass :"
+          datapass_link: "modifier sur DataPass"
           demandeur:
-            title: "Demandeur&nbsp;:"
+            title: "Demandeur :"
           contact_technique:
-            title: "Contact technique&nbsp;:"
+            title: "Contact technique :"
           contact_metier:
-            title: "Contact metier&nbsp;:"
-          its_me: "✋ C'est moi !"
+            title: "Contact métier :"
+          its_me: "c'est moi"
         delegations:
           title: "Délégations&nbsp;:"
           description: "Vous pouvez déléguer votre habilitation à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
