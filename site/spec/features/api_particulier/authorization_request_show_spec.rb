@@ -57,6 +57,24 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
         end
       end
 
+      describe 'when it was refused' do
+        let!(:authorization_request) do
+          create(
+            :authorization_request,
+            :with_demandeur,
+            :submitted,
+            demandeur: authenticated_user,
+            api: 'particulier',
+            status: 'refused',
+            validated_at: 1.month.ago
+          )
+        end
+
+        it 'redirects to the index' do
+          expect(page).to have_current_path(api_particulier_authorization_requests_path, ignore_query: true)
+        end
+      end
+
       describe 'when authorization_request is from api_entreprise' do
         let!(:authorization_request) do
           create(
