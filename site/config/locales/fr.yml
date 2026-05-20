@@ -447,13 +447,6 @@ fr:
         links:
           to_datapass_html: "Datapass n°%{external_id}"
           profile: Vos informations
-        table:
-          head:
-            authorization_request: "Habilitation"
-            organization: Organisation
-            token: Jeton principal
-            actions: Actions attendues
-            detail: Page détaillée
       breadcrumb:
         index: Habilitations
         current_page: Habilitation n°%{datapass_id}
