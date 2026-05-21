@@ -62,6 +62,7 @@
               <th scope="col"><%= t('.table.organization') %></th>
               <th scope="col"><%= t('.table.demandeur') %></th>
               <th scope="col"><%= t('.table.status') %></th>
+              <th scope="col"><%= t('.table.scopes') %></th>
             </tr>
           </thead>
           <tbody>
@@ -99,6 +100,17 @@
                     <p class="fr-badge fr-badge--pink-tuile"><%= t('.status_revoked') %></p>
                   <% else %>
                     <p class="fr-badge fr-badge--green-emeraude"><%= t('.status_active') %></p>
+                  <% end %>
+                </td>
+                <td>
+                  <% if ar.scopes.any? %>
+                    <ul class="delegation-scopes fr-text--sm">
+                      <% ar.scopes.each do |scope| %>
+                        <li><%= humanize_scope(scope, ar.api).split('||').last.strip %></li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <span class="fr-text--sm fr-text-mention--grey"><%= t('.no_scopes') %></span>
                   <% end %>
                 </td>
               </tr>

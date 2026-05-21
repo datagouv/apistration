@@ -526,7 +526,9 @@ fr:
           organization: Organisation
           demandeur: Demandeur
           status: Statut
+          scopes: Scopes disponibles
         copy_alert: Identifiant copié
+        no_scopes: Aucun scope
         status_active: Actif
         status_revoked: Révoqué
         editor_tokens_title: Jetons de délégation

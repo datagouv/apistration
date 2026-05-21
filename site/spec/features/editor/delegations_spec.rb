@@ -10,11 +10,14 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
       let(:editor) { create(:editor, :delegable) }
       let!(:active_delegation) do
         create(:editor_delegation, editor:,
-          authorization_request: create(:authorization_request, :validated, :with_demandeur, api: 'entreprise'))
+          authorization_request: create(:authorization_request, :validated, :with_demandeur,
+            api: 'entreprise',
+            scopes: %w[unites_legales_etablissements_insee associations]))
       end
       let!(:revoked_delegation) do
         create(:editor_delegation, editor:, revoked_at: 1.day.ago,
-          authorization_request: create(:authorization_request, :validated, :with_demandeur, api: 'entreprise'))
+          authorization_request: create(:authorization_request, :validated, :with_demandeur,
+            api: 'entreprise', scopes: []))
       end
 
       it 'displays the delegations tab in header' do
@@ -43,6 +46,25 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
           )
           expect(find('input[data-clipboard-target="source"]', visible: false).value)
             .to eq(active_delegation.id)
+        end
+      end
+
+      it 'displays humanized scopes per delegation, with a fallback when empty' do
+        visit editor_delegations_path
+
+        within "##{dom_id(active_delegation)}" do
+          expect(page).to have_css(
+            '.delegation-scopes li',
+            text: 'API Données unités légales et établissements dont les non diffusibles'
+          )
+          expect(page).to have_css(
+            '.delegation-scopes li',
+            text: 'API Données ouvertes association'
+          )
+        end
+
+        within "##{dom_id(revoked_delegation)}" do
+          expect(page).to have_text('Aucun scope')
         end
       end
     end
