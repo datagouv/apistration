@@ -42,9 +42,9 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
           expect(page).to have_button("Copier l'identifiant")
           expect(page).to have_css(
             'input[data-clipboard-target="source"]',
-            visible: false
+            visible: :all
           )
-          expect(find('input[data-clipboard-target="source"]', visible: false).value)
+          expect(find('input[data-clipboard-target="source"]', visible: :all).value)
             .to eq(active_delegation.id)
         end
       end
