@@ -1,0 +1,38 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Statistiques annuelles</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: true, show_interval: false, show_api: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels totaux', value: number_with_delimiter(@query.total_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels uniques', value: number_with_delimiter(@query.unique_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels en cache', value: number_with_delimiter(@query.cached_calls) %>
+    </div>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Utilisateurs sur la période', value: number_with_delimiter(@query.total_users) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'SIRET uniques', value: number_with_delimiter(@query.unique_sirets) %>
+    </div>
+
+    <%= render 'shared/dsfr_chart/pie',
+      title: 'Taux de succès',
+      segments: @query.success_rate_breakdown %>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels par mois',
+      categories: @query.calls_by_month.map { |r| r[:bucket].strftime('%m/%Y') },
+      series: [{ label: 'Appels', values: @query.calls_by_month.map { |r| r[:value] } }] %>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Appels cumulés par mois',
+      categories: @query.cumulative_calls_by_month.map { |r| r[:bucket].strftime('%m/%Y') },
+      series: [{ label: 'Cumulé', values: @query.cumulative_calls_by_month.map { |r| r[:value] } }] %>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'utilisateurs par mois',
+      categories: @query.users_by_month.map { |r| r[:bucket].strftime('%m/%Y') },
+      series: [{ label: 'Utilisateurs', values: @query.users_by_month.map { |r| r[:value] } }] %>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Consommateurs d'une API</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: true, show_interval: true, show_api: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels totaux', value: number_with_delimiter(@query.total_calls) %>
+    </div>
+
+    <%= render 'shared/dsfr_chart/pie',
+      title: 'Taux de succès vs échecs',
+      segments: @query.success_breakdown %>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels par période',
+      categories: @query.calls_by_period.map { |r| bucket_label(r[:bucket], @filter.interval) },
+      series: [{ label: 'Appels', values: @query.calls_by_period.map { |r| r[:value] } }] %>
+
+    <h2 class="fr-mt-4w">Habilitations consommatrices</h2>
+    <div class="fr-table">
+      <table>
+        <thead>
+          <tr>
+            <th>External ID</th>
+            <th>Intitulé</th>
+            <th>SIRET</th>
+            <th>Email</th>
+            <th>Appels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.consumer_habilitations.each do |row| %>
+            <tr>
+              <td><%= row[:external_id] %></td>
+              <td><%= row[:intitule] %></td>
+              <td><%= row[:siret] %></td>
+              <td><%= row[:email] %></td>
+              <td><%= number_with_delimiter(row[:calls]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

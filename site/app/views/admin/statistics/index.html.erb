@@ -1,0 +1,21 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Statistiques</h1>
+    <p class="fr-text--lead fr-mb-4w">Tableaux de bord issus de Metabase, intégrés nativement.</p>
+  </div>
+
+  <% Admin::StatisticsController::PAGES.each do |action, meta| %>
+    <div class="fr-col-12 fr-col-md-4">
+      <div class="fr-tile fr-enlarge-link">
+        <div class="fr-tile__body">
+          <div class="fr-tile__content">
+            <h3 class="fr-tile__title">
+              <%= link_to meta[:title], admin_statistic_path(page: action) %>
+            </h3>
+            <p class="fr-tile__desc"><%= meta[:description] %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

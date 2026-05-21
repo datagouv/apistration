@@ -1,0 +1,38 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Top 10 utilisateurs</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: false, show_interval: false %>
+
+    <% %w[entreprise particulier].each do |domaine| %>
+      <h2 class="fr-mt-4w">API <%= domaine.capitalize %></h2>
+
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <% { 'Éditeurs' => :top_editors, 'Tokens' => :top_tokens, 'Datapass' => :top_datapass, 'Adresses IP' => :top_ips }.each do |label, method| %>
+          <div class="fr-col-12 fr-col-md-6">
+            <div class="fr-table">
+              <table>
+                <caption><%= label %></caption>
+                <thead>
+                  <tr>
+                    <th><%= label.singularize %></th>
+                    <th>Appels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @query.public_send(method, domaine).each do |row| %>
+                    <tr>
+                      <td><code><%= truncate(row[:identifier].to_s, length: 40) %></code></td>
+                      <td><%= number_with_delimiter(row[:calls]) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

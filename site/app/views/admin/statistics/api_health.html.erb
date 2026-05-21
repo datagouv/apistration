@@ -1,0 +1,43 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>État de santé global des APIs</h1>
+    <p class="fr-text--sm fr-mb-2w">Basé sur les 10 dernières minutes.</p>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_domaine: true, show_interval: false %>
+
+    <div class="fr-table">
+      <table>
+        <caption>État instantané des APIs</caption>
+        <thead>
+          <tr>
+            <th>Controller</th>
+            <th>Total</th>
+            <th>Succès</th>
+            <th>Non trouvé</th>
+            <th>Erreurs</th>
+            <th>Durée moy. (ms)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.instant_status.each do |row| %>
+            <tr>
+              <td><%= row[:controller] %></td>
+              <td><%= number_with_delimiter(row[:total]) %></td>
+              <td><%= row[:success] %></td>
+              <td><%= row[:not_found] %></td>
+              <td>
+                <% if row[:errors].positive? %>
+                  <strong class="fr-text-default--error"><%= row[:errors] %></strong>
+                <% else %>
+                  <%= row[:errors] %>
+                <% end %>
+              </td>
+              <td><%= row[:avg_duration] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
