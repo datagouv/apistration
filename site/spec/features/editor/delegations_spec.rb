@@ -30,6 +30,21 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         expect(page).to have_css('.fr-badge--green-emeraude', text: 'Actif')
         expect(page).to have_css('.fr-badge--pink-tuile', text: 'Révoqué')
       end
+
+      it 'displays the delegation UUID with a copy button per row' do
+        visit editor_delegations_path
+
+        within "##{dom_id(active_delegation)}" do
+          expect(page).to have_text(active_delegation.id)
+          expect(page).to have_button("Copier l'identifiant")
+          expect(page).to have_css(
+            'input[data-clipboard-target="source"]',
+            visible: false
+          )
+          expect(find('input[data-clipboard-target="source"]', visible: false).value)
+            .to eq(active_delegation.id)
+        end
+      end
     end
 
     context 'when delegations are not enabled' do

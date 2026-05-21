@@ -519,11 +519,14 @@ fr:
       index:
         title: Délégations
         table:
+          delegation_id: Identifiant de délégation
+          copy_delegation_id: Copier l'identifiant
           datapass_id: DataPass ID
           intitule: Intitulé
           organization: Organisation
           demandeur: Demandeur
           status: Statut
+        copy_alert: Identifiant copié
         status_active: Actif
         status_revoked: Révoqué
         editor_tokens_title: Jetons de délégation
