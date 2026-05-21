@@ -63,6 +63,7 @@
               <th scope="col"><%= t('.table.demandeur') %></th>
               <th scope="col"><%= t('.table.status') %></th>
               <th scope="col"><%= t('.table.scopes') %></th>
+              <th scope="col"><%= t('.table.created_at') %></th>
             </tr>
           </thead>
           <tbody>
@@ -112,6 +113,9 @@
                   <% else %>
                     <span class="fr-text--sm fr-text-mention--grey"><%= t('.no_scopes') %></span>
                   <% end %>
+                </td>
+                <td class="delegation-created-at">
+                  <%= delegation.created_at.strftime('%d/%m/%Y') %>
                 </td>
               </tr>
             <% end %>

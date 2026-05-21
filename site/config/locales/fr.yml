@@ -527,6 +527,7 @@ fr:
           demandeur: Demandeur
           status: Statut
           scopes: Scopes disponibles
+          created_at: Date de création
         copy_alert: Identifiant copié
         no_scopes: Aucun scope
         status_active: Actif

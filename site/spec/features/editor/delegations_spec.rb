@@ -67,6 +67,16 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
           expect(page).to have_text('Aucun scope')
         end
       end
+
+      it 'displays the creation date for each delegation' do
+        active_delegation.update!(created_at: Time.zone.local(2026, 3, 14, 12))
+
+        visit editor_delegations_path
+
+        within "##{dom_id(active_delegation)}" do
+          expect(page).to have_css('.delegation-created-at', text: '14/03/2026')
+        end
+      end
     end
 
     context 'when delegations are not enabled' do
