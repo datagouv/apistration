@@ -1,0 +1,47 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "DIALLO"
+  prenoms:
+    - 'NOUR'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2012
+  moisDateNaissance: 1
+  jourDateNaissance: 14
+  degreEtablissement: "2D"
+  codesBcnRegions:
+    - '18'
+  codeEtablissement: "0131290G"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "DIALLO",
+        "prenom": "NOUR",
+        "sexe": "F",
+        "date_naissance": "2012-01-14"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010001910",
+        "libelle": "6EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131290G",
+        "nom": "Centre d'information et d'orientation d'Aubagne",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 3,
+      "regime_pensionnat": null
+    },
+    "links": {},
+    "meta": {}
+  }
