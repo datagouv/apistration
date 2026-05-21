@@ -1,0 +1,27 @@
+---
+description:
+  ## Identité connue de la base de test de France Connect
+
+  Ce cas permet de tester un appel à partir notamment des données de l'identité
+  pivot France Connect.
+
+params:
+  nomNaissance: 'MERCIER'
+  prenoms:
+  - 'PIERRE'
+  anneeDateNaissance: 1969
+  moisDateNaissance: 3
+  jourDateNaissance: 17
+  codeCogInseeCommuneNaissance: '95277'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "date_debut_droit": "2022-11-29"
+    },
+    "links": {},
+    "meta": {}
+  }
