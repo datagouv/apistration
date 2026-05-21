@@ -1,0 +1,27 @@
+---
+description: |-
+  ## Enfant bénéficiaire du statut C2S non contributive
+
+  Ce cas permet de tester :
+  * la gestion d'un enfant bénéficiaire du statut C2S sans participation financière
+params:
+  codeCogInseeCommuneNaissance: '13015'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'FERREIRA'
+  prenoms:
+    - 'KAIS'
+  anneeDateNaissance: 2011
+  moisDateNaissance: 1
+  jourDateNaissance: 6
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2025-08-01"
+    },
+    "links": {},
+    "meta": {}
+  }

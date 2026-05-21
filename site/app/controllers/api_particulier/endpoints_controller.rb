@@ -21,11 +21,11 @@ class APIParticulier::EndpointsController < APIParticulierController
   private
 
   def extract_endpoint
-    @endpoint = endpoint_class.find(params[:uid])
+    @endpoint = endpoint_class.find(params.expect(:uid))
   end
 
   def endpoint_class
-    return APIParticulier::EndpointV2 if params[:uid].include?('/v2/')
+    return APIParticulier::EndpointV2 if params.expect(:uid).include?('/v2/')
 
     APIParticulier::Endpoint
   end

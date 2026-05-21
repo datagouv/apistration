@@ -1,0 +1,82 @@
+---
+description: |-
+  ## Famille MARTIN avec quatre enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec quatre enfants
+  * parent : MARTIN Julien
+
+params:
+  codeCogInseeCommuneNaissance: '13005'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'MARTIN'
+  prenoms:
+    - 'JULIEN'
+  anneeDateNaissance: 1985
+  moisDateNaissance: 1
+  jourDateNaissance: 29
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "JULIEN",
+          "date_naissance": "1985-01-29",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "LINA",
+          "date_naissance": "2011-04-09",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "THEO",
+          "date_naissance": "2014-09-18",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "CAMILLE",
+          "date_naissance": "2016-05-22",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "RAPHAEL",
+          "date_naissance": "2019-12-03",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur MARTIN JULIEN",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "3 PLACE DE LA MAIRIE",
+        "lieu_dit": null,
+        "code_postal_ville": "13260 CASSIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 1480,
+        "annee": 2024,
+        "mois": 11,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

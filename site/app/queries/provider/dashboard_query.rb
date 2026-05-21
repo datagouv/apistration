@@ -17,28 +17,21 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   # card 552
   def per_endpoint
-    @per_endpoint ||= per_api(coalesce_sum(:appels_totaux), coalesce_sum(:appels_uniques), coalesce_sum(:appels_cache))
-      .map { |row| { endpoint: endpoint_title(row[0]), total: row[1].to_i, unique: row[2].to_i, cached: row[3].to_i } }
+    @per_endpoint ||= merge_by_endpoint(
+      per_api(coalesce_sum(:appels_totaux), coalesce_sum(:appels_uniques), coalesce_sum(:appels_cache))
+        .map { |row| { endpoint: endpoint_title(row[0]), total: row[1].to_i, unique: row[2].to_i, cached: row[3].to_i } },
+      sum_keys: %i[total unique cached]
+    )
   end
 
   # cards 613 / 614 / 625
-  def evolution_per_endpoint(metric) # rubocop:disable Metrics/AbcSize
+  def evolution_per_endpoint(metric)
     @evolution_per_endpoint ||= {}
-    @evolution_per_endpoint[metric] ||= scoped
-      .group(:api, date_trunc_sql)
-      .order(Arel.sql(date_trunc_sql))
-      .pluck(:api, Arel.sql(date_trunc_sql), coalesce_sum(ENDPOINT_METRIC_COLUMNS.fetch(metric)))
-      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
+    @evolution_per_endpoint[metric] ||= per_endpoint_time_series(coalesce_sum(ENDPOINT_METRIC_COLUMNS.fetch(metric)))
   end
 
-  def evolution_per_endpoint_series(metric, &) # rubocop:disable Metrics/AbcSize
-    rows = evolution_per_endpoint(metric)
-    buckets = rows.pluck(:bucket).uniq.sort
-
-    rows.pluck(:endpoint).uniq.map do |endpoint|
-      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
-      { label: endpoint, points: buckets.map { |b| [yield(b), points.dig(b, :value).to_i] } }
-    end
+  def evolution_per_endpoint_series(metric, &)
+    build_series(evolution_per_endpoint(metric), &)
   end
 
   # cards 555..560
@@ -58,8 +51,11 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   # card 562
   def success_per_endpoint
-    @success_per_endpoint ||= per_api(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur))
-      .map { |row| { endpoint: endpoint_title(row[0]), success: row[1].to_i, not_found: row[2].to_i, errors: row[3].to_i } }
+    @success_per_endpoint ||= merge_by_endpoint(
+      per_api(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur))
+        .map { |row| { endpoint: endpoint_title(row[0]), success: row[1].to_i, not_found: row[2].to_i, errors: row[3].to_i } },
+      sum_keys: %i[success not_found errors]
+    )
   end
 
   # card 563
@@ -74,9 +70,73 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   # card 565
-  def avg_duration_per_endpoint
+  def avg_duration_per_endpoint # rubocop:disable Metrics/AbcSize
     @avg_duration_per_endpoint ||= per_api(weighted_duration_sum_sql, weighted_duration_weight_sql)
-      .map { |row| { endpoint: endpoint_title(row[0]), value: weighted_avg([row[1], row[2]]) } }
+      .map { |row| { endpoint: endpoint_title(row[0]), w_sum: row[1].to_f, w_weight: row[2].to_f } }
+      .group_by { |r| r[:endpoint] }
+      .map { |endpoint, rows| { endpoint:, value: weighted_avg([rows.sum { |r| r[:w_sum] }, rows.sum { |r| r[:w_weight] }]) } }
+  end
+
+  def total_consumers
+    @total_consumers ||= scoped.select('COUNT(DISTINCT source_id)').pick(Arel.sql('COUNT(DISTINCT source_id)')).to_i
+  end
+
+  def france_connect_consumers
+    @france_connect_consumers ||= scoped
+      .where(source_type: 'france_connect')
+      .select('COUNT(DISTINCT source_id)')
+      .pick(Arel.sql('COUNT(DISTINCT source_id)')).to_i
+  end
+
+  def consumers_evolution
+    @consumers_evolution ||= scoped
+      .group(date_trunc_sql)
+      .order(Arel.sql(date_trunc_sql))
+      .pluck(Arel.sql(date_trunc_sql), Arel.sql('COUNT(DISTINCT source_id)'))
+      .map { |bucket, value| { bucket:, value: value.to_i } }
+  end
+
+  def consumers_evolution_per_endpoint
+    @consumers_evolution_per_endpoint ||= per_endpoint_time_series(Arel.sql('COUNT(DISTINCT source_id)'))
+  end
+
+  def consumers_evolution_per_endpoint_series(&)
+    build_series(consumers_evolution_per_endpoint, &)
+  end
+
+  def consumers_cumulative_evolution_per_endpoint_series(&)
+    build_cumulative_series(new_consumers_per_bucket_per_endpoint, &)
+  end
+
+  def multiple_endpoints?
+    requested_controllers.nil? || requested_controllers.size > 1
+  end
+
+  def consumers_cumulative_evolution
+    @consumers_cumulative_evolution ||= cumulate(new_consumers_per_bucket)
+  end
+
+  def new_consumers_per_bucket
+    @new_consumers_per_bucket ||= scoped
+      .group(:source_id)
+      .select("source_id, #{date_trunc_sql} AS bucket")
+      .order(Arel.sql("MIN(#{date_trunc_sql})"))
+      .pluck(Arel.sql("MIN(#{date_trunc_sql})"))
+      .tally
+      .sort
+      .map { |bucket, count| { bucket:, value: count } }
+  end
+
+  def new_consumers_per_bucket_per_endpoint # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+    @new_consumers_per_bucket_per_endpoint ||= scoped
+      .group(:api, :source_id)
+      .pluck(:api, :source_id, Arel.sql("MIN(#{date_trunc_sql})"))
+      .map { |api, source_id, bucket| [endpoint_title(api), source_id, bucket] }
+      .group_by { |endpoint, source_id, _| [endpoint, source_id] }
+      .map { |(endpoint, _), rows| [endpoint, rows.min_by { |_, _, b| b }[2]] }
+      .tally
+      .sort_by(&:first)
+      .map { |(endpoint, bucket), count| { endpoint:, bucket:, value: count } }
   end
 
   # card 554
@@ -132,6 +192,31 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       end
   end
 
+  def habilitations_evolution # rubocop:disable Metrics/AbcSize
+    @habilitations_evolution ||= AuthorizationRequest
+      .where(api: filter_apis)
+      .where(habilitation_scope_clause)
+      .where(status: 'validated')
+      .where(validated_at: filter.date_range)
+      .group(habilitations_date_trunc_sql)
+      .order(Arel.sql(habilitations_date_trunc_sql))
+      .pluck(Arel.sql(habilitations_date_trunc_sql), Arel.sql('COUNT(*)'))
+      .map { |bucket, value| { bucket:, value: value.to_i } }
+  end
+
+  def total_habilitations
+    @total_habilitations ||= AuthorizationRequest
+      .where(api: filter_apis)
+      .where(habilitation_scope_clause)
+      .where.not(status: %w[draft archived])
+      .where(first_submitted_at: filter.date_range)
+      .count
+  end
+
+  def habilitations_cumulative_evolution
+    @habilitations_cumulative_evolution ||= cumulate(habilitations_evolution)
+  end
+
   # card 547
   def habilitations(page: 1, per: 10)
     Kaminari.paginate_array(habilitations_rows).page(page).per(per)
@@ -149,6 +234,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       .where(api: filter_apis)
       .where(habilitation_scope_clause)
       .where.not(status: %w[draft archived])
+      .where(first_submitted_at: filter.date_range)
       .order(created_at: :desc)
       .pluck(
         :external_id,
@@ -178,6 +264,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   attr_reader :provider, :filter
 
+  def all_provider? = provider.uid == 'all'
+
   ENDPOINT_METRIC_COLUMNS = { # rubocop:disable Lint/UselessConstantScoping
     total: 'appels_totaux',
     unique: 'appels_uniques',
@@ -199,21 +287,60 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     scoped.group(:api).pluck(:api, *sql_aggregates)
   end
 
+  def per_endpoint_time_series(aggregate_sql) # rubocop:disable Metrics/AbcSize
+    scoped
+      .group(:api, date_trunc_sql)
+      .order(Arel.sql(date_trunc_sql))
+      .pluck(:api, Arel.sql(date_trunc_sql), aggregate_sql)
+      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
+      .group_by { |r| [r[:endpoint], r[:bucket]] }
+      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
+  end
+
+  def build_series(rows)
+    buckets = rows.pluck(:bucket).uniq.sort
+
+    rows.pluck(:endpoint).uniq.map do |endpoint|
+      points = rows.select { |r| r[:endpoint] == endpoint }.index_by { |r| r[:bucket] }
+      { label: endpoint, points: buckets.map { |b| [yield(b), points.dig(b, :value).to_i] } }
+    end
+  end
+
+  def build_cumulative_series(rows, &)
+    build_series(rows, &).each do |series|
+      running = 0
+      series[:points].map! { |label, value| [label, running += value] }
+    end
+  end
+
   def coalesce_sum(column) = Arel.sql("COALESCE(SUM(#{column}), 0)")
 
   def match_routes(relation, column = nil)
     api_col = column || "#{relation.klass.table_name}.api"
-    return restrict_by_provider_uid(relation, api_col) if requested_controllers.nil?
+    return relation if requested_controllers.nil?
     return relation.where('1 = 0') if requested_controllers.empty?
 
     relation.where("#{api_col} = ANY(ARRAY[?]::text[])", requested_controllers)
   end
 
   def requested_controllers
+    @requested_controllers ||= compute_requested_controllers
+  end
+
+  def compute_requested_controllers
+    return all_provider_controllers if all_provider?
     return nil if !filter.routes_submitted? && provider_controllers.empty?
     return provider_controllers unless filter.routes_submitted?
 
-    @requested_controllers ||= filter.routes & provider_controllers
+    expand_routes(filter.routes) & provider_controllers
+  end
+
+  def all_provider_controllers
+    filter.routes_submitted? ? expand_routes(filter.routes) : provider_controllers
+  end
+
+  def expand_routes(routes)
+    routes.flat_map { |r| filter.controllers_with_legacy.fetch(r, [r]) }.uniq
   end
 
   def restrict_by_provider_uid(relation, api_col)
@@ -239,11 +366,26 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def provider_controllers
-    @provider_controllers ||= filter.provider_endpoints.filter_map(&:controller).uniq
+    @provider_controllers ||= filter.controllers_with_legacy.values.flatten.uniq
   end
 
   def date_trunc_sql
     "date_trunc('#{filter.pg_interval_unit}', date)"
+  end
+
+  def merge_by_endpoint(rows, sum_keys:)
+    rows.group_by { |r| r[:endpoint] }.map do |endpoint, grouped|
+      sum_keys.each_with_object({ endpoint: }) { |k, h| h[k] = grouped.sum { |r| r[k] } }
+    end
+  end
+
+  def cumulate(series)
+    running = 0
+    series.map { |point| { bucket: point[:bucket], value: running += point[:value] } }
+  end
+
+  def habilitations_date_trunc_sql
+    "date_trunc('#{filter.pg_interval_unit}', validated_at)"
   end
 
   def endpoint_title(api)
@@ -251,10 +393,14 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def endpoint_titles
-    @endpoint_titles ||= filter.provider_endpoints
-      .filter_map { |e| [e.controller, e.title] if e.controller.present? }
-      .uniq(&:first)
-      .to_h
+    @endpoint_titles ||= build_endpoint_titles
+  end
+
+  def build_endpoint_titles
+    filter.controllers_with_legacy.each_with_object({}) do |(controller, all_controllers), map|
+      title = filter.provider_endpoints.find { |e| e.controller == controller }&.title || controller
+      all_controllers.each { |c| map[c] ||= title }
+    end
   end
 
   def habilitation_scope_clause

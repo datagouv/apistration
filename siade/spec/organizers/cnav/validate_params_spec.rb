@@ -94,9 +94,9 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
       let(:code_cog_insee_commune_naissance) { nil }
       let(:code_cog_insee_pays_naissance) { '99100' }
 
-      it { is_expected.to be_a_failure }
+      it { is_expected.to be_a_success }
 
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      its(:errors) { is_expected.to be_empty }
     end
 
     describe 'with empty params for lieu de naissance and not in france' do

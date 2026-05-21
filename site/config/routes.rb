@@ -25,6 +25,8 @@ Rails.application.routes.draw do
         get :duration_section
         get :consumers_section
         get :habilitations_section
+        get :consumers_export
+        get :habilitations_export
       end
     end
     resources :audit_notifications, only: %i[index new create]

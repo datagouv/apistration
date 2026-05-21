@@ -1,0 +1,82 @@
+---
+description: |-
+  ## Famille ROSSI avec quatre enfants
+
+  Ce cas permet de tester :
+  * la gestion d'une famille avec quatre enfants
+  * parent : ROSSI Chiara
+
+params:
+  codeCogInseeCommuneNaissance: '13028'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'ROSSI'
+  prenoms:
+    - 'CHIARA'
+  anneeDateNaissance: 2012
+  moisDateNaissance: 3
+  jourDateNaissance: 30
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "CHIARA",
+          "date_naissance": "2012-03-30",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "NOAH",
+          "date_naissance": "2016-06-11",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "INES",
+          "date_naissance": "2018-12-02",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "LOU",
+          "date_naissance": "2020-05-09",
+          "sexe": "F"
+        },
+        {
+          "nom_naissance": "ROSSI",
+          "nom_usage": null,
+          "prenoms": "ENZO",
+          "date_naissance": "2022-07-21",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame ROSSI CHIARA",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "22 AVENUE DES PINS",
+        "lieu_dit": null,
+        "code_postal_ville": "13600 LA CIOTAT",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 980,
+        "annee": 2024,
+        "mois": 10,
+        "annee_calcul": 2025,
+        "mois_calcul": 1
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

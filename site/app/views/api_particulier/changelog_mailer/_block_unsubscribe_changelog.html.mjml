@@ -3,7 +3,7 @@
     <mj-text mj-class="secondary-link">
       <p>
         Vous recevez cet email car vous êtes inscrit à la newsletter hebdomadaire des nouveautés d'API Particulier.
-        <a target="_blank" href="<%= changelog_unsubscribe_token_url(token: @subscription.unsubscribe_token) %>">
+        <a target="_blank" href="<%= api_particulier_changelog_unsubscribe_token_url(token: @subscription.unsubscribe_token) %>">
           Se désinscrire
         </a>
       </p>

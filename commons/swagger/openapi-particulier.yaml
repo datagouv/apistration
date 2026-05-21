@@ -13519,7 +13519,7 @@ paths:
 
           ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe pas dans l'API annuaire de l'éducation nationale, il faudra donc compléter la liste des établissements avec une ligne CNED à laquelle sera associée le code UAI qui sera en passé en entrée.
         example: 0210015C
-        required: false
+        required: true
         schema:
           type: string
       - name: anneeScolaire
@@ -13531,37 +13531,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: degreEtablissement
-        in: query
-        description: 'Degré de l''établissement scolaire : 1D pour le premier degré
-          (écoles maternelles et élémentaires) ou 2D pour le second degré (collèges
-          et lycées).'
-        example: 2D
-        required: false
-        schema:
-          type: string
-      - name: codesBcnDepartements[]
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
-        description: |
-          Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
-
-          Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
-        required: false
-      - name: codesBcnRegions[]
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
-        description: |
-          Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
-
-          Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
-        required: false
       security:
       - jwt_bearer_token: []
       description: Statut scolarisé d'un élève du primaire, collège ou lycée et statut
@@ -13649,7 +13618,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
-          description: Scolarite trouvee par perimetre
+          description: Scolarite trouvee
           x-operationId: api_particulier_v3_men_scolarites_with_civility
           content:
             application/json:
@@ -13830,7 +13799,7 @@ paths:
                 - links
                 - meta
         '404':
-          description: Non trouvee par perimetre
+          description: Non trouvee
           content:
             application/json:
               examples:
@@ -13839,44 +13808,14 @@ paths:
                     errors:
                     - code: '30003'
                       title: Entité non trouvée
-                      detail: Aucun eleve n'a pu etre trouve avec les criteres de
-                        recherche fournis
+                      detail: Aucun élève n'a pu être trouvé avec les critères de
+                        recherche fournis.
                       source:
                       meta:
                         provider: MEN
                   summary: Entité non trouvée
-                  description: Aucun eleve n'a pu etre trouve avec les criteres de
-                    recherche fournis
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '422':
-          description: Paramètre(s) invalide(s)
-          content:
-            application/json:
-              examples:
-                unprocessable_content_error_code_etablissement_et_perimetre_error:
-                  value:
-                    errors:
-                    - code: '00419'
-                      title: Entité non traitable
-                      detail: Les paramètres codeEtablissement et périmètre (codesBcnRegions/codesBcnDepartements)
-                        sont mutuellement exclusifs
-                      source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Les paramètres codeEtablissement et périmètre (codesBcnRegions/codesBcnDepartements)
-                    sont mutuellement exclusifs
-                missing_mandatory_params_recipient_error:
-                  value:
-                    errors:
-                    - code: '00203'
-                      title: Entité non traitable
-                      detail: Le paramètre recipient est obligatoire
-                      source:
-                        parameter: recipient
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre recipient est obligatoire
+                  description: Aucun élève n'a pu être trouvé avec les critères de
+                    recherche fournis.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -14035,6 +13974,24 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v4/men/scolarites/identite":
     get:
       summary: Statut élève scolarisé et boursier
@@ -14162,6 +14119,8 @@ paths:
           Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
+        example:
+        - '075'
         required: false
       - name: codesBcnRegions[]
         in: query
@@ -14173,6 +14132,8 @@ paths:
           Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
+        example:
+        - '10'
         required: false
       security:
       - jwt_bearer_token: []
@@ -14773,6 +14734,8 @@ paths:
           Liste des codes BCN des départements du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_DEPARTEMENT](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_DEPARTEMENT)
+        example:
+        - '075'
         required: false
       - name: codesBcnRegions[]
         in: query
@@ -14784,6 +14747,8 @@ paths:
           Liste des codes BCN des régions académiques du périmètre de recherche. Exactement un type de périmètre doit être fourni.
 
           Référentiel : [N_REGION_ACADEMIQUE](https://bcn.depp.education.fr/bcn/workspace/viewTable/n/N_REGION_ACADEMIQUE)
+        example:
+        - '10'
         required: false
       security:
       - jwt_bearer_token: []

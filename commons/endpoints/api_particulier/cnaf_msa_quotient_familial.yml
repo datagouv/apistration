@@ -18,6 +18,9 @@ fiche:
         - ✅ les régimes spéciaux suivants : artiste-auteur-compositeur, France Télécom, industries électriques et gazières, marin du commerce et pêche, mines (régime général), poste, RATP, SNCF, navigation intérieure en cas d'accord local et les pensions des autres régimes.
 
 
+        {:.fr-highlight.fr-highlight--caution}
+        > **La présence d'au moins un enfant dans le foyer fiscal est obligatoire** pour que le quotient familial soit calculé et renvoyé par l'API.
+
         **Ne sont pas concernés par cette API**, les bénéficiaires des régimes suivants :
 
         - ❌ le régime des titulaires de l'Assemblée nationale et du Sénat ;
@@ -74,33 +77,23 @@ fiche:
           <div class="fr-collapse" id="accordion-106">
           <div class="fr-mb-0">
           <ul>
-            <li>Nom de naissance<sup>*</sup>, nom d'usage, prénoms<sup>1</sup>, sexe<sup>*</sup>, date de naissance de l'allocataire<sup>**</sup>&nbsp;;</li>
-            <li>Lieu de naissance&nbsp;:
+            <li>Nom de naissance<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>1</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;</li>
+            <li>Commune de naissance <em>(<a href="#poids-parametres-identification">fortement recommandé</a>)</em>&nbsp;: peut être renseignée de deux façons différentes :
             <ul>
-              <li>
-              <em>Si le lieu de naissance est en France,</em> la commune de naissance est obligatoire, elle peut être saisie de deux façons différentes :
-              <ul>
-                <li class="fr-text--sm fr-mb-0">
-                Option 1 : Code COG de la commune de naissance<sup>*</sup>. <a href="#renseigner-lieu-de-naissance">En savoir plus</a>&nbsp;;
-                </li>
-                <li class="fr-text--sm fr-mb-0">
-                Option 2 : Nom de la commune de naissance<sup>*</sup> et code du département de naissance<sup>*</sup>. Pour cette option, la date de naissance est obligatoire. <a href="#renseigner-lieu-de-naissance">En savoir plus</a>.
-                </li>
-              </ul>
-              Pour chacune des deux options ci-dessus, le code COG de la France <code>99100</code><sup>*</sup> doit également être renseigné en paramètre d'appel. Vous n'avez pas besoin de le demander à l'usager, il peut être déduit de la commune de naissance.
+              <li class="fr-text--sm fr-mb-0">
+              Option 1 : Code COG de la commune de naissance. <a href="#renseigner-lieu-de-naissance">En savoir plus</a>&nbsp;;
               </li>
-              <li class="fr-mt-2v">
-              <em>Si le lieu de naissance est à l'étranger&nbsp;:</em> code COG du pays de naissance<sup>*</sup>.
+              <li class="fr-text--sm fr-mb-0">
+              Option 2 : Nom de la commune de naissance et code du département de naissance. Pour cette option, la date de naissance est obligatoire. <a href="#renseigner-lieu-de-naissance">En savoir plus</a>.
               </li>
             </ul>
             </li>
           </ul>
           </div>
-          <span class="fr-text--xs">
-          <sup>*</sup> Obligatoire | <sup>**</sup> Obligatoire pour l'option 2 du lieu de naissance.
-          </span>
           <span class="fr-text--xs fr-m-0">
-          <sup>1</sup> Fournir plusieurs prénoms permet de limiter les risques d'homonymie mais un seul prénom peut fonctionner. Attention, l'usager doit compléter chaque prénom dans un champ distinct.
+          <sup>1</sup> Obligatoire<br>
+          <sup>2</sup> Obligatoire pour l'option 2 du lieu de naissance.<br>
+          <sup>3</sup> Fournir plusieurs prénoms permet de limiter les risques d'homonymie mais un seul prénom peut fonctionner. Attention, l'usager doit compléter chaque prénom dans un champ distinct.
           </span>
 
           </div>
@@ -193,11 +186,23 @@ fiche:
           _Voici les plafonds de rémunération pour que l'enfant soit considéré à charge, entre 2021 et 2024 :_
           ![Tableau décrivant les plafonds de rémunération de l'enfant majeur entre 2021 et 2024](<%= image_path('api_particulier/api-qf_plafond-remuneration-enfant-majeur.png') %>)
 
+      - q: <a name="poids-parametres-identification"></a> Quels paramètres ont le plus de poids dans l'algorithme d'identification ?
+        a: |+
+          L'algorithme d'identification du fournisseur de données s'appuie sur l'ensemble des paramètres d'entrée, mais certains ont un **poids plus important** :
+
+          - **Nom de naissance** ;
+          - **Année de naissance** ;
+          - **Lieu de naissance**.
+
+          Si ces trois informations sont correctement fournies, le particulier peut être identifié même si les autres paramètres comportent des erreurs. En revanche, si ces informations ne sont pas renseignées ou sont erronées, **le risque de recevoir une réponse 404** _(dossier allocataire absent)_ **augmente significativement**.
+
+          {:.fr-highlight}
+          > **Il est donc fortement recommandé de renseigner le lieu de naissance** afin de maximiser les chances d'identification du particulier.
       - q: <a name="renseigner-lieu-de-naissance"></a> Appel avec l'identité pivot, comment renseigner le lieu de naissance ?
         a: |+
-         Lorsque l'API est appelée avec l'identité pivot, pour identifier correctement le particulier, le système d'information a besoin de récupérer le lieu de naissance du particulier.
+         Lorsque l'API est appelée avec l'identité pivot, le lieu de naissance est [fortement recommandé](#poids-parametres-identification) pour identifier correctement le particulier.
 
-          - **Pour les particuliers nés en France**: le code COG pays `99100` est obigatoire. La commune de naissance est également obligatoire et peut-être renseignée via deux options différentes&nbsp;:
+          - **Pour les particuliers nés en France**: le code COG pays `99100` doit être renseigné. La commune de naissance peut être renseignée via deux options différentes&nbsp;:
 
               - *Option 1 : L'API est appelée avec le code COG commune lui-même*. Pour aider les usagers à renseigner leur code COG, consultez la publication suivante :
                 {:.fr-icon-arrow-right-line .fr-link--icon-right}
@@ -205,10 +210,10 @@ fiche:
 
               - *Option 2 : L'API est appelée avec le nom de la commune de naissance et le code du département de naissance*. La date de naissance est obligatoire car c'est elle qui permettra à l'API de faire la correspondance avec le bon code COG.
 
-          - **Pour les particuliers nés à l'étranger**: le code COG pays est obigatoire.
+          - **Pour les particuliers nés à l'étranger**: le code COG pays doit être renseigné.
 
           {:.fr-highlight}
-          > **Le code COG du pays de naissance est obligatoire pour tous les appels.** Pour simplifier le parcours des usagers, évitez de demander aux particuliers nés en France de saisir leur pays de naissance, puisque vous pouvez le paramétrer directement -code COG pays France `99100`-, dès qu'un particuloer renseigne les informations de sa commune de naissance (forcément en France).
+          > **Le code COG du pays de naissance est obligatoire pour tous les appels.** Pour simplifier le parcours des usagers, évitez de demander aux particuliers nés en France de saisir leur pays de naissance, puisque vous pouvez le paramétrer directement -code COG pays France `99100`-, dès qu'un particulier renseigne les informations de sa commune de naissance (forcément en France).
       - q: Comment connaître la caisse de rattachement (CNAF, MSA, RNCPS) en cas de 404 ?
         a: |+
           En cas de réponse 404 _(dossier allocataire absent)_, la caisse effectivement interrogée est indiquée dans le champ `meta.provider` de la réponse. Sa valeur peut être `CNAF`, `MSA` ou `RNCPS` selon la caisse de rattachement de l'allocataire.

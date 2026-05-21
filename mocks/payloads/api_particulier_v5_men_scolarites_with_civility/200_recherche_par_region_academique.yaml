@@ -1,0 +1,46 @@
+---
+description: 'Recherche par région académique'
+params:
+  nomNaissance: "DUPONT"
+  prenoms:
+    - 'LUCAS'
+  sexeEtatCivil: "M"
+  anneeDateNaissance: 2010
+  moisDateNaissance: 3
+  jourDateNaissance: 12
+  degreEtablissement: "2D"
+  codesBcnRegions:
+    - '10'
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "DUPONT",
+        "prenom": "LUCAS",
+        "sexe": "M",
+        "date_naissance": "2010-03-12"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "10310019110",
+        "libelle": "5EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0750652B",
+        "nom": "Collège Georges Brassens",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": false,
+      "echelon_bourse": null,
+      "regime_pensionnat": null
+    },
+    "links": {},
+    "meta": {}
+  }

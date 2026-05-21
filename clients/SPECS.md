@@ -202,8 +202,12 @@ All 4xx/5xx responses follow the JSON:API error envelope:
   attributed to) a specific upstream; absent on generic platform errors
   (auth, rate-limit, input validation). Clients MUST surface it verbatim on
   the exception (e.g. `error.provider` / `error.errors.first['meta']['provider']`).
-- `meta.retry_in` — when present, expressed in **seconds** (seen on 502
-  provider errors); the client MUST preserve the unit and surface it as-is.
+- `meta.retry_in` — when present, expressed in **seconds** as a numeric value
+  (integer or fractional, seen on 502 provider errors); the client MUST
+  preserve the unit and surface it as-is. Implementers beware: when the
+  retry delay feeds into a sleep/timer function, ensure the seconds-to-
+  milliseconds conversion happens exactly once — a common bug is to multiply
+  by 1000 both when computing the delay and again inside the sleep helper.
 
 Provider-scoped errors come from `AbstractGenericProviderError` /
 `AbstractSpecificProviderError` in the reference Rails app (siade) — see
@@ -313,6 +317,14 @@ be overridable per client instance (via `Configuration`). Per-call overrides
 are OPTIONAL — a language MAY expose them if idiomatic, but the default is
 client-wide only.
 
+Some HTTP primitives (notably the WHATWG `fetch` API used in Node.js 18+,
+Deno, and browsers) only expose a single `AbortController`-based timeout
+that covers the entire request lifecycle — they have no separate connect
+timeout knob. In that case the client MUST still accept `open_timeout` /
+`read_timeout` in `Configuration` for interface consistency, but MAY apply
+only the read timeout to the underlying transport. This deviation SHOULD be
+documented in the package README.
+
 On timeout, raise `TransportError` with `method`, `url`, and the underlying
 cause chained where the language supports it.
 
@@ -347,7 +359,12 @@ client.<resource>.<operation>(<path_params>, <kwargs>) → Response
   version that does not exist for the endpoint MUST raise the
   language-native argument error. Calling a version marked
   `deprecated: true` in the OpenAPI spec MUST emit a deprecation warning
-  through the language-native channel.
+  through the language-native channel (Ruby: `warn` with `uplevel: 1`;
+  Node.js: `process.emitWarning` with type `'DeprecationWarning'`;
+  Python: `warnings.warn` with `DeprecationWarning`). The message MUST
+  include the full path template (e.g. `/v3/insee/sirene/etablissements/{siret}`)
+  and the method name (e.g. `#etablissements`) so the caller can identify
+  which call to migrate.
 
 Example (Ruby, normative for other languages' idiomatic translation):
 
@@ -390,10 +407,19 @@ OpenAPI declares array query parameters with a trailing `[]` in the name
 ```
 
 The client MUST produce exactly that encoding — **one** pair of brackets per
-element, never `prenoms[][]=Jean`. When the HTTP library being used appends
-`[]` automatically for array values (e.g. Ruby's Faraday), the scaffolder
-MUST strip the trailing `[]` from the OpenAPI name before handing the value
-to the library. When it does not, the `[]` stays on the key.
+element, never `prenoms[][]=Jean`. The wire key is always `key[]`; how that
+is achieved depends on the HTTP library:
+
+| HTTP library | Array behavior | Scaffolder action |
+|---|---|---|
+| Ruby Faraday | Auto-appends `[]` to array values | Strip `[]` from OpenAPI name |
+| Node.js `URLSearchParams` | Sends the key as-is | Keep `[]` on the key, call `append('key[]', v)` per element |
+| Python `requests` / `httpx` | Auto-appends `[]` with `params={'key': [v1, v2]}` | Strip `[]` from OpenAPI name |
+| PHP Guzzle | Uses `key[0]=v1&key[1]=v2` by default | Build query string manually with `key[]=v` |
+
+When in doubt, generate a test that asserts the wire format matches
+`?key[]=v1&key[]=v2` exactly — bracket handling is the #1 source of
+silent serialization bugs across language ports.
 
 Method signatures expose the language-idiomatic kwarg name **without** the
 brackets:
@@ -571,7 +597,11 @@ auth state).
 - **TLS verification** is mandatory and MUST NOT be disableable from public
   configuration. Custom CAs via the language's standard mechanism
   (`SSL_CERT_FILE`, truststore) are fine.
-- `nil`/`None` query parameters are **dropped** (not sent as empty).
+- `nil`/`None`/`undefined` query parameters are **dropped** (not sent as
+  empty). Importantly, per-call parameters MUST be stripped of nil values
+  **before** merging with client-level defaults — otherwise a nil override
+  silently erases the default (e.g. `{ ...defaults, ...{ recipient: undefined } }`
+  in JavaScript loses the `recipient` default).
 - `HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY` env vars are honoured (HTTP-lib
   default in every target language).
 - The client MUST NOT cache responses.

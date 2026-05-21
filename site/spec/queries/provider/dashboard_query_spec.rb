@@ -136,6 +136,7 @@ RSpec.describe Provider::DashboardQuery do
         api: 'entreprise',
         siret: '13002526500013',
         scopes: ['unites_legales_etablissements_insee'],
+        first_submitted_at: 1.day.ago,
         status: :validated)
     end
 
@@ -162,6 +163,7 @@ RSpec.describe Provider::DashboardQuery do
     it 'narrows habilitations to scopes mapped to the selected routes' do
       create(:authorization_request, :with_organization,
         intitule: 'Unites only', external_id: 'AR-UNITES', api: 'entreprise',
+        first_submitted_at: 1.day.ago,
         siret: '13002526500013', scopes: ['entreprises'], status: :validated)
 
       narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [insee_etablissements])
@@ -175,6 +177,69 @@ RSpec.describe Provider::DashboardQuery do
       expect(described_class.new(provider, foreign).habilitations).to be_empty
     end
 
+    describe 'consumers_evolution' do
+      it 'counts distinct token consumers per bucket' do
+        result = query.consumers_evolution
+        expect(result).to be_present
+        expect(result.first.keys).to contain_exactly(:bucket, :value)
+        expect(result.sum { |r| r[:value] }).to be_positive
+      end
+    end
+
+    describe 'consumers_evolution_per_endpoint' do
+      let(:provider) { APIEntreprise::Provider.find('insee') }
+      let(:filter) { Provider::DashboardFilter.new(provider, 'entreprise') }
+
+      it 'groups consumers by endpoint and bucket' do
+        token2 = create(:token, authorization_request: authorization_request)
+        create(:access_log, controller: insee_unites, status: '200', api_version: 'v3', cached: false, duration: '100', token: token2)
+
+        result = query.consumers_evolution_per_endpoint
+        expect(result).to be_present
+        expect(result.first.keys).to contain_exactly(:endpoint, :bucket, :value)
+        endpoints = result.pluck(:endpoint).uniq
+        expect(endpoints.size).to be >= 2
+      end
+    end
+
+    describe 'multiple_endpoints?' do
+      it 'returns true when no route filter applied' do
+        expect(query.multiple_endpoints?).to be true
+      end
+
+      it 'returns false when filtering on a single route' do
+        narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [insee_etablissements])
+        expect(described_class.new(provider, narrow).multiple_endpoints?).to be false
+      end
+    end
+
+    describe 'habilitations_evolution' do
+      it 'counts validated habilitations per bucket, ignoring revoked' do
+        authorization_request.update!(validated_at: 3.days.ago)
+        create(:authorization_request,
+          intitule: 'Revoked',
+          external_id: 'AR-REVOKED',
+          api: 'entreprise',
+          siret: '13002526500013',
+          scopes: ['unites_legales_etablissements_insee'],
+          validated_at: 2.days.ago,
+          status: :revoked)
+
+        result = query.habilitations_evolution
+        expect(result.sum { |r| r[:value] }).to eq(1)
+      end
+
+      it 'excludes habilitations validated outside the date range' do
+        authorization_request.update!(validated_at: 2.months.ago)
+        expect(query.habilitations_evolution).to be_empty
+      end
+    end
+
+    it 'excludes habilitations submitted outside the date range' do
+      authorization_request.update!(first_submitted_at: 2.months.ago)
+      expect(query.habilitations.pluck(:external_id)).not_to include('AR-1')
+    end
+
     it 'excludes draft and archived habilitations' do
       create(:authorization_request,
         intitule: 'Draft',
@@ -184,6 +249,89 @@ RSpec.describe Provider::DashboardQuery do
         scopes: ['unites_legales_etablissements_insee'],
         status: :draft)
       expect(query.habilitations.pluck(:external_id)).not_to include('AR-DRAFT')
+    end
+  end
+
+  describe 'consumers cumulative evolution' do
+    let(:provider) { APIParticulier::Provider.find('cnav') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+    let(:qf_controller) { 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility' }
+
+    it 'counts each token only once even if active across multiple buckets' do
+      token_a = create(:token)
+      token_b = create(:token)
+
+      Timecop.freeze(5.days.ago) do
+        create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_a)
+        create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_b)
+      end
+
+      create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_a)
+
+      cumulative = query.consumers_cumulative_evolution
+      expect(cumulative.last[:value]).to eq(2)
+    end
+
+    it 'grows when a genuinely new consumer appears in a later bucket' do
+      token_a = create(:token)
+      token_b = create(:token)
+
+      Timecop.freeze(5.days.ago) do
+        create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_a)
+      end
+
+      create(:access_log, controller: qf_controller, status: '200', api_version: 'v3', cached: false, duration: '100', token: token_b)
+
+      cumulative = query.consumers_cumulative_evolution
+      expect(cumulative.last[:value]).to eq(2)
+      expect(cumulative.first[:value]).to eq(1)
+    end
+  end
+
+  describe 'legacy endpoint aggregation' do
+    let(:provider) { APIParticulier::Provider.find('cnav') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+    let(:current_qf) { 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility' }
+    let(:legacy_qf) { 'api_particulier/v2/cnav/quotient_familial_v2' }
+
+    before do
+      create(:access_log, controller: current_qf, status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: legacy_qf, status: '200', api_version: 'v2', cached: false, duration: '200')
+    end
+
+    it 'includes v2 calls when filtering on the v3 controller' do
+      narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: [current_qf])
+      expect(described_class.new(provider, narrow).total_calls).to eq(2)
+    end
+
+    it 'labels v2 calls with the v3 endpoint title' do
+      rows = query.per_endpoint
+      titles = rows.pluck(:endpoint)
+      expect(titles.uniq.count { |t| t.include?('Quotient familial') }).to eq(1)
+    end
+
+    it 'merges v2 and v3 into a single row in per_endpoint' do
+      rows = query.per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:total]).to eq(2)
+    end
+
+    it 'merges v2 and v3 in success_per_endpoint' do
+      rows = query.success_per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:success]).to eq(2)
+    end
+
+    it 'merges v2 and v3 in avg_duration_per_endpoint' do
+      rows = query.avg_duration_per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:value]).to be_within(0.01).of(150.0)
+    end
+
+    it 'merges v2 and v3 in evolution_per_endpoint' do
+      rows = query.evolution_per_endpoint(:total).select { |r| r[:endpoint].include?('Quotient familial') }
+      expect(rows.size).to eq(1)
+      expect(rows.first[:value]).to eq(2)
     end
   end
 

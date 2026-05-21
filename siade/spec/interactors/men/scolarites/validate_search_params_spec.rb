@@ -48,8 +48,8 @@ RSpec.describe MEN::Scolarites::ValidateSearchParams, type: :validate_param_inte
     context 'with neither code_etablissement nor perimetre' do
       it { is_expected.to be_a_failure }
 
-      it 'returns code_etablissement error' do
-        error = subject.errors.find { |e| e.code == '00410' }
+      it 'returns critere_recherche_manquant error' do
+        error = subject.errors.find { |e| e.code == '00415' }
         expect(error).to be_present
       end
     end

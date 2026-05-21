@@ -10,7 +10,8 @@ des specs OpenAPI versionnées dans [`commons/swagger/`](../commons/swagger).
 |---|---|
 | [`SPECS.md`](./SPECS.md) | Contrat normatif (langage-agnostique) que tout client doit respecter : environnements, auth, enveloppe, erreurs, rate-limit, testing, packaging, checklist de conformité. |
 | `ruby/` | Implémentation de référence en Ruby. |
-| `node/`, `python/`, `php/`, `java/` | *(à venir)* — ports à produire en suivant `SPECS.md` et en s'inspirant de `ruby/`. |
+| `node/` | Client Node.js (TypeScript) — `@api-gouv-dinum/api-entreprise` + `@api-gouv-dinum/api-particulier`. Zéro deps runtime (fetch natif Node 18+). |
+| `python/`, `php/`, `java/` | *(à venir)* — ports à produire en suivant `SPECS.md` et en s'inspirant de `ruby/`. |
 
 ## L'implémentation de référence : `ruby/`
 
@@ -74,16 +75,20 @@ clients/ruby/bin/scaffold_resources --api all
 ## Porter SPECS.md dans une autre langue
 
 1. Lire `SPECS.md` du début à la fin — il est normatif et langage-agnostique.
-2. Calquer la structure ruby/ : un sous-dossier `commons/` pour le code
+2. Lire [`TESTING.md`](TESTING.md) — c'est la playbook de conformité staging
+   qui décrit quels fixtures driver, quoi asserter, et quels tests sont
+   unitaires seulement. Un nouveau client DOIT passer cette playbook avant
+   d'être déclaré SPECS-conformant.
+3. Calquer la structure ruby/ : un sous-dossier `commons/` pour le code
    partagé, un dossier par gem publié, des scripts de build qui vendorisent
    `commons/` dans chaque artefact.
-3. Couvrir la matrice de tests unitaires §12.1 (validateurs SIRET/SIREN,
+4. Couvrir la matrice de tests unitaires §12.1 (validateurs SIRET/SIREN,
    configuration immuable, auth strategy, enveloppe, mapping d'erreurs,
    rate-limit, retry, redaction des logs PII, signatures des resources).
-4. Couvrir les 4 cas bout-en-bout §12.2 (200, 422, 429 avec `retry_after`,
+5. Couvrir les 4 cas bout-en-bout §12.2 (200, 422, 429 avec `retry_after`,
    502 avec `meta.retry_in`) contre un stub HTTP.
-5. Publier un README avec un exemple de stub, un `CHANGELOG.md`.
-6. Cocher la checklist §20 avant merge.
+6. Publier un README avec un exemple de stub, un `CHANGELOG.md`.
+7. Cocher la checklist §20 avant merge.
 
 ## CI
 

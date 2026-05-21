@@ -1,5 +1,5 @@
 ---
-description: 'Élève non boursier'
+description: 'Élève non boursier - recherche par code établissement'
 params:
   nomNaissance: "ROBERT"
   prenoms:

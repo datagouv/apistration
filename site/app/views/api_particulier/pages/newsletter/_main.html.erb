@@ -1,7 +1,7 @@
 <section id="section-newsletter" class="fr-background-default-white fr-pt-6w">
   <div class="fr-container">
     <div class="fr-grid-row">
-      <div class="fr-col-12">
+      <div class="fr-col-xs-12 fr-col-sm-12 fr-col-md-6 fr-col-lg-6 fr-col-xl-6">
         <h3 class="fr-h4"><%= t('.newsletter_title').html_safe %></h3>
         <p><%= t('.newsletter_description').html_safe %></p>
         <div class="newsletter-iframe-container">
@@ -9,6 +9,15 @@
 
           <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
         </div>
+      </div>
+      <div class="fr-col-xs-12 fr-col-sm-12 fr-col-md-5 fr-col-lg-5 fr-col-xl-5 fr-col-offset-md-1 fr-col-offset-lg-1 fr-col-offset-xl-1">
+        <h3 class="fr-h4"><%= t('.operations_title').html_safe %></h3>
+        <p><%= t('.operations_description').html_safe %></p>
+        <a href="https://status.particulier.api.gouv.fr/subscribe/email" class="fr-btn fr-btn--secondary fr-mb-8v" target="_blank"><%= t('.operations_button') %></a>
+
+        <h3 class="fr-h4"><%= t('.changelog_title').html_safe %></h3>
+        <p><%= t('.changelog_description').html_safe %></p>
+        <a href="<%= changelogs_path %>" class="fr-btn fr-btn--secondary fr-mb-8v"><%= t('.changelog_button') %></a>
       </div>
     </div>
   </div>

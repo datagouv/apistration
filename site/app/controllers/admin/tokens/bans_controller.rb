@@ -13,11 +13,11 @@ class Admin::Tokens::BansController < AdminController
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params.expect(:user_id))
   end
 
   def set_token
-    @token = Token.find(params[:token_id])
+    @token = Token.find(params.expect(:token_id))
   end
 
   def ban_params

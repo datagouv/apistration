@@ -1,4 +1,4 @@
-<%# locals: (title:, series:, unit: nil) -%>
+<%# locals: (title:, series:, unit: nil, downloadable: true) -%>
 <%# Each series: { label:, points: [[x, y], ...] }. Callers must align points
     positionally across series (same x-axis sequence in the same order); we
     never key by formatted label so colliding labels (e.g. "05/05" two years
@@ -10,12 +10,24 @@
   y = series.map { |s| s[:points].map(&:last) }
   names = series.map { |s| s[:label] }
 %>
-<figure class="fr-mb-3w">
-  <figcaption class="fr-text--lead"><%= title %></figcaption>
-  <line-chart
-    x="<%= x.to_json %>"
-    y="<%= y.to_json %>"
-    name="<%= names.to_json %>"
-    <% if unit %>unit-tooltip="<%= unit %>"<% end %>>
-  </line-chart>
+<figure class="fr-mb-3w" data-controller="chart-download" data-chart-download-title-value="<%= title %>">
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <figcaption class="fr-text--lead"><%= title %></figcaption>
+    <% if downloadable %>
+      <a href="#" role="button"
+         class="fr-link fr-link--download fr-link--sm"
+         data-action="chart-download#download">
+        Télécharger
+        <span class="fr-link__detail">CSV</span>
+      </a>
+    <% end %>
+  </div>
+  <div data-chart-download-target="chart">
+    <line-chart
+      x="<%= x.to_json %>"
+      y="<%= y.to_json %>"
+      name="<%= names.to_json %>"
+      <% if unit %>unit-tooltip="<%= unit %>"<% end %>>
+    </line-chart>
+  </div>
 </figure>

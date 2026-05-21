@@ -1,18 +1,30 @@
-<%# locals: (title:, categories:, series:, unit: nil, palette: nil, stacked: false) -%>
+<%# locals: (title:, categories:, series:, unit: nil, palette: nil, stacked: false, downloadable: true) -%>
 <%# Each series: { label:, values: [...] } aligned with categories. -%>
 <%
   x = [categories.map(&:to_s)]
   y = series.map { |s| s[:values] }
   names = series.map { |s| s[:label] }
 %>
-<figure class="fr-mb-3w">
-  <figcaption class="fr-text--lead"><%= title %></figcaption>
-  <bar-chart
-    x="<%= x.to_json %>"
-    y="<%= y.to_json %>"
-    name="<%= names.to_json %>"
-    <% if unit %>unit-tooltip="<%= unit %>"<% end %>
-    <% if palette %>selected-palette="<%= palette %>"<% end %>
-    <%= 'stacked="true"' if stacked %>>
-  </bar-chart>
+<figure class="fr-mb-3w" data-controller="chart-download" data-chart-download-title-value="<%= title %>">
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <figcaption class="fr-text--lead"><%= title %></figcaption>
+    <% if downloadable %>
+      <a href="#" role="button"
+         class="fr-link fr-link--download fr-link--sm"
+         data-action="chart-download#download">
+        Télécharger
+        <span class="fr-link__detail">CSV</span>
+      </a>
+    <% end %>
+  </div>
+  <div data-chart-download-target="chart">
+    <bar-chart
+      x="<%= x.to_json %>"
+      y="<%= y.to_json %>"
+      name="<%= names.to_json %>"
+      <% if unit %>unit-tooltip="<%= unit %>"<% end %>
+      <% if palette %>selected-palette="<%= palette %>"<% end %>
+      <%= 'stacked="true"' if stacked %>>
+    </bar-chart>
+  </div>
 </figure>

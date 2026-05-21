@@ -8,7 +8,7 @@ class APIEntreprise::DownloadAttestationsController < APIEntreprise::Authenticat
 
   # rubocop:disable Metrics/AbcSize
   def create
-    token = Token.find(params[:token_id])
+    token = Token.find(params.expect(:token_id))
     @attestation_facade = EntrepriseWithAttestationsFacade.new(token:, siren: params[:siren])
 
     @attestation_facade.perform

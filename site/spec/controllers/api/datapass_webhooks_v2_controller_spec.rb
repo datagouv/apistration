@@ -35,7 +35,7 @@ RSpec.describe API::DatapassWebhooksV2Controller do
         subject
 
         expect(response).to have_http_status(:unauthorized)
-        expect(JSON.parse(response.body)).to eq({
+        expect(response.parsed_body).to eq({
           'error' => 'Unauthorized'
         })
       end
@@ -100,7 +100,7 @@ RSpec.describe API::DatapassWebhooksV2Controller do
           it 'renders a json with a token id' do
             subject
 
-            expect(JSON.parse(response.body)['token_id']).to eq(token_id)
+            expect(response.parsed_body['token_id']).to eq(token_id)
           end
         end
 
@@ -110,7 +110,7 @@ RSpec.describe API::DatapassWebhooksV2Controller do
           it 'renders an empty json' do
             subject
 
-            expect(JSON.parse(response.body)).to eq({})
+            expect(response.parsed_body).to eq({})
           end
         end
       end
@@ -160,7 +160,7 @@ RSpec.describe API::DatapassWebhooksV2Controller do
         it 'renders a json with a token id' do
           subject
 
-          expect(JSON.parse(response.body)['token_id']).to eq(token_id)
+          expect(response.parsed_body['token_id']).to eq(token_id)
         end
       end
     end

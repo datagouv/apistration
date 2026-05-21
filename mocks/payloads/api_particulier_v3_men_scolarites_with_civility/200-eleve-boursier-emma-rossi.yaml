@@ -1,0 +1,43 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "ROSSI"
+  prenoms:
+    - 'EMMA'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2011
+  moisDateNaissance: 3
+  jourDateNaissance: 17
+  codeEtablissement: "0131367R"
+  anneeScolaire: "2025"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom": "ROSSI",
+        "prenom": "EMMA",
+        "sexe": "F",
+        "date_naissance": "2011-03-17"
+      },
+      "module_elementaire_formation": {
+        "code_mef_stat": "20010001610",
+        "libelle": "5EME"
+      },
+      "annee_scolaire": "2025-2026",
+      "est_scolarise": true,
+      "statut_eleve": {
+        "code": "ST",
+        "libelle": "Scolaire"
+      },
+      "etablissement": {
+        "code_uai": "0131367R",
+        "nom": "Collège Saint-Louis",
+        "code_ministere_tutelle": "06"
+      },
+      "est_boursier": true,
+      "echelon_bourse": 2
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -51,7 +51,7 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
       return
     end
 
-    user = User.find_by(email: params[:email]&.downcase)
+    user = User.find_by(email: params[:email]&.downcase) # rubocop:disable Rails/StrongParametersExpect
 
     if user
       sign_in_and_redirect(user)

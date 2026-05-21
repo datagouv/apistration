@@ -25,6 +25,6 @@ class APIEntreprise::EndpointsController < APIEntrepriseController
   private
 
   def extract_endpoint
-    @endpoint = APIEntreprise::Endpoint.find(params[:uid])
+    @endpoint = APIEntreprise::Endpoint.find(params.expect(:uid))
   end
 end

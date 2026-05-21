@@ -322,6 +322,10 @@
   title: 'Entité non traitable'
   detail: "Les valeurs du périmètre sont invalides: doit être un tableau non vide"
 
+- code: '00415'
+  title: 'Entité non traitable'
+  detail: "Au moins un critère de recherche géographique est requis: renseignez soit le paramètre codeEtablissement, soit un périmètre géographique (codesBcnDepartements ou codesBcnRegions avec degreEtablissement)"
+
 - code: '00416'
   title: 'Entité non traitable'
   detail: "Le code département BCN MEN est invalide: valeur non reconnue"

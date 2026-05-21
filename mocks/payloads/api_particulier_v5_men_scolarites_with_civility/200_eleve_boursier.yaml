@@ -1,5 +1,5 @@
 ---
-description: 'Élève boursier'
+description: 'Élève boursier - recherche par code établissement'
 params:
   nomNaissance: "MARTIN"
   prenoms:

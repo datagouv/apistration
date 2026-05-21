@@ -348,7 +348,8 @@ fr:
               | Langage | Statut | Lien |
               |---|---|---|
               | Ruby | ✅ Disponible — implémentation de référence | [`clients/ruby/api_entreprise`](https://github.com/datagouv/apistration/tree/develop/clients/ruby/api_entreprise){:target="_blank"} |
-              | Node, Python, PHP, Java | 🚧 À venir | — |
+              | Node.js (TypeScript) | ✅ Disponible | [`clients/node/api-entreprise`](https://github.com/datagouv/apistration/tree/develop/clients/node/api-entreprise){:target="_blank"} |
+              | Python, PHP, Java | 🚧 À venir | — |
 
               Vous souhaitez contribuer un port dans un autre langage&nbsp;? Suivez la checklist de conformité de [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md){:target="_blank"} et inspirez-vous de l'implémentation Ruby.
 

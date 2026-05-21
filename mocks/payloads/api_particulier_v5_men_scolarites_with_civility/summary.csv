@@ -959,7 +959,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Élève boursier,"{""nomNaissance"":""MARTIN"",""prenoms"":[""EMMA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2012,""moisDateNaissance"":8,""jourDateNaissance"":15,""codeEtablissement"":""0132733A"",""anneeScolaire"":""2025""}",200,"{
+,Élève boursier - recherche par code établissement,"{""nomNaissance"":""MARTIN"",""prenoms"":[""EMMA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2012,""moisDateNaissance"":8,""jourDateNaissance"":15,""codeEtablissement"":""0132733A"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
       ""nom"": ""MARTIN"",
@@ -1025,7 +1025,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Élève non boursier,"{""nomNaissance"":""ROBERT"",""prenoms"":[""CLARA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2005,""moisDateNaissance"":9,""jourDateNaissance"":21,""codeEtablissement"":""0130039X"",""anneeScolaire"":""2025""}",200,"{
+,Élève non boursier - recherche par code établissement,"{""nomNaissance"":""ROBERT"",""prenoms"":[""CLARA""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2005,""moisDateNaissance"":9,""jourDateNaissance"":21,""codeEtablissement"":""0130039X"",""anneeScolaire"":""2025""}",200,"{
   ""data"": {
     ""identite"": {
       ""nom"": ""ROBERT"",
@@ -1076,6 +1076,69 @@ Titre,Description,Paramètres,Status,Réponse
     ""etablissement"": {
       ""code_uai"": ""0130039X"",
       ""nom"": ""Lycée Saint-Charles"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null,
+    ""regime_pensionnat"": null
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Recherche par département,"{""nomNaissance"":""LEFEVRE"",""prenoms"":[""SARAH""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2014,""moisDateNaissance"":11,""jourDateNaissance"":5,""degreEtablissement"":""1D"",""codesBcnDepartements"":[""075""],""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""LEFEVRE"",
+      ""prenom"": ""SARAH"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2014-11-05""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""01110001110"",
+      ""libelle"": ""CM1""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0750001A"",
+      ""nom"": ""École élémentaire Victor Hugo"",
+      ""code_ministere_tutelle"": ""06""
+    },
+    ""est_boursier"": false,
+    ""echelon_bourse"": null,
+    ""regime_pensionnat"": {
+      ""code"": ""0"",
+      ""libelle"": ""Externe""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Recherche par région académique,"{""nomNaissance"":""DUPONT"",""prenoms"":[""LUCAS""],""sexeEtatCivil"":""M"",""anneeDateNaissance"":2010,""moisDateNaissance"":3,""jourDateNaissance"":12,""degreEtablissement"":""2D"",""codesBcnRegions"":[""10""],""anneeScolaire"":""2025""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""DUPONT"",
+      ""prenom"": ""LUCAS"",
+      ""sexe"": ""M"",
+      ""date_naissance"": ""2010-03-12""
+    },
+    ""module_elementaire_formation"": {
+      ""code_mef_stat"": ""10310019110"",
+      ""libelle"": ""5EME""
+    },
+    ""annee_scolaire"": ""2025-2026"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""etablissement"": {
+      ""code_uai"": ""0750652B"",
+      ""nom"": ""Collège Georges Brassens"",
       ""code_ministere_tutelle"": ""06""
     },
     ""est_boursier"": false,

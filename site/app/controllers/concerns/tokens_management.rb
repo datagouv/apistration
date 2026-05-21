@@ -38,7 +38,7 @@ module TokensManagement
   private
 
   def extract_token
-    @token = current_user.tokens.find(params[:id]).decorate
+    @token = current_user.tokens.find(params.expect(:id)).decorate
   end
 
   def token_wizard
