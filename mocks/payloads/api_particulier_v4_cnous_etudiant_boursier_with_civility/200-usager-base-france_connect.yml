@@ -1,0 +1,51 @@
+---
+description:
+  ## Identité connue de la base de test de France Connect
+
+  Ce cas permet de tester un appel à partir notamment des données de l'identité
+  pivot France Connect.
+
+params:
+  nomNaissance: 'MERCIER'
+  prenoms:
+    - 'PIERRE'
+  anneeDateNaissance: 1969
+  moisDateNaissance: 3
+  jourDateNaissance: 17
+  codeCogInseeCommuneNaissance: '95277'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": false,
+        "est_radie": true,
+        "date_radiation": "1990-07-01"
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "1989-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Evry",
+        "nom_etablissement": "ENSIIE"
+      },
+      "echelon_bourse": {
+        "echelon": "5",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "pierre.mercier@mail.fr",
+      "identite": {
+        "nom": "MERCIER",
+        "prenoms": [
+          "PIERRE"
+        ],
+        "date_naissance": "1969-03-17",
+        "nom_commune_naissance": "Gonesse",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
