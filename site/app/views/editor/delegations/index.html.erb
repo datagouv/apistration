@@ -104,15 +104,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <% if ar.scopes.any? %>
-                    <ul class="delegation-scopes fr-text--sm">
-                      <% ar.scopes.each do |scope| %>
-                        <li><%= humanize_scope(scope, ar.api).split('||').last.strip %></li>
-                      <% end %>
-                    </ul>
-                  <% else %>
-                    <span class="fr-text--sm fr-text-mention--grey"><%= t('.no_scopes') %></span>
-                  <% end %>
+                  <%= render 'scopes_cell', scopes: ar.scopes, api: ar.api %>
                 </td>
                 <td class="delegation-created-at">
                   <%= delegation.created_at.strftime('%d/%m/%Y') %>

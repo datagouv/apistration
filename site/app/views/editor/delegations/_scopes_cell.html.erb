@@ -1,0 +1,9 @@
+<% if scopes.any? %>
+  <ul class="delegation-scopes fr-text--sm">
+    <% scopes.each do |scope| %>
+      <li><%= humanize_scope(scope, api).split('||').last.strip %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <span class="fr-text--sm fr-text-mention--grey"><%= t('editor.delegations.index.no_scopes') %></span>
+<% end %>
