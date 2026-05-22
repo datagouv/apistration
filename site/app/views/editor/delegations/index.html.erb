@@ -56,17 +56,34 @@
           </caption>
           <thead>
             <tr>
+              <th scope="col"><%= t('.table.delegation_id') %></th>
               <th scope="col"><%= t('.table.datapass_id') %></th>
               <th scope="col"><%= t('.table.intitule') %></th>
               <th scope="col"><%= t('.table.organization') %></th>
               <th scope="col"><%= t('.table.demandeur') %></th>
               <th scope="col"><%= t('.table.status') %></th>
+              <th scope="col"><%= t('.table.scopes') %></th>
+              <th scope="col"><%= t('.table.created_at') %></th>
             </tr>
           </thead>
           <tbody>
             <% @delegations.each do |delegation| %>
               <% ar = delegation.authorization_request %>
               <tr id="<%= dom_id(delegation) %>" class="delegation">
+                <td>
+                  <div class="copy-token" data-controller="clipboard" data-clipboard-alert-message-value="<%= t('.copy_alert') %>">
+                    <code class="fr-text--sm"><%= delegation.id %></code>
+                    <input class="fr-input" type="text" readonly
+                           data-clipboard-target="source"
+                           value="<%= delegation.id %>"
+                           style="position: absolute; left: -9999px" />
+                    <button class="fr-btn fr-btn--sm fr-icon-clipboard-fill fr-btn--icon-right"
+                            type="button"
+                            data-action="click->clipboard#copy">
+                      <%= t('.table.copy_delegation_id') %>
+                    </button>
+                  </div>
+                </td>
                 <td>
                   <%= link_to "DataPass ##{ar.external_id}", "#{datapass_v2_base_url(ar.api)}/public/demandes/#{ar.public_id}", target: '_blank' %>
                 </td>
@@ -85,6 +102,12 @@
                   <% else %>
                     <p class="fr-badge fr-badge--green-emeraude"><%= t('.status_active') %></p>
                   <% end %>
+                </td>
+                <td>
+                  <%= render 'scopes_cell', scopes: ar.scopes, api: ar.api %>
+                </td>
+                <td class="delegation-created-at">
+                  <%= delegation.created_at.strftime('%d/%m/%Y') %>
                 </td>
               </tr>
             <% end %>
