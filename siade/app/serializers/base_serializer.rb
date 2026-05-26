@@ -14,7 +14,7 @@ class BaseSerializer
       self.__attributes ||= {}
 
       attrs.each do |attr|
-        self.__attributes[attr] = {
+        __attributes[attr] = {
           block: -> { data.public_send(attr) },
           if: nil
         }
@@ -23,7 +23,7 @@ class BaseSerializer
 
     def attribute(attr, options = {}, &block)
       self.__attributes ||= {}
-      self.__attributes[attr] = {
+      __attributes[attr] = {
         block: block || -> { data.public_send(attr) },
         if: options[:if]
       }
@@ -31,7 +31,7 @@ class BaseSerializer
 
     def link(attr, options = {}, &block)
       self.__links ||= {}
-      self.__links[attr] = {
+      __links[attr] = {
         block: block || -> { data.public_send(attr) },
         if: options[:if]
       }
