@@ -11,7 +11,6 @@ params:
   degreEtablissement: "2D"
   codesBcnRegions:
     - '18'
-  codeEtablissement: "0130136C"
   anneeScolaire: "2025"
 status: 200
 payload: |-
