@@ -76,7 +76,7 @@ fr:
               > ⚠️ **Les données de l’API Impôt particulier ne permettent pas de calculer les tarifs en établissement d'accueil du jeune enfant** (crèche, multi-accueil, halte-garderie…). Elles ne doivent donc pas être utilisées pour le calcul des participations familiales en Eaje. Une API spécifique est en cours de préparation.
 
               {:.fr-highlight}
-              > **Vous cherchez à simplifier la tarification des collèges ou lycées ?** Veuillez consulter le cas d'usage [Tarification cantines des collèges et lycées](<%= cas_usages_path('cantines-colleges-lycees-tarification') %>).
+              > **Vous cherchez à simplifier la tarification des collèges ou lycées ?** Veuillez consulter le cas d'usage [Tarification cantines des collèges et lycées](<%= cas_usage_path('cantines-colleges-lycees-tarification') %>).
         use_case_examples:
           title: Exemples d'applications
           anchor: 'use_case_examples'
@@ -84,9 +84,9 @@ fr:
             {:.fr-h5}
             ### Parcours de Camille et Kevin sur le démonstrateur API Particulier&nbsp;:
 
-            <button class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line" href="https://demonstrateur.particulier.api.gouv.fr/cantine/choix-personnage">
+            <a class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line" href="https://demonstrateur.particulier.api.gouv.fr/cantine/choix-personnage" target="_blank" rel="noopener">
                 Commencer la démo
-            </button>
+            </a>
 
 
             {:.fr-h5}
@@ -102,9 +102,9 @@ fr:
             {:.fr-h5}
             ### Un parent souhaite inscire son enfant à la cantine de l'école, sa commune est connectée à l'API Particulier via un back-office et va traiter son dossier&nbsp;:
 
-            1. **Étape 1&nbsp;:** L'école envoie un e-mail aux parents pour leurs demander de transmettre leur quotient familial CAF ou MSA via le [formulaire de collecte](<=% cas_usage_path('formulaire_qf') %>). _Une alternative sur place à l'école ou par e-mail est proposée car ce formulaire est disponible uniquement via FranceConnect_.
+            1. **Étape 1&nbsp;:** L'école envoie un e-mail aux parents pour leurs demander de transmettre leur quotient familial CAF ou MSA via le [formulaire de collecte](<%= cas_usage_path('modalite_formulaire_qf') %>). _Une alternative sur place à l'école ou par e-mail est proposée car ce formulaire est disponible uniquement via FranceConnect_.
 
-            2. **Étape 3&nbsp;:** Le parent se rend sur [Quotient-familial.numerique.gouv.fr](<=% cas_usage_path('formulaire_qf') %>). Il se FranceConnecte, ses données d'identité et son quotient familial récupérés grâce à FranceConnect et API Particulier sont affichés. Il valide pour envoyer ces informations à la commune.
+            2. **Étape 3&nbsp;:** Le parent se rend sur [Quotient-familial.numerique.gouv.fr](<%= cas_usage_path('modalite_formulaire_qf') %>). Il se FranceConnecte, ses données d'identité et son quotient familial récupérés grâce à FranceConnect et API Particulier sont affichés. Il valide pour envoyer ces informations à la commune.
 
                {:.fr-highlight.fr-highlight--example}
                ⚙️ **En arrière-plan** : Un appel à l'API quotient familial CAF du bouquet API Particulier est effectué au moment de la FranceConnexion du parent. Les données sont stockées dans Hubee le temps que l'éditeur de la commune les récupère et les affiche dans le back-office de la commune
@@ -256,7 +256,7 @@ fr:
 
 
               {:.fr-highlight}
-              > **Vous cherchez à simplifier la tarification des cantines du primaire ?** Veuillez consulter le cas d'usage [Tarification sociale des services municipaux à l'enfance](<%= cas_usages_path('tarification_municipale_enfance') %>).
+              > **Vous cherchez à simplifier la tarification des cantines du primaire ?** Veuillez consulter le cas d'usage [Tarification sociale des services municipaux à l'enfance](<%= cas_usage_path('tarification_municipale_enfance') %>).
         use_case_examples:
           title: Exemples d'applications
           anchor: 'use_case_examples'
@@ -264,9 +264,9 @@ fr:
             {:.fr-h5}
             ### Parcours de Camille et Kevin sur le démonstrateur API Particulier&nbsp;:
 
-            <button class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line" href="https://demonstrateur.particulier.api.gouv.fr/cantine/choix-personnage">
+            <a class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line" href="https://demonstrateur.particulier.api.gouv.fr/cantine/choix-personnage" target="_blank" rel="noopener">
                 Commencer la démo
-            </button>
+            </a>
 
             {:.fr-h5}
             ### Un parent souhaite inscrire son enfant à la cantine du lycée depuis le site de sa région connecté à l'API Particulier&nbsp;:
@@ -373,7 +373,7 @@ fr:
 
 
               {:.fr-highlight}
-              > **Vous êtes un centre communal d'action sociale (CCAS) et distribuez des aides facultatives ?** Veuillez consulter le [cas d'usage dédié aux CCAS](<%= cas_usages_path('ccas') %>).
+              > **Vous êtes un centre communal d'action sociale (CCAS) et distribuez des aides facultatives ?** Veuillez consulter le [cas d'usage dédié aux CCAS](<%= cas_usage_path('ccas') %>).
         list_api:
           content: |+
             Les API **<span style="color:#1f8d49" class="fr-icon-checkbox-circle-fill" aria-hidden="true"></span> indispensables seront précochées** par défaut dans le formulaire d'accès.
@@ -624,9 +624,9 @@ fr:
             {:.fr-h5}
             ### Parcours de Nicolas et Juilette sur le démonstrateur API Particulier&nbsp;:
 
-            <button class="fr-btn" href="https://api-particulier-demonstrateur.osc-secnum-fr1.scalingo.io/transport/choix-personnage">
+            <a class="fr-btn" href="https://api-particulier-demonstrateur.osc-secnum-fr1.scalingo.io/transport/choix-personnage" target="_blank" rel="noopener">
                 Commencer la démo
-            </button>
+            </a>
 
             {:.fr-h5}
             ### Un usager demandeur d'emploi souhaite obtenir un titre de transport&nbsp;:
@@ -1069,59 +1069,73 @@ fr:
             ## <a name="3-fonctionnement-api-franceconnectees"></a>Fonctionnement des API FranceConnectées
 
             {:.fr-h6}
-            ### Du côté de l'usager : les boutons FranceConnect
+            ### Du côté de l'usager : le bouton FranceConnect
 
-            {:.fr-text--lg}
-            Plutôt que de renseigner ses données personnelles dans différents champs de saisie, vos usagers auront simplement à utiliser les boutons FranceConnect pour récupérer leurs données API Particulier. L'appel aux données de l'API Particulier par le biais de FranceConnect peut se faire à deux moments différents de la démarche en ligne :
-
-             <div class="fr-grid-row fr-grid-row--gutters">
-              <div class="fr-col-md-6 fr-col-12">
-              ![Schéma illustrant les écrans que va rencontrer l'usager lors de sa récupération de données par FranceConnect](<%= image_path('api_particulier/parcours-usagers-franceconnect.png') %>)
-              <div class="fr-download fr-mb-1v">
-              <a href="<%= image_path('api_particulier/parcours-usagers-franceconnect.png') %>" download class="fr-download__link">Télécharger l'image du parcours usager
-                <span class="fr-download__detail">PNG – 272 ko</span>
-              </a>
-              </div>
-              </div>
-              <div class="fr-col-12 fr-col-md-6">
-              <p class="fr-text--lg">
-              **Au moment de la connexion** :
-              </p>
-              <button class="fr-connect fr-mt-2w">
+            <button class="fr-connect fr-mt-2w">
                 <span class="fr-connect__login">S’identifier avec</span>
                 <span class="fr-connect__brand">FranceConnect</span>
-              </button>En cliquant sur le bouton _"S'identifier avec FranceConnect"_, les données API Particulier nécessaires sont téléchargées en parallèle de l'authentification de l'usager.<br/>
-              <div class="fr-highlight">
-              <p class="fr-text--sm">
-              ℹ️ L'utilisation de la modalité d'appel FranceConnect pour récupérer les données de l'API Particulier n'oblige pas votre service à utiliser FranceConnect comme mode d'identification de vos comptes utilisateurs. Vous pourrez alors utiliser le second bouton ci-contre.
-              </p>
-              </div>
-              <br/>
-              <p class="fr-text--lg">
-              **Au cours de la démarche, après la connexion** :
-              </p>
-              <button class="fr-connect fr-mt-2w">
-                <span class="fr-connect__login">Récupérer ses données avec</span>
-                <span class="fr-connect__brand">FranceConnect</span>
-              </button>
-              <ul>
-              <li><i>Si l'usager s'est déjà FranceConnecté en début de démarche</i> et a besoin d'informations supplémentaires à celles récupérées au moment de sa FranceConnection, il peut relancer un appel à API Particulier en cliquant sur le bouton <i>"Récupérer mes données avec FranceConnect"</i>.<br/>
+            </button>
 
-              <p class="fr-text--sm fr-mt-2v">
-              ⏳ Si cette nouvelle demande de donnée intervient dans les 30 minutes après la première FranceConnexion, l'usager n'aura pas à se reconnecter. Il n'aura qu'une seule étape à faire : confirmer le transfert de ses données.
-              </p>
+            {:.fr-text--lg}
+            Plutôt que de renseigner ses données personnelles dans différents champs de saisie, vos usagers auront simplement à utiliser le bouton FranceConnect pour récupérer leurs données API Particulier. L'appel aux données de l'API Particulier par le biais de FranceConnect peut se faire à deux moments différents de la démarche en ligne :
 
-              </li>
-              <li>
-              <i>Si l'usager utilise un autre mode de connexion que FranceConnect</i>, l'usager effectuera les étapes d'authentification FranceConnect pour débloquer la récupération des documents. Votre service devra s'assurer de l'adéquation entre le compte de l'usager et FranceConnect.</li>
-              </ul>
-              </div>
+            <div class="fr-grid-row fr-grid-row--gutters">
+            <div class="fr-col-md-6 fr-col-12">
+            <img src="<%= image_path('api_particulier/parcours-usagers-franceconnect.png') %>" alt="Schéma illustrant les écrans que va rencontrer l'usager lors de sa récupération de données par FranceConnect" class="fr-responsive-img" />
+            <div class="fr-download fr-mb-1v">
+            <a href="<%= image_path('api_particulier/parcours-usagers-franceconnect.png') %>" download class="fr-download__link">
+            Télécharger l'image du parcours usager
+            <span class="fr-download__detail">PNG – 272 ko</span>
+            </a>
+            </div>
+            </div>
+            <div class="fr-col-12 fr-col-md-6">
+            <ol>
+            <li>
+            <p class="fr-text--lg">
+            <strong>Au moment de la connexion :</strong>
+            </p>
+            <p>
+            En cliquant sur le bouton
+            <em>"S'identifier avec FranceConnect"</em>, les données API
+            Particulier nécessaires sont téléchargées en parallèle de
+            l'authentification de l'usager.
+            </p>
+            </li>
+            <li>
+            <p class="fr-text--lg">
+            <strong>Au cours de la démarche, après la connexion :</strong>
+            </p>
+            <ul>
+            <li>
+            <em>Si l'usager s'est déjà FranceConnecté en début de démarche</em>
+            et a besoin d'informations supplémentaires à celles récupérées au
+            moment de sa FranceConnection, un appel peut être relancé l'API
+            Particulier.
+            <br />
+            <p class="fr-text--sm fr-mt-2v">
+            ⏳ Si cette nouvelle demande de données intervient dans les 30
+            minutes après la première FranceConnexion, l'usager n'aura pas à
+            se reconnecter. Il n'aura qu'une seule étape à faire : confirmer
+            le transfert de ses données.
+            </p>
+            </li>
+            <li>
+            <em>Si l'usager utilise un autre mode de connexion que FranceConnect</em>,
+            l'usager effectuera les étapes d'authentification FranceConnect
+            pour débloquer la récupération des documents. Votre service devra
+            s'assurer de l'adéquation entre le compte de l'usager et
+            FranceConnect.
+            </li>
+            </ul>
+            </li>
+            </ol>
+            </div>
             </div>
 
 
-
             <br/>
-            📟 **D'un point de vue technique**, ces deux boutons sont identiques et nécessitent la même intégration. [Consulter la documentation technique de FranceConnect](https://docs.partenaires.franceconnect.gouv.fr/fs/){:target="_blank""}
+            📟 **D'un point de vue technique**, ces deux boutons sont identiques et nécessitent la même intégration. [Consulter la documentation technique de FranceConnect](https://docs.partenaires.franceconnect.gouv.fr/fs/){:target="_blank"}
 
 
             {:.fr-h6}
