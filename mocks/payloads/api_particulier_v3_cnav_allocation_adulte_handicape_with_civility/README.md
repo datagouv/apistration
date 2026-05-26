@@ -1,4 +1,57 @@
 # [Identité] Statut allocation adulte handicapé (AAH)
+* [200-usager-base-france_connect.yml](200-usager-base-france_connect.yml)
+
+  Status `200`
+
+  Ce cas permet de tester un appel à partir notamment des données de l'identité pivot France Connect.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MERCIER",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateNaissance": 1969,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 17,
+    "codeCogInseeCommuneNaissance": "95277",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "date_debut_droit": "2022-11-29"
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/identite?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [200_beneficiaire.yaml](200_beneficiaire.yaml)
 
   Status `200`

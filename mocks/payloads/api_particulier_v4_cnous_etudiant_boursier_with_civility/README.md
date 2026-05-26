@@ -1,4 +1,81 @@
 # [Identité] Statut étudiant boursier
+* [200-usager-base-france_connect.yml](200-usager-base-france_connect.yml)
+
+  Status `200`
+
+  Ce cas permet de tester un appel à partir notamment des données de l'identité pivot France Connect.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MERCIER",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateNaissance": 1969,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 17,
+    "codeCogInseeCommuneNaissance": "95277",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": false,
+        "est_radie": true,
+        "date_radiation": "1990-07-01"
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "1989-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Evry",
+        "nom_etablissement": "ENSIIE"
+      },
+      "echelon_bourse": {
+        "echelon": "5",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "pierre.mercier@mail.fr",
+      "identite": {
+        "nom": "MERCIER",
+        "prenoms": [
+          "PIERRE"
+        ],
+        "date_naissance": "1969-03-17",
+        "nom_commune_naissance": "Gonesse",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/identite?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [200_boursier.yaml](200_boursier.yaml)
 
   Status `200`
