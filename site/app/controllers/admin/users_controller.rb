@@ -45,7 +45,7 @@ class Admin::UsersController < AdminController
 
   def user_update_params
     update_params = user_params
-    update_params[:provider_uids] = [] unless params[:user]&.key?(:provider_uids) # rubocop:disable Rails/StrongParametersExpect
+    update_params[:provider_uids] = [] unless params[:user]&.key?(:provider_uids)
     update_params
   end
 
