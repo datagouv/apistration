@@ -1,0 +1,140 @@
+---
+openapi: 3.0.1
+info:
+  title: API Éditeur — API Entreprise
+  version: v1
+  description: |
+    API destinée aux SaaS éditeurs intégrant API Entreprise via le système
+    de délégation. Permet à un éditeur authentifié par token éditeur de
+    récupérer la liste de ses délégations, puis de mapper `siret → id`
+    pour passer `X-Delegation-Id` lors des appels métier vers
+    `entreprise.api.gouv.fr`.
+paths:
+  "/editeur/api/v1/delegations":
+    get:
+      summary: Lister les délégations de l’éditeur
+      tags:
+      - Délégations
+      security:
+      - bearer_editor_token: []
+      description: |
+        Renvoie la liste des délégations dont dispose l'éditeur authentifié
+        sur l'API courante (entreprise ou particulier, déterminée par le
+        host appelé). Inclut les délégations actives et révoquées.
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+        required: false
+        description: Page courante (défaut 1).
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        required: false
+        description: Nombre d’entrées par page (défaut 50, max 100).
+      responses:
+        '200':
+          description: Liste des délégations
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - data
+                - meta
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/Delegation"
+                  meta:
+                    "$ref": "#/components/schemas/PaginationMeta"
+        '401':
+          description: Token éditeur invalide
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UnauthorizedError"
+components:
+  securitySchemes:
+    bearer_editor_token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT éditeur (cf. dashboard éditeur > onglet 'Jetons de délégation').
+  schemas:
+    Delegation:
+      type: object
+      required:
+      - id
+      - authorization_request_id
+      - siret
+      - intitule
+      - scopes
+      - statut
+      - created_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Identifiant unique de la délégation (UUID). À passer dans l'en-tête
+            `X-Delegation-Id` sur les appels métier.
+          example: 0d3e1c40-66cb-4d54-9c44-5b53d1c1de5d
+        authorization_request_id:
+          type: integer
+          description: Identifiant DataPass de la demande d’habilitation associée.
+          example: 1234
+        siret:
+          type: string
+          description: SIRET de l'administration cliente.
+          example: '13002526500013'
+        intitule:
+          type: string
+          description: Intitulé fonctionnel de l'habilitation tel que renseigné dans
+            DataPass.
+        scopes:
+          type: array
+          items:
+            type: string
+          description: Liste des scopes API techniquement accessibles via cette délégation.
+        statut:
+          type: string
+          enum:
+          - active
+          - revoked
+          description: Statut courant de la délégation.
+        created_at:
+          type: string
+          format: date-time
+          description: Date de création de la délégation (ISO 8601 UTC).
+    PaginationMeta:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        per_page:
+          type: integer
+          example: 50
+        total:
+          type: integer
+          example: 137
+        total_pages:
+          type: integer
+          example: 3
+    UnauthorizedError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Unauthorized
+servers:
+- url: https://entreprise.api.gouv.fr
+  description: Production — API Entreprise
+- url: https://particulier.api.gouv.fr
+  description: Production — API Particulier

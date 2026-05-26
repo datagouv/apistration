@@ -42,6 +42,8 @@ gem 'rails-i18n'
 gem 'ransack'
 gem 'redis'
 gem 'rest-client'
+gem 'rswag-api'
+gem 'rswag-ui'
 gem 'sass-rails', '>= 6'
 gem 'scenic'
 gem 'sentry-rails'
@@ -93,6 +95,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-rails', '8.0.4'
   gem 'rspec-retry'
+  gem 'rswag-specs'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false

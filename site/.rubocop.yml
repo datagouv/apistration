@@ -166,6 +166,15 @@ RSpec/DescribedClass:
 RSpec/EmptyExampleGroup:
   Exclude:
     - "spec/requests/**/*"
+    - "spec/integration/**/*"
+
+RSpec/VariableName:
+  Exclude:
+    - "spec/integration/**/*"
+
+RSpec/ScatteredSetup:
+  Exclude:
+    - "spec/integration/**/*"
 
 RSpec/ExampleLength:
   Enabled: false
@@ -189,6 +198,8 @@ RSpec/RepeatedDescription:
   Enabled: false
 
 RSpec/DescribeClass:
+  Exclude:
+    - "spec/integration/**/*"
   IgnoredMetadata:
     type:
       - acceptance

@@ -50,3 +50,6 @@ sandbox/*
 # dotenv local overrides (per-worktree DB configuration, etc.)
 /.env.local
 /.env.*.local
+
+# Swagger regeneration check workspace (bin/test_swagger.sh).
+/swagger/versionned/
