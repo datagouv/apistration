@@ -22,7 +22,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132634T",
     "anneeScolaire": "2025"
   }
   ```
@@ -74,7 +73,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENALI' -d 'prenoms[]=AMINE' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2015' -d 'moisDateNaissance=12' -d 'jourDateNaissance=11' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132634T' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENALI' -d 'prenoms[]=AMINE' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2015' -d 'moisDateNaissance=12' -d 'jourDateNaissance=11' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -103,7 +102,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131328Y",
     "anneeScolaire": "2025"
   }
   ```
@@ -155,7 +153,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=RIVIERE' -d 'prenoms[]=CHLOE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=7' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131328Y' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=RIVIERE' -d 'prenoms[]=CHLOE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=7' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -184,7 +182,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132733A",
     "anneeScolaire": "2025"
   }
   ```
@@ -236,7 +233,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=ELISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2014' -d 'moisDateNaissance=9' -d 'jourDateNaissance=27' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132733A' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=ELISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2014' -d 'moisDateNaissance=9' -d 'jourDateNaissance=27' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -265,7 +262,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131367R",
     "anneeScolaire": "2025"
   }
   ```
@@ -317,7 +313,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROSSI' -d 'prenoms[]=EMMA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131367R' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROSSI' -d 'prenoms[]=EMMA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -346,7 +342,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132634T",
     "anneeScolaire": "2025"
   }
   ```
@@ -398,7 +393,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENSAID' -d 'prenoms[]=ILYES' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=3' -d 'jourDateNaissance=25' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132634T' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENSAID' -d 'prenoms[]=ILYES' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=3' -d 'jourDateNaissance=25' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -427,7 +422,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131705H",
     "anneeScolaire": "2025"
   }
   ```
@@ -479,7 +473,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERNANDES' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=5' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131705H' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERNANDES' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=5' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -508,7 +502,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130032P",
     "anneeScolaire": "2025"
   }
   ```
@@ -560,7 +553,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROMERO' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=5' -d 'jourDateNaissance=30' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130032P' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROMERO' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=5' -d 'jourDateNaissance=30' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -589,7 +582,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0133510V",
     "anneeScolaire": "2025"
   }
   ```
@@ -641,7 +633,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=HADDAD' -d 'prenoms[]=LEYNA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=11' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0133510V' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=HADDAD' -d 'prenoms[]=LEYNA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=11' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -670,7 +662,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130043B",
     "anneeScolaire": "2025"
   }
   ```
@@ -722,7 +713,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=LOUISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=6' -d 'jourDateNaissance=22' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130043B' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=LOUISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=6' -d 'jourDateNaissance=22' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -751,7 +742,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0133374X",
     "anneeScolaire": "2025"
   }
   ```
@@ -803,7 +793,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTINEZ' -d 'prenoms[]=LUCAS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=9' -d 'jourDateNaissance=22' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0133374X' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTINEZ' -d 'prenoms[]=LUCAS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=9' -d 'jourDateNaissance=22' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -832,7 +822,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130002G",
     "anneeScolaire": "2025"
   }
   ```
@@ -884,7 +873,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=MAXIME' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2015' -d 'moisDateNaissance=9' -d 'jourDateNaissance=1' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130002G' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=MAXIME' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2015' -d 'moisDateNaissance=9' -d 'jourDateNaissance=1' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -913,7 +902,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131593L",
     "anneeScolaire": "2025"
   }
   ```
@@ -965,7 +953,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERREIRA' -d 'prenoms[]=MAYA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2017' -d 'moisDateNaissance=12' -d 'jourDateNaissance=19' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131593L' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERREIRA' -d 'prenoms[]=MAYA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2017' -d 'moisDateNaissance=12' -d 'jourDateNaissance=19' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -994,7 +982,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131290G",
     "anneeScolaire": "2025"
   }
   ```
@@ -1046,7 +1033,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DIALLO' -d 'prenoms[]=NOUR' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=1' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131290G' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DIALLO' -d 'prenoms[]=NOUR' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=1' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1075,7 +1062,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132634T",
     "anneeScolaire": "2025"
   }
   ```
@@ -1127,7 +1113,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=AITALI' -d 'prenoms[]=SAMY' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=8' -d 'jourDateNaissance=28' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132634T' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=AITALI' -d 'prenoms[]=SAMY' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=8' -d 'jourDateNaissance=28' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1156,7 +1142,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132409Y",
     "anneeScolaire": "2025"
   }
   ```
@@ -1208,7 +1193,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=SARAH' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132409Y' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=SARAH' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1237,7 +1222,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130032P",
     "anneeScolaire": "2025"
   }
   ```
@@ -1289,7 +1273,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=SAIDI' -d 'prenoms[]=YANIS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=7' -d 'jourDateNaissance=10' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130032P' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SAIDI' -d 'prenoms[]=YANIS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=7' -d 'jourDateNaissance=10' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1318,7 +1302,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132733A",
     "anneeScolaire": "2025"
   }
   ```
@@ -1370,7 +1353,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=CARON' -d 'prenoms[]=YASSINE' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132733A' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CARON' -d 'prenoms[]=YASSINE' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1399,7 +1382,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132326H",
     "anneeScolaire": "2025"
   }
   ```
@@ -1451,7 +1433,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=SAYDOU' -d 'prenoms[]=ADAM' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2017' -d 'moisDateNaissance=6' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132326H' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SAYDOU' -d 'prenoms[]=ADAM' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2017' -d 'moisDateNaissance=6' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1480,7 +1462,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131367R",
     "anneeScolaire": "2025"
   }
   ```
@@ -1532,7 +1513,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=PEREZ' -d 'prenoms[]=ENZO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=6' -d 'jourDateNaissance=16' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131367R' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=PEREZ' -d 'prenoms[]=ENZO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=6' -d 'jourDateNaissance=16' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1561,7 +1542,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131705H",
     "anneeScolaire": "2025"
   }
   ```
@@ -1613,7 +1593,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DIALLO' -d 'prenoms[]=FELIXIA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=9' -d 'jourDateNaissance=30' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131705H' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DIALLO' -d 'prenoms[]=FELIXIA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=9' -d 'jourDateNaissance=30' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1642,7 +1622,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130136C",
     "anneeScolaire": "2025"
   }
   ```
@@ -1694,7 +1673,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEROY' -d 'prenoms[]=HUGO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2008' -d 'moisDateNaissance=6' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130136C' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEROY' -d 'prenoms[]=HUGO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2008' -d 'moisDateNaissance=6' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1723,7 +1702,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130002G",
     "anneeScolaire": "2025"
   }
   ```
@@ -1775,7 +1753,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130002G' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=INES' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1804,7 +1782,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130040Y",
     "anneeScolaire": "2025"
   }
   ```
@@ -1856,7 +1833,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTINE' -d 'prenoms[]=JUSTINE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130040Y' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTINE' -d 'prenoms[]=JUSTINE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1885,7 +1862,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0133034C",
     "anneeScolaire": "2025"
   }
   ```
@@ -1937,7 +1913,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENZARTE' -d 'prenoms[]=LANA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2018' -d 'moisDateNaissance=11' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0133034C' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BENZARTE' -d 'prenoms[]=LANA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2018' -d 'moisDateNaissance=11' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -1966,7 +1942,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132409Y",
     "anneeScolaire": "2025"
   }
   ```
@@ -2018,7 +1993,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=LEA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2018' -d 'moisDateNaissance=11' -d 'jourDateNaissance=25' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132409Y' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=LEA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2018' -d 'moisDateNaissance=11' -d 'jourDateNaissance=25' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2047,7 +2022,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131705H",
     "anneeScolaire": "2025"
   }
   ```
@@ -2099,7 +2073,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=LOU' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=10' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131705H' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=LOU' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=10' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2128,7 +2102,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132327J",
     "anneeScolaire": "2025"
   }
   ```
@@ -2180,7 +2153,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=PETIT' -d 'prenoms[]=LOUIS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=4' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132327J' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=PETIT' -d 'prenoms[]=LOUIS' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=4' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2209,7 +2182,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131367R",
     "anneeScolaire": "2025"
   }
   ```
@@ -2261,7 +2233,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROSSI' -d 'prenoms[]=LUCA' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131367R' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROSSI' -d 'prenoms[]=LUCA' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2290,7 +2262,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130032P",
     "anneeScolaire": "2025"
   }
   ```
@@ -2342,7 +2313,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=GARCIA' -d 'prenoms[]=MATEO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=3' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130032P' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=GARCIA' -d 'prenoms[]=MATEO' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=3' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2371,7 +2342,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130001F",
     "anneeScolaire": "2025"
   }
   ```
@@ -2423,7 +2393,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=ELISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=9' -d 'jourDateNaissance=27' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130001F' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=ELISE' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=9' -d 'jourDateNaissance=27' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2452,7 +2422,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0133510V",
     "anneeScolaire": "2025"
   }
   ```
@@ -2504,7 +2473,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=AITALI' -d 'prenoms[]=SAMY' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=1' -d 'jourDateNaissance=21' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0133510V' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=AITALI' -d 'prenoms[]=SAMY' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=1' -d 'jourDateNaissance=21' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2533,7 +2502,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130143K",
     "anneeScolaire": "2025"
   }
   ```
@@ -2585,7 +2553,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=KHELIFI' -d 'prenoms[]=SARAH' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130143K' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=KHELIFI' -d 'prenoms[]=SARAH' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2694,7 +2662,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0132733A",
     "anneeScolaire": "2025"
   }
   ```
@@ -2749,7 +2716,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=EMMA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=8' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0132733A' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=EMMA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=8' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -2855,7 +2822,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130039X",
     "anneeScolaire": "2025"
   }
   ```
@@ -2907,7 +2873,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROBERT' -d 'prenoms[]=CLARA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=9' -d 'jourDateNaissance=21' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130039X' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=ROBERT' -d 'prenoms[]=CLARA' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=9' -d 'jourDateNaissance=21' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3099,7 +3065,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0890003V",
     "anneeScolaire": "2022"
   }
   ```
@@ -3150,7 +3115,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Martin' -d 'prenoms[]=Justine' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Martin' -d 'prenoms[]=Justine' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3239,7 +3204,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0890003V",
     "anneeScolaire": "2022"
   }
   ```
@@ -3274,7 +3238,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Martin' -d 'prenoms[]=Jerome' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Martin' -d 'prenoms[]=Jerome' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3303,7 +3267,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0890003V",
     "anneeScolaire": "2022"
   }
   ```
@@ -3338,7 +3301,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Faure' -d 'prenoms[]=Felix' -d 'sexe=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Faure' -d 'prenoms[]=Felix' -d 'sexe=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=20' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3367,7 +3330,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0921236U",
     "anneeScolaire": "2026"
   }
   ```
@@ -3418,7 +3380,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3447,7 +3409,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0921236U",
     "anneeScolaire": "2025"
   }
   ```
@@ -3498,7 +3459,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=Nouhe' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=12' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3527,7 +3488,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0941035P",
     "anneeScolaire": "2026"
   }
   ```
@@ -3578,7 +3538,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3607,7 +3567,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0941035P",
     "anneeScolaire": "2025"
   }
   ```
@@ -3658,7 +3617,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Thomas' -d 'prenoms[]=Kevin' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3687,7 +3646,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0941035P",
     "anneeScolaire": "2026"
   }
   ```
@@ -3738,7 +3696,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3767,7 +3725,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0941035P",
     "anneeScolaire": "2025"
   }
   ```
@@ -3818,7 +3775,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0941035P' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bispo-Antoinette' -d 'prenoms[]=Hanan' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3847,7 +3804,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0750611G",
     "anneeScolaire": "2026"
   }
   ```
@@ -3898,7 +3854,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -3927,7 +3883,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0750611G",
     "anneeScolaire": "2025"
   }
   ```
@@ -3978,7 +3933,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Depuis' -d 'prenoms[]=Scavi' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4007,7 +3962,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0750611G",
     "anneeScolaire": "2026"
   }
   ```
@@ -4058,7 +4012,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4087,7 +4041,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0750611G",
     "anneeScolaire": "2025"
   }
   ```
@@ -4138,7 +4091,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0750611G' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Carey' -d 'prenoms[]=Abdelhay' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4167,7 +4120,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0911028Y",
     "anneeScolaire": "2026"
   }
   ```
@@ -4218,7 +4170,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4247,7 +4199,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0911028Y",
     "anneeScolaire": "2025"
   }
   ```
@@ -4298,7 +4249,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=EL' -d 'prenoms[]=Nass' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=9' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4327,7 +4278,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130032P",
     "anneeScolaire": "2025"
   }
   ```
@@ -4379,7 +4329,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Garcia' -d 'prenoms[]=Mateo' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=3' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130032P' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Garcia' -d 'prenoms[]=Mateo' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=3' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4408,7 +4358,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0931190N",
     "anneeScolaire": "2026"
   }
   ```
@@ -4459,7 +4408,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4488,7 +4437,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0931190N",
     "anneeScolaire": "2025"
   }
   ```
@@ -4539,7 +4487,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Delin' -d 'prenoms[]=Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4568,7 +4516,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -4619,7 +4566,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4648,7 +4595,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -4699,7 +4645,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Perrier' -d 'prenoms[]=Alex' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4728,7 +4674,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -4779,7 +4724,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4808,7 +4753,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -4859,7 +4803,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bob' -d 'prenoms[]=Nassima' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=12' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4888,7 +4832,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -4939,7 +4882,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -4968,7 +4911,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5019,7 +4961,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Herve' -d 'prenoms[]=Lena' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=3' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5048,7 +4990,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -5099,7 +5040,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5128,7 +5069,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5179,7 +5119,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pereira' -d 'prenoms[]=Maoris' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=8' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5208,7 +5148,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -5259,7 +5198,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5288,7 +5227,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5339,7 +5277,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bouti' -d 'prenoms[]=Siham' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=4' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5368,7 +5306,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -5419,7 +5356,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5448,7 +5385,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5499,7 +5435,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nom' -d 'prenoms[]=Narjes' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=1' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5528,7 +5464,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -5579,7 +5514,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5608,7 +5543,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5659,7 +5593,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Boucher' -d 'prenoms[]=Gabrielle' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5688,7 +5622,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -5739,7 +5672,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5768,7 +5701,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5819,7 +5751,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lunette' -d 'prenoms[]=Zahid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=7' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5848,7 +5780,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -5899,7 +5830,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -5928,7 +5859,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -5979,7 +5909,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupr%C3%A9' -d 'prenoms[]=Hind' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=8' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6008,7 +5938,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0921236U",
     "anneeScolaire": "2026"
   }
   ```
@@ -6059,7 +5988,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6088,7 +6017,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0921236U",
     "anneeScolaire": "2025"
   }
   ```
@@ -6139,7 +6067,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0921236U' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Louki' -d 'prenoms[]=Ahmed' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=6' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6168,7 +6096,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0133510V",
     "anneeScolaire": "2025"
   }
   ```
@@ -6220,7 +6147,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nguyen' -d 'prenoms[]=Adam' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=1' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0133510V' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Nguyen' -d 'prenoms[]=Adam' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=1' -d 'jourDateNaissance=5' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6249,7 +6176,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0130022D",
     "anneeScolaire": "2025"
   }
   ```
@@ -6301,7 +6227,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Benzarte' -d 'prenoms[]=Lana' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=11' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0130022D' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Benzarte' -d 'prenoms[]=Lana' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2011' -d 'moisDateNaissance=11' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6330,7 +6256,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -6381,7 +6306,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6410,7 +6335,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -6461,7 +6385,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Caravelle' -d 'prenoms[]=Marc-Antoine' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=4' -d 'jourDateNaissance=15' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6490,7 +6414,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -6541,7 +6464,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6570,7 +6493,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -6621,7 +6543,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=De+Carvalho' -d 'prenoms[]=Alexandra' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6650,7 +6572,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131705H",
     "anneeScolaire": "2025"
   }
   ```
@@ -6702,7 +6623,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Diallo' -d 'prenoms[]=Felixia' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=9' -d 'jourDateNaissance=30' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131705H' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Diallo' -d 'prenoms[]=Felixia' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=9' -d 'jourDateNaissance=30' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6731,7 +6652,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0931190N",
     "anneeScolaire": "2026"
   }
   ```
@@ -6782,7 +6702,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6811,7 +6731,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0931190N",
     "anneeScolaire": "2025"
   }
   ```
@@ -6862,7 +6781,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupond' -d 'prenoms[]=Nicolas' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=2' -d 'jourDateNaissance=2' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6891,7 +6810,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -6942,7 +6860,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -6971,7 +6889,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -7022,7 +6939,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Hamilton' -d 'prenoms[]=Nicole' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=7' -d 'jourDateNaissance=18' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7051,7 +6968,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0131367R",
     "anneeScolaire": "2025"
   }
   ```
@@ -7103,7 +7019,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lopez' -d 'prenoms[]=Sofia' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=2' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0131367R' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lopez' -d 'prenoms[]=Sofia' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2010' -d 'moisDateNaissance=2' -d 'jourDateNaissance=14' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7132,7 +7048,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -7183,7 +7098,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7212,7 +7127,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -7263,7 +7177,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Randri' -d 'prenoms[]=Ishan' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2003' -d 'moisDateNaissance=6' -d 'jourDateNaissance=17' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7292,7 +7206,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2026"
   }
   ```
@@ -7343,7 +7256,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7372,7 +7285,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0782567S",
     "anneeScolaire": "2025"
   }
   ```
@@ -7423,7 +7335,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0782567S' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Ronaldo' -d 'prenoms[]=Marie+Davida' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2001' -d 'moisDateNaissance=5' -d 'jourDateNaissance=16' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7452,7 +7364,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0911028Y",
     "anneeScolaire": "2026"
   }
   ```
@@ -7503,7 +7414,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7532,7 +7443,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0911028Y",
     "anneeScolaire": "2025"
   }
   ```
@@ -7583,7 +7493,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0911028Y' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Sales' -d 'prenoms[]=Lisa' -d 'sexeEtatCivil=F' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=2' -d 'jourDateNaissance=12' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7612,7 +7522,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0931190N",
     "anneeScolaire": "2026"
   }
   ```
@@ -7663,7 +7572,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2026' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
@@ -7692,7 +7601,6 @@
     "codesBcnRegions": [
       "18"
     ],
-    "codeEtablissement": "0931190N",
     "anneeScolaire": "2025"
   }
   ```
@@ -7743,7 +7651,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'codeEtablissement=0931190N' -d 'anneeScolaire=2025' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Zidane' -d 'prenoms[]=Hamid' -d 'sexeEtatCivil=M' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=12' -d 'jourDateNaissance=13' -d 'degreEtablissement=2D' -d 'codesBcnRegions[]=18' -d 'anneeScolaire=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/men/scolarites/identite"
   ```
 
