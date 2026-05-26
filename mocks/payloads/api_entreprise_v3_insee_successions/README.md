@@ -86,7 +86,7 @@
       {
         "title": "Privilèges insuffisants",
         "detail": "Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /v2/privileges",
-        "code": "0100"
+        "code": "00100"
       }
     ]
   }
@@ -183,7 +183,10 @@
       {
         "title": "Erreur inconnue du fournisseur de données",
         "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
-        "code": "01999"
+        "code": "01999",
+        "meta": {
+          "provider": "INSEE"
+        }
       }
     ]
   }
@@ -230,7 +233,10 @@
       {
         "title": "Service non disponible",
         "detail": "Service du fournisseur de données temporairement indisponible ou en maintenance.",
-        "code": "01001"
+        "code": "01001",
+        "meta": {
+          "provider": "INSEE"
+        }
       }
     ]
   }
