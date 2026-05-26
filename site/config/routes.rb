@@ -38,6 +38,14 @@ Rails.application.routes.draw do
   namespace :editor, path: 'editeur' do
     resources :authorization_requests, only: %i[index], path: 'habilitations'
     resources :delegations, only: %i[index], path: 'delegations'
+
+    constraints(EditorAPIDomainConstraint.new) do
+      namespace :api, defaults: { format: :json } do
+        namespace :v1 do
+          resources :delegations, only: %i[index]
+        end
+      end
+    end
   end
 
   get '/fournisseur', to: 'provider/dashboard#index', as: :provider
