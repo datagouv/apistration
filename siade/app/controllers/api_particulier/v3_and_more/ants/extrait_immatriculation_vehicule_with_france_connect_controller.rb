@@ -1,5 +1,5 @@
 class APIParticulier::V3AndMore::ANTS::ExtraitImmatriculationVehiculeWithFranceConnectController < APIParticulier::V3AndMore::BaseController
-  include APIParticulier::FranceConnectable
+  include APIParticulier::RequiresFranceConnect
   include APIParticulier::CivilityParameters
 
   def show
