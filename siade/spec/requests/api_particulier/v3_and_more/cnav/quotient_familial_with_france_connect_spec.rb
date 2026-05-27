@@ -27,6 +27,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
         required: false
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 

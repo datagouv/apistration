@@ -13,6 +13,7 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
 

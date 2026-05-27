@@ -12,6 +12,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with FranceConnect', api
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
 

@@ -13,6 +13,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation Soutien Familial with FranceCo
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[allocation_soutien_familial] }
 
