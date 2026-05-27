@@ -69,5 +69,42 @@ RSpec.describe Civility::ValidateDateNaissance, type: :validate_param_interactor
         its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
       end
     end
+
+    context 'when date is in the future' do
+      let(:annee_date_naissance) { Date.current.year + 1 }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when year has more than 4 digits' do
+      let(:annee_date_naissance) { 20_214 }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when date is before 1900/01/01' do
+      let(:annee_date_naissance) { 1899 }
+      let(:mois_date_naissance) { 12 }
+      let(:jour_date_naissance) { 31 }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when date is today' do
+      let(:today) { Date.current }
+      let(:annee_date_naissance) { today.year }
+      let(:mois_date_naissance) { today.month }
+      let(:jour_date_naissance) { today.day }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
   end
 end
