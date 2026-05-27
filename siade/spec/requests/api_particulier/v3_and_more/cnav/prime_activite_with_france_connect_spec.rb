@@ -13,6 +13,7 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[prime_activite prime_activite_majoration] }
 

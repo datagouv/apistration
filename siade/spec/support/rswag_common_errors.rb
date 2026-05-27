@@ -33,6 +33,38 @@ module RSwagCommonErrors
     end
   end
 
+  MISSING_FC_BEARER_TOKEN_EXAMPLES = {
+    missing_france_connect_access_token_error: -> { InvalidFranceConnectAccessTokenError.new(:missing_france_connect_access_token) },
+    invalid_token_error: -> { InvalidTokenError.new },
+    expired_token_error: -> { ExpiredTokenError.new },
+    blacklisted_token_error: -> { BlacklistedTokenError.new('particulier') }
+  }.freeze
+
+  # rubocop:disable Metrics/AbcSize
+  def missing_france_connect_bearer_token_request(&block)
+    describe 'with a valid API token but no FranceConnect bearer token' do
+      let(:Authorization) { nil }
+
+      before { stub_authentication_with_jwt_user }
+
+      response '401', 'Non autorisé' do
+        block.call if block_given?
+
+        MISSING_FC_BEARER_TOKEN_EXAMPLES.each do |key, builder|
+          build_rswag_example(builder.call, key)
+        end
+
+        schema '$ref' => '#/components/schemas/Error'
+
+        run_test! do |response|
+          body = JSON.parse(response.body)
+          expect(body.dig('errors', 0, 'code')).to eq('50004')
+        end
+      end
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
+
   def forbidden_france_connect_request(&block)
     describe 'with valid mandatory params but insufficient privileges on token' do
       response '403', 'Accès interdit' do

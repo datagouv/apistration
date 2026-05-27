@@ -1,5 +1,5 @@
 class APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController < APIParticulier::V3AndMore::BaseController
-  include APIParticulier::FranceConnectable
+  include APIParticulier::RequiresFranceConnect
 
   def show
     if organizer.success?

@@ -11,6 +11,7 @@ RSpec.describe 'DSNJ: Service National With FranceConnect', api: :particulier, t
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[dsnj_statut_service_national] }
 

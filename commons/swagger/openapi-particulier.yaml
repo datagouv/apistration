@@ -106,6 +106,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Identité trouvée
           headers:
@@ -626,50 +684,6 @@ paths:
                     sont pas connus, ou ne comportent aucune information pour cet
                     appel. Veuillez vérifier que votre recherche est couverte par
                     le périmètre de l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -1332,6 +1346,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -1461,50 +1533,6 @@ paths:
                   summary: Erreur inattendue
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -2167,6 +2195,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -2309,50 +2395,6 @@ paths:
                   summary: Erreur inattendue
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -3000,6 +3042,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -3130,50 +3230,6 @@ paths:
                   summary: Erreur inattendue
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -3844,6 +3900,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -3993,50 +4107,6 @@ paths:
                   summary: Erreur inattendue
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -4846,6 +4916,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -5105,50 +5233,6 @@ paths:
                         provider: CNAV
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -5822,6 +5906,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -6110,50 +6252,6 @@ paths:
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -7067,6 +7165,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -7427,50 +7583,6 @@ paths:
                   summary: Erreur inattendue
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -8127,6 +8239,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Dossier trouvé
           headers:
@@ -8266,50 +8436,6 @@ paths:
                   summary: Erreur inattendue
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -8979,6 +9105,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Étudiant identifié
           x-operationId: api_particulier_v3_cnous_etudiant_boursier_with_france_connect
@@ -9139,50 +9323,6 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -11331,6 +11471,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Identité trouvée
           headers:
@@ -11416,50 +11614,6 @@ paths:
                     sont pas connus, ou ne comportent aucune information pour cet
                     appel. Veuillez vérifier que votre recherche est couverte par
                     le périmètre de l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -13053,6 +13207,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Identité trouvée
           headers:
@@ -13240,50 +13452,6 @@ paths:
                     sont pas connus, ou ne comportent aucune information pour cet
                     appel. Veuillez vérifier que votre recherche est couverte par
                     le périmètre de l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
@@ -15887,6 +16055,64 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '50004'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Étudiant identifié
           x-operationId: api_particulier_v3_mesri_statut_etudiant_with_france_connect
@@ -16045,50 +16271,6 @@ paths:
                         provider: MESRI
                   summary: Entité non trouvée
                   description: Aucun étudiant n'a pu être trouvé.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':

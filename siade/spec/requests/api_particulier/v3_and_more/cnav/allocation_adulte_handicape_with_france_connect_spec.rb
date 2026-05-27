@@ -15,6 +15,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation Adulte Handicape with FranceCo
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       describe 'with a FranceConnect token' do
         before do
