@@ -554,3 +554,6 @@
 
 - code: '50003'
   detail: "Le jeton d'accès ne possède pas les données pivot requises pour effectuer cet appel."
+
+- code: '50004'
+  detail: "Le jeton d'accès FranceConnect est manquant. Cet endpoint requiert un jeton d'accès FranceConnect transmis via l'en-tête Authorization: Bearer."

@@ -18,7 +18,8 @@ class InvalidFranceConnectAccessTokenError < UnauthorizedError
     {
       malformed_token: '50001',
       not_found_or_expired: '50002',
-      missing_hub_identity_scope: '50003'
+      missing_hub_identity_scope: '50003',
+      missing_france_connect_access_token: '50004'
     }.fetch(type) do
       raise KeyError, "#{type} is not a valid field name"
     end
