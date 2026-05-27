@@ -22,6 +22,15 @@ class Civility::ValidateDateNaissance < ValidateParamInteractor
   end
 
   def valid_date?
-    Date.valid_date?(param(:annee_date_naissance).to_i, param(:mois_date_naissance).to_i, param(:jour_date_naissance).to_i)
+    Date.valid_date?(param(:annee_date_naissance).to_i, param(:mois_date_naissance).to_i, param(:jour_date_naissance).to_i) &&
+      birthday_date_within_reasonable_range?
+  end
+
+  def birthday_date_within_reasonable_range?
+    (Date.new(1900, 1, 1)..Date.current).cover?(birthday_date)
+  end
+
+  def birthday_date
+    Date.new(param(:annee_date_naissance).to_i, param(:mois_date_naissance).to_i, param(:jour_date_naissance).to_i)
   end
 end
