@@ -11,7 +11,7 @@ export class FranceTravail {
   }
 
   /** Paiements versés par France Travail */
-  async indemnites(options: { version?: number; recipient?: string; identifiant?: string } = {}) {
+  async indemnites(options: { version?: number; recipient?: string; identifiant: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -25,7 +25,7 @@ export class FranceTravail {
   }
 
   /** Statut demandeur d'emploi */
-  async statut(options: { version?: number; recipient?: string; identifiant?: string } = {}) {
+  async statut(options: { version?: number; recipient?: string; identifiant: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {

@@ -28,7 +28,7 @@ export class Cnous {
   }
 
   /** [Identité] Statut étudiant boursier */
-  async etudiant_boursier_identite(options: { version?: number; recipient?: string; nom_naissance?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string; campaign_year?: string } = {}) {
+  async etudiant_boursier_identite(options: { version?: number; recipient?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string; campaign_year?: string }) {
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
       switch (resolvedVersion) {
@@ -45,7 +45,7 @@ export class Cnous {
   }
 
   /** [INE] Statut étudiant boursier */
-  async ine(options: { version?: number; recipient?: string; ine?: string; campaign_year?: string } = {}) {
+  async ine(options: { version?: number; recipient?: string; ine: string; campaign_year?: string }) {
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
       switch (resolvedVersion) {

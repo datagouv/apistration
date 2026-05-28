@@ -25,7 +25,7 @@ export class Dss {
   }
 
   /** [Identité] Statut allocation adulte handicapé (AAH) */
-  async allocation_adulte_handicape_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async allocation_adulte_handicape_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -53,7 +53,7 @@ export class Dss {
   }
 
   /** [Identité] Statut allocation d'éducation de l'enfant handicapé (AEEH) */
-  async allocation_enfant_handicape_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async allocation_enfant_handicape_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -81,7 +81,7 @@ export class Dss {
   }
 
   /** [Identité] Statut allocation de soutien familial (ASF) */
-  async allocation_soutien_familial_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async allocation_soutien_familial_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -109,7 +109,7 @@ export class Dss {
   }
 
   /** [Identité] Statut complémentaire santé solidaire (C2S) */
-  async complementaire_sante_solidaire_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async complementaire_sante_solidaire_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -137,7 +137,7 @@ export class Dss {
   }
 
   /** [Identité] Participation familiale EAJE */
-  async participation_familiale_eaje_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async participation_familiale_eaje_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -165,7 +165,7 @@ export class Dss {
   }
 
   /** [Identité] Statut prime d'activité */
-  async prime_activite_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async prime_activite_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -193,7 +193,7 @@ export class Dss {
   }
 
   /** [Identité] Quotient familial CAF & MSA */
-  async quotient_familial_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string; annee?: string; mois?: string } = {}) {
+  async quotient_familial_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string; annee?: string; mois?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -221,7 +221,7 @@ export class Dss {
   }
 
   /** [Identité] Statut revenu de solidarité active (RSA) */
-  async revenu_solidarite_active_identite(options: { version?: number; recipient?: string; nom_naissance?: string; nom_usage?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async revenu_solidarite_active_identite(options: { version?: number; recipient?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {

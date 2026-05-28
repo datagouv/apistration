@@ -25,7 +25,7 @@ export class GipMds {
   }
 
   /** [Identité] Statut service civique */
-  async service_civique_identite(options: { version?: number; recipient?: string; nom_naissance?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string } = {}) {
+  async service_civique_identite(options: { version?: number; recipient?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {

@@ -25,7 +25,7 @@ export class Dsnj {
   }
 
   /** [Identité] API Service national */
-  async service_national_identite(options: { version?: number; recipient?: string; nom_naissance?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_commune_naissance?: string; code_cog_insee_pays_naissance?: string } = {}) {
+  async service_national_identite(options: { version?: number; recipient?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil: string; code_cog_insee_commune_naissance?: string; code_cog_insee_pays_naissance: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {

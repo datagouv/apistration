@@ -11,7 +11,7 @@ export class Men {
   }
 
   /** Statut élève scolarisé et boursier */
-  async scolarites(options: { version?: number; recipient?: string; nom_naissance?: string; prenoms?: string[]; sexe_etat_civil?: string; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; code_etablissement?: string; annee_scolaire?: string; degre_etablissement?: string; codes_bcn_departements?: string[]; codes_bcn_regions?: string[] } = {}) {
+  async scolarites(options: { version?: number; recipient?: string; nom_naissance: string; prenoms: string[]; sexe_etat_civil: string; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; code_etablissement?: string; annee_scolaire: string; degre_etablissement?: string; codes_bcn_departements?: string[]; codes_bcn_regions?: string[] }) {
     const resolvedVersion = options.version ?? 5;
     const path = (() => {
       switch (resolvedVersion) {
