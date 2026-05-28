@@ -24,4 +24,12 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       headers: :any,
       methods: [:get, :options, :head]
   end
+
+  allow do
+    origins '*'
+
+    resource '/open-api*.yml',
+      headers: :any,
+      methods: [:get, :options, :head]
+  end
 end
