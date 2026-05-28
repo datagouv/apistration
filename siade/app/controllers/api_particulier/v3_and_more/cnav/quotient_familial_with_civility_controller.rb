@@ -8,7 +8,8 @@ class APIParticulier::V3AndMore::CNAV::QuotientFamilialWithCivilityController < 
   end
 
   def api_params
-    civility_parameters.merge({ mois: params[:mois], annee: params[:annee] })
+    extra = params.permit(:mois, :annee)
+    civility_parameters.merge(mois: extra[:mois], annee: extra[:annee])
   end
 
   def expires_in
