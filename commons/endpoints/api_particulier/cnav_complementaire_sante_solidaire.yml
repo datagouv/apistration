@@ -35,7 +35,7 @@ fiche:
         **Avec les données d'identité** : 
           
           {:.fr-mb-0}
-          - Nom de naissance<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>1</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;
+          - Nom de naissance<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>4</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;
           - Commune de naissance _([fortement recommandé](#poids-parametres-identification))_&nbsp;:
               - *Si le lieu de naissance est en France,* la commune de naissance peut être saisie de deux façons différentes :
                   - {:.fr-text--sm .fr-mb-0} Option 1 : Code COG de la commune de naissance. [En savoir plus](#renseigner-lieu-de-naissance)&nbsp;;
@@ -45,7 +45,8 @@ fiche:
         <span class="fr-text--xs fr-m-0">
         <sup>1</sup> Obligatoire<br>
         <sup>2</sup> Obligatoire pour l'option 2 du lieu de naissance.<br>
-        <sup>3</sup> Fournir plusieurs prénoms permet de limiter les risques d'homonymie mais un seul prénom peut fonctionner. Attention, l'usager doit compléter chaque prénom dans un champ distinct.
+        <sup>3</sup> Fournir plusieurs prénoms permet de limiter les risques d'homonymie mais un seul prénom peut fonctionner. Attention, l'usager doit compléter chaque prénom dans un champ distinct.<br>
+        <sup>4</sup> Fortement recommandé pour optimiser l'identification du particulier.
         </span>
     data:
       description: |+

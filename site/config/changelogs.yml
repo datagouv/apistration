@@ -1,3 +1,9 @@
+- date: 2026-05-28
+  scope: api_particulier
+  title: "Endpoints CNAV : paramètre sexe désormais fortement recommandé"
+  description: |
+    Sur l'ensemble des endpoints CNAV appelés avec l'identité pivot ([quotient familial](<%= endpoint_path(uid: 'cnav/quotient_familial') %>), [AAH](<%= endpoint_path(uid: 'cnav/allocation_adulte_handicape') %>), [ASF](<%= endpoint_path(uid: 'cnav/allocation_soutien_familial') %>), [RSA](<%= endpoint_path(uid: 'cnav/revenu_solidarite_active') %>), [prime d'activité](<%= endpoint_path(uid: 'cnav/prime_activite') %>), [C2S](<%= endpoint_path(uid: 'cnav/complementaire_sante_solidaire') %>), [AEEH](<%= endpoint_path(uid: 'cnav/aeeh') %>), [PSU](<%= endpoint_path(uid: 'cnav/psu') %>)), le paramètre `sexeEtatCivil` **n'est plus obligatoire** et devient fortement recommandé pour maximiser les chances d'identification du particulier. L'OpenAPI et les fiches ont été mises à jour en conséquence.
+
 - date: 2026-05-23
   scope: both
   title: "API éditeur : listing des délégations via GET /editeur/api/v1/delegations"

@@ -388,13 +388,28 @@ parsing, and error mapping — identical to high-level methods.
 
 ### 9.3 Validation
 
-Each generated method MUST:
+The scaffold uses the OpenAPI `required: true` flag on each parameter as
+the source of truth for whether a query argument is required in the
+generated method signature. **Audit parameters** (`recipient`, `context`,
+`object`) are always treated as **optional** in signatures regardless of
+their OpenAPI flag, because they fall back to client-level defaults
+(§2).
 
-1. Reject missing required parameters **before** any network call, with a
-   native language error (`ArgumentError`, `TypeError`, etc.) — not an API
-   exception.
-2. Drop `nil`/`None` optional parameters from the query string.
-3. Not coerce types beyond what the language natively does.
+Enforcement of "missing required parameter" MAY happen at compile time
+(statically typed languages, e.g. TypeScript: the property has no `?`
+on the options interface) or at runtime (dynamically typed languages,
+e.g. Ruby keyword args without a default → `ArgumentError`;
+Python → `TypeError`). The contract is **the type system** for the
+former and a **native language error before any network call** for the
+latter — never an API exception. Untyped consumers of a typed client
+(e.g. plain JavaScript calling a TS-generated client) are out of scope
+of this guarantee.
+
+Each generated method MUST also:
+
+1. Drop `nil`/`None`/`undefined` optional parameters from the query
+   string.
+2. Not coerce types beyond what the language natively does.
 
 ### 9.4 Array-valued parameters
 

@@ -26,7 +26,6 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
         required: %w[
           nomNaissance
           prenoms
-          sexeEtatCivil
           codeCogInseePaysNaissance
         ],
         api: 'cnav'

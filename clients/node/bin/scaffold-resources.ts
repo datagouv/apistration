@@ -155,18 +155,22 @@ function buildMethod(
   const typedPositional = positional.map((p) => `${p}: string`);
   const optionsFields: string[] = [];
   optionsFields.push('version?: number');
+  let anyRequired = false;
   for (const p of qparams) {
     const kn = kwargName(p.name);
     const isArray =
       p.name.endsWith('[]') ||
       p.schema?.type === 'array';
     const type = isArray ? 'string[]' : 'string';
-    optionsFields.push(`${kn}?: ${type}`);
+    const required = p.required === true && !AUDIT_PARAMS.includes(p.name);
+    if (required) anyRequired = true;
+    optionsFields.push(`${kn}${required ? '' : '?'}: ${type}`);
   }
 
   const hasOptions = optionsFields.length > 0;
+  const optionsSuffix = anyRequired ? '' : ' = {}';
   const signature = hasOptions
-    ? `${typedPositional.join(', ')}${typedPositional.length > 0 ? ', ' : ''}options: { ${optionsFields.join('; ')} } = {}`
+    ? `${typedPositional.join(', ')}${typedPositional.length > 0 ? ', ' : ''}options: { ${optionsFields.join('; ')} }${optionsSuffix}`
     : typedPositional.join(', ');
 
   const paramEntries: string[] = [];

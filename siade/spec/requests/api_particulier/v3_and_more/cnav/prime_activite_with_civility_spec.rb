@@ -26,7 +26,6 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
         required: %w[
           nomNaissance
           prenoms
-          sexeEtatCivil
           codeCogInseePaysNaissance
         ],
         api: 'cnav'

@@ -25,7 +25,7 @@ export class Mesri {
   }
 
   /** [Identité] Statut étudiant */
-  async statut_etudiant_identite(options: { version?: number; recipient?: string; nom_naissance?: string; prenoms?: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string } = {}) {
+  async statut_etudiant_identite(options: { version?: number; recipient?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -39,7 +39,7 @@ export class Mesri {
   }
 
   /** [INE] Statut étudiant */
-  async ine(options: { version?: number; recipient?: string; ine?: string } = {}) {
+  async ine(options: { version?: number; recipient?: string; ine: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {

@@ -11,7 +11,7 @@ export class Ants {
   }
 
   /** [FranceConnect] Extrait d'immatriculation véhicule */
-  async extrait_immatriculation_vehicule(options: { version?: number; recipient?: string; immatriculation?: string } = {}) {
+  async extrait_immatriculation_vehicule(options: { version?: number; recipient?: string; immatriculation: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {

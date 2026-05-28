@@ -27,7 +27,7 @@ module ApiParticulier
       # [Identité] Statut allocation adulte handicapé (AAH)
       # Logical endpoint: /dss/allocation_adulte_handicape/identite
       # Versions available: [3] — default: 3
-      def allocation_adulte_handicape_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def allocation_adulte_handicape_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
@@ -55,7 +55,7 @@ module ApiParticulier
       # [Identité] Statut allocation d'éducation de l'enfant handicapé (AEEH)
       # Logical endpoint: /dss/allocation_enfant_handicape/identite
       # Versions available: [3] — default: 3
-      def allocation_enfant_handicape_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def allocation_enfant_handicape_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
@@ -83,7 +83,7 @@ module ApiParticulier
       # [Identité] Statut allocation de soutien familial (ASF)
       # Logical endpoint: /dss/allocation_soutien_familial/identite
       # Versions available: [3] — default: 3
-      def allocation_soutien_familial_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def allocation_soutien_familial_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
@@ -111,7 +111,7 @@ module ApiParticulier
       # [Identité] Statut complémentaire santé solidaire (C2S)
       # Logical endpoint: /dss/complementaire_sante_solidaire/identite
       # Versions available: [3] — default: 3
-      def complementaire_sante_solidaire_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def complementaire_sante_solidaire_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
@@ -139,7 +139,7 @@ module ApiParticulier
       # [Identité] Participation familiale EAJE
       # Logical endpoint: /dss/participation_familiale_eaje/identite
       # Versions available: [3] — default: 3
-      def participation_familiale_eaje_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def participation_familiale_eaje_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
@@ -167,7 +167,7 @@ module ApiParticulier
       # [Identité] Statut prime d'activité
       # Logical endpoint: /dss/prime_activite/identite
       # Versions available: [3] — default: 3
-      def prime_activite_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def prime_activite_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
@@ -195,7 +195,7 @@ module ApiParticulier
       # [Identité] Quotient familial CAF & MSA
       # Logical endpoint: /dss/quotient_familial/identite
       # Versions available: [3] — default: 3
-      def quotient_familial_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil, annee: nil, mois: nil)
+      def quotient_familial_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil, annee: nil, mois: nil)
         path =
           case version || 3
           when 3
@@ -223,7 +223,7 @@ module ApiParticulier
       # [Identité] Statut revenu de solidarité active (RSA)
       # Logical endpoint: /dss/revenu_solidarite_active/identite
       # Versions available: [3] — default: 3
-      def revenu_solidarite_active_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil:, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def revenu_solidarite_active_identite(version: nil, recipient: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
         path =
           case version || 3
           when 3
