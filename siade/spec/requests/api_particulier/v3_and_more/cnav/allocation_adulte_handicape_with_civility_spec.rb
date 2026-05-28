@@ -26,7 +26,6 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
         required: %w[
           nomNaissance
           prenoms
-          sexeEtatCivil
           codeCogInseePaysNaissance
         ],
         api: 'cnav'

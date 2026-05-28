@@ -26,7 +26,6 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         required: %w[
           nomNaissance
           prenoms
-          sexeEtatCivil
           codeCogInseePaysNaissance
         ],
         api: 'cnav'
