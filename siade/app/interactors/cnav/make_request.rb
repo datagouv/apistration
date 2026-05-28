@@ -65,7 +65,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       codePaysNaissance: context.params[:code_cog_insee_pays_naissance],
       villeNaissance: context.params[:nom_commune_naissance],
       depNaissance: context.params[:code_cog_insee_departement_naissance],
-      genre: context.params[:sexe_etat_civil].upcase
+      genre: context.params[:sexe_etat_civil]&.upcase
     }.compact
   end
   # rubocop:enable Metrics/AbcSize

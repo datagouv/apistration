@@ -142,6 +142,18 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
         expect(stubbed_request).to have_been_requested
       end
     end
+
+    context 'when sexe_etat_civil is blank (non-regression test)' do
+      let(:params) { super().merge(sexe_etat_civil: nil) }
+
+      let!(:stubbed_request) do
+        stub_request(:get, Siade.credentials[:cnav_complementaire_sante_solidaire_url])
+          .with(query: hash_excluding(:genre))
+          .to_return(status: 200, body: read_payload_file('cnav/complementaire_sante_solidaire/make_request_valid.json'))
+      end
+
+      it { is_expected.to be_a_success }
+    end
   end
 
   describe 'with FranceConnect params' do
