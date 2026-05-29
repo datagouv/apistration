@@ -17,8 +17,7 @@ RSpec.describe APIParticulier::CivilityParameters do
     include APIParticulier::CivilityParameters
 
     def index
-      civility_parameters
-      render json: { data: true }, status: :ok
+      render json: { data: civility_parameters.to_query }, status: :ok
     end
 
     def serializer_module
@@ -56,6 +55,19 @@ RSpec.describe APIParticulier::CivilityParameters do
 
       it 'returns 200' do
         expect(subject).to have_http_status(:ok)
+      end
+    end
+
+    context 'with a nested civility parameter (malformed request)' do
+      subject do
+        routes.draw { get 'show' => 'api_particulier/v3_and_more/base#index' }
+
+        get :index, params: { nomNaissance: { evil: 'x' }, token: yes_jwt, api_version: 42 }.merge(api_particulier_mandatory_params)
+      end
+
+      it 'drops the unpermitted nested value and still serializes to a query string' do
+        expect(subject).to have_http_status(:ok)
+        expect(response.parsed_body['data']).not_to include('nom_naissance=')
       end
     end
     # rubocop:enable RSpec/VariableName
