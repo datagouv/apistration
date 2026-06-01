@@ -41,5 +41,20 @@ RSpec.describe CNAV::AllocationRentreeScolaire::BuildResource, type: :build_reso
         )
       end
     end
+
+    context 'when the status is non_beneficiaire' do
+      let(:body) do
+        read_payload_file('cnav/allocation_rentree_scolaire/non_beneficiaire.json')
+      end
+
+      it do
+        expect(subject).to eq(
+          {
+            status: 'non_beneficiaire',
+            date_debut_droit: nil
+          }
+        )
+      end
+    end
   end
 end
