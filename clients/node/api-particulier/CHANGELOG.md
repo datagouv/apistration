@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- CNAV DSS: add Allocation de Rentrée Scolaire (ARS) endpoint
+  (`dss.allocation_rentree_scolaire_identite` / `dss.allocation_rentree_scolaire`),
+  identité pivot and FranceConnect modalities.
+
 ## 0.1.1
 
 - Initial release
