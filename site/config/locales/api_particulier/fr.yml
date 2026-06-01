@@ -42,8 +42,8 @@ fr:
           usages: "<strong>Cas d'usages</strong><br> & modalités d'appel"
           developer: "<strong>Espace développeur</strong><br> & spécifications techniques"
           ask_access: "<strong>Demander un accès</strong><br>🔑 Vérifier votre éligibilité"
-          banner: 
-            default: "<strong>Nouvelle API quotient familial CAF & MSA</strong> : Bureau ouvert <a href='https://webinaire.numerique.gouv.fr/meeting/signin/21835/creator/2466/hash/4ca2f92df7a5e7e9a27ea7e46dfba7e30ea6e41b'>en visio</a> le %{date} à 10 heures."
+          banner:
+            default: "<strong>Nouvelle API quotient familial CAF & MSA</strong> : Bureau ouvert <a href='https://visio.numerique.gouv.fr/shn-vmzq-afy'>en visio</a> le %{date} à 10 heures."
             tech: "<strong>La V.3 est disponible !</strong> Bureau ouvert <a href='https://webconf.numerique.gouv.fr/APIEntreprise00Version3'>en visio</a> le %{date} à 10 heures. <strong>🔄 <a href='/blog/migration-api-particulier-v3'>Guide de migration V.3</a></strong>"
 
       footer:
