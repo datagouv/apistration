@@ -43,6 +43,32 @@ RSpec.describe CNAV::AllocationRentreeScolaire, type: :retriever_organizer do
           expect(resource.date_debut_droit).to eq('2024-08-09')
         end
       end
+
+      describe 'with an invalid params' do
+        let(:sexe_etat_civil) { 'nope' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      end
+
+      describe 'with a 404' do
+        before do
+          stub_cnav_authenticate('allocation_rentree_scolaire')
+        end
+
+        describe 'when the error comes from CNAF' do
+          before do
+            stub_cnav_404('allocation_rentree_scolaire', 'CNAF')
+          end
+
+          it 'returns 404 message for CNAF' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
+          end
+        end
+      end
     end
   end
 end
