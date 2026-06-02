@@ -1,3 +1,11 @@
+- date: 2026-06-02
+  scope: api_entreprise
+  title: "Liasses fiscales : nouvelle version v4, codes internes du dictionnaire retirés"
+  description: |
+    Une **version v4** de l'endpoint [liasses fiscales](<%= endpoint_path(uid: 'dgfip/liasses_fiscales') %>) est disponible. La DGFIP retire de ses endpoints les champs `code_absolu`, `code_EDI`, `code` et `code_type_donnee` des `donnees` de chaque déclaration : ce sont des référentiels internes ou multiples qui ne sont a priori pas utiles. Le champ `code_nref`, code commun/universel pour identifier chaque donnée, est conservé.
+
+    La **v3 reste maintenue mais est dépréciée** : pensez à migrer vers la v4. Le reste de la réponse est inchangé.
+
 - date: 2026-05-28
   scope: api_particulier
   title: "Endpoints CNAV : paramètre sexe désormais fortement recommandé"

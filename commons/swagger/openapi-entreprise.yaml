@@ -6604,6 +6604,7 @@ paths:
   "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}":
     get:
       summary: Liasses fiscales
+      deprecated: true
       tags:
       - Informations financières
       parameters:
@@ -7310,6 +7311,685 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}":
+    get:
+      summary: Liasses fiscales
+      tags:
+      - Informations financières
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      security:
+      - jwt_bearer_token: []
+      description: Informations renseignées dans les liasses fiscales, issues des
+        déclarations de résultat d’une entreprise auprès de la Direction générale
+        des finances publiques (DGFIP).
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Entreprise trouvée
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v4_dgfip_liasses_fiscales
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      obligations_fiscales:
+                        type: array
+                        title: Règles d’imposition applicables au résultat de l'unité
+                          légale (nommé obf en interne)
+                        description: Une entité légale peut posséder plusieurs règles
+                          d'impositions, notamment si celle-ci fait partie d'un groupe.
+                        items:
+                          type: object
+                          additionalProperties: false
+                          required:
+                          - id
+                          - code
+                          - libelle
+                          - reference
+                          - regime
+                          properties:
+                            id:
+                              title: Identifiant interne dénommé OCFI de la DGFIP
+                              description: 'Identifiant technique interne de la DGFIP
+                                OCFI: Numéro d’OCcurrences FIscales, déterminé par
+                                le siren et par les obligations fiscales'
+                              type: string
+                              example: '100209489259'
+                            code:
+                              type: string
+                              title: Code des règles d'imposition applicables au siren
+                              description: "Les valeurs possibles sont les suivantes:
+                                \n \n - IS: Impôt sur les sociétés \n - BIC: Bénéfices
+                                industriels et commerciaux \n - IS GROUPE: Impôt sur
+                                les sociétés dû par le groupe \n - BA: Bénéfices agricoles
+                                \n - BNC: Bénéfices non commerciaux"
+                              example: IS
+                              enum:
+                              - IS
+                              - BIC
+                              - IS GROUPE
+                              - BA
+                              - BNC
+                            libelle:
+                              type: string
+                              title: Libellé des règles d'impositions applicables
+                                à l'unité légale.
+                              description: La liste exhaustive se trouve dans la description
+                                du code.
+                              example: Impôt sur les sociétés
+                            reference:
+                              title: Référence d'Obligation Fiscale (ROF)
+                              type: string
+                              description: Il s'agit du code d'Obligation Fiscale
+                                (OBF) suivi d'un numéro d'identifiant qui définit
+                                et individualise les obligations fiscales de l'unité
+                                légale en fonction de ses activités
+                              enum:
+                              - IS1
+                              - IS2
+                              - IS3
+                              - ISGROUPE1
+                              - ISGROUPE2
+                              - ISGROUPE3
+                              - BA1
+                              - BA2
+                              - BA3
+                              - BNC1
+                              - BNC2
+                              - BNC3
+                              - BIC1
+                              - BIC2
+                              - BIC3
+                            regime:
+                              title: Régime d'imposition
+                              type: string
+                              description: Désigne les règles d’imposition du résultat
+                                fiscal de l’entreprise obtenu du référentiel des occurrences
+                                fiscales (R-OCFI)
+                      declarations:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: false
+                          required:
+                          - numero_imprime
+                          - regime
+                          - date_declaration
+                          - date_fin_exercice
+                          - duree_exercice
+                          - millesime
+                          - donnees
+                          properties:
+                            numero_imprime:
+                              title: Numéro d'imprimé
+                              type: string
+                              description: Numéro du formulaire de la liasse fiscale
+                                souscrit par l’unité légale.
+                              example: 2033A
+                            regime:
+                              title: Régime d’imposition applicable au résultat fiscal
+                                de l'unité légale
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - code
+                              - libelle
+                              properties:
+                                code:
+                                  title: Code du régime d’imposition applicable au
+                                    résultat fiscal de l'unité légale
+                                  type: string
+                                  description: "Les valeurs possibles sont les suivantes:
+                                    \n \n - RN: Réel normal \n - RSI ou RS: Réel simplifié
+                                    FIXME: A CONFIRMER le RS \n - RNMEMBRE: Réel normal
+                                    groupe (groupe) \n - RNGROUPE: Réel normal groupe
+                                    (tête) FIXME: Quel est la différence tête/groupe
+                                    \n - DECC: Déclaration contrôlée"
+                                  enum:
+                                  - RN
+                                  - RS
+                                  - RSI
+                                  - RNMEMBRE
+                                  - RNGROUPE
+                                  - DECC
+                                libelle:
+                                  title: Libellé du régime d’imposition applicable
+                                    au résultat fiscal de l'unité légale.
+                                  description: La liste exhaustive se trouve dans
+                                    la description du code
+                                  type: string
+                                  example: Réel simplifié
+                            date_declaration:
+                              title: Date de dépôt de la déclaration
+                              type: string
+                              description: " - Si télédéclaration : date de saisie
+                                \n - Si dépôt papier : date de réception par les Services
+                                des Impôts des Entreprises"
+                              example: '2012-12-26'
+                            date_fin_exercice:
+                              title: Date de fin d’exercice fiscal de l'unité légale
+                              type: string
+                              description: Équivalent à la date de fin de la période
+                                d'imposition
+                              example: '2012-12-31'
+                            duree_exercice:
+                              title: Durée de l'exercice en jours
+                              type: number
+                              description: "Durée de l’exercice fiscal calculée à
+                                partir des dates de début et de fin de la période
+                                d’imposition déclarées sur la déclaration souscrite
+                                par l'unité légale. \n \n Généralement cette valeur
+                                est de 365 jours, mais parfois 180 jours. Il y a une
+                                obligation fiscale déclarative au 31/12 de chaque
+                                année même s’il s’agit d’un dépôt provisoire."
+                              example: 365
+                            millesime:
+                              title: Millesime
+                              type: string
+                              description: "Code composé de 6 caractères: \n - 4 caractères
+                                correspondant à l'année de création ou modification
+                                du formulaire. Les valeurs possibles vont de 2006
+                                à l'année courante dès avril, l'année précédente sinon.
+                                \n - 2 caractères correspondant au numéro de version
+                                du formulaire, commençant à 01"
+                              example: '201701'
+                            donnees:
+                              title: Données de l'imprimé
+                              type: array
+                              description: Chaque entrée du tableau correspondant
+                                à couple code / valeur, spécifique au numéro d'imprimé
+                                référencé à la clé `numero_imprime`
+                              items:
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - code_nref
+                                - valeurs
+                                properties:
+                                  intitule:
+                                    title: Intitulé
+                                    description: Intitulé de la donnée. Désigne une
+                                      donnée correspondant à une case à cocher présente
+                                      en haut de certains tableaux de la liasse fiscale
+                                    type: string
+                                    example: Déposé néant
+                                  code_nref:
+                                    title: A un code N-REF correspond un code absolu
+                                      pour les liasses fiscales. Ces deux codes désignent
+                                      une seule donnée présente sur un seul formulaire
+                                    type: string
+                                    example: '304651'
+                                  valeurs:
+                                    title: 'Valeurs associés à l''entrée '
+                                    description: Si une entrée de l'imprimé est répétable,
+                                      le tableau contient plusieurs entrées et sont
+                                      ordonnées en fonction de l'indice de répétition.
+                                      Les indices ne sont pas forcément continue,
+                                      il peut y avoir des valeurs manquantes. Lors
+                                      que c'est le cas, celle-ci est remplacée par
+                                      la valeur `null`
+                                    type: array
+                                    minItems: 1
+                                    items:
+                                      type: string
+                                    example:
+                                    - '4245'
+                                    -
+                                    - '5672'
+                    required:
+                    - obligations_fiscales
+                    - declarations
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                    properties:
+                      internal_id_itip:
+                        title: Identifiant interne dénommé ITIP de la DGFIP
+                        type: string
+                        description: 'Identifiant technique interne de la DGFIP ITIP:
+                          Identifiant Transversal Informatique de la Personne'
+                        example: '100004763104'
+                    required:
+                    - internal_id_itip
+                    additionalProperties: false
+                required:
+                - data
+                - links
+                - meta
+        '404':
+          description: Pas de liasses fiscales pour cette unité légale
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_03003:
+                  value:
+                    errors:
+                    - code: '03003'
+                      title: Entité non trouvée
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Entité non trouvée
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_content_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+                unprocessable_content_error_year_error:
+                  value:
+                    errors:
+                    - code: '00307'
+                      title: Entité non traitable
+                      detail: L'année n'est pas correctement formatée
+                      source:
+                      meta: {}
+                  summary: Entité non traitable
+                  description: L'année n'est pas correctement formatée
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                erreur_inconnue_du_fournisseur_de_donnees_03999:
+                  value:
+                    errors:
+                    - code: '03999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_03000:
+                  value:
+                    errors:
+                    - code: '03000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_03008:
+                  value:
+                    errors:
+                    - code: '03008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_03011:
+                  value:
+                    errors:
+                    - code: '03011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_03009:
+                  value:
+                    errors:
+                    - code: '03009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
+                potentielle_ressource_non_trouvee_03501:
+                  value:
+                    errors:
+                    - code: '03501'
+                      title: Potentielle ressource non trouvée
+                      detail: Le serveur a renvoyé une erreur interne, mais cela peut
+                        aussi indiquer que le siret ou siren renseigné n'existe pas,
+                        n'est pas connu, n'est pas en règle de ses obligations fiscales
+                        ou ne comporte aucune information pour cet appel.
+                      source:
+                      meta:
+                        provider: DGFIP
+                  summary: Potentielle ressource non trouvée
+                  description: Le serveur a renvoyé une erreur interne, mais cela
+                    peut aussi indiquer que le siret ou siren renseigné n'existe pas,
+                    n'est pas connu, n'est pas en règle de ses obligations fiscales
+                    ou ne comporte aucune information pour cet appel.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '03002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '03001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '03004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v4/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}":
     get:
       summary: Liens capitalistiques

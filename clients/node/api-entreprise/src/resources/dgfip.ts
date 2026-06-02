@@ -48,13 +48,16 @@ export class Dgfip {
   /** Liasses fiscales */
   async liasses_fiscales(siren: string, year: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
-    const resolvedVersion = options.version ?? 3;
+    const resolvedVersion = options.version ?? 4;
     const path = (() => {
       switch (resolvedVersion) {
       case 3:
+        process.emitWarning('[DEPRECATED] /v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year} (#liasses_fiscales): marked deprecated in the OpenAPI spec.', 'DeprecationWarning');
         return `/v3/dgfip/unites_legales/${siren}/liasses_fiscales/${year}`;
+      case 4:
+        return `/v4/dgfip/unites_legales/${siren}/liasses_fiscales/${year}`;
         default:
-          throw new Error(`version ${resolvedVersion} not available for /dgfip/unites_legales/{siren}/liasses_fiscales/{year}; supported: [3]`);
+          throw new Error(`version ${resolvedVersion} not available for /dgfip/unites_legales/{siren}/liasses_fiscales/{year}; supported: [3,4]`);
       }
     })();
     return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });

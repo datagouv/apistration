@@ -1,11 +1,13 @@
 ---
 fiche:
   - uid: "dgfip/liasses_fiscales"
-    path: "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}"
+    old_endpoint_uids:
+      - "dgfip/v3/liasses_fiscales"
+    path: "/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}"
     controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales'
-    ping_url: "https://entreprise.api.gouv.fr/ping/dgfip/liasses_fiscales"
+    ping_url: &dgfip_liasses_ping_url "https://entreprise.api.gouv.fr/ping/dgfip/liasses_fiscales"
     position: 240
-    perimeter:
+    perimeter: &dgfip_liasses_perimeter
       entity_type_description: |+
         **Cette API délivre les liasses fiscales des entreprises** :
           - ✅ soumises à l’impôt sur les sociétés (IS) ;
@@ -26,10 +28,10 @@ fiche:
         En cas d’exercice à cheval, la date limite de dépôt est positionnée exactement trois mois après la date de clôture de l’exercice déclaré.
       entities:
         - entreprises
-    call_id: "SIREN"
-    provider_uids:
+    call_id: &dgfip_liasses_call_id "SIREN"
+    provider_uids: &dgfip_liasses_provider_uids
       - "dgfip"
-    keywords:
+    keywords: &dgfip_liasses_keywords
       - "finances"
       - "compte"
       - "financier"
@@ -60,7 +62,7 @@ fiche:
       - "filiale"
       - "société-mère"
       - "participation"
-    data:
+    data: &dgfip_liasses_data
       description: |+
         Cette API délivre **les liasses fiscales d'une entreprise** pour l'année renseignée. Elle ne permet pas d'accéder à tous les imprimés, mais seulement aux **imprimés utiles pour les démarches des marchés publics et aides publiques [listés ici](#liste-imprimes)**. 
 
@@ -73,13 +75,13 @@ fiche:
 
         Certains SIREN ne renvoient aucun imprimé, d'autres en transmettent deux. [En savoir plus](#nombre-imprimes).
 
-    opening: protected
-    format:
+    opening: &dgfip_liasses_opening protected
+    format: &dgfip_liasses_format
       - Donnée structurée JSON
-    parameters:
+    parameters: &dgfip_liasses_parameters
       - Numéro de SIREN de l'entreprise
       - "Année (fiscale) correspondant à l'exercice visé (de 2006 à l'année précédente)"
-    faq:
+    faq: &dgfip_liasses_faq
       - q: <a name="liste-imprimes"></a>Quels sont les imprimés renvoyés par cette API ? Pourquoi certains imprimés ne sont pas renvoyés ?
         a: |+
           Cette API a été conçue et négociée dans le cadre spécifique des marchés publics et des aides publiques. Par conséquence, et en accord avec la DGFIP, seule la liste ci-dessous des imprimés est disponible&nbsp;:
@@ -137,3 +139,32 @@ fiche:
           Certains SIREN renvoient parfois deux imprimés. Il s'agit du cas où l'entreprise est une société fille d'un groupe IS (c'est-à-dire qu'elle est rattachée à une société mère soumise à l'impôt sur les sociétés). L'entreprise souscrit alors une déclaration de résultat pour elle-même et une autre en tant que membre du groupe. Dans ce cas, l'API peut renvoyer deux imprimés ayant le même numéro : un pour chacune des deux situations.
 
           Ce cas particulier des sociétés filles est également concerné par l'incertitude du caractère déclaratif des liasses fiscales. Par conséquent, il n'est pas possible d'affirmer que le renvoi de deux imprimés sera systématique pour les sociétés filles. L'entreprise peut avoir déposé une seule des liasses fiscales et, en outre, la situation de l'entreprise évolue parfois (entrée ou sortie du périmètre d'un groupe).
+    historique: |+
+      **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
+
+      La DGFIP va supprimer de ses endpoints les champs suivants, qui ne sont donc plus renvoyés dans les `donnees` de chaque déclaration :
+      - `code_absolu` ;
+      - `code_EDI` ;
+      - `code` ;
+      - `code_type_donnee`.
+
+      Ces champs ne servent a priori pas&nbsp;: ce sont des référentiels internes ou multiples propres à la DGFIP. Le champ `code_nref`, lui, est conservé&nbsp;: c'est le code commun/universel à utiliser pour identifier chaque donnée.
+
+      **Ce qui ne change pas :**
+      Le reste de la réponse est inchangé. La version précédente reste maintenue par API&nbsp;Entreprise.
+  - uid: "dgfip/v3/liasses_fiscales"
+    position: 9001
+    new_endpoint_uids:
+      - "dgfip/liasses_fiscales"
+    path: "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}"
+    controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales'
+    ping_url: *dgfip_liasses_ping_url
+    perimeter: *dgfip_liasses_perimeter
+    call_id: *dgfip_liasses_call_id
+    provider_uids: *dgfip_liasses_provider_uids
+    keywords: *dgfip_liasses_keywords
+    data: *dgfip_liasses_data
+    opening: *dgfip_liasses_opening
+    format: *dgfip_liasses_format
+    parameters: *dgfip_liasses_parameters
+    faq: *dgfip_liasses_faq
