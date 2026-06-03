@@ -2,7 +2,7 @@ class CNAV::PrimeActivite < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     CNAV::Authenticate,
     CNAV::MakeRequest,
-    CNAV::ValidateResponse,
+    CNAV::PrimeActivite::ValidateResponse,
     CNAV::PrimeActivite::BuildResource
 
   def provider_name

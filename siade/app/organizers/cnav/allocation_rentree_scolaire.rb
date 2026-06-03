@@ -2,7 +2,7 @@ class CNAV::AllocationRentreeScolaire < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     CNAV::Authenticate,
     CNAV::MakeRequest,
-    CNAV::ValidateResponse,
+    CNAV::AllocationRentreeScolaire::ValidateResponse,
     CNAV::AllocationRentreeScolaire::BuildResource
 
   def provider_name

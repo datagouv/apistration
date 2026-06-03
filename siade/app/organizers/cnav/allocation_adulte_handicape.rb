@@ -2,7 +2,7 @@ class CNAV::AllocationAdulteHandicape < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     CNAV::Authenticate,
     CNAV::MakeRequest,
-    CNAV::ValidateResponse,
+    CNAV::AllocationAdulteHandicape::ValidateResponse,
     CNAV::AllocationAdulteHandicape::BuildResource
 
   def provider_name

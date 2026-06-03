@@ -69,6 +69,35 @@ RSpec.describe CNAV::AllocationRentreeScolaire, type: :retriever_organizer do
           end
         end
       end
+
+      describe 'with an unexpected provider response' do
+        before do
+          stub_cnav_authenticate('allocation_rentree_scolaire')
+          stub_request(:get, cnav_url('allocation_rentree_scolaire')).with(
+            query: hash_including({})
+          ).to_return(
+            status: 200,
+            body: response_body.to_json,
+            headers: { 'X-APISECU-FD' => '00810011' }
+          )
+        end
+
+        context 'when the indicateur is not in the expected list' do
+          let(:response_body) { { indicateur: 'UN_NOUVEL_INDICATEUR', dateIndicateur: nil } }
+
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+        end
+
+        context 'when the indicateur is missing' do
+          let(:response_body) { { dateIndicateur: nil } }
+
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+        end
+      end
     end
   end
 end
