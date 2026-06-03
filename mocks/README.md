@@ -145,30 +145,38 @@ ce qui garantie un comportement iso avec la production.
 
 ### <a name="apiparticulier-france-connect"></a> Appels avec FranceConnect - Uniquement pour API Particulier
 
-Certains endpoints d'API Particulier sont FranceConnectés : cela implique que
-l'on peut passer un jeton FranceConnect à la place des paramètres classiques
-afin d'effectuer un appel auprès des fournisseurs de données. À l'aide du jeton
-FranceConnect, l'API effectue un appel auprès de FranceConnect pour récupérer
-des données de civilité (un exemple [ici](./payloads/france_connect/default.yaml)),
-données qui sont ensuite formatées pour effectuer un appel auprès du fournisseur
-de données correspondant.
+Certains endpoints d'API Particulier sont FranceConnectés : API Particulier agit
+alors comme un fournisseur de données agrégé adossé à FranceConnect. On passe un
+jeton FranceConnect à la place des paramètres d'identité classiques. À partir de
+ce jeton, l'API interroge FranceConnect (introspection du jeton) pour récupérer
+l'identité pivot de l'usager (données de civilité, un exemple
+[ici](./payloads/france_connect/default.yaml)), qui est ensuite formatée pour
+effectuer l'appel auprès du fournisseur de données correspondant.
+
+En tant que fournisseur de données référencé par FranceConnect, l'identité pivot
+nous est renvoyée systématiquement : il n'y a pas de scope d'identité pivot à
+demander côté intégrateur. En revanche, le jeton FranceConnect doit porter les
+scopes métier de l'endpoint appelé, définis dans
+[`commons/data/authorizations.yml`](../commons/data/authorizations.yml). Sans ces
+scopes métier, l'API renvoie une `401`.
 
 #### En utilisant le FranceConnect d'integration
 
-Il est possible d'utiliser directement le service d'integration de FranceConnect et d'envoyer sur nos serveurs en staging un jeton FranceConnect valide.
-Dans ce cas nous allons directement appeler le fournisseur de données avec l'identité pivot renvoyée par FranceConnect. Vous pouvez accédez à l'ensemble des identifiants valides sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
+Il est possible d'envoyer sur nos serveurs de staging un vrai jeton émis par le
+service d'intégration de FranceConnect. Dans ce cas, le seul appel réseau
+réellement effectué vers l'extérieur est l'introspection du jeton auprès de
+FranceConnect, qui nous renvoie l'identité pivot. Le fournisseur de données en
+aval (CNAV, CNOUS, ANTS…) reste, lui, mocké en staging : sa réponse est
+construite à partir d'un mapping local dont la clé est l'identité pivot renvoyée
+par FranceConnect (cf. la section _En utilisant les faux jetons FranceConnect_
+ci-dessous). Vous n'obtenez donc une réponse métier que s'il existe un cas de
+test correspondant à cette identité. Vous pouvez accéder à l'ensemble des
+identités valides sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
 
-Afin que l'environnement d'intégration fonctionne il est impératif de demander les scopes relatifs à l'identité pivot lors de votre authentification auprès de FranceConnect. Les scopes obligatoires sont :
-
-- given_name
-- family_name
-- birthdate
-- gender
-- birthplace
-- birthcountry
-- preferred_username
-
-Il est possible d'utiliser les alias de scope tel que précisé dans la documentation de [FranceConnect](https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service#identite-pivot).
+Le jeton FranceConnect doit porter les scopes métier de l'endpoint appelé,
+définis dans [`commons/data/authorizations.yml`](../commons/data/authorizations.yml)
+(cf. l'exemple ANTS plus bas). L'identité pivot, elle, nous est renvoyée
+d'office par FranceConnect et n'a pas à être demandée via des scopes dédiés.
 
 À noter que seules certaines identités sont prises en compte dans les cas de test, le plus souvent la première de la liste (Angela DUBOIS). S'il n'y a pas de cas de test, vous recevrez la réponse générique tel que défini dans les fichiers swagger de l'api.
 
