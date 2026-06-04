@@ -91,6 +91,7 @@ fiche:
         attributes:
           identite_particulier:
             title: Identité
+            scope: ants_extrait_immatriculation_vehicule_identite_particulier
             type: object
             description: Identité du demandeur du dossier d'immatriculation. Ces données ne
               proviennent pas de FranceConnect et sont fournies à des fins de vérification
