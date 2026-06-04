@@ -6,6 +6,12 @@
       </div>
     <% end %>
 
+    <% Array(properties['x-scope']).each do |scope_name| %>
+      <span class="fr-badge fr-badge--sm fr-badge--purple-glycine fr-ml-1w" style="text-transform: none">
+        <%= t('shared.endpoints.property.scope_badge', name: scope_name) %>
+      </span>
+    <% end %>
+
     <% if properties['example'] %>
       <span class="fr-ml-2w fr-ml-md-0 fr-text--regular fr-text--alt">
         <%= t('.example.label') %>

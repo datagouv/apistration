@@ -2497,6 +2497,7 @@ paths:
                             avance, reversement).
                           type: number
                           example: 2.34
+                    x-scope: pole_emploi_paiements
         '400':
           description: Paramètre(s) invalide(s)
           content:

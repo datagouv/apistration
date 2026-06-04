@@ -172,6 +172,9 @@ fr:
           title: "Les données"
         attributes:
           title: "Informations renvoyées en JSON :"
+        scopes:
+          title: Les scopes
+          intro_html: "Les champs de la réponse signalés par une étiquette violette ne sont retournés que si votre jeton porte le scope correspondant. <a href='/developpeurs#scopes-et-perimetres'>En savoir plus sur le mécanisme des scopes</a>."
         faq:
           title: "Questions & réponses"
         historique:
@@ -332,6 +335,44 @@ fr:
             label: CNAV || API Participation familiale Eaje || Paramètres de calcul
           cnav_allocation_enfant_handicape:
             label: CNAV || API Allocation enfant handicapé || Statut Allocation enfant handicapé
+          ants_extrait_immatriculation_vehicule_identite_particulier:
+            label: ANTS || API Extrait d'immatriculation véhicule || Identité du particulier
+          ants_extrait_immatriculation_vehicule_adresse_particulier:
+            label: ANTS || API Extrait d'immatriculation véhicule || Adresse du particulier
+          ants_extrait_immatriculation_vehicule_statut_rattachement:
+            label: ANTS || API Extrait d'immatriculation véhicule || Statut de rattachement au véhicule
+          ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule:
+            label: ANTS || API Extrait d'immatriculation véhicule || Données d'immatriculation
+          ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule:
+            label: ANTS || API Extrait d'immatriculation véhicule || Caractéristiques techniques du véhicule
+          gip_mds_service_civique_statut_actuel:
+            label: GIP-MDS || API Service civique || Statut actuel
+          gip_mds_service_civique_statut_passe:
+            label: GIP-MDS || API Service civique || Statut passé
+          gip_mds_service_civique_organisme_accueil:
+            label: GIP-MDS || API Service civique || Organisme d'accueil
+          gip_mds_service_civique_dates:
+            label: GIP-MDS || API Service civique || Dates de contrat
+          men_statut_identite:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier || Identité de l'élève
+          men_statut_etablissement:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier || Établissement
+          men_statut_module_elementaire_formation:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier || Module élémentaire de formation
+          men_regime_pensionnat:
+            label: Min. éducation nationale || API Statut élève scolarisé et boursier || Régime de pensionnat
+          mesri_admissions:
+            label: Min. enseignement supérieur || API Statut étudiant || Admissions
+          mesri_admission_inscrit:
+            label: Min. enseignement supérieur || API Statut étudiant || Statut inscrit
+          mesri_admission_regime_formation:
+            label: Min. enseignement supérieur || API Statut étudiant || Régime de formation
+          mesri_admission_commune_etudes:
+            label: Min. enseignement supérieur || API Statut étudiant || Commune d'études
+          mesri_admission_etablissement_etudes:
+            label: Min. enseignement supérieur || API Statut étudiant || Établissement d'études
+          pole_emploi_identifiant:
+            label: France Travail || API statut demandeur d'emploi || Identifiant France Travail
 
           mesri_identifiant:
             label: Min. enseignement supérieur || API Statut étudiant || INE

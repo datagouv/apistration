@@ -226,6 +226,7 @@ gip_mds:
     attributes:
       statut_actuel:
         title: "Statut actuel"
+        scope: gip_mds_service_civique_statut_actuel
         description: "Informations sur le contrat de service civique en cours. Accessible avec le scope 'service_civique_actuel'."
         type: "object"
         properties:
@@ -236,6 +237,7 @@ gip_mds:
             example: true
           organisme_accueil:
             title: "Organisme d'accueil"
+            scope: gip_mds_service_civique_organisme_accueil
             description: "Informations sur l'administration ou l'association qui accueille le volontaire en service civique."
             type: "object"
             properties:
@@ -253,6 +255,7 @@ gip_mds:
                 nullable: true
           date_debut_contrat:
             title: "Date de début du contrat"
+            scope: gip_mds_service_civique_dates
             description: "Premier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat en cours."
             type: "string"
             format: "date"
@@ -260,6 +263,7 @@ gip_mds:
             nullable: true
           date_fin_contrat:
             title: "Date de fin du contrat"
+            scope: gip_mds_service_civique_dates
             description: "Date de fin prévue du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat en cours ou si la date de fin n'est pas encore définie."
             type: "string"
             format: "date"
@@ -267,6 +271,7 @@ gip_mds:
             nullable: true
       statut_passe:
         title: "Statut passé"
+        scope: gip_mds_service_civique_statut_passe
         description: "Informations sur le contrat de service civique terminé. Accessible avec le scope 'service_civique_passe'."
         type: "object"
         properties:
@@ -277,6 +282,7 @@ gip_mds:
             example: true
           organisme_accueil:
             title: "Organisme d'accueil"
+            scope: gip_mds_service_civique_organisme_accueil
             description: "Informations sur l'administration ou l'association qui a accueilli le volontaire en service civique."
             type: "object"
             properties:
@@ -294,6 +300,7 @@ gip_mds:
                 nullable: true
           date_debut_contrat:
             title: "Date de début du contrat"
+            scope: gip_mds_service_civique_dates
             description: "Premier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat passé."
             type: "string"
             format: "date"
@@ -301,6 +308,7 @@ gip_mds:
             nullable: true
           date_fin_contrat:
             title: "Date de fin du contrat"
+            scope: gip_mds_service_civique_dates
             description: "Dernier jour du contrat de service civique, au format ISO 8601 (AAAA-MM-JJ). Null si aucun contrat passé."
             type: "string"
             format: "date"

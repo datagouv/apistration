@@ -177,6 +177,7 @@ fiche:
         attributes:
           statut_service_national:
             title: Statut service national
+            scope: dsnj_statut_service_national
             type: string
             description: Indique si la personne est en règle de ses obligations de service
               national. "en_regle" si la personne est en règle, "pas_en_regle" si la personne
@@ -190,6 +191,7 @@ fiche:
             - non_concerne
           commentaires:
             title: Commentaires de la DSNJ
+            scope: dsnj_statut_service_national
             type: string
             description: Commentaire indiqué par la direction du Service national et de la
               jeunesse (DSNJ), notamment pour les cas particuliers.

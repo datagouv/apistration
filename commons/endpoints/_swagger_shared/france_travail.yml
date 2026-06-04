@@ -20,6 +20,7 @@ france_travail:
     attributes:
       identifiant:
         title: Identifiant France Travail
+        scope: pole_emploi_identifiant
         type: string
         description: |
           Identifiant du compte utilisateur France Travail, tel qu'il a été renseigné
@@ -29,6 +30,7 @@ france_travail:
         example: martin.jacques
       identite:
         title: Données d'identité de l'utilisateur France Travail
+        scope: pole_emploi_identite
         description : "Les informations d'identité retournées ici sont issues de l'espace FranceTravail où l'utilisateur les a saisies. Elles sont vérifiées par un agent, à l'aide de la pièce d'identité fournie, et corrigées le cas échéant. Les justificatifs d'identité qui servent à la vérification des données sont listés ici : https://www.service-public.fr/particuliers/vosdroits/F24465"
         type: object
         properties:
@@ -69,6 +71,7 @@ france_travail:
             example: 1995-02-02
       contact:
         title: Données de contact
+        scope: pole_emploi_contact
         description: Données de contact de l'utilisateur France Travail
         type: object
         properties: 
@@ -91,6 +94,7 @@ france_travail:
             example: martin.jacques@france.fr
       adresse:
         title: Adresse
+        scope: pole_emploi_adresse
         type: object
         description: Adresse déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
         properties:
@@ -131,6 +135,7 @@ france_travail:
             example: MARTIN
       inscription:
         title: Inscription FranceTravail
+        scope: pole_emploi_inscription
         description: Données relatives à l'inscription de l'utilisateur à France Travail.
         type: object
         properties:
@@ -228,6 +233,7 @@ france_travail:
         example: 'jean.dupont33'
       paiements:
         title: "Liste des paiements versés"
+        scope: pole_emploi_paiements
         description: "Liste des paiements versés par FranceTravail au particulier."
         type: array
         minItems: 1

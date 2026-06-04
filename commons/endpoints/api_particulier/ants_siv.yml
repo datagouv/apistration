@@ -144,6 +144,7 @@ fiche:
                 example: '75'
           adresse_particulier:
             title: Adresse
+            scope: ants_extrait_immatriculation_vehicule_adresse_particulier
             type: object
             description: L'adresse du demandeur.
             properties:
@@ -207,6 +208,7 @@ fiche:
                 example: FRANCE
           statut_rattachement:
             title: Statut de rattachement au véhicule
+            scope: ants_extrait_immatriculation_vehicule_statut_rattachement
             type: string
             description: Le statut du demandeur du dossier d'immatriculation. Si le véhicule
               est en location longue durée (LLD, LCB, LCL), alors il s'agit du locataire.
@@ -218,6 +220,7 @@ fiche:
             example: titulaire
           donnees_immatriculation_vehicule:
             title: Données d'immatriculation du véhicule
+            scope: ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule
             type: object
             description: Informations relatives à l'immatriculation du véhicule
             required:
@@ -258,6 +261,7 @@ fiche:
                     nullable: true
           caracteristiques_techniques_vehicule:
             title: Informations et des caractéristiques techniques du véhicule
+            scope: ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
             type: object
             description: Extrait des informations techniques et caractéristiques du véhicule.
             required:
