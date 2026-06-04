@@ -60,6 +60,7 @@ men:
     attributes: &men_scolarite_attributes
       identite:
         title: "Données d'identité de l'élève"
+        scope: men_statut_identite
         description: "Les informations d'identité retournées ici sont issues de la base de données des établissemets scolaires (API SIGNE) où les élèves sont inscrits et proviennent des pièces d'identité que les parents doivent fournir à l'établissement pour inscrire leur enfant."
         type: object
         properties:
@@ -88,6 +89,7 @@ men:
             example: "2000-01-20"
       module_elementaire_formation:
         title: Module élémentaire de formation (MEF)
+        scope: men_statut_module_elementaire_formation
         description: "Libellé et code du module élémentaire de formation (MEF)"
         type: object
         properties:
@@ -105,6 +107,7 @@ men:
             nullable: true
       etablissement:
         title: "Établissement d'études"
+        scope: men_statut_etablissement
         description: "Les informations relatives à l'établissement"
         type: object
         properties:
@@ -125,17 +128,20 @@ men:
             nullable: true
       annee_scolaire:
         title: "Année scolaire"
+        scope: men_statut_scolarite
         description: "Année scolaire de l'élève au format AAAA-AAAA."
         type: string
         pattern: '^\d{4}$|^\d{4}-\d{4}$'
         example: "2022-2023"
       est_scolarise:
         title: "Est scolarisé"
+        scope: men_statut_scolarite
         description: "Indique si l'élève est scolarisé dans un établissement."
         type: boolean
         example: true
       statut_eleve:
         title: "Statut de l'élève"
+        scope: men_statut_scolarite
         description: |+
           Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs sont susceptibles d'évoluer :
 
@@ -162,6 +168,7 @@ men:
             type: string
             example: 'SCOLAIRE'
       est_boursier:
+        scope: men_statut_boursier
         description: |+
           Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées.
 
@@ -172,6 +179,7 @@ men:
         example: true
         nullable: false
       echelon_bourse:
+        scope: men_echelon_bourse
         description: |+
           Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
 
@@ -190,6 +198,7 @@ men:
     regime_pensionnat_attribute: &regime_pensionnat_attribute
       regime_pensionnat:
         title: "Régime de pensionnat"
+        scope: men_regime_pensionnat
         description: |+
           Indique le régime de pensionnat de l'élève dans l'établissement. Ce champ est à "null" lorsque l'information n'est pas disponible. Les valeurs possibles sont :
 

@@ -318,6 +318,7 @@ paths:
                             nullable: true
                             description: Libellé du pays
                             example: FRANCE
+                        x-scope: ants_extrait_immatriculation_vehicule_adresse_particulier
                         required:
                         - complement_information
                         - num_voie
@@ -341,6 +342,7 @@ paths:
                         - titulaire
                         - cotitulaire
                         example: titulaire
+                        x-scope: ants_extrait_immatriculation_vehicule_statut_rattachement
                       donnees_immatriculation_vehicule:
                         title: Données d'immatriculation du véhicule
                         type: object
@@ -385,6 +387,7 @@ paths:
                                 description: Le label descriptif du statut de location.
                                 example: Location Longue Durée
                                 nullable: true
+                        x-scope: ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule
                       caracteristiques_techniques_vehicule:
                         title: Informations et des caractéristiques techniques du
                           véhicule
@@ -605,6 +608,7 @@ paths:
                                 type: string
                                 description: Le label de la classe environnementale.
                                 example: Norme européenne d'émission Euro 6
+                        x-scope: ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
                     required:
                     - identite_particulier
                     - adresse_particulier
@@ -1032,6 +1036,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           l'allocation adulte handicapé au moment de l'appel.
+                        x-scope: allocation_adulte_handicape
                       date_debut_droit:
                         title: Date d'ouverture du droit à l'AAH
                         type: string
@@ -1041,6 +1046,7 @@ paths:
                           null dans le cas où le particulier n'est pas bénéficiaire
                           de l'AAH."
                         example: '1992-11-29'
+                        x-scope: allocation_adulte_handicape
                     required:
                     - est_beneficiaire
                     - date_debut_droit
@@ -1438,6 +1444,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           l'allocation adulte handicapé au moment de l'appel.
+                        x-scope: allocation_adulte_handicape
                       date_debut_droit:
                         title: Date d'ouverture du droit à l'AAH
                         type: string
@@ -1447,6 +1454,7 @@ paths:
                           null dans le cas où le particulier n'est pas bénéficiaire
                           de l'AAH."
                         example: '1992-11-29'
+                        x-scope: allocation_adulte_handicape
                     required:
                     - est_beneficiaire
                     - date_debut_droit
@@ -1878,6 +1886,7 @@ paths:
                         - allocataire
                         - ouvrant_droit
                         - non_beneficiaire
+                        x-scope: cnav_allocation_enfant_handicape
                       date_debut_droit:
                         title: Date d'ouverture du droit à l'AEEH
                         type: string
@@ -1887,6 +1896,7 @@ paths:
                           null dans le cas où le particulier n'est pas bénéficiaire
                           de l'AEEH."
                         example: '1992-11-29'
+                        x-scope: cnav_allocation_enfant_handicape
                     required:
                     - status
                     - date_debut_droit
@@ -2300,6 +2310,7 @@ paths:
                         - allocataire
                         - ouvrant_droit
                         - non_beneficiaire
+                        x-scope: cnav_allocation_enfant_handicape
                       date_debut_droit:
                         title: Date d'ouverture du droit à l'AEEH
                         type: string
@@ -2309,6 +2320,7 @@ paths:
                           null dans le cas où le particulier n'est pas bénéficiaire
                           de l'AEEH."
                         example: '1992-11-29'
+                        x-scope: cnav_allocation_enfant_handicape
                     required:
                     - status
                     - date_debut_droit
@@ -2727,6 +2739,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           l'allocation de soutien familial au moment de l'appel.
+                        x-scope: allocation_soutien_familial
                       date_debut_droit:
                         title: Date d'ouverture du droit à l'ASF
                         type: string
@@ -2736,6 +2749,7 @@ paths:
                           dans le cas où le particulier n'est pas bénéficiaire de
                           l'ASF."
                         example: '1992-11-29'
+                        x-scope: allocation_soutien_familial
                     required:
                     - est_beneficiaire
                     - date_debut_droit
@@ -3135,6 +3149,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           l'allocation de soutien familial au moment de l'appel.
+                        x-scope: allocation_soutien_familial
                       date_debut_droit:
                         title: Date d'ouverture du droit à l'ASF
                         type: string
@@ -3144,6 +3159,7 @@ paths:
                           dans le cas où le particulier n'est pas bénéficiaire de
                           l'ASF."
                         example: '1992-11-29'
+                        x-scope: allocation_soutien_familial
                     required:
                     - est_beneficiaire
                     - date_debut_droit
@@ -3564,6 +3580,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           la complémentaire de santé solidaire au moment de l'appel.
+                        x-scope: complementaire_sante_solidaire
                       avec_participation:
                         title: C2S avec participation financière
                         type: boolean
@@ -3574,6 +3591,7 @@ paths:
                           false, cela signifie que la C2S est sans participation financière
                           de la part de l'allocataire. \n Ce champ est null dans le
                           cas où le particulier n'est pas bénéficiaire de la C2S."
+                        x-scope: complementaire_sante_solidaire
                       date_debut_droit:
                         title: Date d'ouverture du droit en cours à la C2S
                         type: string
@@ -3591,6 +3609,7 @@ paths:
                           \n
                           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S.
                         example: '1992-11-29'
+                        x-scope: complementaire_sante_solidaire
                     required:
                     - est_beneficiaire
                     - avec_participation
@@ -3993,6 +4012,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           la complémentaire de santé solidaire au moment de l'appel.
+                        x-scope: complementaire_sante_solidaire
                       avec_participation:
                         title: C2S avec participation financière
                         type: boolean
@@ -4003,6 +4023,7 @@ paths:
                           false, cela signifie que la C2S est sans participation financière
                           de la part de l'allocataire. \n Ce champ est null dans le
                           cas où le particulier n'est pas bénéficiaire de la C2S."
+                        x-scope: complementaire_sante_solidaire
                       date_debut_droit:
                         title: Date d'ouverture du droit en cours à la C2S
                         type: string
@@ -4020,6 +4041,7 @@ paths:
                           \n
                           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S.
                         example: '1992-11-29'
+                        x-scope: complementaire_sante_solidaire
                     required:
                     - est_beneficiaire
                     - avec_participation
@@ -4498,9 +4520,10 @@ paths:
                                 pour les co-allocataires (il n'est généralement renvoyé
                                 que pour l'allocataire principal demandé).
                               example: '75113'
+                        x-scope: cnav_participation_familiale_eaje_allocataires
                       enfants:
-                        type: array
                         title: Données d'identité des enfants
+                        type: array
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -4547,6 +4570,7 @@ paths:
                                 les enfants (il n'est généralement renvoyé que pour
                                 l'allocataire principal demandé).
                               example:
+                        x-scope: cnav_participation_familiale_eaje_enfants
                       adresse:
                         title: Adresse de la famille
                         type: object
@@ -4594,6 +4618,7 @@ paths:
                             title: Pays
                             type: string
                             example: FRANCE
+                        x-scope: cnav_participation_familiale_eaje_adresse
                         required:
                         - destinataire
                         - complement_information
@@ -4644,6 +4669,7 @@ paths:
                             required:
                             - valeur
                             - annee_calcul
+                        x-scope: cnav_participation_familiale_eaje_parametres_calcul
                         required:
                         - nombre_enfants_a_charge
                         - nombre_enfants_beneficiaire_aeeh
@@ -5053,9 +5079,10 @@ paths:
                                 pour les co-allocataires (il n'est généralement renvoyé
                                 que pour l'allocataire principal demandé).
                               example: '75113'
+                        x-scope: cnav_participation_familiale_eaje_allocataires
                       enfants:
-                        type: array
                         title: Données d'identité des enfants
+                        type: array
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -5102,6 +5129,7 @@ paths:
                                 les enfants (il n'est généralement renvoyé que pour
                                 l'allocataire principal demandé).
                               example:
+                        x-scope: cnav_participation_familiale_eaje_enfants
                       adresse:
                         title: Adresse de la famille
                         type: object
@@ -5149,6 +5177,7 @@ paths:
                             title: Pays
                             type: string
                             example: FRANCE
+                        x-scope: cnav_participation_familiale_eaje_adresse
                         required:
                         - destinataire
                         - complement_information
@@ -5199,6 +5228,7 @@ paths:
                             required:
                             - valeur
                             - annee_calcul
+                        x-scope: cnav_participation_familiale_eaje_parametres_calcul
                         required:
                         - nombre_enfants_a_charge
                         - nombre_enfants_beneficiaire_aeeh
@@ -5581,6 +5611,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           la prime d'activité au moment de l'appel.
+                        x-scope: prime_activite
                       avec_majoration:
                         title: Prime d'activité avec majoration
                         type: boolean
@@ -5591,6 +5622,7 @@ paths:
                           n'est pas majorée. \n Ce champ sera null si le particulier
                           n'est pas bénéficiaire de la prime d'activité."
                         example: false
+                        x-scope: prime_activite_majoration
                       date_debut_droit:
                         title: Date d'ouverture du droit à la prime d'activité
                         type: string
@@ -5600,6 +5632,7 @@ paths:
                           dans le cas où le particulier n'est pas bénéficiaire de
                           la prime d'activité."
                         example: '1992-11-20'
+                        x-scope: prime_activite
                     required:
                     - est_beneficiaire
                     - avec_majoration
@@ -5998,6 +6031,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire de
                           la prime d'activité au moment de l'appel.
+                        x-scope: prime_activite
                       avec_majoration:
                         title: Prime d'activité avec majoration
                         type: boolean
@@ -6008,6 +6042,7 @@ paths:
                           n'est pas majorée. \n Ce champ sera null si le particulier
                           n'est pas bénéficiaire de la prime d'activité."
                         example: false
+                        x-scope: prime_activite_majoration
                       date_debut_droit:
                         title: Date d'ouverture du droit à la prime d'activité
                         type: string
@@ -6017,6 +6052,7 @@ paths:
                           dans le cas où le particulier n'est pas bénéficiaire de
                           la prime d'activité."
                         example: '1992-11-20'
+                        x-scope: prime_activite
                     required:
                     - est_beneficiaire
                     - avec_majoration
@@ -6639,9 +6675,10 @@ paths:
                               enum:
                               - F
                               - M
+                        x-scope: cnaf_allocataires
                       enfants:
-                        type: array
                         title: Données d'identité des enfants
+                        type: array
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -6681,6 +6718,7 @@ paths:
                               enum:
                               - F
                               - M
+                        x-scope: cnaf_enfants
                       adresse:
                         title: Adresse de la famille
                         type: object
@@ -6728,6 +6766,7 @@ paths:
                             title: Pays
                             type: string
                             example: FRANCE
+                        x-scope: cnaf_adresse
                         required:
                         - destinataire
                         - complement_information
@@ -6819,6 +6858,7 @@ paths:
                               recalculé ; le mois correspond donc toujours au mois
                               en cours."
                             example: 9
+                        x-scope: cnaf_quotient_familial
                         required:
                         - fournisseur
                         - valeur
@@ -7295,9 +7335,10 @@ paths:
                               enum:
                               - F
                               - M
+                        x-scope: cnaf_allocataires
                       enfants:
-                        type: array
                         title: Données d'identité des enfants
+                        type: array
                         description: Liste des données d'identité des enfants composant
                           la famille, le cas échéant. La provenance de ces données
                           n'est pas sourcée précisément et diffère selon la CAF ou
@@ -7337,6 +7378,7 @@ paths:
                               enum:
                               - F
                               - M
+                        x-scope: cnaf_enfants
                       adresse:
                         title: Adresse de la famille
                         type: object
@@ -7384,6 +7426,7 @@ paths:
                             title: Pays
                             type: string
                             example: FRANCE
+                        x-scope: cnaf_adresse
                         required:
                         - destinataire
                         - complement_information
@@ -7475,6 +7518,7 @@ paths:
                               recalculé ; le mois correspond donc toujours au mois
                               en cours."
                             example: 9
+                        x-scope: cnaf_quotient_familial
                         required:
                         - fournisseur
                         - valeur
@@ -7914,6 +7958,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire du
                           revenu de solidarité active au moment de l'appel.
+                        x-scope: revenu_solidarite_active
                       avec_majoration:
                         title: RSA avec majoration
                         type: boolean
@@ -7924,6 +7969,7 @@ paths:
                           null dans le cas où le particulier n'est pas bénéficiaire
                           du RSA."
                         example: false
+                        x-scope: revenu_solidarite_active_majoration
                       date_debut_droit:
                         title: Date d'ouverture du droit au RSA
                         type: string
@@ -7932,6 +7978,7 @@ paths:
                           bénéficiaire. \n Ce champ est null dans le cas où le particulier
                           n'est pas bénéficiaire du RSA."
                         example: '1992-11-29'
+                        x-scope: revenu_solidarite_active
                     required:
                     - est_beneficiaire
                     - avec_majoration
@@ -8331,6 +8378,7 @@ paths:
                         example: true
                         description: Indique que le particulier est bénéficiaire du
                           revenu de solidarité active au moment de l'appel.
+                        x-scope: revenu_solidarite_active
                       avec_majoration:
                         title: RSA avec majoration
                         type: boolean
@@ -8341,6 +8389,7 @@ paths:
                           null dans le cas où le particulier n'est pas bénéficiaire
                           du RSA."
                         example: false
+                        x-scope: revenu_solidarite_active_majoration
                       date_debut_droit:
                         title: Date d'ouverture du droit au RSA
                         type: string
@@ -8349,6 +8398,7 @@ paths:
                           bénéficiaire. \n Ce champ est null dans le cas où le particulier
                           n'est pas bénéficiaire du RSA."
                         example: '1992-11-29'
+                        x-scope: revenu_solidarite_active
                     required:
                     - est_beneficiaire
                     - avec_majoration
@@ -8722,6 +8772,7 @@ paths:
                             description: Nombre de mois de versement de la bourse
                               à l'étudiant.
                             example: 12
+                        x-scope: cnous_periode_versement
                         required:
                         - date_rentree
                         - duree
@@ -8741,6 +8792,7 @@ paths:
                             type: string
                             description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
+                        x-scope: cnous_ville_etudes
                         required:
                         - nom_commune
                         - nom_etablissement
@@ -8777,6 +8829,7 @@ paths:
                             enum:
                             - true
                             - false
+                        x-scope: cnous_echelon_bourse
                         required:
                         - echelon
                         - echelon_bourse_regionale_provisoire
@@ -8785,11 +8838,13 @@ paths:
                         type: string
                         description: Adresse e-mail de l'étudiant boursier.
                         example: georges@moustaki.fr
+                        x-scope: cnous_email
                       est_boursier:
                         title: Est boursier
                         type: boolean
                         description: Indique que l'étudiant est boursier.
                         example: true
+                        x-scope: cnous_statut_boursier
                       identite:
                         title: Données d'identité
                         type: object
@@ -8836,6 +8891,7 @@ paths:
                             enum:
                             - M
                             - F
+                        x-scope: cnous_identite
                         required:
                         - nom
                         - prenoms
@@ -9194,6 +9250,7 @@ paths:
                             description: Nombre de mois de versement de la bourse
                               à l'étudiant.
                             example: 12
+                        x-scope: cnous_periode_versement
                         required:
                         - date_rentree
                         - duree
@@ -9213,6 +9270,7 @@ paths:
                             type: string
                             description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
+                        x-scope: cnous_ville_etudes
                         required:
                         - nom_commune
                         - nom_etablissement
@@ -9249,6 +9307,7 @@ paths:
                             enum:
                             - true
                             - false
+                        x-scope: cnous_echelon_bourse
                         required:
                         - echelon
                         - echelon_bourse_regionale_provisoire
@@ -9257,11 +9316,13 @@ paths:
                         type: string
                         description: Adresse e-mail de l'étudiant boursier.
                         example: georges@moustaki.fr
+                        x-scope: cnous_email
                       est_boursier:
                         title: Est boursier
                         type: boolean
                         description: Indique que l'étudiant est boursier.
                         example: true
+                        x-scope: cnous_statut_boursier
                     required:
                     - periode_versement_bourse
                     - etablissement_etudes
@@ -9508,6 +9569,7 @@ paths:
                             description: Nombre de mois de versement de la bourse
                               à l'étudiant.
                             example: 12
+                        x-scope: cnous_periode_versement
                         required:
                         - date_rentree
                         - duree
@@ -9527,6 +9589,7 @@ paths:
                             type: string
                             description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
+                        x-scope: cnous_ville_etudes
                         required:
                         - nom_commune
                         - nom_etablissement
@@ -9563,6 +9626,7 @@ paths:
                             enum:
                             - true
                             - false
+                        x-scope: cnous_echelon_bourse
                         required:
                         - echelon
                         - echelon_bourse_regionale_provisoire
@@ -9571,11 +9635,13 @@ paths:
                         type: string
                         description: Adresse e-mail de l'étudiant boursier.
                         example: georges@moustaki.fr
+                        x-scope: cnous_email
                       est_boursier:
                         title: Est boursier
                         type: boolean
                         description: Indique que l'étudiant est boursier.
                         example: true
+                        x-scope: cnous_statut_boursier
                       identite:
                         title: Données d'identité
                         type: object
@@ -9622,6 +9688,7 @@ paths:
                             enum:
                             - M
                             - F
+                        x-scope: cnous_identite
                         required:
                         - nom
                         - prenoms
@@ -10034,6 +10101,7 @@ paths:
                             description: Date de radiation. Renseignée uniquement
                               si est_radie est true.
                             example:
+                        x-scope: cnous_statut_boursier
                         required:
                         - est_boursier
                         - est_radie
@@ -10058,6 +10126,7 @@ paths:
                             description: Nombre de mois de versement de la bourse
                               à l'étudiant.
                             example: 12
+                        x-scope: cnous_periode_versement
                         required:
                         - date_rentree
                         - duree
@@ -10077,6 +10146,7 @@ paths:
                             type: string
                             description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
+                        x-scope: cnous_ville_etudes
                         required:
                         - nom_commune
                         - nom_etablissement
@@ -10113,6 +10183,7 @@ paths:
                             enum:
                             - true
                             - false
+                        x-scope: cnous_echelon_bourse
                         required:
                         - echelon
                         - echelon_bourse_regionale_provisoire
@@ -10121,6 +10192,7 @@ paths:
                         type: string
                         description: Adresse e-mail de l'étudiant boursier.
                         example: georges@moustaki.fr
+                        x-scope: cnous_email
                       identite:
                         title: Données d'identité
                         type: object
@@ -10167,6 +10239,7 @@ paths:
                             enum:
                             - M
                             - F
+                        x-scope: cnous_identite
                         required:
                         - nom
                         - prenoms
@@ -10380,6 +10453,7 @@ paths:
                             description: Date de radiation. Renseignée uniquement
                               si est_radie est true.
                             example:
+                        x-scope: cnous_statut_boursier
                         required:
                         - est_boursier
                         - est_radie
@@ -10404,6 +10478,7 @@ paths:
                             description: Nombre de mois de versement de la bourse
                               à l'étudiant.
                             example: 12
+                        x-scope: cnous_periode_versement
                         required:
                         - date_rentree
                         - duree
@@ -10423,6 +10498,7 @@ paths:
                             type: string
                             description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
+                        x-scope: cnous_ville_etudes
                         required:
                         - nom_commune
                         - nom_etablissement
@@ -10459,6 +10535,7 @@ paths:
                             enum:
                             - true
                             - false
+                        x-scope: cnous_echelon_bourse
                         required:
                         - echelon
                         - echelon_bourse_regionale_provisoire
@@ -10467,6 +10544,7 @@ paths:
                         type: string
                         description: Adresse e-mail de l'étudiant boursier.
                         example: georges@moustaki.fr
+                        x-scope: cnous_email
                     required:
                     - statut_boursier
                     - periode_versement_bourse
@@ -10685,6 +10763,7 @@ paths:
                             description: Date de radiation. Renseignée uniquement
                               si est_radie est true.
                             example:
+                        x-scope: cnous_statut_boursier
                         required:
                         - est_boursier
                         - est_radie
@@ -10709,6 +10788,7 @@ paths:
                             description: Nombre de mois de versement de la bourse
                               à l'étudiant.
                             example: 12
+                        x-scope: cnous_periode_versement
                         required:
                         - date_rentree
                         - duree
@@ -10728,6 +10808,7 @@ paths:
                             type: string
                             description: Nom de l'établissement d'études de l'étudiant.
                             example: Carnot
+                        x-scope: cnous_ville_etudes
                         required:
                         - nom_commune
                         - nom_etablissement
@@ -10764,6 +10845,7 @@ paths:
                             enum:
                             - true
                             - false
+                        x-scope: cnous_echelon_bourse
                         required:
                         - echelon
                         - echelon_bourse_regionale_provisoire
@@ -10772,6 +10854,7 @@ paths:
                         type: string
                         description: Adresse e-mail de l'étudiant boursier.
                         example: georges@moustaki.fr
+                        x-scope: cnous_email
                       identite:
                         title: Données d'identité
                         type: object
@@ -10818,6 +10901,7 @@ paths:
                             enum:
                             - M
                             - F
+                        x-scope: cnous_identite
                         required:
                         - nom
                         - prenoms
@@ -11203,6 +11287,7 @@ paths:
                         - pas_en_regle
                         - indetermine
                         - non_concerne
+                        x-scope: dsnj_statut_service_national
                       commentaires:
                         title: Commentaires de la DSNJ
                         type: string
@@ -11210,6 +11295,7 @@ paths:
                           national et de la jeunesse (DSNJ), notamment pour les cas
                           particuliers.
                         nullable: true
+                        x-scope: dsnj_statut_service_national
                     required:
                     - statut_service_national
                     - commentaires
@@ -11573,6 +11659,7 @@ paths:
                         - pas_en_regle
                         - indetermine
                         - non_concerne
+                        x-scope: dsnj_statut_service_national
                       commentaires:
                         title: Commentaires de la DSNJ
                         type: string
@@ -11580,6 +11667,7 @@ paths:
                           national et de la jeunesse (DSNJ), notamment pour les cas
                           particuliers.
                         nullable: true
+                        x-scope: dsnj_statut_service_national
                     required:
                     - statut_service_national
                     - commentaires
@@ -11857,6 +11945,7 @@ paths:
                                 acompte, avance, reversement).
                               type: number
                               example: 2.34
+                        x-scope: pole_emploi_paiements
                     required:
                     - identifiant
                     - paiements
@@ -12195,6 +12284,7 @@ paths:
                           tel que choisi par le particulier lors de la création de son
                           espace personnel en ligne.
                         example: martin.jacques
+                        x-scope: pole_emploi_identifiant
                       identite:
                         title: Données d'identité de l'utilisateur France Travail
                         description: 'Les informations d''identité retournées ici
@@ -12240,6 +12330,7 @@ paths:
                             type: string
                             description: Date de naissance au format YYYY-MM-DD.
                             example: '1995-02-02'
+                        x-scope: pole_emploi_identite
                         required:
                         - civilite
                         - nom_naissance
@@ -12269,6 +12360,7 @@ paths:
                             nullable: true
                             description: Adresse e-mail.
                             example: martin.jacques@france.fr
+                        x-scope: pole_emploi_contact
                         required:
                         - telephone
                         - telephone2
@@ -12315,6 +12407,7 @@ paths:
                             title: Nom du destinataire
                             type: string
                             example: MARTIN
+                        x-scope: pole_emploi_adresse
                         required:
                         - code_postal
                         - code_cog_insee_commune
@@ -12416,6 +12509,7 @@ paths:
                             - DC
                             - RC
                             -
+                        x-scope: pole_emploi_inscription
                         required:
                         - date_debut
                         - date_fin
@@ -12853,6 +12947,7 @@ paths:
                                 type: string
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                                 nullable: true
+                            x-scope: gip_mds_service_civique_organisme_accueil
                             required:
                             - siret
                             - raison_sociale
@@ -12865,6 +12960,7 @@ paths:
                             format: date
                             example: '2024-01-15'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
                           date_fin_contrat:
                             title: Date de fin du contrat
                             description: Date de fin prévue du contrat de service
@@ -12875,6 +12971,8 @@ paths:
                             format: date
                             example: '2024-07-14'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
+                        x-scope: gip_mds_service_civique_statut_actuel
                         required:
                         - contrat_trouve
                         - organisme_accueil
@@ -12914,6 +13012,7 @@ paths:
                                 type: string
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                                 nullable: true
+                            x-scope: gip_mds_service_civique_organisme_accueil
                             required:
                             - siret
                             - raison_sociale
@@ -12926,6 +13025,7 @@ paths:
                             format: date
                             example: '2024-01-15'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
                           date_fin_contrat:
                             title: Date de fin du contrat
                             description: Dernier jour du contrat de service civique,
@@ -12935,6 +13035,8 @@ paths:
                             format: date
                             example: '2024-07-14'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
+                        x-scope: gip_mds_service_civique_statut_passe
                         required:
                         - contrat_trouve
                         - organisme_accueil
@@ -13331,6 +13433,7 @@ paths:
                                 type: string
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                                 nullable: true
+                            x-scope: gip_mds_service_civique_organisme_accueil
                             required:
                             - siret
                             - raison_sociale
@@ -13343,6 +13446,7 @@ paths:
                             format: date
                             example: '2024-01-15'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
                           date_fin_contrat:
                             title: Date de fin du contrat
                             description: Date de fin prévue du contrat de service
@@ -13353,6 +13457,8 @@ paths:
                             format: date
                             example: '2024-07-14'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
+                        x-scope: gip_mds_service_civique_statut_actuel
                         required:
                         - contrat_trouve
                         - organisme_accueil
@@ -13392,6 +13498,7 @@ paths:
                                 type: string
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                                 nullable: true
+                            x-scope: gip_mds_service_civique_organisme_accueil
                             required:
                             - siret
                             - raison_sociale
@@ -13404,6 +13511,7 @@ paths:
                             format: date
                             example: '2024-01-15'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
                           date_fin_contrat:
                             title: Date de fin du contrat
                             description: Dernier jour du contrat de service civique,
@@ -13413,6 +13521,8 @@ paths:
                             format: date
                             example: '2024-07-14'
                             nullable: true
+                            x-scope: gip_mds_service_civique_dates
+                        x-scope: gip_mds_service_civique_statut_passe
                         required:
                         - contrat_trouve
                         - organisme_accueil
@@ -13828,6 +13938,7 @@ paths:
                             description: Date de naissance de l'élève au format AAAA-MM-JJ
                             type: string
                             example: '2000-01-20'
+                        x-scope: men_statut_identite
                         required:
                         - nom
                         - prenom
@@ -13851,6 +13962,7 @@ paths:
                             type: string
                             example: 1CAP1 STAFFEUR ORNEMANISTE
                             nullable: true
+                        x-scope: men_statut_module_elementaire_formation
                         required:
                         - code_mef_stat
                         - libelle
@@ -13876,6 +13988,7 @@ paths:
                             type: string
                             example: '06'
                             nullable: true
+                        x-scope: men_statut_etablissement
                         required:
                         - code_uai
                         - code_ministere_tutelle
@@ -13885,11 +13998,13 @@ paths:
                         type: string
                         pattern: "^\\d{4}$|^\\d{4}-\\d{4}$"
                         example: 2022-2023
+                        x-scope: men_statut_scolarite
                       est_scolarise:
                         title: Est scolarisé
                         description: Indique si l'élève est scolarisé dans un établissement.
                         type: boolean
                         example: true
+                        x-scope: men_statut_scolarite
                       statut_eleve:
                         title: Statut de l'élève
                         description: |
@@ -13919,6 +14034,7 @@ paths:
                               scolarisé dans l'établissement.
                             type: string
                             example: SCOLAIRE
+                        x-scope: men_statut_scolarite
                         required:
                         - code
                         - libelle
@@ -13932,6 +14048,7 @@ paths:
                         type: boolean
                         example: true
                         nullable: false
+                        x-scope: men_statut_boursier
                       echelon_bourse:
                         description: |
                           Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
@@ -13948,6 +14065,7 @@ paths:
                         - 4
                         - 5
                         - 6
+                        x-scope: men_echelon_bourse
                     required:
                     - identite
                     - module_elementaire_formation
@@ -14432,6 +14550,7 @@ paths:
                             description: Date de naissance de l'élève au format AAAA-MM-JJ
                             type: string
                             example: '2000-01-20'
+                        x-scope: men_statut_identite
                         required:
                         - nom
                         - prenom
@@ -14455,6 +14574,7 @@ paths:
                             type: string
                             example: 1CAP1 STAFFEUR ORNEMANISTE
                             nullable: true
+                        x-scope: men_statut_module_elementaire_formation
                         required:
                         - code_mef_stat
                         - libelle
@@ -14480,6 +14600,7 @@ paths:
                             type: string
                             example: '06'
                             nullable: true
+                        x-scope: men_statut_etablissement
                         required:
                         - code_uai
                         - code_ministere_tutelle
@@ -14489,11 +14610,13 @@ paths:
                         type: string
                         pattern: "^\\d{4}$|^\\d{4}-\\d{4}$"
                         example: 2022-2023
+                        x-scope: men_statut_scolarite
                       est_scolarise:
                         title: Est scolarisé
                         description: Indique si l'élève est scolarisé dans un établissement.
                         type: boolean
                         example: true
+                        x-scope: men_statut_scolarite
                       statut_eleve:
                         title: Statut de l'élève
                         description: |
@@ -14523,6 +14646,7 @@ paths:
                               scolarisé dans l'établissement.
                             type: string
                             example: SCOLAIRE
+                        x-scope: men_statut_scolarite
                         required:
                         - code
                         - libelle
@@ -14536,6 +14660,7 @@ paths:
                         type: boolean
                         example: true
                         nullable: false
+                        x-scope: men_statut_boursier
                       echelon_bourse:
                         description: |
                           Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
@@ -14552,6 +14677,7 @@ paths:
                         - 4
                         - 5
                         - 6
+                        x-scope: men_echelon_bourse
                     required:
                     - identite
                     - module_elementaire_formation
@@ -15050,6 +15176,7 @@ paths:
                             type: string
                             example: Externe libre
                             nullable: true
+                        x-scope: men_regime_pensionnat
                         required:
                         - code
                         - libelle
@@ -15085,6 +15212,7 @@ paths:
                             description: Date de naissance de l'élève au format AAAA-MM-JJ
                             type: string
                             example: '2000-01-20'
+                        x-scope: men_statut_identite
                         required:
                         - nom
                         - prenom
@@ -15108,6 +15236,7 @@ paths:
                             type: string
                             example: 1CAP1 STAFFEUR ORNEMANISTE
                             nullable: true
+                        x-scope: men_statut_module_elementaire_formation
                         required:
                         - code_mef_stat
                         - libelle
@@ -15133,6 +15262,7 @@ paths:
                             type: string
                             example: '06'
                             nullable: true
+                        x-scope: men_statut_etablissement
                         required:
                         - code_uai
                         - code_ministere_tutelle
@@ -15142,11 +15272,13 @@ paths:
                         type: string
                         pattern: "^\\d{4}$|^\\d{4}-\\d{4}$"
                         example: 2022-2023
+                        x-scope: men_statut_scolarite
                       est_scolarise:
                         title: Est scolarisé
                         description: Indique si l'élève est scolarisé dans un établissement.
                         type: boolean
                         example: true
+                        x-scope: men_statut_scolarite
                       statut_eleve:
                         title: Statut de l'élève
                         description: |
@@ -15176,6 +15308,7 @@ paths:
                               scolarisé dans l'établissement.
                             type: string
                             example: SCOLAIRE
+                        x-scope: men_statut_scolarite
                         required:
                         - code
                         - libelle
@@ -15189,6 +15322,7 @@ paths:
                         type: boolean
                         example: true
                         nullable: false
+                        x-scope: men_statut_boursier
                       echelon_bourse:
                         description: |
                           Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
@@ -15205,6 +15339,7 @@ paths:
                         - 4
                         - 5
                         - 6
+                        x-scope: men_echelon_bourse
                     required:
                     - regime_pensionnat
                     - identite
@@ -15694,6 +15829,7 @@ paths:
                                 Indique que l'étudiant est inscrit dans l'établissement.
 
                                 Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
+                              x-scope: mesri_admission_inscrit
                             regime_formation:
                               title: Régime de formation
                               description: "Régime de formation de l'étudiant. La
@@ -15739,12 +15875,14 @@ paths:
                                   - RF5
                                   - RF6
                                   - RF7
+                              x-scope: mesri_admission_regime_formation
                             code_cog_insee_commune:
                               title: COG de la commune de l'établissement d'études
                               type: string
                               description: Code officiel géographique (COG) de la
                                 commune de l'établissement d'études de l'étudiant.
                               example: '29085'
+                              x-scope: mesri_admission_commune_etudes
                             etablissement_etudes:
                               title: Établissement d'études
                               description: "Code UAI et libellé de l'établissement
@@ -15775,6 +15913,8 @@ paths:
                                     associée au code UAI.
                                   example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
                                     (01000)
+                              x-scope: mesri_admission_etablissement_etudes
+                        x-scope: mesri_admissions
                       identite:
                         title: Données d'identité de l'étudiant
                         description: Données d'identité de l'étudiant corrigées et
@@ -15804,6 +15944,7 @@ paths:
                             format: date
                             description: Date de naissance de l'étudiant.
                             example: '1992-11-29'
+                        x-scope: mesri_identite
                         required:
                         - nom_naissance
                         - prenom
@@ -16163,6 +16304,7 @@ paths:
                                 Indique que l'étudiant est inscrit dans l'établissement.
 
                                 Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
+                              x-scope: mesri_admission_inscrit
                             regime_formation:
                               title: Régime de formation
                               description: "Régime de formation de l'étudiant. La
@@ -16208,12 +16350,14 @@ paths:
                                   - RF5
                                   - RF6
                                   - RF7
+                              x-scope: mesri_admission_regime_formation
                             code_cog_insee_commune:
                               title: COG de la commune de l'établissement d'études
                               type: string
                               description: Code officiel géographique (COG) de la
                                 commune de l'établissement d'études de l'étudiant.
                               example: '29085'
+                              x-scope: mesri_admission_commune_etudes
                             etablissement_etudes:
                               title: Établissement d'études
                               description: "Code UAI et libellé de l'établissement
@@ -16244,6 +16388,8 @@ paths:
                                     associée au code UAI.
                                   example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
                                     (01000)
+                              x-scope: mesri_admission_etablissement_etudes
+                        x-scope: mesri_admissions
                     required:
                     - admissions
                     additionalProperties: false
@@ -16493,6 +16639,7 @@ paths:
                                 Indique que l'étudiant est inscrit dans l'établissement.
 
                                 Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
+                              x-scope: mesri_admission_inscrit
                             regime_formation:
                               title: Régime de formation
                               description: "Régime de formation de l'étudiant. La
@@ -16538,12 +16685,14 @@ paths:
                                   - RF5
                                   - RF6
                                   - RF7
+                              x-scope: mesri_admission_regime_formation
                             code_cog_insee_commune:
                               title: COG de la commune de l'établissement d'études
                               type: string
                               description: Code officiel géographique (COG) de la
                                 commune de l'établissement d'études de l'étudiant.
                               example: '29085'
+                              x-scope: mesri_admission_commune_etudes
                             etablissement_etudes:
                               title: Établissement d'études
                               description: "Code UAI et libellé de l'établissement
@@ -16574,6 +16723,8 @@ paths:
                                     associée au code UAI.
                                   example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
                                     (01000)
+                              x-scope: mesri_admission_etablissement_etudes
+                        x-scope: mesri_admissions
                       identite:
                         title: Données d'identité de l'étudiant
                         description: Données d'identité de l'étudiant corrigées et
@@ -16603,6 +16754,7 @@ paths:
                             format: date
                             description: Date de naissance de l'étudiant.
                             example: '1992-11-29'
+                        x-scope: mesri_identite
                         required:
                         - nom_naissance
                         - prenom
@@ -16986,6 +17138,7 @@ paths:
                             enum:
                             - F
                             - M
+                        x-scope: sdh_statut_sportif_identite
                         required:
                         - nom_naissance
                         - nom_usage
@@ -16998,12 +17151,14 @@ paths:
                         description: Indique si la personne est actuellement un sportif
                           de haut niveau.
                         example: true
+                        x-scope: sdh_statut_sportif_est_sportif_de_haut_niveau
                       a_ete_sportif_de_haut_niveau:
                         title: A été sportif de haut niveau
                         type: boolean
                         description: Indique si la personne a été un sportif de haut
                           niveau dans le passé.
                         example: true
+                        x-scope: sdh_statut_sportif_a_ete_sportif_de_haut_niveau
                       informations_statut:
                         title: Informations du statut sportif
                         type: object
@@ -17123,6 +17278,7 @@ paths:
                             description: Indique si ce statut correspond à un sportif
                               de haut niveau.
                             example: true
+                        x-scope: sdh_statut_sportif_informations_statut
                         required:
                         - periode
                         - federation
@@ -17240,6 +17396,7 @@ paths:
                               description: Indique si ce statut correspond à un sportif
                                 de haut niveau.
                               example: true
+                        x-scope: sdh_statut_sportif_informations_statuts_precedents
                     required:
                     - identite
                     - est_sportif_de_haut_niveau

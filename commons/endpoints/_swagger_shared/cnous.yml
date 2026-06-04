@@ -7,6 +7,7 @@ cnous:
     identity_attributes: &identity_attributes
       identite:
         title: Données d'identité
+        scope: cnous_identite
         type: object
         description: "Données d'identité de l'étudiant boursier. Ces informations d'identité sont saisies manuellement par les étudiants. 
           \n\n
@@ -49,12 +50,14 @@ cnous:
     boursier_attribute: &boursier_attribute
       est_boursier:
         title: Est boursier
+        scope: cnous_statut_boursier
         type: boolean
         description: Indique que l'étudiant est boursier.
         example: true
     common_attributes: &common_attributes
       periode_versement_bourse:
         title: Période de versement de la bourse
+        scope: cnous_periode_versement
         description: Informations relatives à la période de versement de la bourse de l'étudiant.
         type: object
         properties:
@@ -71,6 +74,7 @@ cnous:
             example: 12
       etablissement_etudes:
         title: Établissement d'études de l'étudiant
+        scope: cnous_ville_etudes
         description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études.
         type: object
         properties:
@@ -86,6 +90,7 @@ cnous:
             example: Carnot
       echelon_bourse:
         title: Informations concernant l'échelon de la bourse
+        scope: cnous_echelon_bourse
         description: Informations relatives à l'échelon de la bourse.
         type: object
         properties:
@@ -115,6 +120,7 @@ cnous:
               - false
       email:
         title: E-mail
+        scope: cnous_email
         type: string
         description: Adresse e-mail de l'étudiant boursier.
         example: georges@moustaki.fr
@@ -123,6 +129,7 @@ cnous:
     statut_boursier_attributes: &statut_boursier_attributes
       statut_boursier:
         title: Statut boursier
+        scope: cnous_statut_boursier
         description: Informations relatives au statut boursier de l'étudiant, incluant la radiation éventuelle.
         type: object
         properties:

@@ -113,6 +113,7 @@ fiche:
         attributes:
           identite:
             title: Données d'identité du sportif
+            scope: sdh_statut_sportif_identite
             type: object
             description: Informations d'identité du sportif.
             properties:
@@ -147,16 +148,19 @@ fiche:
                 - M
           est_sportif_de_haut_niveau:
             title: Est sportif de haut niveau
+            scope: sdh_statut_sportif_est_sportif_de_haut_niveau
             type: boolean
             description: Indique si la personne est actuellement un sportif de haut niveau.
             example: true
           a_ete_sportif_de_haut_niveau:
             title: A été sportif de haut niveau
+            scope: sdh_statut_sportif_a_ete_sportif_de_haut_niveau
             type: boolean
             description: Indique si la personne a été un sportif de haut niveau dans le passé.
             example: true
           informations_statut:
             title: Informations du statut sportif
+            scope: sdh_statut_sportif_informations_statut
             type: object
             description: Détails du statut sportif actuel.
             properties:
@@ -254,6 +258,7 @@ fiche:
                 example: true
           informations_statuts_precedents:
             title: Historique des statuts précédents
+            scope: sdh_statut_sportif_informations_statuts_precedents
             type: array
             description: Détails historiques des statuts sportifs précédents.
             items:

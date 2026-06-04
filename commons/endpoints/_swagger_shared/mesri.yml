@@ -8,6 +8,7 @@ mesri:
     identity_attributes: &identity_attributes
       identite:
         title: Données d'identité de l'étudiant
+        scope: mesri_identite
         description: "Données d'identité de l'étudiant corrigées et certifiées via l'API Ines qui croise l'état civil et le numéro INE de l'étudiant."
         type: object
         properties: 
@@ -33,6 +34,7 @@ mesri:
     attributes_without_identity: &attributes_without_identity
       admissions:
         title: Liste des admissions de l'étudiant dans les établissements
+        scope: mesri_admissions
         description: |+
           Liste des admissions de l'étudiant dans un ou plusieurs établissements d'enseignement supérieur pour l'année en cours. 
 
@@ -57,6 +59,7 @@ mesri:
               example: 2023-08-31
             est_inscrit:
               title: Est inscrit
+              scope: mesri_admission_inscrit
               type: boolean
               example: true
               enum:
@@ -64,10 +67,11 @@ mesri:
               - false
               description: |
                 Indique que l'étudiant est inscrit dans l'établissement.
-                
+
                 Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
             regime_formation:
               title: Régime de formation
+              scope: mesri_admission_regime_formation
               description: |+
                 Régime de formation de l'étudiant. La liste des régimes possibles est la suivante : 
                   - RF1 : formation initiale
@@ -109,11 +113,13 @@ mesri:
                     - RF7
             code_cog_insee_commune:
               title: COG de la commune de l'établissement d'études
+              scope: mesri_admission_commune_etudes
               type: string
               description: Code officiel géographique (COG) de la commune de l'établissement d'études de l'étudiant.
               example: '29085'
             etablissement_etudes:
               title: Établissement d'études
+              scope: mesri_admission_etablissement_etudes
               description: |+
                 Code UAI et libellé de l'établissement d'enseignement supérieur dans lequel l'étudiant est admis. 
               
