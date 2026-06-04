@@ -158,6 +158,8 @@ module RSwagResourcesPayloads
   end
 
   def add_required_keys_to_all_type_object(attributes)
+    promote_scopes_to_extensions!(attributes)
+
     attributes.each do |key, schema|
       next unless schema['type'] == 'object'
 
@@ -166,6 +168,18 @@ module RSwagResourcesPayloads
     end
 
     attributes
+  end
+
+  def promote_scopes_to_extensions!(node)
+    case node
+    in Hash
+      node['x-scope'] = node.delete('scope') if node['scope']
+      node.each_value { |child| promote_scopes_to_extensions!(child) }
+    in Array
+      node.each { |child| promote_scopes_to_extensions!(child) }
+    else
+      nil
+    end
   end
 
   def build_custom_example(example)
