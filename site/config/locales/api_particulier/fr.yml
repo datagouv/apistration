@@ -172,6 +172,9 @@ fr:
           title: "Les données"
         attributes:
           title: "Informations renvoyées en JSON :"
+        scopes:
+          title: Les scopes
+          intro_html: "Les champs de la réponse signalés par une étiquette violette ne sont retournés que si votre jeton porte le scope correspondant. <a href='/developpeurs#scopes-et-perimetres'>En savoir plus sur le mécanisme des scopes</a>."
         faq:
           title: "Questions & réponses"
         historique:

@@ -55,6 +55,9 @@
                 <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#donnees">Données distribuées</a>
             </li>
             <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#scopes">Scopes</a>
+            </li>
+            <li>
                 <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#faq">Q & R</a>
             </li>
              <% if @endpoint.historicized? %>
@@ -218,6 +221,23 @@
             %>
           <% end %>
         </div>
+
+        <% if @endpoint.scopes.any? %>
+          <h2 id="scopes" class="fr-mt-md-5w fr-mt-8w">
+            <%= t('.scopes.title') %>
+          </h2>
+
+          <p><%= t('.scopes.intro_html').html_safe %></p>
+
+          <ul class="fr-mb-3w">
+            <% @endpoint.scopes.each do |scope_name| %>
+              <li>
+                <strong><%= humanize_scope(scope_name, 'particulier').split('||').last.strip %></strong>
+                <code>(<%= scope_name %>)</code>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
 
         <% if @endpoint.faq.any? %>
           <h2 id="faq" class="fr-mt-md-5w fr-mt-8w">

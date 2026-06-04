@@ -33,4 +33,21 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
       end
     end
   end
+
+  describe 'scope badges and scope list' do
+    it 'renders a purple badge carrying the raw scope name next to each gated attribute' do
+      expect(page).to have_css('#property_attribute_allocataires .fr-badge--purple-glycine', text: 'cnaf_allocataires')
+      expect(page).to have_css('#property_attribute_enfants .fr-badge--purple-glycine', text: 'cnaf_enfants')
+      expect(page).to have_css('#property_attribute_adresse .fr-badge--purple-glycine', text: 'cnaf_adresse')
+      expect(page).to have_css('#property_attribute_quotient_familial .fr-badge--purple-glycine', text: 'cnaf_quotient_familial')
+    end
+
+    it "exposes the controller's scopes in a top-level Scopes section below Les données" do
+      expect(page).to have_css('h2#scopes')
+      expect(page).to have_css('h2#scopes + p + ul li code', text: '(cnaf_quotient_familial)')
+      expect(page).to have_css('h2#scopes + p + ul li code', text: '(cnaf_allocataires)')
+      expect(page).to have_css('h2#scopes + p + ul li code', text: '(cnaf_enfants)')
+      expect(page).to have_css('h2#scopes + p + ul li code', text: '(cnaf_adresse)')
+    end
+  end
 end

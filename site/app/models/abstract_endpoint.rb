@@ -135,6 +135,10 @@ class AbstractEndpoint
     @attributes ||= extract_data_from_schema
   end
 
+  def scopes
+    @scopes ||= RouteScopesStore.scopes_for(controller)
+  end
+
   def redoc_anchor
     @redoc_anchor ||= "tag/#{tag_for_redoc}/paths/#{path_for_redoc}/get"
   end
