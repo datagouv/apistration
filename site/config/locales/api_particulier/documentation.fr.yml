@@ -566,6 +566,34 @@ fr:
 
                   La réponse JSON renvoie la liste des API et champs autorisées. Retrouvez-leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
 
+          - anchor: 'scopes-et-perimetres'
+            title: "Scopes&nbsp;: périmètres et données distribuées&nbsp;🎯"
+            subsections:
+              - title: "Pourquoi des scopes&nbsp;?"
+                anchor: 'pourquoi-des-scopes'
+                content: |+
+                  En application de l'article [L144-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}, API&nbsp;Particulier ne peut faire circuler que les **informations strictement nécessaires** à la démarche que vous instruisez.
+
+                  Pour faire respecter ce devoir de minimisation, votre jeton d'accès est associé à des **scopes**&nbsp;: chaque scope agit comme un masque sur le contenu de la réponse JSON. Si votre jeton ne possède pas un scope, le champ qu'il protège n'est pas inclus dans la réponse — même si l'API source l'a renvoyé.
+
+                  Vos scopes sont attribués lors de la validation de votre [demande d'habilitation](https://datapass.api.gouv.fr){:target="_blank"} en fonction des cases que vous cochez. Vous n'avez aucune action à mener côté technique pour les activer&nbsp;: ils sont portés par le jeton lui-même.
+
+              - title: "Comment savoir quels champs nécessitent un scope&nbsp;?"
+                anchor: 'savoir-quels-champs-necessitent-un-scope'
+                content: |+
+                  Sur chaque fiche d'endpoint, regardez la section **Les scopes**, juste en-dessous de **Les données**. Elle récapitule l'ensemble des scopes que peut porter le jeton appelant cet endpoint, avec leur libellé humain (identique à celui affiché sur datapass au moment de votre demande d'habilitation) et leur nom technique.
+
+                  Plus haut, dans **Les données**, chaque attribut gardé par un scope porte un badge violet `<nom_technique>` à côté de son titre. Les attributs **sans** badge sont retournés indépendamment du jeton (métadonnées, paramètres rappelés dans la réponse, etc.).
+
+              - title: "Que se passe-t-il si mon jeton n'a aucun des scopes&nbsp;?"
+                anchor: 'que-se-passe-t-il-si-aucun-scope'
+                content: |+
+                  Si votre jeton est valide mais ne porte **aucun** des scopes listés pour le endpoint appelé, l'API ne calcule pas la réponse et renvoie directement un statut HTTP `403 Forbidden` accompagné d'un payload d'erreur signalant des droits insuffisants. Aucune donnée du fournisseur n'est requêtée.
+
+                  Une réponse `200` avec un payload **vide** ne se produit donc jamais à cause des scopes&nbsp;: dès qu'il y a au moins un scope en commun entre votre jeton et le endpoint, l'API construit la réponse en n'incluant que les champs autorisés. Si tous les champs autorisés sont par ailleurs absents côté fournisseur, ils sortent à `null` — pas masqués.
+
+                  À distinguer côté intégration&nbsp;: `401 Unauthorized` signale un jeton absent, invalide ou expiré (à rafraîchir)&nbsp;; `403 Forbidden` signale un jeton valide mais des droits insuffisants (à compléter via une réouverture de votre habilitation sur [datapass](https://datapass.api.gouv.fr){:target="_blank"}).
+
           - anchor: 'sdks-officiels'
             title: SDKs officiels&nbsp;📦
             content: |+
