@@ -1,11 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, type: %i[request swagger] do
-  path '/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}' do
-    get SwaggerData.get('dgfip.liasses_fiscales.v3.title') do
-      deprecated true
-
-      tags(*SwaggerData.get('dgfip.liasses_fiscales.v3.tags'))
+  path '/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}' do
+    get SwaggerData.get('dgfip.liasses_fiscales.v4.title') do
+      tags(*SwaggerData.get('dgfip.liasses_fiscales.v4.tags'))
 
       cacheable_request
 
@@ -34,15 +32,15 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
             mock_valid_dgfip_liasse_fiscale(valid_siren(:liasse_fiscale), 2017)
           end
 
-          description SwaggerData.get('dgfip.liasses_fiscales.v3.description')
+          description SwaggerData.get('dgfip.liasses_fiscales.v4.description')
 
           cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
 
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('dgfip.liasses_fiscales.v3.attributes'),
-            meta: SwaggerData.get('dgfip.liasses_fiscales.v3.meta')
+            attributes: SwaggerData.get('dgfip.liasses_fiscales.v4.attributes'),
+            meta: SwaggerData.get('dgfip.liasses_fiscales.v4.meta')
           )
 
           run_test!

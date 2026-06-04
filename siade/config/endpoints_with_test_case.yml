@@ -20,6 +20,10 @@
   api: 'entreprise'
   path: '/v3/dgfip/unites_legales/301028346/liasses_fiscales/2016'
 
+- name: 'DGFIP Liasses fiscales'
+  api: 'entreprise'
+  path: '/v4/dgfip/unites_legales/301028346/liasses_fiscales/2016'
+
 - name: 'DGFIP Liens capitalistiques'
   api: 'entreprise'
   path: '/v3/dgfip/unites_legales/487579690/liens_capitalistiques/2019'

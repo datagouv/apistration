@@ -45,15 +45,18 @@ module ApiEntreprise
 
       # Liasses fiscales
       # Logical endpoint: /dgfip/unites_legales/{siren}/liasses_fiscales/{year}
-      # Versions available: [3] — default: 3
+      # Versions available: [3, 4] — default: 4
       def liasses_fiscales(siren, year, version: nil, recipient: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
-          case version || 3
+          case version || 4
           when 3
+          warn "[DEPRECATED] /v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year} (#liasses_fiscales): marked deprecated in the OpenAPI spec.", uplevel: 1
           "/v3/dgfip/unites_legales/#{siren}/liasses_fiscales/#{year}"
+          when 4
+          "/v4/dgfip/unites_legales/#{siren}/liasses_fiscales/#{year}"
           else
-            raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/liasses_fiscales/{year}; supported: [3]"
+            raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/liasses_fiscales/{year}; supported: [3, 4]"
           end
         @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end

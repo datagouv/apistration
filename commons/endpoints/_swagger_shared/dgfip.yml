@@ -37,13 +37,13 @@ dgfip:
           type: 'date'
 
   liasses_fiscales:
-    declarations:
-      title: "Liasses fiscales"
-      description: "Informations renseignées dans les liasses fiscales, issues des déclarations de résultat d’une entreprise auprès de la Direction générale des finances publiques (DGFIP)."
-      tags:
+    v3:
+      title: &dgfip_liasses_fiscales_title "Liasses fiscales"
+      description: &dgfip_liasses_fiscales_description "Informations renseignées dans les liasses fiscales, issues des déclarations de résultat d’une entreprise auprès de la Direction générale des finances publiques (DGFIP)."
+      tags: &dgfip_liasses_fiscales_tags
         - "Informations financières"
       attributes:
-        obligations_fiscales:
+        obligations_fiscales: &dgfip_liasses_fiscales_obligations_fiscales
           type: 'array'
           title: "Règles d’imposition applicables au résultat de l'unité légale (nommé obf en interne)"
           description: "Une entité légale peut posséder plusieurs règles d'impositions, notamment si celle-ci fait partie d'un groupe."
@@ -121,7 +121,7 @@ dgfip:
           items:
             type: 'object'
             additionalProperties: false
-            required:
+            required: &dgfip_liasses_fiscales_declaration_required
               - numero_imprime
               - regime
               - date_declaration
@@ -130,13 +130,13 @@ dgfip:
               - millesime
               - donnees
             properties:
-              numero_imprime:
+              numero_imprime: &dgfip_liasses_fiscales_numero_imprime
                 title: "Numéro d'imprimé"
                 type: 'string'
                 description: "Numéro du formulaire de la liasse fiscale souscrit par
                   l’unité légale."
                 example: "2033A"
-              regime:
+              regime: &dgfip_liasses_fiscales_regime
                 title: "Régime d’imposition applicable au résultat fiscal de l'unité légale"
                 type: 'object'
                 additionalProperties: false
@@ -171,7 +171,7 @@ dgfip:
                     description: "La liste exhaustive se trouve dans la description du code"
                     type: 'string'
                     example: 'Réel simplifié'
-              date_declaration:
+              date_declaration: &dgfip_liasses_fiscales_date_declaration
                 title: "Date de dépôt de la déclaration"
                 type: 'string'
                 description: "
@@ -179,12 +179,12 @@ dgfip:
                   \n
                   - Si dépôt papier : date de réception par les Services des Impôts des Entreprises"
                 example: "2012-12-26"
-              date_fin_exercice:
+              date_fin_exercice: &dgfip_liasses_fiscales_date_fin_exercice
                 title: "Date de fin d’exercice fiscal de l'unité légale"
                 type: 'string'
                 description: "Équivalent à la date de fin de la période d'imposition"
                 example: "2012-12-31"
-              duree_exercice:
+              duree_exercice: &dgfip_liasses_fiscales_duree_exercice
                 title: "Durée de l'exercice en jours"
                 type: 'number'
                 description: "Durée de l’exercice fiscal calculée à partir des dates de début et de fin de la période d’imposition déclarées sur la déclaration souscrite par l'unité légale.
@@ -193,7 +193,7 @@ dgfip:
                   Généralement cette valeur est de 365 jours, mais parfois 180 jours. Il y a une obligation fiscale déclarative au 31/12 de chaque année même s’il s’agit d’un dépôt provisoire."
 
                 example: 365
-              millesime:
+              millesime: &dgfip_liasses_fiscales_millesime
                 title: "Millesime"
                 type: 'string'
                 description: "Code composé de 6 caractères:
@@ -203,13 +203,13 @@ dgfip:
                   - 2 caractères correspondant au numéro de version du formulaire, commençant à 01"
                 example: "201701"
               donnees:
-                title: "Données de l'imprimé"
+                title: &dgfip_liasses_fiscales_donnees_title "Données de l'imprimé"
                 type: 'array'
-                description: "Chaque entrée du tableau correspondant à couple code / valeur, spécifique au numéro d'imprimé référencé à la clé `numero_imprime`"
+                description: &dgfip_liasses_fiscales_donnees_description "Chaque entrée du tableau correspondant à couple code / valeur, spécifique au numéro d'imprimé référencé à la clé `numero_imprime`"
                 items:
                   type: 'object'
                   additionalProperties: false
-                  required:
+                  required: &dgfip_liasses_fiscales_donnee_required
                     - 'code_nref'
                     - 'valeurs'
                   properties:
@@ -233,17 +233,17 @@ dgfip:
                       description: 'Ce code détermine la nature de la donnée, le nombre et type des caractères qu’elle peut contenir'
                       type: 'string'
                       example: 'CCI'
-                    intitule:
+                    intitule: &dgfip_liasses_fiscales_donnee_intitule
                       title: 'Intitulé'
                       description: 'Intitulé de la donnée. Désigne une donnée correspondant à une case à cocher présente en haut de certains
 tableaux de la liasse fiscale'
                       type: 'string'
                       example: 'Déposé néant'
-                    code_nref:
+                    code_nref: &dgfip_liasses_fiscales_donnee_code_nref
                       title: "A un code N-REF correspond un code absolu pour les liasses fiscales. Ces deux codes désignent une seule donnée présente sur un seul formulaire"
                       type: 'string'
                       example: '304651'
-                    valeurs:
+                    valeurs: &dgfip_liasses_fiscales_donnee_valeurs
                       title: "Valeurs associés à l'entrée "
                       description: "Si une entrée de l'imprimé est répétable, le tableau contient plusieurs entrées et sont ordonnées en fonction de l'indice de répétition. Les indices ne sont pas forcément continue, il peut y avoir des valeurs manquantes. Lors que c'est le cas, celle-ci est remplacée par la valeur `null`"
                       type: "array"
@@ -255,12 +255,44 @@ tableaux de la liasse fiscale'
                         - null
                         - '5672'
 
-      meta:
+      meta: &dgfip_liasses_fiscales_meta
         internal_id_itip:
           title: "Identifiant interne dénommé ITIP de la DGFIP"
           type: 'string'
           description: "Identifiant technique interne de la DGFIP ITIP: Identifiant Transversal Informatique de la Personne"
           example: '100004763104'
+    v4:
+      title: *dgfip_liasses_fiscales_title
+      description: *dgfip_liasses_fiscales_description
+      tags: *dgfip_liasses_fiscales_tags
+      attributes:
+        obligations_fiscales: *dgfip_liasses_fiscales_obligations_fiscales
+        declarations:
+          type: "array"
+          items:
+            type: 'object'
+            additionalProperties: false
+            required: *dgfip_liasses_fiscales_declaration_required
+            properties:
+              numero_imprime: *dgfip_liasses_fiscales_numero_imprime
+              regime: *dgfip_liasses_fiscales_regime
+              date_declaration: *dgfip_liasses_fiscales_date_declaration
+              date_fin_exercice: *dgfip_liasses_fiscales_date_fin_exercice
+              duree_exercice: *dgfip_liasses_fiscales_duree_exercice
+              millesime: *dgfip_liasses_fiscales_millesime
+              donnees:
+                title: *dgfip_liasses_fiscales_donnees_title
+                type: 'array'
+                description: *dgfip_liasses_fiscales_donnees_description
+                items:
+                  type: 'object'
+                  additionalProperties: false
+                  required: *dgfip_liasses_fiscales_donnee_required
+                  properties:
+                    intitule: *dgfip_liasses_fiscales_donnee_intitule
+                    code_nref: *dgfip_liasses_fiscales_donnee_code_nref
+                    valeurs: *dgfip_liasses_fiscales_donnee_valeurs
+      meta: *dgfip_liasses_fiscales_meta
 
 
   chiffres_affaires:
