@@ -246,6 +246,7 @@ paths:
                             type: string
                             description: Le code du département de naissance du demandeur.
                             example: '75'
+                        x-scope: ants_extrait_immatriculation_vehicule_identite_particulier
                         required:
                         - nom
                         - prenom

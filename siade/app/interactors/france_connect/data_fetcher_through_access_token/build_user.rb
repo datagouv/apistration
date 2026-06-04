@@ -1,4 +1,8 @@
 class FranceConnect::DataFetcherThroughAccessToken::BuildUser < FranceConnect::DataFetcherThroughAccessToken::BuildDataFromAccessTokenInteractor
+  ALLOWED_IDENTITY_SCOPES = %w[
+    ants_extrait_immatriculation_vehicule_identite_particulier
+  ].freeze
+
   def call
     context.user = build_user
   end
@@ -39,7 +43,7 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildUser < FranceConnect::D
   end
 
   def remove_api_identity_scopes(scopes)
-    scopes.reject { |scope| scope.include? '_identite' }
+    scopes.reject { |scope| scope.include?('_identite') && ALLOWED_IDENTITY_SCOPES.exclude?(scope) }
   end
 
   def api_version

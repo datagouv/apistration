@@ -14,6 +14,14 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::BuildUser, type: :i
       it 'gets scopes from access token payload without api_name_identite' do
         expect(call.user.scopes).to eq(%w[mesri_identifiant openid identite_pivot])
       end
+
+      context 'with an allowlisted identity scope' do
+        let(:scopes) { 'mesri_identifiant ants_extrait_immatriculation_vehicule_identite_particulier' }
+
+        it 'keeps the allowlisted identity scope' do
+          expect(call.user.scopes).to include('ants_extrait_immatriculation_vehicule_identite_particulier')
+        end
+      end
     end
 
     context 'when API version is 2' do
