@@ -35,7 +35,10 @@ class Seeds
   end
 
   def create_scopes(api)
-    YAML.load_file(Rails.root.join("config/data/scopes/#{api}.yml"))
+    namespace = "api_#{api}/"
+    RouteScopesStore.instance.index
+      .select { |controller, _| controller.start_with?(namespace) }
+      .values.flatten.uniq
   end
 
   private
