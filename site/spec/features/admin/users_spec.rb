@@ -20,6 +20,17 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
       expect(page).to have_text("connecté en tant que #{user.email}")
       expect(page).to have_current_path(authorization_requests_path)
     end
+
+    it 'records the impersonation activity' do
+      expect { impersonate }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.last).to have_attributes(
+        name: 'impersonation_started',
+        admin:,
+        namespace: 'entreprise',
+        entity: user
+      )
+    end
   end
 
   describe 'search' do
@@ -101,6 +112,17 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
       end
 
       let!(:user) { create(:user, provider_uids: ['insee']) }
+
+      it 'records the update activity' do
+        expect { add_provider_to_user }.to change(AdminActivity, :count).by(1)
+
+        expect(AdminActivity.last).to have_attributes(
+          name: 'user_updated',
+          admin:,
+          namespace: 'entreprise',
+          entity: user
+        )
+      end
 
       it 'allows adding providers to a user' do
         add_provider_to_user

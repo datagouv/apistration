@@ -40,6 +40,17 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_css('.fr-alert.fr-alert--success')
     end
 
+    it 'records the update activity' do
+      expect { subject }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.last).to have_attributes(
+        name: 'editor_updated',
+        admin:,
+        namespace: 'entreprise',
+        entity: editor
+      )
+    end
+
     it 'allows toggling delegations_enabled' do
       visit edit_admin_editor_path(editor)
 
@@ -48,6 +59,24 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
       expect(editor.reload.delegations_enabled).to be true
       expect(page).to have_css('.fr-alert.fr-alert--success')
+    end
+  end
+
+  describe 'generating an editor token' do
+    let(:editor) { create(:editor) }
+
+    it 'records the activity' do
+      visit edit_admin_editor_path(editor)
+
+      expect { click_on 'Générer un nouveau jeton éditeur' }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.last).to have_attributes(
+        name: 'editor_token_created',
+        admin:,
+        namespace: 'entreprise',
+        entity: editor.tokens.last
+      )
+      expect(AdminActivity.last.after_attributes).to eq('exp' => editor.tokens.last.exp)
     end
   end
 end

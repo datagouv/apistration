@@ -14,7 +14,9 @@ class Admin::UsersController < AdminController
   def update
     @user = User.find(params.expect(:id))
 
-    if @user.update(user_update_params)
+    result = Admin::Users::Update.call(user: @user, user_params: user_update_params, admin: true_user, namespace:)
+
+    if result.success?
       success_message(title: "Utilisateur #{@user.email} a bien été modifié")
 
       redirect_to admin_users_path
@@ -27,11 +29,13 @@ class Admin::UsersController < AdminController
     user = User.find(params.expect(:id))
 
     impersonate_user(user)
+    Admin::Impersonations::Start.call(admin: true_user, namespace:, user:)
 
     redirect_to authorization_requests_path
   end
 
   def stop_impersonating
+    Admin::Impersonations::Stop.call(admin: true_user, namespace:, user: current_user)
     stop_impersonating_user
 
     redirect_to admin_users_path

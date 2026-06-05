@@ -10,7 +10,9 @@ class Admin::EditorsController < AdminController
   def update
     @editor = Editor.find(params.expect(:id))
 
-    if @editor.update(editor_update_params)
+    result = Admin::Editors::Update.call(editor: @editor, editor_params: editor_update_params, admin: true_user, namespace:)
+
+    if result.success?
       success_message(title: 'Éditeur mis à jour')
 
       redirect_to admin_editors_path
