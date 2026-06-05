@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_100000) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_05_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -27,6 +27,23 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_100000) do
     t.string "status"
     t.timestamptz "timestamp", null: false
     t.uuid "token_id"
+  end
+
+  create_table "admin_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "admin_id", null: false
+    t.jsonb "after_attributes", default: {}, null: false
+    t.jsonb "before_attributes", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.uuid "entity_id"
+    t.string "entity_type"
+    t.string "name", null: false
+    t.string "namespace", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_admin_activities_on_admin_id"
+    t.index ["created_at"], name: "index_admin_activities_on_created_at"
+    t.index ["entity_type", "entity_id"], name: "index_admin_activities_on_entity"
+    t.index ["name"], name: "index_admin_activities_on_name"
+    t.index ["namespace"], name: "index_admin_activities_on_namespace"
   end
 
   create_table "audit_notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -324,6 +341,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_100000) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "admin_activities", "users", column: "admin_id"
   add_foreign_key "authorization_request_security_settings", "authorization_requests"
   add_foreign_key "changelog_subscriptions", "users", validate: false
   add_foreign_key "editor_delegations", "authorization_requests"
