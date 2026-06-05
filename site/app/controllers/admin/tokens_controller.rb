@@ -14,7 +14,8 @@ class Admin::TokensController < AdminController
     result = Admin::Tokens::Create.call(
       authorization_request: @user.authorization_requests.eligible_for_token_creation.find(params.expect(:authorization_request_id)),
       exp_date: params[:exp],
-      admin: current_user
+      admin: current_user,
+      namespace:
     )
 
     if result.success?

@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Admin::AuditNotifications::Create, type: :organizer do
   describe '.call' do
-    subject { described_class.call(audit_notification_params: params, namespace: 'entreprise') }
+    subject { described_class.call(audit_notification_params: params, namespace: 'entreprise', admin:) }
 
+    let(:admin) { create(:user, :admin) }
     let!(:organization) { create(:organization, :with_insee_payload, siret: '13002526500013') }
     let(:authorization_request) { create(:authorization_request, :with_demandeur, siret: '13002526500013') }
     let(:token) { create(:token, authorization_request: authorization_request) }

@@ -31,18 +31,27 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
         expect { subject }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(2).times
       end
 
-      it 'tracks the ban event' do
-        expect(MonitoringService.instance).to receive(:track).with(
-          'Ban token by admin',
-          level: 'info',
-          context: hash_including(
-            admin_id: admin.id,
-            token_id: token.id,
-            datapass_id: token.authorization_request.external_id
-          )
-        )
+      it 'records an admin activity' do
+        expect { subject }.to change(AdminActivity, :count).by(1)
 
+        expect(AdminActivity.last).to have_attributes(
+          name: 'token_banned',
+          admin:,
+          namespace: 'entreprise',
+          entity: token
+        )
+      end
+
+      it 'stores the ban details in the activity' do
         subject
+
+        new_token = Token.where.not(id: token.id).order(created_at: :desc).first
+
+        expect(AdminActivity.last.before_attributes).to eq('blacklisted_at' => nil)
+        expect(AdminActivity.last.after_attributes).to include(
+          'generate_new_token' => true,
+          'new_token_id' => new_token.id
+        )
       end
 
       context 'when comment is provided' do
@@ -52,6 +61,12 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
         it 'sends emails with comment included' do
           expect { subject }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(2).times
+        end
+
+        it 'stores the comment in the activity' do
+          subject
+
+          expect(AdminActivity.last.after_attributes).to include('comment' => 'Token was compromised')
         end
       end
 
