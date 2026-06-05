@@ -1,0 +1,61 @@
+<h1 class="fr-h3"><%= t('.title') %></h1>
+
+<%= search_form_for(@q, url: admin_admin_activities_path, html: { method: :get, data: { turbo: false } }) do |f| %>
+  <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+    <div class="fr-col-12 fr-col-md-6">
+      <div class="fr-select-group">
+        <%= f.label :name_eq, t('.filters.name'), class: 'fr-label' %>
+        <%= f.select :name_eq,
+              AdminActivity::NAMES.map { |name| [t("admin_activities.names.#{name}"), name] },
+              { include_blank: t('.filters.all') },
+              class: 'fr-select' %>
+      </div>
+    </div>
+
+    <div class="fr-col-12 fr-col-md-6">
+      <div class="fr-input-group">
+        <%= f.label :admin_email_cont, t('.filters.admin_email'), class: 'fr-label' %>
+        <%= f.search_field :admin_email_cont, class: 'fr-input' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-btns-group fr-btns-group--inline-md">
+    <%= f.submit t('.filters.submit'), class: 'fr-btn' %>
+    <%= link_to t('.filters.reset'), admin_admin_activities_path, class: 'fr-btn fr-btn--secondary' %>
+  </div>
+<% end %>
+
+<% if @activities.any? %>
+  <div class="fr-table fr-table--bordered">
+    <table>
+      <caption><%= t('.table.caption') %></caption>
+      <thead>
+        <tr>
+          <th scope="col"><%= t('.table.date') %></th>
+          <th scope="col"><%= t('.table.admin') %></th>
+          <th scope="col"><%= t('.table.action') %></th>
+          <th scope="col"><%= t('.table.entity') %></th>
+          <th scope="col"><%= t('.table.details') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @activities.each do |activity| %>
+          <tr id="<%= dom_id(activity) %>" class="admin-activity">
+            <td><%= activity.created_at.strftime('%d/%m/%Y à %Hh%M') %></td>
+            <td class="admin-activity-admin"><%= activity.admin.email %></td>
+            <td>
+              <p class="fr-tag fr-tag--sm"><%= admin_activity_action_label(activity) %></p>
+            </td>
+            <td class="admin-activity-entity"><%= admin_activity_entity(activity) %></td>
+            <td class="admin-activity-details"><%= admin_activity_details(activity) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= paginate @activities %>
+<% else %>
+  <p><%= t('.empty') %></p>
+<% end %>

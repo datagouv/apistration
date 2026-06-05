@@ -1,0 +1,29 @@
+fr:
+  admin_activities:
+    names:
+      impersonation_started: "Connexion en tant qu'utilisateur"
+      impersonation_stopped: "Fin de connexion en tant qu'utilisateur"
+      token_banned: "Bannissement de jeton"
+      token_created: "Création de jeton"
+      editor_token_created: "Création de jeton éditeur"
+      user_updated: "Modification d'utilisateur"
+      editor_updated: "Modification d'éditeur"
+      audit_notification_created: "Notification d'audit"
+  admin:
+    admin_activities:
+      index:
+        title: "Journal d'activité"
+        filters:
+          name: "Action"
+          admin_email: "Email de l'administrateur"
+          all: "Toutes"
+          submit: "Filtrer"
+          reset: "Réinitialiser"
+        table:
+          caption: "Actions des administrateurs"
+          date: "Date"
+          admin: "Administrateur"
+          action: "Action"
+          entity: "Entité"
+          details: "Détails"
+        empty: "Aucune activité enregistrée."
