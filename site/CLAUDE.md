@@ -41,6 +41,24 @@ After each iteration:
    dépendances, fix de pings fournisseur, etc.) — uniquement ce qui
    change l'expérience d'un consommateur d'API.
 
+## Traçabilité des actions admin
+
+Toute action d'écriture d'un admin dans le back-office (`Admin::`) DOIT être
+tracée en base via un `AdminActivity` (inspiré du modèle `AdminEvent` de
+DataPass). Le tracking n'est jamais fait dans le contrôleur : il passe par un
+organizer qui se termine par l'interactor `Admin::TrackActivity`.
+
+- Nouvelle action admin = organizer `Admin::...` dont le dernier interactor
+  `organize`é est `Admin::TrackActivity`.
+- L'organizer pose `context.admin_activity_name` et `context.admin_entity_key`
+  (en `before`) ; pour un diff/payload riche, capturer
+  `context.admin_before_attributes` / `context.admin_after_attributes` (ex.
+  via un interactor `Capture...Attributes` placé juste avant `TrackActivity`).
+- Le contrôleur appelle l'organizer en passant `admin: true_user` et
+  `namespace:`.
+- Garde-fou : `spec/organizers/application_organizer_spec.rb` échoue si un
+  organizer `Admin::` ne se termine pas par `Admin::TrackActivity`.
+
 ## Code Style Guidelines
 
 - **Ruby Style**: Follow RuboCop configuration in `.rubocop.yml`

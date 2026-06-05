@@ -1,9 +1,6 @@
 class Seeds
   def perform
-    @user_email = 'user@yopmail.com'
     @user = create_main_user
-
-    @contact_email = 'contact_technique@yopmail.com'
     @contact = create_contact
 
     create_editor
@@ -17,6 +14,7 @@ class Seeds
     create_editor_token
     create_audit_notifications
     create_provider_dashboard_data
+    create_admin_activities
   end
 
   def flushdb
@@ -68,7 +66,7 @@ class Seeds
 
   def create_main_user
     create_user(
-      email: @user_email,
+      email: 'user@yopmail.com',
       first_name: 'Jean',
       last_name: 'Dupont'
     )
@@ -76,7 +74,7 @@ class Seeds
 
   def create_contact
     create_user(
-      email: @contact_email,
+      email: 'contact_technique@yopmail.com',
       first_name: 'Justine',
       last_name: 'Martin'
     )
@@ -343,6 +341,34 @@ class Seeds
         ][index % 3]
       )
     end
+  end
+  # rubocop:enable Metrics/AbcSize
+
+  # rubocop:disable Metrics/AbcSize
+  def create_admin_activities
+    admin = User.find_by(email: 'api-entreprise@yopmail.com')
+    particulier_admin = User.find_by(email: 'api-particulier@yopmail.com')
+    token = Token.first
+    editor_token = EditorToken.first
+    audit = AuditNotification.first
+
+    AdminActivity.create!([
+      { name: 'impersonation_started', admin:, namespace: 'entreprise', entity: @user, created_at: 2.days.ago },
+      { name: 'impersonation_stopped', admin:, namespace: 'entreprise', entity: @user, created_at: 2.days.ago + 7.minutes },
+      { name: 'user_updated', admin:, namespace: 'entreprise', entity: @user,
+        before_attributes: { 'provider_uids' => [] }, after_attributes: { 'provider_uids' => %w[insee] }, created_at: 30.hours.ago },
+      { name: 'editor_updated', admin:, namespace: 'entreprise', entity: @editor,
+        before_attributes: { 'delegations_enabled' => false }, after_attributes: { 'delegations_enabled' => true }, created_at: 26.hours.ago },
+      { name: 'token_banned', admin:, namespace: 'entreprise', entity: token,
+        before_attributes: { 'blacklisted_at' => nil },
+        after_attributes: { 'blacklisted_at' => 1.month.from_now, 'comment' => 'Jeton compromis', 'generate_new_token' => true, 'new_token_id' => Token.where.not(id: token&.id).first&.id }, created_at: 20.hours.ago },
+      { name: 'token_created', admin:, namespace: 'entreprise', entity: token,
+        after_attributes: { 'exp' => token&.exp, 'scopes' => token&.scopes }, created_at: 18.hours.ago },
+      { name: 'editor_token_created', admin:, namespace: 'entreprise', entity: editor_token,
+        after_attributes: { 'exp' => editor_token&.exp }, created_at: 12.hours.ago },
+      { name: 'audit_notification_created', admin: particulier_admin, namespace: 'particulier', entity: audit,
+        after_attributes: audit&.slice('authorization_request_external_id', 'reason', 'approximate_volume') || {}, created_at: 3.hours.ago }
+    ])
   end
   # rubocop:enable Metrics/AbcSize
 

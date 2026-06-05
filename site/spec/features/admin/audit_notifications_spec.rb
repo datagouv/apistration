@@ -47,6 +47,17 @@ RSpec.describe 'Admin: audit notifications', app: :api_entreprise do
         expect(audit_notification.reason).to eq('Test audit reason')
         expect(audit_notification.approximate_volume).to eq(5000)
         expect(audit_notification.request_id_access_logs).to contain_exactly(first_access_log.request_id, second_access_log.request_id)
+
+        expect(AdminActivity.last).to have_attributes(
+          name: 'audit_notification_created',
+          admin:,
+          namespace: 'entreprise',
+          entity: audit_notification
+        )
+        expect(AdminActivity.last.after_attributes).to include(
+          'reason' => 'Test audit reason',
+          'approximate_volume' => 5000
+        )
       end
     end
 

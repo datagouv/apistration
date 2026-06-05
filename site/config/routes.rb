@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     resources :audit_notifications, only: %i[index new create]
     resources :api_requests, only: %i[index create]
+    resources :admin_activities, only: %i[index], path: 'journal'
   end
 
   get '/editeur', to: redirect('/editeur/habilitations'), as: :editor
