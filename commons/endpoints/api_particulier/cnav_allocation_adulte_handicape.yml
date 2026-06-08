@@ -6,7 +6,7 @@ fiche:
       - 'cnav/v2/allocation_adulte_handicape'
     path: '/v3/dss/allocation_adulte_handicape/identite'
     controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility'
-    ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
+    ping_url: 'https://particulier.api.gouv.fr/api/cnaf_msa_allocation_adulte_handicape/ping'
     position: 800
     perimeter:
       entity_type_description: |+

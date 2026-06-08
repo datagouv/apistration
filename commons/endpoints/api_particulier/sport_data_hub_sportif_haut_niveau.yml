@@ -9,6 +9,7 @@ fiche:
       - Identifiant PSQS
     path: '/v3/sdh/statut_sportif/identifiant'
     controller: 'api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant'
+    ping_url: 'https://particulier.api.gouv.fr/api/sdh_statut_sportif/ping'
     position: 601
     perimeter:
       entity_type_description: |+
