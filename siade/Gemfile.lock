@@ -214,7 +214,7 @@ GEM
       nokogiri (>= 1.12.0)
     lumberjack (1.4.2)
     marcel (1.2.1)
-    mcp (0.17.0)
+    mcp (0.18.0)
       json-schema (>= 4.1)
     memory_profiler (1.1.0)
     method_source (1.1.0)
@@ -305,7 +305,7 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (8.0.1)
+    puma (8.0.2)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.6)
