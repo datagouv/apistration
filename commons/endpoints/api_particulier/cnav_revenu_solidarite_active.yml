@@ -6,7 +6,7 @@ fiche:
       - 'cnav/v2/revenu_solidarite_active'
     path: '/v3/dss/revenu_solidarite_active/identite'
     controller: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility'
-    ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
+    ping_url: 'https://particulier.api.gouv.fr/api/cnaf_msa_revenu_solidarite_active/ping'
     position: 600
     perimeter:
       entity_type_description: |+

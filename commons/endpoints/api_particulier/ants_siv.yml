@@ -8,7 +8,7 @@ fiche:
       - FranceConnect + Identifiant de l'immatriculation du véhicule
     path: '/v3/ants/extrait_immatriculation_vehicule/france_connect'
     controller: 'api_particulier/v3_and_more/ants/extrait_immatriculation_vehicule_with_france_connect'
-    ping_url: 'https://particulier.api.gouv.fr/api/v3/ants/extrait_immatriculation_vehicule/ping'
+    ping_url: 'https://particulier.api.gouv.fr/api/ants/ping'
     position: 603
     novelty: true
     alert:
