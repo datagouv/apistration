@@ -17,15 +17,11 @@ class Editor < ApplicationRecord
   validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
 
   scope :delegable, -> { where(delegations_enabled: true) }
-  scope :search_by_name, ->(name) { where('name ILIKE ?', "%#{name}%") }
-  scope :with_role, ->(role) { where(role:) }
-  scope :with_deployment_type, ->(type) { where(deployment_type: type) }
+  scope :search_by_name_or_siret, lambda { |query|
+    where('name ILIKE :q OR siret ILIKE :q', q: "%#{query}%")
+  }
   scope :filtered, lambda { |params|
-    scope = all
-    scope = scope.search_by_name(params[:search]) if params[:search].present?
-    scope = scope.with_role(params[:role]) if params[:role].present?
-    scope = scope.with_deployment_type(params[:deployment_type]) if params[:deployment_type].present?
-    scope
+    params[:search].present? ? search_by_name_or_siret(params[:search]) : all
   }
 
   def authorization_requests(api:)

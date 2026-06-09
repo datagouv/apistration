@@ -31,12 +31,12 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_no_text('Other Corp')
     end
 
-    it 'filters by role' do
-      create(:editor, name: 'No Role Editor')
-      visit admin_editors_path(role: 'manages_token')
+    it 'filters by SIRET' do
+      create(:editor, name: 'Other Corp', siret: '98765432109876')
+      visit admin_editors_path(search: editor.siret)
 
       expect(page).to have_text('UMAD Editor')
-      expect(page).to have_no_text('No Role Editor')
+      expect(page).to have_no_text('Other Corp')
     end
   end
 
