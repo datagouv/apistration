@@ -1,3 +1,9 @@
+- date: 2026-06-09
+  scope: both
+  title: "Espace développeurs : intégration éditeur et délégations"
+  description: |
+    L'[espace développeurs](<%= developers_path %>) documente désormais l'**intégration éditeur** : comment, avec un **jeton éditeur** unique, appeler nos API **pour le compte d'une administration cliente** via la **délégation**. La nouvelle rubrique couvre les concepts, le listing des délégations (`GET /editeur/api/v1/delegations`), la transmission via les paramètres `recipient` (SIRET du client) et `delegation_id` (UUID, pour lever l'ambiguïté entre plusieurs délégations actives), des exemples `curl` du flux complet et le contrat d'erreurs (`422` ambiguïté, `401`&nbsp;/&nbsp;`403` volontairement opaques). Le paramètre `delegation_id` est par ailleurs documenté dans l'[OpenAPI](<%= developers_openapi_path %>) sur les endpoints de consommation.
+
 - date: 2026-06-04
   scope: api_particulier
   title: "Fiches API Particulier : le scope est affiché sur chaque donnée"
