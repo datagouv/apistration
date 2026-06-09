@@ -353,6 +353,94 @@ fr:
 
               Vous souhaitez contribuer un port dans un autre langage&nbsp;? Suivez la checklist de conformité de [`SPECS.md`](https://github.com/datagouv/apistration/blob/develop/clients/SPECS.md){:target="_blank"} et inspirez-vous de l'implémentation Ruby.
 
+          - anchor: 'integration-editeur'
+            title: Intégration éditeur&nbsp;🤝
+            subsections:
+              - title: Le jeton éditeur et la délégation
+                anchor: 'editeur-concepts'
+                content: |+
+                  Un **éditeur de logiciel** intègre l'API&nbsp;Entreprise pour le compte de ses administrations clientes. Plutôt que de gérer un jeton par client, il utilise un **jeton éditeur** unique et permanent et **agit pour le compte d'un client** grâce à la **délégation**.
+
+                  {:.fr-table}
+                  | Notion | Description |
+                  |---|---|
+                  | **Jeton éditeur** | Un jeton JWT unique, fourni à l'éditeur. Il ne porte aucune habilitation en propre&nbsp;: les droits sont résolus à chaque appel via la délégation. |
+                  | **Délégation** | Le lien entre l'éditeur et l'habilitation d'une administration cliente. L'administration délègue à l'éditeur l'usage de son habilitation. |
+                  | **`recipient`** | Le **SIRET de l'administration cliente** pour laquelle l'appel est effectué. Il détermine l'habilitation — et donc les droits — appliquée à la requête. |
+                  | **`delegation_id`** | L'**identifiant (UUID) d'une délégation précise**. Optionnel&nbsp;: nécessaire uniquement lorsque l'éditeur dispose de **plusieurs délégations actives sur le même `recipient`** (voir [contrat d'erreurs](<%= developers_path(anchor: 'editeur-contrat-erreurs') %>)). |
+
+                  {:.fr-highlight}
+                  > ℹ️ À chaque appel, l'API résout l'habilitation effective à partir du jeton éditeur et du `recipient`. Le rate-limit et les scopes appliqués sont ceux de l'habilitation cliente résolue.
+
+              - title: Lister vos délégations
+                anchor: 'editeur-lister-delegations'
+                content: |+
+                  L'endpoint **`GET /editeur/api/v1/delegations`** renvoie la liste des délégations dont dispose l'éditeur authentifié sur l'API courante (déterminée par le domaine appelé). Authentifiez-vous avec votre **jeton éditeur** via l'en-tête `Authorization: Bearer`.
+
+                  {:.fr-h6}
+                  ##### Exemple de requête&nbsp;:
+
+                  ```
+                  curl https://entreprise.api.gouv.fr/editeur/api/v1/delegations \
+                    -H "Authorization: Bearer <VOTRE_JETON_ÉDITEUR>"
+                  ```
+
+                  La réponse est paginée (`meta`) et chaque délégation (`data`) expose&nbsp;:
+
+                  {:.fr-table}
+                  | Champ | Description |
+                  |---|---|
+                  | `id` | UUID de la délégation, à transmettre en `delegation_id` lors d'un appel de consommation. |
+                  | `authorization_request_id` | Identifiant de l'habilitation déléguée. |
+                  | `siret` | SIRET de l'administration cliente — la valeur à passer en `recipient`. |
+                  | `intitule` | Intitulé de l'habilitation. |
+                  | `scopes` | Périmètres ouverts par l'habilitation. |
+                  | `statut` | `active` ou `revoked`. |
+                  | `created_at` | Date de création (ISO&nbsp;8601, UTC). |
+
+                  Le détail du schéma est disponible dans le [Swagger](<%= developers_openapi_path %>){:target="_blank"}.
+
+              - title: Appeler l'API pour le compte d'un client
+                anchor: 'editeur-appeler-pour-un-client'
+                content: |+
+                  Pour interroger un endpoint de consommation au nom d'une administration cliente, ajoutez le paramètre **`recipient`** (SIRET du client) à votre requête, authentifiée avec votre **jeton éditeur**.
+
+                  {:.fr-h6}
+                  ##### Exemple — une seule délégation sur ce client&nbsp;:
+
+                  ```
+                  curl "https://entreprise.api.gouv.fr/v3/insee/unites_legales/418166096?context=Instruction%20de%20dossier&object=Demande%20de%20subvention&recipient=13002526500013" \
+                    -H "Authorization: Bearer <VOTRE_JETON_ÉDITEUR>"
+                  ```
+
+                  Lorsque l'éditeur dispose de **plusieurs délégations actives sur le même `recipient`**, l'appel doit préciser **`delegation_id`** (l'`id` obtenu via le listing des délégations) pour lever l'ambiguïté&nbsp;:
+
+                  {:.fr-h6}
+                  ##### Exemple — plusieurs délégations sur ce client&nbsp;:
+
+                  ```
+                  curl "https://entreprise.api.gouv.fr/v3/insee/unites_legales/418166096?context=Instruction%20de%20dossier&object=Demande%20de%20subvention&recipient=13002526500013&delegation_id=6f3c8d9a-1b2c-4d5e-8f90-abcdef012345" \
+                    -H "Authorization: Bearer <VOTRE_JETON_ÉDITEUR>"
+                  ```
+
+                  {:.fr-highlight}
+                  > ℹ️ `context` et `object` restent obligatoires sur les appels API&nbsp;Entreprise, exactement comme pour un jeton classique. Seul le couple `recipient`&nbsp;/&nbsp;`delegation_id` est spécifique à l'usage éditeur.
+
+              - title: Contrat d'erreurs de la délégation
+                anchor: 'editeur-contrat-erreurs'
+                content: |+
+                  La résolution de la délégation peut renvoyer les erreurs suivantes&nbsp;:
+
+                  {:.fr-table}
+                  | Situation | Réponse |
+                  |---|---|
+                  | `recipient` absent ou SIRET invalide | `422` — paramètre invalide. |
+                  | Plusieurs délégations actives sur le `recipient`, sans `delegation_id` | `422` — délégation ambiguë (code `00212`)&nbsp;: précisez `delegation_id`. |
+                  | Délégation absente, `delegation_id` inconnu, invalide ou révoqué, ou accès non autorisé | `401`&nbsp;/&nbsp;`403` — réponse volontairement opaque. |
+
+                  {:.fr-highlight}
+                  > 🔒 Par choix de sécurité, les cas «&nbsp;délégation manquante&nbsp;», «&nbsp;`delegation_id` invalide ou révoqué&nbsp;» et «&nbsp;accès non autorisé&nbsp;» renvoient une **réponse 401&nbsp;/&nbsp;403 indifférenciée**&nbsp;: l'API ne révèle jamais l'existence d'une délégation à un appelant qui n'y a pas droit.
+
           - anchor: 'kit-de-mise-en-production'
             title: Kit de mise en production&nbsp;🚀
             subsections:
