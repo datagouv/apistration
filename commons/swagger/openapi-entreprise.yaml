@@ -121,6 +121,19 @@ paths:
           content:
             application/json:
               examples:
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 missing_mandatory_params_context_error:
                   value:
                     errors:
@@ -233,6 +246,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -465,6 +488,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -795,6 +831,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -1215,6 +1261,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 unprocessable_content_error_siret_error:
                   value:
                     errors:
@@ -1429,6 +1488,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -1963,6 +2032,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -2203,6 +2285,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -2670,6 +2762,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -2873,6 +2978,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -3093,6 +3208,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -3334,6 +3462,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -3546,6 +3684,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -3831,6 +3982,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -4341,6 +4502,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -4560,6 +4734,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -4799,6 +4983,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -5061,6 +5258,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -5310,6 +5517,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -5612,6 +5832,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -5879,6 +6109,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -6147,6 +6390,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -6433,6 +6686,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -6623,6 +6889,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -7116,6 +7392,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 unprocessable_content_error_year_error:
                   value:
                     errors:
@@ -7332,6 +7621,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -7795,6 +8094,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 unprocessable_content_error_year_error:
                   value:
                     errors:
@@ -8011,6 +8323,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -8654,6 +8976,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 unprocessable_content_error_year_error:
                   value:
                     errors:
@@ -9321,6 +9656,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -10982,6 +11327,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -11198,6 +11556,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -12468,6 +12836,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -12672,6 +13053,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -12886,6 +13277,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -13086,6 +13490,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -13391,6 +13805,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -13594,6 +14021,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -13809,6 +14246,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -14091,6 +14541,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -14436,6 +14896,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 unprocessable_content_error_year_error:
                   value:
                     errors:
@@ -14649,6 +15122,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -15045,6 +15528,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
                 unprocessable_content_error_month_error:
                   value:
                     errors:
@@ -15269,6 +15765,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -15949,6 +16455,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -16184,6 +16703,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -16556,6 +17085,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -16759,6 +17301,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -17095,6 +17647,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -17298,6 +17863,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -18274,6 +18849,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -18453,6 +19041,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -19181,6 +19779,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -19394,6 +20005,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -19846,6 +20467,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -20083,6 +20717,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -20565,6 +21209,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -20802,6 +21459,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -21989,6 +22656,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -22232,6 +22912,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -23476,6 +24166,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -23719,6 +24422,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -24954,6 +25667,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -25191,6 +25917,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -26483,6 +27219,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -26718,6 +27467,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -27953,6 +28712,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -28188,6 +28960,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -29480,6 +30262,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -29715,6 +30510,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -30903,6 +31708,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -31138,6 +31956,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -32383,6 +33211,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -32620,6 +33461,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -32905,6 +33756,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -33116,6 +33980,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -33792,6 +34666,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -34033,6 +34920,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -34737,6 +35634,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -34978,6 +35888,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -35672,6 +36592,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -35913,6 +36846,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -36635,6 +37578,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -36865,6 +37821,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -37135,6 +38101,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -37425,6 +38404,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -37764,6 +38753,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -38003,6 +39005,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -38210,6 +39222,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -38416,6 +39441,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -38734,6 +39769,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -38973,6 +40021,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -39180,6 +40238,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -39464,6 +40535,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -39672,6 +40753,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -39911,6 +41005,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -40119,6 +41223,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -40442,6 +41559,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -40769,6 +41896,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -41085,6 +42225,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -41514,6 +42664,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '429':
@@ -41768,6 +42931,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -41987,6 +43160,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -42229,6 +43415,16 @@ paths:
           SIRET de l’administration destinatrice des données."
         example: '13002526500013'
         required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
         schema:
           type: string
       - name: context
@@ -42527,6 +43723,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
