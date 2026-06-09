@@ -183,7 +183,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     let(:editor) { create(:editor) }
 
     it 'records the activity' do
-      visit edit_admin_editor_path(editor)
+      visit admin_editor_path(editor)
 
       expect { click_on 'Générer un nouveau jeton éditeur' }.to change(AdminActivity, :count).by(1)
 
