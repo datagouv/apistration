@@ -11,11 +11,12 @@
   <p class="fr-text--lg fr-mb-4w"><%= @editor.description %></p>
 <% end %>
 
+<% editor = @editor.decorate %>
 <ol class="fr-mb-4w">
-  <li><strong>Rôle :</strong> <%= editor_role_label(@editor) %></li>
-  <li><strong>Type de déploiement :</strong> <%= editor_deployment_label(@editor) %></li>
-  <li><strong>Copie du jeton client :</strong> <%= @editor.copy_token? ? 'autorisée' : 'interdite' %></li>
-  <li><strong>Délégations :</strong> <%= @editor.delegations_enabled? ? 'activées' : 'désactivées' %></li>
+  <li><strong>Rôle :</strong> <%= editor.role_label %></li>
+  <li><strong>Type de déploiement :</strong> <%= editor.deployment_type_label %></li>
+  <li><strong>Copie du jeton client :</strong> <%= editor.copy_token? ? 'autorisée' : 'interdite' %></li>
+  <li><strong>Délégations :</strong> <%= editor.delegations_enabled? ? 'activées' : 'désactivées' %></li>
 </ol>
 
 <div class="fr-grid-row fr-grid-row--gutters fr-mb-4w">

@@ -1,0 +1,23 @@
+fr:
+  activerecord:
+    models:
+      editor:
+        one: "Éditeur"
+        other: "Éditeurs"
+    attributes:
+      editor:
+        role: "Rôle"
+        deployment_type: "Type de déploiement"
+  editors:
+    roles:
+      blank: "Inconnu"
+      unknown: "Rôle inconnu"
+      manages_token: "Gère le jeton"
+      client_manages_token: "Client gère le jeton"
+      both: "Les deux"
+    deployment_types:
+      blank: "Inconnu"
+      unknown: "Déploiement inconnu"
+      saas: "SaaS"
+      on_premise: "On-premise"
+      both: "Les deux"

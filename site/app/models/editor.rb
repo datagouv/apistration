@@ -24,6 +24,16 @@ class Editor < ApplicationRecord
     params[:search].present? ? search_by_name_or_siret(params[:search]) : all
   }
 
+  def self.role_options
+    [[I18n.t('editors.roles.blank'), '']] +
+      ROLES.map { |role| [I18n.t(role, scope: 'editors.roles'), role] }
+  end
+
+  def self.deployment_type_options
+    [[I18n.t('editors.deployment_types.blank'), '']] +
+      DEPLOYMENT_TYPES.map { |type| [I18n.t(type, scope: 'editors.deployment_types'), type] }
+  end
+
   def authorization_requests(api:)
     AuthorizationRequest
       .where(api:)

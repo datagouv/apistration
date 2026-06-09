@@ -31,18 +31,18 @@
   <div class="fr-grid-row fr-grid-row--gutters">
     <div class="fr-col-6">
       <div class="fr-select-group">
-        <%= f.label :role, 'Rôle', class: 'fr-label' %>
+        <%= f.label :role, class: 'fr-label' %>
         <%= f.select :role,
-              options_for_select(EditorHelper::ROLE_OPTIONS, editor.role),
+              options_for_select(Editor.role_options, editor.role),
               {},
               class: 'fr-select' %>
       </div>
     </div>
     <div class="fr-col-6">
       <div class="fr-select-group">
-        <%= f.label :deployment_type, 'Type de déploiement', class: 'fr-label' %>
+        <%= f.label :deployment_type, class: 'fr-label' %>
         <%= f.select :deployment_type,
-              options_for_select(EditorHelper::DEPLOYMENT_OPTIONS, editor.deployment_type),
+              options_for_select(Editor.deployment_type_options, editor.deployment_type),
               {},
               class: 'fr-select' %>
       </div>
