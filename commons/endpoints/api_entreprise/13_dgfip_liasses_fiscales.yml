@@ -151,7 +151,7 @@ fiche:
       Ces champs ne servent a priori pas&nbsp;: ce sont des référentiels internes ou multiples propres à la DGFIP. Le champ `code_nref`, lui, est conservé&nbsp;: c'est le code commun/universel à utiliser pour identifier chaque donnée.
 
       **Ce qui ne change pas :**
-      Le reste de la réponse est inchangé. La version précédente reste maintenue par API&nbsp;Entreprise.
+      Le reste de la réponse est inchangé. La version précédente (v3) reste maintenue par API&nbsp;Entreprise&nbsp;; les clés retirées en v4 y restent présentes mais renverront des valeurs nulles courant 2027, lorsque la DGFIP cessera de les alimenter.
   - uid: "dgfip/v3/liasses_fiscales"
     position: 9001
     new_endpoint_uids:
