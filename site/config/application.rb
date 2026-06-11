@@ -33,6 +33,9 @@ module AdminApientreprise
     config.i18n.available_locales = [:fr]
     config.i18n.default_locale = :fr
 
+    config.action_dispatch.cookies_same_site_protection = :lax
+    config.action_controller.default_protect_from_forgery = true
+
     config.middleware.insert_after ActionDispatch::RemoteIp, IpAnonymizer::HashIp,
       key: Rails.application.credentials.ip_anonymizer_key
 
