@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe OpenBureauDate, type: :service do
+  after { Timecop.return }
+
   describe '#next' do
     subject { described_class.new.next_date.to_s }
 
