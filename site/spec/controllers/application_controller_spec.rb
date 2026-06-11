@@ -10,11 +10,13 @@ RSpec.describe ApplicationController do
   let(:user) { create(:user) }
 
   context 'when a user is signed in' do
-    before { session[:current_user_id] = user.id }
+    before do
+      session[:current_user_id] = user.id
+      session[:last_seen_at] = 1.minute.ago.to_i
+      session[:absolute_expires_at] = 23.hours.from_now.to_i
+    end
 
-    context 'with activity within the inactivity window' do
-      before { session[:last_seen_at] = 1.hour.ago.to_i }
-
+    context 'with activity within both the idle window and the absolute cap' do
       it 'keeps the user signed in' do
         get :index
 
@@ -22,14 +24,25 @@ RSpec.describe ApplicationController do
         expect(session[:current_user_id]).to eq(user.id)
       end
 
-      it 'refreshes the last activity timestamp on each request' do
+      it 'slides the idle window on each request' do
+        session[:last_seen_at] = 1.hour.ago.to_i
+
         get :index
 
         expect(session[:last_seen_at]).to be_within(5).of(Time.current.to_i)
       end
+
+      it 'never pushes the absolute deadline further' do
+        deadline = 23.hours.from_now.to_i
+        session[:absolute_expires_at] = deadline
+
+        get :index
+
+        expect(session[:absolute_expires_at]).to eq(deadline)
+      end
     end
 
-    context 'with no activity for longer than the inactivity window' do
+    context 'when idle for longer than the inactivity window' do
       before { session[:last_seen_at] = 13.hours.ago.to_i }
 
       it 'invalidates the session and redirects to login' do
@@ -39,35 +52,54 @@ RSpec.describe ApplicationController do
         expect(session[:current_user_id]).to be_nil
       end
 
-      it 'flashes an expiration message' do
+      it 'flashes the inactivity message' do
         get :index
 
-        expect(flash[:info]['title']).to be_present
+        expect(flash[:info]['title']).to eq(I18n.t('concerns.sessions_management.session_expired.idle', hours: 12))
       end
     end
 
-    context 'across interactions that each stay within the window' do
+    context 'when the absolute cap is reached despite recent activity' do
+      before do
+        session[:last_seen_at] = 1.minute.ago.to_i
+        session[:absolute_expires_at] = 1.minute.ago.to_i
+      end
+
+      it 'invalidates the session and redirects to login' do
+        get :index
+
+        expect(response).to redirect_to('/compte/se-connecter')
+        expect(session[:current_user_id]).to be_nil
+      end
+
+      it 'flashes the maximum-duration message' do
+        get :index
+
+        expect(flash[:info]['title']).to eq(I18n.t('concerns.sessions_management.session_expired.absolute', hours: 24))
+      end
+    end
+
+    context 'with continuous activity spanning more than the idle window' do
       include ActiveSupport::Testing::TimeHelpers
 
-      it 'extends the session on every interaction, surviving well past the initial login window' do
+      it 'stays alive while sliding, until the absolute cap fires even under activity' do
         login_time = Time.current
         session[:last_seen_at] = login_time.to_i
+        session[:absolute_expires_at] = (login_time + 24.hours).to_i
 
         travel_to(login_time + 11.hours) do
           get :index
 
-          expect(response).to have_http_status(:ok)
           expect(session[:current_user_id]).to eq(user.id)
         end
 
         travel_to(login_time + 22.hours) do
           get :index
 
-          expect(response).to have_http_status(:ok)
           expect(session[:current_user_id]).to eq(user.id)
         end
 
-        travel_to(login_time + 35.hours) do
+        travel_to(login_time + 24.hours + 30.minutes) do
           get :index
 
           expect(response).to redirect_to('/compte/se-connecter')
@@ -76,8 +108,11 @@ RSpec.describe ApplicationController do
       end
     end
 
-    context 'with a legacy session predating inactivity tracking' do
-      before { session.delete(:last_seen_at) }
+    context 'with a legacy session predating timeout tracking' do
+      before do
+        session.delete(:last_seen_at)
+        session.delete(:absolute_expires_at)
+      end
 
       it 'invalidates the session and redirects to login' do
         get :index

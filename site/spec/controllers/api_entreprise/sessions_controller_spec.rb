@@ -47,6 +47,28 @@ RSpec.describe APIEntreprise::SessionsController do
 
         expect(session[:last_seen_at]).to be_within(5).of(Time.current.to_i)
       end
+
+      it 'sets an absolute session deadline' do
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(session[:absolute_expires_at]).to be_within(5).of(24.hours.from_now.to_i)
+      end
+
+      it 'rotates the session on sign in to prevent fixation' do
+        session[:pre_login_fixation_marker] = 'attacker-fixed-value'
+
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(session[:pre_login_fixation_marker]).to be_nil
+      end
+
+      it 'preserves the ProConnect tokens through the rotation' do
+        session['omniauth.pc.id_token'] = 'must-survive-for-logout'
+
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(session['omniauth.pc.id_token']).to eq('must-survive-for-logout')
+      end
     end
 
     context 'with valid provider but missing omniauth data' do

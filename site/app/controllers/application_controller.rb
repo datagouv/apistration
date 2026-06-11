@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
+  include SessionLifecycle
   include UserSessionsHelper
 
   helper UserSessionsHelper
@@ -8,10 +9,6 @@ class ApplicationController < ActionController::Base
   helper ActiveLinks
 
   helper_method :namespace, :current_user, :user_signed_in?
-
-  SESSION_INACTIVITY_TIMEOUT = 12.hours
-
-  before_action :enforce_session_inactivity_timeout
 
   def current_user
     @current_user ||= session[:current_user_id] &&
@@ -54,25 +51,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def enforce_session_inactivity_timeout
-    return if session[:current_user_id].blank?
-
-    if session_inactive?
-      reset_session
-      info_message(title: t('concerns.sessions_management.inactivity_timeout.title', hours: SESSION_INACTIVITY_TIMEOUT.in_hours.to_i))
-      redirect_to login_path
-      return
-    end
-
-    session[:last_seen_at] = Time.current.to_i
-  end
-
-  def session_inactive?
-    last_seen_at = session[:last_seen_at]
-
-    last_seen_at.nil? || Time.current.to_i - last_seen_at > SESSION_INACTIVITY_TIMEOUT.to_i
-  end
 
   def namespace
     host_segments = request.host.split('.')
