@@ -41,6 +41,12 @@ RSpec.describe APIEntreprise::SessionsController do
 
         expect(session[:current_user_id]).to eq(user.id)
       end
+
+      it 'stamps the session with the last activity timestamp' do
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(session[:last_seen_at]).to be_within(5).of(Time.current.to_i)
+      end
     end
 
     context 'with valid provider but missing omniauth data' do

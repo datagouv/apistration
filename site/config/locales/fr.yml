@@ -22,6 +22,8 @@ fr:
         success:
           title: Délégation révoquée
     sessions_management:
+      inactivity_timeout:
+        title: "Votre session a expiré après %{hours} heures d'inactivité, veuillez vous reconnecter."
       login:
         error:
           title: La connection a échouée.
