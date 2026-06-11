@@ -101,9 +101,9 @@ fr:
 
     reporters_mailer:
       submit:
-        subject: Une nouvelle demande a été déposé pour API Particulier
+        subject: Une nouvelle demande a été déposée pour API Particulier
       approve:
-        subject: Une nouvelle demande a été validé pour API Particulier
+        subject: Une nouvelle demande a été validée pour API Particulier
 
     changelog_mailer:
       weekly:
