@@ -82,10 +82,20 @@ class Seeds
 
   def create_editor
     @editor = Editor.create!(
-      name: 'UMAD Corp',
-      form_uids: %w[umadcorp-form-api-entreprise umadcorp-form-api-particulier],
+      name: 'MGDIS',
+      form_uids: %w[api-entreprise-mgdis],
       copy_token: true,
-      delegations_enabled: true
+      delegations_enabled: true,
+      siret: '32816124500027',
+      role: 'manages_token',
+      contact_email: 'contact-mgdis@yopmail.com',
+      contact_phone: '0299000000',
+      deployment_type: 'saas',
+      domain: 'mgdis.fr',
+      languages: 'Java',
+      description: 'Éditeur de solutions de gestion financière pour le secteur public',
+      allowed_ips: ['192.0.2.10', '192.0.2.11', '198.51.100.5'],
+      setup_instructions: "1. Se connecter au portail MGDIS\n2. Administration > Connecteurs API\n3. Renseigner le jeton API Entreprise"
     )
     create_user(
       email: 'editeur@yopmail.com',
@@ -93,10 +103,34 @@ class Seeds
       last_name: 'Lefevre',
       editor: @editor
     )
+    create_user(
+      email: 'dev-mgdis@yopmail.com',
+      first_name: 'Sophie',
+      last_name: 'Durand',
+      editor: @editor
+    )
 
     Editor.create!(
-      name: 'Basic Editor',
-      form_uids: %w[basic-editor-form]
+      name: 'Atexo',
+      form_uids: %w[api-entreprise-atexo],
+      siret: '44090956200033',
+      role: 'manages_token',
+      contact_email: 'contact-atexo@yopmail.com',
+      deployment_type: 'saas',
+      domain: 'atexo.com',
+      languages: 'Java, JavaScript',
+      description: 'Éditeur de solutions de dématérialisation des marchés publics',
+      allowed_ips: ['203.0.113.20', '203.0.113.21']
+    )
+
+    Editor.create!(
+      name: 'Aiga',
+      form_uids: %w[api-particulier-aiga api-particulier-aiga-petite-enfance],
+      siret: '39825361700045',
+      role: 'client_manages_token',
+      deployment_type: 'on_premise',
+      domain: 'aiga.fr',
+      description: 'Éditeur de logiciels pour la petite enfance et les services périscolaires'
     )
   end
 
@@ -126,7 +160,7 @@ class Seeds
   end
 
   def create_editor_delegations
-    ar = AuthorizationRequest.find_by(demarche: 'umadcorp-form-api-entreprise')
+    ar = AuthorizationRequest.find_by(demarche: 'api-entreprise-mgdis')
     EditorDelegation.create!(editor: @editor, authorization_request: ar) if ar
   end
 
@@ -156,7 +190,7 @@ class Seeds
         status: :validated,
         validated_at: 2.weeks.ago,
         first_submitted_at: 2.weeks.ago,
-        demarche: 'umadcorp-form-api-entreprise',
+        demarche: 'api-entreprise-mgdis',
         siret: '12000101100010'
       }
     )
@@ -243,7 +277,7 @@ class Seeds
         external_id: 201,
         status: :validated,
         validated_at: 2.weeks.ago,
-        demarche: 'umadcorp-form-api-particulier',
+        demarche: 'api-particulier-aiga',
         first_submitted_at: 2.weeks.ago
       }
     )

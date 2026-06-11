@@ -1,68 +1,9 @@
-<%= form_with(model: @editor, url: admin_editor_path(@editor)) do |f| %>
-  <div class="fr-input-group">
-    <%= f.label :name, 'Nom du formulaire', class: %w[fr-label] %>
-    <%= f.text_field :name, class: %[fr-input] %>
-  </div>
+<h1 class="fr-mb-2w">Modifier l'éditeur : <%= @editor.name %></h1>
 
-  <div class="fr-input-group">
-    <%= f.label :form_uids, 'IDs des formulaires, séparés par des virgules', class: %w[fr-label] %>
-    <%= f.textarea :form_uids, value: @editor.form_uids.join(', '), class: %[fr-input] %>
-  </div>
+<%= link_to 'Retour à la fiche', admin_editor_path(@editor), class: 'fr-link fr-mb-4w' %>
 
-  <div class="fr-checkbox-group">
-    <%= f.check_box :copy_token, class: %[fr-checkbox] %>
-    <%= f.label :copy_token, "Peut copier les jetons de ses clients ?", class: %w[fr-label] %>
-  </div>
-
-  <div class="fr-checkbox-group">
-    <%= f.check_box :delegations_enabled, class: %[fr-checkbox] %>
-    <%= f.label :delegations_enabled, "Délégations activées ?", class: %w[fr-label] %>
-  </div>
-
-  <%= f.submit 'Sauvegarder', class: %w[fr-btn] %>
-<% end %>
-
-<h2 class="fr-mt-4w">Jetons éditeur</h2>
-
-<% if @editor.tokens.any? %>
-  <div class="fr-table fr-table--bordered fr-mb-2w">
-    <div class="fr-table__wrapper">
-      <div class="fr-table__container">
-        <div class="fr-table__content">
-          <table>
-            <caption>Jetons éditeur</caption>
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Créé le</th>
-                <th scope="col">Expiration</th>
-                <th scope="col">Statut</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @editor.tokens.order(created_at: :desc).each do |editor_token| %>
-                <tr>
-                  <td><%= editor_token.id.first(8) %>&hellip;</td>
-                  <td><%= l(editor_token.created_at, format: :short) %></td>
-                  <td><%= friendly_date_from_timestamp(editor_token.exp) %></td>
-                  <td>
-                    <% if editor_token.active? %>
-                      <p class="fr-badge fr-badge--green-emeraude">Actif</p>
-                    <% else %>
-                      <p class="fr-badge fr-badge--pink-tuile">Inactif</p>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<%= button_to 'Générer un nouveau jeton éditeur',
-    admin_editor_editor_tokens_path(@editor),
-    method: :post,
-    class: 'fr-btn fr-btn--secondary' %>
+<%= render 'form',
+  editor: @editor,
+  url: admin_editor_path(@editor),
+  method: :patch,
+  label: 'Sauvegarder' %>

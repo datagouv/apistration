@@ -1,0 +1,127 @@
+<%= form_with(model: editor, url: url, method: method) do |f| %>
+  <h2 class="fr-mt-2w">Informations générales</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-6">
+      <div class="fr-input-group <%= 'fr-input-group--error' if editor.errors[:name].any? %>">
+        <%= f.label :name, 'Nom', class: 'fr-label' %>
+        <%= f.text_field :name, class: 'fr-input' %>
+        <% if editor.errors[:name].any? %>
+          <p class="fr-error-text"><%= editor.errors[:name].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="fr-col-6">
+      <div class="fr-input-group <%= 'fr-input-group--error' if editor.errors[:siret].any? %>">
+        <%= f.label :siret, 'SIRET', class: 'fr-label' %>
+        <%= f.text_field :siret, class: 'fr-input', maxlength: 14 %>
+        <% if editor.errors[:siret].any? %>
+          <p class="fr-error-text"><%= editor.errors[:siret].first %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-input-group">
+    <%= f.label :description, 'Description', class: 'fr-label' %>
+    <span class="fr-hint-text">Visible par les usagers</span>
+    <%= f.text_area :description, class: 'fr-input', rows: 3 %>
+  </div>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-6">
+      <div class="fr-select-group">
+        <%= f.label :role, class: 'fr-label' %>
+        <%= f.select :role,
+              options_for_select(Editor.role_options, editor.role),
+              {},
+              class: 'fr-select' %>
+      </div>
+    </div>
+    <div class="fr-col-6">
+      <div class="fr-select-group">
+        <%= f.label :deployment_type, class: 'fr-label' %>
+        <%= f.select :deployment_type,
+              options_for_select(Editor.deployment_type_options, editor.deployment_type),
+              {},
+              class: 'fr-select' %>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="fr-mt-4w">Contact</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-4">
+      <div class="fr-input-group <%= 'fr-input-group--error' if editor.errors[:contact_email].any? %>">
+        <%= f.label :contact_email, 'Email', class: 'fr-label' %>
+        <%= f.email_field :contact_email, class: 'fr-input' %>
+        <% if editor.errors[:contact_email].any? %>
+          <p class="fr-error-text"><%= editor.errors[:contact_email].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="fr-col-4">
+      <div class="fr-input-group">
+        <%= f.label :contact_phone, 'Téléphone', class: 'fr-label' %>
+        <%= f.telephone_field :contact_phone, class: 'fr-input' %>
+      </div>
+    </div>
+    <div class="fr-col-4">
+      <div class="fr-input-group">
+        <%= f.label :domain, 'Nom de domaine', class: 'fr-label' %>
+        <%= f.text_field :domain, class: 'fr-input', placeholder: 'exemple.fr' %>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="fr-mt-4w">Configuration technique</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-6">
+      <div class="fr-input-group">
+        <%= f.label :form_uids, 'Formulaires DataPass', class: 'fr-label' %>
+        <span class="fr-hint-text">Séparés par des virgules</span>
+        <%= f.text_area :form_uids, value: editor.form_uids.join(', '), class: 'fr-input', rows: 3 %>
+      </div>
+    </div>
+    <div class="fr-col-6">
+      <div class="fr-input-group">
+        <%= f.label :allowed_ips, 'IPs autorisées', class: 'fr-label' %>
+        <span class="fr-hint-text">Séparées par des virgules ou retours à la ligne</span>
+        <%= f.text_area :allowed_ips, value: editor.allowed_ips.join(', '), class: 'fr-input', rows: 3 %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-input-group">
+    <%= f.label :languages, 'Langages utilisés', class: 'fr-label' %>
+    <%= f.text_field :languages, class: 'fr-input' %>
+  </div>
+
+  <div class="fr-input-group">
+    <%= f.label :setup_instructions, 'Instructions de configuration du jeton', class: 'fr-label' %>
+    <%= f.text_area :setup_instructions, class: 'fr-input', rows: 5 %>
+  </div>
+
+  <h2 class="fr-mt-4w">Fonctionnalités</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-6">
+      <div class="fr-checkbox-group">
+        <%= f.check_box :copy_token, class: 'fr-checkbox' %>
+        <%= f.label :copy_token, 'Peut copier les jetons de ses clients', class: 'fr-label' %>
+      </div>
+    </div>
+    <div class="fr-col-6">
+      <div class="fr-checkbox-group">
+        <%= f.check_box :delegations_enabled, class: 'fr-checkbox' %>
+        <%= f.label :delegations_enabled, 'Délégations activées', class: 'fr-label' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-mt-4w">
+    <%= f.submit label, class: 'fr-btn' %>
+  </div>
+<% end %>
