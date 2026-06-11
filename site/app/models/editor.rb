@@ -1,6 +1,6 @@
 class Editor < ApplicationRecord
   ROLES = %w[manages_token client_manages_token both].freeze
-  DEPLOYMENT_TYPES = %w[saas on_premise both].freeze
+  DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
 
   has_many :users,
     dependent: :nullify
@@ -62,5 +62,9 @@ class Editor < ApplicationRecord
 
   def both_deployments?
     deployment_type == 'both'
+  end
+
+  def other_deployment?
+    deployment_type == 'other'
   end
 end
