@@ -3,7 +3,7 @@
     locals: {
       color: '#ffe5cf',
       title: "🔑🚨 Votre accès à l'API Entreprise <b>expire dans 2 semaines</b>",
-      subtitle: "Faîtes votre demande de prolongation maintenant&nbsp;⬇️"
+      subtitle: "Faites votre demande de prolongation maintenant&nbsp;⬇️"
     }
 %>
 <mj-section mj-class="section-main">

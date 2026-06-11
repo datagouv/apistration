@@ -28,9 +28,9 @@ fr:
 
             - question: "Qu’est-ce qu’une API ?"
               answer: |+
-                À gros trait, une API est un tuyau informatique dans lequel circule des informations.
+                À gros trait, une API est un tuyau informatique dans lequel circulent des informations.
 
-                Plus précisemment, une API permet d’**agir sur des ressources** contenues dans un autre système d’information, **sans soi-même avoir la main sur ce système d’information**.
+                Plus précisément, une API permet d’**agir sur des ressources** contenues dans un autre système d’information, **sans soi-même avoir la main sur ce système d’information**.
 
                 Dans le cas d’API Particulier, les ressources sont des informations sur les particuliers, et l’action est une consultation.
 
@@ -64,7 +64,7 @@ fr:
                 - ✅ Vous n’avez plus besoin de demander certaines informations aux particuliers, comme le certificat de scolarité ou l'attestation CAF ;
                 - ✅ Vous n’avez pas de saisie ou de vérification supplémentaire à réaliser ;
                 - ✅ Les informations sont certifiées ;
-                - ✅ Vous accédez avec une seule habilitation aux données de différents fournisseurs : la Caisse nationale des allocations familiales (CNAF), la sécurité sociale agricole (MSA), France Travail, le ministère de l'enseignement supérieur et de la recherche (MESR), le ministère de l'éduction nationale (MEN) et enfin le Centre national des œuvres universitaires et scolaires (Cnous).
+                - ✅ Vous accédez avec une seule habilitation aux données de différents fournisseurs : la Caisse nationale des allocations familiales (CNAF), la sécurité sociale agricole (MSA), France Travail, le ministère de l'enseignement supérieur et de la recherche (MESR), le ministère de l'éducation nationale (MEN) et enfin le Centre national des œuvres universitaires et scolaires (Cnous).
 
                  **API Particulier facilite plusieurs types de démarches :**
                 - [Aide facultatives à la scolarité](https://api.gouv.fr/guides/aides-facultatives-scolarite){:target="_blank"} ;
@@ -80,9 +80,9 @@ fr:
               answer: |+
                 L’API Particulier est réservée :
                 - aux  ✅ **acteurs publics investis d’une mission de service public** : les administrations, leurs opérateurs et les collectivités, les acteurs de santé, etc.
-                - à leurs prestataires privés qui peuvent être destinataires des informations techniques permettant l’usage de l’API mais en aucun cas des données elles-même.
+                - à leurs prestataires privés qui peuvent être destinataires des informations techniques permettant l’usage de l’API mais en aucun cas des données elles-mêmes.
 
-                Même si elle a pour objectif de simplifier leurs démarches, l’API Particulier ne s’adresse ❌ aux particuliers.
+                Même si elle a pour objectif de simplifier leurs démarches, l’API Particulier ne s’adresse ❌ pas aux particuliers.
 
                 Il faut également être techniquement en mesure d’intégrer l’API Particulier, le détail des prérequis techniques est listé dans la [rubrique de l'espace développeur](<%= developers_path(anchor: 'prerequis-techniques') %>)
                 **Pour vérifier votre éligibilité et faire une demande d’habilitation le cas échéant, suivez le lien suivant :**
@@ -134,7 +134,7 @@ fr:
                 - en cas d’utilisation de justificatifs, **prévoyez de permettre à vos usagers de pouvoir transmettre un document par eux-même**.
 
                 {:.fr-highlight}
-                > ℹ️ Le [Dîtes-le-nous une fois](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"} ne doit pas bloquer les usagers en cas d’incidents techniques : vos usagers préfèreront toujours vous redonner leurs informations plutôt que de ne pas pouvoir utiliser votre service.
+                > ℹ️ Le [Dites-le-nous une fois](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"} ne doit pas bloquer les usagers en cas d’incidents techniques : vos usagers préfèreront toujours vous redonner leurs informations plutôt que de ne pas pouvoir utiliser votre service.
 
 
             - question: "Je recherche un éditeur proposant l’API Particulier"
@@ -212,18 +212,18 @@ fr:
                 Dans tous les cas, à la fin de la démarche, avant l'envoi de votre demande à nos services, une page récapitulative vous permettra de vérifier les informations qui seront transmises.
 
                 Que vous ayez à les saisir ou qu'elles soient déjà complétées, voici l'ensemble des informations qui constituent une demande d'habilitation : 
-                - **L’identité de votre organisation** : Le numéro de SIRET de l'organistation pour laquelle la demande est effectuée.
+                - **L’identité de votre organisation** : Le numéro de SIRET de l'organisation pour laquelle la demande est effectuée.
                   Toutes les organisations n’étant pas [éligibles à accéder à l'API Particulier](<%= faq_index_path(anchor: 'quelles-sont-les-conditions-d-eligibilite') %>).
                 - **L’équipe technique qui implémentera l’API** : c'est-à-dire l'organisation/le service qui sera en charge techniquement de l’API. Il peut s’agir de développeurs en interne dans votre administration, externes ou d’un éditeur de logiciel.
                 - **Le formulaire choisi** : cas d'usages, formulaires d'un éditeur ou demande libre.
-                - **Le nom du projet et une description précise de votre service** : Dans ces deux champs textes, il s'agit d'expliciter pourquoi et comment les données de l'API Particulier seront utilisées. Qui utilisera le service intégrant les données ? à quoi serviront les données démandées ? Il est possible d'ajouter une pièce jointe.
+                - **Le nom du projet et une description précise de votre service** : Dans ces deux champs textes, il s'agit d'expliciter pourquoi et comment les données de l'API Particulier seront utilisées. Qui utilisera le service intégrant les données ? à quoi serviront les données demandées ? Il est possible d'ajouter une pièce jointe.
                 - **La date de mise en production prévue, et la volumétrie approximative** : Ces informations facultatives permettent de mieux appréhender les besoins et les contraintes du projet.
                 - **La liste des données souhaitées** : Les droits qui seront attribués après validation de l'habilitation correspondront aux cases cochées dans la demande d'habilitation. Pour toutes les demandes, seules les données strictement utiles à la finalité du service sont autorisées. Chaque donnée demandée devra être justifiée par le cadre juridique qui vous autorise à accéder à ces données (délibération tarifaire, décrets etc.).
                 - **Le traitement des données personnelles** : Pour indiquer qui seront les destinataires de données reçues de l’API Particulier. Le destinataire est, selon la [définition de la CNIL](https://www.cnil.fr/fr/definition/destinataire){:target="_blank"}, _"la personne habilitée à obtenir communication de données enregistrées dans un fichier ou un traitement en raison de ses fonctions."_ Il peut donc s’agir d’un agent de l'administration, d’un usager de service public ... Le temps de conservation des données en mois doit également être précisé.
                 - **Le cadre juridique** : 
                   - **la description** : L’accès à l’API Particulier se fait sous réserve que son utilisation soit justifiée. L’accès à la donnée requiert la fourniture d’un cadre juridique précis, c’est pourquoi, il vous sera demandé de spécifier la nature et les références du texte vous autorisant à traiter les données.
-                  - **les justificatifs, une URL de la référence légilsative ou une pièce jointe** :
-                      - _Pour les administrations centrales, agences d’État, opérateurs ou services déconcentrés_, il vous faudra transmettre le **décrêt** ou l’**arrêté** justifiant votre demande.
+                  - **les justificatifs, une URL de la référence législative ou une pièce jointe** :
+                      - _Pour les administrations centrales, agences d’État, opérateurs ou services déconcentrés_, il vous faudra transmettre le **décret** ou l’**arrêté** justifiant votre demande.
                       
                       {:.fr-highlight}
                       > ⚠️ Attention, quel que soit votre statut, le [**CRPA** (Code des relations entre le public et l’administration)](https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000031366350/2020-12-14/){:target="_blank"}, la [**loi ESSOC** (pour un État au service d’une société de confiance)](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037307624/){:target="_blank"} ou la **loi Lemaire** (pour une République numérique) **ne sont pas suffisants** car ils indiquent un principe d’échange qui doit être complété par un cadre juridique précis pour l’utilisation envisagée.
@@ -240,7 +240,7 @@ fr:
                     </details>
 
                   - **le contact métier**. C’est une personne en responsabilité du projet, il peut s’agir du demandeur. API Particulier contactera cette personne pour avertir de nouvelles fonctionnalités, de nouvelles données et API, ou d’incidents majeurs sur nos APIs.
-                  - **le contact technique**. C’est une personne ou l’équipe en charge du développement de l’interface logicielle qui va permettre l’interconnection effective avec API Particulier. API Particulier contactera cette personne pour avertir d’évolutions techniques, d’incidents et de l’expiration des jetons.
+                  - **le contact technique**. C’est une personne ou l’équipe en charge du développement de l’interface logicielle qui va permettre l’interconnexion effective avec API Particulier. API Particulier contactera cette personne pour avertir d’évolutions techniques, d’incidents et de l’expiration des jetons.
 
                     {:.fr-highlight}
                     > ℹ️ Le contact métier et le contact technique peuvent être confondus, notamment si vous passez par un éditeur.
@@ -256,7 +256,7 @@ fr:
 
                 **Caractéristiques de la délibération attendue :** 
 
-                Pour que la délibération soient acceptée comme cadre juridique dans votre demande d'habilitation API Particulier, il faut qu'elle décrive précisémment les données utiles pour la tarification ou l'attribution d'aides.
+                Pour que la délibération soit acceptée comme cadre juridique dans votre demande d'habilitation API Particulier, il faut qu'elle décrive précisément les données utiles pour la tarification ou l'attribution d'aides.
                 - **Exemple d'une délibération qui répond aux critères attendus** : Dans le cadre d'une facturation de prestation enfance avec une tarification qui varie selon le quotient familial, une délibération avec les barèmes appliqués suivant le montant du quotient familial convient.
                 - **Exemple d'une délibération qui ne répond pas aux critères attendus pour être habilité** : Une délibération qui indique _"le conseil communal décide d'utiliser API Particulier pour consommer les données CAF en vue de simplifier la démarche"_ ne sera pas acceptée car elle manque de précision sur la finalité des données nécessaires et ne permet pas de vérifier le respect de la minimisation des données appelées.
                 
@@ -293,7 +293,7 @@ fr:
             - question: "Comment transmettre le jeton d’accès en tout sécurité ?"
               answer: |+
                 Dans le cadre de l'intégration de l’API, il peut arriver qu'il y ait besoin ponctuellement de transmettre le jeton à une personne qui n'a pas accès au [compte utilisateur](<%= user_profile_path %>).
-                ⚠️ Comme expliqué [ici](<%= faq_index_path(anchor: 'qu-est-ce-qu-un-token-ou-jeton') %>), votre token vous est propre, il ne faut pas surtout pas le copier/coller dans un e-mail.
+                ⚠️ Comme expliqué [ici](<%= faq_index_path(anchor: 'qu-est-ce-qu-un-token-ou-jeton') %>), votre token vous est propre, il ne faut surtout pas le copier/coller dans un e-mail.
 
                 **Pour transmettre votre jeton, vous devez utiliser la fonctionnalité prévue dans votre compte utilisateur sur API Particulier** :
                 - Cliquez sur le bouton "Transmettre le jeton" (blanc au contour bleu) situé juste en dessous de l’encadré du jeton.
@@ -329,7 +329,7 @@ fr:
                 {:.fr-h6}
                 ##### Qu'est-ce qu'API Particulier entend par «&nbsp;changements intervenus depuis la signature de l'habilitation&nbsp;» ?
 
-                L'accès de votre organisation à l'API Particulier a été concretisé suite à une demande d'habilitation instruite et validée par l'API Particulier.
+                L'accès de votre organisation à l'API Particulier a été concrétisé suite à une demande d'habilitation instruite et validée par l'API Particulier.
 
                 Dans cette demande, le demandeur a spécifié :
                 - un projet, un cas d'usage et son cadre juridique ;
@@ -337,7 +337,7 @@ fr:
                 - parfois un éditeur de logiciel ;
                 - des responsables des données et de leur traitement.
 
-                Ces éléments, importants pour justifier de l'accès aux données et pour assurer une bonne gestion de l'API, sont au coeur du contrat avec l'API Particulier. L'utilisation d'un jeton doit donc être en cohérence avec l'habilitation obtenue, comme le stipulent les [CGU](<%= cgu_path %>) signées au moment de la demande. Si ces éléments évoluent, ce qui arrive fréquemment, vous êtes tenus de les mettre à jour. La prolongation du jeton est un bonne occasion. Vous pouvez toutefois faire une demande de modification à tout moment depuis votre espace Datapass.
+                Ces éléments, importants pour justifier de l'accès aux données et pour assurer une bonne gestion de l'API, sont au coeur du contrat avec l'API Particulier. L'utilisation d'un jeton doit donc être en cohérence avec l'habilitation obtenue, comme le stipulent les [CGU](<%= cgu_path %>) signées au moment de la demande. Si ces éléments évoluent, ce qui arrive fréquemment, vous êtes tenus de les mettre à jour. La prolongation du jeton est une bonne occasion. Vous pouvez toutefois faire une demande de modification à tout moment depuis votre espace Datapass.
 
                 Dans le cas d'une évolution majeure, il est possible que le service instructeur vous demande d'ouvrir une nouvelle demande.
                 La demande d'habilitation obtenue initialement ne sera pas supprimée, et continuera d'être valide à partir du moment où son contenu est respecté.
@@ -411,7 +411,7 @@ fr:
               answer: |+
                 1. **Abonnez-vous aux notifications** par e-mail depuis [notre page de statuts](https://status.particulier.api.gouv.fr/subscribe/email){:target="_blank"}.
 
-                2. Plutôt que de consulter mnauellement la page de statuts, vous pouvez aussi **automatiser informatiquement la surveillance**, pour en savoir plus, consultez cette rubrique de l'[espace développeur](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>).
+                2. Plutôt que de consulter manuellement la page de statuts, vous pouvez aussi **automatiser informatiquement la surveillance**, pour en savoir plus, consultez cette rubrique de l'[espace développeur](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>).
 
                 3. Enfin, si vous rencontrez un problème et avez **besoin d'échanger avec nous en transmettant des données sensibles**, utilisez le [formulaire de transfert d'informations sécurisées (Démarches simplifiées)](https://www.demarches-simplifiees.fr/commencer/api-particulier-transfert-securise-d-informations){:target="_blank"}.
                 Si vous n'avez pas de réponse sous 72h, n'hésitez pas à nous envoyer votre numéro de demande Démarches simplifiées à l'adresse [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr).

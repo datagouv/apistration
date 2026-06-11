@@ -27,7 +27,7 @@ fr:
         absolute: "Votre session a atteint sa durée maximale de %{hours} heures, veuillez vous reconnecter."
       login:
         error:
-          title: La connection a échouée.
+          title: La connexion a échoué.
           description: Votre lien est peut-être expiré. Si cela n'est pas le cas, veuillez vous rapprocher de nos services.
       failure:
         unknown: Une erreur inconnue est survenue, veuillez contacter le support.
@@ -173,19 +173,19 @@ fr:
         summary: Bilan et confirmation
       prolonged:
         title: Votre jeton a été prolongé jusqu'au %{humanized_date}
-        description: Merci ! Suite à vos réponses, les conditions de votre habilitation a l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
+        description: Merci ! Suite à vos réponses, les conditions de votre habilitation à l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
         link:
           authorization_request: Revenir à votre demande d'habilitation
       summary:
         prolonged:
-          owner_not_in_charge: "Suite aux réponses indiquées, vous declarez que le contact principal à changé. Bien que cela ne soit pas bloquant pour
-            poursuivre la prolongation de votre jetons, l'équipe support vous contactera rapidement afin de procéder au transfert de vos habilitations. Vous pouvez démarrer cette démarche en autonomie
+          owner_not_in_charge: "Suite aux réponses indiquées, vous déclarez que le contact principal a changé. Bien que cela ne soit pas bloquant pour
+            poursuivre la prolongation de votre jeton, l'équipe support vous contactera rapidement afin de procéder au transfert de vos habilitations. Vous pouvez démarrer cette démarche en autonomie
             via votre <a href='https://%{api}.api.gouv.fr/compte'>espace personnel</a>."
-          description: Suite aux réponses indiquées, déclare qu'aucune des informations indiquées dans votre habilitation n<sup>o</sup>%{external_id} n'a évolué.
+          description: Suite aux réponses indiquées, vous déclarez qu'aucune des informations indiquées dans votre habilitation n<sup>o</sup>%{external_id} n'a évolué.
           cgu: ⚠️  Vos réponses vous engagent en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU</a>
           finished: Confirmer
         requires_update:
-          description: "Suite aux réponses indiquées, vous declarez que des changements ont eu lieu au niveau&nbsp;:"
+          description: "Suite aux réponses indiquées, vous déclarez que des changements ont eu lieu au niveau&nbsp;:"
           owner: du contact principal
           project_purpose: de la nature du projet (titre et description)
           contact_metier: du contact métier
@@ -218,7 +218,7 @@ fr:
           project_purpose: Oui, le projet bénéficiant de cette habilitation a toujours la même finalité.
           change_project_purpose: Non, le projet a changé.
       owner:
-        label: Êtes vous toujours en charge de la demande %{link_to_datapass} ?
+        label: Êtes-vous toujours en charge de la demande %{link_to_datapass} ?
         radio:
           still_in_charge: Oui, je suis toujours en charge
           will_change_soon: Oui, je suis toujours en charge mais pourrais passer la main d'ici quelques mois
@@ -289,7 +289,7 @@ fr:
       cannot_show:
         title: Utiliser le jeton
         description: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
-          Si le jeton arrive à expriation ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette habilitation :"
+          Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette habilitation :"
         demandeur: "<strong>demandeur</strong> : %{demandeur}"
         contact_technique: "<strong>Contact technique</strong> : %{contact_technique}"
         authorization_request_link: "<strong>Lien de l'habilitation à transmettre :</strong>"
@@ -303,7 +303,7 @@ fr:
       show:
         title: Utiliser le jeton
         warning: "Vous ne devez <strong> jamais copier-coller un token
-          dans un moteur de recherche on dans un email.</strong> L'usage de votre token
+          dans un moteur de recherche ou dans un email.</strong> L'usage de votre token
           se fait uniquement dans votre logiciel métier sécurisé utilisé pour réaliser vos appels.
           Pour transmettre ce jeton, <strong>merci d'utiliser la fonctionnalité prévue ci-dessous :</strong>"
         token_label: "Jeton d'accès (identifiant technique :<strong>%{token_id}</strong>)"
@@ -447,7 +447,7 @@ fr:
           title: "Jeton principal&nbsp;:"
         attestations:
           title: "Télécharger manuellement les attestations sociales et fiscales"
-          description: "Saississez manuellement le SIREN de l'unite légale recherchée et vous aurez directement accès aux PDF des attestations&nbsp;:"
+          description: "Saisissez manuellement le SIREN de l'unité légale recherchée et vous aurez directement accès aux PDF des attestations&nbsp;:"
           cta: "Utiliser l'interface de téléchargement"
         other_tokens:
           title: Voir les autres jetons
@@ -509,7 +509,7 @@ fr:
       show:
         beta:
           title: "Cette API est en bêta test"
-          description: "Elle est en production et fonctionnelle, mais succeptible de changer en fonction des retours des utilisateurs et du fournisseur de données.
+          description: "Elle est en production et fonctionnelle, mais susceptible de changer en fonction des retours des utilisateurs et du fournisseur de données.
             <br />
             <br />
             Vous serez bien entendu informé des changements en amont le cas échéant. N'hésitez pas à contacter le support si vous avez des questions."
