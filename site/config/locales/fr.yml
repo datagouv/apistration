@@ -22,6 +22,9 @@ fr:
         success:
           title: Délégation révoquée
     sessions_management:
+      session_expired:
+        idle: "Votre session a expiré après %{hours} heures d'inactivité, veuillez vous reconnecter."
+        absolute: "Votre session a atteint sa durée maximale de %{hours} heures, veuillez vous reconnecter."
       login:
         error:
           title: La connection a échouée.

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
+  include SessionLifecycle
   include UserSessionsHelper
 
   helper UserSessionsHelper

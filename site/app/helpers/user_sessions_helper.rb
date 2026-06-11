@@ -6,7 +6,7 @@ module UserSessionsHelper
   end
 
   def sign_in_and_redirect(user)
-    session[:current_user_id] = user.id
+    start_user_session(user)
     redirect_current_user_to_homepage
   end
 
@@ -19,6 +19,6 @@ module UserSessionsHelper
   end
 
   def logout_user
-    session[:current_user_id] = nil
+    clear_user_session
   end
 end
