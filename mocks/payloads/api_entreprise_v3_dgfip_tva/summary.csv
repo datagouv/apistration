@@ -1,0 +1,8 @@
+Titre,Description,Paramètres,Status,Réponse
+,Numéro de TVA trouvé pour le SIREN,"{""siren"":""217500016""}",200,"{
+  ""data"": {
+    ""numero_tva"": ""FR72217500016""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
