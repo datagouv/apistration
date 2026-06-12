@@ -27,3 +27,6 @@ adheres to [Semantic Versioning](https://semver.org/).
   the latest available version; unknown version raises `ArgumentError`;
   deprecated versions emit a language-native `warn` on call.
 - `examples/{basic,error_handling,retry}.rb`.
+- `Resources::Dgfip#numero_tva(siren, version:)` — open-data lookup of the
+  intra-community VAT numbers associated with a SIREN, proxied by SIADE
+  from `tabular-api.data.gouv.fr`.
