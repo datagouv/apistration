@@ -26,7 +26,7 @@ RSpec.describe DGFIP::TVA, type: :retriever_organizer do
     end
 
     it 'exposes the dataset refresh date in the resource' do
-      expect(call.bundled_data.data.date_derniere_mise_a_jour).to eq('2026-06-11T11:00:00+00:00')
+      expect(call.bundled_data.data.date_derniere_mise_a_jour).to eq('2026-06-11')
     end
   end
 

@@ -15,7 +15,7 @@ class DGFIP::TVA::FetchRefreshDate < ApplicationInteractor
     response = Net::HTTP.get_response(uri)
     return nil unless response.is_a?(Net::HTTPOK)
 
-    JSON.parse(response.body)['last_modified']
+    Date.parse(JSON.parse(response.body).dig('resource', 'last_modified')).iso8601
   rescue StandardError
     nil
   end

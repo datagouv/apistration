@@ -10,12 +10,12 @@ RSpec.describe DGFIP::TVA::FetchRefreshDate, type: :interactor do
   context 'when the API returns a last_modified date' do
     before do
       stub_request(:get, resource_url)
-        .to_return(status: 200, body: { last_modified: '2026-06-11T11:00:00+00:00' }.to_json)
+        .to_return(status: 200, body: { resource: { last_modified: '2026-06-11T11:00:00+00:00' } }.to_json)
     end
 
     it { is_expected.to be_a_success }
 
-    its(:date_derniere_mise_a_jour) { is_expected.to eq('2026-06-11T11:00:00+00:00') }
+    its(:date_derniere_mise_a_jour) { is_expected.to eq('2026-06-11') }
 
     it 'caches the result' do
       2.times { described_class.call }

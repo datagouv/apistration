@@ -38,7 +38,8 @@ RSpec.describe 'DGFIP: Numéro de TVA intracommunautaire', api: :entreprise, typ
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('dgfip.numero_tva.attributes')
+            attributes: SwaggerData.get('dgfip.numero_tva.attributes'),
+            meta: SwaggerData.get('dgfip.numero_tva.meta')
           )
 
           run_test!
