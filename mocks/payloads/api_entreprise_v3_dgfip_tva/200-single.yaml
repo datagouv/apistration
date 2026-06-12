@@ -9,5 +9,7 @@ payload: |-
       "numero_tva": "FR72217500016"
     },
     "links": {},
-    "meta": {}
+    "meta": {
+      "date_derniere_mise_a_jour": "2026-06-11"
+    }
   }

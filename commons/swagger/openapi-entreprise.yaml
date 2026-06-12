@@ -9052,6 +9052,19 @@ paths:
                     type: object
                   meta:
                     type: object
+                    properties:
+                      date_derniere_mise_a_jour:
+                        title: Date de la dernière mise à jour des données
+                        description: Date de la dernière publication de l'extraction
+                          DGFIP sur data.gouv.fr. Les données sont mises à jour avec
+                          un délai d'environ un jour (J+1).
+                        type: string
+                        format: date
+                        example: '2026-06-11'
+                        nullable: true
+                    required:
+                    - date_derniere_mise_a_jour
+                    additionalProperties: false
                 required:
                 - data
                 - links
