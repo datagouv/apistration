@@ -295,6 +295,17 @@ tableaux de la liasse fiscale'
       meta: *dgfip_liasses_fiscales_meta
 
 
+  numero_tva:
+    title: "Numéro de TVA"
+    description: "Numéro de TVA intracommunautaire français, issu des extractions publiées par la Direction générale des finances publiques (DGFIP) sur data.gouv.fr."
+    tags:
+      - "Informations financières"
+    attributes:
+      numero_tva:
+        title: "Numéro de TVA intracommunautaire français"
+        description: "Numéro de TVA français, préfixé par FR, suivi de la clé de contrôle sur 2 caractères puis du SIREN sur 9 chiffres."
+        type: "string"
+        example: "FR72217500016"
   chiffres_affaires:
     title: "Chiffre d'affaires"
     description: "Déclarations de chiffre d’affaires, des trois derniers exercices, faites auprès de la Direction générale des finances publiques (DGFIP)."

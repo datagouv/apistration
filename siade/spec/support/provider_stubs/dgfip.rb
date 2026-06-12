@@ -1,5 +1,6 @@
 require_relative '../provider_stubs'
 
+# rubocop:disable Metrics/ModuleLength
 module ProviderStubs::DGFIP
   def mock_dgfip_authenticate
     stub_request(:post, "#{Siade.credentials[:dgfip_apim_base_url]}/token")
@@ -65,6 +66,29 @@ module ProviderStubs::DGFIP
     )
   end
 
+  def mock_valid_dgfip_numero_tva(siren, vat_no: nil)
+    tva = TVAIntracommunautaire.new(siren)
+    computed_vat_no = vat_no || "#{tva.cle}#{siren}"
+    body = {
+      data: [{ vat_no: computed_vat_no }],
+      meta: { total: 1 }
+    }
+    stub_request(:get, %r{#{Siade.credentials[:dgfip_tva_base_url]}/api/resources/.+/data/})
+      .with(query: hash_including('vat_no__exact' => computed_vat_no))
+      .to_return(status: 200, body: body.to_json)
+    mock_dgfip_tva_refresh_date
+  end
+
+  def mock_dgfip_tva_refresh_date(last_modified: '2026-06-11T11:00:00+00:00')
+    stub_request(:get, "https://www.data.gouv.fr/api/2/datasets/resources/#{Siade.credentials[:dgfip_tva_resource_id]}/")
+      .to_return(status: 200, body: { last_modified: }.to_json)
+  end
+
+  def mock_invalid_dgfip_numero_tva(status)
+    stub_request(:get, %r{#{Siade.credentials[:dgfip_tva_base_url]}/api/resources/.+/data/})
+      .to_return(status:)
+  end
+
   def mock_valid_dgfip_dictionnaire(year)
     mock_dgfip_authenticate
 
@@ -104,3 +128,4 @@ module ProviderStubs::DGFIP
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength
