@@ -4,8 +4,9 @@ fiche:
     ping_url: 'https://entreprise.api.gouv.fr/ping/european_commission/numero_tva'
     path: '/v3/european_commission/unites_legales/{siren}/numero_tva'
     controller: 'api_entreprise/v3_and_more/european_commission/vies'
-    # Position au sein de l'index
-    position: 165
+    position: 9001
+    new_endpoint_uids:
+      - 'dgfip/numero_tva'
     perimeter:
       entity_type_description: |+
         Cette API concerne uniquement les **✅ unités légales ayant un numéro de TVA intracommunautaire français**.
@@ -47,6 +48,10 @@ fiche:
 
           {:.fr-highlight}
           Si vous avez un doute, vous pouvez vérifier vous-même le numéro de TVA à partir du [service VIES](https://ec.europa.eu/taxation_customs/vies/#/vat-validation){:target="_blank"}.
+    historique: |+
+      **Juin 2025 : dépréciation de cet endpoint**
+
+      Cet endpoint est remplacé par [**DGFIP : Numéro de TVA**](/catalogue/api_entreprise/endpoints/dgfip_numero_tva), qui s'appuie sur les extractions publiées par la DGFIP sur data.gouv.fr et suit la même stratégie de vérification. Nous vous recommandons d'utiliser le nouvel endpoint.
     swagger:
       european_commission.vies:
         title: N°TVA intracommunautaire français
