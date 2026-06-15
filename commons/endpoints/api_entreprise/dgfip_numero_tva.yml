@@ -5,6 +5,7 @@ fiche:
     path: '/v3/dgfip/unites_legales/{siren}/numero_tva'
     controller: 'api_entreprise/v3_and_more/dgfip/tva'
     position: 165
+    novelty: true
     old_endpoint_uids:
       - 'commission_europeenne/numero_tva'
     perimeter:

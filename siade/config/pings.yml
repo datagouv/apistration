@@ -481,6 +481,18 @@ shared:
         routes:
           - 'api_entreprise/v3_and_more/dgfip/liasses_fiscales#show'
 
+    dgfip/numero_tva:
+      kind: 'retriever'
+      cache: <%= 10.minutes %>
+      provider: 'DGFIP'
+      status_page:
+        name: "DGFIP - Numéro de TVA"
+        alerts_wait: 30
+      driver_params:
+        retriever: 'DGFIP::TVA'
+        params:
+          siren: '552032534'
+
     infogreffe/rcs:
       kind: 'retriever'
       cache: <%= 2.minutes %>
@@ -607,17 +619,6 @@ shared:
         retriever: 'ADEME::CertificatsRGE'
         params:
           siret: '50530961700049'
-    european_commission/numero_tva:
-      kind: 'retriever'
-      cache: <%= 10.minutes %>
-      provider: 'European Commission'
-      status_page:
-        name: "Commission Européenne - Numéro de TVA"
-        alerts_wait: 30
-      driver_params:
-        retriever: 'EuropeanCommission::VIES'
-        params:
-          siren: '552032534'
     gip_mds/effectifs:
       kind: 'retriever'
       cache: <%= 10.minutes %>
