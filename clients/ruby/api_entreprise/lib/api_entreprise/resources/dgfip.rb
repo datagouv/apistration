@@ -25,21 +25,6 @@ module ApiEntreprise
         @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end
 
-      # Numéro de TVA
-      # Logical endpoint: /dgfip/numero_tva/{siren}
-      # Versions available: [3] — default: 3
-      def numero_tva(siren, version: nil, recipient: nil, context: nil, object: nil)
-        Commons::Siren.validate!(siren, parameter: :siren)
-        path =
-          case version || 3
-          when 3
-          "/v3/dgfip/numero_tva/#{siren}"
-          else
-            raise ArgumentError, "version #{version.inspect} not available for /dgfip/numero_tva/{siren}; supported: [3]"
-          end
-        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
-      end
-
       # Attestation fiscale
       # Logical endpoint: /dgfip/unites_legales/{siren}/attestation_fiscale
       # Versions available: [3, 4] — default: 4
@@ -87,6 +72,21 @@ module ApiEntreprise
           "/v3/dgfip/unites_legales/#{siren}/liens_capitalistiques/#{year}"
           else
             raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/liens_capitalistiques/{year}; supported: [3]"
+          end
+        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
+      end
+
+      # Numéro de TVA
+      # Logical endpoint: /dgfip/unites_legales/{siren}/numero_tva
+      # Versions available: [3] — default: 3
+      def numero_tva(siren, version: nil, recipient: nil, context: nil, object: nil)
+        Commons::Siren.validate!(siren, parameter: :siren)
+        path =
+          case version || 3
+          when 3
+          "/v3/dgfip/unites_legales/#{siren}/numero_tva"
+          else
+            raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/numero_tva; supported: [3]"
           end
         @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
       end

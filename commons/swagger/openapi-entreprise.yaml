@@ -8909,6 +8909,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
+      description: Numéro de TVA intracommunautaire français, issu des extractions
+        publiées par la Direction générale des finances publiques (DGFIP) sur data.gouv.fr.
       responses:
         '401':
           description: Non autorisé
@@ -8974,27 +8976,100 @@ paths:
                     Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
-        '409':
-          description: Conflit
+        '429':
+          description: Trop de requêtes
           content:
             application/json:
               examples:
-                conflict_error:
+                too_many_requests_error:
                   value:
                     errors:
-                    - code: '00015'
-                      title: Conflit
-                      detail: Une requête associé à votre jeton est déjà en cours
-                        de traitement pour ces paramètres. Veuillez attendre la fin
-                        du traitement avant d'effectuer une nouvelle requête.
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
                       source:
                       meta: {}
-                  summary: Conflit
-                  description: Une requête associé à votre jeton est déjà en cours
-                    de traitement pour ces paramètres. Veuillez attendre la fin du
-                    traitement avant d'effectuer une nouvelle requête.
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '200':
+          description: Numéro de TVA trouvé
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: 'Secondes avant que le cache n''expire. Si le cache est
+                vide, ce header est vide (mais présent). '
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_dgfip_tva
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      numero_tva:
+                        title: Numéro de TVA intracommunautaire français
+                        description: Numéro de TVA français, préfixé par FR, suivi
+                          de la clé de contrôle sur 2 caractères puis du SIREN sur
+                          9 chiffres.
+                        type: string
+                        example: FR72217500016
+                    required:
+                    - numero_tva
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                    properties:
+                      date_derniere_mise_a_jour:
+                        title: Date de la dernière mise à jour des données
+                        description: Date de la dernière publication de l'extraction
+                          DGFIP sur data.gouv.fr. Les données sont mises à jour avec
+                          un délai d'environ un jour (J+1). Peut être `null` si la
+                          date n'a pas pu être récupérée.
+                        type: string
+                        format: date
+                        example: '2026-06-11'
+                        nullable: true
+                    required:
+                    - date_derniere_mise_a_jour
+                    additionalProperties: false
+                required:
+                - data
+                - links
+                - meta
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -9046,43 +9121,80 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
-        '429':
-          description: Trop de requêtes
-          content:
-            application/json:
-              examples:
-                too_many_requests_error:
-                  value:
-                    errors:
-                    - code: '00429'
-                      title: Trop de requêtes
-                      detail: Vous avez effectué trop de requêtes
-                      source:
-                      meta: {}
-                  summary: Trop de requêtes
-                  description: Vous avez effectué trop de requêtes
-              schema:
-                "$ref": "#/components/schemas/Error"
         '502':
           description: Erreur du fournisseur
           content:
             application/json:
               examples:
-                provider_unknown_error:
+                erreur_inconnue_du_fournisseur_de_donnees_43999:
                   value:
                     errors:
-                    - code: '03999'
+                    - code: '43999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: DGFIP - Adélie
+                        provider: DGFIP - TVA
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_43000:
+                  value:
+                    errors:
+                    - code: '43000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: DGFIP - TVA
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_43008:
+                  value:
+                    errors:
+                    - code: '43008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: DGFIP - TVA
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_43011:
+                  value:
+                    errors:
+                    - code: '43011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: DGFIP - TVA
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_certificat_ssl_du_fournisseur_de_donnees_43009:
+                  value:
+                    errors:
+                    - code: '43009'
+                      title: Erreur de certificat SSL du fournisseur de données
+                      detail: Le certificat SSL du fournisseur de données est invalide
+                        ou expiré.
+                      source:
+                      meta:
+                        provider: DGFIP - TVA
+                  summary: Erreur de certificat SSL du fournisseur de données
+                  description: Le certificat SSL du fournisseur de données est invalide
+                    ou expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -9093,26 +9205,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '03002'
+                    - code: '43002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: DGFIP - Adélie
+                        provider: DGFIP - TVA
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '03001'
+                    - code: '43001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: DGFIP - Adélie
+                        provider: DGFIP - TVA
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -9134,14 +9246,35 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '03004'
+                    - code: '43004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: DGFIP - Adélie
+                        provider: DGFIP - TVA
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
