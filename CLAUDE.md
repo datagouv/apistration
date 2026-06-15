@@ -7,7 +7,7 @@ avec les conventions spécifiques :
 - `site/CLAUDE.md` — admin SIADE (front + back-office)
 - `mocks/CLAUDE.md` — mocks fournisseurs
 - `clients/` — SDKs officiels (`clients/SPECS.md` normatif, `clients/ruby/`
-  implémentation de référence ; autres langages à venir)
+  et `clients/node/` ; autres langages à venir)
 
 ## Conventions transverses
 
@@ -16,9 +16,12 @@ avec les conventions spécifiques :
   nouvelle version, paramètre ajouté/supprimé/renommé/rendu optionnel,
   changement de format de réponse, dépréciation) doit s'accompagner d'une
   itération sur les clients officiels dans `clients/` — au minimum
-  régénération du scaffolding (`clients/ruby/bin/scaffold_resources`) et
-  release SemVer-correcte (cf. skill `release-new-version`). Un changement
-  serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
+  régénération du scaffolding pour **les deux SDKs** :
+  - Ruby : `clients/ruby/bin/scaffold_resources`
+  - Node : `cd clients/node && npx tsx bin/scaffold-resources.ts`
+
+  puis release SemVer-correcte (cf. skill `release-new-version`). Un
+  changement serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
 
 ## Ressources partagées (`commons/`)
 
