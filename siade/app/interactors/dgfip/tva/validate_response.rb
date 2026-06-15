@@ -7,7 +7,7 @@ class DGFIP::TVA::ValidateResponse < DGFIP::ValidateResponse
     return unknown_provider_response! if invalid_json?
 
     case json_body
-    in Hash => h if h['data'].respond_to?(:each)
+    in Hash => h if Array === h['data']
       handle_data_response
     else
       unknown_provider_response!

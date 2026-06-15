@@ -1,4 +1,7 @@
 class DGFIP::TVA::MakeRequest < MakeRequest::Get
+  BASE_URL = 'https://tabular-api.data.gouv.fr'.freeze
+  RESOURCE_ID = '5199cd40-0e9c-4a24-8ba3-c2365999b2aa'.freeze
+
   protected
 
   def mocking_params
@@ -6,7 +9,7 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
   end
 
   def request_uri
-    URI("#{base_url}/api/resources/#{resource_id}/data/")
+    URI("#{BASE_URL}/api/resources/#{RESOURCE_ID}/data/")
   end
 
   def request_params
@@ -17,20 +20,6 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
   end
 
   private
-
-  def api_call
-    return fail_to_request_provider!(ProviderUnavailable) if resource_id.blank?
-
-    super
-  end
-
-  def base_url
-    Siade.credentials[:dgfip_tva_base_url]
-  end
-
-  def resource_id
-    Siade.credentials[:dgfip_tva_resource_id]
-  end
 
   def tva_number_without_fr
     context.tva_number[2..]

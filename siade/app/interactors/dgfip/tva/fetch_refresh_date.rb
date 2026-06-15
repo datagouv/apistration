@@ -21,6 +21,6 @@ class DGFIP::TVA::FetchRefreshDate < ApplicationInteractor
   end
 
   def resource_id
-    Siade.credentials[:dgfip_tva_resource_id]
+    DGFIP::TVA::MakeRequest::RESOURCE_ID
   end
 end

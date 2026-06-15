@@ -73,19 +73,19 @@ module ProviderStubs::DGFIP
       data: [{ vat_no: computed_vat_no }],
       meta: { total: 1 }
     }
-    stub_request(:get, %r{#{Siade.credentials[:dgfip_tva_base_url]}/api/resources/.+/data/})
+    stub_request(:get, %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/})
       .with(query: hash_including('vat_no__exact' => computed_vat_no))
       .to_return(status: 200, body: body.to_json)
     mock_dgfip_tva_refresh_date
   end
 
   def mock_dgfip_tva_refresh_date(last_modified: '2026-06-11T11:00:00+00:00')
-    stub_request(:get, "https://www.data.gouv.fr/api/2/datasets/resources/#{Siade.credentials[:dgfip_tva_resource_id]}/")
+    stub_request(:get, "https://www.data.gouv.fr/api/2/datasets/resources/#{DGFIP::TVA::MakeRequest::RESOURCE_ID}/")
       .to_return(status: 200, body: { resource: { last_modified: } }.to_json)
   end
 
   def mock_invalid_dgfip_numero_tva(status)
-    stub_request(:get, %r{#{Siade.credentials[:dgfip_tva_base_url]}/api/resources/.+/data/})
+    stub_request(:get, %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/})
       .to_return(status:)
   end
 

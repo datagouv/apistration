@@ -2,7 +2,7 @@ RSpec.describe DGFIP::TVA::FetchRefreshDate, type: :interactor do
   subject(:result) { described_class.call }
 
   let(:resource_url) do
-    "https://www.data.gouv.fr/api/2/datasets/resources/#{Siade.credentials[:dgfip_tva_resource_id]}/"
+    "https://www.data.gouv.fr/api/2/datasets/resources/#{DGFIP::TVA::MakeRequest::RESOURCE_ID}/"
   end
 
   before { Rails.cache.clear }
@@ -18,6 +18,9 @@ RSpec.describe DGFIP::TVA::FetchRefreshDate, type: :interactor do
     its(:date_derniere_mise_a_jour) { is_expected.to eq('2026-06-11') }
 
     it 'caches the result' do
+      memory_cache = ActiveSupport::Cache::MemoryStore.new
+      allow(Rails).to receive(:cache).and_return(memory_cache)
+
       2.times { described_class.call }
 
       expect(WebMock).to have_requested(:get, resource_url).once

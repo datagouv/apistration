@@ -3,7 +3,7 @@ RSpec.describe DGFIP::TVA, type: :retriever_organizer do
 
   let(:params) { { siren: } }
   let(:tabular_api_endpoint) do
-    %r{#{Siade.credentials[:dgfip_tva_base_url]}/api/resources/.+/data/}
+    %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/}
   end
 
   describe 'happy path' do

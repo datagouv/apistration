@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'DGFIP: Numéro de TVA intracommunautaire', api: :entreprise, type: %i[request swagger] do
-  path '/v3/dgfip/numero_tva/{siren}' do
+  path '/v3/dgfip/unites_legales/{siren}/numero_tva' do
     get SwaggerData.get('dgfip.numero_tva.title') do
       tags(*SwaggerData.get('dgfip.numero_tva.tags'))
 
