@@ -43,6 +43,7 @@ shared:
       - api_entreprise_v3_dgfip_liasses_fiscales
       - api_entreprise_v3_dgfip_liens_capitalistiques
       - api_entreprise_v3_dgfip_chiffres_affaires
+      - api_entreprise_v3_dgfip_tva
       - api_entreprise_v3_msa_conformites_cotisations
       - api_entreprise_v3_fabrique_numerique_ministeres_sociaux_conventions_collectives
       - api_entreprise_v3_european_commission_vies

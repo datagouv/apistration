@@ -32,6 +32,10 @@
   api: 'entreprise'
   path: '/v3/dgfip/etablissements/82152473300028/chiffres_affaires'
 
+- name: 'DGFIP Numéros de TVA intracommunautaire'
+  api: 'entreprise'
+  path: '/v3/dgfip/numero_tva/217500016'
+
 - name: 'ADEME Certification RGE'
   api: 'entreprise'
   path: '/v3/ademe/etablissements/50530961700023/certification_rge'

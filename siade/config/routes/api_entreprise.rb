@@ -39,6 +39,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
     get 'unites_legales/:siren/liens_capitalistiques/:year' => '/api_entreprise/v3_and_more/dgfip/liens_capitalistiques#show'
     get 'etablissements/:siret/chiffres_affaires' => '/api_entreprise/v3_and_more/dgfip/chiffres_affaires#show'
     get 'unites_legales/:siren/attestation_fiscale' => '/api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
+    get 'unites_legales/:siren/numero_tva' => '/api_entreprise/v3_and_more/dgfip/tva#show'
   end
 
   namespace :fabrique_numerique_ministeres_sociaux do

@@ -18,6 +18,7 @@ export class EuropeanCommission {
     const path = (() => {
       switch (resolvedVersion) {
       case 3:
+        process.emitWarning('[DEPRECATED] /v3/european_commission/unites_legales/{siren}/numero_tva (#numero_tva): marked deprecated in the OpenAPI spec.', 'DeprecationWarning');
         return `/v3/european_commission/unites_legales/${siren}/numero_tva`;
         default:
           throw new Error(`version ${resolvedVersion} not available for /european_commission/unites_legales/{siren}/numero_tva; supported: [3]`);

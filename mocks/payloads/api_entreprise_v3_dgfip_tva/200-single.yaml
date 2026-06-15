@@ -1,0 +1,15 @@
+---
+description: 'Numéro de TVA trouvé pour le SIREN'
+params:
+  siren: '217500016'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_tva": "FR72217500016"
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour": "2026-06-11"
+    }
+  }

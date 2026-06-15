@@ -1,0 +1,62 @@
+---
+fiche:
+  - uid: 'dgfip/numero_tva'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/dgfip/numero_tva'
+    path: '/v3/dgfip/unites_legales/{siren}/numero_tva'
+    controller: 'api_entreprise/v3_and_more/dgfip/tva'
+    position: 165
+    old_endpoint_uids:
+      - 'commission_europeenne/numero_tva'
+    perimeter:
+      entity_type_description: |+
+        Cette API concerne uniquement les **✅ unités légales ayant un numéro de TVA intracommunautaire français**.
+        ❌ Cette API ne délivre pas les numéros de TVA d'un autre pays européen.
+
+        Une unité légale répertoriée en France peut ne pas avoir de numéro de TVA français si son siège était historiquement à l'étranger et avait commencé à déclarer ses impôts dans ce pays. Dans ce cas, l'unité légale garde le numéro de TVA qui lui a été délivré par ce pays européen. Ce numéro de TVA n'est alors pas délivré par cette API.
+      geographical_scope_description: |+
+        ❌ Les unités légales immatriculées dans les DROM COM français ne peuvent pas avoir de numéro de TVA intracommunautaire car elles ne font pas partie du territoire communautaire en matière de TVA en vertu de l'[article 6 de la Directive européenne de TVA](https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32006L0112&from=FR#d1e1914-1-1).
+      updating_rules_description: |+
+        Les données proviennent d'une **extraction publiée quotidiennement par la DGFIP** sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-entreprises-beneficiaires-du-traitement-tva/).
+
+        ⚠️ La fraîcheur des données est de **J+1** : elles ne sont **pas en temps réel** et reflètent la situation du jour précédent. Si une entreprise vient d'être assujettie à la TVA intracommunautaire, son numéro de TVA peut ne pas encore être disponible via cette API.
+      know_more_description: |+
+        - [Jeu de données DGFIP sur data.gouv.fr : Liste des entreprises bénéficiaires du traitement TVA](https://www.data.gouv.fr/fr/datasets/liste-des-entreprises-beneficiaires-du-traitement-tva/){:target="_blank"}
+        - [Définition d'un Numéro de TVA intracommunautaire par Service-Public.fr](https://entreprendre.service-public.fr/vosdroits/F23570){:target="_blank"}
+      entities:
+        - entreprises
+    call_id: "SIREN"
+    provider_uids:
+      - 'dgfip'
+    keywords:
+      - 'numéro tva'
+      - 'intracommunautaire'
+    format:
+      - Donnée structurée JSON
+    data:
+      description: |+
+        Cette API **génère le numéro de TVA** d'une unité légale à partir de son numéro de SIREN et **vérifie** auprès des extractions publiées par la DGFIP sur data.gouv.fr que celui-ci est valide.
+
+        **⚠️ Si l'API ne retourne pas de numéro de TVA**, cela ne veut pas dire que l'unité légale n'a pas de numéro de TVA. En effet, celle-ci peut avoir un numéro de TVA non français, ou son enregistrement peut ne pas encore figurer dans l'extraction du jour (fraîcheur J+1).
+    opening: public
+    parameters:
+      - Numéro de SIREN de l'unité légale
+    faq:
+      - q: "Pourquoi l'API renvoie une erreur alors que j'ai pu récupérer un numéro de TVA sur un site tiers ?"
+        a: |+
+          Dans la majorité des cas, il est assez simple de déduire le numéro de TVA à partir du numéro de SIREN. C'est pourquoi, beaucoup de sites tiers effectuent ce calcul et **affichent le potentiel numéro de TVA, sans effectuer de vérification**. De fait, dans certains cas, le numéro de TVA que ces sites tiers proposent est faux.
+
+          Dans le cas où l'API Entreprise ne délivre pas de numéro de TVA (erreur de type 404 - entité non-trouvée) pour un SIREN dont vous avez obtenu le numéro de TVA par un site tiers, **il est fort probable que ce numéro de TVA est invalide** : il ne figure pas dans les extractions de la DGFIP.
+
+          {:.fr-highlight}
+          Les données provenant d'une extraction quotidienne (J+1), si l'enregistrement TVA est très récent, il est également possible qu'il ne soit pas encore disponible dans l'extraction du jour.
+      - q: "Mon cas d'usage implique un grand volume de recherches, l'API Entreprise est-elle adaptée ?"
+        a: |+
+          L'API Entreprise est soumise à des **quotas d'appels** et n'est pas conçue pour des traitements en masse. Si votre besoin implique des recherches sur de nombreux SIREN en dehors d'un flux métier (traitement batch, constitution d'une base de données, etc.), nous vous recommandons d'utiliser directement le **[fichier plat publié quotidiennement par la DGFIP sur data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-entreprises-beneficiaires-du-traitement-tva/){:target="_blank"}** : il contient l'ensemble des numéros de TVA actifs, sans contrainte de quota.
+
+          {:.fr-highlight}
+          L'API Entreprise reste le bon choix pour des vérifications ponctuelles à la volée dans un flux applicatif (formulaire, instruction de dossier, etc.).
+      - q: "Quelle est la différence avec l'ancien endpoint Commission Européenne VIES ?"
+        a: |+
+          L'ancien endpoint [Commission Européenne VIES](/catalogue/api_entreprise/endpoints/commission_europeenne_numero_tva) vérifiait le numéro de TVA en temps réel auprès du service VIES de la Commission Européenne.
+
+          Ce nouvel endpoint s'appuie sur les **extractions quotidiennes publiées par la DGFIP** sur data.gouv.fr. La stratégie de vérification est identique (calcul du numéro de TVA à partir du SIREN, vérification auprès d'une source officielle), mais la fraîcheur des données est de **J+1** au lieu du temps réel.

@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request swagger] do
   path '/v3/european_commission/unites_legales/{siren}/numero_tva' do
     get SwaggerData.get('european_commission.vies.title') do
+      deprecated true
+
       tags(*SwaggerData.get('european_commission.vies.tags'))
 
       common_action_attributes
