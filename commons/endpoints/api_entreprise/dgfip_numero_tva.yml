@@ -2,7 +2,7 @@
 fiche:
   - uid: 'dgfip/numero_tva'
     ping_url: 'https://entreprise.api.gouv.fr/ping/dgfip/numero_tva'
-    path: '/v3/dgfip/numero_tva/{siren}'
+    path: '/v3/dgfip/unites_legales/{siren}/numero_tva'
     controller: 'api_entreprise/v3_and_more/dgfip/tva'
     position: 165
     old_endpoint_uids:
