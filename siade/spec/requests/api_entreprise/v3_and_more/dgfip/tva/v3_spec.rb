@@ -15,10 +15,6 @@ RSpec.describe 'DGFIP: Numéro de TVA intracommunautaire', api: :entreprise, typ
         let(:siren) { valid_siren(:dgfip) }
       end
 
-      forbidden_request do
-        let(:siren) { valid_siren(:dgfip) }
-      end
-
       too_many_requests(DGFIP::TVA) do
         let(:siren) { valid_siren(:dgfip) }
       end

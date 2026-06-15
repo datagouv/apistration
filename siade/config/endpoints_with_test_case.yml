@@ -34,7 +34,7 @@
 
 - name: 'DGFIP Numéros de TVA intracommunautaire'
   api: 'entreprise'
-  path: '/v3/dgfip/numero_tva/217500016'
+  path: '/v3/dgfip/unites_legales/217500016/numero_tva'
 
 - name: 'ADEME Certification RGE'
   api: 'entreprise'
