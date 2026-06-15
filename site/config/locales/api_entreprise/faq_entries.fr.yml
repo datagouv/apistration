@@ -34,9 +34,9 @@ fr:
 
             - question: "Qu’est-ce qu’une API ?"
               answer: |+
-                À gros trait, une API est un tuyau informatique dans lequel circule des informations.
+                À gros trait, une API est un tuyau informatique dans lequel circulent des informations.
 
-                Plus précisemment, une API permet d’**agir sur des ressources** contenues dans un autre système d’information, **sans soi-même avoir la main sur ce système d’information**.
+                Plus précisément, une API permet d’**agir sur des ressources** contenues dans un autre système d’information, **sans soi-même avoir la main sur ce système d’information**.
 
                 Dans le cas d’API Entreprise, les ressources sont des informations sur les entreprises et les associations, et l’action est une consultation.
 
@@ -70,7 +70,7 @@ fr:
                 API Entreprise facilite plusieurs types de démarches, pour en savoir plus, consultez nos [cas d’usage et leurs fiches pratiques](<%= cas_usages_path %>).
 
 
-            - question: "En quoi API Entreprise facilite mon quotidien en tant qu’agent de de l’administration ?"
+            - question: "En quoi API Entreprise facilite mon quotidien en tant qu’agent de l’administration ?"
               answer: |+
                 En intégrant la brique API Entreprise dans votre système d’information ou votre site internet :
 
@@ -116,7 +116,7 @@ fr:
               answer: |+
                 L'API Entreprise est un bouquet d'API en [accès restreint sous conditions](<%= faq_index_path(anchor: 'quelles-sont-les-conditions-d-eligibilite') %>). Elle est accessible uniquement aux acteurs publics.
 
-                Parmi les API distribuées, certaines délivrent de l'informations publique. Mis à part les conditions d'accès au bouquet API Entreprise, l'accès à ces API en particulier n'est donc soumis à aucun cadre juridique supplémentaire. Elles sont donc incluses par défaut dans tous les accès qui sont délivrés.
+                Parmi les API distribuées, certaines délivrent de l'information publique. Mis à part les conditions d'accès au bouquet API Entreprise, l'accès à ces API en particulier n'est donc soumis à aucun cadre juridique supplémentaire. Elles sont donc incluses par défaut dans tous les accès qui sont délivrés.
 
                 Ces API se distinguent dans le [catalogue](<%= endpoints_path %>) par la mention _"API incluse par défaut"_.
 
@@ -157,7 +157,7 @@ fr:
                 - en cas d’utilisation de justificatifs, **prévoyez de permettre à vos usagers de pouvoir transmettre un document par eux-même**.
 
                 {:.fr-highlight}
-                > ℹ️ Le [Dîtes-le-nous une fois](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"} ne doit pas bloquer les usagers en cas d’incidents techniques : vos usagers préfèreront toujours vous redonner leurs informations plutôt que de ne pas pouvoir utiliser votre service.
+                > ℹ️ Le [Dites-le-nous une fois](https://www.numerique.gouv.fr/services/guichet-dites-le-nous-une-fois/){:target="_blank"} ne doit pas bloquer les usagers en cas d’incidents techniques : vos usagers préfèreront toujours vous redonner leurs informations plutôt que de ne pas pouvoir utiliser votre service.
 
 
             - question: "Je recherche un éditeur proposant l’API Entreprise"
@@ -317,7 +317,7 @@ fr:
 
                 #### Se rendre sur le formulaire de prolongation
 
-                Trois mois avant l’arrivée à terme d’un jeton, le demandeur **reçoit des notifications automatiques** l'informant de l’expiration à venir de votre jeton ainsi qu’**une invitation à le prolongerr**.
+                Trois mois avant l’arrivée à terme d’un jeton, le demandeur **reçoit des notifications automatiques** l'informant de l’expiration à venir de votre jeton ainsi qu’**une invitation à le prolonger**.
                 Les notifications sont envoyées régulièrement jusqu’à l'expiration (90 jours avant la date d’expiration, puis 60 jours avant, puis 30, 15, …). Les contacts métiers et techniques sont en copie de ces e-mails, mais ils ne peuvent pas compléter le formulaire. Seul le demandeur peut le faire.
 
                 Si le jeton expire dans moins de 90 jours et qu'aucune notification n'a été reçue, veuillez vérifier si celle-ci n’est pas arrivée dans vos "spams" 🗑.
@@ -416,7 +416,7 @@ fr:
               answer: |+
                 1. **Abonnez-vous aux notifications** par e-mail depuis [notre page de statut](https://status.particulier.api.gouv.fr/subscribe/email){:target="_blank"}.
 
-                2. Plutôt que de consulter mnauellement la page de statuts, vous pouvez aussi **automatiser informatiquement la surveillance**, pour en savoir plus, consultez cette rubrique de l'[espace développeur](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>).
+                2. Plutôt que de consulter manuellement la page de statuts, vous pouvez aussi **automatiser informatiquement la surveillance**, pour en savoir plus, consultez cette rubrique de l'[espace développeur](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>).
 
             - question: "Quels sont les engagements de l’API Entreprise en termes de disponibilité ?"
               answer: |+

@@ -100,9 +100,9 @@ fr:
             2. **Étape 2&nbsp;:** Le parent est automatiquement positionné dans la grille tarifaire de la collectivité. Le parent n'a plus qu'à terminer l'envoi de sa demande d'inscription.
 
             {:.fr-h5}
-            ### Un parent souhaite inscire son enfant à la cantine de l'école, sa commune est connectée à l'API Particulier via un back-office et va traiter son dossier&nbsp;:
+            ### Un parent souhaite inscrire son enfant à la cantine de l'école, sa commune est connectée à l'API Particulier via un back-office et va traiter son dossier&nbsp;:
 
-            1. **Étape 1&nbsp;:** L'école envoie un e-mail aux parents pour leurs demander de transmettre leur quotient familial CAF ou MSA via le [formulaire de collecte](<%= cas_usage_path('modalite_formulaire_qf') %>). _Une alternative sur place à l'école ou par e-mail est proposée car ce formulaire est disponible uniquement via FranceConnect_.
+            1. **Étape 1&nbsp;:** L'école envoie un e-mail aux parents pour leur demander de transmettre leur quotient familial CAF ou MSA via le [formulaire de collecte](<%= cas_usage_path('modalite_formulaire_qf') %>). _Une alternative sur place à l'école ou par e-mail est proposée car ce formulaire est disponible uniquement via FranceConnect_.
 
             2. **Étape 3&nbsp;:** Le parent se rend sur [Quotient-familial.numerique.gouv.fr](<%= cas_usage_path('modalite_formulaire_qf') %>). Il se FranceConnecte, ses données d'identité et son quotient familial récupérés grâce à FranceConnect et API Particulier sont affichés. Il valide pour envoyer ces informations à la commune.
 
@@ -346,7 +346,7 @@ fr:
               - bon d’achat pour des livres,
               - remboursement d'une partie de la licence sportive, etc...
               <br/>
-              Elle sont conditionnées à certains critères sociaux qui sont définis dans les délibérations des collectivités.
+              Elles sont conditionnées à certains critères sociaux qui sont définis dans les délibérations des collectivités.
               </p>
             </div>
         role:
@@ -592,7 +592,7 @@ fr:
           title: Simplifiez les démarches des particuliers en calculant automatiquement leur tarif de transports collectifs
           content: |
             {:.fr-text--lead}
-            AOM, avec API Particilier, accédez directement au quotient familial et à la situation des particuliers pour leur appliquer la tarification sociale ou solidaire adéquate.
+            AOM, avec API Particulier, accédez directement au quotient familial et à la situation des particuliers pour leur appliquer la tarification sociale ou solidaire adéquate.
         role:
           title: Une simplification des démarches
           anchor: 'simplification-des-demarches'
@@ -606,7 +606,7 @@ fr:
                 - le statut demandeur d'emploi ;
                 - le certificat de scolarité collège/lycée et le statut élève boursier ;
                 - le certificat de scolarité étudiant et le statut étudiant boursier ;
-                - le statut bénéficiaire de différentes prestation : allocation adulte handicapé (AAH), prime d'activité, allocation de soutien familial, complémentaire santé solidaire avec ou sans participation.
+                - le statut bénéficiaire de différentes prestations : allocation adulte handicapé (AAH), prime d'activité, allocation de soutien familial, complémentaire santé solidaire avec ou sans participation.
 
               - 😃 **Pour mettre en oeuvre une tarification solidaire**, il n'est plus nécessaire de collecter le quotient familial CAF & MSA.
 
@@ -622,7 +622,7 @@ fr:
            anchor: 'use_case_examples'
            content: |+
             {:.fr-h5}
-            ### Parcours de Nicolas et Juilette sur le démonstrateur API Particulier&nbsp;:
+            ### Parcours de Nicolas et Juliette sur le démonstrateur API Particulier&nbsp;:
 
             <a class="fr-btn" href="https://api-particulier-demonstrateur.osc-secnum-fr1.scalingo.io/transport/choix-personnage" target="_blank" rel="noopener">
                 Commencer la démo
@@ -799,7 +799,7 @@ fr:
 
 
               {:.fr-highlight}
-              > ****Votre réglementation du stationnement nécessite l'adresse fiscale ou revenu fiscal de référence ?**
+              > **Votre réglementation du stationnement nécessite l'adresse fiscale ou revenu fiscal de référence ?**
               > L'API Particulier ne propose pas cette donnée. Vous pouvez demander l'accès à l'[API Impôt Particulier](https://www.data.gouv.fr/dataservices/api-impot-particulier/){:target="_blank"} pour récupérer le revenu fiscal de référence de la famille.
 
 
@@ -876,7 +876,7 @@ fr:
           title: Facilitez le recrutement et la gestion administrative des agents publics !
           content: |
             {:.fr-text--lead}
-            Administrations, avec API Particulier, accédez directement aux données des particuliers pour simplifier le recrutement et la gestion administratives des agents publics.
+            Administrations, avec API Particulier, accédez directement aux données des particuliers pour simplifier le recrutement et la gestion administrative des agents publics.
         role:
           title: Une simplification des démarches
           anchor: 'simplification-des-demarches'
@@ -1008,7 +1008,7 @@ fr:
             **Les données d'API Particulier peuvent être appelées par le biais de trois modalités d'appel&nbsp;:**
             - **L'identité pivot** : <br/> ✒️ L'usager saisit son nom, son prénom, sa date et son lieu de naissance. <br/> ⚙️ Ces informations sont renseignées en paramètre d'appel de l'API par votre SI.
             - **Un identifiant spécifique** :<br/>  ✒️ Pour certaines API, l'usager saisit un numéro d'identification propre aux données demandées (par exemple l'identifiant France Travail). <br/> ⚙️ Cet identifiant est renseigné en paramètre d'appel de l'API par votre SI.
-            - **FranceConnect** : <br/> ✒️ L'usager se connecte à FranceConnect pour la transmission de ses données. <br/> ⚙️ Votre SI interragit avec FranceConnect. L'appel est effectué sans aucun paramètre renseigné par l'usager.
+            - **FranceConnect** : <br/> ✒️ L'usager se connecte à FranceConnect pour la transmission de ses données. <br/> ⚙️ Votre SI interagit avec FranceConnect. L'appel est effectué sans aucun paramètre renseigné par l'usager.
 
             {:.fr-text--lg}
             **Par conséquent, dans le cas de la modalité d'appel FranceConnect**, l'usager, en cliquant sur le bouton FranceConnect, permet à FranceConnect de transmettre ses informations pour appeler l'API. L'identité pivot de l'usager ne transitera pas par votre système d'information, ce qui constitue un avantage d'un point de vue de la sécurité des données personnelles.
@@ -1142,7 +1142,7 @@ fr:
             ### En arrière-plan : votre SI, FranceConnect, API Particulier et les fournisseurs de données
 
             {:.fr-text--lg}
-            Ce schéma présente les interractions entre les différents acteurs impliqués dans les API Particulier FranceConnectées et leur utilisation par l'usager durant vos démarches :
+            Ce schéma présente les interactions entre les différents acteurs impliqués dans les API Particulier FranceConnectées et leur utilisation par l'usager durant vos démarches :
 
             ![Diagramme expliquant le rôle d'API Particulier, de FranceConnect, du fournisseur de service et du fournisseur de données à chaque étape du parcours usager](<%= image_path('api_particulier/diagramme-modalite-appel-france-connect.png') %>)
 
@@ -1164,7 +1164,7 @@ fr:
 
               **Étape 2 :**  Pour récupérer ses données API Particulier, il clique sur le bouton FranceConnect _"S'identifier avec FranceConnect"_ ou _"Récupérer mes données avec FranceConnect"_.
 
-              **Étape 3 :**  La fenêtre FranceConnect s'ouvre, l'usager choisit sur la mire son fournisseur d'identité ; par exemple _le compte impots.gouv.fr_, _le compte Ameli_ ou _l'Identité numérique de la Poste_. L'usager entre alors son identifiant et son mot de passe du compte choisit. [Plus d'information sur les fédérateurs d'identité de FranceConnect](https://franceconnect.gouv.fr/franceconnect#partner-info){:target="_blank"}.
+              **Étape 3 :**  La fenêtre FranceConnect s'ouvre, l'usager choisit sur la mire son fournisseur d'identité ; par exemple _le compte impots.gouv.fr_, _le compte Ameli_ ou _l'Identité numérique de la Poste_. L'usager entre alors son identifiant et son mot de passe du compte choisi. [Plus d'information sur les fédérateurs d'identité de FranceConnect](https://franceconnect.gouv.fr/franceconnect#partner-info){:target="_blank"}.
               <p class="fr-text--sm fr">
               ⚙️ **En arrière plan :** Votre système d'information demande à FranceConnect un accès à la donnée personnelle de l'usager.
               </p>
@@ -1172,12 +1172,12 @@ fr:
               **Étape 4 :**  L'usager confirme le transfert de ses données personnelles en cliquant sur _"Continuer"_.
               <p class="fr-text--sm">
               ⚙️ **En arrière plan :** <br/>
-              1. FranceConnect affiche à l'usager la liste de ses données personnelles, dont celles d'API Particulier, qui vont être transmises à votre service si il continue. Lorsque l'usager clique sur _"Continuer"_., FranceConnect récupère la confirmation de l'usager.<br/>
+              1. FranceConnect affiche à l'usager la liste de ses données personnelles, dont celles d'API Particulier, qui vont être transmises à votre service s'il continue. Lorsque l'usager clique sur _"Continuer"_., FranceConnect récupère la confirmation de l'usager.<br/>
               2. FranceConnect donne un jeton de consentement à votre Système d'information (SI).<br/>
               3. Votre SI utilise ce jeton pour appeler l'API Particulier.<br/>
               4. API particulier transmet le jeton à FranceConnect. <br/>
               5. FC vérifie le jeton et retourne l'identité pivot et le périmètre des données demandées par votre service.<br/>
-              6. Avec l'identité pivot, API Particulier demande les données à l'administration fournisseur des données (FD) présentent sur API Particulier.<br/>
+              6. Avec l'identité pivot, API Particulier demande les données à l'administration fournisseur des données (FD) présentes sur API Particulier.<br/>
               7. Le FD retourne les données du particulier à API Particulier.<br/>
               8. API Particulier transmet les données du particulier à votre SI.
               </p>

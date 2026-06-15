@@ -512,7 +512,7 @@ fr:
     color: purple-glycine
   incoming:
     label: prochainement
-    title: Cette API arrivera prochainement dans le catalogue, dîtes-nous ce que vous pensez de la structure proposée
+    title: Cette API arrivera prochainement dans le catalogue, dites-nous ce que vous pensez de la structure proposée
     color: yellow-moutarde
   novelty:
     label: Nouveauté
@@ -524,5 +524,5 @@ fr:
     color: blue-ecume
   deprecated:
     label: Déprécié
-    title: Cette API est dépreciée
+    title: Cette API est dépréciée
     color: pink-macaron

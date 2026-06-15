@@ -125,7 +125,7 @@ fr:
 
                   **🤔 Pourquoi ?**
                   - Clarifier la documentation des paramètres d'appel ;
-                  - Identifier précisémement les paramètres obligatoires ;
+                  - Identifier précisément les paramètres obligatoires ;
                   - Rendre actionnable le swagger et le fichier OpenAPI.
 
                   **🧰 Comment ?**
@@ -424,7 +424,7 @@ fr:
 
 
                   {:.fr-highlight.fr-highlight--caution}
-                  > ⚠️ **Ces paramètres sont obligatoires pour les API FranceConnectées. les appels ne comportant pas ces paramètres sont rejetés, et un code erreur vous est renvoyé. Ces paramètres sont optionnels pour les API non FranceConnectées. Le caractère requis de ce champ est précisé dans le [swagger](https://particulier.api.gouv.fr/developpeurs/openapi#section/Bienvenue-sur-la-documentation-interactive-d'API-Particulier.).**.
+                  > ⚠️ **Ces paramètres sont obligatoires pour les API FranceConnectées. Les appels ne comportant pas ces paramètres sont rejetés, et un code erreur vous est renvoyé. Ces paramètres sont optionnels pour les API non FranceConnectées. Le caractère requis de ce champ est précisé dans le [swagger](https://particulier.api.gouv.fr/developpeurs/openapi#section/Bienvenue-sur-la-documentation-interactive-d'API-Particulier.).**.
 
                   Pour chaque endpoint, nous précisons dans le [swagger, rubrique "Query parameters"](<%= developers_openapi_path %>){:target="_blank"} les paramètres obligatoires spécifiques, ci-dessous une explication détaillée des éléments à fournir pour chaque paramètre de traçabilité :
 
@@ -465,7 +465,7 @@ fr:
 
                   Depuis la V.3 de l'API&nbsp;Particulier, les anciennes versions sont maintenues par le service API Particulier tant que cela est possible.
                   En pratique, cela signifie que :
-                  - tant que le fournisseur continue d'envoyer la strcuture de données de l'ancienne version, cette ancienne version est maintenue par l'API&nbsp;Particulier ;
+                  - tant que le fournisseur continue d'envoyer la structure de données de l'ancienne version, cette ancienne version est maintenue par l'API&nbsp;Particulier ;
                   - si le fournisseur ne renvoie plus la même structure de donnée, API&nbsp;Particulier supprimera l'ancienne version car la maintenir reviendrait à renvoyer des champs vides.
 
               - title: Changer de version

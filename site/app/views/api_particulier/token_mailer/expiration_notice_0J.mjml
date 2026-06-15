@@ -11,7 +11,7 @@
     <mj-text>
       <p>Bonjour <%= @full_name %>,</p>
       <p>Votre jeton au <b>cadre d'utilisation "<%= @intitule %>"</b> a expiré. Votre accès à l'API Particulier est coupé.</p>
-      <p>restaurer votre jeton, veuillez faire une demande de prolongation d'accès&nbsp;:</p>
+      <p>Pour restaurer votre jeton, veuillez faire une demande de prolongation d'accès&nbsp;:</p>
     </mj-text>
     <mj-button href="<%= @prolong_token_url %>">
       <b>Demander la prolongation du jeton d'accès&nbsp;🔑</b>
