@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1.312.0
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v6.0.2
+      uses: actions/checkout@v6.0.3
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1.312.0
@@ -74,7 +74,7 @@ jobs:
         options: --entrypoint redis-server
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1.312.0
@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1.312.0
@@ -141,7 +141,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: Checkout code
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1.312.0
