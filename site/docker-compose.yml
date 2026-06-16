@@ -17,6 +17,7 @@ services:
     command: bin/rails server --port 5000 --binding 0.0.0.0
     volumes:
       - .:/app:consistent
+      - ../commons:/commons:consistent
     ports:
       - "5000:5000"
     environment:
@@ -34,6 +35,7 @@ services:
     command: bundle exec good_job start
     volumes:
       - .:/app
+      - ../commons:/commons
     depends_on:
       - db
       - redis
