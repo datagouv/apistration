@@ -163,9 +163,10 @@ fr:
             - question: "Je recherche un éditeur proposant l’API Entreprise"
               answer: |+
                 _Vous êtes un acteur public et recherchez un éditeur de logiciel pour intégrer et utiliser l’API Entreprise ?_
-                Retrouvez sur simplifions.data, la liste des logiciels métiers ayant intégré l'API Entreprise. Pour chacun d'entre-eux, nombre d'API utiles, intégrées, par type de démarche, est indiqué.
 
-                [Consulter la liste sur simplifions.data](https://simplifions.data.gouv.fr/solutions/bouquet-api-entreprise#solutions-integratices}{:target="_blank"}){:.fr-btn}
+                Retrouvez sur le site _simplifions.data.gouv.fr_, la liste des logiciels métiers ayant intégré l'API Entreprise. Pour chacun d'entre-eux, le nombre d'API intégrées est indiqué.
+
+                [Consulter la liste sur simplifions.data](https://simplifions.data.gouv.fr/solutions/bouquet-api-entreprise#solutions-integratices){:target="_blank"}{:.fr-btn .fr-icon-external-link-line .fr-btn--icon-right}
 
             - question: "Je suis un éditeur de logiciel et je souhaite proposer l'API Entreprise à mes clients"
               answer: |+
