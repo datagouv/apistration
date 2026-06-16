@@ -1,12 +1,12 @@
 module CasUsagesManagement
   def index
     @cas_usages = cas_usage_klass.all
+    @simplifions_use_cases = SimplifionsStore.all_use_cases(api: namespace)
   end
 
   def show
     @cas_usage = cas_usage_klass.find(params.expect(:uid))
     @other_cas_usages = cas_usage_klass.all - [@cas_usage]
-    @active_endpoints = EndpointDecorator.decorate_collection(namespace.classify.constantize::Endpoint.all.reject(&:deprecated))
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end

@@ -189,12 +189,6 @@ fr:
           api_cgu_title: "Conditions spécifiques à cette API :"
           main_title: "Conditions générales :"
           cta: "CGU API Particulier"
-      use_cases:
-        main:
-          title: "Cas d'usages"
-          description: "API utile pour :"
-        optional:
-          description: "API parfois utile pour :"
       details:
         title: "Spécifications de l'API"
         format:
@@ -228,8 +222,13 @@ fr:
 
     cas_usages:
       index:
-        title: "Cas d'usages & modalités d'appel"
-        description: "Consultez les <strong>fiches pratiques des cas d’usages & les guides des modalités d'appel</strong> de l’API Particulier"
+        title: "Cas d’usages & modalités d’appel"
+        description: "Consultez les <strong>fiches pratiques des cas d’usages & les guides des modalités d’appel</strong> de l’API Particulier"
+        simplifions:
+          title: "Cas d’usages"
+          description: "L’API Particulier est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-particulier#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr</a> :"
+        internal:
+          title: "Fiches pratiques"
         cards:
           aides_facultatives:
             title: "Aides facultatives"

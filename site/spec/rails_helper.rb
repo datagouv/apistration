@@ -94,10 +94,16 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     stub_request(:get, %r{entreprise\.api\.gouv\.fr/ping}).to_return(status: 200)
     stub_request(:get, %r{particulier\.api\.gouv\.fr/api/.*/ping$}).to_return(status: 200)
+    allow(SimplifionsStore).to receive(:all_use_cases).and_return([])
+    allow(SimplifionsStore).to receive(:links_for).and_return([])
   end
 
   config.before do
     Rails.cache.clear
+    stub_request(:get, %r{grist\.numerique\.gouv\.fr}).to_return(
+      body: { 'records' => [] }.to_json,
+      headers: { 'Content-Type' => 'application/json' }
+    )
   end
 end
 

@@ -12,7 +12,6 @@
         <div class="introduction_text--content"><%= markdown_to_html(@cas_usage.introduction[:content]) %></div>
         <div class="introduction_text--links">
           <%= link_to t('.link_access'), anchor: 'request-access' %><span class="icon fr-icon-arrow-down-line fr-mr-3w" aria-hidden="true"></span>
-          <%= link_to t('.link_list_api'), anchor: 'list-api' %><span class="icon fr-icon-arrow-down-line" aria-hidden="true"></span>
         </div>
       </div>
     </section>
@@ -27,14 +26,6 @@
         <% end %>
       </section>
 
-
-    <% if @cas_usage.list_api.present? %>
-      <section class="list_api fr-background-default-white">
-        <h2 id="list-api"><%= t('.link_list_api') %><span class="fr-ml-2v fr-text--light">"<%= @cas_usage.name %>"</span></h2>
-        <div class="list_api--content"><%= markdown_to_html(@cas_usage.list_api[:content]) %></div>
-        <%= render partial: 'shared/cas_usages/list-api', locals: { api: }%>
-      </section>
-    <% end %>
 
     <% if @cas_usage.users.present? %>
       <section class="users fr-background-grey">

@@ -198,16 +198,8 @@ class AbstractEndpoint
     Kernel.const_get(api.classify)::Provider.filter_by_uid(provider_uids)
   end
 
-  def use_cases
-    @use_cases ||= Kernel.const_get(api.classify)::CasUsage.for_endpoint(uid)
-  end
-
-  def use_cases_optional
-    @use_cases_optional ||= Kernel.const_get(api.classify)::CasUsage.optional_for_endpoint(uid)
-  end
-
-  def use_cases_forbidden
-    @use_cases_forbidden ||= Kernel.const_get(api.classify)::CasUsage.forbidden_for_endpoint(uid)
+  def simplifions_use_cases
+    SimplifionsStore.links_for(uid, api:)
   end
 
   def test_cases_external_url

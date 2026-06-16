@@ -49,13 +49,8 @@ fr:
 
                 ![Fonctionnement API Particulier](<%= image_path('api_particulier/fonctionnement-api-particulier.png') %>)
 
-                **API Particulier facilite plusieurs types de démarches :**
-                - [Aide facultatives à la scolarité](https://api.gouv.fr/guides/aides-facultatives-scolarite){:target="_blank"} ;
-                - [Tarification cantine des collèges et lycées](https://api.gouv.fr/guides/cantines-colleges-lycees-tarification){:target="_blank"} ;
-                - [Aides des centres communaux d'action sociale (CCAS)](https://api.gouv.fr/guides/ccas){:target="_blank"} ;
-                - [Tarification sociale et solidaire des transports](https://api.gouv.fr/guides/delivrance-titres-transport){:target="_blank"} ;
-                - [Portail famille des communes](https://api.gouv.fr/guides/portail-famille-tarification){:target="_blank"} ;
-                - [Tarification du stationnement résidentiel](https://api.gouv.fr/guides/stationnement-residentiel){:target="_blank"}.
+                API Particulier facilite plusieurs types de démarches, pour en savoir plus, consultez nos [cas d’usage et leurs fiches pratiques](<%= cas_usages_path %>).
+
 
             - question: "En quoi API Particulier facilite mon quotidien en tant qu’agent de de l’administration ?"
               answer: |+
@@ -66,13 +61,7 @@ fr:
                 - ✅ Les informations sont certifiées ;
                 - ✅ Vous accédez avec une seule habilitation aux données de différents fournisseurs : la Caisse nationale des allocations familiales (CNAF), la sécurité sociale agricole (MSA), France Travail, le ministère de l'enseignement supérieur et de la recherche (MESR), le ministère de l'éducation nationale (MEN) et enfin le Centre national des œuvres universitaires et scolaires (Cnous).
 
-                 **API Particulier facilite plusieurs types de démarches :**
-                - [Aide facultatives à la scolarité](https://api.gouv.fr/guides/aides-facultatives-scolarite){:target="_blank"} ;
-                - [Tarification cantine des collèges et lycées](https://api.gouv.fr/guides/cantines-colleges-lycees-tarification){:target="_blank"} ;
-                - [Aides des centres communaux d'action sociale (CCAS)](https://api.gouv.fr/guides/ccas){:target="_blank"} ;
-                - [Tarification sociale et solidaire des transports](https://api.gouv.fr/guides/delivrance-titres-transport){:target="_blank"} ;
-                - [Portail famille des communes](https://api.gouv.fr/guides/portail-famille-tarification){:target="_blank"} ; 
-                - [Tarification du stationnement résidentiel](https://api.gouv.fr/guides/stationnement-residentiel){:target="_blank"}.
+                API Particulier facilite plusieurs types de démarches, pour en savoir plus, consultez nos [cas d’usage et leurs fiches pratiques](<%= cas_usages_path %>).
 
         - name: "Conditions d’utilisation de l’API Particulier"
           entries:

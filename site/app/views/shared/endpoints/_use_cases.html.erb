@@ -1,0 +1,41 @@
+<% extra_classes ||= '' %>
+<% simplifions_links = @endpoint.simplifions_use_cases %>
+<% use_cases_visible_limit = 7 %>
+
+<% if simplifions_links.any? %>
+  <div class="details <%= extra_classes %>">
+    <h2 class="fr-h3" id="<%= id %>">
+      <%= t('.main.title') %>
+    </h2>
+    <p class="fr-text--sm fr-mb-2w"><%= t('.main.description').html_safe %></p>
+    <ul class="fr-tags-group fr-mt-2w">
+      <% simplifions_links.first(use_cases_visible_limit).each do |link| %>
+        <li class="fr-mb-1w">
+          <%= link_to link[:url], target: '_blank', rel: 'noopener noreferrer', class: 'fr-tag' do %>
+            <% if link[:icon].present? %><span aria-hidden="true" class="fr-mr-1v"><%= link[:icon] %></span><% end %><%= link[:name] %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <% if simplifions_links.size > use_cases_visible_limit %>
+      <% collapse_id = "#{id}-use-cases-more" %>
+      <button class="fr-btn fr-btn--tertiary-no-outline fr-btn--sm fr-mt-1w fr-icon-arrow-down-s-line fr-btn--icon-right use-cases__toggle"
+              aria-expanded="false"
+              aria-controls="<%= collapse_id %>">
+        <span class="use-cases__see-more"><%= t('.main.see_more') %></span>
+        <span class="use-cases__see-less"><%= t('.main.see_less') %></span>
+      </button>
+      <div class="fr-collapse" id="<%= collapse_id %>">
+        <ul class="fr-tags-group fr-mt-1w">
+          <% simplifions_links.drop(use_cases_visible_limit).each do |link| %>
+            <li class="fr-mb-1w">
+              <%= link_to link[:url], target: '_blank', rel: 'noopener noreferrer', class: 'fr-tag' do %>
+                <% if link[:icon].present? %><span aria-hidden="true" class="fr-mr-1v"><%= link[:icon] %></span><% end %><%= link[:name] %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% end %>

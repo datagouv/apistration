@@ -181,7 +181,7 @@
         </div>
       <% end %>
 
-      <%= render partial: 'use_cases', locals: { id: 'use_cases_mobile', extra_classes: 'fr-hidden-md' } %>
+      <%= render partial: 'shared/endpoints/use_cases', locals: { id: 'use_cases_mobile', extra_classes: 'fr-hidden-md' } %>
       <%= render partial: 'details', locals: { id: 'use_cases_mobile', extra_classes: 'fr-mb-3w fr-hidden-md' } %>
 
       <% if @endpoint.implemented? %>
@@ -388,7 +388,7 @@
     </div>
 
     <div class="fr-col-md-<%= 12 - layout_main_bloc %>">
-      <%= render partial: 'use_cases', locals: { id: 'use_cases_desktop', extra_classes: 'fr-hidden fr-unhidden-md' } %>
+      <%= render partial: 'shared/endpoints/use_cases', locals: { id: 'use_cases_desktop', extra_classes: 'fr-hidden fr-unhidden-md' } %>
       <%= render partial: 'details', locals: { id: 'details_desktop', extra_classes: 'fr-hidden fr-unhidden-md' } %>
     </div>
   </div>

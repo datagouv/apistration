@@ -1,0 +1,159 @@
+# Correspondance UID data.gouv.fr → UIDs endpoints Rails
+#
+# Source Grist : https://grist.numerique.gouv.fr/o/circulation/ofSVjCSAnMb6/Simplifions
+# Table de référence : APIs_et_datasets (colonne UID_datagouv)
+# Utilisé par SimplifionsStore pour résoudre API Grist → endpoint(s) du catalogue.
+#
+# Structure :
+#   <uid_datagouv>:  # Nom Grist de l'API
+#     - uid/rails/endpoint
+#
+# Les APIs Grist sans correspondance Rails connue sont marquées []  — à compléter.
+
+api_entreprise:
+  "672cf6b1c3488a0c533f709a":  # API 3 derniers bilans annuels - Banque de France
+    - banque_de_france/bilans
+
+  "686d1e51e64f536714765532":  # API Actes et bilans - Inpi
+    - inpi/rne/actes_bilans
+
+  "672cf6b36452c7d61849433f":  # API Attestation de vigilance - Urssaf
+    - urssaf/attestation_vigilance
+    - urssaf/v3/attestation_vigilance
+
+  "672cf6b2a474f2d73502b5d4":  # API Attestation fiscale - DGFIP
+    - dgfip/attestations_fiscales
+    - dgfip/v3/attestations_fiscales
+
+  "69416bbbead846ef062cd142":  # API Attestation d'immatriculation RNE - Inpi
+    - inpi/rne/attestation_immatriculation
+
+  "672cf6a701d8db401e4864be":  # API Bénéficiaires effectifs - Inpi
+    - inpi/rne/beneficiaires_effectifs
+
+  "672cf6b8f8b5d52b762633a0":  # API Carte professionnelle travaux publics - Fntp
+    - fntp/carte_professionnelle_travaux_public
+
+  "672cf6b4c3488a0c533f709b":  # API Certificat cotisations congés payés et chômage intempéries - CIBTP
+    - cibtp/attestations_cotisations_conges_payes_chomage_intemperies
+
+  "672cf6b5a474f2d73502b5d5":  # API Certificat cotisations congés payés et chômage intempéries - CNETP
+    - cnetp/attestations_cotisations_conges_payes_chomage_intemperies
+
+  "672cf6b9c3488a0c533f709d":  # API Certification d'ingénierie - OPQIBI
+    - opqibi/qualifications_ingenierie
+
+  "672cf6b522535e70b5584c0e":  # API Certification Qualibat
+    - qualibat/certifications_batiment
+    - qualibat/v3/certifications_batiment
+
+  "672cf6baa316ad54c9a7f19b":  # API Certification Qualifelec
+    - qualifelec/certificats
+
+  "672cf6b9f8b5d52b762633a1":  # API Certification RGE - Ademe
+    - ademe/certifications_rge
+
+  "672cf6b120c9ae9747b40165":  # API Chiffre d'affaires - DGFIP
+    - dgfip/chiffres_affaires
+
+  "672cf6b36a8456f417812b10":  # API Conformité cotisations de sécurité sociale agricole - MSA
+    - msa/conformites_cotisations
+
+  "672cf6b46a8456f417812b11":  # API Conformité cotisations retraite complémentaire - ProBTP
+    - probtp/conformites_cotisations_retraite
+
+  "672cf6af6d09c75cace6a62b":  # API Données associations - DJEPVA
+    - djepva/associations
+    - djepva/associations_open_data
+
+  "672cf6aece89cb14e31f0fba":  # API Données du répertoire Sirene - Insee
+    - insee/unites_legales
+    - insee/unites_legales_diffusibles
+    - insee/etablissements
+    - insee/etablissements_diffusibles
+    - insee/adresse_etablissements
+    - insee/adresse_etablissements_diffusibles
+    - insee/siege_social
+    - insee/siege_social_diffusibles
+
+  "672cf6b06452c7d61849433e":  # API Effectifs annuels d'une unité légale - GIP MDS
+    - gip_mds/effectifs_annuels_unite_legale
+
+  "672cf6b0a37a79f6ff3e3255":  # API Effectifs mensuels d'un établissement - GIP MDS
+    - gip_mds/effectifs_mensuels_etablissement
+
+  "672cf6b622535e70b5584c0f":  # API Extrait RCS - Infogreffe
+    - infogreffe/rcs/extrait
+
+  "672cf6b81092eab5f92dfaad":  # API Immatriculation EORI - Douanes
+    - douanes/immatriculation_eori
+
+  "672cf6b2f89f31dae828f6da":  # API Liasses fiscales - DGFIP
+    - dgfip/liasses_fiscales
+
+  "686d1bc04ebf5642dc5651c2":  # API Liens de succession - Insee
+    - insee/successions
+
+  "672cf6af20c9ae9747b40164":  # API Mandataires sociaux - Infogreffe
+    - infogreffe/mandataires_sociaux
+
+  "672cf6b61092eab5f92dfaac":  # API N°TVA intracommunautaire français - Commission européenne
+    - commission_europeenne/numero_tva
+
+  "672cf6ae6452c7d61849433d":  # API Qualiopi & habilitations France compétences - Carif Oref
+    - carif_oref/certifications_qualiopi_france_competences
+
+  "686d1ee8b267deea7b434baf":  # API liens capitalistiques - DGFIP
+    - dgfip/liens_capitalistiques
+
+  "688c8481c61a585172d3d42c":  # API Subventions des associations - Data.Subvention
+    - data_subvention/subventions
+
+api_particulier:
+  "672cf6ada37a79f6ff3e3254":  # API Statut allocation adulte handicapé (AAH)
+    - cnav/allocation_adulte_handicape
+
+  "672cf6adce89cb14e31f0fb9":  # API Statut allocation de soutien familial (ASF)
+    - cnav/allocation_soutien_familial
+
+  "69b03e90b9b9fcfa5cd686b7":  # API Statut allocation d'éducation de l'enfant handicapé (AEEH)
+    - cnav/aeeh
+
+  "672cf65bd5e4c56502e38b6b":  # API Statut complémentaire santé solidaire (C2S)
+    - cnav/complementaire_sante_solidaire
+
+  "672cf6aba316ad54c9a7f19a":  # API Statut demandeur d'emploi
+    - pole_emploi/situation
+
+  "672cf6aa26b31834a945cf00":  # API Statut élève scolarisé et boursier
+    - education_nationale/statut_eleve_scolarise
+
+  "672cf667c3488a0c533f7092":  # API Statut étudiant
+    - mesri/statut_etudiant
+
+  "672cf6900a2a1df94c9cc37c":  # API Statut étudiant boursier
+    - cnous/statut_etudiant_boursier
+
+  "672cf6ab6d09c75cace6a62a":  # API Paiements versés par France Travail
+    - pole_emploi/indemnites
+
+  "672cf6acc34230c996aab5a5":  # API Statut prime d'activité
+    - cnav/prime_activite
+
+  "672cf982fcc8065be6e66f54":  # API Quotient familial MSA & CAF
+    - cnav/quotient_familial
+
+  "672cf6acf1ebb86a67488d05":  # API Statut revenu de solidarité active (RSA)
+    - cnav/revenu_solidarite_active
+
+  "688c7cbf284f92bdeff43a73":  # API Service national
+    - dsnj/service_national
+
+  "688c7ea9e4a690abc0d3aeec":  # API Statut sportif de haut niveau et sur liste ministérielle
+    - sport_data_hub/statut_sportif
+
+  "688c833e18a96f3fcd04d82e":  # API Participation familiale EAJE
+    - cnav/psu
+
+  "6941379e0923b854aa9bf30d":  # API Extrait d'immatriculation véhicule
+    - ants/extrait_immatriculation_vehicule

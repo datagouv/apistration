@@ -7,28 +7,62 @@
   </div>
 
   <div class="content fr-container fr-mt-5w fr-mb-5w">
-    <% @cas_usages.each do |cas_usage| %>
-      <div class="fr-card fr-enlarge-link">
-        <div class="fr-card__body">
-          <div class="fr-card__content">
-            <h2 class="fr-card__title fr-h5">
-              <%= link_to t(".cards.#{cas_usage.uid}.title"), cas_usage_path(cas_usage.uid) %>
-            </h2>
-            <p class="fr-card__desc fr-text--lg"><%= t(".cards.#{cas_usage.uid}.description") %></p>
-            <div class="fr-card__end">
-              <ul class="fr-badges-group">
-                <% cas_usage.user_types.each do |user_type| %>
-                  <li class="fr-m-0-5v"><p class="fr-badge fr-badge--sm fr-badge--<%= user_type_tag_color(user_type) %>"><%= user_type %></p></li>
-                <% end %>
-              </ul>
+    <% if @cas_usages.any? %>
+      <h2 class="fr-h3"><%= t('.internal.title') %></h2>
+      <div class="cards-row">
+        <% @cas_usages.each do |cas_usage| %>
+          <div class="fr-card fr-enlarge-link fr-card--no-icon simplifions-card fr-m-1v">
+            <div class="fr-card__body">
+              <div class="fr-card__content">
+                <h3 class="fr-card__title fr-h5">
+                  <%= link_to t(".cards.#{cas_usage.uid}.title"), cas_usage_path(cas_usage.uid) %>
+                </h3>
+                <p class="fr-card__desc fr-text--lg"><%= t(".cards.#{cas_usage.uid}.description") %></p>
+                <div class="fr-card__end">
+                  <ul class="fr-badges-group">
+                    <% cas_usage.user_types.each do |user_type| %>
+                      <li class="fr-m-0-5v"><p class="fr-badge fr-badge--sm fr-badge--<%= user_type_tag_color(user_type) %>"><%= user_type %></p></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="fr-card__header">
+              <div class="fr-card__img">
+                <%= image_tag("api_particulier/cas_usages/pictos/#{cas_usage.uid}.svg", class: %w[card-image fr-responsive-img], alt: cas_usage.uid) %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="fr-card__header">
-          <div class="fr-card__img">
-            <%= image_tag("api_particulier/cas_usages/pictos/#{cas_usage.uid}.svg", class: %w(card-image fr-responsive-img), alt: cas_usage.uid) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @simplifions_use_cases.any? %>
+      <h2 class="fr-h3 fr-mt-6w"><%= t('.simplifions.title') %></h2>
+      <p class="fr-text--lg"><%= t('.simplifions.description').html_safe %></p>
+      <div class="cards-row">
+        <% @simplifions_use_cases.each do |use_case| %>
+          <div class="fr-card fr-enlarge-link fr-card--no-icon simplifions-card fr-m-1v">
+            <div class="fr-card__body">
+              <div class="fr-card__content">
+                <h3 class="fr-card__title fr-h5">
+                  <%= link_to use_case[:url], target: '_blank', rel: 'noopener noreferrer' do %>
+                    <% if use_case[:icon].present? %><span aria-hidden="true"><%= use_case[:icon] %></span> <% end %><%= use_case[:name] %>
+                  <% end %>
+                </h3>
+                <p class="fr-card__desc"><%= use_case[:description] %></p>
+                <div class="fr-card__end">
+                  <ul class="fr-tags-group">
+                    <% use_case[:administrations].each do |admin| %>
+                      <li><p class="fr-tag fr-tag--sm"><%= admin %></p></li>
+                    <% end %>
+                  </ul>
+                  <span class="fr-icon-external-link-line simplifions-card__external-icon" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

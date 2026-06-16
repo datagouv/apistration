@@ -291,12 +291,6 @@ fr:
           api_cgu_title: "Conditions spécifiques à cette API :"
           main_title: "Conditions générales :"
           cta: "CGU API Entreprise"
-      use_cases:
-        main:
-          title: "Cas d'usages"
-          description: "API utile pour :"
-        optional:
-          description: "API parfois utile pour :"
       details:
         title: "Détails de l'API"
         format:
@@ -329,8 +323,13 @@ fr:
 
     cas_usages:
       index:
-        title: "Cas d'usages"
+        title: "Cas d’usages"
         description: "Consultez les <strong>fiches pratiques des cas d’utilisation</strong> de l’API Entreprise.<br>Retrouvez, entre autres, les <strong>données utiles</strong> pour les cas d’usages."
+        simplifions:
+          title: "Cas d’usages"
+          description: "L’API Entreprise est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-entreprise#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr</a> :"
+        internal:
+          title: "Fiches pratiques"
         cards:
           marches_publics:
             title: "Marchés publics"

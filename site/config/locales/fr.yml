@@ -70,7 +70,6 @@ fr:
       show:
         label: "Cas d'usage"
         link_access: "Demander un accès"
-        link_list_api: "Liste des API utiles"
         legal_context:
           title: "Cadre juridique"
         request_access:
@@ -126,15 +125,6 @@ fr:
         modalite_formulaire_qf:
           title: "Formulaire QF"
           description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
-      list-api:
-        col_endpoint: "API"
-        col_useful: "Utilité"
-        col_opening: "Ouverture"
-        col_links: "Documentations"
-        col_comments: "Commentaires"
-        col_call_id: "Identifiant d'appel"
-        documentation: "📖 Fiche métier"
-        swagger: "📟 Swagger"
     links:
       to_datapass: "N<sup>o</sup>%{external_id}"
     transfer_tokens:
@@ -497,6 +487,12 @@ fr:
           Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
           Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
     endpoints:
+      use_cases:
+        main:
+          title: "Cas d'usages"
+          description: "Cas d'usages référencés sur <i>simplifions.data.gouv.fr</i> pour lesquels l'API est utile :"
+          see_more: "Voir plus de cas d'usages"
+          see_less: "Voir moins"
       status:
         real_time: "Temps réel"
       property:
