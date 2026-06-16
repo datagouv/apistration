@@ -1,7 +1,7 @@
 class SimplifionsStore
-  GRIST_BASE_URL = 'https://grist.numerique.gouv.fr/api/docs/ofSVjCSAnMb6/tables'
-  CACHE_KEY = 'simplifions_store/endpoint_links'
-  SIMPLIFIONS_BASE_URL = 'https://simplifions.data.gouv.fr/cas-d-usages'
+  GRIST_BASE_URL = 'https://grist.numerique.gouv.fr/api/docs/ofSVjCSAnMb6/tables'.freeze
+  CACHE_KEY = 'simplifions_store/endpoint_links'.freeze
+  SIMPLIFIONS_BASE_URL = 'https://simplifions.data.gouv.fr/cas-d-usages'.freeze
   SOLUTION_IDS = { 'api_particulier' => 1, 'api_entreprise' => 2 }.freeze
 
   def self.links_for(endpoint_uid, api:)
@@ -9,10 +9,11 @@ class SimplifionsStore
   end
 
   def self.all_use_cases(api:)
-    data.each_with_object([]) do |(key, links), memo|
+    data.each_with_object([]) { |(key, links), memo|
       next unless key.start_with?("#{api}:")
+
       memo.concat(links)
-    end.uniq { |l| l[:url] }.sort_by { |l| l[:name] }
+    }.uniq { |l| l[:url] }.sort_by { |l| l[:name] }
   end
 
   def self.reset_cache!

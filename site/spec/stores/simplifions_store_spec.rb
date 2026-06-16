@@ -84,7 +84,7 @@ RSpec.describe SimplifionsStore, type: :store do
     end
 
     it 'excludes cas_usages not visible on simplifions' do
-      expect(subject.map { |l| l[:name] }).not_to include('Cas non visible')
+      expect(subject.pluck(:name)).not_to include('Cas non visible')
     end
 
     context 'with unknown endpoint' do
@@ -104,7 +104,7 @@ RSpec.describe SimplifionsStore, type: :store do
     end
 
     it 'excludes cas_usages not visible on simplifions' do
-      expect(subject.map { |l| l[:name] }).not_to include('Cas non visible')
+      expect(subject.pluck(:name)).not_to include('Cas non visible')
     end
 
     it 'returns empty array for unknown api' do
