@@ -26,9 +26,14 @@
                 <%= image_tag("api_entreprise/cas_usages/pictos/#{cas_usage.uid}.svg", class: %w(card-image fr-responsive-img fr-pt-3w), alt: cas_usage.uid) %>
               </div>
               <ul class="fr-badges-group fr-p-0-5v">
-                <% t("api_entreprise.cas_usages_entries.#{cas_usage.uid}.user_types").each do |user_type| %>
+                <% Array(cas_usage.user_types).each do |user_type| %>
                   <li class="fr-m-0-5v">
-                    <p class="fr-badge fr-badge--sm fr-badge--<%= user_type_tag_color(user_type) %>"><%= user_type %></p>
+                    <p class="fr-badge fr-badge--sm fr-badge--<%= administration_badge_color(user_type) %>"><%= user_type %></p>
+                  </li>
+                <% end %>
+                <% Array(cas_usage.content_category).each do |category| %>
+                  <li class="fr-m-0-5v">
+                    <p class="fr-badge fr-badge--sm"><%= category %></p>
                   </li>
                 <% end %>
               </ul>

@@ -6,7 +6,7 @@ fr:
       socle_de_base:
         name: 'Socle de base DLNUF'
         user_types:
-          - accessible à toute administration
+          - Tous les acteurs publics
         introduction:
           title: Intégrez dès maintenant le socle de base des données entreprises et associations !
           content: |

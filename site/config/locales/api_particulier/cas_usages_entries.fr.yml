@@ -2,7 +2,7 @@ fr:
   api_particulier:
     cas_usages_entries:
       modalite_appel_france_connect:
-        user_types:
+        content_category:
           - modalité d’appel
         name: "Modalité d'appel FranceConnect"
         introduction:
@@ -306,7 +306,7 @@ fr:
                       2. **Certification de votre intégration** : Présentez vos développements à FranceConnect pour une qualification en complétant ce [formulaire](https://www.demarches-simplifiees.fr/commencer/demande-qualification-fs){:target="_blank"}{:rel="noopener external"}
             4. **Mise en production pour vos clients** : vos clients publics devront effectuer les demandes d'habiliation API Particulier et FranceConnect en utilisant les formulaires configurés pour votre logiciel, [en savoir plus sur les étapes pour vos clients](#avec-un-éditeur). Une fois leur habilitation délivrée, les accès techniques vous seront transmis.
       modalite_formulaire_qf:
-        user_types:
+        content_category:
           - modalité d’appel
         name: "Formulaire de collecte du quotient familial"
         introduction:

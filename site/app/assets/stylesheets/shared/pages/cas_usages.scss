@@ -3,12 +3,6 @@
     background-color: var(--custom-lightest-blue);
   }
 
-  .cards-row {
-    display: flex;
-    align-items: stretch;
-    flex-wrap: wrap;
-  }
-
   .simplifions-card {
     .fr-card__title a::after {
       display: none !important;
@@ -26,26 +20,9 @@
     color: var(--text-action-high-blue-france);
   }
 
-  .simplifions-tag--public {
-    background-color: var(--background-contrast-grey) !important;
-    color: var(--text-mention-grey) !important;
-  }
-
   .fr-card {
-    max-width: 280px;
-
     p {
       margin-bottom: 0;
-    }
-
-    @media(min-width: 1440px) {
-      &:first-of-type {
-        margin-left: 0;
-      }
-
-      &:last-of-type {
-        margin-right: 0;
-      }
     }
 
     .card-image {

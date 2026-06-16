@@ -9,6 +9,7 @@ class AbstractCasUsage
     introduction
     role
     user_types
+    content_category
     use_case_examples
     users
     request_access
