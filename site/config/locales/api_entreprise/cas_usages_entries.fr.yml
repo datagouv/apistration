@@ -133,7 +133,7 @@ fr:
       editeur:
         name: 'Accès spécifique éditeurs de logiciels'
         user_types:
-          - éditeurs de logiciels
+          - Éditeurs de logiciels
         introduction:
           title: Éditeurs, intégrez l'API Entreprise dans vos logiciels à destination du secteur public
           content: |+

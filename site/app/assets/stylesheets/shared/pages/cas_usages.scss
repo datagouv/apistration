@@ -4,20 +4,22 @@
   }
 
   .simplifions-card {
-    .fr-card__title a::after {
-      display: none !important;
+    .fr-card__title a {
+      color: var(--text-action-high-blue-france);
+    }
+
+    .fr-card__title [target=_blank]::after {
+      content: none;
+    }
+
+    &::before {
+      -webkit-mask-image: url("icons/system/external-link-line.svg");
+      mask-image: url("icons/system/external-link-line.svg");
     }
 
     .fr-card__end {
       flex: 1;
     }
-  }
-
-  .simplifions-card__external-icon {
-    display: block;
-    text-align: right;
-    margin-top: auto;
-    color: var(--text-action-high-blue-france);
   }
 
   .fr-card {
