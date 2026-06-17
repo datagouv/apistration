@@ -12,7 +12,7 @@ export class CmaFrance {
   }
 
   /** Données du RNM d'une entreprise artisanale */
-  async unites_legales(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async unites_legales(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -24,6 +24,6 @@ export class CmaFrance {
           throw new Error(`version ${resolvedVersion} not available for /cma_france/rnm/unites_legales/{siren}; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

@@ -11,7 +11,7 @@ export class Sdh {
   }
 
   /** [Identifiant] API Statut sportif de haut niveau et sur liste ministérielle */
-  async statut_sportif(options: { version?: number; recipient?: string; identifiant: string }) {
+  async statut_sportif(options: { version?: number; recipient?: string; delegation_id?: string; identifiant: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -21,6 +21,6 @@ export class Sdh {
           throw new Error(`version ${resolvedVersion} not available for /sdh/statut_sportif/identifiant; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'identifiant': options.identifiant } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'identifiant': options.identifiant } });
   }
 }
