@@ -63,10 +63,16 @@ class SimplifionsStore
     api = SOLUTION_IDS.key(fields['Solution_fournisseur'])
     return unless api
 
-    uid_datagouv = tables[:apis_by_id].dig(fields['API_ou_dataset_fourni'], 'fields', 'UID_datagouv')
-    rails_uids = tables[:uid_mapping].dig(api, uid_datagouv).presence || []
     links = build_links_for_record(fields, tables)
+    merge_links(result, api, resolve_rails_uids(fields, api, tables), links)
+  end
 
+  private_class_method def self.resolve_rails_uids(fields, api, tables)
+    uid_datagouv = tables[:apis_by_id].dig(fields['API_ou_dataset_fourni'], 'fields', 'UID_datagouv')
+    tables[:uid_mapping].dig(api, uid_datagouv).presence || []
+  end
+
+  private_class_method def self.merge_links(result, api, rails_uids, links)
     rails_uids.each do |rails_uid|
       key = "#{api}:#{rails_uid}"
       result[key] = (result[key] || []).concat(links).uniq { |l| l[:url] }
@@ -102,7 +108,7 @@ class SimplifionsStore
   end
 
   private_class_method def self.slugify(nom)
-    auto_slug = nom.gsub(/[''']/, '').gsub('€', 'eur').parameterize
+    auto_slug = nom.gsub(/[\u2018\u2019']/, '').gsub('€', 'eur').parameterize
     slug_overrides[auto_slug] || auto_slug
   end
 
