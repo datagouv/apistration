@@ -9,11 +9,13 @@ class SimplifionsStore
   end
 
   def self.all_use_cases(api:)
-    data.each_with_object([]) do |(key, links), memo|
-      next unless key.start_with?("#{api}:")
-
-      memo.concat(links)
-    end.uniq { |l| l[:url] }.sort_by { |l| l[:name] }
+    prefix = "#{api}:"
+    data
+      .select { |key, _| key.start_with?(prefix) }
+      .values
+      .flatten
+      .uniq { |l| l[:url] }
+      .sort_by { |l| l[:name] }
   end
 
   def self.reset_cache!
@@ -38,36 +40,46 @@ class SimplifionsStore
   end
 
   private_class_method def self.build_mapping
-    uid_mapping = load_uid_mapping
-    apis_by_id = fetch_table('APIs_et_datasets').index_by { |r| r['id'] }
-    cas_usages_by_id = fetch_table('Cas_d_usages').index_by { |r| r['id'] }
-    fournisseurs_by_id = fetch_table('Fournisseurs_de_services').index_by { |r| r['id'] }
-    usagers_by_id = fetch_table('Usagers').index_by { |r| r['id'] }
-
+    tables = fetch_grist_tables
     result = {}
-
     fetch_table('API_et_datasets_fournis').each do |record|
-      fields = record['fields']
-      api = SOLUTION_IDS.key(fields['Solution_fournisseur'])
-      next unless api
-
-      uid_datagouv = apis_by_id.dig(fields['API_ou_dataset_fourni'], 'fields', 'UID_datagouv')
-      rails_uids = uid_mapping.dig(api, uid_datagouv).presence || []
-
-      links = parse_grist_list(fields['Utile_pour_les_cas_d_usages']).filter_map do |cas_usage_id|
-        cas_usage_fields = cas_usages_by_id.dig(cas_usage_id, 'fields')
-        next unless cas_usage_fields&.fetch('Visible_sur_simplifions', false)
-
-        build_link_for(cas_usage_fields, fournisseurs_by_id, usagers_by_id)
-      end
-
-      rails_uids.each do |rails_uid|
-        key = "#{api}:#{rails_uid}"
-        result[key] = (result[key] || []).concat(links).uniq { |l| l[:url] }
-      end
+      accumulate_record(record, tables, result)
     end
-
     result
+  end
+
+  private_class_method def self.fetch_grist_tables
+    {
+      uid_mapping: load_uid_mapping,
+      apis_by_id: fetch_table('APIs_et_datasets').index_by { |r| r['id'] },
+      cas_usages_by_id: fetch_table('Cas_d_usages').index_by { |r| r['id'] },
+      fournisseurs_by_id: fetch_table('Fournisseurs_de_services').index_by { |r| r['id'] },
+      usagers_by_id: fetch_table('Usagers').index_by { |r| r['id'] }
+    }
+  end
+
+  private_class_method def self.accumulate_record(record, tables, result)
+    fields = record['fields']
+    api = SOLUTION_IDS.key(fields['Solution_fournisseur'])
+    return unless api
+
+    uid_datagouv = tables[:apis_by_id].dig(fields['API_ou_dataset_fourni'], 'fields', 'UID_datagouv')
+    rails_uids = tables[:uid_mapping].dig(api, uid_datagouv).presence || []
+    links = build_links_for_record(fields, tables)
+
+    rails_uids.each do |rails_uid|
+      key = "#{api}:#{rails_uid}"
+      result[key] = (result[key] || []).concat(links).uniq { |l| l[:url] }
+    end
+  end
+
+  private_class_method def self.build_links_for_record(fields, tables)
+    parse_grist_list(fields['Utile_pour_les_cas_d_usages']).filter_map do |cas_usage_id|
+      cas_usage_fields = tables[:cas_usages_by_id].dig(cas_usage_id, 'fields')
+      next unless cas_usage_fields&.fetch('Visible_sur_simplifions', false)
+
+      build_link_for(cas_usage_fields, tables[:fournisseurs_by_id], tables[:usagers_by_id])
+    end
   end
 
   private_class_method def self.build_link_for(cas_usage_fields, fournisseurs_by_id, usagers_by_id)
@@ -90,7 +102,7 @@ class SimplifionsStore
   end
 
   private_class_method def self.slugify(nom)
-    auto_slug = nom.gsub(/['‘’]/, '').gsub("€", 'eur').parameterize
+    auto_slug = nom.gsub(/[''']/, '').gsub('€', 'eur').parameterize
     slug_overrides[auto_slug] || auto_slug
   end
 
