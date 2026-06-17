@@ -11,6 +11,7 @@ class AbstractCasUsage
     user_types
     content_category
     use_case_examples
+    list_api
     users
     request_access
     legal_context

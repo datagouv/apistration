@@ -70,6 +70,7 @@ fr:
       show:
         label: "Cas d'usage"
         link_access: "Demander un accès"
+        link_list_api: "Liste des API utiles"
         legal_context:
           title: "Cadre juridique"
         request_access:
