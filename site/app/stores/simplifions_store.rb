@@ -9,16 +9,17 @@ class SimplifionsStore
   end
 
   def self.all_use_cases(api:)
-    data.each_with_object([]) { |(key, links), memo|
+    data.each_with_object([]) do |(key, links), memo|
       next unless key.start_with?("#{api}:")
 
       memo.concat(links)
-    }.uniq { |l| l[:url] }.sort_by { |l| l[:name] }
+    end.uniq { |l| l[:url] }.sort_by { |l| l[:name] }
   end
 
   def self.reset_cache!
     Rails.cache.delete(CACHE_KEY)
     @process_cache = nil
+    @faraday_connection = nil
   end
 
   private_class_method def self.data
@@ -28,7 +29,7 @@ class SimplifionsStore
       Rails.cache.fetch(CACHE_KEY, expires_in: cache_ttl) { build_mapping }
     end
   rescue StandardError => e
-    Rails.logger.error("SimplifionsStore: Grist fetch failed — #{e.message}")
+    Rails.logger.error("SimplifionsStore: Grist fetch failed \xe2\x80\x94 #{e.message}")
     {}
   end
 
@@ -80,12 +81,21 @@ class SimplifionsStore
 
     {
       name: nom,
-      url: "#{SIMPLIFIONS_BASE_URL}/#{nom.parameterize}",
+      url: "#{SIMPLIFIONS_BASE_URL}/#{slugify(nom)}",
       description: cas_usage_fields['Description_courte'],
       icon: cas_usage_fields['Icone_du_titre'],
       administrations: administrations,
       public_cible: public_cible
     }
+  end
+
+  private_class_method def self.slugify(nom)
+    auto_slug = nom.gsub(/['‘’]/, '').gsub("€", 'eur').parameterize
+    slug_overrides[auto_slug] || auto_slug
+  end
+
+  private_class_method def self.slug_overrides
+    @slug_overrides ||= YAML.load_file(Rails.root.join('config/simplifions_slug_overrides.yml'))
   end
 
   private_class_method def self.load_uid_mapping
@@ -98,7 +108,7 @@ class SimplifionsStore
   end
 
   private_class_method def self.faraday_connection
-    Faraday.new(headers: { 'User-Agent' => 'APIEntreprise-site/1.0' }) do |f|
+    @faraday_connection ||= Faraday.new(headers: { 'User-Agent' => 'APIEntreprise-site/1.0' }) do |f|
       f.request :retry, max: 1, interval: 1
       f.response :raise_error
       f.adapter :net_http

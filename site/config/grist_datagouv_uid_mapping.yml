@@ -1,15 +1,3 @@
-# Correspondance UID data.gouv.fr → UIDs endpoints Rails
-#
-# Source Grist : https://grist.numerique.gouv.fr/o/circulation/ofSVjCSAnMb6/Simplifions
-# Table de référence : APIs_et_datasets (colonne UID_datagouv)
-# Utilisé par SimplifionsStore pour résoudre API Grist → endpoint(s) du catalogue.
-#
-# Structure :
-#   <uid_datagouv>:  # Nom Grist de l'API
-#     - uid/rails/endpoint
-#
-# Les APIs Grist sans correspondance Rails connue sont marquées []  — à compléter.
-
 api_entreprise:
   "672cf6b1c3488a0c533f709a":  # API 3 derniers bilans annuels - Banque de France
     - banque_de_france/bilans

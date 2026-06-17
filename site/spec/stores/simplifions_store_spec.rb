@@ -74,7 +74,7 @@ RSpec.describe SimplifionsStore, type: :store do
       expect(subject).to contain_exactly(
         hash_including(
           name: 'Tarification cantine scolaire à 1€',
-          url: 'https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1',
+          url: 'https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1eur',
           description: 'Calculez le tarif automatiquement.',
           icon: '🏫',
           administrations: ['Communes et groupements de communes'],
