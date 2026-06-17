@@ -12,7 +12,7 @@ export class BanqueDeFrance {
   }
 
   /** 3 derniers bilans annuels */
-  async bilans(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async bilans(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -23,6 +23,6 @@ export class BanqueDeFrance {
           throw new Error(`version ${resolvedVersion} not available for /banque_de_france/unites_legales/{siren}/bilans; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

@@ -11,7 +11,7 @@ export class Ants {
   }
 
   /** [FranceConnect] Extrait d'immatriculation véhicule */
-  async extrait_immatriculation_vehicule(options: { version?: number; recipient?: string; immatriculation: string }) {
+  async extrait_immatriculation_vehicule(options: { version?: number; recipient?: string; delegation_id?: string; immatriculation: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -21,6 +21,6 @@ export class Ants {
           throw new Error(`version ${resolvedVersion} not available for /ants/extrait_immatriculation_vehicule/france_connect; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'immatriculation': options.immatriculation } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'immatriculation': options.immatriculation } });
   }
 }
