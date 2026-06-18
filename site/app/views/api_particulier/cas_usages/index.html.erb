@@ -12,31 +12,14 @@
       <div class="fr-grid-row fr-grid-row--gutters fr-mt-2w">
         <% @cas_usages.each do |cas_usage| %>
           <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
-            <div class="fr-card fr-enlarge-link fr-card--no-icon simplifions-card fr-h-full">
-              <div class="fr-card__body">
-                <div class="fr-card__content">
-                  <h3 class="fr-card__title fr-h5">
-                    <%= link_to t(".cards.#{cas_usage.uid}.title"), cas_usage_path(cas_usage.uid) %>
-                  </h3>
-                  <p class="fr-card__desc fr-text--lg"><%= t(".cards.#{cas_usage.uid}.description") %></p>
-                  <div class="fr-card__end">
-                    <ul class="fr-badges-group">
-                      <% Array(cas_usage.user_types).each do |user_type| %>
-                        <li class="fr-mr-1v fr-mb-1v"><p class="fr-badge fr-badge--sm fr-badge--<%= administration_badge_color(user_type) %>"><%= user_type %></p></li>
-                      <% end %>
-                      <% Array(cas_usage.content_category).each do |category| %>
-                        <li class="fr-mr-1v fr-mb-1v"><p class="fr-badge fr-badge--sm"><%= category %></p></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="fr-card__header">
-                <div class="fr-card__img">
-                  <%= image_tag("api_particulier/cas_usages/pictos/#{cas_usage.uid}.svg", class: %w[card-image fr-responsive-img], alt: cas_usage.uid) %>
-                </div>
-              </div>
-            </div>
+            <%= render 'shared/cas_usages/internal_use_case_card',
+              title: t(".cards.#{cas_usage.uid}.title"),
+              url: cas_usage_path(cas_usage.uid),
+              description: t(".cards.#{cas_usage.uid}.description"),
+              user_types: cas_usage.user_types,
+              content_category: cas_usage.content_category,
+              api: 'api_particulier',
+              uid: cas_usage.uid %>
           </div>
         <% end %>
       </div>
@@ -48,25 +31,7 @@
       <div class="fr-grid-row fr-grid-row--gutters fr-mt-2w">
         <% @simplifions_use_cases.each do |use_case| %>
           <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
-            <div class="fr-card fr-enlarge-link simplifions-card fr-h-full">
-              <div class="fr-card__body">
-                <div class="fr-card__content">
-                  <h3 class="fr-card__title fr-h5">
-                    <%= link_to use_case[:url], target: '_blank', rel: 'noopener noreferrer' do %>
-                      <% if use_case[:icon].present? %><span aria-hidden="true"><%= use_case[:icon] %></span> <% end %><%= use_case[:name] %>
-                    <% end %>
-                  </h3>
-                  <p class="fr-card__desc"><%= use_case[:description] %></p>
-                  <div class="fr-card__end">
-                    <ul class="fr-badges-group">
-                      <% use_case[:administrations].each do |admin| %>
-                        <li class="fr-mr-1v fr-mb-1v"><p class="fr-badge fr-badge--sm fr-badge--<%= administration_badge_color(admin) %>"><%= admin %></p></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <%= render 'shared/cas_usages/simplifions_card', use_case: %>
           </div>
         <% end %>
       </div>
