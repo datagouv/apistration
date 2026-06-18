@@ -510,6 +510,7 @@ fr:
           changes_requested: ✏️ Modifications demandées sur l'habilitation
       header:
         delivered_at: "Délivré le : %{humanized_date}"
+        form_used: "Formulaire utilisé : %{name}"
       show:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         tokens:
