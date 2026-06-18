@@ -52,7 +52,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
       it 'displays all authorization requests as cards' do
         go_to_authorization_requests_index
 
-        expect(page).to have_text('Demandes API Particulier (2)')
+        expect(page).to have_text('Demandes API Particulier')
 
         expect(page).to have_css('#' << dom_id(authorization_request_active))
         expect(page).to have_css('#' << dom_id(authorization_request_archived))
