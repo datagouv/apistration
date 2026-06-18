@@ -321,6 +321,8 @@ fr:
           title: Durée de validité du lien
           description: Cette page contient votre jeton d'accès à %{api_name} et ne doit en aucun cas être partagée avec un tiers non habilité ! Ce lien expirera dans %{expiration_time}.
     tokens:
+      reveal_token_button:
+        cta: Afficher le jeton
       renew:
         title: Demander l'accès à d'autres API
         description: |+

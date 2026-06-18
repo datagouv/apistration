@@ -15,7 +15,7 @@ RSpec.describe 'Token reveal links hovered without a click', :js do
     end
 
     it 'emits no token reveal' do
-      expect { hover_and_let_the_browser_settle(:link, 'Voir le jeton') }.not_to emit_security_event('token.api_token.revealed')
+      expect { hover_and_let_the_browser_settle(:link, 'Afficher le jeton') }.not_to emit_security_event('token.api_token.revealed')
     end
   end
 
