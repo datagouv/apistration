@@ -187,6 +187,7 @@ class Seeds
       contact_technique: @contact,
       authorization_request_params: {
         intitule: 'Mairie de Lyon 2',
+        description: 'Récupération automatique des informations légales et financières des entreprises pour l\'instruction des demandes de subventions par les agents habilités.',
         external_id: 102,
         status: :validated,
         validated_at: 2.weeks.ago,
@@ -223,6 +224,7 @@ class Seeds
       demandeur: @user,
       authorization_request_params: {
         intitule: 'Mairie de Paris',
+        description: 'Récupération automatique des pièces justificatives des entreprises candidates dans le cadre de la passation des marchés publics.',
         external_id: 104,
         status: :validated,
         validated_at: 1.week.ago,
@@ -240,6 +242,7 @@ class Seeds
       demandeur: @user,
       authorization_request_params: {
         intitule: 'Mairie de Montpellier',
+        description: 'Préremplissage des informations des entreprises et associations pour les démarches en ligne des usagers de la collectivité.',
         external_id: 105,
         status: :validated,
         api: 'entreprise',
@@ -256,6 +259,7 @@ class Seeds
       authorization_request: create_authorization_request(
         api: 'entreprise',
         intitule: 'Mairie de Bruges',
+        description: 'Accès aux données ouvertes permettant aux usagers de pré-remplir les informations liées à leur entreprise.',
         status: :refused,
         external_id: 106,
         first_submitted_at: 2.years.ago,
@@ -274,6 +278,7 @@ class Seeds
       contact_technique: @user,
       authorization_request_params: {
         intitule: 'Mairie de Nantes',
+        description: 'Contrôle de la validité du SIRET et récupération des informations des entreprises candidates aux marchés publics.',
         external_id: 107,
         status: :validated,
         validated_at: 1.month.ago,
@@ -291,6 +296,7 @@ class Seeds
       contact_technique: @contact,
       authorization_request_params: {
         intitule: 'Mairie de Bordeaux',
+        description: 'Gestion de la tarification des services périscolaires et de restauration scolaire sur la base du quotient familial par des agents habilités.',
         external_id: 201,
         status: :validated,
         validated_at: 2.weeks.ago,
