@@ -21,7 +21,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
       it 'displays the empty state' do
         go_to_authorization_requests_index
 
-        expect(page).to have_text("Vous n'avez aucune habilitation")
+        expect(page).to have_text("Vous n'avez aucune demande")
       end
     end
 
@@ -52,7 +52,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
       it 'displays all authorization requests as cards' do
         go_to_authorization_requests_index
 
-        expect(page).to have_text('Habilitations API Particulier (2)')
+        expect(page).to have_text('Demandes API Particulier (2)')
 
         expect(page).to have_css('#' << dom_id(authorization_request_active))
         expect(page).to have_css('#' << dom_id(authorization_request_archived))
@@ -60,8 +60,8 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         expect(page).to have_text('Mon habilitation active')
         expect(page).to have_text('Mon habilitation archivée')
 
-        expect(page).to have_text('Habilitation active')
-        expect(page).to have_text('Habilitation archivée')
+        expect(page).to have_text('Demande active')
+        expect(page).to have_text('Demande archivée')
       end
 
       it 'displays the user role on each card' do
