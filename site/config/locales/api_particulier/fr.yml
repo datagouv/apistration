@@ -100,18 +100,18 @@ fr:
           integration_link: Kit d’intégration
           integration_description: Un pas à pas pour intégrer et mettre en production l’API Particulier
           swagger_link: Spécifications techniques de chaque API
-          swagger_description: Utilisez notre Swagger (OpenAPI)
+          swagger_description: "Utilisez notre <span lang=\"en\">Swagger</span> (<span lang=\"en\">OpenAPI</span>)"
       newsletter:
         banner:
           title: Restez informé des nouveautés de l'API Particulier
           description: Recevez les dernières actualités de l'API Particulier et des informations sur les nouvelles API disponibles.
         main:
           newsletter_description: Recevez les dernières actualités de l'API Particulier et des informations sur les nouvelles API disponibles.
-          newsletter_title: Inscrivez-vous à la newsletter
+          newsletter_title: Inscrivez-vous à notre lettre d'information
           operations_title: 🚧 Maintenance & incidents&nbsp;:&nbsp;
           operations_description: Soyez notifié des incidents et opérations de maintenance des API de votre choix&nbsp;:&nbsp;
           operations_button: S'abonner aux incidents
-          changelog_title: 📋 Nouveautés / changelog&nbsp;:&nbsp;
+          changelog_title: "📋 Nouveautés / <span lang=\"en\">changelog</span>&nbsp;:&nbsp;"
           changelog_description: Retrouvez l'historique des évolutions du service (nouvelles API, montées de version, dépréciations) et abonnez-vous pour recevoir un récapitulatif hebdomadaire&nbsp;:&nbsp;
           changelog_button: Voir les nouveautés
 

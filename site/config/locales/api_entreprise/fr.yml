@@ -346,7 +346,7 @@ fr:
           operations_title: 🚧 Maintenance & incidents&nbsp;:&nbsp;
           operations_description: Soyez notifié des incidents et opérations de maintenance des API de votre choix&nbsp;:&nbsp;
           operations_button: S'abonner aux incidents
-          changelog_title: 📋 Nouveautés / changelog&nbsp;:&nbsp;
+          changelog_title: "📋 Nouveautés / <span lang=\"en\">changelog</span>&nbsp;:&nbsp;"
           changelog_description: Retrouvez l'historique des évolutions du service (nouvelles API, montées de version, dépréciations) et abonnez-vous pour recevoir un récapitulatif hebdomadaire&nbsp;:&nbsp;
           changelog_button: Voir les nouveautés
           archives_title: 🕰 Archives de toutes nos communication&nbsp;:&nbsp;
@@ -378,7 +378,7 @@ fr:
           link_faq: "Qu'est-ce qu'une API ?"
         section_use_cases:
           title: Cas d'usages
-          description: <strong>Une fois l'API Entreprise intégrée dans votre système d'information</strong>&nbsp;:&nbsp;<br>À partir d'un SIRET/SIREN/RNA, les informations sont automatiquement saisies dans les formulaires de vos usagers et en back-office pour vos agents. Cet accès direct aux données administratives facilite de nombreux cas d'usages&nbsp;:&nbsp;
+          description: "<strong>Une fois l'API Entreprise intégrée dans votre système d'information</strong>&nbsp;:&nbsp;<br>À partir d'un SIRET/SIREN/RNA, les informations sont automatiquement saisies dans les formulaires de vos usagers et en <span lang=\"en\">back-office</span> pour vos agents. Cet accès direct aux données administratives facilite de nombreux cas d'usages&nbsp;:&nbsp;"
           cards:
             socle_de_base:
               title: "Socle de base DLNUF"
@@ -414,7 +414,7 @@ fr:
           integration_link: Kit d’intégration
           integration_description: Un pas à pas pour intégrer et mettre en production l’API Entreprise
           swagger_link: Spécifications techniques de chaque API
-          swagger_description: Utilisez notre Swagger (OpenApi)
+          swagger_description: "Utilisez notre <span lang=\"en\">Swagger</span> (<span lang=\"en\">OpenAPI</span>)"
           status_link: Statuts des API
     documentation:
       index:
