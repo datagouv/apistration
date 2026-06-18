@@ -19,7 +19,7 @@
       <div class="fr-col-xs-12 fr-col-sm-12 fr-col-md-5 fr-col-lg-5 fr-col-xl-5 fr-col-offset-md-1 fr-col-offset-lg-1 fr-col-offset-xl-1">
         <h3 class="fr-h4 "><%= t('.operations_title').html_safe %></h3>
         <p><%= t('.operations_description').html_safe %></p>
-        <a href="https://status.entreprise.api.gouv.fr/subscribe/email" class="fr-btn fr-btn--secondary fr-mb-8v" target="_blank"><%= t('.operations_button') %></a>
+        <%= external_link_to t('.operations_button'), 'https://status.entreprise.api.gouv.fr/subscribe/email', class: 'fr-btn fr-btn--secondary fr-mb-8v' %>
 
         <h3 class="fr-h4"><%= t('.changelog_title').html_safe %></h3>
         <p><%= t('.changelog_description').html_safe %></p>
