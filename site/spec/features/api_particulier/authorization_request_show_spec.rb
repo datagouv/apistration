@@ -66,7 +66,7 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
 
         it 'displays basic information' do
           expect(page).to have_current_path(api_particulier_authorization_request_path(id: authorization_request.id), ignore_query: true)
-          expect(page).to have_text('Habilitation active')
+          expect(page).to have_text('Demande active')
           expect(page).to have_text(friendly_format_from_timestamp(authorization_request.created_at))
         end
 
