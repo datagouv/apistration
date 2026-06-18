@@ -51,7 +51,9 @@
                                 <li>
                                   <%= link_to t('.tokens.table.transfer'),
                                     token_transfer_path(id: token.id),
-                                    class: 'fr-btn fr-btn--sm fr-btn--tertiary fr-icon-send-plane-line fr-btn--icon-left' %>
+                                    class: 'fr-btn fr-btn--sm fr-btn--tertiary fr-icon-send-plane-line fr-btn--icon-left',
+                                    aria: { controls: 'main-modal' },
+                                    data: { fr_opened: false, turbo_frame: 'main-modal-content' } %>
                                 </li>
                                 <li>
                                   <%= link_to t('.tokens.table.stats'),
