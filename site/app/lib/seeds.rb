@@ -2,6 +2,7 @@ class Seeds
   def perform
     @user = create_main_user
     @contact = create_contact
+    @contact_metier = create_contact_metier
 
     create_editor
     create_provider_user
@@ -78,6 +79,14 @@ class Seeds
       email: 'contact_technique@yopmail.com',
       first_name: 'Justine',
       last_name: 'Martin'
+    )
+  end
+
+  def create_contact_metier
+    create_user(
+      email: 'contact_metier@yopmail.com',
+      first_name: 'Camille',
+      last_name: 'Bernard'
     )
   end
 
@@ -185,6 +194,7 @@ class Seeds
       token_params: { id: '00000000-0000-0000-0000-000000000000' },
       demandeur: @user,
       contact_technique: @contact,
+      contact_metier: @contact_metier,
       authorization_request_params: {
         intitule: 'Mairie de Lyon 2',
         description: 'Récupération automatique des informations légales et financières des entreprises pour l\'instruction des demandes de subventions par les agents habilités.',
