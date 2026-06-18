@@ -437,8 +437,10 @@ fr:
           validated: 📃 Demande active
           submitted: 🕐 Demande en cours d'instruction
       header:
-        delivered_at: "Délivré le : %{humanized_date}"
-        form_used: "Formulaire utilisé : %{name}"
+        request_number_html: "<strong>Demande n° :</strong> %{external_id}"
+        form_used_html: "<strong>Formulaire utilisé :</strong> %{name}"
+        delivered_at_html: "<strong>Délivré le :</strong> %{humanized_date}"
+        description_html: "<strong>Description :</strong> %{description}"
       show:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         tokens:

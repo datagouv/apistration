@@ -1,5 +1,5 @@
 <div>
-  <%= render partial: 'shared/authorization_requests/header', locals: { authorization_request: token.authorization_request, to_datapass: false} %>
+  <%= render partial: 'shared/authorization_requests/header', locals: { authorization_request: token.authorization_request } %>
   <p class="fr-mt-8v fr-mb-1v">
 
     <p class="fr-badge fr-badge--<%= t(".status.color.#{token.status}") %>">
