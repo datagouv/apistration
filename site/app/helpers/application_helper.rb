@@ -36,6 +36,25 @@ module ApplicationHelper
     I18n.t(i18n_key)
   end
 
+  def external_link_to(name = nil, href = nil, html_options = {}, &)
+    if block_given?
+      html_options = href.is_a?(Hash) ? href : {}
+      href = name
+    end
+
+    html_options = html_options.merge(target: '_blank', rel: 'noopener noreferrer')
+    sr_label = content_tag(:span, '(nouvelle fenêtre)', class: 'fr-sr-only')
+
+    if block_given?
+      link_to(href, html_options) do
+        concat(capture(&))
+        concat(sr_label)
+      end
+    else
+      link_to(safe_join([name, sr_label]), href, html_options)
+    end
+  end
+
   def icon(kind)
     "<span class=\"icon #{kind}\" aria-hidden=\"true\"></span>".html_safe
   end

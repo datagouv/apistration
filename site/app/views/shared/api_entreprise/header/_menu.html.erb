@@ -58,9 +58,7 @@
           <% end %>
 
           <li class="ask-access-link fr-nav__item">
-            <a class="fr-nav__link center" href="https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau" target="_blank">
-              <%= t('.ask_access').html_safe %>
-            </a>
+            <%= external_link_to t('.ask_access').html_safe, 'https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau', class: 'fr-nav__link center' %>
           </li>
         </ul>
       </nav>

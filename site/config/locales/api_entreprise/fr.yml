@@ -363,7 +363,7 @@ fr:
           changelog_description: Retrouvez l'historique des évolutions du service (nouvelles API, montées de version, dépréciations) et abonnez-vous pour recevoir un récapitulatif hebdomadaire&nbsp;:&nbsp;
           changelog_button: Voir les nouveautés
           archives_title: 🕰 Archives de toutes nos communication&nbsp;:&nbsp;
-          archives_description: Nous archivons toutes nos communications dans <a href="https://v2.entreprise.api.gouv.fr/infolettres/" target="_blank">notre page infolettre</a>
+          archives_description: Nous archivons toutes nos communications dans <a href="https://v2.entreprise.api.gouv.fr/infolettres/" target="_blank" rel="noopener noreferrer">notre page infolettre<span class="fr-sr-only"> (nouvelle fenêtre)</span></a>
         banner:
           title: Lettres d'information
           description: Abonnez-vous à nos différentes lettres d'informations pour être informé <strong>des actualités, des évènements, des nouveautés et des ruptures de service.</strong>
