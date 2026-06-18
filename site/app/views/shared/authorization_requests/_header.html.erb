@@ -1,27 +1,20 @@
-<div>
-  <%= authorization_request_status_badge(authorization_request) %>
-  <% if authorization_request.demarche.present? %>
-    <span class="fr-badge fr-text--xs">
-      <i class="fr-icon-attachment-line fr-icon--sm fr-pr-1v" aria-hidden="true"></i>
-      <%= authorization_request.demarche %>
-    </span>
-  <% end %>
-  <h1 class="fr-h2 fr-mb-n0-5v"><%= authorization_request.intitule %></h1>
-</div>
-<div>
-  <span class="fr-text--xs">
-    <b><%= t('.delivered_at', humanized_date: friendly_format_from_timestamp(authorization_request.created_at)) %></b>
-    -
-    <% if to_datapass %>
-    <%= link_to safe_join([t('shared.links.to_datapass_html', external_id: authorization_request.external_id), content_tag(:span, '(nouvelle fenêtre)', class: 'fr-sr-only')]),
+<%= authorization_request_status_badge(authorization_request) %>
+<h1 class="fr-h2 fr-mb-1v"><%= authorization_request.intitule %></h1>
+
+<% if authorization_request.demarche.present? %>
+  <p class="fr-text--sm fr-mb-1v"><%= t('.form_used', name: authorization_request.demarche) %></p>
+<% end %>
+
+<p class="fr-text--xs fr-mb-0">
+  <b><%= t('.delivered_at', humanized_date: friendly_format_from_timestamp(authorization_request.created_at)) %></b>
+  -
+  <% if to_datapass %>
+    <%= link_to t('shared.links.to_datapass', external_id: authorization_request.external_id).html_safe,
       datapass_authorization_request_url(authorization_request),
       id: :authorization_request_link,
       class: %w(fr-link fr-text--xs),
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    %>
-    <% else %>
-      <span> <%= t('shared.links.to_datapass_html', external_id: authorization_request.external_id) %></span>
-    <% end %>
-  </span>
-</div>
+      target: '_blank' %>
+  <% else %>
+    <%= t('shared.links.to_datapass', external_id: authorization_request.external_id).html_safe %>
+  <% end %>
+</p>
