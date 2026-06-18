@@ -438,6 +438,7 @@ fr:
           submitted: 🕐 Habilitation en cours d'instruction
       header:
         delivered_at: "Délivré le : %{humanized_date}"
+        form_used: "Formulaire utilisé : %{name}"
       show:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         tokens:
