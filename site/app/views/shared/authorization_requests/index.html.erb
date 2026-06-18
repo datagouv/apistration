@@ -8,7 +8,7 @@
         <% if @authorization_requests.empty? %>
           <%= t('.no_authorization_requests') %>
         <% else %>
-          <%= t('.title', api_label: t(".#{@authorization_requests.first.api}"), count: @authorization_requests.count).html_safe %>
+          <%= t('.title', api_label: t(".#{@authorization_requests.first.api}")).html_safe %>
         <% end %>
       </h1>
     </div>

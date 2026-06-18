@@ -401,7 +401,7 @@ fr:
             display_cta_new_token: "Utiliser le nouveau jeton"
             display_cta_replace: "Remplacer le jeton banni par le nouveau jeton"
         no_authorization_requests: "Vous n'avez aucune demande"
-        title: "Demandes %{api_label} (%{count})"
+        title: "Demandes %{api_label}"
         entreprise: API&nbsp;Entreprise
         particulier: API&nbsp;Particulier
         no_action: Aucune action attendue
