@@ -509,8 +509,11 @@ fr:
           draft: ✏️ Mise à jour de la demande en cours
           changes_requested: ✏️ Modifications demandées sur la demande
       header:
-        delivered_at: "Délivré le : %{humanized_date}"
-        form_used: "Formulaire utilisé : %{name}"
+        organization_html: "<strong>Organisation :</strong>"
+        request_number_html: "<strong>Demande n° :</strong> %{external_id}"
+        form_used_html: "<strong>Formulaire utilisé :</strong> %{name}"
+        delivered_at_html: "<strong>Délivré le :</strong> %{humanized_date}"
+        description_html: "<strong>Description :</strong> %{description}"
       show:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         tokens:
