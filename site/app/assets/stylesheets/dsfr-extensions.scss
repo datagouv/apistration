@@ -97,6 +97,21 @@
   }
 }
 
+.fr-table--stretch {
+  .fr-table__content {
+    overflow-x: auto;
+  }
+
+  table {
+    display: table;
+    width: 100%;
+  }
+
+  td, th {
+    overflow: visible;
+  }
+}
+
 .fr-table--large {
   width: 1200px !important;
 }
