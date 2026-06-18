@@ -4,6 +4,10 @@ class AbstractBlogPost
 
   attr_accessor :id, :content
 
+  def title
+    content.lines.find { |l| l.start_with?('# ') }&.delete_prefix('# ')&.strip
+  end
+
   def self.find(id)
     file = Rails.root.join('config/blog_posts', api, "#{id}.md")
 

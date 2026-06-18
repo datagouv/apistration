@@ -124,6 +124,7 @@ ignore_unused:
   - 'editors.roles.*'
   - 'editors.deployment_types.*'
   - 'api_particulier.reporters_mailer.*'
+  - '*.page_title'
   - 'shared.tokens.prolong.description.future'
   - 'shared.tokens.prolong.description.past'
   - 'activerecord.attributes.*'

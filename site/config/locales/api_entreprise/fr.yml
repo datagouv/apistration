@@ -55,6 +55,7 @@ fr:
   api_entreprise:
     download_attestations:
       new:
+        page_title: Télécharger des attestations
         interface: "Interface d'appel"
         description: "Récupérez les attestations sociales ou fiscales d'une entreprise ou d'une association, en entrant son numéro SIREN."
         description_cgu_html: "Pour rappel, les %{href} vous engagent à <strong>ne pas diffuser les données reçues, ici les attestations fiscales et sociales, à des tiers non-autorisés</strong>."
@@ -65,6 +66,8 @@ fr:
           label: "🔑 Jeton d'habilitation :"
         siren_number:
           label: 'Numéro de SIREN :'
+      create:
+        page_title: Télécharger des attestations
       result:
         download_attestation_fiscale_cta: 'Attestation fiscale (PDF)'
         download_attestation_sociale_cta: 'Attestation sociale (PDF)'
@@ -77,6 +80,16 @@ fr:
         attestation_sociale_not_downloadable: "Attestation sociale non‑téléchargeable"
         attestation_fiscale_not_downloadable: 'Attestation fiscale non‑téléchargeable'
     tokens:
+      show:
+        page_title: ""
+      stats:
+        page_title: Statistiques d'utilisation
+      renew:
+        page_title: ""
+      prolong:
+        page_title: Prolonger mon jeton
+      ask_for_prolongation:
+        page_title: ""
       token:
         scope:
           etablissements:
@@ -193,7 +206,14 @@ fr:
             label: Data Subvention || API Subventions
 
     sessions:
+      new:
+        page_title: Se connecter
+      create_from_magic_link:
+        page_title: ""
+      dev_login:
+        page_title: ""
       create_from_oauth:
+        page_title: ""
         not_found:
           title: "Votre compte ne semble pas être rattaché à une habilitation API Entreprise."
           description: "Veuillez vérifier que l'e-mail %{email} utilisé ici correspond à l'e-mail utilisé lors de votre demande d'habilitation API Entreprise. \n\n
@@ -201,12 +221,15 @@ fr:
             Après validation de celle-ci, vous pourrez vous connecter au compte API Entreprise."
 
       failure:
+        page_title: ""
         unknown: Une erreur inconnue est survenue, veuillez contacter le support.
       after_logout:
+        page_title: ""
         success: Déconnexion réussie.
 
     public_token_magic_links:
       show:
+        page_title: ""
         error:
           expired:
             title: Lien expiré
@@ -223,6 +246,7 @@ fr:
 
     endpoints:
       index:
+        page_title: Catalogue des API
         title: "Catalogue des API"
         search:
           label: "Rechercher une API"
@@ -319,10 +343,12 @@ fr:
         test_cases: "Cas de tests"
     faq:
       index:
+        page_title: FAQ & contact
         title: "FAQ & contact"
 
     cas_usages:
       index:
+        page_title: "Cas d’usages"
         title: "Cas d’usages"
         description: "Consultez les <strong>fiches pratiques des cas d’utilisation</strong> de l’API Entreprise.<br>Retrouvez, entre autres, les <strong>données utiles</strong> pour les cas d’usages."
         simplifions:
@@ -339,6 +365,7 @@ fr:
             description: "Donnez accès à l'API Entreprise à vos clients publics."
     pages:
       newsletter:
+        page_title: Lettres d'information
         main:
           title: Abonnez-vous à nos lettres d'infos&nbsp;!
           newsletter_title: 💌 Actualités et guides pratiques&nbsp;:&nbsp;
@@ -355,6 +382,7 @@ fr:
           title: Lettres d'information
           description: Abonnez-vous à nos différentes lettres d'informations pour être informé <strong>des actualités, des évènements, des nouveautés et des ruptures de service.</strong>
       home:
+        page_title: ""
         section_welcome:
           title: <strong>Vous êtes un acteur public ?</strong><br>Gagnez du temps dans vos démarches<br> entreprises & associations&nbsp;!
           subtitle: <br><strong>Intégrez l'API&nbsp;Entreprise👇</strong>
@@ -416,7 +444,21 @@ fr:
           swagger_link: Spécifications techniques de chaque API
           swagger_description: "Utilisez notre <span lang=\"en\">Swagger</span> (<span lang=\"en\">OpenAPI</span>)"
           status_link: Statuts des API
+      cgu:
+        page_title: "Conditions générales d’utilisation"
+      mentions:
+        page_title: Mentions légales
+      donnees_personnelles:
+        page_title: Données personnelles
+      accessibility:
+        page_title: Accessibilité
+      current_status:
+        page_title: Statut des API
+      redoc:
+        page_title: ""
     documentation:
+      developers:
+        page_title: Espace développeur
       index:
         card_swagger_link: 🕹 Swagger
         card_swagger_description: Spécifications techniques de chacune des API&nbsp;:&nbsp;<br/>- Paramètres d’appels<br/>- Détail de la réponse JSON<br/>- Codes erreurs
@@ -426,6 +468,28 @@ fr:
         link_specs: 🎛 Spécifications générales
         link_kit: 🚀 Kit de mise en production
         link_preprod: 🧪 Environnement de test
+    stats:
+      index:
+        page_title: Statistiques
+    users:
+      profile:
+        page_title: Mon compte
+    authorization_requests:
+      index:
+        page_title: Mes demandes
+    transfer_tokens:
+      new:
+        page_title: ""
+    prolong_token_wizard:
+      start:
+        page_title: ""
+      show:
+        page_title: ""
+      finished:
+        page_title: ""
+    changelogs:
+      index:
+        page_title: Nouveautés
   beta:
     label: Version beta
     color: purple-glycine

@@ -38,7 +38,7 @@ module ApplicationHelper
 
   def external_link_to(name = nil, href = nil, html_options = {}, &)
     if block_given?
-      html_options = href.is_a?(Hash) ? href : {}
+      html_options = href if href.is_a?(Hash)
       href = name
     end
 
@@ -55,6 +55,13 @@ module ApplicationHelper
     end
   end
 
+  def full_page_title
+    namespace = controller_path.split('/').first
+    site_name = t("layouts.#{namespace}.application.title")
+    title = content_for?(:page_title) ? content_for(:page_title) : static_page_title
+    title.present? ? "#{title} — #{site_name}" : site_name
+  end
+
   def icon(kind)
     "<span class=\"icon #{kind}\" aria-hidden=\"true\"></span>".html_safe
   end
@@ -65,5 +72,14 @@ module ApplicationHelper
 
   def support_email
     t("#{namespace}.support_email")
+  end
+
+  private
+
+  def static_page_title
+    key = "#{controller_path.tr('/', '.')}.#{action_name}.page_title"
+    return t(key).presence if I18n.exists?(key)
+
+    raise "Missing page title for '#{key}'. Use content_for(:page_title) or add the i18n key." if Rails.env.local?
   end
 end
