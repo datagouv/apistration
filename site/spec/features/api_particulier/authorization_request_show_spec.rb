@@ -70,6 +70,10 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
           expect(page).to have_text(friendly_format_from_timestamp(authorization_request.created_at))
         end
 
+        it 'displays the organization in the header' do
+          expect(page).to have_css('header', text: "Organisation : #{authorization_request.siret}")
+        end
+
         it 'displays a link to DataPass' do
           expect(page).to have_link(href: datapass_authorization_request_url(authorization_request))
         end
