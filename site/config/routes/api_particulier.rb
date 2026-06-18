@@ -82,6 +82,7 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/cgu', to: 'pages#cgu', as: :cgu
     get '/donnees_personnelles', to: 'pages#donnees_personnelles', as: :donnees_personnelles
     get '/accessibilite', to: 'pages#accessibility', as: :accessibilite
+    get '/plan-du-site', to: 'pages#sitemap', as: :sitemap
 
     get '/datapass', to: 'reporters#index', as: :dashboard_reporter
   end

@@ -1,0 +1,14 @@
+<h1>Plan du site</h1>
+
+<% @sitemap_sections.each do |section| %>
+  <section>
+    <h2><%= section['section'] %></h2>
+    <ul>
+      <% section['pages'].each do |page| %>
+        <li>
+          <a href="<%= page['path'] %>"><%= page['title'] %></a>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>

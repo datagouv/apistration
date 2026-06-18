@@ -1,0 +1,75 @@
+api_entreprise:
+  - section: Découvrir
+    pages:
+      - path: /
+        title: Accueil
+      - path: /catalogue
+        title: Catalogue des API
+      - path: /cas_usages
+        title: Cas d'usages
+      - path: /faq
+        title: FAQ & contact
+      - path: /nouveautes
+        title: Nouveautés
+      - path: /developpeurs
+        title: Espace développeur
+      - path: /apis/status
+        title: Statut des API
+      - path: /infolettre
+        title: Lettre d'information
+      - path: /stats
+        title: Statistiques
+  - section: Mon espace
+    pages:
+      - path: /compte/se-connecter
+        title: Se connecter
+  - section: Informations légales
+    pages:
+      - path: /accessibilite
+        title: Accessibilité
+      - path: /cgu
+        title: Conditions générales d'utilisation
+      - path: /mentions-legales
+        title: Mentions légales
+      - path: /donnees_personnelles
+        title: Données personnelles
+      - path: /plan-du-site
+        title: Plan du site
+
+api_particulier:
+  - section: Découvrir
+    pages:
+      - path: /
+        title: Accueil
+      - path: /catalogue
+        title: Catalogue des API
+      - path: /cas_usages
+        title: Cas d'usages & modalités d'appel
+      - path: /faq
+        title: FAQ & contact
+      - path: /nouveautes
+        title: Nouveautés
+      - path: /developpeurs
+        title: Espace développeur
+      - path: /status/apis
+        title: Statut des API
+      - path: /infolettre
+        title: Lettre d'information
+      - path: /stats
+        title: Statistiques
+  - section: Mon espace
+    pages:
+      - path: /compte/se-connecter
+        title: Se connecter
+  - section: Informations légales
+    pages:
+      - path: /accessibilite
+        title: Accessibilité
+      - path: /cgu
+        title: Conditions générales d'utilisation
+      - path: /mentions-legales
+        title: Mentions légales
+      - path: /donnees_personnelles
+        title: Données personnelles
+      - path: /plan-du-site
+        title: Plan du site
