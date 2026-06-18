@@ -44,10 +44,10 @@ module OmniAuth
   module Strategies
     class Proconnect
       MFA_ACR_VALUES = [
+        'eidas0-mfa',
+        'eidas1-mfa',
         'eidas2',
-        'eidas3',
-        'https://proconnect.gouv.fr/assurance/self-asserted-2fa',
-        'https://proconnect.gouv.fr/assurance/consistency-checked-2fa'
+        'eidas3'
       ].freeze
 
       def self.authorization_uri_with_mfa(type, session:, login_hint:)
