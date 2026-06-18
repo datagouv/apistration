@@ -1,9 +1,6 @@
 <turbo-frame id="main-modal-content">
   <div class="single-page" data-controller="clipboard">
-    <h1 id="<%= dom_id(@token, :token_content_title) %>" class="fr-modal__title">
-      <span class="fr-icon-arrow-right-line fr-icon--lg" aria-hidden="true"></span>
-      <%= t('.title') %>
-    </h1>
+    <%= render 'shared/modal_title', id: dom_id(@token, :token_content_title), title: t('.title') %>
     <blockquote class="fr-highlight fr-highlight--caution fr-m-0">
       <p><%= t('.warning').html_safe %></p>
     </blockquote>
