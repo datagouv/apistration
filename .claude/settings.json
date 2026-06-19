@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "rgaa-toolkit": {
+      "source": {
+        "source": "github",
+        "repo": "Isalafont/claude-skill-rgaa-dev"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "accessibility@rgaa-toolkit": true
+  }
+}
