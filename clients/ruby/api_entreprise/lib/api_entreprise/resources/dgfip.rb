@@ -79,7 +79,7 @@ module ApiEntreprise
       # Numéro de TVA
       # Logical endpoint: /dgfip/unites_legales/{siren}/numero_tva
       # Versions available: [3] — default: 3
-      def numero_tva(siren, version: nil, recipient: nil, context: nil, object: nil)
+      def numero_tva(siren, version: nil, recipient: nil, delegation_id: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
           case version || 3
@@ -88,7 +88,7 @@ module ApiEntreprise
           else
             raise ArgumentError, "version #{version.inspect} not available for /dgfip/unites_legales/{siren}/numero_tva; supported: [3]"
           end
-        @client.get(path, params: { "recipient" => recipient, "context" => context, "object" => object }.compact)
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "context" => context, "object" => object }.compact)
       end
     end
   end
