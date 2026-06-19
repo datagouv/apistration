@@ -41,6 +41,14 @@ class AbstractOpenAPIDefinition
     backend.merge('paths' => paths).to_yaml
   end
 
+  def open_api_partial_definition_content(operation_ids)
+    paths = backend['paths'].select do |_, definition|
+      operation_ids.include?(definition.dig('get', 'responses', '200', 'x-operationId'))
+    end
+
+    backend.merge('paths' => paths).to_yaml
+  end
+
   def open_api_definition_content
     local_path.read
   end
