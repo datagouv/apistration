@@ -152,6 +152,30 @@ else
     || echo "site bootstrap returned non-zero (delete $STATE_DIR/site-bootstrap.done to retry)"
 fi
 
+# -- 9. Claude accessibility plugin (rgaa-toolkit) ----------------------------
+# Installs the `accessibility` plugin (skills audit + rgaa-dev) from the
+# rgaa-toolkit marketplace instead of copying the skill files by hand.
+#
+# The marketplace + enablement are committed in .claude/settings.json (project
+# scope, shared by every VM). Here we make sure the plugin FILES are actually
+# fetched into the VM's ~/.claude cache, and we FORCE a refresh on every boot
+# so the latest version pushed to the repo is picked up deterministically.
+# We do not rely on autoUpdate alone (known-flaky: orphaned versions, third-
+# party marketplaces skipped at SessionStart, silent network failures).
+#
+# Never block the VM start on a plugin/network hiccup: every step is best-effort
+# (|| true) so an offline boot or GitHub rate-limit degrades gracefully instead
+# of aborting the whole runtime.sh (set -e).
+if command -v claude >/dev/null 2>&1; then
+  log "Installing/refreshing Claude accessibility plugin (rgaa-toolkit)"
+  claude plugin marketplace add Isalafont/claude-skill-rgaa-dev --scope project >/dev/null 2>&1 || true
+  claude plugin marketplace update rgaa-toolkit || true
+  claude plugin install accessibility@rgaa-toolkit --scope project >/dev/null 2>&1 || true
+  claude plugin update accessibility@rgaa-toolkit || true
+else
+  skip "Claude accessibility plugin (claude CLI not on PATH)"
+fi
+
 log "Ready. Servers:"
 cat <<'EOF'
   site   : cd site   && bin/local.sh           (http://entreprise.api.localtest.me:5000)
