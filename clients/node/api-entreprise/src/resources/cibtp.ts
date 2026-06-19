@@ -12,7 +12,7 @@ export class Cibtp {
   }
 
   /** Certificat cotisations CIBTP */
-  async attestation_cotisations_conges_payes_chomage_intemperies(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async attestation_cotisations_conges_payes_chomage_intemperies(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -23,6 +23,6 @@ export class Cibtp {
           throw new Error(`version ${resolvedVersion} not available for /cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

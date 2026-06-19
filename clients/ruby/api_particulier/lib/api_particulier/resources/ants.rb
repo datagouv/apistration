@@ -13,7 +13,7 @@ module ApiParticulier
       # [FranceConnect] Extrait d'immatriculation véhicule
       # Logical endpoint: /ants/extrait_immatriculation_vehicule/france_connect
       # Versions available: [3] — default: 3
-      def extrait_immatriculation_vehicule(version: nil, recipient: nil, immatriculation:)
+      def extrait_immatriculation_vehicule(version: nil, recipient: nil, delegation_id: nil, immatriculation:)
         path =
           case version || 3
           when 3
@@ -21,7 +21,7 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /ants/extrait_immatriculation_vehicule/france_connect; supported: [3]"
           end
-        @client.get(path, params: { "recipient" => recipient, "immatriculation" => immatriculation }.compact)
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "immatriculation" => immatriculation }.compact)
       end
     end
   end

@@ -13,7 +13,7 @@ export class Insee {
   }
 
   /** Données établissement */
-  async etablissements(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async etablissements(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -27,11 +27,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/etablissements/{siret}; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Adresse établissement */
-  async adresse(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async adresse(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -42,11 +42,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/etablissements/{siret}/adresse; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Liens de succession */
-  async successions(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async successions(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -57,11 +57,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/etablissements/{siret}/successions; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Données établissement en open data */
-  async diffusibles(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async diffusibles(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -75,11 +75,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/etablissements/diffusibles/{siret}; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Adresse établissement en open data */
-  async etablissements_diffusibles_adresse(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async etablissements_diffusibles_adresse(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -90,11 +90,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/etablissements/diffusibles/{siret}/adresse; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Données unité légale */
-  async unites_legales(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async unites_legales(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -108,11 +108,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/unites_legales/{siren}; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Données siège social */
-  async siege_social(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async siege_social(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -126,11 +126,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/unites_legales/{siren}/siege_social; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Données unité légale en open data */
-  async sirene_unites_legales_diffusibles(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async sirene_unites_legales_diffusibles(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -144,11 +144,11 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/unites_legales/diffusibles/{siren}; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Données siège social en open data */
-  async unites_legales_diffusibles_siege_social(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async unites_legales_diffusibles_siege_social(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -162,6 +162,6 @@ export class Insee {
           throw new Error(`version ${resolvedVersion} not available for /insee/sirene/unites_legales/diffusibles/{siren}/siege_social; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

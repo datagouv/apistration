@@ -11,7 +11,7 @@ export class Djepva {
   }
 
   /** Données association */
-  async associations(siren_or_rna: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async associations(siren_or_rna: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
       switch (resolvedVersion) {
@@ -21,11 +21,11 @@ export class Djepva {
           throw new Error(`version ${resolvedVersion} not available for /djepva/api-association/associations/{siren_or_rna}; supported: [4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Données association en open data */
-  async open_data(siren_or_rna: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async open_data(siren_or_rna: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
       switch (resolvedVersion) {
@@ -35,6 +35,6 @@ export class Djepva {
           throw new Error(`version ${resolvedVersion} not available for /djepva/api-association/associations/open_data/{siren_or_rna}; supported: [4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

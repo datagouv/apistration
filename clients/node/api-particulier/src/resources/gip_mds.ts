@@ -11,7 +11,7 @@ export class GipMds {
   }
 
   /** [FranceConnect] Statut service civique */
-  async service_civique(options: { version?: number; recipient?: string } = {}) {
+  async service_civique(options: { version?: number; recipient?: string; delegation_id?: string } = {}) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -21,11 +21,11 @@ export class GipMds {
           throw new Error(`version ${resolvedVersion} not available for /gip_mds/service_civique/france_connect; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id } });
   }
 
   /** [Identité] Statut service civique */
-  async service_civique_identite(options: { version?: number; recipient?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string }) {
+  async service_civique_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -35,6 +35,6 @@ export class GipMds {
           throw new Error(`version ${resolvedVersion} not available for /gip_mds/service_civique/identite; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'nomNaissance': options.nom_naissance, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance } });
   }
 }

@@ -13,7 +13,7 @@ export class Dgfip {
   }
 
   /** Chiffre d'affaires */
-  async chiffres_affaires(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async chiffres_affaires(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -24,11 +24,11 @@ export class Dgfip {
           throw new Error(`version ${resolvedVersion} not available for /dgfip/etablissements/{siret}/chiffres_affaires; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Attestation fiscale */
-  async attestation_fiscale(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async attestation_fiscale(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -42,11 +42,11 @@ export class Dgfip {
           throw new Error(`version ${resolvedVersion} not available for /dgfip/unites_legales/{siren}/attestation_fiscale; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Liasses fiscales */
-  async liasses_fiscales(siren: string, year: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async liasses_fiscales(siren: string, year: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -60,11 +60,11 @@ export class Dgfip {
           throw new Error(`version ${resolvedVersion} not available for /dgfip/unites_legales/{siren}/liasses_fiscales/{year}; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Liens capitalistiques */
-  async liens_capitalistiques(siren: string, year: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async liens_capitalistiques(siren: string, year: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -75,11 +75,11 @@ export class Dgfip {
           throw new Error(`version ${resolvedVersion} not available for /dgfip/unites_legales/{siren}/liens_capitalistiques/{year}; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Numéro de TVA */
-  async numero_tva(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async numero_tva(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -90,6 +90,6 @@ export class Dgfip {
           throw new Error(`version ${resolvedVersion} not available for /dgfip/unites_legales/{siren}/numero_tva; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

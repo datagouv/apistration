@@ -13,7 +13,7 @@ export class GipMds {
   }
 
   /** Effectifs mensuels d'un établissement */
-  async annee(siret: string, year: string, month: string, options: { version?: number; recipient?: string; context?: string; object?: string; profondeur?: string; nature_effectif?: string } = {}) {
+  async annee(siret: string, year: string, month: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string; profondeur?: string; nature_effectif?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -24,11 +24,11 @@ export class GipMds {
           throw new Error(`version ${resolvedVersion} not available for /gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object, 'profondeur': options.profondeur, 'nature_effectif': options.nature_effectif } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object, 'profondeur': options.profondeur, 'nature_effectif': options.nature_effectif } });
   }
 
   /** Effectifs annuels d'une unité légale */
-  async effectifs_annuels(siren: string, year: string, options: { version?: number; recipient?: string; context?: string; object?: string; nature_effectif?: string } = {}) {
+  async effectifs_annuels(siren: string, year: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string; nature_effectif?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -39,6 +39,6 @@ export class GipMds {
           throw new Error(`version ${resolvedVersion} not available for /gip_mds/unites_legales/{siren}/effectifs_annuels/{year}; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object, 'nature_effectif': options.nature_effectif } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object, 'nature_effectif': options.nature_effectif } });
   }
 }

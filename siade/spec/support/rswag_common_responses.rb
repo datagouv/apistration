@@ -10,9 +10,20 @@ module RSwagCommonResponses
       example: SwaggerData.get('parameters.recipient.example'),
       required: true
 
+    delegation_id_action_attribute
+
     specific_api_entreprise_action_attributes if describe.metadata[:api] == :entreprise
 
     security [{ jwt_bearer_token: [] }]
+  end
+
+  def delegation_id_action_attribute
+    parameter name: :delegation_id,
+      in: :query,
+      type: :string,
+      description: SwaggerData.get('parameters.delegation_id.description'),
+      example: SwaggerData.get('parameters.delegation_id.example'),
+      required: false
   end
 
   def specific_api_entreprise_action_attributes
@@ -40,6 +51,8 @@ module RSwagCommonResponses
       description: SwaggerData.get('parameters.recipient.description'),
       example: SwaggerData.get('parameters.recipient.example'),
       required: true
+
+    delegation_id_action_attribute
 
     security [{ jwt_bearer_token: [] }]
   end
