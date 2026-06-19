@@ -9190,6 +9190,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -9289,26 +9299,6 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '403':
-          description: Accès interdit
-          content:
-            application/json:
-              examples:
-                insufficient_privileges_error:
-                  value:
-                    errors:
-                    - code: '00100'
-                      title: Privilèges insuffisants
-                      detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges sur /v2/privileges
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Privilèges insuffisants
-                  description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '429':
@@ -9454,6 +9444,19 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -9589,6 +9592,26 @@ paths:
                         provider: DGFIP - TVA
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
