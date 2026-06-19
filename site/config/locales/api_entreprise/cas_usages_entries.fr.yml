@@ -26,7 +26,7 @@ fr:
           - qualibat/certifications_batiment
           - opqibi/qualifications_ingenierie
           - qualifelec/certificats
-          - commission_europeenne/numero_tva
+          - dgfip/numero_tva
           - inpi/rne/actes_bilans
           - inpi/rne/attestation_immatriculation
           - insee/etablissements
@@ -87,7 +87,7 @@ fr:
 
           "inpi/rne/actes_bilans": "Consulter les actes pour se renseigner sur l'historique des modifications de l'unité légale et vérifier les associés. Consulter les bilans pour vérifier les capitaux propres, chiffre d'affaires et encours."
 
-          "commission_europeenne/numero_tva": "Préremplir le numéro de TVA certifié.<br/><br/>Permettre à l'instructeur de vérifier la validité du numéro de TVA.<br/><br/>Cette API ne fonctionne que pour les entreprises ayant un Siren et un numéro de TVA au format français."
+          "dgfip/numero_tva": "Préremplir le numéro de TVA certifié.<br/><br/>Permettre à l'instructeur de vérifier la validité du numéro de TVA. Données issues des **extractions quotidiennes de la DGFIP** (fraîcheur J+1).<br/><br/>Uniquement pour les entreprises ayant un numéro de TVA au format français."
 
           "gip_mds/effectifs_annuels_unite_legale" : "_L'accès à cette donnée requiert un cas d'usage spécifique._"
 
@@ -310,7 +310,7 @@ fr:
           - qualibat/certifications_batiment
           - opqibi/qualifications_ingenierie
           - djepva/associations_open_data
-          - commission_europeenne/numero_tva
+          - dgfip/numero_tva
           - gip_mds/effectifs_annuels_unite_legale
           - gip_mds/effectifs_mensuels_etablissement
           - qualifelec/certificats
@@ -361,7 +361,7 @@ fr:
 
           "inpi/rne/actes_bilans": "<span class='fr-badge fr-badge--sm fr-badge--green-archipel fr-badge--new'>Instruction</span> **Vérification de capacité économique et financière** : Consulter les actes pour se renseigner sur l'historique des modifications de l'unité légale et vérifier les associés. Consulter les bilans pour vérifier les capitaux propres, chiffre d'affaires et encours."
 
-          "commission_europeenne/numero_tva": "_Uniquement les numéros de TVA français d'une entreprise ayant un Siren._"
+          "dgfip/numero_tva": "_Uniquement les numéros de TVA français d'une entreprise ayant un Siren. Données issues des extractions quotidiennes de la DGFIP (fraîcheur J+1)._"
 
           "fabrique_numerique_ministeres_sociaux/conventions_collectives": "<span class='fr-badge fr-badge--sm fr-badge--new fr-badge--purple-glycine'>Sourcing</span> <span class='fr-badge fr-badge--sm fr-badge--new'>Candidature</span> _Exemple d'usage spécifique_&nbsp;: En tant qu'acheteur public vous souhaitez que le personnel actuellement titulaire du marché soit gardé même si une nouvelle entreprise remporte le marché. Consulter les conventions collective vous permet de **vérifier si la reprise du personnel est obligatoire pour l'entreprise candidate**. Certaines conventions collectives prévoient en effet la reprise du personnel par transfert de contrat."
 
@@ -596,7 +596,7 @@ fr:
           - opqibi/qualifications_ingenierie
           - qualifelec/certificats
           - djepva/associations_open_data
-          - commission_europeenne/numero_tva
+          - dgfip/numero_tva
           - gip_mds/effectifs_annuels_unite_legale
           - gip_mds/effectifs_mensuels_etablissement
           - carif_oref/certifications_qualiopi_france_competences
@@ -641,7 +641,7 @@ fr:
 
             "inpi/rne/actes_bilans": "<span class='fr-badge fr-badge--sm fr-badge--green-archipel fr-badge--new'>Instruction</span> **Vérification de capacité économique et financière** : Consulter les actes pour se renseigner sur l'historique des modifications de l'unité légale et vérifier les associés. Consulter les bilans pour vérifier les capitaux propres, chiffre d'affaires et encours."
 
-            "commission_europeenne/numero_tva": "_Uniquement les numéros de TVA français d'une entreprise ayant un Siren._"
+            "dgfip/numero_tva": "_Uniquement les numéros de TVA français d'une entreprise ayant un Siren. Données issues des extractions quotidiennes de la DGFIP (fraîcheur J+1)._"
 
             "fabrique_numerique_ministeres_sociaux/conventions_collectives": ""
 
@@ -883,7 +883,7 @@ fr:
           - fntp/carte_professionnelle_travaux_public
           - cnetp/attestations_cotisations_conges_payes_chomage_intemperies
           - cibtp/attestations_cotisations_conges_payes_chomage_intemperies
-          - commission_europeenne/numero_tva
+          - dgfip/numero_tva
           - inpi/rne/actes_bilans
           - inpi/rne/beneficiaires_effectifs
         comments_endpoints:
@@ -923,7 +923,7 @@ fr:
 
             "inpi/rne/actes_bilans": "_Aucune information association_"
 
-            "commission_europeenne/numero_tva": "_Aucune information association_"
+            "dgfip/numero_tva": "_Aucune information association_"
 
             "fabrique_numerique_ministeres_sociaux/conventions_collectives": "Conventions collectives de l'association"
 
@@ -1074,7 +1074,7 @@ fr:
           - urssaf/attestation_vigilance
           - urssaf/v3/attestation_vigilance
           - msa/conformites_cotisations
-          - commission_europeenne/numero_tva
+          - dgfip/numero_tva
           - carif_oref/certifications_qualiopi_france_competences
           - gip_mds/effectifs_annuels_unite_legale
           - gip_mds/effectifs_mensuels_etablissement
@@ -1171,7 +1171,7 @@ fr:
           -  gip_mds/effectifs_annuels_unite_legale
           -  gip_mds/effectifs_mensuels_etablissement
           -  ministere_interieur/documents_associations
-          -  commission_europeenne/numero_tva
+          -  dgfip/numero_tva
           -  fabrique_numerique_ministeres_sociaux/conventions_collectives
           -  cma_france/rnm
           -  douanes/immatriculation_eori
@@ -1214,7 +1214,7 @@ fr:
           "ministere_interieur/documents_associations": ""
           "inpi/rne/beneficiaires_effectifs": ""
           "inpi/rne/actes_bilans": ""
-          "commission_europeenne/numero_tva": ""
+          "dgfip/numero_tva": ""
           "fabrique_numerique_ministeres_sociaux/conventions_collectives": ""
           "cma_france/rnm": "Préremplir des démarches en ligne sans authentification de l'usager."
           "gip_mds/effectifs_annuels_unite_legale" : "_Donnée sensible_. ⚠️ Le cadre légal précis de vos utilisateurs sera indispensable pour accéder à cette donnée."
