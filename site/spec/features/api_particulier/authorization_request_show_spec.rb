@@ -32,13 +32,13 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
       create(:token, authorization_request:, exp: 1.day.ago, blacklisted_at: 1.day.from_now, scopes:),
       create(:token, authorization_request:, exp: 1.day.from_now, blacklisted_at: 1.day.ago, scopes:),
       create(:token, authorization_request:, exp: 1.day.ago, blacklisted_at: 1.day.ago, scopes:),
-      create(:token, authorization_request:, exp: 2.days.from_now, blacklisted_at: nil, scopes:)
+      create(:token, authorization_request:, exp: 2.days.from_now, blacklisted_at: 1.day.ago, scopes:)
     ]
   end
 
   let!(:scopes) { [] }
 
-  let!(:banned_token) { create(:token, authorization_request:, exp:, blacklisted_at: 1.day.from_now) }
+  let!(:banned_token) { create(:token, authorization_request:, exp:, blacklisted_at: 1.day.ago) }
 
   let(:exp) { 1.day.from_now.to_i }
   let(:blacklisted_at) { nil }
