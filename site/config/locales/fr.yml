@@ -234,6 +234,7 @@ fr:
         links:
           authorization_requests: Vos habilitations
         title: "Vos&nbsp;informations"
+        internal_id: "Identifiant interne&nbsp;: %{id}"
         transfer_account:
           title: "Votre équipe évolue ? Vous quittez votre service ? Transmettez vos habilitations à une autre personne&nbsp;:"
           subtitle_if_demandeur: "Habilitations où je suis demandeur&nbsp;:"
