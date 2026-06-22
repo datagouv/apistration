@@ -604,6 +604,8 @@ fr:
           one: "%{count} demande sur la période"
           other: "%{count} demandes sur la période"
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
+        status_filter: Filtrer par statut
+        status_all: Tous les statuts
         charts:
           evolution: Évolution des habilitations validées
           evolution_series: Par période

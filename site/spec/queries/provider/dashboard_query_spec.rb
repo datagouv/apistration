@@ -250,6 +250,38 @@ RSpec.describe Provider::DashboardQuery do
         status: :draft)
       expect(query.habilitations.pluck(:external_id)).not_to include('AR-DRAFT')
     end
+
+    it 'narrows habilitations to the selected statuses' do
+      create(:authorization_request,
+        intitule: 'Refused',
+        external_id: 'AR-REFUSED',
+        api: 'entreprise',
+        siret: '13002526500013',
+        scopes: ['unites_legales_etablissements_insee'],
+        first_submitted_at: 1.day.ago,
+        status: :refused)
+
+      filtered = Provider::DashboardFilter.new(provider, 'entreprise', statuses: ['refused'])
+      external_ids = described_class.new(provider, filtered).habilitations.pluck(:external_id)
+
+      expect(external_ids).to include('AR-REFUSED')
+      expect(external_ids).not_to include('AR-1')
+    end
+
+    it 'counts only habilitations matching the selected statuses' do
+      create(:authorization_request,
+        intitule: 'Refused',
+        external_id: 'AR-REFUSED',
+        api: 'entreprise',
+        siret: '13002526500013',
+        scopes: ['unites_legales_etablissements_insee'],
+        first_submitted_at: 1.day.ago,
+        status: :refused)
+
+      filtered = Provider::DashboardFilter.new(provider, 'entreprise', statuses: ['refused'])
+
+      expect(described_class.new(provider, filtered).total_habilitations).to eq(1)
+    end
   end
 
   describe 'consumers cumulative evolution' do

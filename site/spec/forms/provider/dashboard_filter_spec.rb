@@ -24,6 +24,20 @@ RSpec.describe Provider::DashboardFilter do
     expect(filter.routes).to eq(['foo'])
   end
 
+  it 'defaults statuses to all known statuses when not submitted' do
+    filter = described_class.new(provider, 'entreprise')
+
+    expect(filter.statuses).to eq([])
+    expect(filter.selected_statuses).to eq(described_class::STATUSES)
+  end
+
+  it 'keeps only known submitted statuses' do
+    filter = described_class.new(provider, 'entreprise', statuses: ['', 'refused', 'bogus'])
+
+    expect(filter.statuses).to eq(['refused'])
+    expect(filter.selected_statuses).to eq(['refused'])
+  end
+
   it 'falls back to day interval when invalid' do
     filter = described_class.new(provider, 'entreprise', interval: 'wat')
 

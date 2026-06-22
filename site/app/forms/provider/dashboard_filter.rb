@@ -4,6 +4,8 @@ class Provider::DashboardFilter
 
   INTERVALS = %w[jour semaine mois].freeze
 
+  STATUSES = %w[validated submitted changes_requested refused revoked].freeze
+
   INTERVAL_TO_PG_UNIT = {
     'jour' => 'day',
     'semaine' => 'week',
@@ -25,6 +27,7 @@ class Provider::DashboardFilter
   attribute :date_from, :date
   attribute :date_to, :date
   attribute :routes
+  attribute :statuses
   attribute :interval, :string, default: 'jour'
 
   validates :interval, inclusion: { in: INTERVALS }
@@ -39,10 +42,15 @@ class Provider::DashboardFilter
     self.date_from ||= 7.days.ago.to_date
     self.date_to ||= Date.current
     self.routes = Array(routes).compact_blank
+    self.statuses = Array(statuses).compact_blank & STATUSES
     self.interval = 'jour' unless INTERVALS.include?(interval)
   end
 
   def routes_submitted? = @routes_submitted
+
+  def selected_statuses
+    statuses.presence || STATUSES
+  end
 
   def matches_preset?(key)
     from, to = self.class.date_presets[key]
