@@ -1,0 +1,39 @@
+---
+description: 'Non boursier avec INE - Fifi Duck - Dijon Carnot'
+params:
+  ine: '0987654321B'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": false,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-01",
+        "duree": null
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "fifi@duck.com",
+      "identite": {
+        "nom": "DUCK",
+        "prenoms": [
+          "FIFI"
+        ],
+        "date_naissance": "2003-11-06",
+        "nom_commune_naissance": "Ahuy",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

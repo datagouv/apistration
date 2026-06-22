@@ -1,0 +1,39 @@
+---
+description: 'Boursier avec échelon régional provisoire et commune accentuée - Loulou Duck - Fontaine-Lès-Dijon Carnot'
+params:
+  ine: '0987654321C'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-10-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Fontaine-Lès-Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": true
+      },
+      "email": "loulou@duck.com",
+      "identite": {
+        "nom": "DUCK",
+        "prenoms": [
+          "LOULOU"
+        ],
+        "date_naissance": "2001-06-21",
+        "nom_commune_naissance": "Strasbourg",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

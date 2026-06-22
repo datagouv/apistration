@@ -1,0 +1,39 @@
+---
+description: 'Boursier avec date de naissance atypique (1947) - Balthazar Picsou - Dijon IAE'
+params:
+  ine: '0987654321G'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-05",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "IAE"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "balthazar@piscou.com",
+      "identite": {
+        "nom": "PICSOU",
+        "prenoms": [
+          "BALTHAZAR"
+        ],
+        "date_naissance": "1947-11-14",
+        "nom_commune_naissance": "Dijon",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

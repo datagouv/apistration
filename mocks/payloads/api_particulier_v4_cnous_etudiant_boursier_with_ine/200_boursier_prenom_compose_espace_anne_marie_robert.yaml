@@ -1,0 +1,39 @@
+---
+description: 'Boursière avec prénom composé avec espace - Anne Marie Robert - Dijon Carnot'
+params:
+  ine: '0987654321K'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "annemarie@michel.com",
+      "identite": {
+        "nom": "ROBERT",
+        "prenoms": [
+          "ANNE MARIE"
+        ],
+        "date_naissance": "2006-06-26",
+        "nom_commune_naissance": "Marseille",
+        "sexe": "F"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

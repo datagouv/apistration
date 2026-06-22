@@ -1,0 +1,39 @@
+---
+description: 'Boursier hors Dijon (Toulouse) - Donald Duck - Toulouse Baudelaire'
+params:
+  ine: '0987654321H'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-25",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Toulouse",
+        "nom_etablissement": "Baudelaire"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "donald@duck.fr",
+      "identite": {
+        "nom": "DUCK",
+        "prenoms": [
+          "DONALD"
+        ],
+        "date_naissance": "2001-05-18",
+        "nom_commune_naissance": "Rennes",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
