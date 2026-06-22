@@ -32,6 +32,10 @@
     <div class="fr-col-12 fr-mb-3w">
       <ul class="list-unstyled user-general-infos">
         <li>
+          <%= icon('fr-icon-user-line') %>
+          <%= t('.internal_id', id: user.id).html_safe %>
+        </li>
+        <li>
           <%= icon('fr-icon-mail-line') %>
           <%= user.email %>
         </li>
