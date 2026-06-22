@@ -38,7 +38,7 @@ FactoryBot.define do
     trait :with_tokens do
       tokens do
         [
-          build(:token)
+          build(:token, skip_authorization_request: true)
         ]
       end
     end
