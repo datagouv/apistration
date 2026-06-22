@@ -10,16 +10,17 @@ FactoryBot.define do
     transient do
       users { nil }
       intitule { 'Token' }
+      skip_authorization_request { false }
     end
 
     after(:build) do |token, evaluator|
-      if token.authorization_request.nil?
+      if token.authorization_request.nil? && !evaluator.skip_authorization_request
         token.authorization_request = create(
           :authorization_request, :with_demandeur, tokens: [token], intitule: evaluator.intitule
         )
       end
 
-      if evaluator.intitule != token.authorization_request.intitule
+      if token.authorization_request.present? && evaluator.intitule != token.authorization_request.intitule
         token.authorization_request.intitule = evaluator.intitule
         token.authorization_request.save! if token.authorization_request.persisted?
       end
