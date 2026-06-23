@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'probtp/conformites_cotisations_retraite'
+    datagouv_uid: '672cf6b46a8456f417812b11'
     path: '/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite'
     controller: 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite'
     position: 280

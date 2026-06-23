@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: "dgfip/liens_capitalistiques"
+    datagouv_uid: '686d1ee8b267deea7b434baf'
     path: "/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}"
     controller: 'api_entreprise/v3_and_more/dgfip/liens_capitalistiques'
     ping_url: "https://entreprise.api.gouv.fr/ping/dgfip/liasses_fiscales"

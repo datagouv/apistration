@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/complementaire_sante_solidaire'
+    datagouv_uid: '672cf65bd5e4c56502e38b6b'
     opening: protected
     old_endpoint_uids:
       - 'cnav/v2/complementaire_sante_solidaire'

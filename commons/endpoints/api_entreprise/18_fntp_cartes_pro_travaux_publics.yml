@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'fntp/carte_professionnelle_travaux_public'
+    datagouv_uid: '672cf6b8f8b5d52b762633a0'
     path: '/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics'
     controller: 'api_entreprise/v3_and_more/fntp/carte_professionnelle_travaux_publics'
     ping_url: 'https://entreprise.api.gouv.fr/ping/fntp/carte_professionnelle_travaux_publics'

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'insee/etablissements'
+    datagouv_uid: '672cf6aece89cb14e31f0fba'
     old_endpoint_uids:
       - 'insee/etablissements_v3'
     position: 104
@@ -141,6 +142,7 @@ fiche:
           > **Depuis 2023, les personnes morales sont concernées par la \"diffusion partielle\"**. Si elles ont exercé ce droit, vous n'avez pas le droit de pré-remplir leur données de localisation : géolocalisation, numéro et voie de l'adresse postale. La commune reste diffusible.
 
   - uid: 'insee/etablissements_diffusibles'
+    datagouv_uid: '672cf6aece89cb14e31f0fba'
     old_endpoint_uids:
       - 'insee/etablissements_diffusibles_v3'
     position: 99

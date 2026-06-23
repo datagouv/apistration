@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/prime_activite'
+    datagouv_uid: '672cf6acc34230c996aab5a5'
     opening: protected
     old_endpoint_uids:
       - 'cnav/v2/prime_activite'

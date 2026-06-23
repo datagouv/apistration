@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'mesri/statut_etudiant'
+    datagouv_uid: '672cf667c3488a0c533f7092'
     opening: protected
     old_endpoint_uids:
       - 'mesri/v2/statut_etudiant'

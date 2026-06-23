@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'pole_emploi/situation'
+    datagouv_uid: '672cf6aba316ad54c9a7f19a'
     opening: protected
     old_endpoint_uids:
       - 'pole_emploi/v2/situation'
@@ -90,6 +91,7 @@ fiche:
 
 
   - uid: 'pole_emploi/indemnites'
+    datagouv_uid: '672cf6ab6d09c75cace6a62a'
     opening: protected
     old_endpoint_uids:
       - 'pole_emploi/v2/indemnites'

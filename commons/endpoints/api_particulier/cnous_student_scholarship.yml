@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnous/statut_etudiant_boursier'
+    datagouv_uid: '672cf6900a2a1df94c9cc37c'
     opening: protected
     new_version: true
     old_endpoint_uids:

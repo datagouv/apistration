@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/quotient_familial'
+    datagouv_uid: '672cf982fcc8065be6e66f54'
     opening: protected
     old_endpoint_uids:
       - 'cnav/v2/quotient_familial_v2'
