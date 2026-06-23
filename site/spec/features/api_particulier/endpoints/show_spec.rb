@@ -21,8 +21,8 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
   end
 
   it "displays cas d'usage" do
-    allow(SimplifionsStore).to receive(:links_for).and_return([
-      { name: 'Tarification cantine scolaire à 1€', url: 'https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1eur', icon: '🏫', description: nil, administrations: [], public_cible: [] }
+    allow(SimplifionsStore.instance).to receive(:for_endpoint).and_return([
+      APIParticulier::CasUsage.new(name: 'Tarification cantine scolaire à 1€', url: 'https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1eur', icon: '🏫', description: nil, administrations: [], public_cible: [])
     ])
     visit endpoint_path(uid:)
     expect(page).to have_text('Tarification cantine')

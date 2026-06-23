@@ -94,7 +94,7 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     stub_request(:get, %r{entreprise\.api\.gouv\.fr/ping}).to_return(status: 200)
     stub_request(:get, %r{particulier\.api\.gouv\.fr/api/.*/ping$}).to_return(status: 200)
-    allow(SimplifionsStore).to receive_messages(all_use_cases: [], links_for: [])
+    allow(SimplifionsStore.instance).to receive_messages(all: [], for_endpoint: [])
   end
 
   config.before do
