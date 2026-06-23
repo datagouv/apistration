@@ -2,7 +2,6 @@
 fiche:
   - uid: 'gip_mds/effectifs_annuels_unite_legale'
     datagouv_uid: '672cf6b06452c7d61849433e'
-    socle_de_base: false
     path: '/v3/gip_mds/unites_legales/{siren}/effectifs_annuels/{year}'
     controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise'
     ping_url: 'https://entreprise.api.gouv.fr/ping/gip_mds/effectifs'
@@ -163,7 +162,6 @@ fiche:
             [Pour en savoir plus, consulter cette page de l'Agefiph](https://www.agefiph.fr/centre-aide/effectif-dassujettissement){:target="_blank"}.
   - uid: 'gip_mds/effectifs_mensuels_etablissement'
     datagouv_uid: '672cf6b0a37a79f6ff3e3255'
-    socle_de_base: false
     path: '/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}'
     controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement'
     ping_url: 'https://entreprise.api.gouv.fr/ping/gip_mds/effectifs'

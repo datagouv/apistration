@@ -2,7 +2,6 @@
 fiche:
   - uid: "dgfip/liasses_fiscales"
     datagouv_uid: '672cf6b2f89f31dae828f6da'
-    socle_de_base: false
     old_endpoint_uids:
       - "dgfip/v3/liasses_fiscales"
     path: "/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}"
@@ -155,7 +154,6 @@ fiche:
       **Ce qui ne change pas :**
       Le reste de la réponse est inchangé. La version précédente (v3) reste maintenue par API&nbsp;Entreprise&nbsp;; les clés retirées en v4 y restent présentes mais renverront des valeurs nulles courant 2027, lorsque la DGFIP cessera de les alimenter.
   - uid: "dgfip/v3/liasses_fiscales"
-    socle_de_base: false
     position: 9001
     new_endpoint_uids:
       - "dgfip/liasses_fiscales"

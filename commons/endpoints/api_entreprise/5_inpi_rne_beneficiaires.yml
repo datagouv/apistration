@@ -2,7 +2,6 @@
 fiche:
   - uid: 'inpi/rne/beneficiaires_effectifs'
     datagouv_uid: '672cf6a701d8db401e4864be'
-    socle_de_base: false
     path: '/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs'
     controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs'
     ping_url: 'https://entreprise.api.gouv.fr/ping/inpi/rne'

@@ -232,7 +232,6 @@ fiche:
         a: *insee_unites_legales_faq_a6
 
   - uid: 'insee/unites_legales_v3'
-    socle_de_base: false
     path: '/v3/insee/sirene/unites_legales/{siren}'
     controller: 'api_entreprise/v3_and_more/insee/unites_legales'
     position: 125
@@ -261,7 +260,6 @@ fiche:
     faq: *insee_unites_legales_faq
 
   - uid: 'insee/unites_legales_diffusibles_v3'
-    socle_de_base: false
     path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}'
     controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables'
     position: 120

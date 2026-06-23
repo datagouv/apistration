@@ -2,7 +2,6 @@
 fiche:
   - uid: 'cibtp/attestations_cotisations_conges_payes_chomage_intemperies'
     datagouv_uid: '672cf6b4c3488a0c533f709b'
-    socle_de_base: false
     path: '/v3/cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies'
     controller: 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies'
     ping_url: 'https://entreprise.api.gouv.fr/ping/cibtp/attestation_cotisations_conges_payes_chomage_intemperies'

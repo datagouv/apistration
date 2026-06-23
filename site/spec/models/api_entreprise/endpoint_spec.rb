@@ -73,12 +73,15 @@ RSpec.describe APIEntreprise::Endpoint do
     end
 
     it 'is false for endpoints outside Socle de base' do
-      expect(described_class.find('urssaf/attestation_vigilance')).not_to be_socle_de_base
+      endpoint = described_class.find('urssaf/attestation_vigilance')
+
+      expect(endpoint.socle_de_base).to be_nil
+      expect(endpoint).not_to be_socle_de_base
     end
 
-    it 'is explicitly set on every API Entreprise endpoint' do
-      expect(described_class.all.map(&:socle_de_base)).to all(satisfy { |value|
-        value == false || (value.is_a?(Hash) && value['comment'].present?)
+    it 'stores a comment for every Socle de base endpoint' do
+      expect(described_class.all.select(&:socle_de_base?).map(&:socle_de_base)).to all(satisfy { |value|
+        value.is_a?(Hash) && value['comment'].present?
       })
     end
 

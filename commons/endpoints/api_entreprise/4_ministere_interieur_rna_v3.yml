@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'ministere_interieur/rna'
-    socle_de_base: false
     path: '/v3/ministere_interieur/rna/associations/{siret_or_rna}'
     controller: 'api_entreprise/v3_and_more/mi/associations'
     ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
@@ -35,7 +34,6 @@ fiche:
     parameters:
       - Numéro de SIRET ou numéro RNA de l’association
   - uid: 'ministere_interieur/documents_associations'
-    socle_de_base: false
     new_endpoint_uids: *mi_rna_new_endpoint_uids
     path: '/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents'
     controller: 'api_entreprise/v3_and_more/mi/documents_associations'

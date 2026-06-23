@@ -2,7 +2,6 @@
 fiche:
   - uid: 'qualibat/v3/certifications_batiment'
     datagouv_uid: '672cf6b522535e70b5584c0e'
-    socle_de_base: false
     path: '/v3/qualibat/etablissements/{siret}/certification_batiment'
     controller: 'api_entreprise/v3_and_more/qualibat/certifications_batiment'
     new_endpoint_uids:
