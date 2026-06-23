@@ -31,7 +31,7 @@ module TagColorHelper
     "Chambres de commerce et d'industrie, des métiers et de l'artisanat, d'agriculture" => 'green-archipel',
     'Éditeurs de logiciels' => 'green-archipel',
     'Sécurité sociale, prévoyance et mutuelles' => 'green-menthe',
-    "Autres organismes de droit privé investis d'une mission d'intérêt public" => 'brown-cafe-creme'
+    'Autres organismes de droit privé investis d’une mission d’intérêt public' => 'brown-cafe-creme'
   }.freeze
 
   def administration_badge_color(label)
