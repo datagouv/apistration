@@ -11,6 +11,18 @@ RSpec.shared_examples 'a cas usages feature' do |api_module, path_prefix = nil|
         visit send(index_path_method)
       }.not_to raise_error
     end
+
+    it 'uses fiches path' do
+      visit send(index_path_method)
+
+      expect(page).to have_current_path('/fiches', ignore_query: true)
+    end
+
+    it 'redirects legacy cas usages path' do
+      visit '/cas_usages'
+
+      expect(page).to have_current_path('/fiches', ignore_query: true)
+    end
   end
 
   describe 'show' do
@@ -18,6 +30,7 @@ RSpec.shared_examples 'a cas usages feature' do |api_module, path_prefix = nil|
       fiches_pratiques_class.all.each do |fiche_pratique|
         visit send(show_path_method, uid: fiche_pratique.uid)
         expect(page).to have_current_path(send(show_path_method, fiche_pratique.uid), ignore_query: true)
+        expect(send(show_path_method, fiche_pratique.uid)).to start_with('/fiches/')
       end
     end
 
