@@ -1,7 +1,7 @@
 ---
 fr:
   api_entreprise:
-    cas_usages_entries:
+    fiches_pratiques_entries:
 
       socle_de_base:
         name: 'Socle de base DLNUF'
@@ -242,4 +242,3 @@ fr:
         request_access:
           link_datapass: "<%= datapass_base_url %>/formulaires/api-entreprise-editeur/demande/nouveau"
           content: "Pour vérifier votre éligibilité, le pôle juridique a besoin de comprendre quelles sont vos activités et le contexte dans lequel l'accès délivré sera utilisé. **Pour accélérer le traitement de votre demande, veillez à bien répondre à l'ensemble des questions posées**."
-

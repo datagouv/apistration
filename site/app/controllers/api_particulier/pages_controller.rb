@@ -14,7 +14,7 @@ class APIParticulier::PagesController < APIParticulierController
   def home
     @providers = APIParticulier::Provider.all
     @endpoints_sample = APIParticulier::Endpoint.all.sample(3)
-    @simplifions_sample = SimplifionsStore.all_use_cases(api: 'api_particulier').sample(3)
+    @cas_usages_sample = APIParticulier::CasUsage.all.sample(3)
   end
 
   def cgu

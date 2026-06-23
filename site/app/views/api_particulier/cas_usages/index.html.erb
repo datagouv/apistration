@@ -7,29 +7,29 @@
   </div>
 
   <div class="content fr-container fr-mt-5w fr-mb-5w">
-    <% if @cas_usages.any? %>
+    <% if @fiches_pratiques.any? %>
       <h2 class="fr-h3"><%= t('.internal.title') %></h2>
       <div class="fr-grid-row fr-grid-row--gutters fr-mt-2w">
-        <% @cas_usages.each do |cas_usage| %>
+        <% @fiches_pratiques.each do |fiche_pratique| %>
           <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
             <%= render 'shared/cas_usages/internal_use_case_card',
-              title: t(".cards.#{cas_usage.uid}.title"),
-              url: cas_usage_path(cas_usage.uid),
-              description: t(".cards.#{cas_usage.uid}.description"),
-              user_types: cas_usage.user_types,
-              content_category: cas_usage.content_category,
+              title: t(".cards.#{fiche_pratique.uid}.title"),
+              url: cas_usage_path(fiche_pratique.uid),
+              description: t(".cards.#{fiche_pratique.uid}.description"),
+              user_types: fiche_pratique.user_types,
+              content_category: fiche_pratique.content_category,
               api: 'api_particulier',
-              uid: cas_usage.uid %>
+              uid: fiche_pratique.uid %>
           </div>
         <% end %>
       </div>
     <% end %>
 
-    <% if @simplifions_use_cases.any? %>
+    <% if @cas_usages.any? %>
       <h2 class="fr-h3 fr-mt-6w"><%= t('.simplifions.title') %></h2>
       <p class="fr-text--lg"><%= t('.simplifions.description').html_safe %></p>
       <div class="fr-grid-row fr-grid-row--gutters fr-mt-2w">
-        <% @simplifions_use_cases.each do |use_case| %>
+        <% @cas_usages.each do |use_case| %>
           <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
             <%= render 'shared/cas_usages/simplifions_card', use_case: %>
           </div>

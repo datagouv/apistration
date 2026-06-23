@@ -1,4 +1,4 @@
-<% if @simplifions_sample.any? %>
+<% if @cas_usages_sample.any? %>
   <section id="section-other-use-cases" class="other-use-cases">
     <div class="fr-container">
       <div class="fr-grid-row">
@@ -13,7 +13,7 @@
     <div class="fr-container">
       <div id="cas-usages" class="fr-container--fluid">
         <div class="content fr-grid-row fr-grid-row--gutters fr-grid-row--top">
-          <% @simplifions_sample.each do |use_case| %>
+          <% @cas_usages_sample.each do |use_case| %>
             <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
               <%= render 'shared/cas_usages/simplifions_card', use_case: %>
             </div>

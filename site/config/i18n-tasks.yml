@@ -114,7 +114,7 @@ ignore_unused:
   - '*.sessions.create_from_magic_link.*'
   - '*.sessions.failure.*'
   - '*.sessions.after_logout.*'
-  - 'api_{entreprise,particulier}.cas_usages_entries.*'
+  - 'api_{entreprise,particulier}.fiches_pratiques_entries.*'
   - 'api_{entreprise,particulier}.public_token_magic_links.show.*'
   - 'api_{entreprise,particulier}.tokens.token.scope.*'
   - 'api_{entreprise,particulier}.documentation_pages.*.{title,sections}'

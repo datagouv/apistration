@@ -24,8 +24,8 @@ SitemapGenerator::Sitemap.create do
 
   add cas_usages_path
 
-  APIEntreprise::CasUsage.all.each do |cas_usage|
-    add cas_usage_path(uid: cas_usage.uid)
+  APIEntreprise::FichePratique.all.each do |fiche_pratique|
+    add cas_usage_path(uid: fiche_pratique.uid)
   end
 
   add endpoints_path
