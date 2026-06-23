@@ -32,7 +32,7 @@ RSpec.describe DatapassWebhook::APIParticulier::NotifyReporters, type: :interact
 
           mail = ActionMailer::Base.deliveries.last
 
-          expect(mail.subject).to match(/Une nouvelle demande a été déposée pour API Particulier/)
+          expect(mail.subject).to include('Une nouvelle demande a été déposée pour API Particulier')
           expect(mail.body).to include(authorization_request.demandeur.email)
         end
 
