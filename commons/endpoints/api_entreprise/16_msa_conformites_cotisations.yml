@@ -2,6 +2,7 @@
 fiche:
   - uid: 'msa/conformites_cotisations'
     datagouv_uid: '672cf6b36a8456f417812b10'
+    socle_de_base: false
     ping_url: 'https://entreprise.api.gouv.fr/ping/msa/conformite_cotisations'
     path: '/v3/msa/etablissements/{siret}/conformite_cotisations'
     controller: 'api_entreprise/v3_and_more/msa/conformites_cotisations'

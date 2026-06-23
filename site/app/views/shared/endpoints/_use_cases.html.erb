@@ -1,15 +1,21 @@
 <% extra_classes ||= '' %>
 <% id ||= 'use-cases' %>
+<% fiches_pratiques = @endpoint.fiches_pratiques %>
 <% cas_usages = @endpoint.cas_usages %>
 <% use_cases_visible_limit = 7 %>
 
-<% if cas_usages.any? %>
+<% if fiches_pratiques.any? || cas_usages.any? %>
   <div class="details <%= extra_classes %>">
     <h2 class="fr-h3" id="<%= id %>">
       <%= t('.main.title') %>
     </h2>
     <p class="fr-text--sm fr-mb-2w"><%= t('.main.description').html_safe %></p>
     <ul class="fr-tags-group fr-mt-2w">
+      <% fiches_pratiques.each do |fiche_pratique| %>
+        <li class="fr-mb-1w">
+          <%= link_to fiche_pratique.name, cas_usage_path(uid: fiche_pratique.uid), class: 'fr-tag' %>
+        </li>
+      <% end %>
       <% cas_usages.first(use_cases_visible_limit).each do |link| %>
         <li class="fr-mb-1w">
           <%= link_to link.url, target: '_blank', rel: 'noopener noreferrer', class: 'fr-tag' do %>

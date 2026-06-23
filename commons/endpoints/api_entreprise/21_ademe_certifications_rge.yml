@@ -2,6 +2,7 @@
 fiche:
   - uid: 'ademe/certifications_rge'
     datagouv_uid: '672cf6b9f8b5d52b762633a1'
+    socle_de_base: true
     path: '/v3/ademe/etablissements/{siret}/certification_rge'
     controller: 'api_entreprise/v3_and_more/ademe/certificats_rge'
     ping_url: 'https://entreprise.api.gouv.fr/ping/ademe/certification_rge'

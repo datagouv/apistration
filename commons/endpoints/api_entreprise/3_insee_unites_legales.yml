@@ -2,6 +2,7 @@
 fiche:
   - uid: 'insee/unites_legales'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base: true
     old_endpoint_uids:
       - 'insee/unites_legales_v3'
     path: '/v4/insee/sirene/unites_legales/{siren}'
@@ -165,6 +166,7 @@ fiche:
 
   - uid: 'insee/unites_legales_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base: true
     old_endpoint_uids:
       - 'insee/unites_legales_diffusibles_v3'
     path: '/v4/insee/sirene/unites_legales/diffusibles/{siren}'
@@ -226,6 +228,7 @@ fiche:
         a: *insee_unites_legales_faq_a6
 
   - uid: 'insee/unites_legales_v3'
+    socle_de_base: false
     path: '/v3/insee/sirene/unites_legales/{siren}'
     controller: 'api_entreprise/v3_and_more/insee/unites_legales'
     position: 125
@@ -254,6 +257,7 @@ fiche:
     faq: *insee_unites_legales_faq
 
   - uid: 'insee/unites_legales_diffusibles_v3'
+    socle_de_base: false
     path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}'
     controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables'
     position: 120

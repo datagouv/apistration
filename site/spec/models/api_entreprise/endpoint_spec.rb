@@ -66,4 +66,18 @@ RSpec.describe APIEntreprise::Endpoint do
       end
     end
   end
+
+  describe '#socle_de_base?' do
+    it 'is true for endpoints included in Socle de base' do
+      expect(described_class.find('insee/unites_legales')).to be_socle_de_base
+    end
+
+    it 'is false for endpoints outside Socle de base' do
+      expect(described_class.find('urssaf/attestation_vigilance')).not_to be_socle_de_base
+    end
+
+    it 'is explicitly set on every API Entreprise endpoint' do
+      expect(described_class.all.map(&:socle_de_base)).to all(satisfy { |value| [true, false].include?(value) })
+    end
+  end
 end

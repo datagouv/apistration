@@ -2,6 +2,7 @@
 fiche:
   - uid: 'opqibi/qualifications_ingenierie'
     datagouv_uid: '672cf6b9c3488a0c533f709d'
+    socle_de_base: true
     path: '/v3/opqibi/unites_legales/{siren}/certification_ingenierie'
     controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie'
     ping_url: 'https://entreprise.api.gouv.fr/ping/opqibi/certification_ingenierie'

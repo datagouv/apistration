@@ -1,0 +1,22 @@
+<div class="fr-table">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"><%= t('.headers.api') %></th>
+        <th scope="col"><%= t('.headers.opening') %></th>
+        <th scope="col"><%= t('.headers.call_id') %></th>
+        <th scope="col"><%= t('.headers.providers') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% endpoints.each do |endpoint| %>
+        <tr>
+          <td><%= link_to endpoint.title, endpoint_path(uid: endpoint.uid) %></td>
+          <td><%= t("endpoint.opening.#{endpoint.opening}.name", default: endpoint.opening) %></td>
+          <td><%= endpoint.call_id %></td>
+          <td><%= endpoint.providers.map(&:name).join(', ') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -2,6 +2,7 @@
 fiche:
   - uid: 'infogreffe/mandataires_sociaux'
     datagouv_uid: '672cf6af20c9ae9747b40164'
+    socle_de_base: false
     path: '/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux'
     controller: 'api_entreprise/v3_and_more/infogreffe/mandataires_sociaux'
     ping_url: 'https://entreprise.api.gouv.fr/ping/infogreffe/rcs'

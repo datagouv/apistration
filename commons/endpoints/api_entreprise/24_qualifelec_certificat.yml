@@ -2,6 +2,7 @@
 fiche:
   - uid: 'qualifelec/certificats'
     datagouv_uid: '672cf6baa316ad54c9a7f19b'
+    socle_de_base: true
     path: '/v3/qualifelec/etablissements/{siret}/certificats'
     controller: 'api_entreprise/v3_and_more/qualifelec/certificats'
     ping_url: 'https://entreprise.api.gouv.fr/ping/qualifelec/certificats'

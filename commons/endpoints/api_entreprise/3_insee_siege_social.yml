@@ -2,6 +2,7 @@
 fiche:
   - uid: 'insee/siege_social'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base: true
     old_endpoint_uids:
       - 'insee/siege_social_v3'
     path: '/v4/insee/sirene/unites_legales/{siren}/siege_social'
@@ -148,6 +149,7 @@ fiche:
 
   - uid: 'insee/siege_social_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base: true
     old_endpoint_uids:
       - 'insee/siege_social_diffusibles_v3'
     path: '/v4/insee/sirene/unites_legales/diffusibles/{siren}/siege_social'
@@ -200,6 +202,7 @@ fiche:
           Pour obtenir les données protégées des unités légales en "diffusion partielle" (environ 1 million d'établissements, essentiellement des entreprises individuelles), utilisez [cette API](<%= endpoint_path(uid: 'insee/siege_social') %>).
 
   - uid: 'insee/siege_social_v3'
+    socle_de_base: false
     path: '/v3/insee/sirene/unites_legales/{siren}/siege_social'
     controller: 'api_entreprise/v3_and_more/insee/sieges_unites_legales'
     ping_url: *insee_siege_social_ping_url
@@ -222,6 +225,7 @@ fiche:
     faq: *insee_siege_social_faq
 
   - uid: 'insee/siege_social_diffusibles_v3'
+    socle_de_base: false
     path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege_social'
     controller: 'api_entreprise/v3_and_more/insee/sieges_diffusables_unites_legales'
     ping_url: *insee_siege_social_ping_url

@@ -2,6 +2,7 @@
 fiche:
   - uid: 'banque_de_france/bilans'
     datagouv_uid: '672cf6b1c3488a0c533f709a'
+    socle_de_base: false
     path: '/v3/banque_de_france/unites_legales/{siren}/bilans'
     controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise'
     ping_url: 'https://entreprise.api.gouv.fr/ping/banque_de_france/bilans'

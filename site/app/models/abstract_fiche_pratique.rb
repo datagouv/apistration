@@ -37,6 +37,12 @@ class AbstractFichePratique
     ERB.new(request_access[:link_datapass]).result(binding)
   end
 
+  def endpoints
+    return [] unless api == 'api_entreprise' && uid == 'socle_de_base'
+
+    APIEntreprise::Endpoint.all.select(&:socle_de_base?)
+  end
+
   def self.not_found(uid)
     ActiveRecord::RecordNotFound.new("FichePratique '#{uid}' does not exist")
   end

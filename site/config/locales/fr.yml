@@ -67,6 +67,12 @@ fr:
         error:
           title: "Lien de désinscription invalide ou déjà utilisé."
     cas_usages:
+      endpoints_table:
+        headers:
+          api: "API"
+          opening: "Ouverture"
+          call_id: "Identifiant d'appel"
+          providers: "Fournisseur"
       show:
         label: "Cas d'usage"
         link_access: "Demander un accès"
@@ -491,7 +497,7 @@ fr:
       use_cases:
         main:
           title: "Cas d'usages"
-          description: "Cas d'usages référencés sur <i>simplifions.data.gouv.fr</i> pour lesquels l'API est utile :"
+          description: "Fiches pratiques et cas d'usages pour lesquels l'API est utile :"
           see_more: "Voir plus de cas d'usages"
           see_less: "Voir moins"
       status:

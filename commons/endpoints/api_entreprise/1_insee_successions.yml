@@ -2,6 +2,7 @@
 fiche:
   - uid: "insee/successions"
     datagouv_uid: '686d1bc04ebf5642dc5651c2'
+    socle_de_base: true
     position: 143
     novelty: true
     path: "/v3/insee/sirene/etablissements/{siret}/successions"

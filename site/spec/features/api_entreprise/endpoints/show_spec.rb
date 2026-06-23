@@ -32,6 +32,10 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
     expect(page).to have_link('Marchés publics', href: 'https://simplifions.data.gouv.fr/cas-d-usages/marches-publics')
   end
 
+  it 'displays a link to Socle de base for included endpoints' do
+    expect(page).to have_link('Socle de base DLNUF', href: cas_usage_path(uid: 'socle_de_base'))
+  end
+
   describe 'provider errors' do
     context 'with an endpoint which has no custom provider error' do
       let(:uid) { 'fabrique_numerique_ministeres_sociaux/conventions_collectives' }

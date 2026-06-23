@@ -2,6 +2,7 @@
 fiche:
   - uid: 'insee/adresse_etablissements'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base: true
     position: 141
     ping_url: 'https://entreprise.api.gouv.fr/ping/insee/sirene'
     path: '/v3/insee/sirene/etablissements/{siret}/adresse'
@@ -103,6 +104,7 @@ fiche:
           > **Depuis 2023, les personnes morales sont concernées par la \"diffusion partielle\"**. Si elles ont exercé ce droit, vous n'avez pas le droit de pré-remplir leur données de localisation : géolocalisation, numéro et voie de l'adresse postale. La commune reste diffusible.
   - uid: 'insee/adresse_etablissements_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base: true
     position: 140
     ping_url: 'https://entreprise.api.gouv.fr/ping/insee/sirene'
     path: '/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse'

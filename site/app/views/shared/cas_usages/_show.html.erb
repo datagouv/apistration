@@ -34,6 +34,9 @@
       <section class="list_api fr-background-default-white">
         <h2 id="list-api"><%= t('.link_list_api') %><span class="fr-ml-2v fr-text--light">"<%= @fiche_pratique.name %>"</span></h2>
         <div class="list_api--content"><%= markdown_to_html(@fiche_pratique.list_api[:content]) %></div>
+        <% if @fiche_pratique.endpoints.any? %>
+          <%= render 'shared/cas_usages/endpoints_table', endpoints: @fiche_pratique.endpoints %>
+        <% end %>
       </section>
     <% end %>
 
