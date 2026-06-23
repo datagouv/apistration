@@ -1,7 +1,7 @@
 ---
 description: 'Non boursier avec INE - Fifi Duck - Dijon Carnot'
 params:
-  ine: '0987654321B'
+  ine: '0987654321L'
 status: 200
 payload: |-
   {
@@ -13,7 +13,7 @@ payload: |-
       },
       "periode_versement_bourse": {
         "date_rentree": "2026-09-01",
-        "duree": null
+        "duree": 0
       },
       "etablissement_etudes": {
         "nom_commune": "Dijon",
