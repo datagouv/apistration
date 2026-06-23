@@ -8,7 +8,7 @@ class SimplifionsStore
   def all(api:)
     grist.cas_usages_for_solution(api)
       .map { |record| build_cas_usage(record, api) }
-      .sort_by(&:name)
+      .sort_by { |cas_usage| cas_usage.name.to_s }
   end
 
   def for_endpoint(endpoint_uid, api:)
@@ -17,7 +17,7 @@ class SimplifionsStore
 
     grist.cas_usages_for_datagouv_uid(datagouv_uid, api)
       .map { |record| build_cas_usage(record, api) }
-      .sort_by(&:name)
+      .sort_by { |cas_usage| cas_usage.name.to_s }
   end
 
   def reset!

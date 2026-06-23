@@ -145,6 +145,23 @@ RSpec.describe SimplifionsStore, type: :store do
     end
   end
 
+  describe 'when a visible cas usage has no name' do
+    let(:cas_usages_response) do
+      {
+        'records' => [
+          { 'id' => 10, 'fields' => { 'Visible_sur_simplifions' => true, 'Nom' => 'Avec nom' } },
+          { 'id' => 12, 'fields' => { 'Visible_sur_simplifions' => true, 'Nom' => nil } }
+        ]
+      }.to_json
+    end
+
+    before { described_class.instance.reset! }
+
+    it 'sorts without raising on the nil name' do
+      expect { described_class.instance.all(api: 'api_particulier') }.not_to raise_error
+    end
+  end
+
   describe 'when Grist is unavailable' do
     before do
       stub_request(:get, "#{grist_base}/APIs_et_datasets/records").to_raise(Faraday::Error)
