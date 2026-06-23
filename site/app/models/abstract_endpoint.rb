@@ -211,13 +211,11 @@ class AbstractEndpoint
   end
 
   def socle_de_base?
-    socle_de_base == true || socle_de_base.is_a?(Hash)
+    socle_de_base.present?
   end
 
   def socle_de_base_comment
-    return unless socle_de_base.is_a?(Hash)
-
-    socle_de_base['comment']
+    Hash.try_convert(socle_de_base)&.fetch('comment', nil)
   end
 
   def test_cases_external_url
