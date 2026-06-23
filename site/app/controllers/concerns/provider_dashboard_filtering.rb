@@ -10,7 +10,7 @@ module ProviderDashboardFiltering
   private
 
   def filter_params
-    params.expect(filter: [:date_from, :date_to, :interval, { routes: [] }])
+    params.expect(filter: [:date_from, :date_to, :interval, { routes: [], statuses: [] }])
   rescue ActionController::ParameterMissing
     {}
   end

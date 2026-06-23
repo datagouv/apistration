@@ -1,6 +1,9 @@
 <%
   habilitations = @query.habilitations(page: params[:page])
   fmt = ->(b) { dashboard_bucket_label(b, @filter.interval) }
+  section_path = controller_path == 'admin/provider_dashboards' \
+    ? habilitations_section_admin_provider_dashboard_path(id: @filter.provider.uid) \
+    : provider_dashboard_habilitations_path(provider_uid: @filter.provider.uid)
 %>
 <%= turbo_frame_tag 'dashboard_habilitations' do %>
   <section class="fr-mt-4w">
@@ -18,6 +21,26 @@
       ] %>
 
     <p><%= t('.description') %></p>
+
+    <%= form_with url: section_path, method: :get, data: { turbo_frame: 'dashboard_habilitations' }, class: 'fr-mb-2w' do %>
+      <%= hidden_field_tag 'filter[date_from]', @filter.date_from&.iso8601 %>
+      <%= hidden_field_tag 'filter[date_to]', @filter.date_to&.iso8601 %>
+      <%= hidden_field_tag 'filter[interval]', @filter.interval %>
+      <% @filter.routes.each do |route| %>
+        <%= hidden_field_tag 'filter[routes][]', route %>
+      <% end %>
+      <div class="fr-select-group" style="max-width: 20rem;">
+        <%= label_tag 'filter_status_select', t('.status_filter'), class: 'fr-label' %>
+        <%= select_tag 'filter[statuses][]',
+          options_for_select(
+            [[t('.status_all'), '']] +
+              Provider::DashboardFilter::STATUSES.map { |s| [t("provider.dashboard.habilitations_table.statuses.#{s}"), s] },
+            @filter.statuses.first
+          ),
+          class: 'fr-select', id: 'filter_status_select', onchange: 'this.form.requestSubmit()' %>
+      </div>
+    <% end %>
+
     <%= render 'provider/dashboard/habilitations_table', habilitations: habilitations %>
     <%= paginate habilitations %>
     <p class="fr-mt-1w">

@@ -208,7 +208,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     @total_habilitations ||= AuthorizationRequest
       .where(api: filter_apis)
       .where(habilitation_scope_clause)
-      .where.not(status: %w[draft archived])
+      .where(status: filter.selected_statuses)
       .where(first_submitted_at: filter.date_range)
       .count
   end
@@ -233,7 +233,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
       SQL
       .where(api: filter_apis)
       .where(habilitation_scope_clause)
-      .where.not(status: %w[draft archived])
+      .where(status: filter.selected_statuses)
       .where(first_submitted_at: filter.date_range)
       .order(created_at: :desc)
       .pluck(
