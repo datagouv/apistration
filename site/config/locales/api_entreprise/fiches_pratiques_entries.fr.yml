@@ -19,8 +19,8 @@ fr:
             {:.fr-text--lg}
             Administrations et collectivités, en intégrant la brique API Entreprise dans votre site ou portail usager :
 
-            - 🗄 **Vous accédez facilement aux données de base** utiles pour mettre en oeuvre le «&nbsp;Dites-le-nous une fois&nbsp;» pour la plupart des démarches : 
-              - Données publiques : données des répertoires Sirene, RNE et RNA ; actes et bilans de l'Inpi ; numéros TVA et EORI ; certifications Bio, RGE, OPQIBI, Qualifelec, Qualibat et carte professionnelle de travaux public de la FNTP. 
+            - 🗄 **Vous accédez facilement aux données de base** utiles pour mettre en oeuvre le «&nbsp;Dites-le-nous une fois&nbsp;» pour la plupart des démarches :
+              - Données publiques : données des répertoires Sirene, RNE et RNA ; actes et bilans de l'Inpi ; numéros TVA et EORI ; certifications Bio, RGE, OPQIBI, Qualifelec, Qualibat et carte professionnelle de travaux public de la FNTP.
               - Données protégées 🔐 : données des unités en diffusion partielle des répertoire RNE et RNA ; montant des subventions et documents administratifs complémentaires (DAC) des associations.
 
             - ⏰ **Vous accélérez le traitement des démarches** car vos agents instructeurs n'ont pas de vérifications supplémentaires à réaliser, **les informations obtenues de l'API Entreprise étant certifiées 🔎** ;
@@ -125,14 +125,14 @@ fr:
         legal_context:
           content: |+
             {:.fr-text--lg}
-            ### L'accès au socle de base, possible pour toute administration ou assimilé 
+            ### L'accès au socle de base, possible pour toute administration ou assimilé
 
             L'accès aux données de base des entreprises et associations de l'API Entreprise, utilisables par toute administration ou assimilé, pour satisfaire le principe du « Dites-le nous une fois », est encadré par [article L114-8 du Code des relations entre le public et l'administration](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315){:target="_blank"}.
 
             Pour accéder au socle de base, veuillez compléter [ce formulaire](#request-access).
 
             {:.fr-text--lg}
-            ### Engagements en termes d'exploitation des données 
+            ### Engagements en termes d'exploitation des données
 
             Les données accessibles via le socle de base de l'API Entreprise ont des conditions d'exploitation différentes, certaines sont publiques, d'autres protégées.
 
