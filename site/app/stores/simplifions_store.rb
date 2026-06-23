@@ -1,141 +1,51 @@
+require 'singleton'
+
 class SimplifionsStore
-  GRIST_BASE_URL = 'https://grist.numerique.gouv.fr/api/docs/ofSVjCSAnMb6/tables'.freeze
-  CACHE_KEY = 'simplifions_store/endpoint_links'.freeze
+  include Singleton
+
   SIMPLIFIONS_BASE_URL = 'https://simplifions.data.gouv.fr/cas-d-usages'.freeze
-  SOLUTION_IDS = { 'api_particulier' => 1, 'api_entreprise' => 2 }.freeze
 
-  def self.links_for(endpoint_uid, api:)
-    (data["#{api}:#{endpoint_uid}"] || []).sort_by { |l| l[:name] }
+  def all(api:)
+    grist.cas_usages_for_solution(api)
+      .map { |record| build_cas_usage(record, api) }
+      .sort_by(&:name)
   end
 
-  def self.all_use_cases(api:)
-    prefix = "#{api}:"
-    data
-      .select { |key, _| key.start_with?(prefix) }
-      .values
-      .flatten
-      .uniq { |l| l[:url] }
-      .sort_by { |l| l[:name] }
+  def for_endpoint(endpoint_uid, api:)
+    datagouv_uid = endpoints_by_uid(api)[endpoint_uid]&.datagouv_uid
+    return [] if datagouv_uid.blank?
+
+    grist.cas_usages_for_datagouv_uid(datagouv_uid, api)
+      .map { |record| build_cas_usage(record, api) }
+      .sort_by(&:name)
   end
 
-  def self.reset_cache!
-    Rails.cache.delete(CACHE_KEY)
-    @process_cache = nil
-    @faraday_connection = nil
+  def reset!
+    Simplifions::GristClient.instance.reset!
+    Simplifions::Sitemap.instance.reset!
+    @grist = nil
+    @sitemap = nil
+    @endpoints_by_uid = nil
   end
 
-  private_class_method def self.data
-    if Rails.cache.is_a?(ActiveSupport::Cache::NullStore)
-      @process_cache ||= build_mapping
-    else
-      Rails.cache.fetch(CACHE_KEY, expires_in: cache_ttl) { build_mapping }
-    end
-  rescue StandardError => e
-    Rails.logger.error("SimplifionsStore: Grist fetch failed \xe2\x80\x94 #{e.message}")
-    {}
+  private
+
+  def grist
+    @grist ||= Simplifions::GristClient.instance
   end
 
-  private_class_method def self.cache_ttl
-    ENV.fetch('SIMPLIFIONS_CACHE_TTL_MINUTES', '15').to_i.minutes
+  def sitemap
+    @sitemap ||= Simplifions::Sitemap.instance
   end
 
-  private_class_method def self.build_mapping
-    tables = fetch_grist_tables
-    result = {}
-    fetch_table('API_et_datasets_fournis').each do |record|
-      accumulate_record(record, tables, result)
-    end
-    result
+  def endpoints_by_uid(api)
+    @endpoints_by_uid ||= {}
+    @endpoints_by_uid[api] ||= "#{api.classify}::Endpoint".constantize.all.index_by(&:uid)
   end
 
-  private_class_method def self.fetch_grist_tables
-    {
-      uid_mapping: load_uid_mapping,
-      apis_by_id: fetch_table('APIs_et_datasets').index_by { |r| r['id'] },
-      cas_usages_by_id: fetch_table('Cas_d_usages').index_by { |r| r['id'] },
-      fournisseurs_by_id: fetch_table('Fournisseurs_de_services').index_by { |r| r['id'] },
-      usagers_by_id: fetch_table('Usagers').index_by { |r| r['id'] }
-    }
-  end
-
-  private_class_method def self.accumulate_record(record, tables, result)
-    fields = record['fields']
-    api = SOLUTION_IDS.key(fields['Solution_fournisseur'])
-    return unless api
-
-    links = build_links_for_record(fields, tables)
-    merge_links(result, api, resolve_rails_uids(fields, api, tables), links)
-  end
-
-  private_class_method def self.resolve_rails_uids(fields, api, tables)
-    uid_datagouv = tables[:apis_by_id].dig(fields['API_ou_dataset_fourni'], 'fields', 'UID_datagouv')
-    tables[:uid_mapping].dig(api, uid_datagouv).presence || []
-  end
-
-  private_class_method def self.merge_links(result, api, rails_uids, links)
-    rails_uids.each do |rails_uid|
-      key = "#{api}:#{rails_uid}"
-      result[key] = (result[key] || []).concat(links).uniq { |l| l[:url] }
-    end
-  end
-
-  private_class_method def self.build_links_for_record(fields, tables)
-    parse_grist_list(fields['Utile_pour_les_cas_d_usages']).filter_map do |cas_usage_id|
-      cas_usage_fields = tables[:cas_usages_by_id].dig(cas_usage_id, 'fields')
-      next unless cas_usage_fields&.fetch('Visible_sur_simplifions', false)
-
-      build_link_for(cas_usage_fields, tables[:fournisseurs_by_id], tables[:usagers_by_id])
-    end
-  end
-
-  private_class_method def self.build_link_for(cas_usage_fields, fournisseurs_by_id, usagers_by_id)
-    nom = cas_usage_fields['Nom']
-    administrations = parse_grist_list(cas_usage_fields['A_destination_de']).filter_map do |id|
-      fournisseurs_by_id.dig(id, 'fields', 'Label')
-    end
-    public_cible = parse_grist_list(cas_usage_fields['Pour_simplifier_les_demarches_de']).filter_map do |id|
-      usagers_by_id.dig(id, 'fields', 'Label')
-    end
-
-    {
-      name: nom,
-      url: "#{SIMPLIFIONS_BASE_URL}/#{slugify(nom)}",
-      description: cas_usage_fields['Description_courte'],
-      icon: cas_usage_fields['Icone_du_titre'],
-      administrations: administrations,
-      public_cible: public_cible
-    }
-  end
-
-  private_class_method def self.slugify(nom)
-    auto_slug = nom.gsub(/[\u2018\u2019']/, '').gsub('€', 'eur').parameterize
-    slug_overrides[auto_slug] || auto_slug
-  end
-
-  private_class_method def self.slug_overrides
-    @slug_overrides ||= YAML.load_file(Rails.root.join('config/simplifions_slug_overrides.yml'))
-  end
-
-  private_class_method def self.load_uid_mapping
-    YAML.load_file(Rails.root.join('config/grist_datagouv_uid_mapping.yml'))
-  end
-
-  private_class_method def self.fetch_table(table_name)
-    response = faraday_connection.get("#{GRIST_BASE_URL}/#{table_name}/records")
-    JSON.parse(response.body)['records']
-  end
-
-  private_class_method def self.faraday_connection
-    @faraday_connection ||= Faraday.new(headers: { 'User-Agent' => 'APIEntreprise-site/1.0' }) do |f|
-      f.request :retry, max: 1, interval: 1
-      f.response :raise_error
-      f.adapter :net_http
-    end
-  end
-
-  private_class_method def self.parse_grist_list(value)
-    return [] unless value.is_a?(Array)
-
-    value.reject { |v| v == 'L' }.map(&:to_i)
+  def build_cas_usage(record, api)
+    "#{api.classify}::CasUsage".constantize.new(
+      record.merge(url: "#{SIMPLIFIONS_BASE_URL}/#{sitemap.slug_for(record[:name])}")
+    )
   end
 end

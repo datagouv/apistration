@@ -18,7 +18,8 @@ class AbstractEndpoint
     :data,
     :historique,
     :keywords,
-    :api_cgu
+    :api_cgu,
+    :datagouv_uid
 
   attr_writer :new_endpoint_uids, :old_endpoint_uids
 
@@ -198,8 +199,8 @@ class AbstractEndpoint
     Kernel.const_get(api.classify)::Provider.filter_by_uid(provider_uids)
   end
 
-  def simplifions_use_cases
-    SimplifionsStore.links_for(uid, api:)
+  def cas_usages
+    Kernel.const_get("#{api.classify}::CasUsage").for_endpoint(uid, api:)
   end
 
   def test_cases_external_url
