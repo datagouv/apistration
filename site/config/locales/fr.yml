@@ -72,7 +72,11 @@ fr:
           api: "API"
           opening: "Ouverture"
           call_id: "Identifiant d'appel"
-          providers: "Fournisseur"
+          comment: "Commentaires"
+        provider: "Fournisseur de données :"
+        links:
+          fiche_metier: "Fiche métier"
+          swagger: "Swagger"
       show:
         label: "Fiche pratique"
         link_access: "Demander un accès"

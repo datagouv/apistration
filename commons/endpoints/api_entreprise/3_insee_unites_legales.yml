@@ -2,7 +2,9 @@
 fiche:
   - uid: 'insee/unites_legales'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Mêmes données que l'API open data, avec en plus les unités légales en diffusion partielle. Backoffice instructeur uniquement.
     old_endpoint_uids:
       - 'insee/unites_legales_v3'
     path: '/v4/insee/sirene/unites_legales/{siren}'
@@ -166,7 +168,9 @@ fiche:
 
   - uid: 'insee/unites_legales_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Ces données sont également distribuées par l'API Données d'établissement.
     old_endpoint_uids:
       - 'insee/unites_legales_diffusibles_v3'
     path: '/v4/insee/sirene/unites_legales/diffusibles/{siren}'

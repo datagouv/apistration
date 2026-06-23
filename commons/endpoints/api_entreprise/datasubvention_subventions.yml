@@ -2,7 +2,9 @@
 fiche:
   - uid: 'data_subvention/subventions'
     datagouv_uid: '688c8481c61a585172d3d42c'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Subventions accordées à une association. Backoffice instructeur uniquement.
     path: '/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions'
     controller: 'api_entreprise/v3_and_more/data_subvention/subventions'
     position: 152

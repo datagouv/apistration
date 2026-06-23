@@ -77,7 +77,13 @@ RSpec.describe APIEntreprise::Endpoint do
     end
 
     it 'is explicitly set on every API Entreprise endpoint' do
-      expect(described_class.all.map(&:socle_de_base)).to all(satisfy { |value| [true, false].include?(value) })
+      expect(described_class.all.map(&:socle_de_base)).to all(satisfy { |value|
+        value == false || (value.is_a?(Hash) && value['comment'].present?)
+      })
+    end
+
+    it 'exposes the Socle de base comment' do
+      expect(described_class.find('insee/unites_legales').socle_de_base_comment).to include('unités légales')
     end
   end
 end

@@ -2,7 +2,9 @@
 fiche:
   - uid: "insee/successions"
     datagouv_uid: '686d1bc04ebf5642dc5651c2'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Retrouver les établissements prédécesseurs et successeurs d'un établissement, la date d'effet de la succession, et précise s'il s'agit d'un changement de siège ou s'il y a continuité économique.
     position: 143
     novelty: true
     path: "/v3/insee/sirene/etablissements/{siret}/successions"

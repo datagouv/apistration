@@ -2,7 +2,9 @@
 fiche:
   - uid: 'djepva/associations'
     datagouv_uid: '672cf6af6d09c75cace6a62b'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Informations complètes d'une association&nbsp;: identité, activités, agréments, représentants légaux, effectifs, données financières. Backoffice instructeur uniquement.
     path: '/v4/djepva/api-association/associations/{siren_or_rna}'
     controller: 'api_entreprise/v3_and_more/mi/unites_legales'
     ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
@@ -100,7 +102,9 @@ fiche:
           Vous pouvez l'orienter vers le [site officiel Le compte Asso](https://lecompteasso.associations.gouv.fr/declarer-un-changement-de-situation-de-mon-association/){:target="_blank"} où elle pourra déclarer son changement de situation.
   - uid: 'djepva/associations_open_data'
     datagouv_uid: '672cf6af6d09c75cace6a62b'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Informations d'une association en open data utilisables pour pré-remplir une démarche sans authentification préalable.
     path: '/v4/djepva/api-association/associations/open_data/{siren_or_rna}'
     controller: 'api_entreprise/v3_and_more/mi/unites_legales_open_data'
     ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'

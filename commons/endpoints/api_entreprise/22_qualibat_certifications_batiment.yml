@@ -188,7 +188,9 @@ fiche:
                       example: '2022-03-03'
   - uid: 'qualibat/certifications_batiment'
     datagouv_uid: '672cf6b522535e70b5584c0e'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Accéder au certificat Qualibat en PDF.
     new_version: true
     old_endpoint_uids:
       - 'qualibat/v3/certifications_batiment'

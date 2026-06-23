@@ -2,7 +2,9 @@
 fiche:
   - uid: 'infogreffe/rcs/extrait'
     datagouv_uid: '672cf6b622535e70b5584c0f'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Préremplir les informations d'un K-bis&nbsp;: nom commercial, dénomination. Depuis le 23/11/2021, le K-bis ne peut plus être demandé à l'entreprise ([décret](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043523039){:target='_blank'}).
     path: '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
     controller: 'api_entreprise/v3_and_more/infogreffe/extraits_rcs'
     ping_url: 'https://entreprise.api.gouv.fr/ping/infogreffe/rcs'

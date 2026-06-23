@@ -2,7 +2,9 @@
 fiche:
   - uid: 'ademe/certifications_rge'
     datagouv_uid: '672cf6b9f8b5d52b762633a1'
-    socle_de_base: true
+    socle_de_base:
+      comment: |-
+        Préremplir les qualifications Reconnu Garant de l'Environnement et accéder au certificat PDF.
     path: '/v3/ademe/etablissements/{siret}/certification_rge'
     controller: 'api_entreprise/v3_and_more/ademe/certificats_rge'
     ping_url: 'https://entreprise.api.gouv.fr/ping/ademe/certification_rge'
