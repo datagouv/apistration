@@ -6,7 +6,7 @@ RSpec.describe DGFIP::TVA::MakeRequest, type: :make_request do
     let(:tva_number) { 'FR72217500016' }
     let!(:stubbed_request) do
       stub_request(:get, "#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/#{DGFIP::TVA::MakeRequest::RESOURCE_ID}/data/")
-        .with(query: { 'vat_no__exact' => '72217500016', 'page_size' => '1' })
+        .with(query: { 'vat_no__exact' => '72217500016' })
         .to_return(status: 200, body: { data: [{ vat_no: '72217500016' }], meta: { total: 1 } }.to_json)
     end
 

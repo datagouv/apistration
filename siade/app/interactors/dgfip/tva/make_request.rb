@@ -14,8 +14,7 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      vat_no__exact: tva_number_without_fr,
-      page_size: 1
+      vat_no__exact: tva_number_without_fr
     }
   end
 
