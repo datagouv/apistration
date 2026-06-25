@@ -26,7 +26,7 @@ Built and maintained by [DINUM](https://www.numerique.gouv.fr/) (Direction Inter
 
 Run AI coding agents (Claude Code, OpenCode, Codex) inside an isolated Lima VM. The agent gets full autonomy inside the VM while the host stays clean — no Node, Docker, Postgres or Ruby toolchain to install locally. The repository ships the configuration:
 
-- [`.agent-vm.runtime.sh`](.agent-vm.runtime.sh) — *per-project* script, replayed by agent-vm on every VM start (including each `agent-vm shell`). Installs `postgresql`, `redis-server`, `libgpgme-dev`, `libpq-dev`, `mjml@4` (locally in `site/`), Ruby via `mise` (with `.ruby-version` support enabled), then runs `bundle install`, generates the `siade` GPG signing key, and loads schemas + seeds for `site/` and `siade/`. **Idempotent**: every step is gated either by a marker file in `~/.cache/apistration-agent-vm/` or by a state check (apt packages already installed, services up, Postgres roles existing, gems resolved, etc.). Subsequent runs collapse to a few seconds of no-op checks. Force a full re-bootstrap with `rm -rf ~/.cache/apistration-agent-vm` inside the VM, or `agent-vm rm` from the host to start over with a fresh VM.
+- [`.agent-vm.runtime.sh`](.agent-vm.runtime.sh) — *per-project* script, replayed by agent-vm on every VM start (including each `agent-vm shell`). Installs `postgresql`, `redis-server`, `libgpgme-dev`, `libpq-dev`, `mjml@4` (locally in `site/`), Ruby via `mise` (with `.ruby-version` support enabled), then runs `bundle install`, generates the `siade` GPG signing key, and loads schemas + seeds for `site/` and `siade/`. It also installs and force-refreshes the Claude **accessibility plugin** (see [Accessibility plugin](#accessibility-plugin-rgaa--wcag) below). **Idempotent**: every step is gated either by a marker file in `~/.cache/apistration-agent-vm/` or by a state check (apt packages already installed, services up, Postgres roles existing, gems resolved, etc.). Subsequent runs collapse to a few seconds of no-op checks. Force a full re-bootstrap with `rm -rf ~/.cache/apistration-agent-vm` inside the VM, or `agent-vm rm` from the host to start over with a fresh VM.
 - [`runtime.example.sh`](runtime.example.sh) — *per-user* template to copy into `~/.agent-vm/runtime.sh` for your SSH key, git identity (with `format.signOff = true`, required by [`CONTRIBUTING.md`](CONTRIBUTING.md)), `gh auth`, MCP servers, etc. Keep your real copy out of any repository — it may contain secrets.
 
 Host-side setup (once):
@@ -53,6 +53,20 @@ agent-vm --offline claude   # Block outbound internet (code review, audit…)
 ```
 
 Lima auto-forwards ports: `http://entreprise.api.localtest.me:5000` is reachable from the host browser. The VM persists across sessions; see the [agent-vm README](https://github.com/sylvinus/agent-vm#vm-lifecycle) for `stop` / `rm` / `--rm`.
+
+### Accessibility plugin (RGAA / WCAG)
+
+The Claude `accessibility` plugin ([`Isalafont/claude-skill-rgaa-dev`](https://github.com/Isalafont/claude-skill-rgaa-dev), marketplace `rgaa-toolkit`) ships two skills:
+
+- `accessibility:audit` — generates a structured RGAA 4.1 / WCAG 2.2 AA audit report on a view (e.g. `/accessibility:audit site/app/views/shared/pages/accessibility.html.erb`).
+- `accessibility:rgaa-dev` — accessible-dev assistance for Rails/DSFR, auto-triggered when editing `.erb`, components or JS.
+
+It is **installed as a plugin, not copied by hand**. Two layers keep it present and current:
+
+1. **Committed declaration** — [`.claude/settings.json`](.claude/settings.json) (project scope, shared by every VM) declares the `rgaa-toolkit` marketplace and enables `accessibility@rgaa-toolkit`.
+2. **Reliable refresh in `.agent-vm.runtime.sh`** (step 9) — on every VM boot it runs `claude plugin marketplace update rgaa-toolkit` then `claude plugin update accessibility@rgaa-toolkit`, so the latest version pushed to the repo is fetched deterministically. This does **not** rely on `autoUpdate` alone (known-flaky); `autoUpdate: true` in `settings.json` is only an intra-session convenience net. Every plugin step is best-effort (`|| true`) so an offline boot never blocks the VM start.
+
+A version bumped on the upstream repo is therefore picked up at the next `runtime.sh` run (reboot or `agent-vm shell`). Verify with `claude plugin list` (shows `accessibility@rgaa-toolkit` + version) and `claude plugin marketplace list` (shows `rgaa-toolkit`).
 
 ## Contributing
 
