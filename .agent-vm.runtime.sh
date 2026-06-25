@@ -171,7 +171,7 @@ if command -v claude >/dev/null 2>&1; then
   claude plugin marketplace add Isalafont/claude-skill-rgaa-dev --scope project >/dev/null 2>&1 || true
   claude plugin marketplace update rgaa-toolkit || true
   claude plugin install accessibility@rgaa-toolkit --scope project >/dev/null 2>&1 || true
-  claude plugin update accessibility@rgaa-toolkit || true
+  claude plugin update accessibility@rgaa-toolkit --scope project || true
 else
   skip "Claude accessibility plugin (claude CLI not on PATH)"
 fi
