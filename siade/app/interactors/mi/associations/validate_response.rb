@@ -2,6 +2,8 @@ class MI::Associations::ValidateResponse < ValidateResponse
   declares_no_specific_errors!
 
   def call
+    internal_server_error! if http_internal_error?
+
     check_body_integrity!
 
     resource_not_found!(id_param) if not_found_in_body? || !valid_association?
@@ -22,7 +24,17 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def check_body_integrity!
     temporary_error! if xml_body_as_hash.nil?
   rescue Ox::ParseError
+    handle_non_xml_body!
+  end
+
+  def handle_non_xml_body!
+    return resource_not_found!(id_param) if json_not_found?
+
     unknown_provider_response!
+  end
+
+  def json_not_found?
+    valid_json? && body.match?(/not found/i)
   end
 
   def valid_association?
@@ -58,7 +70,8 @@ class MI::Associations::ValidateResponse < ValidateResponse
 
     monitor_association_without_rna(id_param) if xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
 
-    %w[9220 9230 9260].include?(code_categorie_juridique)
+    code_categorie_juridique.to_s.start_with?('922') ||
+      %w[9230 9260].include?(code_categorie_juridique)
   end
 
   def not_found_in_body?

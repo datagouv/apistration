@@ -17,6 +17,15 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
 
+    describe 'when the provider returns an internal server error' do
+      let(:code) { '500' }
+      let(:body) { 'internal server error' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+    end
+
     context 'with a valid code' do
       let(:code) { '200' }
 
@@ -93,11 +102,22 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
               '</asso>'
           end
 
-          %w[9220 9230 9260].each do |code_asso|
-            let(:code_asso) { code_asso }
-            it { is_expected.to be_a_success }
+          %w[9220 9221 9222 9223 9224 9230 9260].each do |code|
+            context "when forme juridique is #{code}" do
+              let(:code_asso) { code }
 
-            its(:errors) { is_expected.to be_empty }
+              it { is_expected.to be_a_success }
+
+              its(:errors) { is_expected.to be_empty }
+            end
+          end
+
+          context 'when forme juridique is not an association (e.g. SCOP)' do
+            let(:code_asso) { '5658' }
+
+            it { is_expected.to be_a_failure }
+
+            its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
           end
         end
       end
@@ -129,6 +149,22 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       context 'with a body containing nonsense' do
         let(:code) { '200' }
         let(:body) { 'Nonsense' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
+
+      context 'with a JSON not found body returned by the provider' do
+        let(:body) { '{"message":"Rna W555555555 not found in rna"}' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
+
+      context 'with an unexpected JSON body' do
+        let(:body) { '{"message":"internal error"}' }
 
         it { is_expected.to be_a_failure }
 
