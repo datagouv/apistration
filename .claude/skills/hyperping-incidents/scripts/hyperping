@@ -1,0 +1,133 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Hyperping incidents CLI — read-only listing + incident lifecycle.
+# No gems: uses Net::HTTP (curl is blocked in this environment).
+# Token: read from .hyperping_token (searched upward from CWD).
+#
+# Usage:
+#   hyperping incidents [sp_xxx]          List incidents (optionally filter by status page)
+#   hyperping incident <uuid>             Get one incident
+#   hyperping create   < body.json        Create incident (JSON body on stdin)
+#   hyperping update   <uuid> < body.json Edit incident fields (PUT, partial JSON on stdin)
+#   hyperping add-update <uuid> < up.json  Append an update (POST .../updates, JSON on stdin)
+#   hyperping delete   <uuid>             Delete incident (asks no confirmation)
+#   hyperping monitors [grep]             List monitors (optional case-insensitive name filter)
+#   hyperping status-pages                List known status pages
+
+require "net/http"
+require "json"
+require "uri"
+
+HOST = "https://api.hyperping.io"
+
+# Status pages have no listing endpoint on the API; these uuids are stable and
+# only discoverable via existing incidents. Keep in sync with references.
+STATUS_PAGES = {
+  "sp_9CPwLOiid6RIv5" => "API Entreprise (entreprise.api.gouv.fr)",
+  "sp_SfFWlwddY5Mg7E" => "API Particulier (particulier.api.gouv.fr)"
+}.freeze
+
+def die(msg)
+  warn msg
+  exit 1
+end
+
+def token
+  dir = Dir.pwd
+  loop do
+    path = File.join(dir, ".hyperping_token")
+    return File.read(path).strip if File.exist?(path)
+
+    parent = File.dirname(dir)
+    die "No .hyperping_token found (searched up from #{Dir.pwd})" if parent == dir
+
+    dir = parent
+  end
+end
+
+def request(method, path, body = nil)
+  uri = URI("#{HOST}#{path}")
+  klass = { get: Net::HTTP::Get, post: Net::HTTP::Post,
+            put: Net::HTTP::Put, delete: Net::HTTP::Delete }.fetch(method)
+  res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+    req = klass.new(uri)
+    req["Authorization"] = "Bearer #{token}"
+    if body
+      req["Content-Type"] = "application/json"
+      req.body = body.is_a?(String) ? body : JSON.generate(body)
+    end
+    http.request(req)
+  end
+  die "#{method.upcase} #{path} -> #{res.code}\n#{res.body}" unless res.code.to_i.between?(200, 299)
+
+  res.body.to_s.empty? ? {} : JSON.parse(res.body)
+end
+
+def incidents_list(raw)
+  raw.is_a?(Hash) ? (raw["incidents"] || raw["data"] || raw.values.find { [*_1] == _1 } || []) : raw
+end
+
+def title_of(obj)
+  t = obj["title"] || obj["text"] || {}
+  t["fr"] || t["en"] || t.values.first || ""
+end
+
+def stdin_body
+  data = $stdin.read
+  die "Expected a JSON body on stdin" if data.strip.empty?
+
+  JSON.parse(data) # validate early
+  data
+end
+
+cmd = ARGV.shift
+
+case cmd
+when "incidents"
+  page = ARGV.shift
+  list = incidents_list(request(:get, "/v3/incidents"))
+  list = list.select { _1["statuspages"].to_a.include?(page) } if page
+  list.each do |i|
+    first = i["updates"].to_a.map { _1["date"] }.compact.min
+    puts "#{i['uuid']} | #{i['type']} | start=#{first || i['date']} | #{i['statuspages'].to_a.join(',')} | #{title_of(i)}"
+  end
+  puts "(#{list.size} incidents)"
+
+when "incident"
+  uuid = ARGV.shift or die "usage: hyperping incident <uuid>"
+  puts JSON.pretty_generate(request(:get, "/v3/incidents/#{uuid}"))
+
+when "create"
+  res = request(:post, "/v3/incidents", stdin_body)
+  puts JSON.pretty_generate(res)
+
+when "update"
+  uuid = ARGV.shift or die "usage: hyperping update <uuid> < body.json"
+  res = request(:put, "/v3/incidents/#{uuid}", stdin_body)
+  puts JSON.pretty_generate(res)
+
+when "add-update"
+  uuid = ARGV.shift or die "usage: hyperping add-update <uuid> < update.json"
+  res = request(:post, "/v3/incidents/#{uuid}/updates", stdin_body)
+  puts JSON.pretty_generate(res)
+
+when "delete"
+  uuid = ARGV.shift or die "usage: hyperping delete <uuid>"
+  request(:delete, "/v3/incidents/#{uuid}")
+  puts "deleted #{uuid}"
+
+when "monitors"
+  filter = ARGV.shift
+  list = incidents_list(request(:get, "/v1/monitors"))
+  list = list.select { _1["name"].to_s.downcase.include?(filter.downcase) } if filter
+  list.each { puts "#{_1['uuid']} | #{_1['name']}" }
+  puts "(#{list.size} monitors)"
+
+when "status-pages"
+  STATUS_PAGES.each { |uuid, name| puts "#{uuid} | #{name}" }
+
+else
+  warn File.read(__FILE__)[/^# Usage:.*?(?=\nrequire)/m]
+  exit 1
+end
