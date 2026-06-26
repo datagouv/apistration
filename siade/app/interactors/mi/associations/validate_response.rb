@@ -22,7 +22,17 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def check_body_integrity!
     temporary_error! if xml_body_as_hash.nil?
   rescue Ox::ParseError
+    handle_non_xml_body!
+  end
+
+  def handle_non_xml_body!
+    return resource_not_found!(id_param) if json_not_found?
+
     unknown_provider_response!
+  end
+
+  def json_not_found?
+    valid_json? && body.match?(/not found/i)
   end
 
   def valid_association?

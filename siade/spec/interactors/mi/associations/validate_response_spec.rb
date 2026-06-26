@@ -134,6 +134,22 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
 
         its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
       end
+
+      context 'with a JSON not found body returned by the provider' do
+        let(:body) { '{"message":"Rna W555555555 not found in rna"}' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
+
+      context 'with an unexpected JSON body' do
+        let(:body) { '{"message":"internal error"}' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
     end
 
     describe 'non regression test: error message not found' do
