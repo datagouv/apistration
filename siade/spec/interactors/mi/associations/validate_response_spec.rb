@@ -17,6 +17,15 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
 
+    describe 'when the provider returns an internal server error' do
+      let(:code) { '500' }
+      let(:body) { 'internal server error' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+    end
+
     context 'with a valid code' do
       let(:code) { '200' }
 

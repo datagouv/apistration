@@ -2,6 +2,8 @@ class MI::Associations::ValidateResponse < ValidateResponse
   declares_no_specific_errors!
 
   def call
+    internal_server_error! if http_internal_error?
+
     check_body_integrity!
 
     resource_not_found!(id_param) if not_found_in_body? || !valid_association?
