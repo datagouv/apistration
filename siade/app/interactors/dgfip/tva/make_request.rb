@@ -14,7 +14,8 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      vat_no__exact: tva_number_without_fr
+      vat_no__exact: tva_number_without_fr,
+      issued_date__greater: cache_busting_date
     }
   end
 
@@ -22,5 +23,10 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
 
   def tva_number_without_fr
     context.tva_number[2..]
+  end
+
+  def cache_busting_date
+    two_day_bucket = Time.now.to_i / (86_400 * 2)
+    (Date.new(1000, 1, 1) + two_day_bucket).iso8601
   end
 end
