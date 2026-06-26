@@ -68,7 +68,8 @@ class MI::Associations::ValidateResponse < ValidateResponse
 
     monitor_association_without_rna(id_param) if xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
 
-    %w[9220 9230 9260].include?(code_categorie_juridique)
+    code_categorie_juridique.to_s.start_with?('922') ||
+      %w[9230 9260].include?(code_categorie_juridique)
   end
 
   def not_found_in_body?

@@ -93,11 +93,22 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
               '</asso>'
           end
 
-          %w[9220 9230 9260].each do |code_asso|
-            let(:code_asso) { code_asso }
-            it { is_expected.to be_a_success }
+          %w[9220 9221 9222 9223 9224 9230 9260].each do |code|
+            context "when forme juridique is #{code}" do
+              let(:code_asso) { code }
 
-            its(:errors) { is_expected.to be_empty }
+              it { is_expected.to be_a_success }
+
+              its(:errors) { is_expected.to be_empty }
+            end
+          end
+
+          context 'when forme juridique is not an association (e.g. SCOP)' do
+            let(:code_asso) { '5658' }
+
+            it { is_expected.to be_a_failure }
+
+            its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
           end
         end
       end
