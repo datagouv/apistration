@@ -295,7 +295,7 @@ class GenerateExplorer
         <h2>Match-Tester</h2>
         <p class="muted">Replicates the real backend rule: a request matches a fixture iff the
         <strong>downcased</strong> param set is exactly equal (order-independent) to the fixture's params.
-        No partial match.</p>
+        No partial match. API Entreprise &amp; Particulier v3+ ignore <code>recipient</code> (the backend strips it).</p>
         <div class="tester-grid">
           <label><span>Endpoint</span>
             <select id="t-endpoint"></select>
@@ -430,6 +430,14 @@ class GenerateExplorer
         return pairs.join('&');
       }
       function matchKey(params) { return toQuery(deepDowncase(params)); }
+      // Mirror MakeRequest#mocked_params (siade make_request.rb): the backend
+      // strips `recipient` before keying for every API except API Particulier v2.
+      function mockingParams(ep, params) {
+        if (ep.folder.indexOf('api_particulier_v2') !== -1) return params;
+        if (!('recipient' in params)) return params;
+        const o = {}; for (const k in params) if (k !== 'recipient') o[k] = params[k];
+        return o;
+      }
 
       // ---- Catalog ----
       const ALL = [];
@@ -588,7 +596,10 @@ class GenerateExplorer
 
       function runTest() {
         const ep = DATA.endpoints[+sel.value];
-        const reqParams = parseParams($('#t-params').value);
+        const rawParams = parseParams($('#t-params').value);
+        const reqParams = mockingParams(ep, rawParams);
+        const dropped = ('recipient' in rawParams) && !('recipient' in reqParams);
+        const note = dropped ? '<div class="muted">ℹ️ <code>recipient</code> ignored — the backend strips it before matching.</div>' : '';
         const key = matchKey(reqParams);
         const hit = ep.cases.find((c) => c.match_key === key);
         const box = $('#t-result');
@@ -597,6 +608,7 @@ class GenerateExplorer
           box.innerHTML = `<div class="result-box result-ok">
             <div class="result-title">✅ Exact match → ${esc(hit.file)}, status ${esc(hit.status)}</div>
             <div class="muted">match key: <code>${esc(key)}</code></div>
+            ${note}
             ${hit.response != null ? `<pre>${esc(JSON.stringify(hit.response, null, 2))}</pre>` : '<p class="muted">No response body</p>'}
           </div>`;
           return;
@@ -613,7 +625,7 @@ class GenerateExplorer
 
         let html = `<div class="result-box result-err">
           <div class="result-title">❌ No exact match for this endpoint</div>
-          <div class="muted">your match key: <code>${esc(key) || '(empty)'}</code></div>`;
+          <div class="muted">your match key: <code>${esc(key) || '(empty)'}</code></div>${note}`;
         if (best) {
           html += `<p>Nearest fixture: <code>${esc(best.file)}</code> (status ${esc(best.status)}, ${bestScore} param pair${bestScore === 1 ? '' : 's'} in common)</p>
             ${diffTable(reqParams, best.params)}`;
