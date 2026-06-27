@@ -297,10 +297,10 @@ class GenerateExplorer
         <strong>downcased</strong> param set is exactly equal (order-independent) to the fixture's params.
         No partial match.</p>
         <div class="tester-grid">
-          <label>Endpoint
+          <label><span>Endpoint</span>
             <select id="t-endpoint"></select>
           </label>
-          <label>Params (one <code>key=value</code> per line; repeat a key for array values, e.g. <code>prenoms[]=PIERRE</code>)
+          <label><span>Params (one <code>key=value</code> per line; repeat a key for array values, e.g. <code>prenoms[]=PIERRE</code>)</span>
             <textarea id="t-params" rows="10" placeholder="siret=13002526500001&#10;year=2022"></textarea>
           </label>
           <div class="tester-actions">
