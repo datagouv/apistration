@@ -4,7 +4,7 @@ fiche:
     opening: protected
     path: '/v3/dss/allocation_rentree_scolaire/identite'
     controller: 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_civility'
-    ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
+    ping_url: 'https://particulier.api.gouv.fr/api/cnav_allocation_rentree_scolaire/ping'
     position: 805
     perimeter:
       entity_type_description: |+
