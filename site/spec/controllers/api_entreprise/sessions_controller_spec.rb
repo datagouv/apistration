@@ -69,6 +69,32 @@ RSpec.describe APIEntreprise::SessionsController do
 
         expect(session['omniauth.pc.id_token']).to eq('must-survive-for-logout')
       end
+
+      context 'when a return_to location was stored before login' do
+        it 'redirects to the originally requested page' do
+          session[:return_to] = '/compte/jetons/42'
+
+          get :create_from_oauth, params: { provider: valid_provider }
+
+          expect(response).to redirect_to('/compte/jetons/42')
+        end
+
+        it 'ignores a non-local return_to to prevent open redirects' do
+          session[:return_to] = 'https://evil.example.com/phishing'
+
+          get :create_from_oauth, params: { provider: valid_provider }
+
+          expect(response).to redirect_to(authorization_requests_path)
+        end
+
+        it 'ignores a protocol-relative return_to to prevent open redirects' do
+          session[:return_to] = '//evil.example.com/phishing'
+
+          get :create_from_oauth, params: { provider: valid_provider }
+
+          expect(response).to redirect_to(authorization_requests_path)
+        end
+      end
     end
 
     context 'with valid provider but missing omniauth data' do

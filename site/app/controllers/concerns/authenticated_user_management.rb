@@ -12,9 +12,15 @@ module AuthenticatedUserManagement
   def authenticate_user!
     return if user_signed_in?
 
+    store_return_to_location
+
     error_message(title: t('concerns.sessions_management.unauthorized.signed_out.error.title'))
 
     redirect_to login_path
+  end
+
+  def store_return_to_location
+    session[:return_to] = request.fullpath if request.get?
   end
 
   def logged_user_not_authorized
