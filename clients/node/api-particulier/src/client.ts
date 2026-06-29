@@ -5,7 +5,6 @@ import { VERSION } from './version.js';
 
 // <scaffold:imports:begin>
 import { Ants } from './resources/ants.js';
-import { Cnav } from './resources/cnav.js';
 import { Cnous } from './resources/cnous.js';
 import { Dsnj } from './resources/dsnj.js';
 import { Dss } from './resources/dss.js';
@@ -59,7 +58,6 @@ export class Client extends ClientBase {
 
   // <scaffold:fields:begin>
   private _ants?: Ants;
-  private _cnav?: Cnav;
   private _cnous?: Cnous;
   private _dsnj?: Dsnj;
   private _dss?: Dss;
@@ -74,10 +72,6 @@ export class Client extends ClientBase {
   get ants(): Ants {
     if (!this._ants) this._ants = new Ants(this);
     return this._ants;
-  }
-  get cnav(): Cnav {
-    if (!this._cnav) this._cnav = new Cnav(this);
-    return this._cnav;
   }
   get cnous(): Cnous {
     if (!this._cnous) this._cnous = new Cnous(this);

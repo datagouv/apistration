@@ -2,7 +2,6 @@ require_relative 'commons'
 
 # <scaffold:requires:begin>
 require_relative 'resources/ants'
-require_relative 'resources/cnav'
 require_relative 'resources/cnous'
 require_relative 'resources/dsnj'
 require_relative 'resources/dss'
@@ -47,9 +46,6 @@ module ApiParticulier
     # <scaffold:resources:begin>
     def ants
       @ants ||= Resources::Ants.new(self)
-    end
-    def cnav
-      @cnav ||= Resources::Cnav.new(self)
     end
     def cnous
       @cnous ||= Resources::Cnous.new(self)
