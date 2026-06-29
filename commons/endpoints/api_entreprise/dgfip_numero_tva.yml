@@ -61,3 +61,6 @@ fiche:
           L'ancien endpoint [Commission Européenne VIES](/catalogue/api_entreprise/endpoints/commission_europeenne_numero_tva) vérifiait le numéro de TVA en temps réel auprès du service VIES de la Commission Européenne.
 
           Ce nouvel endpoint s'appuie sur les **extractions quotidiennes publiées par la DGFIP** sur data.gouv.fr. La stratégie de vérification est identique (calcul du numéro de TVA à partir du SIREN, vérification auprès d'une source officielle), mais la fraîcheur des données est de **J+1** au lieu du temps réel.
+      - q: "Une entreprise peut-elle avoir plusieurs numéros de TVA intracommunautaire ?"
+        a: |+
+          Une entreprise assujettie à la TVA peut posséder un numéro de TVA pour chacun de ses codes d'activité (NAF/APE). Les numéros de TVA affichés sur l'Annuaire des Entreprises sont les numéros actifs à la date d'extraction des données.
