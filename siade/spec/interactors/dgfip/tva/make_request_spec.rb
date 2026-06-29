@@ -4,16 +4,16 @@ RSpec.describe DGFIP::TVA::MakeRequest, type: :make_request do
 
     let(:params) { { siren: '217500016' } }
     let(:tva_number) { 'FR72217500016' }
+    let(:issued_date_greater) do
+      (Date.new(1000, 1, 1) + (Time.now.to_i / (86_400 * 2))).iso8601
+    end
     let!(:stubbed_request) do
+      Timecop.freeze(Time.utc(2026, 6, 26))
+
       stub_request(:get, "#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/#{DGFIP::TVA::MakeRequest::RESOURCE_ID}/data/")
         .with(query: { 'vat_no__exact' => '72217500016', 'issued_date__greater' => issued_date_greater })
         .to_return(status: 200, body: { data: [{ vat_no: '72217500016' }], meta: { total: 1 } }.to_json)
     end
-    let(:issued_date_greater) do
-      (Date.new(1000, 1, 1) + (Time.now.to_i / (86_400 * 2))).iso8601
-    end
-
-    before { Timecop.freeze(Time.utc(2026, 6, 26)) }
 
     after { Timecop.return }
 
