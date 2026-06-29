@@ -15,7 +15,7 @@ jobs:
     if: github.ref == 'refs/heads/develop'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.0
 
       - name: Force push develop to main
         run: git push --force origin develop:main
