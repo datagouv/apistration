@@ -25,7 +25,15 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
   end
 
   it "displays links to cas d'usage" do
-    expect(page).to have_link('Marchés publics', href: cas_usage_path(uid: 'marches_publics'))
+    allow(SimplifionsStore.instance).to receive(:for_endpoint).and_return([
+      APIEntreprise::CasUsage.new(name: 'Marchés publics', url: 'https://simplifions.data.gouv.fr/cas-d-usages/marches-publics', icon: nil, description: nil, administrations: [], public_cible: [])
+    ])
+    visit endpoint_path(uid:)
+    expect(page).to have_link('Marchés publics', href: 'https://simplifions.data.gouv.fr/cas-d-usages/marches-publics')
+  end
+
+  it 'displays a link to Socle de base for included endpoints' do
+    expect(page).to have_link('Socle de base DLNUF', href: cas_usage_path(uid: 'socle_de_base'))
   end
 
   describe 'provider errors' do

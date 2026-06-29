@@ -31,7 +31,7 @@ Et au sein de la vue, pour retrouver le `title` ci-dessus:
 
 ## Cas d'usages
 
-Il est possible de rajouter des cas d'usage en ajoutant une nouvelle entrée au fichier `config/locales/cas_usages_entries.fr.yml`, en respectant l'architecture du fichier.
+Il est possible de rajouter des fiches pratiques en ajoutant une nouvelle entrée au fichier `config/locales/fiches_pratiques_entries.fr.yml`, en respectant l'architecture du fichier.
 
 Les listes d'APIs utiles (présente sur chaque page de cas d'usage) est renseignée depuis les clefs "use_cases" et "use_cases_optional" dans les fichiers endpoint correspondants.
 
@@ -39,7 +39,7 @@ La colonne pour commentaire dans cette liste se remplit depuis la fiche cas d'us
 
 ```
 fr:
-  cas_usages_entries:
+  fiches_pratiques_entries:
     marches_publics:
       name: 'Marchés publics'
       comments_endpoints:

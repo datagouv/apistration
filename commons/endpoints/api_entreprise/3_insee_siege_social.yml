@@ -1,6 +1,10 @@
 ---
 fiche:
   - uid: 'insee/siege_social'
+    datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base:
+      comment: |-
+        Mêmes données que l'API open data, avec en plus les sièges en diffusion partielle. Backoffice instructeur uniquement.
     old_endpoint_uids:
       - 'insee/siege_social_v3'
     path: '/v4/insee/sirene/unites_legales/{siren}/siege_social'
@@ -146,6 +150,10 @@ fiche:
           > **Depuis 2023, les personnes morales sont concernées par la \"diffusion partielle\"**. Si elles ont exercé ce droit, vous n'avez pas le droit de pré-remplir leur données de localisation : géolocalisation, numéro et voie de l'adresse postale. La commune reste diffusible.
 
   - uid: 'insee/siege_social_diffusibles'
+    datagouv_uid: '672cf6aece89cb14e31f0fba'
+    socle_de_base:
+      comment: |-
+        À partir du Siren, récupérer les informations du siège social.
     old_endpoint_uids:
       - 'insee/siege_social_diffusibles_v3'
     path: '/v4/insee/sirene/unites_legales/diffusibles/{siren}/siege_social'

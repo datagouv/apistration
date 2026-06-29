@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'urssaf/attestation_vigilance'
+    datagouv_uid: '672cf6b36452c7d61849433f'
     ping_url: 'https://entreprise.api.gouv.fr/ping/urssaf/attestation_sociale'
     old_endpoint_uids:
       - 'urssaf/v3/attestation_vigilance'
@@ -243,6 +244,7 @@ fiche:
             nullable: true
             example: 86400
   - uid: 'urssaf/v3/attestation_vigilance'
+    datagouv_uid: '672cf6b36452c7d61849433f'
     position: 9001
     ping_url: 'https://entreprise.api.gouv.fr/ping/urssaf/attestation_sociale'
     new_endpoint_uids:

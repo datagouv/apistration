@@ -67,8 +67,18 @@ fr:
         error:
           title: "Lien de désinscription invalide ou déjà utilisé."
     cas_usages:
+      endpoints_table:
+        headers:
+          api: "API"
+          opening: "Ouverture"
+          call_id: "Identifiant d'appel"
+          comment: "Commentaires"
+        provider: "Fournisseur de données :"
+        links:
+          fiche_metier: "Fiche métier"
+          swagger: "Swagger"
       show:
-        label: "Cas d'usage"
+        label: "Fiche pratique"
         link_access: "Demander un accès"
         link_list_api: "Liste des API utiles"
         legal_context:
@@ -79,7 +89,7 @@ fr:
           sub_description: "Sur Datapass, vous pourrez sélectionner le formulaire adapté à votre situation technique, notamment si vous avez ou non un éditeur."
           link: "Remplir une demande"
       others:
-        title: "D'autres cas d'usages&nbsp;:"
+        title: "D'autres fiches pratiques&nbsp;:"
         link: "En savoir plus"
         marches_publics:
           title: "Marchés publics"
@@ -126,15 +136,6 @@ fr:
         modalite_formulaire_qf:
           title: "Formulaire QF"
           description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
-      list-api:
-        col_endpoint: "API"
-        col_useful: "Utilité"
-        col_opening: "Ouverture"
-        col_links: "Documentations"
-        col_comments: "Commentaires"
-        col_call_id: "Identifiant d'appel"
-        documentation: "📖 Fiche métier"
-        swagger: "📟 Swagger"
     links:
       to_datapass: "N<sup>o</sup>%{external_id}"
     transfer_tokens:
@@ -497,6 +498,12 @@ fr:
           Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
           Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
     endpoints:
+      use_cases:
+        main:
+          title: "Cas d'usages"
+          description: "Fiches pratiques et cas d'usages pour lesquels l'API est utile :"
+          see_more: "Voir plus de cas d'usages"
+          see_less: "Voir moins"
       status:
         real_time: "Temps réel"
       property:

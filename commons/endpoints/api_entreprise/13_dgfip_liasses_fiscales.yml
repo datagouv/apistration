@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: "dgfip/liasses_fiscales"
+    datagouv_uid: '672cf6b2f89f31dae828f6da'
     old_endpoint_uids:
       - "dgfip/v3/liasses_fiscales"
     path: "/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}"

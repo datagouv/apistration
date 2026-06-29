@@ -60,8 +60,10 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/faq', to: 'faq#index', as: :faq_index
     get '/developpeurs', to: 'documentation#developers', as: :developers
     get '/developpeurs/openapi', to: 'pages#redoc', as: :developers_openapi
-    get '/cas_usages', to: 'cas_usages#index'
-    get '/cas_usages/:uid', to: 'cas_usages#show', as: :cas_usage
+    get '/fiches', to: 'cas_usages#index', as: :cas_usages
+    get '/fiches/:uid', to: 'cas_usages#show', as: :cas_usage
+    get '/cas_usages/:uid', to: redirect('/fiches/%{uid}')
+    get '/cas_usages', to: redirect('/fiches')
 
     get '/blog/:id', to: 'blog_posts#show', as: :blog_post
 

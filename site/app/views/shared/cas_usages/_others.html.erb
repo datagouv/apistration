@@ -1,6 +1,6 @@
 <h3><%= t('.title').html_safe %></h3>
 <div class="use_cases">
-  <% @other_cas_usages.sample(3).each do |use_case| %>
+  <% @other_fiches_pratiques.sample(3).each do |use_case| %>
     <div class="use_case fr-mt-4v">
       <%= image_tag("#{api}/cas_usages/pictos/#{use_case.uid}.svg", alt: use_case.uid) %>
       <h4><%= t(".#{use_case.uid}.title") %></h4>

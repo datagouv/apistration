@@ -66,4 +66,27 @@ RSpec.describe APIEntreprise::Endpoint do
       end
     end
   end
+
+  describe '#socle_de_base?' do
+    it 'is true for endpoints included in Socle de base' do
+      expect(described_class.find('insee/unites_legales')).to be_socle_de_base
+    end
+
+    it 'is false for endpoints outside Socle de base' do
+      endpoint = described_class.find('urssaf/attestation_vigilance')
+
+      expect(endpoint.socle_de_base).to be_nil
+      expect(endpoint).not_to be_socle_de_base
+    end
+
+    it 'stores a comment for every Socle de base endpoint' do
+      expect(described_class.all.select(&:socle_de_base?).map(&:socle_de_base)).to all(satisfy { |value|
+        value.is_a?(Hash) && value['comment'].present?
+      })
+    end
+
+    it 'exposes the Socle de base comment' do
+      expect(described_class.find('insee/unites_legales').socle_de_base_comment).to include('unités légales')
+    end
+  end
 end

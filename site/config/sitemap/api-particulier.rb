@@ -5,7 +5,7 @@ SitemapGenerator::Sitemap.create do
 
   add api_particulier_cas_usages_path
 
-  APIParticulier::CasUsage.all.each do |cas_usage|
-    add api_particulier_cas_usage_path(uid: cas_usage.uid)
+  APIParticulier::FichePratique.all.each do |fiche_pratique|
+    add api_particulier_cas_usage_path(uid: fiche_pratique.uid)
   end
 end

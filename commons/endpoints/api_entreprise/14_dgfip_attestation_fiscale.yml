@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'dgfip/attestations_fiscales'
+    datagouv_uid: '672cf6b2a474f2d73502b5d4'
     position: 250
     old_endpoint_uids:
       - 'dgfip/v3/attestations_fiscales'
@@ -165,6 +166,7 @@ fiche:
       **Ce qui ne change pas :**
       À part l'ajout des champs précédents, rien n'a changé. Cette montée en version n'est pas dûe à une évolution de l'API de la DGFIP, par conséquent, la version précédente est maintenue par API&nbsp;Entreprise.
   - uid: 'dgfip/v3/attestations_fiscales'
+    datagouv_uid: '672cf6b2a474f2d73502b5d4'
     position: 9002
     new_endpoint_uids:
       - 'dgfip/attestations_fiscales'

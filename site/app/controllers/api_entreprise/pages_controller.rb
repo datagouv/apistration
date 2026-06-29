@@ -14,7 +14,8 @@ class APIEntreprise::PagesController < APIEntrepriseController
   def home
     @endpoints_sample = APIEntreprise::Endpoint.all.sample(3)
     @providers = APIEntreprise::Provider.all
-    @cas_usages_sample = APIEntreprise::CasUsage.all.sample(5)
+    @socle_de_base = APIEntreprise::FichePratique.find('socle_de_base')
+    @cas_usages_sample = APIEntreprise::CasUsage.all.sample(2)
   end
 
   def newsletter; end

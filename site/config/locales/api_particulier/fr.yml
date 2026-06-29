@@ -79,24 +79,7 @@ fr:
           link_faq: "Qu'est-ce qu'une API ?"
         section_use_cases:
           title: Cas d'usages
-          description: <strong>Une fois l'API Particulier intégrée dans votre système d'information</strong>&nbsp;:&nbsp;<br>À de l'identité pivot du particulier, d'un identifiant ou avec FranceConnect, les informations sont automatiquement saisies dans les formulaires de vos usagers et en back-office pour vos agents. Cet accès direct aux données administratives facilite de nombreux cas d'usages&nbsp;:&nbsp;
-          cards:
-            aides_facultatives:
-              title: "Aides facultatives à la scolarité"
-            cantines-colleges-lycees-tarification:
-              title: "Tarification cantine"
-            ccas:
-              title: "Aides sociales des CCAS"
-            tarification_transports:
-              title: "Tarification des transports"
-            tarification_municipale_enfance:
-              title: "Portail famille des communes"
-            stationnement-residentiel:
-              title: "Stationnement résidentiel"
-            modalite_appel_france_connect:
-              title: "Modalité d'appel : FranceConnect"
-            modalite_formulaire_qf:
-              title: "Modalité d'appel : Formulaire de collecte du QF"
+          description: <strong>Une fois l'API Particulier intégrée dans votre système d'information</strong>&nbsp;:&nbsp;<br>Avec l'identité pivot du particulier, un identifiant ou via FranceConnect, les informations sont automatiquement saisies dans les formulaires de vos usagers et en back-office pour vos agents. Cet accès direct aux données administratives facilite de nombreux cas d'usages&nbsp;:&nbsp;
           link: "Tous les cas d'usages"
         section_demonstrateur:
           demo_title: Inspirez-vous avec le démonstrateur API Particulier 💡
@@ -189,12 +172,6 @@ fr:
           api_cgu_title: "Conditions spécifiques à cette API :"
           main_title: "Conditions générales :"
           cta: "CGU API Particulier"
-      use_cases:
-        main:
-          title: "Cas d'usages"
-          description: "API utile pour :"
-        optional:
-          description: "API parfois utile pour :"
       details:
         title: "Spécifications de l'API"
         format:
@@ -228,30 +205,14 @@ fr:
 
     cas_usages:
       index:
-        title: "Cas d'usages & modalités d'appel"
-        description: "Consultez les <strong>fiches pratiques des cas d’usages & les guides des modalités d'appel</strong> de l’API Particulier"
+        title: "Cas d’usages & modalités d’appel"
+        description: "Consultez les <strong>fiches pratiques des cas d’usages & les guides des modalités d’appel</strong> de l’API Particulier"
+        simplifions:
+          title: "Cas d’usages"
+          description: "L’API Particulier est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-particulier#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr</a> :"
+        internal:
+          title: "Fiches pratiques"
         cards:
-          aides_facultatives:
-            title: "Aides facultatives"
-            description: "Simplifiez l'attribution des aides facultatives départementales et régionales"
-          cantines-colleges-lycees-tarification:
-            title: "Tarification cantine"
-            description: "Calculez automatiquement le tarif de restauration scolaire des collégiens et lycéens"
-          ccas:
-            title: "Aides sociales des CCAS"
-            description: "Simplifiez le dépôt et l'instruction des dossiers d'aides sociales"
-          tarification_transports:
-            title: "Tarification des transports"
-            description: "Obtenez automatiquement les données nécessaires à l'attribution des tarifs réduits de transports collectifs"
-          tarification_municipale_enfance:
-            title: "Tarification sociale municipale de l'enfance"
-            description: "Calculez automatiquement le tarif des services municipaux à l'enfance - crèche, cantine, périscolaire, etc."
-          gestion_rh_secteur_public:
-            title: "Gestion RH secteur public"
-            description: "Facilitez le recrutement et la gestion administrative des agents publics"
-          stationnement-residentiel:
-            title: "Tarification du stationnement résidentiel"
-            description: "Automatisez la tarification du stationnement résidentiel par rapport au véhicule du particulier"
           modalite_appel_france_connect:
             title: "FranceConnect"
             description: "Proposer FranceConnect comme modalité d'appel pour simplifier l'authentification des particuliers"

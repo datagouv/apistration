@@ -1,0 +1,30 @@
+<div class="fr-card fr-enlarge-link simplifions-card fr-h-full">
+  <div class="fr-card__body">
+    <div class="fr-card__content">
+      <h3 class="fr-card__title fr-h5">
+        <%= link_to use_case.url, target: '_blank', rel: 'noopener noreferrer' do %>
+          <% if use_case.icon.present? %><span aria-hidden="true"><%= use_case.icon %></span> <% end %><%= use_case.name %>
+        <% end %>
+      </h3>
+      <p class="fr-card__desc"><%= use_case.description %></p>
+      <div class="fr-card__end">
+        <% if use_case.administrations.any? %>
+          <p class="fr-text--xs fr-text--bold">À destination des :</p>
+          <ul class="fr-badges-group">
+            <% use_case.administrations.each do |admin| %>
+              <li class="fr-mr-1v fr-mb-1v"><p class="fr-badge fr-badge--sm fr-badge--<%= administration_badge_color(admin) %>"><%= admin %></p></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <% if use_case.public_cible&.any? %>
+          <p class="fr-mt-1w fr-text--xs fr-text--bold">Pour les démarches des :</p>
+          <ul class="fr-badges-group">
+            <% use_case.public_cible.each do |public| %>
+              <li class="fr-mr-1v fr-mb-1v"><p class="fr-badge fr-badge--sm"><%= public %></p></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

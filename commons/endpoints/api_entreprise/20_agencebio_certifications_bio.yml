@@ -1,6 +1,9 @@
 ---
 fiche:
   - uid: 'agence_bio/certifications_bio'
+    socle_de_base:
+      comment: |-
+        Préremplir les certifications en agriculture biologique d'une entreprise.
     path: '/v3/agence_bio/certifications_bio'
     position: 310
     perimeter:

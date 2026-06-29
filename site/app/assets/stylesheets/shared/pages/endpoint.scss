@@ -1,5 +1,14 @@
 $endpoint-show-main-padding: 40px;
 
+.use-cases__toggle {
+  &[aria-expanded="true"] .use-cases__see-more { display: none; }
+  &[aria-expanded="false"] .use-cases__see-less { display: none; }
+
+  &[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+}
+
 article.endpoint {
   background-color: var(--w);
   padding: $endpoint-show-main-padding;

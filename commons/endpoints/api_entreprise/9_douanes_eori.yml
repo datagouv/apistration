@@ -1,6 +1,10 @@
 ---
 fiche:
   - uid: 'douanes/immatriculation_eori'
+    datagouv_uid: '672cf6b81092eab5f92dfaad'
+    socle_de_base:
+      comment: |-
+        Préremplir et vérifier le numéro EORI à partir du SIRET, pour les entreprises ayant réalisé leur immatriculation en France.
     path: '/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori'
     controller: 'api_entreprise/v3_and_more/dgddi/eori'
     ping_url: 'https://entreprise.api.gouv.fr/ping/douanes/immatriculations_eori'

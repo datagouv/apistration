@@ -11,36 +11,28 @@
   </div>
   <div class="fr-container">
     <div id="cas-usages" class="fr-container--fluid">
-      <div class="content fr-grid-row fr-grid-row--center fr-grid-row--top">
-        <% @cas_usages_sample.each do |cas_usage| %>
-          <div class="fr-col-12 fr-col-sm-4 fr-col-md-4 fr-col-lg-2 fr-col-xl-2 fr-card fr-card--sm fr-enlarge-link">
-            <div class="fr-card__body">
-              <div class="fr-card__content">
-                <h3 class="fr-card__title fr-h6">
-                  <%= link_to t(".cards.#{cas_usage.uid}.title"), cas_usage_path(cas_usage.uid) %>
-                </h3>
-              </div>
-            </div>
-            <div class="fr-card__header">
-              <div class="fr-card__img">
-                <%= image_tag("api_entreprise/cas_usages/pictos/#{cas_usage.uid}.svg", class: %w(card-image fr-responsive-img fr-pt-3w), alt: cas_usage.uid) %>
-              </div>
-              <ul class="fr-badges-group fr-p-0-5v">
-                <% t("api_entreprise.cas_usages_entries.#{cas_usage.uid}.user_types").each do |user_type| %>
-                  <li class="fr-m-0-5v">
-                    <p class="fr-badge fr-badge--sm fr-badge--<%= user_type_tag_color(user_type) %>"><%= user_type %></p>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
+      <div class="content fr-grid-row fr-grid-row--gutters fr-grid-row--top">
+        <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+          <%= render 'shared/cas_usages/internal_use_case_card',
+            title: t('.cards.socle_de_base.title'),
+            url: cas_usage_path(uid: 'socle_de_base'),
+            description: t('.cards.socle_de_base.description'),
+            user_types: @socle_de_base.user_types,
+            content_category: @socle_de_base.content_category,
+            api: 'api_entreprise',
+            uid: 'socle_de_base' %>
+        </div>
+        <% @cas_usages_sample.each do |use_case| %>
+          <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+            <%= render 'shared/cas_usages/simplifions_card', use_case: %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="fr-container fr-mt-5w">
+  <div class="fr-container fr-my-5w">
     <div class="fr-grid-row fr-grid-row--center">
-      <%= link_to cas_usages_path, class: "fr-btn" do %>
+      <%= link_to cas_usages_path, class: 'fr-btn' do %>
         <%= t('.link') %>&nbsp;<span class="fr-icon-arrow-right-line" aria-hidden="true"></span>
       <% end %>
     </div>

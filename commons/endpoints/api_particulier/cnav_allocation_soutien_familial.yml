@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/allocation_soutien_familial'
+    datagouv_uid: '672cf6adce89cb14e31f0fb9'
     opening: protected
     old_endpoint_uids:
       - 'cnav/v2/allocation_soutien_familial'

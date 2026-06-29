@@ -1,6 +1,10 @@
 ---
 fiche:
   - uid: 'inpi/rne/actes_bilans'
+    datagouv_uid: '686d1e51e64f536714765532'
+    socle_de_base:
+      comment: |-
+        Consulter les actes (historique des modifications, associés) et les bilans (capitaux propres, chiffre d'affaires, encours).
     path: '/v3/inpi/rne/unites_legales/open_data/{siren}/actes_bilans'
     controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans'
     ping_url: 'https://entreprise.api.gouv.fr/ping/inpi/rne'

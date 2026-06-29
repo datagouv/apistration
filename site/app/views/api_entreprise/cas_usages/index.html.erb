@@ -7,28 +7,33 @@
   </div>
 
   <div class="content fr-container fr-mt-5w fr-mb-5w">
-    <% @cas_usages.each do |cas_usage| %>
-      <div class="fr-card fr-enlarge-link">
-        <div class="fr-card__body">
-          <div class="fr-card__content">
-            <h2 class="fr-card__title fr-h5">
-              <%= link_to t(".cards.#{cas_usage.uid}.title"), cas_usage_path(cas_usage.uid) %>
-            </h2>
-            <p class="fr-card__desc fr-text--lg"><%= t(".cards.#{cas_usage.uid}.description") %></p>
-            <div class="fr-card__end">
-              <ul class="fr-badges-group">
-                <% cas_usage.user_types.each do |user_type| %>
-                  <li class="fr-m-0-5v"><p class="fr-badge fr-badge--sm fr-badge--<%= user_type_tag_color(user_type) %>"><%= user_type %></p></li>
-                <% end %>
-              </ul>
-            </div>
+    <% if @fiches_pratiques.any? %>
+      <h2 class="fr-h3"><%= t('.internal.title') %></h2>
+      <div class="fr-grid-row fr-grid-row--gutters fr-mt-2w">
+        <% @fiches_pratiques.each do |fiche_pratique| %>
+          <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+            <%= render 'shared/cas_usages/internal_use_case_card',
+              title: t(".cards.#{fiche_pratique.uid}.title"),
+              url: cas_usage_path(fiche_pratique.uid),
+              description: t(".cards.#{fiche_pratique.uid}.description"),
+              user_types: fiche_pratique.user_types,
+              content_category: fiche_pratique.content_category,
+              api: 'api_entreprise',
+              uid: fiche_pratique.uid %>
           </div>
-        </div>
-        <div class="fr-card__header">
-          <div class="fr-card__img">
-            <%= image_tag("api_entreprise/cas_usages/pictos/#{cas_usage.uid}.svg", class: %w(card-image fr-responsive-img), alt: cas_usage.uid) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @cas_usages.any? %>
+      <h2 class="fr-h3 fr-mt-6w"><%= t('.simplifions.title') %></h2>
+      <p class="fr-text--lg"><%= t('.simplifions.description').html_safe %></p>
+      <div class="fr-grid-row fr-grid-row--gutters fr-mt-2w">
+        <% @cas_usages.each do |use_case| %>
+          <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+            <%= render 'shared/cas_usages/simplifions_card', use_case: %>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

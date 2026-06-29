@@ -3,29 +3,28 @@
     background-color: var(--custom-lightest-blue);
   }
 
-  .content {
-    display: flex;
-    align-items: stretch;
-    flex-wrap: wrap;
+  .simplifions-card {
+    .fr-card__title a {
+      color: var(--text-action-high-blue-france);
+    }
+
+    .fr-card__title [target=_blank]::after {
+      content: none;
+    }
+
+    &::before {
+      -webkit-mask-image: url("icons/system/external-link-line.svg");
+      mask-image: url("icons/system/external-link-line.svg");
+    }
+
+    .fr-card__end {
+      flex: 1;
+    }
   }
 
   .fr-card {
-    max-width: 280px;
-    margin: 10px;
-    display: inline-flex !important;
-
     p {
-      margin-bottom: 0px;
-    }
-
-    @media(min-width: 1440px) {
-      &:first-of-type {
-        margin-left: 0px !important;
-      }
-
-      &:last-of-type {
-        margin-right: 0px !important;
-      }
+      margin-bottom: 0;
     }
 
     .card-image {

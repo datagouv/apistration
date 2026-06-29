@@ -1,17 +1,21 @@
 module CasUsagesManagement
   def index
+    @fiches_pratiques = fiche_pratique_klass.all
     @cas_usages = cas_usage_klass.all
   end
 
   def show
-    @cas_usage = cas_usage_klass.find(params.expect(:uid))
-    @other_cas_usages = cas_usage_klass.all - [@cas_usage]
-    @active_endpoints = EndpointDecorator.decorate_collection(namespace.classify.constantize::Endpoint.all.reject(&:deprecated))
+    @fiche_pratique = fiche_pratique_klass.find(params.expect(:uid))
+    @other_fiches_pratiques = fiche_pratique_klass.all - [@fiche_pratique]
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
 
   private
+
+  def fiche_pratique_klass
+    namespace.classify.constantize::FichePratique
+  end
 
   def cas_usage_klass
     namespace.classify.constantize::CasUsage

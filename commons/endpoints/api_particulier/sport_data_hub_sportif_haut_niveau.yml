@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'sport_data_hub/statut_sportif'
+    datagouv_uid: '688c7ea9e4a690abc0d3aeec'
     opening: protected
     novelty: true
     call_id:

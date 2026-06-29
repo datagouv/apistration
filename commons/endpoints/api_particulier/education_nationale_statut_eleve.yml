@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'education_nationale/statut_eleve_scolarise'
+    datagouv_uid: '672cf6aa26b31834a945cf00'
     opening: protected
     new_version: true
     old_endpoint_uids:

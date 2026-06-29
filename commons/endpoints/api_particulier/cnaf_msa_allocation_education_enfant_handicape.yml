@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/aeeh'
+    datagouv_uid: '69b03e90b9b9fcfa5cd686b7'
     opening: protected
     path: '/v3/dss/allocation_enfant_handicape/identite'
     controller: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility'

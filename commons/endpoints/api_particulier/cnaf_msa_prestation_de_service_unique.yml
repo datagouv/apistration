@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/psu'
+    datagouv_uid: '688c833e18a96f3fcd04d82e'
     opening: protected
     beta: true
     call_id:

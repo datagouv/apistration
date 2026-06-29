@@ -12,7 +12,7 @@ module ActiveLinks
     when 'developer'
       current_url.include?('/developpeurs')
     when 'cas_usages'
-      current_url.include?('/cas_usages')
+      current_url.include?('/fiches')
     else
       false
     end

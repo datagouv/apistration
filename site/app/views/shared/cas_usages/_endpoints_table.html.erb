@@ -1,0 +1,32 @@
+<div class="fr-table">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"><%= t('.headers.api') %></th>
+        <th scope="col"><%= t('.headers.opening') %></th>
+        <th scope="col"><%= t('.headers.call_id') %></th>
+        <th scope="col"><%= t('.headers.comment') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% endpoints.each do |endpoint| %>
+        <tr>
+          <td>
+            <p class="fr-mb-1v"><strong><%= endpoint.title %></strong></p>
+            <p class="fr-text--sm fr-mb-1v">
+              <%= t('.provider') %> <%= endpoint.providers.map(&:name).join(', ') %>
+            </p>
+            <p class="fr-text--sm fr-mb-0">
+              <%= link_to t('.links.fiche_metier'), endpoint_path(uid: endpoint.uid) %>
+              &nbsp;|&nbsp;
+              <%= link_to t('.links.swagger'), developers_openapi_path(anchor: endpoint.redoc_anchor), data: { turbo: false } %>
+            </p>
+          </td>
+          <td><%= t("endpoint.opening.#{endpoint.opening}.name", default: endpoint.opening) %></td>
+          <td><%= endpoint.call_id %></td>
+          <td><%= markdown_to_html(endpoint.socle_de_base_comment, hard_wrap: false) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -34,8 +34,10 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/developpeurs/openapi', to: 'pages#redoc', as: :developers_openapi
     get '/developpeurs/openapi-v2', to: 'pages#redoc_v2', as: :developers_openapi_v2
     get '/developpeurs/openapi-v3', to: 'pages#redoc_v3', as: :developers_openapi_v3
-    get '/cas_usages', to: 'cas_usages#index'
-    get '/cas_usages/:uid', to: 'cas_usages#show', as: :cas_usage
+    get '/fiches', to: 'cas_usages#index', as: :cas_usages
+    get '/fiches/:uid', to: 'cas_usages#show', as: :cas_usage
+    get '/cas_usages/:uid', to: redirect('/fiches/%{uid}')
+    get '/cas_usages', to: redirect('/fiches')
 
     get '/compte/se-connecter', to: 'sessions#new', as: :login
     get '/compte/se-connecter/lien-magique', to: 'sessions#create_from_magic_link', as: :login_magic_link

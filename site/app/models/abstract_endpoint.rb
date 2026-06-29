@@ -18,7 +18,9 @@ class AbstractEndpoint
     :data,
     :historique,
     :keywords,
-    :api_cgu
+    :api_cgu,
+    :datagouv_uid,
+    :socle_de_base
 
   attr_writer :new_endpoint_uids, :old_endpoint_uids
 
@@ -198,16 +200,22 @@ class AbstractEndpoint
     Kernel.const_get(api.classify)::Provider.filter_by_uid(provider_uids)
   end
 
-  def use_cases
-    @use_cases ||= Kernel.const_get(api.classify)::CasUsage.for_endpoint(uid)
+  def cas_usages
+    Kernel.const_get("#{api.classify}::CasUsage").for_endpoint(uid, api:)
   end
 
-  def use_cases_optional
-    @use_cases_optional ||= Kernel.const_get(api.classify)::CasUsage.optional_for_endpoint(uid)
+  def fiches_pratiques
+    return [] unless api == 'api_entreprise' && socle_de_base?
+
+    [APIEntreprise::FichePratique.find('socle_de_base')]
   end
 
-  def use_cases_forbidden
-    @use_cases_forbidden ||= Kernel.const_get(api.classify)::CasUsage.forbidden_for_endpoint(uid)
+  def socle_de_base?
+    socle_de_base.present?
+  end
+
+  def socle_de_base_comment
+    Hash.try_convert(socle_de_base)&.fetch('comment', nil)
   end
 
   def test_cases_external_url

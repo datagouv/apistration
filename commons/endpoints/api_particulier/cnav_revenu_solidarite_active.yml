@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/revenu_solidarite_active'
+    datagouv_uid: '672cf6acf1ebb86a67488d05'
     opening: protected
     old_endpoint_uids:
       - 'cnav/v2/revenu_solidarite_active'

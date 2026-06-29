@@ -2,6 +2,11 @@
 fiche:
   # L'UID sert à identifier cette entrée de manière unique, et est utilisé pour l'URL de la fiche métier
   - uid: 'provider/resource'
+    # Optionnel. À renseigner uniquement si cette API fait partie du Socle de base DLNUF.
+    # Omettre la clé si l'API n'en fait pas partie.
+    socle_de_base:
+      comment: |-
+        Commentaire affiché dans le tableau de la fiche Socle de base.
     # Path: doit correspondre au path dans le swagger
     # Exemple pour Attestation de vigilance
     # Voir le swagger ici https://github.com/etalab/siade/blob/272aa40577802afe59ebc5f3cded39d2c25107ae/swagger/openapi-entreprise.yaml#L85
@@ -140,4 +145,3 @@ fiche:
             example: "valeur_exemple"
             # nullable: true si le champ peut être null
             # enum: [valeur1, valeur2] si liste de valeurs possibles
-
