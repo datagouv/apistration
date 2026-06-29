@@ -8,6 +8,13 @@ module Simplifions
     SITEMAP_URL = 'https://simplifions.data.gouv.fr/sitemap.xml'.freeze
     CACHE_KEY = 'simplifions/sitemap/slugs'.freeze
 
+    LEFT_SINGLE_QUOTATION_MARK = '‘'.freeze
+    RIGHT_SINGLE_QUOTATION_MARK = '’'.freeze
+    APOSTROPHE = "'".freeze
+    QUOTES_TO_STRIP = /[#{LEFT_SINGLE_QUOTATION_MARK}#{RIGHT_SINGLE_QUOTATION_MARK}#{APOSTROPHE}]/
+    EURO_SIGN = '€'.freeze
+    EURO_SLUG = 'eur'.freeze
+
     def slug_for(name)
       base_slug = slugify(name)
       return base_slug if slugs.blank? || slugs.include?(base_slug)
@@ -38,7 +45,7 @@ module Simplifions
     end
 
     def slugify(name)
-      name.to_s.gsub(/[\u2018\u2019']/, '').gsub('€', 'eur').parameterize
+      name.to_s.gsub(QUOTES_TO_STRIP, '').gsub(EURO_SIGN, EURO_SLUG).parameterize
     end
   end
 end
