@@ -4,18 +4,13 @@ module Simplifions
 
     def reset!
       Rails.cache.delete(self.class::CACHE_KEY)
-      @process_cache = nil
       @faraday_connection = nil
     end
 
     private
 
-    def cached(&block)
-      if Rails.cache.instance_of?(ActiveSupport::Cache::NullStore)
-        @process_cache ||= block.call
-      else
-        Rails.cache.fetch(self.class::CACHE_KEY, expires_in: cache_ttl, &block)
-      end
+    def cached(&)
+      Rails.cache.fetch(self.class::CACHE_KEY, expires_in: cache_ttl, &)
     end
 
     def faraday_connection
