@@ -9,6 +9,20 @@ RSpec.shared_examples 'an authenticated users controller' do |options = {}|
     end
   end
 
+  describe 'when there is no current_user_id' do
+    it 'redirects to login path' do
+      get :index
+
+      expect(response).to redirect_to(send(login_path_helper))
+    end
+
+    it 'stores the requested location to return to it after login' do
+      get :index
+
+      expect(session[:return_to]).to eq(request.fullpath)
+    end
+  end
+
   describe 'when there is a current_user_id with an id which is not in database' do
     before do
       session[:current_user_id] = '1234567890'
