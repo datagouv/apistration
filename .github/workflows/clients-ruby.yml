@@ -20,7 +20,7 @@ jobs:
       matrix:
         ruby: ['3.2', '3.3', '4.0']
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
       - uses: ruby/setup-ruby@v1.312.0
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -39,7 +39,7 @@ jobs:
     if: github.ref_type != 'tag'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
       - uses: ruby/setup-ruby@v1.312.0
         with:
           ruby-version: '3.3'
@@ -57,7 +57,7 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
 
       - name: Resolve gem from tag
         id: gem
