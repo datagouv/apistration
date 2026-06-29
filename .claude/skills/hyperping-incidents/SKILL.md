@@ -53,8 +53,12 @@ Read it before constructing any write body.
 ### Open an incident
 
 1. Resolve the monitor uuid(s): `hyperping monitors <name>`.
-2. Pick the status page (Entreprise vs Particulier) and `type`.
-3. Build the body (see reference), then:
+2. **Ask the user whether it is an `outage` or an `incident`** unless they
+   already said so explicitly. Do not guess `type` — it sets the severity
+   shown publicly. Use AskUserQuestion: `outage` = service down/unusable,
+   `incident` = degradation, partial failure or data-quality issue.
+3. Pick the status page (Entreprise vs Particulier).
+4. Build the body (see reference), then:
    ```
    hyperping create <<'JSON'
    { "title": {"fr": "..."}, "type": "incident",
@@ -62,7 +66,7 @@ Read it before constructing any write body.
      "updates": [{"type":"investigating","date":"<ISO8601>","text":{"fr":"..."}}] }
    JSON
    ```
-4. To backdate the start, set `updates[0].date` to the real start (UTC).
+5. To backdate the start, set `updates[0].date` to the real start (UTC).
 
 ### Post an update / resolve
 
