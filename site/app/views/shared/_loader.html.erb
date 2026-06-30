@@ -1,3 +1,4 @@
-<div class="loader">
-  <%= image_tag('loading.gif') %>
+<div class="loader" role="status">
+  <%= image_tag('loading.gif', alt: '') %>
+  <span class="fr-sr-only">Chargement en cours</span>
 </div>
