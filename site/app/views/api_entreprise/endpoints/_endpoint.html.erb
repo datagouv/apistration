@@ -13,7 +13,7 @@
 
         <div class="fr-col-4">
           <% endpoint.providers.each do |provider| %>
-            <%= image_tag(provider.image_path, class: %w(provider)) %>
+            <%= image_tag(provider.image_path, alt: "", class: %w(provider)) %>
           <% end %>
         </div>
       </div>
