@@ -1,3 +1,4 @@
+<% content_for :title, t(".#{@rescue_response}.title", default: 'Erreur') rescue content_for :title, 'Erreur' %>
 <div class="fr-container fr-mb-12w fr-mt-12w center">
   <h1 class="text-xl">
     <%= t(".#{@rescue_response}.title") %>

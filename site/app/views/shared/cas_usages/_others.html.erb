@@ -1,11 +1,15 @@
 <h3><%= t('.title').html_safe %></h3>
-<div class="use_cases">
+<ul class="use_cases fr-raw-list">
   <% @other_fiches_pratiques.sample(3).each do |use_case| %>
-    <div class="use_case fr-mt-4v">
+    <li class="use_case fr-mt-4v">
       <%= image_tag("#{api}/cas_usages/pictos/#{use_case.uid}.svg", alt: "") %>
       <h4><%= t(".#{use_case.uid}.title") %></h4>
       <p><%= t(".#{use_case.uid}.description") %></p>
-      <%= link_to t('.link'), cas_usage_path(use_case.uid), class: "fr-btn fr-btn--secondary" %>
-    </div>
+      <%= link_to cas_usage_path(use_case.uid),
+            class: "fr-btn fr-btn--secondary",
+            aria: { label: "#{t('.link')} — #{t(".#{use_case.uid}.title")}" } do %>
+        <%= t('.link') %>
+      <% end %>
+    </li>
   <% end %>
-</div>
+</ul>
