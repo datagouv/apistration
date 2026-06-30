@@ -9,21 +9,21 @@
     <%= t('.format.title') %>
   </h3>
 
-  <% @endpoint.format.each do |format| %>
-    <div>
-      <%= format %>
-    </div>
-  <% end %>
+  <ul>
+    <% @endpoint.format.each do |format| %>
+      <li><%= format %></li>
+    <% end %>
+  </ul>
 
   <h3 class="fr-h6 fr-pt-2w fr-mb-1v">
     <%= t('.parameters.title', count: @endpoint.parameters.count) %>
   </h3>
 
-  <% @endpoint.parameters.each do |parameter| %>
-    <div>
-      <%= parameter %>
-    </div>
-  <% end %>
+  <ul>
+    <% @endpoint.parameters.each do |parameter| %>
+      <li><%= parameter %></li>
+    <% end %>
+  </ul>
 
   <h3 class="fr-h6 fr-pt-2w fr-mb-1v">
     <%= t('.availability.title') %>
@@ -31,8 +31,9 @@
   <turbo-frame id="endpoint_status" src="<%= endpoint_status_path(uid: @endpoint.uid) %>">
     <div class="fr-pb-1w" style="color: grey;">Loading...</div>
   </turbo-frame>
-  <a class="fr-link" title="API Entreprise Status Page" href="https://status.entreprise.api.gouv.fr" target="_blank">
+  <a class="fr-link" title="API Entreprise Status Page" href="https://status.entreprise.api.gouv.fr" target="_blank" rel="noopener noreferrer">
     <%= t('.availability.link') %>
+    <span class="fr-sr-only">(ouvre une nouvelle fenêtre)</span>
   </a>
   <div class="fr-pt-1w">
     <% if @endpoint.maintenances.present? %>
@@ -65,8 +66,9 @@
 
     <%= link_to t('.technical_specifications.cta'), developers_openapi_path(anchor: @endpoint.redoc_anchor), data: { turbo: false }, class: %(fr-btn fr-btn--icon-right fr-icon-arrow-right-line) %>
 
-    <a href="<%= @endpoint.test_cases_external_url %>" target="_blank" class="fr-btn fr-btn--secondary fr-mt-2w">
+    <a href="<%= @endpoint.test_cases_external_url %>" target="_blank" rel="noopener noreferrer" class="fr-btn fr-btn--secondary fr-mt-2w">
       <%= t('.test_cases') %>
+      <span class="fr-sr-only">(ouvre une nouvelle fenêtre)</span>
     </a>
   <% end %>
 

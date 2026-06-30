@@ -1,3 +1,4 @@
+<% content_for :title, t('.title') %>
 <div id="catalogue" class="fr-mb-1v" data-controller="search-catalogue">
   <div class="banner-container">
     <div class="fr-container">
@@ -41,7 +42,7 @@
           <%= render @endpoints %>
         </div>
 
-        <div class="fr-alert fr-alert--info fr-mt-4v" data-search-catalogue-target="noResults" style="display: none;">
+        <div class="fr-alert fr-alert--info fr-mt-4v" data-search-catalogue-target="noResults" aria-live="polite" aria-atomic="true" style="display: none;">
           <p><%= t('.search.no_results') %></p>
         </div>
       </div>

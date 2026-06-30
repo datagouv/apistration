@@ -1,7 +1,12 @@
 <turbo-frame id="endpoint_status">
   <% if @endpoint.ping_url %>
     <div class="fr-pb-1w">
-      <%= t('.real_time') %> : <a href="<%= @endpoint.ping_url %>" target="_blank"><span class="api-status api-status-<%= @endpoint.api_status %>"></span></a>
+      <%= t('.real_time') %> :
+      <a href="<%= @endpoint.ping_url %>" target="_blank" rel="noopener noreferrer"
+         aria-label="Statut temps réel : <%= @endpoint.api_status %> (nouvelle fenêtre)">
+        <span class="api-status api-status-<%= @endpoint.api_status %>" aria-hidden="true"></span>
+        <span class="fr-sr-only"><%= @endpoint.api_status %></span>
+      </a>
     </div>
   <% end %>
 </turbo-frame>

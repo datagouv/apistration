@@ -1,3 +1,4 @@
+<% content_for :title, @endpoint.title %>
 <% layout_main_bloc = 8 %>
 <article id="<%= dom_id(@endpoint) %>" class="endpoint">
   <h1>
@@ -104,9 +105,9 @@
       <% if @endpoint.alert.present? %>
         <div class="fr-mt-4w fr-mb-4w">
           <div class="fr-alert fr-alert--warning fr-mb-2w">
-            <h3 class="fr-alert__title">
+            <p class="fr-alert__title">
               <%= raw @endpoint.alert['title'] %>
-            </h3>
+            </p>
             <p>
               <%= markdown_to_html(@endpoint.alert['description']) %>
             </p>
