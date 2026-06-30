@@ -1,12 +1,12 @@
 <turbo-frame id="main-modal-content">
   <div class="single-page">
     <h3 id="<%= dom_id(@token, :token_use_title) %>">
-      <span class="fr-icon-arrow-right-line fr-icon--lg"></span>
+      <span class="fr-icon-arrow-right-line fr-icon--lg" aria-hidden="true"></span>
       <%= t('.title') %>
     </h3>
     <p class="fr-mb-4v">
-    <%= t('.description', 
-        demandeur: @token.demandeur.full_name, 
+    <%= t('.description',
+        demandeur: @token.demandeur.full_name,
         token_id: @token.id,
         remaining_time: distance_of_time_in_words(Time.zone.now, @token.end_timestamp)
       ).html_safe %>
@@ -21,13 +21,13 @@
     <p>
       <%= t('.ask_for_token_prolongation_description').html_safe %>
       <%= link_to(
-            t('shared.links.to_datapass_html', external_id: @token.authorization_request.external_id),
-            datapass_authorization_request_url(@token.authorization_request), 
+            datapass_authorization_request_url(@token.authorization_request),
             id: :authorization_request_link,
-            class: %w(fr-link),
+            class: %w(fr-link fr-link--external),
             target: '_blank',
-            rel: 'noopener noreferrer')
-          %>
+            rel: 'noopener noreferrer') do %>
+        <%= t('shared.links.to_datapass_html', external_id: @token.authorization_request.external_id) %><span class="fr-sr-only">(nouvelle fenêtre)</span>
+      <% end %>
     </p>
   </div>
 </turbo-frame>

@@ -1,15 +1,16 @@
+<% content_for :title, t('.title', title: @token&.intitule || 'Jeton') %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-pb-2w">
     <div class="fr-card fr-card--horizontal fr-card--no-arrow">
       <div class="fr-card__body">
         <div class="fr-card__content">
-          <h4 class="fr-card__title">
+          <h2 class="fr-card__title">
             <%= t('.title', title: @token.intitule) %>
 
             <span class="fr-text--sm fr-m-0 pull-right">
               <%= link_to t('.links.user_tokens', external_id: @token.authorization_request.external_id).html_safe, authorization_request_path(id: @token.authorization_request.id), id: :user_tokens_link, class: %w(fr-link fr-link--sm fr-icon-arrow-right-line fr-link--icon-right) %>
             </span>
-          </h4>
+          </h2>
 
           <div class="fr-card__desc">
             <ul>
@@ -44,9 +45,9 @@
   </div>
 
   <div class="fr-col-12 fr-pb-2w">
-    <h5>
+    <h3>
       <%= t('.requests_details.title', limit: @stats_facade.last_requests_limit) %>
-    </h5>
+    </h3>
 
     <%= render partial: 'shared/metabase', locals: { metabase_url: @stats_facade.last_requests_metabase_url, height: '430px' } %>
   </div>

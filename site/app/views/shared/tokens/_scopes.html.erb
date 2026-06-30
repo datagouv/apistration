@@ -7,11 +7,11 @@
   <% else %>
     <% scopes.each_pair do |key, values| %>
       <section class="fr-accordion">
-        <span class="fr-accordion__title" tabindex="0" >
+        <h3 class="fr-accordion__title">
           <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-<%= key %>">
             <%= key %>
           </button>
-        </span>
+        </h3>
         <div class="fr-collapse" id="accordion-<%= key %>">
           <%= render partial: 'shared/tokens/scopes',
             locals: {
