@@ -209,7 +209,7 @@ fr:
         description: "Consultez les <strong>fiches pratiques des cas d’usages & les guides des modalités d’appel</strong> de l’API Particulier"
         simplifions:
           title: "Cas d’usages"
-          description: "L’API Particulier est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-particulier#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr</a> :"
+          description: "L’API Particulier est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-particulier#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr<span class=\"fr-sr-only\"> (nouvelle fenêtre)</span></a> :"
         internal:
           title: "Fiches pratiques"
         cards:

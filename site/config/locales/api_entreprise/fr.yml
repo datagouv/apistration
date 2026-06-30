@@ -327,7 +327,7 @@ fr:
         description: "Consultez les <strong>fiches pratiques des cas d’utilisation</strong> de l’API Entreprise.<br>Retrouvez, entre autres, les <strong>données utiles</strong> pour les cas d’usages."
         simplifions:
           title: "Cas d’usages"
-          description: "L’API Entreprise est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-entreprise#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr</a> :"
+          description: "L’API Entreprise est utile pour les cas d’usages suivants, référencés dans <a href=\"https://simplifions.data.gouv.fr/solutions/bouquet-api-entreprise#cas-usages-simplifiables\" target=\"_blank\" rel=\"noopener noreferrer\">simplifions.data.gouv.fr<span class=\"fr-sr-only\"> (nouvelle fenêtre)</span></a> :"
         internal:
           title: "Fiches pratiques"
         cards:

@@ -5,7 +5,9 @@
       <p class="fr-col-12 fr-text--lead"><%= t('.demo_description') %></p>
     </div>
     <div>
-     <%= link_to t('.demo_link_title'), t('.demo_link'), class: %w[fr-btn fr-btn--lg fr-m-1w], target: '_blank' %>
+     <%= link_to t('.demo_link'), class: %w[fr-btn fr-btn--lg fr-m-1w], target: '_blank', rel: 'noopener noreferrer' do %>
+       <%= t('.demo_link_title') %><span class="fr-sr-only"> (nouvelle fenêtre)</span>
+     <% end %>
     </div>
   </div>
 </section>

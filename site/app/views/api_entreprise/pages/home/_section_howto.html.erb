@@ -5,7 +5,7 @@
         <div class="left-info--text">
           <h2 class="fr-h3"><%= t('.title') %></h2>
           <p class="fr-text--lg"><%= t('.description').html_safe %></p>
-          <a href="https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau" class="fr-link" target="_blank" rel="noopener"><%= t('.check_eligibity') %></a>
+          <a href="https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau" class="fr-link" target="_blank" rel="noopener"><%= t('.check_eligibity') %><span class="fr-sr-only"> (nouvelle fenêtre)</span></a>
         </div>
 
         <div class="left-info--cards fr-col-12 fr-grid-row">
@@ -24,7 +24,7 @@
             <div class="fr-card__body">
               <div class="fr-card__content">
                 <h3 class="fr-h4 fr-card__title">
-                  <a href="https://annuaire-entreprises.data.gouv.fr/" target="_blank" rel="noopener"><%= t('.annuaire_data_link') %></a>
+                  <a href="https://annuaire-entreprises.data.gouv.fr/" target="_blank" rel="noopener"><%= t('.annuaire_data_link') %><span class="fr-sr-only"> (nouvelle fenêtre)</span></a>
                 </h3>
                 <p class="fr-card__desc"><%= t('.annuaire_data_description').html_safe %></p>
               </div>
