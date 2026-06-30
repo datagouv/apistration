@@ -1,5 +1,8 @@
 <turbo-frame id="current_status">
   <a class="fr-link" href="https://status.<%= namespace == 'api_entreprise' ? 'entreprise' : 'particulier' %>.api.gouv.fr" title="API <%= namespace.humanize %> Status Page" target="_blank">
-    <span class="circle circle-<%= status_to_color(@current_status) %> fr-mr-1w"></span> <%= t('.title') %>
+    <span class="circle circle-<%= status_to_color(@current_status) %> fr-mr-1w" aria-hidden="true"></span>
+    <span class="fr-sr-only"><%= @current_status %> — </span>
+    <%= t('.title') %>
+    <span class="fr-sr-only">(nouvelle fenêtre)</span>
   </a>
 </turbo-frame>
