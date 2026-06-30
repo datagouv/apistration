@@ -13,6 +13,9 @@
       <div class="fr-col-12 fr-col-sm-4 fr-col-md-3">
         <nav class="fr-sidemenu" aria-label="Menu latéral">
           <div class="fr-sidemenu__inner">
+            <button class="fr-sidemenu__btn" hidden aria-controls="fr-sidemenu-wrapper" aria-expanded="false">
+              Catégories
+            </button>
             <div class="fr-collapse" id="fr-sidemenu-wrapper">
               <ul class="fr-sidemenu__list">
                 <% @faq_entries_grouped_by_categories.keys.each do |category_name| %>
