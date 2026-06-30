@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" data-fr-scheme="light">
   <head>
-    <title><%= t('.title') %></title>
+    <title><%= content_for?(:title) ? "#{yield(:title)} — #{t('.title')}" : t('.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <% unless Rails.env.production? %>
       <meta name="robots" content="noindex">
@@ -21,6 +21,13 @@
   </head>
 
   <body>
+    <div class="fr-skiplinks">
+      <nav class="fr-container" role="navigation" aria-label="Accès rapide">
+        <ul class="fr-skiplinks__list">
+          <li><a class="fr-link" href="#main-content">Aller au contenu</a></li>
+        </ul>
+      </nav>
+    </div>
     <%= render partial: 'shared/development_warning' %>
     <%= render partial: 'shared/impersonate' %>
     <%= render partial: 'shared/matomo' %>
