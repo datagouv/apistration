@@ -137,7 +137,7 @@ fr:
           title: "Formulaire QF"
           description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
     links:
-      to_datapass: "N<sup>o</sup>%{external_id}"
+      to_datapass_html: "N<sup>o</sup>%{external_id}"
     transfer_tokens:
       create:
         success:
@@ -404,7 +404,7 @@ fr:
         particulier: API&nbsp;Particulier
         no_action: Aucune action attendue
         links:
-          to_datapass: "Datapass n°%{external_id}"
+          to_datapass_html: "Datapass n°%{external_id}"
           profile: Vos informations
         table:
           head:

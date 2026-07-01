@@ -8,7 +8,7 @@
       <%= f.label :owner,
         t('.label',
           link_to_datapass: link_to(
-            t('shared.links.to_datapass', external_id: @prolong_token_wizard.token.authorization_request.external_id).html_safe,
+            t('shared.links.to_datapass_html', external_id: @prolong_token_wizard.token.authorization_request.external_id),
             datapass_authorization_request_url(@prolong_token_wizard.token.authorization_request),
             id: :authorization_request_link,
             class: %w(fr-link),

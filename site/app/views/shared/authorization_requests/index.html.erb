@@ -36,7 +36,7 @@
               <h2 class="fr-h6 fr-mb-0"><%= authorization_request.intitule %></h2>
               <%= authorization_request_status_badge(authorization_request) %>
               <span class="fr-hint-text">
-                <%= link_to t('.links.to_datapass', external_id: authorization_request.external_id).html_safe,
+                <%= link_to t('.links.to_datapass_html', external_id: authorization_request.external_id),
                   datapass_authorization_request_url(authorization_request),
                   id: dom_id(authorization_request, :authorization_request_link),
                   class: %w(fr-link fr-text--sm fr-mt-2v),
