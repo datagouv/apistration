@@ -24,8 +24,9 @@
             t('shared.links.to_datapass_html', external_id: @token.authorization_request.external_id),
             datapass_authorization_request_url(@token.authorization_request), 
             id: :authorization_request_link,
-            class: %w(fr-link), 
-            target: '_blank')
+            class: %w(fr-link),
+            target: '_blank',
+            rel: 'noopener noreferrer')
           %>
     </p>
   </div>

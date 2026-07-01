@@ -12,7 +12,8 @@
             datapass_authorization_request_url(@prolong_token_wizard.token.authorization_request),
             id: :authorization_request_link,
             class: %w(fr-link),
-            target: '_blank')
+            target: '_blank',
+            rel: 'noopener noreferrer')
           ).html_safe %>
       </legend>
       <div class="fr-fieldset__element fr-fieldset__element--inline">

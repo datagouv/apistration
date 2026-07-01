@@ -17,7 +17,8 @@
       datapass_authorization_request_url(authorization_request),
       id: :authorization_request_link,
       class: %w(fr-link fr-text--xs),
-      target: '_blank'
+      target: '_blank',
+      rel: 'noopener noreferrer'
     %>
     <% else %>
       <span> <%= t('shared.links.to_datapass_html', external_id: authorization_request.external_id) %></span>

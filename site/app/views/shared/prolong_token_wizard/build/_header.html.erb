@@ -10,9 +10,10 @@
       t('shared.links.to_datapass_html', external_id: prolong_token_wizard.token.authorization_request.external_id),
       datapass_authorization_request_url(prolong_token_wizard.token.authorization_request), 
       id: :authorization_request_link,
-      class: %w(fr-link), 
-      target: '_blank'
-    ).html_safe, 
+      class: %w(fr-link),
+      target: '_blank',
+      rel: 'noopener noreferrer'
+    ).html_safe,
     api: t("#{namespace}.api"),
     api_name: t("#{namespace}.name")
     ).html_safe
