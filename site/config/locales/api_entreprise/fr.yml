@@ -477,6 +477,11 @@ fr:
     authorization_requests:
       index:
         page_title: Mes demandes
+      show:
+        page_title: Mon habilitation
+    blog_posts:
+      show:
+        page_title: Article
     transfer_tokens:
       new:
         page_title: ""

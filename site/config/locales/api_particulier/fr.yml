@@ -128,6 +128,10 @@ fr:
         page_title: Statut des API
       redoc:
         page_title: ""
+      redoc_v2:
+        page_title: Documentation OpenAPI v2
+      redoc_v3:
+        page_title: Documentation OpenAPI v3
 
     endpoints:
       index:
@@ -514,6 +518,11 @@ fr:
     authorization_requests:
       index:
         page_title: Mes demandes
+      show:
+        page_title: Mon habilitation
+    blog_posts:
+      show:
+        page_title: Article
     transfer_tokens:
       new:
         page_title: ""
