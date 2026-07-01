@@ -12,8 +12,8 @@ RSpec.describe 'Simple pages', app: :api_particulier do
   context 'with RGAA 9.2/12.6/12.7 layout landmarks' do
     before { visit root_path }
 
-    it 'has a main landmark targeting #main-content' do
-      expect(page).to have_css('main#main-content')
+    it 'has a main landmark targeting #contenu' do
+      expect(page).to have_css('main#contenu')
     end
 
     it 'has a banner landmark on the header' do
@@ -21,7 +21,7 @@ RSpec.describe 'Simple pages', app: :api_particulier do
     end
 
     it 'has a skip link to main content' do
-      expect(page).to have_css('.fr-skiplinks a[href="#main-content"]')
+      expect(page).to have_css('.fr-skiplinks a[href="#contenu"]')
     end
 
     it 'has a skip link to navigation' do
