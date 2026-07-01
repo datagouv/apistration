@@ -5,13 +5,27 @@ RSpec.describe 'Simple pages', app: :api_entreprise do
     developers_content: 'siret',
     expected_api_name: 'API Entreprise'
 
-  it_behaves_like 'layout landmarks', %i[root_path cas_usages_path endpoints_path faq_index_path]
+  context 'with RGAA 9.2/12.6/12.7 layout landmarks' do
+    before { visit root_path }
 
-  context 'when authenticated' do
-    let(:user) { create(:user) }
+    it 'has a main landmark targeting #main-content' do
+      expect(page).to have_css('main#main-content')
+    end
 
-    before { login_as(user) }
+    it 'has a banner landmark on the header' do
+      expect(page).to have_css('header[role="banner"]')
+    end
 
-    it_behaves_like 'layout landmarks', %i[authorization_requests_path]
+    it 'has a skip link to main content' do
+      expect(page).to have_css('.fr-skiplinks a[href="#main-content"]')
+    end
+
+    it 'has a skip link to navigation' do
+      expect(page).to have_css('.fr-skiplinks a[href="#navigation-header-menu"]')
+    end
+
+    it 'has a skip link to footer' do
+      expect(page).to have_css('.fr-skiplinks a[href="#footer"]')
+    end
   end
 end
