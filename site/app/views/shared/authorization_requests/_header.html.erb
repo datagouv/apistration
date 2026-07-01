@@ -13,14 +13,15 @@
     <b><%= t('.delivered_at', humanized_date: friendly_format_from_timestamp(authorization_request.created_at)) %></b>
     -
     <% if to_datapass %>
-    <%= link_to t('shared.links.to_datapass', external_id: authorization_request.external_id).html_safe,
+    <%= link_to t('shared.links.to_datapass_html', external_id: authorization_request.external_id),
       datapass_authorization_request_url(authorization_request),
       id: :authorization_request_link,
       class: %w(fr-link fr-text--xs),
-      target: '_blank'
+      target: '_blank',
+      rel: 'noopener noreferrer'
     %>
     <% else %>
-      <span> <%= t('shared.links.to_datapass', external_id: authorization_request.external_id).html_safe %></span>
+      <span> <%= t('shared.links.to_datapass_html', external_id: authorization_request.external_id) %></span>
     <% end %>
   </span>
 </div>
