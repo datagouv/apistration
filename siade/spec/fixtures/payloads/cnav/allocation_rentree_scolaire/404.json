@@ -1,4 +1,4 @@
 {
-  "errorCode": 40401,
-  "error": "L'API n'existe pas."
+  "errorCode": 40411,
+  "error": "Il n'a pas été possible de récupérer l'information sur la personne"
 }
