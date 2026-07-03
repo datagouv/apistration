@@ -36,7 +36,7 @@
     <%= render partial: 'shared/announcement_banner' %>
     <%= render partial: 'shared/api_entreprise/header' %>
 
-    <main id="contenu">
+    <main role="main" id="contenu" tabindex="-1">
       <% if content_for?(:no_container) %>
         <%= yield(:no_container) %>
       <% else %>
