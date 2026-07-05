@@ -22,6 +22,13 @@ RSpec.describe 'Provider: habilitations status filter', app: :api_entreprise do
     expect(page).to have_text('Demande refusée')
   end
 
+  it 'states that the table only covers requests submitted within the selected date range' do
+    visit provider_dashboard_habilitations_path(provider_uid: 'insee',
+      filter: { date_from: '2026-01-01', date_to: '2026-02-15' })
+
+    expect(page).to have_text('Ne sont listées que les demandes soumises entre le 01/01/2026 et le 15/02/2026')
+  end
+
   it 'narrows the table to the selected status' do
     visit provider_dashboard_habilitations_path(provider_uid: 'insee', filter: { statuses: ['refused'] })
 

@@ -21,6 +21,11 @@
       ] %>
 
     <p><%= t('.description') %></p>
+    <p class="fr-hint-text">
+      <%= t('.date_scope_hint',
+        from: @filter.date_from.strftime('%d/%m/%Y'),
+        to: @filter.date_to.strftime('%d/%m/%Y')) %>
+    </p>
 
     <%= form_with url: section_path, method: :get, data: { turbo_frame: 'dashboard_habilitations' }, class: 'fr-mb-2w' do %>
       <%= hidden_field_tag 'filter[date_from]', @filter.date_from&.iso8601 %>
