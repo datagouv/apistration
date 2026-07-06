@@ -15,20 +15,17 @@ class EditorDelegation::AutoCreate < ApplicationInteractor
   private
 
   def editor
-    return @editor if defined?(@editor)
-
-    @editor = Editor.find_by(':demarche = ANY(form_uids)', demarche: context.authorization_request.demarche)
+    @editor ||= Editor.for_demarche(context.authorization_request.demarche).take
   end
 
   def warn_editor_not_delegable
-    Sentry.set_context(
-      'Editor delegation auto-creation',
-      editor_id: editor.id,
-      authorization_request_id: context.authorization_request.id
-    )
-    Sentry.capture_message(
+    MonitoringService.instance.track(
       "Editor #{editor.name} matches form #{context.authorization_request.demarche} but is not delegable",
-      level: :warning
+      level: :warning,
+      context: {
+        editor_id: editor.id,
+        authorization_request_id: context.authorization_request.id
+      }
     )
   end
 end

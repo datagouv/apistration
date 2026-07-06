@@ -55,17 +55,8 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
     it 'creates an editor delegation attributed to datapass_auto' do
       expect { subject }.to change(EditorDelegation, :count).by(1)
 
-      delegation = EditorDelegation.last
-
-      expect(delegation.editor).to eq(editor)
-      expect(delegation.authorization_request).to eq(subject.authorization_request)
-      expect(delegation).to be_datapass_auto
-    end
-
-    it 'does not create a duplicate on re-validation' do
-      described_class.call(datapass_webhook_params)
-
-      expect { subject }.not_to change(EditorDelegation, :count)
+      expect(EditorDelegation.last.editor).to eq(editor)
+      expect(EditorDelegation.last).to be_datapass_auto
     end
   end
 

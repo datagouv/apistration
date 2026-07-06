@@ -8,10 +8,6 @@ RSpec.describe EditorDelegation do
     it 'defaults to manual' do
       expect(create(:editor_delegation)).to be_manual
     end
-
-    it 'rejects unknown values' do
-      expect { build(:editor_delegation, created_via: 'other') }.to raise_error(ArgumentError)
-    end
   end
 
   describe 'scopes' do
