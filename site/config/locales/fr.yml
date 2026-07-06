@@ -612,6 +612,7 @@ fr:
           one: "%{count} demande sur la période"
           other: "%{count} demandes sur la période"
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
+        date_scope_hint: "Ne sont listées que les demandes soumises entre le %{from} et le %{to} (période sélectionnée ci-dessus)."
         status_filter: Filtrer par statut
         status_all: Tous les statuts
         charts:
