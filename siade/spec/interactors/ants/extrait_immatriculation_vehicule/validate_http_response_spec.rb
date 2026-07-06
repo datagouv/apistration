@@ -1,47 +1,37 @@
 RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse, type: :validate_response do
-  subject { described_class.call(response:, params:) }
-
-  let(:params) do
-    {
-      nom_naissance: 'DUPONT',
-      prenoms: ['JEAN'],
-      sexe_etat_civil: 'M',
-      annee_date_naissance: 1955,
-      mois_date_naissance: 12,
-      jour_date_naissance: 8,
-      code_cog_insee_commune_naissance: '59001'
-    }
-  end
+  subject { described_class.call(response:) }
 
   context 'with a http ok' do
-    let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
-
-    describe 'when response body indicates found' do
-      let(:body) { read_payload_file('ants/found_siv.xml') }
+    describe 'when response indicates success' do
+      let(:response) { instance_double(Net::HTTPOK, code: '200', body: { code: 0, libelle: 'Succès', listeDossiers: [{}] }.to_json) }
 
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
     end
 
-    describe 'when response body indicates not found' do
-      let(:body) { read_payload_file('ants/not_found.xml') }
+    describe 'when response indicates the immatriculation was not found (code 60)' do
+      let(:response) { instance_double(Net::HTTPOK, code: '200', body: { code: 60, libelle: 'Aucune réponse trouvée.', listeDossiers: nil }.to_json) }
 
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    end
 
-      context 'with binary encoding (ASCII-8BIT)' do
-        let(:body) { read_payload_file('ants/not_found.xml').force_encoding('ASCII-8BIT') }
+    describe 'when response indicates the identity does not match (code 64)' do
+      let(:response) { instance_double(Net::HTTPOK, code: '200', body: { code: 64, libelle: "Le numéro d'immatriculation n'est pas cohérent avec la personne.", listeDossiers: nil }.to_json) }
 
-        it 'handles encoding compatibility without error' do
-          expect { subject }.not_to raise_error
-        end
+      it { is_expected.to be_a_failure }
 
-        it { is_expected.to be_a_failure }
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    end
 
-        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
-      end
+    describe 'when response has an unrecognized code' do
+      let(:response) { instance_double(Net::HTTPOK, code: '200', body: { code: 99, libelle: 'Erreur inconnue', listeDossiers: nil }.to_json) }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
   end
 
