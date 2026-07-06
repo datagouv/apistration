@@ -10,10 +10,6 @@ fiche:
     controller: 'api_particulier/v3_and_more/men/scolarites_with_civility'
     ping_url: &men_scolarite_ping_url 'https://particulier.api.gouv.fr/api/men_scolarite/ping'
     position: 499
-    alert: &men_scolarite_alert
-      title: "💡 Données de bourse bientôt disponibles"
-      description: |+
-        Le statut boursier et l'échelon de bourse de l'élève seront bientôt redistribués par le fournisseur de données. La mise en production de ces nouvelles données est attendue pour juin.
     historique: |+
       **Ce que change le passage à la V.5 par rapport à la V.4 :**
 
@@ -140,7 +136,6 @@ fiche:
     controller: 'api_particulier/v3_and_more/men/scolarites_with_civility'
     ping_url: *men_scolarite_ping_url
     position: 500
-    alert: *men_scolarite_alert
     historique: |+
       **Ce que change le passage à la V.4 par rapport à la V.3 :**
 
@@ -182,7 +177,6 @@ fiche:
     controller: 'api_particulier/v3_and_more/men/scolarites_with_civility'
     ping_url: *men_scolarite_ping_url
     position: 501
-    alert: *men_scolarite_alert
     perimeter: *men_scolarite_perimeter
     parameters_details:
       description: |+
