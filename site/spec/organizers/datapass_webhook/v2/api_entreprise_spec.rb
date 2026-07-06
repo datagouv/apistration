@@ -49,6 +49,26 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
     end
   end
 
+  describe 'when the form belongs to a delegable editor' do
+    let!(:editor) { create(:editor, :delegable, form_uids: ['api-entreprise']) }
+
+    it 'creates an editor delegation attributed to datapass_auto' do
+      expect { subject }.to change(EditorDelegation, :count).by(1)
+
+      delegation = EditorDelegation.last
+
+      expect(delegation.editor).to eq(editor)
+      expect(delegation.authorization_request).to eq(subject.authorization_request)
+      expect(delegation).to be_datapass_auto
+    end
+
+    it 'does not create a duplicate on re-validation' do
+      described_class.call(datapass_webhook_params)
+
+      expect { subject }.not_to change(EditorDelegation, :count)
+    end
+  end
+
   describe 'Mailjet adding contacts' do
     it 'adds contacts to Entreprise mailjet list' do
       expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
