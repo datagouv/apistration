@@ -517,7 +517,7 @@ fr:
         page_title: Mon compte
     authorization_requests:
       index:
-        page_title: Mes demandes
+        page_title: Mes habilitations
       show:
         page_title: Mon habilitation
     blog_posts:
