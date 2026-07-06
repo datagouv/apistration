@@ -117,6 +117,7 @@ fiche:
                 - M
                 - F
                 example: M
+                nullable: true
               annee_date_naissance:
                 title: Année de naissance
                 type: integer
@@ -144,6 +145,7 @@ fiche:
                 type: string
                 description: Le code du département de naissance du demandeur.
                 example: '75'
+                nullable: true
           adresse_particulier:
             title: Adresse
             scope: ants_extrait_immatriculation_vehicule_adresse_particulier

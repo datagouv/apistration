@@ -1,0 +1,49 @@
+{
+  "code": 0,
+  "libelle": "Succès",
+  "listeDossiers": [
+    {
+      "immatriculation": {
+        "numImmat": "TT-939-WA",
+        "datePremImmat": "2009-02-18"
+      },
+      "vehicule": {
+        "caracteristiquesTechniques": {
+          "marque": "PEUGEOT",
+          "tvv": "4H5FTF",
+          "denominationCommerciale": "308",
+          "ptac": 2145,
+          "categorieCe": "M1",
+          "genreNational": "VP",
+          "cylindree": 1598,
+          "codeEnergie": "ES",
+          "co2": 194,
+          "classeEnvironnementCe": "70/220*2003/76EURO4"
+        }
+      },
+      "personne": {
+        "identite": {
+          "codeQualite": "TIT",
+          "libelleQualite": "Titulaire",
+          "estPhysique": true,
+          "nomNaiss": "DUPONT",
+          "prenom": "JEAN",
+          "nomUsage": null
+        },
+        "adresse": {
+          "etgEscApt": null,
+          "cmplt": null,
+          "numeroVoie": "12",
+          "extIndRep": null,
+          "typeVoie": "AVENUE",
+          "nomVoie": "DES CHAMPS",
+          "lieuDit": null,
+          "boitePostale": null,
+          "codePostal": 59000,
+          "codeInsee": "59350",
+          "commune": "LILLE"
+        }
+      }
+    }
+  ]
+}
