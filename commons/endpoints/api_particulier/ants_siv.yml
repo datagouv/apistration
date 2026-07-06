@@ -216,11 +216,13 @@ fiche:
             type: string
             description: Le statut du demandeur du dossier d'immatriculation. Si le véhicule
               est en location longue durée (LLD, LCB, LCL), alors il s'agit du locataire.
+              Si le demandeur vient d'acquérir le véhicule, il s'agit de l'acquéreur.
               Dans les autres cas, c'est 'titulaire' ou 'cotitulaire'.
             enum:
             - locataire
             - titulaire
             - cotitulaire
+            - acquereur
             example: titulaire
           donnees_immatriculation_vehicule:
             title: Données d'immatriculation du véhicule
