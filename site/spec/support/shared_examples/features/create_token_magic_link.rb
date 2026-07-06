@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.shared_examples 'a token magic link creation feature' do |options = {}|
-  mailer_class = options[:mailer_class] # rubocop:disable RSpec/LeakyLocalVariable
+  mailer_class = options[:mailer_class]
 
   subject do
     visit send(token_transfer_path_helper, token)

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :audit_notification do
     transient do
-      authorization_request { create(:authorization_request, :with_demandeur) } # rubocop:disable FactoryBot/FactoryAssociationWithStrategy
+      authorization_request { create(:authorization_request, :with_demandeur) }
     end
 
     contact_emails do
