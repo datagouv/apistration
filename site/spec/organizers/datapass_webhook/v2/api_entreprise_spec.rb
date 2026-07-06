@@ -49,8 +49,8 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
     end
   end
 
-  describe 'when the form belongs to a delegable editor' do
-    let!(:editor) { create(:editor, :delegable, form_uids: ['api-entreprise']) }
+  describe 'when the form belongs to an editor' do
+    let!(:editor) { create(:editor, form_uids: ['api-entreprise']) }
 
     it 'creates an editor delegation attributed to datapass_auto' do
       expect { subject }.to change(EditorDelegation, :count).by(1)
