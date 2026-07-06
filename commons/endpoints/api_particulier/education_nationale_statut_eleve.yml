@@ -34,7 +34,7 @@ fiche:
 
         **Les établissements et formations suivants ne sont pas couverts par l'API** :
         - ❌ établissements privés hors contrat ;
-        - ❌ lycées agricoles (à venir pour l'année scolaire 2026-2027) ;
+        - ❌ lycées agricoles ;
         - ❌ instruction dans la famille ;
         - ❌ BTS et Classe préparatoire aux grandes écoles, diffusés par l'[API Statut étudiant](https://particulier.api.gouv.fr/catalogue/mesri/statut_etudiant).
       geographical_scope_description: &men_scolarite_geo |+
