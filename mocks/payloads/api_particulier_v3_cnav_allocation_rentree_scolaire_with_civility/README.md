@@ -49,7 +49,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=3' -d 'jourDateNaissance=12' -d 'codeCogInseeCommuneNaissance=75112' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
   ```
 
   </p>
@@ -104,7 +104,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=BERNARD' -d 'prenoms[]=LUCAS' -d 'anneeDateNaissance=1978' -d 'moisDateNaissance=1' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=13055' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
   ```
 
   </p>
@@ -160,7 +160,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=SOPHIE' -d 'prenoms[]=MARIE' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=7' -d 'jourDateNaissance=22' -d 'codeCogInseeCommuneNaissance=69123' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
-    --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
   ```
 
   </p>
@@ -220,7 +220,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateNaissance=1972' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
   ```
 
   </p>
@@ -280,7 +280,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=DELANOUE' -d 'prenoms[]=Jean-Marie' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
   ```
 
   </p>

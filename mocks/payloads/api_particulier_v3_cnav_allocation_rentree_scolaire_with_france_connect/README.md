@@ -47,7 +47,7 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -105,7 +105,7 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/cnav/allocation_rentree_scolaire/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/france_connect?recipient=13002526500013"
   ```
 
   </p>
