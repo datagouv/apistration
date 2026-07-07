@@ -4,6 +4,12 @@ RSpec.describe EditorDelegation do
     it { is_expected.to belong_to(:authorization_request) }
   end
 
+  describe 'created_via' do
+    it 'defaults to manual' do
+      expect(create(:editor_delegation)).to be_manual
+    end
+  end
+
   describe 'scopes' do
     let!(:active_delegation) { create(:editor_delegation) }
     let!(:revoked_delegation) { create(:editor_delegation, revoked_at: Time.zone.now) }

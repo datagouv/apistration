@@ -8,6 +8,7 @@ module DatapassWebhook
       ::DatapassWebhook::FindOrCreateAuthorizationRequest,
       ::DatapassWebhook::FindOrCreateOrganization,
       ::DatapassWebhook::CreateOrProlongToken,
+      ::DatapassWebhook::CreateEditorDelegation,
       ::DatapassWebhook::ArchivePreviousAuthorizationRequest,
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
       ::DatapassWebhook::RefuseCurrentAuthorizationRequest,
