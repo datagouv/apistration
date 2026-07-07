@@ -1,3 +1,4 @@
+<% content_for :page_title, @endpoint.title %>
 <% layout_main_bloc = 8 %>
 <article id="<%= dom_id(@endpoint) %>" class="endpoint">
   <h1>
@@ -22,10 +23,9 @@
             </p>
             <p>
               <%= t('.incoming.description') %>
-
-              <p class="fr-text--sm fr-mt-2w">
-                <%= t('.incoming.link_documentation').html_safe %> <%= link_to t('.incoming.cta'), developers_openapi_path(anchor: @endpoint.redoc_anchor), data: { turbo: false }, class: %() %>
-              </p>
+            </p>
+            <p class="fr-text--sm fr-mt-2w">
+              <%= t('.incoming.link_documentation').html_safe %> <%= link_to t('.incoming.cta'), developers_openapi_path(anchor: @endpoint.redoc_anchor), data: { turbo: false }, class: %() %>
             </p>
           </div>
         <% elsif @endpoint.beta? %>
@@ -45,8 +45,8 @@
       </p>
 
 
-    <nav class="" role="navigation">
-        <ul class="">
+    <nav aria-label="Sommaire de la page">
+        <ul>
             <li>
                 <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#perimetre">Périmètre de l'API</a>
             </li>
@@ -76,7 +76,7 @@
       <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
         <div class="fr-col-md-5 fr-col-12 logos">
           <% @endpoint.providers.each do |provider| %>
-            <%= image_tag(provider.image_path, alt: 'Logo du fournisseur de données') %>
+            <%= image_tag(provider.image_path, alt: "Logo de #{provider.name}") %>
           <% end %>
         </div>
 
@@ -105,9 +105,9 @@
       <% if @endpoint.alert.present? %>
         <div class="fr-mt-4w fr-mb-4w">
           <div class="fr-alert fr-alert--warning fr-mb-2w">
-            <h3 class="fr-alert__title">
+            <p class="fr-alert__title">
               <%= raw @endpoint.alert['title'] %>
-            </h3>
+            </p>
             <p>
               <%= markdown_to_html(@endpoint.alert['description']) %>
             </p>
@@ -124,15 +124,16 @@
 
           <p>
             <%= t('.deprecated.description') %>
-            <ul>
-              <% @endpoint.new_endpoints.each do |endpoint| %>
-                <li>
-                  <%= link_to endpoint.title, endpoint_path(uid: endpoint.uid) %>
-                </li>
-              <% end %>
-            </ul>
-            <p class="fr-text--sm fr-mt-2w">
-            <%= t('.deprecated.link_documentation').html_safe %></p>
+          </p>
+          <ul>
+            <% @endpoint.new_endpoints.each do |endpoint| %>
+              <li>
+                <%= link_to endpoint.title, endpoint_path(uid: endpoint.uid) %>
+              </li>
+            <% end %>
+          </ul>
+          <p class="fr-text--sm fr-mt-2w">
+            <%= t('.deprecated.link_documentation').html_safe %>
           </p>
         </div>
       <% end %>
@@ -360,30 +361,24 @@
         </h3>
 
         <p>
-          Cette API et l’utilisation de ses données est soumise aux CGU générales d’API Entreprise, dont voici les principaux éléments auxquels vous vous engagez :
-
-          <ul>
-            <li>
-              <strong>ne demander que les données strictement nécessaires</strong> ;
-            </li>
-            <li>
-              <strong>ne pas utiliser votre jeton d’accès pour une démarche différente</strong> de celle indiquée lors de votre demande (le cas échéant le jeton sera révoqué) ;
-            </li>
-            <li>
-              <strong>présenter les données obtenues uniquement aux seuls agents habilités</strong> et à tracer l’accès de ces agents aux données ;
-            </li>
-            <li>
-              <strong>ne pas commercialiser les données</strong> reçues et à ne pas les communiquer à des tiers en dehors des cas prévus par la loi.
-            </li>
-          </ul>
-
-          L’ensemble des conditions sont consultables et téléchargeables ci-dessous :
-
-          <br>
-          <br>
-
-          <%= link_to t('.cgu.cta'), cgu_path, id: 'cgu_link', class: %w(fr-btn fr-btn--secondary fr-btn--icon-right fr-icon-eye-line), data: { turbo_frame: 'main-modal-content', 'fr-opened': 'false' }, 'aria-controls': 'main-modal' %>
+          Cette API et l'utilisation de ses données est soumise aux CGU générales d'API Entreprise, dont voici les principaux éléments auxquels vous vous engagez :
         </p>
+        <ul>
+          <li>
+            <strong>ne demander que les données strictement nécessaires</strong> ;
+          </li>
+          <li>
+            <strong>ne pas utiliser votre jeton d'accès pour une démarche différente</strong> de celle indiquée lors de votre demande (le cas échéant le jeton sera révoqué) ;
+          </li>
+          <li>
+            <strong>présenter les données obtenues uniquement aux seuls agents habilités</strong> et à tracer l'accès de ces agents aux données ;
+          </li>
+          <li>
+            <strong>ne pas commercialiser les données</strong> reçues et à ne pas les communiquer à des tiers en dehors des cas prévus par la loi.
+          </li>
+        </ul>
+        <p>L'ensemble des conditions sont consultables et téléchargeables ci-dessous :</p>
+        <%= link_to t('.cgu.cta'), cgu_path, id: 'cgu_link', class: %w(fr-btn fr-btn--secondary fr-btn--icon-right fr-icon-eye-line fr-mt-2w), data: { turbo_frame: 'main-modal-content', 'fr-opened': 'false' }, 'aria-controls': 'main-modal' %>
       <% end %>
     </div>
 

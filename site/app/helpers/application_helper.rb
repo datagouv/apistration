@@ -2,8 +2,8 @@ require 'kramdown'
 require 'kramdown-parser-gfm'
 
 module ApplicationHelper
-  def auto_link(text, options = {})
-    Anchored::Linker.auto_link(text, options)
+  def auto_link(text, options = {}, &)
+    Anchored::Linker.auto_link(text, options, &)
   end
 
   def status_to_color(status)
@@ -36,6 +36,32 @@ module ApplicationHelper
     I18n.t(i18n_key)
   end
 
+  def external_link_to(name = nil, href = nil, html_options = {}, &)
+    if block_given?
+      html_options = href if href.is_a?(Hash)
+      href = name
+    end
+
+    html_options = html_options.merge(target: '_blank', rel: 'noopener noreferrer')
+    sr_label = content_tag(:span, '(nouvelle fenêtre)', class: 'fr-sr-only')
+
+    if block_given?
+      link_to(href, html_options) do
+        concat(capture(&))
+        concat(sr_label)
+      end
+    else
+      link_to(safe_join([name, sr_label]), href, html_options)
+    end
+  end
+
+  def full_page_title
+    namespace = controller_path.split('/').first
+    site_name = t("layouts.#{namespace}.application.title")
+    title = content_for?(:page_title) ? content_for(:page_title) : static_page_title
+    title.present? ? "#{title} — #{site_name}" : site_name
+  end
+
   def icon(kind)
     "<span class=\"icon #{kind}\" aria-hidden=\"true\"></span>".html_safe
   end
@@ -46,5 +72,14 @@ module ApplicationHelper
 
   def support_email
     t("#{namespace}.support_email")
+  end
+
+  private
+
+  def static_page_title
+    key = "#{controller_path.tr('/', '.')}.#{action_name}.page_title"
+    return t(key).presence if I18n.exists?(key)
+
+    raise "Missing page title for '#{key}'. Use content_for(:page_title) or add the i18n key." if Rails.env.local?
   end
 end

@@ -16,15 +16,22 @@
   </head>
 
   <body>
+    <div class="fr-skiplinks">
+      <nav class="fr-container" role="navigation" aria-label="Accès rapide">
+        <ul class="fr-skiplinks__list">
+          <li><a class="fr-link" href="#content">Aller au contenu</a></li>
+        </ul>
+      </nav>
+    </div>
     <%= render partial: 'shared/provider/header' %>
 
-    <div class="fr-container fr-mb-5w fr-mt-5w">
+    <main id="content" class="fr-container fr-mb-5w fr-mt-5w">
       <turbo-frame id="alerts">
         <%= render partial: 'shared/alerts' %>
       </turbo-frame>
 
       <%= yield %>
-    </div>
+    </main>
 
     <%= render partial: 'shared/modal' %>
   </body>

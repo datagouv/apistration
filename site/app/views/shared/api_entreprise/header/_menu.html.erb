@@ -7,7 +7,7 @@
 
     <div class="fr-header__menu-links"></div>
     <% if main_site? %>
-      <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal">
+      <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal" tabindex="-1">
         <ul class="fr-nav__list">
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= endpoints_path %>" target="_self" <%= active_link_attribute('catalogue', request.url) %>>
@@ -58,9 +58,7 @@
           <% end %>
 
           <li class="ask-access-link fr-nav__item">
-            <a class="fr-nav__link center" href="https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau" target="_blank">
-              <%= t('.ask_access').html_safe %>
-            </a>
+            <%= external_link_to t('.ask_access').html_safe, 'https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau', class: 'fr-nav__link center' %>
           </li>
         </ul>
       </nav>

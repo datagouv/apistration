@@ -3,7 +3,7 @@
     <div class="fr-card__content">
       <h3 class="fr-card__title fr-h5">
         <%= link_to use_case.url, target: '_blank', rel: 'noopener noreferrer' do %>
-          <% if use_case.icon.present? %><span aria-hidden="true"><%= use_case.icon %></span> <% end %><%= use_case.name %>
+          <% if use_case.icon.present? %><span aria-hidden="true"><%= use_case.icon %></span> <% end %><%= use_case.name %><span class="fr-sr-only">(nouvelle fenêtre)</span>
         <% end %>
       </h3>
       <p class="fr-card__desc"><%= use_case.description %></p>

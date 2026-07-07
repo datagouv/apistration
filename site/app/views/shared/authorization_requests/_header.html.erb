@@ -13,7 +13,7 @@
     <b><%= t('.delivered_at', humanized_date: friendly_format_from_timestamp(authorization_request.created_at)) %></b>
     -
     <% if to_datapass %>
-    <%= link_to t('shared.links.to_datapass_html', external_id: authorization_request.external_id),
+    <%= link_to safe_join([t('shared.links.to_datapass_html', external_id: authorization_request.external_id), content_tag(:span, '(nouvelle fenêtre)', class: 'fr-sr-only')]),
       datapass_authorization_request_url(authorization_request),
       id: :authorization_request_link,
       class: %w(fr-link fr-text--xs),

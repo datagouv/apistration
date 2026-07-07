@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" data-fr-scheme="light">
   <head>
-    <title><%= t('.title') %></title>
+    <title><%= full_page_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <% unless Rails.env.production? %>
       <meta name="robots" content="noindex">
@@ -21,17 +21,28 @@
   </head>
 
   <body>
+    <div class="fr-skiplinks">
+      <nav class="fr-container" role="navigation" aria-label="Accès rapide">
+        <ul class="fr-skiplinks__list">
+          <li><a class="fr-link" href="#contenu">Contenu</a></li>
+          <li><a class="fr-link" href="#navigation-header-menu">Menu</a></li>
+          <li><a class="fr-link" href="#footer">Pied de page</a></li>
+        </ul>
+      </nav>
+    </div>
     <%= render partial: 'shared/development_warning' %>
     <%= render partial: 'shared/impersonate' %>
     <%= render partial: 'shared/matomo' %>
     <%= render partial: 'shared/announcement_banner' %>
     <%= render partial: 'shared/api_particulier/header' %>
 
-    <% if content_for?(:no_container) %>
-      <%= yield(:no_container) %>
-    <% else %>
-      <%= render partial: 'shared/api_particulier/containerized_body' %>
-    <% end %>
+    <main role="main" id="contenu" tabindex="-1">
+      <% if content_for?(:no_container) %>
+        <%= yield(:no_container) %>
+      <% else %>
+        <%= render partial: 'shared/api_particulier/containerized_body' %>
+      <% end %>
+    </main>
 
     <% unless @no_newsletter_banner %>
       <%= render partial: 'shared/newsletter_banner' %>

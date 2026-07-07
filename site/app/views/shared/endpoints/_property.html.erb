@@ -23,7 +23,7 @@
   <div class="fr-pl-2w">
     <% if properties['description'] %>
       <div class="description fr-highlight--beige-gris-galet fr-text--sm fr-pl-2w">
-        <%= simple_format(auto_link(properties['description'], target: '_blank'), {}, wrapper_tag: 'div') %>
+        <%= simple_format(auto_link(properties['description'], target: '_blank', rel: 'noopener noreferrer') { |url| "#{url}<span class=\"fr-sr-only\">(nouvelle fenêtre)</span>".html_safe }, {}, wrapper_tag: 'div') %>
       </div>
     <% end %>
 

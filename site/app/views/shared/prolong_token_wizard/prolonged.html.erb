@@ -1,5 +1,5 @@
 <div class="fr-alert fr-alert--success">
-    <h3 class="fr-alert__title"><%= t('.title', humanized_date: friendly_format_from_timestamp(@prolong_token_wizard.token.exp)) %></h3>
+    <p class="fr-alert__title"><%= t('.title', humanized_date: friendly_format_from_timestamp(@prolong_token_wizard.token.exp)) %></p>
     <p><%= t('.description', api_name: t("#{namespace}.name")) %></p>
 </div>
 

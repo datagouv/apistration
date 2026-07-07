@@ -6,7 +6,7 @@
 
     <div class="fr-header__menu-links"></div>
 
-    <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal">
+    <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal" tabindex="-1">
       <ul class="fr-nav__list">
         <li class="fr-nav__item">
           <a class="fr-nav__link center" href="<%= endpoints_path %>" target="_self" <%= active_link_attribute('catalogue', request.url) %>>
@@ -57,7 +57,7 @@
 
         <li class="ask-access-link fr-nav__item">
           <a class="fr-nav__link center" href="https://datapass.api.gouv.fr/api-particulier" target="_blank">
-            <%= t('.ask_access').html_safe %>
+            <%= t('.ask_access').html_safe %><span class="fr-sr-only"> (nouvelle fenêtre)</span>
           </a>
         </li>
       </ul>

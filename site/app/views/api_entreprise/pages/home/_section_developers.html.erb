@@ -35,7 +35,7 @@
             <h3 class="fr-h4 fr-card__title">
               <%= link_to t('.swagger_link'), developers_openapi_path %>
             </h3>
-            <p class="fr-card__desc"><%= t('.swagger_description') %></p>
+            <p class="fr-card__desc"><%= t('.swagger_description').html_safe %></p>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
             <h3 class="fr-h4 fr-card__title">
               <a href="https://status.entreprise.api.gouv.fr/"><%= t('.status_link') %></a>
             </h3>
-            <div class="fr-card__desc" id="hyperping-badge"></div>
+            <div class="fr-card__desc" id="hyperping-badge" aria-live="polite"></div>
             <script src="https://hyperping.io/badge.js" async></script>
             <script>
               window.onload = function () {

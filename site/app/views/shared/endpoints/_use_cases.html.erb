@@ -19,7 +19,7 @@
       <% cas_usages.first(use_cases_visible_limit).each do |link| %>
         <li class="fr-mb-1w">
           <%= link_to link.url, target: '_blank', rel: 'noopener noreferrer', class: 'fr-tag' do %>
-            <% if link.icon.present? %><span aria-hidden="true" class="fr-mr-1v"><%= link.icon %></span><% end %><%= link.name %>
+            <% if link.icon.present? %><span aria-hidden="true" class="fr-mr-1v"><%= link.icon %></span><% end %><%= link.name %><span class="fr-sr-only">(nouvelle fenêtre)</span>
           <% end %>
         </li>
       <% end %>
@@ -37,7 +37,7 @@
           <% cas_usages.drop(use_cases_visible_limit).each do |link| %>
             <li class="fr-mb-1w">
               <%= link_to link.url, target: '_blank', rel: 'noopener noreferrer', class: 'fr-tag' do %>
-                <% if link.icon.present? %><span aria-hidden="true" class="fr-mr-1v"><%= link.icon %></span><% end %><%= link.name %>
+                <% if link.icon.present? %><span aria-hidden="true" class="fr-mr-1v"><%= link.icon %></span><% end %><%= link.name %><span class="fr-sr-only">(nouvelle fenêtre)</span>
               <% end %>
             </li>
           <% end %>

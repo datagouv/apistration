@@ -23,7 +23,7 @@
       <span class="fr-grid-row">
         <%= parameter %>
         <% if parameter == "FranceConnect" %>
-          <%= image_tag("api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg", size: '25x25', alt: 'Pictogramme fournisseurs de données regroupés', class: %w(fr-ml-1w))%>
+          <%= image_tag("api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg", size: '25x25', alt: '', class: %w(fr-ml-1w))%>
         <% end %>
       </span>
     </li>
@@ -41,8 +41,9 @@
   <turbo-frame id="endpoint_status" src="<%= api_particulier_endpoint_status_path(uid: @endpoint.uid) %>">
     <div class="fr-pb-1w" style="color: grey;">Loading...</div>
   </turbo-frame>
-  <a class="fr-pt-1v fr-link" title="API Particulier Status Page" href="https://status.particulier.api.gouv.fr" target="_blank">
+  <a class="fr-pt-1v fr-link" title="API Particulier Status Page" href="https://status.particulier.api.gouv.fr" target="_blank" rel="noopener noreferrer">
     <%= t('.availability.link') %>
+    <span class="fr-sr-only">(nouvelle fenêtre)</span>
   </a>
   <div class="fr-pt-1w">
     <% if @endpoint.maintenances.present? %>
@@ -82,8 +83,9 @@
   <% else %>
     <%= link_to t('.technical_specifications.cta'), developers_openapi_path(anchor: @endpoint.redoc_anchor), data: { turbo: false }, class: %(fr-btn fr-btn--icon-right fr-icon-arrow-right-line) %>
 
-    <a href="<%= @endpoint.test_cases_external_url %>" target="_blank" class="fr-btn fr-btn--secondary fr-mt-2w">
+    <a href="<%= @endpoint.test_cases_external_url %>" target="_blank" rel="noopener noreferrer" class="fr-btn fr-btn--secondary fr-mt-2w">
       <%= t('.test_cases') %>
+      <span class="fr-sr-only">(nouvelle fenêtre)</span>
     </a>
   <% end %>
 </div>

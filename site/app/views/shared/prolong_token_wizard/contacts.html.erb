@@ -3,9 +3,9 @@
 <div class="fr-p-4v" style="background-color: var(--background-default-grey)">
   <%= render partial: 'shared/prolong_token_wizard/build/stepper', locals: { prolong_token_wizard: @prolong_token_wizard } %>
   <%= form_for @prolong_token_wizard, url: wizard_path, method: :put do |f| %>
-    <h4>
+    <h3>
       <%= t('.subtitle') %>
-    </h4>
+    </h3>
 
     <% if @prolong_token_wizard.authorization_request.api == 'particulier' %>
       <div class="fr-fieldset__element">

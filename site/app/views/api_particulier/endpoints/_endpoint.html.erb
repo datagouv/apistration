@@ -12,7 +12,7 @@
         </div>
         <div class="fr-col-4">
           <% endpoint.providers.each do |provider| %>
-            <%= image_tag(provider.image_path, class: %w(provider)) %>
+            <%= image_tag(provider.image_path, alt: "", class: %w(provider)) %>
           <% end %>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <span class="fr-grid-row">
             <%= parameter %>
             <% if parameter == "FranceConnect" %>
-            <%= image_tag("api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg", size: '25x25', alt: 'Pictogramme fournisseurs de données regroupés')%>
+            <%= image_tag("api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg", size: '25x25', alt: '')%>
             <% end %>
           </span>
         </li>

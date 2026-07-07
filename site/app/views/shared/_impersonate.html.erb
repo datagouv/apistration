@@ -1,5 +1,5 @@
 <% if current_user != true_user %>
-  <div id="impersonate_warning" class="fr-alert fr-alert--warning">
+  <div id="impersonate_warning" class="fr-alert fr-alert--warning" role="alert">
     <div class="fr-alert__body">
       Vous (<%= true_user.email %>) êtes connecté en tant que <%= current_user.email %>
 

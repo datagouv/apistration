@@ -1,3 +1,4 @@
+<% content_for :page_title, @authorization_request.intitule %>
 <div class="fr-container fr-pr-0 fr-pl-0" data-controller="anchor-buttons">
   <div class="fr-grid-row">
     <div class="fr-col-12 fr-col-md-3 fr-pr-0 fr-pl-0">
@@ -121,6 +122,7 @@
           <div class="fr-collapse" id="accordion-106"/>
           <div class="fr-table fr-table--bordered fr-table--layout-fixed fr-m-0 fr-p-0">
             <table>
+              <caption class="fr-sr-only"><%= t('.other_tokens.title') %></caption>
               <thead>
                   <tr>
                     <th scope="col"><%= t('.other_tokens.table.identifier')%></th>
@@ -231,10 +233,10 @@
               <% end %>
               <% if @authorization_request.contact_technique.present? %>
                 <div id="contact_technique" class="fr-col-12 fr-col-md-6 fr-col-lg-4 fr-mb-16v">
-                  <h2 class="fr-h6">
+                  <h3 class="fr-h6">
                     <i class="fr-icon fr-icon-user-star-line fr-mr-1v" aria-hidden="true"></i>
                     <%= t('.contacts.contact_technique.title').html_safe %>
-                  </h2>
+                  </h3>
                   <div class="fr-card">
                     <% if @authorization_request.contact_technique == current_user %>
                       <div class="fr-card__header">

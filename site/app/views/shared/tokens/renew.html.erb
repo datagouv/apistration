@@ -3,6 +3,9 @@
     <h2><span class="fr-fi--lg fr-icon-arrow-right-line" aria-hidden="true"></span><%= t('.title') %></h2>
     <p><%= t('.description').html_safe %></p>
 
-    <%= link_to t('.continue'), datapass_reopen_authorization_request_url(@token.authorization_request), id: dom_id(@token, :renew), class: %w(fr-btn fr-col-offset-md-8 fr-col-offset-lg-9), target: '_blank', rel: 'noopener noreferrer', data: { turbo: false } %>
+    <%= link_to datapass_reopen_authorization_request_url(@token.authorization_request), id: dom_id(@token, :renew), class: %w(fr-btn fr-col-offset-md-8 fr-col-offset-lg-9), target: '_blank', rel: 'noopener noreferrer', data: { turbo: false } do %>
+      <%= t('.continue') %>
+      <span class="fr-sr-only">(nouvelle fenêtre)</span>
+    <% end %>
   </div>
 </turbo-frame>
