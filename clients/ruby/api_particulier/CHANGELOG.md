@@ -6,6 +6,14 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-01
+
+### Added
+- CNAV DSS : nouvel endpoint Allocation de Rentrée Scolaire (ARS)
+  (`dss.allocation_rentree_scolaire_identite` /
+  `dss.allocation_rentree_scolaire`), modalités identité
+  pivot et FranceConnect.
+
 ## [0.1.2] - 2026-05-07
 
 ### Fixed

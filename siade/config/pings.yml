@@ -385,6 +385,18 @@ shared:
           - 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility#show'
           - 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect#show'
 
+    cnav_allocation_rentree_scolaire:
+      kind: 'cnav'
+      cache: <%= 30.minutes %>
+      provider: 'CNAV'
+      status_page:
+        name: "CNAV - Allocation de Rentrée Scolaire (ARS)"
+      driver_params:
+        provider: 'CNAV'
+        routes:
+          - 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_civility#show'
+          - 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_france_connect#show'
+
     sdh_statut_sportif:
       kind: 'make_request'
       cache: <%= 2.minutes %>

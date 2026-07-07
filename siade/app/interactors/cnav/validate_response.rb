@@ -7,7 +7,8 @@ class CNAV::ValidateResponse < ValidateResponse
     unprocessable_entity_error! if http_bad_request?
     handle_http_too_many_requests! if http_too_many_requests?
     handle_internal_server_error! if http_internal_error?
-    unknown_provider_response! if !http_ok? || invalid_json?
+    unknown_provider_response! unless valid_http_response?
+    unknown_provider_response! unless valid_indicateur?
   end
 
   protected
@@ -72,6 +73,20 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def valid_http_response?
+    http_ok? && valid_json?
+  end
+
+  def valid_indicateur?
+    return true if valid_indicateurs.nil?
+
+    valid_indicateurs.include?(json_body['indicateur'])
+  end
+
+  def valid_indicateurs
+    nil
+  end
 
   def track_unexpected_bad_request!
     MonitoringService.instance.track_with_added_context(

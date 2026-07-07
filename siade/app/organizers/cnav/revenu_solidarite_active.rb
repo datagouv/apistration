@@ -2,7 +2,7 @@ class CNAV::RevenuSolidariteActive < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     CNAV::Authenticate,
     CNAV::MakeRequest,
-    CNAV::ValidateResponse,
+    CNAV::RevenuSolidariteActive::ValidateResponse,
     CNAV::RevenuSolidariteActive::BuildResource
 
   def provider_name

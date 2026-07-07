@@ -25,6 +25,8 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [[FranceConnect] Statut allocation adulte handicapé (AAH)](api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect) (`/v3/dss/allocation_adulte_handicape/france_connect`)
 * [[Identité] Statut allocation d'éducation de l'enfant handicapé (AEEH)](api_particulier_v3_cnav_allocation_enfant_handicape_with_civility) (`/v3/dss/allocation_enfant_handicape/identite`)
 * [[FranceConnect] Statut allocation d'éducation de l'enfant handicapé (AEEH)](api_particulier_v3_cnav_allocation_enfant_handicape_with_france_connect) (`/v3/dss/allocation_enfant_handicape/france_connect`)
+* [[Identité] Statut allocation de rentrée scolaire (ARS)](api_particulier_v3_cnav_allocation_rentree_scolaire_with_civility) (`/v3/dss/allocation_rentree_scolaire/identite`)
+* [[FranceConnect] Statut allocation de rentrée scolaire (ARS)](api_particulier_v3_cnav_allocation_rentree_scolaire_with_france_connect) (`/v3/dss/allocation_rentree_scolaire/france_connect`)
 * [[Identité] Statut allocation de soutien familial (ASF)](api_particulier_v3_cnav_allocation_soutien_familial_with_civility) (`/v3/dss/allocation_soutien_familial/identite`)
 * [[FranceConnect] Statut allocation de soutien familial (ASF)](api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect) (`/v3/dss/allocation_soutien_familial/france_connect`)
 * [[Identité] Statut complémentaire santé solidaire (C2S)](api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility) (`/v3/dss/complementaire_sante_solidaire/identite`)

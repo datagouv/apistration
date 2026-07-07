@@ -2,7 +2,7 @@ class CNAV::ComplementaireSanteSolidaire < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     CNAV::Authenticate,
     CNAV::MakeRequest,
-    CNAV::ValidateResponse,
+    CNAV::ComplementaireSanteSolidaire::ValidateResponse,
     CNAV::ComplementaireSanteSolidaire::BuildResource
 
   def provider_name

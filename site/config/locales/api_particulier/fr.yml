@@ -327,6 +327,8 @@ fr:
             label: CNAV || API Participation familiale Eaje || Paramètres de calcul
           cnav_allocation_enfant_handicape:
             label: CNAV || API Allocation enfant handicapé || Statut Allocation enfant handicapé
+          cnav_allocation_rentree_scolaire:
+            label: CNAV || API Allocation de rentrée scolaire || Statut Allocation de rentrée scolaire
           ants_extrait_immatriculation_vehicule_identite_particulier:
             label: ANTS || API Extrait d'immatriculation véhicule || Identité du particulier
           ants_extrait_immatriculation_vehicule_adresse_particulier:

@@ -2,7 +2,7 @@ class CNAV::AllocationSoutienFamilial < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     CNAV::Authenticate,
     CNAV::MakeRequest,
-    CNAV::ValidateResponse,
+    CNAV::AllocationSoutienFamilial::ValidateResponse,
     CNAV::AllocationSoutienFamilial::BuildResource
 
   def provider_name

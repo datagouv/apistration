@@ -1,0 +1,22 @@
+Titre,Description,Paramètres,Status,Réponse
+,Ce cas permet de tester un appel à partir notamment des données de l'identité pivot France Connect.,"{""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17,""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""status"": ""allocataire"",
+    ""date_debut_droit"": ""2024-08-09""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""LEROY"",""prenoms"":[""CLAUDE""],""anneeDateNaissance"":1965,""moisDateNaissance"":9,""jourDateNaissance"":2,""codeCogInseeCommuneNaissance"":""33063"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"

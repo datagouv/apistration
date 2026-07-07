@@ -46,6 +46,9 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'dss/allocation_enfant_handicape/identite', to: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_civility#show'
   get 'dss/allocation_enfant_handicape/france_connect', to: 'api_particulier/v3_and_more/cnav/allocation_enfant_handicape_with_france_connect#show'
 
+  get 'dss/allocation_rentree_scolaire/identite', to: 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_civility#show'
+  get 'dss/allocation_rentree_scolaire/france_connect', to: 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_france_connect#show'
+
   get 'france_travail/statut/identifiant', to: 'api_particulier/v3_and_more/france_travail/statut_with_identifiant#show'
 
   get 'france_travail/indemnites/identifiant', to: 'api_particulier/v3_and_more/france_travail/indemnites_with_identifiant#show'
