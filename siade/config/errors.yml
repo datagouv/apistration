@@ -136,6 +136,10 @@
   source:
     parameter: 'delegation_id'
 
+- code: '00213'
+  title: 'Accès refusé'
+  detail: "Le SIREN/SIRET appelé ne correspond pas au SIRET de l'habilitation déléguée. Une délégation ne permet d'interroger que les données de l'organisation ayant délégué son habilitation."
+
 - code: '00301'
   title: 'Entité non traitable'
   detail: "Le numéro de siren n'est pas correctement formatté"
