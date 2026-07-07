@@ -27,6 +27,12 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
         expect(new_token.iat).to be_within(5).of(Time.zone.now.to_i)
       end
 
+      it 'does not blacklist the newly generated token' do
+        subject
+        new_token = Token.where.not(id: token.id).order(created_at: :desc).first
+        expect(new_token.blacklisted_at).to be_nil
+      end
+
       it 'sends emails to demandeur and contact technique' do
         expect { subject }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(2).times
       end
