@@ -33,8 +33,8 @@ class AbstractFichePratique
     fiche_pratique
   end
 
-  def datapass_url
-    ERB.new(request_access[:link_datapass]).result(binding)
+  def request_access_url
+    ERB.new(request_access[:url]).result(binding)
   end
 
   def endpoints

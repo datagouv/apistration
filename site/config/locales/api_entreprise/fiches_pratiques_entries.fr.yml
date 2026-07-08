@@ -139,7 +139,7 @@ fr:
             {:.fr-highlight.fr-highlight--caution}
             > ⚠️ Les données protégées doivent uniquement être utilisées par un agent habilité ou après authentification de l'usager. Elles ne doivent pas être diffusées en ligne ou à des tiers non-autorisés.
         request_access:
-          link_datapass: "<%= datapass_base_url %>/demandes/api-entreprise/nouveau?use_case=socle_de_base"
+          url: "<%= datapass_base_url %>/demandes/api-entreprise/nouveau?use_case=socle_de_base"
           content: "**💡 Votre service concerne les marchés publics ? la délivrance d'aides ou de subventions ?**
             Des cas d'usages spécifiques existent et permettent d'accéder au socle de données de base ainsi qu'à d'autres données protégées : consultez [nos cas d'usages sur simplifions.data.gouv.fr](https://simplifions.data.gouv.fr/solutions/bouquet-api-entreprise){:target=\"_blank\"}."
 
@@ -214,5 +214,8 @@ fr:
             _Vous êtes un éditeur proposant une solution de portail de gestion relation usager et ne figurez pas sur cette liste ?_ Veuillez nous contacter à cette adresse e-mail : [support@entreprise.api.gouv.fr](mailto:support@entreprise.api.gouv.fr).
 
         request_access:
-          link_datapass: "<%= datapass_base_url %>/formulaires/api-entreprise-editeur/demande/nouveau"
+          url: "https://form.typeform.com/to/aDFr3Cg9"
+          description: "Ce cas d’utilisation correspond à votre besoin ? Complétez le questionnaire de qualification éditeurs pour effectuer votre demande d'habilitation :"
+          link: "Compléter le questionnaire"
+          sub_description: ''
           content: "Pour vérifier votre éligibilité, le pôle juridique a besoin de comprendre quelles sont vos activités et le contexte dans lequel l'accès délivré sera utilisé. **Pour accélérer le traitement de votre demande, veillez à bien répondre à l'ensemble des questions posées**."
