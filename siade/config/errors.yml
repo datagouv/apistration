@@ -136,6 +136,12 @@
   source:
     parameter: 'delegation_id'
 
+- code: '00213'
+  title: 'Accès refusé'
+  detail: "Le paramètre recipient ne correspond à aucune habilitation déléguée à cet éditeur. Une délégation ne permet d'appeler que pour le compte de l'organisation ayant délégué son habilitation."
+  source:
+    parameter: 'recipient'
+
 - code: '00301'
   title: 'Entité non traitable'
   detail: "Le numéro de siren n'est pas correctement formatté"

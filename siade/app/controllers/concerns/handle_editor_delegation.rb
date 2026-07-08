@@ -16,15 +16,14 @@ module HandleEditorDelegation
 
   def verify_editor_delegation!
     if request.env[UserResolutionMiddleware::DELEGATION_AMBIGUOUS_ENV_KEY]
-      render_ambiguous_delegation
+      render_generic_errors_serializer(AmbiguousDelegationError, status: :unprocessable_content)
       return
     end
 
-    raise HandleTokens::NotAuthorizedError unless request.env[UserResolutionMiddleware::DELEGATION_ENV_KEY]
-  end
+    return if request.env[UserResolutionMiddleware::DELEGATION_ENV_KEY]
 
-  def render_ambiguous_delegation
-    render json: ErrorsSerializer.new([AmbiguousDelegationError.new], format: error_format).as_json,
-      status: :unprocessable_content
+    raise HandleTokens::NotAuthorizedError if params[:recipient].blank?
+
+    render_generic_errors_serializer(DelegationSiretMismatchError, status: :forbidden)
   end
 end
