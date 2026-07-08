@@ -5,6 +5,22 @@ class EditorToken < ApplicationRecord
 
   validates :allowed_ips, allowed_ips: true
 
+  def revoke!
+    update!(blacklisted_at: Time.zone.now)
+  end
+
+  def rotate!
+    transaction do
+      revoke!
+
+      editor.tokens.create!(
+        iat: Time.zone.now.to_i,
+        exp: 18.months.from_now.to_i,
+        allowed_ips: allowed_ips
+      )
+    end
+  end
+
   private
 
   def jwt_data
