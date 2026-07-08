@@ -138,7 +138,9 @@
 
 - code: '00213'
   title: 'Accès refusé'
-  detail: "Le SIREN/SIRET appelé ne correspond pas au SIRET de l'habilitation déléguée. Une délégation ne permet d'interroger que les données de l'organisation ayant délégué son habilitation."
+  detail: "Le paramètre recipient ne correspond à aucune habilitation déléguée à cet éditeur. Une délégation ne permet d'appeler que pour le compte de l'organisation ayant délégué son habilitation."
+  source:
+    parameter: 'recipient'
 
 - code: '00301'
   title: 'Entité non traitable'

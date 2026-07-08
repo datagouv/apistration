@@ -34,7 +34,7 @@ RSpec.describe 'Editor delegation', api: :entreprise do
       EditorDelegation.create!(editor:, authorization_request:)
     end
 
-    it 'allows the request' do
+    it 'allows querying a third-party SIREN on behalf of the delegated recipient' do
       get url, params:, headers: headers_params
 
       expect(response).not_to have_http_status(:forbidden)
@@ -117,10 +117,24 @@ RSpec.describe 'Editor delegation', api: :entreprise do
       EditorDelegation.create!(editor:, authorization_request: other_ar)
     end
 
-    it 'returns 403' do
+    it 'returns 403 with the delegation recipient mismatch error' do
       get url, params:, headers: headers_params
 
       expect(response).to have_http_status(:forbidden)
+      expect(response.parsed_body['errors'].first['code']).to eq('00213')
+    end
+  end
+
+  context 'without a recipient param' do
+    before do
+      EditorDelegation.create!(editor:, authorization_request:)
+    end
+
+    it 'is rejected by the recipient format validation before any delegation logic' do
+      get url, params: params.except(:recipient), headers: headers_params
+
+      expect(response).to have_http_status(:unprocessable_content)
+      expect(response.parsed_body['errors'].first['code']).not_to eq('00213')
     end
   end
 
@@ -129,10 +143,11 @@ RSpec.describe 'Editor delegation', api: :entreprise do
       EditorDelegation.create!(editor:, authorization_request:, revoked_at: 1.day.ago)
     end
 
-    it 'returns 403' do
+    it 'returns 403 with the delegation recipient mismatch error' do
       get url, params:, headers: headers_params
 
       expect(response).to have_http_status(:forbidden)
+      expect(response.parsed_body['errors'].first['code']).to eq('00213')
     end
   end
 
