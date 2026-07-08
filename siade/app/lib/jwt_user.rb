@@ -32,6 +32,13 @@ class JwtUser
     @editor_id.present?
   end
 
+  def token_type
+    return 'editor_token' if editor?
+    return 'france_connect' if id == self.class.france_connect_id
+
+    nil
+  end
+
   def with_delegation(authorization_request_id:, scopes:, allowed_ips:, rate_limit_per_minute:)
     self.class.new(
       uid: id,

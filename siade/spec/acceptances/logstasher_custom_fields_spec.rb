@@ -339,7 +339,9 @@ RSpec.describe 'logstasher custom fields', type: :controller do
             'user_access' => hash_including(
               user: yes_jwt_user.logstash_id,
               jti: yes_jwt_user.token_id,
-              iat: yes_jwt_user.iat
+              iat: yes_jwt_user.iat,
+              authorization_request_id: yes_jwt_user.authorization_request_id,
+              token_type: nil
             )
           ),
           anything
