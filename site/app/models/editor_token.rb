@@ -3,6 +3,8 @@ class EditorToken < ApplicationRecord
 
   belongs_to :editor
 
+  validates :allowed_ips, allowed_ips: true
+
   private
 
   def jwt_data
