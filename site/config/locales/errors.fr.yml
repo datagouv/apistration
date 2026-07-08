@@ -1,5 +1,10 @@
 fr:
   errors:
+    messages:
+      too_many_ips: "ne peut pas contenir plus de %{count} entrées"
+      invalid_ip: "contient une entrée invalide : %{entry}"
+      ip_range_too_wide: "contient une plage trop large (préfixe IPv4 minimum : /24) : %{entry}"
+      reserved_ip: "contient une plage privée ou réservée : %{entry}"
     show:
       not_found:
         title: "Oups, cette page n'existe pas"
