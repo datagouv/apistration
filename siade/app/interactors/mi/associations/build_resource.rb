@@ -1,6 +1,7 @@
 # rubocop:disable Metrics/AbcSize
 class MI::Associations::BuildResource < BuildResource
   include DJEPVA::DocumentUrlHelper
+  include MI::Associations::PayloadParsing
 
   protected
 
@@ -327,7 +328,7 @@ class MI::Associations::BuildResource < BuildResource
   end
 
   def association
-    @association ||= xml_body_as_hash[:asso]
+    @association ||= body_as_hash[:asso]
   end
 
   def document_dac_code_type_to_libelle(code_or_libelle)

@@ -27,7 +27,6 @@ class MI::Associations::MakeRequest < MakeRequest::Get
 
   def extra_headers(request)
     super
-    request['Accept'] = 'application/xml'
     request['X-Gravitee-Api-Key'] = mi_gravitee_api_key
   end
 
