@@ -70,7 +70,7 @@ RSpec.describe AllowedIpsValidator do
   end
 
   context 'with private or reserved ranges' do
-    %w[10.1.2.3 172.16.5.4 192.168.1.0/24 127.0.0.1].each do |entry|
+    %w[10.1.2.3 172.16.5.4 192.168.1.0/24 127.0.0.1 169.254.10.5 ::1 fc00::1].each do |entry|
       context "with #{entry}" do
         let(:allowed_ips) { [entry] }
 

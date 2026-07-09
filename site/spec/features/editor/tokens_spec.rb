@@ -45,7 +45,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     it 'creates a token and displays its JWT once with a copy warning' do
       editor_token = editor.tokens.sole
 
-      expect(page).to have_text(editor_token.rehash)
+      expect(page).to have_field(readonly: true, with: editor_token.rehash)
       expect(page).to have_text('Copiez ce jeton maintenant')
     end
 
@@ -55,6 +55,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       visit editor_tokens_path
 
       expect(page).to have_text(editor_token.id.first(8))
+      expect(page).to have_no_field(with: editor_token.rehash)
       expect(page).to have_no_text(editor_token.rehash)
     end
   end
@@ -68,7 +69,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
 
     it 'updates the whitelist, normalizing exact IPs to /32' do
-      fill_in 'editor_token[allowed_ips]', with: "203.0.113.10\n198.51.100.0/24"
+      fill_in 'editor_token[allowed_ips_text]', with: "203.0.113.10\n198.51.100.0/24"
       click_button 'Enregistrer'
 
       expect(page).to have_current_path(editor_tokens_path)
@@ -76,7 +77,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
 
     it 'rejects invalid entries with an error message' do
-      fill_in 'editor_token[allowed_ips]', with: '10.0.0.1'
+      fill_in 'editor_token[allowed_ips_text]', with: '10.0.0.1'
       click_button 'Enregistrer'
 
       expect(page).to have_text('plage privée ou réservée')
@@ -94,7 +95,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       new_token = editor.tokens.order(:created_at).last
       expect(editor_token.reload).to be_blacklisted
       expect(new_token.allowed_ips).to eq(editor_token.allowed_ips)
-      expect(page).to have_text(new_token.rehash)
+      expect(page).to have_field(readonly: true, with: new_token.rehash)
       expect(page).to have_text('Copiez ce jeton maintenant')
     end
   end

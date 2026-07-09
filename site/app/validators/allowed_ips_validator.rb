@@ -1,12 +1,6 @@
 class AllowedIpsValidator < ActiveModel::EachValidator
   MAX_ENTRIES = 10
   MIN_IPV4_PREFIX = 24
-  RESERVED_RANGES = %w[
-    10.0.0.0/8
-    172.16.0.0/12
-    192.168.0.0/16
-    127.0.0.0/8
-  ].map { |range| IPAddr.new(range) }.freeze
 
   def validate_each(record, attribute, value)
     return if value.blank?
@@ -45,6 +39,6 @@ class AllowedIpsValidator < ActiveModel::EachValidator
   end
 
   def reserved?(addr)
-    RESERVED_RANGES.any? { |range| range.family == addr.family && range.include?(addr) }
+    addr.private? || addr.loopback? || addr.link_local?
   end
 end

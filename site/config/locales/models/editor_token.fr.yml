@@ -1,0 +1,9 @@
+fr:
+  activerecord:
+    models:
+      editor_token:
+        one: "Jeton éditeur"
+        other: "Jetons éditeur"
+    attributes:
+      editor_token:
+        allowed_ips: "IPs autorisées"

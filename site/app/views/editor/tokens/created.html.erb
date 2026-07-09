@@ -4,11 +4,7 @@
 </div>
 
 <div class="copy-token fr-mb-3w" data-controller="clipboard" data-clipboard-alert-message-value="<%= t('.copy_alert') %>">
-  <code class="fr-text--sm" style="word-break: break-all"><%= @editor_token.rehash %></code>
-  <input class="fr-input" type="text" readonly
-         data-clipboard-target="source"
-         value="<%= @editor_token.rehash %>"
-         style="position: absolute; left: -9999px" />
+  <%= render 'shared/tokens/hashed_value_input', token: @editor_token %>
   <button class="fr-btn fr-btn--sm fr-icon-clipboard-fill fr-btn--icon-right"
           type="button"
           data-action="click->clipboard#copy">
