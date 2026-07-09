@@ -13,6 +13,50 @@ RSpec.describe OpenAPIEndpoint do
     end
   end
 
+  describe '#version' do
+    it 'extracts the version segment from the path' do
+      endpoint = described_class.new(
+        path: '/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}',
+        open_api_definition: { 'summary' => 'Liasses fiscales' },
+        api: 'api_entreprise'
+      )
+
+      expect(endpoint.version).to eq('v4')
+    end
+
+    it 'returns nil when the path has no version segment' do
+      endpoint = described_class.new(
+        path: '/unversioned/endpoint',
+        open_api_definition: { 'summary' => 'Test' },
+        api: 'api_entreprise'
+      )
+
+      expect(endpoint.version).to be_nil
+    end
+  end
+
+  describe '#title_with_version' do
+    it 'appends the version to the title' do
+      endpoint = described_class.new(
+        path: '/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}',
+        open_api_definition: { 'summary' => 'Liasses fiscales' },
+        api: 'api_entreprise'
+      )
+
+      expect(endpoint.title_with_version).to eq('Liasses fiscales (v4)')
+    end
+
+    it 'returns the title unchanged when there is no version' do
+      endpoint = described_class.new(
+        path: '/unversioned/endpoint',
+        open_api_definition: { 'summary' => 'Liasses fiscales' },
+        api: 'api_entreprise'
+      )
+
+      expect(endpoint.title_with_version).to eq('Liasses fiscales')
+    end
+  end
+
   describe '#title' do
     context 'when summary contains bracket notation' do
       it 'formats title with method in parentheses' do

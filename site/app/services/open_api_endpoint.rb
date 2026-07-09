@@ -9,11 +9,21 @@ class OpenAPIEndpoint
 
   def uid = path
 
+  def version
+    path[%r{\A/(v\d+)/}, 1]
+  end
+
   def title
     summary = open_api_definition['summary']
     return path if summary.blank?
 
     format_title(summary)
+  end
+
+  def title_with_version
+    return title if version.blank?
+
+    "#{title} (#{version})"
   end
 
   private
