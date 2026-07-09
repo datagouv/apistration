@@ -5,6 +5,10 @@ class EditorToken < ApplicationRecord
 
   validates :allowed_ips, allowed_ips: true
 
+  def allowed_ips_as_strings
+    allowed_ips.map { |ip| "#{ip}/#{ip.prefix}" }
+  end
+
   def revoke!
     update!(blacklisted_at: Time.zone.now)
   end

@@ -527,6 +527,20 @@ fr:
       button: "S'abonner"
 
   editor:
+    tokens:
+      index:
+        title: Jetons éditeurs
+        description: Un jeton unique, sans droits propres, résolu par SIRET à chaque appel.
+        generate: Générer un nouveau jeton éditeur
+        table:
+          identifier: Identifiant
+          allowed_ips: IPs autorisées
+          created_at: Créé le
+          expiration: Expiration
+          status: Statut
+        status_active: Actif
+        status_expired: Expiré
+        status_revoked: Révoqué
     delegations:
       index:
         title: Délégations

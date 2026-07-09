@@ -47,6 +47,11 @@
                 </li>
               <% end %>
               <li>
+                <a class="fr-link fr-icon-lock-line" href="<%= editor_tokens_path %>"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/tokens') %>>
+                  Jetons éditeurs
+                </a>
+              </li>
+              <li>
                 <a class="fr-link fr-icon-chat-3-line" href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Proposition d'amélioration de l'espace éditeur">
                   Un retour ? Contactez-nous
                 </a>
