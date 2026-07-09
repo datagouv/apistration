@@ -4,33 +4,15 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
 
     let(:response) { instance_double(Net::HTTPOK, body:) }
     let(:body) do
-      '<asso>' \
-        '<documents>' \
-        '<nbDocRna>' \
-        '2' \
-        '</nbDocRna>' \
-        '<document_rna>' \
-        '<id>very_id_1</id>' \
-        '<type>PIECE</type>' \
-        '<annee>2014</annee>' \
-        '<sous_type>DCR</sous_type>' \
-        '<even>5248133</even>' \
-        '<time>1418807656</time>' \
-        '<url>https://much.url/doc_1</url>' \
-        '<lib_sous_type>Décret</lib_sous_type>' \
-        '</document_rna>' \
-        '<document_rna>' \
-        '<id>much_id_2</id>' \
-        '<type>PIECE</type>' \
-        '<annee>2014</annee>' \
-        '<sous_type>STC</sous_type>' \
-        '<even>5248133</even>' \
-        '<time>1418807674</time>' \
-        '<url>http://localhost:8181/services/great</url>' \
-        '<lib_sous_type>Statuts</lib_sous_type>' \
-        '</document_rna>' \
-        '</documents>' \
-        '</asso>'
+      {
+        documents: {
+          nbDocRna: 2,
+          document_rna: [
+            { id: 'very_id_1', type: 'PIECE', annee: 2014, sous_type: 'DCR', even: 5_248_133, time: 1_418_807_656, url: 'https://much.url/doc_1', lib_sous_type: 'Décret' },
+            { id: 'much_id_2', type: 'PIECE', annee: 2014, sous_type: 'STC', even: 5_248_133, time: 1_418_807_674, url: 'http://localhost:8181/services/great', lib_sous_type: 'Statuts' }
+          ]
+        }
+      }.to_json
     end
 
     let(:resource_collection) { call.bundled_data.data }
