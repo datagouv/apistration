@@ -1,6 +1,6 @@
 <p class="fr-text--sm fr-mb-2w"><%= t('.description') %></p>
 
-<%= button_to t('.generate'), editor_tokens_path, class: 'fr-btn fr-mb-2w' %>
+<%= button_to t('.generate'), editor_tokens_path, class: 'fr-btn fr-mb-2w', form: { data: { turbo: false } } %>
 
 <div class="fr-table fr-table--bordered">
   <div class="fr-table__wrapper">
@@ -41,7 +41,7 @@
                         <%= link_to t('.edit_ips'), edit_editor_token_path(editor_token), class: 'fr-btn fr-btn--tertiary fr-btn--sm' %>
                       </li>
                       <li>
-                        <%= button_to t('.rotate'), rotate_editor_token_path(editor_token), class: 'fr-btn fr-btn--secondary fr-btn--sm', form: { data: { turbo_confirm: t('.rotate_confirm') } } %>
+                        <%= button_to t('.rotate'), rotate_editor_token_path(editor_token), class: 'fr-btn fr-btn--secondary fr-btn--sm', form: { data: { turbo: false } } %>
                       </li>
                       <li>
                         <%= button_to t('.revoke'), revoke_editor_token_path(editor_token), method: :patch, class: 'fr-btn fr-btn--sm', form: { data: { turbo_confirm: t('.revoke_confirm') } } %>
