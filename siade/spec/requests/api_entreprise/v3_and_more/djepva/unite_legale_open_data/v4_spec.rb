@@ -35,7 +35,7 @@ RSpec.describe 'DJEPVA: Associations v4, open data version', api: :entreprise, t
           before do
             stub_request(:get, /#{Siade.credentials[:mi_domain]}/).to_return(
               status: 200,
-              body: File.read(open_payload_file('mi/association-77567227238579.xml'))
+              body: File.read(open_payload_file('mi/association-77567227238579.json'))
             )
           end
 

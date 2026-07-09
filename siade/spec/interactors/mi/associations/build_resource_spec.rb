@@ -14,7 +14,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     describe 'happy path' do
       let(:body) do
-        open_payload_file('mi/association-77567227238579.xml').read
+        open_payload_file('mi/association-77567227238579.json').read
       end
 
       let(:resource) { subject.bundled_data.data }
@@ -54,7 +54,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     describe 'when payload has only one dac document (non-regression test)' do
       let(:body) do
-        open_payload_file('mi/association-77567227238579-1dac.xml').read
+        open_payload_file('mi/association-77567227238579-1dac.json').read
       end
 
       let(:resource) { subject.bundled_data.data }

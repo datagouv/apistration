@@ -1,5 +1,6 @@
 class MI::Associations::Documents::BuildResourceCollection < BuildResourceCollection
   include DJEPVA::DocumentUrlHelper
+  include MI::Associations::PayloadParsing
 
   def items
     raw_documents
@@ -24,7 +25,7 @@ class MI::Associations::Documents::BuildResourceCollection < BuildResourceCollec
   end
 
   def raw_documents
-    items = xml_body_as_hash[:asso][:documents][:document_rna]
+    items = body_as_hash[:asso][:documents][:document_rna]
 
     case items
     in Hash

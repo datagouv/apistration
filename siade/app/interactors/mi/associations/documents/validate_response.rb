@@ -2,22 +2,30 @@ class MI::Associations::Documents::ValidateResponse < MI::Associations::Validate
   declares_no_specific_errors!
 
   def call
-    check_body_integrity!
+    temporary_error! if body.blank?
 
-    return if http_ok? && payload_valid? && payload_has_documents?
+    handle_not_found! if http_not_found?
 
-    provider_unavailable! unless payload_present?
+    resource_not_found!(:siret_or_rna) if http_bad_request?
 
-    resource_not_found!(:siret_or_rna) if not_found_in_body? || !payload_has_documents?
+    unknown_provider_response! unless valid_documents_payload?
 
-    unknown_provider_response!
+    resource_not_found!(:siret_or_rna) unless payload_has_documents?
   end
 
   private
 
-  def payload_has_documents?
-    return false unless xml_body_as_hash.dig(:asso, :documents)
+  def valid_documents_payload?
+    http_ok? && valid_json? && payload_valid?
+  end
 
-    xml_body_as_hash[:asso][:documents][:nbDocRna].to_i.positive?
+  def handle_not_found!
+    invalid_json? ? provider_unavailable! : resource_not_found!(:siret_or_rna)
+  end
+
+  def payload_has_documents?
+    return false unless body_as_hash.dig(:asso, :documents)
+
+    body_as_hash[:asso][:documents][:nbDocRna].to_i.positive?
   end
 end
