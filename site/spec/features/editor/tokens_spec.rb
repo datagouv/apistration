@@ -36,6 +36,42 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
   end
 
+  describe 'create' do
+    before do
+      visit editor_tokens_path
+      click_button 'Générer un nouveau jeton éditeur'
+    end
+
+    it 'creates a token and displays its JWT once with a copy warning' do
+      editor_token = editor.tokens.sole
+
+      expect(page).to have_text(editor_token.rehash)
+      expect(page).to have_text('Copiez ce jeton maintenant')
+    end
+
+    it 'never displays the JWT again afterwards' do
+      editor_token = editor.tokens.sole
+
+      visit editor_tokens_path
+
+      expect(page).to have_text(editor_token.id.first(8))
+      expect(page).to have_no_text(editor_token.rehash)
+    end
+  end
+
+  describe 'delegations page' do
+    let!(:editor_token) { create(:editor_token, editor:) }
+    let(:editor) { create(:editor, :delegable) }
+
+    it 'no longer exposes the JWT' do
+      visit editor_delegations_path
+
+      expect(page).to have_text('Délégations')
+      expect(page).to have_no_text(editor_token.rehash)
+      expect(page).to have_no_button('Copier le jeton')
+    end
+  end
+
   context 'when the user is not an editor' do
     let(:user) { create(:user) }
 
