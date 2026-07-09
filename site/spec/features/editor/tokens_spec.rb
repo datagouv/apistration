@@ -59,6 +59,59 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
   end
 
+  describe 'edit allowed IPs' do
+    let!(:editor_token) { create(:editor_token, editor:) }
+
+    before do
+      visit editor_tokens_path
+      click_link 'Modifier les IPs'
+    end
+
+    it 'updates the whitelist, normalizing exact IPs to /32' do
+      fill_in 'editor_token[allowed_ips]', with: "203.0.113.10\n198.51.100.0/24"
+      click_button 'Enregistrer'
+
+      expect(page).to have_current_path(editor_tokens_path)
+      expect(page).to have_text('203.0.113.10/32, 198.51.100.0/24')
+    end
+
+    it 'rejects invalid entries with an error message' do
+      fill_in 'editor_token[allowed_ips]', with: '10.0.0.1'
+      click_button 'Enregistrer'
+
+      expect(page).to have_text('plage privée ou réservée')
+      expect(editor_token.reload.allowed_ips).to be_empty
+    end
+  end
+
+  describe 'rotate' do
+    let!(:editor_token) { create(:editor_token, editor:, allowed_ips: ['203.0.113.0/24']) }
+
+    it 'revokes the old token and shows the new JWT once, copying IPs' do
+      visit editor_tokens_path
+      click_button 'Renouveler'
+
+      new_token = editor.tokens.order(:created_at).last
+      expect(editor_token.reload).to be_blacklisted
+      expect(new_token.allowed_ips).to eq(editor_token.allowed_ips)
+      expect(page).to have_text(new_token.rehash)
+      expect(page).to have_text('Copiez ce jeton maintenant')
+    end
+  end
+
+  describe 'revoke' do
+    let!(:editor_token) { create(:editor_token, editor:) }
+
+    it 'blacklists the token and offers no further actions on it' do
+      visit editor_tokens_path
+      click_button 'Révoquer'
+
+      expect(editor_token.reload).to be_blacklisted
+      expect(page).to have_css('.fr-badge', text: 'Révoqué')
+      expect(page).to have_no_button('Révoquer')
+    end
+  end
+
   describe 'delegations page' do
     let!(:editor_token) { create(:editor_token, editor:) }
     let(:editor) { create(:editor, :delegable) }

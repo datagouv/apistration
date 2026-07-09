@@ -15,6 +15,7 @@
               <th scope="col"><%= t('.table.created_at') %></th>
               <th scope="col"><%= t('.table.expiration') %></th>
               <th scope="col"><%= t('.table.status') %></th>
+              <th scope="col"><%= t('.table.actions') %></th>
             </tr>
           </thead>
           <tbody>
@@ -31,6 +32,21 @@
                     <p class="fr-badge"><%= t('.status_expired') %></p>
                   <% else %>
                     <p class="fr-badge fr-badge--green-emeraude"><%= t('.status_active') %></p>
+                  <% end %>
+                </td>
+                <td>
+                  <% if policy(editor_token).update? %>
+                    <ul class="fr-btns-group fr-btns-group--inline fr-btns-group--sm">
+                      <li>
+                        <%= link_to t('.edit_ips'), edit_editor_token_path(editor_token), class: 'fr-btn fr-btn--tertiary fr-btn--sm' %>
+                      </li>
+                      <li>
+                        <%= button_to t('.rotate'), rotate_editor_token_path(editor_token), class: 'fr-btn fr-btn--secondary fr-btn--sm', form: { data: { turbo_confirm: t('.rotate_confirm') } } %>
+                      </li>
+                      <li>
+                        <%= button_to t('.revoke'), revoke_editor_token_path(editor_token), method: :patch, class: 'fr-btn fr-btn--sm', form: { data: { turbo_confirm: t('.revoke_confirm') } } %>
+                      </li>
+                    </ul>
                   <% end %>
                 </td>
               </tr>

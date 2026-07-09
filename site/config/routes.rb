@@ -42,7 +42,12 @@ Rails.application.routes.draw do
   namespace :editor, path: 'editeur' do
     resources :authorization_requests, only: %i[index], path: 'habilitations'
     resources :delegations, only: %i[index], path: 'delegations'
-    resources :tokens, only: %i[index create]
+    resources :tokens, only: %i[index create edit update] do
+      member do
+        post :rotate
+        patch :revoke
+      end
+    end
 
     constraints(EditorAPIDomainConstraint.new) do
       namespace :api, defaults: { format: :json } do
