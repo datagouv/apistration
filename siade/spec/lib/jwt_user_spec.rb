@@ -147,6 +147,32 @@ RSpec.describe JwtUser do
     end
   end
 
+  describe '#token_type' do
+    context 'with a classic token' do
+      let(:jwt_user) { described_class.new(**jwt_payload) }
+
+      it 'returns nil, so existing token_id-based queries stay valid' do
+        expect(jwt_user.token_type).to be_nil
+      end
+    end
+
+    context 'with an editor token' do
+      let(:jwt_user) { described_class.new(**jwt_payload, editor_id: SecureRandom.uuid) }
+
+      it 'returns editor_token' do
+        expect(jwt_user.token_type).to eq('editor_token')
+      end
+    end
+
+    context 'with a FranceConnect user' do
+      let(:jwt_user) { described_class.new(**jwt_payload, uid: described_class.france_connect_id) }
+
+      it 'returns france_connect' do
+        expect(jwt_user.token_type).to eq('france_connect')
+      end
+    end
+  end
+
   describe '#has_custom_rate_limit?' do
     context 'with rate_limit_per_minute set' do
       let(:jwt_user) { described_class.new(**jwt_payload, rate_limit_per_minute: 100) }
