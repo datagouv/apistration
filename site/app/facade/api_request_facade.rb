@@ -23,7 +23,7 @@ class APIRequestFacade
 
   def endpoints_grouped_by_tag
     endpoints.group_by { |e| e.open_api_definition&.dig('tags')&.first || 'Autre' }
-      .transform_values { |eps| eps.map { |e| [e.title, e.uid] } }
+      .transform_values { |eps| eps.map { |e| [e.title_with_version, e.uid] } }
   end
 
   def selected_endpoint
