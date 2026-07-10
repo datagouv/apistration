@@ -234,7 +234,7 @@ fr:
             |   |   Modalité d'appel <br/>Identité pivot ou Indentifiant   | Modalité d'appel <br/>FranceConnect |
             | :--------------- | :--------------------------------: | :-----------: |
             |  **Action de l'usager** | L'usager renseigne ses informations identifiantes | L'usager se connecte à FranceConnect |
-            |  **Authentification de l'usager** | ❌ À vérifier par vos agents | ✅ Comprise avec la connexion |
+            |  **Authentification de l'usager** | ⚠️ À vérifier par vos agents si vous n'êtes pas sûr de  l'identité de l'usager | ✅ Comprise avec la connexion |
             |  **Délivrance instantanée de la donnée API&nbsp;Particulier** | ❌ Uniquement après vérification de l'identité de l'internaute par vos agents | ✅ Oui |
             |  **Moins de données personnelles dans votre système d'information** | ❌ Les données personnelles renseignées par l'usager pour appeler l'API Particulier transitent par votre SI | ✅ L'identité pivot ne transite pas par vos systèmes |
             |  **Périmètre des usagers couverts** | ✅ La totalité | ⚠️ Seulement les usagers ayant FranceConnect |
