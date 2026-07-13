@@ -25,7 +25,7 @@ class AllowedIpsValidator < ActiveModel::EachValidator
     return record.errors.add(attribute, :invalid_ip, entry:) if ip.nil?
     return record.errors.add(attribute, :ip_range_too_wide, entry:) if too_wide?(ip)
 
-    record.errors.add(attribute, :reserved_ip, entry:) if reserved?(ip)
+    record.errors.add(attribute, :forbidden_ip, entry:) if forbidden?(ip)
   end
 
   def parse(entry)
@@ -38,7 +38,7 @@ class AllowedIpsValidator < ActiveModel::EachValidator
     addr.prefix.zero? || (addr.ipv4? && addr.prefix < MIN_IPV4_PREFIX)
   end
 
-  def reserved?(addr)
+  def forbidden?(addr)
     addr.private? || addr.loopback? || addr.link_local?
   end
 end
