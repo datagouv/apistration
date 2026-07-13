@@ -544,6 +544,7 @@ fr:
         status_revoked: Révoqué
         edit_ips: Modifier les IPs
         rotate: Renouveler
+        rotate_confirm: Le jeton actuel sera révoqué et remplacé par un nouveau. Continuer ?
         revoke: Révoquer
         revoke_confirm: Le jeton sera définitivement révoqué. Continuer ?
       edit:

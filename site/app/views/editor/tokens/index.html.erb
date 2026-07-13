@@ -41,7 +41,7 @@
                         <%= link_to t('.edit_ips'), edit_editor_token_path(editor_token), class: 'fr-btn fr-btn--tertiary fr-btn--sm' %>
                       </li>
                       <li>
-                        <%= button_to t('.rotate'), rotate_editor_token_path(editor_token), class: 'fr-btn fr-btn--secondary fr-btn--sm', form: { data: { turbo: false } } %>
+                        <%= button_to t('.rotate'), rotate_editor_token_path(editor_token), class: 'fr-btn fr-btn--secondary fr-btn--sm', form: { data: { turbo: false }, onsubmit: "return confirm('#{j t('.rotate_confirm')}')" } %>
                       </li>
                       <li>
                         <%= button_to t('.revoke'), revoke_editor_token_path(editor_token), method: :patch, class: 'fr-btn fr-btn--sm', form: { data: { turbo_confirm: t('.revoke_confirm') } } %>

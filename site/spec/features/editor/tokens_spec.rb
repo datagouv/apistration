@@ -103,6 +103,12 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
   describe 'rotate' do
     let!(:editor_token) { create(:editor_token, editor:, allowed_ips: ['203.0.113.0/24']) }
 
+    it 'asks for confirmation before rotating' do
+      visit editor_tokens_path
+
+      expect(page).to have_css("form[action='#{rotate_editor_token_path(editor_token)}'][onsubmit*='confirm']")
+    end
+
     it 'revokes the old token and shows the new JWT once, copying IPs' do
       visit editor_tokens_path
       click_button 'Renouveler'
