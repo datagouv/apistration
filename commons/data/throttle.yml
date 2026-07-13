@@ -96,6 +96,12 @@ shared:
       - api_particulier_v3_cnav_quotient_familial_with_france_connect
       - api_particulier_v3_cnav_revenu_solidarite_active_with_civility
       - api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect
+      - api_particulier_v2_cnav_allocation_adulte_handicape
+      - api_particulier_v2_cnav_allocation_soutien_familial
+      - api_particulier_v2_cnav_complementaire_sante_solidaire
+      - api_particulier_v2_cnav_prime_activite
+      - api_particulier_v2_cnav_quotient_familial_v2
+      - api_particulier_v2_cnav_revenu_solidarite_active
 
   inpi_rne:
     throttle_type: 'by_single_endpoint'

@@ -97,6 +97,12 @@ RSpec.describe 'Rack::Attack acceptance' do
           api_entreprise_proxied_files
           api_entreprise_v3_inpi_rne_beneficiaires_effectifs_open_data
           mcp
+          api_particulier_v2_cnav_allocation_adulte_handicape
+          api_particulier_v2_cnav_allocation_soutien_familial
+          api_particulier_v2_cnav_complementaire_sante_solidaire
+          api_particulier_v2_cnav_prime_activite
+          api_particulier_v2_cnav_quotient_familial_v2
+          api_particulier_v2_cnav_revenu_solidarite_active
         ]
       end
 
@@ -132,15 +138,28 @@ RSpec.describe 'Rack::Attack acceptance' do
   end
 
   describe 'all throttled endpoints' do
+    let(:throttled_v2_route_confs) do
+      %w[
+        api_particulier_v2_cnav_allocation_adulte_handicape
+        api_particulier_v2_cnav_allocation_soutien_familial
+        api_particulier_v2_cnav_complementaire_sante_solidaire
+        api_particulier_v2_cnav_prime_activite
+        api_particulier_v2_cnav_quotient_familial_v2
+        api_particulier_v2_cnav_revenu_solidarite_active
+      ].map { |op_id| OperationIdResolver.resolve(op_id) }
+    end
+
     let(:all_routes) do
       Rails.application.routes.routes.each_with_object([]) do |route, res|
         next if route.defaults == {}
-        next if route.defaults[:controller] =~ %r{api_particulier/v2/}
 
         route_conf = {
           controller: route.defaults[:controller],
           action: route.defaults[:action]
         }
+        unthrottled_v2 = route.defaults[:controller] =~ %r{api_particulier/v2/} && throttled_v2_route_confs.exclude?(route_conf)
+        next if unthrottled_v2
+
         res.push(route_conf) unless non_throttled_endpoints.include?(route_conf)
       end
     end
