@@ -36,6 +36,21 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
   end
 
+  describe 'header navigation' do
+    before do
+      visit editor_tokens_path
+    end
+
+    it 'shows the sections and documentation links in a nav menu' do
+      within('nav.fr-nav') do
+        expect(page).to have_link('Habilitations', href: editor_authorization_requests_path)
+        expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
+        expect(page).to have_link('Documentation', href: developers_path)
+        expect(page).to have_link('Swagger', href: developers_openapi_path)
+      end
+    end
+  end
+
   describe 'create' do
     before do
       visit editor_tokens_path
