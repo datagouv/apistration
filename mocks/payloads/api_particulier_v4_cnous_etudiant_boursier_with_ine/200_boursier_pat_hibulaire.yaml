@@ -1,7 +1,7 @@
 ---
 description: 'Boursier - Pat Hibulaire - Dijon BSB'
 params:
-  ine: '0987654321I'
+  ine: '123456789AB'
 status: 200
 payload: |-
   {

@@ -230,7 +230,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier - Pat Hibulaire - Dijon BSB,"{""ine"":""0987654321I""}",200,"{
+,Boursier - Pat Hibulaire - Dijon BSB,"{""ine"":""123456789AB""}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
