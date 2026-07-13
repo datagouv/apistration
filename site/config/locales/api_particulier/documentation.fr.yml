@@ -297,13 +297,16 @@ fr:
                 content: |+
                   #### Les plafonds
 
-                  Les limites de volumétrie sur API&nbsp;Particulier se décomposent en deux règles principales&nbsp;:&nbsp;
+                  Les limites de volumétrie sur API&nbsp;Particulier se décomposent comme suit&nbsp;:&nbsp;
 
                   - **Un plafond général par IP de 1000 requêtes/minute** ;
 
                   - **Une volumétrie par habilitation&nbsp;:** 20 requêtes/secondes.
 
+                  - **Exceptions&nbsp;:** certains endpoints échappent à cette règle et présentent une volumétrie spécifique par endpoint. C'est le cas des endpoints CNAV (ex. [allocation adulte handicapé](<%= endpoint_path(uid: 'cnav/allocation_adulte_handicape') %>), [RSA](<%= endpoint_path(uid: 'cnav/revenu_solidarite_active') %>)), limités à 100 requêtes/minute par endpoint.
+
                   {:.fr-highlight}
+                  > La limite d'appels applicable est également indiquée sur la **fiche de chaque API** dans le catalogue, dans la section « Spécifications de l'API ».
                   > ℹ️ Si une habilitation possède **plusieurs jetons** (par exemple un jeton classique et un jeton éditeur délégué), **la limite est partagée** entre tous&nbsp;: les appels de chaque jeton s'additionnent sur un même compteur.
 
                   #### Informations volumétrie dans le header
