@@ -23,25 +23,6 @@ jobs:
     name: Sync data.gouv.fr fiches
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: admin_apientreprise
-          POSTGRES_PASSWORD: wow*verysecret
-          POSTGRES_DB: admin_apientreprise_test
-          POSTGRES_PORT: 5432
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      redis:
-        image: redis
-        ports: ["6379:6379"]
-        options: --entrypoint redis-server
     env:
       RAILS_ENV: test
       DATAGOUV_HOST: ${{ vars.DATAGOUV_HOST }}
@@ -59,20 +40,6 @@ jobs:
           bundler-cache: true
           cache-version: 322
           working-directory: site
-
-      - name: Install postgres client
-        run: sudo apt-get install libpq-dev
-
-      - name: Create database users
-        env:
-          POSTGRES_USER: admin_apientreprise
-          POSTGRES_DB: admin_apientreprise_test
-          PGPASSWORD: wow*verysecret
-        run: |
-          psql -h localhost -U ${{ env.POSTGRES_USER }} -d ${{ env.POSTGRES_DB }} -f `pwd`/postgresql_setup.txt
-
-      - name: Create database
-        run: bundle exec rails db:create db:schema:load
 
       - name: Compute changed fiche uids
         if: github.event_name == 'push'
