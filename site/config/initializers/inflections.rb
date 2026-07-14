@@ -20,4 +20,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'INSEE'
 
   inflect.acronym 'QF'
+  inflect.acronym 'UID'
 end

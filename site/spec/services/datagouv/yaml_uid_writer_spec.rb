@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'tmpdir'
 
-RSpec.describe Datagouv::YmlUidWriter do
+RSpec.describe Datagouv::YamlUIDWriter do
   let(:base_path) { Dir.mktmpdir }
   let(:api_dir) { File.join(base_path, 'api_entreprise') }
   let(:file_path) { File.join(api_dir, 'sample.yml') }
@@ -133,7 +133,7 @@ RSpec.describe Datagouv::YmlUidWriter do
     subject(:write) { described_class.new(api: 'api_entreprise', uid: 'does/not/exist', base_path:).write('some-id') }
 
     it 'raises an error naming the missing uid' do
-      expect { write }.to raise_error(Datagouv::YmlUidWriter::UidNotFoundError, %r{does/not/exist})
+      expect { write }.to raise_error(Datagouv::YamlUIDWriter::UIDNotFoundError, %r{does/not/exist})
     end
   end
 end

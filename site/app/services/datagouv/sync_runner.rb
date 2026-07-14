@@ -33,9 +33,9 @@ module Datagouv
     def write_yml(endpoint, result)
       case result.status
       when :created
-        YmlUidWriter.new(api: endpoint.api, uid: endpoint.uid).write(result.datagouv_uid)
+        YamlUIDWriter.new(api: endpoint.api, uid: endpoint.uid).write(result.datagouv_uid)
       when :deleted
-        YmlUidWriter.new(api: endpoint.api, uid: endpoint.uid).remove
+        YamlUIDWriter.new(api: endpoint.api, uid: endpoint.uid).remove
       end
     end
   end

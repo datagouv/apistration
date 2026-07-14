@@ -1,6 +1,6 @@
 module Datagouv
-  class YmlUidWriter
-    class UidNotFoundError < StandardError
+  class YamlUIDWriter
+    class UIDNotFoundError < StandardError
     end
 
     def initialize(api:, uid:, base_path: Rails.root.join('config/endpoints'))
@@ -52,7 +52,7 @@ module Datagouv
 
     def file_path
       Dir["#{base_path}/#{api}/*.yml"].find { |file| File.readlines(file).any? { |line| line.match?(uid_line_pattern) } } ||
-        raise(UidNotFoundError, "Datagouv::YmlUidWriter: no yml file found for uid '#{uid}' in api '#{api}'")
+        raise(UIDNotFoundError, "Datagouv::YamlUIDWriter: no yml file found for uid '#{uid}' in api '#{api}'")
     end
   end
 end
