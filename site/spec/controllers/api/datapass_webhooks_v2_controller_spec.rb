@@ -165,4 +165,49 @@ RSpec.describe API::DatapassWebhooksV2Controller do
       end
     end
   end
+
+  describe '#api_particulier_demarche_numerique' do
+    subject do
+      post :api_particulier_demarche_numerique, params:
+    end
+
+    describe 'happy path, on validation' do
+      let(:event) { 'approve' }
+      let(:token_id) { 'token id' }
+      let(:success) { true }
+
+      before do
+        allow_any_instance_of(HubSignature).to receive(:valid?).and_return(true) # rubocop:todo RSpec/AnyInstance
+
+        allow(DatapassWebhook::V2::APIParticulierDemarcheNumerique).to receive(:call).and_return(
+          OpenStruct.new(
+            token_id:,
+            success?: true
+          )
+        )
+      end
+
+      it 'calls DatapassWebhook::V2::APIParticulierDemarcheNumerique' do
+        expect(DatapassWebhook::V2::APIParticulierDemarcheNumerique).to receive(:call)
+
+        subject
+      end
+
+      it 'renders 200' do
+        subject
+
+        expect(response).to have_http_status(:ok)
+      end
+
+      context 'when event is approve' do
+        let(:event) { 'approve' }
+
+        it 'renders a json with a token id' do
+          subject
+
+          expect(response.parsed_body['token_id']).to eq(token_id)
+        end
+      end
+    end
+  end
 end
