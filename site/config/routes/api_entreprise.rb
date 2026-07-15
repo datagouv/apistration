@@ -5,6 +5,7 @@ constraints(APIEntrepriseDomainConstraint.new) do
 
     post '/datapass/v2/api_entreprise/webhook' => 'datapass_webhooks_v2#api_entreprise'
     post '/datapass/v2/api_particulier/webhook' => 'datapass_webhooks_v2#api_particulier'
+    post '/datapass/v2/api_particulier_demarche_numerique/webhook' => 'datapass_webhooks_v2#api_particulier_demarche_numerique'
   end
 
   post '/auth/api_gouv_entreprise', as: :login_api_gouv_entreprise

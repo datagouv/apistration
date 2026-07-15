@@ -14,6 +14,10 @@ module DatapassWebhooks
     handle_api('api_particulier')
   end
 
+  def api_particulier_demarche_numerique
+    handle_api('api_particulier_demarche_numerique')
+  end
+
   protected
 
   def datapass_webhook_params
