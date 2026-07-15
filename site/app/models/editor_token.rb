@@ -33,6 +33,10 @@ class EditorToken < ApplicationRecord
     end
   end
 
+  def prolong!
+    update!(exp: 18.months.from_now.to_i)
+  end
+
   private
 
   def jwt_data

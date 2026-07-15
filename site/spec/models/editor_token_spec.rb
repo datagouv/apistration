@@ -155,4 +155,14 @@ RSpec.describe EditorToken do
       expect(described_class.active).to contain_exactly(active_token)
     end
   end
+
+  describe '#prolong!' do
+    it 'sets exp to 18 months from now' do
+      editor_token = create(:editor_token, exp: 1.month.from_now.to_i)
+
+      editor_token.prolong!
+
+      expect(editor_token.reload.exp).to be_within(5).of(18.months.from_now.to_i)
+    end
+  end
 end
