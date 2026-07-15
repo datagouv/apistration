@@ -54,6 +54,65 @@
 
   </p>
   </details>
+* [200_enfant_mercier_pierre_allocataire.yaml](200_enfant_mercier_pierre_allocataire.yaml)
+
+  Status `200`
+
+  ## Enfant bénéficiaire ARS (rattaché à l'allocataire QF MERCIER)
+
+Enfant mineur `MERCIER PIERRE` de l'allocataire `MERCIER PIERRE` (nom d'usage
+DUBOIS) du cas Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Né en
+2013, il respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MERCIER",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateNaissance": 2013,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 10,
+    "codeCogInseeCommuneNaissance": "75102",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2024-08-09"
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=2013' -d 'moisDateNaissance=1' -d 'jourDateNaissance=10' -d 'codeCogInseeCommuneNaissance=75102' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
+  ```
+
+  </p>
+  </details>
 * [200_non_beneficiaire.yaml](200_non_beneficiaire.yaml)
 
   Status `200`

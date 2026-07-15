@@ -7,6 +7,18 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,"## Enfant bénéficiaire ARS (rattaché à l'allocataire QF MERCIER)
+
+Enfant mineur `MERCIER PIERRE` de l'allocataire `MERCIER PIERRE` (nom d'usage
+DUBOIS) du cas Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Né en
+2013, il respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.","{""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":2013,""moisDateNaissance"":1,""jourDateNaissance"":10,""codeCogInseeCommuneNaissance"":""75102"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""status"": ""allocataire"",
+    ""date_debut_droit"": ""2024-08-09""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,## Non bénéficiaire,"{""nomNaissance"":""BERNARD"",""prenoms"":[""LUCAS""],""anneeDateNaissance"":1978,""moisDateNaissance"":1,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""13055"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
   ""data"": {
     ""status"": ""non_beneficiaire"",
