@@ -13,7 +13,17 @@ Titre,Description,Paramètres,Status,Réponse
   ]
 }"
 ,"Cas de test avec jeton FranceConnect.
-Les données proviennent de nos propres jetons FranceConnect de test.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""nomUsage"":""MARTIN"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/all_fc.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Thomas""],""nomNaissance"":""Delatour"",""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75111"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+  ""data"": {
+    ""status"": ""allocataire"",
+    ""date_debut_droit"": ""2021-05-05""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent de nos propres jetons FranceConnect de test.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
     ""status"": ""ouvrant_droit"",
     ""date_debut_droit"": ""2021-05-05""

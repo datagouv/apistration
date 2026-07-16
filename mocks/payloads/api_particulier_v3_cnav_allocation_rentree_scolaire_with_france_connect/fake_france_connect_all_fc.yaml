@@ -1,0 +1,25 @@
+description: |-
+  Cas de test avec jeton FranceConnect.
+  Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/all_fc.yml).
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+  - "Thomas"
+  nomNaissance: "Delatour"
+  anneeDateNaissance: 1994
+  moisDateNaissance: 4
+  jourDateNaissance: 16
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "75111"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2024-08-09"
+    },
+    "links": {},
+    "meta": {}
+  }
