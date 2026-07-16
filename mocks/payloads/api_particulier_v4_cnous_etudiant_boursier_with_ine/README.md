@@ -51,8 +51,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -65,6 +67,152 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'ine=1234567890A' \
+    --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/ine"
+  ```
+
+  </p>
+  </details>
+* [200_boursier_annee_n1_fille_dupont.yaml](200_boursier_annee_n1_fille_dupont.yaml)
+
+  Status `200`
+
+  Boursier sur année N-1 - Fille Dupont - Dijon Carnot
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0987654321M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2025-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "fille@dupont.com",
+      "identite": {
+        "nom": "DUPONT",
+        "prenoms": [
+          "FILLE"
+        ],
+        "date_naissance": "2003-10-01",
+        "nom_commune_naissance": "Marseille",
+        "sexe": "F"
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321M' \
+    --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/ine"
+  ```
+
+  </p>
+  </details>
+* [200_boursier_annee_n2_fille_b_dupont.yaml](200_boursier_annee_n2_fille_b_dupont.yaml)
+
+  Status `200`
+
+  Boursier sur année N-2 - Fille B Dupont - Dijon Carnot
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0987654321N"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2024-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "filleb@dupont.com",
+      "identite": {
+        "nom": "DUPONT",
+        "prenoms": [
+          "FILLE B"
+        ],
+        "date_naissance": "2003-10-01",
+        "nom_commune_naissance": "Marseille",
+        "sexe": "F"
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321N' \
     --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/ine"
   ```
 
@@ -123,8 +271,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -194,8 +344,10 @@
         "sexe": "F"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -265,8 +417,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -336,8 +490,10 @@
         "sexe": "F"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -407,8 +563,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -478,8 +636,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -549,8 +709,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -620,8 +782,10 @@
         "sexe": "F"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -691,8 +855,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -762,8 +928,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -833,8 +1001,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -904,8 +1074,10 @@
         "sexe": "M"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -975,8 +1147,10 @@
         "sexe": "F"
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
