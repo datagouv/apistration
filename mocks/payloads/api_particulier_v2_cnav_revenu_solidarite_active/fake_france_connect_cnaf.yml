@@ -6,7 +6,6 @@ description: |-
 params:
   prenoms: 
   - "Georges"
-  nomUsage: "MARTIN"
   nomNaissance: "CNAF"
   anneeDateDeNaissance: 2002
   moisDateDeNaissance: 1

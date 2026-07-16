@@ -8,7 +8,6 @@ params:
   prenoms: 
   - "Georges"
   nomNaissance: "CNAF"
-  nomUsage: "MARTIN"
   anneeDateDeNaissance: 2002
   moisDateDeNaissance: 1
   jourDateDeNaissance: 1

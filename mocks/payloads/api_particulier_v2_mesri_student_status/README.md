@@ -3928,7 +3928,6 @@
       "Thomas"
     ],
     "nomNaissance": "Delatour",
-    "nomUsage": "Delamouette",
     "anneeDateDeNaissance": 1994,
     "moisDateDeNaissance": 4,
     "jourDateDeNaissance": 16,

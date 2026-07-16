@@ -86,7 +86,6 @@
       "Georges"
     ],
     "nomNaissance": "CNAF",
-    "nomUsage": "MARTIN",
     "anneeDateNaissance": 2002,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
