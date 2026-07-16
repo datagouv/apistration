@@ -107,6 +107,65 @@
 
   </p>
   </details>
+* [200_enfant_mercier_beneficiaire.yaml](200_enfant_mercier_beneficiaire.yaml)
+
+  Status `200`
+
+  ## Enfant bénéficiaire AEEH (rattaché à l'allocataire QF MERCIER)
+
+Enfant mineur de l'allocataire `MERCIER PIERRE` (nom d'usage DUBOIS) du cas
+Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Cet enfant est éligible
+et bénéficiaire de l'AEEH.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MERCIER",
+    "prenoms": [
+      "ROBERT"
+    ],
+    "anneeDateNaissance": 2016,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 15,
+    "codeCogInseeCommuneNaissance": "75102",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2023-06-15"
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=ROBERT' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=3' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=75102' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_enfant_handicape/identite"
+  ```
+
+  </p>
+  </details>
 * [200_non_beneficiaire.yaml](200_non_beneficiaire.yaml)
 
   Status `200`
