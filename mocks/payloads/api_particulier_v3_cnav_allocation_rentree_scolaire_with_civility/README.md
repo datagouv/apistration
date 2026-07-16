@@ -76,7 +76,7 @@ DUBOIS) du cas Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Né en
     "anneeDateNaissance": 2013,
     "moisDateNaissance": 1,
     "jourDateNaissance": 10,
-    "codeCogInseeCommuneNaissance": "75102",
+    "codeCogInseeCommuneNaissance": "95277",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "M"
   }
@@ -107,7 +107,7 @@ DUBOIS) du cas Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Né en
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=2013' -d 'moisDateNaissance=1' -d 'jourDateNaissance=10' -d 'codeCogInseeCommuneNaissance=75102' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=2013' -d 'moisDateNaissance=1' -d 'jourDateNaissance=10' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/identite"
   ```
 

@@ -52,6 +52,64 @@
 
   </p>
   </details>
+* [200-usager-nom-50-caracteres-france_connect.yml](200-usager-nom-50-caracteres-france_connect.yml)
+
+  Status `200`
+
+  ## Identité `nom_50+_caractères` de la base de test de France Connect
+
+Ce cas permet de tester un appel à partir des données de l'identité pivot
+France Connect `nom_50+_caractères` (nom de naissance de plus de 50
+caractères). Cet usager est bénéficiaire de l'AAH.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "AZERTYUIOPMLKJHGFDSQWXCVBNAZERTYUIOPMLKJHGFDSQWXCVBN",
+    "prenoms": [
+      "BERTRAND",
+      "CYRIL"
+    ],
+    "anneeDateNaissance": 2000,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 1,
+    "codeCogInseeCommuneNaissance": "75119",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "date_debut_droit": "2023-04-01"
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/identite?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [200_beneficiaire.yaml](200_beneficiaire.yaml)
 
   Status `200`

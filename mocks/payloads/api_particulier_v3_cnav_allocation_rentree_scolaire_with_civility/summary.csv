@@ -11,7 +11,7 @@ Titre,Description,Paramètres,Status,Réponse
 
 Enfant mineur `MERCIER PIERRE` de l'allocataire `MERCIER PIERRE` (nom d'usage
 DUBOIS) du cas Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Né en
-2013, il respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.","{""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":2013,""moisDateNaissance"":1,""jourDateNaissance"":10,""codeCogInseeCommuneNaissance"":""75102"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+2013, il respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.","{""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":2013,""moisDateNaissance"":1,""jourDateNaissance"":10,""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
   ""data"": {
     ""status"": ""allocataire"",
     ""date_debut_droit"": ""2024-08-09""
