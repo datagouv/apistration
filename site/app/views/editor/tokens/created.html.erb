@@ -1,0 +1,15 @@
+<div class="fr-alert fr-alert--warning fr-mb-3w">
+  <h3 class="fr-alert__title"><%= t('.warning_title') %></h3>
+  <p><%= t('.warning') %></p>
+</div>
+
+<div class="copy-token fr-mb-3w" data-controller="clipboard" data-clipboard-alert-message-value="<%= t('.copy_alert') %>">
+  <%= render 'shared/tokens/hashed_value_input', token: @editor_token %>
+  <button class="fr-btn fr-btn--sm fr-icon-clipboard-fill fr-btn--icon-right"
+          type="button"
+          data-action="click->clipboard#copy">
+    <%= t('.copy') %>
+  </button>
+</div>
+
+<%= link_to t('.back'), editor_tokens_path, class: 'fr-btn fr-btn--secondary' %>

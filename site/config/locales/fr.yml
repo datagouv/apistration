@@ -527,6 +527,37 @@ fr:
       button: "S'abonner"
 
   editor:
+    tokens:
+      index:
+        title: Jetons éditeurs
+        description: Un jeton unique, sans droits propres, résolu par SIRET à chaque appel.
+        generate: Générer un nouveau jeton éditeur
+        table:
+          identifier: Identifiant
+          allowed_ips: IPs autorisées
+          created_at: Créé le
+          expiration: Expiration
+          status: Statut
+          actions: Actions
+        status_active: Actif
+        status_expired: Expiré
+        status_revoked: Révoqué
+        edit_ips: Modifier les IPs
+        rotate: Renouveler
+        rotate_confirm: Le jeton actuel sera révoqué et remplacé par un nouveau. Continuer ?
+        revoke: Révoquer
+        revoke_confirm: Le jeton sera définitivement révoqué. Continuer ?
+      edit:
+        title: Modifier les IPs autorisées
+        label: IPs autorisées
+        hint: "Une IP ou plage CIDR par ligne (10 maximum, préfixe IPv4 minimum : /24). Liste vide : aucune restriction."
+        submit: Enregistrer
+      created:
+        warning_title: Copiez ce jeton maintenant
+        warning: Ce jeton ne pourra plus être affiché. Si vous le perdez, révoquez-le et générez-en un nouveau.
+        copy: Copier le jeton
+        copy_alert: Jeton copié
+        back: Retour à la liste des jetons
     delegations:
       index:
         title: Délégations
@@ -544,13 +575,6 @@ fr:
         no_scopes: Aucun scope
         status_active: Actif
         status_revoked: Révoqué
-        editor_tokens_title: Jetons de délégation
-        editor_tokens_table:
-          token: Jeton
-          status: Statut
-          expiration: Expiration
-          copy: Copier le jeton
-          inactive: Inactif
   provider:
     dashboard:
       show:

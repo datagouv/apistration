@@ -36,6 +36,37 @@ RSpec.describe EditorToken do
     end
   end
 
+  describe '#allowed_ips' do
+    it 'is optional' do
+      expect(build(:editor_token, allowed_ips: [])).to be_valid
+    end
+
+    it 'stores exact IPs as /32 entries' do
+      editor_token = create(:editor_token, allowed_ips: ['203.0.113.10'])
+
+      expect(editor_token.reload.allowed_ips).to eq([IPAddr.new('203.0.113.10/32')])
+    end
+
+    it 'accepts up to 10 CIDR ranges' do
+      editor_token = build(:editor_token, allowed_ips: ['203.0.113.0/24', '198.51.100.42'])
+
+      expect(editor_token).to be_valid
+    end
+
+    it 'rejects private ranges' do
+      editor_token = build(:editor_token, allowed_ips: ['10.0.0.1'])
+
+      expect(editor_token).not_to be_valid
+      expect(editor_token.errors[:allowed_ips]).to be_present
+    end
+
+    it 'rejects malformed entries' do
+      editor_token = build(:editor_token, allowed_ips: ['wat'])
+
+      expect(editor_token).not_to be_valid
+    end
+  end
+
   describe '#expired?' do
     it 'returns true when exp is in the past' do
       editor_token = build(:editor_token, :expired)
@@ -87,6 +118,31 @@ RSpec.describe EditorToken do
       editor_token = build(:editor_token, :blacklisted)
 
       expect(editor_token).not_to be_active
+    end
+  end
+
+  describe '#revoke!' do
+    it 'blacklists the token' do
+      editor_token = create(:editor_token)
+
+      expect { editor_token.revoke! }.to change(editor_token, :blacklisted?).to(true)
+    end
+  end
+
+  describe '#rotate!' do
+    let(:editor_token) { create(:editor_token, exp: 3.months.from_now.to_i, allowed_ips: ['203.0.113.0/24']) }
+
+    it 'revokes the token and returns a fresh one for the same editor' do
+      new_token = editor_token.rotate!
+
+      expect(editor_token).to be_blacklisted
+      expect(new_token).to be_active
+      expect(new_token.editor).to eq(editor_token.editor)
+      expect(new_token.exp).to be > editor_token.exp
+    end
+
+    it 'copies allowed_ips to the new token' do
+      expect(editor_token.rotate!.allowed_ips).to eq(editor_token.allowed_ips)
     end
   end
 

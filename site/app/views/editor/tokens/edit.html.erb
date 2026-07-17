@@ -1,0 +1,21 @@
+<h1 class="fr-h4"><%= t('.title') %></h1>
+
+<% if @editor_token.errors.any? %>
+  <div class="fr-alert fr-alert--error fr-mb-2w">
+    <ul>
+      <% @editor_token.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @editor_token, url: editor_token_path(@editor_token) do |f| %>
+  <div class="fr-input-group">
+    <%= f.label :allowed_ips_text, t('.label'), class: 'fr-label' %>
+    <span class="fr-hint-text"><%= t('.hint') %></span>
+    <%= f.text_area :allowed_ips_text, class: 'fr-input', rows: 6 %>
+  </div>
+
+  <%= f.submit t('.submit'), class: 'fr-btn fr-mt-2w' %>
+<% end %>
