@@ -18,8 +18,8 @@
     "moisDateNaissance": 6,
     "jourDateNaissance": 15,
     "sexeEtatCivil": "M",
-    "codeInseeLieuDeNaissance": "75101",
-    "codePaysLieuDeNaissance": "99100"
+    "codeCogInseeCommuneNaissance": "75101",
+    "codeCogInseePaysNaissance": "99100"
   }
   ```
 

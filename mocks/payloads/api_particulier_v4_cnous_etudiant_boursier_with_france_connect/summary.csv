@@ -1,5 +1,5 @@
 Titre,Description,Paramètres,Status,Réponse
-,Cas de test avec jeton FranceConnect - Boursier sur une campagne antérieure ciblée via campaignYear,"{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100"",""campaignYear"":2022}",200,"{
+,Cas de test avec jeton FranceConnect - Boursier sur une campagne antérieure ciblée via campaignYear,"{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75107"",""campaignYear"":2022}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,

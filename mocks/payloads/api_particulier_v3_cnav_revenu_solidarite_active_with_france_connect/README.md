@@ -14,9 +14,9 @@
     "prenoms": [
       "JEROME"
     ],
-    "anneeDateDaissance": 2002,
-    "moisDateDaissance": 12,
-    "jourDateDaissance": 5,
+    "anneeDateNaissance": 2002,
+    "moisDateNaissance": 12,
+    "jourDateNaissance": 5,
     "codeCogInseeCommuneNaissance": "08480",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "M"
