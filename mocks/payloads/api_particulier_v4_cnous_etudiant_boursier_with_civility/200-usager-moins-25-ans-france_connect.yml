@@ -18,7 +18,11 @@ status: 200
 payload: |-
   {
     "data": {
-      "est_boursier": true,
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
       "periode_versement_bourse": {
         "date_rentree": "2025-09-01",
         "duree": 12

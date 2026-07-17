@@ -76,6 +76,89 @@
 
   </p>
   </details>
+* [200-usager-moins-25-ans-france_connect.yml](200-usager-moins-25-ans-france_connect.yml)
+
+  Status `200`
+
+  ## Identité `moins_25_ans` de la base de test de France Connect
+
+Ce cas permet de tester un appel à partir des données de l'identité pivot
+France Connect `moins_25_ans` (usager de moins de 25 ans). Cet usager est
+bénéficiaire d'une bourse.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "CUILLERE",
+    "prenoms": [
+      "PAUL"
+    ],
+    "anneeDateNaissance": 2007,
+    "moisDateNaissance": 1,
+    "jourDateNaissance": 23,
+    "codeCogInseeCommuneNaissance": "42218",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2025-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Saint-Etienne",
+        "nom_etablissement": "Université Jean Monnet"
+      },
+      "echelon_bourse": {
+        "echelon": "2",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "minnannuxammi-4532@yopmail.com",
+      "identite": {
+        "nom": "CUILLERE",
+        "prenoms": [
+          "PAUL"
+        ],
+        "date_naissance": "2007-01-23",
+        "nom_commune_naissance": "Saint-Etienne",
+        "sexe": "M"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CUILLERE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=1' -d 'jourDateNaissance=23' -d 'codeCogInseeCommuneNaissance=42218' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/identite"
+  ```
+
+  </p>
+  </details>
 * [200_boursier.yaml](200_boursier.yaml)
 
   Status `200`
