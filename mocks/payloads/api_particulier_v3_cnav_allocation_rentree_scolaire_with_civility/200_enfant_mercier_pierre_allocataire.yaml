@@ -12,7 +12,7 @@ params:
   anneeDateNaissance: 2013
   moisDateNaissance: 1
   jourDateNaissance: 10
-  codeCogInseeCommuneNaissance: '75102'
+  codeCogInseeCommuneNaissance: '95277'
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'M'
 status: 200

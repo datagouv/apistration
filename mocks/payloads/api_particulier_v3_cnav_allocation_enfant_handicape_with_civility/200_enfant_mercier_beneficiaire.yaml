@@ -12,7 +12,7 @@ params:
   anneeDateNaissance: 2016
   moisDateNaissance: 3
   jourDateNaissance: 15
-  codeCogInseeCommuneNaissance: '75102'
+  codeCogInseeCommuneNaissance: '95277'
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'M'
 status: 200

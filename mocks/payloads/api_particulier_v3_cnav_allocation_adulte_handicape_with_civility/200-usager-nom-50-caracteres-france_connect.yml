@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Identité `nom_50+_caractères` de la base de test de France Connect
+
+  Ce cas permet de tester un appel à partir des données de l'identité pivot
+  France Connect `nom_50+_caractères` (nom de naissance de plus de 50
+  caractères). Cet usager est bénéficiaire de l'AAH.
+params:
+  nomNaissance: 'AZERTYUIOPMLKJHGFDSQWXCVBNAZERTYUIOPMLKJHGFDSQWXCVBN'
+  prenoms:
+  - 'BERTRAND'
+  - 'CYRIL'
+  anneeDateNaissance: 2000
+  moisDateNaissance: 3
+  jourDateNaissance: 1
+  codeCogInseeCommuneNaissance: '75119'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "date_debut_droit": "2023-04-01"
+    },
+    "links": {},
+    "meta": {}
+  }

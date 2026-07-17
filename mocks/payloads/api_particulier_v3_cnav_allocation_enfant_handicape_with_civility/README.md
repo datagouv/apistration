@@ -129,7 +129,7 @@ et bénéficiaire de l'AEEH.
     "anneeDateNaissance": 2016,
     "moisDateNaissance": 3,
     "jourDateNaissance": 15,
-    "codeCogInseeCommuneNaissance": "75102",
+    "codeCogInseeCommuneNaissance": "95277",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "M"
   }
@@ -160,7 +160,7 @@ et bénéficiaire de l'AEEH.
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=ROBERT' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=3' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=75102' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=ROBERT' -d 'anneeDateNaissance=2016' -d 'moisDateNaissance=3' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_enfant_handicape/identite"
   ```
 
