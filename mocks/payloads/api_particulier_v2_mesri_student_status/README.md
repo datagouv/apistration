@@ -3923,17 +3923,7 @@
     "family_name": "Delatour",
     "birthdate": "1994-04-16",
     "gender": "male",
-    "birthplace": "75111",
-    "prenoms": [
-      "Thomas"
-    ],
-    "nomNaissance": "Delatour",
-    "anneeDateDeNaissance": 1994,
-    "moisDateDeNaissance": 4,
-    "jourDateDeNaissance": 16,
-    "sexe": "M",
-    "codeInseeLieuDeNaissance": "75111",
-    "codePaysLieuDeNaissance": "99100"
+    "birthplace": "75111"
   }
   ```
 

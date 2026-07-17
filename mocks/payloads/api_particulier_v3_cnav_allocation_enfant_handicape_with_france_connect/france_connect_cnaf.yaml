@@ -12,8 +12,8 @@ params:
   moisDateNaissance: 8
   jourDateNaissance: 24
   sexeEtatCivil: "F"
-  codeInseeLieuDeNaissance: "75107"
-  codePaysLieuDeNaissance: "99100"
+  codeCogInseeCommuneNaissance: "75107"
+  codeCogInseePaysNaissance: "99100"
 status: 200
 payload: |-
   {

@@ -10,7 +10,6 @@ params:
   jourDateNaissance: 1
   sexeEtatCivil: "M"
   codeCogInseeCommuneNaissance: "75002"
-  codeCogInseePaysNaissance: "99100"
 status: 200
 payload: |-
   {

@@ -1,7 +1,7 @@
 ---
 description: 'FranceConnect: Boursier échelon 5 (scope complet)'
 params:
-  prenom: "Thomas"
+  prenoms: "Thomas"
   nomNaissance: "Delatour"
   anneeDateNaissance: 1994
   moisDateNaissance: 4

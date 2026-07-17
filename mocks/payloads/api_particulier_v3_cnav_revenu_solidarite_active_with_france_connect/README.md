@@ -193,7 +193,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "jourDateNaissance": 24,
     "sexeEtatCivil": "F",
     "codeCogInseeCommuneNaissance": "75107",
-    "codePaysLieuDaissance": "99100"
+    "codeCogInseePaysNaissance": "99100"
   }
   ```
 

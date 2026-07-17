@@ -188,8 +188,8 @@ Les données proviennent des jetons de l'environnement de test FranceConnect.
     "moisDateNaissance": 8,
     "jourDateNaissance": 24,
     "sexeEtatCivil": "F",
-    "codeInseeLieuDeNaissance": "75107",
-    "codePaysLieuDeNaissance": "99100"
+    "codeCogInseeCommuneNaissance": "75107",
+    "codeCogInseePaysNaissance": "99100"
   }
   ```
 

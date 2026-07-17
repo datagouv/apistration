@@ -23,7 +23,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Cas de test avec jeton FranceConnect de test - Non boursier,"{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+,Cas de test avec jeton FranceConnect de test - Non boursier,"{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002""}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": false,
@@ -47,7 +47,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Cas de test avec jeton FranceConnect - Boursier,"{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+,Cas de test avec jeton FranceConnect - Boursier,"{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75107""}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
