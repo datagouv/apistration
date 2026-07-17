@@ -258,19 +258,31 @@ Plusieurs exemples existent pour tous les endpoints FranceConnectés dans le
 dossier [france_connect](./payloads/france_connect/), avec une description
 indiquant la réponse associée sur le fournisseur de données.
 
+**Attention**, l'identité pivot renvoyée par FranceConnect ne contient jamais
+de nom d'usage : seuls `family_name`, `given_name`, `gender`, `birthdate`,
+`birthplace` et `birthcountry` sont garantis (ce sont les seuls scopes
+demandés, voir `hub_identity_scopes` dans
+`siade/app/interactors/france_connect/validate_response.rb`). Le paramètre
+`nom_usage` est donc systématiquement `nil` pour un appel FranceConnect réel.
+**N'ajoutez jamais de clé `nomUsage` dans les `params` d'un fichier
+`fake_france_connect_*`/`france_connect_*`** : aucune requête réelle ne pourra
+jamais produire cette clé, le mapping échouera silencieusement et l'appel
+tombera en 404 (ou sur un appel amont réel) au lieu de renvoyer le cas de
+test attendu. `nomUsage` n'a de sens que dans les fixtures `*_with_civility`,
+où l'appelant le fournit lui-même en paramètre de requête.
+
 ## Déploiement des données
 
-Lorsque des nouvelles données sont poussées sur la branche `develop`, le système
-effectue des vérifications sur la cohérence à l'aide d'une suite de tests
-automatisés. Si tout est OK, le système notifie l'API afin que celle-ci prenne
-en compte les nouvelles données.
+`siade/config/mock_payloads` est un lien symbolique vers `mocks/payloads` : les
+deux dépôts partagent exactement les mêmes fichiers, et l'API SIADE lit ces
+fichiers directement sur disque.
 
-En cas de problème, il est possible d'effectuer une recharge des données en
-lançant la commande suivante :
-
-```sh
-bundle exec ruby bin/reload_mock_backend.rb
-```
+Cette lecture est mise en cache en mémoire, par `operation_id`, pour toute la
+durée de vie du process (`MockDataBackend`, aucun TTL, jamais invalidé
+automatiquement). Ce n'est pas un problème en pratique : chaque déploiement
+redémarre les workers de l'API SIADE dans le cadre normal du script de
+déploiement, donc un nouveau process prend en compte les nouveaux fichiers de
+payloads automatiquement, sans étape de rechargement séparée.
 
 ## <a name="ajouter-donnees-de-test"></a> Contribution : Ajouter des données de test
 
