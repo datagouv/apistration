@@ -71,7 +71,9 @@ bénéficiaire d'une bourse.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/identite?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CUILLERE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=1' -d 'jourDateNaissance=23' -d 'codeCogInseeCommuneNaissance=42218' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/identite"
   ```
 
   </p>
