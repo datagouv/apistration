@@ -1,10 +1,10 @@
 description: |-
   Cas de test avec jeton FranceConnect.
-  Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
+  Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/all_fc.yml).
   L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
 params:
-  prenoms: 
+  prenoms:
   - "Thomas"
   nomNaissance: "Delatour"
   anneeDateNaissance: 1994
@@ -17,7 +17,7 @@ status: 200
 payload: |-
   {
     "data": {
-      "est_beneficiaire": true,
+      "status": "allocataire",
       "date_debut_droit": "2021-05-05"
     },
     "links": {},

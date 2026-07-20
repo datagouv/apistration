@@ -18,8 +18,8 @@
     "moisDateNaissance": 6,
     "jourDateNaissance": 15,
     "sexeEtatCivil": "M",
-    "codeInseeLieuDeNaissance": "75101",
-    "codePaysLieuDeNaissance": "99100"
+    "codeCogInseeCommuneNaissance": "75101",
+    "codeCogInseePaysNaissance": "99100"
   }
   ```
 
@@ -57,6 +57,61 @@
 
   </p>
   </details>
+* [fake_france_connect_all_fc.yaml](fake_france_connect_all_fc.yaml)
+
+  Status `200`
+
+  Cas de test avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/all_fc.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Thomas"
+    ],
+    "nomNaissance": "Delatour",
+    "anneeDateNaissance": 1994,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 16,
+    "sexeEtatCivil": "M",
+    "codeCogInseeCommuneNaissance": "75111",
+    "codeCogInseePaysNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2021-05-05"
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_enfant_handicape/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_cnaf.yaml](fake_france_connect_cnaf.yaml)
 
   Status `200`
@@ -73,7 +128,6 @@ Les données proviennent de nos propres jetons FranceConnect de test.
       "Georges"
     ],
     "nomNaissance": "CNAF",
-    "nomUsage": "MARTIN",
     "anneeDateNaissance": 2002,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -134,8 +188,8 @@ Les données proviennent des jetons de l'environnement de test FranceConnect.
     "moisDateNaissance": 8,
     "jourDateNaissance": 24,
     "sexeEtatCivil": "F",
-    "codeInseeLieuDeNaissance": "75107",
-    "codePaysLieuDeNaissance": "99100"
+    "codeCogInseeCommuneNaissance": "75107",
+    "codeCogInseePaysNaissance": "99100"
   }
   ```
 

@@ -363,9 +363,7 @@
     "family_name": "MARTIN",
     "birthdate": "2001-01-01",
     "gender": "male",
-    "birthplace": "75002",
-    "birthcountry": "99100",
-    "preferred_username": "jmartin_cnous_with_less_scopes"
+    "birthplace": "75002"
   }
   ```
 
@@ -416,9 +414,7 @@
     "family_name": "DUBOIS",
     "birthdate": "1962-08-24",
     "gender": "female",
-    "birthplace": "75107",
-    "birthcountry": "99100",
-    "preferred_username": ""
+    "birthplace": "75107"
   }
   ```
 

@@ -5,13 +5,11 @@ params:
   prenoms:
   - "Georges"
   nomNaissance: "CNAF"
-  nomUsage: "MARTIN"
   anneeDateNaissance: 2002
   moisDateNaissance: 1
   jourDateNaissance: 1
   sexeEtatCivil: "M"
   codeCogInseeCommuneNaissance: "75002"
-  codeCogInseePaysNaissance: "99100"
 status: 200
 payload: |-
   {

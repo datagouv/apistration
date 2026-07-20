@@ -7,7 +7,6 @@ params:
   prenoms: 
   - "Thomas"
   nomNaissance: "Delatour"
-  nomUsage: "Delamouette"
   anneeDateNaissance: 1994
   moisDateNaissance: 4
   jourDateNaissance: 16

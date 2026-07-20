@@ -6,8 +6,6 @@ params:
   birthdate: "2001-01-01"
   gender: "male"
   birthplace: "75002"
-  birthcountry: "99100"
-  preferred_username: "jmartin_cnous_with_less_scopes"
 status: 200
 payload: |-
   {

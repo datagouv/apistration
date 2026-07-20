@@ -6,8 +6,6 @@ params:
   birthdate: "1962-08-24"
   gender: "female"
   birthplace: "75107"
-  birthcountry: "99100"
-  preferred_username: ""
 status: 200
 payload: |-
   {

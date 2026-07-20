@@ -20,8 +20,7 @@
     "moisDateNaissance": 8,
     "jourDateNaissance": 24,
     "sexeEtatCivil": "F",
-    "codeInseeLieuDeNaissance": "75107",
-    "codePaysLieuDeNaissance": "99100",
+    "codeCogInseeCommuneNaissance": "75107",
     "campaignYear": 2022
   }
   ```
@@ -86,13 +85,11 @@
       "Georges"
     ],
     "nomNaissance": "CNAF",
-    "nomUsage": "MARTIN",
     "anneeDateNaissance": 2002,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
     "sexeEtatCivil": "M",
-    "codeCogInseeCommuneNaissance": "75002",
-    "codeCogInseePaysNaissance": "99100"
+    "codeCogInseeCommuneNaissance": "75002"
   }
   ```
 
@@ -162,8 +159,7 @@
     "moisDateNaissance": 8,
     "jourDateNaissance": 24,
     "sexeEtatCivil": "F",
-    "codeInseeLieuDeNaissance": "75107",
-    "codePaysLieuDeNaissance": "99100"
+    "codeCogInseeCommuneNaissance": "75107"
   }
   ```
 
