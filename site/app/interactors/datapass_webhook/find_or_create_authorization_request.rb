@@ -1,5 +1,7 @@
 # TODO: can be factorized better with previous interactor
 class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationInteractor
+  include DatapassWebhook::PassScopes
+
   def call # rubocop:disable Metrics/AbcSize
     context.authorization_request = AuthorizationRequest.find_or_initialize_by(external_id: context.data['pass']['id'])
 
@@ -80,12 +82,18 @@ class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationInteractor
       'demarche',
       'status',
       'siret'
-    ).merge(authorization_request_attributes_for_current_event).merge(
+    ).merge(authorization_request_attributes_for_current_event).merge(requested_scopes_attributes).merge(
       'last_update' => fired_at_as_datetime,
       'previous_external_id' => context.data['pass']['copied_from_enrollment_id'],
       'api' => context.api,
       'extra_infos' => extra_infos_with_service_provider
     )
+  end
+
+  def requested_scopes_attributes
+    return {} if context.reopening
+
+    { 'scopes' => pass_scopes }
   end
 
   def extra_infos_with_service_provider
