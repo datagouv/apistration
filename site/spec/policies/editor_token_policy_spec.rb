@@ -58,4 +58,44 @@ RSpec.describe EditorTokenPolicy do
       end
     end
   end
+
+  describe '#prolong?' do
+    let(:editor_token) { create(:editor_token, editor:, exp: 1.month.from_now.to_i) }
+
+    it 'allows the owner when the token expires in less than 90 days' do
+      expect(policy.prolong?).to be true
+    end
+
+    context 'when the token expires in more than 90 days' do
+      let(:editor_token) { create(:editor_token, editor:, exp: 6.months.from_now.to_i) }
+
+      it 'denies' do
+        expect(policy.prolong?).to be false
+      end
+    end
+
+    context 'when the token is blacklisted' do
+      let(:editor_token) { create(:editor_token, :blacklisted, editor:, exp: 1.month.from_now.to_i) }
+
+      it 'denies' do
+        expect(policy.prolong?).to be false
+      end
+    end
+
+    context 'when the token belongs to another editor' do
+      let(:editor_token) { create(:editor_token, exp: 1.month.from_now.to_i) }
+
+      it 'denies' do
+        expect(policy.prolong?).to be false
+      end
+    end
+
+    context 'when the user has no editor' do
+      let(:user) { create(:user) }
+
+      it 'denies' do
+        expect(policy.prolong?).to be false
+      end
+    end
+  end
 end
