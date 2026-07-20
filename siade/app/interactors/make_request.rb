@@ -151,9 +151,11 @@ class MakeRequest < ApplicationInteractor
   end
 
   def dns_lookup_error?(exception)
+    # rubocop:disable Style/ArrayIntersect -- substring match, not element intersection
     dns_lookup_errors_string.any? do |error_message|
       exception.message.include?(error_message)
     end
+    # rubocop:enable Style/ArrayIntersect
   end
 
   def dns_lookup_errors_string
@@ -182,11 +184,13 @@ class MakeRequest < ApplicationInteractor
   end
 
   def open_ssl_network_error?(exception)
+    # rubocop:disable Style/ArrayIntersect -- substring match, not element intersection
     [
       'SSLv3/TLS write client hello'
     ].any? do |error_message|
       exception.message.include?(error_message)
     end
+    # rubocop:enable Style/ArrayIntersect
   end
 
   def open_ssl_certificate_error?(exception)
@@ -194,11 +198,13 @@ class MakeRequest < ApplicationInteractor
   end
 
   def open_ssl_temporary_error?(exception)
+    # rubocop:disable Style/ArrayIntersect -- substring match, not element intersection
     [
       'unexpected eof while reading'
     ].any? do |error_message|
       exception.message.include?(error_message)
     end
+    # rubocop:enable Style/ArrayIntersect
   end
 
   def response_is_a_redirection?
