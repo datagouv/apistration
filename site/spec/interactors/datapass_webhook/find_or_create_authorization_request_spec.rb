@@ -228,4 +228,42 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
       }.to change { authorization_request.reload.validated_at.to_i }.to(fired_at)
     end
   end
+
+  describe 'requested scopes' do
+    let(:datapass_webhook_params) do
+      build(:datapass_webhook, event:, fired_at:, authorization_request_attributes: { id: authorization_id })
+    end
+
+    before do
+      datapass_webhook_params['data']['pass']['scopes'] = {
+        'cnous_statut_boursier' => true,
+        'cnous_identite' => true,
+        'cnous_email' => false
+      }
+    end
+
+    context 'when the event is not a reopening' do
+      let(:event) { 'submit' }
+      let!(:authorization_request) { create(:authorization_request, external_id: authorization_id, scopes: []) }
+
+      it 'fills the checked scopes so pending requests are attributable to a provider' do
+        expect {
+          subject
+        }.to change { authorization_request.reload.scopes.sort }.to(%w[cnous_identite cnous_statut_boursier])
+      end
+    end
+
+    context 'when the event is a reopening of a validated request' do
+      let(:event) { 'transfer' }
+      let!(:authorization_request) do
+        create(:authorization_request, external_id: authorization_id, status: 'validated', scopes: %w[cnous_statut_bourse])
+      end
+
+      it 'does not overwrite the scopes of the running habilitation' do
+        expect {
+          subject
+        }.not_to change { authorization_request.reload.scopes }
+      end
+    end
+  end
 end

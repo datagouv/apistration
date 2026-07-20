@@ -1,4 +1,6 @@
 class DatapassWebhook::CreateOrProlongToken < ApplicationInteractor
+  include DatapassWebhook::PassScopes
+
   before do
     context.modalities ||= %w[params]
   end
@@ -45,26 +47,13 @@ class DatapassWebhook::CreateOrProlongToken < ApplicationInteractor
   end
 
   def affect_scopes(token)
-    computed_scopes = scopes
+    computed_scopes = pass_scopes
     token.update!(scopes: computed_scopes)
     authorization_request.update!(scopes: computed_scopes)
   end
 
   def token_already_exists?
     context.authorization_request.token.present?
-  end
-
-  def scopes
-    valid_scopes = extract_checked_scopes
-    valid_scopes << 'open_data' if valid_scopes.any? { |scope| scope.start_with?('open_data_') }
-    valid_scopes.reject! { |scope| scope.start_with?('open_data_') }
-    valid_scopes.compact.uniq
-  end
-
-  def extract_checked_scopes
-    context.data['pass']['scopes'].map do |code, bool|
-      code if bool
-    end
   end
 
   def authorization_request
