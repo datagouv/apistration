@@ -1,7 +1,9 @@
 class Editor::TokensController < EditorController
-  before_action :ensure_editor_tokens_enabled
+  before_action :ensure_editor_tokens_enabled, except: :index
 
   def index
+    return render :disabled unless current_editor.editor_tokens_enabled?
+
     @editor_tokens = current_editor.tokens.order(created_at: :desc)
   end
 
@@ -42,9 +44,7 @@ class Editor::TokensController < EditorController
   private
 
   def ensure_editor_tokens_enabled
-    return if current_editor.editor_tokens_enabled?
-
-    redirect_to editor_authorization_requests_path
+    redirect_to editor_tokens_path unless current_editor.editor_tokens_enabled?
   end
 
   def token
