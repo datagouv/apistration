@@ -11,7 +11,7 @@ export class FranceTravail {
   }
 
   /** Paiements versés par France Travail */
-  async indemnites(options: { version?: number; recipient?: string; identifiant: string }) {
+  async indemnites(options: { version?: number; recipient?: string; delegation_id?: string; identifiant: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -21,11 +21,11 @@ export class FranceTravail {
           throw new Error(`version ${resolvedVersion} not available for /france_travail/indemnites/identifiant; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'identifiant': options.identifiant } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'identifiant': options.identifiant } });
   }
 
   /** Statut demandeur d'emploi */
-  async statut(options: { version?: number; recipient?: string; identifiant: string }) {
+  async statut(options: { version?: number; recipient?: string; delegation_id?: string; identifiant: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -35,6 +35,6 @@ export class FranceTravail {
           throw new Error(`version ${resolvedVersion} not available for /france_travail/statut/identifiant; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'identifiant': options.identifiant } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'identifiant': options.identifiant } });
   }
 }

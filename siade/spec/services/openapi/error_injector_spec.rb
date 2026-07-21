@@ -65,6 +65,18 @@ RSpec.describe Openapi::ErrorInjector do
         expect(examples).to have_key('missing_mandatory_params_recipient_error')
       end
 
+      it 'documents the ambiguous editor delegation error on 422' do
+        described_class.new(open_api, config_path:).perform
+
+        examples = open_api.dig(
+          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
+          '422', 'content', 'application/json', 'examples'
+        )
+
+        expect(examples).to have_key('ambiguous_delegation_error')
+        expect(examples.dig('ambiguous_delegation_error', 'value', 'errors', 0, 'code')).to eq('00212')
+      end
+
       it 'uses provider name in 502/504 examples' do
         described_class.new(open_api, config_path:).perform
 
@@ -173,6 +185,18 @@ RSpec.describe Openapi::ErrorInjector do
 
         expect(examples).to have_key('custom_error')
         expect(examples).to have_key('missing_mandatory_params_context_error')
+      end
+
+      it 'merges the configured ambiguous delegation example into an existing 422' do
+        described_class.new(open_api, config_path:).perform
+
+        examples = open_api.dig(
+          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
+          '422', 'content', 'application/json', 'examples'
+        )
+
+        expect(examples).to have_key('custom_error')
+        expect(examples).to have_key('ambiguous_delegation_error')
       end
     end
 

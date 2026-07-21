@@ -105,9 +105,8 @@ class Openapi::ErrorInjector
     return unless error_config
     return unless responses.key?('422')
 
-    path_params = extract_path_params(path)
-    mandatory_params = error_config['mandatory_params'].map(&:to_sym)
-    extra_examples = builder.build_422_for_params(path_params:, mandatory_params:)
+    extra_examples = build_examples(error_config, extract_provider(path))
+    add_mandatory_params_examples(extra_examples, path, error_config)
 
     existing_examples = responses.dig('422', 'content', 'application/json', 'examples') || {}
     extra_examples.each do |key, value|

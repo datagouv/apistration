@@ -27,6 +27,9 @@ responses:
     description: Paramètre(s) invalide(s)
     mandatory_params:
       - recipient
+    examples:
+      ambiguous_delegation_error:
+        error_class: AmbiguousDelegationError
 
   '429':
     description: Trop de requêtes

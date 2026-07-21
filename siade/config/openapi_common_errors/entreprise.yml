@@ -29,6 +29,9 @@ responses:
       - context
       - object
       - recipient
+    examples:
+      ambiguous_delegation_error:
+        error_class: AmbiguousDelegationError
 
   '429':
     description: Trop de requêtes

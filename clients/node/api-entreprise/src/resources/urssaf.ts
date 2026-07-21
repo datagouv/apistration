@@ -12,7 +12,7 @@ export class Urssaf {
   }
 
   /** Attestation de vigilance */
-  async attestation_vigilance(siren: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async attestation_vigilance(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
     const resolvedVersion = options.version ?? 4;
     const path = (() => {
@@ -26,6 +26,6 @@ export class Urssaf {
           throw new Error(`version ${resolvedVersion} not available for /urssaf/unites_legales/{siren}/attestation_vigilance; supported: [3,4]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

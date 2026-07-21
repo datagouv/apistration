@@ -12,7 +12,7 @@ export class Probtp {
   }
 
   /** Conformité cotisations retraite bâtiment */
-  async attestation_cotisations_retraite(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async attestation_cotisations_retraite(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -23,11 +23,11 @@ export class Probtp {
           throw new Error(`version ${resolvedVersion} not available for /probtp/etablissements/{siret}/attestation_cotisations_retraite; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
   /** Conformité cotisations retraite complémentaire */
-  async conformite_cotisations_retraite(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string } = {}) {
+  async conformite_cotisations_retraite(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -38,6 +38,6 @@ export class Probtp {
           throw new Error(`version ${resolvedVersion} not available for /probtp/etablissements/{siret}/conformite_cotisations_retraite; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 }

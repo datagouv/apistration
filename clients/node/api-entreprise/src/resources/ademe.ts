@@ -12,7 +12,7 @@ export class Ademe {
   }
 
   /** Certification RGE */
-  async certification_rge(siret: string, options: { version?: number; recipient?: string; context?: string; object?: string; limit?: string } = {}) {
+  async certification_rge(siret: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string; limit?: string } = {}) {
     validateSiret(siret, 'siret');
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
@@ -23,6 +23,6 @@ export class Ademe {
           throw new Error(`version ${resolvedVersion} not available for /ademe/etablissements/{siret}/certification_rge; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'context': options.context, 'object': options.object, 'limit': options.limit } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object, 'limit': options.limit } });
   }
 }
