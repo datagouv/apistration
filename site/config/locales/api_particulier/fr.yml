@@ -293,6 +293,8 @@ fr:
             label: Cnous || API Statut étudiant boursier || Échelon de la bourse
           cnous_identite:
             label: Cnous || API Statut étudiant boursier || Identité du boursier
+          cnous_ine:
+            label: Cnous || API Statut étudiant boursier || Identifiant National des Élèves
           cnous_email:
             label: Cnous || API Statut étudiant boursier || E-mail
           cnous_periode_versement:

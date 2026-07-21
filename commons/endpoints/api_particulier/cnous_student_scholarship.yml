@@ -5,17 +5,17 @@ fiche:
     opening: protected
     new_version: true
     old_endpoint_uids:
-      - 'cnous/statut_etudiant_boursier_v3'
-    path: '/v4/cnous/etudiant_boursier/identite'
+      - 'cnous/statut_etudiant_boursier_v4'
+    path: '/v5/cnous/etudiant_boursier/identite'
     controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility'
     position: 400
     ping_url: &cnous_ping_url 'https://particulier.api.gouv.fr/api/cnous_etudiant_boursier_ine/ping'
     historique: |+
       **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
-      Les champs `est_boursier`, `est_radie` et `date_radiation` sont regroupés sous une nouvelle clé `statut_boursier`. Le champ `est_boursier` n'est plus renvoyé à la racine.
+      Un nouveau champ `ine` renvoie l'Identifiant National Étudiant, associé au nouveau scope « Identifiant National des Élèves » (`cnous_ine`).
 
       **Ce qui ne change pas :**
-      Tout le reste est identique (identité, période de versement, échelon, établissement, email).
+      Tout le reste est identique à la v4.
     perimeter: &cnous_perimeter
       entity_type_description: &cnous_entity_type_description |+
         Cette API délivre **uniquement les bourses "obligatoires"** et ne concerne pas les bourses d'ordre facultatif.
@@ -80,15 +80,40 @@ fiche:
 
           Cette API vous permet de connaître le montant exact perçu par l'étudiant car elle délivre l'échelon de la bourse et la durée de versement en mois."
 
-  - uid: 'cnous/statut_etudiant_boursier_v3'
+  - uid: 'cnous/statut_etudiant_boursier_v4'
     opening: protected
     new_endpoint_uids:
       - 'cnous/statut_etudiant_boursier'
     old_endpoint_uids:
+      - 'cnous/statut_etudiant_boursier_v3'
+    path: '/v4/cnous/etudiant_boursier/identite'
+    controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility'
+    position: 401
+    ping_url: *cnous_ping_url
+    perimeter: *cnous_perimeter
+    parameters_details: *cnous_parameters_details
+    data: *cnous_data
+    provider_uids: *cnous_provider_uids
+    keywords: *cnous_keywords
+    call_id: *cnous_call_id
+    parameters: *cnous_parameters
+    faq: *cnous_faq
+    historique: |+
+      **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
+      Les champs `est_boursier`, `est_radie` et `date_radiation` sont regroupés sous une nouvelle clé `statut_boursier`. Le champ `est_boursier` n'est plus renvoyé à la racine.
+
+      **Ce qui ne change pas :**
+      Tout le reste est identique (identité, période de versement, échelon, établissement, email).
+
+  - uid: 'cnous/statut_etudiant_boursier_v3'
+    opening: protected
+    new_endpoint_uids:
+      - 'cnous/statut_etudiant_boursier_v4'
+    old_endpoint_uids:
       - 'cnous/v2/statut_etudiant_boursier'
     path: '/v3/cnous/etudiant_boursier/identite'
     controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility'
-    position: 401
+    position: 402
     ping_url: *cnous_ping_url
     perimeter: *cnous_perimeter
     parameters_details:
