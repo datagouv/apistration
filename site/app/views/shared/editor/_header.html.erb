@@ -40,7 +40,7 @@
                 </a>
               </li>
               <li>
-                <a class="fr-link fr-icon-user-fill" href="<%= editor_path %>">
+                <a class="fr-link fr-icon-user-fill" href="<%= editor_settings_path %>">
                   <%= current_user.full_name %>
                 </a>
               </li>
@@ -80,6 +80,12 @@
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_tokens_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/tokens') %>>
               Jetons éditeurs
+            </a>
+          </li>
+
+          <li class="fr-nav__item">
+            <a class="fr-nav__link center" href="<%= editor_settings_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/parametres') %>>
+              Paramètres
             </a>
           </li>
         </ul>

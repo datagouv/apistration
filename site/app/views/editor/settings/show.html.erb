@@ -1,0 +1,107 @@
+<h1>Paramètres</h1>
+<p>Informations générales de votre organisation, visibles ou utilisées par nos services.</p>
+
+<%= form_with(model: @editor, url: editor_settings_path, method: :patch) do |f| %>
+  <h2 class="fr-mt-2w">Informations générales</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-6">
+      <div class="fr-input-group <%= 'fr-input-group--error' if @editor.errors[:name].any? %>">
+        <%= f.label :name, 'Nom', class: 'fr-label' %>
+        <%= f.text_field :name, class: 'fr-input', placeholder: 'Raison sociale ou nom commercial' %>
+        <% if @editor.errors[:name].any? %>
+          <p class="fr-error-text"><%= @editor.errors[:name].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="fr-col-6">
+      <div class="fr-input-group <%= 'fr-input-group--error' if @editor.errors[:siret].any? %>">
+        <%= f.label :siret, 'SIRET', class: 'fr-label' %>
+        <%= f.text_field :siret, class: 'fr-input', maxlength: 14, placeholder: '14 chiffres' %>
+        <% if @editor.errors[:siret].any? %>
+          <p class="fr-error-text"><%= @editor.errors[:siret].first %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-input-group">
+    <%= f.label :description, 'Description', class: 'fr-label' %>
+    <span class="fr-hint-text">Visible par les usagers (collectivités, CCAS)</span>
+    <%= f.text_area :description, class: 'fr-input', rows: 3 %>
+  </div>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-6">
+      <div class="fr-select-group">
+        <%= f.label :deployment_type, 'Type de déploiement', class: 'fr-label' %>
+        <%= f.select :deployment_type,
+              options_for_select(Editor.deployment_type_options, @editor.deployment_type),
+              {},
+              class: 'fr-select' %>
+      </div>
+    </div>
+    <div class="fr-col-6">
+      <div class="fr-input-group">
+        <%= f.label :languages, 'Langages utilisés', class: 'fr-label' %>
+        <span class="fr-hint-text">Pour adapter notre documentation technique</span>
+        <%= f.text_field :languages, class: 'fr-input' %>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="fr-mt-4w">Contact</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-4">
+      <div class="fr-input-group <%= 'fr-input-group--error' if @editor.errors[:contact_email].any? %>">
+        <%= f.label :contact_email, 'Email', class: 'fr-label' %>
+        <%= f.email_field :contact_email, class: 'fr-input' %>
+        <% if @editor.errors[:contact_email].any? %>
+          <p class="fr-error-text"><%= @editor.errors[:contact_email].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="fr-col-4">
+      <div class="fr-input-group">
+        <%= f.label :contact_phone, 'Téléphone', class: 'fr-label' %>
+        <%= f.telephone_field :contact_phone, class: 'fr-input' %>
+      </div>
+    </div>
+    <div class="fr-col-4">
+      <div class="fr-input-group">
+        <%= f.label :domain, 'Nom de domaine', class: 'fr-label' %>
+        <%= f.text_field :domain, class: 'fr-input', placeholder: 'exemple.fr' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-mt-4w">
+    <%= f.submit 'Enregistrer les modifications', class: 'fr-btn' %>
+    <%= link_to 'Annuler', editor_settings_path, class: 'fr-btn fr-btn--secondary fr-ml-2w' %>
+  </div>
+<% end %>
+
+<h2 class="fr-mt-6w">Sécurité</h2>
+<p>Liez vos accès à votre infrastructure via un filtrage IP.</p>
+
+<div class="fr-callout fr-mb-3w">
+  <h3 class="fr-callout__title">Modification sur demande</h3>
+  <p class="fr-callout__text">
+    Vos adresses IP autorisées sont en lecture seule. Pour les modifier, écrivez à l'équipe à
+    <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Modification des adresses IP autorisées">support@<%= namespace %>.api.gouv.fr</a>.
+  </p>
+</div>
+
+<h3>Adresses IP autorisées</h3>
+<p class="fr-text--sm">Appels acceptés uniquement depuis ces adresses (lecture seule).</p>
+
+<% if @editor.allowed_ips.any? %>
+  <ul>
+    <% @editor.allowed_ips.each do |ip| %>
+      <li><code><%= ip %></code></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="fr-text--sm fr-text-mention--grey">Aucune restriction d'adresse IP configurée.</p>
+<% end %>
