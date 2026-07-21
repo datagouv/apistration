@@ -1,0 +1,40 @@
+---
+description: 'Boursier avec commune de naissance mal orthographiée (Bordeau) - Mickey Mouse - Dijon IAE'
+params:
+  ine: '0987654321E'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-10",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "IAE"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "mickey@mouse.fr",
+      "identite": {
+        "nom": "MOUSE",
+        "prenoms": [
+          "MICKEY"
+        ],
+        "date_naissance": "2009-12-30",
+        "nom_commune_naissance": "Bordeau",
+        "sexe": "M"
+      },
+      "ine": "0987654321E"
+    },
+    "links": {},
+    "meta": {}
+  }

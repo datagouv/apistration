@@ -1,0 +1,40 @@
+---
+description: 'Boursière - Daisy Duck - Saint-Apollinaire BSB'
+params:
+  ine: '0987654321D'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-15",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Saint-Apollinaire",
+        "nom_etablissement": "BSB"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "daisy@duck.com",
+      "identite": {
+        "nom": "DUCK",
+        "prenoms": [
+          "DAISY"
+        ],
+        "date_naissance": "2002-08-17",
+        "nom_commune_naissance": "Aix-en-Provence",
+        "sexe": "F"
+      },
+      "ine": "0987654321D"
+    },
+    "links": {},
+    "meta": {}
+  }

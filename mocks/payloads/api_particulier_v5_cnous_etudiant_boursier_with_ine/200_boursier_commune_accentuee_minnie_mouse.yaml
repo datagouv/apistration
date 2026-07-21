@@ -1,0 +1,40 @@
+---
+description: 'Boursière avec commune accentuée et tirets - Minnie Mouse - Marsannay-la-Côte BSB'
+params:
+  ine: '0987654321F'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-20",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Marsannay-la-Côte",
+        "nom_etablissement": "BSB"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "minnie@mouse.fr",
+      "identite": {
+        "nom": "MOUSE",
+        "prenoms": [
+          "MINNIE"
+        ],
+        "date_naissance": "2001-02-05",
+        "nom_commune_naissance": "Dole",
+        "sexe": "F"
+      },
+      "ine": "0987654321F"
+    },
+    "links": {},
+    "meta": {}
+  }
