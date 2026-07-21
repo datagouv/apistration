@@ -23,7 +23,6 @@
               <th scope="col"><%= t('.table.organization') %></th>
               <th scope="col"><%= t('.table.demandeur') %></th>
               <th scope="col"><%= t('.table.status') %></th>
-              <th scope="col"><%= t('.table.scopes') %></th>
               <th scope="col"><%= t('.table.created_at') %></th>
             </tr>
           </thead>
@@ -63,9 +62,6 @@
                   <% else %>
                     <p class="fr-badge fr-badge--green-emeraude"><%= t('.status_active') %></p>
                   <% end %>
-                </td>
-                <td>
-                  <%= render 'scopes_cell', scopes: ar.scopes, api: ar.api %>
                 </td>
                 <td class="delegation-created-at">
                   <%= delegation.created_at.strftime('%d/%m/%Y') %>

@@ -60,25 +60,6 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         end
       end
 
-      it 'displays humanized scopes per delegation, with a fallback when empty' do
-        visit editor_delegations_path
-
-        within "##{dom_id(active_delegation)}" do
-          expect(page).to have_css(
-            '.delegation-scopes li',
-            text: 'API Données unités légales et établissements dont les non diffusibles'
-          )
-          expect(page).to have_css(
-            '.delegation-scopes li',
-            text: 'API Données ouvertes association'
-          )
-        end
-
-        within "##{dom_id(revoked_delegation)}" do
-          expect(page).to have_text('Aucun scope')
-        end
-      end
-
       it 'displays the creation date for each delegation' do
         active_delegation.update!(created_at: Time.zone.local(2026, 3, 14, 12))
 
