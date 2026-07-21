@@ -398,7 +398,7 @@ fr:
                   | `statut` | `active` ou `revoked`. |
                   | `created_at` | Date de création (ISO&nbsp;8601, UTC). |
 
-                  Le détail du schéma est disponible dans le [Swagger](<%= developers_openapi_path %>){:target="_blank"}.
+                  Le détail du schéma est disponible dans le [Swagger de l'API Éditeur](<%= editor_openapi_path %>){:target="_blank"}.
 
               - title: Appeler l'API pour le compte d'un client
                 anchor: 'editeur-appeler-pour-un-client'

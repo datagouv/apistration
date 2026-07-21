@@ -47,7 +47,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
         expect(page).to have_link('Délégations', href: editor_delegations_path)
         expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
         expect(page).to have_link('Documentation', href: developers_path(anchor: 'integration-editeur'))
-        expect(page).to have_link('Swagger', href: '/editeur/api-docs')
+        expect(page).to have_link('Swagger', href: editor_openapi_path)
       end
     end
   end

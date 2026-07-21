@@ -36,11 +36,15 @@ class APIEntreprise::PagesController < APIEntrepriseController
     render 'shared/pages/redoc'
   end
 
+  def redoc_editor
+    render 'shared/pages/redoc_editor'
+  end
+
   private
 
   def page_layout
     case action_name
-    when 'home', 'newsletter'
+    when 'home', 'newsletter', 'redoc_editor'
       'api_entreprise/no_container'
     end
   end

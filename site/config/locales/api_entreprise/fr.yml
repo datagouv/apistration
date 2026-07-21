@@ -456,6 +456,8 @@ fr:
         page_title: Statut des API
       redoc:
         page_title: ""
+      redoc_editor:
+        page_title: Swagger — API Éditeur
     documentation:
       developers:
         page_title: Espace développeur
