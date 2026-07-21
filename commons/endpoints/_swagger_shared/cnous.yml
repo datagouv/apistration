@@ -150,12 +150,23 @@ cnous:
             nullable: true
             description: "Date de radiation. Renseignée uniquement si est_radie est true."
             example: null
+    ine_attribute: &ine_attribute
+      ine:
+        title: INE
+        scope: cnous_ine
+        type: string
+        description: "Identifiant National Étudiant (INE) de l'étudiant boursier."
+        example: 1234567890G
     attributes:
       <<: [*identity_attributes, *attributes_without_identity]
     v4_attributes:
       <<: [*identity_attributes, *common_attributes, *statut_boursier_attributes]
     v4_attributes_without_identity:
       <<: [*common_attributes, *statut_boursier_attributes]
+    v5_attributes:
+      <<: [*identity_attributes, *common_attributes, *statut_boursier_attributes, *ine_attribute]
+    v5_attributes_without_identity:
+      <<: [*common_attributes, *statut_boursier_attributes, *ine_attribute]
 
   etudiant_boursier:
     parameters:

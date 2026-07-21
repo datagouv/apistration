@@ -345,6 +345,7 @@ shared:
     - cnous_statut_bourse
     - cnous_ville_etudes
     - cnous_identite
+    - cnous_ine
   api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect:
     - cnous_statut_boursier
     - cnous_echelon_bourse
@@ -353,6 +354,7 @@ shared:
     - cnous_statut_bourse
     - cnous_ville_etudes
     - cnous_identite
+    - cnous_ine
   api_particulier/v3_and_more/dsnj/service_national_with_civility:
     - dsnj_statut_service_national
   api_particulier/v3_and_more/dsnj/service_national_with_france_connect:
