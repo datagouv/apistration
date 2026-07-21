@@ -6,3 +6,4 @@ site/.env.local
 site/node_modules/
 .*_token
 .metabase
+.notes/
