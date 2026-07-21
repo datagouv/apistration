@@ -1,3 +1,10 @@
+<p class="fr-text--sm fr-mb-2w">
+  Les habilitations sont les demandes d'accès validées de vos organisations clientes.
+  Le lien avec votre espace éditeur se fait par formulaire : toute demande soumise via
+  un formulaire DataPass qui vous est rattaché apparaît ici, avec son jeton principal
+  permettant d'appeler l'API pour son compte.
+</p>
+
 <%= search_form_for(@q, url: editor_authorization_requests_path, html: { method: :get, data: { turbo: false }, class: %w[search-box] }) do |f| %>
   <div class="fr-input-group input">
     <%= f.search_field :siret_or_external_id_or_intitule_or_demandeur_email_eq, placeholder: 'demandeur email, siret, datapass id..', id: 'search_main_input', class: %[fr-input] %>
