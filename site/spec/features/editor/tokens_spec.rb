@@ -34,6 +34,11 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       expect(page).to have_button('Générer un nouveau jeton éditeur')
       expect(page).to have_link('Jetons éditeurs')
     end
+
+    it 'links to the editor documentation and swagger from the page' do
+      expect(page).to have_link(href: developers_path(anchor: 'integration-editeur'))
+      expect(page).to have_link(href: editor_openapi_path)
+    end
   end
 
   describe 'header navigation' do
@@ -41,13 +46,13 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       visit editor_tokens_path
     end
 
-    it 'shows the sections and documentation links in a nav menu' do
+    it 'shows only the editor sections in the nav menu, without doc links' do
       within('nav.fr-nav') do
         expect(page).to have_link('Habilitations', href: editor_authorization_requests_path)
         expect(page).to have_link('Délégations', href: editor_delegations_path)
         expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
-        expect(page).to have_link('Documentation', href: developers_path(anchor: 'integration-editeur'))
-        expect(page).to have_link('Swagger', href: editor_openapi_path)
+        expect(page).to have_no_link('Documentation')
+        expect(page).to have_no_link('Swagger')
       end
     end
   end

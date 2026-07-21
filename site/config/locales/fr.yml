@@ -531,6 +531,8 @@ fr:
       index:
         title: Jetons éditeurs
         description: Un jeton unique, sans droits propres, résolu par SIRET à chaque appel.
+        documentation: Consulter la documentation d'intégration
+        swagger: Consulter le Swagger de l'API éditeur
         generate: Générer un nouveau jeton éditeur
         table:
           identifier: Identifiant
