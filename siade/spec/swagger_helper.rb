@@ -133,6 +133,9 @@ Il est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://git
         },
         {
           name: 'Propriété intellectuelle'
+        },
+        {
+          name: 'Disponibilité'
         }
       ],
       paths: {},
@@ -230,7 +233,11 @@ Lors de votre passage en production :
           url: 'https://github.com/betagouv/api-particulier/blob/master/LICENSE'
         }
       },
-      tags: [],
+      tags: [
+        {
+          name: 'Disponibilité'
+        }
+      ],
       paths: {},
       security: [
         { apiKey: [] }
@@ -326,7 +333,11 @@ Lors de votre passage en production :
           url: 'https://github.com/betagouv/api-particulier/blob/master/LICENSE'
         }
       },
-      tags: [],
+      tags: [
+        {
+          name: 'Disponibilité'
+        }
+      ],
       paths: {},
       servers: [
         {

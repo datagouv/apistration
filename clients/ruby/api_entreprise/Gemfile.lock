@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    api_entreprise (0.1.0)
+    api_entreprise (0.2.0)
       faraday (~> 2.0)
       faraday-retry (~> 2.0)
 
@@ -62,7 +62,7 @@ DEPENDENCIES
 
 CHECKSUMS
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
-  api_entreprise (0.1.0)
+  api_entreprise (0.2.0)
   bigdecimal (4.1.1) sha256=1c09efab961da45203c8316b0cdaec0ff391dfadb952dd459584b63ebf8054ca
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962

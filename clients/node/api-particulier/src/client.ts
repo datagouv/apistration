@@ -56,6 +56,18 @@ export class Client extends ClientBase {
     super(config, { product: 'particulier' as Product, requiredParams: ['recipient'], siretParams: ['recipient'] });
   }
 
+  async ping() {
+    return this.getPublic('/api/ping');
+  }
+
+  async pings() {
+    return this.getPublic('/api/pings');
+  }
+
+  async pingProvider(provider: string) {
+    return this.getPublic(`/api/${provider}/ping`);
+  }
+
   // <scaffold:fields:begin>
   private _ants?: Ants;
   private _cnous?: Cnous;

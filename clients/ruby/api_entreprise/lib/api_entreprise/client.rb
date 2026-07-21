@@ -58,6 +58,18 @@ module ApiEntreprise
       super(config, product: :entreprise)
     end
 
+    def ping
+      get_public('/v3/ping')
+    end
+
+    def pings
+      get_public('/pings')
+    end
+
+    def ping_provider(provider)
+      get_public("/ping/#{provider}")
+    end
+
     # <scaffold:resources:begin>
     def ademe
       @ademe ||= Resources::Ademe.new(self)

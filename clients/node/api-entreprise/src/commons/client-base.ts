@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 0e0562f6390b0271a673ad0215dabe7c7443c19d).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: c39093e4bc410efcbe528a7b462142c8c4d7f0a6).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 import { Configuration, type Logger } from './configuration.js';
@@ -59,6 +59,18 @@ export abstract class ClientBase {
     const cleaned = this.clean(merged);
 
     return this.executeWithRetry('GET', path, cleaned, options.headers ?? {});
+  }
+
+  /** Send a GET request without auth or audit param validation (for public endpoints). */
+  async getPublic(
+    path: string,
+    options: {
+      params?: Record<string, unknown>;
+      headers?: Record<string, string>;
+    } = {},
+  ): Promise<Response> {
+    const cleaned = this.clean(options.params ?? {});
+    return this.executePublic('GET', path, cleaned, options.headers ?? {});
   }
 
   private async executeWithRetry(
@@ -198,6 +210,87 @@ export abstract class ClientBase {
       httpStatus: fetchResponse.status,
       headers: responseHeaders,
       rateLimit,
+    });
+  }
+
+  private async executePublic(
+    method: string,
+    path: string,
+    params: Record<string, unknown>,
+    extraHeaders: Record<string, string>,
+  ): Promise<Response> {
+    const url = this.buildUrl(path, params);
+    const headers: Record<string, string> = {
+      Accept: 'application/json',
+      ...extraHeaders,
+    };
+
+    if (this.configuration.userAgent) {
+      headers['User-Agent'] = this.configuration.userAgent;
+    }
+
+    const started = Date.now();
+
+    let fetchResponse: globalThis.Response;
+    try {
+      const controller = new AbortController();
+      const timeoutMs = this.configuration.readTimeout * 1000;
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+      fetchResponse = await fetch(url, {
+        method,
+        headers,
+        signal: controller.signal,
+      });
+
+      clearTimeout(timer);
+    } catch (error) {
+      const durationMs = Date.now() - started;
+      this.logError(method, url, error as Error, durationMs);
+      throw new TransportError(
+        (error as Error).message,
+        { method, url },
+      );
+    }
+
+    const durationMs = Date.now() - started;
+    const responseHeaders = headersToRecord(fetchResponse.headers);
+
+    let body: unknown;
+    const text = await fetchResponse.text();
+    if (text) {
+      try {
+        body = JSON.parse(text);
+      } catch {
+        if (fetchResponse.ok) {
+          throw new TransportError(
+            `invalid JSON body: ${text.slice(0, 200)}`,
+            { method, url },
+          );
+        }
+        body = {};
+      }
+    } else {
+      body = {};
+    }
+
+    this.logRequest(method, url, fetchResponse.status, durationMs, null);
+
+    if (!fetchResponse.ok) {
+      this.throwMappedError(
+        fetchResponse.status,
+        body,
+        method,
+        url,
+        null,
+      );
+    }
+
+    return new Response({
+      raw: body,
+      httpStatus: fetchResponse.status,
+      headers: responseHeaders,
+      rateLimit: null,
     });
   }
 

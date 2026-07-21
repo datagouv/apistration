@@ -22,7 +22,99 @@ tags:
 - name: Attestations sociales et fiscales
 - name: Certifications professionnelles
 - name: Propriété intellectuelle
+- name: Disponibilité
 paths:
+  "/v3/ping":
+    get:
+      summary: Ping de l'API
+      tags:
+      - Disponibilité
+      description: |-
+        Vérifie que l'API est accessible et fonctionnelle. Retourne un code HTTP 200 si l'API est opérationnelle.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      responses:
+        '200':
+          description: L'API est opérationnelle
+  "/pings":
+    get:
+      summary: Liste des pings fournisseurs disponibles
+      tags:
+      - Disponibilité
+      description: |-
+        Retourne la liste des fournisseurs disposant d'un endpoint de ping, avec leur nom et l'URL du ping associé.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      responses:
+        '200':
+          description: Liste des pings fournisseurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Nom du fournisseur sur la page de statut
+                      example: INSEE - Sirene
+                    url:
+                      type: string
+                      description: URL du ping fournisseur
+                      example: https://entreprise.api.gouv.fr/ping/insee/sirene
+                  required:
+                  - name
+                  - url
+  "/ping/{provider}":
+    get:
+      summary: Ping d'un fournisseur de données
+      tags:
+      - Disponibilité
+      description: |-
+        Vérifie la disponibilité d'un fournisseur de données spécifique. Retourne le statut du fournisseur ainsi que la date de dernière vérification.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      parameters:
+      - name: provider
+        in: path
+        required: true
+        description: Identifiant du fournisseur (tel que retourné par `/pings`)
+        example: insee/sirene
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Le fournisseur est disponible
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - ok
+                    - maintenance
+                    - unknown
+                    description: Statut du fournisseur
+                  last_update:
+                    type: string
+                    format: date-time
+                    description: Date de la dernière vérification
+                  last_ok_status:
+                    type: string
+                    format: date-time
+                    description: Date du dernier statut OK connu
+                  until:
+                    type: string
+                    format: date-time
+                    description: Date de fin de maintenance (uniquement si status=maintenance)
+        '404':
+          description: Fournisseur inconnu
   "/privileges":
     get:
       summary: Privileges associés au jeton
@@ -8956,26 +9048,6 @@ paths:
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
-        '403':
-          description: Accès interdit
-          content:
-            application/json:
-              examples:
-                insufficient_privileges_error:
-                  value:
-                    errors:
-                    - code: '00100'
-                      title: Privilèges insuffisants
-                      detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges sur /v2/privileges
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Privilèges insuffisants
-                  description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges sur /v2/privileges
-              schema:
-                "$ref": "#/components/schemas/Error"
         '429':
           description: Trop de requêtes
           content:
@@ -9254,6 +9326,26 @@ paths:
                         provider: DGFIP - TVA
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':

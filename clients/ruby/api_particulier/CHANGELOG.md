@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-13
+
+### Added
+- `ping`, `pings`, `ping_provider` methods for unauthenticated monitoring
+  endpoints (SPECS.md §9.5). These use a dedicated public connection that
+  skips auth and audit-parameter validation.
+
 ## [0.2.0] - 2026-06-01
 
 ### Added

@@ -294,6 +294,8 @@ function scaffold(api: string, check: boolean): [string[], boolean] {
     )) {
       if (verb !== 'get') continue;
       if (typeof operation !== 'object' || operation === null) continue;
+      const op = operation as Record<string, unknown>;
+      if (Array.isArray(op.security) && op.security.length === 0) continue;
 
       const provider = providerFromPath(path);
       const logical = logicalPath(path);

@@ -40,10 +40,12 @@ APIS.each_value do |api_config|
   open_api = YAML.load_file(open_api_path, aliases: true)
   config_path = root.join(api_config[:config])
 
-  Openapi::ErrorInjector.new(open_api, config_path: config_path).perform
+  Openapi::ErrorInjector.new(open_api, config_path:).perform
 
   if api_config[:entreprise_augments]
     open_api['paths'].each do |path, schema|
+      next if schema.dig('get', 'security') == []
+
       augment_with_maintenances(schema, path, maintenances)
       augment_with_code_samples(schema, path)
     end

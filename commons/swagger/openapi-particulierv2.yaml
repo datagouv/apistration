@@ -57,7 +57,8 @@ info:
   license:
     name: GNU Affero General Public License v3.0
     url: https://github.com/betagouv/api-particulier/blob/master/LICENSE
-tags: []
+tags:
+- name: Disponibilité
 paths:
   "/api/v2/allocation-adulte-handicape":
     get:
@@ -2395,6 +2396,19 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+  "/api/ping":
+    get:
+      summary: Ping de l'API
+      tags:
+      - Disponibilité
+      description: |-
+        Vérifie que l'API est accessible et fonctionnelle. Retourne un code HTTP 200 si l'API est opérationnelle.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      responses:
+        '200':
+          description: L'API est opérationnelle
   "/api/v2/paiements-pole-emploi":
     get:
       summary: Paiements versés par France Travail

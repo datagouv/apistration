@@ -184,6 +184,36 @@ describe('ApiEntreprise Client', () => {
     });
   });
 
+  describe('ping (public endpoints)', () => {
+    it('ping() calls /v3/ping without Authorization header', async () => {
+      const fetchMock = mockFetch(200, {});
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.ping();
+      const [url, opts] = fetchMock.mock.calls[0];
+      expect(url).toContain('/v3/ping');
+      expect(opts.headers['Authorization']).toBeUndefined();
+    });
+
+    it('pings() calls /pings', async () => {
+      const fetchMock = mockFetch(200, []);
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.pings();
+      const [url] = fetchMock.mock.calls[0];
+      expect(url).toContain('/pings');
+    });
+
+    it('pingProvider() calls /ping/:provider', async () => {
+      const fetchMock = mockFetch(200, {});
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.pingProvider('insee/sirene');
+      const [url] = fetchMock.mock.calls[0];
+      expect(url).toContain('/ping/insee/sirene');
+    });
+  });
+
   describe('integration: error cases', () => {
     it('422 raises ValidationError', async () => {
       globalThis.fetch = mockFetch(422, {

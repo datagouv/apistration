@@ -43,6 +43,18 @@ module ApiParticulier
       super(config, product: :particulier)
     end
 
+    def ping
+      get_public('/api/ping')
+    end
+
+    def pings
+      get_public('/api/pings')
+    end
+
+    def ping_provider(provider)
+      get_public("/api/#{provider}/ping")
+    end
+
     # <scaffold:resources:begin>
     def ants
       @ants ||= Resources::Ants.new(self)

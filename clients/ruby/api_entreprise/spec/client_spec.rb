@@ -133,6 +133,34 @@ RSpec.describe ApiEntreprise::Client do
     end
   end
 
+  describe 'ping (public endpoints)' do
+    let(:client) do
+      described_class.new(token: 't', environment: :staging, default_params: default_params)
+    end
+
+    it 'ping calls /v3/ping without auth or audit params' do
+      stub = stub_request(:get, 'https://staging.entreprise.api.gouv.fr/v3/ping')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.ping
+      expect(stub).to have_been_requested
+      expect(WebMock::RequestRegistry.instance.requested_signatures.hash.keys.first.headers).not_to have_key('Authorization')
+    end
+
+    it 'pings calls /pings' do
+      stub = stub_request(:get, 'https://staging.entreprise.api.gouv.fr/pings')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '[]')
+      client.pings
+      expect(stub).to have_been_requested
+    end
+
+    it 'ping_provider calls /ping/:provider' do
+      stub = stub_request(:get, 'https://staging.entreprise.api.gouv.fr/ping/insee/sirene')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.ping_provider('insee/sirene')
+      expect(stub).to have_been_requested
+    end
+  end
+
   describe 'local validation' do
     it 'rejects a bad SIREN before any HTTP call' do
       client = described_class.new(token: 't', default_params: default_params)

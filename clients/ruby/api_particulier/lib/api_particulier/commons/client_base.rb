@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 903f3b3aca1a59a6cb1a53ab98f72c365486fc1f).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 0df8ad8033bacf8106a6a1b42aaf1e690c0f3147).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -30,6 +30,7 @@ module ApiParticulier::Commons
       @configuration = configuration
       @product = product
       @connection = build_connection
+      @public_connection = build_public_connection
     end
 
     def get(path, params: {}, headers: {})
@@ -38,6 +39,11 @@ module ApiParticulier::Commons
       validate_sirets!(merged)
 
       response = @connection.get(path, clean(merged), headers)
+      build_response(response)
+    end
+
+    def get_public(path, params: {}, headers: {})
+      response = @public_connection.get(path, (params || {}).reject { |_, v| v.nil? }, headers)
       build_response(response)
     end
 
@@ -120,6 +126,22 @@ module ApiParticulier::Commons
         conn.use Middleware::RateLimitParser
         conn.use Middleware::ErrorHandler
         conn.use Middleware::Envelope
+
+        conn.adapter(cfg.adapter || Faraday.default_adapter)
+      end
+    end
+
+    def build_public_connection
+      cfg = @configuration
+      Faraday.new(url: cfg.base_url) do |conn|
+        conn.options.open_timeout = cfg.open_timeout
+        conn.options.timeout = cfg.read_timeout
+
+        conn.headers['User-Agent'] = cfg.user_agent if cfg.user_agent
+        conn.headers['Accept'] = 'application/json'
+
+        conn.use Middleware::Logging, logger: cfg.logger, redact_query: @product == :particulier
+        conn.use Middleware::ErrorHandler
 
         conn.adapter(cfg.adapter || Faraday.default_adapter)
       end

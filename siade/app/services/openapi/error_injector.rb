@@ -11,6 +11,7 @@ class Openapi::ErrorInjector
     open_api['paths'].each do |path, path_schema|
       path_schema.each_value do |operation|
         next unless operation.is_a?(Hash) && operation.key?('responses')
+        next if operation['security'] == []
 
         inject_errors(path, operation)
       end

@@ -214,6 +214,8 @@ def scaffold(api:, check:)
       next unless verb == 'get'
       next unless operation.is_a?(Hash)
 
+      next if operation['security'] == []
+
       provider = provider_from_path(path)
       logical = logical_path(path)
       grouped[provider][logical][v] = { path: path, operation: operation }
