@@ -1,4 +1,6 @@
 class Editor::TokensController < EditorController
+  before_action :ensure_editor_tokens_enabled
+
   def index
     @editor_tokens = current_editor.tokens.order(created_at: :desc)
   end
@@ -38,6 +40,12 @@ class Editor::TokensController < EditorController
   end
 
   private
+
+  def ensure_editor_tokens_enabled
+    return if current_editor.editor_tokens_enabled?
+
+    redirect_to editor_authorization_requests_path
+  end
 
   def token
     current_editor.tokens.find(params.expect(:id))

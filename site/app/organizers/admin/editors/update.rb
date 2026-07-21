@@ -5,7 +5,7 @@ class Admin::Editors::Update < ApplicationOrganizer
     context.admin_before_attributes = context.editor.slice(
       'name', 'siret', 'role', 'contact_email', 'contact_phone',
       'deployment_type', 'setup_instructions', 'domain', 'languages',
-      'description', 'form_uids', 'allowed_ips', 'copy_token', 'delegations_enabled'
+      'description', 'form_uids', 'allowed_ips', 'copy_token', 'editor_tokens_enabled'
     )
   end
 

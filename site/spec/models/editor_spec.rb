@@ -36,7 +36,7 @@ RSpec.describe Editor do
     let!(:delegable_editor) { create(:editor, :delegable) }
     let!(:non_delegable_editor) { create(:editor) }
 
-    it 'returns only editors with delegations_enabled' do
+    it 'returns only editors with editor_tokens_enabled' do
       expect(described_class.delegable).to contain_exactly(delegable_editor)
     end
   end

@@ -100,20 +100,20 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
       end
     end
 
-    context 'when delegations are not enabled' do
+    context 'when editor tokens are disabled' do
       let(:editor) { create(:editor) }
 
-      it 'does not display the delegations tab in header' do
+      it 'still displays the delegations tab in header' do
         visit editor_authorization_requests_path
 
         expect(page).to have_link('Habilitations')
-        expect(page).to have_no_link('Délégations')
+        expect(page).to have_link('Délégations', href: editor_delegations_path)
       end
 
-      it 'redirects to authorization requests' do
+      it 'still allows accessing the delegations page' do
         visit editor_delegations_path
 
-        expect(page).to have_current_path(editor_authorization_requests_path)
+        expect(page).to have_current_path(editor_delegations_path)
       end
     end
   end

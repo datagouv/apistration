@@ -1,5 +1,5 @@
 RSpec.describe 'Editor: tokens', app: :api_entreprise do
-  let(:editor) { create(:editor) }
+  let(:editor) { create(:editor, :delegable) }
   let(:user) { create(:user, editor:) }
 
   before do
@@ -44,10 +44,27 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     it 'shows the sections and documentation links in a nav menu' do
       within('nav.fr-nav') do
         expect(page).to have_link('Habilitations', href: editor_authorization_requests_path)
+        expect(page).to have_link('Délégations', href: editor_delegations_path)
         expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
         expect(page).to have_link('Documentation', href: developers_path)
         expect(page).to have_link('Swagger', href: developers_openapi_path)
       end
+    end
+  end
+
+  describe 'when editor tokens are disabled' do
+    let(:editor) { create(:editor) }
+
+    it 'hides the nav entry and redirects away from the tokens page' do
+      visit editor_authorization_requests_path
+      within('nav.fr-nav') do
+        expect(page).to have_no_link('Jetons éditeurs')
+        expect(page).to have_link('Délégations', href: editor_delegations_path)
+      end
+
+      visit editor_tokens_path
+
+      expect(page).to have_current_path(editor_authorization_requests_path, ignore_query: true)
     end
   end
 

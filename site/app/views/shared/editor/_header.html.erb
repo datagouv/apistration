@@ -71,19 +71,19 @@
             </a>
           </li>
 
-          <% if current_editor.delegations_enabled? %>
+          <li class="fr-nav__item">
+            <a class="fr-nav__link center" href="<%= editor_delegations_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/delegations') %>>
+              Délégations
+            </a>
+          </li>
+
+          <% if current_editor.editor_tokens_enabled? %>
             <li class="fr-nav__item">
-              <a class="fr-nav__link center" href="<%= editor_delegations_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/delegations') %>>
-                Délégations
+              <a class="fr-nav__link center" href="<%= editor_tokens_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/tokens') %>>
+                Jetons éditeurs
               </a>
             </li>
           <% end %>
-
-          <li class="fr-nav__item">
-            <a class="fr-nav__link center" href="<%= editor_tokens_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/tokens') %>>
-              Jetons éditeurs
-            </a>
-          </li>
 
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= developers_path %>" target="_self">

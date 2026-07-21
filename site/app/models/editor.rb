@@ -18,7 +18,7 @@ class Editor < ApplicationRecord
   validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validate :apis_included_in_list
 
-  scope :delegable, -> { where(delegations_enabled: true) }
+  scope :delegable, -> { where(editor_tokens_enabled: true) }
   scope :for_api, ->(api) { where('ARRAY[:api]::varchar[] <@ apis', api:) }
   scope :for_demarche, ->(demarche) { where(':demarche = ANY(form_uids)', demarche:) }
   scope :search_by_name_or_siret, lambda { |query|
