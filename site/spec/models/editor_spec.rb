@@ -8,6 +8,30 @@ RSpec.describe Editor do
     it { is_expected.to have_many(:tokens).class_name('EditorToken').dependent(:destroy) }
   end
 
+  describe 'apis validation' do
+    it { expect(build(:editor, apis: %w[entreprise particulier])).to be_valid }
+    it { expect(build(:editor, apis: [])).to be_valid }
+    it { expect(build(:editor, apis: %w[entreprise wrong])).not_to be_valid }
+  end
+
+  describe '.for_api' do
+    let!(:entreprise_editor) { create(:editor, apis: %w[entreprise]) }
+    let!(:particulier_editor) { create(:editor, apis: %w[particulier]) }
+    let!(:both_editor) { create(:editor, apis: %w[entreprise particulier]) }
+
+    it 'returns editors serving the given api' do
+      expect(described_class.for_api('entreprise')).to contain_exactly(entreprise_editor, both_editor)
+      expect(described_class.for_api('particulier')).to contain_exactly(particulier_editor, both_editor)
+    end
+  end
+
+  describe '#serves_api?' do
+    let(:editor) { build(:editor, apis: %w[entreprise]) }
+
+    it { expect(editor.serves_api?('entreprise')).to be(true) }
+    it { expect(editor.serves_api?('particulier')).to be(false) }
+  end
+
   describe '.delegable' do
     let!(:delegable_editor) { create(:editor, :delegable) }
     let!(:non_delegable_editor) { create(:editor) }

@@ -1,4 +1,5 @@
 class Editor < ApplicationRecord
+  APIS = %w[entreprise particulier].freeze
   ROLES = %w[manages_token client_manages_token both].freeze
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
 
@@ -15,8 +16,10 @@ class Editor < ApplicationRecord
   validates :role, inclusion: { in: ROLES }, allow_nil: true
   validates :deployment_type, inclusion: { in: DEPLOYMENT_TYPES }, allow_nil: true
   validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
+  validate :apis_included_in_list
 
   scope :delegable, -> { where(delegations_enabled: true) }
+  scope :for_api, ->(api) { where('ARRAY[:api]::varchar[] <@ apis', api:) }
   scope :for_demarche, ->(demarche) { where(':demarche = ANY(form_uids)', demarche:) }
   scope :search_by_name_or_siret, lambda { |query|
     where('name ILIKE :q OR siret ILIKE :q', q: "%#{query}%")
@@ -39,6 +42,10 @@ class Editor < ApplicationRecord
     AuthorizationRequest
       .where(api:)
       .where(demarche: form_uids)
+  end
+
+  def serves_api?(api)
+    apis.include?(api.to_s)
   end
 
   def manages_token?
@@ -67,5 +74,13 @@ class Editor < ApplicationRecord
 
   def other_deployment?
     deployment_type == 'other'
+  end
+
+  private
+
+  def apis_included_in_list
+    return if apis.all? { |api| APIS.include?(api) }
+
+    errors.add(:apis, :inclusion)
   end
 end

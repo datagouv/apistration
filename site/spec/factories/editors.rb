@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :editor do
     name { 'UMAD Editor' }
+    apis { %w[entreprise particulier] }
     form_uids do
       [
         'umad-editor'
