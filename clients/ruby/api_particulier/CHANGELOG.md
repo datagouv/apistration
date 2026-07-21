@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- CNOUS étudiant boursier : version 5 (défaut) avec le champ `ine` (scope
+  `cnous_ine`), renvoyé pour toutes les modalités d'appel.
+
+### Deprecated
+- CNOUS étudiant boursier v4 : dépréciée en faveur de la v5 (warning à l'appel).
+
 ## [0.3.0] - 2026-07-13
 
 ### Added
