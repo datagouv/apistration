@@ -69,6 +69,7 @@ fr:
           - cnous_echelon_bourse
           - cnous_email
           - cnous_identite
+          - cnous_ine
           - cnous_periode_versement
           - cnous_statut_bourse
           - cnous_statut_boursier

@@ -1,0 +1,40 @@
+---
+description: 'Boursier standard - Riri Duck - Dijon Carnot'
+params:
+  ine: '0987654321A'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "riri@duck.com",
+      "identite": {
+        "nom": "DUCK",
+        "prenoms": [
+          "RIRI"
+        ],
+        "date_naissance": "2004-03-11",
+        "nom_commune_naissance": "Morez",
+        "sexe": "M"
+      },
+      "ine": "0987654321A"
+    },
+    "links": {},
+    "meta": {}
+  }

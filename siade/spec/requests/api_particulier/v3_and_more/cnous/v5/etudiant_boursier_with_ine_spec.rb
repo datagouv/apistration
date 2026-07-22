@@ -1,10 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE v4', api: :particulier, type: %i[request swagger] do
-  path '/v4/cnous/etudiant_boursier/ine' do
+RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE v5', api: :particulier, type: %i[request swagger] do
+  path '/v5/cnous/etudiant_boursier/ine' do
     get "[INE] #{SwaggerData.get('cnous.commons.title')}" do
       tags(*SwaggerData.get('cnous.commons.tags'))
-      deprecated true
 
       common_action_attributes
 
@@ -28,7 +27,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE v4', api: :part
         },
         required: false
 
-      let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
+      let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes cnous_ine] }
 
       let(:ine) { '1234567890A' }
 
@@ -46,10 +45,12 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE v4', api: :part
             description SwaggerData.get('cnous.commons.description')
 
             schema build_rswag_response(
-              attributes: SwaggerData.get('cnous.commons.v4_attributes')
+              attributes: SwaggerData.get('cnous.commons.v5_attributes')
             )
 
-            run_test!
+            run_test! do |response|
+              expect(JSON.parse(response.body)['data']['ine']).to eq('012345678GD')
+            end
           end
         end
       end

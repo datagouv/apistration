@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- CNOUS étudiant boursier: add version 5 (new default) with the `ine` field
+  (`cnous_ine` scope), returned for all call modalities;
+  v4 is deprecated (call-time warning).
+
 ## 0.3.0
 
 ### Added

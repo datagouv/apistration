@@ -46,9 +46,26 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
             radiation: {
               est_radie: false,
               date_radiation: nil
-            }
+            },
+            ine: '012345678GD'
           }
         )
+      end
+    end
+  end
+
+  context 'when the call was made with an INE' do
+    let(:instance) { described_class.call(response:, params: { ine: '012345678GD' }) }
+
+    let(:body) { read_payload_file('cnous/student_scholarship_valid_response.json') }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject { instance.bundled_data.data.to_h }
+
+      it 'exposes the INE back' do
+        expect(subject[:ine]).to eq('012345678GD')
       end
     end
   end
@@ -92,7 +109,8 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
             radiation: {
               est_radie: false,
               date_radiation: nil
-            }
+            },
+            ine: '012345678GD'
           }
         )
       end

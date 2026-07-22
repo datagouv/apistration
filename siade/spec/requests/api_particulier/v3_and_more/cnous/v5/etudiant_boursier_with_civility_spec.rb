@@ -1,10 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility v4', api: :particulier, type: %i[request swagger] do
-  path '/v4/cnous/etudiant_boursier/identite' do
+RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility v5', api: :particulier, type: %i[request swagger] do
+  path '/v5/cnous/etudiant_boursier/identite' do
     get "[Identité] #{SwaggerData.get('cnous.commons.title')}" do
       tags(*SwaggerData.get('cnous.commons.tags'))
-      deprecated true
 
       common_action_attributes
 
@@ -51,7 +50,7 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility v4', api
         mock_cnous_authenticate
       end
 
-      let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
+      let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes cnous_ine] }
 
       describe 'with valid token and mandatory params', :valid do
         context 'when the student is found' do
@@ -63,10 +62,12 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility v4', api
             description SwaggerData.get('cnous.commons.description')
 
             schema build_rswag_response(
-              attributes: SwaggerData.get('cnous.commons.v4_attributes')
+              attributes: SwaggerData.get('cnous.commons.v5_attributes')
             )
 
-            run_test!
+            run_test! do |response|
+              expect(JSON.parse(response.body)['data']['ine']).to eq('012345678GD')
+            end
           end
         end
       end

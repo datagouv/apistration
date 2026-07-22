@@ -1,0 +1,477 @@
+Titre,Description,Paramètres,Status,Réponse
+,Boursier avec INE,"{""ine"":""1234567890A""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2023-09-01"",
+      ""duree"": 10
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Université Toulouse III - Paul Sabatier""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""4"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""etudiant@univ-tlse3.fr"",
+    ""identite"": {
+      ""nom"": ""LEROY"",
+      ""prenoms"": [
+        ""THOMAS""
+      ],
+      ""date_naissance"": ""2001-05-18"",
+      ""nom_commune_naissance"": ""Toulouse"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""1234567890A""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier sur une campagne antérieure ciblée via campaignYear,"{""ine"":""1234567890A"",""campaignYear"":2022}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2022-09-01"",
+      ""duree"": 10
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Université Toulouse III - Paul Sabatier""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""3"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""etudiant@univ-tlse3.fr"",
+    ""identite"": {
+      ""nom"": ""LEROY"",
+      ""prenoms"": [
+        ""THOMAS""
+      ],
+      ""date_naissance"": ""2001-05-18"",
+      ""nom_commune_naissance"": ""Toulouse"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""1234567890A""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursière avec commune accentuée et tirets - Minnie Mouse - Marsannay-la-Côte BSB,"{""ine"":""0987654321F""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-20"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Marsannay-la-Côte"",
+      ""nom_etablissement"": ""BSB""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""minnie@mouse.fr"",
+    ""identite"": {
+      ""nom"": ""MOUSE"",
+      ""prenoms"": [
+        ""MINNIE""
+      ],
+      ""date_naissance"": ""2001-02-05"",
+      ""nom_commune_naissance"": ""Dole"",
+      ""sexe"": ""F""
+    },
+    ""ine"": ""0987654321F""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier avec commune de naissance mal orthographiée (Bordeau) - Mickey Mouse - Dijon IAE,"{""ine"":""0987654321E""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-10"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""IAE""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""mickey@mouse.fr"",
+    ""identite"": {
+      ""nom"": ""MOUSE"",
+      ""prenoms"": [
+        ""MICKEY""
+      ],
+      ""date_naissance"": ""2009-12-30"",
+      ""nom_commune_naissance"": ""Bordeau"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321E""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursière - Daisy Duck - Saint-Apollinaire BSB,"{""ine"":""0987654321D""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-15"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Saint-Apollinaire"",
+      ""nom_etablissement"": ""BSB""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""daisy@duck.com"",
+    ""identite"": {
+      ""nom"": ""DUCK"",
+      ""prenoms"": [
+        ""DAISY""
+      ],
+      ""date_naissance"": ""2002-08-17"",
+      ""nom_commune_naissance"": ""Aix-en-Provence"",
+      ""sexe"": ""F""
+    },
+    ""ine"": ""0987654321D""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier hors Dijon (Toulouse) - Donald Duck - Toulouse Baudelaire,"{""ine"":""0987654321H""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-25"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Baudelaire""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""donald@duck.fr"",
+    ""identite"": {
+      ""nom"": ""DUCK"",
+      ""prenoms"": [
+        ""DONALD""
+      ],
+      ""date_naissance"": ""2001-05-18"",
+      ""nom_commune_naissance"": ""Rennes"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321H""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier avec date de naissance atypique (1947) - Balthazar Picsou - Dijon IAE,"{""ine"":""0987654321G""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-05"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""IAE""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""balthazar@piscou.com"",
+    ""identite"": {
+      ""nom"": ""PICSOU"",
+      ""prenoms"": [
+        ""BALTHAZAR""
+      ],
+      ""date_naissance"": ""1947-11-14"",
+      ""nom_commune_naissance"": ""Dijon"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321G""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier - Pat Hibulaire - Dijon BSB,"{""ine"":""123456789AB""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-15"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""BSB""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""pat@hibulaire.com"",
+    ""identite"": {
+      ""nom"": ""PAT"",
+      ""prenoms"": [
+        ""HIBULAIRE""
+      ],
+      ""date_naissance"": ""2006-06-30"",
+      ""nom_commune_naissance"": ""La Rochelle"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""123456789AB""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursière avec prénom composé avec espace - Anne Marie Robert - Dijon Carnot,"{""ine"":""0987654321K""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""annemarie@michel.com"",
+    ""identite"": {
+      ""nom"": ""ROBERT"",
+      ""prenoms"": [
+        ""ANNE MARIE""
+      ],
+      ""date_naissance"": ""2006-06-26"",
+      ""nom_commune_naissance"": ""Marseille"",
+      ""sexe"": ""F""
+    },
+    ""ine"": ""0987654321K""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier avec prénom composé avec tiret - Jean-Michel Robert - Dijon Carnot,"{""ine"":""0987654321J""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""robet@jean-michel.com"",
+    ""identite"": {
+      ""nom"": ""ROBERT"",
+      ""prenoms"": [
+        ""JEAN-MICHEL""
+      ],
+      ""date_naissance"": ""2003-01-08"",
+      ""nom_commune_naissance"": ""Colmar"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321J""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier avec échelon régional provisoire et commune accentuée - Loulou Duck - Fontaine-Lès-Dijon Carnot,"{""ine"":""0987654321C""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-10-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Fontaine-Lès-Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": true
+    },
+    ""email"": ""loulou@duck.com"",
+    ""identite"": {
+      ""nom"": ""DUCK"",
+      ""prenoms"": [
+        ""LOULOU""
+      ],
+      ""date_naissance"": ""2001-06-21"",
+      ""nom_commune_naissance"": ""Strasbourg"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321C""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier standard - Riri Duck - Dijon Carnot,"{""ine"":""0987654321A""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""riri@duck.com"",
+    ""identite"": {
+      ""nom"": ""DUCK"",
+      ""prenoms"": [
+        ""RIRI""
+      ],
+      ""date_naissance"": ""2004-03-11"",
+      ""nom_commune_naissance"": ""Morez"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321A""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Non boursier avec INE - Fifi Duck - Dijon Carnot,"{""ine"":""0987654321L""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": false,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2026-09-01"",
+      ""duree"": 0
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""fifi@duck.com"",
+    ""identite"": {
+      ""nom"": ""DUCK"",
+      ""prenoms"": [
+        ""FIFI""
+      ],
+      ""date_naissance"": ""2003-11-06"",
+      ""nom_commune_naissance"": ""Ahuy"",
+      ""sexe"": ""M""
+    },
+    ""ine"": ""0987654321L""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier radié,"{""ine"":""0987654321B""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": false,
+      ""est_radie"": true,
+      ""date_radiation"": ""2023-12-01""
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2023-09-01"",
+      ""duree"": 3
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Bordeaux"",
+      ""nom_etablissement"": ""Université de Bordeaux""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""2"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""etudiant@u-bordeaux.fr"",
+    ""identite"": {
+      ""nom"": ""PETIT"",
+      ""prenoms"": [
+        ""CAMILLE""
+      ],
+      ""date_naissance"": ""2000-11-03"",
+      ""nom_commune_naissance"": ""Bordeaux"",
+      ""sexe"": ""F""
+    },
+    ""ine"": ""0987654321B""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

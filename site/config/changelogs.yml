@@ -4,6 +4,12 @@
   description: |
     Le bureau ouvert a lieu désormais les **1ers et 3èmes jeudis du mois** (au lieu des mardis). Le message affiché sur la page d'accueil et la [FAQ](<%= faq_index_path(anchor: 'quand-et-pourquoi-un-bureau-ouvert') %>) sont mis à jour en conséquence.
 
+- date: 2026-07-21
+  scope: api_particulier
+  title: "CNOUS étudiant boursier : nouvelle version v5 avec le numéro INE"
+  description: |
+    Nouvelle version v5 de la fiche [étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>) : un nouveau champ `ine`, couvert par le nouveau scope « Identifiant National des Élèves », est renvoyé pour les appels effectués avec les données d'identité ou via FranceConnect. La [v4](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier_v4') %>) reste accessible.
+
 - date: 2026-06-04
   scope: api_particulier
   title: "Fiches API Particulier : le scope est affiché sur chaque donnée"

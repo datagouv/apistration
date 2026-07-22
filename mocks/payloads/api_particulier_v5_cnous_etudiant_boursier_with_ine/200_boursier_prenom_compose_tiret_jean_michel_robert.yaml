@@ -1,0 +1,40 @@
+---
+description: 'Boursier avec prénom composé avec tiret - Jean-Michel Robert - Dijon Carnot'
+params:
+  ine: '0987654321J'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2026-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "robet@jean-michel.com",
+      "identite": {
+        "nom": "ROBERT",
+        "prenoms": [
+          "JEAN-MICHEL"
+        ],
+        "date_naissance": "2003-01-08",
+        "nom_commune_naissance": "Colmar",
+        "sexe": "M"
+      },
+      "ine": "0987654321J"
+    },
+    "links": {},
+    "meta": {}
+  }

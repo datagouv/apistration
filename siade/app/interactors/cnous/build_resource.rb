@@ -8,7 +8,8 @@ class CNOUS::BuildResource < BuildResource
       periode_versement_bourse:,
       etablissement_etudes:,
       statut_bourse:,
-      radiation:
+      radiation:,
+      ine: valid_payload['ine']
     }
   end
 
