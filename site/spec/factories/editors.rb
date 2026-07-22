@@ -9,7 +9,7 @@ FactoryBot.define do
     end
 
     trait :delegable do
-      delegations_enabled { true }
+      editor_tokens_enabled { true }
     end
 
     trait :full do

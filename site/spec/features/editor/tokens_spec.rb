@@ -1,5 +1,5 @@
 RSpec.describe 'Editor: tokens', app: :api_entreprise do
-  let(:editor) { create(:editor) }
+  let(:editor) { create(:editor, :delegable) }
   let(:user) { create(:user, editor:) }
 
   before do
@@ -44,10 +44,28 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     it 'shows the sections and documentation links in a nav menu' do
       within('nav.fr-nav') do
         expect(page).to have_link('Habilitations', href: editor_authorization_requests_path)
+        expect(page).to have_link('Délégations', href: editor_delegations_path)
         expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
         expect(page).to have_link('Documentation', href: developers_path)
         expect(page).to have_link('Swagger', href: developers_openapi_path)
       end
+    end
+  end
+
+  describe 'when editor tokens are disabled' do
+    let(:editor) { create(:editor) }
+
+    it 'keeps the nav entry but shows a contact message instead of the tokens' do
+      visit editor_authorization_requests_path
+      within('nav.fr-nav') do
+        expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
+      end
+
+      visit editor_tokens_path
+
+      expect(page).to have_current_path(editor_tokens_path, ignore_query: true)
+      expect(page).to have_text("L'option n'a pas été activée, merci de contacter l'équipe")
+      expect(page).to have_no_button('Générer un nouveau jeton éditeur')
     end
   end
 
