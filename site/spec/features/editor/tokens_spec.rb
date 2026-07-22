@@ -96,6 +96,14 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       expect(page).to have_no_field(with: editor_token.rehash)
       expect(page).to have_no_text(editor_token.rehash)
     end
+
+    context 'when the editor declares allowed IPs' do
+      let(:editor) { create(:editor, :delegable, allowed_ips: ['203.0.113.0/24', '198.51.100.5']) }
+
+      it 'pre-fills the generated token with the editor IPs' do
+        expect(editor.tokens.sole.allowed_ips).to eq([IPAddr.new('203.0.113.0/24'), IPAddr.new('198.51.100.5/32')])
+      end
+    end
   end
 
   describe 'edit allowed IPs' do
