@@ -2,7 +2,7 @@ class Admin::EditorsController < AdminController
   before_action :set_editor, only: %i[show edit update]
 
   def index
-    @editors = Editor.filtered(params).order(:name).page(params[:page])
+    @editors = Editor.for_api(namespace).filtered(params).order(:name).page(params[:page])
     @users_counts = User.where(editor_id: @editors.map(&:id)).group(:editor_id).count
   end
 
@@ -46,28 +46,32 @@ class Admin::EditorsController < AdminController
 
   def editor_params
     params.expect(
-      editor: %i[
-        name
-        siret
-        role
-        contact_email
-        contact_phone
-        deployment_type
-        setup_instructions
-        domain
-        languages
-        description
-        form_uids
-        allowed_ips
-        copy_token
-        delegations_enabled
+      editor: [
+        :name,
+        :siret,
+        :role,
+        :contact_email,
+        :contact_phone,
+        :deployment_type,
+        :setup_instructions,
+        :domain,
+        :languages,
+        :description,
+        :form_uids,
+        :allowed_ips,
+        :copy_token,
+        :delegations_enabled,
+        { apis: [] }
       ]
-    ).tap do |whitelisted|
-      whitelisted[:form_uids] = parse_comma_separated(whitelisted[:form_uids])
-      whitelisted[:allowed_ips] = parse_comma_separated(whitelisted[:allowed_ips])
-      whitelisted[:role] = nil if whitelisted[:role].blank?
-      whitelisted[:deployment_type] = nil if whitelisted[:deployment_type].blank?
-    end
+    ).tap { |whitelisted| normalize_editor_params(whitelisted) }
+  end
+
+  def normalize_editor_params(whitelisted)
+    whitelisted[:form_uids] = parse_comma_separated(whitelisted[:form_uids])
+    whitelisted[:allowed_ips] = parse_comma_separated(whitelisted[:allowed_ips])
+    whitelisted[:apis] = (whitelisted[:apis] || []).compact_blank
+    whitelisted[:role] = nil if whitelisted[:role].blank?
+    whitelisted[:deployment_type] = nil if whitelisted[:deployment_type].blank?
   end
 
   def parse_comma_separated(value)

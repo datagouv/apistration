@@ -34,6 +34,17 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         expect(page).to have_css('.fr-badge--pink-tuile', text: 'Révoqué')
       end
 
+      it 'does not display delegations from another api' do
+        particulier_delegation = create(:editor_delegation, editor:,
+          authorization_request: create(:authorization_request, :validated, :with_demandeur,
+            api: 'particulier', scopes: []))
+
+        visit editor_delegations_path
+
+        expect(page).to have_css('.delegation', count: 2)
+        expect(page).to have_no_css("##{dom_id(particulier_delegation)}")
+      end
+
       it 'displays the delegation UUID with a copy button per row' do
         visit editor_delegations_path
 
@@ -76,6 +87,16 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         within "##{dom_id(active_delegation)}" do
           expect(page).to have_css('.delegation-created-at', text: '14/03/2026')
         end
+      end
+    end
+
+    context 'when the editor does not serve the current api' do
+      let(:editor) { create(:editor, :delegable, apis: %w[particulier]) }
+
+      it 'denies access to the editor space' do
+        visit editor_delegations_path
+
+        expect(page).to have_current_path(root_path)
       end
     end
 

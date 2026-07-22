@@ -22,6 +22,23 @@
     </div>
   </div>
 
+  <div class="fr-form-group <%= 'fr-fieldset--error' if editor.errors[:apis].any? %>">
+    <fieldset class="fr-fieldset">
+      <legend class="fr-fieldset__legend fr-text--regular">APIs</legend>
+      <%= f.collection_check_boxes :apis, Editor::APIS, :itself, :itself do |b| %>
+        <div class="fr-fieldset__element fr-fieldset__element--inline">
+          <div class="fr-checkbox-group">
+            <%= b.check_box(class: 'fr-checkbox') %>
+            <%= b.label(class: 'fr-label') { b.value.capitalize } %>
+          </div>
+        </div>
+      <% end %>
+      <% if editor.errors[:apis].any? %>
+        <p class="fr-error-text"><%= editor.errors[:apis].first %></p>
+      <% end %>
+    </fieldset>
+  </div>
+
   <div class="fr-input-group">
     <%= f.label :description, 'Description', class: 'fr-label' %>
     <span class="fr-hint-text">Visible par les usagers</span>
