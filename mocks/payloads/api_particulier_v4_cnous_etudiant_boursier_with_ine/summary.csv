@@ -32,6 +32,72 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Boursier sur année N-1 - Fille Dupont - Dijon Carnot,"{""ine"":""0987654321M""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2025-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""fille@dupont.com"",
+    ""identite"": {
+      ""nom"": ""DUPONT"",
+      ""prenoms"": [
+        ""FILLE""
+      ],
+      ""date_naissance"": ""2003-10-01"",
+      ""nom_commune_naissance"": ""Marseille"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Boursier sur année N-2 - Fille B Dupont - Dijon Carnot,"{""ine"":""0987654321N""}",200,"{
+  ""data"": {
+    ""statut_boursier"": {
+      ""est_boursier"": true,
+      ""est_radie"": false,
+      ""date_radiation"": null
+    },
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2024-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Dijon"",
+      ""nom_etablissement"": ""Carnot""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""filleb@dupont.com"",
+    ""identite"": {
+      ""nom"": ""DUPONT"",
+      ""prenoms"": [
+        ""FILLE B""
+      ],
+      ""date_naissance"": ""2003-10-01"",
+      ""nom_commune_naissance"": ""Marseille"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,Boursier sur une campagne antérieure ciblée via campaignYear,"{""ine"":""1234567890A"",""campaignYear"":2022}",200,"{
   ""data"": {
     ""statut_boursier"": {

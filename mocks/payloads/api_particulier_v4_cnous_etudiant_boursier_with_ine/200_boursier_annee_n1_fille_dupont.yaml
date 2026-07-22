@@ -1,0 +1,39 @@
+---
+description: 'Boursier sur année N-1 - Fille Dupont - Dijon Carnot'
+params:
+  ine: '0987654321M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_boursier": {
+        "est_boursier": true,
+        "est_radie": false,
+        "date_radiation": null
+      },
+      "periode_versement_bourse": {
+        "date_rentree": "2025-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Dijon",
+        "nom_etablissement": "Carnot"
+      },
+      "echelon_bourse": {
+        "echelon": "6",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "fille@dupont.com",
+      "identite": {
+        "nom": "DUPONT",
+        "prenoms": [
+          "FILLE"
+        ],
+        "date_naissance": "2003-10-01",
+        "nom_commune_naissance": "Marseille",
+        "sexe": "F"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
