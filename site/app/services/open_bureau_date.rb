@@ -4,7 +4,7 @@ class OpenBureauDate
   def next_date
     date = next_theoretical_date
 
-    date = date.next_occurring(:tuesday).next_occurring(:tuesday) while cancelled_dates.include?(date)
+    date = date.next_occurring(:thursday).next_occurring(:thursday) while cancelled_dates.include?(date)
 
     date
   end
@@ -14,11 +14,11 @@ class OpenBureauDate
   def next_theoretical_date
     return Time.zone.today if open_bureau_today?
 
-    next_tuesday = Time.zone.today.next_occurring(:tuesday)
+    next_thursday = Time.zone.today.next_occurring(:thursday)
 
-    return next_tuesday if first_or_third_tuesday_in_month?(next_tuesday)
+    return next_thursday if first_or_third_thursday_in_month?(next_thursday)
 
-    next_tuesday.next_occurring(:tuesday)
+    next_thursday.next_occurring(:thursday)
   end
 
   def cancelled_dates
@@ -28,22 +28,22 @@ class OpenBureauDate
   def open_bureau_today?
     today = Time.zone.today
 
-    today.tuesday? && first_or_third_tuesday_in_month?(today) && before_open_bureau_time?
+    today.thursday? && first_or_third_thursday_in_month?(today) && before_open_bureau_time?
   end
 
   def before_open_bureau_time?
     Time.zone.now < '11:00 am'.in_time_zone(Time.zone)
   end
 
-  def first_or_third_tuesday_in_month?(date)
-    return false unless date.tuesday?
+  def first_or_third_thursday_in_month?(date)
+    return false unless date.thursday?
 
     first_of_month = date.beginning_of_month
 
-    first_tuesday = first_of_month + ((2 - first_of_month.wday) % 7)
+    first_thursday = first_of_month + ((4 - first_of_month.wday) % 7)
 
-    third_tuesday = first_tuesday.next_occurring(:tuesday).next_occurring(:tuesday)
+    third_thursday = first_thursday.next_occurring(:thursday).next_occurring(:thursday)
 
-    date == first_tuesday || date == third_tuesday
+    date == first_thursday || date == third_thursday
   end
 end
