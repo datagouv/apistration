@@ -37,7 +37,7 @@
             </li>
           <% end %>
 
-          <% if user_signed_in? && current_user.editor? %>
+          <% if user_signed_in? && current_user.editor&.serves_api?('entreprise') %>
             <li class="fr-nav__item">
               <a class="fr-nav__link center" href="<%= editor_path %>" target="_self">
                 <strong>Espace éditeurs</strong>
