@@ -47,9 +47,7 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/identite"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/identite?recipient=13002526500013"
   ```
 
   </p>
@@ -107,9 +105,7 @@ caractères). Cet usager est bénéficiaire de l'AAH.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=AZERTYUIOPMLKJHGFDSQWXCVBNAZERTYUIOPMLKJHGFDSQWXCVBN' -d 'prenoms[]=BERTRAND' -d 'prenoms[]=CYRIL' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=3' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=75119' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/identite"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_adulte_handicape/identite?recipient=13002526500013"
   ```
 
   </p>
