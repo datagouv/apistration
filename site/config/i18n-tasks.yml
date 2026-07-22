@@ -125,7 +125,7 @@ ignore_unused:
   - 'editors.deployment_types.*'
   - 'api_particulier.reporters_mailer.*'
   - '*.page_title'
-  - 'errors.messages.{invalid_ip,ip_range_too_wide,forbidden_ip,too_many_ips}'
+  - 'errors.messages.{invalid_ip,ip_range_too_wide,forbidden_ip,too_many_ips,outside_editor_range}'
   - 'shared.tokens.prolong.description.future'
   - 'shared.tokens.prolong.description.past'
   - 'activerecord.attributes.*'

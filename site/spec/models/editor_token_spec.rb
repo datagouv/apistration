@@ -67,6 +67,39 @@ RSpec.describe EditorToken do
     end
   end
 
+  describe 'allowed_ips within the editor range' do
+    let(:editor) { create(:editor, allowed_ips: ['203.0.113.0/24']) }
+
+    it 'is valid when the token IPs fall within an editor range' do
+      editor_token = build(:editor_token, editor:, allowed_ips: ['203.0.113.10', '203.0.113.0/28'])
+
+      expect(editor_token).to be_valid
+    end
+
+    it 'is valid when the editor declares no range' do
+      editor_token = build(:editor_token, editor: create(:editor), allowed_ips: ['203.0.113.10'])
+
+      expect(editor_token).to be_valid
+    end
+
+    it 'stays valid with an empty token whitelist even when the editor is restricted' do
+      expect(build(:editor_token, editor:, allowed_ips: [])).to be_valid
+    end
+
+    it 'rejects a token IP outside every editor range' do
+      editor_token = build(:editor_token, editor:, allowed_ips: ['198.51.100.42'])
+
+      expect(editor_token).not_to be_valid
+      expect(editor_token.errors[:allowed_ips]).to be_present
+    end
+
+    it 'rejects a token range broader than the editor range' do
+      editor_token = build(:editor_token, editor:, allowed_ips: ['203.0.113.0/23'])
+
+      expect(editor_token).not_to be_valid
+    end
+  end
+
   describe '#expired?' do
     it 'returns true when exp is in the past' do
       editor_token = build(:editor_token, :expired)
