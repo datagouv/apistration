@@ -69,13 +69,13 @@ class Rack::Attack
 
     case config[:throttle_type]
     when 'by_group_of_endpoints'
-      throttle(name, limit: config[:limit], period: config[:period]) do |req|
+      throttle(name, limit: proc { |req| rate_limiting_service.throttle_limit_for(req, name, config[:limit]) }, period: config[:period]) do |req|
         endpoints = operation_ids.map { |op_id| OperationIdResolver.resolve(op_id) }
         rate_limiting_service.discriminate_by_authorization_request_for_endpoints(req, endpoints)
       end
     when 'by_single_endpoint'
       operation_ids.each do |op_id|
-        throttle(op_id, limit: config[:limit], period: config[:period]) do |req|
+        throttle(op_id, limit: proc { |req| rate_limiting_service.throttle_limit_for(req, op_id, config[:limit]) }, period: config[:period]) do |req|
           endpoint = OperationIdResolver.resolve(op_id)
           rate_limiting_service.discriminate_by_authorization_request_for_endpoints(req, [endpoint])
         end

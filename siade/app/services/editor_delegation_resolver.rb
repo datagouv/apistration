@@ -31,7 +31,8 @@ class EditorDelegationResolver
       authorization_request_id: authorization_request.id,
       scopes: authorization_request.scopes,
       allowed_ips: security_settings&.allowed_ips,
-      rate_limit_per_minute: security_settings&.rate_limit_per_minute
+      rate_limit_per_minute: security_settings&.rate_limit_per_minute,
+      throttle_overrides: security_settings&.throttle_overrides
     )
   end
 

@@ -3,5 +3,6 @@ FactoryBot.define do
     authorization_request
     rate_limit_per_minute { nil }
     allowed_ips { [] }
+    throttle_overrides { {} }
   end
 end

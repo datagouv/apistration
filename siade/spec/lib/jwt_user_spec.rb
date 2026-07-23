@@ -190,4 +190,46 @@ RSpec.describe JwtUser do
       end
     end
   end
+
+  describe '#throttle_override_for' do
+    context 'with an override for the throttle' do
+      let(:jwt_user) { described_class.new(**jwt_payload, throttle_overrides: { 'gip_mds' => 200 }) }
+
+      it 'returns the overridden limit' do
+        expect(jwt_user.throttle_override_for('gip_mds')).to eq(200)
+      end
+
+      it 'returns nil for another throttle' do
+        expect(jwt_user.throttle_override_for('inpi_rne')).to be_nil
+      end
+    end
+
+    context 'without throttle_overrides' do
+      let(:jwt_user) { described_class.new(**jwt_payload) }
+
+      it 'defaults to an empty hash' do
+        expect(jwt_user.throttle_overrides).to eq({})
+      end
+
+      it 'returns nil' do
+        expect(jwt_user.throttle_override_for('gip_mds')).to be_nil
+      end
+    end
+  end
+
+  describe '#with_delegation' do
+    let(:jwt_user) { described_class.new(**jwt_payload) }
+
+    it 'carries the throttle_overrides of the delegated authorization request' do
+      delegated = jwt_user.with_delegation(
+        authorization_request_id: 'ar-id',
+        scopes: %w[scope_1],
+        allowed_ips: [],
+        rate_limit_per_minute: nil,
+        throttle_overrides: { 'gip_mds' => 200 }
+      )
+
+      expect(delegated.throttle_override_for('gip_mds')).to eq(200)
+    end
+  end
 end
