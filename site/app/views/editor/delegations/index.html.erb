@@ -3,6 +3,13 @@
   vous appelez l'API avec votre propre jeton éditeur en précisant le <code>delegation_id</code>,
   sans manipuler le jeton principal de l'organisation.
 </p>
+<p class="fr-text--sm fr-mb-1w">
+  ⚠️ Une même habilitation peut apparaître à la fois dans <%= link_to 'vos habilitations', editor_authorization_requests_path, class: 'fr-link' %>
+  et ici : ce sont deux mécanismes d'accès distincts à la même donnée. La page Habilitations
+  expose le <em>jeton principal</em> de l'organisation cliente ; cette page-ci expose le
+  <em>lien de délégation</em> qui vous permet d'appeler l'API avec votre propre jeton
+  éditeur. Privilégiez la délégation pour n'avoir qu'un seul secret à gérer côté éditeur.
+</p>
 <p class="fr-mb-2w">
   <%= link_to 'En savoir plus', developers_path(anchor: 'integration-editeur'), class: 'fr-link fr-icon-book-2-line fr-link--icon-left' %>
 </p>
