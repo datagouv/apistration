@@ -296,7 +296,7 @@ tableaux de la liasse fiscale'
 
 
   numero_tva:
-    title: "Numéro de TVA"
+    title: "Numéros de TVA intracommunautaire français"
     description: "Numéro de TVA intracommunautaire français, issu des extractions publiées par la Direction générale des finances publiques (DGFIP) sur data.gouv.fr."
     tags:
       - "Informations financières"

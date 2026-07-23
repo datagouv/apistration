@@ -9261,7 +9261,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liens_capitalistiques/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/dgfip/unites_legales/{siren}/numero_tva":
     get:
-      summary: Numéro de TVA
+      summary: Numéros de TVA intracommunautaire français
       tags:
       - Informations financières
       parameters:
