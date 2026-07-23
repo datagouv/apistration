@@ -76,7 +76,7 @@ module ApiEntreprise
         @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "context" => context, "object" => object }.compact)
       end
 
-      # Numéro de TVA
+      # Numéros de TVA intracommunautaire français
       # Logical endpoint: /dgfip/unites_legales/{siren}/numero_tva
       # Versions available: [3] — default: 3
       def numero_tva(siren, version: nil, recipient: nil, delegation_id: nil, context: nil, object: nil)
