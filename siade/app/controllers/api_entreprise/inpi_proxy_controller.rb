@@ -56,7 +56,8 @@ class APIEntreprise::INPIProxyController < APIController
       authorization_request_id: ar.id,
       scopes: ar.scopes,
       allowed_ips: security_settings&.allowed_ips,
-      rate_limit_per_minute: security_settings&.rate_limit_per_minute
+      rate_limit_per_minute: security_settings&.rate_limit_per_minute,
+      throttle_overrides: security_settings&.throttle_overrides
     )
   end
 

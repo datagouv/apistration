@@ -1,7 +1,7 @@
 class JwtUser
   attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp,
     :rate_limit_per_minute, :allowed_ips, :editor_id,
-    :authorization_request_id
+    :authorization_request_id, :throttle_overrides
 
   def self.debugger_id
     '00000000-0000-0000-0000-000000000000'
@@ -13,7 +13,7 @@ class JwtUser
 
   def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false,
                  rate_limit_per_minute: nil, allowed_ips: nil, editor_id: nil,
-                 authorization_request_id: nil)
+                 authorization_request_id: nil, throttle_overrides: nil)
     @id = uid
     @scopes = scopes
     @jti = jti
@@ -26,6 +26,7 @@ class JwtUser
     @allowed_ips = allowed_ips
     @editor_id = editor_id
     @authorization_request_id = authorization_request_id
+    @throttle_overrides = throttle_overrides || {}
   end
 
   def editor?
@@ -39,7 +40,7 @@ class JwtUser
     nil
   end
 
-  def with_delegation(authorization_request_id:, scopes:, allowed_ips:, rate_limit_per_minute:)
+  def with_delegation(authorization_request_id:, scopes:, allowed_ips:, rate_limit_per_minute:, throttle_overrides: nil)
     self.class.new(
       uid: id,
       jti:,
@@ -52,7 +53,8 @@ class JwtUser
       editor_id:,
       authorization_request_id:,
       allowed_ips:,
-      rate_limit_per_minute:
+      rate_limit_per_minute:,
+      throttle_overrides:
     )
   end
 
@@ -62,6 +64,10 @@ class JwtUser
 
   def has_custom_rate_limit?
     rate_limit_per_minute.present?
+  end
+
+  def throttle_override_for(throttle_name)
+    throttle_overrides[throttle_name]
   end
 
   def has_access?(scope)

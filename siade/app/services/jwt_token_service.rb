@@ -76,6 +76,7 @@ class JwtTokenService
 
     jwt_data[:rate_limit_per_minute] = security_settings.rate_limit_per_minute
     jwt_data[:allowed_ips] = security_settings.allowed_ips
+    jwt_data[:throttle_overrides] = security_settings.throttle_overrides
   end
 
   def build_and_cache_user!(jwt_token, jwt_data)
