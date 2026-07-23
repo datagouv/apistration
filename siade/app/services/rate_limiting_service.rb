@@ -40,6 +40,10 @@ class RateLimitingService
     custom_rate_limit_for(req).present?
   end
 
+  def throttle_limit_for(req, throttle_name, default_limit)
+    resolved_user(req)&.throttle_override_for(throttle_name.to_s) || default_limit
+  end
+
   def authorization_request_discriminator(req)
     return req.env[DISCRIMINATOR_ENV_KEY] if req.env.key?(DISCRIMINATOR_ENV_KEY)
 

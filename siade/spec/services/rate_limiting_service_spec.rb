@@ -300,4 +300,42 @@ RSpec.describe RateLimitingService do
       it { is_expected.to be(true) }
     end
   end
+
+  describe '#throttle_limit_for' do
+    subject { described_class.new.throttle_limit_for(req, throttle_name, 50) }
+
+    let(:throttle_name) { :gip_mds }
+
+    context 'when no user is resolved' do
+      it { is_expected.to eq(50) }
+    end
+
+    context 'with a resolved user without a matching override' do
+      let(:user) do
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+          throttle_overrides: { 'inpi_rne' => 30 }
+        )
+      end
+
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
+
+      it('falls back to the default limit') { is_expected.to eq(50) }
+    end
+
+    context 'with a resolved user overriding the throttle' do
+      let(:user) do
+        JwtUser.new(
+          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+          throttle_overrides: { 'gip_mds' => 200 }
+        )
+      end
+
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
+
+      it 'returns the overridden limit regardless of the symbol/string key' do
+        expect(subject).to eq(200)
+      end
+    end
+  end
 end
