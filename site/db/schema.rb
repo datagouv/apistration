@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_21_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_21_120000) do
     t.uuid "authorization_request_id", null: false
     t.datetime "created_at", null: false
     t.integer "rate_limit_per_minute"
+    t.jsonb "throttle_overrides", default: {}, null: false
     t.datetime "updated_at", null: false
     t.index ["authorization_request_id"], name: "idx_on_authorization_request_id_89fed8c5c4", unique: true
   end

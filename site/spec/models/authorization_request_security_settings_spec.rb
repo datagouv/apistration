@@ -77,6 +77,42 @@ RSpec.describe AuthorizationRequestSecuritySettings do
         expect(settings.errors[:allowed_ips]).to be_present
       end
     end
+
+    describe 'throttle_overrides' do
+      it 'allows empty hash' do
+        settings = build(:authorization_request_security_settings, throttle_overrides: {})
+        expect(settings).to be_valid
+      end
+
+      it 'allows positive integer limits' do
+        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => 200 })
+        expect(settings).to be_valid
+      end
+
+      it 'rejects zero limit' do
+        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => 0 })
+        expect(settings).not_to be_valid
+        expect(settings.errors[:throttle_overrides]).to be_present
+      end
+
+      it 'rejects negative limit' do
+        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => -1 })
+        expect(settings).not_to be_valid
+        expect(settings.errors[:throttle_overrides]).to be_present
+      end
+
+      it 'rejects non-integer limit' do
+        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => 'lots' })
+        expect(settings).not_to be_valid
+        expect(settings.errors[:throttle_overrides]).to be_present
+      end
+
+      it 'rejects blank throttle name' do
+        settings = build(:authorization_request_security_settings, throttle_overrides: { '' => 200 })
+        expect(settings).not_to be_valid
+        expect(settings.errors[:throttle_overrides]).to be_present
+      end
+    end
   end
 
   describe 'uniqueness' do
