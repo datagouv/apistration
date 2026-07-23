@@ -565,14 +565,12 @@ fr:
         title: Délégations
         table:
           delegation_id: Identifiant de délégation
-          copy_delegation_id: Copier l'identifiant
           datapass_id: DataPass ID
           intitule: Intitulé
           organization: Organisation
           demandeur: Demandeur
           status: Statut
           created_at: Date de création
-        copy_alert: Identifiant copié
         status_active: Actif
         status_revoked: Révoqué
   provider:
