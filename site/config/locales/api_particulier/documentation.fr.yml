@@ -615,11 +615,17 @@ fr:
 
           - anchor: 'integration-editeur'
             title: Intégration éditeur&nbsp;🤝
+            content: |+
+              Un **éditeur de logiciel** intègre l'API&nbsp;Particulier pour le compte de ses administrations clientes. Le modèle historique — un jeton d'accès par administration cliente — impose à l'éditeur de collecter, stocker et faire tourner autant de secrets qu'il a de clients&nbsp;: coûteux à opérer et fragile.
+
+              La **délégation** répond à ce besoin. Une administration cliente délègue à un éditeur l'usage de son habilitation&nbsp;: l'éditeur n'a plus besoin du jeton de son client, il appelle l'API avec **son propre jeton éditeur** et précise le SIRET du client bénéficiaire (`recipient`) à chaque appel. Un seul secret côté éditeur, une résolution dynamique des droits côté API, aucune manipulation de jetons tiers.
+
+              Les sections qui suivent détaillent&nbsp;: les notions clés (jeton éditeur, délégation, `recipient`, `delegation_id`), la manière dont les délégations sont créées et pilotées, l'**espace éditeur** dédié, puis les endpoints à appeler pour lister ses délégations et interroger l'API pour le compte d'un client.
             subsections:
               - title: Le jeton éditeur et la délégation
                 anchor: 'editeur-concepts'
                 content: |+
-                  Un **éditeur de logiciel** intègre l'API&nbsp;Particulier pour le compte de ses administrations clientes. Plutôt que de gérer un jeton par client, il utilise un **jeton éditeur** unique et permanent et **agit pour le compte d'un client** grâce à la **délégation**.
+                  Un **éditeur de logiciel** intègre l'API&nbsp;Particulier pour le compte de ses administrations clientes. Plutôt que de gérer un jeton par client, il peut utiliser un jeton dit «&nbsp;**éditeur**&nbsp;» unique et permanent et **agir pour le compte d'un client** grâce à la **délégation**.
 
                   {:.fr-table}
                   | Notion | Description |
@@ -631,6 +637,28 @@ fr:
 
                   {:.fr-highlight}
                   > ℹ️ À chaque appel, l'API résout l'habilitation effective à partir du jeton éditeur et du `recipient`. Le rate-limit et les scopes appliqués sont ceux de l'habilitation cliente résolue.
+
+                  {:.fr-h6}
+                  ##### Comment les délégations sont créées&nbsp;?
+
+                  Par défaut, les délégations sont **automatiquement liées aux formulaires d'habilitation portés par l'éditeur**&nbsp;: lorsqu'une administration cliente valide un formulaire déposé par un éditeur référencé, l'habilitation obtenue devient déléguée à cet éditeur.
+
+                  L'administration cliente reste maître de ses délégations&nbsp;: depuis son **espace utilisateur API&nbsp;Particulier**, elle peut à tout moment **ajouter une délégation** à un éditeur ou **révoquer une délégation existante**, sans passer par la validation d'un nouveau formulaire.
+
+              - title: L'espace éditeur
+                anchor: 'editeur-espace'
+                content: |+
+                  Chaque éditeur référencé dispose d'un **espace éditeur** dédié, distinct de l'espace utilisateur classique. Il permet notamment de&nbsp;:
+
+                  - mettre à jour les **informations de l'éditeur** (raison sociale, contacts, plages d'IP autorisées…)&nbsp;;
+                  - consulter la liste des **délégations** actives et révoquées&nbsp;;
+                  - gérer les **jetons éditeur** (génération, rotation, révocation, restriction par IP)&nbsp;;
+                  - visualiser les **habilitations** rattachées aux formulaires portés par l'éditeur.
+
+                  {:.fr-highlight}
+                  > ℹ️ L'accès à l'espace éditeur est réservé aux éditeurs **référencés** par l'équipe API&nbsp;Particulier. Pour être référencé, écrivez à [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr)&nbsp;: nous rattacherons votre compte à la fiche éditeur correspondante.
+
+                  Une fois référencé, [connectez-vous à votre espace éditeur](<%= editor_path %>){:target="_blank"}.
 
               - title: Lister vos délégations
                 anchor: 'editeur-lister-delegations'
