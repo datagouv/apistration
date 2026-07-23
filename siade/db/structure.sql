@@ -53,6 +53,7 @@ CREATE TABLE public.authorization_request_security_settings (
     authorization_request_id uuid NOT NULL,
     rate_limit_per_minute integer,
     allowed_ips jsonb DEFAULT '[]'::jsonb NOT NULL,
+    throttle_overrides jsonb DEFAULT '{}'::jsonb NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
