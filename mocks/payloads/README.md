@@ -79,7 +79,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Liasses fiscales](api_entreprise_v3_dgfip_liasses_fiscales) (`/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
 * Liasses fiscales (`/v4/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
 * [Liens capitalistiques](api_entreprise_v3_dgfip_liens_capitalistiques) (`/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}`)
-* [Numéro de TVA](api_entreprise_v3_dgfip_tva) (`/v3/dgfip/unites_legales/{siren}/numero_tva`)
+* [Numéros de TVA intracommunautaire français](api_entreprise_v3_dgfip_tva) (`/v3/dgfip/unites_legales/{siren}/numero_tva`)
 * [Données association](api_entreprise_v4_mi_unites_legales) (`/v4/djepva/api-association/associations/{siren_or_rna}`)
 * [Données association en open data](api_entreprise_v4_mi_unites_legales_open_data) (`/v4/djepva/api-association/associations/open_data/{siren_or_rna}`)
 * [N°TVA intracommunautaire français](api_entreprise_v3_european_commission_vies) (`/v3/european_commission/unites_legales/{siren}/numero_tva`)
