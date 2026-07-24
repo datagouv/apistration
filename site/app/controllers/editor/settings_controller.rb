@@ -29,8 +29,6 @@ class Editor::SettingsController < EditorController
         contact_phone
         domain
       ]
-    ).tap do |whitelisted|
-      whitelisted[:deployment_type] = nil if whitelisted[:deployment_type].blank?
-    end
+    )
   end
 end
