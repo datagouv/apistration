@@ -1,4 +1,4 @@
-# Numéro de TVA
+# Numéros de TVA intracommunautaire français
 * [200-single.yaml](200-single.yaml)
 
   Status `200`
