@@ -6,8 +6,8 @@ class EditorToken < ApplicationRecord
   attribute :iat, default: -> { Time.zone.now.to_i }
   attribute :exp, default: -> { 18.months.from_now.to_i }
 
-  validates :allowed_ips, allowed_ips: true
-  validate :allowed_ips_within_editor_range
+  validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
+  validate :allowed_ips_within_editor_range, if: :allowed_ips_changed?
 
   def allowed_ips_as_strings
     allowed_ips.map { |ip| "#{ip}/#{ip.prefix}" }
