@@ -452,7 +452,7 @@ fr:
                   ```
 
                   {:.fr-highlight}
-                  > ℹ️ `context` et `object` restent obligatoires sur les appels API&nbsp;Entreprise, exactement comme pour un jeton classique. Seul le couple `recipient`&nbsp;/&nbsp;`delegation_id` est spécifique à l'usage éditeur.
+                  > ℹ️ `context`, `object` et `recipient` restent obligatoires sur les appels API&nbsp;Entreprise, exactement comme pour un jeton classique. Seul le `delegation_id` est spécifique à l'usage éditeur.
 
               - title: Contrat d'erreurs de la délégation
                 anchor: 'editeur-contrat-erreurs'
