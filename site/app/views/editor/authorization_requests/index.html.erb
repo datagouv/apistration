@@ -1,3 +1,18 @@
+<p class="fr-text--sm fr-mb-1w">
+  Cette page liste <strong>uniquement les habilitations issues d'un formulaire DataPass
+  qui vous est rattaché</strong> — autrement dit, les demandes d'accès de vos organisations
+  clientes soumises via un de vos formulaires éditeur. Chaque ligne expose le jeton
+  principal rattaché à l'habilitation du client.
+</p>
+<p class="fr-text--sm fr-mb-2w">
+  ⚠️ Une habilitation listée ici peut aussi apparaître dans <%= link_to 'vos délégations', editor_delegations_path, class: 'fr-link' %> :
+  ce sont deux mécanismes distincts pour accéder à la même habilitation. Le <em>jeton principal</em>
+  affiché ci-dessous est celui de l'organisation cliente ; la <em>délégation</em>, elle,
+  vous permet d'appeler l'API avec <strong>votre propre jeton éditeur</strong> en précisant
+  le <code>recipient</code> (et éventuellement le <code>delegation_id</code>). Privilégiez
+  la délégation pour n'avoir qu'un seul secret à gérer côté éditeur.
+</p>
+
 <%= search_form_for(@q, url: editor_authorization_requests_path, html: { method: :get, data: { turbo: false }, class: %w[search-box] }) do |f| %>
   <div class="fr-input-group input">
     <%= f.search_field :siret_or_external_id_or_intitule_or_demandeur_email_eq, placeholder: 'demandeur email, siret, datapass id..', id: 'search_main_input', class: %[fr-input] %>

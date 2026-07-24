@@ -11,6 +11,8 @@ class Editor < ApplicationRecord
     class_name: 'EditorToken',
     dependent: :destroy
 
+  normalizes :deployment_type, with: ->(value) { value.presence }
+
   validates :name, presence: true
   validates :siret, format: { with: /\A\d{14}\z/ }, allow_blank: true
   validates :role, inclusion: { in: ROLES }, allow_nil: true

@@ -5,6 +5,7 @@ fr:
       invalid_ip: "contient une entrée invalide : %{entry}"
       ip_range_too_wide: "contient une plage trop large (préfixe IPv4 minimum : /24) : %{entry}"
       forbidden_ip: "contient une plage privée ou réservée : %{entry}"
+      outside_editor_range: "doit être incluse dans les adresses IP autorisées de l'éditeur : %{entry}"
     show:
       not_found:
         title: "Oups, cette page n'existe pas"

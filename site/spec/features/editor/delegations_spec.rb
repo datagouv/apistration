@@ -23,7 +23,7 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
       it 'displays the delegations tab in header' do
         visit editor_delegations_path
 
-        expect(page).to have_link('Délégations')
+        expect(page).to have_link('Vos délégations')
       end
 
       it 'displays delegations with status badges' do
@@ -45,37 +45,11 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         expect(page).to have_no_css("##{dom_id(particulier_delegation)}")
       end
 
-      it 'displays the delegation UUID with a copy button per row' do
+      it 'displays the delegation UUID per row' do
         visit editor_delegations_path
 
         within "##{dom_id(active_delegation)}" do
           expect(page).to have_text(active_delegation.id)
-          expect(page).to have_button("Copier l'identifiant")
-          expect(page).to have_css(
-            'input[data-clipboard-target="source"]',
-            visible: :all
-          )
-          expect(find('input[data-clipboard-target="source"]', visible: :all).value)
-            .to eq(active_delegation.id)
-        end
-      end
-
-      it 'displays humanized scopes per delegation, with a fallback when empty' do
-        visit editor_delegations_path
-
-        within "##{dom_id(active_delegation)}" do
-          expect(page).to have_css(
-            '.delegation-scopes li',
-            text: 'API Données unités légales et établissements dont les non diffusibles'
-          )
-          expect(page).to have_css(
-            '.delegation-scopes li',
-            text: 'API Données ouvertes association'
-          )
-        end
-
-        within "##{dom_id(revoked_delegation)}" do
-          expect(page).to have_text('Aucun scope')
         end
       end
 
@@ -106,8 +80,8 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
       it 'still displays the delegations tab in header' do
         visit editor_authorization_requests_path
 
-        expect(page).to have_link('Habilitations')
-        expect(page).to have_link('Délégations', href: editor_delegations_path)
+        expect(page).to have_link('Habilitations & jetons clients')
+        expect(page).to have_link('Vos délégations', href: editor_delegations_path)
       end
 
       it 'still allows accessing the delegations page' do

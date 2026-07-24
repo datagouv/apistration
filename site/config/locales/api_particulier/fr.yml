@@ -132,6 +132,8 @@ fr:
         page_title: Documentation OpenAPI v2
       redoc_v3:
         page_title: Documentation OpenAPI v3
+      redoc_editor:
+        page_title: Swagger — API Éditeur
 
     endpoints:
       index:

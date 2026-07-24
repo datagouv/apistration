@@ -29,6 +29,10 @@ class APIParticulier::PagesController < APIParticulierController
     render 'shared/pages/redoc'
   end
 
+  def redoc_editor
+    render 'shared/pages/redoc_editor'
+  end
+
   def redoc_v2
     render 'shared/pages/redoc_v2'
   end
@@ -51,7 +55,7 @@ class APIParticulier::PagesController < APIParticulierController
 
   def page_layout
     case action_name
-    when 'home', 'newsletter'
+    when 'home', 'newsletter', 'redoc_editor'
       'api_particulier/no_container'
     end
   end

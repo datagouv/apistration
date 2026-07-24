@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount Rswag::Ui::Engine => '/editeur/api-docs'
-  mount Rswag::Api::Engine => '/editeur/api-docs'
   GoodJob::Engine.middleware.use(Rack::Auth::Basic) do |username, password|
     ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(Rails.application.credentials.workers_ui_username)) &
       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(Rails.application.credentials.workers_ui_password))
@@ -40,6 +38,7 @@ Rails.application.routes.draw do
   get '/editeur', to: redirect('/editeur/habilitations'), as: :editor
 
   namespace :editor, path: 'editeur' do
+    resource :settings, only: %i[show update], path: 'parametres'
     resources :authorization_requests, only: %i[index], path: 'habilitations'
     resources :delegations, only: %i[index], path: 'delegations'
     resources :tokens, only: %i[index create edit update] do

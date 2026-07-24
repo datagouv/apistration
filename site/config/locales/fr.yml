@@ -531,6 +531,8 @@ fr:
       index:
         title: Jetons éditeurs
         description: Un jeton unique, sans droits propres, résolu par SIRET à chaque appel.
+        documentation: Consulter la documentation d'intégration
+        swagger: Consulter le Swagger de l'API éditeur
         generate: Générer un nouveau jeton éditeur
         table:
           identifier: Identifiant
@@ -563,16 +565,12 @@ fr:
         title: Délégations
         table:
           delegation_id: Identifiant de délégation
-          copy_delegation_id: Copier l'identifiant
           datapass_id: DataPass ID
           intitule: Intitulé
           organization: Organisation
           demandeur: Demandeur
           status: Statut
-          scopes: Scopes disponibles
           created_at: Date de création
-        copy_alert: Identifiant copié
-        no_scopes: Aucun scope
         status_active: Actif
         status_revoked: Révoqué
   provider:

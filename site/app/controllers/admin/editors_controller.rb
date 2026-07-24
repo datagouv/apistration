@@ -71,7 +71,6 @@ class Admin::EditorsController < AdminController
     whitelisted[:allowed_ips] = parse_comma_separated(whitelisted[:allowed_ips])
     whitelisted[:apis] = (whitelisted[:apis] || []).compact_blank
     whitelisted[:role] = nil if whitelisted[:role].blank?
-    whitelisted[:deployment_type] = nil if whitelisted[:deployment_type].blank?
   end
 
   def parse_comma_separated(value)

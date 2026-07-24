@@ -84,6 +84,7 @@ class Seeds
     @editor = Editor.create!(
       name: 'MGDIS',
       form_uids: %w[api-entreprise-mgdis],
+      apis: %w[entreprise],
       copy_token: true,
       editor_tokens_enabled: true,
       siret: '32816124500027',
@@ -113,6 +114,7 @@ class Seeds
     Editor.create!(
       name: 'Atexo',
       form_uids: %w[api-entreprise-atexo],
+      apis: %w[entreprise],
       siret: '44090956200033',
       role: 'manages_token',
       contact_email: 'contact-atexo@yopmail.com',
@@ -126,6 +128,7 @@ class Seeds
     Editor.create!(
       name: 'Aiga',
       form_uids: %w[api-particulier-aiga api-particulier-aiga-petite-enfance],
+      apis: %w[particulier],
       siret: '39825361700045',
       role: 'client_manages_token',
       deployment_type: 'on_premise',

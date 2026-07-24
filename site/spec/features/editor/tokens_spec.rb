@@ -32,7 +32,12 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
 
     it 'shows the generate button and the nav entry' do
       expect(page).to have_button('Générer un nouveau jeton éditeur')
-      expect(page).to have_link('Jetons éditeurs')
+      expect(page).to have_link('Vos jetons éditeur')
+    end
+
+    it 'links to the editor documentation and swagger from the page' do
+      expect(page).to have_link(href: developers_path(anchor: 'integration-editeur'))
+      expect(page).to have_link(href: editor_openapi_path)
     end
   end
 
@@ -41,13 +46,13 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       visit editor_tokens_path
     end
 
-    it 'shows the sections and documentation links in a nav menu' do
+    it 'shows only the editor sections in the nav menu, without doc links' do
       within('nav.fr-nav') do
-        expect(page).to have_link('Habilitations', href: editor_authorization_requests_path)
-        expect(page).to have_link('Délégations', href: editor_delegations_path)
-        expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
-        expect(page).to have_link('Documentation', href: developers_path)
-        expect(page).to have_link('Swagger', href: developers_openapi_path)
+        expect(page).to have_link('Habilitations & jetons clients', href: editor_authorization_requests_path)
+        expect(page).to have_link('Vos délégations', href: editor_delegations_path)
+        expect(page).to have_link('Vos jetons éditeur', href: editor_tokens_path)
+        expect(page).to have_no_link('Documentation')
+        expect(page).to have_no_link('Swagger')
       end
     end
   end
@@ -58,7 +63,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     it 'keeps the nav entry but shows a contact message instead of the tokens' do
       visit editor_authorization_requests_path
       within('nav.fr-nav') do
-        expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
+        expect(page).to have_link('Vos jetons éditeur', href: editor_tokens_path)
       end
 
       visit editor_tokens_path
@@ -90,6 +95,14 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       expect(page).to have_text(editor_token.id.first(8))
       expect(page).to have_no_field(with: editor_token.rehash)
       expect(page).to have_no_text(editor_token.rehash)
+    end
+
+    context 'when the editor declares allowed IPs' do
+      let(:editor) { create(:editor, :delegable, allowed_ips: ['203.0.113.0/24', '198.51.100.5']) }
+
+      it 'pre-fills the generated token with the editor IPs' do
+        expect(editor.tokens.sole.allowed_ips).to eq([IPAddr.new('203.0.113.0/24'), IPAddr.new('198.51.100.5/32')])
+      end
     end
   end
 

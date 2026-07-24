@@ -40,7 +40,7 @@
                 </a>
               </li>
               <li>
-                <a class="fr-link fr-icon-user-fill" href="<%= editor_path %>">
+                <a class="fr-link fr-icon-user-fill" href="<%= editor_settings_path %>">
                   <%= current_user.full_name %>
                 </a>
               </li>
@@ -67,31 +67,25 @@
         <ul class="fr-nav__list">
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_authorization_requests_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/habilitations') %>>
-              Habilitations
+              Habilitations &amp; jetons clients
             </a>
           </li>
 
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_delegations_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/delegations') %>>
-              Délégations
+              Vos délégations
             </a>
           </li>
 
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_tokens_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/tokens') %>>
-              Jetons éditeurs
+              Vos jetons éditeur
             </a>
           </li>
 
           <li class="fr-nav__item">
-            <a class="fr-nav__link center" href="<%= developers_path %>" target="_self">
-              Documentation
-            </a>
-          </li>
-
-          <li class="fr-nav__item">
-            <a class="fr-nav__link center" href="<%= developers_openapi_path %>" target="_self">
-              Swagger
+            <a class="fr-nav__link center" href="<%= editor_settings_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/parametres') %>>
+              Vos informations éditeur
             </a>
           </li>
         </ul>

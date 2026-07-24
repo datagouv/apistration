@@ -61,6 +61,8 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/faq', to: 'faq#index', as: :faq_index
     get '/developpeurs', to: 'documentation#developers', as: :developers
     get '/developpeurs/openapi', to: 'pages#redoc', as: :developers_openapi
+    get '/editeur/openapi', to: 'pages#redoc_editor', as: :editor_openapi
+    get '/editeur/open-api.yml', to: ->(_env) { [200, { 'content-type' => 'text/yaml' }, [Rails.root.join('swagger/v1/openapi-editor.yaml').read]] }, as: :editor_openapi_definition
     get '/fiches', to: 'cas_usages#index', as: :cas_usages
     get '/fiches/:uid', to: 'cas_usages#show', as: :cas_usage
     get '/cas_usages/:uid', to: redirect('/fiches/%{uid}')

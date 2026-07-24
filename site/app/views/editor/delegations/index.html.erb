@@ -1,3 +1,19 @@
+<p class="fr-text--sm fr-mb-1w">
+  Une délégation relie une habilitation validée de votre client à votre compte éditeur :
+  vous appelez l'API avec votre propre jeton éditeur en précisant le <code>delegation_id</code>,
+  sans manipuler le jeton principal de l'organisation.
+</p>
+<p class="fr-text--sm fr-mb-1w">
+  ⚠️ Une même habilitation peut apparaître à la fois dans <%= link_to 'vos habilitations', editor_authorization_requests_path, class: 'fr-link' %>
+  et ici : ce sont deux mécanismes d'accès distincts à la même donnée. La page Habilitations
+  expose le <em>jeton principal</em> de l'organisation cliente ; cette page-ci expose le
+  <em>lien de délégation</em> qui vous permet d'appeler l'API avec votre propre jeton
+  éditeur. Privilégiez la délégation pour n'avoir qu'un seul secret à gérer côté éditeur.
+</p>
+<p class="fr-mb-2w">
+  <%= link_to 'En savoir plus', developers_path(anchor: 'integration-editeur'), class: 'fr-link fr-icon-book-2-line fr-link--icon-left' %>
+</p>
+
 <div class="fr-table fr-table--bordered fr-table--layout-fixed">
   <div class="fr-table__wrapper">
     <div class="fr-table__container">
@@ -14,7 +30,6 @@
               <th scope="col"><%= t('.table.organization') %></th>
               <th scope="col"><%= t('.table.demandeur') %></th>
               <th scope="col"><%= t('.table.status') %></th>
-              <th scope="col"><%= t('.table.scopes') %></th>
               <th scope="col"><%= t('.table.created_at') %></th>
             </tr>
           </thead>
@@ -23,18 +38,7 @@
               <% ar = delegation.authorization_request %>
               <tr id="<%= dom_id(delegation) %>" class="delegation">
                 <td>
-                  <div class="copy-token" data-controller="clipboard" data-clipboard-alert-message-value="<%= t('.copy_alert') %>">
-                    <code class="fr-text--sm"><%= delegation.id %></code>
-                    <input class="fr-input" type="text" readonly
-                           data-clipboard-target="source"
-                           value="<%= delegation.id %>"
-                           style="position: absolute; left: -9999px" />
-                    <button class="fr-btn fr-btn--sm fr-icon-clipboard-fill fr-btn--icon-right"
-                            type="button"
-                            data-action="click->clipboard#copy">
-                      <%= t('.table.copy_delegation_id') %>
-                    </button>
-                  </div>
+                  <code class="fr-text--sm"><%= delegation.id %></code>
                 </td>
                 <td>
                   <%= link_to "DataPass ##{ar.external_id}", "#{datapass_v2_base_url(ar.api)}/public/demandes/#{ar.public_id}", target: '_blank' %>
@@ -54,9 +58,6 @@
                   <% else %>
                     <p class="fr-badge fr-badge--green-emeraude"><%= t('.status_active') %></p>
                   <% end %>
-                </td>
-                <td>
-                  <%= render 'scopes_cell', scopes: ar.scopes, api: ar.api %>
                 </td>
                 <td class="delegation-created-at">
                   <%= delegation.created_at.strftime('%d/%m/%Y') %>
