@@ -52,6 +52,62 @@
 
   </p>
   </details>
+* [200_allocataire_angela_dubois.yaml](200_allocataire_angela_dubois.yaml)
+
+  Status `200`
+
+  Cas de test avec l'identité pivot FranceConnect par défaut du bac à sable
+d'intégration (Angela DUBOIS).
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUBOIS",
+    "prenoms": [
+      "Angela",
+      "Claire",
+      "Louise"
+    ],
+    "anneeDateNaissance": 1962,
+    "moisDateNaissance": 8,
+    "jourDateNaissance": 24,
+    "codeCogInseeCommuneNaissance": "75107",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "status": "allocataire",
+      "date_debut_droit": "2024-08-09"
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_rentree_scolaire/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
