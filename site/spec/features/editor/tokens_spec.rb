@@ -32,7 +32,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
 
     it 'shows the generate button and the nav entry' do
       expect(page).to have_button('Générer un nouveau jeton éditeur')
-      expect(page).to have_link('Jetons éditeurs')
+      expect(page).to have_link('Vos jetons éditeur')
     end
 
     it 'links to the editor documentation and swagger from the page' do
@@ -48,9 +48,9 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
 
     it 'shows only the editor sections in the nav menu, without doc links' do
       within('nav.fr-nav') do
-        expect(page).to have_link('Habilitations', href: editor_authorization_requests_path)
-        expect(page).to have_link('Délégations', href: editor_delegations_path)
-        expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
+        expect(page).to have_link('Habilitations & jetons clients', href: editor_authorization_requests_path)
+        expect(page).to have_link('Vos délégations', href: editor_delegations_path)
+        expect(page).to have_link('Vos jetons éditeur', href: editor_tokens_path)
         expect(page).to have_no_link('Documentation')
         expect(page).to have_no_link('Swagger')
       end
@@ -63,7 +63,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     it 'keeps the nav entry but shows a contact message instead of the tokens' do
       visit editor_authorization_requests_path
       within('nav.fr-nav') do
-        expect(page).to have_link('Jetons éditeurs', href: editor_tokens_path)
+        expect(page).to have_link('Vos jetons éditeur', href: editor_tokens_path)
       end
 
       visit editor_tokens_path

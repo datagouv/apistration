@@ -23,7 +23,7 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
       it 'displays the delegations tab in header' do
         visit editor_delegations_path
 
-        expect(page).to have_link('Délégations')
+        expect(page).to have_link('Vos délégations')
       end
 
       it 'displays delegations with status badges' do
@@ -80,8 +80,8 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
       it 'still displays the delegations tab in header' do
         visit editor_authorization_requests_path
 
-        expect(page).to have_link('Habilitations')
-        expect(page).to have_link('Délégations', href: editor_delegations_path)
+        expect(page).to have_link('Habilitations & jetons clients')
+        expect(page).to have_link('Vos délégations', href: editor_delegations_path)
       end
 
       it 'still allows accessing the delegations page' do

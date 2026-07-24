@@ -67,25 +67,25 @@
         <ul class="fr-nav__list">
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_authorization_requests_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/habilitations') %>>
-              Habilitations
+              Habilitations &amp; jetons clients
             </a>
           </li>
 
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_delegations_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/delegations') %>>
-              Délégations
+              Vos délégations
             </a>
           </li>
 
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_tokens_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/tokens') %>>
-              Jetons éditeurs
+              Vos jetons éditeur
             </a>
           </li>
 
           <li class="fr-nav__item">
             <a class="fr-nav__link center" href="<%= editor_settings_path %>" target="_self"<%= ' aria-current="page"'.html_safe if request.path.start_with?('/editeur/parametres') %>>
-              Paramètres
+              Vos informations éditeur
             </a>
           </li>
         </ul>
