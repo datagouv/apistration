@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1.317.0
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v7.0.0
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1.317.0
@@ -76,7 +76,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1.317.0
@@ -135,7 +135,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: Checkout code
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1.317.0
@@ -179,7 +179,7 @@ jobs:
       - tests
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: Force push develop to main
         working-directory: .
