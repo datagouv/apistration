@@ -38,7 +38,9 @@ class HubEEAPIClient < AbstractHubEEAPIClient
   end
 
   def create_subscription(authorization_request, organization_payload, process_code)
-    find_or_create_inactive_subscription(authorization_request, organization_payload, process_code)
+    create_inactive_subscription(authorization_request, organization_payload, process_code)
+  rescue AlreadyExists
+    find_subscription(authorization_request, organization_payload, process_code)
   end
 
   def find_subscription(_authorization_request, organization_payload, process_code)
@@ -99,11 +101,5 @@ class HubEEAPIClient < AbstractHubEEAPIClient
     raise AlreadyExists if already_exists_error?(e)
 
     raise
-  end
-
-  def find_or_create_inactive_subscription(authorization_request, organization_payload, process_code)
-    create_inactive_subscription(authorization_request, organization_payload, process_code)
-  rescue HubEEAPIClient::AlreadyExists
-    find_subscription(authorization_request, organization_payload, process_code)
   end
 end
