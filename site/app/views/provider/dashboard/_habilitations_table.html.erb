@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% if habilitations.empty? %>
-        <tr><td colspan="7"><%= t('.empty') %></td></tr>
+        <tr><td colspan="7"><%= t('.empty', from: date_from, to: date_to) %></td></tr>
       <% else %>
         <% habilitations.each do |h| %>
           <tr>

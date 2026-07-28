@@ -631,8 +631,8 @@ fr:
       section_habilitations:
         title: Demandes et habilitations
         total_count:
-          one: "%{count} demande sur la période"
-          other: "%{count} demandes sur la période"
+          one: "%{count} demande soumise entre le %{from} et le %{to}"
+          other: "%{count} demandes soumises entre le %{from} et le %{to}"
         description: Ensemble des demandes et habilitations ayant accès aux données liées à votre source de données.
         date_scope_hint: "Ne sont listées que les demandes soumises entre le %{from} et le %{to} (période sélectionnée ci-dessus)."
         status_filter: Filtrer par statut
@@ -675,7 +675,7 @@ fr:
         email: Email demandeur
         status: Statut
         scopes: Scopes
-        empty: Aucune habilitation correspondante.
+        empty: "Aucune habilitation soumise entre le %{from} et le %{to}. Élargissez la période sélectionnée en haut de page pour en voir davantage."
         statuses:
           validated: Validée
           submitted: Soumise

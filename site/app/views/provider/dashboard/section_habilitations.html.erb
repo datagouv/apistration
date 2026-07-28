@@ -9,7 +9,12 @@
   <section class="fr-mt-4w">
     <h2><%= t('.title') %></h2>
 
-    <p class="fr-text--sm fr-text--bold fr-mb-2w"><%= t('.total_count', count: @query.total_habilitations) %></p>
+    <p class="fr-text--sm fr-text--bold fr-mb-2w">
+      <%= t('.total_count',
+        count: @query.total_habilitations,
+        from: @filter.date_from.strftime('%d/%m/%Y'),
+        to: @filter.date_to.strftime('%d/%m/%Y')) %>
+    </p>
 
     <%= render 'shared/dsfr_chart/line',
       title: t('.charts.evolution'),
@@ -46,7 +51,10 @@
       </div>
     <% end %>
 
-    <%= render 'provider/dashboard/habilitations_table', habilitations: habilitations %>
+    <%= render 'provider/dashboard/habilitations_table',
+      habilitations: habilitations,
+      date_from: @filter.date_from.strftime('%d/%m/%Y'),
+      date_to: @filter.date_to.strftime('%d/%m/%Y') %>
     <%= paginate habilitations %>
     <p class="fr-mt-1w">
       <% csv_path = controller_path == 'admin/provider_dashboards' \
