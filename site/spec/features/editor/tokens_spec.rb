@@ -106,6 +106,22 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
   end
 
+  describe 'generate a token when the editor carries unusable allowed IPs' do
+    before do
+      editor.update_column(:allowed_ips, ['192.168.1.1'])
+
+      visit editor_tokens_path
+      click_button 'Générer un nouveau jeton éditeur'
+    end
+
+    it 'explains the failure instead of blowing up, and creates nothing' do
+      expect(page).to have_current_path(editor_tokens_path)
+      expect(page).to have_text('Impossible de générer le jeton')
+      expect(page).to have_text('plage privée ou réservée')
+      expect(editor.tokens).to be_empty
+    end
+  end
+
   describe 'edit allowed IPs' do
     let!(:editor_token) { create(:editor_token, editor:) }
 
