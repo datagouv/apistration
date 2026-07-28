@@ -37,10 +37,8 @@ class HubEEAPIClient < AbstractHubEEAPIClient
     raise
   end
 
-  def create_subscription(authorization_request, organization_payload, process_code, editor_payload = {})
-    subscription_payload = find_or_create_inactive_subscription(authorization_request, organization_payload, process_code)
-    activate_subscription(subscription_payload, editor_payload)
-    subscription_payload
+  def create_subscription(authorization_request, organization_payload, process_code, _editor_payload = {})
+    find_or_create_inactive_subscription(authorization_request, organization_payload, process_code)
   end
 
   def find_subscription(_authorization_request, organization_payload, process_code)
@@ -72,28 +70,6 @@ class HubEEAPIClient < AbstractHubEEAPIClient
   end
 
   private
-
-  def activate_subscription(subscription_payload, editor_payload = {}) # rubocop:disable Metrics/AbcSize
-    subscription_id = Hash(subscription_payload)['id']
-    return if subscription_id.blank?
-
-    payload = subscription_payload.with_indifferent_access.merge({
-      status: 'Actif',
-      activateDateTime: DateTime.now.iso8601,
-      accessMode: 'API',
-      notificationFrequency: 'Aucune'
-    }.with_indifferent_access)
-
-    payload.delete('id')
-    payload.delete('creationDateTime')
-    payload.merge!(editor_payload.with_indifferent_access)
-
-    http_connection.put(
-      "#{host}/referential/v1/subscriptions/#{subscription_id}",
-      payload.to_json,
-      'Content-Type' => 'application/json'
-    ).body
-  end
 
   def create_inactive_subscription(authorization_request, organization_payload, process_code) # rubocop:disable Metrics/AbcSize
     http_connection.post(
