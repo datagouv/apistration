@@ -64,3 +64,13 @@ fiche:
       - q: "Une entreprise peut-elle avoir plusieurs numéros de TVA intracommunautaire ?"
         a: |+
           Une entreprise assujettie à la TVA peut posséder un numéro de TVA pour chacun de ses codes d'activité (NAF/APE). Les numéros de TVA affichés sur l'Annuaire des Entreprises sont les numéros actifs à la date d'extraction des données.
+      - q: "Quelles sont les entreprises disposant d'un numéro de TVA intracommunautaire ?"
+        a: |+
+          Toute entreprise domiciliée dans l'Union Européenne (UE) et qui est redevable de la TVA doit disposer d'un numéro de TVA intracommunautaire.
+
+          Toutefois, cet identifiant n'est pas accessible pour une entreprise si :
+
+          - elle n'est pas assujettie à la TVA (du fait de la nature de son activité par exemple).
+          - elle dépend du régime de la franchise en base et n'a pas [sollicité le numéro auprès de son SIE de rattachement](https://entreprendre.service-public.gouv.fr/vosdroits/R38712){:target="_blank"}.
+          - elle a fait l'objet d'une suspension de son numéro par l'administration fiscale.
+          - elle n'est plus en activité.
