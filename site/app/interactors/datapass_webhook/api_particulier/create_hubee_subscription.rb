@@ -9,35 +9,7 @@ class DatapassWebhook::APIParticulier::CreateHubEESubscription < ApplicationInte
   private
 
   def create_subscription_on_hubee
-    hubee_api_client.create_subscription(authorization_request, hubee_organization_payload, process_code, editor_payload)
-  end
-
-  def editor_organization
-    @editor_organization ||= begin
-      organization = Organization.find_or_create_by(siret: service_provider['siret'])
-
-      UpdateOrganizationINSEEPayloadJob.new.perform(organization.id)
-      organization.reload
-
-      organization
-    end
-  end
-
-  def editor_payload
-    return {} unless editor_subscription?
-
-    {
-      delegationActor: {
-        branchCode: editor_organization.code_commune_etablissement,
-        companyRegister: editor_organization.siret,
-        type: 'EDT'
-      },
-      accessMode: 'API'
-    }
-  end
-
-  def editor_subscription?
-    service_provider['type'] == 'editor'
+    hubee_api_client.create_subscription(authorization_request, hubee_organization_payload, process_code)
   end
 
   def hubee_api_client
@@ -51,9 +23,5 @@ class DatapassWebhook::APIParticulier::CreateHubEESubscription < ApplicationInte
   def save_hubee_subscription_id_to_authorization_request
     authorization_request.extra_infos['hubee_subscription_id'] = hubee_subscription_payload['id']
     authorization_request.save!
-  end
-
-  def service_provider
-    @service_provider ||= Hash(authorization_request.extra_infos['service_provider'])
   end
 end

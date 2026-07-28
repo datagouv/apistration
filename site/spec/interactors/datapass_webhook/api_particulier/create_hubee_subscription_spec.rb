@@ -15,43 +15,16 @@ RSpec.describe DatapassWebhook::APIParticulier::CreateHubEESubscription, type: :
       allow(hubee_api_client).to receive(:create_subscription).and_return(stripped_hubee_subscription_payload)
     end
 
-    context 'when the authorization request has a service provider' do
-      let(:authorization_request) { create(:authorization_request, extra_infos: { 'service_provider' => service_provider }) }
-      let(:editor_siret) { '13002526500013' }
-      let(:service_provider) { { 'type' => 'editor', 'siret' => editor_siret } }
-
-      context 'when the service provider is an editor' do
-        let(:insee_api_authentication) { instance_double(INSEEAPIAuthentication, access_token: 'access_token') }
-        let(:insee_payload) { insee_sirene_api_etablissement_valid_payload(siret: editor_siret, full: true) }
-
-        before do
-          allow(INSEEAPIAuthentication).to receive(:new).and_return(insee_api_authentication)
-          stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{editor_siret}").to_return(
-            status: 200,
-            headers: { 'Content-Type' => 'application/json' },
-            body: insee_payload.to_json
-          )
-        end
-
-        it 'creates a subscription on HubEE with the editor payload' do
-          expect(hubee_api_client).to receive(:create_subscription).with(authorization_request, stripped_hubee_organization_payload, 'FormulaireQF', { delegationActor: { branchCode: '75107', companyRegister: '13002526500013', type: 'EDT' }, accessMode: 'API' })
-          interactor
-        end
-      end
-
-      context 'when the service provider is not an editor' do
-        let(:service_provider) { { 'type' => 'service', 'siret' => '123456' } }
-
-        it 'creates a subscription on HubEE without the editor payload' do
-          expect(hubee_api_client).to receive(:create_subscription).with(authorization_request, stripped_hubee_organization_payload, 'FormulaireQF', {})
-          interactor
-        end
-      end
+    it 'creates a subscription on HubEE' do
+      expect(hubee_api_client).to receive(:create_subscription).with(authorization_request, stripped_hubee_organization_payload, 'FormulaireQF')
+      interactor
     end
 
-    context 'when the authorization request does not have a service provider' do
-      it 'creates a subscription on HubEE' do
-        expect(hubee_api_client).to receive(:create_subscription).with(authorization_request, stripped_hubee_organization_payload, 'FormulaireQF', {})
+    context 'when the service provider is an editor' do
+      let(:authorization_request) { create(:authorization_request, extra_infos: { 'service_provider' => { 'type' => 'editor', 'siret' => '13002526500013' } }) }
+
+      it 'creates the subscription without any editor delegation' do
+        expect(hubee_api_client).to receive(:create_subscription).with(authorization_request, stripped_hubee_organization_payload, 'FormulaireQF')
         interactor
       end
     end

@@ -37,7 +37,7 @@ class HubEEAPIClient < AbstractHubEEAPIClient
     raise
   end
 
-  def create_subscription(authorization_request, organization_payload, process_code, _editor_payload = {})
+  def create_subscription(authorization_request, organization_payload, process_code)
     find_or_create_inactive_subscription(authorization_request, organization_payload, process_code)
   end
 
