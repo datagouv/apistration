@@ -554,6 +554,8 @@ fr:
         label: IPs autorisées
         hint: "Une IP ou plage CIDR par ligne (10 maximum, préfixe IPv4 minimum : /24). Liste vide : aucune restriction."
         submit: Enregistrer
+      errors:
+        invalid_allowed_ips: "Impossible de générer le jeton : les IPs autorisées de votre organisation sont invalides. Contactez le support."
       created:
         warning_title: Copiez ce jeton maintenant
         warning: Ce jeton ne pourra plus être affiché. Si vous le perdez, révoquez-le et générez-en un nouveau.

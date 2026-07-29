@@ -14,9 +14,13 @@ class Editor::TokensController < EditorController
   def create
     authorize EditorToken
 
-    @editor_token = current_editor.tokens.create!(allowed_ips: current_editor.allowed_ips)
+    @editor_token = current_editor.tokens.new(allowed_ips: current_editor.allowed_ips)
 
-    render :created
+    if @editor_token.save
+      render :created
+    else
+      redirect_with_errors(@editor_token)
+    end
   end
 
   def update
@@ -30,9 +34,13 @@ class Editor::TokensController < EditorController
   end
 
   def rotate
-    @editor_token = authorize(token, :rotate?).rotate!
+    @editor_token = authorize(token, :rotate?).rotate
 
-    render :created
+    if @editor_token.persisted?
+      render :created
+    else
+      redirect_with_errors(@editor_token)
+    end
   end
 
   def revoke
@@ -42,6 +50,15 @@ class Editor::TokensController < EditorController
   end
 
   private
+
+  def redirect_with_errors(editor_token)
+    error_message(
+      title: t('editor.tokens.errors.invalid_allowed_ips'),
+      description: editor_token.errors.full_messages.to_sentence
+    )
+
+    redirect_to editor_tokens_path
+  end
 
   def ensure_editor_tokens_enabled
     redirect_to editor_tokens_path unless current_editor.editor_tokens_enabled?

@@ -26,12 +26,17 @@ class EditorToken < ApplicationRecord
     update!(blacklisted_at: Time.zone.now)
   end
 
-  def rotate!
+  def rotate
+    replacement = editor.tokens.new(allowed_ips: allowed_ips)
+    return replacement unless replacement.valid?
+
     transaction do
       revoke!
 
-      editor.tokens.create!(allowed_ips: allowed_ips)
+      replacement.save!
     end
+
+    replacement
   end
 
   def prolong!

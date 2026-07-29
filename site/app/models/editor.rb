@@ -18,6 +18,7 @@ class Editor < ApplicationRecord
   validates :role, inclusion: { in: ROLES }, allow_nil: true
   validates :deployment_type, inclusion: { in: DEPLOYMENT_TYPES }, allow_nil: true
   validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
+  validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
   validate :apis_included_in_list
 
   scope :delegable, -> { where(editor_tokens_enabled: true) }

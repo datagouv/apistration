@@ -185,11 +185,11 @@ RSpec.describe EditorToken do
     end
   end
 
-  describe '#rotate!' do
+  describe '#rotate' do
     let(:editor_token) { create(:editor_token, exp: 3.months.from_now.to_i, allowed_ips: ['203.0.113.0/24']) }
 
     it 'revokes the token and returns a fresh one for the same editor' do
-      new_token = editor_token.rotate!
+      new_token = editor_token.rotate
 
       expect(editor_token).to be_blacklisted
       expect(new_token).to be_active
@@ -198,7 +198,22 @@ RSpec.describe EditorToken do
     end
 
     it 'copies allowed_ips to the new token' do
-      expect(editor_token.rotate!.allowed_ips).to eq(editor_token.allowed_ips)
+      expect(editor_token.rotate.allowed_ips).to eq(editor_token.allowed_ips)
+    end
+
+    context 'when the replacement token would be invalid' do
+      before do
+        editor_token.editor.update_column(:allowed_ips, ['192.168.1.1'])
+        editor_token.editor.reload
+      end
+
+      it 'keeps the current token alive and returns the unsaved replacement with its errors' do
+        replacement = editor_token.rotate
+
+        expect(replacement).not_to be_persisted
+        expect(replacement.errors[:allowed_ips]).to be_present
+        expect(editor_token.reload).not_to be_blacklisted
+      end
     end
   end
 

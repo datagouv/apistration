@@ -14,6 +14,33 @@ RSpec.describe Editor do
     it { expect(build(:editor, apis: %w[entreprise wrong])).not_to be_valid }
   end
 
+  describe 'allowed_ips validation' do
+    it { expect(build(:editor, allowed_ips: [])).to be_valid }
+    it { expect(build(:editor, allowed_ips: ['203.0.113.10', '198.51.100.0/24'])).to be_valid }
+
+    it 'rejects private ranges, which would make editor token generation fail' do
+      editor = build(:editor, allowed_ips: ['192.168.1.1'])
+
+      expect(editor).not_to be_valid
+      expect(editor.errors[:allowed_ips]).to be_present
+    end
+
+    it 'rejects ranges wider than /24' do
+      expect(build(:editor, allowed_ips: ['203.0.113.0/16'])).not_to be_valid
+    end
+
+    it 'rejects garbage entries' do
+      expect(build(:editor, allowed_ips: ['not-an-ip'])).not_to be_valid
+    end
+
+    it 'leaves legacy records untouched as long as allowed_ips is not edited' do
+      editor = build(:editor, allowed_ips: ['192.168.1.1'])
+      editor.save!(validate: false)
+
+      expect(editor.reload.update(name: 'Renamed')).to be(true)
+    end
+  end
+
   describe '.for_api' do
     let!(:entreprise_editor) { create(:editor, apis: %w[entreprise]) }
     let!(:particulier_editor) { create(:editor, apis: %w[particulier]) }

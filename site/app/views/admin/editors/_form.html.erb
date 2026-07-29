@@ -103,10 +103,13 @@
       </div>
     </div>
     <div class="fr-col-6">
-      <div class="fr-input-group">
+      <div class="fr-input-group <%= 'fr-input-group--error' if editor.errors[:allowed_ips].any? %>">
         <%= f.label :allowed_ips, 'IPs autorisées', class: 'fr-label' %>
-        <span class="fr-hint-text">Séparées par des virgules ou retours à la ligne</span>
+        <span class="fr-hint-text">Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24</span>
         <%= f.text_area :allowed_ips, value: editor.allowed_ips.join(', '), class: 'fr-input', rows: 3 %>
+        <% editor.errors[:allowed_ips].each do |message| %>
+          <p class="fr-error-text"><%= message %></p>
+        <% end %>
       </div>
     </div>
   </div>

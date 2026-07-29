@@ -130,6 +130,25 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_css('.fr-alert.fr-alert--success')
     end
 
+    it 'refuses allowed IPs the editor tokens could never accept' do
+      visit edit_admin_editor_path(editor)
+
+      fill_in 'editor_allowed_ips', with: '192.168.1.1'
+      click_on 'Sauvegarder'
+
+      expect(editor.reload.allowed_ips).to be_empty
+      expect(page).to have_text('plage privée ou réservée')
+    end
+
+    it 'accepts public allowed IPs' do
+      visit edit_admin_editor_path(editor)
+
+      fill_in 'editor_allowed_ips', with: '203.0.113.0/24, 198.51.100.5'
+      click_on 'Sauvegarder'
+
+      expect(editor.reload.allowed_ips).to eq(['203.0.113.0/24', '198.51.100.5'])
+    end
+
     it 'updates new fields' do
       visit edit_admin_editor_path(editor)
 
