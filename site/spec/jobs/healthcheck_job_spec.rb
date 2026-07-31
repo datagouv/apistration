@@ -1,12 +1,13 @@
 RSpec.describe HealthcheckJob do
   subject(:healthcheck_job) { described_class.perform_now }
 
-  let!(:stubbed_request) do
-    stub_request(:head, Rails.application.credentials.healthcheck_url)
+  before do
+    stub_credential(:healthcheck_url, 'https://healthcheck.example.com/ping')
+    allow(Rails.env).to receive(:production?).and_return(true)
   end
 
-  before do
-    allow(Rails.env).to receive(:production?).and_return(true)
+  let!(:stubbed_request) do
+    stub_request(:head, AdminApientreprise.credentials[:healthcheck_url])
   end
 
   context 'when it is the frontal app' do
