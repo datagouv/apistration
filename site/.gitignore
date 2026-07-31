@@ -36,13 +36,9 @@ TODO
 .rvmrc
 
 # Ignore secrets.
-/config/master.key
-/config/credentials/sandbox.key
-/config/credentials/staging.key
-/config/credentials/production.key
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
+config/credentials/
+config/credentials.yml
+config/master.key
 /public/sitemaps
 .deploy_token
 sandbox/*

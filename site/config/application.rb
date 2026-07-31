@@ -36,9 +36,6 @@ module AdminApientreprise
     config.action_dispatch.cookies_same_site_protection = :lax
     config.action_controller.default_protect_from_forgery = true
 
-    config.middleware.insert_after ActionDispatch::RemoteIp, IpAnonymizer::HashIp,
-      key: Rails.application.credentials.ip_anonymizer_key
-
     config.active_job.queue_adapter = :good_job
     config.active_job.queue_name_prefix = "admin_api_entreprise_#{Rails.env}"
 
