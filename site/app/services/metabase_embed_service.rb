@@ -35,6 +35,6 @@ class MetabaseEmbedService
   end
 
   def metabase_secret_key
-    Rails.application.credentials.metabase_secret_key
+    AdminApientreprise.credentials[:metabase_secret_key]
   end
 end
