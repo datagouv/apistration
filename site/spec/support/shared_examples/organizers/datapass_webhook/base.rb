@@ -37,7 +37,7 @@ RSpec.shared_examples 'a datapass webhook organizer' do |api_name, mailjet_list_
   describe 'Mailjet adding contacts' do
     it "adds contacts to #{api_name.capitalize} mailjet list" do
       expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
-        hash_including(id: Rails.application.credentials.public_send(mailjet_list_id)),
+        hash_including(id: AdminApientreprise.credentials[mailjet_list_id]),
         any_args
       )
 

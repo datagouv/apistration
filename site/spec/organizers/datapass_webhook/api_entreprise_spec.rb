@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe DatapassWebhook::APIEntreprise, type: :interactor do
-  it_behaves_like 'a datapass webhook organizer', 'entreprise', :mj_list_id_entreprise! do
+  it_behaves_like 'a datapass webhook organizer', 'entreprise', :mj_list_id_entreprise do
     let(:datapass_webhook_params) do
       build(:datapass_webhook,
         event: 'approve',
