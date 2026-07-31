@@ -13,7 +13,7 @@ class HubEEAPIAuthentication < AbstractHubEEAPIClient
   private
 
   def auth_url
-    Rails.application.credentials.hubee_auth_url
+    AdminApientreprise.credentials[:hubee_auth_url]
   end
 
   def encoded_client_id_and_secret

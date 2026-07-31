@@ -55,7 +55,7 @@ class HubEEAPIClient < AbstractHubEEAPIClient
   protected
 
   def host
-    Rails.application.credentials.hubee_api_url
+    AdminApientreprise.credentials[:hubee_api_url]
   end
 
   def already_exists_error?(faraday_error)

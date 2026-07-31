@@ -11,7 +11,7 @@ RSpec.describe HubEEAPIClient do
     let(:organization) { create(:organization, siret:) }
     let(:siret) { '13002526500013' }
     let(:code_commune) { '13055' }
-    let(:host) { Rails.application.credentials.hubee_api_url }
+    let(:host) { AdminApientreprise.credentials[:hubee_api_url] }
 
     before do
       allow(organization).to receive(:code_commune_etablissement).and_return(code_commune)
