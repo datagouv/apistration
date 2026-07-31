@@ -83,7 +83,7 @@ class User < ApplicationRecord
   # rubocop:disable Metrics/AbcSize
   def admin?
     if Rails.env.production?
-      Rails.application.credentials.admin_emails.include?(email)
+      AdminApientreprise.credentials[:admin_emails].include?(email)
     elsif Rails.env.development? || Rails.env.staging?
       %w[
         api-entreprise@yopmail.com
