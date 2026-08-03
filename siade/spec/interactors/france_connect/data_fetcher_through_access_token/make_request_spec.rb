@@ -78,4 +78,44 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::MakeRequest, type: 
       end
     end
   end
+
+  context 'when FranceConnect client credentials are missing for this api_name' do
+    before do
+      allow(Rails).to receive(:env).and_return('production'.inquiry)
+      allow(Siade.credentials).to receive(:[]).and_call_original
+      allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_quotient_familial_client_id)
+        .and_return('france_connect_v2_quotient_familial_client_id')
+      allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_quotient_familial_client_secret)
+        .and_return('france_connect_v2_quotient_familial_client_secret')
+      allow(MonitoringService.instance).to receive(:track)
+    end
+
+    it 'tracks a distinct, alertable error to Sentry' do
+      make_call
+
+      expect(MonitoringService.instance).to have_received(:track).with(
+        'error',
+        a_string_including('quotient_familial'),
+        fingerprint: %w[france-connect-missing-credentials quotient_familial]
+      )
+    end
+  end
+
+  context 'when FranceConnect client credentials are configured for this api_name' do
+    before do
+      allow(Rails).to receive(:env).and_return('production'.inquiry)
+      allow(Siade.credentials).to receive(:[]).and_call_original
+      allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_quotient_familial_client_id)
+        .and_return('a_real_looking_client_id')
+      allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_quotient_familial_client_secret)
+        .and_return('a_real_looking_client_secret')
+      allow(MonitoringService.instance).to receive(:track)
+    end
+
+    it 'does not track anything' do
+      make_call
+
+      expect(MonitoringService.instance).not_to have_received(:track)
+    end
+  end
 end

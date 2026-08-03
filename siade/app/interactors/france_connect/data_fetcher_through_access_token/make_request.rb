@@ -37,6 +37,12 @@ class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::P
 
   private
 
+  def api_call
+    track_missing_credentials! if credentials_missing?
+
+    super
+  end
+
   def token
     context.params[:token]
   end
@@ -59,5 +65,18 @@ class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::P
 
   def api_name
     context.params[:api_name]
+  end
+
+  def credentials_missing?
+    client_id == "france_connect_v2_#{api_name}_client_id" ||
+      client_secret == "france_connect_v2_#{api_name}_client_secret"
+  end
+
+  def track_missing_credentials!
+    MonitoringService.instance.track(
+      'error',
+      "FranceConnect client credentials missing for api_name=#{api_name}",
+      fingerprint: ['france-connect-missing-credentials', api_name]
+    )
   end
 end
