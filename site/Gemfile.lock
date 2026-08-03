@@ -599,7 +599,7 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (8.0.1)
       activesupport (>= 7.2)
-    simplecov (1.0.2)
+    simplecov (1.0.3)
     simplecov-console (0.9.5)
       ansi
       simplecov
