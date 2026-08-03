@@ -3023,7 +3023,7 @@ Ce cas permet de tester :
 
   Status `200`
 
-  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 2550
+  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
 
 Ce cas permet de tester :
 - [Param. appel] Utilisation du paramètre nomUsage
@@ -3031,7 +3031,7 @@ Ce cas permet de tester :
 - [Réponse] Nom d'usage présent dans la réponse
 - [Réponse] Trois enfants mineurs rattachés
 - [Réponse] Régime CNAF
-- [Réponse] Quotient familial de 2550
+- [Réponse] Quotient familial de 699
 
 Les enfants sont calqués sur l'identité FranceConnect
 `france_connect_200_cnaf_1_parent_3_mineurs.yml`.
@@ -3107,7 +3107,7 @@ Les enfants sont calqués sur l'identité FranceConnect
       },
       "quotient_familial": {
         "fournisseur": "CNAF",
-        "valeur": 2550,
+        "valeur": 699,
         "annee": 2024,
         "mois": 2,
         "annee_calcul": 2024,
