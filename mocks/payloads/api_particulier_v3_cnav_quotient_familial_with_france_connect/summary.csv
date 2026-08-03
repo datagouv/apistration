@@ -164,7 +164,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
     },
     ""quotient_familial"": {
       ""fournisseur"": ""CNAF"",
-      ""valeur"": 2550,
+      ""valeur"": 699,
       ""annee"": 2024,
       ""mois"": 2,
       ""annee_calcul"": 2024,
