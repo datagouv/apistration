@@ -2,7 +2,7 @@ RSpec.describe HubEEAPIAuthentication do
   describe '#access_token' do
     subject(:access_token) { described_class.new.access_token }
 
-    let(:auth_url) { Rails.application.credentials.hubee_auth_url }
+    let(:auth_url) { AdminApientreprise.credentials[:hubee_auth_url] }
 
     before do
       stub_request(:post, auth_url)

@@ -71,7 +71,7 @@ RSpec.describe HubEEAPIClient do
     let(:authorization_request) { create(:authorization_request, :with_demandeur, api: 'particulier') }
     let(:organization_payload) { hubee_organization_payload }
     let(:process_code) { 'FormulaireQF' }
-    let(:host) { Rails.application.credentials.hubee_api_url }
+    let(:host) { AdminApientreprise.credentials[:hubee_api_url] }
     let(:subscription_payload) { hubee_subscription_payload(authorization_request:, process_code:) }
 
     context 'when the subscription does not exist yet' do
