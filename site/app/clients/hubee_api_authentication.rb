@@ -3,7 +3,7 @@ class HubEEAPIAuthentication < AbstractHubEEAPIClient
   def access_token
     http_connection.post(
       auth_url,
-      'grant_type=client_credentials&scope=ADMIN',
+      'grant_type=client_credentials&scope=DATAPASS',
       {
         'Authorization' => "Basic #{encoded_client_id_and_secret}"
       }
