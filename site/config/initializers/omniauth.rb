@@ -20,15 +20,15 @@ module ProConnectConfig
   end
 
   def client_id
-    Rails.application.credentials.proconnect_client_id
+    AdminApientreprise.credentials[:proconnect_client_id]
   end
 
   def client_secret
-    Rails.application.credentials.proconnect_client_secret
+    AdminApientreprise.credentials[:proconnect_client_secret]
   end
 
   def domain
-    Rails.application.credentials.proconnect_url
+    AdminApientreprise.credentials[:proconnect_url]
   end
 
   def redirect_uri(type)

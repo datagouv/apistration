@@ -8,6 +8,10 @@ RSpec.describe 'API Particulier', app: :api_particulier do
   end
 
   before do
+    stub_credential(:api_particulier_reporters, {
+      cnaf_: ['user@yopmail.com'],
+      pole_emploi_: ['other@yopmail.com']
+    })
     login_as(user)
   end
 

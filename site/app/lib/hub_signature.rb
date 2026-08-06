@@ -20,6 +20,6 @@ class HubSignature
   private
 
   def verify_token
-    Rails.application.credentials.webhook_verify_token!
+    AdminApientreprise.credentials[:webhook_verify_token]
   end
 end

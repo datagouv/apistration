@@ -14,10 +14,10 @@ class AbstractHubEEAPIClient
   end
 
   def consumer_key
-    Rails.application.credentials.hubee_consumer_key
+    AdminApientreprise.credentials[:hubee_consumer_key]
   end
 
   def consumer_secret
-    Rails.application.credentials.hubee_consumer_secret
+    AdminApientreprise.credentials[:hubee_consumer_secret]
   end
 end

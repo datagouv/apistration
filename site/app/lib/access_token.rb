@@ -1,7 +1,7 @@
 class AccessToken
   class << self
-    HASH_SECRET = Rails.application.credentials.jwt_hash_secret
-    HASH_ALGO = Rails.application.credentials.jwt_hash_algo
+    HASH_SECRET = AdminApientreprise.credentials[:jwt_hash_secret]
+    HASH_ALGO = AdminApientreprise.credentials[:jwt_hash_algo]
 
     def create(payload)
       JWT.encode payload, HASH_SECRET, HASH_ALGO

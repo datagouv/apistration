@@ -32,6 +32,6 @@ class APIParticulier::ReportersMailer < APIParticulierMailer
   end
 
   def reporters_config
-    Rails.application.credentials.api_particulier_reporters
+    AdminApientreprise.credentials.fetch(:api_particulier_reporters, {})
   end
 end

@@ -43,18 +43,18 @@ class INSEEAPIAuthentication < AbstractINSEEAPIClient
   private
 
   def client_id
-    Rails.application.credentials.insee_client_id
+    AdminApientreprise.credentials[:insee_client_id]
   end
 
   def client_secret
-    Rails.application.credentials.insee_client_secret
+    AdminApientreprise.credentials[:insee_client_secret]
   end
 
   def username
-    Rails.application.credentials.insee_username
+    AdminApientreprise.credentials[:insee_username]
   end
 
   def password
-    Rails.application.credentials.insee_password
+    AdminApientreprise.credentials[:insee_password]
   end
 end

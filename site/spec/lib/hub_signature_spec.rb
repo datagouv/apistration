@@ -6,7 +6,7 @@ RSpec.describe HubSignature do
   describe '#valid?' do
     subject { described_class.new(value, body) }
 
-    let(:verify_token) { Rails.application.credentials.webhook_verify_token! }
+    let(:verify_token) { AdminApientreprise.credentials[:webhook_verify_token] }
 
     context 'without body nor value' do
       let(:body) { nil }

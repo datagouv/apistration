@@ -24,6 +24,6 @@ class HealthcheckJob < ApplicationJob
   end
 
   def healthcheck_url
-    Rails.application.credentials.healthcheck_url
+    AdminApientreprise.credentials[:healthcheck_url]
   end
 end

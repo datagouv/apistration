@@ -98,6 +98,7 @@ RSpec/NestedGroups:
 RSpec/SpecFilePathFormat:
   Exclude:
     - "spec/**/*hubee*"
+    - "spec/**/*formulaire_qf*"
 
 Naming/VariableNumber:
   Enabled: false

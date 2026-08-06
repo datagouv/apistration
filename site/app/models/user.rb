@@ -80,10 +80,9 @@ class User < ApplicationRecord
     Kernel.const_get("API#{namespace.classify}::Provider").filter_by_uid(provider_uids)
   end
 
-  # rubocop:disable Metrics/AbcSize
   def admin?
     if Rails.env.production?
-      Rails.application.credentials.admin_emails.include?(email)
+      AdminApientreprise.credentials[:admin_emails].include?(email)
     elsif Rails.env.development? || Rails.env.staging?
       %w[
         api-entreprise@yopmail.com
@@ -93,7 +92,6 @@ class User < ApplicationRecord
       email_from_beta?(email)
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   def email_from_ywh?(email)
     /-ywhadmin@yopmail.com$/.match?(email)

@@ -14,6 +14,10 @@ RSpec.describe DatapassWebhook::APIParticulier::NotifyReporters, type: :interact
   let(:scopes) { { 'cnaf_quotient_familial' => true } }
   let(:authorization_request) { create(:authorization_request, :with_demandeur) }
 
+  before do
+    stub_credential(:api_particulier_reporters, cnaf_: ['reporter@example.com'])
+  end
+
   describe 'reporters notification' do
     describe 'when it is a submit event' do
       let(:event) { 'submit' }

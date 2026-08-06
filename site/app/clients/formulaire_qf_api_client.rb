@@ -31,7 +31,7 @@ class FormulaireQFAPIClient
   private
 
   def host
-    Rails.application.credentials.formulaire_qf.host
+    AdminApientreprise.credentials[:formulaire_qf][:host]
   end
 
   def http_connection(&block)
@@ -43,6 +43,6 @@ class FormulaireQFAPIClient
   end
 
   def secret
-    Rails.application.credentials.formulaire_qf.secret
+    AdminApientreprise.credentials[:formulaire_qf][:secret]
   end
 end

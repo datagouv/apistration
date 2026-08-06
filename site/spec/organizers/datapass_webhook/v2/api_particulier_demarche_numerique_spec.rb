@@ -36,7 +36,7 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
   describe 'Mailjet adding contacts' do
     it 'adds contacts to Particulier mailjet list' do
       expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
-        hash_including(id: Rails.application.credentials.mj_list_id_particulier!),
+        hash_including(id: AdminApientreprise.credentials[:mj_list_id_particulier]),
         any_args
       )
 

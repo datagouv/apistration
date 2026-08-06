@@ -1,11 +1,16 @@
 RSpec.describe APIParticulier::ReportersMailer do
   before do
     create(:user, email: 'user@yopmail.com')
+    stub_credential(:api_particulier_reporters, {
+      cnaf_: ['user@yopmail.com', 'api-particulier@yopmail.com'],
+      pole_emploi_: [],
+      other_: ['datapass@yopmail.com']
+    })
   end
 
   describe '#submit' do
     subject(:mail) do
-      described_class.with(groups: %w[cnaf_ men_], authorization_request:).submit
+      described_class.with(groups: %w[cnaf_ pole_emploi_], authorization_request:).submit
     end
 
     let(:authorization_request) { create(:authorization_request, :with_demandeur) }
