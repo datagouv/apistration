@@ -328,7 +328,7 @@ paths:
                       des données
                     message: Une erreur inattendue est survenue lors de la collecte
                       des données
-                  summary: Erreur inconnue du fournisseur de données
+                  summary: Réponse inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -630,7 +630,7 @@ paths:
                       des données
                     message: Une erreur inattendue est survenue lors de la collecte
                       des données
-                  summary: Erreur inconnue du fournisseur de données
+                  summary: Réponse inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -943,7 +943,7 @@ paths:
                       des données
                     message: Une erreur inattendue est survenue lors de la collecte
                       des données
-                  summary: Erreur inconnue du fournisseur de données
+                  summary: Réponse inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -1253,7 +1253,7 @@ paths:
                       des données
                     message: Une erreur inattendue est survenue lors de la collecte
                       des données
-                  summary: Erreur inconnue du fournisseur de données
+                  summary: Réponse inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -2117,7 +2117,7 @@ paths:
                       des données
                     message: Une erreur inattendue est survenue lors de la collecte
                       des données
-                  summary: Erreur inconnue du fournisseur de données
+                  summary: Réponse inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
