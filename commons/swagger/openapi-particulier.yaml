@@ -1259,19 +1259,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -1279,6 +1266,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -1690,17 +1690,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -2155,19 +2162,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -2175,6 +2169,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -2602,17 +2609,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -3061,19 +3075,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -3081,6 +3082,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -3501,17 +3515,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -3953,19 +3974,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -3973,6 +3981,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -4386,17 +4407,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -4860,19 +4888,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_40003:
-                  value:
-                    errors:
-                    - code: '40003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: RNCPS
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -4880,6 +4895,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -5315,17 +5343,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -6975,19 +7010,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -6995,6 +7017,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -7418,19 +7453,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -7438,6 +7460,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -8268,19 +8303,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -8288,6 +8310,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -8951,17 +8986,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:
@@ -9413,19 +9455,6 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
-                  value:
-                    errors:
-                    - code: '35003'
-                      title: Erreur inattendue
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -9433,6 +9462,19 @@ paths:
           content:
             application/json:
               examples:
+                unexpected_error:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: Une erreur inattendue est survenue lors de la collecte
+                        des données
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -9856,17 +9898,24 @@ paths:
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
-                erreur_inattendue_35003:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unexpected_error:
                   value:
                     errors:
-                    - code: '35003'
-                      title: Erreur inattendue
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAF & MSA
-                  summary: Erreur inattendue
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
               schema:

@@ -288,16 +288,6 @@ paths:
                   description: L'allocataire n'est pas référencé auprès de la CNAF
                     ni de la MSA Veuillez vérifier que votre recherche est couverte
                     par le périmètre de l'API.
-                erreur_inattendue_35003:
-                  value:
-                    error: not_found
-                    reason: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -331,6 +321,16 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                unexpected_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -590,16 +590,6 @@ paths:
                   description: L'allocataire n'est pas référencé auprès de la CNAF
                     ni de la MSA Veuillez vérifier que votre recherche est couverte
                     par le périmètre de l'API.
-                erreur_inattendue_35003:
-                  value:
-                    error: not_found
-                    reason: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -633,6 +623,16 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                unexpected_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -903,16 +903,6 @@ paths:
                   description: L'allocataire n'est pas référencé auprès de la CNAF
                     ni de la MSA Veuillez vérifier que votre recherche est couverte
                     par le périmètre de l'API.
-                erreur_inattendue_40003:
-                  value:
-                    error: not_found
-                    reason: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -946,6 +936,16 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                unexpected_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1213,16 +1213,6 @@ paths:
                   description: L'allocataire n'est pas référencé auprès de la CNAF
                     ni de la MSA Veuillez vérifier que votre recherche est couverte
                     par le périmètre de l'API.
-                erreur_inattendue_35003:
-                  value:
-                    error: not_found
-                    reason: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1256,6 +1246,16 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                unexpected_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1771,13 +1771,6 @@ paths:
                     reason: L'allocataire n'est pas référencé auprès des caisses éligibles
                     message: L'allocataire n'est pas référencé auprès des caisses
                       éligibles
-                Erreur inattendue:
-                  value:
-                    error: not_found
-                    reason: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inattendue est survenue lors de la collecte
-                      des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1803,6 +1796,13 @@ paths:
                     message: La réponse retournée par le fournisseur de données est
                       invalide et inconnue de notre service. L'équipe technique a
                       été notifiée de cette erreur pour investigation.
+                Erreur inattendue:
+                  value:
+                    error: provider_unknown_error
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -2077,16 +2077,6 @@ paths:
                   description: L'allocataire n'est pas référencé auprès de la CNAF
                     ni de la MSA Veuillez vérifier que votre recherche est couverte
                     par le périmètre de l'API.
-                erreur_inattendue_35003:
-                  value:
-                    error: not_found
-                    reason: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inattendue est survenue lors de la collecte
-                      des données
-                  summary: Erreur inattendue
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -2120,6 +2110,16 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                unexpected_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
