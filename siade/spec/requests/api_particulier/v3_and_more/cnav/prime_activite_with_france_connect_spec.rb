@@ -96,18 +96,22 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
 
               run_test!
             end
+          end
+          # rubocop:enable RSpec/ContextWording
+        end
 
-            context 'Erreur inattendue' do
-              before do
-                stub_cnav_404('prime_activite')
-              end
-
-              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
-
-              schema '$ref' => '#/components/schemas/Error'
-
-              run_test!
+        response '502', 'Erreur du fournisseur' do
+          # rubocop:disable RSpec/ContextWording
+          context 'Erreur inattendue' do
+            before do
+              stub_cnav_404('prime_activite')
             end
+
+            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
           end
           # rubocop:enable RSpec/ContextWording
         end

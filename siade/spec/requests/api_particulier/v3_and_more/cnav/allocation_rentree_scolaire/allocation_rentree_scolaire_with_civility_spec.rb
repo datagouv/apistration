@@ -125,18 +125,20 @@ RSpec.describe 'API Particulier CNAV: Allocation de rentrée scolaire (ARS) with
 
               run_test!
             end
+          end
+        end
 
-            context 'when an unexpected error occurs' do
-              before do
-                stub_cnav_404('allocation_rentree_scolaire')
-              end
-
-              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
-
-              schema '$ref' => '#/components/schemas/Error'
-
-              run_test!
+        response '502', 'Erreur du fournisseur' do
+          context 'when an unexpected error occurs' do
+            before do
+              stub_cnav_404('allocation_rentree_scolaire')
             end
+
+            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
           end
         end
 

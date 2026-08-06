@@ -18,7 +18,7 @@ class CNAV::ValidateResponse < ValidateResponse
 
     return regime_not_found_error(regime) if regime.present?
 
-    fail_with_error!(build_qfv2_error(::NotFoundError, context.provider_name, 'Une erreur inattendue est survenue lors de la collecte des données', 'Erreur inatendue'))
+    unknown_provider_response!('Une erreur inattendue est survenue lors de la collecte des données')
   end
 
   def sub_provider_error?

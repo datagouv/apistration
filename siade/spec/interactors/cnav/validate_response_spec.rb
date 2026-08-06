@@ -117,9 +117,9 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
 
-      it 'returns a RNCPS error' do
+      it 'returns a provider unknown error' do
         expect(subject.errors.first.detail).to include('Une erreur inattendue est survenue lors de la collecte des données')
       end
     end

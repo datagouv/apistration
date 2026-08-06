@@ -86,18 +86,22 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
 
               run_test!
             end
+          end
+          # rubocop:enable RSpec/ContextWording
+        end
 
-            context 'Erreur inattendue' do
-              before do
-                stub_cnav_404('complementaire_sante_solidaire')
-              end
-
-              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
-
-              schema '$ref' => '#/components/schemas/Error'
-
-              run_test!
+        response '502', 'Erreur du fournisseur' do
+          # rubocop:disable RSpec/ContextWording
+          context 'Erreur inattendue' do
+            before do
+              stub_cnav_404('complementaire_sante_solidaire')
             end
+
+            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
           end
           # rubocop:enable RSpec/ContextWording
         end
