@@ -179,7 +179,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
               stub_cnav_404('quotient_familial_v2')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données', subcode: '998'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 

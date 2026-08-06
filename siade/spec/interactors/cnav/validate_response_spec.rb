@@ -122,6 +122,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       it 'returns a provider unknown error' do
         expect(subject.errors.first.detail).to include('Une erreur inattendue est survenue lors de la collecte des données')
       end
+
+      it 'uses the dedicated unattributed-error subcode' do
+        expect(subject.errors.first.subcode).to eq('998')
+      end
     end
   end
 

@@ -24,8 +24,8 @@ class ValidateResponse < ApplicationInteractor
 
   protected
 
-  def build_error(error_klass, message = nil)
-    error_klass.new(context.provider_name, message)
+  def build_error(error_klass, message = nil, **)
+    error_klass.new(context.provider_name, message, **)
   end
 
   def fail_with_error!(error)
@@ -41,8 +41,8 @@ class ValidateResponse < ApplicationInteractor
     fail_with_error!(build_error(::ProviderTemporaryError, message))
   end
 
-  def unknown_provider_response!(message = nil)
-    error = build_error(::ProviderUnknownError, message)
+  def unknown_provider_response!(message = nil, **)
+    error = build_error(::ProviderUnknownError, message, **)
 
     add_monitoring_private_context(error)
 

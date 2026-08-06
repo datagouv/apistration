@@ -107,7 +107,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation Soutien Familial with FranceCo
               stub_cnav_404('allocation_soutien_familial')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données', subcode: '998'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 

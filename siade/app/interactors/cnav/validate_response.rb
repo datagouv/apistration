@@ -18,7 +18,7 @@ class CNAV::ValidateResponse < ValidateResponse
 
     return regime_not_found_error(regime) if regime.present?
 
-    unknown_provider_response!('Une erreur inattendue est survenue lors de la collecte des données')
+    unknown_provider_response!('Une erreur inattendue est survenue lors de la collecte des données', subcode: '998')
   end
 
   def sub_provider_error?

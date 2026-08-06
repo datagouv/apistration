@@ -139,7 +139,7 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
               stub_cnav_404('allocation_adulte_handicape')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données', subcode: '998'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 
