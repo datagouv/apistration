@@ -6,7 +6,7 @@ RSpec.describe HubEEAPIAuthentication do
 
     before do
       stub_request(:post, auth_url)
-        .with(body: 'grant_type=client_credentials&scope=DATAPASS')
+        .with(body: 'grant_type=client_credentials&scope=ADMIN')
         .to_return(
           status: 200,
           headers: { 'Content-Type' => 'application/json' },
