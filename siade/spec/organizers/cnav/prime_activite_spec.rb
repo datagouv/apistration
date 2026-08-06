@@ -109,9 +109,9 @@ RSpec.describe CNAV::PrimeActivite, type: :retriever_organizer do
             stub_cnav_404('prime_activite')
           end
 
-          it 'returns 404 unexpected message' do
+          it 'returns provider unknown error' do
             expect(subject).to be_a_failure
-            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors).to include(instance_of(ProviderUnknownError))
             expect(subject.errors.first.detail).to eq('Une erreur inattendue est survenue lors de la collecte des données')
           end
         end

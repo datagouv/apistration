@@ -117,17 +117,6 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
                 run_test!
               end
 
-              context 'Erreur inattendue' do
-                before do
-                  stub_cnav_404('complementaire_sante_solidaire')
-                end
-
-                build_rswag_example(NotFoundError.new('RNCPS', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
-
-                schema '$ref' => '#/components/schemas/Error'
-
-                run_test!
-              end
               # rubocop:enable RSpec/ContextWording
             end
 
@@ -159,6 +148,18 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
                 schema '$ref' => '#/components/schemas/Error'
 
                 build_rswag_example(provider_unknown_error, 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.')
+
+                run_test!
+              end
+
+              context 'Erreur inattendue' do
+                before do
+                  stub_cnav_404('complementaire_sante_solidaire')
+                end
+
+                build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+
+                schema '$ref' => '#/components/schemas/Error'
 
                 run_test!
               end
