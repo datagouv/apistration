@@ -21,7 +21,7 @@ module HubEEAPIMocks
     {
       'id' => SecureRandom.uuid,
       'datapassId' => authorization_request.external_id.to_i,
-      'notificationFrequency' => 'unitaire',
+      'notificationFrequency' => 'Aucune',
       'processCode' => process_code,
       'email' => authorization_request.demandeur.email,
       'localAdministrator' => {
@@ -29,7 +29,7 @@ module HubEEAPIMocks
         'firstName' => authorization_request.demandeur.first_name,
         'lastName' => authorization_request.demandeur.last_name
       },
-      'status' => 'Actif',
+      'status' => 'Inactif',
       'subscriber' => {
         'branchCode' => organization_payload['branchCode'],
         'companyRegister' => organization_payload['companyRegister'],

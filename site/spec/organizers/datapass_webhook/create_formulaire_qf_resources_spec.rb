@@ -4,12 +4,8 @@ RSpec.describe DatapassWebhook::CreateFormulaireQFResources do
   subject(:interactor) { described_class.call(authorization_request:) }
 
   let(:hubee_api_client) { instance_double(HubEEAPIClient) }
-  let(:insee_api_authentication) { instance_double(INSEEAPIAuthentication, access_token: 'access_token') }
-  let(:insee_payload) { insee_sirene_api_etablissement_valid_payload(siret: editor_siret, full: true) }
   let(:authorization_request) { create(:authorization_request, :with_demandeur, api: 'particulier') }
   let(:subscription_payload) { hubee_subscription_payload(authorization_request:) }
-  let(:editor_siret) { '13002526500013' }
-  let(:service_provider) { { 'type' => 'editor', 'siret' => editor_siret } }
   let(:formulaire_qf_api_client) { instance_double(FormulaireQFAPIClient) }
   let(:siret) { '12345678901234' }
   let(:code_commune) { '12345' }
@@ -19,12 +15,6 @@ RSpec.describe DatapassWebhook::CreateFormulaireQFResources do
   before do
     allow(HubEEAPIClient).to receive(:new).and_return(hubee_api_client)
     allow(hubee_api_client).to receive_messages(find_or_create_organization: organization_payload, create_subscription: subscription_payload)
-    allow(INSEEAPIAuthentication).to receive(:new).and_return(insee_api_authentication)
-    stub_request(:get, "https://api.insee.fr/entreprises/sirene/V3.11/siret/#{editor_siret}").to_return(
-      status: 200,
-      headers: { 'Content-Type' => 'application/json' },
-      body: insee_payload.to_json
-    )
     allow(FormulaireQFAPIClient).to receive(:new).and_return(formulaire_qf_api_client)
     allow(formulaire_qf_api_client).to receive(:create_collectivity)
   end
