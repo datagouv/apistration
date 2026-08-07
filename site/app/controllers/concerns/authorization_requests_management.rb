@@ -3,8 +3,7 @@ module AuthorizationRequestsManagement
 
   def show
     @authorization_request = extract_authorization_request
-    @main_token = @authorization_request.token.decorate
-    @other_tokens = @authorization_request.tokens.where.not(id: @main_token.id).decorate
+    @tokens = @authorization_request.tokens.order(created_at: :desc).decorate
     load_delegations_data
 
     render 'shared/authorization_requests/show'
@@ -22,7 +21,7 @@ module AuthorizationRequestsManagement
       .viewable_by_users
       .order(
         first_submitted_at: :desc
-      ).includes(:active_token)
+      ).includes(:user_authorization_request_roles)
 
     render 'shared/authorization_requests/index'
   end

@@ -14,6 +14,6 @@
     ).html_safe %>
   </span>
   <% unless local_assigns[:hide_reveal_token] %>
-    <%= render partial: "shared/tokens/reveal_token_button", locals: { token: token } %>
+    <%= render partial: "shared/tokens/reveal_token_button", locals: { token: token, extra_classes: 'fr-mt-2w' } %>
   <% end %>
 <% end %>

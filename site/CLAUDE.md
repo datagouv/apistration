@@ -79,7 +79,7 @@ organizer qui se termine par l'interactor `Admin::TrackActivity`.
 ## Local Login (dev only)
 Bypass ProConnect via: `/compte/dev-login?email=user@yopmail.com`
 
-Available test emails: `user@yopmail.com`, `contact_technique@yopmail.com`, `editeur@yopmail.com`, `user10@yopmail.com`
+Available test emails: `user@yopmail.com`, `contact_technique@yopmail.com`, `contact_metier@yopmail.com`, `editeur@yopmail.com`, `user10@yopmail.com`
 
 ## Sentry / Production Errors
 

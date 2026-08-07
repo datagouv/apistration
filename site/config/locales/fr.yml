@@ -162,10 +162,10 @@ fr:
     prolong_token_wizard:
       display_cta: Prolonger le jeton
       requires_update_cta: Terminer la mise à jour pour prolonger votre jeton
-      updates_requested_cta: Demande de mise à jour de l'habilitation en attente d'instruction
+      updates_requested_cta: Demande de mise à jour en attente d'instruction
       header:
         title: Prolonger le jeton
-        description: Votre jeton expire le %{humanize_date}. Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions indiquées dans votre habilitation %{link_to_datapass} ont évolué.
+        description: Votre jeton expire le %{humanize_date}. Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions indiquées dans votre demande %{link_to_datapass} ont évolué.
           Veuillez répondre aux questions suivantes, ce formulaire vous engage en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU d'%{api_name}</a>
       steps:
         owner: Responsable de la demande
@@ -174,15 +174,15 @@ fr:
         summary: Bilan et confirmation
       prolonged:
         title: Votre jeton a été prolongé jusqu'au %{humanized_date}
-        description: Merci ! Suite à vos réponses, les conditions de votre habilitation à l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
+        description: Merci ! Suite à vos réponses, les conditions de votre demande à l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
         link:
-          authorization_request: Revenir à votre demande d'habilitation
+          authorization_request: Revenir à votre demande
       summary:
         prolonged:
           owner_not_in_charge: "Suite aux réponses indiquées, vous déclarez que le contact principal a changé. Bien que cela ne soit pas bloquant pour
-            poursuivre la prolongation de votre jeton, l'équipe support vous contactera rapidement afin de procéder au transfert de vos habilitations. Vous pouvez démarrer cette démarche en autonomie
+            poursuivre la prolongation de votre jeton, l'équipe support vous contactera rapidement afin de procéder au transfert de vos demandes. Vous pouvez démarrer cette démarche en autonomie
             via votre <a href='https://%{api}.api.gouv.fr/compte'>espace personnel</a>."
-          description: Suite aux réponses indiquées, vous déclarez qu'aucune des informations indiquées dans votre habilitation n<sup>o</sup>%{external_id} n'a évolué.
+          description: Suite aux réponses indiquées, vous déclarez qu'aucune des informations indiquées dans votre demande n<sup>o</sup>%{external_id} n'a évolué.
           cgu: ⚠️  Vos réponses vous engagent en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU</a>
           finished: Confirmer
         requires_update:
@@ -213,19 +213,19 @@ fr:
           change_contact_technique: A changé
           change_contact_metier: A changé
       project_purpose:
-        label: "Cette habilitation a été attribuée pour la finalité suivante :"
-        no_description: Vous n'avez pas renseigné de description pour cette habilitation.
+        label: "Cette demande a été attribuée pour la finalité suivante :"
+        no_description: Vous n'avez pas renseigné de description pour cette demande.
         radio:
-          project_purpose: Oui, le projet bénéficiant de cette habilitation a toujours la même finalité.
+          project_purpose: Oui, le projet bénéficiant de cette demande a toujours la même finalité.
           change_project_purpose: Non, le projet a changé.
       owner:
         label: Êtes-vous toujours en charge de la demande %{link_to_datapass} ?
         radio:
           still_in_charge: Oui, je suis toujours en charge
           will_change_soon: Oui, je suis toujours en charge mais pourrais passer la main d'ici quelques mois
-          not_in_charge: Non, je ne suis plus en charge de cette habilitation %{api}
+          not_in_charge: Non, je ne suis plus en charge de cette demande %{api}
         not_in_charge_alert:
-          text: Si vous n'êtes plus en charge de cette habilitation, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
+          text: Si vous n'êtes plus en charge de cette demande, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
       build:
         wizard_buttons:
           previous: Précédent
@@ -233,15 +233,15 @@ fr:
     users:
       user:
         links:
-          authorization_requests: Vos habilitations
+          authorization_requests: Vos demandes
         title: "Vos&nbsp;informations"
         internal_id: "Identifiant interne&nbsp;: %{id}"
         transfer_account:
-          title: "Votre équipe évolue ? Vous quittez votre service ? Transmettez vos habilitations à une autre personne&nbsp;:"
-          subtitle_if_demandeur: "Habilitations où je suis demandeur&nbsp;:"
-          description_if_demandeur: Pour transmettre votre rôle de demandeur à une autre personne de votre organisation, veuillez vous rendre sur <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a> et transférer chacune de vos habilitations.
-          subtitle_if_other_roles: "Habilitations où je ne suis pas demandeur&nbsp;:"
-          description_if_other_roles: "Vous êtes contact métier et/ou technique d'une habilitation et souhaitez léguer ce rôle à une autre personne de votre organisation ? C'est au demandeur de l'habilitation d'effectuer une demande de modification des contacts. <a href='https://%{api}.api.gouv.fr/faq#comment-transferer-mon-compte-a-une-autre-personne'>En savoir plus</a>."
+          title: "Votre équipe évolue ? Vous quittez votre service ? Transmettez vos demandes à une autre personne&nbsp;:"
+          subtitle_if_demandeur: "Demandes où je suis demandeur&nbsp;:"
+          description_if_demandeur: Pour transmettre votre rôle de demandeur à une autre personne de votre organisation, veuillez vous rendre sur <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a> et transférer chacune de vos demandes.
+          subtitle_if_other_roles: "Demandes où je ne suis pas demandeur&nbsp;:"
+          description_if_other_roles: "Vous êtes contact métier et/ou technique d'une demande et souhaitez léguer ce rôle à une autre personne de votre organisation ? C'est au demandeur de la demande d'effectuer une demande de modification des contacts. <a href='https://%{api}.api.gouv.fr/faq#comment-transferer-mon-compte-a-une-autre-personne'>En savoir plus</a>."
         demandeur: "Demandeur"
         contact_metier: "Contact métier"
         contact_technique: "Contact technique"
@@ -267,10 +267,12 @@ fr:
             title: Jeton(s) non trouvés
             description: Le jeton ou les jetons demandé(s) n'ont pas été trouvés. Veuillez contacter <a href='https://%{api}.api.gouv.fr/faq#une-autre-question'>le support</a>.
     tokens:
+      reveal_token_button:
+        cta: Afficher le jeton
       renew:
         title: Demander l'accès à d'autres API
         description: |+
-          Vous souhaitez demander de nouvelles API pour le même cas d'usage ? Cette fonctionnalité vous permet de <strong>demander une mise à jour de votre habilitation, dans laquelle vous pourrez cocher de nouvelles API</strong>.
+          Vous souhaitez demander de nouvelles API pour le même cas d'usage ? Cette fonctionnalité vous permet de <strong>demander une mise à jour de votre demande, dans laquelle vous pourrez cocher de nouvelles API</strong>.
           <br>
           <strong>En cliquant sur "Continuer" vous serez transféré sur le site DataPass</strong>.
           <br>
@@ -283,7 +285,7 @@ fr:
           last_30_hours: 30 dernières heures
           last_8_days: 8 derniers jours
         links:
-          user_tokens: Retour à l'habilitation N<sup>o</sup>%{external_id}
+          user_tokens: Retour à la demande N<sup>o</sup>%{external_id}
         details:
           internal_id: "Identifiant technique du jeton : %{id}"
         requests_details:
@@ -291,10 +293,10 @@ fr:
       cannot_show:
         title: Utiliser le jeton
         description: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
-          Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette habilitation :"
+          Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette demande :"
         demandeur: "<strong>demandeur</strong> : %{demandeur}"
         contact_technique: "<strong>Contact technique</strong> : %{contact_technique}"
-        authorization_request_link: "<strong>Lien de l'habilitation à transmettre :</strong>"
+        authorization_request_link: "<strong>Lien de la demande à transmettre :</strong>"
       ask_for_prolongation:
         title: Relancer le demandeur
         description: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
@@ -331,11 +333,11 @@ fr:
         description:
           future: "Votre jeton expire dans %{remaining_time}.
             Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
-            indiquées dans votre habilitation %{link_to_datapass}
+            indiquées dans votre demande %{link_to_datapass}
             ont évolué."
           past: "Votre jeton a expiré il y a %{remaining_time}.
             Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
-            indiquées dans votre habilitation %{link_to_datapass}
+            indiquées dans votre demande %{link_to_datapass}
             ont évolué."
         warning_description: "Pour prolonger votre jeton, veuillez compléter le formulaire suivant :"
         warning: ⚠️ Vos réponses au formulaire <strong>vous engagent</strong> en regard des CGU d'%{api_name}.
@@ -398,8 +400,8 @@ fr:
             display_cta_replace_legacy: "Remplacer votre ancien jeton avec le nouveau jeton"
             display_cta_new_token: "Utiliser le nouveau jeton"
             display_cta_replace: "Remplacer le jeton banni par le nouveau jeton"
-        no_authorization_requests: "Vous n'avez aucune habilitation"
-        title: "Habilitations %{api_label} (%{count})"
+        no_authorization_requests: "Vous n'avez aucune demande"
+        title: "Demandes %{api_label}"
         entreprise: API&nbsp;Entreprise
         particulier: API&nbsp;Particulier
         no_action: Aucune action attendue
@@ -408,13 +410,13 @@ fr:
           profile: Vos informations
         table:
           head:
-            authorization_request: "Habilitation"
+            authorization_request: "Demande"
             token: Jeton principal
             actions: Actions attendues
             detail: Page détaillée
       breadcrumb:
-        index: Habilitations
-        current_page: Habilitation n°%{datapass_id}
+        index: Demandes
+        current_page: Demande n°%{datapass_id}
       summary:
         access: Droits d'accès
         active_tokens: Jetons
@@ -430,47 +432,40 @@ fr:
           submitted: yellow-canari
         label:
           refused: 📃 Demande refusée
-          revoked: 📃 Habilitation révoquée
-          archived: 📃 Habilitation archivée
-          validated: 📃 Habilitation active
-          submitted: 🕐 Habilitation en cours d'instruction
+          revoked: 📃 Demande révoquée
+          archived: 📃 Demande archivée
+          validated: 📃 Demande active
+          submitted: 🕐 Demande en cours d'instruction
       header:
-        delivered_at: "Délivré le : %{humanized_date}"
+        request_number_html: "<strong>Demande n° :</strong> %{external_id}"
+        form_used_html: "<strong>Formulaire utilisé :</strong> %{name}"
+        delivered_at_html: "<strong>Délivré le :</strong> %{humanized_date}"
       show:
-        access: "Vos droits d'accès&nbsp;:"
-        modal:
-          renew:
-            display_cta: Demander l'accès à d'autres API
-          show:
-            display_cta: "Voir le jeton"
-          ask_for_prolongation:
-            display_cta: Relancer le demandeur pour prolonger le jeton
-        main_token:
-          title: "Jeton principal&nbsp;:"
-        attestations:
-          title: "Télécharger manuellement les attestations sociales et fiscales"
-          description: "Saisissez manuellement le SIREN de l'unité légale recherchée et vous aurez directement accès aux PDF des attestations&nbsp;:"
-          cta: "Utiliser l'interface de téléchargement"
-        other_tokens:
-          title: Voir les autres jetons
+        datapass_cta: "Voir sur DataPass n°%{external_id}"
+        tokens:
+          title: "Jetons"
           table:
-            identifier: "Identifiant du jeton"
+            identifier: "Identifiant"
             status: "Statut"
             created_at: "Date de délivrance"
             exp: "Date d'expiration"
-            see_more: "Voir plus"
+            actions: "Actions"
+            stats: "Statistiques"
+            transfer: "Transmettre"
         contacts:
           title: "Contacts associés&nbsp;:"
+          description: "Vous pouvez modifier ces contacts en amendant votre demande sur DataPass :"
+          datapass_link: "modifier sur DataPass"
           demandeur:
-            title: "Demandeur&nbsp;:"
+            title: "Demandeur :"
           contact_technique:
-            title: "Contact technique&nbsp;:"
+            title: "Contact technique :"
           contact_metier:
-            title: "Contact metier&nbsp;:"
-          its_me: "✋ C'est moi !"
+            title: "Contact métier :"
+          its_me: "c'est moi"
         delegations:
           title: "Délégations&nbsp;:"
-          description: "Vous pouvez déléguer votre habilitation à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
+          description: "Vous pouvez déléguer votre demande à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
           editor: Éditeur
           status: Statut
           actions: Actions
