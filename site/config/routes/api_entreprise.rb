@@ -86,5 +86,6 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/cgu', to: 'pages#cgu', as: :cgu
     get '/donnees_personnelles', to: 'pages#donnees_personnelles', as: :donnees_personnelles
     get '/accessibilite', to: 'pages#accessibility', as: :accessibilite
+    get '/plan-du-site', to: 'pages#sitemap', as: :sitemap
   end
 end

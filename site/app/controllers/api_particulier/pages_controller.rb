@@ -51,6 +51,11 @@ class APIParticulier::PagesController < APIParticulierController
     render 'shared/pages/accessibility'
   end
 
+  def sitemap
+    @sitemap_sections = YAML.load_file(Rails.root.join('config/sitemap.yml'))['api_particulier']
+    render 'shared/pages/sitemap'
+  end
+
   private
 
   def page_layout
