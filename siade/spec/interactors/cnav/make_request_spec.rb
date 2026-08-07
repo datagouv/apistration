@@ -252,6 +252,41 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
     end
   end
 
+  describe 'with NIR params' do
+    let(:params) do
+      {
+        nir: '1234567890123',
+        nom_naissance: 'DUPONT',
+        request_id:
+      }
+    end
+
+    let!(:stubbed_request) do
+      stub_request(:get, Siade.credentials[:cnav_complementaire_sante_solidaire_url]).with(
+        query: { numAssure: '1234567890123', nomNaissance: 'DUPONT' },
+        headers: {
+          'Content-Type' => 'application/json',
+          'Authorization' => 'Bearer super_valid_token',
+          'X-APIPART-FSFINAL' => valid_siret,
+          'X-Correlation-ID' => request_id
+        }
+      ).to_return(
+        status: 200,
+        body: read_payload_file('cnav/complementaire_sante_solidaire/make_request_valid.json')
+      )
+    end
+
+    it { is_expected.to be_a_success }
+
+    its(:response) { is_expected.to be_a(Net::HTTPOK) }
+
+    it 'calls url with NIR param only' do
+      make_call
+
+      expect(stubbed_request).to have_been_requested
+    end
+  end
+
   describe 'when not from france' do
     let(:params) do
       {
