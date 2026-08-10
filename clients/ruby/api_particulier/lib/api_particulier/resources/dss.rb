@@ -167,7 +167,7 @@ module ApiParticulier
       # [Identité] Participation familiale EAJE
       # Logical endpoint: /dss/participation_familiale_eaje/identite
       # Versions available: [3] — default: 3
-      def participation_familiale_eaje_identite(version: nil, recipient: nil, delegation_id: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def participation_familiale_eaje_identite(version: nil, recipient: nil, delegation_id: nil, nom_naissance:, nom_usage: nil, prenoms:, annee_date_naissance: nil, mois_date_naissance: nil, jour_date_naissance: nil, sexe_etat_civil: nil, code_cog_insee_pays_naissance:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil, generate_proof: nil)
         path =
           case version || 3
           when 3
@@ -175,7 +175,7 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /dss/participation_familiale_eaje/identite; supported: [3]"
           end
-        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "nomNaissance" => nom_naissance, "nomUsage" => nom_usage, "prenoms" => prenoms, "anneeDateNaissance" => annee_date_naissance, "moisDateNaissance" => mois_date_naissance, "jourDateNaissance" => jour_date_naissance, "sexeEtatCivil" => sexe_etat_civil, "codeCogInseePaysNaissance" => code_cog_insee_pays_naissance, "codeCogInseeCommuneNaissance" => code_cog_insee_commune_naissance, "nomCommuneNaissance" => nom_commune_naissance, "codeCogInseeDepartementNaissance" => code_cog_insee_departement_naissance }.compact)
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "nomNaissance" => nom_naissance, "nomUsage" => nom_usage, "prenoms" => prenoms, "anneeDateNaissance" => annee_date_naissance, "moisDateNaissance" => mois_date_naissance, "jourDateNaissance" => jour_date_naissance, "sexeEtatCivil" => sexe_etat_civil, "codeCogInseePaysNaissance" => code_cog_insee_pays_naissance, "codeCogInseeCommuneNaissance" => code_cog_insee_commune_naissance, "nomCommuneNaissance" => nom_commune_naissance, "codeCogInseeDepartementNaissance" => code_cog_insee_departement_naissance }.compact, headers: { "X-Generate-Proof" => generate_proof }.compact)
       end
 
       # [FranceConnect] Statut prime d'activité

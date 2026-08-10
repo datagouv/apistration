@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: c39093e4bc410efcbe528a7b462142c8c4d7f0a6).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 2ff43e12b36dac153c791f7bdb78eb7fe55c4e34).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 import { Configuration, type Logger } from './configuration.js';
@@ -175,23 +175,7 @@ export abstract class ClientBase {
     const responseHeaders = headersToRecord(fetchResponse.headers);
     const rateLimit = RateLimit.fromHeaders(fetchResponse.headers);
 
-    let body: unknown;
-    const text = await fetchResponse.text();
-    if (text) {
-      try {
-        body = JSON.parse(text);
-      } catch {
-        if (fetchResponse.ok) {
-          throw new TransportError(
-            `invalid JSON body: ${text.slice(0, 200)}`,
-            { method, url },
-          );
-        }
-        body = {};
-      }
-    } else {
-      body = {};
-    }
+    const body: unknown = await this.parseBody(fetchResponse, method, url);
 
     this.logRequest(method, url, fetchResponse.status, durationMs, rateLimit);
 
@@ -256,23 +240,7 @@ export abstract class ClientBase {
     const durationMs = Date.now() - started;
     const responseHeaders = headersToRecord(fetchResponse.headers);
 
-    let body: unknown;
-    const text = await fetchResponse.text();
-    if (text) {
-      try {
-        body = JSON.parse(text);
-      } catch {
-        if (fetchResponse.ok) {
-          throw new TransportError(
-            `invalid JSON body: ${text.slice(0, 200)}`,
-            { method, url },
-          );
-        }
-        body = {};
-      }
-    } else {
-      body = {};
-    }
+    const body: unknown = await this.parseBody(fetchResponse, method, url);
 
     this.logRequest(method, url, fetchResponse.status, durationMs, null);
 
@@ -349,6 +317,26 @@ export abstract class ClientBase {
       if (v != null) result[k] = v;
     }
     return result;
+  }
+
+  private async parseBody(
+    fetchResponse: globalThis.Response,
+    method: string,
+    url: string,
+  ): Promise<unknown> {
+    const text = await fetchResponse.text();
+    if (!text) return {};
+    try {
+      return JSON.parse(text);
+    } catch {
+      if (fetchResponse.ok) {
+        throw new TransportError(
+          `invalid JSON body: ${text.slice(0, 200)}`,
+          { method, url },
+        );
+      }
+      return {};
+    }
   }
 
   private throwMappedError(

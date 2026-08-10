@@ -25,7 +25,7 @@
 - Token-based bearer authentication with an extensibility seam for future auth
   strategies (OAuth2, mTLS, rotating providers).
 - Public (unauthenticated) monitoring endpoints: `ping`, `pings`,
-  `ping_provider` (see §9.5).
+  `ping_provider` (see §9.6).
 
 **Out of scope**
 
@@ -445,7 +445,16 @@ brackets:
 client.dss.allocation_adulte_handicape_identite(prenoms: ['Jean', 'Paul'], …)
 ```
 
-### 9.5 Public (unauthenticated) endpoints — Ping
+### 9.5 Request-header parameters
+
+Operations may declare `in: header` parameters (e.g. `X-Generate-Proof` on the
+EAJE identity endpoint). Generated methods MUST expose each one as an optional
+kwarg named after the header — lowercased, dashes to underscores, leading `x_`
+stripped (`X-Generate-Proof` → `generate_proof`) — and send the value verbatim
+as a request header when provided. `Cache-Control` is transport-level and MUST
+NOT be scaffolded.
+
+### 9.6 Public (unauthenticated) endpoints — Ping
 
 Both APIs expose monitoring endpoints marked `security: []` in the OpenAPI
 spec. These endpoints require **no token**, **no audit parameters**
@@ -748,7 +757,7 @@ A reviewer certifying a new client ticks each item.
       `User-Agent` set.
 - [ ] Immutable `Configuration` with `with()` / `copy()`; ENV vars honoured.
 - [ ] Public ping endpoints (`ping`, `pings`, `ping_provider`) exposed on
-      the client; no auth header or audit params sent (§9.5).
+      the client; no auth header or audit params sent (§9.6).
 - [ ] Unit tests cover every surface listed in §12.1; integration tests
       cover 200 / 422 / 429 / 502 on both APIs; staging conformance run
       from TESTING.md passes; README has a stub example.

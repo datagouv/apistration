@@ -119,6 +119,17 @@ function getQueryParams(op: Operation): Parameter[] {
   return (op.parameters || []).filter((p) => p.in === 'query');
 }
 
+function getHeaderParams(op: Operation): Parameter[] {
+  // Cache-Control stays out: transport-level, handled by the HTTP stack.
+  return (op.parameters || []).filter(
+    (p) => p.in === 'header' && p.name !== 'Cache-Control',
+  );
+}
+
+function headerKwarg(raw: string): string {
+  return kwargName(raw.replace(/^x-/i, ''));
+}
+
 const AUDIT_PARAMS = ['recipient', 'context', 'object'];
 
 function buildMethod(
@@ -165,6 +176,11 @@ function buildMethod(
     const required = p.required === true && !AUDIT_PARAMS.includes(p.name);
     if (required) anyRequired = true;
     optionsFields.push(`${kn}${required ? '' : '?'}: ${type}`);
+  }
+
+  const hparams = getHeaderParams(operation);
+  for (const p of hparams) {
+    optionsFields.push(`${headerKwarg(p.name)}?: string`);
   }
 
   const hasOptions = optionsFields.length > 0;
@@ -216,7 +232,18 @@ function buildMethod(
   lines.push('      }');
   lines.push('    })();');
 
-  if (paramEntries.length > 0) {
+  const headerEntries = hparams.map(
+    (p) => `'${p.name}': options.${headerKwarg(p.name)}`,
+  );
+
+  if (headerEntries.length > 0) {
+    lines.push(
+      `    const headers = Object.fromEntries(Object.entries({ ${headerEntries.join(', ')} }).filter(([, v]) => v !== undefined)) as Record<string, string>;`,
+    );
+    lines.push(
+      `    return this.client.get(path, { params: { ${paramEntries.join(', ')} }, headers });`,
+    );
+  } else if (paramEntries.length > 0) {
     lines.push(
       `    return this.client.get(path, { params: { ${paramEntries.join(', ')} } });`,
     );
