@@ -1266,19 +1266,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -2169,19 +2156,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -3082,19 +3056,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -3981,19 +3942,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -4895,19 +4843,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -7017,19 +6952,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -7460,19 +7382,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -8310,19 +8219,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
@@ -9462,19 +9358,6 @@ paths:
           content:
             application/json:
               examples:
-                unexpected_error:
-                  value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: Une erreur inattendue est survenue lors de la collecte
-                        des données
-                      source:
-                      meta:
-                        provider: CNAV
-                  summary: Erreur inconnue du fournisseur de données
-                  description: Une erreur inattendue est survenue lors de la collecte
-                    des données
                 erreur_inconnue_du_fournisseur_de_donnees_37999:
                   value:
                     errors:
