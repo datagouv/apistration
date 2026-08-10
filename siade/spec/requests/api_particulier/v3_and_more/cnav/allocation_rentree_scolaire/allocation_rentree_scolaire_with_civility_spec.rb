@@ -128,7 +128,7 @@ RSpec.describe 'API Particulier CNAV: Allocation de rentrée scolaire (ARS) with
           end
         end
 
-        response '502', 'Erreur du fournisseur' do
+        response '502', 'Erreur du fournisseur', document: false do
           context 'when an unexpected error occurs' do
             before do
               stub_cnav_404('allocation_rentree_scolaire')

@@ -100,7 +100,7 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
           # rubocop:enable RSpec/ContextWording
         end
 
-        response '502', 'Erreur du fournisseur' do
+        response '502', 'Erreur du fournisseur', document: false do
           # rubocop:disable RSpec/ContextWording
           context 'Erreur inattendue' do
             before do
