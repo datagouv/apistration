@@ -162,3 +162,22 @@ fiche:
           {:.fr-highlight}
           > **Le code COG du pays de naissance est obligatoire pour tous les appels.** Pour simplifier le parcours des usagers, évitez de demander aux particuliers nés en France de saisir leur pays de naissance, puisque vous pouvez le paramétrer directement -code COG pays France `99100`-, dès qu'un particulier renseigne les informations de sa commune de naissance (forcément en France).
 
+      - q: <a name="attestation-pdf-verifiable"></a> Comment obtenir une preuve d'attestation vérifiable des données délivrées ?
+        a: |+
+          En ajoutant l'en-tête `X-Generate-Proof` à l'appel `/v3/dss/participation_familiale_eaje/identite` (mêmes paramètres et habilitations, le bloc `data` reste identique), la réponse s'enrichit d'une **preuve d'attestation**, destinée notamment aux contrôles CNAF des gestionnaires d'EAJE :
+
+          - `X-Generate-Proof: proof-only` — `meta` contient le **lien public de vérification** (`verification_url`) et un **code de vérification** de 10 caractères (`verification_code`), propres à chaque émission. Archiver ce lien et ce code dans votre dossier métier suffit comme justificatif.
+          - `X-Generate-Proof: pdf` — s'y ajoute dans `links` un **lien de téléchargement de l'attestation PDF** (`attestation_pdf`), accessible **sans authentification** et re-téléchargeable jusqu'à son expiration (environ 5 minutes, horodatage `meta.attestation_pdf_url_expires_at`). Passé ce délai, le lien renvoie `410 Gone` : relancez simplement l'appel pour en obtenir un nouveau.
+
+          L'attestation PDF reprend l'ensemble des données délivrées et porte le code de vérification ainsi qu'un **QR code** (également cliquable) menant à la page publique de vérification hébergée par API Particulier. Cette page n'affiche que des données minimisées — identités tronquées, sans adresse, nombre d'enfants, paramètres de calcul complets. L'authenticité se vérifie en comparant le code et les données des deux documents.
+
+          Le lien de vérification reste valable **5 ans** après l'émission. Aucune donnée n'est accessible sans le document : le lien chiffré est l'unique clé d'accès.
+
+          **Le jeu de champs de l'attestation est figé pour une version d'API donnée.** Ajouter, retirer ou renommer un champ du PDF passe systématiquement par une nouvelle route et une montée de version : le contenu d'une attestation déjà publiée n'évolue jamais en place. Vous pouvez donc traiter le jeu de champs comme un contrat stable pour toute la durée de vie de la version. En revanche, la disposition visuelle des champs peut évoluer sans montée de version.
+
+          C'est une exigence documentaire, pas technique : l'attestation est une pièce justificative, deux documents portant la même version d'API ne peuvent pas présenter des jeux de champs différents — ni pour vous, ni pour la CNAF, ni pour l'agent qui contrôle le document.
+
+    historique: |+
+      **29/07/2026 — Preuve d'attestation vérifiable**
+
+      Ajout de l'en-tête `X-Generate-Proof` sur `/v3/dss/participation_familiale_eaje/identite` : lien et code de vérification dans `meta`, lien de téléchargement de l'attestation PDF dans `links`. [En savoir plus](#attestation-pdf-verifiable).
