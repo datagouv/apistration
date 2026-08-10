@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" data-fr-scheme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Vérification d'attestation — République Française</title>
+  <%= stylesheet_link_tag 'api_particulier', media: 'all' %>
+  <style>
+    .verification-card { max-width: 640px; margin: 0 auto; border: 1px solid var(--border-default-grey, #ddd); padding: 2rem 2.5rem; }
+    .field-grid { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.5rem; margin: .75rem 0 0; }
+    .field-grid dt { font-weight: 700; text-align: right; }
+    .field-grid dd { margin: 0; }
+    .verif-code { font-family: monospace; font-size: 1.25rem; font-weight: 700; letter-spacing: .12em; }
+  </style>
+</head>
+<body>
+  <header role="banner" class="fr-header">
+    <div class="fr-header__body">
+      <div class="fr-container">
+        <div class="fr-header__body-row">
+          <div class="fr-header__brand">
+            <div class="fr-header__brand-top">
+              <div class="fr-header__logo">
+                <p class="fr-logo">République<br>Française</p>
+              </div>
+            </div>
+            <div class="fr-header__service">
+              <p class="fr-header__service-title">API Particulier</p>
+              <p class="fr-header__service-tagline">Vérification d'attestation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main role="main">
+    <div class="fr-container fr-my-6w">
+      <div class="verification-card">
+        <%= yield %>
+      </div>
+    </div>
+  </main>
+  <footer class="fr-footer" role="contentinfo">
+    <div class="fr-container fr-py-2w">
+      <p class="fr-text--xs fr-mb-0">© République Française — particulier.api.gouv.fr</p>
+    </div>
+  </footer>
+</body>
+</html>
