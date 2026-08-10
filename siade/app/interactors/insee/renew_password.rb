@@ -1,4 +1,10 @@
 class INSEE::RenewPassword < MakeRequest::Post
+  def call
+    super
+
+    fail_with_authentication_error! unless renewal_accepted?
+  end
+
   protected
 
   def request_uri
@@ -23,5 +29,16 @@ class INSEE::RenewPassword < MakeRequest::Post
 
   def sirene_base_path
     'api-sirene/prive/3.11'
+  end
+
+  private
+
+  def renewal_accepted?
+    context.response&.code&.to_i == 200
+  end
+
+  def fail_with_authentication_error!
+    context.errors << ProviderAuthenticationError.new(context.provider_name)
+    context.fail!
   end
 end

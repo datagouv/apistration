@@ -47,10 +47,14 @@ RSpec.describe INSEE::RenewPassword, type: :interactor do
         .to_return(status: 400, body: '{"message":"Ancien mot de passe incorrect"}')
     end
 
-    it { is_expected.to be_a_success }
+    it { is_expected.to be_a_failure }
 
     it 'returns the 400 response' do
       expect(renew.response.code).to eq('400')
+    end
+
+    it 'fails with a ProviderAuthenticationError' do
+      expect(renew.errors.first).to be_a(ProviderAuthenticationError)
     end
   end
 
@@ -60,7 +64,7 @@ RSpec.describe INSEE::RenewPassword, type: :interactor do
         .to_return(status: 400, body: '{"message":"Le mot de passe ne respecte pas les règles"}')
     end
 
-    it { is_expected.to be_a_success }
+    it { is_expected.to be_a_failure }
 
     it 'returns the 400 response' do
       expect(renew.response.code).to eq('400')

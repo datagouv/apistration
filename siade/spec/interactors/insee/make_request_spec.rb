@@ -277,6 +277,27 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
       end
     end
 
+    context 'when the renewal API rejects the old password (400)' do
+      let(:token) { jwt_token_with_pwd_changed_time('2026-08-15T10:00:00Z') }
+
+      before do
+        Timecop.freeze(Date.new(2026, 9, 15))
+        EncryptedCache.write('insee/authenticate', token)
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+
+        stub_request(:post, renew_url)
+          .to_return(status: 400, body: '{"message":"Ancien mot de passe incorrect"}')
+      end
+
+      it 'does not invalidate the token cache' do
+        make_request
+
+        expect(EncryptedCache.read('insee/authenticate')).to eq(token)
+      end
+    end
+
     context 'when pwdChangedTime is in the current bimester' do
       let(:token) { jwt_token_with_pwd_changed_time('2026-09-10T10:00:00Z') }
 
