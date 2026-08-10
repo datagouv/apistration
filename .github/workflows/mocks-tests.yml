@@ -4,11 +4,17 @@ defaults:
   run:
     working-directory: mocks
 
+permissions:
+  contents: read
+
 on:
   push:
     paths:
       - 'mocks/**'
       - 'commons/**'
+  pull_request:
+    paths:
+      - 'mocks/**'
 
 jobs:
   tests:
