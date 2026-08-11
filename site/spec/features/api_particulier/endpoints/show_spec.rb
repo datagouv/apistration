@@ -53,5 +53,29 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
       expect(page).to have_css('h2#scopes + p + ul li code', text: '(cnaf_enfants)')
       expect(page).to have_css('h2#scopes + p + ul li code', text: '(cnaf_adresse)')
     end
+
+    it 'renders the humanized scope label fetched from DataPass, not the raw scope code' do
+      Rails.cache.clear
+
+      stub_request(:get, "#{DataPass::BASE_URL}/api/v1/definitions/api_particulier")
+        .to_return(
+          status: 200,
+          headers: { 'Content-Type' => 'application/json' },
+          body: {
+            'scopes' => [
+              {
+                'value' => 'cnaf_quotient_familial',
+                'name' => 'Quotient familial CAF & MSA',
+                'group' => 'API Quotient familial',
+                'provider' => 'CNAF & MSA'
+              }
+            ]
+          }.to_json
+        )
+
+      visit endpoint_path(uid:)
+
+      expect(page).to have_css('h2#scopes + p + ul li strong', text: 'Quotient familial CAF & MSA')
+    end
   end
 end
