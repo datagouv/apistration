@@ -94,6 +94,17 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     stub_request(:get, %r{entreprise\.api\.gouv\.fr/ping}).to_return(status: 200)
     stub_request(:get, %r{particulier\.api\.gouv\.fr/api/.*/ping$}).to_return(status: 200)
+    stub_request(:post, "#{DataPass::BASE_URL}/api/oauth/token").to_return(
+      status: 200,
+      headers: { 'Content-Type' => 'application/json' },
+      body: { access_token: 'test_data_pass_access_token' }.to_json
+    )
+    stub_request(:get, %r{#{Regexp.escape(DataPass::BASE_URL)}/api/v1/definitions/})
+      .to_return(
+        status: 200,
+        headers: { 'Content-Type' => 'application/json' },
+        body: { 'scopes' => [] }.to_json
+      )
     allow(SimplifionsStore.instance).to receive_messages(all: [], for_endpoint: [])
   end
 
