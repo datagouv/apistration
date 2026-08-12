@@ -47,7 +47,7 @@ jobs:
             echo "::error::git diff failed to compute changed files between ${{ github.event.before }} and ${{ github.event.after }} (shallow history or invalid before-SHA?)"
             exit 1
           fi
-          FILES=$(echo "$FILES" | grep '\.yml$' || true)
+          FILES=$(echo "$FILES" | grep '\.yml$' | grep -v '/_swagger_shared/' || true)
           if [ -z "$FILES" ]; then
             echo "uids=" >> "$GITHUB_OUTPUT"
           else

@@ -2,6 +2,14 @@
 fiche:
   # L'UID sert à identifier cette entrée de manière unique, et est utilisé pour l'URL de la fiche métier
   - uid: 'provider/resource'
+    # Optionnel. Id de la fiche dataservice correspondante sur data.gouv.fr.
+    # datagouv_uid: '...'
+    # Optionnel. À renseigner uniquement quand plusieurs fiches (couple dépréciée/actuelle,
+    # regroupements INSEE Sirene/DJEPVA...) partagent le même datagouv_uid : une seule fiche
+    # doit piloter le sync vers data.gouv.fr (site/app/services/datagouv/), les autres passent
+    # sync_with_datagouv: false pour ne pas se marcher dessus (create/update/delete concurrents
+    # sur la même fiche distante).
+    # sync_with_datagouv: false
     # Optionnel. À renseigner uniquement si cette API fait partie du Socle de base DLNUF.
     # Omettre la clé si l'API n'en fait pas partie.
     socle_de_base:
