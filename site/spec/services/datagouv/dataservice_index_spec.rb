@@ -5,77 +5,28 @@ RSpec.describe Datagouv::DataserviceIndex do
 
   let(:client) { instance_double(DatagouvAPIClient, list_dataservices: dataservices) }
   let(:endpoint) { APIEntreprise::Endpoint.find('dgfip/numero_tva') }
+  let(:business_url) { Datagouv::FichePayloadBuilder.new(endpoint).business_documentation_url }
 
-  context 'when a dataservice has the marker for the endpoint uid' do
+  context 'when a dataservice has the matching business_documentation_url' do
     let(:dataservices) do
       [
-        { 'id' => 'other-id', 'title' => 'Unrelated', 'description' => 'no marker here' },
-        { 'id' => 'matched-id', 'title' => 'Something else entirely',
-          'description' => "<!-- apistration-endpoint-uid: #{endpoint.uid} -->\nSome description." }
+        { 'id' => 'other-id', 'title' => 'Unrelated', 'business_documentation_url' => 'https://entreprise.api.gouv.fr/catalogue/other/uid' },
+        { 'id' => 'matched-id', 'title' => 'Something else entirely', 'business_documentation_url' => business_url }
       ]
     end
 
-    it 'finds it by marker, ignoring title' do
+    it 'finds it' do
       expect(index.find(endpoint)).to eq(dataservices.last)
     end
   end
 
-  context 'when no dataservice has the marker but one matches by title' do
-    let(:title) { Datagouv::FichePayloadBuilder.new(endpoint).title }
+  context 'when no dataservice matches the business_documentation_url' do
     let(:dataservices) do
-      [
-        { 'id' => 'other-id', 'title' => 'Unrelated', 'description' => 'no marker here' },
-        { 'id' => 'matched-id', 'title' => title, 'description' => 'A pre-existing dataservice with no marker yet.' }
-      ]
-    end
-
-    it 'falls back to an exact title match' do
-      expect(index.find(endpoint)).to eq(dataservices.last)
-    end
-  end
-
-  context 'when neither the marker nor the title matches anything' do
-    let(:dataservices) do
-      [{ 'id' => 'other-id', 'title' => 'Unrelated', 'description' => 'no marker here' }]
+      [{ 'id' => 'other-id', 'title' => 'Unrelated', 'business_documentation_url' => 'https://entreprise.api.gouv.fr/catalogue/other/uid' }]
     end
 
     it 'returns nil' do
       expect(index.find(endpoint)).to be_nil
-    end
-  end
-
-  context 'when the description is nil' do
-    let(:dataservices) { [{ 'id' => 'other-id', 'title' => 'Unrelated', 'description' => nil }] }
-
-    it 'does not raise and returns nil' do
-      expect(index.find(endpoint)).to be_nil
-    end
-  end
-
-  describe '#marker_match' do
-    context 'when a dataservice has the marker for the endpoint uid' do
-      let(:dataservices) do
-        [
-          { 'id' => 'other-id', 'title' => 'Unrelated', 'description' => 'no marker here' },
-          { 'id' => 'matched-id', 'title' => 'Something else entirely',
-            'description' => "<!-- apistration-endpoint-uid: #{endpoint.uid} -->\nSome description." }
-        ]
-      end
-
-      it 'finds it by marker' do
-        expect(index.marker_match(endpoint)).to eq(dataservices.last)
-      end
-    end
-
-    context 'when no dataservice has the marker, even if one matches by title' do
-      let(:title) { Datagouv::FichePayloadBuilder.new(endpoint).title }
-      let(:dataservices) do
-        [{ 'id' => 'matched-id', 'title' => title, 'description' => 'A pre-existing dataservice with no marker yet.' }]
-      end
-
-      it 'does not fall back to a title match, and returns nil' do
-        expect(index.marker_match(endpoint)).to be_nil
-      end
     end
   end
 

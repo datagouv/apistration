@@ -16,7 +16,6 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         authorization_request_url: 'https://datapass.api.gouv.fr/api-entreprise',
         title: 'API Bénéficiaires effectifs - INPI | Bouquet API Entreprise',
         description: <<~MARKDOWN,
-          <!-- apistration-endpoint-uid: inpi/rne/beneficiaires_effectifs -->
           > L'[API Bénéficiaires effectifs - INPI | Bouquet API Entreprise](https://entreprise.api.gouv.fr/catalogue/inpi/rne/beneficiaires_effectifs) permet d'obtenir les informations suivantes : **Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)**.
 
           ➡️ **Cette API fait partie du bouquet [API Entreprise](https://entreprise.api.gouv.fr/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de INPI.
@@ -32,11 +31,11 @@ RSpec.describe Datagouv::FichePayloadBuilder do
     end
   end
 
-  context 'with any endpoint, checking the search-matching marker' do
+  describe '#business_documentation_url' do
     let(:endpoint) { APIEntreprise::Endpoint.find('dgfip/numero_tva') }
 
-    it 'prepends an invariant HTML-comment marker with the endpoint uid' do
-      expect(payload[:description]).to start_with("<!-- apistration-endpoint-uid: dgfip/numero_tva -->\n")
+    it 'is public, since DataserviceIndex matches remote dataservices on it' do
+      expect(described_class.new(endpoint).business_documentation_url).to eq('https://entreprise.api.gouv.fr/catalogue/dgfip/numero_tva')
     end
   end
 

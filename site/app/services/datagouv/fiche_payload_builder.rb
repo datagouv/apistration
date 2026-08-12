@@ -44,6 +44,10 @@ module Datagouv
       "API #{endpoint.title} - #{provider_name} | Bouquet API #{config[:display_name]}"
     end
 
+    def business_documentation_url
+      public_send(config[:business_documentation_url_helper], uid: endpoint.uid, host: url_host, protocol: 'https')
+    end
+
     private
 
     attr_reader :endpoint
@@ -78,10 +82,6 @@ module Datagouv
       access_type == 'restricted'
     end
 
-    def business_documentation_url
-      public_send(config[:business_documentation_url_helper], uid: endpoint.uid, host: url_host, protocol: 'https')
-    end
-
     def technical_documentation_url
       public_send(config[:technical_documentation_url_helper], anchor: endpoint.redoc_anchor, host: url_host, protocol: 'https')
     end
@@ -106,7 +106,6 @@ module Datagouv
 
     def description
       <<~MARKDOWN
-        <!-- apistration-endpoint-uid: #{endpoint.uid} -->
         > L'[#{title}](#{business_documentation_url}) permet d'obtenir les informations suivantes : **#{punchline}**.
 
         ➡️ **Cette API fait partie du bouquet [API #{config[:display_name]}](#{config[:base_api_url]}/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de #{provider_name}.

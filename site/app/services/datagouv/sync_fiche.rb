@@ -26,7 +26,7 @@ module Datagouv
     end
 
     def deprecated_result
-      remote = index.marker_match(endpoint)
+      remote = index.find(endpoint)
       return result(:skipped_deprecated) if remote.nil?
 
       delete_existing(remote['id'])

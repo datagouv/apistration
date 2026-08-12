@@ -11,7 +11,6 @@ RSpec.describe Datagouv::SyncFiche do
 
     it 'does not call the index or the client' do
       expect(index).not_to receive(:find)
-      expect(index).not_to receive(:marker_match)
       expect(client).not_to receive(:create_dataservice)
       expect(client).not_to receive(:update_dataservice)
       expect(client).not_to receive(:delete_dataservice)
@@ -24,11 +23,11 @@ RSpec.describe Datagouv::SyncFiche do
     end
   end
 
-  context 'when the endpoint is deprecated and the index finds a marker match' do
+  context 'when the endpoint is deprecated and the index finds a match' do
     let(:endpoint) { APIEntreprise::Endpoint.find('commission_europeenne/numero_tva') }
 
     before do
-      allow(index).to receive(:marker_match).with(endpoint).and_return({ 'id' => 'remote-id' })
+      allow(index).to receive(:find).with(endpoint).and_return({ 'id' => 'remote-id' })
       allow(client).to receive(:delete_dataservice)
     end
 
@@ -51,10 +50,10 @@ RSpec.describe Datagouv::SyncFiche do
     end
   end
 
-  context 'when the endpoint is deprecated and the index finds no marker match' do
+  context 'when the endpoint is deprecated and the index finds no match' do
     let(:endpoint) { APIEntreprise::Endpoint.find('insee/etablissements_v3') }
 
-    before { allow(index).to receive(:marker_match).with(endpoint).and_return(nil) }
+    before { allow(index).to receive(:find).with(endpoint).and_return(nil) }
 
     it 'does not call the client at all' do
       expect(client).not_to receive(:delete_dataservice)
@@ -63,25 +62,6 @@ RSpec.describe Datagouv::SyncFiche do
     end
 
     it 'returns a skipped_deprecated result' do
-      expect(sync.status).to eq(:skipped_deprecated)
-    end
-  end
-
-  context 'when the endpoint is deprecated, has no marker match, but would collide by title with a live sibling' do
-    let(:endpoint) { APIEntreprise::Endpoint.find('insee/etablissements_v3') }
-
-    before do
-      allow(index).to receive(:marker_match).with(endpoint).and_return(nil)
-      allow(index).to receive(:find).with(endpoint).and_return({ 'id' => 'live-siblings-dataservice' })
-    end
-
-    it 'does not delete the live sibling\'s dataservice via a title-fallback match' do
-      expect(client).not_to receive(:delete_dataservice)
-
-      sync
-    end
-
-    it 'returns a skipped_deprecated result rather than a deleted one' do
       expect(sync.status).to eq(:skipped_deprecated)
     end
   end
