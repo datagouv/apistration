@@ -62,11 +62,60 @@ RSpec.describe Datagouv::FichePayloadBuilder do
   context 'with an endpoint whose swagger description ends in an ellipsis' do
     let(:endpoint) { APIEntreprise::Endpoint.find('ministere_interieur/documents_associations') }
 
-    it 'strips all trailing periods so the punchline does not end with a double-dot' do
+    it 'strips all trailing periods so the summary line does not end with a double-dot' do
       expect(payload[:description]).to include(
         '**Divers documents administratifs en PDF tels que les statuts, le récépissé de déclaration de création, la liste des dirigeants**.'
       )
       expect(payload[:description]).not_to include('..**')
+    end
+  end
+
+  context 'with a plain-text description containing markdown-breaking characters and newlines' do
+    let(:endpoint) do
+      instance_double(
+        APIEntreprise::Endpoint,
+        uid: 'test/uid',
+        api: 'api_entreprise',
+        opening: 'protected',
+        redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
+        title: 'Test',
+        description_plain_text: "Une description avec du `code`, [des liens](url) et\ndes *emphases*_soulignées_.",
+        call_id: 'SIREN',
+        provider_uids: ['insee'],
+        keywords: ['test'],
+        providers: [instance_double(APIEntreprise::Provider, name: 'INSEE')],
+        throttle: nil
+      )
+    end
+
+    it 'strips markdown-breaking characters and collapses newlines to spaces' do
+      expect(payload[:description]).to include(
+        '**Une description avec du code, des liens(url) et des emphasessoulignées**.'
+      )
+    end
+  end
+
+  context 'with a plain-text description longer than the summary line max length' do
+    let(:endpoint) do
+      instance_double(
+        APIEntreprise::Endpoint,
+        uid: 'test/uid',
+        api: 'api_entreprise',
+        opening: 'protected',
+        redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
+        title: 'Test',
+        description_plain_text: 'A' * 400,
+        call_id: 'SIREN',
+        provider_uids: ['insee'],
+        keywords: ['test'],
+        providers: [instance_double(APIEntreprise::Provider, name: 'INSEE')],
+        throttle: nil
+      )
+    end
+
+    it 'truncates the summary line' do
+      expect(payload[:description]).to include("#{'A' * 297}...")
+      expect(payload[:description]).not_to include('A' * 298)
     end
   end
 
@@ -114,7 +163,7 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
-        description: 'Description de test.',
+        description_plain_text: 'Description de test.',
         call_id: 'SIREN',
         provider_uids: ['insee'],
         keywords: ['test'],
@@ -139,7 +188,7 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
-        description: 'Description de test.',
+        description_plain_text: 'Description de test.',
         call_id: 'SIREN',
         provider_uids: nil,
         keywords: ['test'],

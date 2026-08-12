@@ -63,6 +63,10 @@ class AbstractEndpoint
     @description ||= open_api_definition['description']
   end
 
+  def description_plain_text
+    ActionView::Base.full_sanitizer.sanitize(description.to_s)
+  end
+
   def deprecated
     @deprecated ||= (open_api_definition['deprecated'].nil? ? false : open_api_definition['deprecated'])
   end

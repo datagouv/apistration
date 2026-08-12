@@ -28,6 +28,8 @@ module Datagouv
       'api_particulier' => %w[api-particulier administration administration-et-legislation]
     }.freeze
 
+    SUMMARY_LINE_MAX_LENGTH = 300
+
     def initialize(endpoint)
       @endpoint = endpoint
     end
@@ -96,8 +98,13 @@ module Datagouv
       endpoint.providers.first&.name
     end
 
-    def punchline
-      endpoint.description.to_s.sub(/\.+\s*\z/, '')
+    def summary_line
+      endpoint.description_plain_text
+        .gsub(/\s+/, ' ')
+        .gsub(/[*_`\[\]]/, '')
+        .strip
+        .sub(/\.+\s*\z/, '')
+        .truncate(SUMMARY_LINE_MAX_LENGTH)
     end
 
     def call_id_text
@@ -106,7 +113,7 @@ module Datagouv
 
     def description
       <<~MARKDOWN
-        > L'[#{title}](#{business_documentation_url}) permet d'obtenir les informations suivantes : **#{punchline}**.
+        > L'[#{title}](#{business_documentation_url}) permet d'obtenir les informations suivantes : **#{summary_line}**.
 
         ➡️ **Cette API fait partie du bouquet [API #{config[:display_name]}](#{config[:base_api_url]}/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de #{provider_name}.
 
