@@ -666,3 +666,80 @@
 
   </p>
   </details>
+* [id_123463A_inscrit_paris.yaml](id_123463A_inscrit_paris.yaml)
+
+  Status `200`
+
+  Identifiant 123463A, inscrite, Paris
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "identifiant": "123463A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identifiant": "123463A",
+      "identite": {
+        "civilite": "MME",
+        "nom_naissance": "Bercy",
+        "nom_usage": null,
+        "prenom": "Camille",
+        "sexe": "Féminin",
+        "date_naissance": "1988-03-12"
+      },
+      "contact": {
+        "email": "camille.bercy@fake.fr",
+        "telephone": "0601020304",
+        "telephone2": null
+      },
+      "adresse": {
+        "code_cog_insee_commune": "75112",
+        "code_postal": "75012",
+        "ligne_complement_adresse": null,
+        "ligne_complement_destinataire": "appt 337",
+        "ligne_complement_distribution": null,
+        "ligne_nom": "Bercy",
+        "ligne_voie": "227 rue de bercy ",
+        "localite": "75012 Paris"
+      },
+      "inscription": {
+        "date_debut": "2024-01-01",
+        "date_fin": null,
+        "code_certification_cnav": "VC",
+        "categorie": {
+          "code": 1,
+          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"
+        }
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'identifiant=123463A' \
+    --url "https://staging.particulier.api.gouv.fr/v3/france_travail/statut/identifiant"
+  ```
+
+  </p>
+  </details>
