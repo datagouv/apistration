@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-15
+
+### Added
+- `ministere_interieur.fondations(siren_or_siret_or_rnf)` — Données fondations
+  (SIAF / Ministère de l'Intérieur), `/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}`.
+  Available on staging only for now (endpoint in "prochainement" mode).
+
 ## [0.2.0] - 2026-05-19
 
 ### Added

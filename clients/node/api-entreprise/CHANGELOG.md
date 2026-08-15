@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+
+### Added
+- `ministere_interieur.fondations(siren_or_siret_or_rnf)` — Données fondations
+  (SIAF / Ministère de l'Intérieur), `/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}`.
+  Available on staging only for now (endpoint in "prochainement" mode).
+
 ## 0.2.0
 
 ### Added
