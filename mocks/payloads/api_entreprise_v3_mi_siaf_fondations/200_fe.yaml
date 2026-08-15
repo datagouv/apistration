@@ -1,0 +1,101 @@
+---
+description: 'Fondation d''entreprise (FE) à durée déterminée, avec un dirigeant représentant une personne morale'
+params:
+  siren_or_siret_or_rnf: '075-fe-00117-05'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiants": {
+        "rnf": "075-FE-00117-05",
+        "siren": "987654321",
+        "siret": "98765432100012"
+      },
+      "identite": {
+        "service_instructeur": "75",
+        "type_fondation": "FE",
+        "denomination": "FONDATION D'ENTREPRISE EXEMPLE",
+        "etat": "Active",
+        "date_effet_etat": "2019-05-15",
+        "date_creation": "2019-05-15",
+        "date_terme": "2029-05-14",
+        "date_cloture_exercice": "12-31",
+        "adresse_siege": {
+          "adresse_complete": "25 Avenue Exemple 75008 Paris",
+          "numero_voie": "25",
+          "nom_voie": "Avenue Exemple",
+          "code_postal": "75008",
+          "commune": "Paris 8e Arrondissement",
+          "code_insee_commune": "75108",
+          "departement": "75",
+          "pays": "France"
+        },
+        "courriel": "fondation@entreprise-exemple.fr",
+        "telephone": "+33144556677"
+      },
+      "activite": {
+        "objet_social": "Financer des actions d'intérêt général dans le domaine de l'éducation et de l'insertion professionnelle des jeunes.",
+        "domaine_interet_general": "Éducatif, Social",
+        "activite_internationale_prevue_par_statuts": true
+      },
+      "dirigeants": [
+        {
+          "nom": "MOREAU",
+          "prenom": "Claire",
+          "date_naissance": "1972-09-18",
+          "nationalite": "France",
+          "adresse_domiciliation": {
+            "adresse_complete": "12 Rue Exemple 92100 Boulogne-Billancourt",
+            "code_postal": "92100",
+            "commune": "Boulogne-Billancourt",
+            "pays": "France"
+          },
+          "pays_residence": "France",
+          "profession": "Directrice générale",
+          "date_entree_fonction": "2019-05-15",
+          "date_sortie_fonction": null,
+          "fonction": "Présidente",
+          "qualite": "Membre du conseil d'administration",
+          "fondateur": false,
+          "personne_morale": {
+            "type": "Entreprise",
+            "identifiant": "98765432100012",
+            "denomination": "ENTREPRISE EXEMPLE",
+            "pays": "France"
+          }
+        }
+      ],
+      "liens_entre_organismes": {
+        "organisme_issu_transformation": null,
+        "organisme_issu_fusion": null,
+        "organismes_issus_scission": []
+      },
+      "situation_financiere": {
+        "annees_subventions_publiques": [],
+        "annees_appel_generosite_publique": [],
+        "annees_financements_etrangers": [2024]
+      },
+      "dossiers": {
+        "etat_transmission_comptes": "En défaut",
+        "exercices_comptables_transmis": [2022, 2023]
+      },
+      "documents": [
+        {
+          "id": "8a1b2c3d-4e5f-11f1-aed1-4faba2bb8c0b",
+          "type": "Statuts",
+          "nom_original": "Statuts fondation entreprise.pdf",
+          "type_mime": "application/pdf",
+          "date_depot": "2026-03-12"
+        },
+        {
+          "id": "8a1b2c3d-4e5f-11f1-aed1-4faba2bb8c0c",
+          "type": "Procès verbal",
+          "nom_original": "PV conseil administration 2025.pdf",
+          "type_mime": "application/pdf",
+          "date_depot": "2026-03-12"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
