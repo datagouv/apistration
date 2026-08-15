@@ -1,3 +1,11 @@
+- date: 2026-08-17
+  scope: api_entreprise
+  title: "Données fondations (SIAF) : nouvelle API disponible en environnement de test"
+  description: |
+    Une nouvelle API [Données fondations](<%= endpoint_path(uid: 'siaf/fondations') %>) expose les données du **Répertoire National des Fondations (RNF)**, opéré par le Ministère de l'Intérieur via le SIAF : identité, activité, dirigeants, situation financière déclarative, conformité comptable et pièces justificatives des fondations (FRUP, fondations d'entreprise, fonds de dotation).
+
+    Elle est pour l'instant **appelable uniquement sur l'environnement de test** (`https://staging.entreprise.api.gouv.fr`), avec des données fictives, afin de permettre aux futurs consommateurs de préparer leurs intégrations avant la mise en production.
+
 - date: 2026-07-22
   scope: both
   title: "Bureau ouvert : passage au jeudi"
