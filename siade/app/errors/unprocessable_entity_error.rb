@@ -25,6 +25,7 @@ class UnprocessableEntityError < ApplicationError
       month: '00305',
       code_insee_commune: '00306',
       siren_or_siret_or_rna: '00330',
+      siren_or_siret_or_rnf: '00331',
       uuid: '00314',
       # DGFIP entreprise
       year: '00307',

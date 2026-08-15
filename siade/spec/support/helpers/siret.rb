@@ -136,3 +136,7 @@ end
 def association_siret
   '19590183000024'
 end
+
+def fondation_siret
+  '78430893400016'
+end

@@ -26,6 +26,7 @@ shared:
       - api_entreprise_v3_mi_associations
       - api_entreprise_v3_mi_unites_legales
       - api_entreprise_v3_mi_unites_legales_open_data
+      - api_entreprise_v3_mi_siaf_fondations
       - api_entreprise_v3_dgddi_eori
       - api_entreprise_v3_infogreffe_mandataires_sociaux
       - api_entreprise_v3_infogreffe_extraits_rcs

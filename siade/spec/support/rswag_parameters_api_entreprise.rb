@@ -31,6 +31,14 @@ module RSwagParametersAPIEntreprise
       examples: SwaggerData.get('parameters.siren_or_rna.examples')
   end
 
+  def parameter_siren_or_siret_or_rnf
+    parameter name: :siren_or_siret_or_rnf,
+      in: :path,
+      type: :string,
+      description: SwaggerData.get('parameters.siren_or_siret_or_rnf.description'),
+      examples: SwaggerData.get('parameters.siren_or_siret_or_rnf.examples')
+  end
+
   def parameter_siret_or_eori
     parameter name: :siret_or_eori,
       in: :path,

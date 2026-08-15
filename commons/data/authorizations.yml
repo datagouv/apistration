@@ -153,6 +153,8 @@ shared:
   api_entreprise/v3_and_more/mi/unites_legales:
     - associations_donnees_protegees
     - associations_djepva
+  api_entreprise/v3_and_more/mi/siaf/fondations:
+    - fondations
   api_entreprise/v3_and_more/mi/unites_legales_open_data:
     - associations
     - open_data
