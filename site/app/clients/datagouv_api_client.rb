@@ -32,11 +32,11 @@ class DatagouvAPIClient
   private
 
   def host
-    ENV.fetch('DATAGOUV_HOST')
+    AdminApientreprise.credentials[:datagouv_host]
   end
 
   def token
-    ENV.fetch('DATAGOUV_API_TOKEN')
+    AdminApientreprise.credentials[:datagouv_api_token]
   end
 
   def http_connection(&block)

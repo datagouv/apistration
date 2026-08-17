@@ -7,9 +7,7 @@ RSpec.describe DatagouvAPIClient do
   let(:token) { 'test-token' }
 
   before do
-    allow(ENV).to receive(:fetch).and_call_original
-    allow(ENV).to receive(:fetch).with('DATAGOUV_HOST').and_return(host)
-    allow(ENV).to receive(:fetch).with('DATAGOUV_API_TOKEN').and_return(token)
+    allow(AdminApientreprise).to receive(:credentials).and_return(datagouv_host: host, datagouv_api_token: token)
   end
 
   describe '#list_dataservices' do
