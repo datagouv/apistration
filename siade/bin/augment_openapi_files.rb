@@ -11,12 +11,14 @@ def augment_with_maintenances(schema, path, maintenances)
 end
 
 def augment_with_code_samples(schema, path)
+  staging_only = schema.dig('get', 'tags')&.include?('Prochainement') || false
+
   schema['get'].merge!({
     'x-codeSamples' => [
       {
         'lang' => 'cURL',
         'label' => 'Ligne de commande',
-        'source' => GenerateCodeSampleFromPath.new(path).perform
+        'source' => GenerateCodeSampleFromPath.new(path, staging: staging_only).perform
       }
     ]
   }.compact)

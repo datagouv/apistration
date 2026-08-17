@@ -1,19 +1,28 @@
 class GenerateCodeSampleFromPath
-  def initialize(path)
+  def initialize(path, staging: false)
     @path = path
+    @staging = staging
   end
 
   # rubocop:disable Layout/LineContinuationLeadingSpace
   def perform
     "curl -X GET \\\n" \
       "  -H \"Authorization: Bearer $token\" \\\n" \
-      "  --url \"https://entreprise.api.gouv.fr#{interpolated_path}#{query_params}\""
+      "  --url \"#{host}#{interpolated_path}#{query_params}\""
   end
   # rubocop:enable Layout/LineContinuationLeadingSpace
 
   private
 
   attr_reader :path
+
+  def host
+    if @staging
+      'https://staging.entreprise.api.gouv.fr'
+    else
+      'https://entreprise.api.gouv.fr'
+    end
+  end
 
   # rubocop:disable Metrics/MethodLength
   def interpolated_path
