@@ -51,5 +51,23 @@ RSpec.describe Datagouv::SyncFichesRemoteService do
         }.to(change { File.read(Rails.root.join('log/datagouv.log').to_s) })
       end
     end
+
+    context 'when the sync raises an unexpected error' do
+      before { allow(Datagouv::SyncRunner).to receive(:new).and_raise(KeyError, 'key not found: :datagouv_host') }
+
+      it 'reports the error to Sentry instead of raising' do
+        expect(Sentry).to receive(:capture_exception).with(instance_of(KeyError))
+
+        expect { perform }.not_to raise_error
+      end
+
+      it 'still releases the lock' do
+        allow(Sentry).to receive(:capture_exception)
+
+        perform
+
+        expect(Rails.cache.exist?('datagouv_sync_in_progress', namespace: described_class::LOCK_NAMESPACE)).to be false
+      end
+    end
   end
 end

@@ -5,13 +5,17 @@ module Datagouv
     def perform
       return unless acquire_lock!
 
-      logger.info('Start syncing fiches with data.gouv.fr')
+      begin
+        logger.info('Start syncing fiches with data.gouv.fr')
 
-      result = SyncRunner.new(endpoints).call
+        result = SyncRunner.new(endpoints).call
 
-      logger.info("End syncing fiches with data.gouv.fr (#{result ? 'success' : 'with failures'})")
-
-      release_lock!
+        logger.info("End syncing fiches with data.gouv.fr (#{result ? 'success' : 'with failures'})")
+      rescue StandardError => e
+        Sentry.capture_exception(e)
+      ensure
+        release_lock!
+      end
     end
 
     private
