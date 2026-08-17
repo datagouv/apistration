@@ -16,14 +16,24 @@ RSpec.describe Datagouv::SyncFichesRemoteService do
       end
     end
 
+    it 'locks under a namespace that does not depend on the cache store default' do
+      allow(Rails.cache).to receive(:write).and_call_original
+
+      perform
+
+      expect(Rails.cache).to have_received(:write).with(
+        'datagouv_sync_in_progress', true, hash_including(namespace: described_class::LOCK_NAMESPACE)
+      )
+    end
+
     it 'releases the lock after the sync completes' do
       perform
 
-      expect(Rails.cache.exist?('datagouv_sync_in_progress')).to be false
+      expect(Rails.cache.exist?('datagouv_sync_in_progress', namespace: described_class::LOCK_NAMESPACE)).to be false
     end
 
     context 'when the lock is already held' do
-      before { Rails.cache.write('datagouv_sync_in_progress', true) }
+      before { Rails.cache.write('datagouv_sync_in_progress', true, namespace: described_class::LOCK_NAMESPACE) }
 
       it 'does not run the sync' do
         perform
