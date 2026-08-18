@@ -1,6 +1,8 @@
 module Datagouv
-  class SyncFichesRemoteService
+  class SyncFichesJob < ApplicationJob
     LOCK_NAMESPACE = 'datagouv_sync'.freeze
+
+    retry_on StandardError, wait: :polynomially_longer, attempts: 5
 
     def perform
       return unless acquire_lock!
@@ -11,8 +13,6 @@ module Datagouv
         result = SyncRunner.new(endpoints).call
 
         logger.info("End syncing fiches with data.gouv.fr (#{result ? 'success' : 'with failures'})")
-      rescue StandardError => e
-        Sentry.capture_exception(e)
       ensure
         release_lock!
       end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Datagouv::SyncFichesRemoteService do
+RSpec.describe Datagouv::SyncFichesJob do
   describe '#perform' do
     subject(:perform) { described_class.new.perform }
 
@@ -55,16 +55,16 @@ RSpec.describe Datagouv::SyncFichesRemoteService do
     context 'when the sync raises an unexpected error' do
       before { allow(Datagouv::SyncRunner).to receive(:new).and_raise(KeyError, 'key not found: :datagouv_host') }
 
-      it 'reports the error to Sentry instead of raising' do
-        expect(Sentry).to receive(:capture_exception).with(instance_of(KeyError))
-
-        expect { perform }.not_to raise_error
+      it 'lets the job raise so ActiveJob retries it' do
+        expect { perform }.to raise_error(KeyError)
       end
 
-      it 'still releases the lock' do
-        allow(Sentry).to receive(:capture_exception)
-
-        perform
+      it 'still releases the lock before re-raising' do
+        begin
+          perform
+        rescue KeyError
+          nil
+        end
 
         expect(Rails.cache.exist?('datagouv_sync_in_progress', namespace: described_class::LOCK_NAMESPACE)).to be false
       end
