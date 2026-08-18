@@ -1,0 +1,19 @@
+---
+description: "Dossier non trouvé"
+params:
+  ine: '9999999999Z'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "26003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
+        "source": null,
+        "meta": {
+          "provider": "CNOUS"
+        }
+      }
+    ]
+  }

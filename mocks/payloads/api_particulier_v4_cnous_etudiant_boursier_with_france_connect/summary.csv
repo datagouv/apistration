@@ -23,6 +23,19 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Dossier non trouvé,"{""nomNaissance"":""NOEL""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""26003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun étudiant boursier n'a pu être trouvé."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNOUS""
+      }
+    }
+  ]
+}"
 ,Cas de test avec jeton FranceConnect de test - Non boursier,"{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002""}",200,"{
   ""data"": {
     ""statut_boursier"": {

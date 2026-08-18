@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+404,Payload MI Unités légales - not found 404,"{""siren_or_rna"":""W000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""29003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""DJEPVA""
+      }
+    }
+  ]
+}"
 ,Association,"{""siren_or_rna"":""389486242""}",200,"{
   ""data"": {
     ""rna"": ""W301000624"",

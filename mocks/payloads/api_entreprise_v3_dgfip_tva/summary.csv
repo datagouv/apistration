@@ -8,3 +8,16 @@ Titre,Description,Paramètres,Status,Réponse
     ""date_derniere_mise_a_jour"": ""2026-06-11""
   }
 }"
+404,Payload DGFIP Numéro de TVA intracommunautaire - not found 404,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""43003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""DGFIP - TVA""
+      }
+    }
+  ]
+}"

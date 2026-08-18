@@ -46,3 +46,54 @@
 
   </p>
   </details>
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Payload DGFIP Numéro de TVA intracommunautaire - not found 404
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren": "000000000"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "43003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "source": null,
+        "meta": {
+          "provider": "DGFIP - TVA"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000000/numero_tva"
+  ```
+
+  </p>
+  </details>

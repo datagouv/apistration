@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+404,Payload INSEE Sièges des unités légales - not found 404,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""01003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""INSEE""
+      }
+    }
+  ]
+}"
 Associations,Payload INSEE Siège Unité Légale des Associations - succès 200,"{""siren"":""775672272""}",200,"{
   ""data"": {
     ""siret"": ""77567227221138"",
