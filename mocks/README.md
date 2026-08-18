@@ -294,8 +294,7 @@ payloads automatiquement, sans étape de rechargement séparée.
   - Si vous êtes à l'aise avec Github, vous pouvez ajouter vous-même les fichiers des cas de tests que vous souhaitez, au travers d'une Pull Request ;
   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/datagouv/apistration/issues/new?template=ajout-payloads.md)
 - Pour un endpoint n'ayant pas encore de dossier dans [`payloads/`](./payloads) :
-  - Si vous êtes à l'aise avec Github, vous pouvez créer un dossier dans [`future_payloads/`](./future_payloads) à l'aide d'une Pull Request ;
-  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/datagouv/apistration/issues/new?template=proposer-une-am-lioration.md).
+  - Vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/datagouv/apistration/issues/new?template=proposer-une-am-lioration.md).
 
 ## <a name="developpement"></a> Développement
 
