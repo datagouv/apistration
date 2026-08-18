@@ -79,7 +79,8 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
-        description_plain_text: "Une description avec du `code`, [des liens](url) et\ndes *emphases*_soulignées_.",
+        description: "Une description avec du `code`, [des liens](url) et\ndes *emphases*_soulignées_.",
+        datagouv_summary: nil,
         call_id: 'SIREN',
         provider_uids: ['insee'],
         keywords: ['test'],
@@ -104,7 +105,8 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
-        description_plain_text: 'A' * 400,
+        description: 'A' * 400,
+        datagouv_summary: nil,
         call_id: 'SIREN',
         provider_uids: ['insee'],
         keywords: ['test'],
@@ -116,6 +118,30 @@ RSpec.describe Datagouv::FichePayloadBuilder do
     it 'truncates the summary line' do
       expect(payload[:description]).to include("#{'A' * 297}...")
       expect(payload[:description]).not_to include('A' * 298)
+    end
+  end
+
+  context 'with an authored datagouv_summary' do
+    let(:endpoint) do
+      instance_double(
+        APIEntreprise::Endpoint,
+        uid: 'test/uid',
+        api: 'api_entreprise',
+        opening: 'protected',
+        redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
+        title: 'Test',
+        description: 'Un `swagger` très verbeux que personne ne veut lire tel quel.',
+        datagouv_summary: 'Une phrase claire écrite à la main.',
+        call_id: 'SIREN',
+        provider_uids: ['insee'],
+        keywords: ['test'],
+        providers: [instance_double(APIEntreprise::Provider, name: 'INSEE')],
+        throttle: nil
+      )
+    end
+
+    it 'uses it as-is instead of deriving the summary line from the swagger description' do
+      expect(payload[:description]).to include('**Une phrase claire écrite à la main.**')
     end
   end
 
@@ -163,7 +189,8 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
-        description_plain_text: 'Description de test.',
+        description: 'Description de test.',
+        datagouv_summary: nil,
         call_id: 'SIREN',
         provider_uids: ['insee'],
         keywords: ['test'],
@@ -188,7 +215,8 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
-        description_plain_text: 'Description de test.',
+        description: 'Description de test.',
+        datagouv_summary: nil,
         call_id: 'SIREN',
         provider_uids: nil,
         keywords: ['test'],

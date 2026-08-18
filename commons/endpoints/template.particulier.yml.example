@@ -4,6 +4,11 @@ fiche:
   # On utilise en général <provider>/<resource>
   # N'importe quelle valeur fonctionne tant qu'elle est unique
   - uid: 'pole_emploi/situation'
+    # Optionnel. Résumé en une phrase de ce que permet d'obtenir cette API, utilisé
+    # tel quel dans la description de la fiche data.gouv.fr (site/app/services/datagouv/).
+    # À défaut, ce résumé est dérivé automatiquement (et plus grossièrement) de la
+    # description du endpoint dans le swagger.
+    # datagouv_summary: "Situation d'un individu vis-à-vis de France Travail."
     # Ne peut être que public ou protected
     opening: public
     # Le(s) paramètre(s) utilisé pour appeller l'endpoint

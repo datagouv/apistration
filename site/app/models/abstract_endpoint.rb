@@ -20,6 +20,7 @@ class AbstractEndpoint
     :keywords,
     :api_cgu,
     :datagouv_uid,
+    :datagouv_summary,
     :socle_de_base,
     :sync_with_datagouv
 
@@ -61,10 +62,6 @@ class AbstractEndpoint
 
   def description
     @description ||= open_api_definition['description']
-  end
-
-  def description_plain_text
-    ActionView::Base.full_sanitizer.sanitize(description.to_s)
   end
 
   def deprecated

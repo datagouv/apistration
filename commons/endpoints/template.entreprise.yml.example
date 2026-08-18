@@ -10,6 +10,11 @@ fiche:
     # sync_with_datagouv: false pour ne pas se marcher dessus (create/update/delete concurrents
     # sur la même fiche distante).
     # sync_with_datagouv: false
+    # Optionnel. Résumé en une phrase de ce que permet d'obtenir cette API, utilisé
+    # tel quel dans la description de la fiche data.gouv.fr (site/app/services/datagouv/).
+    # À défaut, ce résumé est dérivé automatiquement (et plus grossièrement) de la
+    # description du endpoint dans le swagger.
+    # datagouv_summary: "Liste des bénéficiaires effectifs d'une unité légale."
     # Optionnel. À renseigner uniquement si cette API fait partie du Socle de base DLNUF.
     # Omettre la clé si l'API n'en fait pas partie.
     socle_de_base:

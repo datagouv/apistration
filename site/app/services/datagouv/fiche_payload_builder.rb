@@ -99,12 +99,18 @@ module Datagouv
     end
 
     def summary_line
-      endpoint.description_plain_text
+      return endpoint.datagouv_summary.strip.truncate(SUMMARY_LINE_MAX_LENGTH) if endpoint.datagouv_summary.present?
+
+      description_plain_text
         .gsub(/\s+/, ' ')
         .gsub(/[*_`\[\]]/, '')
         .strip
         .sub(/\.+\s*\z/, '')
         .truncate(SUMMARY_LINE_MAX_LENGTH)
+    end
+
+    def description_plain_text
+      ActionView::Base.full_sanitizer.sanitize(endpoint.description.to_s)
     end
 
     def call_id_text
