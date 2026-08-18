@@ -70,6 +70,20 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility v5', api
             end
           end
         end
+
+        context 'when the student is not found' do
+          before do
+            mock_cnous_not_found_call('civility')
+          end
+
+          response '404', 'Étudiant non identifié' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(NotFoundError.new('CNOUS', "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis.", with_identifiant_message: false))
+
+            run_test!
+          end
+        end
       end
     end
   end

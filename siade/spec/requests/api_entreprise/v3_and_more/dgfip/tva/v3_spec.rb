@@ -41,6 +41,22 @@ RSpec.describe 'DGFIP: Numéro de TVA intracommunautaire', api: :entreprise, typ
           run_test!
         end
 
+        context 'when the provider returns no result' do
+          before do
+            mock_dgfip_numero_tva_not_found(siren)
+          end
+
+          let(:siren) { valid_siren(:dgfip) }
+
+          response '404', 'Non trouvé' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(NotFoundError.new('DGFIP - TVA'))
+
+            run_test!
+          end
+        end
+
         describe 'server errors' do
           unprocessable_content_error_request(:siren)
 

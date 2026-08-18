@@ -89,6 +89,18 @@ module ProviderStubs::DGFIP
       .to_return(status:)
   end
 
+  def mock_dgfip_numero_tva_not_found(siren)
+    tva = TVAIntracommunautaire.new(siren)
+    computed_vat_no = "#{tva.cle}#{siren}"
+    body = {
+      data: [],
+      meta: { total: 0 }
+    }
+    stub_request(:get, %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/})
+      .with(query: hash_including('vat_no__exact' => computed_vat_no))
+      .to_return(status: 200, body: body.to_json)
+  end
+
   def mock_valid_dgfip_dictionnaire(year)
     mock_dgfip_authenticate
 

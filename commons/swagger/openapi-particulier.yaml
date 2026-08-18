@@ -11657,6 +11657,26 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Étudiant non identifié
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_26003:
+                  value:
+                    errors:
+                    - code: '26003'
+                      title: Entité non trouvée
+                      detail: Aucun étudiant boursier n'a pu être trouvé avec les
+                        critères de recherche fournis.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Entité non trouvée
+                  description: Aucun étudiant boursier n'a pu être trouvé avec les
+                    critères de recherche fournis.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '401':
           description: Non autorisé
           content:
@@ -11979,6 +11999,24 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Étudiant non identifié
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_26003:
+                  value:
+                    errors:
+                    - code: '26003'
+                      title: Entité non trouvée
+                      detail: Aucun étudiant boursier n'a pu être trouvé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Entité non trouvée
+                  description: Aucun étudiant boursier n'a pu être trouvé.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '401':
           description: Non autorisé
           content:
@@ -12367,6 +12405,28 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Étudiant non identifié
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_26003:
+                  value:
+                    errors:
+                    - code: '26003'
+                      title: Entité non trouvée
+                      detail: Aucun étudiant boursier n'a pu être trouvé avec les
+                        critères de recherche fournis. Veuillez vérifier que l'identifiant
+                        correspond au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Entité non trouvée
+                  description: Aucun étudiant boursier n'a pu être trouvé avec les
+                    critères de recherche fournis. Veuillez vérifier que l'identifiant
+                    correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '401':
           description: Non autorisé
           content:
@@ -12863,6 +12923,26 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Étudiant non identifié
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_26003:
+                  value:
+                    errors:
+                    - code: '26003'
+                      title: Entité non trouvée
+                      detail: Aucun étudiant boursier n'a pu être trouvé avec les
+                        critères de recherche fournis.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Entité non trouvée
+                  description: Aucun étudiant boursier n'a pu être trouvé avec les
+                    critères de recherche fournis.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '401':
           description: Non autorisé
           content:
@@ -13192,6 +13272,24 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Étudiant non identifié
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_26003:
+                  value:
+                    errors:
+                    - code: '26003'
+                      title: Entité non trouvée
+                      detail: Aucun étudiant boursier n'a pu être trouvé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Entité non trouvée
+                  description: Aucun étudiant boursier n'a pu être trouvé.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '401':
           description: Non autorisé
           content:
@@ -13587,6 +13685,28 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Étudiant non identifié
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_26003:
+                  value:
+                    errors:
+                    - code: '26003'
+                      title: Entité non trouvée
+                      detail: Aucun étudiant boursier n'a pu être trouvé avec les
+                        critères de recherche fournis. Veuillez vérifier que l'identifiant
+                        correspond au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Entité non trouvée
+                  description: Aucun étudiant boursier n'a pu être trouvé avec les
+                    critères de recherche fournis. Veuillez vérifier que l'identifiant
+                    correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '401':
           description: Non autorisé
           content:
