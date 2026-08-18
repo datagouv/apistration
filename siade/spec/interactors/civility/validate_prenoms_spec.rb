@@ -9,6 +9,14 @@ RSpec.describe Civility::ValidatePrenoms, type: :validate_params do
     its(:errors) { is_expected.to be_empty }
   end
 
+  context 'when a prenom is a comma-separated composite name' do
+    let(:prenoms) { ['LILY-ROSE, CLARA'] }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
   context 'with invalid user_id' do
     context 'when prenoms is empty' do
       let(:prenoms) { [] }
