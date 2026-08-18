@@ -56,6 +56,19 @@ RSpec.describe INSEE::RenewPassword, type: :interactor do
     it 'fails with a ProviderAuthenticationError' do
       expect(renew.errors.first).to be_a(ProviderAuthenticationError)
     end
+
+    it 'raises a Sentry alert' do
+      expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+        'error',
+        'Fail to rotate INSEE password',
+        {
+          http_response_code: '400',
+          http_response_body: '{"message":"Ancien mot de passe incorrect"}'
+        }
+      )
+
+      renew
+    end
   end
 
   context 'when the new password is invalid (400)' do

@@ -38,7 +38,20 @@ class INSEE::RenewPassword < MakeRequest::Post
   end
 
   def fail_with_authentication_error!
+    track_renewal_rejected!
+
     context.errors << ProviderAuthenticationError.new(context.provider_name)
     context.fail!
+  end
+
+  def track_renewal_rejected!
+    MonitoringService.instance.track_with_added_context(
+      'error',
+      'Fail to rotate INSEE password',
+      {
+        http_response_code: context.response&.code,
+        http_response_body: context.response&.body
+      }
+    )
   end
 end
