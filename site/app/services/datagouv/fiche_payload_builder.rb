@@ -43,7 +43,7 @@ module Datagouv
     end
 
     def title
-      "API #{endpoint.title} - #{provider_name} | Bouquet API #{config[:display_name]}"
+      "API #{endpoint.title} - #{providers_name} | Bouquet API #{config[:display_name]}"
     end
 
     def business_documentation_url
@@ -92,10 +92,10 @@ module Datagouv
       public_send(config[:machine_documentation_url_helper], host: url_host, protocol: 'https')
     end
 
-    def provider_name
+    def providers_name
       return nil if endpoint.provider_uids.blank?
 
-      endpoint.providers.first&.name
+      endpoint.providers.map(&:name).join(' & ')
     end
 
     def summary_line
@@ -115,7 +115,7 @@ module Datagouv
       <<~MARKDOWN
         > L'[#{title}](#{business_documentation_url}) permet d'obtenir les informations suivantes : **#{summary_line}**.
 
-        ➡️ **Cette API fait partie du bouquet [API #{config[:display_name]}](#{config[:base_api_url]}/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de #{provider_name}.
+        ➡️ **Cette API fait partie du bouquet [API #{config[:display_name]}](#{config[:base_api_url]}/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de #{providers_name}.
 
         - #{restricted? ? '🔐' : '✅'} **#{restricted? ? 'Uniquement accessible aux administrations et collectivités' : 'Accessible à tous'}**.
         - ☎️ **Modalité d'appel** : #{call_id_text}.
