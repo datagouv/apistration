@@ -104,7 +104,7 @@ fr:
             label: Infogreffe || API Mandataires sociaux
           associations_donnees_protegees:
             label: Djepva || API Données association
-          fondations:
+          fondations_mi_siaf:
             label: SIAF || API Données fondations
           associations_djepva:
             label: Djepva || API Données ouvertes association
