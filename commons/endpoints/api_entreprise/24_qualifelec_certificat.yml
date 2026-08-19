@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'qualifelec/certificats'
+    datagouv_summary: "Certification Qualifelec attestant des qualifications d'une entreprise en génie électrique et énergétique."
     datagouv_uid: '672cf6baa316ad54c9a7f19b'
     socle_de_base:
       comment: |-

@@ -187,6 +187,7 @@ fiche:
                       format: date
                       example: '2022-03-03'
   - uid: 'qualibat/certifications_batiment'
+    datagouv_summary: "Certification Qualibat attestant de la qualification d'une entreprise dans le bâtiment."
     datagouv_uid: '672cf6b522535e70b5584c0e'
     socle_de_base:
       comment: |-

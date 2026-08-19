@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: "insee/successions"
+    datagouv_summary: "Liste des prédécesseurs et successeurs d'un établissement."
     datagouv_uid: '686d1bc04ebf5642dc5651c2'
     socle_de_base:
       comment: |-

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'insee/siege_social'
+    datagouv_summary: "Informations générales sur le siège social d'une unité légale inscrite au répertoire Sirene, y compris les données protégées en diffusion partielle."
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:
@@ -151,6 +152,7 @@ fiche:
           > **Depuis 2023, les personnes morales sont concernées par la \"diffusion partielle\"**. Si elles ont exercé ce droit, vous n'avez pas le droit de pré-remplir leur données de localisation : géolocalisation, numéro et voie de l'adresse postale. La commune reste diffusible.
 
   - uid: 'insee/siege_social_diffusibles'
+    datagouv_summary: "Informations générales publiques sur le siège d'une unité légale inscrite au répertoire Sirene."
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:

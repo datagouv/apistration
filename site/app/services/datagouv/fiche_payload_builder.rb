@@ -99,14 +99,9 @@ module Datagouv
     end
 
     def summary_line
-      return endpoint.datagouv_summary.strip.truncate(SUMMARY_LINE_MAX_LENGTH) if endpoint.datagouv_summary.present?
+      text = endpoint.datagouv_summary.presence || description_plain_text.gsub(/[*_`\[\]]/, '')
 
-      description_plain_text
-        .gsub(/\s+/, ' ')
-        .gsub(/[*_`\[\]]/, '')
-        .strip
-        .sub(/\.+\s*\z/, '')
-        .truncate(SUMMARY_LINE_MAX_LENGTH)
+      text.gsub(/\s+/, ' ').strip.sub(/\.+\s*\z/, '').truncate(SUMMARY_LINE_MAX_LENGTH)
     end
 
     def description_plain_text

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'data_subvention/subventions'
+    datagouv_summary: "Liste des subventions accordées et versées à une association."
     datagouv_uid: '688c8481c61a585172d3d42c'
     socle_de_base:
       comment: |-

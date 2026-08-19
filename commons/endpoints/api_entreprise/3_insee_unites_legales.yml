@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'insee/unites_legales'
+    datagouv_summary: "Informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene, y compris les données protégées en diffusion partielle."
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:
@@ -168,6 +169,7 @@ fiche:
           **Une [API spécifique est maintenant disponible en V.3](<%= endpoint_path(uid: 'commission_europeenne/numero_tva') %>)** et permet de connaître le numéro intracommunautaire français d'une unité légale. Cette API effectue une vérification auprès du service compétent de la Commission européenne.
 
   - uid: 'insee/unites_legales_diffusibles'
+    datagouv_summary: "Informations de référence publiques d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene."
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:

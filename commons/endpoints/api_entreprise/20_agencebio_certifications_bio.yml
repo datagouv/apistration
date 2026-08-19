@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'agence_bio/certifications_bio'
+    datagouv_summary: "Certifications biologiques en cours d'une entreprise ou d'une association."
     socle_de_base:
       comment: |-
         Préremplir les certifications en agriculture biologique d'une entreprise.

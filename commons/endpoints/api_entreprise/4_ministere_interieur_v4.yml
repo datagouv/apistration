@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'djepva/associations'
+    datagouv_summary: "Informations et documents de référence d'une association et de ses établissements, issus du répertoire national des associations (RNA) et des documents administratifs complémentaires."
     datagouv_uid: '672cf6af6d09c75cace6a62b'
     sync_with_datagouv: false
     socle_de_base:
@@ -102,6 +103,7 @@ fiche:
         a: |+
           Vous pouvez l'orienter vers le [site officiel Le compte Asso](https://lecompteasso.associations.gouv.fr/declarer-un-changement-de-situation-de-mon-association/){:target="_blank"} où elle pourra déclarer son changement de situation.
   - uid: 'djepva/associations_open_data'
+    datagouv_summary: "Informations et documents de référence publics d'une association et de ses établissements, issus du répertoire national des associations (RNA)."
     datagouv_uid: '672cf6af6d09c75cace6a62b'
     sync_with_datagouv: false
     socle_de_base:

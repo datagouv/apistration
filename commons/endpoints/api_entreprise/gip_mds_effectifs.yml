@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'gip_mds/effectifs_annuels_unite_legale'
+    datagouv_summary: "Effectifs annuels d'une unité légale, régimes général et agricole, issus de l'Urssaf et de la MSA via le GIP-MDS."
     datagouv_uid: '672cf6b06452c7d61849433e'
     path: '/v3/gip_mds/unites_legales/{siren}/effectifs_annuels/{year}'
     controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise'
@@ -161,6 +162,7 @@ fiche:
             
             [Pour en savoir plus, consulter cette page de l'Agefiph](https://www.agefiph.fr/centre-aide/effectif-dassujettissement){:target="_blank"}.
   - uid: 'gip_mds/effectifs_mensuels_etablissement'
+    datagouv_summary: "Effectifs mensuels d'un établissement, régimes général et agricole, issus de l'Urssaf et de la MSA via le GIP-MDS."
     datagouv_uid: '672cf6b0a37a79f6ff3e3255'
     path: '/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}'
     controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement'

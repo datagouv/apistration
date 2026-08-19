@@ -140,8 +140,8 @@ RSpec.describe Datagouv::FichePayloadBuilder do
       )
     end
 
-    it 'uses it as-is instead of deriving the summary line from the swagger description' do
-      expect(payload[:description]).to include('**Une phrase claire écrite à la main.**')
+    it 'uses it (minus its trailing period) instead of deriving the summary line from the swagger description' do
+      expect(payload[:description]).to include('**Une phrase claire écrite à la main**.')
     end
   end
 

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/allocation_rentree_scolaire'
+    datagouv_summary: "Statut bénéficiaire de l'allocation de rentrée scolaire (ARS)."
     opening: protected
     path: '/v3/dss/allocation_rentree_scolaire/identite'
     controller: 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_civility'

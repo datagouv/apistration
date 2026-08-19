@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'ants/extrait_immatriculation_vehicule'
+    datagouv_summary: "Extrait d'immatriculation d'un véhicule et identité du demandeur du dossier."
     datagouv_uid: '6941379e0923b854aa9bf30d'
     opening: protected
     call_id:

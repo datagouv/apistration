@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'infogreffe/rcs/extrait'
+    datagouv_summary: "Extrait du registre du commerce et des sociétés (RCS) : informations générales, mandataires sociaux et commentaires des greffiers."
     datagouv_uid: '672cf6b622535e70b5584c0f'
     socle_de_base:
       comment: |-

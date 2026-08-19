@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnetp/attestations_cotisations_conges_payes_chomage_intemperies'
+    datagouv_summary: "Certificat de cotisations congés payés et chômage-intempéries pour une entreprise de travaux publics affiliée à la CNETP."
     datagouv_uid: '672cf6b5a474f2d73502b5d5'
     ping_url: 'https://entreprise.api.gouv.fr/ping/cnetp/attestation_cotisations_conges_payes_chomage_intemperies'
     path: '/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies'

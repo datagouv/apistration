@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'douanes/immatriculation_eori'
+    datagouv_summary: "État du numéro EORI d'une entreprise pour l'import/export en Union européenne."
     datagouv_uid: '672cf6b81092eab5f92dfaad'
     socle_de_base:
       comment: |-

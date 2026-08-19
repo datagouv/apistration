@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'dgfip/attestations_fiscales'
+    datagouv_summary: "Attestation fiscale délivrée par la DGFIP, indiquant que l'entreprise est à jour de ses obligations fiscales."
     datagouv_uid: '672cf6b2a474f2d73502b5d4'
     position: 250
     old_endpoint_uids:
