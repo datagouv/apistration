@@ -15,4 +15,16 @@ RSpec.describe GenerateCodeSampleFromPath, type: :service do
   it 'interpolates parameters with valid value' do
     expect(curl_example).to include('/v3/insee/sirene/unites_legales/130025265')
   end
+
+  it 'targets production by default' do
+    expect(curl_example).to include('https://entreprise.api.gouv.fr/v3')
+  end
+
+  context 'when the endpoint is staging only' do
+    subject(:curl_example) { described_class.new(path, staging: true).perform }
+
+    it 'targets the staging host' do
+      expect(curl_example).to include('https://staging.entreprise.api.gouv.fr/v3')
+    end
+  end
 end

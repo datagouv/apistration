@@ -79,6 +79,7 @@ class ErrorsBackend
       '41' => 'SDH',
       '42' => 'ANTS',
       '43' => 'DGFIP - TVA',
+      '44' => 'SIAF',
       '51' => 'FranceConnect',
       '52' => 'DataSubvention'
     }

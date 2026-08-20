@@ -1,13 +1,14 @@
 class GenerateCodeSampleFromPath
-  def initialize(path)
+  def initialize(path, staging: false)
     @path = path
+    @staging = staging
   end
 
   # rubocop:disable Layout/LineContinuationLeadingSpace
   def perform
     "curl -X GET \\\n" \
       "  -H \"Authorization: Bearer $token\" \\\n" \
-      "  --url \"https://entreprise.api.gouv.fr#{interpolated_path}#{query_params}\""
+      "  --url \"#{host}#{interpolated_path}#{query_params}\""
   end
   # rubocop:enable Layout/LineContinuationLeadingSpace
 
@@ -15,11 +16,19 @@ class GenerateCodeSampleFromPath
 
   attr_reader :path
 
+  def host
+    if @staging
+      'https://staging.entreprise.api.gouv.fr'
+    else
+      'https://entreprise.api.gouv.fr'
+    end
+  end
+
   # rubocop:disable Metrics/MethodLength
   def interpolated_path
     path.gsub(/\{[^}]+\}/) do |parameter|
       case parameter[1..-2]
-      when 'siret', 'siret_or_rna', 'siret_or_eori', 'siren_or_siret_or_rna'
+      when 'siret', 'siret_or_rna', 'siret_or_eori', 'siren_or_siret_or_rna', 'siren_or_siret_or_rnf'
         example_siret
       when 'siren', 'siren_or_rna'
         example_siret.first(9)

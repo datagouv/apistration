@@ -86,6 +86,19 @@ parameters:
         value: "775672272"
         summary: SIREN de la Croix-Rouge France
 
+  siren_or_siret_or_rnf:
+    description: "SIREN ou SIRET de la fondation, ou son identifiant au Répertoire National des Fondations (RNF). Environ 22 % des fondations n'ont pas de SIRET dans le référentiel : elles ne sont accessibles que par leur identifiant RNF."
+    examples:
+      maison_de_la_chimie_rnf:
+        value: "075-FRUP-00194-01"
+        summary: Identifiant RNF de la fondation Maison de la Chimie
+      maison_de_la_chimie_siren:
+        value: "784308934"
+        summary: SIREN de la fondation Maison de la Chimie
+      maison_de_la_chimie_siret:
+        value: "78430893400016"
+        summary: SIRET de la fondation Maison de la Chimie
+
   siret_or_eori:
     description: "Siret ou numéro EORI de l'entreprise"
     examples:

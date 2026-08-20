@@ -19,6 +19,9 @@ fr:
         associations:
           name: Associations
           icon: ri-store-2-line
+        fondations:
+          name: Fondations
+          icon: ri-building-line
         etablissements_entreprises:
           name: Établissements des entreprises
           icon: ri-building-line

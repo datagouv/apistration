@@ -39,6 +39,20 @@ module ApiEntreprise
           end
         @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "context" => context, "object" => object }.compact)
       end
+
+      # Données fondations
+      # Logical endpoint: /ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}
+      # Versions available: [3] — default: 3
+      def fondations(siren_or_siret_or_rnf, version: nil, recipient: nil, delegation_id: nil, context: nil, object: nil)
+        path =
+          case version || 3
+          when 3
+          "/v3/ministere_interieur/siaf/fondations/#{siren_or_siret_or_rnf}"
+          else
+            raise ArgumentError, "version #{version.inspect} not available for /ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}; supported: [3]"
+          end
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "context" => context, "object" => object }.compact)
+      end
     end
   end
 end

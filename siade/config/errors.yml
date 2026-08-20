@@ -166,6 +166,12 @@
   source:
     parameter: 'id'
 
+- code: '00331'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siren, le numéro de siret ou l'identifiant RNF indiqué n'est pas correctement formatté"
+  source:
+    parameter: 'id'
+
 - code: '00333'
   title: 'Entité non traitable'
   detail: "Le numéro de siren ou le numéro d'association indiqué n'est pas correctement formatté"

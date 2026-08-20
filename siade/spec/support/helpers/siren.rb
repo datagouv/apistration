@@ -82,6 +82,10 @@ def association_siren
   association_siret.first(9)
 end
 
+def fondation_siren
+  fondation_siret.first(9)
+end
+
 def la_poste_siren
   '356000000'
 end

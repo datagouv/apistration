@@ -1,0 +1,18 @@
+---
+description: 'Fondation non trouvée'
+params:
+  siren_or_siret_or_rnf: '099-fdd-99999-99'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "44003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "meta": {
+          "provider": "SIAF"
+        }
+      }
+    ]
+  }
