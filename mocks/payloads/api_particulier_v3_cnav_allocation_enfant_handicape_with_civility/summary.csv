@@ -19,7 +19,7 @@ Titre,Description,Paramètres,Status,Réponse
 
 Enfant mineur de l'allocataire `MERCIER PIERRE` (nom d'usage DUBOIS) du cas
 Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Cet enfant est éligible
-et bénéficiaire de l'AEEH.","{""nomNaissance"":""MERCIER"",""prenoms"":[""ROBERT""],""anneeDateNaissance"":2016,""moisDateNaissance"":3,""jourDateNaissance"":15,""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+et bénéficiaire de l'AEEH.","{""nomNaissance"":""MERCIER"",""prenoms"":[""ROBERT""],""anneeDateNaissance"":2007,""moisDateNaissance"":3,""jourDateNaissance"":15,""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
   ""data"": {
     ""status"": ""allocataire"",
     ""date_debut_droit"": ""2023-06-15""
