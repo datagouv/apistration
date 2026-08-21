@@ -754,9 +754,7 @@ inpi_rne:
 
   actes_bilans:
     title: "Actes et bilans"
-    description: |
-      Liste des actes et bilans d'une unité légale inscrite au répertoire national des entreprises (RNE).
-      Seuls les actes et bilans publiques sont distribués. L'INPI peut potentiellement posséder des actes et bilans "partiellement confidentiels".
+    description: 'Liste des actes et bilans d''une unité légale inscrite au répertoire national des entreprises (RNE). Seuls les actes et bilans publiques sont distribués. L''INPI peut potentiellement posséder des actes et bilans "partiellement confidentiels".'
     tags:
       - "Informations générales"
     attributes:

@@ -126,10 +126,7 @@ fiche:
           description: Numéro du présent certificat
           type: string
           example: 14 12 2819
-        description: 'Certification délivrée par l''association OPQIBI, attestant des différentes
-          qualifications d''ingénierie d''une unité légale.
-        
-          '
+        description: 'Certification délivrée par l''association OPQIBI, attestant des différentes qualifications d''ingénierie d''une unité légale.'
         tags:
         - Certifications professionnelles
         attributes:
