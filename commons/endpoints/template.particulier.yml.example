@@ -8,7 +8,7 @@ fiche:
     # tel quel dans la description de la fiche data.gouv.fr (site/app/services/datagouv/).
     # À défaut, ce résumé est dérivé automatiquement (et plus grossièrement) de la
     # description du endpoint dans le swagger.
-    # datagouv_summary: "Situation d'un individu vis-à-vis de France Travail."
+    datagouv_summary: "Situation d'un individu vis-à-vis de France Travail."
     # Ne peut être que public ou protected
     opening: public
     # Le(s) paramètre(s) utilisé pour appeller l'endpoint
