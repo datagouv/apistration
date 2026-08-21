@@ -118,3 +118,34 @@ bin/generate_swagger.sh
 3. Remplir fiche + swagger
 4. Creer la spec rswag dans `siade/spec/requests/`
 5. `cd siade && bin/generate_swagger.sh`
+6. Si `parameters:` contient `FranceConnect` (endpoint API Particulier),
+   mettre a jour la liste des API FranceConnectees (section dediee ci-dessous)
+
+## Modalite d'appel FranceConnect (API Particulier)
+
+Des qu'un endpoint API Particulier gagne ou perd `FranceConnect` dans son
+champ `parameters:` (nouvel endpoint ou modification d'un endpoint existant),
+mettre a jour le tableau "Liste des API FranceConnectees" dans
+`site/config/locales/api_particulier/fiches_pratiques_entries.fr.yml`
+(fiche `modalite_appel_france_connect`, ancre `liste-api-particulier-franceconnectees`).
+
+Ce tableau est **statique** (markdown ecrit a la main) : rien ne le
+regenere depuis les fiches, donc rien ne le garde synchronise
+automatiquement — une modification de `parameters:` sans mise a jour de ce
+tableau le rend perime silencieusement.
+
+- Champ de reference : `parameters:`, pas `call_id:` — `call_id` est un
+  champ legacy qui peut contenir des valeurs obsoletes (ex. `education_nationale/statut_eleve_scolarise`
+  liste encore `FranceConnect` dans `call_id` alors que ce n'est plus une
+  modalite disponible ; seul `parameters:` pilote le badge FranceConnect
+  affiche ailleurs sur le site, cf. `site/app/views/api_particulier/endpoints/_endpoint.html.erb`
+  et `_details.html.erb`).
+- Nom du fournisseur affiche dans la colonne : reprendre exactement le
+  `name:` du provider dans `site/config/locales/api_particulier/providers.fr.yml`
+  (acronymes en majuscules : `CNAF & MSA`, `MESRI`, `CNOUS`, pas `Cnaf & msa`/`Mesri`/`Cnous`).
+- Lien `[Fiche metier]` : `<%= endpoint_path(uid: '...') %>` avec le uid
+  exact de l'endpoint — un uid errone casse le rendu de la page.
+- Valider apres modification :
+  ```bash
+  cd site && bundle exec rspec spec/features/api_particulier/cas_usages_spec.rb
+  ```
