@@ -4,6 +4,17 @@ fiche:
   # On utilise en général <provider>/<resource>
   # N'importe quelle valeur fonctionne tant qu'elle est unique
   - uid: 'pole_emploi/situation'
+    # Optionnel. Id de la fiche dataservice correspondante sur data.gouv.fr. Sert de clé de
+    # jointure avec le catalogue Simplifions pour afficher les cas d'usage de cette API sur
+    # sa fiche (site/app/stores/simplifions_store.rb, cas_usages_for_datagouv_uid côté Grist).
+    # N'est PAS utilisé par le sync vers data.gouv.fr lui-même (site/app/services/datagouv/),
+    # qui retrouve la fiche distante via son business_documentation_url.
+    datagouv_uid: '...'
+    # Optionnel. À renseigner uniquement quand plusieurs fiches (couple dépréciée/actuelle...)
+    # partagent le même dataservice data.gouv.fr : une seule fiche doit piloter le sync
+    # (site/app/services/datagouv/), les autres passent sync_with_datagouv: false pour ne pas
+    # se marcher dessus (create/update/delete concurrents sur la même fiche distante).
+    sync_with_datagouv: false
     # Ne peut être que public ou protected
     opening: public
     # Le(s) paramètre(s) utilisé pour appeller l'endpoint

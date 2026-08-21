@@ -83,10 +83,7 @@ fiche:
     swagger:
       dgddi.eori:
         title: Immatriculation EORI
-        description: 'État du numéro EORI d''une entreprise indiquant si celle-ci est immatriculée
-          auprès des douanes dans le cadre de l’import/export en Union Européenne.
-        
-          '
+        description: 'État du numéro EORI d''une entreprise indiquant si celle-ci est immatriculée auprès des douanes dans le cadre de l’import/export en Union Européenne.'
         tags:
         - Informations générales
         attributes:
