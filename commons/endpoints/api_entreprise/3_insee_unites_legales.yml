@@ -2,6 +2,7 @@
 fiche:
   - uid: 'insee/unites_legales'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    sync_with_datagouv: false
     socle_de_base:
       comment: |-
         Mêmes données que l'API open data, avec en plus les unités légales en diffusion partielle. Backoffice instructeur uniquement.
@@ -168,6 +169,7 @@ fiche:
 
   - uid: 'insee/unites_legales_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    sync_with_datagouv: false
     socle_de_base:
       comment: |-
         Ces données sont également distribuées par l'API Données d'établissement.

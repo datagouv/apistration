@@ -2,6 +2,7 @@
 fiche:
   - uid: 'insee/etablissements'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    sync_with_datagouv: false
     socle_de_base:
       comment: |-
         Mêmes données que l'API open data, avec en plus les établissements en diffusion partielle. Backoffice instructeur uniquement.
@@ -146,6 +147,7 @@ fiche:
 
   - uid: 'insee/etablissements_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    sync_with_datagouv: false
     socle_de_base:
       comment: |-
         Préremplir ou récupérer les informations d'un établissement et de son unité légale à partir de son SIRET&nbsp;: raison sociale, forme juridique, catégorie TPE/PME, tranche effectif, activité principale, date de création.

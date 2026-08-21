@@ -20,7 +20,8 @@ class AbstractEndpoint
     :keywords,
     :api_cgu,
     :datagouv_uid,
-    :socle_de_base
+    :socle_de_base,
+    :sync_with_datagouv
 
   attr_writer :new_endpoint_uids, :old_endpoint_uids
 
@@ -92,6 +93,10 @@ class AbstractEndpoint
 
   def new_version?
     new_version.present? && new_version
+  end
+
+  def sync_with_datagouv?
+    sync_with_datagouv.nil? || sync_with_datagouv
   end
 
   def api_status

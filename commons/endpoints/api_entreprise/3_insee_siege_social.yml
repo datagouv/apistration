@@ -2,6 +2,7 @@
 fiche:
   - uid: 'insee/siege_social'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    sync_with_datagouv: false
     socle_de_base:
       comment: |-
         Mêmes données que l'API open data, avec en plus les sièges en diffusion partielle. Backoffice instructeur uniquement.
@@ -151,6 +152,7 @@ fiche:
 
   - uid: 'insee/siege_social_diffusibles'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
+    sync_with_datagouv: false
     socle_de_base:
       comment: |-
         À partir du Siren, récupérer les informations du siège social.
