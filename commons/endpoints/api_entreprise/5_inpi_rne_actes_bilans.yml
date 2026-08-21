@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'inpi/rne/actes_bilans'
-    datagouv_summary: "Liste des actes et bilans publics d'une unité légale inscrite au répertoire national des entreprises (RNE)."
     datagouv_uid: '686d1e51e64f536714765532'
     socle_de_base:
       comment: |-

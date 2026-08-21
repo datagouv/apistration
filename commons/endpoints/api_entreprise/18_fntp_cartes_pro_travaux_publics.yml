@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'fntp/carte_professionnelle_travaux_public'
-    datagouv_summary: "Carte professionnelle d'entrepreneur de travaux publics, délivrée aux entreprises en règle de leurs obligations sociales, administratives et juridiques."
     datagouv_uid: '672cf6b8f8b5d52b762633a0'
     socle_de_base:
       comment: |-

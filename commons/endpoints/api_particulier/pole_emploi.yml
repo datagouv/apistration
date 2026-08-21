@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'pole_emploi/situation'
-    datagouv_summary: "Statut demandeur d'emploi et données d'inscription auprès de France Travail."
     datagouv_uid: '672cf6aba316ad54c9a7f19a'
     opening: protected
     old_endpoint_uids:
@@ -92,7 +91,6 @@ fiche:
 
 
   - uid: 'pole_emploi/indemnites'
-    datagouv_summary: "Paiements versés par France Travail à un demandeur d'emploi."
     datagouv_uid: '672cf6ab6d09c75cace6a62a'
     opening: protected
     old_endpoint_uids:

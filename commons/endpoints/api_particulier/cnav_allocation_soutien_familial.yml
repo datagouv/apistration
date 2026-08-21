@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'cnav/allocation_soutien_familial'
-    datagouv_summary: "Statut bénéficiaire de l'allocation de soutien familial (ASF)."
     datagouv_uid: '672cf6adce89cb14e31f0fb9'
     opening: protected
     old_endpoint_uids:

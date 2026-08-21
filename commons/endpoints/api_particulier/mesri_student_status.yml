@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'mesri/statut_etudiant'
-    datagouv_summary: "Admissions et inscriptions d'un étudiant dans les établissements d'enseignement supérieur."
     datagouv_uid: '672cf667c3488a0c533f7092'
     opening: protected
     old_endpoint_uids:

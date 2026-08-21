@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'opqibi/qualifications_ingenierie'
-    datagouv_summary: "Certification OPQIBI attestant des qualifications d'ingénierie d'une unité légale."
     datagouv_uid: '672cf6b9c3488a0c533f709d'
     socle_de_base:
       comment: |-

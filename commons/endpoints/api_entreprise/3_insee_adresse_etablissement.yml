@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'insee/adresse_etablissements'
-    datagouv_summary: "Adresse d'un établissement inscrit au répertoire Sirene, y compris celle des établissements en diffusion partielle."
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:
@@ -107,7 +106,6 @@ fiche:
           {:.fr-highlight}
           > **Depuis 2023, les personnes morales sont concernées par la \"diffusion partielle\"**. Si elles ont exercé ce droit, vous n'avez pas le droit de pré-remplir leur données de localisation : géolocalisation, numéro et voie de l'adresse postale. La commune reste diffusible.
   - uid: 'insee/adresse_etablissements_diffusibles'
-    datagouv_summary: "Adresse publique d'un établissement inscrit au répertoire Sirene."
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:

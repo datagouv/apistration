@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: "dgfip/liasses_fiscales"
-    datagouv_summary: "Informations des liasses fiscales issues des déclarations de résultat d'une entreprise auprès de la DGFIP."
     datagouv_uid: '672cf6b2f89f31dae828f6da'
     old_endpoint_uids:
       - "dgfip/v3/liasses_fiscales"

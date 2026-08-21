@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'cnav/quotient_familial'
-    datagouv_summary: "Quotient familial et composition familiale de l'allocataire, délivrés par la CAF ou la MSA."
     datagouv_uid: '672cf982fcc8065be6e66f54'
     opening: protected
     old_endpoint_uids:

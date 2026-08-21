@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'inpi/rne/beneficiaires_effectifs'
-    datagouv_summary: "Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)."
     datagouv_uid: '672cf6a701d8db401e4864be'
     path: '/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs'
     controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs'

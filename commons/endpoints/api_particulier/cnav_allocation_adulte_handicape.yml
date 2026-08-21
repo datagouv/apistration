@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'cnav/allocation_adulte_handicape'
-    datagouv_summary: "Statut bénéficiaire de l'allocation adulte handicapé (AAH)."
     datagouv_uid: '672cf6ada37a79f6ff3e3254'
     opening: protected
     old_endpoint_uids:

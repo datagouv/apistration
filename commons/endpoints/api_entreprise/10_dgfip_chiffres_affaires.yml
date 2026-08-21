@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'dgfip/chiffres_affaires'
-    datagouv_summary: "Déclarations de chiffre d'affaires des trois derniers exercices auprès de la Direction générale des finances publiques (DGFIP)."
     datagouv_uid: '672cf6b120c9ae9747b40165'
     path: '/v3/dgfip/etablissements/{siret}/chiffres_affaires'
     controller: 'api_entreprise/v3_and_more/dgfip/chiffres_affaires'

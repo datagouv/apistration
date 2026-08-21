@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'dgfip/numero_tva'
-    datagouv_summary: "Numéro de TVA intracommunautaire français, issu des publications de la Direction générale des finances publiques (DGFIP)."
     ping_url: 'https://entreprise.api.gouv.fr/ping/dgfip/numero_tva'
     path: '/v3/dgfip/unites_legales/{siren}/numero_tva'
     controller: 'api_entreprise/v3_and_more/dgfip/tva'

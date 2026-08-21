@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'carif_oref/certifications_qualiopi_france_competences'
-    datagouv_summary: "Certifications Qualiopi et habilitations France compétences d'un organisme de formation."
     datagouv_uid: '672cf6ae6452c7d61849433d'
     path: '/v3/carif_oref/etablissements/{siret}/certifications_qualiopi_france_competences'
     controller: 'api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences'

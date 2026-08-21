@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'cnav/complementaire_sante_solidaire'
-    datagouv_summary: "Statut bénéficiaire de la complémentaire santé solidaire (C2S)."
     datagouv_uid: '672cf65bd5e4c56502e38b6b'
     opening: protected
     old_endpoint_uids:

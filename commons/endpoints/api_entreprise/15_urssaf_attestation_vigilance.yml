@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'urssaf/attestation_vigilance'
-    datagouv_summary: "Attestation sociale délivrée par l'Urssaf Caisse nationale, indiquant qu'une entreprise est à jour de ses cotisations."
     datagouv_uid: '672cf6b36452c7d61849433f'
     ping_url: 'https://entreprise.api.gouv.fr/ping/urssaf/attestation_sociale'
     old_endpoint_uids:

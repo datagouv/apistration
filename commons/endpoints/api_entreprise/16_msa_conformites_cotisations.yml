@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'msa/conformites_cotisations'
-    datagouv_summary: "Statut des cotisations sociales d'une entreprise auprès de la sécurité sociale agricole (MSA)."
     datagouv_uid: '672cf6b36a8456f417812b10'
     ping_url: 'https://entreprise.api.gouv.fr/ping/msa/conformite_cotisations'
     path: '/v3/msa/etablissements/{siret}/conformite_cotisations'

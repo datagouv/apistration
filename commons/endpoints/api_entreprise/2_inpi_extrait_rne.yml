@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'inpi/rne/attestation_immatriculation'
-    datagouv_summary: "Attestation d'immatriculation d'une unité légale au registre national des entreprises (RNE), avec lien vers le PDF."
     datagouv_uid: '69416bbbead846ef062cd142'
     socle_de_base:
       comment: |-

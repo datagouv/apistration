@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'cnav/psu'
-    datagouv_summary: "Participation familiale à un établissement d'accueil du jeune enfant (EAJE)."
     datagouv_uid: '688c833e18a96f3fcd04d82e'
     opening: protected
     beta: true

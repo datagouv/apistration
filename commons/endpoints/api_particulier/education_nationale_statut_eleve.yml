@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'education_nationale/statut_eleve_scolarise'
-    datagouv_summary: "Statut de scolarisation et statut boursier d'un élève du primaire, du collège ou du lycée."
     datagouv_uid: '672cf6aa26b31834a945cf00'
     opening: protected
     new_version: true

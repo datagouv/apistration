@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'ademe/certifications_rge'
-    datagouv_summary: "Certifications RGE (Reconnu Garant de l'Environnement) d'un établissement, délivrées par l'Ademe."
     datagouv_uid: '672cf6b9f8b5d52b762633a1'
     socle_de_base:
       comment: |-

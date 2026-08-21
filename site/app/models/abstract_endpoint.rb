@@ -20,7 +20,6 @@ class AbstractEndpoint
     :keywords,
     :api_cgu,
     :datagouv_uid,
-    :datagouv_summary,
     :socle_de_base,
     :sync_with_datagouv
 

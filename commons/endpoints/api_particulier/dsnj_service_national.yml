@@ -1,7 +1,6 @@
 ---
 fiche:
   - uid: 'dsnj/service_national'
-    datagouv_summary: "Statut de conformité au Service national des jeunes de 16 à 25 ans."
     datagouv_uid: '688c7cbf284f92bdeff43a73'
     opening: protected
     novelty: true
