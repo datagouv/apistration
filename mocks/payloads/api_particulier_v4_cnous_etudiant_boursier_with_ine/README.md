@@ -1136,3 +1136,54 @@
 
   </p>
   </details>
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Dossier non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "9999999999Z"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "26003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
+        "source": null,
+        "meta": {
+          "provider": "CNOUS"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=9999999999Z' \
+    --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/ine"
+  ```
+
+  </p>
+  </details>

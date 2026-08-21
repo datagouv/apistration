@@ -543,3 +543,16 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Dossier non trouvé,"{""ine"":""9999999999Z""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""26003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNOUS""
+      }
+    }
+  ]
+}"

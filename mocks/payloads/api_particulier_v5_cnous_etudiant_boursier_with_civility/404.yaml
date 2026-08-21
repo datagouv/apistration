@@ -1,0 +1,19 @@
+---
+description: "Dossier non trouvé"
+params:
+  nomNaissance: "NOEL"
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "26003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "CNOUS"
+        }
+      }
+    ]
+  }

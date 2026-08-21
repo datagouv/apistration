@@ -1,0 +1,21 @@
+---
+title: '404'
+description: 'Payload INSEE Sièges des unités légales - not found 404'
+example: true
+params:
+  siren: '000000000'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "01003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "source": null,
+        "meta": {
+          "provider": "INSEE"
+        }
+      }
+    ]
+  }

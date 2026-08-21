@@ -1,4 +1,55 @@
 # Adresse établissement
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Payload INSEE Adresse établissement - not found 404
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siret": "00000000000000"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "01003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "source": null,
+        "meta": {
+          "provider": "INSEE"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/00000000000000/adresse"
+  ```
+
+  </p>
+  </details>
 * [association.yaml](association.yaml)
 
   Status `200`

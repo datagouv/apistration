@@ -70,6 +70,55 @@
 
   </p>
   </details>
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Dossier non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "NOEL"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "26003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant boursier n'a pu être trouvé.",
+        "source": null,
+        "meta": {
+          "provider": "CNOUS"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v4/cnous/etudiant_boursier/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect.yaml](fake_france_connect.yaml)
 
   Status `200`

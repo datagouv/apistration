@@ -53,6 +53,20 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE v5', api: :part
             end
           end
         end
+
+        context 'when the student is not found' do
+          before do
+            mock_cnous_not_found_call('ine')
+          end
+
+          response '404', 'Étudiant non identifié' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(NotFoundError.new('CNOUS', "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.", with_identifiant_message: false))
+
+            run_test!
+          end
+        end
       end
     end
   end

@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+404,Payload ACOSS Attestations sociales - not found 404,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""04003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""ACOSS""
+      }
+    }
+  ]
+}"
 ,Entreprise à jour de ses cotisations,"{""siren"":""000000001""}",200,"{
   ""data"": {
     ""document_url"": ""https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v4_acoss_attestations_sociales/attestation_vigilance_test.pdf"",

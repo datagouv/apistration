@@ -168,3 +168,16 @@ bénéficiaire d'une bourse.","{""nomNaissance"":""CUILLERE"",""prenoms"":[""PAU
   ""links"": {},
   ""meta"": {}
 }"
+,Dossier non trouvé,"{""nomNaissance"":""NOEL""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""26003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNOUS""
+      }
+    }
+  ]
+}"
