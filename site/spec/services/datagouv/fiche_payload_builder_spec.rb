@@ -16,7 +16,7 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         authorization_request_url: 'https://datapass.api.gouv.fr/api-entreprise',
         title: 'API Bénéficiaires effectifs - INPI | Bouquet API Entreprise',
         description: <<~MARKDOWN,
-          > L'[API Bénéficiaires effectifs - INPI | Bouquet API Entreprise](https://entreprise.api.gouv.fr/catalogue/inpi/rne/beneficiaires_effectifs) permet d'obtenir les informations suivantes : **Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)**.
+          > L'[API Bénéficiaires effectifs - INPI | Bouquet API Entreprise](https://entreprise.api.gouv.fr/catalogue/inpi/rne/beneficiaires_effectifs) permet d'obtenir les informations suivantes : **Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE).**
 
           ➡️ **Cette API fait partie du bouquet [API Entreprise](https://entreprise.api.gouv.fr/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de INPI.
 
@@ -62,60 +62,10 @@ RSpec.describe Datagouv::FichePayloadBuilder do
   context 'with an endpoint whose swagger description ends in an ellipsis' do
     let(:endpoint) { APIEntreprise::Endpoint.find('ministere_interieur/documents_associations') }
 
-    it 'strips all trailing periods so the summary line does not end with a double-dot' do
+    it 'uses the swagger description as-is' do
       expect(payload[:description]).to include(
-        '**Divers documents administratifs en PDF tels que les statuts, le récépissé de déclaration de création, la liste des dirigeants**.'
+        '**Divers documents administratifs en PDF tels que les statuts, le récépissé de déclaration de création, la liste des dirigeants...**'
       )
-      expect(payload[:description]).not_to include('..**')
-    end
-  end
-
-  context 'with a plain-text description containing markdown-breaking characters and newlines' do
-    let(:endpoint) do
-      instance_double(
-        APIEntreprise::Endpoint,
-        uid: 'test/uid',
-        api: 'api_entreprise',
-        opening: 'protected',
-        redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
-        title: 'Test',
-        description: "Une description avec du `code`, [des liens](url) et\ndes *emphases*_soulignées_.",
-        call_id: 'SIREN',
-        provider_uids: ['insee'],
-        keywords: ['test'],
-        providers: [instance_double(APIEntreprise::Provider, name: 'INSEE')],
-        throttle: nil
-      )
-    end
-
-    it 'strips markdown-breaking characters and collapses newlines to spaces' do
-      expect(payload[:description]).to include(
-        '**Une description avec du code, des liens(url) et des emphasessoulignées**.'
-      )
-    end
-  end
-
-  context 'with a plain-text description longer than the summary line max length' do
-    let(:endpoint) do
-      instance_double(
-        APIEntreprise::Endpoint,
-        uid: 'test/uid',
-        api: 'api_entreprise',
-        opening: 'protected',
-        redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
-        title: 'Test',
-        description: 'A' * 400,
-        call_id: 'SIREN',
-        provider_uids: ['insee'],
-        keywords: ['test'],
-        providers: [instance_double(APIEntreprise::Provider, name: 'INSEE')],
-        throttle: nil
-      )
-    end
-
-    it 'truncates the summary line' do
-      expect(payload[:description]).to include("#{'A' * 297}...")
-      expect(payload[:description]).not_to include('A' * 298)
     end
   end
 

@@ -4860,11 +4860,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'État du numéro EORI d''une entreprise indiquant si celle-ci est
+      description: État du numéro EORI d'une entreprise indiquant si celle-ci est
         immatriculée auprès des douanes dans le cadre de l’import/export en Union
         Européenne.
-
-        '
       responses:
         '401':
           description: Non autorisé
@@ -17455,9 +17453,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: |
-        Liste des actes et bilans d'une unité légale inscrite au répertoire national des entreprises (RNE).
-        Seuls les actes et bilans publiques sont distribués. L'INPI peut potentiellement posséder des actes et bilans "partiellement confidentiels".
+      description: Liste des actes et bilans d'une unité légale inscrite au répertoire
+        national des entreprises (RNE). Seuls les actes et bilans publiques sont distribués.
+        L'INPI peut potentiellement posséder des actes et bilans "partiellement confidentiels".
       responses:
         '401':
           description: Non autorisé
@@ -39595,10 +39593,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'Certification délivrée par l''association OPQIBI, attestant des
-        différentes qualifications d''ingénierie d''une unité légale.
-
-        '
+      description: Certification délivrée par l'association OPQIBI, attestant des
+        différentes qualifications d'ingénierie d'une unité légale.
       responses:
         '401':
           description: Non autorisé
