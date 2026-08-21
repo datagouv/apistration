@@ -17,6 +17,30 @@ RSpec.describe Civility::ValidatePrenoms, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
+  context 'when a prenom contains a digit' do
+    let(:prenoms) { ['GUIOT2'] }
+
+    it { is_expected.to be_a_success }
+
+    its(:errors) { is_expected.to be_empty }
+  end
+
+  context 'when a prenom contains round brackets' do
+    let(:prenoms) { ['GUIOT (BIS)'] }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'when a prenom contains square brackets' do
+    let(:prenoms) { ['GUIOT [BIS]'] }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
   context 'with invalid user_id' do
     context 'when prenoms is empty' do
       let(:prenoms) { [] }
