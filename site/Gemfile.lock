@@ -696,6 +696,7 @@ DEPENDENCIES
   faker
   faraday
   faraday-encoding
+  faraday-follow_redirects
   faraday-gzip
   faraday-net_http
   faraday-retry
