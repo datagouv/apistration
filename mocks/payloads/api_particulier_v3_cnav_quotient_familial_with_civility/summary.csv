@@ -1,4 +1,70 @@
 Titre,Description,Paramètres,Status,Réponse
+,"## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
+
+Ce cas permet de tester :
+- [Param. appel] Utilisation du paramètre nomUsage
+- [Param. appel] Lieu de naissance en France
+- [Réponse] Nom d'usage présent dans la réponse
+- [Réponse] Trois enfants mineurs rattachés
+- [Réponse] Régime CNAF
+- [Réponse] Quotient familial de 699
+
+Les enfants sont calqués sur l'identité FranceConnect
+`france_connect_200_cnaf_1_parent_3_mineurs.yml`.","{""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""MERCIER"",
+        ""nom_usage"": ""DUBOIS"",
+        ""prenoms"": ""PIERRE"",
+        ""date_naissance"": ""1969-03-17"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""MERCIER"",
+        ""nom_usage"": null,
+        ""prenoms"": ""PIERRE"",
+        ""date_naissance"": ""2013-01-10"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""MERCIER"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ROBERT"",
+        ""date_naissance"": ""2007-03-15"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""MERCIER"",
+        ""nom_usage"": null,
+        ""prenoms"": ""HENRY"",
+        ""date_naissance"": ""2022-06-20"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur DUBOIS PIERRE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 699,
+      ""annee"": 2024,
+      ""mois"": 2,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"## QF 150
 
 Permet de tester la fourniture d'un quotient familial de 150","{""codeCogInseeCommuneNaissance"":""35238"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""MARTIN"",""prenoms"":[""AXELLE""],""anneeDateNaissance"":1989,""moisDateNaissance"":12,""jourDateNaissance"":3}",200,"{
@@ -1648,72 +1714,6 @@ Ce cas permet de tester :
       ""mois"": 10,
       ""annee_calcul"": 2025,
       ""mois_calcul"": 1
-    }
-  },
-  ""links"": {},
-  ""meta"": {}
-}"
-,"## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
-
-Ce cas permet de tester :
-- [Param. appel] Utilisation du paramètre nomUsage
-- [Param. appel] Lieu de naissance en France
-- [Réponse] Nom d'usage présent dans la réponse
-- [Réponse] Trois enfants mineurs rattachés
-- [Réponse] Régime CNAF
-- [Réponse] Quotient familial de 699
-
-Les enfants sont calqués sur l'identité FranceConnect
-`france_connect_200_cnaf_1_parent_3_mineurs.yml`.","{""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17}",200,"{
-  ""data"": {
-    ""allocataires"": [
-      {
-        ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": ""DUBOIS"",
-        ""prenoms"": ""PIERRE"",
-        ""date_naissance"": ""1969-03-17"",
-        ""sexe"": ""M""
-      }
-    ],
-    ""enfants"": [
-      {
-        ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": null,
-        ""prenoms"": ""PIERRE"",
-        ""date_naissance"": ""2013-01-10"",
-        ""sexe"": ""M""
-      },
-      {
-        ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": null,
-        ""prenoms"": ""ROBERT"",
-        ""date_naissance"": ""2007-03-15"",
-        ""sexe"": ""M""
-      },
-      {
-        ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": null,
-        ""prenoms"": ""HENRY"",
-        ""date_naissance"": ""2022-06-20"",
-        ""sexe"": ""M""
-      }
-    ],
-    ""adresse"": {
-      ""destinataire"": ""Monsieur DUBOIS PIERRE"",
-      ""complement_information"": null,
-      ""complement_information_geographique"": null,
-      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
-      ""lieu_dit"": null,
-      ""code_postal_ville"": ""75002 PARIS"",
-      ""pays"": ""FRANCE""
-    },
-    ""quotient_familial"": {
-      ""fournisseur"": ""CNAF"",
-      ""valeur"": 699,
-      ""annee"": 2024,
-      ""mois"": 2,
-      ""annee_calcul"": 2024,
-      ""mois_calcul"": 12
     }
   },
   ""links"": {},

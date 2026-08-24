@@ -1,4 +1,117 @@
 # [Identité] Quotient familial CAF & MSA
+* [200-1_parent_3_mineurs.yaml](200-1_parent_3_mineurs.yaml)
+
+  Status `200`
+
+  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
+
+Ce cas permet de tester :
+- [Param. appel] Utilisation du paramètre nomUsage
+- [Param. appel] Lieu de naissance en France
+- [Réponse] Nom d'usage présent dans la réponse
+- [Réponse] Trois enfants mineurs rattachés
+- [Réponse] Régime CNAF
+- [Réponse] Quotient familial de 699
+
+Les enfants sont calqués sur l'identité FranceConnect
+`france_connect_200_cnaf_1_parent_3_mineurs.yml`.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeCogInseeCommuneNaissance": "95277",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M",
+    "nomNaissance": "MERCIER",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateNaissance": 1969,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 17
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "MERCIER",
+          "nom_usage": "DUBOIS",
+          "prenoms": "PIERRE",
+          "date_naissance": "1969-03-17",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "MERCIER",
+          "nom_usage": null,
+          "prenoms": "PIERRE",
+          "date_naissance": "2013-01-10",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "MERCIER",
+          "nom_usage": null,
+          "prenoms": "ROBERT",
+          "date_naissance": "2007-03-15",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "MERCIER",
+          "nom_usage": null,
+          "prenoms": "HENRY",
+          "date_naissance": "2022-06-20",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur DUBOIS PIERRE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE MONTORGUEIL",
+        "lieu_dit": null,
+        "code_postal_ville": "75002 PARIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 699,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
 * [200-QF-150-CNAF.yaml](200-QF-150-CNAF.yaml)
 
   Status `200`
@@ -3014,119 +3127,6 @@ Ce cas permet de tester :
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=13103' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=MOREAU' -d 'prenoms[]=EMMA' -d 'anneeDateNaissance=2012' -d 'moisDateNaissance=8' -d 'jourDateNaissance=14' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
-  ```
-
-  </p>
-  </details>
-* [200-nom-usage-1_parent_3_mineurs.yaml](200-nom-usage-1_parent_3_mineurs.yaml)
-
-  Status `200`
-
-  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
-
-Ce cas permet de tester :
-- [Param. appel] Utilisation du paramètre nomUsage
-- [Param. appel] Lieu de naissance en France
-- [Réponse] Nom d'usage présent dans la réponse
-- [Réponse] Trois enfants mineurs rattachés
-- [Réponse] Régime CNAF
-- [Réponse] Quotient familial de 699
-
-Les enfants sont calqués sur l'identité FranceConnect
-`france_connect_200_cnaf_1_parent_3_mineurs.yml`.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codeCogInseeCommuneNaissance": "95277",
-    "codeCogInseePaysNaissance": "99100",
-    "sexeEtatCivil": "M",
-    "nomNaissance": "MERCIER",
-    "prenoms": [
-      "PIERRE"
-    ],
-    "anneeDateNaissance": 1969,
-    "moisDateNaissance": 3,
-    "jourDateNaissance": 17
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "allocataires": [
-        {
-          "nom_naissance": "MERCIER",
-          "nom_usage": "DUBOIS",
-          "prenoms": "PIERRE",
-          "date_naissance": "1969-03-17",
-          "sexe": "M"
-        }
-      ],
-      "enfants": [
-        {
-          "nom_naissance": "MERCIER",
-          "nom_usage": null,
-          "prenoms": "PIERRE",
-          "date_naissance": "2013-01-10",
-          "sexe": "M"
-        },
-        {
-          "nom_naissance": "MERCIER",
-          "nom_usage": null,
-          "prenoms": "ROBERT",
-          "date_naissance": "2007-03-15",
-          "sexe": "M"
-        },
-        {
-          "nom_naissance": "MERCIER",
-          "nom_usage": null,
-          "prenoms": "HENRY",
-          "date_naissance": "2022-06-20",
-          "sexe": "M"
-        }
-      ],
-      "adresse": {
-        "destinataire": "Monsieur DUBOIS PIERRE",
-        "complement_information": null,
-        "complement_information_geographique": null,
-        "numero_libelle_voie": "1 RUE MONTORGUEIL",
-        "lieu_dit": null,
-        "code_postal_ville": "75002 PARIS",
-        "pays": "FRANCE"
-      },
-      "quotient_familial": {
-        "fournisseur": "CNAF",
-        "valeur": 699,
-        "annee": 2024,
-        "mois": 2,
-        "annee_calcul": 2024,
-        "mois_calcul": 12
-      }
-    },
-    "links": {},
-    "meta": {}
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 
