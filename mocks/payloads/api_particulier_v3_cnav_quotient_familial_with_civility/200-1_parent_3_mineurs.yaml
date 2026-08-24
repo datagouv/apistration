@@ -17,7 +17,6 @@ params:
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'M'
   nomNaissance: 'MERCIER'
-  nomUsage: 'DUBOIS'
   prenoms:
     - 'PIERRE'
   anneeDateNaissance: 1969

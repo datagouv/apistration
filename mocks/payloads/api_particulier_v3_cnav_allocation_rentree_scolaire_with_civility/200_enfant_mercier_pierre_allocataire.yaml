@@ -2,9 +2,8 @@
 description: |-
   ## Enfant bénéficiaire ARS (rattaché à l'allocataire QF MERCIER)
 
-  Enfant mineur `MERCIER PIERRE` de l'allocataire `MERCIER PIERRE` (nom d'usage
-  DUBOIS) du cas Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Né en
-  2013, il respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
+  Enfant mineur `MERCIER PIERRE` de l'allocataire `MERCIER PIERRE` du cas Quotient Familial `200-1_parent_3_mineurs`. Né en 2013, il
+  respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
 params:
   nomNaissance: 'MERCIER'
   prenoms:

@@ -113,9 +113,9 @@
 
   ## Enfant bénéficiaire AEEH (rattaché à l'allocataire QF MERCIER)
 
-Enfant mineur de l'allocataire `MERCIER PIERRE` (nom d'usage DUBOIS) du cas
-Quotient Familial `200-nom-usage-1_parent_3_mineurs`. Cet enfant est éligible
-et bénéficiaire de l'AEEH.
+Enfant mineur de l'allocataire `MERCIER PIERRE` du cas
+Quotient Familial `200-1_parent_3_mineurs`. Cet enfant est éligible et
+bénéficiaire de l'AEEH.
 
   <details><summary>Paramètres</summary>
   <p>
