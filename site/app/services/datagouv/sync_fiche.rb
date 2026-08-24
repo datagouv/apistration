@@ -2,10 +2,11 @@ module Datagouv
   class SyncFiche
     Result = Struct.new(:status, :uid, :remote_id, keyword_init: true)
 
-    def initialize(endpoint, index:, client: DatagouvAPIClient.new)
+    def initialize(endpoint, index:, client: DatagouvAPIClient.new, logger: Rails.logger)
       @endpoint = endpoint
       @index = index
       @client = client
+      @logger = logger
     end
 
     def call
@@ -19,7 +20,7 @@ module Datagouv
 
     private
 
-    attr_reader :endpoint, :index, :client
+    attr_reader :endpoint, :index, :client, :logger
 
     def skipped_result
       result(:skipped)
@@ -70,7 +71,7 @@ module Datagouv
     end
 
     def failed_result(error)
-      Rails.logger.error("Datagouv::SyncFiche: #{endpoint.uid} failed - #{error.message}")
+      logger.error("SyncFiche: #{endpoint.uid} failed - #{error.class}: #{error.message}")
       result(:failed)
     end
 

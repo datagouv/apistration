@@ -5,12 +5,12 @@ RSpec.describe Datagouv::SyncRunner do
 
   let(:endpoint) { APIEntreprise::Endpoint.find('inpi/rne/beneficiaires_effectifs') }
   let(:endpoints) { [endpoint] }
-  let(:index) { instance_double(Datagouv::DataserviceIndex) }
+  let(:index) { instance_double(Datagouv::DataserviceIndex, size: 1) }
   let(:sync_fiche) { instance_double(Datagouv::SyncFiche) }
 
   before do
     allow(Datagouv::DataserviceIndex).to receive(:new).and_return(index)
-    allow(Datagouv::SyncFiche).to receive(:new).with(endpoint, index: index).and_return(sync_fiche)
+    allow(Datagouv::SyncFiche).to receive(:new).with(endpoint, index: index, logger: Rails.logger).and_return(sync_fiche)
   end
 
   context 'when the fiche is created' do
@@ -23,7 +23,22 @@ RSpec.describe Datagouv::SyncRunner do
     end
 
     it 'logs the outcome including the remote_id' do
-      expect(Rails.logger).to receive(:info).with("Datagouv::SyncRunner: #{endpoint.uid} -> created (new-id)")
+      allow(Rails.logger).to receive(:info)
+      expect(Rails.logger).to receive(:info).with("SyncRunner: #{endpoint.uid} -> created (new-id)")
+
+      run
+    end
+
+    it 'logs how many existing remote dataservices the index matched against' do
+      allow(Rails.logger).to receive(:info)
+      expect(Rails.logger).to receive(:info).with('SyncRunner: matched against 1 existing remote dataservices')
+
+      run
+    end
+
+    it 'logs a summary of results by status' do
+      allow(Rails.logger).to receive(:info)
+      expect(Rails.logger).to receive(:info).with('SyncRunner: 1 endpoints processed - created: 1')
 
       run
     end
@@ -39,7 +54,8 @@ RSpec.describe Datagouv::SyncRunner do
     end
 
     it 'logs the outcome without a remote_id suffix' do
-      expect(Rails.logger).to receive(:info).with("Datagouv::SyncRunner: #{endpoint.uid} -> deleted")
+      allow(Rails.logger).to receive(:info)
+      expect(Rails.logger).to receive(:info).with("SyncRunner: #{endpoint.uid} -> deleted")
 
       run
     end
@@ -83,7 +99,7 @@ RSpec.describe Datagouv::SyncRunner do
     let(:other_result) { Datagouv::SyncFiche::Result.new(status: :failed, uid: other_endpoint.uid, remote_id: nil) }
 
     before do
-      allow(Datagouv::SyncFiche).to receive(:new).with(other_endpoint, index: index).and_return(other_sync_fiche)
+      allow(Datagouv::SyncFiche).to receive(:new).with(other_endpoint, index: index, logger: Rails.logger).and_return(other_sync_fiche)
       allow(sync_fiche).to receive(:call).and_return(result)
       allow(other_sync_fiche).to receive(:call).and_return(other_result)
     end

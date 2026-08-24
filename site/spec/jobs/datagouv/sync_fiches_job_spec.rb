@@ -33,12 +33,21 @@ RSpec.describe Datagouv::SyncFichesJob do
     end
 
     context 'when the lock is already held' do
-      before { Rails.cache.write('datagouv_sync_in_progress', true, namespace: described_class::LOCK_NAMESPACE) }
+      before do
+        Rails.cache.write('datagouv_sync_in_progress', true, namespace: described_class::LOCK_NAMESPACE)
+        FileUtils.touch(Rails.root.join('log/datagouv.log').to_s)
+      end
 
       it 'does not run the sync' do
         perform
 
         expect(Datagouv::SyncRunner).not_to have_received(:new)
+      end
+
+      it 'logs that the run was skipped, so a stuck lock is visible instead of silent' do
+        expect {
+          perform
+        }.to(change { File.read(Rails.root.join('log/datagouv.log').to_s) })
       end
     end
 

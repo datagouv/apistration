@@ -8,6 +8,8 @@ module Datagouv
       by_business_url[FichePayloadBuilder.new(endpoint).business_documentation_url]
     end
 
+    delegate :size, to: :dataservices
+
     private
 
     attr_reader :dataservices

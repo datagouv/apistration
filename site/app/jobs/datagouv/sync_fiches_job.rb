@@ -5,14 +5,17 @@ module Datagouv
     retry_on StandardError, wait: :polynomially_longer, attempts: 5
 
     def perform
-      return unless acquire_lock!
+      unless acquire_lock!
+        logger.info('lock already held, skipping this run')
+        return
+      end
 
       begin
-        logger.info('Start syncing fiches with data.gouv.fr')
+        logger.info('start')
 
-        result = SyncRunner.new(endpoints).call
+        result = SyncRunner.new(endpoints, logger: logger).call
 
-        logger.info("End syncing fiches with data.gouv.fr (#{result ? 'success' : 'with failures'})")
+        logger.info("end (#{result ? 'success' : 'with failures'})")
       ensure
         release_lock!
       end
