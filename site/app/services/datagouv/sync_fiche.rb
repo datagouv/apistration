@@ -75,7 +75,8 @@ module Datagouv
     end
 
     def failed_result(error)
-      logger.error("SyncFiche: #{endpoint.uid} failed - #{error.class}: #{error.message}")
+      body = error.respond_to?(:response) ? error.response&.dig(:body) : nil
+      logger.error("SyncFiche: #{endpoint.uid} failed - #{error.class}: #{error.message}#{" - #{body}" if body.present?}")
       result(:failed)
     end
 
