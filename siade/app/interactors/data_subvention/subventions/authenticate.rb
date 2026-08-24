@@ -11,7 +11,9 @@ class DataSubvention::Subventions::Authenticate < AbstractGetToken
   end
 
   def expires_in(response)
-    JSON.parse(response.body).dig('user', 'jwt', 'expirateDate')
+    expiration_date = JSON.parse(response.body).dig('user', 'jwt', 'expirateDate')
+
+    Time.zone.parse(expiration_date.to_s).to_i - Time.now.to_i
   end
 
   def client_url
