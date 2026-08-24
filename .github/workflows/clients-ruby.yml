@@ -98,6 +98,6 @@ jobs:
         working-directory: ${{ steps.gem.outputs.dir }}
         run: bundle exec rspec
 
-      - uses: rubygems/release-gem@v1.4.0
+      - uses: rubygems/release-gem@v1.4.1
         with:
           working-directory: ${{ steps.gem.outputs.dir }}
