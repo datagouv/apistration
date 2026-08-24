@@ -2,10 +2,18 @@ class AbstractGetToken < MakeRequest::Post
   MAX_AUTH_ATTEMPTS = 5
   AUTH_RETRY_DELAY = 0.2
 
+  def self.invalidate_cached_token!
+    new.invalidate_cached_token!
+  end
+
   def call
     return if use_mocked_data?
 
     context.token = token_from_cache || retrieve_and_save_token
+  end
+
+  def invalidate_cached_token!
+    cache.write(cache_key, nil)
   end
 
   protected

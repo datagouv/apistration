@@ -29,6 +29,20 @@ module ProviderStubs::DataSubvention
       )
   end
 
+  def stub_datasubvention_subventions_stale_token(id: valid_siren, token: 'stale_data_subvention_token')
+    stub_request(:get, "#{Siade.credentials[:data_subvention_url]}/association/#{id}/grants")
+      .with(
+        headers: {
+          'x-access-token' => token,
+          'Content-Type' => 'application/json'
+        }
+      )
+      .to_return(
+        status: 401,
+        body: '{"message":"User not logged"}'
+      )
+  end
+
   def stub_datasubvention_subventions_valid(id: valid_siren, token: 'data_subvention_token')
     stub_request(:get, "#{Siade.credentials[:data_subvention_url]}/association/#{id}/grants")
       .with(
