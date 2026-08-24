@@ -1664,7 +1664,7 @@ Ce cas permet de tester :
 - [Réponse] Quotient familial de 699
 
 Les enfants sont calqués sur l'identité FranceConnect
-`france_connect_200_cnaf_1_parent_3_mineurs.yml`.","{""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MERCIER"",""nomUsage"":""DUBOIS"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17}",200,"{
+`france_connect_200_cnaf_1_parent_3_mineurs.yml`.","{""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""MERCIER"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17}",200,"{
   ""data"": {
     ""allocataires"": [
       {

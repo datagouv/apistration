@@ -124,7 +124,6 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
     ""allocataires"": [
       {
         ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": ""DUBOIS"",
         ""prenoms"": ""PIERRE"",
         ""date_naissance"": ""1969-03-17"",
         ""sexe"": ""M""
@@ -133,21 +132,18 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
     ""enfants"": [
       {
         ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": null,
         ""prenoms"": ""PIERRE"",
         ""date_naissance"": ""2018-01-10"",
         ""sexe"": ""M""
       },
       {
         ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": null,
         ""prenoms"": ""ROBERT"",
         ""date_naissance"": ""2020-03-15"",
         ""sexe"": ""M""
       },
       {
         ""nom_naissance"": ""MERCIER"",
-        ""nom_usage"": null,
         ""prenoms"": ""HENRY"",
         ""date_naissance"": ""2022-06-20"",
         ""sexe"": ""M""

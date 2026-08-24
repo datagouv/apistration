@@ -3045,7 +3045,6 @@ Les enfants sont calqués sur l'identité FranceConnect
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "M",
     "nomNaissance": "MERCIER",
-    "nomUsage": "DUBOIS",
     "prenoms": [
       "PIERRE"
     ],
@@ -3127,7 +3126,7 @@ Les enfants sont calqués sur l'identité FranceConnect
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MERCIER' -d 'nomUsage=DUBOIS' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 
