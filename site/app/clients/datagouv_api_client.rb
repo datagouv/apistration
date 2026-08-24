@@ -47,7 +47,7 @@ class DatagouvAPIClient
       conn.request :retry, max: 2
       conn.response :raise_error
       conn.response :json
-      conn.response :follow_redirects
+      conn.response :follow_redirects, standards_compliant: true
       conn.options.timeout = 5
       yield(conn) if block
     end

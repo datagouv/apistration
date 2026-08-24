@@ -90,10 +90,13 @@ RSpec.describe Datagouv::SyncFiche do
 
   context 'when the index finds a match and the remote payload differs' do
     let(:endpoint) { APIEntreprise::Endpoint.find('inpi/rne/beneficiaires_effectifs') }
+    let(:updated_payload) do
+      Datagouv::FichePayloadBuilder.new(endpoint).payload.transform_keys(&:to_s).merge('id' => 'matched-id')
+    end
 
     before do
       allow(index).to receive(:find).with(endpoint).and_return({ 'id' => 'matched-id', 'access_type' => 'open' })
-      allow(client).to receive(:update_dataservice)
+      allow(client).to receive(:update_dataservice).and_return(updated_payload)
     end
 
     it 'updates the dataservice' do
@@ -104,6 +107,32 @@ RSpec.describe Datagouv::SyncFiche do
 
     it 'returns an updated result' do
       expect(sync).to have_attributes(status: :updated, remote_id: 'matched-id')
+    end
+  end
+
+  context 'when update_dataservice responds but the update did not actually take effect' do
+    let(:endpoint) { APIEntreprise::Endpoint.find('inpi/rne/beneficiaires_effectifs') }
+
+    before do
+      allow(index).to receive(:find).with(endpoint).and_return({ 'id' => 'matched-id', 'access_type' => 'open' })
+      allow(client).to receive(:update_dataservice).and_return({ 'id' => 'matched-id', 'access_type' => 'open' })
+    end
+
+    it 'returns a failed result instead of silently trusting the request succeeded' do
+      expect(sync.status).to eq(:failed)
+    end
+  end
+
+  context 'when create_dataservice responds without an id' do
+    let(:endpoint) { APIEntreprise::Endpoint.find('dgfip/numero_tva') }
+
+    before do
+      allow(index).to receive(:find).with(endpoint).and_return(nil)
+      allow(client).to receive(:create_dataservice).and_return({})
+    end
+
+    it 'returns a failed result instead of silently trusting the request succeeded' do
+      expect(sync.status).to eq(:failed)
     end
   end
 

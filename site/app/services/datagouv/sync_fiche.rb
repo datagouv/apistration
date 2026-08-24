@@ -51,7 +51,9 @@ module Datagouv
       payload = builder.payload
       return result(:unchanged, remote_id: remote['id']) if unchanged?(remote, payload)
 
-      client.update_dataservice(remote['id'], payload)
+      updated = client.update_dataservice(remote['id'], payload)
+      return unexpected_response_result('update did not take effect') unless unchanged?(updated, payload)
+
       result(:updated, remote_id: remote['id'])
     rescue Faraday::ResourceNotFound
       create
@@ -59,6 +61,8 @@ module Datagouv
 
     def create
       created = client.create_dataservice(builder.creation_payload)
+      return unexpected_response_result('create returned no id') if created['id'].blank?
+
       result(:created, remote_id: created['id'])
     end
 
@@ -72,6 +76,11 @@ module Datagouv
 
     def failed_result(error)
       logger.error("SyncFiche: #{endpoint.uid} failed - #{error.class}: #{error.message}")
+      result(:failed)
+    end
+
+    def unexpected_response_result(message)
+      logger.error("SyncFiche: #{endpoint.uid} failed - #{message}")
       result(:failed)
     end
 
