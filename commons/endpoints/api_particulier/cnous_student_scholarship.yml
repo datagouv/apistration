@@ -52,8 +52,9 @@ fiche:
 
         **Paramètre additionnel optionnel** :
         `campaignYear` permet de cibler une année scolaire précise lors de la recherche du dossier étudiant.
-        La valeur correspond à l'**année de début de la campagne scolaire** (exemple : `campaignYear=2025` pour l'année scolaire 2025-2026).
+        La valeur correspond à l'**année de début de la campagne scolaire** : l'année `N` désigne l'année scolaire `N`/`N+1` (exemple : `campaignYear=2025` pour l'année scolaire 2025-2026).
         Les données sont disponibles à partir de la campagne 2021-2022.
+        Aucune borne haute n'est appliquée : la campagne en cours comme une campagne à venir peuvent être interrogées en anticipation, avant d'être complètes. Les bourses régionales remontent à partir de mai, les bourses nationales à partir de juillet : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
         En l'absence de ce paramètre, l'API renvoie la bourse valide la plus récente.
     data: &cnous_data
       description: |+

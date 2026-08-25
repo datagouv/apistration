@@ -1,3 +1,11 @@
+- date: 2026-08-25
+  scope: api_particulier
+  title: "CNOUS étudiant boursier : `campaignYear` accepte la campagne en cours et à venir"
+  description: |
+    Le paramètre `campaignYear` de l'endpoint [étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>) **n'est plus limité aux campagnes passées**. Jusqu'ici, seules les années jusqu'à `année courante - 1` étaient acceptées, les suivantes étant rejetées en erreur 422. La borne haute est supprimée : la campagne en cours comme une campagne à venir peuvent désormais être interrogées. Cela débloque les instructions anticipées — tarification solidaire des transports, aides départementales et régionales — dont les demandes sont déposées plusieurs mois avant la rentrée scolaire concernée. Seule la borne basse de 2021, première campagne disponible côté CNOUS, est conservée.
+
+    Pour rappel, l'année `N` désigne l'**année scolaire `N`/`N+1`** (`campaignYear=2026` pour l'année scolaire 2026-2027). Les bourses régionales de la campagne suivante remontent dès **mai**, les bourses nationales dès **juillet**. Attention, une campagne récente n'est pas complète pour autant : la base contient environ 85% des boursiers en octobre et n'est considérée comme complète que fin novembre. Un dossier absent ou partiel ne signifie donc pas que l'étudiant n'est pas boursier.
+
 - date: 2026-08-17
   scope: api_entreprise
   title: "Données fondations (SIAF) : nouvelle API disponible en environnement de test"
