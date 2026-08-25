@@ -14,10 +14,6 @@ class CNOUS::ValidateCampaignYear < ValidateParamInteractor
 
     return false unless /\A\d{4}\z/.match?(raw)
 
-    raw.to_i.between?(MIN_CAMPAIGN_YEAR, max_campaign_year)
-  end
-
-  def max_campaign_year
-    Date.current.year - 1
+    raw.to_i >= MIN_CAMPAIGN_YEAR
   end
 end

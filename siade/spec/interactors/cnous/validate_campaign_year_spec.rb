@@ -33,18 +33,22 @@ RSpec.describe CNOUS::ValidateCampaignYear, type: :validate_param_interactor do
     it { is_expected.to be_a_success }
   end
 
-  context 'when campaign_year equals current year - 1' do
+  context 'when campaign_year equals a past year' do
     let(:campaign_year) { '2025' }
 
     it { is_expected.to be_a_success }
   end
 
-  context 'when campaign_year equals current year' do
+  context 'when campaign_year equals the ongoing campaign year' do
     let(:campaign_year) { '2026' }
 
-    it { is_expected.to be_a_failure }
+    it { is_expected.to be_a_success }
+  end
 
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  context 'when campaign_year is a future year' do
+    let(:campaign_year) { '2027' }
+
+    it { is_expected.to be_a_success }
   end
 
   context 'when campaign_year is not a 4-digit string' do
@@ -55,7 +59,7 @@ RSpec.describe CNOUS::ValidateCampaignYear, type: :validate_param_interactor do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'when campaign_year is an integer in range' do
+  context 'when campaign_year is an integer' do
     let(:campaign_year) { 2024 }
 
     it { is_expected.to be_a_success }

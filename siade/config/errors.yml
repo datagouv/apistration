@@ -280,7 +280,7 @@
 
 - code: '00368'
   title: 'Entité non traitable'
-  detail: "L'année de campagne (campaignYear) n'est pas correctement formatée: doit être comprise entre 2021 et l'année courante - 1"
+  detail: "L'année de campagne (campaignYear) n'est pas correctement formatée: doit être une année sur 4 chiffres supérieure ou égale à 2021"
 
 - code: '00370'
   title: 'Entité non traitable'

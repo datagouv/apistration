@@ -11446,9 +11446,11 @@ paths:
         description: |
           **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+          Année de début de la campagne scolaire recherchée : l'année `N` correspond à l'année scolaire `N`/`N+1`. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
 
           Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          Aucune borne haute n'est appliquée : la campagne en cours, comme une campagne à venir, peut être interrogée en anticipation, par exemple pour instruire dès le printemps des demandes portant sur la rentrée suivante. Les bourses régionales de la campagne suivante sont disponibles à partir du mois de mai, les bourses nationales à partir du mois de juillet. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
 
           En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
         example: 2024
@@ -11842,9 +11844,11 @@ paths:
         description: |
           **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+          Année de début de la campagne scolaire recherchée : l'année `N` correspond à l'année scolaire `N`/`N+1`. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
 
           Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          Aucune borne haute n'est appliquée : la campagne en cours, comme une campagne à venir, peut être interrogée en anticipation, par exemple pour instruire dès le printemps des demandes portant sur la rentrée suivante. Les bourses régionales de la campagne suivante sont disponibles à partir du mois de mai, les bourses nationales à partir du mois de juillet. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
 
           En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
         example: 2024
@@ -12194,9 +12198,11 @@ paths:
         description: |
           **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+          Année de début de la campagne scolaire recherchée : l'année `N` correspond à l'année scolaire `N`/`N+1`. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
 
           Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          Aucune borne haute n'est appliquée : la campagne en cours, comme une campagne à venir, peut être interrogée en anticipation, par exemple pour instruire dès le printemps des demandes portant sur la rentrée suivante. Les bourses régionales de la campagne suivante sont disponibles à partir du mois de mai, les bourses nationales à partir du mois de juillet. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
 
           En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
         example: 2024
@@ -12704,9 +12710,11 @@ paths:
         description: |
           **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+          Année de début de la campagne scolaire recherchée : l'année `N` correspond à l'année scolaire `N`/`N+1`. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
 
           Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          Aucune borne haute n'est appliquée : la campagne en cours, comme une campagne à venir, peut être interrogée en anticipation, par exemple pour instruire dès le printemps des demandes portant sur la rentrée suivante. Les bourses régionales de la campagne suivante sont disponibles à partir du mois de mai, les bourses nationales à partir du mois de juillet. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
 
           En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
         example: 2024
@@ -13107,9 +13115,11 @@ paths:
         description: |
           **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+          Année de début de la campagne scolaire recherchée : l'année `N` correspond à l'année scolaire `N`/`N+1`. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
 
           Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          Aucune borne haute n'est appliquée : la campagne en cours, comme une campagne à venir, peut être interrogée en anticipation, par exemple pour instruire dès le printemps des demandes portant sur la rentrée suivante. Les bourses régionales de la campagne suivante sont disponibles à partir du mois de mai, les bourses nationales à partir du mois de juillet. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
 
           En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
         example: 2024
@@ -13466,9 +13476,11 @@ paths:
         description: |
           **Année de référence de la campagne scolaire** (paramètre optionnel).
 
-          Année de début de la campagne scolaire recherchée. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
+          Année de début de la campagne scolaire recherchée : l'année `N` correspond à l'année scolaire `N`/`N+1`. Par exemple, l'année scolaire 2025-2026 est représentée par `2025`.
 
           Les données sont disponibles à partir de la campagne 2021-2022. La fiabilité des données augmente avec les années, notamment car les imports régionaux étaient moins fréquents lors des premières campagnes.
+
+          Aucune borne haute n'est appliquée : la campagne en cours, comme une campagne à venir, peut être interrogée en anticipation, par exemple pour instruire dès le printemps des demandes portant sur la rentrée suivante. Les bourses régionales de la campagne suivante sont disponibles à partir du mois de mai, les bourses nationales à partir du mois de juillet. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre : une campagne récente peut donc renvoyer un dossier absent ou partiel alors que l'étudiant est bien boursier.
 
           En l'absence de ce paramètre, l'API recherche une bourse valide pour l'étudiant ; si plusieurs résultats existent, elle renvoie la bourse la plus récente en priorité.
         example: 2024
