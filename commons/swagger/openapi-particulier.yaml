@@ -1322,19 +1322,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -2212,19 +2218,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -3112,19 +3124,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -3998,19 +4016,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -4899,19 +4923,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -5948,19 +5978,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -7008,19 +7044,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -7438,19 +7480,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -8275,19 +8323,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -9414,19 +9468,25 @@ paths:
                         provider: CNAV
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
                   value:
                     errors:
                     - code: '37009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNAV
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -10363,19 +10423,25 @@ paths:
                         provider: CNOUS
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_26009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_26009:
                   value:
                     errors:
                     - code: '26009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNOUS
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -11206,19 +11272,25 @@ paths:
                         provider: CNOUS
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_26009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_26009:
                   value:
                     errors:
                     - code: '26009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: CNOUS
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -14252,19 +14324,25 @@ paths:
                         provider: DSNJ
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_39009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_39009:
                   value:
                     errors:
                     - code: '39009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: DSNJ
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -14903,19 +14981,25 @@ paths:
                         provider: France Travail
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_24009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_24009:
                   value:
                     errors:
                     - code: '24009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: France Travail
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -15498,19 +15582,25 @@ paths:
                         provider: France Travail
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_24009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_24009:
                   value:
                     errors:
                     - code: '24009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: France Travail
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -16094,19 +16184,25 @@ paths:
                         provider: GIP-MDS
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_31009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_31009:
                   value:
                     errors:
                     - code: '31009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: GIP-MDS
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -17121,19 +17217,25 @@ paths:
                         provider: MEN
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_30009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_30009:
                   value:
                     errors:
                     - code: '30009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: MEN
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -17799,19 +17901,25 @@ paths:
                         provider: MEN
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_30009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_30009:
                   value:
                     errors:
                     - code: '30009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: MEN
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -18485,19 +18593,25 @@ paths:
                         provider: MEN
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_30009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_30009:
                   value:
                     errors:
                     - code: '30009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: MEN
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -19067,19 +19181,25 @@ paths:
                         provider: MESRI
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_25009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_25009:
                   value:
                     errors:
                     - code: '25009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: MESRI
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -19923,19 +20043,25 @@ paths:
                         provider: MESRI
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_25009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_25009:
                   value:
                     errors:
                     - code: '25009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: MESRI
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -20632,19 +20758,25 @@ paths:
                         provider: SDH
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_certificat_ssl_du_fournisseur_de_donnees_41009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_41009:
                   value:
                     errors:
                     - code: '41009'
-                      title: Erreur de certificat SSL du fournisseur de données
-                      detail: Le certificat SSL du fournisseur de données est invalide
-                        ou expiré.
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
                       source:
                       meta:
                         provider: SDH
-                  summary: Erreur de certificat SSL du fournisseur de données
-                  description: Le certificat SSL du fournisseur de données est invalide
-                    ou expiré.
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
