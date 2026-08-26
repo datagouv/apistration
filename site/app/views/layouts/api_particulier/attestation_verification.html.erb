@@ -12,9 +12,14 @@
     .verification-card h1 .fr-icon-success-line { color: var(--text-default-success, #18753c); }
     .verification-card h1 .fr-icon-error-line { color: var(--text-default-error, #ce0500); }
     .intro { font-size: .9rem; color: var(--text-mention-grey, #666); margin: .25rem 0 0; }
-    .field-grid { display: grid; grid-template-columns: max-content 1fr; gap: .75rem 1.5rem; margin: 1.5rem 0 0; }
+    .field-grid { display: grid; grid-template-columns: 15rem 1fr; gap: .75rem 1.5rem; margin: 1.5rem 0 0; }
     .field-grid dt { font-weight: 700; color: #3a3a3a; text-align: right; }
     .field-grid dd { margin: 0; color: #161616; }
+    @media (max-width: 36em) {
+      .field-grid { grid-template-columns: 1fr; gap: .25rem 0; }
+      .field-grid dt { text-align: left; }
+      .field-grid dd { margin-bottom: .5rem; }
+    }
     .field-section { margin: 1.5rem 0 0; font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-mention-grey, #666); }
     .field-section + .field-grid { margin-top: .75rem; }
     .verif-code { font-family: monospace; font-size: 1.25rem; font-weight: 700; letter-spacing: .12em; }
@@ -48,9 +53,11 @@
       </div>
     </div>
   </main>
-  <footer class="fr-footer" role="contentinfo">
-    <div class="fr-container fr-py-2w">
-      <p class="fr-text--xs fr-mb-0">© République Française — particulier.api.gouv.fr</p>
+  <footer class="fr-footer fr-mt-0" role="contentinfo">
+    <div class="fr-container">
+      <div class="fr-footer__bottom">
+        <p class="fr-footer__bottom-copy fr-py-2w">© République Française — particulier.api.gouv.fr</p>
+      </div>
     </div>
   </footer>
 </body>
