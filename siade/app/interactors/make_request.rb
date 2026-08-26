@@ -81,8 +81,8 @@ class MakeRequest < ApplicationInteractor
     if open_ssl_network_error?(e)
       context.errors << NetworkError.new
       context.fail!
-    elsif open_ssl_certificate_error?(e)
-      fail_to_request_provider!(SSLCertificateError)
+    elsif open_ssl_certificate_error?(e) || open_ssl_handshake_alert_error?(e)
+      fail_to_ssl_handshake!(e)
     elsif open_ssl_temporary_error?(e)
       if context.http_retry_count < 2
         context.http_retry_count += 1
@@ -150,6 +150,14 @@ class MakeRequest < ApplicationInteractor
     context.fail!
   end
 
+  def fail_to_ssl_handshake!(exception)
+    error = SSLCertificateError.new(context.provider_name)
+    error.add_to_monitoring_private_context({ openssl_error_message: exception.message })
+
+    context.errors << error
+    context.fail!
+  end
+
   # -- substring match, not element intersection
   def dns_lookup_error?(exception)
     dns_lookup_errors_string.any? do |error_message|
@@ -193,6 +201,22 @@ class MakeRequest < ApplicationInteractor
 
   def open_ssl_certificate_error?(exception)
     exception.message.include?('certificate verify failed')
+  end
+
+  # -- alerts sent back by the provider when it rejects our mTLS client certificate
+  # -- substring match, not element intersection
+  def open_ssl_handshake_alert_error?(exception)
+    [
+      'alert handshake failure',
+      'alert certificate expired',
+      'alert certificate revoked',
+      'alert certificate unknown',
+      'alert bad certificate',
+      'alert unknown ca',
+      'alert certificate required'
+    ].any? do |error_message|
+      exception.message.include?(error_message)
+    end
   end
 
   # -- substring match, not element intersection

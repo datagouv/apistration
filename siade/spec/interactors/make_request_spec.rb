@@ -165,6 +165,30 @@ RSpec.describe MakeRequest, type: :interactor do
         end
       end
 
+      [
+        'SSL_connect returned=1 errno=0 peeraddr=195.68.45.156:443 state=error: sslv3 alert handshake failure (SSL alert number 40)',
+        'SSL_connect returned=1 errno=0 peeraddr=143.196.253.140:443 state=error: sslv3 alert certificate expired (SSL alert number 45)',
+        'SSL_connect returned=1 errno=0 peeraddr=1.2.3.4:443 state=error: sslv3 alert certificate revoked (SSL alert number 44)',
+        'SSL_connect returned=1 errno=0 peeraddr=1.2.3.4:443 state=error: sslv3 alert certificate unknown (SSL alert number 46)',
+        'SSL_connect returned=1 errno=0 peeraddr=1.2.3.4:443 state=error: sslv3 alert bad certificate (SSL alert number 42)',
+        'SSL_connect returned=1 errno=0 peeraddr=1.2.3.4:443 state=error: tlsv1 alert unknown ca (SSL alert number 48)',
+        'SSL_connect returned=1 errno=0 peeraddr=1.2.3.4:443 state=error: tlsv13 alert certificate required (SSL alert number 116)'
+      ].each do |handshake_alert_message|
+        context "when the provider rejects our client certificate with \"#{handshake_alert_message[/(?<=state=error: ).*/]}\"" do
+          let(:ssl_error_message) { handshake_alert_message }
+
+          it { is_expected.to be_a_failure }
+
+          it 'adds SSLCertificateError to errors' do
+            expect(subject.errors).to include(instance_of(SSLCertificateError))
+          end
+
+          it 'keeps the raw OpenSSL message in the monitoring private context' do
+            expect(subject.errors.first.monitoring_private_context).to eq(openssl_error_message: handshake_alert_message)
+          end
+        end
+      end
+
       context 'when it is a "unexpected eof while reading" error' do
         let(:ssl_error_message) { 'unexpected eof while reading' }
 
