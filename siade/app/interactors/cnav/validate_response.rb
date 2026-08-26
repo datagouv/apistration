@@ -1,6 +1,8 @@
 class CNAV::ValidateResponse < ValidateResponse
-  raises UnprocessableEntityError, field: :sngi, from_provider: true
-  raises UnprocessableEntityError, field: :civility, from_provider: true
+  SNGI_UNIDENTIFIED_MESSAGE = "Les paramètres fournis ne permettent pas d'identifier un allocataire.".freeze
+
+  raises ProviderUnprocessableEntityError, reason: :unidentified_person
+  raises ProviderUnprocessableEntityError, reason: :rejected_civility
 
   def call
     resource_not_found! if http_not_found?
@@ -26,7 +28,7 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   def sub_provider_error!
-    return unprocessable_entity!(:sngi) if sub_provider_error_from_sngi?
+    return unprocessable_entity!(:unidentified_person, SNGI_UNIDENTIFIED_MESSAGE) if sub_provider_error_from_sngi?
 
     fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", 'Allocataire non référencé')) if sub_provider_error_from_rncps?
   end
@@ -47,7 +49,7 @@ class CNAV::ValidateResponse < ValidateResponse
   def unprocessable_entity_error!
     track_unexpected_bad_request! unless EXPECTED_BAD_REQUEST_CODES.include?(error_code_from_body)
 
-    unprocessable_entity!(:civility, meta: {
+    unprocessable_entity!(:rejected_civility, meta: {
       provider_error_code: error_code_from_body,
       provider_error_message: error_message_from_body
     })

@@ -50,7 +50,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation Adulte Handicape with FranceCo
                 stub_sngi_404('allocation_adulte_handicape')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
+              build_rswag_example(ProviderUnprocessableEntityError.new('Sécurité sociale', :unidentified_person))
 
               schema '$ref' => '#/components/schemas/Error'
 

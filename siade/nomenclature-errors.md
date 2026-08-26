@@ -48,8 +48,47 @@ Liste non-exhaustive (la liste se trouve dans [`ErrorsBackend`](app/services/err
 - `19` = ADEME
 - `20` = API Geo
 
-La valeur `00` correspond aux erreurs relative à l'API Entreprise et n'implique
-pas de fournisseur de données.
+La valeur `00` correspond aux erreurs relatives à l'API Entreprise et
+**n'implique pas de fournisseur de données**.
+
+### Règle : le préfixe indique qui a rendu le verdict
+
+Le préfixe répond à la question « **un fournisseur de données a-t-il été
+sollicité ?** », pas à la question « où est la cause ? ». Cette dernière est
+déjà portée par le statut HTTP.
+
+- `00XXX` ⟺ **aucun appel fournisseur n'a eu lieu**. L'erreur a été décidée par
+  nos seuls moyens : validation de paramètres, authentification, habilitations.
+  Elle est déterministe : à paramètres identiques, la réponse ne changera pas.
+- `XXYYY` (`XX` ≠ `00`) ⟺ **un fournisseur a été appelé**, et c'est lui qui a
+  rendu le verdict. `meta.provider` nomme ce fournisseur. La réponse n'est pas
+  déterministe dans le temps : les données du fournisseur peuvent évoluer.
+
+Le statut HTTP reste, lui, l'indicateur de l'action attendue de l'appelant :
+
+| Statut | Signification pour l'appelant |
+| ------ | ----------------------------- |
+| `422`  | La requête est inexploitable : corriger la saisie et rappeler |
+| `404`  | La requête est bonne, la donnée n'existe pas : clore le dossier |
+| `502`  | Panne du fournisseur : réessayer plus tard |
+
+Un `422` peut donc parfaitement porter un préfixe fournisseur : c'est le cas
+lorsque seul le fournisseur est capable de dire que l'entrée transmise ne
+correspond à personne (échec d'appariement SNGI, civilité refusée, critères
+d'identité ambigus). Ces erreurs sont construites par
+[`ProviderUnprocessableEntityError`](app/errors/provider_unprocessable_entity_error.rb),
+qui dérive le code **et** `meta.provider` du même `provider_name`, rendant
+l'invariant impossible à violer.
+
+Concrètement : une erreur émise depuis un `ValidateParams` porte le préfixe
+`00`, une erreur émise depuis un `ValidateResponse` porte un préfixe
+fournisseur. La règle est vérifiée par
+[`spec/services/errors_nomenclature_spec.rb`](spec/services/errors_nomenclature_spec.rb).
+
+> Exception héritée : les codes `50001` à `50004` (jetons FranceConnect)
+> utilisent un préfixe `50` non attribué dans `ErrorsBackend`. Ils sont
+> explicitement listés dans le spec de conformité en attendant leur propre
+> reclassement.
 
 ### Codes erreur (YYY)
 
@@ -126,6 +165,9 @@ Ces erreurs sont comprises entre `000` et `049`.
 
 ##### 0003Z Erreurs associés aux entrées non traitables
 
+Ces erreurs sont détectées **avant tout appel fournisseur**, par validation
+locale des paramètres.
+
 - `00301` = Siren non valide
 - `00302` = Siret non valide
 - `00303` = Siret ou numéro RNA non valide
@@ -143,3 +185,15 @@ Ces erreurs sont comprises entre `000` et `049`.
 L'ensemble de ces erreurs sont définis dans le fichier
 [`errors.yml`](./config/errors.yml), et leur sous code commencent au minimum à
 la valeur `500`
+
+##### XX56Z Entrées rejetées par le fournisseur de données
+
+Sous-codes partagés par tous les fournisseurs, pour les entrées que seul le
+fournisseur peut invalider. Ils produisent un `422`, avec le préfixe du
+fournisseur interrogé.
+
+- `XX560` = Identité non reconnue par le fournisseur de données
+- `XX561` = Paramètres de civilité refusés par le fournisseur de données
+- `XX562` = Identifiant refusé par le fournisseur de données
+- `XX563` = Identité ambiguë pour le fournisseur de données
+- `XX564` = Identité inexploitable renvoyée par le fournisseur de données

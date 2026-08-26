@@ -58,6 +58,28 @@
 - subcode: '020'
   title: 'Maintenance du fournisseur de données'
 
+## Entrées rejetées par le fournisseur de données (422 post-appel)
+
+- subcode: '560'
+  title: "Identité non reconnue par le fournisseur de données"
+  detail: "Les paramètres d'identité fournis ne correspondent à aucune personne connue du fournisseur de données."
+
+- subcode: '561'
+  title: "Paramètres de civilité refusés par le fournisseur de données"
+  detail: "Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur de données."
+
+- subcode: '562'
+  title: "Identifiant refusé par le fournisseur de données"
+  detail: "L'identifiant fourni a été refusé par le fournisseur de données."
+
+- subcode: '563'
+  title: "Identité ambiguë pour le fournisseur de données"
+  detail: "Les paramètres d'identité fournis correspondent à plusieurs personnes chez le fournisseur de données."
+
+- subcode: '564'
+  title: "Identité inexploitable renvoyée par le fournisseur de données"
+  detail: "L'identité renvoyée par le fournisseur de données est incomplète ou invalide."
+
 
 - code: '00100'
   title: 'Privilèges insuffisants'
@@ -270,10 +292,6 @@
   title: 'Entité non traitable'
   detail: "Le lieu de naissance n'est pas correctement formaté"
 
-- code: '00366'
-  title: 'Entité non traitable'
-  detail: "Un ou plusieurs paramètres de civilité ne sont pas correctement formatés"
-
 - code: '00367'
   title: 'Entité non traitable'
   detail: "Le ou les prénoms sont manquants."
@@ -297,10 +315,6 @@
 - code: '00390'
   title: 'Entité non traitable'
   detail: "La valeur de la profondeur n'est pas valide: celle-ci doit être comprise entre 1 et 13"
-
-- code: '00391'
-  title: 'Entité non traitable'
-  detail: "Les paramètres d'identité correspondent à plusieurs personnes. Nous ne pouvons pas fournir les informations de service civique pour cet individu."
 
 - code: '00400'
   title: 'Entité non traitable'
@@ -488,10 +502,6 @@
 - code: '00354'
   title: 'Entité non traitable'
   detail: "Le mois demandé est incorrect ou est dans le futur."
-
-- code: '00355'
-  title: Impossible d'identifier l'allocataire
-  detail: "Les paramètres fournis ne permettent pas d'identifier un allocataire."
 
 ## BDF
 

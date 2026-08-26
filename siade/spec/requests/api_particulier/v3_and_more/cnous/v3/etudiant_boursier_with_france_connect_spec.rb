@@ -60,7 +60,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with FranceConnect', api
           response '422', 'Paramètres invalides' do
             schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(UnprocessableEntityError.new(:civility, provider: 'CNOUS'))
+            build_rswag_example(ProviderUnprocessableEntityError.new('CNOUS', :rejected_civility))
 
             run_test!
           end

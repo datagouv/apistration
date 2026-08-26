@@ -81,7 +81,7 @@ RSpec.describe 'API Particulier CNAV: Allocation de rentrée scolaire (ARS) with
                 stub_sngi_404('allocation_rentree_scolaire')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
+              build_rswag_example(ProviderUnprocessableEntityError.new('Sécurité sociale', :unidentified_person))
 
               schema '$ref' => '#/components/schemas/Error'
 
