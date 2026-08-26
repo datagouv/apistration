@@ -8,10 +8,7 @@ class DataSubvention::Subventions::MakeRequest < MakeRequest::Get
 
     return response unless stale_token_rejected?
 
-    context.token_renewed = true
-
-    DataSubvention::Subventions::Authenticate.invalidate_cached_token!
-    DataSubvention::Subventions::Authenticate.call!(context)
+    reauthenticate
 
     super
   end
@@ -33,6 +30,13 @@ class DataSubvention::Subventions::MakeRequest < MakeRequest::Get
 
   def stale_token_rejected?
     context.token_renewed.blank? && http_unauthorized?
+  end
+
+  def reauthenticate
+    context.token_renewed = true
+
+    DataSubvention::Subventions::Authenticate.invalidate_cached_token!
+    DataSubvention::Subventions::Authenticate.call!(context)
   end
 
   def data_subvention_token
