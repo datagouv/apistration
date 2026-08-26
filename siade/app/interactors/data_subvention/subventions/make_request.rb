@@ -1,5 +1,17 @@
 class DataSubvention::Subventions::MakeRequest < MakeRequest::Get
+  include ResourceHelpers
+
   protected
+
+  def api_call_with_error_handling
+    response = super
+
+    return response unless stale_token_rejected?
+
+    reauthenticate
+
+    super
+  end
 
   def request_uri
     URI("#{data_subvention_url}/association/#{context.params[:siren_or_siret_or_rna]}/grants")
@@ -15,6 +27,17 @@ class DataSubvention::Subventions::MakeRequest < MakeRequest::Get
   end
 
   private
+
+  def stale_token_rejected?
+    context.token_renewed.blank? && http_unauthorized?
+  end
+
+  def reauthenticate
+    context.token_renewed = true
+
+    DataSubvention::Subventions::Authenticate.invalidate_cached_token!
+    DataSubvention::Subventions::Authenticate.call!(context)
+  end
 
   def data_subvention_token
     context.token
