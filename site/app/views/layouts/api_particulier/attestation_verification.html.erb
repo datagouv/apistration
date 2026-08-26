@@ -8,10 +8,17 @@
   <%= stylesheet_link_tag 'api_particulier', media: 'all' %>
   <style>
     .verification-card { max-width: 640px; margin: 0 auto; border: 1px solid var(--border-default-grey, #ddd); padding: 2rem 2.5rem; }
-    .field-grid { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.5rem; margin: .75rem 0 0; }
-    .field-grid dt { font-weight: 700; text-align: right; }
-    .field-grid dd { margin: 0; }
+    .verification-card h1 { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 1.4rem; color: var(--blue-france-sun-113-625, #000091); border-bottom: 2px solid var(--blue-france-sun-113-625, #000091); padding-bottom: .65rem; margin: 0 0 .5rem; }
+    .verification-card h1 .fr-icon-success-line { color: var(--text-default-success, #18753c); }
+    .verification-card h1 .fr-icon-error-line { color: var(--text-default-error, #ce0500); }
+    .intro { font-size: .9rem; color: var(--text-mention-grey, #666); margin: .25rem 0 0; }
+    .field-grid { display: grid; grid-template-columns: max-content 1fr; gap: .75rem 1.5rem; margin: 1.5rem 0 0; }
+    .field-grid dt { font-weight: 700; color: #3a3a3a; text-align: right; }
+    .field-grid dd { margin: 0; color: #161616; }
+    .field-section { margin: 1.5rem 0 0; font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-mention-grey, #666); }
+    .field-section + .field-grid { margin-top: .75rem; }
     .verif-code { font-family: monospace; font-size: 1.25rem; font-weight: 700; letter-spacing: .12em; }
+    .footnote { color: #666; }
   </style>
 </head>
 <body>
