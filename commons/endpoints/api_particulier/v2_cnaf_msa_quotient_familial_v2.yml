@@ -72,7 +72,7 @@ fiche:
           <div class="fr-collapse" id="accordion-106">
           <div class="fr-mb-0">
           <ul>
-            <li>Nom de naissance<sup>*</sup>, nom d'usage, prénoms<sup>1</sup>, sexe<sup>*</sup>, date de naissance de l'allocataire<sup>**</sup>&nbsp;;</li>
+            <li>Nom de famille (nom de naissance)<sup>*</sup>, nom d'usage, prénoms<sup>1</sup>, sexe<sup>*</sup>, date de naissance de l'allocataire<sup>**</sup>&nbsp;;</li>
             <li>Lieu de naissance&nbsp;:
             <ul>
               <li>

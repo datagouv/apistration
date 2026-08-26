@@ -28,7 +28,7 @@ fiche:
         **Avec les données d'identité** : 
           
           {:.fr-mb-0}
-          - Nom de naissance<sup>\*</sup>, nom d'usage, prénoms<sup>1</sup>, sexe<sup>\*</sup>, date de naissance de l'allocataire<sup>\**</sup>&nbsp;;
+          - Nom de famille (nom de naissance)<sup>\*</sup>, nom d'usage, prénoms<sup>1</sup>, sexe<sup>\*</sup>, date de naissance de l'allocataire<sup>\**</sup>&nbsp;;
           - Lieu de naissance&nbsp;: 
               - *Si le lieu de naissance est en France,* la commune de naissance est obligatoire, elle peut être saisie de deux façons différentes :
                   - {:.fr-text--sm .fr-mb-0} Option 1 : Code COG de la commune de naissance<sup>\*</sup>. [En savoir plus](#renseigner-lieu-de-naissance)&nbsp;;

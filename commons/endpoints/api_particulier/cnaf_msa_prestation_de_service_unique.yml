@@ -84,7 +84,7 @@ fiche:
           <div class="fr-collapse" id="accordion-106">
           <div class="fr-mb-0">
           <ul>
-            <li>Nom de naissance<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>4</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;</li>
+            <li>Nom de famille (nom de naissance)<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>4</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;</li>
             <li>Commune de naissance <em>(<a href="#poids-parametres-identification">fortement recommandé</a>)</em>&nbsp;: peut être renseignée de deux façons différentes :
             <ul>
               <li class="fr-text--sm fr-mb-0">

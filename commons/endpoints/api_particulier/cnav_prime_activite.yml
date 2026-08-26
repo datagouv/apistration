@@ -34,7 +34,7 @@ fiche:
         **Avec les données d'identité** : 
           
           {:.fr-mb-0}
-          - Nom de naissance<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>4</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;
+          - Nom de famille (nom de naissance)<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>4</sup>, date de naissance de l'allocataire<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;
           - Commune de naissance _([fortement recommandé](#poids-parametres-identification))_&nbsp;:
               - *Si le lieu de naissance est en France,* la commune de naissance peut être saisie de deux façons différentes :
                   - {:.fr-text--sm .fr-mb-0} Option 1 : Code COG de la commune de naissance. [En savoir plus](#renseigner-lieu-de-naissance)&nbsp;;
