@@ -37,8 +37,8 @@
   title: 'Erreur auprès du fournisseur de données : trop de requêtes'
 
 - subcode: '009'
-  title: "Erreur de certificat SSL du fournisseur de données"
-  detail: "Le certificat SSL du fournisseur de données est invalide ou expiré."
+  title: "Erreur de connexion sécurisée (TLS) avec le fournisseur de données"
+  detail: "La connexion sécurisée avec le fournisseur de données n'a pas pu être établie : certificat invalide ou expiré, ou échec de la négociation TLS. L'équipe technique a été notifiée de cette erreur pour investigation."
 
 - subcode: '010'
   title: 'Contenu partiel'
