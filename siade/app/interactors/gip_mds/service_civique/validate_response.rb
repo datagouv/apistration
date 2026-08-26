@@ -1,5 +1,5 @@
 class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
-  raises UnprocessableEntityError, field: :gip_mds_too_many_individus
+  raises UnprocessableEntityError, field: :gip_mds_too_many_individus, from_provider: true
 
   def call
     monitor_multiple_contracts if multiple_contracts?
@@ -63,7 +63,7 @@ class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
   end
 
   def too_many_individus!
-    fail_with_error!(::UnprocessableEntityError.new(:gip_mds_too_many_individus))
+    unprocessable_entity!(:gip_mds_too_many_individus)
   end
 
   def error_code

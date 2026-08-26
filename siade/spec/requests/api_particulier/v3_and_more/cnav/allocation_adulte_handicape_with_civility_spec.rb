@@ -82,7 +82,7 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
                 stub_sngi_404('allocation_adulte_handicape')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
 
               schema '$ref' => '#/components/schemas/Error'
 

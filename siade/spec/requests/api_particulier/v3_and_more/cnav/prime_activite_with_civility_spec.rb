@@ -82,7 +82,7 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
                 stub_sngi_404('prime_activite')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
 
               schema '$ref' => '#/components/schemas/Error'
 

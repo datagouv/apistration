@@ -1,17 +1,20 @@
 class UnprocessableEntityError < ApplicationError
-  def self.build_example(field:, **)
-    new(field)
+  def self.build_example(field:, provider_name: nil, from_provider: false, **)
+    new(field, provider: (provider_name if from_provider))
   end
 
-  attr_reader :field
+  attr_reader :field, :provider
 
-  def initialize(field, meta: {})
+  def initialize(field, meta: {}, provider: nil)
     @field = field.to_sym
     @meta = meta
+    @provider = provider
   end
 
   def meta
-    @meta || {}
+    return extra_meta if provider.blank?
+
+    { provider: }.merge(extra_meta)
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -98,5 +101,11 @@ class UnprocessableEntityError < ApplicationError
 
   def kind
     :wrong_parameter
+  end
+
+  private
+
+  def extra_meta
+    @meta || {}
   end
 end

@@ -50,7 +50,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation enfant handicapé (AEEH) with 
                 stub_sngi_404('allocation_enfant_handicape')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
 
               schema '$ref' => '#/components/schemas/Error'
 

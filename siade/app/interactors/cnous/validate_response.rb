@@ -1,7 +1,7 @@
 class CNOUS::ValidateResponse < ValidateResponse
   raises ProviderConflictError
-  raises UnprocessableEntityError, field: :ine
-  raises UnprocessableEntityError, field: :civility
+  raises UnprocessableEntityError, field: :ine, from_provider: true
+  raises UnprocessableEntityError, field: :civility, from_provider: true
 
   # rubocop:disable Metrics/CyclomaticComplexity
   def call
@@ -27,7 +27,7 @@ class CNOUS::ValidateResponse < ValidateResponse
   end
 
   def unprocessable_entity_error!
-    fail_with_error!(::UnprocessableEntityError.new(params_kind))
+    unprocessable_entity!(params_kind)
   end
 
   def conflict?

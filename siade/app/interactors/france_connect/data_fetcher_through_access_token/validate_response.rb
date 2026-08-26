@@ -6,12 +6,12 @@ require 'uri'
 class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < FranceConnect::ValidateResponse
   raises InvalidFranceConnectAccessTokenError, type: :malformed_token
   raises InvalidFranceConnectAccessTokenError, type: :not_found_or_expired
-  raises UnprocessableEntityError, field: :nom_naissance
-  raises UnprocessableEntityError, field: :prenoms
-  raises UnprocessableEntityError, field: :annee_date_naissance
-  raises UnprocessableEntityError, field: :mois_date_naissance
-  raises UnprocessableEntityError, field: :jour_date_naissance
-  raises UnprocessableEntityError, field: :date_naissance
+  raises UnprocessableEntityError, field: :nom_naissance, from_provider: true
+  raises UnprocessableEntityError, field: :prenoms, from_provider: true
+  raises UnprocessableEntityError, field: :annee_date_naissance, from_provider: true
+  raises UnprocessableEntityError, field: :mois_date_naissance, from_provider: true
+  raises UnprocessableEntityError, field: :jour_date_naissance, from_provider: true
+  raises UnprocessableEntityError, field: :date_naissance, from_provider: true
 
   def call
     handle_invalid_token_error if [400, 401].include?(http_code)

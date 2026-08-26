@@ -86,6 +86,10 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+      it 'exposes the queried provider in meta' do
+        expect(subject.errors.first.meta).to eq(provider: 'MESRI')
+      end
     end
 
     context 'with a 500 code' do

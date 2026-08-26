@@ -51,6 +51,10 @@ RSpec.describe GIPMDS::ServiceCivique::ValidateResponse, type: :validate_respons
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+    it 'exposes the queried provider in meta' do
+      expect(subject.errors.first.meta).to eq(provider: 'GIP-MDS')
+    end
   end
 
   context 'with an unknown error' do

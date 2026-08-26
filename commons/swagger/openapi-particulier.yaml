@@ -1190,18 +1190,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -1614,18 +1615,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -2086,18 +2088,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -2526,18 +2529,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -2992,18 +2996,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -3425,18 +3430,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -3884,18 +3890,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -4310,18 +4317,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -4791,18 +4799,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -5239,18 +5248,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -6912,18 +6922,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -7348,18 +7359,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -8178,18 +8190,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -8854,18 +8867,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -9336,18 +9350,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -9772,18 +9787,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                impossible_d_identifier_l_allocataire_00355:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '00355'
+                      title: Impossible d'identifier l'allocataire
+                      detail: Les paramètres fournis ne permettent pas d'identifier
+                        un allocataire.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Impossible d'identifier l'allocataire
+                  description: Les paramètres fournis ne permettent pas d'identifier
+                    un allocataire.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -10332,7 +10348,8 @@ paths:
                       detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
                         formatés
                       source:
-                      meta: {}
+                      meta:
+                        provider: CNOUS
                   summary: Entité non traitable
                   description: Un ou plusieurs paramètres de civilité ne sont pas
                     correctement formatés
@@ -10783,7 +10800,8 @@ paths:
                       detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
                         formatés
                       source:
-                      meta: {}
+                      meta:
+                        provider: CNOUS
                   summary: Entité non traitable
                   description: Un ou plusieurs paramètres de civilité ne sont pas
                     correctement formatés
@@ -11182,7 +11200,8 @@ paths:
                       title: Entité non traitable
                       detail: Le numéro d'INE n'est pas correctement formatté
                       source:
-                      meta: {}
+                      meta:
+                        provider: CNOUS
                   summary: Entité non traitable
                   description: Le numéro d'INE n'est pas correctement formatté
                 ambiguous_delegation_error:
@@ -16092,7 +16111,8 @@ paths:
                         personnes. Nous ne pouvons pas fournir les informations de
                         service civique pour cet individu.
                       source:
-                      meta: {}
+                      meta:
+                        provider: GIP-MDS
                   summary: Entité non traitable
                   description: Les paramètres d'identité correspondent à plusieurs
                     personnes. Nous ne pouvons pas fournir les informations de service

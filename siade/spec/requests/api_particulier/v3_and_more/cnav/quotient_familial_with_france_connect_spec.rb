@@ -64,7 +64,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
                 stub_sngi_404('quotient_familial_v2')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'CNAF & MSA'))
 
               schema '$ref' => '#/components/schemas/Error'
 

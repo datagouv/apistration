@@ -50,7 +50,7 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
                 stub_sngi_404('complementaire_sante_solidaire')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
 
               schema '$ref' => '#/components/schemas/Error'
 

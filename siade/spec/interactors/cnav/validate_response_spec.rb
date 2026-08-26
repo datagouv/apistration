@@ -39,6 +39,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         it 'returns a SNGI error' do
           expect(subject.errors.first.detail).to include('Les paramètres fournis ne permettent pas')
         end
+
+        it 'exposes the queried provider in meta' do
+          expect(subject.errors.first.meta).to eq(provider: 'CNAV')
+        end
       end
 
       context 'with RNCPS 404 error, which translate a regime not found' do
@@ -182,8 +186,9 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         subject
       end
 
-      it 'includes provider error code and message in meta' do
+      it 'includes the provider and its error code and message in meta' do
         expect(subject.errors.first.meta).to eq(
+          provider: 'CNAV',
           provider_error_code: 40_013,
           provider_error_message: 'Civilité invalide'
         )
@@ -203,8 +208,9 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         subject
       end
 
-      it 'includes provider error code and message in meta' do
+      it 'includes the provider and its error code and message in meta' do
         expect(subject.errors.first.meta).to eq(
+          provider: 'CNAV',
           provider_error_code: 40_001,
           provider_error_message: 'Civilité invalide'
         )

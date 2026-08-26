@@ -50,7 +50,7 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
                 stub_sngi_404('prime_activite')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'Sécurité sociale'))
 
               schema '$ref' => '#/components/schemas/Error'
 

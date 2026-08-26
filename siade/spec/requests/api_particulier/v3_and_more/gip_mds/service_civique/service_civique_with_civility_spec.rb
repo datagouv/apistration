@@ -71,7 +71,7 @@ RSpec.describe 'GIPMDS: Servicecivique With Civility', api: :particulier, type: 
           before { stub_gip_mds_service_civique_too_many_individus }
 
           response '422', 'Entité non traitable' do
-            build_rswag_example(UnprocessableEntityError.new(:gip_mds_too_many_individus))
+            build_rswag_example(UnprocessableEntityError.new(:gip_mds_too_many_individus, provider: 'GIP-MDS'))
 
             schema '$ref' => '#/components/schemas/Error'
 
