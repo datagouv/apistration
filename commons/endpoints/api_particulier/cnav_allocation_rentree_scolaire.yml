@@ -27,7 +27,7 @@ fiche:
         **Avec les données d'identité** :
 
           {:.fr-mb-0}
-          - Nom de naissance, nom d'usage, prénoms, sexe, date de naissance de l'allocataire, code COG du pays de naissance&nbsp;;
+          - Nom de famille (nom de naissance), nom d'usage, prénoms, sexe, date de naissance de l'allocataire, code COG du pays de naissance&nbsp;;
           - Commune de naissance _(fortement recommandé)_.
     data:
       description: |+
