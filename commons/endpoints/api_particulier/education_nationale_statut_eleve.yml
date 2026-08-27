@@ -48,6 +48,16 @@ fiche:
         Les informations, même si elles évoluent principalement lors de la rentrée scolaire en septembre, peuvent changer en cours d'année (déménagements, etc.).
 
         {:.fr-highlight.fr-highlight--caution}
+        > ⚠️ **Base élève vide de mi-août au lendemain de la rentrée scolaire**
+        >
+        > Cette période correspond à la mise à jour des données pour la nouvelle année scolaire ; des indisponibilités temporaires concernent alors les données de scolarité et de bourse :
+        >
+        > - **élèves du premier degré** : l'API renvoie systématiquement une **erreur 404** ;
+        > - **élèves boursiers du second degré** : une **erreur 404 peut être renvoyée lorsque l'appel porte également sur les données de bourse**. Les données de **scolarité** restent quant à elles disponibles, actualisées dès le 6 juillet pour l'année scolaire suivante.
+        >
+        > Pendant cette période, une **erreur 404 ne doit pas être interprétée comme l'absence de scolarité de l'élève ou de son statut de boursier**.
+
+        {:.fr-highlight.fr-highlight--caution}
         > Attention, si un élève est indiqué "non-boursier" avant mi-octobre, il ne faut pas prendre en compte cette information. Le **statut non-boursier est véritablement fiable à partir de mi-octobre**. [En savoir plus](#fiabilite-statut-boursier-octobre).
     parameters_details:
       description: |+
