@@ -1954,6 +1954,278 @@ endpoints:
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: FranceConnect
+  api_particulier_v3_cnav_foyer_rsa_with_civility:
+    provider: Sécurité sociale
+    errors:
+      '422':
+      - code: '00363'
+        title: Entité non traitable
+        detail: La date de naissance n'est pas correctement formatté
+      - code: '00365'
+        title: Entité non traitable
+        detail: Le lieu de naissance n'est pas correctement formaté
+      - code: '00367'
+        title: Entité non traitable
+        detail: Le ou les prénoms sont manquants.
+      - code: '00400'
+        title: Entité non traitable
+        detail: Le code pays INSEE n'est pas correctement formaté
+      - code: '00405'
+        title: Entité non traitable
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
+      - code: '00420'
+        title: Entité non traitable
+        detail: Le nom de naissance est manquant
+      - code: '00422'
+        title: Entité non traitable
+        detail: L'annee de naissance est manquante
+      - code: '00426'
+        title: Entité non traitable
+        detail: 'Le nom d''usage contient des caractères non autorisés : seuls les
+          lettres, les espaces, les tirets et les apostrophes sont acceptés'
+      - code: '00427'
+        title: Entité non traitable
+        detail: Le sexe de l'état civil est manquant
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
+      '404':
+      - code: '37003'
+        title: Dossier non trouvé
+        detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAV.
+        meta:
+          provider: CNAV
+      '502':
+      - code: '36000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: Sécurité sociale
+      - code: '36001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: Sécurité sociale
+      - code: '36004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: Sécurité sociale
+      - code: '36008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: Sécurité sociale
+      - code: '36009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: Sécurité sociale
+      - code: '36011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: Sécurité sociale
+      - code: '36999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: Sécurité sociale
+      '503':
+      - code: '36020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: Sécurité sociale
+      '504':
+      - code: '36002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: Sécurité sociale
+  api_particulier_v3_cnav_foyer_rsa_with_france_connect:
+    provider: Sécurité sociale
+    errors:
+      '422':
+      - code: '00363'
+        title: Entité non traitable
+        detail: La date de naissance n'est pas correctement formatté
+      - code: '00365'
+        title: Entité non traitable
+        detail: Le lieu de naissance n'est pas correctement formaté
+      - code: '00367'
+        title: Entité non traitable
+        detail: Le ou les prénoms sont manquants.
+      - code: '00400'
+        title: Entité non traitable
+        detail: Le code pays INSEE n'est pas correctement formaté
+      - code: '00405'
+        title: Entité non traitable
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
+      - code: '00420'
+        title: Entité non traitable
+        detail: Le nom de naissance est manquant
+      - code: '00422'
+        title: Entité non traitable
+        detail: L'annee de naissance est manquante
+      - code: '00426'
+        title: Entité non traitable
+        detail: 'Le nom d''usage contient des caractères non autorisés : seuls les
+          lettres, les espaces, les tirets et les apostrophes sont acceptés'
+      - code: '00427'
+        title: Entité non traitable
+        detail: Le sexe de l'état civil est manquant
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
+      - code: '51564'
+        title: Identité inexploitable renvoyée par le fournisseur de données
+        detail: L'identité renvoyée par le fournisseur de données est incomplète ou
+          invalide.
+        meta:
+          provider: FranceConnect
+      '404':
+      - code: '37003'
+        title: Dossier non trouvé
+        detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAV.
+        meta:
+          provider: CNAV
+      '502':
+      - code: '36000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: Sécurité sociale
+      - code: '36001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: Sécurité sociale
+      - code: '36004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: Sécurité sociale
+      - code: '36008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: Sécurité sociale
+      - code: '36009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: Sécurité sociale
+      - code: '36011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: Sécurité sociale
+      - code: '36999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
+      '401':
+      - code: '51501'
+        title: Accès non autorisé
+        detail: Le jeton d'accès est mal formaté.
+        meta:
+          provider: FranceConnect
+      - code: '51502'
+        title: Accès non autorisé
+        detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
+        meta:
+          provider: FranceConnect
+      - code: '51504'
+        title: Accès non autorisé
+        detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
+          un jeton d''accès FranceConnect transmis via l''en-tête Authorization: Bearer.'
+        meta:
+          provider: FranceConnect
+      '503':
+      - code: '36020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
+      '504':
+      - code: '36002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_participation_familiale_eaje_with_civility:
     provider: Sécurité sociale
     errors:
