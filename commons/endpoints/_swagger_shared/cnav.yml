@@ -600,6 +600,106 @@ cnav:
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de l'ARS."
         example: '2024-08-09'
 
+  foyer_rsa:
+    title: Composition du foyer RSA
+    description: "Composition du foyer au sens de la prestation de revenu de solidarité active (RSA) : bénéficiaires du foyer et personnes à charge."
+    tags:
+      - Composition Foyer RSA
+      - Prochainement
+    attributes:
+      beneficiaires:
+        title: "Bénéficiaires du foyer"
+        scope: cnav_foyer_rsa
+        type: array
+        minItems: 1
+        description: "Liste des bénéficiaires du foyer RSA (allocataire, conjoint, ouvrant droit...)."
+        items:
+          type: object
+          properties:
+            nom_naissance:
+              title: "Nom de naissance"
+              type: string
+              description: Nom de naissance du bénéficiaire.
+              example: "DUPONT"
+            nom_usage:
+              title: "Nom d'usage"
+              type: string
+              nullable: true
+              description: Nom d'usage du bénéficiaire.
+              example: "DURANT"
+            prenoms:
+              title: "Prénoms"
+              type: string
+              description: Prénoms du bénéficiaire.
+              example: "Jeanne"
+            date_naissance:
+              title: "Date de naissance"
+              type: string
+              description: Date de naissance du bénéficiaire au format AAAA-MM-JJ.
+              example: '1970-11-25'
+            sexe:
+              title: "Sexe"
+              type: string
+              description: Sexe de naissance du bénéficiaire.
+              example: "F"
+              enum:
+                - F
+                - M
+            qualite:
+              title: "Qualité du bénéficiaire"
+              type: string
+              description: "Qualité du bénéficiaire au sein du foyer RSA :
+                \n
+                - 'allocataire' : bénéficiaire principal du RSA ;
+                - 'allocataire_demandeur' : bénéficiaire principal du RSA, en cours de demande ;
+                - 'ouvrant_droit' : personne dont la situation ouvre droit au RSA sans en être l'allocataire ;
+                - 'conjoint' : conjoint de l'allocataire ;
+                - 'conjoint_demandeur' : conjoint de l'allocataire, en cours de demande."
+              example: allocataire
+              enum:
+                - allocataire
+                - allocataire_demandeur
+                - ouvrant_droit
+                - conjoint
+                - conjoint_demandeur
+      personnes_a_charge:
+        title: "Personnes à charge du foyer"
+        scope: cnav_foyer_rsa
+        type: array
+        description: "Liste des personnes à charge du foyer au sens du RSA (enfants jusqu'à 25 ans). Liste vide si le foyer ne compte aucune personne à charge."
+        items:
+          type: object
+          properties:
+            nom_naissance:
+              title: "Nom de naissance"
+              type: string
+              description: Nom de naissance de la personne à charge.
+              example: "DUPONT"
+            nom_usage:
+              title: "Nom d'usage"
+              type: string
+              nullable: true
+              description: Nom d'usage de la personne à charge.
+              example: null
+            prenoms:
+              title: "Prénoms"
+              type: string
+              description: Prénoms de la personne à charge.
+              example: "Clotaire Kevin"
+            date_naissance:
+              title: "Date de naissance"
+              type: string
+              description: Date de naissance de la personne à charge au format AAAA-MM-JJ.
+              example: '2007-06-16'
+            sexe:
+              title: "Sexe"
+              type: string
+              description: Sexe de naissance de la personne à charge.
+              example: "M"
+              enum:
+                - F
+                - M
+
   v2:
     commons:
       cache_duration: "La durée du cache est de 1 heure."
