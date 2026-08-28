@@ -1,0 +1,39 @@
+---
+description: 'Foyer RSA avec un allocataire et une personne à charge'
+params:
+  nomNaissance: 'Dupont'
+  prenoms:
+    - jean
+    - charlie
+  anneeDateNaissance: 2008
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+status: 200
+payload: |-
+  {
+    "data": {
+      "beneficiaires": [
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "Jean Charlie",
+          "date_naissance": "2008-01-01",
+          "sexe": "M",
+          "qualite": "allocataire"
+        }
+      ],
+      "personnes_a_charge": [
+        {
+          "nom_naissance": "DUPONT",
+          "nom_usage": null,
+          "prenoms": "Louna",
+          "date_naissance": "2024-03-12",
+          "sexe": "F"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

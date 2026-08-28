@@ -1,0 +1,43 @@
+---
+description: |-
+  Cas de test avec l'identité pivot FranceConnect par défaut du bac à sable
+  d'intégration (Angela DUBOIS).
+params:
+  nomNaissance: 'DUBOIS'
+  prenoms:
+  - 'Angela'
+  - 'Claire'
+  - 'Louise'
+  anneeDateNaissance: 1962
+  moisDateNaissance: 8
+  jourDateNaissance: 24
+  codeCogInseeCommuneNaissance: '75107'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+status: 200
+payload: |-
+  {
+    "data": {
+      "beneficiaires": [
+        {
+          "nom_naissance": "DUBOIS",
+          "nom_usage": null,
+          "prenoms": "Angela Claire Louise",
+          "date_naissance": "1962-08-24",
+          "sexe": "F",
+          "qualite": "allocataire"
+        }
+      ],
+      "personnes_a_charge": [
+        {
+          "nom_naissance": "DUBOIS",
+          "nom_usage": null,
+          "prenoms": "Loic Thierry Simon",
+          "date_naissance": "2004-01-20",
+          "sexe": "M"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
