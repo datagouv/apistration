@@ -106,11 +106,11 @@ fiche:
 
           <div class="fr-download fr-mb-1v">
             <p><strong>🔎 Pour avoir un aperçu exhaustif des données disponibles par imprimé</strong>, vous pouvez consulter ce document&nbsp;:<br>
-              <a href="/files/api-entreprise_liasses_fiscales_liste-des-champs-par-imprime.xls" download class="fr-download__link">Télécharger la liste des données possibles par imprimé
-                <span class="fr-download__detail">XLSX – 22 ko</span>
+              <a href="/files/api-entreprise_liasses_fiscales_codes-nref-par-imprime.xlsx" download class="fr-download__link">Télécharger la liste des données possibles par imprimé
+                <span class="fr-download__detail">XLSX – 145 ko</span>
               </a>
             </p>
-            <p class="fr-text--xs">Source : Document basé sur le [dictionnaire TDFC 2022 de la DGFIP](https://www.impots.gouv.fr/cahier-des-charges-edi-tdfc-0){:target="_blank"}</p>
+            <p class="fr-text--xs">Source : Dictionnaire des codes NREF de la DGFIP (version 1.0 du 26/08/2026), applicable aux millésimes 2025 et 2026.</p>
           </div>
       - q: <a name="perimetre-associations"></a>Quel est le périmètre des associations couvert par cette API ?
         a: |+
