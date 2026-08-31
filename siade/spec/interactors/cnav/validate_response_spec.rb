@@ -34,13 +34,11 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
         it { is_expected.to be_a_failure }
 
-        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+        its(:errors) { is_expected.to include(instance_of(ProviderUnprocessableEntityError)) }
 
-        it 'returns a SNGI error' do
+        it 'returns a SNGI error carrying the queried provider' do
+          expect(subject.errors.first.code).to eq('37560')
           expect(subject.errors.first.detail).to include('Les paramètres fournis ne permettent pas')
-        end
-
-        it 'exposes the queried provider in meta' do
           expect(subject.errors.first.meta).to eq(provider: 'CNAV')
         end
       end
@@ -177,7 +175,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    its(:errors) { is_expected.to include(instance_of(ProviderUnprocessableEntityError)) }
 
     context 'with expected error code' do
       it 'does not track to monitoring' do

@@ -120,7 +120,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
                 stub_sngi_404('quotient_familial_v2')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:sngi, provider: 'CNAF & MSA'))
+              build_rswag_example(ProviderUnprocessableEntityError.new('CNAF & MSA', :unidentified_person))
 
               schema '$ref' => '#/components/schemas/Error'
 

@@ -87,7 +87,7 @@ RSpec.describe CNAV::PrimeActivite, type: :retriever_organizer do
 
           it 'returns 422 message for SNGI' do
             expect(subject).to be_a_failure
-            expect(subject.errors).to include(instance_of(UnprocessableEntityError))
+            expect(subject.errors).to include(instance_of(ProviderUnprocessableEntityError))
             expect(subject.errors.first.detail).to eq("Les paramètres fournis ne permettent pas d'identifier un allocataire.")
           end
         end

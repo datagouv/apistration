@@ -38,7 +38,7 @@ class FranceConnect::ValidateResponse < ValidateResponse
     return if organizer.success?
 
     track_invalid_parameters_error_for_france_connect(organizer)
-    unprocessable_entity!(organizer.errors.first.field)
+    unprocessable_entity!(:unusable_identity, organizer.errors.first.detail)
   end
 
   def scopes_flatten_without_aliases

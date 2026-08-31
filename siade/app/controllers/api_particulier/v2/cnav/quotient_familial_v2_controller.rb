@@ -38,7 +38,7 @@ class APIParticulier::V2::CNAV::QuotientFamilialV2Controller < APIParticulier::V
 
   def format_wrong_parameter_error(error)
     {
-      error: error.field == :sngi ? 'not_found' : 'bad_request',
+      error: error.unidentified_person? ? 'not_found' : 'bad_request',
       reason: error.detail,
       message: error.detail
     }

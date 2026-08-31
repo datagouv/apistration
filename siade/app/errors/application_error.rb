@@ -50,6 +50,10 @@ class ApplicationError
     fail NotImplementedError
   end
 
+  def unidentified_person?
+    false
+  end
+
   protected
 
   def error_entry

@@ -1,20 +1,17 @@
 class UnprocessableEntityError < ApplicationError
-  def self.build_example(field:, provider_name: nil, from_provider: false, **)
-    new(field, provider: (provider_name if from_provider))
+  def self.build_example(field:, **)
+    new(field)
   end
 
-  attr_reader :field, :provider
+  attr_reader :field
 
-  def initialize(field, meta: {}, provider: nil)
+  def initialize(field, meta: {})
     @field = field.to_sym
     @meta = meta
-    @provider = provider
   end
 
   def meta
-    return extra_meta if provider.blank?
-
-    { provider: }.merge(extra_meta)
+    @meta || {}
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -48,7 +45,6 @@ class UnprocessableEntityError < ApplicationError
       annee: '00353',
       annee_cnav: '00356',
       mois: '00354',
-      sngi: '00355',
       # MESRI / MEN / CNOUS
       ine: '00360',
       family_name: '00361',
@@ -57,7 +53,6 @@ class UnprocessableEntityError < ApplicationError
       birth_date: '00363',
       gender: '00364',
       birth_place: '00365',
-      civility: '00366',
       campaign_year: '00368',
       # DGFIP usager
       tax_number: '00370',
@@ -66,7 +61,6 @@ class UnprocessableEntityError < ApplicationError
       identifiant: '00380',
       # GIP-MDS
       gip_mds_depth: '00390',
-      gip_mds_too_many_individus: '00391',
       insee_country_code: '00400',
       request_id: '00401',
       # MEN
@@ -101,11 +95,5 @@ class UnprocessableEntityError < ApplicationError
 
   def kind
     :wrong_parameter
-  end
-
-  private
-
-  def extra_meta
-    @meta || {}
   end
 end

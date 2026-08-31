@@ -88,7 +88,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::ValidateResponse, t
 
         it { is_expected.to be_a_failure }
 
-        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+        its(:errors) { is_expected.to include(instance_of(ProviderUnprocessableEntityError)) }
 
         it 'tracks errors' do
           expect(MonitoringService.instance).to receive(:track)
