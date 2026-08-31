@@ -174,6 +174,21 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
     its(:errors) { is_expected.to include(instance_of(InvalidRecipientError)) }
   end
 
+  context 'with mois but no annee' do
+    let(:annee) { nil }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'with neither mois nor annee' do
+    let(:annee) { nil }
+    let(:mois) { nil }
+
+    it { is_expected.to be_a_success }
+  end
+
   context 'with too ancient year' do
     let(:annee) { 2021 }
 

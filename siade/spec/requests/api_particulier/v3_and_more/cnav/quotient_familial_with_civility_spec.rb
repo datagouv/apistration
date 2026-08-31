@@ -111,8 +111,20 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           end
         end
 
+        describe 'when only one of mois and annee is given' do
+          response '422', 'Paramètres invalides ou allocataire non identifiable' do
+            let(:mois) { 8 }
+
+            build_rswag_example(UnprocessableEntityError.new(:periode))
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+        end
+
         describe 'when the user is not found' do
-          response '422', "Impossible d'identifier l'allocataire" do
+          response '422', 'Paramètres invalides ou allocataire non identifiable' do
             let(:codeCogInseePaysNaissance) { '99623' }
             # rubocop:disable RSpec/ContextWording
             context 'Allocataire non identifié' do

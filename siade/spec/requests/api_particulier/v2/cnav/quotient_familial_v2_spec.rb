@@ -115,6 +115,16 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                   run_test!
                 end
 
+                context 'Période incomplète' do
+                  let(:annee) { nil }
+
+                  build_rswag_example(UnprocessableEntityError.new(:periode))
+
+                  schema '$ref' => '#/components/schemas/Error'
+
+                  run_test!
+                end
+
                 context 'Allocataire non identifié' do
                   before do
                     stub_sngi_404('quotient_familial_v2')
