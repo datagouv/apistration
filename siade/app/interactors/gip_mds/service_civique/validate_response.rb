@@ -1,5 +1,5 @@
 class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
-  raises UnprocessableEntityError, field: :gip_mds_too_many_individus
+  raises ProviderUnprocessableEntityError, reason: :ambiguous_identity
 
   def call
     monitor_multiple_contracts if multiple_contracts?
@@ -63,7 +63,10 @@ class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
   end
 
   def too_many_individus!
-    fail_with_error!(::UnprocessableEntityError.new(:gip_mds_too_many_individus))
+    unprocessable_entity!(
+      :ambiguous_identity,
+      "Les paramètres d'identité correspondent à plusieurs personnes. Nous ne pouvons pas fournir les informations de service civique pour cet individu."
+    )
   end
 
   def error_code

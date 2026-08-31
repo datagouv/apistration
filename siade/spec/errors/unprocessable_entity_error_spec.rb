@@ -4,6 +4,6 @@ RSpec.describe UnprocessableEntityError, type: :error do
   end
 
   it_behaves_like 'a valid error' do
-    let(:instance) { described_class.new(:gip_mds_too_many_individus) }
+    let(:instance) { described_class.new(:gip_mds_depth) }
   end
 end

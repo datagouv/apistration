@@ -1190,18 +1190,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -1614,18 +1615,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -2086,18 +2088,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -2526,18 +2529,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -2992,18 +2996,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -3425,18 +3430,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -3884,18 +3890,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -4310,18 +4317,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -4791,18 +4799,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -5239,18 +5248,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -6912,18 +6922,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -7348,18 +7359,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -8178,18 +8190,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_35560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '35560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -8854,18 +8867,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_35560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '35560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -9336,18 +9350,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -9772,18 +9787,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                identite_non_reconnue_par_le_fournisseur_de_donnees_36560:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '36560'
+                      title: Identité non reconnue par le fournisseur de données
+                      detail: Les paramètres d'identité fournis ne correspondent à
+                        aucune personne connue du fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Identité non reconnue par le fournisseur de données
+                  description: Les paramètres d'identité fournis ne correspondent
+                    à aucune personne connue du fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -10324,18 +10340,20 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                parametres_de_civilite_refuses_par_le_fournisseur_de_donnees_26561:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '26561'
+                      title: Paramètres de civilité refusés par le fournisseur de
+                        données
+                      detail: Un ou plusieurs paramètres de civilité ont été refusés
+                        par le fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: CNOUS
+                  summary: Paramètres de civilité refusés par le fournisseur de données
+                  description: Un ou plusieurs paramètres de civilité ont été refusés
+                    par le fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -10775,18 +10793,20 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00366:
+                parametres_de_civilite_refuses_par_le_fournisseur_de_donnees_26561:
                   value:
                     errors:
-                    - code: '00366'
-                      title: Entité non traitable
-                      detail: Un ou plusieurs paramètres de civilité ne sont pas correctement
-                        formatés
+                    - code: '26561'
+                      title: Paramètres de civilité refusés par le fournisseur de
+                        données
+                      detail: Un ou plusieurs paramètres de civilité ont été refusés
+                        par le fournisseur de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Un ou plusieurs paramètres de civilité ne sont pas
-                    correctement formatés
+                      meta:
+                        provider: CNOUS
+                  summary: Paramètres de civilité refusés par le fournisseur de données
+                  description: Un ou plusieurs paramètres de civilité ont été refusés
+                    par le fournisseur de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -11175,16 +11195,19 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00360:
+                identifiant_refuse_par_le_fournisseur_de_donnees_26562:
                   value:
                     errors:
-                    - code: '00360'
-                      title: Entité non traitable
-                      detail: Le numéro d'INE n'est pas correctement formatté
+                    - code: '26562'
+                      title: Identifiant refusé par le fournisseur de données
+                      detail: L'identifiant fourni a été refusé par le fournisseur
+                        de données.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le numéro d'INE n'est pas correctement formatté
+                      meta:
+                        provider: CNOUS
+                  summary: Identifiant refusé par le fournisseur de données
+                  description: L'identifiant fourni a été refusé par le fournisseur
+                    de données.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -16083,17 +16106,18 @@ paths:
           content:
             application/json:
               examples:
-                entite_non_traitable_00391:
+                identite_ambigue_pour_le_fournisseur_de_donnees_31563:
                   value:
                     errors:
-                    - code: '00391'
-                      title: Entité non traitable
+                    - code: '31563'
+                      title: Identité ambiguë pour le fournisseur de données
                       detail: Les paramètres d'identité correspondent à plusieurs
                         personnes. Nous ne pouvons pas fournir les informations de
                         service civique pour cet individu.
                       source:
-                      meta: {}
-                  summary: Entité non traitable
+                      meta:
+                        provider: GIP-MDS
+                  summary: Identité ambiguë pour le fournisseur de données
                   description: Les paramètres d'identité correspondent à plusieurs
                     personnes. Nous ne pouvons pas fournir les informations de service
                     civique pour cet individu.

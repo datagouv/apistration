@@ -82,7 +82,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
                 stub_sngi_404('complementaire_sante_solidaire')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(ProviderUnprocessableEntityError.new('Sécurité sociale', :unidentified_person))
 
               schema '$ref' => '#/components/schemas/Error'
 

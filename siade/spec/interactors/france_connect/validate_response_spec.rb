@@ -16,7 +16,7 @@ RSpec.describe FranceConnect::ValidateResponse do
   end
 
   describe 'FranceConnect received param validation' do
-    subject(:call) { FranceConnectDummyDataFetcher.call(response:) }
+    subject(:call) { FranceConnectDummyDataFetcher.call(response:, provider_name: 'FranceConnect') }
 
     let(:response) do
       instance_double(Net::HTTPOK, code:, body:)
@@ -57,7 +57,15 @@ RSpec.describe FranceConnect::ValidateResponse do
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderUnprocessableEntityError)) }
+
+      it 'exposes the queried provider in meta' do
+        expect(subject.errors.first.meta).to eq(provider: 'FranceConnect')
+      end
+
+      it 'builds its code from the queried provider' do
+        expect(subject.errors.first.code).to eq('51564')
+      end
 
       it 'tracks errors' do
         expect(MonitoringService.instance).to receive(:track)

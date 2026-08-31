@@ -82,7 +82,7 @@ RSpec.describe 'API Particulier CNAV: Revenu de solidarité active with civility
                 stub_sngi_404('revenu_solidarite_active')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(ProviderUnprocessableEntityError.new('Sécurité sociale', :unidentified_person))
 
               schema '$ref' => '#/components/schemas/Error'
 

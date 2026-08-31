@@ -77,7 +77,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE', api: :particu
           response '422', 'Paramètres invalides' do
             schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(UnprocessableEntityError.new(:ine))
+            build_rswag_example(ProviderUnprocessableEntityError.new('CNOUS', :rejected_identifier))
 
             run_test!
           end

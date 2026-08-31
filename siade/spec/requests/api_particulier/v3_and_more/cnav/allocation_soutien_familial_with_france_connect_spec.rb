@@ -50,7 +50,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation Soutien Familial with FranceCo
                 stub_sngi_404('allocation_soutien_familial')
               end
 
-              build_rswag_example(UnprocessableEntityError.new(:civility))
+              build_rswag_example(ProviderUnprocessableEntityError.new('Sécurité sociale', :unidentified_person))
 
               schema '$ref' => '#/components/schemas/Error'
 

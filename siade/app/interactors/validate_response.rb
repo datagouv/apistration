@@ -94,6 +94,10 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
+  def unprocessable_entity!(reason, message = nil, meta: {})
+    fail_with_error!(::ProviderUnprocessableEntityError.new(context.provider_name, reason, message).add_meta(meta))
+  end
+
   def resource_not_found!(resource = nil)
     message = not_found_message(resource)
 
