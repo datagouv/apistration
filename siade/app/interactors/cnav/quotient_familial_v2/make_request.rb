@@ -17,7 +17,7 @@ class CNAV::QuotientFamilialV2::MakeRequest < CNAV::MakeRequest
 
   def request_params
     super.merge(
-      anneeDemandee: context.params[:annee].presence || Time.zone.today.year,
+      anneeDemandee: context.params[:annee].presence,
       moisDemande: mois_demande
     ).compact
   end
@@ -25,6 +25,9 @@ class CNAV::QuotientFamilialV2::MakeRequest < CNAV::MakeRequest
   private
 
   def mois_demande
-    Kernel.format('%<month>02d', month: context.params[:mois].presence&.to_i || Time.zone.today.month)
+    mois = context.params[:mois].presence
+    return nil if mois.nil?
+
+    Kernel.format('%<month>02d', month: mois.to_i)
   end
 end

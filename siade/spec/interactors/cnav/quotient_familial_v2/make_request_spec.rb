@@ -107,7 +107,7 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
 
     let!(:stubbed_request) do
       stub_request(:get, Siade.credentials[:cnav_quotient_familial_v2_url]).with(
-        query: hash_including({
+        query: {
           codeLieuNaissance: '75101',
           codePaysNaissance: '99100',
           dateNaissance: '2000-01-01',
@@ -115,7 +115,7 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
           listePrenoms: 'Jean Martin',
           nomNaissance: 'DUPONT',
           nomUsage: 'MARTIN'
-        }),
+        },
         headers: {
           'Content-Type' => 'application/json',
           'Authorization' => 'Bearer super_valid_token',
@@ -136,7 +136,7 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }
 
-      it 'calls url with valid body, which interpolates params' do
+      it 'does not send any anneeDemandee nor moisDemande' do
         make_call
 
         expect(stubbed_request).to have_been_requested
