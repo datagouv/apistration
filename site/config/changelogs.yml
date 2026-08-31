@@ -1,3 +1,9 @@
+- date: 2026-08-31
+  scope: api_particulier
+  title: "Quotient familial : le dernier QF connu est renvoyé par défaut"
+  description: |
+    Sur la fiche [quotient familial](<%= endpoint_path(uid: 'cnav/quotient_familial') %>), les paramètres `mois` et `annee` ne sont **plus préremplis avec le mois en cours** lorsqu'ils sont absents : la CAF ou la MSA renvoie alors le **dernier quotient familial connu**, dont le mois peut être antérieur au mois courant (le QF CAF d'un mois n'est publié qu'après son premier week-end). Pour consulter l'historique, `mois` et `annee` doivent être fournis ensemble ; n'en fournir qu'un seul renvoie désormais une erreur (400 en v2, 422 en v3).
+
 - date: 2026-08-25
   scope: api_particulier
   title: "CNOUS étudiant boursier : `campaignYear` accepte la campagne en cours et à venir"

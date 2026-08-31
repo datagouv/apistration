@@ -1416,17 +1416,20 @@ paths:
         required: false
       - name: annee
         in: query
-        description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
-          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
-          un historique de maximum 2 ans.
+        description: Année du quotient familial recherché, à fournir avec `mois`.
+          Si ni `mois` ni `annee` ne sont renseignés, le dernier quotient familial
+          connu est renvoyé ; si un seul des deux est renseigné, l'API renvoie une
+          erreur 400. L'API permet d'accéder à un historique de maximum 2 ans.
         example: 2023
         required: false
         schema:
           type: integer
       - name: mois
         in: query
-        description: Mois du quotient familial recherché. Si le mois n'est pas renseigné,
-          le mois utilisé par défaut est celui en cours.
+        description: Mois du quotient familial recherché, à fournir avec `annee`.
+          Si ni `mois` ni `annee` ne sont renseignés, le dernier quotient familial
+          connu est renvoyé ; si un seul des deux est renseigné, l'API renvoie une
+          erreur 400.
         example: 12
         required: false
         schema:
@@ -1684,26 +1687,19 @@ paths:
                     title: Année effective du QF
                     type: integer
                     description: "Année effective du quotient familial appelé. \n\n
-                      - Si aucune année et aucun mois n'ont été renseignés en paramètres
-                      d'appel, le quotient familial retourné sera celui du mois de
-                      l'année en cours. - Si aucune année, ni aucun mois sont renseignés,
-                      l'appel est effectué par défaut avec l'année et le mois en cours.
-                      - Si aucune année n'a été renseignée, et que le mois est renseigné,
-                      le quotient familial retourné sera celui du mois spécifié pour
-                      l'année en cours. En revanche, si la date finalement composée
-                      avec cette règle s'avère dans le futur (mois postérieur au moins
-                      en cours), l'API renvoie un erreur 400. "
+                      Si aucune période n'a été demandée (ni `mois` ni `annee`), ce
+                      champ vaut l'année en cours au moment de l'appel ; le quotient
+                      familial renvoyé est alors le dernier connu du fournisseur,
+                      dont la période de calcul est donnée par `annee_calcul` et `mois_calcul`."
                     example: 2023
                   mois:
                     title: Mois effectif du QF
                     type: integer
-                    description: "Mois effectif du quotient familial. \n\n - Si aucun
-                      mois n'est renseigné, le mois en cours est utilisé par défaut.
-                      - Si le mois renseigné est postérieur au mois en cours, et qu'il
-                      compose une date dans le futur avec l'année appelée, l'API renvoie
-                      une erreur 400. \n - Si aucun mois n'a été renseigné mais que
-                      l'année a été spécifiée en paramètres d'appel, le quotient familial
-                      retourné sera celui du mois en cours pour l'année spécifiée."
+                    description: "Mois effectif du quotient familial. \n\n Si aucune
+                      période n'a été demandée (ni `mois` ni `annee`), ce champ vaut
+                      le mois en cours au moment de l'appel ; le quotient familial
+                      renvoyé est alors le dernier connu du fournisseur, dont la période
+                      de calcul est donnée par `annee_calcul` et `mois_calcul`."
                     example: 6
                   annee_calcul:
                     title: Année du calcul du QF
@@ -1737,6 +1733,11 @@ paths:
                       N-2.
                     message: L'année demandée doit être l'année en cours (N), N-1
                       ou N-2.
+                Période incomplète:
+                  value:
+                    error: bad_request
+                    reason: Les paramètres mois et annee doivent être fournis ensemble.
+                    message: Les paramètres mois et annee doivent être fournis ensemble.
                 Allocataire non identifié:
                   value:
                     error: not_found
