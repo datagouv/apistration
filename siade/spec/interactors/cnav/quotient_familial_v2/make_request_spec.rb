@@ -89,6 +89,31 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
     end
   end
 
+  describe 'without a period' do
+    let(:params) { super().except(:annee, :mois) }
+
+    let!(:stubbed_request) do
+      stub_request(:get, Siade.credentials[:cnav_quotient_familial_v2_url]).with(
+        query: {
+          codeLieuNaissance: '17300',
+          codePaysNaissance: '99100',
+          dateNaissance: '1980-06-12',
+          genre: 'M',
+          listePrenoms: 'JEAN-PASCAL',
+          nomNaissance: 'CHAMPION'
+        }
+      ).to_return(
+        status: 200,
+        body: read_payload_file('cnav/quotient_familial_v2/make_request_valid.json')
+      )
+    end
+
+    it 'lets the provider pick the latest known quotient familial' do
+      make_call
+      expect(stubbed_request).to have_been_requested
+    end
+  end
+
   describe 'with FranceConnect params' do
     let(:params) do
       {
