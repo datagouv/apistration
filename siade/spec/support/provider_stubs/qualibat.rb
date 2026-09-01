@@ -13,11 +13,16 @@ module ProviderStubs::QUALIBAT
       )
   end
 
+  # Unlike CIBTP's attestation stub, this must stay a real, byte-faithful Qualibat
+  # certificat PDF, not the shared `pdf/dummy.pdf`: for API v4+, the organizer runs
+  # QUALIBATCertificationsBatimentExtractor over this body's actual content, and a
+  # non-Qualibat PDF fails that extraction, only surfacing as a schema-validation
+  # failure downstream.
   def stub_qualibat_valid_siret(siret: valid_siret(:qualibat))
     stub_request(:get, "#{Siade.credentials[:qualibat_api_url]}/certificat/#{siret}")
       .to_return(
         status: 200,
-        body: read_payload_file('qualibat/certifications_batiment/valid_siret.pdf'),
+        body: Rails.root.join('spec/fixtures/pdfs/qualibat_certifications_batiment/valid_siret.pdf').read,
         headers: { 'Content-Type' => 'application/pdf' }
       )
   end
