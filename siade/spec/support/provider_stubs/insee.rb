@@ -1,5 +1,6 @@
 require_relative '../provider_stubs'
 
+# rubocop:disable Metrics/ModuleLength
 module ProviderStubs::INSEE
   def stub_insee_successions_make_request(siret:)
     stub_request(:get, query_url_succession(siret)).to_return(
@@ -181,3 +182,4 @@ module ProviderStubs::INSEE
     "q=siretEtablissementSuccesseur:#{siret} OR siretEtablissementPredecesseur:#{siret}"
   end
 end
+# rubocop:enable Metrics/ModuleLength
