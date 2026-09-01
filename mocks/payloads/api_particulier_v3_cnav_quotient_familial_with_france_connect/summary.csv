@@ -119,7 +119,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Pierre""],""nomNaissance"":""MERCIER"",""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient,
+ainsi que les paramètres `annee` et `mois` du QF recherché (août 2026).","{""prenoms"":[""Pierre""],""nomNaissance"":""MERCIER"",""anneeDateNaissance"":1969,""moisDateNaissance"":3,""jourDateNaissance"":17,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""95277"",""codeCogInseePaysNaissance"":""99100"",""annee"":2026,""mois"":8}",200,"{
   ""data"": {
     ""allocataires"": [
       {
@@ -161,8 +162,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
     ""quotient_familial"": {
       ""fournisseur"": ""CNAF"",
       ""valeur"": 699,
-      ""annee"": 2024,
-      ""mois"": 2,
+      ""annee"": 2026,
+      ""mois"": 8,
       ""annee_calcul"": 2024,
       ""mois_calcul"": 12
     }
