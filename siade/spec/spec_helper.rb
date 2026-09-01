@@ -4,7 +4,6 @@ require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'rspec/json_expectations'
 require 'webmock/rspec'
-require 'vcr_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -149,14 +148,6 @@ RSpec.configure do |config|
   config.include ProviderStubs::ADEME
   config.include ProviderStubs::FNTP
   config.include ProviderStubs::CNETP
-
-  config.include ActivateStrictVcrRequestMatchingForV3
-  config.extend ActivateStrictVcrRequestMatchingForV3
-
-  config.around do |example|
-    example = add_strict_matching_on_vcr_requests_for_v3(example)
-    example.run
-  end
 
   config.before do
     allow_any_instance_of(INPI::RNE::Authenticate).to receive(:randomize_account!)
