@@ -141,4 +141,35 @@ RSpec.describe INSEE::PasswordDerivation do
       expect(described_class.current_password).to match(/[^a-zA-Z0-9]/)
     end
   end
+
+  describe 'bypass credential' do
+    let(:bypass_password) { 'ByPass#Password1' }
+
+    before { Siade.credentials[described_class::BYPASS_CREDENTIAL_KEY] = bypass_password }
+
+    after do
+      Siade.credentials.delete(described_class::BYPASS_CREDENTIAL_KEY)
+      Timecop.return
+    end
+
+    it 'is bypassed' do
+      expect(described_class).to be_bypassed
+    end
+
+    it 'returns the bypass password whatever the period' do
+      Timecop.freeze(Date.new(2027, 1, 15))
+      expect(described_class.current_password).to eq(bypass_password)
+    end
+
+    it 'returns the bypass password as previous password too' do
+      Timecop.freeze(Date.new(2027, 1, 15))
+      expect(described_class.previous_password).to eq(bypass_password)
+    end
+  end
+
+  describe '.bypassed?' do
+    it 'is false when the credential is absent' do
+      expect(described_class).not_to be_bypassed
+    end
+  end
 end

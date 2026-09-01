@@ -357,5 +357,31 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
         expect(WebMock).not_to have_requested(:post, renew_url)
       end
     end
+
+    context 'when the bypass credential is set' do
+      let(:token) { jwt_token_with_pwd_changed_time('2026-08-15T10:00:00Z') }
+
+      before do
+        Timecop.freeze(Date.new(2026, 9, 15))
+        Siade.credentials[INSEE::PasswordDerivation::BYPASS_CREDENTIAL_KEY] = 'ByPass#Password1'
+
+        stub_request(:get, /#{insee_sirene_url}/)
+          .to_return(status: 200, body: '{"uniteLegale":{}}')
+      end
+
+      after { Siade.credentials.delete(INSEE::PasswordDerivation::BYPASS_CREDENTIAL_KEY) }
+
+      it 'does not call the renewal API' do
+        make_request
+
+        expect(WebMock).not_to have_requested(:post, renew_url)
+      end
+
+      it 'does not take the rotation lock' do
+        make_request
+
+        expect(RedisService.new.get(INSEE::MakeRequest::ROTATION_LOCK_KEY)).to be_nil
+      end
+    end
   end
 end
