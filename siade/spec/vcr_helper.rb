@@ -146,4 +146,19 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.around do |example|
+    cassette_name = example.metadata.dig(:vcr, :cassette_name)
+
+    if !ENV['regenerate_cassettes'] && cassette_name && insee_oauth_cassette?(cassette_name)
+      Timecop.freeze(Date.new(2026, 8, 15)) { example.run }
+    else
+      example.run
+    end
+  end
+end
+
+def insee_oauth_cassette?(cassette_name)
+  path = Rails.root.join('spec/fixtures/cassettes', "#{cassette_name}.yml")
+  path.exist? && path.read.include?('<URL_INSEE_AUTH>')
 end
