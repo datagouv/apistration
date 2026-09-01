@@ -5,6 +5,7 @@ description: |-
   Ce cas permet de tester :
   - [Param. appel] Utilisation du paramètre nomUsage
   - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Mois et année du QF recherché (août 2026)
   - [Réponse] Nom d'usage présent dans la réponse
   - [Réponse] Trois enfants mineurs rattachés
   - [Réponse] Régime CNAF
@@ -22,6 +23,8 @@ params:
   anneeDateNaissance: 1969
   moisDateNaissance: 3
   jourDateNaissance: 17
+  annee: 2026
+  mois: 8
 status: 200
 payload: |-
   {
@@ -70,8 +73,8 @@ payload: |-
       "quotient_familial": {
         "fournisseur": "CNAF",
         "valeur": 699,
-        "annee": 2024,
-        "mois": 2,
+        "annee": 2026,
+        "mois": 8,
         "annee_calcul": 2024,
         "mois_calcul": 12
       }

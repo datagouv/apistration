@@ -299,7 +299,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient,
+ainsi que les paramètres `annee` et `mois` du QF recherché (août 2026).
 
   <details><summary>Paramètres</summary>
   <p>
@@ -315,7 +316,9 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "jourDateNaissance": 17,
     "sexeEtatCivil": "M",
     "codeCogInseeCommuneNaissance": "95277",
-    "codeCogInseePaysNaissance": "99100"
+    "codeCogInseePaysNaissance": "99100",
+    "annee": 2026,
+    "mois": 8
   }
   ```
 
@@ -368,8 +371,8 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "quotient_familial": {
         "fournisseur": "CNAF",
         "valeur": 699,
-        "annee": 2024,
-        "mois": 2,
+        "annee": 2026,
+        "mois": 8,
         "annee_calcul": 2024,
         "mois_calcul": 12
       }

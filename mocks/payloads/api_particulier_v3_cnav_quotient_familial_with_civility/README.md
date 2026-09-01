@@ -3,11 +3,12 @@
 
   Status `200`
 
-  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
+  ## Parent et trois enfants mineurs - QF CNAF de 699
 
 Ce cas permet de tester :
 - [Param. appel] Utilisation du paramètre nomUsage
 - [Param. appel] Lieu de naissance en France
+- [Param. appel] Mois et année du QF recherché (août 2026)
 - [Réponse] Nom d'usage présent dans la réponse
 - [Réponse] Trois enfants mineurs rattachés
 - [Réponse] Régime CNAF
@@ -30,7 +31,9 @@ Les enfants sont calqués sur l'identité FranceConnect
     ],
     "anneeDateNaissance": 1969,
     "moisDateNaissance": 3,
-    "jourDateNaissance": 17
+    "jourDateNaissance": 17,
+    "annee": 2026,
+    "mois": 8
   }
   ```
 
@@ -87,8 +90,8 @@ Les enfants sont calqués sur l'identité FranceConnect
       "quotient_familial": {
         "fournisseur": "CNAF",
         "valeur": 699,
-        "annee": 2024,
-        "mois": 2,
+        "annee": 2026,
+        "mois": 8,
         "annee_calcul": 2024,
         "mois_calcul": 12
       }
@@ -106,7 +109,7 @@ Les enfants sont calqués sur l'identité FranceConnect
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=95277' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=MERCIER' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1969' -d 'moisDateNaissance=3' -d 'jourDateNaissance=17' -d 'annee=2026' -d 'mois=8' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 
