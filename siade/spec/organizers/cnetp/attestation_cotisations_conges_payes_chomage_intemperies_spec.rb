@@ -7,8 +7,10 @@ RSpec.describe CNETP::AttestationCotisationsCongesPayesChomageIntemperies, :self
     }
   end
 
-  context 'when the attestation is found', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/valid_siren' } do
+  context 'when the attestation is found' do
     let(:siren) { valid_siren(:cnetp) }
+
+    before { stub_cnetp_valid_siren }
 
     it { is_expected.to be_success }
 
@@ -19,8 +21,10 @@ RSpec.describe CNETP::AttestationCotisationsCongesPayesChomageIntemperies, :self
     end
   end
 
-  context 'when the attestation is not found', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/not_found_siren' } do
+  context 'when the attestation is not found' do
     let(:siren) { not_found_siren }
+
+    before { stub_cnetp_not_found_siren }
 
     it { is_expected.to be_a_failure }
 
