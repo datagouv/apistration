@@ -37,8 +37,6 @@ RSpec.describe DGDDI::EORI, type: :retriever_organizer do
     context 'with invalid eori' do
       let(:siret_or_eori) { invalid_eori }
 
-      before { stub_dgddi_invalid_eori_format }
-
       it { is_expected.to be_a_failure }
     end
   end

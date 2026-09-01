@@ -1,8 +1,0 @@
-{
-  "erreur": {
-    "status": "400",
-    "message": "Bad Request",
-    "code": "TECH002",
-    "libelle": "Format incorrect"
-  }
-}
