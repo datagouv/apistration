@@ -22,13 +22,17 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
 
     it_behaves_like 'a make request with working mocking_params'
 
-    context 'with code_etablissement (GET)', vcr: { cassette_name: 'men/scolarites/valid' } do
+    context 'with code_etablissement (GET)' do
+      before { stub_men_scolarites_valid }
+
       it { is_expected.to be_a_success }
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }
     end
 
-    context 'with sexe_etat_civil upcased (non-regression)', vcr: { cassette_name: 'men/scolarites/valid' } do
+    context 'with sexe_etat_civil upcased (non-regression)' do
+      before { stub_men_scolarites_valid }
+
       let(:params) do
         {
           nom_naissance: 'NOMFAMILLE',
@@ -48,7 +52,7 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
       its(:response) { is_expected.to be_a(Net::HTTPOK) }
     end
 
-    context 'with v2 provider', vcr: { cassette_name: 'men/scolarites/valid_v2' } do
+    context 'with v2 provider' do
       let(:recipient) { '13002526500013' }
       let(:params) do
         {
@@ -63,6 +67,8 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           provider_api_version: 'v2'
         }
       end
+
+      before { stub_men_scolarites_valid_v2 }
 
       it { is_expected.to be_a_success }
 
