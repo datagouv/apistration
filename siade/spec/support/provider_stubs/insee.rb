@@ -20,6 +20,24 @@ module ProviderStubs::INSEE
       .to_return(status: 200, body: { access_token: 'bearer_token', expires_in: 3600 }.to_json)
   end
 
+  def stub_insee_metadonnees_one_result
+    stub_request(:get, "#{Siade.credentials[:insee_metadata_url]}/geo/communes")
+      .with(query: hash_including('filtreNom' => 'Gennevilliers'))
+      .to_return(status: 200, body: read_payload_file('insee/metadonnees/one_result.json'))
+  end
+
+  def stub_insee_metadonnees_no_result
+    stub_request(:get, "#{Siade.credentials[:insee_metadata_url]}/geo/communes")
+      .with(query: hash_including('filtreNom' => 'invalid'))
+      .to_return(status: 404, body: read_payload_file('insee/metadonnees/no_result.json'))
+  end
+
+  def stub_insee_metadonnees_multiple_results
+    stub_request(:get, "#{Siade.credentials[:insee_metadata_url]}/geo/communes")
+      .with(query: hash_including('filtreNom' => 'La Rochette'))
+      .to_return(status: 200, body: read_payload_file('insee/metadonnees/multiple_results.json'))
+  end
+
   private
 
   def query_url_succession(siret)

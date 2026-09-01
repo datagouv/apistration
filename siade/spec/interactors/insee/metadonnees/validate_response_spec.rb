@@ -13,16 +13,30 @@ RSpec.describe INSEE::Metadonnees::ValidateResponse, type: :validate_response do
 
     let(:annee_date_naissance) { '2000' }
 
-    context 'with a response which has 1 result', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
+    context 'with a response which has 1 result' do
       let(:nom_commune_naissance) { 'Gennevilliers' }
+
+      # `around` (not `before`) so the stub is registered ahead of the
+      # `config.before(type: :validate_response)` hook, which forces `response`
+      # to be evaluated (and thus the real HTTP call to fire) before any
+      # example-level `before(:each)` hook would run.
+      around do |example|
+        stub_insee_metadonnees_one_result
+        example.run
+      end
 
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
     end
 
-    context 'with a response which has 2 results', vcr: { cassette_name: 'insee/metadonnees/multiple_results' } do
+    context 'with a response which has 2 results' do
       let(:nom_commune_naissance) { 'La Rochette' }
+
+      around do |example|
+        stub_insee_metadonnees_multiple_results
+        example.run
+      end
 
       it { is_expected.to be_a_success }
 
