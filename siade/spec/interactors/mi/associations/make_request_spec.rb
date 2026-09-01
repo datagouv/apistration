@@ -10,7 +10,9 @@ RSpec.describe MI::Associations::MakeRequest, type: :make_request do
 
   it_behaves_like 'a make request with working mocking_params'
 
-  describe 'happy path', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+  describe 'happy path' do
+    before { stub_mi_associations_valid_rna }
+
     it { is_expected.to be_a_success }
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
