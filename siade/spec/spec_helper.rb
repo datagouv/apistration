@@ -139,6 +139,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::FranceTravail
   config.include ProviderStubs::DataSubvention
   config.include ProviderStubs::CarifOref
+  config.include ProviderStubs::PROBTP
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3

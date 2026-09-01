@@ -8,8 +8,10 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
       }
     end
 
-    context 'when the attestation is found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
+    context 'when the attestation is found' do
       let(:siret) { eligible_siret(:probtp) }
+
+      before { stub_probtp_attestation_eligible }
 
       it { is_expected.to be_success }
 
@@ -20,8 +22,10 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
       end
     end
 
-    context 'when the attestation is not found', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do
+    context 'when the attestation is not found' do
       let(:siret) { not_found_siret(:probtp) }
+
+      before { stub_probtp_attestation_not_found }
 
       it { is_expected.to be_a_failure }
 

@@ -4,7 +4,7 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::ValidateResponse, type: :
 
     let(:response) { instance_double(Net::HTTPOK, code:, body:) }
 
-    context 'when it is ok and conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
+    context 'when it is ok and conforme' do
       let(:code) { 200 }
       let(:body) do
         PROBTP::ConformitesCotisationsRetraite::MakeRequest
@@ -13,12 +13,21 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::ValidateResponse, type: :
           .body
       end
 
+      # `around` (not `before`) so the stub is registered ahead of the
+      # `config.before(type: :validate_response)` hook, which forces `response`
+      # to be evaluated (and thus the real HTTP call to fire) before any
+      # example-level `before(:each)` hook would run.
+      around do |example|
+        stub_probtp_conformite_eligible
+        example.run
+      end
+
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
     end
 
-    context 'when it is ok and not conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_non_eligible_siret' } do
+    context 'when it is ok and not conforme' do
       let(:code) { 200 }
       let(:body) do
         PROBTP::ConformitesCotisationsRetraite::MakeRequest
@@ -27,18 +36,28 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::ValidateResponse, type: :
           .body
       end
 
+      around do |example|
+        stub_probtp_conformite_non_eligible
+        example.run
+      end
+
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
     end
 
-    context 'when siret is not found', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
+    context 'when siret is not found' do
       let(:code) { 200 }
       let(:body) do
         PROBTP::ConformitesCotisationsRetraite::MakeRequest
           .call(params: { siret: not_found_siret(:probtp) })
           .response
           .body
+      end
+
+      around do |example|
+        stub_probtp_conformite_not_found
+        example.run
       end
 
       it { is_expected.to be_a_failure }
