@@ -142,6 +142,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::PROBTP
   config.include ProviderStubs::QUALIBAT
   config.include ProviderStubs::FabriqueNumeriqueMinisteresSociaux
+  config.include ProviderStubs::RNM
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
