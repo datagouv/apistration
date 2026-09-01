@@ -93,6 +93,7 @@ class INSEE::MakeRequest < MakeRequest::Get
   end
 
   def password_rotation_needed?
+    return false if INSEE::PasswordDerivation.bypassed?
     return false if context.token.blank?
     return false if INSEE::PasswordDerivation.current_period < INSEE::PasswordDerivation::DERIVATION_START
 

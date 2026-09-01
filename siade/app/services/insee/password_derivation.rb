@@ -3,6 +3,7 @@ require 'openssl'
 class INSEE::PasswordDerivation
   DERIVATION_START = '2026-09'.freeze
   BIMESTER_MONTHS = [1, 3, 5, 7, 9, 11].freeze
+  BYPASS_CREDENTIAL_KEY = :insee_apim_password_bypass
   PASSWORD_LENGTH = 16
   CHAR_GUARANTEES = {
     /[A-Z]/ => 'A',
@@ -11,11 +12,19 @@ class INSEE::PasswordDerivation
     /[^a-zA-Z0-9]/ => '#'
   }.freeze
 
+  def self.bypassed?
+    Siade.credentials.key?(BYPASS_CREDENTIAL_KEY)
+  end
+
   def self.current_password
+    return bypass_password if bypassed?
+
     password_for(current_period)
   end
 
   def self.previous_password
+    return bypass_password if bypassed?
+
     password_for(previous_period)
   end
 
@@ -33,6 +42,10 @@ class INSEE::PasswordDerivation
       idx = BIMESTER_MONTHS.index(month)
       format('%<year>d-%<month>02d', year: date.year, month: BIMESTER_MONTHS[idx - 1])
     end
+  end
+
+  def self.bypass_password
+    Siade.credentials[BYPASS_CREDENTIAL_KEY]
   end
 
   def self.password_for(period)
@@ -65,5 +78,5 @@ class INSEE::PasswordDerivation
     Siade.credentials[:insee_apim_password_derivation_key]
   end
 
-  private_class_method :password_for, :derive, :period_for, :format_password, :secret
+  private_class_method :bypass_password, :password_for, :derive, :period_for, :format_password, :secret
 end
