@@ -147,6 +147,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::MI
   config.include ProviderStubs::DGDDI
   config.include ProviderStubs::ADEME
+  config.include ProviderStubs::FNTP
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
