@@ -30,6 +30,13 @@ class Siade::ManualRequest < Siade
 
   def domain = super(@api)
 
+  def headers
+    super.merge(
+      'X-Debug-Provider-Response' => 'true',
+      'Cache-Control' => 'no-cache'
+    )
+  end
+
   def authorization_token = AdminAPIToken.for(@api)
   def context = fetch_param('context') || 'Admin'
   def recipient = siret_dinum

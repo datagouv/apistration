@@ -9,6 +9,22 @@
     </span>
   </h2>
   <pre class="fr-p-2w" style="background: #f5f5fe; overflow-x: auto; white-space: pre; max-height: 60vh;"><code><%= JSON.pretty_generate(JSON.parse(@result[:body])) rescue @result[:body] %></code></pre>
+
+  <% if @result[:provider_response] %>
+    <% provider_response = @result[:provider_response] %>
+    <h2 class="fr-text--lg fr-mt-4w">
+      Réponse du fournisseur de données
+      <span class="fr-badge fr-badge--<%= provider_response[:status] == 200 ? 'success' : 'error' %>">
+        <%= provider_response[:status] %>
+      </span>
+    </h2>
+
+    <h3 class="fr-text--md">En-têtes</h3>
+    <pre class="fr-p-2w fr-mb-4w" style="background: #f5f5fe; overflow-x: auto; white-space: pre; max-height: 30vh;"><code><%= JSON.pretty_generate(provider_response[:headers]) %></code></pre>
+
+    <h3 class="fr-text--md">Corps</h3>
+    <pre class="fr-p-2w" style="background: #f5f5fe; overflow-x: auto; white-space: pre; max-height: 60vh;"><code><%= JSON.pretty_generate(JSON.parse(provider_response[:body])) rescue provider_response[:body] %></code></pre>
+  <% end %>
 <% else %>
   <div class="fr-callout">
     <p class="fr-callout__text">
