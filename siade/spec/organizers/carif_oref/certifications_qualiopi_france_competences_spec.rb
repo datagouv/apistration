@@ -7,8 +7,10 @@ RSpec.describe CarifOref::CertificationsQualiopiFranceCompetences, type: :retrie
     }
   end
 
-  context 'with a valid siret', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/valid_siret' } do
+  context 'with a valid siret' do
     let(:siret) { valid_siret(:carif_oref) }
+
+    before { stub_carif_oref_valid_siret }
 
     it { is_expected.to be_a_success }
 
