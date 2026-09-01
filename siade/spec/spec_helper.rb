@@ -140,6 +140,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::DataSubvention
   config.include ProviderStubs::CarifOref
   config.include ProviderStubs::PROBTP
+  config.include ProviderStubs::QUALIBAT
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
