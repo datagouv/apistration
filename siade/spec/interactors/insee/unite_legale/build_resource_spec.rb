@@ -203,7 +203,9 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
     end
   end
 
-  describe 'with an unite legale payload from an etablissement response', vcr: { cassette_name: 'insee/siret/active_GE' } do
+  describe 'with an unite legale payload from an etablissement response' do
+    before { stub_insee_etablissement_active_ge }
+
     let(:organizer) { described_class.call(response:, unite_legale:) }
 
     let(:response) { INSEE::Etablissement::MakeRequest.call(params:, token: 'valid insee token').response }
