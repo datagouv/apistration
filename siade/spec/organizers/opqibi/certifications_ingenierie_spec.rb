@@ -10,8 +10,10 @@ RSpec.describe OPQIBI::CertificationsIngenierie, type: :retriever_organizer do
       }
     end
 
-    context 'with valid siren', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
+    context 'with valid siren' do
       let(:siren) { valid_siren(:opqibi_with_probatoire) }
+
+      before { stub_opqibi_valid_siren }
 
       it { is_expected.to be_a_success }
 

@@ -8,8 +8,10 @@ RSpec.describe OPQIBI::CertificationsIngenierie::MakeRequest, type: :make_reques
       }
     end
 
-    context 'with a valid siren', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
+    context 'with a valid siren' do
       let(:siren) { valid_siren(:opqibi_with_probatoire) }
+
+      before { stub_opqibi_valid_siren }
 
       it { is_expected.to be_a_success }
 
