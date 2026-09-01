@@ -74,12 +74,13 @@ module ProviderStubs::INSEE
     stub_insee_siret_request(non_existent_siret, status: 404, payload: 'non_existent')
   end
 
+  # Special two-hop case: INSEE redirects a doublon siret (301 + Location) to the
+  # siret of the etablissement siege, which #handle_redirect then re-requests.
   def stub_insee_etablissement_redirected
     stub_request(:get, insee_siret_url('53222169400013'))
       .to_return(status: 301, headers: { 'Location' => insee_siret_url('77887067500015') })
 
-    stub_request(:get, insee_siret_url('77887067500015'))
-      .to_return(status: 200, body: read_payload_file('insee/siret/redirected.json'))
+    stub_insee_siret_request('77887067500015', status: 200, payload: 'redirected')
   end
 
   private

@@ -62,15 +62,15 @@ RSpec.describe INSEE::Etablissement::MakeRequest, type: :make_request do
   context 'with a siret which redirects to another location' do
     before { stub_insee_etablissement_redirected }
 
-    let(:siret) { '53222169400013' }
-    let(:redirected_siret) { '77887067500015' }
+    let(:siret) { redirected_siret }
+    let(:destination_siret) { '77887067500015' }
 
     it { is_expected.to be_a_success }
 
     it 'performs a get request on the new location' do
       make_request
 
-      expect(WebMock).to have_requested(:get, /#{Siade.credentials[:insee_sirene_url]}.*#{redirected_siret}/)
+      expect(WebMock).to have_requested(:get, /#{Siade.credentials[:insee_sirene_url]}.*#{destination_siret}/)
     end
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
