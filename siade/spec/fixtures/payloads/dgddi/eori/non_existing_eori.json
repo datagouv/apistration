@@ -1,0 +1,8 @@
+{
+  "erreur": {
+    "status": "404",
+    "message": "Not found",
+    "code": "FONC001",
+    "libelle": "EORI FR82827787100020 inconnu"
+  }
+}

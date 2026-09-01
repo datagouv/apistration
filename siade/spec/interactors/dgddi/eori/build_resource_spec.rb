@@ -1,6 +1,8 @@
 RSpec.describe DGDDI::EORI::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
+  describe '.call' do
     subject(:call) { described_class.call(response:) }
+
+    before { stub_dgddi_valid_eori }
 
     let(:valid_payload) do
       {
