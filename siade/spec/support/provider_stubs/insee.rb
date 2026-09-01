@@ -83,11 +83,44 @@ module ProviderStubs::INSEE
     stub_insee_siret_request('77887067500015', status: 200, payload: 'redirected')
   end
 
+  def stub_insee_siege_active_ge
+    stub_insee_siege_request(sirens_insee_v3[:active_GE], status: 200, payload: 'active_GE')
+  end
+
+  def stub_insee_siege_non_existent
+    stub_insee_siege_request(non_existent_siren, status: 404, payload: 'non_existent')
+  end
+
+  def stub_insee_siege_non_diffusable_ceased
+    stub_insee_siege_request(confidential_siren(:non_diffusable_ceased), status: 404, payload: 'non_diffusable_ceased')
+  end
+
+  def stub_insee_siege_non_diffusable
+    stub_insee_siege_request(non_diffusable_siren, status: 200, payload: 'non_diffusable')
+  end
+
+  def stub_insee_siege_gendarmerie_limousin
+    stub_insee_siege_request(confidential_siren(:gendarmerie_limousin), status: 404, payload: 'gendarmerie_limousin')
+  end
+
+  # Despite the "redirected" name (a historical/business label), this is a plain
+  # 404, not an HTTP redirect: unlike INSEE::Etablissement::MakeRequest, this
+  # endpoint's siren never triggers a 301 + Location hop.
+  def stub_insee_siege_redirected
+    stub_insee_siege_request('532221694', status: 404, payload: 'redirected')
+  end
+
   private
 
   def stub_insee_siret_request(siret, status:, payload:)
     stub_request(:get, insee_siret_url(siret))
       .to_return(status:, body: read_payload_file("insee/siret/#{payload}.json"))
+  end
+
+  def stub_insee_siege_request(siren, status:, payload:)
+    stub_request(:get, "#{Siade.credentials[:insee_sirene_url]}/api-sirene/prive/3.11/siret")
+      .with(query: hash_including('q' => "etablissementSiege:true AND siren:#{siren}"))
+      .to_return(status:, body: read_payload_file("insee/siege/#{payload}.json"))
   end
 
   def insee_siret_url(siret)
