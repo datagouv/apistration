@@ -17,7 +17,7 @@ module ProviderStubs::INSEE
 
   def stub_insee_authenticate
     stub_request(:post, Siade.credentials[:insee_oauth_url])
-      .to_return(status: 200, body: { access_token: 'bearer_token' }.to_json)
+      .to_return(status: 200, body: { access_token: 'bearer_token', expires_in: 3600 }.to_json)
   end
 
   private
