@@ -110,6 +110,43 @@ module ProviderStubs::INSEE
     stub_insee_siege_request('532221694', status: 404, payload: 'redirected')
   end
 
+  def stub_insee_unite_legale_active_ge
+    stub_insee_siren_request(sirens_insee_v3[:active_GE], status: 200, payload: 'active_GE')
+  end
+
+  def stub_insee_unite_legale_active_ae
+    stub_insee_siren_request(sirens_insee_v3[:active_AE], status: 200, payload: 'active_AE')
+  end
+
+  def stub_insee_unite_legale_ceased
+    stub_insee_siren_request(sirens_insee_v3[:ceased], status: 200, payload: 'ceased')
+  end
+
+  def stub_insee_unite_legale_non_existent
+    stub_insee_siren_request(non_existent_siren, status: 404, payload: 'non_existent')
+  end
+
+  def stub_insee_unite_legale_non_diffusable_ceased
+    stub_insee_siren_request(confidential_siren(:non_diffusable_ceased), status: 403, payload: 'non_diffusable_ceased')
+  end
+
+  def stub_insee_unite_legale_non_diffusable
+    stub_insee_siren_request(non_diffusable_siren, status: 200, payload: 'non_diffusable')
+  end
+
+  def stub_insee_unite_legale_gendarmerie_limousin
+    stub_insee_siren_request(confidential_siren(:gendarmerie_limousin), status: 403, payload: 'gendarmerie_limousin')
+  end
+
+  # Special two-hop case: INSEE redirects a siren (301 + Location) to another
+  # siren, which #handle_redirect then re-requests.
+  def stub_insee_unite_legale_redirected
+    stub_request(:get, insee_siren_url('532221694'))
+      .to_return(status: 301, headers: { 'Location' => insee_siren_url('778870675') })
+
+    stub_insee_siren_request('778870675', status: 200, payload: 'redirected')
+  end
+
   private
 
   def stub_insee_siret_request(siret, status:, payload:)
@@ -123,8 +160,17 @@ module ProviderStubs::INSEE
       .to_return(status:, body: read_payload_file("insee/siege/#{payload}.json"))
   end
 
+  def stub_insee_siren_request(siren, status:, payload:)
+    stub_request(:get, insee_siren_url(siren))
+      .to_return(status:, body: read_payload_file("insee/siren/#{payload}.json"))
+  end
+
   def insee_siret_url(siret)
     "#{Siade.credentials[:insee_sirene_url]}/api-sirene/prive/3.11/siret/#{siret}"
+  end
+
+  def insee_siren_url(siren)
+    "#{Siade.credentials[:insee_sirene_url]}/api-sirene/prive/3.11/siren/#{siren}"
   end
 
   def query_url_succession(siret)
