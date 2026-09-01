@@ -20,11 +20,7 @@ module CanLogRequestsInfoForDebugging
   def provider_payload
     return {} unless provider_response?
 
-    {
-      header: provider_response.try(:headers) || {},
-      body: Base64.strict_encode64(provider_response.try(:body) || ''),
-      status: provider_response.try(:status) || ''
-    }
+    ProviderRawResponse.new(provider_response).as_debugging_log
   end
 
   def provider_response?

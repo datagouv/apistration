@@ -180,5 +180,70 @@ RSpec.describe APIRequestFacade do
 
       expect(facade.execute_request('siren' => '130025265')).to be_nil
     end
+
+    context 'when siade exposes the provider response' do
+      let(:provider_body) { { 'etablissement' => 'brut' }.to_json }
+
+      before do
+        stub_request(:get, %r{#{siade_url}/v3/insee/sirene/unites_legales/130025265})
+          .to_return(
+            status: 200,
+            body: {
+              data: { siren: '130025265' },
+              meta: {
+                provider_response: {
+                  status: 404,
+                  headers: { 'content-type' => 'application/json' },
+                  body_base64: Base64.strict_encode64(provider_body)
+                }
+              }
+            }.to_json
+          )
+      end
+
+      it 'extracts the decoded provider response' do
+        result = facade.execute_request('siren' => '130025265')
+
+        expect(result[:provider_response]).to eq(
+          status: 404,
+          headers: { 'content-type' => 'application/json' },
+          body: provider_body
+        )
+      end
+
+      it 'removes the provider response from the displayed payload' do
+        result = facade.execute_request('siren' => '130025265')
+
+        expect(JSON.parse(result[:body])).to eq('data' => { 'siren' => '130025265' })
+      end
+    end
+
+    context 'when the provider body is not an UTF-8 payload' do
+      before do
+        stub_request(:get, %r{#{siade_url}/v3/insee/sirene/unites_legales/130025265})
+          .to_return(
+            status: 200,
+            body: {
+              data: { siren: '130025265' },
+              meta: { provider_response: { status: 200, headers: {}, body_base64: Base64.strict_encode64("%PDF-1.4\xC3\x28") } }
+            }.to_json
+          )
+      end
+
+      it 'replaces the body with its size' do
+        result = facade.execute_request('siren' => '130025265')
+
+        expect(result[:provider_response][:body]).to eq('[contenu binaire de 10 octets]')
+      end
+    end
+
+    context 'when siade does not expose the provider response' do
+      it 'returns no provider response' do
+        result = facade.execute_request('siren' => '130025265')
+
+        expect(result[:provider_response]).to be_nil
+        expect(JSON.parse(result[:body])).to eq('data' => { 'siren' => '130025265' })
+      end
+    end
   end
 end

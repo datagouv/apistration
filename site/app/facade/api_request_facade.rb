@@ -48,7 +48,14 @@ class APIRequestFacade
       api: api_identifier
     ).call
 
-    result.merge(request_params: filtered_request_params(transformed_params))
+    payload = parse_payload(result[:body])
+    provider_response = extract_provider_response(payload)
+
+    result.merge(
+      body: provider_response ? without_provider_response(payload).to_json : result[:body],
+      request_params: filtered_request_params(transformed_params),
+      provider_response:
+    )
   end
 
   private
@@ -115,5 +122,40 @@ class APIRequestFacade
 
   def filtered_request_params(params)
     params.reject { |key, _| FIXED_PARAMS.include?(key.to_s) }
+  end
+
+  def parse_payload(body)
+    JSON.parse(body.to_s)
+  rescue JSON::ParserError
+    nil
+  end
+
+  def extract_provider_response(payload)
+    raw_response = payload&.dig('meta', 'provider_response')
+    return if raw_response.blank?
+
+    {
+      status: raw_response['status'],
+      headers: raw_response['headers'],
+      body: decode_provider_body(raw_response['body_base64'])
+    }
+  rescue TypeError
+    nil
+  end
+
+  def without_provider_response(payload)
+    meta = payload['meta'].except('provider_response')
+
+    return payload.except('meta') if meta.blank?
+
+    payload.merge('meta' => meta)
+  end
+
+  def decode_provider_body(body_base64)
+    body = Base64.decode64(body_base64.to_s).force_encoding('UTF-8')
+
+    return body if body.valid_encoding?
+
+    "[contenu binaire de #{body.bytesize} octets]"
   end
 end
