@@ -5,7 +5,7 @@ http_interactions:
     uri: "<URL_INSEE_AUTH>"
     body:
       encoding: US-ASCII
-      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=insee_apim_password
+      string: client_id=insee_sirene_client_id&client_secret=insee_sirene_client_secret&grant_type=password&username=insee_apim_username&password=<INSEE_PASSWORD>
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
