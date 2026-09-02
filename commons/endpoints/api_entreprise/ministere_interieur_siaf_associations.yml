@@ -1,0 +1,146 @@
+---
+fiche:
+  - uid: 'siaf/associations'
+    path: '/v3/ministere_interieur/siaf/associations/{siren_or_siret_or_rna}'
+    controller: 'api_entreprise/v3_and_more/mi/siaf/associations'
+    position: 156
+    alert: &siaf_associations_alert
+      title: "API disponible uniquement en environnement de test"
+      description: |+
+        Cette API est en cours de raccordement au SIAF (Système d'Information des Associations et Fondations) du Ministère de l'Intérieur.
+        Elle est **appelable sur l'environnement de test** (`https://staging.entreprise.api.gouv.fr`) avec des données fictives, afin de préparer les intégrations.
+        Elle n'est pas encore disponible en production.
+    perimeter: &siaf_associations_perimeter
+      entity_type_description: |+
+        Cette API concerne ✅ **les associations inscrites au Répertoire National des Associations (RNA)**, tenu par le Ministère de l'Intérieur.
+
+        **Ne sont pas couvertes par l'API :**
+        - ❌ les fondations et fonds de dotation — consulter l'[API Données fondations](/catalogue/siaf/fondations) ;
+        - ❌ les associations non déclarées, qui n'ont pas la personnalité morale.
+      geographical_scope_description: |+
+        - ✅ France métropolitaine
+        - ✅ DROM-COM
+
+        La couverture des associations relevant du **régime de droit local d'Alsace-Moselle**, immatriculées au registre des associations des tribunaux d'instance et non au RNA, reste à confirmer avec le fournisseur.
+      updating_rules_description: |+
+        Le référentiel est alimenté par les déclarations effectuées par les associations
+        auprès des greffes des associations en préfecture (création, modification
+        statutaire, dissolution, dépôt des comptes). Les données sont donc mises à jour
+        au fil de l'instruction des dossiers par les services de l'État.
+      entities:
+        - associations
+    call_id: &siaf_associations_call_id "SIREN / SIRET / RNA"
+    provider_uids: &siaf_associations_provider_uids
+      - 'mi'
+    keywords: &siaf_associations_keywords
+      - 'association'
+      - 'associations'
+      - 'RNA'
+      - 'loi 1901'
+      - 'utilité publique'
+      - 'RUP'
+      - 'dirigeants'
+      - 'objet social'
+      - 'waldec'
+      - 'journal officiel'
+      - 'JOAFE'
+      - 'union'
+      - 'fédération'
+      - 'établissements'
+      - 'comptes'
+      - 'subventions'
+      - 'statuts'
+      - 'ministère intérieur'
+      - 'SIAF'
+    data:
+      description: |+
+        Cette API délivre les données de référence d'une association inscrite au **Répertoire National des Associations (RNA)** :
+
+        - **son identité** : identifiant RNA, SIREN/SIRET du siège, nom, état, dates de création et de dissolution, durée, adresse du siège, contacts ;
+        - **ses activités** : objet, objet social selon la nomenclature Waldec, reconnaissance d'utilité publique, activité internationale prévue par les statuts ;
+        - **ses dirigeants** : identité, fonction, qualité, dates de fonctions, adresse de domiciliation, y compris les personnes morales représentées ;
+        - **sa filiation** : transformation, fusion, scission ;
+        - **son appartenance à une union ou une fédération**, et les associations qui en sont membres ;
+        - **ses établissements** : nom et adresse ;
+        - **sa conformité comptable** : état de transmission des comptes et exercices transmis ;
+        - **ses pièces justificatives** : statuts, listes de dirigeants, procès verbaux, comptes — métadonnées et lien de téléchargement.
+
+        {:.fr-highlight}
+        > Le périmètre de données sera progressivement enrichi au fur et à mesure de
+        > l'alimentation du référentiel : données comptables chiffrées (bilan, produits,
+        > charges, résultat), période d'appel à la générosité publique, qualités cultuelle
+        > et politique, liquidateur, forme juridique, publications au Journal officiel,
+        > dossiers déposés et leur instruction, SIRET des établissements.
+    opening: protected
+    parameters: &siaf_associations_parameters
+      - Numéro de SIREN ou de SIRET de l'association, ou son identifiant RNA
+    format: &siaf_associations_format
+      - Donnée structurée JSON
+    faq: &siaf_associations_faq
+      - q: "Qu'est-ce que l'identifiant RNA ?"
+        a: |+
+          L'identifiant RNA est l'identifiant officiel d'une association au Répertoire
+          National des Associations. Il est composé de la lettre `W` suivie de 9
+          caractères, dont les trois premiers encodent le département de déclaration,
+          par exemple `W442001747` pour une association déclarée en Loire-Atlantique.
+      - q: "Puis-je toujours appeler l'API avec un SIREN ou un SIRET ?"
+        a: |+
+          Oui. Toutes les associations ne sont cependant pas immatriculées au répertoire
+          Sirene : l'immatriculation n'est obligatoire que lorsque l'association emploie,
+          perçoit des subventions publiques ou exerce une activité économique. Les autres
+          ne sont accessibles que par leur identifiant RNA, qui reste la clé d'appel la
+          plus fiable.
+      - q: "Quelle est la différence avec l'API Données association de la DJEPVA ?"
+        a: |+
+          L'[API Données association](/catalogue/djepva/associations) distribue les données
+          du RNA enrichies par le répertoire Sirene et par les démarches déposées dans
+          Le Compte Asso. Cette API-ci distribue les données du RNA telles que tenues par
+          le Ministère de l'Intérieur, avec un volume documentaire nettement plus important.
+          Les données Sirene (sigle, activité principale NAF, tranche d'effectif, appartenance
+          à l'économie sociale et solidaire) restent disponibles sur les endpoints
+          [unités légales](/catalogue/insee/unites_legales) et
+          [établissements](/catalogue/insee/etablissements) de l'Insee.
+      - q: "Puis-je télécharger les pièces justificatives ?"
+        a: |+
+          Chaque entrée de `documents_rna` porte une `url` de téléchargement servie par
+          API Entreprise, qui relaie le fichier du fournisseur sans exposer ses accès —
+          le même mécanisme que les documents de l'[API Données association](/catalogue/djepva/associations).
+          Le lien est valable 24 heures.
+
+          En revanche, **les binaires ne sont pas encore chargés côté fournisseur** : sur
+          l'environnement de test, ces liens ne servent aucun fichier. Le volume
+          documentaire du RNA étant le principal apport de cette API, c'est le point que
+          nous suivons en priorité avec le Ministère de l'Intérieur.
+      - q: "Pourquoi certaines données sont-elles vides ?"
+        a: |+
+          Une partie des informations est **déclarative** : elle n'est renseignée que
+          lorsque l'association a effectué la démarche correspondante auprès du greffe des
+          associations. Une valeur nulle ou une liste vide signifie qu'aucune déclaration
+          n'a été enregistrée, pas nécessairement que l'association n'est pas concernée.
+  - uid: 'siaf/associations_open_data'
+    path: '/v3/ministere_interieur/siaf/associations/open_data/{siren_or_siret_or_rna}'
+    controller: 'api_entreprise/v3_and_more/mi/siaf/associations_open_data'
+    position: 157
+    alert: *siaf_associations_alert
+    perimeter: *siaf_associations_perimeter
+    call_id: *siaf_associations_call_id
+    provider_uids: *siaf_associations_provider_uids
+    keywords: *siaf_associations_keywords
+    data:
+      description: |+
+        Cette API délivre les données **publiques** de référence d'une association inscrite au **Répertoire National des Associations (RNA)** :
+
+        - **son identité** : identifiant RNA, SIREN/SIRET du siège, nom, état, dates de création et de dissolution, durée, adresse du siège ;
+        - **ses activités** : objet, objet social selon la nomenclature Waldec, reconnaissance d'utilité publique ;
+        - **sa filiation** : transformation, fusion, scission ;
+        - **son appartenance à une union ou une fédération**, et les associations qui en sont membres ;
+        - **ses établissements** : nom et adresse ;
+        - **sa conformité comptable** : état de transmission des comptes et exercices transmis.
+
+        Les données personnelles des dirigeants, les coordonnées de l'association et ses
+        pièces justificatives ne sont pas exposées ici : elles relèvent de l'[API Données
+        associations](/catalogue/siaf/associations), réservée aux administrations habilitées.
+    opening: public
+    parameters: *siaf_associations_parameters
+    format: *siaf_associations_format
+    faq: *siaf_associations_faq
