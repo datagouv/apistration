@@ -103,7 +103,8 @@ CREATE TABLE public.access_logs (
   route character varying,
   status character varying,
   path character varying,
-  cached boolean
+  cached boolean,
+  params jsonb
 );
 
 CREATE MATERIALIZED VIEW public.admin_apientreprise_test_access_logs_last_10_minutes AS
