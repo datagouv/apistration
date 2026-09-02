@@ -1,8 +1,7 @@
-class Admin::Editor::AddMember < ApplicationInteractor
+class Admin::Editors::FindFutureMember < ApplicationInteractor
   def call
     context.user = find_user
     validate_not_already_member
-    context.user.update!(editor: context.editor)
   end
 
   private

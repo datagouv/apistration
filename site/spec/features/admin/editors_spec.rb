@@ -178,6 +178,21 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_text('newmember@test.com')
     end
 
+    it 'records the member addition activity' do
+      visit admin_editor_path(editor)
+
+      fill_in 'email', with: 'newmember@test.com'
+
+      expect { click_on 'Ajouter' }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.last).to have_attributes(
+        name: 'editor_member_added',
+        admin:,
+        namespace: 'entreprise',
+        entity: user_to_add
+      )
+    end
+
     it 'removes a member from the editor' do
       user_to_add.update!(editor:)
       visit admin_editor_path(editor)
@@ -186,6 +201,20 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
       expect(page).to have_css('.fr-alert.fr-alert--success')
       expect(user_to_add.reload.editor_id).to be_nil
+    end
+
+    it 'records the member removal activity' do
+      user_to_add.update!(editor:)
+      visit admin_editor_path(editor)
+
+      expect { click_on 'Retirer' }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.last).to have_attributes(
+        name: 'editor_member_removed',
+        admin:,
+        namespace: 'entreprise',
+        entity: user_to_add
+      )
     end
 
     it 'shows error for unknown email' do

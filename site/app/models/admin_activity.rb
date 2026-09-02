@@ -7,6 +7,8 @@ class AdminActivity < ApplicationRecord
     editor_token_created
     user_updated
     editor_updated
+    editor_member_added
+    editor_member_removed
     audit_notification_created
   ].freeze
 
