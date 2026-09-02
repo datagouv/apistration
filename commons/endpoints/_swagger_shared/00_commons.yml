@@ -99,6 +99,19 @@ parameters:
         value: "78430893400016"
         summary: SIRET de la fondation Maison de la Chimie
 
+  siren_or_siret_or_rna:
+    description: "SIREN ou SIRET de l'association, ou son identifiant au Répertoire National des Associations (RNA). Toutes les associations ne sont pas immatriculées au répertoire Sirene : elles ne sont alors accessibles que par leur identifiant RNA."
+    examples:
+      randonnee_pedestre_rna:
+        value: "W442001747"
+        summary: Identifiant RNA du comité départemental de la randonnée pédestre de Loire-Atlantique
+      randonnee_pedestre_siren:
+        value: "388916678"
+        summary: SIREN du comité départemental de la randonnée pédestre de Loire-Atlantique
+      randonnee_pedestre_siret:
+        value: "38891667800039"
+        summary: SIRET du comité départemental de la randonnée pédestre de Loire-Atlantique
+
   siret_or_eori:
     description: "Siret ou numéro EORI de l'entreprise"
     examples:

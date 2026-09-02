@@ -392,3 +392,564 @@ siaf:
               type: "string"
               nullable: true
               example: "2026-06-24"
+
+
+  associations:
+    title: "Données associations"
+    description: "Données de référence d'une association issues du Répertoire National des Associations (RNA), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, dirigeants, filiation, appartenance à une union ou une fédération, établissements, conformité comptable et pièces justificatives."
+    tags:
+      - "Informations générales"
+      - "Prochainement"
+    meta: &siaf_association_meta
+      date_derniere_mise_a_jour_rna:
+        title: "Date de dernière mise à jour de l'association au RNA"
+        type: "string"
+        nullable: true
+        example: "2024-05-15"
+    attributes:
+      identifiants: &siaf_association_identifiants
+        title: "Identifiants de l'association"
+        type: "object"
+        properties:
+          rna:
+            title: "Identifiant au Répertoire National des Associations"
+            description: "Identifiant officiel de l'association, au format W suivi de 9 caractères dont les 3 premiers encodent le département de déclaration."
+            type: "string"
+            example: "W123456789"
+          siren:
+            title: "SIREN de l'association"
+            description: "Déduit du SIRET présent dans le référentiel. Toutes les associations ne sont pas immatriculées au répertoire Sirene : l'immatriculation n'est obligatoire que lorsque l'association emploie, perçoit des subventions ou exerce une activité économique. La valeur est alors null."
+            type: "string"
+            nullable: true
+            example: "123456789"
+          siret_siege:
+            title: "SIRET du siège de l'association"
+            type: "string"
+            nullable: true
+            example: "12345678900012"
+      identite:
+        title: "Identité de l'association"
+        type: "object"
+        properties:
+          nom: &siaf_association_nom
+            title: "Nom de l'association"
+            type: "string"
+            example: "ASSOCIATION EXEMPLE"
+          etat: &siaf_association_etat
+            title: "État de l'association"
+            description: "État de l'association au RNA : en activité, suspendue, transformée, fusionnée, scindée ou dissoute. Le vocabulaire exact reste à figer avec le fournisseur."
+            type: "string"
+            example: "Active"
+          service_instructeur: &siaf_association_service_instructeur
+            title: "Service instructeur"
+            description: "Préfecture ou service ayant instruit la déclaration de l'association. L'information est également dérivable du préfixe départemental de l'identifiant RNA."
+            type: "string"
+            nullable: true
+            example: "21 - Côte-d'Or"
+          date_creation: &siaf_association_date_creation
+            title: "Date de création de l'association"
+            type: "string"
+            nullable: true
+            example: "2010-05-12"
+          date_dissolution: &siaf_association_date_dissolution
+            title: "Date de dissolution de l'association"
+            description: "Renseignée uniquement lorsque l'association est dissoute."
+            type: "string"
+            nullable: true
+            example: null
+          duree: &siaf_association_duree
+            title: "Durée de vie de l'association"
+            type: "object"
+            properties:
+              caractere:
+                title: "Caractère de la durée"
+                description: "Indéterminée lorsque les statuts ne fixent pas de terme, déterminée sinon."
+                type: "string"
+                nullable: true
+                example: "Indeterminee"
+              date_terme:
+                title: "Date du terme"
+                type: "string"
+                nullable: true
+                example: null
+          date_cloture_exercice: &siaf_association_date_cloture_exercice
+            title: "Date de clôture de l'exercice comptable (mois/jour, format MM-DD)"
+            type: "string"
+            nullable: true
+            example: "12-31"
+          adresse_siege: &siaf_association_adresse_siege
+            title: "Adresse du siège de l'association"
+            type: "object"
+            properties:
+              adresse_complete:
+                title: "Adresse complète sur une ligne"
+                type: "string"
+                nullable: true
+                example: "10 RUE DE LA REPUBLIQUE 21000 DIJON"
+              complement:
+                title: "Complément d'adresse"
+                type: "string"
+                nullable: true
+                example: null
+              numero_voie:
+                title: "Numéro de voie"
+                type: "string"
+                nullable: true
+                example: "10"
+              type_voie:
+                title: "Type de voie"
+                description: "Type de voie tel que saisi au RNA, non normalisé (RUE, AV, BD, CHEM…)."
+                type: "string"
+                nullable: true
+                example: "RUE"
+              libelle_voie:
+                title: "Libellé de la voie"
+                type: "string"
+                nullable: true
+                example: "DE LA REPUBLIQUE"
+              distribution:
+                title: "Mention de distribution spéciale"
+                type: "string"
+                nullable: true
+                example: null
+              code_insee:
+                title: "Code INSEE de la commune"
+                type: "string"
+                nullable: true
+                example: "21231"
+              code_postal:
+                title: "Code postal"
+                type: "string"
+                nullable: true
+                example: "21000"
+              commune:
+                title: "Commune"
+                type: "string"
+                nullable: true
+                example: "DIJON"
+          courriel:
+            title: "Courriel de l'association"
+            type: "string"
+            nullable: true
+            example: "contact@association.fr"
+          telephone:
+            title: "Numéro de téléphone de l'association"
+            type: "string"
+            nullable: true
+            example: "+33102030405"
+      activites:
+        title: "Activités de l'association"
+        type: "object"
+        properties:
+          objet: &siaf_association_objet
+            title: "Objet de l'association"
+            description: "Objet de l'association tel que rédigé dans ses statuts."
+            type: "string"
+            nullable: true
+            example: "Promouvoir les activités culturelles..."
+          objet_social1: &siaf_association_objet_social1
+            title: "Objet social principal"
+            description: "L'objet social suit la nomenclature nationale Waldec et rattache l'objet de l'association à une catégorie. La liste exhaustive est disponible sur https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec (environ 300 entrées)."
+            type: "object"
+            properties:
+              code:
+                title: "Code de l'objet social"
+                type: "string"
+                nullable: true
+                example: "006000"
+              libelle:
+                title: "Libellé de l'objet social"
+                type: "string"
+                nullable: true
+                example: "Culture et pratiques artistiques"
+          reconnue_utilite_publique: &siaf_association_reconnue_utilite_publique
+            title: "Reconnaissance d'utilité publique"
+            type: "boolean"
+            nullable: true
+            example: true
+          date_publication_reconnue_utilite_publique: &siaf_association_date_publication_reconnue_utilite_publique
+            title: "Date de publication de la reconnaissance d'utilité publique"
+            type: "string"
+            nullable: true
+            example: "2018-04-10"
+          date_fin_reconnue_utilite_publique: &siaf_association_date_fin_reconnue_utilite_publique
+            title: "Date de fin de la reconnaissance d'utilité publique"
+            type: "string"
+            nullable: true
+            example: null
+          activite_internationale_prevue_par_statuts:
+            title: "Activité internationale prévue par les statuts"
+            type: "boolean"
+            nullable: true
+            example: false
+      dirigeants:
+        title: "Dirigeants et membres des organes de gouvernance"
+        description: "Personnes physiques exerçant des fonctions de direction ou siégeant dans les organes de gouvernance. Un dirigeant peut représenter une personne morale, détaillée dans personne_morale."
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            nom:
+              title: "Nom du dirigeant"
+              type: "string"
+              nullable: true
+              example: "DUPONT"
+            prenom:
+              title: "Prénom du dirigeant"
+              type: "string"
+              nullable: true
+              example: "Marie"
+            fonction:
+              title: "Fonction exercée"
+              type: "string"
+              nullable: true
+              example: "Presidente"
+            qualite:
+              title: "Qualité au titre de laquelle la personne siège"
+              type: "string"
+              nullable: true
+              example: "Membre du conseil d'administration"
+            date_naissance:
+              title: "Date de naissance"
+              type: "string"
+              nullable: true
+              example: "1980-05-12"
+            nationalite:
+              title: "Nationalité"
+              type: "string"
+              nullable: true
+              example: "Francaise"
+            pays_residence:
+              title: "Pays de résidence"
+              type: "string"
+              nullable: true
+              example: "France"
+            profession:
+              title: "Profession"
+              type: "string"
+              nullable: true
+              example: "Juriste"
+            date_entree_fonction:
+              title: "Date d'entrée dans les fonctions"
+              type: "string"
+              nullable: true
+              example: "2023-06-01"
+            date_sortie_fonction:
+              title: "Date de sortie des fonctions"
+              type: "string"
+              nullable: true
+              example: null
+            fondateur:
+              title: "Statut de fondateur"
+              type: "boolean"
+              nullable: true
+              example: false
+            adresse_domiciliation:
+              title: "Adresse de domiciliation du dirigeant"
+              type: "object"
+              properties:
+                adresse_complete:
+                  title: "Adresse complète sur une ligne"
+                  type: "string"
+                  nullable: true
+                  example: "20 RUE EXEMPLE 21000 DIJON"
+                complement:
+                  title: "Complément d'adresse"
+                  type: "string"
+                  nullable: true
+                  example: null
+                numero_voie:
+                  title: "Numéro de voie"
+                  type: "string"
+                  nullable: true
+                  example: "20"
+                type_voie:
+                  title: "Type de voie"
+                  type: "string"
+                  nullable: true
+                  example: "RUE"
+                libelle_voie:
+                  title: "Libellé de la voie"
+                  type: "string"
+                  nullable: true
+                  example: "EXEMPLE"
+                distribution:
+                  title: "Mention de distribution spéciale"
+                  type: "string"
+                  nullable: true
+                  example: null
+                code_insee:
+                  title: "Code INSEE de la commune"
+                  type: "string"
+                  nullable: true
+                  example: "21231"
+                code_postal:
+                  title: "Code postal"
+                  type: "string"
+                  nullable: true
+                  example: "21000"
+                commune:
+                  title: "Commune"
+                  type: "string"
+                  nullable: true
+                  example: "DIJON"
+            personne_morale:
+              title: "Personne morale représentée"
+              description: "Renseigné lorsque le dirigeant siège en tant que représentant d'une personne morale. Null pour une personne physique siégeant en son nom propre."
+              type: "object"
+              nullable: true
+              properties:
+                type:
+                  title: "Type de personne morale"
+                  type: "string"
+                  nullable: true
+                  example: "Entreprise"
+                identifiant:
+                  title: "Identifiant de la personne morale"
+                  type: "string"
+                  nullable: true
+                  example: "98765432100012"
+                nom:
+                  title: "Nom de la personne morale"
+                  type: "string"
+                  nullable: true
+                  example: "ENTREPRISE EXEMPLE"
+                pays:
+                  title: "Pays de la personne morale"
+                  type: "string"
+                  nullable: true
+                  example: "France"
+      filiation: &siaf_association_filiation
+        title: "Filiation de l'association"
+        type: "object"
+        properties:
+          organisme_issu_transformation:
+            title: "Organisme issu de la transformation"
+            type: "object"
+            nullable: true
+            properties:
+              type:
+                title: "Type de filiation"
+                type: "string"
+                example: "Transformation"
+              identifiant:
+                title: "Identifiant de l'organisme lié"
+                type: "string"
+                nullable: true
+                example: "W987654321"
+          organisme_issu_fusion:
+            title: "Organisme issu de la fusion"
+            type: "object"
+            nullable: true
+            properties:
+              type:
+                title: "Type de filiation"
+                type: "string"
+                example: "Fusion"
+              identifiant:
+                title: "Identifiant de l'organisme lié"
+                type: "string"
+                nullable: true
+                example: "W987654321"
+          organismes_issus_scission:
+            title: "Organismes issus de la scission"
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                type:
+                  title: "Type de filiation"
+                  type: "string"
+                  example: "Scission"
+                identifiant:
+                  title: "Identifiant de l'organisme lié"
+                  type: "string"
+                  nullable: true
+                  example: "W987654321"
+      union_federation: &siaf_association_union_federation
+        title: "Union ou fédération à laquelle l'association appartient"
+        type: "object"
+        nullable: true
+        properties:
+          type:
+            title: "Type de groupement"
+            description: "Union ou fédération. Le vocabulaire exact reste à figer avec le fournisseur."
+            type: "string"
+            nullable: true
+            example: "Federation"
+          date_entree:
+            title: "Date d'entrée dans le groupement"
+            type: "string"
+            nullable: true
+            example: "2020-06-15"
+          associations_membres:
+            title: "Associations membres du groupement"
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                rna:
+                  title: "Identifiant RNA de l'association membre"
+                  type: "string"
+                  nullable: true
+                  example: "W987654321"
+      etablissements: &siaf_association_etablissements
+        title: "Liste des établissements de l'association pour lesquels des informations sont disponibles"
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            nom:
+              title: "Nom de l'établissement"
+              type: "string"
+              nullable: true
+              example: "Antenne Dijon"
+            adresse:
+              title: "Adresse de l'établissement"
+              type: "object"
+              properties:
+                adresse_complete:
+                  title: "Adresse complète sur une ligne"
+                  type: "string"
+                  nullable: true
+                  example: "20 RUE EXEMPLE 21000 DIJON"
+                complement:
+                  title: "Complément d'adresse"
+                  type: "string"
+                  nullable: true
+                  example: null
+                numero_voie:
+                  title: "Numéro de voie"
+                  type: "string"
+                  nullable: true
+                  example: "20"
+                type_voie:
+                  title: "Type de voie"
+                  type: "string"
+                  nullable: true
+                  example: "RUE"
+                libelle_voie:
+                  title: "Libellé de la voie"
+                  type: "string"
+                  nullable: true
+                  example: "EXEMPLE"
+                distribution:
+                  title: "Mention de distribution spéciale"
+                  type: "string"
+                  nullable: true
+                  example: null
+                code_insee:
+                  title: "Code INSEE de la commune"
+                  type: "string"
+                  nullable: true
+                  example: "21231"
+                code_postal:
+                  title: "Code postal"
+                  type: "string"
+                  nullable: true
+                  example: "21000"
+                commune:
+                  title: "Commune"
+                  type: "string"
+                  nullable: true
+                  example: "DIJON"
+      conformite_comptable: &siaf_association_conformite_comptable
+        title: "Conformité comptable de l'association"
+        type: "object"
+        properties:
+          etat_transmission_comptes:
+            title: "État de transmission des comptes"
+            description: "En défaut lorsque l'association est en retard dans le dépôt de ses comptes annuels."
+            type: "string"
+            nullable: true
+            example: "En regle"
+          exercices_comptables_transmis:
+            title: "Années des exercices comptables transmis"
+            description: "Années au titre desquelles l'association a déposé ses comptes annuels."
+            type: "array"
+            items:
+              type: "integer"
+              example: 2024
+            example: [2023, 2024, 2025]
+      documents_rna:
+        title: "Pièces justificatives déposées au RNA"
+        description: "Métadonnées des documents déposés par l'association (statuts, listes de dirigeants, procès verbaux, comptes…). Le type et le nombre de documents varient selon l'association."
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            id:
+              title: "Identifiant du document"
+              type: "string"
+              example: "df9ee99e-89c7-11f1-9645-27365eec5438"
+            type:
+              title: "Type de document"
+              description: "Typologie grossière du RNA, dont la valeur Autre couvre la majorité des pièces. Se référer à sous_type pour une qualification fine."
+              type: "string"
+              example: "Statuts"
+            sous_type:
+              title: "Sous-type de document"
+              description: "Code de pièce du RNA et son libellé. La table de correspondance officielle des codes reste à obtenir auprès du fournisseur."
+              type: "object"
+              properties:
+                code:
+                  title: "Code de la pièce"
+                  type: "string"
+                  nullable: true
+                  example: "STC"
+                libelle:
+                  title: "Libellé de la pièce"
+                  type: "string"
+                  nullable: true
+                  example: "Statuts certifiés"
+            date_depot:
+              title: "Date de dépôt du document"
+              type: "string"
+              nullable: true
+              example: "2018-03-26"
+            annee_depot:
+              title: "Année de dépôt du document"
+              type: "string"
+              nullable: true
+              example: "2018"
+            url:
+              title: "URL de téléchargement du document"
+              description: "Lien de téléchargement servi par API Entreprise, valable 24 heures. Les binaires ne sont pas encore chargés côté fournisseur : ces liens ne servent aucun fichier sur l'environnement de test."
+              type: "string"
+              nullable: true
+              example: "https://entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43"
+
+  associations_open_data:
+    title: "Données associations en open data"
+    description: "Données publiques de référence d'une association issues du Répertoire National des Associations (RNA), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, filiation, appartenance à une union ou une fédération, établissements et conformité comptable."
+    tags:
+      - "Informations générales"
+      - "Prochainement"
+    meta: *siaf_association_meta
+    attributes:
+      identifiants: *siaf_association_identifiants
+      identite:
+        title: "Identité de l'association"
+        type: "object"
+        properties:
+          nom: *siaf_association_nom
+          etat: *siaf_association_etat
+          service_instructeur: *siaf_association_service_instructeur
+          date_creation: *siaf_association_date_creation
+          date_dissolution: *siaf_association_date_dissolution
+          duree: *siaf_association_duree
+          date_cloture_exercice: *siaf_association_date_cloture_exercice
+          adresse_siege: *siaf_association_adresse_siege
+      activites:
+        title: "Activités de l'association"
+        type: "object"
+        properties:
+          objet: *siaf_association_objet
+          objet_social1: *siaf_association_objet_social1
+          reconnue_utilite_publique: *siaf_association_reconnue_utilite_publique
+          date_publication_reconnue_utilite_publique: *siaf_association_date_publication_reconnue_utilite_publique
+          date_fin_reconnue_utilite_publique: *siaf_association_date_fin_reconnue_utilite_publique
+      filiation: *siaf_association_filiation
+      union_federation: *siaf_association_union_federation
+      etablissements: *siaf_association_etablissements
+      conformite_comptable: *siaf_association_conformite_comptable
