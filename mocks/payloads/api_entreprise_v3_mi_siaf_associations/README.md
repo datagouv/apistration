@@ -121,15 +121,7 @@
         "organisme_issu_fusion": null,
         "organismes_issus_scission": []
       },
-      "union_federation": {
-        "type": "Federation",
-        "date_entree": "1981-01-16",
-        "associations_membres": [
-          {
-            "rna": "W751142683"
-          }
-        ]
-      },
+      "union_federation": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -322,15 +314,7 @@
         "organisme_issu_fusion": null,
         "organismes_issus_scission": []
       },
-      "union_federation": {
-        "type": "Federation",
-        "date_entree": "1981-01-16",
-        "associations_membres": [
-          {
-            "rna": "W751142683"
-          }
-        ]
-      },
+      "union_federation": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -523,15 +507,7 @@
         "organisme_issu_fusion": null,
         "organismes_issus_scission": []
       },
-      "union_federation": {
-        "type": "Federation",
-        "date_entree": "1981-01-16",
-        "associations_membres": [
-          {
-            "rna": "W751142683"
-          }
-        ]
-      },
+      "union_federation": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",

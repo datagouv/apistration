@@ -39979,11 +39979,12 @@ paths:
                         properties:
                           type:
                             title: Type de groupement
-                            description: Union ou fédération. Le vocabulaire exact
-                              reste à figer avec le fournisseur.
+                            description: Union ou fédération. Seule la valeur Union
+                              a été observée à ce jour ; le vocabulaire exact reste
+                              à figer avec le fournisseur.
                             type: string
                             nullable: true
-                            example: Federation
+                            example: Union
                           date_entree:
                             title: Date d'entrée dans le groupement
                             type: string
@@ -40897,11 +40898,12 @@ paths:
                         properties:
                           type:
                             title: Type de groupement
-                            description: Union ou fédération. Le vocabulaire exact
-                              reste à figer avec le fournisseur.
+                            description: Union ou fédération. Seule la valeur Union
+                              a été observée à ce jour ; le vocabulaire exact reste
+                              à figer avec le fournisseur.
                             type: string
                             nullable: true
-                            example: Federation
+                            example: Union
                           date_entree:
                             title: Date d'entrée dans le groupement
                             type: string
