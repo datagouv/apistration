@@ -1,5 +1,5 @@
 Titre,Description,Paramètres,Status,Réponse
-,Boursier avec INE,"{""ine"":""1234567890A""}",200,"{
+,Boursier avec INE,"{""ine"":""1234567890A"",""campaignYear"":2023}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -33,7 +33,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier sur année N-1 - Fille Dupont - Dijon Carnot,"{""ine"":""0987654321M""}",200,"{
+,Boursier sur année N-1 - Fille Dupont - Dijon Carnot,"{""ine"":""0987654321M"",""campaignYear"":2025}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -67,7 +67,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier sur année N-2 - Fille B Dupont - Dijon Carnot,"{""ine"":""0987654321N""}",200,"{
+,Boursier sur année N-2 - Fille B Dupont - Dijon Carnot,"{""ine"":""0987654321N"",""campaignYear"":2024}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -135,7 +135,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursière avec commune accentuée et tirets - Minnie Mouse - Marsannay-la-Côte BSB,"{""ine"":""0987654321F""}",200,"{
+,Boursière avec commune accentuée et tirets - Minnie Mouse - Marsannay-la-Côte BSB,"{""ine"":""0987654321F"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -169,7 +169,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier avec commune de naissance mal orthographiée (Bordeau) - Mickey Mouse - Dijon IAE,"{""ine"":""0987654321E""}",200,"{
+,Boursier avec commune de naissance mal orthographiée (Bordeau) - Mickey Mouse - Dijon IAE,"{""ine"":""0987654321E"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -203,7 +203,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursière - Daisy Duck - Saint-Apollinaire BSB,"{""ine"":""0987654321D""}",200,"{
+,Boursière - Daisy Duck - Saint-Apollinaire BSB,"{""ine"":""0987654321D"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -237,7 +237,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier hors Dijon (Toulouse) - Donald Duck - Toulouse Baudelaire,"{""ine"":""0987654321H""}",200,"{
+,Boursier hors Dijon (Toulouse) - Donald Duck - Toulouse Baudelaire,"{""ine"":""0987654321H"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -271,7 +271,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier avec date de naissance atypique (1947) - Balthazar Picsou - Dijon IAE,"{""ine"":""0987654321G""}",200,"{
+,Boursier avec date de naissance atypique (1947) - Balthazar Picsou - Dijon IAE,"{""ine"":""0987654321G"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -305,7 +305,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier - Pat Hibulaire - Dijon BSB,"{""ine"":""123456789AB""}",200,"{
+,Boursier - Pat Hibulaire - Dijon BSB,"{""ine"":""123456789AB"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -339,7 +339,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursière avec prénom composé avec espace - Anne Marie Robert - Dijon Carnot,"{""ine"":""0987654321K""}",200,"{
+,Boursière avec prénom composé avec espace - Anne Marie Robert - Dijon Carnot,"{""ine"":""0987654321K"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -373,7 +373,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier avec prénom composé avec tiret - Jean-Michel Robert - Dijon Carnot,"{""ine"":""0987654321J""}",200,"{
+,Boursier avec prénom composé avec tiret - Jean-Michel Robert - Dijon Carnot,"{""ine"":""0987654321J"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -407,7 +407,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier avec échelon régional provisoire et commune accentuée - Loulou Duck - Fontaine-Lès-Dijon Carnot,"{""ine"":""0987654321C""}",200,"{
+,Boursier avec échelon régional provisoire et commune accentuée - Loulou Duck - Fontaine-Lès-Dijon Carnot,"{""ine"":""0987654321C"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -441,7 +441,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier standard - Riri Duck - Dijon Carnot,"{""ine"":""0987654321A""}",200,"{
+,Boursier standard - Riri Duck - Dijon Carnot,"{""ine"":""0987654321A"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": true,
@@ -475,7 +475,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Non boursier avec INE - Fifi Duck - Dijon Carnot,"{""ine"":""0987654321L""}",200,"{
+,Non boursier avec INE - Fifi Duck - Dijon Carnot,"{""ine"":""0987654321L"",""campaignYear"":2026}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": false,
@@ -509,7 +509,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Boursier radié,"{""ine"":""0987654321B""}",200,"{
+,Boursier radié,"{""ine"":""0987654321B"",""campaignYear"":2023}",200,"{
   ""data"": {
     ""statut_boursier"": {
       ""est_boursier"": false,

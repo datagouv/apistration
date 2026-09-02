@@ -1,7 +1,7 @@
----
 description: 'Boursier avec échelon régional provisoire et commune accentuée - Loulou Duck - Fontaine-Lès-Dijon Carnot'
 params:
   ine: '0987654321C'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

@@ -1,7 +1,7 @@
----
 description: 'Boursier avec INE'
 params:
   ine: '1234567890A'
+  campaignYear: 2023
 status: 200
 payload: |-
   {

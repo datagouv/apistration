@@ -10,7 +10,8 @@
 
   ```json
   {
-    "ine": "1234567890A"
+    "ine": "1234567890A",
+    "campaignYear": 2023
   }
   ```
 
@@ -52,8 +53,10 @@
       },
       "ine": "1234567890A"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -65,7 +68,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=1234567890A' \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890A' -d 'campaignYear=2023' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -82,7 +85,8 @@
 
   ```json
   {
-    "ine": "0987654321M"
+    "ine": "0987654321M",
+    "campaignYear": 2025
   }
   ```
 
@@ -124,8 +128,10 @@
       },
       "ine": "0987654321M"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -137,7 +143,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321M' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321M' -d 'campaignYear=2025' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -154,7 +160,8 @@
 
   ```json
   {
-    "ine": "0987654321N"
+    "ine": "0987654321N",
+    "campaignYear": 2024
   }
   ```
 
@@ -196,8 +203,10 @@
       },
       "ine": "0987654321N"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -209,7 +218,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321N' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321N' -d 'campaignYear=2024' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -269,8 +278,10 @@
       },
       "ine": "1234567890A"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -299,7 +310,8 @@
 
   ```json
   {
-    "ine": "0987654321F"
+    "ine": "0987654321F",
+    "campaignYear": 2026
   }
   ```
 
@@ -341,8 +353,10 @@
       },
       "ine": "0987654321F"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -354,7 +368,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321F' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321F' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -371,7 +385,8 @@
 
   ```json
   {
-    "ine": "0987654321E"
+    "ine": "0987654321E",
+    "campaignYear": 2026
   }
   ```
 
@@ -413,8 +428,10 @@
       },
       "ine": "0987654321E"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -426,7 +443,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321E' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321E' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -443,7 +460,8 @@
 
   ```json
   {
-    "ine": "0987654321D"
+    "ine": "0987654321D",
+    "campaignYear": 2026
   }
   ```
 
@@ -485,8 +503,10 @@
       },
       "ine": "0987654321D"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -498,7 +518,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321D' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321D' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -515,7 +535,8 @@
 
   ```json
   {
-    "ine": "0987654321H"
+    "ine": "0987654321H",
+    "campaignYear": 2026
   }
   ```
 
@@ -557,8 +578,10 @@
       },
       "ine": "0987654321H"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -570,7 +593,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321H' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321H' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -587,7 +610,8 @@
 
   ```json
   {
-    "ine": "0987654321G"
+    "ine": "0987654321G",
+    "campaignYear": 2026
   }
   ```
 
@@ -629,8 +653,10 @@
       },
       "ine": "0987654321G"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -642,7 +668,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321G' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321G' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -659,7 +685,8 @@
 
   ```json
   {
-    "ine": "123456789AB"
+    "ine": "123456789AB",
+    "campaignYear": 2026
   }
   ```
 
@@ -701,8 +728,10 @@
       },
       "ine": "123456789AB"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -714,7 +743,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=123456789AB' \
+    -G -d 'recipient=13002526500013' -d 'ine=123456789AB' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -731,7 +760,8 @@
 
   ```json
   {
-    "ine": "0987654321K"
+    "ine": "0987654321K",
+    "campaignYear": 2026
   }
   ```
 
@@ -773,8 +803,10 @@
       },
       "ine": "0987654321K"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -786,7 +818,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321K' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321K' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -803,7 +835,8 @@
 
   ```json
   {
-    "ine": "0987654321J"
+    "ine": "0987654321J",
+    "campaignYear": 2026
   }
   ```
 
@@ -845,8 +878,10 @@
       },
       "ine": "0987654321J"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -858,7 +893,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321J' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321J' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -875,7 +910,8 @@
 
   ```json
   {
-    "ine": "0987654321C"
+    "ine": "0987654321C",
+    "campaignYear": 2026
   }
   ```
 
@@ -917,8 +953,10 @@
       },
       "ine": "0987654321C"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -930,7 +968,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321C' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321C' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -947,7 +985,8 @@
 
   ```json
   {
-    "ine": "0987654321A"
+    "ine": "0987654321A",
+    "campaignYear": 2026
   }
   ```
 
@@ -989,8 +1028,10 @@
       },
       "ine": "0987654321A"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1002,7 +1043,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321A' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321A' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -1019,7 +1060,8 @@
 
   ```json
   {
-    "ine": "0987654321L"
+    "ine": "0987654321L",
+    "campaignYear": 2026
   }
   ```
 
@@ -1061,8 +1103,10 @@
       },
       "ine": "0987654321L"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1074,7 +1118,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321L' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321L' -d 'campaignYear=2026' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 
@@ -1091,7 +1135,8 @@
 
   ```json
   {
-    "ine": "0987654321B"
+    "ine": "0987654321B",
+    "campaignYear": 2023
   }
   ```
 
@@ -1133,8 +1178,10 @@
       },
       "ine": "0987654321B"
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -1146,7 +1193,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'ine=0987654321B' \
+    -G -d 'recipient=13002526500013' -d 'ine=0987654321B' -d 'campaignYear=2023' \
     --url "https://staging.particulier.api.gouv.fr/v5/cnous/etudiant_boursier/ine"
   ```
 

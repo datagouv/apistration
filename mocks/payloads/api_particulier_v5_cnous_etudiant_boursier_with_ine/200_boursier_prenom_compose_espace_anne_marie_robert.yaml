@@ -1,7 +1,7 @@
----
 description: 'Boursière avec prénom composé avec espace - Anne Marie Robert - Dijon Carnot'
 params:
   ine: '0987654321K'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

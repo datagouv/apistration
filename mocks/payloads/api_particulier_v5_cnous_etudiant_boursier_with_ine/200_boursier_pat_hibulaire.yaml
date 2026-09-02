@@ -1,7 +1,7 @@
----
 description: 'Boursier - Pat Hibulaire - Dijon BSB'
 params:
   ine: '123456789AB'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

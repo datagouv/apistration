@@ -1,7 +1,7 @@
----
 description: 'Boursière - Daisy Duck - Saint-Apollinaire BSB'
 params:
   ine: '0987654321D'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

@@ -1,7 +1,7 @@
----
 description: 'Non boursier avec INE - Fifi Duck - Dijon Carnot'
 params:
   ine: '0987654321L'
+  campaignYear: 2026
 status: 200
 payload: |-
   {
