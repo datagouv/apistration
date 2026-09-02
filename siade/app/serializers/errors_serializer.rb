@@ -2,6 +2,8 @@ class ErrorsSerializer < ActiveModel::Serializer
   attribute :errors
 
   def errors
+    RenderedError.capture(object)
+
     object.map do |error_handler|
       public_send(format, error_handler)
     end

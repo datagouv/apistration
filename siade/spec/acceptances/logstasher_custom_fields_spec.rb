@@ -155,8 +155,10 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
       it 'does not add hashed params to logstasher parameters key' do
         expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_excluding(
-            parameters: anything
+          hash_including(
+            parameters: hash_excluding(
+              hashed_params: anything
+            )
           ),
           anything
         )
@@ -266,8 +268,10 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
       it 'does not add france_connect_client to params' do
         expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_not_including(
-            parameters: anything
+          hash_including(
+            parameters: hash_excluding(
+              france_connect_client: anything
+            )
           ),
           anything
         )
@@ -467,6 +471,194 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         )
 
         make_call
+      end
+    end
+  end
+
+  describe 'rendered error codes' do
+    describe 'on api entreprise request' do
+      before do
+        routes.draw { get 'index' => 'api/v3_and_more/dummy#index' }
+      end
+
+      context 'when the error comes from the authentication' do
+        define_dummy_controller(APIEntreprise::V3AndMore::DummyController)
+
+        it 'adds the error code, provider code and subcode to logstasher parameters' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              parameters: hash_including(
+                error_code: '00101',
+                error_provider_code: '00',
+                error_subcode: '101'
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
+
+      context 'when a provider error is rendered' do
+        controller(APIEntreprise::V3AndMore::DummyController) do
+          skip_before_action :authenticate_user!, :set_monitoring_context, :authorize_access_to_resource!, :verify_duplicate_params!
+          skip_after_action :clean_duplicate_param_tracking
+
+          def index
+            render json: ErrorsSerializer.new([ProviderUnknownError.new('CIBTP')]).as_json,
+              status: :bad_gateway
+          end
+        end
+
+        it 'adds the provider code and the subcode of the error' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              parameters: hash_including(
+                error_code: '38999',
+                error_provider_code: '38',
+                error_subcode: '999'
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
+
+      context 'when several errors are rendered' do
+        controller(APIEntreprise::V3AndMore::DummyController) do
+          skip_before_action :authenticate_user!, :set_monitoring_context, :authorize_access_to_resource!, :verify_duplicate_params!
+          skip_after_action :clean_duplicate_param_tracking
+
+          def index
+            errors = [MissingMandatoryParamError.new(:context), MissingMandatoryParamError.new(:object)]
+
+            render json: ErrorsSerializer.new(errors).as_json,
+              status: :unprocessable_content
+          end
+        end
+
+        it 'keeps the first rendered error' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              parameters: hash_including(
+                error_code: '00201'
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
+
+      context 'when no error is rendered' do
+        controller(APIEntreprise::V3AndMore::DummyController) do
+          skip_before_action :authenticate_user!, :set_monitoring_context, :authorize_access_to_resource!, :verify_duplicate_params!
+          skip_after_action :clean_duplicate_param_tracking
+
+          def index
+            head :ok
+          end
+        end
+
+        it 'does not add any error field to logstasher' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_excluding(
+              parameters: anything
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
+    end
+
+    describe 'on api particulier v2 request' do
+      subject(:make_call) do
+        get :index, params:
+      end
+
+      let(:params) { { foo: 'bar' } }
+      let(:hashed_params) { Digest::SHA512.hexdigest("#{Siade.credentials[:api_particulier_log_salt_key]}:#{params.to_json}") }
+
+      before do
+        routes.draw { get 'index' => 'api/v2/dummy#index' }
+      end
+
+      context 'when the error is rendered in the flat format' do
+        define_dummy_controller(APIParticulier::V2::DummyController)
+
+        it 'adds the error code without erasing the existing parameters' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              parameters: hash_including(
+                hashed_params:,
+                error_code: '00101',
+                error_provider_code: '00',
+                error_subcode: '101'
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
+
+      context 'when a provider error is rendered in the flat format' do
+        controller(APIParticulier::V2::DummyController) do
+          skip_before_action :authenticate_user!, :set_monitoring_context, :authorize_access_to_resource!, :verify_duplicate_params!
+          skip_after_action :clean_duplicate_param_tracking
+
+          def index
+            render json: format_error(NotFoundError.new('CNAV')),
+              status: :not_found
+          end
+        end
+
+        it 'adds the provider code and the subcode of the error' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              parameters: hash_including(
+                hashed_params:,
+                error_code: '37003',
+                error_provider_code: '37',
+                error_subcode: '003'
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
+
+      context 'when no error is rendered' do
+        controller(APIParticulier::V2::DummyController) do
+          skip_before_action :authenticate_user!, :set_monitoring_context, :authorize_access_to_resource!, :verify_duplicate_params!
+          skip_after_action :clean_duplicate_param_tracking
+
+          def index
+            head :ok
+          end
+        end
+
+        it 'does not add any error field to logstasher parameters' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              parameters: hash_excluding(
+                error_code: anything
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
       end
     end
   end

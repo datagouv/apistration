@@ -1,5 +1,6 @@
 class MCPController < ActionController::API
   include HandleTokens
+  include LogsRenderedError
 
   skip_before_action :authorize_access_to_resource!, unless: :tool_calling?
 
