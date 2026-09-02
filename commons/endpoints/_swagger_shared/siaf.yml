@@ -330,8 +330,8 @@ siaf:
             items:
               type: "integer"
             example: []
-      dossiers:
-        title: "Métadonnées liées aux dossiers déposés par la fondation"
+      conformite_comptable:
+        title: "Conformité comptable de la fondation"
         type: "object"
         properties:
           etat_transmission_comptes:
@@ -342,11 +342,13 @@ siaf:
               - "En règle"
               - "En défaut"
             example: "En règle"
-          exercices_comptables_transmis:
-            title: "Exercices comptables transmis"
+          annees_exercices_comptables_transmis:
+            title: "Années des exercices comptables transmis"
+            description: "Années au titre desquelles la fondation a déposé ses comptes annuels."
             type: "array"
             items:
               type: "integer"
+              example: 2024
             example: [2023, 2024, 2025]
       documents:
         title: "Pièces justificatives déposées par la fondation"

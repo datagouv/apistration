@@ -73,11 +73,16 @@ payload: |-
       "situation_financiere": {
         "annees_subventions_publiques": [],
         "annees_appel_generosite_publique": [],
-        "annees_financements_etrangers": [2024]
+        "annees_financements_etrangers": [
+          2024
+        ]
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En défaut",
-        "exercices_comptables_transmis": [2022, 2023]
+        "annees_exercices_comptables_transmis": [
+          2022,
+          2023
+        ]
       },
       "documents": [
         {

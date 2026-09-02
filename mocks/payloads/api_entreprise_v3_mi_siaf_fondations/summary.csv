@@ -85,9 +85,12 @@ Titre,Description,Paramètres,Status,Réponse
       ""annees_appel_generosite_publique"": [],
       ""annees_financements_etrangers"": []
     },
-    ""dossiers"": {
+    ""conformite_comptable"": {
       ""etat_transmission_comptes"": ""En règle"",
-      ""exercices_comptables_transmis"": [2023, 2024]
+      ""annees_exercices_comptables_transmis"": [
+        2023,
+        2024
+      ]
     },
     ""documents"": [
       {
@@ -185,11 +188,16 @@ Titre,Description,Paramètres,Status,Réponse
     ""situation_financiere"": {
       ""annees_subventions_publiques"": [],
       ""annees_appel_generosite_publique"": [],
-      ""annees_financements_etrangers"": [2024]
+      ""annees_financements_etrangers"": [
+        2024
+      ]
     },
-    ""dossiers"": {
+    ""conformite_comptable"": {
       ""etat_transmission_comptes"": ""En défaut"",
-      ""exercices_comptables_transmis"": [2022, 2023]
+      ""annees_exercices_comptables_transmis"": [
+        2022,
+        2023
+      ]
     },
     ""documents"": [
       {
@@ -293,13 +301,22 @@ Titre,Description,Paramètres,Status,Réponse
       ""organismes_issus_scission"": []
     },
     ""situation_financiere"": {
-      ""annees_subventions_publiques"": [2024, 2025],
-      ""annees_appel_generosite_publique"": [2025],
+      ""annees_subventions_publiques"": [
+        2024,
+        2025
+      ],
+      ""annees_appel_generosite_publique"": [
+        2025
+      ],
       ""annees_financements_etrangers"": []
     },
-    ""dossiers"": {
+    ""conformite_comptable"": {
       ""etat_transmission_comptes"": ""En règle"",
-      ""exercices_comptables_transmis"": [2023, 2024, 2025]
+      ""annees_exercices_comptables_transmis"": [
+        2023,
+        2024,
+        2025
+      ]
     },
     ""documents"": [
       {
@@ -410,13 +427,22 @@ Titre,Description,Paramètres,Status,Réponse
       ""organismes_issus_scission"": []
     },
     ""situation_financiere"": {
-      ""annees_subventions_publiques"": [2024, 2025],
-      ""annees_appel_generosite_publique"": [2025],
+      ""annees_subventions_publiques"": [
+        2024,
+        2025
+      ],
+      ""annees_appel_generosite_publique"": [
+        2025
+      ],
       ""annees_financements_etrangers"": []
     },
-    ""dossiers"": {
+    ""conformite_comptable"": {
       ""etat_transmission_comptes"": ""En règle"",
-      ""exercices_comptables_transmis"": [2023, 2024, 2025]
+      ""annees_exercices_comptables_transmis"": [
+        2023,
+        2024,
+        2025
+      ]
     },
     ""documents"": [
       {
@@ -527,13 +553,22 @@ Titre,Description,Paramètres,Status,Réponse
       ""organismes_issus_scission"": []
     },
     ""situation_financiere"": {
-      ""annees_subventions_publiques"": [2024, 2025],
-      ""annees_appel_generosite_publique"": [2025],
+      ""annees_subventions_publiques"": [
+        2024,
+        2025
+      ],
+      ""annees_appel_generosite_publique"": [
+        2025
+      ],
       ""annees_financements_etrangers"": []
     },
-    ""dossiers"": {
+    ""conformite_comptable"": {
       ""etat_transmission_comptes"": ""En règle"",
-      ""exercices_comptables_transmis"": [2023, 2024, 2025]
+      ""annees_exercices_comptables_transmis"": [
+        2023,
+        2024,
+        2025
+      ]
     },
     ""documents"": [
       {

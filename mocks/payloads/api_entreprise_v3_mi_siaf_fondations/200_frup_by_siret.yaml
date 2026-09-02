@@ -86,13 +86,22 @@ payload: |-
         "organismes_issus_scission": []
       },
       "situation_financiere": {
-        "annees_subventions_publiques": [2024, 2025],
-        "annees_appel_generosite_publique": [2025],
+        "annees_subventions_publiques": [
+          2024,
+          2025
+        ],
+        "annees_appel_generosite_publique": [
+          2025
+        ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [2023, 2024, 2025]
+        "annees_exercices_comptables_transmis": [
+          2023,
+          2024,
+          2025
+        ]
       },
       "documents": [
         {

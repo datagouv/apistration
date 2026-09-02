@@ -107,9 +107,9 @@
         "annees_appel_generosite_publique": [],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024
         ]
@@ -252,9 +252,9 @@
           2024
         ]
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En défaut",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2022,
           2023
         ]
@@ -408,9 +408,9 @@
         ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -572,9 +572,9 @@
         ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -736,9 +736,9 @@
         ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025

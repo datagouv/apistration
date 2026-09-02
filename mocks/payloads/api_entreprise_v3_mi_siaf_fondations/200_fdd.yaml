@@ -90,9 +90,12 @@ payload: |-
         "annees_appel_generosite_publique": [],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [2023, 2024]
+        "annees_exercices_comptables_transmis": [
+          2023,
+          2024
+        ]
       },
       "documents": [
         {

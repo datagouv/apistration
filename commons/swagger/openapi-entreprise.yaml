@@ -41869,8 +41869,8 @@ paths:
                         - annees_subventions_publiques
                         - annees_appel_generosite_publique
                         - annees_financements_etrangers
-                      dossiers:
-                        title: Métadonnées liées aux dossiers déposés par la fondation
+                      conformite_comptable:
+                        title: Conformité comptable de la fondation
                         type: object
                         properties:
                           etat_transmission_comptes:
@@ -41882,18 +41882,21 @@ paths:
                             - En règle
                             - En défaut
                             example: En règle
-                          exercices_comptables_transmis:
-                            title: Exercices comptables transmis
+                          annees_exercices_comptables_transmis:
+                            title: Années des exercices comptables transmis
+                            description: Années au titre desquelles la fondation a
+                              déposé ses comptes annuels.
                             type: array
                             items:
                               type: integer
+                              example: 2024
                             example:
                             - 2023
                             - 2024
                             - 2025
                         required:
                         - etat_transmission_comptes
-                        - exercices_comptables_transmis
+                        - annees_exercices_comptables_transmis
                       documents:
                         title: Pièces justificatives déposées par la fondation
                         description: Métadonnées des documents déposés (statuts, comptes,
@@ -41949,7 +41952,7 @@ paths:
                     - dirigeants
                     - liens_entre_organismes
                     - situation_financiere
-                    - dossiers
+                    - conformite_comptable
                     - documents
                     additionalProperties: false
                   links:
