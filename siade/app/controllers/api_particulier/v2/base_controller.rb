@@ -81,6 +81,8 @@ class APIParticulier::V2::BaseController < APIController
   end
 
   def format_error(error)
+    RenderedError.capture(error)
+
     send("format_#{error.kind}_error", error)
   rescue NoMethodError
     {
@@ -99,6 +101,8 @@ class APIParticulier::V2::BaseController < APIController
   end
 
   def format_unauthorized_error(error)
+    RenderedError.capture(error)
+
     {
       error: 'access_denied',
       reason: error.detail,
