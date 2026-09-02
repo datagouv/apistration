@@ -16,6 +16,10 @@ class INSEEAPIAuthentication
   TIMEOUT = 5
   INVALID_GRANT_HTTP_STATUSES = [400, 401].freeze
 
+  def self.invalidate_token_cache!
+    Rails.cache.delete(TOKEN_CACHE_KEY, namespace: CACHE_NAMESPACE)
+  end
+
   def access_token
     cached_token || authenticate!
   end

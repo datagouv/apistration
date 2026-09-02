@@ -271,6 +271,16 @@ RSpec.describe INSEEAPIAuthentication do
     end
   end
 
+  describe '.invalidate_token_cache!' do
+    it 'drops the cached token' do
+      insee_cache_write(described_class::TOKEN_CACHE_KEY, 'cached-token')
+
+      described_class.invalidate_token_cache!
+
+      expect(insee_cache_read(described_class::TOKEN_CACHE_KEY)).to be_nil
+    end
+  end
+
   describe '#attempt' do
     it 'ignores the cached token' do
       insee_cache_write(described_class::TOKEN_CACHE_KEY, 'cached-token')
