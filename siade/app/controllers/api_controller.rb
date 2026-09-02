@@ -1,6 +1,7 @@
 class APIController < ApplicationController
   include HandleTokens
   include CanLogRequestsInfoForDebugging
+  include LogsRenderedError
 
   rescue_from ActionController::ParameterMissing, with: :bad_request
   rescue_from MockedInteractor::EndpointNotYetImplemented, with: :not_implemented_error
