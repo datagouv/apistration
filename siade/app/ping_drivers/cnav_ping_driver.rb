@@ -24,33 +24,48 @@ class CNAVPingDriver < AbstractPingDriver
   end
 
   def no_errors?
-    total.nil? || total.zero? || errors.zero?
+    errors.zero?
   end
 
   def rate_limit_threshold_crossed?
-    rate_limited_errors.to_f / total >= RATE_LIMIT_ERROR_RATIO_THRESHOLD
+    rate_limited_errors.to_f / snapshot_total >= RATE_LIMIT_ERROR_RATIO_THRESHOLD
   end
 
   def error_limit_threshold_crossed?
-    [errors - rate_limited_errors, 0].max.to_f / total >= ERROR_RATIO_THRESHOLD
-  end
-
-  def total
-    counts[0]
+    non_rate_limited_errors.to_f / snapshot_total >= ERROR_RATIO_THRESHOLD
   end
 
   def errors
-    counts[1]
+    view_counts[1]
   end
 
-  def counts
-    @counts ||= super || [0, 0]
+  def view_counts
+    @view_counts ||= counts || [0, 0]
+  end
+
+  def snapshot_total
+    rate_limit_snapshot[0]
   end
 
   def rate_limited_errors
-    @rate_limited_errors ||= AccessLog
-      .where(route: routes, status: error_statuses, timestamp: 10.minutes.ago..)
-      .where("params ->> 'error_subcode' = ?", RATE_LIMIT_SUBCODE)
-      .count
+    rate_limit_snapshot[1]
+  end
+
+  def non_rate_limited_errors
+    rate_limit_snapshot[2]
+  end
+
+  def rate_limit_snapshot
+    @rate_limit_snapshot ||= AccessLog
+      .where(route: routes, timestamp: 10.minutes.ago..)
+      .pick(Arel.sql(<<~SQL.squish)) || [0, 0, 0]
+        COUNT(*),
+        COUNT(*) FILTER (WHERE status IN (#{quoted_error_statuses}) AND COALESCE(params ->> 'error_subcode', '') = '#{RATE_LIMIT_SUBCODE}'),
+        COUNT(*) FILTER (WHERE status IN (#{quoted_error_statuses}) AND COALESCE(params ->> 'error_subcode', '') != '#{RATE_LIMIT_SUBCODE}')
+      SQL
+  end
+
+  def quoted_error_statuses
+    error_statuses.map { |s| "'#{s}'" }.join(', ')
   end
 end
