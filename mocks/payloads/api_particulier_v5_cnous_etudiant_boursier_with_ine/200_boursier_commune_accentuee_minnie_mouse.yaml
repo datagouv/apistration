@@ -1,7 +1,7 @@
----
 description: 'Boursière avec commune accentuée et tirets - Minnie Mouse - Marsannay-la-Côte BSB'
 params:
   ine: '0987654321F'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

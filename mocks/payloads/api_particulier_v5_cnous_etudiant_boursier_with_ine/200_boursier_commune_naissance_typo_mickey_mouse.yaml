@@ -1,7 +1,7 @@
----
 description: 'Boursier avec commune de naissance mal orthographiée (Bordeau) - Mickey Mouse - Dijon IAE'
 params:
   ine: '0987654321E'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

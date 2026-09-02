@@ -1,7 +1,7 @@
----
 description: 'Boursier avec date de naissance atypique (1947) - Balthazar Picsou - Dijon IAE'
 params:
   ine: '0987654321G'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

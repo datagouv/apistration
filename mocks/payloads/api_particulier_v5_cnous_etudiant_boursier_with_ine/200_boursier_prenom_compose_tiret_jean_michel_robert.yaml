@@ -1,7 +1,7 @@
----
 description: 'Boursier avec prénom composé avec tiret - Jean-Michel Robert - Dijon Carnot'
 params:
   ine: '0987654321J'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

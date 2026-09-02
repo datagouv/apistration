@@ -1,7 +1,7 @@
----
 description: 'Boursier standard - Riri Duck - Dijon Carnot'
 params:
   ine: '0987654321A'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

@@ -1,7 +1,7 @@
----
 description: 'Boursier hors Dijon (Toulouse) - Donald Duck - Toulouse Baudelaire'
 params:
   ine: '0987654321H'
+  campaignYear: 2026
 status: 200
 payload: |-
   {

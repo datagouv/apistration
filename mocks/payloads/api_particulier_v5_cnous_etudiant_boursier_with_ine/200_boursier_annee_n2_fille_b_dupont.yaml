@@ -1,7 +1,7 @@
----
 description: 'Boursier sur année N-2 - Fille B Dupont - Dijon Carnot'
 params:
   ine: '0987654321N'
+  campaignYear: 2024
 status: 200
 payload: |-
   {
