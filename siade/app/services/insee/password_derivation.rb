@@ -1,9 +1,13 @@
 require 'openssl'
 
 class INSEE::PasswordDerivation
-  DERIVATION_START = '2026-09'.freeze
+  class MissingBypassPasswordError < StandardError; end
+
+  DERIVATION_START = '2026-11'.freeze
   BIMESTER_MONTHS = [1, 3, 5, 7, 9, 11].freeze
   BYPASS_CREDENTIAL_KEY = :insee_apim_password_bypass
+  STATIC_CREDENTIAL_KEY = :insee_apim_password
+  DERIVATION_KEY_CREDENTIAL_KEY = :insee_apim_password_derivation_key
   PASSWORD_LENGTH = 16
   CHAR_GUARANTEES = {
     /[A-Z]/ => 'A',
@@ -12,19 +16,30 @@ class INSEE::PasswordDerivation
     /[^a-zA-Z0-9]/ => '#'
   }.freeze
 
+  def self.credentials
+    Siade.credentials
+  end
+
   def self.bypassed?
-    Siade.credentials.key?(BYPASS_CREDENTIAL_KEY)
+    credentials.key?(BYPASS_CREDENTIAL_KEY)
+  end
+
+  def self.candidates
+    return [bypass_password, current_password].uniq if bypassed?
+
+    [current_password, previous_password].uniq
+  end
+
+  def self.bypass_password
+    credentials[BYPASS_CREDENTIAL_KEY].presence ||
+      fail(MissingBypassPasswordError, "credential '#{BYPASS_CREDENTIAL_KEY}' is present but empty")
   end
 
   def self.current_password
-    return bypass_password if bypassed?
-
     password_for(current_period)
   end
 
   def self.previous_password
-    return bypass_password if bypassed?
-
     password_for(previous_period)
   end
 
@@ -44,12 +59,8 @@ class INSEE::PasswordDerivation
     end
   end
 
-  def self.bypass_password
-    Siade.credentials[BYPASS_CREDENTIAL_KEY]
-  end
-
   def self.password_for(period)
-    return Siade.credentials[:insee_apim_password] if period < DERIVATION_START
+    return credentials[STATIC_CREDENTIAL_KEY] if period < DERIVATION_START
 
     derive(period)
   end
@@ -67,16 +78,28 @@ class INSEE::PasswordDerivation
   def self.format_password(hmac_bytes)
     chars = Base64.urlsafe_encode64(hmac_bytes, padding: false)[0, PASSWORD_LENGTH].chars
 
-    CHAR_GUARANTEES.each_with_index do |(pattern, fallback), idx|
-      chars[idx] = fallback unless chars.any? { |c| c.match?(pattern) }
+    CHAR_GUARANTEES.each do |pattern, fallback|
+      next if chars.any? { |char| char.match?(pattern) }
+
+      chars[expendable_index(chars)] = fallback
     end
 
     chars.join
   end
 
-  def self.secret
-    Siade.credentials[:insee_apim_password_derivation_key]
+  def self.expendable_index(chars)
+    chars.index do |char|
+      chars.many? { |other| char_class(other) == char_class(char) }
+    end
   end
 
-  private_class_method :bypass_password, :password_for, :derive, :period_for, :format_password, :secret
+  def self.char_class(char)
+    CHAR_GUARANTEES.keys.find { |pattern| char.match?(pattern) }
+  end
+
+  def self.secret
+    credentials[DERIVATION_KEY_CREDENTIAL_KEY]
+  end
+
+  private_class_method :credentials, :password_for, :derive, :period_for, :format_password, :expendable_index, :char_class, :secret
 end
