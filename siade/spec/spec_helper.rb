@@ -112,6 +112,10 @@ RSpec.configure do |config|
     Rails.cache.clear
   end
 
+  config.before do
+    ActiveSupport::CurrentAttributes.clear_all
+  end
+
   config.include ResponsesHelper, type: :controller
   config.include ResponsesHelper, type: :request
   config.include CommonErrorsMessagesHelpers
