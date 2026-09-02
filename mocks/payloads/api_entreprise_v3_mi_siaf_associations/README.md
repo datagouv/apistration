@@ -1,0 +1,1005 @@
+# Données associations
+* [200_avec_siret.yaml](200_avec_siret.yaml)
+
+  Status `200`
+
+  Association immatriculée au répertoire Sirene, appelée par identifiant RNA
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_siret_or_rna": "W442001747"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W442001747",
+        "siren": "388916678",
+        "siret_siege": "38891667800039"
+      },
+      "identite": {
+        "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+        "etat": "Active",
+        "service_instructeur": "44 - Loire-Atlantique",
+        "date_creation": "1981-01-16",
+        "date_dissolution": null,
+        "duree": {
+          "caractere": "Indeterminee",
+          "date_terme": null
+        },
+        "date_cloture_exercice": "12-31",
+        "adresse_siege": {
+          "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+          "complement": null,
+          "numero_voie": "19",
+          "type_voie": "AV",
+          "libelle_voie": "DU CLOS DU CENS",
+          "distribution": null,
+          "code_insee": "44109",
+          "code_postal": "44300",
+          "commune": "NANTES"
+        },
+        "courriel": "contact@association-exemple.fr",
+        "telephone": "+33102030405"
+      },
+      "activites": {
+        "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
+        "objet_social1": {
+          "code": "011020",
+          "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
+        },
+        "reconnue_utilite_publique": false,
+        "date_publication_reconnue_utilite_publique": null,
+        "date_fin_reconnue_utilite_publique": null,
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Presidente",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1968-03-24",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Enseignante",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 RUE EXEMPLE 44000 NANTES",
+            "complement": null,
+            "numero_voie": "8",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44000",
+            "commune": "NANTES"
+          },
+          "personne_morale": null
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Tresorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1974-11-02",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Comptable",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "3 BD EXEMPLE 44300 NANTES",
+            "complement": null,
+            "numero_voie": "3",
+            "type_voie": "BD",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES"
+          },
+          "personne_morale": null
+        }
+      ],
+      "filiation": {
+        "organisme_issu_transformation": null,
+        "organisme_issu_fusion": null,
+        "organismes_issus_scission": []
+      },
+      "union_federation": {
+        "type": "Federation",
+        "date_entree": "1981-01-16",
+        "associations_membres": [
+          {
+            "rna": "W751142683"
+          }
+        ]
+      },
+      "etablissements": [
+        {
+          "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+          "adresse": {
+            "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+            "complement": null,
+            "numero_voie": "19",
+            "type_voie": "AV",
+            "libelle_voie": "DU CLOS DU CENS",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES"
+          }
+        }
+      ],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En regle",
+        "exercices_comptables_transmis": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "documents_rna": [
+        {
+          "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
+          "type": "Statuts",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts certifiés"
+          },
+          "date_depot": "2009-05-14",
+          "annee_depot": "2009",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43"
+        },
+        {
+          "id": "9b4edadc-89c0-11f1-9645-27365eec5438",
+          "type": "Autre",
+          "sous_type": {
+            "code": "LDC",
+            "libelle": "Liste des dirigeants"
+          },
+          "date_depot": "2011-04-19",
+          "annee_depot": "2011",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/b27d4e19-0a5c-4f38-8e61-9d3f4a7c0b12"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2026-04-27"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/W442001747"
+  ```
+
+  </p>
+  </details>
+* [200_avec_siret_by_siren.yaml](200_avec_siret_by_siren.yaml)
+
+  Status `200`
+
+  Association immatriculée au répertoire Sirene, appelée par SIREN
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_siret_or_rna": "388916678"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W442001747",
+        "siren": "388916678",
+        "siret_siege": "38891667800039"
+      },
+      "identite": {
+        "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+        "etat": "Active",
+        "service_instructeur": "44 - Loire-Atlantique",
+        "date_creation": "1981-01-16",
+        "date_dissolution": null,
+        "duree": {
+          "caractere": "Indeterminee",
+          "date_terme": null
+        },
+        "date_cloture_exercice": "12-31",
+        "adresse_siege": {
+          "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+          "complement": null,
+          "numero_voie": "19",
+          "type_voie": "AV",
+          "libelle_voie": "DU CLOS DU CENS",
+          "distribution": null,
+          "code_insee": "44109",
+          "code_postal": "44300",
+          "commune": "NANTES"
+        },
+        "courriel": "contact@association-exemple.fr",
+        "telephone": "+33102030405"
+      },
+      "activites": {
+        "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
+        "objet_social1": {
+          "code": "011020",
+          "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
+        },
+        "reconnue_utilite_publique": false,
+        "date_publication_reconnue_utilite_publique": null,
+        "date_fin_reconnue_utilite_publique": null,
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Presidente",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1968-03-24",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Enseignante",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 RUE EXEMPLE 44000 NANTES",
+            "complement": null,
+            "numero_voie": "8",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44000",
+            "commune": "NANTES"
+          },
+          "personne_morale": null
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Tresorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1974-11-02",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Comptable",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "3 BD EXEMPLE 44300 NANTES",
+            "complement": null,
+            "numero_voie": "3",
+            "type_voie": "BD",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES"
+          },
+          "personne_morale": null
+        }
+      ],
+      "filiation": {
+        "organisme_issu_transformation": null,
+        "organisme_issu_fusion": null,
+        "organismes_issus_scission": []
+      },
+      "union_federation": {
+        "type": "Federation",
+        "date_entree": "1981-01-16",
+        "associations_membres": [
+          {
+            "rna": "W751142683"
+          }
+        ]
+      },
+      "etablissements": [
+        {
+          "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+          "adresse": {
+            "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+            "complement": null,
+            "numero_voie": "19",
+            "type_voie": "AV",
+            "libelle_voie": "DU CLOS DU CENS",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES"
+          }
+        }
+      ],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En regle",
+        "exercices_comptables_transmis": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "documents_rna": [
+        {
+          "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
+          "type": "Statuts",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts certifiés"
+          },
+          "date_depot": "2009-05-14",
+          "annee_depot": "2009",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43"
+        },
+        {
+          "id": "9b4edadc-89c0-11f1-9645-27365eec5438",
+          "type": "Autre",
+          "sous_type": {
+            "code": "LDC",
+            "libelle": "Liste des dirigeants"
+          },
+          "date_depot": "2011-04-19",
+          "annee_depot": "2011",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/b27d4e19-0a5c-4f38-8e61-9d3f4a7c0b12"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2026-04-27"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/388916678"
+  ```
+
+  </p>
+  </details>
+* [200_avec_siret_by_siret.yaml](200_avec_siret_by_siret.yaml)
+
+  Status `200`
+
+  Association immatriculée au répertoire Sirene, appelée par SIRET
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_siret_or_rna": "38891667800039"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W442001747",
+        "siren": "388916678",
+        "siret_siege": "38891667800039"
+      },
+      "identite": {
+        "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+        "etat": "Active",
+        "service_instructeur": "44 - Loire-Atlantique",
+        "date_creation": "1981-01-16",
+        "date_dissolution": null,
+        "duree": {
+          "caractere": "Indeterminee",
+          "date_terme": null
+        },
+        "date_cloture_exercice": "12-31",
+        "adresse_siege": {
+          "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+          "complement": null,
+          "numero_voie": "19",
+          "type_voie": "AV",
+          "libelle_voie": "DU CLOS DU CENS",
+          "distribution": null,
+          "code_insee": "44109",
+          "code_postal": "44300",
+          "commune": "NANTES"
+        },
+        "courriel": "contact@association-exemple.fr",
+        "telephone": "+33102030405"
+      },
+      "activites": {
+        "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
+        "objet_social1": {
+          "code": "011020",
+          "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
+        },
+        "reconnue_utilite_publique": false,
+        "date_publication_reconnue_utilite_publique": null,
+        "date_fin_reconnue_utilite_publique": null,
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Presidente",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1968-03-24",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Enseignante",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 RUE EXEMPLE 44000 NANTES",
+            "complement": null,
+            "numero_voie": "8",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44000",
+            "commune": "NANTES"
+          },
+          "personne_morale": null
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Tresorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1974-11-02",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Comptable",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "3 BD EXEMPLE 44300 NANTES",
+            "complement": null,
+            "numero_voie": "3",
+            "type_voie": "BD",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES"
+          },
+          "personne_morale": null
+        }
+      ],
+      "filiation": {
+        "organisme_issu_transformation": null,
+        "organisme_issu_fusion": null,
+        "organismes_issus_scission": []
+      },
+      "union_federation": {
+        "type": "Federation",
+        "date_entree": "1981-01-16",
+        "associations_membres": [
+          {
+            "rna": "W751142683"
+          }
+        ]
+      },
+      "etablissements": [
+        {
+          "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+          "adresse": {
+            "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+            "complement": null,
+            "numero_voie": "19",
+            "type_voie": "AV",
+            "libelle_voie": "DU CLOS DU CENS",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES"
+          }
+        }
+      ],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En regle",
+        "exercices_comptables_transmis": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "documents_rna": [
+        {
+          "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
+          "type": "Statuts",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts certifiés"
+          },
+          "date_depot": "2009-05-14",
+          "annee_depot": "2009",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43"
+        },
+        {
+          "id": "9b4edadc-89c0-11f1-9645-27365eec5438",
+          "type": "Autre",
+          "sous_type": {
+            "code": "LDC",
+            "libelle": "Liste des dirigeants"
+          },
+          "date_depot": "2011-04-19",
+          "annee_depot": "2011",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/b27d4e19-0a5c-4f38-8e61-9d3f4a7c0b12"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2026-04-27"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/38891667800039"
+  ```
+
+  </p>
+  </details>
+* [200_dissoute.yaml](200_dissoute.yaml)
+
+  Status `200`
+
+  Association dissoute, reconnue d'utilité publique, issue d'une fusion et en défaut de dépôt des comptes
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_siret_or_rna": "W212001234"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W212001234",
+        "siren": "512345670",
+        "siret_siege": "51234567000018"
+      },
+      "identite": {
+        "nom": "ASSOCIATION BOURGUIGNONNE POUR LE PATRIMOINE",
+        "etat": "Dissoute",
+        "service_instructeur": "21 - Côte-d'Or",
+        "date_creation": "1998-02-11",
+        "date_dissolution": "2024-11-08",
+        "duree": {
+          "caractere": "Determinee",
+          "date_terme": "2024-11-08"
+        },
+        "date_cloture_exercice": "06-30",
+        "adresse_siege": {
+          "adresse_complete": "12 PLACE DE LA MAIRIE 21000 DIJON",
+          "complement": null,
+          "numero_voie": "12",
+          "type_voie": "PL",
+          "libelle_voie": "DE LA MAIRIE",
+          "distribution": null,
+          "code_insee": "21231",
+          "code_postal": "21000",
+          "commune": "DIJON"
+        },
+        "courriel": null,
+        "telephone": null
+      },
+      "activites": {
+        "objet": "Etudier, faire connaitre et mettre en valeur le patrimoine bati et naturel de la region bourguignonne.",
+        "objet_social1": {
+          "code": "006000",
+          "libelle": "Culture et pratiques artistiques"
+        },
+        "reconnue_utilite_publique": true,
+        "date_publication_reconnue_utilite_publique": "2012-05-30",
+        "date_fin_reconnue_utilite_publique": "2024-11-08",
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "dirigeants": [
+        {
+          "nom": "PETIT",
+          "prenom": "Sophie",
+          "fonction": "Presidente",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1959-01-30",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Architecte",
+          "date_entree_fonction": "2016-04-02",
+          "date_sortie_fonction": "2024-11-08",
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "7 RUE EXEMPLE 21000 DIJON",
+            "complement": null,
+            "numero_voie": "7",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "21231",
+            "code_postal": "21000",
+            "commune": "DIJON"
+          },
+          "personne_morale": null
+        },
+        {
+          "nom": "ROUX",
+          "prenom": "Antoine",
+          "fonction": "Administrateur",
+          "qualite": "Representant d'une personne morale",
+          "date_naissance": "1980-09-12",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Directeur",
+          "date_entree_fonction": "2019-06-11",
+          "date_sortie_fonction": "2024-11-08",
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "25 RUE EXEMPLE 75008 PARIS",
+            "complement": null,
+            "numero_voie": "25",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "75108",
+            "code_postal": "75008",
+            "commune": "PARIS"
+          },
+          "personne_morale": {
+            "type": "Entreprise",
+            "identifiant": "98765432100012",
+            "nom": "ENTREPRISE EXEMPLE",
+            "pays": "France"
+          }
+        }
+      ],
+      "filiation": {
+        "organisme_issu_transformation": null,
+        "organisme_issu_fusion": {
+          "type": "Fusion",
+          "identifiant": "W212004321"
+        },
+        "organismes_issus_scission": []
+      },
+      "union_federation": null,
+      "etablissements": [],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En defaut",
+        "exercices_comptables_transmis": [
+          2022
+        ]
+      },
+      "documents_rna": [
+        {
+          "id": "af12cc31-89c7-11f1-9645-27365eec5438",
+          "type": "Statuts",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts certifiés"
+          },
+          "date_depot": "2012-04-18",
+          "annee_depot": "2012",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/d5e21b48-3f60-4c17-b8a9-1f7d24e6c093"
+        },
+        {
+          "id": "af12cc32-89c7-11f1-9645-27365eec5438",
+          "type": "Autre",
+          "sous_type": {
+            "code": "RJT",
+            "libelle": "Décision de dissolution"
+          },
+          "date_depot": "2024-11-08",
+          "annee_depot": "2024",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/e6f3328a-5c72-4e83-97b4-0a2c86d1f345"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2024-11-23"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/W212001234"
+  ```
+
+  </p>
+  </details>
+* [200_sans_siret.yaml](200_sans_siret.yaml)
+
+  Status `200`
+
+  Association sans SIRET membre d'une union, accessible uniquement par identifiant RNA
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_siret_or_rna": "W224002133"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W224002133",
+        "siren": null,
+        "siret_siege": null
+      },
+      "identite": {
+        "nom": "DEPRESSIFS ANONYMES FRANCE",
+        "etat": "Active",
+        "service_instructeur": "22 - Côtes-d'Armor",
+        "date_creation": "2008-04-10",
+        "date_dissolution": null,
+        "duree": {
+          "caractere": "Indeterminee",
+          "date_terme": null
+        },
+        "date_cloture_exercice": null,
+        "adresse_siege": {
+          "adresse_complete": "1 RUE DE LA REPUBLIQUE 22950 TREGUEUX",
+          "complement": "MAIRIE",
+          "numero_voie": "1",
+          "type_voie": "RUE",
+          "libelle_voie": "DE LA REPUBLIQUE",
+          "distribution": null,
+          "code_insee": "22360",
+          "code_postal": "22950",
+          "commune": "TREGUEUX"
+        },
+        "courriel": null,
+        "telephone": null
+      },
+      "activites": {
+        "objet": "1) d'assurer la representation et de gerer les services d'interet commun de l'ensemble des groupes locaux, qui appliquent, en France, les principes de l'association : depressifs anonymes. 2) de permettre a ses membres de sortir de la depression et d'aider d'autres depressifs a en sortir",
+        "objet_social1": {
+          "code": "019040",
+          "libelle": "Aide aux personnes en danger, solitude, désespoir, soutien psychologique"
+        },
+        "reconnue_utilite_publique": false,
+        "date_publication_reconnue_utilite_publique": null,
+        "date_fin_reconnue_utilite_publique": null,
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "dirigeants": [
+        {
+          "nom": "BERNARD",
+          "prenom": "Claire",
+          "fonction": "Presidente",
+          "qualite": "Membre du bureau",
+          "date_naissance": "1971-07-15",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Infirmiere",
+          "date_entree_fonction": "2021-09-04",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "4 RUE EXEMPLE 22950 TREGUEUX",
+            "complement": null,
+            "numero_voie": "4",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "22360",
+            "code_postal": "22950",
+            "commune": "TREGUEUX"
+          },
+          "personne_morale": null
+        }
+      ],
+      "filiation": {
+        "organisme_issu_transformation": null,
+        "organisme_issu_fusion": null,
+        "organismes_issus_scission": []
+      },
+      "union_federation": {
+        "type": "Union",
+        "date_entree": null,
+        "associations_membres": [
+          {
+            "rna": "W224010253"
+          },
+          {
+            "rna": "W832020400"
+          },
+          {
+            "rna": "W224010302"
+          },
+          {
+            "rna": "W832020272"
+          },
+          {
+            "rna": "W224010335"
+          },
+          {
+            "rna": "W832021213"
+          },
+          {
+            "rna": "W381028767"
+          },
+          {
+            "rna": "W751283253"
+          }
+        ]
+      },
+      "etablissements": [],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En regle",
+        "exercices_comptables_transmis": []
+      },
+      "documents_rna": [
+        {
+          "id": "df9ee99e-89c7-11f1-9645-27365eec5438",
+          "type": "Procès verbal",
+          "sous_type": {
+            "code": "PV",
+            "libelle": "Procès verbal d'assemblée générale"
+          },
+          "date_depot": "2010-06-15",
+          "annee_depot": "2010",
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/c4a90f63-1d7e-4b02-9a55-6e8b3c1f2d70"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2026-04-27"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/W224002133"
+  ```
+
+  </p>
+  </details>
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Association non trouvée
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_siret_or_rna": "W432543654"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "44003",
+        "title": "Entité non trouvée",
+        "detail": "Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus, ou ne comportent aucune information pour cet appel. Veuillez vérifier que votre recherche est couverte par le périmètre de l'API.",
+        "meta": {
+          "provider": "SIAF"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/W432543654"
+  ```
+
+  </p>
+  </details>

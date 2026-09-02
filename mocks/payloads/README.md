@@ -109,6 +109,8 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Données unité légale en open data](api_entreprise_v4_insee_unites_legales_diffusables) (`/v4/insee/sirene/unites_legales/diffusibles/{siren}`)
 * [Divers documents d'une association](api_entreprise_v3_mi_documents_associations) (`/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents`)
 * [Données du RNA d'une association](api_entreprise_v3_mi_associations) (`/v3/ministere_interieur/rna/associations/{siret_or_rna}`)
+* [Données associations](api_entreprise_v3_mi_siaf_associations) (`/v3/ministere_interieur/siaf/associations/{siren_or_siret_or_rna}`)
+* [Données associations en open data](api_entreprise_v3_mi_siaf_associations_open_data) (`/v3/ministere_interieur/siaf/associations/open_data/{siren_or_siret_or_rna}`)
 * [Données fondations](api_entreprise_v3_mi_siaf_fondations) (`/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}`)
 * [Conformité cotisations de sécurité sociale agricole](api_entreprise_v3_msa_conformites_cotisations) (`/v3/msa/etablissements/{siret}/conformite_cotisations`)
 * [Certification d'ingénierie OPQIBI](api_entreprise_v3_opqibi_certifications_ingenierie) (`/v3/opqibi/unites_legales/{siren}/certification_ingenierie`)
