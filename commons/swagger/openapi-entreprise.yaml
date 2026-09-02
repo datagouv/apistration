@@ -39356,6 +39356,1944 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/ministere_interieur/rna/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/ministere_interieur/siaf/associations/{siren_or_siret_or_rna}":
+    get:
+      summary: Données associations
+      tags:
+      - Informations générales
+      - Prochainement
+      parameters:
+      - name: siren_or_siret_or_rna
+        in: path
+        description: 'SIREN ou SIRET de l''association, ou son identifiant au Répertoire
+          National des Associations (RNA). Toutes les associations ne sont pas immatriculées
+          au répertoire Sirene : elles ne sont alors accessibles que par leur identifiant
+          RNA.'
+        examples:
+          randonnee_pedestre_rna:
+            value: W442001747
+            summary: Identifiant RNA du comité départemental de la randonnée pédestre
+              de Loire-Atlantique
+          randonnee_pedestre_siren:
+            value: '388916678'
+            summary: SIREN du comité départemental de la randonnée pédestre de Loire-Atlantique
+          randonnee_pedestre_siret:
+            value: '38891667800039'
+            summary: SIRET du comité départemental de la randonnée pédestre de Loire-Atlantique
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: 'Données de référence d''une association issues du Répertoire National
+        des Associations (RNA), opéré par le Ministère de l''Intérieur via le SIAF
+        : identité, activités, dirigeants, filiation, appartenance à une union ou
+        une fédération, établissements, conformité comptable et pièces justificatives.'
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Association trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_mi_siaf_associations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      identifiants:
+                        title: Identifiants de l'association
+                        type: object
+                        properties:
+                          rna:
+                            title: Identifiant au Répertoire National des Associations
+                            description: Identifiant officiel de l'association, au
+                              format W suivi de 9 caractères dont les 3 premiers encodent
+                              le département de déclaration.
+                            type: string
+                            example: W123456789
+                          siren:
+                            title: SIREN de l'association
+                            description: 'Déduit du SIRET présent dans le référentiel.
+                              Toutes les associations ne sont pas immatriculées au
+                              répertoire Sirene : l''immatriculation n''est obligatoire
+                              que lorsque l''association emploie, perçoit des subventions
+                              ou exerce une activité économique. La valeur est alors
+                              null.'
+                            type: string
+                            nullable: true
+                            example: '123456789'
+                          siret_siege:
+                            title: SIRET du siège de l'association
+                            type: string
+                            nullable: true
+                            example: '12345678900012'
+                        required:
+                        - rna
+                        - siren
+                        - siret_siege
+                      identite:
+                        title: Identité de l'association
+                        type: object
+                        properties:
+                          nom:
+                            title: Nom de l'association
+                            type: string
+                            example: ASSOCIATION EXEMPLE
+                          etat:
+                            title: État de l'association
+                            description: 'État de l''association au RNA : en activité,
+                              suspendue, transformée, fusionnée, scindée ou dissoute.
+                              Le vocabulaire exact reste à figer avec le fournisseur.'
+                            type: string
+                            example: Active
+                          service_instructeur:
+                            title: Service instructeur
+                            description: Préfecture ou service ayant instruit la déclaration
+                              de l'association. L'information est également dérivable
+                              du préfixe départemental de l'identifiant RNA.
+                            type: string
+                            nullable: true
+                            example: 21 - Côte-d'Or
+                          date_creation:
+                            title: Date de création de l'association
+                            type: string
+                            nullable: true
+                            example: '2010-05-12'
+                          date_dissolution:
+                            title: Date de dissolution de l'association
+                            description: Renseignée uniquement lorsque l'association
+                              est dissoute.
+                            type: string
+                            nullable: true
+                            example:
+                          duree:
+                            title: Durée de vie de l'association
+                            type: object
+                            properties:
+                              caractere:
+                                title: Caractère de la durée
+                                description: Indéterminée lorsque les statuts ne fixent
+                                  pas de terme, déterminée sinon.
+                                type: string
+                                nullable: true
+                                example: Indeterminee
+                              date_terme:
+                                title: Date du terme
+                                type: string
+                                nullable: true
+                                example:
+                            required:
+                            - caractere
+                            - date_terme
+                          date_cloture_exercice:
+                            title: Date de clôture de l'exercice comptable (mois/jour,
+                              format MM-DD)
+                            type: string
+                            nullable: true
+                            example: 12-31
+                          adresse_siege:
+                            title: Adresse du siège de l'association
+                            type: object
+                            properties:
+                              adresse_complete:
+                                title: Adresse complète sur une ligne
+                                type: string
+                                nullable: true
+                                example: 10 RUE DE LA REPUBLIQUE 21000 DIJON
+                              complement:
+                                title: Complément d'adresse
+                                type: string
+                                nullable: true
+                                example:
+                              numero_voie:
+                                title: Numéro de voie
+                                type: string
+                                nullable: true
+                                example: '10'
+                              type_voie:
+                                title: Type de voie
+                                description: Type de voie tel que saisi au RNA, non
+                                  normalisé (RUE, AV, BD, CHEM…).
+                                type: string
+                                nullable: true
+                                example: RUE
+                              libelle_voie:
+                                title: Libellé de la voie
+                                type: string
+                                nullable: true
+                                example: DE LA REPUBLIQUE
+                              distribution:
+                                title: Mention de distribution spéciale
+                                type: string
+                                nullable: true
+                                example:
+                              code_insee:
+                                title: Code INSEE de la commune
+                                type: string
+                                nullable: true
+                                example: '21231'
+                              code_postal:
+                                title: Code postal
+                                type: string
+                                nullable: true
+                                example: '21000'
+                              commune:
+                                title: Commune
+                                type: string
+                                nullable: true
+                                example: DIJON
+                            required:
+                            - adresse_complete
+                            - complement
+                            - numero_voie
+                            - type_voie
+                            - libelle_voie
+                            - distribution
+                            - code_insee
+                            - code_postal
+                            - commune
+                          courriel:
+                            title: Courriel de l'association
+                            type: string
+                            nullable: true
+                            example: contact@association.fr
+                          telephone:
+                            title: Numéro de téléphone de l'association
+                            type: string
+                            nullable: true
+                            example: "+33102030405"
+                        required:
+                        - nom
+                        - etat
+                        - service_instructeur
+                        - date_creation
+                        - date_dissolution
+                        - duree
+                        - date_cloture_exercice
+                        - adresse_siege
+                        - courriel
+                        - telephone
+                      activites:
+                        title: Activités de l'association
+                        type: object
+                        properties:
+                          objet:
+                            title: Objet de l'association
+                            description: Objet de l'association tel que rédigé dans
+                              ses statuts.
+                            type: string
+                            nullable: true
+                            example: Promouvoir les activités culturelles...
+                          objet_social1:
+                            title: Objet social principal
+                            description: L'objet social suit la nomenclature nationale
+                              Waldec et rattache l'objet de l'association à une catégorie.
+                              La liste exhaustive est disponible sur https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec
+                              (environ 300 entrées).
+                            type: object
+                            properties:
+                              code:
+                                title: Code de l'objet social
+                                type: string
+                                nullable: true
+                                example: '006000'
+                              libelle:
+                                title: Libellé de l'objet social
+                                type: string
+                                nullable: true
+                                example: Culture et pratiques artistiques
+                            required:
+                            - code
+                            - libelle
+                          reconnue_utilite_publique:
+                            title: Reconnaissance d'utilité publique
+                            type: boolean
+                            nullable: true
+                            example: true
+                          date_publication_reconnue_utilite_publique:
+                            title: Date de publication de la reconnaissance d'utilité
+                              publique
+                            type: string
+                            nullable: true
+                            example: '2018-04-10'
+                          date_fin_reconnue_utilite_publique:
+                            title: Date de fin de la reconnaissance d'utilité publique
+                            type: string
+                            nullable: true
+                            example:
+                          activite_internationale_prevue_par_statuts:
+                            title: Activité internationale prévue par les statuts
+                            type: boolean
+                            nullable: true
+                            example: false
+                        required:
+                        - objet
+                        - objet_social1
+                        - reconnue_utilite_publique
+                        - date_publication_reconnue_utilite_publique
+                        - date_fin_reconnue_utilite_publique
+                        - activite_internationale_prevue_par_statuts
+                      dirigeants:
+                        title: Dirigeants et membres des organes de gouvernance
+                        description: Personnes physiques exerçant des fonctions de
+                          direction ou siégeant dans les organes de gouvernance. Un
+                          dirigeant peut représenter une personne morale, détaillée
+                          dans personne_morale.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom du dirigeant
+                              type: string
+                              nullable: true
+                              example: DUPONT
+                            prenom:
+                              title: Prénom du dirigeant
+                              type: string
+                              nullable: true
+                              example: Marie
+                            fonction:
+                              title: Fonction exercée
+                              type: string
+                              nullable: true
+                              example: Presidente
+                            qualite:
+                              title: Qualité au titre de laquelle la personne siège
+                              type: string
+                              nullable: true
+                              example: Membre du conseil d'administration
+                            date_naissance:
+                              title: Date de naissance
+                              type: string
+                              nullable: true
+                              example: '1980-05-12'
+                            nationalite:
+                              title: Nationalité
+                              type: string
+                              nullable: true
+                              example: Francaise
+                            pays_residence:
+                              title: Pays de résidence
+                              type: string
+                              nullable: true
+                              example: France
+                            profession:
+                              title: Profession
+                              type: string
+                              nullable: true
+                              example: Juriste
+                            date_entree_fonction:
+                              title: Date d'entrée dans les fonctions
+                              type: string
+                              nullable: true
+                              example: '2023-06-01'
+                            date_sortie_fonction:
+                              title: Date de sortie des fonctions
+                              type: string
+                              nullable: true
+                              example:
+                            fondateur:
+                              title: Statut de fondateur
+                              type: boolean
+                              nullable: true
+                              example: false
+                            adresse_domiciliation:
+                              title: Adresse de domiciliation du dirigeant
+                              type: object
+                              properties:
+                                adresse_complete:
+                                  title: Adresse complète sur une ligne
+                                  type: string
+                                  nullable: true
+                                  example: 20 RUE EXEMPLE 21000 DIJON
+                                complement:
+                                  title: Complément d'adresse
+                                  type: string
+                                  nullable: true
+                                  example:
+                                numero_voie:
+                                  title: Numéro de voie
+                                  type: string
+                                  nullable: true
+                                  example: '20'
+                                type_voie:
+                                  title: Type de voie
+                                  type: string
+                                  nullable: true
+                                  example: RUE
+                                libelle_voie:
+                                  title: Libellé de la voie
+                                  type: string
+                                  nullable: true
+                                  example: EXEMPLE
+                                distribution:
+                                  title: Mention de distribution spéciale
+                                  type: string
+                                  nullable: true
+                                  example:
+                                code_insee:
+                                  title: Code INSEE de la commune
+                                  type: string
+                                  nullable: true
+                                  example: '21231'
+                                code_postal:
+                                  title: Code postal
+                                  type: string
+                                  nullable: true
+                                  example: '21000'
+                                commune:
+                                  title: Commune
+                                  type: string
+                                  nullable: true
+                                  example: DIJON
+                            personne_morale:
+                              title: Personne morale représentée
+                              description: Renseigné lorsque le dirigeant siège en
+                                tant que représentant d'une personne morale. Null
+                                pour une personne physique siégeant en son nom propre.
+                              type: object
+                              nullable: true
+                              properties:
+                                type:
+                                  title: Type de personne morale
+                                  type: string
+                                  nullable: true
+                                  example: Entreprise
+                                identifiant:
+                                  title: Identifiant de la personne morale
+                                  type: string
+                                  nullable: true
+                                  example: '98765432100012'
+                                nom:
+                                  title: Nom de la personne morale
+                                  type: string
+                                  nullable: true
+                                  example: ENTREPRISE EXEMPLE
+                                pays:
+                                  title: Pays de la personne morale
+                                  type: string
+                                  nullable: true
+                                  example: France
+                      filiation:
+                        title: Filiation de l'association
+                        type: object
+                        properties:
+                          organisme_issu_transformation:
+                            title: Organisme issu de la transformation
+                            type: object
+                            nullable: true
+                            properties:
+                              type:
+                                title: Type de filiation
+                                type: string
+                                example: Transformation
+                              identifiant:
+                                title: Identifiant de l'organisme lié
+                                type: string
+                                nullable: true
+                                example: W987654321
+                            required:
+                            - type
+                            - identifiant
+                          organisme_issu_fusion:
+                            title: Organisme issu de la fusion
+                            type: object
+                            nullable: true
+                            properties:
+                              type:
+                                title: Type de filiation
+                                type: string
+                                example: Fusion
+                              identifiant:
+                                title: Identifiant de l'organisme lié
+                                type: string
+                                nullable: true
+                                example: W987654321
+                            required:
+                            - type
+                            - identifiant
+                          organismes_issus_scission:
+                            title: Organismes issus de la scission
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  title: Type de filiation
+                                  type: string
+                                  example: Scission
+                                identifiant:
+                                  title: Identifiant de l'organisme lié
+                                  type: string
+                                  nullable: true
+                                  example: W987654321
+                        required:
+                        - organisme_issu_transformation
+                        - organisme_issu_fusion
+                        - organismes_issus_scission
+                      union_federation:
+                        title: Union ou fédération à laquelle l'association appartient
+                        type: object
+                        nullable: true
+                        properties:
+                          type:
+                            title: Type de groupement
+                            description: Union ou fédération. Le vocabulaire exact
+                              reste à figer avec le fournisseur.
+                            type: string
+                            nullable: true
+                            example: Federation
+                          date_entree:
+                            title: Date d'entrée dans le groupement
+                            type: string
+                            nullable: true
+                            example: '2020-06-15'
+                          associations_membres:
+                            title: Associations membres du groupement
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                rna:
+                                  title: Identifiant RNA de l'association membre
+                                  type: string
+                                  nullable: true
+                                  example: W987654321
+                        required:
+                        - type
+                        - date_entree
+                        - associations_membres
+                      etablissements:
+                        title: Liste des établissements de l'association pour lesquels
+                          des informations sont disponibles
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom de l'établissement
+                              type: string
+                              nullable: true
+                              example: Antenne Dijon
+                            adresse:
+                              title: Adresse de l'établissement
+                              type: object
+                              properties:
+                                adresse_complete:
+                                  title: Adresse complète sur une ligne
+                                  type: string
+                                  nullable: true
+                                  example: 20 RUE EXEMPLE 21000 DIJON
+                                complement:
+                                  title: Complément d'adresse
+                                  type: string
+                                  nullable: true
+                                  example:
+                                numero_voie:
+                                  title: Numéro de voie
+                                  type: string
+                                  nullable: true
+                                  example: '20'
+                                type_voie:
+                                  title: Type de voie
+                                  type: string
+                                  nullable: true
+                                  example: RUE
+                                libelle_voie:
+                                  title: Libellé de la voie
+                                  type: string
+                                  nullable: true
+                                  example: EXEMPLE
+                                distribution:
+                                  title: Mention de distribution spéciale
+                                  type: string
+                                  nullable: true
+                                  example:
+                                code_insee:
+                                  title: Code INSEE de la commune
+                                  type: string
+                                  nullable: true
+                                  example: '21231'
+                                code_postal:
+                                  title: Code postal
+                                  type: string
+                                  nullable: true
+                                  example: '21000'
+                                commune:
+                                  title: Commune
+                                  type: string
+                                  nullable: true
+                                  example: DIJON
+                      conformite_comptable:
+                        title: Conformité comptable de l'association
+                        type: object
+                        properties:
+                          etat_transmission_comptes:
+                            title: État de transmission des comptes
+                            description: En défaut lorsque l'association est en retard
+                              dans le dépôt de ses comptes annuels.
+                            type: string
+                            nullable: true
+                            example: En regle
+                          exercices_comptables_transmis:
+                            title: Années des exercices comptables transmis
+                            description: Années au titre desquelles l'association
+                              a déposé ses comptes annuels.
+                            type: array
+                            items:
+                              type: integer
+                              example: 2024
+                            example:
+                            - 2023
+                            - 2024
+                            - 2025
+                        required:
+                        - etat_transmission_comptes
+                        - exercices_comptables_transmis
+                      documents_rna:
+                        title: Pièces justificatives déposées au RNA
+                        description: Métadonnées des documents déposés par l'association
+                          (statuts, listes de dirigeants, procès verbaux, comptes…).
+                          Le type et le nombre de documents varient selon l'association.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              title: Identifiant du document
+                              type: string
+                              example: df9ee99e-89c7-11f1-9645-27365eec5438
+                            type:
+                              title: Type de document
+                              description: Typologie grossière du RNA, dont la valeur
+                                Autre couvre la majorité des pièces. Se référer à
+                                sous_type pour une qualification fine.
+                              type: string
+                              example: Statuts
+                            sous_type:
+                              title: Sous-type de document
+                              description: Code de pièce du RNA et son libellé. La
+                                table de correspondance officielle des codes reste
+                                à obtenir auprès du fournisseur.
+                              type: object
+                              properties:
+                                code:
+                                  title: Code de la pièce
+                                  type: string
+                                  nullable: true
+                                  example: STC
+                                libelle:
+                                  title: Libellé de la pièce
+                                  type: string
+                                  nullable: true
+                                  example: Statuts certifiés
+                            date_depot:
+                              title: Date de dépôt du document
+                              type: string
+                              nullable: true
+                              example: '2018-03-26'
+                            annee_depot:
+                              title: Année de dépôt du document
+                              type: string
+                              nullable: true
+                              example: '2018'
+                            url:
+                              title: URL de téléchargement du document
+                              description: 'Lien de téléchargement servi par API Entreprise,
+                                valable 24 heures. Les binaires ne sont pas encore
+                                chargés côté fournisseur : ces liens ne servent aucun
+                                fichier sur l''environnement de test.'
+                              type: string
+                              nullable: true
+                              example: https://entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43
+                    required:
+                    - identifiants
+                    - identite
+                    - activites
+                    - dirigeants
+                    - filiation
+                    - union_federation
+                    - etablissements
+                    - conformite_comptable
+                    - documents_rna
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                    properties:
+                      date_derniere_mise_a_jour_rna:
+                        title: Date de dernière mise à jour de l'association au RNA
+                        type: string
+                        nullable: true
+                        example: '2024-05-15'
+                    required:
+                    - date_derniere_mise_a_jour_rna
+                    additionalProperties: false
+                required:
+                - data
+                - links
+                - meta
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_content_error_siren_or_siret_or_rna_error:
+                  value:
+                    errors:
+                    - code: '00330'
+                      title: Entité non traitable
+                      detail: Le numéro de siren ou le numéro de siret ou le numéro
+                        d'association indiqué n'est pas correctement formatté
+                      source:
+                        parameter: id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren ou le numéro de siret ou le numéro
+                    d'association indiqué n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Association non trouvée
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_44003:
+                  value:
+                    errors:
+                    - code: '44003'
+                      title: Entité non trouvée
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Entité non trouvée
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                erreur_inconnue_du_fournisseur_de_donnees_44999:
+                  value:
+                    errors:
+                    - code: '44999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_44000:
+                  value:
+                    errors:
+                    - code: '44000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_44008:
+                  value:
+                    errors:
+                    - code: '44008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_44011:
+                  value:
+                    errors:
+                    - code: '44011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_44009:
+                  value:
+                    errors:
+                    - code: '44009'
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '44002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '44001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '44004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/ministere_interieur/siaf/associations/open_data/{siren_or_siret_or_rna}":
+    get:
+      summary: Données associations en open data
+      tags:
+      - Informations générales
+      - Prochainement
+      parameters:
+      - name: siren_or_siret_or_rna
+        in: path
+        description: 'SIREN ou SIRET de l''association, ou son identifiant au Répertoire
+          National des Associations (RNA). Toutes les associations ne sont pas immatriculées
+          au répertoire Sirene : elles ne sont alors accessibles que par leur identifiant
+          RNA.'
+        examples:
+          randonnee_pedestre_rna:
+            value: W442001747
+            summary: Identifiant RNA du comité départemental de la randonnée pédestre
+              de Loire-Atlantique
+          randonnee_pedestre_siren:
+            value: '388916678'
+            summary: SIREN du comité départemental de la randonnée pédestre de Loire-Atlantique
+          randonnee_pedestre_siret:
+            value: '38891667800039'
+            summary: SIRET du comité départemental de la randonnée pédestre de Loire-Atlantique
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: 'Données publiques de référence d''une association issues du Répertoire
+        National des Associations (RNA), opéré par le Ministère de l''Intérieur via
+        le SIAF : identité, activités, filiation, appartenance à une union ou une
+        fédération, établissements et conformité comptable.'
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Association trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_mi_siaf_associations_open_data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      identifiants:
+                        title: Identifiants de l'association
+                        type: object
+                        properties:
+                          rna:
+                            title: Identifiant au Répertoire National des Associations
+                            description: Identifiant officiel de l'association, au
+                              format W suivi de 9 caractères dont les 3 premiers encodent
+                              le département de déclaration.
+                            type: string
+                            example: W123456789
+                          siren:
+                            title: SIREN de l'association
+                            description: 'Déduit du SIRET présent dans le référentiel.
+                              Toutes les associations ne sont pas immatriculées au
+                              répertoire Sirene : l''immatriculation n''est obligatoire
+                              que lorsque l''association emploie, perçoit des subventions
+                              ou exerce une activité économique. La valeur est alors
+                              null.'
+                            type: string
+                            nullable: true
+                            example: '123456789'
+                          siret_siege:
+                            title: SIRET du siège de l'association
+                            type: string
+                            nullable: true
+                            example: '12345678900012'
+                        required:
+                        - rna
+                        - siren
+                        - siret_siege
+                      identite:
+                        title: Identité de l'association
+                        type: object
+                        properties:
+                          nom:
+                            title: Nom de l'association
+                            type: string
+                            example: ASSOCIATION EXEMPLE
+                          etat:
+                            title: État de l'association
+                            description: 'État de l''association au RNA : en activité,
+                              suspendue, transformée, fusionnée, scindée ou dissoute.
+                              Le vocabulaire exact reste à figer avec le fournisseur.'
+                            type: string
+                            example: Active
+                          service_instructeur:
+                            title: Service instructeur
+                            description: Préfecture ou service ayant instruit la déclaration
+                              de l'association. L'information est également dérivable
+                              du préfixe départemental de l'identifiant RNA.
+                            type: string
+                            nullable: true
+                            example: 21 - Côte-d'Or
+                          date_creation:
+                            title: Date de création de l'association
+                            type: string
+                            nullable: true
+                            example: '2010-05-12'
+                          date_dissolution:
+                            title: Date de dissolution de l'association
+                            description: Renseignée uniquement lorsque l'association
+                              est dissoute.
+                            type: string
+                            nullable: true
+                            example:
+                          duree:
+                            title: Durée de vie de l'association
+                            type: object
+                            properties:
+                              caractere:
+                                title: Caractère de la durée
+                                description: Indéterminée lorsque les statuts ne fixent
+                                  pas de terme, déterminée sinon.
+                                type: string
+                                nullable: true
+                                example: Indeterminee
+                              date_terme:
+                                title: Date du terme
+                                type: string
+                                nullable: true
+                                example:
+                            required:
+                            - caractere
+                            - date_terme
+                          date_cloture_exercice:
+                            title: Date de clôture de l'exercice comptable (mois/jour,
+                              format MM-DD)
+                            type: string
+                            nullable: true
+                            example: 12-31
+                          adresse_siege:
+                            title: Adresse du siège de l'association
+                            type: object
+                            properties:
+                              adresse_complete:
+                                title: Adresse complète sur une ligne
+                                type: string
+                                nullable: true
+                                example: 10 RUE DE LA REPUBLIQUE 21000 DIJON
+                              complement:
+                                title: Complément d'adresse
+                                type: string
+                                nullable: true
+                                example:
+                              numero_voie:
+                                title: Numéro de voie
+                                type: string
+                                nullable: true
+                                example: '10'
+                              type_voie:
+                                title: Type de voie
+                                description: Type de voie tel que saisi au RNA, non
+                                  normalisé (RUE, AV, BD, CHEM…).
+                                type: string
+                                nullable: true
+                                example: RUE
+                              libelle_voie:
+                                title: Libellé de la voie
+                                type: string
+                                nullable: true
+                                example: DE LA REPUBLIQUE
+                              distribution:
+                                title: Mention de distribution spéciale
+                                type: string
+                                nullable: true
+                                example:
+                              code_insee:
+                                title: Code INSEE de la commune
+                                type: string
+                                nullable: true
+                                example: '21231'
+                              code_postal:
+                                title: Code postal
+                                type: string
+                                nullable: true
+                                example: '21000'
+                              commune:
+                                title: Commune
+                                type: string
+                                nullable: true
+                                example: DIJON
+                            required:
+                            - adresse_complete
+                            - complement
+                            - numero_voie
+                            - type_voie
+                            - libelle_voie
+                            - distribution
+                            - code_insee
+                            - code_postal
+                            - commune
+                        required:
+                        - nom
+                        - etat
+                        - service_instructeur
+                        - date_creation
+                        - date_dissolution
+                        - duree
+                        - date_cloture_exercice
+                        - adresse_siege
+                      activites:
+                        title: Activités de l'association
+                        type: object
+                        properties:
+                          objet:
+                            title: Objet de l'association
+                            description: Objet de l'association tel que rédigé dans
+                              ses statuts.
+                            type: string
+                            nullable: true
+                            example: Promouvoir les activités culturelles...
+                          objet_social1:
+                            title: Objet social principal
+                            description: L'objet social suit la nomenclature nationale
+                              Waldec et rattache l'objet de l'association à une catégorie.
+                              La liste exhaustive est disponible sur https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec
+                              (environ 300 entrées).
+                            type: object
+                            properties:
+                              code:
+                                title: Code de l'objet social
+                                type: string
+                                nullable: true
+                                example: '006000'
+                              libelle:
+                                title: Libellé de l'objet social
+                                type: string
+                                nullable: true
+                                example: Culture et pratiques artistiques
+                            required:
+                            - code
+                            - libelle
+                          reconnue_utilite_publique:
+                            title: Reconnaissance d'utilité publique
+                            type: boolean
+                            nullable: true
+                            example: true
+                          date_publication_reconnue_utilite_publique:
+                            title: Date de publication de la reconnaissance d'utilité
+                              publique
+                            type: string
+                            nullable: true
+                            example: '2018-04-10'
+                          date_fin_reconnue_utilite_publique:
+                            title: Date de fin de la reconnaissance d'utilité publique
+                            type: string
+                            nullable: true
+                            example:
+                        required:
+                        - objet
+                        - objet_social1
+                        - reconnue_utilite_publique
+                        - date_publication_reconnue_utilite_publique
+                        - date_fin_reconnue_utilite_publique
+                      filiation:
+                        title: Filiation de l'association
+                        type: object
+                        properties:
+                          organisme_issu_transformation:
+                            title: Organisme issu de la transformation
+                            type: object
+                            nullable: true
+                            properties:
+                              type:
+                                title: Type de filiation
+                                type: string
+                                example: Transformation
+                              identifiant:
+                                title: Identifiant de l'organisme lié
+                                type: string
+                                nullable: true
+                                example: W987654321
+                            required:
+                            - type
+                            - identifiant
+                          organisme_issu_fusion:
+                            title: Organisme issu de la fusion
+                            type: object
+                            nullable: true
+                            properties:
+                              type:
+                                title: Type de filiation
+                                type: string
+                                example: Fusion
+                              identifiant:
+                                title: Identifiant de l'organisme lié
+                                type: string
+                                nullable: true
+                                example: W987654321
+                            required:
+                            - type
+                            - identifiant
+                          organismes_issus_scission:
+                            title: Organismes issus de la scission
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  title: Type de filiation
+                                  type: string
+                                  example: Scission
+                                identifiant:
+                                  title: Identifiant de l'organisme lié
+                                  type: string
+                                  nullable: true
+                                  example: W987654321
+                        required:
+                        - organisme_issu_transformation
+                        - organisme_issu_fusion
+                        - organismes_issus_scission
+                      union_federation:
+                        title: Union ou fédération à laquelle l'association appartient
+                        type: object
+                        nullable: true
+                        properties:
+                          type:
+                            title: Type de groupement
+                            description: Union ou fédération. Le vocabulaire exact
+                              reste à figer avec le fournisseur.
+                            type: string
+                            nullable: true
+                            example: Federation
+                          date_entree:
+                            title: Date d'entrée dans le groupement
+                            type: string
+                            nullable: true
+                            example: '2020-06-15'
+                          associations_membres:
+                            title: Associations membres du groupement
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                rna:
+                                  title: Identifiant RNA de l'association membre
+                                  type: string
+                                  nullable: true
+                                  example: W987654321
+                        required:
+                        - type
+                        - date_entree
+                        - associations_membres
+                      etablissements:
+                        title: Liste des établissements de l'association pour lesquels
+                          des informations sont disponibles
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom de l'établissement
+                              type: string
+                              nullable: true
+                              example: Antenne Dijon
+                            adresse:
+                              title: Adresse de l'établissement
+                              type: object
+                              properties:
+                                adresse_complete:
+                                  title: Adresse complète sur une ligne
+                                  type: string
+                                  nullable: true
+                                  example: 20 RUE EXEMPLE 21000 DIJON
+                                complement:
+                                  title: Complément d'adresse
+                                  type: string
+                                  nullable: true
+                                  example:
+                                numero_voie:
+                                  title: Numéro de voie
+                                  type: string
+                                  nullable: true
+                                  example: '20'
+                                type_voie:
+                                  title: Type de voie
+                                  type: string
+                                  nullable: true
+                                  example: RUE
+                                libelle_voie:
+                                  title: Libellé de la voie
+                                  type: string
+                                  nullable: true
+                                  example: EXEMPLE
+                                distribution:
+                                  title: Mention de distribution spéciale
+                                  type: string
+                                  nullable: true
+                                  example:
+                                code_insee:
+                                  title: Code INSEE de la commune
+                                  type: string
+                                  nullable: true
+                                  example: '21231'
+                                code_postal:
+                                  title: Code postal
+                                  type: string
+                                  nullable: true
+                                  example: '21000'
+                                commune:
+                                  title: Commune
+                                  type: string
+                                  nullable: true
+                                  example: DIJON
+                      conformite_comptable:
+                        title: Conformité comptable de l'association
+                        type: object
+                        properties:
+                          etat_transmission_comptes:
+                            title: État de transmission des comptes
+                            description: En défaut lorsque l'association est en retard
+                              dans le dépôt de ses comptes annuels.
+                            type: string
+                            nullable: true
+                            example: En regle
+                          exercices_comptables_transmis:
+                            title: Années des exercices comptables transmis
+                            description: Années au titre desquelles l'association
+                              a déposé ses comptes annuels.
+                            type: array
+                            items:
+                              type: integer
+                              example: 2024
+                            example:
+                            - 2023
+                            - 2024
+                            - 2025
+                        required:
+                        - etat_transmission_comptes
+                        - exercices_comptables_transmis
+                    required:
+                    - identifiants
+                    - identite
+                    - activites
+                    - filiation
+                    - union_federation
+                    - etablissements
+                    - conformite_comptable
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                    properties:
+                      date_derniere_mise_a_jour_rna:
+                        title: Date de dernière mise à jour de l'association au RNA
+                        type: string
+                        nullable: true
+                        example: '2024-05-15'
+                    required:
+                    - date_derniere_mise_a_jour_rna
+                    additionalProperties: false
+                required:
+                - data
+                - links
+                - meta
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_content_error_siren_or_siret_or_rna_error:
+                  value:
+                    errors:
+                    - code: '00330'
+                      title: Entité non traitable
+                      detail: Le numéro de siren ou le numéro de siret ou le numéro
+                        d'association indiqué n'est pas correctement formatté
+                      source:
+                        parameter: id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren ou le numéro de siret ou le numéro
+                    d'association indiqué n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Association non trouvée
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_44003:
+                  value:
+                    errors:
+                    - code: '44003'
+                      title: Entité non trouvée
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Entité non trouvée
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                erreur_inconnue_du_fournisseur_de_donnees_44999:
+                  value:
+                    errors:
+                    - code: '44999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_44000:
+                  value:
+                    errors:
+                    - code: '44000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_44008:
+                  value:
+                    errors:
+                    - code: '44008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_44011:
+                  value:
+                    errors:
+                    - code: '44011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_44009:
+                  value:
+                    errors:
+                    - code: '44009'
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '44002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '44001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '44004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: SIAF
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://staging.entreprise.api.gouv.fr/v3/ministere_interieur/siaf/associations/open_data/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}":
     get:
       summary: Données fondations
