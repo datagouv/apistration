@@ -863,7 +863,7 @@ siaf:
             type: "string"
             nullable: true
             example: "En regle"
-          exercices_comptables_transmis:
+          annees_exercices_comptables_transmis:
             title: "Années des exercices comptables transmis"
             description: "Années au titre desquelles l'association a déposé ses comptes annuels."
             type: "array"

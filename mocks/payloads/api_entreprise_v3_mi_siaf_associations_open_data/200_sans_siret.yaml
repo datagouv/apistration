@@ -82,7 +82,7 @@ payload: |-
       "etablissements": [],
       "conformite_comptable": {
         "etat_transmission_comptes": "En regle",
-        "exercices_comptables_transmis": []
+        "annees_exercices_comptables_transmis": []
       }
     },
     "links": {},

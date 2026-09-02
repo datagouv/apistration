@@ -148,7 +148,7 @@
       ],
       "conformite_comptable": {
         "etat_transmission_comptes": "En regle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -349,7 +349,7 @@
       ],
       "conformite_comptable": {
         "etat_transmission_comptes": "En regle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -550,7 +550,7 @@
       ],
       "conformite_comptable": {
         "etat_transmission_comptes": "En regle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -736,7 +736,7 @@
       "etablissements": [],
       "conformite_comptable": {
         "etat_transmission_comptes": "En defaut",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2022
         ]
       },
@@ -916,7 +916,7 @@
       "etablissements": [],
       "conformite_comptable": {
         "etat_transmission_comptes": "En regle",
-        "exercices_comptables_transmis": []
+        "annees_exercices_comptables_transmis": []
       },
       "documents_rna": [
         {

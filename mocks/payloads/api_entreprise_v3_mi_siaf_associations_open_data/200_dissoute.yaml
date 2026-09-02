@@ -56,7 +56,7 @@ payload: |-
       "etablissements": [],
       "conformite_comptable": {
         "etat_transmission_comptes": "En defaut",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2022
         ]
       }

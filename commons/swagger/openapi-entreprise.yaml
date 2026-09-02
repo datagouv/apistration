@@ -40076,7 +40076,7 @@ paths:
                             type: string
                             nullable: true
                             example: En regle
-                          exercices_comptables_transmis:
+                          annees_exercices_comptables_transmis:
                             title: Années des exercices comptables transmis
                             description: Années au titre desquelles l'association
                               a déposé ses comptes annuels.
@@ -40090,7 +40090,7 @@ paths:
                             - 2025
                         required:
                         - etat_transmission_comptes
-                        - exercices_comptables_transmis
+                        - annees_exercices_comptables_transmis
                       documents_rna:
                         title: Pièces justificatives déposées au RNA
                         description: Métadonnées des documents déposés par l'association
@@ -40994,7 +40994,7 @@ paths:
                             type: string
                             nullable: true
                             example: En regle
-                          exercices_comptables_transmis:
+                          annees_exercices_comptables_transmis:
                             title: Années des exercices comptables transmis
                             description: Années au titre desquelles l'association
                               a déposé ses comptes annuels.
@@ -41008,7 +41008,7 @@ paths:
                             - 2025
                         required:
                         - etat_transmission_comptes
-                        - exercices_comptables_transmis
+                        - annees_exercices_comptables_transmis
                     required:
                     - identifiants
                     - identite
