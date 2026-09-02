@@ -57,10 +57,11 @@ fiche:
         Cette API délivre les données de référence d'une association inscrite au **Répertoire National des Associations (RNA)** :
 
         - **son identité** : identifiant RNA, SIREN/SIRET du siège, nom, état, dates de création et de dissolution, durée, adresse du siège, contacts ;
-        - **ses activités** : objet, objet social selon la nomenclature Waldec, reconnaissance d'utilité publique, activité internationale prévue par les statuts ;
+        - **sa reconnaissance d'utilité publique** : dates de publication et de fin ;
+        - **ses activités** : objet, objet social selon la nomenclature Waldec, activité internationale prévue par les statuts ;
         - **ses dirigeants** : identité, fonction, qualité, dates de fonctions, adresse de domiciliation, y compris les personnes morales représentées ;
         - **sa filiation** : transformation, fusion, scission ;
-        - **son appartenance à une union ou une fédération**, et les associations qui en sont membres ;
+        - **le groupement qu'elle constitue** : union ou fédération, et les associations qui en sont membres ;
         - **ses établissements** : nom et adresse ;
         - **sa conformité comptable** : état de transmission des comptes et exercices transmis ;
         - **ses pièces justificatives** : statuts, listes de dirigeants, procès verbaux, comptes — métadonnées et lien de téléchargement.
@@ -131,9 +132,10 @@ fiche:
         Cette API délivre les données **publiques** de référence d'une association inscrite au **Répertoire National des Associations (RNA)** :
 
         - **son identité** : identifiant RNA, SIREN/SIRET du siège, nom, état, dates de création et de dissolution, durée, adresse du siège ;
-        - **ses activités** : objet, objet social selon la nomenclature Waldec, reconnaissance d'utilité publique ;
+        - **sa reconnaissance d'utilité publique** : dates de publication et de fin ;
+        - **ses activités** : objet, objet social selon la nomenclature Waldec ;
         - **sa filiation** : transformation, fusion, scission ;
-        - **son appartenance à une union ou une fédération**, et les associations qui en sont membres ;
+        - **le groupement qu'elle constitue** : union ou fédération, et les associations qui en sont membres ;
         - **ses établissements** : nom et adresse ;
         - **sa conformité comptable** : état de transmission des comptes et exercices transmis.
 

@@ -31,14 +31,18 @@
       "identite": {
         "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
         "etat": "Active",
-        "service_instructeur": "44 - Loire-Atlantique",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
         "date_creation": "1981-01-16",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
         },
-        "date_cloture_exercice": "12-31",
         "adresse_siege": {
           "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
           "complement": null,
@@ -48,25 +52,24 @@
           "distribution": null,
           "code_insee": "44109",
           "code_postal": "44300",
-          "commune": "NANTES"
+          "commune": "NANTES",
+          "pays": "France"
         }
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
         "objet_social1": {
           "code": "011020",
           "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
-        },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null
+        }
       },
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": null,
+      "filiation": [],
+      "groupement": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -79,12 +82,13 @@
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44300",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           }
         }
       ],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": [
           2023,
           2024,
@@ -145,14 +149,18 @@
       "identite": {
         "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
         "etat": "Active",
-        "service_instructeur": "44 - Loire-Atlantique",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
         "date_creation": "1981-01-16",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
         },
-        "date_cloture_exercice": "12-31",
         "adresse_siege": {
           "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
           "complement": null,
@@ -162,25 +170,24 @@
           "distribution": null,
           "code_insee": "44109",
           "code_postal": "44300",
-          "commune": "NANTES"
+          "commune": "NANTES",
+          "pays": "France"
         }
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
         "objet_social1": {
           "code": "011020",
           "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
-        },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null
+        }
       },
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": null,
+      "filiation": [],
+      "groupement": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -193,12 +200,13 @@
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44300",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           }
         }
       ],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": [
           2023,
           2024,
@@ -259,14 +267,18 @@
       "identite": {
         "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
         "etat": "Active",
-        "service_instructeur": "44 - Loire-Atlantique",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
         "date_creation": "1981-01-16",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
         },
-        "date_cloture_exercice": "12-31",
         "adresse_siege": {
           "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
           "complement": null,
@@ -276,25 +288,24 @@
           "distribution": null,
           "code_insee": "44109",
           "code_postal": "44300",
-          "commune": "NANTES"
+          "commune": "NANTES",
+          "pays": "France"
         }
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
         "objet_social1": {
           "code": "011020",
           "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
-        },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null
+        }
       },
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": null,
+      "filiation": [],
+      "groupement": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -307,12 +318,13 @@
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44300",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           }
         }
       ],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": [
           2023,
           2024,
@@ -373,14 +385,18 @@
       "identite": {
         "nom": "ASSOCIATION BOURGUIGNONNE POUR LE PATRIMOINE",
         "etat": "Dissoute",
-        "service_instructeur": "21 - Côte-d'Or",
+        "service_instructeur": {
+          "code": "21",
+          "libelle": "Côte-d'Or"
+        },
         "date_creation": "1998-02-11",
         "date_dissolution": "2024-11-08",
-        "duree": {
-          "caractere": "Determinee",
-          "date_terme": "2024-11-08"
+        "duree_determinee": true,
+        "date_terme": "2024-11-08",
+        "cloture_exercice": {
+          "mois": 6,
+          "jour": 30
         },
-        "date_cloture_exercice": "06-30",
         "adresse_siege": {
           "adresse_complete": "12 PLACE DE LA MAIRIE 21000 DIJON",
           "complement": null,
@@ -390,31 +406,32 @@
           "distribution": null,
           "code_insee": "21231",
           "code_postal": "21000",
-          "commune": "DIJON"
+          "commune": "DIJON",
+          "pays": "France"
         }
+      },
+      "utilite_publique": {
+        "reconnue": true,
+        "date_publication": "2012-05-30",
+        "date_fin": "2024-11-08"
       },
       "activites": {
         "objet": "Etudier, faire connaitre et mettre en valeur le patrimoine bati et naturel de la region bourguignonne.",
         "objet_social1": {
           "code": "006000",
           "libelle": "Culture et pratiques artistiques"
-        },
-        "reconnue_utilite_publique": true,
-        "date_publication_reconnue_utilite_publique": "2012-05-30",
-        "date_fin_reconnue_utilite_publique": "2024-11-08"
+        }
       },
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": {
-          "type": "Fusion",
+      "filiation": [
+        {
+          "type_operation": "Fusion",
           "identifiant": "W212004321"
-        },
-        "organismes_issus_scission": []
-      },
-      "union_federation": null,
+        }
+      ],
+      "groupement": null,
       "etablissements": [],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En defaut",
+        "etat_transmission_comptes": "En défaut",
         "annees_exercices_comptables_transmis": [
           2022
         ]
@@ -473,14 +490,15 @@
       "identite": {
         "nom": "DEPRESSIFS ANONYMES FRANCE",
         "etat": "Active",
-        "service_instructeur": "22 - Côtes-d'Armor",
+        "service_instructeur": {
+          "code": "22",
+          "libelle": "Côtes-d'Armor"
+        },
         "date_creation": "2008-04-10",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
-        },
-        "date_cloture_exercice": null,
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": null,
         "adresse_siege": {
           "adresse_complete": "1 RUE DE LA REPUBLIQUE 22950 TREGUEUX",
           "complement": "MAIRIE",
@@ -490,27 +508,25 @@
           "distribution": null,
           "code_insee": "22360",
           "code_postal": "22950",
-          "commune": "TREGUEUX"
+          "commune": "TREGUEUX",
+          "pays": "France"
         }
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "1) d'assurer la representation et de gerer les services d'interet commun de l'ensemble des groupes locaux, qui appliquent, en France, les principes de l'association : depressifs anonymes. 2) de permettre a ses membres de sortir de la depression et d'aider d'autres depressifs a en sortir",
         "objet_social1": {
           "code": "019040",
           "libelle": "Aide aux personnes en danger, solitude, désespoir, soutien psychologique"
-        },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null
+        }
       },
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": {
+      "filiation": [],
+      "groupement": {
         "type": "Union",
-        "date_entree": null,
         "associations_membres": [
           {
             "rna": "W224010253"
@@ -540,7 +556,7 @@
       },
       "etablissements": [],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": []
       }
     },

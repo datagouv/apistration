@@ -52,10 +52,10 @@ fiche:
       description: |+
         Cette API délivre les données de référence d'une fondation inscrite au **Répertoire National des Fondations (RNF)** :
 
-        - **l'identité de la fondation** : identifiant RNF, SIREN/SIRET, type juridique (FRUP, FE, FDD), dénomination, état, dates de création et de terme, adresse du siège, contacts ;
-        - **son activité** : objet social, domaines d'intérêt général, activité internationale prévue par les statuts ;
+        - **l'identité de la fondation** : identifiant RNF, SIREN/SIRET, type juridique (FRUP, FE, FDD), nom, état, dates de création et de terme, adresse du siège, contacts ;
+        - **ses activités** : objet, domaines d'intérêt général, activité internationale prévue par les statuts ;
         - **ses dirigeants et représentants** : identité, fonction, qualité, dates de fonctions, y compris les personnes morales représentées ;
-        - **ses liens avec d'autres organismes** : transformation, fusion, scission ;
+        - **sa filiation** : transformation, fusion, scission ;
         - **sa situation financière déclarative** : années de subventions publiques, d'appel à la générosité publique et de financements étrangers ;
         - **sa conformité comptable** : état de transmission des comptes et exercices transmis ;
         - **les métadonnées de ses pièces justificatives** : statuts, comptes, rapports d'activité, procès verbaux.

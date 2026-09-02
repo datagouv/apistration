@@ -9,33 +9,44 @@ payload: |-
       "identifiants": {
         "rnf": "075-FRUP-00194-01",
         "siren": "784308934",
-        "siret": "78430893400016"
+        "siret_siege": "78430893400016"
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FRUP",
-        "denomination": "MAISON DE LA CHIMIE",
+        "nom": "MAISON DE LA CHIMIE",
         "etat": "Active",
         "date_effet_etat": "1928-08-12",
         "date_creation": "1928-08-12",
+        "duree_determinee": false,
         "date_terme": null,
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "28 Rue Saint-Dominique 75007 Paris",
+          "complement": null,
           "numero_voie": "28",
-          "nom_voie": "Rue Saint-Dominique",
+          "type_voie": "Rue",
+          "libelle_voie": "Saint-Dominique",
+          "distribution": null,
+          "code_insee": "75107",
           "code_postal": "75007",
           "commune": "Paris 7e Arrondissement",
-          "code_insee_commune": "75107",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "contact@fondation-exemple.fr",
         "telephone": "+33123456789"
       },
-      "activite": {
-        "objet_social": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
-        "domaine_interet_general": "Scientifique",
+      "activites": {
+        "objet": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
+        "domaines_interet_general": [
+          "Scientifique"
+        ],
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -46,6 +57,12 @@ payload: |-
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "20 Rue Exemple 75001 Paris",
+            "complement": null,
+            "numero_voie": "20",
+            "type_voie": "Rue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75101",
             "code_postal": "75001",
             "commune": "Paris",
             "pays": "France"
@@ -66,6 +83,12 @@ payload: |-
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "5 Avenue Exemple 75008 Paris",
+            "complement": null,
+            "numero_voie": "5",
+            "type_voie": "Avenue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75108",
             "code_postal": "75008",
             "commune": "Paris",
             "pays": "France"
@@ -80,11 +103,7 @@ payload: |-
           "personne_morale": null
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,

@@ -9,33 +9,45 @@ payload: |-
       "identifiants": {
         "rnf": "075-FE-00117-05",
         "siren": "987654321",
-        "siret": "98765432100012"
+        "siret_siege": "98765432100012"
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FE",
-        "denomination": "FONDATION D'ENTREPRISE EXEMPLE",
+        "nom": "FONDATION D'ENTREPRISE EXEMPLE",
         "etat": "Active",
         "date_effet_etat": "2019-05-15",
         "date_creation": "2019-05-15",
+        "duree_determinee": true,
         "date_terme": "2029-05-14",
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "25 Avenue Exemple 75008 Paris",
+          "complement": null,
           "numero_voie": "25",
-          "nom_voie": "Avenue Exemple",
+          "type_voie": "Avenue",
+          "libelle_voie": "Exemple",
+          "distribution": null,
+          "code_insee": "75108",
           "code_postal": "75008",
           "commune": "Paris 8e Arrondissement",
-          "code_insee_commune": "75108",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "fondation@entreprise-exemple.fr",
         "telephone": "+33144556677"
       },
-      "activite": {
-        "objet_social": "Financer des actions d'intérêt général dans le domaine de l'éducation et de l'insertion professionnelle des jeunes.",
-        "domaine_interet_general": "Éducatif, Social",
+      "activites": {
+        "objet": "Financer des actions d'intérêt général dans le domaine de l'éducation et de l'insertion professionnelle des jeunes.",
+        "domaines_interet_general": [
+          "Éducatif",
+          "Social"
+        ],
         "activite_internationale_prevue_par_statuts": true
       },
       "dirigeants": [
@@ -46,6 +58,12 @@ payload: |-
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "12 Rue Exemple 92100 Boulogne-Billancourt",
+            "complement": null,
+            "numero_voie": "12",
+            "type_voie": "Rue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "92012",
             "code_postal": "92100",
             "commune": "Boulogne-Billancourt",
             "pays": "France"
@@ -60,16 +78,12 @@ payload: |-
           "personne_morale": {
             "type": "Entreprise",
             "identifiant": "98765432100012",
-            "denomination": "ENTREPRISE EXEMPLE",
+            "nom": "ENTREPRISE EXEMPLE",
             "pays": "France"
           }
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [],
         "annees_appel_generosite_publique": [],

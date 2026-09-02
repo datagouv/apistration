@@ -14,14 +14,18 @@ payload: |-
       "identite": {
         "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
         "etat": "Active",
-        "service_instructeur": "44 - Loire-Atlantique",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
         "date_creation": "1981-01-16",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
         },
-        "date_cloture_exercice": "12-31",
         "adresse_siege": {
           "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
           "complement": null,
@@ -31,10 +35,16 @@ payload: |-
           "distribution": null,
           "code_insee": "44109",
           "code_postal": "44300",
-          "commune": "NANTES"
+          "commune": "NANTES",
+          "pays": "France"
         },
         "courriel": "contact@association-exemple.fr",
         "telephone": "+33102030405"
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
@@ -42,9 +52,6 @@ payload: |-
           "code": "011020",
           "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
         },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null,
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -69,7 +76,8 @@ payload: |-
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44000",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           },
           "personne_morale": null
         },
@@ -94,17 +102,14 @@ payload: |-
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44300",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           },
           "personne_morale": null
         }
       ],
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": null,
+      "filiation": [],
+      "groupement": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -117,12 +122,13 @@ payload: |-
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44300",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           }
         }
       ],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": [
           2023,
           2024,
@@ -138,7 +144,7 @@ payload: |-
             "libelle": "Statuts certifiés"
           },
           "date_depot": "2009-05-14",
-          "annee_depot": "2009",
+          "annee_depot": 2009,
           "url": "https://staging.entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43"
         },
         {
@@ -149,7 +155,7 @@ payload: |-
             "libelle": "Liste des dirigeants"
           },
           "date_depot": "2011-04-19",
-          "annee_depot": "2011",
+          "annee_depot": 2011,
           "url": "https://staging.entreprise.api.gouv.fr/proxy/files/b27d4e19-0a5c-4f38-8e61-9d3f4a7c0b12"
         }
       ]

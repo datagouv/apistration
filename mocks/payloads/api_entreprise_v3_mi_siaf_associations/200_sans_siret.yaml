@@ -14,14 +14,15 @@ payload: |-
       "identite": {
         "nom": "DEPRESSIFS ANONYMES FRANCE",
         "etat": "Active",
-        "service_instructeur": "22 - Côtes-d'Armor",
+        "service_instructeur": {
+          "code": "22",
+          "libelle": "Côtes-d'Armor"
+        },
         "date_creation": "2008-04-10",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
-        },
-        "date_cloture_exercice": null,
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": null,
         "adresse_siege": {
           "adresse_complete": "1 RUE DE LA REPUBLIQUE 22950 TREGUEUX",
           "complement": "MAIRIE",
@@ -31,10 +32,16 @@ payload: |-
           "distribution": null,
           "code_insee": "22360",
           "code_postal": "22950",
-          "commune": "TREGUEUX"
+          "commune": "TREGUEUX",
+          "pays": "France"
         },
         "courriel": null,
         "telephone": null
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "1) d'assurer la representation et de gerer les services d'interet commun de l'ensemble des groupes locaux, qui appliquent, en France, les principes de l'association : depressifs anonymes. 2) de permettre a ses membres de sortir de la depression et d'aider d'autres depressifs a en sortir",
@@ -42,9 +49,6 @@ payload: |-
           "code": "019040",
           "libelle": "Aide aux personnes en danger, solitude, désespoir, soutien psychologique"
         },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null,
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -69,19 +73,15 @@ payload: |-
             "distribution": null,
             "code_insee": "22360",
             "code_postal": "22950",
-            "commune": "TREGUEUX"
+            "commune": "TREGUEUX",
+            "pays": "France"
           },
           "personne_morale": null
         }
       ],
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": {
+      "filiation": [],
+      "groupement": {
         "type": "Union",
-        "date_entree": null,
         "associations_membres": [
           {
             "rna": "W224010253"
@@ -111,7 +111,7 @@ payload: |-
       },
       "etablissements": [],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": []
       },
       "documents_rna": [
@@ -123,7 +123,7 @@ payload: |-
             "libelle": "Procès verbal d'assemblée générale"
           },
           "date_depot": "2010-06-15",
-          "annee_depot": "2010",
+          "annee_depot": 2010,
           "url": "https://staging.entreprise.api.gouv.fr/proxy/files/c4a90f63-1d7e-4b02-9a55-6e8b3c1f2d70"
         }
       ]

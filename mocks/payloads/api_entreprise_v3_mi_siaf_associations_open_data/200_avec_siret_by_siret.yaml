@@ -14,14 +14,18 @@ payload: |-
       "identite": {
         "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
         "etat": "Active",
-        "service_instructeur": "44 - Loire-Atlantique",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
         "date_creation": "1981-01-16",
         "date_dissolution": null,
-        "duree": {
-          "caractere": "Indeterminee",
-          "date_terme": null
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
         },
-        "date_cloture_exercice": "12-31",
         "adresse_siege": {
           "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
           "complement": null,
@@ -31,25 +35,24 @@ payload: |-
           "distribution": null,
           "code_insee": "44109",
           "code_postal": "44300",
-          "commune": "NANTES"
+          "commune": "NANTES",
+          "pays": "France"
         }
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
       },
       "activites": {
         "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
         "objet_social1": {
           "code": "011020",
           "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
-        },
-        "reconnue_utilite_publique": false,
-        "date_publication_reconnue_utilite_publique": null,
-        "date_fin_reconnue_utilite_publique": null
+        }
       },
-      "filiation": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
-      "union_federation": null,
+      "filiation": [],
+      "groupement": null,
       "etablissements": [
         {
           "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
@@ -62,12 +65,13 @@ payload: |-
             "distribution": null,
             "code_insee": "44109",
             "code_postal": "44300",
-            "commune": "NANTES"
+            "commune": "NANTES",
+            "pays": "France"
           }
         }
       ],
       "conformite_comptable": {
-        "etat_transmission_comptes": "En regle",
+        "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": [
           2023,
           2024,
