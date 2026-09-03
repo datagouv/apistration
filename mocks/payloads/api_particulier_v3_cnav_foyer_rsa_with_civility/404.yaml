@@ -1,0 +1,26 @@
+---
+description: 'Dossier allocataire non trouvé'
+params:
+  nomNaissance: 'Lefebvre'
+  prenoms:
+    - claire
+  anneeDateNaissance: 2008
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "40402",
+        "title": "Dossier non trouvé",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
