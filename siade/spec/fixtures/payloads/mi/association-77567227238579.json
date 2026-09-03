@@ -85,8 +85,8 @@
     "note": "Association reconnue d'utilité publique"
   },
   "specificites": "{\"passsport\": {\"activites\": \"!Multi activités physiques ou sportives\", \"est_volontaire\": \"true\"}}",
-  "reseaux_affiliation": {
-    "reseau_affiliation": {
+  "affiliations": [
+    {
       "id_correspondance": "1234567",
       "nom": "CROIX ROUGE FRANCAISE",
       "id_rna": "W751004076",
@@ -97,9 +97,9 @@
       "nb_licencies_f": "1",
       "numero": "37050001"
     }
-  },
-  "composition_reseau": {
-    "membre": {
+  ],
+  "compositions": [
+    {
       "id_correspondance": "123456",
       "nom": "ARTS ET CULTURES EN FOLIE",
       "id_rna": "W532003071",
@@ -116,8 +116,8 @@
       "telephone": "0836656565",
       "courriel": "whatever@gouv.fr"
     }
-  },
-  "representants_legaux": [
+  ],
+  "dirigeants": [
     {
       "id": "234567",
       "civilite": "Monsieur",

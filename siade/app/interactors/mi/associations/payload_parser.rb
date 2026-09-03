@@ -1,8 +1,10 @@
 class MI::Associations::PayloadParser
   SINGLE_ELEMENT_COLLECTIONS = {
     etablissements: :etablissement,
-    representants_legaux: :representant_legal,
-    agrements: :agrement
+    agrements: :agrement,
+    affiliations: :affiliation,
+    compositions: :membre,
+    dirigeants: :representant_legal
   }.freeze
 
   EXPLODED_COLLECTIONS = {

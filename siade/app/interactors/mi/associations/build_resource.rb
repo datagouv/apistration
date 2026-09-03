@@ -99,9 +99,9 @@ class MI::Associations::BuildResource < BuildResource
   end
 
   def reseaux_affiliation
-    return [] if association[:reseaux_affiliation].blank?
+    return [] if association[:affiliations].blank?
 
-    Array.wrap(association[:reseaux_affiliation][:reseau_affiliation]).map do |reseau_affiliation|
+    Array.wrap(association[:affiliations][:affiliation]).map do |reseau_affiliation|
       {
         nom: reseau_affiliation[:nom],
         numero: reseau_affiliation[:numero],
@@ -122,9 +122,9 @@ class MI::Associations::BuildResource < BuildResource
   end
 
   def composition_reseau
-    return [] if association[:composition_reseau].blank?
+    return [] if association[:compositions].blank?
 
-    Array.wrap(association[:composition_reseau][:membre]).map do |membre_reseau|
+    Array.wrap(association[:compositions][:membre]).map do |membre_reseau|
       {
         rna: membre_reseau[:id_rna],
         siret: membre_reseau[:id_siret],
@@ -214,9 +214,9 @@ class MI::Associations::BuildResource < BuildResource
   end
 
   def extract_representants_legaux_for(siret)
-    return [] if association[:representants_legaux].blank?
+    return [] if association[:dirigeants].blank?
 
-    Array.wrap(association[:representants_legaux][:representant_legal]).select do |representant_legal|
+    Array.wrap(association[:dirigeants][:representant_legal]).select do |representant_legal|
       representant_legal[:id_siret] == siret &&
         representant_legal[:deleted] == 'false' &&
         (representant_legal[:est_representant_legal] == 'true' || representant_legal[:est_representant_legal].nil?)

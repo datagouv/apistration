@@ -36,13 +36,19 @@ RSpec.describe MI::Associations::PayloadParser do
       let(:body) do
         {
           etablissements: [{ id_siret: '111' }, { id_siret: '222' }],
-          agrements: [{ numero: '1' }]
+          agrements: [{ numero: '1' }],
+          affiliations: [{ nom: 'FEDERATION' }],
+          compositions: [{ nom: 'MEMBRE' }],
+          dirigeants: [{ nom: 'Martin' }]
         }.to_json
       end
 
       it 'wraps each collection with its singular element key' do
         expect(parsed[:asso][:etablissements]).to eq(etablissement: [{ id_siret: '111' }, { id_siret: '222' }])
         expect(parsed[:asso][:agrements]).to eq(agrement: [{ numero: '1' }])
+        expect(parsed[:asso][:affiliations]).to eq(affiliation: [{ nom: 'FEDERATION' }])
+        expect(parsed[:asso][:compositions]).to eq(membre: [{ nom: 'MEMBRE' }])
+        expect(parsed[:asso][:dirigeants]).to eq(representant_legal: [{ nom: 'Martin' }])
       end
     end
 
