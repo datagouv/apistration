@@ -14,7 +14,7 @@ with a fake baseline identity and one character variation at a time, then
 compares HTTP responses to tell accepted formats (a functional "not found")
 from genuinely rejected ones (a format error).
 
-**Must run in a production Rails console.** Outside prod, `MakeRequest` hits
+**Must run in a sandbox Rails console.** Outside prod, `MakeRequest` hits
 SIADE's own mocks (`MockedDataHelper#use_mocked_data?`) and dev/staging
 typically can't reach these provider networks anyway (firewalling,
 sandbox-only credentials) — every command below assumes prod.
