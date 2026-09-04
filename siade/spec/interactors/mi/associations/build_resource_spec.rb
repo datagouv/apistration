@@ -50,6 +50,42 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
           expect(document_url).to eq("#{Siade.credentials[:mi_domain]}/apim/api-asso/documents/00000000-0000-0000-0000-000000000001")
         end
       end
+
+      describe 'reseaux_affiliation' do
+        let(:reseau) { resource.reseaux_affiliation.first }
+
+        it 'maps the provider fields' do
+          expect(reseau).to include(
+            nom: 'CROIX ROUGE FRANCAISE',
+            numero: '37050001',
+            rna: 'W751004076',
+            siret: '77567227221138',
+            nombre_licencies: { hommes: 1, femmes: 1, total: 2 }
+          )
+        end
+      end
+
+      describe 'composition_reseau' do
+        let(:membre) { resource.composition_reseau.first }
+
+        it 'maps the provider fields' do
+          expect(membre).to include(
+            nom: 'ARTS ET CULTURES EN FOLIE',
+            rna: 'W532003071',
+            siret: '81412456600013'
+          )
+        end
+      end
+
+      describe 'representants_legaux' do
+        let(:representants_legaux) { resource.etablissements.first[:representants_legaux] }
+
+        it 'maps the provider fields' do
+          expect(representants_legaux).to contain_exactly(
+            hash_including(nom: 'MARTIN', prenom: 'Jean', fonction: 'Directeur général')
+          )
+        end
+      end
     end
 
     describe 'when payload has only one dac document (non-regression test)' do
