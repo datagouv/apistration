@@ -36,12 +36,16 @@ class AbstractPingDriver < ApplicationPingDriver
   end
 
   def error_ratio_too_high?
-    total, errors = AccessLogPingView
-      .where(route: routes)
-      .pick(Arel.sql("COUNT(*), COUNT(*) FILTER (WHERE status IN (#{error_statuses.map { |s| "'#{s}'" }.join(', ')}))"))
+    total, errors = counts
 
     return false if total.nil? || total.zero?
 
     errors.to_f / total >= ERROR_RATIO_THRESHOLD
+  end
+
+  def counts
+    AccessLogPingView
+      .where(route: routes)
+      .pick(Arel.sql("COUNT(*), COUNT(*) FILTER (WHERE status IN (#{error_statuses.map { |s| "'#{s}'" }.join(', ')}))"))
   end
 end
