@@ -7,8 +7,10 @@ RSpec.describe Infogreffe::MakeRequest, type: :make_request do
     }
   end
 
-  describe 'happy path', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
+  describe 'happy path' do
     let(:siren) { siren }
+
+    before { stub_infogreffe_personne_morale }
 
     it { is_expected.to be_a_success }
 

@@ -30,7 +30,18 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret' } do
+        response '200', 'Entreprise trouvée' do
+          # NOTE: rswag's `run_test!` registers a `before { submit_request(example.metadata) }`
+          # hook at this context level. Since that hook resolves `example.metadata` to whichever
+          # example is *currently running*, it also fires (with the nested example's own params)
+          # when the nested "with optional limit" example runs below, in addition to that nested
+          # example's own submit_request hook. Both stubs must therefore already be registered
+          # here, before either of those two requests is made.
+          before do
+            stub_ademe_valid_siret
+            stub_ademe_valid_siret_with_limit
+          end
+
           description SwaggerData.get('ademe.certificats_rge.description')
 
           rate_limit_headers
@@ -44,7 +55,7 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
           describe 'with optional limit' do
             let(:limit) { 2 }
 
-            response '200', 'Entreprise trouvée', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret_with_limit' } do
+            response '200', 'Entreprise trouvée' do
               run_test!
             end
           end
@@ -55,8 +66,10 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
 
           unprocessable_content_error_request(%i[siren limit])
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do
+          response '404', 'Non trouvée' do
             let(:siret) { not_found_siret(:rge_ademe) }
+
+            before { stub_ademe_not_found_siret }
 
             build_rswag_example(NotFoundError.new('ADEME'))
 

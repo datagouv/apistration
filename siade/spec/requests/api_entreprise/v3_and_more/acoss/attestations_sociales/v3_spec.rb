@@ -26,7 +26,15 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
+        response '200', 'Entreprise found' do
+          before do
+            mock_urssaf_authenticate
+
+            mock_valid_urssaf_attestation_sociale do
+              Base64.strict_encode64(Rails.root.join('spec/fixtures/pdfs/urssaf_attestations_sociales/basic.pdf').read)
+            end
+          end
+
           cacheable_response(extra_description: SwaggerData.get('urssaf.attestation_sociale.cache_duration'))
 
           description SwaggerData.get('acoss.attestation_sociale.description')
@@ -52,8 +60,22 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
             .push(ACOSSError.new(:ongoing_manual_verification), ACOSSError.new(:manual_verification_asked), ACOSSError.new(:cannot_deliver_document))
           )
 
-          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
+          response '404', 'Entreprise non trouvée' do
             let(:siren) { not_found_siren }
+
+            before do
+              mock_urssaf_authenticate
+
+              mock_urssaf_attestation_sociale_not_found do
+                [
+                  {
+                    'code' => 'FUNC517',
+                    'message' => 'Le Siren est inconnu',
+                    'description' => 'Le siren est inconnu du SI Attestations, radié ou hors périmètre'
+                  }
+                ].to_json
+              end
+            end
 
             build_rswag_example(NotFoundError.new('ACOSS'))
 

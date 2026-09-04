@@ -97,6 +97,16 @@ RSpec.describe MCPController do
         context 'when mcp is enabled on token' do
           let(:token) { TokenFactory.new(%w[mcp_scope1]).valid(mcp: true) }
 
+          let(:interactor_context) do
+            interactor_context = Interactor::Context.new
+            interactor_context.bundled_data = BundledData.new(data: { siren: '130025265' })
+            interactor_context
+          end
+
+          before do
+            allow(INSEE::UniteLegale).to receive(:call).and_return(interactor_context)
+          end
+
           it {
             subject
             expect(response).to have_http_status(:ok)

@@ -24,7 +24,9 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+        response '200', 'Entreprise found' do
+          before { stub_rnm_valid_siren }
+
           description SwaggerData.get('rnm.entreprise_artisanale.description')
 
           schema build_rswag_response(
@@ -41,8 +43,10 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
+          response '404', 'Entreprise non trouvée' do
             let(:siren) { not_found_siren(:rnm_cma) }
+
+            before { stub_rnm_not_found_siren }
 
             build_rswag_example(NotFoundError.new('RNM'))
 

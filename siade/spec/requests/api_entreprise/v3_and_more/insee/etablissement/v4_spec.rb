@@ -22,7 +22,12 @@ RSpec.describe 'INSEE: Etablissement', api: :entreprise, type: %i[request swagge
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
+        response '200', 'Etablissement trouvé' do
+          before do
+            stub_insee_authenticate
+            stub_insee_etablissement_active_ge
+          end
+
           description SwaggerData.get('insee.etablissement_v4.description')
 
           schema build_rswag_response(
@@ -41,7 +46,12 @@ RSpec.describe 'INSEE: Etablissement', api: :entreprise, type: %i[request swagge
 
           unprocessable_content_error_request(:siret)
 
-          response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siret/non_existent_with_token' } do
+          response '404', 'Non trouvé' do
+            before do
+              stub_insee_authenticate
+              stub_insee_etablissement_non_existent
+            end
+
             let(:siret) { non_existent_siret }
 
             build_rswag_example(NotFoundError.new('INSEE'))

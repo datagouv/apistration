@@ -1,9 +1,10 @@
 RSpec.describe INSEE::Authenticate, type: :interactor do
   subject(:retrieve_token) { described_class.call }
 
-  context 'when the token is not stored in redis', vcr: { cassette_name: 'insee/token' } do
-    let(:token) { 'anonymized-insee-token-12345678-abcd-efgh-ijkl-9876543210fe' }
-    let(:expires_in) { 598_077 }
+  context 'when the token is not stored in redis' do
+    let(:token) { 'bearer_token' }
+
+    before { stub_insee_authenticate }
 
     it { is_expected.to be_a_success }
 

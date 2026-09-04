@@ -15,8 +15,10 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
     let(:annee_date_naissance) { '2000' }
     let(:code_cog_insee_departement_naissance) { '75' }
 
-    context 'with a response which has 1 result', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
+    context 'with a response which has 1 result' do
       let(:nom_commune_naissance) { 'Gennevilliers' }
+
+      before { stub_insee_metadonnees_one_result }
 
       it { is_expected.to be_a_success }
 
@@ -29,8 +31,10 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
       end
     end
 
-    context 'with a response which has more than 2 results', vcr: { cassette_name: 'insee/metadonnees/multiple_results' } do
+    context 'with a response which has more than 2 results' do
       let(:nom_commune_naissance) { 'La Rochette' }
+
+      before { stub_insee_metadonnees_multiple_results }
 
       context 'with 05 as code_cog_insee_departement_naissance' do
         let(:code_cog_insee_departement_naissance) { '05' }

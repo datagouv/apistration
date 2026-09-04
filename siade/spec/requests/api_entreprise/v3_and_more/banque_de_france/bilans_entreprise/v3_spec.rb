@@ -34,7 +34,7 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
 
           let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 
-          response '200', 'Entreprise trouvée', vcr: { cassette_name: 'banque_de_france/valid_siren' } do
+          response '200', 'Entreprise trouvée' do
             cacheable_response(extra_description: SwaggerData.get('banque_de_france.bilans_entreprise.cache_duration'))
             description SwaggerData.get('banque_de_france.bilans_entreprise.description')
 
@@ -56,7 +56,9 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
             let(:siren) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/not_found_siren' } do
+          response '404', 'Non trouvée' do
+            before { mock_not_found_banque_de_france }
+
             let(:siren) { non_existent_siren }
 
             build_rswag_example(NotFoundError.new('Banque de France'))

@@ -1,0 +1,6 @@
+{
+  "header": {
+    "statut": 404,
+    "message": "Aucun élément trouvé pour q=etablissementSiege:true AND siren:000000000"
+  }
+}

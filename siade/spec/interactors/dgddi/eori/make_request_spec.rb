@@ -7,8 +7,10 @@ RSpec.describe DGDDI::EORI::MakeRequest, type: :make_request do
     }
   end
 
-  describe 'happy path', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
+  describe 'happy path' do
     let(:eori) { valid_eori }
+
+    before { stub_dgddi_valid_eori }
 
     it { is_expected.to be_a_success }
 

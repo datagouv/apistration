@@ -22,7 +22,9 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', api: :entreprise, t
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response 200, 'Attestation found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
+        response 200, 'Attestation found' do
+          before { stub_probtp_attestation_eligible }
+
           description SwaggerData.get('probtp.attestation_cotisation_retraite.description')
 
           schema build_rswag_document_response(
@@ -45,8 +47,10 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', api: :entreprise, t
             documents_errors('ProBTP')
           )
 
-          response '404', 'Attestation non trouvée', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do
+          response '404', 'Attestation non trouvée' do
             let(:siret) { not_found_siret(:probtp) }
+
+            before { stub_probtp_attestation_not_found }
 
             build_rswag_example(NotFoundError.new('ProBTP'))
 

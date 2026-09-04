@@ -35,18 +35,11 @@ Avec le coverage:
 COVERAGE=true rspec
 ```
 
-Si vous rencontrez des problèmes de matching sur les cassettes VCR, vous pouvez
-obtenir plus de logs de la manière suivante:
-
-```sh
-DEBUG_VCR=true rspec
-```
-
 ### Avertissements sur les cas de tests
 
 Il n'est pas possible de mettre de données personnelles dans les tests, soit le
-fournisseur de données a un environnement de test soit il faut utiliser webmock
-et non VCR.
+fournisseur de données a un environnement de test soit il faut stubber les
+requêtes avec webmock (voir `spec/support/provider_stubs/`).
 
 ## Code Coverage
 

@@ -9,8 +9,10 @@ RSpec.describe ADEME::CertificatsRGE::MakeRequest, type: :make_request do
       }
     end
 
-    context 'with a valid siret', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret' } do
+    context 'with a valid siret' do
       let(:siret) { valid_siret(:rge_ademe) }
+
+      before { stub_ademe_valid_siret }
 
       it { is_expected.to be_a_success }
 

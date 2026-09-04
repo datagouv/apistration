@@ -9,8 +9,10 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::MakeRequest do
     end
 
     context 'with a well formatted siret' do
-      context 'when the siret is eligible for the attestation', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
+      context 'when the siret is eligible for the attestation' do
         let(:siret) { eligible_siret(:probtp) }
+
+        before { stub_probtp_attestation_eligible }
 
         it { is_expected.to be_success }
 

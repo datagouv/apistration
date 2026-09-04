@@ -22,8 +22,12 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
         let(:siret) { valid_siret(:qualibat) }
       end
 
+      before { stub_qualibat_authenticate }
+
       describe 'with valid token and mandatory params', :valid do
-        response 200, 'Certification trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret_2' } do
+        response 200, 'Certification trouvée' do
+          before { stub_qualibat_valid_siret }
+
           description SwaggerData.get('qualibat.certifications_batiment.description')
 
           schema build_rswag_document_response(
@@ -46,8 +50,10 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
             documents_errors('Qualibat')
           )
 
-          response '404', 'Certification non trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
+          response '404', 'Certification non trouvée' do
             let(:siret) { not_found_siret(:qualibat) }
+
+            before { stub_qualibat_not_found_siret }
 
             build_rswag_example(NotFoundError.new('Qualibat'))
 

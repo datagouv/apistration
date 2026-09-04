@@ -487,7 +487,6 @@ GEM
     utf8-cleaner (2.0.1)
       activesupport
       rack (~> 3.0)
-    vcr (6.4.0)
     version_gem (1.1.14)
     webmock (3.26.3)
       addressable (>= 2.8.0)
@@ -577,7 +576,6 @@ DEPENDENCIES
   unindent
   uri (= 1.1.1)
   utf8-cleaner
-  vcr
   webmock (~> 3.26)
   xml-simple
 

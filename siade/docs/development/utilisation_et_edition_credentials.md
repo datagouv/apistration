@@ -26,7 +26,7 @@ automatiquement selon le suffixe de la clé :
 - Toutes les autres clés → `test_<nom_cle>`
 
 Les clés nécessitant une valeur spécifique (clés RSA, chemins SSL, valeurs
-correspondant aux cassettes VCR, etc.) sont définies dans
+attendues par les stubs webmock, etc.) sont définies dans
 `spec/support/helpers/test_credentials_setup.rb`.
 
 ### Ajouter une nouvelle clé de credential

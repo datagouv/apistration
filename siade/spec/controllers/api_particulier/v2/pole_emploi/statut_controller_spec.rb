@@ -7,8 +7,10 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
   let(:token) { TokenFactory.new(scopes).valid }
   let(:identifiant) { 'whatever' }
 
-  describe 'with valid params', vcr: { cassette_name: 'france_travail/oauth2' } do
+  describe 'with valid params' do
     before do
+      stub_france_travail_authenticate
+
       stub_request(:post, Siade.credentials[:france_travail_status_url]).and_return(
         status: 200,
         body: read_payload_file('france_travail/statut/valid.json')
@@ -56,10 +58,12 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
     end
   end
 
-  describe 'when it is a 404', vcr: { cassette_name: 'france_travail/oauth2' } do
+  describe 'when it is a 404' do
     let(:scopes) { all_france_travail_scopes }
 
     before do
+      stub_france_travail_authenticate
+
       stub_request(:post, Siade.credentials[:france_travail_status_url]).and_return(
         status: 404,
         body: read_payload_file('france_travail/statut/not_found.json')
