@@ -7,11 +7,13 @@ default: &default
 
 development:
   <<: *default
+  gssencmode: disable
   host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
   database: <%= ENV.fetch("DATABASE_NAME_DEVELOPMENT") { 'siade_development' } %>
 
 test: &test
   <<: *default
+  gssencmode: disable
   host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
   database: <%= ENV.fetch("DATABASE_NAME_TEST") { 'siade_test' } %>
 

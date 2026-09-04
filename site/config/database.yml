@@ -25,6 +25,7 @@ default: &default
 
 development:
   <<: *default
+  gssencmode: disable
   host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
   database: <%= ENV.fetch("DATABASE_NAME_DEVELOPMENT") { 'admin_apientreprise_development' } %>
 
@@ -60,6 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  gssencmode: disable
   host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
   database: <%= ENV.fetch("DATABASE_NAME_TEST") { 'admin_apientreprise_test' } %>
 
