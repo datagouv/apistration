@@ -10,7 +10,7 @@ module ProConnectConfig
   def host(type)
     case Rails.env
     when 'development', 'test'
-      port = ENV['DOCKER'].present? ? 5000 : 3000
+      port = ENV['DOCKER'].present? ? 5000 : ENV.fetch('PORT', 3000)
       "http://#{type}.api.localtest.me:#{port}"
     when 'sandbox', 'staging'
       "https://#{Rails.env}.#{type}.api.gouv.fr"

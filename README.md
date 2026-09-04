@@ -20,7 +20,8 @@ Built and maintained by [DINUM](https://www.numerique.gouv.fr/) (Direction Inter
 
 ## Scripts
 
-- [`bin/setup_worktree.sh`](bin/setup_worktree.sh) `<path> [branch]` — crée un git worktree et génère des `.env.local` dans `site/` et `siade/` pour isoler les bases Postgres (dev/test) par worktree (via `dotenv-rails`).
+- [`bin/setup_worktree.sh`](bin/setup_worktree.sh) `[-p port] <nom> [branch]` — crée le worktree `worktrees/<nom>` d'un ticket Linear (`API-7345`) ou d'une demande ad hoc (`cnav-nir`) (branche existante contenant le nom, sinon `feature/<nom>` depuis `develop`) et génère `.env.local` / `.env.test.local` dans `site/` et `siade/` pour isoler les bases Postgres et les ports serveur par worktree (via `dotenv-rails`).
+- [`bin/remove_worktree.sh`](bin/remove_worktree.sh) `<nom>` — arrête les serveurs, supprime le worktree, sa branche locale et ses bases Postgres une fois la PR mergée.
 
 ## Sandbox via [agent-vm](https://github.com/sylvinus/agent-vm)
 

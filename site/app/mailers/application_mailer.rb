@@ -23,7 +23,7 @@ class ApplicationMailer < ActionMailer::Base
     when 'production'
       "#{api}.api.gouv.fr"
     when 'test', 'development'
-      "#{api}.api.localtest.me:3000"
+      "#{api}.api.localtest.me:#{ENV.fetch('PORT', 3000)}"
     else
       "#{Rails.env}.#{api}.api.gouv.fr"
     end
