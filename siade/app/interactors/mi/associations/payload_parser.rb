@@ -4,7 +4,7 @@ class MI::Associations::PayloadParser
     agrements: :agrement,
     affiliations: :affiliation,
     compositions: :membre,
-    dirigeants: :representant_legal
+    representants_legaux: :representant_legal
   }.freeze
 
   EXPLODED_COLLECTIONS = {

@@ -214,9 +214,9 @@ class MI::Associations::BuildResource < BuildResource
   end
 
   def extract_representants_legaux_for(siret)
-    return [] if association[:dirigeants].blank?
+    return [] if association[:representants_legaux].blank?
 
-    Array.wrap(association[:dirigeants][:representant_legal]).select do |representant_legal|
+    Array.wrap(association[:representants_legaux][:representant_legal]).select do |representant_legal|
       representant_legal[:id_siret] == siret &&
         representant_legal[:deleted] == 'false' &&
         (representant_legal[:est_representant_legal] == 'true' || representant_legal[:est_representant_legal].nil?)

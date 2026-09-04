@@ -39,7 +39,7 @@ RSpec.describe MI::Associations::PayloadParser do
           agrements: [{ numero: '1' }],
           affiliations: [{ nom: 'FEDERATION' }],
           compositions: [{ nom: 'MEMBRE' }],
-          dirigeants: [{ nom: 'Martin' }]
+          representants_legaux: [{ nom: 'Martin' }]
         }.to_json
       end
 
@@ -48,7 +48,7 @@ RSpec.describe MI::Associations::PayloadParser do
         expect(parsed[:asso][:agrements]).to eq(agrement: [{ numero: '1' }])
         expect(parsed[:asso][:affiliations]).to eq(affiliation: [{ nom: 'FEDERATION' }])
         expect(parsed[:asso][:compositions]).to eq(membre: [{ nom: 'MEMBRE' }])
-        expect(parsed[:asso][:dirigeants]).to eq(representant_legal: [{ nom: 'Martin' }])
+        expect(parsed[:asso][:representants_legaux]).to eq(representant_legal: [{ nom: 'Martin' }])
       end
     end
 
