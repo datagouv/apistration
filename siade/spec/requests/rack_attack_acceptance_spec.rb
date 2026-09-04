@@ -186,6 +186,10 @@ RSpec.describe 'Rack::Attack acceptance' do
         {
           controller: 'api_particulier/ping_providers',
           action: 'index'
+        },
+        {
+          controller: 'api_particulier/attestations',
+          action: 'show'
         }
       ]
     end

@@ -92,6 +92,15 @@ def query_params(operation)
   (operation['parameters'] || []).select { |p| p['in'] == 'query' }
 end
 
+def header_params(operation)
+  # Cache-Control stays out: transport-level, handled by the caller's HTTP stack.
+  (operation['parameters'] || []).select { |p| p['in'] == 'header' && p['name'] != 'Cache-Control' }
+end
+
+def header_kwarg(raw)
+  snake(raw.sub(/\Ax-/i, ''))
+end
+
 def build_method(logical, variants, existing_names)
   sorted_versions = variants.keys.sort
   default_version = pick_default_version(variants)
@@ -119,8 +128,12 @@ def build_method(logical, variants, existing_names)
     required = p['required'] && !audit_params.include?(p['name'])
     required ? "#{kwarg_name(p['name'])}:" : "#{kwarg_name(p['name'])}: nil"
   }
+  hparams = header_params(operation)
+  kwargs += hparams.map { |p| "#{header_kwarg(p['name'])}: nil" }
   kwargs = ['version: nil'] + kwargs
   signature = (positional + kwargs).join(', ')
+
+  header_hash = hparams.map { |p| "\"#{p['name']}\" => #{header_kwarg(p['name'])}" }.join(', ')
 
   param_hash = qparams.map { |p|
     # Strip trailing [] from array-type param names: Faraday auto-appends [] to
@@ -149,7 +162,11 @@ def build_method(logical, variants, existing_names)
   body << '  else'
   body << "    raise ArgumentError, \"version \#{version.inspect} not available for #{logical}; supported: #{sorted_versions.inspect}\""
   body << '  end'
-  body << "@client.get(path, params: #{query_merge})"
+  body << if header_hash.empty?
+    "@client.get(path, params: #{query_merge})"
+  else
+    "@client.get(path, params: #{query_merge}, headers: { #{header_hash} }.compact)"
+  end
 
   comment_lines = []
   comment_lines << "# #{operation['summary']}" if operation['summary']

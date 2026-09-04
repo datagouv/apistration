@@ -22,7 +22,7 @@ class StringEncryptorService
   private
 
   def encryptor
-    ActiveSupport::MessageEncryptor.new(key)
+    @encryptor ||= ActiveSupport::MessageEncryptor.new(key)
   end
 
   def key
