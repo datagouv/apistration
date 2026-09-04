@@ -26,6 +26,38 @@ RSpec.describe INSEESireneAPIClient do
       end
     end
 
+    context 'when the cached token has been revoked' do
+      before do
+        allow(INSEEAPIAuthentication).to receive(:invalidate_token_cache!)
+
+        stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}")
+          .to_return({ status: 401, body: '' },
+            { status: 200, headers: { 'Content-Type' => 'application/json' }, body: { ok: true }.to_json })
+      end
+
+      it 'invalidates it' do
+        etablissement_payload
+
+        expect(INSEEAPIAuthentication).to have_received(:invalidate_token_cache!)
+      end
+
+      it 'retries the request once' do
+        expect(etablissement_payload).to eq({ 'ok' => true })
+      end
+    end
+
+    context 'when the token is rejected twice' do
+      before do
+        allow(INSEEAPIAuthentication).to receive(:invalidate_token_cache!)
+
+        stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}").to_return(status: 401, body: '')
+      end
+
+      it 'gives up' do
+        expect { etablissement_payload }.to raise_error(Faraday::UnauthorizedError)
+      end
+    end
+
     context 'when API returns something else than 200' do
       before do
         stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}").to_return(
