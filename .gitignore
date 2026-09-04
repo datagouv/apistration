@@ -7,3 +7,5 @@ site/node_modules/
 .*_token
 .metabase
 .notes
+worktrees/*
+!worktrees/.gitkeep
