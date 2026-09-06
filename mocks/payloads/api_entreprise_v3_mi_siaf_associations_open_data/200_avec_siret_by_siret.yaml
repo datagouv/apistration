@@ -1,0 +1,86 @@
+---
+description: 'Association immatriculée au répertoire Sirene, appelée par SIRET'
+params:
+  siren_or_siret_or_rna: '38891667800039'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W442001747",
+        "siren": "388916678",
+        "siret_siege": "38891667800039"
+      },
+      "identite": {
+        "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+        "etat": "Active",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
+        "date_creation": "1981-01-16",
+        "date_dissolution": null,
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
+        "adresse_siege": {
+          "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+          "complement": null,
+          "numero_voie": "19",
+          "type_voie": "AV",
+          "libelle_voie": "DU CLOS DU CENS",
+          "distribution": null,
+          "code_insee": "44109",
+          "code_postal": "44300",
+          "commune": "NANTES",
+          "pays": "France"
+        }
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
+      },
+      "activites": {
+        "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
+        "objet_social1": {
+          "code": "011020",
+          "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
+        }
+      },
+      "filiation": [],
+      "groupement": null,
+      "etablissements": [
+        {
+          "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+          "adresse": {
+            "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+            "complement": null,
+            "numero_voie": "19",
+            "type_voie": "AV",
+            "libelle_voie": "DU CLOS DU CENS",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES",
+            "pays": "France"
+          }
+        }
+      ],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En règle",
+        "annees_exercices_comptables_transmis": [
+          2023,
+          2024,
+          2025
+        ]
+      }
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2026-04-27"
+    }
+  }

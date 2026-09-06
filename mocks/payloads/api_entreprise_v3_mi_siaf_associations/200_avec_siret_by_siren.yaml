@@ -1,0 +1,167 @@
+---
+description: 'Association immatriculée au répertoire Sirene, appelée par SIREN'
+params:
+  siren_or_siret_or_rna: '388916678'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiants": {
+        "rna": "W442001747",
+        "siren": "388916678",
+        "siret_siege": "38891667800039"
+      },
+      "identite": {
+        "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+        "etat": "Active",
+        "service_instructeur": {
+          "code": "44",
+          "libelle": "Loire-Atlantique"
+        },
+        "date_creation": "1981-01-16",
+        "date_dissolution": null,
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
+        "adresse_siege": {
+          "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+          "complement": null,
+          "numero_voie": "19",
+          "type_voie": "AV",
+          "libelle_voie": "DU CLOS DU CENS",
+          "distribution": null,
+          "code_insee": "44109",
+          "code_postal": "44300",
+          "commune": "NANTES",
+          "pays": "France"
+        },
+        "courriel": "contact@association-exemple.fr",
+        "telephone": "+33102030405"
+      },
+      "utilite_publique": {
+        "reconnue": false,
+        "date_publication": null,
+        "date_fin": null
+      },
+      "activites": {
+        "objet": "Regrouper toutes associations et personnes qui souhaitent developper la randonnee pedestre dans le departement.",
+        "objet_social1": {
+          "code": "011020",
+          "libelle": "Athlétisme (triathlon, pentathlon, footing, jogging)"
+        },
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Presidente",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1968-03-24",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Enseignante",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 RUE EXEMPLE 44000 NANTES",
+            "complement": null,
+            "numero_voie": "8",
+            "type_voie": "RUE",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44000",
+            "commune": "NANTES",
+            "pays": "France"
+          },
+          "personne_morale": null
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Tresorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1974-11-02",
+          "nationalite": "Francaise",
+          "pays_residence": "France",
+          "profession": "Comptable",
+          "date_entree_fonction": "2022-03-19",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "3 BD EXEMPLE 44300 NANTES",
+            "complement": null,
+            "numero_voie": "3",
+            "type_voie": "BD",
+            "libelle_voie": "EXEMPLE",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES",
+            "pays": "France"
+          },
+          "personne_morale": null
+        }
+      ],
+      "filiation": [],
+      "groupement": null,
+      "etablissements": [
+        {
+          "nom": "COMITE DEPARTEMENTAL DE LA RANDONNEE PEDESTRE DE LOIRE ATLANTIQUE",
+          "adresse": {
+            "adresse_complete": "19 AV DU CLOS DU CENS 44300 NANTES",
+            "complement": null,
+            "numero_voie": "19",
+            "type_voie": "AV",
+            "libelle_voie": "DU CLOS DU CENS",
+            "distribution": null,
+            "code_insee": "44109",
+            "code_postal": "44300",
+            "commune": "NANTES",
+            "pays": "France"
+          }
+        }
+      ],
+      "conformite_comptable": {
+        "etat_transmission_comptes": "En règle",
+        "annees_exercices_comptables_transmis": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "documents_rna": [
+        {
+          "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
+          "type": "Statuts",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts certifiés"
+          },
+          "date_depot": "2009-05-14",
+          "annee_depot": 2009,
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43"
+        },
+        {
+          "id": "9b4edadc-89c0-11f1-9645-27365eec5438",
+          "type": "Autre",
+          "sous_type": {
+            "code": "LDC",
+            "libelle": "Liste des dirigeants"
+          },
+          "date_depot": "2011-04-19",
+          "annee_depot": 2011,
+          "url": "https://staging.entreprise.api.gouv.fr/proxy/files/b27d4e19-0a5c-4f38-8e61-9d3f4a7c0b12"
+        }
+      ]
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour_rna": "2026-04-27"
+    }
+  }

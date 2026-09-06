@@ -26,33 +26,46 @@
       "identifiants": {
         "rnf": "075-FDD-00700-07",
         "siren": null,
-        "siret": null
+        "siret_siege": null
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FDD",
-        "denomination": "MEET MY MAMA FUND",
+        "nom": "MEET MY MAMA FUND",
         "etat": "Active",
         "date_effet_etat": "2023-03-08",
         "date_creation": "2023-03-08",
+        "duree_determinee": false,
         "date_terme": null,
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "10 Rue de Penthièvre 75008 Paris",
+          "complement": null,
           "numero_voie": "10",
-          "nom_voie": "Rue de Penthièvre",
+          "type_voie": "Rue",
+          "libelle_voie": "de Penthièvre",
+          "distribution": null,
+          "code_insee": "75108",
           "code_postal": "75008",
           "commune": "Paris 8e Arrondissement",
-          "code_insee_commune": "75108",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "contact@fonds-exemple.fr",
         "telephone": "+33198765432"
       },
-      "activite": {
-        "objet_social": "Conduire et soutenir toutes missions d'intérêt général à caractère social, philanthropique, éducatif et humanitaire concourant à faciliter l'inclusion sociale, notamment des femmes.",
-        "domaine_interet_general": "Social, Humanitaire, Éducatif",
+      "activites": {
+        "objet": "Conduire et soutenir toutes missions d'intérêt général à caractère social, philanthropique, éducatif et humanitaire concourant à faciliter l'inclusion sociale, notamment des femmes.",
+        "domaines_interet_general": [
+          "Social",
+          "Humanitaire",
+          "Éducatif"
+        ],
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -63,6 +76,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "1 Avenue des Champs Elysées 75008 Paris",
+            "complement": null,
+            "numero_voie": "1",
+            "type_voie": "Avenue",
+            "libelle_voie": "des Champs Elysées",
+            "distribution": null,
+            "code_insee": "75108",
             "code_postal": "75008",
             "commune": "Paris",
             "pays": "France"
@@ -83,6 +102,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "1 Avenue des Champs Elysées 75008 Paris",
+            "complement": null,
+            "numero_voie": "1",
+            "type_voie": "Avenue",
+            "libelle_voie": "des Champs Elysées",
+            "distribution": null,
+            "code_insee": "75108",
             "code_postal": "75008",
             "commune": "Paris",
             "pays": "France"
@@ -97,19 +122,15 @@
           "personne_morale": null
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [],
         "annees_appel_generosite_publique": [],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024
         ]
@@ -184,33 +205,45 @@
       "identifiants": {
         "rnf": "075-FE-00117-05",
         "siren": "987654321",
-        "siret": "98765432100012"
+        "siret_siege": "98765432100012"
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FE",
-        "denomination": "FONDATION D'ENTREPRISE EXEMPLE",
+        "nom": "FONDATION D'ENTREPRISE EXEMPLE",
         "etat": "Active",
         "date_effet_etat": "2019-05-15",
         "date_creation": "2019-05-15",
+        "duree_determinee": true,
         "date_terme": "2029-05-14",
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "25 Avenue Exemple 75008 Paris",
+          "complement": null,
           "numero_voie": "25",
-          "nom_voie": "Avenue Exemple",
+          "type_voie": "Avenue",
+          "libelle_voie": "Exemple",
+          "distribution": null,
+          "code_insee": "75108",
           "code_postal": "75008",
           "commune": "Paris 8e Arrondissement",
-          "code_insee_commune": "75108",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "fondation@entreprise-exemple.fr",
         "telephone": "+33144556677"
       },
-      "activite": {
-        "objet_social": "Financer des actions d'intérêt général dans le domaine de l'éducation et de l'insertion professionnelle des jeunes.",
-        "domaine_interet_general": "Éducatif, Social",
+      "activites": {
+        "objet": "Financer des actions d'intérêt général dans le domaine de l'éducation et de l'insertion professionnelle des jeunes.",
+        "domaines_interet_general": [
+          "Éducatif",
+          "Social"
+        ],
         "activite_internationale_prevue_par_statuts": true
       },
       "dirigeants": [
@@ -221,6 +254,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "12 Rue Exemple 92100 Boulogne-Billancourt",
+            "complement": null,
+            "numero_voie": "12",
+            "type_voie": "Rue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "92012",
             "code_postal": "92100",
             "commune": "Boulogne-Billancourt",
             "pays": "France"
@@ -235,16 +274,12 @@
           "personne_morale": {
             "type": "Entreprise",
             "identifiant": "98765432100012",
-            "denomination": "ENTREPRISE EXEMPLE",
+            "nom": "ENTREPRISE EXEMPLE",
             "pays": "France"
           }
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [],
         "annees_appel_generosite_publique": [],
@@ -252,9 +287,9 @@
           2024
         ]
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En défaut",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2022,
           2023
         ]
@@ -322,33 +357,44 @@
       "identifiants": {
         "rnf": "075-FRUP-00194-01",
         "siren": "784308934",
-        "siret": "78430893400016"
+        "siret_siege": "78430893400016"
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FRUP",
-        "denomination": "MAISON DE LA CHIMIE",
+        "nom": "MAISON DE LA CHIMIE",
         "etat": "Active",
         "date_effet_etat": "1928-08-12",
         "date_creation": "1928-08-12",
+        "duree_determinee": false,
         "date_terme": null,
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "28 Rue Saint-Dominique 75007 Paris",
+          "complement": null,
           "numero_voie": "28",
-          "nom_voie": "Rue Saint-Dominique",
+          "type_voie": "Rue",
+          "libelle_voie": "Saint-Dominique",
+          "distribution": null,
+          "code_insee": "75107",
           "code_postal": "75007",
           "commune": "Paris 7e Arrondissement",
-          "code_insee_commune": "75107",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "contact@fondation-exemple.fr",
         "telephone": "+33123456789"
       },
-      "activite": {
-        "objet_social": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
-        "domaine_interet_general": "Scientifique",
+      "activites": {
+        "objet": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
+        "domaines_interet_general": [
+          "Scientifique"
+        ],
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -359,6 +405,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "20 Rue Exemple 75001 Paris",
+            "complement": null,
+            "numero_voie": "20",
+            "type_voie": "Rue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75101",
             "code_postal": "75001",
             "commune": "Paris",
             "pays": "France"
@@ -379,6 +431,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "5 Avenue Exemple 75008 Paris",
+            "complement": null,
+            "numero_voie": "5",
+            "type_voie": "Avenue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75108",
             "code_postal": "75008",
             "commune": "Paris",
             "pays": "France"
@@ -393,11 +451,7 @@
           "personne_morale": null
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
@@ -408,9 +462,9 @@
         ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -486,33 +540,44 @@
       "identifiants": {
         "rnf": "075-FRUP-00194-01",
         "siren": "784308934",
-        "siret": "78430893400016"
+        "siret_siege": "78430893400016"
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FRUP",
-        "denomination": "MAISON DE LA CHIMIE",
+        "nom": "MAISON DE LA CHIMIE",
         "etat": "Active",
         "date_effet_etat": "1928-08-12",
         "date_creation": "1928-08-12",
+        "duree_determinee": false,
         "date_terme": null,
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "28 Rue Saint-Dominique 75007 Paris",
+          "complement": null,
           "numero_voie": "28",
-          "nom_voie": "Rue Saint-Dominique",
+          "type_voie": "Rue",
+          "libelle_voie": "Saint-Dominique",
+          "distribution": null,
+          "code_insee": "75107",
           "code_postal": "75007",
           "commune": "Paris 7e Arrondissement",
-          "code_insee_commune": "75107",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "contact@fondation-exemple.fr",
         "telephone": "+33123456789"
       },
-      "activite": {
-        "objet_social": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
-        "domaine_interet_general": "Scientifique",
+      "activites": {
+        "objet": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
+        "domaines_interet_general": [
+          "Scientifique"
+        ],
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -523,6 +588,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "20 Rue Exemple 75001 Paris",
+            "complement": null,
+            "numero_voie": "20",
+            "type_voie": "Rue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75101",
             "code_postal": "75001",
             "commune": "Paris",
             "pays": "France"
@@ -543,6 +614,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "5 Avenue Exemple 75008 Paris",
+            "complement": null,
+            "numero_voie": "5",
+            "type_voie": "Avenue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75108",
             "code_postal": "75008",
             "commune": "Paris",
             "pays": "France"
@@ -557,11 +634,7 @@
           "personne_morale": null
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
@@ -572,9 +645,9 @@
         ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025
@@ -650,33 +723,44 @@
       "identifiants": {
         "rnf": "075-FRUP-00194-01",
         "siren": "784308934",
-        "siret": "78430893400016"
+        "siret_siege": "78430893400016"
       },
       "identite": {
-        "service_instructeur": "75",
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
         "type_fondation": "FRUP",
-        "denomination": "MAISON DE LA CHIMIE",
+        "nom": "MAISON DE LA CHIMIE",
         "etat": "Active",
         "date_effet_etat": "1928-08-12",
         "date_creation": "1928-08-12",
+        "duree_determinee": false,
         "date_terme": null,
-        "date_cloture_exercice": "12-31",
+        "cloture_exercice": {
+          "mois": 12,
+          "jour": 31
+        },
         "adresse_siege": {
           "adresse_complete": "28 Rue Saint-Dominique 75007 Paris",
+          "complement": null,
           "numero_voie": "28",
-          "nom_voie": "Rue Saint-Dominique",
+          "type_voie": "Rue",
+          "libelle_voie": "Saint-Dominique",
+          "distribution": null,
+          "code_insee": "75107",
           "code_postal": "75007",
           "commune": "Paris 7e Arrondissement",
-          "code_insee_commune": "75107",
-          "departement": "75",
           "pays": "France"
         },
         "courriel": "contact@fondation-exemple.fr",
         "telephone": "+33123456789"
       },
-      "activite": {
-        "objet_social": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
-        "domaine_interet_general": "Scientifique",
+      "activites": {
+        "objet": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée, en vue de contribuer à l'avancement de la science chimique et au développement de ses applications.",
+        "domaines_interet_general": [
+          "Scientifique"
+        ],
         "activite_internationale_prevue_par_statuts": false
       },
       "dirigeants": [
@@ -687,6 +771,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "20 Rue Exemple 75001 Paris",
+            "complement": null,
+            "numero_voie": "20",
+            "type_voie": "Rue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75101",
             "code_postal": "75001",
             "commune": "Paris",
             "pays": "France"
@@ -707,6 +797,12 @@
           "nationalite": "France",
           "adresse_domiciliation": {
             "adresse_complete": "5 Avenue Exemple 75008 Paris",
+            "complement": null,
+            "numero_voie": "5",
+            "type_voie": "Avenue",
+            "libelle_voie": "Exemple",
+            "distribution": null,
+            "code_insee": "75108",
             "code_postal": "75008",
             "commune": "Paris",
             "pays": "France"
@@ -721,11 +817,7 @@
           "personne_morale": null
         }
       ],
-      "liens_entre_organismes": {
-        "organisme_issu_transformation": null,
-        "organisme_issu_fusion": null,
-        "organismes_issus_scission": []
-      },
+      "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
@@ -736,9 +828,9 @@
         ],
         "annees_financements_etrangers": []
       },
-      "dossiers": {
+      "conformite_comptable": {
         "etat_transmission_comptes": "En règle",
-        "exercices_comptables_transmis": [
+        "annees_exercices_comptables_transmis": [
           2023,
           2024,
           2025

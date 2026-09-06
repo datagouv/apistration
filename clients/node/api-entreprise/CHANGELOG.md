@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0
+
+### Added
+- `ministere_interieur.siaf_associations(siren_or_siret_or_rna)` — Données associations
+  (SIAF / Ministère de l'Intérieur), `/v3/ministere_interieur/siaf/associations/{siren_or_siret_or_rna}`.
+- `ministere_interieur.open_data(siren_or_siret_or_rna)` — Données associations en open data,
+  `/v3/ministere_interieur/siaf/associations/open_data/{siren_or_siret_or_rna}`.
+  Both are available on staging only for now (endpoints in "prochainement" mode).
+
 ## 0.3.0
 
 ### Added

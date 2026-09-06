@@ -140,3 +140,7 @@ end
 def fondation_siret
   '78430893400016'
 end
+
+def siaf_association_siret
+  '38891667800039'
+end

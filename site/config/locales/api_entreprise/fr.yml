@@ -106,6 +106,8 @@ fr:
             label: Djepva || API Données association
           fondations_mi_siaf:
             label: SIAF || API Données fondations
+          associations_mi_siaf:
+            label: SIAF || API Données associations
           associations_djepva:
             label: Djepva || API Données ouvertes association
             tags:

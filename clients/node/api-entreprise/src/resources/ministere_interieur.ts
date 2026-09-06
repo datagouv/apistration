@@ -40,6 +40,34 @@ export class MinistereInterieur {
     return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
   }
 
+  /** Données associations */
+  async siaf_associations(siren_or_siret_or_rna: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
+    const resolvedVersion = options.version ?? 3;
+    const path = (() => {
+      switch (resolvedVersion) {
+      case 3:
+        return `/v3/ministere_interieur/siaf/associations/${siren_or_siret_or_rna}`;
+        default:
+          throw new Error(`version ${resolvedVersion} not available for /ministere_interieur/siaf/associations/{siren_or_siret_or_rna}; supported: [3]`);
+      }
+    })();
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
+  }
+
+  /** Données associations en open data */
+  async open_data(siren_or_siret_or_rna: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
+    const resolvedVersion = options.version ?? 3;
+    const path = (() => {
+      switch (resolvedVersion) {
+      case 3:
+        return `/v3/ministere_interieur/siaf/associations/open_data/${siren_or_siret_or_rna}`;
+        default:
+          throw new Error(`version ${resolvedVersion} not available for /ministere_interieur/siaf/associations/open_data/{siren_or_siret_or_rna}; supported: [3]`);
+      }
+    })();
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });
+  }
+
   /** Données fondations */
   async fondations(siren_or_siret_or_rnf: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     const resolvedVersion = options.version ?? 3;

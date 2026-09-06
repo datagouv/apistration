@@ -13,3 +13,7 @@ end
 def rna_id_without_documents
   'W762003999'
 end
+
+def siaf_association_rna_id
+  'W442001747'
+end

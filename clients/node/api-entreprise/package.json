@@ -1,6 +1,6 @@
 {
   "name": "@api-gouv-dinum/api-entreprise",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Official Node.js client for API Entreprise v3",
   "type": "module",
   "main": "dist/index.cjs",

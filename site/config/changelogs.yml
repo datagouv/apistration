@@ -1,3 +1,13 @@
+- date: 2026-09-02
+  scope: api_entreprise
+  title: "Données associations (SIAF) : deux nouvelles API disponibles en environnement de test"
+  description: |
+    Deux nouvelles API exposent les données du **Répertoire National des Associations (RNA)**, opéré par le Ministère de l'Intérieur via le SIAF : identité, reconnaissance d'utilité publique, activités, filiation, groupement constitué (union, fédération), établissements et conformité comptable.
+
+    L'API [Données associations](<%= endpoint_path(uid: 'siaf/associations') %>) y ajoute, pour les administrations habilitées, les dirigeants, les coordonnées de l'association et ses pièces justificatives. L'API [Données associations en open data](<%= endpoint_path(uid: 'siaf/associations_open_data') %>) se limite aux données publiques.
+
+    Elles sont pour l'instant **appelables uniquement sur l'environnement de test** (`https://staging.entreprise.api.gouv.fr`), avec des données fictives, afin de permettre aux futurs consommateurs de préparer leurs intégrations avant la mise en production.
+
 - date: 2026-08-25
   scope: api_particulier
   title: "CNOUS étudiant boursier : `campaignYear` accepte la campagne en cours et à venir"
