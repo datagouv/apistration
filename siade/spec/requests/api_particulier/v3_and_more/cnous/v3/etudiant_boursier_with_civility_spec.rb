@@ -94,8 +94,8 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
           end
         end
 
-        common_provider_errors_request('CNOUS', CNOUS::StudentScholarshipWithCivility)
-        common_network_error_request('CNOUS', CNOUS::StudentScholarshipWithCivility)
+        common_provider_errors_request(CNOUS::StudentScholarshipWithCivility)
+        common_network_error_request(CNOUS::StudentScholarshipWithCivility)
       end
     end
   end

@@ -79,9 +79,9 @@ RSpec.describe 'SDH: Statut Sportif with identifiant SDH', api: :particulier, ty
             let(:identifiant) { 'lol' }
           end
 
-          common_provider_errors_request('SDH', SDH::StatutSportif)
+          common_provider_errors_request(SDH::StatutSportif)
 
-          common_network_error_request('SDH', SDH::StatutSportif)
+          common_network_error_request(SDH::StatutSportif)
         end
       end
     end

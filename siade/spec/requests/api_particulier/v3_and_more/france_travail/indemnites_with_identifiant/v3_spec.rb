@@ -54,8 +54,8 @@ RSpec.describe 'FranceTravail: Indemnites with identifiant', api: :particulier, 
           end
         end
 
-        common_provider_errors_request('France Travail', FranceTravail::Indemnites)
-        common_network_error_request('France Travail', FranceTravail::Indemnites)
+        common_provider_errors_request(FranceTravail::Indemnites)
+        common_network_error_request(FranceTravail::Indemnites)
       end
     end
   end

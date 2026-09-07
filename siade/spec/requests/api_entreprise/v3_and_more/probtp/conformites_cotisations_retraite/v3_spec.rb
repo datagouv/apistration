@@ -49,8 +49,8 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', api: :entreprise, typ
             run_test!
           end
 
-          common_provider_errors_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
-          common_network_error_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
+          common_provider_errors_request(PROBTP::ConformitesCotisationsRetraite)
+          common_network_error_request(PROBTP::ConformitesCotisationsRetraite)
         end
       end
     end

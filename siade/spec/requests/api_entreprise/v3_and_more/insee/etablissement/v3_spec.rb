@@ -65,8 +65,8 @@ RSpec.describe 'INSEE: Etablissement', api: :entreprise, type: %i[request swagge
             run_test!
           end
 
-          common_provider_errors_request('INSEE', INSEE::Etablissement)
-          common_network_error_request('INSEE', INSEE::Etablissement)
+          common_provider_errors_request(INSEE::Etablissement)
+          common_network_error_request(INSEE::Etablissement)
         end
       end
     end

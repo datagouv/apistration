@@ -53,8 +53,8 @@ RSpec.describe 'INSEE: Unites legales diffusibles', api: :entreprise, type: %i[r
             run_test!
           end
 
-          common_provider_errors_request('INSEE', INSEE::UniteLegaleDiffusable)
-          common_network_error_request('INSEE', INSEE::UniteLegaleDiffusable)
+          common_provider_errors_request(INSEE::UniteLegaleDiffusable)
+          common_network_error_request(INSEE::UniteLegaleDiffusable)
 
           response '451', 'Indisponible pour des raisons legales' do
             let(:siren) { sirens_insee_v3[:active_GE] }

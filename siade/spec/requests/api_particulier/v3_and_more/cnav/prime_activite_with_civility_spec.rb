@@ -138,7 +138,7 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
               stub_cnav_404('prime_activite')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new(CNAV::PrimeActivite.provider_name, 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 
@@ -146,8 +146,8 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
           end
         end
 
-        common_provider_errors_request('CNAV', CNAV::PrimeActivite)
-        common_network_error_request('CNAV', CNAV::PrimeActivite)
+        common_provider_errors_request(CNAV::PrimeActivite)
+        common_network_error_request(CNAV::PrimeActivite)
       end
     end
   end

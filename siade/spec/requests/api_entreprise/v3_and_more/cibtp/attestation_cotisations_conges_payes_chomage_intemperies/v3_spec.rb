@@ -72,9 +72,9 @@ RSpec.describe 'CIBTP: AttestationCotisationsCongesPayesChomageIntemperies', api
             run_test!
           end
 
-          common_provider_errors_request('CIBTP', CIBTP::AttestationCotisationsCongesPayesChomageIntemperies)
+          common_provider_errors_request(CIBTP::AttestationCotisationsCongesPayesChomageIntemperies)
 
-          common_network_error_request('CIBTP', CIBTP::AttestationCotisationsCongesPayesChomageIntemperies)
+          common_network_error_request(CIBTP::AttestationCotisationsCongesPayesChomageIntemperies)
         end
       end
     end

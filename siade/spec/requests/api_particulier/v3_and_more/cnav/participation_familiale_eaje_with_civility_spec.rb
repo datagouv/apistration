@@ -89,8 +89,8 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
           end
         end
 
-        common_provider_errors_request('CNAV', CNAV::ParticipationFamilialeEAJE)
-        common_network_error_request('CNAV', CNAV::ParticipationFamilialeEAJE)
+        common_provider_errors_request(CNAV::ParticipationFamilialeEAJE)
+        common_network_error_request(CNAV::ParticipationFamilialeEAJE)
       end
     end
   end

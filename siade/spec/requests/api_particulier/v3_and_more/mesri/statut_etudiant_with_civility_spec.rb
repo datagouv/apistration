@@ -79,8 +79,8 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
           end
         end
 
-        common_provider_errors_request('MESRI', MESRI::StudentStatus::WithCivility)
-        common_network_error_request('MESRI', MESRI::StudentStatus::WithCivility)
+        common_provider_errors_request(MESRI::StudentStatus::WithCivility)
+        common_network_error_request(MESRI::StudentStatus::WithCivility)
       end
     end
   end

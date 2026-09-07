@@ -1,6 +1,10 @@
 class RetrieverOrganizer < ApplicationOrganizer
   class InvalidProviderName < StandardError; end
 
+  def self.provider_name
+    allocate.send(:provider_name)
+  end
+
   def self.inherited(klass)
     klass.class_eval do
       before do

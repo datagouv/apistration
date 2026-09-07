@@ -73,8 +73,8 @@ RSpec.describe 'INPI RNE: Extrait RNE', api: :entreprise, type: %i[request swagg
             let(:siren) { 'lol' }
           end
 
-          common_provider_errors_request('INPI - RNE', INPI::RNE::ExtraitRNE)
-          common_network_error_request('INPI - RNE', INPI::RNE::ExtraitRNE)
+          common_provider_errors_request(INPI::RNE::ExtraitRNE)
+          common_network_error_request(INPI::RNE::ExtraitRNE)
         end
       end
     end

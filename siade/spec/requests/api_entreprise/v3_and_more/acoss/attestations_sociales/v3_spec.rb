@@ -46,9 +46,8 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
           unprocessable_content_error_request(:siren)
 
           common_provider_errors_request(
-            'ACOSS',
             ACOSS::AttestationsSociales,
-            documents_errors('ACOSS')
+            documents_errors(ACOSS::AttestationsSociales)
             .push(ACOSSError.new(:ongoing_manual_verification), ACOSSError.new(:manual_verification_asked), ACOSSError.new(:cannot_deliver_document))
           )
 
@@ -62,7 +61,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
             run_test!
           end
 
-          common_network_error_request('ACOSS', ACOSS::AttestationsSociales)
+          common_network_error_request(ACOSS::AttestationsSociales)
         end
       end
     end

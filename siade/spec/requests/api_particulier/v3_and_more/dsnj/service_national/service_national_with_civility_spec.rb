@@ -79,9 +79,9 @@ RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: 
             let(:sexeEtatCivil) { 'lol' }
           end
 
-          common_provider_errors_request('DSNJ', DSNJ::ServiceNational)
+          common_provider_errors_request(DSNJ::ServiceNational)
 
-          common_network_error_request('DSNJ', DSNJ::ServiceNational)
+          common_network_error_request(DSNJ::ServiceNational)
         end
       end
     end
