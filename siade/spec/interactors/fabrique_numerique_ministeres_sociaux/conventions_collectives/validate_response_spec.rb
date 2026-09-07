@@ -10,16 +10,30 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::Valid
         }
       end
 
-      context 'when conventions key has at least one element', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
+      context 'when conventions key has at least one element' do
         let(:siret) { valid_siret(:conventions_collectives) }
+
+        # `around` (not `before`) so the stub is registered ahead of the
+        # `config.before(type: :validate_response)` hook, which forces `response`
+        # to be evaluated (and thus the real HTTP call to fire) before any
+        # example-level `before(:each)` hook would run.
+        around do |example|
+          stub_fabrique_numerique_conventions_collectives_valid
+          example.run
+        end
 
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
       end
 
-      context 'when conventions key has no element', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
+      context 'when conventions key has no element' do
         let(:siret) { not_found_siret(:conventions_collectives) }
+
+        around do |example|
+          stub_fabrique_numerique_conventions_collectives_not_found
+          example.run
+        end
 
         it { is_expected.to be_a_failure }
 

@@ -49,7 +49,9 @@ RSpec.describe OPQIBI::CertificationsIngenierie::BuildResource, type: :build_res
     }
   end
 
-  describe '.call', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
+  describe '.call' do
+    before { stub_opqibi_valid_siren }
+
     it { is_expected.to be_a_success }
 
     it 'builds valid resource' do
@@ -60,8 +62,9 @@ RSpec.describe OPQIBI::CertificationsIngenierie::BuildResource, type: :build_res
     end
   end
 
-  describe 'non-regression test: when qualifications_probatoires is empty, date_de_validite_qualifications_probatoires is missing',
-    vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
+  describe 'non-regression test: when qualifications_probatoires is empty, date_de_validite_qualifications_probatoires is missing' do
+    before { stub_opqibi_valid_siren }
+
     let(:body) do
       body = OPQIBI::CertificationsIngenierie::MakeRequest.call(params:).response.body
       JSON.parse(body).except('date_de_validite_des_qualifications_probatoires').to_json

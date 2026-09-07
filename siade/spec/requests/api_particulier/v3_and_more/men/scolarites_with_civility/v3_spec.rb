@@ -60,7 +60,12 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
       let(:scopes) { %i[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
       describe 'with valid token and mandatory params', :valid do
         describe 'with code_etablissement mode' do
-          response '200', 'Scolarite trouvee', vcr: { cassette_name: 'men/scolarites/valid_v2' } do
+          before do
+            stub_men_scolarites_auth
+            stub_men_scolarites_valid_v2
+          end
+
+          response '200', 'Scolarite trouvee' do
             description SwaggerData.get('men.scolarite.description')
 
             schema build_rswag_response(
@@ -70,14 +75,18 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
             run_test!
           end
 
-          response '404', 'Non trouvee', vcr: { cassette_name: 'men/scolarites/not_found_v2' } do
+          describe 'when not found' do
             let(:sexe) { 'f' }
 
-            build_rswag_example(NotFoundError.new('MEN', 'Aucun élève n\'a pu être trouvé avec les critères de recherche fournis.', with_identifiant_message: false))
+            before { stub_men_scolarites_not_found_v2 }
 
-            schema '$ref' => '#/components/schemas/Error'
+            response '404', 'Non trouvee' do
+              build_rswag_example(NotFoundError.new('MEN', 'Aucun élève n\'a pu être trouvé avec les critères de recherche fournis.', with_identifiant_message: false))
 
-            run_test!
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
           end
         end
 

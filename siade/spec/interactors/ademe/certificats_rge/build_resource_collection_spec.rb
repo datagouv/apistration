@@ -64,9 +64,11 @@ RSpec.describe ADEME::CertificatsRGE::BuildResourceCollection, type: :build_reso
     ]
   end
 
-  describe '.call', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret_with_limit' } do
+  describe '.call' do
     let(:resource_collection) { subject.bundled_data.data }
     let(:meta) { subject.bundled_data.context }
+
+    before { stub_ademe_valid_siret_with_limit }
 
     it { is_expected.to be_a_success }
 

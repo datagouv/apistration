@@ -22,7 +22,12 @@ RSpec.describe 'INSEE: Unites legales diffusibles', api: :entreprise, type: %i[r
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Unite legale trouvee', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
+        response '200', 'Unite legale trouvee' do
+          before do
+            stub_insee_authenticate
+            stub_insee_unite_legale_active_ge
+          end
+
           let(:siren) { sirens_insee_v3[:active_GE] }
 
           description SwaggerData.get('insee.unite_legale_diffusable_v4.description')
@@ -43,7 +48,12 @@ RSpec.describe 'INSEE: Unites legales diffusibles', api: :entreprise, type: %i[r
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Non trouvee', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
+          response '404', 'Non trouvee' do
+            before do
+              stub_insee_authenticate
+              stub_insee_unite_legale_non_diffusable
+            end
+
             let(:siren) { non_diffusable_siren }
 
             build_rswag_example(NotFoundError.new('INSEE'))

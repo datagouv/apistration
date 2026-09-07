@@ -22,7 +22,11 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, 
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Carte professionnelle trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/valid_siren' } do
+        response '200', 'Carte professionnelle trouvée' do
+          let(:siren) { valid_siren(:fntp) }
+
+          before { stub_fntp_valid_siren }
+
           description SwaggerData.get('fntp.carte_professionnelle_travaux_publics.description')
 
           rate_limit_headers
@@ -45,8 +49,10 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, 
             documents_errors('FNTP')
           )
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
+          response '404', 'Non trouvée' do
             let(:siren) { not_found_siren }
+
+            before { stub_fntp_not_found_siren }
 
             build_rswag_example(NotFoundError.new('FNTP'))
 

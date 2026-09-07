@@ -26,8 +26,10 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response 200, 'Document Association found', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
+        response 200, 'Document Association found' do
           let(:siret_or_rna) { '77571979202585' }
+
+          before { stub_mi_associations_documents_with_documents }
 
           cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
 
@@ -52,8 +54,10 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
             documents_errors('MI')
           )
 
-          response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
+          response '404', 'Association not found' do
             let(:siret_or_rna) { non_existing_rna_id }
+
+            before { stub_mi_associations_rna_not_found }
 
             build_rswag_example(NotFoundError.new('MI'))
 

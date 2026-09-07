@@ -1,11 +1,11 @@
 RSpec.describe MEN::Scolarites::Authenticate do
   subject(:interactor) { described_class.call }
 
-  context 'when authentication succeed', vcr: { cassette_name: 'men/scolarites/authenticate' } do
-    let(:access_token_from_vcr) { 'jwt-access-token' }
+  context 'when authentication succeed' do
+    before { stub_men_scolarites_auth }
 
     it { is_expected.to be_a_success }
 
-    its(:token) { is_expected.to eq(access_token_from_vcr) }
+    its(:token) { is_expected.to eq('jwt-access-token') }
   end
 end

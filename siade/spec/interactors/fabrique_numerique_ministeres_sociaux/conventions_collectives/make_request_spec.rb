@@ -7,16 +7,20 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeR
     }
   end
 
-  context 'when siret is valid', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
+  context 'when siret is valid' do
     let(:siret) { valid_siret(:conventions_collectives) }
+
+    before { stub_fabrique_numerique_conventions_collectives_valid }
 
     it { is_expected.to be_success }
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
   end
 
-  context 'when siret is not found', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
+  context 'when siret is not found' do
     let(:siret) { not_found_siret(:conventions_collectives) }
+
+    before { stub_fabrique_numerique_conventions_collectives_not_found }
 
     it { is_expected.to be_success }
 

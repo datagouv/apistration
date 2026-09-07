@@ -1,0 +1,22 @@
+[
+  {
+    "conventions": [
+      {
+        "active": true,
+        "date_publi": "2001-05-15T00:00:00.000Z",
+        "effectif": 123456,
+        "etat": "vigueur",
+        "id": "ANONYME000001234567",
+        "mtime": 1612345678,
+        "nature": "CCOLL",
+        "num": 9876,
+        "shortTitle": "Conseil en ingénierie industrielle et consulting technique",
+        "texte_de_base": "ANONYME1543876921",
+        "title": "Convention collective des bureaux de conseil en ingénierie du 28 février 2001. ",
+        "url": "https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=ANONYME000001234567",
+        "synonymes": ["anonyme"]
+      }
+    ],
+    "siret": "82161143100015"
+  }
+]

@@ -29,7 +29,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'insee/siret/active_GE' } do
+  context 'with an active GE, which is a personne morale' do
+    before { stub_insee_etablissement_active_ge }
+
     let(:siret) { sirets_insee_v3[:active_GE] }
 
     it { is_expected.to be_a_success }
@@ -82,7 +84,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with a closed siret', vcr: { cassette_name: 'insee/siret/closed' } do
+  context 'with a closed siret' do
+    before { stub_insee_etablissement_closed }
+
     let(:siret) { sirets_insee_v3[:closed] }
 
     it { is_expected.to be_a_success }
@@ -97,7 +101,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with a closed siret without date of closing', vcr: { cassette_name: 'insee/siret/closed_without_date' } do
+  context 'with a closed siret without date of closing' do
+    before { stub_insee_etablissement_closed_without_date }
+
     let(:siret) { '78365263900015' }
 
     it { is_expected.to be_a_success }
@@ -112,7 +118,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with a siret which has an enseigne', vcr: { cassette_name: 'insee/siret/active_GE_ss' } do
+  context 'with a siret which has an enseigne' do
+    before { stub_insee_etablissement_active_ge_ss }
+
     let(:siret) { sirets_insee_v3[:active_GE_ss] }
 
     it { is_expected.to be_a_success }
@@ -126,7 +134,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with a siret which is a personne physique (auto entrepreneur)', vcr: { cassette_name: 'insee/siret/active_AE' } do
+  context 'with a siret which is a personne physique (auto entrepreneur)' do
+    before { stub_insee_etablissement_active_ae }
+
     let(:siret) { sirets_insee_v3[:active_AE] }
 
     it { is_expected.to be_a_success }
@@ -150,7 +160,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with a siege social payload, from a call to INSEE::SiegeUniteLegale::MakeRequest (which happens with redirect sirets)', vcr: { cassette_name: 'insee/siret/redirected' } do
+  context 'with a siege social payload, from a call to INSEE::SiegeUniteLegale::MakeRequest (which happens with redirect sirets)' do
+    before { stub_insee_etablissement_redirected }
+
     let(:siret) { '53222169400013' }
 
     it { is_expected.to be_a_success }

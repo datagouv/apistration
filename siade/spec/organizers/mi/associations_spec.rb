@@ -8,9 +8,11 @@ RSpec.describe MI::Associations, type: :retriever_organizer do
       }
     end
 
-    context 'with valid siret', vcr: { cassette_name: 'mi/associations/with_valid_siret' } do
+    context 'with valid siret' do
       let(:id) { valid_siret(:rna) }
 
+      before { stub_mi_associations_valid_siret }
+
       it { is_expected.to be_a_success }
 
       it 'retrieves the resource' do
@@ -20,9 +22,11 @@ RSpec.describe MI::Associations, type: :retriever_organizer do
       end
     end
 
-    context 'with valid rna_id', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+    context 'with valid rna_id' do
       let(:id) { valid_rna_id }
 
+      before { stub_mi_associations_valid_rna }
+
       it { is_expected.to be_a_success }
 
       it 'retrieves the resource' do
@@ -32,7 +36,7 @@ RSpec.describe MI::Associations, type: :retriever_organizer do
       end
     end
 
-    context 'with invalid rna_id', vcr: { cassette_name: 'mi/associations/with_invalid_rna' } do
+    context 'with invalid rna_id' do
       let(:id) { invalid_rna_id }
 
       it { is_expected.to be_a_failure }

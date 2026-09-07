@@ -11,7 +11,7 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
 
     let(:resource) { subject.bundled_data.data }
 
-    context 'when it is ok and conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
+    context 'when it is ok and conforme' do
       let(:siret) { eligible_siret(:probtp) }
 
       let(:code) { 200 }
@@ -21,6 +21,8 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
           .response
           .body
       end
+
+      before { stub_probtp_conformite_eligible }
 
       it { is_expected.to be_a_success }
 
@@ -33,7 +35,7 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
       end
     end
 
-    context 'when it is ok and not conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_non_eligible_siret' } do
+    context 'when it is ok and not conforme' do
       let(:siret) { non_eligible_siret(:probtp) }
 
       let(:code) { 200 }
@@ -43,6 +45,8 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
           .response
           .body
       end
+
+      before { stub_probtp_conformite_non_eligible }
 
       it { is_expected.to be_a_success }
 

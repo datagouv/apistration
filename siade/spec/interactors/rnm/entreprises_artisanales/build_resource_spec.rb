@@ -1,6 +1,8 @@
 RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+  describe '.call' do
     subject { described_class.call(response:) }
+
+    before { stub_rnm_valid_siren }
 
     let(:valid_payload) do
       {

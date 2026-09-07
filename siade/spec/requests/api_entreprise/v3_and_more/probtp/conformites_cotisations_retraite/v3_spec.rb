@@ -22,7 +22,9 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', api: :entreprise, typ
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
+        response '200', 'Entreprise trouvée' do
+          before { stub_probtp_conformite_eligible }
+
           description SwaggerData.get('probtp.conformites_cotisations_retraite.description')
 
           rate_limit_headers
@@ -39,8 +41,10 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', api: :entreprise, typ
 
           unprocessable_content_error_request(:siret)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
+          response '404', 'Non trouvée' do
             let(:siret) { not_found_siret(:probtp) }
+
+            before { stub_probtp_conformite_not_found }
 
             build_rswag_example(NotFoundError.new('ProBTP'))
 

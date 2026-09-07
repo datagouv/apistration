@@ -1,7 +1,16 @@
 RSpec.describe BanqueDeFrance::BilansEntreprise::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'Banque de France') }
 
-  context 'with real http response', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/valid_siren' } do
+  context 'with real http response' do
+    # `around` (not `before`) so the stub is registered ahead of the
+    # `config.before(type: :validate_response)` hook, which forces `response`
+    # to be evaluated (and thus the real HTTP call to fire) before any
+    # example-level `before(:each)` hook would run.
+    around do |example|
+      mock_valid_banque_de_france
+      example.run
+    end
+
     let(:response) { BanqueDeFrance::BilansEntreprise::MakeRequest.call(params: { siren: }).response }
     let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 

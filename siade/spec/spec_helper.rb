@@ -4,7 +4,6 @@ require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'rspec/json_expectations'
 require 'webmock/rspec'
-require 'vcr_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -44,11 +43,9 @@ RSpec.configure do |config|
 
   # TODO: move this conf somewhere else
   config.before do
-    unless ENV['regenerate_cassettes']
-      allow_any_instance_of(BanqueDeFrance::BilansEntreprise::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, verify_ssl: OpenSSL::SSL::VERIFY_NONE, cert: nil, key: nil })
-      allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-      allow_any_instance_of(PROBTP::ConformitesCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-    end
+    allow_any_instance_of(BanqueDeFrance::BilansEntreprise::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, verify_ssl: OpenSSL::SSL::VERIFY_NONE, cert: nil, key: nil })
+    allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
+    allow_any_instance_of(PROBTP::ConformitesCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
   end
 
   config.before(:suite) do
@@ -142,14 +139,17 @@ RSpec.configure do |config|
   config.include ProviderStubs::SDH
   config.include ProviderStubs::FranceTravail
   config.include ProviderStubs::DataSubvention
-
-  config.include ActivateStrictVcrRequestMatchingForV3
-  config.extend ActivateStrictVcrRequestMatchingForV3
-
-  config.around do |example|
-    example = add_strict_matching_on_vcr_requests_for_v3(example)
-    example.run
-  end
+  config.include ProviderStubs::CarifOref
+  config.include ProviderStubs::PROBTP
+  config.include ProviderStubs::QUALIBAT
+  config.include ProviderStubs::FabriqueNumeriqueMinisteresSociaux
+  config.include ProviderStubs::RNM
+  config.include ProviderStubs::OPQIBI
+  config.include ProviderStubs::MI
+  config.include ProviderStubs::DGDDI
+  config.include ProviderStubs::ADEME
+  config.include ProviderStubs::FNTP
+  config.include ProviderStubs::CNETP
 
   config.before do
     allow_any_instance_of(INPI::RNE::Authenticate).to receive(:randomize_account!)

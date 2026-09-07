@@ -23,4 +23,16 @@ module ProviderStubs::URSSAF
       body: block.call
     )
   end
+
+  def mock_urssaf_attestation_sociale_not_found(access_token = 'access_token', &block)
+    stub_request(:post, "#{Siade.credentials[:acoss_domain]}/attn/entreprise/v1/demandes/api_entreprise").with(
+      headers: {
+        'Content-Type' => 'application/json',
+        'Authorization' => "Bearer #{access_token}"
+      }
+    ).and_return(
+      status: 400,
+      body: block.call
+    )
+  end
 end

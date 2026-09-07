@@ -1,0 +1,31 @@
+{
+  "numero_certificat": "12 34 5678",
+  "date_de_delivrance_du_certificat": "15/06/2021",
+  "duree_de_validite_du_certificat": "valable un an",
+  "assurance": "ANONYME",
+  "url": "https://www.opqibi.com/fiche/9876",
+  "qualifications": [
+    {
+      "CodeQualification": "2001",
+      "Nom": "Étude en ingénierie thermique",
+      "Definition": "Optimisation énergétique des bâtiments",
+      "rge": "0"
+    },
+    {
+      "CodeQualification": "2002",
+      "Nom": "Ingénierie en efficacité énergétique",
+      "Definition": "Amélioration de la performance",
+      "rge": "0"
+    }
+  ],
+  "date_de_validite_des_qualification": "15/06/2024",
+  "qualifications_probatoires": [
+    {
+      "CodeQualification": "2003",
+      "Nom": "Ingénierie en énergies renouvelables",
+      "Definition": "Développement durable et écologie",
+      "rge": "0"
+    }
+  ],
+  "date_de_validite_des_qualifications_probatoires": "15/06/2022"
+}

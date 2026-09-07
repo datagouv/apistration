@@ -7,7 +7,12 @@ RSpec.describe INSEE::UniteLegale, type: :retriever_organizer do
     }
   end
 
-  context 'with a valid siren, which is an active GE', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
+  context 'with a valid siren, which is an active GE' do
+    before do
+      stub_insee_authenticate
+      stub_insee_unite_legale_active_ge
+    end
+
     let(:siren) { sirens_insee_v3[:active_GE] }
 
     it { is_expected.to be_a_success }
@@ -19,7 +24,12 @@ RSpec.describe INSEE::UniteLegale, type: :retriever_organizer do
     end
   end
 
-  context 'with an entrepreneur individuel non diffusable', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
+  context 'with an entrepreneur individuel non diffusable' do
+    before do
+      stub_insee_authenticate
+      stub_insee_unite_legale_non_diffusable
+    end
+
     let(:siren) { non_diffusable_siren }
 
     it { is_expected.to be_a_success }

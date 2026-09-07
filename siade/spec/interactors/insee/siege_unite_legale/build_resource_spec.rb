@@ -15,7 +15,12 @@ RSpec.describe INSEE::SiegeUniteLegale::BuildResource, type: :build_resource do
     }
   end
 
-  context 'with valid siren', vcr: { cassette_name: 'insee/siege/active_GE_with_token' } do
+  context 'with valid siren' do
+    before do
+      stub_insee_authenticate
+      stub_insee_siege_active_ge
+    end
+
     let(:siren) { sirens_insee_v3[:active_GE] }
 
     it { is_expected.to be_a_success }

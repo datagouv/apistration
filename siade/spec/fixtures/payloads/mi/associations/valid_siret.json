@@ -1,0 +1,316 @@
+{
+  "id_siren": "775672272",
+  "id_rna": "W751004076",
+  "id_correspondance": "1011627",
+  "identite": {
+    "nom": "CROIX ROUGE FRANCAISE",
+    "nom_sirene": "CROIX ROUGE FRANCAISE",
+    "sigle": "CRF",
+    "sigle_sirene": "CRF",
+    "id_rna": "W751004076",
+    "id_ex": "759S4076",
+    "id_siren": "775672272",
+    "id_siret_siege": "77567227221138",
+    "id_correspondance": "1011627",
+    "id_forme_juridique": "9230",
+    "lib_forme_juridique": "Association déclarée, reconnue d'utilité publique",
+    "date_pub_jo": "0001-01-01",
+    "date_creat": "1964-12-30",
+    "date_creation_sirene": "1952-05-11",
+    "date_dissolution": "0001-01-01",
+    "date_modif_rna": "2022-08-10",
+    "date_modif_siren": "2022-11-10",
+    "active": "true",
+    "active_sirene": "true",
+    "nature": "Reconnue d'utilité publique",
+    "util_publique": "true",
+    "date_publication_util_publique": "1945-04-17",
+    "groupement": "Simple",
+    "eligibilite_cec": "true",
+    "regime": "loi1901",
+    "impots_commerciaux": "false"
+  },
+  "activites": {
+    "objet": "prévenir et alléger en toutes circonstances les souffrances humaines. Protéger la vie et la santé ainsi qu'à faire respecter la personnes humaine.",
+    "id_objet_social1": "017055",
+    "lib_objet_social1": "accompagnement, aide aux malades",
+    "id_famille1": "017000",
+    "lib_famille1": "santé ",
+    "id_theme1": "4",
+    "lib_theme1": "Santé et action sociale",
+    "id_activite_principale": "88.99B",
+    "lib_activite_principale": "Action sociale sans hébergement n.c.a.",
+    "annee_activite_principale": "0",
+    "champ_action_territorial": "national",
+    "id_tranche_effectif": "53",
+    "lib_tranche_effectif": "10 000 salariés et plus",
+    "effectif_salarie_cent": "0",
+    "annee_effectif_salarie_cent": "2020",
+    "appartenance_ess": "N",
+    "domaine": "Autre"
+  },
+  "coordonnees": {
+    "adresse_siege": {
+      "num_voie": "98",
+      "type_voie": "RUE",
+      "voie": "Didot",
+      "cp": "75694",
+      "commune": "Paris 14e",
+      "code_insee": "75114",
+      "code_type_voie_insee": "RUE"
+    },
+    "adresse_siege_sirene": {
+      "cplt_1": "SITE CROIX ROUGE",
+      "num_voie": "98",
+      "type_voie": "RUE",
+      "voie": "DIDOT",
+      "cp": "75014",
+      "commune": "PARIS 14",
+      "cedex": "75694",
+      "code_insee": "75114"
+    },
+    "adresse_gestion": {
+      "cplt_3": "CS 90070",
+      "voie": "21 rue de la Vanne",
+      "cp": "92126",
+      "commune": "Montrouge",
+      "cedex": "Cedex",
+      "pays": "FRANCE"
+    },
+    "telephone": "0144431100",
+    "courriel": "formation.benevoles@croix-rouge.fr",
+    "site_web": "www.croix-rouge.fr"
+  },
+  "commentaire": {
+    "note": "Association reconnue d'utilité publique"
+  },
+  "specificites": "{\"passsport\": {\"activites\": \"!Multi activités physiques ou sportives\", \"est_volontaire\": \"true\"}}",
+  "reseaux_affiliation": {
+    "reseau_affiliation": {
+      "id_correspondance": "1234567",
+      "nom": "CROIX ROUGE FRANCAISE",
+      "id_rna": "W751004076",
+      "id_siret": "77567227221138",
+      "objet": "prévenir et alléger en toutes circonstances les souffrances humaines. Protéger la vie et la santé ainsi qu'à faire respecter la personnes humaine.",
+      "nb_licencies": "2",
+      "nb_licencies_h": "1",
+      "nb_licencies_f": "1",
+      "numero": "37050001"
+    }
+  },
+  "composition_reseau": {
+    "membre": {
+      "id_correspondance": "123456",
+      "nom": "ARTS ET CULTURES EN FOLIE",
+      "id_rna": "W532003071",
+      "id_siret": "81412456600013",
+      "objet": "rassembler des associations de solidarité (caritatives et humanitaires) dans le but d'organiser des manifestations culturelles",
+      "adresse": {
+        "cplt_3": "_",
+        "num_voie": "43",
+        "type_voie": "RUE",
+        "voie": "des Grands Carrés",
+        "cp": "53000",
+        "commune": "Laval"
+      },
+      "telephone": "0836656565",
+      "courriel": "whatever@gouv.fr"
+    }
+  },
+  "representants_legaux": [
+    {
+      "id": "234567",
+      "civilite": "Monsieur",
+      "nom": "Martin",
+      "prenom": "Jean",
+      "fonction": "Directeur général",
+      "telephone": "0837777777",
+      "courriel": "martin.jean@croix-rouge.fr",
+      "id_siret": "77567227221138",
+      "deleted": "false"
+    },
+    {
+      "id": "123456",
+      "civilite": "Madame",
+      "nom": "Dupont",
+      "prenom": "Aurélie",
+      "fonction": "Secrétaire générale",
+      "telephone": "0836666666",
+      "courriel": "dupont.aurelie@croix-rouge.fr",
+      "id_siret": "77567227235716",
+      "deleted": "false"
+    }
+  ],
+  "rhs": [
+    {
+      "annee": "2022",
+      "nb_benevoles": "70",
+      "nb_volontaires": "0",
+      "nb_salaries": "0",
+      "nb_salaries_etpt": "0.0",
+      "id_siret": "77567227221138",
+      "nb_emplois_aides": "0",
+      "nb_personnels_detaches": "0",
+      "nb_adherents": "70",
+      "nb_adherents_h": "36",
+      "nb_adherents_f": "34"
+    },
+    {
+      "annee": "2022",
+      "nb_benevoles": "80",
+      "nb_volontaires": "0",
+      "nb_salaries": "0",
+      "nb_salaries_etpt": "0.0",
+      "id_siret": "77567227235716",
+      "nb_emplois_aides": "0",
+      "nb_personnels_detaches": "0",
+      "nb_adherents": "90",
+      "nb_adherents_h": "36",
+      "nb_adherents_f": "44"
+    },
+    {
+      "annee": "2021",
+      "nb_benevoles": "512",
+      "nb_volontaires": "3",
+      "nb_salaries": "1",
+      "nb_salaries_etpt": "1.0",
+      "id_siret": "77567227221138",
+      "nb_emplois_aides": "0",
+      "nb_personnels_detaches": "0",
+      "nb_adherents": "512",
+      "nb_adherents_h": "256",
+      "nb_adherents_f": "256"
+    }
+  ],
+  "agrements": [
+    {
+      "type": "Education nationale",
+      "numero": "05.11.2018",
+      "niveau": "national",
+      "attributeur": "Ministère de l'éducation nationale et de la jeunesse",
+      "date_attribution": "2017-10-18",
+      "id": "12345",
+      "url": "http://localhost:8181/services/documents/00000000-0000-0000-0000-000000000001"
+    }
+  ],
+  "comptes": [
+    {
+      "annee": "2020",
+      "dons": "0.00",
+      "subv": "23456.00",
+      "subv_cause": "toutes activités",
+      "aides_3ans": "0.00",
+      "produits": "234567.00",
+      "charges": "123456.00",
+      "resultat": "-14345.00",
+      "id": "23456",
+      "id_siret": "77567227221138"
+    }
+  ],
+  "etablissements": [
+    {
+      "id_siret": "77567227221138",
+      "id_siren": "775672272",
+      "nom": "CROIX ROUGE FRANCAISE",
+      "courriel": "contact@croix-rouge.fr",
+      "telephone": "01 56 88 01 83",
+      "est_siege": "true",
+      "actif": "true",
+      "date_actif": "2006-01-24",
+      "adresse": {
+        "cplt_1": "SITE CROIX ROUGE",
+        "num_voie": "98",
+        "type_voie": "RUE",
+        "voie": "DIDOT",
+        "cp": "75014",
+        "commune": "PARIS 14",
+        "cedex": "75694",
+        "code_insee": "75114"
+      },
+      "id_activite_principale": "88.99B",
+      "lib_activite_principale": "Action sociale sans hébergement n.c.a.",
+      "annee_activite_principale": "0 ",
+      "id_tranche_effectif": "41",
+      "lib_tranche_effectif": "500 à 999 salariés",
+      "effectif_salarie_cent": "0",
+      "annee_effectif_salarie_cent": "2019"
+    },
+    {
+      "id_siret": "77567227235716",
+      "id_siren": "775672272",
+      "nom": "CROIX ROUGE FRANCAISE UL LE HOUGA",
+      "courriel": "ul.lehouga@croix-rouge.fr",
+      "telephone": "0562030879",
+      "est_siege": "false",
+      "actif": "true",
+      "date_actif": "2019-03-11",
+      "adresse": {
+        "num_voie": "23",
+        "type_voie": "ROUTE",
+        "voie": "DE MONT-DE-MARSAN",
+        "cp": "32460",
+        "commune": "LE HOUGA",
+        "code_insee": "32155"
+      },
+      "id_activite_principale": "88.99B",
+      "lib_activite_principale": "Action sociale sans hébergement n.c.a.",
+      "annee_activite_principale": "0 ",
+      "id_tranche_effectif": "00",
+      "lib_tranche_effectif": "0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)",
+      "effectif_salarie_cent": "0",
+      "annee_effectif_salarie_cent": "0 "
+    }
+  ],
+  "ribs": {
+    "rib": {
+      "titulaire": "Croix Rouge Française",
+      "banque": "Société Générale",
+      "domiciliation": "SG Paris (75001) 51 rue de la Paix 75001 Paris",
+      "iban": "FR7630003004452345676543456",
+      "bic": "SOGEFRXXXXX",
+      "id_siret": "77567227221138",
+      "id": "12345",
+      "deleted": "false"
+    }
+  },
+  "documents": {
+    "nbDocDac": "2",
+    "nbDocRna": "1",
+    "document_dac": [
+      {
+        "meta": {
+          "id_siret": "77567227221138",
+          "type": "RAR",
+          "id_correspondance": "1234567",
+          "etat": "archivé"
+        },
+        "time_depot": "2018-09-01 21:00:00",
+        "uuid": "00000000-0000-0000-0000-000000000002",
+        "nom": "RapportActivite2018.docx",
+        "url": "https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000002"
+      },
+      {
+        "meta": {
+          "id_siret": "77567227235716",
+          "type": "CPA",
+          "id_correspondance": "2345678",
+          "etat": "courant"
+        },
+        "time_depot": "2019-09-01 21:00:00",
+        "uuid": "00000000-0000-0000-0000-000000000003",
+        "nom": "RapportActivite2019.docx",
+        "url": "https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000003"
+      }
+    ],
+    "document_rna": {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "type": "PIECE",
+      "annee": "2014",
+      "sous_type": "ARR",
+      "even": "5106010",
+      "time": "1604185200",
+      "url": "https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000004",
+      "lib_sous_type": "Arrêté"
+    }
+  }
+}

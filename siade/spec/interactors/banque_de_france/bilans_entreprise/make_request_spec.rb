@@ -8,7 +8,9 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::MakeRequest, type: :make_reques
       }
     end
 
-    context 'with a valid siren', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/valid_siren' } do
+    context 'with a valid siren' do
+      before { mock_valid_banque_de_france }
+
       let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 
       it { is_expected.to be_a_success }

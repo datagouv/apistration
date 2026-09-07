@@ -31,11 +31,12 @@ RSpec.describe 'Pole Emploi: Indemnites', api: :particulierv2, type: %i[request 
       let(:x_api_key) { nil }
       let(:scopes) { nil }
 
-      describe 'with valid token and mandatory params', vcr: { cassette_name: 'france_travail/oauth2' } do
+      describe 'with valid token and mandatory params' do
         let(:x_api_key) { TokenFactory.new(scopes).valid }
         let(:scopes) { %w[pole_emploi_paiements] }
 
         before do
+          stub_france_travail_authenticate
           stub_france_travail_indemnites_valid(identifiant:)
         end
 

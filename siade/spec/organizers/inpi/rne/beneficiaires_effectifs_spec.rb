@@ -1,6 +1,8 @@
 RSpec.describe INPI::RNE::BeneficiairesEffectifs, type: :retriever_organizer do
-  describe '.call', vcr: { cassette_name: 'inpi/rne/authenticate' } do
+  describe '.call' do
     subject { described_class.call(params:) }
+
+    before { stub_inpi_rne_authenticate }
 
     let(:params) do
       {

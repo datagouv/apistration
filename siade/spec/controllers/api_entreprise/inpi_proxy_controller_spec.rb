@@ -36,7 +36,12 @@ RSpec.describe APIEntreprise::INPIProxyController do
       its(:parsed_body) { is_expected.to have_json_api_format_errors }
     end
 
-    describe 'when RNE renders valid response', vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
+    describe 'when RNE renders valid response' do
+      before do
+        stub_inpi_rne_authenticate
+        stub_inpi_rne_download_valid(target:, document_id:)
+      end
+
       it { is_expected.to have_http_status(:ok) }
 
       it 'returns the document_url' do
@@ -57,7 +62,7 @@ RSpec.describe APIEntreprise::INPIProxyController do
         its(:parsed_body) { is_expected.to have_json_error(detail: 'Le lien de téléchargement est expiré.') }
       end
 
-      describe 'when it is a bilan', vcr: { cassette_name: 'inpi/rne/bilans_download/valid' } do
+      describe 'when it is a bilan' do
         let(:target) { 'bilans' }
 
         it { is_expected.to have_http_status(:ok) }
@@ -68,8 +73,9 @@ RSpec.describe APIEntreprise::INPIProxyController do
       end
     end
 
-    describe 'when rne renders a 404', vcr: { cassette_name: 'inpi/rne/authenticate' } do
+    describe 'when rne renders a 404' do
       before do
+        stub_inpi_rne_authenticate
         stub_inpi_rne_download_not_found(target:, document_id:)
       end
 

@@ -23,7 +23,9 @@ RSpec.describe 'FranceTravail: Statut with identifiant', api: :particulier, type
 
       too_many_requests(FranceTravail::Statut)
 
-      describe 'with valid token and mandatory params', :valid, vcr: { cassette_name: 'france_travail/oauth2' } do
+      describe 'with valid token and mandatory params', :valid do
+        before { stub_france_travail_authenticate }
+
         describe 'when it is found' do
           before do
             stub_france_travail_statut_valid
