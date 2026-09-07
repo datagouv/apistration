@@ -15,7 +15,7 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
       )
 
       if params[:test_invalid_franceconnect_params]
-        organizer.errors = [UnprocessableEntityError.new(:gender)]
+        organizer.errors = [UnprocessableEntityError.new(:sexe_etat_civil)]
         render_errors(organizer)
       elsif params[:test_invalid_recipient]
         organizer.errors = [InvalidRecipientError.new]

@@ -30,19 +30,12 @@
 - subcode: '006'
   title: "Erreur d'authentification auprès du fournisseur de données"
 
-- subcode: '007'
-  title: "Entité disparue"
-
 - subcode: '008'
   title: 'Erreur auprès du fournisseur de données : trop de requêtes'
 
 - subcode: '009'
   title: "Erreur de connexion sécurisée (TLS) avec le fournisseur de données"
   detail: "La connexion sécurisée avec le fournisseur de données n'a pas pu être établie : certificat invalide ou expiré, ou échec de la négociation TLS. L'équipe technique a été notifiée de cette erreur pour investigation."
-
-- subcode: '010'
-  title: 'Contenu partiel'
-  detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."
 
 - subcode: '011'
   title: 'Erreur temporaire du fournisseur de données'
@@ -146,12 +139,6 @@
   source:
     parameter: 'recipient'
 
-- code: '00211'
-  title: "Le paramètre recipient est identique au SIRET/SIREN appelé."
-  detail: "Le paramètre recipient est identique au SIRET/SIREN appelé, or ce paramètre de traçabilité doit correspondre au SIRET de l'organisation publique habilitée à utiliser la donnée. Si vous êtes une collectivité ou une administration, ce paramètre doit donc être votre numéro de SIRET ; si vous êtes un éditeur, il s'agit du SIRET de l'organisation publique cliente demandant la donnée."
-  source:
-    parameter: 'recipient'
-
 - code: '00212'
   title: 'Entité non traitable'
   detail: "Plusieurs délégations actives existent pour ce SIRET. Le paramètre delegation_id est requis pour identifier la délégation."
@@ -212,10 +199,6 @@
   source:
     parameter: 'month'
 
-- code: '00306'
-  title: 'Entité non traitable'
-  detail: "Le code INSEE commune n'est pas correctement formaté"
-
 - code: '00316'
   title: 'Entité non traitable'
   detail: "Le token_id n'est pas correctement formaté"
@@ -240,26 +223,6 @@
   title: 'Entité non traitable'
   detail: "Le user_id n'est pas correctement formaté"
 
-- code: '00309'
-  title: 'Entité non traitable'
-  detail: 'Invalide request_name'
-
-- code: '00310'
-  title: 'Entité non traitable'
-  detail: "Le type d'attestation indiqué n'est pas correctement formatté (uniquement: AVG_UR)"
-
-- code: '00311'
-  title: 'Entité non traitable'
-  detail: "Le siren_is n'est pas correctement formatté"
-  source:
-    parameter: 'siren_is'
-
-- code: '00312'
-  title: 'Entité non traitable'
-  detail: "Le siren_tva n'est pas correctement formatté"
-  source:
-    parameter: 'siren_tva'
-
 - code: '00313'
   title: 'Entité non traitable'
   detail: "Le paramètre limit n'est pas correctement formatté"
@@ -276,29 +239,13 @@
   title: 'Entité non traitable'
   detail: "Le code postal n'est pas correctement formatté"
 
-- code: '00352'
-  title: 'Entité non traitable'
-  detail: "Le numéro d'allocataire n'est pas correctement formatté"
-
 - code: '00360'
   title: 'Entité non traitable'
   detail: "Le numéro d'INE n'est pas correctement formatté"
 
-- code: '00361'
-  title: 'Entité non traitable'
-  detail: "Le nom de famille est manquant"
-
-- code: '00362'
-  title: 'Entité non traitable'
-  detail: "Le prénom est manquant"
-
 - code: '00363'
   title: 'Entité non traitable'
   detail: "La date de naissance n'est pas correctement formatté"
-
-- code: '00364'
-  title: 'Entité non traitable'
-  detail: "Le sexe n'est pas correctement formaté (m ou f)"
 
 - code: '00365'
   title: 'Entité non traitable'
@@ -311,14 +258,6 @@
 - code: '00368'
   title: 'Entité non traitable'
   detail: "L'année de campagne (campaignYear) n'est pas correctement formatée: doit être une année sur 4 chiffres supérieure ou égale à 2021"
-
-- code: '00370'
-  title: 'Entité non traitable'
-  detail: "Le numéro fiscal n'est pas correctement formaté"
-
-- code: '00371'
-  title: 'Entité non traitable'
-  detail: "La référence de l'avis n'est pas correctement formatée"
 
 - code: '00380'
   title: 'Entité non traitable'
@@ -395,10 +334,6 @@
 - code: '00425'
   title: 'Entité non traitable'
   detail: "La date de naissance n'est pas valide"
-
-- code: '00426'
-  title: 'Entité non traitable'
-  detail: "Le code cog de la commune de naissance est manquant"
 
 - code: '00427'
   title: 'Entité non traitable'
@@ -501,15 +436,7 @@
   title: 'Potentielle ressource non trouvée'
   detail: "Le serveur a renvoyé une erreur interne, mais cela peut aussi indiquer que le siret ou siren renseigné n'existe pas, n'est pas connu, n'est pas en règle de ses obligations fiscales ou ne comporte aucune information pour cet appel."
 
-- code: '03510'
-  title: 'Limitation de débit'
-  detail: "Le fournisseur de données a rejeté la demande en raison d'un trop grand nombre d'échecs antérieurs."
-
 ## CNAV
-
-- code: '00353'
-  title: 'Entité non traitable'
-  detail: "L'année demandée n'est pas correctement formatée ou est dans le futur."
 
 - code: '00356'
   title: 'Entité non traitable'
@@ -530,12 +457,6 @@
   detail: "Les serveurs de la Banque de France rencontrent une erreur interne"
 
 ## ACOSS
-
-- code: '04101'
-  title: 'Réponse invalide'
-
-- code: '04102'
-  title: 'Code erreur non supporté'
 
 - code: '04501'
   title: 'Analyse manuelle de la situation du compte en cours'
@@ -571,10 +492,6 @@
   detail: "Une erreur du fournisseur de données empêche la délivrance des informations, il s'agit certainement d'un numéro de siren hors périmètre."
 
 ## CNAF
-
-- code: '23502'
-  title: 'Quotient familial manquant'
-  detail: 'Le bénéficiaire a bien été trouvé mais la réponse du fournisseur de données ne retourne pas de quotient familial.'
 
 ## DSNJ
 

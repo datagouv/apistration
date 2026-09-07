@@ -248,13 +248,13 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_content_error_gender_error:
+                unprocessable_content_error_sexe_etat_civil_error:
                   value:
                     error: wrong_parameter
-                    reason: Le sexe n'est pas correctement formaté (m ou f)
-                    message: Le sexe n'est pas correctement formaté (m ou f)
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
                   summary: Entité non traitable
-                  description: Le sexe n'est pas correctement formaté (m ou f)
+                  description: Le sexe de l'état civil est manquant
                 entite_non_trouvee_35003:
                   value:
                     error: not_found
@@ -550,13 +550,13 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_content_error_gender_error:
+                unprocessable_content_error_sexe_etat_civil_error:
                   value:
                     error: wrong_parameter
-                    reason: Le sexe n'est pas correctement formaté (m ou f)
-                    message: Le sexe n'est pas correctement formaté (m ou f)
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
                   summary: Entité non traitable
-                  description: Le sexe n'est pas correctement formaté (m ou f)
+                  description: Le sexe de l'état civil est manquant
                 entite_non_trouvee_35003:
                   value:
                     error: not_found
@@ -863,13 +863,13 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_content_error_gender_error:
+                unprocessable_content_error_sexe_etat_civil_error:
                   value:
                     error: wrong_parameter
-                    reason: Le sexe n'est pas correctement formaté (m ou f)
-                    message: Le sexe n'est pas correctement formaté (m ou f)
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
                   summary: Entité non traitable
-                  description: Le sexe n'est pas correctement formaté (m ou f)
+                  description: Le sexe de l'état civil est manquant
                 entite_non_trouvee_40003:
                   value:
                     error: not_found
@@ -1173,13 +1173,13 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_content_error_gender_error:
+                unprocessable_content_error_sexe_etat_civil_error:
                   value:
                     error: wrong_parameter
-                    reason: Le sexe n'est pas correctement formaté (m ou f)
-                    message: Le sexe n'est pas correctement formaté (m ou f)
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
                   summary: Entité non traitable
-                  description: Le sexe n'est pas correctement formaté (m ou f)
+                  description: Le sexe de l'état civil est manquant
                 entite_non_trouvee_35003:
                   value:
                     error: not_found
@@ -2037,13 +2037,13 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_content_error_gender_error:
+                unprocessable_content_error_sexe_etat_civil_error:
                   value:
                     error: wrong_parameter
-                    reason: Le sexe n'est pas correctement formaté (m ou f)
-                    message: Le sexe n'est pas correctement formaté (m ou f)
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
                   summary: Entité non traitable
-                  description: Le sexe n'est pas correctement formaté (m ou f)
+                  description: Le sexe de l'état civil est manquant
                 entite_non_trouvee_35003:
                   value:
                     error: not_found
@@ -2341,13 +2341,13 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_content_error_gender_error:
+                unprocessable_content_error_sexe_etat_civil_error:
                   value:
                     error: wrong_parameter
-                    reason: Le sexe n'est pas correctement formaté (m ou f)
-                    message: Le sexe n'est pas correctement formaté (m ou f)
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
                   summary: Entité non traitable
-                  description: Le sexe n'est pas correctement formaté (m ou f)
+                  description: Le sexe de l'état civil est manquant
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
