@@ -101,7 +101,7 @@ RSpec.describe 'Rack::Attack acceptance' do
       end
 
       let(:non_throttled_swagger_operation_ids) do
-        %w[api_entreprise_vrivileges_]
+        %w[api_entreprise_privileges]
       end
 
       it 'all throttled operation_ids exist in the OpenAPI specs (except internal endpoints)' do
