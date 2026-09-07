@@ -13,6 +13,13 @@ class ErrorRegistry
       decl
     end
 
+    def retract(validator_class, error_class, **options)
+      decl = Declaration.new(error_class:, options: options.freeze)
+      bucket = retractions[validator_class] ||= []
+      bucket << decl unless bucket.include?(decl)
+      decl
+    end
+
     def mark_guarded(validator_class)
       declarations[validator_class] ||= []
     end
@@ -22,7 +29,10 @@ class ErrorRegistry
     end
 
     def declarations_for(validator_class)
-      validator_class.ancestors.flat_map { |klass| declarations.fetch(klass, []) }.uniq
+      inherited = validator_class.ancestors.flat_map { |klass| declarations.fetch(klass, []) }.uniq
+      retracted = validator_class.ancestors.flat_map { |klass| retractions.fetch(klass, []) }
+
+      inherited - retracted
     end
 
     def direct_declarations_for(validator_class)
@@ -46,12 +56,17 @@ class ErrorRegistry
 
     def reset!
       @declarations = {}
+      @retractions = {}
     end
 
     private
 
     def declarations
       @declarations ||= {}
+    end
+
+    def retractions
+      @retractions ||= {}
     end
 
     def flatten_chain(klass)

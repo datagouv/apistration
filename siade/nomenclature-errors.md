@@ -83,7 +83,7 @@ l'invariant impossible à violer.
 Concrètement : une erreur émise depuis un `ValidateParams` porte le préfixe
 `00`, une erreur émise depuis un `ValidateResponse` porte un préfixe
 fournisseur. La règle est vérifiée par
-[`spec/services/errors_nomenclature_spec.rb`](spec/services/errors_nomenclature_spec.rb).
+[`spec/acceptances/errors_nomenclature_conformity_spec.rb`](spec/acceptances/errors_nomenclature_conformity_spec.rb).
 
 ### Codes erreur (YYY)
 

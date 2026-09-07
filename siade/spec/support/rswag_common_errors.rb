@@ -1,19 +1,7 @@
 # rubocop:disable-next Metrics/ModuleLength
 module RSwagCommonErrors
-  BASELINE_PROVIDER_ERROR_CLASSES = [
-    ProviderUnknownError,
-    ProviderInternalServerError,
-    ProviderRateLimitingError,
-    ProviderTemporaryError,
-    SSLCertificateError
-  ].freeze
-
-  BASELINE_NETWORK_ERROR_CLASSES = [
-    ProviderTimeoutError,
-    ProviderUnavailable,
-    NetworkError,
-    DnsResolutionError
-  ].freeze
+  BASELINE_PROVIDER_ERROR_CLASSES = Errors::BaselineErrors::PROVIDER_ERROR_CLASSES
+  BASELINE_NETWORK_ERROR_CLASSES = Errors::BaselineErrors::NETWORK_ERROR_CLASSES
 
   def unauthorized_request(&block)
     describe 'with valid mandatory params but invalid token' do

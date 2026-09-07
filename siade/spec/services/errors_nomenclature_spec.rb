@@ -1,53 +1,72 @@
-RSpec.describe 'errors nomenclature' do # rubocop:disable RSpec/DescribeClass
-  let(:backend) { ErrorsBackend.instance }
+require 'rails_helper'
 
-  before { Rails.application.eager_load! }
+RSpec.describe ErrorsNomenclature, type: :service do
+  subject(:nomenclature) { described_class.new(api).to_h }
 
-  describe 'every configured code belongs to a known data provider' do
-    it 'has no code whose prefix is unallocated' do
-      configured_codes = YAML.load_file(Rails.root.join('config/errors.yml'), aliases: true)
-        .filter_map { |entry| entry['code']&.to_s }
+  def codes_for(operation_id, status)
+    nomenclature.dig('endpoints', operation_id, 'errors', status).pluck('code')
+  end
 
-      unallocated = configured_codes.reject { |code| backend.provider_from_code(code) }
+  context 'with API Entreprise' do
+    let(:api) { :entreprise }
 
-      expect(unallocated).to be_empty,
-        "codes with an unallocated provider prefix: #{unallocated.inspect}"
+    it 'names the API it describes' do
+      expect(nomenclature['api']).to eq('entreprise')
+    end
+
+    it 'lists the provider prefixes and the generic subcodes' do
+      expect(nomenclature['providers']).to include('04' => 'ACOSS', '00' => 'API Entreprise')
+      expect(nomenclature['generic_subcodes']['001']).to include('title' => 'Service non disponible')
+    end
+
+    it 'keeps the network error apart from the parameter error sharing its code' do
+      network_error = nomenclature.dig('platform_codes', '502').find { |error| error['code'] == '00501' }
+
+      expect(network_error['title']).to eq('Erreur réseau')
+      expect(UnprocessableEntityError.new(:document_id).code).to eq('00501')
+    end
+
+    it 'follows the organizer each version runs' do
+      expect(codes_for('api_entreprise_v3_acoss_attestations_sociales', '502')).to include('04503')
+      expect(codes_for('api_entreprise_v4_acoss_attestations_sociales', '502')).not_to include('04503')
+    end
+
+    it 'covers the errors of a document endpoint' do
+      expect(codes_for('api_entreprise_v3_acoss_attestations_sociales', '502')).to include('04051', '04055', '00502')
+    end
+
+    it 'orders the statuses by what the caller has to do' do
+      expect(nomenclature.dig('endpoints', 'api_entreprise_v3_acoss_attestations_sociales', 'errors').keys.first(3))
+        .to eq(%w[422 404 502])
     end
   end
 
-  describe 'every declaration can build the error it announces' do
-    it 'has no declaration whose example cannot be instantiated' do
-      failures = ApplicationInteractor.descendants.flat_map do |interactor|
-        ErrorRegistry.direct_declarations_for(interactor).filter_map do |declaration|
-          declaration.build(provider_name: 'CNAV').code
+  context 'with API Particulier' do
+    let(:api) { :particulier }
 
-          nil
-        rescue StandardError => e
-          "#{interactor}: #{declaration.error_class} #{declaration.options.inspect} -> #{e.class}: #{e.message}"
-        end
-      end
-
-      expect(failures).to be_empty, failures.join("\n")
+    it 'gives the CNAV endpoints the prefix of the caisses they query' do
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_civility', '502')).to include('36000')
+      expect(codes_for('api_particulier_v3_cnav_quotient_familial_with_civility', '502')).to include('35000')
     end
-  end
 
-  describe 'an error raised from a provider response names that provider' do
-    it 'has no `00` prefixed error declared on a ValidateResponse' do
-      offenders = ValidateResponse.descendants.flat_map do |validator|
-        ErrorRegistry.direct_declarations_for(validator).filter_map do |declaration|
-          code = declaration.build(provider_name: 'CNAV').code
+    it 'lists the 404 of every caisse behind a prestation' do
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_civility', '404'))
+        .to include('23003', '10003', '40003', '35003')
+    end
 
-          "#{validator}: #{declaration.error_class} -> #{code}" if code.start_with?('00')
-        end
-      end
+    it 'documents the allocataire not eligible to the EAJE participation' do
+      expect(codes_for('api_particulier_v3_cnav_participation_familiale_eaje_with_civility', '404')).to include('37003')
+    end
 
-      expect(offenders).to be_empty, <<~MESSAGE
-        A `00` prefix means "no data provider was queried". These errors are emitted
-        from a ValidateResponse, hence after a provider round trip, so they must carry
-        that provider's prefix (see ProviderUnprocessableEntityError):
+    it 'adds the FranceConnect token errors to the FranceConnect variant only' do
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_france_connect', '401'))
+        .to eq(%w[51501 51502 51503 51504])
+      expect(nomenclature.dig('endpoints', 'api_particulier_v3_cnav_prime_activite_with_civility', 'errors')).not_to have_key('401')
+    end
 
-        #{offenders.join("\n")}
-      MESSAGE
+    it 'names the field a validator rejects rather than the HTTP parameter' do
+      expect(codes_for('api_particulier_v3_cnav_quotient_familial_with_civility', '422')).to include('00356')
+      expect(codes_for('api_particulier_v3_cnav_quotient_familial_with_civility', '422')).not_to include('00307')
     end
   end
 end
