@@ -1,5 +1,6 @@
 class Infogreffe::ValidateResponse < ValidateResponse
-  declares_no_specific_errors!
+  raises InfogreffeError, kind: :temporary_credentials_error
+  raises InfogreffeError, kind: :cant_generate_command
 
   def call
     return if http_ok? && payload_has_siren?
