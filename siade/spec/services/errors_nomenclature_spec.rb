@@ -19,11 +19,9 @@ RSpec.describe ErrorsNomenclature, type: :service do
       expect(nomenclature['generic_subcodes']['001']).to include('title' => 'Service non disponible')
     end
 
-    it 'keeps the network error apart from the parameter error sharing its code' do
-      network_error = nomenclature.dig('platform_codes', '502').find { |error| error['code'] == '00501' }
-
-      expect(network_error['title']).to eq('Erreur réseau')
-      expect(UnprocessableEntityError.new(:document_id).code).to eq('00501')
+    it 'documents the platform errors that need no provider' do
+      expect(nomenclature.dig('platform_codes', '502').pluck('code')).to eq(['00501'])
+      expect(nomenclature.dig('platform_codes', '400').pluck('code')).to eq(['00401'])
     end
 
     it 'follows the organizer each version runs' do
