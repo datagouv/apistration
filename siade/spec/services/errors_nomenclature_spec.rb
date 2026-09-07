@@ -15,11 +15,27 @@ RSpec.describe 'errors nomenclature' do # rubocop:disable RSpec/DescribeClass
     end
   end
 
+  describe 'every declaration can build the error it announces' do
+    it 'has no declaration whose example cannot be instantiated' do
+      failures = ApplicationInteractor.descendants.flat_map do |interactor|
+        ErrorRegistry.direct_declarations_for(interactor).filter_map do |declaration|
+          declaration.build(provider_name: 'CNAV').code
+
+          nil
+        rescue StandardError => e
+          "#{interactor}: #{declaration.error_class} #{declaration.options.inspect} -> #{e.class}: #{e.message}"
+        end
+      end
+
+      expect(failures).to be_empty, failures.join("\n")
+    end
+  end
+
   describe 'an error raised from a provider response names that provider' do
     it 'has no `00` prefixed error declared on a ValidateResponse' do
       offenders = ValidateResponse.descendants.flat_map do |validator|
         ErrorRegistry.direct_declarations_for(validator).filter_map do |declaration|
-          code = declaration.error_class.build_example(provider_name: 'CNAV', **declaration.options).code
+          code = declaration.build(provider_name: 'CNAV').code
 
           "#{validator}: #{declaration.error_class} -> #{code}" if code.start_with?('00')
         end

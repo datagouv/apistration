@@ -1,4 +1,6 @@
 class DSNJ::ServiceNational::ValidateDateNaissance < Civility::ValidateDateNaissance
+  raises DSNJError, kind: :irrelevant_age
+
   def call
     super
 

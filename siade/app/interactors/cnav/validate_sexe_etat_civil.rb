@@ -1,4 +1,6 @@
 class CNAV::ValidateSexeEtatCivil < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :sexe_etat_civil
+
   def call
     return if param(:sexe_etat_civil).blank?
 
