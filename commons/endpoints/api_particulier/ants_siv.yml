@@ -63,6 +63,9 @@ fiche:
     # La liste des clés disponible est stockée dans la locale `provider_uids` du fichier provider_uids.fr.yml
     provider_uids:
       - 'ants'
+    historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
     keywords:
       - 'immatriculation'
       - 'siv'

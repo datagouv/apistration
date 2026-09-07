@@ -99,6 +99,21 @@ RSpec.describe ApiParticulier::Client do
       client.ping_provider('cnaf_msa_quotient_familial')
       expect(stub).to have_been_requested
     end
+
+    it 'errors calls /api/errors' do
+      stub = stub_request(:get, 'https://staging.particulier.api.gouv.fr/api/errors')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.errors
+      expect(stub).to have_been_requested
+    end
+
+    it 'errors narrows the nomenclature to one operation' do
+      stub = stub_request(:get, 'https://staging.particulier.api.gouv.fr/api/errors')
+             .with(query: { operation_id: 'api_particulier_v3_cnav_prime_activite_with_civility' })
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.errors(operation_id: 'api_particulier_v3_cnav_prime_activite_with_civility')
+      expect(stub).to have_been_requested
+    end
   end
 
   describe 'local validation' do

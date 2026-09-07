@@ -159,6 +159,24 @@ describe('ApiParticulier Client', () => {
       const [url] = fetchMock.mock.calls[0];
       expect(url).toContain('/api/cnaf_msa_quotient_familial/ping');
     });
+
+    it('errors() calls /api/errors', async () => {
+      const fetchMock = mockFetch(200, {});
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.errors();
+      const [url] = fetchMock.mock.calls[0];
+      expect(url).toContain('/api/errors');
+    });
+
+    it('errors() narrows the nomenclature to one operation', async () => {
+      const fetchMock = mockFetch(200, {});
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.errors({ operationId: 'api_particulier_v3_cnav_prime_activite_with_civility' });
+      const [url] = fetchMock.mock.calls[0];
+      expect(url).toContain('operation_id=api_particulier_v3_cnav_prime_activite_with_civility');
+    });
   });
 
   describe('integration: errors', () => {

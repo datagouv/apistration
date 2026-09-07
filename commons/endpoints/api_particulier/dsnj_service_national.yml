@@ -99,6 +99,9 @@ fiche:
     parameters:
       - Identité pivot
       - FranceConnect
+    historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
     keywords:
       - service national
       - jeune

@@ -96,6 +96,8 @@ fiche:
 
           Avec cette option, vous pouvez appeler l'API avec le nom de la commune de naissance et le code du département de naissance. La date de naissance est obligatoire car c'est elle qui permettra à l'API de faire la correspondance avec le bon code COG.
     historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
       **Ce que change le passage à la V.3 d'API Particulier:**
 
       - Le passage à la V.3 n'a pas eu d'impact sur la donnée distribuée qui reste identique ; 
