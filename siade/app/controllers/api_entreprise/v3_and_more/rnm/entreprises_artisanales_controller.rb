@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::RNM::EntreprisesArtisanalesController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::RNM::EntreprisesArtisanales }
+
   def show
     if organizer.success?
       render json: serialize_data,

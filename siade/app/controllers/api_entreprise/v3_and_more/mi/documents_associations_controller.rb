@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::MI::DocumentsAssociationsController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::MI::Associations::Documents }
+
   def show
     if organizer.success?
       render json: serialize_data,

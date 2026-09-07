@@ -1,6 +1,8 @@
 class APIEntreprise::V3AndMore::INPI::RNE::ExtraitRNEController < APIEntreprise::V3AndMore::BaseController
   include APIEntreprise::INPIRNECache
 
+  nomenclature organizers: { 3 => ::INPI::RNE::ExtraitRNE }
+
   def show
     if organizer.success?
       render json: serialize_data,

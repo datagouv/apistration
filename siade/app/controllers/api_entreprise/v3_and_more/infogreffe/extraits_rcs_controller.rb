@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::Infogreffe::ExtraitsRCSController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::Infogreffe::ExtraitsRCS }
+
   def show
     if organizer.success?
       render json: serialize_data,
