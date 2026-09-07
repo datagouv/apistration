@@ -6,7 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-07
+
 ### Added
+- `errors(operation_id: nil)` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/api/errors` (SPECS.md §9.6).
 - CNOUS étudiant boursier : version 5 (défaut) avec le champ `ine` (scope
   `cnous_ine`), renvoyé pour toutes les modalités d'appel.
 - `token.introspect(recipient: nil, delegation_id: nil)` — Introspection du jeton,

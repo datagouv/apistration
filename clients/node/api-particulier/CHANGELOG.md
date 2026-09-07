@@ -1,8 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.4.0
 
-- CNOUS étudiant boursier: add version 5 (new default) with the `ine` field
+### Added
+- `errors({ operationId })` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/api/errors` (SPECS.md §9.6).
+- CNOUS étudiant boursier: version 5 (new default) with the `ine` field
   (`cnous_ine` scope), returned for all call modalities;
   v4 is deprecated (call-time warning).
 - `token.introspect({ recipient?, delegation_id? })` — Introspection du jeton,

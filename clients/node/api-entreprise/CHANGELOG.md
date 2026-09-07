@@ -1,8 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.5.0
 
 ### Added
+- `errors({ operationId })` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/errors` (SPECS.md §9.6).
 - `token.introspect({ recipient?, delegation_id? })` — Introspection du jeton,
   `/v3/token/introspect`. Requires no audit parameter: a client built with a
   token alone can call it.
