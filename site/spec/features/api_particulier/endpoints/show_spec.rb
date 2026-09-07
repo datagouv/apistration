@@ -38,6 +38,28 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
     end
   end
 
+  describe 'provider errors' do
+    it 'lists the errors of the endpoint grouped by status' do
+      expect(page).to have_css('#erreurs')
+      expect(page).to have_text('35003')
+      expect(page).to have_text('35560')
+    end
+
+    it 'lists the FranceConnect token errors in their own block' do
+      expect(page).to have_css('#erreurs-france-connect')
+      expect(page).to have_text('51501')
+      expect(page).to have_text('51504')
+    end
+
+    context 'with an endpoint whose provider has a specific not found' do
+      let(:uid) { 'cnav/psu' }
+
+      it 'lists the allocataire not eligible error' do
+        expect(page).to have_text('37003')
+      end
+    end
+  end
+
   describe 'scope badges and scope list' do
     it 'renders a purple badge carrying the raw scope name next to each gated attribute' do
       expect(page).to have_css('#property_attribute_allocataires .fr-badge--purple-glycine', text: 'cnaf_allocataires')
