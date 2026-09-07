@@ -1,9 +1,4 @@
 RSpec.describe 'errors nomenclature' do # rubocop:disable RSpec/DescribeClass
-  # `00` is documented as "no data provider involved". A handful of legacy
-  # FranceConnect token codes predate that rule and use an unallocated `50`
-  # prefix; they are pending a reclassification of their own.
-  LEGACY_UNALLOCATED_PREFIX_CODES = %w[50001 50002 50003 50004].freeze
-
   let(:backend) { ErrorsBackend.instance }
 
   before { Rails.application.eager_load! }
@@ -13,9 +8,7 @@ RSpec.describe 'errors nomenclature' do # rubocop:disable RSpec/DescribeClass
       configured_codes = YAML.load_file(Rails.root.join('config/errors.yml'), aliases: true)
         .filter_map { |entry| entry['code']&.to_s }
 
-      unallocated = configured_codes
-        .reject { |code| LEGACY_UNALLOCATED_PREFIX_CODES.include?(code) }
-        .reject { |code| backend.provider_from_code(code) }
+      unallocated = configured_codes.reject { |code| backend.provider_from_code(code) }
 
       expect(unallocated).to be_empty,
         "codes with an unallocated provider prefix: #{unallocated.inspect}"

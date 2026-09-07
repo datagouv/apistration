@@ -344,7 +344,7 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     error: unauthorized
                     reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -646,7 +646,7 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     error: unauthorized
                     reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -959,7 +959,7 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     error: unauthorized
                     reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1269,7 +1269,7 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     error: unauthorized
                     reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1839,7 +1839,7 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     error: unauthorized
                     reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -2148,7 +2148,7 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     error: unauthorized
                     reason: Le jeton d'accès n'a pas été trouvé ou est expiré.

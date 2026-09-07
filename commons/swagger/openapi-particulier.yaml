@@ -217,13 +217,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -1588,13 +1589,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -2573,13 +2575,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -3563,13 +3566,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -4541,13 +4545,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -5536,13 +5541,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -6720,13 +6726,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -7841,13 +7848,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -9238,13 +9246,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -10462,13 +10471,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -11483,13 +11493,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -15772,13 +15783,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -17801,13 +17813,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via
@@ -21377,13 +21390,14 @@ paths:
                 missing_france_connect_access_token_error:
                   value:
                     errors:
-                    - code: '50004'
+                    - code: '51504'
                       title: Accès non autorisé
                       detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
                         requiert un jeton d''accès FranceConnect transmis via l''en-tête
                         Authorization: Bearer.'
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: 'Le jeton d''accès FranceConnect est manquant. Cet
                     endpoint requiert un jeton d''accès FranceConnect transmis via

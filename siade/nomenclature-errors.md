@@ -85,11 +85,6 @@ Concrètement : une erreur émise depuis un `ValidateParams` porte le préfixe
 fournisseur. La règle est vérifiée par
 [`spec/services/errors_nomenclature_spec.rb`](spec/services/errors_nomenclature_spec.rb).
 
-> Exception héritée : les codes `50001` à `50004` (jetons FranceConnect)
-> utilisent un préfixe `50` non attribué dans `ErrorsBackend`. Ils sont
-> explicitement listés dans le spec de conformité en attendant leur propre
-> reclassement.
-
 ### Codes erreur (YYY)
 
 #### Erreurs communes de base
