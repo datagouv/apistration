@@ -70,6 +70,10 @@ module ApiEntreprise
       get_public("/ping/#{provider}")
     end
 
+    def errors(operation_id: nil)
+      get_public('/errors', params: { operation_id: operation_id })
+    end
+
     # <scaffold:resources:begin>
     def ademe
       @ademe ||= Resources::Ademe.new(self)

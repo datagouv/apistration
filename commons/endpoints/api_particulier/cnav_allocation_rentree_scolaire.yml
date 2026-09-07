@@ -34,6 +34,9 @@ fiche:
         Cette API **indique si le particulier est bénéficiaire de l'allocation de rentrée scolaire**, en précisant la date d'ouverture du droit.
     provider_uids:
       - 'cnav'
+    historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
     keywords:
       - allocation
       - rentrée scolaire

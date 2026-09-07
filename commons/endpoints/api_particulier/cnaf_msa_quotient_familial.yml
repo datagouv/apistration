@@ -221,6 +221,8 @@ fiche:
           En cas de réponse 404 _(dossier allocataire absent)_, la caisse effectivement interrogée est indiquée dans le champ `meta.provider` de la réponse. Sa valeur peut être `CNAF`, `MSA` ou `RNCPS` selon la caisse de rattachement de l'allocataire.
 
     historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
       **Ce que change le passage à la V.3 d'API Particulier:**
 
       - Le passage à la V.3 n'a pas eu d'impact sur la donnée distribuée qui reste identique ;
