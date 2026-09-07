@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::FranceTravail::StatutWithIdentifiantController < APIParticulier::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::FranceTravail::Statut }
+
   def show
     if organizer.success?
       render json: serialize_data, status: extract_http_code(organizer)

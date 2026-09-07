@@ -1,4 +1,6 @@
 class ValidateMonth < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :month
+
   def call
     return if valid?
 

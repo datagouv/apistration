@@ -1,4 +1,6 @@
 class GIPMDS::Effectifs::ValidateDepth < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :gip_mds_depth
+
   def call
     return if param(:depth).nil?
 

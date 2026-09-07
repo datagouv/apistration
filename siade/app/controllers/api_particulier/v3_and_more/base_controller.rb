@@ -1,6 +1,7 @@
 class APIParticulier::V3AndMore::BaseController < APIController
   include VersionAware
   include UseRetrievers
+  include ErrorsNomenclatureDeclaration
   include RecipientManagement
 
   before_action :verify_api_version!

@@ -1,4 +1,6 @@
 class Civility::ValidateNomNaissance < ValidateAttributePresence
+  raises UnprocessableEntityError, field: :nom_naissance
+
   def call
     invalid_param!(:nom_naissance) unless param(:nom_naissance).present? && valid_characters?
   end

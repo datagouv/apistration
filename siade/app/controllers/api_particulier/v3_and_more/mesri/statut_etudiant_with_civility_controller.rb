@@ -2,6 +2,8 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
   include APIParticulier::CivilityParameters
   include APIParticulier::Transcogage
 
+  nomenclature organizers: { 3 => ::MESRI::StudentStatus::WithCivility }
+
   def show
     if organizer.success?
       render json: serialize_data,

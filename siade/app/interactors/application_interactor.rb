@@ -9,4 +9,8 @@ class ApplicationInteractor
   def self.declares_no_specific_errors!
     ErrorRegistry.mark_guarded(self)
   end
+
+  def build_declared_error(declaration)
+    declaration.build(provider_name: context.provider_name)
+  end
 end

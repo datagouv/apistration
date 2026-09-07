@@ -1,4 +1,6 @@
 class Civility::ValidateCodeCogINSEEPaysNaissance < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :insee_country_code
+
   def call
     return if valid?
 

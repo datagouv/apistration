@@ -1,5 +1,8 @@
 class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateResponse
-  declares_no_specific_errors!
+  ALLOCATAIRE_NOT_ELIGIBLE = raises ::NotFoundError,
+    provider: 'CNAV',
+    title: 'Allocataire non éligible',
+    detail: "Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE"
 
   def call
     super
@@ -11,12 +14,7 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
 
   def no_kids_under_7_error!
     MonitoringService.instance.track('info', 'Potential unauthorized API use: CNAV EAJE: allocataire found but no kids under 7')
-    fail_with_error!(build_qfv2_error(
-      ::NotFoundError,
-      'CNAV',
-      "Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE",
-      'Allocataire non éligible'
-    ))
+    fail_with_error!(build_declared_error(ALLOCATAIRE_NOT_ELIGIBLE))
   end
 
   def kids_under_7?

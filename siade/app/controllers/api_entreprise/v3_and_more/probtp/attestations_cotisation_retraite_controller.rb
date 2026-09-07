@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::PROBTP::AttestationsCotisationRetraiteController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::PROBTP::AttestationsCotisationsRetraite }
+
   def show
     if organizer.success?
       render json:   serialize_data,

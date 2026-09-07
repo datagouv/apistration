@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::MI::SIAF::AssociationsController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::MI::SIAF::Associations }
+
   def show
     if organizer.success?
       render json: organizer[:payload],

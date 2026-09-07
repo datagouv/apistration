@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::DGDDI::EORIController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::DGDDI::EORI }
+
   def show
     if organizer.success?
       render json: serialize_data,

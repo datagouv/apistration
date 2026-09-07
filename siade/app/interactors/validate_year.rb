@@ -1,4 +1,6 @@
 class ValidateYear < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :year
+
   def call
     return if valid?
 

@@ -1,4 +1,8 @@
 class CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :birth_place
+  raises UnprocessableEntityError, field: :annee_date_naissance
+  raises UnprocessableEntityError, field: :code_cog_insee_departement_naissance
+
   def call
     validator = call_validator
 

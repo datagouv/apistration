@@ -2,6 +2,8 @@ class APIParticulier::V3AndMore::GIPMDS::ServiceCiviqueWithFranceConnectControll
   include APIParticulier::RequiresFranceConnect
   include APIParticulier::CivilityParameters
 
+  nomenclature organizers: { 3 => ::GIPMDS::ServiceCivique }
+
   def show
     if organizer.success?
       render json: serialize_data,

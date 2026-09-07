@@ -57,6 +57,16 @@ RSpec.describe ValidateResponseEmissionGuard do
       end
     end
 
+    context 'with a 404 naming the queried provider itself' do
+      it 'accepts it as the generic not found every retriever can return' do
+        ErrorRegistry.mark_guarded(validator_class)
+
+        described_class.record(validator_class, [NotFoundError.new('INSEE')], 'INSEE')
+
+        expect { described_class.verify!(validator_class) }.not_to raise_error
+      end
+    end
+
     context 'with an error emitted without going through fail_with_error!' do
       it 'rejects an emission no raises declares' do
         ErrorRegistry.mark_guarded(validator_class)

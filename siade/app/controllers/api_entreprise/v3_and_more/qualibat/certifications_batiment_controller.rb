@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::QUALIBAT::CertificationsBatimentController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::QUALIBAT::CertificationsBatiment, 4 => ::QUALIBAT::CertificationsBatiment }
+
   def show
     if organizer.success?
       render json:   serialize_data,
