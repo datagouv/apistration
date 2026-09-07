@@ -103,7 +103,7 @@ fr:
 
                   **🧰 Comment ?**
                   Utiliser les libellés pour comprendre l’erreur rencontrée, voire automatiser votre logiciel en fonction du code.
-                  La liste de tous les codes erreurs spécifiques (environ 80) est disponible dans le [Swagger](<%= developers_openapi_path %>){:target="_blank"}. La gestion des erreurs et l'explication des codes retours est détaillée dans la [documentation technique générale](<%= developers_path(anchor: 'code-https-et-gestion-des-erreurs') %>){:target="_blank"}.
+                  La liste de tous les codes erreurs spécifiques (environ 80) est disponible dans le [Swagger](<%= developers_openapi_path %>){:target="_blank"}. La gestion des erreurs et l'explication des codes retours est détaillée dans la [documentation technique générale](<%= developers_path(anchor: 'gérer-les-erreurs---codes-https') %>){:target="_blank"}.
 
               - title: 4. Volumétrie indiquée dans le header et actionnable
                 anchor: 'volumétrie-indiquée-dans-le-header-et-actionnable'
@@ -415,8 +415,13 @@ fr:
                   |`503` | **Service non disponible** – Le service est temporairement indisponible ou en maintenance. Pour connaître l’historique de disponibilité et les incidents type de l’endpoint, vous pouvez [consulter le catalogue de données](../catalogue/).
                   |`504` | **Intermédiaire hors délai** – Le(s) producteur(s) de données ont mis trop de temps à répondre. Notre temps d’attente, nous permettant de ne pas immobiliser le serveur sur un appel sans réponse, est fixé à 10 secondes et a été dépassé.|
 
-                  Retrouvez tous les codes erreurs pour chaque endpoint dans [notre swagger, partie "Response samples"](<%= developers_openapi_path %>){:target="_blank"}.
-                  La liste des codes spécifiques à chaque endpoint y est disponible.
+                  #### Un code supplémentaire pour préciser l'erreur
+
+                  Tous les codes erreur HTTPS sont accompagnés de **codes plus précis, spécifiques à chaque situation d'erreur**. Un code erreur s'écrit `XXYYY` : `XX` désigne **le fournisseur de données qui a rendu le verdict**, `YYY` **la nature de l'erreur**. Le préfixe `00` signifie qu'aucun fournisseur n'a été interrogé : l'erreur a été décidée par API&nbsp;Particulier seule.
+
+                  La nomenclature complète est servie par l'API elle-même, sans authentification, sur [<%= APIParticulier::BASE_URL %>/api/errors](<%= APIParticulier::BASE_URL %>/api/errors){:target="_blank"}. Les erreurs propres à un endpoint sont listées dans la section «&nbsp;Erreurs&nbsp;» de sa fiche, et le paramètre `operation_id` restreint la réponse à une seule opération, par exemple [<%= APIParticulier::BASE_URL %>/api/errors?operation_id=api_particulier_v3_cnav_quotient_familial_with_civility](<%= APIParticulier::BASE_URL %>/api/errors?operation_id=api_particulier_v3_cnav_quotient_familial_with_civility){:target="_blank"}.
+
+                partial: shared/documentation/errors_nomenclature
               - title: Renseigner les paramètres d'appel et de traçabilité
                 anchor: 'renseigner-les-paramètres-dappel-et-de-traçabilité'
                 content: |+

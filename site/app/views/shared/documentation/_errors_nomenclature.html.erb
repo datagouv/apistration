@@ -1,0 +1,83 @@
+<% nomenclature = Kernel.const_get(namespace.classify)::ErrorsNomenclature %>
+
+<h4 id="nomenclature-prefixes-fournisseurs">Les préfixes fournisseurs (<code>XX</code>)</h4>
+
+<div class="fr-table fr-table--bordered">
+  <table>
+    <caption>Préfixe de chaque fournisseur de données</caption>
+    <thead>
+      <tr>
+        <th scope="col">Préfixe</th>
+        <th scope="col">Fournisseur de données</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% nomenclature.providers.sort.each do |prefix, provider| %>
+        <tr>
+          <td><code><%= prefix %></code></td>
+          <td><%= provider %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h4 id="nomenclature-sous-codes-generiques">Les sous-codes communs (<code>YYY</code>)</h4>
+
+<p>Ces sous-codes ont la même signification quel que soit le fournisseur : le préfixe vous dit qui a rendu le verdict, le sous-code vous dit lequel.</p>
+
+<div class="fr-table fr-table--bordered">
+  <table>
+    <caption>Sous-codes communs à tous les fournisseurs de données</caption>
+    <thead>
+      <tr>
+        <th scope="col">Sous-code</th>
+        <th scope="col">Signification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% nomenclature.generic_subcodes.each do |subcode, labels| %>
+        <tr>
+          <td><code>XX<%= subcode %></code></td>
+          <td>
+            <strong><%= labels['title'] %></strong>
+            <% if labels['detail'].present? %>
+              <br><%= labels['detail'] %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h4 id="nomenclature-codes-plateforme">Les codes de la plateforme (<code>00YYY</code>)</h4>
+
+<p>Ces erreurs sont décidées sans qu'aucun fournisseur ne soit interrogé : validation des paramètres, authentification, habilitations. À paramètres identiques, la réponse ne changera pas.</p>
+
+<% nomenclature.platform_codes.each do |status, errors| %>
+  <div class="fr-table fr-table--bordered">
+    <table>
+      <caption>Codes renvoyés avec un statut HTTP <%= status %></caption>
+      <thead>
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Signification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% errors.each do |error| %>
+          <tr>
+            <td><code><%= error['code'] %></code></td>
+            <td>
+              <strong><%= error['title'] %></strong>
+              <% if error['detail'].present? %>
+                <br><%= error['detail'] %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

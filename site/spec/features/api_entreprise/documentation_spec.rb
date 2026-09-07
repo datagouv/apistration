@@ -22,4 +22,19 @@ RSpec.describe 'Documentation pages', app: :api_entreprise do
       expect(page).to have_text('/editeur/api/v1/delegations')
     end
   end
+
+  describe '/developpeurs errors nomenclature section' do
+    before { visit developers_path }
+
+    it 'explains how an error code is built and lists the prefixes, the generic subcodes and the platform codes' do
+      expect(page).to have_css('#nomenclature-prefixes-fournisseurs')
+      expect(page).to have_css('#nomenclature-sous-codes-generiques')
+      expect(page).to have_css('#nomenclature-codes-plateforme')
+
+      expect(page).to have_link(href: "#{APIEntreprise::BASE_URL}/errors")
+      expect(page).to have_text('ACOSS')
+      expect(page).to have_text('Service non disponible')
+      expect(page).to have_text('00429')
+    end
+  end
 end
