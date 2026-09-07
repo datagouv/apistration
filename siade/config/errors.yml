@@ -568,14 +568,14 @@
 
 ## FranceConnect
 
-- code: '50001'
+- code: '51501'
   detail: "Le jeton d'accès est mal formaté."
 
-- code: '50002'
+- code: '51502'
   detail: "Le jeton d'accès n'a pas été trouvé ou est expiré."
 
-- code: '50003'
+- code: '51503'
   detail: "Le jeton d'accès ne possède pas les données pivot requises pour effectuer cet appel."
 
-- code: '50004'
+- code: '51504'
   detail: "Le jeton d'accès FranceConnect est manquant. Cet endpoint requiert un jeton d'accès FranceConnect transmis via l'en-tête Authorization: Bearer."
