@@ -9,22 +9,6 @@ class Openapi::ErrorExamplesBuilder
     }
   end
 
-  def build_422_for_params(path_params:, mandatory_params:)
-    examples = {}
-
-    path_params.each do |param|
-      error = UnprocessableEntityError.new(param)
-      examples.merge!(build_from_error(error, "unprocessable_content_error_#{param}_error"))
-    end
-
-    mandatory_params.each do |param|
-      error = MissingMandatoryParamError.new(param)
-      examples.merge!(build_from_error(error, "missing_mandatory_params_#{param}_error"))
-    end
-
-    examples
-  end
-
   private
 
   def error_payload(error)
