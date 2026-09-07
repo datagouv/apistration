@@ -77,7 +77,7 @@ class UnprocessableEntityError < ApplicationError
       # ANTS - ExtraitImmatriculationVehicule
       immatriculation: '00430',
       # INPI - RNE
-      document_id: '00501',
+      document_id: '00318',
       # CIVILITY API PART v3
       nom_naissance: '00420',
       prenoms: '00421',
