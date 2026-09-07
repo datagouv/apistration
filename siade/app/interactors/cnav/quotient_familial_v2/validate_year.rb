@@ -1,5 +1,6 @@
 class CNAV::QuotientFamilialV2::ValidateYear < ValidateYear
   raises UnprocessableEntityError, field: :annee_cnav
+  never_raises UnprocessableEntityError, field: :year
 
   def call
     return if param(year_param_name).nil?

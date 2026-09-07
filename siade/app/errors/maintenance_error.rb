@@ -1,4 +1,14 @@
 class MaintenanceError < AbstractGenericProviderError
+  def self.build_example(provider_name:, **)
+    new(provider_name, live_schedule: false)
+  end
+
+  def initialize(provider_name, message = nil, live_schedule: true)
+    super(provider_name, message)
+
+    @live_schedule = live_schedule
+  end
+
   def subcode
     '020'
   end
@@ -28,7 +38,7 @@ class MaintenanceError < AbstractGenericProviderError
   private
 
   def maintenance_on?
-    maintenance_service.on?
+    @live_schedule && maintenance_service.on?
   end
 
   def format_hour(time)
