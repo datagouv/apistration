@@ -30,6 +30,14 @@ RSpec.describe 'Errors nomenclature declarations', type: :acceptance do
     expect(mismatches).to be_empty, mismatches.join("\n")
   end
 
+  it 'keeps an endpoint that is deliberately not documented out of the nomenclature' do
+    undocumented = routed_controllers.reject { |controller_class| controller_class.errors_nomenclature_declaration.documented? }
+
+    expect(undocumented).to eq([APIEntreprise::V3AndMore::INPI::RNE::BeneficiairesEffectifsOpenDataController])
+    expect(ErrorsNomenclature.new(:entreprise).to_h['endpoints'])
+      .not_to have_key('api_entreprise_v3_inpi_rne_beneficiaires_effectifs_open_data')
+  end
+
   it 'declares only versions the endpoint can serialize' do
     unserializable = routed_controllers.flat_map do |controller_class|
       serializer_module = controller_class.new.send(:serializer_module)
