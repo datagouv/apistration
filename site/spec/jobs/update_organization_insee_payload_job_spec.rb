@@ -34,6 +34,18 @@ RSpec.describe UpdateOrganizationINSEEPayloadJob do
     context 'when organization has not been recently updated for his INSEE payload' do
       let(:organization) { create(:organization, last_insee_payload_updated_at: 42.days.ago) }
 
+      context 'when INSEE authentication is temporarily unavailable' do
+        before do
+          allow(insee_sirene_api_client).to receive(:etablissement)
+            .and_raise(INSEEAPIAuthentication::TemporaryError)
+        end
+
+        it 'retries later instead of losing the payload' do
+          expect { described_class.perform_now(organization_id) }
+            .to have_enqueued_job(described_class).with(organization_id)
+        end
+      end
+
       it 'calls the API' do
         expect(insee_sirene_api_client).to receive(:etablissement).with(siret: organization.siret)
 
