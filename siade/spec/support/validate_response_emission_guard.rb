@@ -8,7 +8,7 @@ module ValidateResponseEmissionGuard
     [NotFoundError, MaintenanceError]
   ).freeze
 
-  ERRORS_DISCRIMINATED_BY_PROVIDER = [NotFoundError].freeze
+  ERRORS_DISCRIMINATED_BY_FOREIGN_PROVIDER = [NotFoundError].freeze
 
   DISCRIMINANT_OPTIONS = %i[kind reason type field provider].freeze
   DISCRIMINANT_IVARS = %i[@kind @reason @type @field].freeze
@@ -19,11 +19,11 @@ module ValidateResponseEmissionGuard
 
       super
     ensure
-      ValidateResponseEmissionGuard.record(self.class, Array(context.errors) - errors_before)
+      ValidateResponseEmissionGuard.record(self.class, Array(context.errors) - errors_before, context.provider_name)
     end
 
     def fail_with_error!(error)
-      ValidateResponseEmissionGuard.record(self.class, [error])
+      ValidateResponseEmissionGuard.record(self.class, [error], context.provider_name)
       super
     end
   end
@@ -32,8 +32,8 @@ module ValidateResponseEmissionGuard
     validator_class.prepend(Tracker) if INSTRUMENTED.add?(validator_class)
   end
 
-  def self.record(validator_class, errors)
-    errors.each { |error| EMISSIONS[validator_class] << emitted_signature(error) }
+  def self.record(validator_class, errors, provider_name = nil)
+    errors.each { |error| EMISSIONS[validator_class] << emitted_signature(error, provider_name) }
   end
 
   def self.verify!(validator_class)
@@ -46,15 +46,19 @@ module ValidateResponseEmissionGuard
     raise failures.join("\n") if failures.any?
   end
 
-  def self.emitted_signature(error)
-    [error.class, emitted_discriminant(error)]
+  def self.emitted_signature(error, provider_name)
+    [error.class, emitted_discriminant(error, provider_name)]
   end
 
-  def self.emitted_discriminant(error)
-    return error.provider_name if ERRORS_DISCRIMINATED_BY_PROVIDER.include?(error.class)
+  def self.emitted_discriminant(error, provider_name)
+    return foreign_provider(error, provider_name) if ERRORS_DISCRIMINATED_BY_FOREIGN_PROVIDER.include?(error.class)
 
     ivar = DISCRIMINANT_IVARS.find { |name| error.instance_variable_defined?(name) }
     error.instance_variable_get(ivar) if ivar
+  end
+
+  def self.foreign_provider(error, provider_name)
+    error.provider_name unless error.provider_name == provider_name
   end
 
   def self.declared_set(declarations)
@@ -62,7 +66,7 @@ module ValidateResponseEmissionGuard
   end
 
   def self.undeclared_extras(emitted, declared)
-    (emitted - declared).reject { |entry| UNIVERSAL_ERRORS.include?(entry.first) }
+    (emitted - declared).reject { |error_class, discriminant| discriminant.nil? && UNIVERSAL_ERRORS.include?(error_class) }
   end
 
   def self.format_failures(validator_class, missing, extra)

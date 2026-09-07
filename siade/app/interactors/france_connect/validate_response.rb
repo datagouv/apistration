@@ -1,4 +1,7 @@
 class FranceConnect::ValidateResponse < ValidateResponse
+  raises InvalidFranceConnectAccessTokenError, type: :missing_hub_identity_scope
+  raises ProviderUnprocessableEntityError, reason: :unusable_identity
+
   def call
     handle_invalid_token_error if [400, 401].include?(http_code)
     unknown_provider_response! if invalid_json?

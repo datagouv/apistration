@@ -1,5 +1,5 @@
 RSpec.describe CNAV::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'CNAV') }
+  subject { described_class.call(response:, provider_name: 'Sécurité sociale') }
 
   context 'with 200 response' do
     let(:response) do
@@ -37,9 +37,9 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         its(:errors) { is_expected.to include(instance_of(ProviderUnprocessableEntityError)) }
 
         it 'returns a SNGI error carrying the queried provider' do
-          expect(subject.errors.first.code).to eq('37560')
+          expect(subject.errors.first.code).to eq('36560')
           expect(subject.errors.first.detail).to include('Les paramètres fournis ne permettent pas')
-          expect(subject.errors.first.meta).to eq(provider: 'CNAV')
+          expect(subject.errors.first.meta).to eq(provider: 'Sécurité sociale')
         end
       end
 
@@ -139,7 +139,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
     it 'tracks warning with response context and encrypted params' do
       expect(MonitoringService.instance).to receive(:track_with_added_context).with(
         'warning',
-        '[CNAV] Internal server error (50001)',
+        '[Sécurité sociale] Internal server error (50001)',
         hash_including(:http_response_code, :http_response_body, :encrypted_params)
       )
 
@@ -186,7 +186,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
       it 'includes the provider and its error code and message in meta' do
         expect(subject.errors.first.meta).to eq(
-          provider: 'CNAV',
+          provider: 'Sécurité sociale',
           provider_error_code: 40_013,
           provider_error_message: 'Civilité invalide'
         )
@@ -199,7 +199,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       it 'tracks warning with encrypted params' do
         expect(MonitoringService.instance).to receive(:track_with_added_context).with(
           'warning',
-          '[CNAV] Unexpected bad request (40001)',
+          '[Sécurité sociale] Unexpected bad request (40001)',
           hash_including(:http_response_code, :http_response_body, :encrypted_params)
         )
 
@@ -208,7 +208,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
       it 'includes the provider and its error code and message in meta' do
         expect(subject.errors.first.meta).to eq(
-          provider: 'CNAV',
+          provider: 'Sécurité sociale',
           provider_error_code: 40_001,
           provider_error_message: 'Civilité invalide'
         )
