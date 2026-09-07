@@ -41,6 +41,7 @@
               </h3>
               <div id="content_<%= subsection.anchor %>">
                 <%= subsection.content.html_safe %>
+                <%= render subsection.partial if subsection.partial.present? %>
               </div>
             </div>
           <% end %>
