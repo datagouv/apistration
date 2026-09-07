@@ -37,27 +37,30 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
   end
 
   describe 'provider errors' do
-    context 'with an endpoint which has no custom provider error' do
-      let(:uid) { 'fabrique_numerique_ministeres_sociaux/conventions_collectives' }
-
-      it 'does not display errors part' do
-        expect(page).to have_no_css('#erreurs')
-      end
-    end
-
-    context 'with an endpoint which has custom provider error' do
+    context 'with an endpoint whose provider has specific errors' do
       let(:uid) { 'urssaf/attestation_vigilance' }
 
-      it 'displays errors part' do
+      it 'lists them under their status' do
         expect(page).to have_css('#erreurs')
+        expect(page).to have_text('04501')
+        expect(page).to have_text('04502')
       end
     end
 
-    context 'with an endpoint which has extra specific errors' do
+    context 'with an endpoint whose provider has a specific not found' do
       let(:uid) { 'cibtp/attestations_cotisations_conges_payes_chomage_intemperies' }
 
-      it 'displays errors part' do
+      it 'lists it under the 404 status' do
+        expect(page).to have_text('38422')
+      end
+    end
+
+    context 'with an endpoint whose provider has no specific error' do
+      let(:uid) { 'fabrique_numerique_ministeres_sociaux/conventions_collectives' }
+
+      it 'still lists the errors common to every endpoint' do
         expect(page).to have_css('#erreurs')
+        expect(page).to have_text('14003')
       end
     end
   end

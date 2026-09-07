@@ -23,35 +23,6 @@ class APIEntreprise::Endpoint < AbstractEndpoint
     @root_meta ||= extract_root_properties_from_schema('meta')
   end
 
-  def custom_provider_errors
-    @custom_provider_errors ||= error_examples('502').reject { |error_payload|
-      %w[
-        000
-        008
-        009
-        011
-        051
-        052
-        053
-        054
-        055
-        999
-      ].include?(error_payload['code'][2..])
-    }.concat(extra_provider_errors).flatten
-  end
-
-  def extra_provider_errors
-    all_extra_provider_errors.map do |extra_provider_error|
-      error_examples(extra_provider_error[:status]).select do |error_payload|
-        error_payload['code'] == extra_provider_error[:subcode]
-      end
-    end
-  end
-
-  def all_extra_provider_errors
-    [{ status: '404', subcode: '38422' }]
-  end
-
   def load_dummy_definition!
     missing_endpoints_definition = I18n.t("api_entreprise.missing_endpoints.#{path}", default: nil)
 
