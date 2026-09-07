@@ -1,3 +1,11 @@
+- date: 2026-09-07
+  scope: api_entreprise
+  title: "APIs Sirene INSEE : nouveau code d'erreur `01006` en cas d'échec d'authentification"
+  description: |
+    Les [APIs Sirene de l'INSEE](<%= endpoints_path %>) peuvent désormais renvoyer une erreur **502 de code `01006`** lorsque l'authentification d'API Entreprise auprès de l'INSEE échoue. Ce cas était jusqu'ici masqué derrière l'erreur temporaire `01011`.
+
+    Le distinguer permet de ne plus proposer de réessayer un appel qui échouera à l'identique : contrairement à `01011`, `01006` signale un problème de credentials côté fournisseur, que seule une intervention de l'équipe résout. Les autres codes d'erreur des APIs Sirene sont inchangés.
+
 - date: 2026-09-02
   scope: api_entreprise
   title: "Données associations (SIAF) : deux nouvelles API disponibles en environnement de test"
