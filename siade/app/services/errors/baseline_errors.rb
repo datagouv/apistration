@@ -30,6 +30,7 @@ class Errors::BaselineErrors
       mandatory_param_errors +
       [
         InsufficientPrivilegesError.new("api_#{api}"),
+        BadRequestError.new,
         ConflictError.new,
         AmbiguousDelegationError.new,
         TooManyRequestsError.new,

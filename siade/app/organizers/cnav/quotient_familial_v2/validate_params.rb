@@ -6,7 +6,6 @@ class CNAV::QuotientFamilialV2::ValidateParams < ValidateParamsOrganizer
     CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams,
     Civility::ValidateCodeCogINSEEPaysNaissance,
     CNAV::ValidateDateNaissance,
-    CNAV::ValidateRequestId,
     CNAV::ValidatePrenoms,
     Civility::ValidateNomNaissance
 end

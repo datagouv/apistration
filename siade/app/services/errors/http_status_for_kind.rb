@@ -1,6 +1,7 @@
 class Errors::HTTPStatusForKind
   KIND_TO_STATUS = {
     wrong_parameter: :unprocessable_content,
+    bad_request: :bad_request,
     network_error: :bad_gateway,
     provider_error: :bad_gateway,
     provider_unknown_error: :bad_gateway,

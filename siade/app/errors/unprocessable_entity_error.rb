@@ -64,7 +64,6 @@ class UnprocessableEntityError < ApplicationError
       # GIP-MDS
       gip_mds_depth: '00390',
       insee_country_code: '00400',
-      request_id: '00401',
       # MEN
       code_etablissement: '00410',
       annee_scolaire: '00411',

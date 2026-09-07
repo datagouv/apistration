@@ -329,8 +329,8 @@
   detail: "Le code pays INSEE n'est pas correctement formaté"
 
 - code: '00401'
-  title: 'Entité non traitable'
-  detail: "Le request_id n'est pas correctement formaté"
+  title: 'Mauvaise requête'
+  detail: "Votre requête est invalide"
 
 - code: '00410'
   title: 'Entité non traitable'

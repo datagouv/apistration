@@ -42,12 +42,4 @@ RSpec.describe DGFIP::LiassesFiscales::ValidateParams, type: :validate_params do
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
-
-  context 'with invalid request_id' do
-    let(:request_id) { '1234567890' }
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
-  end
 end

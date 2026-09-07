@@ -143,14 +143,6 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
     end
   end
 
-  context 'with invalid request_id' do
-    let(:request_id) { 'fblblbl' }
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
-  end
-
   context 'with invalid prenoms' do
     let(:prenoms) { 'Jean' }
 
