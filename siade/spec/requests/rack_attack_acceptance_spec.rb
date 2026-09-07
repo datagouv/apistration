@@ -172,6 +172,10 @@ RSpec.describe 'Rack::Attack acceptance' do
           action: 'index'
         },
         {
+          controller: 'api_entreprise/errors_nomenclature',
+          action: 'index'
+        },
+        {
           controller: 'api_entreprise/privileges',
           action: 'index'
         },
@@ -185,6 +189,10 @@ RSpec.describe 'Rack::Attack acceptance' do
         },
         {
           controller: 'api_particulier/ping_providers',
+          action: 'index'
+        },
+        {
+          controller: 'api_particulier/errors_nomenclature',
           action: 'index'
         }
       ]

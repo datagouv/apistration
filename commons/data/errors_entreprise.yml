@@ -2135,6 +2135,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -2211,6 +2212,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -2287,6 +2289,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -2363,6 +2366,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -2662,6 +2666,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -2738,6 +2743,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -3969,6 +3975,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -4045,6 +4052,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -4273,6 +4281,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':
@@ -4349,6 +4358,7 @@ endpoints:
       '451':
       - code: '01005'
         title: Indisponible pour des raisons légales
+        detail: Cette entité n'est accessible par aucun organisme.
         meta:
           provider: INSEE
       '503':

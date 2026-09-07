@@ -415,6 +415,10 @@
   title: 'Lien expiré'
   detail: 'Le lien de téléchargement est expiré.'
 
+- code: '00404'
+  title: 'Opération inconnue'
+  detail: "Cette opération n'existe pas sur cette API"
+
 - code: '00500'
   title: "Erreur interne"
   detail: "Une erreur interne a été détectée, l'équipe d'API Entreprise a été notifié de l'erreur."

@@ -59,6 +59,127 @@ info:
 tags:
 - name: Disponibilité
 paths:
+  "/api/errors":
+    get:
+      summary: Nomenclature des codes erreurs
+      tags:
+      - Disponibilité
+      description: |-
+        Retourne la nomenclature complète des codes erreurs : les préfixes fournisseurs, les sous-codes communs, les codes de la plateforme et, pour chaque opération, les erreurs qu'elle peut renvoyer groupées par statut HTTP.
+
+        Cet endpoint **ne nécessite pas d'authentification**.
+      security: []
+      parameters:
+      - name: operation_id
+        in: query
+        required: false
+        description: Restreint `endpoints` à cette seule opération (valeur du `x-operationId`
+          d'un endpoint)
+        example: api_particulier_v3_cnav_prime_activite_with_civility
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Nomenclature des codes erreurs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  api:
+                    type: string
+                    example: entreprise
+                  providers:
+                    type: object
+                    description: Préfixe à deux chiffres de chaque fournisseur de
+                      données
+                    additionalProperties:
+                      type: string
+                  generic_subcodes:
+                    type: object
+                    description: Sous-codes communs à tous les fournisseurs
+                    additionalProperties:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        detail:
+                          type: string
+                  platform_codes:
+                    type: object
+                    description: Erreurs groupées par statut HTTP
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            example: '04501'
+                          title:
+                            type: string
+                          detail:
+                            type: string
+                          meta:
+                            type: object
+                        required:
+                        - code
+                        - title
+                        - detail
+                  endpoints:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        provider:
+                          type: string
+                        errors:
+                          type: object
+                          description: Erreurs groupées par statut HTTP
+                          additionalProperties:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  example: '04501'
+                                title:
+                                  type: string
+                                detail:
+                                  type: string
+                                meta:
+                                  type: object
+                              required:
+                              - code
+                              - title
+                              - detail
+                      required:
+                      - provider
+                      - errors
+                required:
+                - api
+                - providers
+                - generic_subcodes
+                - platform_codes
+                - endpoints
+        '404':
+          description: Opération inconnue
+          content:
+            application/json:
+              examples:
+                operation_inconnue_00404:
+                  value:
+                    errors:
+                    - code: '00404'
+                      title: Opération inconnue
+                      detail: Cette opération n'existe pas sur cette API (api_entreprise_v3_insee_unites_legales)
+                      source:
+                      meta: {}
+                  summary: Opération inconnue
+                  description: Cette opération n'existe pas sur cette API (api_entreprise_v3_insee_unites_legales)
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/api/ping":
     get:
       summary: Ping de l'API
