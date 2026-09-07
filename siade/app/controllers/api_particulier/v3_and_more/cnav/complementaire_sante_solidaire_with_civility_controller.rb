@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::ComplementaireSanteSolidaireWithCivilityController < APIParticulier::V3AndMore::CNAV::AbstractCivilityController
+  nomenclature organizers: { 3 => ::CNAV::ComplementaireSanteSolidaire }
+
   def organizer_class
     CNAV::ComplementaireSanteSolidaire
   end

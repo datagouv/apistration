@@ -1,6 +1,8 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithFranceConnectController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::RequiresFranceConnect
 
+  nomenclature organizers: { 3 => ::MESRI::StudentStatus::WithCivility }
+
   def show
     if organizer.success?
       render json: serialize_data,

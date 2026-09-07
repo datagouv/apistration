@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithINEController < APIParticulier::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::MESRI::StudentStatus::WithINE }
+
   def show
     if organizer.success?
       render json: serialize_data,
