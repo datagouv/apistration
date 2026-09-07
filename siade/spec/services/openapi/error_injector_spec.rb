@@ -41,9 +41,7 @@ RSpec.describe Openapi::ErrorInjector do
           '401', 'content', 'application/json', 'examples'
         )
 
-        expect(examples).to have_key('invalid_token_error')
-        expect(examples).to have_key('expired_token_error')
-        expect(examples).to have_key('blacklisted_token_error')
+        expect(examples.keys).to eq(['invalid_token_error'])
 
         token_error = examples['invalid_token_error']
         expect(token_error['value']['errors'].first['code']).to eq('00101')
@@ -51,7 +49,7 @@ RSpec.describe Openapi::ErrorInjector do
         expect(token_error).to have_key('description')
       end
 
-      it 'includes siren in 422 path params' do
+      it 'documents a single 422 example' do
         described_class.new(open_api, config_path:).perform
 
         examples = open_api.dig(
@@ -59,22 +57,8 @@ RSpec.describe Openapi::ErrorInjector do
           '422', 'content', 'application/json', 'examples'
         )
 
-        expect(examples).to have_key('unprocessable_content_error_siren_error')
-        expect(examples).to have_key('missing_mandatory_params_context_error')
-        expect(examples).to have_key('missing_mandatory_params_object_error')
-        expect(examples).to have_key('missing_mandatory_params_recipient_error')
-      end
-
-      it 'documents the ambiguous editor delegation error on 422' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples).to have_key('ambiguous_delegation_error')
-        expect(examples.dig('ambiguous_delegation_error', 'value', 'errors', 0, 'code')).to eq('00212')
+        expect(examples.keys).to eq(['missing_mandatory_param_error'])
+        expect(examples.dig('missing_mandatory_param_error', 'value', 'errors', 0, 'code')).to eq('00203')
       end
 
       it 'uses provider name in 502/504 examples' do
@@ -150,56 +134,6 @@ RSpec.describe Openapi::ErrorInjector do
       end
     end
 
-    context 'when 422 already exists (merge)' do
-      let(:open_api) do
-        {
-          'paths' => {
-            '/v3/insee/sirene/unites_legales/{siren}' => {
-              'get' => {
-                'responses' => {
-                  '200' => { 'description' => 'Success' },
-                  '422' => {
-                    'description' => 'Existing 422',
-                    'content' => {
-                      'application/json' => {
-                        'examples' => {
-                          'custom_error' => { 'value' => { 'errors' => [] } }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      end
-
-      it 'merges 422 examples without overwriting existing ones' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples).to have_key('custom_error')
-        expect(examples).to have_key('missing_mandatory_params_context_error')
-      end
-
-      it 'merges the configured ambiguous delegation example into an existing 422' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples).to have_key('custom_error')
-        expect(examples).to have_key('ambiguous_delegation_error')
-      end
-    end
-
     context 'with particulier config' do
       let(:config_path) { Rails.root.join('config/openapi_common_errors/particulier.yml') }
 
@@ -217,17 +151,15 @@ RSpec.describe Openapi::ErrorInjector do
         }
       end
 
-      it 'uses particulier mandatory params (only recipient)' do
+      it 'points at the API Particulier introspection route in the insufficient privileges example' do
         described_class.new(open_api, config_path:).perform
 
         examples = open_api.dig(
           'paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
+          '403', 'content', 'application/json', 'examples'
         )
 
-        expect(examples).to have_key('missing_mandatory_params_recipient_error')
-        expect(examples).not_to have_key('missing_mandatory_params_context_error')
-        expect(examples).not_to have_key('missing_mandatory_params_object_error')
+        expect(examples.dig('insufficient_privileges_error', 'description')).to include('/api/introspect')
       end
     end
   end

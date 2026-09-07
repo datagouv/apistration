@@ -9,10 +9,10 @@ RSpec.describe 'Swagger provider errors', type: :acceptance do
   end
 
   it 'documents a prestation sociale under the prefix of the Sécurité sociale' do
-    expect(bad_gateway_codes('/v3/dss/prime_activite/identite')).to include('36000')
+    expect(bad_gateway_codes('/v3/dss/prime_activite/identite')).to include('36999')
   end
 
   it 'documents the quotient familial under the prefix of the CNAF & MSA' do
-    expect(bad_gateway_codes('/v3/dss/quotient_familial/identite')).to include('35000')
+    expect(bad_gateway_codes('/v3/dss/quotient_familial/identite')).to include('35999')
   end
 end
