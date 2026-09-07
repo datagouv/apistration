@@ -1,6 +1,8 @@
 class CNOUS::ValidateCampaignYear < ValidateParamInteractor
   MIN_CAMPAIGN_YEAR = 2021
 
+  raises UnprocessableEntityError, field: :campaign_year
+
   def call
     return if context.params[:campaign_year].blank?
 

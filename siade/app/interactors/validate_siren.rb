@@ -1,4 +1,6 @@
 class ValidateSiren < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :siren
+
   def call
     return if siren.valid?
 

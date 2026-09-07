@@ -1,4 +1,6 @@
 class Civility::ValidateCodeCogINSEECommuneNaissance < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :birth_place
+
   def call
     return if param(:code_cog_insee_commune_naissance).blank? || valid?
 

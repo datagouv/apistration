@@ -9,6 +9,11 @@ class MEN::Scolarites::ValidatePerimetre < ValidateParamInteractor
     codes_bcn_regions: MEN::Scolarites::Validators::RegionValidator
   }.freeze
 
+  raises UnprocessableEntityError, field: :perimetre
+  raises UnprocessableEntityError, field: :perimetre_valeurs
+  raises UnprocessableEntityError, field: :codes_bcn_departements
+  raises UnprocessableEntityError, field: :codes_bcn_regions
+
   def call
     provided = provided_perimetres
 
