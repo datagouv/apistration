@@ -1,5 +1,9 @@
 class ErrorRegistry
-  Declaration = Data.define(:error_class, :options)
+  Declaration = Data.define(:error_class, :options) do
+    def build(provider_name:)
+      error_class.build_example(provider_name:, **options)
+    end
+  end
 
   class << self
     def register(validator_class, error_class, **options)
@@ -33,7 +37,7 @@ class ErrorRegistry
       target = http_status.to_i
 
       declarations_for_organizer(organizer_class).filter_map do |decl|
-        example = decl.error_class.build_example(provider_name:, **decl.options)
+        example = decl.build(provider_name:)
         next unless status_code(example) == target
 
         example
