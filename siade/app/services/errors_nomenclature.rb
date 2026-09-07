@@ -20,11 +20,15 @@ class ErrorsNomenclature
   private
 
   def endpoints
-    controller_classes.flat_map { |controller_class|
+    documented_controller_classes.flat_map { |controller_class|
       controller_class.errors_nomenclature_declaration.organizers.map do |version, organizer|
         [operation_id(controller_class, version), endpoint_entry(controller_class, organizer)]
       end
     }.sort_by(&:first).to_h
+  end
+
+  def documented_controller_classes
+    controller_classes.select { |controller_class| controller_class.errors_nomenclature_declaration.documented? }
   end
 
   def endpoint_entry(controller_class, organizer)
