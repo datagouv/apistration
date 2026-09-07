@@ -134,6 +134,10 @@ platform_codes:
       fournisseur, soit de API Entreprise. Il s'agit souvent d'une erreur temporaire.
     meta:
       retry_in: 10
+  '400':
+  - code: '00401'
+    title: Mauvaise requête
+    detail: Votre requête est invalide
   '401':
   - code: '00101'
     title: Interdit
@@ -808,9 +812,6 @@ endpoints:
       - code: '00308'
         title: Entité non traitable
         detail: Le user_id n'est pas correctement formaté
-      - code: '00401'
-        title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
       '404':
       - code: '03003'
         title: Entité non trouvée
@@ -894,9 +895,6 @@ endpoints:
       - code: '00308'
         title: Entité non traitable
         detail: Le user_id n'est pas correctement formaté
-      - code: '00401'
-        title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
       '404':
       - code: '03003'
         title: Entité non trouvée
@@ -978,9 +976,6 @@ endpoints:
         title: Entité non traitable
         detail: 'L''année n''est pas valide : elle doit être comprise entre 2006 et
           l''année précédente'
-      - code: '00401'
-        title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
       '404':
       - code: '03003'
         title: Entité non trouvée
@@ -1062,9 +1057,6 @@ endpoints:
         title: Entité non traitable
         detail: 'L''année n''est pas valide : elle doit être comprise entre 2006 et
           l''année précédente'
-      - code: '00401'
-        title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
       '404':
       - code: '03003'
         title: Entité non trouvée
@@ -3753,9 +3745,6 @@ endpoints:
       - code: '00308'
         title: Entité non traitable
         detail: Le user_id n'est pas correctement formaté
-      - code: '00401'
-        title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
       '404':
       - code: '03003'
         title: Entité non trouvée
@@ -3846,9 +3835,6 @@ endpoints:
         title: Entité non traitable
         detail: 'L''année n''est pas valide : elle doit être comprise entre 2006 et
           l''année précédente'
-      - code: '00401'
-        title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
       '404':
       - code: '03003'
         title: Entité non trouvée
