@@ -58,7 +58,7 @@ module RSwagCommonErrors
 
         run_test! do |response|
           body = JSON.parse(response.body)
-          expect(body.dig('errors', 0, 'code')).to eq('50004')
+          expect(body.dig('errors', 0, 'code')).to eq('51504')
         end
       end
     end
