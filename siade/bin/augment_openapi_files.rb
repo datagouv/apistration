@@ -37,12 +37,13 @@ APIS = {
   }
 }.freeze
 
-APIS.each_value do |api_config|
+APIS.each do |api, api_config|
   open_api_path = root.join(api_config[:file])
   open_api = YAML.load_file(open_api_path, aliases: true)
   config_path = root.join(api_config[:config])
 
   Openapi::ErrorInjector.new(open_api, config_path:).perform
+  Openapi::ErrorsNomenclatureLinker.new(open_api, api:).perform
 
   if api_config[:entreprise_augments]
     open_api['paths'].each do |path, schema|
