@@ -33,17 +33,6 @@ class ErrorRegistry
       flatten_chain(organizer_class).flat_map { |klass| declarations_for(klass) }.uniq
     end
 
-    def examples_for_status(organizer_class, http_status, provider_name:)
-      target = http_status.to_i
-
-      declarations_for_organizer(organizer_class).filter_map do |decl|
-        example = decl.build(provider_name:)
-        next unless status_code(example) == target
-
-        example
-      end
-    end
-
     def reset!
       @declarations = {}
     end
@@ -58,11 +47,6 @@ class ErrorRegistry
       return [klass] unless klass.respond_to?(:organized) && klass.organized.any?
 
       klass.organized.flat_map { |inner| flatten_chain(inner) }
-    end
-
-    def status_code(error)
-      symbol = Errors::HTTPStatusForKind.call(error.kind)
-      Rack::Utils.status_code(symbol) if symbol
     end
   end
 end

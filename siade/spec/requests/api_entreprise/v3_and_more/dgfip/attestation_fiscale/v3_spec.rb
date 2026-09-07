@@ -65,10 +65,7 @@ RSpec.describe 'DGFIP: Attestation fiscale', api: :entreprise, type: %i[request 
 
           unprocessable_content_error_request(:siren)
 
-          common_provider_errors_request(
-            DGFIP::AttestationFiscale,
-            documents_errors(DGFIP::AttestationFiscale)
-          )
+          common_provider_errors_request(DGFIP::AttestationFiscale)
 
           common_network_error_request(DGFIP::AttestationFiscale)
         end

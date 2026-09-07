@@ -91,7 +91,7 @@ RSpec.describe ErrorRegistry do
     end
   end
 
-  describe '.examples_for_status' do
+  describe 'Declaration#build' do
     let(:validator) do
       Class.new do
         def self.name
@@ -100,35 +100,21 @@ RSpec.describe ErrorRegistry do
       end
     end
 
-    let(:organizer) do
-      validator_class = validator
-
-      Class.new do
-        define_singleton_method(:organized) { [validator_class] }
-      end
+    def built_examples(provider_name:)
+      described_class.direct_declarations_for(validator).map { |declaration| declaration.build(provider_name:) }
     end
 
-    it 'instantiates errors matching the status' do
-      described_class.register(validator, NotFoundError)
+    it 'gives each error the prefix of the organizer provider' do
       described_class.register(validator, ProviderUnknownError)
       described_class.register(validator, ACOSSError, kind: :manual_verification_asked)
 
-      errors_502 = described_class.examples_for_status(organizer, 502, provider_name: 'ACOSS')
-
-      expect(errors_502.map(&:class)).to contain_exactly(ProviderUnknownError, ACOSSError)
-      expect(errors_502.find { |error| error.instance_of?(ACOSSError) }.code).to eq('04501')
-
-      errors_404 = described_class.examples_for_status(organizer, 404, provider_name: 'ACOSS')
-      expect(errors_404.map(&:class)).to eq([NotFoundError])
+      expect(built_examples(provider_name: 'ACOSS').map(&:code)).to contain_exactly('04999', '04501')
     end
 
     it 'instantiates BadFileFromProviderError with provider and kind' do
       described_class.register(validator, BadFileFromProviderError, kind: :invalid_base64)
 
-      errors = described_class.examples_for_status(organizer, 502, provider_name: 'ACOSS')
-
-      expect(errors.size).to eq(1)
-      expect(errors.first.code).to eq('04051')
+      expect(built_examples(provider_name: 'ACOSS').map(&:code)).to eq(['04051'])
     end
 
     it 'prefers the provider a declaration names over the organizer one' do
@@ -137,19 +123,18 @@ RSpec.describe ErrorRegistry do
         title: 'Dossier allocataire absent CNAF',
         detail: "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
 
-      error = described_class.examples_for_status(organizer, 404, provider_name: 'Sécurité sociale').first
+      error = built_examples(provider_name: 'Sécurité sociale').first
 
       expect(error.code).to eq('23003')
       expect(error.title).to eq('Dossier allocataire absent CNAF')
       expect(error.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
     end
 
-    it 'covers the unauthorized and unprocessable statuses' do
+    it 'builds the unauthorized and unprocessable errors from their options' do
       described_class.register(validator, InvalidFranceConnectAccessTokenError, type: :not_found_or_expired)
       described_class.register(validator, ProviderUnprocessableEntityError, reason: :unidentified_person)
 
-      expect(described_class.examples_for_status(organizer, 401, provider_name: 'CNAV').map(&:code)).to eq(['51502'])
-      expect(described_class.examples_for_status(organizer, 422, provider_name: 'CNAV').map(&:code)).to eq(['37560'])
+      expect(built_examples(provider_name: 'CNAV').map(&:code)).to contain_exactly('51502', '37560')
     end
   end
 end

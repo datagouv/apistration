@@ -39,10 +39,7 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, 
 
           unprocessable_content_error_request(:siren)
 
-          common_provider_errors_request(
-            FNTP::CarteProfessionnelleTravauxPublics,
-            documents_errors(FNTP::CarteProfessionnelleTravauxPublics)
-          )
+          common_provider_errors_request(FNTP::CarteProfessionnelleTravauxPublics)
 
           response '404', 'Non trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
             let(:siren) { not_found_siren }

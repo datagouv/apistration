@@ -65,10 +65,7 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
 
           unprocessable_content_error_request(:siren)
 
-          common_provider_errors_request(
-            DGFIP::LiassesFiscales,
-            DGFIPPotentialNotFoundError.new
-          )
+          common_provider_errors_request(DGFIP::LiassesFiscales)
 
           common_network_error_request(DGFIP::LiassesFiscales)
         end

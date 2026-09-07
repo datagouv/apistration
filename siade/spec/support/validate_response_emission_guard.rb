@@ -3,8 +3,8 @@ module ValidateResponseEmissionGuard
   INSTRUMENTED = Set.new
 
   UNIVERSAL_ERRORS = (
-    RSwagCommonErrors::BASELINE_PROVIDER_ERROR_CLASSES +
-    RSwagCommonErrors::BASELINE_NETWORK_ERROR_CLASSES +
+    Errors::BaselineErrors::PROVIDER_ERROR_CLASSES +
+    Errors::BaselineErrors::NETWORK_ERROR_CLASSES +
     [NotFoundError, MaintenanceError]
   ).freeze
 
