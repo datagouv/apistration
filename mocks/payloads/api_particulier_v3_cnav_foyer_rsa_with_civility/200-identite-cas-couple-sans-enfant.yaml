@@ -1,0 +1,38 @@
+---
+description: 'Foyer RSA avec un couple allocataire/conjoint et aucune personne à charge'
+params:
+  nomNaissance: 'Martin'
+  prenoms:
+    - alice
+  anneeDateNaissance: 1985
+  moisDateNaissance: 6
+  jourDateNaissance: 15
+  sexeEtatCivil: 'F'
+  codeCogInseePaysNaissance: '99100'
+status: 200
+payload: |-
+  {
+    "data": {
+      "beneficiaires": [
+        {
+          "nom_naissance": "MARTIN",
+          "nom_usage": null,
+          "prenoms": "Alice",
+          "date_naissance": "1985-06-15",
+          "sexe": "F",
+          "qualite": "allocataire"
+        },
+        {
+          "nom_naissance": "PETIT",
+          "nom_usage": "MARTIN",
+          "prenoms": "Paul",
+          "date_naissance": "1983-02-09",
+          "sexe": "M",
+          "qualite": "conjoint"
+        }
+      ],
+      "personnes_a_charge": []
+    },
+    "links": {},
+    "meta": {}
+  }

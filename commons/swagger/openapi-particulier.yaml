@@ -5378,6 +5378,923 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+  "/v3/dss/foyer_rsa/identite":
+    get:
+      summary: "[Identité] Composition du foyer RSA"
+      tags:
+      - Composition Foyer RSA
+      - Prochainement
+      parameters:
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: "**Nom de naissance, également appelé nom de famille**. \n\nLe
+          nom de naissance est indiqué sur l'acte de naissance, de mariage, sur le
+          livret de famille, etc. Le nom de famille/naissance figure toujours sur
+          la pièce d'identité en premier, avant le nom d'usage si le particulier en
+          a un. \n\nEn cas de changement de nom de naissance, une mention avec le
+          nouveau nom de famille est inscrite sur l'acte de naissance. Pour appeler
+          l'API, le nom de naissance/famille nécessaire est bien le nom de famille
+          modifié."
+        example: DURANT
+        required: true
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          maxItems: 3
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: "**Liste des prénoms**. \n\nFournir plusieurs prénoms maximise
+          les chances que l'API retrouve le particulier car cela permet de limiter
+          le risque d’homonymie."
+        required: true
+      - name: anneeDateNaissance
+        in: query
+        description: "**Année de naissance**. \n\nPour un particulier né en France,
+          dans le cadre d'un appel à l'API avec l'utilisation du paramètre 'nomCommuneNaissance',
+          ce paramètre est obligatoire (ainsi que le paramètre 'codeCogInseeDepartementNaissance')
+          afin de retrouver le code COG de la commune de naissance."
+        example: 1990
+        required: true
+        schema:
+          type: integer
+      - name: moisDateNaissance
+        in: query
+        description: "**Mois de naissance**."
+        example: 1
+        required: true
+        schema:
+          type: integer
+      - name: jourDateNaissance
+        in: query
+        description: "**Jour de naissance**."
+        example: 1
+        required: true
+        schema:
+          type: integer
+      - name: sexeEtatCivil
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: "**Sexe de la personne tel qu'indiqué sur les actes d'état civil**,
+          comme par exemple l'acte de naissance ou de mariage. \n\nDans la majorité
+          des cas, il s'agit également de la mention indiquée sur la pièce d'identité
+          et le passeport. Cette mention peut être masculin ('M') ou féminin ('F').
+          \nDans le cas d'un particulier ayant demandé une modification de sa mention
+          de sexe à l'état civil, le changement est indiqué en marge de l'acte de
+          naissance une fois la décision rendue. Le changement intervient sur les
+          titres d'identité seulement si le particulier en demande le renouvellement."
+        example: M
+        required: true
+      - name: codeCogInseeCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: "**Code Insee à 5 chiffres de la commune de naissance**. \n\nPour
+          retrouver un particulier né en France, il est nécessaire d'indiquer sa commune
+          de naissance. Ce paramètre est une des deux options disponibles pour renseigner
+          la commune de naissance. En l'absence de l'utilisation de la seconde option
+          (triplet 'nomCommuneNaissance', 'anneeDateNaissance', 'codeInseeDepartementNaissance').\n\nNe
+          pas remplir si la personne est née à l'étranger."
+        required: false
+      - name: codeCogInseePaysNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: |-
+          **Code Insee à 5 chiffres du pays de naissance**.
+
+          - Code Insee France = 99100 ;
+          - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f.
+        required: true
+      security:
+      - jwt_bearer_token: []
+      description: 'Composition du foyer au sens de la prestation de revenu de solidarité
+        active (RSA) : bénéficiaires du foyer et personnes à charge.'
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /api/introspect
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /api/introspect
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Foyer trouvé
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_particulier_v3_cnav_foyer_rsa_with_civility
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      beneficiaires:
+                        title: Bénéficiaires du foyer
+                        type: array
+                        minItems: 1
+                        description: Liste des bénéficiaires du foyer RSA (allocataire,
+                          conjoint, ouvrant droit...).
+                        items:
+                          type: object
+                          properties:
+                            nom_naissance:
+                              title: Nom de naissance
+                              type: string
+                              description: Nom de naissance du bénéficiaire.
+                              example: DUPONT
+                            nom_usage:
+                              title: Nom d'usage
+                              type: string
+                              nullable: true
+                              description: Nom d'usage du bénéficiaire.
+                              example: DURANT
+                            prenoms:
+                              title: Prénoms
+                              type: string
+                              description: Prénoms du bénéficiaire.
+                              example: Jeanne
+                            date_naissance:
+                              title: Date de naissance
+                              type: string
+                              description: Date de naissance du bénéficiaire au format
+                                AAAA-MM-JJ.
+                              example: '1970-11-25'
+                            sexe:
+                              title: Sexe
+                              type: string
+                              description: Sexe de naissance du bénéficiaire.
+                              example: F
+                              enum:
+                              - F
+                              - M
+                            qualite:
+                              title: Qualité du bénéficiaire
+                              type: string
+                              description: "Qualité du bénéficiaire au sein du foyer
+                                RSA : \n - 'allocataire' : bénéficiaire principal
+                                du RSA ; - 'allocataire_demandeur' : bénéficiaire
+                                principal du RSA, en cours de demande ; - 'ouvrant_droit'
+                                : personne dont la situation ouvre droit au RSA sans
+                                en être l'allocataire ; - 'conjoint' : conjoint de
+                                l'allocataire ; - 'conjoint_demandeur' : conjoint
+                                de l'allocataire, en cours de demande."
+                              example: allocataire
+                              enum:
+                              - allocataire
+                              - allocataire_demandeur
+                              - ouvrant_droit
+                              - conjoint
+                              - conjoint_demandeur
+                        x-scope: cnav_foyer_rsa
+                      personnes_a_charge:
+                        title: Personnes à charge du foyer
+                        type: array
+                        description: Liste des personnes à charge du foyer au sens
+                          du RSA (enfants jusqu'à 25 ans). Liste vide si le foyer
+                          ne compte aucune personne à charge.
+                        items:
+                          type: object
+                          properties:
+                            nom_naissance:
+                              title: Nom de naissance
+                              type: string
+                              description: Nom de naissance de la personne à charge.
+                              example: DUPONT
+                            nom_usage:
+                              title: Nom d'usage
+                              type: string
+                              nullable: true
+                              description: Nom d'usage de la personne à charge.
+                              example:
+                            prenoms:
+                              title: Prénoms
+                              type: string
+                              description: Prénoms de la personne à charge.
+                              example: Clotaire Kevin
+                            date_naissance:
+                              title: Date de naissance
+                              type: string
+                              description: Date de naissance de la personne à charge
+                                au format AAAA-MM-JJ.
+                              example: '2007-06-16'
+                            sexe:
+                              title: Sexe
+                              type: string
+                              description: Sexe de naissance de la personne à charge.
+                              example: M
+                              enum:
+                              - F
+                              - M
+                        x-scope: cnav_foyer_rsa
+                    required:
+                    - beneficiaires
+                    - personnes_a_charge
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '404':
+          description: Non trouvé
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_content_error_sexe_etat_civil_error:
+                  value:
+                    errors:
+                    - code: '00427'
+                      title: Entité non traitable
+                      detail: Le sexe de l'état civil est manquant
+                      source:
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le sexe de l'état civil est manquant
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                  value:
+                    errors:
+                    - code: '37999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                erreur_interne_du_fournisseur_de_donnees_37000:
+                  value:
+                    errors:
+                    - code: '37000'
+                      title: Erreur interne du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et a été identifié comme étant une erreur interne.
+                        Si le problème persiste, consultez la page de status ou contactez
+                        nous sur le support.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur interne du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et a été identifié comme étant une erreur interne.
+                    Si le problème persiste, consultez la page de status ou contactez
+                    nous sur le support.
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                  value:
+                    errors:
+                    - code: '37011'
+                      title: Erreur temporaire du fournisseur de données
+                      detail: Merci de réessayer dans quelques instants
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur temporaire du fournisseur de données
+                  description: Merci de réessayer dans quelques instants
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                  value:
+                    errors:
+                    - code: '37009'
+                      title: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                        de données
+                      detail: 'La connexion sécurisée avec le fournisseur de données
+                        n''a pas pu être établie : certificat invalide ou expiré,
+                        ou échec de la négociation TLS. L''équipe technique a été
+                        notifiée de cette erreur pour investigation.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
+                    de données
+                  description: 'La connexion sécurisée avec le fournisseur de données
+                    n''a pas pu être établie : certificat invalide ou expiré, ou échec
+                    de la négociation TLS. L''équipe technique a été notifiée de cette
+                    erreur pour investigation.'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '37002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '37001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '37004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+                provider_error:
+                  value:
+                    errors:
+                    - code: '37008'
+                      title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                      detail: 'Erreur de fournisseur de donnée : Trop de requêtes
+                        effectuées, veuillez réessayer plus tard.'
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
+                  description: 'Erreur de fournisseur de donnée : Trop de requêtes
+                    effectuées, veuillez réessayer plus tard.'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/v3/dss/foyer_rsa/france_connect":
+    get:
+      summary: "[FranceConnect] Composition du foyer RSA"
+      tags:
+      - Composition Foyer RSA
+      - Prochainement
+      parameters:
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: 'Composition du foyer au sens de la prestation de revenu de solidarité
+        active (RSA) : bénéficiaires du foyer et personnes à charge.'
+      responses:
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /api/introspect
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /api/introspect
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Foyer trouvé
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_particulier_v3_cnav_foyer_rsa_with_france_connect
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      beneficiaires:
+                        title: Bénéficiaires du foyer
+                        type: array
+                        minItems: 1
+                        description: Liste des bénéficiaires du foyer RSA (allocataire,
+                          conjoint, ouvrant droit...).
+                        items:
+                          type: object
+                          properties:
+                            nom_naissance:
+                              title: Nom de naissance
+                              type: string
+                              description: Nom de naissance du bénéficiaire.
+                              example: DUPONT
+                            nom_usage:
+                              title: Nom d'usage
+                              type: string
+                              nullable: true
+                              description: Nom d'usage du bénéficiaire.
+                              example: DURANT
+                            prenoms:
+                              title: Prénoms
+                              type: string
+                              description: Prénoms du bénéficiaire.
+                              example: Jeanne
+                            date_naissance:
+                              title: Date de naissance
+                              type: string
+                              description: Date de naissance du bénéficiaire au format
+                                AAAA-MM-JJ.
+                              example: '1970-11-25'
+                            sexe:
+                              title: Sexe
+                              type: string
+                              description: Sexe de naissance du bénéficiaire.
+                              example: F
+                              enum:
+                              - F
+                              - M
+                            qualite:
+                              title: Qualité du bénéficiaire
+                              type: string
+                              description: "Qualité du bénéficiaire au sein du foyer
+                                RSA : \n - 'allocataire' : bénéficiaire principal
+                                du RSA ; - 'allocataire_demandeur' : bénéficiaire
+                                principal du RSA, en cours de demande ; - 'ouvrant_droit'
+                                : personne dont la situation ouvre droit au RSA sans
+                                en être l'allocataire ; - 'conjoint' : conjoint de
+                                l'allocataire ; - 'conjoint_demandeur' : conjoint
+                                de l'allocataire, en cours de demande."
+                              example: allocataire
+                              enum:
+                              - allocataire
+                              - allocataire_demandeur
+                              - ouvrant_droit
+                              - conjoint
+                              - conjoint_demandeur
+                        x-scope: cnav_foyer_rsa
+                      personnes_a_charge:
+                        title: Personnes à charge du foyer
+                        type: array
+                        description: Liste des personnes à charge du foyer au sens
+                          du RSA (enfants jusqu'à 25 ans). Liste vide si le foyer
+                          ne compte aucune personne à charge.
+                        items:
+                          type: object
+                          properties:
+                            nom_naissance:
+                              title: Nom de naissance
+                              type: string
+                              description: Nom de naissance de la personne à charge.
+                              example: DUPONT
+                            nom_usage:
+                              title: Nom d'usage
+                              type: string
+                              nullable: true
+                              description: Nom d'usage de la personne à charge.
+                              example:
+                            prenoms:
+                              title: Prénoms
+                              type: string
+                              description: Prénoms de la personne à charge.
+                              example: Clotaire Kevin
+                            date_naissance:
+                              title: Date de naissance
+                              type: string
+                              description: Date de naissance de la personne à charge
+                                au format AAAA-MM-JJ.
+                              example: '2007-06-16'
+                            sexe:
+                              title: Sexe
+                              type: string
+                              description: Sexe de naissance de la personne à charge.
+                              example: M
+                              enum:
+                              - F
+                              - M
+                        x-scope: cnav_foyer_rsa
+                    required:
+                    - beneficiaires
+                    - personnes_a_charge
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '404':
+          description: Non trouvé
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
+                        pas connus, ou ne comportent aucune information pour cet appel.
+                        Veuillez vérifier que votre recherche est couverte par le
+                        périmètre de l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
+                    sont pas connus, ou ne comportent aucune information pour cet
+                    appel. Veuillez vérifier que votre recherche est couverte par
+                    le périmètre de l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/participation_familiale_eaje/identite":
     get:
       summary: "[Identité] Participation familiale EAJE"
