@@ -1,5 +1,7 @@
 class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
-  declares_no_specific_errors!
+  raises GIPMDSError, kind: :temporary_credentials_error
+  raises GIPMDSError, kind: :quota_error
+  raises GIPMDSError, kind: :ko_technique
 
   # rubocop:disable-next Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
   def call

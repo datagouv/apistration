@@ -15282,6 +15282,51 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_temporaire_d_authentification_au_gip_mds_31502:
+                  value:
+                    errors:
+                    - code: '31502'
+                      title: Erreur temporaire d'authentification au GIP-MDS
+                      detail: Les serveurs du GIP-MDS rencontrent une erreur interne
+                        impliquant une erreur momentanée d'authentification, veuillez
+                        réessayer votre appel dans quelques secondes.
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                        retry_in: 10
+                  summary: Erreur temporaire d'authentification au GIP-MDS
+                  description: Les serveurs du GIP-MDS rencontrent une erreur interne
+                    impliquant une erreur momentanée d'authentification, veuillez
+                    réessayer votre appel dans quelques secondes.
+                erreur_de_quota_du_gip_mds_31503:
+                  value:
+                    errors:
+                    - code: '31503'
+                      title: Erreur de quota du GIP-MDS
+                      detail: Les serveurs du GIP-MDS nous renvoi une erreur 429 indiquant
+                        que nous avons dépassé les quotas d'appel alloués à notre
+                        application, veuillez réessayer votre appel plus tard.
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                        retry_in: 3600
+                  summary: Erreur de quota du GIP-MDS
+                  description: Les serveurs du GIP-MDS nous renvoi une erreur 429
+                    indiquant que nous avons dépassé les quotas d'appel alloués à
+                    notre application, veuillez réessayer votre appel plus tard.
+                erreur_interne_du_gip_mds_31501:
+                  value:
+                    errors:
+                    - code: '31501'
+                      title: Erreur interne du GIP-MDS
+                      detail: Les serveurs du GIP-MDS rencontrent une erreur interne
+                        impliquant une indisponibilité momentanée
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Erreur interne du GIP-MDS
+                  description: Les serveurs du GIP-MDS rencontrent une erreur interne
+                    impliquant une indisponibilité momentanée
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -15931,6 +15976,51 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_temporaire_d_authentification_au_gip_mds_31502:
+                  value:
+                    errors:
+                    - code: '31502'
+                      title: Erreur temporaire d'authentification au GIP-MDS
+                      detail: Les serveurs du GIP-MDS rencontrent une erreur interne
+                        impliquant une erreur momentanée d'authentification, veuillez
+                        réessayer votre appel dans quelques secondes.
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                        retry_in: 10
+                  summary: Erreur temporaire d'authentification au GIP-MDS
+                  description: Les serveurs du GIP-MDS rencontrent une erreur interne
+                    impliquant une erreur momentanée d'authentification, veuillez
+                    réessayer votre appel dans quelques secondes.
+                erreur_de_quota_du_gip_mds_31503:
+                  value:
+                    errors:
+                    - code: '31503'
+                      title: Erreur de quota du GIP-MDS
+                      detail: Les serveurs du GIP-MDS nous renvoi une erreur 429 indiquant
+                        que nous avons dépassé les quotas d'appel alloués à notre
+                        application, veuillez réessayer votre appel plus tard.
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                        retry_in: 3600
+                  summary: Erreur de quota du GIP-MDS
+                  description: Les serveurs du GIP-MDS nous renvoi une erreur 429
+                    indiquant que nous avons dépassé les quotas d'appel alloués à
+                    notre application, veuillez réessayer votre appel plus tard.
+                erreur_interne_du_gip_mds_31501:
+                  value:
+                    errors:
+                    - code: '31501'
+                      title: Erreur interne du GIP-MDS
+                      detail: Les serveurs du GIP-MDS rencontrent une erreur interne
+                        impliquant une indisponibilité momentanée
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Erreur interne du GIP-MDS
+                  description: Les serveurs du GIP-MDS rencontrent une erreur interne
+                    impliquant une indisponibilité momentanée
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -16843,6 +16933,37 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_temporaire_d_identification_d_infogreffe_02501:
+                  value:
+                    errors:
+                    - code: '02501'
+                      title: Erreur temporaire d'identification d'Infogreffe
+                      detail: Une erreur d'identification a été relevée par le système,
+                        il s'agit généralement d'une erreur temporaire, veuillez réessayer
+                        dans quelques secondes.
+                      source:
+                      meta:
+                        provider: Infogreffe
+                        retry_in: 10
+                  summary: Erreur temporaire d'identification d'Infogreffe
+                  description: Une erreur d'identification a été relevée par le système,
+                    il s'agit généralement d'une erreur temporaire, veuillez réessayer
+                    dans quelques secondes.
+                erreur_de_generation_de_commande_d_infogreffe_02502:
+                  value:
+                    errors:
+                    - code: '02502'
+                      title: Erreur de génération de commande d'Infogreffe
+                      detail: Une erreur du fournisseur de données empêche la délivrance
+                        des informations, il s'agit certainement d'un numéro de siren
+                        hors périmètre.
+                      source:
+                      meta:
+                        provider: Infogreffe
+                  summary: Erreur de génération de commande d'Infogreffe
+                  description: Une erreur du fournisseur de données empêche la délivrance
+                    des informations, il s'agit certainement d'un numéro de siren
+                    hors périmètre.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -17479,6 +17600,37 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_temporaire_d_identification_d_infogreffe_02501:
+                  value:
+                    errors:
+                    - code: '02501'
+                      title: Erreur temporaire d'identification d'Infogreffe
+                      detail: Une erreur d'identification a été relevée par le système,
+                        il s'agit généralement d'une erreur temporaire, veuillez réessayer
+                        dans quelques secondes.
+                      source:
+                      meta:
+                        provider: Infogreffe
+                        retry_in: 10
+                  summary: Erreur temporaire d'identification d'Infogreffe
+                  description: Une erreur d'identification a été relevée par le système,
+                    il s'agit généralement d'une erreur temporaire, veuillez réessayer
+                    dans quelques secondes.
+                erreur_de_generation_de_commande_d_infogreffe_02502:
+                  value:
+                    errors:
+                    - code: '02502'
+                      title: Erreur de génération de commande d'Infogreffe
+                      detail: Une erreur du fournisseur de données empêche la délivrance
+                        des informations, il s'agit certainement d'un numéro de siren
+                        hors périmètre.
+                      source:
+                      meta:
+                        provider: Infogreffe
+                  summary: Erreur de génération de commande d'Infogreffe
+                  description: Une erreur du fournisseur de données empêche la délivrance
+                    des informations, il s'agit certainement d'un numéro de siren
+                    hors périmètre.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -29166,6 +29318,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                mauvaise_reponse_du_fournisseur_de_donnees_01501:
+                  value:
+                    errors:
+                    - code: '01501'
+                      title: Mauvaise réponse du fournisseur de données
+                      detail: L'INSEE a répondu avec une réponse comportant plusieurs
+                        établissements
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Mauvaise réponse du fournisseur de données
+                  description: L'INSEE a répondu avec une réponse comportant plusieurs
+                    établissements
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -30722,6 +30887,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                mauvaise_reponse_du_fournisseur_de_donnees_01501:
+                  value:
+                    errors:
+                    - code: '01501'
+                      title: Mauvaise réponse du fournisseur de données
+                      detail: L'INSEE a répondu avec une réponse comportant plusieurs
+                        établissements
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Mauvaise réponse du fournisseur de données
+                  description: L'INSEE a répondu avec une réponse comportant plusieurs
+                    établissements
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -32174,6 +32352,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                mauvaise_reponse_du_fournisseur_de_donnees_01501:
+                  value:
+                    errors:
+                    - code: '01501'
+                      title: Mauvaise réponse du fournisseur de données
+                      detail: L'INSEE a répondu avec une réponse comportant plusieurs
+                        établissements
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Mauvaise réponse du fournisseur de données
+                  description: L'INSEE a répondu avec une réponse comportant plusieurs
+                    établissements
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -33683,6 +33874,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                mauvaise_reponse_du_fournisseur_de_donnees_01501:
+                  value:
+                    errors:
+                    - code: '01501'
+                      title: Mauvaise réponse du fournisseur de données
+                      detail: L'INSEE a répondu avec une réponse comportant plusieurs
+                        établissements
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Mauvaise réponse du fournisseur de données
+                  description: L'INSEE a répondu avec une réponse comportant plusieurs
+                    établissements
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
