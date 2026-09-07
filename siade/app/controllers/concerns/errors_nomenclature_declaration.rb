@@ -2,6 +2,10 @@ module ErrorsNomenclatureDeclaration
   extend ActiveSupport::Concern
 
   Declaration = Data.define(:organizers) do
+    def documented?
+      organizers.any?
+    end
+
     def versions
       organizers.keys.sort
     end
@@ -18,6 +22,10 @@ module ErrorsNomenclatureDeclaration
   class_methods do
     def nomenclature(organizers:)
       self.errors_nomenclature_declaration = Declaration.new(organizers: organizers.freeze)
+    end
+
+    def nomenclature_undocumented!
+      self.errors_nomenclature_declaration = Declaration.new(organizers: {}.freeze)
     end
   end
 end
