@@ -1,4 +1,6 @@
 class INSEE::Authenticate < MakeRequest::Post
+  raises ProviderAuthenticationError
+
   CACHE_KEY = :'insee/authenticate'
   GUARD_CACHE_NAMESPACE = 'insee'.freeze
   LOCK_CACHE_KEY = 'auth_lock'.freeze
