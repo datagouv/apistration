@@ -1,6 +1,8 @@
 class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntreprise::V3AndMore::BaseController
   include APIEntreprise::CommonDGFIPOrganizerParams
 
+  nomenclature organizers: { 3 => ::DGFIP::ChiffresAffaires }
+
   def show
     if organizer.success?
       render json: serialize_data,

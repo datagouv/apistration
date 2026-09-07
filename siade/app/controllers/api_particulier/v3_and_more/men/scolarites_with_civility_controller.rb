@@ -1,6 +1,8 @@
 class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
+  nomenclature organizers: { 3 => ::MEN::Scolarites, 4 => ::MEN::Scolarites, 5 => ::MEN::Scolarites }
+
   def show
     if organizer.success?
       render json: serialize_data,

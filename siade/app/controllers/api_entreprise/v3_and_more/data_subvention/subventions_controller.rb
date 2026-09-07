@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::DataSubvention::SubventionsController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::DataSubvention::Subventions }
+
   def show
     if organizer.success?
       render json: serialize_data,

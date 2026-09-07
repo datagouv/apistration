@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::INSEE::SiegesDiffusablesUnitesLegalesController < APIEntreprise::V3AndMore::INSEE::BaseController
+  nomenclature organizers: { 3 => ::INSEE::SiegeDiffusableUniteLegale, 4 => ::INSEE::SiegeDiffusableUniteLegale }
+
   def show
     if organizer.success?
       render json: serialize_data,

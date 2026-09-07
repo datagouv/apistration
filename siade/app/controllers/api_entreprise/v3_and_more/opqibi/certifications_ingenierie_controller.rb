@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::OPQIBI::CertificationsIngenierieController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::OPQIBI::CertificationsIngenierie }
+
   def show
     if organizer.success?
       render json: serialize_data,

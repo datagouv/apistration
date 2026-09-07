@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::CNETP::AttestationCotisationsCongesPayesChomageIntemperiesController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::CNETP::AttestationCotisationsCongesPayesChomageIntemperies }
+
   def show
     if organizer.success?
       render json: serialize_data,

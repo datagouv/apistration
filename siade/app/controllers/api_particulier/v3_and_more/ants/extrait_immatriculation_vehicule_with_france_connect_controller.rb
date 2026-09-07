@@ -2,6 +2,8 @@ class APIParticulier::V3AndMore::ANTS::ExtraitImmatriculationVehiculeWithFranceC
   include APIParticulier::RequiresFranceConnect
   include APIParticulier::CivilityParameters
 
+  nomenclature organizers: { 3 => ::ANTS::ExtraitImmatriculationVehicule }
+
   def show
     if organizer.success?
       render json: serialize_data,

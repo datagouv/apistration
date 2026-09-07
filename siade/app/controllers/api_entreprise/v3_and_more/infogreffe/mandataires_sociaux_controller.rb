@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::Infogreffe::MandatairesSociauxController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::Infogreffe::MandatairesSociaux }
+
   def show
     if organizer.success?
       render json: serialize_data,
