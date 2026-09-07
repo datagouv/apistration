@@ -83,8 +83,8 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with INE', api: :particu
           end
         end
 
-        common_provider_errors_request('CNOUS', CNOUS::StudentScholarshipWithINE)
-        common_network_error_request('CNOUS', CNOUS::StudentScholarshipWithINE)
+        common_provider_errors_request(CNOUS::StudentScholarshipWithINE)
+        common_network_error_request(CNOUS::StudentScholarshipWithINE)
       end
     end
   end

@@ -73,8 +73,8 @@ RSpec.describe 'DataSubvention: Subventions', api: :entreprise, type: %i[request
           end
         end
 
-        common_provider_errors_request('DataSubvention', DataSubvention::Subventions)
-        common_network_error_request('DataSubvention', DataSubvention::Subventions)
+        common_provider_errors_request(DataSubvention::Subventions)
+        common_network_error_request(DataSubvention::Subventions)
       end
     end
   end

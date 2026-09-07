@@ -47,9 +47,8 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
           unprocessable_content_error_request(:siret_or_rna)
 
           common_provider_errors_request(
-            'MI',
             MI::Associations::Documents,
-            documents_errors('MI')
+            documents_errors(MI::Associations::Documents)
           )
 
           response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
@@ -62,7 +61,7 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
             run_test!
           end
 
-          common_network_error_request('MI', MI::Associations::Documents)
+          common_network_error_request(MI::Associations::Documents)
         end
       end
     end

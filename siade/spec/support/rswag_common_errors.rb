@@ -119,19 +119,23 @@ module RSwagCommonErrors
     end
   end
 
-  def common_provider_errors_request(provider_name, organizer_klass, extra_errors = nil, &block)
-    response '502', 'Erreur du fournisseur' do
-      baseline_errors = BASELINE_PROVIDER_ERROR_CLASSES.map { |klass| klass.new(provider_name) }
+  def provider_error_examples(organizer_klass, extra_errors)
+    provider_name = organizer_klass.provider_name
+    baseline_errors = BASELINE_PROVIDER_ERROR_CLASSES.map { |klass| klass.new(provider_name) }
+    registry_errors = ErrorRegistry.examples_for_status(organizer_klass, 502, provider_name:)
 
-      stubbed_organizer_error(organizer_klass, baseline_errors.first)
+    (baseline_errors + Array(extra_errors) + registry_errors).uniq(&:code)
+  end
+
+  def common_provider_errors_request(organizer_klass, extra_errors = nil, &block)
+    response '502', 'Erreur du fournisseur' do
+      errors = provider_error_examples(organizer_klass, extra_errors)
+
+      stubbed_organizer_error(organizer_klass, errors.first)
 
       schema '$ref' => '#/components/schemas/Error'
 
-      registry_errors = ErrorRegistry.examples_for_status(organizer_klass, 502, provider_name:)
-
-      (baseline_errors + Array(extra_errors) + registry_errors).uniq(&:code).each do |error|
-        build_rswag_example(error)
-      end
+      errors.each { |error| build_rswag_example(error) }
 
       block.call if block_given?
 
@@ -159,23 +163,26 @@ module RSwagCommonErrors
     end
   end
 
-  def common_network_error_request(provider_name, organizer_klass, &block)
+  def network_error_examples(provider_name)
+    {
+      timeout_error: ProviderTimeoutError.new(provider_name),
+      provider_unavailable_error: ProviderUnavailable.new(provider_name),
+      network_error: NetworkError.new,
+      dns_resolution_error: DnsResolutionError.new(provider_name)
+    }
+  end
+
+  def common_network_error_request(organizer_klass, &block)
     response '504', 'Erreur d\'intermédiaire' do
       schema '$ref' => '#/components/schemas/Error'
 
-      provider_timeout_error = ProviderTimeoutError.new(provider_name)
+      examples = network_error_examples(organizer_klass.provider_name)
 
-      stubbed_organizer_error(
-        organizer_klass,
-        provider_timeout_error
-      )
+      stubbed_organizer_error(organizer_klass, examples[:timeout_error])
 
-      build_rswag_example(provider_timeout_error, :timeout_error)
-      build_rswag_example(ProviderUnavailable.new(provider_name), :provider_unavailable_error)
-      build_rswag_example(NetworkError.new, :network_error)
-      build_rswag_example(DnsResolutionError.new(provider_name), :dns_resolution_error)
+      examples.each { |key, error| build_rswag_example(error, key) }
 
-      build_cnav_network_error_rswag_example if provider_name == 'CNAV'
+      build_cnav_network_error_rswag_example(organizer_klass) if organizer_klass <= CNAV::RetrieverOrganizer
 
       block.call if block_given?
 
@@ -183,13 +190,13 @@ module RSwagCommonErrors
     end
   end
 
-  def build_cnav_network_error_rswag_example
-    build_rswag_example(ProviderRateLimitingError.new('CNAV'), :provider_error)
+  def build_cnav_network_error_rswag_example(organizer_klass)
+    build_rswag_example(ProviderRateLimitingError.new(organizer_klass.provider_name), :provider_error)
   end
 
-  def documents_errors(provider_name)
+  def documents_errors(organizer_klass)
     BadFileFromProviderError::KIND_TO_SUBCODE.dup.keys.map do |subcode|
-      BadFileFromProviderError.new(provider_name, subcode)
+      BadFileFromProviderError.new(organizer_klass.provider_name, subcode)
     end
   end
 

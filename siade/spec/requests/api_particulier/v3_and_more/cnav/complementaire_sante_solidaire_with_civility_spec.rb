@@ -128,7 +128,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
               stub_cnav_404('complementaire_sante_solidaire')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new(CNAV::ComplementaireSanteSolidaire.provider_name, 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 
@@ -136,8 +136,8 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
           end
         end
 
-        common_provider_errors_request('CNAV', CNAV::ComplementaireSanteSolidaire)
-        common_network_error_request('CNAV', CNAV::ComplementaireSanteSolidaire)
+        common_provider_errors_request(CNAV::ComplementaireSanteSolidaire)
+        common_network_error_request(CNAV::ComplementaireSanteSolidaire)
       end
     end
   end

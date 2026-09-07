@@ -1267,25 +1267,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -1293,40 +1293,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -1335,7 +1335,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -1352,26 +1352,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -1393,24 +1393,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -1695,13 +1695,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
@@ -2165,25 +2165,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -2191,40 +2191,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -2233,7 +2233,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -2250,26 +2250,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -2291,24 +2291,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -2609,13 +2609,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
@@ -3073,25 +3073,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -3099,40 +3099,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -3141,7 +3141,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -3158,26 +3158,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -3199,24 +3199,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -3510,13 +3510,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
@@ -3967,25 +3967,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -3993,40 +3993,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -4035,7 +4035,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -4052,26 +4052,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -4093,24 +4093,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -4397,13 +4397,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
@@ -4876,25 +4876,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -4902,40 +4902,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -4944,7 +4944,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -4961,26 +4961,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -5002,24 +5002,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -5328,13 +5328,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
@@ -5949,25 +5949,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -5975,40 +5975,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -6017,7 +6017,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -6034,26 +6034,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -6075,24 +6075,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -7016,25 +7016,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -7042,40 +7042,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -7084,7 +7084,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -7101,26 +7101,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -7142,24 +7142,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -7453,25 +7453,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -7479,40 +7479,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -7521,7 +7521,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -7538,26 +7538,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -7579,24 +7579,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -8309,25 +8309,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_35999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '35999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_35000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '35000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -8335,40 +8335,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_35008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '35008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_35011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '35011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_35009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '35009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -8377,7 +8377,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -8394,26 +8394,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '35002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '35001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -8435,24 +8435,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '35004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '35008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -9001,13 +9001,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '35999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: CNAF & MSA
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
@@ -9468,25 +9468,25 @@ paths:
           content:
             application/json:
               examples:
-                erreur_inconnue_du_fournisseur_de_donnees_37999:
+                erreur_inconnue_du_fournisseur_de_donnees_36999:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
-                erreur_interne_du_fournisseur_de_donnees_37000:
+                erreur_interne_du_fournisseur_de_donnees_36000:
                   value:
                     errors:
-                    - code: '37000'
+                    - code: '36000'
                       title: Erreur interne du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et a été identifié comme étant une erreur interne.
@@ -9494,40 +9494,40 @@ paths:
                         nous sur le support.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur interne du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et a été identifié comme étant une erreur interne.
                     Si le problème persiste, consultez la page de status ou contactez
                     nous sur le support.
-                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_37008:
+                erreur_aupres_du_fournisseur_de_donnees_trop_de_requetes_36008:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
-                erreur_temporaire_du_fournisseur_de_donnees_37011:
+                erreur_temporaire_du_fournisseur_de_donnees_36011:
                   value:
                     errors:
-                    - code: '37011'
+                    - code: '36011'
                       title: Erreur temporaire du fournisseur de données
                       detail: Merci de réessayer dans quelques instants
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur temporaire du fournisseur de données
                   description: Merci de réessayer dans quelques instants
-                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_37009:
+                erreur_de_connexion_securisee_tls_avec_le_fournisseur_de_donnees_36009:
                   value:
                     errors:
-                    - code: '37009'
+                    - code: '36009'
                       title: Erreur de connexion sécurisée (TLS) avec le fournisseur
                         de données
                       detail: 'La connexion sécurisée avec le fournisseur de données
@@ -9536,7 +9536,7 @@ paths:
                         notifiée de cette erreur pour investigation.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de connexion sécurisée (TLS) avec le fournisseur
                     de données
                   description: 'La connexion sécurisée avec le fournisseur de données
@@ -9553,26 +9553,26 @@ paths:
                 timeout_error:
                   value:
                     errors:
-                    - code: '37002'
+                    - code: '36002'
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
                 provider_unavailable_error:
                   value:
                     errors:
-                    - code: '37001'
+                    - code: '36001'
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -9594,24 +9594,24 @@ paths:
                 dns_resolution_error:
                   value:
                     errors:
-                    - code: '37004'
+                    - code: '36004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
                 provider_error:
                   value:
                     errors:
-                    - code: '37008'
+                    - code: '36008'
                       title: 'Erreur auprès du fournisseur de données : trop de requêtes'
                       detail: 'Erreur de fournisseur de donnée : Trop de requêtes
                         effectuées, veuillez réessayer plus tard.'
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: 'Erreur auprès du fournisseur de données : trop de requêtes'
                   description: 'Erreur de fournisseur de donnée : Trop de requêtes
                     effectuées, veuillez réessayer plus tard.'
@@ -9908,13 +9908,13 @@ paths:
                 unexpected_error:
                   value:
                     errors:
-                    - code: '37999'
+                    - code: '36999'
                       title: Erreur inconnue du fournisseur de données
                       detail: Une erreur inattendue est survenue lors de la collecte
                         des données
                       source:
                       meta:
-                        provider: CNAV
+                        provider: Sécurité sociale
                   summary: Erreur inconnue du fournisseur de données
                   description: Une erreur inattendue est survenue lors de la collecte
                     des données
