@@ -1,0 +1,31 @@
+<% errors_by_status.each do |status, errors| %>
+  <div class="fr-table fr-table--bordered">
+    <table>
+      <caption>
+        <%= t("shared.endpoints.provider_errors.statuses.#{status}", default: t('shared.endpoints.provider_errors.statuses.other', status:)) %>
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col"><%= t('shared.endpoints.provider_errors.code') %></th>
+          <th scope="col"><%= t('shared.endpoints.provider_errors.meaning') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% errors.each do |error| %>
+          <tr>
+            <td><code><%= error['code'] %></code></td>
+            <td>
+              <strong><%= error['title'] %></strong>
+              <% if error['detail'].present? %>
+                <br><%= error['detail'] %>
+              <% end %>
+              <% if error.dig('meta', 'retry_in').present? %>
+                <br><%= t('shared.endpoints.provider_errors.retry_in', seconds: error['meta']['retry_in']) %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

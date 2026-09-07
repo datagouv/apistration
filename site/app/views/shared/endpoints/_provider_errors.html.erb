@@ -1,0 +1,17 @@
+<h2 id="erreurs" class="fr-mt-md-5w fr-mt-8w">
+  <%= t('shared.endpoints.provider_errors.title') %>
+</h2>
+
+<p>
+  <%= t('shared.endpoints.provider_errors.description_html', link: link_to(t('shared.endpoints.provider_errors.nomenclature_link'), developers_path(anchor: 'gérer-les-erreurs---codes-https'))) %>
+</p>
+
+<%= render 'shared/endpoints/provider_errors_by_status', errors_by_status: endpoint.provider_errors %>
+
+<% if endpoint.france_connect_provider_errors.any? %>
+  <h3 id="erreurs-france-connect"><%= t('shared.endpoints.provider_errors.france_connect.title') %></h3>
+
+  <p><%= t('shared.endpoints.provider_errors.france_connect.description') %></p>
+
+  <%= render 'shared/endpoints/provider_errors_by_status', errors_by_status: endpoint.france_connect_provider_errors %>
+<% end %>
