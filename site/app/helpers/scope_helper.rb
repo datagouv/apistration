@@ -1,4 +1,6 @@
 module ScopeHelper
+  UNKNOWN_SCOPE_GROUP = 'Autres'.freeze
+
   def build_scopes(scopes, api)
     scopes_tree = {}
     scopes.each do |scope|
@@ -9,10 +11,22 @@ module ScopeHelper
   end
 
   def humanize_scope(scope, api)
-    I18n.t("api_#{api}.tokens.token.scope.#{scope}.label", default: scope.humanize)
+    entry = ScopeCatalog.for(api).lookup(scope)
+    scope_display_parts(api, entry, scope).join(' || ')
   end
 
   private
+
+  def scope_display_parts(api, entry, scope)
+    name = entry&.dig(:name).presence || scope.humanize
+    provider = entry&.dig(:provider).presence || UNKNOWN_SCOPE_GROUP
+    if api == 'api_particulier'
+      group = entry&.dig(:group).presence || UNKNOWN_SCOPE_GROUP
+      [provider, group, name]
+    else
+      [provider, name]
+    end
+  end
 
   def build_scopes_parts(scopes_tree, splitted_scope) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
     if splitted_scope.size > 2

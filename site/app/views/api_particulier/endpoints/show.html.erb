@@ -232,7 +232,7 @@
           <ul class="fr-mb-3w">
             <% @endpoint.scopes.each do |scope_name| %>
               <li>
-                <strong><%= humanize_scope(scope_name, 'particulier').split('||').last.strip %></strong>
+                <strong><%= humanize_scope(scope_name, 'api_particulier').split('||').last.strip %></strong>
                 <code>(<%= scope_name %>)</code>
               </li>
             <% end %>

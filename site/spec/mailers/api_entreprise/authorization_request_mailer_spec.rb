@@ -22,5 +22,5 @@ RSpec.describe APIEntreprise::AuthorizationRequestMailer do
     ],
     test_scopes: true,
     scope_test_method: 'embarquement_valide_to_demandeur_is_metier_not_tech',
-    scope_label: I18n.t('api_entreprise.tokens.token.scope.entreprises.label')
+    scope_label: 'INSEE || Data unités légales'
 end
