@@ -245,7 +245,7 @@ paths:
       responses:
         '200':
           description: Liste des droits
-          x-operationId: api_entreprise_vrivileges_
+          x-operationId: api_entreprise_privileges
         '401':
           description: Non autorisé
           content:
