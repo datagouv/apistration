@@ -26,6 +26,73 @@ RSpec.shared_context 'Valid mandatory params and unauthorized token' do
 end
 # rubocop:enable RSpec/VariableName
 
+def build_errors_nomenclature_error_schema
+  {
+    type: :object,
+    properties: {
+      code: { type: :string, example: '04501' },
+      title: { type: :string },
+      detail: { type: :string },
+      meta: { type: :object }
+    },
+    required: %w[code title detail]
+  }
+end
+
+def build_errors_nomenclature_by_status_schema
+  {
+    type: :object,
+    description: 'Erreurs groupées par statut HTTP',
+    additionalProperties: { type: :array, items: build_errors_nomenclature_error_schema }
+  }
+end
+
+def build_errors_nomenclature_labelled_schema(description)
+  {
+    type: :object,
+    description:,
+    additionalProperties: {
+      type: :object,
+      properties: {
+        title: { type: :string },
+        detail: { type: :string }
+      }
+    }
+  }
+end
+
+def build_errors_nomenclature_endpoints_schema
+  {
+    type: :object,
+    additionalProperties: {
+      type: :object,
+      properties: {
+        provider: { type: :string },
+        errors: build_errors_nomenclature_by_status_schema
+      },
+      required: %w[provider errors]
+    }
+  }
+end
+
+def build_errors_nomenclature_schema
+  {
+    type: :object,
+    properties: {
+      api: { type: :string, example: 'entreprise' },
+      providers: {
+        type: :object,
+        description: 'Préfixe à deux chiffres de chaque fournisseur de données',
+        additionalProperties: { type: :string }
+      },
+      generic_subcodes: build_errors_nomenclature_labelled_schema('Sous-codes communs à tous les fournisseurs'),
+      platform_codes: build_errors_nomenclature_by_status_schema,
+      endpoints: build_errors_nomenclature_endpoints_schema
+    },
+    required: %w[api providers generic_subcodes platform_codes endpoints]
+  }
+end
+
 # rubocop:disable Metrics/MethodLength
 def build_rswag_error(title: nil, detail: nil, code: nil)
   {

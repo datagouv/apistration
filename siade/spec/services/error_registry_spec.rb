@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe ErrorRegistry do
   around do |example|
-    snapshot = described_class.send(:declarations).deep_dup
+    snapshot = described_class.instance_variables.index_with { |name| described_class.instance_variable_get(name).deep_dup }
     described_class.reset!
     example.run
   ensure
-    described_class.instance_variable_set(:@declarations, snapshot)
+    snapshot.each { |name, value| described_class.instance_variable_set(name, value) }
   end
 
   let(:validator_class) do
