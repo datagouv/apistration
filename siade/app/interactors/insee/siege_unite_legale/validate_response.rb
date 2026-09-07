@@ -1,5 +1,5 @@
 class INSEE::SiegeUniteLegale::ValidateResponse < INSEE::ValidateResponse
-  declares_no_specific_errors!
+  raises INSEEError, kind: :more_than_one_siege
 
   private
 

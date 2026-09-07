@@ -60,8 +60,8 @@ RSpec.describe 'DJEPVA: Associations v4', api: :entreprise, type: %i[request swa
             run_test!
           end
 
-          common_network_error_request('DJEPVA', DJEPVA::UniteLegale)
-          common_provider_errors_request('DJEPVA', DJEPVA::UniteLegale)
+          common_network_error_request(DJEPVA::UniteLegale)
+          common_provider_errors_request(DJEPVA::UniteLegale)
         end
       end
     end

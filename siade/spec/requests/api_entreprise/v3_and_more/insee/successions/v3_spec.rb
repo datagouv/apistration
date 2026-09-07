@@ -61,9 +61,9 @@ RSpec.describe 'INSEE: Successions', api: :entreprise, type: %i[request swagger]
             let(:siret) { 'lol' }
           end
 
-          common_provider_errors_request('INSEE', INSEE::Successions)
+          common_provider_errors_request(INSEE::Successions)
 
-          common_network_error_request('INSEE', INSEE::Successions)
+          common_network_error_request(INSEE::Successions)
         end
       end
     end

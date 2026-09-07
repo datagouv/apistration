@@ -38,9 +38,8 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage i
           unprocessable_content_error_request(:siren)
 
           common_provider_errors_request(
-            'CNETP',
             CNETP::AttestationCotisationsCongesPayesChomageIntemperies,
-            documents_errors('CNETP')
+            documents_errors(CNETP::AttestationCotisationsCongesPayesChomageIntemperies)
           )
 
           response '404', 'Non trouvé', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/not_found_siren' } do
@@ -53,7 +52,7 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage i
             run_test!
           end
 
-          common_network_error_request('CNETP', CNETP::AttestationCotisationsCongesPayesChomageIntemperies)
+          common_network_error_request(CNETP::AttestationCotisationsCongesPayesChomageIntemperies)
         end
       end
     end

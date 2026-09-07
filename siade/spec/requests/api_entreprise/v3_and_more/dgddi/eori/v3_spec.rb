@@ -45,8 +45,8 @@ RSpec.describe 'Douanes: Immatriculations EORI', api: :entreprise, type: %i[requ
             run_test!
           end
 
-          common_provider_errors_request('DGDDI', DGDDI::EORI)
-          common_network_error_request('DGDDI', DGDDI::EORI)
+          common_provider_errors_request(DGDDI::EORI)
+          common_network_error_request(DGDDI::EORI)
         end
       end
     end

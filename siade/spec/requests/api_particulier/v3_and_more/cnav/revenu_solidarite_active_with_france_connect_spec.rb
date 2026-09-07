@@ -106,7 +106,7 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
               stub_cnav_404('revenu_solidarite_active')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new(CNAV::RevenuSolidariteActive.provider_name, 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 
