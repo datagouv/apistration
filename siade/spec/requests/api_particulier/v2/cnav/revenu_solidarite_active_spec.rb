@@ -67,7 +67,7 @@ RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: 
             context 'sexe invalide' do
               let(:sexe) { 'nope' }
 
-              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_content_error_gender_error)
+              build_rswag_example(UnprocessableEntityError.new(:sexe_etat_civil), :unprocessable_content_error_sexe_etat_civil_error)
 
               schema '$ref' => '#/components/schemas/Error'
 

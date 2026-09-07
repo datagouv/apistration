@@ -246,7 +246,7 @@ paths:
       responses:
         '200':
           description: Liste des droits
-          x-operationId: api_entreprise_vrivileges_
+          x-operationId: api_entreprise_privileges
         '401':
           description: Non autorisé
           content:
@@ -31738,73 +31738,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide
-                missing_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-                production_token_on_staging_error:
-                  value:
-                    errors:
-                    - code: '00108'
-                      title: Jeton de production sur staging
-                      detail: 'Ce jeton est un jeton de production, il n''est pas
-                        valide sur l''environnement de staging. Utilisez le jeton
-                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton de production sur staging
-                  description: 'Ce jeton est un jeton de production, il n''est pas
-                    valide sur l''environnement de staging. Utilisez le jeton public
-                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
-                staging_token_on_production_error:
-                  value:
-                    errors:
-                    - code: '00109'
-                      title: Jeton de staging en production
-                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
-                        sur l'environnement de staging. En production, utilisez le
-                        jeton de votre habilitation.
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton de staging en production
-                  description: Ce jeton est un jeton de staging, il ne fonctionne
-                    que sur l'environnement de staging. En production, utilisez le
-                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -31853,42 +31786,7 @@ paths:
           content:
             application/json:
               examples:
-                ambiguous_delegation_error:
-                  value:
-                    errors:
-                    - code: '00212'
-                      title: Entité non traitable
-                      detail: Plusieurs délégations actives existent pour ce SIRET.
-                        Le paramètre delegation_id est requis pour identifier la délégation.
-                      source:
-                        parameter: delegation_id
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Plusieurs délégations actives existent pour ce SIRET.
-                    Le paramètre delegation_id est requis pour identifier la délégation.
-                missing_mandatory_params_context_error:
-                  value:
-                    errors:
-                    - code: '00201'
-                      title: Entité non traitable
-                      detail: Le paramètre context est obligatoire
-                      source:
-                        parameter: context
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre context est obligatoire
-                missing_mandatory_params_object_error:
-                  value:
-                    errors:
-                    - code: '00202'
-                      title: Entité non traitable
-                      detail: Le paramètre object est obligatoire
-                      source:
-                        parameter: object
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre object est obligatoire
-                missing_mandatory_params_recipient_error:
+                missing_mandatory_param_error:
                   value:
                     errors:
                     - code: '00203'

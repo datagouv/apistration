@@ -123,16 +123,6 @@ Ces erreurs sont comprises entre `000` et `049`.
   Cette erreur intervient généralement quand le fournisseur de données est
   indisponible pour des raisons inconnues.
 
-- `XX007` = Entité disparue
-
-  Cette erreur indique que la ressource n'est plus disponible : il s'agit du
-  code HTTP utilisé lorsqu'un fournisseur de données ne renvoie plus cette
-  donnée, et que le endpoint ne sera plus jamais en capacité de renvoyer des
-  données.
-
-  Cette erreur intervient généralement quand le fournisseur de données est
-  indisponible pour des raisons inconnues.
-
 ##### XX05Z Erreurs associés aux fichiers renvoyés par les fournisseurs de données
 
 - `XX051` = Le fichier en base64 renvoyé est invalide
@@ -147,7 +137,6 @@ Ces erreurs sont comprises entre `000` et `049`.
 
 - `00100` = Privilèges insuffisants
 - `00101` = Jeton non valide ou non renseigné
-- `00102` = Jeton sous l'ancien format
 - `00103` = Jeton expiré
 
 ##### 0020Z Erreurs associés aux paramètres obligatoires
@@ -156,7 +145,6 @@ Ces erreurs sont comprises entre `000` et `049`.
 - `00202` = Object manquant
 - `00203` = Recipient manquant
 - `00210` = Recipient n'est pas un siret valide
-- `00211` = Recipient identique au paramètre d'appel
 
 ##### 0003Z Erreurs associés aux entrées non traitables
 
@@ -171,8 +159,6 @@ locale des paramètres.
 
 - `00401` = Mauvaise requête du client (Bad request)
 - `00402` = Version non supportée de l'API (Not found)
-- `00006` = Accès interdit (Forbidden)
-- `00401` = Mauvaise requête du client (Bad request)
 - `00429` = Trop de requêtes (Too Many Requests)
 
 #### Erreurs fournisseurs spécifiques

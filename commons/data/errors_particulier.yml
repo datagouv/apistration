@@ -44,8 +44,6 @@ generic_subcodes:
     detail: Cette entité n'est accessible par aucun organisme.
   '006':
     title: Erreur d'authentification auprès du fournisseur de données
-  '007':
-    title: Entité disparue
   '008':
     title: 'Erreur auprès du fournisseur de données : trop de requêtes'
   '009':
@@ -53,9 +51,6 @@ generic_subcodes:
     detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu être
       établie : certificat invalide ou expiré, ou échec de la négociation TLS. L''équipe
       technique a été notifiée de cette erreur pour investigation.'
-  '010':
-    title: Contenu partiel
-    detail: Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs.
   '011':
     title: Erreur temporaire du fournisseur de données
     detail: Merci de réessayer dans quelques instants
@@ -98,6 +93,10 @@ platform_codes:
       fournisseur, soit de API Entreprise. Il s'agit souvent d'une erreur temporaire.
     meta:
       retry_in: 10
+  '400':
+  - code: '00401'
+    title: Mauvaise requête
+    detail: Votre requête est invalide
   '401':
   - code: '00101'
     title: Interdit
@@ -264,9 +263,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -394,9 +394,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -553,9 +554,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -683,9 +685,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -842,9 +845,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -972,9 +976,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -1131,9 +1136,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -1261,9 +1267,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -1420,9 +1427,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -1550,9 +1558,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -1709,9 +1718,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -1845,9 +1855,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -2010,9 +2021,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -2140,9 +2152,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -2305,9 +2318,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -2436,9 +2450,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -2590,9 +2605,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
@@ -2720,9 +2736,10 @@ endpoints:
       - code: '00400'
         title: Entité non traitable
         detail: Le code pays INSEE n'est pas correctement formaté
-      - code: '00401'
+      - code: '00405'
         title: Entité non traitable
-        detail: Le request_id n'est pas correctement formaté
+        detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
+          s''il est fourni, doit être un UUID v4'
       - code: '00420'
         title: Entité non traitable
         detail: Le nom de naissance est manquant
