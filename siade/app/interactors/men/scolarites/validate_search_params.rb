@@ -1,4 +1,7 @@
 class MEN::Scolarites::ValidateSearchParams < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :code_etablissement_et_perimetre
+  raises UnprocessableEntityError, field: :critere_recherche_manquant
+
   def call
     if code_etablissement_provided? && perimetre_provided?
       invalid_param!(:code_etablissement_et_perimetre)

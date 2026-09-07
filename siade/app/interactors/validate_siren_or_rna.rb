@@ -1,4 +1,6 @@
 class ValidateSirenOrRNA < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :siren_or_rna
+
   def call
     return if rna_id.valid? || siren.valid?
 

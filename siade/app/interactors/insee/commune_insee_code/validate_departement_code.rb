@@ -1,4 +1,6 @@
 class INSEE::CommuneINSEECode::ValidateDepartementCode < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :code_cog_insee_departement_naissance
+
   def call
     return if valid?
 

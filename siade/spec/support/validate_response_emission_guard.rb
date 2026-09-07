@@ -78,11 +78,13 @@ module ValidateResponseEmissionGuard
 end
 
 RSpec.configure do |config|
-  config.before(:context, type: :validate_response) do |group|
-    ValidateResponseEmissionGuard.instrument(group.class.metadata[:described_class])
-  end
+  %i[validate_response validate_param_interactor].each do |type|
+    config.before(:context, type:) do |group|
+      ValidateResponseEmissionGuard.instrument(group.class.metadata[:described_class])
+    end
 
-  config.after(:context, type: :validate_response) do |group|
-    ValidateResponseEmissionGuard.verify!(group.class.metadata[:described_class])
+    config.after(:context, type:) do |group|
+      ValidateResponseEmissionGuard.verify!(group.class.metadata[:described_class])
+    end
   end
 end

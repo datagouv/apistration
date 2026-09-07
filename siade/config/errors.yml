@@ -216,6 +216,14 @@
   title: 'Entité non traitable'
   detail: "Le code INSEE commune n'est pas correctement formaté"
 
+- code: '00316'
+  title: 'Entité non traitable'
+  detail: "Le token_id n'est pas correctement formaté"
+
+- code: '00317'
+  title: 'Entité non traitable'
+  detail: "Le nom de la commune de naissance est manquant"
+
 - code: '00307'
   title: 'Entité non traitable'
   detail: "L'année n'est pas correctement formatée"
