@@ -51,8 +51,8 @@ RSpec.describe 'MI - SIAF : Fondations', api: :entreprise, type: %i[request swag
             run_test!
           end
 
-          common_provider_errors_request('SIAF', MI::SIAF::Fondations)
-          common_network_error_request('SIAF', MI::SIAF::Fondations)
+          common_provider_errors_request(MI::SIAF::Fondations)
+          common_network_error_request(MI::SIAF::Fondations)
         end
       end
     end

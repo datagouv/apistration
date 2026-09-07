@@ -51,8 +51,8 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
             run_test!
           end
 
-          common_provider_errors_request('RNM', RNM::EntreprisesArtisanales)
-          common_network_error_request('RNM', RNM::EntreprisesArtisanales)
+          common_provider_errors_request(RNM::EntreprisesArtisanales)
+          common_network_error_request(RNM::EntreprisesArtisanales)
         end
       end
     end

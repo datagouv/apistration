@@ -63,8 +63,8 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
             run_test!
           end
 
-          common_provider_errors_request('Infogreffe', Infogreffe::ExtraitsRCS)
-          common_network_error_request('Infogreffe', Infogreffe::ExtraitsRCS)
+          common_provider_errors_request(Infogreffe::ExtraitsRCS)
+          common_network_error_request(Infogreffe::ExtraitsRCS)
         end
       end
     end

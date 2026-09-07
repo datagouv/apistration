@@ -49,8 +49,8 @@ RSpec.describe 'INSEE: Adresse Etablissement', api: :entreprise, type: %i[reques
             run_test!
           end
 
-          common_provider_errors_request('INSEE', INSEE::AdresseEtablissement)
-          common_network_error_request('INSEE', INSEE::AdresseEtablissement)
+          common_provider_errors_request(INSEE::AdresseEtablissement)
+          common_network_error_request(INSEE::AdresseEtablissement)
         end
       end
     end

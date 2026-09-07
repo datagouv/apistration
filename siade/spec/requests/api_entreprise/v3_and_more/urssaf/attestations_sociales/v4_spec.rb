@@ -43,7 +43,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
 
           unprocessable_content_error_request(:siren)
 
-          common_provider_errors_request('ACOSS', URSSAF::AttestationsSociales)
+          common_provider_errors_request(URSSAF::AttestationsSociales)
 
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
             let(:siren) { not_found_siren }
@@ -55,7 +55,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
             run_test!
           end
 
-          common_network_error_request('ACOSS', URSSAF::AttestationsSociales)
+          common_network_error_request(URSSAF::AttestationsSociales)
         end
       end
     end
