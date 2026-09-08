@@ -1,7 +1,9 @@
 RSpec.describe INSEE::PasswordDerivation do
-  describe '.current_period' do
-    after { Timecop.return }
+  after { Timecop.return }
 
+  let(:static_password) { Siade.credentials[described_class::STATIC_CREDENTIAL_KEY] }
+
+  describe '.current_period' do
     it 'returns the bimester seed for January' do
       Timecop.freeze(Date.new(2026, 1, 15))
       expect(described_class.current_period).to eq('2026-01')
@@ -29,8 +31,6 @@ RSpec.describe INSEE::PasswordDerivation do
   end
 
   describe '.previous_period' do
-    after { Timecop.return }
-
     it 'returns the previous bimester for March (-> jan)' do
       Timecop.freeze(Date.new(2026, 3, 15))
       expect(described_class.previous_period).to eq('2026-01')
@@ -52,74 +52,118 @@ RSpec.describe INSEE::PasswordDerivation do
     end
   end
 
+  describe 'known vectors, duplicated identically in the site application' do
+    before { Siade.credentials[described_class::DERIVATION_KEY_CREDENTIAL_KEY] = 'known-vector-derivation-key' }
+
+    after { Siade.credentials.delete(described_class::DERIVATION_KEY_CREDENTIAL_KEY) }
+
+    it 'derives the expected password for 2026-11' do
+      Timecop.freeze(Date.new(2026, 11, 15))
+      expect(described_class.current_password).to eq('2AiKRY3mRq0NERC_')
+    end
+
+    it 'derives the expected password for 2027-01' do
+      Timecop.freeze(Date.new(2027, 1, 15))
+      expect(described_class.current_password).to eq('s-ughRpOLNf6dL7E')
+    end
+
+    it 'derives the expected password for 2027-11, whose raw encoding holds no digit' do
+      Timecop.freeze(Date.new(2027, 11, 15))
+      expect(described_class.current_password).to eq('#Ih0vOaURQyCOMFv')
+    end
+
+    it 'only uses special characters allowed by INSEE' do
+      Timecop.freeze(Date.new(2026, 11, 15))
+      expect(described_class.current_password).to match(/\A[a-zA-Z0-9\-_#]+\z/)
+    end
+
+    it 'keeps every character class INSEE requires on every period of the next century' do
+      offenders = (2026..2126).flat_map do |year|
+        described_class::BIMESTER_MONTHS.filter_map do |month|
+          Timecop.freeze(Date.new(year, month, 15))
+          next if described_class.current_period < described_class::DERIVATION_START
+
+          password = described_class.current_password
+
+          password unless described_class::CHAR_GUARANTEES.keys.all? { |pattern| password.match?(pattern) }
+        end
+      end
+
+      expect(offenders).to be_empty
+    end
+  end
+
   describe '.current_password' do
-    after { Timecop.return }
-
-    context 'when before DERIVATION_START (2026-09)' do
-      it 'returns the static credential' do
-        Timecop.freeze(Date.new(2026, 7, 1))
-        expect(described_class.current_password).to eq(Siade.credentials[:insee_apim_password])
-      end
+    it 'returns the static credential before DERIVATION_START' do
+      Timecop.freeze(Date.new(2026, 10, 31))
+      expect(described_class.current_password).to eq(static_password)
     end
 
-    context 'when at DERIVATION_START' do
-      it 'returns a derived password' do
-        Timecop.freeze(Date.new(2026, 9, 1))
-        expect(described_class.current_password).not_to eq(Siade.credentials[:insee_apim_password])
-      end
+    it 'returns a derived password at DERIVATION_START' do
+      Timecop.freeze(Date.new(2026, 11, 1))
+      expect(described_class.current_password).not_to eq(static_password)
     end
 
-    context 'when after DERIVATION_START' do
-      it 'returns a derived password' do
-        Timecop.freeze(Date.new(2027, 1, 15))
-        expect(described_class.current_password).not_to eq(Siade.credentials[:insee_apim_password])
-      end
+    it 'returns a derived password after DERIVATION_START' do
+      Timecop.freeze(Date.new(2027, 1, 15))
+      expect(described_class.current_password).not_to eq(static_password)
     end
   end
 
   describe '.previous_password' do
-    after { Timecop.return }
-
-    context 'when previous period is before DERIVATION_START' do
-      it 'returns the static credential' do
-        Timecop.freeze(Date.new(2026, 9, 1))
-        expect(described_class.previous_password).to eq(Siade.credentials[:insee_apim_password])
-      end
+    it 'returns the static credential when the previous period is before DERIVATION_START' do
+      Timecop.freeze(Date.new(2026, 11, 15))
+      expect(described_class.previous_password).to eq(static_password)
     end
 
-    context 'when previous period is at or after DERIVATION_START' do
-      it 'returns a derived password' do
-        Timecop.freeze(Date.new(2026, 11, 1))
-        expect(described_class.previous_password).not_to eq(Siade.credentials[:insee_apim_password])
-      end
+    it 'returns a derived password when the previous period is at or after DERIVATION_START' do
+      Timecop.freeze(Date.new(2027, 1, 15))
+      expect(described_class.previous_password).not_to eq(static_password)
+    end
+  end
+
+  describe '.candidates' do
+    it 'holds the single static password before DERIVATION_START' do
+      Timecop.freeze(Date.new(2026, 9, 15))
+      expect(described_class.candidates).to eq([static_password])
+    end
+
+    it 'holds the current then the previous password after DERIVATION_START' do
+      Timecop.freeze(Date.new(2027, 1, 15))
+      expect(described_class.candidates).to eq(
+        [described_class.current_password, described_class.previous_password]
+      )
+    end
+
+    it 'holds two distinct passwords on the first day of derivation' do
+      Timecop.freeze(Date.new(2026, 11, 1))
+      expect(described_class.candidates).to eq([described_class.current_password, static_password])
     end
   end
 
   describe 'determinism' do
-    after { Timecop.return }
+    it 'produces the same password for the whole bimester' do
+      Timecop.freeze(Date.new(2026, 11, 1))
+      first_day = described_class.current_password
 
-    it 'produces the same password for the same period' do
-      Timecop.freeze(Date.new(2026, 10, 1))
-      first_call = described_class.current_password
-      second_call = described_class.current_password
-      expect(first_call).to eq(second_call)
+      Timecop.freeze(Date.new(2026, 12, 20))
+
+      expect(described_class.current_password).to eq(first_day)
     end
 
     it 'produces different passwords for different periods' do
-      Timecop.freeze(Date.new(2026, 9, 1))
-      pwd_sep = described_class.current_password
-
       Timecop.freeze(Date.new(2026, 11, 1))
       pwd_nov = described_class.current_password
 
-      expect(pwd_sep).not_to eq(pwd_nov)
+      Timecop.freeze(Date.new(2027, 1, 1))
+      pwd_jan = described_class.current_password
+
+      expect(pwd_nov).not_to eq(pwd_jan)
     end
   end
 
   describe 'password format' do
-    after { Timecop.return }
-
-    before { Timecop.freeze(Date.new(2026, 9, 1)) }
+    before { Timecop.freeze(Date.new(2026, 11, 1)) }
 
     it 'is 16 characters long' do
       expect(described_class.current_password.length).to eq(16)
@@ -147,23 +191,28 @@ RSpec.describe INSEE::PasswordDerivation do
 
     before { Siade.credentials[described_class::BYPASS_CREDENTIAL_KEY] = bypass_password }
 
-    after do
-      Siade.credentials.delete(described_class::BYPASS_CREDENTIAL_KEY)
-      Timecop.return
-    end
+    after { Siade.credentials.delete(described_class::BYPASS_CREDENTIAL_KEY) }
 
     it 'is bypassed' do
       expect(described_class).to be_bypassed
     end
 
-    it 'returns the bypass password whatever the period' do
+    it 'tries the bypass password first, then the derived current one' do
       Timecop.freeze(Date.new(2027, 1, 15))
-      expect(described_class.current_password).to eq(bypass_password)
+      expect(described_class.candidates).to eq([bypass_password, described_class.current_password])
     end
 
-    it 'returns the bypass password as previous password too' do
+    it 'does not alter the derived passwords' do
       Timecop.freeze(Date.new(2027, 1, 15))
-      expect(described_class.previous_password).to eq(bypass_password)
+      expect(described_class.current_password).not_to eq(bypass_password)
+    end
+
+    context 'when the bypass credential is empty' do
+      let(:bypass_password) { '' }
+
+      it 'raises a configuration error' do
+        expect { described_class.candidates }.to raise_error(described_class::MissingBypassPasswordError)
+      end
     end
   end
 
