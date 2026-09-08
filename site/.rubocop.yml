@@ -99,6 +99,8 @@ RSpec/SpecFilePathFormat:
   Exclude:
     - "spec/**/*hubee*"
     - "spec/**/*formulaire_qf*"
+    - "spec/**/*insee_api_authentication*"
+    - "spec/**/*insee_oauth_exchange*"
 
 Naming/VariableNumber:
   Enabled: false
