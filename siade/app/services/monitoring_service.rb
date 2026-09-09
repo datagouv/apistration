@@ -36,10 +36,10 @@ class MonitoringService
     )
   end
 
-  def track_with_added_context(level, message, extra_context)
+  def track_with_added_context(level, message, extra_context, fingerprint: nil)
     set_context('Extra context', extra_context)
 
-    track(level, message)
+    track(level, message, fingerprint:)
   end
 
   def track_deprecated_data(field, deprecated_data)
