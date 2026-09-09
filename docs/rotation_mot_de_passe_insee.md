@@ -199,4 +199,4 @@ global d'essais sur le compte INSEE commun aux deux applications.
 ## Vérification locale isolée
 
 Les scripts et leur mode d’emploi sont regroupés dans
-[`local-e2e/insee/`](../../local-e2e/insee/README.md).
+[`local-e2e/insee/`](../local-e2e/insee/README.md).
