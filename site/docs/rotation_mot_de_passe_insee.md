@@ -177,3 +177,8 @@ voient les changements des autres processus.
 Les tests de ce comportement sont dans `siade/`, avec Redis et un cache local
 explicitement ouvert. Le `memory_store` des tests de `site/` ne reproduit pas
 cette couche de cache locale.
+
+## Vérification locale isolée
+
+Les scripts et leur mode d’emploi sont regroupés dans
+[`local-e2e/insee/`](../../local-e2e/insee/README.md).
