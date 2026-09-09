@@ -24,6 +24,15 @@ class SiteINSEESmoke < INSEESmoke
     INSEEAPIAuthentication.published_token
   end
 
+  def authentication_outcome
+    authenticate
+    'granted'
+  rescue INSEEAPIAuthentication::AuthenticationError
+    'rejected'
+  rescue INSEEAPIAuthentication::TemporaryError
+    'temporary'
+  end
+
   def cache_token(token)
     Rails.cache.write(INSEEAPIAuthentication::TOKEN_CACHE_KEY, token, namespace: 'insee', expires_in: 1.hour)
   end

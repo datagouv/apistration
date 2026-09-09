@@ -15,9 +15,7 @@ class INSEEAPIAuthentication
   EVERY_CANDIDATE_MESSAGE = 'INSEE authentication failed on every candidate: password desynchronized or account locked'.freeze
 
   def self.invalidate_token_cache!(rejected_token)
-    return unless published_token == rejected_token
-
-    Rails.cache.delete(TOKEN_CACHE_KEY, namespace: CACHE_NAMESPACE)
+    ConditionalCacheDelete.call(TOKEN_CACHE_KEY, namespace: CACHE_NAMESPACE) { |token| token == rejected_token }
   end
 
   def self.published_token
@@ -127,9 +125,7 @@ class INSEEAPIAuthentication
   end
 
   def release_lock!
-    return unless cache_read(LOCK_CACHE_KEY) == @lock_owner
-
-    Rails.cache.delete(LOCK_CACHE_KEY, namespace: CACHE_NAMESPACE)
+    ConditionalCacheDelete.call(LOCK_CACHE_KEY, namespace: CACHE_NAMESPACE) { |owner| owner == @lock_owner }
   end
 
   def cache_read(key)
