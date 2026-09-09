@@ -44,10 +44,8 @@ class CNAV::ValidateResponse < ValidateResponse
     fail_with_error!(build_error(ProviderRateLimitingError))
   end
 
-  EXPECTED_BAD_REQUEST_CODES = [40_013].freeze
-
   def unprocessable_entity_error!
-    track_unexpected_bad_request! unless EXPECTED_BAD_REQUEST_CODES.include?(error_code_from_body)
+    track_bad_request!
 
     unprocessable_entity!(:rejected_civility, meta: {
       provider_error_code: error_code_from_body,
@@ -60,6 +58,8 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   def handle_internal_server_error!
+    tag_provider_error!
+
     MonitoringService.instance.track_with_added_context(
       'warning',
       "[#{context.provider_name}] Internal server error (#{error_code_from_body})",
@@ -90,15 +90,19 @@ class CNAV::ValidateResponse < ValidateResponse
     nil
   end
 
-  def track_unexpected_bad_request!
+  def track_bad_request!
+    tag_provider_error!
+
     MonitoringService.instance.track_with_added_context(
-      'warning',
-      "[#{context.provider_name}] Unexpected bad request (#{error_code_from_body})",
+      'error',
+      "[#{context.provider_name}] Bad request (#{error_code_from_body})",
       {
         http_response_code: context.response.code,
         http_response_body: context.response.body,
+        regime:,
         encrypted_params: encrypt_params.to_s
-      }
+      },
+      fingerprint: ['cnav-bad-request', error_code_from_body.to_s]
     )
   end
 
@@ -106,6 +110,18 @@ class CNAV::ValidateResponse < ValidateResponse
     json_body['errorCode']
   rescue JSON::ParserError
     'unparseable'
+  end
+
+  def tag_provider_error!
+    MonitoringService.instance.set_tags(**provider_error_tags)
+  end
+
+  def provider_error_tags
+    {
+      cnav_error_code: error_code_from_body.to_s,
+      regime:,
+      recipient: context.recipient
+    }.compact
   end
 
   def error_message_from_body
