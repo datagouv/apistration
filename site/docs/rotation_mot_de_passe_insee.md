@@ -167,16 +167,34 @@ le token pour que les requêtes qui attendent puissent lire le résultat publié
 Il expire après 30 secondes côté `site/`, 90 secondes côté `siade/`.
 
 Sous verrou, l'authentification relit le token et le garde-fou avant toute
-tentative. À la libération, elle vérifie que le verrou lui appartient encore.
+tentative. Une requête concurrente attend 0,5 seconde, puis utilise le token
+publié. S'il n'est pas encore disponible, elle renvoie une erreur temporaire
+sans lancer son propre échange OAuth.
+
+La suppression du verrou et l'invalidation d'un token refusé sont
+conditionnelles et atomiques dans Redis. `ConditionalCacheDelete` lit la valeur
+sérialisée, vérifie le propriétaire ou le token, puis un script Lua ne supprime
+la clé que si sa valeur n'a pas changé. Un remplacement entre la comparaison
+et la suppression est ainsi conservé, y compris pour le token chiffré de
+`siade/`.
 
 Rails mémorise aussi les lectures de cache pendant une requête HTTP, y compris
 les absences. `outside_the_request_cache` ouvre un `with_local_cache` imbriqué
-pour que les lectures du token, du verrou et du garde-fou atteignent Redis et
-voient les changements des autres processus.
+pour que les lectures du token et du garde-fou atteignent Redis et voient les
+changements des autres processus. Les suppressions conditionnelles accèdent
+directement à Redis.
 
 Les tests de ce comportement sont dans `siade/`, avec Redis et un cache local
 explicitement ouvert. Le `memory_store` des tests de `site/` ne reproduit pas
-cette couche de cache locale.
+cette couche de cache locale ; le script local utilise un vrai Redis pour les
+deux applications.
+
+Cette coordination vaut pour un même namespace de token, tant que Redis est
+disponible et que le verrou n'a pas expiré. Deux démarrages de `siade/` avec
+des namespaces différents ont chacun leur verrou. En cas de panne Redis,
+chaque requête peut s'authentifier directement : ni le verrou ni le garde-fou
+ne peuvent alors limiter les tentatives. Il n'existe donc pas de plafond
+global d'essais sur le compte INSEE commun aux deux applications.
 
 ## Vérification locale isolée
 

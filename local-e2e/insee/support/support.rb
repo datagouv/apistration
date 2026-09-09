@@ -101,17 +101,39 @@ class INSEESmoke
     credentials[INSEE::PasswordDerivation::BYPASS_CREDENTIAL_KEY] = BYPASS_PASSWORD
   end
 
-  def assert_concurrent_authentication
+  def disconnect_cache
+    Rails.cache = ActiveSupport::Cache::RedisCacheStore.new(
+      url: "unix://#{socket}.missing", error_handler: ->(**) {}
+    )
+  end
+
+  def before_cache_removal(action)
+    Rails.cache.redis.then do |redis|
+      original = redis.method(:send_command)
+      pending = true
+      redis.define_singleton_method(:send_command) do |command, &block|
+        if pending && %w[del unlink eval].include?(command.first.to_s.downcase)
+          pending = false
+          action.call
+        end
+        original.call(command, &block)
+      end
+      yield
+      expect(pending).to be(false)
+    ensure
+      redis.singleton_class.remove_method(:send_command)
+    end
+  end
+
+  def concurrent_workers(&operation)
     children = []
-    provider.oauth_delay = 0.15
     8.times do
       children << fork do
         reconnect_cache
         Time.zone = 'Europe/Paris'
         state.incr('workers_ready')
         wait_until { state.get('workers_go') == '1' }
-        token = Rails.cache.with_local_cache { authenticate }
-        state.rpush('worker_tokens', token)
+        Rails.cache.with_local_cache(&operation)
         exit! 0
       rescue StandardError, RSpec::Expectations::ExpectationNotMetError => e
         warn "Worker: #{e.class}: #{e.message}"
@@ -123,9 +145,6 @@ class INSEESmoke
     statuses = Timeout.timeout(10) { children.map { |pid| Process.wait2(pid).last } }
     children.clear
     expect(statuses).to all(be_success)
-    expect(state.lrange('worker_tokens', 0, -1)).to eq(Array.new(8, published_token))
-    expect(provider.attempts).to eq([CURRENT_PASSWORD])
-    expect(lock_value).to be_nil
   ensure
     children&.each do |pid|
       Process.kill('KILL', pid)
@@ -133,6 +152,14 @@ class INSEESmoke
     rescue Errno::ESRCH, Errno::ECHILD
       next
     end
+  end
+
+  def assert_concurrent_authentication
+    provider.oauth_delay = 0.15
+    concurrent_workers { state.rpush('worker_tokens', authenticate) }
+    expect(state.lrange('worker_tokens', 0, -1)).to eq(Array.new(8, published_token))
+    expect(provider.attempts).to eq([CURRENT_PASSWORD])
+    expect(lock_value).to be_nil
   end
 
   def common_scenarios
@@ -208,11 +235,33 @@ class INSEESmoke
     end
 
     scenario('Redis indisponible : authentification directe sans attendre un verrou inexistant') do
-      Rails.cache = ActiveSupport::Cache::RedisCacheStore.new(
-        url: "unix://#{socket}.missing", error_handler: ->(**) {}
-      )
+      disconnect_cache
       expect(authenticate).to start_with('smoke-token-')
       expect(provider.attempts).to eq([CURRENT_PASSWORD])
+      expect { invalidate('rejected-token') }.not_to raise_error
+    end
+
+    scenario('Redis indisponible sous concurrence : huit échanges indépendants') do
+      concurrent_workers do
+        disconnect_cache
+        expect(authenticate).to start_with('smoke-token-')
+      end
+      expect(provider.attempts).to eq(Array.new(8, CURRENT_PASSWORD))
+    end
+
+    scenario('garde-fou actif : un token déjà publié reste utilisable') do
+      token = authenticate
+      Rails.cache.write('auth_failed', true, namespace: 'insee', expires_in: 30.minutes)
+      expect(authenticate).to eq(token)
+      expect(fetch_resource).not_to be_empty
+      expect(provider.attempts).to eq([CURRENT_PASSWORD])
+    end
+
+    scenario('token expiré : nouvel échange OAuth après la marge de dix secondes') do
+      token = authenticate
+      Timecop.freeze(Time.current + 3591.seconds)
+      expect(authenticate).not_to eq(token)
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD])
     end
 
     scenario('bypass : accepté en priorité, puis repli après changement du mot de passe INSEE') do
@@ -243,9 +292,89 @@ class INSEESmoke
       assert_concurrent_authentication
     end
 
+    scenario('huit processus désynchronisés : trois essais au total puis garde-fou') do
+      provider.password = 'Unknown-Password1'
+      provider.oauth_delay = 0.1
+      concurrent_workers { state.rpush('outcomes', authentication_outcome) }
+      expect(state.lrange('outcomes', 0, -1)).to contain_exactly('rejected', *Array.new(7, 'temporary'))
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, PREVIOUS_PASSWORD, CURRENT_PASSWORD])
+      expect(guard_active?).to be(true)
+      expect(lock_value).to be_nil
+    end
+
+    scenario('huit processus face à un 503 : un seul essai puis reprise possible') do
+      provider.oauth_fault = 503
+      provider.oauth_delay = 0.15
+      concurrent_workers { expect_temporary_failure }
+      expect(provider.attempts).to eq([CURRENT_PASSWORD])
+      expect(guard_active?).to be(false)
+      expect(lock_value).to be_nil
+      provider.oauth_fault = nil
+      expect(authenticate).to eq(published_token)
+    end
+
+    scenario('OAuth lent : les concurrents échouent temporairement sans multiplier les essais') do
+      provider.oauth_delay = 0.75
+      concurrent_workers { state.rpush('outcomes', authentication_outcome) }
+      expect(state.lrange('outcomes', 0, -1)).to contain_exactly('granted', *Array.new(7, 'temporary'))
+      expect(authenticate).to eq(published_token)
+      expect(provider.attempts).to eq([CURRENT_PASSWORD])
+      expect(guard_active?).to be(false)
+    end
+
+    scenario('huit 401 simultanés : un seul nouveau token et huit requêtes rétablies') do
+      rejected = authenticate
+      provider.revoke_tokens
+      provider.oauth_delay = 0.15
+      provider.before_resource = lambda do
+        wait_until { state.get('resources_ready').to_i >= 8 } if state.incr('resources_ready') <= 8
+      end
+      concurrent_workers { expect(fetch_resource).not_to be_empty }
+      expect(provider.bearers.count("Bearer #{rejected}")).to eq(8)
+      expect(provider.bearers.count("Bearer #{published_token}")).to eq(8)
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD])
+      expect(lock_value).to be_nil
+    end
+
+    scenario('verrou abandonné : expiration dans Redis puis reprise') do
+      write_lock('dead-worker')
+      key = @cache_redis.keys('*auth_lock').sole
+      @cache_redis.pexpire(key, 50)
+      wait_until { !@cache_redis.exists?(key) }
+      expect(authenticate).to eq(published_token)
+      expect(provider.attempts).to eq([CURRENT_PASSWORD])
+      expect(lock_value).to be_nil
+    end
+
+    scenario('démarrages distincts : le nombre d’échanges dépend du namespace du token') do
+      provider.oauth_delay = 0.15
+      concurrent_workers do
+        reconnect_cache(namespace: "boot-#{Process.pid}")
+        Rails.cache.with_local_cache { expect(authenticate).to start_with('smoke-token-') }
+      end
+      expected_attempts = application_name == 'siade' ? 8 : 1
+      expect(provider.attempts).to eq(Array.new(expected_attempts, CURRENT_PASSWORD))
+    end
+
     scenario('verrou repris pendant OAuth : le premier propriétaire ne le supprime pas') do
       provider.after_oauth = -> { Rails.cache.with_local_cache { write_lock('successor') } }
       Rails.cache.with_local_cache { authenticate }
+      expect(lock_value).to eq('successor')
+    end
+
+    scenario('token remplacé entre comparaison et suppression : le nouveau token est conservé') do
+      rejected = authenticate
+      replacement = provider.issue_token
+      before_cache_removal(-> { Rails.cache.with_local_cache { cache_token(replacement) } }) do
+        Rails.cache.with_local_cache { invalidate(rejected) }
+      end
+      expect(published_token).to eq(replacement)
+    end
+
+    scenario('verrou repris entre comparaison et suppression : le successeur reste propriétaire') do
+      before_cache_removal(-> { Rails.cache.with_local_cache { write_lock('successor') } }) do
+        Rails.cache.with_local_cache { authenticate }
+      end
       expect(lock_value).to eq('successor')
     end
   end

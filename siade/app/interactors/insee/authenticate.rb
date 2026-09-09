@@ -15,9 +15,7 @@ class INSEE::Authenticate < MakeRequest::Post
   delegate :published_token, :outside_the_request_cache, to: :class, private: true
 
   def self.invalidate_token_cache!(rejected_token)
-    return unless published_token == rejected_token
-
-    EncryptedCache.write(CACHE_KEY, nil)
+    EncryptedCache.delete_if_value(CACHE_KEY, rejected_token)
   end
 
   def self.published_token
@@ -157,9 +155,7 @@ class INSEE::Authenticate < MakeRequest::Post
   end
 
   def release_lock!
-    return unless outside_the_request_cache { Rails.cache.read(LOCK_CACHE_KEY) } == @lock_owner
-
-    Rails.cache.delete(LOCK_CACHE_KEY)
+    ConditionalCacheDelete.call(LOCK_CACHE_KEY) { |owner| owner == @lock_owner }
   end
 
   def fail_with_temporary_error!

@@ -33,6 +33,13 @@ class SIADEINSEESmoke < INSEESmoke
     INSEE::Authenticate.published_token
   end
 
+  def authentication_outcome
+    authenticate
+    'granted'
+  rescue ProviderFailure => e
+    e.context.errors.first.code == '01006' ? 'rejected' : 'temporary'
+  end
+
   def cache_token(token)
     EncryptedCache.write(INSEE::Authenticate::CACHE_KEY, token, expires_in: 1.hour)
   end
