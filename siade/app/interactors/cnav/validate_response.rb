@@ -1,6 +1,8 @@
 class CNAV::ValidateResponse < ValidateResponse
   SNGI_UNIDENTIFIED_MESSAGE = "Les paramètres fournis ne permettent pas d'identifier un allocataire.".freeze
 
+  GATEWAY_INPUT_CONTROL_ERROR_CODES = [40_003, 40_011, 40_013, 40_014, 40_015, 40_016, 40_019, 40_031].freeze
+
   raises ProviderUnprocessableEntityError, reason: :unidentified_person
   raises ProviderUnprocessableEntityError, reason: :rejected_civility
 
@@ -77,12 +79,7 @@ class CNAV::ValidateResponse < ValidateResponse
     MonitoringService.instance.track_with_added_context(
       'warning',
       "[#{context.provider_name}] Internal server error (#{error_code_from_body})",
-      {
-        http_response_code: context.response.code,
-        http_response_body: context.response.body,
-        regime:,
-        encrypted_params: encrypt_params.to_s
-      }
+      provider_error_context
     )
 
     internal_server_error!
@@ -108,16 +105,28 @@ class CNAV::ValidateResponse < ValidateResponse
     tag_provider_error!
 
     MonitoringService.instance.track_with_added_context(
-      'error',
+      bad_request_tracking_level,
       "[#{context.provider_name}] Bad request (#{error_code_from_body})",
-      {
-        http_response_code: context.response.code,
-        http_response_body: context.response.body,
-        regime:,
-        encrypted_params: encrypt_params.to_s
-      },
+      provider_error_context,
       fingerprint: ['cnav-bad-request', error_code_from_body.to_s]
     )
+  end
+
+  def provider_error_context
+    {
+      http_response_code: context.response.code,
+      http_response_body: context.response.body,
+      regime:,
+      encrypted_params: encrypt_params.to_s
+    }
+  end
+
+  def bad_request_tracking_level
+    bad_request_tracking_levels.fetch(error_code_from_body.to_i, 'error')
+  end
+
+  def bad_request_tracking_levels
+    GATEWAY_INPUT_CONTROL_ERROR_CODES.index_with('info')
   end
 
   def tag_provider_error!

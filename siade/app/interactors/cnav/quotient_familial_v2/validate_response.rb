@@ -19,6 +19,10 @@ class CNAV::QuotientFamilialV2::ValidateResponse < CNAV::ValidateResponse
 
   private
 
+  def bad_request_tracking_levels
+    super.merge(FAMILY_PROVIDER_FAILURE_ERROR_CODES.index_with('warning'))
+  end
+
   def family_provider_failure!
     fail_with_error!(build_error(::ProviderInternalServerError).add_meta(provider_error_meta))
   end
