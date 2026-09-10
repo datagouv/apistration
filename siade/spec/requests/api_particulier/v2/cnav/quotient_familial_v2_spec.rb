@@ -115,6 +115,17 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                   run_test!
                 end
 
+                context 'Période de plus de 23 mois' do
+                  let(:annee) { Time.zone.now.year - 2 }
+                  let(:mois) { 1 }
+
+                  build_rswag_example(UnprocessableEntityError.new(:periode_cnav), :periode_cnav)
+
+                  schema '$ref' => '#/components/schemas/Error'
+
+                  run_test!
+                end
+
                 context 'Allocataire non identifié' do
                   before do
                     stub_sngi_404('quotient_familial_v2')
@@ -132,7 +143,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                     stub_cnav_400('quotient_familial_v2', error_code: 40_029, error: 'La date demandee est trop ancienne')
                   end
 
-                  build_rswag_example(ProviderUnprocessableEntityError.new('CNAF & MSA', :rejected_period, 'La période demandée est antérieure de plus de 24 mois.'), :rejected_period)
+                  build_rswag_example(ProviderUnprocessableEntityError.new('CNAF & MSA', :rejected_period, 'La période demandée est antérieure de plus de 23 mois.'), :rejected_period)
 
                   schema '$ref' => '#/components/schemas/Error'
 
