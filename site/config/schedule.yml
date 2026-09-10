@@ -6,7 +6,7 @@ development:
     cron: '0 2 * * 1'
     class: 'WeeklyChangelogDigestJob'
 
-production: &deployed
+deployed: &deployed
   token_expiration_notice:
     cron: '0 */4 * * *'
     class: 'TokenExpirationNoticeJob'
@@ -16,6 +16,12 @@ production: &deployed
   weekly_changelog_digest:
     cron: '0 2 * * 1'
     class: 'WeeklyChangelogDigestJob'
+
+production:
+  <<: *deployed
+  insee_password_rotation:
+    cron: '5 0 * * * Europe/Paris'
+    class: 'INSEEPasswordRotationJob'
 
 staging: *deployed
 sandbox: *deployed

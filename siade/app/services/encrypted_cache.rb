@@ -17,6 +17,14 @@ class EncryptedCache
     instance.expires_in(key)
   end
 
+  def self.delete_if_value(key, expected)
+    instance.delete_if_value(key, expected)
+  end
+
+  def delete_if_value(key, expected)
+    ConditionalCacheDelete.call(hashed_key(key)) { |value| deletable_value?(value, expected) }
+  end
+
   def read(key)
     cached_value = cache.read(hashed_key(key))
 
@@ -59,6 +67,12 @@ class EncryptedCache
   end
 
   private
+
+  def deletable_value?(value, expected)
+    value && unmarshal(decrypt(value)) == expected
+  rescue TypeError, Lockbox::DecryptionError, NoMethodError
+    true
+  end
 
   def encrypt(value)
     lockbox.encrypt(value)

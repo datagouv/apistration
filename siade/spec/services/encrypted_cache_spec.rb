@@ -100,6 +100,39 @@ RSpec.describe EncryptedCache, type: :service do
     end
   end
 
+  describe '.delete_if_value' do
+    let(:key) { 'insee-token' }
+
+    it 'deletes the matching plaintext value' do
+      described_class.write(key, 'rejected-token')
+
+      described_class.delete_if_value(key, 'rejected-token')
+
+      expect(described_class.read(key)).to be_nil
+    end
+
+    it 'preserves a different plaintext value' do
+      described_class.write(key, 'replacement-token')
+
+      described_class.delete_if_value(key, 'rejected-token')
+
+      expect(described_class.read(key)).to eq('replacement-token')
+    end
+
+    it 'tolerates a missing value' do
+      expect { described_class.delete_if_value(key, 'rejected-token') }.not_to raise_error
+    end
+
+    it 'clears a value that cannot be decrypted' do
+      hashed_key = Digest::SHA256.hexdigest("#{Siade.credentials[:encrypted_cache_salt_key]}:#{key}")
+      Rails.cache.write(hashed_key, 'corrupted-ciphertext')
+
+      described_class.delete_if_value(key, 'rejected-token')
+
+      expect(Rails.cache.read(hashed_key)).to be_nil
+    end
+  end
+
   describe '.expires_in' do
     subject { described_class.expires_in(key) }
 
