@@ -61,6 +61,8 @@ RSpec.configure do |config|
     Siade.credentials[:france_connect_v2_rsa_public] = rsa_key.public_key.to_pem
     Siade.credentials[:ssl_wildcard_certif_crt_path] = Rails.root.join('spec/fixtures/ssl/certificat.crt').to_s
     Siade.credentials[:ssl_wildcard_certif_key_path] = Rails.root.join('spec/fixtures/ssl/certificat.key').to_s
+    Siade.credentials[:ants_siv_client_certificate_path] = Rails.root.join('spec/fixtures/ssl/certificat.crt').to_s
+    Siade.credentials[:ants_siv_client_certificate_key_path] = Rails.root.join('spec/fixtures/ssl/certificat.key').to_s
     Siade.credentials[:men_scolarites_client_id] = 'api-particuliers-tests'
   end
 
