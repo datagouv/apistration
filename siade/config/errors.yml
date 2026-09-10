@@ -80,6 +80,10 @@
   title: "Identité inexploitable renvoyée par le fournisseur de données"
   detail: "L'identité renvoyée par le fournisseur de données est incomplète ou invalide."
 
+- subcode: '565'
+  title: "Période refusée par le fournisseur de données"
+  detail: "La période demandée n'est pas couverte par le fournisseur de données."
+
 
 - code: '00100'
   title: 'Privilèges insuffisants'

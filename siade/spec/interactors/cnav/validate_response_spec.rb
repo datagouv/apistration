@@ -177,7 +177,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
     let(:response) do
       instance_double(Net::HTTPBadRequest, code: 400, body:, header: {})
     end
-    let(:body) { '{"errorCode":40013,"error":"Civilité invalide"}' }
+    let(:body) { '{"errorCode":40013,"error":"Format de la commune de naissance erroné"}' }
 
     it { is_expected.to be_a_failure }
 
@@ -204,7 +204,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       expect(subject.errors.first.meta).to eq(
         provider: 'CNAV',
         provider_error_code: 40_013,
-        provider_error_message: 'Civilité invalide'
+        provider_error_message: 'Format de la commune de naissance erroné'
       )
     end
 
