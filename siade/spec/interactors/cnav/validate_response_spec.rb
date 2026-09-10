@@ -183,9 +183,9 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnprocessableEntityError)) }
 
-    it 'tracks an error fingerprinted by provider error code, with encrypted params' do
+    it 'tracks a gateway input control as info, fingerprinted by provider error code, with encrypted params' do
       expect(MonitoringService.instance).to receive(:track_with_added_context).with(
-        'error',
+        'info',
         '[CNAV] Bad request (40013)',
         hash_including(:http_response_code, :http_response_body, :regime, :encrypted_params),
         fingerprint: %w[cnav-bad-request 40013]
@@ -213,10 +213,40 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
       it 'tracks under a distinct fingerprint' do
         expect(MonitoringService.instance).to receive(:track_with_added_context).with(
-          'error',
+          'info',
           '[CNAV] Bad request (40014)',
           anything,
           fingerprint: %w[cnav-bad-request 40014]
+        )
+
+        subject
+      end
+    end
+
+    context 'with a code that should never reach us (40002, name absent)' do
+      let(:body) { '{"errorCode":40002,"error":"Nom de naissance ou nom d\'usage absent"}' }
+
+      it 'tracks as error' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'error',
+          '[CNAV] Bad request (40002)',
+          anything,
+          fingerprint: %w[cnav-bad-request 40002]
+        )
+
+        subject
+      end
+    end
+
+    context 'with a code out of the CNAV error table' do
+      let(:body) { '{"errorCode":40099,"error":"?"}' }
+
+      it 'tracks as error' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'error',
+          '[CNAV] Bad request (40099)',
+          anything,
+          fingerprint: %w[cnav-bad-request 40099]
         )
 
         subject

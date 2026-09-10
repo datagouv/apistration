@@ -1,5 +1,5 @@
 RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'CNAF & MSA') }
+  subject { described_class.call(response:, provider_name: 'CNAF & MSA', recipient: '13002526500013') }
 
   context 'with 200 response' do
     let(:response) do
@@ -15,7 +15,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
     end
 
     before do
-      allow(MonitoringService.instance).to receive(:track_with_added_context)
+      allow(MonitoringService.instance).to receive_messages(track_with_added_context: nil, set_tags: nil)
     end
 
     context 'with the period too old for the CNAV (40029)' do
@@ -36,7 +36,17 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
         )
       end
 
-      it 'still tracks the bad request with its regime' do
+      it 'tags the event with the provider error code, the regime and the recipient' do
+        subject
+
+        expect(MonitoringService.instance).to have_received(:set_tags).with(
+          cnav_error_code: '40029',
+          regime: 'CNAF',
+          recipient: '13002526500013'
+        )
+      end
+
+      it 'tracks it as error, since our own period validation should have refused it' do
         subject
 
         expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
@@ -70,6 +80,17 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
 
         expect(RenderedError.log_fields).to include(provider_error_code: '40000')
       end
+
+      it 'tracks it as warning: a caisse failure, not a caller mistake' do
+        subject
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          'warning',
+          '[CNAF & MSA] Bad request (40000)',
+          anything,
+          fingerprint: %w[cnav-bad-request 40000]
+        )
+      end
     end
 
     context 'with a wrong data provider routing (40024)' do
@@ -93,6 +114,32 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
         RenderedError.capture(subject.errors)
 
         expect(RenderedError.log_fields).to include(provider_error_code: '40024')
+      end
+
+      it 'tracks it as warning' do
+        subject
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          'warning',
+          '[CNAF & MSA] Bad request (40024)',
+          anything,
+          fingerprint: %w[cnav-bad-request 40024]
+        )
+      end
+    end
+
+    context 'with a period our validators should have refused (40026)' do
+      let(:body) { '{"errorCode":"40026","error":"Année demandée incorrecte"}' }
+
+      it 'tracks it as error' do
+        subject
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          'error',
+          '[CNAF & MSA] Bad request (40026)',
+          anything,
+          fingerprint: %w[cnav-bad-request 40026]
+        )
       end
     end
 
