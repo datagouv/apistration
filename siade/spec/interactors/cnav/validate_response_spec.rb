@@ -194,6 +194,34 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       subject
     end
 
+    context 'with the identity params' do
+      subject do
+        described_class.call(
+          response:,
+          provider_name: 'CNAV',
+          params: { nom_naissance: "D'ARC", nom_usage: 'DU LAC 2', prenoms: ['JEANNE'], code_cog_insee_commune_naissance: '00123' }
+        )
+      end
+
+      it 'describes their shape in the event, so the refused format can be read without decrypting them' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'info',
+          '[CNAV] Bad request (40013)',
+          hash_including(
+            params_shape: {
+              nom_naissance: '5:apostrophe',
+              nom_usage: '8:inner_space,digit',
+              prenoms: '6:',
+              code_cog_insee_commune_naissance: '5:00'
+            }
+          ),
+          fingerprint: %w[cnav-bad-request 40013]
+        )
+
+        subject
+      end
+    end
+
     it 'tags the event with the provider error code, without the regime the gateway did not name' do
       expect(MonitoringService.instance).to receive(:set_tags).with(cnav_error_code: '40013')
 
