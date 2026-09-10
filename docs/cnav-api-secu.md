@@ -159,6 +159,9 @@ erreurs d'identité et sont restitués comme tels :
 
 Le détail des codes du guichet et leur restitution côté API
 Particulier est dans `siade/app/interactors/cnav/`.
+La façon de suivre ces refus au quotidien, de les qualifier et de les
+faire remonter à la CNAV est dans
+[`cnav-suivi-erreurs.md`](cnav-suivi-erreurs.md).
 
 ## Ce qu'API-SECU ne fait pas
 
