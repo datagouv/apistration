@@ -126,6 +126,18 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
                   run_test!
                 end
+
+                context 'Période trop ancienne' do
+                  before do
+                    stub_cnav_400('quotient_familial_v2', error_code: 40_029, error: 'La date demandee est trop ancienne')
+                  end
+
+                  build_rswag_example(ProviderUnprocessableEntityError.new('CNAF & MSA', :rejected_period, 'La période demandée est antérieure de plus de 24 mois.'), :rejected_period)
+
+                  schema '$ref' => '#/components/schemas/Error'
+
+                  run_test!
+                end
               end
             end
 

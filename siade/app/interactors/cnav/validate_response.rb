@@ -6,7 +6,7 @@ class CNAV::ValidateResponse < ValidateResponse
 
   def call
     resource_not_found! if http_not_found?
-    unprocessable_entity_error! if http_bad_request?
+    bad_request_error! if http_bad_request?
     handle_http_too_many_requests! if http_too_many_requests?
     handle_internal_server_error! if http_internal_error?
     unknown_provider_response! unless valid_http_response?
@@ -44,13 +44,27 @@ class CNAV::ValidateResponse < ValidateResponse
     fail_with_error!(build_error(ProviderRateLimitingError))
   end
 
-  def unprocessable_entity_error!
+  def bad_request_error!
     track_bad_request!
 
-    unprocessable_entity!(:rejected_civility, meta: {
+    rejected_civility!
+  end
+
+  def rejected_civility!
+    unprocessable_entity!(:rejected_civility, meta: provider_error_meta)
+  end
+
+  def provider_error_meta
+    {
       provider_error_code: error_code_from_body,
       provider_error_message: error_message_from_body
-    })
+    }
+  end
+
+  def error_code_from_body
+    json_body['errorCode']
+  rescue JSON::ParserError
+    'unparseable'
   end
 
   def regime
@@ -104,12 +118,6 @@ class CNAV::ValidateResponse < ValidateResponse
       },
       fingerprint: ['cnav-bad-request', error_code_from_body.to_s]
     )
-  end
-
-  def error_code_from_body
-    json_body['errorCode']
-  rescue JSON::ParserError
-    'unparseable'
   end
 
   def tag_provider_error!

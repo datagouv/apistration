@@ -1744,6 +1744,11 @@ paths:
                       un allocataire.
                     message: Les paramètres fournis ne permettent pas d'identifier
                       un allocataire.
+                Période trop ancienne:
+                  value:
+                    error: bad_request
+                    reason: La période demandée est antérieure de plus de 24 mois.
+                    message: La période demandée est antérieure de plus de 24 mois.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':

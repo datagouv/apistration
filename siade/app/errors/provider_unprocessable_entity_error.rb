@@ -4,7 +4,8 @@ class ProviderUnprocessableEntityError < AbstractGenericProviderError
     rejected_civility: '561',
     rejected_identifier: '562',
     ambiguous_identity: '563',
-    unusable_identity: '564'
+    unusable_identity: '564',
+    rejected_period: '565'
   }.freeze
 
   def self.build_example(provider_name:, reason:, **)

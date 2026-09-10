@@ -103,6 +103,16 @@ module ProviderStubs::CNAV
     )
   end
 
+  def stub_cnav_400(api, error_code:, error:)
+    stub_request(:get, cnav_url(api)).with(
+      query: hash_including({})
+    ).to_return(
+      status: 400,
+      headers: {},
+      body: { errorCode: error_code, error: }.to_json
+    )
+  end
+
   def stub_sngi_404(api)
     stub_request(:get, cnav_url(api)).with(
       query: hash_including({})

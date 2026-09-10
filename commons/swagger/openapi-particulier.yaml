@@ -8203,6 +8203,17 @@ paths:
                   summary: Identité non reconnue par le fournisseur de données
                   description: Les paramètres d'identité fournis ne correspondent
                     à aucune personne connue du fournisseur de données.
+                rejected_period:
+                  value:
+                    errors:
+                    - code: '35565'
+                      title: Période refusée par le fournisseur de données
+                      detail: La période demandée est antérieure de plus de 24 mois.
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Période refusée par le fournisseur de données
+                  description: La période demandée est antérieure de plus de 24 mois.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -8880,6 +8891,17 @@ paths:
                   summary: Identité non reconnue par le fournisseur de données
                   description: Les paramètres d'identité fournis ne correspondent
                     à aucune personne connue du fournisseur de données.
+                rejected_period:
+                  value:
+                    errors:
+                    - code: '35565'
+                      title: Période refusée par le fournisseur de données
+                      detail: La période demandée est antérieure de plus de 24 mois.
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Période refusée par le fournisseur de données
+                  description: La période demandée est antérieure de plus de 24 mois.
                 ambiguous_delegation_error:
                   value:
                     errors:
