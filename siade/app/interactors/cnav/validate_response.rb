@@ -117,6 +117,7 @@ class CNAV::ValidateResponse < ValidateResponse
       http_response_code: context.response.code,
       http_response_body: context.response.body,
       regime:,
+      params_shape: CNAV::IdentityParamsShape.new(context.params).to_h,
       encrypted_params: encrypt_params.to_s
     }
   end
