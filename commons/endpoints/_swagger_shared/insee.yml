@@ -1075,11 +1075,11 @@ insee:
     links:
       siege_social:
         type: "string"
-        example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294"
+        example: "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/30613890001294"
         description: "Lien vers la ressource 'Données de référence d'un établissement' correspondant au siège social de cette unité légale."
       siege_social_adresse:
         type: "string"
-        example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
+        example: "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
         description: "Lien vers la ressource 'Adresse d'un établissement' correspondant au siège social de cette unité légale."
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour

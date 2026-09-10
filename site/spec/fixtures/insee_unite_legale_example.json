@@ -49,8 +49,8 @@
     "date_cessation": 1634133818
   },
   "links": {
-    "siege_social": "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294",
-    "siege_social_adresse": "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
+    "siege_social": "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/30613890001294",
+    "siege_social_adresse": "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
   },
   "meta": {
     "date_derniere_mise_a_jour": 1618396818,
