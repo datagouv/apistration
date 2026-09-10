@@ -2,6 +2,7 @@ class CNAV::QuotientFamilialV2::ValidateParams < ValidateParamsOrganizer
   organize ValidateRecipient,
     CNAV::QuotientFamilialV2::ValidateYear,
     CNAV::QuotientFamilialV2::ValidateMonth,
+    CNAV::QuotientFamilialV2::ValidatePeriod,
     CNAV::ValidateSexeEtatCivil,
     CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams,
     Civility::ValidateCodeCogINSEEPaysNaissance,

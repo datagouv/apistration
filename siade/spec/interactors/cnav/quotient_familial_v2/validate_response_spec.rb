@@ -28,7 +28,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
 
         expect(error).to be_a(ProviderUnprocessableEntityError)
         expect(error.code).to eq('35565')
-        expect(error.detail).to eq('La période demandée est antérieure de plus de 24 mois.')
+        expect(error.detail).to eq('La période demandée est antérieure de plus de 23 mois.')
         expect(error.meta).to eq(
           provider: 'CNAF & MSA',
           provider_error_code: '40029',

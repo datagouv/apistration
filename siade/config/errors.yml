@@ -507,6 +507,10 @@
   title: 'Entité non traitable'
   detail: "Le mois demandé est incorrect ou est dans le futur."
 
+- code: '00355'
+  title: 'Entité non traitable'
+  detail: "La période demandée est antérieure de plus de 23 mois. Le quotient familial n'est disponible que pour le mois en cours et les 23 mois précédents."
+
 ## BDF
 
 - code: '17501'

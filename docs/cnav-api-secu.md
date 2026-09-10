@@ -87,8 +87,8 @@ Les deux caisses ne fonctionnent pas au même rythme :
 - la CAF met à jour une fois par mois, après le premier week-end du
   mois. Un appel sur le mois en cours avant cette bascule ne trouve
   rien : c'est une cause connue de 404 en début de mois ;
-- seule la CAF sert un historique du quotient familial, limité à
-  environ 23 mois.
+- seule la CAF sert un historique du quotient familial : le mois en
+  cours et les 23 mois précédents.
 
 ## Le parcours d'une demande
 
@@ -145,10 +145,13 @@ complémentaire santé solidaire et suspecté sur les autres statuts.
 Sur le quotient familial, deux refus de la caisse ne sont pas des
 erreurs d'identité et sont restitués comme tels :
 
-- **Période trop ancienne** : la CAF ne sert qu'environ 23 mois
-  d'historique. Restitué comme « période refusée par le fournisseur de
-  données ». Un appelant qui balaie mois par mois sans s'arrêter au
-  premier refus le produit en masse.
+- **Période trop ancienne** : la CAF ne sert que le mois en cours et
+  les 23 mois précédents. API Particulier refuse désormais une période
+  plus ancienne avant tout appel (erreur `00355`). Si le guichet la
+  refuse malgré tout, elle est restituée comme « période refusée par
+  le fournisseur de données » et remontée comme anomalie : c'est notre
+  contrôle qui a laissé passer. Un appelant qui balaie mois par mois
+  sans s'arrêter au premier refus la produisait en masse.
 - **Mauvais routage** : la personne a plusieurs rattachements, parfois
   sur plusieurs caisses, et API-SECU interroge une caisse qui n'a rien
   pour elle. Anomalie en cours d'investigation côté MSA, restituée

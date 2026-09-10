@@ -2,7 +2,7 @@ class CNAV::QuotientFamilialV2::ValidateResponse < CNAV::ValidateResponse
   raises ProviderUnprocessableEntityError, reason: :rejected_period
 
   PERIOD_TOO_OLD_ERROR_CODE = 40_029
-  PERIOD_TOO_OLD_MESSAGE = 'La période demandée est antérieure de plus de 24 mois.'.freeze
+  PERIOD_TOO_OLD_MESSAGE = 'La période demandée est antérieure de plus de 23 mois.'.freeze
 
   FAMILY_PROVIDER_FAILURE_ERROR_CODES = [40_000, 40_024].freeze
 
