@@ -88,6 +88,9 @@ generic_subcodes:
   '564':
     title: Identité inexploitable renvoyée par le fournisseur de données
     detail: L'identité renvoyée par le fournisseur de données est incomplète ou invalide.
+  '565':
+    title: Période refusée par le fournisseur de données
+    detail: La période demandée n'est pas couverte par le fournisseur de données.
 platform_codes:
   '422':
   - code: '00201'
@@ -99,10 +102,17 @@ platform_codes:
   - code: '00203'
     title: Entité non traitable
     detail: Le paramètre recipient est obligatoire
+  - code: '00210'
+    title: Entité non traitable
+    detail: Le paramètre recipient n'est pas un siret valide
   - code: '00212'
     title: Entité non traitable
     detail: Plusieurs délégations actives existent pour ce SIRET. Le paramètre delegation_id
       est requis pour identifier la délégation.
+  '404':
+  - code: '00402'
+    title: Version d'API non prise en charge
+    detail: La version v1 n'est pas supportée pour cet endpoint
   '502':
   - code: '00501'
     title: Erreur réseau
@@ -117,7 +127,7 @@ platform_codes:
   '401':
   - code: '00101'
     title: Interdit
-    detail: Votre token n'est pas valide ou n'est pas renseigné
+    detail: Votre token n'est pas valide
   - code: '00103'
     title: Jeton expiré
     detail: Votre token est expiré. Vous devez refaire une demande à API Entreprise,
@@ -127,11 +137,28 @@ platform_codes:
     detail: 'Votre jeton est sur liste noire, celui-ci a certainement été divulgué
       sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace
       personnel: https://entreprise.api.gouv.fr/compte'
+  - code: '00108'
+    title: Jeton de production sur staging
+    detail: 'Ce jeton est un jeton de production, il n''est pas valide sur l''environnement
+      de staging. Utilisez le jeton public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+  - code: '00109'
+    title: Jeton de staging en production
+    detail: 'Ce jeton est un jeton de staging, il ne fonctionne que sur https://staging.entreprise.api.gouv.fr.
+      En production, utilisez le jeton de votre habilitation, disponible sur votre
+      espace personnel : https://entreprise.api.gouv.fr/compte'
   '403':
   - code: '00100'
     title: Privilèges insuffisants
     detail: Votre token est valide mais vos privilèges sont insuffisants. Listez vos
       privilèges sur /v2/privileges
+  - code: '00107'
+    title: Adresse IP non autorisée
+    detail: Votre adresse IP n'est pas autorisée à utiliser ce jeton.
+  - code: '00213'
+    title: Accès refusé
+    detail: Le paramètre recipient ne correspond à aucune habilitation déléguée à
+      cet éditeur. Une délégation ne permet d'appeler que pour le compte de l'organisation
+      ayant délégué son habilitation.
   '409':
   - code: '00015'
     title: Conflit
@@ -147,9 +174,6 @@ endpoints:
     provider: ACOSS
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00301'
         title: Entité non traitable
         detail: Le numéro de siren n'est pas correctement formatté
@@ -2020,6 +2044,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2095,6 +2124,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2174,6 +2208,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2249,6 +2288,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2328,6 +2372,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2402,6 +2451,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2480,6 +2534,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2549,6 +2608,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2626,6 +2690,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -3556,9 +3625,6 @@ endpoints:
     provider: ACOSS
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00301'
         title: Entité non traitable
         detail: Le numéro de siren n'est pas correctement formatté
@@ -3862,6 +3928,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -3937,6 +4008,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -4016,6 +4092,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -4090,6 +4171,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -4168,6 +4254,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -4243,6 +4334,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'

@@ -77,15 +77,25 @@ generic_subcodes:
   '564':
     title: Identité inexploitable renvoyée par le fournisseur de données
     detail: L'identité renvoyée par le fournisseur de données est incomplète ou invalide.
+  '565':
+    title: Période refusée par le fournisseur de données
+    detail: La période demandée n'est pas couverte par le fournisseur de données.
 platform_codes:
   '422':
   - code: '00203'
     title: Entité non traitable
     detail: Le paramètre recipient est obligatoire
+  - code: '00210'
+    title: Entité non traitable
+    detail: Le paramètre recipient n'est pas un siret valide
   - code: '00212'
     title: Entité non traitable
     detail: Plusieurs délégations actives existent pour ce SIRET. Le paramètre delegation_id
       est requis pour identifier la délégation.
+  '404':
+  - code: '00402'
+    title: Version d'API non prise en charge
+    detail: La version v1 n'est pas supportée pour cet endpoint
   '502':
   - code: '00501'
     title: Erreur réseau
@@ -100,7 +110,7 @@ platform_codes:
   '401':
   - code: '00101'
     title: Interdit
-    detail: Votre token n'est pas valide ou n'est pas renseigné
+    detail: Votre token n'est pas valide
   - code: '00103'
     title: Jeton expiré
     detail: Votre token est expiré. Vous devez refaire une demande à API Particulier,
@@ -110,11 +120,28 @@ platform_codes:
     detail: 'Votre jeton est sur liste noire, celui-ci a certainement été divulgué
       sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace
       personnel: https://particulier.api.gouv.fr/compte'
+  - code: '00108'
+    title: Jeton de production sur staging
+    detail: 'Ce jeton est un jeton de production, il n''est pas valide sur l''environnement
+      de staging. Utilisez le jeton public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+  - code: '00109'
+    title: Jeton de staging en production
+    detail: 'Ce jeton est un jeton de staging, il ne fonctionne que sur https://staging.particulier.api.gouv.fr.
+      En production, utilisez le jeton de votre habilitation, disponible sur votre
+      espace personnel : https://particulier.api.gouv.fr/compte'
   '403':
   - code: '00100'
     title: Privilèges insuffisants
     detail: Votre token est valide mais vos privilèges sont insuffisants. Listez vos
       privilèges sur /api/introspect
+  - code: '00107'
+    title: Adresse IP non autorisée
+    detail: Votre adresse IP n'est pas autorisée à utiliser ce jeton.
+  - code: '00213'
+    title: Accès refusé
+    detail: Le paramètre recipient ne correspond à aucune habilitation déléguée à
+      cet éditeur. Une délégation ne permet d'appeler que pour le compte de l'organisation
+      ayant délégué son habilitation.
   '409':
   - code: '00015'
     title: Conflit
@@ -209,6 +236,49 @@ endpoints:
           pour investigation.
         meta:
           provider: ANTS
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -238,19 +308,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: ANTS
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '42002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: ANTS
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_allocation_adulte_handicape_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -379,9 +456,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -500,6 +574,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -529,19 +646,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_allocation_enfant_handicape_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -670,9 +794,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -791,6 +912,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -820,19 +984,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_allocation_rentree_scolaire_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -961,9 +1132,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1082,6 +1250,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -1111,19 +1322,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_allocation_soutien_familial_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1252,9 +1470,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1373,6 +1588,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -1402,19 +1660,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1543,9 +1808,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1664,6 +1926,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -1693,19 +1998,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_participation_familiale_eaje_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1840,9 +2152,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1967,6 +2276,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -1996,19 +2348,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_prime_activite_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2137,9 +2496,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2258,6 +2614,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -2287,19 +2686,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_quotient_familial_with_civility:
     provider: CNAF & MSA
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00354'
         title: Entité non traitable
         detail: Le mois demandé est incorrect ou est dans le futur.
@@ -2346,6 +2752,11 @@ endpoints:
           de données.
         meta:
           provider: CNAF & MSA
+      - code: '35565'
+        title: Période refusée par le fournisseur de données
+        detail: La période demandée n'est pas couverte par le fournisseur de données.
+        meta:
+          provider: CNAF & MSA
       '404':
       - code: '10003'
         title: Dossier allocataire absent MSA
@@ -2358,10 +2769,8 @@ endpoints:
         meta:
           provider: CNAF
       - code: '35003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
+        title: Allocataire non référencé
+        detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
       - code: '40003'
@@ -2429,9 +2838,6 @@ endpoints:
     provider: CNAF & MSA
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00354'
         title: Entité non traitable
         detail: Le mois demandé est incorrect ou est dans le futur.
@@ -2478,6 +2884,11 @@ endpoints:
           de données.
         meta:
           provider: CNAF & MSA
+      - code: '35565'
+        title: Période refusée par le fournisseur de données
+        detail: La période demandée n'est pas couverte par le fournisseur de données.
+        meta:
+          provider: CNAF & MSA
       - code: '51564'
         title: Identité inexploitable renvoyée par le fournisseur de données
         detail: L'identité renvoyée par le fournisseur de données est incomplète ou
@@ -2496,10 +2907,8 @@ endpoints:
         meta:
           provider: CNAF
       - code: '35003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
+        title: Allocataire non référencé
+        detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
       - code: '40003'
@@ -2551,6 +2960,49 @@ endpoints:
           pour investigation.
         meta:
           provider: CNAF & MSA
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -2580,19 +3032,26 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNAF & MSA
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '35002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: CNAF & MSA
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnav_revenu_solidarite_active_with_civility:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2721,9 +3180,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2842,6 +3298,49 @@ endpoints:
           pour investigation.
         meta:
           provider: Sécurité sociale
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -2871,12 +3370,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Sécurité sociale
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '36002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Sécurité sociale
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnous_etudiant_boursier_with_civility:
     provider: CNOUS
     errors:
@@ -3061,6 +3570,49 @@ endpoints:
           pour investigation.
         meta:
           provider: CNOUS
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -3096,12 +3648,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNOUS
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '26002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: CNOUS
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_cnous_etudiant_boursier_with_ine:
     provider: CNOUS
     errors:
@@ -3390,6 +3952,49 @@ endpoints:
           pour investigation.
         meta:
           provider: DSNJ
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -3419,12 +4024,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: DSNJ
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '39002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: DSNJ
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_france_travail_indemnites_with_identifiant:
     provider: France Travail
     errors:
@@ -3751,6 +4366,49 @@ endpoints:
           pour investigation.
         meta:
           provider: GIP-MDS
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -3780,12 +4438,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: GIP-MDS
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '31002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: GIP-MDS
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_men_scolarites_with_civility:
     provider: MEN
     errors:
@@ -4072,6 +4740,49 @@ endpoints:
           pour investigation.
         meta:
           provider: MESRI
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -4101,12 +4812,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: MESRI
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '25002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: MESRI
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v3_mesri_statut_etudiant_with_ine:
     provider: MESRI
     errors:
@@ -4436,6 +5157,49 @@ endpoints:
           pour investigation.
         meta:
           provider: CNOUS
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -4471,12 +5235,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNOUS
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '26002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: CNOUS
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v4_cnous_etudiant_boursier_with_ine:
     provider: CNOUS
     errors:
@@ -4855,6 +5629,49 @@ endpoints:
           pour investigation.
         meta:
           provider: CNOUS
+      - code: '51000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: FranceConnect
+      - code: '51001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: FranceConnect
+      - code: '51004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: FranceConnect
+      - code: '51008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: FranceConnect
+      - code: '51009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: FranceConnect
+      - code: '51011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: FranceConnect
+      - code: '51999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: FranceConnect
       '401':
       - code: '51501'
         title: Accès non autorisé
@@ -4890,12 +5707,22 @@ endpoints:
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNOUS
+      - code: '51020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: FranceConnect
       '504':
       - code: '26002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: CNOUS
+      - code: '51002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: FranceConnect
   api_particulier_v5_cnous_etudiant_boursier_with_ine:
     provider: CNOUS
     errors:

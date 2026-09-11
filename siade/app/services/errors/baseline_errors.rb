@@ -31,19 +31,23 @@ class Errors::BaselineErrors
       [
         InsufficientPrivilegesError.new("api_#{api}"),
         BadRequestError.new,
+        UnsupportedAPIVersionError.new('v1'),
         ConflictError.new,
+        InvalidRecipientError.new,
         AmbiguousDelegationError.new,
+        DelegationSiretMismatchError.new,
         TooManyRequestsError.new,
         NetworkError.new
       ]
   end
 
   def for_provider(provider_name)
+    for_token_provider(provider_name) + [NotFoundError.build_example(provider_name:)]
+  end
+
+  def for_token_provider(provider_name)
     (PROVIDER_ERROR_CLASSES + NETWORK_ERROR_CLASSES - [NetworkError]).map { |klass| klass.build_example(provider_name:) } +
-      [
-        NotFoundError.build_example(provider_name:),
-        MaintenanceError.build_example(provider_name:)
-      ]
+      [MaintenanceError.build_example(provider_name:)]
   end
 
   private
@@ -52,7 +56,10 @@ class Errors::BaselineErrors
     [
       InvalidTokenError.new,
       ExpiredTokenError.new("api_#{api}"),
-      BlacklistedTokenError.new(api.to_s)
+      BlacklistedTokenError.new(api.to_s),
+      ProductionTokenOnStagingError.new,
+      StagingTokenOnProductionError.new("api_#{api}"),
+      ForbiddenIpError.new(api.to_s)
     ]
   end
 
