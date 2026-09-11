@@ -31,8 +31,11 @@ class Errors::BaselineErrors
       [
         InsufficientPrivilegesError.new("api_#{api}"),
         BadRequestError.new,
+        UnsupportedAPIVersionError.new('v1'),
         ConflictError.new,
+        InvalidRecipientError.new,
         AmbiguousDelegationError.new,
+        DelegationSiretMismatchError.new,
         TooManyRequestsError.new,
         NetworkError.new
       ]

@@ -24,6 +24,13 @@ RSpec.describe ErrorsNomenclature, type: :service do
       expect(nomenclature.dig('platform_codes', '400').pluck('code')).to eq(['00401'])
     end
 
+    it 'documents once the errors the controller layer renders on every endpoint' do
+      expect(nomenclature.dig('platform_codes', '422').pluck('code')).to include('00210')
+      expect(nomenclature.dig('platform_codes', '404').pluck('code')).to include('00402')
+      expect(nomenclature.dig('platform_codes', '403').pluck('code')).to include('00213')
+      expect(codes_for('api_entreprise_v3_acoss_attestations_sociales', '422')).not_to include('00210')
+    end
+
     it 'follows the organizer each version runs' do
       expect(codes_for('api_entreprise_v3_acoss_attestations_sociales', '502')).to include('04503')
       expect(codes_for('api_entreprise_v4_acoss_attestations_sociales', '502')).not_to include('04503')

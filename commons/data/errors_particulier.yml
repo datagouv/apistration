@@ -112,10 +112,17 @@ platform_codes:
   - code: '00203'
     title: Entité non traitable
     detail: Le paramètre recipient est obligatoire
+  - code: '00210'
+    title: Entité non traitable
+    detail: Le paramètre recipient n'est pas un siret valide
   - code: '00212'
     title: Entité non traitable
     detail: Plusieurs délégations actives existent pour ce SIRET. Le paramètre delegation_id
       est requis pour identifier la délégation.
+  '404':
+  - code: '00402'
+    title: Version d'API non prise en charge
+    detail: La version v1 n'est pas supportée pour cet endpoint
   '502':
   - code: '00501'
     title: Erreur réseau
@@ -145,6 +152,11 @@ platform_codes:
     title: Privilèges insuffisants
     detail: Votre token est valide mais vos privilèges sont insuffisants. Listez vos
       privilèges sur /api/introspect
+  - code: '00213'
+    title: Accès refusé
+    detail: Le paramètre recipient ne correspond à aucune habilitation déléguée à
+      cet éditeur. Une délégation ne permet d'appeler que pour le compte de l'organisation
+      ayant délégué son habilitation.
   '409':
   - code: '00015'
     title: Conflit
@@ -278,9 +290,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -405,9 +414,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -561,9 +567,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -688,9 +691,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -844,9 +844,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -971,9 +968,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1127,9 +1121,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1254,9 +1245,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1410,9 +1398,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1537,9 +1522,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1693,9 +1675,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1826,9 +1805,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -1988,9 +1964,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2115,9 +2088,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2271,9 +2241,6 @@ endpoints:
     provider: CNAF & MSA
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00354'
         title: Entité non traitable
         detail: Le mois demandé est incorrect ou est dans le futur.
@@ -2399,9 +2366,6 @@ endpoints:
     provider: CNAF & MSA
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00354'
         title: Entité non traitable
         detail: Le mois demandé est incorrect ou est dans le futur.
@@ -2556,9 +2520,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2683,9 +2644,6 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
-      - code: '00210'
-        title: Entité non traitable
-        detail: Le paramètre recipient n'est pas un siret valide
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté

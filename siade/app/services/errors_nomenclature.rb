@@ -36,10 +36,19 @@ class ErrorsNomenclature
 
     {
       'provider' => provider_name,
-      'errors' => group_by_status(baseline.for_provider(provider_name) +
-        declared_errors(organizer, provider_name) +
-        france_connect_errors(controller_class))
+      'errors' => group_by_status(endpoint_errors(controller_class, organizer, provider_name))
     }
+  end
+
+  def endpoint_errors(controller_class, organizer, provider_name)
+    (baseline.for_provider(provider_name) +
+      declared_errors(organizer, provider_name) +
+      france_connect_errors(controller_class))
+      .reject { |error| platform_error_codes.include?(error.code) }
+  end
+
+  def platform_error_codes
+    @platform_error_codes ||= baseline.platform.map(&:code)
   end
 
   def declared_errors(organizer, provider_name)
