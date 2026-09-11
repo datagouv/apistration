@@ -42,11 +42,12 @@ class Errors::BaselineErrors
   end
 
   def for_provider(provider_name)
+    for_token_provider(provider_name) + [NotFoundError.build_example(provider_name:)]
+  end
+
+  def for_token_provider(provider_name)
     (PROVIDER_ERROR_CLASSES + NETWORK_ERROR_CLASSES - [NetworkError]).map { |klass| klass.build_example(provider_name:) } +
-      [
-        NotFoundError.build_example(provider_name:),
-        MaintenanceError.build_example(provider_name:)
-      ]
+      [MaintenanceError.build_example(provider_name:)]
   end
 
   private
