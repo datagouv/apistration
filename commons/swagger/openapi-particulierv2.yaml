@@ -1417,8 +1417,9 @@ paths:
       - name: annee
         in: query
         description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
-          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
-          un historique de maximum 2 ans.
+          l'année utilisée par défaut est celle en cours. Le quotient familial est
+          disponible pour le mois en cours et les 23 mois précédents ; une période
+          plus ancienne est refusée avant tout appel au fournisseur.
         example: 2023
         required: false
         schema:
@@ -1737,6 +1738,15 @@ paths:
                       N-2.
                     message: L'année demandée doit être l'année en cours (N), N-1
                       ou N-2.
+                Période de plus de 23 mois:
+                  value:
+                    error: bad_request
+                    reason: La période demandée est antérieure de plus de 23 mois.
+                      Le quotient familial n'est disponible que pour le mois en cours
+                      et les 23 mois précédents.
+                    message: La période demandée est antérieure de plus de 23 mois.
+                      Le quotient familial n'est disponible que pour le mois en cours
+                      et les 23 mois précédents.
                 Allocataire non identifié:
                   value:
                     error: not_found
@@ -1744,6 +1754,11 @@ paths:
                       un allocataire.
                     message: Les paramètres fournis ne permettent pas d'identifier
                       un allocataire.
+                Période trop ancienne:
+                  value:
+                    error: bad_request
+                    reason: La période demandée est antérieure de plus de 23 mois.
+                    message: La période demandée est antérieure de plus de 23 mois.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':

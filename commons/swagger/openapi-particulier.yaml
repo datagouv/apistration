@@ -7806,8 +7806,9 @@ paths:
       - name: annee
         in: query
         description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
-          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
-          un historique de maximum 2 ans.
+          l'année utilisée par défaut est celle en cours. Le quotient familial est
+          disponible pour le mois en cours et les 23 mois précédents ; une période
+          plus ancienne est refusée avant tout appel au fournisseur.
         example: 2023
         required: false
         schema:
@@ -8203,6 +8204,17 @@ paths:
                   summary: Identité non reconnue par le fournisseur de données
                   description: Les paramètres d'identité fournis ne correspondent
                     à aucune personne connue du fournisseur de données.
+                rejected_period:
+                  value:
+                    errors:
+                    - code: '35565'
+                      title: Période refusée par le fournisseur de données
+                      detail: La période demandée est antérieure de plus de 23 mois.
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Période refusée par le fournisseur de données
+                  description: La période demandée est antérieure de plus de 23 mois.
                 ambiguous_delegation_error:
                   value:
                     errors:
@@ -8486,8 +8498,9 @@ paths:
       - name: annee
         in: query
         description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
-          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
-          un historique de maximum 2 ans.
+          l'année utilisée par défaut est celle en cours. Le quotient familial est
+          disponible pour le mois en cours et les 23 mois précédents ; une période
+          plus ancienne est refusée avant tout appel au fournisseur.
         example: 2023
         required: false
         schema:
@@ -8880,6 +8893,17 @@ paths:
                   summary: Identité non reconnue par le fournisseur de données
                   description: Les paramètres d'identité fournis ne correspondent
                     à aucune personne connue du fournisseur de données.
+                rejected_period:
+                  value:
+                    errors:
+                    - code: '35565'
+                      title: Période refusée par le fournisseur de données
+                      detail: La période demandée est antérieure de plus de 23 mois.
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Période refusée par le fournisseur de données
+                  description: La période demandée est antérieure de plus de 23 mois.
                 ambiguous_delegation_error:
                   value:
                     errors:

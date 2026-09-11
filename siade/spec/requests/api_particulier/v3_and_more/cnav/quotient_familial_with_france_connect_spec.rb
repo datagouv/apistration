@@ -70,6 +70,21 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
               run_test!
             end
+
+            context 'Période trop ancienne' do
+              let(:annee) { Time.zone.today.year - 1 }
+              let(:mois) { Time.zone.today.month }
+
+              before do
+                stub_cnav_400('quotient_familial_v2', error_code: 40_029, error: 'La date demandee est trop ancienne')
+              end
+
+              build_rswag_example(ProviderUnprocessableEntityError.new('CNAF & MSA', :rejected_period, 'La période demandée est antérieure de plus de 23 mois.'), :rejected_period)
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
           end
           # rubocop:enable RSpec/ContextWording
         end

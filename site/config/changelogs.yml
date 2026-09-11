@@ -1,3 +1,11 @@
+- date: 2026-09-10
+  scope: api_particulier
+  title: "Quotient familial CAF/MSA : la période demandée est bornée à 23 mois"
+  description: |
+    Sur les endpoints [quotient familial](<%= endpoint_path(uid: 'cnav/quotient_familial') %>), la CAF ne sert l'historique que du mois en cours et des 23 mois précédents. Jusqu'ici, un appel sur une période plus ancienne partait chez le fournisseur et revenait en erreur `561` « paramètres de civilité refusés », sans rapport avec la cause réelle.
+
+    Désormais, la période est contrôlée avant tout appel au fournisseur : une période antérieure de plus de 23 mois est rejetée en erreur `00355` (422, ou 400 sur l'API v2). Un appelant qui balaie l'historique mois par mois doit s'arrêter au premier refus. Si le fournisseur refuse malgré tout une période, l'erreur `565` « période refusée par le fournisseur de données » remplace l'ancien `561`.
+
 - date: 2026-09-02
   scope: api_entreprise
   title: "Données associations (SIAF) : deux nouvelles API disponibles en environnement de test"
