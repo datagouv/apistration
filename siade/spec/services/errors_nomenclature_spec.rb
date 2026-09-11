@@ -69,6 +69,16 @@ RSpec.describe ErrorsNomenclature, type: :service do
       expect(nomenclature.dig('endpoints', 'api_particulier_v3_cnav_prime_activite_with_civility', 'errors')).not_to have_key('401')
     end
 
+    it 'documents the failures of the FranceConnect exchange on the FranceConnect variant' do
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_france_connect', '504')).to include('51002')
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_france_connect', '502')).to include('51999')
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_civility', '504')).not_to include('51002')
+    end
+
+    it 'gives FranceConnect no 404 since an unknown token is a 401' do
+      expect(codes_for('api_particulier_v3_cnav_prime_activite_with_france_connect', '404')).not_to include('51003')
+    end
+
     it 'names the field a validator rejects rather than the HTTP parameter' do
       expect(codes_for('api_particulier_v3_cnav_quotient_familial_with_civility', '422')).to include('00356')
       expect(codes_for('api_particulier_v3_cnav_quotient_familial_with_civility', '422')).not_to include('00307')
