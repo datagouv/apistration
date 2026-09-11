@@ -18,6 +18,8 @@ constraints(APIParticulierDomainConstraint.new) do
   namespace :api_particulier, path: '' do
     get '/', to: 'pages#home'
 
+    get '/attestations/verification/:token', to: 'attestations#show', as: :attestation_verification
+
     get '/stats', to: 'stats#index'
 
     get '/catalogue', as: :endpoints, to: 'endpoints#index'

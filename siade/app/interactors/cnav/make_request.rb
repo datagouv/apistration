@@ -27,7 +27,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       codeCogInseeCommuneNaissance: code_cog_insee_commune_de_naissance,
       nomCommuneNaissance: context.params[:nom_commune_naissance],
       codeCogInseeDepartementNaissance: context.params[:code_cog_insee_departement_naissance]
-    }.compact
+    }.compact_blank
   end
 
   def mocking_params_v2
@@ -43,7 +43,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       sexe: context.params[:sexe_etat_civil],
       nomCommuneNaissance: context.params[:nom_commune_naissance],
       codeCogInseeDepartementNaissance: context.params[:code_cog_insee_departement_naissance]
-    }.compact
+    }.compact_blank
   end
   # rubocop:enable Metrics/AbcSize
 

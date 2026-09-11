@@ -1,0 +1,36 @@
+<h1>
+  Contrôle de l'attestation
+  <span class="fr-icon-success-line" aria-hidden="true"></span>
+</h1>
+<p class="intro">Pour lutter contre la fraude, comparez les informations ci-dessous avec le document papier.</p>
+
+<% unless Rails.env.production? %>
+  <div class="fr-alert fr-alert--warning fr-alert--sm fr-mt-3w">
+    <p>Données de test — document sans valeur.</p>
+  </div>
+<% end %>
+<div class="fr-alert fr-alert--success fr-alert--sm fr-mt-3w">
+  <p>Attestation authentique et valide.</p>
+</div>
+
+<dl class="field-grid">
+  <dt>Code de vérification</dt>
+  <dd><span class="verif-code"><%= @visual_code %></span></dd>
+  <% @header_rows.each do |row_label, row_value| %>
+    <dt><%= row_label %></dt>
+    <dd><%= row_value %></dd>
+  <% end %>
+</dl>
+
+<% @payload['sections'].each do |section| %>
+  <h2 class="field-section"><%= section['titre'] %></h2>
+  <dl class="field-grid">
+    <% section['entrees'].flatten(1).each do |row_label, row_value| %>
+      <dt><%= row_label %></dt>
+      <dd><%= row_value.is_a?(Hash) ? row_value['highlight'] : row_value %></dd>
+    <% end %>
+  </dl>
+<% end %>
+
+<p class="fr-text--sm fr-mt-4w footnote">Vérifiez toujours que l'adresse de cette page est bien
+  <strong>particulier.api.gouv.fr</strong> avant de faire confiance au résultat.</p>

@@ -92,5 +92,7 @@ namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   end
 end
 
+get 'api/attestations/:token', to: 'api_particulier/attestations#show', as: 'api_particulier_attestation', constraints: APIParticulierDomainConstraint.new
+
 get 'api/:provider/ping', to: 'api_particulier/ping_providers#show', as: 'api_particulier_ping_provider', constraints: APIParticulierDomainConstraint.new
 get 'api/pings', to: 'api_particulier/ping_providers#index', as: 'api_particulier_ping_providers', constraints: APIParticulierDomainConstraint.new

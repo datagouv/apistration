@@ -5558,6 +5558,17 @@ paths:
           et permet de retrouver le code COG avec le paramètre 'anneeDateNaissance'.\n\nNe
           pas remplir si la personne est née à l'étranger."
         required: false
+      - name: X-Generate-Proof
+        in: header
+        required: false
+        schema:
+          type: string
+          enum:
+          - proof-only
+          - pdf
+        description: 'Demande une preuve d''attestation : `proof-only` ajoute `meta.verification_url`
+          et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf`
+          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).'
       security:
       - jwt_bearer_token: []
       description: Participation familiale EAJE
@@ -5907,6 +5918,12 @@ paths:
                 - data
                 - links
                 - meta
+        '400':
+          description: Valeur d'en-tête X-Generate-Proof inconnue
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '404':
           description: Dossier non trouvé
           content:

@@ -74,6 +74,39 @@ RSpec.describe ApiParticulier::Client do
     end
   end
 
+  describe 'header parameters (§9.5)' do
+    let(:client) do
+      described_class.new(token: 't', environment: :staging, default_params: default_params)
+    end
+
+    before do
+      stub_request(:get, 'https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite')
+        .with(query: hash_including('nomNaissance' => 'DUPONT'))
+        .to_return(status: 200, headers: { 'Content-Type' => 'application/json' },
+                   body: { data: {}, links: {}, meta: {} }.to_json)
+    end
+
+    def request_identite(**kwargs)
+      client.dss.participation_familiale_eaje_identite(
+        nom_naissance: 'DUPONT', prenoms: ['JEAN'], code_cog_insee_pays_naissance: '99100', **kwargs
+      )
+    end
+
+    it 'puts X-Generate-Proof on the wire when generate_proof is given' do
+      request_identite(generate_proof: 'pdf')
+
+      expect(a_request(:get, %r{/v3/dss/participation_familiale_eaje/identite})
+        .with(headers: { 'X-Generate-Proof' => 'pdf' })).to have_been_made
+    end
+
+    it 'sends no X-Generate-Proof header when the kwarg is omitted' do
+      request_identite
+
+      expect(a_request(:get, %r{/v3/dss/participation_familiale_eaje/identite})
+        .with { |request| !request.headers.key?('X-Generate-Proof') }).to have_been_made
+    end
+  end
+
   describe 'ping (public endpoints)' do
     let(:client) do
       described_class.new(token: 't', environment: :staging, default_params: default_params)

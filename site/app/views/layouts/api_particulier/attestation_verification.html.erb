@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr" data-fr-scheme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Vérification d'attestation — République Française</title>
+  <%= stylesheet_link_tag 'api_particulier', media: 'all' %>
+  <style>
+    .verification-card { max-width: 640px; margin: 0 auto; border: 1px solid var(--border-default-grey, #ddd); padding: 2rem 2.5rem; }
+    .verification-card h1 { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 1.4rem; color: var(--blue-france-sun-113-625, #000091); border-bottom: 2px solid var(--blue-france-sun-113-625, #000091); padding-bottom: .65rem; margin: 0 0 .5rem; }
+    .verification-card h1 .fr-icon-success-line { color: var(--text-default-success, #18753c); }
+    .verification-card h1 .fr-icon-error-line { color: var(--text-default-error, #ce0500); }
+    .intro { font-size: .9rem; color: var(--text-mention-grey, #666); margin: .25rem 0 0; }
+    .field-grid { display: grid; grid-template-columns: 15rem 1fr; gap: .75rem 1.5rem; margin: 1.5rem 0 0; }
+    .field-grid dt { font-weight: 700; color: #3a3a3a; text-align: right; }
+    .field-grid dd { margin: 0; color: #161616; }
+    @media (max-width: 36em) {
+      .field-grid { grid-template-columns: 1fr; gap: .25rem 0; }
+      .field-grid dt { text-align: left; }
+      .field-grid dd { margin-bottom: .5rem; }
+    }
+    .field-section { display: flex; align-items: center; gap: .75rem; margin: 1.5rem 0 0; font-size: .85rem; line-height: 1.4; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-mention-grey, #666); }
+    .field-section::after { content: ''; flex: 1; border-top: 1px solid var(--border-default-grey, #ddd); }
+    .field-section + .field-grid { margin-top: .75rem; }
+    .verif-code { font-family: monospace; font-size: 1.25rem; font-weight: 700; letter-spacing: .12em; }
+    .footnote { color: #666; }
+  </style>
+</head>
+<body>
+  <header role="banner" class="fr-header">
+    <div class="fr-header__body">
+      <div class="fr-container">
+        <div class="fr-header__body-row">
+          <div class="fr-header__brand">
+            <div class="fr-header__brand-top">
+              <div class="fr-header__logo">
+                <p class="fr-logo">République<br>Française</p>
+              </div>
+            </div>
+            <div class="fr-header__service">
+              <p class="fr-header__service-title">API Particulier</p>
+              <p class="fr-header__service-tagline">Vérification d'attestation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main role="main">
+    <div class="fr-container fr-my-6w">
+      <div class="verification-card">
+        <%= yield %>
+      </div>
+    </div>
+  </main>
+  <footer class="fr-footer fr-mt-0" role="contentinfo">
+    <div class="fr-container">
+      <div class="fr-footer__bottom">
+        <p class="fr-footer__bottom-copy fr-py-2w">© République Française — particulier.api.gouv.fr</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

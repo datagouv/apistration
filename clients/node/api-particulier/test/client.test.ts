@@ -131,6 +131,36 @@ describe('ApiParticulier Client', () => {
     });
   });
 
+  describe('header parameters (§9.5)', () => {
+    const identiteOptions = {
+      nom_naissance: 'DUPONT',
+      prenoms: ['JEAN'],
+      code_cog_insee_pays_naissance: '99100',
+    };
+
+    it('puts X-Generate-Proof on the wire when generate_proof is given', async () => {
+      const fetchMock = mockFetch(200, { data: {}, links: {}, meta: {} });
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.dss.participation_familiale_eaje_identite({
+        ...identiteOptions,
+        generate_proof: 'pdf',
+      });
+      const [url, opts] = fetchMock.mock.calls[0];
+      expect(url).toContain('/v3/dss/participation_familiale_eaje/identite');
+      expect(opts.headers['X-Generate-Proof']).toBe('pdf');
+    });
+
+    it('sends no X-Generate-Proof header when the option is omitted', async () => {
+      const fetchMock = mockFetch(200, { data: {}, links: {}, meta: {} });
+      globalThis.fetch = fetchMock;
+      const client = makeClient();
+      await client.dss.participation_familiale_eaje_identite(identiteOptions);
+      const [, opts] = fetchMock.mock.calls[0];
+      expect(opts.headers['X-Generate-Proof']).toBeUndefined();
+    });
+  });
+
   describe('ping (public endpoints)', () => {
     it('ping() calls /api/ping without Authorization', async () => {
       const fetchMock = mockFetch(200, {});

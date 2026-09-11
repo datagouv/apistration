@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::ParticipationFamilialeEAJEWithCivilityController < APIParticulier::V3AndMore::CNAV::AbstractCivilityController
+  include APIParticulier::GeneratesAttestationProof
+
   private
 
   def organizer_class

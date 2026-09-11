@@ -165,7 +165,7 @@ export class Dss {
   }
 
   /** [Identité] Participation familiale EAJE */
-  async participation_familiale_eaje_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
+  async participation_familiale_eaje_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance?: string; mois_date_naissance?: string; jour_date_naissance?: string; sexe_etat_civil?: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string; generate_proof?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -175,7 +175,8 @@ export class Dss {
           throw new Error(`version ${resolvedVersion} not available for /dss/participation_familiale_eaje/identite; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'nomUsage': options.nom_usage, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance, 'sexeEtatCivil': options.sexe_etat_civil, 'codeCogInseePaysNaissance': options.code_cog_insee_pays_naissance, 'codeCogInseeCommuneNaissance': options.code_cog_insee_commune_naissance, 'nomCommuneNaissance': options.nom_commune_naissance, 'codeCogInseeDepartementNaissance': options.code_cog_insee_departement_naissance } });
+    const headers = Object.fromEntries(Object.entries({ 'X-Generate-Proof': options.generate_proof }).filter(([, v]) => v !== undefined)) as Record<string, string>;
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'nomUsage': options.nom_usage, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance, 'sexeEtatCivil': options.sexe_etat_civil, 'codeCogInseePaysNaissance': options.code_cog_insee_pays_naissance, 'codeCogInseeCommuneNaissance': options.code_cog_insee_commune_naissance, 'nomCommuneNaissance': options.nom_commune_naissance, 'codeCogInseeDepartementNaissance': options.code_cog_insee_departement_naissance }, headers });
   }
 
   /** [FranceConnect] Statut prime d'activité */

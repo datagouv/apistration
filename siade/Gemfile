@@ -60,6 +60,8 @@ gem 'lockbox'
 
 gem 'pdf-reader'
 
+gem 'rqrcode_core'
+
 gem 'gpgme'
 
 gem 'mcp'
