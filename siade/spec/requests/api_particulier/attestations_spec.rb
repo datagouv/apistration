@@ -72,10 +72,11 @@ RSpec.describe 'API Particulier: téléchargement d\'attestation PDF', api: :par
       end
     end
 
-    it 'forbids caching' do
+    it 'forbids caching and indexing' do
       download
 
       expect(response.headers['Cache-Control']).to include('no-store')
+      expect(response.headers['X-Robots-Tag']).to eq('noindex')
     end
   end
 
