@@ -58,8 +58,11 @@ class ErrorsNomenclature
   def france_connect_errors(controller_class)
     return [] unless controller_class.include?(APIParticulier::RequiresFranceConnect)
 
+    provider_name = FranceConnect::DataFetcherThroughAccessToken.provider_name
+
     [InvalidFranceConnectAccessTokenError.new(:missing_france_connect_access_token)] +
-      declared_errors(FranceConnect::DataFetcherThroughAccessToken, FranceConnect::DataFetcherThroughAccessToken.provider_name)
+      baseline.for_token_provider(provider_name) +
+      declared_errors(FranceConnect::DataFetcherThroughAccessToken, provider_name)
   end
 
   def group_by_status(errors)
