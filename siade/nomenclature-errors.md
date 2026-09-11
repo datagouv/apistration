@@ -83,12 +83,7 @@ l'invariant impossible à violer.
 Concrètement : une erreur émise depuis un `ValidateParams` porte le préfixe
 `00`, une erreur émise depuis un `ValidateResponse` porte un préfixe
 fournisseur. La règle est vérifiée par
-[`spec/services/errors_nomenclature_spec.rb`](spec/services/errors_nomenclature_spec.rb).
-
-> Exception héritée : les codes `50001` à `50004` (jetons FranceConnect)
-> utilisent un préfixe `50` non attribué dans `ErrorsBackend`. Ils sont
-> explicitement listés dans le spec de conformité en attendant leur propre
-> reclassement.
+[`spec/acceptances/errors_nomenclature_conformity_spec.rb`](spec/acceptances/errors_nomenclature_conformity_spec.rb).
 
 ### Codes erreur (YYY)
 
@@ -124,16 +119,6 @@ Ces erreurs sont comprises entre `000` et `049`.
   La ressource ne peut être fournit pour des raisons légales.
 
 - `XX006` = Erreur d'authentificatin auprès du fournisseur de données
-
-  Cette erreur intervient généralement quand le fournisseur de données est
-  indisponible pour des raisons inconnues.
-
-- `XX007` = Entité disparue
-
-  Cette erreur indique que la ressource n'est plus disponible : il s'agit du
-  code HTTP utilisé lorsqu'un fournisseur de données ne renvoie plus cette
-  donnée, et que le endpoint ne sera plus jamais en capacité de renvoyer des
-  données.
 
   Cette erreur intervient généralement quand le fournisseur de données est
   indisponible pour des raisons inconnues.

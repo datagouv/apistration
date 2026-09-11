@@ -78,8 +78,8 @@ RSpec.describe 'GIP-MDS: effectifs annuel unité légale', api: :entreprise, typ
             run_test!
           end
 
-          common_provider_errors_request('GIP-MDS', GIPMDS::EffectifsAnnuelsEntreprise)
-          common_network_error_request('GIP-MDS', GIPMDS::EffectifsAnnuelsEntreprise)
+          common_provider_errors_request(GIPMDS::EffectifsAnnuelsEntreprise)
+          common_network_error_request(GIPMDS::EffectifsAnnuelsEntreprise)
         end
       end
     end

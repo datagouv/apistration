@@ -1,10 +1,21 @@
 class ErrorRegistry
-  Declaration = Data.define(:error_class, :options)
+  Declaration = Data.define(:error_class, :options) do
+    def build(provider_name:)
+      error_class.build_example(provider_name:, **options)
+    end
+  end
 
   class << self
     def register(validator_class, error_class, **options)
       decl = Declaration.new(error_class:, options: options.freeze)
       bucket = declarations[validator_class] ||= []
+      bucket << decl unless bucket.include?(decl)
+      decl
+    end
+
+    def retract(validator_class, error_class, **options)
+      decl = Declaration.new(error_class:, options: options.freeze)
+      bucket = retractions[validator_class] ||= []
       bucket << decl unless bucket.include?(decl)
       decl
     end
@@ -18,7 +29,10 @@ class ErrorRegistry
     end
 
     def declarations_for(validator_class)
-      validator_class.ancestors.flat_map { |klass| declarations.fetch(klass, []) }.uniq
+      inherited = validator_class.ancestors.flat_map { |klass| declarations.fetch(klass, []) }.uniq
+      retracted = validator_class.ancestors.flat_map { |klass| retractions.fetch(klass, []) }
+
+      inherited - retracted
     end
 
     def direct_declarations_for(validator_class)
@@ -33,7 +47,7 @@ class ErrorRegistry
       target = http_status.to_i
 
       declarations_for_organizer(organizer_class).filter_map do |decl|
-        example = decl.error_class.build_example(provider_name:, **decl.options)
+        example = decl.build(provider_name:)
         next unless status_code(example) == target
 
         example
@@ -42,12 +56,17 @@ class ErrorRegistry
 
     def reset!
       @declarations = {}
+      @retractions = {}
     end
 
     private
 
     def declarations
       @declarations ||= {}
+    end
+
+    def retractions
+      @retractions ||= {}
     end
 
     def flatten_chain(klass)

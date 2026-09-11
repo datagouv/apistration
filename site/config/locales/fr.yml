@@ -514,6 +514,26 @@ fr:
         scope_badge: "%{name}"
       example:
         title: "Exemple de réponse (JSON)"
+      provider_errors:
+        title: "Erreurs"
+        description_html: "Lorsque cette API ne peut pas retourner les informations demandées, elle renvoie un code erreur. Les erreurs communes à toutes les API sont décrites dans la %{link} ; celles qui suivent sont propres à cet endpoint."
+        nomenclature_link: "nomenclature des codes erreurs"
+        code: "Code"
+        meaning: "Signification"
+        retry_in: "Réessayez dans %{seconds} secondes."
+        statuses:
+          '401': "401 — Non autorisé"
+          '404': "404 — Non trouvé"
+          '409': "409 — Conflit"
+          '422': "422 — Entité non traitable"
+          '451': "451 — Indisponible pour des raisons légales"
+          '502': "502 — Erreur du fournisseur de données"
+          '503': "503 — Service non disponible"
+          '504': "504 — Intermédiaire hors délai"
+          other: "%{status}"
+        france_connect:
+          title: "Modalité FranceConnect"
+          description: "En appelant cet endpoint avec un jeton FranceConnect, les erreurs suivantes s'ajoutent aux précédentes."
       show:
         beta:
           title: "Cette API est en bêta test"

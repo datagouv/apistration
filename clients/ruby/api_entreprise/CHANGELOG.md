@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-07
+
+### Added
+- `errors(operation_id: nil)` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/errors` (SPECS.md §9.5).
+
 ## [0.4.0] - 2026-09-02
 
 ### Added

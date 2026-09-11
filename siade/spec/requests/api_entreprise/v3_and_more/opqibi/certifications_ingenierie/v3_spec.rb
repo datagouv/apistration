@@ -49,8 +49,8 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[re
             run_test!
           end
 
-          common_provider_errors_request('OPQIBI', OPQIBI::CertificationsIngenierie)
-          common_network_error_request('OPQIBI', OPQIBI::CertificationsIngenierie)
+          common_provider_errors_request(OPQIBI::CertificationsIngenierie)
+          common_network_error_request(OPQIBI::CertificationsIngenierie)
         end
       end
     end

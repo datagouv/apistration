@@ -53,9 +53,9 @@ RSpec.describe 'CARIF-OREF: Certifications Qualiopi France Compétences', api: :
             run_test!
           end
 
-          common_provider_errors_request('CARIF-OREF', CarifOref::CertificationsQualiopiFranceCompetences)
+          common_provider_errors_request(CarifOref::CertificationsQualiopiFranceCompetences)
 
-          common_network_error_request('CARIF-OREF', CarifOref::CertificationsQualiopiFranceCompetences)
+          common_network_error_request(CarifOref::CertificationsQualiopiFranceCompetences)
         end
       end
     end

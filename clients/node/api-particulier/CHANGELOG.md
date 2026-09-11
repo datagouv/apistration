@@ -1,10 +1,19 @@
 # Changelog
 
-## Unreleased
+## 0.4.0
 
-- CNOUS étudiant boursier: add version 5 (new default) with the `ine` field
+### Added
+- `errors({ operationId })` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/api/errors` (SPECS.md §9.5).
+- CNOUS étudiant boursier: version 5 (new default) with the `ine` field
   (`cnous_ine` scope), returned for all call modalities;
   v4 is deprecated (call-time warning).
+
+### Changed
+- Les codes des erreurs de jeton FranceConnect passent de `50001`-`50004` à
+  `51501`-`51504` côté API. Le client ne les interprète pas, mais un
+  consommateur qui les compare doit être mis à jour.
 
 ## 0.3.0
 

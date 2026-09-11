@@ -54,8 +54,8 @@ RSpec.describe 'INSEE: Siège Unité Légale', api: :entreprise, type: %i[reques
             run_test!
           end
 
-          common_provider_errors_request('INSEE', INSEE::SiegeUniteLegale)
-          common_network_error_request('INSEE', INSEE::SiegeUniteLegale)
+          common_provider_errors_request(INSEE::SiegeUniteLegale)
+          common_network_error_request(INSEE::SiegeUniteLegale)
         end
       end
     end

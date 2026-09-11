@@ -101,7 +101,7 @@ RSpec.describe 'Rack::Attack acceptance' do
       end
 
       let(:non_throttled_swagger_operation_ids) do
-        %w[api_entreprise_vrivileges_]
+        %w[api_entreprise_privileges]
       end
 
       it 'all throttled operation_ids exist in the OpenAPI specs (except internal endpoints)' do
@@ -172,6 +172,10 @@ RSpec.describe 'Rack::Attack acceptance' do
           action: 'index'
         },
         {
+          controller: 'api_entreprise/errors_nomenclature',
+          action: 'index'
+        },
+        {
           controller: 'api_entreprise/privileges',
           action: 'index'
         },
@@ -185,6 +189,10 @@ RSpec.describe 'Rack::Attack acceptance' do
         },
         {
           controller: 'api_particulier/ping_providers',
+          action: 'index'
+        },
+        {
+          controller: 'api_particulier/errors_nomenclature',
           action: 'index'
         }
       ]

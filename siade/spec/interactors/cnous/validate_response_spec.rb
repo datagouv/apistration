@@ -94,6 +94,16 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
       it 'builds its code from the queried provider' do
         expect(subject.errors.first.code).to eq('25562')
       end
+
+      context 'when the call was made with civility params' do
+        subject(:call) { described_class.call(response:, provider_name: 'MESRI', params: { nom: 'dummy nom' }) }
+
+        it { is_expected.to be_a_failure }
+
+        it 'rejects the civility rather than the identifier' do
+          expect(subject.errors.first.code).to eq('25561')
+        end
+      end
     end
 
     context 'with a 500 code' do

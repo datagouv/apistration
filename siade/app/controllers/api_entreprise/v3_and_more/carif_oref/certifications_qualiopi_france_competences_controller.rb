@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::CarifOref::CertificationsQualiopiFranceCompetencesController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::CarifOref::CertificationsQualiopiFranceCompetences }
+
   def show
     if organizer.success?
       render json: serialize_data,

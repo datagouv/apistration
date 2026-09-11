@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+### Added
+- `errors({ operationId })` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/errors` (SPECS.md §9.5).
+
 ## 0.4.0
 
 ### Added

@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::QuotientFamilialWithCivilityController < APIParticulier::V3AndMore::CNAV::AbstractCivilityController
+  nomenclature organizers: { 3 => ::CNAV::QuotientFamilialV2 }
+
   def organizer_class
     CNAV::QuotientFamilialV2
   end

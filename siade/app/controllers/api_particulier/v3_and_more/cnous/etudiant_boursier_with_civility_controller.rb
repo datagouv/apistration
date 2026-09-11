@@ -2,6 +2,8 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
   include APIParticulier::CivilityParameters
   include APIParticulier::Transcogage
 
+  nomenclature organizers: { 3 => ::CNOUS::StudentScholarshipWithCivility, 4 => ::CNOUS::StudentScholarshipWithCivility, 5 => ::CNOUS::StudentScholarshipWithCivility }
+
   def show
     if organizer.success?
       render json: serialize_data,

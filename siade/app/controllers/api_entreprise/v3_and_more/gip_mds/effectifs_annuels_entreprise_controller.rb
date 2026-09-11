@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::GIPMDS::EffectifsAnnuelsEntrepriseController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::GIPMDS::EffectifsAnnuelsEntreprise }
+
   def show
     if organizer.success?
       render json: serialize_data,

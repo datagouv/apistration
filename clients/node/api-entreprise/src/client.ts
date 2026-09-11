@@ -83,6 +83,10 @@ export class Client extends ClientBase {
     return this.getPublic(`/ping/${provider}`);
   }
 
+  async errors(options: { operationId?: string } = {}) {
+    return this.getPublic('/errors', { params: { operation_id: options.operationId } });
+  }
+
   // <scaffold:fields:begin>
   private _ademe?: Ademe;
   private _banque_de_france?: BanqueDeFrance;

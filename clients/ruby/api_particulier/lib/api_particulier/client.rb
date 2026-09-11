@@ -55,6 +55,10 @@ module ApiParticulier
       get_public("/api/#{provider}/ping")
     end
 
+    def errors(operation_id: nil)
+      get_public('/api/errors', params: { operation_id: operation_id })
+    end
+
     # <scaffold:resources:begin>
     def ants
       @ants ||= Resources::Ants.new(self)

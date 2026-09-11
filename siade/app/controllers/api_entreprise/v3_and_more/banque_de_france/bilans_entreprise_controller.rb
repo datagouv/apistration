@@ -1,6 +1,8 @@
 class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < APIEntreprise::V3AndMore::BaseController
   include APIEntreprise::CommonDGFIPOrganizerParams
 
+  nomenclature organizers: { 3 => ::BanqueDeFrance::BilansEntreprise }
+
   def show
     if organizer.success?
       render json: serialize_data,

@@ -53,9 +53,9 @@ RSpec.describe 'INPI::RNE: Actesbilans', api: :entreprise, type: %i[request swag
             run_test!
           end
 
-          common_provider_errors_request('INPI - RNE', INPI::RNE::ActesBilans)
+          common_provider_errors_request(INPI::RNE::ActesBilans)
 
-          common_network_error_request('INPI - RNE', INPI::RNE::ActesBilans)
+          common_network_error_request(INPI::RNE::ActesBilans)
         end
       end
     end

@@ -24,8 +24,8 @@
 - `https://entreprise.api.gouv.fr` / `https://particulier.api.gouv.fr`
 - Token-based bearer authentication with an extensibility seam for future auth
   strategies (OAuth2, mTLS, rotating providers).
-- Public (unauthenticated) monitoring endpoints: `ping`, `pings`,
-  `ping_provider` (see §9.5).
+- Public (unauthenticated) endpoints: `ping`, `pings`, `ping_provider` and
+  `errors` (see §9.5).
 
 **Out of scope**
 
@@ -445,14 +445,14 @@ brackets:
 client.dss.allocation_adulte_handicape_identite(prenoms: ['Jean', 'Paul'], …)
 ```
 
-### 9.5 Public (unauthenticated) endpoints — Ping
+### 9.5 Public (unauthenticated) endpoints
 
-Both APIs expose monitoring endpoints marked `security: []` in the OpenAPI
-spec. These endpoints require **no token**, **no audit parameters**
-(`recipient`, `context`, `object`), and return plain JSON (no
-`data`/`links`/`meta` envelope).
+Both APIs expose endpoints marked `security: []` in the OpenAPI spec. These
+endpoints require **no token**, **no audit parameters** (`recipient`,
+`context`, `object`), and return plain JSON (no `data`/`links`/`meta`
+envelope).
 
-Clients MUST expose three methods **directly on the client instance** (not
+Clients MUST expose four methods **directly on the client instance** (not
 under a resource module):
 
 | Method | API Entreprise path | API Particulier path |
@@ -460,6 +460,13 @@ under a resource module):
 | `ping` | `GET /v3/ping` | `GET /api/ping` |
 | `pings` | `GET /pings` | `GET /api/pings` |
 | `ping_provider(provider)` | `GET /ping/{provider}` | `GET /api/{provider}/ping` |
+| `errors(operation_id: nil)` | `GET /errors` | `GET /api/errors` |
+
+`errors` returns the error nomenclature of the API: the two-digit prefix of
+every data provider, the subcodes shared across providers, the platform codes
+and, per operation id, the errors that operation can return grouped by HTTP
+status. The optional `operation_id` narrows `endpoints` to a single operation
+and answers a 404 when it is unknown to that API.
 
 Implementation requirements:
 
@@ -478,6 +485,8 @@ Implementation requirements:
 client.ping                                  # → Response (HTTP 200, body: {})
 client.pings                                 # → Response (HTTP 200, body: [{name:, url:}, …])
 client.ping_provider('insee/sirene')         # → Response (HTTP 200, body: {status:, …})
+client.errors                                # → Response (HTTP 200, body: {api:, providers:, …})
+client.errors(operation_id: 'api_entreprise_v3_insee_unites_legales')
 ```
 
 ---

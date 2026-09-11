@@ -54,8 +54,8 @@ RSpec.describe 'FranceTravail: Statut with identifiant', api: :particulier, type
           end
         end
 
-        common_provider_errors_request('France Travail', FranceTravail::Statut)
-        common_network_error_request('France Travail', FranceTravail::Statut)
+        common_provider_errors_request(FranceTravail::Statut)
+        common_network_error_request(FranceTravail::Statut)
       end
     end
   end

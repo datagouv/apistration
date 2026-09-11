@@ -4,6 +4,17 @@ class CNAV::ValidateResponse < ValidateResponse
   raises ProviderUnprocessableEntityError, reason: :unidentified_person
   raises ProviderUnprocessableEntityError, reason: :rejected_civility
 
+  ALLOCATAIRE_NOT_REFERENCED = raises ::NotFoundError,
+    provider: 'CNAF & MSA',
+    title: 'Allocataire non référencé',
+    detail: "L'allocataire n'est pas référencé auprès des caisses éligibles"
+
+  FILE_NOT_FOUND_PER_REGIME = {
+    'CNAF' => raises(::NotFoundError, provider: 'CNAF', title: 'Dossier allocataire absent CNAF', detail: "Le dossier allocataire n'a pas été trouvé auprès de la CNAF."),
+    'MSA' => raises(::NotFoundError, provider: 'MSA', title: 'Dossier allocataire absent MSA', detail: "Le dossier allocataire n'a pas été trouvé auprès de la MSA."),
+    'RNCPS' => raises(::NotFoundError, provider: 'RNCPS', title: 'Dossier allocataire absent RNCPS', detail: "Le dossier allocataire n'a pas été trouvé auprès du RNCPS.")
+  }.freeze
+
   def call
     resource_not_found! if http_not_found?
     unprocessable_entity_error! if http_bad_request?
@@ -30,14 +41,13 @@ class CNAV::ValidateResponse < ValidateResponse
   def sub_provider_error!
     return unprocessable_entity!(:unidentified_person, SNGI_UNIDENTIFIED_MESSAGE) if sub_provider_error_from_sngi?
 
-    fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", 'Allocataire non référencé')) if sub_provider_error_from_rncps?
+    fail_with_error!(build_declared_error(ALLOCATAIRE_NOT_REFERENCED)) if sub_provider_error_from_rncps?
   end
 
   def regime_not_found_error(regime)
-    return fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", 'Dossier allocataire absent CNAF')) if regime == 'CNAF'
-    return fail_with_error!(build_qfv2_error(::NotFoundError, 'MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", 'Dossier allocataire absent MSA')) if regime == 'MSA'
+    declaration = FILE_NOT_FOUND_PER_REGIME[regime]
 
-    fail_with_error!(build_qfv2_error(::NotFoundError, 'RNCPS', "Le dossier allocataire n'a pas été trouvé auprès du RNCPS.", 'Dossier allocataire absent RNCPS')) if regime == 'RNCPS'
+    fail_with_error!(build_declared_error(declaration)) if declaration
   end
 
   def handle_http_too_many_requests!
@@ -120,9 +130,5 @@ class CNAV::ValidateResponse < ValidateResponse
 
   def sub_provider_error_from_rncps?
     [40_406, 40_412].include?(json_body['errorCode'])
-  end
-
-  def build_qfv2_error(error_klass, provider, message = nil, title = nil)
-    error_klass.new(provider, message, title:, with_identifiant_message: false)
   end
 end

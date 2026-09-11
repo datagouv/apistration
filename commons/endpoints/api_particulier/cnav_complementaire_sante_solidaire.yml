@@ -112,6 +112,8 @@ fiche:
           > **Le code COG du pays de naissance est obligatoire pour tous les appels.** Pour simplifier le parcours des usagers, évitez de demander aux particuliers nés en France de saisir leur pays de naissance, puisque vous pouvez le paramétrer directement -code COG pays France `99100`-, dès qu'un particulier renseigne les informations de sa commune de naissance (forcément en France).
 
     historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
       **Ce que change le passage à la V.3 d'API Particulier:**
 
       - Suppression de la date de fin car cette donnée était calculée et présentait le risque de ne pas être juste dans toutes les situations ;

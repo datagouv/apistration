@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::MI::UnitesLegalesController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 4 => ::DJEPVA::UniteLegale }
+
   def show
     if organizer.success?
       render json: serialize_data,

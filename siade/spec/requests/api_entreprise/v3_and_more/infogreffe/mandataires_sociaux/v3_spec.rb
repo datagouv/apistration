@@ -52,8 +52,8 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', api: :entreprise, type: %i[req
             run_test!
           end
 
-          common_provider_errors_request('Infogreffe', Infogreffe::MandatairesSociaux)
-          common_network_error_request('Infogreffe', Infogreffe::MandatairesSociaux)
+          common_provider_errors_request(Infogreffe::MandatairesSociaux)
+          common_network_error_request(Infogreffe::MandatairesSociaux)
         end
       end
     end

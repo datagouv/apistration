@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::QuotientFamilialWithFranceConnectController < APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController
+  nomenclature organizers: { 3 => ::CNAV::QuotientFamilialV2 }
+
   private
 
   def organizer_class

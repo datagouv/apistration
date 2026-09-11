@@ -1,12 +1,14 @@
 class Errors::HTTPStatusForKind
   KIND_TO_STATUS = {
     wrong_parameter: :unprocessable_content,
+    bad_request: :bad_request,
     network_error: :bad_gateway,
     provider_error: :bad_gateway,
     provider_unknown_error: :bad_gateway,
     timeout_error: :gateway_timeout,
     unavailable_for_legal_reason: :unavailable_for_legal_reasons,
     unauthorized: :unauthorized,
+    forbidden: :forbidden,
     not_found: :not_found,
     conflict: :conflict,
     internal_error: :internal_error,

@@ -11,6 +11,8 @@ fiche:
     position: 400
     ping_url: &cnous_ping_url 'https://particulier.api.gouv.fr/api/cnous_etudiant_boursier_ine/ping'
     historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
       **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
       Un nouveau champ `ine` renvoie l'Identifiant National Étudiant, associé au nouveau scope « Identifiant National des Élèves » (`cnous_ine`).
 
@@ -100,6 +102,8 @@ fiche:
     parameters: *cnous_parameters
     faq: *cnous_faq
     historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
       **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
       Les champs `est_boursier`, `est_radie` et `date_radiation` sont regroupés sous une nouvelle clé `statut_boursier`. Le champ `est_boursier` n'est plus renvoyé à la racine.
 
@@ -138,6 +142,8 @@ fiche:
     parameters: *cnous_parameters
     faq: *cnous_faq
     historique: |+
+      **Septembre 2026** — les erreurs de jeton FranceConnect changent de code : `50001` → `51501`, `50002` → `51502`, `50003` → `51503`, `50004` → `51504`. Le statut HTTP `401`, le titre et le message sont inchangés.
+
       **Ce que change le passage à la V.3 d'API Particulier:**
 
       - Le passage à la V.3 n'a pas eu d'impact sur la donnée distribuée qui reste identique ;

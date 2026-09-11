@@ -1,4 +1,6 @@
 class ValidatePostalCode < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :postal_code
+
   def call
     return if valid?
 

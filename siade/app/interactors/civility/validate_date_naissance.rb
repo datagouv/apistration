@@ -1,4 +1,9 @@
 class Civility::ValidateDateNaissance < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :annee_date_naissance
+  raises UnprocessableEntityError, field: :mois_date_naissance
+  raises UnprocessableEntityError, field: :jour_date_naissance
+  raises UnprocessableEntityError, field: :date_naissance
+
   def call
     return invalid_param!(:annee_date_naissance) unless valid_year?
     return invalid_param!(:mois_date_naissance) unless valid_month?

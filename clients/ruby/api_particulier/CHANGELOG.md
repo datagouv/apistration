@@ -6,9 +6,19 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-07
+
 ### Added
+- `errors(operation_id: nil)` — nomenclature des codes erreurs de l'API
+  (préfixes fournisseurs, sous-codes communs, codes plateforme et erreurs par
+  opération), endpoint public `/api/errors` (SPECS.md §9.5).
 - CNOUS étudiant boursier : version 5 (défaut) avec le champ `ine` (scope
   `cnous_ine`), renvoyé pour toutes les modalités d'appel.
+
+### Changed
+- Les codes des erreurs de jeton FranceConnect passent de `50001`-`50004` à
+  `51501`-`51504` côté API. Le client ne les interprète pas, mais un
+  consommateur qui les compare doit être mis à jour.
 
 ### Deprecated
 - CNOUS étudiant boursier v4 : dépréciée en faveur de la v5 (warning à l'appel).

@@ -1,3 +1,28 @@
+- date: 2026-09-07
+  scope: both
+  title: "Nomenclature des codes erreurs : une route publique et les erreurs sur chaque fiche"
+  description: |
+    Les codes erreurs ne sont plus à chercher dans les « Response samples » du swagger. Chaque API expose désormais sa **nomenclature complète** sur une route publique, sans jeton : `https://entreprise.api.gouv.fr/errors` et `https://particulier.api.gouv.fr/api/errors`. Elle contient le préfixe à deux chiffres de chaque fournisseur de données, les sous-codes communs à tous les fournisseurs, les codes de la plateforme, et pour chaque opération la liste des erreurs qu'elle peut renvoyer, groupées par statut HTTP. Le paramètre `operation_id` restreint la réponse à une seule opération.
+
+    Cette liste est aussi affichée dans la section « Erreurs » de [chaque fiche du catalogue](<%= endpoints_path %>), et la règle de composition d'un code (`XXYYY`, `XX` désignant le fournisseur qui a rendu le verdict, `00` signifiant qu'aucun fournisseur n'a été interrogé) est expliquée dans la [documentation développeurs](<%= developers_path(anchor: 'gérer-les-erreurs---codes-https') %>). Les SDKs officiels Ruby et Node exposent la route via une méthode `errors`.
+
+    Elle est générée depuis le code des API : une erreur qui peut être renvoyée y figure, sans recopie manuelle. Deux écarts entre la documentation et la production sont corrigés au passage : les erreurs 502 des API Prestations sociales et Quotient familial étaient documentées sous le préfixe `37` (CNAV) alors que la production renvoie `36` (Sécurité sociale) et `35` (CNAF & MSA), et l'API Participation familiale EAJE ne documentait pas le `37003` renvoyé lorsque l'allocataire est trouvé mais non éligible.
+
+- date: 2026-09-07
+  scope: api_particulier
+  title: "FranceConnect : les codes erreurs des jetons passent de `500xx` à `515xx`"
+  description: |
+    Les quatre erreurs liées au jeton FranceConnect utilisaient un préfixe `50` qui ne désigne aucun fournisseur de données. Elles passent sous le préfixe `51`, celui de FranceConnect, et gagnent le `meta.provider` que portent toutes les erreurs fournisseur. Le statut HTTP (`401`), le titre et le message sont inchangés.
+
+    | Avant   | Après   | Signification |
+    |---------|---------|---------------|
+    | `50001` | `51501` | Jeton d'accès mal formaté |
+    | `50002` | `51502` | Jeton d'accès non trouvé ou expiré |
+    | `50003` | `51503` | Jeton d'accès sans les données pivot requises |
+    | `50004` | `51504` | Jeton d'accès FranceConnect manquant |
+
+    **Si votre intégration teste ces quatre codes, elle doit être mise à jour.** Un traitement basé sur le statut `401` n'est pas concerné.
+
 - date: 2026-09-02
   scope: api_entreprise
   title: "Données associations (SIAF) : deux nouvelles API disponibles en environnement de test"
