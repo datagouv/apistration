@@ -2,6 +2,11 @@
   <h2 class="fr-text--lg">Paramètres envoyés</h2>
   <pre class="fr-p-2w fr-mb-4w" style="background: #f5f5fe; overflow-x: auto; white-space: pre;"><code><%= JSON.pretty_generate(@result[:request_params]) %></code></pre>
 
+  <% if @result[:request_headers].present? %>
+    <h2 class="fr-text--lg">En-têtes envoyés</h2>
+    <pre class="fr-p-2w fr-mb-4w" style="background: #f5f5fe; overflow-x: auto; white-space: pre;"><code><%= JSON.pretty_generate(@result[:request_headers]) %></code></pre>
+  <% end %>
+
   <h2 class="fr-text--lg">
     Réponse
     <span class="fr-badge fr-badge--<%= @result[:status] == 200 ? 'success' : 'error' %>">

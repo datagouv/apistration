@@ -1,4 +1,4 @@
-<% param_value = params[param.input_name].presence %>
+<% param_value = param.value_from(params).presence %>
 <div class="<%= param.enum? ? 'fr-select-group' : 'fr-input-group' %>">
   <%= label_tag param.label, param.label, class: "fr-label" %>
   <% unless param.required %>
@@ -9,8 +9,9 @@
         options_for_select(param.options, param_value),
         include_blank: true,
         class: "fr-select",
+        id: param.label,
         required: param.required %>
   <% else %>
-    <%= text_field_tag param.input_name, param_value, class: "fr-input", required: param.required %>
+    <%= text_field_tag param.input_name, param_value, class: "fr-input", id: param.label, required: param.required %>
   <% end %>
 </div>

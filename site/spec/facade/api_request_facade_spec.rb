@@ -163,6 +163,40 @@ RSpec.describe APIRequestFacade do
     end
   end
 
+  describe '#header_parameters' do
+    subject(:facade) do
+      described_class.new(
+        namespace: 'particulier',
+        selected_endpoint_uid: '/v3/dss/participation_familiale_eaje/identite'
+      )
+    end
+
+    it 'includes header parameters declared in the OpenAPI definition' do
+      proof_header = facade.header_parameters.find { |p| p.name == 'X-Generate-Proof' }
+
+      expect(proof_header).to have_attributes(
+        location: 'header',
+        required: false,
+        options: %w[proof-only pdf],
+        input_name: 'headers[X-Generate-Proof]'
+      )
+    end
+
+    it 'excludes headers forced by the manual request' do
+      expect(facade.header_parameters.map(&:name)).not_to include('Cache-Control')
+    end
+
+    it 'is not mixed with path and query parameters' do
+      expect(facade.parameters.map(&:name)).not_to include('X-Generate-Proof', 'Cache-Control')
+    end
+
+    it 'returns empty array when no endpoint selected' do
+      facade = described_class.new(namespace: 'particulier')
+
+      expect(facade.header_parameters).to eq([])
+    end
+  end
+
   describe '#execute_request' do
     subject(:facade) do
       described_class.new(
@@ -249,6 +283,42 @@ RSpec.describe APIRequestFacade do
         result = facade.execute_request('siren' => '130025265')
 
         expect(result[:provider_response][:body]).to eq('<html>Bad Gateway</html>')
+      end
+    end
+
+    context 'with headers' do
+      subject(:facade) do
+        described_class.new(
+          namespace: 'particulier',
+          selected_endpoint_uid: '/v3/dss/participation_familiale_eaje/identite'
+        )
+      end
+
+      let(:eaje_url) { %r{#{APIParticulier::BASE_URL}/v3/dss/participation_familiale_eaje/identite} }
+
+      before do
+        stub_request(:get, eaje_url).to_return(status: 200, body: { data: {} }.to_json)
+      end
+
+      it 'sends the declared headers' do
+        result = facade.execute_request(
+          'nomNaissance' => 'Dupont',
+          'headers' => { 'X-Generate-Proof' => 'pdf' }
+        )
+
+        expect(a_request(:get, eaje_url).with(headers: { 'X-Generate-Proof' => 'pdf' })).to have_been_made
+        expect(result[:request_headers]).to eq('X-Generate-Proof' => 'pdf')
+        expect(result[:request_params]).to eq('nomNaissance' => 'Dupont')
+      end
+
+      it 'drops undeclared and blank headers' do
+        result = facade.execute_request(
+          'nomNaissance' => 'Dupont',
+          'headers' => { 'X-Generate-Proof' => '', 'X-Forged' => 'value' }
+        )
+
+        expect(a_request(:get, eaje_url).with { |req| req.headers.keys.none?(/X-(Generate-Proof|Forged)/) }).to have_been_made
+        expect(result[:request_headers]).to eq({})
       end
     end
 

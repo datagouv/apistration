@@ -7,4 +7,11 @@
       <%= render 'field', param: param %>
     <% end %>
   <% end %>
+
+  <% if @facade.header_parameters.any? %>
+    <h2 class="fr-text--lg fr-mt-4w">En-têtes</h2>
+    <% @facade.header_parameters.each do |param| %>
+      <%= render 'field', param: param %>
+    <% end %>
+  <% end %>
 <% end %>

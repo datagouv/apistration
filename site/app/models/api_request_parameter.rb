@@ -9,11 +9,15 @@ class APIRequestParameter
   end
 
   def label
-    input_name
+    name.delete_suffix('[]')
   end
 
   def input_name
-    name.delete_suffix('[]')
+    header? ? "headers[#{name}]" : label
+  end
+
+  def value_from(params)
+    header? ? params.dig(:headers, name) : params[input_name]
   end
 
   def array?
@@ -22,5 +26,9 @@ class APIRequestParameter
 
   def enum?
     options.any?
+  end
+
+  def header?
+    location == 'header'
   end
 end

@@ -5,6 +5,7 @@ class APIRequestFacade
   }.freeze
 
   FIXED_PARAMS = %w[recipient context object].freeze
+  FIXED_HEADERS = %w[Cache-Control].freeze
 
   attr_reader :namespace, :selected_endpoint_uid
 
@@ -38,23 +39,31 @@ class APIRequestFacade
     path_parameters + query_parameters
   end
 
+  def header_parameters
+    return [] unless selected_endpoint
+
+    openapi_parameters.filter_map do |param|
+      next if param['in'] != 'header' || FIXED_HEADERS.include?(param['name'])
+
+      build_openapi_parameter(param)
+    end
+  end
+
   def execute_request(params)
     return unless selected_endpoint
 
-    transformed_params = transform_params(params)
+    transformed_params = transform_params(params.except('headers'))
+    request_headers = declared_headers(params['headers'])
     result = Siade::ManualRequest.new(
       endpoint_path: selected_endpoint.path,
       params: transformed_params,
-      api: api_identifier
+      api: api_identifier,
+      headers: request_headers
     ).call
 
-    payload = parse_payload(result[:body])
-    provider_response = extract_provider_response(payload)
-
-    result.merge(
-      body: provider_response ? without_provider_response(payload).to_json : result[:body],
+    with_provider_response_extracted(result).merge(
       request_params: filtered_request_params(transformed_params),
-      provider_response:
+      request_headers:
     )
   end
 
@@ -104,6 +113,12 @@ class APIRequestFacade
     )
   end
 
+  def declared_headers(headers)
+    return {} if headers.blank?
+
+    header_parameters.map(&:name).index_with { |name| headers[name] }.compact_blank
+  end
+
   def transform_params(params_hash)
     result = {}
     params_hash.each do |key, value|
@@ -130,6 +145,16 @@ class APIRequestFacade
 
   def filtered_request_params(params)
     params.reject { |key, _| FIXED_PARAMS.include?(key.to_s) }
+  end
+
+  def with_provider_response_extracted(result)
+    payload = parse_payload(result[:body])
+    provider_response = extract_provider_response(payload)
+
+    result.merge(
+      body: provider_response ? without_provider_response(payload).to_json : result[:body],
+      provider_response:
+    )
   end
 
   def parse_payload(body)
