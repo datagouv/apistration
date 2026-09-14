@@ -59,6 +59,14 @@ RSpec.describe ErrorsNomenclature, type: :service do
         .to include('23003', '10003', '40003', '35003')
     end
 
+    it 'keeps the meaning an endpoint declares over the baseline example of the same code' do
+      not_found = nomenclature
+        .dig('endpoints', 'api_particulier_v3_cnav_quotient_familial_with_civility', 'errors', '404')
+        .find { |error| error['code'] == '35003' }
+
+      expect(not_found['title']).to eq('Allocataire non référencé')
+    end
+
     it 'documents the allocataire not eligible to the EAJE participation' do
       expect(codes_for('api_particulier_v3_cnav_participation_familiale_eaje_with_civility', '404')).to include('37003')
     end

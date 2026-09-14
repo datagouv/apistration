@@ -41,9 +41,9 @@ class ErrorsNomenclature
   end
 
   def endpoint_errors(controller_class, organizer, provider_name)
-    (baseline.for_provider(provider_name) +
-      declared_errors(organizer, provider_name) +
-      france_connect_errors(controller_class))
+    (declared_errors(organizer, provider_name) +
+      france_connect_errors(controller_class) +
+      baseline.for_provider(provider_name))
       .reject { |error| platform_error_codes.include?(error.code) }
   end
 
@@ -61,8 +61,8 @@ class ErrorsNomenclature
     provider_name = FranceConnect::DataFetcherThroughAccessToken.provider_name
 
     [InvalidFranceConnectAccessTokenError.new(:missing_france_connect_access_token)] +
-      baseline.for_token_provider(provider_name) +
-      declared_errors(FranceConnect::DataFetcherThroughAccessToken, provider_name)
+      declared_errors(FranceConnect::DataFetcherThroughAccessToken, provider_name) +
+      baseline.for_token_provider(provider_name)
   end
 
   def group_by_status(errors)
