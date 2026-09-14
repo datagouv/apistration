@@ -42,16 +42,30 @@ class MESRI::StudentStatus::BuildResource < BuildResource
       date_debut: format_date(inscription_payload['dateDebutInscription']),
       date_fin: format_date(inscription_payload['dateFinInscription']),
       est_inscrit: inscription_payload['statut'] == 'inscrit',
-      regime_formation: {
-        libelle: inscription_payload['regime'],
-        code: REGIME_TO_CODE_FORMATION[inscription_payload['regime']]
-      },
+      regime_formation: build_regime_formation(inscription_payload['regime']),
       code_cog_insee_commune: inscription_payload['codeCommune'],
       etablissement_etudes: {
         uai: inscription_payload['etablissement']['uai'],
         nom: inscription_payload['etablissement']['nomEtablissement']
       }
     }
+  end
+
+  def build_regime_formation(libelle)
+    track_unknown_regime(libelle) unless REGIME_TO_CODE_FORMATION.key?(libelle)
+
+    {
+      libelle:,
+      code: REGIME_TO_CODE_FORMATION[libelle]
+    }
+  end
+
+  def track_unknown_regime(libelle)
+    MonitoringService.instance.track_with_added_context(
+      'warning',
+      '[MESRI] Unknown training regime label',
+      { regime: libelle }
+    )
   end
 
   def format_date(date)

@@ -46,6 +46,47 @@ RSpec.describe MESRI::StudentStatus::BuildResource, type: :build_resource do
     end
   end
 
+  context 'when the regime label is known' do
+    let(:body) { read_payload_file('mesri/student_status/with_ine_valid_response.json') }
+
+    it 'does not track anything' do
+      expect(MonitoringService.instance).not_to receive(:track_with_added_context)
+
+      subject
+    end
+  end
+
+  context 'when the regime label is unknown' do
+    let(:body) do
+      payload = JSON.parse(read_payload_file('mesri/student_status/with_ine_valid_response.json'))
+      payload['inscriptions'].first['regime'] = 'Formation initiale hors apprentissage'
+      payload.to_json
+    end
+
+    before do
+      allow(MonitoringService.instance).to receive(:track_with_added_context)
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'returns the label with a null code' do
+      expect(subject.bundled_data.data.admissions.first[:regime_formation]).to eq(
+        libelle: 'Formation initiale hors apprentissage',
+        code: nil
+      )
+    end
+
+    it 'tracks the unknown label' do
+      subject
+
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+        'warning',
+        '[MESRI] Unknown training regime label',
+        { regime: 'Formation initiale hors apprentissage' }
+      )
+    end
+  end
+
   context 'when it is from a call with civility params' do
     let(:body) { read_payload_file('mesri/student_status/with_civility_valid_response.json') }
 
