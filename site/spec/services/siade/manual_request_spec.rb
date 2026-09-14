@@ -137,6 +137,29 @@ RSpec.describe Siade::ManualRequest, type: :service do
       end
     end
 
+    context 'with extra headers' do
+      subject { described_class.new(endpoint_path:, params:, headers: extra_headers).call }
+
+      let(:endpoint_path) { '/v3/insee/sirene/unites_legales/{siren}' }
+      let(:params) { { 'siren' => '130025265' } }
+      let(:endpoint_url) { "#{siade_entreprise_url}/v3/insee/sirene/unites_legales/130025265" }
+      let(:response_body) { { data: { siren: '130025265' } }.to_json }
+      let(:extra_headers) { { 'X-Generate-Proof' => 'pdf', 'Cache-Control' => 'max-age=3600' } }
+
+      before do
+        stub_request(:get, endpoint_url)
+          .with(
+            query: siade_params,
+            headers: siade_headers.merge('X-Generate-Proof' => 'pdf', 'Cache-Control' => 'no-cache')
+          )
+          .to_return(status: 200, body: response_body)
+      end
+
+      it 'sends them without overriding the debugging headers' do
+        expect(subject).to eq({ body: response_body, status: 200 })
+      end
+    end
+
     context 'with blank context and object' do
       let(:endpoint_path) { '/v3/dss/quotient_familial/identite' }
       let(:params) { { 'context' => '', 'object' => '', 'nom' => 'Dupont' } }
