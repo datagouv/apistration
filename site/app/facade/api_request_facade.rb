@@ -84,16 +84,24 @@ class APIRequestFacade
   end
 
   def query_parameters
-    openapi_params = selected_endpoint.open_api_definition&.dig('parameters') || []
-    openapi_params.filter_map do |param|
+    openapi_parameters.filter_map do |param|
       next if param['in'] != 'query' || FIXED_PARAMS.include?(param['name'])
 
-      APIRequestParameter.new(
-        name: param['name'],
-        required: param['required'],
-        location: 'query'
-      )
+      build_openapi_parameter(param)
     end
+  end
+
+  def openapi_parameters
+    selected_endpoint.open_api_definition&.dig('parameters') || []
+  end
+
+  def build_openapi_parameter(param)
+    APIRequestParameter.new(
+      name: param['name'],
+      required: param['required'],
+      location: param['in'],
+      options: param.dig('schema', 'enum') || []
+    )
   end
 
   def transform_params(params_hash)
@@ -115,7 +123,7 @@ class APIRequestFacade
   end
 
   def array_param_names
-    @array_param_names ||= (selected_endpoint.open_api_definition&.dig('parameters') || [])
+    @array_param_names ||= openapi_parameters
       .select { |p| p['name'].end_with?('[]') }
       .map { |p| p['name'].delete_suffix('[]') }
   end

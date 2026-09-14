@@ -141,6 +141,21 @@ RSpec.describe APIRequestFacade do
       end
     end
 
+    context 'with enum parameters' do
+      subject(:facade) do
+        described_class.new(
+          namespace: 'particulier',
+          selected_endpoint_uid: '/v3/dss/participation_familiale_eaje/identite'
+        )
+      end
+
+      it 'exposes the enum values as options' do
+        sexe_param = facade.parameters.find { |p| p.name == 'sexeEtatCivil' }
+
+        expect(sexe_param.options).to eq(%w[M F])
+      end
+    end
+
     it 'returns empty array when no endpoint selected' do
       facade = described_class.new(namespace: 'entreprise')
 

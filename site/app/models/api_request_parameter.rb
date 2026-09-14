@@ -1,10 +1,11 @@
 class APIRequestParameter
-  attr_reader :name, :required, :location
+  attr_reader :name, :required, :location, :options
 
-  def initialize(name:, required: false, location: nil)
+  def initialize(name:, required: false, location: nil, options: [])
     @name = name
     @required = required
     @location = location
+    @options = options
   end
 
   def label
@@ -17,5 +18,9 @@ class APIRequestParameter
 
   def array?
     name.end_with?('[]')
+  end
+
+  def enum?
+    options.any?
   end
 end

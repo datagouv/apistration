@@ -1,0 +1,16 @@
+<% param_value = params[param.input_name].presence %>
+<div class="<%= param.enum? ? 'fr-select-group' : 'fr-input-group' %>">
+  <%= label_tag param.label, param.label, class: "fr-label" %>
+  <% unless param.required %>
+    <span class="fr-hint-text">(optionnel)</span>
+  <% end %>
+  <% if param.enum? %>
+    <%= select_tag param.input_name,
+        options_for_select(param.options, param_value),
+        include_blank: true,
+        class: "fr-select",
+        required: param.required %>
+  <% else %>
+    <%= text_field_tag param.input_name, param_value, class: "fr-input", required: param.required %>
+  <% end %>
+</div>
