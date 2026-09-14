@@ -73,7 +73,7 @@ mesri:
               title: Régime de formation
               scope: mesri_admission_regime_formation
               description: |+
-                Régime de formation de l'étudiant. La liste des régimes possibles est la suivante : 
+                Régime de formation de l'étudiant, transmis par le ministère de l'enseignement supérieur. Il relève de la formation initiale (RF1 à RF4) ou de la formation continue (RF5 à RF7) :
                   - RF1 : formation initiale
                   - RF2 : formation initiale hors apprentissage
                   - RF3 : reprise d'études non financée sans convention
@@ -81,6 +81,8 @@ mesri:
                   - RF5 : formation continue
                   - RF6 : formation continue hors contrat professionnel
                   - RF7 : contrat de professionnalisation
+
+                Jusqu'au printemps 2024, seules les valeurs « formation initiale » et « formation continue » étaient transmises ; elles peuvent toujours l'être.
               type: object
               properties:
                 libelle:
@@ -101,7 +103,7 @@ mesri:
                   title: Code
                   type: string
                   description: |
-                    Code de la formation correspondant au régime. C'est un code technique pour exploiter différents mécanismes indépendament du label du régime.
+                    Code du régime de formation. C'est un code technique ajouté par API Particulier, qui permet d'exploiter la donnée indépendamment du libellé.
                   example: RF1
                   enum:
                     - RF1

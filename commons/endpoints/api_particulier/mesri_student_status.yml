@@ -69,7 +69,7 @@ fiche:
         Cette API délivre la **liste des admissions d'un étudiant**, en précisant pour chacune d'elles : 
         - si l'étudiant est inscrit, en savoir plus sur la [différence entre le statut inscrit et admis](#diff-statut-admis-inscrit)&nbsp;;
         - les dates de début et de fin d'études ; 
-        - le régime de formation
+        - le régime de formation, en savoir plus sur les [régimes possibles](#definition-regime-formation)&nbsp;;
         - le lieu et l'établissement d'études. 
         
         {:.fr-highlight}
@@ -95,6 +95,28 @@ fiche:
 
 
           Un étudiant peut être inscrit dans différents établissements."
+
+      - q: <a name="definition-regime-formation"></a> Quels sont les régimes de formation possibles ?
+        a: |+
+          Le régime de formation est transmis par le ministère de l'enseignement supérieur pour chaque admission. Il peut prendre 7 valeurs, qui relèvent soit de la formation initiale, soit de la formation continue ([voir la différence](#diff-formation-initiale-continue)) :
+
+          {:.fr-table}
+          | Code | Libellé | Catégorie |
+          |------|---------|-----------|
+          | RF1 | formation initiale | Formation initiale |
+          | RF2 | formation initiale hors apprentissage | Formation initiale |
+          | RF3 | reprise d'études non financée sans convention | Formation initiale |
+          | RF4 | contrat d'apprentissage | Formation initiale |
+          | RF5 | formation continue | Formation continue |
+          | RF6 | formation continue hors contrat professionnel | Formation continue |
+          | RF7 | contrat de professionnalisation | Formation continue |
+
+          Les régimes RF4 et RF7 correspondent aux deux contrats de travail en alternance : le contrat d'apprentissage relève de la formation initiale, le contrat de professionnalisation de la formation continue.
+
+          Le code (`RF1` à `RF7`) est un code technique ajouté par API Particulier : il permet d'exploiter la donnée indépendamment du libellé.
+
+          **Historique :** jusqu'au printemps 2024, seules les valeurs « formation initiale » et « formation continue » étaient transmises par le ministère. Les 5 autres valeurs, plus détaillées, ont été ajoutées depuis ; les deux valeurs historiques peuvent toujours être transmises.
+          En V2, pour les étudiants inscrits, ces régimes sont regroupés sous les deux valeurs historiques. La V3 restitue la valeur détaillée : la colonne « Catégorie » donne l'équivalent V2.
 
       - q: <a name="diff-formation-initiale-continue"></a> Quelle différence entre formation initiale et formation continue ?
         a:

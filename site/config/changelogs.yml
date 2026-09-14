@@ -1,3 +1,11 @@
+- date: 2026-09-14
+  scope: api_particulier
+  title: "Statut étudiant : documentation des régimes de formation"
+  description: |
+    La fiche [Statut étudiant](<%= endpoint_path(uid: 'mesri/statut_etudiant') %>) détaille désormais les **7 régimes de formation** transmis par le ministère de l'enseignement supérieur, leur code technique (`RF1` à `RF7`) et leur rattachement à la formation initiale ou à la formation continue.
+
+    Cette table donne aussi la correspondance avec la V2, qui regroupe les régimes des étudiants inscrits sous « formation initiale » ou « formation continue ».
+
 - date: 2026-09-02
   scope: api_entreprise
   title: "Données associations (SIAF) : deux nouvelles API disponibles en environnement de test"

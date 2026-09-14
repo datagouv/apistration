@@ -19012,14 +19012,17 @@ paths:
                               x-scope: mesri_admission_inscrit
                             regime_formation:
                               title: Régime de formation
-                              description: "Régime de formation de l'étudiant. La
-                                liste des régimes possibles est la suivante : \n  -
-                                RF1 : formation initiale\n  - RF2 : formation initiale
-                                hors apprentissage\n  - RF3 : reprise d'études non
-                                financée sans convention\n  - RF4 : contrat d'apprentissage\n
-                                \ - RF5 : formation continue\n  - RF6 : formation
-                                continue hors contrat professionnel\n  - RF7 : contrat
-                                de professionnalisation\n"
+                              description: |
+                                Régime de formation de l'étudiant, transmis par le ministère de l'enseignement supérieur. Il relève de la formation initiale (RF1 à RF4) ou de la formation continue (RF5 à RF7) :
+                                  - RF1 : formation initiale
+                                  - RF2 : formation initiale hors apprentissage
+                                  - RF3 : reprise d'études non financée sans convention
+                                  - RF4 : contrat d'apprentissage
+                                  - RF5 : formation continue
+                                  - RF6 : formation continue hors contrat professionnel
+                                  - RF7 : contrat de professionnalisation
+
+                                Jusqu'au printemps 2024, seules les valeurs « formation initiale » et « formation continue » étaient transmises ; elles peuvent toujours l'être.
                               type: object
                               properties:
                                 libelle:
@@ -19040,10 +19043,10 @@ paths:
                                 code:
                                   title: Code
                                   type: string
-                                  description: 'Code de la formation correspondant
-                                    au régime. C''est un code technique pour exploiter
-                                    différents mécanismes indépendament du label du
-                                    régime.
+                                  description: 'Code du régime de formation. C''est
+                                    un code technique ajouté par API Particulier,
+                                    qui permet d''exploiter la donnée indépendamment
+                                    du libellé.
 
                                     '
                                   example: RF1
@@ -19516,14 +19519,17 @@ paths:
                               x-scope: mesri_admission_inscrit
                             regime_formation:
                               title: Régime de formation
-                              description: "Régime de formation de l'étudiant. La
-                                liste des régimes possibles est la suivante : \n  -
-                                RF1 : formation initiale\n  - RF2 : formation initiale
-                                hors apprentissage\n  - RF3 : reprise d'études non
-                                financée sans convention\n  - RF4 : contrat d'apprentissage\n
-                                \ - RF5 : formation continue\n  - RF6 : formation
-                                continue hors contrat professionnel\n  - RF7 : contrat
-                                de professionnalisation\n"
+                              description: |
+                                Régime de formation de l'étudiant, transmis par le ministère de l'enseignement supérieur. Il relève de la formation initiale (RF1 à RF4) ou de la formation continue (RF5 à RF7) :
+                                  - RF1 : formation initiale
+                                  - RF2 : formation initiale hors apprentissage
+                                  - RF3 : reprise d'études non financée sans convention
+                                  - RF4 : contrat d'apprentissage
+                                  - RF5 : formation continue
+                                  - RF6 : formation continue hors contrat professionnel
+                                  - RF7 : contrat de professionnalisation
+
+                                Jusqu'au printemps 2024, seules les valeurs « formation initiale » et « formation continue » étaient transmises ; elles peuvent toujours l'être.
                               type: object
                               properties:
                                 libelle:
@@ -19544,10 +19550,10 @@ paths:
                                 code:
                                   title: Code
                                   type: string
-                                  description: 'Code de la formation correspondant
-                                    au régime. C''est un code technique pour exploiter
-                                    différents mécanismes indépendament du label du
-                                    régime.
+                                  description: 'Code du régime de formation. C''est
+                                    un code technique ajouté par API Particulier,
+                                    qui permet d''exploiter la donnée indépendamment
+                                    du libellé.
 
                                     '
                                   example: RF1
@@ -19874,14 +19880,17 @@ paths:
                               x-scope: mesri_admission_inscrit
                             regime_formation:
                               title: Régime de formation
-                              description: "Régime de formation de l'étudiant. La
-                                liste des régimes possibles est la suivante : \n  -
-                                RF1 : formation initiale\n  - RF2 : formation initiale
-                                hors apprentissage\n  - RF3 : reprise d'études non
-                                financée sans convention\n  - RF4 : contrat d'apprentissage\n
-                                \ - RF5 : formation continue\n  - RF6 : formation
-                                continue hors contrat professionnel\n  - RF7 : contrat
-                                de professionnalisation\n"
+                              description: |
+                                Régime de formation de l'étudiant, transmis par le ministère de l'enseignement supérieur. Il relève de la formation initiale (RF1 à RF4) ou de la formation continue (RF5 à RF7) :
+                                  - RF1 : formation initiale
+                                  - RF2 : formation initiale hors apprentissage
+                                  - RF3 : reprise d'études non financée sans convention
+                                  - RF4 : contrat d'apprentissage
+                                  - RF5 : formation continue
+                                  - RF6 : formation continue hors contrat professionnel
+                                  - RF7 : contrat de professionnalisation
+
+                                Jusqu'au printemps 2024, seules les valeurs « formation initiale » et « formation continue » étaient transmises ; elles peuvent toujours l'être.
                               type: object
                               properties:
                                 libelle:
@@ -19902,10 +19911,10 @@ paths:
                                 code:
                                   title: Code
                                   type: string
-                                  description: 'Code de la formation correspondant
-                                    au régime. C''est un code technique pour exploiter
-                                    différents mécanismes indépendament du label du
-                                    régime.
+                                  description: 'Code du régime de formation. C''est
+                                    un code technique ajouté par API Particulier,
+                                    qui permet d''exploiter la donnée indépendamment
+                                    du libellé.
 
                                     '
                                   example: RF1
