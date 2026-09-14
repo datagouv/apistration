@@ -107,6 +107,9 @@ generic_subcodes:
   '564':
     title: Identité inexploitable renvoyée par le fournisseur de données
     detail: L'identité renvoyée par le fournisseur de données est incomplète ou invalide.
+  '565':
+    title: Période refusée par le fournisseur de données
+    detail: La période demandée n'est pas couverte par le fournisseur de données.
 platform_codes:
   '422':
   - code: '00201'
@@ -158,6 +161,9 @@ platform_codes:
     title: Privilèges insuffisants
     detail: Votre token est valide mais vos privilèges sont insuffisants. Listez vos
       privilèges sur /v2/privileges
+  - code: '00107'
+    title: Adresse IP non autorisée
+    detail: Votre adresse IP n'est pas autorisée à utiliser ce jeton.
   - code: '00213'
     title: Accès refusé
     detail: Le paramètre recipient ne correspond à aucune habilitation déléguée à
@@ -2032,6 +2038,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2107,6 +2118,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2186,6 +2202,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2261,6 +2282,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2340,6 +2366,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2414,6 +2445,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2492,6 +2528,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -2561,6 +2602,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -2638,6 +2684,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -3863,6 +3914,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -3938,6 +3994,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -4017,6 +4078,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -4091,6 +4157,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'
@@ -4169,6 +4240,11 @@ endpoints:
         detail: Problème de résolution DNS de l'adresse du serveur
         meta:
           provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
+        meta:
+          provider: INSEE
       - code: '01008'
         title: 'Erreur auprès du fournisseur de données : trop de requêtes'
         detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
@@ -4244,6 +4320,11 @@ endpoints:
       - code: '01004'
         title: Erreur de résolution DNS
         detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01006'
+        title: Erreur d'authentification auprès du fournisseur de données
+        detail: L'authentification auprès du fournisseur de données 'INSEE' a échoué
         meta:
           provider: INSEE
       - code: '01008'

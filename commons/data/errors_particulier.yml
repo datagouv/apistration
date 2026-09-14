@@ -107,6 +107,9 @@ generic_subcodes:
   '564':
     title: Identité inexploitable renvoyée par le fournisseur de données
     detail: L'identité renvoyée par le fournisseur de données est incomplète ou invalide.
+  '565':
+    title: Période refusée par le fournisseur de données
+    detail: La période demandée n'est pas couverte par le fournisseur de données.
 platform_codes:
   '422':
   - code: '00203'
@@ -152,6 +155,9 @@ platform_codes:
     title: Privilèges insuffisants
     detail: Votre token est valide mais vos privilèges sont insuffisants. Listez vos
       privilèges sur /api/introspect
+  - code: '00107'
+    title: Adresse IP non autorisée
+    detail: Votre adresse IP n'est pas autorisée à utiliser ce jeton.
   - code: '00213'
     title: Accès refusé
     detail: Le paramètre recipient ne correspond à aucune habilitation déléguée à
@@ -2707,6 +2713,11 @@ endpoints:
           de données.
         meta:
           provider: CNAF & MSA
+      - code: '35565'
+        title: Période refusée par le fournisseur de données
+        detail: La période demandée n'est pas couverte par le fournisseur de données.
+        meta:
+          provider: CNAF & MSA
       '404':
       - code: '10003'
         title: Dossier allocataire absent MSA
@@ -2828,6 +2839,11 @@ endpoints:
         title: Paramètres de civilité refusés par le fournisseur de données
         detail: Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur
           de données.
+        meta:
+          provider: CNAF & MSA
+      - code: '35565'
+        title: Période refusée par le fournisseur de données
+        detail: La période demandée n'est pas couverte par le fournisseur de données.
         meta:
           provider: CNAF & MSA
       - code: '51564'
