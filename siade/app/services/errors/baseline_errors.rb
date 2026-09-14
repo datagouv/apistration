@@ -56,7 +56,8 @@ class Errors::BaselineErrors
     [
       InvalidTokenError.new,
       ExpiredTokenError.new("api_#{api}"),
-      BlacklistedTokenError.new(api.to_s)
+      BlacklistedTokenError.new(api.to_s),
+      ForbiddenIpError.new(api.to_s)
     ]
   end
 

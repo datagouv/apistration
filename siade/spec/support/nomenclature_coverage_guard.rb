@@ -8,10 +8,22 @@ module NomenclatureCoverageGuard
     rendered = rendered_codes(response)
     return if rendered.empty?
 
-    controller_class = documented_controller_class(request)
+    controller = request.params['controller'].to_s
+    return report_undeclared_by_any_layer(rendered) if controller.empty?
+
+    controller_class = documented_controller_class(controller)
     return if controller_class.nil?
 
     report_undocumented(controller_class, request.params['api_version'], rendered)
+  end
+
+  def self.report_undeclared_by_any_layer(rendered)
+    undocumented = rendered - API_FOR_NAMESPACE.values.flat_map { |api| codes_of(nomenclature_for(api)['platform_codes']) }
+
+    return if undocumented.empty?
+
+    raise "a middleware renders #{undocumented.inspect} before any endpoint runs, absent from the errors nomenclature. " \
+          'An error rendered outside a controller reaches every endpoint: add it to Errors::BaselineErrors#platform.'
   end
 
   def self.report_undocumented(controller_class, api_version, rendered)
@@ -36,8 +48,7 @@ module NomenclatureCoverageGuard
     []
   end
 
-  def self.documented_controller_class(request)
-    controller = request.params['controller'].to_s
+  def self.documented_controller_class(controller)
     return unless controller.include?('v3_and_more')
 
     controller_class = constantize_controller(controller)
