@@ -15,6 +15,28 @@ RSpec.describe FranceConnect::ValidateResponse do
     end
   end
 
+  class FranceConnectDummyDataFetcherWithoutIdentity < FranceConnectDummyDataFetcher
+    def scopes
+      %w[openid]
+    end
+  end
+
+  describe 'FranceConnect token scopes validation' do
+    subject(:call) { FranceConnectDummyDataFetcherWithoutIdentity.call(response:, provider_name: 'FranceConnect') }
+
+    let(:response) do
+      instance_double(Net::HTTPOK, code: 200, body: { token_introspection: { active: true, scope: %w[openid] } }.to_json)
+    end
+
+    describe 'when the token lacks the hub identity scopes' do
+      it { is_expected.to be_a_failure }
+
+      it 'rejects the token as missing the hub identity scope' do
+        expect(subject.errors.first.code).to eq('51503')
+      end
+    end
+  end
+
   describe 'FranceConnect received param validation' do
     subject(:call) { FranceConnectDummyDataFetcher.call(response:, provider_name: 'FranceConnect') }
 

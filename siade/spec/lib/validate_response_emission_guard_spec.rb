@@ -7,6 +7,32 @@ RSpec.describe ValidateResponseEmissionGuard do
     described_class.record(from, [error])
   end
 
+  describe '.applies_to?' do
+    it 'covers every response validator, whatever its spec type' do
+      expect(described_class.applies_to?(PROBTP::AttestationsCotisationsRetraite::ValidateResponse)).to be(true)
+    end
+
+    it 'covers every parameter validator, whatever its spec type' do
+      expect(described_class.applies_to?(Civility::ValidateNomNaissance)).to be(true)
+    end
+
+    it 'covers any other interactor declaring errors' do
+      expect(described_class.applies_to?(Documents::Upload)).to be(true)
+    end
+
+    it 'leaves out the abstract validator bases themselves' do
+      expect(described_class.applies_to?(ValidateResponse)).to be(false)
+    end
+
+    it 'leaves out an interactor declaring nothing' do
+      expect(described_class.applies_to?(BuildResource)).to be(false)
+    end
+
+    it 'leaves out a spec describing no class' do
+      expect(described_class.applies_to?(nil)).to be(false)
+    end
+  end
+
   describe '.verify!' do
     context 'with two 422 variants of the same error class' do
       before do
@@ -75,6 +101,59 @@ RSpec.describe ValidateResponseEmissionGuard do
 
         expect { described_class.verify!(validator_class) }
           .to raise_error(/emitted but not declared.*more_than_one_siege/m)
+      end
+    end
+
+    context 'with a validator wired to neither raises nor declares_no_specific_errors!' do
+      it 'rejects it, since nothing tells an unwired validator from one emitting nothing specific' do
+        emit(UnprocessableEntityError.new(:periode_cnav))
+
+        expect { described_class.verify!(validator_class) }
+          .to raise_error(/neither `raises` nor `declares_no_specific_errors!`/)
+      end
+    end
+
+    context 'with a subclass of a validator declaring no specific errors' do
+      let(:child_class) { Class.new(validator_class) }
+
+      before { ErrorRegistry.mark_guarded(validator_class) }
+
+      it 'rejects the subclass declaring nothing itself, since the mark only speaks for its parent' do
+        expect { described_class.verify!(child_class) }
+          .to raise_error(/neither `raises` nor `declares_no_specific_errors!`/)
+      end
+    end
+
+    context 'with an organizer' do
+      let(:validator_class) { Class.new { include Interactor::Organizer } }
+
+      it 'leaves the check to the interactors it organizes' do
+        emit(UnprocessableEntityError.new(:periode_cnav))
+
+        expect { described_class.verify!(validator_class) }.not_to raise_error
+      end
+    end
+
+    context 'with a parent validator exercised through a subclass its spec builds' do
+      let(:child_class) { Class.new(validator_class) }
+
+      before do
+        ErrorRegistry.register(validator_class, INSEEError, kind: :more_than_one_siege)
+      end
+
+      it 'accepts the subclass emitting the parent declaration while the spec runs' do
+        described_class.start_group
+        emit(INSEEError.new(:more_than_one_siege), from: child_class)
+
+        expect { described_class.verify!(validator_class) }.not_to raise_error
+      end
+
+      it 'ignores what the subclass emitted before the spec started' do
+        emit(INSEEError.new(:more_than_one_siege), from: child_class)
+        described_class.start_group
+
+        expect { described_class.verify!(validator_class) }
+          .to raise_error(/never emitted in spec.*more_than_one_siege/m)
       end
     end
 
