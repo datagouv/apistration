@@ -2719,10 +2719,8 @@ endpoints:
         meta:
           provider: CNAF
       - code: '35003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
+        title: Allocataire non référencé
+        detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
       - code: '40003'
@@ -2850,10 +2848,8 @@ endpoints:
         meta:
           provider: CNAF
       - code: '35003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
+        title: Allocataire non référencé
+        detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
       - code: '40003'
