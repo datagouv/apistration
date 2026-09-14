@@ -4,6 +4,7 @@ Sentry.init do |config|
   config.dsn = AdminApientreprise.credentials[:sentry_dsn]
 
   config.breadcrumbs_logger = [:active_support_logger]
+  config.rails.structured_logging.enabled = false
   config.enabled_environments = %w[production staging]
 
   config.traces_sample_rate = 1.0
