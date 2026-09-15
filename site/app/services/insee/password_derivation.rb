@@ -5,9 +5,9 @@ class INSEE::PasswordDerivation
 
   DERIVATION_START = '2026-11'.freeze
   BIMESTER_MONTHS = [1, 3, 5, 7, 9, 11].freeze
-  BYPASS_CREDENTIAL_KEY = :insee_apim_password_bypass
-  STATIC_CREDENTIAL_KEY = :insee_apim_password
-  DERIVATION_KEY_CREDENTIAL_KEY = :insee_apim_password_derivation_key
+  BYPASS_CREDENTIAL_KEY = :insee_password_bypass
+  STATIC_CREDENTIAL_KEY = :insee_password
+  DERIVATION_KEY_CREDENTIAL_KEY = :insee_password_derivation_key
   PASSWORD_LENGTH = 16
   CHAR_GUARANTEES = {
     /[A-Z]/ => 'A',
@@ -17,7 +17,7 @@ class INSEE::PasswordDerivation
   }.freeze
 
   def self.credentials
-    Siade.credentials
+    AdminApientreprise.credentials
   end
 
   def self.bypassed?

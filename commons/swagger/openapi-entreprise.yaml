@@ -20885,6 +20885,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -21633,6 +21646,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -23092,6 +23118,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -24608,6 +24647,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -26109,6 +26161,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -27667,6 +27732,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -29166,6 +29244,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -30722,6 +30813,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -32174,6 +32278,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -33683,6 +33800,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -34210,6 +34340,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -35150,6 +35293,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -36124,6 +36280,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -37088,6 +37257,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -38080,6 +38262,19 @@ paths:
                     n''a pas pu être établie : certificat invalide ou expiré, ou échec
                     de la négociation TLS. L''équipe technique a été notifiée de cette
                     erreur pour investigation.'
+                erreur_d_authentification_aupres_du_fournisseur_de_donnees_01006:
+                  value:
+                    errors:
+                    - code: '01006'
+                      title: Erreur d'authentification auprès du fournisseur de données
+                      detail: L'authentification auprès du fournisseur de données
+                        'INSEE' a échoué
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur d'authentification auprès du fournisseur de données
+                  description: L'authentification auprès du fournisseur de données
+                    'INSEE' a échoué
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':

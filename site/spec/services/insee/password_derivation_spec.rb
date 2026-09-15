@@ -1,7 +1,7 @@
 RSpec.describe INSEE::PasswordDerivation do
   after { Timecop.return }
 
-  let(:static_password) { Siade.credentials[described_class::STATIC_CREDENTIAL_KEY] }
+  let(:static_password) { AdminApientreprise.credentials[described_class::STATIC_CREDENTIAL_KEY] }
 
   describe '.current_period' do
     it 'returns the bimester seed for January' do
@@ -52,10 +52,10 @@ RSpec.describe INSEE::PasswordDerivation do
     end
   end
 
-  describe 'known vectors, duplicated identically in the site application' do
-    before { Siade.credentials[described_class::DERIVATION_KEY_CREDENTIAL_KEY] = 'known-vector-derivation-key' }
+  describe 'known vectors, duplicated identically in the siade application' do
+    before { AdminApientreprise.credentials[described_class::DERIVATION_KEY_CREDENTIAL_KEY] = 'known-vector-derivation-key' }
 
-    after { Siade.credentials.delete(described_class::DERIVATION_KEY_CREDENTIAL_KEY) }
+    after { AdminApientreprise.credentials.delete(described_class::DERIVATION_KEY_CREDENTIAL_KEY) }
 
     it 'derives the expected password for 2026-11' do
       Timecop.freeze(Date.new(2026, 11, 15))
@@ -189,9 +189,9 @@ RSpec.describe INSEE::PasswordDerivation do
   describe 'bypass credential' do
     let(:bypass_password) { 'ByPass#Password1' }
 
-    before { Siade.credentials[described_class::BYPASS_CREDENTIAL_KEY] = bypass_password }
+    before { AdminApientreprise.credentials[described_class::BYPASS_CREDENTIAL_KEY] = bypass_password }
 
-    after { Siade.credentials.delete(described_class::BYPASS_CREDENTIAL_KEY) }
+    after { AdminApientreprise.credentials.delete(described_class::BYPASS_CREDENTIAL_KEY) }
 
     it 'is bypassed' do
       expect(described_class).to be_bypassed
