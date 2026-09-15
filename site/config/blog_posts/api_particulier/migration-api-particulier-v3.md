@@ -344,7 +344,7 @@ Suite aux changements de structure de l'API, les scopes (droits d'accès) ont é
 | `inscriptions[].dateDebutInscription` | `data.admissions[].date_debut` | **Renommage de la clé** `dateDebutInscription` en `date_debut`. |
 | `inscriptions[].dateFinInscription` | `data.admissions[].date_fin`   | **Renommage de la clé** `dateFinInscription` en `date_fin`. |
 | `inscriptions[].statut`           | `data.admissions[].est_inscrit`    | **Renommage de la clé et changement de format** : Le champ `statut`, au format "string" en V2 correspond au champ `est_inscrit`, qui est un "booléen". |
-| `inscriptions[].regime`           | `data.admissions[].regime_formation.libelle` et `data.admissions[].regime_formation.code` | **Renommage de la clé** `regime` en `regime_formation` qui devient une clé parente distribuant un libellé et un code. |
+| `inscriptions[].regime`           | `data.admissions[].regime_formation.libelle` et `data.admissions[].regime_formation.code` | **Renommage de la clé** `regime` en `regime_formation` qui devient une clé parente distribuant un libellé et un code. <br/> En V2, les inscriptions sont regroupées sous « formation initiale » ou « formation continue » ; la V3 restitue le régime détaillé (7 valeurs possibles), [voir la correspondance](<%= endpoint_path(uid: 'mesri/statut_etudiant') %>#definition-regime-formation). |
 | `inscriptions[].codeCommune`       | `data.admissions[].code_cog_insee_commune` | **Renommage de la clé** `codeCommune` en `code_cog_insee_commune`. |
 | `inscriptions[].etablissement` | `data.admissions[].etablissement_etudes` | **Renommage de la clé parente** `etablissement` en `etablissement_etudes`. |
 
