@@ -176,6 +176,52 @@ RSpec.describe 'Admin: API requests' do
       end
     end
 
+    describe 'enum fields' do
+      let(:eaje_url) { %r{#{siade_particulier_url}/v3/dss/participation_familiale_eaje/identite} }
+
+      before do
+        stub_request(:get, eaje_url).to_return(status: 200, body: { data: {} }.to_json)
+      end
+
+      it 'selects the value among the OpenAPI enum' do
+        visit admin_api_requests_path(endpoint_uid: '/v3/dss/participation_familiale_eaje/identite')
+
+        expect(page).to have_select('sexeEtatCivil', options: ['', 'M', 'F'])
+
+        select 'F', from: 'sexeEtatCivil'
+        click_on 'Envoyer la requête'
+
+        expect(page).to have_select('sexeEtatCivil', selected: 'F')
+        expect(a_request(:get, eaje_url).with(query: hash_including('sexeEtatCivil' => 'F'))).to have_been_made
+      end
+    end
+
+    describe 'making an API Particulier request with headers' do
+      let(:eaje_url) { %r{#{siade_particulier_url}/v3/dss/participation_familiale_eaje/identite} }
+      let(:response_body) { { data: {}, links: { attestation_pdf: 'https://particulier.api.gouv.fr/attestation.pdf' } }.to_json }
+
+      before do
+        stub_request(:get, eaje_url).to_return(status: 200, body: response_body)
+      end
+
+      it 'sends the header declared in the OpenAPI definition' do
+        visit admin_api_requests_path(endpoint_uid: '/v3/dss/participation_familiale_eaje/identite')
+
+        expect(page).to have_select('X-Generate-Proof', options: ['', 'proof-only', 'pdf'])
+        expect(page).to have_no_field('Cache-Control')
+
+        fill_in 'nomNaissance', with: 'Dupont'
+        select 'pdf', from: 'X-Generate-Proof'
+        click_on 'Envoyer la requête'
+
+        expect(page).to have_text('En-têtes envoyés')
+        expect(page).to have_text('attestation.pdf')
+        expect(page).to have_select('X-Generate-Proof', selected: 'pdf')
+
+        expect(a_request(:get, eaje_url).with(headers: { 'X-Generate-Proof' => 'pdf' })).to have_been_made
+      end
+    end
+
     describe 'array fields' do
       it 'displays add button for array parameters' do
         visit admin_api_requests_path(endpoint_uid: '/v3/dss/quotient_familial/identite')

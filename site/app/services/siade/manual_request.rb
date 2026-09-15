@@ -1,8 +1,9 @@
 class Siade::ManualRequest < Siade
-  def initialize(endpoint_path:, params:, api: 'api_entreprise')
+  def initialize(endpoint_path:, params:, api: 'api_entreprise', headers: {})
     @endpoint_path = endpoint_path
     @params = params
     @api = api
+    @extra_headers = headers
     @path_param_names = endpoint_path.scan(/\{(\w+)\}/).flatten.map(&:to_s)
   end
 
@@ -31,7 +32,7 @@ class Siade::ManualRequest < Siade
   def domain = super(@api)
 
   def headers
-    super.merge(
+    super.merge(@extra_headers).merge(
       'X-Debug-Provider-Response' => 'true',
       'Cache-Control' => 'no-cache'
     )
