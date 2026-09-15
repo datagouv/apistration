@@ -63,6 +63,31 @@ RSpec.describe RenderedError, type: :service do
       end
     end
 
+    context 'with a provider error carrying the provider error code' do
+      before do
+        described_class.capture(
+          ProviderUnprocessableEntityError.new('CNAV', :rejected_civility).add_meta(provider_error_code: 40_013)
+        )
+      end
+
+      it 'logs it as a string next to our own code' do
+        expect(log_fields).to eq(
+          error_code: '37561',
+          error_provider_code: '37',
+          error_subcode: '561',
+          provider_error_code: '40013'
+        )
+      end
+    end
+
+    context 'with a provider error without provider error code' do
+      before do
+        described_class.capture(ProviderUnprocessableEntityError.new('CNAV', :unidentified_person))
+      end
+
+      it { is_expected.not_to have_key(:provider_error_code) }
+    end
+
     context 'when the code cannot be computed' do
       before do
         described_class.capture(ProviderUnknownError.new('unknown provider'))

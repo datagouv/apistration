@@ -116,6 +116,22 @@ RSpec.describe MonitoringService, type: :service do
 
         subject
       end
+
+      context 'with a fingerprint' do
+        subject { instance.track_with_added_context(level, message, extra_context, fingerprint: %w[foo bar]) }
+
+        it 'forwards it to Sentry' do
+          expect(Sentry).to receive(:capture_message).with(
+            message,
+            {
+              level:,
+              fingerprint: %w[foo bar]
+            }
+          )
+
+          subject
+        end
+      end
     end
 
     describe '#set_retriever_context' do
