@@ -35,4 +35,28 @@ module ProviderStubs::CIBTP
         }.to_json
       )
   end
+
+  def stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_missing_payments(siret:)
+    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apientreprise/attestationmarche")
+      .with(query: { siret: })
+      .to_return(
+        status: 422,
+        body: {
+          type: 'Fonctionnelle',
+          message: "L'entreprise est connue mais n'est pas à jour de ses cotisations"
+        }.to_json
+      )
+  end
+
+  def stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_not_found(siret:)
+    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apientreprise/attestationmarche")
+      .with(query: { siret: })
+      .to_return(
+        status: 404,
+        body: {
+          type: 'Fonctionnelle',
+          message: "L'entreprise appartient au réseau CIBTP mais n’est pas connecté à cette API."
+        }.to_json
+      )
+  end
 end

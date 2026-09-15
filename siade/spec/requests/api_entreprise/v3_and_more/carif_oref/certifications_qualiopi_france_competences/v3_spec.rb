@@ -22,8 +22,10 @@ RSpec.describe 'CARIF-OREF: Certifications Qualiopi France Compétences', api: :
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/valid_siret' } do
+        response '200', 'Entreprise trouvée' do
           let(:siret) { valid_siret(:carif_oref) }
+
+          before { stub_carif_oref_valid_siret }
 
           description SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.description')
 
@@ -43,8 +45,10 @@ RSpec.describe 'CARIF-OREF: Certifications Qualiopi France Compétences', api: :
             let(:siret) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/no_data' } do
+          response '404', 'Non trouvée' do
             let(:siret) { not_found_siret }
+
+            before { stub_carif_oref_no_data }
 
             build_rswag_example(NotFoundError.new('CARIF-OREF'))
 

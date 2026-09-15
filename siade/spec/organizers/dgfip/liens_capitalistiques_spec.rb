@@ -41,7 +41,7 @@ RSpec.describe DGFIP::LiensCapitalistiques, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      it 'calls the stubbed request', :disable_vcr do
+      it 'calls the stubbed request' do
         subject
 
         expect(stubbed_request).to have_been_requested
@@ -59,7 +59,7 @@ RSpec.describe DGFIP::LiensCapitalistiques, type: :retriever_organizer do
     context 'when there is a liasses but no cerfa 2059F nor 2059G' do
       let(:payload_file) { 'dgfip/liasses_fiscales/obligation_fiscale_simplified.json' }
 
-      it 'calls the stubbed request', :disable_vcr do
+      it 'calls the stubbed request' do
         subject
 
         expect(stubbed_request).to have_been_requested

@@ -1,0 +1,12 @@
+{
+  "EORI": {
+    "identifiant": "ESA08536583",
+    "actif": true,
+    "libelle": "TIBA SPAIN SAU",
+    "rue": "CL JOSE AGUIRRE 40 pta 7",
+    "codePostal": "46011",
+    "ville": "VALNCIA (VALENCIA)",
+    "pays": "ESPAGNE",
+    "codePays": "ES"
+  }
+}

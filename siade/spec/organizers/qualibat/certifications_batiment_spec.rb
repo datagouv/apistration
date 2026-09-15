@@ -12,8 +12,13 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :retriever do
     let(:siret) { valid_siret(:qualibat) }
     let(:api_version) { '3' }
 
-    context 'when siret is valid', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret_2' } do
+    context 'when siret is valid' do
       let(:siret) { valid_siret(:qualibat) }
+
+      before do
+        stub_qualibat_authenticate
+        stub_qualibat_valid_siret
+      end
 
       it { is_expected.to be_a_success }
 
@@ -46,8 +51,13 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :retriever do
       end
     end
 
-    context 'when siret is not found', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
+    context 'when siret is not found' do
       let(:siret) { not_found_siret(:qualibat) }
+
+      before do
+        stub_qualibat_authenticate
+        stub_qualibat_not_found_siret
+      end
 
       it { is_expected.to be_a_failure }
 
@@ -72,8 +82,13 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :retriever do
       allow(QUALIBATCertificationsBatimentExtractor).to receive(:new).and_return(extractor)
     end
 
-    context 'with valid siret', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret_2' } do
+    context 'with valid siret' do
       let(:siret) { valid_siret(:qualibat) }
+
+      before do
+        stub_qualibat_authenticate
+        stub_qualibat_valid_siret
+      end
 
       it 'calls extractor' do
         expect(extractor).to receive(:perform)
@@ -92,8 +107,13 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :retriever do
       end
     end
 
-    context 'when siret is not found', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
+    context 'when siret is not found' do
       let(:siret) { not_found_siret(:qualibat) }
+
+      before do
+        stub_qualibat_authenticate
+        stub_qualibat_not_found_siret
+      end
 
       it { is_expected.to be_a_failure }
 

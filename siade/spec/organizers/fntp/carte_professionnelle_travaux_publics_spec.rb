@@ -7,8 +7,10 @@ RSpec.describe FNTP::CarteProfessionnelleTravauxPublics, :self_hosted_doc, type:
     }
   end
 
-  context 'when the document is found', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/valid_siren' } do
+  context 'when the document is found' do
     let(:siren) { valid_siren(:fntp) }
+
+    before { stub_fntp_valid_siren }
 
     it { is_expected.to be_success }
 
@@ -19,8 +21,10 @@ RSpec.describe FNTP::CarteProfessionnelleTravauxPublics, :self_hosted_doc, type:
     end
   end
 
-  context 'when the document is not found', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
+  context 'when the document is not found' do
     let(:siren) { not_found_siren }
+
+    before { stub_fntp_not_found_siren }
 
     it { is_expected.to be_a_failure }
 

@@ -25,7 +25,12 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', api: :entreprise, type
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Établissement trouvé', vcr: { cassette_name: 'insee/siege/active_GE_with_token' } do
+        response '200', 'Établissement trouvé' do
+          before do
+            stub_insee_authenticate
+            stub_insee_siege_active_ge
+          end
+
           description SwaggerData.get('insee.siege_diffusable_unite_legale.description')
 
           rate_limit_headers
@@ -44,7 +49,12 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', api: :entreprise, type
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siege/non_existent_with_token' } do
+          response '404', 'Non trouvé' do
+            before do
+              stub_insee_authenticate
+              stub_insee_siege_non_existent
+            end
+
             let(:siren) { non_existent_siren }
 
             build_rswag_example(NotFoundError.new('INSEE'))

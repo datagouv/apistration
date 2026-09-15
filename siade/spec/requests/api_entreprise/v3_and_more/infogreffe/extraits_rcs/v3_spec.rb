@@ -22,7 +22,9 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
+        response '200', 'Entreprise trouvée (personne morale)' do
+          before { stub_infogreffe_personne_morale }
+
           description SwaggerData.get('infogreffe.extraits_rcs.description')
 
           rate_limit_headers
@@ -34,18 +36,22 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
           run_test!
         end
 
-        response '200', 'Entreprise trouvée (personne physique)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
+        context 'with a personne physique siren' do
           let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
 
-          description SwaggerData.get('infogreffe.extraits_rcs.description')
+          before { stub_infogreffe_personne_physique }
 
-          rate_limit_headers
+          response '200', 'Entreprise trouvée (personne physique)' do
+            description SwaggerData.get('infogreffe.extraits_rcs.description')
 
-          schema build_rswag_response(
-            attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
-          )
+            rate_limit_headers
 
-          run_test!
+            schema build_rswag_response(
+              attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
+            )
+
+            run_test!
+          end
         end
 
         describe 'server errors' do
@@ -53,8 +59,10 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
+          response '404', 'Non trouvée' do
             let(:siren) { not_found_siren(:extrait_rcs) }
+
+            before { stub_infogreffe_siren_not_found }
 
             build_rswag_example(NotFoundError.new('Infogreffe'))
 

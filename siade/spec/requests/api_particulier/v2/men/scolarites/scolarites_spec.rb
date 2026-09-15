@@ -74,7 +74,12 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
           let(:x_api_key) { TokenFactory.new(scopes).valid }
           let!(:scopes) { %w[men_statut_identite men_statut_scolarite men_statut_etablissement men_statut_module_elementaire_formation] }
 
-          response '200', 'Scolarité trouvée v2', vcr: { cassette_name: 'men/scolarites/valid_v2' } do
+          response '200', 'Scolarité trouvée v2' do
+            before do
+              stub_men_scolarites_auth
+              stub_men_scolarites_valid_v2
+            end
+
             description SwaggerData.get('men.scolarite.v2.description')
 
             schema build_rswag_response_api_particulier_v2(
@@ -89,7 +94,12 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
           let(:x_api_key) { TokenFactory.new(scopes).valid }
           let!(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
 
-          response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
+          response '200', 'Scolarité trouvée' do
+            before do
+              stub_men_scolarites_auth
+              stub_men_scolarites_valid
+            end
+
             description SwaggerData.get('men.scolarite.v2.description')
 
             schema build_rswag_response_api_particulier_v2(
@@ -114,8 +124,13 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
             run_test!
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'men/scolarites/not_found' } do
+          response '404', 'Non trouvée' do
             let(:sexe) { 'f' }
+
+            before do
+              stub_men_scolarites_auth
+              stub_men_scolarites_not_found
+            end
 
             build_rswag_example(NotFoundError.new('MEN', 'Aucun élève n\'a pu être trouvé avec les critères de recherche fournis'))
 

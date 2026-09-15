@@ -18,10 +18,13 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
     Timecop.return
   end
 
-  describe 'resource', vcr: { cassette_name: 'inpi/rne/authenticate' } do
+  describe 'resource' do
     subject { described_class.call(params:).bundled_data.data }
 
-    before { stub_inpi_rne_actes_bilans_valid(siren:) }
+    before do
+      stub_inpi_rne_authenticate
+      stub_inpi_rne_actes_bilans_valid(siren:)
+    end
 
     it { is_expected.to be_present }
 
@@ -32,8 +35,10 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
 
       it { is_expected.to be_present }
 
-      describe 'following url', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
+      describe 'following url', type: :request do
         let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9-]{36}} }
+
+        before { stub_inpi_rne_download_valid(target: 'actes', document_id: valid_rne_document_id) }
 
         context 'with token not in database' do
           before { Token.destroy_by(id: token_id) }

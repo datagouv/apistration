@@ -23,7 +23,12 @@ RSpec.describe 'INSEE: Unités légales', api: :entreprise, type: %i[request swa
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Unité légale trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
+        response '200', 'Unité légale trouvée' do
+          before do
+            stub_insee_authenticate
+            stub_insee_unite_legale_active_ge
+          end
+
           description SwaggerData.get('insee.unite_legale.description')
 
           schema build_rswag_response(
@@ -42,7 +47,12 @@ RSpec.describe 'INSEE: Unités légales', api: :entreprise, type: %i[request swa
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_existent_with_token' } do
+          response '404', 'Non trouvée' do
+            before do
+              stub_insee_authenticate
+              stub_insee_unite_legale_non_existent
+            end
+
             let(:siren) { non_existent_siren }
 
             build_rswag_example(NotFoundError.new('INSEE'))
