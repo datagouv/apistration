@@ -7,9 +7,11 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite, type: :retriever_organize
     }
   end
 
-  context 'when it is ok and conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
+  context 'when it is ok and conforme' do
     let(:siret) { eligible_siret(:probtp) }
 
+    before { stub_probtp_conformite_eligible }
+
     it { is_expected.to be_a_success }
 
     it 'retrieves the resource' do
@@ -19,9 +21,11 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite, type: :retriever_organize
     end
   end
 
-  context 'when it is ok and not conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_non_eligible_siret' } do
+  context 'when it is ok and not conforme' do
     let(:siret) { non_eligible_siret(:probtp) }
 
+    before { stub_probtp_conformite_non_eligible }
+
     it { is_expected.to be_a_success }
 
     it 'retrieves the resource' do
@@ -31,8 +35,10 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite, type: :retriever_organize
     end
   end
 
-  context 'when siret is not found', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
+  context 'when siret is not found' do
     let(:siret) { not_found_siret(:probtp) }
+
+    before { stub_probtp_conformite_not_found }
 
     it { is_expected.to be_a_failure }
 

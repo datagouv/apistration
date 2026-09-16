@@ -15,8 +15,10 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::Build
 
   let(:siret) { valid_siret(:conventions_collectives) }
 
-  context 'when siret is valid', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
+  context 'when siret is valid' do
     let(:resource_collection) { call.bundled_data.data }
+
+    before { stub_fabrique_numerique_conventions_collectives_valid }
 
     it { is_expected.to be_a_success }
 

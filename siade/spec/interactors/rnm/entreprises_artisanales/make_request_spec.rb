@@ -8,8 +8,10 @@ RSpec.describe RNM::EntreprisesArtisanales::MakeRequest, type: :make_request do
       }
     end
 
-    context 'with a valid siren', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+    context 'with a valid siren' do
       let(:siren) { valid_siren(:rnm_cma) }
+
+      before { stub_rnm_valid_siren }
 
       it { is_expected.to be_a_success }
 

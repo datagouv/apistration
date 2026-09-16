@@ -1,0 +1,12 @@
+{
+  "EORI": {
+    "identifiant": "FR16002307300010",
+    "actif": true,
+    "libelle": "CENTRE INFORMATIQUE DOUANIER",
+    "rue": "27 R DES BEAUX SOLEILS",
+    "codePostal": "95520",
+    "ville": "OSNY",
+    "pays": "FRANCE",
+    "codePays": "FR"
+  }
+}

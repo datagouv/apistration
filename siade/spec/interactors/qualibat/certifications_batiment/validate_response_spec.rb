@@ -12,8 +12,18 @@ RSpec.describe QUALIBAT::CertificationsBatiment::ValidateResponse, type: :valida
   end
   let(:token) { QUALIBAT::CertificationsBatiment::Authenticate.call.token }
 
-  context 'with a http ok', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret_2' } do
+  context 'with a http ok' do
     let(:siret) { valid_siret(:qualibat) }
+
+    # `around` (not `before`) so the stub is registered ahead of the
+    # `config.before(type: :validate_response)` hook, which forces `response`
+    # to be evaluated (and thus the real HTTP call to fire) before any
+    # example-level `before(:each)` hook would run.
+    around do |example|
+      stub_qualibat_authenticate
+      stub_qualibat_valid_siret
+      example.run
+    end
 
     it { is_expected.to be_a_success }
 
@@ -45,8 +55,14 @@ RSpec.describe QUALIBAT::CertificationsBatiment::ValidateResponse, type: :valida
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
 
-  context 'with a not found response', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
+  context 'with a not found response' do
     let(:siret) { not_found_siret(:qualibat) }
+
+    around do |example|
+      stub_qualibat_authenticate
+      stub_qualibat_not_found_siret
+      example.run
+    end
 
     it { is_expected.to be_a_failure }
 

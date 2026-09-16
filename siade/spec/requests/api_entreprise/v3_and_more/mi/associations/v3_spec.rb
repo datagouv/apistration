@@ -26,7 +26,9 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+        response 200, 'Association found' do
+          before { stub_mi_associations_valid_rna }
+
           cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
 
           description SwaggerData.get('mi.v3/association.description')
@@ -45,8 +47,10 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
 
           unprocessable_content_error_request(:siret_or_rna)
 
-          response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
+          response '404', 'Association not found' do
             let(:siret_or_rna) { non_existing_rna_id }
+
+            before { stub_mi_associations_rna_not_found }
 
             build_rswag_example(NotFoundError.new('MI'))
 

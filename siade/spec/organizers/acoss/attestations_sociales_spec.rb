@@ -10,8 +10,16 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
       }
     end
 
-    context 'with valid siren', vcr: { cassette_name: 'acoss/with_valid_siren' } do
+    context 'with valid siren' do
       let(:siren) { valid_siren(:acoss) }
+
+      before do
+        mock_urssaf_authenticate
+
+        mock_valid_urssaf_attestation_sociale do
+          Base64.strict_encode64(Rails.root.join('spec/fixtures/pdfs/urssaf_attestations_sociales/basic.pdf').read)
+        end
+      end
 
       it { is_expected.to be_a_success }
 
@@ -30,8 +38,22 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
       end
     end
 
-    context 'with invalid siren', vcr: { cassette_name: 'acoss/with_non_existent_siren' } do
+    context 'with invalid siren' do
       let(:siren) { not_found_siren }
+
+      before do
+        mock_urssaf_authenticate
+
+        mock_urssaf_attestation_sociale_not_found do
+          [
+            {
+              'code' => 'FUNC517',
+              'message' => 'Le Siren est inconnu',
+              'description' => 'Le siren est inconnu du SI Attestations, radié ou hors périmètre'
+            }
+          ].to_json
+        end
+      end
 
       it { is_expected.to be_a_failure }
 

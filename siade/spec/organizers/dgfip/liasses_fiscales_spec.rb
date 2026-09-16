@@ -39,7 +39,7 @@ RSpec.describe DGFIP::LiassesFiscales, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    it 'calls the stubbed request', :disable_vcr do
+    it 'calls the stubbed request' do
       subject
 
       expect(stubbed_request).to have_been_requested

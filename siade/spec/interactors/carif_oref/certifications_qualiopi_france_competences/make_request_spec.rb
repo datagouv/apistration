@@ -11,14 +11,18 @@ RSpec.describe CarifOref::CertificationsQualiopiFranceCompetences::MakeRequest, 
 
     it_behaves_like 'a make request with working mocking_params'
 
-    context 'with a valid siret', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/valid_siret' } do
+    context 'with a valid siret' do
+      before { stub_carif_oref_valid_siret }
+
       it { is_expected.to be_a_success }
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }
     end
 
-    context 'with a siret without data', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/no_data' } do
+    context 'with a siret without data' do
       let(:siret) { not_found_siret }
+
+      before { stub_carif_oref_no_data }
 
       it { is_expected.to be_a_success }
 

@@ -18,7 +18,9 @@ RSpec.describe 'Douanes: Immatriculations EORI', api: :entreprise, type: %i[requ
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entité trouvée', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
+        response '200', 'Entité trouvée' do
+          before { stub_dgddi_valid_eori }
+
           description SwaggerData.get('dgddi.eori.description')
 
           schema build_rswag_response(
@@ -35,8 +37,10 @@ RSpec.describe 'Douanes: Immatriculations EORI', api: :entreprise, type: %i[requ
 
           unprocessable_content_error_request(:siret_or_eori)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
+          response '404', 'Non trouvée' do
             let(:siret_or_eori) { non_existing_eori }
+
+            before { stub_dgddi_non_existing_eori }
 
             build_rswag_example(NotFoundError.new('DGDDI'))
 

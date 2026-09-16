@@ -16,7 +16,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
 
     let(:resource_collection) { call.bundled_data.data }
 
-    context 'with a SIREN for personne morale', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
+    context 'with a SIREN for personne morale' do
       let(:siren) { valid_siren(:extrait_rcs) }
 
       let(:valid_pp) do
@@ -54,6 +54,8 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
         }
       end
 
+      before { stub_infogreffe_personne_morale }
+
       it { is_expected.to be_a_success }
 
       it 'builds valid resource' do
@@ -78,15 +80,16 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
         expect(resource_collection.map(&:to_h)).to include(valid_pm)
       end
 
-      context 'when no greffe code in mandataires sociaux payload',
-        vcr: { cassette_name: 'infogreffe/with_valid_siren_no_greffe_code' } do
-          it 'does not raise' do
-            expect { call }.not_to raise_error
-          end
+      context 'when no greffe code in mandataires sociaux payload' do
+        before { stub_infogreffe_no_greffe_code }
+
+        it 'does not raise' do
+          expect { call }.not_to raise_error
         end
+      end
     end
 
-    context 'with a SIREN for personne physique', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
+    context 'with a SIREN for personne physique' do
       let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
 
       let(:valid_pp) do
@@ -112,6 +115,8 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
           count: 1
         }
       end
+
+      before { stub_infogreffe_personne_physique }
 
       it { is_expected.to be_a_success }
 

@@ -1,5 +1,5 @@
 RSpec.describe INPI::RNE::ExtraitDownload, type: :retriever_organizer do
-  describe '.call', vcr: { cassette_name: 'inpi/rne/authenticate' } do
+  describe '.call' do
     subject { described_class.call(params:) }
 
     let(:siren) { valid_siren }
@@ -10,7 +10,10 @@ RSpec.describe INPI::RNE::ExtraitDownload, type: :retriever_organizer do
       }
     end
 
-    before { stub_inpi_rne_extrait_download_valid(document_id: siren) }
+    before do
+      stub_inpi_rne_authenticate
+      stub_inpi_rne_extrait_download_valid(document_id: siren)
+    end
 
     it { is_expected.to be_a_success }
 

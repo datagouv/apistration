@@ -1,0 +1,21 @@
+{
+  "id_correspondance": 123,
+  "identite": {
+    "id_correspondance": 123,
+    "id_rna": "W417639507"
+  },
+  "documents": {
+    "nbDocRna": 1,
+    "document_rna": [
+      {
+        "id": "doc-1",
+        "type": "PIECE",
+        "annee": 2014,
+        "sous_type": "STC",
+        "time": 1418807674,
+        "url": "https://much.url/doc_1",
+        "lib_sous_type": "Statuts"
+      }
+    ]
+  }
+}

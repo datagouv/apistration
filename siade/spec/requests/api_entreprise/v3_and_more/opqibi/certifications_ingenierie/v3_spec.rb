@@ -22,7 +22,9 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[re
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
+        response '200', 'Entreprise trouvée' do
+          before { stub_opqibi_valid_siren }
+
           description SwaggerData.get('opqibi.certifications_ingenierie.description')
 
           rate_limit_headers
@@ -39,8 +41,10 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[re
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
+          response '404', 'Non trouvée' do
             let(:siren) { not_found_siren }
+
+            before { stub_opqibi_not_found_siren }
 
             build_rswag_example(NotFoundError.new('OPQIBI'))
 

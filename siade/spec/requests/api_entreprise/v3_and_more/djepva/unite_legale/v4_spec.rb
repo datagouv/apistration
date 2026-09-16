@@ -50,8 +50,10 @@ RSpec.describe 'DJEPVA: Associations v4', api: :entreprise, type: %i[request swa
 
           unprocessable_content_error_request(:siren_or_rna)
 
-          response '404', 'Association non trouvée', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
+          response '404', 'Association non trouvée' do
             let(:siren_or_rna) { non_existing_rna_id }
+
+            before { stub_mi_associations_rna_not_found }
 
             build_rswag_example(NotFoundError.new('DJEPVA'))
 

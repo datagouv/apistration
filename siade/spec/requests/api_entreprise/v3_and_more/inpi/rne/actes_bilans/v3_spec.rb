@@ -22,7 +22,13 @@ RSpec.describe 'INPI::RNE: Actesbilans', api: :entreprise, type: %i[request swag
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'inpi/rne/actes_bilans/valid_siren' } do
+        response '200', 'Entreprise trouvée' do
+          before do
+            stub_inpi_rne_authenticate
+            stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/companies/#{siren}/attachments")
+              .to_return(status: 200, body: read_payload_file('inpi/rne/actes_bilans/valid_siren.json'))
+          end
+
           let(:siren) { valid_siren(:inpi) }
 
           description SwaggerData.get('inpi_rne.actes_bilans.description')
@@ -43,7 +49,13 @@ RSpec.describe 'INPI::RNE: Actesbilans', api: :entreprise, type: %i[request swag
             let(:siren) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'inpi/rne/actes_bilans/not_found_siren' } do
+          response '404', 'Non trouvée' do
+            before do
+              stub_inpi_rne_authenticate
+              stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/companies/#{siren}/attachments")
+                .to_return(status: 404)
+            end
+
             let(:siren) { non_existent_siren }
 
             build_rswag_example(NotFoundError.new('INPI - RNE'))

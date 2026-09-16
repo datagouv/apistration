@@ -73,7 +73,6 @@ group :test do
 
   gem 'json-schema'
   gem 'timecop'
-  gem 'vcr'
   gem 'webmock', '~> 3.26'
 
   gem 'ammeter'

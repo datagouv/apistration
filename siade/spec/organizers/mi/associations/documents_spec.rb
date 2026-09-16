@@ -8,10 +8,12 @@ RSpec.describe MI::Associations::Documents, type: :retrieve_organizer do
       }
     end
 
-    context 'when happy path', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+    context 'when happy path' do
       let(:id) { valid_rna_id }
 
       before do
+        stub_mi_associations_valid_rna
+
         stub_request(:get, %r{jeunesse-sports\.gouv\.fr/cxf/api/documents/PJ})
           .to_return(body: open_payload_file('pdf/dummy.pdf'))
       end
@@ -26,8 +28,10 @@ RSpec.describe MI::Associations::Documents, type: :retrieve_organizer do
     end
 
     describe 'non regression test' do
-      context 'when association retrievers returns a hash instead of an array for asso->documents->document_rna', vcr: { cassette_name: 'mi/associations/documents/no_documents_key' } do
+      context 'when association retrievers returns a hash instead of an array for asso->documents->document_rna' do
         let(:id) { '41763950700017' }
+
+        before { stub_mi_associations_documents_no_documents_key }
 
         it { is_expected.to be_a_success }
       end

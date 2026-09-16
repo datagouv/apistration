@@ -8,8 +8,10 @@ RSpec.describe Infogreffe::MandatairesSociaux, type: :retriever_organizer do
       }
     end
 
-    context 'with valid siren', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
+    context 'with valid siren' do
       let(:siren) { valid_siren(:extrait_rcs) }
+
+      before { stub_infogreffe_personne_morale }
 
       it { is_expected.to be_a_success }
 
@@ -22,8 +24,10 @@ RSpec.describe Infogreffe::MandatairesSociaux, type: :retriever_organizer do
       end
     end
 
-    context 'with invalid siren', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
+    context 'with invalid siren' do
       let(:siren) { not_found_siren(:extrait_rcs) }
+
+      before { stub_infogreffe_siren_not_found }
 
       it { is_expected.to be_a_failure }
 
