@@ -18,7 +18,12 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Force push develop to main
-        run: git push --force origin develop:main
+        run: |
+          if [ "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA" ]; then
+            echo "main already at $GITHUB_SHA, nothing to push"
+            exit 0
+          fi
+          git push --force origin develop:main
 
   staging:
     name: Continuous deployment on staging
