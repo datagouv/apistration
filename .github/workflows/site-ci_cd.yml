@@ -184,6 +184,10 @@ jobs:
       - name: Force push develop to main
         working-directory: .
         run: |
+          if [ "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA" ]; then
+            echo "main already at $GITHUB_SHA, nothing to push"
+            exit 0
+          fi
           git push --force origin develop:main
 
   continuous-deployment-staging:
