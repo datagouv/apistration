@@ -8,86 +8,89 @@ RSpec.describe 'Error codes unicity', type: :acceptance do
   def field_codes(error_class)
     Rails.root.join("app/errors/#{error_class.name.underscore}.rb").read
       .scan(/^\s+([a-z_]+): '(\d{5})',?$/)
-      .to_h { |field, code| [code, "#{error_class}(#{field})"] }
+      .map { |field, code| [code, "#{error_class}(#{field})"] }
+  end
+
+  def abstract_error_classes
+    [UnauthorizedError, ForbiddenError, AbstractGenericProviderError, AbstractSpecificProviderError]
+  end
+
+  def application_descendants(error_class)
+    error_class.descendants.select { |descendant| defined_in_app?(descendant) } - abstract_error_classes
+  end
+
+  def defined_in_app?(error_class)
+    return false if error_class.name.nil?
+
+    Object.const_source_location(error_class.name).first.to_s.start_with?(Rails.root.join('app').to_s)
   end
 
   def fixed_code_meanings
-    ApplicationError.descendants.each_with_object({}) do |error_class, meanings|
+    application_descendants(ApplicationError).filter_map do |error_class|
       next unless carries_a_fixed_code?(error_class)
 
-      code = fixed_code_of(error_class)
-      next if code.nil?
-
-      meanings[code] = error_class.name
+      [fixed_code_of(error_class), fixed_code_label(error_class)]
     end
   end
 
   def carries_a_fixed_code?(error_class)
-    return false if error_class.name.nil?
+    return true if bound_to_a_provider?(error_class)
     return false if error_class <= AbstractGenericProviderError || error_class <= AbstractSpecificProviderError
+    return false if error_class == BadFileFromProviderError
 
     error_class == InvalidRecipientError || !(error_class <= UnprocessableEntityError)
   end
 
-  def specific_provider_meanings
-    AbstractSpecificProviderError.descendants.each_with_object({}) do |error_class, meanings|
-      next if error_class.name.nil?
+  def bound_to_a_provider?(error_class)
+    error_class < AbstractGenericProviderError && error_class.instance_method(:initialize).arity.zero?
+  end
 
-      subcode_config(error_class).each_key do |kind|
-        meanings[error_class.new(kind).code] = "#{error_class}(#{kind})"
-      end
+  def fixed_code_label(error_class)
+    return error_class.name if bound_to_a_provider?(error_class)
+
+    error_class.instance_method(:code).owner.name
+  end
+
+  def specific_provider_meanings
+    application_descendants(AbstractSpecificProviderError).flat_map do |error_class|
+      subcode_config(error_class).keys.map { |kind| [error_class.new(kind).code, "#{error_class}(#{kind})"] }
     end
   end
 
   def generic_provider_meanings
-    generic_subcodes.flat_map { |subcode, label|
+    generic_subcodes.flat_map do |subcode, label|
       data_providers.map { |provider| [backend.provider_code_from_name(provider) + subcode, "#{label}(#{provider})"] }
-    }.to_h
+    end
   end
 
   def generic_subcodes
-    subcodes = AbstractGenericProviderError.descendants.filter_map { |error_class|
-      next if error_class.name.nil? || error_class == BadFileFromProviderError
+    subcodes = application_descendants(AbstractGenericProviderError).reject { |error_class| bound_to_a_provider?(error_class) }.flat_map do |error_class|
+      next variant_subcodes(ProviderUnprocessableEntityError::SUBCODES, error_class) if error_class == ProviderUnprocessableEntityError
 
-      subcode = subcode_of(error_class)
-      [subcode, error_class.name] if subcode
-    }.to_h
-
-    BadFileFromProviderError::KIND_TO_SUBCODE.each do |kind, attributes|
-      subcodes[attributes[:subcode]] = "BadFileFromProviderError(#{kind})"
+      [[subcode_of(error_class), error_class.instance_method(:subcode).owner.name]]
     end
 
-    subcodes
+    subcodes + variant_subcodes(BadFileFromProviderError::KIND_TO_SUBCODE.transform_values { |attributes| attributes[:subcode] }, BadFileFromProviderError)
+  end
+
+  def variant_subcodes(subcode_by_variant, error_class)
+    subcode_by_variant.map { |variant, subcode| [subcode, "#{error_class}(#{variant})"] }
   end
 
   def subcode_config(error_class)
     error_class.allocate.send(:subcode_config)
-  rescue StandardError
-    {}
-  end
-
-  def fixed_code_of(error_class)
-    error_class.new.code
-  rescue ArgumentError
-    begin
-      error_class.new('api_entreprise').code
-    rescue StandardError
-      nil
-    end
-  rescue StandardError
-    nil
   end
 
   def subcode_of(error_class)
     error_class.new('INSEE').subcode
   rescue ArgumentError
-    begin
-      error_class.new('INSEE', 'reason').subcode
-    rescue StandardError
-      nil
-    end
-  rescue StandardError
-    nil
+    error_class.new('INSEE', nil).subcode
+  end
+
+  def fixed_code_of(error_class)
+    error_class.new.code
+  rescue ArgumentError
+    error_class.new('api_entreprise').code
   end
 
   it 'never gives the same code two meanings' do
