@@ -223,7 +223,7 @@ cnav:
   quotient_familial_v2:
     parameters:
       annee:
-        description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. L'API permet d'accéder à un historique de maximum 2 ans."
+        description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. Le quotient familial est disponible pour le mois en cours et les 23 mois précédents ; une période plus ancienne est refusée avant tout appel au fournisseur."
         type: integer
         example: 2023
       mois:
@@ -716,7 +716,7 @@ cnav:
       parameters:
         <<: *cnav_identite_pivot
         annee:
-          description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. L'API permet d'accéder à un historique de maximum 2 ans."
+          description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. Le quotient familial est disponible pour le mois en cours et les 23 mois précédents ; une période plus ancienne est refusée avant tout appel au fournisseur."
           type: integer
           example: 2023
         mois:

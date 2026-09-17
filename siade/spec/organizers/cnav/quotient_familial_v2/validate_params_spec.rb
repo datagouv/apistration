@@ -39,8 +39,8 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
 
-  let(:annee) { 2024 }
-  let(:mois) { 2 }
+  let(:annee) { Time.zone.today.year - 1 }
+  let(:mois) { Time.zone.today.month }
 
   describe 'with transcogage params' do
     let(:nom_commune_naissance) { 'Gennevilliers' }
@@ -72,6 +72,17 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'with a period older than 23 months' do
+    let(:annee) { Time.zone.today.year - 2 }
+    let(:mois) { 1 }
+
+    it { is_expected.to be_a_failure }
+
+    it 'refuses it before any call to the provider' do
+      expect(subject.errors.map(&:code)).to eq(%w[00355])
+    end
   end
 
   context 'with empty sexe_etat_civil' do
