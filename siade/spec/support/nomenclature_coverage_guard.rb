@@ -40,7 +40,7 @@ module NomenclatureCoverageGuard
   def self.rendered_codes(response)
     return [] unless response&.media_type.to_s.include?('json')
 
-    body = response.parsed_body
+    body = JSON.parse(response.body)
     return [] unless body.respond_to?(:dig)
 
     Array(body['errors']).filter_map { |error| error['code'] if error.respond_to?(:dig) }
