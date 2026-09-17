@@ -14,11 +14,6 @@ class HealthcheckJob < ApplicationJob
 
   private
 
-  def frontal_production?
-    Rails.env.production? &&
-      ENV['FRONTAL'] == 'true'
-  end
-
   def healthcheck_uri
     @healthcheck_uri ||= URI(healthcheck_url)
   end
