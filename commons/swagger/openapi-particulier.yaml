@@ -6981,6 +6981,20 @@ paths:
                         provider: CNAF & MSA
                   summary: Période refusée par le fournisseur de données
                   description: La période demandée est antérieure de plus de 23 mois.
+                periode_cnav:
+                  value:
+                    errors:
+                    - code: '00355'
+                      title: Entité non traitable
+                      detail: La période demandée est antérieure de plus de 23 mois.
+                        Le quotient familial n'est disponible que pour le mois en
+                        cours et les 23 mois précédents.
+                      source:
+                      meta: {}
+                  summary: Entité non traitable
+                  description: La période demandée est antérieure de plus de 23 mois.
+                    Le quotient familial n'est disponible que pour le mois en cours
+                    et les 23 mois précédents.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
