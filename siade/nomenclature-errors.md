@@ -89,11 +89,17 @@ fournisseur. La règle est vérifiée par
 
 #### Erreurs communes de base
 
-Ces erreurs sont comprises entre `000` et `049`.
+Ces erreurs sont comprises entre `000` et `049`, à l'exception de `XX999`.
 
-- `XX000` = Erreur inconnue (Unknown error)
+- `XX000` = Erreur interne du fournisseur de données (Internal server error)
 
-  Il s'agit généralement d'une erreur d'un fournisseur de données non traitée.
+  Le fournisseur de données a renvoyé une réponse identifiée comme une erreur
+  interne.
+
+- `XX999` = Erreur inconnue (Unknown error)
+
+  La réponse du fournisseur de données est invalide et inconnue de notre
+  service : il s'agit généralement d'une erreur du fournisseur non traitée.
 
 - `XX001` = Service non disponible (Service unaivalable)
 
@@ -138,6 +144,8 @@ Ces erreurs sont comprises entre `000` et `049`.
 - `00100` = Privilèges insuffisants
 - `00101` = Jeton non valide ou non renseigné
 - `00103` = Jeton expiré
+- `00105` = Jeton sur liste noire
+- `00107` = Adresse IP non autorisée
 
 ##### 0020Z Erreurs associés aux paramètres obligatoires
 
@@ -145,6 +153,8 @@ Ces erreurs sont comprises entre `000` et `049`.
 - `00202` = Object manquant
 - `00203` = Recipient manquant
 - `00210` = Recipient n'est pas un siret valide
+- `00212` = Plusieurs délégations actives, `delegation_id` requis
+- `00213` = Recipient ne correspondant à aucune délégation de l'éditeur
 
 ##### 0003Z Erreurs associés aux entrées non traitables
 
@@ -159,7 +169,9 @@ locale des paramètres.
 
 - `00401` = Mauvaise requête du client (Bad request)
 - `00402` = Version non supportée de l'API (Not found)
+- `00015` = Requête identique déjà en cours de traitement (Conflict)
 - `00429` = Trop de requêtes (Too Many Requests)
+- `00501` = Erreur réseau
 
 #### Erreurs fournisseurs spécifiques
 
