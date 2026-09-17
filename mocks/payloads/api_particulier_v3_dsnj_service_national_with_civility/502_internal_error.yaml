@@ -1,5 +1,5 @@
 ---
-description: 'Erreur serveur - mauvaise passerelle'
+description: 'Erreur interne du fournisseur de données'
 params:
   nomNaissance: 'DURAND'
   prenoms:
@@ -15,9 +15,9 @@ payload: |-
   {
     "errors": [
       {
-        "code": "39002",
-        "title": "Erreur serveur",
-        "detail": "Une erreur est survenue lors de la connexion au service distant.",
+        "code": "39000",
+        "title": "Erreur interne du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et a été identifié comme étant une erreur interne. Si le problème persiste, consultez la page de status ou contactez nous sur le support.",
         "source": null,
         "meta": {
           "provider": "DSNJ"

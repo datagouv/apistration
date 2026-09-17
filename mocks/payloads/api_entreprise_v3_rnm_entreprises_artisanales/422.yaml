@@ -7,9 +7,9 @@ payload: |-
   {
     "errors": [
       {
-        "code": "31001",
-        "title": "Paramètre invalide",
-        "detail": "Le paramètre siren n'est pas au bon format.",
+        "code": "00301",
+        "title": "Entité non traitable",
+        "detail": "Le numéro de siren n'est pas correctement formatté",
         "source": null,
         "meta": {
           "provider": "CMA France"

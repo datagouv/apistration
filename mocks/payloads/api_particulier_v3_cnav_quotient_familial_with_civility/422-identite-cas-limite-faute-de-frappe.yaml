@@ -20,17 +20,17 @@ params:
     - 'GRÉÔME'
     - 'JEAN-PHILIPPE'
   anneeDateNaissance: 1982
-status: 404
+status: 422
 payload: |-
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "35560",
+        "title": "Identité non reconnue par le fournisseur de données",
+        "detail": "Les paramètres d'identité fournis ne correspondent à aucune personne connue du fournisseur de données.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]

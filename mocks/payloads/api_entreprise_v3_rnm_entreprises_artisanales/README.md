@@ -70,7 +70,7 @@
   {
     "errors": [
       {
-        "code": "31003",
+        "code": "15003",
         "title": "Entité non trouvée",
         "detail": "Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
         "source": null,
@@ -121,9 +121,9 @@
   {
     "errors": [
       {
-        "code": "31001",
-        "title": "Paramètre invalide",
-        "detail": "Le paramètre siren n'est pas au bon format.",
+        "code": "00301",
+        "title": "Entité non traitable",
+        "detail": "Le numéro de siren n'est pas correctement formatté",
         "source": null,
         "meta": {
           "provider": "CMA France"

@@ -8,9 +8,9 @@ payload: |-
   {
     "errors": [
       {
-        "title": "Service non disponible",
-        "detail": "Service du fournisseur de données temporairement indisponible ou en maintenance.",
-        "code": "01001",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
+        "code": "01002",
         "meta": {
           "provider": "INSEE"
         }

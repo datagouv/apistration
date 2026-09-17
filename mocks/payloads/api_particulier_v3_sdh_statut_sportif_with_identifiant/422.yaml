@@ -7,9 +7,9 @@ payload: |-
   {
     "errors": [
       {
-        "code": "00366",
+        "code": "00380",
         "title": "Entité non traitable",
-        "detail": "Un ou plusieurs paramètres ne sont pas correctement formatés",
+        "detail": "L'identifiant est manquant",
         "source": null,
         "meta": {}
       }

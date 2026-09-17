@@ -158,12 +158,12 @@
   {
     "errors": [
       {
-        "code": "07003",
+        "code": "34003",
         "title": "Entité non trouvée",
         "detail": "Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
         "source": null,
         "meta": {
-          "provider": "INPI"
+          "provider": "INPI - RNE"
         }
       }
     ]
