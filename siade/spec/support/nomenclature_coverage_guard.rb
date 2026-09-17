@@ -8,32 +8,33 @@ module NomenclatureCoverageGuard
     rendered = rendered_codes(response)
     return if rendered.empty?
 
+    status = response.status.to_s
     controller = request.params['controller'].to_s
-    return report_undeclared_by_any_layer(rendered) if controller.empty?
+    return report_undeclared_by_any_layer(rendered, status) if controller.empty?
 
     controller_class = documented_controller_class(controller)
     return if controller_class.nil?
 
-    report_undocumented(controller_class, request.params['api_version'], rendered)
+    report_undocumented(controller_class, request.params['api_version'], rendered, status)
   end
 
-  def self.report_undeclared_by_any_layer(rendered)
-    undocumented = rendered - API_FOR_NAMESPACE.values.flat_map { |api| codes_of(nomenclature_for(api)['platform_codes']) }
+  def self.report_undeclared_by_any_layer(rendered, status)
+    undocumented = rendered - API_FOR_NAMESPACE.values.flat_map { |api| codes_of(nomenclature_for(api)['platform_codes'], status) }
 
     return if undocumented.empty?
 
-    raise "a middleware renders #{undocumented.inspect} before any endpoint runs, absent from the errors nomenclature. " \
+    raise "a middleware renders #{undocumented.inspect} with a #{status} before any endpoint runs, absent from the errors nomenclature under that status. " \
           'An error rendered outside a controller reaches every endpoint: add it to Errors::BaselineErrors#platform.'
   end
 
-  def self.report_undocumented(controller_class, api_version, rendered)
+  def self.report_undocumented(controller_class, api_version, rendered, status)
     api = API_FOR_NAMESPACE.fetch(controller_class.name.split('::').first)
     operation_id = operation_id(controller_class, api_version)
-    undocumented = rendered - documented_codes(api, operation_id)
+    undocumented = rendered - documented_codes(api, operation_id, status)
 
     return if undocumented.empty?
 
-    raise "#{operation_id} renders #{undocumented.inspect}, absent from the errors nomenclature. " \
+    raise "#{operation_id} renders #{undocumented.inspect} with a #{status}, absent from the errors nomenclature under that status. " \
           'An error a request can return must be declared on its organizer or added to Errors::BaselineErrors#platform.'
   end
 
@@ -71,14 +72,14 @@ module NomenclatureCoverageGuard
     controller.send(:operation_id)
   end
 
-  def self.documented_codes(api, operation_id)
+  def self.documented_codes(api, operation_id, status)
     nomenclature = nomenclature_for(api)
 
-    codes_of(nomenclature['platform_codes']) + codes_of(nomenclature.dig('endpoints', operation_id, 'errors'))
+    codes_of(nomenclature['platform_codes'], status) + codes_of(nomenclature.dig('endpoints', operation_id, 'errors'), status)
   end
 
-  def self.codes_of(errors_by_status)
-    errors_by_status.to_h.values.flatten.pluck('code')
+  def self.codes_of(errors_by_status, status)
+    errors_by_status.to_h.fetch(status, []).pluck('code')
   end
 
   def self.nomenclature_for(api)
