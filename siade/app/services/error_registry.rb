@@ -25,7 +25,7 @@ class ErrorRegistry
     end
 
     def guarded?(validator_class)
-      validator_class.ancestors.any? { |klass| declarations.key?(klass) }
+      declarations.key?(validator_class) || declarations_for(validator_class).any?
     end
 
     def declarations_for(validator_class)

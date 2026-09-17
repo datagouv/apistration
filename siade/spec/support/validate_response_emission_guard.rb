@@ -1,5 +1,6 @@
 module ValidateResponseEmissionGuard
   EMISSIONS = Hash.new { |h, k| h[k] = Set.new }
+  GROUP_EMISSIONS = Hash.new { |h, k| h[k] = Set.new }
   INSTRUMENTED = Set.new
 
   UNIVERSAL_ERRORS = (
@@ -9,6 +10,8 @@ module ValidateResponseEmissionGuard
   ).freeze
 
   ERRORS_DISCRIMINATED_BY_FOREIGN_PROVIDER = [NotFoundError].freeze
+
+  VALIDATOR_CLASSES = [ValidateResponse, ValidateParamInteractor].freeze
 
   DISCRIMINANT_OPTIONS = %i[kind reason type field provider].freeze
   DISCRIMINANT_IVARS = %i[@kind @reason @type @field].freeze
@@ -28,22 +31,44 @@ module ValidateResponseEmissionGuard
     end
   end
 
+  def self.applies_to?(described_class)
+    return false if described_class.nil?
+
+    VALIDATOR_CLASSES.any? { |validator| described_class < validator } || ErrorRegistry.guarded?(described_class)
+  end
+
   def self.instrument(validator_class)
     validator_class.prepend(Tracker) if INSTRUMENTED.add?(validator_class)
   end
 
+  def self.start_group
+    GROUP_EMISSIONS.clear
+  end
+
   def self.record(validator_class, errors, provider_name = nil)
-    errors.each { |error| EMISSIONS[validator_class] << emitted_signature(error, provider_name) }
+    errors.each do |error|
+      signature = emitted_signature(error, provider_name)
+      EMISSIONS[validator_class] << signature
+      GROUP_EMISSIONS[validator_class] << signature
+    end
   end
 
   def self.verify!(validator_class)
-    return unless ErrorRegistry.guarded?(validator_class)
+    return if validator_class.include?(Interactor::Organizer)
+    raise "[#{validator_class}] declares neither `raises` nor `declares_no_specific_errors!`" unless ErrorRegistry.guarded?(validator_class)
 
     direct = declared_set(ErrorRegistry.direct_declarations_for(validator_class))
     inherited = declared_set(ErrorRegistry.declarations_for(validator_class))
     emitted = EMISSIONS[validator_class]
-    failures = format_failures(validator_class, direct - emitted, undeclared_extras(emitted, inherited))
+    failures = format_failures(validator_class, direct - exercised_in_spec(validator_class), undeclared_extras(emitted, inherited))
     raise failures.join("\n") if failures.any?
+  end
+
+  def self.exercised_in_spec(validator_class)
+    GROUP_EMISSIONS
+      .select { |emitter, _| emitter < validator_class }
+      .values
+      .reduce(EMISSIONS[validator_class], :|)
   end
 
   def self.emitted_signature(error, provider_name)
@@ -78,13 +103,16 @@ module ValidateResponseEmissionGuard
 end
 
 RSpec.configure do |config|
-  %i[validate_response validate_param_interactor].each do |type|
-    config.before(:context, type:) do |group|
-      ValidateResponseEmissionGuard.instrument(group.class.metadata[:described_class])
-    end
+  config.before(:context) do |group|
+    described_class = group.class.metadata[:described_class]
+    next unless ValidateResponseEmissionGuard.applies_to?(described_class)
 
-    config.after(:context, type:) do |group|
-      ValidateResponseEmissionGuard.verify!(group.class.metadata[:described_class])
-    end
+    ValidateResponseEmissionGuard.start_group
+    ValidateResponseEmissionGuard.instrument(described_class)
+  end
+
+  config.after(:context) do |group|
+    described_class = group.class.metadata[:described_class]
+    ValidateResponseEmissionGuard.verify!(described_class) if ValidateResponseEmissionGuard.applies_to?(described_class)
   end
 end
