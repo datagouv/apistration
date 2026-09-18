@@ -96,7 +96,7 @@ describe('ApiParticulier Client', () => {
   describe('resource accessors', () => {
     const providers = [
       'ants', 'cnous', 'dsnj', 'dss', 'france_travail',
-      'gip_mds', 'men', 'mesri', 'sdh',
+      'gip_mds', 'men', 'mesri', 'sdh', 'token',
     ];
 
     for (const p of providers) {
@@ -158,6 +158,16 @@ describe('ApiParticulier Client', () => {
       await client.dss.participation_familiale_eaje_identite(identiteOptions);
       const [, opts] = fetchMock.mock.calls[0];
       expect(opts.headers['X-Generate-Proof']).toBeUndefined();
+    });
+  });
+
+  describe('token introspection', () => {
+    it('introspects with the token alone, without audit params', async () => {
+      const fetchMock = mockFetch(200, { data: {}, links: {}, meta: {} });
+      globalThis.fetch = fetchMock;
+      const client = makeClient({ defaultParams: {} });
+      await client.token.introspect();
+      expect(fetchMock.mock.calls[0][0]).toContain('/v3/token/introspect');
     });
   });
 

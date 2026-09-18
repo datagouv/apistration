@@ -58,6 +58,7 @@ info:
     url: https://github.com/betagouv/api-particulier/blob/master/LICENSE
 tags:
 - name: Disponibilité
+- name: Jeton
 paths:
   "/api/ping":
     get:
@@ -16806,6 +16807,301 @@ paths:
                         provider: GIP-MDS
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/v3/token/introspect":
+    get:
+      summary: Introspection du jeton
+      tags:
+      - Jeton
+      description: |-
+        Décrit le jeton utilisé pour appeler cet endpoint : périmètres de données accordés, demande d'habilitation associée, dates d'émission et d'expiration.
+
+        Cet endpoint ne consomme aucun périmètre particulier : tout jeton valide peut l'appeler.
+
+        Il remplace `/api/introspect`, qui ne renvoie que la liste des périmètres et reste disponible pour compatibilité.
+      security:
+      - jwt_bearer_token: []
+      parameters:
+      - name: recipient
+        in: query
+        description: SIRET de l'organisation pour laquelle un jeton éditeur souhaite
+          décrire sa délégation. Sans effet pour les autres types de jetons.
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: delegation_id
+        in: query
+        description: |-
+          "**Identifiant de la délégation éditeur**
+
+          UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
+        example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Description du jeton
+          x-operationId: api_particulier_v3_introspect
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        title: Identifiant du jeton
+                        description: Identifiant unique du jeton (claim `jti`). C'est
+                          cet identifiant qu'il faut communiquer au support.
+                        example: f5d5cb02-185a-426f-b3f4-99a25ce6cdf4
+                      type:
+                        type: string
+                        enum:
+                        - standard
+                        - editeur
+                        - france_connect
+                        title: Type de jeton
+                        description: "`standard` : jeton délivré pour une demande
+                          d'habilitation. `editeur` : jeton d'éditeur, agissant par
+                          délégation. `france_connect` : jeton utilisé pour les appels
+                          FranceConnectés."
+                        example: standard
+                      scopes:
+                        type: array
+                        items:
+                          type: string
+                        title: Périmètres de données accessibles
+                        description: Liste des périmètres (scopes) accordés au jeton.
+                          Les données hors de ces périmètres sont masquées des réponses.
+                        example:
+                        - attestations_fiscales
+                        - attestations_sociales
+                      demande_acces_id:
+                        type: string
+                        nullable: true
+                        title: Identifiant de la demande d'habilitation
+                        description: Identifiant DataPass de la demande d'habilitation
+                          à l'origine du jeton. Pour un jeton éditeur, identifiant
+                          de la demande d'habilitation déléguée, une fois le paramètre
+                          `recipient` renseigné.
+                        example: '12345'
+                      siret_souscripteur:
+                        type: string
+                        nullable: true
+                        title: SIRET du souscripteur
+                        description: SIRET de l'organisation à laquelle le jeton a
+                          été délivré. Pour un jeton éditeur, SIRET de l'organisation
+                          ayant délégué son habilitation, une fois le paramètre `recipient`
+                          renseigné.
+                        example: '13002526500013'
+                      date_emission:
+                        type: string
+                        format: date-time
+                        nullable: true
+                        title: Date d'émission du jeton
+                        description: Date à laquelle le jeton a été émis (claim `iat`).
+                        example: '2024-01-15T09:00:00+01:00'
+                      date_expiration:
+                        type: string
+                        format: date-time
+                        nullable: true
+                        title: Date d'expiration du jeton
+                        description: Date à laquelle le jeton cesse de fonctionner
+                          (claim `exp`). Pensez à demander son renouvellement avant
+                          cette date.
+                        example: '2025-07-15T09:00:00+02:00'
+                      duree_validite_restante_en_secondes:
+                        type: integer
+                        nullable: true
+                        title: Durée de validité restante
+                        description: Nombre de secondes restantes avant l'expiration
+                          du jeton.
+                        example: 15552000
+                      rate_limit_par_minute:
+                        type: integer
+                        nullable: true
+                        title: Limite de débit par minute
+                        description: Nombre maximum d'appels par minute accordé au
+                          jeton. `null` lorsque aucune limite spécifique n'est configurée.
+                        example: 2000
+                      delegation:
+                        type: object
+                        nullable: true
+                        title: Délégation utilisée
+                        description: Délégation résolue pour un jeton éditeur, lorsque
+                          le paramètre `recipient` est renseigné. `null` dans tous
+                          les autres cas.
+                        properties:
+                          id:
+                            type: string
+                            title: Identifiant de la délégation
+                            example: a31c6e1b-0a2f-4e8b-9a31-9b3d1f9a51c2
+                          siret_delegant:
+                            type: string
+                            title: SIRET du délégant
+                            description: SIRET de l'organisation ayant délégué son
+                              habilitation à l'éditeur.
+                            example: '13002526500013'
+                        required:
+                        - id
+                        - siret_delegant
+                        additionalProperties: false
+                    required:
+                    - id
+                    - type
+                    - scopes
+                    - demande_acces_id
+                    - siret_souscripteur
+                    - date_emission
+                    - date_expiration
+                    - duree_validite_restante_en_secondes
+                    - rate_limit_par_minute
+                    - delegation
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /api/introspect
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /api/introspect
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '409':
+          description: Conflit
+          content:
+            application/json:
+              examples:
+                conflict_error:
+                  value:
+                    errors:
+                    - code: '00015'
+                      title: Conflit
+                      detail: Une requête associé à votre jeton est déjà en cours
+                        de traitement pour ces paramètres. Veuillez attendre la fin
+                        du traitement avant d'effectuer une nouvelle requête.
+                      source:
+                      meta: {}
+                  summary: Conflit
+                  description: Une requête associé à votre jeton est déjà en cours
+                    de traitement pour ces paramètres. Veuillez attendre la fin du
+                    traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                ambiguous_delegation_error:
+                  value:
+                    errors:
+                    - code: '00212'
+                      title: Entité non traitable
+                      detail: Plusieurs délégations actives existent pour ce SIRET.
+                        Le paramètre delegation_id est requis pour identifier la délégation.
+                      source:
+                        parameter: delegation_id
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Plusieurs délégations actives existent pour ce SIRET.
+                    Le paramètre delegation_id est requis pour identifier la délégation.
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/men/scolarites/identite":

@@ -128,6 +128,13 @@ shared:
     period: 60
     endpoints:
       - mcp
+  introspect:
+    throttle_type: 'by_group_of_endpoints'
+    limit: 60
+    period: 60
+    endpoints:
+      - api_entreprise_v3_introspect
+      - api_particulier_v3_introspect
 
 test:
   low_latency_documents:

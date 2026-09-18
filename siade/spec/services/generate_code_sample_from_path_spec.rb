@@ -20,6 +20,14 @@ RSpec.describe GenerateCodeSampleFromPath, type: :service do
     expect(curl_example).to include('https://entreprise.api.gouv.fr/v3')
   end
 
+  context 'when the endpoint does not take the audit parameters' do
+    let(:path) { '/v3/token/introspect' }
+
+    it 'omits them from the sample' do
+      expect(curl_example).to end_with('--url "https://entreprise.api.gouv.fr/v3/token/introspect"')
+    end
+  end
+
   context 'when the endpoint is staging only' do
     subject(:curl_example) { described_class.new(path, staging: true).perform }
 

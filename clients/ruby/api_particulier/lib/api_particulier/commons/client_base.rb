@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 0df8ad8033bacf8106a6a1b42aaf1e690c0f3147).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 35aaaaedcd3b760511d070e4e4c101ca3c5cdb32).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -33,9 +33,9 @@ module ApiParticulier::Commons
       @public_connection = build_public_connection
     end
 
-    def get(path, params: {}, headers: {})
+    def get(path, params: {}, headers: {}, required_params: nil)
       merged = merge_params(params)
-      validate_required!(merged)
+      validate_required!(merged, required_params || required_params_for(merged))
       validate_sirets!(merged)
 
       response = @connection.get(path, clean(merged), headers)
@@ -62,8 +62,8 @@ module ApiParticulier::Commons
       self.class::SIRET_PARAMS
     end
 
-    def validate_required!(params)
-      required_params_for(params).each do |key|
+    def validate_required!(params, required_params)
+      required_params.each do |key|
         next unless blank?(params[key.to_s])
 
         raise MissingParameterError, "required parameter #{key.inspect} is missing"

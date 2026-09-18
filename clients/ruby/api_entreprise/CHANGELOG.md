@@ -6,6 +6,11 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `token.introspect(recipient: nil, delegation_id: nil)` — Introspection du jeton,
+  `/v3/token/introspect`. Requires no audit parameter: a client built with a
+  token alone can call it.
+
 ## [0.4.0] - 2026-09-02
 
 ### Added

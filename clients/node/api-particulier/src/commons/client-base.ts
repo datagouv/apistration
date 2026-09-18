@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 2ff43e12b36dac153c791f7bdb78eb7fe55c4e34).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: bcbca22be83e3b30997f9b0bac8df151016648d8).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 import { Configuration, type Logger } from './configuration.js';
@@ -51,10 +51,11 @@ export abstract class ClientBase {
     options: {
       params?: Record<string, unknown>;
       headers?: Record<string, string>;
+      requiredParams?: string[];
     } = {},
   ): Promise<Response> {
     const merged = this.mergeParams(options.params ?? {});
-    this.validateRequired(merged);
+    this.validateRequired(merged, options.requiredParams ?? this.requiredParams);
     this.validateSirets(merged);
     const cleaned = this.clean(merged);
 
@@ -292,8 +293,11 @@ export abstract class ClientBase {
     return { ...defaults, ...cleaned };
   }
 
-  private validateRequired(params: Record<string, unknown>): void {
-    for (const key of this.requiredParams) {
+  private validateRequired(
+    params: Record<string, unknown>,
+    requiredParams: string[],
+  ): void {
+    for (const key of requiredParams) {
       const value = params[key];
       if (value == null || value === '') {
         throw new MissingParameterError(

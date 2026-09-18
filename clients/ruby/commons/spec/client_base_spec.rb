@@ -55,6 +55,13 @@ RSpec.describe ApiGouvCommons::ClientBase do
       expect(a_request(:get, /.+/)).not_to have_been_made
     end
 
+    it 'lets an operation narrow the required params' do
+      barebone = TestClientSupport.build_client(default_params: {})
+      stub = stub_ok('/v3/token/introspect')
+      barebone.get('/v3/token/introspect', required_params: [])
+      expect(stub).to have_been_requested
+    end
+
     it 'raises InvalidSiretError on a malformed recipient' do
       expect { client.get('/v3/foo', params: { recipient: 'nope' }) }
         .to raise_error(ApiGouvCommons::InvalidSiretError)
