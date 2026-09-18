@@ -538,33 +538,45 @@ fr:
               - title: Retrouver les droits d'un jeton
                 anchor: 'retrouver-les-droits-dun-jeton'
                 content: |+
-                  Pour connaître **la liste des APIs auxquelles vous avez le droit** avec votre jeton d'accès, vous pouvez le vérifier avec l'API `/api/introspect`.
+                  Pour savoir **ce que permet un jeton** — périmètres de données accordés, demande d'habilitation d'origine, date d'expiration — appelez l'endpoint d'introspection `/v3/token/introspect` avec ce jeton.
 
-                  Si vous gérez les tokens pour vos utilisateurs, vous pouvez aussi utiliser cette API pour vérifier les droits associés à leurs tokens.
+                  Si vous gérez les jetons de vos utilisateurs, appelez cet endpoint avec le jeton à vérifier&nbsp;: c'est toujours le jeton présenté dans l'appel qui est décrit.
 
                   {:.fr-h5}
                   #### La requête HTTP :
 
                   ```
-                  https://particulier.api.gouv.fr/api/introspect?token=LeTokenATester
+                  curl -H "Authorization: Bearer LeTokenATester" https://particulier.api.gouv.fr/v3/token/introspect
                   ```
-
-                  Le paramètre d'appel à renseigner est le token dont vous souhaitez connaître les droits.
 
                   > **Exemple de réponse JSON :**
                   >```
                   >{
-                  >  "_id": "48ed8e98-33e4-4b05-88fe-f933d1b421c4",
-                  >  "name": null,
-                  >  "scopes": [
-                  >    "cnous_statut_boursier",
-                  >    [...]
-                  >    "cnaf_adresse"
-                  >  ]
+                  >  "data": {
+                  >    "id": "48ed8e98-33e4-4b05-88fe-f933d1b421c4",
+                  >    "type": "standard",
+                  >    "scopes": [
+                  >      "cnous_statut_boursier",
+                  >      "cnaf_adresse"
+                  >    ],
+                  >    "demande_acces_id": "5a1c3e0e-98b0-4a14-93e3-cf0fcbe0b0b1",
+                  >    "siret_souscripteur": "13002526500013",
+                  >    "date_emission": "2024-01-15T09:00:00+01:00",
+                  >    "date_expiration": "2025-07-15T09:00:00+02:00",
+                  >    "duree_validite_restante_en_secondes": 15552000,
+                  >    "rate_limit_par_minute": 2000,
+                  >    "delegation": null
+                  >  },
+                  >  "links": {},
+                  >  "meta": {}
                   >}
                   > ```
 
-                  La réponse JSON renvoie la liste des API et champs autorisées. Retrouvez-leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
+                  `demande_acces_id` est l'identifiant de votre demande d'habilitation sur datapass&nbsp;: c'est la référence à communiquer au support. `delegation` n'est renseigné que pour un jeton éditeur appelé avec le paramètre `recipient`, et décrit alors la délégation effectivement utilisée.
+
+                  La liste des scopes renvoyée correspond aux API et aux champs autorisés. Retrouvez leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
+
+                  L'ancien endpoint v2 `https://particulier.api.gouv.fr/api/introspect?token=LeTokenATester`, qui ne renvoie que les scopes, reste disponible.
 
           - anchor: 'scopes-et-perimetres'
             title: "Scopes&nbsp;: périmètres et données distribuées&nbsp;🎯"
