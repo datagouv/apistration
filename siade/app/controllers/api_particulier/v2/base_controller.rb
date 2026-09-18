@@ -60,7 +60,7 @@ class APIParticulier::V2::BaseController < APIController
   def user_not_authorized(exception)
     case exception
     when NotValidTokenError
-      render json: format_unauthorized_error(InvalidTokenError.new),
+      render json: format_unauthorized_error(invalid_token_error),
         status: :unauthorized
     when NotAuthorizedError
       render json: format_unauthorized_error(InsufficientPrivilegesError.new('api_particulier')),

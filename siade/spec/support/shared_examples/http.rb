@@ -11,7 +11,7 @@ RSpec.shared_examples 'unauthorized' do |action = :show, extra_get_params = {}|
   it 'returns 401 with error message' do
     json = JSON.parse(response.body)
 
-    expect(json).to have_json_error(code: '00101', detail: 'Votre token n\'est pas valide ou n\'est pas renseigné')
+    expect(json).to have_json_error(code: '00101', detail: 'Votre token n\'est pas valide')
   end
 end
 

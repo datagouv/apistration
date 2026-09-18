@@ -50,7 +50,7 @@ class APIController < ApplicationController
   def user_not_authorized(exception)
     case exception
     when NotValidTokenError
-      render_generic_errors_serializer(InvalidTokenError, status: 401)
+      render error_json(invalid_token_error, status: 401)
     when NotAuthorizedError
       render error_json(InsufficientPrivilegesError.new(api_kind), status: 403)
     else

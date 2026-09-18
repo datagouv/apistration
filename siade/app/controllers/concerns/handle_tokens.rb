@@ -30,6 +30,16 @@ module HandleTokens
     self.class.name
   end
 
+  def invalid_token_error
+    InvalidTokenError.new(token_provided? ? :invalid : :missing)
+  end
+
+  def token_provided?
+    params[:token].present? ||
+      request.headers['Authorization'].present? ||
+      api_key_token_from_headers.present?
+  end
+
   private
 
   def authorize_access_to_resource!
@@ -51,8 +61,12 @@ module HandleTokens
   end
 
   def extract_user_from_token
-    token = params[:token] || bearer_token_from_headers
+    token = params[:token] || bearer_token_from_headers || api_key_token_from_headers
     JwtTokenService.instance.extract_user(token) if token
+  end
+
+  def api_key_token_from_headers
+    request.headers['X-Api-key']
   end
 
   def set_monitoring_context
