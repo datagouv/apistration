@@ -4,6 +4,9 @@ responses:
     examples:
       invalid_token_error:
         error_class: InvalidTokenError
+      missing_token_error:
+        error_class: InvalidTokenError
+        args: ['missing']
       expired_token_error:
         error_class: ExpiredTokenError
       blacklisted_token_error:

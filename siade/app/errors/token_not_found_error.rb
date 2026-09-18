@@ -1,4 +1,4 @@
-class TokenNotFoundError < InvalidTokenError
+class TokenNotFoundError < UnauthorizedError
   def code
     '00106'
   end

@@ -70,15 +70,34 @@ RSpec.describe APIController do
   end
 
   describe 'malformatted requests' do
-    it 'returns 401 when token is missing' do
+    it 'returns 401 stating the token is missing when no token is given' do
       get :index
+
       expect(response).to have_http_status(:unauthorized)
+      expect(response_json).to have_json_error(code: '00101', detail: "Votre token n'est pas renseigné")
     end
 
-    it 'returns 401 with bad header naming' do
+    it 'returns 401 stating the token is invalid with bad header naming' do
       request.headers['Authorization'] = "FuBearer #{yes_jwt}"
       get :index
+
       expect(response).to have_http_status(:unauthorized)
+      expect(response_json).to have_json_error(code: '00101', detail: "Votre token n'est pas valide")
+    end
+
+    it 'returns 401 stating the token is invalid when given as a param' do
+      get :index, params: { token: 'bad_token' }
+
+      expect(response).to have_http_status(:unauthorized)
+      expect(response_json).to have_json_error(code: '00101', detail: "Votre token n'est pas valide")
+    end
+
+    it 'returns 401 stating the token is invalid when given through X-Api-key' do
+      request.headers['X-Api-key'] = 'bad_token'
+      get :index
+
+      expect(response).to have_http_status(:unauthorized)
+      expect(response_json).to have_json_error(code: '00101', detail: "Votre token n'est pas valide")
     end
   end
 
