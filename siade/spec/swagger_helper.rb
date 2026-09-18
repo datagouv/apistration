@@ -136,6 +136,9 @@ Il est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://git
         },
         {
           name: 'Disponibilité'
+        },
+        {
+          name: 'Jeton'
         }
       ],
       paths: {},
@@ -336,6 +339,9 @@ Lors de votre passage en production :
       tags: [
         {
           name: 'Disponibilité'
+        },
+        {
+          name: 'Jeton'
         }
       ],
       paths: {},

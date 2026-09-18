@@ -2,6 +2,7 @@ shared:
   api_entreprise/proxied_files: []
   api_entreprise/inpi_proxy: []
   api_entreprise/v2/privileges: []
+  api_entreprise/v3_and_more/introspect: []
   api_entreprise/privileges: []
   api_entreprise/v2/associations:
     - associations
@@ -203,6 +204,7 @@ shared:
     - open_data
   api_particulier/introspect: []
   api_particulier/v2/introspect: []
+  api_particulier/v3_and_more/introspect: []
   api_particulier/v2/cnaf/quotient_familial:
     - cnaf_quotient_familial
     - cnaf_allocataires

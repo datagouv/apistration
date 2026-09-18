@@ -1,4 +1,6 @@
 class GenerateCodeSampleFromPath
+  PATHS_WITHOUT_AUDIT_PARAMS = %r{\A(/privileges|/v\d+/token/introspect)\z}
+
   def initialize(path, staging: false)
     @path = path
     @staging = staging
@@ -44,7 +46,7 @@ class GenerateCodeSampleFromPath
   end
 
   def query_params
-    return '' if path == '/privileges'
+    return '' if path.match?(PATHS_WITHOUT_AUDIT_PARAMS)
 
     query_params = {
       recipient: recipient_siret,
