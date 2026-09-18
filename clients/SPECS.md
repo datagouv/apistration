@@ -118,6 +118,13 @@ API Particulier does not require `context` and `object`; it only uses
 `recipient`. The same defaulting/override mechanism MUST exist but with a
 smaller required set. The SIRET validation rule applies identically.
 
+An operation MAY narrow that set: when its OpenAPI parameters mark a
+different set of audit parameters as `required: true`, the generated method
+MUST validate that set instead of the client-wide one. `/v3/token/introspect`
+requires none, so a client built with a token alone can call it. Client-level
+defaults are still merged and sent, and the SIRET validation rule still
+applies to any `recipient` present.
+
 ### 4.1 SIRET validation (normative algorithm)
 
 A valid SIRET is either a 14-digit string passing the Luhn checksum, or a

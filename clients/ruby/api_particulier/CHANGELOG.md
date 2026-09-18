@@ -9,6 +9,9 @@ adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 - CNOUS étudiant boursier : version 5 (défaut) avec le champ `ine` (scope
   `cnous_ine`), renvoyé pour toutes les modalités d'appel.
+- `token.introspect(recipient: nil, delegation_id: nil)` — Introspection du jeton,
+  `/v3/token/introspect`. Requires no audit parameter: a client built with a
+  token alone can call it.
 
 ### Deprecated
 - CNOUS étudiant boursier v4 : dépréciée en faveur de la v5 (warning à l'appel).

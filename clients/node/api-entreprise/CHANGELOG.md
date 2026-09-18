@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- `token.introspect({ recipient?, delegation_id? })` — Introspection du jeton,
+  `/v3/token/introspect`. Requires no audit parameter: a client built with a
+  token alone can call it.
+
 ## 0.4.0
 
 ### Added

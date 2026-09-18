@@ -29,9 +29,9 @@ module ApiGouvCommons
       @public_connection = build_public_connection
     end
 
-    def get(path, params: {}, headers: {})
+    def get(path, params: {}, headers: {}, required_params: nil)
       merged = merge_params(params)
-      validate_required!(merged)
+      validate_required!(merged, required_params || required_params_for(merged))
       validate_sirets!(merged)
 
       response = @connection.get(path, clean(merged), headers)
@@ -58,8 +58,8 @@ module ApiGouvCommons
       self.class::SIRET_PARAMS
     end
 
-    def validate_required!(params)
-      required_params_for(params).each do |key|
+    def validate_required!(params, required_params)
+      required_params.each do |key|
         next unless blank?(params[key.to_s])
 
         raise MissingParameterError, "required parameter #{key.inspect} is missing"

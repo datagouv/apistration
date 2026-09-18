@@ -215,6 +215,16 @@ describe('ClientBase', () => {
       );
       expect(fetchMock).not.toHaveBeenCalled();
     });
+
+    it('lets an operation narrow the required params', async () => {
+      const fetchMock = mockFetch(200, { data: {} });
+      globalThis.fetch = fetchMock;
+
+      const client = new TestClient({ defaultParams: {} });
+      await client.get('/v3/token/introspect', { requiredParams: [] });
+
+      expect(fetchMock).toHaveBeenCalledOnce();
+    });
   });
 
   describe('SIRET validation', () => {

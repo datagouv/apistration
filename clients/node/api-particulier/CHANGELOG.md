@@ -5,6 +5,9 @@
 - CNOUS étudiant boursier: add version 5 (new default) with the `ine` field
   (`cnous_ine` scope), returned for all call modalities;
   v4 is deprecated (call-time warning).
+- `token.introspect({ recipient?, delegation_id? })` — Introspection du jeton,
+  `/v3/token/introspect`. Requires no audit parameter: a client built with a
+  token alone can call it.
 
 ## 0.3.0
 
