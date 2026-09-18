@@ -21,6 +21,6 @@ export class Token {
           throw new Error(`version ${resolvedVersion} not available for /token/introspect; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id }, requiredParams: [] });
   }
 }

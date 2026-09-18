@@ -184,6 +184,16 @@ describe('ApiEntreprise Client', () => {
     });
   });
 
+  describe('token introspection', () => {
+    it('introspects with the token alone, without audit params', async () => {
+      const fetchMock = mockFetch(200, { data: {}, links: {}, meta: {} });
+      globalThis.fetch = fetchMock;
+      const client = makeClient({ defaultParams: {} });
+      await client.token.introspect();
+      expect(fetchMock.mock.calls[0][0]).toContain('/v3/token/introspect');
+    });
+  });
+
   describe('ping (public endpoints)', () => {
     it('ping() calls /v3/ping without Authorization header', async () => {
       const fetchMock = mockFetch(200, {});

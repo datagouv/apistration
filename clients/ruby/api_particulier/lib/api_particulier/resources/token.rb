@@ -21,7 +21,7 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /token/introspect; supported: [3]"
           end
-        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id }.compact)
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id }.compact, required_params: [])
       end
     end
   end
