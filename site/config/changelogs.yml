@@ -8,6 +8,8 @@
 
     Une consultation sans résultat s'atteste aussi : sur une réponse `404`, le même en-tête produit une attestation de consultation sans résultat, ou de dossier non éligible, qui reprend l'erreur, l'organisme qui a répondu, la date de l'appel et l'identité transmise. Les erreurs `404` précisent désormais cet organisme (RNCPS, CNAF ou MSA) dans `meta.origin`. Le détail est dans la [FAQ de la fiche](<%= endpoint_path(uid: 'cnav/psu', anchor: 'attestation-pdf-verifiable') %>).
 
+    Le fonctionnement, la vérification, les garanties de sécurité et un exemple d'attestation sont détaillés dans [notre article de blog](<%= blog_post_path(id: 'attestation-pdf-verifiable') %>).
+
 - date: 2026-10-05
   scope: both
   title: "Espace utilisateur : l'organisation de chaque habilitation affichée dans la liste"

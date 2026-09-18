@@ -181,6 +181,10 @@ fiche:
 
           C'est une exigence documentaire, pas technique : l'attestation est une pièce justificative, deux documents portant la même version d'API ne peuvent pas présenter des jeux de champs différents — ni pour vous, ni pour la CNAF, ni pour l'agent qui contrôle le document.
 
+          Pour une présentation complète du dispositif (fonctionnement, vérification, sécurité, exemple d'attestation), consultez la publication suivante :
+          {:.fr-icon-arrow-right-line .fr-link--icon-right}
+          [✒️ **Participation familiale EAJE : une attestation PDF vérifiable pour les contrôles CAF** - Lire la publication du 18/09/2026](https://particulier.api.gouv.fr/blog/attestation-pdf-verifiable){:target="_blank"}
+
       - q: <a name="origine-erreur-404"></a> Comment savoir quel organisme a répondu en cas de 404 ?
         a: |+
           Chaque erreur `404` _(allocataire non référencé, dossier allocataire absent, allocataire non éligible)_ indique dans `meta.origin` l'organisme qui a répondu : `RNCPS` quand l'allocataire n'est référencé auprès d'aucune caisse éligible, `CNAF` ou `MSA` selon la caisse de rattachement de l'allocataire. Pour un allocataire non éligible, `meta.origin` est absent quand la passerelle de la CNAV ne nomme pas la caisse qui a répondu.
