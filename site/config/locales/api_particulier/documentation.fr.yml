@@ -301,7 +301,9 @@ fr:
 
                   - **Un plafond général par IP de 1000 requêtes/minute** ;
 
-                  - **Une volumétrie par habilitation&nbsp;:** 20 requêtes/secondes.
+                  - **Une volumétrie par habilitation&nbsp;:** 250 requêtes/minute ;
+
+                  - **Sur l'ancienne API v2 (`/api/v2/...`)&nbsp;:** 60 requêtes/minute par jeton. Pour bénéficier de la volumétrie complète, migrez vers les versions actuelles de l'API.
 
                   {:.fr-highlight}
                   > ℹ️ Si une habilitation possède **plusieurs jetons** (par exemple un jeton classique et un jeton éditeur délégué), **la limite est partagée** entre tous&nbsp;: les appels de chaque jeton s'additionnent sur un même compteur.

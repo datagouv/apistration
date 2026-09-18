@@ -1,3 +1,11 @@
+- date: 2026-09-18
+  scope: api_particulier
+  title: "Volumétrie : 250 requêtes/minute par habilitation, 60 sur l'API v2"
+  description: |
+    La [volumétrie autorisée](<%= developers_path(anchor: 'respecter-la-volumétrie') %>) par habilitation passe de 20 requêtes/seconde à **250 requêtes/minute**, comme sur API Entreprise. Sur les 90 derniers jours, seules 25 habilitations sur plus de 1 200 ont dépassé ce seuil, le plus souvent quelques minutes lors d'un traitement par lot. Un appel au-delà renvoie une erreur `429` : étalez vos traitements par lot en suivant les en-têtes `RateLimit-Remaining` et `Retry-After`.
+
+    L'ancienne API v2 (`/api/v2/...`) est limitée à **60 requêtes/minute par jeton**. Pour bénéficier de la volumétrie complète, migrez vers les versions actuelles de l'API.
+
 - date: 2026-09-17
   scope: api_entreprise
   title: "APIs Sirene INSEE : nouveau code d'erreur `01006` en cas d'échec d'authentification"

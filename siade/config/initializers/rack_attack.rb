@@ -62,7 +62,7 @@ class Rack::Attack
     request.ip if request.path.start_with?('/api/attestations')
   end
 
-  throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
+  throttle('API Particulier V2 global limit', limit: 60, period: 60) do |request|
     next if request.get_header('HTTP_X_API_KEY').blank? || request.path.exclude?('/api/v2/') || request.host !~ /particulier/
 
     Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY'))
