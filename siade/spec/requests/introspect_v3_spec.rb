@@ -4,7 +4,8 @@ RSpec.describe 'Introspection v3' do
   let(:path) { '/v3/token/introspect' }
   let(:recipient_siret) { '13002526500013' }
   let(:scopes) { %w[attestations_fiscales] }
-  let(:authorization_request) { AuthorizationRequest.create!(siret: recipient_siret, scopes:) }
+  let(:datapass_id) { '12345' }
+  let(:authorization_request) { AuthorizationRequest.create!(siret: recipient_siret, scopes:, external_id: datapass_id) }
   let(:token_record) do
     Token.create!(
       authorization_request:,
@@ -27,7 +28,7 @@ RSpec.describe 'Introspection v3' do
       expect(data['id']).to eq(token_record.id)
       expect(data['type']).to eq('standard')
       expect(data['scopes']).to eq(scopes)
-      expect(data['demande_acces_id']).to eq(authorization_request.id)
+      expect(data['demande_acces_id']).to eq(datapass_id)
       expect(data['siret_souscripteur']).to eq(recipient_siret)
       expect(data['date_expiration']).to eq(Time.zone.at(token_record.exp).iso8601)
       expect(data['duree_validite_restante_en_secondes']).to be_within(60).of(token_record.exp - Time.zone.now.to_i)
@@ -95,6 +96,7 @@ RSpec.describe 'Introspection v3' do
         expect(data['type']).to eq('editeur')
         expect(data['scopes']).to eq([])
         expect(data['demande_acces_id']).to be_nil
+        expect(data['siret_souscripteur']).to be_nil
         expect(data['delegation']).to be_nil
       end
 
@@ -104,11 +106,41 @@ RSpec.describe 'Introspection v3' do
         expect(response).to have_http_status(:ok)
         expect(data['type']).to eq('editeur')
         expect(data['scopes']).to eq(scopes)
-        expect(data['demande_acces_id']).to eq(authorization_request.id)
+        expect(data['demande_acces_id']).to eq(datapass_id)
+        expect(data['siret_souscripteur']).to eq(recipient_siret)
         expect(data['delegation']).to eq(
           'id' => delegation.id,
           'siret_delegant' => recipient_siret
         )
+      end
+
+      it 'refuses a recipient which has not delegated to the editor' do
+        get(path, params: { recipient: '21920023500014' }, headers:)
+
+        expect(response).to have_http_status(:forbidden)
+        expect(body.fetch('errors').first).to include('code' => '00213')
+      end
+
+      context 'when the recipient has delegated several authorization requests' do
+        let(:other_authorization_request) do
+          AuthorizationRequest.create!(siret: recipient_siret, scopes: %w[attestations_sociales], external_id: '67890')
+        end
+        let!(:other_delegation) { EditorDelegation.create!(editor:, authorization_request: other_authorization_request) }
+
+        it 'asks for a delegation_id' do
+          get(path, params: { recipient: recipient_siret }, headers:)
+
+          expect(response).to have_http_status(:unprocessable_content)
+          expect(body.fetch('errors').first).to include('code' => '00212')
+        end
+
+        it 'describes the delegation selected by delegation_id' do
+          get(path, params: { recipient: recipient_siret, delegation_id: other_delegation.id }, headers:)
+
+          expect(response).to have_http_status(:ok)
+          expect(data['demande_acces_id']).to eq('67890')
+          expect(data['delegation']).to include('id' => other_delegation.id)
+        end
       end
     end
   end

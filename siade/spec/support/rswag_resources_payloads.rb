@@ -237,13 +237,13 @@ module RSwagResourcesPayloads
         nullable: true,
         title: "Identifiant de la demande d'habilitation",
         description: "Identifiant DataPass de la demande d'habilitation à l'origine du jeton. Pour un jeton éditeur, identifiant de la demande d'habilitation déléguée, une fois le paramètre `recipient` renseigné.",
-        example: '5a1c3e0e-98b0-4a14-93e3-cf0fcbe0b0b1'
+        example: '12345'
       },
       siret_souscripteur: {
         type: :string,
         nullable: true,
         title: 'SIRET du souscripteur',
-        description: "SIRET de l'organisation à laquelle le jeton a été délivré.",
+        description: "SIRET de l'organisation à laquelle le jeton a été délivré. Pour un jeton éditeur, SIRET de l'organisation ayant délégué son habilitation, une fois le paramètre `recipient` renseigné.",
         example: '13002526500013'
       },
       date_emission: {

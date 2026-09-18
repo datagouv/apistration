@@ -6,11 +6,12 @@ class IntrospectionSerializer::V3
 
   DEFAULT_TOKEN_TYPE = 'standard'.freeze
 
-  attr_reader :user, :delegation
+  attr_reader :user, :delegation, :authorization_request
 
-  def initialize(user, delegation: nil)
+  def initialize(user, delegation: nil, authorization_request: nil)
     @user = user
     @delegation = delegation
+    @authorization_request = authorization_request
   end
 
   def as_json(*)
@@ -28,14 +29,18 @@ class IntrospectionSerializer::V3
       id: user.jti,
       type: token_type,
       scopes: user.scopes,
-      demande_acces_id: user.authorization_request_id,
-      siret_souscripteur: user.siret,
+      demande_acces_id: authorization_request&.external_id,
+      siret_souscripteur: subscriber_siret,
       date_emission: issued_at,
       date_expiration: expiration,
       duree_validite_restante_en_secondes: remaining_validity_in_seconds,
       rate_limit_par_minute: user.rate_limit_per_minute,
       delegation: delegation_payload
     }
+  end
+
+  def subscriber_siret
+    authorization_request&.siret || user.siret
   end
 
   def token_type
