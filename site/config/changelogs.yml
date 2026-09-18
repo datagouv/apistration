@@ -1,3 +1,11 @@
+- date: 2026-09-18
+  scope: api_particulier
+  title: "Participation familiale EAJE : attestation PDF vérifiable"
+  description: |
+    L'API [Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) peut désormais délivrer, en plus des données, une **attestation PDF vérifiable** à archiver pour les contrôles CAF. Il suffit d'ajouter l'en-tête `X-Generate-Proof` à l'appel par identité pivot : la réponse contient un lien et un code de vérification, et un lien de téléchargement du PDF. L'attestation porte un QR code menant à une page de vérification hébergée sur `particulier.api.gouv.fr`, contrôlable pendant 5 ans.
+
+    Le fonctionnement, la vérification, les garanties de sécurité et un exemple d'attestation sont détaillés dans [notre article de blog](<%= blog_post_path(id: 'attestation-pdf-verifiable') %>).
+
 - date: 2026-09-17
   scope: api_entreprise
   title: "APIs Sirene INSEE : nouveau code d'erreur `01006` en cas d'échec d'authentification"
