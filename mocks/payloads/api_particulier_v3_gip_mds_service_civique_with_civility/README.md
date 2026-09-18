@@ -374,9 +374,9 @@ effectué de service civique (ni actif, ni passé).
   {
     "errors": [
       {
-        "code": "00391",
-        "title": "Entité non traitable",
-        "detail": "Les paramètres d'identité correspondent à plusieurs personnes. Nous ne pouvons pas fournir les informations de service civique pour cet individu.",
+        "code": "31563",
+        "title": "Identité ambiguë pour le fournisseur de données",
+        "detail": "Les paramètres d'identité fournis correspondent à plusieurs personnes chez le fournisseur de données.",
         "source": null,
         "meta": {}
       }

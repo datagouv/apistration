@@ -346,12 +346,12 @@ d'erreur selon les informations que vous fournirez.
   {
     "errors": [
       {
-        "code": "37999",
+        "code": "36999",
         "title": "Erreur inconnue du fournisseur de données",
         "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "Sécurité sociale"
         }
       }
     ]
@@ -406,12 +406,12 @@ d'erreur selon les informations que vous fournirez.
   {
     "errors": [
       {
-        "code": "37002",
+        "code": "36002",
         "title": "Intermédiaire hors-délai",
         "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "Sécurité sociale"
         }
       }
     ]

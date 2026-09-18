@@ -386,7 +386,7 @@ Ce cas permet de tester :
   {
     "errors": [
       {
-        "code": "04003",
+        "code": "32003",
         "title": "Entité non trouvée",
         "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel",
         "meta": {

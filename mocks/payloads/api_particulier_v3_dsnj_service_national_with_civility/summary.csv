@@ -31,19 +31,6 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Accès refusé - problème d'autorisation,"{""nomNaissance"":""LEROY"",""prenoms"":[""ANTOINE""],""anneeDateNaissance"":1982,""moisDateNaissance"":4,""jourDateNaissance"":5,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""69123""}",403,"{
-  ""errors"": [
-    {
-      ""code"": ""39001"",
-      ""title"": ""Accès refusé"",
-      ""detail"": ""Le SIRET n'est pas autorisé à accéder à l'API"",
-      ""source"": null,
-      ""meta"": {
-        ""provider"": ""DSNJ""
-      }
-    }
-  ]
-}"
 ,Personne non trouvée,"{""nomNaissance"":""INCONNU"",""prenoms"":[""PERSONNAGE""],""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75056""}",404,"{
   ""errors"": [
     {
@@ -57,12 +44,12 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Trop de requêtes - quota dépassé,"{""nomNaissance"":""DUPONT"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1992,""moisDateNaissance"":7,""jourDateNaissance"":14,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""35238""}",429,"{
+,Erreur interne du fournisseur de données,"{""nomNaissance"":""DURAND"",""prenoms"":[""PAUL""],""anneeDateNaissance"":1985,""moisDateNaissance"":8,""jourDateNaissance"":10,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75056""}",502,"{
   ""errors"": [
     {
-      ""code"": ""39004"",
-      ""title"": ""Quota dépassé"",
-      ""detail"": ""Le quota de requêtes autorisées a été dépassé. Veuillez réessayer plus tard."",
+      ""code"": ""39000"",
+      ""title"": ""Erreur interne du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et a été identifié comme étant une erreur interne. Si le problème persiste, consultez la page de status ou contactez nous sur le support."",
       ""source"": null,
       ""meta"": {
         ""provider"": ""DSNJ""
@@ -70,25 +57,38 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Erreur serveur - mauvaise passerelle,"{""nomNaissance"":""DURAND"",""prenoms"":[""PAUL""],""anneeDateNaissance"":1985,""moisDateNaissance"":8,""jourDateNaissance"":10,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""75056""}",502,"{
+,Trop de requêtes auprès du fournisseur de données,"{""nomNaissance"":""DUPONT"",""prenoms"":[""PIERRE""],""anneeDateNaissance"":1992,""moisDateNaissance"":7,""jourDateNaissance"":14,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""35238""}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""39008"",
+      ""title"": ""Erreur auprès du fournisseur de données : trop de requêtes"",
+      ""detail"": ""Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""DSNJ""
+      }
+    }
+  ]
+}"
+,Réponse inattendue du fournisseur de données,"{""nomNaissance"":""LEROY"",""prenoms"":[""ANTOINE""],""anneeDateNaissance"":1982,""moisDateNaissance"":4,""jourDateNaissance"":5,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""69123""}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""39999"",
+      ""title"": ""Erreur inconnue du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""DSNJ""
+      }
+    }
+  ]
+}"
+,Temps d'attente dépassé par le fournisseur de données,"{""nomNaissance"":""BERNARD"",""prenoms"":[""JULIEN""],""anneeDateNaissance"":1988,""moisDateNaissance"":5,""jourDateNaissance"":20,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""92012""}",504,"{
   ""errors"": [
     {
       ""code"": ""39002"",
-      ""title"": ""Erreur serveur"",
-      ""detail"": ""Une erreur est survenue lors de la connexion au service distant."",
-      ""source"": null,
-      ""meta"": {
-        ""provider"": ""DSNJ""
-      }
-    }
-  ]
-}"
-,Temps d'attente dépassé - gateway timeout,"{""nomNaissance"":""BERNARD"",""prenoms"":[""JULIEN""],""anneeDateNaissance"":1988,""moisDateNaissance"":5,""jourDateNaissance"":20,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100"",""codeCogInseeCommuneNaissance"":""92012""}",504,"{
-  ""errors"": [
-    {
-      ""code"": ""39005"",
-      ""title"": ""Temps d'attente dépassé"",
-      ""detail"": ""Le service distant n'a pas répondu dans le temps imparti."",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
       ""source"": null,
       ""meta"": {
         ""provider"": ""DSNJ""

@@ -131,7 +131,7 @@
   {
     "errors": [
       {
-        "code": "04003",
+        "code": "01003",
         "title": "Entité non trouvée",
         "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel",
         "meta": {
@@ -231,9 +231,9 @@
   {
     "errors": [
       {
-        "title": "Service non disponible",
-        "detail": "Service du fournisseur de données temporairement indisponible ou en maintenance.",
-        "code": "01001",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
+        "code": "01002",
         "meta": {
           "provider": "INSEE"
         }

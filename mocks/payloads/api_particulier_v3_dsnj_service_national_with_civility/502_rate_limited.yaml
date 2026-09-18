@@ -1,5 +1,5 @@
 ---
-description: 'Trop de requêtes - quota dépassé'
+description: 'Trop de requêtes auprès du fournisseur de données'
 params:
   nomNaissance: 'DUPONT'
   prenoms:
@@ -10,14 +10,14 @@ params:
   sexeEtatCivil: 'M'
   codeCogInseePaysNaissance: '99100'
   codeCogInseeCommuneNaissance: '35238'
-status: 429
+status: 502
 payload: |-
   {
     "errors": [
       {
-        "code": "39004",
-        "title": "Quota dépassé",
-        "detail": "Le quota de requêtes autorisées a été dépassé. Veuillez réessayer plus tard.",
+        "code": "39008",
+        "title": "Erreur auprès du fournisseur de données : trop de requêtes",
+        "detail": "Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.",
         "source": null,
         "meta": {
           "provider": "DSNJ"
