@@ -101,7 +101,7 @@
   {
     "errors": [
       {
-        "code": "08003",
+        "code": "02003",
         "title": "Entité non trouvée",
         "detail": "Le siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
         "source": null,

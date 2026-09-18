@@ -129,12 +129,12 @@
   {
     "errors": [
       {
-        "code": "28003",
+        "code": "52003",
         "title": "Entité non trouvée",
         "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
         "source": null,
         "meta": {
-          "provider": "Data Subvention"
+          "provider": "DataSubvention"
         }
       }
     ]

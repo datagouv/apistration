@@ -7,7 +7,7 @@ payload: |-
   {
     "errors": [
       {
-        "code": "37003",
+        "code": "41003",
         "title": "Entité non trouvée",
         "detail": "Aucun statut sportif n'a pu être trouvé avec les critères de recherche fournis.",
         "source": null,
