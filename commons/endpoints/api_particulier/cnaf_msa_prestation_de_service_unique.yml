@@ -182,6 +182,6 @@ fiche:
           [✒️ **Participation familiale EAJE : une attestation PDF vérifiable pour les contrôles CAF** - Lire la publication du 18/09/2026](https://particulier.api.gouv.fr/blog/attestation-pdf-verifiable){:target="_blank"}
 
     historique: |+
-      **29/07/2026 — Preuve d'attestation vérifiable**
+      **11/09/2026 — Preuve d'attestation vérifiable**
 
       Ajout de l'en-tête `X-Generate-Proof` sur `/v3/dss/participation_familiale_eaje/identite` : lien et code de vérification dans `meta`, lien de téléchargement de l'attestation PDF dans `links`. [En savoir plus](#attestation-pdf-verifiable).
