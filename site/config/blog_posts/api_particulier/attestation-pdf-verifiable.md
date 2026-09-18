@@ -10,20 +10,20 @@ Les gestionnaires d'établissements d'accueil du jeune enfant (EAJE) qui récup�
  <ol class="fr-summary__list">
   <li><a class="fr-summary__link fr-text--lg" href="#contexte">Contexte : pourquoi ajouter une attestation vérifiable ?</a></li>
   <li>
-   <a class="fr-summary__link fr-text--lg" href="#solution">La solution proposée</a>
+   <a class="fr-summary__link fr-text--lg" href="#solution">Solution proposée</a>
    <ol>
-    <li><a class="fr-summary__link fr-text--md" href="#en-bref">Le fonctionnement en bref</a></li>
-    <li><a class="fr-summary__link fr-text--md" href="#contenu-pdf">Le contenu de l'attestation PDF</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#en-bref">Scénario d'usage</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#contenu-pdf">Contenu de l'attestation PDF</a></li>
     <li><a class="fr-summary__link fr-text--md" href="#securite">Sécurité et données personnelles</a></li>
-    <li><a class="fr-summary__link fr-text--md" href="#pourquoi-qr-code">Pourquoi un QR code plutôt qu'une signature électronique ?</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#pourquoi-qr-code">Choix de conception : pourquoi un QR code plutôt qu'une signature électronique ?</a></li>
    </ol>
   </li>
   <li>
    <a class="fr-summary__link fr-text--lg" href="#utiliser">Utiliser la solution</a>
    <ol>
-    <li><a class="fr-summary__link fr-text--md" href="#demander-une-attestation">Demander une attestation dans l'appel API</a></li>
-    <li><a class="fr-summary__link fr-text--md" href="#verifier">Vérifier une attestation</a></li>
-    <li><a class="fr-summary__link fr-text--md" href="#tester">Tester en environnement de test</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#demander-une-attestation">Appel API avec l'en-tête X-Generate-Proof</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#verifier">Procédure de vérification d'une attestation</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#tester">Environnement de test</a></li>
    </ol>
   </li>
  </ol>
@@ -41,9 +41,9 @@ Avec l'utilisation de [l'API Participation familiale EAJE](<%= endpoint_path(uid
 
 <br/>
 
-## <a name="solution"></a>La solution proposée
+## <a name="solution"></a>Solution proposée
 
-### <a name="en-bref"></a>Le fonctionnement en bref
+### <a name="en-bref"></a>Scénario d'usage
 
 1. Le logiciel de gestion appelle l'API en ajoutant l'en-tête `X-Generate-Proof: pdf`.
 2. La réponse contient les données habituelles, plus un **lien de vérification**, un **code de vérification** et un **lien de téléchargement de l'attestation PDF**.
@@ -51,7 +51,7 @@ Avec l'utilisation de [l'API Participation familiale EAJE](<%= endpoint_path(uid
 4. Lors d'un contrôle, l'agent scanne le QR code du PDF, arrive sur une page hébergée par `particulier.api.gouv.fr`, et compare le code et les données affichés avec ceux du document.
 
 {:.fr-mt-6w}
-### <a name="contenu-pdf"></a>Le contenu de l'attestation PDF
+### <a name="contenu-pdf"></a>Contenu de l'attestation PDF
 
 L'attestation reprend l'ensemble des données délivrées par l'API :
 
@@ -106,7 +106,7 @@ La page de vérification ne dépose aucun cookie, ne charge aucun traceur, n'est
 - **Une page imitant la nôtre sur un autre domaine** peut afficher n'importe quoi : c'est pourquoi l'adresse de la page doit toujours être contrôlée.
 
 {:.fr-mt-6w}
-### <a name="pourquoi-qr-code"></a>Pourquoi un QR code plutôt qu'une signature électronique ?
+### <a name="pourquoi-qr-code"></a>Choix de conception : pourquoi un QR code plutôt qu'une signature électronique ?
 
 Nous avons étudié plusieurs solutions avant de retenir celle-ci :
 
@@ -119,9 +119,9 @@ Le QR code avec un jeton chiffré combine les avantages recherchés : une vérif
 
 ## <a name="utiliser"></a>Utiliser la solution
 
-La demande d'une attestation et les tests s'adressent aux éditeurs de logiciels de gestion. La vérification s'adresse aux agents chargés des contrôles.
+Cette partie s'adresse aux éditeurs de logiciels de gestion. La procédure de vérification décrit ce que fait l'agent chargé du contrôle : vous pouvez la relayer aux structures qui utilisent votre logiciel.
 
-### <a name="demander-une-attestation"></a>Demander une attestation dans l'appel API
+### <a name="demander-une-attestation"></a>Appel API avec l'en-tête X-Generate-Proof
 
 L'attestation est **optionnelle** et se demande par un en-tête HTTP sur l'appel habituel `GET /v3/dss/participation_familiale_eaje/identite`. Les paramètres d'appel et l'habilitation sont les mêmes, aucun scope supplémentaire n'est nécessaire. Sans l'en-tête, la réponse est strictement inchangée.
 
@@ -187,14 +187,14 @@ Il suffit de suivre `links.attestation_pdf`, **sans jeton d'accès** : le lien p
 > - L'attestation n'est disponible que pour l'appel par identité pivot, pas pour l'appel via FranceConnect.
 
 {:.fr-mt-6w}
-### <a name="verifier"></a>Vérifier une attestation
+### <a name="verifier"></a>Procédure de vérification d'une attestation
 
-La vérification ne demande aucune application ni aucun compte :
+La vérification ne demande aucune application ni aucun compte. L'agent chargé du contrôle :
 
-1. **Scannez le QR code** avec un smartphone, ou cliquez dessus si vous consultez le PDF sur un ordinateur.
-2. **Vérifiez que l'adresse de la page est bien `particulier.api.gouv.fr`.**
-3. La page affiche « Attestation authentique et valide », le code de vérification, le SIRET du demandeur, les dates d'émission et de fin de validité, et une partie des données.
-4. **Comparez le code affiché avec celui imprimé sur le PDF**, puis les données : `LEF•••` avec `LEFEBVRE`, `12/1982` avec `27/12/1982`, et la base de ressources à l'identique.
+1. **scanne le QR code** avec un smartphone, ou clique dessus s'il consulte le PDF sur un ordinateur ;
+2. **vérifie que l'adresse de la page est bien `particulier.api.gouv.fr`** ;
+3. lit sur la page « Attestation authentique et valide », le code de vérification, le SIRET du demandeur, les dates d'émission et de fin de validité, et une partie des données ;
+4. **compare le code affiché avec celui imprimé sur le PDF**, puis les données : `LEF•••` avec `LEFEBVRE`, `12/1982` avec `27/12/1982`, et la base de ressources à l'identique.
 
 Si le code ou les données ne correspondent pas, le document a été modifié. Si la page indique « Lien de vérification invalide ou expiré », le QR code a été altéré ou l'attestation a dépassé sa durée de validité.
 
@@ -224,7 +224,7 @@ La page de vérification n'affiche volontairement qu'une **version minimisée** 
 Le PDF, lui, contient toutes les données.
 
 {:.fr-mt-6w}
-### <a name="tester"></a>Tester en environnement de test
+### <a name="tester"></a>Environnement de test
 
 L'[environnement de test](<%= developers_path(anchor: 'tester-api-preproduction') %>) renvoie des données fictives et permet de tester la génération de bout en bout, avec le jeton de test public :
 
