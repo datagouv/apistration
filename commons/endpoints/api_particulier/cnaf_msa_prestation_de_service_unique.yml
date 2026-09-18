@@ -177,6 +177,10 @@ fiche:
 
           C'est une exigence documentaire, pas technique : l'attestation est une pièce justificative, deux documents portant la même version d'API ne peuvent pas présenter des jeux de champs différents — ni pour vous, ni pour la CNAF, ni pour l'agent qui contrôle le document.
 
+          Pour une présentation complète du dispositif (fonctionnement, vérification, sécurité, exemple d'attestation), consultez la publication suivante :
+          {:.fr-icon-arrow-right-line .fr-link--icon-right}
+          [✒️ **Participation familiale EAJE : une attestation PDF vérifiable pour les contrôles CAF** - Lire la publication du 18/09/2026](https://particulier.api.gouv.fr/blog/attestation-pdf-verifiable){:target="_blank"}
+
     historique: |+
       **29/07/2026 — Preuve d'attestation vérifiable**
 
