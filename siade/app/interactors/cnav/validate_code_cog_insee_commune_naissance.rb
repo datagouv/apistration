@@ -1,4 +1,6 @@
 class CNAV::ValidateCodeCogINSEECommuneNaissance < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :birth_place
+
   def call
     return if valid?
 

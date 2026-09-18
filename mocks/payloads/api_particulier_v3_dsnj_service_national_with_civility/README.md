@@ -221,66 +221,6 @@
 
   </p>
   </details>
-* [403_access_denied.yaml](403_access_denied.yaml)
-
-  Status `403`
-
-  Accès refusé - problème d'autorisation
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "nomNaissance": "LEROY",
-    "prenoms": [
-      "ANTOINE"
-    ],
-    "anneeDateNaissance": 1982,
-    "moisDateNaissance": 4,
-    "jourDateNaissance": 5,
-    "sexeEtatCivil": "M",
-    "codeCogInseePaysNaissance": "99100",
-    "codeCogInseeCommuneNaissance": "69123"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "errors": [
-      {
-        "code": "39001",
-        "title": "Accès refusé",
-        "detail": "Le SIRET n'est pas autorisé à accéder à l'API",
-        "source": null,
-        "meta": {
-          "provider": "DSNJ"
-        }
-      }
-    ]
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEROY' -d 'prenoms[]=ANTOINE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=4' -d 'jourDateNaissance=5' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=69123' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
-  ```
-
-  </p>
-  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -341,71 +281,11 @@
 
   </p>
   </details>
-* [429_quota_exceeded.yaml](429_quota_exceeded.yaml)
-
-  Status `429`
-
-  Trop de requêtes - quota dépassé
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "nomNaissance": "DUPONT",
-    "prenoms": [
-      "PIERRE"
-    ],
-    "anneeDateNaissance": 1992,
-    "moisDateNaissance": 7,
-    "jourDateNaissance": 14,
-    "sexeEtatCivil": "M",
-    "codeCogInseePaysNaissance": "99100",
-    "codeCogInseeCommuneNaissance": "35238"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "errors": [
-      {
-        "code": "39004",
-        "title": "Quota dépassé",
-        "detail": "Le quota de requêtes autorisées a été dépassé. Veuillez réessayer plus tard.",
-        "source": null,
-        "meta": {
-          "provider": "DSNJ"
-        }
-      }
-    ]
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=7' -d 'jourDateNaissance=14' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=35238' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
-  ```
-
-  </p>
-  </details>
-* [502_bad_gateway.yaml](502_bad_gateway.yaml)
+* [502_internal_error.yaml](502_internal_error.yaml)
 
   Status `502`
 
-  Erreur serveur - mauvaise passerelle
+  Erreur interne du fournisseur de données
 
   <details><summary>Paramètres</summary>
   <p>
@@ -435,9 +315,9 @@
   {
     "errors": [
       {
-        "code": "39002",
-        "title": "Erreur serveur",
-        "detail": "Une erreur est survenue lors de la connexion au service distant.",
+        "code": "39000",
+        "title": "Erreur interne du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et a été identifié comme étant une erreur interne. Si le problème persiste, consultez la page de status ou contactez nous sur le support.",
         "source": null,
         "meta": {
           "provider": "DSNJ"
@@ -461,11 +341,131 @@
 
   </p>
   </details>
+* [502_rate_limited.yaml](502_rate_limited.yaml)
+
+  Status `502`
+
+  Trop de requêtes auprès du fournisseur de données
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUPONT",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateNaissance": 1992,
+    "moisDateNaissance": 7,
+    "jourDateNaissance": 14,
+    "sexeEtatCivil": "M",
+    "codeCogInseePaysNaissance": "99100",
+    "codeCogInseeCommuneNaissance": "35238"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "39008",
+        "title": "Erreur auprès du fournisseur de données : trop de requêtes",
+        "detail": "Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1992' -d 'moisDateNaissance=7' -d 'jourDateNaissance=14' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=35238' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
+  ```
+
+  </p>
+  </details>
+* [502_unexpected_response.yaml](502_unexpected_response.yaml)
+
+  Status `502`
+
+  Réponse inattendue du fournisseur de données
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "LEROY",
+    "prenoms": [
+      "ANTOINE"
+    ],
+    "anneeDateNaissance": 1982,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 5,
+    "sexeEtatCivil": "M",
+    "codeCogInseePaysNaissance": "99100",
+    "codeCogInseeCommuneNaissance": "69123"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "39999",
+        "title": "Erreur inconnue du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEROY' -d 'prenoms[]=ANTOINE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=4' -d 'jourDateNaissance=5' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' -d 'codeCogInseeCommuneNaissance=69123' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dsnj/service_national/identite"
+  ```
+
+  </p>
+  </details>
 * [504_gateway_timeout.yaml](504_gateway_timeout.yaml)
 
   Status `504`
 
-  Temps d'attente dépassé - gateway timeout
+  Temps d'attente dépassé par le fournisseur de données
 
   <details><summary>Paramètres</summary>
   <p>
@@ -495,9 +495,9 @@
   {
     "errors": [
       {
-        "code": "39005",
-        "title": "Temps d'attente dépassé",
-        "detail": "Le service distant n'a pas répondu dans le temps imparti.",
+        "code": "39002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
         "source": null,
         "meta": {
           "provider": "DSNJ"

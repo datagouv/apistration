@@ -40,11 +40,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
 
           unprocessable_content_error_request(:siret)
 
-          common_provider_errors_request(
-            'Qualibat',
-            QUALIBAT::CertificationsBatiment,
-            documents_errors('Qualibat')
-          )
+          common_provider_errors_request(QUALIBAT::CertificationsBatiment)
 
           response '404', 'Certification non trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
             let(:siret) { not_found_siret(:qualibat) }
@@ -56,7 +52,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
             run_test!
           end
 
-          common_network_error_request('Qualibat', QUALIBAT::CertificationsBatiment)
+          common_network_error_request(QUALIBAT::CertificationsBatiment)
         end
       end
     end

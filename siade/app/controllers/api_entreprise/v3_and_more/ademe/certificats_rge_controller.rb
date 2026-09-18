@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::ADEME::CertificatsRGEController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::ADEME::CertificatsRGE }
+
   def show
     if organizer.success?
       render json: serialize_data,

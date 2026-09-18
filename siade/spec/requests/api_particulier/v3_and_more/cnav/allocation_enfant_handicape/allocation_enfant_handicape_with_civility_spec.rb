@@ -138,7 +138,7 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
               stub_cnav_404('allocation_enfant_handicape')
             end
 
-            build_rswag_example(ProviderUnknownError.new('CNAV', 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
+            build_rswag_example(ProviderUnknownError.new(CNAV::AllocationEnfantHandicape.provider_name, 'Une erreur inattendue est survenue lors de la collecte des données'), :unexpected_error)
 
             schema '$ref' => '#/components/schemas/Error'
 
@@ -146,8 +146,8 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
           end
         end
 
-        common_provider_errors_request('CNAV', CNAV::AllocationEnfantHandicape)
-        common_network_error_request('CNAV', CNAV::AllocationEnfantHandicape)
+        common_provider_errors_request(CNAV::AllocationEnfantHandicape)
+        common_network_error_request(CNAV::AllocationEnfantHandicape)
       end
     end
   end

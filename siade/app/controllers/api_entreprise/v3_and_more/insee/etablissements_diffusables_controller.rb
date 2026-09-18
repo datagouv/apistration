@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::INSEE::EtablissementsDiffusablesController < APIEntreprise::V3AndMore::INSEE::BaseController
+  nomenclature organizers: { 3 => ::INSEE::EtablissementDiffusable, 4 => ::INSEE::EtablissementDiffusable }
+
   def show
     if organizer.success?
       render json: serialize_data,

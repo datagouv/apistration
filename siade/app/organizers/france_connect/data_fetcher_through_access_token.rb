@@ -10,7 +10,9 @@ class FranceConnect::DataFetcherThroughAccessToken < RetrieverOrganizer
   end
 
   def errors_to_track
-    context.errors.reject { |error| error.code == '50002' }
+    expired_access_token_code = InvalidFranceConnectAccessTokenError.new(:not_found_or_expired).code
+
+    context.errors.reject { |error| error.code == expired_access_token_code }
   end
 
   def track_error(error)

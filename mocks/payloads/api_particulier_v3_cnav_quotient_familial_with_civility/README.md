@@ -3,7 +3,7 @@
 
   Status `200`
 
-  ## Parent et trois enfants mineurs - QF CNAF de 699
+  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
 
 Ce cas permet de tester :
 - [Param. appel] Utilisation du paramètre nomUsage
@@ -4454,9 +4454,63 @@ pivot France Connect.
 
   </p>
   </details>
-* [404-identite-cas-limite-erreur-phonetique.yaml](404-identite-cas-limite-erreur-phonetique.yaml)
+* [404.yaml](404.yaml)
 
   Status `404`
+
+  Dossier non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "LEFEBVRE",
+    "codeCogInseeCommuneNaissance": "00404",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
+        "source": null,
+        "meta": {
+          "provider": "CNAF"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=00404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
+  ```
+
+  </p>
+  </details>
+* [422-identite-cas-limite-erreur-phonetique.yaml](422-identite-cas-limite-erreur-phonetique.yaml)
+
+  Status `422`
 
   ## IDENTITÉ CAS NOMINAL
 
@@ -4496,12 +4550,12 @@ d'erreur selon les informations que vous fournirez.
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "35560",
+        "title": "Identité non reconnue par le fournisseur de données",
+        "detail": "Les paramètres d'identité fournis ne correspondent à aucune personne connue du fournisseur de données.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]
@@ -4522,9 +4576,9 @@ d'erreur selon les informations que vous fournirez.
 
   </p>
   </details>
-* [404-identite-cas-limite-faute-de-frappe.yaml](404-identite-cas-limite-faute-de-frappe.yaml)
+* [422-identite-cas-limite-faute-de-frappe.yaml](422-identite-cas-limite-faute-de-frappe.yaml)
 
-  Status `404`
+  Status `422`
 
   ## IDENTITÉ CAS NOMINAL
 
@@ -4564,12 +4618,12 @@ d'erreur selon les informations que vous fournirez.
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "35560",
+        "title": "Identité non reconnue par le fournisseur de données",
+        "detail": "Les paramètres d'identité fournis ne correspondent à aucune personne connue du fournisseur de données.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]
@@ -4590,9 +4644,9 @@ d'erreur selon les informations que vous fournirez.
 
   </p>
   </details>
-* [404-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml](404-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml)
+* [422-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml](422-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml)
 
-  Status `404`
+  Status `422`
 
   ## IDENTITÉ CAS NOMINAL
 
@@ -4626,12 +4680,12 @@ Les données concernant la date de naissance ont été retirée
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "35560",
+        "title": "Identité non reconnue par le fournisseur de données",
+        "detail": "Les paramètres d'identité fournis ne correspondent à aucune personne connue du fournisseur de données.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]
@@ -4652,9 +4706,9 @@ Les données concernant la date de naissance ont été retirée
 
   </p>
   </details>
-* [404-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml](404-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml)
+* [422-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml](422-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml)
 
-  Status `404`
+  Status `422`
 
   ## IDENTITÉ CAS NOMINAL
 
@@ -4689,12 +4743,12 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "35560",
+        "title": "Identité non reconnue par le fournisseur de données",
+        "detail": "Les paramètres d'identité fournis ne correspondent à aucune personne connue du fournisseur de données.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]
@@ -4710,60 +4764,6 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=DUPONT' -d 'prenoms[]=ALEXIS' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=12' -d 'jourDateNaissance=27' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
-  ```
-
-  </p>
-  </details>
-* [404.yaml](404.yaml)
-
-  Status `404`
-
-  Dossier non trouvé
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "nomNaissance": "LEFEBVRE",
-    "codeCogInseeCommuneNaissance": "00404",
-    "codeCogInseePaysNaissance": "99100",
-    "sexeEtatCivil": "F"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "errors": [
-      {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
-        "source": null,
-        "meta": {
-          "provider": "CNAV"
-        }
-      }
-    ]
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=00404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 
@@ -4861,12 +4861,12 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
   {
     "errors": [
       {
-        "code": "37999",
+        "code": "35999",
         "title": "Erreur inconnue du fournisseur de données",
         "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]
@@ -4921,12 +4921,12 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
   {
     "errors": [
       {
-        "code": "37002",
+        "code": "35002",
         "title": "Intermédiaire hors-délai",
         "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]

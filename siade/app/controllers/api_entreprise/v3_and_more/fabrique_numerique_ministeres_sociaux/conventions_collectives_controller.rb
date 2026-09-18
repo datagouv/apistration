@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectivesController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives }
+
   def show
     if organizer.success?
       render json: serialize_data,

@@ -1,4 +1,6 @@
 class CNAV::QuotientFamilialV2::ValidatePeriod < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :periode_cnav
+
   HISTORY_DEPTH_IN_MONTHS = 23
 
   def call

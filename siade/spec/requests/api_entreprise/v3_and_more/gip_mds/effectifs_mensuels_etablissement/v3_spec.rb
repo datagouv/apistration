@@ -80,8 +80,8 @@ RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, t
             run_test!
           end
 
-          common_provider_errors_request('GIP-MDS', GIPMDS::EffectifsMensuelsEtablissement)
-          common_network_error_request('GIP-MDS', GIPMDS::EffectifsMensuelsEtablissement)
+          common_provider_errors_request(GIPMDS::EffectifsMensuelsEtablissement)
+          common_network_error_request(GIPMDS::EffectifsMensuelsEtablissement)
         end
       end
     end

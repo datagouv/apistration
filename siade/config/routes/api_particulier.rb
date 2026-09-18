@@ -96,3 +96,4 @@ get 'api/attestations/:token', to: 'api_particulier/attestations#show', as: 'api
 
 get 'api/:provider/ping', to: 'api_particulier/ping_providers#show', as: 'api_particulier_ping_provider', constraints: APIParticulierDomainConstraint.new
 get 'api/pings', to: 'api_particulier/ping_providers#index', as: 'api_particulier_ping_providers', constraints: APIParticulierDomainConstraint.new
+get 'api/errors', to: 'api_particulier/errors_nomenclature#index', as: 'api_particulier_errors_nomenclature', constraints: APIParticulierDomainConstraint.new

@@ -142,12 +142,12 @@ d'intégration (Angela DUBOIS).
   {
     "errors": [
       {
-        "code": "37003",
+        "code": "36003",
         "title": "Entité non trouvée",
         "detail": "Dossier allocataire inexistant. Le document ne peut être édité.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "Sécurité sociale"
         }
       }
     ]

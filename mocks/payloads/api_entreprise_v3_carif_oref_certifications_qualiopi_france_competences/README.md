@@ -115,7 +115,7 @@
   {
     "errors": [
       {
-        "code": "36003",
+        "code": "33003",
         "title": "Entité non trouvée",
         "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
         "source": null,

@@ -181,7 +181,7 @@
   {
     "errors": [
       {
-        "code": "37003",
+        "code": "41003",
         "title": "Entité non trouvée",
         "detail": "Aucun statut sportif n'a pu être trouvé avec les critères de recherche fournis.",
         "source": null,
@@ -232,9 +232,9 @@
   {
     "errors": [
       {
-        "code": "00366",
+        "code": "00380",
         "title": "Entité non traitable",
-        "detail": "Un ou plusieurs paramètres ne sont pas correctement formatés",
+        "detail": "L'identifiant est manquant",
         "source": null,
         "meta": {}
       }
@@ -330,7 +330,7 @@
   {
     "errors": [
       {
-        "code": "37999",
+        "code": "41999",
         "title": "Erreur inconnue du fournisseur de données",
         "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
         "source": null,
@@ -381,7 +381,7 @@
   {
     "errors": [
       {
-        "code": "37002",
+        "code": "41002",
         "title": "Intermédiaire hors-délai",
         "detail": "Temps d'attente d'une réponse du fournisseur de données écoulé.",
         "source": null,

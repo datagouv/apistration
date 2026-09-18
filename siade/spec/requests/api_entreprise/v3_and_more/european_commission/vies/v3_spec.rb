@@ -63,8 +63,8 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
           let(:siren) { danone_siren }
         end
 
-        common_provider_errors_request('Commission Européenne', EuropeanCommission::VIES)
-        common_network_error_request('Commission Européenne', EuropeanCommission::VIES)
+        common_provider_errors_request(EuropeanCommission::VIES)
+        common_network_error_request(EuropeanCommission::VIES)
       end
     end
   end

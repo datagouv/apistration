@@ -18,6 +18,16 @@ class ErrorsBackend
     provider_hash.invert[name]
   end
 
+  def providers
+    provider_hash
+  end
+
+  def generic_subcodes
+    errors
+      .select { |error| error['subcode'] }
+      .to_h { |error| [error['subcode'], error.slice('title', 'detail')] }
+  end
+
   private
 
   def errors

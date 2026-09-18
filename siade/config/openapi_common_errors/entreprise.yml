@@ -4,11 +4,6 @@ responses:
     examples:
       invalid_token_error:
         error_class: InvalidTokenError
-      expired_token_error:
-        error_class: ExpiredTokenError
-      blacklisted_token_error:
-        error_class: BlacklistedTokenError
-        args: ['entreprise']
 
   '403':
     description: Accès interdit
@@ -25,13 +20,10 @@ responses:
 
   '422':
     description: Paramètre(s) invalide(s)
-    mandatory_params:
-      - context
-      - object
-      - recipient
     examples:
-      ambiguous_delegation_error:
-        error_class: AmbiguousDelegationError
+      missing_mandatory_param_error:
+        error_class: MissingMandatoryParamError
+        args: ['recipient']
 
   '429':
     description: Trop de requêtes
@@ -53,12 +45,4 @@ responses:
     examples:
       timeout_error:
         error_class: ProviderTimeoutError
-        args: ['%<provider>s']
-      provider_unavailable_error:
-        error_class: ProviderUnavailable
-        args: ['%<provider>s']
-      network_error:
-        error_class: NetworkError
-      dns_resolution_error:
-        error_class: DnsResolutionError
         args: ['%<provider>s']

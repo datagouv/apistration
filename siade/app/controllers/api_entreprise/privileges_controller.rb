@@ -18,4 +18,8 @@ class APIEntreprise::PrivilegesController < APIEntrepriseController
   def error_format
     :json_api
   end
+
+  def operation_id
+    OperationIdResolver.controller_to_operation_id(controller_path)
+  end
 end

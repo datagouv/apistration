@@ -1,4 +1,6 @@
 class DGFIP::ValidateYear < ValidateYear
+  raises UnprocessableEntityError, field: :dgfip_year
+
   def call
     return if valid?
 

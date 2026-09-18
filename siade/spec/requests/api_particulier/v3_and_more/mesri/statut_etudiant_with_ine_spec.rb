@@ -64,8 +64,8 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with INE', api: :particu
           end
         end
 
-        common_provider_errors_request('MESRI', MESRI::StudentStatus::WithINE)
-        common_network_error_request('MESRI', MESRI::StudentStatus::WithINE)
+        common_provider_errors_request(MESRI::StudentStatus::WithINE)
+        common_network_error_request(MESRI::StudentStatus::WithINE)
       end
     end
   end
