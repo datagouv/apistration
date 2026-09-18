@@ -10,6 +10,7 @@ require_relative 'resources/gip_mds'
 require_relative 'resources/men'
 require_relative 'resources/mesri'
 require_relative 'resources/sdh'
+require_relative 'resources/token'
 # <scaffold:requires:end>
 
 module ApiParticulier
@@ -82,6 +83,9 @@ module ApiParticulier
     end
     def sdh
       @sdh ||= Resources::Sdh.new(self)
+    end
+    def token
+      @token ||= Resources::Token.new(self)
     end
     # <scaffold:resources:end>
   end

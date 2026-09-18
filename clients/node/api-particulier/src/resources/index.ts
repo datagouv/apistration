@@ -7,3 +7,4 @@ export { GipMds } from './gip_mds.js';
 export { Men } from './men.js';
 export { Mesri } from './mesri.js';
 export { Sdh } from './sdh.js';
+export { Token } from './token.js';
