@@ -68,7 +68,7 @@ class Rack::Attack
     end
   end
 
-  throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
+  throttle('API Particulier V2 global limit', limit: 60, period: 60) do |request|
     token = request.env[UserResolutionMiddleware::TOKEN_ENV_KEY]
 
     next if token.blank? || request.path.exclude?('/api/v2/') || request.host !~ /particulier/
