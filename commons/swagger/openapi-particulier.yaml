@@ -232,12 +232,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -1057,12 +1068,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -1519,12 +1541,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -1942,12 +1975,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -2420,12 +2464,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -2855,12 +2910,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -3326,12 +3392,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -3756,12 +3833,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -4220,12 +4308,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -4645,12 +4744,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -5131,12 +5241,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -5583,12 +5704,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -6231,12 +6363,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -6794,12 +6937,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -7268,12 +7422,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -7855,12 +8020,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -8581,12 +8757,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -9247,12 +9434,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -9721,12 +9919,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -10112,12 +10321,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -10658,12 +10878,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -10965,12 +11196,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -11825,12 +12067,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -12167,12 +12420,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -12579,12 +12843,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -13097,12 +13372,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -13446,12 +13732,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -13865,12 +14162,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -14126,12 +14434,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -14564,12 +14883,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -14804,12 +15134,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -15228,12 +15569,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -15874,12 +16226,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -16427,12 +16790,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -16941,12 +17315,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -17582,12 +17967,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -18234,12 +18630,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -18912,12 +19319,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -19456,12 +19874,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -19780,12 +20209,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:
@@ -20298,12 +20738,23 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
+                missing_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas renseigné
                 expired_token_error:
                   value:
                     errors:

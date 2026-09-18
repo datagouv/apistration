@@ -23,6 +23,7 @@ module RSwagCommonErrors
         block.call if block_given?
 
         build_rswag_example(InvalidTokenError.new, :invalid_token_error)
+        build_rswag_example(InvalidTokenError.new(:missing), :missing_token_error)
         build_rswag_example(ExpiredTokenError.new, :expired_token_error)
         build_rswag_example(BlacklistedTokenError.new('entreprise'), :blacklisted_token_error)
 
@@ -36,6 +37,7 @@ module RSwagCommonErrors
   MISSING_FC_BEARER_TOKEN_EXAMPLES = {
     missing_france_connect_access_token_error: -> { InvalidFranceConnectAccessTokenError.new(:missing_france_connect_access_token) },
     invalid_token_error: -> { InvalidTokenError.new },
+    missing_token_error: -> { InvalidTokenError.new(:missing) },
     expired_token_error: -> { ExpiredTokenError.new },
     blacklisted_token_error: -> { BlacklistedTokenError.new('particulier') }
   }.freeze
