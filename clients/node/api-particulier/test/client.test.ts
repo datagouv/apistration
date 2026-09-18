@@ -96,7 +96,7 @@ describe('ApiParticulier Client', () => {
   describe('resource accessors', () => {
     const providers = [
       'ants', 'cnous', 'dsnj', 'dss', 'france_travail',
-      'gip_mds', 'men', 'mesri', 'sdh',
+      'gip_mds', 'men', 'mesri', 'sdh', 'token',
     ];
 
     for (const p of providers) {
