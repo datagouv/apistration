@@ -415,7 +415,7 @@ GEM
     rswag-ui (2.17.0)
       actionpack (>= 5.2, < 8.2)
       railties (>= 5.2, < 8.2)
-    rubocop (1.90.0)
+    rubocop (1.91.0)
       json (>= 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -429,7 +429,8 @@ GEM
     rubocop-ast (1.50.0)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
-    rubocop-checkstyle_formatter (0.6.1)
+    rubocop-checkstyle_formatter (0.7.0)
+      rexml
       rubocop (>= 1.14.0)
     rubocop-rails (2.37.0)
       activesupport (>= 4.2.0)
@@ -479,9 +480,9 @@ GEM
     ttfunk (1.7.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.2.0)
-      unicode-emoji (~> 4.1)
-    unicode-emoji (4.2.0)
+    unicode-display_width (3.3.0)
+      unicode-emoji (~> 4.3)
+    unicode-emoji (4.3.0)
     unindent (1.0)
     uri (1.1.1)
     useragent (0.16.11)
@@ -531,6 +532,7 @@ DEPENDENCIES
   guard-rspec
   hexapdf
   interactor
+  json (< 3)
   json-schema
   jwe
   jwt (~> 3.3)

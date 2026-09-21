@@ -1,6 +1,6 @@
 ---
 name: weekly-dependencies-bump
-description: Triage, validate and merge the open Dependabot pull requests on datagouv/apistration. Handles the green minor/patch bumps end to end, flags major bumps for a human decision, and repairs the rubocop bumps whose new cops break the Lint job. Triggers — "check les PRs dependabot", "merge les dependabot", "bump hebdo des dépendances", "weekly dependencies", "les PRs de mise à jour de gems", "rubocop bump rouge".
+description: Triage, validate and merge the open Dependabot pull requests on datagouv/apistration. Handles the green minor/patch bumps end to end, flags major bumps for a human decision — including the ones hiding in a lockfile behind a dev-only title — and repairs the rubocop bumps whose new cops break the Lint job. Triggers — "check les PRs dependabot", "merge les dependabot", "bump hebdo des dépendances", "weekly dependencies", "les PRs de mise à jour de gems", "rubocop bump rouge".
 ---
 
 # Weekly Dependencies Bump
@@ -16,9 +16,25 @@ decided alone.
    breaking changes provably do not touch this codebase; otherwise ask.
 3. **Red on Lint only, rubocop bump** → fix it (see below), then merge.
 4. **Red on anything else** → investigate, and ask before merging.
+5. **Rewrites a version constraint in a `Gemfile`** → never merge on your own.
+   Dependabot proposes lifting an existing pin (`gem 'json', '< 3'` → `'< 4'`)
+   as soon as a new major exists. That pin was someone's decision; only a human
+   undoes it.
 
 A grouped PR (`bump the development-dependencies group ... with N updates`)
 holds several gems: read the body and apply the rules to *every* gem in it.
+
+"Major bump" is judged on the **lockfile diff**, not on the title or the body.
+A development-only group can carry a production gem to a major through a
+transitive requirement, and the PR still calls itself `deps-dev`:
+
+```bash
+gh pr diff <pr> | grep -E "^[+-] +[a-z0-9_-]+ \([0-9]" | sort -k2
+gh pr diff <pr> | grep -E "^[+-]gem |^\+\+\+ .*Gemfile$"   # empty = no pin touched
+```
+
+`gh pr diff` takes no pathspec, hence the grep. An empty second output is the
+normal case; anything there is rule 5.
 
 ## Triage
 
@@ -120,6 +136,42 @@ git worktree remove --force "$SCRATCHPAD/rubocop-siade"
 git branch -D dependabot/bundler/siade/rubocop-xxxxxxxx
 ```
 
+## A dev-only bump that goes major in the lockfile
+
+Seen in September 2026: `bump the rubocop group in /siade` was a plain
+1.90.0 → 1.91.0 dev bump, Lint was green, yet `Tests` failed on all 5704
+examples and swagger generation died. `siade/Gemfile` carried no `json` pin, so
+rubocop's own `json >= 2.3` requirement re-resolved json 2.21.2 → 3.0.2, taking
+a production gem to a major behind a `deps-dev` title.
+
+How to recognise it: the lockfile diff moves a gem nobody in the PR title
+mentions, and the failures are a single error repeated everywhere. Find the
+real origin rather than reading rspec's filtered backtrace, which only shows
+application frames:
+
+```bash
+bundle exec ruby -e 'require "active_support/all"; p ActiveSupport::JSON.decode(%q({"a":1}))'
+```
+
+The fix is a pin in the `Gemfile`, not a revert of the lockfile — a lockfile
+revert comes back next week. It changes a production constraint, so it is a PR
+of its own, which the user reviews.
+
+Do not then wait for Dependabot to rebase: carry the bumps it was blocking into
+that same PR, one commit per group, and say in each message which Dependabot PR
+it supersedes. With the pin in place, ask bundler for those gems only:
+
+```bash
+cd siade && bundle update rubocop rubocop-checkstyle_formatter
+cd ../site && bundle update jwt
+git diff -- '*/Gemfile.lock' | grep -E "^[+-] +[a-z0-9_-]+ \([0-9]"
+```
+
+Check that the constrained gem did not move, run `bundle exec rubocop` in both
+apps for a rubocop bump, and run the specs covering the bumped gem. The
+superseded PRs close themselves once it merges, which is how the week ends with
+zero open Dependabot PR.
+
 ## Key facts (do not relearn)
 
 - The Dependabot author filter is `app/dependabot`, not `dependabot[bot]`.
@@ -127,6 +179,14 @@ git branch -D dependabot/bundler/siade/rubocop-xxxxxxxx
   `development-dependencies`, `production-dependencies`. The group name is in
   the PR title and tells you the blast radius.
 - The commit message for a lint repair is exactly `Linting`.
+- `json` is pinned `< 3` in both `siade/Gemfile` and `site/Gemfile`. json 3 made
+  the `JSON.parse` / `JSON.generate` options keyword-only, while
+  `ActiveSupport::JSON.decode` up to 8.1.3.1 passes them as a positional hash —
+  and `ActiveRecord::Type::Json` reads every jsonb column through it. Our own
+  code is already json 3 ready. Rails fixed it on `8-1-stable`, so both pins go
+  away in a single PR once 8.1.4 ships; until then Dependabot re-proposes
+  lifting them every week, deliberately left unconfigured rather than silenced
+  by an `ignore` rule on a temporary problem.
 - `Style/DirectiveScope` rewrites a `disable` / `enable` pair around a single
   statement into `disable-next`. `disable-next` covers the whole next
   expression, multi-line methods included — unlike `disable-next-line`. That is
