@@ -95,7 +95,9 @@
 
 - code: '00101'
   title: 'Interdit'
-  detail: "Votre token n'est pas valide ou n'est pas renseigné"
+  detail:
+    invalid: "Votre token n'est pas valide"
+    missing: "Votre token n'est pas renseigné"
   source: *source_token
 
 - code: '00103'

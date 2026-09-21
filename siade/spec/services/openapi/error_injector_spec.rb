@@ -42,6 +42,7 @@ RSpec.describe Openapi::ErrorInjector do
         )
 
         expect(examples).to have_key('invalid_token_error')
+        expect(examples).to have_key('missing_token_error')
         expect(examples).to have_key('expired_token_error')
         expect(examples).to have_key('blacklisted_token_error')
 
@@ -49,6 +50,18 @@ RSpec.describe Openapi::ErrorInjector do
         expect(token_error['value']['errors'].first['code']).to eq('00101')
         expect(token_error).to have_key('summary')
         expect(token_error).to have_key('description')
+      end
+
+      it 'documents a missing token apart from an invalid one on 401' do
+        described_class.new(open_api, config_path:).perform
+
+        examples = open_api.dig(
+          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
+          '401', 'content', 'application/json', 'examples'
+        )
+
+        expect(examples['invalid_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas valide")
+        expect(examples['missing_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas renseigné")
       end
 
       it 'includes siren in 422 path params' do
@@ -228,6 +241,18 @@ RSpec.describe Openapi::ErrorInjector do
         expect(examples).to have_key('missing_mandatory_params_recipient_error')
         expect(examples).not_to have_key('missing_mandatory_params_context_error')
         expect(examples).not_to have_key('missing_mandatory_params_object_error')
+      end
+
+      it 'documents a missing token apart from an invalid one on 401' do
+        described_class.new(open_api, config_path:).perform
+
+        examples = open_api.dig(
+          'paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses',
+          '401', 'content', 'application/json', 'examples'
+        )
+
+        expect(examples['invalid_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas valide")
+        expect(examples['missing_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas renseigné")
       end
     end
   end
