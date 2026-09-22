@@ -44,6 +44,33 @@ RSpec.describe INSEESireneAPIClient do
       it 'retries the request once' do
         expect(etablissement_payload).to eq({ 'ok' => true })
       end
+
+      it 'reports the rejected bearer' do
+        allow(MonitoringService.instance).to receive(:track)
+
+        etablissement_payload
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          'INSEE rejected the bearer, reauthenticating',
+          level: :warning
+        )
+      end
+
+      it 'reports it once per interval, whatever the traffic' do
+        allow(MonitoringService.instance).to receive(:track)
+
+        stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}")
+          .to_return({ status: 401, body: '' },
+            { status: 200, headers: { 'Content-Type' => 'application/json' }, body: { ok: true }.to_json },
+            { status: 401, body: '' },
+            { status: 200, headers: { 'Content-Type' => 'application/json' }, body: { ok: true }.to_json },
+            { status: 401, body: '' },
+            { status: 200, headers: { 'Content-Type' => 'application/json' }, body: { ok: true }.to_json })
+
+        3.times { described_class.new.etablissement(siret:) }
+
+        expect(MonitoringService.instance).to have_received(:track).once
+      end
     end
 
     context 'when the token is rejected twice' do

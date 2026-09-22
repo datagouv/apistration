@@ -37,6 +37,25 @@ RSpec.describe INSEE::MakeRequest, type: :interactor do
 
       it { is_expected.to be_a_success }
 
+      it 'reports the rejected bearer' do
+        allow(MonitoringService.instance).to receive(:track)
+
+        make_request
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          'warning',
+          'INSEE rejected the bearer, reauthenticating'
+        )
+      end
+
+      it 'reports it once per interval, whatever the traffic' do
+        allow(MonitoringService.instance).to receive(:track)
+
+        3.times { INSEE::UniteLegale::MakeRequest.call(params:, token:) }
+
+        expect(MonitoringService.instance).to have_received(:track).once
+      end
+
       it 'retries with the new token' do
         make_request
 

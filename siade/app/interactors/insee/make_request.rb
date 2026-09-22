@@ -1,4 +1,8 @@
 class INSEE::MakeRequest < MakeRequest::Get
+  REJECTED_BEARER_MESSAGE = 'INSEE rejected the bearer, reauthenticating'.freeze
+  REJECTED_BEARER_CACHE_KEY = 'insee/rejected_bearer'.freeze
+  REJECTED_BEARER_REPORT_INTERVAL = 5.minutes
+
   def call
     super
 
@@ -43,10 +47,26 @@ class INSEE::MakeRequest < MakeRequest::Get
 
   def retry_with_new_token!
     context.token_refresh_attempted = true
+
+    report_rejected_bearer!
+
     reauthenticate!
 
     api_call_with_error_handling
     fail_with_temporary_auth_error! if token_expired_response?
+  end
+
+  def report_rejected_bearer!
+    already_reported = Rails.cache.write(
+      REJECTED_BEARER_CACHE_KEY,
+      true,
+      expires_in: REJECTED_BEARER_REPORT_INTERVAL,
+      unless_exist: true
+    ) == false
+
+    return if already_reported
+
+    MonitoringService.instance.track('warning', REJECTED_BEARER_MESSAGE)
   end
 
   def reauthenticate!
