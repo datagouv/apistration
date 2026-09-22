@@ -52,6 +52,14 @@ RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissance, type: :validate_param
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
 
+    context 'when it starts with 00' do
+      let(:code_cog_insee_commune_naissance) { '00190' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
     context 'when it is corse' do
       let(:code_cog_insee_commune_naissance) { '2A004' }
 

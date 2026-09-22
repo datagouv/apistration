@@ -7,7 +7,7 @@ class CNAV::ValidateCodeCogINSEECommuneNaissance < ValidateParamInteractor
 
   def valid?
     (code_cog_insee_commune_naissance.blank? && !france?) ||
-      code_cog_insee_commune_naissance =~ /^([013-9]\d|2[AB1-9])\d{3}$/
+      code_cog_insee_commune_naissance =~ Civility::ValidateCodeCogINSEECommuneNaissance::FORMAT
   end
 
   def france?
