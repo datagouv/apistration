@@ -12,7 +12,6 @@ params:
   anneeDateNaissance: 2007
   moisDateNaissance: 3
   jourDateNaissance: 15
-  codeCogInseeCommuneNaissance: '95277'
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'M'
 status: 200
