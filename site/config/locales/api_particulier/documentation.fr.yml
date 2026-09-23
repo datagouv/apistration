@@ -650,10 +650,14 @@ fr:
                 content: |+
                   Chaque éditeur référencé dispose d'un **espace éditeur** dédié, distinct de l'espace utilisateur classique. Il permet notamment de&nbsp;:
 
-                  - mettre à jour les **informations de l'éditeur** (raison sociale, contacts, plages d'IP autorisées…)&nbsp;;
+                  - mettre à jour les **informations de l'éditeur** (raison sociale, description, contacts…)&nbsp;;
+                  - consulter ses **plages d'IP autorisées**, en lecture seule&nbsp;;
                   - consulter la liste des **délégations** actives et révoquées&nbsp;;
                   - gérer les **jetons éditeur** (génération, rotation, révocation, restriction par IP)&nbsp;;
                   - visualiser les **habilitations** rattachées aux formulaires portés par l'éditeur.
+
+                  {:.fr-highlight}
+                  > ⚠️ Les **plages d'IP autorisées** ne sont pas paramétrables depuis l'espace éditeur&nbsp;: elles sont configurées par l'équipe API&nbsp;Particulier. Leur transmission est un **prérequis à l'obtention d'un jeton éditeur**&nbsp;: contactez l'équipe depuis [votre espace éditeur](<%= editor_settings_path %>){:target="_blank"} pour les transmettre ou les faire modifier.
 
                   {:.fr-highlight}
                   > ℹ️ L'accès à l'espace éditeur est réservé aux éditeurs **référencés** par l'équipe API&nbsp;Particulier. Pour être référencé, écrivez à [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr)&nbsp;: nous rattacherons votre compte à la fiche éditeur correspondante.
