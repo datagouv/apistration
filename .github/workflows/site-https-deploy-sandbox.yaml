@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        host: [watchdoge3, watchdoge4]
+        host: ${{ fromJSON(vars.DEPLOY_TARGET_HOSTS_JSON) }}
       fail-fast: false
     environment: sandbox
     env:
