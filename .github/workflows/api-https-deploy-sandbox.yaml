@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        host: ${{ fromJSON(vars.DEPLOY_TARGET_HOSTS_JSON }}
+        host: ${{ fromJSON(vars.DEPLOY_TARGET_HOSTS_JSON) }}
       fail-fast: false
     environment: sandbox
     env:
