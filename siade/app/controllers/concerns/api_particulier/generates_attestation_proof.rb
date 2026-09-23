@@ -31,12 +31,16 @@ module APIParticulier::GeneratesAttestationProof
 
   def serialize_data
     payload = super.deep_stringify_keys
-    return payload if generate_proof_mode.nil?
+    return payload if generate_proof_mode.nil? || mocked_error?
 
     ensure_proof_was_built!
     payload['meta'] = payload.fetch('meta', {}).merge(proof_meta)
     payload['links'] = payload.fetch('links', {}).merge('attestation_pdf' => pdf_link) if pdf_mode?
     payload
+  end
+
+  def mocked_error?
+    organizer.mocked_data.present? && organizer.mocked_data[:status] != 200
   end
 
   def ensure_proof_was_built!

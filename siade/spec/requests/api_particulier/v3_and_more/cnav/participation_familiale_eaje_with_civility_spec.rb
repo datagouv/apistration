@@ -209,6 +209,22 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!
+
+            context 'with X-Generate-Proof on a mocked not found (staging)' do
+              before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+              let(:nomNaissance) { 'LEFEBVRE' }
+              let(:sexeEtatCivil) { 'F' }
+              let(:codeCogInseeCommuneNaissance) { '00404' }
+              let(:'X-Generate-Proof') { 'proof-only' }
+
+              run_test! do |response|
+                json = JSON.parse(response.body)
+
+                expect(json['errors'].first['code']).to eq('37003')
+                expect(json).not_to have_key('meta')
+              end
+            end
           end
         end
 

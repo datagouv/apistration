@@ -5,7 +5,7 @@ class APIParticulier::BuildAttestationProof < ApplicationInteractor
   declares_no_specific_errors!
 
   def call
-    return if context.generate_proof_mode.blank?
+    return if context.generate_proof_mode.blank? || mocked_error?
 
     build_verification_link
     build_pdf_link if context.generate_proof_mode == 'pdf'
@@ -113,6 +113,10 @@ class APIParticulier::BuildAttestationProof < ApplicationInteractor
 
     payload = context.mocked_data[:payload]
     payload[:data] || payload['data']
+  end
+
+  def mocked_error?
+    context.mocked_data.present? && context.mocked_data[:status] != 200
   end
 
   def emise_le
