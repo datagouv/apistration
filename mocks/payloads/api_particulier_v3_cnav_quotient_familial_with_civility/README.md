@@ -3,7 +3,7 @@
 
   Status `200`
 
-  ## Parent et trois enfants mineurs - QF CNAF de 699
+  ## Parent avec nom d'usage et trois enfants mineurs - QF CNAF de 699
 
 Ce cas permet de tester :
 - [Param. appel] Utilisation du paramètre nomUsage
@@ -4727,7 +4727,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
   ```json
   {
     "nomNaissance": "LEFEBVRE",
-    "codeCogInseeCommuneNaissance": "00404",
+    "codeCogInseeCommuneNaissance": "08404",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "F"
   }
@@ -4763,7 +4763,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=00404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=08404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/identite"
   ```
 

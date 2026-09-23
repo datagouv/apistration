@@ -2,7 +2,7 @@
 description: 'Dossier non trouvé'
 params:
   nomNaissance: 'DUBOCHE'
-  codeInseeLieuDeNaissance: '00404'
+  codeInseeLieuDeNaissance: '08404'
   codePaysLieuDeNaissance: '99100'
   sexe: F
 status: 404

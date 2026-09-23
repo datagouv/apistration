@@ -11,7 +11,7 @@
   ```json
   {
     "nomNaissance": "LEFEBVRE",
-    "codeCogInseeCommuneNaissance": "00404",
+    "codeCogInseeCommuneNaissance": "08404",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "F"
   }

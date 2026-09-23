@@ -135,12 +135,12 @@ Ce cas permet de tester :
   ""reason"": "" Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client."",
   ""message"": ""Le serveur ne peut pas la requête en raison de quelque chose qui est perçu comme une erreur du client.""
 }"
-,Dossier non trouvé,"{""nomNaissance"":""DUBOCHE"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
+,Dossier non trouvé,"{""nomNaissance"":""DUBOCHE"",""codeInseeLieuDeNaissance"":""08404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
-,Timeout - délai d'attente dépassé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
+,Timeout - délai d'attente dépassé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""codeInseeLieuDeNaissance"":""08503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
   ""error"": ""network_error"",
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
