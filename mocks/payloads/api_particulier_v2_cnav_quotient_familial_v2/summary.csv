@@ -764,12 +764,12 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
-,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
+,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeInseeLieuDeNaissance"":""08404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
-,Timeout - délai d'attente dépassé,"{""nomNaissance"":""LEFEBVRE"",""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
+,Timeout - délai d'attente dépassé,"{""nomNaissance"":""LEFEBVRE"",""codeInseeLieuDeNaissance"":""08503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
   ""error"": ""network_error"",
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""

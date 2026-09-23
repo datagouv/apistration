@@ -172,7 +172,7 @@
     "prenoms": [
       "JEROME"
     ],
-    "codeInseeLieuDeNaissance": "00503",
+    "codeInseeLieuDeNaissance": "08503",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
   }
@@ -200,7 +200,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'codeInseeLieuDeNaissance=08503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-soutien-familial"
   ```
 

@@ -4,7 +4,7 @@ params:
   nomNaissance: 'DUBOCHE'
   prenoms:
   - 'JEROME'
-  codeInseeLieuDeNaissance: '00503'
+  codeInseeLieuDeNaissance: '08503'
   codePaysLieuDeNaissance: '99100'
   sexe: F
 status: 503

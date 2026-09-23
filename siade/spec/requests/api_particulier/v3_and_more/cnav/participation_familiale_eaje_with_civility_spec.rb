@@ -215,7 +215,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
               let(:nomNaissance) { 'LEFEBVRE' }
               let(:sexeEtatCivil) { 'F' }
-              let(:codeCogInseeCommuneNaissance) { '00404' }
+              let(:codeCogInseeCommuneNaissance) { '08404' }
               let(:'X-Generate-Proof') { 'proof-only' }
 
               run_test! do |response|

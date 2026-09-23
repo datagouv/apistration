@@ -212,7 +212,7 @@ d'erreur selon les informations que vous fournirez.
   ```json
   {
     "nomNaissance": "LEFEBVRE",
-    "codeCogInseeCommuneNaissance": "00404",
+    "codeCogInseeCommuneNaissance": "08404",
     "codeCogInseePaysNaissance": "99100",
     "sexeEtatCivil": "F"
   }
@@ -248,7 +248,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=00404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=08404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite"
   ```
 
