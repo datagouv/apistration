@@ -1,5 +1,5 @@
 class PROBTP::MakeRequest < MakeRequest::Post
-  include UseWildcardSSLCertificate
+  include UseANTSIssuedSSLCertificate
 
   protected
 
@@ -10,7 +10,7 @@ class PROBTP::MakeRequest < MakeRequest::Post
   end
 
   def http_options
-    http_wildcard_ssl_options
+    http_ants_issued_ssl_options
   end
 
   def probtp_domain
