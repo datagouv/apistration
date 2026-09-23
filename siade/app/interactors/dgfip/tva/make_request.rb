@@ -1,6 +1,9 @@
 class DGFIP::TVA::MakeRequest < MakeRequest::Get
   BASE_URL = 'https://tabular-api.data.gouv.fr'.freeze
   RESOURCE_ID = '5199cd40-0e9c-4a24-8ba3-c2365999b2aa'.freeze
+  CACHE_BUSTING_FIRST_DATE = Date.new(1000, 1, 1)
+  CACHE_BUSTING_DATES_COUNT = 300_000
+  CACHE_BUSTING_PERIOD_IN_SECONDS = 1.hour.to_i
 
   protected
 
@@ -26,7 +29,8 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
   end
 
   def cache_busting_date
-    two_day_bucket = Time.now.to_i / (86_400 * 2)
-    (Date.new(1000, 1, 1) + two_day_bucket).iso8601
+    hourly_bucket = Time.now.to_i / CACHE_BUSTING_PERIOD_IN_SECONDS
+
+    (CACHE_BUSTING_FIRST_DATE + (hourly_bucket % CACHE_BUSTING_DATES_COUNT)).iso8601
   end
 end
