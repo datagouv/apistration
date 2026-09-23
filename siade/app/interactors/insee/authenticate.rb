@@ -99,6 +99,8 @@ class INSEE::Authenticate < MakeRequest::Post
 
       return store_token(payload) if token_granted?(response, payload)
 
+      remember_refusal(response, payload)
+
       fail_with_temporary_error! if transient?(response)
       next if invalid_grant?(response, payload)
 
@@ -107,6 +109,14 @@ class INSEE::Authenticate < MakeRequest::Post
     end
 
     nil
+  end
+
+  def remember_refusal(response, payload)
+    @refusal = {
+      http_response_code: response.code.to_i,
+      provider_error: payload['error'],
+      provider_error_description: payload['error_description']
+    }.compact_blank
   end
 
   def token_granted?(response, payload)
@@ -198,7 +208,7 @@ class INSEE::Authenticate < MakeRequest::Post
         period: INSEE::PasswordDerivation.current_period,
         bypassed: INSEE::PasswordDerivation.bypassed?,
         candidates_count: INSEE::PasswordDerivation.candidates.size
-      }
+      }.merge(@refusal.to_h)
     )
   end
 end

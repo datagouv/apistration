@@ -1,5 +1,5 @@
 class INSEEOAuthExchange
-  Attempt = Data.define(:status, :token, :expires_in)
+  Attempt = Data.define(:status, :token, :expires_in, :detail)
 
   OAUTH_URL = 'https://auth.insee.net/auth/realms/apim-gravitee/protocol/openid-connect/token'.freeze
   TIMEOUT = 5
@@ -12,9 +12,9 @@ class INSEEOAuthExchange
 
     return granted_attempt(payload) if granted?(response, payload)
 
-    rejected_attempt(rejection_status(response, payload))
-  rescue Faraday::Error
-    rejected_attempt(:unavailable)
+    rejected_attempt(rejection_status(response, payload), refusal_detail(response, payload))
+  rescue Faraday::Error => e
+    rejected_attempt(:unavailable, { provider_error_description: e.message })
   end
 
   private
@@ -49,11 +49,19 @@ class INSEEOAuthExchange
   end
 
   def granted_attempt(payload)
-    Attempt.new(status: :granted, token: payload['access_token'], expires_in: payload['expires_in'])
+    Attempt.new(status: :granted, token: payload['access_token'], expires_in: payload['expires_in'], detail: nil)
   end
 
-  def rejected_attempt(status)
-    Attempt.new(status:, token: nil, expires_in: nil)
+  def rejected_attempt(status, detail)
+    Attempt.new(status:, token: nil, expires_in: nil, detail:)
+  end
+
+  def refusal_detail(response, payload)
+    {
+      http_response_code: response.status,
+      provider_error: payload['error'],
+      provider_error_description: payload['error_description']
+    }.compact_blank
   end
 
   def parsed_body(response)

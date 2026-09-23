@@ -1,6 +1,10 @@
 class INSEESireneAPIClient < AbstractINSEEAPIClient
   class EntityNotFoundError < StandardError; end
 
+  REJECTED_BEARER_MESSAGE = 'INSEE rejected the bearer, reauthenticating'.freeze
+  REJECTED_BEARER_CACHE_KEY = 'insee/rejected_bearer'.freeze
+  REJECTED_BEARER_REPORT_INTERVAL = 5.minutes
+
   def etablissement(siret:)
     retrying_once_with_a_fresh_token do
       http_connection.get(
@@ -28,8 +32,23 @@ class INSEESireneAPIClient < AbstractINSEEAPIClient
   def retrying_once_with_a_fresh_token
     yield
   rescue Faraday::UnauthorizedError
+    report_rejected_bearer!
+
     INSEEAPIAuthentication.invalidate_token_cache!(@bearer_token)
 
     yield
+  end
+
+  def report_rejected_bearer!
+    already_reported = Rails.cache.write(
+      REJECTED_BEARER_CACHE_KEY,
+      true,
+      expires_in: REJECTED_BEARER_REPORT_INTERVAL,
+      unless_exist: true
+    ) == false
+
+    return if already_reported
+
+    MonitoringService.instance.track(REJECTED_BEARER_MESSAGE, level: :warning)
   end
 end

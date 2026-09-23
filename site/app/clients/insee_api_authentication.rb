@@ -43,7 +43,7 @@ class INSEEAPIAuthentication
     cache_read(FAILURE_CACHE_KEY).present?
   end
 
-  def record_authentication_failure!(message)
+  def record_authentication_failure!(message, detail = {})
     cache_write(FAILURE_CACHE_KEY, true, expires_in: FAILURE_TTL)
 
     MonitoringService.instance.track(
@@ -53,7 +53,7 @@ class INSEEAPIAuthentication
         period: INSEE::PasswordDerivation.current_period,
         bypassed: INSEE::PasswordDerivation.bypassed?,
         candidates_count: INSEE::PasswordDerivation.candidates.size
-      }
+      }.merge(detail.to_h)
     )
   end
 
@@ -99,6 +99,8 @@ class INSEEAPIAuthentication
       result = attempt(candidate)
 
       return store_token(result) if result.status == :granted
+
+      @refusal = result.detail
       next if result.status == :invalid_grant
 
       fail_on_rejection!(REFUSED_EXCHANGE_MESSAGE, 'INSEE refused the OAuth exchange') if result.status == :rejected
@@ -137,7 +139,7 @@ class INSEEAPIAuthentication
   end
 
   def fail_on_rejection!(alert, error)
-    record_authentication_failure!(alert)
+    record_authentication_failure!(alert, @refusal.to_h)
 
     raise AuthenticationError, error
   end

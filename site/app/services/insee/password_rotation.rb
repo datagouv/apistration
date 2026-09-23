@@ -34,7 +34,7 @@ class INSEE::PasswordRotation
 
     return renew(old_password: from, token: fallback.token) if fallback.status == :granted
 
-    @authentication.record_authentication_failure!(DESYNCHRONIZED_MESSAGE)
+    @authentication.record_authentication_failure!(DESYNCHRONIZED_MESSAGE, fallback.detail.to_h)
 
     :desynchronized
   end
@@ -42,14 +42,14 @@ class INSEE::PasswordRotation
   def probe(password)
     attempt = @authentication.attempt(password)
 
-    fail_on_refusal! if attempt.status == :rejected
+    fail_on_refusal!(attempt) if attempt.status == :rejected
     raise UnavailableError, 'INSEE OAuth is unavailable' if attempt.status == :unavailable
 
     attempt
   end
 
-  def fail_on_refusal!
-    @authentication.record_authentication_failure!(INSEEAPIAuthentication::REFUSED_EXCHANGE_MESSAGE)
+  def fail_on_refusal!(attempt)
+    @authentication.record_authentication_failure!(INSEEAPIAuthentication::REFUSED_EXCHANGE_MESSAGE, attempt.detail.to_h)
 
     raise UnavailableError, INSEEAPIAuthentication::REFUSED_EXCHANGE_MESSAGE
   end

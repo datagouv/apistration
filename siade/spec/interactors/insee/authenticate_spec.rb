@@ -257,6 +257,20 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       )
     end
 
+    it 'reports what INSEE answered' do
+      retrieve_token
+
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+        'error',
+        'INSEE authentication failed on every candidate: password desynchronized or account locked',
+        hash_including(
+          http_response_code: 401,
+          provider_error: 'invalid_grant',
+          provider_error_description: 'Invalid user credentials'
+        )
+      )
+    end
+
     it 'remembers the failure for 30 minutes' do
       retrieve_token
 

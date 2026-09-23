@@ -254,6 +254,20 @@ RSpec.describe INSEEAPIAuthentication do
         )
       end
 
+      it 'reports what INSEE answered' do
+        expect { authentication.access_token }.to raise_error(described_class::AuthenticationError)
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          'INSEE authentication failed on every candidate: password desynchronized or account locked',
+          level: :error,
+          context: hash_including(
+            http_response_code: 401,
+            provider_error: 'invalid_grant',
+            provider_error_description: 'Invalid user credentials'
+          )
+        )
+      end
+
       it 'remembers the failure' do
         expect { authentication.access_token }.to raise_error(described_class::AuthenticationError)
 

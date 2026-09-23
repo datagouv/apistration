@@ -30,6 +30,22 @@ RSpec.describe INSEEOAuthExchange do
       expect(exchange.attempt('SomeP4ssword!').status).to eq(:invalid_grant)
     end
 
+    it 'carries what INSEE answered on a rejected password' do
+      stub_oauth(**json_response(401, { error: 'invalid_grant', error_description: 'Account is temporarily disabled' }))
+
+      expect(exchange.attempt('SomeP4ssword!').detail).to include(
+        http_response_code: 401,
+        provider_error: 'invalid_grant',
+        provider_error_description: 'Account is temporarily disabled'
+      )
+    end
+
+    it 'carries no detail on a granted token' do
+      stub_oauth(**json_response(200, { access_token: 'a-fresh-insee-token', expires_in: 598_077 }))
+
+      expect(exchange.attempt('SomeP4ssword!').detail).to be_nil
+    end
+
     it 'tells a refused OAuth exchange from a rejected password' do
       stub_oauth(**json_response(400, { error: 'invalid_client' }))
 
