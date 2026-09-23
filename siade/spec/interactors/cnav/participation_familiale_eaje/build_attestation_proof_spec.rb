@@ -50,6 +50,13 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
     expect(result.verification_token).to be_nil
   end
 
+  it 'is a no-op on a mocked provider error, which carries no data to attest' do
+    result = described_class.call(**context_args, mocked_data: { status: 404, payload: { 'errors' => [{ 'code' => '37003' }] } })
+
+    expect(result).to be_a_success
+    expect(result.verification_token).to be_nil
+  end
+
   describe 'the verification token' do
     it 'is self-contained — labels, titles and formatted values are resolved at issuance' do
       expect(verification_payload).to eq(
