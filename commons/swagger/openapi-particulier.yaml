@@ -951,6 +951,75 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_ants_extrait_immatriculation_vehicule_with_france_connect, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/ants/extrait_immatriculation_vehicule#erreurs.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '42999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: ANTS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_ants_extrait_immatriculation_vehicule_with_france_connect, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/ants/extrait_immatriculation_vehicule#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '42020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: ANTS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_ants_extrait_immatriculation_vehicule_with_france_connect, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/ants/extrait_immatriculation_vehicule#erreurs.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '42002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: ANTS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_adulte_handicape/identite":
     get:
       summary: "[Identité] Statut allocation adulte handicapé (AAH)"
@@ -1388,6 +1457,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_adulte_handicape_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/allocation_adulte_handicape#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_adulte_handicape/france_connect":
     get:
       summary: "[FranceConnect] Statut allocation adulte handicapé (AAH)"
@@ -1655,6 +1745,50 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_enfant_handicape/identite":
@@ -2109,6 +2243,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_enfant_handicape_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/aeeh#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_enfant_handicape/france_connect":
     get:
       summary: "[FranceConnect] Statut allocation d'éducation de l'enfant handicapé
@@ -2392,6 +2547,50 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_enfant_handicape_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_enfant_handicape_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_rentree_scolaire/identite":
@@ -2840,6 +3039,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_rentree_scolaire_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/allocation_rentree_scolaire#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_rentree_scolaire/france_connect":
     get:
       summary: "[FranceConnect] Statut allocation de rentrée scolaire (ARS)"
@@ -3116,6 +3336,50 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_rentree_scolaire_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_rentree_scolaire_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_soutien_familial/identite":
@@ -3557,6 +3821,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_soutien_familial_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/allocation_soutien_familial#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/allocation_soutien_familial/france_connect":
     get:
       summary: "[FranceConnect] Statut allocation de soutien familial (ASF)"
@@ -3826,6 +4111,50 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/complementaire_sante_solidaire/identite":
@@ -4289,6 +4618,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/complementaire_sante_solidaire#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/complementaire_sante_solidaire/france_connect":
     get:
       summary: "[FranceConnect] Statut complémentaire santé solidaire (C2S)"
@@ -4580,6 +4930,50 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/participation_familiale_eaje/identite":
@@ -5230,6 +5624,27 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_participation_familiale_eaje_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/psu#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/participation_familiale_eaje/france_connect":
     get:
       summary: "[FranceConnect] Participation familiale EAJE"
@@ -5646,6 +6061,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_participation_familiale_eaje_with_france_connect.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '36999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_participation_familiale_eaje_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_participation_familiale_eaje_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/prime_activite/identite":
@@ -6097,6 +6581,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_prime_activite_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/prime_activite#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/prime_activite/france_connect":
     get:
       summary: "[FranceConnect] Statut prime d'activité"
@@ -6401,6 +6906,27 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_prime_activite_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/dss/quotient_familial/identite":
@@ -7118,6 +7644,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_quotient_familial_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/quotient_familial#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '35020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/quotient_familial/france_connect":
     get:
       summary: "[FranceConnect] Quotient familial CAF & MSA"
@@ -7651,6 +8198,50 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_quotient_familial_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '35020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_quotient_familial_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '35002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNAF & MSA
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/revenu_solidarite_active/identite":
     get:
       summary: "[Identité] Statut revenu de solidarité active (RSA)"
@@ -8100,6 +8691,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_revenu_solidarite_active_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/revenu_solidarite_active#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dss/revenu_solidarite_active/france_connect":
     get:
       summary: "[FranceConnect] Statut revenu de solidarité active (RSA)"
@@ -8379,6 +8991,50 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '36020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '36002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: Sécurité sociale
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/cnous/etudiant_boursier/identite":
@@ -8881,6 +9537,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/cnous/etudiant_boursier/france_connect":
     get:
       summary: "[FranceConnect] Statut étudiant boursier"
@@ -9166,6 +9843,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/cnous/etudiant_boursier/ine":
@@ -9566,6 +10312,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v4/cnous/etudiant_boursier/identite":
@@ -10058,6 +10825,75 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier_v4#erreurs.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier_v4#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier_v4#erreurs.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v4/cnous/etudiant_boursier/france_connect":
     get:
       summary: "[FranceConnect] Statut étudiant boursier"
@@ -10377,6 +11213,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v4/cnous/etudiant_boursier/ine":
@@ -10768,6 +11673,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v5/cnous/etudiant_boursier/identite":
@@ -11267,6 +12241,75 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#erreurs.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#erreurs.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v5/cnous/etudiant_boursier/france_connect":
     get:
       summary: "[FranceConnect] Statut étudiant boursier"
@@ -11593,6 +12636,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v5/cnous/etudiant_boursier/ine":
@@ -11993,6 +13105,75 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '26999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '26020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_cnous_etudiant_boursier_with_ine.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '26002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CNOUS
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dsnj/service_national/identite":
     get:
       summary: "[Identité] API Service national"
@@ -12369,6 +13550,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_dsnj_service_national_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/dsnj/service_national#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '39020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/dsnj/service_national/france_connect":
     get:
       summary: "[FranceConnect] API Service national"
@@ -12603,6 +13805,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_dsnj_service_national_with_france_connect.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '39999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_dsnj_service_national_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '39020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_dsnj_service_national_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '39002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: DSNJ
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/france_travail/indemnites/identifiant":
@@ -12910,6 +14181,27 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_france_travail_indemnites_with_identifiant, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/pole_emploi/indemnites#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '24020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/france_travail/statut/identifiant":
@@ -13397,6 +14689,27 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_france_travail_statut_with_identifiant, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/pole_emploi/situation#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '24020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/gip_mds/service_civique/identite":
@@ -14774,6 +16087,27 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_men_scolarites_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '30020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v4/men/scolarites/identite":
     get:
       summary: Statut élève scolarisé et boursier
@@ -15300,6 +16634,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v4_men_scolarites_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise_v4#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '30020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v5/men/scolarites/identite":
@@ -15869,6 +17224,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v5_men_scolarites_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '30020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/mesri/statut_etudiant/identite":
     get:
       summary: "[Identité] Statut étudiant"
@@ -16377,6 +17753,27 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/mesri/statut_etudiant#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '25020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/mesri/statut_etudiant/france_connect":
     get:
       summary: "[FranceConnect] Statut étudiant"
@@ -16690,6 +18087,75 @@ paths:
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: |-
+            Erreur du fournisseur
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_france_connect.
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '25999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '25020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: |-
+            Erreur d'intermédiaire
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_france_connect.
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '25002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/mesri/statut_etudiant/ine":
@@ -17098,6 +18564,27 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_ine.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '25020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MESRI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/sdh/statut_sportif/identifiant":
@@ -17657,6 +19144,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_sdh_statut_sportif_with_identifiant, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/sport_data_hub/statut_sportif#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '41020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: SDH
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
 servers:

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Openapi::ErrorInjector do
   let(:config_path) { Rails.root.join('config/openapi_common_errors/entreprise.yml') }
+  let(:api) { :entreprise }
 
   describe '#perform' do
     context 'with a route that has a provider' do
@@ -20,7 +21,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'injects all error responses' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         responses = open_api.dig('paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses')
 
@@ -35,7 +36,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'produces valid example structure for 401' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -51,7 +52,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'documents a single 422 example' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -63,7 +64,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'uses provider name in 502/504 examples' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         examples_502 = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -77,7 +78,7 @@ RSpec.describe Openapi::ErrorInjector do
       it 'documents the provider maintenance on 503 whatever the time of generation' do
         allow(MaintenanceService).to receive(:new).and_return(instance_double(MaintenanceService, on?: true))
 
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         error = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -108,7 +109,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'skips 502, 503 and 504' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
@@ -118,7 +119,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'still injects 401, 403, 409, 429' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
@@ -146,7 +147,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'does not overwrite existing responses' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         response_401 = open_api.dig('paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses', '401')
         expect(response_401['description']).to eq('Custom 401')
@@ -155,6 +156,7 @@ RSpec.describe Openapi::ErrorInjector do
 
     context 'with particulier config' do
       let(:config_path) { Rails.root.join('config/openapi_common_errors/particulier.yml') }
+      let(:api) { :particulier }
 
       let(:open_api) do
         {
@@ -171,7 +173,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'points at the API Particulier introspection route in the insufficient privileges example' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         examples = open_api.dig(
           'paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses',
@@ -179,6 +181,19 @@ RSpec.describe Openapi::ErrorInjector do
         )
 
         expect(examples.dig('insufficient_privileges_error', 'description')).to include('/api/introspect')
+      end
+
+      it 'names the provider the nomenclature declares for the operation, which its path does not carry' do
+        open_api.dig('paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses', '200')['x-operationId'] =
+          'api_particulier_v3_cnav_allocation_adulte_handicape_with_civility'
+
+        described_class.new(open_api, config_path:, api:).perform
+
+        responses = open_api.dig('paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses')
+        maintenance_error = responses.dig('503', 'content', 'application/json', 'examples', 'maintenance_error', 'value', 'errors', 0)
+
+        expect(responses.keys).to include('502', '503', '504')
+        expect(maintenance_error).to include('code' => '36020', 'meta' => { 'provider' => 'Sécurité sociale' })
       end
     end
   end

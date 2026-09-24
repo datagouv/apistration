@@ -7526,12 +7526,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '03020'
+                    - code: '43020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: DGFIP - Adélie
+                        provider: DGFIP - TVA
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
@@ -14446,12 +14446,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '05020'
+                    - code: '34020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: INPI
+                        provider: INPI - RNE
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
@@ -15504,12 +15504,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '05020'
+                    - code: '34020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: INPI
+                        provider: INPI - RNE
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
@@ -16314,12 +16314,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '05020'
+                    - code: '34020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: INPI
+                        provider: INPI - RNE
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
@@ -34270,12 +34270,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '21020'
+                    - code: '44020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: MI
+                        provider: SIAF
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
@@ -35024,12 +35024,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '21020'
+                    - code: '44020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: MI
+                        provider: SIAF
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
@@ -35888,12 +35888,12 @@ paths:
                 maintenance_error:
                   value:
                     errors:
-                    - code: '21020'
+                    - code: '44020'
                       title: Maintenance du fournisseur de données
                       detail: Le fournisseur de données semble être en maintenance
                       source:
                       meta:
-                        provider: MI
+                        provider: SIAF
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
               schema:
