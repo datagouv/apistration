@@ -31,7 +31,14 @@ module HandleTokens
   end
 
   def invalid_token_error
-    InvalidTokenError.new(token_provided? ? :invalid : :missing)
+    case @token_extraction_failure_reason
+    when :production_token_on_staging
+      ProductionTokenOnStagingError.new
+    when :staging_token_on_production
+      StagingTokenOnProductionError.new(api_kind)
+    else
+      InvalidTokenError.new(token_provided? ? :invalid : :missing)
+    end
   end
 
   def token_provided?
@@ -63,7 +70,8 @@ module HandleTokens
   def extract_user_from_token
     token = params[:token] || bearer_token_from_headers || api_key_token_from_headers
     JwtTokenService.instance.extract_user(token) if token
-  rescue JwtTokenService::ExtractionError
+  rescue JwtTokenService::ExtractionError => e
+    @token_extraction_failure_reason = e.reason
     nil
   end
 

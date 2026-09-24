@@ -101,6 +101,58 @@ RSpec.describe APIController do
     end
   end
 
+  describe 'token issued by another environment' do
+    let(:payload) { TokenFactory.new(['whatever']).payload(uid: SecureRandom.uuid) }
+    let(:token) { JWT.encode(payload, 'another environment secret', Siade.credentials[:jwt_hash_algo]) }
+
+    before do
+      request.host = 'entreprise.api.gouv.fr'
+      request.headers['Authorization'] = "Bearer #{token}"
+    end
+
+    context 'when a production token is sent to staging' do
+      before do
+        allow(Rails.env).to receive(:staging?).and_return(true)
+      end
+
+      it 'returns 401 stating the token only works in production' do
+        get :index
+
+        expect(response).to have_http_status(:unauthorized)
+        expect(response_json).to have_json_error(code: '00108', detail: ProductionTokenOnStagingError.new.detail)
+      end
+
+      it 'does not render the token payload' do
+        get :index
+
+        expect(response.body).not_to include(payload[:uid])
+      end
+    end
+
+    context 'when a staging token is sent to production' do
+      let(:payload) { super().merge(sub: 'staging', jti: JwtTokenService::STAGING_TOKEN_JTI) }
+
+      before do
+        allow(Rails.env).to receive(:production?).and_return(true)
+      end
+
+      it 'returns 401 stating the token only works on staging' do
+        get :index
+
+        expect(response).to have_http_status(:unauthorized)
+        expect(response_json).to have_json_error(code: '00109', detail: StagingTokenOnProductionError.new('api_entreprise').detail)
+      end
+    end
+
+    context 'when the environment does not tell anything about the token' do
+      it 'returns 401 stating the token is invalid' do
+        get :index
+
+        expect(response_json).to have_json_error(code: '00101', detail: "Votre token n'est pas valide")
+      end
+    end
+  end
+
   context 'with a jwt token' do
     context 'when jwt is passed in the header' do
       before { request.headers['Authorization'] = "Bearer #{token}" }

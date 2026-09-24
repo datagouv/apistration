@@ -53,4 +53,29 @@ RSpec.describe APIParticulier::V2::BaseController, 'authentication' do
       )
     end
   end
+
+  context 'with a staging token sent to production' do
+    let(:token) do
+      payload = TokenFactory.new(['whatever']).payload(uid: SecureRandom.uuid).merge(sub: 'staging')
+
+      JWT.encode(payload, 'staging secret', Siade.credentials[:jwt_hash_algo])
+    end
+
+    before do
+      allow(Rails.env).to receive(:production?).and_return(true)
+      get :show, params: { token: }
+    end
+
+    it { expect(response).to have_http_status(:unauthorized) }
+
+    it 'states the token only works on staging' do
+      detail = StagingTokenOnProductionError.new('api_particulier').detail
+
+      expect(body).to eq(
+        error: 'access_denied',
+        reason: detail,
+        message: detail
+      )
+    end
+  end
 end
