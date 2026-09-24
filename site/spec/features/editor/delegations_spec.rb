@@ -62,6 +62,17 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
           expect(page).to have_css('.delegation-created-at', text: '14/03/2026')
         end
       end
+
+      it 'displays the SIRET alone when the organization has no INSEE payload yet' do
+        create(:organization, siret: active_delegation.authorization_request.siret, insee_payload: {})
+
+        visit editor_delegations_path
+
+        within "##{dom_id(active_delegation)}" do
+          expect(page).to have_text(active_delegation.authorization_request.siret)
+          expect(page).to have_no_text("(#{active_delegation.authorization_request.siret})")
+        end
+      end
     end
 
     context 'when the editor does not serve the current api' do
