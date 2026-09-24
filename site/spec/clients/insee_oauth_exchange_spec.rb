@@ -58,6 +58,18 @@ RSpec.describe INSEEOAuthExchange do
       expect(exchange.attempt('SomeP4ssword!').status).to eq(:unavailable)
     end
 
+    it 'carries no detail on an unavailable OAuth' do
+      stub_oauth(status: 503, body: '')
+
+      expect(exchange.attempt('SomeP4ssword!').detail).to be_nil
+    end
+
+    it 'carries no detail when INSEE cannot be reached' do
+      stub_request(:post, described_class::OAUTH_URL).to_raise(Faraday::ConnectionFailed.new('connection refused'))
+
+      expect(exchange.attempt('SomeP4ssword!')).to have_attributes(status: :unavailable, detail: nil)
+    end
+
     it 'reports a rate limiting as unavailable rather than rejected' do
       stub_oauth(status: 429, body: '', headers: { 'Retry-After' => '2' })
 

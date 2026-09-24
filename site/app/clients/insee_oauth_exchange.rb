@@ -12,9 +12,11 @@ class INSEEOAuthExchange
 
     return granted_attempt(payload) if granted?(response, payload)
 
-    rejected_attempt(rejection_status(response, payload), refusal_detail(response, payload))
-  rescue Faraday::Error => e
-    rejected_attempt(:unavailable, { provider_error_description: e.message })
+    status = rejection_status(response, payload)
+
+    rejected_attempt(status, status == :unavailable ? nil : refusal_detail(response, payload))
+  rescue Faraday::Error
+    rejected_attempt(:unavailable, nil)
   end
 
   private
