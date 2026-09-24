@@ -68,6 +68,10 @@ export class Client extends ClientBase {
     return this.getPublic(`/api/${provider}/ping`);
   }
 
+  async errors(options: { operationId?: string } = {}) {
+    return this.getPublic('/api/errors', { params: { operation_id: options.operationId } });
+  }
+
   // <scaffold:fields:begin>
   private _ants?: Ants;
   private _cnous?: Cnous;

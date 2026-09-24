@@ -1,5 +1,4 @@
 class DGFIP::ChiffresAffaires::ValidateParams < ValidateParamsOrganizer
   organize ValidateSiret,
-    ServiceUser::ValidateUserId,
-    DGFIP::ValidateRequestId
+    ServiceUser::ValidateUserId
 end

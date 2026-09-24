@@ -1,4 +1,6 @@
 class SDH::ValidateIdentifiant < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :identifiant
+
   def call
     return if param(:identifiant).present? && digits_only?
 

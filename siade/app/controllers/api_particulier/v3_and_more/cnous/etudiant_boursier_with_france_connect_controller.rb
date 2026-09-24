@@ -1,6 +1,8 @@
 class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithFranceConnectController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::RequiresFranceConnect
 
+  nomenclature organizers: { 3 => ::CNOUS::StudentScholarshipWithFranceConnect, 4 => ::CNOUS::StudentScholarshipWithFranceConnect, 5 => ::CNOUS::StudentScholarshipWithFranceConnect }
+
   def show
     if organizer.success?
       render json: serialize_data,

@@ -16,9 +16,9 @@ payload: |-
   {
     "errors": [
       {
-        "code": "00366",
-        "title": "Entité non traitable",
-        "detail": "Un ou plusieurs paramètres de civilité ne sont pas correctement formatés",
+        "code": "36561",
+        "title": "Paramètres de civilité refusés par le fournisseur de données",
+        "detail": "Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur de données.",
         "source": null,
         "meta": {}
       }

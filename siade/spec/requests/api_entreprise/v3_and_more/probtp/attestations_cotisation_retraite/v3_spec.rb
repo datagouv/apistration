@@ -39,11 +39,7 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', api: :entreprise, t
 
           unprocessable_content_error_request(:siret)
 
-          common_provider_errors_request(
-            'ProBTP',
-            PROBTP::AttestationsCotisationsRetraite,
-            documents_errors('ProBTP')
-          )
+          common_provider_errors_request(PROBTP::AttestationsCotisationsRetraite)
 
           response '404', 'Attestation non trouvée', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do
             let(:siret) { not_found_siret(:probtp) }
@@ -55,7 +51,7 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', api: :entreprise, t
             run_test!
           end
 
-          common_network_error_request('ProBTP', PROBTP::AttestationsCotisationsRetraite)
+          common_network_error_request(PROBTP::AttestationsCotisationsRetraite)
         end
       end
     end

@@ -95,7 +95,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
             response '400', 'Mauvais paramètres d\'appels' do
               let(:sexe) { 'nope' }
 
-              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_content_error_gender_error)
+              build_rswag_example(UnprocessableEntityError.new(:sexe_etat_civil), :unprocessable_content_error_sexe_etat_civil_error)
 
               schema '$ref' => '#/components/schemas/Error'
 
@@ -108,7 +108,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                 context 'Mois invalide' do
                   let(:annee) { Time.zone.now.year + 1 }
 
-                  build_rswag_example(UnprocessableEntityError.new(:annee))
+                  build_rswag_example(UnprocessableEntityError.new(:annee_cnav))
 
                   schema '$ref' => '#/components/schemas/Error'
 

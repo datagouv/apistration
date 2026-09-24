@@ -4,19 +4,6 @@ responses:
     examples:
       invalid_token_error:
         error_class: InvalidTokenError
-      missing_token_error:
-        error_class: InvalidTokenError
-        args: ['missing']
-      expired_token_error:
-        error_class: ExpiredTokenError
-      blacklisted_token_error:
-        error_class: BlacklistedTokenError
-        args: ['particulier']
-      production_token_on_staging_error:
-        error_class: ProductionTokenOnStagingError
-      staging_token_on_production_error:
-        error_class: StagingTokenOnProductionError
-        args: ['api_particulier']
 
   '403':
     description: Accès interdit
@@ -33,11 +20,10 @@ responses:
 
   '422':
     description: Paramètre(s) invalide(s)
-    mandatory_params:
-      - recipient
     examples:
-      ambiguous_delegation_error:
-        error_class: AmbiguousDelegationError
+      missing_mandatory_param_error:
+        error_class: MissingMandatoryParamError
+        args: ['recipient']
 
   '429':
     description: Trop de requêtes
@@ -53,18 +39,18 @@ responses:
         error_class: ProviderUnknownError
         args: ['%<provider>s']
 
+  '503':
+    description: Fournisseur de données en maintenance
+    requires_provider: true
+    examples:
+      maintenance_error:
+        error_class: MaintenanceError
+        build_example: true
+
   '504':
     description: Erreur d'intermédiaire
     requires_provider: true
     examples:
       timeout_error:
         error_class: ProviderTimeoutError
-        args: ['%<provider>s']
-      provider_unavailable_error:
-        error_class: ProviderUnavailable
-        args: ['%<provider>s']
-      network_error:
-        error_class: NetworkError
-      dns_resolution_error:
-        error_class: DnsResolutionError
         args: ['%<provider>s']

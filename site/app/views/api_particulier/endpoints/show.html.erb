@@ -57,6 +57,11 @@
             <li>
                 <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#scopes">Scopes</a>
             </li>
+            <% if @endpoint.provider_errors.any? %>
+            <li>
+                <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#erreurs">Erreurs</a>
+            </li>
+            <% end %>
             <li>
                 <a class="fr-link fr-fi-arrow-down-line fr-link--icon-right" href="#faq">Q & R</a>
             </li>
@@ -237,6 +242,10 @@
               </li>
             <% end %>
           </ul>
+        <% end %>
+
+        <% if @endpoint.provider_errors.any? %>
+          <%= render 'shared/endpoints/provider_errors', endpoint: @endpoint %>
         <% end %>
 
         <% if @endpoint.faq.any? %>

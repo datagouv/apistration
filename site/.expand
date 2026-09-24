@@ -7,6 +7,8 @@ commons/swagger/openapi-entreprise.yaml:config/api-entreprise-v3-openapi.yml
 commons/swagger/openapi-particulier.yaml:config/api-particulier-openapi-v3.yml
 commons/swagger/api_particulier_open_api_static/v2.yaml:config/api-particulier-openapi.yml
 commons/data/throttle.yml:config/throttle.yml
+commons/data/errors_entreprise.yml:config/errors_entreprise.yml
+commons/data/errors_particulier.yml:config/errors_particulier.yml
 commons/data/authorizations.yml:config/route_scopes.yml
 commons/endpoints/api_entreprise:config/endpoints/api_entreprise
 commons/endpoints/api_particulier:config/endpoints/api_particulier

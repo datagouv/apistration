@@ -1,4 +1,6 @@
 class INPI::RNE::ValidateDocumentId < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :document_id
+
   def call
     return if valid_rne_document_id?
 

@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::AllocationSoutienFamilialWithFranceConnectController < APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController
+  nomenclature organizers: { 3 => ::CNAV::AllocationSoutienFamilial }
+
   private
 
   def organizer_class

@@ -159,6 +159,21 @@ RSpec.describe ApiEntreprise::Client do
       client.ping_provider('insee/sirene')
       expect(stub).to have_been_requested
     end
+
+    it 'errors calls /errors' do
+      stub = stub_request(:get, 'https://staging.entreprise.api.gouv.fr/errors')
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.errors
+      expect(stub).to have_been_requested
+    end
+
+    it 'errors narrows the nomenclature to one operation' do
+      stub = stub_request(:get, 'https://staging.entreprise.api.gouv.fr/errors')
+             .with(query: { operation_id: 'api_entreprise_v3_insee_unites_legales' })
+             .to_return(status: 200, headers: { 'Content-Type' => 'application/json' }, body: '{}')
+      client.errors(operation_id: 'api_entreprise_v3_insee_unites_legales')
+      expect(stub).to have_been_requested
+    end
   end
 
   describe 'local validation' do

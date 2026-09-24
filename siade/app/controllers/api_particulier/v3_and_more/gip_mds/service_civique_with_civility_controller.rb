@@ -1,6 +1,8 @@
 class APIParticulier::V3AndMore::GIPMDS::ServiceCiviqueWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
+  nomenclature organizers: { 3 => ::GIPMDS::ServiceCivique }
+
   def show
     if organizer.success?
       render json: serialize_data,

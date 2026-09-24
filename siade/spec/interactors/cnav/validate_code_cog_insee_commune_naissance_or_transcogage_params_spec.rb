@@ -48,6 +48,24 @@ RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams, ty
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
+
+    context 'when the departement code is not valid' do
+      let(:annee_date_naissance) { '2000' }
+      let(:params) do
+        {
+          nom_commune_naissance: 'Gennevilliers',
+          annee_date_naissance:,
+          code_cog_insee_departement_naissance: '99',
+          code_cog_insee_pays_naissance: '99100'
+        }
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'points at the departement code' do
+        expect(subject.errors.first.code).to eq('00428')
+      end
+    end
   end
 
   describe 'with nor code insee lieu de naissance nor transcogage params' do

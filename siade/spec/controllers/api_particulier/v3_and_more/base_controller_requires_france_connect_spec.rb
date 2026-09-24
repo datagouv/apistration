@@ -40,7 +40,7 @@ RSpec.describe APIParticulier::V3AndMore::BaseController, 'requires france conne
     it 'returns the missing FranceConnect token error code' do
       body = JSON.parse(make_call.body)
 
-      expect(body.dig('errors', 0, 'code')).to eq('50004')
+      expect(body.dig('errors', 0, 'code')).to eq('51504')
     end
 
     it 'does not raise NoMethodError when reading the FC identity' do

@@ -60,8 +60,8 @@ RSpec.describe 'DGFIP: Numéro de TVA intracommunautaire', api: :entreprise, typ
         describe 'server errors' do
           unprocessable_content_error_request(:siren)
 
-          common_provider_errors_request('DGFIP - TVA', DGFIP::TVA)
-          common_network_error_request('DGFIP - TVA', DGFIP::TVA)
+          common_provider_errors_request(DGFIP::TVA)
+          common_network_error_request(DGFIP::TVA)
         end
       end
     end

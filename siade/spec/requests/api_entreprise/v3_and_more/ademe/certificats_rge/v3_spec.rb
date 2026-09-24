@@ -65,8 +65,8 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
             run_test!
           end
 
-          common_provider_errors_request('ADEME', ADEME::CertificatsRGE)
-          common_network_error_request('ADEME', ADEME::CertificatsRGE)
+          common_provider_errors_request(ADEME::CertificatsRGE)
+          common_network_error_request(ADEME::CertificatsRGE)
         end
       end
     end

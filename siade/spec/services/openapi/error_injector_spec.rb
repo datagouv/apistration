@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Openapi::ErrorInjector do
   let(:config_path) { Rails.root.join('config/openapi_common_errors/entreprise.yml') }
+  let(:api) { :entreprise }
 
   describe '#perform' do
     context 'with a route that has a provider' do
@@ -20,7 +21,7 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'injects all error responses' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         responses = open_api.dig('paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses')
 
@@ -30,21 +31,19 @@ RSpec.describe Openapi::ErrorInjector do
         expect(responses).to have_key('422')
         expect(responses).to have_key('429')
         expect(responses).to have_key('502')
+        expect(responses).to have_key('503')
         expect(responses).to have_key('504')
       end
 
       it 'produces valid example structure for 401' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
           '401', 'content', 'application/json', 'examples'
         )
 
-        expect(examples).to have_key('invalid_token_error')
-        expect(examples).to have_key('missing_token_error')
-        expect(examples).to have_key('expired_token_error')
-        expect(examples).to have_key('blacklisted_token_error')
+        expect(examples.keys).to eq(['invalid_token_error'])
 
         token_error = examples['invalid_token_error']
         expect(token_error['value']['errors'].first['code']).to eq('00101')
@@ -52,46 +51,20 @@ RSpec.describe Openapi::ErrorInjector do
         expect(token_error).to have_key('description')
       end
 
-      it 'documents a missing token apart from an invalid one on 401' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '401', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples['invalid_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas valide")
-        expect(examples['missing_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas renseigné")
-      end
-
-      it 'includes siren in 422 path params' do
-        described_class.new(open_api, config_path:).perform
+      it 'documents a single 422 example' do
+        described_class.new(open_api, config_path:, api:).perform
 
         examples = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
           '422', 'content', 'application/json', 'examples'
         )
 
-        expect(examples).to have_key('unprocessable_content_error_siren_error')
-        expect(examples).to have_key('missing_mandatory_params_context_error')
-        expect(examples).to have_key('missing_mandatory_params_object_error')
-        expect(examples).to have_key('missing_mandatory_params_recipient_error')
-      end
-
-      it 'documents the ambiguous editor delegation error on 422' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples).to have_key('ambiguous_delegation_error')
-        expect(examples.dig('ambiguous_delegation_error', 'value', 'errors', 0, 'code')).to eq('00212')
+        expect(examples.keys).to eq(['missing_mandatory_param_error'])
+        expect(examples.dig('missing_mandatory_param_error', 'value', 'errors', 0, 'code')).to eq('00203')
       end
 
       it 'uses provider name in 502/504 examples' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         examples_502 = open_api.dig(
           'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
@@ -100,6 +73,23 @@ RSpec.describe Openapi::ErrorInjector do
 
         provider_meta = examples_502.dig('provider_unknown_error', 'value', 'errors', 0, 'meta', 'provider')
         expect(provider_meta).to eq('INSEE')
+      end
+
+      it 'documents the provider maintenance on 503 whatever the time of generation' do
+        allow(MaintenanceService).to receive(:new).and_return(instance_double(MaintenanceService, on?: true))
+
+        described_class.new(open_api, config_path:, api:).perform
+
+        error = open_api.dig(
+          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
+          '503', 'content', 'application/json', 'examples', 'maintenance_error', 'value', 'errors', 0
+        )
+
+        expect(error).to include(
+          'code' => '01020',
+          'detail' => 'Le fournisseur de données semble être en maintenance',
+          'meta' => { 'provider' => 'INSEE' }
+        )
       end
     end
 
@@ -118,17 +108,18 @@ RSpec.describe Openapi::ErrorInjector do
         }
       end
 
-      it 'skips 502 and 504' do
-        described_class.new(open_api, config_path:).perform
+      it 'skips 502, 503 and 504' do
+        described_class.new(open_api, config_path:, api:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
         expect(responses).not_to have_key('502')
+        expect(responses).not_to have_key('503')
         expect(responses).not_to have_key('504')
       end
 
       it 'still injects 401, 403, 409, 429' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
@@ -156,65 +147,16 @@ RSpec.describe Openapi::ErrorInjector do
       end
 
       it 'does not overwrite existing responses' do
-        described_class.new(open_api, config_path:).perform
+        described_class.new(open_api, config_path:, api:).perform
 
         response_401 = open_api.dig('paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses', '401')
         expect(response_401['description']).to eq('Custom 401')
       end
     end
 
-    context 'when 422 already exists (merge)' do
-      let(:open_api) do
-        {
-          'paths' => {
-            '/v3/insee/sirene/unites_legales/{siren}' => {
-              'get' => {
-                'responses' => {
-                  '200' => { 'description' => 'Success' },
-                  '422' => {
-                    'description' => 'Existing 422',
-                    'content' => {
-                      'application/json' => {
-                        'examples' => {
-                          'custom_error' => { 'value' => { 'errors' => [] } }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      end
-
-      it 'merges 422 examples without overwriting existing ones' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples).to have_key('custom_error')
-        expect(examples).to have_key('missing_mandatory_params_context_error')
-      end
-
-      it 'merges the configured ambiguous delegation example into an existing 422' do
-        described_class.new(open_api, config_path:).perform
-
-        examples = open_api.dig(
-          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
-        )
-
-        expect(examples).to have_key('custom_error')
-        expect(examples).to have_key('ambiguous_delegation_error')
-      end
-    end
-
     context 'with particulier config' do
       let(:config_path) { Rails.root.join('config/openapi_common_errors/particulier.yml') }
+      let(:api) { :particulier }
 
       let(:open_api) do
         {
@@ -230,29 +172,28 @@ RSpec.describe Openapi::ErrorInjector do
         }
       end
 
-      it 'uses particulier mandatory params (only recipient)' do
-        described_class.new(open_api, config_path:).perform
+      it 'points at the API Particulier introspection route in the insufficient privileges example' do
+        described_class.new(open_api, config_path:, api:).perform
 
         examples = open_api.dig(
           'paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses',
-          '422', 'content', 'application/json', 'examples'
+          '403', 'content', 'application/json', 'examples'
         )
 
-        expect(examples).to have_key('missing_mandatory_params_recipient_error')
-        expect(examples).not_to have_key('missing_mandatory_params_context_error')
-        expect(examples).not_to have_key('missing_mandatory_params_object_error')
+        expect(examples.dig('insufficient_privileges_error', 'description')).to include('/api/introspect')
       end
 
-      it 'documents a missing token apart from an invalid one on 401' do
-        described_class.new(open_api, config_path:).perform
+      it 'names the provider the nomenclature declares for the operation, which its path does not carry' do
+        open_api.dig('paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses', '200')['x-operationId'] =
+          'api_particulier_v3_cnav_allocation_adulte_handicape_with_civility'
 
-        examples = open_api.dig(
-          'paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses',
-          '401', 'content', 'application/json', 'examples'
-        )
+        described_class.new(open_api, config_path:, api:).perform
 
-        expect(examples['invalid_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas valide")
-        expect(examples['missing_token_error']['value']['errors'].first).to include('code' => '00101', 'detail' => "Votre token n'est pas renseigné")
+        responses = open_api.dig('paths', '/v3/dss/allocation_adulte_handicape/identite', 'get', 'responses')
+        maintenance_error = responses.dig('503', 'content', 'application/json', 'examples', 'maintenance_error', 'value', 'errors', 0)
+
+        expect(responses.keys).to include('502', '503', '504')
+        expect(maintenance_error).to include('code' => '36020', 'meta' => { 'provider' => 'Sécurité sociale' })
       end
     end
   end

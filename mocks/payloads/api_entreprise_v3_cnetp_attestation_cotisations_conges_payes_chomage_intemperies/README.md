@@ -70,7 +70,7 @@
   {
     "errors": [
       {
-        "code": "38003",
+        "code": "08003",
         "title": "Entité non trouvée",
         "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
         "meta": {
@@ -120,7 +120,7 @@
   {
     "errors": [
       {
-        "code": "38002",
+        "code": "08002",
         "title": "Intermédiaire hors-délai",
         "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
         "meta": {

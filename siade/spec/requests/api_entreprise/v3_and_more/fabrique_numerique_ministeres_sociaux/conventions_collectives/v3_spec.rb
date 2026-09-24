@@ -52,8 +52,8 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', api
             run_test!
           end
 
-          common_provider_errors_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
-          common_network_error_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
+          common_provider_errors_request(FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
+          common_network_error_request(FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
         end
       end
     end

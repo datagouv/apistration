@@ -1,5 +1,5 @@
 class CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::ValidateResponse < ValidateResponse
-  declares_no_specific_errors!
+  raises CIBTPMissingPaymentsError
 
   def call
     return if http_ok?

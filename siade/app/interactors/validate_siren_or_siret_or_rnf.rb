@@ -1,4 +1,6 @@
 class ValidateSirenOrSiretOrRNF < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :siren_or_siret_or_rnf
+
   def call
     return if rnf_id.valid? || siret.valid? || siren.valid?
 

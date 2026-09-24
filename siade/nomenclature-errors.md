@@ -83,22 +83,23 @@ l'invariant impossible à violer.
 Concrètement : une erreur émise depuis un `ValidateParams` porte le préfixe
 `00`, une erreur émise depuis un `ValidateResponse` porte un préfixe
 fournisseur. La règle est vérifiée par
-[`spec/services/errors_nomenclature_spec.rb`](spec/services/errors_nomenclature_spec.rb).
-
-> Exception héritée : les codes `50001` à `50004` (jetons FranceConnect)
-> utilisent un préfixe `50` non attribué dans `ErrorsBackend`. Ils sont
-> explicitement listés dans le spec de conformité en attendant leur propre
-> reclassement.
+[`spec/acceptances/errors_nomenclature_conformity_spec.rb`](spec/acceptances/errors_nomenclature_conformity_spec.rb).
 
 ### Codes erreur (YYY)
 
 #### Erreurs communes de base
 
-Ces erreurs sont comprises entre `000` et `049`.
+Ces erreurs sont comprises entre `000` et `049`, à l'exception de `XX999`.
 
-- `XX000` = Erreur inconnue (Unknown error)
+- `XX000` = Erreur interne du fournisseur de données (Internal server error)
 
-  Il s'agit généralement d'une erreur d'un fournisseur de données non traitée.
+  Le fournisseur de données a renvoyé une réponse identifiée comme une erreur
+  interne.
+
+- `XX999` = Erreur inconnue (Unknown error)
+
+  La réponse du fournisseur de données est invalide et inconnue de notre
+  service : il s'agit généralement d'une erreur du fournisseur non traitée.
 
 - `XX001` = Service non disponible (Service unaivalable)
 
@@ -128,16 +129,6 @@ Ces erreurs sont comprises entre `000` et `049`.
   Cette erreur intervient généralement quand le fournisseur de données est
   indisponible pour des raisons inconnues.
 
-- `XX007` = Entité disparue
-
-  Cette erreur indique que la ressource n'est plus disponible : il s'agit du
-  code HTTP utilisé lorsqu'un fournisseur de données ne renvoie plus cette
-  donnée, et que le endpoint ne sera plus jamais en capacité de renvoyer des
-  données.
-
-  Cette erreur intervient généralement quand le fournisseur de données est
-  indisponible pour des raisons inconnues.
-
 ##### XX05Z Erreurs associés aux fichiers renvoyés par les fournisseurs de données
 
 - `XX051` = Le fichier en base64 renvoyé est invalide
@@ -152,8 +143,9 @@ Ces erreurs sont comprises entre `000` et `049`.
 
 - `00100` = Privilèges insuffisants
 - `00101` = Jeton non valide ou non renseigné
-- `00102` = Jeton sous l'ancien format
 - `00103` = Jeton expiré
+- `00105` = Jeton sur liste noire
+- `00107` = Adresse IP non autorisée
 
 ##### 0020Z Erreurs associés aux paramètres obligatoires
 
@@ -161,7 +153,8 @@ Ces erreurs sont comprises entre `000` et `049`.
 - `00202` = Object manquant
 - `00203` = Recipient manquant
 - `00210` = Recipient n'est pas un siret valide
-- `00211` = Recipient identique au paramètre d'appel
+- `00212` = Plusieurs délégations actives, `delegation_id` requis
+- `00213` = Recipient ne correspondant à aucune délégation de l'éditeur
 
 ##### 0003Z Erreurs associés aux entrées non traitables
 
@@ -176,9 +169,9 @@ locale des paramètres.
 
 - `00401` = Mauvaise requête du client (Bad request)
 - `00402` = Version non supportée de l'API (Not found)
-- `00006` = Accès interdit (Forbidden)
-- `00401` = Mauvaise requête du client (Bad request)
+- `00015` = Requête identique déjà en cours de traitement (Conflict)
 - `00429` = Trop de requêtes (Too Many Requests)
+- `00501` = Erreur réseau
 
 #### Erreurs fournisseurs spécifiques
 
