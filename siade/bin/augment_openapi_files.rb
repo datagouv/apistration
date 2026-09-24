@@ -43,6 +43,7 @@ APIS.each do |api, api_config|
   config_path = root.join(api_config[:config])
 
   Openapi::ErrorInjector.new(open_api, config_path:, api:).perform
+  Openapi::ErrorsNomenclatureStatusFiller.new(open_api, api:).perform
   Openapi::ErrorsNomenclatureLinker.new(open_api, api:).perform
 
   if api_config[:entreprise_augments]
