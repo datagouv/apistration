@@ -1,6 +1,7 @@
 class Openapi::ErrorInjector
-  def initialize(open_api, config_path:)
+  def initialize(open_api, config_path:, api:)
     @open_api = open_api
+    @api = api.to_sym
     @config = YAML.load_file(config_path)
     @builder = Openapi::ErrorExamplesBuilder.new
   end
@@ -18,11 +19,11 @@ class Openapi::ErrorInjector
 
   private
 
-  attr_reader :open_api, :config, :builder
+  attr_reader :open_api, :api, :config, :builder
 
   def inject_errors(path, operation)
     responses = operation['responses']
-    provider = extract_provider(path)
+    provider = nomenclature_provider(operation) || extract_provider(path)
 
     config['responses'].each do |status_code, error_config|
       next if responses.key?(status_code)
@@ -70,6 +71,8 @@ class Openapi::ErrorInjector
 
   def instantiate_error(example_config, provider)
     klass = example_config['error_class'].constantize
+    return klass.build_example(provider_name: provider) if example_config['build_example']
+
     args = resolve_args(example_config['args'], provider)
 
     if args.any?
@@ -85,6 +88,14 @@ class Openapi::ErrorInjector
     args.map do |arg|
       arg.is_a?(String) ? arg.gsub('%<provider>s', provider.to_s) : arg
     end
+  end
+
+  def nomenclature_provider(operation)
+    nomenclature.dig('endpoints', operation.dig('responses', '200', 'x-operationId'), 'provider')
+  end
+
+  def nomenclature
+    @nomenclature ||= ErrorsNomenclature.new(api).to_h
   end
 
   def extract_provider(path)
