@@ -1,18 +1,23 @@
 class INSEESireneAPIClient < AbstractINSEEAPIClient
   class EntityNotFoundError < StandardError; end
+  class InvalidPayloadError < StandardError; end
 
   REJECTED_BEARER_MESSAGE = 'INSEE rejected the bearer, reauthenticating'.freeze
   REJECTED_BEARER_CACHE_KEY = 'insee/rejected_bearer'.freeze
   REJECTED_BEARER_REPORT_INTERVAL = 5.minutes
 
   def etablissement(siret:)
-    retrying_once_with_a_fresh_token do
+    payload = retrying_once_with_a_fresh_token do
       http_connection.get(
         "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}"
       ).body
     end
+
+    Hash.try_convert(payload) || raise(InvalidPayloadError, "Etablissement with SIRET #{siret} is not a JSON object")
   rescue Faraday::ResourceNotFound => e
     raise EntityNotFoundError, "Etablissement with SIRET #{siret} not found: #{e.message}"
+  rescue Faraday::ParsingError => e
+    raise InvalidPayloadError, "Etablissement with SIRET #{siret} is not a valid JSON: #{e.message}"
   end
 
   protected

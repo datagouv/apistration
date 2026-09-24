@@ -4,6 +4,7 @@ class UpdateOrganizationINSEEPayloadJob < ApplicationJob
   retry_on Faraday::ServerError, wait: :polynomially_longer, attempts: Float::INFINITY
   retry_on Faraday::ConnectionFailed, wait: :polynomially_longer, attempts: Float::INFINITY
   retry_on INSEEAPIAuthentication::TemporaryError, wait: :polynomially_longer, attempts: 10
+  retry_on INSEESireneAPIClient::InvalidPayloadError, wait: :polynomially_longer, attempts: 10
 
   def perform(organization_id)
     @organization = Organization.find(organization_id)

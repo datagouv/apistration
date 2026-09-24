@@ -46,6 +46,23 @@ RSpec.describe UpdateOrganizationINSEEPayloadJob do
         end
       end
 
+      context 'when INSEE answers something else than a JSON payload' do
+        before do
+          allow(insee_sirene_api_client).to receive(:etablissement)
+            .and_raise(INSEESireneAPIClient::InvalidPayloadError)
+        end
+
+        it 'retries later' do
+          expect { described_class.perform_now(organization_id) }
+            .to have_enqueued_job(described_class).with(organization_id)
+        end
+
+        it 'does not touch the organization' do
+          expect { described_class.perform_now(organization_id) }
+            .not_to(change { organization.reload.attributes })
+        end
+      end
+
       it 'calls the API' do
         expect(insee_sirene_api_client).to receive(:etablissement).with(siret: organization.siret)
 
