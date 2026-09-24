@@ -120,6 +120,7 @@ RSpec.describe APIController do
 
         expect(response).to have_http_status(:unauthorized)
         expect(response_json).to have_json_error(code: '00108', detail: ProductionTokenOnStagingError.new.detail)
+        expect(response_json[:errors].first[:code]).to eq('00108')
       end
 
       it 'does not render the token payload' do
@@ -141,6 +142,7 @@ RSpec.describe APIController do
 
         expect(response).to have_http_status(:unauthorized)
         expect(response_json).to have_json_error(code: '00109', detail: StagingTokenOnProductionError.new('api_entreprise').detail)
+        expect(response_json[:errors].first[:code]).to eq('00109')
       end
     end
 
