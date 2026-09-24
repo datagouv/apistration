@@ -47,6 +47,14 @@
 
     **Si votre intégration teste ces quatre codes, elle doit être mise à jour.** Un traitement basé sur le statut `401` n'est pas concerné.
 
+- date: 2026-09-07
+  scope: api_entreprise
+  title: "Téléchargement des documents INPI : un `document_id` invalide renvoie `00318` au lieu de `00501`"
+  description: |
+    Le code `00501` désignait deux erreurs : l'erreur réseau (502) que tout endpoint peut renvoyer, et un `document_id` invalide (422) sur les liens de téléchargement des documents INPI. Ce second cas passe sous le code `00318`. Le statut HTTP (`422`), le titre et le message sont inchangés.
+
+    **Si votre intégration teste `00501` pour détecter un `document_id` invalide, elle doit désormais tester `00318`.** Un traitement basé sur le statut `422` n'est pas concerné.
+
 - date: 2026-09-02
   scope: api_entreprise
   title: "Données associations (SIAF) : deux nouvelles API disponibles en environnement de test"
