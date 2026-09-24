@@ -39,6 +39,14 @@ responses:
         error_class: ProviderUnknownError
         args: ['%<provider>s']
 
+  '503':
+    description: Fournisseur de données en maintenance
+    requires_provider: true
+    examples:
+      maintenance_error:
+        error_class: MaintenanceError
+        build_example: true
+
   '504':
     description: Erreur d'intermédiaire
     requires_provider: true

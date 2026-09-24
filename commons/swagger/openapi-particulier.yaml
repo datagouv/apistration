@@ -13846,6 +13846,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '31020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/v3/gip_mds/service_civique/france_connect":
     get:
       summary: "[FranceConnect] Statut service civique"
@@ -14215,6 +14236,27 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_france_connect.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '31020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':

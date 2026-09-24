@@ -30,6 +30,7 @@ RSpec.describe Openapi::ErrorInjector do
         expect(responses).to have_key('422')
         expect(responses).to have_key('429')
         expect(responses).to have_key('502')
+        expect(responses).to have_key('503')
         expect(responses).to have_key('504')
       end
 
@@ -72,6 +73,23 @@ RSpec.describe Openapi::ErrorInjector do
         provider_meta = examples_502.dig('provider_unknown_error', 'value', 'errors', 0, 'meta', 'provider')
         expect(provider_meta).to eq('INSEE')
       end
+
+      it 'documents the provider maintenance on 503 whatever the time of generation' do
+        allow(MaintenanceService).to receive(:new).and_return(instance_double(MaintenanceService, on?: true))
+
+        described_class.new(open_api, config_path:).perform
+
+        error = open_api.dig(
+          'paths', '/v3/insee/sirene/unites_legales/{siren}', 'get', 'responses',
+          '503', 'content', 'application/json', 'examples', 'maintenance_error', 'value', 'errors', 0
+        )
+
+        expect(error).to include(
+          'code' => '01020',
+          'detail' => 'Le fournisseur de données semble être en maintenance',
+          'meta' => { 'provider' => 'INSEE' }
+        )
+      end
     end
 
     context 'with a route without provider (e.g. /privileges)' do
@@ -89,12 +107,13 @@ RSpec.describe Openapi::ErrorInjector do
         }
       end
 
-      it 'skips 502 and 504' do
+      it 'skips 502, 503 and 504' do
         described_class.new(open_api, config_path:).perform
 
         responses = open_api.dig('paths', '/privileges', 'get', 'responses')
 
         expect(responses).not_to have_key('502')
+        expect(responses).not_to have_key('503')
         expect(responses).not_to have_key('504')
       end
 

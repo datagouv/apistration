@@ -70,6 +70,8 @@ class Openapi::ErrorInjector
 
   def instantiate_error(example_config, provider)
     klass = example_config['error_class'].constantize
+    return klass.build_example(provider_name: provider) if example_config['build_example']
+
     args = resolve_args(example_config['args'], provider)
 
     if args.any?

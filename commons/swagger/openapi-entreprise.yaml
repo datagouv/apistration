@@ -694,6 +694,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_acoss_attestations_sociales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/urssaf/v3/attestation_vigilance#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '04020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: ACOSS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -1186,6 +1207,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_ademe_certificats_rge, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/ademe/certifications_rge#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '19020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: ADEME
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -1807,6 +1849,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_banque_de_france_bilans_entreprise, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/banque_de_france/bilans#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '17020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Banque de France
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '22:04'
         to_hour: '22:08'
@@ -2396,6 +2459,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_carif_oref_certifications_qualiopi_france_competences, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/carif_oref/certifications_qualiopi_france_competences#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '33020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CARIF-OREF
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -2714,6 +2798,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/cibtp/attestations_cotisations_conges_payes_chomage_intemperies#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '38020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CIBTP
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3011,6 +3116,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/cnetp/attestations_cotisations_conges_payes_chomage_intemperies#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '08020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CNETP
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
@@ -3611,6 +3737,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_data_subvention_subventions, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/data_subvention/subventions#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '52020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DataSubvention
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3966,6 +4113,27 @@ paths:
                   description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_dgddi_eori, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/douanes/immatriculation_eori#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '16020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGDDI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -4316,6 +4484,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_dgfip_attestations_fiscales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/v3/attestations_fiscales#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
@@ -4690,6 +4879,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_dgfip_attestations_fiscales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/attestations_fiscales#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
         to_hour: '02:00'
@@ -5045,6 +5255,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_dgfip_chiffres_affaires, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/chiffres_affaires#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
@@ -5612,6 +5843,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_dgfip_liasses_fiscales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/v3/liasses_fiscales#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
         to_hour: '02:00'
@@ -6144,6 +6396,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_dgfip_liasses_fiscales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/liasses_fiscales#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
@@ -6860,6 +7133,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_dgfip_liens_capitalistiques, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/liens_capitalistiques#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-maintenances:
         from_hour: '01:00'
         to_hour: '02:00'
@@ -7219,6 +7513,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_dgfip_tva, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/dgfip/numero_tva#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '03020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
@@ -8990,6 +9305,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_mi_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/djepva/associations#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '29020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DJEPVA
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -10358,6 +10694,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_mi_unites_legales_open_data, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/djepva/associations_open_data#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '29020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: DJEPVA
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -10652,6 +11009,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_european_commission_vies, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/commission_europeenne/numero_tva#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '28020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Commission Européenne
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -11045,6 +11423,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_fabrique_numerique_ministeres_sociaux_conventions_collectives, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/fabrique_numerique_ministeres_sociaux/conventions_collectives#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '14020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Fabrique numérique des Ministères Sociaux
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -11343,6 +11742,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_fntp_carte_professionnelle_travaux_publics, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/fntp/carte_professionnelle_travaux_public#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '12020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: FNTP
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -11773,6 +12193,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_gip_mds_effectifs_annuels_entreprise, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_annuels_unite_legale#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '31020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -12254,6 +12695,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_gip_mds_effectifs_mensuels_etablissement, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '31020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: GIP-MDS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -13021,6 +13483,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_infogreffe_extraits_rcs, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/infogreffe/rcs/extrait#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '02020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Infogreffe
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -13510,6 +13993,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_infogreffe_mandataires_sociaux, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '02020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Infogreffe
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -13929,6 +14433,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_inpi_rne_actes_bilans, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/inpi/rne/actes_bilans#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '05020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INPI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -14968,6 +15493,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_inpi_rne_beneficiaires_effectifs, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/inpi/rne/beneficiaires_effectifs#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '05020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INPI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -15757,6 +16303,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_inpi_rne_extrait_rne, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/inpi/rne/attestation_immatriculation#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '05020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INPI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -16331,6 +16898,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_adresses_etablissements, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/adresse_etablissements#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -16938,6 +17526,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_adresses_etablissements_diffusables, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/adresse_etablissements_diffusibles#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -18259,6 +18868,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_etablissements, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/etablissements_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -19639,6 +20269,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_insee_etablissements, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/etablissements#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -20997,6 +21648,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_etablissements_diffusables, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -22416,6 +23088,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_insee_etablissements_diffusables, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -23772,6 +24465,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_sieges_diffusables_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/siege_social_diffusibles_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -25189,6 +25903,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_insee_sieges_diffusables_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/siege_social_diffusibles#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -26498,6 +27233,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_sieges_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/siege_social_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -27868,6 +28624,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_insee_sieges_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/siege_social#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -28246,6 +29023,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_successions, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/successions#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -29048,6 +29846,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -29880,6 +30699,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_insee_unites_legales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/unites_legales#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -30698,6 +31538,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_insee_unites_legales_diffusables, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles_v3#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -31548,6 +32409,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_insee_unites_legales_diffusables, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '01020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -31922,6 +32804,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_mi_documents_associations, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/ministere_interieur/documents_associations#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '21020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -32367,6 +33270,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_mi_associations, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/ministere_interieur/rna#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '21020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -33335,6 +34259,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_mi_siaf_associations, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/siaf/associations#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '21020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -34066,6 +35011,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_mi_siaf_associations_open_data, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/siaf/associations_open_data#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '21020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -34911,6 +35877,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_mi_siaf_fondations, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/siaf/fondations#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '21020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -35237,6 +36224,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_msa_conformites_cotisations, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/msa/conformites_cotisations#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '10020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: MSA
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-maintenances:
@@ -35643,6 +36651,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_opqibi_certifications_ingenierie, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/opqibi/qualifications_ingenierie#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '11020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: OPQIBI
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -35971,6 +37000,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_probtp_attestations_cotisation_retraite.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '09020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: ProBTP
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -36264,6 +37314,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_probtp_conformites_cotisations_retraite, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/probtp/conformites_cotisations_retraite#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '09020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: ProBTP
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -36593,6 +37664,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_qualibat_certifications_batiment, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/qualibat/v3/certifications_batiment#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '06020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Qualibat
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -37046,6 +38138,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_qualibat_certifications_batiment, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/qualibat/certifications_batiment#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '06020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Qualibat
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -37613,6 +38726,27 @@ paths:
                     traitement avant d'effectuer une nouvelle requête.
               schema:
                 "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_qualifelec_certificats, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/qualifelec/certificats#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '32020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: Qualifelec
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -37949,6 +39083,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v3_rnm_entreprises_artisanales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/cma_france/rnm#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '15020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: CMA France
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -38371,6 +39526,27 @@ paths:
                   description: Une requête associé à votre jeton est déjà en cours
                     de traitement pour ces paramètres. Veuillez attendre la fin du
                     traitement avant d'effectuer une nouvelle requête.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: |-
+            Fournisseur de données en maintenance
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://entreprise.api.gouv.fr/errors?operation_id=api_entreprise_v4_acoss_attestations_sociales, et commentée dans la section « Erreurs » de https://entreprise.api.gouv.fr/catalogue/urssaf/attestation_vigilance#erreurs.
+          content:
+            application/json:
+              examples:
+                maintenance_error:
+                  value:
+                    errors:
+                    - code: '04020'
+                      title: Maintenance du fournisseur de données
+                      detail: Le fournisseur de données semble être en maintenance
+                      source:
+                      meta:
+                        provider: ACOSS
+                  summary: Maintenance du fournisseur de données
+                  description: Le fournisseur de données semble être en maintenance
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
