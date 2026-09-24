@@ -34,6 +34,18 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
       expect(page).to have_text('Nouveau jeton à utiliser')
     end
 
+    it 'displays the SIRET alone when the organization has no INSEE payload yet' do
+      authorization_request = valid_authorization_requests.first
+      create(:organization, siret: authorization_request.siret, insee_payload: {})
+
+      visit editor_authorization_requests_path
+
+      within "##{dom_id(authorization_request)} .authorization_request-siret" do
+        expect(page).to have_link(authorization_request.siret)
+        expect(page).to have_no_text("(#{authorization_request.siret})")
+      end
+    end
+
     describe 'copy token behaviour' do
       context 'when editor has no copy token' do
         let(:copy_token) { false }

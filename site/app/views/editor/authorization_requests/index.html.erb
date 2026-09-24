@@ -70,7 +70,7 @@
             <% end %>
           </td>
           <td class="authorization_request-siret">
-            <% if authorization_request.organization %>
+            <% if authorization_request.organization&.denomination.present? %>
               <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
                 <%= authorization_request.organization.denomination %> (<%= authorization_request.siret %>)
               </a>

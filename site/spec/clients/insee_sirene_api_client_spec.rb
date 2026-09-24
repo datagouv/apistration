@@ -26,6 +26,34 @@ RSpec.describe INSEESireneAPIClient do
       end
     end
 
+    context 'when the API answers its HTML maintenance page' do
+      before do
+        stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}").to_return(
+          status: 200,
+          headers: { 'Content-Type' => 'text/html' },
+          body: '<html><title>Maintenance - INSEE</title></html>'
+        )
+      end
+
+      it 'raises an invalid payload error' do
+        expect { etablissement_payload }.to raise_error(described_class::InvalidPayloadError, /#{siret}/)
+      end
+    end
+
+    context 'when the API answers a malformed JSON' do
+      before do
+        stub_request(:get, "https://api.insee.fr/api-sirene/prive/3.11/siret/#{siret}").to_return(
+          status: 200,
+          headers: { 'Content-Type' => 'application/json' },
+          body: '{"etablissement":'
+        )
+      end
+
+      it 'raises an invalid payload error' do
+        expect { etablissement_payload }.to raise_error(described_class::InvalidPayloadError)
+      end
+    end
+
     context 'when the cached token has been revoked' do
       before do
         allow(INSEEAPIAuthentication).to receive(:invalidate_token_cache!)

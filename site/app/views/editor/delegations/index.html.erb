@@ -45,7 +45,7 @@
                 </td>
                 <td><%= ar.intitule %></td>
                 <td>
-                  <% if ar.organization %>
+                  <% if ar.organization&.denomination.present? %>
                     <%= ar.organization.denomination %> (<%= ar.siret %>)
                   <% elsif ar.siret.present? %>
                     <%= ar.siret %>
