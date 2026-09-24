@@ -26,6 +26,8 @@ class UserResolutionMiddleware
     else
       env[USER_ENV_KEY] = user
     end
+  rescue JwtTokenService::ExtractionError
+    nil
   end
 
   def resolve_editor(user, env)

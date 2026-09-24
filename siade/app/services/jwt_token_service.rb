@@ -2,6 +2,17 @@ class JwtTokenService
   include Singleton
 
   DINUM_SIRET = '13002526500013'.freeze
+  STAGING_TOKEN_SUBJECT = 'staging'.freeze
+  STAGING_TOKEN_JTI = '00000000-0000-0000-0000-000000000000'.freeze
+
+  class ExtractionError < StandardError
+    attr_reader :reason
+
+    def initialize(reason)
+      @reason = reason
+      super(reason.to_s)
+    end
+  end
 
   def extract_user(jwt_token)
     cached_token = cached_user(jwt_token)
@@ -16,8 +27,12 @@ class JwtTokenService
     jwt_data = enhance_jwt_data(jwt_data, decoded_token)
 
     build_and_cache_user!(jwt_token, jwt_data)
-  rescue JWT::DecodeError, ActiveRecord::RecordNotFound
-    nil
+  rescue JWT::VerificationError
+    raise ExtractionError, invalid_signature_reason(jwt_token)
+  rescue JWT::DecodeError
+    raise ExtractionError, :malformed
+  rescue ActiveRecord::RecordNotFound
+    raise ExtractionError, :not_found
   end
 
   private
@@ -104,6 +119,31 @@ class JwtTokenService
   def decode_token(jwt_token)
     decoded_tokens = JWT.decode(jwt_token, hash_secret, true, { verify_expiration: false, algorithm: hash_algo })
     decoded_tokens.fetch(0).deep_symbolize_keys
+  end
+
+  def invalid_signature_reason(jwt_token)
+    payload = unverified_payload(jwt_token)
+    return :invalid_signature if payload.nil?
+
+    staging_token = staging_token?(payload)
+
+    if Rails.env.staging? && !staging_token
+      :production_token_on_staging
+    elsif Rails.env.production? && staging_token
+      :staging_token_on_production
+    else
+      :invalid_signature
+    end
+  end
+
+  def unverified_payload(jwt_token)
+    Hash.try_convert(JWT.decode(jwt_token, nil, false).fetch(0))
+  rescue JWT::DecodeError
+    nil
+  end
+
+  def staging_token?(payload)
+    payload['sub'] == STAGING_TOKEN_SUBJECT || payload['jti'] == STAGING_TOKEN_JTI
   end
 
   def hash_secret

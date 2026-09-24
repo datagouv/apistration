@@ -275,6 +275,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1111,6 +1143,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -1584,6 +1646,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2018,6 +2112,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -2507,6 +2631,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2953,6 +3109,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -3435,6 +3621,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -3876,6 +4094,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -4351,6 +4599,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4787,6 +5067,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -5284,6 +5594,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -5747,6 +6089,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -6406,6 +6778,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -6980,6 +7384,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -7465,6 +7899,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8063,6 +8529,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -8800,6 +9296,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9477,6 +10005,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -9962,6 +10520,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -10364,6 +10954,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -10921,6 +11541,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -11239,6 +11891,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12110,6 +12792,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12463,6 +13177,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12886,6 +13632,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -13415,6 +14193,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -13775,6 +14585,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -14205,6 +15047,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -14477,6 +15351,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -14926,6 +15830,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -15177,6 +16113,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -15612,6 +16578,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -16269,6 +17265,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -16833,6 +17859,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -17358,6 +18416,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -18010,6 +19098,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -18673,6 +19791,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -19362,6 +20510,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -19917,6 +21095,38 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: 'Ce jeton est un jeton de staging, il ne fonctionne
+                        que sur https://staging.particulier.api.gouv.fr. En production,
+                        utilisez le jeton de votre habilitation, disponible sur votre
+                        espace personnel : https://particulier.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: 'Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur https://staging.particulier.api.gouv.fr. En production,
+                    utilisez le jeton de votre habilitation, disponible sur votre
+                    espace personnel : https://particulier.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -20252,6 +21462,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -20781,6 +22021,36 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                production_token_on_staging_error:
+                  value:
+                    errors:
+                    - code: '00108'
+                      title: Jeton de production sur staging
+                      detail: 'Ce jeton est un jeton de production, il n''est pas
+                        valide sur l''environnement de staging. Utilisez le jeton
+                        public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de production sur staging
+                  description: 'Ce jeton est un jeton de production, il n''est pas
+                    valide sur l''environnement de staging. Utilisez le jeton public
+                    de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+                staging_token_on_production_error:
+                  value:
+                    errors:
+                    - code: '00109'
+                      title: Jeton de staging en production
+                      detail: Ce jeton est un jeton de staging, il ne fonctionne que
+                        sur l'environnement de staging. En production, utilisez le
+                        jeton de votre habilitation.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton de staging en production
+                  description: Ce jeton est un jeton de staging, il ne fonctionne
+                    que sur l'environnement de staging. En production, utilisez le
+                    jeton de votre habilitation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
