@@ -98,6 +98,15 @@ RSpec.describe INSEE::PasswordRotation do
         expect(INSEEAPIAuthentication.new).to be_recently_failed
       end
 
+      it 'reports why INSEE refused the passwords' do
+        rotation.rotate!
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          described_class::DESYNCHRONIZED_MESSAGE,
+          hash_including(context: hash_including(http_response_code: 401, provider_error: 'invalid_grant'))
+        )
+      end
+
       it 'costs two failed authentications at most' do
         rotation.rotate!
 
@@ -142,6 +151,15 @@ RSpec.describe INSEE::PasswordRotation do
         expect { rotation.rotate! }.to raise_error(described_class::UnavailableError)
 
         expect(INSEEAPIAuthentication.new).to be_recently_failed
+      end
+
+      it 'reports why INSEE refused the exchange' do
+        expect { rotation.rotate! }.to raise_error(described_class::UnavailableError)
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          INSEEAPIAuthentication::REFUSED_EXCHANGE_MESSAGE,
+          hash_including(context: hash_including(http_response_code: 400, provider_error: 'invalid_client'))
+        )
       end
     end
 
