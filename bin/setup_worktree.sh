@@ -137,7 +137,12 @@ setup_app() {
 
   echo
   echo "==> Bootstrapping $app"
-  (cd "$WORKTREE_PATH/$app" && (bundle check >/dev/null || bundle install) && bin/rails db:prepare)
+  (
+    cd "$WORKTREE_PATH/$app" &&
+      (bundle check >/dev/null || bundle install) &&
+      SKIP_TEST_DATABASE=true bin/rails db:prepare &&
+      RAILS_ENV=test bin/rails db:prepare
+  )
 }
 
 setup_app siade

@@ -51,7 +51,10 @@ Il génère ensuite dans `siade/` et `site/` un `.env.local` (dev) et un
   slug pour une demande ad hoc. Lu par `config/puma.rb`,
   `ProConnectConfig.host` et les URLs des mails.
 
-puis lance `bundle install` et `bin/rails db:prepare` dans les deux apps.
+puis lance `bundle install` et `bin/rails db:prepare` dans les deux apps,
+une fois par environnement : la base de test est préparée avec
+`RAILS_ENV=test` pour que les vues nommées d'après `Rails.env` (vue scenic
+`consumption_summary` de `site/`) portent le bon nom.
 `bin/rails s` suffit ensuite, sans `-p`. Plusieurs worktrees peuvent tourner
 en parallèle.
 
