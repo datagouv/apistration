@@ -12,6 +12,11 @@ responses:
       blacklisted_token_error:
         error_class: BlacklistedTokenError
         args: ['entreprise']
+      production_token_on_staging_error:
+        error_class: ProductionTokenOnStagingError
+      staging_token_on_production_error:
+        error_class: StagingTokenOnProductionError
+        args: ['api_entreprise']
 
   '403':
     description: Accès interdit

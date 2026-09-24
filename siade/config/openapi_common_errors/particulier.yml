@@ -12,6 +12,11 @@ responses:
       blacklisted_token_error:
         error_class: BlacklistedTokenError
         args: ['particulier']
+      production_token_on_staging_error:
+        error_class: ProductionTokenOnStagingError
+      staging_token_on_production_error:
+        error_class: StagingTokenOnProductionError
+        args: ['api_particulier']
 
   '403':
     description: Accès interdit

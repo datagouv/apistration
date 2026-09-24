@@ -15,6 +15,15 @@ module RSwagCommonErrors
     DnsResolutionError
   ].freeze
 
+  UNAUTHORIZED_TOKEN_EXAMPLES = {
+    invalid_token_error: -> { InvalidTokenError.new },
+    missing_token_error: -> { InvalidTokenError.new(:missing) },
+    expired_token_error: -> { ExpiredTokenError.new },
+    blacklisted_token_error: -> { BlacklistedTokenError.new('entreprise') },
+    production_token_on_staging_error: -> { ProductionTokenOnStagingError.new },
+    staging_token_on_production_error: -> { StagingTokenOnProductionError.new }
+  }.freeze
+
   def unauthorized_request(&block)
     describe 'with valid mandatory params but invalid token' do
       include_context 'Valid mandatory params and no token'
@@ -22,10 +31,9 @@ module RSwagCommonErrors
       response '401', 'Non autorisé' do
         block.call if block_given?
 
-        build_rswag_example(InvalidTokenError.new, :invalid_token_error)
-        build_rswag_example(InvalidTokenError.new(:missing), :missing_token_error)
-        build_rswag_example(ExpiredTokenError.new, :expired_token_error)
-        build_rswag_example(BlacklistedTokenError.new('entreprise'), :blacklisted_token_error)
+        UNAUTHORIZED_TOKEN_EXAMPLES.each do |key, builder|
+          build_rswag_example(builder.call, key)
+        end
 
         schema '$ref' => '#/components/schemas/Error'
 
@@ -39,7 +47,9 @@ module RSwagCommonErrors
     invalid_token_error: -> { InvalidTokenError.new },
     missing_token_error: -> { InvalidTokenError.new(:missing) },
     expired_token_error: -> { ExpiredTokenError.new },
-    blacklisted_token_error: -> { BlacklistedTokenError.new('particulier') }
+    blacklisted_token_error: -> { BlacklistedTokenError.new('particulier') },
+    production_token_on_staging_error: -> { ProductionTokenOnStagingError.new },
+    staging_token_on_production_error: -> { StagingTokenOnProductionError.new('api_particulier') }
   }.freeze
 
   # rubocop:disable-next Metrics/AbcSize
