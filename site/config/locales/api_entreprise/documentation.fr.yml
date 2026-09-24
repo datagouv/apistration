@@ -308,31 +308,67 @@ fr:
               - title: Retrouver les droits d'un jeton JWT
                 anchor: 'retrouver-les-droits-dun-jeton-jwt'
                 content: |+
-                  Pour connaître **la liste des APIs auxquelles vous avez le droit** avec votre jeton d'accès, vous pouvez le vérifier avec l'API `/privileges`.
+                  Pour savoir **ce que permet un jeton** — périmètres de données accordés, demande d'habilitation d'origine, date d'expiration — appelez l'endpoint d'introspection `/v3/token/introspect` avec ce jeton.
 
-                  Si vous gérez les tokens pour vos utilisateurs, vous pouvez aussi utiliser cette API pour vérifier les droits associés à leurs tokens.
+                  Si vous gérez les jetons de vos utilisateurs, appelez cet endpoint avec le jeton à vérifier&nbsp;: c'est toujours le jeton présenté dans l'appel qui est décrit.
 
                   {:.fr-h5}
                   #### La requête HTTP :
 
                   ```
-                  https://entreprise.api.gouv.fr/privileges?token=LeTokenATester
+                  curl -H "Authorization: Bearer LeTokenATester" https://entreprise.api.gouv.fr/v3/token/introspect
                   ```
-
-                  Le paramètre d'appel à renseigner est le token dont vous souhaitez connaître les droits.
 
                   > **Exemple de réponse JSON :**
                   >```
                   >{
-                  >  "privileges": [
-                  >    "attestations_agefiph",
-                  >    [...]
-                  >    "actes_bilans_inpi"
-                  >  ]
+                  >  "data": {
+                  >    "id": "48ed8e98-33e4-4b05-88fe-f933d1b421c4",
+                  >    "type": "standard",
+                  >    "scopes": [
+                  >      "attestations_agefiph",
+                  >      "actes_bilans_inpi"
+                  >    ],
+                  >    "datapass_id": "12345",
+                  >    "siret_souscripteur": "13002526500013",
+                  >    "date_emission": "2024-01-15T09:00:00+01:00",
+                  >    "date_expiration": "2025-07-15T09:00:00+02:00",
+                  >    "rate_limit_par_minute": 2000,
+                  >    "delegation": null
+                  >  },
+                  >  "links": {
+                  >    "datapass": "https://datapass.api.gouv.fr/demandes/12345"
+                  >  },
+                  >  "meta": {}
                   >}
                   > ```
 
-                  La réponse JSON renvoie la liste des API autorisées. Retrouvez-leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
+                  `datapass_id` est l'identifiant de votre demande d'habilitation sur DataPass&nbsp;: c'est la référence à communiquer au support. `links.datapass` pointe vers cette demande, accessible une fois connecté à DataPass avec un compte de l'organisation habilitée. `delegation` n'est renseigné que pour un jeton éditeur, voir ci-dessous.
+
+                  {:.fr-h5}
+                  #### Cas d'un jeton éditeur :
+
+                  Appelé seul, un jeton éditeur est décrit tel quel&nbsp;: `scopes` est vide, et `datapass_id`, `siret_souscripteur`, `delegation` et `links.datapass` valent `null`. Pour vérifier la délégation accordée par un client, passez son SIRET dans le paramètre `recipient`, ainsi que `delegation_id` s'il vous a délégué plusieurs habilitations&nbsp;:
+
+                  ```
+                  curl -H "Authorization: Bearer LeJetonEditeur" "https://entreprise.api.gouv.fr/v3/token/introspect?recipient=13002526500013"
+                  ```
+
+                  La réponse décrit alors l'habilitation déléguée&nbsp;: ses scopes, son `datapass_id`, le SIRET du client dans `siret_souscripteur` et la délégation retenue dans `delegation`.
+
+                  > **Extrait de réponse :**
+                  >```
+                  >"delegation": {
+                  >  "id": "a31c6e1b-0a2f-4e8b-9a31-9b3d1f9a51c2",
+                  >  "siret_delegant": "13002526500013"
+                  >}
+                  > ```
+
+                  Comme sur les endpoints de données, l'appel échoue en `422` (code `00212`) si plusieurs délégations correspondent et qu'aucun `delegation_id` n'est fourni, et en `403` (code `00213`) si aucune délégation ne correspond.
+
+                  La liste des scopes renvoyée correspond aux API autorisées. Retrouvez leurs spécifications techniques dans le [Swagger](<%= developers_openapi_path %>){:target="_blank_"}.
+
+                  L'ancien endpoint `https://entreprise.api.gouv.fr/privileges?token=LeTokenATester`, qui ne renvoie que la liste des privilèges, reste disponible.
 
           - anchor: 'sdks-officiels'
             title: SDKs officiels&nbsp;📦
