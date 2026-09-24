@@ -146,6 +146,14 @@ RSpec.describe JwtTokenService do
           end
         end
 
+        context 'when the payload is not an object' do
+          let(:jwt) { JWT.encode([], 'another secret', Siade.credentials[:jwt_hash_algo]) }
+
+          it 'only states the signature is invalid' do
+            expect(extraction_error_reason).to eq(:invalid_signature)
+          end
+        end
+
         context 'when the token looks like the staging one' do
           let(:payload) { super().merge(sub: 'staging') }
 

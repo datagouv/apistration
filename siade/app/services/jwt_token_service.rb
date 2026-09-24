@@ -137,7 +137,7 @@ class JwtTokenService
   end
 
   def unverified_payload(jwt_token)
-    JWT.decode(jwt_token, nil, false).fetch(0)
+    Hash.try_convert(JWT.decode(jwt_token, nil, false).fetch(0))
   rescue JWT::DecodeError
     nil
   end
