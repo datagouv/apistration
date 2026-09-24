@@ -146,7 +146,7 @@ platform_codes:
   '401':
   - code: '00101'
     title: Interdit
-    detail: Votre token n'est pas valide ou n'est pas renseigné
+    detail: Votre token n'est pas valide
   - code: '00103'
     title: Jeton expiré
     detail: Votre token est expiré. Vous devez refaire une demande à API Entreprise,
@@ -156,6 +156,15 @@ platform_codes:
     detail: 'Votre jeton est sur liste noire, celui-ci a certainement été divulgué
       sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace
       personnel: https://entreprise.api.gouv.fr/compte'
+  - code: '00108'
+    title: Jeton de production sur staging
+    detail: 'Ce jeton est un jeton de production, il n''est pas valide sur l''environnement
+      de staging. Utilisez le jeton public de staging : https://github.com/datagouv/apistration/blob/develop/mocks/tokens/default'
+  - code: '00109'
+    title: Jeton de staging en production
+    detail: 'Ce jeton est un jeton de staging, il ne fonctionne que sur https://staging.entreprise.api.gouv.fr.
+      En production, utilisez le jeton de votre habilitation, disponible sur votre
+      espace personnel : https://entreprise.api.gouv.fr/compte'
   '403':
   - code: '00100'
     title: Privilèges insuffisants

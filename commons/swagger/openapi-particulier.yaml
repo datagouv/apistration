@@ -1149,12 +1149,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -1857,12 +1857,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -2593,12 +2593,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -3317,12 +3317,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -4029,12 +4029,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -4790,12 +4790,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -5846,12 +5846,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -6621,12 +6621,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -7850,12 +7850,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -8538,12 +8538,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -9224,12 +9224,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -9962,12 +9962,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -10283,12 +10283,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -10674,12 +10674,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -11171,12 +11171,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -11499,12 +11499,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -11897,12 +11897,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12134,12 +12134,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12656,12 +12656,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12966,12 +12966,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -13498,12 +13498,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -14376,12 +14376,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -14903,12 +14903,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -15430,12 +15430,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -15983,12 +15983,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -16706,12 +16706,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -17110,12 +17110,12 @@ paths:
                     errors:
                     - code: '00101'
                       title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      detail: Votre token n'est pas valide
                       source:
                         parameter: token
                       meta: {}
                   summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
+                  description: Votre token n'est pas valide
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
