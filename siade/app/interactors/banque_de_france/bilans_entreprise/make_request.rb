@@ -1,5 +1,5 @@
 class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
-  include UseWildcardSSLCertificate
+  include UseANTSIssuedSSLCertificate
 
   protected
 
@@ -12,7 +12,7 @@ class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
   end
 
   def http_options
-    http_wildcard_ssl_options
+    http_ants_issued_ssl_options
   end
 
   private
