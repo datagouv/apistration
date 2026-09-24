@@ -188,4 +188,120 @@ module RSwagResourcesPayloads
       example:
     }
   end
+
+  def build_rswag_introspection_response
+    {
+      type: :object,
+      properties: {
+        data: {
+          type: :object,
+          properties: introspection_attributes,
+          required: introspection_attributes.keys.map(&:to_s),
+          additionalProperties: false
+        },
+        links: {
+          type: :object,
+          properties: {
+            datapass: {
+              type: :string,
+              format: :uri,
+              nullable: true,
+              title: "Lien vers la demande d'habilitation",
+              description: "Lien vers la demande d'habilitation sur DataPass, accessible aux seuls membres de l'organisation habilitée. Pour un jeton éditeur, lien vers la demande d'habilitation déléguée, une fois le paramètre `recipient` renseigné.",
+              example: 'https://datapass.api.gouv.fr/demandes/12345'
+            }
+          },
+          required: %w[datapass],
+          additionalProperties: false
+        },
+        meta: {
+          type: :object
+        }
+      },
+      required: %w[data links meta]
+    }
+  end
+
+  def introspection_attributes
+    {
+      id: {
+        type: :string,
+        title: 'Identifiant du jeton',
+        description: "Identifiant unique du jeton (claim `jti`). C'est cet identifiant qu'il faut communiquer au support.",
+        example: 'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'
+      },
+      type: {
+        type: :string,
+        enum: %w[standard editeur],
+        title: 'Type de jeton',
+        description: "`standard` : jeton délivré pour une demande d'habilitation. `editeur` : jeton d'éditeur, agissant par délégation.",
+        example: 'standard'
+      },
+      scopes: {
+        type: :array,
+        items: { type: :string },
+        title: 'Périmètres de données accessibles',
+        description: 'Liste des périmètres (scopes) accordés au jeton. Les données hors de ces périmètres sont masquées des réponses.',
+        example: %w[attestations_fiscales attestations_sociales]
+      },
+      datapass_id: {
+        type: :string,
+        nullable: true,
+        title: "Identifiant DataPass de la demande d'habilitation",
+        description: "Identifiant DataPass de la demande d'habilitation à l'origine du jeton. Pour un jeton éditeur, identifiant de la demande d'habilitation déléguée, une fois le paramètre `recipient` renseigné.",
+        example: '12345'
+      },
+      siret_souscripteur: {
+        type: :string,
+        nullable: true,
+        title: 'SIRET du souscripteur',
+        description: "SIRET de l'organisation à laquelle le jeton a été délivré. Pour un jeton éditeur, SIRET de l'organisation ayant délégué son habilitation, une fois le paramètre `recipient` renseigné.",
+        example: '13002526500013'
+      },
+      date_emission: {
+        type: :string,
+        format: 'date-time',
+        nullable: true,
+        title: "Date d'émission du jeton",
+        description: 'Date à laquelle le jeton a été émis (claim `iat`).',
+        example: '2024-01-15T09:00:00+01:00'
+      },
+      date_expiration: {
+        type: :string,
+        format: 'date-time',
+        nullable: true,
+        title: "Date d'expiration du jeton",
+        description: 'Date à laquelle le jeton cesse de fonctionner (claim `exp`). Pensez à demander son renouvellement avant cette date.',
+        example: '2025-07-15T09:00:00+02:00'
+      },
+      rate_limit_par_minute: {
+        type: :integer,
+        nullable: true,
+        title: 'Limite de débit par minute',
+        description: "Nombre maximum d'appels par minute accordé au jeton. `null` lorsque aucune limite spécifique n'est configurée.",
+        example: 2000
+      },
+      delegation: {
+        type: :object,
+        nullable: true,
+        title: 'Délégation utilisée',
+        description: 'Délégation résolue pour un jeton éditeur, lorsque le paramètre `recipient` est renseigné. `null` dans tous les autres cas.',
+        properties: {
+          id: {
+            type: :string,
+            title: 'Identifiant de la délégation',
+            example: 'a31c6e1b-0a2f-4e8b-9a31-9b3d1f9a51c2'
+          },
+          siret_delegant: {
+            type: :string,
+            title: 'SIRET du délégant',
+            description: "SIRET de l'organisation ayant délégué son habilitation à l'éditeur.",
+            example: '13002526500013'
+          }
+        },
+        required: %w[id siret_delegant],
+        additionalProperties: false
+      }
+    }
+  end
 end
