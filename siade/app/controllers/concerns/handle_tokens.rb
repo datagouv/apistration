@@ -63,6 +63,8 @@ module HandleTokens
   def extract_user_from_token
     token = params[:token] || bearer_token_from_headers || api_key_token_from_headers
     JwtTokenService.instance.extract_user(token) if token
+  rescue JwtTokenService::ExtractionError
+    nil
   end
 
   def api_key_token_from_headers
