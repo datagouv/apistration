@@ -1,0 +1,7 @@
+insee:
+  - api: 'sirene'
+    limit: 2000
+    period: 60
+    scope: 'account'
+    source: 'Email from INSEE, sender and date to be completed'
+    updated_at: '2026-09-25'

@@ -66,6 +66,26 @@ fiche:
   fournisseur (ancres YAML, paramètres communs). Ces fichiers sont aussi lus par
   `SwaggerData` et servent de fallback/compléments aux swagger embarqués.
 
+### `commons/data/provider_quotas.yml`
+
+Quotas d'appels que les fournisseurs de données imposent à API Entreprise /
+API Particulier en tant que client. À ne pas confondre avec
+`commons/data/throttle.yml`, qui décrit les limites que nous imposons à nos
+propres clients.
+
+Fichier purement documentaire pour l'instant : aucune app ne le lit, il
+n'est donc ni symlinké ni listé dans un `.expand`.
+
+```yaml
+insee:                     # uid du fournisseur, cf. site/config/locales/*/providers.fr.yml
+  - api: 'sirene'          # API ou credential concerné, un fournisseur peut en avoir plusieurs
+    limit: 2000            # nombre de requêtes autorisées...
+    period: 60             # ...par période, en secondes (comme throttle.yml)
+    scope: 'account'       # portée : account (tout notre compte), credential, endpoint...
+    source: '...'          # origine de l'information (email, convention, doc)
+    updated_at: 'YYYY-MM-DD'
+```
+
 ### Adding a new shared file
 
 1. Put it under `commons/` (or anywhere at the repo root).
