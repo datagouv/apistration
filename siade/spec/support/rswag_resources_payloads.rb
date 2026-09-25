@@ -65,7 +65,7 @@ module RSwagResourcesPayloads
           properties: {
             document_url: {
               type: :string
-            }.merge(document_url_properties),
+            }.merge(document_url_properties.symbolize_keys),
             expires_in: {
               type: :integer,
               example: 7889238,
