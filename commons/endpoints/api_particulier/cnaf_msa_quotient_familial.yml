@@ -19,9 +19,6 @@ fiche:
         - ✅ les régimes spéciaux suivants : artiste-auteur-compositeur, France Télécom, industries électriques et gazières, marin du commerce et pêche, mines (régime général), poste, RATP, SNCF, navigation intérieure en cas d'accord local et les pensions des autres régimes.
 
 
-        {:.fr-highlight.fr-highlight--caution}
-        > **La présence d'au moins un enfant dans le foyer fiscal est obligatoire** pour que le quotient familial soit calculé et renvoyé par l'API.
-
         **Ne sont pas concernés par cette API**, les bénéficiaires des régimes suivants :
 
         - ❌ le régime des titulaires de l'Assemblée nationale et du Sénat ;
