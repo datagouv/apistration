@@ -8,7 +8,7 @@ RSpec.describe ExtractProviderFromPath, type: :service do
     open_api = YAML.load_file(open_api_path)
 
     open_api['paths'].each do |path, data|
-      next if path == '/privileges'
+      next if %w[/privileges /v3/token/introspect].include?(path)
       next if data['get']['security'] == []
 
       expect(described_class.new(path).perform).to be_present, "#{path} has no associated provider"

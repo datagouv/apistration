@@ -10,6 +10,7 @@ interface Spec {
   file: string;
   pkg: string;
   product: string;
+  requiredAuditParams: string[];
 }
 
 const SPECS: Record<string, Spec> = {
@@ -17,11 +18,13 @@ const SPECS: Record<string, Spec> = {
     file: join(COMMONS_SWAGGER, 'openapi-entreprise.yaml'),
     pkg: 'api-entreprise',
     product: 'entreprise',
+    requiredAuditParams: ['recipient', 'context', 'object'],
   },
   particulier: {
     file: join(COMMONS_SWAGGER, 'openapi-particulier.yaml'),
     pkg: 'api-particulier',
     product: 'particulier',
+    requiredAuditParams: ['recipient'],
   },
 };
 
@@ -136,6 +139,7 @@ function buildMethod(
   logical: string,
   variants: Map<number, Variant>,
   existing: Set<string>,
+  requiredAuditParams: string[],
 ): string {
   const sortedVersions = [...variants.keys()].sort((a, b) => a - b);
   const defaultVersion = Math.max(...sortedVersions);
@@ -196,6 +200,16 @@ function buildMethod(
     paramEntries.push(`'${wireName}': options.${kn}`);
   }
 
+  const operationAuditParams = qparams
+    .filter((p) => p.required === true && AUDIT_PARAMS.includes(p.name))
+    .map((p) => p.name);
+  const requiredOverride =
+    [...operationAuditParams].sort().join() === [...requiredAuditParams].sort().join()
+      ? ''
+      : `requiredParams: ${JSON.stringify(operationAuditParams).replace(/"/g, "'")}`;
+  const optionEntries = (entries: string[]) =>
+    [...entries, requiredOverride].filter((e) => e !== '').join(', ');
+
   const caseLines: string[] = [];
   for (const v of sortedVersions) {
     const info = variants.get(v)!;
@@ -241,12 +255,14 @@ function buildMethod(
       `    const headers = Object.fromEntries(Object.entries({ ${headerEntries.join(', ')} }).filter(([, v]) => v !== undefined)) as Record<string, string>;`,
     );
     lines.push(
-      `    return this.client.get(path, { params: { ${paramEntries.join(', ')} }, headers });`,
+      `    return this.client.get(path, { ${optionEntries([`params: { ${paramEntries.join(', ')} }`, 'headers'])} });`,
     );
   } else if (paramEntries.length > 0) {
     lines.push(
-      `    return this.client.get(path, { params: { ${paramEntries.join(', ')} } });`,
+      `    return this.client.get(path, { ${optionEntries([`params: { ${paramEntries.join(', ')} }`])} });`,
     );
+  } else if (requiredOverride !== '') {
+    lines.push(`    return this.client.get(path, { ${requiredOverride} });`);
   } else {
     lines.push('    return this.client.get(path);');
   }
@@ -258,6 +274,7 @@ function buildMethod(
 function renderResource(
   provider: string,
   endpoints: [string, Map<number, Variant>][],
+  requiredAuditParams: string[],
 ): string {
   const className = camel(provider);
   const existing = new Set<string>();
@@ -280,7 +297,7 @@ function renderResource(
   imports.push("import type { ClientBase } from '../commons/client-base.js';");
 
   const methods = endpoints.map(([logical, variants]) =>
-    buildMethod(logical, variants, existing),
+    buildMethod(logical, variants, existing, requiredAuditParams),
   );
 
   return [
@@ -354,7 +371,7 @@ function scaffold(api: string, check: boolean): [string[], boolean] {
     const endpoints = [...providerMap.entries()].sort(([a], [b]) =>
       a.localeCompare(b),
     );
-    const content = renderResource(provider, endpoints);
+    const content = renderResource(provider, endpoints, spec.requiredAuditParams);
     const file = join(targetDir, `${snake(provider)}.ts`);
 
     if (check) {

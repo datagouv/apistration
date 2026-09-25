@@ -32,7 +32,7 @@ CREATE TABLE public.authorization_requests (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     -- intitule character varying,
     -- description character varying,
-    -- external_id character varying,
+    external_id character varying,
     status character varying,
     -- last_update timestamp without time zone,
     -- first_submitted_at timestamp without time zone,

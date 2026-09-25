@@ -4,11 +4,15 @@ module HandleEditorDelegation
   included do
     skip_before_action :authorize_access_to_resource!
 
-    before_action :verify_editor_delegation!, if: :editor_token?
+    before_action :verify_editor_delegation!, if: :editor_delegation_required?
     before_action :authorize_access_to_resource!
   end
 
   private
+
+  def editor_delegation_required?
+    editor_token?
+  end
 
   def editor_token?
     current_user&.editor?

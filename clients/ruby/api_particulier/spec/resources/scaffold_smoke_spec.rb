@@ -7,7 +7,7 @@ RSpec.describe 'Generated resources smoke test' do
     )
   end
 
-  providers = %i[ants cnous dsnj dss france_travail gip_mds men mesri sdh]
+  providers = %i[ants cnous dsnj dss france_travail gip_mds men mesri sdh token]
 
   providers.each do |provider|
     it "exposes #{provider} and its resource has methods" do

@@ -14,6 +14,8 @@ get '/v2/privileges' => 'api_entreprise/privileges#index', constraints: APIEntre
 match '/v2/*whatever', to: 'errors#gone', via: :all, constraints: APIEntrepriseDomainConstraint.new
 
 scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true) do
+  get 'token/introspect', to: 'api_entreprise/v3_and_more/introspect#show'
+
   get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
 
   namespace :ademe do

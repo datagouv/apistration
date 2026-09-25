@@ -48,7 +48,7 @@ describe('scaffold smoke: every resource method callable with valid params', () 
     'cnetp', 'data_subvention', 'dgfip', 'djepva', 'douanes',
     'european_commission', 'fabrique_numerique_ministeres_sociaux', 'fntp',
     'gip_mds', 'infogreffe', 'inpi', 'insee', 'ministere_interieur',
-    'msa', 'opqibi', 'probtp', 'qualibat', 'qualifelec', 'urssaf',
+    'msa', 'opqibi', 'probtp', 'qualibat', 'qualifelec', 'token', 'urssaf',
   ];
 
   for (const provider of providers) {

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 0df8ad8033bacf8106a6a1b42aaf1e690c0f3147).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 35aaaaedcd3b760511d070e4e4c101ca3c5cdb32).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 module ApiEntreprise; end

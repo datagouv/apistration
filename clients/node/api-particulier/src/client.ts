@@ -13,6 +13,7 @@ import { GipMds } from './resources/gip_mds.js';
 import { Men } from './resources/men.js';
 import { Mesri } from './resources/mesri.js';
 import { Sdh } from './resources/sdh.js';
+import { Token } from './resources/token.js';
 // <scaffold:imports:end>
 
 const BASE_URLS = {
@@ -78,6 +79,7 @@ export class Client extends ClientBase {
   private _men?: Men;
   private _mesri?: Mesri;
   private _sdh?: Sdh;
+  private _token?: Token;
   // <scaffold:fields:end>
 
   // <scaffold:resources:begin>
@@ -116,6 +118,10 @@ export class Client extends ClientBase {
   get sdh(): Sdh {
     if (!this._sdh) this._sdh = new Sdh(this);
     return this._sdh;
+  }
+  get token(): Token {
+    if (!this._token) this._token = new Token(this);
+    return this._token;
   }
   // <scaffold:resources:end>
 }

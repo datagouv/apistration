@@ -12,12 +12,14 @@ SPECS = {
   entreprise: {
     file: File.join(COMMONS_SWAGGER, 'openapi-entreprise.yaml'),
     gem: 'api_entreprise',
-    namespace: 'ApiEntreprise'
+    namespace: 'ApiEntreprise',
+    required_audit_params: %w[recipient context object]
   },
   particulier: {
     file: File.join(COMMONS_SWAGGER, 'openapi-particulier.yaml'),
     gem: 'api_particulier',
-    namespace: 'ApiParticulier'
+    namespace: 'ApiParticulier',
+    required_audit_params: %w[recipient]
   }
 }.freeze
 
@@ -27,6 +29,7 @@ MIN_SUPPORTED_VERSION = 3
 STOP_WORDS = %w[identite identifiant france_connect].freeze
 SIRET_PARAMS = %w[siret].freeze
 SIREN_PARAMS = %w[siren].freeze
+AUDIT_PARAMS = %w[recipient context object].freeze
 
 def snake(str)
   str.to_s.gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
@@ -101,7 +104,7 @@ def header_kwarg(raw)
   snake(raw.sub(/\Ax-/i, ''))
 end
 
-def build_method(logical, variants, existing_names)
+def build_method(logical, variants, existing_names, required_audit_params)
   sorted_versions = variants.keys.sort
   default_version = pick_default_version(variants)
   reference = variants[default_version]
@@ -123,9 +126,8 @@ def build_method(logical, variants, existing_names)
   end
 
   qparams = query_params(operation)
-  audit_params = %w[recipient context object]
   kwargs = qparams.map { |p|
-    required = p['required'] && !audit_params.include?(p['name'])
+    required = p['required'] && !AUDIT_PARAMS.include?(p['name'])
     required ? "#{kwarg_name(p['name'])}:" : "#{kwarg_name(p['name'])}: nil"
   }
   hparams = header_params(operation)
@@ -142,6 +144,14 @@ def build_method(logical, variants, existing_names)
     "\"#{wire_name}\" => #{kwarg_name(p['name'])}"
   }.join(', ')
   query_merge = param_hash.empty? ? '{}' : "{ #{param_hash} }.compact"
+
+  operation_audit_params = qparams.select { |p| p['required'] && AUDIT_PARAMS.include?(p['name']) }.map { |p| p['name'] }
+  required_override =
+    if operation_audit_params.sort == required_audit_params.sort
+      ''
+    else
+      ", required_params: #{operation_audit_params.map(&:to_sym).inspect}"
+    end
 
   case_lines = sorted_versions.map do |v|
     info = variants[v]
@@ -163,9 +173,9 @@ def build_method(logical, variants, existing_names)
   body << "    raise ArgumentError, \"version \#{version.inspect} not available for #{logical}; supported: #{sorted_versions.inspect}\""
   body << '  end'
   body << if header_hash.empty?
-    "@client.get(path, params: #{query_merge})"
+    "@client.get(path, params: #{query_merge}#{required_override})"
   else
-    "@client.get(path, params: #{query_merge}, headers: { #{header_hash} }.compact)"
+    "@client.get(path, params: #{query_merge}, headers: { #{header_hash} }.compact#{required_override})"
   end
 
   comment_lines = []
@@ -186,10 +196,10 @@ def pick_default_version(variants)
   variants.keys.max
 end
 
-def render_resource(provider:, namespace:, endpoints:)
+def render_resource(provider:, namespace:, endpoints:, required_audit_params:)
   class_name = camel(provider)
   existing = []
-  methods = endpoints.map { |logical, variants| build_method(logical, variants, existing) }
+  methods = endpoints.map { |logical, variants| build_method(logical, variants, existing, required_audit_params) }
 
   methods_block = methods.map { |m| indent(m, 6) }.join("\n\n")
   <<~RUBY
@@ -250,7 +260,8 @@ def scaffold(api:, check:)
 
   grouped.keys.sort.each do |provider|
     endpoints = grouped[provider].sort_by { |logical, _| logical }
-    content = render_resource(provider: provider, namespace: spec[:namespace], endpoints: endpoints)
+    content = render_resource(provider: provider, namespace: spec[:namespace], endpoints: endpoints,
+                              required_audit_params: spec[:required_audit_params])
     file = File.join(target_dir, "#{snake(provider)}.rb")
 
     if check

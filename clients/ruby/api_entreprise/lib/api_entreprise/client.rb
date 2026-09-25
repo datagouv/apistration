@@ -24,6 +24,7 @@ require_relative 'resources/opqibi'
 require_relative 'resources/probtp'
 require_relative 'resources/qualibat'
 require_relative 'resources/qualifelec'
+require_relative 'resources/token'
 require_relative 'resources/urssaf'
 # <scaffold:requires:end>
 
@@ -139,6 +140,9 @@ module ApiEntreprise
     end
     def qualifelec
       @qualifelec ||= Resources::Qualifelec.new(self)
+    end
+    def token
+      @token ||= Resources::Token.new(self)
     end
     def urssaf
       @urssaf ||= Resources::Urssaf.new(self)

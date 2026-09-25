@@ -27,6 +27,7 @@ import { Opqibi } from './resources/opqibi.js';
 import { Probtp } from './resources/probtp.js';
 import { Qualibat } from './resources/qualibat.js';
 import { Qualifelec } from './resources/qualifelec.js';
+import { Token } from './resources/token.js';
 import { Urssaf } from './resources/urssaf.js';
 // <scaffold:imports:end>
 
@@ -107,6 +108,7 @@ export class Client extends ClientBase {
   private _probtp?: Probtp;
   private _qualibat?: Qualibat;
   private _qualifelec?: Qualifelec;
+  private _token?: Token;
   private _urssaf?: Urssaf;
   // <scaffold:fields:end>
 
@@ -202,6 +204,10 @@ export class Client extends ClientBase {
   get qualifelec(): Qualifelec {
     if (!this._qualifelec) this._qualifelec = new Qualifelec(this);
     return this._qualifelec;
+  }
+  get token(): Token {
+    if (!this._token) this._token = new Token(this);
+    return this._token;
   }
   get urssaf(): Urssaf {
     if (!this._urssaf) this._urssaf = new Urssaf(this);

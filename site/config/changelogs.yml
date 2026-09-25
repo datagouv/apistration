@@ -1,3 +1,11 @@
+- date: 2026-09-24
+  scope: both
+  title: "Nouvel endpoint d'introspection `/v3/token/introspect`"
+  description: |
+    Un nouvel endpoint `/v3/token/introspect` décrit le jeton présenté dans l'appel : ses scopes, l'identifiant DataPass et le lien vers la demande d'habilitation dont il est issu, le SIRET du souscripteur, ses dates d'émission et d'expiration et sa limite de débit. Il ne requiert aucun scope et n'impose aucun paramètre de traçabilité.
+
+    Pour un jeton éditeur, le paramètre `recipient` (et `delegation_id` si besoin) permet de vérifier la délégation accordée par un client. L'usage est détaillé dans l'[espace développeurs](<%= developers_path %>) ; les anciens endpoints d'introspection restent disponibles.
+
 - date: 2026-09-17
   scope: api_entreprise
   title: "APIs Sirene INSEE : nouveau code d'erreur `01006` en cas d'échec d'authentification"

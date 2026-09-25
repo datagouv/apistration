@@ -21,4 +21,5 @@ export { Opqibi } from './opqibi.js';
 export { Probtp } from './probtp.js';
 export { Qualibat } from './qualibat.js';
 export { Qualifelec } from './qualifelec.js';
+export { Token } from './token.js';
 export { Urssaf } from './urssaf.js';
