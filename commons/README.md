@@ -66,6 +66,11 @@ fiche:
   fournisseur (ancres YAML, paramètres communs). Ces fichiers sont aussi lus par
   `SwaggerData` et servent de fallback/compléments aux swagger embarqués.
 
+### `commons/provider_quotas.md`
+
+Quotas d'appels que les fournisseurs de données nous imposent, à ne pas
+confondre avec `commons/data/throttle.yml`.
+
 ### Adding a new shared file
 
 1. Put it under `commons/` (or anywhere at the repo root).
