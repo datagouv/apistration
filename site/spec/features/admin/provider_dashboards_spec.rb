@@ -28,6 +28,14 @@ RSpec.describe 'Admin: provider dashboards', app: :api_entreprise do
     end
   end
 
+  describe 'success section' do
+    it 'colors successes green and errors warm on its charts' do
+      visit success_section_admin_provider_dashboard_path('insee')
+
+      expect(page).to have_css('bar-chart[selected-palette="divergentAscending"]', count: 2)
+    end
+  end
+
   describe 'all providers page' do
     it 'renders the global dashboard with all endpoints' do
       visit admin_provider_dashboard_path('all')

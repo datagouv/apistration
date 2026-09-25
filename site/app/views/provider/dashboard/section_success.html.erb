@@ -32,7 +32,7 @@
           values: @query.evolution_success.map { |r| r[k] } }
       },
       stacked: true,
-      palette: 'divergentDescending' %>
+      palette: 'divergentAscending' %>
 
     <%= render 'shared/dsfr_chart/bar',
       title: t('.charts.success_per_endpoint'),
@@ -42,6 +42,6 @@
           values: @query.success_per_endpoint.map { |r| r[k] } }
       },
       stacked: true,
-      palette: 'divergentDescending' %>
+      palette: 'divergentAscending' %>
   </section>
 <% end %>
