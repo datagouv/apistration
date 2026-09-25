@@ -99,8 +99,8 @@ RSpec.describe Datagouv::FichePayloadBuilder do
       expect(payload[:tags]).to eq(%w[administration administration-et-legislation api-particulier education_nationale])
     end
 
-    it 'uses a throttle period of 1 second worded as "seconde"' do
-      expect(payload[:rate_limiting]).to eq('20 requêtes / seconde')
+    it 'uses the per-minute API Particulier throttle' do
+      expect(payload[:rate_limiting]).to eq('250 requêtes / minute')
     end
   end
 

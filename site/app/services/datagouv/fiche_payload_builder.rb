@@ -126,7 +126,6 @@ module Datagouv
 
     def period_in_words(period)
       case period
-      when 1 then 'seconde'
       when 60 then 'minute'
       else "#{period} secondes"
       end
