@@ -363,7 +363,7 @@ GEM
       redis-client (= 0.30.1)
     redis-client (0.30.1)
       connection_pool
-    regexp_parser (2.12.0)
+    regexp_parser (2.13.0)
     reline (0.6.3)
       io-console (~> 0.5)
     request_store (1.7.0)
@@ -432,7 +432,7 @@ GEM
     rubocop-checkstyle_formatter (0.7.0)
       rexml
       rubocop (>= 1.14.0)
-    rubocop-rails (2.37.0)
+    rubocop-rails (2.38.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
