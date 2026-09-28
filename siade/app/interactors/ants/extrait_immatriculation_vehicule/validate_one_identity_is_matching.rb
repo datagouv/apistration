@@ -1,5 +1,5 @@
 class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < ValidateResponse
-  declares_no_specific_errors!
+  raises ANTSError, kind: :no_matching_identity
 
   def call
     matching_identity = find_matching_identity
@@ -47,15 +47,7 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
   def no_matching_identity!
     track_no_matching_identity
 
-    fail_with_error!(
-      ::NotFoundError.new(
-        context.provider_name,
-        'Immatriculation trouvée mais aucune identité ne correspond',
-        title: 'Identité non trouvée',
-        subcode: '005',
-        with_identifiant_message: false
-      )
-    )
+    fail_with_error!(ANTSError.new(:no_matching_identity))
   end
 
   def track_no_matching_identity

@@ -528,6 +528,18 @@
   title: "Age non pertinent pour le Service National"
   detail: "L'age renseigné n'est pas compris entre 16 et 25 ans incluts, et n'est donc pas concerné par le Service National."
 
+## MEN
+
+- code: '30404'
+  title: 'Scolarité non trouvée'
+  detail: "Aucune scolarité n'a pu être trouvée pour cet élève"
+
+## ANTS
+
+- code: '42404'
+  title: 'Identité non trouvée'
+  detail: 'Immatriculation trouvée mais aucune identité ne correspond'
+
 ## FranceConnect
 
 - code: '51501'

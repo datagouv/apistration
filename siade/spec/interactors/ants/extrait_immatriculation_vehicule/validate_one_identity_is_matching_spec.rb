@@ -78,14 +78,17 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    its(:errors) { is_expected.to include(instance_of(ANTSError)) }
 
     it 'returns the specific error message for no matching identity' do
       expect(subject.errors.first.detail).to eq('Immatriculation trouvée mais aucune identité ne correspond')
     end
 
-    it 'returns the specific subcode for no matching identity' do
-      expect(subject.errors.first.subcode).to eq('005')
+    it 'renders a 404 under a code of its own' do
+      error = subject.errors.first
+
+      expect(error.code).to eq('42404')
+      expect(Errors::HTTPStatusForKind.call(error.kind)).to eq(:not_found)
     end
 
     it 'tracks monitoring with encrypted params' do
@@ -110,6 +113,6 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatchi
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    its(:errors) { is_expected.to include(instance_of(ANTSError)) }
   end
 end

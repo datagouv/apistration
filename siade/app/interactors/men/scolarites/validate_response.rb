@@ -1,5 +1,5 @@
 class MEN::Scolarites::ValidateResponse < ValidateResponse
-  declares_no_specific_errors!
+  raises MENError, kind: :scolarite_not_found
 
   def call
     resource_not_found! if http_not_found?
@@ -27,15 +27,7 @@ class MEN::Scolarites::ValidateResponse < ValidateResponse
   end
 
   def scolarite_not_found!
-    fail_with_error!(
-      ::NotFoundError.new(
-        context.provider_name,
-        'Aucune scolarité n\'a pu être trouvée pour cet élève',
-        title: 'Scolarité non trouvée',
-        subcode: '004',
-        with_identifiant_message: false
-      )
-    )
+    fail_with_error!(MENError.new(:scolarite_not_found))
   end
 
   def no_scolarite?

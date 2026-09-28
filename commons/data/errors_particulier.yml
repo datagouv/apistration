@@ -192,6 +192,11 @@ endpoints:
           votre recherche est couverte par le périmètre de l'API.
         meta:
           provider: ANTS
+      - code: '42404'
+        title: Identité non trouvée
+        detail: Immatriculation trouvée mais aucune identité ne correspond
+        meta:
+          provider: ANTS
       '502':
       - code: '42000'
         title: Erreur interne du fournisseur de données
@@ -4508,6 +4513,11 @@ endpoints:
           votre recherche est couverte par le périmètre de l'API.
         meta:
           provider: MEN
+      - code: '30404'
+        title: Scolarité non trouvée
+        detail: Aucune scolarité n'a pu être trouvée pour cet élève
+        meta:
+          provider: MEN
       '502':
       - code: '30000'
         title: Erreur interne du fournisseur de données
@@ -5397,6 +5407,11 @@ endpoints:
           votre recherche est couverte par le périmètre de l'API.
         meta:
           provider: MEN
+      - code: '30404'
+        title: Scolarité non trouvée
+        detail: Aucune scolarité n'a pu être trouvée pour cet élève
+        meta:
+          provider: MEN
       '502':
       - code: '30000'
         title: Erreur interne du fournisseur de données
@@ -5867,6 +5882,11 @@ endpoints:
         detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
           ou ne comportent aucune information pour cet appel. Veuillez vérifier que
           votre recherche est couverte par le périmètre de l'API.
+        meta:
+          provider: MEN
+      - code: '30404'
+        title: Scolarité non trouvée
+        detail: Aucune scolarité n'a pu être trouvée pour cet élève
         meta:
           provider: MEN
       '502':

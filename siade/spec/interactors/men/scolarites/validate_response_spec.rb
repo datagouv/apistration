@@ -48,6 +48,13 @@ RSpec.describe MEN::Scolarites::ValidateResponse, type: :validate_response do
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    its(:errors) { is_expected.to include(instance_of(MENError)) }
+
+    it 'renders a 404 under a code of its own' do
+      error = subject.errors.first
+
+      expect(error.code).to eq('30404')
+      expect(Errors::HTTPStatusForKind.call(error.kind)).to eq(:not_found)
+    end
   end
 end
