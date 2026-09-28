@@ -432,7 +432,7 @@ GEM
     rubocop-checkstyle_formatter (0.7.0)
       rexml
       rubocop (>= 1.14.0)
-    rubocop-rails (2.37.0)
+    rubocop-rails (2.38.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
