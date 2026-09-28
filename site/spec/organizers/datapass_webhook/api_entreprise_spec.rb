@@ -30,7 +30,7 @@ RSpec.describe DatapassWebhook::APIEntreprise, type: :interactor do
         })
     end
 
-    let(:previous_enrollment_id) { rand(9001).to_s }
+    let(:previous_enrollment_id) { generate(:authorization_request, :external_id) }
 
     before do
       allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)

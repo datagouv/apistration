@@ -11,7 +11,7 @@ RSpec.shared_examples 'a datapass webhook organizer' do |api_name, mailjet_list_
       })
   end
 
-  let(:previous_enrollment_id) { rand(9001).to_s }
+  let(:previous_enrollment_id) { generate(:authorization_request, :external_id) }
   let(:token) { create(:token) }
 
   before do
