@@ -24,7 +24,7 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
   let(:responsable_technique) { build(:datapass_webhook_team_member_model, type: 'responsable_technique') }
   let(:contact_metier) { build(:datapass_webhook_team_member_model, type: 'contact_metier') }
 
-  let(:authorization_id) { rand(1..4000).to_s }
+  let(:authorization_id) { generate(:authorization_request, :external_id) }
   let(:fired_at) { 2.minutes.ago.to_i }
 
   context 'when authorization request already exists' do
