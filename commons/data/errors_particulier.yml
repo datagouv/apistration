@@ -295,12 +295,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -631,12 +625,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -971,12 +959,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -1307,12 +1289,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -1647,12 +1623,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -1983,12 +1953,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -2335,12 +2299,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -2671,12 +2629,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -3027,12 +2979,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -3365,12 +3311,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -3635,12 +3575,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -4017,12 +3951,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -4433,12 +4361,6 @@ endpoints:
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
         meta:
           provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
-        meta:
-          provider: FranceConnect
       - code: '51504'
         title: Accès non autorisé
         detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint requiert
@@ -4832,12 +4754,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -5249,12 +5165,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'
@@ -5748,12 +5658,6 @@ endpoints:
       - code: '51502'
         title: Accès non autorisé
         detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-        meta:
-          provider: FranceConnect
-      - code: '51503'
-        title: Accès non autorisé
-        detail: 'Le jeton d''accès ne possède pas les données pivot requises pour
-          effectuer cet appel. Le jeton possède les scopes suivants: .'
         meta:
           provider: FranceConnect
       - code: '51504'

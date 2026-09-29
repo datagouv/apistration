@@ -88,7 +88,7 @@ RSpec.describe ErrorsNomenclature, type: :service do
 
     it 'adds the FranceConnect token errors to the FranceConnect variant only' do
       expect(codes_for('api_particulier_v3_cnav_prime_activite_with_france_connect', '401'))
-        .to eq(%w[51501 51502 51503 51504])
+        .to eq(%w[51501 51502 51504])
       expect(nomenclature.dig('endpoints', 'api_particulier_v3_cnav_prime_activite_with_civility', 'errors')).not_to have_key('401')
     end
 

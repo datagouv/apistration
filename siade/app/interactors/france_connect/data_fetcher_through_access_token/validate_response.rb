@@ -46,10 +46,6 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < FranceCon
     JWE.decrypt(context.response.body, rsa_private_key)
   end
 
-  def scopes
-    json_body['token_introspection']['scope'].split
-  end
-
   def handle_invalid_token_error
     case error_type
     when 'invalid_request'

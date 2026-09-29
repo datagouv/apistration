@@ -1,9 +1,5 @@
 RSpec.describe FranceConnect::ValidateResponse do
   class FranceConnectDummyDataFetcher < described_class
-    def scopes
-      %w[openid identite_pivot family_name given_name gender birthdate birthplace birthcountry]
-    end
-
     def params_to_verify # rubocop:disable Metrics/AbcSize
       {
         nom_naissance: json_body['token_introspection']['family_name'],
@@ -12,28 +8,6 @@ RSpec.describe FranceConnect::ValidateResponse do
         mois_date_naissance: json_body['token_introspection']['birthdate'].split('-').second,
         jour_date_naissance: json_body['token_introspection']['birthdate'].split('-').third
       }
-    end
-  end
-
-  class FranceConnectDummyDataFetcherWithoutIdentity < FranceConnectDummyDataFetcher
-    def scopes
-      %w[openid]
-    end
-  end
-
-  describe 'FranceConnect token scopes validation' do
-    subject(:call) { FranceConnectDummyDataFetcherWithoutIdentity.call(response:, provider_name: 'FranceConnect') }
-
-    let(:response) do
-      instance_double(Net::HTTPOK, code: 200, body: { token_introspection: { active: true, scope: %w[openid] } }.to_json)
-    end
-
-    describe 'when the token lacks the hub identity scopes' do
-      it { is_expected.to be_a_failure }
-
-      it 'rejects the token as missing the hub identity scope' do
-        expect(subject.errors.first.code).to eq('51503')
-      end
     end
   end
 
