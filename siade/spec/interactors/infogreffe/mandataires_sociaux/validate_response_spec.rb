@@ -6,6 +6,8 @@ RSpec.describe Infogreffe::MandatairesSociaux::ValidateResponse, type: :validate
       instance_double(Net::HTTPOK, code: 200, body:)
     end
 
+    it_behaves_like 'an Infogreffe response validator'
+
     context 'with a valid payload' do
       let(:body) { open_payload_file('infogreffe/without_personne_physique_naissance.xml').read }
 

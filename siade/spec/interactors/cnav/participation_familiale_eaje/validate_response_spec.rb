@@ -1,6 +1,8 @@
 RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'Sécurité sociale') }
 
+  it_behaves_like 'a CNAV response validator'
+
   context 'with 200 response' do
     let(:response) do
       instance_double(Net::HTTPOK, code: 200, body:)

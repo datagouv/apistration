@@ -1,6 +1,7 @@
 module ValidateResponseEmissionGuard
   EMISSIONS = Hash.new { |h, k| h[k] = Set.new }
   GROUP_EMISSIONS = Hash.new { |h, k| h[k] = Set.new }
+  NOT_FOUND_PROVIDERS = Hash.new { |h, k| h[k] = Set.new }
   INSTRUMENTED = Set.new
 
   UNIVERSAL_ERRORS = (
@@ -49,6 +50,7 @@ module ValidateResponseEmissionGuard
     errors.each do |error|
       signature = emitted_signature(error, provider_name)
       EMISSIONS[validator_class] << signature
+      NOT_FOUND_PROVIDERS[validator_class] << error.provider_name if ERRORS_DISCRIMINATED_BY_FOREIGN_PROVIDER.include?(error.class)
       GROUP_EMISSIONS[validator_class] << signature
     end
   end
@@ -57,11 +59,21 @@ module ValidateResponseEmissionGuard
     return if validator_class.include?(Interactor::Organizer)
     raise "[#{validator_class}] declares neither `raises` nor `declares_no_specific_errors!`" unless ErrorRegistry.guarded?(validator_class)
 
-    direct = declared_set(ErrorRegistry.direct_declarations_for(validator_class))
+    declared = declared_set(own_and_inherited_declarations(validator_class))
     inherited = declared_set(ErrorRegistry.declarations_for(validator_class))
     emitted = EMISSIONS[validator_class]
-    failures = format_failures(validator_class, direct - exercised_in_spec(validator_class), undeclared_extras(emitted, inherited))
+    failures = format_failures(validator_class, unexercised(validator_class, declared), undeclared_extras(emitted, inherited))
     raise failures.join("\n") if failures.any?
+  end
+
+  def self.own_and_inherited_declarations(validator_class)
+    validator_class.ancestors.flat_map { |klass| ErrorRegistry.direct_declarations_for(klass) }
+  end
+
+  def self.unexercised(validator_class, declared)
+    (declared - exercised_in_spec(validator_class)).reject do |error_class, provider|
+      ERRORS_DISCRIMINATED_BY_FOREIGN_PROVIDER.include?(error_class) && NOT_FOUND_PROVIDERS[validator_class].include?(provider)
+    end
   end
 
   def self.exercised_in_spec(validator_class)

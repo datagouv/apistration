@@ -1,6 +1,8 @@
 RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'CNAF & MSA', recipient: '13002526500013') }
 
+  it_behaves_like 'a CNAV response validator'
+
   context 'with 200 response' do
     let(:response) do
       instance_double(Net::HTTPOK, code: 200, body: read_payload_file('cnav/quotient_familial_v2/make_request_valid.json'))
