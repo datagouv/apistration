@@ -1,0 +1,15 @@
+<div class="fr-footer__brand footer-brand">
+  <a href="/" title="Retour à l’accueil">
+    <p class="fr-logo" title="république française">
+    République
+    <br>Française
+    </p>
+  </a>
+  <%= external_link_to 'https://www.data.gouv.fr/products', class: 'fr-footer__brand-link footer-brand__datagouv' do %>
+    <%= image_tag 'logos/datagouv.svg', alt: '', width: 48, height: 55 %>
+    <span>Produit de l’écosystème datagouv</span>
+  <% end %>
+  <%= external_link_to 'https://www.numerique.gouv.fr/', class: 'fr-footer__brand-link footer-brand__numerique' do %>
+    <%= image_tag 'logos/numerique-gouv.svg', width: 180, height: 93, alt: 'numerique.gouv - L’alliance du numérique de l’État' %>
+  <% end %>
+</div>

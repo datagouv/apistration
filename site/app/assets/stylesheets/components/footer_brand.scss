@@ -1,0 +1,24 @@
+.footer-brand {
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+}
+
+.footer-brand a {
+  background-image: none;
+}
+
+.footer-brand a[target="_blank"]::after {
+  content: none;
+}
+
+.footer-brand__datagouv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 8.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1rem;
+  text-align: center;
+}

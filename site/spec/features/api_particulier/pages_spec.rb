@@ -32,4 +32,16 @@ RSpec.describe 'Simple pages', app: :api_particulier do
       expect(page).to have_css('.fr-skiplinks a[href="#footer"]')
     end
   end
+
+  context 'with the footer brand block' do
+    before { visit root_path }
+
+    it 'links to the datagouv ecosystem products' do
+      expect(page).to have_css('#footer .fr-footer__brand a[href="https://www.data.gouv.fr/products"]', text: 'Produit de l’écosystème datagouv')
+    end
+
+    it 'links to numerique.gouv with its signature as alternative text' do
+      expect(page).to have_css('#footer .fr-footer__brand a[href="https://www.numerique.gouv.fr/"] img[alt="numerique.gouv - L’alliance du numérique de l’État"]')
+    end
+  end
 end
