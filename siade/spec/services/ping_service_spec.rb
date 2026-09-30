@@ -77,8 +77,7 @@ RSpec.describe PingService, type: :service do
           expect(RetrieverPingDriver).to have_received(:new).with(
             retriever: 'INPI::RNE::BeneficiairesEffectifs',
             params: {
-              inpi_rne_login_password: Siade.credentials[:inpi_rne_login_ping_password],
-              inpi_rne_login_username: Siade.credentials[:inpi_rne_login_ping_username],
+              inpi_rne_account_pool: 'ping',
               siren: '900225095'
             }
           )

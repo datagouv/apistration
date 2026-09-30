@@ -20,8 +20,7 @@ RSpec.describe RetrieverPayloadPingDriver, type: :ping_driver do
 
       expect(retriever).to have_received(:call).with(
         params: {
-          inpi_rne_login_password: Siade.credentials[:inpi_rne_login_ping_password],
-          inpi_rne_login_username: Siade.credentials[:inpi_rne_login_ping_username],
+          inpi_rne_account_pool: 'ping',
           siren: '900225095'
         },
         recipient: JwtTokenService::DINUM_SIRET,

@@ -11,8 +11,7 @@ test:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
-          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
-          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+          inpi_rne_account_pool: 'ping'
 
     with_retriever_payload:
       kind: 'retriever_payload'
@@ -21,8 +20,7 @@ test:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
-          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
-          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+          inpi_rne_account_pool: 'ping'
         key_to_dig: 'a.b.c'
         method_to_test_on_payload: 'any?'
 
@@ -35,8 +33,7 @@ test:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
-          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
-          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+          inpi_rne_account_pool: 'ping'
 
     with_retriever_and_cache:
       kind: 'retriever'
@@ -46,8 +43,7 @@ test:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
-          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
-          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+          inpi_rne_account_pool: 'ping'
 
     with_access_logs:
       kind: 'access_logs'
@@ -526,8 +522,7 @@ shared:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
-          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
-          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+          inpi_rne_account_pool: 'ping'
 
     inpi/rne/actes_bilans:
       kind: 'retriever'
@@ -540,8 +535,7 @@ shared:
         retriever: 'INPI::RNE::ActesBilans'
         params:
           siren: '542065479'
-          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
-          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+          inpi_rne_account_pool: 'ping'
 
     djepva/api-association:
       kind: 'retriever'
