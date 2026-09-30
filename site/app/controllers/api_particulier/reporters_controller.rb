@@ -19,16 +19,12 @@ class APIParticulier::ReportersController < APIParticulier::AuthenticatedUsersCo
     if current_user.admin?
       reporters_config.keys
     else
-      reporters_config.select { |_, emails| normalized_emails(emails).include?(current_user.email) }.keys
+      reporters_config.select { |_, emails| emails.include?(current_user.email) }.keys
     end
   end
 
   def reporter_emails
-    normalized_emails(reporters_config.values.flatten.uniq)
-  end
-
-  def normalized_emails(emails)
-    emails.map { |email| User.normalize_value_for(:email, email) }
+    reporters_config.values.flatten.uniq
   end
 
   def reporters_config

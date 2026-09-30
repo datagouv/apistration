@@ -30,28 +30,6 @@ RSpec.describe 'API Particulier', app: :api_particulier do
     end
   end
 
-  context 'with a reporter configured with a real email, in staging' do
-    let(:user) do
-      allow(Rails.env).to receive(:staging?).and_return(true)
-      create(:user, email: 'reporter@caf.fr')
-    end
-
-    before do
-      stub_credential(:api_particulier_reporters, {
-        cnaf_: ['Reporter@caf.fr'],
-        pole_emploi_: ['other@yopmail.com']
-      })
-    end
-
-    it 'recognizes the reporter despite the anonymized email' do
-      visit_dashboard
-
-      expect(page).to have_current_path(api_particulier_dashboard_reporter_path)
-      expect(page).to have_text('Quotient Familial')
-      expect(page).to have_no_text('France travail')
-    end
-  end
-
   context 'with admin user' do
     let(:user) { create(:user, email: 'admin@beta.gouv.fr') }
 
