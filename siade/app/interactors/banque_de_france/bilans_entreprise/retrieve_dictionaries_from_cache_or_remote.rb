@@ -1,4 +1,6 @@
 class BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote < ApplicationInteractor
+  delegates_to DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote
+
   def call
     context.dictionaries = bilans_years.index_with do |year|
       retrieve_dictionaries_for_year(year)

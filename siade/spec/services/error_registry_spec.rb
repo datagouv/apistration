@@ -91,6 +91,70 @@ RSpec.describe ErrorRegistry do
     end
   end
 
+  describe '.declarations_for with delegations' do
+    it 'adds the declarations of the interactors a class delegates to, through their organize chain' do
+      validator = Class.new
+      inner = Class.new do
+        class << self
+          attr_reader :organized
+        end
+      end
+      inner.instance_variable_set(:@organized, [validator])
+      caller = Class.new
+
+      described_class.register(validator, NotFoundError)
+      described_class.register_delegation(caller, inner)
+
+      expect(described_class.declarations_for(caller).map(&:error_class)).to eq([NotFoundError])
+    end
+
+    it 'keeps the declarations of a delegated retriever out, since they belong to its provider' do
+      retriever = Class.new(RetrieverOrganizer)
+      caller = Class.new
+
+      described_class.register(retriever, NotFoundError)
+      described_class.register_delegation(caller, retriever)
+
+      expect(described_class.declarations_for(caller)).to be_empty
+    end
+  end
+
+  describe '.delegated_retrievers_for' do
+    def organizer_of(*organized)
+      organizer = Class.new do
+        class << self
+          attr_reader :organized
+        end
+      end
+      organizer.instance_variable_set(:@organized, organized)
+      organizer
+    end
+
+    it 'follows the retrievers an interactor of the chain runs, through the interactors it delegates to' do
+      retriever = Class.new(RetrieverOrganizer)
+      relay = Class.new
+      caller = Class.new
+
+      described_class.register_delegation(caller, relay)
+      described_class.register_delegation(relay, retriever)
+
+      expect(described_class.delegated_retrievers_for(organizer_of(caller))).to eq([retriever])
+    end
+
+    it 'leaves out the interactors it delegates to, whose errors belong to the caller' do
+      validator = Class.new
+      caller = Class.new
+
+      described_class.register_delegation(caller, validator)
+
+      expect(described_class.delegated_retrievers_for(organizer_of(caller))).to be_empty
+    end
+
+    it 'finds none for a chain that delegates nothing' do
+      expect(described_class.delegated_retrievers_for(organizer_of(Class.new))).to be_empty
+    end
+  end
+
   describe 'Declaration#build' do
     let(:validator) do
       Class.new do

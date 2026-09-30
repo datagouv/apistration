@@ -1,4 +1,6 @@
 class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationInteractor
+  delegates_to DGFIP::Dictionaries
+
   def call
     return affect_dictionary_from_local if load_local_dgfip_dictionnaries? && local_file_exists?
     return handle_missing_local_file if load_local_dgfip_dictionnaries?

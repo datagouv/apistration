@@ -32,6 +32,11 @@ RSpec.describe ErrorsNomenclature, type: :service do
       expect(codes_for('api_entreprise_v3_acoss_attestations_sociales', '422')).not_to include('00210')
     end
 
+    it 'documents the DGFIP failures the Banque de France bilans relay from the dictionaries they fetch' do
+      expect(codes_for('api_entreprise_v3_banque_de_france_bilans_entreprise', '502')).to include('03001')
+      expect(codes_for('api_entreprise_v3_banque_de_france_bilans_entreprise', '503')).to include('03020')
+    end
+
     it 'follows the organizer each version runs' do
       expect(codes_for('api_entreprise_v3_acoss_attestations_sociales', '502')).to include('04503')
       expect(codes_for('api_entreprise_v4_acoss_attestations_sociales', '502')).not_to include('04503')
@@ -49,6 +54,10 @@ RSpec.describe ErrorsNomenclature, type: :service do
 
   context 'with API Particulier' do
     let(:api) { :particulier }
+
+    it 'documents the MEN search validators the search params validator runs itself' do
+      expect(codes_for('api_particulier_v5_men_scolarites_with_civility', '422')).to include('00410', '00412', '00413', '00414', '00416', '00417')
+    end
 
     it 'gives the CNAV endpoints the prefix of the caisses they query' do
       expect(codes_for('api_particulier_v3_cnav_prime_activite_with_civility', '502')).to include('36000')

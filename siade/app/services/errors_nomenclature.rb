@@ -55,7 +55,8 @@ class ErrorsNomenclature
   def endpoint_errors(controller_class, organizer, provider_name)
     (declared_errors(organizer, provider_name) +
       france_connect_errors(controller_class) +
-      baseline.for_provider(provider_name))
+      baseline.for_provider(provider_name) +
+      delegated_errors(organizer))
       .reject { |error| platform_error_codes.include?(error.code) }
   end
 
@@ -65,6 +66,12 @@ class ErrorsNomenclature
 
   def declared_errors(organizer, provider_name)
     ErrorRegistry.declarations_for_organizer(organizer).map { |declaration| declaration.build(provider_name:) }
+  end
+
+  def delegated_errors(organizer)
+    ErrorRegistry.delegated_retrievers_for(organizer).flat_map do |retriever|
+      declared_errors(retriever, retriever.provider_name) + baseline.for_token_provider(retriever.provider_name)
+    end
   end
 
   def france_connect_errors(controller_class)

@@ -4471,15 +4471,37 @@ endpoints:
     provider: MEN
     errors:
       '422':
+      - code: '00410'
+        title: Entité non traitable
+        detail: 'Le code établissement n''est pas correctement formaté: celui doit
+          être composé de 7 chiffres et 1 lettre'
       - code: '00411'
         title: Entité non traitable
         detail: 'L''année scolaire n''est pas correctement formatée: doit être sur
           le format YYYY ou YYYY-YYYY)'
+      - code: '00412'
+        title: Entité non traitable
+        detail: 'Le degré d''établissement n''est pas correctement formaté: doit être
+          1D ou 2D'
+      - code: '00413'
+        title: Entité non traitable
+        detail: 'Le périmètre géographique est invalide: exactement un type de périmètre
+          doit être fourni'
+      - code: '00414'
+        title: Entité non traitable
+        detail: 'Les valeurs du périmètre sont invalides: doit être un tableau non
+          vide'
       - code: '00415'
         title: Entité non traitable
         detail: 'Au moins un critère de recherche géographique est requis: renseignez
           soit le paramètre codeEtablissement, soit un périmètre géographique (codesBcnDepartements
           ou codesBcnRegions avec degreEtablissement)'
+      - code: '00416'
+        title: Entité non traitable
+        detail: 'Le code département BCN MEN est invalide: valeur non reconnue'
+      - code: '00417'
+        title: Entité non traitable
+        detail: 'Le code région BCN MEN est invalide: valeur non reconnue'
       - code: '00419'
         title: Entité non traitable
         detail: Les paramètres codeEtablissement et périmètre (codesBcnRegions/codesBcnDepartements)
@@ -5365,15 +5387,37 @@ endpoints:
     provider: MEN
     errors:
       '422':
+      - code: '00410'
+        title: Entité non traitable
+        detail: 'Le code établissement n''est pas correctement formaté: celui doit
+          être composé de 7 chiffres et 1 lettre'
       - code: '00411'
         title: Entité non traitable
         detail: 'L''année scolaire n''est pas correctement formatée: doit être sur
           le format YYYY ou YYYY-YYYY)'
+      - code: '00412'
+        title: Entité non traitable
+        detail: 'Le degré d''établissement n''est pas correctement formaté: doit être
+          1D ou 2D'
+      - code: '00413'
+        title: Entité non traitable
+        detail: 'Le périmètre géographique est invalide: exactement un type de périmètre
+          doit être fourni'
+      - code: '00414'
+        title: Entité non traitable
+        detail: 'Les valeurs du périmètre sont invalides: doit être un tableau non
+          vide'
       - code: '00415'
         title: Entité non traitable
         detail: 'Au moins un critère de recherche géographique est requis: renseignez
           soit le paramètre codeEtablissement, soit un périmètre géographique (codesBcnDepartements
           ou codesBcnRegions avec degreEtablissement)'
+      - code: '00416'
+        title: Entité non traitable
+        detail: 'Le code département BCN MEN est invalide: valeur non reconnue'
+      - code: '00417'
+        title: Entité non traitable
+        detail: 'Le code région BCN MEN est invalide: valeur non reconnue'
       - code: '00419'
         title: Entité non traitable
         detail: Les paramètres codeEtablissement et périmètre (codesBcnRegions/codesBcnDepartements)
@@ -5842,15 +5886,37 @@ endpoints:
     provider: MEN
     errors:
       '422':
+      - code: '00410'
+        title: Entité non traitable
+        detail: 'Le code établissement n''est pas correctement formaté: celui doit
+          être composé de 7 chiffres et 1 lettre'
       - code: '00411'
         title: Entité non traitable
         detail: 'L''année scolaire n''est pas correctement formatée: doit être sur
           le format YYYY ou YYYY-YYYY)'
+      - code: '00412'
+        title: Entité non traitable
+        detail: 'Le degré d''établissement n''est pas correctement formaté: doit être
+          1D ou 2D'
+      - code: '00413'
+        title: Entité non traitable
+        detail: 'Le périmètre géographique est invalide: exactement un type de périmètre
+          doit être fourni'
+      - code: '00414'
+        title: Entité non traitable
+        detail: 'Les valeurs du périmètre sont invalides: doit être un tableau non
+          vide'
       - code: '00415'
         title: Entité non traitable
         detail: 'Au moins un critère de recherche géographique est requis: renseignez
           soit le paramètre codeEtablissement, soit un périmètre géographique (codesBcnDepartements
           ou codesBcnRegions avec degreEtablissement)'
+      - code: '00416'
+        title: Entité non traitable
+        detail: 'Le code département BCN MEN est invalide: valeur non reconnue'
+      - code: '00417'
+        title: Entité non traitable
+        detail: 'Le code région BCN MEN est invalide: valeur non reconnue'
       - code: '00419'
         title: Entité non traitable
         detail: Les paramètres codeEtablissement et périmètre (codesBcnRegions/codesBcnDepartements)

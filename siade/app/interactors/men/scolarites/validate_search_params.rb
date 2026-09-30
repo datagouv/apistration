@@ -1,4 +1,8 @@
 class MEN::Scolarites::ValidateSearchParams < ValidateParamInteractor
+  delegates_to MEN::Scolarites::ValidateCodeEtablissement,
+    MEN::Scolarites::ValidateDegreEtablissement,
+    MEN::Scolarites::ValidatePerimetre
+
   raises UnprocessableEntityError, field: :code_etablissement_et_perimetre
   raises UnprocessableEntityError, field: :critere_recherche_manquant
 

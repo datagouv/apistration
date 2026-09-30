@@ -367,6 +367,49 @@ endpoints:
         meta:
           provider: Banque de France
       '502':
+      - code: '03000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: DGFIP - Adélie
+      - code: '03001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: DGFIP - Adélie
+      - code: '03004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: DGFIP - Adélie
+      - code: '03008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: DGFIP - Adélie
+      - code: '03009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: DGFIP - Adélie
+      - code: '03011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: DGFIP - Adélie
+      - code: '03999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: DGFIP - Adélie
       - code: '17000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -411,12 +454,22 @@ endpoints:
         meta:
           provider: Banque de France
       '503':
+      - code: '03020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: DGFIP - Adélie
       - code: '17020'
         title: Maintenance du fournisseur de données
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: Banque de France
       '504':
+      - code: '03002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: DGFIP - Adélie
       - code: '17002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
