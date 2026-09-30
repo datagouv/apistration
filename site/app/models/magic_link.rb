@@ -1,6 +1,8 @@
 class MagicLink < ApplicationRecord
   DEFAULT_EXPIRATION_DELAY = 24.hours
 
+  normalizes :email, with: ->(email) { Rails.env.staging? ? PersonalDataAnonymizer.email(email) : email }
+
   validates :email, presence: true, format: { with: /#{EMAIL_FORMAT_REGEX}/ }
   attribute :expires_at, default: -> { DEFAULT_EXPIRATION_DELAY.from_now }
   belongs_to :token, optional: true

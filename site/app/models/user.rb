@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   self.ignored_columns += %w[phone_number]
 
+  normalizes :email, with: ->(email) { Rails.env.staging? ? PersonalDataAnonymizer.email(email) : email }
+  normalizes :first_name, with: ->(first_name) { Rails.env.staging? ? PersonalDataAnonymizer.first_name(first_name) : first_name }
+  normalizes :last_name, with: ->(last_name) { Rails.env.staging? ? PersonalDataAnonymizer.last_name(last_name) : last_name }
+
   has_many :user_authorization_request_roles, dependent: :destroy
   has_many :authorization_requests, -> { distinct.reorder(:created_at) }, through: :user_authorization_request_roles
 

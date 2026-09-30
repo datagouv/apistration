@@ -91,4 +91,15 @@ RSpec.describe Editor do
     it { is_expected.to match_array(valid_authorization_requests) }
     it { is_expected.to be_a(ActiveRecord::Relation) }
   end
+
+  describe 'personal data anonymization in staging' do
+    before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+    it 'stores an anonymized contact' do
+      editor = create(:editor, :full)
+
+      expect(editor.reload.contact_email).to match(/\Aanon-\h{12}@yopmail\.com\z/)
+      expect(editor.contact_phone).to eq('0100000000')
+    end
+  end
 end

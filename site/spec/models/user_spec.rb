@@ -135,4 +135,34 @@ RSpec.describe User do
       end
     end
   end
+
+  it 'stores personal data as is outside staging' do
+    user = create(:user, email: 'jean.dupont@example.gouv.fr', first_name: 'Jean', last_name: 'Dupont')
+
+    expect(user.reload).to have_attributes(email: 'jean.dupont@example.gouv.fr', first_name: 'Jean', last_name: 'Dupont')
+  end
+
+  describe 'personal data anonymization in staging' do
+    before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+    let!(:user) { create(:user, email: 'Jean.Dupont@example.gouv.fr', first_name: 'Jean', last_name: 'Dupont') }
+
+    it 'stores anonymized personal data' do
+      expect(user.reload.email).to match(/\Aanon-\h{12}@yopmail\.com\z/)
+      expect(user.first_name).to match(/\APrénom \h{6}\z/)
+      expect(user.last_name).to match(/\ANom \h{6}\z/)
+    end
+
+    it 'keeps finding the user by its real email' do
+      expect(described_class.find_or_initialize_by_email('jean.dupont@example.gouv.fr')).to eq(user)
+      expect(described_class.find_by(email: 'Jean.Dupont@example.gouv.fr')).to eq(user)
+    end
+
+    it 'keeps yopmail addresses, so hunters stay admins' do
+      hunter = create(:user, email: 'hunter-ywhadmin@yopmail.com')
+
+      expect(hunter.reload.email).to eq('hunter-ywhadmin@yopmail.com')
+      expect(hunter).to be_admin
+    end
+  end
 end

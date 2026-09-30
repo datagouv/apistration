@@ -80,4 +80,14 @@ RSpec.describe MagicLink do
       end
     end
   end
+
+  describe 'personal data anonymization in staging' do
+    before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+    it 'stores an anonymized email' do
+      magic_link = create(:magic_link, email: 'jean.dupont@example.gouv.fr')
+
+      expect(magic_link.reload.email).to match(/\Aanon-\h{12}@yopmail\.com\z/)
+    end
+  end
 end

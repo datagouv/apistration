@@ -30,6 +30,23 @@ RSpec.describe DatapassWebhook::FindOrCreateUser, type: :interactor do
       end
     end
 
+    context 'when in staging' do
+      before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+      it 'creates an anonymized user' do
+        user = subject.user.reload
+
+        expect(user.email).to match(/\Aanon-\h{12}@yopmail\.com\z/)
+        expect(user.first_name).to match(/\APrénom \h{6}\z/)
+      end
+
+      it 'finds the same user when the same demandeur comes back' do
+        first_user = subject.user
+
+        expect(described_class.call(build(:datapass_webhook, demandeur_attributes:)).user).to eq(first_user)
+      end
+    end
+
     context 'when there is already a user with the same email' do
       let!(:user) { create(:user, email: demandeur_attributes[:email]) }
 
