@@ -4,11 +4,30 @@ RSpec.describe 'Errors nomenclature declarations', type: :acceptance do
       controller = route.defaults[:controller]
       next unless controller&.include?('v3_and_more')
 
-      "#{controller}_controller".camelize
-        .sub('ApiEntreprise', 'APIEntreprise')
-        .sub('ApiParticulier', 'APIParticulier')
-        .constantize
+      "#{controller}_controller".camelize.constantize
     }.uniq
+  end
+
+  def versioned_v3_and_more_path?(path)
+    path.start_with?('/v:api_version/') || path.match?(%r{\A(/api)?/v(?:[3-9]|\d{2,})/})
+  end
+
+  it 'serves every v3+ route from a v3_and_more controller, which the nomenclature guards scan' do
+    outside = Rails.application.routes.routes.filter_map { |route|
+      controller = route.defaults[:controller].to_s
+      next unless versioned_v3_and_more_path?(route.path.spec.to_s)
+      next if controller.empty? || controller.include?('v3_and_more') || controller == 'ping'
+
+      "#{route.path.spec} -> #{controller}"
+    }.uniq
+
+    expect(outside).to be_empty, <<~MESSAGE
+      These v3+ routes, versioned by the :api_version segment or by a hard-coded v3 or later,
+      are served outside the v3_and_more namespace, where no nomenclature
+      guard looks: move their controller under it and declare it like the others.
+
+      #{outside.join("\n")}
+    MESSAGE
   end
 
   it 'has one declaration per routed endpoint' do
