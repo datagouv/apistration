@@ -40,10 +40,16 @@ RSpec.describe DatapassWebhook::FindOrCreateUser, type: :interactor do
         expect(user.first_name).to match(/\APrénom \h{6}\z/)
       end
 
-      it 'finds the same user when the same demandeur comes back' do
+      it 'finds the same anonymized user when the same demandeur comes back' do
         first_user = subject.user
+        webhook_with_same_demandeur = build(:datapass_webhook, demandeur_attributes: { email: demandeur_attributes[:email].upcase })
 
-        expect(described_class.call(build(:datapass_webhook, demandeur_attributes:)).user).to eq(first_user)
+        expect {
+          expect(described_class.call(webhook_with_same_demandeur)).to be_a_success
+        }.not_to change(User, :count)
+
+        expect(User.find_by(email: demandeur_attributes[:email])).to eq(first_user)
+        expect(first_user.reload.email).not_to eq(demandeur_attributes[:email])
       end
     end
 
