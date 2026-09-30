@@ -10,6 +10,7 @@ module PersonalDataAnonymizer
       return value if value.blank?
 
       normalized_email = value.downcase.strip
+      return value unless normalized_email.match?(URI::MailTo::EMAIL_REGEXP)
       return normalized_email if normalized_email.end_with?("@#{EMAIL_DOMAIN}")
 
       "#{EMAIL_PREFIX}#{digest(normalized_email, EMAIL_DIGEST_LENGTH)}@#{EMAIL_DOMAIN}"

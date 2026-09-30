@@ -16,6 +16,10 @@ RSpec.describe PersonalDataAnonymizer do
       expect(described_class.email('Hunter-YWHADMIN@yopmail.com')).to eq('hunter-ywhadmin@yopmail.com')
     end
 
+    it 'keeps invalid emails as is, so validations still reject them' do
+      expect(described_class.email('not an email')).to eq('not an email')
+    end
+
     it 'is idempotent' do
       anonymized_email = described_class.email('jean.dupont@example.gouv.fr')
 

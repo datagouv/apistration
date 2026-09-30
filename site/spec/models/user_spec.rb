@@ -153,6 +153,10 @@ RSpec.describe User do
       expect(user.last_name).to match(/\ANom \h{6}\z/)
     end
 
+    it 'still rejects invalid emails' do
+      expect(build(:user, email: 'not an email')).not_to be_valid
+    end
+
     it 'keeps finding the user by its real email' do
       expect(described_class.find_or_initialize_by_email('jean.dupont@example.gouv.fr')).to eq(user)
       expect(described_class.find_by(email: 'Jean.Dupont@example.gouv.fr')).to eq(user)
