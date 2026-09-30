@@ -153,7 +153,7 @@ RSpec.configure do |config|
   end
 
   config.before do
-    allow_any_instance_of(INPI::RNE::Authenticate).to receive(:randomize_account!)
+    allow_any_instance_of(INPI::RNE::Authenticate).to receive(:first_account_index).and_return(0)
   end
 
   config.before(type: :request, api: :entreprise) do

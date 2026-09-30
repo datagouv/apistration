@@ -1,12 +1,21 @@
 require 'jwt'
 
 class INPI::RNE::Authenticate < AbstractGetToken
+  class AccountRejected < StandardError; end
+
+  ACCOUNT_SUFFIXES = ['', '_fallback'].freeze
+  REJECTED_ACCOUNT_TTL = 24.hours
+
   def call
-    randomize_account!
+    usable_account_suffixes.each do |suffix|
+      @account_suffix = suffix
 
-    return try_fallback_or_fail if primary_username_failed_in_cache?
+      return super
+    rescue AccountRejected
+      next
+    end
 
-    super
+    fail_to_request_provider!(MaintenanceError)
   end
 
   protected
@@ -32,30 +41,6 @@ class INPI::RNE::Authenticate < AbstractGetToken
     JWT.decode(token, nil, false)[0]['exp'] - Time.now.to_i
   end
 
-  def username
-    return params[:inpi_rne_login_username] if params[:inpi_rne_login_username].present?
-
-    Siade.credentials[:"inpi_rne_login_username#{@account_suffix}"]
-  end
-
-  def password
-    return params[:inpi_rne_login_password] if params[:inpi_rne_login_password].present?
-
-    Siade.credentials[:"inpi_rne_login_password#{@account_suffix}"]
-  end
-
-  def username_fallback
-    return params[:inpi_rne_login_username_fallback] if params[:inpi_rne_login_username_fallback].present?
-
-    Siade.credentials[:"inpi_rne_login_username#{fallback_account_suffix}"]
-  end
-
-  def password_fallback
-    return params[:inpi_rne_login_password_fallback] if params[:inpi_rne_login_password_fallback]
-
-    Siade.credentials[:"inpi_rne_login_password#{fallback_account_suffix}"]
-  end
-
   def cache_key
     :"#{super}_#{username}"
   end
@@ -63,95 +48,53 @@ class INPI::RNE::Authenticate < AbstractGetToken
   def handle_empty_token(token, response)
     return super unless response.code.to_i == 401
 
-    track_authentication_failure
-
-    unless using_fallback_credentials?
-      fallback_token = retry_with_fallback
-      return cache_and_return_fallback_token(fallback_token) if fallback_token.present?
-    end
-
-    mark_username_as_failed_in_cache!
-    fail_to_request_provider!(MaintenanceError)
-  end
-
-  def track_authentication_failure
-    MonitoringService.instance.track(:error, "INPI RNE authentication failed for username: #{username}")
-  end
-
-  def mark_username_as_failed_in_cache!
-    Rails.cache.write("inpi_rne_authenticate_failed_#{username}", '1')
-  end
-
-  def using_fallback_credentials?
-    username == username_fallback
-  end
-
-  def retry_with_fallback
-    result = self.class.call(
-      params: {
-        inpi_rne_login_username: username_fallback,
-        inpi_rne_login_password: password_fallback,
-        inpi_rne_login_username_fallback: username_fallback,
-        inpi_rne_login_password_fallback: password_fallback
-      }
-    )
-
-    result.success? ? result.token : nil
-  end
-
-  def cache_and_return_fallback_token(fallback_token)
-    cache.write(
-      fallback_cache_key,
-      fallback_token,
-      expires_in: token_expires_in(fallback_token)
-    )
-    fallback_token
-  end
-
-  def fallback_cache_key
-    :"#{self.class.name.underscore}_#{username_fallback}"
-  end
-
-  def token_expires_in(token)
-    [JWT.decode(token, nil, false)[0]['exp'] - Time.now.to_i - 10, 0].max
-  end
-
-  def cache
-    @cache ||= EncryptedCache.instance
-  end
-
-  def primary_username_failed_in_cache?
-    !using_fallback_credentials? && Rails.cache.exist?("inpi_rne_authenticate_failed_#{username}")
-  end
-
-  def try_fallback_or_fail
-    if Rails.cache.exist?("inpi_rne_authenticate_failed_#{username_fallback}")
-      fail_to_request_provider!(MaintenanceError)
-    else
-      fallback_token = retry_with_fallback
-      if fallback_token.present?
-        context.token = fallback_token
-      else
-        fail_to_request_provider!(MaintenanceError)
-      end
-    end
-  end
-
-  def params
-    context.params || {}
+    reject_account!
   end
 
   private
 
-  def randomize_account!
-    @account_suffix = ['', '_fallback'].sample unless explicit_credentials?
+  def usable_account_suffixes
+    ACCOUNT_SUFFIXES
+      .rotate(first_account_index)
+      .reject { |suffix| rejected?(credential(:username, suffix)) }
   end
 
-  def explicit_credentials?
-    params[:inpi_rne_login_username].present?
+  def first_account_index
+    rand(ACCOUNT_SUFFIXES.size)
   end
 
-  def fallback_account_suffix
-    @account_suffix == '_fallback' ? '' : '_fallback'
+  def reject_account!
+    MonitoringService.instance.track(:error, "INPI RNE authentication failed for username: #{username}")
+    Rails.cache.write(rejected_account_cache_key(username), true, expires_in: REJECTED_ACCOUNT_TTL)
+
+    raise AccountRejected
+  end
+
+  def rejected?(account_username)
+    Rails.cache.exist?(rejected_account_cache_key(account_username))
+  end
+
+  def rejected_account_cache_key(account_username)
+    "inpi_rne_authenticate_failed_#{account_username}"
+  end
+
+  def username
+    credential(:username, @account_suffix)
+  end
+
+  def password
+    credential(:password, @account_suffix)
+  end
+
+  def credential(name, suffix)
+    Siade.credentials[:"#{account_pool_prefix}_#{name}#{suffix}"]
+  end
+
+  def account_pool_prefix
+    ['inpi_rne_login', params[:inpi_rne_account_pool]].compact.join('_')
+  end
+
+  def params
+    context.params || {}
   end
 end

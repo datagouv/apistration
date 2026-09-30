@@ -1,5 +1,32 @@
 RSpec.describe INPI::RNE::Authenticate, type: :interactor do
-  subject(:authenticate) { described_class.call }
+  subject(:authenticate) { described_class.call(params:) }
+
+  let(:params) { {} }
+  let(:login_url) { Siade.credentials[:inpi_rne_login_url] }
+  let(:primary_username) { Siade.credentials[:inpi_rne_login_username] }
+  let(:fallback_username) { Siade.credentials[:inpi_rne_login_username_fallback] }
+  let(:ping_username) { Siade.credentials[:inpi_rne_login_ping_username] }
+  let(:ping_fallback_username) { Siade.credentials[:inpi_rne_login_ping_username_fallback] }
+
+  def build_token(label)
+    JWT.encode({ exp: 1.hour.from_now.to_i, label: }, nil, 'none')
+  end
+
+  def stub_authentication(username, status: 200, token: build_token(username))
+    body = status == 200 ? { token: } : { code: '401', errorCode: 'unauthorized', message: 'Identifiants invalides.' }
+
+    stub_request(:post, login_url)
+      .with(body: hash_including('username' => username))
+      .to_return(status:, body: body.to_json, headers: { 'Content-Type' => 'application/json' })
+  end
+
+  def flag(username)
+    Rails.cache.write("inpi_rne_authenticate_failed_#{username}", true)
+  end
+
+  def flagged?(username)
+    Rails.cache.exist?("inpi_rne_authenticate_failed_#{username}")
+  end
 
   context 'when inpi rne authentication succeed', vcr: { cassette_name: 'inpi/rne/authenticate' } do
     it { is_expected.to be_a_success }
@@ -9,193 +36,154 @@ RSpec.describe INPI::RNE::Authenticate, type: :interactor do
     end
   end
 
-  context 'when primary username cache key is present but fallback succeeds' do
-    let(:primary_username) { Siade.credentials[:inpi_rne_login_username] }
-    let(:fallback_username) { Siade.credentials[:inpi_rne_login_username_fallback] }
-    let(:fallback_token) { 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzU1ODg4MDB9.cached_test' }
+  context 'when no account is flagged' do
+    let!(:primary_request) { stub_authentication(primary_username) }
+    let!(:fallback_request) { stub_authentication(fallback_username) }
 
     before do
-      Rails.cache.write("inpi_rne_authenticate_failed_#{primary_username}", '1')
-
-      stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-        .with(body: hash_including('username' => fallback_username))
-        .to_return(status: 200, body: { 'token' => fallback_token }.to_json, headers: { 'Content-Type' => 'application/json' })
+      allow_any_instance_of(described_class).to receive(:first_account_index).and_call_original # rubocop:disable RSpec/AnyInstance
     end
 
-    after do
-      Rails.cache.delete("inpi_rne_authenticate_failed_#{primary_username}")
+    it 'spreads authentications across both accounts' do
+      50.times { described_class.call(params:) }
+
+      expect(primary_request).to have_been_requested.once
+      expect(fallback_request).to have_been_requested.once
     end
+  end
+
+  context 'when drawn account gets a 401' do
+    let!(:primary_request) { stub_authentication(primary_username, status: 401) }
+    let(:fallback_token) { build_token('fallback') }
+    let!(:fallback_request) { stub_authentication(fallback_username, token: fallback_token) }
 
     it { is_expected.to be_a_success }
 
-    it 'returns fallback token' do
+    it 'returns the other account token' do
       expect(authenticate.token).to eq(fallback_token)
     end
+
+    it 'flags the rejected account for 24 hours' do
+      allow(Rails.cache).to receive(:write).and_call_original
+
+      authenticate
+
+      expect(Rails.cache).to have_received(:write).with("inpi_rne_authenticate_failed_#{primary_username}", true, expires_in: 24.hours)
+      expect(flagged?(primary_username)).to be true
+      expect(flagged?(fallback_username)).to be false
+    end
+
+    it 'tracks the rejected account once' do
+      allow(MonitoringService.instance).to receive(:track)
+
+      authenticate
+
+      expect(MonitoringService.instance).to have_received(:track).with(:error, "INPI RNE authentication failed for username: #{primary_username}").once
+    end
+
+    it 'only uses the other account afterwards, even if drawn first' do
+      3.times { described_class.call(params:) }
+
+      expect(primary_request).to have_been_requested.once
+      expect(fallback_request).to have_been_requested.once
+    end
   end
 
-  context 'when both primary and fallback username cache keys are present' do
-    let(:primary_username) { Siade.credentials[:inpi_rne_login_username] }
-    let(:fallback_username) { Siade.credentials[:inpi_rne_login_username_fallback] }
+  context 'when one account is already flagged' do
+    let!(:primary_request) { stub_authentication(primary_username) }
+    let!(:fallback_request) { stub_authentication(fallback_username) }
 
-    before do
-      Rails.cache.write("inpi_rne_authenticate_failed_#{primary_username}", '1')
-      Rails.cache.write("inpi_rne_authenticate_failed_#{fallback_username}", '1')
-    end
-
-    after do
-      Rails.cache.delete("inpi_rne_authenticate_failed_#{primary_username}")
-      Rails.cache.delete("inpi_rne_authenticate_failed_#{fallback_username}")
-    end
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(MaintenanceError) }
-  end
-
-  context 'when primary authentication fails but fallback succeeds' do
-    let(:primary_username) { Siade.credentials[:inpi_rne_login_username] }
-    let(:fallback_username) { Siade.credentials[:inpi_rne_login_username_fallback] }
-    let(:fallback_token) { 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzU1ODg4MDB9.test' }
-
-    before do
-      stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-        .with(body: hash_including('username' => primary_username))
-        .to_return(status: 401, body: { 'code' => '401', 'errorCode' => 'unauthorized', 'message' => 'Identifiants invalides.' }.to_json, headers: { 'Content-Type' => 'application/json' })
-
-      stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-        .with(body: hash_including('username' => fallback_username))
-        .to_return(status: 200, body: { 'token' => fallback_token }.to_json, headers: { 'Content-Type' => 'application/json' })
-    end
+    before { flag(primary_username) }
 
     it { is_expected.to be_a_success }
 
-    it 'returns fallback token' do
-      expect(authenticate.token).to eq(fallback_token)
-    end
+    it 'never calls INPI with the flagged account' do
+      authenticate
 
-    it 'tracks primary authentication failure' do
-      expect(MonitoringService.instance).to receive(:track).with(:error, "INPI RNE authentication failed for username: #{primary_username}")
-
-      subject
-    end
-
-    it 'does not mark fallback username as failed in cache' do
-      subject
-
-      expect(Rails.cache.exist?("inpi_rne_authenticate_failed_#{fallback_username}")).to be false
+      expect(primary_request).not_to have_been_requested
+      expect(fallback_request).to have_been_requested.once
     end
   end
 
-  context 'when both primary and fallback authentication fail' do
-    let(:primary_username) { Siade.credentials[:inpi_rne_login_username] }
-    let(:fallback_username) { Siade.credentials[:inpi_rne_login_username_fallback] }
-
+  context 'when both accounts get a 401' do
     before do
-      stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-        .to_return(status: 401, body: { 'code' => '401', 'errorCode' => 'unauthorized', 'message' => 'Identifiants invalides.' }.to_json, headers: { 'Content-Type' => 'application/json' })
-    end
-
-    after do
-      Rails.cache.delete("inpi_rne_authenticate_failed_#{fallback_username}")
+      stub_authentication(primary_username, status: 401)
+      stub_authentication(fallback_username, status: 401)
     end
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(MaintenanceError) }
 
-    it 'tracks both authentication failures' do
-      expect(MonitoringService.instance).to receive(:track).with(:error, "INPI RNE authentication failed for username: #{primary_username}")
-      expect(MonitoringService.instance).to receive(:track).with(:error, "INPI RNE authentication failed for username: #{fallback_username}")
+    it 'flags both accounts' do
+      authenticate
 
-      subject
-    end
-
-    it 'marks fallback username as failed in cache' do
-      subject
-
-      expect(Rails.cache.exist?("inpi_rne_authenticate_failed_#{fallback_username}")).to be true
+      expect(flagged?(primary_username)).to be true
+      expect(flagged?(fallback_username)).to be true
     end
   end
 
-  context 'with load balancing using fallback account as primary' do
-    let(:primary_username) { Siade.credentials[:inpi_rne_login_username] }
-    let(:fallback_username) { Siade.credentials[:inpi_rne_login_username_fallback] }
-    let(:fallback_token) { 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzU1ODg4MDB9.lb_test' }
-
+  context 'when both accounts are flagged' do
     before do
-      allow_any_instance_of(described_class).to receive(:randomize_account!) do |instance| # rubocop:disable RSpec/AnyInstance
-        instance.instance_variable_set(:@account_suffix, '_fallback')
-      end
+      flag(primary_username)
+      flag(fallback_username)
     end
 
-    context 'when fallback account authentication succeeds' do
-      before do
-        stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-          .with(body: hash_including('username' => fallback_username))
-          .to_return(status: 200, body: { 'token' => fallback_token }.to_json, headers: { 'Content-Type' => 'application/json' })
-      end
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(MaintenanceError) }
+
+    it 'does not call INPI' do
+      authenticate
+
+      expect(a_request(:post, login_url)).not_to have_been_made
+    end
+  end
+
+  context 'with the ping account pool' do
+    let(:params) { { inpi_rne_account_pool: 'ping' } }
+
+    context 'when ping accounts work' do
+      let!(:ping_request) { stub_authentication(ping_username) }
 
       it { is_expected.to be_a_success }
 
-      it 'authenticates with fallback credentials' do
-        expect(authenticate.token).to eq(fallback_token)
+      it 'authenticates with the ping account' do
+        authenticate
+
+        expect(ping_request).to have_been_requested.once
       end
     end
 
-    context 'when fallback account fails (401) but primary succeeds' do
-      let(:primary_token) { 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzU1ODg4MDB9.primary_lb' }
-
-      before do
-        stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-          .with(body: hash_including('username' => fallback_username))
-          .to_return(status: 401, body: { 'code' => '401', 'errorCode' => 'unauthorized', 'message' => 'Identifiants invalides.' }.to_json, headers: { 'Content-Type' => 'application/json' })
-
-        stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-          .with(body: hash_including('username' => primary_username))
-          .to_return(status: 200, body: { 'token' => primary_token }.to_json, headers: { 'Content-Type' => 'application/json' })
-      end
+    context 'when first ping account gets a 401' do
+      let!(:ping_request) { stub_authentication(ping_username, status: 401) }
+      let!(:ping_fallback_request) { stub_authentication(ping_fallback_username) }
 
       it { is_expected.to be_a_success }
 
-      it 'falls back to primary credentials' do
-        expect(authenticate.token).to eq(primary_token)
+      it 'falls back on the other ping account, never on production ones' do
+        authenticate
+
+        expect(ping_request).to have_been_requested.once
+        expect(ping_fallback_request).to have_been_requested.once
+        expect(a_request(:post, login_url).with(body: hash_including('username' => primary_username))).not_to have_been_made
+        expect(a_request(:post, login_url).with(body: hash_including('username' => fallback_username))).not_to have_been_made
+        expect(flagged?(ping_username)).to be true
       end
     end
 
-    context 'when both accounts fail (401)' do
+    context 'when both ping accounts are flagged' do
       before do
-        stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-          .to_return(status: 401, body: { 'code' => '401', 'errorCode' => 'unauthorized', 'message' => 'Identifiants invalides.' }.to_json, headers: { 'Content-Type' => 'application/json' })
+        flag(ping_username)
+        flag(ping_fallback_username)
       end
-
-      after do
-        Rails.cache.delete("inpi_rne_authenticate_failed_#{primary_username}")
-      end
-
-      it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(MaintenanceError) }
-    end
 
-    context 'when fallback account is cached as failed' do
-      let(:primary_token) { 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzU1ODg4MDB9.primary_cached' }
+      it 'does not call INPI' do
+        authenticate
 
-      before do
-        Rails.cache.write("inpi_rne_authenticate_failed_#{fallback_username}", '1')
-
-        stub_request(:post, Siade.credentials[:inpi_rne_login_url])
-          .with(body: hash_including('username' => primary_username))
-          .to_return(status: 200, body: { 'token' => primary_token }.to_json, headers: { 'Content-Type' => 'application/json' })
-      end
-
-      after do
-        Rails.cache.delete("inpi_rne_authenticate_failed_#{fallback_username}")
-      end
-
-      it { is_expected.to be_a_success }
-
-      it 'uses primary account as fallback' do
-        expect(authenticate.token).to eq(primary_token)
+        expect(a_request(:post, login_url)).not_to have_been_made
       end
     end
   end
