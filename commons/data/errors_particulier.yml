@@ -383,13 +383,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -517,13 +510,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -715,13 +701,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -849,13 +828,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -1047,13 +1019,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -1181,13 +1146,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -1379,13 +1337,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -1513,13 +1464,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -1711,13 +1655,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -1845,13 +1782,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -2043,13 +1973,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '37003'
         title: Allocataire non éligible
         detail: Le dossier allocataire a été trouvé mais n'est pas éligible à la participation
@@ -2183,13 +2106,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '37003'
         title: Allocataire non éligible
         detail: Le dossier allocataire a été trouvé mais n'est pas éligible à la participation
@@ -2387,13 +2303,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -2521,13 +2430,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -3067,13 +2969,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -3201,13 +3096,6 @@ endpoints:
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
-      - code: '36003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Sécurité sociale
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.

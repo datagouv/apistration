@@ -2,12 +2,12 @@ Titre,Description,Paramètres,Status,Réponse
 ,## Allocataire non trouvé via FranceConnect,"{""prenoms"":[""Jean""],""nomNaissance"":""INCONNU"",""anneeDateNaissance"":1990,""moisDateNaissance"":6,""jourDateNaissance"":15,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75101"",""codeCogInseePaysNaissance"":""99100""}",404,"{
   ""errors"": [
     {
-      ""code"": ""36003"",
-      ""title"": ""Entité non trouvée"",
-      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""code"": ""23003"",
+      ""title"": ""Dossier allocataire absent CNAF"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAF."",
       ""source"": null,
       ""meta"": {
-        ""provider"": ""Sécurité sociale""
+        ""provider"": ""CNAF""
       }
     }
   ]

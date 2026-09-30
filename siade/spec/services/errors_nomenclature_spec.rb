@@ -64,9 +64,13 @@ RSpec.describe ErrorsNomenclature, type: :service do
       expect(codes_for('api_particulier_v3_cnav_quotient_familial_with_civility', '502')).to include('35000')
     end
 
-    it 'lists the 404 of every caisse behind a prestation' do
+    it 'lists the 404 of every caisse behind a prestation, without the generic 404 the validator never renders' do
       expect(codes_for('api_particulier_v3_cnav_prime_activite_with_civility', '404'))
-        .to include('23003', '10003', '40003', '35003')
+        .to eq(%w[10003 23003 35003 40003])
+    end
+
+    it 'keeps the generic 404 of a provider declaring none of its own' do
+      expect(codes_for('api_particulier_v5_cnous_etudiant_boursier_with_civility', '404')).to eq(%w[26003])
     end
 
     it 'lists only the prefixes of API Particulier, 00 included' do

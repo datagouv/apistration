@@ -257,12 +257,12 @@ caractères). Cet usager est bénéficiaire de l'AAH.
   {
     "errors": [
       {
-        "code": "36003",
-        "title": "Entité non trouvée",
-        "detail": "Dossier allocataire inexistant. Le document ne peut être édité.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "Sécurité sociale"
+          "provider": "CNAF"
         }
       }
     ]

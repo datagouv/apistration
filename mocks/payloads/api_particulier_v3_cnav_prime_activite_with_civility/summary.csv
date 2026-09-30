@@ -29,12 +29,12 @@ Titre,Description,Paramètres,Status,Réponse
 ,## Allocataire non trouvé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
   ""errors"": [
     {
-      ""code"": ""36003"",
-      ""title"": ""Entité non trouvée"",
-      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""code"": ""23003"",
+      ""title"": ""Dossier allocataire absent CNAF"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAF."",
       ""source"": null,
       ""meta"": {
-        ""provider"": ""Sécurité sociale""
+        ""provider"": ""CNAF""
       }
     }
   ]

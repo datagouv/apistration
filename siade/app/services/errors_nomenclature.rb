@@ -55,9 +55,19 @@ class ErrorsNomenclature
   def endpoint_errors(controller_class, organizer, provider_name)
     (declared_errors(organizer, provider_name) +
       france_connect_errors(controller_class) +
-      baseline.for_provider(provider_name) +
+      provider_baseline(organizer, provider_name) +
       delegated_errors(organizer))
       .reject { |error| platform_error_codes.include?(error.code) }
+  end
+
+  def provider_baseline(organizer, provider_name)
+    return baseline.for_provider(provider_name) unless declares_own_not_found?(organizer)
+
+    baseline.for_token_provider(provider_name)
+  end
+
+  def declares_own_not_found?(organizer)
+    ErrorRegistry.declarations_for_organizer(organizer).map(&:error_class).include?(NotFoundError)
   end
 
   def platform_error_codes
