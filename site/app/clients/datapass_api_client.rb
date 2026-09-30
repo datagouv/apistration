@@ -31,6 +31,10 @@ class DatapassAPIClient
     request { http_connection.get('demandes', { siret:, state:, limit:, offset: }.compact) }
   end
 
+  def list_formulaires(definition_id)
+    request { http_connection.get("definitions/#{definition_id}/formulaires") }
+  end
+
   private
 
   def request

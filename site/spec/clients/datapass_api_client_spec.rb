@@ -182,4 +182,26 @@ RSpec.describe DatapassAPIClient do
       end
     end
   end
+
+  describe '#list_formulaires' do
+    subject(:list_formulaires) { client.list_formulaires('api_entreprise') }
+
+    let(:formulaires) { JSON.parse(Rails.root.join('spec/fixtures/datapass_api/formulaires.json').read) }
+
+    context 'when the definition is accessible' do
+      before { stub_datapass(:get, 'definitions/api_entreprise/formulaires', body: formulaires) }
+
+      it 'returns the formulaires of the definition' do
+        expect(list_formulaires).to eq(formulaires)
+      end
+    end
+
+    context 'when the definition is not accessible' do
+      before { stub_datapass(:get, 'definitions/api_entreprise/formulaires', status: 404, body: { error: 'Not Found' }) }
+
+      it 'raises a not found error' do
+        expect { list_formulaires }.to raise_error(described_class::NotFound)
+      end
+    end
+  end
 end
