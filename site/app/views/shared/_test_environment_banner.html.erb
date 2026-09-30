@@ -1,0 +1,14 @@
+<% if SessionsManagement::BYPASS_LOGIN_ENVIRONMENTS.include?(Rails.env) %>
+  <div id="test_environment_banner" class="fr-notice fr-notice--info">
+    <div class="fr-container">
+      <div class="fr-notice__body">
+        <p class="fr-notice__title">
+          Environnement de test : n'y saisissez aucune donnée personnelle.
+          <% if Rails.env.staging? %>
+            Les emails et noms enregistrés y sont anonymisés : les emails partent vers des boîtes yopmail publiques, seules les adresses yopmail reçoivent leurs propres emails.
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
