@@ -12,6 +12,8 @@ class Editor < ApplicationRecord
     dependent: :destroy
 
   normalizes :deployment_type, with: ->(value) { value.presence }
+  normalizes :contact_email, with: ->(email) { Rails.env.staging? ? PersonalDataAnonymizer.email(email) : email }
+  normalizes :contact_phone, with: ->(phone) { Rails.env.staging? ? PersonalDataAnonymizer.phone(phone) : phone }
 
   validates :name, presence: true
   validates :siret, format: { with: /\A\d{14}\z/ }, allow_blank: true
