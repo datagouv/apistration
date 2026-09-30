@@ -35,6 +35,14 @@ class DatapassAPIClient
     request { http_connection.get("definitions/#{definition_id}/formulaires") }
   end
 
+  def submit_demande(id)
+    request { http_connection.post("demandes/#{id}/submit", { terms_of_service_accepted: true, data_protection_officer_informed: true }) }
+  end
+
+  def validate_demande(id, comment:)
+    request { http_connection.post("demandes/#{id}/validate", { comment: }) }
+  end
+
   private
 
   def request

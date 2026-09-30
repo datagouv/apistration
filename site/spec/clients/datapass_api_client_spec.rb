@@ -204,4 +204,58 @@ RSpec.describe DatapassAPIClient do
       end
     end
   end
+
+  describe '#submit_demande' do
+    subject(:submit_demande) { client.submit_demande(123) }
+
+    let(:submitted_demande) { demande.merge('state' => 'submitted') }
+
+    context 'when the demande is complete' do
+      let!(:submit_request) do
+        stub_datapass(:post, 'demandes/123/submit', body: submitted_demande)
+          .with(body: { terms_of_service_accepted: true, data_protection_officer_informed: true }.to_json)
+      end
+
+      it 'returns the submitted demande' do
+        expect(submit_demande).to eq(submitted_demande)
+        expect(submit_request).to have_been_requested
+      end
+    end
+
+    context 'when the demande is incomplete' do
+      before { stub_datapass(:post, 'demandes/123/submit', status: 422, body: validation_errors) }
+
+      it 'raises an unprocessable entity error exposing the validation errors' do
+        expect { submit_demande }.to raise_error(described_class::UnprocessableEntity) do |error|
+          expect(error.errors).to eq(validation_errors['errors'])
+        end
+      end
+    end
+  end
+
+  describe '#validate_demande' do
+    subject(:validate_demande) { client.validate_demande(123, comment: 'Migration Omnikles') }
+
+    let(:validated_demande) { demande.merge('state' => 'validated') }
+
+    context 'when the demande can be validated' do
+      let!(:validate_request) do
+        stub_datapass(:post, 'demandes/123/validate', body: validated_demande)
+          .with(body: { comment: 'Migration Omnikles' }.to_json)
+      end
+
+      it 'returns the validated demande' do
+        expect(validate_demande).to eq(validated_demande)
+        expect(validate_request).to have_been_requested
+      end
+    end
+
+    context 'when the demande state does not allow validation' do
+      before { stub_datapass(:post, 'demandes/123/validate', status: 422, body: validation_errors) }
+
+      it 'raises an unprocessable entity error' do
+        expect { validate_demande }.to raise_error(described_class::UnprocessableEntity)
+      end
+    end
+  end
 end
