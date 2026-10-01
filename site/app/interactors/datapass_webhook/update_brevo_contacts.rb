@@ -1,5 +1,7 @@
 class DatapassWebhook::UpdateBrevoContacts < ApplicationInteractor
   def call
+    return if authorization_request.editor_delegation_request?
+
     brevo_contacts.each do |brevo_contact|
       brevo_api_client.upsert_contact(**brevo_contact, list_ids: [list_id])
     end
