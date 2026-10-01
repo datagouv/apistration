@@ -62,6 +62,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/UnauthorizedError"
+        '403':
+          description: Appel depuis une IP non autorisée pour ce token éditeur
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ForbiddenError"
 components:
   securitySchemes:
     bearer_editor_token:
@@ -136,6 +142,12 @@ components:
         error:
           type: string
           example: Unauthorized
+    ForbiddenError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: IP address not allowed for this token
 servers:
 - url: https://entreprise.api.gouv.fr
   description: Production — API Entreprise
