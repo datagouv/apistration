@@ -1,0 +1,20 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: 'Cette demande concerne une autre organisation' %>
+
+    <div class="fr-alert fr-alert--error fr-mb-4w">
+      <p>
+        Cette demande d'habilitation concerne l'établissement de SIRET <%= @editor_delegation_request.siret %>.
+        Vous êtes identifié(e) par ProConnect pour l'établissement de SIRET <%= session[:current_user_siret] %>,
+        qui n'appartient pas à la même organisation.
+      </p>
+    </div>
+
+    <p>
+      Si vous agissez aussi pour l'établissement attendu, déconnectez-vous puis identifiez-vous avec ProConnect en le
+      choisissant. Sinon, transmettez le lien reçu au service concerné.
+    </p>
+
+    <%= link_to 'Se déconnecter', logout_path, class: %w(fr-btn fr-btn--secondary) %>
+  </div>
+</div>
