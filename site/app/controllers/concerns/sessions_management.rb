@@ -15,7 +15,7 @@ module SessionsManagement
     )
 
     if sign_in.success?
-      sign_in_and_redirect(sign_in.user)
+      sign_in_and_redirect(sign_in.user, siret: oauth_siret)
     else
       reject_oauth_sign_in(sign_in)
     end
@@ -50,7 +50,7 @@ module SessionsManagement
     sign_in = User::DevSignIn.call(email: params[:email])
 
     if sign_in.success?
-      sign_in_and_redirect(sign_in.user)
+      sign_in_and_redirect(sign_in.user, siret: params[:siret])
     else
       error_message(title: 'Compte introuvable')
       redirect_to root_path
@@ -61,6 +61,10 @@ module SessionsManagement
 
   def after_logout_path
     "/auth/proconnect_#{namespace}/logout"
+  end
+
+  def oauth_siret
+    request.env['omniauth.auth'].extra&.raw_info&.siret
   end
 
   def reject_oauth_sign_in(sign_in)
