@@ -1,0 +1,41 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: 'Une habilitation pour votre administration' %>
+
+    <p>
+      Votre administration (SIRET <%= @editor_delegation_request.siret %>) utilise la solution
+      <%= @editor_delegation_request.editor.name.strip %>, qui interroge l'API Entreprise pour récupérer à votre place
+      des données sur les entreprises.
+    </p>
+    <p>
+      Ces données sont à accès restreint&nbsp;: leur consultation suppose une habilitation délivrée à votre administration.
+      Nous avons préparé cette demande&nbsp;; il vous reste à la vérifier, à renseigner votre délégué à la protection des
+      données et à la soumettre.
+    </p>
+
+    <div class="fr-callout fr-mb-4w">
+      <p class="fr-callout__text">
+        Vous déposez cette demande pour le compte de votre administration, et non en votre nom propre. L'habilitation est
+        délivrée à la personne morale que vous représentez&nbsp;; vous en êtes le signataire.
+      </p>
+    </div>
+
+    <h2>S'identifier</h2>
+    <p>ProConnect nous permet de vérifier votre identité et l'administration pour laquelle vous agissez.</p>
+
+    <div class="fr-connect-group">
+      <%= form_with(url: login_proconnect_entreprise_path, method: :post, data: { turbo: false }) do |f| %>
+        <%= f.button class: %w(fr-connect fr-connect-proconnect), id: 'login_pro_connect' do %>
+          <span class="fr-connect__login">S’identifier avec</span>
+          <span class="fr-connect__brand">ProConnect</span>
+        <% end %>
+      <% end %>
+      <p>
+        <a href="https://www.proconnect.gouv.fr/" target="_blank" rel="noopener">
+          Qu’est-ce que ProConnect ?
+          <span class="fr-sr-only">(nouvelle fenêtre)</span>
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

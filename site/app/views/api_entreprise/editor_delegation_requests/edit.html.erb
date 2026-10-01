@@ -1,0 +1,31 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: 'Votre délégué à la protection des données' %>
+
+    <%= render 'organization' %>
+
+    <p>
+      Il est le point de contact sur le traitement des données personnelles rendu possible par cette habilitation.
+      Il doit être informé de votre demande.
+    </p>
+
+    <%= form_with(model: @editor_delegation_request, url: editor_delegation_request_data_protection_officer_path, method: :patch) do |f| %>
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <div class="fr-col-12 fr-col-md-6">
+          <%= render 'field', form: f, attribute: :delegue_protection_donnees_given_name, label: 'Prénom', autocomplete: 'off' %>
+        </div>
+        <div class="fr-col-12 fr-col-md-6">
+          <%= render 'field', form: f, attribute: :delegue_protection_donnees_family_name, label: 'Nom', autocomplete: 'off' %>
+        </div>
+      </div>
+      <%= render 'field', form: f, attribute: :delegue_protection_donnees_email, label: 'Adresse électronique', hint: 'Elle peut être générique, par exemple dpo@…', type: 'email', autocomplete: 'off' %>
+      <%= render 'field', form: f, attribute: :delegue_protection_donnees_phone_number, label: 'Téléphone', type: 'tel', autocomplete: 'off' %>
+      <%= render 'field', form: f, attribute: :delegue_protection_donnees_job_title, label: 'Fonction', hint: 'Par exemple : délégué à la protection des données', autocomplete: 'off' %>
+
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li><%= f.button 'Sauvegarder', name: 'draft', value: '1', class: %w(fr-btn fr-btn--secondary) %></li>
+        <li><%= f.button 'Vérifier ma demande', class: 'fr-btn' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
