@@ -10,6 +10,9 @@ class Editor < ApplicationRecord
   has_many :tokens,
     class_name: 'EditorToken',
     dependent: :destroy
+  has_many :use_cases,
+    class_name: 'EditorUseCase',
+    dependent: :restrict_with_exception
 
   normalizes :deployment_type, with: ->(value) { value.presence }
   normalizes :contact_email, with: ->(email) { Rails.env.staging? ? PersonalDataAnonymizer.email(email) : email }

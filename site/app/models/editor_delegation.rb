@@ -4,7 +4,8 @@ class EditorDelegation < ApplicationRecord
 
   enum :created_via, {
     manual: 'manual',
-    datapass_auto: 'datapass_auto'
+    datapass_auto: 'datapass_auto',
+    editor_delegation_request: 'editor_delegation_request'
   }
 
   validate :editor_serves_authorization_request_api, on: :create
