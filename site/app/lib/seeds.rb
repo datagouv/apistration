@@ -11,6 +11,7 @@ class Seeds
     create_data_for_api_particulier
     create_data_shared
     create_editor_delegations
+    create_editor_delegation_requests
     create_editor_token
     create_audit_notifications
     create_provider_dashboard_data
@@ -22,7 +23,7 @@ class Seeds
 
     load_all_models!
 
-    ProlongTokenWizard.destroy_all
+    delete_records_referencing_others
 
     ActiveRecord::Base.connection.transaction do
       MagicLink.delete_all
@@ -30,6 +31,12 @@ class Seeds
       ApplicationRecord.descendants.reject { |k| views.include?(k.table_name) }.each(&:delete_all)
       AccessLog.delete_all
     end
+  end
+
+  def delete_records_referencing_others
+    ProlongTokenWizard.destroy_all
+    EditorDelegationRequest.delete_all
+    EditorUseCase.delete_all
   end
 
   def create_scopes(api)
@@ -164,6 +171,35 @@ class Seeds
   def create_editor_delegations
     ar = AuthorizationRequest.find_by(demarche: 'api-entreprise-mgdis')
     EditorDelegation.create!(editor: @editor, authorization_request: ar) if ar
+  end
+
+  def create_editor_delegation_requests
+    editor = Editor.create!(name: 'Omnikles', apis: %w[entreprise], editor_tokens_enabled: true, siret: '44973625500018')
+    use_case = EditorUseCase.create!(editor:, datapass_form_uid: 'api-entreprise-marches-publics', data: omnikles_use_case_data)
+
+    %w[21340172201787 21310555400017 21330075900015].each do |siret|
+      create_editor_delegation_request(use_case, siret)
+    end
+  end
+
+  def create_editor_delegation_request(use_case, siret)
+    authorization_request = create_authorization_request(
+      api: 'entreprise', demarche: use_case.datapass_form_uid, siret:, status: 'draft',
+      intitule: use_case.data['intitule'], description: use_case.data['description'], scopes: %w[unites_legales_etablissements_insee attestations_fiscales]
+    )
+    EditorDelegation.create!(editor: use_case.editor, authorization_request:, created_via: 'editor_delegation_request')
+    EditorDelegationRequest.create!(editor_use_case: use_case, siret:, contact_email: 'achats@yopmail.com', authorization_request:)
+  end
+
+  def omnikles_use_case_data
+    {
+      'intitule' => "Dématérialisation des appels d'offres des marchés publics",
+      'description' => 'Récupération des pièces justificatives des entreprises candidates aux marchés publics',
+      'destinataire_donnees_caractere_personnel' => 'Acheteurs publics',
+      'duree_conservation_donnees_caractere_personnel' => '36',
+      'contact_metier_email' => 'metier-omnikles@yopmail.com',
+      'contact_technique_email' => 'technique-omnikles@yopmail.com'
+    }
   end
 
   def create_editor_token
