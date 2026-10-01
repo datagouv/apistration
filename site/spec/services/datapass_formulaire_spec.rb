@@ -1,4 +1,8 @@
 RSpec.describe DatapassFormulaire do
+  it 'reads the mocked DataPass formulaires, DataPass not being reachable yet' do
+    expect(described_class.find('api-entreprise-marches-publics').data['cadre_juridique_nature']).to eq('R2143-13 Code de la commande publique')
+  end
+
   describe '.find' do
     subject(:formulaire) { described_class.find(uid) }
 
@@ -17,7 +21,7 @@ RSpec.describe DatapassFormulaire do
     it 'reads the formulaires of the API Entreprise definition once' do
       2.times { described_class.find(uid) }
 
-      expect(DatapassAPIClient.new).to have_received(:list_formulaires).with('api_entreprise').once
+      expect(MockedDatapassAPIClient.new).to have_received(:list_formulaires).with('api_entreprise').once
     end
 
     context 'when the formulaire is not prefilled' do
