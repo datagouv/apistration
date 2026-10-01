@@ -33,6 +33,14 @@ constraints(APIEntrepriseDomainConstraint.new) do
     post '/compte/demandes/:authorization_request_id/delegations', to: 'delegations#create', as: :authorization_request_delegations
     delete '/compte/demandes/:authorization_request_id/delegations/:id', to: 'delegations#destroy', as: :authorization_request_delegation
 
+    scope '/editeurs/:editor_slug/habilitation/:token', controller: :editor_delegation_requests, as: :editor_delegation_request do
+      get '/', action: :show
+      get '/delegue-protection-donnees', action: :edit, as: :data_protection_officer
+      patch '/delegue-protection-donnees', action: :update
+      get '/verification', action: :summary, as: :summary
+      post '/soumission', action: :submit, as: :submission
+    end
+
     get '/compte/telecharcher-documents', to: 'download_attestations#new', as: :attestations
     post '/compte/telecharcher-documents', to: 'download_attestations#create', as: :search_attestations
 
