@@ -31,7 +31,7 @@ module HandleTokens
   end
 
   def invalid_token_error
-    case @token_extraction_failure_reason
+    case request.env[UserResolutionMiddleware::TOKEN_EXTRACTION_FAILURE_REASON_ENV_KEY]
     when :production_token_on_staging
       ProductionTokenOnStagingError.new
     when :staging_token_on_production
@@ -56,7 +56,8 @@ module HandleTokens
   end
 
   def authenticate_user!
-    @current_user = request.env[UserResolutionMiddleware::USER_ENV_KEY] || extract_user_from_token
+    UserResolutionMiddleware.resolve(request.env)
+    @current_user = request.env[UserResolutionMiddleware::USER_ENV_KEY]
 
     raise NotValidTokenError if current_user.blank? || current_user.invalid?
 
@@ -65,14 +66,6 @@ module HandleTokens
     current_user.not_expired!
 
     true
-  end
-
-  def extract_user_from_token
-    token = params[:token] || bearer_token_from_headers || api_key_token_from_headers
-    JwtTokenService.instance.extract_user(token) if token
-  rescue JwtTokenService::ExtractionError => e
-    @token_extraction_failure_reason = e.reason
-    nil
   end
 
   def api_key_token_from_headers
