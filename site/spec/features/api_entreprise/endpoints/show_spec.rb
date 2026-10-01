@@ -45,6 +45,12 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
         expect(page).to have_text('04501')
         expect(page).to have_text('04502')
       end
+
+      it 'links to the nomenclature filtered on the endpoint operation' do
+        operation_id = APIEntreprise::Endpoint.find(uid).operation_id
+
+        expect(page).to have_link(href: "#{APIEntreprise::BASE_URL}/v3/errors?operation_id=#{operation_id}")
+      end
     end
 
     context 'with an endpoint whose provider has a specific not found' do

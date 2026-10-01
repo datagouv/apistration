@@ -45,6 +45,10 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
       expect(page).to have_text('35560')
     end
 
+    it 'links to the nomenclature filtered on the endpoint operation' do
+      expect(page).to have_link(href: "#{APIParticulier::BASE_URL}/api/errors?operation_id=api_particulier_v3_cnav_quotient_familial_with_civility")
+    end
+
     it 'lists the FranceConnect token errors in their own block' do
       expect(page).to have_css('#erreurs-france-connect')
       expect(page).to have_text('51501')
