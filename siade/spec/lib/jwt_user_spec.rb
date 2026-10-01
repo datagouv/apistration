@@ -217,6 +217,28 @@ RSpec.describe JwtUser do
     end
   end
 
+  describe '#expired?' do
+    subject { described_class.new(**jwt_payload, exp:).expired? }
+
+    context 'when exp is in the future' do
+      let(:exp) { 1.day.from_now.to_i }
+
+      it { is_expected.to be false }
+    end
+
+    context 'when exp is in the past' do
+      let(:exp) { 1.day.ago.to_i }
+
+      it { is_expected.to be true }
+    end
+
+    context 'when exp is nil' do
+      let(:exp) { nil }
+
+      it { is_expected.to be true }
+    end
+  end
+
   describe '#with_delegation' do
     let(:jwt_user) { described_class.new(**jwt_payload) }
 

@@ -114,13 +114,7 @@ class JwtUser
   end
 
   def expired?
-    if @exp.nil?
-      ::MonitoringService.instance.track('info', "JWT #{logstash_id.inspect} without Expiration Time")
-
-      return false
-    end
-
-    ::Time.zone.at(@exp).past?
+    @exp.nil? || ::Time.zone.at(@exp).past?
   end
 
   private
