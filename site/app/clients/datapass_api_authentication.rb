@@ -2,7 +2,7 @@ require 'faraday'
 
 class DatapassAPIAuthentication
   CACHE_KEY = 'datapass_api_access_token'.freeze
-  SCOPES = 'read_authorizations write_authorizations'.freeze
+  SCOPES = 'read_authorizations'.freeze
   EXPIRATION_MARGIN = 60.seconds
 
   def self.invalidate_token_cache!

@@ -17,13 +17,13 @@ RSpec.describe DatapassAPIAuthentication do
           grant_type: 'client_credentials',
           client_id: 'datapass_client_id',
           client_secret: 'datapass_client_secret',
-          scope: 'read_authorizations write_authorizations'
+          scope: 'read_authorizations'
         }
       )
       .to_return(
         status: 200,
         headers: { 'Content-Type' => 'application/json' },
-        body: { access_token:, token_type: 'Bearer', expires_in:, created_at: 1_613_749_329, scope: 'read_authorizations write_authorizations' }.to_json
+        body: { access_token:, token_type: 'Bearer', expires_in:, created_at: 1_613_749_329, scope: 'read_authorizations' }.to_json
       )
   end
 
