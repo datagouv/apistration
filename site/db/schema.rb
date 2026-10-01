@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_01_090001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -99,6 +99,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
     t.index ["user_id", "scope"], name: "index_changelog_subscriptions_on_user_id_and_scope_active", unique: true, where: "(disabled_at IS NULL)"
   end
 
+  create_table "editor_delegation_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_use_case_id", null: false
+    t.string "siret", null: false
+    t.string "contact_email"
+    t.uuid "authorization_request_id"
+    t.jsonb "data", default: {}, null: false
+    t.datetime "submitted_at"
+    t.uuid "submitted_by_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authorization_request_id"], name: "index_editor_delegation_requests_on_authorization_request_id", unique: true
+    t.index ["contact_email"], name: "index_editor_delegation_requests_on_contact_email"
+    t.index ["editor_use_case_id", "siret"], name: "idx_on_editor_use_case_id_siret_c59c14580d", unique: true
+    t.index ["submitted_by_user_id"], name: "index_editor_delegation_requests_on_submitted_by_user_id"
+  end
+
   create_table "editor_delegations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "authorization_request_id", null: false
     t.datetime "created_at", null: false
@@ -119,6 +135,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
     t.jsonb "scopes", default: [], null: false
     t.datetime "updated_at", null: false
     t.index ["scopes"], name: "index_editor_tokens_on_scopes", using: :gin
+  end
+
+  create_table "editor_use_cases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_id", null: false
+    t.string "datapass_form_uid", null: false
+    t.jsonb "data", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editor_id", "datapass_form_uid"], name: "index_editor_use_cases_on_editor_id_and_datapass_form_uid", unique: true
   end
 
   create_table "editors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -358,8 +383,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
   add_foreign_key "admin_activities", "users", column: "admin_id"
   add_foreign_key "authorization_request_security_settings", "authorization_requests"
   add_foreign_key "changelog_subscriptions", "users", validate: false
+  add_foreign_key "editor_delegation_requests", "authorization_requests"
+  add_foreign_key "editor_delegation_requests", "editor_use_cases"
+  add_foreign_key "editor_delegation_requests", "users", column: "submitted_by_user_id"
   add_foreign_key "editor_delegations", "authorization_requests"
   add_foreign_key "editor_delegations", "editors"
+  add_foreign_key "editor_use_cases", "editors"
   add_foreign_key "magic_links", "tokens"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
