@@ -246,6 +246,19 @@ RSpec.describe RateLimitingService do
           it { is_expected.to be(true) }
         end
       end
+
+      context 'with an editor token IP whitelist only' do
+        let(:user) do
+          JwtUser.new(
+            uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
+            editor_token_allowed_ips: ['192.168.1.0/24']
+          )
+        end
+
+        before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
+
+        it { is_expected.to be(true) }
+      end
     end
   end
 
