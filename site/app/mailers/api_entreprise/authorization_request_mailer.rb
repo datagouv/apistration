@@ -18,6 +18,9 @@ class APIEntreprise::AuthorizationRequestMailer < APIEntrepriseMailer
     update_embarquement_valide_to_demandeur
     demande_recue
     update_demande_recue
+    delegation_editeur_demande_recue
+    delegation_editeur_demande_validee
+    delegation_editeur_demande_refusee
   ].each do |method|
     send('define_method', method) do |args|
       @all_scopes = I18n.t('api_entreprise.tokens.token.scope')
@@ -28,6 +31,7 @@ class APIEntreprise::AuthorizationRequestMailer < APIEntrepriseMailer
       @full_name_demandeur = @authorization_request.demandeur.full_name
       @full_name_contact_technique = @authorization_request.contact_technique&.full_name
       @full_name_contact_metier = @authorization_request.contact_metier&.full_name
+      @editor = @authorization_request.editor_delegation_request&.editor
 
       mail(to: extract_recipients(args[:to]), cc: extract_recipients(args[:cc]), subject: "n°#{@authorization_request.external_id} | #{t('.subject')} ") { |format| format.html }
     end

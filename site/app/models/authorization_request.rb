@@ -36,6 +36,9 @@ class AuthorizationRequest < ApplicationRecord
   has_many :editors,
     through: :editor_delegations
 
+  has_one :editor_delegation_request,
+    dependent: :nullify
+
   def available_editors_for_delegation
     Editor.delegable.where.not(id: editor_delegations.active.select(:editor_id))
   end
@@ -106,6 +109,10 @@ class AuthorizationRequest < ApplicationRecord
 
   def contacts_no_demandeur
     contacts.reject { |user| user == demandeur }
+  end
+
+  def editor_delegation_request?
+    editor_delegation_request.present?
   end
 
   def archived?

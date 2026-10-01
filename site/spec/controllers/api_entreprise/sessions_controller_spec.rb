@@ -62,6 +62,14 @@ RSpec.describe APIEntreprise::SessionsController do
         expect(session[:pre_login_fixation_marker]).to be_nil
       end
 
+      it 'keeps the SIRET the agent acts for' do
+        omniauth_auth_data.extra = { 'raw_info' => { 'siret' => '21340172201787' } }
+
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(session[:current_user_siret]).to eq('21340172201787')
+      end
+
       it 'preserves the ProConnect tokens through the rotation' do
         session['omniauth.pc.id_token'] = 'must-survive-for-logout'
 
@@ -228,6 +236,12 @@ RSpec.describe APIEntreprise::SessionsController do
 
           expect(session[:current_user_id]).to eq(user.id)
           expect(response).to redirect_to(authorization_requests_path)
+        end
+
+        it 'acts for the given SIRET' do
+          get :dev_login, params: { email: 'test@example.com', siret: '21340172201787' }
+
+          expect(session[:current_user_siret]).to eq('21340172201787')
         end
 
         it 'handles case-insensitive emails' do
