@@ -51,18 +51,21 @@ RSpec.describe APIEntreprise::Endpoint do
 
     its(:collection?) { is_expected.to be false }
 
-    describe '#error_examples' do
-      subject { described_class.find(uid).error_examples('401') }
+    describe '#provider_errors' do
+      subject(:provider_errors) { described_class.find('urssaf/attestation_vigilance').provider_errors }
 
-      it { is_expected.to be_an_instance_of(Array) }
+      it 'groups the errors of the endpoint by HTTP status' do
+        expect(provider_errors.keys).to start_with('422', '404', '502')
+      end
 
-      it 'contains error payload' do
-        element = subject.first
+      it 'carries the codes of the provider behind the endpoint' do
+        expect(provider_errors['502'].pluck('code')).to include('04501', '04502')
+      end
 
-        expect(element).to be_present
-        expect(element).to have_key('title')
-        expect(element).to have_key('detail')
-        expect(element).to have_key('code')
+      it 'describes every error' do
+        error = provider_errors['502'].first
+
+        expect(error).to include('code', 'title', 'detail')
       end
     end
   end

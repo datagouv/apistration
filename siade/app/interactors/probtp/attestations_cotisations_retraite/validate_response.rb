@@ -1,4 +1,6 @@
 class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateResponse
+  declares_no_specific_errors!
+
   def call
     if internal_error?
       internal_server_error!

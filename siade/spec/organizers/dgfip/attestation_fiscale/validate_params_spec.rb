@@ -39,5 +39,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateParams, type: :validate_params
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+    its('errors.first.code') { is_expected.to eq('00405') }
   end
 end

@@ -1,4 +1,6 @@
 class CNAV::ValidateDateNaissance < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :birth_date
+
   def call
     return invalid_param!(:birth_date) unless valid_year?
     return invalid_param!(:birth_date) unless valid_month?

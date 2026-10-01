@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::SDH::StatutSportifWithIdentifiantController < APIParticulier::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::SDH::StatutSportif }
+
   def show
     if organizer.success?
       render json: serialize_data,

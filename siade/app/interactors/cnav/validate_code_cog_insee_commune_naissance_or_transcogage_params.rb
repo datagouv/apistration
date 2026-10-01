@@ -1,4 +1,7 @@
 class CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams < ValidateParamInteractor
+  delegates_to CNAV::ValidateCodeCogINSEECommuneNaissance,
+    CNAV::ValidateTranscogageParams
+
   def call
     validator = call_validator
 
@@ -14,7 +17,7 @@ class CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams < ValidatePa
     if code_cog_insee_commune_naissance?
       CNAV::ValidateCodeCogINSEECommuneNaissance.call(params: context.params)
     elsif transcogage_params?
-      INSEE::CommuneINSEECode::ValidateParams.call(params: context.params)
+      CNAV::ValidateTranscogageParams.call(params: context.params)
     end
   end
 

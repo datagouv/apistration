@@ -66,9 +66,9 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
             run_test!
           end
 
-          common_provider_errors_request('Banque de France', BanqueDeFrance::BilansEntreprise)
+          common_provider_errors_request(BanqueDeFrance::BilansEntreprise)
 
-          common_network_error_request('Banque de France', BanqueDeFrance::BilansEntreprise)
+          common_network_error_request(BanqueDeFrance::BilansEntreprise)
         end
       end
     end

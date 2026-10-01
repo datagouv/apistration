@@ -2,12 +2,13 @@ class DocumentationSearchableChunk
   include ActiveModel::Model
 
   attr_reader :id
-  attr_accessor :title, :anchor, :content, :page
+  attr_accessor :title, :anchor, :content, :page, :partial
 
   def initialize(section, api_page_uid)
     @title = section[:title]
     @anchor = section[:anchor] || section[:title].parameterize
     @content = MarkdownInterpolator.new(section[:content]).perform
+    @partial = section[:partial]
     @page = api_page_uid
     @id = "#{api_page_uid}_#{anchor}"
   end

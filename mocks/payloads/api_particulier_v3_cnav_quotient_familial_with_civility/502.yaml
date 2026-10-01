@@ -16,12 +16,12 @@ payload: |-
   {
     "errors": [
       {
-        "code": "37999",
+        "code": "35999",
         "title": "Erreur inconnue du fournisseur de données",
         "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF & MSA"
         }
       }
     ]

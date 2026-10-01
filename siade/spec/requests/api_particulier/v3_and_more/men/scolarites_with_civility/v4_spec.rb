@@ -143,8 +143,8 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
           unprocessable_content_error_request(:code_etablissement_et_perimetre)
         end
 
-        common_provider_errors_request('MEN', MEN::Scolarites)
-        common_network_error_request('MEN', MEN::Scolarites)
+        common_provider_errors_request(MEN::Scolarites)
+        common_network_error_request(MEN::Scolarites)
       end
     end
   end

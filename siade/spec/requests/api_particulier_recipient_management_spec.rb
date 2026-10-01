@@ -7,7 +7,7 @@ RSpec.describe 'API Particulier: recipient management' do
     get url, params:, headers:
   end
 
-  let(:organizer) { double('organizer', success?: false, cacheable: true, errors: [NotFoundError.new('CNAV')]) } # rubocop:disable RSpec/VerifiedDoubles
+  let(:organizer) { double('organizer', success?: false, cacheable: true, errors: [NotFoundError.new(CNAV::QuotientFamilialV2.provider_name)]) } # rubocop:disable RSpec/VerifiedDoubles
   let(:siret) { Token.find(yes_jwt_id).siret }
   let(:jwt_token) { JWT.encode({ jti: yes_jwt_id, uid: yes_jwt_id, iat: Time.now.to_i }, Siade.credentials[:jwt_hash_secret], Siade.credentials[:jwt_hash_algo]) }
 

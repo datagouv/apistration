@@ -163,15 +163,16 @@ class AbstractEndpoint
     ok_response['content']['application/json']['schema']
   end
 
-  def error_examples(http_code)
-    http_code_response = open_api_definition['responses'][http_code]
+  def provider_errors
+    @provider_errors ||= errors_nomenclature.errors_for(operation_id)
+  end
 
-    return [] if http_code_response.blank?
-    return [] if http_code_response['content'].blank?
+  def france_connect_provider_errors
+    @france_connect_provider_errors ||= errors_only_in(sibling_operation_id('france_connect'))
+  end
 
-    http_code_response['content']['application/json']['examples'].values.map { |example_schema_payload|
-      example_schema_payload['value']['errors']
-    }.flatten
+  def ine_provider_errors
+    @ine_provider_errors ||= errors_only_in(sibling_operation_id('ine'))
   end
 
   def collection?
@@ -232,6 +233,28 @@ class AbstractEndpoint
   end
 
   private
+
+  def errors_nomenclature
+    Kernel.const_get(api.classify)::ErrorsNomenclature
+  end
+
+  def sibling_operation_id(modality)
+    return if operation_id.blank?
+
+    sibling = operation_id.sub(/_with_\w+\z/, "_with_#{modality}")
+
+    sibling unless sibling == operation_id
+  end
+
+  def errors_only_in(other_operation_id)
+    return {} if other_operation_id.blank?
+
+    errors_nomenclature.errors_for(other_operation_id).filter_map { |status, errors|
+      extra = errors - provider_errors.fetch(status, [])
+
+      [status, extra] if extra.any?
+    }.to_h
+  end
 
   def tag_for_redoc
     return unless open_api_definition['tags']

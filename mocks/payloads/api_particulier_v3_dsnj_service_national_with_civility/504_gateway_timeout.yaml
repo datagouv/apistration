@@ -1,5 +1,5 @@
 ---
-description: "Temps d'attente dépassé - gateway timeout"
+description: "Temps d'attente dépassé par le fournisseur de données"
 params:
   nomNaissance: 'BERNARD'
   prenoms:
@@ -15,9 +15,9 @@ payload: |-
   {
     "errors": [
       {
-        "code": "39005",
-        "title": "Temps d'attente dépassé",
-        "detail": "Le service distant n'a pas répondu dans le temps imparti.",
+        "code": "39002",
+        "title": "Intermédiaire hors-délai",
+        "detail": "Temps d’attente d’une réponse du fournisseur de données écoulé.",
         "source": null,
         "meta": {
           "provider": "DSNJ"

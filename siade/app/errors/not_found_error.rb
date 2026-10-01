@@ -1,12 +1,19 @@
 class NotFoundError < AbstractGenericProviderError
-  attr_reader :provider_name, :with_identifiant_message, :subcode, :title
+  def self.build_example(provider_name:, provider: nil, title: 'Entité non trouvée', detail: nil, **)
+    new(provider || provider_name, detail, title:, with_identifiant_message: detail.nil?)
+  end
 
-  def initialize(provider_name, message = nil, title: 'Entité non trouvée', with_identifiant_message: true, subcode: '003')
+  attr_reader :provider_name, :with_identifiant_message, :title
+
+  def initialize(provider_name, message = nil, title: 'Entité non trouvée', with_identifiant_message: true)
     @provider_name = provider_name
     @message = message
     @with_identifiant_message = with_identifiant_message
-    @subcode = subcode
     @title = title
+  end
+
+  def subcode
+    '003'
   end
 
   def kind

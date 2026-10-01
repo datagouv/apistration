@@ -74,8 +74,8 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
             let(:siren) { 'lol' }
           end
 
-          common_provider_errors_request('INPI - RNE', INPI::RNE::BeneficiairesEffectifs)
-          common_network_error_request('INPI - RNE', INPI::RNE::BeneficiairesEffectifs)
+          common_provider_errors_request(INPI::RNE::BeneficiairesEffectifs)
+          common_network_error_request(INPI::RNE::BeneficiairesEffectifs)
         end
       end
     end

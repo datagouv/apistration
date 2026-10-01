@@ -132,7 +132,7 @@ Pour en savoir plus sur les paramètres obligatoires d'appel, consultez les [sp�
 
 **🧰 Comment ?**
 Utiliser les libellés pour comprendre l’erreur rencontrée, voire automatiser votre logiciel en fonction du code.
-La liste de tous les codes erreurs spécifiques (environ 80) est disponible dans le [Swagger](<%= api_particulier_developers_openapi_v3_path %>){:target="_blank"}. La gestion des erreurs et l'explication des codes retours est détaillée dans la [documentation technique générale](<%= developers_path(anchor: 'code-https-et-gestion-des-erreurs') %>){:target="_blank"}.
+La liste de tous les codes erreurs spécifiques (environ 80) est disponible dans le [Swagger](<%= api_particulier_developers_openapi_v3_path %>){:target="_blank"}. La gestion des erreurs et l'explication des codes retours est détaillée dans la [documentation technique générale](<%= developers_path(anchor: 'gérer-les-erreurs---codes-https') %>){:target="_blank"}.
 
 
 <h3 class="fr-mt-6w" id="volumetrie-indiquee-dans-le-header-et-actionnable"> 4. Volumétrie indiquée dans le header et actionnable</h3>

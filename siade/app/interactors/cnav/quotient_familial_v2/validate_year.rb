@@ -1,4 +1,8 @@
-class CNAV::QuotientFamilialV2::ValidateYear < ValidateYear
+class CNAV::QuotientFamilialV2::ValidateYear < ValidateParamInteractor
+  include YearValidation
+
+  raises UnprocessableEntityError, field: :annee_cnav
+
   def call
     return if param(year_param_name).nil?
 

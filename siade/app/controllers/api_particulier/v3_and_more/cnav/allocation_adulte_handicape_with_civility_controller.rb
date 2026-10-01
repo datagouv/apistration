@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::AllocationAdulteHandicapeWithCivilityController < APIParticulier::V3AndMore::CNAV::AbstractCivilityController
+  nomenclature organizers: { 3 => ::CNAV::AllocationAdulteHandicape }
+
   def organizer_class
     CNAV::AllocationAdulteHandicape
   end

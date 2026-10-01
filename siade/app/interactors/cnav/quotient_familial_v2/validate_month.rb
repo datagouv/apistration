@@ -1,4 +1,8 @@
-class CNAV::QuotientFamilialV2::ValidateMonth < ValidateMonth
+class CNAV::QuotientFamilialV2::ValidateMonth < ValidateParamInteractor
+  include MonthValidation
+
+  raises UnprocessableEntityError, field: :mois
+
   def call
     return if param(month_param_name).nil?
 

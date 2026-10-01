@@ -1,6 +1,7 @@
 class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
   include VersionAware
   include UseRetrievers
+  include ErrorsNomenclatureDeclaration
   include RecipientManagement
 
   before_action :verify_api_version!

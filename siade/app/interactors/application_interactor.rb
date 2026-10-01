@@ -6,7 +6,19 @@ class ApplicationInteractor
     ErrorRegistry.register(self, error_class, **)
   end
 
+  def self.delegates_to(*target_classes)
+    target_classes.each { |target_class| ErrorRegistry.register_delegation(self, target_class) }
+  end
+
+  def self.absorbs_errors_of(*target_classes)
+    target_classes.each { |target_class| ErrorRegistry.register_absorption(self, target_class) }
+  end
+
   def self.declares_no_specific_errors!
     ErrorRegistry.mark_guarded(self)
+  end
+
+  def build_declared_error(declaration)
+    declaration.build(provider_name: context.provider_name)
   end
 end

@@ -1,4 +1,6 @@
 class ServiceUser::ValidateINE < ValidateParamInteractor
+  raises UnprocessableEntityError, field: :ine
+
   def call
     return if ine_number_valid?
 

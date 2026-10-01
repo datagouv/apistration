@@ -260,9 +260,8 @@ indiquant la réponse associée sur le fournisseur de données.
 
 **Attention**, l'identité pivot renvoyée par FranceConnect ne contient jamais
 de nom d'usage : seuls `family_name`, `given_name`, `gender`, `birthdate`,
-`birthplace` et `birthcountry` sont garantis (ce sont les seuls scopes
-demandés, voir `hub_identity_scopes` dans
-`siade/app/interactors/france_connect/validate_response.rb`). Le paramètre
+`birthplace` et `birthcountry` sont transmis (voir `identity` dans
+`siade/app/interactors/france_connect/data_fetcher_through_access_token/build_service_user_identity.rb`). Le paramètre
 `nom_usage` est donc systématiquement `nil` pour un appel FranceConnect réel.
 **N'ajoutez jamais de clé `nomUsage` dans les `params` d'un fichier
 `fake_france_connect_*`/`france_connect_*`** : aucune requête réelle ne pourra

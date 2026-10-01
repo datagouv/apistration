@@ -84,9 +84,9 @@ RSpec.describe 'GIPMDS: Servicecivique With Civility', api: :particulier, type: 
         end
 
         describe 'server errors' do
-          common_provider_errors_request('GIP-MDS', GIPMDS::ServiceCivique)
+          common_provider_errors_request(GIPMDS::ServiceCivique)
 
-          common_network_error_request('GIP-MDS', GIPMDS::ServiceCivique)
+          common_network_error_request(GIPMDS::ServiceCivique)
         end
       end
     end

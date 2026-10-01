@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::DGFIP::TVAController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::DGFIP::TVA }
+
   def show
     if organizer.success?
       render json: serialize_data,

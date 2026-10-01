@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::FNTP::CarteProfessionnelleTravauxPublicsController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::FNTP::CarteProfessionnelleTravauxPublics }
+
   def show
     if organizer.success?
       render json: serialize_data,

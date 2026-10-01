@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe ErrorRegistry do
   around do |example|
-    snapshot = described_class.send(:declarations).deep_dup
+    Rails.application.eager_load!
+    snapshot = described_class.instance_variables.index_with { |name| described_class.instance_variable_get(name).deep_dup }
     described_class.reset!
     example.run
   ensure
-    described_class.instance_variable_set(:@declarations, snapshot)
+    snapshot.each { |name, value| described_class.instance_variable_set(name, value) }
   end
 
   let(:validator_class) do
@@ -90,46 +91,114 @@ RSpec.describe ErrorRegistry do
     end
   end
 
-  describe '.examples_for_status' do
-    it 'instantiates errors matching the status' do
-      validator = Class.new do
+  describe '.declarations_for with delegations' do
+    it 'adds the declarations of the interactors a class delegates to, through their organize chain' do
+      validator = Class.new
+      inner = Class.new do
+        class << self
+          attr_reader :organized
+        end
+      end
+      inner.instance_variable_set(:@organized, [validator])
+      caller = Class.new
+
+      described_class.register(validator, NotFoundError)
+      described_class.register_delegation(caller, inner)
+
+      expect(described_class.declarations_for(caller).map(&:error_class)).to eq([NotFoundError])
+    end
+
+    it 'keeps the declarations of a delegated retriever out, since they belong to its provider' do
+      retriever = Class.new(RetrieverOrganizer)
+      caller = Class.new
+
+      described_class.register(retriever, NotFoundError)
+      described_class.register_delegation(caller, retriever)
+
+      expect(described_class.declarations_for(caller)).to be_empty
+    end
+  end
+
+  describe '.delegated_retrievers_for' do
+    def organizer_of(*organized)
+      organizer = Class.new do
+        class << self
+          attr_reader :organized
+        end
+      end
+      organizer.instance_variable_set(:@organized, organized)
+      organizer
+    end
+
+    it 'follows the retrievers an interactor of the chain runs, through the interactors it delegates to' do
+      retriever = Class.new(RetrieverOrganizer)
+      relay = Class.new
+      caller = Class.new
+
+      described_class.register_delegation(caller, relay)
+      described_class.register_delegation(relay, retriever)
+
+      expect(described_class.delegated_retrievers_for(organizer_of(caller))).to eq([retriever])
+    end
+
+    it 'leaves out the interactors it delegates to, whose errors belong to the caller' do
+      validator = Class.new
+      caller = Class.new
+
+      described_class.register_delegation(caller, validator)
+
+      expect(described_class.delegated_retrievers_for(organizer_of(caller))).to be_empty
+    end
+
+    it 'finds none for a chain that delegates nothing' do
+      expect(described_class.delegated_retrievers_for(organizer_of(Class.new))).to be_empty
+    end
+  end
+
+  describe 'Declaration#build' do
+    let(:validator) do
+      Class.new do
         def self.name
           'Validator'
         end
       end
-      organizer = Class.new do
-        define_singleton_method(:organized) { [validator] }
-      end
+    end
 
-      described_class.register(validator, NotFoundError)
+    def built_examples(provider_name:)
+      described_class.direct_declarations_for(validator).map { |declaration| declaration.build(provider_name:) }
+    end
+
+    it 'gives each error the prefix of the organizer provider' do
       described_class.register(validator, ProviderUnknownError)
       described_class.register(validator, ACOSSError, kind: :manual_verification_asked)
 
-      errors_502 = described_class.examples_for_status(organizer, 502, provider_name: 'ACOSS')
-
-      expect(errors_502.map(&:class)).to contain_exactly(ProviderUnknownError, ACOSSError)
-      expect(errors_502.find { |e| e.is_a?(ACOSSError) }.code).to eq('04501')
-
-      errors_404 = described_class.examples_for_status(organizer, 404, provider_name: 'ACOSS')
-      expect(errors_404.map(&:class)).to eq([NotFoundError])
+      expect(built_examples(provider_name: 'ACOSS').map(&:code)).to contain_exactly('04999', '04501')
     end
 
     it 'instantiates BadFileFromProviderError with provider and kind' do
-      validator = Class.new do
-        def self.name
-          'Validator'
-        end
-      end
-      organizer = Class.new do
-        define_singleton_method(:organized) { [validator] }
-      end
-
       described_class.register(validator, BadFileFromProviderError, kind: :invalid_base64)
 
-      errors = described_class.examples_for_status(organizer, 502, provider_name: 'ACOSS')
+      expect(built_examples(provider_name: 'ACOSS').map(&:code)).to eq(['04051'])
+    end
 
-      expect(errors.size).to eq(1)
-      expect(errors.first.code).to eq('04051')
+    it 'prefers the provider a declaration names over the organizer one' do
+      described_class.register(validator, NotFoundError,
+        provider: 'CNAF',
+        title: 'Dossier allocataire absent CNAF',
+        detail: "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
+
+      error = built_examples(provider_name: 'Sécurité sociale').first
+
+      expect(error.code).to eq('23003')
+      expect(error.title).to eq('Dossier allocataire absent CNAF')
+      expect(error.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
+    end
+
+    it 'builds the unauthorized and unprocessable errors from their options' do
+      described_class.register(validator, InvalidFranceConnectAccessTokenError, type: :not_found_or_expired)
+      described_class.register(validator, ProviderUnprocessableEntityError, reason: :unidentified_person)
+
+      expect(built_examples(provider_name: 'CNAV').map(&:code)).to contain_exactly('51502', '37560')
     end
   end
 end

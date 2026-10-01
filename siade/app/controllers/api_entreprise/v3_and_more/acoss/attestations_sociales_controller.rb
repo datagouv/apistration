@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntreprise::V3AndMore::BaseController
+  nomenclature organizers: { 3 => ::ACOSS::AttestationsSociales, 4 => ::URSSAF::AttestationsSociales }
+
   def show
     if organizer.success?
       render json: serialize_data,

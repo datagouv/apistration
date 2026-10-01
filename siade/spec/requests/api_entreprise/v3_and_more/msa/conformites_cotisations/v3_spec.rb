@@ -56,8 +56,8 @@ RSpec.describe 'MSA: Conformitescotisations', api: :entreprise, type: %i[request
             run_test!
           end
 
-          common_provider_errors_request('MSA', MSA::ConformitesCotisations)
-          common_network_error_request('MSA', MSA::ConformitesCotisations)
+          common_provider_errors_request(MSA::ConformitesCotisations)
+          common_network_error_request(MSA::ConformitesCotisations)
         end
       end
     end

@@ -1,4 +1,8 @@
 class CIBTPMissingPaymentsError < NotFoundError
+  def self.build_example(**)
+    new
+  end
+
   def initialize
     super(provider_name)
   end

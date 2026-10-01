@@ -33,7 +33,7 @@ Reponse 403,INSEE Liens de successions - Exemple 403,"{""siret"":""3268222162525
 Réponse 404,Payload INSEE Successions - not found 404,"{""siret"":""37449707591810""}",404,"{
   ""errors"": [
     {
-      ""code"": ""04003"",
+      ""code"": ""01003"",
       ""title"": ""Entité non trouvée"",
       ""detail"": ""Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel"",
       ""meta"": {
@@ -57,9 +57,9 @@ Reponse 502,INSEE Liens de successions - Exemple 502,"{""siret"":""6122962873473
 Réponse 504,INSEE Liens de successions - Exemple 504,"{""siret"":""39197770100914""}",504,"{
   ""errors"": [
     {
-      ""title"": ""Service non disponible"",
-      ""detail"": ""Service du fournisseur de données temporairement indisponible ou en maintenance."",
-      ""code"": ""01001"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
+      ""code"": ""01002"",
       ""meta"": {
         ""provider"": ""INSEE""
       }

@@ -1,4 +1,8 @@
 class ValidateRecipient < ValidateParamInteractor
+  absorbs_errors_of ValidateSiret
+
+  raises InvalidRecipientError, field: :recipient
+
   def call
     invalid_recipient! unless ValidateSiret.call(params: { siret: context.recipient }).success?
   end

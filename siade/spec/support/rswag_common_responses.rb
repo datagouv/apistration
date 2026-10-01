@@ -117,25 +117,10 @@ module RSwagCommonResponses
     end
   end
 
-  # rubocop:disable-next Metrics/MethodLength
   def build_dossier_allocataire_absent_rswag_example
-    title = 'Dossier allocataire absent'
-    detail = "Le dossier allocataire n'a pas été trouvé. Le fournisseur de données est précisé dans 'meta.provider'."
-
-    example 'application/json', :dossier_allocataire_absent,
-      {
-        errors: [
-          {
-            code: '36003',
-            title:,
-            detail:,
-            source: nil,
-            meta: { provider: 'Sécurité sociale' }
-          }
-        ]
-      },
-      title,
-      detail
+    CNAV::ValidateResponse::FILE_NOT_FOUND_PER_REGIME.each_value do |declaration|
+      build_rswag_example(declaration.build(provider_name: 'CNAV'))
+    end
   end
 
   # rubocop:disable Metrics/MethodLength

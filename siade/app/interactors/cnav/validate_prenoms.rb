@@ -1,6 +1,8 @@
 class CNAV::ValidatePrenoms < ValidateParamInteractor
   include ValidatePrenomsFormat
 
+  raises UnprocessableEntityError, field: :first_names
+
   def call
     return if param(:prenoms).nil?
     return invalid_param!(:first_names) unless valid_prenoms_format?

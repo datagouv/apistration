@@ -1,4 +1,6 @@
 class INSEE::EtablissementDiffusable::FilterResource < INSEE::FilterPartiallyDiffusableResource
+  delegates_to INSEE::AdresseEtablissementDiffusable::BuildResource, INSEE::UniteLegaleDiffusable::BuildResource
+
   protected
 
   def personne_morale_attributes_to_not_diffuse

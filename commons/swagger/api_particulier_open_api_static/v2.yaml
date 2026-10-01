@@ -302,14 +302,15 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     errors:
-                    - code: '50002'
+                    - code: '51502'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -563,14 +564,15 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     errors:
-                    - code: '50002'
+                    - code: '51502'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -837,14 +839,15 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     errors:
-                    - code: '50002'
+                    - code: '51502'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -1107,14 +1110,15 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     errors:
-                    - code: '50002'
+                    - code: '51502'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -1624,14 +1628,15 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     errors:
-                    - code: '50002'
+                    - code: '51502'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -1893,14 +1898,15 @@ paths:
           content:
             application/json:
               examples:
-                acces_non_autorise_50002:
+                acces_non_autorise_51502:
                   value:
                     errors:
-                    - code: '50002'
+                    - code: '51502'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
                       source:
-                      meta: {}
+                      meta:
+                        provider: FranceConnect
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:

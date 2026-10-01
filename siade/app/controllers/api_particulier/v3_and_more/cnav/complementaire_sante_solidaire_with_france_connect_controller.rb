@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::ComplementaireSanteSolidaireWithFranceConnectController < APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController
+  nomenclature organizers: { 3 => ::CNAV::ComplementaireSanteSolidaire }
+
   private
 
   def organizer_class

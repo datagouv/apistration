@@ -90,12 +90,12 @@
   {
     "errors": [
       {
-        "code": "24003",
+        "code": "21003",
         "title": "Entité non trouvée",
         "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
         "source": null,
         "meta": {
-          "provider": "Ministère de l'Intérieur"
+          "provider": "MI"
         }
       }
     ]

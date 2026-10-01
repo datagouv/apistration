@@ -1,8 +1,7 @@
 class Openapi::ErrorInjector
-  PATH_PARAM_REGEX = /\{(\w+)\}/
-
-  def initialize(open_api, config_path:)
+  def initialize(open_api, config_path:, api:)
     @open_api = open_api
+    @api = api.to_sym
     @config = YAML.load_file(config_path)
     @builder = Openapi::ErrorExamplesBuilder.new
   end
@@ -20,40 +19,29 @@ class Openapi::ErrorInjector
 
   private
 
-  attr_reader :open_api, :config, :builder
+  attr_reader :open_api, :api, :config, :builder
 
   def inject_errors(path, operation)
     responses = operation['responses']
-    provider = extract_provider(path)
+    provider = nomenclature_provider(operation) || extract_provider(path)
 
     config['responses'].each do |status_code, error_config|
       next if responses.key?(status_code)
       next if error_config['requires_provider'] && provider.nil?
 
-      response = build_response(path, error_config, provider)
+      response = build_response(error_config, provider)
       next if response.nil?
 
       responses[status_code] = response
     end
-
-    merge_422_if_needed(path, responses)
   end
 
-  def build_response(path, error_config, provider)
+  def build_response(error_config, provider)
     examples = build_examples(error_config, provider)
-    add_mandatory_params_examples(examples, path, error_config)
 
     return if examples.empty?
 
     response_hash(error_config['description'], examples)
-  end
-
-  def add_mandatory_params_examples(examples, path, error_config)
-    return unless error_config.key?('mandatory_params')
-
-    path_params = extract_path_params(path)
-    mandatory_params = error_config['mandatory_params'].map(&:to_sym)
-    examples.merge!(builder.build_422_for_params(path_params:, mandatory_params:))
   end
 
   def response_hash(description, examples)
@@ -83,6 +71,8 @@ class Openapi::ErrorInjector
 
   def instantiate_error(example_config, provider)
     klass = example_config['error_class'].constantize
+    return klass.build_example(provider_name: provider) if example_config['build_example']
+
     args = resolve_args(example_config['args'], provider)
 
     if args.any?
@@ -100,25 +90,15 @@ class Openapi::ErrorInjector
     end
   end
 
-  def merge_422_if_needed(path, responses)
-    error_config = config.dig('responses', '422')
-    return unless error_config
-    return unless responses.key?('422')
+  def nomenclature_provider(operation)
+    nomenclature.dig('endpoints', operation.dig('responses', '200', 'x-operationId'), 'provider')
+  end
 
-    extra_examples = build_examples(error_config, extract_provider(path))
-    add_mandatory_params_examples(extra_examples, path, error_config)
-
-    existing_examples = responses.dig('422', 'content', 'application/json', 'examples') || {}
-    extra_examples.each do |key, value|
-      existing_examples[key] ||= value
-    end
+  def nomenclature
+    @nomenclature ||= ErrorsNomenclature.new(api).to_h
   end
 
   def extract_provider(path)
     ExtractProviderFromPath.new(path).perform
-  end
-
-  def extract_path_params(path)
-    path.scan(PATH_PARAM_REGEX).flatten.map(&:to_sym)
   end
 end

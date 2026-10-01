@@ -257,12 +257,12 @@ respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Entité non trouvée",
-        "detail": "Dossier allocataire inexistant. Le document ne peut être édité.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF"
         }
       }
     ]
@@ -317,12 +317,12 @@ respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
   {
     "errors": [
       {
-        "code": "37999",
+        "code": "36999",
         "title": "Erreur inconnue du fournisseur de données",
         "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "Sécurité sociale"
         }
       }
     ]

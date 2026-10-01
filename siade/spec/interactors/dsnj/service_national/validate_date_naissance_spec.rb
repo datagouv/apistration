@@ -3,6 +3,8 @@ RSpec.describe DSNJ::ServiceNational::ValidateDateNaissance, type: :validate_par
     expect(described_class).to be < Civility::ValidateDateNaissance
   end
 
+  it_behaves_like 'a birth date validator'
+
   describe '#call' do
     subject(:result) { described_class.call(params:) }
 

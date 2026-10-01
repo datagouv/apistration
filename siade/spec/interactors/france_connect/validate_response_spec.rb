@@ -1,9 +1,5 @@
 RSpec.describe FranceConnect::ValidateResponse do
   class FranceConnectDummyDataFetcher < described_class
-    def scopes
-      %w[openid identite_pivot family_name given_name gender birthdate birthplace birthcountry]
-    end
-
     def params_to_verify # rubocop:disable Metrics/AbcSize
       {
         nom_naissance: json_body['token_introspection']['family_name'],

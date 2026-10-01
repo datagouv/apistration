@@ -27,12 +27,12 @@ Titre,Description,Paramètres,Status,Réponse
 ,Établissement non trouvé,"{""siret"":""00000000000000""}",404,"{
   ""errors"": [
     {
-      ""code"": ""35003"",
+      ""code"": ""14003"",
       ""title"": ""Entité non trouvée"",
       ""detail"": ""Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
       ""source"": null,
       ""meta"": {
-        ""provider"": ""Fabrique numérique des ministères sociaux""
+        ""provider"": ""Fabrique numérique des Ministères Sociaux""
       }
     }
   ]

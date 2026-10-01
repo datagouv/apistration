@@ -1,5 +1,5 @@
 ---
-description: "Accès refusé - problème d'autorisation"
+description: 'Réponse inattendue du fournisseur de données'
 params:
   nomNaissance: 'LEROY'
   prenoms:
@@ -10,14 +10,14 @@ params:
   sexeEtatCivil: 'M'
   codeCogInseePaysNaissance: '99100'
   codeCogInseeCommuneNaissance: '69123'
-status: 403
+status: 502
 payload: |-
   {
     "errors": [
       {
-        "code": "39001",
-        "title": "Accès refusé",
-        "detail": "Le SIRET n'est pas autorisé à accéder à l'API",
+        "code": "39999",
+        "title": "Erreur inconnue du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
         "source": null,
         "meta": {
           "provider": "DSNJ"

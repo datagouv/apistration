@@ -149,6 +149,8 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+    its('errors.first.code') { is_expected.to eq('00405') }
   end
 
   context 'with invalid prenoms' do

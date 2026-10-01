@@ -6,7 +6,6 @@ require 'uri'
 class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < FranceConnect::ValidateResponse
   raises InvalidFranceConnectAccessTokenError, type: :malformed_token
   raises InvalidFranceConnectAccessTokenError, type: :not_found_or_expired
-  raises ProviderUnprocessableEntityError, reason: :unusable_identity
 
   def call
     handle_invalid_token_error if [400, 401].include?(http_code)
@@ -45,10 +44,6 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < FranceCon
 
   def decipher_response
     JWE.decrypt(context.response.body, rsa_private_key)
-  end
-
-  def scopes
-    json_body['token_introspection']['scope'].split
   end
 
   def handle_invalid_token_error

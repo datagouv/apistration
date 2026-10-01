@@ -1,6 +1,8 @@
 class DSNJ::ServiceNational::ValidatePrenoms < ValidateParamInteractor
   include ValidatePrenomsFormat
 
+  raises UnprocessableEntityError, field: :prenoms
+
   def call
     return invalid_param!(:prenoms) unless valid_prenoms_format?
 

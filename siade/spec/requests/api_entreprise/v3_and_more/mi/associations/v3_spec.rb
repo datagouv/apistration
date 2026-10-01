@@ -55,8 +55,8 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
             run_test!
           end
 
-          common_network_error_request('MI', MI::Associations)
-          common_provider_errors_request('MI', MI::Associations)
+          common_network_error_request(MI::Associations)
+          common_provider_errors_request(MI::Associations)
         end
       end
     end

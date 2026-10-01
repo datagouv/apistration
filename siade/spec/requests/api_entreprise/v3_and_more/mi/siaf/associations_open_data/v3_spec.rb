@@ -52,8 +52,8 @@ RSpec.describe 'MI - SIAF : Associations en open data', api: :entreprise, type: 
             run_test!
           end
 
-          common_provider_errors_request('SIAF', MI::SIAF::Associations)
-          common_network_error_request('SIAF', MI::SIAF::Associations)
+          common_provider_errors_request(MI::SIAF::Associations)
+          common_network_error_request(MI::SIAF::Associations)
         end
       end
     end

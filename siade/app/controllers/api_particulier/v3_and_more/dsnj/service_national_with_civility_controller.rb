@@ -1,6 +1,8 @@
 class APIParticulier::V3AndMore::DSNJ::ServiceNationalWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
+  nomenclature organizers: { 3 => ::DSNJ::ServiceNational }
+
   def show
     if organizer.success?
       render json: serialize_data,
