@@ -239,4 +239,16 @@ RSpec.describe DatapassWebhook::UpdateMailjetContacts, type: :interactor do
       subject
     end
   end
+
+  context 'when the authorization request comes from an editor delegation request' do
+    let(:authorization_request) { create(:authorization_request, :with_demandeur) }
+
+    before { create(:editor_delegation_request, authorization_request:) }
+
+    it 'does not subscribe its contacts' do
+      subject
+
+      expect(Mailjet::Contactslist_managemanycontacts).not_to have_received(:create)
+    end
+  end
 end
