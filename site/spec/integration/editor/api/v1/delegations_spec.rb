@@ -72,6 +72,17 @@ RSpec.describe 'Délégations éditeur' do
 
         run_test!
       end
+
+      response '403', 'Appel depuis une IP non autorisée pour ce token éditeur' do
+        schema '$ref' => '#/components/schemas/ForbiddenError'
+
+        let(:editor_token) { create(:editor_token, editor:, allowed_ips: ['51.91.107.0/24']) }
+        let(:Authorization) { "Bearer #{editor_token.rehash}" }
+        let(:page) { nil }
+        let(:per_page) { nil }
+
+        run_test!
+      end
     end
   end
 end

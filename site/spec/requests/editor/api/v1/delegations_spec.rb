@@ -71,6 +71,31 @@ RSpec.describe 'Editor::API::V1::Delegations' do
       end
     end
 
+    context 'when the EditorToken has allowed IPs' do
+      let(:editor_token) { create(:editor_token, editor:, allowed_ips: ['51.91.107.0/24']) }
+
+      it 'returns 200 for a request coming from an allowed IP' do
+        get endpoint, headers:, env: { 'REMOTE_ADDR' => '51.91.107.163' }
+
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'returns 403 with a JSON error for a request coming from another IP' do
+        get endpoint, headers:, env: { 'REMOTE_ADDR' => '8.8.8.8' }
+
+        expect(response).to have_http_status(:forbidden)
+        expect(response.parsed_body).to eq('error' => 'IP address not allowed for this token')
+      end
+
+      it 'returns 403 when a client behind the local proxy forges a Forwarded header' do
+        get endpoint,
+          headers: headers.merge('X-Forwarded-For' => '8.8.8.8', 'Forwarded' => 'for=51.91.107.163'),
+          env: { 'REMOTE_ADDR' => '127.0.0.1' }
+
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+
     context 'when listing delegations' do
       let!(:active_delegation_a) do
         create(:editor_delegation, editor:,

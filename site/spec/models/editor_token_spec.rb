@@ -123,6 +123,36 @@ RSpec.describe EditorToken do
     end
   end
 
+  describe '#ip_allowed?' do
+    context 'without allowed IPs' do
+      let(:editor_token) { build(:editor_token, allowed_ips: []) }
+
+      it 'allows any IP' do
+        expect(editor_token.ip_allowed?('8.8.8.8')).to be true
+      end
+    end
+
+    context 'with allowed IPs' do
+      let(:editor_token) { build(:editor_token, allowed_ips: ['51.91.107.0/24', '82.96.145.100']) }
+
+      it 'allows an IP inside a declared range' do
+        expect(editor_token.ip_allowed?('51.91.107.163')).to be true
+      end
+
+      it 'allows a declared exact IP' do
+        expect(editor_token.ip_allowed?('82.96.145.100')).to be true
+      end
+
+      it 'denies an IP outside every declared entry' do
+        expect(editor_token.ip_allowed?('8.8.8.8')).to be false
+      end
+
+      it 'denies an unparsable IP' do
+        expect(editor_token.ip_allowed?('not-an-ip')).to be false
+      end
+    end
+  end
+
   describe '#expired?' do
     it 'returns true when exp is in the past' do
       editor_token = build(:editor_token, :expired)

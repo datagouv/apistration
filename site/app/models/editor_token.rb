@@ -10,7 +10,7 @@ class EditorToken < ApplicationRecord
   validate :allowed_ips_within_editor_range, if: :allowed_ips_changed?
 
   def allowed_ips_as_strings
-    allowed_ips.map { |ip| "#{ip}/#{ip.prefix}" }
+    allowed_ips.map(&:cidr)
   end
 
   def allowed_ips_text
@@ -20,6 +20,13 @@ class EditorToken < ApplicationRecord
   def allowed_ips_text=(value)
     @allowed_ips_text = value
     self.allowed_ips = value.to_s.split(/[\s,]+/).compact_blank
+  end
+
+  def ip_allowed?(request_ip)
+    return true if allowed_ips.empty?
+
+    request_addr = parse_ip(request_ip)
+    request_addr.present? && allowed_ips.any? { |range| range.include?(request_addr) }
   end
 
   def revoke!
