@@ -43,6 +43,10 @@ class EditorDelegationRequest < ApplicationRecord
     editor_use_case.datapass_data.merge(data)
   end
 
+  def invitation_path
+    "/editeurs/#{editor.name.parameterize}/habilitation/#{generate_token_for(:invitation)}"
+  end
+
   def submitted?
     submitted_at.present?
   end

@@ -31,6 +31,12 @@ RSpec.describe EditorDelegationRequest do
       expect(described_class.find(editor_delegation_request.id).generate_token_for(:invitation)).to eq(token)
     end
 
+    it 'is reachable under the editor name' do
+      editor_delegation_request.editor.update!(name: 'Omnikles ')
+
+      expect(editor_delegation_request.invitation_path).to eq("/editeurs/omnikles/habilitation/#{editor_delegation_request.generate_token_for(:invitation)}")
+    end
+
     it 'rejects a forged token' do
       expect(described_class.find_by_token_for(:invitation, 'forged')).to be_nil
     end
