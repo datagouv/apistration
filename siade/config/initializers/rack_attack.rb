@@ -63,9 +63,11 @@ class Rack::Attack
   end
 
   throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
-    next if request.get_header('HTTP_X_API_KEY').blank? || request.path.exclude?('/api/v2/') || request.host !~ /particulier/
+    token = request.env[UserResolutionMiddleware::TOKEN_ENV_KEY]
 
-    Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY'))
+    next if token.blank? || request.path.exclude?('/api/v2/') || request.host !~ /particulier/
+
+    Digest::SHA512.hexdigest(token)
   end
 
   Rails.configuration.throttle.each do |name, config|

@@ -29,6 +29,19 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     end
   end
 
+  describe 'API Particulier V2 global limit' do
+    include ActiveSupport::Testing::TimeHelpers
+
+    before { freeze_time }
+
+    it 'throttles a token sent as query param like one sent in X-Api-Key' do
+      21.times { get '/api/v2/etudiants', params: { token: yes_jwt } }
+
+      expect(response).to have_http_status(:too_many_requests)
+      expect(response.request.env['rack.attack.matched']).to eq('API Particulier V2 global limit')
+    end
+  end
+
   describe 'API Particulier V2 throttle isolation', if: ENV['WITH_FLAKY_TESTS'] == 'true' do
     let(:v2_path) { '/api/v2/test_endpoint' }
     let(:v3_path) { '/api/v3/test_endpoint_v2' }
