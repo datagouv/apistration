@@ -37,4 +37,19 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
       }.to change { AuthorizationRequest.where(status: 'revoked').count }
     end
   end
+
+  context "when event is 'revoke' on an editor delegation request without token" do
+    let(:event) { 'revoke' }
+    let(:authorization_request) { create(:authorization_request) }
+    let!(:delegation) { create(:editor_delegation, authorization_request:) }
+
+    before { create(:editor_delegation_request, authorization_request:) }
+
+    it 'revokes the authorization request and its delegation' do
+      subject
+
+      expect(authorization_request.reload.status).to eq('revoked')
+      expect(delegation.reload.revoked_at).to be_present
+    end
+  end
 end

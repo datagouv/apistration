@@ -99,4 +99,16 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
       end
     end
   end
+
+  context 'when the authorization request comes from an editor delegation request' do
+    let(:event) { 'approve' }
+
+    before { create(:editor_delegation_request, authorization_request:) }
+
+    it 'does not create a token: access goes through the editor delegation only' do
+      expect { subject }.not_to change(Token, :count)
+
+      expect(subject).to be_a_success
+    end
+  end
 end

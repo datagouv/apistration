@@ -14,6 +14,7 @@ class DatapassWebhook::CreateEditorDelegation < ApplicationInteractor
   private
 
   def editor
-    @editor ||= Editor.for_demarche(context.authorization_request.demarche).take
+    @editor ||= context.authorization_request.editor_delegation_request&.editor ||
+                Editor.for_demarche(context.authorization_request.demarche).take
   end
 end
