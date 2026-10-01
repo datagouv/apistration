@@ -10,7 +10,7 @@ class EditorToken < ApplicationRecord
   validate :allowed_ips_within_editor_range, if: :allowed_ips_changed?
 
   def allowed_ips_as_strings
-    allowed_ips.map { |ip| "#{ip}/#{ip.prefix}" }
+    allowed_ips.map { |ip| ip&.cidr }
   end
 
   def allowed_ips_text
@@ -20,6 +20,12 @@ class EditorToken < ApplicationRecord
   def allowed_ips_text=(value)
     @allowed_ips_text = value
     self.allowed_ips = value.to_s.split(/[\s,]+/).compact_blank
+  end
+
+  def allowed_ips=(value)
+    previous_cidrs = allowed_ips_as_strings
+    super
+    allowed_ips_will_change! if allowed_ips_as_strings != previous_cidrs
   end
 
   def revoke!
@@ -52,7 +58,7 @@ class EditorToken < ApplicationRecord
     return if ranges.empty?
 
     allowed_ips.reject { |token_ip| ranges.any? { |range| range.include?(token_ip) } }
-      .each { |token_ip| errors.add(:allowed_ips, :outside_editor_range, entry: "#{token_ip}/#{token_ip.prefix}") }
+      .each { |token_ip| errors.add(:allowed_ips, :outside_editor_range, entry: token_ip.cidr) }
   end
 
   def editor_ip_ranges
