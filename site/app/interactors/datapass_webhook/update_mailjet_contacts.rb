@@ -1,5 +1,7 @@
 class DatapassWebhook::UpdateMailjetContacts < ApplicationInteractor
   def call
+    return if authorization_request.editor_delegation_request?
+
     Mailjet::Contactslist_managemanycontacts.create(
       id: AdminApientreprise.credentials[:"mj_list_id_#{authorization_request.api}"],
       action: 'addnoforce',
