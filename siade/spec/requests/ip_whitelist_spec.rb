@@ -74,4 +74,30 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
       end
     end
   end
+
+  context 'when the request comes through the local reverse proxy' do
+    let(:proxy_env) { { 'REMOTE_ADDR' => '127.0.0.1' } }
+
+    before do
+      AuthorizationRequestSecuritySettings.create!(
+        authorization_request:,
+        allowed_ips: ['51.91.107.0/24']
+      )
+    end
+
+    it 'allows a client whose X-Forwarded-For address is whitelisted' do
+      get url, headers: headers_params.merge('X-Forwarded-For' => '51.91.107.163'), env: proxy_env
+
+      expect(response).to have_http_status(:unprocessable_content)
+    end
+
+    it 'ignores a client-supplied Forwarded header claiming a whitelisted address' do
+      get url,
+        headers: headers_params.merge('X-Forwarded-For' => '8.8.8.8', 'Forwarded' => 'for=51.91.107.163'),
+        env: proxy_env
+
+      expect(response).to have_http_status(:forbidden)
+      expect(response_json.dig(:errors, 0, :code)).to eq('00107')
+    end
+  end
 end
