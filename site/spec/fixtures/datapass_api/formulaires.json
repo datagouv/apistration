@@ -1,0 +1,22 @@
+[
+  {
+    "uid": "api-entreprise",
+    "name": "API Entreprise",
+    "description": "Accédez aux informations et aux documents administratifs des entreprises",
+    "use_case": null,
+    "prefilled?": false,
+    "data": ["cadre_juridique_nature", "cadre_juridique_url", "scopes"]
+  },
+  {
+    "uid": "api-entreprise-marches-publics",
+    "name": "API Entreprise - Marchés publics",
+    "description": "Formulaire spécialisé pour les marchés publics",
+    "use_case": "Marchés publics",
+    "prefilled?": true,
+    "data": {
+      "cadre_juridique_nature": "Marchés publics",
+      "cadre_juridique_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037703425/",
+      "scopes": ["entreprises", "etablissements"]
+    }
+  }
+]
