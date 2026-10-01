@@ -85,7 +85,7 @@ export class Client extends ClientBase {
   }
 
   async errors(options: { operationId?: string } = {}) {
-    return this.getPublic('/errors', { params: { operation_id: options.operationId } });
+    return this.getPublic('/v3/errors', { params: { operation_id: options.operationId } });
   }
 
   // <scaffold:fields:begin>
