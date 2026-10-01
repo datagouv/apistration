@@ -16,7 +16,7 @@ class DatapassFormulaire
 
   def self.all
     Rails.cache.fetch("datapass_formulaires/#{DEFINITION_ID}", expires_in: CACHE_DURATION) do
-      DatapassAPIClient.new.list_formulaires(DEFINITION_ID)
+      MockedDatapassAPIClient.new.list_formulaires(DEFINITION_ID)
     end
   end
 
