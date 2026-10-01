@@ -4,8 +4,8 @@ module DatapassAPIMocks
   end
 
   def stub_datapass_formulaires(formulaires = datapass_formulaires_payload)
-    allow(DatapassAPIClient).to receive(:new).and_return(
-      instance_double(DatapassAPIClient, list_formulaires: formulaires)
+    allow(MockedDatapassAPIClient).to receive(:new).and_return(
+      instance_double(MockedDatapassAPIClient, list_formulaires: formulaires)
     )
   end
 end

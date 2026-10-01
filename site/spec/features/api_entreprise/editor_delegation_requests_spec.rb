@@ -154,7 +154,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
     context 'when DataPass is unavailable' do
       before do
         editor_delegation_request.update!(data: attributes_for(:editor_delegation_request, :with_dpo)[:data])
-        allow(DatapassAPIClient).to receive(:new).and_return(instance_double(DatapassAPIClient).tap do |client|
+        allow(MockedDatapassAPIClient).to receive(:new).and_return(instance_double(MockedDatapassAPIClient).tap do |client|
           allow(client).to receive(:list_formulaires).and_raise(DatapassAPIClient::Error)
         end)
       end
