@@ -120,4 +120,99 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
       }.to change(UserAuthorizationRequestRole.where(role: 'contact_metier'), :count).by(1)
     end
   end
+
+  describe 'when the demande comes from an editor delegation request' do
+    include ActiveJob::TestHelper
+
+    subject { described_class.call(datapass_webhook_params) }
+
+    let(:editor) { create(:editor, form_uids: []) }
+    let(:editor_delegation_request) do
+      create(:editor_delegation_request, :with_authorization_request, siret: '21340172201787', editor_use_case: create(:editor_use_case, editor:))
+    end
+    let(:authorization_request) { editor_delegation_request.authorization_request }
+    let!(:delegation) { create(:editor_delegation, editor:, authorization_request:, created_via: 'editor_delegation_request') }
+
+    let(:datapass_webhook_params) do
+      build(
+        :datapass_webhook_v2,
+        event:,
+        data: build(
+          :datapass_webhook_data_v2,
+          state:,
+          form_uid: 'api-entreprise-marches-publics',
+          organization: build(:datapass_webhook_organization_v2, siret: '21340172201787')
+        )
+      )
+    end
+
+    before do
+      allow(Rails.application).to receive(:config_for).and_call_original
+      allow(Rails.application).to receive(:config_for).with('datapass_webhooks_entreprise').and_return(
+        Rails.application.config_for('datapass_webhooks_entreprise', env: 'production')
+      )
+    end
+
+    after { clear_enqueued_jobs }
+
+    context 'when DataPass sends the submission before its id is stored' do
+      let(:event) { 'submit' }
+      let(:state) { 'submitted' }
+
+      it 'updates the local authorization request, which keeps its delegation' do
+        expect { subject }.not_to change(AuthorizationRequest, :count)
+
+        expect(authorization_request.reload.external_id).to eq(datapass_webhook_params['model_id'].to_s)
+        expect(authorization_request.status).to eq('submitted')
+        expect(delegation.reload.revoked_at).to be_nil
+      end
+
+      it 'sends the dedicated mail' do
+        subject
+
+        expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.with(authorization_request.id, 'submitted', 'delegation_editeur_demande_recue', anything)
+      end
+    end
+
+    context 'when DataPass approves the demande' do
+      let(:event) { 'approve' }
+      let(:state) { 'validated' }
+
+      before { authorization_request.update!(external_id: datapass_webhook_params['model_id']) }
+
+      it 'validates the authorization request without any token, keeping the delegation' do
+        expect { subject }.not_to change(Token, :count)
+
+        expect(authorization_request.reload.validated_at).to be_present
+        expect(EditorDelegation.active.where(authorization_request:)).to contain_exactly(delegation)
+        expect(subject.token_id).to be_nil
+      end
+
+      it 'sends the dedicated mail' do
+        subject
+
+        expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.with(authorization_request.id, 'validated', 'delegation_editeur_demande_validee', anything)
+      end
+    end
+
+    context 'when DataPass refuses the demande' do
+      let(:event) { 'refuse' }
+      let(:state) { 'refused' }
+
+      before { authorization_request.update!(external_id: datapass_webhook_params['model_id']) }
+
+      it 'archives the authorization request, which revokes the delegation' do
+        subject
+
+        expect(authorization_request.reload).to be_archived
+        expect(delegation.reload.revoked_at).to be_present
+      end
+
+      it 'sends the dedicated mail' do
+        subject
+
+        expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.with(authorization_request.id, 'archived', 'delegation_editeur_demande_refusee', anything)
+      end
+    end
+  end
 end

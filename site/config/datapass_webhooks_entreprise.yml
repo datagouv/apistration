@@ -7,6 +7,10 @@ development: &development
   send_application: &send_application
     emails:
       - template: 'send_application'
+        condition_on_authorization: 'not_editor_delegation_request?'
+
+      - template: 'delegation_editeur_demande_recue'
+        condition_on_authorization: 'editor_delegation_request?'
 
   notify: &notify {}
   review_application: &review_application {}
@@ -23,11 +27,18 @@ development: &development
           - 'authorization_request.contact_technique'
           - 'authorization_request.demandeur'
 
+      - template: 'delegation_editeur_demande_refusee'
+        condition_on_authorization: 'editor_delegation_request?'
+
   approve: &approve
     emails:
       - template: 'embarquement_valide_to_editeur'
+        condition_on_authorization: 'not_editor_delegation_request?'
         to:
           - 'authorization_request.demandeur'
+
+      - template: 'delegation_editeur_demande_validee'
+        condition_on_authorization: 'editor_delegation_request?'
 
   create: {}
   update: *updated
@@ -46,7 +57,11 @@ production: &production
   send_application: &send_application
     emails:
       - template: 'demande_recue'
+        condition_on_authorization: 'not_editor_delegation_request?'
         on_update: true
+
+      - template: 'delegation_editeur_demande_recue'
+        condition_on_authorization: 'editor_delegation_request?'
 
   notify: &notify {}
   review_application: &review_application
@@ -57,10 +72,17 @@ production: &production
   refuse_application: &refuse_application
     emails:
       - template: 'embarquement_demande_refusee'
+        condition_on_authorization: 'not_editor_delegation_request?'
         on_update: true
+
+      - template: 'delegation_editeur_demande_refusee'
+        condition_on_authorization: 'editor_delegation_request?'
 
   approve: &approve
     emails:
+      - template: 'delegation_editeur_demande_validee'
+        condition_on_authorization: 'editor_delegation_request?'
+
       - template: 'embarquement_valide_to_editeur'
         condition_on_authorization: 'editor_authorization_request?'
         to:

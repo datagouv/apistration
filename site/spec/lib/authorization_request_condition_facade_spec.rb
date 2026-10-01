@@ -20,4 +20,29 @@ RSpec.describe AuthorizationRequestConditionFacade do
       end
     end
   end
+
+  describe 'editor delegation requests' do
+    let(:facade) { described_class.new(authorization_request) }
+    let(:authorization_request) { create(:authorization_request, :with_demandeur, demarche: 'api-entreprise-marches-publics') }
+
+    context 'when the authorization request comes from an editor delegation request' do
+      before { create(:editor_delegation_request, authorization_request:) }
+
+      it 'is only eligible to the editor delegation request mails' do
+        expect(facade).to be_editor_delegation_request
+        expect(facade).not_to be_not_editor_delegation_request
+        expect(facade).not_to be_editor_authorization_request
+        expect(facade).not_to be_not_editor_authorization_request
+        expect(facade).not_to be_not_editor_and_all_contacts_have_the_same_email
+      end
+    end
+
+    context 'when the authorization request does not come from an editor delegation request' do
+      it 'is not eligible to the editor delegation request mails' do
+        expect(facade).not_to be_editor_delegation_request
+        expect(facade).to be_not_editor_delegation_request
+        expect(facade).to be_not_editor_authorization_request
+      end
+    end
+  end
 end
