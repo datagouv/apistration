@@ -118,6 +118,36 @@ RSpec.describe JwtUser do
         expect(jwt_user.ip_allowed?('not_an_ip')).to be false
       end
     end
+
+    context 'with editor_token_allowed_ips only' do
+      let(:jwt_user) { described_class.new(**jwt_payload, editor_token_allowed_ips: ['192.168.1.0/24']) }
+
+      it 'returns true for an IP in the editor token list' do
+        expect(jwt_user.ip_allowed?('192.168.1.50')).to be true
+      end
+
+      it 'returns false for an IP outside the editor token list' do
+        expect(jwt_user.ip_allowed?('8.8.8.8')).to be false
+      end
+    end
+
+    context 'with both allowed_ips and editor_token_allowed_ips' do
+      let(:jwt_user) do
+        described_class.new(**jwt_payload, allowed_ips: ['10.0.0.0/24', '192.168.1.0/25'], editor_token_allowed_ips: ['192.168.1.0/24'])
+      end
+
+      it 'returns true for an IP in both lists' do
+        expect(jwt_user.ip_allowed?('192.168.1.50')).to be true
+      end
+
+      it 'returns false for an IP in the authorization request list only' do
+        expect(jwt_user.ip_allowed?('10.0.0.5')).to be false
+      end
+
+      it 'returns false for an IP in the editor token list only' do
+        expect(jwt_user.ip_allowed?('192.168.1.200')).to be false
+      end
+    end
   end
 
   describe '#editor?' do
@@ -252,6 +282,20 @@ RSpec.describe JwtUser do
       )
 
       expect(delegated.throttle_override_for('gip_mds')).to eq(200)
+    end
+
+    it 'keeps the editor token allowed IPs alongside those of the delegated authorization request' do
+      editor_user = described_class.new(**jwt_payload, editor_token_allowed_ips: ['192.168.1.0/24'])
+
+      delegated = editor_user.with_delegation(
+        authorization_request_id: 'ar-id',
+        scopes: %w[scope_1],
+        allowed_ips: ['10.0.0.0/24'],
+        rate_limit_per_minute: nil
+      )
+
+      expect(delegated.editor_token_allowed_ips).to eq(['192.168.1.0/24'])
+      expect(delegated.allowed_ips).to eq(['10.0.0.0/24'])
     end
   end
 end

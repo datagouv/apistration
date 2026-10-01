@@ -59,6 +59,7 @@ class JwtTokenService
     jwt_data[:blacklisted] = editor_token.blacklisted?
     jwt_data[:exp] = editor_token.exp
     jwt_data[:editor_id] = editor.id
+    jwt_data[:editor_token_allowed_ips] = editor_token.allowed_ips_as_strings
 
     jwt_data
   end

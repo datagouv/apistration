@@ -91,6 +91,7 @@ CREATE TABLE public.editor_tokens (
     iat integer,
     exp integer NOT NULL,
     blacklisted_at timestamp without time zone,
+    allowed_ips cidr[] DEFAULT '{}'::cidr[] NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
