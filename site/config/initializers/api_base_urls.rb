@@ -6,6 +6,8 @@ module APIEntreprise
              else
                'https://entreprise.api.gouv.fr'
              end
+
+  ERRORS_NOMENCLATURE_URL = "#{BASE_URL}/v3/errors".freeze
 end
 
 module APIParticulier
@@ -16,4 +18,6 @@ module APIParticulier
              else
                'https://particulier.api.gouv.fr'
              end
+
+  ERRORS_NOMENCLATURE_URL = "#{BASE_URL}/api/errors".freeze
 end

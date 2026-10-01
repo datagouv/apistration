@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Nomenclature des erreurs', api: :entreprise, type: %i[request swagger] do
-  path '/errors' do
+  path '/v3/errors' do
     get 'Nomenclature des codes erreurs' do
       tags 'Disponibilité'
       description "Retourne la nomenclature complète des codes erreurs : les préfixes fournisseurs, les sous-codes communs, les codes de la plateforme et, pour chaque opération, les erreurs qu'elle peut renvoyer groupées par statut HTTP.\n\nCet endpoint **ne nécessite pas d'authentification**."

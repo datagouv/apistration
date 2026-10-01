@@ -518,6 +518,7 @@ fr:
         title: "Erreurs"
         description_html: "Lorsque cette API ne peut pas retourner les informations demandées, elle renvoie un code erreur. Les erreurs communes à toutes les API (jeton, paramètres obligatoires, quotas) sont décrites dans la %{link} ; celles qui suivent sont celles que cet endpoint peut renvoyer, y compris les erreurs génériques de son fournisseur de données."
         nomenclature_link: "nomenclature des codes erreurs"
+        json_html: "Cette liste est aussi servie au format JSON, sans jeton, sur %{link}."
         code: "Code"
         meaning: "Signification"
         retry_in: "Réessayez dans %{seconds} secondes."

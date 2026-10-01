@@ -167,6 +167,10 @@ class AbstractEndpoint
     @provider_errors ||= errors_nomenclature.errors_for(operation_id)
   end
 
+  def errors_nomenclature_url
+    "#{Kernel.const_get(api.classify)::ERRORS_NOMENCLATURE_URL}?operation_id=#{operation_id}"
+  end
+
   def france_connect_provider_errors
     @france_connect_provider_errors ||= errors_only_in(sibling_operation_id('france_connect'))
   end

@@ -140,11 +140,16 @@ dans la nomenclature.
 
 | Surface | Contenu |
 | --- | --- |
-| `GET /errors` (API Entreprise), `GET /api/errors` (API Particulier) | la nomenclature complète, sans jeton, cache public d'une heure ; `?operation_id=` restreint `endpoints` à une opération, 404 si elle est inconnue |
-| swagger | un exemple par statut, et un lien vers `/errors?operation_id=…` et la fiche |
+| `GET /v3/errors` (API Entreprise), `GET /api/errors` (API Particulier) | la nomenclature complète, sans jeton, cache public d'une heure ; `?operation_id=` restreint `endpoints` à une opération, 404 si elle est inconnue |
+| swagger | un exemple par statut, et un lien vers `/v3/errors?operation_id=…` (`/api/errors` sur Particulier) et la fiche |
 | fiches du site | section « Erreurs » de chaque endpoint, groupée par statut, avec un bloc dédié aux erreurs FranceConnect |
 | page développeurs | format `XXYYY`, préfixes fournisseurs, sous-codes communs, codes plateforme |
 | SDKs Ruby et Node | méthode `errors(operation_id:)` (`clients/SPECS.md` §9.6) |
+
+La nomenclature n'est pas versionnée, mais la route Entreprise vit sous
+`/v3` : sur `entreprise.api.gouv.fr`, nginx n'envoie à siade que `/v3/*`
+et quelques chemins historiques, le reste (`/errors`, `/api/*`) part vers
+le site.
 
 ## Garde-fous
 
@@ -158,7 +163,7 @@ plus que les swaggers commités sont ceux que la génération produit.
 | `spec/acceptances/errors_nomenclature_platform_coverage_spec.rb` | une erreur rendue par Rack ou par un contrôleur v3+ routé (et ses ancêtres) n'est ni un code plateforme, ni une erreur des opérations du contrôleur |
 | `spec/acceptances/errors_nomenclature_layers_coverage_spec.rb` | une classe atteinte par la nomenclature, ou une couche dont elle hérite (`RetrieverOrganizer`, `MakeRequest`…), référence une erreur ni déclarée sur elle ou sa chaîne, ni dans la baseline ; une sous-classe ne compte comme documentée que si elle figure dans la table explicite `renders_as`, vérifiée fournisseur par fournisseur |
 | `spec/acceptances/errors_nomenclature_delegations_spec.rb` | une classe atteinte par la nomenclature référence un intéracteur, un organizer ou un retriever porteur d'erreurs qu'elle n'organise pas, dont elle n'hérite pas, et qu'elle ne déclare ni avec `delegates_to` ni avec `absorbs_errors_of` |
-| `spec/acceptances/errors_nomenclature_declarations_spec.rb` | un contrôleur v3+ routé n'a pas de déclaration, déclare un autre organizer que celui qu'il exécute, sort de la nomenclature hors de la liste explicite, ou une route v3+ (`/v:api_version/`, `/v4/…`, `/api/v3/…`) est servie hors du namespace `v3_and_more` |
+| `spec/acceptances/errors_nomenclature_declarations_spec.rb` | un contrôleur v3+ routé n'a pas de déclaration, déclare un autre organizer que celui qu'il exécute, sort de la nomenclature hors de la liste explicite, ou une route v3+ (`/v:api_version/`, `/v4/…`, `/api/v3/…`) est servie hors du namespace `v3_and_more`, hormis le ping et la nomenclature, listés explicitement |
 | `spec/acceptances/error_codes_unicity_spec.rb` | un code a deux sens |
 | `spec/acceptances/errors_nomenclature_conformity_spec.rb` | un préfixe n'est pas attribué, une déclaration ne sait pas construire son erreur, une erreur `00` est déclarée sur un `ValidateResponse` |
 | `spec/acceptances/errors_nomenclature_freshness_spec.rb` | `commons/data/errors_*.yml` n'est pas celui que le code produit |

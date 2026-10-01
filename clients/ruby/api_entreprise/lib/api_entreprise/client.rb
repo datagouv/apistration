@@ -72,7 +72,7 @@ module ApiEntreprise
     end
 
     def errors(operation_id: nil)
-      get_public('/errors', params: { operation_id: operation_id })
+      get_public('/v3/errors', params: { operation_id: operation_id })
     end
 
     # <scaffold:resources:begin>

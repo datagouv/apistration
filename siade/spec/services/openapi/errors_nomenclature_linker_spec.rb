@@ -28,7 +28,7 @@ RSpec.describe Openapi::ErrorsNomenclatureLinker do
     link
 
     expect(not_found_description).to start_with('Établissement non trouvé')
-    expect(not_found_description).to include("https://entreprise.api.gouv.fr/errors?operation_id=#{operation_id}")
+    expect(not_found_description).to include("https://entreprise.api.gouv.fr/v3/errors?operation_id=#{operation_id}")
   end
 
   it 'leaves the 200 response untouched' do

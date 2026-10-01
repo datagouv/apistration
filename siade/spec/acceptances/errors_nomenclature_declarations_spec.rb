@@ -1,4 +1,6 @@
 RSpec.describe 'Errors nomenclature declarations', type: :acceptance do
+  let(:unversioned_controllers_under_v3) { %w[ping api_entreprise/errors_nomenclature] }
+
   let(:routed_controllers) do
     Rails.application.routes.routes.filter_map { |route|
       controller = route.defaults[:controller]
@@ -16,7 +18,7 @@ RSpec.describe 'Errors nomenclature declarations', type: :acceptance do
     outside = Rails.application.routes.routes.filter_map { |route|
       controller = route.defaults[:controller].to_s
       next unless versioned_v3_and_more_path?(route.path.spec.to_s)
-      next if controller.empty? || controller.include?('v3_and_more') || controller == 'ping'
+      next if controller.empty? || controller.include?('v3_and_more') || unversioned_controllers_under_v3.include?(controller)
 
       "#{route.path.spec} -> #{controller}"
     }.uniq

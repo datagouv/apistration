@@ -223,13 +223,13 @@ describe('ApiEntreprise Client', () => {
       expect(url).toContain('/ping/insee/sirene');
     });
 
-    it('errors() calls /errors', async () => {
+    it('errors() calls /v3/errors', async () => {
       const fetchMock = mockFetch(200, {});
       globalThis.fetch = fetchMock;
       const client = makeClient();
       await client.errors();
       const [url] = fetchMock.mock.calls[0];
-      expect(url).toContain('/errors');
+      expect(url).toContain('/v3/errors');
     });
 
     it('errors() narrows the nomenclature to one operation', async () => {
@@ -238,7 +238,7 @@ describe('ApiEntreprise Client', () => {
       const client = makeClient();
       await client.errors({ operationId: 'api_entreprise_v3_insee_unites_legales' });
       const [url] = fetchMock.mock.calls[0];
-      expect(url).toContain('operation_id=api_entreprise_v3_insee_unites_legales');
+      expect(url).toContain('/v3/errors?operation_id=api_entreprise_v3_insee_unites_legales');
     });
   });
 

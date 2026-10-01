@@ -476,7 +476,7 @@ under a resource module):
 | `ping` | `GET /v3/ping` | `GET /api/ping` |
 | `pings` | `GET /pings` | `GET /api/pings` |
 | `ping_provider(provider)` | `GET /ping/{provider}` | `GET /api/{provider}/ping` |
-| `errors(operation_id: nil)` | `GET /errors` | `GET /api/errors` |
+| `errors(operation_id: nil)` | `GET /v3/errors` | `GET /api/errors` |
 
 `errors` returns the error nomenclature of the API: the two-digit prefix of
 every data provider, the subcodes shared across providers, the platform codes

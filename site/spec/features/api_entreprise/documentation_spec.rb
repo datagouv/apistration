@@ -31,7 +31,7 @@ RSpec.describe 'Documentation pages', app: :api_entreprise do
       expect(page).to have_css('#nomenclature-sous-codes-generiques')
       expect(page).to have_css('#nomenclature-codes-plateforme')
 
-      expect(page).to have_link(href: "#{APIEntreprise::BASE_URL}/errors")
+      expect(page).to have_link(href: "#{APIEntreprise::BASE_URL}/v3/errors")
       expect(page).to have_text('ACOSS')
       expect(page).to have_text('Service non disponible')
       expect(page).to have_text('00429')
