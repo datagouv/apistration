@@ -184,7 +184,7 @@ fr:
 
                   Un code erreur s'écrit `XXYYY` : `XX` désigne **le fournisseur de données qui a rendu le verdict**, `YYY` **la nature de l'erreur**. Le préfixe `00` signifie qu'aucun fournisseur n'a été interrogé : l'erreur a été décidée par API&nbsp;Entreprise seule.
 
-                  La nomenclature complète est servie par l'API elle-même, sans authentification, sur [<%= APIEntreprise::BASE_URL %>/errors](<%= APIEntreprise::BASE_URL %>/errors){:target="_blank"}. Les erreurs propres à un endpoint sont listées dans la section «&nbsp;Erreurs&nbsp;» de sa fiche, et le paramètre `operation_id` restreint la réponse à une seule opération, par exemple [<%= APIEntreprise::BASE_URL %>/errors?operation_id=api_entreprise_v3_insee_unites_legales](<%= APIEntreprise::BASE_URL %>/errors?operation_id=api_entreprise_v3_insee_unites_legales){:target="_blank"}.
+                  La nomenclature complète est servie par l'API elle-même, sans authentification, sur [<%= APIEntreprise::BASE_URL %>/v3/errors](<%= APIEntreprise::BASE_URL %>/v3/errors){:target="_blank"}. Les erreurs propres à un endpoint sont listées dans la section «&nbsp;Erreurs&nbsp;» de sa fiche, et le paramètre `operation_id` restreint la réponse à une seule opération, par exemple [<%= APIEntreprise::BASE_URL %>/v3/errors?operation_id=api_entreprise_v3_insee_unites_legales](<%= APIEntreprise::BASE_URL %>/v3/errors?operation_id=api_entreprise_v3_insee_unites_legales){:target="_blank"}.
 
                 partial: shared/documentation/errors_nomenclature
 
