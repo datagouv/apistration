@@ -151,6 +151,35 @@ RSpec.describe EditorToken do
         expect(editor_token.ip_allowed?('not-an-ip')).to be false
       end
     end
+
+    context 'when the editor has a declared IP range' do
+      let(:editor) { create(:editor, allowed_ips: ['51.91.107.0/24']) }
+
+      it 'denies an IP outside the editor range when the token has no allowed IPs' do
+        editor_token = build(:editor_token, editor:, allowed_ips: [])
+
+        expect(editor_token.ip_allowed?('8.8.8.8')).to be false
+      end
+
+      it 'allows an IP inside the editor range when the token has no allowed IPs' do
+        editor_token = build(:editor_token, editor:, allowed_ips: [])
+
+        expect(editor_token.ip_allowed?('51.91.107.163')).to be true
+      end
+
+      it 'denies an IP inside the editor range but outside the token list' do
+        editor_token = build(:editor_token, editor:, allowed_ips: ['51.91.107.0/25'])
+
+        expect(editor_token.ip_allowed?('51.91.107.200')).to be false
+      end
+
+      it 'denies every IP when the stored editor range holds only unparsable entries' do
+        editor.update_column(:allowed_ips, ['not-an-ip'])
+        editor_token = build(:editor_token, editor:, allowed_ips: ['8.8.8.8'])
+
+        expect(editor_token.ip_allowed?('8.8.8.8')).to be false
+      end
+    end
   end
 
   describe '#expired?' do

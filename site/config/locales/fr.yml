@@ -576,10 +576,10 @@ fr:
       edit:
         title: Modifier les IPs autorisées
         label: IPs autorisées
-        hint: "Une IP ou plage CIDR par ligne (10 maximum, préfixe IPv4 minimum : /24). Liste vide : aucune restriction."
+        hint: "Une IP ou plage CIDR par ligne (10 maximum, préfixe IPv4 minimum : /24). Liste vide : le jeton n'ajoute aucune restriction à la plage IP de votre organisation."
         submit: Enregistrer
       errors:
-        invalid_allowed_ips: "Impossible de générer le jeton : les IPs autorisées de votre organisation sont invalides. Contactez le support."
+        invalid_allowed_ips: "Impossible de générer le jeton : ses IPs autorisées sont invalides."
       created:
         warning_title: Copiez ce jeton maintenant
         warning: Ce jeton ne pourra plus être affiché. Si vous le perdez, révoquez-le et générez-en un nouveau.

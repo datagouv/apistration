@@ -95,7 +95,6 @@ class Seeds
       domain: 'mgdis.fr',
       languages: 'Java',
       description: 'Éditeur de solutions de gestion financière pour le secteur public',
-      allowed_ips: ['192.0.2.10', '192.0.2.11', '198.51.100.5'],
       setup_instructions: "1. Se connecter au portail MGDIS\n2. Administration > Connecteurs API\n3. Renseigner le jeton API Entreprise"
     )
     create_user(
