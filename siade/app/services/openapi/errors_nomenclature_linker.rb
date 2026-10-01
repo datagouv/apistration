@@ -5,7 +5,7 @@ class Openapi::ErrorsNomenclatureLinker
     particulier: 'https://particulier.api.gouv.fr'
   }.freeze
   ERRORS_PATHS = {
-    entreprise: '/errors',
+    entreprise: '/v3/errors',
     particulier: '/api/errors'
   }.freeze
 
