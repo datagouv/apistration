@@ -1,0 +1,63 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: 'Vérifiez votre demande' %>
+
+    <%= render 'organization' %>
+
+    <%= render layout: 'section', locals: { title: 'Le projet' } do %>
+      <%= render 'value', label: 'Nom du projet', value: @datapass_data['intitule'] %>
+      <%= render 'value', label: 'Description du projet', value: @datapass_data['description'] %>
+      <%= render 'value', label: 'Destinataires des données', value: @datapass_data['destinataire_donnees_caractere_personnel'] %>
+      <%= render 'value', label: 'Durée de conservation des données en mois', value: @datapass_data['duree_conservation_donnees_caractere_personnel'] %>
+    <% end %>
+
+    <%= render layout: 'section', locals: { title: 'Le cadre juridique' } do %>
+      <%= render 'value', label: 'Nature et références du texte vous autorisant à traiter les données', value: @datapass_data['cadre_juridique_nature'] %>
+      <% if @datapass_data['cadre_juridique_url'].present? %>
+        <p class="fr-text--bold fr-mb-1v">Lien relatif au traitement</p>
+        <p><%= link_to @datapass_data['cadre_juridique_url'], @datapass_data['cadre_juridique_url'], target: '_blank', rel: 'noopener' %></p>
+      <% end %>
+    <% end %>
+
+    <%= render layout: 'section', locals: { title: 'Les données' } do %>
+      <ul>
+        <% DatapassScopes.normalize(Array(@datapass_data['scopes'])).each do |scope| %>
+          <li><%= t("api_entreprise.tokens.token.scope.#{scope}.label", default: scope) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= render layout: 'section', locals: { title: 'Les personnes impliquées' } do %>
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <%= render 'contact', kind: 'delegue_protection_donnees', label: 'Délégué à la protection des données' %>
+        <%= render 'contact', kind: 'contact_metier', label: 'Contact métier' %>
+        <%= render 'contact', kind: 'contact_technique', label: 'Contact technique' %>
+      </div>
+      <p class="fr-mt-2w"><%= link_to 'Modifier le délégué à la protection des données', editor_delegation_request_data_protection_officer_path, class: 'fr-link' %></p>
+    <% end %>
+
+    <%= form_with(url: editor_delegation_request_submission_path, method: :post) do |f| %>
+      <% { terms_of_service_accepted: "J'ai pris connaissance des #{link_to('conditions générales d’utilisation', cgu_path, target: '_blank', rel: 'noopener')} et je les valide.",
+           data_protection_officer_informed: 'Je confirme que le délégué à la protection des données de mon organisation est informé de ma demande.' }.each do |attribute, label| %>
+        <% errors = @editor_delegation_request.errors[attribute] %>
+        <div class="fr-checkbox-group fr-mb-2w <%= 'fr-checkbox-group--error' if errors.any? %>">
+          <%= f.check_box attribute, { id: attribute, checked: @editor_delegation_request.public_send(attribute) }, '1', '0' %>
+          <%= f.label attribute, tag.span(sanitize(label, tags: %w[a], attributes: %w[href target rel])), for: attribute, class: 'fr-label' %>
+          <% if errors.any? %>
+            <p class="fr-error-text">Vous devez cocher cette case pour soumettre la demande.</p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <p class="fr-text--sm">
+        En soumettant, vous acceptez que votre identité ProConnect, la date et l'heure soient consignées comme preuve de
+        votre accord.
+      </p>
+
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li><%= link_to 'Revenir', editor_delegation_request_data_protection_officer_path, class: %w(fr-btn fr-btn--secondary) %></li>
+        <li><%= f.button 'Soumettre la demande', class: 'fr-btn' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
