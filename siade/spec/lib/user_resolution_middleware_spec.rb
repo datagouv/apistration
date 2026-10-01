@@ -63,6 +63,34 @@ RSpec.describe UserResolutionMiddleware do
     end
   end
 
+  context 'with a token in a JSON body' do
+    let(:env) { Rack::MockRequest.env_for('/', input: { token: yes_jwt }.to_json, 'CONTENT_TYPE' => 'application/json') }
+
+    it 'resolves the user from the body, as controllers params would' do
+      expect(call.last.first).to be_a(JwtUser)
+    end
+  end
+
+  context 'with a token in both the query string and the body' do
+    let(:env) do
+      Rack::MockRequest.env_for("/?token=#{yes_jwt}", method: 'POST', input: 'token=another.token', 'CONTENT_TYPE' => 'application/x-www-form-urlencoded')
+    end
+
+    it 'gives precedence to the query string, as controllers params would' do
+      call
+
+      expect(env[described_class::TOKEN_ENV_KEY]).to eq(yes_jwt)
+    end
+  end
+
+  context 'with a body which cannot be parsed' do
+    let(:env) { Rack::MockRequest.env_for('/', input: '{not json', 'CONTENT_TYPE' => 'application/json', 'HTTP_X_API_KEY' => yes_jwt) }
+
+    it 'still resolves the user from the headers' do
+      expect(call.last.first).to be_a(JwtUser)
+    end
+  end
+
   context 'when the request has already been resolved' do
     let(:token) { yes_jwt }
 

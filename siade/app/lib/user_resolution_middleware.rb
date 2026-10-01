@@ -64,7 +64,7 @@ class UserResolutionMiddleware
   end
 
   def resolve_editor(user, env)
-    resolver = EditorDelegationResolver.new(user, Rack::Request.new(env).params)
+    resolver = EditorDelegationResolver.new(user, request_params(env))
     resolver.resolve
 
     env[USER_ENV_KEY] = resolver.enriched_user
@@ -76,7 +76,7 @@ class UserResolutionMiddleware
     [
       extract_bearer_token(env),
       env['HTTP_X_API_KEY'],
-      extract_query_param_token(env)
+      request_params(env)['token']
     ].compact_blank.map(&:to_s).uniq
   end
 
@@ -88,7 +88,10 @@ class UserResolutionMiddleware
     match[1] if match
   end
 
-  def extract_query_param_token(env)
-    Rack::Request.new(env).GET['token']
+  def request_params(env)
+    request = ActionDispatch::Request.new(env)
+    request.request_parameters.merge(request.query_parameters)
+  rescue ActionDispatch::Http::Parameters::ParseError, ActionController::BadRequest
+    {}
   end
 end
