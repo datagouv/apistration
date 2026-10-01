@@ -1,6 +1,6 @@
 # Check https://github.com/betagouv/signup-back/tree/master/docs/webhooks.md for all events and their details
 ---
-development: &development
+test:
   created: {}
   updated: &updated {}
   team_member_updated: &team_member_updated {}
@@ -47,8 +47,6 @@ development: &development
   request_changes: *review_application
   refuse: *refuse_application
   validate: *approve
-
-test: *development
 
 production: &production
   created: {}
@@ -154,5 +152,6 @@ production: &production
   refuse: *refuse_application
   validate: *approve
 
+development: *production
 sandbox: *production
 staging: *production

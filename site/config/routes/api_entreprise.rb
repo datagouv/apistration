@@ -39,6 +39,7 @@ constraints(APIEntrepriseDomainConstraint.new) do
       patch '/delegue-protection-donnees', action: :update
       get '/verification', action: :summary, as: :summary
       post '/soumission', action: :submit, as: :submission
+      post '/simulation/:event', action: :simulate_datapass_webhook, as: :datapass_webhook_simulation, constraints: { event: Regexp.union(SimulatedDatapassWebhook::EVENTS) }
     end
 
     get '/compte/telecharcher-documents', to: 'download_attestations#new', as: :attestations

@@ -1,7 +1,8 @@
 class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseController
   before_action :load_editor_delegation_request
-  before_action :redirect_to_show, if: -> { @editor_delegation_request.submitted? }, except: :show
-  before_action :redirect_to_show, unless: :agent_of_the_organization?, except: :show
+  before_action :redirect_to_show, if: -> { @editor_delegation_request.submitted? }, except: %i[show simulate_datapass_webhook]
+  before_action :redirect_to_show, unless: :agent_of_the_organization?, except: %i[show simulate_datapass_webhook]
+  before_action :ensure_datapass_webhook_simulation_allowed!, only: :simulate_datapass_webhook
 
   rescue_from DatapassAPIClient::Error, DatapassFormulaire::NotFound, with: :datapass_unavailable
 
@@ -49,7 +50,23 @@ class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseControlle
     end
   end
 
+  def simulate_datapass_webhook
+    result = DatapassWebhook::V2::APIEntreprise.call(**SimulatedDatapassWebhook.new(@editor_delegation_request, params[:event]).payload)
+
+    if result.success?
+      success_message(title: "Webhook DataPass « #{params[:event]} » simulé")
+    else
+      error_message(title: "Échec du webhook DataPass « #{params[:event]} » simulé", description: result.message)
+    end
+
+    redirect_to editor_delegation_request_path
+  end
+
   private
+
+  def ensure_datapass_webhook_simulation_allowed!
+    raise ActionController::RoutingError, 'Not Found' if Rails.env.production? || !@editor_delegation_request.submitted?
+  end
 
   def load_editor_delegation_request
     @editor_delegation_request = EditorDelegationRequest.find_by_token_for(:invitation, params[:token])
