@@ -177,4 +177,58 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       expect(page).to have_no_button('login_pro_connect')
     end
   end
+
+  describe 'DataPass webhooks simulation' do
+    include ActiveJob::TestHelper
+
+    let(:editor_delegation_request) { create(:editor_delegation_request, :submitted, :with_authorization_request, editor_use_case:) }
+    let(:authorization_request) { editor_delegation_request.authorization_request }
+    let!(:delegation) { create(:editor_delegation, editor:, authorization_request:, created_via: 'editor_delegation_request') }
+
+    before do
+      allow(UpdateOrganizationINSEEPayloadJob).to receive(:perform_later)
+      allow(Rails.application).to receive(:config_for).and_call_original
+      allow(Rails.application).to receive(:config_for).with('datapass_webhooks_entreprise').and_return(
+        Rails.application.config_for('datapass_webhooks_entreprise', env: 'production')
+      )
+    end
+
+    after { clear_enqueued_jobs }
+
+    it 'runs the real webhooks on the request, outside of production' do
+      visit editor_delegation_request.invitation_path
+
+      click_on 'Simuler submit'
+
+      expect(authorization_request.reload.external_id).to be_present
+      expect(authorization_request.status).to eq('submitted')
+
+      click_on 'Simuler approve'
+
+      expect(authorization_request.reload.validated_at).to be_present
+      expect(delegation.reload.revoked_at).to be_nil
+      expect(AuthorizationRequest.count).to eq(1)
+    end
+
+    it 'cuts the access through the editor on refusal' do
+      visit editor_delegation_request.invitation_path
+
+      click_on 'Simuler submit'
+      click_on 'Simuler refuse'
+
+      expect(authorization_request.reload).to be_archived
+      expect(delegation.reload.revoked_at).to be_present
+    end
+
+    context 'when in production' do
+      before { allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new('production')) }
+
+      it 'offers no simulation' do
+        visit editor_delegation_request.invitation_path
+
+        expect(page).to have_text('Votre demande d’habilitation est soumise')
+        expect(page).to have_no_button('Simuler submit')
+      end
+    end
+  end
 end

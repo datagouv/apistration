@@ -28,5 +28,9 @@
         <% end %>
       </ul>
     <% end %>
+
+    <% unless Rails.env.production? %>
+      <%= render 'datapass_webhook_simulation' %>
+    <% end %>
   </div>
 </div>
