@@ -1,4 +1,10 @@
 - date: 2026-10-01
+  scope: both
+  title: "Jetons éditeurs : les IPs autorisées sont désormais appliquées"
+  description: |
+    Les IPs autorisées des jetons éditeurs sont désormais vérifiées : celles renseignées sur le jeton depuis l'espace éditeur, et la plage IP déclarée pour l'éditeur, visible dans ses paramètres. Un appel depuis une autre adresse est refusé avec une erreur `403` (code `00107` sur les API métier). Lorsque plusieurs listes s'appliquent (jeton, plage de l'éditeur, habilitation déléguée), l'appel doit provenir d'une adresse autorisée par chacune ; un jeton sans IP autorisée reste soumis aux deux autres. Sur les API métier, une modification de ces listes peut mettre jusqu'à une heure à s'appliquer.
+
+- date: 2026-10-01
   scope: api_entreprise
   title: "Nomenclature des codes erreurs : une route publique et les erreurs sur chaque fiche"
   description: |

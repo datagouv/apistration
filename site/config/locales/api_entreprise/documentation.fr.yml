@@ -509,6 +509,7 @@ fr:
                   | `recipient` absent ou SIRET invalide | `422` — paramètre invalide. |
                   | Plusieurs délégations actives sur le `recipient`, sans `delegation_id` | `422` — délégation ambiguë (code `00212`)&nbsp;: précisez `delegation_id`. |
                   | Délégation absente, `delegation_id` inconnu, invalide ou révoqué, ou accès non autorisé | `401`&nbsp;/&nbsp;`403` — réponse volontairement opaque. |
+                  | Appel depuis une adresse IP hors des IPs autorisées du jeton, de la plage IP de l'éditeur ou de l'habilitation déléguée | `403` — IP non autorisée (code `00107`). Chaque liste non vide doit autoriser l'adresse. |
 
                   {:.fr-highlight}
                   > 🔒 Par choix de sécurité, les cas «&nbsp;délégation manquante&nbsp;», «&nbsp;`delegation_id` invalide ou révoqué&nbsp;» et «&nbsp;accès non autorisé&nbsp;» renvoient une **réponse 401&nbsp;/&nbsp;403 indifférenciée**&nbsp;: l'API ne révèle jamais l'existence d'une délégation à un appelant qui n'y a pas droit.
