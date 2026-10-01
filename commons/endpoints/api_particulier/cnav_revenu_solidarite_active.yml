@@ -26,6 +26,11 @@ fiche:
         Les données sont **mises à jour en temps réel** et issues du répertoire national commun de la protection sociale (RNCPS) opéré par la CNAV (Caisse nationale d’assurance vieillesse). Les données du répertoire sont remontées directement par les différents organismes comme la CNAF pour les assurés du régime général et la MSA pour les assurés au régime agricole.
     parameters_details:
       description: |+
+        **L'API est appelable avec l'identité de l'allocataire principal ou avec celle d'une personne composant son foyer** (conjoint, enfants et autres ayants droit).
+
+        {:.fr-highlight.fr-highlight--caution}
+        > ⚠️ Les enfants en garde partagée (résidence alternée) ne sont pas couverts&nbsp;: l'API ne peut pas être appelée avec leur identité.
+
         Cette API propose deux modalités d'appel :
         <p class="fr-badge fr-badge--blue-ecume">![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="20px"} FranceConnect</p>
         **Avec la [modalité d'appel FranceConnect](<%= cas_usage_path('modalite_appel_france_connect') %>)**.

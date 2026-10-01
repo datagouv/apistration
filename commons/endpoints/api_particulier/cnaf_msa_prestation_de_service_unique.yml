@@ -68,8 +68,10 @@ fiche:
 
     parameters_details:
       description: |+
-        **L'API est uniquement appelable avec les informations de l'allocataire**.
-        Il n'est pas possible d'interroger cette API avec les informations des ayants droit.
+        **L'API est appelable avec l'identité de l'allocataire principal ou avec celle d'une personne composant son foyer** (conjoint, enfants et autres ayants droit).
+
+        {:.fr-highlight.fr-highlight--caution}
+        > ⚠️ Les enfants en garde partagée (résidence alternée) ne sont pas couverts&nbsp;: l'API ne peut pas être appelée avec leur identité.
 
         Deux modalités d'appel sont possibles&nbsp;:
 
