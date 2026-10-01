@@ -109,7 +109,7 @@ RSpec.describe JwtTokenService do
       context 'when it is an editor token' do
         let(:editor_token) do
           EditorToken.create!(
-            editor: Editor.create!(name: 'Test Editor'),
+            editor: Editor.create!(name: 'Test Editor', allowed_ips: ['1.2.3.0/24']),
             exp: 1.year.from_now.to_i,
             allowed_ips: ['1.2.3.0/24', '5.6.7.8']
           )
@@ -117,6 +117,7 @@ RSpec.describe JwtTokenService do
         let(:jwt) { TokenFactory.new([]).editor_valid(uid: editor_token.id) }
 
         its(:editor_token_allowed_ips) { is_expected.to eq(['1.2.3.0/24', '5.6.7.8/32']) }
+        its(:editor_allowed_ips) { is_expected.to eq(['1.2.3.0/24']) }
       end
     end
 

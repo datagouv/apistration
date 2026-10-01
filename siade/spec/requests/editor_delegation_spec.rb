@@ -5,7 +5,13 @@ RSpec.describe 'Editor delegation', api: :entreprise do
     url_for(options.merge(_recall: {}))
   end
 
-  let(:editor) { Editor.create!(name: 'Test Editor') }
+  def expect_ip_denied
+    expect(response).to have_http_status(:forbidden)
+    expect(response_json.dig(:errors, 0, :code)).to eq('00107')
+  end
+
+  let(:editor_allowed_ips) { [] }
+  let(:editor) { Editor.create!(name: 'Test Editor', allowed_ips: editor_allowed_ips) }
   let(:recipient_siret) { '13002526500013' }
   let(:authorization_request) { AuthorizationRequest.create!(siret: recipient_siret, scopes: Scope.all) }
   let(:editor_token_allowed_ips) { [] }
@@ -211,15 +217,13 @@ RSpec.describe 'Editor delegation', api: :entreprise do
     it 'denies a request coming from another IP with error 00107' do
       get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' }
 
-      expect(response).to have_http_status(:forbidden)
-      expect(response_json.dig(:errors, 0, :code)).to eq('00107')
+      expect_ip_denied
     end
 
     it 'denies a request from another IP even without a recipient to delegate to' do
       get url, params: params.except(:recipient), headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' }
 
-      expect(response).to have_http_status(:forbidden)
-      expect(response_json.dig(:errors, 0, :code)).to eq('00107')
+      expect_ip_denied
     end
 
     context 'when the delegated authorization request has its own allowed IPs' do
@@ -239,15 +243,43 @@ RSpec.describe 'Editor delegation', api: :entreprise do
       it 'denies a request coming from an IP allowed by the authorization request only' do
         get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '10.0.0.5' }
 
-        expect(response).to have_http_status(:forbidden)
-        expect(response_json.dig(:errors, 0, :code)).to eq('00107')
+        expect_ip_denied
       end
 
       it 'denies a request coming from an IP allowed by the editor token only' do
         get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.200' }
 
-        expect(response).to have_http_status(:forbidden)
-        expect(response_json.dig(:errors, 0, :code)).to eq('00107')
+        expect_ip_denied
+      end
+    end
+  end
+
+  context 'when the editor has a declared IP range' do
+    let(:editor_allowed_ips) { ['192.168.1.0/24'] }
+
+    before do
+      EditorDelegation.create!(editor:, authorization_request:)
+    end
+
+    it 'allows a request coming from the editor range' do
+      get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.50' }
+
+      expect(response).to have_http_status(:unprocessable_content)
+    end
+
+    it 'denies a request from outside the editor range even when the token has no allowed IPs' do
+      get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' }
+
+      expect_ip_denied
+    end
+
+    context 'when the editor token narrows the range' do
+      let(:editor_token_allowed_ips) { ['192.168.1.0/25'] }
+
+      it 'denies a request from the editor range but outside the token list' do
+        get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.200' }
+
+        expect_ip_denied
       end
     end
   end

@@ -19,7 +19,7 @@ La résolution est effectuée par `UserResolutionMiddleware` via `EditorDelegati
 
 1. Le middleware décode le JWT et détecte un jeton éditeur (`editor` claim).
 2. Si `recipient` est présent, `EditorDelegationResolver` cherche les délégations actives de l'éditeur dont l'`authorization_request.siret` correspond.
-3. Le user est enrichi avec les scopes, `allowed_ips` et `rate_limit_per_minute` de l'habilitation résolue. Les `allowed_ips` du jeton éditeur (`editor_token_allowed_ips`) sont conservées à côté : une requête doit satisfaire les deux listes non vides, sinon 403 (code 00107), délégation résolue ou non.
+3. Le user est enrichi avec les scopes, `allowed_ips` et `rate_limit_per_minute` de l'habilitation résolue. Les `allowed_ips` du jeton éditeur (`editor_token_allowed_ips`) et la plage déclarée de l'éditeur (`editor_allowed_ips`) sont conservées à côté : une requête doit satisfaire chacune des trois listes non vides, sinon 403 (code 00107), délégation résolue ou non.
 4. Le controller (`HandleEditorDelegation`) valide que la délégation existe et gère les erreurs.
 
 ### Réponses possibles

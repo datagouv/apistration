@@ -1,6 +1,6 @@
 class JwtUser
   attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp,
-    :rate_limit_per_minute, :allowed_ips, :editor_token_allowed_ips, :editor_id,
+    :rate_limit_per_minute, :allowed_ips, :editor_token_allowed_ips, :editor_allowed_ips, :editor_id,
     :authorization_request_id, :throttle_overrides
 
   def self.debugger_id
@@ -12,8 +12,8 @@ class JwtUser
   end
 
   def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false,
-                 rate_limit_per_minute: nil, allowed_ips: nil, editor_token_allowed_ips: nil, editor_id: nil,
-                 authorization_request_id: nil, throttle_overrides: nil)
+                 rate_limit_per_minute: nil, allowed_ips: nil, editor_token_allowed_ips: nil, editor_allowed_ips: nil,
+                 editor_id: nil, authorization_request_id: nil, throttle_overrides: nil)
     @id = uid
     @scopes = scopes
     @jti = jti
@@ -25,6 +25,7 @@ class JwtUser
     @rate_limit_per_minute = rate_limit_per_minute
     @allowed_ips = allowed_ips
     @editor_token_allowed_ips = editor_token_allowed_ips
+    @editor_allowed_ips = editor_allowed_ips
     @editor_id = editor_id
     @authorization_request_id = authorization_request_id
     @throttle_overrides = throttle_overrides || {}
@@ -53,12 +54,11 @@ class JwtUser
   end
 
   def ip_restricted?
-    allowed_ips.present? || editor_token_allowed_ips.present?
+    ip_allowlists.any?(&:present?)
   end
 
   def ip_allowed?(request_ip)
-    IpWhitelist.allowed?(allowed_ips, request_ip) &&
-      IpWhitelist.allowed?(editor_token_allowed_ips, request_ip)
+    ip_allowlists.all? { |allowlist| IpWhitelist.allowed?(allowlist, request_ip) }
   end
 
   def has_custom_rate_limit?
@@ -128,8 +128,13 @@ class JwtUser
       siret:,
       mcp: mcp?,
       editor_id:,
-      editor_token_allowed_ips:
+      editor_token_allowed_ips:,
+      editor_allowed_ips:
     }
+  end
+
+  def ip_allowlists
+    [allowed_ips, editor_token_allowed_ips, editor_allowed_ips]
   end
 
   def uuid_regex

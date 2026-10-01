@@ -65,6 +65,7 @@ CREATE UNIQUE INDEX index_arss_on_authorization_request_id ON public.authorizati
 CREATE TABLE public.editors (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
+    allowed_ips jsonb DEFAULT '[]'::jsonb NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

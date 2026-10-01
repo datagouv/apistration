@@ -17,7 +17,9 @@ class EditorToken < ApplicationRecord
       iat:,
       exp:,
       blacklisted: blacklisted?,
-      editor_id:
+      editor_id:,
+      editor_token_allowed_ips: allowed_ips_as_strings,
+      editor_allowed_ips: editor.allowed_ips
     }
   end
 end
