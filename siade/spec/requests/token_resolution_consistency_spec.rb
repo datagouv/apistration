@@ -1,4 +1,4 @@
-RSpec.describe 'Token resolution consistency across layers', api: :entreprise do
+RSpec.describe 'Token and recipient resolution consistency across layers', api: :entreprise do
   after { Rack::Attack.reset! }
 
   def extract_without_context_url_for(options)
@@ -81,6 +81,26 @@ RSpec.describe 'Token resolution consistency across layers', api: :entreprise do
 
       expect(response).to have_http_status(:forbidden)
       expect(first_error_code).to eq(ForbiddenIpError.new('entreprise').code)
+    end
+  end
+
+  describe 'an editor recipient differing between query string and body' do
+    let(:editor) { Editor.create!(name: 'Test Editor') }
+    let(:delegated_siret) { '13002526500013' }
+    let(:other_siret) { '41816609600069' }
+    let(:authorization_request) { AuthorizationRequest.create!(siret: delegated_siret, scopes: Scope.all) }
+    let(:editor_token_record) { EditorToken.create!(editor:, iat: 1.day.ago.to_i, exp: 1.year.from_now.to_i) }
+    let(:editor_jwt) { TokenFactory.new([]).editor_valid(uid: editor_token_record.id) }
+
+    before { EditorDelegation.create!(editor:, authorization_request:) }
+
+    it 'refuses the request instead of acting for the query string recipient' do
+      get "#{url}?#{{ recipient: other_siret, context: 'test', object: 'test' }.to_query}",
+        headers: { 'Authorization' => "Bearer #{editor_jwt}", 'CONTENT_TYPE' => 'application/x-www-form-urlencoded' },
+        env: { 'rack.input' => StringIO.new("recipient=#{delegated_siret}") }
+
+      expect(response).to have_http_status(:forbidden)
+      expect(first_error_code).to eq(DelegationSiretMismatchError.new.code)
     end
   end
 end
