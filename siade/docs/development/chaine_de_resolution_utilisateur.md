@@ -26,15 +26,24 @@ Fichier : `app/lib/user_resolution_middleware.rb`
 
 ### Ce qu'il fait
 
-1. Extrait le token (`Authorization: Bearer`, `X-Api-Key`, query param `token`)
-2. Décode via `JwtTokenService` (cache 1h)
+1. Liste les tokens présentés, dans cet ordre unique : `Authorization: Bearer`, `X-Api-Key`, param `token` (un header `Authorization` non Bearer est ignoré)
+2. Décode chacun via `JwtTokenService` (cache 1h) et retient le premier qui donne un user ; à défaut, le premier token présenté et la raison d'échec de son extraction
 3. Si jeton éditeur **et** paramètre `recipient` présent : délègue à `EditorDelegationResolver`
-4. Stocke le user enrichi dans `env['siade.current_user']`
+4. Stocke le token retenu et le user enrichi dans `request.env`
+
+C'est la seule extraction du token : Rack::Attack (safelist, blocklists, throttles) et les controllers lisent `request.env` et ne relisent jamais les headers ou les params eux-mêmes. Une requête portant plusieurs tokens est donc authentifiée et contrôlée sur le même. Elle n'est pas rejetée : les access logs ne stockent pas les headers, impossible de savoir si des clients envoient légitimement un header invalide à côté d'un `?token=` valide.
+
+Les params (`token`, `recipient`, `delegation_id`) sont lus exactement comme les params Rails des controllers : body (formulaire ou JSON) fusionné avec la query string, qui est prioritaire. Un token envoyé dans le body (appels MCP notamment) est donc accepté et contrôlé par toutes les couches, et la délégation est résolue sur le `recipient` que les controllers transmettront. Un body illisible laisse les headers utilisables ; Rails le rejette ensuite en 400.
+
+`UserResolutionMiddleware.resolve(env)` est idempotent : `HandleTokens` l'appelle aussi, ce qui ne refait rien en temps normal et résout la requête quand le middleware n'a pas tourné (controller specs).
 
 ### Clés `request.env`
 
 | Clé | Type | Description |
 |-----|------|-------------|
+| `siade.user_resolved` | `true` | La résolution a eu lieu (garde d'idempotence) |
+| `siade.token` | `String` ou `nil` | Token retenu : celui du user résolu, sinon le premier présenté |
+| `siade.token_extraction_failure_reason` | `Symbol` ou absent | Raison d'échec d'extraction quand aucun token ne donne de user (`:malformed`, `:production_token_on_staging`…) |
 | `siade.current_user` | `JwtUser` ou `nil` | User résolu (avec délégation appliquée pour les éditeurs) |
 | `siade.editor_delegation` | `EditorDelegation` ou `nil` | Délégation résolue (si applicable) |
 | `siade.editor_delegation_ambiguous` | `true` ou absent | Plusieurs délégations matchent sans `delegation_id` |
@@ -58,24 +67,27 @@ Fichier : `app/services/rate_limiting_service.rb`
 
 Pur lecteur de `request.env` — ne fait aucune requête DB.
 
+- `whitelisted_access?` → compare `env['siade.token']` à `jwt_whitelist`
 - `ip_forbidden_access?` → lit `user.allowed_ips` (habilitation, déjà enrichi par le middleware) `user.editor_token_allowed_ips` (jeton éditeur) et `user.editor_allowed_ips` (plage déclarée de l'éditeur) : l'IP doit être autorisée par chaque liste non vide
 - `custom_rate_limit_for` → lit `user.rate_limit_per_minute`
 - `authorization_request_discriminator` → lit `user.authorization_request_id`
 - Fallback pour tokens classiques sans AR : `"token:<token_id>"`
 - Fallback pour éditeurs sans délégation résolue : `"editor:<editor_id>"`
-- Fallback pour tokens opaques (FC, X-Api-Key V2) : `SHA256(token)`
+- Fallback pour tokens opaques (FC, X-Api-Key V2) : `SHA256(env['siade.token'])`
+
+Le throttle global API Particulier V2 est lui aussi discriminé par `env['siade.token']`, quelle que soit la source du token.
 
 ## HandleTokens (controller)
 
 Fichier : `app/controllers/concerns/handle_tokens.rb`
 
 ```
-before_action :authenticate_user!       ← lit env, fallback JwtTokenService
+before_action :authenticate_user!       ← lit env (résout via le middleware s'il n'a pas tourné)
 before_action :set_monitoring_context   ← logstash + Sentry
 before_action :authorize_access_to_resource!  ← vérifie les scopes
 ```
 
-`authenticate_user!` prend le user depuis `request.env`. Si absent (controller specs, cas spéciaux), fallback sur `JwtTokenService.instance.extract_user(token)`.
+`authenticate_user!` prend le user depuis `request.env`, sans jamais extraire de token lui-même. Les erreurs d'environnement (jeton de production en staging et inversement) de `invalid_token_error` s'appuient sur `env['siade.token_extraction_failure_reason']`.
 
 `instrument_user_access` (appelé depuis `authenticate_user!`) émet l'event `'user_access'` pour LogStasher. `set_monitoring_context` alimente Sentry.
 
@@ -86,6 +98,7 @@ Fichier : `app/controllers/concerns/handle_editor_delegation.rb`
 Ne fait **aucune requête DB**. Lit l'état de la délégation depuis `request.env` et gère les réponses d'erreur :
 
 - Délégation absente → 403
+- Délégation dont le SIRET de l'habilitation diffère de `params[:recipient]` → 403 (même erreur). Le middleware lit déjà les mêmes params que les controllers ; cette vérification garantit qu'une requête n'est jamais autorisée sous une délégation et transmise aux fournisseurs avec un autre SIRET si ces deux lectures divergeaient à nouveau.
 - Délégation ambiguë → 422
 
 Inclus dans les base controllers V3+ (API Entreprise, API Particulier) **après** `before_action :verify_recipient_is_a_siret!` pour que la validation du format SIRET prime.
@@ -98,7 +111,11 @@ Override complet de `authenticate_user!`. Utilise `token_id`, `token_type` et `a
 
 ### FranceConnectable
 
-Override de `authenticate_user!`. Utilise le Bearer token comme access token FC opaque pour appeler l'IdP FranceConnect. Le middleware renvoie `nil` (token non-JWT).
+Override de `authenticate_user!`. Utilise le Bearer token comme access token FC opaque pour appeler l'IdP FranceConnect. Le middleware ne résout pas de user à partir de ce token non-JWT. Sur API Particulier V2, les clients envoient leur clé d'API dans `X-Api-Key` à côté du Bearer FC : c'est elle que Rack::Attack contrôle (allowlist IP, liste noire, throttles), tandis que le controller authentifie l'usager via FranceConnect dès qu'un Bearer est présent.
+
+### Tokens internes
+
+Les tokens internes (`JwtUser.debugger_id`) passent par la même extraction ; seul `JwtTokenService` les distingue en ne les cherchant pas en base.
 
 ### API Particulier V2
 
