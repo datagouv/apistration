@@ -53,15 +53,8 @@ class JwtTokenService
 
   def enhanced_jwt_data_for_editor_token(jwt_data, decoded_token)
     editor_token = EditorToken.find(decoded_token[:jti])
-    editor = editor_token.editor
 
-    jwt_data[:scopes] = []
-    jwt_data[:blacklisted] = editor_token.blacklisted?
-    jwt_data[:exp] = editor_token.exp
-    jwt_data[:editor_id] = editor.id
-    jwt_data[:editor_token_allowed_ips] = editor_token.allowed_ips_as_strings
-
-    jwt_data
+    jwt_data.merge(editor_token.to_jwt_user_attributes.except(:uid, :jti, :iat))
   end
 
   def enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
