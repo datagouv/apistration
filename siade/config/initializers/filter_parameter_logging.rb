@@ -19,7 +19,9 @@ Rails.application.config.filter_parameters += %i[
 
   nom
   dateDeNaissance
+  jourDateNaissance
   lieuDeNaissance
+  codeCogInseeCommuneNaissance
 
   ine
 
