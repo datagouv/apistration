@@ -112,6 +112,10 @@ class AuthorizationRequest < ApplicationRecord
     contacts.reject { |user| user == demandeur }
   end
 
+  def editor_delegation_request?
+    editor_delegation_request.present?
+  end
+
   def archived?
     status == 'archived'
   end
