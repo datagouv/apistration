@@ -174,4 +174,48 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
       end
     end
   end
+
+  describe 'production configuration for editor delegation requests' do
+    let(:production_config) { Rails.application.config_for('datapass_webhooks_entreprise', env: 'production') }
+
+    before do
+      allow(Rails.application).to receive(:config_for).and_call_original
+      allow(Rails.application).to receive(:config_for).with('datapass_webhooks_entreprise').and_return(production_config)
+    end
+
+    {
+      'submit' => 'delegation_editeur_demande_recue',
+      'approve' => 'delegation_editeur_demande_validee',
+      'refuse' => 'delegation_editeur_demande_refusee'
+    }.each do |delegation_event, template|
+      context "when #{delegation_event} concerns an editor delegation request" do
+        let(:event) { delegation_event }
+
+        before { create(:editor_delegation_request, authorization_request:) }
+
+        it "only schedules #{template}, to the demandeur" do
+          subject
+
+          expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.exactly(:once)
+          expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.with(
+            authorization_request.id,
+            authorization_request.status,
+            template,
+            { to: [authorization_request.demandeur.email] }
+          )
+        end
+      end
+
+      context "when #{delegation_event} concerns another authorization request" do
+        let(:event) { delegation_event }
+
+        it "does not schedule #{template}" do
+          subject
+
+          expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.at_least(:once)
+          expect(ScheduleAuthorizationRequestEmailJob).not_to have_been_enqueued.with(anything, anything, template, anything)
+        end
+      end
+    end
+  end
 end

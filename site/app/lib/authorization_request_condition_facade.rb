@@ -34,7 +34,15 @@ class AuthorizationRequestConditionFacade < SimpleDelegator
   end
 
   def not_editor_authorization_request?
-    !editor_authorization_request?
+    !editor_authorization_request? && not_editor_delegation_request?
+  end
+
+  def editor_delegation_request?
+    editor_delegation_request.present?
+  end
+
+  def not_editor_delegation_request?
+    !editor_delegation_request?
   end
 
   def same_contact_everywhere?
