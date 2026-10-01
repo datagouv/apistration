@@ -21,6 +21,9 @@ class Editor < ApplicationRecord
   has_many :use_cases,
     class_name: 'EditorUseCase',
     dependent: :destroy
+  has_many :delegation_campaigns,
+    class_name: 'EditorDelegationCampaign',
+    dependent: :restrict_with_exception
 
   normalizes :deployment_type, :two_factor_status, :hosting_provider, :hosting_country, with: ->(value) { value.strip.presence }
   normalizes :two_factor_methods, :certifications, with: ->(values) { values.compact_blank.uniq }
