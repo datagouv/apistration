@@ -35,7 +35,7 @@ C'est la seule extraction du token : Rack::Attack (safelist, blocklists, throttl
 
 Les params (`token`, `recipient`, `delegation_id`) sont lus exactement comme les params Rails des controllers : body (formulaire ou JSON) fusionné avec la query string, qui est prioritaire. Un token envoyé dans le body (appels MCP notamment) est donc accepté et contrôlé par toutes les couches, et la délégation est résolue sur le `recipient` que les controllers transmettront. Un body illisible laisse les headers utilisables ; Rails le rejette ensuite en 400.
 
-`UserResolutionMiddleware.resolve(env)` est idempotent : `HandleTokens` l'appelle aussi, ce qui ne refait rien en temps normal et résout la requête quand le middleware n'a pas tourné (controller specs).
+La résolution elle-même vit dans `UserResolver` (`app/lib/user_resolver.rb`), que le middleware se contente d'appeler. `UserResolver.new(env).resolve` est idempotent : `HandleTokens` l'appelle aussi, ce qui ne refait rien en temps normal et résout la requête quand le middleware n'a pas tourné (controller specs).
 
 ### Clés `request.env`
 
@@ -138,7 +138,8 @@ Pour les jetons éditeur, `authorization_request_id` correspond à l'habilitatio
 
 ## Fichiers clés
 
-- `app/lib/user_resolution_middleware.rb` : middleware de résolution
+- `app/lib/user_resolution_middleware.rb` : middleware de résolution et clés `request.env`
+- `app/lib/user_resolver.rb` : extraction du token et résolution du user
 - `app/services/editor_delegation_resolver.rb` : résolution délégation éditeur
 - `app/services/rate_limiting_service.rb` : rate limiting (lecteur pur)
 - `app/controllers/concerns/handle_tokens.rb` : auth controller + logging

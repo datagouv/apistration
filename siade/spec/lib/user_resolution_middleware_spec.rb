@@ -94,7 +94,7 @@ RSpec.describe UserResolutionMiddleware do
   context 'when the request has already been resolved' do
     let(:token) { yes_jwt }
 
-    before { described_class.resolve(env) }
+    before { UserResolver.new(env).resolve }
 
     it 'does not extract the token again' do
       allow(JwtTokenService.instance).to receive(:extract_user)

@@ -56,7 +56,7 @@ module HandleTokens
   end
 
   def authenticate_user!
-    UserResolutionMiddleware.resolve(request.env)
+    UserResolver.new(request.env).resolve
     @current_user = request.env[UserResolutionMiddleware::USER_ENV_KEY]
 
     raise NotValidTokenError if current_user.blank? || current_user.invalid?
