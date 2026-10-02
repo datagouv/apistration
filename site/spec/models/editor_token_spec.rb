@@ -65,6 +65,22 @@ RSpec.describe EditorToken do
 
       expect(editor_token).not_to be_valid
     end
+
+    it 'persists a change limited to the prefix of an entry' do
+      editor_token = create(:editor_token, allowed_ips: ['203.0.113.0/24'])
+
+      editor_token.update!(allowed_ips_text: '203.0.113.0/28')
+
+      expect(editor_token.reload.allowed_ips_as_strings).to eq(['203.0.113.0/28'])
+    end
+
+    it 'validates a change limited to the prefix of an entry' do
+      editor_token = create(:editor_token, allowed_ips: ['203.0.112.0/24'])
+
+      editor_token.allowed_ips_text = '203.0.112.0/20'
+
+      expect(editor_token).not_to be_valid
+    end
   end
 
   describe 'allowed_ips within the editor range' do
