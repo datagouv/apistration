@@ -28,6 +28,14 @@ class EditorToken < ApplicationRecord
     allowed_ips_will_change! if allowed_ips_as_strings != previous_cidrs
   end
 
+  def ip_allowed?(request_ip)
+    request_addr = parse_ip(request_ip)
+
+    [allowed_ips, Array(editor&.allowed_ips)].all? do |entries|
+      entries.empty? || (request_addr.present? && entries.any? { |entry| parse_ip(entry)&.include?(request_addr) })
+    end
+  end
+
   def revoke!
     update!(blacklisted_at: Time.zone.now)
   end

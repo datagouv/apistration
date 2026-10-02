@@ -14,7 +14,7 @@ class Editor::TokensController < EditorController
   def create
     authorize EditorToken
 
-    @editor_token = current_editor.tokens.new(allowed_ips: current_editor.allowed_ips)
+    @editor_token = current_editor.tokens.new
 
     if @editor_token.save
       render :created

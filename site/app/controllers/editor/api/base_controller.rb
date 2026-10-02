@@ -4,6 +4,7 @@ class Editor::API::BaseController < APIController
   MAX_PER_PAGE = 100
 
   before_action :authenticate_editor!
+  before_action :verify_editor_token_ip!
 
   private
 
@@ -22,6 +23,12 @@ class Editor::API::BaseController < APIController
     @current_editor = @current_editor_token.editor
   rescue JWT::DecodeError
     unauthorized
+  end
+
+  def verify_editor_token_ip!
+    return if current_editor_token.ip_allowed?(request.ip)
+
+    render json: { error: 'IP address not allowed for this token' }, status: :forbidden
   end
 
   def extract_bearer_token

@@ -83,6 +83,12 @@ RSpec.configure do |config|
             properties: {
               error: { type: :string, example: 'Unauthorized' }
             }
+          },
+          ForbiddenError: {
+            type: :object,
+            properties: {
+              error: { type: :string, example: 'IP address not allowed for this token' }
+            }
           }
         }
       },

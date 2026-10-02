@@ -5,6 +5,10 @@ class EditorToken < ApplicationRecord
     blacklisted_at.present? && blacklisted_at < Time.zone.now
   end
 
+  def allowed_ips_as_strings
+    allowed_ips.map(&:cidr)
+  end
+
   def to_jwt_user_attributes
     {
       uid: id,
@@ -13,7 +17,9 @@ class EditorToken < ApplicationRecord
       iat:,
       exp:,
       blacklisted: blacklisted?,
-      editor_id:
+      editor_id:,
+      editor_token_allowed_ips: allowed_ips_as_strings,
+      editor_allowed_ips: editor.allowed_ips
     }
   end
 end

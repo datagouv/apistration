@@ -5,10 +5,10 @@ class IpWhitelist
     request_ip_addr = IPAddr.new(request_ip)
     allowed_ips.any? do |ip_or_cidr|
       IPAddr.new(ip_or_cidr).include?(request_ip_addr)
-    rescue IPAddr::InvalidAddressError
+    rescue IPAddr::Error
       false
     end
-  rescue IPAddr::InvalidAddressError
+  rescue IPAddr::Error
     false
   end
 end

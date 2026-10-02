@@ -26,8 +26,7 @@ class RateLimitingService
   def ip_forbidden_access?(req)
     user = resolved_user(req)
 
-    return false if user.blank?
-    return false if user.allowed_ips.blank?
+    return false unless user&.ip_restricted?
 
     !user.ip_allowed?(req.ip)
   end
