@@ -30,8 +30,6 @@ RSpec.describe RateLimitingService do
 
     before do
       allow(req).to receive(:url).and_return("#{base_path}/random/path")
-      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
-      allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil)
     end
 
     context 'when no user is resolved' do
@@ -42,7 +40,7 @@ RSpec.describe RateLimitingService do
       let(:opaque_token) { 'random.opaque.token' }
 
       before do
-        allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{opaque_token}")
+        env[UserResolutionMiddleware::TOKEN_ENV_KEY] = opaque_token
         allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001")
       end
 
@@ -139,38 +137,20 @@ RSpec.describe RateLimitingService do
   describe '#whitelisted_access?' do
     subject { described_class.new.whitelisted_access?(req) }
 
-    before do
-      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
-    end
-
-    context 'when authorization header is not set' do
-      before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
-
+    context 'when no token has been resolved' do
       it { is_expected.to be(false) }
     end
 
-    context 'when authorization header is set' do
-      context 'when the Bearer format is not respected' do
-        before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return('Beer hour') }
+    context 'when the resolved token is whitelisted' do
+      before { env[UserResolutionMiddleware::TOKEN_ENV_KEY] = Rails.configuration.jwt_whitelist.sample }
 
-        it { is_expected.to be(false) }
-      end
+      it { is_expected.to be(true) }
+    end
 
-      context 'when the Bearer is well formed' do
-        before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}") }
+    context 'when the resolved token is not whitelisted' do
+      before { env[UserResolutionMiddleware::TOKEN_ENV_KEY] = 'random token' }
 
-        context 'when the token is whitelisted' do
-          let(:token) { Rails.configuration.jwt_whitelist.sample }
-
-          it { is_expected.to be(true) }
-        end
-
-        context 'when the token is not whitelisted' do
-          let(:token) { 'random token' }
-
-          it { is_expected.to be(false) }
-        end
-      end
+      it { is_expected.to be(false) }
     end
   end
 

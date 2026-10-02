@@ -24,10 +24,16 @@ module HandleEditorDelegation
       return
     end
 
-    return if request.env[UserResolutionMiddleware::DELEGATION_ENV_KEY]
+    return if delegation_matches_recipient?
 
     raise HandleTokens::NotAuthorizedError if params[:recipient].blank?
 
     render_generic_errors_serializer(DelegationSiretMismatchError, status: :forbidden)
+  end
+
+  def delegation_matches_recipient?
+    delegation = request.env[UserResolutionMiddleware::DELEGATION_ENV_KEY]
+
+    delegation.present? && delegation.authorization_request.siret == params[:recipient]
   end
 end

@@ -13,7 +13,7 @@ class RateLimitingService
 
   def whitelisted_access?(req)
     whitelist.include?(
-      extract_token_from_request(req)
+      resolved_token(req)
     )
   end
 
@@ -57,11 +57,6 @@ class RateLimitingService
     }
   end
 
-  def extract_token_from_request(request)
-    extract_token_from_header(request) ||
-      extract_token_from_query_params(request)
-  end
-
   private
 
   def compute_authorization_request_discriminator(req)
@@ -83,12 +78,16 @@ class RateLimitingService
   end
 
   def opaque_token_discriminator(req)
-    token = extract_token_from_request(req)
+    token = resolved_token(req)
     Digest::SHA256.hexdigest(token) if token.present?
   end
 
   def resolved_user(req)
     req.env[UserResolutionMiddleware::USER_ENV_KEY]
+  end
+
+  def resolved_token(req)
+    req.env[UserResolutionMiddleware::TOKEN_ENV_KEY]
   end
 
   def compute_reset(data)
@@ -107,21 +106,6 @@ class RateLimitingService
     Rails.application.routes.recognize_path(url)
   rescue ActionController::RoutingError
     {}
-  end
-
-  def extract_token_from_header(request)
-    auth_header = request.get_header('HTTP_AUTHORIZATION')
-
-    if auth_header
-      matchs = auth_header.match(/\ABearer (.+)\z/)
-      matchs[1] if matchs
-    else
-      request.get_header('HTTP_X_API_KEY')
-    end
-  end
-
-  def extract_token_from_query_params(request)
-    request.params.fetch('token', nil)
   end
 
   def whitelist
