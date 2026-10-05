@@ -36,7 +36,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     stub_request(:post, /#{insee_oauth_url}/).to_return(*responses)
   end
 
-  def granted_response(access_token: 'a-fresh-insee-token', expires_in: 598_077)
+  def granted_response(access_token: 'a-fresh-insee-token', expires_in: 300)
     {
       status: 200,
       body: { access_token:, expires_in: }.to_json,
