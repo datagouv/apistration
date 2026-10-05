@@ -1,21 +1,18 @@
 class BanqueDeFrance::BilansEntreprise::EnrichResourceCollectionWithDictionaries < ApplicationInteractor
   def call
     resource_collection.each do |resource|
-      enrich!(resource, extract_valid_dictionary_for(resource))
+      enrich!(resource)
     end
   end
 
   private
 
-  def enrich!(resource, dictionary)
+  def enrich!(resource)
     DGFIP::LiassesFiscales::EnrichResourceWithDictionary.call(
       declarations: resource.declarations,
-      dictionary:
+      dictionaries: context.dictionaries,
+      default_dictionary_key: resource.annee
     )
-  end
-
-  def extract_valid_dictionary_for(resource)
-    context.dictionaries[resource.annee]
   end
 
   def resource_collection
