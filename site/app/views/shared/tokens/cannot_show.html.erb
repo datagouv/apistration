@@ -5,21 +5,21 @@
       <%= t('.title') %>
     </h3>
     <p class="fr-mb-4v">
-    <%= t('.description', 
+    <%= t('.description_html', 
         demandeur: @token.demandeur.full_name, 
         token_id: @token.id,
         remaining_time: distance_of_time_in_words(Time.zone.now, @token.end_timestamp)
-      ).html_safe %>
+      ) %>
     </p>
     <p class="fr-mb-4v">
-      <%= t('.demandeur', demandeur: @token.demandeur.full_name).html_safe %>
+      <%= t('.demandeur_html', demandeur: @token.demandeur.full_name) %>
       <br />
       <span data-clipboard-target="source">
         <%= @token.demandeur.email %>
       </span>
     </p>
     <p class="fr-mb-4v">
-      <%= t('.contact_technique', contact_technique: @token.authorization_request.contact_technique.full_name).html_safe %>
+      <%= t('.contact_technique_html', contact_technique: @token.authorization_request.contact_technique.full_name) %>
       <br />
       <span data-clipboard-target="source">
         <%= @token.authorization_request.contact_technique.email %>
