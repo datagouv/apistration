@@ -167,6 +167,7 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
               organization_label,
               href: "https://annuaire-entreprises.data.gouv.fr/etablissement/#{authorization_request.siret}"
             )
+            expect(page).to have_css('a[target="_blank"][rel="noopener noreferrer"]')
           end
         end
       end

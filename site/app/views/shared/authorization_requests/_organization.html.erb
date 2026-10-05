@@ -1,11 +1,8 @@
+<% annuaire_url = "https://annuaire-entreprises.data.gouv.fr/etablissement/#{authorization_request.siret}" %>
 <% if authorization_request.organization&.denomination.present? %>
-  <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
-    <%= authorization_request.organization.denomination %> (<%= authorization_request.siret %>)
-  </a>
+  <%= external_link_to "#{authorization_request.organization.denomination} (#{authorization_request.siret})", annuaire_url %>
 <% elsif authorization_request.siret.present? %>
-  <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
-    <%= authorization_request.siret %>
-  </a>
+  <%= external_link_to authorization_request.siret, annuaire_url %>
 <% else %>
   SIRET non renseigné
 <% end %>
