@@ -1,4 +1,4 @@
-module SessionsManagement
+module SessionsManagement # rubocop:disable Metrics/ModuleLength
   extend ActiveSupport::Concern
 
   ALLOWED_OAUTH_PROVIDERS = %w[
@@ -17,6 +17,8 @@ module SessionsManagement
   end
 
   def create_from_oauth
+    return reject_login_without_mfa unless mfa_performed?
+
     interactor_call = User::ProconnectLogin.call(user_params:)
 
     login(interactor_call)
@@ -95,6 +97,28 @@ module SessionsManagement
         ip: request.remote_ip
       }
     )
+  end
+
+  def mfa_performed?
+    OmniAuth::Strategies::Proconnect::MFA_ACR_VALUES.include?(oauth_acr)
+  end
+
+  def oauth_acr
+    request.env['omniauth.auth'].extra&.acr
+  end
+
+  def reject_login_without_mfa
+    MonitoringService.instance.track(
+      'OAuth security: Missing MFA',
+      level: 'error',
+      context: {
+        provider: params[:provider],
+        acr: oauth_acr
+      }
+    )
+
+    error_message(title: t('concerns.sessions_management.mfa_required'))
+    redirect_to login_path
   end
 
   def user_params

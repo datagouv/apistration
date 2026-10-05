@@ -24,7 +24,8 @@ RSpec.shared_examples 'a datapass signin process' do |options = {}|
           last_name: user.last_name,
           first_name: user.first_name,
           uid: user.oauth_api_gouv_id || unknown_api_gouv_id
-        )
+        ),
+        extra: { acr: 'eidas1-mfa' }
       })
     end
 

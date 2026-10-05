@@ -4,14 +4,16 @@ RSpec.describe APIEntreprise::SessionsController do
   describe 'GET #create_from_oauth' do
     let(:user) { create(:user) }
     let(:valid_provider) { 'proconnect_api_entreprise' }
+    let(:acr) { 'eidas1-mfa' }
     let(:omniauth_auth_data) do
-      OpenStruct.new(
+      OmniAuth::AuthHash.new(
         info: {
           'email' => user.email,
           'first_name' => 'John',
           'last_name' => 'Doe',
           'uid' => '123456'
-        }
+        },
+        extra: { acr: }
       )
     end
 
@@ -94,6 +96,45 @@ RSpec.describe APIEntreprise::SessionsController do
 
           expect(response).to redirect_to(authorization_requests_path)
         end
+      end
+    end
+
+    context 'when ProConnect did not perform MFA' do
+      let(:acr) { 'eidas1' }
+
+      before do
+        request.env['omniauth.auth'] = omniauth_auth_data
+      end
+
+      it 'redirects to login path' do
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(response).to redirect_to(login_path)
+      end
+
+      it 'does not create user session' do
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(session[:current_user_id]).to be_nil
+      end
+
+      it 'tells the user that MFA is required' do
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(flash[:error]['title']).to include('double authentification')
+      end
+
+      it 'tracks the missing MFA' do
+        get :create_from_oauth, params: { provider: valid_provider }
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          'OAuth security: Missing MFA',
+          level: 'error',
+          context: {
+            provider: valid_provider,
+            acr:
+          }
+        )
       end
     end
 
