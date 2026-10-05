@@ -54,7 +54,7 @@ class ProlongTokenWizard < ApplicationRecord
     token.prolong!
   end
 
-  def close_unfinished!
+  def close!
     self.status = 'prolonged'
     save!(validate: false)
   end
