@@ -34,7 +34,7 @@ class INSEE::Authenticate < MakeRequest::Post
   def call
     return if use_mocked_data?
 
-    context.token = published_token || authenticate!
+    context.token = context.ahead_of_expiry ? renew_ahead_of_expiry! : (current_token || authenticate!)
   end
 
   protected
@@ -54,6 +54,33 @@ class INSEE::Authenticate < MakeRequest::Post
   end
 
   private
+
+  def current_token
+    token = published_token
+    return token unless token && INSEE::TokenRenewal.due?
+
+    renewed_ahead_of_expiry || token
+  end
+
+  def renewed_ahead_of_expiry
+    renewal = self.class.call(provider_name: context.provider_name, ahead_of_expiry: true)
+
+    renewal.token if renewal.success?
+  end
+
+  def renew_ahead_of_expiry!
+    fail_with_temporary_error! if recently_failed?
+    fail_with_temporary_error! unless acquire_lock! == true
+
+    begin
+      return published_token unless INSEE::TokenRenewal.due?
+
+      INSEE::TokenRenewal.postpone!
+      token_from_candidates
+    ensure
+      release_lock!
+    end
+  end
 
   def authenticate!
     fail_with_temporary_error! if recently_failed?
@@ -80,14 +107,14 @@ class INSEE::Authenticate < MakeRequest::Post
   def token_from_candidates
     fail_with_temporary_error! if recently_failed?
 
+    token_from(password_attempts) || fail_with_authentication_error!
+  end
+
+  def password_attempts
     candidates = INSEE::PasswordDerivation.candidates
-    token = token_from(candidates)
-    return token if token
-
     current_password = INSEE::PasswordDerivation.current_password
-    token = token_from([current_password]) unless candidates.last == current_password
 
-    token || fail_with_authentication_error!
+    candidates.last == current_password ? candidates : [*candidates, current_password]
   end
 
   def token_from(candidates)
@@ -136,12 +163,13 @@ class INSEE::Authenticate < MakeRequest::Post
 
   def store_token(payload)
     token = payload['access_token']
+    lifetime = payload['expires_in'].to_i
 
-    EncryptedCache.write(
-      CACHE_KEY,
-      token,
-      expires_in: [payload['expires_in'].to_i - TOKEN_EXPIRATION_MARGIN, 1].max
-    )
+    expires_in = [lifetime - TOKEN_EXPIRATION_MARGIN, 1].max
+
+    return token unless EncryptedCache.write(CACHE_KEY, token, expires_in:)
+
+    INSEE::TokenRenewal.schedule!(lifetime:, expires_in:, exchanges: password_attempts.size)
 
     token
   end

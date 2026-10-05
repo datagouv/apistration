@@ -86,6 +86,175 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     end
   end
 
+  describe 'renewal ahead of expiry' do
+    let(:authenticated_at) { Time.zone.local(2026, 10, 15, 12) }
+
+    def authenticate_at(time)
+      Timecop.freeze(time) { described_class.call(provider_name: 'INSEE') }
+    end
+
+    before do
+      stub_oauth(granted_response(access_token: 'current-token'), granted_response(access_token: 'renewed-token'))
+      authenticate_at(authenticated_at)
+    end
+
+    after { Timecop.return }
+
+    context 'when the token is far from its expiry' do
+      it 'keeps the current token without calling INSEE' do
+        expect(authenticate_at(authenticated_at + 200.seconds).token).to eq('current-token')
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).once
+      end
+    end
+
+    context 'when the token nears its expiry' do
+      let(:renewal_time) { authenticated_at + 220.seconds }
+
+      it 'hands out a renewed token' do
+        expect(authenticate_at(renewal_time).token).to eq('renewed-token')
+      end
+
+      it 'publishes the renewed token' do
+        authenticate_at(renewal_time)
+
+        expect(described_class.published_token).to eq('renewed-token')
+      end
+
+      it 'renews only once' do
+        authenticate_at(renewal_time)
+        authenticate_at(renewal_time + 1.second)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).twice
+      end
+
+      it 'releases the lock' do
+        authenticate_at(renewal_time)
+
+        expect(lock_read).to be_nil
+      end
+    end
+
+    context 'when INSEE refuses the renewal' do
+      before do
+        stub_oauth(invalid_grant_response)
+        allow(MonitoringService.instance).to receive(:track_with_added_context)
+      end
+
+      it 'tries to renew' do
+        authenticate_at(authenticated_at + 220.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).at_least_times(2)
+      end
+
+      it 'keeps serving the current token' do
+        renewal = authenticate_at(authenticated_at + 220.seconds)
+
+        expect(renewal).to be_a_success
+        expect(renewal.token).to eq('current-token')
+      end
+
+      it 'keeps the current token published' do
+        authenticate_at(authenticated_at + 220.seconds)
+
+        expect(described_class.published_token).to eq('current-token')
+      end
+    end
+
+    context 'when INSEE is unavailable during the renewal' do
+      before do
+        stub_oauth(status: 503, body: '')
+        authenticate_at(authenticated_at + 220.seconds)
+      end
+
+      it 'keeps serving the current token' do
+        renewal = authenticate_at(authenticated_at + 221.seconds)
+
+        expect(renewal).to be_a_success
+        expect(renewal.token).to eq('current-token')
+      end
+
+      it 'waits before trying to renew again' do
+        authenticate_at(authenticated_at + 249.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).twice
+      end
+
+      it 'tries to renew again 30 seconds later' do
+        authenticate_at(authenticated_at + 251.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+      end
+
+      it 'stops renewing once no retry fits before the deadline' do
+        authenticate_at(authenticated_at + 251.seconds)
+        authenticate_at(authenticated_at + 252.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+      end
+    end
+
+    context 'when a renewal may walk several password candidates' do
+      let(:authenticated_at) { Time.zone.local(2027, 1, 15, 12) }
+
+      before { stub_oauth(status: 503, body: '') }
+
+      it 'stops renewing early enough for the whole walk to complete' do
+        authenticate_at(authenticated_at + 211.seconds)
+        authenticate_at(authenticated_at + 241.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).twice
+      end
+    end
+
+    context 'when the token is too close to its expiry for an OAuth exchange to complete' do
+      before { stub_oauth(status: 503, body: '') }
+
+      it 'no longer starts a renewal' do
+        authenticate_at(authenticated_at + 220.seconds)
+        authenticate_at(authenticated_at + 271.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).twice
+      end
+    end
+
+    context 'when another request is already renewing' do
+      before { lock_write('another-request', expires_in: described_class::LOCK_TTL) }
+
+      it 'keeps serving the current token without calling INSEE' do
+        expect(authenticate_at(authenticated_at + 220.seconds).token).to eq('current-token')
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).once
+      end
+    end
+
+    context 'when the token lives too short for a renewal window' do
+      before do
+        Rails.cache.clear
+        stub_oauth(granted_response(access_token: 'short-token', expires_in: 60), granted_response(access_token: 'renewed-token'))
+        authenticate_at(authenticated_at)
+      end
+
+      it 'keeps it until its expiry' do
+        authenticate_at(authenticated_at + 1.second)
+        authenticate_at(authenticated_at + 49.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).twice
+      end
+    end
+
+    context 'when the renewed token could not be published' do
+      before do
+        allow(EncryptedCache).to receive(:write).and_return(false)
+        authenticate_at(authenticated_at + 220.seconds)
+      end
+
+      it 'keeps renewing the current token' do
+        authenticate_at(authenticated_at + 251.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+      end
+    end
+  end
+
   context 'when the first candidate is rejected with invalid_grant' do
     before do
       Timecop.freeze(Date.new(2027, 1, 15))

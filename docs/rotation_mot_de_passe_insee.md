@@ -29,10 +29,33 @@ correspondre dans les deux applications :
 
 ### Authentification
 
+L'OAuth de l'INSEE est un realm Keycloak. Chaque échange émet un nouveau token,
+valable 5 minutes (`expires_in: 300`), sans refresh token : chaque
+renouvellement repasse par le grant `password` et consomme donc une tentative
+sur le compte.
+
 Un token en cache est réutilisé jusqu'à son expiration, avec une marge de
 10 secondes. S'il est refusé par Sirene (HTTP 401), l'application invalide ce
 token et rejoue l'appel une fois après réauthentification. Un token plus récent,
 publié entre-temps par une autre requête, est conservé et réutilisé.
+
+`siade/` renouvelle le token avant son expiration : à partir de 90 secondes
+avant la fin de sa vie, la requête qui obtient le verrou s'authentifie, les
+autres continuent avec le token courant. Le token courant reste publié tant que
+le nouveau n'est pas obtenu ; si le renouvellement échoue, la requête utilise le
+token courant sans erreur. Chaque tentative repousse la suivante de 30 secondes,
+quelle que soit la cause de l'échec, pour qu'un OAuth indisponible ne reçoive pas
+un appel par requête. Une tentative peut enchaîner jusqu'à trois échanges OAuth
+(courant, précédent, puis courant à nouveau), de 20 secondes au plus chacun :
+aucune tentative ne démarre si tous ses échanges ne peuvent aboutir avant
+l'expiration du token en cache. Pour un token de 5 minutes, les tentatives ont
+lieu à 3 min 30 et 4 min avant la dérivation, à 3 min 30 seulement ensuite. Un
+token qui vit moins de 90 secondes est gardé jusqu'à son expiration. Un refus isolé de l'INSEE ne
+coupe ainsi rien, tant qu'une tentative suivante aboutit avant l'expiration.
+
+Une requête qui trouve le token expiré, ou refusé par Sirene, pendant qu'un
+renouvellement est en cours attend 0,5 seconde le token publié, puis renvoie une
+erreur temporaire : la fenêtre ci-dessus rend ce cas rare sans l'exclure.
 
 Pour obtenir un token, les mots de passe sont essayés dans cet ordre :
 
