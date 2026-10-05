@@ -98,6 +98,17 @@ RSpec.describe DGFIPPingDriver, type: :ping_driver do
         it { is_expected.to eq(:bad_gateway) }
       end
 
+      context 'when failures have statuses not monitored for DGFIP' do
+        before do
+          AccessLog.create!(route: routes.first, status: '200', timestamp: 1.minute.ago)
+          AccessLog.create!(route: routes.first, status: '502', timestamp: 1.minute.ago)
+          AccessLog.create!(route: routes.first, status: '500', timestamp: 1.minute.ago)
+          AccessLogPingView.refresh!
+        end
+
+        it { is_expected.to eq(:ok) }
+      end
+
       context 'when errors are on a different route' do
         before do
           AccessLog.create!(route: 'other/route#show', status: '503', timestamp: 1.minute.ago)
