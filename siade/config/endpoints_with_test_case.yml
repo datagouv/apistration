@@ -118,7 +118,7 @@
 
 - name: 'OPQIBI Certifications Ingénierie'
   api: 'entreprise'
-  path: '/v3/opqibi/unites_legales/309103877/certification_ingenierie'
+  path: '/v3/opqibi/unites_legales/329338883/certification_ingenierie'
 
 - name: 'ProBTP Attestations cotisations retraite'
   api: 'entreprise'
