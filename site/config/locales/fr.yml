@@ -409,6 +409,7 @@ fr:
         table:
           head:
             authorization_request: "Habilitation"
+            organization: Organisation
             token: Jeton principal
             actions: Actions attendues
             detail: Page détaillée

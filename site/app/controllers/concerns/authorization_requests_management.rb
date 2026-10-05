@@ -22,7 +22,7 @@ module AuthorizationRequestsManagement
       .viewable_by_users
       .order(
         first_submitted_at: :desc
-      ).includes(:active_token)
+      ).includes(:active_token, :organization)
 
     render 'shared/authorization_requests/index'
   end
