@@ -27,7 +27,7 @@ jobs:
           working-directory: siade
 
       - name: Brakeman
-        uses: reviewdog/action-brakeman@v2
+        uses: reviewdog/action-brakeman@v2.20.0
         with:
           workdir: siade
         env:
