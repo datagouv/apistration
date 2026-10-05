@@ -49,6 +49,13 @@ class APIRequestFacade
     end
   end
 
+  def permitted_params
+    [
+      *parameters.map { |param| param.array? ? { param.label => [] } : param.label },
+      { headers: header_parameters.map(&:name) }
+    ]
+  end
+
   def execute_request(params)
     return unless selected_endpoint
 

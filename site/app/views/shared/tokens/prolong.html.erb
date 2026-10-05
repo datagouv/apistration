@@ -7,7 +7,7 @@
     <p>
     <%
       now = Time.zone.now
-      translation_key = ".description.#{@token.end_timestamp > now.to_i ? 'future' : 'past'}"
+      translation_key = ".description.#{@token.end_timestamp > now.to_i ? 'future_html' : 'past_html'}"
     %>
 
     <%= t(translation_key,
@@ -22,7 +22,7 @@
               target: '_blank',
               rel: 'noopener noreferrer'),
             remaining_time: distance_of_time_in_words(now, @token.end_timestamp)
-          ).html_safe %>
+          ) %>
     </p>
     <p class="fr-mb-1v"><strong><%= t('.warning_description') %></strong></p>
     <blockquote class="fr-highlight fr-highlight--caution fr-m-0">

@@ -11,7 +11,8 @@
 
 ### Linting
 - Run Rubocop: `bundle exec rubocop`
-- Run Brakeman security scan: `./bin/brakeman`
+- Run Brakeman security scan: `./bin/brakeman` (fails on any warning, like CI)
+- Ignore a false positive interactively: `./bin/brakeman_ignore`
 
 ### Development
 - Start server: `./bin/local.sh`

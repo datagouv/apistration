@@ -85,6 +85,64 @@ RSpec.describe CNAVPingDriver, type: :ping_driver do
       it { is_expected.to eq(:ok) }
     end
 
+    context 'when failures have statuses not monitored for CNAV' do
+      before do
+        AccessLog.create!(route: routes.first, status: '200', timestamp: 1.minute.ago)
+        AccessLog.create!(route: routes.first, status: '500', timestamp: 1.minute.ago)
+        AccessLog.create!(route: routes.first, status: '429', timestamp: 1.minute.ago)
+        AccessLogPingView.refresh!
+      end
+
+      it { is_expected.to eq(:ok) }
+    end
+
+    context 'when rate-limit responses (subcode 008) at the 25% threshold are spread over 503 and 504' do
+      before do
+        9.times { AccessLog.create!(route: routes.first, status: '200', timestamp: 1.minute.ago) }
+        2.times do
+          AccessLog.create!(
+            route: routes.first, status: '503', timestamp: 1.minute.ago,
+            params: { error_subcode: '008' }
+          )
+        end
+        AccessLog.create!(
+          route: routes.first, status: '504', timestamp: 1.minute.ago,
+          params: { error_subcode: '008' }
+        )
+        AccessLogPingView.refresh!
+      end
+
+      it { is_expected.to eq(:bad_gateway) }
+    end
+
+    context 'when subcode 008 is carried by statuses not monitored for CNAV' do
+      before do
+        AccessLog.create!(route: routes.first, status: '200', timestamp: 1.minute.ago)
+        3.times do
+          AccessLog.create!(
+            route: routes.first, status: '429', timestamp: 1.minute.ago,
+            params: { error_subcode: '008' }
+          )
+        end
+        AccessLogPingView.refresh!
+      end
+
+      it { is_expected.to eq(:ok) }
+    end
+
+    context 'when non-rate-limited errors carry another subcode' do
+      before do
+        9.times { AccessLog.create!(route: routes.first, status: '200', timestamp: 1.minute.ago) }
+        AccessLog.create!(
+          route: routes.first, status: '502', timestamp: 1.minute.ago,
+          params: { error_subcode: '001' }
+        )
+        AccessLogPingView.refresh!
+      end
+
+      it { is_expected.to eq(:bad_gateway) }
+    end
+
     context 'when rate-limit responses (subcode 008) are below the 25% rate-limit threshold' do
       before do
         8.times { AccessLog.create!(route: routes.first, status: '200', timestamp: 1.minute.ago) }

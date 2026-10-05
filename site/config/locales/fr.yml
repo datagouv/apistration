@@ -290,17 +290,17 @@ fr:
           title: Détails des %{limit} dernières requêtes
       cannot_show:
         title: Utiliser le jeton
-        description: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
+        description_html: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
           Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette habilitation :"
-        demandeur: "<strong>demandeur</strong> : %{demandeur}"
-        contact_technique: "<strong>Contact technique</strong> : %{contact_technique}"
+        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
+        contact_technique_html: "<strong>Contact technique</strong> : %{contact_technique}"
         authorization_request_link: "<strong>Lien de l'habilitation à transmettre :</strong>"
       ask_for_prolongation:
         title: Relancer le demandeur
-        description: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
+        description_html: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
           celui-ci expirera dans %{remaining_time}. Seul le demandeur peut prolonger le jeton.
           <strong>Écrivez-lui en lui transmettant le lien vers le formulaire de prolongation :</strong>"
-        demandeur: "<strong>demandeur</strong> : %{demandeur}"
+        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
         ask_for_token_prolongation_description: "<strong>Lien du questionnaire de prolongation</strong> :"
       show:
         title: Utiliser le jeton
@@ -329,11 +329,11 @@ fr:
       prolong:
         title: Prolonger le jeton
         description:
-          future: "Votre jeton expire dans %{remaining_time}.
+          future_html: "Votre jeton expire dans %{remaining_time}.
             Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
             indiquées dans votre habilitation %{link_to_datapass}
             ont évolué."
-          past: "Votre jeton a expiré il y a %{remaining_time}.
+          past_html: "Votre jeton a expiré il y a %{remaining_time}.
             Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
             indiquées dans votre habilitation %{link_to_datapass}
             ont évolué."
@@ -399,9 +399,9 @@ fr:
             display_cta_new_token: "Utiliser le nouveau jeton"
             display_cta_replace: "Remplacer le jeton banni par le nouveau jeton"
         no_authorization_requests: "Vous n'avez aucune habilitation"
-        title: "Habilitations %{api_label} (%{count})"
-        entreprise: API&nbsp;Entreprise
-        particulier: API&nbsp;Particulier
+        title_html: "Habilitations %{api_label} (%{count})"
+        entreprise_html: API&nbsp;Entreprise
+        particulier_html: API&nbsp;Particulier
         no_action: Aucune action attendue
         links:
           to_datapass_html: "Datapass n°%{external_id}"

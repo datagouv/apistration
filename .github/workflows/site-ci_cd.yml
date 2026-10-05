@@ -27,7 +27,7 @@ jobs:
           working-directory: site
 
       - name: Brakeman
-        uses: reviewdog/action-brakeman@v2
+        uses: reviewdog/action-brakeman@v2.20.0
         with:
           workdir: site
         env:

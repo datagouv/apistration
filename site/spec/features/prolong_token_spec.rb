@@ -70,5 +70,10 @@ RSpec.describe 'displays prolong token content' do
 
       click_link('prolong_form_link')
     end
+
+    it 'renders the link to the authorization request inside the description' do
+      expect(page).to have_text('Votre jeton expire dans')
+      expect(page).to have_css('a#authorization_request_link')
+    end
   end
 end

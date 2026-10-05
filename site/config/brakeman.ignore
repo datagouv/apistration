@@ -3,40 +3,6 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
-      "fingerprint": "069a6bdc88dbc9babc4174ea2e37910399ea3a1439e0f2415592060962715676",
-      "check_name": "CrossSiteScripting",
-      "message": "Unescaped model attribute",
-      "file": "app/views/api_entreprise/endpoints/show.html.erb",
-      "line": 46,
-      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "APIEntreprise::Endpoint.find(params[:uid]).open_api_definition[\"disclaimer\"]",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "APIEntreprise::EndpointsController",
-          "method": "show",
-          "line": 11,
-          "file": "app/controllers/api_entreprise/endpoints_controller.rb",
-          "rendered": {
-            "name": "api_entreprise/endpoints/show",
-            "file": "app/views/api_entreprise/endpoints/show.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "api_entreprise/endpoints/show"
-      },
-      "user_input": null,
-      "confidence": "High",
-      "cwe_id": [
-        79
-      ],
-      "note": ""
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 2,
       "fingerprint": "07ee40def7f84233500682f2012e254ba0b8f5d82ad4665d68013c88dc89400b",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
@@ -225,6 +191,29 @@
       "note": ""
     },
     {
+      "warning_type": "HTTP Verb Confusion",
+      "warning_code": 118,
+      "fingerprint": "a4ceaa6fcd3b2786692bd92f6cfd460ade4e1e52f711c0244f54c692c687710b",
+      "check_name": "VerbConfusion",
+      "message": "Potential HTTP verb confusion. `HEAD` is routed like `GET` but `request.get?` will return `false`",
+      "file": "app/controllers/concerns/authenticated_user_management.rb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/http_verb_confusion/",
+      "code": "session[:return_to] = request.fullpath if request.get?",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AuthenticatedUserManagement",
+        "method": "store_return_to_location"
+      },
+      "user_input": "request.get?",
+      "confidence": "Weak",
+      "cwe_id": [
+        352
+      ],
+      "note": "The condition only decides whether to remember the page to return to after login; a HEAD request skipping it has no security impact."
+    },
+    {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "a7871533c88e1d58522687dae37c1f9e31cef1cfa775502aca2e684684e9ea14",
@@ -304,6 +293,50 @@
     },
     {
       "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "ef346947033c130b9f3f00751f3ab62406c4df2fa86b2966063868fc240a47bb",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/shared/endpoints/_use_cases.html.erb",
+      "line": 21,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.url, :target => \"_blank\", :rel => \"noopener noreferrer\", :class => \"fr-tag\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "APIEntreprise::EndpointsController",
+          "method": "show",
+          "line": 12,
+          "file": "app/controllers/api_entreprise/endpoints_controller.rb",
+          "rendered": {
+            "name": "api_entreprise/endpoints/show",
+            "file": "app/views/api_entreprise/endpoints/show.html.erb"
+          }
+        },
+        {
+          "type": "template",
+          "name": "api_entreprise/endpoints/show",
+          "line": 197,
+          "file": "app/views/api_entreprise/endpoints/show.html.erb",
+          "rendered": {
+            "name": "shared/endpoints/_use_cases",
+            "file": "app/views/shared/endpoints/_use_cases.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "shared/endpoints/_use_cases"
+      },
+      "user_input": "(Unresolved Model).new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "SimplifionsStore#build_cas_usage always builds the URL from the https SIMPLIFIONS_BASE_URL constant and a slug, so the href cannot carry another scheme."
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "faa35a2cf3ef6134b43a15565db3b4c90d2c8d028504f1d083b7e9af5958b4a4",
       "check_name": "CrossSiteScripting",
@@ -348,5 +381,5 @@
     }
   ],
   "updated": "2023-04-06 12:31:40 +0200",
-  "brakeman_version": "5.4.1"
+  "brakeman_version": "8.0.6"
 }
