@@ -151,7 +151,7 @@ fr:
             description: Cette fonctionnalité vous permet d'envoyer un e-mail contenant un lien d'accès au jeton. L'URL transmise a une durée limitée de 4 heures.
               <br>
               <br>
-              Attention, nos <a href="https://entreprise.api.gouv.fr/cgu/">CGU</a> vous engagent ! Vous ne devez pas divulguer cet accès à des tiers non-habilités. Pour en savoir plus, consultez <a href='https://entreprise.api.gouv.fr/faq#comment-transmettre-le-jeton-d-acces-en-tout-securite' target='_blank'>cette rubrique de notre FAQ</a>.
+              Attention, nos <a href="https://entreprise.api.gouv.fr/cgu/">CGU</a> vous engagent ! Vous ne devez pas divulguer cet accès à des tiers non-habilités. Pour en savoir plus, consultez <a href='https://entreprise.api.gouv.fr/faq#comment-transmettre-le-jeton-d-acces-en-tout-securite' target='_blank' rel='noopener noreferrer'>cette rubrique de notre FAQ</a>.
             email:
               label: Adresse e-mail du destinataire
               placeholder: jean@dupont.fr
@@ -225,7 +225,7 @@ fr:
           will_change_soon: Oui, je suis toujours en charge mais pourrais passer la main d'ici quelques mois
           not_in_charge: Non, je ne suis plus en charge de cette habilitation %{api}
         not_in_charge_alert:
-          text: Si vous n'êtes plus en charge de cette habilitation, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
+          text: Si vous n'êtes plus en charge de cette habilitation, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank" rel="noopener noreferrer">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
       build:
         wizard_buttons:
           previous: Précédent
@@ -239,7 +239,7 @@ fr:
         transfer_account:
           title: "Votre équipe évolue ? Vous quittez votre service ? Transmettez vos habilitations à une autre personne&nbsp;:"
           subtitle_if_demandeur: "Habilitations où je suis demandeur&nbsp;:"
-          description_if_demandeur: Pour transmettre votre rôle de demandeur à une autre personne de votre organisation, veuillez vous rendre sur <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank">DataPass</a> et transférer chacune de vos habilitations.
+          description_if_demandeur: Pour transmettre votre rôle de demandeur à une autre personne de votre organisation, veuillez vous rendre sur <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank" rel="noopener noreferrer">DataPass</a> et transférer chacune de vos habilitations.
           subtitle_if_other_roles: "Habilitations où je ne suis pas demandeur&nbsp;:"
           description_if_other_roles: "Vous êtes contact métier et/ou technique d'une habilitation et souhaitez léguer ce rôle à une autre personne de votre organisation ? C'est au demandeur de l'habilitation d'effectuer une demande de modification des contacts. <a href='https://%{api}.api.gouv.fr/faq#comment-transferer-mon-compte-a-une-autre-personne'>En savoir plus</a>."
         demandeur: "Demandeur"
@@ -274,7 +274,7 @@ fr:
           <br>
           <strong>En cliquant sur "Continuer" vous serez transféré sur le site DataPass</strong>.
           <br>
-          Pour en savoir plus, consultez <a href='https://%{api}.api.gouv.fr/faq#comment-elargir-le-perimetre-des-api-disponibles-avec-mon-jeton-obtenir-de-nouvelles-donnees' target='_blank'>cette rubrique de notre FAQ</a>.
+          Pour en savoir plus, consultez <a href='https://%{api}.api.gouv.fr/faq#comment-elargir-le-perimetre-des-api-disponibles-avec-mon-jeton-obtenir-de-nouvelles-donnees' target='_blank' rel='noopener noreferrer'>cette rubrique de notre FAQ</a>.
         continue: ⬜ Continuer
       stats:
         title: "Cas d'usage du jeton : %{title}"
@@ -485,19 +485,19 @@ fr:
         title: "Swagger 📟"
         description: |-
           Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
-          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
+          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank' rel='noopener noreferrer'>Redoc</a> et se base sur le fichier OpenAPI.
       redoc_v2:
         title: "Swagger 📟"
         description: |-
           Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
-          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
+          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank' rel='noopener noreferrer'>Redoc</a> et se base sur le fichier OpenAPI.
       current_status:
         title: "Statuts des API"
       redoc_v3:
         title: "Swagger 📟"
         description: |-
           Cette documentation technique recense les spécifications techniques des différents endpoints de l'%{api_name}.
-          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank'>Redoc</a> et se base sur le fichier OpenAPI.
+          Elle est propulsée par <a href='https://github.com/Redocly/redoc' target='_blank' rel='noopener noreferrer'>Redoc</a> et se base sur le fichier OpenAPI.
     endpoints:
       use_cases:
         main:
