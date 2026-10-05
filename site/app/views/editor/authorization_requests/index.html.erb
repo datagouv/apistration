@@ -70,17 +70,7 @@
             <% end %>
           </td>
           <td class="authorization_request-siret">
-            <% if authorization_request.organization&.denomination.present? %>
-              <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
-                <%= authorization_request.organization.denomination %> (<%= authorization_request.siret %>)
-              </a>
-            <% elsif authorization_request.siret.present? %>
-              <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank">
-                <%= authorization_request.siret %>
-              </a>
-            <% else %>
-              SIRET non renseigné
-            <% end %>
+            <%= render partial: 'shared/authorization_requests/organization', locals: { authorization_request: } %>
           </td>
           <td class="authorization_request-demandeur_email">
             <%= authorization_request.demandeur.try(:email) %>
