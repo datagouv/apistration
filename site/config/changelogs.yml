@@ -1,3 +1,9 @@
+- date: 2026-10-05
+  scope: both
+  title: "Espace utilisateur : l'organisation de chaque habilitation affichée dans la liste"
+  description: |
+    La liste de vos habilitations affiche désormais une colonne « Organisation », avec la dénomination et le SIRET de l'organisation rattachée à chaque habilitation, comme dans l'espace éditeur. Les gestionnaires de plusieurs organisations identifient ainsi le jeton de chacune sans ouvrir chaque habilitation.
+
 - date: 2026-10-01
   scope: both
   title: "Jetons éditeurs : les IPs autorisées sont désormais appliquées"
