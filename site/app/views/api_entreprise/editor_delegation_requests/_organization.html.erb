@@ -1,0 +1,16 @@
+<%= render layout: 'section', locals: { title: "L'organisation" } do %>
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-6">
+      <p class="fr-text--bold fr-mb-1v">Demandeur</p>
+      <p class="fr-mb-0"><%= current_user.full_name %></p>
+      <p class="fr-mb-0"><%= current_user.email %></p>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <p class="fr-text--bold fr-mb-1v">Organisation</p>
+      <% if @organization&.denomination.present? %>
+        <p class="fr-mb-0"><%= @organization.denomination %></p>
+      <% end %>
+      <p class="fr-mb-0">SIRET <%= @editor_delegation_request.siret %></p>
+    </div>
+  </div>
+<% end %>

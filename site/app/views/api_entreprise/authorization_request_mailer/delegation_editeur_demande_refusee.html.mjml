@@ -1,0 +1,37 @@
+<%= render partial: "shared/api_entreprise/mailers/header" %>
+<mj-section mj-class="section-banner" background-color="#f7bfc3">
+  <mj-column>
+    <mj-text>
+      <h1>
+        Votre demande d'habilitation à l'API Entreprise
+        <b>a été refusée 🚫</b>
+      </h1>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <%= render partial: "greetings", locals: { entity: "demandeur" } %>
+      <p>
+        La demande d’habilitation API Entreprise n°<%= @authorization_request.external_id %> de votre organisation
+        (SIRET <%= @authorization_request.siret %>) <b>a été refusée</b> par notre service juridique.
+      </p>
+      <p>
+        <%= @editor.name.strip %> ne peut plus interroger l’API Entreprise pour le compte de votre organisation.
+      </p>
+      <p>
+        Pour connaître les raisons de ce refus, veuillez consulter votre demande sur
+        <a target="_blank" href="<%= @authorization_request_datapass_url %>">
+          <%= @authorization_request_datapass_url %>
+        </a>
+      </p>
+      <p>
+        Bonne continuation,
+        <br />
+        <b>API Entreprise</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>

@@ -31,6 +31,13 @@ fr:
       update_demande_recue:
         subject: 📬 Votre demande de mise à jour de votre accès à l'API Entreprise a bien été reçue par nos services.
 
+      delegation_editeur_demande_recue:
+        subject: 📬 Votre demande d'habilitation à l'API Entreprise a bien été reçue par nos services.
+      delegation_editeur_demande_validee:
+        subject: ✅ Votre demande d'habilitation à l'API Entreprise est validée.
+      delegation_editeur_demande_refusee:
+        subject: 🚫 Votre demande d'habilitation à l'API Entreprise est refusée.
+
     token_mailer:
       expiration_notice_90J:
         subject: 🔑 Prolongez votre jeton API Entreprise
