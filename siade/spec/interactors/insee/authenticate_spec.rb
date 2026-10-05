@@ -1,10 +1,10 @@
 RSpec.describe INSEE::Authenticate, type: :interactor do
   def guard_write(key, value, **)
-    Rails.cache.write(key, value, namespace: described_class::GUARD_CACHE_NAMESPACE, **)
+    Rails.cache.write(key, value, namespace: INSEE::AuthenticationBackoff::CACHE_NAMESPACE, **)
   end
 
   def guard_read(key)
-    Rails.cache.read(key, namespace: described_class::GUARD_CACHE_NAMESPACE)
+    Rails.cache.read(key, namespace: INSEE::AuthenticationBackoff::CACHE_NAMESPACE)
   end
 
   def lock_write(value, **)
@@ -16,7 +16,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
   end
 
   def arm_the_failure_guard
-    guard_write(described_class::FAILURE_CACHE_KEY, true, expires_in: described_class::FAILURE_TTL)
+    guard_write(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY, true, expires_in: INSEE::AuthenticationBackoff::OAUTH_REJECTION_HOLD)
   end
 
   def from_another_process(&)
@@ -302,7 +302,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'does not remember the failure' do
       retrieve_token
 
-      expect(guard_read(described_class::FAILURE_CACHE_KEY)).to be_nil
+      expect(guard_read(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY)).to be_nil
     end
   end
 
@@ -330,7 +330,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'does not remember the failure' do
       retrieve_token
 
-      expect(guard_read(described_class::FAILURE_CACHE_KEY)).to be_nil
+      expect(guard_read(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY)).to be_nil
     end
   end
 
@@ -350,7 +350,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'does not remember the failure' do
       retrieve_token
 
-      expect(guard_read(described_class::FAILURE_CACHE_KEY)).to be_nil
+      expect(guard_read(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY)).to be_nil
     end
   end
 
@@ -450,10 +450,10 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       )
     end
 
-    it 'remembers the failure for 30 minutes' do
+    it 'remembers the failure' do
       retrieve_token
 
-      expect(guard_read(described_class::FAILURE_CACHE_KEY)).to be(true)
+      expect(guard_read(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY)).to be(true)
     end
 
     it 'does not call INSEE again while the failure is remembered' do
@@ -467,6 +467,229 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       retrieve_token
 
       expect(described_class.call(provider_name: 'INSEE').errors.first).to be_a(ProviderTemporaryError)
+    end
+  end
+
+  describe 'backoff' do
+    let(:first_refusal_at) { Time.zone.local(2026, 10, 15, 12) }
+
+    def authenticate_at(time)
+      Timecop.freeze(time) { described_class.call(provider_name: 'INSEE') }
+    end
+
+    def oauth_calls
+      WebMock::RequestRegistry.instance.times_executed(WebMock::RequestPattern.new(:post, /#{insee_oauth_url}/))
+    end
+
+    def refused_response(description)
+      {
+        status: 400,
+        body: { error: 'invalid_grant', error_description: description }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      }
+    end
+
+    before { allow(MonitoringService.instance).to receive(:track_with_added_context) }
+
+    after { Timecop.return }
+
+    context 'when INSEE refuses the login once' do
+      before do
+        stub_oauth(refused_response('Invalid user credentials'), granted_response)
+        authenticate_at(first_refusal_at)
+      end
+
+      it 'holds back the next authentication for 30 seconds' do
+        authenticate_at(first_refusal_at + 29.seconds)
+
+        expect(oauth_calls).to eq(1)
+      end
+
+      it 'tries again after 30 seconds' do
+        expect(authenticate_at(first_refusal_at + 31.seconds).token).to eq(token)
+      end
+    end
+
+    context 'when INSEE keeps refusing the login' do
+      before { stub_oauth(refused_response('Invalid user credentials')) }
+
+      def refuse_successively(count)
+        time = first_refusal_at
+
+        count.times do
+          authenticate_at(time)
+          time += INSEE::AuthenticationBackoff::STEPS.last + 1.second
+        end
+
+        time - INSEE::AuthenticationBackoff::STEPS.last - 1.second
+      end
+
+      it 'doubles the wait after each refusal' do
+        last_refusal_at = refuse_successively(2)
+
+        authenticate_at(last_refusal_at + 59.seconds)
+        expect(oauth_calls).to eq(2)
+
+        authenticate_at(last_refusal_at + 61.seconds)
+        expect(oauth_calls).to eq(3)
+      end
+
+      it 'waits five minutes at most' do
+        last_refusal_at = refuse_successively(8)
+
+        authenticate_at(last_refusal_at + 299.seconds)
+        expect(oauth_calls).to eq(8)
+
+        authenticate_at(last_refusal_at + 301.seconds)
+        expect(oauth_calls).to eq(9)
+      end
+    end
+
+    context 'when INSEE grants a token after refusals' do
+      before do
+        stub_oauth(
+          refused_response('Invalid user credentials'),
+          refused_response('Invalid user credentials'),
+          granted_response(access_token: 'granted-token', expires_in: 1),
+          refused_response('Invalid user credentials')
+        )
+      end
+
+      it 'starts over from the shortest wait' do
+        authenticate_at(first_refusal_at)
+        authenticate_at(first_refusal_at + 31.seconds)
+        authenticate_at(first_refusal_at + 92.seconds)
+        authenticate_at(first_refusal_at + 100.seconds)
+
+        authenticate_at(first_refusal_at + 131.seconds)
+
+        expect(oauth_calls).to eq(5)
+      end
+    end
+
+    context 'when Keycloak reports the account as not fully set up' do
+      before do
+        stub_oauth(refused_response('Account is not fully set up'), granted_response)
+        authenticate_at(first_refusal_at)
+      end
+
+      it 'tries again after 30 seconds, since that refusal follows an accepted password' do
+        expect(authenticate_at(first_refusal_at + 31.seconds).token).to eq(token)
+      end
+    end
+
+    context 'when INSEE refuses the login several times in a row' do
+      before do
+        stub_oauth(refused_response('Invalid user credentials'), refused_response('Invalid user credentials'), granted_response)
+        authenticate_at(first_refusal_at)
+        authenticate_at(first_refusal_at + 31.seconds)
+      end
+
+      it 'alerts once for the whole episode' do
+        expect(MonitoringService.instance).to have_received(:track_with_added_context)
+          .with('error', anything, anything).once
+      end
+
+      it 'reports the recovery with the length of the episode' do
+        authenticate_at(first_refusal_at + 92.seconds)
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          'warning',
+          'INSEE authentication recovered',
+          hash_including(refusals: 2, outage_seconds: 92)
+        )
+      end
+    end
+
+    context 'when INSEE keeps reporting the account as disabled' do
+      before do
+        stub_oauth(refused_response('Account disabled'))
+        authenticate_at(first_refusal_at)
+        authenticate_at(first_refusal_at + 31.seconds)
+      end
+
+      it 'alerts once for the whole episode' do
+        expect(MonitoringService.instance).to have_received(:track_with_added_context)
+          .with('error', anything, anything).once
+      end
+    end
+
+    context 'when refusals keep coming for more than an hour' do
+      before do
+        stub_oauth(refused_response('Invalid user credentials'))
+        13.times { |index| authenticate_at(first_refusal_at + (index * 301).seconds) }
+      end
+
+      it 'still alerts once' do
+        expect(MonitoringService.instance).to have_received(:track_with_added_context)
+          .with('error', anything, anything).once
+      end
+
+      it 'still holds back for five minutes' do
+        authenticate_at(first_refusal_at + (12 * 301).seconds + 299.seconds)
+
+        expect(oauth_calls).to eq(13)
+      end
+    end
+
+    context 'when a refusal comes more than an hour after the previous one' do
+      before do
+        stub_oauth(refused_response('Invalid user credentials'), refused_response('Invalid user credentials'), granted_response)
+        authenticate_at(first_refusal_at)
+        authenticate_at(first_refusal_at + 2.hours)
+      end
+
+      it 'alerts again' do
+        expect(MonitoringService.instance).to have_received(:track_with_added_context)
+          .with('error', anything, anything).twice
+      end
+
+      it 'starts over from the shortest wait' do
+        authenticate_at(first_refusal_at + 2.hours + 31.seconds)
+
+        expect(oauth_calls).to eq(3)
+      end
+    end
+
+    context 'when INSEE grants a token outside of any episode' do
+      before do
+        stub_oauth(granted_response)
+        authenticate_at(first_refusal_at)
+      end
+
+      it 'reports nothing' do
+        expect(MonitoringService.instance).not_to have_received(:track_with_added_context)
+      end
+    end
+
+    context 'when INSEE refuses the OAuth exchange itself' do
+      before do
+        stub_oauth({ status: 400, body: { error: 'invalid_client' }.to_json }, granted_response)
+        authenticate_at(first_refusal_at)
+      end
+
+      it 'holds back the next authentications for 30 minutes' do
+        authenticate_at(first_refusal_at + 29.minutes)
+
+        expect(oauth_calls).to eq(1)
+      end
+    end
+
+    context 'when a renewal ahead of expiry is refused' do
+      before do
+        stub_oauth(granted_response(access_token: 'current-token'), refused_response('Invalid user credentials'), granted_response(access_token: 'renewed-token'))
+        authenticate_at(first_refusal_at)
+        authenticate_at(first_refusal_at + 220.seconds)
+      end
+
+      it 'keeps the current token while holding back' do
+        expect(authenticate_at(first_refusal_at + 240.seconds).token).to eq('current-token')
+        expect(oauth_calls).to eq(2)
+      end
+
+      it 'renews on the next try before the current token expires' do
+        expect(authenticate_at(first_refusal_at + 251.seconds).token).to eq('renewed-token')
+      end
     end
   end
 
@@ -527,7 +750,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'does not remember a failure' do
       retrieve_token
 
-      expect(guard_read(described_class::FAILURE_CACHE_KEY)).to be_nil
+      expect(guard_read(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY)).to be_nil
     end
 
     it 'does not alert' do
@@ -551,6 +774,16 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       expect(retrieve_token.errors.first).to be_a(ProviderAuthenticationError)
 
       expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).once
+    end
+
+    it 'does not blame a desynchronization it cannot detect' do
+      retrieve_token
+
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+        'error',
+        'INSEE refused the only password candidate: intermittent refusal or account locked',
+        hash_including(candidates_count: 1, refusals: 1)
+      )
     end
   end
 
@@ -867,7 +1100,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'holds back the next authentications' do
       retrieve_token
 
-      expect(guard_read(described_class::FAILURE_CACHE_KEY)).to be(true)
+      expect(guard_read(INSEE::AuthenticationBackoff::HOLD_CACHE_KEY)).to be(true)
     end
   end
 
