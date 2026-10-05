@@ -13,12 +13,14 @@ class MarkdownInterpolator
   def perform
     return '' if @content.blank?
 
-    Kramdown::Document.new(
+    document = Kramdown::Document.new(
       content_interpolated,
       input: 'GFM',
       parse_block_html: true,
       hard_wrap: @hard_wrap
-    ).to_html
+    )
+
+    NewTabSafeHtmlConverter.convert(document.root, document.options).first
   end
 
   def content_interpolated
