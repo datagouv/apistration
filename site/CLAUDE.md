@@ -60,6 +60,25 @@ organizer qui se termine par l'interactor `Admin::TrackActivity`.
 - Garde-fou : `spec/organizers/application_organizer_spec.rb` échoue si un
   organizer `Admin::` ne se termine pas par `Admin::TrackActivity`.
 
+## Accessibilité (RGAA / DSFR)
+
+- Lien ouvrant un nouvel onglet : toujours `external_link_to`
+  (`ApplicationHelper`), jamais `target="_blank"` à la main. Il pose
+  `rel="noopener noreferrer"` (reverse tabnabbing) et le libellé
+  « (nouvelle fenêtre) » en `fr-sr-only` : ne pas ajouter ce libellé en
+  plus. Accepte un texte ou un bloc, et des `html_options` (`class`, `id`,
+  `title`).
+- Markdown (`commons/endpoints`, FAQ, fiches pratiques) :
+  `{:target="_blank"}` suffit, `NewTabSafeHtmlConverter` ajoute le `rel`.
+- Traduction contenant un lien HTML : écrire `rel="noopener noreferrer"`
+  à côté de `target="_blank"`, sinon `spec/i18n_spec.rb` échoue.
+- Mails MJML : pas d'`external_link_to`, `fr-sr-only` n'existe pas dans
+  leur CSS et le libellé y serait visible.
+- Icône décorative : `aria-hidden="true"`.
+- Specs feature : `expect(page).not_to expose_window_opener` vérifie
+  qu'aucun lien de la page ne s'ouvre dans un nouvel onglet sans
+  `rel="noopener"`.
+
 ## Code Style Guidelines
 
 - **Ruby Style**: Follow RuboCop configuration in `.rubocop.yml`
