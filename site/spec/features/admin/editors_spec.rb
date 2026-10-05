@@ -23,6 +23,12 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_current_path(admin_editor_path(editor))
     end
 
+    it 'opens the annuaire-entreprises link without exposing window.opener' do
+      expect(page).to have_css(
+        "a[href='https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}'][target='_blank'][rel='noopener noreferrer']"
+      )
+    end
+
     it 'filters by name' do
       create(:editor, name: 'Other Corp')
       visit admin_editors_path(search: 'UMAD')
@@ -54,6 +60,12 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_text(editor.contact_email)
       expect(page).to have_text(editor.domain)
       expect(page).to have_text(editor.description)
+    end
+
+    it 'opens the annuaire-entreprises link without exposing window.opener' do
+      expect(page).to have_css(
+        "a[href='https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}'][target='_blank'][rel='noopener noreferrer']"
+      )
     end
 
     it 'displays members' do

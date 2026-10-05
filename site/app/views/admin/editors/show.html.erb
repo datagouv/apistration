@@ -33,9 +33,7 @@
                   <th scope="row">SIRET</th>
                   <td>
                     <% if @editor.siret.present? %>
-                      <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= @editor.siret %>" target="_blank" class="fr-link">
-                        <%= @editor.siret %>
-                      </a>
+                      <%= external_link_to @editor.siret, "https://annuaire-entreprises.data.gouv.fr/etablissement/#{@editor.siret}", class: 'fr-link' %>
                     <% else %>
                       <span class="fr-text--light">Non renseigné</span>
                     <% end %>

@@ -54,6 +54,20 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
     end
   end
 
+  describe 'organizations' do
+    let!(:authorization_request) { create(:authorization_request, :with_demandeur) }
+
+    it 'opens the annuaire-entreprises link without exposing window.opener' do
+      visit admin_users_path
+
+      within("##{dom_id(authorization_request.demandeur)} .user-organizations") do
+        expect(page).to have_css(
+          "a[href='https://annuaire-entreprises.data.gouv.fr/etablissement/#{authorization_request.siret}'][target='_blank'][rel='noopener noreferrer']"
+        )
+      end
+    end
+  end
+
   describe 'adding an editor to a specific user' do
     subject(:add_editor) do
       visit admin_users_path

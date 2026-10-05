@@ -53,7 +53,7 @@
                 <% user.authorization_requests.where(api: namespace).each do |authorization_request| %>
                   <% if authorization_request.siret %>
                     <li>
-                      <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank"><%= authorization_request.siret %></a>
+                      <%= external_link_to authorization_request.siret, "https://annuaire-entreprises.data.gouv.fr/etablissement/#{authorization_request.siret}" %>
                     </li>
                   <% end %>
                 <% end %>

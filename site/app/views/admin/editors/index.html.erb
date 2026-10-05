@@ -41,9 +41,7 @@
           </td>
           <td>
             <% if editor.siret.present? %>
-              <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= editor.siret %>" target="_blank" class="fr-link">
-                <%= editor.siret %>
-              </a>
+              <%= external_link_to editor.siret, "https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}", class: 'fr-link' %>
             <% end %>
           </td>
           <td><%= editor.form_uids.size %></td>
