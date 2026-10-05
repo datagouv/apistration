@@ -62,6 +62,10 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_text(editor.description)
     end
 
+    it 'opens no new tab exposing window.opener' do
+      expect(page).not_to expose_window_opener
+    end
+
     it 'opens the annuaire-entreprises link without exposing window.opener' do
       expect(page).to have_css(
         "a[href='https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}'][target='_blank'][rel='noopener noreferrer']"

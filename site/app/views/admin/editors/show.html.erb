@@ -92,11 +92,7 @@
   <ul class="fr-tags-group fr-mb-4w">
     <% @editor.form_uids.each do |form_uid| %>
       <li>
-        <a href="<%= datapass_v2_base_url(namespace) %>/formulaires/<%= form_uid %>/demande/nouveau"
-           target="_blank"
-           class="fr-tag">
-          <%= form_uid %>
-        </a>
+        <%= external_link_to form_uid, "#{datapass_v2_base_url(namespace)}/formulaires/#{form_uid}/demande/nouveau", class: 'fr-tag' %>
       </li>
     <% end %>
   </ul>

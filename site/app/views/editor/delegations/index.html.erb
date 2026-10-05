@@ -41,7 +41,7 @@
                   <code class="fr-text--sm"><%= delegation.id %></code>
                 </td>
                 <td>
-                  <%= link_to "DataPass ##{ar.external_id}", "#{datapass_v2_base_url(ar.api)}/public/demandes/#{ar.public_id}", target: '_blank' %>
+                  <%= external_link_to "DataPass ##{ar.external_id}", datapass_v2_public_authorization_request_url(ar) %>
                 </td>
                 <td><%= ar.intitule %></td>
                 <td>

@@ -57,6 +57,12 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
   describe 'organizations' do
     let!(:authorization_request) { create(:authorization_request, :with_demandeur) }
 
+    it 'opens no new tab exposing window.opener' do
+      visit admin_users_path
+
+      expect(page).not_to expose_window_opener
+    end
+
     it 'opens the annuaire-entreprises link without exposing window.opener' do
       visit admin_users_path
 
