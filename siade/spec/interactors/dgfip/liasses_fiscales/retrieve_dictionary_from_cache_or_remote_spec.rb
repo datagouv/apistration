@@ -57,6 +57,12 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
       it { is_expected.to be_a_success }
       its(:dictionary) { is_expected.to eq(data) }
+
+      it 'caches the dictionary for 24 hours' do
+        expect(EncryptedCache).to receive(:write).with(key, anything, expires_in: 24.hours).and_call_original
+
+        subject
+      end
     end
   end
 
