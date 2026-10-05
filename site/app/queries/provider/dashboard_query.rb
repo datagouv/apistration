@@ -313,14 +313,14 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     end
   end
 
-  def coalesce_sum(column) = Arel.sql("COALESCE(SUM(#{column}), 0)")
+  def coalesce_sum(column)
+    Arel::Nodes::NamedFunction.new('COALESCE', [ConsumptionSummary.arel_table[column].sum, Arel::Nodes.build_quoted(0)])
+  end
 
-  def match_routes(relation, column = nil)
-    api_col = column || "#{relation.klass.table_name}.api"
+  def match_routes(relation)
     return relation if requested_controllers.nil?
-    return relation.where('1 = 0') if requested_controllers.empty?
 
-    relation.where("#{api_col} = ANY(ARRAY[?]::text[])", requested_controllers)
+    relation.where(api: requested_controllers)
   end
 
   def requested_controllers
@@ -341,13 +341,6 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def expand_routes(routes)
     routes.flat_map { |r| filter.controllers_with_legacy.fetch(r, [r]) }.uniq
-  end
-
-  def restrict_by_provider_uid(relation, api_col)
-    relation.where(
-      "(string_to_array(#{api_col}, '/'))[3] = ANY(ARRAY[?]::text[])",
-      Array(provider.routes_or_uid_to_match)
-    )
   end
 
   def weighted_duration_sum_sql
