@@ -130,11 +130,9 @@ RSpec.configure do |config|
   config.before do
     stub_request(:get, %r{/.well-known/openid-configuration}).and_return(
       status: 200,
+      headers: { 'Content-Type' => 'application/json' },
       body: { authorization_endpoint: 'https://proconnect.test/authorize' }.to_json
     )
-
-    OmniAuth::Strategies::Proconnect.instance_variable_set(:@discovered_configuration, nil)
-    OmniAuth::Strategies::Proconnect.instance_variable_set(:@authorization_endpoint, nil)
   end
 
   %w[api_entreprise api_particulier].each do |app|
