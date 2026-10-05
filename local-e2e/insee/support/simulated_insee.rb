@@ -1,9 +1,14 @@
 class SimulatedINSEE
-  attr_accessor :oauth_fault, :renewal_fault, :after_oauth, :before_resource, :oauth_delay, :expires_in, :reject_resources
+  attr_accessor :oauth_fault, :renewal_fault, :after_oauth, :before_resource, :oauth_delay, :expires_in, :reject_resources,
+    :account_status
 
   def initialize(redis)
     @redis = redis
-    @expires_in = 3600
+    @expires_in = 300
+  end
+
+  def refuse_next_logins(count)
+    @redis.set('refused_logins', count)
   end
 
   def password=(password)
@@ -76,9 +81,15 @@ class SimulatedINSEE
     return response(400, error: 'invalid_client') if oauth_fault == :invalid_client
     return response(oauth_fault, error: 'unavailable') if oauth_fault
     return response(400, error: 'invalid_client') unless valid_client?(parameters)
-    return response(401, error: 'invalid_grant') unless parameters.fetch('password') == password
+    return response(400, error: 'invalid_grant', error_description: account_status) if account_status
+    return response(400, error: 'invalid_grant', error_description: 'Account is not fully set up') if refuse_login?
+    return response(401, error: 'invalid_grant', error_description: 'Invalid user credentials') unless parameters.fetch('password') == password
 
     response(200, access_token: issue_token, expires_in:)
+  end
+
+  def refuse_login?
+    @redis.decr('refused_logins') >= 0
   end
 
   def valid_client?(parameters)

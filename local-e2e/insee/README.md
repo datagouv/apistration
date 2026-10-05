@@ -14,14 +14,23 @@ fictifs et intercepte tous les échanges HTTP avec WebMock. Aucun credential
 applicatif ni base Postgres n'est chargé. Le Redis temporaire est supprimé à la
 fin, y compris en cas d'échec.
 
-Le simulateur conserve le mot de passe et les tokens acceptés. Les scénarios
-vérifient les replis, les erreurs temporaires, le garde-fou et son expiration,
-la panne Redis, le bypass et l'expiration du token. Huit processus concurrents
+Le simulateur conserve le mot de passe et les tokens acceptés. Comme le realm
+Keycloak de l'INSEE, il émet des tokens de 5 minutes, répond 401 à un mot de
+passe faux, peut refuser par intermittence en 400 un mot de passe valide
+(`refuse_next_logins`) et signaler un compte désactivé (`account_status`). Les scénarios vérifient les replis, les erreurs
+temporaires, le garde-fou et son expiration, la panne Redis, le bypass et
+l'expiration du token. Huit processus concurrents
 vérifient l'authentification réussie, la désynchronisation, un OAuth lent,
 un 503 et des 401 simultanés. Deux scénarios provoquent un remplacement juste
 avant la suppression du token ou du verrou pour vérifier leur conservation.
 `siade` vérifie aussi les 401 pendant une requête avec cache local,
-les erreurs `01006` / `01011` et le chiffrement du token. `site` vérifie le
+les erreurs `01006` / `01011` et le chiffrement du token, ainsi que le
+renouvellement anticipé (y compris refusé, face à un OAuth indisponible et sous
+concurrence), le backoff et ses alertes par épisode, y compris pour un compte
+désactivé.
+Deux scénarios fixent des limites connues : après novembre, un refus
+intermittent fait essayer le mot de passe précédent ; deux instances sans Redis
+commun cumulent six refus en 91 secondes. `site` vérifie le
 renouvellement, sa réponse perdue, la sortie du bypass et les conditions
 d'exécution du job.
 

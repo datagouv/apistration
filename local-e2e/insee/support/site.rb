@@ -42,6 +42,10 @@ class SiteINSEESmoke < INSEESmoke
     INSEEAPIAuthentication.invalidate_token_cache!(token)
   end
 
+  def first_refusal_hold
+    30.minutes
+  end
+
   def clear_guards
     INSEEAPIAuthentication.clear_guards!
   end

@@ -48,6 +48,19 @@ class SIADEINSEESmoke < INSEESmoke
     INSEE::Authenticate.invalidate_token_cache!(token)
   end
 
+  def before_derivation
+    Timecop.freeze(Time.new(2026, 10, 15, 12, 0, 0, '+02:00'))
+    provider.password = STATIC_PASSWORD
+  end
+
+  def alert_messages
+    alerts.map(&:first)
+  end
+
+  def first_refusal_hold
+    30.seconds
+  end
+
   def clear_guards
     INSEE::Authenticate.clear_guards!
   end
@@ -148,9 +161,150 @@ class SIADEINSEESmoke < INSEESmoke
       expect(guard_active?).to be(true)
     end
 
+    scenario('renouvellement anticipé : token courant jusqu’à 90 s de l’expiration, puis nouveau token') do
+      started_at = Time.current
+      token = authenticate
+      Timecop.freeze(started_at + 209.seconds)
+      expect(authenticate).to eq(token)
+      expect(provider.attempts.size).to eq(1)
+      Timecop.freeze(started_at + 211.seconds)
+      renewed = authenticate
+      expect(renewed).not_to eq(token)
+      expect(published_token).to eq(renewed)
+      expect(fetch_resource).to include('siren' => '123456789')
+      expect(provider.attempts.size).to eq(2)
+      expect(lock_value).to be_nil
+    end
+
+    scenario('refus intermittent au renouvellement : aucune requête en échec, nouveau token 30 s après') do
+      before_derivation
+      started_at = Time.current
+      token = authenticate
+      Timecop.freeze(started_at + 211.seconds)
+      provider.refuse_next_logins(1)
+      expect(fetch_resource).to include('siren' => '123456789')
+      expect(published_token).to eq(token)
+      Timecop.freeze(started_at + 240.seconds)
+      expect(fetch_resource).to include('siren' => '123456789')
+      expect(provider.attempts.size).to eq(2)
+      Timecop.freeze(started_at + 242.seconds)
+      expect(authenticate).not_to eq(token)
+      expect(provider.attempts.size).to eq(3)
+      expect(provider.bearers).to all(eq("Bearer #{token}"))
+      expect(alert_messages).to eq(
+        [['error', 'INSEE refused the only password candidate: intermittent refusal or account locked'],
+         ['warning', 'INSEE authentication recovered']]
+      )
+    end
+
+    scenario('refus isolé sans token : 01006, suspension de 30 s puis reprise, une alerte et un retour') do
+      before_derivation
+      started_at = Time.current
+      provider.refuse_next_logins(1)
+      expect_rejection
+      Timecop.freeze(started_at + 29.seconds)
+      expect_temporary_failure
+      expect(provider.attempts.size).to eq(1)
+      Timecop.freeze(started_at + 31.seconds)
+      expect(fetch_resource).to include('siren' => '123456789')
+      expect(provider.attempts.size).to eq(2)
+      expect(alert_messages.map(&:first)).to eq(%w[error warning])
+    end
+
+    scenario('refus prolongé : suspensions de 30 s, 1, 2, 4 puis 5 min, une seule alerte') do
+      before_derivation
+      provider.refuse_next_logins(100)
+      expect_rejection
+      [30, 60, 120, 240, 300, 300].each.with_index(2) do |hold, attempts|
+        Timecop.freeze(Time.current + hold - 1)
+        expect_temporary_failure
+        expect(provider.attempts.size).to eq(attempts - 1)
+        Timecop.freeze(Time.current + 2)
+        expect_rejection
+        expect(provider.attempts.size).to eq(attempts)
+      end
+      provider.refuse_next_logins(0)
+      Timecop.freeze(Time.current + 301)
+      expect(fetch_resource).to include('siren' => '123456789')
+      expect(alert_messages.map(&:first)).to eq(%w[error warning])
+      expect(alerts.last.first).to eq(['warning', 'INSEE authentication recovered'])
+    end
+
+    scenario('compte désactivé par Keycloak : backoff ordinaire et une seule alerte') do
+      before_derivation
+      provider.account_status = 'Account disabled'
+      expect_rejection
+      Timecop.freeze(Time.current + 31.seconds)
+      expect_rejection
+      expect(provider.attempts.size).to eq(2)
+      expect(alert_messages.map(&:first)).to eq(%w[error])
+    end
+
+    scenario('OAuth indisponible après novembre : une seule tentative, le parcours des candidats devant finir avant l’expiration') do
+      started_at = Time.current
+      token = authenticate
+      provider.oauth_fault = 503
+      Timecop.freeze(started_at + 211.seconds)
+      3.times { expect(fetch_resource).to include('siren' => '123456789') }
+      Timecop.freeze(started_at + 242.seconds)
+      expect(authenticate).to eq(token)
+      expect(provider.attempts.size).to eq(2)
+    end
+
+    scenario('OAuth indisponible pendant le renouvellement : une tentative toutes les 30 s, pas une par requête') do
+      before_derivation
+      started_at = Time.current
+      token = authenticate
+      provider.oauth_fault = 503
+      Timecop.freeze(started_at + 211.seconds)
+      5.times { expect(fetch_resource).to include('siren' => '123456789') }
+      expect(provider.attempts.size).to eq(2)
+      Timecop.freeze(started_at + 242.seconds)
+      expect(authenticate).to eq(token)
+      expect(provider.attempts.size).to eq(3)
+      Timecop.freeze(started_at + 275.seconds)
+      expect(authenticate).to eq(token)
+      expect(provider.attempts.size).to eq(3)
+      expect(guard_active?).to be(false)
+    end
+
+    scenario('refus intermittent après novembre : le précédent est essayé et refusé avant le courant') do
+      provider.refuse_next_logins(1)
+      authenticate
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, PREVIOUS_PASSWORD, CURRENT_PASSWORD])
+      expect(alerts).to be_empty
+    end
+
+    scenario('huit processus au renouvellement : un seul échange, aucun échec') do
+      started_at = Time.current
+      token = authenticate
+      Timecop.freeze(started_at + 211.seconds)
+      provider.oauth_delay = 0.15
+      concurrent_workers { state.rpush('worker_tokens', authenticate) }
+      renewed = published_token
+      expect(renewed).not_to eq(token)
+      expect(state.lrange('worker_tokens', 0, -1)).to all(satisfy { |worker_token| [token, renewed].include?(worker_token) })
+      expect(provider.attempts.size).to eq(2)
+      expect(lock_value).to be_nil
+    end
+
+    scenario('deux instances sans Redis commun : six refus en 91 s, au-delà du seuil Keycloak de cinq') do
+      before_derivation
+      started_at = Time.current
+      provider.refuse_next_logins(100)
+      [0, 31, 91].each do |offset|
+        Timecop.freeze(started_at + offset.seconds)
+        [2, 3].each do |db|
+          reconnect_cache(namespace: "instance-#{db}", db:)
+          expect_rejection
+        end
+      end
+      expect(provider.attempts.size).to eq(6)
+    end
+
     scenario('cache chiffré et TTL aligné sur expires_in moins dix secondes') do
       token = authenticate
-      expect(EncryptedCache.expires_in(INSEE::Authenticate::CACHE_KEY)).to be_between(3580, 3590)
+      expect(EncryptedCache.expires_in(INSEE::Authenticate::CACHE_KEY)).to be_between(280, 290)
       values = @cache_redis.keys('*').map { |key| @cache_redis.get(key) }
       expect(values.join).not_to include(token)
       expect(authenticate).to eq(token)
