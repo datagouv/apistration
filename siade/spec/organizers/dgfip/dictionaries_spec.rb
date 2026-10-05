@@ -43,8 +43,10 @@ RSpec.describe DGFIP::Dictionaries, type: :retriever_organizer do
       expect(stubbed_request).to have_been_requested
     end
 
-    it 'bundles a dictionnaire' do
-      expect(subject.bundled_data.data.dictionnaire).to eq(dictionnaire)
+    it 'bundles the remote dictionnaire completed with the local one' do
+      local_numeros_imprimes = JSON.parse(Rails.root.join('config/dgfip/dictionnaires/2019.json').read)['dictionnaire'].pluck('numero_imprime')
+
+      expect(subject.bundled_data.data.dictionnaire.pluck('numero_imprime')).to match_array(local_numeros_imprimes | dictionnaire.pluck('numero_imprime'))
     end
   end
 end
