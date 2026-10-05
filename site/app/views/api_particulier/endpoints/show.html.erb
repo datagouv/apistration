@@ -109,7 +109,7 @@
         <div class="fr-mt-4w fr-mb-4w">
           <div class="fr-alert fr-alert--warning fr-mb-2w">
             <p class="fr-alert__title">
-              <%= raw @endpoint.alert['title'] %>
+              <%= sanitize @endpoint.alert['title'] %>
             </p>
             <p>
               <%= markdown_to_html(@endpoint.alert['description']) %>

@@ -20,6 +20,14 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
     expect(page).to have_css('#property_attribute_allocataires')
   end
 
+  describe 'alert' do
+    let(:uid) { 'cnav/psu' }
+
+    it 'keeps the formatting of the title' do
+      expect(page).to have_css('.fr-alert__title i', text: 'année du calcul des ressources')
+    end
+  end
+
   it "displays cas d'usage" do
     allow(SimplifionsStore.instance).to receive(:for_endpoint).and_return([
       APIParticulier::CasUsage.new(name: 'Tarification cantine scolaire à 1€', url: 'https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1eur', icon: '🏫', description: nil, administrations: [], public_cible: [])

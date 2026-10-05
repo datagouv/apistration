@@ -111,7 +111,7 @@
         <div class="fr-mt-4w fr-mb-4w">
           <div class="fr-alert fr-alert--warning fr-mb-2w">
             <p class="fr-alert__title">
-              <%= raw @endpoint.alert['title'] %>
+              <%= sanitize @endpoint.alert['title'] %>
             </p>
             <p>
               <%= markdown_to_html(@endpoint.alert['description']) %>
@@ -120,7 +120,14 @@
         </div>
       <% end %>
       <% if @endpoint.dummy? %>
-        <%= @endpoint.open_api_definition['disclaimer'].html_safe %>
+        <div class="fr-alert fr-alert--error">
+          <p class="fr-alert__title">
+            <%= t('.not_implemented.title') %>
+          </p>
+        </div>
+        <br>
+        <hr />
+        <br>
       <% elsif @endpoint.deprecated? %>
         <div class="fr-alert fr-alert--error fr-mb-2w">
           <p class="fr-alert__title">

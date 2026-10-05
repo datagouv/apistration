@@ -32,6 +32,22 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
     expect(page).to have_link('Marchés publics', href: 'https://simplifions.data.gouv.fr/cas-d-usages/marches-publics')
   end
 
+  describe 'alert' do
+    let(:uid) { 'siaf/fondations' }
+
+    it 'displays the title' do
+      expect(page).to have_css('.fr-alert__title', text: 'API disponible uniquement en environnement de test')
+    end
+  end
+
+  describe 'not yet implemented endpoint' do
+    let(:uid) { 'agence_bio/certifications_bio' }
+
+    it 'displays the disclaimer' do
+      expect(page).to have_css('.fr-alert--error .fr-alert__title', text: "Cette API n'est pas encore implémentée en V.3.")
+    end
+  end
+
   it 'displays a link to Socle de base for included endpoints' do
     expect(page).to have_link('Socle de base DLNUF', href: cas_usage_path(uid: 'socle_de_base'))
   end
