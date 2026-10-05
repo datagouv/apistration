@@ -84,4 +84,20 @@ RSpec.describe ProlongTokenWizard do
       end
     end
   end
+
+  describe '#close_unfinished!' do
+    subject(:close_unfinished!) { prolong_token_wizard.close_unfinished! }
+
+    let(:prolong_token_wizard) { create(:prolong_token_wizard, status: nil) }
+
+    it 'marks the wizard as prolonged despite missing answers' do
+      close_unfinished!
+
+      expect(prolong_token_wizard.reload).to be_prolonged
+    end
+
+    it 'does not prolong the token' do
+      expect { close_unfinished! }.not_to(change { prolong_token_wizard.token.reload.exp })
+    end
+  end
 end

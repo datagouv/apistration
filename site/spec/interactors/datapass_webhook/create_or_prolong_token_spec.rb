@@ -98,5 +98,24 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
         expect(prolong_token_wizard.reload.status).to eq('prolonged')
       end
     end
+
+    context 'when an unfinished prolong_token_wizard exists' do
+      let!(:token) { create(:token, authorization_request:, exp: Time.zone.local(2024, 1, 1)) }
+      let!(:prolong_token_wizard) { create(:prolong_token_wizard, token:, status: nil) }
+
+      it { is_expected.to be_a_success }
+
+      it 'prolongs existings token' do
+        subject
+
+        expect(token.reload.exp).to eq(18.months.from_now.to_i)
+      end
+
+      it 'closes the unfinished prolong_token_wizard' do
+        subject
+
+        expect(prolong_token_wizard.reload.status).to eq('prolonged')
+      end
+    end
   end
 end
