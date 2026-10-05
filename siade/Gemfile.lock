@@ -172,7 +172,7 @@ GEM
       logger
     heapy (0.2.0)
       thor
-    hexapdf (1.10.0)
+    hexapdf (1.11.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -220,7 +220,7 @@ GEM
       nokogiri (>= 1.12.0)
     lumberjack (1.4.2)
     marcel (2.1.0)
-    mcp (1.6.0)
+    mcp (1.6.1)
       json_schemer (>= 2.4)
     memory_profiler (1.1.0)
     method_source (1.1.0)
@@ -363,7 +363,7 @@ GEM
       redis-client (= 0.30.1)
     redis-client (0.30.1)
       connection_pool
-    regexp_parser (2.13.0)
+    regexp_parser (2.13.1)
     reline (0.6.3)
       io-console (~> 0.5)
     request_store (1.7.0)
