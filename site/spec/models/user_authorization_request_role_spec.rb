@@ -5,6 +5,28 @@ RSpec.describe UserAuthorizationRequestRole do
   let(:contact_technique) { create(:user) }
   let(:contact_metier) { create(:user) }
 
+  describe 'role uniqueness per authorization request' do
+    let(:authorization_request) { create(:authorization_request) }
+
+    before do
+      create(:user_authorization_request_role, :contact_technique, authorization_request:)
+    end
+
+    it 'rejects a second user on the same role' do
+      expect(build(:user_authorization_request_role, :contact_technique, authorization_request:)).not_to be_valid
+    end
+
+    it 'enforces it at the database level' do
+      expect {
+        build(:user_authorization_request_role, :contact_technique, authorization_request:).save!(validate: false)
+      }.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+
+    it 'accepts another role on the same authorization request' do
+      expect(build(:user_authorization_request_role, :contact_metier, authorization_request:)).to be_valid
+    end
+  end
+
   describe 'factory' do
     let(:user) { create(:user) }
 

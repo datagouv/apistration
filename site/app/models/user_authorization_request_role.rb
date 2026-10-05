@@ -2,12 +2,8 @@ class UserAuthorizationRequestRole < ApplicationRecord
   belongs_to :user, optional: false
   belongs_to :authorization_request, optional: false
 
-  validates :authorization_request_id,
-    uniqueness: { scope: %i[user_id role] }
-  validates :user_id,
-    uniqueness: { scope: %i[authorization_request_id role] }
   validates :role,
-    uniqueness: { scope: %i[authorization_request_id user_id], case_sensitive: false },
+    uniqueness: { scope: :authorization_request_id },
     inclusion: { in: %w[demandeur contact_metier contact_technique] }
 
   belongs_to :demandeur,

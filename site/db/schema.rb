@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_05_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -336,6 +336,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_23_120000) do
     t.string "role", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.index ["authorization_request_id", "role"], name: "index_user_authorization_request_roles_on_ar_id_and_role", unique: true
     t.index ["user_id", "authorization_request_id", "role"], name: "index_authorization_id_user_id_role", unique: true
   end
 
