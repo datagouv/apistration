@@ -17,7 +17,7 @@ class Editor::AuthorizationRequestsController < EditorController
   def build_search_query
     current_editor
       .authorization_requests(api: namespace)
-      .includes(:active_token, :demandeur)
+      .includes(:active_token, :demandeur, :organization)
       .where(status: 'validated')
       .ransack(params[:q])
   end
