@@ -22,7 +22,7 @@ module Admin
     end
 
     def endpoint_params
-      params.permit!.to_h.except(:controller, :action, :endpoint_uid, :authenticity_token, :commit)
+      params.permit(*@facade.permitted_params).to_h
     end
 
     def set_request_metadata_values

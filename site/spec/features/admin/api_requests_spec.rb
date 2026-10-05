@@ -81,6 +81,24 @@ RSpec.describe 'Admin: API requests' do
             .with { |req| valid_api_entreprise_request?(req, context: 'Forged context', object: default_object_value) }
         ).to have_been_made
       end
+
+      it 'does not forward parameters the endpoint does not declare' do
+        page.driver.submit(
+          :post,
+          admin_api_requests_path,
+          {
+            endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}',
+            siren: '130025265',
+            undeclared: 'injected'
+          }
+        )
+
+        expect(page).to have_text('200')
+        expect(
+          a_request(:get, %r{#{siade_entreprise_url}/v3/insee/sirene/unites_legales/130025265})
+            .with { |req| Rack::Utils.parse_nested_query(req.uri.query).key?('undeclared') }
+        ).not_to have_been_made
+      end
     end
 
     describe 'displaying the provider response' do
