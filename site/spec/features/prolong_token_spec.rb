@@ -75,5 +75,9 @@ RSpec.describe 'displays prolong token content' do
       expect(page).to have_text('Votre jeton expire dans')
       expect(page).to have_css('a#authorization_request_link')
     end
+
+    it 'opens no new tab exposing window.opener' do
+      expect(page).not_to expose_window_opener
+    end
   end
 end

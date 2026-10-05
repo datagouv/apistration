@@ -17,7 +17,7 @@
 
   <div class="buttons-wrapper">
     <% if @attestation_facade.attestation_sociale_url  %>
-      <%= link_to @attestation_facade.attestation_sociale_url, class: "fr-btn fr-m-1w", id: 'attestation-sociale-download', target: "_blank" do %>
+      <%= external_link_to @attestation_facade.attestation_sociale_url, class: "fr-btn fr-m-1w", id: 'attestation-sociale-download' do %>
         <span class="fr-icon-download-line" aria-hidden="true"></span>
         &nbsp;
         <%= t('.download_attestation_sociale_cta') %>
@@ -29,7 +29,7 @@
     <% end %>
 
     <% if @attestation_facade.attestation_fiscale_url %>
-      <%= link_to @attestation_facade.attestation_fiscale_url, class: "fr-btn fr-m-1w", id: 'attestation-fiscale-download', target: "_blank"  do %>
+      <%= external_link_to @attestation_facade.attestation_fiscale_url, class: "fr-btn fr-m-1w", id: 'attestation-fiscale-download' do %>
         <span class="fr-icon-download-line" aria-hidden="true"></span>
         &nbsp;
         <%= t('.download_attestation_fiscale_cta') %>

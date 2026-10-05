@@ -12,6 +12,12 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
           visit send(path_helper)
         }.not_to raise_error
       end
+
+      it 'opens no new tab exposing window.opener' do
+        visit send(path_helper)
+
+        expect(page).not_to expose_window_opener
+      end
     end
   end
 

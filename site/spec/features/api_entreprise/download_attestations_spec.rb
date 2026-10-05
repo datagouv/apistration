@@ -98,6 +98,12 @@ RSpec.describe 'Download attestations', app: :api_entreprise do
         expect(page).to have_no_link('attestation-sociale-download')
         expect(page).to have_link('attestation-fiscale-download', href: 'https://attestation-fiscale.com/file.pdf')
       end
+
+      it 'opens no new tab exposing window.opener' do
+        search
+
+        expect(page).not_to expose_window_opener
+      end
     end
 
     context 'when it fails' do
