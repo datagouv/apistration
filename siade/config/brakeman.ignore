@@ -1,29 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "SQL Injection",
-      "warning_code": 0,
-      "fingerprint": "34d5a05061a26c43b6f481a69e605642db95006dc57434a7239872f92e1226b7",
-      "check_name": "SQL",
-      "message": "Possible SQL injection",
-      "file": "app/ping_drivers/abstract_ping_driver.rb",
-      "line": 41,
-      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "Arel.sql(\"COUNT(*), COUNT(*) FILTER (WHERE status IN (#{error_statuses.map do\n \"'#{s}'\"\n end.join(\", \")}))\")",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "AbstractPingDriver",
-        "method": "error_ratio_too_high?"
-      },
-      "user_input": "error_statuses.map do\n \"'#{s}'\"\n end.join(\", \")",
-      "confidence": "Medium",
-      "cwe_id": [
-        89
-      ],
-      "note": ""
-    },
-    {
       "warning_type": "Remote Code Execution",
       "warning_code": 25,
       "fingerprint": "731049e7eb9aedaa3997bbc85a64724785cddaa50598a10c85c4e146bcc8d0d1",

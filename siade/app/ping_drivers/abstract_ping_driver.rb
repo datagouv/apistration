@@ -46,6 +46,10 @@ class AbstractPingDriver < ApplicationPingDriver
   def counts
     AccessLogPingView
       .where(route: routes)
-      .pick(Arel.sql("COUNT(*), COUNT(*) FILTER (WHERE status IN (#{error_statuses.map { |s| "'#{s}'" }.join(', ')}))"))
+      .pick(Arel.star.count, Arel.star.count.filter(error_status_in(AccessLogPingView)))
+  end
+
+  def error_status_in(model)
+    model.arel_table[:status].in(error_statuses)
   end
 end

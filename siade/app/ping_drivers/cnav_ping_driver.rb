@@ -58,14 +58,18 @@ class CNAVPingDriver < AbstractPingDriver
   def rate_limit_snapshot
     @rate_limit_snapshot ||= AccessLog
       .where(route: routes, timestamp: 10.minutes.ago..)
-      .pick(Arel.sql(<<~SQL.squish)) || [0, 0, 0]
-        COUNT(*),
-        COUNT(*) FILTER (WHERE status IN (#{quoted_error_statuses}) AND COALESCE(params ->> 'error_subcode', '') = '#{RATE_LIMIT_SUBCODE}'),
-        COUNT(*) FILTER (WHERE status IN (#{quoted_error_statuses}) AND COALESCE(params ->> 'error_subcode', '') != '#{RATE_LIMIT_SUBCODE}')
-      SQL
+      .pick(
+        Arel.star.count,
+        errors_count_where(error_subcode.is_not_distinct_from(RATE_LIMIT_SUBCODE)),
+        errors_count_where(error_subcode.is_distinct_from(RATE_LIMIT_SUBCODE))
+      ) || [0, 0, 0]
   end
 
-  def quoted_error_statuses
-    error_statuses.map { |s| "'#{s}'" }.join(', ')
+  def errors_count_where(subcode_condition)
+    Arel.star.count.filter(error_status_in(AccessLog).and(subcode_condition))
+  end
+
+  def error_subcode
+    Arel::Nodes::InfixOperation.new('->>', AccessLog.arel_table[:params], Arel::Nodes.build_quoted('error_subcode'))
   end
 end
