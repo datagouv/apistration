@@ -11,7 +11,7 @@ class BanqueDeFrance::BilansEntreprise::EnrichResourceCollectionWithDictionaries
     DGFIP::LiassesFiscales::EnrichResourceWithDictionary.call(
       declarations: resource.declarations,
       dictionaries: context.dictionaries,
-      default_dictionary_key: resource.annee
+      default_dictionary_key: resource.date_arrete_exercice
     )
   end
 

@@ -16,7 +16,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise, type: :retriever_organizer do
     let(:resource_collection) { subject.bundled_data.data }
 
     before do
-      mock_valid_dgfip_dictionnaire(2020)
+      mock_valid_dgfip_dictionnaire(2022)
       mock_valid_dgfip_dictionnaire(2021)
     end
 

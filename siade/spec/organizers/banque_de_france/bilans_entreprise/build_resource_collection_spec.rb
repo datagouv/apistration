@@ -18,7 +18,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: 
   let(:json_body) { open_payload_file('banque_de_france/bilans_entreprise_valid_data.json').read }
 
   before do
-    mock_valid_dgfip_dictionnaire(2020)
+    mock_valid_dgfip_dictionnaire(2022)
     mock_valid_dgfip_dictionnaire(2021)
   end
 

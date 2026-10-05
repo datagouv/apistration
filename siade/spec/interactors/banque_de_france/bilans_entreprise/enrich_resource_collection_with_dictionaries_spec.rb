@@ -23,7 +23,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::EnrichResourceCollectionWithDic
   let(:request_id) { SecureRandom.uuid }
 
   before do
-    mock_valid_dgfip_dictionnaire(2020)
+    mock_valid_dgfip_dictionnaire(2022)
     mock_valid_dgfip_dictionnaire(2021)
   end
 
