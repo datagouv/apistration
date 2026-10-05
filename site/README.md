@@ -79,11 +79,22 @@ Une fois le serveur local lancé, vous pouvez prévisualiser les mails [à cette
 
 ### Static security
 
-[brakeman](https://github.com/presidentbeef/brakeman) est installé. Vous pouvez
-l'utiliser en lançant la commande suivante:
+[brakeman](https://github.com/presidentbeef/brakeman) est installé. Pour
+vérifier le code comme le fait la CI :
 
 ```sh
 ./bin/brakeman
+```
+
+La commande échoue (code de sortie non nul) dès qu'un warning n'est pas
+ignoré ou qu'une entrée de `config/brakeman.ignore` est devenue obsolète.
+
+Pour ignorer un faux positif, lancer le mode interactif, qui met à jour
+`config/brakeman.ignore` ; renseigner une note expliquant pourquoi le
+warning est sans risque :
+
+```sh
+./bin/brakeman_ignore
 ```
 
 ### Développement

@@ -11,6 +11,8 @@
 - Generate OpenAPI docs: `bin/generate_swagger.sh`
 - Run Rubocop: `bundle exec rubocop`
 - Auto-fix Rubocop issues: `bundle exec rubocop -A`
+- Run Brakeman security scan: `./bin/brakeman` (fails on any warning, like CI)
+- Ignore a false positive interactively: `./bin/brakeman_ignore`
 - Test specific endpoints: `bundle exec ruby bin/test_endpoints.rb`
 - Test ping endpoints: `bundle exec rails runner bin/test_pings.rb`
 

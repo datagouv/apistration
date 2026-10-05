@@ -1,3 +1,3 @@
 #!/bin/sh
 
-bundle exec brakeman -Iconfig/brakeman.ignore
+bundle exec brakeman --quiet --no-pager --ensure-no-obsolete-ignore-entries "$@"

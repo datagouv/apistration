@@ -48,6 +48,26 @@ Il n'est pas possible de mettre de données personnelles dans les tests, soit le
 fournisseur de données a un environnement de test soit il faut utiliser webmock
 et non VCR.
 
+## Static security
+
+[brakeman](https://github.com/presidentbeef/brakeman) est installé. Pour
+vérifier le code comme le fait la CI :
+
+```sh
+./bin/brakeman
+```
+
+La commande échoue (code de sortie non nul) dès qu'un warning n'est pas
+ignoré ou qu'une entrée de `config/brakeman.ignore` est devenue obsolète.
+
+Pour ignorer un faux positif, lancer le mode interactif, qui met à jour
+`config/brakeman.ignore` ; renseigner une note expliquant pourquoi le
+warning est sans risque :
+
+```sh
+./bin/brakeman_ignore
+```
+
 ## Code Coverage
 
 Celui-ci est automatiquement généré à chaque push, et est publié sur gitlab
