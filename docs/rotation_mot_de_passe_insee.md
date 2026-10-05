@@ -92,6 +92,23 @@ multiplier les tentatives contre un compte potentiellement verrouillé. Ce
 garde-fou bloque les nouvelles authentifications ; un token encore en cache
 reste utilisable.
 
+L'alerte porte le code HTTP, `error` et `error_description` du refus. Sentry
+masque `error_description` (« Invalid user credentials » contient un mot qu'il
+filtre), d'où `refusal_reason`, qui le traduit en mots qu'il laisse passer :
+
+| `error_description` de Keycloak | `refusal_reason` |
+| --- | --- |
+| Account temporarily disabled | `account_temporarily_disabled` |
+| Account disabled | `account_disabled` |
+| Account is not fully set up | `account_not_fully_set_up` |
+| Invalid user credentials | `refused_login` |
+| Autre | `unknown` |
+
+Keycloak répond `invalid_grant` aussi bien pour un mauvais mot de passe que pour
+un compte verrouillé par sa détection de brute force. Selon sa version, ce
+verrouillage s'annonce ou se cache derrière « Invalid user credentials » : un
+`refused_login` ne prouve donc pas que le mot de passe est faux.
+
 ## Exploitation
 
 ### Sortir du bypass

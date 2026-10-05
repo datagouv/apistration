@@ -271,6 +271,16 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       )
     end
 
+    it 'names the refusal with words the Sentry scrubber lets through' do
+      retrieve_token
+
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+        'error',
+        anything,
+        hash_including(refusal_reason: 'refused_login')
+      )
+    end
+
     it 'remembers the failure for 30 minutes' do
       retrieve_token
 
@@ -288,6 +298,46 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       retrieve_token
 
       expect(described_class.call(provider_name: 'INSEE').errors.first).to be_a(ProviderTemporaryError)
+    end
+  end
+
+  describe 'refusal reason' do
+    before { Timecop.freeze(Date.new(2026, 10, 31)) }
+
+    after { Timecop.return }
+
+    def refusal_reason_for(description)
+      reported = {}
+      allow(MonitoringService.instance).to receive(:track_with_added_context) { |*, context| reported.merge!(context) }
+
+      stub_oauth(
+        status: 400,
+        body: { error: 'invalid_grant', error_description: description }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+      retrieve_token
+
+      reported[:refusal_reason]
+    end
+
+    it 'tells a temporarily disabled account' do
+      expect(refusal_reason_for('Account temporarily disabled')).to eq('account_temporarily_disabled')
+    end
+
+    it 'tells a disabled account' do
+      expect(refusal_reason_for('Account disabled')).to eq('account_disabled')
+    end
+
+    it 'tells an account with pending required actions' do
+      expect(refusal_reason_for('Account is not fully set up')).to eq('account_not_fully_set_up')
+    end
+
+    it 'tells a refused login' do
+      expect(refusal_reason_for('Invalid user credentials')).to eq('refused_login')
+    end
+
+    it 'flags any other description as unknown' do
+      expect(refusal_reason_for('Something else')).to eq('unknown')
     end
   end
 
