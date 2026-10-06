@@ -56,7 +56,7 @@ class MonitoringService
   def set_controller_params(params)
     params.stringify_keys!
 
-    set_context('Controller params', params: params.except('token'))
+    set_context('Controller params', params: params_filter.filter(params))
 
     set_tags(
       endpoint: "#{params['controller']}##{params['action']}"
@@ -80,6 +80,10 @@ class MonitoringService
   end
 
   private
+
+  def params_filter
+    @params_filter ||= ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+  end
 
   def sanitize_personal_data(context)
     body_key = RESPONSE_BODY_KEYS.find { |k| context[k].present? }

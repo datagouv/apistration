@@ -221,14 +221,33 @@ RSpec.describe MonitoringService, type: :service do
           'action' => 'show',
           'controller' => 'api/v2/dummy_controller',
           'siren' => valid_siren,
-          'token' => 'secret'
+          'token' => 'secret',
+          'numeroFiscal' => '1234567890123',
+          'identite' => {
+            'nomNaissance' => 'Dupont',
+            'prenoms' => %w[Jean Pierre],
+            'dateDeNaissance' => '1980-01-01'
+          }
         }
       end
 
-      it 'calls set_context without token' do
+      it 'calls set_context with sensitive params filtered, nested ones included' do
         expect(Sentry).to receive(:set_context).with(
           'Controller params',
-          { params: params.except('token') }
+          {
+            params: {
+              'action' => 'show',
+              'controller' => 'api/v2/dummy_controller',
+              'siren' => valid_siren,
+              'token' => '[FILTERED]',
+              'numeroFiscal' => '[FILTERED]',
+              'identite' => {
+                'nomNaissance' => '[FILTERED]',
+                'prenoms' => '[FILTERED]',
+                'dateDeNaissance' => '[FILTERED]'
+              }
+            }
+          }
         )
 
         subject
