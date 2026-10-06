@@ -49,4 +49,16 @@ RSpec.describe 'Rack::Attack config for FranceConnect endpoints', api: :particul
       expect(response.request.env['rack.attack.matched']).to eq('FranceConnect introspection per IP and per hour')
     end
   end
+
+  describe 'FranceConnect introspection global' do
+    it 'throttles random bearer tokens spread over many IPs' do
+      5.times do |index|
+        25.times { call_with_random_bearer(remote_addr: "10.0.0.#{index}") }
+      end
+
+      expect(response).to have_http_status(:too_many_requests)
+      expect(response.request.env['rack.attack.matched']).to eq('FranceConnect introspection global')
+      expect(a_request(:post, france_connect_check_token_url)).to have_been_made.times(120)
+    end
+  end
 end

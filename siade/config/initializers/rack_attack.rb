@@ -64,7 +64,7 @@ class Rack::Attack
 
   RateLimitingService::FRANCE_CONNECT_INTROSPECTION_THROTTLES.each do |config|
     throttle(config[:name], limit: config[:limit], period: config[:period]) do |req|
-      rate_limiting_service.france_connect_introspection_ip_discriminator(req)
+      rate_limiting_service.public_send(config[:discriminator], req)
     end
   end
 

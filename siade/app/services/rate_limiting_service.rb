@@ -4,8 +4,9 @@ class RateLimitingService
   DISCRIMINATOR_ENV_KEY = 'siade.rate_limiting.authorization_request_discriminator'.freeze
 
   FRANCE_CONNECT_INTROSPECTION_THROTTLES = [
-    { name: 'FranceConnect introspection per IP and per minute', limit: 30, period: 60 },
-    { name: 'FranceConnect introspection per IP and per hour', limit: 600, period: 3600 }
+    { name: 'FranceConnect introspection per IP and per minute', limit: 30, period: 60, discriminator: :france_connect_introspection_ip_discriminator },
+    { name: 'FranceConnect introspection per IP and per hour', limit: 600, period: 3600, discriminator: :france_connect_introspection_ip_discriminator },
+    { name: 'FranceConnect introspection global', limit: 120, period: 60, discriminator: :france_connect_introspection_global_discriminator }
   ].freeze
 
   def discriminate_by_authorization_request_for_endpoints(req, endpoints_list)
@@ -56,6 +57,10 @@ class RateLimitingService
 
   def france_connect_introspection_ip_discriminator(req)
     req.ip if france_connect_introspection?(req)
+  end
+
+  def france_connect_introspection_global_discriminator(req)
+    'france_connect_introspection' if france_connect_introspection?(req)
   end
 
   def build_rate_limit_headers(data)

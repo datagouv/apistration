@@ -377,4 +377,25 @@ RSpec.describe RateLimitingService do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#france_connect_introspection_global_discriminator' do
+    subject { described_class.new.france_connect_introspection_global_discriminator(req) }
+
+    before do
+      allow(req).to receive_messages(url: "http://particulier.api.localtest.me#{path}", ip: '1.2.3.4')
+      env['HTTP_AUTHORIZATION'] = 'Bearer random_access_token'
+    end
+
+    context 'with a bearer token on a FranceConnect endpoint' do
+      let(:path) { '/v3/dss/quotient_familial/france_connect' }
+
+      it { is_expected.to eq('france_connect_introspection') }
+    end
+
+    context 'with a bearer token on an endpoint without FranceConnect' do
+      let(:path) { '/v3/dss/quotient_familial/identite' }
+
+      it { is_expected.to be_nil }
+    end
+  end
 end
