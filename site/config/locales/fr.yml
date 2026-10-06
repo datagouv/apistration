@@ -420,7 +420,6 @@ fr:
       summary:
         access: Droits d'accès
         active_tokens: Jetons
-        attestations: Attestation sociales et fiscales
         contacts: Contacts
         delegations: Délégations
       status:
@@ -449,10 +448,6 @@ fr:
             display_cta: Relancer le demandeur pour prolonger le jeton
         main_token:
           title: "Jeton principal&nbsp;:"
-        attestations:
-          title: "Télécharger manuellement les attestations sociales et fiscales"
-          description: "Saisissez manuellement le SIREN de l'unité légale recherchée et vous aurez directement accès aux PDF des attestations&nbsp;:"
-          cta: "Utiliser l'interface de téléchargement"
         other_tokens:
           title: Voir les autres jetons
           table:

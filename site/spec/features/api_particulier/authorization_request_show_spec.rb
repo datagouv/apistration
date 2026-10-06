@@ -167,21 +167,6 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
               expect(page).to have_no_css('#ask-for-prolongation-token-modal-link')
             end
 
-            describe 'when the token has no attestations scopes' do
-              it 'does not display the attestations block' do
-                expect(page).to have_no_css('#attestations_sociales_et_fiscales')
-              end
-            end
-
-            describe 'when the token has attestations scopes' do
-              let!(:scopes) { %w[attestations_sociales attestations_fiscales] }
-
-              it 'displays the attestations block' do
-                expect(page).to have_css('#attestations_sociales_et_fiscales')
-                expect(page).to have_css('#attestations_sociales_et_fiscales_link')
-              end
-            end
-
             it 'displays the contact informations' do
               expect(page).to have_css('#contact_demandeur')
               expect(page).to have_css('#contact_demandeur_its_me')
@@ -193,7 +178,6 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
               expect(page).to have_css('#summary')
               expect(page).to have_css('#habilitation_main_token_infos_link')
               expect(page).to have_css('#habilitation_contacts_infos_link')
-              expect(page).to have_no_css('#attestations_sociales_et_fiscales_link')
             end
           end
 
@@ -234,20 +218,6 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
               click_link 'ask-for-prolongation-token-modal-link'
 
               expect(page).to have_text('Relancer le demandeur')
-            end
-
-            describe 'when the token has no attestations scopes' do
-              it 'does not display the attestations block' do
-                expect(page).to have_no_css('#attestations_sociales_et_fiscales')
-              end
-            end
-
-            describe 'when the token has attestations scopes' do
-              let!(:scopes) { %w[attestations_sociales attestations_fiscales] }
-
-              it 'does not display the attestations block' do
-                expect(page).to have_no_css('#attestations_sociales_et_fiscales')
-              end
             end
 
             it 'displays the contact informations' do
@@ -308,20 +278,6 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
               click_link 'ask-for-prolongation-token-modal-link'
 
               expect(page).to have_text('Relancer le demandeur')
-            end
-
-            describe 'when the token has no attestations scopes' do
-              it 'does not display the attestations block' do
-                expect(page).to have_no_css('#attestations_sociales_et_fiscales')
-              end
-            end
-
-            describe 'when the token has attestations scopes' do
-              let!(:scopes) { %w[attestations_sociales attestations_fiscales] }
-
-              it 'displays the attestations block' do
-                expect(page).to have_css('#attestations_sociales_et_fiscales')
-              end
             end
 
             it 'displays the contact informations' do

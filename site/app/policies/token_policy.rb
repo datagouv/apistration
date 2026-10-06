@@ -13,10 +13,6 @@ class TokenPolicy < ApplicationPolicy
     demandeur? && day_left < 90 && !token.blacklisted?
   end
 
-  def download_attestations?
-    DownloadAttestationsPolicy.new(user, token).any?
-  end
-
   private
 
   def demandeur?
