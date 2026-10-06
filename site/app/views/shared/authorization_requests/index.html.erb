@@ -20,7 +20,10 @@
           <div class="fr-col-12 fr-col-sm-3">
             <strong><%= t('.table.head.authorization_request') %></strong>
           </div>
-          <div class="fr-col-12 fr-col-sm-4">
+          <div class="fr-col-12 fr-col-sm-2">
+            <strong><%= t('.table.head.organization') %></strong>
+          </div>
+          <div class="fr-col-12 fr-col-sm-3">
             <strong><%= t('.table.head.token') %></strong>
           </div>
           <div class="fr-col-12 fr-col-sm">
@@ -51,7 +54,10 @@
                 %>
               </span>
             </div>
-            <div class="fr-col-12 fr-col-sm-4">
+            <div class="fr-col-12 fr-col-sm-2 authorization_request-siret">
+              <%= render partial: 'shared/authorization_requests/organization', locals: { authorization_request: } %>
+            </div>
+            <div class="fr-col-12 fr-col-sm-3">
               <% displayed_tokens = authorization_request.tokens.active.to_a %>
               <% displayed_tokens = [authorization_request.token].compact if displayed_tokens.empty? %>
               <% displayed_tokens.each_with_index do |token, index| %>

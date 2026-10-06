@@ -149,6 +149,29 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         expect(page).to have_text('Cette demande ayant été archivée, aucun jeton ne peut être demandé')
       end
 
+      it 'displays the organization of each authorization request' do
+        authorization_request_expired.update!(siret: '21750001600019')
+        create(:organization, :with_insee_payload, siret: authorization_request_active.siret)
+        create(:organization, :with_insee_payload, siret: authorization_request_expired.siret)
+
+        go_to_authorization_requests_index
+
+        expect(page).to have_text('Organisation')
+
+        {
+          authorization_request_active => 'DIRECTION INTERMINISTERIELLE DU NUMERIQUE (13002526500013)',
+          authorization_request_expired => 'VILLE DE PARIS (21750001600019)'
+        }.each do |authorization_request, organization_label|
+          within("##{dom_id(authorization_request)} .authorization_request-siret") do
+            expect(page).to have_link(
+              organization_label,
+              href: "https://annuaire-entreprises.data.gouv.fr/etablissement/#{authorization_request.siret}"
+            )
+            expect(page).to have_css('a[target="_blank"][rel="noopener noreferrer"]')
+          end
+        end
+      end
+
       it 'displays the button to view the token details' do
         go_to_authorization_requests_index
 
