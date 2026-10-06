@@ -331,4 +331,50 @@ RSpec.describe RateLimitingService do
       end
     end
   end
+
+  describe '#france_connect_introspection_ip_discriminator' do
+    subject { described_class.new.france_connect_introspection_ip_discriminator(req) }
+
+    let(:base_path) { 'http://particulier.api.localtest.me' }
+    let(:path) { '/v3/dss/quotient_familial/france_connect' }
+
+    before do
+      env['HTTP_AUTHORIZATION'] = 'Bearer random_access_token'
+      allow(req).to receive_messages(url: "#{base_path}#{path}", ip: '1.2.3.4')
+    end
+
+    context 'with a bearer token on a FranceConnect endpoint' do
+      it { is_expected.to eq('1.2.3.4') }
+    end
+
+    context 'with a bearer token on a FranceConnectable API Particulier V2 endpoint' do
+      let(:path) { '/api/v2/composition-familiale-v2' }
+
+      it { is_expected.to eq('1.2.3.4') }
+    end
+
+    context 'without bearer token' do
+      before { env.delete('HTTP_AUTHORIZATION') }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when the bearer token resolves to a user' do
+      before { env[UserResolutionMiddleware::USER_ENV_KEY] = instance_double(JwtUser) }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'with a bearer token on an endpoint without FranceConnect' do
+      let(:path) { '/v3/dss/quotient_familial/identite' }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'with a bearer token on an unknown path' do
+      let(:path) { '/not/in/the/list' }
+
+      it { is_expected.to be_nil }
+    end
+  end
 end

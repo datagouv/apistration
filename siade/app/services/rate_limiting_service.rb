@@ -3,6 +3,11 @@ class RateLimitingService
 
   DISCRIMINATOR_ENV_KEY = 'siade.rate_limiting.authorization_request_discriminator'.freeze
 
+  FRANCE_CONNECT_INTROSPECTION_THROTTLES = [
+    { name: 'FranceConnect introspection per IP and per minute', limit: 30, period: 60 },
+    { name: 'FranceConnect introspection per IP and per hour', limit: 600, period: 3600 }
+  ].freeze
+
   def discriminate_by_authorization_request_for_endpoints(req, endpoints_list)
     endpoint = extract_endpoint_from_url(req.url).slice(:controller, :action)
 
@@ -49,6 +54,10 @@ class RateLimitingService
     req.env[DISCRIMINATOR_ENV_KEY] = compute_authorization_request_discriminator(req)
   end
 
+  def france_connect_introspection_ip_discriminator(req)
+    req.ip if france_connect_introspection?(req)
+  end
+
   def build_rate_limit_headers(data)
     {
       'RateLimit-Limit' => data[:limit].to_s,
@@ -80,6 +89,28 @@ class RateLimitingService
   def opaque_token_discriminator(req)
     token = resolved_token(req)
     Digest::SHA256.hexdigest(token) if token.present?
+  end
+
+  def france_connect_introspection?(req)
+    resolved_user(req).nil? &&
+      bearer_token?(req) &&
+      france_connectable_controller?(extract_endpoint_from_url(req.url)[:controller])
+  end
+
+  def bearer_token?(req)
+    req.env['HTTP_AUTHORIZATION'].to_s.match?(/\ABearer .+\z/)
+  end
+
+  def france_connectable_controller?(controller)
+    return false if controller.blank?
+
+    france_connectable_controllers.compute_if_absent(controller) do
+      "#{controller}_controller".camelize.safe_constantize&.include?(APIParticulier::FranceConnectable) || false
+    end
+  end
+
+  def france_connectable_controllers
+    @france_connectable_controllers ||= Concurrent::Map.new
   end
 
   def resolved_user(req)
