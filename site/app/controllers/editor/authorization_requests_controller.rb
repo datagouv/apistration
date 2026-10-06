@@ -33,7 +33,7 @@ class Editor::AuthorizationRequestsController < EditorController
   end
 
   def generate_csv(authorization_requests)
-    CSV.generate(headers: true) do |csv|
+    CSV.generate(headers: true, write_converters: CsvFormulaNeutralizer.write_converters) do |csv|
       csv << %w[datapass_id datapass_url intitule token_expiration siret demandeur_email]
 
       authorization_requests.where(status: 'validated').each do |authorization_request|
