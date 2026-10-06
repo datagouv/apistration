@@ -33,9 +33,6 @@ constraints(APIEntrepriseDomainConstraint.new) do
     post '/compte/demandes/:authorization_request_id/delegations', to: 'delegations#create', as: :authorization_request_delegations
     delete '/compte/demandes/:authorization_request_id/delegations/:id', to: 'delegations#destroy', as: :authorization_request_delegation
 
-    get '/compte/telecharcher-documents', to: 'download_attestations#new', as: :attestations
-    post '/compte/telecharcher-documents', to: 'download_attestations#create', as: :search_attestations
-
     post '/compte/jetons/:id/partager', to: 'transfer_tokens#create', as: :token_create_magic_link
     get '/compte/jetons/:id/partager', to: 'transfer_tokens#new', as: :token_transfer
     get '/compte/jetons/:id', to: 'tokens#show', as: :token

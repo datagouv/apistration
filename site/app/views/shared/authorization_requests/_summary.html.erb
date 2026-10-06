@@ -11,13 +11,6 @@
         <%= t('.active_tokens') %>
       </a>
     </li>
-    <% if policy(token).download_attestations? %>
-      <li class="fr-summary__item">
-        <a class="fr-summary__link" id="attestations_sociales_et_fiscales_link" href="#attestations_sociales_et_fiscales" target="_self">
-          <%= t('.attestations') %>
-        </a>
-      </li>
-    <% end %>
     <li class="fr-summary__item">
       <a class="fr-summary__link" id="habilitation_contacts_infos_link" href="#habilitation_contacts_infos" target="_self" >
         <%= t('.contacts') %>

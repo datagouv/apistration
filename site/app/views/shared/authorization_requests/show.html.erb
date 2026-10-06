@@ -2,7 +2,7 @@
 <div class="fr-container fr-pr-0 fr-pl-0" data-controller="anchor-buttons">
   <div class="fr-grid-row">
     <div class="fr-col-12 fr-col-md-3 fr-pr-0 fr-pl-0">
-      <%= render partial: 'shared/authorization_requests/summary', locals: { token: @main_token } %>
+      <%= render partial: 'shared/authorization_requests/summary' %>
     </div>
     <div class="fr-col-12 fr-col-md-9 fr-p-4w" style="background-color: var(--background-default-grey)">
       <article class="article">
@@ -150,20 +150,6 @@
             </table>
           </div>
         </section>
-
-        <% if policy(@main_token).download_attestations? %>
-          <section id="attestations_sociales_et_fiscales" class="fr-mb-8v">
-            <div class="fr-callout fr-m-0">
-              <h2 class="fr-callout__title fr-h4 fr-mb-n0-5v">
-                <%= t('.attestations.title') %>
-              </h2>
-              <p class="fr-callout__text">
-                <%= t('.attestations.description').html_safe %>
-              </p>
-              <%= link_to t('.attestations.cta'), attestations_path(selected_token: @main_token.id),class: %w[fr-btn fr-btn--secondary fr-mt-2w] %>
-            </div>
-          </section>
-        <% end %>
 
         <section id="habilitation_contacts_infos" class="fr-pb-8v">
           <h2 class="fr-h3 fr-mb-n-1v">
