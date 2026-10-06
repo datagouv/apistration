@@ -36,6 +36,26 @@ RSpec.shared_examples 'a show token from magic link feature' do |magic_link_path
         subject
         expect(page).to have_css("##{dom_id(token, :copy_token_button)}")
       end
+
+      describe 'click on the copy button', :js do
+        def record_copied_text
+          page.execute_script(<<~JS)
+            document.addEventListener('copy', () => {
+              const element = document.activeElement
+              window.copiedText = element.value.substring(element.selectionStart, element.selectionEnd)
+            })
+          JS
+        end
+
+        it 'copies the token hash' do
+          subject
+          record_copied_text
+
+          click_on dom_id(token, :copy_token_button)
+
+          expect(page.evaluate_script('window.copiedText')).to eq(token.rehash)
+        end
+      end
     end
 
     context 'when the magic link has expired' do
