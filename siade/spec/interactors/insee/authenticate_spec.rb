@@ -88,13 +88,14 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
 
   describe 'renewal ahead of expiry' do
     let(:authenticated_at) { Time.zone.local(2026, 10, 15, 12) }
+    let(:first_grants) { [granted_response(access_token: 'current-token'), granted_response(access_token: 'renewed-token')] }
 
     def authenticate_at(time)
       Timecop.freeze(time) { described_class.call(provider_name: 'INSEE') }
     end
 
     before do
-      stub_oauth(granted_response(access_token: 'current-token'), granted_response(access_token: 'renewed-token'))
+      stub_oauth(*first_grants)
       authenticate_at(authenticated_at)
     end
 
@@ -195,10 +196,40 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
 
     context 'when a renewal may walk several password candidates' do
       let(:authenticated_at) { Time.zone.local(2027, 1, 15, 12) }
+      let(:first_grants) { [invalid_grant_response, granted_response(access_token: 'current-token')] }
 
       before { stub_oauth(status: 503, body: '') }
 
       it 'stops renewing early enough for the whole walk to complete' do
+        authenticate_at(authenticated_at + 211.seconds)
+        authenticate_at(authenticated_at + 241.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+      end
+    end
+
+    context 'when the renewal will only try the current password INSEE accepted last' do
+      let(:authenticated_at) { Time.zone.local(2027, 1, 15, 12) }
+
+      before { stub_oauth(status: 503, body: '') }
+
+      it 'keeps renewing as long as a single exchange fits before the expiry' do
+        authenticate_at(authenticated_at + 211.seconds)
+        authenticate_at(authenticated_at + 241.seconds)
+
+        expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+      end
+    end
+
+    context 'when the walk grew longer since the token was granted' do
+      let(:authenticated_at) { Time.zone.local(2027, 1, 15, 12) }
+
+      before do
+        stub_oauth(status: 503, body: '')
+        INSEE::AcceptedPassword.forget!
+      end
+
+      it 'sizes the renewal window on the walk it would start' do
         authenticate_at(authenticated_at + 211.seconds)
         authenticate_at(authenticated_at + 241.seconds)
 
@@ -766,6 +797,64 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     end
   end
 
+  context 'when INSEE refuses the current password it accepted last' do
+    before do
+      Timecop.freeze(Date.new(2027, 1, 15))
+
+      INSEE::AcceptedPassword.remember!(INSEE::PasswordDerivation.current_password)
+      stub_oauth(invalid_grant_response)
+      allow(MonitoringService.instance).to receive(:track_with_added_context)
+    end
+
+    after { Timecop.return }
+
+    it 'fails with a ProviderAuthenticationError' do
+      expect(retrieve_token.errors.first).to be_a(ProviderAuthenticationError)
+    end
+
+    it 'spends no refusal on the previous password' do
+      retrieve_token
+
+      expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).once
+      expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/)
+        .with(body: hash_including('password' => INSEE::PasswordDerivation.current_password))
+    end
+
+    it 'alerts on an intermittent refusal rather than a desynchronization' do
+      retrieve_token
+
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+        'error',
+        'INSEE refused the current password it accepted last: intermittent refusal, account locked or password changed outside the rotation',
+        hash_including(candidates_count: 2, attempts_count: 1)
+      )
+    end
+
+    it 'still knows the current password as the one accepted last' do
+      retrieve_token
+
+      expect(INSEE::AcceptedPassword.last?(INSEE::PasswordDerivation.current_password)).to be(true)
+    end
+  end
+
+  context 'when INSEE accepted the previous password last' do
+    before do
+      Timecop.freeze(Date.new(2027, 1, 15))
+
+      INSEE::AcceptedPassword.remember!(INSEE::PasswordDerivation.previous_password)
+      stub_oauth(invalid_grant_response)
+      allow(MonitoringService.instance).to receive(:track_with_added_context)
+    end
+
+    after { Timecop.return }
+
+    it 'tries each candidate then the current password once more' do
+      retrieve_token
+
+      expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).times(3)
+    end
+  end
+
   context 'when the static password is rejected before derivation starts' do
     before do
       Timecop.freeze(Date.new(2026, 10, 31))
@@ -804,6 +893,16 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     after do
       Siade.credentials.delete(INSEE::PasswordDerivation::BYPASS_CREDENTIAL_KEY)
       Timecop.return
+    end
+
+    it 'still tries the bypass first when INSEE accepted the current password last' do
+      INSEE::AcceptedPassword.remember!(INSEE::PasswordDerivation.current_password)
+
+      retrieve_token
+
+      expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/).twice
+      expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/)
+        .with(body: hash_including('password' => 'ByPass#Password1')).once
     end
 
     it 'does not retry the current password it just rejected' do
