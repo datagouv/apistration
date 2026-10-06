@@ -280,6 +280,12 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       expect(WebMock).to have_requested(:post, /#{insee_oauth_url}/)
         .with(body: hash_including('password' => INSEE::PasswordDerivation.previous_password))
     end
+
+    it 'remembers the password INSEE accepted' do
+      retrieve_token
+
+      expect(INSEE::AcceptedPassword.last?(INSEE::PasswordDerivation.previous_password)).to be(true)
+    end
   end
 
   context 'when INSEE is unavailable' do

@@ -26,6 +26,7 @@ class INSEE::Authenticate < MakeRequest::Post
   def self.clear_guards!
     Rails.cache.delete(LOCK_CACHE_KEY)
     INSEE::AuthenticationBackoff.clear!
+    INSEE::AcceptedPassword.forget!
   end
 
   def call
@@ -163,6 +164,7 @@ class INSEE::Authenticate < MakeRequest::Post
     lifetime = payload['expires_in'].to_i
 
     report_recovery(INSEE::AuthenticationBackoff.end_episode!)
+    INSEE::AcceptedPassword.remember!(@password)
 
     expires_in = [lifetime - TOKEN_EXPIRATION_MARGIN, 1].max
 
