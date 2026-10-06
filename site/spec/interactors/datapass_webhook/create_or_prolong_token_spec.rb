@@ -98,5 +98,44 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
         expect(prolong_token_wizard.reload.status).to eq('prolonged')
       end
     end
+
+    context 'when last prolong_token_wizard has been refused' do
+      let!(:token) { create(:token, authorization_request:, exp: Time.zone.local(2024, 1, 1)) }
+      let!(:prolong_token_wizard) { create(:prolong_token_wizard, :requires_update, token:, status: 'updates_refused') }
+
+      it 'prolongs existings token' do
+        subject
+
+        expect(token.reload.exp).to eq(18.months.from_now.to_i)
+        expect(prolong_token_wizard.reload.status).to eq('prolonged')
+      end
+    end
+
+    context 'when an unfinished prolong_token_wizard exists' do
+      let!(:token) { create(:token, authorization_request:, exp: Time.zone.local(2024, 1, 1)) }
+      let!(:prolong_token_wizard) { create(:prolong_token_wizard, token:, status: nil) }
+
+      it { is_expected.to be_a_success }
+
+      it 'prolongs existings token' do
+        subject
+
+        expect(token.reload.exp).to eq(18.months.from_now.to_i)
+      end
+
+      it 'closes the unfinished prolong_token_wizard' do
+        subject
+
+        expect(prolong_token_wizard.reload.status).to eq('prolonged')
+      end
+
+      it 'prolongs again on a subsequent approval' do
+        described_class.call(datapass_webhook_params.merge(authorization_request:))
+        token.update!(exp: Time.zone.local(2024, 1, 1).to_i)
+
+        expect(subject).to be_a_success
+        expect(token.reload.exp).to eq(18.months.from_now.to_i)
+      end
+    end
   end
 end

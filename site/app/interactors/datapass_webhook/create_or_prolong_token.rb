@@ -31,10 +31,11 @@ class DatapassWebhook::CreateOrProlongToken < ApplicationInteractor
   end
 
   def prolong_token!
-    if context.authorization_request.token.last_prolong_token_wizard.present?
-      context.authorization_request.token.last_prolong_token_wizard.prolong!
-    else
-      context.authorization_request.token.prolong!
+    token = context.authorization_request.token
+
+    ActiveRecord::Base.transaction do
+      token.last_prolong_token_wizard&.close!
+      token.prolong!
     end
   end
 
