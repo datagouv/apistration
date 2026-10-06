@@ -22,6 +22,7 @@ fr:
         success:
           title: Délégation révoquée
     sessions_management:
+      mfa_required: "Vous ne pouvez pas accéder au service sans avoir une double authentification installée. Veuillez installer une application d'authentification et vous connecter à nouveau."
       session_expired:
         idle: "Votre session a expiré après %{hours} heures d'inactivité, veuillez vous reconnecter."
         absolute: "Votre session a atteint sa durée maximale de %{hours} heures, veuillez vous reconnecter."

@@ -8,8 +8,6 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
 
   BYPASS_LOGIN_ENVIRONMENTS = %w[development staging sandbox].freeze
 
-  MON_COMPTE_PRO_IDP_ID = '71144ab3-ee1a-4401-b7b3-79b44f7daeeb'.freeze
-
   included do
     before_action :validate_oauth_callback!, only: [:create_from_oauth]
   end
@@ -19,7 +17,7 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
   end
 
   def create_from_oauth
-    return redirect_to_mfa_reauthentication if requires_mfa_reauthentication?
+    return reject_login_without_mfa unless mfa_performed?
 
     interactor_call = User::ProconnectLogin.call(user_params:)
 
@@ -101,6 +99,28 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
     )
   end
 
+  def mfa_performed?
+    OmniAuth::Strategies::Proconnect::MFA_ACR_VALUES.include?(oauth_acr)
+  end
+
+  def oauth_acr
+    request.env['omniauth.auth'].extra&.acr
+  end
+
+  def reject_login_without_mfa
+    MonitoringService.instance.track(
+      'OAuth security: Missing MFA',
+      level: 'error',
+      context: {
+        provider: params[:provider],
+        acr: oauth_acr
+      }
+    )
+
+    error_message(title: t('concerns.sessions_management.mfa_required'))
+    redirect_to login_path
+  end
+
   def user_params
     request.env['omniauth.auth'].info.slice('email', 'last_name', 'first_name', 'uid')
   end
@@ -126,32 +146,5 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
     else
       'error_message'
     end
-  end
-
-  def redirect_to_mfa_reauthentication
-    type = namespace.delete_prefix('api_')
-    uri = OmniAuth::Strategies::Proconnect.authorization_uri_with_mfa(
-      type,
-      session: session,
-      login_hint: raw_info['email']
-    )
-    redirect_to uri, allow_other_host: true
-  end
-
-  def requires_mfa_reauthentication?
-    raw_info['idp_id'] == MON_COMPTE_PRO_IDP_ID &&
-      id_token_amr.exclude?('mfa')
-  end
-
-  def id_token_amr
-    id_token = session['omniauth.pc.id_token']
-    return [] unless id_token
-
-    claims = JSON::JWT.decode(id_token, :skip_verification)
-    Array(claims['amr'])
-  end
-
-  def raw_info
-    request.env.dig('omniauth.auth', 'extra', 'raw_info') || {}
   end
 end
