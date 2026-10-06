@@ -271,7 +271,7 @@ fr:
           title: "Cette API est dépréciée"
           description: "Cette API est une ancienne version, nous vous invitons à utiliser ces API les plus récentes :"
           link_documentation: |-
-            Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank'>documentation</a>.
+            Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank' rel='noopener noreferrer'>documentation</a>.
         incoming:
           title: "Cette API est bientôt disponible, testez-là !"
           description: "Cette API est en cours de conception et va bientôt rejoindre le catalogue d'API Entreprise."
@@ -307,7 +307,7 @@ fr:
           old_endpoints:
             description: "Documentations des anciennes API :"
             link_documentation: |-
-              Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank'>documentation</a>.
+              Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank' rel='noopener noreferrer'>documentation</a>.
         cgu:
           title: "Conditions d'utilisation des données"
           main_title_opening: "Utilisation possible de la donnée :"

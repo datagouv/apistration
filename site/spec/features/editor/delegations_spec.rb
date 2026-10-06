@@ -34,6 +34,12 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         expect(page).to have_css('.fr-badge--pink-tuile', text: 'Révoqué')
       end
 
+      it 'opens no new tab exposing window.opener' do
+        visit editor_delegations_path
+
+        expect(page).not_to expose_window_opener
+      end
+
       it 'does not display delegations from another api' do
         particulier_delegation = create(:editor_delegation, editor:,
           authorization_request: create(:authorization_request, :validated, :with_demandeur,

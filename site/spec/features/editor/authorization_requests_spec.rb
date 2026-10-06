@@ -34,6 +34,12 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
       expect(page).to have_text('Nouveau jeton à utiliser')
     end
 
+    it 'opens no new tab exposing window.opener' do
+      visit editor_authorization_requests_path
+
+      expect(page).not_to expose_window_opener
+    end
+
     it 'displays the SIRET alone when the organization has no INSEE payload yet' do
       authorization_request = valid_authorization_requests.first
       create(:organization, siret: authorization_request.siret, insee_payload: {})

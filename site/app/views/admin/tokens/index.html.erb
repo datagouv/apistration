@@ -37,7 +37,7 @@
           </td>
           <td class="token-datapass">
             <% if token.authorization_request.external_id %>
-              <a href="<%= datapass_base_url %>/api-<%= token.authorization_request.api %>/<%= token.authorization_request.external_id %>" target="_blank">DataPass #<%= token.authorization_request.external_id %></a>
+              <%= external_link_to "DataPass ##{token.authorization_request.external_id}", datapass_authorization_request_url(token.authorization_request) %>
             <% end %>
           </td>
           <td class="token-rehash">

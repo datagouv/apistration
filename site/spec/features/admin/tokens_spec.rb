@@ -14,6 +14,12 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
       click_on dom_id(user, :tokens)
     end
 
+    it 'opens no new tab exposing window.opener' do
+      view_tokens
+
+      expect(page).not_to expose_window_opener
+    end
+
     it 'displays all tokens for the user' do
       view_tokens
 

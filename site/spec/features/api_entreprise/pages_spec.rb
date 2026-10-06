@@ -40,4 +40,16 @@ RSpec.describe 'Simple pages', app: :api_entreprise do
       expect(page).to have_css('#footer .fr-footer__brand a[href="https://www.numerique.gouv.fr/"] img[alt="numerique.gouv - L’alliance du numérique de l’État"]')
     end
   end
+
+  context 'with the current status frame' do
+    before do
+      allow_any_instance_of(StatusPage).to receive(:current_status).and_return(:up) # rubocop:todo RSpec/AnyInstance
+    end
+
+    it 'opens no new tab exposing window.opener' do
+      visit current_status_path
+
+      expect(page).not_to expose_window_opener
+    end
+  end
 end

@@ -51,7 +51,7 @@
       <% @authorization_requests.each do |authorization_request| %>
         <tr id="<%= dom_id(authorization_request) %>" class="authorization-request">
           <td class="authorization_request-external_id">
-            <%= link_to("DataPass ##{authorization_request.external_id}", "#{datapass_v2_base_url(authorization_request.api)}/public/demandes/#{authorization_request.public_id}", target: '_blank')%>
+            <%= external_link_to "DataPass ##{authorization_request.external_id}", datapass_v2_public_authorization_request_url(authorization_request) %>
           </td>
           <td class="authorization_request-intitule">
             <%= authorization_request.intitule %>

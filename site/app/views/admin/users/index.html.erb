@@ -53,7 +53,7 @@
                 <% user.authorization_requests.where(api: namespace).each do |authorization_request| %>
                   <% if authorization_request.siret %>
                     <li>
-                      <a href="https://annuaire-entreprises.data.gouv.fr/etablissement/<%= authorization_request.siret %>" target="_blank"><%= authorization_request.siret %></a>
+                      <%= external_link_to authorization_request.siret, "https://annuaire-entreprises.data.gouv.fr/etablissement/#{authorization_request.siret}" %>
                     </li>
                   <% end %>
                 <% end %>
@@ -84,7 +84,7 @@
               <ul>
                 <% user.authorization_requests.where(api: namespace).each do |authorization_request| %>
                   <li>
-                    <a href="<%= datapass_base_url %>/api-<%= authorization_request.api %>/<%= authorization_request.external_id %>" target="_blank">DataPass #<%= authorization_request.external_id %></a>
+                    <%= external_link_to "DataPass ##{authorization_request.external_id}", datapass_authorization_request_url(authorization_request) %>
                   </li>
                 <% end %>
               </ul>
