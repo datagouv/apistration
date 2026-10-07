@@ -9,7 +9,7 @@ class CsvFormatter
   end
 
   def to_csv
-    BOM + CSV.generate(col_sep: COL_SEP) do |csv|
+    BOM + CSV.generate(col_sep: COL_SEP, write_converters: CsvFormulaNeutralizer.write_converters) do |csv|
       csv << columns.keys.map { |key| I18n.t!("#{i18n_scope}.headers.#{key}") }
       @rows.each { |row| csv << columns.values.map { |extractor| extractor.call(row) } }
     end

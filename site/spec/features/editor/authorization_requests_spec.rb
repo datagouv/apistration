@@ -99,6 +99,16 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
         expect(test_row).to be_present
         expect(test_row['intitule']).to eq('Intitule')
       end
+
+      it 'neutralizes formulas injected in requester fields' do
+        authorization_request_with_external_id.update!(intitule: '=HYPERLINK("http://evil.test")')
+
+        visit editor_authorization_requests_path(format: :csv)
+
+        test_row = CSV.parse(page.body, headers: true).find { |row| row['datapass_id'] == 'test123' }
+
+        expect(test_row['intitule']).to eq(%('=HYPERLINK("http://evil.test")))
+      end
     end
   end
 

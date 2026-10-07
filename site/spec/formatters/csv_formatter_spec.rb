@@ -35,6 +35,14 @@ RSpec.describe CsvFormatter do
       expect(csv).to include('Alice;30')
       expect(csv).to include('Bob;25')
     end
+
+    context 'when a cell starts with a formula trigger' do
+      let(:rows) { [{ name: '=HYPERLINK("http://evil.test")', age: -3 }] }
+
+      it 'neutralizes the formula without altering numbers' do
+        expect(csv).to include(%('=HYPERLINK(""http://evil.test"")";-3))
+      end
+    end
   end
 
   describe '#filename' do
