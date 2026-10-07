@@ -4,16 +4,17 @@ class INSEE::TokenRenewal
   RETRY = 30
   OAUTH_EXCHANGE_WORST_CASE = 20
 
-  def self.schedule!(lifetime:, expires_in:, exchanges:)
+  def self.schedule!(lifetime:, expires_in:)
     return if lifetime <= MARGIN
 
-    write((lifetime - MARGIN).seconds.from_now...(expires_in - (exchanges * OAUTH_EXCHANGE_WORST_CASE)).seconds.from_now)
+    write((lifetime - MARGIN).seconds.from_now...expires_in.seconds.from_now)
   end
 
   def self.due?
     window = read
+    return false unless window.present? && window.cover?(Time.current)
 
-    window.present? && window.cover?(Time.current)
+    Time.current + (yield * OAUTH_EXCHANGE_WORST_CASE) < window.end
   end
 
   def self.postpone!

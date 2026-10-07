@@ -26,6 +26,7 @@ class INSEE::Authenticate < MakeRequest::Post
   def self.clear_guards!
     Rails.cache.delete(LOCK_CACHE_KEY)
     INSEE::AuthenticationBackoff.clear!
+    INSEE::AcceptedPassword.forget!
   end
 
   def call
@@ -54,7 +55,7 @@ class INSEE::Authenticate < MakeRequest::Post
 
   def current_token
     token = published_token
-    return token unless token && INSEE::TokenRenewal.due?
+    return token unless token && renewal_due?
 
     renewed_ahead_of_expiry || token
   end
@@ -70,13 +71,17 @@ class INSEE::Authenticate < MakeRequest::Post
     fail_with_temporary_error! unless acquire_lock! == true
 
     begin
-      return published_token unless INSEE::TokenRenewal.due?
+      return published_token unless renewal_due?
 
       INSEE::TokenRenewal.postpone!
       token_from_candidates
     ensure
       release_lock!
     end
+  end
+
+  def renewal_due?
+    INSEE::TokenRenewal.due? { password_attempts.size }
   end
 
   def authenticate!
@@ -104,12 +109,16 @@ class INSEE::Authenticate < MakeRequest::Post
   def token_from_candidates
     fail_with_temporary_error! if recently_failed?
 
-    token_from(password_attempts) || fail_with_authentication_error!
+    @attempts = password_attempts
+
+    token_from(@attempts) || fail_with_authentication_error!
   end
 
   def password_attempts
     candidates = INSEE::PasswordDerivation.candidates
     current_password = INSEE::PasswordDerivation.current_password
+
+    return [current_password] if !INSEE::PasswordDerivation.bypassed? && INSEE::AcceptedPassword.last?(current_password)
 
     candidates.last == current_password ? candidates : [*candidates, current_password]
   end
@@ -163,12 +172,13 @@ class INSEE::Authenticate < MakeRequest::Post
     lifetime = payload['expires_in'].to_i
 
     report_recovery(INSEE::AuthenticationBackoff.end_episode!)
+    INSEE::AcceptedPassword.remember!(@password)
 
     expires_in = [lifetime - TOKEN_EXPIRATION_MARGIN, 1].max
 
     return token unless EncryptedCache.write(CACHE_KEY, token, expires_in:)
 
-    INSEE::TokenRenewal.schedule!(lifetime:, expires_in:, exchanges: password_attempts.size)
+    INSEE::TokenRenewal.schedule!(lifetime:, expires_in:)
 
     token
   end
@@ -219,6 +229,8 @@ class INSEE::Authenticate < MakeRequest::Post
   def refused_candidates_message
     if INSEE::PasswordDerivation.candidates.one?
       'INSEE refused the only password candidate: intermittent refusal or account locked'
+    elsif @attempts.one?
+      'INSEE refused the current password it accepted last: intermittent refusal, account locked or password changed outside the rotation'
     else
       'INSEE authentication failed on every candidate: password desynchronized or account locked'
     end
@@ -237,6 +249,7 @@ class INSEE::Authenticate < MakeRequest::Post
         period: INSEE::PasswordDerivation.current_period,
         bypassed: INSEE::PasswordDerivation.bypassed?,
         candidates_count: INSEE::PasswordDerivation.candidates.size,
+        attempts_count: @attempts.size,
         refusals:
       }.merge(@refusal.to_h)
     )

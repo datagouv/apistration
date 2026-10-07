@@ -149,7 +149,7 @@ class SIADEINSEESmoke < INSEESmoke
       expect(provider.attempts.size).to eq(2)
     end
 
-    scenario('désynchronisation après un 401 : erreur 01006 propagée, aucun rejeu Sirene') do
+    scenario('mot de passe changé hors rotation après un 401 : erreur 01006 propagée, un seul essai du courant déjà accepté') do
       authenticate
       provider.password = 'Unknown-Password1'
       provider.revoke_tokens
@@ -157,7 +157,7 @@ class SIADEINSEESmoke < INSEESmoke
         expect(failure.context.errors.map(&:code)).to eq(['01006'])
       end
       expect(provider.bearers.size).to eq(1)
-      expect(provider.attempts.size).to eq(4)
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD])
       expect(guard_active?).to be(true)
     end
 
@@ -240,7 +240,8 @@ class SIADEINSEESmoke < INSEESmoke
       expect(alert_messages.map(&:first)).to eq(%w[error])
     end
 
-    scenario('OAuth indisponible après novembre : une seule tentative, le parcours des candidats devant finir avant l’expiration') do
+    scenario('OAuth indisponible après novembre, précédent accepté en dernier : une seule tentative, le parcours des candidats devant finir avant l’expiration') do
+      provider.password = PREVIOUS_PASSWORD
       started_at = Time.current
       token = authenticate
       provider.oauth_fault = 503
@@ -248,7 +249,21 @@ class SIADEINSEESmoke < INSEESmoke
       3.times { expect(fetch_resource).to include('siren' => '123456789') }
       Timecop.freeze(started_at + 242.seconds)
       expect(authenticate).to eq(token)
-      expect(provider.attempts.size).to eq(2)
+      expect(provider.attempts.size).to eq(3)
+    end
+
+    scenario('OAuth indisponible après novembre, courant accepté en dernier : deux tentatives, un seul échange à prévoir') do
+      started_at = Time.current
+      token = authenticate
+      provider.oauth_fault = 503
+      Timecop.freeze(started_at + 211.seconds)
+      3.times { expect(fetch_resource).to include('siren' => '123456789') }
+      Timecop.freeze(started_at + 242.seconds)
+      expect(authenticate).to eq(token)
+      expect(provider.attempts.size).to eq(3)
+      Timecop.freeze(started_at + 275.seconds)
+      expect(authenticate).to eq(token)
+      expect(provider.attempts.size).to eq(3)
     end
 
     scenario('OAuth indisponible pendant le renouvellement : une tentative toutes les 30 s, pas une par requête') do
@@ -268,11 +283,51 @@ class SIADEINSEESmoke < INSEESmoke
       expect(guard_active?).to be(false)
     end
 
-    scenario('refus intermittent après novembre : le précédent est essayé et refusé avant le courant') do
+    scenario('refus intermittent après novembre, sans courant accepté : le précédent est essayé et refusé avant le courant') do
       provider.refuse_next_logins(1)
       authenticate
       expect(provider.attempts).to eq([CURRENT_PASSWORD, PREVIOUS_PASSWORD, CURRENT_PASSWORD])
       expect(alerts).to be_empty
+    end
+
+    scenario('refus intermittent après novembre, courant déjà accepté : le précédent n’est pas essayé, reprise après 30 s') do
+      started_at = Time.current
+      authenticate
+      Timecop.freeze(started_at + 5.minutes)
+      provider.refuse_next_logins(1)
+      expect_rejection
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD])
+      Timecop.freeze(started_at + 5.minutes + 31.seconds)
+      expect(fetch_resource).to include('siren' => '123456789')
+      expect(provider.attempts).to eq([CURRENT_PASSWORD] * 3)
+      expect(alert_messages).to eq(
+        [['error', 'INSEE refused the current password it accepted last: intermittent refusal, account locked or password changed outside the rotation'],
+         ['warning', 'INSEE authentication recovered']]
+      )
+    end
+
+    scenario('nouveau bimestre avant la rotation : parcours complet tant que le nouveau courant n’a pas été accepté') do
+      Timecop.freeze(Time.new(2026, 12, 31, 23, 50, 0, '+01:00'))
+      provider.password = PREVIOUS_PASSWORD
+      authenticate
+      Timecop.freeze(Time.new(2027, 1, 1, 0, 1, 0, '+01:00'))
+      authenticate
+      expect(provider.attempts).to eq([PREVIOUS_PASSWORD, CURRENT_PASSWORD, PREVIOUS_PASSWORD])
+      provider.password = CURRENT_PASSWORD
+      Timecop.freeze(Time.new(2027, 1, 1, 0, 7, 0, '+01:00'))
+      authenticate
+      Timecop.freeze(Time.new(2027, 1, 1, 0, 13, 0, '+01:00'))
+      provider.refuse_next_logins(1)
+      expect_rejection
+      expect(provider.attempts.drop(3)).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD])
+    end
+
+    scenario('Redis indisponible après novembre : parcours complet faute de savoir quel mot de passe a été accepté') do
+      authenticate
+      disconnect_cache
+      provider.refuse_next_logins(1)
+      authenticate
+      expect(provider.attempts).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD, PREVIOUS_PASSWORD, CURRENT_PASSWORD])
     end
 
     scenario('huit processus au renouvellement : un seul échange, aucun échec') do

@@ -48,8 +48,10 @@ quelle que soit la cause de l'échec, pour qu'un OAuth indisponible ne reçoive 
 un appel par requête. Une tentative peut enchaîner jusqu'à trois échanges OAuth
 (courant, précédent, puis courant à nouveau), de 20 secondes au plus chacun :
 aucune tentative ne démarre si tous ses échanges ne peuvent aboutir avant
-l'expiration du token en cache. Pour un token de 5 minutes, les tentatives ont
-lieu à 3 min 30 et 4 min avant la dérivation, à 3 min 30 seulement ensuite. Un
+l'expiration du token en cache. Le nombre d'échanges est évalué au moment de
+la tentative, sur le parcours qu'elle lancerait. Pour un token de 5 minutes, les tentatives ont lieu à 3 min 30 et
+4 min quand un seul mot de passe sera essayé (avant la dérivation, ou courant
+accepté en dernier), à 3 min 30 seulement sinon. Un
 token qui vit moins de 90 secondes est gardé jusqu'à son expiration. Un refus isolé de l'INSEE ne
 coupe ainsi rien, tant qu'une tentative suivante aboutit avant l'expiration.
 
@@ -62,7 +64,8 @@ Pour obtenir un token, les mots de passe sont essayés dans cet ordre :
 | Situation | Ordre des tentatives |
 | --- | --- |
 | Avant le début de la dérivation | Statique, une seule fois |
-| Dérivation active | Courant, précédent, puis courant une dernière fois |
+| Dérivation active, courant accepté en dernier | Courant, une seule fois |
+| Dérivation active, sinon | Courant, précédent, puis courant une dernière fois |
 | Bypass configuré | Bypass, puis courant |
 
 Les tentatives s'arrêtent dès qu'un mot de passe est accepté. Seul un
@@ -70,9 +73,28 @@ Les tentatives s'arrêtent dès qu'un mot de passe est accepté. Seul un
 identiques ne sont pas essayés à la suite. Le « courant » reste le mot de passe
 statique avant le début de la dérivation.
 
+`siade/` retient l'empreinte SHA-256 du dernier mot de passe accepté
+(`INSEE::AcceptedPassword`, namespace `insee`). Réécrite à chaque token obtenu,
+elle expire après un jour sans succès : assez pour survivre à une nuit sans
+trafic ou à un épisode de refus. Si c'est le courant,
+un refus est un refus intermittent de l'APIM, pas une désynchronisation :
+essayer le précédent, réellement faux, consommerait un refus du budget de cinq
+de Keycloak (voir plus bas). Le courant est alors essayé seul, et l'alerte
+s'intitule `INSEE refused the current password it accepted last`. Faute
+d'information, le parcours complet reprend : cache vide ou Redis indisponible,
+premier démarrage, `clear_guards!`, ou nouveau bimestre tant que le nouveau
+courant n'a pas été accepté. Le bypass garde toujours son parcours : il sert
+justement quand l'INSEE ne détient plus le mot de passe calculé.
+
 Le dernier essai du mot de passe courant couvre une rotation survenue pendant
 l'authentification : le courant a pu être refusé avant le renouvellement, puis
-le précédent refusé après. Avec le bypass, le courant est déjà essayé en dernier.
+le précédent refusé après. Un courant déjà accepté signifie que la rotation a eu
+lieu, d'où l'essai unique. Avec le bypass, le courant est déjà essayé en
+dernier.
+
+Contrepartie : un mot de passe changé hors rotation après une acceptation du
+courant n'est essayé qu'une fois par tentative, et seul le bypass permet d'en
+sortir, comme pour toute désynchronisation.
 
 **Exemple au 1er janvier 2027 :** tant que le job n'a pas tourné, le mot de passe
 de novembre reste accepté. Après renouvellement, celui de janvier fonctionne.
@@ -233,7 +255,9 @@ INSEE::Authenticate.clear_guards!
 
 Côté `siade/`, la commande remet aussi à zéro le compteur du backoff.
 
-Ces commandes ne renouvellent pas le mot de passe. `rake cache:clear` ne lève pas
+Ces commandes ne renouvellent pas le mot de passe. Côté `siade/`, elles oublient
+aussi le dernier mot de passe accepté : la tentative suivante reprend le
+parcours complet. `rake cache:clear` ne lève pas
 le garde-fou : sa clé est hors du namespace de cache habituel de l'application.
 
 ## Détails des caches

@@ -28,9 +28,11 @@ les erreurs `01006` / `01011` et le chiffrement du token, ainsi que le
 renouvellement anticipé (y compris refusé, face à un OAuth indisponible et sous
 concurrence), le backoff et ses alertes par épisode, y compris pour un compte
 désactivé.
-Deux scénarios fixent des limites connues : après novembre, un refus
-intermittent fait essayer le mot de passe précédent ; deux instances sans Redis
-commun cumulent six refus en 91 secondes. `site` vérifie le
+Après novembre, un refus intermittent n'essaie que le courant s'il a déjà été
+accepté, y compris au changement de bimestre une fois la rotation passée ; sans
+cette information (premier échange, Redis indisponible), le précédent est
+encore essayé et refusé. Un scénario fixe une limite connue : deux instances
+sans Redis commun cumulent six refus en 91 secondes. `site` vérifie le
 renouvellement, sa réponse perdue, la sortie du bypass et les conditions
 d'exécution du job.
 
