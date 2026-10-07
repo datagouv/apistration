@@ -26,7 +26,7 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
       describe 'with valid token and mandatory params', :valid do
         describe 'with valid siren' do
           before do
-            mock_valid_dgfip_dictionnaire(2020)
+            mock_valid_dgfip_dictionnaire(2022)
             mock_valid_dgfip_dictionnaire(2021)
 
             mock_valid_banque_de_france

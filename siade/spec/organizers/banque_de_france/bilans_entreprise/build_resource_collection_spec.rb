@@ -18,7 +18,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: 
   let(:json_body) { open_payload_file('banque_de_france/bilans_entreprise_valid_data.json').read }
 
   before do
-    mock_valid_dgfip_dictionnaire(2020)
+    mock_valid_dgfip_dictionnaire(2022)
     mock_valid_dgfip_dictionnaire(2021)
   end
 
@@ -31,18 +31,15 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: 
   describe 'declarations item' do
     subject { organizer.bundled_data.data.first.declarations }
 
-    it 'has augmented information from dictionaries' do
+    it 'has augmented information from the remote dictionary first, then from the local one' do
       imprime_2051 = subject.find { |declaration| declaration[:numero_imprime] == '2051' }
+      intitules_by_code_nref = imprime_2051[:donnees].to_h { |datum| [datum[:code_nref], datum[:intitule]] }
 
-      codes_nref_with_augmented_data = %w[300438 300476]
-
-      imprime_2051[:donnees].each do |datum|
-        if codes_nref_with_augmented_data.include?(datum[:code_nref])
-          expect(datum).to have_key(:code_absolu)
-        else
-          expect(datum).not_to have_key(:code_absolu)
-        end
-      end
+      expect(intitules_by_code_nref).to include(
+        '300438' => 'Déposé géant',
+        '300476' => 'Réposé géant',
+        '300414' => 'Capital social ou individuel n'
+      )
     end
   end
 end

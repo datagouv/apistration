@@ -4,6 +4,6 @@ class DGFIP::LiassesFiscales::BuildResource < ApplicationOrganizer
   end
 
   organize DGFIP::LiassesFiscales::BuildResourceWithoutDictionary,
-    DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote,
+    DGFIP::LiassesFiscales::RetrieveDictionariesFromCacheOrRemote,
     DGFIP::LiassesFiscales::EnrichResourceWithDictionary
 end

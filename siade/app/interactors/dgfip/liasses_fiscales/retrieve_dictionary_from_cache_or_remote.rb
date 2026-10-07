@@ -98,6 +98,6 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
   end
 
   def expires_in
-    6.months.from_now.to_i
+    24.hours
   end
 end

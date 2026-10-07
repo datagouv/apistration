@@ -1,32 +1,21 @@
-class BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote < ApplicationInteractor
+class BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote < DGFIP::LiassesFiscales::RetrieveDictionariesWithFallback
   delegates_to DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote
 
-  def call
-    context.dictionaries = bilans_years.index_with do |year|
-      retrieve_dictionaries_for_year(year)
-    end
+  protected
+
+  def years_with_fallback_by_key
+    bilans.to_h { |bilan| [bilan.date_arrete_exercice, [millesime_year(bilan), bilan.annee]] }
   end
 
   private
 
-  def retrieve_dictionaries_for_year(year)
-    retriever = DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote.call(params: { year:, request_id:, user_id: })
+  def millesime_year(bilan)
+    return bilan.annee unless bilan.date_arrete_exercice.end_with?('-12')
 
-    return retriever.dictionary if retriever.success?
-
-    context.errors = retriever.errors
-    context.fail!
+    (bilan.annee.to_i + 1).to_s
   end
 
-  def bilans_years
-    context.bundled_data.data.map(&:annee)
-  end
-
-  def request_id
-    context.params.fetch(:request_id)
-  end
-
-  def user_id
-    context.params.fetch(:user_id)
+  def bilans
+    context.bundled_data.data
   end
 end

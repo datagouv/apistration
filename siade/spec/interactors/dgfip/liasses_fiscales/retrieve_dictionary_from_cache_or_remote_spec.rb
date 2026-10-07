@@ -10,12 +10,12 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
   end
 
   let(:year) { 2019 }
-  let(:key) { 'dgfip:dictionnaires:2019' }
+  let(:key) { "dgfip:dictionnaires:#{year}" }
   let(:user_id) { SecureRandom.uuid }
   let(:request_id) { SecureRandom.uuid }
 
   before do
-    mock_valid_dgfip_dictionnaire(2019)
+    mock_valid_dgfip_dictionnaire(year)
     AppConfig.reset(:features)
   end
 
@@ -41,6 +41,7 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
     end
 
     context 'when data is not available in cache' do
+      let(:year) { 2042 }
       let(:data) { JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire'] }
 
       before do
@@ -57,6 +58,12 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
       it { is_expected.to be_a_success }
       its(:dictionary) { is_expected.to eq(data) }
+
+      it 'caches the dictionary for 24 hours' do
+        expect(EncryptedCache).to receive(:write).with(key, anything, expires_in: 24.hours).and_call_original
+
+        subject
+      end
     end
   end
 
