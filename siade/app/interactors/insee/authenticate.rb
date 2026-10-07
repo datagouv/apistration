@@ -2,12 +2,9 @@ class INSEE::Authenticate < MakeRequest::Post
   raises ProviderAuthenticationError
 
   CACHE_KEY = :'insee/authenticate'
-  GUARD_CACHE_NAMESPACE = 'insee'.freeze
   LOCK_CACHE_KEY = 'auth_lock'.freeze
-  FAILURE_CACHE_KEY = 'auth_failed'.freeze
   LOCK_TTL = 90.seconds
   LOCK_WAIT = 0.5
-  FAILURE_TTL = 30.minutes
   TOKEN_EXPIRATION_MARGIN = 10
   INVALID_GRANT_HTTP_CODES = [400, 401].freeze
   TRANSIENT_HTTP_CODES = [408, 429].freeze
@@ -28,13 +25,13 @@ class INSEE::Authenticate < MakeRequest::Post
 
   def self.clear_guards!
     Rails.cache.delete(LOCK_CACHE_KEY)
-    Rails.cache.delete(FAILURE_CACHE_KEY, namespace: GUARD_CACHE_NAMESPACE)
+    INSEE::AuthenticationBackoff.clear!
   end
 
   def call
     return if use_mocked_data?
 
-    context.token = published_token || authenticate!
+    context.token = context.ahead_of_expiry ? renew_ahead_of_expiry! : (current_token || authenticate!)
   end
 
   protected
@@ -54,6 +51,33 @@ class INSEE::Authenticate < MakeRequest::Post
   end
 
   private
+
+  def current_token
+    token = published_token
+    return token unless token && INSEE::TokenRenewal.due?
+
+    renewed_ahead_of_expiry || token
+  end
+
+  def renewed_ahead_of_expiry
+    renewal = self.class.call(provider_name: context.provider_name, ahead_of_expiry: true)
+
+    renewal.token if renewal.success?
+  end
+
+  def renew_ahead_of_expiry!
+    fail_with_temporary_error! if recently_failed?
+    fail_with_temporary_error! unless acquire_lock! == true
+
+    begin
+      return published_token unless INSEE::TokenRenewal.due?
+
+      INSEE::TokenRenewal.postpone!
+      token_from_candidates
+    ensure
+      release_lock!
+    end
+  end
 
   def authenticate!
     fail_with_temporary_error! if recently_failed?
@@ -80,14 +104,14 @@ class INSEE::Authenticate < MakeRequest::Post
   def token_from_candidates
     fail_with_temporary_error! if recently_failed?
 
+    token_from(password_attempts) || fail_with_authentication_error!
+  end
+
+  def password_attempts
     candidates = INSEE::PasswordDerivation.candidates
-    token = token_from(candidates)
-    return token if token
-
     current_password = INSEE::PasswordDerivation.current_password
-    token = token_from([current_password]) unless candidates.last == current_password
 
-    token || fail_with_authentication_error!
+    candidates.last == current_password ? candidates : [*candidates, current_password]
   end
 
   def token_from(candidates)
@@ -99,7 +123,7 @@ class INSEE::Authenticate < MakeRequest::Post
 
       return store_token(payload) if token_granted?(response, payload)
 
-      remember_refusal(response, payload)
+      @refusal = INSEE::GrantRefusal.new(response, payload)
 
       fail_with_temporary_error! if transient?(response)
       next if invalid_grant?(response, payload)
@@ -109,14 +133,6 @@ class INSEE::Authenticate < MakeRequest::Post
     end
 
     nil
-  end
-
-  def remember_refusal(response, payload)
-    @refusal = {
-      http_response_code: response.code.to_i,
-      provider_error: payload['error'],
-      provider_error_description: payload['error_description']
-    }.compact_blank
   end
 
   def token_granted?(response, payload)
@@ -144,18 +160,21 @@ class INSEE::Authenticate < MakeRequest::Post
 
   def store_token(payload)
     token = payload['access_token']
+    lifetime = payload['expires_in'].to_i
 
-    EncryptedCache.write(
-      CACHE_KEY,
-      token,
-      expires_in: [payload['expires_in'].to_i - TOKEN_EXPIRATION_MARGIN, 1].max
-    )
+    report_recovery(INSEE::AuthenticationBackoff.end_episode!)
+
+    expires_in = [lifetime - TOKEN_EXPIRATION_MARGIN, 1].max
+
+    return token unless EncryptedCache.write(CACHE_KEY, token, expires_in:)
+
+    INSEE::TokenRenewal.schedule!(lifetime:, expires_in:, exchanges: password_attempts.size)
 
     token
   end
 
   def recently_failed?
-    outside_the_request_cache { Rails.cache.read(FAILURE_CACHE_KEY, namespace: GUARD_CACHE_NAMESPACE) }.present?
+    INSEE::AuthenticationBackoff.holding_back?
   end
 
   def acquire_lock!
@@ -180,35 +199,56 @@ class INSEE::Authenticate < MakeRequest::Post
   end
 
   def fail_with_oauth_rejection!
-    record_authentication_failure!(
-      'INSEE refused the OAuth exchange itself: client credentials revoked or account locked'
+    refusals = INSEE::AuthenticationBackoff.hold_back_after_oauth_rejection!
+
+    track_authentication_failure!(
+      'INSEE refused the OAuth exchange itself: client credentials revoked or account locked',
+      refusals
     )
+
+    fail_with_provider_authentication_error!
   end
 
   def fail_with_authentication_error!
-    record_authentication_failure!(
-      'INSEE authentication failed on every candidate: password desynchronized or account locked'
-    )
+    refusals = INSEE::AuthenticationBackoff.hold_back_after_refusal!
+    track_authentication_failure!(refused_candidates_message, refusals) if refusals == 1
+
+    fail_with_provider_authentication_error!
   end
 
-  def record_authentication_failure!(message)
-    Rails.cache.write(FAILURE_CACHE_KEY, true, namespace: GUARD_CACHE_NAMESPACE, expires_in: FAILURE_TTL)
+  def refused_candidates_message
+    if INSEE::PasswordDerivation.candidates.one?
+      'INSEE refused the only password candidate: intermittent refusal or account locked'
+    else
+      'INSEE authentication failed on every candidate: password desynchronized or account locked'
+    end
+  end
 
-    track_authentication_failure!(message)
-
+  def fail_with_provider_authentication_error!
     context.errors << ProviderAuthenticationError.new(context.provider_name)
     context.fail!
   end
 
-  def track_authentication_failure!(message)
+  def track_authentication_failure!(message, refusals)
     MonitoringService.instance.track_with_added_context(
       'error',
       message,
       {
         period: INSEE::PasswordDerivation.current_period,
         bypassed: INSEE::PasswordDerivation.bypassed?,
-        candidates_count: INSEE::PasswordDerivation.candidates.size
+        candidates_count: INSEE::PasswordDerivation.candidates.size,
+        refusals:
       }.merge(@refusal.to_h)
+    )
+  end
+
+  def report_recovery(episode)
+    return if episode.nil?
+
+    MonitoringService.instance.track_with_added_context(
+      'warning',
+      'INSEE authentication recovered',
+      { refusals: episode.refusals, outage_seconds: episode.outage_seconds }
     )
   end
 end

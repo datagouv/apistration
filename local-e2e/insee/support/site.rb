@@ -1,6 +1,7 @@
 require_relative 'support'
 require 'faraday'
 require 'faraday/retry'
+require 'active_model'
 require 'active_job'
 require 'good_job'
 
@@ -39,6 +40,10 @@ class SiteINSEESmoke < INSEESmoke
 
   def invalidate(token)
     INSEEAPIAuthentication.invalidate_token_cache!(token)
+  end
+
+  def first_refusal_hold
+    30.minutes
   end
 
   def clear_guards

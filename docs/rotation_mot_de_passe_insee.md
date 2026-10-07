@@ -29,10 +29,33 @@ correspondre dans les deux applications :
 
 ### Authentification
 
+L'OAuth de l'INSEE est un realm Keycloak. Chaque échange émet un nouveau token,
+valable 5 minutes (`expires_in: 300`), sans refresh token : chaque
+renouvellement repasse par le grant `password` et consomme donc une tentative
+sur le compte.
+
 Un token en cache est réutilisé jusqu'à son expiration, avec une marge de
 10 secondes. S'il est refusé par Sirene (HTTP 401), l'application invalide ce
 token et rejoue l'appel une fois après réauthentification. Un token plus récent,
 publié entre-temps par une autre requête, est conservé et réutilisé.
+
+`siade/` renouvelle le token avant son expiration : à partir de 90 secondes
+avant la fin de sa vie, la requête qui obtient le verrou s'authentifie, les
+autres continuent avec le token courant. Le token courant reste publié tant que
+le nouveau n'est pas obtenu ; si le renouvellement échoue, la requête utilise le
+token courant sans erreur. Chaque tentative repousse la suivante de 30 secondes,
+quelle que soit la cause de l'échec, pour qu'un OAuth indisponible ne reçoive pas
+un appel par requête. Une tentative peut enchaîner jusqu'à trois échanges OAuth
+(courant, précédent, puis courant à nouveau), de 20 secondes au plus chacun :
+aucune tentative ne démarre si tous ses échanges ne peuvent aboutir avant
+l'expiration du token en cache. Pour un token de 5 minutes, les tentatives ont
+lieu à 3 min 30 et 4 min avant la dérivation, à 3 min 30 seulement ensuite. Un
+token qui vit moins de 90 secondes est gardé jusqu'à son expiration. Un refus isolé de l'INSEE ne
+coupe ainsi rien, tant qu'une tentative suivante aboutit avant l'expiration.
+
+Une requête qui trouve le token expiré, ou refusé par Sirene, pendant qu'un
+renouvellement est en cours attend 0,5 seconde le token publié, puis renvoie une
+erreur temporaire : la fenêtre ci-dessus rend ce cas rare sans l'exclure.
 
 Pour obtenir un token, les mots de passe sont essayés dans cet ordre :
 
@@ -87,10 +110,72 @@ ces réponses ne prouvent pas que le mot de passe est incorrect.
 
 Un autre refus HTTP 4xx arrête immédiatement les tentatives et déclenche une
 alerte. L'épuisement des candidats sur `invalid_grant` a le même effet.
-L'application mémorise alors l'échec pendant **30 minutes**, pour éviter de
-multiplier les tentatives contre un compte potentiellement verrouillé. Ce
-garde-fou bloque les nouvelles authentifications ; un token encore en cache
-reste utilisable.
+L'application suspend alors les nouvelles authentifications ; un token encore en
+cache reste utilisable.
+
+`site/` suspend pendant **30 minutes**. `siade/` suspend selon un backoff
+exponentiel, pour qu'un refus isolé de l'INSEE ne coupe pas Sirene une demi-heure
+alors que le token ne vit que 5 minutes :
+
+| Échec d'authentification | Suspension côté `siade/` |
+| --- | --- |
+| 1er refus consécutif | 30 secondes |
+| 2e | 1 minute |
+| 3e | 2 minutes |
+| 4e | 4 minutes |
+| 5e et suivants | 5 minutes |
+| Refus de l'échange OAuth lui-même (`invalid_client`…) | 30 minutes |
+
+Le compteur de refus repart de zéro au premier token obtenu, et expire après une
+heure sans nouveau refus. Sa mise à jour n'est pas atomique : pendant le
+recouvrement de deux démarrages d'un déploiement, qui partagent ce compteur, un
+refus peut se perdre, une alerte être doublée ou manquer, ou une suspension être
+raccourcie.
+
+Keycloak verrouille le compte après **5 refus consécutifs**, tous clients
+confondus, et seul un succès remet son compteur à zéro : espacer les tentatives
+ne l'épargne pas. Jusqu'à six instances `siade/` (trois serveurs, sandbox et
+production) et `site/` partagent ce budget sans partager de Redis ; en pratique
+deux instances s'authentifient. Un épisode long de refus en HTTP 401 peut donc
+atteindre le seuil.
+
+Côté `siade/`, les alertes suivent les épisodes plutôt que chaque échec : une
+erreur au premier refus, rien pendant le backoff, puis un avertissement
+`INSEE authentication recovered` au premier token obtenu, avec le nombre de
+refus (`refusals`) et la durée de l'épisode (`outage_seconds`). Un refus de
+l'échange OAuth lui-même alerte à chaque tentative. Avec un seul
+candidat (avant la dérivation), l'alerte s'intitule `INSEE refused the only
+password candidate` : une désynchronisation est alors impossible à détecter.
+
+L'alerte porte le code HTTP, `error` et `error_description` du refus. Sentry
+masque `error_description` (« Invalid user credentials » contient un mot qu'il
+filtre), d'où `refusal_reason`, qui le traduit en mots qu'il laisse passer :
+
+| `error_description` de Keycloak | `refusal_reason` |
+| --- | --- |
+| Account temporarily disabled | `account_temporarily_disabled` |
+| Account disabled | `account_disabled` |
+| Account is not fully set up | `account_not_fully_set_up` |
+| Invalid user credentials | `refused_login` |
+| Autre | `unknown` |
+
+Le code HTTP compte autant que la description. Dans Keycloak 26, le grant
+`password` répond :
+
+| Situation | Réponse |
+| --- | --- |
+| Mot de passe faux | 401, Invalid user credentials |
+| Compte verrouillé par la détection de brute force | 401, Invalid user credentials |
+| Compte désactivé | 400, Account disabled |
+| Mot de passe accepté, action requise en attente | 400, Account is not fully set up |
+
+Un verrouillage par brute force est donc indiscernable d'un mot de passe faux,
+et aucune description ne permet de le détecter : `siade/` n'a pas de suspension
+dédiée et applique le backoff à tous les `invalid_grant`. Un refus en 400, comme
+ceux de septembre et octobre 2026, ne vient ni d'un mot de passe faux ni de la
+détection de brute force, et ne consomme donc pas le budget de cinq refus si
+l'INSEE utilise une version proche ; « Account temporarily disabled » est le
+libellé de versions plus anciennes.
 
 ## Exploitation
 
@@ -146,13 +231,16 @@ Pour `siade/` :
 INSEE::Authenticate.clear_guards!
 ```
 
+Côté `siade/`, la commande remet aussi à zéro le compteur du backoff.
+
 Ces commandes ne renouvellent pas le mot de passe. `rake cache:clear` ne lève pas
 le garde-fou : sa clé est hors du namespace de cache habituel de l'application.
 
 ## Détails des caches
 
 Les applications ont des Redis distincts : elles ne partagent ni token,
-ni verrou, ni garde-fou. Chaque application peut donc faire ses propres
+ni verrou, ni garde-fou. Chaque serveur a aussi son propre Redis local : les
+trois serveurs `siade/` d'un environnement s'authentifient chacun de leur côté. Chaque application peut donc faire ses propres
 tentatives sur le compte commun. Le garde-fou de `site/`, y compris celui posé
 par le job, ne bloque pas `siade/`.
 

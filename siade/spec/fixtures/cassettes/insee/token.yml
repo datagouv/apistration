@@ -42,7 +42,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"access_token":"anonymized-insee-token-12345678-abcd-efgh-ijkl-9876543210fe","scope":"am_application_scope
-        default","token_type":"Bearer","expires_in":598077}'
+        default","token_type":"Bearer","expires_in":300}'
     http_version:
   recorded_at: Fri, 13 Jul 2018 13:53:30 GMT
 recorded_with: VCR 3.0.3

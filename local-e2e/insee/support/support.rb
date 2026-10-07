@@ -86,9 +86,9 @@ class INSEESmoke
     WebMock.stub_request(:get, %r{\A#{Regexp.escape(API_URL)}/(?:siren|siret)/}).to_return { |request| @provider.resource(request) }
   end
 
-  def reconnect_cache(namespace: "#{application_name}-smoke")
+  def reconnect_cache(namespace: "#{application_name}-smoke", db: 0)
     Rails.cache = ActiveSupport::Cache::RedisCacheStore.new(
-      url: "unix://#{socket}", namespace:,
+      url: "unix://#{socket}?db=#{db}", namespace:,
       error_handler: ->(exception:, **) { raise exception }
     )
   end
@@ -189,11 +189,11 @@ class INSEESmoke
       expect(guard_active?).to be(false)
     end
 
-    scenario('désynchronisation : trois essais puis garde-fou de 30 minutes, même après redémarrage') do
+    scenario('désynchronisation : trois essais puis suspension, même après redémarrage') do
       provider.password = 'Unknown-Password1'
       expect_rejection
       expect(provider.attempts.size).to eq(3)
-      expect(@cache_redis.ttl('insee:auth_failed')).to be_between(1790, 1800)
+      expect(@cache_redis.ttl('insee:auth_failed')).to be_between(first_refusal_hold - 10, first_refusal_hold)
       reconnect_cache(namespace: 'another-boot')
       expect_temporary_failure
       expect(provider.attempts.size).to eq(3)
@@ -224,11 +224,14 @@ class INSEESmoke
       expect(guard_active?).to be(true)
     end
 
-    scenario('expiration du garde-fou : reprise après trente minutes sans intervention') do
+    scenario('expiration du garde-fou : reprise après la suspension sans intervention') do
       provider.password = 'Unknown-Password1'
       expect_rejection
       provider.password = CURRENT_PASSWORD
-      Timecop.freeze(Time.current + 30.minutes + 1.second)
+      Timecop.freeze(Time.current + first_refusal_hold - 1.second)
+      expect_temporary_failure
+      expect(provider.attempts.size).to eq(3)
+      Timecop.freeze(Time.current + 2.seconds)
       expect(authenticate).to eq(published_token)
       expect(provider.attempts.size).to eq(4)
       expect(guard_active?).to be(false)
@@ -259,7 +262,7 @@ class INSEESmoke
 
     scenario('token expiré : nouvel échange OAuth après la marge de dix secondes') do
       token = authenticate
-      Timecop.freeze(Time.current + 3591.seconds)
+      Timecop.freeze(Time.current + 291.seconds)
       expect(authenticate).not_to eq(token)
       expect(provider.attempts).to eq([CURRENT_PASSWORD, CURRENT_PASSWORD])
     end
