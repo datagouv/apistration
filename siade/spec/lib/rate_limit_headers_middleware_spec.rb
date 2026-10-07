@@ -85,6 +85,34 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
     end
   end
 
+  describe 'when a FranceConnect introspection throttle is present alongside another throttle' do
+    let(:france_connect_introspection_throttle_data) do
+      throttle_data.merge(discriminator: '1.2.3.4', limit: 30)
+    end
+
+    let(:env) do
+      {
+        'rack.attack.throttle_data' => {
+          'json_resources_particulier' => throttle_data,
+          'FranceConnect introspection per IP and per minute' => france_connect_introspection_throttle_data,
+          'FranceConnect introspection per IP and per hour' => france_connect_introspection_throttle_data
+        }
+      }
+    end
+
+    it 'adds RateLimit headers based on the other throttle data' do
+      _status, headers, _body = subject
+
+      expect(headers['RateLimit-Limit']).to eq('2')
+    end
+
+    it 'does not log through monitoring service' do
+      subject
+
+      expect(MonitoringService.instance).not_to have_received(:track_with_added_context)
+    end
+  end
+
   describe 'when there is multiple throttle defined' do
     let(:env) do
       {

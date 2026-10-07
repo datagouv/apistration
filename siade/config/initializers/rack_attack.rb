@@ -62,6 +62,12 @@ class Rack::Attack
     request.ip if request.path.start_with?('/api/attestations')
   end
 
+  RateLimitingService::FRANCE_CONNECT_INTROSPECTION_THROTTLES.each do |config|
+    throttle(config[:name], limit: config[:limit], period: config[:period]) do |req|
+      rate_limiting_service.public_send(config[:discriminator], req)
+    end
+  end
+
   throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
     token = request.env[UserResolutionMiddleware::TOKEN_ENV_KEY]
 

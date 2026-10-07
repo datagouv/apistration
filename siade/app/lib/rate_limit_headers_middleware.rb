@@ -28,6 +28,8 @@ class RateLimitHeadersMiddleware
   private
 
   def extract_throttle_data(throttle_raw_data)
+    throttle_raw_data = throttle_raw_data.except(*france_connect_introspection_throttle_names)
+
     if throttle_raw_data.key?('custom_rate_limit')
       throttle_raw_data['custom_rate_limit']
     elsif throttle_raw_data.many?
@@ -36,6 +38,10 @@ class RateLimitHeadersMiddleware
     else
       throttle_raw_data.values[0]
     end
+  end
+
+  def france_connect_introspection_throttle_names
+    RateLimitingService::FRANCE_CONNECT_INTROSPECTION_THROTTLES.pluck(:name)
   end
 
   def log_multiple_throttle(throttle_raw_data)
