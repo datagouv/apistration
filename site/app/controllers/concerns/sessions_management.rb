@@ -28,6 +28,7 @@ module SessionsManagement
   end
 
   def destroy
+    User::CloseSession.call(user: current_user, reason: 'logout') if user_signed_in?
     logout_user
 
     redirect_to after_logout_path,
