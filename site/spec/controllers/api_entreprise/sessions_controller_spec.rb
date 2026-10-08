@@ -188,6 +188,48 @@ RSpec.describe APIEntreprise::SessionsController do
     end
   end
 
+  describe 'GET #destroy' do
+    let(:user) { create(:user) }
+
+    before do
+      session[:current_user_id] = user.id
+      session[:last_seen_at] = Time.current.to_i
+      session[:absolute_expires_at] = 1.hour.from_now.to_i
+    end
+
+    it 'emits a closed session security event' do
+      expect { get :destroy }.to emit_security_event('auth.session.closed').with(
+        actor: { email: user.email, role: 'user' },
+        target: { type: 'user', id: user.id },
+        details: { reason: 'logout' }
+      )
+    end
+
+    context 'when nobody is signed in' do
+      before { session[:current_user_id] = nil }
+
+      it 'does not emit a closed session security event' do
+        expect { get :destroy }.not_to emit_security_event('auth.session.closed')
+      end
+    end
+
+    context 'when an admin impersonates the user' do
+      let(:admin) { create(:user, :admin) }
+
+      before do
+        session[:current_user_id] = admin.id
+        session[:impersonated_user_id] = user.id
+      end
+
+      it 'tells which admin closed the session' do
+        expect { get :destroy }.to emit_security_event('auth.session.closed').with(
+          actor: { email: user.email, role: 'user' },
+          details: { reason: 'logout', impersonated_by: admin.email }
+        )
+      end
+    end
+  end
+
   describe 'GET #dev_login' do
     shared_examples 'allows bypass login' do
       context 'when user exists' do
