@@ -1,27 +1,24 @@
-module SessionsManagement # rubocop:disable Metrics/ModuleLength
+module SessionsManagement
   extend ActiveSupport::Concern
 
-  ALLOWED_OAUTH_PROVIDERS = %w[
-    proconnect_api_entreprise
-    proconnect_api_particulier
-  ].freeze
-
   BYPASS_LOGIN_ENVIRONMENTS = %w[development staging sandbox].freeze
-
-  included do
-    before_action :validate_oauth_callback!, only: [:create_from_oauth]
-  end
 
   def new
     redirect_current_user_to_homepage if user_signed_in?
   end
 
   def create_from_oauth
-    return reject_login_without_mfa unless mfa_performed?
+    sign_in = User::ProconnectSignIn.call(
+      provider: params[:provider],
+      omniauth_auth: request.env['omniauth.auth'],
+      ip: request.remote_ip
+    )
 
-    interactor_call = User::ProconnectLogin.call(user_params:)
-
-    login(interactor_call)
+    if sign_in.success?
+      sign_in_and_redirect(sign_in.user)
+    else
+      reject_oauth_sign_in(sign_in)
+    end
   end
 
   def failure
@@ -49,10 +46,10 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
       return
     end
 
-    user = User.find_by(email: params[:email]&.downcase)
+    sign_in = User::DevSignIn.call(email: params[:email])
 
-    if user
-      sign_in_and_redirect(user)
+    if sign_in.success?
+      sign_in_and_redirect(sign_in.user)
     else
       error_message(title: 'Compte introuvable')
       redirect_to root_path
@@ -65,74 +62,26 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
     "/auth/proconnect_#{namespace}/logout"
   end
 
-  def validate_oauth_callback!
-    unless ALLOWED_OAUTH_PROVIDERS.include?(params[:provider])
-      track_invalid_provider_attempt
-      redirect_to(login_path) and return
-    end
-
-    return if request.env['omniauth.auth']
-
-    track_missing_omniauth_data
-    redirect_to(login_path) and return
-  end
-
-  def track_invalid_provider_attempt
-    MonitoringService.instance.track(
-      'OAuth security: Invalid provider attempt',
-      level: 'info',
-      context: {
-        provider: params[:provider],
-        ip: request.remote_ip
-      }
-    )
-  end
-
-  def track_missing_omniauth_data
-    MonitoringService.instance.track(
-      'OAuth security: Missing OmniAuth data',
-      level: 'info',
-      context: {
-        provider: params[:provider],
-        ip: request.remote_ip
-      }
-    )
-  end
-
-  def mfa_performed?
-    OmniAuth::Strategies::Proconnect::MFA_ACR_VALUES.include?(oauth_acr)
-  end
-
-  def oauth_acr
-    request.env['omniauth.auth'].extra&.acr
-  end
-
-  def reject_login_without_mfa
-    MonitoringService.instance.track(
-      'OAuth security: Missing MFA',
-      level: 'error',
-      context: {
-        provider: params[:provider],
-        acr: oauth_acr
-      }
-    )
-
-    error_message(title: t('concerns.sessions_management.mfa_required'))
-    redirect_to login_path
-  end
-
-  def user_params
-    request.env['omniauth.auth'].info.slice('email', 'last_name', 'first_name', 'uid')
-  end
-
-  def login(interactor_call)
-    if interactor_call.success?
-      sign_in_and_redirect(interactor_call.user)
-    else
-      send(extract_flash_kind(interactor_call.message), title: t(".#{interactor_call.message}.title"), description: t(".#{interactor_call.message}.description", email: oauth_email))
-
+  def reject_oauth_sign_in(sign_in)
+    case sign_in.message
+    when 'invalid_provider', 'missing_omniauth_data'
       redirect_to login_path
+    when 'mfa_missing'
+      error_message(title: t('concerns.sessions_management.mfa_required'))
+      redirect_to login_path
+    else
+      reject_proconnect_login(sign_in)
     end
+  end
+
+  def reject_proconnect_login(sign_in)
+    send(
+      extract_flash_kind(sign_in.message),
+      title: t(".#{sign_in.message}.title"),
+      description: t(".#{sign_in.message}.description", email: sign_in.user_params['email'])
+    )
+
+    redirect_to login_path
   end
 
   def failure_message
