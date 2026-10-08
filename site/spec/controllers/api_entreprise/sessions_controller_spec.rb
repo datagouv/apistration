@@ -13,7 +13,7 @@ RSpec.describe APIEntreprise::SessionsController do
           'last_name' => 'Doe',
           'uid' => '123456'
         },
-        extra: { acr: }
+        extra: { acr:, raw_info: { 'idp_id' => 'idp-uuid' } }
       )
     end
 
@@ -30,6 +30,16 @@ RSpec.describe APIEntreprise::SessionsController do
         get :create_from_oauth, params: { provider: valid_provider }
 
         expect(response).to redirect_to(authorization_requests_path)
+      end
+
+      it 'emits a successful login attempt' do
+        expect {
+          get :create_from_oauth, params: { provider: valid_provider }
+        }.to emit_security_event('auth.login.attempted').with(
+          actor: { email: user.email, role: 'user' },
+          target: { type: 'user', id: user.id },
+          details: { method: 'proconnect', idp: 'idp-uuid', mfa: true, acr: }
+        )
       end
 
       it 'does not track security events' do
@@ -124,6 +134,16 @@ RSpec.describe APIEntreprise::SessionsController do
         expect(flash[:error]['title']).to include('double authentification')
       end
 
+      it 'emits a denied login attempt' do
+        expect {
+          get :create_from_oauth, params: { provider: valid_provider }
+        }.to emit_security_event('auth.login.attempted').with(
+          actor: { email: user.email, role: 'anonymous' },
+          target: { type: 'user', id: nil },
+          details: { method: 'proconnect', idp: 'idp-uuid', mfa: false, acr:, reason: 'mfa_missing', outcome: 'denied' }
+        )
+      end
+
       it 'tracks the missing MFA' do
         get :create_from_oauth, params: { provider: valid_provider }
 
@@ -147,6 +167,16 @@ RSpec.describe APIEntreprise::SessionsController do
         get :create_from_oauth, params: { provider: valid_provider }
 
         expect(response).to redirect_to(login_path)
+      end
+
+      it 'emits a denied login attempt' do
+        expect {
+          get :create_from_oauth, params: { provider: valid_provider }
+        }.to emit_security_event('auth.login.attempted').with(
+          actor: { email: nil, role: 'anonymous' },
+          target: { type: 'user', id: nil },
+          details: { method: 'proconnect', reason: 'missing_omniauth_data', outcome: 'denied' }
+        )
       end
 
       it 'tracks missing omniauth data' do
@@ -235,6 +265,16 @@ RSpec.describe APIEntreprise::SessionsController do
       context 'when user exists' do
         let!(:user) { create(:user, email: 'test@example.com') }
 
+        it 'emits a successful dev login attempt' do
+          expect {
+            get :dev_login, params: { email: 'test@example.com' }
+          }.to emit_security_event('auth.login.attempted').with(
+            actor: { email: user.email, role: 'user' },
+            target: { type: 'user', id: user.id },
+            details: { method: 'dev_login' }
+          )
+        end
+
         it 'signs in the user and redirects to authorization_requests_path' do
           get :dev_login, params: { email: 'test@example.com' }
 
@@ -250,6 +290,14 @@ RSpec.describe APIEntreprise::SessionsController do
       end
 
       context 'when user does not exist' do
+        it 'emits a denied dev login attempt' do
+          expect {
+            get :dev_login, params: { email: 'nonexistent@example.com' }
+          }.to emit_security_event('auth.login.attempted').with(
+            details: { method: 'dev_login', reason: 'unknown_user', outcome: 'denied' }
+          )
+        end
+
         it 'redirects to root with error message' do
           get :dev_login, params: { email: 'nonexistent@example.com' }
 

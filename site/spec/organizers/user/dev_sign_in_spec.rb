@@ -23,5 +23,12 @@ RSpec.describe User::DevSignIn, type: :organizer do
     it 'tells why' do
       expect(sign_in.message).to eq('unknown_user')
     end
+
+    it 'emits a denied dev login attempt' do
+      expect { sign_in }.to emit_security_event('auth.login.attempted').with(
+        actor: { email: nil, role: 'anonymous' },
+        details: { method: 'dev_login', reason: 'unknown_user', outcome: 'denied' }
+      )
+    end
   end
 end
