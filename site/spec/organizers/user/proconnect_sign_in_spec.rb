@@ -9,7 +9,7 @@ RSpec.describe User::ProconnectSignIn, type: :organizer do
   let(:omniauth_auth) do
     OmniAuth::AuthHash.new(
       info: { 'email' => user.email, 'first_name' => 'John', 'last_name' => 'Doe', 'uid' => '123456' },
-      extra: { acr: }
+      extra: { acr:, raw_info: { 'idp_id' => 'idp-uuid' } }
     )
   end
 
@@ -21,6 +21,14 @@ RSpec.describe User::ProconnectSignIn, type: :organizer do
     it 'returns the user' do
       expect(sign_in.user).to eq(user)
     end
+
+    it 'emits a successful login attempt' do
+      expect { sign_in }.to emit_security_event('auth.login.attempted').with(
+        actor: { email: user.email, role: 'user' },
+        target: { type: 'user', id: user.id },
+        details: { method: 'proconnect', idp: 'idp-uuid', mfa: true, acr: }
+      )
+    end
   end
 
   context 'when the provider is not ours' do
@@ -30,6 +38,13 @@ RSpec.describe User::ProconnectSignIn, type: :organizer do
 
     it 'tells why' do
       expect(sign_in.message).to eq('invalid_provider')
+    end
+
+    it 'emits a denied login attempt' do
+      expect { sign_in }.to emit_security_event('auth.login.attempted').with(
+        actor: { email: nil, role: 'anonymous' },
+        details: { method: 'proconnect', reason: 'invalid_provider', outcome: 'denied' }
+      )
     end
 
     it 'tracks the attempt' do
@@ -60,6 +75,14 @@ RSpec.describe User::ProconnectSignIn, type: :organizer do
 
     it 'tells why' do
       expect(sign_in.message).to eq('mfa_missing')
+    end
+
+    it 'emits a denied login attempt naming the ProConnect account' do
+      expect { sign_in }.to emit_security_event('auth.login.attempted').with(
+        actor: { email: user.email, role: 'anonymous' },
+        target: { type: 'user', id: nil },
+        details: { method: 'proconnect', idp: 'idp-uuid', mfa: false, acr:, reason: 'mfa_missing', outcome: 'denied' }
+      )
     end
 
     it 'does not create nor update the user' do

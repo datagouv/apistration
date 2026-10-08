@@ -1,6 +1,8 @@
 class User::Login::EnsureMfa < ApplicationInteractor
   def call
-    return if OmniAuth::Strategies::Proconnect::MFA_ACR_VALUES.include?(acr)
+    context.acr = acr
+    context.mfa = OmniAuth::Strategies::Proconnect::MFA_ACR_VALUES.include?(acr)
+    return if context.mfa
 
     MonitoringService.instance.track(
       'OAuth security: Missing MFA',
