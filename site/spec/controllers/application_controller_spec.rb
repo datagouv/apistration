@@ -16,6 +16,14 @@ RSpec.describe ApplicationController do
       session[:absolute_expires_at] = 23.hours.from_now.to_i
     end
 
+    it 'sets the security event actor for the request' do
+      allow(SecurityEvent).to receive(:set_request_context)
+
+      get :index
+
+      expect(SecurityEvent).to have_received(:set_request_context).with(user:, true_user: user)
+    end
+
     context 'with activity within both the idle window and the absolute cap' do
       it 'keeps the user signed in' do
         get :index
