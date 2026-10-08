@@ -65,7 +65,7 @@ module SessionsManagement
 
   def reject_oauth_sign_in(sign_in)
     case sign_in.message
-    when 'invalid_provider', 'missing_omniauth_data'
+    when 'invalid_provider', 'missing_omniauth_data', 'invalid_identity'
       redirect_to login_path
     when 'mfa_missing'
       error_message(title: t('concerns.sessions_management.mfa_required'))
