@@ -32,6 +32,10 @@ RSpec.describe ApplicationController do
         expect(session[:current_user_id]).to eq(user.id)
       end
 
+      it 'does not emit a closed session security event' do
+        expect { get :index }.not_to emit_security_event('auth.session.closed')
+      end
+
       it 'slides the idle window on each request' do
         session[:last_seen_at] = 1.hour.ago.to_i
 
@@ -65,6 +69,14 @@ RSpec.describe ApplicationController do
 
         expect(flash[:info]['title']).to eq(I18n.t('concerns.sessions_management.session_expired.idle', hours: 12))
       end
+
+      it 'emits a closed session security event' do
+        expect { get :index }.to emit_security_event('auth.session.closed').with(
+          actor: { email: user.email, role: 'user' },
+          target: { type: 'user', id: user.id },
+          details: { reason: 'idle_timeout' }
+        )
+      end
     end
 
     context 'when the absolute cap is reached despite recent activity' do
@@ -84,6 +96,13 @@ RSpec.describe ApplicationController do
         get :index
 
         expect(flash[:info]['title']).to eq(I18n.t('concerns.sessions_management.session_expired.absolute', hours: 24))
+      end
+
+      it 'emits a closed session security event' do
+        expect { get :index }.to emit_security_event('auth.session.closed').with(
+          target: { type: 'user', id: user.id },
+          details: { reason: 'absolute_timeout' }
+        )
       end
     end
 
