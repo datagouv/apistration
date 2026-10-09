@@ -1090,18 +1090,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -1953,18 +1952,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -2847,18 +2845,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -3728,18 +3725,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -4595,18 +4591,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -5506,18 +5501,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -6682,18 +6676,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -7571,18 +7564,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
@@ -8924,18 +8916,17 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: "**Nom d'usage**. \n\nSi le particulier a un nom d'usage, c'est
-          le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif
-          et peut changer au cours de la vie. Il correspond au nom de famille/naissance
-          d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance.
-          Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance
-          d'un concubin ou d'un partenaire de pacs. \n\nSi le particulier en a fait
-          la demande, le nom d'usage peut être inscrit derrière le nom de naissance
-          sur la carte d'identité ou le passeport ; il peut également être celui utilisé
-          par l'administration sur les courriers. Le nom d'usage ne remplace pas le
-          nom de famille/naissance qui reste le seul mentionné. \nDans nos APIs, le
-          nom d'usage n'est jamais identique au nom de famille.\n\nPour en savoir
-          plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+        description: |-
+          **Nom d'usage**.
+
+          Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs.
+
+          Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace pas le nom de famille/naissance qui reste le seul mentionné.
+          Dans nos APIs, le nom d'usage n'est jamais identique au nom de famille.
+
+          Seuls les lettres (accentuées ou non), les espaces, les tirets et les apostrophes sont acceptés : un nom d'usage contenant un autre caractère (virgule, point, point d'interrogation, chiffre, etc.) est rejeté avec une erreur 422. L'apostrophe typographique (’) est convertie en apostrophe droite (').
+
+          Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868.
         example: DUPONT DURANT
         required: false
         schema:
