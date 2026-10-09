@@ -72,6 +72,7 @@ RSpec.configure do |config|
   config.before do
     Rails.cache.clear
     INSEE::Authenticate.clear_guards!
+    INPI::RNE::Authenticate.lift_all_rejections!
   end
 
   # If true, the base class of anonymous controllers will be inferred

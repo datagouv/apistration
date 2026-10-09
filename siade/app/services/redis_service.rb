@@ -12,6 +12,7 @@ class RedisService
 
   %w[
     get
+    getset
     exists?
     ttl
     del
