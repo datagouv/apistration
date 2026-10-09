@@ -20,6 +20,10 @@ class PingService
     AppConfig.config_for(:pings)
   end
 
+  def stored_last_ok_status
+    redis_service.restore("last_ok_status_#{operation_id}")
+  end
+
   private
 
   def data
@@ -106,7 +110,7 @@ class PingService
   end
 
   def last_ok_status
-    redis_service.restore("last_ok_status_#{operation_id}") || current_time
+    stored_last_ok_status || current_time
   end
 
   def store_last_ok_status
