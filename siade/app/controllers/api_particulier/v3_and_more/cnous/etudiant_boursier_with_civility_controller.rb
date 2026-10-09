@@ -1,6 +1,5 @@
 class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
-  include APIParticulier::Transcogage
 
   nomenclature organizers: { 3 => ::CNOUS::StudentScholarshipWithCivility, 4 => ::CNOUS::StudentScholarshipWithCivility, 5 => ::CNOUS::StudentScholarshipWithCivility }
 

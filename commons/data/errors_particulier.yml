@@ -3,6 +3,7 @@
 api: particulier
 providers:
   '00': API Particulier
+  '01': INSEE
   '10': MSA
   '23': CNAF
   '24': France Travail
@@ -3231,6 +3232,9 @@ endpoints:
     provider: CNOUS
     errors:
       '422':
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00368'
         title: Entité non traitable
         detail: 'L''année de campagne (campaignYear) n''est pas correctement formatée:
@@ -3253,6 +3257,9 @@ endpoints:
       - code: '00425'
         title: Entité non traitable
         detail: La date de naissance n'est pas valide
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
       - code: '26561'
         title: Paramètres de civilité refusés par le fournisseur de données
         detail: Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur
@@ -3265,6 +3272,11 @@ endpoints:
         meta:
           provider: CNOUS
       '404':
+      - code: '01003'
+        title: Entité non trouvée
+        detail: Aucun code commune INSEE ne correspond à ces critères
+        meta:
+          provider: INSEE
       - code: '26003'
         title: Entité non trouvée
         detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
@@ -3273,6 +3285,49 @@ endpoints:
         meta:
           provider: CNOUS
       '502':
+      - code: '01000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: INSEE
+      - code: '01001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: INSEE
+      - code: '01004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: INSEE
+      - code: '01009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: INSEE
+      - code: '01011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: INSEE
+      - code: '01999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: INSEE
       - code: '26000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -3323,12 +3378,22 @@ endpoints:
         meta:
           provider: CNOUS
       '503':
+      - code: '01020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: INSEE
       - code: '26020'
         title: Maintenance du fournisseur de données
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNOUS
       '504':
+      - code: '01002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: INSEE
       - code: '26002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
@@ -4413,6 +4478,9 @@ endpoints:
       - code: '00316'
         title: Entité non traitable
         detail: Le token_id n'est pas correctement formaté
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00365'
         title: Entité non traitable
         detail: Le lieu de naissance n'est pas correctement formaté
@@ -4437,7 +4505,15 @@ endpoints:
       - code: '00427'
         title: Entité non traitable
         detail: Le sexe de l'état civil est manquant
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
       '404':
+      - code: '01003'
+        title: Entité non trouvée
+        detail: Aucun code commune INSEE ne correspond à ces critères
+        meta:
+          provider: INSEE
       - code: '25003'
         title: Entité non trouvée
         detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
@@ -4446,6 +4522,49 @@ endpoints:
         meta:
           provider: MESRI
       '502':
+      - code: '01000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: INSEE
+      - code: '01001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: INSEE
+      - code: '01004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: INSEE
+      - code: '01009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: INSEE
+      - code: '01011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: INSEE
+      - code: '01999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: INSEE
       - code: '25000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -4490,12 +4609,22 @@ endpoints:
         meta:
           provider: MESRI
       '503':
+      - code: '01020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: INSEE
       - code: '25020'
         title: Maintenance du fournisseur de données
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: MESRI
       '504':
+      - code: '01002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: INSEE
       - code: '25002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
@@ -4508,6 +4637,9 @@ endpoints:
       - code: '00316'
         title: Entité non traitable
         detail: Le token_id n'est pas correctement formaté
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00365'
         title: Entité non traitable
         detail: Le lieu de naissance n'est pas correctement formaté
@@ -4532,6 +4664,9 @@ endpoints:
       - code: '00427'
         title: Entité non traitable
         detail: Le sexe de l'état civil est manquant
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
       - code: '51564'
         title: Identité inexploitable renvoyée par le fournisseur de données
         detail: L'identité renvoyée par le fournisseur de données est incomplète ou
@@ -4539,6 +4674,11 @@ endpoints:
         meta:
           provider: FranceConnect
       '404':
+      - code: '01003'
+        title: Entité non trouvée
+        detail: Aucun code commune INSEE ne correspond à ces critères
+        meta:
+          provider: INSEE
       - code: '25003'
         title: Entité non trouvée
         detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
@@ -4547,6 +4687,49 @@ endpoints:
         meta:
           provider: MESRI
       '502':
+      - code: '01000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: INSEE
+      - code: '01001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: INSEE
+      - code: '01004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: INSEE
+      - code: '01009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: INSEE
+      - code: '01011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: INSEE
+      - code: '01999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: INSEE
       - code: '25000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -4651,6 +4834,11 @@ endpoints:
         meta:
           provider: FranceConnect
       '503':
+      - code: '01020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: INSEE
       - code: '25020'
         title: Maintenance du fournisseur de données
         detail: Le fournisseur de données semble être en maintenance
@@ -4662,6 +4850,11 @@ endpoints:
         meta:
           provider: FranceConnect
       '504':
+      - code: '01002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: INSEE
       - code: '25002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
@@ -4821,6 +5014,9 @@ endpoints:
     provider: CNOUS
     errors:
       '422':
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00368'
         title: Entité non traitable
         detail: 'L''année de campagne (campaignYear) n''est pas correctement formatée:
@@ -4843,6 +5039,9 @@ endpoints:
       - code: '00425'
         title: Entité non traitable
         detail: La date de naissance n'est pas valide
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
       - code: '26561'
         title: Paramètres de civilité refusés par le fournisseur de données
         detail: Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur
@@ -4855,6 +5054,11 @@ endpoints:
         meta:
           provider: CNOUS
       '404':
+      - code: '01003'
+        title: Entité non trouvée
+        detail: Aucun code commune INSEE ne correspond à ces critères
+        meta:
+          provider: INSEE
       - code: '26003'
         title: Entité non trouvée
         detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
@@ -4863,6 +5067,49 @@ endpoints:
         meta:
           provider: CNOUS
       '502':
+      - code: '01000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: INSEE
+      - code: '01001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: INSEE
+      - code: '01004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: INSEE
+      - code: '01009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: INSEE
+      - code: '01011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: INSEE
+      - code: '01999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: INSEE
       - code: '26000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -4913,12 +5160,22 @@ endpoints:
         meta:
           provider: CNOUS
       '503':
+      - code: '01020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: INSEE
       - code: '26020'
         title: Maintenance du fournisseur de données
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNOUS
       '504':
+      - code: '01002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: INSEE
       - code: '26002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
@@ -5314,6 +5571,9 @@ endpoints:
     provider: CNOUS
     errors:
       '422':
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00368'
         title: Entité non traitable
         detail: 'L''année de campagne (campaignYear) n''est pas correctement formatée:
@@ -5336,6 +5596,9 @@ endpoints:
       - code: '00425'
         title: Entité non traitable
         detail: La date de naissance n'est pas valide
+      - code: '00428'
+        title: Entité non traitable
+        detail: Le code cog du département de naissance est manquant ou invalide
       - code: '26561'
         title: Paramètres de civilité refusés par le fournisseur de données
         detail: Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur
@@ -5348,6 +5611,11 @@ endpoints:
         meta:
           provider: CNOUS
       '404':
+      - code: '01003'
+        title: Entité non trouvée
+        detail: Aucun code commune INSEE ne correspond à ces critères
+        meta:
+          provider: INSEE
       - code: '26003'
         title: Entité non trouvée
         detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
@@ -5356,6 +5624,49 @@ endpoints:
         meta:
           provider: CNOUS
       '502':
+      - code: '01000'
+        title: Erreur interne du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          a été identifié comme étant une erreur interne. Si le problème persiste,
+          consultez la page de status ou contactez nous sur le support.
+        meta:
+          provider: INSEE
+      - code: '01001'
+        title: Service non disponible
+        detail: Service du fournisseur de données temporairement indisponible ou en
+          maintenance.
+        meta:
+          provider: INSEE
+      - code: '01004'
+        title: Erreur de résolution DNS
+        detail: Problème de résolution DNS de l'adresse du serveur
+        meta:
+          provider: INSEE
+      - code: '01008'
+        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
+          réessayer plus tard.'
+        meta:
+          provider: INSEE
+      - code: '01009'
+        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
+        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
+          être établie : certificat invalide ou expiré, ou échec de la négociation
+          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
+        meta:
+          provider: INSEE
+      - code: '01011'
+        title: Erreur temporaire du fournisseur de données
+        detail: Merci de réessayer dans quelques instants
+        meta:
+          provider: INSEE
+      - code: '01999'
+        title: Erreur inconnue du fournisseur de données
+        detail: La réponse retournée par le fournisseur de données est invalide et
+          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
+          pour investigation.
+        meta:
+          provider: INSEE
       - code: '26000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -5406,12 +5717,22 @@ endpoints:
         meta:
           provider: CNOUS
       '503':
+      - code: '01020'
+        title: Maintenance du fournisseur de données
+        detail: Le fournisseur de données semble être en maintenance
+        meta:
+          provider: INSEE
       - code: '26020'
         title: Maintenance du fournisseur de données
         detail: Le fournisseur de données semble être en maintenance
         meta:
           provider: CNOUS
       '504':
+      - code: '01002'
+        title: Intermédiaire hors-délai
+        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
+        meta:
+          provider: INSEE
       - code: '26002'
         title: Intermédiaire hors-délai
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
