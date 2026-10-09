@@ -42,6 +42,14 @@ class ApplicationError
     monitoring_private_context.merge!(context)
   end
 
+  def tracked?
+    @tracked == true
+  end
+
+  def mark_as_tracked!
+    @tracked = true
+  end
+
   def tracking_level
     'warning'
   end
