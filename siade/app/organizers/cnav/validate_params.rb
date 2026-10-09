@@ -1,5 +1,6 @@
 class CNAV::ValidateParams < ValidateParamsOrganizer
-  organize ValidateRecipient,
+  organize CNAV::ReplaceTypographicApostrophes,
+    ValidateRecipient,
     CNAV::ValidateSexeEtatCivil,
     CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams,
     Civility::ValidateCodeCogINSEEPaysNaissance,

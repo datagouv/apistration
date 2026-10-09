@@ -59,4 +59,16 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial nom d’usage', api: :pa
       expect(cnav_request).to have_been_requested
     end
   end
+
+  context 'when the nom d’usage contains a typographic apostrophe' do
+    let(:nom_usage) { 'D’ARTAGNAN' }
+    let!(:cnav_request) { stub_cnav_valid('quotient_familial_v2', extra_params: { nomUsage: "D'ARTAGNAN" }) }
+
+    it 'calls the CNAV with a straight apostrophe' do
+      call_endpoint
+
+      expect(response).to have_http_status(:ok)
+      expect(cnav_request).to have_been_requested
+    end
+  end
 end
