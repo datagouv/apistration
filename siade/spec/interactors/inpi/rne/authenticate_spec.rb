@@ -20,12 +20,16 @@ RSpec.describe INPI::RNE::Authenticate, type: :interactor do
       .to_return(status:, body: body.to_json, headers: { 'Content-Type' => 'application/json' })
   end
 
+  def rejection_key(username)
+    "inpi_rne_authenticate_failed_#{username}"
+  end
+
   def flag(username)
-    Rails.cache.write("inpi_rne_authenticate_failed_#{username}", true)
+    RedisService.new.set(rejection_key(username), Time.zone.now.to_i)
   end
 
   def flagged?(username)
-    Rails.cache.exist?("inpi_rne_authenticate_failed_#{username}")
+    RedisService.new.exists?(rejection_key(username))
   end
 
   context 'when inpi rne authentication succeed', vcr: { cassette_name: 'inpi/rne/authenticate' } do
@@ -64,13 +68,19 @@ RSpec.describe INPI::RNE::Authenticate, type: :interactor do
     end
 
     it 'flags the rejected account for 24 hours' do
-      allow(Rails.cache).to receive(:write).and_call_original
-
       authenticate
 
-      expect(Rails.cache).to have_received(:write).with("inpi_rne_authenticate_failed_#{primary_username}", true, expires_in: 24.hours)
       expect(flagged?(primary_username)).to be true
       expect(flagged?(fallback_username)).to be false
+      expect(RedisService.new.ttl(rejection_key(primary_username))).to be_within(5).of(24.hours.to_i)
+    end
+
+    it 'shares the flag with every process, whatever their cache namespace' do
+      authenticate
+
+      Rails.cache.clear
+
+      expect(flagged?(primary_username)).to be true
     end
 
     it 'tracks the rejected account once' do

@@ -3,8 +3,13 @@ require 'jwt'
 class INPI::RNE::Authenticate < AbstractGetToken
   class AccountRejected < StandardError; end
 
+  ACCOUNT_POOLS = [nil, 'ping'].freeze
   ACCOUNT_SUFFIXES = ['', '_fallback'].freeze
   REJECTED_ACCOUNT_TTL = 24.hours
+
+  def self.lift_all_rejections!
+    ACCOUNT_POOLS.each { |pool| new(params: { inpi_rne_account_pool: pool }).lift_rejections! }
+  end
 
   def call
     usable_account_suffixes.each do |suffix|
@@ -16,6 +21,10 @@ class INPI::RNE::Authenticate < AbstractGetToken
     end
 
     fail_to_request_provider!(MaintenanceError)
+  end
+
+  def lift_rejections!
+    redis_service.del(*account_usernames.map { |account_username| rejected_account_key(account_username) })
   end
 
   protected
@@ -65,17 +74,25 @@ class INPI::RNE::Authenticate < AbstractGetToken
 
   def reject_account!
     MonitoringService.instance.track(:error, "INPI RNE authentication failed for username: #{username}")
-    Rails.cache.write(rejected_account_cache_key(username), true, expires_in: REJECTED_ACCOUNT_TTL)
+    redis_service.set(rejected_account_key(username), Time.zone.now.to_f, ex: REJECTED_ACCOUNT_TTL.to_i)
 
     raise AccountRejected
   end
 
   def rejected?(account_username)
-    Rails.cache.exist?(rejected_account_cache_key(account_username))
+    redis_service.exists?(rejected_account_key(account_username))
   end
 
-  def rejected_account_cache_key(account_username)
+  def rejected_account_key(account_username)
     "inpi_rne_authenticate_failed_#{account_username}"
+  end
+
+  def account_usernames
+    ACCOUNT_SUFFIXES.map { |suffix| credential(:username, suffix) }
+  end
+
+  def redis_service
+    @redis_service ||= RedisService.new
   end
 
   def username
