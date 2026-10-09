@@ -27,6 +27,7 @@
 - Tests: RSpec with manually stubbed requests using WebMock. VCR is legacy - do NOT use VCR for new implementations, always use manual stubs
 - Model specs: Do NOT test ActiveRecord associations (belongs_to, has_many, etc.) — that's testing the framework. Only test custom behavior (scopes, methods, validations). Ensure factories are valid instead.
 - Interactors: Use organizers pattern with small, focused interactors
+- Business logic: lives in organizers and their interactors, never in controllers or controller concerns. Controllers only extract and permit params, add request context (`request_id`, `token_id`), pick the organizer and handle HTTP concerns (auth, cache TTL, rendering). Any transformation, normalization or derivation of data (replacing a character, mapping an identity, deducing a code, choosing a provider version…) is a dedicated interactor in the organizer, writing into `context.params`, placed before the validators when validation depends on it, and failing with `context.errors` rather than silently. Never override a method of a params concern (`APIParticulier::CivilityParameters`…) to do it. A trivial default or alias may stay in the organizer's `before` block (e.g. `ADEME::CertificatsRGE`). API Particulier v2 controllers are legacy: do not copy them
 - APIs: Use the scaffold_resource generator for new APIs
 - Scopes: Define API access scopes in commons/data/authorizations.yml (repo root, shared with mocks)
 - Maintenance: Configure provider maintenance in config/maintenances.yml
