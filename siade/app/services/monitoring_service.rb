@@ -25,15 +25,20 @@ class MonitoringService
   end
 
   def track_provider_error(error)
-    extra_context = error.to_h.merge(error.monitoring_private_context)
+    return if error.tracked?
 
-    set_context('Provider error', extra_context)
+    Sentry.with_scope do
+      set_provider(error.provider_name)
+      set_context('Provider error', error.to_h.merge(error.monitoring_private_context))
 
-    track(
-      error.tracking_level,
-      "[#{current_provider}] Error: #{error.detail}",
-      fingerprint: ['provider-error', error.code]
-    )
+      track(
+        error.tracking_level,
+        "[#{error.provider_name}] Error: #{error.detail}",
+        fingerprint: ['provider-error', error.code]
+      )
+    end
+
+    error.mark_as_tracked!
   end
 
   def track_with_added_context(level, message, extra_context, fingerprint: nil)
@@ -65,6 +70,10 @@ class MonitoringService
 
   def set_provider(provider_name)
     set_tags(provider: provider_name)
+  end
+
+  def current_provider
+    Sentry.get_current_scope.tags[:provider]
   end
 
   def set_retriever_context(context)
@@ -117,10 +126,6 @@ class MonitoringService
     else
       level
     end
-  end
-
-  def current_provider
-    Sentry.get_current_scope.tags[:provider]
   end
 
   def humanized_response_for_tracking(response)

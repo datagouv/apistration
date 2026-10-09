@@ -7,6 +7,8 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   def self.inherited(klass)
     klass.class_eval do
+      around :restore_monitored_provider_afterwards
+
       before do
         handles_provider
         context.resource  = nil
@@ -67,6 +69,13 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   def mark_organizer_as_called_to_run_rollback_on_fail!
     context.called!(self)
+  end
+
+  def restore_monitored_provider_afterwards(organizer)
+    previous_provider = monitoring_service.current_provider
+    organizer.call
+  ensure
+    monitoring_service.set_provider(previous_provider) if previous_provider
   end
 
   def handles_provider
