@@ -9,5 +9,6 @@ class CNAV::QuotientFamilialV2::ValidateParams < ValidateParamsOrganizer
     CNAV::ValidateDateNaissance,
     CNAV::ValidateRequestId,
     CNAV::ValidatePrenoms,
-    Civility::ValidateNomNaissance
+    Civility::ValidateNomNaissance,
+    Civility::ValidateNomUsage
 end
