@@ -19,15 +19,9 @@ module APIParticulier::CivilityParameters
       civility[to_snake_case_sym(param)] = civility_param(param)
     end
 
-    civility[:code_cog_insee_commune_naissance] = extract_code_cog_insee_commune_naissance
+    civility[:code_cog_insee_commune_naissance] = permitted_civility_params[:codeCogInseeCommuneNaissance].presence
 
     civility
-  end
-
-  protected
-
-  def extract_code_cog_insee_commune_naissance
-    permitted_civility_params[:codeCogInseeCommuneNaissance].presence
   end
 
   private
