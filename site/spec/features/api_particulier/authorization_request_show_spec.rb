@@ -135,6 +135,55 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
             expect(page).to have_text(distance_of_time_in_words(Time.zone.now, banned_token.blacklisted_at))
           end
 
+          describe 'when DataPass provides scope definitions' do
+            let!(:scopes) { ['cnaf_quotient_familial'] }
+
+            before do
+              Rails.cache.clear
+
+              stub_request(:get, %r{#{Regexp.escape(DataPass::BASE_URL)}/api/v1/definitions/})
+                .to_return(
+                  status: 200,
+                  headers: { 'Content-Type' => 'application/json' },
+                  body: {
+                    'scopes' => [
+                      {
+                        'value' => 'cnaf_quotient_familial',
+                        'name' => 'Quotient familial CAF & MSA',
+                        'group' => 'API Quotient familial',
+                        'provider' => 'CNAF & MSA'
+                      }
+                    ]
+                  }.to_json
+                )
+
+              visit api_particulier_authorization_request_path(id: authorization_request.id)
+            end
+
+            it 'displays the provider and label fetched from DataPass' do
+              expect(page).to have_text('CNAF & MSA')
+              expect(page).to have_text('Quotient familial CAF & MSA')
+            end
+          end
+
+          describe 'when DataPass is unreachable' do
+            let!(:scopes) { ['cnaf_quotient_familial'] }
+
+            before do
+              Rails.cache.clear
+
+              stub_request(:get, %r{#{Regexp.escape(DataPass::BASE_URL)}/api/v1/definitions/})
+                .to_timeout
+
+              visit api_particulier_authorization_request_path(id: authorization_request.id)
+            end
+
+            it 'still renders the page, falling back to a humanized version of the scope code' do
+              expect(page).to have_current_path(api_particulier_authorization_request_path(id: authorization_request.id), ignore_query: true)
+              expect(page).to have_text('Cnaf quotient familial')
+            end
+          end
+
           describe 'when the user is demandeur' do
             describe 'when the token has less than 90 days left' do
               it 'displays the button to prolong the token' do

@@ -4,12 +4,10 @@
       🔐 Cette habilitation donne accès aux API suivantes&nbsp;:
     </h2>
     <ul>
-      <% @all_scopes.each do |scope_key, scope_data| %>
-        <% if (@authorization_request_scopes || []).include?(scope_key) %>
-          <li>
-            <%= scope_data[:label] %>
-          </li>
-        <% end %>
+      <% @authorization_request_scopes.each do |scope| %>
+        <li>
+          <%= humanize_scope(scope, 'api_entreprise') %>
+        </li>
       <% end %>
     </ul>
   </mj-text>

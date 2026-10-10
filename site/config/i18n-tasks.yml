@@ -116,7 +116,6 @@ ignore_unused:
   - '*.sessions.after_logout.*'
   - 'api_{entreprise,particulier}.fiches_pratiques_entries.*'
   - 'api_{entreprise,particulier}.public_token_magic_links.show.*'
-  - 'api_{entreprise,particulier}.tokens.token.scope.*'
   - 'api_{entreprise,particulier}.documentation_pages.*.{title,sections}'
   - 'api_{entreprise,particulier}.token_mailer.*'
   - 'api_{entreprise,particulier}.authorization_request_mailer.*'
