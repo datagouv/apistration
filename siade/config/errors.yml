@@ -360,6 +360,10 @@
   title: 'Entité non traitable'
   detail: "La date de naissance n'est pas valide"
 
+- code: '00426'
+  title: 'Entité non traitable'
+  detail: "Le nom d'usage contient des caractères non autorisés : seuls les lettres, les espaces, les tirets et les apostrophes sont acceptés"
+
 - code: '00427'
   title: 'Entité non traitable'
   detail: "Le sexe de l'état civil est manquant"

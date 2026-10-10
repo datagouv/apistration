@@ -1,5 +1,6 @@
 class CNAV::QuotientFamilialV2::ValidateParams < ValidateParamsOrganizer
-  organize ValidateRecipient,
+  organize CNAV::ReplaceTypographicApostrophes,
+    ValidateRecipient,
     CNAV::QuotientFamilialV2::ValidateYear,
     CNAV::QuotientFamilialV2::ValidateMonth,
     CNAV::QuotientFamilialV2::ValidatePeriod,
@@ -9,5 +10,6 @@ class CNAV::QuotientFamilialV2::ValidateParams < ValidateParamsOrganizer
     CNAV::ValidateDateNaissance,
     CNAV::ValidateRequestId,
     CNAV::ValidatePrenoms,
-    Civility::ValidateNomNaissance
+    Civility::ValidateNomNaissance,
+    Civility::ValidateNomUsage
 end
