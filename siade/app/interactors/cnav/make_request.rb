@@ -56,6 +56,8 @@ class CNAV::MakeRequest < MakeRequest::Get
 
   # rubocop:disable-next Metrics/AbcSize
   def request_params
+    return request_params_with_nir if context.params[:nir].present?
+
     {
       nomUsage: transliterate(context.params[:nom_usage]),
       nomNaissance: transliterate(context.params[:nom_naissance]),
@@ -66,6 +68,14 @@ class CNAV::MakeRequest < MakeRequest::Get
       villeNaissance: context.params[:nom_commune_naissance],
       depNaissance: context.params[:code_cog_insee_departement_naissance],
       genre: context.params[:sexe_etat_civil].presence&.upcase
+    }.compact
+  end
+
+  def request_params_with_nir
+    {
+      numAssure: context.params[:nir],
+      nomNaissance: context.params[:nom_naissance],
+      listePrenoms: liste_prenoms
     }.compact
   end
 
