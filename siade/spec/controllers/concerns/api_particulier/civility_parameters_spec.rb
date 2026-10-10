@@ -26,12 +26,6 @@ RSpec.describe APIParticulier::CivilityParameters do
     def api_kind
       'api_particulier'
     end
-
-    protected
-
-    def transcogage?
-      true
-    end
   end
 
   # rubocop:disable RSpec/VariableName

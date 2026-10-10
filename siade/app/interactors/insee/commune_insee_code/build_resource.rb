@@ -1,4 +1,7 @@
 class INSEE::CommuneINSEECode::BuildResource < BuildResource
+  COMMUNE_NOT_FOUND = raises NotFoundError,
+    detail: 'Aucun code commune INSEE ne correspond à ces critères'
+
   before do
     context.errors ||= []
   end
@@ -36,7 +39,7 @@ class INSEE::CommuneINSEECode::BuildResource < BuildResource
   end
 
   def resource_not_found!
-    context.errors << NotFoundError.new(context.provider_name, 'Aucun code commune INSEE ne correspond à ces critères')
+    context.errors << build_declared_error(COMMUNE_NOT_FOUND)
     context.fail!
   end
 

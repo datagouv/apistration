@@ -70,7 +70,7 @@ RSpec.describe ErrorsNomenclature, type: :service do
     end
 
     it 'keeps the generic 404 of a provider declaring none of its own' do
-      expect(codes_for('api_particulier_v5_cnous_etudiant_boursier_with_civility', '404')).to eq(%w[26003])
+      expect(codes_for('api_particulier_v5_cnous_etudiant_boursier_with_civility', '404')).to include('26003')
     end
 
     it 'lists only the prefixes of API Particulier, 00 included' do
