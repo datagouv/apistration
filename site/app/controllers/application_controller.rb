@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
+  before_action :set_security_event_context
+
   include SessionLifecycle
   include UserSessionsHelper
 
@@ -51,6 +53,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_security_event_context
+    SecurityEvent.set_request_context(user: current_user, true_user:)
+  end
 
   def namespace
     host_segments = request.host.split('.')

@@ -61,6 +61,7 @@ module SessionLifecycle
   end
 
   def expire_session(reason)
+    User::CloseSession.call(user: current_user, reason: "#{reason}_timeout")
     reset_session
     info_message(title: t("concerns.sessions_management.session_expired.#{reason}", hours: timeout_hours(reason)))
     redirect_to login_path
