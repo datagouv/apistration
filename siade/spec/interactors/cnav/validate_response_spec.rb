@@ -281,6 +281,32 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       end
     end
 
+    context 'with a failure of the family provider (40000)' do
+      let(:body) { '{"errorCode":40000,"error":"RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE"}' }
+
+      it 'reports a provider internal error instead of rejecting the civility, keeping the provider error in meta' do
+        error = subject.errors.first
+
+        expect(error).to be_an_instance_of(ProviderInternalServerError)
+        expect(error.meta).to eq(
+          provider: 'Sécurité sociale',
+          provider_error_code: 40_000,
+          provider_error_message: 'RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE'
+        )
+      end
+
+      it 'tracks it as warning' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'warning',
+          '[Sécurité sociale] Bad request (40000)',
+          anything,
+          fingerprint: %w[cnav-bad-request 40000]
+        )
+
+        subject
+      end
+    end
+
     context 'with an unparseable body' do
       let(:body) { 'lol' }
 

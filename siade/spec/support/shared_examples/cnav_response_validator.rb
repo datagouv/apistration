@@ -32,4 +32,10 @@ RSpec.shared_examples 'a CNAV response validator' do
 
     its('errors.first') { is_expected.to have_attributes(class: ProviderUnprocessableEntityError, reason: :rejected_civility) }
   end
+
+  context 'when the caisse cannot compute the answer' do
+    let(:response) { instance_double(Net::HTTPBadRequest, code: 400, body: '{"errorCode":40000,"error":"RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE"}', header: {}) }
+
+    its('errors.first') { is_expected.to be_an_instance_of(ProviderInternalServerError) }
+  end
 end

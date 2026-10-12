@@ -3,6 +3,8 @@ class CNAV::ValidateResponse < ValidateResponse
 
   GATEWAY_INPUT_CONTROL_ERROR_CODES = [40_003, 40_011, 40_013, 40_014, 40_015, 40_016, 40_019, 40_031].freeze
 
+  FAMILY_PROVIDER_FAILURE_ERROR_CODES = [40_000, 40_024].freeze
+
   raises ProviderUnprocessableEntityError, reason: :unidentified_person
   raises ProviderUnprocessableEntityError, reason: :rejected_civility
 
@@ -59,7 +61,17 @@ class CNAV::ValidateResponse < ValidateResponse
   def bad_request_error!
     track_bad_request!
 
+    return family_provider_failure! if family_provider_failure?
+
     rejected_civility!
+  end
+
+  def family_provider_failure?
+    FAMILY_PROVIDER_FAILURE_ERROR_CODES.include?(error_code_from_body.to_i)
+  end
+
+  def family_provider_failure!
+    fail_with_error!(build_error(::ProviderInternalServerError).add_meta(provider_error_meta))
   end
 
   def rejected_civility!
@@ -138,6 +150,7 @@ class CNAV::ValidateResponse < ValidateResponse
 
   def bad_request_tracking_levels
     GATEWAY_INPUT_CONTROL_ERROR_CODES.index_with('info')
+      .merge(FAMILY_PROVIDER_FAILURE_ERROR_CODES.index_with('warning'))
   end
 
   def tag_provider_error!
