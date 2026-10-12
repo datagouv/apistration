@@ -200,6 +200,246 @@ d'erreur selon les informations que vous fournirez.
 
   </p>
   </details>
+* [404-allocataire-non-eligible.yaml](404-allocataire-non-eligible.yaml)
+
+  Status `404`
+
+  Allocataire non éligible : dossier trouvé, aucun enfant de moins de 7 ans
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "BERTIN",
+    "prenoms": [
+      "CAMILLE"
+    ],
+    "anneeDateNaissance": 1985,
+    "moisDateNaissance": 9,
+    "jourDateNaissance": 2,
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Allocataire non éligible",
+        "detail": "Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BERTIN' -d 'prenoms[]=CAMILLE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=9' -d 'jourDateNaissance=2' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite"
+  ```
+
+  </p>
+  </details>
+* [404-allocataire-non-reference.yaml](404-allocataire-non-reference.yaml)
+
+  Status `404`
+
+  Allocataire non référencé auprès des caisses éligibles (RNCPS)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MARCHAND",
+    "prenoms": [
+      "LUCIE"
+    ],
+    "anneeDateNaissance": 1990,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 14,
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "35003",
+        "title": "Allocataire non référencé",
+        "detail": "L'allocataire n'est pas référencé auprès des caisses éligibles",
+        "source": null,
+        "meta": {
+          "provider": "CNAF & MSA"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARCHAND' -d 'prenoms[]=LUCIE' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite"
+  ```
+
+  </p>
+  </details>
+* [404-dossier-absent-cnaf.yaml](404-dossier-absent-cnaf.yaml)
+
+  Status `404`
+
+  Dossier allocataire absent CNAF
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "GIRAUD",
+    "prenoms": [
+      "LEA"
+    ],
+    "anneeDateNaissance": 1988,
+    "moisDateNaissance": 7,
+    "jourDateNaissance": 11,
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
+        "source": null,
+        "meta": {
+          "provider": "CNAF"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=GIRAUD' -d 'prenoms[]=LEA' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=7' -d 'jourDateNaissance=11' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite"
+  ```
+
+  </p>
+  </details>
+* [404-dossier-absent-msa.yaml](404-dossier-absent-msa.yaml)
+
+  Status `404`
+
+  Dossier allocataire absent MSA
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "FERRAND",
+    "prenoms": [
+      "PAUL"
+    ],
+    "anneeDateNaissance": 1978,
+    "moisDateNaissance": 5,
+    "jourDateNaissance": 21,
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "10003",
+        "title": "Dossier allocataire absent MSA",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la MSA.",
+        "source": null,
+        "meta": {
+          "provider": "MSA"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=FERRAND' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1978' -d 'moisDateNaissance=5' -d 'jourDateNaissance=21' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`

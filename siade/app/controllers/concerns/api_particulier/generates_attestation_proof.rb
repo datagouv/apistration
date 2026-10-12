@@ -31,7 +31,7 @@ module APIParticulier::GeneratesAttestationProof
 
   def serialize_data
     payload = super.deep_stringify_keys
-    return payload if generate_proof_mode.nil? || mocked_error?
+    return payload if generate_proof_mode.nil? || (mocked_error? && organizer.verification_url.blank?)
 
     ensure_proof_was_built!
     with_proof(payload)

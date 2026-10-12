@@ -30,15 +30,26 @@ class CNAV::ParticipationFamilialeEAJE < CNAV::RetrieverOrganizer
   private
 
   def prove_not_found(organizer)
+    return organizer.call if context.generate_proof_mode.blank?
+
     params_as_sent = context.params.deep_dup
     organizer.call
+    prove(mocked_error, params_as_sent)
   rescue Interactor::Failure
-    prove(context.errors.first&.to_h&.deep_stringify_keys, params_as_sent)
+    prove(failure_error, params_as_sent)
     raise
   end
 
+  def failure_error
+    context.errors.first&.to_h&.deep_stringify_keys
+  end
+
+  def mocked_error
+    context.mocked_data&.dig(:payload, 'errors', 0)
+  end
+
   def prove(error, params_as_sent)
-    return if context.generate_proof_mode.blank? || error.nil?
+    return if error.nil?
 
     origin = not_found_origin(error)
     return if origin.nil?
@@ -70,6 +81,10 @@ class CNAV::ParticipationFamilialeEAJE < CNAV::RetrieverOrganizer
   end
 
   def regime
-    REGIME_CODE_LABEL[context.response&.header&.[]('X-APISECU-FD')].presence_in(PROVABLE_REGIMES)
+    REGIME_CODE_LABEL[regime_code].presence_in(PROVABLE_REGIMES)
+  end
+
+  def regime_code
+    context.response&.header&.[]('X-APISECU-FD') || context.mocked_data&.dig(:headers, 'X-APISECU-FD')
   end
 end

@@ -47,8 +47,9 @@ class MockDataBackend
         deep_downcase(content['params']).to_query,
         {
           status: content['status'],
-          payload: JSON.parse(content['payload'])
-        }
+          payload: JSON.parse(content['payload']),
+          headers: content['headers']
+        }.compact
       ]
     end
 

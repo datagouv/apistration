@@ -1,0 +1,27 @@
+---
+description: "Dossier allocataire absent MSA"
+params:
+  nomNaissance: 'FERRAND'
+  prenoms:
+    - 'PAUL'
+  anneeDateNaissance: 1978
+  moisDateNaissance: 5
+  jourDateNaissance: 21
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "10003",
+        "title": "Dossier allocataire absent MSA",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la MSA.",
+        "source": null,
+        "meta": {
+          "provider": "MSA"
+        }
+      }
+    ]
+  }

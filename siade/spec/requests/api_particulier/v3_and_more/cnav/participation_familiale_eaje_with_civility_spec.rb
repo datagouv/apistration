@@ -211,18 +211,75 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
             run_test!
 
             context 'with X-Generate-Proof on a mocked not found (staging)' do
-              before { allow(Rails.env).to receive(:staging?).and_return(true) }
+              before do
+                allow(Rails.env).to receive(:staging?).and_return(true)
+                Rack::Attack.reset!
+              end
 
               let(:nomNaissance) { 'LEFEBVRE' }
               let(:sexeEtatCivil) { 'F' }
               let(:codeCogInseeCommuneNaissance) { '08404' }
-              let(:'X-Generate-Proof') { 'proof-only' }
+              let(:'X-Generate-Proof') { 'pdf' }
 
-              run_test! do |response|
-                json = JSON.parse(response.body)
+              let(:json) { JSON.parse(body) }
+              let(:pdf_path) { URI(json['links']['attestation_pdf']).path }
+              let(:pdf_payload) { AttestationToken.read(pdf_path[%r{/api/attestations/(.+)\.pdf\z}, 1], purpose: AttestationToken::PDF_PURPOSE) }
 
+              def downloaded_pdf_text
+                get pdf_path
+
+                PDF::Reader.new(StringIO.new(response.body)).pages.map(&:text).join(' ').squish
+              end
+
+              run_test! 'answers an unmatched identity with the default « absent CNAV », without proof' do
                 expect(json['errors'].first['code']).to eq('37003')
-                expect(json).not_to have_key('meta')
+                expect(json.keys).to eq(['errors'])
+              end
+
+              context 'when the simulated CNAF has no file' do
+                let(:nomNaissance) { 'GIRAUD' }
+                let(:'prenoms[]') { %w[LEA] }
+                let(:anneeDateNaissance) { 1988 }
+                let(:moisDateNaissance) { 7 }
+                let(:jourDateNaissance) { 11 }
+                let(:codeCogInseeCommuneNaissance) { '08480' }
+
+                run_test! 'attests the simulated « Dossier allocataire absent CNAF » as test data' do
+                  expect(json['errors'].first['code']).to eq('23003')
+                  expect(json['meta'].keys).to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+                  expect(pdf_payload['source']).to eq('CNAF')
+                  expect(pdf_payload['sections'].first['entrees'].first.first).to eq(['Résultat', 'Dossier allocataire absent CNAF'])
+                  expect(downloaded_pdf_text).to include('DONNÉES DE TEST', 'RÉSULTAT DE LA CONSULTATION', 'Nom de naissance GIRAUD')
+                end
+              end
+
+              context 'when the simulated allocataire is not referenced' do
+                let(:nomNaissance) { 'MARCHAND' }
+                let(:'prenoms[]') { %w[LUCIE] }
+                let(:anneeDateNaissance) { 1990 }
+                let(:moisDateNaissance) { 3 }
+                let(:jourDateNaissance) { 14 }
+                let(:codeCogInseeCommuneNaissance) { '08480' }
+
+                run_test! 'attests it with RNCPS as origin' do
+                  expect(json['errors'].first['code']).to eq('35003')
+                  expect(pdf_payload['source']).to eq('RNCPS')
+                end
+              end
+
+              context 'when the simulated allocataire is not eligible' do
+                let(:nomNaissance) { 'BERTIN' }
+                let(:sexeEtatCivil) { 'M' }
+                let(:'prenoms[]') { %w[CAMILLE] }
+                let(:anneeDateNaissance) { 1985 }
+                let(:moisDateNaissance) { 9 }
+                let(:jourDateNaissance) { 2 }
+                let(:codeCogInseeCommuneNaissance) { '08480' }
+
+                run_test! 'attests it with the CNAF as origin' do
+                  expect(json['errors'].first['title']).to eq('Allocataire non éligible')
+                  expect(pdf_payload['source']).to eq('CNAF')
+                end
               end
             end
 

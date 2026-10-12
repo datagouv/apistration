@@ -1,0 +1,27 @@
+---
+description: "Dossier allocataire absent CNAF"
+params:
+  nomNaissance: 'GIRAUD'
+  prenoms:
+    - 'LEA'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 7
+  jourDateNaissance: 11
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
+        "source": null,
+        "meta": {
+          "provider": "CNAF"
+        }
+      }
+    ]
+  }

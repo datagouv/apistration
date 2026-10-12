@@ -1,0 +1,27 @@
+---
+description: "Allocataire non référencé auprès des caisses éligibles (RNCPS)"
+params:
+  nomNaissance: 'MARCHAND'
+  prenoms:
+    - 'LUCIE'
+  anneeDateNaissance: 1990
+  moisDateNaissance: 3
+  jourDateNaissance: 14
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "35003",
+        "title": "Allocataire non référencé",
+        "detail": "L'allocataire n'est pas référencé auprès des caisses éligibles",
+        "source": null,
+        "meta": {
+          "provider": "CNAF & MSA"
+        }
+      }
+    ]
+  }

@@ -104,6 +104,58 @@ d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNais
   ""links"": { },
   ""meta"": { }
 }"
+,"Allocataire non éligible : dossier trouvé, aucun enfant de moins de 7 ans","{""nomNaissance"":""BERTIN"",""prenoms"":[""CAMILLE""],""anneeDateNaissance"":1985,""moisDateNaissance"":9,""jourDateNaissance"":2,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Allocataire non éligible"",
+      ""detail"": ""Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE"",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,Allocataire non référencé auprès des caisses éligibles (RNCPS),"{""nomNaissance"":""MARCHAND"",""prenoms"":[""LUCIE""],""anneeDateNaissance"":1990,""moisDateNaissance"":3,""jourDateNaissance"":14,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""35003"",
+      ""title"": ""Allocataire non référencé"",
+      ""detail"": ""L'allocataire n'est pas référencé auprès des caisses éligibles"",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAF & MSA""
+      }
+    }
+  ]
+}"
+,Dossier allocataire absent CNAF,"{""nomNaissance"":""GIRAUD"",""prenoms"":[""LEA""],""anneeDateNaissance"":1988,""moisDateNaissance"":7,""jourDateNaissance"":11,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""23003"",
+      ""title"": ""Dossier allocataire absent CNAF"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAF."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAF""
+      }
+    }
+  ]
+}"
+,Dossier allocataire absent MSA,"{""nomNaissance"":""FERRAND"",""prenoms"":[""PAUL""],""anneeDateNaissance"":1978,""moisDateNaissance"":5,""jourDateNaissance"":21,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""10003"",
+      ""title"": ""Dossier allocataire absent MSA"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la MSA."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""MSA""
+      }
+    }
+  ]
+}"
 ,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeCogInseeCommuneNaissance"":""08404"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
   ""errors"": [
     {
