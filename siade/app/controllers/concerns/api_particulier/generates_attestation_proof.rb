@@ -34,6 +34,18 @@ module APIParticulier::GeneratesAttestationProof
     return payload if generate_proof_mode.nil? || mocked_error?
 
     ensure_proof_was_built!
+    with_proof(payload)
+  end
+
+  def render_errors(organizer)
+    return super if organizer.verification_url.blank?
+
+    render content_type: content_type_header,
+      json: with_proof(::ErrorsSerializer.new(organizer.errors).as_json.deep_stringify_keys),
+      status: extract_http_code(organizer)
+  end
+
+  def with_proof(payload)
     payload['meta'] = payload.fetch('meta', {}).merge(proof_meta)
     payload['links'] = payload.fetch('links', {}).merge('attestation_pdf' => pdf_link) if pdf_mode?
     payload

@@ -225,6 +225,127 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
                 expect(json).not_to have_key('meta')
               end
             end
+
+            context 'with X-Generate-Proof' do
+              around { |example| Timecop.freeze(called_at) { example.run } }
+
+              before { Rack::Attack.reset! }
+
+              let(:called_at) { Time.zone.now.change(hour: 9, min: 7) }
+              let(:'X-Generate-Proof') { 'pdf' }
+              let(:json) { JSON.parse(body) }
+              let(:pdf_payload) do
+                AttestationToken.read(json['links']['attestation_pdf'][%r{/api/attestations/(.+)\.pdf\z}, 1], purpose: AttestationToken::PDF_PURPOSE)
+              end
+              let(:verification_payload) do
+                AttestationToken.read(json['meta']['verification_url'].split('/').last, purpose: AttestationToken::VERIFICATION_PURPOSE)
+              end
+
+              def result_section(title, detail, origin)
+                {
+                  'titre' => 'Résultat de la consultation',
+                  'entrees' => [[
+                    ['Résultat', title],
+                    ['Détail', detail],
+                    ['Origine', origin],
+                    ['Consultation effectuée le', called_at.strftime('%d/%m/%Y à %H:%M')]
+                  ]]
+                }
+              end
+
+              def stub_cnav_response(status:, regime:, body:)
+                stub_request(:get, cnav_url('participation_familiale_eaje'))
+                  .with(query: hash_including({}))
+                  .to_return(status:, headers: { 'X-APISECU-FD' => CNAV::RetrieverOrganizer::REGIME_CODE_FROM_LABEL[regime] }, body:)
+              end
+
+              run_test! 'attests an RNCPS « Allocataire non référencé » with the identity as sent' do
+                expect(json['errors'].pluck('title')).to eq(['Allocataire non référencé'])
+                expect(json['meta'].keys).to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+                expect(json['links'].keys).to contain_exactly('attestation_pdf')
+                expect(json['meta']['verification_code']).to eq(AttestationToken.visual_code(pdf_payload['verification_token']))
+
+                expect(pdf_payload).to include(
+                  'document' => 'participation_familiale_eaje',
+                  'titre' => 'ATTESTATION DE CONSULTATION SANS RÉSULTAT (PARTICIPATION FAMILIALE EAJE)',
+                  'source' => 'RNCPS',
+                  'siret' => '13002526500013',
+                  'emise_le' => Time.zone.today.iso8601
+                )
+                expect(pdf_payload['sections']).to eq([
+                  result_section('Allocataire non référencé', "L'allocataire n'est pas référencé auprès des caisses éligibles", 'RNCPS'),
+                  {
+                    'titre' => "Identité de l'usager transmise lors de l'appel",
+                    'entrees' => [[
+                      ['Nom de naissance', 'CHAMPION'],
+                      ['Prénoms', 'JEAN-PASCAL'],
+                      ['Date de naissance', '12/06/1980'],
+                      ['Sexe', 'Masculin'],
+                      ['Code INSEE de la commune de naissance', '17300'],
+                      ['Code INSEE du pays de naissance', '99100']
+                    ]]
+                  }
+                ])
+              end
+
+              %w[CNAF MSA].each do |regime|
+                context "when the #{regime} has no file" do
+                  before { stub_cnav_response(status: 404, regime:, body: { errorCode: 40_401, error: 'Dossier absent' }.to_json) }
+
+                  run_test! "attests « Dossier allocataire absent #{regime} » with #{regime} as origin" do
+                    expect(json['errors'].pluck('title')).to eq(["Dossier allocataire absent #{regime}"])
+                    expect(pdf_payload['source']).to eq(regime)
+                    expect(pdf_payload['sections'].first)
+                      .to eq(result_section("Dossier allocataire absent #{regime}", "Le dossier allocataire n'a pas été trouvé auprès de la #{regime}.", regime))
+                  end
+                end
+
+                context "when the #{regime} file has no child under 7" do
+                  before { stub_cnav_response(status: 200, regime:, body: read_payload_file('cnav/participation_familiale_eaje/make_request_no_kids_under_7.json')) }
+
+                  run_test! "attests « Allocataire non éligible » with #{regime} as origin" do
+                    expect(json['errors'].pluck('title')).to eq(['Allocataire non éligible'])
+                    expect(pdf_payload['source']).to eq(regime)
+                    expect(pdf_payload['sections'].first)
+                      .to eq(result_section('Allocataire non éligible', "Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE", regime))
+                  end
+                end
+              end
+
+              context 'with X-Generate-Proof: proof-only' do
+                let(:'X-Generate-Proof') { 'proof-only' }
+
+                run_test! 'carries the verification link and code only, with a minimised identity' do
+                  expect(json['meta'].keys).to contain_exactly('verification_url', 'verification_code')
+                  expect(json).not_to have_key('links')
+                  expect(verification_payload['sections']).to eq([
+                    result_section('Allocataire non référencé', "L'allocataire n'est pas référencé auprès des caisses éligibles", 'RNCPS'),
+                    {
+                      'titre' => "Identité de l'usager transmise lors de l'appel",
+                      'entrees' => [[['Nom de naissance', 'CHA•••'], ['Date de naissance', '06/1980']]]
+                    }
+                  ])
+                  expect(verification_payload.to_json).not_to include('CHAMPION')
+                end
+              end
+
+              context 'when building the proof fails' do
+                before do
+                  allow(AttestationToken).to receive(:generate).and_call_original
+                  allow(AttestationToken).to receive(:generate)
+                    .with(anything, hash_including(purpose: AttestationToken::PDF_PURPOSE))
+                    .and_raise('PDF token failure')
+                  allow(MonitoringService.instance).to receive(:track_with_added_context)
+                end
+
+                run_test! 'answers the 404 without proof and reports the failure to monitoring' do
+                  expect(json.keys).to eq(['errors'])
+                  expect(json['errors'].pluck('title')).to eq(['Allocataire non référencé'])
+                  expect(MonitoringService.instance).to have_received(:track_with_added_context)
+                    .with('error', a_string_including('proof'), hash_including(exception: 'RuntimeError', message: 'PDF token failure'))
+                end
+              end
+            end
           end
         end
 
