@@ -88,6 +88,33 @@ RSpec.describe 'Attestation verification page' do
     end
   end
 
+  context 'with the token of a consultation that found no one' do
+    let(:payload) do
+      {
+        'siret' => '13002526500013',
+        'emise_le' => '2026-10-12',
+        'valable_jusqu_au' => '2031-10-12',
+        'sections' => [
+          { 'titre' => 'Résultat de la consultation',
+            'entrees' => [[['Résultat', 'Allocataire non référencé'],
+                           ['Détail', "L'allocataire n'est pas référencé auprès des caisses éligibles"],
+                           ['Origine', 'RNCPS'],
+                           ['Consultation effectuée le', '12/10/2026 à 09:07']]] },
+          { 'titre' => "Identité de l'usager transmise lors de l'appel",
+            'entrees' => [[['Nom de naissance', 'CHA•••'], ['Date de naissance', '06/1980']]] }
+        ]
+      }
+    end
+
+    it 'shows the result, its origin and time, and the minimised identity on the same page' do
+      verification
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include('Résultat de la consultation', 'Allocataire non référencé', 'RNCPS', '12/10/2026 à 09:07')
+      expect(response.body).to include('Identité de l&#39;usager transmise lors de l&#39;appel', 'CHA•••', '06/1980')
+    end
+  end
+
   RSpec.shared_examples 'forbids caching and indexing' do
     it 'forbids caching and indexing' do
       verification
