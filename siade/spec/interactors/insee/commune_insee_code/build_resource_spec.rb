@@ -1,5 +1,5 @@
 RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
-  subject(:organizer) { described_class.call(response:, params:) }
+  subject(:organizer) { described_class.call(response:, params:, provider_name: 'INSEE') }
 
   describe 'with real http calls' do
     let(:response) { INSEE::Metadonnees::MakeRequest.call(params:).response }
@@ -42,6 +42,14 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
 
           its(:code_insee) { is_expected.to eq('05124') }
         end
+      end
+
+      context 'with a departement holding none of these communes' do
+        let(:code_cog_insee_departement_naissance) { '92' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
 
       context 'with 04 as code_cog_insee_departement_naissance' do

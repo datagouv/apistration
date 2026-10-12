@@ -49,7 +49,7 @@ RSpec.describe MonitoringService, type: :service do
 
       it 'tracks event as warning, with provider name and error kind' do
         expect(Sentry).to receive(:capture_message).with(
-          /#{provider}.*#{error.detail}/,
+          /#{error.provider_name}.*#{error.detail}/,
           hash_including(
             level: 'warning'
           )
@@ -60,7 +60,7 @@ RSpec.describe MonitoringService, type: :service do
 
       it 'tracks event with fingerprint grouped by provider error code' do
         expect(Sentry).to receive(:capture_message).with(
-          /#{provider}.*#{error.detail}/,
+          /#{error.provider_name}.*#{error.detail}/,
           hash_including(
             fingerprint: ['provider-error', error.code]
           )

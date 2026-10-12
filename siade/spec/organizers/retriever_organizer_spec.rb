@@ -25,7 +25,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
     end
   end
 
-  let(:monitoring_service) { double('monitoring_service', track_provider_error: nil, set_provider: nil) }
+  let(:monitoring_service) { double('monitoring_service', track_provider_error: nil, set_provider: nil, current_provider: nil) }
 
   before do
     allow(MonitoringService).to receive(:instance).and_return(monitoring_service)

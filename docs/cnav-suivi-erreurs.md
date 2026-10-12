@@ -153,5 +153,9 @@ personne ne connaît :
 - **40003 et 40013** : le pattern refusé se lira dans `params_shape`.
   Une fois connu, soit un contrôle en amont, soit une correction
   silencieuse, soit une documentation du format attendu.
-- **40019** : codes de département `00`, tous en transcodage ; à
-  regarder dans `ExtractCodeCommuneFromTranscogage`.
+- **40019** : codes de département `00`, tous en transcodage, fait
+  côté guichet. `CNAV::ValidateTranscogageParams` rejette `00`, mais
+  `CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams` ne
+  l'appelle que si les trois paramètres de transcodage sont présents
+  sans code commune ; `CNAV::MakeRequest` transmet le département
+  dans tous les cas.

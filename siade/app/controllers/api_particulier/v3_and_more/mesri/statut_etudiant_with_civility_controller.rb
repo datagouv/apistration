@@ -1,6 +1,5 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
-  include APIParticulier::Transcogage
 
   nomenclature organizers: { 3 => ::MESRI::StudentStatus::WithCivility }
 
