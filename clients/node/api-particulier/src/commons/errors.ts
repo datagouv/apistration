@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: bcbca22be83e3b30997f9b0bac8df151016648d8).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 9849118b68528b8ceedf5a53f5042fa434a44300).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 export interface JsonApiError {
@@ -9,21 +9,27 @@ export interface JsonApiError {
   meta?: Record<string, unknown>;
 }
 
+export interface ApiGouvErrorOptions {
+  httpStatus?: number | null;
+  errors?: JsonApiError[];
+  method?: string | null;
+  url?: string | null;
+  meta?: Record<string, unknown> | null;
+  links?: Record<string, unknown> | null;
+}
+
 /** Base error for all API Gouv HTTP errors. */
 export class ApiGouvError extends Error {
   readonly httpStatus: number | null;
   readonly errors: JsonApiError[];
   readonly method: string | null;
   readonly url: string | null;
+  readonly meta: Record<string, unknown> | null;
+  readonly links: Record<string, unknown> | null;
 
   constructor(
     message?: string,
-    options: {
-      httpStatus?: number | null;
-      errors?: JsonApiError[];
-      method?: string | null;
-      url?: string | null;
-    } = {},
+    options: ApiGouvErrorOptions = {},
   ) {
     super(message ?? defaultMessage(options.httpStatus, options.errors));
     this.name = new.target.name;
@@ -31,6 +37,8 @@ export class ApiGouvError extends Error {
     this.errors = options.errors ?? [];
     this.method = options.method ?? null;
     this.url = options.url ?? null;
+    this.meta = options.meta ?? null;
+    this.links = options.links ?? null;
   }
 
   get firstError(): JsonApiError {
@@ -77,13 +85,7 @@ export class RateLimitError extends ClientError {
 
   constructor(
     message?: string,
-    options: {
-      httpStatus?: number | null;
-      errors?: JsonApiError[];
-      method?: string | null;
-      url?: string | null;
-      retryAfter?: number | null;
-    } = {},
+    options: ApiGouvErrorOptions & { retryAfter?: number | null } = {},
   ) {
     super(message, options);
     this.retryAfter = options.retryAfter ?? null;
@@ -99,13 +101,7 @@ export class ProviderError extends ServerError {
 
   constructor(
     message?: string,
-    options: {
-      httpStatus?: number | null;
-      errors?: JsonApiError[];
-      method?: string | null;
-      url?: string | null;
-      retryAfter?: number | null;
-    } = {},
+    options: ApiGouvErrorOptions & { retryAfter?: number | null } = {},
   ) {
     super(message, options);
     this.retryAfter = options.retryAfter ?? null;

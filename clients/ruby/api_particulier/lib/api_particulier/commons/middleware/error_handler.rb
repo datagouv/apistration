@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 35aaaaedcd3b760511d070e4e4c101ca3c5cdb32).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 46d0fae2bc55a1c378c766ea6875e4ad042bf580).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -32,7 +32,8 @@ module ApiParticulier::Commons
       private
 
       def map_exception(status, env)
-        errors = extract_errors(env.body)
+        body = parse_body(env.body)
+        errors = extract_errors(body)
         klass = klass_for(status)
         return nil unless klass
 
@@ -40,7 +41,9 @@ module ApiParticulier::Commons
           http_status: status,
           errors: errors,
           method: env.method,
-          url: env.url.to_s
+          url: env.url.to_s,
+          meta: top_level(body, 'meta'),
+          links: top_level(body, 'links')
         }
 
         if klass == ApiParticulier::Commons::RateLimitError
@@ -67,12 +70,21 @@ module ApiParticulier::Commons
         end
       end
 
-      def extract_errors(body)
-        parsed = body
-        parsed = safely_parse(body) if body.is_a?(String)
-        return [] unless parsed.is_a?(Hash)
+      def parse_body(body)
+        body.is_a?(String) ? safely_parse(body) : body
+      end
 
-        Array(parsed['errors'] || parsed[:errors])
+      def extract_errors(body)
+        return [] unless body.is_a?(Hash)
+
+        Array(body['errors'] || body[:errors])
+      end
+
+      def top_level(body, key)
+        return nil unless body.is_a?(Hash)
+
+        value = body[key] || body[key.to_sym]
+        value if value.is_a?(Hash)
       end
 
       def safely_parse(body)

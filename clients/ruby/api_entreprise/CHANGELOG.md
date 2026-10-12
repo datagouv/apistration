@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-12
+
+### Added
+- Exceptions expose the top-level `meta` and `links` of the error body
+  (`nil` when absent, SPECS.md §6.1).
+
 ## [0.5.0] - 2026-09-07
 
 ### Added

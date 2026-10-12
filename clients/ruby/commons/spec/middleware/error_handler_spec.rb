@@ -1,12 +1,12 @@
 RSpec.describe 'ErrorHandler middleware' do
   let(:client) { TestClientSupport.build_client }
 
-  def stub_error(status, errors:, headers: {})
+  def stub_error(status, errors:, headers: {}, **top_level)
     stub_request(:get, 'https://example.test/v3/foo')
       .with(query: hash_including('recipient' => '13002526500013'))
       .to_return(status: status,
                  headers: { 'Content-Type' => 'application/json' }.merge(headers),
-                 body: { errors: errors }.to_json)
+                 body: { errors: errors }.merge(top_level).to_json)
   end
 
   matrix = [
@@ -35,6 +35,46 @@ RSpec.describe 'ErrorHandler middleware' do
         expect(e.method).to eq(:get)
         expect(e.url).to include('/v3/foo')
       end
+    end
+  end
+
+  describe 'top-level meta and links of an error body' do
+    let(:not_found) { [{ code: '35003', title: 'Allocataire non référencé', detail: 'd' }] }
+    let(:proof_meta) do
+      { 'verification_url' => 'https://particulier.api.gouv.fr/attestations/verification/t', 'verification_code' => 'ABCD-EF01-23' }
+    end
+    let(:proof_links) { { 'attestation_pdf' => 'https://particulier.api.gouv.fr/api/attestations/t.pdf' } }
+
+    shared_examples 'an error without meta nor links' do
+      it 'leaves meta and links nil' do
+        expect { client.get('/v3/foo') }.to raise_error(ApiGouvCommons::NotFoundError) do |e|
+          expect(e.meta).to be_nil
+          expect(e.links).to be_nil
+        end
+      end
+    end
+
+    context 'when a 404 carries a proof' do
+      before { stub_error(404, errors: not_found, meta: proof_meta, links: proof_links) }
+
+      it 'exposes them on the error' do
+        expect { client.get('/v3/foo') }.to raise_error(ApiGouvCommons::NotFoundError) do |e|
+          expect(e.meta).to eq(proof_meta)
+          expect(e.links).to eq(proof_links)
+        end
+      end
+    end
+
+    context 'when the body has none' do
+      before { stub_error(404, errors: not_found) }
+
+      it_behaves_like 'an error without meta nor links'
+    end
+
+    context 'when they are not objects' do
+      before { stub_error(404, errors: not_found, meta: 'unexpected', links: ['unexpected']) }
+
+      it_behaves_like 'an error without meta nor links'
     end
   end
 

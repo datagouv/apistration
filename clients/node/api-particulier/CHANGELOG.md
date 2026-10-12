@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0
+
+### Added
+- Errors expose the top-level `meta` and `links` of the error body (`null`
+  when absent, SPECS.md §6.1). On a 404 « Allocataire non référencé »,
+  « Dossier allocataire absent » or « Allocataire non éligible » from
+  `dss.participation_familiale_eaje_identite` called with `generate_proof`,
+  they carry the proof: `meta.verification_url`, `meta.verification_code`
+  and, in `pdf` mode, `links.attestation_pdf`.
+
 ## 0.4.0
 
 ### Added

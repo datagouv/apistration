@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: bcbca22be83e3b30997f9b0bac8df151016648d8).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 9849118b68528b8ceedf5a53f5042fa434a44300).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 import { RateLimit } from './rate-limit.js';
@@ -39,6 +39,6 @@ export class Response {
   }
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
+export function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }

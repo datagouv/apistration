@@ -251,6 +251,8 @@ Every exception carries:
 | `errors`      | Raw JSON:API `errors` array (empty for `TransportError`). |
 | `method`      | HTTP verb sent.                                         |
 | `url`         | Fully-resolved URL sent.                                |
+| `meta`        | Top-level `meta` object of the error body, verbatim (nil when absent). Carries e.g. the proof (`verification_url`, `verification_code`, `attestation_pdf_url_expires_at`) of an API Particulier EAJE 404 called with `X-Generate-Proof`. |
+| `links`       | Top-level `links` object of the error body, verbatim (nil when absent), e.g. `attestation_pdf` on that same 404 in `pdf` mode. |
 
 Convenience accessors `first_error_code`, `first_error_title`,
 `first_error_detail`, `first_error_source` MUST be provided for ergonomics.

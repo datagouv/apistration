@@ -391,6 +391,56 @@ describe('ClientBase', () => {
     });
   });
 
+  describe('top-level meta and links on an error', () => {
+    const notFound = [
+      { code: '35003', title: 'Allocataire non référencé', detail: 'd' },
+    ];
+    const proofMeta = {
+      verification_url:
+        'https://particulier.api.gouv.fr/attestations/verification/t',
+      verification_code: 'ABCD-EF01-23',
+    };
+    const proofLinks = {
+      attestation_pdf: 'https://particulier.api.gouv.fr/api/attestations/t.pdf',
+    };
+
+    it('exposes them, as on a 404 carrying a proof', async () => {
+      globalThis.fetch = mockFetch(404, {
+        errors: notFound,
+        meta: proofMeta,
+        links: proofLinks,
+      });
+
+      const client = new TestClient();
+
+      try {
+        await client.get('/v3/test/endpoint');
+        expect.fail('should have thrown');
+      } catch (error) {
+        expect(error).toBeInstanceOf(NotFoundError);
+        const notFoundError = error as NotFoundError;
+        expect(notFoundError.meta).toEqual(proofMeta);
+        expect(notFoundError.links).toEqual(proofLinks);
+      }
+    });
+
+    it('leaves them null when the body has none', async () => {
+      globalThis.fetch = mockFetch(404, { errors: notFound });
+
+      const client = new TestClient();
+
+      try {
+        await client.get('/v3/test/endpoint');
+        expect.fail('should have thrown');
+      } catch (error) {
+        expect(error).toBeInstanceOf(NotFoundError);
+        const notFoundError = error as NotFoundError;
+        expect(notFoundError.meta).toBeNull();
+        expect(notFoundError.links).toBeNull();
+      }
+    });
+  });
+
   describe('ProviderError.retryAfter from meta.retry_in', () => {
     it('surfaces retry_in from error meta', async () => {
       globalThis.fetch = mockFetch(502, {

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0
+
+### Added
+- Errors expose the top-level `meta` and `links` of the error body (`null`
+  when absent, SPECS.md §6.1).
+
 ## 0.5.0
 
 ### Added
