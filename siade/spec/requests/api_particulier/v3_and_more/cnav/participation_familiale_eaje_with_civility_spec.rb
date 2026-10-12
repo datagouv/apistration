@@ -312,6 +312,40 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
                 end
               end
 
+              context 'with a birthplace by name and a typographic apostrophe' do
+                let(:nomNaissance) { 'D’ARTAGNAN' }
+                let(:'prenoms[]') { %w[CHARLES OGIER] }
+                let(:codeCogInseeCommuneNaissance) { nil }
+                let(:nomCommuneNaissance) { 'LUPIAC' }
+                let(:codeCogInseeDepartementNaissance) { '32' }
+
+                run_test! 'shows the identity exactly as sent, before any normalisation' do
+                  expect(pdf_payload['sections'].last['entrees']).to eq([[
+                    ['Nom de naissance', 'D’ARTAGNAN'],
+                    ['Prénoms', 'CHARLES OGIER'],
+                    ['Date de naissance', '12/06/1980'],
+                    ['Sexe', 'Masculin'],
+                    ['Commune de naissance', 'LUPIAC'],
+                    ['Département de naissance', '32'],
+                    ['Code INSEE du pays de naissance', '99100']
+                  ]])
+                  expect(verification_payload['sections'].last['entrees']).to eq([[['Nom de naissance', 'D’A•••'], ['Date de naissance', '06/1980']]])
+                end
+              end
+
+              context 'when monitoring records the retriever context' do
+                let(:reported_contexts) { [] }
+
+                before do
+                  allow(MonitoringService.instance).to receive(:set_retriever_context) { |context| reported_contexts << context.to_h }
+                end
+
+                run_test! 'leaves the identity as sent out of it' do
+                  expect(reported_contexts).not_to be_empty
+                  expect(reported_contexts.flat_map(&:keys)).not_to include(:params_as_sent)
+                end
+              end
+
               context 'with X-Generate-Proof: proof-only' do
                 let(:'X-Generate-Proof') { 'proof-only' }
 

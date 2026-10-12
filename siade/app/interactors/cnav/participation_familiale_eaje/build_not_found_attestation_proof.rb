@@ -1,6 +1,11 @@
 class CNAV::ParticipationFamilialeEAJE::BuildNotFoundAttestationProof < APIParticulier::BuildAttestationProof
   SEXE_LABELS = CNAV::ParticipationFamilialeEAJE::BuildAttestationProof::SEXE_LABELS
 
+  IDENTITE_MINIMISEE = [
+    CNAV::ParticipationFamilialeEAJE::BuildAttestationProof::IDENTITE_MINIMISEE.assoc('nom_naissance'),
+    ['date_naissance', 'Date de naissance', ->(date) { date.split('/').last(2).join('/') }]
+  ].freeze
+
   IDENTITE = [
     ['nom_naissance', 'Nom de naissance'],
     ['nom_usage', "Nom d'usage"],
@@ -28,7 +33,7 @@ class CNAV::ParticipationFamilialeEAJE::BuildNotFoundAttestationProof < APIParti
   end
 
   def verification_sections
-    [result_section, identity_section(CNAV::ParticipationFamilialeEAJE::BuildAttestationProof::IDENTITE_MINIMISEE)]
+    [result_section, identity_section(IDENTITE_MINIMISEE)]
   end
 
   def attestation_sections
@@ -70,11 +75,18 @@ class CNAV::ParticipationFamilialeEAJE::BuildNotFoundAttestationProof < APIParti
   end
 
   def identity_params
-    @identity_params ||= context.params.to_h.stringify_keys
+    @identity_params ||= context.params_as_sent.to_h.stringify_keys
   end
 
   def date_naissance
-    Civility::FormatDateNaissance.new(*identity_params.values_at('annee_date_naissance', 'mois_date_naissance', 'jour_date_naissance')).format
+    parts = identity_params.values_at('jour_date_naissance', 'mois_date_naissance', 'annee_date_naissance')
+    return if parts.all?(&:blank?)
+
+    parts.zip([2, 2, 4]).map { |part, width| padded(part, width) }.join('/')
+  end
+
+  def padded(part, width)
+    part.present? ? part.to_s.rjust(width, '0') : '-' * width
   end
 
   def consulted_at
