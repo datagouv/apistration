@@ -5641,7 +5641,11 @@ paths:
           - pdf
         description: 'Demande une preuve d''attestation : `proof-only` ajoute `meta.verification_url`
           et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf`
-          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).'
+          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).
+          La preuve accompagne aussi, au même endroit, les 404 « Allocataire non référencé
+          », « Dossier allocataire absent CNAF / MSA » et « Allocataire non éligible
+          » (attestation de consultation sans résultat) ; aucune autre erreur n''en
+          porte.'
       security:
       - jwt_bearer_token: []
       description: Participation familiale EAJE
@@ -6005,7 +6009,43 @@ paths:
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité.
               schema:
-                "$ref": "#/components/schemas/Error"
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        detail:
+                          type: string
+                        code:
+                          type: string
+                      required:
+                      - title
+                      - detail
+                      - code
+                  meta:
+                    type: object
+                    description: Présent avec `X-Generate-Proof` sur une 404 « usager
+                      inconnu » uniquement.
+                    properties:
+                      verification_url:
+                        type: string
+                      verification_code:
+                        type: string
+                      attestation_pdf_url_expires_at:
+                        type: integer
+                  links:
+                    type: object
+                    description: 'Présent avec `X-Generate-Proof: pdf` sur une 404
+                      « usager inconnu » uniquement.'
+                    properties:
+                      attestation_pdf:
+                        type: string
+                required:
+                - errors
         '502':
           description: |-
             Erreur du fournisseur

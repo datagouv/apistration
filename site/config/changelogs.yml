@@ -1,3 +1,9 @@
+- date: 2026-10-12
+  scope: api_particulier
+  title: "Participation familiale EAJE : une preuve d'appel aussi quand l'usager est inconnu"
+  description: |
+    Sur la [participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) appelée avec l'identité pivot, l'en-tête `X-Generate-Proof` produit désormais une preuve sur les 404 « Allocataire non référencé », « Dossier allocataire absent » (CNAF / MSA) et « Allocataire non éligible » : `meta.verification_url`, `meta.verification_code` et, en mode `pdf`, `links.attestation_pdf`, au premier niveau de la réponse d'erreur. L'attestation de consultation sans résultat montre l'erreur, son origine, la date et l'heure de l'appel et l'identité telle que transmise. Les autres erreurs restent sans preuve. Les SDKs officiels Ruby et Node exposent `meta` et `links` sur leurs exceptions.
+
 - date: 2026-10-05
   scope: both
   title: "Espace utilisateur : l'organisation de chaque habilitation affichée dans la liste"

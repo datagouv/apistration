@@ -35,7 +35,8 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         in: :header,
         required: false,
         schema: { type: :string, enum: %w[proof-only pdf] },
-        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`)."
+        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`). " \
+                     "La preuve accompagne aussi, au même endroit, les 404 « Allocataire non référencé », « Dossier allocataire absent CNAF / MSA » et « Allocataire non éligible » (attestation de consultation sans résultat) ; aucune autre erreur n'en porte."
 
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
@@ -206,9 +207,28 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
           response '404', 'Dossier non trouvé' do
             build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
 
-            schema '$ref' => '#/components/schemas/Error'
+            schema build_rswag_error.deep_merge(
+              properties: {
+                meta: {
+                  type: :object,
+                  description: 'Présent avec `X-Generate-Proof` sur une 404 « usager inconnu » uniquement.',
+                  properties: {
+                    verification_url: { type: :string },
+                    verification_code: { type: :string },
+                    attestation_pdf_url_expires_at: { type: :integer }
+                  }
+                },
+                links: {
+                  type: :object,
+                  description: 'Présent avec `X-Generate-Proof: pdf` sur une 404 « usager inconnu » uniquement.',
+                  properties: { attestation_pdf: { type: :string } }
+                }
+              }
+            )
 
-            run_test!
+            run_test! 'carries no proof without X-Generate-Proof' do |response|
+              expect(JSON.parse(response.body).keys).to eq(['errors'])
+            end
 
             context 'with X-Generate-Proof on a mocked not found (staging)' do
               before do

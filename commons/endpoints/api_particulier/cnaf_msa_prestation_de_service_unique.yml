@@ -179,7 +179,13 @@ fiche:
 
           C'est une exigence documentaire, pas technique : l'attestation est une pièce justificative, deux documents portant la même version d'API ne peuvent pas présenter des jeux de champs différents — ni pour vous, ni pour la CNAF, ni pour l'agent qui contrôle le document.
 
+          **Usager inconnu : attestation de consultation sans résultat.** Lorsque l'appel aboutit à une 404 « Allocataire non référencé » (RNCPS), « Dossier allocataire absent » (CNAF ou MSA) ou « Allocataire non éligible » (dossier trouvé, aucun enfant de moins de 7 ans), la réponse porte la même preuve, au même endroit (`meta`, et `links` en mode `pdf`). L'attestation montre l'erreur, son origine, la date et l'heure de l'appel, et l'identité exactement telle que vous l'avez transmise ; la page de vérification n'en affiche que la version minimisée. Toute autre erreur (422, 429, 5xx, délai dépassé) ne porte aucune preuve : relancez l'appel.
+
     historique: |+
+      **12/10/2026 — Preuve d'attestation sur une 404 « usager inconnu »**
+
+      Avec l'en-tête `X-Generate-Proof`, les 404 « Allocataire non référencé », « Dossier allocataire absent » (CNAF / MSA) et « Allocataire non éligible » portent désormais `meta` (lien et code de vérification) et, en mode `pdf`, `links.attestation_pdf` : une attestation de consultation sans résultat. [En savoir plus](#attestation-pdf-verifiable).
+
       **29/07/2026 — Preuve d'attestation vérifiable**
 
       Ajout de l'en-tête `X-Generate-Proof` sur `/v3/dss/participation_familiale_eaje/identite` : lien et code de vérification dans `meta`, lien de téléchargement de l'attestation PDF dans `links`. [En savoir plus](#attestation-pdf-verifiable).
