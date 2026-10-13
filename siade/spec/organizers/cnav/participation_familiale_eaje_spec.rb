@@ -49,6 +49,45 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE do
     end
   end
 
+  describe 'the attestation proof' do
+    let(:params) do
+      {
+        params: call_params,
+        recipient:,
+        generate_proof_mode: 'proof-only',
+        scopes: %w[cnav_participation_familiale_eaje_allocataires],
+        habilitation: 'a11b0000-0000-0000-0000-000000000042'
+      }
+    end
+
+    context 'when the provider found the allocataire' do
+      it 'is built once the chain has run' do
+        expect(instance.verification_url).to be_present
+      end
+    end
+
+    context 'when the provider rate-limits the call' do
+      before do
+        stub_request(:get, cnav_url('participation_familiale_eaje')).with(query: hash_including({})).to_return(status: 429, body: '{}')
+      end
+
+      it 'fails with the provider error and no proof' do
+        expect(instance).to be_a_failure
+        expect(instance.verification_url).to be_nil
+      end
+    end
+
+    context 'when the chain crashes' do
+      before do
+        allow(CNAV::ParticipationFamilialeEAJE::BuildResource).to receive(:call!).and_raise(RuntimeError, 'boom')
+      end
+
+      it 'lets the crash surface unchanged' do
+        expect { instance }.to raise_error(RuntimeError, 'boom')
+      end
+    end
+  end
+
   describe 'provider_name' do
     it 'returns correct provider name' do
       expect(instance.provider_name).to eq('Sécurité sociale')
