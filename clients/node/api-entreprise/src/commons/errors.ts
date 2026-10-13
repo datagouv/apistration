@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: bcbca22be83e3b30997f9b0bac8df151016648d8).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 1af1c01f627204ae57179b31a7140960c95cd2e7).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 export interface JsonApiError {
@@ -13,6 +13,8 @@ export interface JsonApiError {
 export class ApiGouvError extends Error {
   readonly httpStatus: number | null;
   readonly errors: JsonApiError[];
+  readonly meta: Record<string, unknown>;
+  readonly links: Record<string, unknown>;
   readonly method: string | null;
   readonly url: string | null;
 
@@ -21,6 +23,8 @@ export class ApiGouvError extends Error {
     options: {
       httpStatus?: number | null;
       errors?: JsonApiError[];
+      meta?: Record<string, unknown>;
+      links?: Record<string, unknown>;
       method?: string | null;
       url?: string | null;
     } = {},
@@ -29,6 +33,8 @@ export class ApiGouvError extends Error {
     this.name = new.target.name;
     this.httpStatus = options.httpStatus ?? null;
     this.errors = options.errors ?? [];
+    this.meta = options.meta ?? {};
+    this.links = options.links ?? {};
     this.method = options.method ?? null;
     this.url = options.url ?? null;
   }
@@ -80,6 +86,8 @@ export class RateLimitError extends ClientError {
     options: {
       httpStatus?: number | null;
       errors?: JsonApiError[];
+      meta?: Record<string, unknown>;
+      links?: Record<string, unknown>;
       method?: string | null;
       url?: string | null;
       retryAfter?: number | null;
@@ -102,6 +110,8 @@ export class ProviderError extends ServerError {
     options: {
       httpStatus?: number | null;
       errors?: JsonApiError[];
+      meta?: Record<string, unknown>;
+      links?: Record<string, unknown>;
       method?: string | null;
       url?: string | null;
       retryAfter?: number | null;

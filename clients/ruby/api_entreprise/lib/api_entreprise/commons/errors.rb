@@ -1,15 +1,17 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 35aaaaedcd3b760511d070e4e4c101ca3c5cdb32).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: cadd23a519516ddfc74ee81c282d570c916571db).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 module ApiEntreprise::Commons
   class Error < StandardError
-    attr_reader :http_status, :errors, :method, :url
+    attr_reader :http_status, :errors, :meta, :links, :method, :url
 
-    def initialize(message = nil, http_status: nil, errors: [], method: nil, url: nil)
+    def initialize(message = nil, http_status: nil, errors: [], meta: {}, links: {}, method: nil, url: nil)
       super(message || default_message(http_status, errors))
       @http_status = http_status
       @errors = errors || []
+      @meta = meta || {}
+      @links = links || {}
       @method = method
       @url = url
     end

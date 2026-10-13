@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: 35aaaaedcd3b760511d070e4e4c101ca3c5cdb32).
+# DO NOT EDIT — generated from clients/ruby/commons/ (source digest: cadd23a519516ddfc74ee81c282d570c916571db).
 # Regenerate via clients/ruby/bin/sync_commons.
 
 require 'faraday'
@@ -32,13 +32,16 @@ module ApiEntreprise::Commons
       private
 
       def map_exception(status, env)
-        errors = extract_errors(env.body)
+        body = parse_body(env.body)
+        errors = Array(body['errors'] || body[:errors])
         klass = klass_for(status)
         return nil unless klass
 
         kwargs = {
           http_status: status,
           errors: errors,
+          meta: body['meta'] || body[:meta] || {},
+          links: body['links'] || body[:links] || {},
           method: env.method,
           url: env.url.to_s
         }
@@ -67,12 +70,9 @@ module ApiEntreprise::Commons
         end
       end
 
-      def extract_errors(body)
-        parsed = body
-        parsed = safely_parse(body) if body.is_a?(String)
-        return [] unless parsed.is_a?(Hash)
-
-        Array(parsed['errors'] || parsed[:errors])
+      def parse_body(body)
+        parsed = body.is_a?(String) ? safely_parse(body) : body
+        parsed.is_a?(Hash) ? parsed : {}
       end
 
       def safely_parse(body)
