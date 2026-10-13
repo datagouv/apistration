@@ -35,7 +35,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         in: :header,
         required: false,
         schema: { type: :string, enum: %w[proof-only pdf] },
-        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`)."
+        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`). La preuve accompagne aussi les réponses 404 : elle atteste alors d'une consultation sans résultat."
 
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
@@ -210,6 +210,22 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
           response '404', 'Dossier non trouvé' do
             build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
+
+            example 'application/json', :dossier_absent_avec_preuve, {
+              errors: [
+                NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false)
+                  .add_meta(origine: 'CNAF')
+                  .to_h
+              ],
+              meta: {
+                verification_url: 'https://particulier.api.gouv.fr/attestations/verification/eyJhbGciOiJub25lIn0--exemple',
+                verification_code: '3F2A-91C0-7B',
+                attestation_pdf_url_expires_at: 1_791_475_500
+              },
+              links: {
+                attestation_pdf: 'https://particulier.api.gouv.fr/api/attestations/eyJhbGciOiJub25lIn0--exemple.pdf'
+              }
+            }, 'Dossier allocataire absent CNAF, avec X-Generate-Proof: pdf', "Avec l'en-tête X-Generate-Proof, la 404 porte la preuve d'une consultation sans résultat."
 
             schema '$ref' => '#/components/schemas/Error'
 

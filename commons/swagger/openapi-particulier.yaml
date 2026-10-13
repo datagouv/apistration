@@ -5681,7 +5681,9 @@ paths:
           - pdf
         description: 'Demande une preuve d''attestation : `proof-only` ajoute `meta.verification_url`
           et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf`
-          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).'
+          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).
+          La preuve accompagne aussi les réponses 404 : elle atteste alors d''une
+          consultation sans résultat.'
       security:
       - jwt_bearer_token: []
       description: Participation familiale EAJE
@@ -6044,6 +6046,27 @@ paths:
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité.
+                dossier_absent_avec_preuve:
+                  value:
+                    errors:
+                    - code: '23003'
+                      title: Dossier allocataire absent CNAF
+                      detail: Le dossier allocataire n'a pas été trouvé auprès de
+                        la CNAF.
+                      source:
+                      meta:
+                        provider: CNAF
+                        origine: CNAF
+                    meta:
+                      verification_url: https://particulier.api.gouv.fr/attestations/verification/eyJhbGciOiJub25lIn0--exemple
+                      verification_code: 3F2A-91C0-7B
+                      attestation_pdf_url_expires_at: 1791475500
+                    links:
+                      attestation_pdf: https://particulier.api.gouv.fr/api/attestations/eyJhbGciOiJub25lIn0--exemple.pdf
+                  summary: 'Dossier allocataire absent CNAF, avec X-Generate-Proof:
+                    pdf'
+                  description: Avec l'en-tête X-Generate-Proof, la 404 porte la preuve
+                    d'une consultation sans résultat.
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
