@@ -4487,7 +4487,8 @@ pivot France Connect.
         "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAF"
+          "provider": "CNAF",
+          "origine": "CNAF"
         }
       }
     ]

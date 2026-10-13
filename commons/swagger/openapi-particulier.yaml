@@ -1387,6 +1387,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -1400,6 +1401,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -1413,6 +1415,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -1426,6 +1429,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -1728,6 +1732,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -1741,6 +1746,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -1754,6 +1760,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -1767,6 +1774,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -2264,6 +2272,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -2277,6 +2286,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -2290,6 +2300,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -2303,6 +2314,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -2621,6 +2633,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -2634,6 +2647,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -2647,6 +2661,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -2660,6 +2675,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -3151,6 +3167,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -3164,6 +3181,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -3177,6 +3195,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -3190,6 +3209,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -3501,6 +3521,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -3514,6 +3535,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -3527,6 +3549,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -3540,6 +3563,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -4024,6 +4048,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -4037,6 +4062,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -4050,6 +4076,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -4063,6 +4090,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -4367,6 +4395,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -4380,6 +4409,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -4393,6 +4423,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -4406,6 +4437,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -4912,6 +4944,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -4925,6 +4958,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -4938,19 +4972,21 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
-                allocataire_non_reference_40003:
+                allocataire_non_reference_35003:
                   value:
                     errors:
-                    - code: '40003'
+                    - code: '35003'
                       title: Allocataire non référencé
                       detail: L'allocataire n'est pas référencé auprès des caisses
                         éligibles
                       source:
                       meta:
-                        provider: RNCPS
+                        provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -5277,6 +5313,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -5290,6 +5327,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -5303,6 +5341,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -5316,6 +5355,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -6986,6 +7026,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -6999,6 +7040,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -7012,6 +7054,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -7025,6 +7068,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -7339,6 +7383,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -7352,6 +7397,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -7365,6 +7411,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -7378,6 +7425,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -8153,6 +8201,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -8732,6 +8781,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -9226,6 +9276,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -9239,6 +9290,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -9252,6 +9304,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -9265,6 +9318,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles
@@ -9579,6 +9633,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF
+                        origine: CNAF
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
@@ -9592,6 +9647,7 @@ paths:
                       source:
                       meta:
                         provider: MSA
+                        origine: MSA
                   summary: Dossier allocataire absent MSA
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la MSA.
@@ -9605,6 +9661,7 @@ paths:
                       source:
                       meta:
                         provider: RNCPS
+                        origine: RNCPS
                   summary: Dossier allocataire absent RNCPS
                   description: Le dossier allocataire n'a pas été trouvé auprès du
                     RNCPS.
@@ -9618,6 +9675,7 @@ paths:
                       source:
                       meta:
                         provider: CNAF & MSA
+                        origine: RNCPS
                   summary: Allocataire non référencé
                   description: L'allocataire n'est pas référencé auprès des caisses
                     éligibles

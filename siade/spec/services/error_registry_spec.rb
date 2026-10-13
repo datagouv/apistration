@@ -194,6 +194,12 @@ RSpec.describe ErrorRegistry do
       expect(error.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
     end
 
+    it 'adds the meta a declaration names to the provider' do
+      described_class.register(validator, NotFoundError, provider: 'RNCPS', meta: { origine: 'RNCPS' })
+
+      expect(built_examples(provider_name: 'Sécurité sociale').first.meta).to eq(provider: 'RNCPS', origine: 'RNCPS')
+    end
+
     it 'builds the unauthorized and unprocessable errors from their options' do
       described_class.register(validator, InvalidFranceConnectAccessTokenError, type: :not_found_or_expired)
       described_class.register(validator, ProviderUnprocessableEntityError, reason: :unidentified_person)

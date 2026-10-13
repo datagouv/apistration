@@ -378,21 +378,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -509,21 +513,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -704,21 +712,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -835,21 +847,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -1030,21 +1046,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -1161,21 +1181,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -1356,21 +1380,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -1487,21 +1515,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -1682,21 +1714,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -1813,21 +1849,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -2008,16 +2048,19 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '37003'
         title: Allocataire non éligible
         detail: Le dossier allocataire a été trouvé mais n'est pas éligible à la participation
@@ -2029,6 +2072,7 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -2145,16 +2189,19 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '37003'
         title: Allocataire non éligible
         detail: Le dossier allocataire a été trouvé mais n'est pas éligible à la participation
@@ -2166,6 +2213,7 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -2346,21 +2394,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -2477,21 +2529,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -2687,21 +2743,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '35000'
         title: Erreur interne du fournisseur de données
@@ -2833,21 +2893,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '35000'
         title: Erreur interne du fournisseur de données
@@ -3028,21 +3092,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -3159,21 +3227,25 @@ endpoints:
         detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
         meta:
           provider: MSA
+          origine: MSA
       - code: '23003'
         title: Dossier allocataire absent CNAF
         detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
         meta:
           provider: CNAF
+          origine: CNAF
       - code: '35003'
         title: Allocataire non référencé
         detail: L'allocataire n'est pas référencé auprès des caisses éligibles
         meta:
           provider: CNAF & MSA
+          origine: RNCPS
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
         meta:
           provider: RNCPS
+          origine: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données

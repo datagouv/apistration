@@ -57,6 +57,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         it 'returns a RNCPS error' do
           expect(subject.errors.first.detail).to include('éligibles')
         end
+
+        it 'states the RNCPS as the origin of the answer' do
+          expect(subject.errors.first.meta).to include(origine: 'RNCPS')
+        end
       end
     end
 
@@ -75,6 +79,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         it 'returns a CNAF error, which translates to an identity found but not within regimes' do
           expect(subject.errors.first.detail).to include('CNAF')
         end
+
+        it 'states the CNAF as the origin of the answer' do
+          expect(subject.errors.first.meta).to include(origine: 'CNAF')
+        end
       end
 
       context 'with MSA regime' do
@@ -91,6 +99,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         it 'returns an MSA error, which translates to an identity found but not within regimes' do
           expect(subject.errors.first.detail).to include('MSA')
         end
+
+        it 'states the MSA as the origin of the answer' do
+          expect(subject.errors.first.meta).to include(origine: 'MSA')
+        end
       end
 
       context 'with RNCPS regime' do
@@ -106,6 +118,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
         it 'returns a RNCPS error' do
           expect(subject.errors.first.detail).to include('RNCPS')
+        end
+
+        it 'states the RNCPS as the origin of the answer' do
+          expect(subject.errors.first.meta).to include(origine: 'RNCPS')
         end
       end
     end

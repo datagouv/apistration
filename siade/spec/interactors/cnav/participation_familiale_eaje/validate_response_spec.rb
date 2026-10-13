@@ -5,7 +5,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
 
   context 'with 200 response' do
     let(:response) do
-      instance_double(Net::HTTPOK, code: 200, body:)
+      instance_double(Net::HTTPOK, code: 200, body:, header: {})
     end
 
     context 'with valid body and kids under 7' do
@@ -26,6 +26,26 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
       it 'returns a specific error message from CNAV' do
         expect(subject.errors.first.provider_name).to eq('CNAV')
         expect(subject.errors.first.detail).to include('participation familiale EAJE')
+      end
+
+      context 'when the MSA answered' do
+        let(:response) do
+          instance_double(Net::HTTPOK, code: 200, body:, header: { 'X-APISECU-FD' => '00171001' })
+        end
+
+        it 'states the MSA as the origin of the answer' do
+          expect(subject.errors.first.meta).to include(origine: 'MSA')
+        end
+      end
+
+      context 'when the CNAF answered' do
+        let(:response) do
+          instance_double(Net::HTTPOK, code: 200, body:, header: { 'X-APISECU-FD' => '00810011' })
+        end
+
+        it 'states the CNAF as the origin of the answer' do
+          expect(subject.errors.first.meta).to include(origine: 'CNAF')
+        end
       end
 
       it 'logs potential unauthorized API usage' do
