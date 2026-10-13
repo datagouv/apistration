@@ -221,7 +221,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
               run_test! do |response|
                 json = JSON.parse(response.body)
 
-                expect(json['errors'].first['code']).to eq('37003')
+                expect(json['errors'].first['code']).to eq('23003')
                 expect(json).not_to have_key('meta')
               end
             end

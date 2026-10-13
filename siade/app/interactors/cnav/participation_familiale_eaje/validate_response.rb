@@ -14,7 +14,10 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
 
   def no_kids_under_7_error!
     MonitoringService.instance.track('info', 'Potential unauthorized API use: CNAV EAJE: allocataire found but no kids under 7')
-    fail_with_error!(build_declared_error(ALLOCATAIRE_NOT_ELIGIBLE))
+    error = build_declared_error(ALLOCATAIRE_NOT_ELIGIBLE)
+    error.add_meta(origine: regime) if regime
+
+    fail_with_error!(error)
   end
 
   def kids_under_7?

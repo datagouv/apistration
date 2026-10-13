@@ -262,7 +262,8 @@ respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
         "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAF"
+          "provider": "CNAF",
+          "origine": "CNAF"
         }
       }
     ]
