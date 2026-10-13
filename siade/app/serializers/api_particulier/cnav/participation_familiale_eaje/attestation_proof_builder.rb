@@ -1,4 +1,4 @@
-class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::BuildAttestationProof
+class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder < APIParticulier::AttestationProofBuilder
   SEXE_LABELS = { 'M' => 'Masculin', 'F' => 'Féminin' }.freeze
 
   IDENTITE = [
