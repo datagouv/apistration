@@ -28,7 +28,7 @@ module APIParticulier::GeneratesAttestationProof
 
     proof = attestation_proof(body)
     body['meta'] = body.fetch('meta', {}).merge(proof_meta(proof))
-    body['links'] = body.fetch('links', {}).merge('attestation_pdf' => pdf_link(proof)) if proof.pdf?
+    body['links'] = body.fetch('links', {}).merge('attestation_pdf' => pdf_link(proof)) if pdf_mode?
     body
   end
 
@@ -39,8 +39,6 @@ module APIParticulier::GeneratesAttestationProof
   def attestation_proof(body)
     serializer_module::AttestationProofBuilder.new(
       body,
-      mode: generate_proof_mode,
-      scopes: current_user.scopes,
       recipient:,
       habilitation: current_user.authorization_request_id
     )
@@ -51,13 +49,17 @@ module APIParticulier::GeneratesAttestationProof
       'verification_url' => proof.verification_url,
       'verification_code' => proof.visual_code
     }
-    meta['attestation_pdf_url_expires_at'] = proof.pdf_link_expires_at if proof.pdf?
+    meta['attestation_pdf_url_expires_at'] = proof.pdf_link_expires_at if pdf_mode?
 
     meta
   end
 
   def pdf_link(proof)
     "#{AttestationToken.base_url}#{api_particulier_attestation_path(token: proof.pdf_token, format: :pdf)}"
+  end
+
+  def pdf_mode?
+    generate_proof_mode == 'pdf'
   end
 
   def generate_proof_mode

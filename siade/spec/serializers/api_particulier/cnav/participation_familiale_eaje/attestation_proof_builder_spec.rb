@@ -1,17 +1,6 @@
 RSpec.describe APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder do
   subject(:proof) { proof_for(data) }
 
-  let(:mode) { 'proof-only' }
-
-  let(:scopes) do
-    %w[
-      cnav_participation_familiale_eaje_allocataires
-      cnav_participation_familiale_eaje_enfants
-      cnav_participation_familiale_eaje_adresse
-      cnav_participation_familiale_eaje_parametres_calcul
-    ]
-  end
-
   let(:data) do
     {
       'allocataires' => [
@@ -64,16 +53,6 @@ RSpec.describe APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProo
       expect(growth).to be <= 8
     end
 
-    context 'when a scope is missing' do
-      let(:scopes) { super() - %w[cnav_participation_familiale_eaje_enfants] }
-
-      it 'drops the section instead of exposing data the caller is not entitled to' do
-        titles = verification_payload['sections'].pluck('titre')
-
-        expect(titles).to eq(['Allocataires', 'Paramètres de calcul de la participation familiale'])
-      end
-    end
-
     context 'when the provider left a hole in the data' do
       let(:data) { super().except('enfants') }
 
@@ -93,7 +72,6 @@ RSpec.describe APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProo
     end
 
     context 'when the provider returned a malformed date' do
-      let(:mode) { 'pdf' }
       let(:data) do
         super().merge('allocataires' => [{ 'nom_naissance' => 'DUPOND', 'date_naissance' => '2020-99-99' }])
       end
@@ -112,45 +90,34 @@ RSpec.describe APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProo
   end
 
   describe 'the pdf token' do
-    it 'is not minted unless it was asked for' do
-      expect(proof.pdf_token).to be_nil
-      expect(proof.pdf_link_expires_at).to be_nil
+    subject(:pdf_payload) { AttestationToken.read(proof.pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+
+    it 'carries the full attestation, its identity, its habilitation and the verification token' do
+      expect(pdf_payload['document']).to eq('participation_familiale_eaje')
+      expect(pdf_payload['titre']).to eq('ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)')
+      expect(pdf_payload['source']).to eq('CNAF')
+      expect(pdf_payload['sections'].pluck('titre'))
+        .to eq(['Allocataires', 'Enfants', 'Adresse', 'Paramètres de calcul de la participation familiale'])
+      expect(pdf_payload['habilitation']).to eq('a11b0000-0000-0000-0000-000000000042')
+      expect(pdf_payload['verification_token']).to eq(proof.verification_token)
     end
 
-    context 'when requested' do
-      subject(:pdf_payload) { AttestationToken.read(proof.pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+    it 'resolves identities, values and formats at issuance' do
+      allocataire = pdf_payload['sections'].first['entrees'].first
 
-      let(:mode) { 'pdf' }
+      expect(allocataire).to include(%w[Prénoms JEAN-MICHEL])
+      expect(allocataire).to include(%w[Sexe Masculin])
+      expect(allocataire).to include(['Date de naissance', '30/06/1981'])
+    end
 
-      it 'carries the full attestation, its identity, its habilitation and the verification token' do
-        expect(pdf_payload['document']).to eq('participation_familiale_eaje')
-        expect(pdf_payload['titre']).to eq('ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)')
-        expect(pdf_payload['source']).to eq('CNAF')
-        expect(pdf_payload['sections'].pluck('titre'))
-          .to eq(['Allocataires', 'Enfants', 'Adresse', 'Paramètres de calcul de la participation familiale'])
-        expect(pdf_payload['habilitation']).to eq('a11b0000-0000-0000-0000-000000000042')
-        expect(pdf_payload['verification_token']).to eq(proof.verification_token)
-      end
-
-      it 'resolves identities, values and formats at issuance' do
-        allocataire = pdf_payload['sections'].first['entrees'].first
-
-        expect(allocataire).to include(%w[Prénoms JEAN-MICHEL])
-        expect(allocataire).to include(%w[Sexe Masculin])
-        expect(allocataire).to include(['Date de naissance', '30/06/1981'])
-      end
-
-      it 'expires long before the verification link does' do
-        expect(proof.pdf_link_expires_at).to be_within(5).of(5.minutes.from_now.to_i)
-      end
+    it 'expires long before the verification link does' do
+      expect(proof.pdf_link_expires_at).to be_within(5).of(5.minutes.from_now.to_i)
     end
   end
 
   def proof_for(data)
     described_class.new(
       { 'data' => data, 'links' => {}, 'meta' => {} },
-      mode:,
-      scopes:,
       recipient: '13002526500013',
       habilitation: 'a11b0000-0000-0000-0000-000000000042'
     )
