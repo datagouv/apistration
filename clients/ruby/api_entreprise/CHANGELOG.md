@@ -6,6 +6,15 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-13
+
+### Added
+- `meta` et `links` sur les exceptions : objets `meta` et `links` de premier
+  niveau de la réponse d'erreur, tels quels (vides en leur absence). Sur API
+  Particulier, une `404` demandée avec `X-Generate-Proof` y porte la preuve
+  d'une consultation sans résultat (`meta.verification_url`,
+  `meta.verification_code`, `links.attestation_pdf`).
+
 ## [0.5.0] - 2026-09-07
 
 ### Added

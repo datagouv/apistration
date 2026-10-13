@@ -1,5 +1,5 @@
 import { Configuration, type Logger } from './configuration.js';
-import { Response } from './response.js';
+import { Response, isRecord } from './response.js';
 import { RateLimit } from './rate-limit.js';
 import { validateSiret } from './siret.js';
 import {
@@ -349,7 +349,14 @@ export abstract class ClientBase {
   ): never {
     const errors = extractErrors(body);
     const ErrorClass = errorClassForStatus(status);
-    const kwargs = { httpStatus: status, errors, method, url };
+    const kwargs = {
+      httpStatus: status,
+      errors,
+      meta: extractObject(body, 'meta'),
+      links: extractObject(body, 'links'),
+      method,
+      url,
+    };
 
     if (ErrorClass === RateLimitError) {
       const retryAfter = computeRetryAfter(rateLimit, errors);
@@ -415,6 +422,12 @@ function extractErrors(body: unknown): JsonApiError[] {
   const errors = record['errors'];
   if (!Array.isArray(errors)) return [];
   return errors as JsonApiError[];
+}
+
+function extractObject(body: unknown, key: string): Record<string, unknown> {
+  if (!isRecord(body)) return {};
+  const value = body[key];
+  return isRecord(value) ? value : {};
 }
 
 function errorClassForStatus(

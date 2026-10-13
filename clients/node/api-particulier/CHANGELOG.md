@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0
+
+### Added
+- `meta` and `links` on errors: the error response's top-level `meta` and
+  `links` objects, verbatim (empty when absent). On API Particulier, a `404`
+  requested with `X-Generate-Proof` carries the proof of a consultation
+  without result there (`meta.verification_url`, `meta.verification_code`,
+  `links.attestation_pdf`).
+
 ## 0.4.0
 
 ### Added
