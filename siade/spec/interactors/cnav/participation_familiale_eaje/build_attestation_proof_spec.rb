@@ -1,4 +1,6 @@
 RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
+  include ActiveSupport::Testing::TimeHelpers
+
   subject(:proof) { described_class.call(**context_args) }
 
   let(:context_args) do
@@ -169,6 +171,135 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
         expect(proof.pdf_link_expires_at).to be_within(5).of(5.minutes.from_now.to_i)
       end
     end
+  end
+
+  describe 'when the provider did not find the person' do
+    subject(:proof) { described_class.call(failed_context) }
+
+    before { travel_to Time.zone.local(2026, 10, 13, 14, 7) }
+
+    let(:generate_proof_mode) { 'pdf' }
+
+    let(:no_result) do
+      {
+        error: NotFoundError.new('RNCPS', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false),
+        origin: 'RNCPS'
+      }
+    end
+
+    let(:params) do
+      {
+        nom_naissance: 'DUPOND',
+        nom_usage: nil,
+        prenoms: %w[JEAN MICHEL],
+        annee_date_naissance: 1981,
+        mois_date_naissance: 6,
+        jour_date_naissance: 30,
+        sexe_etat_civil: 'M',
+        code_cog_insee_pays_naissance: '99100',
+        code_cog_insee_commune_naissance: '17300',
+        code_cog_insee_departement_naissance: nil,
+        nom_commune_naissance: nil
+      }
+    end
+
+    let(:result_section) do
+      {
+        'titre' => 'Résultat de la consultation',
+        'entrees' => [[
+          ['Erreur', 'Allocataire non référencé'],
+          ['Détail', "L'allocataire n'est pas référencé auprès des caisses éligibles"],
+          %w[Origine RNCPS],
+          ["Date et heure de l'appel", '13/10/2026 à 14:07']
+        ]]
+      }
+    end
+
+    let(:pdf_payload) { AttestationToken.read(proof.pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+
+    it 'attests the consultation and its origin' do
+      expect(pdf_payload['document']).to eq('participation_familiale_eaje')
+      expect(pdf_payload['titre']).to eq('ATTESTATION DE CONSULTATION SANS RÉSULTAT')
+      expect(pdf_payload['source']).to eq('RNCPS')
+    end
+
+    it 'prints the result and the identity as the caller sent it' do
+      expect(pdf_payload['sections']).to eq(
+        [
+          result_section,
+          { 'titre' => "Identité de l'usager transmise lors de l'appel",
+            'entrees' => [[
+              ['Nom de naissance', 'DUPOND'],
+              ['Prénoms', 'JEAN MICHEL'],
+              ['Date de naissance', '30/06/1981'],
+              %w[Sexe Masculin],
+              ['Code INSEE de la commune de naissance', '17300'],
+              ['Code INSEE du pays de naissance', '99100']
+            ]] }
+        ]
+      )
+    end
+
+    it 'keeps a minimised identity in the verification token' do
+      expect(verification_payload['sections']).to eq(
+        [
+          result_section,
+          { 'titre' => "Identité de l'usager transmise lors de l'appel",
+            'entrees' => [[['Nom de naissance', 'DUP•••'], ['Date de naissance', '06/1981']]] }
+        ]
+      )
+    end
+
+    context 'when the caller left out part of the birth date' do
+      let(:params) { super().merge(jour_date_naissance: nil, mois_date_naissance: nil) }
+
+      it 'prints the parts it was given' do
+        identite = pdf_payload['sections'].last['entrees'].first
+
+        expect(identite).to include(['Date de naissance', '1981'])
+      end
+    end
+
+    context 'when the caller named the commune instead of its COG code' do
+      let(:params) do
+        super().merge(code_cog_insee_commune_naissance: nil, nom_commune_naissance: 'LA ROCHELLE', code_cog_insee_departement_naissance: '17')
+      end
+
+      it 'prints the commune name and the department as sent' do
+        identite = pdf_payload['sections'].last['entrees'].first
+
+        expect(identite).to include(['Nom de la commune de naissance', 'LA ROCHELLE'], ['Code INSEE du département de naissance', '17'])
+        expect(identite.map(&:first)).not_to include('Code INSEE de la commune de naissance')
+      end
+    end
+
+    context 'when the caller holds none of the scopes' do
+      let(:scopes) { [] }
+
+      it 'still attests: the identity is the one the caller sent' do
+        expect(verification_payload['sections'].pluck('titre'))
+          .to eq(['Résultat de la consultation', "Identité de l'usager transmise lors de l'appel"])
+      end
+    end
+
+    context 'when the failure is not a missing person' do
+      let(:no_result) { nil }
+
+      it 'attests nothing' do
+        expect(proof.verification_token).to be_nil
+      end
+    end
+  end
+
+  def failed_context
+    @failed_context ||= build_failed_context
+  end
+
+  def build_failed_context
+    context = Interactor::Context.build(**context_args, bundled_data: nil, params:, no_result:)
+    context.fail!
+  rescue Interactor::Failure
+    context
   end
 
   def args_for(data)

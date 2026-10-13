@@ -35,21 +35,42 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
     ['annee_calcul', 'Année de calcul']
   ].freeze
 
+  IDENTITE_TRANSMISE = (IDENTITE + [
+    ['code_cog_insee_departement_naissance', 'Code INSEE du département de naissance'],
+    ['code_cog_insee_pays_naissance', 'Code INSEE du pays de naissance'],
+    ['nom_commune_naissance', 'Nom de la commune de naissance']
+  ]).freeze
+
+  IDENTITE_TRANSMISE_MINIMISEE = [
+    IDENTITE_MINIMISEE.first,
+    ['mois_annee_naissance', 'Date de naissance']
+  ].freeze
+
   protected
+
+  def attestable?
+    super || no_result.present?
+  end
 
   def document
     'participation_familiale_eaje'
   end
 
   def title
+    return 'ATTESTATION DE CONSULTATION SANS RÉSULTAT' if no_result
+
     'ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)'
   end
 
   def source
+    return no_result[:origin] if no_result
+
     'CNAF'
   end
 
   def verification_sections
+    return no_result_sections(IDENTITE_TRANSMISE_MINIMISEE) if no_result
+
     [
       allocataires_section(IDENTITE_MINIMISEE),
       section('Enfants', 'cnav_participation_familiale_eaje_enfants') do
@@ -60,6 +81,8 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
   end
 
   def attestation_sections
+    return no_result_sections(IDENTITE_TRANSMISE) if no_result
+
     [
       allocataires_section(IDENTITE),
       section('Enfants', 'cnav_participation_familiale_eaje_enfants') do
@@ -71,6 +94,45 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
   end
 
   private
+
+  def no_result
+    context.no_result
+  end
+
+  def no_result_sections(identite)
+    [
+      { 'titre' => 'Résultat de la consultation', 'entrees' => [resultat_consultation] },
+      { 'titre' => "Identité de l'usager transmise lors de l'appel", 'entrees' => [rows(identite, identite_transmise)] }
+    ]
+  end
+
+  def resultat_consultation
+    [
+      ['Erreur', no_result[:error].title],
+      ['Détail', no_result[:error].detail],
+      ['Origine', no_result[:origin]],
+      ["Date et heure de l'appel", appele_le]
+    ]
+  end
+
+  def appele_le
+    @appele_le ||= Time.current.in_time_zone('Europe/Paris').strftime('%d/%m/%Y à %H:%M')
+  end
+
+  def identite_transmise
+    params = context.params.to_h.stringify_keys
+
+    params.merge(
+      'prenoms' => Array(params['prenoms']).join(' '),
+      'date_naissance' => date_parts(*params.values_at('jour_date_naissance', 'mois_date_naissance', 'annee_date_naissance')),
+      'mois_annee_naissance' => date_parts(*params.values_at('mois_date_naissance', 'annee_date_naissance')),
+      'sexe' => params['sexe_etat_civil']
+    )
+  end
+
+  def date_parts(*parts)
+    parts.compact_blank.map { |part| part.to_s.rjust(2, '0') }.join('/')
+  end
 
   def allocataires_section(table)
     section('Allocataires', 'cnav_participation_familiale_eaje_allocataires') do

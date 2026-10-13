@@ -127,8 +127,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
                 expect(json['meta']['attestation_pdf_url_expires_at'])
                   .to be_between(4.minutes.from_now.to_i, 6.minutes.from_now.to_i)
 
-                pdf_token = json['links']['attestation_pdf'][%r{/api/attestations/(.+)\.pdf\z}, 1]
-                payload = AttestationToken.read(pdf_token, purpose: AttestationToken::PDF_PURPOSE)
+                payload = pdf_payload_from(json)
 
                 expect(payload['document']).to eq('participation_familiale_eaje')
                 expect(payload['titre']).to eq('ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)')
@@ -210,6 +209,38 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
             run_test!
 
+            context 'with X-Generate-Proof: pdf' do
+              let(:'X-Generate-Proof') { 'pdf' }
+
+              run_test! do |response|
+                json = JSON.parse(response.body)
+
+                expect(json['errors'].first['title']).to eq('Allocataire non référencé')
+                expect(json['meta'].keys)
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+                expect(json['links'].keys).to contain_exactly('attestation_pdf')
+
+                payload = pdf_payload_from(json)
+
+                expect(payload['titre']).to eq('ATTESTATION DE CONSULTATION SANS RÉSULTAT')
+                expect(payload['source']).to eq('RNCPS')
+                expect(payload['verification_token']).to eq(json['meta']['verification_url'].split('/').last)
+                expect(AttestationToken.visual_code(payload['verification_token'])).to eq(json['meta']['verification_code'])
+              end
+            end
+
+            context 'with X-Generate-Proof: proof-only' do
+              let(:'X-Generate-Proof') { 'proof-only' }
+
+              run_test! do |response|
+                json = JSON.parse(response.body)
+
+                expect(json['errors'].first['title']).to eq('Allocataire non référencé')
+                expect(json['meta'].keys).to contain_exactly('verification_url', 'verification_code')
+                expect(json).not_to have_key('links')
+              end
+            end
+
             context 'with X-Generate-Proof on a mocked not found (staging)' do
               before { allow(Rails.env).to receive(:staging?).and_return(true) }
 
@@ -232,5 +263,13 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         common_network_error_request(CNAV::ParticipationFamilialeEAJE)
       end
     end
+  end
+
+  def pdf_token_from(json)
+    json['links']['attestation_pdf'][%r{/api/attestations/(.+)\.pdf\z}, 1]
+  end
+
+  def pdf_payload_from(json)
+    AttestationToken.read(pdf_token_from(json), purpose: AttestationToken::PDF_PURPOSE)
   end
 end

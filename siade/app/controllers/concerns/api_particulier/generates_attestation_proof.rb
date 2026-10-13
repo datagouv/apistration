@@ -39,6 +39,18 @@ module APIParticulier::GeneratesAttestationProof
     payload
   end
 
+  def render_errors(organizer)
+    return super if organizer.verification_url.blank?
+
+    super(organizer, proof_members)
+  end
+
+  def proof_members
+    members = { 'meta' => proof_meta }
+    members['links'] = { 'attestation_pdf' => pdf_link } if pdf_mode?
+    members
+  end
+
   def mocked_error?
     organizer.mocked_data.present? && organizer.mocked_data[:status] != 200
   end

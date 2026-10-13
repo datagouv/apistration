@@ -10,7 +10,19 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
     no_kids_under_7_error! unless kids_under_7?
   end
 
+  protected
+
+  def fail_with_error!(error)
+    context.no_result = { error:, origin: no_result_origin } if error.kind == :not_found
+
+    super
+  end
+
   private
+
+  def no_result_origin
+    sub_provider_error_from_rncps? ? 'RNCPS' : regime
+  end
 
   def no_kids_under_7_error!
     MonitoringService.instance.track('info', 'Potential unauthorized API use: CNAV EAJE: allocataire found but no kids under 7')

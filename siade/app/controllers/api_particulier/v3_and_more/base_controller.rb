@@ -27,9 +27,9 @@ class APIParticulier::V3AndMore::BaseController < APIController
     end
   end
 
-  def render_errors(organizer)
+  def render_errors(organizer, extra_payload = {})
     render content_type: content_type_header,
-      json:         ::ErrorsSerializer.new(organizer.errors).as_json,
+      json:         ::ErrorsSerializer.new(organizer.errors).as_json.merge(extra_payload),
       status:       extract_http_code(organizer)
   end
 
