@@ -6,6 +6,10 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Every exception carries the top-level `meta` and `links` of the error body
+  (empty hash when absent), from the shared commons (SPECS.md §6.1).
+
 ## [0.5.0] - 2026-09-07
 
 ### Added

@@ -296,6 +296,29 @@ describe('ClientBase', () => {
       });
     }
 
+    it('carries the top-level meta and links of the error body', async () => {
+      globalThis.fetch = mockFetch(404, {
+        errors: [{ code: '23003' }],
+        meta: { verification_code: '3F2A-91C0-7B' },
+        links: { attestation_pdf: 'https://x.test/a.pdf' },
+      });
+
+      const error = await new TestClient().get('/v3/test/endpoint').catch((e) => e);
+
+      expect(error).toBeInstanceOf(NotFoundError);
+      expect(error.meta).toEqual({ verification_code: '3F2A-91C0-7B' });
+      expect(error.links).toEqual({ attestation_pdf: 'https://x.test/a.pdf' });
+    });
+
+    it('leaves meta and links empty when the error body has none', async () => {
+      globalThis.fetch = mockFetch(404, { errors: [{ code: '23003' }] });
+
+      const error = await new TestClient().get('/v3/test/endpoint').catch((e) => e);
+
+      expect(error.meta).toEqual({});
+      expect(error.links).toEqual({});
+    });
+
     it('network failure → TransportError', async () => {
       globalThis.fetch = vi
         .fn()

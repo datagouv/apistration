@@ -86,9 +86,9 @@ RSpec.describe ApiParticulier::Client do
                    body: { data: {}, links: {}, meta: {} }.to_json)
     end
 
-    def request_identite(**kwargs)
+    def request_identite(nom_naissance: 'DUPONT', **kwargs)
       client.dss.participation_familiale_eaje_identite(
-        nom_naissance: 'DUPONT', prenoms: ['JEAN'], code_cog_insee_pays_naissance: '99100', **kwargs
+        nom_naissance:, prenoms: ['JEAN'], code_cog_insee_pays_naissance: '99100', **kwargs
       )
     end
 
@@ -97,6 +97,23 @@ RSpec.describe ApiParticulier::Client do
 
       expect(a_request(:get, %r{/v3/dss/participation_familiale_eaje/identite})
         .with(headers: { 'X-Generate-Proof' => 'pdf' })).to have_been_made
+    end
+
+    it 'surfaces the proof of a « sans résultat » consultation on the 404' do
+      stub_request(:get, 'https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite')
+        .with(query: hash_including('nomNaissance' => 'INCONNU'))
+        .to_return(status: 404, headers: { 'Content-Type' => 'application/json' },
+                   body: { errors: [{ code: '23003', title: 'Dossier allocataire absent CNAF' }],
+                           meta: { verification_url: 'https://particulier.api.gouv.fr/attestations/verification/tok',
+                                   verification_code: '3F2A-91C0-7B',
+                                   attestation_pdf_url_expires_at: 1_760_364_300 },
+                           links: { attestation_pdf: 'https://particulier.api.gouv.fr/api/attestations/tok.pdf' } }.to_json)
+
+      expect { request_identite(nom_naissance: 'INCONNU', generate_proof: 'pdf') }
+        .to raise_error(ApiParticulier::Commons::NotFoundError) do |e|
+          expect(e.meta['verification_code']).to eq('3F2A-91C0-7B')
+          expect(e.links['attestation_pdf']).to eq('https://particulier.api.gouv.fr/api/attestations/tok.pdf')
+        end
     end
 
     it 'sends no X-Generate-Proof header when the kwarg is omitted' do

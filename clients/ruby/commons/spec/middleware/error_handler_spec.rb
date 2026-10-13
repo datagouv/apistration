@@ -38,6 +38,45 @@ RSpec.describe 'ErrorHandler middleware' do
     end
   end
 
+  describe 'top-level meta and links' do
+    it 'carries them when the error body has them' do
+      stub_request(:get, 'https://example.test/v3/foo')
+        .with(query: hash_including('recipient' => '13002526500013'))
+        .to_return(status: 404,
+                   headers: { 'Content-Type' => 'application/json' },
+                   body: { errors: [{ code: '23003' }],
+                           meta: { verification_code: '3F2A-91C0-7B' },
+                           links: { attestation_pdf: 'https://x.test/a.pdf' } }.to_json)
+
+      expect { client.get('/v3/foo') }.to raise_error(ApiGouvCommons::NotFoundError) do |e|
+        expect(e.meta).to eq('verification_code' => '3F2A-91C0-7B')
+        expect(e.links).to eq('attestation_pdf' => 'https://x.test/a.pdf')
+      end
+    end
+
+    it 'are empty when the error body holds something other than an object' do
+      stub_request(:get, 'https://example.test/v3/foo')
+        .with(query: hash_including('recipient' => '13002526500013'))
+        .to_return(status: 404,
+                   headers: { 'Content-Type' => 'application/json' },
+                   body: { errors: [{ code: '23003' }], meta: 'x', links: [] }.to_json)
+
+      expect { client.get('/v3/foo') }.to raise_error(ApiGouvCommons::NotFoundError) do |e|
+        expect(e.meta).to eq({})
+        expect(e.links).to eq({})
+      end
+    end
+
+    it 'are empty when the error body has none' do
+      stub_error(404, errors: [{ code: '23003' }])
+
+      expect { client.get('/v3/foo') }.to raise_error(ApiGouvCommons::NotFoundError) do |e|
+        expect(e.meta).to eq({})
+        expect(e.links).to eq({})
+      end
+    end
+  end
+
   it 'wraps Faraday::ConnectionFailed as TransportError' do
     stub_request(:get, 'https://example.test/v3/foo')
       .with(query: hash_including('recipient' => '13002526500013'))

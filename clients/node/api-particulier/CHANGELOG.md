@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0
+
+### Added
+- Every error carries the top-level `meta` and `links` of the error body
+  (empty object when absent). With `generate_proof`, a 404 « usager inconnu »
+  on `dss.participation_familiale_eaje_identite` now holds the proof of the
+  consultation sans résultat (`error.meta.verification_url`,
+  `error.meta.verification_code`, `error.links.attestation_pdf`)
+  (SPECS.md §6.1).
+
 ## 0.4.0
 
 ### Added

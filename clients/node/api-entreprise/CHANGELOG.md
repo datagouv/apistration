@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Every error carries the top-level `meta` and `links` of the error body
+  (empty object when absent), from the shared commons (SPECS.md §6.1).
+
 ## 0.5.0
 
 ### Added

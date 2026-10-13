@@ -349,7 +349,14 @@ export abstract class ClientBase {
   ): never {
     const errors = extractErrors(body);
     const ErrorClass = errorClassForStatus(status);
-    const kwargs = { httpStatus: status, errors, method, url };
+    const kwargs = {
+      httpStatus: status,
+      errors,
+      method,
+      url,
+      meta: extractMember(body, 'meta'),
+      links: extractMember(body, 'links'),
+    };
 
     if (ErrorClass === RateLimitError) {
       const retryAfter = computeRetryAfter(rateLimit, errors);
@@ -415,6 +422,13 @@ function extractErrors(body: unknown): JsonApiError[] {
   const errors = record['errors'];
   if (!Array.isArray(errors)) return [];
   return errors as JsonApiError[];
+}
+
+function extractMember(body: unknown, member: 'meta' | 'links'): Record<string, unknown> {
+  if (typeof body !== 'object' || body === null) return {};
+  const value = (body as Record<string, unknown>)[member];
+  if (typeof value !== 'object' || value === null) return {};
+  return value as Record<string, unknown>;
 }
 
 function errorClassForStatus(

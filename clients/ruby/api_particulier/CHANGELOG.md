@@ -6,6 +6,15 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-13
+
+### Added
+- Every exception carries the top-level `meta` and `links` of the error body
+  (empty hash when absent). With `generate_proof:`, a 404 « usager inconnu »
+  on `dss.participation_familiale_eaje_identite` now holds the proof of the
+  consultation sans résultat (`e.meta['verification_url']`,
+  `e.meta['verification_code']`, `e.links['attestation_pdf']`) (SPECS.md §6.1).
+
 ## [0.4.0] - 2026-09-07
 
 ### Added

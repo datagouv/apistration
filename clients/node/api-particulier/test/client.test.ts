@@ -8,6 +8,7 @@ import {
   ProviderUnavailableError,
   TransportError,
   MissingParameterError,
+  NotFoundError,
 } from '../src/index.js';
 
 function mockFetch(
@@ -149,6 +150,27 @@ describe('ApiParticulier Client', () => {
       const [url, opts] = fetchMock.mock.calls[0];
       expect(url).toContain('/v3/dss/participation_familiale_eaje/identite');
       expect(opts.headers['X-Generate-Proof']).toBe('pdf');
+    });
+
+    it('surfaces the proof of a « sans résultat » consultation on the 404', async () => {
+      globalThis.fetch = mockFetch(404, {
+        errors: [{ code: '23003', title: 'Dossier allocataire absent CNAF' }],
+        meta: {
+          verification_url: 'https://particulier.api.gouv.fr/attestations/verification/tok',
+          verification_code: '3F2A-91C0-7B',
+          attestation_pdf_url_expires_at: 1760364300,
+        },
+        links: { attestation_pdf: 'https://particulier.api.gouv.fr/api/attestations/tok.pdf' },
+      });
+      const client = makeClient();
+
+      const error = await client.dss
+        .participation_familiale_eaje_identite({ ...identiteOptions, generate_proof: 'pdf' })
+        .catch((e) => e);
+
+      expect(error).toBeInstanceOf(NotFoundError);
+      expect(error.meta.verification_code).toBe('3F2A-91C0-7B');
+      expect(error.links.attestation_pdf).toBe('https://particulier.api.gouv.fr/api/attestations/tok.pdf');
     });
 
     it('sends no X-Generate-Proof header when the option is omitted', async () => {

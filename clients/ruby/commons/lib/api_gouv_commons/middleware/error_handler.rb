@@ -28,7 +28,8 @@ module ApiGouvCommons
       private
 
       def map_exception(status, env)
-        errors = extract_errors(env.body)
+        body = parse_body(env.body)
+        errors = Array(body['errors'] || body[:errors])
         klass = klass_for(status)
         return nil unless klass
 
@@ -36,7 +37,9 @@ module ApiGouvCommons
           http_status: status,
           errors: errors,
           method: env.method,
-          url: env.url.to_s
+          url: env.url.to_s,
+          meta: member(body, 'meta'),
+          links: member(body, 'links')
         }
 
         if klass == ApiGouvCommons::RateLimitError
@@ -63,12 +66,14 @@ module ApiGouvCommons
         end
       end
 
-      def extract_errors(body)
-        parsed = body
-        parsed = safely_parse(body) if body.is_a?(String)
-        return [] unless parsed.is_a?(Hash)
+      def member(body, name)
+        value = body[name] || body[name.to_sym]
+        value.is_a?(Hash) ? value : {}
+      end
 
-        Array(parsed['errors'] || parsed[:errors])
+      def parse_body(body)
+        parsed = body.is_a?(String) ? safely_parse(body) : body
+        parsed.is_a?(Hash) ? parsed : {}
       end
 
       def safely_parse(body)

@@ -1,13 +1,15 @@
 module ApiGouvCommons
   class Error < StandardError
-    attr_reader :http_status, :errors, :method, :url
+    attr_reader :http_status, :errors, :method, :url, :meta, :links
 
-    def initialize(message = nil, http_status: nil, errors: [], method: nil, url: nil)
+    def initialize(message = nil, http_status: nil, errors: [], method: nil, url: nil, meta: {}, links: {})
       super(message || default_message(http_status, errors))
       @http_status = http_status
       @errors = errors || []
       @method = method
       @url = url
+      @meta = meta || {}
+      @links = links || {}
     end
 
     def first_error

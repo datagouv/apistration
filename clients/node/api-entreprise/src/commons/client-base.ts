@@ -1,4 +1,4 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: bcbca22be83e3b30997f9b0bac8df151016648d8).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: ac1ed361266355c1b9c9d3b381539a1d7c2bdaec).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 import { Configuration, type Logger } from './configuration.js';
@@ -352,7 +352,14 @@ export abstract class ClientBase {
   ): never {
     const errors = extractErrors(body);
     const ErrorClass = errorClassForStatus(status);
-    const kwargs = { httpStatus: status, errors, method, url };
+    const kwargs = {
+      httpStatus: status,
+      errors,
+      method,
+      url,
+      meta: extractMember(body, 'meta'),
+      links: extractMember(body, 'links'),
+    };
 
     if (ErrorClass === RateLimitError) {
       const retryAfter = computeRetryAfter(rateLimit, errors);
@@ -418,6 +425,13 @@ function extractErrors(body: unknown): JsonApiError[] {
   const errors = record['errors'];
   if (!Array.isArray(errors)) return [];
   return errors as JsonApiError[];
+}
+
+function extractMember(body: unknown, member: 'meta' | 'links'): Record<string, unknown> {
+  if (typeof body !== 'object' || body === null) return {};
+  const value = (body as Record<string, unknown>)[member];
+  if (typeof value !== 'object' || value === null) return {};
+  return value as Record<string, unknown>;
 }
 
 function errorClassForStatus(

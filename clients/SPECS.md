@@ -251,6 +251,13 @@ Every exception carries:
 | `errors`      | Raw JSON:API `errors` array (empty for `TransportError`). |
 | `method`      | HTTP verb sent.                                         |
 | `url`         | Fully-resolved URL sent.                                |
+| `meta`        | Top-level `meta` of the body (empty map when absent).   |
+| `links`       | Top-level `links` of the body (empty map when absent).  |
+
+The top-level `meta` and `links` are not the per-error `meta`: an error body
+may carry them next to `errors`, e.g. the proof of a « sans résultat »
+consultation on an EAJE 404 under `X-Generate-Proof` (`meta.verification_url`,
+`meta.verification_code`, `links.attestation_pdf`).
 
 Convenience accessors `first_error_code`, `first_error_title`,
 `first_error_detail`, `first_error_source` MUST be provided for ergonomics.
