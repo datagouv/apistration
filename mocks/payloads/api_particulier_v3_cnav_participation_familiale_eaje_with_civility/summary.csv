@@ -104,15 +104,40 @@ d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNais
   ""links"": { },
   ""meta"": { }
 }"
-,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeCogInseeCommuneNaissance"":""08404"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+,"## Allocataire non référencé
+
+Le RNCPS ne rattache l'usager à aucune caisse éligible.
+
+Avec l'en-tête `X-Generate-Proof`, la réponse porte la preuve de la
+consultation sans résultat, d'origine RNCPS.","{""nomNaissance"":""MARTIN"",""prenoms"":[""CLAIRE""],""anneeDateNaissance"":1985,""moisDateNaissance"":3,""jourDateNaissance"":2,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
   ""errors"": [
     {
-      ""code"": ""37003"",
-      ""title"": ""Dossier allocataire absent CNAV"",
-      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""code"": ""35003"",
+      ""title"": ""Allocataire non référencé"",
+      ""detail"": ""L'allocataire n'est pas référencé auprès des caisses éligibles"",
       ""source"": null,
       ""meta"": {
-        ""provider"": ""CNAV""
+        ""provider"": ""CNAF & MSA""
+      }
+    }
+  ]
+}"
+,"## Dossier allocataire absent CNAF
+
+La CNAF ne connaît pas l'usager. C'est aussi la réponse à toute
+identité qui ne correspond à aucun autre cas de test.
+
+Avec l'en-tête `X-Generate-Proof`, la réponse porte la preuve de la
+consultation sans résultat (`meta.verification_url`,
+`meta.verification_code` et, en mode `pdf`, `links.attestation_pdf`).","{""nomNaissance"":""LEFEBVRE"",""codeCogInseeCommuneNaissance"":""08404"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""23003"",
+      ""title"": ""Dossier allocataire absent CNAF"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAF."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAF""
       }
     }
   ]

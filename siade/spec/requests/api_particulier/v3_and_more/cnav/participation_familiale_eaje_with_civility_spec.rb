@@ -241,19 +241,53 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
               end
             end
 
-            context 'with X-Generate-Proof on a mocked not found (staging)' do
+            context 'with X-Generate-Proof: pdf on a mocked not found (staging)' do
               before { allow(Rails.env).to receive(:staging?).and_return(true) }
 
               let(:nomNaissance) { 'LEFEBVRE' }
               let(:sexeEtatCivil) { 'F' }
               let(:codeCogInseeCommuneNaissance) { '08404' }
+              let(:'X-Generate-Proof') { 'pdf' }
+
+              run_test! do |api_response|
+                json = JSON.parse(api_response.body)
+
+                expect(json['errors'].first['code']).to eq('23003')
+                expect(json['meta'].keys)
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+
+                payload = pdf_payload_from(json)
+
+                expect(payload['titre']).to eq('ATTESTATION DE CONSULTATION SANS RÉSULTAT')
+                expect(payload['source']).to eq('CNAF')
+
+                get "/api/attestations/#{pdf_token_from(json)}.pdf"
+                text = PDF::Reader.new(StringIO.new(response.body)).pages.map(&:text).join(' ').squish
+
+                expect(text).to include('DONNÉES DE TEST')
+                expect(text).to include('Dossier allocataire absent CNAF')
+              end
+            end
+
+            context 'with X-Generate-Proof on the mocked RNCPS not found (staging)' do
+              before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+              let(:nomNaissance) { 'MARTIN' }
+              let(:'prenoms[]') { %w[CLAIRE] }
+              let(:sexeEtatCivil) { 'F' }
+              let(:anneeDateNaissance) { 1985 }
+              let(:moisDateNaissance) { 3 }
+              let(:jourDateNaissance) { 2 }
+              let(:codeCogInseeCommuneNaissance) { '08480' }
               let(:'X-Generate-Proof') { 'proof-only' }
 
               run_test! do |response|
                 json = JSON.parse(response.body)
+                token = json['meta']['verification_url'].split('/').last
+                payload = AttestationToken.read(token, purpose: AttestationToken::VERIFICATION_PURPOSE)
 
-                expect(json['errors'].first['code']).to eq('37003')
-                expect(json).not_to have_key('meta')
+                expect(json['errors'].first['title']).to eq('Allocataire non référencé')
+                expect(payload['sections'].first['entrees'].first).to include(%w[Origine RNCPS])
               end
             end
           end

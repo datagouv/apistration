@@ -96,7 +96,24 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
   private
 
   def no_result
-    context.no_result
+    @no_result ||= context.mocked_data.present? ? mocked_no_result : context.no_result
+  end
+
+  def mocked_no_result
+    return unless context.mocked_data[:status] == 404
+
+    error = context.mocked_data[:payload]['errors'].first
+
+    {
+      error: NotFoundError.new(error['meta']['provider'], error['detail'], title: error['title'], with_identifiant_message: false),
+      origin: mocked_origin(error)
+    }
+  end
+
+  def mocked_origin(error)
+    return 'RNCPS' if error['title'] == CNAV::ValidateResponse::ALLOCATAIRE_NOT_REFERENCED.options[:title]
+
+    error['meta']['provider']
   end
 
   def no_result_sections(identite)

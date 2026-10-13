@@ -52,8 +52,8 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
     expect(result.verification_token).to be_nil
   end
 
-  it 'is a no-op on a mocked provider error, which carries no data to attest' do
-    result = described_class.call(**context_args, mocked_data: { status: 404, payload: { 'errors' => [{ 'code' => '37003' }] } })
+  it 'is a no-op on a mocked provider failure, which says nothing about the person' do
+    result = described_class.call(**context_args, mocked_data: { status: 502, payload: { 'errors' => [{ 'code' => '36999' }] } })
 
     expect(result).to be_a_success
     expect(result.verification_token).to be_nil

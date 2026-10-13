@@ -1,5 +1,13 @@
 ---
-description: "Dossier non trouvé"
+description: |-
+  ## Dossier allocataire absent CNAF
+
+  La CNAF ne connaît pas l'usager. C'est aussi la réponse à toute
+  identité qui ne correspond à aucun autre cas de test.
+
+  Avec l'en-tête `X-Generate-Proof`, la réponse porte la preuve de la
+  consultation sans résultat (`meta.verification_url`,
+  `meta.verification_code` et, en mode `pdf`, `links.attestation_pdf`).
 params:
   nomNaissance: 'LEFEBVRE'
   codeCogInseeCommuneNaissance: '08404'
@@ -10,12 +18,12 @@ payload: |-
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF"
         }
       }
     ]

@@ -200,11 +200,83 @@ d'erreur selon les informations que vous fournirez.
 
   </p>
   </details>
+* [404-rncps.yaml](404-rncps.yaml)
+
+  Status `404`
+
+  ## Allocataire non référencé
+
+Le RNCPS ne rattache l'usager à aucune caisse éligible.
+
+Avec l'en-tête `X-Generate-Proof`, la réponse porte la preuve de la
+consultation sans résultat, d'origine RNCPS.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "MARTIN",
+    "prenoms": [
+      "CLAIRE"
+    ],
+    "anneeDateNaissance": 1985,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 2,
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "35003",
+        "title": "Allocataire non référencé",
+        "detail": "L'allocataire n'est pas référencé auprès des caisses éligibles",
+        "source": null,
+        "meta": {
+          "provider": "CNAF & MSA"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=CLAIRE' -d 'anneeDateNaissance=1985' -d 'moisDateNaissance=3' -d 'jourDateNaissance=2' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
 
-  Dossier non trouvé
+  ## Dossier allocataire absent CNAF
+
+La CNAF ne connaît pas l'usager. C'est aussi la réponse à toute
+identité qui ne correspond à aucun autre cas de test.
+
+Avec l'en-tête `X-Generate-Proof`, la réponse porte la preuve de la
+consultation sans résultat (`meta.verification_url`,
+`meta.verification_code` et, en mode `pdf`, `links.attestation_pdf`).
 
   <details><summary>Paramètres</summary>
   <p>
@@ -228,12 +300,12 @@ d'erreur selon les informations que vous fournirez.
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF"
         }
       }
     ]

@@ -1,0 +1,33 @@
+---
+description: |-
+  ## Allocataire non référencé
+
+  Le RNCPS ne rattache l'usager à aucune caisse éligible.
+
+  Avec l'en-tête `X-Generate-Proof`, la réponse porte la preuve de la
+  consultation sans résultat, d'origine RNCPS.
+params:
+  nomNaissance: 'MARTIN'
+  prenoms:
+    - 'CLAIRE'
+  anneeDateNaissance: 1985
+  moisDateNaissance: 3
+  jourDateNaissance: 2
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "35003",
+        "title": "Allocataire non référencé",
+        "detail": "L'allocataire n'est pas référencé auprès des caisses éligibles",
+        "source": null,
+        "meta": {
+          "provider": "CNAF & MSA"
+        }
+      }
+    ]
+  }
