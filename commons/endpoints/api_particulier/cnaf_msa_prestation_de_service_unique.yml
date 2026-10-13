@@ -173,6 +173,8 @@ fiche:
 
           L'attestation PDF reprend l'ensemble des données délivrées et porte le code de vérification ainsi qu'un **QR code** (également cliquable) menant à la page publique de vérification hébergée par API Particulier. Cette page n'affiche que des données minimisées — identités tronquées, sans adresse, nombre d'enfants, paramètres de calcul complets. L'authenticité se vérifie en comparant le code et les données des deux documents.
 
+          **Usager inconnu.** Quand l'appel aboutit à une `404` (dossier absent de la CNAF ou de la MSA, allocataire non référencé au RNCPS, allocataire non éligible), la réponse conserve ses `errors` et porte, dans `meta` et `links`, la preuve d'une **consultation sans résultat** : l'attestation reprend l'erreur, son origine (caisse ou RNCPS), la date et l'heure de l'appel et l'identité de l'usager telle que vous l'avez transmise ; la page de vérification n'en affiche que la version minimisée. Les autres erreurs (paramètres rejetés, indisponibilité du fournisseur, délai dépassé) ne portent pas de preuve.
+
           Le lien de vérification reste valable **5 ans** après l'émission. Aucune donnée n'est accessible sans le document : le lien chiffré est l'unique clé d'accès.
 
           **Le jeu de champs de l'attestation est figé pour une version d'API donnée.** Ajouter, retirer ou renommer un champ du PDF passe systématiquement par une nouvelle route et une montée de version : le contenu d'une attestation déjà publiée n'évolue jamais en place. Vous pouvez donc traiter le jeu de champs comme un contrat stable pour toute la durée de vie de la version. En revanche, la disposition visuelle des champs peut évoluer sans montée de version.
@@ -180,6 +182,10 @@ fiche:
           C'est une exigence documentaire, pas technique : l'attestation est une pièce justificative, deux documents portant la même version d'API ne peuvent pas présenter des jeux de champs différents — ni pour vous, ni pour la CNAF, ni pour l'agent qui contrôle le document.
 
     historique: |+
+      **13/10/2026 — Preuve de consultation sans résultat**
+
+      Avec l'en-tête `X-Generate-Proof`, une `404` (usager inconnu) sur `/v3/dss/participation_familiale_eaje/identite` porte désormais la preuve de la consultation sans résultat, en plus de ses `errors`. [En savoir plus](#attestation-pdf-verifiable).
+
       **29/07/2026 — Preuve d'attestation vérifiable**
 
       Ajout de l'en-tête `X-Generate-Proof` sur `/v3/dss/participation_familiale_eaje/identite` : lien et code de vérification dans `meta`, lien de téléchargement de l'attestation PDF dans `links`. [En savoir plus](#attestation-pdf-verifiable).

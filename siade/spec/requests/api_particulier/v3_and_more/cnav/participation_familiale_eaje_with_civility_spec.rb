@@ -35,7 +35,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         in: :header,
         required: false,
         schema: { type: :string, enum: %w[proof-only pdf] },
-        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`)."
+        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`). Sur une 404 (usager inconnu), la preuve atteste la consultation sans résultat ; les autres erreurs n'en portent pas."
 
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
@@ -204,6 +204,19 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
           response '404', 'Dossier non trouvé' do
             build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
+
+            example 'application/json', :usager_inconnu_avec_preuve, {
+              errors: [NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false).to_h],
+              meta: {
+                verification_url: 'https://particulier.api.gouv.fr/attestations/verification/eyJfcmFpbHMiOnsiZGF0YSI6IuKApiJ9fQ--3f2a',
+                verification_code: '3F2A-91C0-7B',
+                attestation_pdf_url_expires_at: 1_760_364_300
+              },
+              links: {
+                attestation_pdf: 'https://particulier.api.gouv.fr/api/attestations/eyJfcmFpbHMiOnsiZGF0YSI6IuKApiJ9fQ--9c41.pdf'
+              }
+            }, 'Usager inconnu, avec preuve de consultation (X-Generate-Proof: pdf)',
+              "Avec l'en-tête `X-Generate-Proof`, la 404 « usager inconnu » porte la preuve de la consultation sans résultat : lien et code de vérification, et lien vers l'attestation PDF en mode `pdf`."
 
             schema '$ref' => '#/components/schemas/Error'
 

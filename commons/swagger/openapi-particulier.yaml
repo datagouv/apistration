@@ -5641,7 +5641,9 @@ paths:
           - pdf
         description: 'Demande une preuve d''attestation : `proof-only` ajoute `meta.verification_url`
           et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf`
-          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).'
+          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).
+          Sur une 404 (usager inconnu), la preuve atteste la consultation sans résultat
+          ; les autres erreurs n''en portent pas.'
       security:
       - jwt_bearer_token: []
       description: Participation familiale EAJE
@@ -6004,6 +6006,28 @@ paths:
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité.
+                usager_inconnu_avec_preuve:
+                  value:
+                    errors:
+                    - code: '23003'
+                      title: Dossier allocataire absent CNAF
+                      detail: Le dossier allocataire n'a pas été trouvé auprès de
+                        la CNAF.
+                      source:
+                      meta:
+                        provider: CNAF
+                    meta:
+                      verification_url: https://particulier.api.gouv.fr/attestations/verification/eyJfcmFpbHMiOnsiZGF0YSI6IuKApiJ9fQ--3f2a
+                      verification_code: 3F2A-91C0-7B
+                      attestation_pdf_url_expires_at: 1760364300
+                    links:
+                      attestation_pdf: https://particulier.api.gouv.fr/api/attestations/eyJfcmFpbHMiOnsiZGF0YSI6IuKApiJ9fQ--9c41.pdf
+                  summary: 'Usager inconnu, avec preuve de consultation (X-Generate-Proof:
+                    pdf)'
+                  description: 'Avec l''en-tête `X-Generate-Proof`, la 404 « usager
+                    inconnu » porte la preuve de la consultation sans résultat : lien
+                    et code de vérification, et lien vers l''attestation PDF en mode
+                    `pdf`.'
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
