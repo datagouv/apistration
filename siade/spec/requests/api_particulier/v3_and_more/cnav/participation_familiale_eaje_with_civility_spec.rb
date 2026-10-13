@@ -259,6 +259,59 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
           end
         end
 
+        describe 'with X-Generate-Proof: pdf on an error other than a missing person' do
+          shared_examples 'an error without proof' do
+            run_test! do |response|
+              expect(JSON.parse(response.body).keys).to eq(['errors'])
+            end
+          end
+
+          let(:'X-Generate-Proof') { 'pdf' }
+
+          context 'when the caisse rejects the civility' do
+            before do
+              stub_request(:get, cnav_url('participation_familiale_eaje')).with(query: hash_including({}))
+                .to_return(status: 400, body: '{"errorCode":40013,"error":"Format de la commune de naissance erroné"}')
+            end
+
+            response '422', 'Civilité rejetée', document: false do
+              it_behaves_like 'an error without proof'
+            end
+          end
+
+          context 'when the provider rate-limits the call' do
+            before do
+              stub_request(:get, cnav_url('participation_familiale_eaje')).with(query: hash_including({}))
+                .to_return(status: 429, body: '{}')
+            end
+
+            response '502', 'Fournisseur saturé', document: false do
+              it_behaves_like 'an error without proof'
+            end
+          end
+
+          context 'when the provider answers something unknown' do
+            before do
+              stub_request(:get, cnav_url('participation_familiale_eaje')).with(query: hash_including({}))
+                .to_return(status: 418, body: '{}')
+            end
+
+            response '502', 'Erreur du fournisseur', document: false do
+              it_behaves_like 'an error without proof'
+            end
+          end
+
+          context 'when the provider times out' do
+            before do
+              stub_request(:get, cnav_url('participation_familiale_eaje')).with(query: hash_including({})).to_timeout
+            end
+
+            response '504', "Erreur d'intermédiaire", document: false do
+              it_behaves_like 'an error without proof'
+            end
+          end
+        end
+
         common_provider_errors_request(CNAV::ParticipationFamilialeEAJE)
         common_network_error_request(CNAV::ParticipationFamilialeEAJE)
       end
