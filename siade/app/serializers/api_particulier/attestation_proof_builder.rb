@@ -2,10 +2,8 @@ class APIParticulier::AttestationProofBuilder
   VERIFICATION_VALIDITY = 5.years
   PDF_LINK_VALIDITY = 5.minutes
 
-  def initialize(body, mode:, scopes:, recipient:, habilitation:)
+  def initialize(body, recipient:, habilitation:)
     @body = body
-    @mode = mode
-    @scopes = scopes
     @recipient = recipient
     @habilitation = habilitation
   end
@@ -23,15 +21,11 @@ class APIParticulier::AttestationProofBuilder
   end
 
   def pdf_token
-    @pdf_token ||= build_pdf_token if pdf?
+    @pdf_token ||= build_pdf_token
   end
 
   def pdf_link_expires_at
-    @pdf_link_expires_at ||= PDF_LINK_VALIDITY.from_now.to_i if pdf?
-  end
-
-  def pdf?
-    @mode == 'pdf'
+    @pdf_link_expires_at ||= PDF_LINK_VALIDITY.from_now.to_i
   end
 
   protected
@@ -60,9 +54,7 @@ class APIParticulier::AttestationProofBuilder
     @body['data'] || {}
   end
 
-  def section(titre, scope)
-    return unless @scopes.include?(scope)
-
+  def section(titre)
     entrees = (yield || []).compact.reject(&:empty?)
     return if entrees.empty?
 
