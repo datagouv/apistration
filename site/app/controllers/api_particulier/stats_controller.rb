@@ -1,25 +1,11 @@
 class APIParticulier::StatsController < APIParticulierController
   include PublicStatsPage
 
-  private
+  JSON_COUNT_KEY = 'Nb appels'.freeze
 
-  def data_collection
-    [
-      {
-        name: 'Nombre de pièces justificatives transmises sur les 2 derniers mois',
-        url: 'https://metabase.entreprise.api.gouv.fr/public/question/e6d80db2-e947-4916-a487-4e040fecc511.json',
-        type: 'application/json'
-      },
-      {
-        name: 'Nombre de quotients familiaux transmis sur les 2 derniers mois',
-        url: 'https://metabase.entreprise.api.gouv.fr/public/question/8d977c80-a675-48ea-9d73-294290f6665a.json',
-        type: 'application/json'
-      },
-      {
-        name: 'Nombre de cartes étudiants transmises sur les 2 derniers mois',
-        url: 'https://metabase.entreprise.api.gouv.fr/public/question/a234b04f-26de-4607-b81b-fb7c5ff79b58.json',
-        type: 'application/json'
-      }
-    ]
-  end
+  DATA_COLLECTION = {
+    calls: 'Nombre de pièces justificatives transmises sur les 2 derniers mois',
+    quotient_familial: 'Nombre de quotients familiaux transmis sur les 2 derniers mois',
+    student_status: 'Nombre de cartes étudiants transmises sur les 2 derniers mois'
+  }.freeze
 end

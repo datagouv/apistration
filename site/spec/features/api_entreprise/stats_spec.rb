@@ -59,4 +59,35 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
 
     expect(page).to have_css('.stats-indicator', text: /Appels\s+1\s+-50 %\s+par rapport à la semaine précédente \(2\)/)
   end
+
+  describe 'JSON data collection' do
+    it 'lists the monthly indicators with their URL' do
+      visit stats_path(format: :json)
+
+      expect(JSON.parse(page.body)).to eq([
+        { 'name' => "Nombre d'appels pour une unité légale sur les 2 derniers mois", 'url' => stats_indicator_url(period: 'month', indicator: 'companies', format: :json), 'type' => 'application/json' },
+        { 'name' => "Nombre d'appels totaux sur les 2 derniers mois", 'url' => stats_indicator_url(period: 'month', indicator: 'calls', format: :json), 'type' => 'application/json' },
+        { 'name' => "Nombre d'appels uniques sur les 2 derniers mois", 'url' => stats_indicator_url(period: 'month', indicator: 'unique_calls', format: :json), 'type' => 'application/json' }
+      ])
+    end
+
+    it 'serves each indicator in the former Metabase question format' do
+      log_call('api_entreprise/v3_and_more/insee/unites_legales', timestamp: Time.zone.local(2026, 9, 15, 12))
+      2.times { log_call('api_entreprise/v3_and_more/insee/unites_legales', timestamp: Time.zone.local(2026, 8, 15, 12)) }
+      PublicStatsWarmupJob.perform_now
+
+      visit stats_indicator_path(period: 'month', indicator: 'calls', format: :json)
+
+      expect(JSON.parse(page.body)).to eq([
+        { 'timestamp' => '2026-09-01T00:00:00+02:00', 'count' => 1 },
+        { 'timestamp' => '2026-08-01T00:00:00+02:00', 'count' => 2 }
+      ])
+    end
+
+    it 'answers 404 on an unknown indicator without scheduling any computation' do
+      expect { visit stats_indicator_path(period: 'month', indicator: 'unknown', format: :json) }.not_to have_enqueued_job(PublicStatsWarmupJob)
+
+      expect(page.status_code).to eq(404)
+    end
+  end
 end

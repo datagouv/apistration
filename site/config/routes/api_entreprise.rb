@@ -17,6 +17,7 @@ constraints(APIEntrepriseDomainConstraint.new) do
 
     get '/stats', to: 'stats#index'
     get '/stats/:period', to: 'stats#section', as: :stats_section, constraints: { period: /week|month/ }
+    get '/stats/:period/:indicator', to: 'stats#indicator', as: :stats_indicator, constraints: { period: /week|month/ }
 
     get '/auth/:provider/callback', to: 'sessions#create_from_oauth', constraints: { provider: /proconnect_api_entreprise|proconnect_api_particulier/ }
     get '/auth/failure', to: 'sessions#failure'

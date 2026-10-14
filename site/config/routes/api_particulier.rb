@@ -22,6 +22,7 @@ constraints(APIParticulierDomainConstraint.new) do
 
     get '/stats', to: 'stats#index'
     get '/stats/:period', to: 'stats#section', as: :stats_section, constraints: { period: /week|month/ }
+    get '/stats/:period/:indicator', to: 'stats#indicator', as: :stats_indicator, constraints: { period: /week|month/ }
 
     get '/catalogue', as: :endpoints, to: 'endpoints#index'
     get '/catalogue/*uid/exemple', as: :endpoint_example, to: 'endpoints#example'

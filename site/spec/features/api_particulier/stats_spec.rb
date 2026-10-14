@@ -31,4 +31,16 @@ RSpec.describe 'API Particulier stats', app: :api_particulier do
     expect(page).to have_css('.stats-indicator', text: /^\s*Cartes étudiantes transmises\s+2\b/)
     expect(page).to have_css('.stats-indicator', text: /^\s*Complémentaire santé solidaire\s+1\b/)
   end
+
+  it 'serves each JSON indicator under its former Metabase column name' do
+    log_call('api_particulier/v3_and_more/cnav/quotient_familial_with_civility')
+    PublicStatsWarmupJob.perform_now
+
+    visit api_particulier_stats_indicator_path(period: 'month', indicator: 'quotient_familial', format: :json)
+
+    expect(JSON.parse(page.body)).to eq([
+      { 'timestamp' => '2026-09-01T00:00:00+02:00', 'Nb appels' => 1 },
+      { 'timestamp' => '2026-08-01T00:00:00+02:00', 'Nb appels' => 0 }
+    ])
+  end
 end
