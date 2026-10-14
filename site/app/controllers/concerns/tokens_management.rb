@@ -26,9 +26,20 @@ module TokensManagement
   end
 
   def stats
-    @stats_facade = TokenStatsFacade.new(@token)
-
     render 'shared/tokens/stats'
+  end
+
+  def stats_period
+    @period = params.expect(:period).to_sym
+    @breakdown = TokenStatsFacade.new(@token).status_breakdown(@period)
+
+    render 'shared/tokens/stats_period', layout: false
+  end
+
+  def last_requests
+    @requests = TokenStatsFacade.new(@token).last_requests
+
+    render 'shared/tokens/last_requests', layout: false
   end
 
   def renew

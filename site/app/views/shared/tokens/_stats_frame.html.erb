@@ -1,0 +1,7 @@
+<%# locals: (id:, src:, data: {}) -%>
+<%= turbo_frame_tag id, src:, data: do %>
+  <div class="fr-py-4w fr-grid-row fr-grid-row--center" role="status" aria-live="polite">
+    <%= image_tag('loading.gif', size: '36x36', alt: '') %>
+    <span class="fr-sr-only"><%= t('shared.tokens.stats.loading') %></span>
+  </div>
+<% end %>
