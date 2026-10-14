@@ -2,6 +2,10 @@
   <section class="fr-mt-4w">
     <h2 class="fr-mb-3w"><%= t(".title.#{@query.period}") %></h2>
 
-    <%= render 'shared/stats/indicators', api: @query.api, period: @query.period, indicators: @indicators %>
+    <% if @indicators %>
+      <%= render 'shared/stats/indicators', api: @query.api, period: @query.period, indicators: @indicators %>
+    <% else %>
+      <p class="fr-text--sm"><%= t('.pending') %></p>
+    <% end %>
   </section>
 <% end %>

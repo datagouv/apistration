@@ -63,6 +63,7 @@ fr:
             complementaire_sante_solidaire: Complémentaire Santé
             student_status: Cartes étudiantes transmises
         by_service: Par service
+        pending: Les statistiques de cette période sont en cours de calcul, revenez dans quelques minutes.
     changelogs:
       index:
         title: "Nouveautés / changelog"

@@ -21,10 +21,17 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     expect(page).to have_css("turbo-frame#stats_month[src='#{stats_section_path(period: 'month')}']")
   end
 
+  it 'shows a pending message and schedules the computation while stats are not computed yet' do
+    expect { visit stats_section_path(period: 'week') }.to have_enqueued_job(PublicStatsWarmupJob)
+
+    expect(page).to have_text('en cours de calcul')
+  end
+
   it 'counts helped companies by distinct SIREN' do
     2.times { log_call('api_entreprise/v3_and_more/insee/unites_legales', params: { siren: '123456789' }) }
     log_call('api_entreprise/v3_and_more/insee/unites_legales', params: { siren: '987654321' })
 
+    PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
     expect(page).to have_css('.fr-tile', text: /^\s*2\s+Entreprises aidées/)
@@ -34,6 +41,7 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     log_call('api_entreprise/v3_and_more/insee/unites_legales')
     log_call('api_entreprise/v3_and_more/insee/unites_legales', status: '401')
 
+    PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
     expect(page).to have_css('.fr-tile', text: /^\s*1\s+Appels/)
@@ -43,6 +51,7 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     log_call('api_entreprise/v3_and_more/insee/unites_legales')
     2.times { log_call('api_entreprise/v3_and_more/insee/unites_legales', timestamp: last_week - 1.week) }
 
+    PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
     expect(page).to have_css('.fr-tile', text: /Appels\s+-50 %\s+par rapport à la semaine précédente \(2\)/)

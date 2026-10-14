@@ -1,5 +1,7 @@
 class PublicStatsQuery
+  APIS = %w[api_entreprise api_particulier].freeze
   PERIODS = %w[week month].freeze
+  CACHE_NAMESPACE = 'public_stats'.freeze
 
   INDICATORS = {
     'api_entreprise' => {
@@ -27,9 +29,11 @@ class PublicStatsQuery
   end
 
   def indicators
-    indicators_sql.keys.index_with do |name|
-      { current: counts.dig(true, name).to_i, previous: counts.dig(false, name).to_i }
-    end
+    Rails.cache.read(cache_key, namespace: CACHE_NAMESPACE)
+  end
+
+  def compute
+    indicators || Rails.cache.write(cache_key, computed_indicators, namespace: CACHE_NAMESPACE, expires_in: 2.public_send(period))
   end
 
   def current_range
@@ -41,6 +45,12 @@ class PublicStatsQuery
   end
 
   private
+
+  def computed_indicators
+    indicators_sql.keys.index_with do |name|
+      { current: counts.dig(true, name).to_i, previous: counts.dig(false, name).to_i }
+    end
+  end
 
   def counts
     @counts ||= api_calls
@@ -76,5 +86,9 @@ class PublicStatsQuery
 
   def period_start
     @now.public_send("beginning_of_#{period}")
+  end
+
+  def cache_key
+    [api, period, period_start.to_date.iso8601, Digest::SHA256.hexdigest(INDICATORS.fetch(api).to_s).first(8)]
   end
 end

@@ -19,6 +19,7 @@ RSpec.describe 'API Particulier stats', app: :api_particulier do
     log_call('api_particulier/v2/mesri/student_status')
     log_call('api_particulier/v2/cnous/student_scholarship')
 
+    PublicStatsWarmupJob.perform_now
     visit api_particulier_stats_section_path(period: 'month')
 
     expect(page).to have_css('h2', text: 'Sur les 30 derniers jours')

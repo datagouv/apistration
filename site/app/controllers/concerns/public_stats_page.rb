@@ -10,6 +10,8 @@ module PublicStatsPage
     @query = PublicStatsQuery.new(namespace, params.expect(:period))
     @indicators = @query.indicators
 
+    PublicStatsWarmupJob.perform_later if @indicators.nil?
+
     render 'shared/stats/section', layout: false
   end
 end
