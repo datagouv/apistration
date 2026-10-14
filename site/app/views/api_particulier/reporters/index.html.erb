@@ -14,4 +14,73 @@
   </ul>
 </p>
 
-<%= render partial: 'shared/metabase', locals: { metabase_url: @datapasses_for_group_url, height: '1000px' } %>
+<p class="fr-text--sm">
+  Demandes soumises au moins une fois, de la plus récemment mise à jour à la plus ancienne.
+</p>
+
+<div class="fr-callout fr-mb-3w">
+  <p class="fr-callout__text fr-text--sm">
+    Cette liste diffère de l'ancienne liste DataPass :
+  </p>
+  <ul class="fr-text--sm">
+    <li>le statut est celui de l'habilitation : une habilitation validée en cours de mise à jour sur DataPass reste « Validée » ;</li>
+    <li>les refus antérieurs à décembre 2023 et les demandes archivées sur DataPass n'y figurent pas toutes ;</li>
+    <li>les brouillons soumis au moins une fois y figurent ;</li>
+    <li>il n'y a pas de date de dernière soumission : la première soumission et la dernière mise à jour la remplacent.</li>
+  </ul>
+</div>
+
+<div class="fr-table fr-table--bordered">
+  <div class="fr-table__wrapper">
+    <div class="fr-table__container">
+      <div class="fr-table__content">
+        <table>
+          <caption>
+            <%= pluralize(@authorization_requests.total_count, 'demande', plural: 'demandes') %>
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">DataPass</th>
+              <th scope="col">Statut</th>
+              <th scope="col">Première soumission</th>
+              <th scope="col">Dernière mise à jour</th>
+              <th scope="col">Organisation</th>
+              <th scope="col">Intitulé</th>
+              <th scope="col">Données</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @authorization_requests.each do |authorization_request| %>
+              <tr id="<%= dom_id(authorization_request) %>" class="authorization-request">
+                <td>
+                  <% if authorization_request.public_id.present? %>
+                    <%= external_link_to "##{authorization_request.external_id}", datapass_v2_public_authorization_request_url(authorization_request) %>
+                  <% else %>
+                    <%= "##{authorization_request.external_id}" if authorization_request.external_id.present? %>
+                  <% end %>
+                </td>
+                <td><%= reporter_authorization_request_status_badge(authorization_request) %></td>
+                <td><%= l(authorization_request.first_submitted_at, format: :compact) %></td>
+                <td><%= l(authorization_request.last_update, format: :compact) if authorization_request.last_update %></td>
+                <td><%= render partial: 'shared/authorization_requests/organization', locals: { authorization_request: } %></td>
+                <td><%= authorization_request.intitule %></td>
+                <td class="fr-text--xs">
+                  <% if authorization_request.scopes.size > 4 %>
+                    <details>
+                      <summary><%= authorization_request.scopes.size %> données</summary>
+                      <%= authorization_request.scopes.join(', ') %>
+                    </details>
+                  <% else %>
+                    <%= authorization_request.scopes.join(', ') %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= paginate @authorization_requests %>

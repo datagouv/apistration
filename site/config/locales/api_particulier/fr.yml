@@ -548,6 +548,14 @@ fr:
     reporters:
       index:
         page_title: ""
+        status:
+          draft: Brouillon
+          submitted: Soumise
+          changes_requested: Demande de modifications
+          validated: Validée
+          refused: Refusée
+          revoked: Révoquée
+          archived: Archivée
   beta:
     label: Version beta
     title: Cette API est disponible dans une version non-définitive
