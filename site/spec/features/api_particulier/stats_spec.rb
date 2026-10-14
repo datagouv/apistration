@@ -26,9 +26,9 @@ RSpec.describe 'API Particulier stats', app: :api_particulier do
     visit api_particulier_stats_section_path(period: 'month')
 
     expect(page).to have_css('h2', text: 'Sur le dernier mois')
-    expect(page).to have_css('.fr-tile', text: /^\s*5\s+Pièces justificatives transmises/)
-    expect(page).to have_css('.fr-tile', text: /^\s*2\s+Quotients familiaux transmis/)
-    expect(page).to have_css('.fr-tile', text: /^\s*2\s+Cartes étudiantes transmises/)
-    expect(page).to have_css('.fr-tile', text: /^\s*1\s+Complémentaire santé solidaire/)
+    expect(page).to have_css('.stats-indicator', text: /^\s*Pièces justificatives transmises\s+5\b/)
+    expect(page).to have_css('.stats-indicator', text: /^\s*Quotients familiaux transmis\s+2\b/)
+    expect(page).to have_css('.stats-indicator', text: /^\s*Cartes étudiantes transmises\s+2\b/)
+    expect(page).to have_css('.stats-indicator', text: /^\s*Complémentaire santé solidaire\s+1\b/)
   end
 end

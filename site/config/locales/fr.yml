@@ -64,7 +64,6 @@ fr:
             quotient_familial: Quotients familiaux transmis
             complementaire_sante_solidaire: Complémentaire santé solidaire
             student_status: Cartes étudiantes transmises
-        by_service: Par service
         pending: Les statistiques de cette période sont en cours de calcul, revenez dans quelques minutes.
     changelogs:
       index:

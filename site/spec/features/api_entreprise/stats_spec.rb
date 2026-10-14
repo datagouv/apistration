@@ -36,7 +36,7 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
-    expect(page).to have_css('.fr-tile', text: /^\s*3\s+Entreprises aidées/)
+    expect(page).to have_css('.stats-indicator', text: /^\s*Entreprises aidées\s+3\b/)
   end
 
   it 'ignores technical and rejected calls' do
@@ -47,7 +47,7 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
-    expect(page).to have_css('.fr-tile', text: /^\s*1\s+Appels/)
+    expect(page).to have_css('.stats-indicator', text: /^\s*Appels\s+1\b/)
   end
 
   it 'compares with the previous week' do
@@ -57,6 +57,6 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
-    expect(page).to have_css('.fr-tile', text: /Appels\s+-50 %\s+par rapport à la semaine précédente \(2\)/)
+    expect(page).to have_css('.stats-indicator', text: /Appels\s+1\s+-50 %\s+par rapport à la semaine précédente \(2\)/)
   end
 end

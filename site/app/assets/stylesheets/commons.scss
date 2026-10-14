@@ -83,3 +83,13 @@ summary {
   height: 100px;
   margin: 20px;
 }
+.stats-indicator {
+  height: 100%;
+  border: 1px solid var(--border-default-grey);
+  background-color: var(--background-default-grey);
+}
+
+.stats-indicator--headline {
+  border-color: var(--border-plain-blue-france);
+  background-color: var(--background-alt-blue-france);
+}

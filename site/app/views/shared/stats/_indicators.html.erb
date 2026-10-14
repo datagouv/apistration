@@ -1,17 +1,6 @@
 <%# locals: (api:, period:, indicators:) -%>
-<% (headline_name, headline_values), *by_service = indicators.to_a %>
 <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
-  <%= render 'shared/stats/indicator', api:, period:, name: headline_name, values: headline_values, width: 12 %>
+  <% indicators.each_with_index do |(name, values), index| %>
+    <%= render 'shared/stats/indicator', api:, period:, name:, values:, count: indicators.size, headline: index.zero? %>
+  <% end %>
 </div>
-
-<% if api == 'api_particulier' %>
-  <h3 class="fr-h5"><%= t('shared.stats.section.by_service') %></h3>
-<% end %>
-
-<% by_service.each_slice(2) do |row| %>
-  <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
-    <% row.each do |name, values| %>
-      <%= render 'shared/stats/indicator', api:, period:, name:, values:, width: 6 %>
-    <% end %>
-  </div>
-<% end %>
