@@ -38,7 +38,30 @@ RSpec.shared_examples 'an authorization request mailer' do |options = {}|
       end
 
       describe 'when there is a token' do
-        let(:authorization_request) { create(:authorization_request, :with_all_contacts, :with_tokens, scopes: ['entreprises']) }
+        let(:authorization_request) { create(:authorization_request, :with_all_contacts, :with_tokens, scopes: ['unites_legales_etablissements_insee']) }
+
+        before do
+          stub_request(:post, "#{DataPass::BASE_URL}/api/oauth/token").to_return(
+            status: 200,
+            headers: { 'Content-Type' => 'application/json' },
+            body: { access_token: 'test_data_pass_access_token' }.to_json
+          )
+          stub_request(:get, %r{#{Regexp.escape(DataPass::BASE_URL)}/api/v1/definitions/})
+            .to_return(
+              status: 200,
+              headers: { 'Content-Type' => 'application/json' },
+              body: {
+                'scopes' => [
+                  {
+                    'value' => 'unites_legales_etablissements_insee',
+                    'name' => 'Data unités légales',
+                    'group' => 'Informations générales',
+                    'provider' => 'INSEE'
+                  }
+                ]
+              }.to_json
+            )
+        end
 
         it 'display scopes' do
           expect(subject.html_part.decoded).to include('Cette habilitation donne accès aux API suivantes')

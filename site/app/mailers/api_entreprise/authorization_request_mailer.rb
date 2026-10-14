@@ -3,6 +3,8 @@ class APIEntreprise::AuthorizationRequestMailer < APIEntrepriseMailer
 
   include ExternalUrlHelper
 
+  helper :scope
+
   %w[
     embarquement_demande_refusee
     update_embarquement_demande_refusee
@@ -20,9 +22,8 @@ class APIEntreprise::AuthorizationRequestMailer < APIEntrepriseMailer
     update_demande_recue
   ].each do |method|
     send('define_method', method) do |args|
-      @all_scopes = I18n.t('api_entreprise.tokens.token.scope')
       @authorization_request = args[:authorization_request]
-      @authorization_request_scopes = @authorization_request.scopes.map(&:to_sym).presence
+      @authorization_request_scopes = @authorization_request.scopes.presence
       @authorization_request_datapass_url = datapass_authorization_request_url(@authorization_request)
 
       @full_name_demandeur = @authorization_request.demandeur.full_name
