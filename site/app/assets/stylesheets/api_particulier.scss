@@ -5,6 +5,7 @@
  *= require dsfr-utility
  *= require dsfr-corrections
  *= require commons
+ *= require_tree ./vendor
  *= require_self
  *= require_tree ./components
  *= require_tree ./shared/pages
