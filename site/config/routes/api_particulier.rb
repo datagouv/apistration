@@ -21,6 +21,7 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/attestations/verification/:token', to: 'attestations#show', as: :attestation_verification
 
     get '/stats', to: 'stats#index'
+    get '/stats/:period', to: 'stats#section', as: :stats_section, constraints: { period: /week|month/ }
 
     get '/catalogue', as: :endpoints, to: 'endpoints#index'
     get '/catalogue/*uid/exemple', as: :endpoint_example, to: 'endpoints#example'

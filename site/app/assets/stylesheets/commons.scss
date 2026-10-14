@@ -62,25 +62,8 @@ summary {
   display: inline-table;
 }
 
-.iframe-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  height: 0;
-}
-
 .newsletter-iframe-container {
   min-height: 344px;
-}
-
-.responsive-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 102%;
 }
 
 .hidden {

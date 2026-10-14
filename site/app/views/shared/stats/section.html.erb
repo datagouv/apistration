@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "stats_#{@query.period}" do %>
+  <section class="fr-mt-4w">
+    <h2 class="fr-mb-3w"><%= t(".title.#{@query.period}") %></h2>
+
+    <%= render 'shared/stats/indicators', api: @query.api, period: @query.period, indicators: @indicators %>
+  </section>
+<% end %>

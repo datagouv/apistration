@@ -1,0 +1,23 @@
+<%# locals: (api:, period:, name:, values:, width:) -%>
+<%
+  current, previous = values.values_at(:current, :previous)
+  evolution = previous.zero? ? nil : ((current - previous) * 100.0 / previous)
+%>
+<div class="fr-col-12 fr-col-md-<%= width %>">
+  <div class="fr-tile fr-tile--sm">
+    <div class="fr-tile__body">
+      <p class="fr-tile__title fr-display--xs"><%= number_with_delimiter(current) %></p>
+      <p class="fr-tile__detail"><%= t("shared.stats.section.indicators.#{api}.#{name}") %></p>
+      <% if evolution %>
+        <p class="fr-mt-1w fr-mb-0">
+          <span class="fr-badge fr-badge--sm fr-badge--no-icon <%= evolution.negative? ? 'fr-badge--error' : 'fr-badge--success' %>">
+            <%= number_to_percentage(evolution, precision: 1, format: '%n %', strip_insignificant_zeros: true).then { |p| evolution.negative? ? p : "+#{p}" } %>
+          </span>
+          <span class="fr-text--xs">
+            <%= t("shared.stats.section.evolution.#{period}", previous: number_with_delimiter(previous)) %>
+          </span>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

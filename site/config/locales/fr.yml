@@ -40,6 +40,29 @@ fr:
           error:
             title: Vous n'avez pas les droits pour accéder à cette page.
   shared:
+    stats:
+      index:
+        title: "Statistiques %{name}"
+        loading: Chargement des statistiques
+      section:
+        title:
+          week: Sur les 7 derniers jours
+          month: Sur les 30 derniers jours
+        evolution:
+          week: "par rapport à la semaine précédente (%{previous})"
+          month: "par rapport au mois précédent (%{previous})"
+        indicators:
+          api_entreprise:
+            companies: Entreprises aidées
+            calls: Appels
+            unique_calls: Informations non redemandées
+          api_particulier:
+            calls: Pièces justificatives transmises
+            quotient_familial: Quotients familiaux transmis
+            tax_notice: Avis d'impositions transmis
+            complementaire_sante_solidaire: Complémentaire Santé
+            student_status: Cartes étudiantes transmises
+        by_service: Par service
     changelogs:
       index:
         title: "Nouveautés / changelog"

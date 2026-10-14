@@ -1,12 +1,5 @@
 class APIEntreprise::StatsController < APIEntrepriseController
-  def index
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: data_collection
-      end
-    end
-  end
+  include PublicStatsPage
 
   private
 
