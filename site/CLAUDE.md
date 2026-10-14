@@ -60,6 +60,29 @@ organizer qui se termine par l'interactor `Admin::TrackActivity`.
 - Garde-fou : `spec/organizers/application_organizer_spec.rb` échoue si un
   organizer `Admin::` ne se termine pas par `Admin::TrackActivity`.
 
+## Security events (CISRT)
+
+Les events envoyés au CISRT dans les logs logstash sont déclarés dans
+`config/security_events.yml` (lien vers `commons/security_events.yml`).
+Comme pour `Admin::TrackActivity`, ils sont émis par un organizer, jamais
+depuis un contrôleur ni un modèle.
+
+- L'organizer inclut `SecurityEvent::Tracking`, déclare
+  `tracks_security_event '<domaine>.<objet>.<action>', target: :<clé du
+  contexte>` et termine par `SecurityEvent::Track` (juste avant
+  `Admin::TrackActivity` pour un organizer admin).
+- Les interactors posent des données métier dans le contexte ; l'organizer
+  choisit ce qui part dans les details (`details:`,
+  `details_from_context:`), uniquement des clés déclarées au catalogue.
+- `failures: true` émet aussi en cas d'échec, avec `outcome: denied` et
+  le message d'échec comme `reason`.
+- L'acteur par défaut est l'utilisateur de la requête (posé dans
+  `ApplicationController`) ; `actor:` prend un lambda sinon.
+- Garde-fou : `spec/lib/security_event/catalog_spec.rb` échoue si un event
+  tracké est absent du catalogue (et inversement), si un organizer ne
+  termine pas par `SecurityEvent::Track`, ou si `SecurityEvent.emit` est
+  appelé ailleurs que dans `SecurityEvent::Track`.
+
 ## Accessibilité (RGAA / DSFR)
 
 - Lien ouvrant un nouvel onglet : toujours `external_link_to`

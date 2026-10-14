@@ -1,0 +1,42 @@
+version: 1
+
+domains:
+  - auth
+  - access
+  - token
+  - habilitation
+  - delegation
+  - api
+  - integration
+  - notification
+  - admin
+
+actor_roles:
+  - admin
+  - editor
+  - user
+  - anonymous
+
+common_details:
+  - outcome
+  - impersonated_by
+  - catalog_error
+
+events:
+  auth.login.attempted:
+    criticality: notable
+    services: [site]
+    description: Tentative de connexion à l'espace usagers ou admin. details.outcome denied si provider invalide, données ProConnect absentes ou MFA manquante
+    actor_types: [user, anonymous]
+    target_type: user
+    details: [method, idp, mfa, acr, reason]
+    since: 2026-10
+
+  auth.session.closed:
+    criticality: info
+    services: [site]
+    description: Déconnexion, ou expiration de session par inactivité ou durée maximale atteinte
+    actor_types: [user]
+    target_type: user
+    details: [reason]
+    since: 2026-10

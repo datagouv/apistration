@@ -83,6 +83,12 @@ locale (la branche distante est conservée) et toutes ses bases Postgres.
 - `commons/swagger/` — fichiers OpenAPI générés (ne pas éditer à la main,
   régénérer via `siade/bin/generate_swagger.sh`).
 - `commons/data/authorizations.yml` — scopes d'accès API.
+- `commons/security_events.yml` — catalogue des security events envoyés
+  au CISRT (SOC DINUM) dans les logs logstash, sous la clé
+  `security_events`. Un event non déclaré ne peut pas être émis
+  (`SecurityEvent.emit`). C'est un contrat avec le CISRT : toute PR qui
+  modifie ce fichier doit être signalée au CISRT, qui écrit ses règles
+  de détection à partir de lui.
 
 ## Outils partagés
 
