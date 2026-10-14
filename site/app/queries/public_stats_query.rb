@@ -5,20 +5,17 @@ class PublicStatsQuery
 
   INDICATORS = {
     'api_entreprise' => {
-      companies: "COUNT(DISTINCT params->'siren')",
+      companies: "COUNT(DISTINCT COALESCE(params->>'siren', LEFT(params->>'siret', 9)))",
       calls: 'COUNT(*)',
       unique_calls: 'COUNT(DISTINCT path)'
     },
     'api_particulier' => {
       calls: 'COUNT(*)',
-      quotient_familial: "COUNT(*) FILTER (WHERE controller IN ('api_particulier/v2/cnaf/quotient_familial', 'api_particulier/v2/cnaf/quotient_familial_v2'))",
-      tax_notice: "COUNT(*) FILTER (WHERE controller IN ('api_particulier/v2/dgfip/svair', 'api_particulier/v2/dgfip/situation_ir'))",
-      complementaire_sante_solidaire: "COUNT(*) FILTER (WHERE controller = 'api_particulier/v2/cnaf/complementaire_sante_solidaire')",
-      student_status: "COUNT(*) FILTER (WHERE controller IN ('api_particulier/v2/mesri/student_status', 'api_particulier/v2/cnous/student_scholarship'))"
+      quotient_familial: "COUNT(*) FILTER (WHERE controller LIKE '%quotient_familial%')",
+      complementaire_sante_solidaire: "COUNT(*) FILTER (WHERE controller LIKE '%complementaire_sante_solidaire%')",
+      student_status: "COUNT(*) FILTER (WHERE controller ~ '/(mesri|cnous)/')"
     }
   }.freeze
-
-  WEEKLY_ONLY_INDICATORS = %i[complementaire_sante_solidaire].freeze
 
   attr_reader :api, :period
 
@@ -53,7 +50,7 @@ class PublicStatsQuery
   end
 
   def counts
-    @counts ||= api_calls
+    @counts ||= data_calls
       .where(timestamp: both_periods_range)
       .group(current_period_sql)
       .pluck(current_period_sql, *indicators_sql.values)
@@ -65,14 +62,13 @@ class PublicStatsQuery
   end
 
   def indicators_sql
-    indicators = INDICATORS.fetch(api)
-    indicators = indicators.except(*WEEKLY_ONLY_INDICATORS) if period == 'month'
-    indicators.transform_values { |sql| Arel.sql(sql) }
+    INDICATORS.fetch(api).transform_values { |sql| Arel.sql(sql) }
   end
 
-  def api_calls
+  def data_calls
     AccessLog
-      .where("split_part(controller, '/', 1) = ?", api)
+      .where('controller ~ ?', "^#{api}/v[0-9]")
+      .where.not('controller LIKE ?', '%/introspect')
       .where.not(status: %w[401 403])
   end
 

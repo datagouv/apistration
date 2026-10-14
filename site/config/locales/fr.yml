@@ -46,8 +46,11 @@ fr:
         loading: Chargement des statistiques
       section:
         title:
-          week: Sur les 7 derniers jours
-          month: Sur les 30 derniers jours
+          week: Sur la dernière semaine
+          month: Sur le dernier mois
+        range:
+          week: "Du %{from} au %{to}"
+          month: "%{month}"
         evolution:
           week: "par rapport à la semaine précédente (%{previous})"
           month: "par rapport au mois précédent (%{previous})"
@@ -59,8 +62,7 @@ fr:
           api_particulier:
             calls: Pièces justificatives transmises
             quotient_familial: Quotients familiaux transmis
-            tax_notice: Avis d'impositions transmis
-            complementaire_sante_solidaire: Complémentaire Santé
+            complementaire_sante_solidaire: Complémentaire santé solidaire
             student_status: Cartes étudiantes transmises
         by_service: Par service
         pending: Les statistiques de cette période sont en cours de calcul, revenez dans quelques minutes.

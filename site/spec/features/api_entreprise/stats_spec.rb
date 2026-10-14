@@ -27,18 +27,21 @@ RSpec.describe 'API Entreprise stats', app: :api_entreprise do
     expect(page).to have_text('en cours de calcul')
   end
 
-  it 'counts helped companies by distinct SIREN' do
-    2.times { log_call('api_entreprise/v3_and_more/insee/unites_legales', params: { siren: '123456789' }) }
-    log_call('api_entreprise/v3_and_more/insee/unites_legales', params: { siren: '987654321' })
+  it 'counts helped companies from both SIREN and SIRET calls' do
+    log_call('api_entreprise/v3_and_more/insee/unites_legales', params: { siren: '123456789' })
+    log_call('api_entreprise/v3_and_more/insee/etablissements', params: { siret: '12345678900011' })
+    log_call('api_entreprise/v3_and_more/insee/etablissements', params: { siret: '98765432100022' })
+    log_call('api_entreprise/v3_and_more/dgfip/attestations_fiscales', params: { siren: '555555555' })
 
     PublicStatsWarmupJob.perform_now
     visit stats_section_path(period: 'week')
 
-    expect(page).to have_css('.fr-tile', text: /^\s*2\s+Entreprises aidées/)
+    expect(page).to have_css('.fr-tile', text: /^\s*3\s+Entreprises aidées/)
   end
 
-  it 'ignores rejected calls' do
+  it 'ignores technical and rejected calls' do
     log_call('api_entreprise/v3_and_more/insee/unites_legales')
+    log_call('api_entreprise/ping_providers')
     log_call('api_entreprise/v3_and_more/insee/unites_legales', status: '401')
 
     PublicStatsWarmupJob.perform_now

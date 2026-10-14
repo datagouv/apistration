@@ -1,9 +1,19 @@
-<%= turbo_frame_tag "stats_#{@query.period}" do %>
+<%
+  period = @query.period
+  range = @query.current_range
+%>
+<%= turbo_frame_tag "stats_#{period}" do %>
   <section class="fr-mt-4w">
-    <h2 class="fr-mb-3w"><%= t(".title.#{@query.period}") %></h2>
+    <h2 class="fr-mb-1v"><%= t(".title.#{period}") %></h2>
+    <p class="fr-text--sm fr-mb-3w">
+      <%= t(".range.#{period}",
+        from: l(range.begin.to_date, format: '%-d %B %Y'),
+        to: l((range.end - 1.day).to_date, format: '%-d %B %Y'),
+        month: l(range.begin.to_date, format: '%B %Y').capitalize) %>
+    </p>
 
     <% if @indicators %>
-      <%= render 'shared/stats/indicators', api: @query.api, period: @query.period, indicators: @indicators %>
+      <%= render 'shared/stats/indicators', api: @query.api, period:, indicators: @indicators %>
     <% else %>
       <p class="fr-text--sm"><%= t('.pending') %></p>
     <% end %>

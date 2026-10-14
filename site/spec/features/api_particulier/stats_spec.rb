@@ -13,19 +13,22 @@ RSpec.describe 'API Particulier stats', app: :api_particulier do
 
   after { Timecop.return }
 
-  it 'counts transmitted documents per service' do
-    log_call('api_particulier/v2/cnaf/quotient_familial_v2')
-    log_call('api_particulier/v2/dgfip/svair')
-    log_call('api_particulier/v2/mesri/student_status')
-    log_call('api_particulier/v2/cnous/student_scholarship')
+  it 'counts transmitted documents per service across API versions' do
+    log_call('api_particulier/v2/cnav/quotient_familial_v2')
+    log_call('api_particulier/v3_and_more/cnav/quotient_familial_with_civility')
+    log_call('api_particulier/v3_and_more/mesri/statut_etudiant_with_ine')
+    log_call('api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility')
+    log_call('api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility')
+    log_call('api_particulier/v2/introspect')
+    log_call('api_particulier/ping_providers')
 
     PublicStatsWarmupJob.perform_now
     visit api_particulier_stats_section_path(period: 'month')
 
-    expect(page).to have_css('h2', text: 'Sur les 30 derniers jours')
-    expect(page).to have_css('.fr-tile', text: /^\s*4\s+Pièces justificatives transmises/)
-    expect(page).to have_css('.fr-tile', text: /^\s*1\s+Quotients familiaux transmis/)
-    expect(page).to have_css('.fr-tile', text: /^\s*1\s+Avis d'impositions transmis/)
+    expect(page).to have_css('h2', text: 'Sur le dernier mois')
+    expect(page).to have_css('.fr-tile', text: /^\s*5\s+Pièces justificatives transmises/)
+    expect(page).to have_css('.fr-tile', text: /^\s*2\s+Quotients familiaux transmis/)
     expect(page).to have_css('.fr-tile', text: /^\s*2\s+Cartes étudiantes transmises/)
+    expect(page).to have_css('.fr-tile', text: /^\s*1\s+Complémentaire santé solidaire/)
   end
 end
