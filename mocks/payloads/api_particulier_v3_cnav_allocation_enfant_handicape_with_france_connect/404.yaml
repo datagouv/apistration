@@ -12,6 +12,7 @@ params:
   codeCogInseeCommuneNaissance: "75101"
   codeCogInseePaysNaissance: "99100"
 status: 404
+declared_error: CNAV::ValidateResponse::FILE_NOT_FOUND_CNAF
 payload: |-
   {
     "errors": [

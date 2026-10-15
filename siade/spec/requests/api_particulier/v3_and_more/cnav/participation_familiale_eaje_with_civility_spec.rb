@@ -216,13 +216,21 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
               let(:nomNaissance) { 'LEFEBVRE' }
               let(:sexeEtatCivil) { 'F' }
               let(:codeCogInseeCommuneNaissance) { '08404' }
-              let(:'X-Generate-Proof') { 'proof-only' }
+              let(:'X-Generate-Proof') { 'pdf' }
 
-              run_test! do |response|
-                json = JSON.parse(response.body)
+              run_test! do |not_found|
+                json = JSON.parse(not_found.body)
 
                 expect(json['errors'].first['code']).to eq('23003')
-                expect(json).not_to have_key('meta')
+                expect(json['meta'].keys)
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_in')
+
+                get URI.parse(json['links']['attestation_pdf']).path
+                text = PDF::Reader.new(StringIO.new(response.body)).pages.map(&:text).join(' ').squish
+
+                expect(text).to include('ATTESTATION DE CONSULTATION SANS RÉSULTAT')
+                expect(text).to include('Origine CNAF')
+                expect(text).to include('DONNÉES DE TEST')
               end
             end
           end
