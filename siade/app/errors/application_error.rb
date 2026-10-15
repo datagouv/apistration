@@ -23,6 +23,13 @@ class ApplicationError
     {}
   end
 
+  attr_reader :attestation
+
+  def attesting(attestation)
+    @attestation = attestation
+    self
+  end
+
   def to_h
     {
       code:,

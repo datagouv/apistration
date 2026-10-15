@@ -200,5 +200,21 @@ RSpec.describe ErrorRegistry do
 
       expect(built_examples(provider_name: 'CNAV').map(&:code)).to contain_exactly('51502', '37560')
     end
+
+    context 'when the declaration names the attestation the error stands for' do
+      before { described_class.register(validator, NotFoundError, provider: 'CNAF', attests: :no_result) }
+
+      it 'hands it to the error' do
+        expect(built_examples(provider_name: 'CNAV').first.attestation).to eq(:no_result)
+      end
+    end
+
+    context 'when the declaration names no attestation' do
+      before { described_class.register(validator, NotFoundError, provider: 'CNAF') }
+
+      it 'leaves the error without attestation' do
+        expect(built_examples(provider_name: 'CNAV').first.attestation).to be_nil
+      end
+    end
   end
 end
