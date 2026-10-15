@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name        = 'api_particulier'
   spec.version     = ApiParticulier::VERSION
   spec.authors     = ['DINUM']
-  spec.email       = ['api-particulier@api.gouv.fr']
+  spec.email       = ['support@particulier.api.gouv.fr']
   spec.summary     = 'Official Ruby client for API Particulier v3'
   spec.description = 'Idiomatic Ruby client for https://particulier.api.gouv.fr — auth, envelope, error normalisation, rate limit.'
   spec.homepage    = 'https://github.com/datagouv/apistration'

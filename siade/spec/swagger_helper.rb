@@ -295,7 +295,7 @@ Lors de votre passage en production :
         termsOfService: 'https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf',
         contact: {
           name: 'Contact API Particulier',
-          email: 'api-particulier@api.gouv.fr',
+          email: 'support@particulier.api.gouv.fr',
           url: 'https://particulier.api.gouv.fr/'
         },
         license: {
@@ -395,7 +395,7 @@ Lors de votre passage en production :
         termsOfService: 'https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf',
         contact: {
           name: 'Contact API Particulier',
-          email: 'api-particulier@api.gouv.fr',
+          email: 'support@particulier.api.gouv.fr',
           url: 'https://particulier.api.gouv.fr/'
         },
         license: {
