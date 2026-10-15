@@ -1,0 +1,12 @@
+<div class="fr-my-4w">
+  <h1><%= t('.title', name: t("#{namespace}.name")) %></h1>
+
+  <% PublicStatsQuery::PERIODS.each do |period| %>
+    <%= turbo_frame_tag "stats_#{period}", src: url_for(action: :section, period:), loading: :lazy do %>
+      <div class="fr-py-4w fr-grid-row fr-grid-row--center" role="status" aria-live="polite">
+        <%= image_tag('loading.gif', size: '36x36', alt: '') %>
+        <span class="fr-sr-only"><%= t('.loading') %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<%# locals: (api:, period:, name:, values:, count:, headline:) -%>
+<%
+  current, previous = values.values_at(:current, :previous)
+  evolution = previous.zero? ? nil : ((current - previous) * 100.0 / previous)
+%>
+<div class="fr-col-12 fr-col-md-6 fr-col-lg-<%= 12 / count %>">
+  <div class="stats-indicator fr-p-3w <%= 'stats-indicator--headline' if headline %>">
+    <p class="fr-text--sm fr-text--bold fr-mb-1w"><%= t("shared.stats.section.indicators.#{api}.#{name}") %></p>
+    <p class="fr-display--xs fr-mb-1w"><%= number_with_delimiter(current) %></p>
+    <% if evolution %>
+      <p class="fr-text--xs fr-mb-0">
+        <span class="fr-badge fr-badge--sm fr-badge--no-icon <%= evolution.negative? ? 'fr-badge--error' : 'fr-badge--success' %>">
+          <%= number_to_percentage(evolution, precision: 1, format: '%n %', strip_insignificant_zeros: true).then { |p| evolution.negative? ? p : "+#{p}" } %>
+        </span>
+        <%= t("shared.stats.section.evolution.#{period}", previous: number_with_delimiter(previous)) %>
+      </p>
+    <% end %>
+  </div>
+</div>

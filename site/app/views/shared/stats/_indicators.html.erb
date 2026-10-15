@@ -1,0 +1,6 @@
+<%# locals: (api:, period:, indicators:) -%>
+<div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+  <% indicators.each_with_index do |(name, values), index| %>
+    <%= render 'shared/stats/indicator', api:, period:, name:, values:, count: indicators.size, headline: index.zero? %>
+  <% end %>
+</div>

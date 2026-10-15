@@ -13,6 +13,9 @@ deployed: &deployed
   healthcheck:
     cron: '*/5 * * * *'
     class: 'HealthcheckJob'
+  public_stats_warmup:
+    cron: '1 0,1 * * * Europe/Paris'
+    class: 'PublicStatsWarmupJob'
   weekly_changelog_digest:
     cron: '0 2 * * 1'
     class: 'WeeklyChangelogDigestJob'
