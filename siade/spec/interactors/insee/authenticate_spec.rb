@@ -94,6 +94,10 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       Timecop.freeze(time) { described_class.call(provider_name: 'INSEE') }
     end
 
+    def published_token_at(time)
+      Timecop.freeze(time) { described_class.published_token }
+    end
+
     before do
       stub_oauth(*first_grants)
       authenticate_at(authenticated_at)
@@ -118,7 +122,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       it 'publishes the renewed token' do
         authenticate_at(renewal_time)
 
-        expect(described_class.published_token).to eq('renewed-token')
+        expect(published_token_at(renewal_time)).to eq('renewed-token')
       end
 
       it 'renews only once' do
@@ -131,7 +135,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       it 'releases the lock' do
         authenticate_at(renewal_time)
 
-        expect(lock_read).to be_nil
+        expect(Timecop.freeze(renewal_time) { lock_read }).to be_nil
       end
     end
 
@@ -157,7 +161,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       it 'keeps the current token published' do
         authenticate_at(authenticated_at + 220.seconds)
 
-        expect(described_class.published_token).to eq('current-token')
+        expect(published_token_at(authenticated_at + 220.seconds)).to eq('current-token')
       end
     end
 
