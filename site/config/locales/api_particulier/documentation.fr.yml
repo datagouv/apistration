@@ -699,7 +699,7 @@ fr:
                   > ⚠️ Les **plages d'IP autorisées** ne sont pas paramétrables depuis l'espace éditeur&nbsp;: elles sont configurées par l'équipe API&nbsp;Particulier. Leur transmission est un **prérequis à l'obtention d'un jeton éditeur**&nbsp;: contactez l'équipe depuis [votre espace éditeur](<%= editor_settings_path %>){:target="_blank"} pour les transmettre ou les faire modifier.
 
                   {:.fr-highlight}
-                  > ℹ️ L'accès à l'espace éditeur est réservé aux éditeurs **référencés** par l'équipe API&nbsp;Particulier. Pour être référencé, écrivez à [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr)&nbsp;: nous rattacherons votre compte à la fiche éditeur correspondante.
+                  > ℹ️ L'accès à l'espace éditeur est réservé aux éditeurs **référencés** par l'équipe API&nbsp;Particulier. Pour être référencé, écrivez à [support@particulier.api.gouv.fr](mailto:support@particulier.api.gouv.fr)&nbsp;: nous rattacherons votre compte à la fiche éditeur correspondante.
 
                   Une fois référencé, [connectez-vous à votre espace éditeur](<%= editor_path %>){:target="_blank"}.
 
@@ -850,7 +850,7 @@ fr:
                   2. **Ajoutez des routes de pings pour automatiser la surveillance** des API par vous-même. Plutôt que de consulter ponctuellement notre page de statuts, vous pouvez vous branchez directement à nos routes afin d'avoir un suivi encore plus précis. Pour en savoir plus, consulter la rubrique [surveiller l'état des fournisseurs](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>) ;
 
                   3. Si vous rencontrez un problème et avez besoin d'échanger avec nous en transmettant des données sensibles, utilisez le [formulaire de transfert d'informations sécurisées (Démarches simplifiées)](https://www.demarches-simplifiees.fr/commencer/api-particulier-transfert-securise-d-informations){:target="_blank"}.
-                  Si vous n'avez pas de réponse sous 72h, n'hésitez pas à nous envoyer votre numéro de demande Démarches simplifiées à l'adresse [api-particulier@api.gouv.fr](mailto:api-particulier@api.gouv.fr).
+                  Si vous n'avez pas de réponse sous 72h, n'hésitez pas à nous envoyer votre numéro de demande Démarches simplifiées à l'adresse [support@particulier.api.gouv.fr](mailto:support@particulier.api.gouv.fr).
 
               - title: Informations à transmettre en cas de problème
                 anchor: 'informations-à-transmettre-en-cas-de-problème'
