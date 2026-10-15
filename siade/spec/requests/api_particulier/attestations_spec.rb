@@ -22,6 +22,7 @@ RSpec.describe 'API Particulier: téléchargement d\'attestation PDF', api: :par
   let(:proof) do
     APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder.new(
       { 'data' => data },
+      origine: 'CNAF',
       recipient: '13002526500013',
       habilitation: 'a11b0000-0000-0000-0000-000000000042'
     )

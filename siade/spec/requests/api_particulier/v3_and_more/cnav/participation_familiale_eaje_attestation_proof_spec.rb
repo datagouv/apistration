@@ -67,6 +67,28 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE attestation p
     end
   end
 
+  context 'when the MSA answers with the file' do
+    before { stub_cnav_provider_response(status: 200, regime: 'MSA', body: read_payload_file('cnav/participation_familiale_eaje/make_request_valid.json')) }
+
+    it 'names the MSA as the source of the attestation' do
+      call_endpoint
+
+      expect(response).to have_http_status(:ok)
+      expect(attestation['source']).to eq('MSA')
+    end
+  end
+
+  context 'when the gateway does not name the regime that answered with the file' do
+    before { stub_cnav_provider_response(status: 200, body: read_payload_file('cnav/participation_familiale_eaje/make_request_valid.json')) }
+
+    it 'says the origin is not known instead of naming a register' do
+      call_endpoint
+
+      expect(response).to have_http_status(:ok)
+      expect(attestation['source']).to eq('origine non communiquée')
+    end
+  end
+
   context 'when the RNCPS does not reference the allocataire' do
     before { stub_rncps_404('participation_familiale_eaje') }
 

@@ -110,14 +110,23 @@ RSpec.describe APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProo
       expect(allocataire).to include(['Date de naissance', '30/06/1981'])
     end
 
+    context 'when the regime that answered is not known' do
+      subject(:pdf_payload) { AttestationToken.read(proof_for(data, origine: nil).pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+
+      it 'says so as the source instead of naming a register' do
+        expect(pdf_payload['source']).to eq('origine non communiquée')
+      end
+    end
+
     it 'expires long before the verification link does' do
       expect(proof.pdf_link_expires_at).to be_within(5).of(5.minutes.from_now.to_i)
     end
   end
 
-  def proof_for(data)
+  def proof_for(data, origine: 'CNAF')
     described_class.new(
       { 'data' => data, 'links' => {}, 'meta' => {} },
+      origine:,
       recipient: '13002526500013',
       habilitation: 'a11b0000-0000-0000-0000-000000000042'
     )

@@ -28,6 +28,11 @@ class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder 
     ['annee_calcul', 'Année de calcul']
   ].freeze
 
+  def initialize(body, origine:, **)
+    super(body, **)
+    @origine = origine
+  end
+
   protected
 
   def document
@@ -39,7 +44,7 @@ class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder 
   end
 
   def source
-    'CNAF'
+    @origine || ORIGINE_NON_COMMUNIQUEE
   end
 
   def verification_sections
