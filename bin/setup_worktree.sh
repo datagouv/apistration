@@ -21,7 +21,7 @@ Branch resolution, in order:
   1. [branch] when given
   2. an existing local or remote branch whose name contains <name>
      (Linear-generated branches such as feature/api-7345-rotation-...)
-  3. a new feature/<name> branch created from develop
+  3. a new feature/<name> branch created from origin/develop
 USAGE
   exit 1
 }
@@ -104,8 +104,8 @@ elif [ -n "$BRANCH" ] && git -C "$PRIMARY_ROOT" show-ref --verify --quiet "refs/
   git -C "$PRIMARY_ROOT" worktree add --track -b "$BRANCH" "$WORKTREE_PATH" "origin/$BRANCH"
 else
   BRANCH="${BRANCH:-feature/$NAME}"
-  echo "No branch found for $NAME, creating $BRANCH from develop"
-  git -C "$PRIMARY_ROOT" worktree add -b "$BRANCH" "$WORKTREE_PATH" develop
+  echo "No branch found for $NAME, creating $BRANCH from origin/develop"
+  git -C "$PRIMARY_ROOT" worktree add --no-track -b "$BRANCH" "$WORKTREE_PATH" origin/develop
 fi
 
 for local_file in .sentry_token .metabase .metabase_token .hyperping_token; do
