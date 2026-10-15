@@ -23,7 +23,7 @@ module APIParticulier::GeneratesAttestationProof
     return super if generate_proof_mode.nil?
 
     body = super.deep_stringify_keys
-    return body if mocked_error?
+    return attest_error(body, organizer.mocked_data[:declared_error]&.attestation) if mocked_error?
 
     with_proof(body, serializer_module::AttestationProofBuilder.new(body, **proof_recipient))
   end

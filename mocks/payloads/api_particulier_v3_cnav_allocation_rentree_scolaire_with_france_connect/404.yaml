@@ -12,6 +12,7 @@ params:
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'F'
 status: 404
+declared_error: CNAV::ValidateResponse::FILE_NOT_FOUND_CNAF
 payload: |-
   {
     "errors": [
