@@ -109,6 +109,11 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
                 expect(json['links'].keys).to contain_exactly('attestation_pdf')
                 expect(response.body.scan('"meta"').count).to eq(1)
                 expect(response.body.scan('"links"').count).to eq(1)
+
+                pdf_token = json['links']['attestation_pdf'][%r{/api/attestations/(.+)\.pdf\z}, 1]
+                payload = AttestationToken.read(pdf_token, purpose: AttestationToken::PDF_PURPOSE)
+
+                expect(payload['source']).to eq('origine non communiquée')
               end
             end
 

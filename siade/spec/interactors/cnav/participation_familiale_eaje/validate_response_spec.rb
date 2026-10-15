@@ -14,6 +14,16 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
+
+      its(:origine) { is_expected.to be_nil }
+
+      context 'when the MSA answered' do
+        let(:response) do
+          instance_double(Net::HTTPOK, code: 200, body:, header: { 'X-APISECU-FD' => '00171001' })
+        end
+
+        its(:origine) { is_expected.to eq('MSA') }
+      end
     end
 
     context 'with valid body but no kids under 7' do
