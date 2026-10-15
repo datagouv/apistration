@@ -12,6 +12,10 @@ avec les conventions spécifiques :
 ## Conventions transverses
 
 - Messages de commit rédigés en anglais.
+- Un commit = une intention. Un nettoyage que la feature n'exige pas (boy
+  scout, nouveau hook dans une classe de base, renommage) va dans son propre
+  commit, avant celui qui l'utilise : mélangé à la feature, il se lit comme
+  un changement requis.
 - **Toute itération sur une signature d'API publique** (nouveau endpoint,
   nouvelle version, paramètre ajouté/supprimé/renommé/rendu optionnel,
   changement de format de réponse, dépréciation) doit s'accompagner d'une
