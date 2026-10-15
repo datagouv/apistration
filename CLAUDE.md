@@ -27,6 +27,11 @@ avec les conventions spécifiques :
   puis release SemVer-correcte (cf. skill `release-new-version`). Un
   changement serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
 
+  Un changement dans une classe partagée (une classe mère comme
+  `CNAV::ValidateResponse`) change la réponse publique de chaque endpoint
+  qui en hérite : le documenter (fiche, historique, mocks) sur chacun, ou le
+  limiter à la sous-classe.
+
 ## Worktrees
 
 Par défaut, tout développement démarre dans un worktree dédié sous
