@@ -299,7 +299,7 @@ fr:
 
                   Les limites de volumétrie sur API&nbsp;Particulier se décomposent en deux règles principales&nbsp;:&nbsp;
 
-                  - **Un plafond général par IP de 1000 requêtes/minute** ;
+                  - **Un plafond général par IP de 5000 requêtes/minute** ;
 
                   - **Une volumétrie par habilitation&nbsp;:** 20 requêtes/secondes.
 

@@ -31,7 +31,7 @@ fr:
 
                   Les limites de volumétrie sur API&nbsp;Entreprise se décomposent en deux règles principales&nbsp;:&nbsp;
 
-                  - **Un plafond général par IP de 1000 requêtes/minute**.
+                  - **Un plafond général par IP de 5000 requêtes/minute**.
 
                   - **Une volumétrie par habilitation par groupe d’endpoints&nbsp;:**
                         - **1er groupe**&nbsp;:&nbsp;Les endpoints renvoyant du JSON constituent un premier groupe. Vous pouvez effectuer jusqu’à 250 requêtes/min/habilitation sur ce groupe.
