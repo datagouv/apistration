@@ -2,7 +2,8 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
   ALLOCATAIRE_NOT_ELIGIBLE = raises ::NotFoundError,
     provider: 'CNAV',
     title: 'Allocataire non éligible',
-    detail: "Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE"
+    detail: "Le dossier allocataire a été trouvé mais n'est pas éligible à la participation familiale EAJE",
+    attests: :not_eligible
 
   def call
     super

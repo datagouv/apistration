@@ -1,6 +1,14 @@
 class APIParticulier::AttestationProofBuilder
   VERIFICATION_VALIDITY = 5.years
   PDF_LINK_VALIDITY = 5.minutes
+  ORIGINE_NON_COMMUNIQUEE = 'origine non communiquée'.freeze
+
+  SEXE_LABELS = { 'M' => 'Masculin', 'F' => 'Féminin' }.freeze
+
+  IDENTITE_MINIMISEE = [
+    ['nom_naissance', 'Nom de naissance', ->(nom) { "#{nom.first(3)}•••" }],
+    ['date_naissance', 'Date de naissance', ->(date) { "#{date[5, 2]}/#{date[0, 4]}" }]
+  ].freeze
 
   def initialize(body, recipient:, habilitation:)
     @body = body
