@@ -28,6 +28,10 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
         expect(subject.errors.first.detail).to include('participation familiale EAJE')
       end
 
+      it 'attests a file found but not eligible' do
+        expect(subject.errors.first.attestation).to eq(:not_eligible)
+      end
+
       context 'when the MSA answered' do
         let(:response) do
           instance_double(Net::HTTPOK, code: 200, body:, header: { 'X-APISECU-FD' => '00171001' })

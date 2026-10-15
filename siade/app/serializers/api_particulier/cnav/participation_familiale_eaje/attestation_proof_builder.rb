@@ -1,6 +1,4 @@
 class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder < APIParticulier::AttestationProofBuilder
-  SEXE_LABELS = { 'M' => 'Masculin', 'F' => 'Féminin' }.freeze
-
   IDENTITE = [
     ['nom_naissance', 'Nom de naissance'],
     ['nom_usage', "Nom d'usage"],
@@ -8,11 +6,6 @@ class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder 
     ['date_naissance', 'Date de naissance'],
     ['sexe', 'Sexe', ->(sexe) { SEXE_LABELS.fetch(sexe, sexe) }],
     ['code_cog_insee_commune_naissance', 'Code INSEE de la commune de naissance']
-  ].freeze
-
-  IDENTITE_MINIMISEE = [
-    ['nom_naissance', 'Nom de naissance', ->(nom) { "#{nom.first(3)}•••" }],
-    ['date_naissance', 'Date de naissance', ->(date) { "#{date[5, 2]}/#{date[0, 4]}" }]
   ].freeze
 
   ADRESSE = [

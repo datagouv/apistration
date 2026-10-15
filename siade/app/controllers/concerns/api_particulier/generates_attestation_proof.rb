@@ -20,28 +20,38 @@ module APIParticulier::GeneratesAttestationProof
   end
 
   def serialize_data
-    with_proof(super.deep_stringify_keys, extract_http_code(organizer))
+    return super if generate_proof_mode.nil?
+
+    body = super.deep_stringify_keys
+    return body if mocked_error?
+
+    with_proof(body, serializer_module::AttestationProofBuilder.new(body, **proof_recipient))
   end
 
-  def with_proof(body, status)
-    return body if generate_proof_mode.nil? || !proof_status?(status)
+  def serialize_errors(organizer)
+    return super if generate_proof_mode.nil?
 
-    proof = attestation_proof(body)
+    attest_error(super.deep_stringify_keys, organizer.errors.first&.attestation)
+  end
+
+  def mocked_error?
+    organizer.mocked_data.present? && organizer.mocked_data[:status] != 200
+  end
+
+  def attest_error(body, attestation)
+    return body if attestation.nil?
+
+    with_proof(body, APIParticulier::NoResultAttestationProofBuilder.new(body, attestation:, request_params: api_params, **proof_recipient))
+  end
+
+  def proof_recipient
+    { recipient:, habilitation: current_user.authorization_request_id }
+  end
+
+  def with_proof(body, proof)
     body['meta'] = body.fetch('meta', {}).merge(proof_meta(proof))
     body['links'] = body.fetch('links', {}).merge('attestation_pdf' => pdf_link(proof)) if pdf_mode?
     body
-  end
-
-  def proof_status?(status)
-    Rack::Utils.status_code(status).between?(200, 299)
-  end
-
-  def attestation_proof(body)
-    serializer_module::AttestationProofBuilder.new(
-      body,
-      recipient:,
-      habilitation: current_user.authorization_request_id
-    )
   end
 
   def proof_meta(proof)

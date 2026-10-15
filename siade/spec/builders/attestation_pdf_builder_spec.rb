@@ -123,6 +123,24 @@ RSpec.describe AttestationPDFBuilder do
     it { is_expected.to include('DONNÉES DE TEST') }
   end
 
+  context 'with a consultation without result' do
+    let(:payload) do
+      super().merge(
+        'titre' => 'ATTESTATION DE CONSULTATION SANS RÉSULTAT',
+        'sections' => [
+          { 'titre' => 'Résultat de la consultation',
+            'entrees' => [[['Erreur', 'Dossier allocataire absent CNAF'], ['Origine', 'CNAF'], ["Date et heure de l'appel", '13/10/2026 à 14:32:05']]] },
+          { 'titre' => "Identité de l'usager transmise lors de l'appel",
+            'entrees' => [[['Nom de naissance', 'CHAMPION'], ['Code INSEE du pays de naissance', '99100']]] }
+        ]
+      )
+    end
+
+    it { is_expected.to include('ATTESTATION DE CONSULTATION SANS RÉSULTAT') }
+    it { is_expected.to include('RÉSULTAT DE LA CONSULTATION Erreur Dossier allocataire absent CNAF') }
+    it { is_expected.to include("IDENTITÉ DE L'USAGER TRANSMISE LORS DE L'APPEL Nom de naissance CHAMPION") }
+  end
+
   context 'with a large family behind the QR code (capacity regression)' do
     let(:pdf) do
       verification_payload = payload.merge('sections' => [

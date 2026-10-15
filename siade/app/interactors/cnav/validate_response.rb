@@ -12,11 +12,12 @@ class CNAV::ValidateResponse < ValidateResponse
     provider: 'CNAF & MSA',
     title: 'Allocataire non référencé',
     detail: "L'allocataire n'est pas référencé auprès des caisses éligibles",
-    meta: { origine: 'RNCPS' }
+    meta: { origine: 'RNCPS' },
+    attests: :no_result
 
   FILE_NOT_FOUND_PER_REGIME = {
-    'CNAF' => raises(::NotFoundError, provider: 'CNAF', title: 'Dossier allocataire absent CNAF', detail: "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", meta: { origine: 'CNAF' }),
-    'MSA' => raises(::NotFoundError, provider: 'MSA', title: 'Dossier allocataire absent MSA', detail: "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", meta: { origine: 'MSA' }),
+    'CNAF' => raises(::NotFoundError, provider: 'CNAF', title: 'Dossier allocataire absent CNAF', detail: "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", meta: { origine: 'CNAF' }, attests: :no_result),
+    'MSA' => raises(::NotFoundError, provider: 'MSA', title: 'Dossier allocataire absent MSA', detail: "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", meta: { origine: 'MSA' }, attests: :no_result),
     'RNCPS' => raises(::NotFoundError, provider: 'RNCPS', title: 'Dossier allocataire absent RNCPS', detail: "Le dossier allocataire n'a pas été trouvé auprès du RNCPS.", meta: { origine: 'RNCPS' })
   }.freeze
 

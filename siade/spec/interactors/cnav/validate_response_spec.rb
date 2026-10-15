@@ -41,6 +41,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
           expect(subject.errors.first.detail).to include('Les paramètres fournis ne permettent pas')
           expect(subject.errors.first.meta).to eq(provider: 'Sécurité sociale')
         end
+
+        it 'attests nothing, since the person was not identified' do
+          expect(subject.errors.first.attestation).to be_nil
+        end
       end
 
       context 'with RNCPS 404 error, which translate a regime not found' do
@@ -60,6 +64,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
         it 'states the RNCPS as the origin of the answer' do
           expect(subject.errors.first.meta).to include(origine: 'RNCPS')
+        end
+
+        it 'attests a consultation without result' do
+          expect(subject.errors.first.attestation).to eq(:no_result)
         end
       end
     end
@@ -83,6 +91,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         it 'states the CNAF as the origin of the answer' do
           expect(subject.errors.first.meta).to include(origine: 'CNAF')
         end
+
+        it 'attests a consultation without result' do
+          expect(subject.errors.first.attestation).to eq(:no_result)
+        end
       end
 
       context 'with MSA regime' do
@@ -103,6 +115,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         it 'states the MSA as the origin of the answer' do
           expect(subject.errors.first.meta).to include(origine: 'MSA')
         end
+
+        it 'attests a consultation without result' do
+          expect(subject.errors.first.attestation).to eq(:no_result)
+        end
       end
 
       context 'with RNCPS regime' do
@@ -122,6 +138,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
         it 'states the RNCPS as the origin of the answer' do
           expect(subject.errors.first.meta).to include(origine: 'RNCPS')
+        end
+
+        it 'attests nothing' do
+          expect(subject.errors.first.attestation).to be_nil
         end
       end
     end
@@ -151,6 +171,10 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+
+    it 'attests nothing, since the provider gave no answer about the person' do
+      expect(subject.errors.first.attestation).to be_nil
+    end
 
     it 'tags the event with the provider error code and the regime' do
       expect(MonitoringService.instance).to receive(:set_tags).with(cnav_error_code: '50001', regime: 'RNCPS')
