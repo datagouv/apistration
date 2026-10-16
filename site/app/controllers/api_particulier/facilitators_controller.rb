@@ -22,8 +22,8 @@ class APIParticulier::FacilitatorsController < APIParticulierController
   end
 
   def create
-    if password_matches?(params[:password].to_s)
-      session[ACCESS_SESSION_KEY] = password_fingerprint
+    if APIParticulier::FacilitatorsPassword.matches?(params[:password])
+      session[ACCESS_SESSION_KEY] = APIParticulier::FacilitatorsPassword.fingerprint
       redirect_to api_particulier_facilitators_path
     else
       render_password_form(:unauthorized, :invalid_password)
@@ -58,20 +58,7 @@ class APIParticulier::FacilitatorsController < APIParticulierController
   end
 
   def access_granted?
-    password.present? &&
-      ActiveSupport::SecurityUtils.secure_compare(session[ACCESS_SESSION_KEY].to_s, password_fingerprint)
-  end
-
-  def password_matches?(candidate)
-    password.present? && ActiveSupport::SecurityUtils.secure_compare(candidate, password)
-  end
-
-  def password_fingerprint
-    OpenSSL::HMAC.hexdigest('SHA256', Rails.application.secret_key_base, password)
-  end
-
-  def password
-    AdminApientreprise.credentials[:api_particulier_facilitators_password]
+    APIParticulier::FacilitatorsPassword.fingerprint_matches?(session[ACCESS_SESSION_KEY])
   end
 
   def forbid_caching_and_indexing!
