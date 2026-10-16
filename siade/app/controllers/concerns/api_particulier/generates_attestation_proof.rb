@@ -54,9 +54,13 @@ module APIParticulier::GeneratesAttestationProof
       'verification_url' => organizer.verification_url,
       'verification_code' => organizer.visual_code
     }
-    meta['attestation_pdf_url_expires_at'] = organizer.pdf_link_expires_at if pdf_mode?
+    meta['attestation_pdf_url_expires_in'] = pdf_link_expires_in if pdf_mode?
 
     meta
+  end
+
+  def pdf_link_expires_in
+    organizer.pdf_link_expires_at - Time.zone.now.to_i
   end
 
   def pdf_link
