@@ -1,0 +1,10 @@
+fr:
+  admin:
+    facilitators:
+      show:
+        title: Espace facilitateurs API Particulier
+        description: Les facilitateurs (GART, AMF, MonSuivi Social) suivent les demandes d'habilitation de leurs cas d'usage avec ce mot de passe, commun à tous. Il ne donne accès qu'à cette page.
+        url: "Page :"
+        password: Mot de passe
+        copy: Copier le mot de passe
+        copy_alert: Mot de passe copié

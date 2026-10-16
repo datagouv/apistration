@@ -1,0 +1,20 @@
+<h1 class="fr-h3"><%= t('.title') %></h1>
+
+<p><%= t('.description') %></p>
+
+<p>
+  <%= t('.url') %>
+  <%= external_link_to @facilitators_url, @facilitators_url %>
+</p>
+
+<div class="fr-input-group" data-controller="clipboard" data-clipboard-alert-message-value="<%= t('.copy_alert') %>">
+  <label class="fr-label" for="facilitators_password"><%= t('.password') %></label>
+  <div class="fr-input-wrap fr-mb-2w">
+    <input id="facilitators_password" class="fr-input" type="password" data-clipboard-target="source" readonly value="<%= @password %>" />
+  </div>
+  <button class="fr-btn fr-btn--sm fr-icon-clipboard-fill fr-btn--icon-right"
+          type="button"
+          data-action="click->clipboard#copy">
+    <%= t('.copy') %>
+  </button>
+</div>
