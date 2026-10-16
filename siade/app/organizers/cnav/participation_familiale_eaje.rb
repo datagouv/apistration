@@ -3,8 +3,7 @@ class CNAV::ParticipationFamilialeEAJE < CNAV::RetrieverOrganizer
     CNAV::Authenticate,
     CNAV::MakeRequest,
     CNAV::ParticipationFamilialeEAJE::ValidateResponse,
-    CNAV::ParticipationFamilialeEAJE::BuildResource,
-    CNAV::ParticipationFamilialeEAJE::BuildAttestationProof
+    CNAV::ParticipationFamilialeEAJE::BuildResource
 
   def provider_name
     'Sécurité sociale'

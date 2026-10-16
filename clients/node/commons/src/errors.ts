@@ -10,6 +10,8 @@ export interface JsonApiError {
 export class ApiGouvError extends Error {
   readonly httpStatus: number | null;
   readonly errors: JsonApiError[];
+  readonly meta: Record<string, unknown>;
+  readonly links: Record<string, unknown>;
   readonly method: string | null;
   readonly url: string | null;
 
@@ -18,6 +20,8 @@ export class ApiGouvError extends Error {
     options: {
       httpStatus?: number | null;
       errors?: JsonApiError[];
+      meta?: Record<string, unknown>;
+      links?: Record<string, unknown>;
       method?: string | null;
       url?: string | null;
     } = {},
@@ -26,6 +30,8 @@ export class ApiGouvError extends Error {
     this.name = new.target.name;
     this.httpStatus = options.httpStatus ?? null;
     this.errors = options.errors ?? [];
+    this.meta = options.meta ?? {};
+    this.links = options.links ?? {};
     this.method = options.method ?? null;
     this.url = options.url ?? null;
   }
@@ -77,6 +83,8 @@ export class RateLimitError extends ClientError {
     options: {
       httpStatus?: number | null;
       errors?: JsonApiError[];
+      meta?: Record<string, unknown>;
+      links?: Record<string, unknown>;
       method?: string | null;
       url?: string | null;
       retryAfter?: number | null;
@@ -99,6 +107,8 @@ export class ProviderError extends ServerError {
     options: {
       httpStatus?: number | null;
       errors?: JsonApiError[];
+      meta?: Record<string, unknown>;
+      links?: Record<string, unknown>;
       method?: string | null;
       url?: string | null;
       retryAfter?: number | null;

@@ -1,7 +1,11 @@
 class ErrorRegistry
   Declaration = Data.define(:error_class, :options) do
     def build(provider_name:)
-      error_class.build_example(provider_name:, **options)
+      error_class.build_example(provider_name:, **options).attesting(attestation)
+    end
+
+    def attestation
+      options[:attests]
     end
   end
 

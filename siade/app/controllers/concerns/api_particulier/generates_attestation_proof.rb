@@ -19,48 +19,53 @@ module APIParticulier::GeneratesAttestationProof
     super || generate_proof_mode.present?
   end
 
-  def retriever_params
+  def serialize_data
     return super if generate_proof_mode.nil?
 
-    super.merge(
-      generate_proof_mode:,
-      scopes: current_user.scopes,
-      habilitation: current_user.authorization_request_id
-    )
+    body = super.deep_stringify_keys
+    return attest_error(body, organizer.mocked_data[:declared_error]&.attestation) if mocked_error?
+
+    with_proof(body, serializer_module::AttestationProofBuilder.new(body, origine: organizer.origine, **proof_recipient))
   end
 
-  def serialize_data
-    payload = super.deep_stringify_keys
-    return payload if generate_proof_mode.nil? || mocked_error?
+  def serialize_errors(organizer)
+    return super if generate_proof_mode.nil?
 
-    ensure_proof_was_built!
-    payload['meta'] = payload.fetch('meta', {}).merge(proof_meta)
-    payload['links'] = payload.fetch('links', {}).merge('attestation_pdf' => pdf_link) if pdf_mode?
-    payload
+    attest_error(super.deep_stringify_keys, organizer.errors.first&.attestation)
   end
 
   def mocked_error?
     organizer.mocked_data.present? && organizer.mocked_data[:status] != 200
   end
 
-  def ensure_proof_was_built!
-    return if organizer.verification_url.present?
+  def attest_error(body, attestation)
+    return body if attestation.nil?
 
-    raise "#{organizer_class} honors X-Generate-Proof but organizes no BuildAttestationProof step"
+    with_proof(body, APIParticulier::NoResultAttestationProofBuilder.new(body, attestation:, request_params: api_params, **proof_recipient))
   end
 
-  def proof_meta
+  def proof_recipient
+    { recipient:, habilitation: current_user.authorization_request_id }
+  end
+
+  def with_proof(body, proof)
+    body['meta'] = body.fetch('meta', {}).merge(proof_meta(proof))
+    body['links'] = body.fetch('links', {}).merge('attestation_pdf' => pdf_link(proof)) if pdf_mode?
+    body
+  end
+
+  def proof_meta(proof)
     meta = {
-      'verification_url' => organizer.verification_url,
-      'verification_code' => organizer.visual_code
+      'verification_url' => proof.verification_url,
+      'verification_code' => proof.visual_code
     }
-    meta['attestation_pdf_url_expires_at'] = organizer.pdf_link_expires_at if pdf_mode?
+    meta['attestation_pdf_url_expires_at'] = proof.pdf_link_expires_at if pdf_mode?
 
     meta
   end
 
-  def pdf_link
-    "#{AttestationToken.base_url}#{api_particulier_attestation_path(token: organizer.pdf_token, format: :pdf)}"
+  def pdf_link(proof)
+    "#{AttestationToken.base_url}#{api_particulier_attestation_path(token: proof.pdf_token, format: :pdf)}"
   end
 
   def pdf_mode?

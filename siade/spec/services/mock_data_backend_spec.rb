@@ -121,6 +121,28 @@ RSpec.describe MockDataBackend, type: :service do
           )
         end
       end
+
+      context 'when the payload names the declared error it stands for' do
+        let(:operation_id) { 'whatever_attested_endpoint' }
+
+        it 'returns that declaration with status and payload' do
+          expect(subject).to eq(
+            status: 404,
+            declared_error: CNAV::ValidateResponse::FILE_NOT_FOUND_CNAF,
+            payload: {
+              'status' => 'nok'
+            }
+          )
+        end
+      end
+
+      context 'when the payload names an unknown declared error' do
+        let(:operation_id) { 'whatever_unknown_declaration' }
+
+        it 'fails loudly instead of serving a mock without its declaration' do
+          expect { subject }.to raise_error(MockDataBackend::UnknownDeclaredError, /NOT_A_DECLARATION/)
+        end
+      end
     end
   end
 

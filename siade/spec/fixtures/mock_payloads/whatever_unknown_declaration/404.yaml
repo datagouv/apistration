@@ -1,0 +1,10 @@
+---
+params:
+  what: 'ever'
+status: 404
+declared_error: CNAV::ValidateResponse::NOT_A_DECLARATION
+payload: '
+  {
+    "status": "nok"
+  }
+'

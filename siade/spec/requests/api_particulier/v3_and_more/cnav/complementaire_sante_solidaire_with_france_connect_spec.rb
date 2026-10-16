@@ -80,7 +80,7 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
                 stub_rncps_404('complementaire_sante_solidaire')
               end
 
-              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false))
+              build_rswag_example(CNAV::ValidateResponse::ALLOCATAIRE_NOT_REFERENCED.build(provider_name: 'CNAV'))
 
               schema '$ref' => '#/components/schemas/Error'
 

@@ -35,7 +35,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         in: :header,
         required: false,
         schema: { type: :string, enum: %w[proof-only pdf] },
-        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`)."
+        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`). La preuve accompagne aussi les réponses 404 : elle atteste alors d'une consultation sans résultat."
 
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
@@ -109,6 +109,11 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
                 expect(json['links'].keys).to contain_exactly('attestation_pdf')
                 expect(response.body.scan('"meta"').count).to eq(1)
                 expect(response.body.scan('"links"').count).to eq(1)
+
+                pdf_token = json['links']['attestation_pdf'][%r{/api/attestations/(.+)\.pdf\z}, 1]
+                payload = AttestationToken.read(pdf_token, purpose: AttestationToken::PDF_PURPOSE)
+
+                expect(payload['source']).to eq('origine non communiquée')
               end
             end
 
@@ -206,6 +211,22 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
           response '404', 'Dossier non trouvé' do
             build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
 
+            example 'application/json', :dossier_absent_avec_preuve, {
+              errors: [
+                NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false)
+                  .add_meta(origine: 'CNAF')
+                  .to_h
+              ],
+              meta: {
+                verification_url: 'https://particulier.api.gouv.fr/attestations/verification/eyJhbGciOiJub25lIn0--exemple',
+                verification_code: '3F2A-91C0-7B',
+                attestation_pdf_url_expires_at: 1_791_475_500
+              },
+              links: {
+                attestation_pdf: 'https://particulier.api.gouv.fr/api/attestations/eyJhbGciOiJub25lIn0--exemple.pdf'
+              }
+            }, 'Dossier allocataire absent CNAF, avec X-Generate-Proof: pdf', "Avec l'en-tête X-Generate-Proof, la 404 porte la preuve d'une consultation sans résultat."
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!
@@ -216,13 +237,21 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
               let(:nomNaissance) { 'LEFEBVRE' }
               let(:sexeEtatCivil) { 'F' }
               let(:codeCogInseeCommuneNaissance) { '08404' }
-              let(:'X-Generate-Proof') { 'proof-only' }
+              let(:'X-Generate-Proof') { 'pdf' }
 
-              run_test! do |response|
-                json = JSON.parse(response.body)
+              run_test! do |not_found|
+                json = JSON.parse(not_found.body)
 
-                expect(json['errors'].first['code']).to eq('37003')
-                expect(json).not_to have_key('meta')
+                expect(json['errors'].first['code']).to eq('23003')
+                expect(json['meta'].keys)
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+
+                get URI.parse(json['links']['attestation_pdf']).path
+                text = PDF::Reader.new(StringIO.new(response.body)).pages.map(&:text).join(' ').squish
+
+                expect(text).to include('ATTESTATION DE CONSULTATION SANS RÉSULTAT')
+                expect(text).to include('Origine CNAF')
+                expect(text).to include('DONNÉES DE TEST')
               end
             end
           end

@@ -1,8 +1,8 @@
-// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: bcbca22be83e3b30997f9b0bac8df151016648d8).
+// DO NOT EDIT — generated from clients/node/commons/src/ (source digest: 1af1c01f627204ae57179b31a7140960c95cd2e7).
 // Regenerate via clients/node/bin/sync-commons.ts
 
 import { Configuration, type Logger } from './configuration.js';
-import { Response } from './response.js';
+import { Response, isRecord } from './response.js';
 import { RateLimit } from './rate-limit.js';
 import { validateSiret } from './siret.js';
 import {
@@ -352,7 +352,14 @@ export abstract class ClientBase {
   ): never {
     const errors = extractErrors(body);
     const ErrorClass = errorClassForStatus(status);
-    const kwargs = { httpStatus: status, errors, method, url };
+    const kwargs = {
+      httpStatus: status,
+      errors,
+      meta: extractObject(body, 'meta'),
+      links: extractObject(body, 'links'),
+      method,
+      url,
+    };
 
     if (ErrorClass === RateLimitError) {
       const retryAfter = computeRetryAfter(rateLimit, errors);
@@ -418,6 +425,12 @@ function extractErrors(body: unknown): JsonApiError[] {
   const errors = record['errors'];
   if (!Array.isArray(errors)) return [];
   return errors as JsonApiError[];
+}
+
+function extractObject(body: unknown, key: string): Record<string, unknown> {
+  if (!isRecord(body)) return {};
+  const value = body[key];
+  return isRecord(value) ? value : {};
 }
 
 function errorClassForStatus(

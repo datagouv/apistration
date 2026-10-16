@@ -1,26 +1,5 @@
-RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
-  subject(:proof) { described_class.call(**context_args) }
-
-  let(:context_args) do
-    {
-      generate_proof_mode:,
-      scopes:,
-      recipient: '13002526500013',
-      habilitation: 'a11b0000-0000-0000-0000-000000000042',
-      bundled_data: BundledData.new(data: Resource.new(data))
-    }
-  end
-
-  let(:generate_proof_mode) { 'proof-only' }
-
-  let(:scopes) do
-    %w[
-      cnav_participation_familiale_eaje_allocataires
-      cnav_participation_familiale_eaje_enfants
-      cnav_participation_familiale_eaje_adresse
-      cnav_participation_familiale_eaje_parametres_calcul
-    ]
-  end
+RSpec.describe APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder do
+  subject(:proof) { proof_for(data) }
 
   let(:data) do
     {
@@ -41,20 +20,6 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
 
   let(:verification_payload) do
     AttestationToken.read(proof.verification_token, purpose: AttestationToken::VERIFICATION_PURPOSE)
-  end
-
-  it 'is a no-op unless a proof mode was asked for' do
-    result = described_class.call(**context_args, generate_proof_mode: nil)
-
-    expect(result).to be_a_success
-    expect(result.verification_token).to be_nil
-  end
-
-  it 'is a no-op on a mocked provider error, which carries no data to attest' do
-    result = described_class.call(**context_args, mocked_data: { status: 404, payload: { 'errors' => [{ 'code' => '37003' }] } })
-
-    expect(result).to be_a_success
-    expect(result.verification_token).to be_nil
   end
 
   describe 'the verification token' do
@@ -83,20 +48,9 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
     it 'grows by a digit, not by a child — the family is a count, not a list' do
       large = data.merge('enfants' => Array.new(15) { data['enfants'].first })
 
-      growth = described_class.call(**args_for(large)).verification_token.size -
-               described_class.call(**args_for(data)).verification_token.size
+      growth = proof_for(large).verification_token.size - proof_for(data).verification_token.size
 
       expect(growth).to be <= 8
-    end
-
-    context 'when a scope is missing' do
-      let(:scopes) { super() - %w[cnav_participation_familiale_eaje_enfants] }
-
-      it 'drops the section instead of exposing data the caller is not entitled to' do
-        titles = verification_payload['sections'].pluck('titre')
-
-        expect(titles).to eq(['Allocataires', 'Paramètres de calcul de la participation familiale'])
-      end
     end
 
     context 'when the provider left a hole in the data' do
@@ -118,7 +72,6 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
     end
 
     context 'when the provider returned a malformed date' do
-      let(:generate_proof_mode) { 'pdf' }
       let(:data) do
         super().merge('allocataires' => [{ 'nom_naissance' => 'DUPOND', 'date_naissance' => '2020-99-99' }])
       end
@@ -137,41 +90,45 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildAttestationProof do
   end
 
   describe 'the pdf token' do
-    it 'is not minted unless it was asked for' do
-      expect(proof.pdf_token).to be_nil
-      expect(proof.pdf_link_expires_at).to be_nil
+    subject(:pdf_payload) { AttestationToken.read(proof.pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+
+    it 'carries the full attestation, its identity, its habilitation and the verification token' do
+      expect(pdf_payload['document']).to eq('participation_familiale_eaje')
+      expect(pdf_payload['titre']).to eq('ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)')
+      expect(pdf_payload['source']).to eq('CNAF')
+      expect(pdf_payload['sections'].pluck('titre'))
+        .to eq(['Allocataires', 'Enfants', 'Adresse', 'Paramètres de calcul de la participation familiale'])
+      expect(pdf_payload['habilitation']).to eq('a11b0000-0000-0000-0000-000000000042')
+      expect(pdf_payload['verification_token']).to eq(proof.verification_token)
     end
 
-    context 'when requested' do
-      subject(:pdf_payload) { AttestationToken.read(proof.pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+    it 'resolves identities, values and formats at issuance' do
+      allocataire = pdf_payload['sections'].first['entrees'].first
 
-      let(:generate_proof_mode) { 'pdf' }
+      expect(allocataire).to include(%w[Prénoms JEAN-MICHEL])
+      expect(allocataire).to include(%w[Sexe Masculin])
+      expect(allocataire).to include(['Date de naissance', '30/06/1981'])
+    end
 
-      it 'carries the full attestation, its identity, its habilitation and the verification token' do
-        expect(pdf_payload['document']).to eq('participation_familiale_eaje')
-        expect(pdf_payload['titre']).to eq('ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)')
-        expect(pdf_payload['source']).to eq('CNAF')
-        expect(pdf_payload['sections'].pluck('titre'))
-          .to eq(['Allocataires', 'Enfants', 'Adresse', 'Paramètres de calcul de la participation familiale'])
-        expect(pdf_payload['habilitation']).to eq('a11b0000-0000-0000-0000-000000000042')
-        expect(pdf_payload['verification_token']).to eq(proof.verification_token)
+    context 'when the regime that answered is not known' do
+      subject(:pdf_payload) { AttestationToken.read(proof_for(data, origine: nil).pdf_token, purpose: AttestationToken::PDF_PURPOSE) }
+
+      it 'says so as the source instead of naming a register' do
+        expect(pdf_payload['source']).to eq('origine non communiquée')
       end
+    end
 
-      it 'resolves identities, values and formats at issuance' do
-        allocataire = pdf_payload['sections'].first['entrees'].first
-
-        expect(allocataire).to include(%w[Prénoms JEAN-MICHEL])
-        expect(allocataire).to include(%w[Sexe Masculin])
-        expect(allocataire).to include(['Date de naissance', '30/06/1981'])
-      end
-
-      it 'expires long before the verification link does' do
-        expect(proof.pdf_link_expires_at).to be_within(5).of(5.minutes.from_now.to_i)
-      end
+    it 'expires long before the verification link does' do
+      expect(proof.pdf_link_expires_at).to be_within(5).of(5.minutes.from_now.to_i)
     end
   end
 
-  def args_for(data)
-    context_args.merge(bundled_data: BundledData.new(data: Resource.new(data)))
+  def proof_for(data, origine: 'CNAF')
+    described_class.new(
+      { 'data' => data, 'links' => {}, 'meta' => {} },
+      origine:,
+      recipient: '13002526500013',
+      habilitation: 'a11b0000-0000-0000-0000-000000000042'
+    )
   end
 end

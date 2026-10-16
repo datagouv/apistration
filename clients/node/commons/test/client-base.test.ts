@@ -316,6 +316,37 @@ describe('ClientBase', () => {
     });
   });
 
+  describe('a 404 carrying an attestation proof', () => {
+    it('surfaces the response meta and links on NotFoundError', async () => {
+      globalThis.fetch = mockFetch(404, {
+        errors: [{ code: '23003', title: 'Dossier allocataire absent CNAF' }],
+        meta: {
+          verification_url: 'https://example.test/attestations/verification/abc',
+          verification_code: '3F2A-91C0-7B',
+        },
+        links: { attestation_pdf: 'https://example.test/api/attestations/abc.pdf' },
+      });
+
+      const error = await new TestClient().get('/v3/test/endpoint').catch((e) => e);
+
+      expect(error).toBeInstanceOf(NotFoundError);
+      expect(error.meta).toEqual({
+        verification_url: 'https://example.test/attestations/verification/abc',
+        verification_code: '3F2A-91C0-7B',
+      });
+      expect(error.links).toEqual({ attestation_pdf: 'https://example.test/api/attestations/abc.pdf' });
+    });
+
+    it('leaves meta and links empty when the error response has none', async () => {
+      globalThis.fetch = mockFetch(404, { errors: [{ code: '99999' }] });
+
+      const error = await new TestClient().get('/v3/test/endpoint').catch((e) => e);
+
+      expect(error.meta).toEqual({});
+      expect(error.links).toEqual({});
+    });
+  });
+
   describe('RateLimitError.retryAfter', () => {
     it('derives from RateLimit-Reset header', async () => {
       const futureReset = Math.floor(Date.now() / 1000) + 30;

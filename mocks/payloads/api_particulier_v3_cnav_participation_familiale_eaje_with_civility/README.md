@@ -228,12 +228,13 @@ d'erreur selon les informations que vous fournirez.
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier allocataire absent CNAV",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF",
+          "origine": "CNAF"
         }
       }
     ]
