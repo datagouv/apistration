@@ -35,7 +35,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
         in: :header,
         required: false,
         schema: { type: :string, enum: %w[proof-only pdf] },
-        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`)."
+        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration dans `meta.attestation_pdf_url_expires_in`, en secondes)."
 
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
@@ -105,7 +105,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
                 expect(json['data']['allocataires'].first['nom_naissance']).to eq('LEFEBVRE')
                 expect(json['meta'].keys)
-                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_in')
                 expect(json['links'].keys).to contain_exactly('attestation_pdf')
                 expect(response.body.scan('"meta"').count).to eq(1)
                 expect(response.body.scan('"links"').count).to eq(1)
@@ -119,13 +119,13 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
                 json = JSON.parse(response.body)
 
                 expect(json['meta'].keys)
-                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_at')
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_in')
                 expect(json['links'].keys).to contain_exactly('attestation_pdf')
                 expect(json['links']['attestation_pdf'])
                   .to match(%r{\A#{AttestationToken.base_url}/api/attestations/[A-Za-z0-9_-]+(--[A-Za-z0-9_-]+)*\.pdf\z})
 
-                expect(json['meta']['attestation_pdf_url_expires_at'])
-                  .to be_between(4.minutes.from_now.to_i, 6.minutes.from_now.to_i)
+                expect(json['meta']['attestation_pdf_url_expires_in'])
+                  .to be_between(4.minutes.to_i, 5.minutes.to_i)
 
                 pdf_token = json['links']['attestation_pdf'][%r{/api/attestations/(.+)\.pdf\z}, 1]
                 payload = AttestationToken.read(pdf_token, purpose: AttestationToken::PDF_PURPOSE)
