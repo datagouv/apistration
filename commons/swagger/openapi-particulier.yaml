@@ -5641,7 +5641,8 @@ paths:
           - pdf
         description: 'Demande une preuve d''attestation : `proof-only` ajoute `meta.verification_url`
           et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf`
-          (téléchargement sans authentification, expiration `meta.attestation_pdf_url_expires_at`).'
+          (téléchargement sans authentification, expiration dans `meta.attestation_pdf_url_expires_in`,
+          en secondes).'
       security:
       - jwt_bearer_token: []
       description: Participation familiale EAJE
