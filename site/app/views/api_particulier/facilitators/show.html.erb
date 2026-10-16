@@ -1,0 +1,86 @@
+<% content_for(:head, tag.meta(name: 'turbo-cache-control', content: 'no-cache')) %>
+
+<div class="fr-grid-row fr-grid-row--middle fr-mb-2w">
+  <div class="fr-col">
+    <h1 class="fr-mb-0"><%= t('.title') %></h1>
+  </div>
+  <div class="fr-col-auto">
+    <%= button_to t('.logout'), api_particulier_facilitators_path, method: :delete, data: { turbo: false }, class: 'fr-btn fr-btn--tertiary fr-btn--sm' %>
+  </div>
+</div>
+
+<p><%= t('.description') %></p>
+
+<%= form_with url: api_particulier_facilitators_path, method: :get, data: { turbo: false } do |f| %>
+  <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+    <div class="fr-col-12 fr-col-md-6">
+      <div class="fr-select-group">
+        <%= f.label :use_case, t('.filters.use_case'), class: 'fr-label' %>
+        <%= f.select :use_case,
+              @use_cases.map { |use_case| [use_case.label, use_case.key] },
+              { include_blank: t('.filters.all_use_cases'), selected: params[:use_case] },
+              class: 'fr-select' %>
+      </div>
+    </div>
+
+    <div class="fr-col-12 fr-col-md-6">
+      <div class="fr-select-group">
+        <%= f.label :status, t('.filters.status'), class: 'fr-label' %>
+        <%= f.select :status,
+              APIParticulier::FacilitatorsController::STATUS_FILTERS.keys.map { |status| [t(".filters.statuses.#{status}"), status] },
+              { include_blank: t('.filters.all_statuses'), selected: params[:status] },
+              class: 'fr-select' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="fr-btns-group fr-btns-group--inline-md">
+    <%= f.submit t('.filters.submit'), name: nil, class: 'fr-btn' %>
+    <%= link_to t('.filters.reset'), api_particulier_facilitators_path, class: 'fr-btn fr-btn--secondary' %>
+  </div>
+<% end %>
+
+<div class="fr-table fr-table--bordered">
+  <div class="fr-table__wrapper">
+    <div class="fr-table__container">
+      <div class="fr-table__content">
+        <table>
+          <caption><%= t('.table.caption', count: @authorization_requests.total_count) %></caption>
+          <thead>
+            <tr>
+              <th scope="col"><%= t('.table.datapass') %></th>
+              <th scope="col"><%= t('.table.status') %></th>
+              <th scope="col"><%= t('.table.organization') %></th>
+              <th scope="col"><%= t('.table.siret') %></th>
+              <th scope="col"><%= t('.table.use_case') %></th>
+              <th scope="col"><%= t('.table.form') %></th>
+              <th scope="col"><%= t('.table.intitule') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @authorization_requests.each do |authorization_request| %>
+              <% use_case = APIParticulier::FacilitatorUseCase.for_form_uid(authorization_request.demarche) %>
+              <tr id="<%= dom_id(authorization_request) %>" class="authorization-request">
+                <td>
+                  <% if authorization_request.public_id.present? %>
+                    <%= external_link_to authorization_request.external_id, datapass_v2_public_authorization_request_url(authorization_request) %>
+                  <% else %>
+                    <%= authorization_request.external_id %>
+                  <% end %>
+                </td>
+                <td><%= facilitator_authorization_request_status_badge(authorization_request) %></td>
+                <td><%= authorization_request.organization&.denomination %></td>
+                <td><%= authorization_request.siret %></td>
+                <td><%= use_case.label %></td>
+                <td><%= use_case.form_label(authorization_request.demarche) %></td>
+                <td><%= authorization_request.intitule %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= paginate @authorization_requests %>

@@ -548,6 +548,47 @@ fr:
     reporters:
       index:
         page_title: ""
+    facilitators:
+      new:
+        page_title: Espace facilitateurs
+        title: Espace facilitateurs
+        description: Cet espace liste les demandes d'habilitation API Particulier des cas d'usage que vous accompagnez. Saisissez le mot de passe qui vous a été communiqué par l'équipe API Particulier.
+        password: Mot de passe
+        submit: Accéder aux demandes
+        errors:
+          invalid_password: Mot de passe incorrect.
+          too_many_attempts: Trop de tentatives, réessayez dans quelques minutes.
+      show:
+        page_title: Espace facilitateurs
+        title: Demandes d'habilitation par cas d'usage
+        description: Le statut affiché est celui de l'habilitation, une habilitation validée en cours de mise à jour sur DataPass reste « Validée ». Les demandes refusées ou archivées ne sont pas listées.
+        logout: Se déconnecter
+        filters:
+          use_case: Cas d'usage
+          all_use_cases: Tous les cas d'usage
+          status: Statut
+          all_statuses: Tous les statuts
+          statuses:
+            validated: Validées
+            validated_or_in_progress: Validées et en cours
+          submit: Filtrer
+          reset: Réinitialiser
+        table:
+          caption:
+            zero: Aucune demande
+            one: 1 demande
+            other: "%{count} demandes"
+          datapass: ID DataPass
+          status: Statut
+          organization: Raison sociale
+          siret: SIRET
+          use_case: Cas d'usage
+          form: Formulaire
+          intitule: Intitulé
+        statuses:
+          validated: Validée
+          revoked: Révoquée
+          in_progress: En cours
   beta:
     label: Version beta
     title: Cette API est disponible dans une version non-définitive
