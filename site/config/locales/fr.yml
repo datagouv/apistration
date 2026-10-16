@@ -314,6 +314,25 @@ fr:
           internal_id: "Identifiant technique du jeton : %{id}"
         requests_details:
           title: Détails des %{limit} dernières requêtes
+          caption: Dernières requêtes du jeton
+          columns:
+            timestamp: Date
+            path: Chemin
+            params: Paramètres
+            status: Statut
+        loading: Chargement des statistiques du jeton
+        no_calls: Aucun appel sur cette période.
+        status_breakdown:
+          one: "%{count} appel par statut"
+          other: "%{count} appels par statut"
+        status_categories:
+          success: Succès
+          not_found: Non trouvé
+          invalid_request: Format ou syntaxe de l'appel invalide
+          unauthorized: Jeton invalide ou sans les droits nécessaires
+          internal_error: Erreur interne d'API Entreprise
+          provider_error: Erreur du fournisseur de données
+          other: Autre
       cannot_show:
         title: Utiliser le jeton
         description_html: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
