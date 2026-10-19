@@ -172,7 +172,7 @@ GEM
       logger
     heapy (0.2.0)
       thor
-    hexapdf (1.11.0)
+    hexapdf (1.11.1)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -484,7 +484,7 @@ GEM
       unicode-emoji (~> 4.3)
     unicode-emoji (4.3.0)
     unindent (1.0)
-    uri (1.1.1)
+    uri (1.1.2)
     useragent (0.16.11)
     utf8-cleaner (2.0.1)
       activesupport
@@ -578,7 +578,7 @@ DEPENDENCIES
   super_diff
   timecop
   unindent
-  uri (= 1.1.1)
+  uri (= 1.1.2)
   utf8-cleaner
   vcr
   webmock (~> 3.26)
