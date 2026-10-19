@@ -5767,7 +5767,7 @@ paths:
                               - allocataire
                               - ouvrant_droit
                               - conjoint
-                        x-scope: cnav_foyer_rsa
+                        x-scope: cnav_foyer_rsa_beneficiaires
                       personnes_a_charge:
                         title: Personnes à charge du foyer
                         type: array
@@ -5807,7 +5807,7 @@ paths:
                               enum:
                               - F
                               - M
-                        x-scope: cnav_foyer_rsa
+                        x-scope: cnav_foyer_rsa_personnes_a_charge
                     required:
                     - beneficiaires
                     - personnes_a_charge
@@ -6117,7 +6117,7 @@ paths:
                               - allocataire
                               - ouvrant_droit
                               - conjoint
-                        x-scope: cnav_foyer_rsa
+                        x-scope: cnav_foyer_rsa_beneficiaires
                       personnes_a_charge:
                         title: Personnes à charge du foyer
                         type: array
@@ -6157,7 +6157,7 @@ paths:
                               enum:
                               - F
                               - M
-                        x-scope: cnav_foyer_rsa
+                        x-scope: cnav_foyer_rsa_personnes_a_charge
                     required:
                     - beneficiaires
                     - personnes_a_charge

@@ -43,7 +43,7 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with civility', api: :particulie
 
       too_many_requests(CNAV::FoyerRSA)
 
-      let(:scopes) { %i[cnav_foyer_rsa] }
+      let(:scopes) { %i[cnav_foyer_rsa_beneficiaires cnav_foyer_rsa_personnes_a_charge] }
 
       describe 'with valid token and mandatory params', :valid do
         response '200', 'Foyer trouvé' do

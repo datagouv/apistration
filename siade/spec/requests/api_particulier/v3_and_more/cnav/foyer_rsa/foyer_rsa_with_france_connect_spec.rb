@@ -12,7 +12,7 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with FranceConnect', api: :parti
 
       forbidden_france_connect_request
 
-      let(:scopes) { %i[cnav_foyer_rsa] }
+      let(:scopes) { %i[cnav_foyer_rsa_beneficiaires cnav_foyer_rsa_personnes_a_charge] }
 
       describe 'with a FranceConnect token' do
         before do
