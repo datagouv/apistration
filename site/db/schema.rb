@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_12_104545) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_19_072757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -157,6 +157,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_104545) do
     t.datetime "jobs_finished_at"
     t.index ["created_at", "id"], name: "index_good_job_batches_on_created_at_and_id", order: :desc
     t.index ["finished_at"], name: "index_good_job_batches_on_finished_at", where: "(finished_at IS NOT NULL)"
+  end
+
+  create_table "good_job_concurrency_claims", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "job_id", null: false
+    t.uuid "locked_by_id"
+    t.integer "state", limit: 2, null: false
+    t.text "key", null: false
+    t.index ["job_id"], name: "index_good_job_concurrency_claims_on_job_id"
+    t.index ["key", "job_id"], name: "index_good_job_concurrency_claims_on_key_and_job_id", unique: true
+    t.index ["key", "state", "created_at"], name: "index_good_job_concurrency_claims_for_promotion"
+    t.index ["locked_by_id"], name: "index_good_job_concurrency_claims_on_locked_by_id", where: "(locked_by_id IS NOT NULL)"
   end
 
   create_table "good_job_executions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -387,7 +400,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_104545) do
   add_foreign_key "user_authorization_request_roles", "authorization_requests"
   add_foreign_key "user_authorization_request_roles", "users"
 
-  create_view "admin_apientreprise_#{Rails.env}_access_logs_consumption_summary", sql_definition: <<-SQL
+  create_view "admin_apientreprise_test_access_logs_consumption_summary", sql_definition: <<-SQL
       SELECT date(al."timestamp") AS date,
           CASE
               WHEN (ar.external_id IS NOT NULL) THEN 'token'::text
@@ -417,13 +430,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_104545) do
       (count(*) - count(DISTINCT COALESCE((al.params ->> 'hashed_params'::text), (al.path)::text))) AS appels_non_uniques,
       avg(
           CASE
-              WHEN ((al.status)::text = ANY ((ARRAY['200'::character varying, '404'::character varying])::text[])) THEN (al.duration)::double precision
+              WHEN ((al.status)::text = ANY (ARRAY[('200'::character varying)::text, ('404'::character varying)::text])) THEN (al.duration)::double precision
               ELSE NULL::double precision
           END) AS avg_duration,
       sum(
           CASE
               WHEN (((al.api_version)::text ~ '^v([3-9]|[1-9][0-9]+)$'::text) AND ((al.status)::text = '502'::text)) THEN 1
-              WHEN (((al.api_version)::text = 'v2'::text) AND ((al.status)::text = ANY ((ARRAY['503'::character varying, '504'::character varying])::text[]))) THEN 1
+              WHEN (((al.api_version)::text = 'v2'::text) AND ((al.status)::text = ANY (ARRAY[('503'::character varying)::text, ('504'::character varying)::text]))) THEN 1
               ELSE 0
           END) AS appels_erreurs_fournisseur
      FROM ((((access_logs al
@@ -431,7 +444,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_104545) do
        LEFT JOIN authorization_requests ar ON ((t.authorization_request_model_id = ar.id)))
        LEFT JOIN user_authorization_request_roles uar ON (((ar.id = uar.authorization_request_id) AND ((uar.role)::text = 'demandeur'::text))))
        LEFT JOIN users u ON ((u.id = uar.user_id)))
-    WHERE ((al."timestamp" >= (now() + 'P-1Y-6M'::interval)) AND ((al.controller)::text <> ALL ((ARRAY['uptime'::character varying, 'ping'::character varying, 'errors'::character varying, 'api_particulier/introspect'::character varying, 'api_entreprise/proxied_files'::character varying, 'api_particulier/ping_providers'::character varying, 'api_entreprise/ping_providers'::character varying, 'api_entreprise/inpi_proxy'::character varying, 'api_particulier/france_connect_jwks'::character varying])::text[])))
+    WHERE ((al."timestamp" >= (now() + 'P-1Y-6M'::interval)) AND ((al.controller)::text <> ALL (ARRAY[('uptime'::character varying)::text, ('ping'::character varying)::text, ('errors'::character varying)::text, ('api_particulier/introspect'::character varying)::text, ('api_entreprise/proxied_files'::character varying)::text, ('api_particulier/ping_providers'::character varying)::text, ('api_entreprise/ping_providers'::character varying)::text, ('api_entreprise/inpi_proxy'::character varying)::text, ('api_particulier/france_connect_jwks'::character varying)::text])))
     GROUP BY (date(al."timestamp")), ar.external_id, COALESCE(ar.external_id, (((al.params -> 'france_connect_client'::text) ->> 'id'::text))::character varying), al.controller;
   SQL
 end
