@@ -605,6 +605,7 @@ cnav:
     description: "Composition du foyer au sens de la prestation de revenu de solidarité active (RSA) : bénéficiaires du foyer et personnes à charge."
     tags:
       - Composition Foyer RSA
+      - Revenu de solidarité active
       - Prochainement
     attributes:
       beneficiaires:
@@ -612,7 +613,7 @@ cnav:
         scope: cnav_foyer_rsa
         type: array
         minItems: 1
-        description: "Liste des bénéficiaires du foyer RSA (allocataire, conjoint, ouvrant droit...)."
+        description: "Liste des bénéficiaires du foyer RSA et leurs qualités (allocataire, conjoint, ouvrant droit...)."
         items:
           type: object
           properties:
