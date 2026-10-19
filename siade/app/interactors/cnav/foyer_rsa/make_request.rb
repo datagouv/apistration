@@ -1,12 +1,21 @@
 class CNAV::FoyerRSA::MakeRequest < MockedInteractor
-  raises ::NotFoundError,
+  FILE_NOT_FOUND = raises ::NotFoundError,
     provider: 'CNAV',
     title: 'Dossier non trouvé',
     detail: "Le dossier allocataire n'a pas été trouvé auprès de la CNAV."
 
+  def call
+    super
+
+    return unless context.status == 404
+
+    context.errors = [build_declared_error(FILE_NOT_FOUND)]
+    context.fail!
+  end
+
   protected
 
-  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:disable-next Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def mocking_params
     {
       nomNaissance: context.params[:nom_naissance]&.downcase,
@@ -20,7 +29,6 @@ class CNAV::FoyerRSA::MakeRequest < MockedInteractor
       codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
     }.compact
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   def request_uri
     fail NotImplementedError
