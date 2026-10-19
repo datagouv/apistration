@@ -5718,19 +5718,14 @@ paths:
                               type: string
                               description: "Qualité du bénéficiaire au sein du foyer
                                 RSA : \n - 'allocataire' : bénéficiaire principal
-                                du RSA ; - 'allocataire_demandeur' : bénéficiaire
-                                principal du RSA, en cours de demande ; - 'ouvrant_droit'
-                                : personne dont la situation ouvre droit au RSA sans
-                                en être l'allocataire ; - 'conjoint' : conjoint de
-                                l'allocataire ; - 'conjoint_demandeur' : conjoint
-                                de l'allocataire, en cours de demande."
+                                du RSA ; - 'ouvrant_droit' : personne dont la situation
+                                ouvre droit au RSA sans en être l'allocataire ; -
+                                'conjoint' : conjoint de l'allocataire."
                               example: allocataire
                               enum:
                               - allocataire
-                              - allocataire_demandeur
                               - ouvrant_droit
                               - conjoint
-                              - conjoint_demandeur
                         x-scope: cnav_foyer_rsa
                       personnes_a_charge:
                         title: Personnes à charge du foyer
@@ -6072,19 +6067,14 @@ paths:
                               type: string
                               description: "Qualité du bénéficiaire au sein du foyer
                                 RSA : \n - 'allocataire' : bénéficiaire principal
-                                du RSA ; - 'allocataire_demandeur' : bénéficiaire
-                                principal du RSA, en cours de demande ; - 'ouvrant_droit'
-                                : personne dont la situation ouvre droit au RSA sans
-                                en être l'allocataire ; - 'conjoint' : conjoint de
-                                l'allocataire ; - 'conjoint_demandeur' : conjoint
-                                de l'allocataire, en cours de demande."
+                                du RSA ; - 'ouvrant_droit' : personne dont la situation
+                                ouvre droit au RSA sans en être l'allocataire ; -
+                                'conjoint' : conjoint de l'allocataire."
                               example: allocataire
                               enum:
                               - allocataire
-                              - allocataire_demandeur
                               - ouvrant_droit
                               - conjoint
-                              - conjoint_demandeur
                         x-scope: cnav_foyer_rsa
                       personnes_a_charge:
                         title: Personnes à charge du foyer
