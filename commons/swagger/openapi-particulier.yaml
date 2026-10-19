@@ -5497,6 +5497,7 @@ paths:
       summary: "[Identité] Composition du foyer RSA"
       tags:
       - Composition Foyer RSA
+      - Revenu de solidarité active
       - Prochainement
       parameters:
       - name: recipient
@@ -5718,8 +5719,8 @@ paths:
                         title: Bénéficiaires du foyer
                         type: array
                         minItems: 1
-                        description: Liste des bénéficiaires du foyer RSA (allocataire,
-                          conjoint, ouvrant droit...).
+                        description: Liste des bénéficiaires du foyer RSA et leurs
+                          qualités (allocataire, conjoint, ouvrant droit...).
                         items:
                           type: object
                           properties:
@@ -5984,6 +5985,7 @@ paths:
       summary: "[FranceConnect] Composition du foyer RSA"
       tags:
       - Composition Foyer RSA
+      - Revenu de solidarité active
       - Prochainement
       parameters:
       - name: recipient
@@ -6067,8 +6069,8 @@ paths:
                         title: Bénéficiaires du foyer
                         type: array
                         minItems: 1
-                        description: Liste des bénéficiaires du foyer RSA (allocataire,
-                          conjoint, ouvrant droit...).
+                        description: Liste des bénéficiaires du foyer RSA et leurs
+                          qualités (allocataire, conjoint, ouvrant droit...).
                         items:
                           type: object
                           properties:
