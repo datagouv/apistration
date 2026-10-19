@@ -329,8 +329,10 @@ fr:
             label: CNAV || API Participation familiale Eaje || Adresse du foyer
           cnav_participation_familiale_eaje_parametres_calcul:
             label: CNAV || API Participation familiale Eaje || Paramètres de calcul
-          cnav_foyer_rsa:
-            label: CNAV || API Composition Foyer RSA
+          cnav_foyer_rsa_beneficiaires:
+            label: CNAV || API Composition Foyer RSA || Bénéficiaires du foyer
+          cnav_foyer_rsa_personnes_a_charge:
+            label: CNAV || API Composition Foyer RSA || Personnes à charge du foyer
           cnav_allocation_enfant_handicape:
             label: CNAV || API Allocation enfant handicapé || Statut Allocation enfant handicapé
           cnav_allocation_rentree_scolaire:
