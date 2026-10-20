@@ -1,0 +1,31 @@
+<%= turbo_frame_tag 'recent_requests' do %>
+  <h2 class="fr-mt-4w">200 dernières requêtes (90 derniers jours)</h2>
+  <div class="fr-table">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Controller</th>
+          <th scope="col">Statut</th>
+          <th scope="col">Durée (ms)</th>
+          <th scope="col">IP</th>
+          <th scope="col">Chemin</th>
+          <th scope="col">Request ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @query.recent_requests.each do |log| %>
+          <tr>
+            <td><%= log.timestamp.strftime('%d/%m/%Y %H:%M:%S') %></td>
+            <td><%= log.controller %></td>
+            <td><%= log.status %></td>
+            <td><%= log.duration %></td>
+            <td><%= log.ip %></td>
+            <td><code><%= truncate(log.path, length: 60) %></code></td>
+            <td><code><%= log.request_id %></code></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag 'consumption_by_api_and_status' do %>
+  <%
+    by_api = @query.consumption_by_api_and_status
+    controllers = by_api.pluck(:controller).uniq
+    statuses = by_api.pluck(:status).uniq.sort
+    counts = by_api.to_h { |r| [[r[:controller], r[:status]], r[:count]] }
+  %>
+  <%= render 'shared/dsfr_chart/bar',
+    title: 'Consommation par API et code HTTP',
+    categories: controllers,
+    series: statuses.map { |status| { label: status, values: controllers.map { |c| counts.fetch([c, status], 0) } } },
+    stacked: true %>
+<% end %>
