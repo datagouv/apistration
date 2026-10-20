@@ -29,11 +29,11 @@ avec les conventions spécifiques :
 
 ## Règles de review
 
-`REVIEW.md` liste les PR à faible risque qu'un humain merge sur simple
-vérification de quelques conditions, chacune déclarée par un label
-`auto-mergeable:<règle>`. Quand une PR relève d'une de ces règles, poser
-son label et nommer la règle dans la description ; ne jamais merger
-soi-même.
+`REVIEW.md` liste les PR à faible risque mergeables sans relecture
+détaillée, sur la caution de leur auteur. Après avoir fait relire une PR,
+vérifier si elle relève d'une de ces règles ; si toutes ses conditions
+tiennent, lancer `bin/vouch-auto-mergeable <règle> "<preuve>"`, qui pose
+le statut et le label. Ne jamais merger soi-même.
 
 ## Worktrees
 
