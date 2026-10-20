@@ -1,0 +1,80 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>KPI & Statistiques</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_api: true, show_email: true, show_external_id: true, show_demarche: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels sur la période (hors aujourd\'hui)',
+        value: number_with_delimiter(@query.total_calls),
+        comparison: variation_label(@query.total_calls, @query.previous_total_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels uniques sur la période (hors aujourd\'hui)',
+        value: number_with_delimiter(@query.unique_calls),
+        comparison: variation_label(@query.unique_calls, @query.previous_unique_calls) %>
+    </div>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels totaux par période',
+      categories: @query.calls_by_period.map { |r| bucket_label(r[:bucket], @filter.interval) },
+      series: [{ label: 'Appels totaux', values: @query.calls_by_period.pluck(:total) }] %>
+
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels uniques par période',
+      categories: @query.unique_calls_by_period.map { |r| bucket_label(r[:bucket], @filter.interval) },
+      series: [{ label: 'Appels uniques', values: @query.unique_calls_by_period.pluck(:total) }] %>
+
+    <%= render 'shared/dsfr_chart/pie',
+      title: 'Taux d\'erreur avec typologie',
+      slices: @query.error_breakdown %>
+
+    <% if @filter.domaine != 'particulier' %>
+      <h2 class="fr-mt-4w">KPIs API Entreprise</h2>
+      <p class="fr-text--sm">Par semaine sur les 6 derniers mois, tous filtres confondus.</p>
+
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Nombre d\'entreprises aidées (KPI 1)',
+        categories: @query.kpi1_series.map { |r| bucket_label(r[:bucket], 'semaine') },
+        series: [{ label: 'SIREN', values: @query.kpi1_series.pluck(:value) }] %>
+
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Nombre d\'informations non redemandées (KPI 2)',
+        categories: @query.kpi2_series.map { |r| bucket_label(r[:bucket], 'semaine') },
+        series: [{ label: 'URL uniques', values: @query.kpi2_series.pluck(:value) }] %>
+
+      <%= render 'shared/dsfr_chart/bar',
+        title: 'Nombre d\'établissements aidés (KPI 3)',
+        categories: @query.kpi3_series.map { |r| bucket_label(r[:bucket], 'semaine') },
+        series: [{ label: 'SIRET', values: @query.kpi3_series.pluck(:value) }] %>
+    <% end %>
+
+    <h2 class="fr-mt-4w">Top 10 des variations</h2>
+    <p class="fr-text--sm">Par rapport à la période précédente de même durée, hors aujourd'hui.</p>
+    <div class="fr-table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Datapass</th>
+            <th scope="col">Email demandeur</th>
+            <th scope="col">Appels totaux</th>
+            <th scope="col">Appels période précédente</th>
+            <th scope="col">Variation %</th>
+            <th scope="col">Variation brute</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.top_variations.each do |row| %>
+            <tr>
+              <td><%= datapass_link(row[:source_id], row[:domaine]) %></td>
+              <td><%= row[:email] %></td>
+              <td><%= number_with_delimiter(row[:current]) %></td>
+              <td><%= number_with_delimiter(row[:previous]) %></td>
+              <td><%= row[:variation] %>&nbsp;%</td>
+              <td><%= number_with_delimiter(row[:variation_brute]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
