@@ -37,7 +37,7 @@ class AuthorizationRequest < ApplicationRecord
     through: :editor_delegations
 
   def available_editors_for_delegation
-    Editor.delegable.where.not(id: editor_delegations.active.select(:editor_id))
+    Editor.delegable.for_api(api).where.not(id: editor_delegations.active.select(:editor_id))
   end
 
   validates :external_id, uniqueness: true, allow_blank: true
