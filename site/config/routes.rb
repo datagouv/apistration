@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :api_requests, only: %i[index create]
     resources :admin_activities, only: %i[index], path: 'journal'
     resource :facilitators, only: %i[show], path: 'facilitateurs'
+    resources :statistics, only: %i[index show], param: :page do
+      get ':section', action: :section, on: :member, as: :section
+    end
   end
 
   get '/editeur', to: redirect('/editeur/habilitations'), as: :editor
