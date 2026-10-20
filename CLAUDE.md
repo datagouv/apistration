@@ -27,6 +27,14 @@ avec les conventions spécifiques :
   puis release SemVer-correcte (cf. skill `release-new-version`). Un
   changement serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
 
+## Règles de review
+
+`REVIEW.md` liste les PR à faible risque qu'un humain merge sur simple
+vérification de quelques conditions, chacune déclarée par un label
+`auto-mergeable:<règle>`. Quand une PR relève d'une de ces règles, poser
+son label et nommer la règle dans la description ; ne jamais merger
+soi-même.
+
 ## Worktrees
 
 Par défaut, tout développement démarre dans un worktree dédié sous
