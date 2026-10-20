@@ -4,6 +4,8 @@ require 'json'
 class MockDataBackend
   PAYLOADS_ROOT = Rails.root.join('config/mock_payloads')
 
+  class UnknownDeclaredError < StandardError; end
+
   class << self
     def get_response_for(operation_id, params)
       payloads_for(operation_id)[params.to_query]
@@ -47,9 +49,19 @@ class MockDataBackend
         deep_downcase(content['params']).to_query,
         {
           status: content['status'],
+          declared_error: declared_error(content['declared_error']),
           payload: JSON.parse(content['payload'])
-        }
+        }.compact
       ]
+    end
+
+    def declared_error(name)
+      return if name.nil?
+
+      declaration = name.safe_constantize
+      raise UnknownDeclaredError, "#{name} is not an error declaration" unless declaration.is_a?(ErrorRegistry::Declaration)
+
+      declaration
     end
 
     def deep_downcase(hash)

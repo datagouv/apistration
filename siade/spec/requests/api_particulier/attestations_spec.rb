@@ -20,16 +20,11 @@ RSpec.describe 'API Particulier: téléchargement d\'attestation PDF', api: :par
   end
 
   let(:proof) do
-    CNAV::ParticipationFamilialeEAJE::BuildAttestationProof.call(
-      generate_proof_mode: 'pdf',
-      scopes: %w[
-        cnav_participation_familiale_eaje_allocataires
-        cnav_participation_familiale_eaje_enfants
-        cnav_participation_familiale_eaje_parametres_calcul
-      ],
+    APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder.new(
+      { 'data' => data },
+      origin: 'CNAF',
       recipient: '13002526500013',
-      habilitation: 'a11b0000-0000-0000-0000-000000000042',
-      bundled_data: BundledData.new(data: Resource.new(data))
+      habilitation: 'a11b0000-0000-0000-0000-000000000042'
     )
   end
 

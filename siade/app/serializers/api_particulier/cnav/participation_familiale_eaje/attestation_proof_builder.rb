@@ -1,6 +1,4 @@
-class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::BuildAttestationProof
-  SEXE_LABELS = { 'M' => 'Masculin', 'F' => 'Féminin' }.freeze
-
+class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder < APIParticulier::AttestationProofBuilder
   IDENTITE = [
     ['nom_naissance', 'Nom de naissance'],
     ['nom_usage', "Nom d'usage"],
@@ -8,11 +6,6 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
     ['date_naissance', 'Date de naissance'],
     ['sexe', 'Sexe', ->(sexe) { SEXE_LABELS.fetch(sexe, sexe) }],
     ['code_cog_insee_commune_naissance', 'Code INSEE de la commune de naissance']
-  ].freeze
-
-  IDENTITE_MINIMISEE = [
-    ['nom_naissance', 'Nom de naissance', ->(nom) { "#{nom.first(3)}•••" }],
-    ['date_naissance', 'Date de naissance', ->(date) { "#{date[5, 2]}/#{date[0, 4]}" }]
   ].freeze
 
   ADRESSE = [
@@ -35,6 +28,11 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
     ['annee_calcul', 'Année de calcul']
   ].freeze
 
+  def initialize(body, origin:, **)
+    super(body, **)
+    @origin = origin
+  end
+
   protected
 
   def document
@@ -46,13 +44,13 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
   end
 
   def source
-    'CNAF'
+    @origin || ORIGINE_NON_COMMUNIQUEE
   end
 
   def verification_sections
     [
       allocataires_section(IDENTITE_MINIMISEE),
-      section('Enfants', 'cnav_participation_familiale_eaje_enfants') do
+      section('Enfants') do
         [[["Nombre d'enfants", data['enfants'].size.to_s]]] if data['enfants'].present?
       end,
       parametres_section
@@ -62,10 +60,10 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
   def attestation_sections
     [
       allocataires_section(IDENTITE),
-      section('Enfants', 'cnav_participation_familiale_eaje_enfants') do
+      section('Enfants') do
         data['enfants']&.map { |enfant| rows(IDENTITE, enfant) }
       end,
-      section('Adresse', 'cnav_participation_familiale_eaje_adresse') { [rows(ADRESSE, data['adresse'] || {})] },
+      section('Adresse') { [rows(ADRESSE, data['adresse'] || {})] },
       parametres_section
     ].compact
   end
@@ -73,14 +71,14 @@ class CNAV::ParticipationFamilialeEAJE::BuildAttestationProof < APIParticulier::
   private
 
   def allocataires_section(table)
-    section('Allocataires', 'cnav_participation_familiale_eaje_allocataires') do
+    section('Allocataires') do
       data['allocataires']&.map { |allocataire| rows(table, allocataire) }
     end
   end
 
   def parametres_section
     @parametres_section ||=
-      section('Paramètres de calcul de la participation familiale', 'cnav_participation_familiale_eaje_parametres_calcul') do
+      section('Paramètres de calcul de la participation familiale') do
         parametres = data['parametres_calcul_participation_familiale'] || {}
 
         [rows(PARAMETRES, parametres) + rows(BASE_RESSOURCES, parametres['base_ressources_annuelles'] || {})]

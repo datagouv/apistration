@@ -122,7 +122,7 @@ RSpec.describe 'API Particulier CNAV: allocation soutien familial with civility'
                 stub_rncps_404('allocation_soutien_familial')
               end
 
-              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false))
+              build_rswag_example(CNAV::ValidateResponse::ALLOCATAIRE_NOT_REFERENCED.build(provider_name: 'CNAV'))
 
               schema '$ref' => '#/components/schemas/Error'
 

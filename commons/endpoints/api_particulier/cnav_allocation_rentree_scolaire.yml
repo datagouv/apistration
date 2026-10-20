@@ -46,4 +46,14 @@ fiche:
     parameters:
       - Identité pivot
       - FranceConnect
-    faq: []
+    faq:
+      - q: <a name="origine-erreur-404"></a> Comment savoir quel organisme a répondu en cas de 404 ?
+        a: |+
+          Chaque erreur `404` _(allocataire non référencé, dossier allocataire absent)_ indique dans `meta.origin` l'organisme qui a répondu : `RNCPS` quand l'allocataire n'est référencé auprès d'aucune caisse éligible, `CNAF` ou `MSA` selon la caisse de rattachement de l'allocataire.
+
+          `meta.origin` et `meta.provider` coexistent car ils ne disent pas la même chose : `meta.provider` reste l'émetteur du code d'erreur dans la nomenclature des erreurs, qui ne désigne pas toujours l'organisme qui a répondu (un allocataire non référencé porte par exemple le fournisseur `CNAF & MSA` et l'origine `RNCPS`).
+
+    historique: |+
+      **15/10/2026 — Origine des erreurs 404**
+
+      Les erreurs `404` précisent désormais dans `meta.origin` l'organisme qui a répondu (RNCPS, CNAF ou MSA). [En savoir plus](#origine-erreur-404).

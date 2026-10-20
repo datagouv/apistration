@@ -12,6 +12,7 @@ params:
   codeCogInseeCommuneNaissance: "75101"
   codeCogInseePaysNaissance: "99100"
 status: 404
+declared_error: CNAV::ValidateResponse::FILE_NOT_FOUND_CNAF
 payload: |-
   {
     "errors": [
@@ -21,7 +22,8 @@ payload: |-
         "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAF"
+          "provider": "CNAF",
+          "origin": "CNAF"
         }
       }
     ]

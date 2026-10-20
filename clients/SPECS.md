@@ -249,8 +249,15 @@ Every exception carries:
 |---------------|---------------------------------------------------------|
 | `http_status` | Integer status code (nil for `TransportError`).         |
 | `errors`      | Raw JSON:API `errors` array (empty for `TransportError`). |
+| `meta`        | Response top-level `meta` object, verbatim (empty when absent). |
+| `links`       | Response top-level `links` object, verbatim (empty when absent). |
 | `method`      | HTTP verb sent.                                         |
 | `url`         | Fully-resolved URL sent.                                |
+
+Top-level `meta` and `links` can carry data on an error response: on API
+Particulier, a `404` requested with `X-Generate-Proof` holds the attestation
+proof (`meta.verification_url`, `meta.verification_code`,
+`links.attestation_pdf`).
 
 Convenience accessors `first_error_code`, `first_error_title`,
 `first_error_detail`, `first_error_source` MUST be provided for ergonomics.
