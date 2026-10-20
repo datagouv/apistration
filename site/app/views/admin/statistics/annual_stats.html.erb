@@ -1,0 +1,41 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Statistiques annuelles</h1>
+    <p class="fr-text--sm">
+      Du premier jour du mois choisi jusqu'à la fin du mois dernier (du jour choisi jusqu'à hier pour le taux de succès),
+      sur les 18 derniers mois au plus. Appels uniques et en cache : sommes par jour, source (habilitation ou client FranceConnect) et endpoint, 401 et 403 compris.
+    </p>
+
+    <%= render 'admin/statistics/filter', filter: @filter, show_date_to: false, show_interval: false, show_api: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels totaux', value: number_with_delimiter(@query.total_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels uniques', value: number_with_delimiter(@query.unique_calls) %>
+      <%= render 'shared/dsfr_chart/kpi', label: 'Appels en cache', value: number_with_delimiter(@query.cached_calls) %>
+    </div>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Utilisateurs (habilitations avec un appel réussi)', value: number_with_delimiter(@query.total_users) %>
+    </div>
+
+    <%= render 'shared/dsfr_chart/pie', title: 'Taux de succès', slices: @query.success_rate_breakdown %>
+
+    <% calls_by_month = @query.calls_by_month %>
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels réussis par mois',
+      categories: calls_by_month.map { |r| bucket_label(r[:bucket], 'mois') },
+      series: [{ label: 'Appels', values: calls_by_month.pluck(:value) }] %>
+
+    <% cumulative = @query.cumulative_calls_by_month %>
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'appels réussis cumulés par mois',
+      categories: cumulative.map { |r| bucket_label(r[:bucket], 'mois') },
+      series: [{ label: 'Appels cumulés', values: cumulative.pluck(:value) }] %>
+
+    <% users_by_month = @query.users_by_month %>
+    <%= render 'shared/dsfr_chart/bar',
+      title: 'Nombre d\'utilisateurs par mois',
+      categories: users_by_month.map { |r| bucket_label(r[:bucket], 'mois') },
+      series: [{ label: 'Utilisateurs', values: users_by_month.pluck(:value) }] %>
+  </div>
+</div>
