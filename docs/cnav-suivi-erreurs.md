@@ -159,3 +159,4 @@ personne ne connaît :
   l'appelle que si les trois paramètres de transcodage sont présents
   sans code commune ; `CNAV::MakeRequest` transmet le département
   dans tous les cas.
+
