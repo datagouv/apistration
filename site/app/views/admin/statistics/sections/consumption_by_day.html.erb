@@ -1,0 +1,11 @@
+<%= turbo_frame_tag 'consumption_by_day' do %>
+  <% by_day = @query.consumption_by_day %>
+  <%= render 'shared/dsfr_chart/bar',
+    title: 'Consommation par jour (hors 401 et 403)',
+    categories: by_day.map { |r| bucket_label(r[:bucket], 'jour') },
+    series: [
+      { label: 'Appels uniques', values: by_day.pluck(:unique) },
+      { label: 'Appels non uniques', values: by_day.pluck(:non_unique) }
+    ],
+    stacked: true %>
+<% end %>
