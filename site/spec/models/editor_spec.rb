@@ -14,6 +14,53 @@ RSpec.describe Editor do
     it { expect(build(:editor, apis: %w[entreprise wrong])).not_to be_valid }
   end
 
+  describe 'form_uids validation in the admin form context' do
+    let(:editor) { create(:editor, form_uids: %w[legacy-form]) }
+    let(:datapass_uids) { %w[known-form other-form] }
+
+    before { allow(DatapassFormUids).to receive(:all).and_return(datapass_uids) }
+
+    it 'accepts form_uids known to DataPass' do
+      editor.form_uids = %w[known-form other-form]
+
+      expect(editor.valid?(:admin_form)).to be(true)
+    end
+
+    it 'rejects added form_uids unknown to DataPass' do
+      editor.form_uids = %w[known-form typo-form]
+
+      expect(editor.valid?(:admin_form)).to be(false)
+      expect(editor.errors[:form_uids].first).to include('typo-form')
+    end
+
+    it 'does not recheck form_uids that were already stored' do
+      editor.form_uids = %w[legacy-form known-form]
+
+      expect(editor.valid?(:admin_form)).to be(true)
+    end
+
+    it 'does not call DataPass when form_uids did not change' do
+      editor.name = 'Renamed'
+
+      expect(editor.valid?(:admin_form)).to be(true)
+      expect(DatapassFormUids).not_to have_received(:all)
+    end
+
+    it 'does not call DataPass outside the admin form context' do
+      editor.form_uids = %w[typo-form]
+
+      expect(editor.valid?).to be(true)
+    end
+
+    it 'rejects the change when DataPass cannot be reached' do
+      allow(DatapassFormUids).to receive(:all).and_raise(DatapassAPIClient::Error)
+      editor.form_uids = %w[known-form]
+
+      expect(editor.valid?(:admin_form)).to be(false)
+      expect(editor.errors[:form_uids]).to be_present
+    end
+  end
+
   describe 'allowed_ips validation' do
     it { expect(build(:editor, allowed_ips: [])).to be_valid }
     it { expect(build(:editor, allowed_ips: ['203.0.113.10', '198.51.100.0/24'])).to be_valid }

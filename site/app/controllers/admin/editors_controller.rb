@@ -17,7 +17,7 @@ class Admin::EditorsController < AdminController
   def create
     @editor = Editor.new(editor_params)
 
-    if @editor.save
+    if @editor.save(context: :admin_form)
       success_message(title: 'Éditeur créé')
       redirect_to admin_editor_path(@editor)
     else

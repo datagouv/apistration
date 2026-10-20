@@ -22,6 +22,7 @@ class Editor < ApplicationRecord
   validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
   validate :apis_included_in_list
+  validate :form_uids_known_to_datapass, on: :admin_form, if: :form_uids_changed?
 
   scope :delegable, -> { where(editor_tokens_enabled: true) }
   scope :for_api, ->(api) { where('ARRAY[:api]::varchar[] <@ apis', api:) }
@@ -87,5 +88,13 @@ class Editor < ApplicationRecord
     return if apis.all? { |api| APIS.include?(api) }
 
     errors.add(:apis, :inclusion)
+  end
+
+  def form_uids_known_to_datapass
+    unknown = (form_uids - form_uids_was.to_a) - DatapassFormUids.all
+
+    errors.add(:form_uids, :unknown_form_uids, uids: unknown.join(', ')) if unknown.any?
+  rescue DatapassAPIClient::Error
+    errors.add(:form_uids, :form_uids_unverifiable)
   end
 end

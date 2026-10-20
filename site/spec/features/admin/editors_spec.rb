@@ -3,6 +3,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
   before do
     login_as(admin)
+    allow(DatapassFormUids).to receive(:all).and_return(%w[new_form1 new_form2 api-entreprise])
   end
 
   describe 'index' do
@@ -106,6 +107,17 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
       expect(page).to have_css('.fr-alert.fr-alert--error')
     end
+
+    it 'rejects form_uids unknown to DataPass' do
+      visit new_admin_editor_path
+
+      fill_in 'editor_name', with: 'New Editor'
+      fill_in 'editor_form_uids', with: 'api-entreprise, typo-form'
+
+      expect { click_on "Créer l'éditeur" }.not_to change(Editor, :count)
+
+      expect(page).to have_css('.fr-error-text', text: 'typo-form')
+    end
   end
 
   describe 'update' do
@@ -119,6 +131,16 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
       expect(editor.reload.form_uids).to eq(%w[new_form1 new_form2])
       expect(page).to have_css('.fr-alert.fr-alert--success')
+    end
+
+    it 'rejects form_uids unknown to DataPass' do
+      visit edit_admin_editor_path(editor)
+
+      fill_in 'editor_form_uids', with: 'new_form1, typo-form'
+      click_on 'Sauvegarder'
+
+      expect(editor.reload.form_uids).to eq(%w[umad-editor])
+      expect(page).to have_css('.fr-error-text', text: 'typo-form')
     end
 
     it 'records the update activity' do

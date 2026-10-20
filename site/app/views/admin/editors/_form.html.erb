@@ -96,10 +96,13 @@
 
   <div class="fr-grid-row fr-grid-row--gutters">
     <div class="fr-col-6">
-      <div class="fr-input-group">
+      <div class="fr-input-group <%= 'fr-input-group--error' if editor.errors[:form_uids].any? %>">
         <%= f.label :form_uids, 'Formulaires DataPass', class: 'fr-label' %>
         <span class="fr-hint-text">Séparés par des virgules</span>
         <%= f.text_area :form_uids, value: editor.form_uids.join(', '), class: 'fr-input', rows: 3 %>
+        <% editor.errors[:form_uids].each do |message| %>
+          <p class="fr-error-text"><%= message %></p>
+        <% end %>
       </div>
     </div>
     <div class="fr-col-6">

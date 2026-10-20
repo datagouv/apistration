@@ -1,5 +1,6 @@
 class Admin::Editors::UpdateModel < ApplicationInteractor
   def call
-    context.fail! unless context.editor.update(context.editor_params)
+    context.editor.assign_attributes(context.editor_params)
+    context.fail! unless context.editor.save(context: :admin_form)
   end
 end

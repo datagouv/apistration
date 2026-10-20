@@ -5,6 +5,8 @@ fr:
       invalid_ip: "contient une entrée invalide : %{entry}"
       ip_range_too_wide: "contient une plage trop large (préfixe IPv4 minimum : /24) : %{entry}"
       forbidden_ip: "contient une plage privée ou réservée : %{entry}"
+      unknown_form_uids: "contient des formulaires inconnus de DataPass : %{uids}"
+      form_uids_unverifiable: "n'a pas pu être vérifié auprès de DataPass, réessayez plus tard"
       outside_editor_range: "doit être incluse dans les adresses IP autorisées de l'éditeur : %{entry}"
     show:
       not_found:
