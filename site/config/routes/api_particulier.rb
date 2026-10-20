@@ -65,6 +65,8 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/compte/jetons/:id', to: 'tokens#show', as: :token
     get '/compte/jetons/:id/demande-prolongation', to: 'tokens#ask_for_prolongation', as: :token_ask_for_prolongation
     get '/compte/jetons/:id/stats', to: 'tokens#stats', as: :token_stats
+    get '/compte/jetons/:id/stats/last_requests', to: 'tokens#last_requests', as: :token_last_requests
+    get '/compte/jetons/:id/stats/:period', to: 'tokens#stats_period', as: :token_stats_period, constraints: { period: /last_10_minutes|last_30_hours|last_8_days/ }
     get '/compte/jetons/:id/renew', to: 'tokens#renew', as: :token_renew
 
 

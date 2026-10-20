@@ -27,7 +27,7 @@
   <div class="fr-col-12 fr-pb-2w">
     <div class="fr-tabs">
       <ul class="fr-tabs__list" role="tablist" aria-label="stats-for-period-tabs">
-        <% @stats_facade.stats_metabase_urls.keys.each_with_index do |period, index| %>
+        <% TokenStatsFacade::PERIODS.keys.each_with_index do |period, index| %>
           <li role="presentation">
           <button id="tabpanel-<%= period %>" class="fr-tabs__tab fr-icon-checkbox-line fr-tabs__tab--icon-left" tabindex="<%= index == 0 ? '0' : '-1' %>" role="tab" aria-selected="<%= index == 0 ? "true" : "false" %>" aria-controls="tabpanel-<%= period %>-panel">
               <%= t(".tabs.#{period}") %>
@@ -36,9 +36,10 @@
         <% end %>
       </ul>
 
-      <% @stats_facade.stats_metabase_urls.each_with_index do |(period, metabase_url), index| %>
-        <div id="tabpanel-<%= period %>-panel" class="fr-tabs__panel <%= index == 0 ? 'fr-tabs__panel--selected' : '' %>" role="tabpanel" aria-labelledby="tabpanel-<%= period %>" tabindex="0">
-          <%= render partial: 'shared/metabase', locals: { metabase_url: metabase_url } %>
+      <% TokenStatsFacade::PERIODS.keys.each_with_index do |period, index| %>
+        <% period_path = url_for(action: :stats_period, id: @token.id, period:) %>
+        <div id="tabpanel-<%= period %>-panel" class="fr-tabs__panel <%= index == 0 ? 'fr-tabs__panel--selected' : '' %>" role="tabpanel" aria-labelledby="tabpanel-<%= period %>" tabindex="0" data-controller="tab-frame" data-action="dsfr.disclose->tab-frame#load">
+          <%= render 'shared/tokens/stats_frame', id: "token_stats_#{period}", src: (period_path if index == 0), data: { tab_frame_target: 'frame', src: period_path } %>
         </div>
       <% end %>
     </div>
@@ -46,9 +47,9 @@
 
   <div class="fr-col-12 fr-pb-2w">
     <h3>
-      <%= t('.requests_details.title', limit: @stats_facade.last_requests_limit) %>
+      <%= t('.requests_details.title', limit: TokenStatsFacade::LAST_REQUESTS_LIMIT) %>
     </h3>
 
-    <%= render partial: 'shared/metabase', locals: { metabase_url: @stats_facade.last_requests_metabase_url, height: '430px' } %>
+    <%= render 'shared/tokens/stats_frame', id: 'token_stats_last_requests', src: url_for(action: :last_requests, id: @token.id) %>
   </div>
 </div>

@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "token_stats_#{@period}" do %>
+  <% if @breakdown.empty? %>
+    <p class="fr-py-2w"><%= t('shared.tokens.stats.no_calls') %></p>
+  <% else %>
+    <%= render 'shared/dsfr_chart/pie',
+      title: t('shared.tokens.stats.status_breakdown', count: @breakdown.values.sum),
+      slices: @breakdown.to_h { |category, count| ["#{t("shared.tokens.stats.status_categories.#{category}")} (#{number_with_delimiter(count)})", count] } %>
+  <% end %>
+<% end %>
