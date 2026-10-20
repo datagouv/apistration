@@ -5,3 +5,5 @@ class AccessLogPingView < ApplicationRecord
     ActiveRecord::Base.connection.execute("REFRESH MATERIALIZED VIEW #{table_name}")
   end
 end
+
+
