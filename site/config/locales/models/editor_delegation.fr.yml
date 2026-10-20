@@ -1,0 +1,11 @@
+fr:
+  activerecord:
+    attributes:
+      editor_delegation:
+        editor: "Éditeur"
+    errors:
+      models:
+        editor_delegation:
+          attributes:
+            editor:
+              api_mismatch: "ne propose pas l'API de cette habilitation"

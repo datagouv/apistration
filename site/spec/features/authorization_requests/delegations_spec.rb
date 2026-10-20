@@ -64,4 +64,29 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
       expect(page).to have_no_css('#habilitation_delegations')
     end
   end
+
+  context 'when a delegable editor only serves API Particulier' do
+    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
+    let!(:particulier_editor) { create(:editor, :delegable, name: 'Particulier Corp', apis: %w[particulier]) }
+
+    it 'does not propose it for an API Entreprise authorization request' do
+      visit authorization_request_path(authorization_request)
+
+      expect(page).to have_select('editor_id', with_options: ['UMAD Corp'])
+      expect(page).to have_no_select('editor_id', with_options: ['Particulier Corp'])
+    end
+  end
+
+  describe 'on API Particulier', app: :api_particulier do
+    let(:authorization_request) { create(:authorization_request, :validated, api: 'particulier') }
+    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
+    let!(:entreprise_editor) { create(:editor, :delegable, name: 'Entreprise Corp', apis: %w[entreprise]) }
+
+    it 'does not propose an editor which only serves API Entreprise' do
+      visit authorization_request_path(authorization_request)
+
+      expect(page).to have_select('editor_id', with_options: ['UMAD Corp'])
+      expect(page).to have_no_select('editor_id', with_options: ['Entreprise Corp'])
+    end
+  end
 end

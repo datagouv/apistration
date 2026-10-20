@@ -42,4 +42,24 @@ RSpec.describe EditorDelegation::Create do
       expect(result).to be_failure
     end
   end
+
+  context 'with an API Particulier editor on an API Entreprise authorization request' do
+    let(:authorization_request) { create(:authorization_request, api: 'entreprise') }
+    let(:editor_id) { create(:editor, :delegable, apis: %w[particulier]).id }
+
+    it 'fails without creating a delegation' do
+      expect(result).to be_failure
+      expect(EditorDelegation.count).to eq(0)
+    end
+  end
+
+  context 'with an API Entreprise editor on an API Particulier authorization request' do
+    let(:authorization_request) { create(:authorization_request, api: 'particulier') }
+    let(:editor_id) { create(:editor, :delegable, apis: %w[entreprise]).id }
+
+    it 'fails without creating a delegation' do
+      expect(result).to be_failure
+      expect(EditorDelegation.count).to eq(0)
+    end
+  end
 end
