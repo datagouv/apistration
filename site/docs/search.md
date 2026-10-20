@@ -86,3 +86,4 @@ Le paramètre `?s=query` est synchronisé pour permettre le partage de liens.
 - `app/assets/javascripts/controllers/search_catalogue_controller.js` : logique de recherche
 - `app/helpers/endpoint_helper.rb` : extraction des clés d'attributs
 - `app/views/*/endpoints/_endpoint.html.erb` : data attributes et zones d'affichage
+
