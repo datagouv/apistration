@@ -1,0 +1,112 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Status utilisateur, datapass et jetons</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_dates: false, show_interval: false, show_email: true, show_external_id: true,
+      show_demarche: true, show_token: true %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-2w">
+      <%= render 'shared/dsfr_chart/kpi', label: 'Habilitations', value: number_with_delimiter(@query.habilitations_count) %>
+    </div>
+
+    <% if @filter.habilitation_criteria? %>
+      <h2>Informations générales des utilisateurs</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nom prénom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Téléphone</th>
+              <th scope="col">Rôles</th>
+              <th scope="col">SIRET</th>
+              <th scope="col">Raison sociale</th>
+              <th scope="col">Datapass</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.user_info.each do |row| %>
+              <tr>
+                <td><%= [row[:last_name], row[:first_name]].compact.join(' ') %></td>
+                <td><%= row[:email] %></td>
+                <td><%= row[:phone_number] %></td>
+                <td><%= row[:roles] %></td>
+                <td><%= row[:siret] %></td>
+                <td><%= row[:raison_sociale] %></td>
+                <td><%= datapass_link(row[:external_id], row[:api]) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="fr-mt-4w">Liste des habilitations</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Intitulé</th>
+              <th scope="col">Jeton fourni le</th>
+              <th scope="col">Jeton expire le</th>
+              <th scope="col">Validée le</th>
+              <th scope="col">API</th>
+              <th scope="col">Statut</th>
+              <th scope="col">SIRET</th>
+              <th scope="col">Raison sociale</th>
+              <th scope="col">Datapass</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.habilitations.each do |row| %>
+              <tr>
+                <td><%= row[:intitule] %></td>
+                <td><%= Time.zone.at(row[:iat]).strftime('%d/%m/%Y') if row[:iat] %></td>
+                <td><%= Time.zone.at(row[:exp]).strftime('%d/%m/%Y') %></td>
+                <td><%= row[:validated_at]&.strftime('%d/%m/%Y') %></td>
+                <td><%= row[:api] %></td>
+                <td><%= row[:status] %></td>
+                <td><%= row[:siret] %></td>
+                <td><%= row[:raison_sociale] %></td>
+                <td><%= datapass_link(row[:external_id], row[:api]) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="fr-mt-4w">Liste des jetons</h2>
+      <div class="fr-table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Jeton</th>
+              <th scope="col">Expire le</th>
+              <th scope="col">Scopes</th>
+              <th scope="col">Consommation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @query.tokens.each do |id, exp, scopes| %>
+              <tr>
+                <td><code><%= id %></code></td>
+                <td><%= Time.zone.at(exp).strftime('%d/%m/%Y') %></td>
+                <td><%= scopes.join(', ') %></td>
+                <td><%= link_to 'Consommation', admin_statistic_path(page: :token_consumption, filter: { token_id: id }) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-mt-4w">
+      <div class="fr-col-12 fr-col-md-6">
+        <%= render 'shared/dsfr_chart/pie', title: 'Statut des habilitations', slices: @query.habilitation_status_breakdown %>
+      </div>
+      <div class="fr-col-12 fr-col-md-6">
+        <%= render 'shared/dsfr_chart/pie', title: 'Statut des jetons', slices: @query.token_status_breakdown %>
+      </div>
+    </div>
+  </div>
+</div>

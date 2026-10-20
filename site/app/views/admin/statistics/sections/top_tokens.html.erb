@@ -1,0 +1,18 @@
+<%= turbo_frame_tag statistics_frame_id('top_tokens', @filter.domaine) do %>
+  <div class="fr-table">
+    <table>
+      <caption>Jetons</caption>
+      <thead>
+        <tr><th scope="col">Jeton</th><th scope="col">Appels</th></tr>
+      </thead>
+      <tbody>
+        <% @query.top_tokens(@filter.domaine).each do |row| %>
+          <tr>
+            <td><%= link_to tag.code(row[:identifier]), admin_statistic_path(page: :token_consumption, filter: { token_id: row[:identifier] }), data: { turbo_frame: '_top' } %></td>
+            <td><%= number_with_delimiter(row[:calls]) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

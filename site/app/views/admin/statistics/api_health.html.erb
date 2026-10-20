@@ -1,0 +1,39 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>État de santé global des APIs</h1>
+    <p class="fr-text--sm fr-mb-2w">Sur la dernière heure, hors 401, 403 et 422, par fournisseur et version, trié par part de 502.</p>
+
+    <%= render 'admin/statistics/filter', filter: @filter, show_dates: false, show_interval: false, show_api: true %>
+
+    <div class="fr-table">
+      <table>
+        <caption>État instantané des APIs</caption>
+        <thead>
+          <tr>
+            <th scope="col">Fournisseur</th>
+            <th scope="col">Bouquet</th>
+            <th scope="col">Version</th>
+            <th scope="col">% de 502</th>
+            <th scope="col">% de 200</th>
+            <th scope="col">% de 404</th>
+            <th scope="col">% du reste</th>
+            <th scope="col">Nb total d'appels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @query.instant_status.each do |row| %>
+            <tr>
+              <td><%= row[:provider] %></td>
+              <td><%= row[:bouquet] %></td>
+              <td><%= row[:version] %></td>
+              <% %i[rate_502 rate_200 rate_404 rate_others].each do |rate| %>
+                <td><%= number_to_percentage(row[rate] * 100, precision: 1) %></td>
+              <% end %>
+              <td><%= number_with_delimiter(row[:total]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
