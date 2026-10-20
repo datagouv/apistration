@@ -12,7 +12,7 @@ module DelegationsManagement
     )
 
     if result.success?
-      success_message(title: t('.success.title'))
+      success_message(title: t('concerns.delegations_management.create.success.title'))
     else
       error_message(title: result.message)
     end
@@ -27,7 +27,7 @@ module DelegationsManagement
     )
 
     if result.success?
-      success_message(title: t('.success.title'))
+      success_message(title: t('concerns.delegations_management.destroy.success.title'))
     else
       error_message(title: result.message)
     end
