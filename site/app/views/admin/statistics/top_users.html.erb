@@ -1,0 +1,66 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Top 10 utilisateurs</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter, show_domaine: false, show_interval: false %>
+
+    <% %w[entreprise particulier].each do |domaine| %>
+      <h2 class="fr-mt-4w">API <%= domaine.capitalize %></h2>
+
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <div class="fr-col-12 fr-col-md-6">
+          <div class="fr-table">
+            <table>
+              <caption>Éditeurs (démarche)</caption>
+              <thead>
+                <tr><th scope="col">Éditeur</th><th scope="col">Appels</th></tr>
+              </thead>
+              <tbody>
+                <% @query.top_editors(domaine).each do |row| %>
+                  <tr>
+                    <td><%= link_to row[:identifier], admin_statistic_path(page: :user_status, filter: { demarche: row[:identifier], domaine: }) %></td>
+                    <td><%= number_with_delimiter(row[:calls]) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="fr-col-12 fr-col-md-6">
+          <%= statistics_lazy_section(:top_users, 'top_tokens', label: 'Top 10 jetons', domaine:) %>
+        </div>
+
+        <div class="fr-col-12">
+          <div class="fr-table">
+            <table>
+              <caption>Datapass</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Datapass</th>
+                  <th scope="col">SIRET</th>
+                  <th scope="col">Intitulé</th>
+                  <th scope="col">Appels</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @query.top_datapass(domaine).each do |row| %>
+                  <tr>
+                    <td><%= datapass_link(row[:identifier], row[:api]) %></td>
+                    <td><%= row[:siret] %></td>
+                    <td><%= truncate(row[:intitule].to_s, length: 60) %></td>
+                    <td><%= number_with_delimiter(row[:calls]) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="fr-col-12 fr-col-md-6">
+          <%= statistics_lazy_section(:top_users, 'top_ips', label: 'Top 10 adresses IP', domaine:) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
