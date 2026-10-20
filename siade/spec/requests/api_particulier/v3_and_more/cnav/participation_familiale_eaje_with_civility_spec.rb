@@ -214,7 +214,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
             example 'application/json', :dossier_absent_avec_preuve, {
               errors: [
                 NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false)
-                  .add_meta(origine: 'CNAF')
+                  .add_meta(origin: 'CNAF')
                   .to_h
               ],
               meta: {

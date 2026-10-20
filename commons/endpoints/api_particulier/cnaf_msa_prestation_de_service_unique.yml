@@ -173,7 +173,7 @@ fiche:
 
           L'attestation PDF reprend l'ensemble des données délivrées et porte le code de vérification ainsi qu'un **QR code** (également cliquable) menant à la page publique de vérification hébergée par API Particulier. Cette page n'affiche que des données minimisées — identités tronquées, sans adresse, nombre d'enfants, paramètres de calcul complets. L'authenticité se vérifie en comparant le code et les données des deux documents.
 
-          **Une consultation sans résultat s'atteste aussi.** Sur une réponse `404` (allocataire non référencé, dossier absent auprès de la CNAF ou de la MSA, allocataire non éligible), le même en-tête ajoute la même preuve : une **attestation de consultation sans résultat** (ou, quand le dossier a été trouvé mais n'ouvre pas droit, une **attestation de consultation : dossier non éligible**) qui reprend l'erreur, son origine ([`meta.origine`](#origine-erreur-404) de l'erreur : RNCPS, CNAF ou MSA, « origine non communiquée » si elle est inconnue), la date et l'heure de l'appel, et l'identité de l'usager telle que vous l'avez transmise. Les autres erreurs (`422`, `502`…) ne portent pas de preuve : elles ne disent rien de la situation de l'usager.
+          **Une consultation sans résultat s'atteste aussi.** Sur une réponse `404` (allocataire non référencé, dossier absent auprès de la CNAF ou de la MSA, allocataire non éligible), le même en-tête ajoute la même preuve : une **attestation de consultation sans résultat** (ou, quand le dossier a été trouvé mais n'ouvre pas droit, une **attestation de consultation : dossier non éligible**) qui reprend l'erreur, son origine ([`meta.origin`](#origine-erreur-404) de l'erreur : RNCPS, CNAF ou MSA, « origine non communiquée » si elle est inconnue), la date et l'heure de l'appel, et l'identité de l'usager telle que vous l'avez transmise. Les autres erreurs (`422`, `502`…) ne portent pas de preuve : elles ne disent rien de la situation de l'usager.
 
           Le lien de vérification reste valable **5 ans** après l'émission. Aucune donnée n'est accessible sans le document : le lien chiffré est l'unique clé d'accès.
 
@@ -183,14 +183,14 @@ fiche:
 
       - q: <a name="origine-erreur-404"></a> Comment savoir quel organisme a répondu en cas de 404 ?
         a: |+
-          Chaque erreur `404` _(allocataire non référencé, dossier allocataire absent, allocataire non éligible)_ indique dans `meta.origine` l'organisme qui a répondu : `RNCPS` quand l'allocataire n'est référencé auprès d'aucune caisse éligible, `CNAF` ou `MSA` selon la caisse de rattachement de l'allocataire. Pour un allocataire non éligible, `meta.origine` est absent quand la passerelle de la CNAV ne nomme pas la caisse qui a répondu.
+          Chaque erreur `404` _(allocataire non référencé, dossier allocataire absent, allocataire non éligible)_ indique dans `meta.origin` l'organisme qui a répondu : `RNCPS` quand l'allocataire n'est référencé auprès d'aucune caisse éligible, `CNAF` ou `MSA` selon la caisse de rattachement de l'allocataire. Pour un allocataire non éligible, `meta.origin` est absent quand la passerelle de la CNAV ne nomme pas la caisse qui a répondu.
 
-          `meta.origine` et `meta.provider` coexistent car ils ne disent pas la même chose : `meta.provider` reste l'émetteur du code d'erreur dans la nomenclature des erreurs, qui ne désigne pas toujours l'organisme qui a répondu (un allocataire non référencé porte par exemple le fournisseur `CNAF & MSA` et l'origine `RNCPS`).
+          `meta.origin` et `meta.provider` coexistent car ils ne disent pas la même chose : `meta.provider` reste l'émetteur du code d'erreur dans la nomenclature des erreurs, qui ne désigne pas toujours l'organisme qui a répondu (un allocataire non référencé porte par exemple le fournisseur `CNAF & MSA` et l'origine `RNCPS`).
 
     historique: |+
       **13/10/2026 — Preuve d'une consultation sans résultat**
 
-      Avec l'en-tête `X-Generate-Proof`, les réponses `404` portent elles aussi une preuve d'attestation : attestation de consultation sans résultat, ou dossier non éligible. Les erreurs `404` précisent désormais dans `meta.origine` l'organisme qui a répondu (RNCPS, CNAF ou MSA) : [en savoir plus](#origine-erreur-404). La source de l'attestation d'un dossier trouvé est désormais la caisse qui a répondu (CNAF ou MSA) et non plus toujours la CNAF. [En savoir plus](#attestation-pdf-verifiable).
+      Avec l'en-tête `X-Generate-Proof`, les réponses `404` portent elles aussi une preuve d'attestation : attestation de consultation sans résultat, ou dossier non éligible. Les erreurs `404` précisent désormais dans `meta.origin` l'organisme qui a répondu (RNCPS, CNAF ou MSA) : [en savoir plus](#origine-erreur-404). La source de l'attestation d'un dossier trouvé est désormais la caisse qui a répondu (CNAF ou MSA) et non plus toujours la CNAF. [En savoir plus](#attestation-pdf-verifiable).
 
       **29/07/2026 — Preuve d'attestation vérifiable**
 

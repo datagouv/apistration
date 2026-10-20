@@ -15,14 +15,14 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
 
       its(:errors) { is_expected.to be_empty }
 
-      its(:origine) { is_expected.to be_nil }
+      its(:origin) { is_expected.to be_nil }
 
       context 'when the MSA answered' do
         let(:response) do
           instance_double(Net::HTTPOK, code: 200, body:, header: { 'X-APISECU-FD' => '00171001' })
         end
 
-        its(:origine) { is_expected.to eq('MSA') }
+        its(:origin) { is_expected.to eq('MSA') }
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
         end
 
         it 'states the MSA as the origin of the answer' do
-          expect(subject.errors.first.meta).to include(origine: 'MSA')
+          expect(subject.errors.first.meta).to include(origin: 'MSA')
         end
       end
 
@@ -58,7 +58,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
         end
 
         it 'states the CNAF as the origin of the answer' do
-          expect(subject.errors.first.meta).to include(origine: 'CNAF')
+          expect(subject.errors.first.meta).to include(origin: 'CNAF')
         end
       end
 

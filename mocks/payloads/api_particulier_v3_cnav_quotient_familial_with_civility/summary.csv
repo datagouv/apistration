@@ -2437,7 +2437,7 @@ pivot France Connect.","{""codeCogInseeCommuneNaissance"":""75107"",""codeCogIns
       ""source"": null,
       ""meta"": {
         ""provider"": ""CNAF"",
-        ""origine"": ""CNAF""
+        ""origin"": ""CNAF""
       }
     }
   ]

@@ -263,7 +263,7 @@ respecte la condition d'âge ARS (6-18 ans) et est bénéficiaire.
         "source": null,
         "meta": {
           "provider": "CNAF",
-          "origine": "CNAF"
+          "origin": "CNAF"
         }
       }
     ]

@@ -263,7 +263,7 @@ caractères). Cet usager est bénéficiaire de l'AAH.
         "source": null,
         "meta": {
           "provider": "CNAF",
-          "origine": "CNAF"
+          "origin": "CNAF"
         }
       }
     ]

@@ -195,9 +195,9 @@ RSpec.describe ErrorRegistry do
     end
 
     it 'adds the meta a declaration names to the provider' do
-      described_class.register(validator, NotFoundError, provider: 'RNCPS', meta: { origine: 'RNCPS' })
+      described_class.register(validator, NotFoundError, provider: 'RNCPS', meta: { origin: 'RNCPS' })
 
-      expect(built_examples(provider_name: 'Sécurité sociale').first.meta).to eq(provider: 'RNCPS', origine: 'RNCPS')
+      expect(built_examples(provider_name: 'Sécurité sociale').first.meta).to eq(provider: 'RNCPS', origin: 'RNCPS')
     end
 
     it 'builds the unauthorized and unprocessable errors from their options' do

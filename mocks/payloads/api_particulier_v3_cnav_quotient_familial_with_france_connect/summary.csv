@@ -8,7 +8,7 @@ Titre,Description,Paramètres,Status,Réponse
       ""source"": null,
       ""meta"": {
         ""provider"": ""CNAF"",
-        ""origine"": ""CNAF""
+        ""origin"": ""CNAF""
       }
     }
   ]

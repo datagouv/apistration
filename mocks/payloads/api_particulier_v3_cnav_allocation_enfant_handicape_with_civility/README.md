@@ -316,7 +316,7 @@ bénéficiaire de l'AEEH.
         "source": null,
         "meta": {
           "provider": "CNAF",
-          "origine": "CNAF"
+          "origin": "CNAF"
         }
       }
     ]

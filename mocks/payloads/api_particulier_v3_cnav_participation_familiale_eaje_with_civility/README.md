@@ -234,7 +234,7 @@ d'erreur selon les informations que vous fournirez.
         "source": null,
         "meta": {
           "provider": "CNAF",
-          "origine": "CNAF"
+          "origin": "CNAF"
         }
       }
     ]

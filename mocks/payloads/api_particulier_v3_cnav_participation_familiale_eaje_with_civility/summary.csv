@@ -113,7 +113,7 @@ d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNais
       ""source"": null,
       ""meta"": {
         ""provider"": ""CNAF"",
-        ""origine"": ""CNAF""
+        ""origin"": ""CNAF""
       }
     }
   ]

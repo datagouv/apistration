@@ -18,7 +18,7 @@ RSpec.describe APIParticulier::NoResultAttestationProofBuilder do
       'code' => '23003',
       'title' => 'Dossier allocataire absent CNAF',
       'detail' => "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
-      'meta' => { 'provider' => 'CNAF', 'origine' => 'CNAF' }
+      'meta' => { 'provider' => 'CNAF', 'origin' => 'CNAF' }
     }
   end
 
@@ -105,7 +105,7 @@ RSpec.describe APIParticulier::NoResultAttestationProofBuilder do
   end
 
   context 'when the MSA answered' do
-    let(:error) { super().merge('meta' => { 'provider' => 'MSA', 'origine' => 'MSA' }) }
+    let(:error) { super().merge('meta' => { 'provider' => 'MSA', 'origin' => 'MSA' }) }
 
     it 'names the MSA as the source' do
       expect(pdf_payload['source']).to eq('MSA')

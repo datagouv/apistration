@@ -63,7 +63,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         end
 
         it 'states the RNCPS as the origin of the answer' do
-          expect(subject.errors.first.meta).to include(origine: 'RNCPS')
+          expect(subject.errors.first.meta).to include(origin: 'RNCPS')
         end
 
         it 'attests a consultation without result' do
@@ -89,7 +89,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         end
 
         it 'states the CNAF as the origin of the answer' do
-          expect(subject.errors.first.meta).to include(origine: 'CNAF')
+          expect(subject.errors.first.meta).to include(origin: 'CNAF')
         end
 
         it 'attests a consultation without result' do
@@ -113,7 +113,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         end
 
         it 'states the MSA as the origin of the answer' do
-          expect(subject.errors.first.meta).to include(origine: 'MSA')
+          expect(subject.errors.first.meta).to include(origin: 'MSA')
         end
 
         it 'attests a consultation without result' do
@@ -137,7 +137,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         end
 
         it 'states the RNCPS as the origin of the answer' do
-          expect(subject.errors.first.meta).to include(origine: 'RNCPS')
+          expect(subject.errors.first.meta).to include(origin: 'RNCPS')
         end
 
         it 'attests nothing' do

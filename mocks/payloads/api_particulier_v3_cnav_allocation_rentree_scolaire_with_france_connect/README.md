@@ -148,7 +148,7 @@ d'intégration (Angela DUBOIS).
         "source": null,
         "meta": {
           "provider": "CNAF",
-          "origine": "CNAF"
+          "origin": "CNAF"
         }
       }
     ]

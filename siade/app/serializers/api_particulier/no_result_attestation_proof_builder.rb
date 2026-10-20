@@ -7,7 +7,7 @@ class APIParticulier::NoResultAttestationProofBuilder < APIParticulier::Attestat
   RESULTAT = [
     ['title', 'Erreur'],
     ['detail', 'Détail'],
-    ['origine', 'Origine'],
+    ['origin', 'Origine'],
     ['appel_le', "Date et heure de l'appel"]
   ].freeze
 
@@ -40,7 +40,7 @@ class APIParticulier::NoResultAttestationProofBuilder < APIParticulier::Attestat
   end
 
   def source
-    origine
+    origin
   end
 
   def verification_sections
@@ -57,8 +57,8 @@ class APIParticulier::NoResultAttestationProofBuilder < APIParticulier::Attestat
     @body.fetch('errors').first
   end
 
-  def origine
-    error.dig('meta', 'origine') || ORIGINE_NON_COMMUNIQUEE
+  def origin
+    error.dig('meta', 'origin') || ORIGINE_NON_COMMUNIQUEE
   end
 
   def resultat_section
@@ -66,7 +66,7 @@ class APIParticulier::NoResultAttestationProofBuilder < APIParticulier::Attestat
   end
 
   def resultat
-    error.merge('origine' => origine, 'appel_le' => appel_le)
+    error.merge('origin' => origin, 'appel_le' => appel_le)
   end
 
   def appel_le

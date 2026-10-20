@@ -10,7 +10,7 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
 
     no_kids_under_7_error! unless kids_under_7?
 
-    context.origine = regime
+    context.origin = regime
   end
 
   private
@@ -18,7 +18,7 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
   def no_kids_under_7_error!
     MonitoringService.instance.track('info', 'Potential unauthorized API use: CNAV EAJE: allocataire found but no kids under 7')
     error = build_declared_error(ALLOCATAIRE_NOT_ELIGIBLE)
-    error.add_meta(origine: regime) if regime
+    error.add_meta(origin: regime) if regime
 
     fail_with_error!(error)
   end

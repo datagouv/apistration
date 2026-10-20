@@ -4488,7 +4488,7 @@ pivot France Connect.
         "source": null,
         "meta": {
           "provider": "CNAF",
-          "origine": "CNAF"
+          "origin": "CNAF"
         }
       }
     ]
