@@ -1,12 +1,16 @@
 # Check https://github.com/betagouv/signup-back/tree/master/docs/webhooks.md for all events and their details
 ---
-development: &development
+test:
   created: {}
   updated: &updated {}
   team_member_updated: &team_member_updated {}
   send_application: &send_application
     emails:
       - template: 'send_application'
+        condition_on_authorization: 'not_editor_delegation_request?'
+
+      - template: 'delegation_editeur_demande_recue'
+        condition_on_authorization: 'editor_delegation_request?'
 
   notify: &notify {}
   review_application: &review_application {}
@@ -23,11 +27,18 @@ development: &development
           - 'authorization_request.contact_technique'
           - 'authorization_request.demandeur'
 
+      - template: 'delegation_editeur_demande_refusee'
+        condition_on_authorization: 'editor_delegation_request?'
+
   approve: &approve
     emails:
       - template: 'embarquement_valide_to_editeur'
+        condition_on_authorization: 'not_editor_delegation_request?'
         to:
           - 'authorization_request.demandeur'
+
+      - template: 'delegation_editeur_demande_validee'
+        condition_on_authorization: 'editor_delegation_request?'
 
   create: {}
   update: *updated
@@ -37,8 +48,6 @@ development: &development
   refuse: *refuse_application
   validate: *approve
 
-test: *development
-
 production: &production
   created: {}
   updated: &updated {}
@@ -46,7 +55,11 @@ production: &production
   send_application: &send_application
     emails:
       - template: 'demande_recue'
+        condition_on_authorization: 'not_editor_delegation_request?'
         on_update: true
+
+      - template: 'delegation_editeur_demande_recue'
+        condition_on_authorization: 'editor_delegation_request?'
 
   notify: &notify {}
   review_application: &review_application
@@ -57,10 +70,17 @@ production: &production
   refuse_application: &refuse_application
     emails:
       - template: 'embarquement_demande_refusee'
+        condition_on_authorization: 'not_editor_delegation_request?'
         on_update: true
+
+      - template: 'delegation_editeur_demande_refusee'
+        condition_on_authorization: 'editor_delegation_request?'
 
   approve: &approve
     emails:
+      - template: 'delegation_editeur_demande_validee'
+        condition_on_authorization: 'editor_delegation_request?'
+
       - template: 'embarquement_valide_to_editeur'
         condition_on_authorization: 'editor_authorization_request?'
         to:
@@ -132,5 +152,6 @@ production: &production
   refuse: *refuse_application
   validate: *approve
 
+development: *production
 sandbox: *production
 staging: *production

@@ -1,0 +1,36 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: 'Votre demande d’habilitation est soumise' %>
+
+    <p>
+      <% if @organization&.denomination.present? %><%= @organization.denomination %>, <% end %>SIRET <%= @editor_delegation_request.siret %>.
+      Elle part en instruction chez API Entreprise, qui délivrera, ou non, l'habilitation.
+    </p>
+
+    <h2>Et ensuite ?</h2>
+    <ul>
+      <li>Nous instruisons votre demande. Vous n'avez rien à faire.</li>
+      <li>Vous êtes informé(e) par courriel, que la demande soit acceptée ou refusée.</li>
+      <li><%= @editor_delegation_request.editor.name.strip %> continue de récupérer les données pour le compte de votre organisation.</li>
+    </ul>
+
+    <p class="fr-text--sm">
+      Soumise le <%= l(@editor_delegation_request.submitted_at, format: :long) %> par
+      <%= @editor_delegation_request.submitted_by_user.full_name %>, identifié(e) par ProConnect.
+    </p>
+
+    <% if user_signed_in? && (other_requests = @editor_delegation_request.other_pending_requests_of_contact).any? %>
+      <h2>Vos autres demandes en attente</h2>
+      <p>Les établissements suivants attendent aussi leur demande d'habilitation&nbsp;:</p>
+      <ul>
+        <% other_requests.each do |other_request| %>
+          <li><%= link_to "SIRET #{other_request.siret}", other_request.invitation_path %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% unless Rails.env.production? %>
+      <%= render 'datapass_webhook_simulation' %>
+    <% end %>
+  </div>
+</div>

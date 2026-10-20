@@ -31,4 +31,19 @@ RSpec.describe DatapassWebhook::ArchiveCurrentAuthorizationRequest, type: :inter
       }.to change { AuthorizationRequest.where(status: 'archived').count }
     end
   end
+
+  context "when event is 'archive' on an editor delegation request without token" do
+    let(:event) { 'archive' }
+    let(:authorization_request) { create(:authorization_request) }
+    let!(:delegation) { create(:editor_delegation, authorization_request:) }
+
+    before { create(:editor_delegation_request, authorization_request:) }
+
+    it 'archives the authorization request and revokes its delegation' do
+      subject
+
+      expect(authorization_request.reload).to be_archived
+      expect(delegation.reload.revoked_at).to be_present
+    end
+  end
 end

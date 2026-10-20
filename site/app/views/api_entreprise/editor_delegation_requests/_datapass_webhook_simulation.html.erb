@@ -1,0 +1,14 @@
+<% authorization_request = @editor_delegation_request.authorization_request %>
+<div class="fr-callout fr-callout--yellow-moutarde fr-mt-4w">
+  <h2 class="fr-callout__title">Simulation DataPass (hors production)</h2>
+  <p class="fr-callout__text">
+    Habilitation n°<%= authorization_request.external_id || 'sans identifiant DataPass' %>,
+    statut <%= authorization_request.status %>,
+    délégation à <%= @editor_delegation_request.editor.name.strip %> <%= authorization_request.editor_delegations.active.any? ? 'active' : 'révoquée' %>.
+  </p>
+  <ul class="fr-btns-group fr-btns-group--inline-md fr-mt-2w">
+    <% SimulatedDatapassWebhook::EVENTS.each do |event| %>
+      <li><%= button_to "Simuler #{event}", editor_delegation_request_datapass_webhook_simulation_path(event:), class: %w(fr-btn fr-btn--secondary) %></li>
+    <% end %>
+  </ul>
+</div>

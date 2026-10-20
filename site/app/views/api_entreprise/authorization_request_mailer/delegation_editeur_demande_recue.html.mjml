@@ -1,0 +1,35 @@
+<%= render partial: "shared/api_entreprise/mailers/header" %>
+<mj-section mj-class="section-banner" background-color="#d5dbef">
+  <mj-column>
+    <mj-divider />
+    <mj-text>
+      <h1>
+        Votre demande d'habilitation <b>a bien été reçue par nos services</b>&nbsp;📬
+      </h1>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <%= render partial: "greetings", locals: { entity: "demandeur" } %>
+      <p>
+        <b>
+          La demande d’habilitation API Entreprise n°<%= @authorization_request.external_id %> de votre organisation
+          (SIRET <%= @authorization_request.siret %>) a bien été soumise.
+        </b>
+        Notre service juridique va en prendre connaissance dans les meilleurs délais.
+      </p>
+      <p>
+        Rien ne change en attendant&nbsp;: <%= @editor.name.strip %> continue de récupérer les données de l’API Entreprise
+        pour le compte de votre organisation. Vous n’avez rien à faire.
+      </p>
+      <p style="margin-top: 20px;">
+        À bientôt 👋
+        <br />
+        <b>API Entreprise</b>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>

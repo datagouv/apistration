@@ -40,4 +40,25 @@ RSpec.describe DatapassWebhook::CreateEditorDelegation do
       expect(result).to be_success
     end
   end
+
+  context 'when the authorization request comes from an editor delegation request' do
+    let(:authorization_request) { create(:authorization_request, demarche: 'api-entreprise-marches-publics') }
+    let(:use_case_editor) { create(:editor, form_uids: []) }
+
+    before { create(:editor_delegation_request, authorization_request:, editor_use_case: create(:editor_use_case, editor: use_case_editor)) }
+
+    it 'delegates to the editor of the use case' do
+      expect(result.delegation.editor).to eq(use_case_editor)
+    end
+
+    context 'when the import already opened the delegation' do
+      let!(:delegation) { create(:editor_delegation, editor: use_case_editor, authorization_request:, created_via: 'editor_delegation_request') }
+
+      it 'keeps it' do
+        expect { result }.not_to change(EditorDelegation, :count)
+
+        expect(result.delegation).to eq(delegation)
+      end
+    end
+  end
 end
