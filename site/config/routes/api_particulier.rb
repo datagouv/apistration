@@ -93,5 +93,9 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/accessibilite', to: 'pages#accessibility', as: :accessibilite
 
     get '/datapass', to: 'reporters#index', as: :dashboard_reporter
+
+    get '/facilitateurs', to: 'facilitators#show', as: :facilitators
+    post '/facilitateurs', to: 'facilitators#create'
+    delete '/facilitateurs', to: 'facilitators#destroy'
   end
 end
