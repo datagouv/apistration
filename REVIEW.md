@@ -22,13 +22,26 @@ the new head without status: check the rule again and rerun it. Running
 it engages the author like an approval would.
 
 If a condition does not hold, do not run it: the pull request goes
-through the normal review. Agents never merge.
+through the normal review.
 
-## Merger side
+## Merging
 
-With the label set and a green `auto-mergeable/<rule>` status on the
-head commit, approve and merge without reading the change in detail.
-Without the status, or in doubt, remove the label: normal review.
+With the label set, a green `auto-mergeable/<rule>` status on the head
+commit and a green CI, the pull request is merged without reading the
+change in detail, either:
+
+- by someone else, who approves and merges;
+- by its author or their agent, without approval, through the bypass
+  of the `develop` ruleset granted to the `api` team:
+
+  ```bash
+  gh pr merge <number> --merge --admin
+  ```
+
+`--admin` bypasses the whole ruleset, failing CI included: use it only
+on a pull request carrying the label, the status on its current head
+and a green CI, never to merge anything else. Without the status, or in
+doubt, remove the label: normal review.
 
 ## Rules
 

@@ -33,7 +33,9 @@ avec les conventions spécifiques :
 détaillée, sur la caution de leur auteur. Après avoir fait relire une PR,
 vérifier si elle relève d'une de ces règles ; si toutes ses conditions
 tiennent, lancer `bin/vouch-auto-mergeable <règle> "<preuve>"`, qui pose
-le statut et le label. Ne jamais merger soi-même.
+le statut et le label. La PR peut alors être mergée sans approbation
+avec `gh pr merge <numéro> --merge --admin`, une fois la CI verte ;
+jamais `--admin` sur une PR sans label ni statut sur son head.
 
 ## Worktrees
 
