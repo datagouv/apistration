@@ -1,6 +1,27 @@
 require 'swagger_helper'
 
 RSpec.describe 'MI - SIAF : Fondations', api: :entreprise, type: %i[request swagger] do
+  def key_paths(value, prefix = nil)
+    case value
+    when Hash
+      value.flat_map { |key, child| [[prefix, key].compact.join('.')] + key_paths(child, [prefix, key].compact.join('.')) }
+    when Array
+      value.flat_map { |item| key_paths(item, "#{prefix}[]") }.uniq
+    else
+      []
+    end
+  end
+
+  def documented_key_paths(properties, prefix = nil)
+    properties.flat_map do |key, schema|
+      path = [prefix, key].compact.join('.')
+      children = schema['properties'] || schema.dig('items', 'properties')
+      nested_prefix = schema['items'] ? "#{path}[]" : path
+
+      [path] + (children ? documented_key_paths(children, nested_prefix) : [])
+    end
+  end
+
   path '/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}' do
     get SwaggerData.get('siaf.fondations.title') do
       tags(*SwaggerData.get('siaf.fondations.tags'))
@@ -33,7 +54,13 @@ RSpec.describe 'MI - SIAF : Fondations', api: :entreprise, type: %i[request swag
 
           let(:siren_or_siret_or_rnf) { valid_rnf_id }
 
-          run_test!
+          before do
+            stub_siaf_fondation
+          end
+
+          run_test! do
+            expect(key_paths(response_json[:data])).to match_array(documented_key_paths(SwaggerData.get('siaf.fondations.attributes')))
+          end
         end
 
         describe 'server errors' do
@@ -43,6 +70,10 @@ RSpec.describe 'MI - SIAF : Fondations', api: :entreprise, type: %i[request swag
 
           response '404', 'Fondation non trouvée' do
             let(:siren_or_siret_or_rnf) { non_existing_rnf_id }
+
+            before do
+              stub_siaf_fondation_not_found
+            end
 
             build_rswag_example(NotFoundError.new('SIAF'))
 
