@@ -162,3 +162,25 @@ bin/vouch-auto-mergeable refactor "site, 2 files, 23 lines: partial extracted; s
 ```bash
 bin/vouch-auto-mergeable fix-provider "cnav, 2 files, 30 lines; 40000/40024 to ProviderInternalServerError; swagger unchanged; red on 61ebb51, green on head; CI green"
 ```
+
+### `auto-mergeable:fix-site-ui` — small interface fixes on site
+
+- every file outside specs is a view (`site/app/views/`), a stylesheet
+  or a script (`site/app/assets/stylesheets/`,
+  `site/app/assets/javascripts/`) or a locale
+  (`site/config/locales/`); no controller, policy, model, form or
+  helper, except a translation key passed to `t` in a controller;
+- at most 30 lines outside specs;
+- pages show the same data: no attribute, record or link newly
+  rendered or removed, no form field, URL or HTTP method changed; only
+  markup, classes, script behaviour and texts;
+- a text is fixed when it is missing, wrong or misspelt, never when it
+  states a commitment: limits and quotas, delays, terms of use, legal
+  notices;
+- a feature spec covers the fix, or a screenshot of the fixed page is
+  attached to the pull request;
+- the CI is green and there is no conflict with `develop`.
+
+```bash
+bin/vouch-auto-mergeable fix-site-ui "1 view, 2 lines: clipboard controller on copy button; same data shown; feature spec added; CI green; no conflict"
+```
