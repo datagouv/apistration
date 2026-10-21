@@ -85,3 +85,27 @@ Out of the rule, whatever the change: `commons/endpoints/`
 (documentation displayed on the site, mixed with parameters and
 versions), `commons/swagger/`, and any other `*.md` (README, CLAUDE.md,
 REVIEW.md, skills).
+
+### `auto-mergeable:fix-observability` — logs and monitoring
+
+- every changed line outside specs is a log, Sentry or metrics
+  statement (message, level, context, fingerprint), the list of
+  filtered parameters (`config/initializers/filter_parameter_logging.rb`),
+  code of `MonitoringService` or of the Sentry tooling under
+  `bin/sentry/`: such lines are accepted in any file, excluded zones
+  included;
+- the control flow does not change: no new or moved `return`, `rescue`
+  or condition, no method signature change; a new statement only reads
+  values already at hand and cannot raise where the code did not;
+- filtering only grows: no parameter leaves the filtered list, and no
+  newly logged value carries personal data or a secret;
+- nothing visible to API or site users changes, which is why no spec
+  is required;
+- the CI is green and there is no conflict with `develop`.
+
+Out of the rule: pings and the status page (`config/pings.yml`, ping
+drivers), shown to users, and alerting thresholds.
+
+```bash
+bin/vouch-auto-mergeable fix-observability "1 file, log line only (path instead of fullpath), filters more, no flow change; CI green; no conflict"
+```
