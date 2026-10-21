@@ -4,7 +4,6 @@ siaf:
     description: "Données de référence d'une fondation (FRUP, fondation d'entreprise ou fonds de dotation) issues du Répertoire National des Fondations (RNF), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, filiation et années de subventions publiques."
     tags:
       - "Informations générales"
-      - "Prochainement"
     attributes:
       identifiants:
         title: "Identifiants de la fondation"

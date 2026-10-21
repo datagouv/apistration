@@ -4,12 +4,6 @@ fiche:
     path: '/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}'
     controller: 'api_entreprise/v3_and_more/mi/siaf/fondations'
     position: 155
-    alert:
-      title: "API disponible uniquement en environnement de test"
-      description: |+
-        Cette API est en cours de raccordement au SIAF (Système d'Information des Associations et Fondations) du Ministère de l'Intérieur.
-        Elle est **appelable sur l'environnement de test** (`https://staging.entreprise.api.gouv.fr`) avec des données fictives, afin de préparer les intégrations.
-        Elle n'est pas encore disponible en production.
     perimeter:
       entity_type_description: |+
         Cette API concerne ✅ **les fondations inscrites au Répertoire National des Fondations (RNF)**, tenu par le Ministère de l'Intérieur :
@@ -44,28 +38,21 @@ fiche:
       - 'utilité publique'
       - 'mécénat'
       - 'philanthropie'
-      - 'dirigeants'
-      - 'générosité publique'
       - 'ministère intérieur'
       - 'SIAF'
     data:
       description: |+
         Cette API délivre les données de référence d'une fondation inscrite au **Répertoire National des Fondations (RNF)** :
 
-        - **l'identité de la fondation** : identifiant RNF, SIREN/SIRET, type juridique (FRUP, FE, FDD), nom, état, dates de création et de terme, adresse du siège, contacts ;
+        - **l'identité de la fondation** : identifiant RNF, SIREN/SIRET, type juridique (FRUP, FE, FDD), nom, état, dates de création et de terme, clôture de l'exercice, adresse du siège, courriel et téléphone ;
         - **ses activités** : objet, domaines d'intérêt général, activité internationale prévue par les statuts ;
-        - **ses dirigeants et représentants** : identité, fonction, qualité, dates de fonctions, y compris les personnes morales représentées ;
-        - **sa filiation** : transformation, fusion, scission ;
-        - **sa situation financière déclarative** : années de subventions publiques, d'appel à la générosité publique et de financements étrangers ;
-        - **sa conformité comptable** : état de transmission des comptes et exercices transmis ;
-        - **les métadonnées de ses pièces justificatives** : statuts, comptes, rapports d'activité, procès verbaux.
+        - **sa filiation** : organismes dont la fondation est issue (transformation d'une association ou d'un fonds de dotation) ;
+        - **les années pendant lesquelles elle a déclaré avoir reçu des subventions publiques**.
 
         {:.fr-highlight}
-        > Le périmètre de données sera progressivement enrichi au fur et à mesure de
-        > l'alimentation du référentiel par les démarches des fondations : données
-        > comptables chiffrées (bilan, produits, charges, résultat), montants et pays
-        > des financements étrangers, détail des campagnes d'appel à la générosité
-        > publique, liquidateur, caractère consomptible de la dotation.
+        > Les dirigeants, les pièces justificatives et les données comptables ne sont
+        > pas servis par cette API : ils feront l'objet d'API dédiées, ouvertes selon
+        > les cas d'usage autorisés par le Ministère de l'Intérieur.
     opening: protected
     parameters:
       - Numéro de SIREN ou de SIRET de la fondation, ou son identifiant RNF
@@ -79,11 +66,15 @@ fiche:
           `{département}-{type}-{numéro}-{suffixe}`, par exemple `075-FRUP-00194-01`.
       - q: "Puis-je toujours appeler l'API avec un SIREN ou un SIRET ?"
         a: |+
-          Environ 22 % des fondations du référentiel n'ont pas de SIRET (elles n'ont
+          Environ 28 % des fondations du référentiel n'ont pas de SIRET (elles n'ont
           pas d'obligation d'immatriculation au répertoire Sirene tant qu'elles
           n'emploient pas de salarié notamment). Ces fondations ne sont accessibles
-          que par leur identifiant RNF. L'identifiant RNF est la clé d'appel la plus
-          fiable.
+          que par leur identifiant RNF.
+
+          Le SIRET appelé doit être celui que le référentiel connaît pour la
+          fondation. Quelques SIRET y sont par ailleurs rattachés à deux fondations :
+          un appel par SIREN ou SIRET ne renvoie alors que l'une des deux.
+          L'identifiant RNF est donc la clé d'appel la plus fiable.
       - q: "Quelle est la différence entre une fondation et une association ?"
         a: |+
           Une **association** est un groupement de *personnes* (des membres) ; une
@@ -91,11 +82,32 @@ fiche:
           dédiés irrévocablement à une cause d'intérêt général, à but non lucratif.
           Une fondation n'a pas de membres. Pour les associations, consulter
           l'[API Données association](/catalogue/djepva/associations).
-      - q: "Pourquoi certaines données financières sont-elles vides ?"
+      - q: "Pourquoi la liste des années de subventions publiques est-elle souvent vide ?"
         a: |+
-          Les données de situation financière (années de subventions publiques,
-          d'appel à la générosité publique, de financements étrangers) sont
-          **déclaratives** : elles ne sont renseignées que lorsque la fondation a
-          effectué la démarche correspondante auprès du Ministère de l'Intérieur.
-          Une liste vide signifie qu'aucune déclaration n'a été enregistrée, pas
-          nécessairement que la fondation n'est pas concernée.
+          Les années de subventions publiques sont **déclaratives** : elles ne sont
+          renseignées que lorsque la fondation a effectué la démarche correspondante
+          auprès du Ministère de l'Intérieur, ce qui n'est le cas que d'une petite
+          partie des fondations à ce jour. Une liste vide signifie qu'aucune
+          déclaration n'a été enregistrée, pas que la fondation n'a reçu aucune
+          subvention.
+    historique: |+
+      **Ce qui change par rapport à la version proposée en environnement de test :**
+      La version de production ne sert que les données ouvertes à tous les cas
+      d'usage protégés par le Ministère de l'Intérieur. Ont été retirés :
+      - les dirigeants (`dirigeants`) : ce sont à la fois les représentants légaux
+        et les bénéficiaires effectifs de la fondation, et les informations
+        diffusables à leur sujet dépendent du cas d'usage ;
+      - les pièces justificatives (`documents`) : les pièces diffusables dépendent
+        de leur type et du cas d'usage ;
+      - la conformité comptable (`conformite_comptable`) : l'état de transmission
+        des comptes et les exercices transmis ne reflètent à ce jour que les dépôts
+        faits depuis la nouvelle démarche en ligne ;
+      - les années d'appel à la générosité publique et de financements étrangers
+        (`situation_financiere.annees_appel_generosite_publique`,
+        `situation_financiere.annees_financements_etrangers`), réservées à la
+        lutte contre la fraude ;
+      - les champs d'adresse `type_voie`, `complement` et `distribution`, que le
+        référentiel ne sert pas : le type de voie est inclus dans `libelle_voie`.
+
+      La filiation liste désormais les organismes dont la fondation est issue, et
+      son type d'opération n'est plus une liste fermée.
