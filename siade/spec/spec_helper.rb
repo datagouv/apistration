@@ -61,6 +61,7 @@ RSpec.configure do |config|
     Siade.credentials[:france_connect_v2_rsa_public] = rsa_key.public_key.to_pem
     Siade.credentials[:ants_siv_client_certificate_path] = Rails.root.join('spec/fixtures/ssl/certificat.crt').to_s
     Siade.credentials[:ants_siv_client_certificate_key_path] = Rails.root.join('spec/fixtures/ssl/certificat.key').to_s
+    Siade.credentials[:siaf_certificate_chain_path] = Rails.root.join('spec/fixtures/ssl/certificat.crt').to_s
     Siade.credentials[:men_scolarites_client_id] = 'api-particuliers-tests'
   end
 
@@ -143,6 +144,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::MESRI
   config.include ProviderStubs::SDH
   config.include ProviderStubs::FranceTravail
+  config.include ProviderStubs::SIAF
   config.include ProviderStubs::DataSubvention
 
   config.include ActivateStrictVcrRequestMatchingForV3
