@@ -29,11 +29,8 @@ payload: |-
         },
         "adresse_siege": {
           "adresse_complete": "10 Rue de Penthièvre 75008 Paris",
-          "complement": null,
           "numero_voie": "10",
-          "type_voie": "Rue",
-          "libelle_voie": "de Penthièvre",
-          "distribution": null,
+          "libelle_voie": "Rue de Penthièvre",
           "code_insee": "75108",
           "code_postal": "75008",
           "commune": "Paris 8e Arrondissement",
@@ -51,96 +48,10 @@ payload: |-
         ],
         "activite_internationale_prevue_par_statuts": false
       },
-      "dirigeants": [
-        {
-          "nom": "BERNARD",
-          "prenom": "Louise",
-          "date_naissance": "1988-02-20",
-          "nationalite": "France",
-          "adresse_domiciliation": {
-            "adresse_complete": "1 Avenue des Champs Elysées 75008 Paris",
-            "complement": null,
-            "numero_voie": "1",
-            "type_voie": "Avenue",
-            "libelle_voie": "des Champs Elysées",
-            "distribution": null,
-            "code_insee": "75108",
-            "code_postal": "75008",
-            "commune": "Paris",
-            "pays": "France"
-          },
-          "pays_residence": "France",
-          "profession": "Entrepreneuse",
-          "date_entree_fonction": "2023-02-13",
-          "date_sortie_fonction": null,
-          "fonction": "Présidente",
-          "qualite": "Membre du conseil d'administration",
-          "fondateur": true,
-          "personne_morale": null
-        },
-        {
-          "nom": "PETIT",
-          "prenom": "Nicolas",
-          "date_naissance": "1985-07-30",
-          "nationalite": "France",
-          "adresse_domiciliation": {
-            "adresse_complete": "1 Avenue des Champs Elysées 75008 Paris",
-            "complement": null,
-            "numero_voie": "1",
-            "type_voie": "Avenue",
-            "libelle_voie": "des Champs Elysées",
-            "distribution": null,
-            "code_insee": "75108",
-            "code_postal": "75008",
-            "commune": "Paris",
-            "pays": "France"
-          },
-          "pays_residence": "France",
-          "profession": "Consultant",
-          "date_entree_fonction": "2023-02-13",
-          "date_sortie_fonction": null,
-          "fonction": "Secrétaire",
-          "qualite": "Membre du conseil d'administration",
-          "fondateur": false,
-          "personne_morale": null
-        }
-      ],
       "filiation": [],
       "situation_financiere": {
-        "annees_subventions_publiques": [],
-        "annees_appel_generosite_publique": [],
-        "annees_financements_etrangers": []
-      },
-      "conformite_comptable": {
-        "etat_transmission_comptes": "En règle",
-        "annees_exercices_comptables_transmis": [
-          2023,
-          2024
-        ]
-      },
-      "documents": [
-        {
-          "id": "711cf2ed-6e04-11f1-aed1-4faba2bb8c0b",
-          "type": "Statuts",
-          "nom_original": "Statuts constitutifs.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-04-20"
-        },
-        {
-          "id": "711cf2ee-6e04-11f1-aed1-4faba2bb8c0b",
-          "type": "Comptes",
-          "nom_original": "Comptes annuels 2024.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-06-17"
-        },
-        {
-          "id": "711cf2ef-6e04-11f1-aed1-4faba2bb8c0b",
-          "type": "Rapport d'activité",
-          "nom_original": "Rapport d'activité 2024.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-06-17"
-        }
-      ]
+        "annees_subventions_publiques": []
+      }
     },
     "links": {},
     "meta": {}
