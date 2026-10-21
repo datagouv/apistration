@@ -1,0 +1,97 @@
+{
+  "hub_timestamp": "2026-07-23T05:05:59.794372",
+  "id": "075-FRUP-00194-01",
+  "state": "Active",
+  "stateEffectiveAt": "1928-08-12T00:00:00.000Z",
+  "cancelledAt": null,
+  "cancelledReason": null,
+  "siret": "78430893400016",
+  "title": "MAISON DE LA CHIMIE",
+  "email": "contact@fondation-exemple.fr",
+  "phone": "+33123456789",
+  "website": null,
+  "foundationType": "FRUP",
+  "department": "75",
+  "address": {
+    "oneLine": "28 Rue Saint-Dominique  75007 Paris ",
+    "coordinates": [2.317121, 48.859961],
+    "dsAddress": {
+      "label": "28 Rue Saint-Dominique 75007 Paris",
+      "type": "housenumber",
+      "streetAddress": "28 Rue Saint-Dominique",
+      "streetNumber": "28",
+      "streetName": "Rue Saint-Dominique",
+      "countryCode": "FR",
+      "countryName": "France",
+      "postalCode": "75007",
+      "cityName": "Paris 7e Arrondissement",
+      "cityCode": "75107",
+      "departmentName": "Paris",
+      "departmentCode": "75",
+      "regionName": "Île-de-France",
+      "regionCode": "11"
+    }
+  },
+  "socialObject": "L'aménagement et l'entretien d'un immeuble destiné à permettre la jouissance de locaux et de salles de réunions aux organismes de chimie pure et appliquée.",
+  "fiscalEndAt": "2025-06-30T00:00:00.000Z",
+  "creationAt": "1928-08-12T00:00:00.000Z",
+  "publicGenerosityYears": [2024],
+  "publicSubsidyYears": [2024, 2025],
+  "foreignFinancingYears": [2023],
+  "accountDepositYears": [2023, 2024],
+  "accountMissingYears": [2022, 2025],
+  "isAccountLate": true,
+  "isPersonDataPrivate": false,
+  "persons": [
+    {
+      "lastName": "DUPONT",
+      "firstName": "Marie",
+      "profession": "Juriste",
+      "nationality": "France",
+      "bornAt": "1975-04-12T00:00:00.000Z",
+      "isFounder": false,
+      "quality": "Membre du conseil d'administration",
+      "residenceCountry": "France",
+      "entryAt": "2018-06-23T00:00:00.000Z",
+      "exitAt": null,
+      "jobPosition": "Président",
+      "legalEntity": null,
+      "address": {
+        "oneLine": "20 Rue Exemple 75001 Paris",
+        "dsAddress": null
+      }
+    }
+  ],
+  "dueDate": null,
+  "generalInterestDomain": "Scientifique, Diffusion de la culture, de la langue et des connaissances scientifiques françaises, Éducatif",
+  "hasInternationalActivity": false,
+  "files": [
+    {
+      "id": "7e7867b6-8fe0-11f1-a424-f28dce965a41",
+      "typeFile": "Procès verbal",
+      "name": "12-03-2024_pv_changement_dirigeants",
+      "originalName": "PV conseil 2024.pdf",
+      "mimeType": "application/pdf",
+      "byteSize": 120000,
+      "checksum": "checksum",
+      "prefixS3": "prefix",
+      "effectiveAt": "2024-03-12T00:00:00.000Z",
+      "uploadedAt": "2026-07-22T18:35:26.138Z",
+      "createdAt": "2026-07-22T18:35:26.149Z",
+      "updatedAt": "2026-07-22T18:35:26.149Z"
+    }
+  ],
+  "fromLineage": {
+    "organismes": [
+      {
+        "kind": "Association",
+        "publicId": "W751028723"
+      }
+    ],
+    "type": "Transformation",
+    "at": null
+  },
+  "toLineage": null,
+  "createdAt": "2026-07-22T18:35:26.149Z",
+  "updatedAt": "2026-07-23T01:00:04.450Z"
+}

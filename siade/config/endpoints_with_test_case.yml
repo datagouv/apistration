@@ -116,6 +116,10 @@
   api: 'entreprise'
   path: '/v3/ministere_interieur/rna/associations/77571979202650/documents'
 
+- name: "Ministère de l'Intérieur SIAF fondations"
+  api: 'entreprise'
+  path: '/v3/ministere_interieur/siaf/fondations/075-FRUP-00194-01'
+
 - name: 'OPQIBI Certifications Ingénierie'
   api: 'entreprise'
   path: '/v3/opqibi/unites_legales/329338883/certification_ingenierie'
