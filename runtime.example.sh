@@ -104,7 +104,7 @@
 # 6. APIstration-specific niceties
 # =============================================================================
 
-# 6a. Pre-warm bundler caches across VMs. Bundling Ruby 4.0.1 + Rails for
+# 6a. Pre-warm bundler caches across VMs. Bundling Ruby 4.0.7 + Rails for
 # site/, siade/ and mocks/ takes a while on a fresh VM; mounting a shared
 # bundle cache speeds it up significantly. Lima must mount ~/.bundle as RW
 # for this to help; see https://lima-vm.io/docs/config/mounts/.
