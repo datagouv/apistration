@@ -29,11 +29,8 @@ payload: |-
         },
         "adresse_siege": {
           "adresse_complete": "28 Rue Saint-Dominique 75007 Paris",
-          "complement": null,
           "numero_voie": "28",
-          "type_voie": "Rue",
-          "libelle_voie": "Saint-Dominique",
-          "distribution": null,
+          "libelle_voie": "Rue Saint-Dominique",
           "code_insee": "75107",
           "code_postal": "75007",
           "commune": "Paris 7e Arrondissement",
@@ -49,102 +46,13 @@ payload: |-
         ],
         "activite_internationale_prevue_par_statuts": false
       },
-      "dirigeants": [
-        {
-          "nom": "DUPONT",
-          "prenom": "Marie",
-          "date_naissance": "1975-04-12",
-          "nationalite": "France",
-          "adresse_domiciliation": {
-            "adresse_complete": "20 Rue Exemple 75001 Paris",
-            "complement": null,
-            "numero_voie": "20",
-            "type_voie": "Rue",
-            "libelle_voie": "Exemple",
-            "distribution": null,
-            "code_insee": "75101",
-            "code_postal": "75001",
-            "commune": "Paris",
-            "pays": "France"
-          },
-          "pays_residence": "France",
-          "profession": "Juriste",
-          "date_entree_fonction": "2018-06-23",
-          "date_sortie_fonction": null,
-          "fonction": "Président",
-          "qualite": "Membre du conseil d'administration",
-          "fondateur": false,
-          "personne_morale": null
-        },
-        {
-          "nom": "MARTIN",
-          "prenom": "Paul",
-          "date_naissance": "1968-11-02",
-          "nationalite": "France",
-          "adresse_domiciliation": {
-            "adresse_complete": "5 Avenue Exemple 75008 Paris",
-            "complement": null,
-            "numero_voie": "5",
-            "type_voie": "Avenue",
-            "libelle_voie": "Exemple",
-            "distribution": null,
-            "code_insee": "75108",
-            "code_postal": "75008",
-            "commune": "Paris",
-            "pays": "France"
-          },
-          "pays_residence": "France",
-          "profession": "Chercheur",
-          "date_entree_fonction": "2018-06-28",
-          "date_sortie_fonction": null,
-          "fonction": "Trésorier",
-          "qualite": "Membre du conseil d'administration",
-          "fondateur": false,
-          "personne_morale": null
-        }
-      ],
       "filiation": [],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
           2025
-        ],
-        "annees_appel_generosite_publique": [
-          2025
-        ],
-        "annees_financements_etrangers": []
-      },
-      "conformite_comptable": {
-        "etat_transmission_comptes": "En règle",
-        "annees_exercices_comptables_transmis": [
-          2023,
-          2024,
-          2025
         ]
-      },
-      "documents": [
-        {
-          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a41",
-          "type": "Statuts",
-          "nom_original": "Statuts 1957.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-06-24"
-        },
-        {
-          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a42",
-          "type": "Comptes",
-          "nom_original": "Comptes annuels 2025.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-06-24"
-        },
-        {
-          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a43",
-          "type": "Rapport d'activité",
-          "nom_original": "Rapport d'activité 2025.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-06-24"
-        }
-      ]
+      }
     },
     "links": {},
     "meta": {}
