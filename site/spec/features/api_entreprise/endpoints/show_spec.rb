@@ -33,7 +33,7 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
   end
 
   describe 'alert' do
-    let(:uid) { 'siaf/fondations' }
+    let(:uid) { 'siaf/associations' }
 
     it 'displays the title' do
       expect(page).to have_css('.fr-alert__title', text: 'API disponible uniquement en environnement de test')
