@@ -1,0 +1,64 @@
+---
+description: 'Fondation reconnue d''utilité publique (FRUP) issue de la transformation d''une association'
+params:
+  siren_or_siret_or_rnf: '075-frup-00301-05'
+status: 200
+payload: |-
+  {
+    "data": {
+      "identifiants": {
+        "rnf": "075-FRUP-00301-05",
+        "siren": null,
+        "siret_siege": null
+      },
+      "identite": {
+        "service_instructeur": {
+          "code": "75",
+          "libelle": "Paris"
+        },
+        "type_fondation": "FRUP",
+        "nom": "FONDATION EXEMPLE ISSUE D'UNE ASSOCIATION",
+        "etat": "Active",
+        "date_effet_etat": "2026-06-20",
+        "date_creation": "2026-06-20",
+        "duree_determinee": false,
+        "date_terme": null,
+        "cloture_exercice": {
+          "mois": 6,
+          "jour": 30
+        },
+        "adresse_siege": {
+          "adresse_complete": "12 Boulevard Exemple 75011 Paris",
+          "numero_voie": "12",
+          "libelle_voie": "Boulevard Exemple",
+          "code_insee": "75111",
+          "code_postal": "75011",
+          "commune": "Paris 11e Arrondissement",
+          "pays": "France"
+        },
+        "courriel": "contact@fondation-exemple.fr",
+        "telephone": "+33102030405"
+      },
+      "activites": {
+        "objet": "Soutenir la diffusion de la culture scientifique auprès des jeunes publics.",
+        "domaines_interet_general": [
+          "Diffusion de la culture, de la langue et des connaissances scientifiques françaises",
+          "Éducatif"
+        ],
+        "activite_internationale_prevue_par_statuts": false
+      },
+      "filiation": [
+        {
+          "type_operation": "Transformation",
+          "identifiant": "W751000001"
+        }
+      ],
+      "situation_financiere": {
+        "annees_subventions_publiques": [
+          2025
+        ]
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

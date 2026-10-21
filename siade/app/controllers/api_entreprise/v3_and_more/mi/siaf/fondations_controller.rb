@@ -3,8 +3,8 @@ class APIEntreprise::V3AndMore::MI::SIAF::FondationsController < APIEntreprise::
 
   def show
     if organizer.success?
-      render json: organizer[:payload],
-        status: organizer[:status]
+      render json: serialize_data,
+        status: extract_http_code(organizer)
     else
       render_errors
     end
