@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat >&2 <<USAGE
+Usage: $(basename "$0") <rule> <proof>
+
+Vouches that the pull request of the current branch satisfies a rule of
+REVIEW.md: posts a green "auto-mergeable/<rule>" commit status on its head
+commit, with <proof> as description, and sets the auto-mergeable:<rule>
+label. Run it once the pull request is reviewed and every condition of the
+rule is checked.
+
+Example:
+  $(basename "$0") docs "3 files, all under site/docs/; CI green; no conflict"
+USAGE
+  exit 1
+}
+
+fail() {
+  echo "$(basename "$0"): $1" >&2
+  exit 1
+}
+
+[ $# -eq 2 ] || usage
+
+rule=$1
+proof=$2
+label="auto-mergeable:${rule}"
+review_rules="$(git rev-parse --show-toplevel)/REVIEW.md"
+
+grep -qF "\`${label}\`" "$review_rules" || fail "no rule ${label} in REVIEW.md"
+[ "${#proof}" -le 140 ] || fail "proof is ${#proof} characters long, GitHub keeps 140"
+
+local_head=$(git rev-parse HEAD)
+read -r number author pushed_head < <(gh pr view --json number,author,headRefOid --jq '"\(.number) \(.author.login) \(.headRefOid)"')
+[ "$author" = "$(gh api user --jq .login)" ] || fail "#${number} is opened by ${author}: only its author vouches for it"
+[ "$local_head" = "$pushed_head" ] || fail "local HEAD ${local_head:0:7} is not the head of #${number} (${pushed_head:0:7}): push or pull first"
+
+gh api --silent "repos/{owner}/{repo}/statuses/${pushed_head}" \
+  -f state=success \
+  -f context="auto-mergeable/${rule}" \
+  -f description="$proof"
+gh pr edit "$number" --add-label "$label" >/dev/null
+
+echo "#${number} ${pushed_head:0:7}: auto-mergeable/${rule} posted, ${label} set"
