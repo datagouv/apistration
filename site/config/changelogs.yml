@@ -1,3 +1,13 @@
+- date: 2026-10-21
+  scope: api_particulier
+  title: "Participation familiale EAJE : attestation PDF vérifiable des données délivrées"
+  description: |
+    L'API [Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) peut désormais fournir une **preuve d'attestation vérifiable** des données délivrées, destinée notamment aux contrôles CNAF des gestionnaires d'EAJE. Il suffit d'ajouter l'en-tête `X-Generate-Proof` à l'appel, avec les mêmes paramètres et habilitations ; le bloc `data` reste identique.
+
+    Avec `X-Generate-Proof: proof-only`, `meta` contient un lien public de vérification (`verification_url`) et un code de vérification de 10 caractères (`verification_code`), valables 5 ans. Avec `X-Generate-Proof: pdf`, `links.attestation_pdf` donne en plus un lien de téléchargement de l'**attestation PDF**, sans authentification, valable environ 5 minutes (durée restante dans `meta.attestation_pdf_url_expires_in`). Le PDF reprend les données délivrées, le code de vérification et un QR code menant à la page de vérification hébergée par API Particulier, qui n'affiche que des données minimisées.
+
+    Une consultation sans résultat s'atteste aussi : sur une réponse `404`, le même en-tête produit une attestation de consultation sans résultat, ou de dossier non éligible, qui reprend l'erreur, l'organisme qui a répondu, la date de l'appel et l'identité transmise. Les erreurs `404` précisent désormais cet organisme (RNCPS, CNAF ou MSA) dans `meta.origin`. Le détail est dans la [FAQ de la fiche](<%= endpoint_path(uid: 'cnav/psu', anchor: 'attestation-pdf-verifiable') %>).
+
 - date: 2026-10-05
   scope: both
   title: "Espace utilisateur : l'organisation de chaque habilitation affichée dans la liste"
