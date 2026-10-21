@@ -1,5 +1,5 @@
 ---
-description: 'Fondation d''entreprise (FE) à durée déterminée, avec un dirigeant représentant une personne morale'
+description: 'Fondation d''entreprise (FE) à durée déterminée'
 params:
   siren_or_siret_or_rnf: '075-fe-00117-05'
 status: 200
@@ -29,11 +29,8 @@ payload: |-
         },
         "adresse_siege": {
           "adresse_complete": "25 Avenue Exemple 75008 Paris",
-          "complement": null,
           "numero_voie": "25",
-          "type_voie": "Avenue",
-          "libelle_voie": "Exemple",
-          "distribution": null,
+          "libelle_voie": "Avenue Exemple",
           "code_insee": "75108",
           "code_postal": "75008",
           "commune": "Paris 8e Arrondissement",
@@ -50,70 +47,10 @@ payload: |-
         ],
         "activite_internationale_prevue_par_statuts": true
       },
-      "dirigeants": [
-        {
-          "nom": "MOREAU",
-          "prenom": "Claire",
-          "date_naissance": "1972-09-18",
-          "nationalite": "France",
-          "adresse_domiciliation": {
-            "adresse_complete": "12 Rue Exemple 92100 Boulogne-Billancourt",
-            "complement": null,
-            "numero_voie": "12",
-            "type_voie": "Rue",
-            "libelle_voie": "Exemple",
-            "distribution": null,
-            "code_insee": "92012",
-            "code_postal": "92100",
-            "commune": "Boulogne-Billancourt",
-            "pays": "France"
-          },
-          "pays_residence": "France",
-          "profession": "Directrice générale",
-          "date_entree_fonction": "2019-05-15",
-          "date_sortie_fonction": null,
-          "fonction": "Présidente",
-          "qualite": "Membre du conseil d'administration",
-          "fondateur": false,
-          "personne_morale": {
-            "type": "Entreprise",
-            "identifiant": "98765432100012",
-            "nom": "ENTREPRISE EXEMPLE",
-            "pays": "France"
-          }
-        }
-      ],
       "filiation": [],
       "situation_financiere": {
-        "annees_subventions_publiques": [],
-        "annees_appel_generosite_publique": [],
-        "annees_financements_etrangers": [
-          2024
-        ]
-      },
-      "conformite_comptable": {
-        "etat_transmission_comptes": "En défaut",
-        "annees_exercices_comptables_transmis": [
-          2022,
-          2023
-        ]
-      },
-      "documents": [
-        {
-          "id": "8a1b2c3d-4e5f-11f1-aed1-4faba2bb8c0b",
-          "type": "Statuts",
-          "nom_original": "Statuts fondation entreprise.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-03-12"
-        },
-        {
-          "id": "8a1b2c3d-4e5f-11f1-aed1-4faba2bb8c0c",
-          "type": "Procès verbal",
-          "nom_original": "PV conseil administration 2025.pdf",
-          "type_mime": "application/pdf",
-          "date_depot": "2026-03-12"
-        }
-      ]
+        "annees_subventions_publiques": []
+      }
     },
     "links": {},
     "meta": {}

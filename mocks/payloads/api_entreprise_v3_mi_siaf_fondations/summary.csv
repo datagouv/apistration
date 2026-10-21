@@ -24,11 +24,8 @@ Titre,Description,Paramètres,Status,Réponse
       },
       ""adresse_siege"": {
         ""adresse_complete"": ""10 Rue de Penthièvre 75008 Paris"",
-        ""complement"": null,
         ""numero_voie"": ""10"",
-        ""type_voie"": ""Rue"",
-        ""libelle_voie"": ""de Penthièvre"",
-        ""distribution"": null,
+        ""libelle_voie"": ""Rue de Penthièvre"",
         ""code_insee"": ""75108"",
         ""code_postal"": ""75008"",
         ""commune"": ""Paris 8e Arrondissement"",
@@ -46,101 +43,15 @@ Titre,Description,Paramètres,Status,Réponse
       ],
       ""activite_internationale_prevue_par_statuts"": false
     },
-    ""dirigeants"": [
-      {
-        ""nom"": ""BERNARD"",
-        ""prenom"": ""Louise"",
-        ""date_naissance"": ""1988-02-20"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""1 Avenue des Champs Elysées 75008 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""1"",
-          ""type_voie"": ""Avenue"",
-          ""libelle_voie"": ""des Champs Elysées"",
-          ""distribution"": null,
-          ""code_insee"": ""75108"",
-          ""code_postal"": ""75008"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Entrepreneuse"",
-        ""date_entree_fonction"": ""2023-02-13"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Présidente"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": true,
-        ""personne_morale"": null
-      },
-      {
-        ""nom"": ""PETIT"",
-        ""prenom"": ""Nicolas"",
-        ""date_naissance"": ""1985-07-30"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""1 Avenue des Champs Elysées 75008 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""1"",
-          ""type_voie"": ""Avenue"",
-          ""libelle_voie"": ""des Champs Elysées"",
-          ""distribution"": null,
-          ""code_insee"": ""75108"",
-          ""code_postal"": ""75008"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Consultant"",
-        ""date_entree_fonction"": ""2023-02-13"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Secrétaire"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      }
-    ],
     ""filiation"": [],
     ""situation_financiere"": {
-      ""annees_subventions_publiques"": [],
-      ""annees_appel_generosite_publique"": [],
-      ""annees_financements_etrangers"": []
-    },
-    ""conformite_comptable"": {
-      ""etat_transmission_comptes"": ""En règle"",
-      ""annees_exercices_comptables_transmis"": [
-        2023,
-        2024
-      ]
-    },
-    ""documents"": [
-      {
-        ""id"": ""711cf2ed-6e04-11f1-aed1-4faba2bb8c0b"",
-        ""type"": ""Statuts"",
-        ""nom_original"": ""Statuts constitutifs.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-04-20""
-      },
-      {
-        ""id"": ""711cf2ee-6e04-11f1-aed1-4faba2bb8c0b"",
-        ""type"": ""Comptes"",
-        ""nom_original"": ""Comptes annuels 2024.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-17""
-      },
-      {
-        ""id"": ""711cf2ef-6e04-11f1-aed1-4faba2bb8c0b"",
-        ""type"": ""Rapport d'activité"",
-        ""nom_original"": ""Rapport d'activité 2024.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-17""
-      }
-    ]
+      ""annees_subventions_publiques"": []
+    }
   },
   ""links"": {},
   ""meta"": {}
 }"
-,"Fondation d'entreprise (FE) à durée déterminée, avec un dirigeant représentant une personne morale","{""siren_or_siret_or_rnf"":""075-fe-00117-05""}",200,"{
+,Fondation d'entreprise (FE) à durée déterminée,"{""siren_or_siret_or_rnf"":""075-fe-00117-05""}",200,"{
   ""data"": {
     ""identifiants"": {
       ""rnf"": ""075-FE-00117-05"",
@@ -165,11 +76,8 @@ Titre,Description,Paramètres,Status,Réponse
       },
       ""adresse_siege"": {
         ""adresse_complete"": ""25 Avenue Exemple 75008 Paris"",
-        ""complement"": null,
         ""numero_voie"": ""25"",
-        ""type_voie"": ""Avenue"",
-        ""libelle_voie"": ""Exemple"",
-        ""distribution"": null,
+        ""libelle_voie"": ""Avenue Exemple"",
         ""code_insee"": ""75108"",
         ""code_postal"": ""75008"",
         ""commune"": ""Paris 8e Arrondissement"",
@@ -186,70 +94,10 @@ Titre,Description,Paramètres,Status,Réponse
       ],
       ""activite_internationale_prevue_par_statuts"": true
     },
-    ""dirigeants"": [
-      {
-        ""nom"": ""MOREAU"",
-        ""prenom"": ""Claire"",
-        ""date_naissance"": ""1972-09-18"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""12 Rue Exemple 92100 Boulogne-Billancourt"",
-          ""complement"": null,
-          ""numero_voie"": ""12"",
-          ""type_voie"": ""Rue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""92012"",
-          ""code_postal"": ""92100"",
-          ""commune"": ""Boulogne-Billancourt"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Directrice générale"",
-        ""date_entree_fonction"": ""2019-05-15"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Présidente"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": {
-          ""type"": ""Entreprise"",
-          ""identifiant"": ""98765432100012"",
-          ""nom"": ""ENTREPRISE EXEMPLE"",
-          ""pays"": ""France""
-        }
-      }
-    ],
     ""filiation"": [],
     ""situation_financiere"": {
-      ""annees_subventions_publiques"": [],
-      ""annees_appel_generosite_publique"": [],
-      ""annees_financements_etrangers"": [
-        2024
-      ]
-    },
-    ""conformite_comptable"": {
-      ""etat_transmission_comptes"": ""En défaut"",
-      ""annees_exercices_comptables_transmis"": [
-        2022,
-        2023
-      ]
-    },
-    ""documents"": [
-      {
-        ""id"": ""8a1b2c3d-4e5f-11f1-aed1-4faba2bb8c0b"",
-        ""type"": ""Statuts"",
-        ""nom_original"": ""Statuts fondation entreprise.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-03-12""
-      },
-      {
-        ""id"": ""8a1b2c3d-4e5f-11f1-aed1-4faba2bb8c0c"",
-        ""type"": ""Procès verbal"",
-        ""nom_original"": ""PV conseil administration 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-03-12""
-      }
-    ]
+      ""annees_subventions_publiques"": []
+    }
   },
   ""links"": {},
   ""meta"": {}
@@ -279,11 +127,8 @@ Titre,Description,Paramètres,Status,Réponse
       },
       ""adresse_siege"": {
         ""adresse_complete"": ""28 Rue Saint-Dominique 75007 Paris"",
-        ""complement"": null,
         ""numero_voie"": ""28"",
-        ""type_voie"": ""Rue"",
-        ""libelle_voie"": ""Saint-Dominique"",
-        ""distribution"": null,
+        ""libelle_voie"": ""Rue Saint-Dominique"",
         ""code_insee"": ""75107"",
         ""code_postal"": ""75007"",
         ""commune"": ""Paris 7e Arrondissement"",
@@ -299,102 +144,13 @@ Titre,Description,Paramètres,Status,Réponse
       ],
       ""activite_internationale_prevue_par_statuts"": false
     },
-    ""dirigeants"": [
-      {
-        ""nom"": ""DUPONT"",
-        ""prenom"": ""Marie"",
-        ""date_naissance"": ""1975-04-12"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""20 Rue Exemple 75001 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""20"",
-          ""type_voie"": ""Rue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""75101"",
-          ""code_postal"": ""75001"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Juriste"",
-        ""date_entree_fonction"": ""2018-06-23"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Président"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      },
-      {
-        ""nom"": ""MARTIN"",
-        ""prenom"": ""Paul"",
-        ""date_naissance"": ""1968-11-02"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""5 Avenue Exemple 75008 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""5"",
-          ""type_voie"": ""Avenue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""75108"",
-          ""code_postal"": ""75008"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Chercheur"",
-        ""date_entree_fonction"": ""2018-06-28"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Trésorier"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      }
-    ],
     ""filiation"": [],
     ""situation_financiere"": {
       ""annees_subventions_publiques"": [
         2024,
         2025
-      ],
-      ""annees_appel_generosite_publique"": [
-        2025
-      ],
-      ""annees_financements_etrangers"": []
-    },
-    ""conformite_comptable"": {
-      ""etat_transmission_comptes"": ""En règle"",
-      ""annees_exercices_comptables_transmis"": [
-        2023,
-        2024,
-        2025
       ]
-    },
-    ""documents"": [
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a41"",
-        ""type"": ""Statuts"",
-        ""nom_original"": ""Statuts 1957.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      },
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a42"",
-        ""type"": ""Comptes"",
-        ""nom_original"": ""Comptes annuels 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      },
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a43"",
-        ""type"": ""Rapport d'activité"",
-        ""nom_original"": ""Rapport d'activité 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      }
-    ]
+    }
   },
   ""links"": {},
   ""meta"": {}
@@ -424,11 +180,8 @@ Titre,Description,Paramètres,Status,Réponse
       },
       ""adresse_siege"": {
         ""adresse_complete"": ""28 Rue Saint-Dominique 75007 Paris"",
-        ""complement"": null,
         ""numero_voie"": ""28"",
-        ""type_voie"": ""Rue"",
-        ""libelle_voie"": ""Saint-Dominique"",
-        ""distribution"": null,
+        ""libelle_voie"": ""Rue Saint-Dominique"",
         ""code_insee"": ""75107"",
         ""code_postal"": ""75007"",
         ""commune"": ""Paris 7e Arrondissement"",
@@ -444,102 +197,13 @@ Titre,Description,Paramètres,Status,Réponse
       ],
       ""activite_internationale_prevue_par_statuts"": false
     },
-    ""dirigeants"": [
-      {
-        ""nom"": ""DUPONT"",
-        ""prenom"": ""Marie"",
-        ""date_naissance"": ""1975-04-12"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""20 Rue Exemple 75001 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""20"",
-          ""type_voie"": ""Rue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""75101"",
-          ""code_postal"": ""75001"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Juriste"",
-        ""date_entree_fonction"": ""2018-06-23"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Président"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      },
-      {
-        ""nom"": ""MARTIN"",
-        ""prenom"": ""Paul"",
-        ""date_naissance"": ""1968-11-02"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""5 Avenue Exemple 75008 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""5"",
-          ""type_voie"": ""Avenue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""75108"",
-          ""code_postal"": ""75008"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Chercheur"",
-        ""date_entree_fonction"": ""2018-06-28"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Trésorier"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      }
-    ],
     ""filiation"": [],
     ""situation_financiere"": {
       ""annees_subventions_publiques"": [
         2024,
         2025
-      ],
-      ""annees_appel_generosite_publique"": [
-        2025
-      ],
-      ""annees_financements_etrangers"": []
-    },
-    ""conformite_comptable"": {
-      ""etat_transmission_comptes"": ""En règle"",
-      ""annees_exercices_comptables_transmis"": [
-        2023,
-        2024,
-        2025
       ]
-    },
-    ""documents"": [
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a41"",
-        ""type"": ""Statuts"",
-        ""nom_original"": ""Statuts 1957.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      },
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a42"",
-        ""type"": ""Comptes"",
-        ""nom_original"": ""Comptes annuels 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      },
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a43"",
-        ""type"": ""Rapport d'activité"",
-        ""nom_original"": ""Rapport d'activité 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      }
-    ]
+    }
   },
   ""links"": {},
   ""meta"": {}
@@ -569,11 +233,8 @@ Titre,Description,Paramètres,Status,Réponse
       },
       ""adresse_siege"": {
         ""adresse_complete"": ""28 Rue Saint-Dominique 75007 Paris"",
-        ""complement"": null,
         ""numero_voie"": ""28"",
-        ""type_voie"": ""Rue"",
-        ""libelle_voie"": ""Saint-Dominique"",
-        ""distribution"": null,
+        ""libelle_voie"": ""Rue Saint-Dominique"",
         ""code_insee"": ""75107"",
         ""code_postal"": ""75007"",
         ""commune"": ""Paris 7e Arrondissement"",
@@ -589,102 +250,71 @@ Titre,Description,Paramètres,Status,Réponse
       ],
       ""activite_internationale_prevue_par_statuts"": false
     },
-    ""dirigeants"": [
-      {
-        ""nom"": ""DUPONT"",
-        ""prenom"": ""Marie"",
-        ""date_naissance"": ""1975-04-12"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""20 Rue Exemple 75001 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""20"",
-          ""type_voie"": ""Rue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""75101"",
-          ""code_postal"": ""75001"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Juriste"",
-        ""date_entree_fonction"": ""2018-06-23"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Président"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      },
-      {
-        ""nom"": ""MARTIN"",
-        ""prenom"": ""Paul"",
-        ""date_naissance"": ""1968-11-02"",
-        ""nationalite"": ""France"",
-        ""adresse_domiciliation"": {
-          ""adresse_complete"": ""5 Avenue Exemple 75008 Paris"",
-          ""complement"": null,
-          ""numero_voie"": ""5"",
-          ""type_voie"": ""Avenue"",
-          ""libelle_voie"": ""Exemple"",
-          ""distribution"": null,
-          ""code_insee"": ""75108"",
-          ""code_postal"": ""75008"",
-          ""commune"": ""Paris"",
-          ""pays"": ""France""
-        },
-        ""pays_residence"": ""France"",
-        ""profession"": ""Chercheur"",
-        ""date_entree_fonction"": ""2018-06-28"",
-        ""date_sortie_fonction"": null,
-        ""fonction"": ""Trésorier"",
-        ""qualite"": ""Membre du conseil d'administration"",
-        ""fondateur"": false,
-        ""personne_morale"": null
-      }
-    ],
     ""filiation"": [],
     ""situation_financiere"": {
       ""annees_subventions_publiques"": [
         2024,
         2025
-      ],
-      ""annees_appel_generosite_publique"": [
-        2025
-      ],
-      ""annees_financements_etrangers"": []
+      ]
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Fondation reconnue d'utilité publique (FRUP) issue de la transformation d'une association,"{""siren_or_siret_or_rnf"":""075-frup-00301-05""}",200,"{
+  ""data"": {
+    ""identifiants"": {
+      ""rnf"": ""075-FRUP-00301-05"",
+      ""siren"": null,
+      ""siret_siege"": null
     },
-    ""conformite_comptable"": {
-      ""etat_transmission_comptes"": ""En règle"",
-      ""annees_exercices_comptables_transmis"": [
-        2023,
-        2024,
+    ""identite"": {
+      ""service_instructeur"": {
+        ""code"": ""75"",
+        ""libelle"": ""Paris""
+      },
+      ""type_fondation"": ""FRUP"",
+      ""nom"": ""FONDATION EXEMPLE ISSUE D'UNE ASSOCIATION"",
+      ""etat"": ""Active"",
+      ""date_effet_etat"": ""2026-06-20"",
+      ""date_creation"": ""2026-06-20"",
+      ""duree_determinee"": false,
+      ""date_terme"": null,
+      ""cloture_exercice"": {
+        ""mois"": 6,
+        ""jour"": 30
+      },
+      ""adresse_siege"": {
+        ""adresse_complete"": ""12 Boulevard Exemple 75011 Paris"",
+        ""numero_voie"": ""12"",
+        ""libelle_voie"": ""Boulevard Exemple"",
+        ""code_insee"": ""75111"",
+        ""code_postal"": ""75011"",
+        ""commune"": ""Paris 11e Arrondissement"",
+        ""pays"": ""France""
+      },
+      ""courriel"": ""contact@fondation-exemple.fr"",
+      ""telephone"": ""+33102030405""
+    },
+    ""activites"": {
+      ""objet"": ""Soutenir la diffusion de la culture scientifique auprès des jeunes publics."",
+      ""domaines_interet_general"": [
+        ""Diffusion de la culture, de la langue et des connaissances scientifiques françaises"",
+        ""Éducatif""
+      ],
+      ""activite_internationale_prevue_par_statuts"": false
+    },
+    ""filiation"": [
+      {
+        ""type_operation"": ""Transformation"",
+        ""identifiant"": ""W751000001""
+      }
+    ],
+    ""situation_financiere"": {
+      ""annees_subventions_publiques"": [
         2025
       ]
-    },
-    ""documents"": [
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a41"",
-        ""type"": ""Statuts"",
-        ""nom_original"": ""Statuts 1957.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      },
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a42"",
-        ""type"": ""Comptes"",
-        ""nom_original"": ""Comptes annuels 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      },
-      {
-        ""id"": ""7e7867b6-8fe0-11f1-a424-f28dce965a43"",
-        ""type"": ""Rapport d'activité"",
-        ""nom_original"": ""Rapport d'activité 2025.pdf"",
-        ""type_mime"": ""application/pdf"",
-        ""date_depot"": ""2026-06-24""
-      }
-    ]
+    }
   },
   ""links"": {},
   ""meta"": {}
