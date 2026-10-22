@@ -43,6 +43,34 @@ on a pull request carrying the label, the status on its current head
 and a green CI, never to merge anything else. Without the status, or in
 doubt, remove the label: normal review.
 
+## Zones out of every code rule
+
+The `fix-*` and `refactor` rules cover code, where a mistake costs more
+than in documentation. None of them applies, whatever the size, to a
+pull request that creates or modifies any file or code relevant to:
+
+- authentication and security: JWT and tokens, scopes and
+  authorizations (`commons/data/authorizations.yml`), access control,
+  IP ranges, rate limiting, delegations, passwords, credentials,
+  certificates;
+- existing interfaces: payloads and serializers, routes,
+  `commons/swagger/`, `commons/endpoints/`, `siade/config/errors.yml`,
+  `clients/`;
+- data: migrations and schemas, data stored or served as is
+  (`commons/data/`, dictionaries);
+- what specs do not protect: dependencies (`Gemfile*`, `package*.json`),
+  CI (`.github/`), on which every rule relies to be green, and
+  configuration under `config/`, except what a rule names;
+- `REVIEW.md` and `bin/vouch-auto-mergeable` themselves.
+
+A log statement that changes no behaviour is the only line accepted in
+these files, under `fix-observability`. Sizes count added plus deleted
+lines outside specs:
+
+```bash
+git diff --shortstat origin/develop...HEAD -- . ':!*/spec/*'
+```
+
 ## Rules
 
 ### `auto-mergeable:docs` — internal technical documentation
@@ -57,3 +85,27 @@ Out of the rule, whatever the change: `commons/endpoints/`
 (documentation displayed on the site, mixed with parameters and
 versions), `commons/swagger/`, and any other `*.md` (README, CLAUDE.md,
 REVIEW.md, skills).
+
+### `auto-mergeable:fix-observability` — logs and monitoring
+
+- every changed line outside specs is a log, Sentry or metrics
+  statement (message, level, context, fingerprint), the list of
+  filtered parameters (`config/initializers/filter_parameter_logging.rb`),
+  code of `MonitoringService` or of the Sentry tooling under
+  `bin/sentry/`: such lines are accepted in any file, excluded zones
+  included;
+- the control flow does not change: no new or moved `return`, `rescue`
+  or condition, no method signature change; a new statement only reads
+  values already at hand and cannot raise where the code did not;
+- filtering only grows: no parameter leaves the filtered list, and no
+  newly logged value carries personal data or a secret;
+- nothing visible to API or site users changes, which is why no spec
+  is required;
+- the CI is green and there is no conflict with `develop`.
+
+Out of the rule: pings and the status page (`config/pings.yml`, ping
+drivers), shown to users, and alerting thresholds.
+
+```bash
+bin/vouch-auto-mergeable fix-observability "1 file, log line only (path instead of fullpath), filters more, no flow change; CI green; no conflict"
+```
