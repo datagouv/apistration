@@ -114,3 +114,15 @@ bin/sentry/issues -P siade-site   # siade-site
 Les filtres spécifiques aux erreurs fournisseurs (`http_response_code`,
 `http_response_body`, `provider`, controller/action) ne s'appliquent qu'à
 `siade-backend`.
+
+### Bump de Ruby
+
+`bin/bump_ruby <version>` prépare l'arbre de travail (vérifications CI et
+Docker, remplacement des références, installation, `bundle install`) sans
+committer. Hors périmètre : la matrice de `.github/workflows/clients-ruby.yml`
+(compatibilité des utilisateurs du SDK, sujet distinct). Un spec qui n'échoue
+que sous la nouvelle version est souvent une course révélée par un changement
+de vitesse : le comparer à froid (`rm -rf tmp/cache/bootsnap tmp/cache/assets`)
+sous les deux versions (`RBENV_VERSION=...`) avant de soupçonner Ruby (cas
+vécu dans #543 : `src` d'une frame Turbo réécrit en URL absolue). Une PR de
+bump Ruby ne relève d'aucune règle de `REVIEW.md` : review normale.
