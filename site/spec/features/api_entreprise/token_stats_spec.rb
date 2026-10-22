@@ -24,8 +24,8 @@ RSpec.describe 'Stats page for a token', app: :api_entreprise do
 
     visit token_stats_path(token)
 
-    expect(page).to have_css("turbo-frame#token_stats_last_10_minutes[src='#{token_stats_period_path(token, period: 'last_10_minutes')}']")
-    expect(page).to have_css("turbo-frame#token_stats_last_requests[src='#{token_last_requests_path(token)}']")
+    expect(page).to have_css("turbo-frame#token_stats_last_10_minutes[src$='#{token_stats_period_path(token, period: 'last_10_minutes')}']")
+    expect(page).to have_css("turbo-frame#token_stats_last_requests[src$='#{token_last_requests_path(token)}']")
     expect(page).to have_css('turbo-frame#token_stats_last_30_hours:not([src])', visible: :all)
     expect(page).to have_css('turbo-frame#token_stats_last_8_days:not([src])', visible: :all)
 
