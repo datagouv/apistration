@@ -130,3 +130,35 @@ bin/vouch-auto-mergeable fix-observability "1 file, log line only (path instead 
 ```bash
 bin/vouch-auto-mergeable refactor "site, 2 files, 23 lines: partial extracted; specs untouched, 6 examples cover it, green; no contract; CI green"
 ```
+
+### `auto-mergeable:fix-provider` — provider errors in siade
+
+- every file outside specs lives in the folder of a single provider,
+  `siade/app/interactors/<provider>/` or
+  `siade/app/organizers/<provider>/`, and none is new;
+- at most 30 lines outside specs;
+- the fix maps an answer of the provider (HTTP code, error code, body)
+  to an existing class of `siade/app/errors/`, or sets how it is
+  tracked; no new error class, no new code in `siade/config/errors.yml`;
+- the response format does not change: nothing in `commons/swagger/`
+  nor in the rswag `response` blocks of request specs;
+- a spec built on the real answer of the provider (production log,
+  Sentry event or provider documentation, anonymised) fails on the
+  merge base and passes on the head. The proof gives the merge base;
+  the merger replays it from a clean `gh pr checkout`, by putting the
+  code back to the merge base, running the changed specs (they fail),
+  then putting the head back and running them again (they pass):
+
+  ```bash
+  base=$(git merge-base origin/develop HEAD)
+  git diff -z --name-only "$base" HEAD -- siade ':!siade/spec' | xargs -0 git restore --source="$base" --
+  git diff --name-only --diff-filter=AM "$base" HEAD -- 'siade/spec/**_spec.rb' | sed 's|^siade/||' | (cd siade && xargs bundle exec rspec)
+  git restore -- siade
+  git diff --name-only --diff-filter=AM "$base" HEAD -- 'siade/spec/**_spec.rb' | sed 's|^siade/||' | (cd siade && xargs bundle exec rspec)
+  ```
+
+- the CI is green and there is no conflict with `develop`.
+
+```bash
+bin/vouch-auto-mergeable fix-provider "cnav, 2 files, 30 lines; 40000/40024 to ProviderInternalServerError; swagger unchanged; red on 61ebb51, green on head; CI green"
+```
