@@ -109,3 +109,24 @@ drivers), shown to users, and alerting thresholds.
 ```bash
 bin/vouch-auto-mergeable fix-observability "1 file, log line only (path instead of fullpath), filters more, no flow change; CI green; no conflict"
 ```
+
+### `auto-mergeable:refactor` — refactorings without behaviour change
+
+- the pull request holds refactoring commits only (extract, move,
+  rename, inline, share), in a single app, `siade/` or `site/`, at
+  most 150 lines outside specs;
+- existing examples are unchanged: no line of an existing spec is
+  modified or deleted, except a class name or a path following the
+  moved code; new examples for an extracted object are welcome;
+- the moved or rewritten code is exercised by existing specs, which
+  pass: the proof counts them; code no spec runs is not refactored
+  under this rule;
+- nothing outside the app refers to what changes: no route, no
+  rswag `response` block, nothing in `commons/` nor `clients/`; no
+  renamed class or method that stored data refers to (jobs waiting in
+  a queue, cache keys, serialized objects, columns);
+- the CI is green and there is no conflict with `develop`.
+
+```bash
+bin/vouch-auto-mergeable refactor "site, 2 files, 23 lines: partial extracted; specs untouched, 6 examples cover it, green; no contract; CI green"
+```
