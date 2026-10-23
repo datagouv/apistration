@@ -26,11 +26,15 @@ RSpec.describe DataSubvention::Subventions::Authenticate, type: :interactor do
         .to_return(status: 200, body: payload)
     end
 
+    around do |example|
+      Timecop.freeze(Time.zone.parse('2026-10-24 12:00')) { example.run }
+    end
+
     it 'caches the token up to that date' do
       expect(EncryptedCache.instance).to receive(:write).with(
         :'data_subvention/subventions/authenticate',
         'data_subvention_token',
-        expires_in: be_within(5).of(2.days.to_i - 10)
+        expires_in: be_within(5).of((expiration_date - Time.current).to_i - 10)
       )
 
       subject
