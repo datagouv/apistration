@@ -1155,3 +1155,68 @@
 
   </p>
   </details>
+* [ine_9740000001A_2026_la_reunion.yaml](ine_9740000001A_2026_la_reunion.yaml)
+
+  Status `200`
+
+  Étudiant 9740000001A inscrit (appel par INE), année universitaire 2026-2027 à l'Université de La Réunion (Saint-Denis)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "9740000001A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "Payet",
+        "prenom": "Lucas",
+        "date_naissance": "2006-04-12"
+      },
+      "admissions": [
+        {
+          "date_debut": "2026-09-01",
+          "date_fin": "2027-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "97411",
+          "etablissement_etudes": {
+            "uai": "9740478B",
+            "nom": "Université de La Réunion"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=9740000001A' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
+  ```
+
+  </p>
+  </details>
