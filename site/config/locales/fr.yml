@@ -26,10 +26,6 @@ fr:
       session_expired:
         idle: "Votre session a expiré après %{hours} heures d'inactivité, veuillez vous reconnecter."
         absolute: "Votre session a atteint sa durée maximale de %{hours} heures, veuillez vous reconnecter."
-      login:
-        error:
-          title: La connexion a échoué.
-          description: Votre lien est peut-être expiré. Si cela n'est pas le cas, veuillez vous rapprocher de nos services.
       failure:
         unknown: Une erreur inconnue est survenue, veuillez contacter le support.
       unauthorized:

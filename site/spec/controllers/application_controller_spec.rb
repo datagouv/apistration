@@ -16,12 +16,24 @@ RSpec.describe ApplicationController do
       session[:absolute_expires_at] = 23.hours.from_now.to_i
     end
 
+    it 'sets the security event actor for the request' do
+      allow(SecurityEvent).to receive(:set_request_context)
+
+      get :index
+
+      expect(SecurityEvent).to have_received(:set_request_context).with(user:, true_user: user)
+    end
+
     context 'with activity within both the idle window and the absolute cap' do
       it 'keeps the user signed in' do
         get :index
 
         expect(response).to have_http_status(:ok)
         expect(session[:current_user_id]).to eq(user.id)
+      end
+
+      it 'does not emit a closed session security event' do
+        expect { get :index }.not_to emit_security_event('auth.session.closed')
       end
 
       it 'slides the idle window on each request' do
@@ -57,6 +69,14 @@ RSpec.describe ApplicationController do
 
         expect(flash[:info]['title']).to eq(I18n.t('concerns.sessions_management.session_expired.idle', hours: 12))
       end
+
+      it 'emits a closed session security event' do
+        expect { get :index }.to emit_security_event('auth.session.closed').with(
+          actor: { email: user.email, role: 'user' },
+          target: { type: 'user', id: user.id },
+          details: { reason: 'idle_timeout' }
+        )
+      end
     end
 
     context 'when the absolute cap is reached despite recent activity' do
@@ -76,6 +96,13 @@ RSpec.describe ApplicationController do
         get :index
 
         expect(flash[:info]['title']).to eq(I18n.t('concerns.sessions_management.session_expired.absolute', hours: 24))
+      end
+
+      it 'emits a closed session security event' do
+        expect { get :index }.to emit_security_event('auth.session.closed').with(
+          target: { type: 'user', id: user.id },
+          details: { reason: 'absolute_timeout' }
+        )
       end
     end
 
