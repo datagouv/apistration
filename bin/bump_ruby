@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat >&2 <<USAGE
+Usage: $(basename "$0") <version>
+
+Prepares the working tree for a Ruby bump of siade/, site/ and mocks/,
+without committing anything:
+
+  1. checks that the ruby/setup-ruby versions pinned in the CI workflows
+     and the ruby:<version> Docker image know the new Ruby, and stops
+     otherwise: bumping the action goes in its own commit, before the bump;
+  2. replaces the current version (read from siade/.ruby-version) with the
+     new one in every tracked file but lockfiles and clients/;
+  3. installs the new Ruby with mise or rbenv (updating ruby-build first
+     when rbenv does not know it yet);
+  4. runs bundle install in the three apps and reports any Gemfile.lock
+     that changed.
+
+Example:
+  $(basename "$0") 4.0.8
+USAGE
+  exit 1
+}
+
+fail() {
+  echo "$(basename "$0"): $1" >&2
+  exit 1
+}
+
+step() {
+  echo "==> $1"
+}
+
+[ $# -eq 1 ] || usage
+
+new=$1
+[[ "$new" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || fail "'$new' is not a Ruby version (expected X.Y.Z)"
+
+cd "$(git rev-parse --show-toplevel)"
+
+apps=(siade site mocks)
+workflows=(.github/workflows/api-ci_cd.yml .github/workflows/site-ci_cd.yml .github/workflows/mocks-tests.yml)
+old=$(tr -d '[:space:]' < siade/.ruby-version)
+old_pattern="(^|[^0-9.])${old//./\\.}([^0-9]|$)"
+
+step "Ruby ${old} -> ${new}"
+
+step "Checking ruby/setup-ruby versions pinned in CI"
+for ref in $(grep -ho 'ruby/setup-ruby@[^[:space:]]*' "${workflows[@]}" | cut -d@ -f2 | sort -u); do
+  gh api -H "Accept: application/vnd.github.raw" "repos/ruby/setup-ruby/contents/ruby-builder-versions.json?ref=${ref}" \
+    | jq -e --arg version "$new" '.ruby | index($version)' >/dev/null \
+    || fail "ruby/setup-ruby@${ref} does not know Ruby ${new}: bump the action in ${workflows[*]} in its own commit first"
+  echo "    ruby/setup-ruby@${ref} knows ${new}"
+done
+
+step "Checking Docker image ruby:${new}"
+docker manifest inspect "ruby:${new}" >/dev/null 2>&1 || fail "Docker image ruby:${new} not found (is Docker running?)"
+echo "    ruby:${new} exists"
+
+if [ "$old" = "$new" ]; then
+  step "Already on ${new}, nothing to replace"
+else
+  step "Replacing ${old} with ${new}"
+  files=$(git grep -lE "$old_pattern" -- . ':!clients' ':!*.lock' ':!*-lock.json' || true)
+  [ -n "$files" ] || fail "no reference to ${old} found"
+  for file in $files; do
+    OLD="$old" NEW="$new" perl -pi -e 's/(?<![\d.])\Q$ENV{OLD}\E(?!\d)/$ENV{NEW}/g' "$file"
+    echo "    ${file}"
+  done
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  step "Installing Ruby ${new} with mise"
+  mise install "ruby@${new}"
+  run_ruby() { mise exec "ruby@${new}" -- "$@"; }
+elif command -v rbenv >/dev/null 2>&1; then
+  step "Installing Ruby ${new} with rbenv"
+  if grep -qx "$new" <<< "$(rbenv versions --bare)"; then
+    echo "    already installed"
+  else
+    if ! grep -qx "$new" <<< "$(rbenv install --list-all)"; then
+      echo "    ruby-build does not know ${new}, updating it"
+      brew update >/dev/null
+      brew upgrade ruby-build
+    fi
+    rbenv install "$new"
+  fi
+  run_ruby() { RBENV_VERSION="$new" rbenv exec "$@"; }
+else
+  fail "neither mise nor rbenv found: install Ruby ${new} by hand"
+fi
+
+changed_lockfiles=()
+for app in "${apps[@]}"; do
+  step "bundle install in ${app}/"
+  (cd "$app" && run_ruby bundle install --quiet)
+  git diff --quiet -- "${app}/Gemfile.lock" || changed_lockfiles+=("${app}/Gemfile.lock")
+done
+
+step "Summary"
+git status --short
+if [ ${#changed_lockfiles[@]} -gt 0 ]; then
+  echo "Warning: ${changed_lockfiles[*]} changed, check why before committing"
+fi
+cat <<NEXT
+
+Nothing is committed. Next steps: review the diff, run the specs of the
+three apps under Ruby ${new}, commit and open a pull request (normal review,
+no REVIEW.md rule applies). clients/ruby and its CI matrix are out of scope.
+NEXT
