@@ -64,7 +64,8 @@ pull request that creates or modifies any file or code relevant to:
 - `REVIEW.md` and `bin/vouch-auto-mergeable` themselves.
 
 A log statement that changes no behaviour is the only line accepted in
-these files, under `fix-observability`. Sizes count added plus deleted
+these files, under `fix-observability`. `fix-spec` changes no code and
+ignores these zones: its own conditions keep the specs from weakening. Sizes count added plus deleted
 lines outside specs:
 
 ```bash
@@ -183,4 +184,39 @@ bin/vouch-auto-mergeable fix-provider "cnav, 2 files, 30 lines; 40000/40024 to P
 
 ```bash
 bin/vouch-auto-mergeable fix-site-ui "1 view, 2 lines: clipboard controller on copy button; same data shown; feature spec added; CI green; no conflict"
+```
+
+### `auto-mergeable:fix-spec` — specs broken by their environment
+
+- the spec fails because of its environment, not of the code: date or
+  daylight saving change, time zone, random order, seed;
+- every file of the pull request is an existing `*_spec.rb` of a
+  single app, under `siade/spec/` or `site/spec/`, modified only: no
+  new, deleted or renamed file, no `spec_helper`, `rails_helper`,
+  `spec/support/`, factory or fixture, which the whole suite shares;
+- no example is deleted, no assertion removed or loosened: no wider
+  `be_within`, no `skip`, `pending` or `xit`, no expected value
+  replaced by a broader matcher;
+- the fixed spec pins the condition that broke it (`travel_to` the
+  failing date, data independent of the order), so it is exercised on
+  every run;
+- the changed specs fail on the merge base and pass on the head under
+  the same fixed conditions: a date through `faketime` (libfaketime), a
+  time zone through `TZ`, an order through `--seed`. The proof gives
+  the merge base and the conditions; the merger replays them from a
+  clean `gh pr checkout`, keeping only the conditions the proof names:
+
+  ```bash
+  base=$(git merge-base origin/develop HEAD)
+  files() { git diff --name-only "$base" HEAD -- siade/spec | sed 's|^siade/||'; }
+  git restore --source="$base" -- siade/spec
+  files | (cd siade && TZ=Europe/Paris xargs faketime '2026-10-23 12:00:00' bundle exec rspec --seed 1234)
+  git restore -- siade/spec
+  files | (cd siade && TZ=Europe/Paris xargs faketime '2026-10-23 12:00:00' bundle exec rspec --seed 1234)
+  ```
+
+- the CI is green and there is no conflict with `develop`.
+
+```bash
+bin/vouch-auto-mergeable fix-spec "1 spec, DST: clock frozen on the failing date, no assertion loosened; red on 3f92246 under faketime, green on head; CI green"
 ```
