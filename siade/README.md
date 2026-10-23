@@ -4,7 +4,7 @@ API pour API Entreprise et API Particulier
 
 ## Requirements
 
-- ruby 4.0.7
+- ruby 4.0.9
 - postgresql >= 9
 - redis-server >= 5
 - gnugpg and gpgme (installed with script below)
