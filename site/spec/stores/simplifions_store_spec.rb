@@ -84,8 +84,8 @@ RSpec.describe SimplifionsStore, type: :store do
     <<~XML
       <?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url><loc>https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1eur</loc></url>
-        <url><loc>https://simplifions.data.gouv.fr/cas-d-usages/cas-visible-sans-fiche-rails</loc></url>
+        <url><loc>https://simplifions.data.gouv.fr/demarches/tarification-cantine-scolaire-a-1eur</loc></url>
+        <url><loc>https://simplifions.data.gouv.fr/demarches/cas-visible-sans-fiche-rails</loc></url>
       </urlset>
     XML
   end
@@ -108,7 +108,7 @@ RSpec.describe SimplifionsStore, type: :store do
       expect(cas_usages).to contain_exactly(
         have_attributes(
           name: 'Tarification cantine scolaire à 1€',
-          url: 'https://simplifions.data.gouv.fr/cas-d-usages/tarification-cantine-scolaire-a-1eur',
+          url: 'https://simplifions.data.gouv.fr/demarches/tarification-cantine-scolaire-a-1eur',
           description: 'Calculez le tarif automatiquement.',
           icon: '🏫',
           administrations: ['Communes et groupements de communes'],

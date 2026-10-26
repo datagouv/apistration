@@ -40,7 +40,7 @@ module Simplifions
       document.remove_namespaces!
 
       document.xpath('//url/loc').filter_map { |loc|
-        loc.text[%r{/cas-d-usages/([^/?#]+)}, 1]
+        loc.text[%r{/demarches/([^/?#]+)}, 1]
       }.uniq.sort
     end
 

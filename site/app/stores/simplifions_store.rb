@@ -3,7 +3,7 @@ require 'singleton'
 class SimplifionsStore
   include Singleton
 
-  SIMPLIFIONS_BASE_URL = 'https://simplifions.data.gouv.fr/cas-d-usages'.freeze
+  SIMPLIFIONS_BASE_URL = 'https://simplifions.data.gouv.fr/demarches'.freeze
 
   def all(api:)
     grist.cas_usages_for_solution(api)
