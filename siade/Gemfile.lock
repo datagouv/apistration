@@ -491,7 +491,7 @@ GEM
       rack (~> 3.0)
     vcr (6.4.0)
     version_gem (1.1.14)
-    webmock (3.29.0)
+    webmock (3.34.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -581,7 +581,7 @@ DEPENDENCIES
   uri (= 1.1.2)
   utf8-cleaner
   vcr
-  webmock (~> 3.29)
+  webmock (~> 3.34)
   xml-simple
 
 BUNDLED WITH
