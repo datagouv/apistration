@@ -99,10 +99,6 @@ RSpec.configure do |config|
 
   config.before do
     Rails.cache.clear
-    stub_request(:get, /grist\.numerique\.gouv\.fr/).to_return(
-      body: { 'records' => [] }.to_json,
-      headers: { 'Content-Type' => 'application/json' }
-    )
   end
 end
 
