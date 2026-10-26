@@ -31,6 +31,17 @@ RSpec.describe Simplifions::RefreshCasUsagesJob do
       )
     end
 
+    it 'serves them to web processes booted at another time than the worker' do
+      default_namespace = Rails.cache.options[:namespace]
+      Rails.cache.options[:namespace] = 'worker_booted_at_1'
+      refresh
+      Rails.cache.options[:namespace] = 'web_booted_at_2'
+
+      expect(quotient_familial_cas_usages.map(&:name)).to eq(['Tarification cantine scolaire à 1€'])
+    ensure
+      Rails.cache.options[:namespace] = default_namespace
+    end
+
     it 'serves no cas usage for an API without any in Grist' do
       refresh
 

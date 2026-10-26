@@ -2,9 +2,9 @@ require 'singleton'
 
 class SimplifionsStore
   include Singleton
-  include Simplifions::RemoteCache
 
   CACHE_KEY = 'simplifions/cas_usages'.freeze
+  CACHE_NAMESPACE = 'simplifions'.freeze
 
   def all(api:)
     build_cas_usages(catalog_for(api)['all'], api)
@@ -20,10 +20,20 @@ class SimplifionsStore
   private
 
   def catalog_for(api)
-    cached { Simplifions::CasUsagesCatalog.build }.fetch(api, {})
+    catalog = Rails.cache.read(CACHE_KEY, namespace: CACHE_NAMESPACE)
+
+    if catalog.nil?
+      enqueue_refresh
+      return {}
+    end
+
+    catalog.fetch(api, {})
+  end
+
+  def enqueue_refresh
+    Simplifions::RefreshCasUsagesJob.perform_later
   rescue StandardError => e
-    Rails.logger.error("SimplifionsStore: cas usages build failed - #{e.message}")
-    {}
+    Rails.logger.error("SimplifionsStore: cas usages refresh enqueue failed - #{e.message}")
   end
 
   def endpoints_by_uid(api)
