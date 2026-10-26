@@ -162,6 +162,23 @@ RSpec.describe SimplifionsStore, type: :store do
     end
   end
 
+  describe 'when simplifions deduplicated the slug of a cas usage' do
+    let(:sitemap_response) do
+      <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          <url><loc>https://simplifions.data.gouv.fr/demarches/tarification-cantine-scolaire-a-1eur-1</loc></url>
+        </urlset>
+      XML
+    end
+
+    it 'links to the suffixed slug published in the sitemap' do
+      expect(described_class.instance.all(api: 'api_particulier').map(&:url)).to include(
+        'https://simplifions.data.gouv.fr/demarches/tarification-cantine-scolaire-a-1eur-1'
+      )
+    end
+  end
+
   describe 'when Grist is unavailable' do
     before do
       stub_request(:get, "#{grist_base}/APIs_et_datasets/records").to_raise(Faraday::Error)

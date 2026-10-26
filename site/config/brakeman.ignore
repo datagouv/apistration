@@ -333,7 +333,7 @@
       "cwe_id": [
         79
       ],
-      "note": "SimplifionsStore#build_cas_usage always builds the URL from the https SIMPLIFIONS_BASE_URL constant and a slug, so the href cannot carry another scheme."
+      "note": "Simplifions::CasUsagesCatalog#build_cas_usage always builds the URL from the https SIMPLIFIONS_BASE_URL constant and a slug, so the href cannot carry another scheme."
     },
     {
       "warning_type": "Cross-Site Scripting",
