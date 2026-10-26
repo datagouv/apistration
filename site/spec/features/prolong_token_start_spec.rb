@@ -37,7 +37,7 @@ RSpec.describe 'retrieve and sets the current prolong token' do
       it 'creates a new wizard' do
         go_to_prolong_token_start
 
-        expect(current_url).to include('owner')
+        expect(page).to have_current_path(/owner/, url: true)
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe 'retrieve and sets the current prolong token' do
         it 'creates a new wizard' do
           go_to_prolong_token_start
 
-          expect(current_url).to include('owner')
+          expect(page).to have_current_path(/owner/, url: true)
         end
       end
 
