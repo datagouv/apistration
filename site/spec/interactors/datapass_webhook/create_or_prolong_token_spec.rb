@@ -57,6 +57,18 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
       expect(authorization_request.reload.scopes.sort).to eq(%w[associations entreprises])
     end
 
+    it 'emits a token creation from the DataPass webhook' do
+      expect { subject }.to emit_security_event('token.api_token.created').with(
+        target: { type: 'token', id: kind_of(String) },
+        details: {
+          source: 'datapass_webhook',
+          datapass_id: authorization_request.external_id,
+          expires_at: Time.zone.at(18.months.from_now.to_i),
+          scopes: match_array(%w[associations entreprises])
+        }
+      )
+    end
+
     context 'when there is some scopes starting with open_data_' do
       let(:scopes) do
         {
@@ -84,6 +96,10 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
 
         expect(token.reload.exp).to eq(18.months.from_now.to_i)
         expect(token.days_left_notification_sent).to be_empty
+      end
+
+      it 'emits no token creation' do
+        expect { subject }.not_to emit_security_event('token.api_token.created')
       end
     end
 

@@ -4,6 +4,7 @@ module DatapassWebhooks
   included do
     before_action :track_payload_through_sentry
     before_action :verify_hub_signature!
+    before_action :set_security_event_actor
   end
 
   def api_entreprise
@@ -70,6 +71,10 @@ module DatapassWebhooks
 
   def event
     params[:event]
+  end
+
+  def set_security_event_actor
+    SecurityEvent.assign_request_actor(SecurityEvent::DATAPASS_ACTOR)
   end
 
   def verify_hub_signature!
