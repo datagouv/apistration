@@ -59,7 +59,7 @@ fr:
       demande_recue:
         subject: 📬 Votre demande d'accès à l'API Particulier a bien été reçue par nos services.
       update_demande_recue:
-        subject: 📬 Votre demande de mise à jour de votre accès à l'API Entreprise a bien été reçue par nos services.
+        subject: 📬 Votre demande de mise à jour de votre accès à l'API Particulier a bien été reçue par nos services.
 
       embarquement_demande_refusee:
         subject: 🚫 Votre demande d'accès est refusée.
