@@ -38,8 +38,17 @@ RSpec.describe 'Editor delegation', api: :entreprise do
   let(:params) { { recipient: recipient_siret, context: 'test', object: 'test' } }
 
   context 'with active delegation' do
-    before do
-      EditorDelegation.create!(editor:, authorization_request:)
+    let!(:delegation) { EditorDelegation.create!(editor:, authorization_request:) }
+
+    it 'logs the call with the editor, the delegation and the recipient at the top level' do
+      allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+      get url, params:, headers: headers_params
+
+      expect(LogStasher).to have_received(:build_logstash_event).with(
+        hash_including(editor_id: editor.id, delegation_id: delegation.id, recipient: recipient_siret, ip_restricted: false),
+        anything
+      )
     end
 
     it 'allows querying a third-party SIREN on behalf of the delegated recipient' do
