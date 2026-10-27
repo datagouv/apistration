@@ -80,6 +80,16 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       click_button 'Générer un nouveau jeton éditeur'
     end
 
+    it 'emits an editor token creation by the editor' do
+      visit editor_tokens_path
+
+      expect { click_button 'Générer un nouveau jeton éditeur' }.to emit_security_event('token.editor_token.created').with(
+        actor: { email: user.email, role: 'editor' },
+        target: { type: 'editor_token', id: kind_of(String) },
+        details: { source: 'editor', editor_id: editor.id }
+      )
+    end
+
     it 'creates a token and displays its JWT once with a copy warning' do
       editor_token = editor.tokens.sole
 

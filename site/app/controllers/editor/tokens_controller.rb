@@ -14,9 +14,10 @@ class Editor::TokensController < EditorController
   def create
     authorize EditorToken
 
-    @editor_token = current_editor.tokens.new
+    result = EditorToken::Create.call(editor: current_editor)
+    @editor_token = result.editor_token
 
-    if @editor_token.save
+    if result.success?
       render :created
     else
       redirect_with_errors(@editor_token)

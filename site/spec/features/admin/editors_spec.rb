@@ -295,5 +295,15 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       )
       expect(AdminActivity.last.after_attributes).to eq('exp' => editor.tokens.last.exp)
     end
+
+    it 'emits an editor token creation by the admin' do
+      visit admin_editor_path(editor)
+
+      expect { click_on 'Générer un nouveau jeton éditeur' }.to emit_security_event('token.editor_token.created').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'editor_token', id: kind_of(String) },
+        details: { source: 'admin', editor_id: editor.id }
+      )
+    end
   end
 end
