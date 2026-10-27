@@ -11,8 +11,6 @@ class ScheduleExpirationNoticeEmailJob < ApplicationJob
 
     return if token.nil? || token.authorization_request.nil?
 
-    return unless mailer_klass.respond_to?(template)
-
     mailer_klass.send(template, { token: }).deliver_later
   end
 
