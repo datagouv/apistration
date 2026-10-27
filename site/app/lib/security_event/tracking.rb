@@ -2,6 +2,7 @@ module SecurityEvent::Tracking
   extend ActiveSupport::Concern
 
   UNEXPECTED_ERROR_REASON = 'unexpected_error'.freeze
+  ADMIN_ACTOR = ->(context) { SecurityEvent.actor_for(context.admin) if context.admin }
   SETTINGS_KEYS = %i[
     security_event_name
     security_event_target_key

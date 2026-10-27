@@ -40,3 +40,11 @@ events:
     target_type: user
     details: [reason]
     since: 2026-10
+
+  auth.impersonation.started:
+    criticality: critical
+    services: [site]
+    description: Un admin prend l'identité d'un utilisateur. L'acteur est l'admin, la cible l'utilisateur dont il prend l'identité
+    actor_types: [admin]
+    target_type: user
+    since: 2026-11
