@@ -1,9 +1,15 @@
 class SecurityEvent::Track < ApplicationInteractor
   def call
+    return unless action_happened?
+
     SecurityEvent.emit(context.security_event_name, target:, details:, **actor)
   end
 
   private
+
+  def action_happened?
+    context.security_event_condition.nil? || context.security_event_condition.call(context)
+  end
 
   def target
     {

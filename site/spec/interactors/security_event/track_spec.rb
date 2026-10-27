@@ -66,6 +66,14 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
       organize NestedSessionClose, SecurityEvent::Track
     end)
 
+    stub_const('ConditionalSessionClose', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.session.closed', target: :user, only_if: ->(context) { context.closed }
+
+      organize SecurityEvent::Track
+    end)
+
     stub_const('UntrackedFailure', Class.new(ApplicationOrganizer) do
       include SecurityEvent::Tracking
 
@@ -139,6 +147,11 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
     it 'emits nothing on failure' do
       expect { UntrackedFailure.call(user:) }.not_to emit_security_event('auth.session.closed')
     end
+  end
+
+  it 'emits only when the declared condition holds' do
+    expect { ConditionalSessionClose.call(user:, closed: true) }.to emit_security_event('auth.session.closed')
+    expect { ConditionalSessionClose.call(user:, closed: false) }.not_to emit_security_event('auth.session.closed')
   end
 
   it 'lets a tracking organizer run inside another one' do

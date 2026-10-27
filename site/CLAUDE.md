@@ -76,6 +76,12 @@ depuis un contrôleur ni un modèle.
   `details_from_context:`), uniquement des clés déclarées au catalogue.
 - `tracks_security_event_failures` émet aussi en cas d'échec, avec
   `outcome: denied` et le message d'échec comme `reason`.
+- `only_if:` prend un lambda sur le contexte : l'event n'est émis que si
+  l'action a vraiment eu lieu (token créé plutôt que retrouvé, scopes
+  réellement modifiés).
+- Un flux qui porte plusieurs events (webhook DataPass, ban avec
+  nouveau token) organise un organizer de tracking par event : chacun
+  pose ses réglages pour sa seule exécution, l'imbrication est sûre.
 - L'acteur par défaut est l'utilisateur de la requête (posé dans
   `ApplicationController`) ; `actor:` prend un lambda sinon.
 - Garde-fou : `spec/lib/security_event/catalog_spec.rb` échoue si un event
