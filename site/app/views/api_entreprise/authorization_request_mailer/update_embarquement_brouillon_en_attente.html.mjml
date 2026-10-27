@@ -27,4 +27,4 @@
     </mj-text>
   </mj-column>
 </mj-section>
-<%= render partial: "shared/api_particulier/mailers/footer" %>
+<%= render partial: "shared/api_entreprise/mailers/footer" %>
