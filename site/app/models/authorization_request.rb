@@ -41,6 +41,7 @@ class AuthorizationRequest < ApplicationRecord
   end
 
   validates :external_id, uniqueness: true, allow_blank: true
+  validates :external_id, presence: true, unless: -> { status == 'draft' }
 
   validates :api, inclusion: { in: %w[entreprise particulier] }
 

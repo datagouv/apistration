@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_19_072757) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_27_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_19_072757) do
     t.datetime "validated_at", precision: nil
     t.index ["external_id"], name: "index_authorization_requests_on_external_id", unique: true, where: "(external_id IS NOT NULL)"
     t.index ["scopes"], name: "index_authorization_requests_on_scopes", using: :gin
+    t.check_constraint "NOT status::text IS DISTINCT FROM 'draft'::text OR COALESCE(btrim(external_id::text), ''::text) <> ''::text", name: "external_id_required_outside_draft"
   end
 
   create_table "changelog_subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
