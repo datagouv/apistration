@@ -63,6 +63,21 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
       )
     end
 
+    it 'emits an impersonation stopped by the admin, not by the impersonated user' do
+      impersonate
+
+      expect { click_on 'stop_impersonate' }.to emit_security_event('auth.impersonation.stopped').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: user.id }
+      )
+    end
+
+    it 'emits no impersonation stopped when the admin impersonates nobody' do
+      visit admin_users_path
+
+      expect { page.driver.post(stop_impersonating_admin_users_path) }.not_to emit_security_event('auth.impersonation.stopped')
+    end
+
     it 'emits an impersonation started by the admin on the user' do
       expect { impersonate }.to emit_security_event('auth.impersonation.started').with(
         actor: { email: admin.email, role: 'admin' },

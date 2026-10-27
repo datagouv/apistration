@@ -157,3 +157,11 @@ events:
     target_type: token
     details: [surface, datapass_id, jtis, count, editor_id]
     since: 2026-11
+
+  auth.impersonation.stopped:
+    criticality: info
+    services: [site]
+    description: Un admin rend l'identité qu'il avait prise. L'acteur est l'admin, la cible l'utilisateur dont il avait pris l'identité
+    actor_types: [admin]
+    target_type: user
+    since: 2026-11
