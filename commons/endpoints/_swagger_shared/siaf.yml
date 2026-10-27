@@ -1,10 +1,9 @@
 siaf:
   fondations:
     title: "Données fondations"
-    description: "Données de référence d'une fondation (FRUP, fondation d'entreprise ou fonds de dotation) issues du Répertoire National des Fondations (RNF), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, dirigeants, situation financière déclarative, conformité comptable et pièces justificatives."
+    description: "Données de référence d'une fondation (FRUP, fondation d'entreprise ou fonds de dotation) issues du Répertoire National des Fondations (RNF), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, filiation et années de subventions publiques."
     tags:
       - "Informations générales"
-      - "Prochainement"
     attributes:
       identifiants:
         title: "Identifiants de la fondation"
@@ -17,7 +16,7 @@ siaf:
             example: "075-FRUP-00194-01"
           siren:
             title: "SIREN de la fondation"
-            description: "Déduit du SIRET présent dans le référentiel. Environ 22 % des fondations n'ont pas de SIRET : la valeur est alors null."
+            description: "Déduit du SIRET présent dans le référentiel. Environ 28 % des fondations n'ont pas de SIRET : la valeur est alors null."
             type: "string"
             nullable: true
             example: "784308934"
@@ -105,6 +104,171 @@ siaf:
                 example: 31
           adresse_siege:
             title: "Adresse du siège de la fondation"
+            description: "Le référentiel ne sert ni type de voie, ni complément d'adresse, ni mention de distribution : le type de voie est inclus dans libelle_voie. Seule adresse_complete est servie pour les quelques adresses que le référentiel n'a pas pu géolocaliser."
+            type: "object"
+            properties:
+              adresse_complete:
+                title: "Adresse complète sur une ligne"
+                type: "string"
+                nullable: true
+                example: "28 Rue Saint-Dominique 75007 Paris"
+              numero_voie:
+                title: "Numéro de voie"
+                type: "string"
+                nullable: true
+                example: "28"
+              libelle_voie:
+                title: "Libellé de la voie, type de voie inclus"
+                type: "string"
+                nullable: true
+                example: "Rue Saint-Dominique"
+              code_insee:
+                title: "Code INSEE de la commune"
+                type: "string"
+                nullable: true
+                example: "75107"
+              code_postal:
+                title: "Code postal"
+                type: "string"
+                nullable: true
+                example: "75007"
+              commune:
+                title: "Commune"
+                type: "string"
+                nullable: true
+                example: "Paris 7e Arrondissement"
+              pays:
+                title: "Pays"
+                type: "string"
+                nullable: true
+                example: "France"
+          courriel:
+            title: "Courriel de la fondation"
+            type: "string"
+            nullable: true
+            example: "contact@fondation-exemple.fr"
+          telephone:
+            title: "Numéro de téléphone de la fondation"
+            type: "string"
+            nullable: true
+            example: "+33123456789"
+      activites:
+        title: "Activités de la fondation"
+        type: "object"
+        properties:
+          objet:
+            title: "Objet de la fondation"
+            description: "Objet de la fondation tel que rédigé dans ses statuts."
+            type: "string"
+            example: "Contribuer à l'avancement de la science chimique et au développement de ses applications."
+          domaines_interet_general:
+            title: "Domaines d'intérêt général"
+            description: "Libellés de la nomenclature du référentiel, servis à ce jour : Culturel, Défense de l'environnement naturel, Diffusion de la culture, de la langue et des connaissances scientifiques françaises, Éducatif, Familial, Humanitaire, Mise en valeur du patrimoine artistique, Scientifique, Social, Sportif. Un libellé peut contenir une virgule : chaque élément de la liste est un domaine entier."
+            type: "array"
+            items:
+              type: "string"
+              example: "Scientifique"
+            example: ["Social", "Scientifique", "Humanitaire"]
+          activite_internationale_prevue_par_statuts:
+            title: "Activité internationale prévue par les statuts"
+            type: "boolean"
+            nullable: true
+            example: false
+      filiation:
+        title: "Filiation de la fondation"
+        description: "Organismes dont la fondation est issue, avec le type de l'opération qui l'a créée. La liste est vide lorsque la fondation n'est issue d'aucune opération. Seule la transformation (d'une association ou d'un fonds de dotation en fondation) est servie à ce jour ; le vocabulaire n'est donc pas figé en enum."
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            type_operation:
+              title: "Type d'opération"
+              type: "string"
+              example: "Transformation"
+            identifiant:
+              title: "Identifiant de l'organisme dont la fondation est issue"
+              description: "Identifiant RNA pour une association, RNF pour une fondation. Null lorsque le référentiel ne connaît pas l'organisme d'origine."
+              type: "string"
+              nullable: true
+              example: "W751000001"
+      situation_financiere:
+        title: "Situation financière déclarative"
+        description: "Données déclarées par la fondation via des démarches dédiées : elles ne sont renseignées que lorsque la fondation a effectué la démarche correspondante."
+        type: "object"
+        properties:
+          annees_subventions_publiques:
+            title: "Années pendant lesquelles la fondation a reçu des subventions publiques"
+            type: "array"
+            items:
+              type: "integer"
+            example: [2024, 2025]
+
+  associations:
+    title: "Données associations"
+    description: "Données de référence d'une association issues du Répertoire National des Associations (RNA), opéré par le Ministère de l'Intérieur via le SIAF : identité, reconnaissance d'utilité publique, activités, dirigeants, filiation, groupement constitué (union, fédération), établissements, conformité comptable et pièces justificatives."
+    tags:
+      - "Informations générales"
+      - "Prochainement"
+    meta: &siaf_association_meta
+      date_derniere_mise_a_jour:
+        title: "Date de dernière mise à jour de l'association"
+        type: "string"
+        format: "date"
+        nullable: true
+        example: "2024-05-15"
+    attributes:
+      identifiants: &siaf_association_identifiants
+        title: "Identifiants de l'association"
+        type: "object"
+        properties:
+          rna:
+            title: "Identifiant au Répertoire National des Associations"
+            description: "Identifiant officiel de l'association, au format W suivi de 9 caractères dont les 3 premiers encodent le département de déclaration."
+            type: "string"
+            example: "W123456789"
+          siren:
+            title: "SIREN de l'association"
+            description: "Déduit du SIRET présent dans le référentiel. Toutes les associations ne sont pas immatriculées au répertoire Sirene : l'immatriculation n'est obligatoire que lorsque l'association emploie, perçoit des subventions ou exerce une activité économique. La valeur est alors null."
+            type: "string"
+            nullable: true
+            example: "123456789"
+          siret_siege:
+            title: "SIRET du siège de l'association"
+            type: "string"
+            nullable: true
+            example: "12345678900012"
+      identite:
+        title: "Identité de l'association"
+        type: "object"
+        properties:
+          nom: &siaf_association_nom
+            title: "Nom de l'association"
+            type: "string"
+            example: "ASSOCIATION EXEMPLE"
+          etat: &siaf_association_etat
+            title: "État de l'association"
+            description: "Valeurs servies à ce jour : Active et Dissoute. Le référentiel métier en prévoit d'autres (suspendue, transformée, fusionnée, scindée), jamais observées ; le vocabulaire n'est donc pas figé en enum."
+            type: "string"
+            example: "Active"
+          service_instructeur: *siaf_service_instructeur
+          date_creation: &siaf_association_date_creation
+            title: "Date de création de l'association"
+            type: "string"
+            format: "date"
+            nullable: true
+            example: "2010-05-12"
+          date_dissolution: &siaf_association_date_dissolution
+            title: "Date de dissolution de l'association"
+            description: "Renseignée uniquement lorsque l'association est dissoute."
+            type: "string"
+            format: "date"
+            nullable: true
+            example: null
+          duree_determinee: *siaf_duree_determinee
+          date_terme: *siaf_date_terme
+          cloture_exercice: *siaf_cloture_exercice
+          adresse_siege: &siaf_association_adresse_siege
+            title: "Adresse du siège de l'association"
             type: "object"
             properties: &siaf_adresse_properties
               adresse_complete:
@@ -159,31 +323,61 @@ siaf:
                 nullable: true
                 example: "France"
           courriel:
-            title: "Courriel de la fondation"
+            title: "Courriel de l'association"
             type: "string"
             nullable: true
-            example: "contact@fondation-exemple.fr"
+            example: "contact@association.fr"
           telephone:
-            title: "Numéro de téléphone de la fondation"
+            title: "Numéro de téléphone de l'association"
             type: "string"
             nullable: true
-            example: "+33123456789"
-      activites:
-        title: "Activités de la fondation"
+            example: "+33102030405"
+      utilite_publique: &siaf_association_utilite_publique
+        title: "Reconnaissance d'utilité publique"
         type: "object"
         properties:
-          objet:
-            title: "Objet de la fondation"
-            description: "Objet de la fondation tel que rédigé dans ses statuts."
+          reconnue:
+            title: "Association reconnue d'utilité publique"
+            type: "boolean"
+            nullable: true
+            example: true
+          date_publication:
+            title: "Date de publication de la reconnaissance d'utilité publique"
             type: "string"
-            example: "Contribuer à l'avancement de la science chimique et au développement de ses applications."
-          domaines_interet_general:
-            title: "Domaines d'intérêt général"
-            type: "array"
-            items:
-              type: "string"
-              example: "Scientifique"
-            example: ["Social", "Scientifique", "Humanitaire"]
+            format: "date"
+            nullable: true
+            example: "2018-04-10"
+          date_fin:
+            title: "Date de fin de la reconnaissance d'utilité publique"
+            type: "string"
+            format: "date"
+            nullable: true
+            example: null
+      activites:
+        title: "Activités de l'association"
+        type: "object"
+        properties:
+          objet: &siaf_association_objet
+            title: "Objet de l'association"
+            description: "Objet de l'association tel que rédigé dans ses statuts."
+            type: "string"
+            nullable: true
+            example: "Promouvoir les activités culturelles..."
+          objet_social1: &siaf_association_objet_social1
+            title: "Objet social principal"
+            description: "L'objet social suit la nomenclature nationale Waldec et rattache l'objet de l'association à une catégorie. La liste exhaustive est disponible sur https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec (environ 300 entrées). La clé garde le nom qu'elle porte sur l'API Données association de la DJEPVA ; le référentiel SIAF ne sert qu'un objet social, objet_social2 sera ajouté s'il vient à l'alimenter."
+            type: "object"
+            properties:
+              code:
+                title: "Code de l'objet social"
+                type: "string"
+                nullable: true
+                example: "006000"
+              libelle:
+                title: "Libellé de l'objet social"
+                type: "string"
+                nullable: true
+                example: "Culture et pratiques artistiques"
           activite_internationale_prevue_par_statuts:
             title: "Activité internationale prévue par les statuts"
             type: "boolean"
@@ -305,227 +499,6 @@ siaf:
               type: "string"
               nullable: true
               example: "W987654321"
-      situation_financiere:
-        title: "Situation financière déclarative"
-        description: "Données déclarées par la fondation via des démarches dédiées : elles ne sont renseignées que lorsque la fondation a effectué la démarche correspondante."
-        type: "object"
-        properties:
-          annees_subventions_publiques:
-            title: "Années pendant lesquelles la fondation a reçu des subventions publiques"
-            type: "array"
-            items:
-              type: "integer"
-            example: [2024, 2025]
-          annees_appel_generosite_publique:
-            title: "Années pendant lesquelles la fondation a fait appel à la générosité publique"
-            type: "array"
-            items:
-              type: "integer"
-            example: [2025]
-          annees_financements_etrangers:
-            title: "Années pendant lesquelles la fondation a reçu un financement étranger"
-            type: "array"
-            items:
-              type: "integer"
-            example: []
-      conformite_comptable:
-        title: "Conformité comptable de la fondation"
-        type: "object"
-        properties:
-          etat_transmission_comptes: &siaf_etat_transmission_comptes
-            title: "État de transmission des comptes"
-            description: "En défaut lorsque l'organisme est en retard dans le dépôt de ses comptes annuels."
-            type: "string"
-            enum:
-              - "En règle"
-              - "En défaut"
-            example: "En règle"
-          annees_exercices_comptables_transmis:
-            title: "Années des exercices comptables transmis"
-            description: "Années au titre desquelles la fondation a déposé ses comptes annuels."
-            type: "array"
-            items:
-              type: "integer"
-              example: 2024
-            example: [2023, 2024, 2025]
-      documents:
-        title: "Pièces justificatives déposées par la fondation"
-        description: "Métadonnées des documents déposés (statuts, comptes, rapports d'activité, procès verbaux…). Le type et le nombre de documents varient selon la fondation."
-        type: "array"
-        items:
-          type: "object"
-          properties:
-            id:
-              title: "Identifiant du document"
-              type: "string"
-              example: "7e7867b6-8fe0-11f1-a424-f28dce965a41"
-            type:
-              title: "Type de document"
-              description: "Nature de la pièce justificative déposée par la fondation. Toutes les fondations ne déposent pas tous les types de documents."
-              type: "string"
-              enum:
-                - "Statuts"
-                - "Comptes"
-                - "Rapport d'activité"
-                - "Procès verbal"
-                - "Règlement intérieur"
-                - "Acte notarié lié à une libéralité"
-                - "Acte d'autorisation ou acte de non opposition"
-                - "Courrier adressé par l'administration"
-                - "Mise en demeure"
-                - "Suspension"
-                - "Décision de retrait / dissolution"
-                - "Jugement de dissolution judiciaire"
-              example: "Statuts"
-            nom_original:
-              title: "Nom original du fichier"
-              type: "string"
-              nullable: true
-              example: "Statuts 1957.pdf"
-            type_mime:
-              title: "Type MIME du fichier"
-              type: "string"
-              nullable: true
-              example: "application/pdf"
-            date_depot:
-              title: "Date de dépôt du document"
-              type: "string"
-              format: "date"
-              nullable: true
-              example: "2026-06-24"
-
-
-  associations:
-    title: "Données associations"
-    description: "Données de référence d'une association issues du Répertoire National des Associations (RNA), opéré par le Ministère de l'Intérieur via le SIAF : identité, reconnaissance d'utilité publique, activités, dirigeants, filiation, groupement constitué (union, fédération), établissements, conformité comptable et pièces justificatives."
-    tags:
-      - "Informations générales"
-      - "Prochainement"
-    meta: &siaf_association_meta
-      date_derniere_mise_a_jour:
-        title: "Date de dernière mise à jour de l'association"
-        type: "string"
-        format: "date"
-        nullable: true
-        example: "2024-05-15"
-    attributes:
-      identifiants: &siaf_association_identifiants
-        title: "Identifiants de l'association"
-        type: "object"
-        properties:
-          rna:
-            title: "Identifiant au Répertoire National des Associations"
-            description: "Identifiant officiel de l'association, au format W suivi de 9 caractères dont les 3 premiers encodent le département de déclaration."
-            type: "string"
-            example: "W123456789"
-          siren:
-            title: "SIREN de l'association"
-            description: "Déduit du SIRET présent dans le référentiel. Toutes les associations ne sont pas immatriculées au répertoire Sirene : l'immatriculation n'est obligatoire que lorsque l'association emploie, perçoit des subventions ou exerce une activité économique. La valeur est alors null."
-            type: "string"
-            nullable: true
-            example: "123456789"
-          siret_siege:
-            title: "SIRET du siège de l'association"
-            type: "string"
-            nullable: true
-            example: "12345678900012"
-      identite:
-        title: "Identité de l'association"
-        type: "object"
-        properties:
-          nom: &siaf_association_nom
-            title: "Nom de l'association"
-            type: "string"
-            example: "ASSOCIATION EXEMPLE"
-          etat: &siaf_association_etat
-            title: "État de l'association"
-            description: "Valeurs servies à ce jour : Active et Dissoute. Le référentiel métier en prévoit d'autres (suspendue, transformée, fusionnée, scindée), jamais observées ; le vocabulaire n'est donc pas figé en enum."
-            type: "string"
-            example: "Active"
-          service_instructeur: *siaf_service_instructeur
-          date_creation: &siaf_association_date_creation
-            title: "Date de création de l'association"
-            type: "string"
-            format: "date"
-            nullable: true
-            example: "2010-05-12"
-          date_dissolution: &siaf_association_date_dissolution
-            title: "Date de dissolution de l'association"
-            description: "Renseignée uniquement lorsque l'association est dissoute."
-            type: "string"
-            format: "date"
-            nullable: true
-            example: null
-          duree_determinee: *siaf_duree_determinee
-          date_terme: *siaf_date_terme
-          cloture_exercice: *siaf_cloture_exercice
-          adresse_siege: &siaf_association_adresse_siege
-            title: "Adresse du siège de l'association"
-            type: "object"
-            properties: *siaf_adresse_properties
-          courriel:
-            title: "Courriel de l'association"
-            type: "string"
-            nullable: true
-            example: "contact@association.fr"
-          telephone:
-            title: "Numéro de téléphone de l'association"
-            type: "string"
-            nullable: true
-            example: "+33102030405"
-      utilite_publique: &siaf_association_utilite_publique
-        title: "Reconnaissance d'utilité publique"
-        type: "object"
-        properties:
-          reconnue:
-            title: "Association reconnue d'utilité publique"
-            type: "boolean"
-            nullable: true
-            example: true
-          date_publication:
-            title: "Date de publication de la reconnaissance d'utilité publique"
-            type: "string"
-            format: "date"
-            nullable: true
-            example: "2018-04-10"
-          date_fin:
-            title: "Date de fin de la reconnaissance d'utilité publique"
-            type: "string"
-            format: "date"
-            nullable: true
-            example: null
-      activites:
-        title: "Activités de l'association"
-        type: "object"
-        properties:
-          objet: &siaf_association_objet
-            title: "Objet de l'association"
-            description: "Objet de l'association tel que rédigé dans ses statuts."
-            type: "string"
-            nullable: true
-            example: "Promouvoir les activités culturelles..."
-          objet_social1: &siaf_association_objet_social1
-            title: "Objet social principal"
-            description: "L'objet social suit la nomenclature nationale Waldec et rattache l'objet de l'association à une catégorie. La liste exhaustive est disponible sur https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec (environ 300 entrées). La clé garde le nom qu'elle porte sur l'API Données association de la DJEPVA ; le référentiel SIAF ne sert qu'un objet social, objet_social2 sera ajouté s'il vient à l'alimenter."
-            type: "object"
-            properties:
-              code:
-                title: "Code de l'objet social"
-                type: "string"
-                nullable: true
-                example: "006000"
-              libelle:
-                title: "Libellé de l'objet social"
-                type: "string"
-                nullable: true
-                example: "Culture et pratiques artistiques"
-          activite_internationale_prevue_par_statuts:
-            title: "Activité internationale prévue par les statuts"
-            type: "boolean"
-            nullable: true
-            example: false
-      dirigeants: *siaf_dirigeants
-      filiation: *siaf_filiation
       groupement: &siaf_association_groupement
         title: "Groupement constitué par l'association"
         description: "Renseigné lorsque l'association est elle-même une union ou une fédération d'associations. Null pour une association simple. L'appartenance de l'association à un groupement n'est pas servie par le référentiel à ce jour."
@@ -568,7 +541,14 @@ siaf:
         title: "Conformité comptable de l'association"
         type: "object"
         properties:
-          etat_transmission_comptes: *siaf_etat_transmission_comptes
+          etat_transmission_comptes: &siaf_etat_transmission_comptes
+            title: "État de transmission des comptes"
+            description: "En défaut lorsque l'organisme est en retard dans le dépôt de ses comptes annuels."
+            type: "string"
+            enum:
+              - "En règle"
+              - "En défaut"
+            example: "En règle"
           annees_exercices_comptables_transmis:
             title: "Années des exercices comptables transmis"
             description: "Années au titre desquelles l'association a déposé ses comptes annuels."
