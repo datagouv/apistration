@@ -96,7 +96,10 @@ components:
           example: 0d3e1c40-66cb-4d54-9c44-5b53d1c1de5d
         authorization_request_id:
           type: integer
-          description: Identifiant DataPass de la demande d’habilitation associée.
+          nullable: true
+          description: 'Identifiant DataPass de la demande d’habilitation associée.
+            `null` tant que la demande n’a pas encore été déposée sur DataPass : `siret`
+            et `id` suffisent alors à l’intégration.'
           example: 1234
         siret:
           type: string
