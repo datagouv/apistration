@@ -1,4 +1,4 @@
-class DatapassWebhook::CreateOrProlongToken < ApplicationInteractor
+class DatapassWebhook::CreateOrProlongTokenModel < ApplicationInteractor
   include DatapassWebhook::PassScopes
 
   before do
