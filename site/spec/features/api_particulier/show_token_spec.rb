@@ -51,6 +51,10 @@ RSpec.describe 'displays the token', app: :api_particulier do
 
         expect(page).to have_text('demandeur')
       end
+
+      it 'emits no token reveal' do
+        expect { visit api_particulier_token_path(id: token.id) }.not_to emit_security_event('token.api_token.revealed')
+      end
     end
   end
 
@@ -63,6 +67,14 @@ RSpec.describe 'displays the token', app: :api_particulier do
       expect(page).to have_current_path(api_particulier_token_path(id: token.id), ignore_query: true)
 
       expect(page).to have_text("Jeton d'accès")
+    end
+
+    it 'emits a token reveal by the demandeur' do
+      expect { visit api_particulier_token_path(id: token.id) }.to emit_security_event('token.api_token.revealed').with(
+        actor: { email: authenticated_user.email, role: 'user' },
+        target: { type: 'token', id: token.id },
+        details: { surface: 'user', datapass_id: authorization_request.external_id }
+      )
     end
   end
 end
