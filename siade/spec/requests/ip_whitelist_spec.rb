@@ -5,7 +5,7 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
     url_for(options.merge(_recall: {}))
   end
 
-  let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234', scopes: Scope.all) }
+  let(:authorization_request) { AuthorizationRequest.create!(siret: '12345678901234', scopes: Scope.all, external_id: '4242') }
   let(:token_record) do
     Token.create!(
       iat: 1.day.ago.to_i,
@@ -57,6 +57,19 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
         get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip }
 
         expect(response).to have_http_status(:forbidden)
+      end
+
+      it 'emits a request blocked outside the allowed IPs, naming the token' do
+        expect { get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip } }.to emit_security_event('api.request.blocked').with(
+          target: { type: 'token', id: token_record.id },
+          details: hash_including(
+            reason: 'ip_not_allowed',
+            jti: token_record.id,
+            credential_type: 'token',
+            datapass_id: '4242',
+            ip: non_whitelisted_ip
+          )
+        )
       end
 
       it 'returns error code 00107' do

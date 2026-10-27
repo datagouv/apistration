@@ -138,13 +138,8 @@ end
 
 Rails.configuration.middleware.insert_after Rack::Attack, RateLimitHeadersMiddleware
 
-ActiveSupport::Notifications.subscribe('rack.attack') do |_name, _start, _finish, _request_id, req|
-  req = req[:request]
-  msg = ['BLOCKED', req.env['rack.attack.match_type'], req.ip, req.request_method, req.path, "\"#{req.user_agent}\""].join(' ')
+ActiveSupport::Notifications.subscribe('rack.attack') do |_name, _start, _finish, _request_id, payload|
+  request = payload[:request]
 
-  if %i[throttle blocklist].include?(req.env['rack.attack.match_type'])
-    Rails.logger.error(msg)
-  else
-    Rails.logger.info(msg)
-  end
+  RackAttack::TrackBlockedRequest.call(request:) if %i[throttle blocklist].include?(request.env['rack.attack.match_type'])
 end

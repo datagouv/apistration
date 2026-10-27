@@ -13,10 +13,11 @@ module SecurityEvent::Tracking
     attr_reader :security_event_name
 
     def tracks_security_event(name, target_id:, **options)
-      options.assert_valid_keys(:computed_details, :only_if)
+      options.assert_valid_keys(:target_type, :computed_details, :only_if)
       @security_event_name = name
       @security_event_settings = {
         security_event_name: name,
+        security_event_target_type: options[:target_type],
         security_event_target_id: target_id,
         security_event_computed_details: options[:computed_details],
         security_event_condition: options[:only_if]

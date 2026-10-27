@@ -13,7 +13,7 @@ class SecurityEvent::Track < ApplicationInteractor
 
   def target
     {
-      type: SecurityEvent.catalog.dig('events', context.security_event_name, 'target_type'),
+      type: context.security_event_target_type&.call(context) || SecurityEvent.catalog.dig('events', context.security_event_name, 'target_type'),
       id: context.security_event_target_id.call(context)
     }
   end
