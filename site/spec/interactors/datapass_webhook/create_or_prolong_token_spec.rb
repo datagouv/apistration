@@ -61,6 +61,10 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
       expect { subject }.not_to emit_security_event('token.api_token.prolonged')
     end
 
+    it 'emits no scopes change' do
+      expect { subject }.not_to emit_security_event('token.api_token.scopes_changed')
+    end
+
     it 'emits a token creation from the DataPass webhook' do
       expect { subject }.to emit_security_event('token.api_token.created').with(
         target: { type: 'token', id: kind_of(String) },
@@ -104,6 +108,27 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
 
       it 'emits no token creation' do
         expect { subject }.not_to emit_security_event('token.api_token.created')
+      end
+
+      it 'emits no scopes change when DataPass sends the same scopes' do
+        token.update!(scopes: %w[entreprises associations])
+
+        expect { subject }.not_to emit_security_event('token.api_token.scopes_changed')
+      end
+
+      it 'emits a scopes change when DataPass sends other scopes' do
+        token.update!(scopes: %w[entreprises attestations_fiscales])
+
+        expect { subject }.to emit_security_event('token.api_token.scopes_changed').with(
+          target: { type: 'token', id: token.id },
+          details: {
+            datapass_id: authorization_request.external_id,
+            previous_scopes: %w[entreprises attestations_fiscales],
+            scopes: match_array(%w[associations entreprises]),
+            added_scopes: %w[associations],
+            removed_scopes: %w[attestations_fiscales]
+          }
+        )
       end
 
       it 'emits no prolongation when DataPass revalidates twice within the same second' do

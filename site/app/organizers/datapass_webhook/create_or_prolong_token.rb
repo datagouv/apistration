@@ -6,5 +6,6 @@ class DatapassWebhook::CreateOrProlongToken < ApplicationOrganizer
 
   organize DatapassWebhook::CreateOrProlongTokenModel,
     Token::TrackCreation,
-    Token::TrackProlongation
+    Token::TrackProlongation,
+    Token::TrackScopesChange
 end
