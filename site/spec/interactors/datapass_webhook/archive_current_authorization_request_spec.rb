@@ -25,6 +25,16 @@ RSpec.describe DatapassWebhook::ArchiveCurrentAuthorizationRequest, type: :inter
 
     it { is_expected.to be_a_success }
 
+    it 'emits the end of each active delegation, not of already revoked ones' do
+      delegation = create(:editor_delegation, authorization_request:)
+      create(:editor_delegation, authorization_request:, revoked_at: 1.day.ago)
+
+      expect { subject }.to emit_security_event('delegation.editor.revoked').with(
+        target: { type: 'editor_delegation', id: delegation.id },
+        details: { source: 'datapass_archive', editor_id: delegation.editor_id, datapass_id: authorization_request.external_id }
+      )
+    end
+
     it 'updates the authorization request status' do
       expect {
         subject
