@@ -40,6 +40,28 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
         expect(page).not_to expose_window_opener
       end
 
+      it 'labels a draft not yet filed on DataPass instead of linking to it' do
+        create(:editor_delegation, editor:,
+          authorization_request: create(:authorization_request, :without_external_id,
+            status: 'draft', api: 'entreprise', public_id: nil))
+
+        visit editor_delegations_path
+
+        expect(page).to have_css('.delegation', count: 3)
+        expect(page).to have_text('pas encore sur DataPass')
+        expect(page).to have_no_link(href: %r{/public/demandes/$})
+      end
+
+      it 'keeps the DataPass number of an habilitation that has no DataPass v2 page' do
+        authorization_request = create(:authorization_request, :validated, api: 'entreprise', public_id: nil)
+        create(:editor_delegation, editor:, authorization_request:)
+
+        visit editor_delegations_path
+
+        expect(page).to have_text("DataPass ##{authorization_request.external_id}")
+        expect(page).to have_no_link(href: %r{/public/demandes/$})
+      end
+
       it 'does not display delegations from another api' do
         particulier_delegation = create(:editor_delegation, editor:,
           authorization_request: create(:authorization_request, :validated, :with_demandeur,

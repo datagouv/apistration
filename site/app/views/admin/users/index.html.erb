@@ -84,7 +84,11 @@
               <ul>
                 <% user.authorization_requests.where(api: namespace).each do |authorization_request| %>
                   <li>
-                    <%= external_link_to "DataPass ##{authorization_request.external_id}", datapass_authorization_request_url(authorization_request) %>
+                    <% if authorization_request.external_id.present? %>
+                      <%= external_link_to "DataPass ##{authorization_request.external_id}", datapass_authorization_request_url(authorization_request) %>
+                    <% else %>
+                      <%= authorization_request.intitule %> (<%= t('shared.links.not_on_datapass_yet') %>)
+                    <% end %>
                   </li>
                 <% end %>
               </ul>

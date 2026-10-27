@@ -74,6 +74,20 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
     end
   end
 
+  describe 'habilitations' do
+    it 'names a draft not yet filed on DataPass instead of linking to it' do
+      authorization_request = create(:authorization_request, :with_demandeur, :without_external_id,
+        status: 'draft', api: 'entreprise', intitule: 'Omnikles en cours')
+
+      visit admin_users_path
+
+      within("##{dom_id(authorization_request.demandeur)} .user-datapass") do
+        expect(page).to have_text('Omnikles en cours (pas encore sur DataPass)')
+        expect(page).to have_no_link
+      end
+    end
+  end
+
   describe 'organizations' do
     let!(:authorization_request) { create(:authorization_request, :with_demandeur) }
 
