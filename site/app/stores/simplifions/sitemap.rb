@@ -1,12 +1,8 @@
-require 'singleton'
-
 module Simplifions
   class Sitemap
-    include Singleton
-    include RemoteCache
+    class NoCasUsageError < StandardError; end
 
     SITEMAP_URL = 'https://simplifions.data.gouv.fr/sitemap.xml'.freeze
-    CACHE_KEY = 'simplifions/sitemap/slugs'.freeze
 
     LEFT_SINGLE_QUOTATION_MARK = '‘'.freeze
     RIGHT_SINGLE_QUOTATION_MARK = '’'.freeze
@@ -15,11 +11,27 @@ module Simplifions
     EURO_SIGN = '€'.freeze
     EURO_SLUG = 'eur'.freeze
 
+    def self.fetch
+      document = Nokogiri::XML(Connection.build.get(SITEMAP_URL).body, &:strict)
+      document.remove_namespaces!
+
+      slugs = document.xpath('//url/loc').filter_map { |loc|
+        loc.text[%r{/demarches/([^/?#]+)}, 1]
+      }.uniq.sort
+      raise NoCasUsageError, "no cas usage in #{SITEMAP_URL}" if slugs.empty?
+
+      new(slugs)
+    end
+
+    def initialize(slugs)
+      @slugs = slugs
+    end
+
     def slug_for(name)
       base_slug = slugify(name)
-      return base_slug if slugs.blank? || slugs.include?(base_slug)
+      return base_slug if @slugs.include?(base_slug)
 
-      suffixed_slugs = slugs.grep(/\A#{Regexp.escape(base_slug)}-\d+\z/)
+      suffixed_slugs = @slugs.grep(/\A#{Regexp.escape(base_slug)}-\d+\z/)
       return suffixed_slugs.first if suffixed_slugs.one?
 
       Rails.logger.warn("Simplifions::Sitemap: ambiguous slug for #{name}") if suffixed_slugs.many?
@@ -27,22 +39,6 @@ module Simplifions
     end
 
     private
-
-    def slugs
-      cached { fetch_slugs }
-    rescue StandardError => e
-      Rails.logger.error("Simplifions::Sitemap: sitemap fetch failed - #{e.message}")
-      []
-    end
-
-    def fetch_slugs
-      document = Nokogiri::XML(faraday_connection.get(SITEMAP_URL).body)
-      document.remove_namespaces!
-
-      document.xpath('//url/loc').filter_map { |loc|
-        loc.text[%r{/cas-d-usages/([^/?#]+)}, 1]
-      }.uniq.sort
-    end
 
     def slugify(name)
       name.to_s.gsub(QUOTES_TO_STRIP, '').gsub(EURO_SIGN, EURO_SLUG).parameterize

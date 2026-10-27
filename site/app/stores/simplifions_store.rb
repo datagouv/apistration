@@ -3,39 +3,37 @@ require 'singleton'
 class SimplifionsStore
   include Singleton
 
-  SIMPLIFIONS_BASE_URL = 'https://simplifions.data.gouv.fr/cas-d-usages'.freeze
+  CACHE_KEY = 'simplifions/cas_usages'.freeze
+  CACHE_NAMESPACE = 'simplifions'.freeze
 
   def all(api:)
-    grist.cas_usages_for_solution(api)
-      .map { |record| build_cas_usage(record, api) }
-      .sort_by { |cas_usage| cas_usage.name.to_s }
+    build_cas_usages(catalog_for(api)['all'], api)
   end
 
   def for_endpoint(endpoint_uid, api:)
     datagouv_uid = endpoints_by_uid(api)[endpoint_uid]&.datagouv_uid
     return [] if datagouv_uid.blank?
 
-    grist.cas_usages_for_datagouv_uid(datagouv_uid, api)
-      .map { |record| build_cas_usage(record, api) }
-      .sort_by { |cas_usage| cas_usage.name.to_s }
-  end
-
-  def reset!
-    Simplifions::GristClient.instance.reset!
-    Simplifions::Sitemap.instance.reset!
-    @grist = nil
-    @sitemap = nil
-    @endpoints_by_uid = nil
+    build_cas_usages(catalog_for(api).dig('by_datagouv_uid', datagouv_uid), api)
   end
 
   private
 
-  def grist
-    @grist ||= Simplifions::GristClient.instance
+  def catalog_for(api)
+    catalog = Rails.cache.read(CACHE_KEY, namespace: CACHE_NAMESPACE)
+
+    if catalog.nil?
+      enqueue_refresh
+      return {}
+    end
+
+    catalog.fetch(api, {})
   end
 
-  def sitemap
-    @sitemap ||= Simplifions::Sitemap.instance
+  def enqueue_refresh
+    Simplifions::RefreshCasUsagesJob.perform_later
+  rescue StandardError => e
+    Rails.logger.error("SimplifionsStore: cas usages refresh enqueue failed - #{e.message}")
   end
 
   def endpoints_by_uid(api)
@@ -43,9 +41,7 @@ class SimplifionsStore
     @endpoints_by_uid[api] ||= "#{api.classify}::Endpoint".constantize.all.index_by(&:uid)
   end
 
-  def build_cas_usage(record, api)
-    "#{api.classify}::CasUsage".constantize.new(
-      record.merge(url: "#{SIMPLIFIONS_BASE_URL}/#{sitemap.slug_for(record[:name])}")
-    )
+  def build_cas_usages(records, api)
+    (records || []).map { |record| "#{api.classify}::CasUsage".constantize.new(record) }
   end
 end

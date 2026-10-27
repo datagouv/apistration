@@ -16,6 +16,9 @@ deployed: &deployed
   public_stats_warmup:
     cron: '1 0,1 * * * Europe/Paris'
     class: 'PublicStatsWarmupJob'
+  simplifions_refresh_cas_usages:
+    cron: '0 * * * *'
+    class: 'Simplifions::RefreshCasUsagesJob'
   weekly_changelog_digest:
     cron: '0 2 * * 1'
     class: 'WeeklyChangelogDigestJob'
