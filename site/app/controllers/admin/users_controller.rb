@@ -35,8 +35,9 @@ class Admin::UsersController < AdminController
   end
 
   def stop_impersonating
-    Admin::Impersonations::Stop.call(admin: true_user, namespace:, user: current_user)
+    impersonated_user = current_user
     stop_impersonating_user
+    Admin::Impersonations::Stop.call(admin: true_user, namespace:, user: impersonated_user) if impersonated_user != true_user
 
     redirect_to admin_users_path
   end
