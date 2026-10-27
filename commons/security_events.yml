@@ -210,3 +210,12 @@ events:
     target_type: editor_token
     details: [editor_id, previous_allowed_ips, allowed_ips, added_allowed_ips]
     since: 2026-11
+
+  token.api_token.revoked:
+    criticality: notable
+    services: [site]
+    description: DataPass révoque une habilitation via le webhook, son token est refusé par siade dès lors (blacklisted_at). datapass_id est l'id de la demande DataPass. Un appel réussi après cette date signale une révocation inopérante
+    actor_types: [datapass]
+    target_type: token
+    details: [datapass_id, blacklisted_at]
+    since: 2026-11
