@@ -50,7 +50,6 @@ constraints(APIEntrepriseDomainConstraint.new) do
     patch '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
     put '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
 
-    post 'public/magic_link/create', to: 'public_token_magic_links#create'
     get 'public/jetons/:access_token', to: 'public_token_magic_links#show', as: :token_show_magic_link
 
     get '/catalogue', as: :endpoints, to: 'endpoints#index'

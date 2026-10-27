@@ -75,7 +75,6 @@ constraints(APIParticulierDomainConstraint.new) do
     patch '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
     put '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
 
-    post 'public/magic_link/create', to: 'public_token_magic_links#create'
     post '/compte/jetons/:id/partager', to: 'transfer_tokens#create', as: :token_create_magic_link
 
     get 'public/jetons/:access_token', to: 'public_token_magic_links#show', as: :token_show_magic_link
