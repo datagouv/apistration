@@ -27,7 +27,7 @@ class Admin::Tokens::BansController < AdminController
       blacklisted_at: parse_blacklisted_at,
       generate_new_token: params[:generate_new_token] == '1',
       namespace:,
-      admin: current_user
+      admin: true_user
     }
   end
 
