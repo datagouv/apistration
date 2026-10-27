@@ -32,6 +32,23 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
 
       expect(response).not_to have_http_status(:forbidden)
     end
+
+    it 'logs no recipient that is not a SIRET, whatever the caller sends' do
+      allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+      get url, params: { recipient: { token: 'secret' } }, headers: headers_params
+
+      expect(LogStasher).to have_received(:build_logstash_event).with(hash_including(ip_restricted: false), anything)
+      expect(LogStasher).not_to have_received(:build_logstash_event).with(hash_including(:recipient), anything)
+    end
+
+    it 'logs the call as made with a token without IP restriction' do
+      allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+      get url, headers: headers_params
+
+      expect(LogStasher).to have_received(:build_logstash_event).with(hash_including(ip_restricted: false), anything)
+    end
   end
 
   context 'with IP whitelist configured' do
@@ -47,6 +64,14 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
         get url, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.50' }
 
         expect(response).not_to have_http_status(:forbidden)
+      end
+
+      it 'logs the call as made with an IP restricted token' do
+        allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+        get url, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.50' }
+
+        expect(LogStasher).to have_received(:build_logstash_event).with(hash_including(ip_restricted: true), anything)
       end
     end
 
