@@ -1,0 +1,18 @@
+<%= turbo_frame_tag statistics_frame_id('top_ips', @filter.domaine) do %>
+  <div class="fr-table">
+    <table>
+      <caption>Adresses IP</caption>
+      <thead>
+        <tr><th scope="col">Adresse IP</th><th scope="col">Appels</th></tr>
+      </thead>
+      <tbody>
+        <% @query.top_ips(@filter.domaine).each do |row| %>
+          <tr>
+            <td><code><%= row[:identifier] %></code></td>
+            <td><%= number_with_delimiter(row[:calls]) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

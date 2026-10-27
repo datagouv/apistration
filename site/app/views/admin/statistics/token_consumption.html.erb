@@ -1,0 +1,82 @@
+<div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-12">
+    <h1>Consommation d'un token</h1>
+
+    <%= render 'admin/statistics/filter', filter: @filter,
+      show_interval: false, show_token: true, show_external_id: true, show_email: true,
+      show_demarche: true, show_france_connect: true %>
+
+    <% if @query.searchable? %>
+      <% if @filter.habilitation_criteria? %>
+        <h2>Habilitations</h2>
+        <div class="fr-table">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Nom prénom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Rôle</th>
+                <th scope="col">Intitulé</th>
+                <th scope="col">Statut</th>
+                <th scope="col">SIRET</th>
+                <th scope="col">Jeton</th>
+                <th scope="col">Créé le</th>
+                <th scope="col">Expire le</th>
+                <th scope="col">Banni le</th>
+                <th scope="col">Datapass</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @query.habilitations.each do |row| %>
+                <tr>
+                  <td><%= [row.last_name, row.first_name].compact.join(' ') %></td>
+                  <td><%= row.email %></td>
+                  <td><%= row.phone_number %></td>
+                  <td><%= row.role %></td>
+                  <td><%= truncate(row.intitule, length: 50) %></td>
+                  <td><%= row.status %></td>
+                  <td><%= row.siret %></td>
+                  <td><code><%= row.token_id %></code></td>
+                  <td><%= Time.zone.at(row.iat).strftime('%d/%m/%Y') if row.iat %></td>
+                  <td><%= Time.zone.at(row.exp).strftime('%d/%m/%Y') %></td>
+                  <td><%= row.blacklisted_at&.strftime('%d/%m/%Y') %></td>
+                  <td><%= datapass_link(row.external_id, row.api) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="fr-mt-4w">Scopes</h2>
+        <p><%= safe_join(@query.scopes.map { |scope| tag.code(scope) }, ', ') %></p>
+
+        <h2 class="fr-mt-4w">Jetons et leur consommation</h2>
+        <div class="fr-table">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Jeton</th>
+                <th scope="col">Nombre d'appels sur la période</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @query.tokens_with_consumption.each do |token_id, calls| %>
+                <tr>
+                  <td><code><%= token_id %></code></td>
+                  <td><%= number_with_delimiter(calls) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+
+      <%= statistics_lazy_section(:token_consumption, 'consumption_by_day', label: 'consommation par jour') %>
+      <%= statistics_lazy_section(:token_consumption, 'consumption_by_api_and_status', label: 'consommation par API et code HTTP') %>
+      <%= statistics_lazy_section(:token_consumption, 'recent_requests', label: '200 dernières requêtes') %>
+    <% else %>
+      <p>Renseigner un jeton, un datapass, un email, un éditeur ou un client FranceConnect.</p>
+    <% end %>
+  </div>
+</div>

@@ -1,9 +1,12 @@
-<%# locals: (label:, value:) -%>
+<%# locals: (label:, value:, comparison: nil) -%>
 <div class="fr-col-12 fr-col-md-4">
   <div class="fr-tile fr-tile--sm">
     <div class="fr-tile__body">
       <p class="fr-tile__title fr-display--xs"><%= value %></p>
       <p class="fr-tile__detail"><%= label %></p>
+      <% if comparison %>
+        <p class="fr-tile__detail"><%= comparison %></p>
+      <% end %>
     </div>
   </div>
 </div>
