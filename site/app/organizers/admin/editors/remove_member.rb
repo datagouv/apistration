@@ -7,5 +7,6 @@ class Admin::Editors::RemoveMember < ApplicationOrganizer
   organize Admin::Editors::FindMember,
     Admin::Editors::CaptureMemberAttributes,
     Admin::Editors::DetachMember,
+    User::TrackEditorMembershipChange,
     Admin::TrackActivity
 end

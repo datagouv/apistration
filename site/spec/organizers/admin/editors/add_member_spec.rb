@@ -25,6 +25,14 @@ RSpec.describe Admin::Editors::AddMember, type: :organizer do
         after_attributes: { 'email' => user.email, 'editor_id' => editor.id }
       )
     end
+
+    it 'emits an editor membership change attaching the user' do
+      expect { result }.to emit_security_event('access.editor_membership.changed').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: user.id },
+        details: { editor_id: editor.id }
+      )
+    end
   end
 
   context 'when user is already a member' do
@@ -38,6 +46,10 @@ RSpec.describe Admin::Editors::AddMember, type: :organizer do
 
     it 'does not record any admin activity' do
       expect { result }.not_to change(AdminActivity, :count)
+    end
+
+    it 'emits no editor membership change' do
+      expect { result }.not_to emit_security_event('access.editor_membership.changed')
     end
   end
 
