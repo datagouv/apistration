@@ -1,12 +1,12 @@
 class Admin::Tokens::SendBanEmail < ApplicationInteractor
   def call
     emails.each do |email|
-      mailer.with(
+      mailer.banned(
         token: context.new_token,
         old_token: token,
         email:,
         comment: context.comment
-      ).banned.deliver_later
+      ).deliver_later
     end
   end
 

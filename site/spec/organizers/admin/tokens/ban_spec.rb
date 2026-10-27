@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Admin::Tokens::Ban, type: :organizer do
+  include ActiveJob::TestHelper
+
   describe '.call' do
     subject { described_class.call(token:, admin:, comment:, namespace: 'entreprise') }
 
@@ -33,8 +35,13 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
         expect(new_token.blacklisted_at).to be_nil
       end
 
-      it 'sends emails to demandeur and contact technique' do
-        expect { subject }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(2).times
+      it 'delivers the ban email to the demandeur and the contact technique' do
+        perform_enqueued_jobs { subject }
+
+        expect(ActionMailer::Base.deliveries.map(&:to)).to contain_exactly(
+          [authorization_request.demandeur.email],
+          [authorization_request.contact_technique.email]
+        )
       end
 
       it 'records an admin activity' do
@@ -65,8 +72,11 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
         it { is_expected.to be_a_success }
 
-        it 'sends emails with comment included' do
-          expect { subject }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(2).times
+        it 'delivers the ban email with the admin comment to each recipient' do
+          perform_enqueued_jobs { subject }
+
+          expect(ActionMailer::Base.deliveries.size).to eq(2)
+          expect(ActionMailer::Base.deliveries.map { |mail| mail.html_part.decoded }).to all(include('Token was compromised'))
         end
 
         it 'stores the comment in the activity' do
@@ -103,14 +113,11 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
           expect(token.reload.blacklisted_at).to be_within(1.minute).of(1.month.from_now)
         end
 
-        it 'sends email without new token' do
-          allow(APIEntreprise::TokenMailer).to receive(:with).and_call_original
+        it 'delivers the ban email without announcing a new token' do
+          perform_enqueued_jobs { subject }
 
-          subject
-
-          expect(APIEntreprise::TokenMailer).to have_received(:with).with(
-            hash_including(token: nil)
-          ).at_least(:once)
+          expect(ActionMailer::Base.deliveries.size).to eq(2)
+          expect(ActionMailer::Base.deliveries.map { |mail| mail.html_part.decoded }.join).not_to include('Un nouveau token')
         end
       end
     end
@@ -152,8 +159,10 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
       it { is_expected.to be_a_success }
 
-      it 'sends email only to demandeur' do
-        expect { subject }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(1).times
+      it 'delivers the ban email only to the demandeur' do
+        perform_enqueued_jobs { subject }
+
+        expect(ActionMailer::Base.deliveries.map(&:to)).to contain_exactly([authorization_request.demandeur.email])
       end
     end
   end
