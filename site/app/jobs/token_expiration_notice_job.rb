@@ -17,7 +17,7 @@ class TokenExpirationNoticeJob < ApplicationJob
     [
       0,
       7,
-      14,
+      15,
       30,
       60,
       90
