@@ -125,6 +125,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       visit edit_admin_editor_path(editor)
 
       fill_in 'editor_form_uids', with: 'new_form1, new_form2'
+      uncheck 'editor_apis_particulier'
 
       expect { click_on 'Sauvegarder' }.to change(AdminActivity, :count).by(1)
 
@@ -134,6 +135,8 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
         namespace: 'entreprise',
         entity: editor
       )
+      expect(AdminActivity.last.before_attributes).to include('apis' => %w[entreprise particulier])
+      expect(AdminActivity.last.after_attributes).to include('apis' => %w[entreprise])
     end
 
     it 'allows toggling editor_tokens_enabled' do
