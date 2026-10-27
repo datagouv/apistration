@@ -15,9 +15,10 @@ class Admin::EditorsController < AdminController
   def edit; end
 
   def create
-    @editor = Editor.new(editor_params)
+    result = Admin::Editors::Create.call(editor_params:, admin: true_user, namespace:)
+    @editor = result.editor
 
-    if @editor.save
+    if result.success?
       success_message(title: 'Éditeur créé')
       redirect_to admin_editor_path(@editor)
     else

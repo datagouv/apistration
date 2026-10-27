@@ -7,6 +7,7 @@ fr:
       token_created: "Création de jeton"
       editor_token_created: "Création de jeton éditeur"
       user_updated: "Modification d'utilisateur"
+      editor_created: "Création d'éditeur"
       editor_updated: "Modification d'éditeur"
       editor_member_added: "Ajout d'un membre à un éditeur"
       editor_member_removed: "Retrait d'un membre d'un éditeur"

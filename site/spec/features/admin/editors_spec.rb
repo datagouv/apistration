@@ -99,12 +99,45 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_text('12345678901234')
     end
 
+    it 'records the creation activity with the created editor' do
+      visit new_admin_editor_path
+
+      fill_in 'editor_name', with: 'New Editor'
+      fill_in 'editor_siret', with: '12345678901234'
+      check 'editor_apis_particulier'
+      fill_in 'editor_form_uids', with: 'form1, form2'
+
+      expect { click_on "Créer l'éditeur" }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.last).to have_attributes(
+        name: 'editor_created',
+        admin:,
+        namespace: 'entreprise',
+        entity: Editor.find_by!(name: 'New Editor'),
+        before_attributes: {}
+      )
+      expect(AdminActivity.last.after_attributes).to include(
+        'name' => 'New Editor',
+        'siret' => '12345678901234',
+        'apis' => %w[particulier],
+        'form_uids' => %w[form1 form2]
+      )
+    end
+
     it 'shows errors on invalid input' do
       visit new_admin_editor_path
 
+      fill_in 'editor_siret', with: '12345678901234'
       click_on "Créer l'éditeur"
 
       expect(page).to have_css('.fr-alert.fr-alert--error')
+      expect(page).to have_field('editor_siret', with: '12345678901234')
+    end
+
+    it 'records no activity on invalid input' do
+      visit new_admin_editor_path
+
+      expect { click_on "Créer l'éditeur" }.not_to change(AdminActivity, :count)
     end
   end
 
