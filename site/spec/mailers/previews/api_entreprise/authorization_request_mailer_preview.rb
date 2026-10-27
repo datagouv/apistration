@@ -20,6 +20,16 @@ class APIEntreprise::AuthorizationRequestMailerPreview < ActionMailer::Preview
     end
   end
 
+  %w[
+    delegation_editeur_demande_recue
+    delegation_editeur_demande_validee
+    delegation_editeur_demande_refusee
+  ].each do |method|
+    send('define_method', method) do
+      APIEntreprise::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request: editor_delegation_request_authorization_request })
+    end
+  end
+
   private
 
   def to
@@ -30,5 +40,9 @@ class APIEntreprise::AuthorizationRequestMailerPreview < ActionMailer::Preview
 
   def authorization_request
     AuthorizationRequest.with_tokens_for('entreprise').first
+  end
+
+  def editor_delegation_request_authorization_request
+    AuthorizationRequest.joins(:editor_delegation_request).order(Arel.sql('last_update DESC NULLS LAST')).first
   end
 end

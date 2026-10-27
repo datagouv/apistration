@@ -3,7 +3,7 @@ class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationInteractor
   include DatapassWebhook::PassScopes
 
   def call # rubocop:disable Metrics/AbcSize
-    context.authorization_request = AuthorizationRequest.find_or_initialize_by(external_id: context.data['pass']['id'])
+    context.authorization_request = find_or_initialize_authorization_request
 
     set_reopening_event_flag
 
@@ -21,6 +21,26 @@ class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationInteractor
   end
 
   private
+
+  def find_or_initialize_authorization_request
+    AuthorizationRequest.find_by(external_id: datapass_id) ||
+      editor_delegation_request_authorization_request_without_datapass_id ||
+      AuthorizationRequest.new(external_id: datapass_id)
+  end
+
+  def editor_delegation_request_authorization_request_without_datapass_id
+    authorization_request = AuthorizationRequest
+      .joins(editor_delegation_request: :editor_use_case)
+      .where(external_id: nil, siret: context.data['pass']['siret'])
+      .find_by(editor_use_cases: { datapass_form_uid: context.data['pass']['demarche'] })
+
+    authorization_request&.external_id = datapass_id
+    authorization_request
+  end
+
+  def datapass_id
+    context.data['pass']['id']
+  end
 
   def flag_updates_as_requested
     context.authorization_request.token.last_prolong_token_wizard.update!(status: 'updates_requested')

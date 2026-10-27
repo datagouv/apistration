@@ -35,6 +35,15 @@ constraints(APIEntrepriseDomainConstraint.new) do
     post '/compte/demandes/:authorization_request_id/delegations', to: 'delegations#create', as: :authorization_request_delegations
     delete '/compte/demandes/:authorization_request_id/delegations/:id', to: 'delegations#destroy', as: :authorization_request_delegation
 
+    scope '/editeurs/:editor_slug/habilitation/:token', controller: :editor_delegation_requests, as: :editor_delegation_request do
+      get '/', action: :show
+      get '/delegue-protection-donnees', action: :edit, as: :data_protection_officer
+      patch '/delegue-protection-donnees', action: :update
+      get '/verification', action: :summary, as: :summary
+      post '/soumission', action: :submit, as: :submission
+      post '/simulation/:event', action: :simulate_datapass_webhook, as: :datapass_webhook_simulation, constraints: { event: Regexp.union(SimulatedDatapassWebhook::EVENTS) }
+    end
+
     post '/compte/jetons/:id/partager', to: 'transfer_tokens#create', as: :token_create_magic_link
     get '/compte/jetons/:id/partager', to: 'transfer_tokens#new', as: :token_transfer
     get '/compte/jetons/:id', to: 'tokens#show', as: :token

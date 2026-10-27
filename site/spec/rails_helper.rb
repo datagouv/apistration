@@ -87,6 +87,7 @@ RSpec.configure do |config|
   config.include INSEESireneAPIMocks
   config.include HubEEAPIMocks
   config.include SimplifionsMocks
+  config.include DatapassAPIMocks
 
   config.around(:each, :js) do |example|
     example.run_with_retry retry: example.metadata[:retry] || 3

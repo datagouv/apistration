@@ -52,7 +52,7 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
     user = User.find_by(email: params[:email]&.downcase)
 
     if user
-      sign_in_and_redirect(user)
+      sign_in_and_redirect(user, siret: params[:siret])
     else
       error_message(title: 'Compte introuvable')
       redirect_to root_path
@@ -107,6 +107,10 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
     request.env['omniauth.auth'].extra&.acr
   end
 
+  def oauth_siret
+    request.env['omniauth.auth'].extra&.raw_info&.siret
+  end
+
   def reject_login_without_mfa
     MonitoringService.instance.track(
       'OAuth security: Missing MFA',
@@ -127,7 +131,7 @@ module SessionsManagement # rubocop:disable Metrics/ModuleLength
 
   def login(interactor_call)
     if interactor_call.success?
-      sign_in_and_redirect(interactor_call.user)
+      sign_in_and_redirect(interactor_call.user, siret: oauth_siret)
     else
       send(extract_flash_kind(interactor_call.message), title: t(".#{interactor_call.message}.title"), description: t(".#{interactor_call.message}.description", email: oauth_email))
 
