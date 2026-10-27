@@ -74,6 +74,16 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
       organize SecurityEvent::Track
     end)
 
+    stub_const('ComputedSessionClose', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.session.closed',
+        target: :user,
+        computed_details: ->(context) { { reason: context.user.email.split('@').last } }
+
+      organize SecurityEvent::Track
+    end)
+
     stub_const('UntrackedFailure', Class.new(ApplicationOrganizer) do
       include SecurityEvent::Tracking
 
@@ -147,6 +157,12 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
     it 'emits nothing on failure' do
       expect { UntrackedFailure.call(user:) }.not_to emit_security_event('auth.session.closed')
     end
+  end
+
+  it 'adds the details computed from the context' do
+    expect { ComputedSessionClose.call(user:) }.to emit_security_event('auth.session.closed').with(
+      details: { reason: user.email.split('@').last }
+    )
   end
 
   it 'emits only when the declared condition holds' do

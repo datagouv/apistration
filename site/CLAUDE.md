@@ -73,7 +73,9 @@ depuis un contrôleur ni un modèle.
   `Admin::TrackActivity` pour un organizer admin).
 - Les interactors posent des données métier dans le contexte ; l'organizer
   choisit ce qui part dans les details (`details:`,
-  `details_from_context:`), uniquement des clés déclarées au catalogue.
+  `details_from_context:`, ou `computed_details:`, un lambda sur le
+  contexte pour les valeurs dérivées, sans écrire dans un contexte
+  partagé), uniquement des clés déclarées au catalogue.
 - `tracks_security_event_failures` émet aussi en cas d'échec, avec
   `outcome: denied` et le message d'échec comme `reason`.
 - `only_if:` prend un lambda sur le contexte : l'event n'est émis que si

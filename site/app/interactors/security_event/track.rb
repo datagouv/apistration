@@ -19,10 +19,18 @@ class SecurityEvent::Track < ApplicationInteractor
   end
 
   def details
-    details = context.security_event_details.merge(context.to_h.slice(*context.security_event_detail_keys))
+    details = context.security_event_details
+      .merge(context.to_h.slice(*context.security_event_detail_keys))
+      .merge(computed_details)
     return details if denial_reason.nil?
 
     details.merge(reason: denial_reason, outcome: 'denied')
+  end
+
+  def computed_details
+    return {} if context.security_event_computed_details.nil?
+
+    context.security_event_computed_details.call(context)
   end
 
   def denial_reason
