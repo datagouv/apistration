@@ -148,3 +148,12 @@ events:
     target_type: token
     details: [recipient_email_domain, recipient_webmail, recipient_outside_organization, expires_at, datapass_id]
     since: 2026-11
+
+  token.api_token.revealed:
+    criticality: notable
+    services: [site]
+    description: Un token est affiché en clair, prêt à être copié. surface user quand un demandeur ouvre son token (cible ce token, datapass_id l'id de la demande DataPass), editor_list quand un membre d'un éditeur avec copie des tokens ouvre la liste de ses habilitations, qui embarque tous les tokens de la page (cible sans id, jtis la liste des tokens, count leur nombre, editor_id l'éditeur). Rien n'est émis pendant une impersonation, le token n'étant alors pas affiché
+    actor_types: [user, editor]
+    target_type: token
+    details: [surface, datapass_id, jtis, count, editor_id]
+    since: 2026-11
