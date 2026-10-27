@@ -220,6 +220,15 @@ RSpec.describe 'Editor delegation', api: :entreprise do
       expect_ip_denied
     end
 
+    it 'emits a blocked request targeting the editor token, with the DataPass id of the delegated authorization request' do
+      authorization_request.update!(external_id: '4242')
+
+      expect { get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' } }.to emit_security_event('api.request.blocked').with(
+        target: { type: 'editor_token', id: editor_token_record.id },
+        details: hash_including(reason: 'ip_not_allowed', credential_type: 'editor_token', editor_id: editor.id, datapass_id: '4242')
+      )
+    end
+
     it 'denies a request from another IP even without a recipient to delegate to' do
       get url, params: params.except(:recipient), headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' }
 
