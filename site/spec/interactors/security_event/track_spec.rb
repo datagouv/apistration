@@ -36,6 +36,20 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
       end, SecurityEvent::Track)
     end)
 
+    stub_const('CrashingSignIn', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.login.attempted', target: :user, details: { method: 'proconnect' }
+
+      tracks_security_event_failures
+
+      organize(Class.new(ApplicationInteractor) do
+        def call
+          fail ArgumentError, 'boom'
+        end
+      end, SecurityEvent::Track)
+    end)
+
     stub_const('UntrackedFailure', Class.new(ApplicationOrganizer) do
       include SecurityEvent::Tracking
 
@@ -92,6 +106,16 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
 
     it 'still fails' do
       expect(DeniedSignIn.call(email: 'attempt@example.com')).to be_a_failure
+    end
+
+    it 'emits a denied event when a step raises instead of failing' do
+      expect { suppress(ArgumentError) { CrashingSignIn.call } }.to emit_security_event('auth.login.attempted').with(
+        details: { method: 'proconnect', reason: 'unexpected_error', outcome: 'denied' }
+      )
+    end
+
+    it 'lets the exception through' do
+      expect { CrashingSignIn.call }.to raise_error(ArgumentError, 'boom')
     end
   end
 
