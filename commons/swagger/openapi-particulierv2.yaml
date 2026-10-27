@@ -1811,6 +1811,17 @@ paths:
                     message: La réponse retournée par le fournisseur de données est
                       invalide et inconnue de notre service. L'équipe technique a
                       été notifiée de cette erreur pour investigation.
+                Calcul du quotient familial impossible par la MSA:
+                  value:
+                    error: data_provider_error
+                    reason: La MSA n'a pas pu calculer le quotient familial pour la
+                      période demandée. Cela pourrait être dû à des ressources non
+                      déclarées ou à des données manquantes pour ce mois ; une autre
+                      période pourrait aboutir.
+                    message: La MSA n'a pas pu calculer le quotient familial pour
+                      la période demandée. Cela pourrait être dû à des ressources
+                      non déclarées ou à des données manquantes pour ce mois ; une
+                      autre période pourrait aboutir.
                 Erreur inattendue:
                   value:
                     error: provider_unknown_error

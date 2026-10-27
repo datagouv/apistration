@@ -8237,6 +8237,25 @@ paths:
           content:
             application/json:
               examples:
+                qf_calculation_impossible:
+                  value:
+                    errors:
+                    - code: '10501'
+                      title: Calcul du quotient familial impossible par la MSA
+                      detail: La MSA n'a pas pu calculer le quotient familial pour
+                        la période demandée. Cela pourrait être dû à des ressources
+                        non déclarées ou à des données manquantes pour ce mois ; une
+                        autre période pourrait aboutir.
+                      source:
+                      meta:
+                        provider: MSA
+                        provider_error_code: 40000
+                        provider_error_message: RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE
+                  summary: Calcul du quotient familial impossible par la MSA
+                  description: La MSA n'a pas pu calculer le quotient familial pour
+                    la période demandée. Cela pourrait être dû à des ressources non
+                    déclarées ou à des données manquantes pour ce mois ; une autre
+                    période pourrait aboutir.
                 erreur_inconnue_du_fournisseur_de_donnees_35999:
                   value:
                     errors:
@@ -8817,6 +8836,25 @@ paths:
           content:
             application/json:
               examples:
+                qf_calculation_impossible:
+                  value:
+                    errors:
+                    - code: '10501'
+                      title: Calcul du quotient familial impossible par la MSA
+                      detail: La MSA n'a pas pu calculer le quotient familial pour
+                        la période demandée. Cela pourrait être dû à des ressources
+                        non déclarées ou à des données manquantes pour ce mois ; une
+                        autre période pourrait aboutir.
+                      source:
+                      meta:
+                        provider: MSA
+                        provider_error_code: 40000
+                        provider_error_message: RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE
+                  summary: Calcul du quotient familial impossible par la MSA
+                  description: La MSA n'a pas pu calculer le quotient familial pour
+                    la période demandée. Cela pourrait être dû à des ressources non
+                    déclarées ou à des données manquantes pour ce mois ; une autre
+                    période pourrait aboutir.
                 unexpected_error:
                   value:
                     errors:

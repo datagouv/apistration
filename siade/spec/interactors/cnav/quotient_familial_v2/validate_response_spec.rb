@@ -60,7 +60,47 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
       end
     end
 
-    context 'with a failure of the family provider (40000)' do
+    context 'when the MSA cannot compute the quotient familial (40000)' do
+      let(:response) do
+        instance_double(Net::HTTPBadRequest, code: 400, body:, header: { 'X-APISECU-FD' => '00171001' })
+      end
+      let(:body) { '{"errorCode":40000,"error":"RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE"}' }
+
+      it { is_expected.to be_a_failure }
+
+      it 'tells the MSA could not compute the quotient familial, keeping the provider error in meta' do
+        error = subject.errors.first
+
+        expect(error).to be_an_instance_of(MSAError)
+        expect(error.code).to eq('10501')
+        expect(error.kind).to eq(:provider_error)
+        expect(error.title).to eq('Calcul du quotient familial impossible par la MSA')
+        expect(error.meta).to eq(
+          provider: 'MSA',
+          provider_error_code: 40_000,
+          provider_error_message: 'RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE'
+        )
+      end
+
+      it 'includes the provider error code in access log fields' do
+        RenderedError.capture(subject.errors)
+
+        expect(RenderedError.log_fields).to include(provider_error_code: '40000')
+      end
+
+      it 'tracks it as info: an expected business case, not a caisse failure' do
+        subject
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          'info',
+          '[CNAF & MSA] Bad request (40000)',
+          hash_including(regime: 'MSA'),
+          fingerprint: %w[cnav-bad-request 40000]
+        )
+      end
+    end
+
+    context 'with a failure of the family provider (40000) from a caisse other than the MSA' do
       let(:body) { '{"errorCode":40000,"error":"RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE"}' }
 
       it { is_expected.to be_a_failure }
