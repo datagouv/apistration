@@ -79,7 +79,28 @@ RSpec.describe APIParticulier::V3AndMore::CNAV::AbstractCivilityController do
       end
     end
 
-    context 'with missing departement naissance (commune params are optional)' do
+    context 'without any commune param for a person born in France (commune params are optional)' do
+      let(:params) do
+        {
+          recipient:,
+          nomNaissance: 'BERNARD',
+          prenoms: %w[SOPHIE ANNE],
+          anneeDateNaissance: '1988',
+          moisDateNaissance: '11',
+          jourDateNaissance: '05',
+          sexeEtatCivil: 'F',
+          codeCogInseePaysNaissance: '99100'
+        }
+      end
+
+      it 'returns 200' do
+        subject
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context 'with a commune name but no departement for a person born in France' do
       let(:params) do
         {
           recipient:,
@@ -94,10 +115,11 @@ RSpec.describe APIParticulier::V3AndMore::CNAV::AbstractCivilityController do
         }
       end
 
-      it 'returns 200' do
+      it 'returns 422 on the missing departement code' do
         subject
 
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_content)
+        expect(response_json[:errors].pluck(:code)).to eq(['00428'])
       end
     end
   end

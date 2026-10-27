@@ -55,6 +55,18 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
+
+    context 'when the departement code is missing for a person born in France' do
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(have_attributes(code: '00428')) }
+    end
+
+    context 'when the departement code is missing for a person born abroad' do
+      let(:code_cog_insee_pays_naissance) { '99243' }
+
+      it { is_expected.to be_a_success }
+    end
   end
 
   context 'with valid attributes' do

@@ -92,6 +92,18 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
           # rubocop:enable RSpec/ContextWording
         end
 
+        describe 'when a person born in France gives a commune name without departement code' do
+          response '422', 'Lieu de naissance incomplet', document: false do
+            let(:codeCogInseeCommuneNaissance) { nil }
+            let(:nomCommuneNaissance) { 'HA GIAP DISTRICT DE PHU NINH PROV DE PHU THO' }
+
+            run_test! do
+              expect(response_json[:errors].pluck(:code)).to eq(['00428'])
+              expect(a_request(:get, cnav_url('allocation_adulte_handicape')).with(query: hash_including({}))).not_to have_been_made
+            end
+          end
+        end
+
         describe 'when the aah is not found' do
           # rubocop:disable-next RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do

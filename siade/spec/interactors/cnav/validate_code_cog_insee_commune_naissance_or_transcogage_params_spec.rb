@@ -68,6 +68,42 @@ RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams, ty
     end
   end
 
+  describe 'with incomplete transcogage params' do
+    let(:params) do
+      {
+        nom_commune_naissance: 'Gennevilliers',
+        annee_date_naissance: '2007',
+        code_cog_insee_pays_naissance:
+      }
+    end
+
+    context 'when born in France' do
+      let(:code_cog_insee_pays_naissance) { '99100' }
+
+      it { is_expected.to be_a_failure }
+
+      it 'points at the missing departement code' do
+        expect(subject.errors.map(&:code)).to eq(['00428'])
+      end
+    end
+
+    context 'when born in France with only the departement code' do
+      let(:params) { { code_cog_insee_departement_naissance: '92', annee_date_naissance: '2007', code_cog_insee_pays_naissance: '99100' } }
+
+      it { is_expected.to be_a_failure }
+
+      it 'points at the missing commune name' do
+        expect(subject.errors.map(&:code)).to eq(['00317'])
+      end
+    end
+
+    context 'when born abroad' do
+      let(:code_cog_insee_pays_naissance) { '99345' }
+
+      it { is_expected.to be_a_success }
+    end
+  end
+
   describe 'with nor code insee lieu de naissance nor transcogage params' do
     describe 'when in france' do
       let(:params) { { code_cog_insee_pays_naissance: '99100' } }
