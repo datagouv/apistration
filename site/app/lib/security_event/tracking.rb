@@ -1,6 +1,8 @@
 module SecurityEvent::Tracking
   extend ActiveSupport::Concern
 
+  UNEXPECTED_ERROR_REASON = 'unexpected_error'.freeze
+
   class_methods do
     attr_reader :security_event_name
 
@@ -25,7 +27,12 @@ module SecurityEvent::Tracking
 
   def track_security_event_failure(interactor)
     interactor.call
-  ensure
-    SecurityEvent::Track.call(context) if context.failure?
+  rescue Interactor::Failure
+    SecurityEvent::Track.call(context)
+    raise
+  rescue StandardError
+    context.security_event_denial_reason = UNEXPECTED_ERROR_REASON
+    SecurityEvent::Track.call(context)
+    raise
   end
 end

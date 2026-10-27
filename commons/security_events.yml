@@ -26,7 +26,7 @@ events:
   auth.login.attempted:
     criticality: notable
     services: [site]
-    description: Tentative de connexion à l'espace usagers ou admin. details.outcome denied si provider invalide, données ProConnect absentes ou MFA manquante
+    description: Tentative de connexion à l'espace usagers ou admin. details.outcome denied si provider invalide, données ProConnect absentes ou MFA manquante, reason unexpected_error si une erreur inattendue interrompt la connexion
     actor_types: [user, anonymous]
     target_type: user
     details: [method, idp, mfa, acr, reason]
