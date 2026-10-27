@@ -132,6 +132,27 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       expect(page).to have_text('203.0.113.10/32, 198.51.100.0/24')
     end
 
+    it 'emits an allowlist change with the widened ranges' do
+      fill_in 'editor_token[allowed_ips_text]', with: "203.0.113.10\n198.51.100.0/24"
+
+      expect { click_button 'Enregistrer' }.to emit_security_event('token.ip_allowlist.changed').with(
+        actor: { email: user.email, role: 'editor' },
+        target: { type: 'editor_token', id: editor_token.id },
+        details: {
+          editor_id: editor.id,
+          previous_allowed_ips: [],
+          allowed_ips: %w[203.0.113.10/32 198.51.100.0/24],
+          added_allowed_ips: %w[203.0.113.10/32 198.51.100.0/24]
+        }
+      )
+    end
+
+    it 'emits no allowlist change when the entries are refused' do
+      fill_in 'editor_token[allowed_ips_text]', with: '10.0.0.1'
+
+      expect { click_button 'Enregistrer' }.not_to emit_security_event('token.ip_allowlist.changed')
+    end
+
     it 'rejects invalid entries with an error message' do
       fill_in 'editor_token[allowed_ips_text]', with: '10.0.0.1'
       click_button 'Enregistrer'
@@ -160,10 +181,30 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
       expect(page).to have_field(readonly: true, with: new_token.rehash)
       expect(page).to have_text('Copiez ce jeton maintenant')
     end
+
+    it 'emits a rotation of the old token naming its replacement' do
+      visit editor_tokens_path
+
+      expect { click_button 'Renouveler' }.to emit_security_event('token.editor_token.rotated').with(
+        actor: { email: user.email, role: 'editor' },
+        target: { type: 'editor_token', id: editor_token.id },
+        details: { editor_id: editor.id, replacement_id: satisfy { |id| id.present? && id != editor_token.id } }
+      )
+    end
   end
 
   describe 'revoke' do
     let!(:editor_token) { create(:editor_token, editor:) }
+
+    it 'emits a revocation of the token' do
+      visit editor_tokens_path
+
+      expect { click_button 'Révoquer' }.to emit_security_event('token.editor_token.revoked').with(
+        actor: { email: user.email, role: 'editor' },
+        target: { type: 'editor_token', id: editor_token.id },
+        details: { editor_id: editor.id }
+      )
+    end
 
     it 'blacklists the token and offers no further actions on it' do
       visit editor_tokens_path

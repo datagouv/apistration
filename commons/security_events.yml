@@ -183,3 +183,30 @@ events:
     target_type: editor
     details: [changed_settings, before, after]
     since: 2026-11
+
+  token.editor_token.rotated:
+    criticality: notable
+    services: [site]
+    description: Un membre d'un éditeur renouvelle un token éditeur. L'ancien token (cible) est révoqué, replacement_id est le nouveau token, qui reprend les mêmes IP autorisées
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [editor_id, replacement_id]
+    since: 2026-11
+
+  token.editor_token.revoked:
+    criticality: notable
+    services: [site]
+    description: Un membre d'un éditeur révoque un token éditeur, refusé par siade dès lors
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [editor_id]
+    since: 2026-11
+
+  token.ip_allowlist.changed:
+    criticality: critical
+    services: [site]
+    description: Un membre d'un éditeur modifie les IP autorisées d'un token éditeur. Une liste vide signifie que seules les plages de l'éditeur s'appliquent. previous_allowed_ips et allowed_ips sont les listes CIDR avant et après, added_allowed_ips les entrées ajoutées. Vider allowed_ips élargit aussi l'accès sans rien ajouter, puisque la restriction propre au token disparaît
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [editor_id, previous_allowed_ips, allowed_ips, added_allowed_ips]
+    since: 2026-11
