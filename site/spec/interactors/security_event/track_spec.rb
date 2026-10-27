@@ -50,6 +50,22 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
       end, SecurityEvent::Track)
     end)
 
+    stub_const('NestedSessionClose', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.session.closed', target: :user, details_from_context: %i[reason]
+
+      organize SecurityEvent::Track
+    end)
+
+    stub_const('SignInClosingASession', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.login.attempted', target: :user, details: { method: 'proconnect' }
+
+      organize NestedSessionClose, SecurityEvent::Track
+    end)
+
     stub_const('UntrackedFailure', Class.new(ApplicationOrganizer) do
       include SecurityEvent::Tracking
 
@@ -123,6 +139,15 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
     it 'emits nothing on failure' do
       expect { UntrackedFailure.call(user:) }.not_to emit_security_event('auth.session.closed')
     end
+  end
+
+  it 'lets a tracking organizer run inside another one' do
+    events = SecurityEventRecorder.new.record { SignInClosingASession.call(user:, reason: 'logout') }
+
+    expect(events).to match([
+      hash_including(event: 'auth.session.closed', details: { reason: 'logout' }),
+      hash_including(event: 'auth.login.attempted', details: { method: 'proconnect' })
+    ])
   end
 
   it 'exposes the event declared by each organizer' do
