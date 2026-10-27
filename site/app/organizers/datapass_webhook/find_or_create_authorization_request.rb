@@ -1,0 +1,3 @@
+class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationOrganizer
+  organize DatapassWebhook::FindOrCreateAuthorizationRequestModel
+end

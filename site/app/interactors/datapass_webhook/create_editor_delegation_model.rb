@@ -1,4 +1,4 @@
-class DatapassWebhook::CreateEditorDelegation < ApplicationInteractor
+class DatapassWebhook::CreateEditorDelegationModel < ApplicationInteractor
   def call
     return if %w[approve validate].exclude?(context.event)
     return if editor.nil?
