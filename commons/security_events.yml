@@ -165,3 +165,12 @@ events:
     actor_types: [admin]
     target_type: user
     since: 2026-11
+
+  access.provider_membership.changed:
+    criticality: notable
+    services: [site]
+    description: Un admin modifie les fournisseurs de données rattachés à un utilisateur, qui voit alors leurs tableaux de bord de consommation. provider_uids est la liste après modification, previous_provider_uids la liste avant
+    actor_types: [admin]
+    target_type: user
+    details: [provider_uids, previous_provider_uids]
+    since: 2026-11
