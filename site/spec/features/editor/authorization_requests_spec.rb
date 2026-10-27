@@ -74,6 +74,15 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
           expect(page).to have_css('.copy-token', count: 2)
           expect(page.html).to include(valid_authorization_requests.first.token.rehash)
         end
+
+        it 'lists an authorization request without token next to the others' do
+          create(:authorization_request, :validated, api: 'entreprise', demarche: 'form1', tokens: [])
+
+          visit editor_authorization_requests_path
+
+          expect(page).to have_css('.authorization-request', count: 3)
+          expect(page).to have_css('.copy-token', count: 2)
+        end
       end
     end
 

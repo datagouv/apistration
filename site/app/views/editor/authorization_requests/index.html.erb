@@ -60,7 +60,7 @@
             <% if authorization_request.token %>
               <%= render partial: 'shared/tokens/detail_short', locals: { token: authorization_request.token.decorate, hide_reveal_token: true } %>
             <% end %>
-            <% if current_editor.copy_token? %>
+            <% if current_editor.copy_token? && authorization_request.token %>
               <div class="copy-token" data-controller="clipboard" data-clipboard-alert-message-value="Jeton copié">
                 <%= button_tag 'Copier le jeton', class: 'fr-btn fr-btn--sm fr-icon-window-fill fr-btn--icon-right', id: dom_id(authorization_request.token, :copy_token_button), data: { action: 'click->clipboard#copy' } %>
 
