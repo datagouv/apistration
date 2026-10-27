@@ -112,3 +112,12 @@ events:
     target_type: user
     details: [role, datapass_id, replacement_user_id]
     since: 2026-11
+
+  token.editor_token.created:
+    criticality: notable
+    services: [site]
+    description: Création d'un token éditeur, qui donne accès à toutes les habilitations déléguées à l'éditeur. source editor quand un membre de l'éditeur le génère dans son espace, admin quand un admin le génère
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [source, editor_id]
+    since: 2026-11
