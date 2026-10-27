@@ -1,0 +1,3 @@
+class DatapassWebhook::ArchivePreviousAuthorizationRequest < ApplicationOrganizer
+  organize DatapassWebhook::ArchivePreviousAuthorizationRequestModel
+end

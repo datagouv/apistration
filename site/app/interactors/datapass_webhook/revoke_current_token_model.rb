@@ -1,4 +1,4 @@
-class DatapassWebhook::RevokeCurrentToken < ApplicationInteractor
+class DatapassWebhook::RevokeCurrentTokenModel < ApplicationInteractor
   def call
     return unless context.event == 'revoke'
     return unless token_already_exists?

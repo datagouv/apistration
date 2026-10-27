@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DatapassWebhook::ArchivePreviousAuthorizationRequest < ApplicationInteractor
+class DatapassWebhook::ArchivePreviousAuthorizationRequestModel < ApplicationInteractor
   def call
     return if %w[approve validate].exclude?(context.event)
     return if context.authorization_request.previous_external_id.blank?
