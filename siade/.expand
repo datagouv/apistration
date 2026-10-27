@@ -16,3 +16,4 @@ commons/endpoints/api_entreprise:config/endpoints/api_entreprise
 commons/endpoints/api_particulier:config/endpoints/api_particulier
 mocks/payloads:config/mock_payloads
 commons/pings.yml:config/pings.yml
+commons/security_events.yml:config/security_events.yml
