@@ -21,13 +21,11 @@ RSpec.describe ScheduleExpirationNoticeEmailJob do
       end
     end
 
-    context 'when expires_in is not valid' do
+    context 'when expires_in has no template' do
       let(:expires_in) { 9001 }
 
-      it 'does nothing' do
-        expect { subject }.not_to have_enqueued_mail(APIEntreprise::TokenMailer)
-
-        subject
+      it 'fails loudly' do
+        expect { subject }.to raise_error(NoMethodError, /expiration_notice_9001J/)
       end
     end
 
