@@ -1,6 +1,6 @@
 class Admin::Tokens::RegenerateToken < ApplicationInteractor
   def call
-    return context.skip! unless generate_new_token?
+    return unless generate_new_token?
 
     context.new_token = create_new_token
   end
