@@ -1,4 +1,4 @@
-Vendredi 18 septembre 2026 - Publication
+Mardi 27 octobre 2026 - Publication
 
 # Participation familiale EAJE : une attestation PDF vérifiable pour les contrôles CAF
 
@@ -14,6 +14,7 @@ Les gestionnaires d'établissements d'accueil du jeune enfant (EAJE) qui récup�
    <ol>
     <li><a class="fr-summary__link fr-text--md" href="#en-bref">Scénario d'usage</a></li>
     <li><a class="fr-summary__link fr-text--md" href="#contenu-pdf">Contenu de l'attestation PDF</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#sans-resultat">Attester une consultation sans résultat</a></li>
     <li><a class="fr-summary__link fr-text--md" href="#securite">Sécurité et données personnelles</a></li>
     <li><a class="fr-summary__link fr-text--md" href="#pourquoi-qr-code">Choix de conception : pourquoi un QR code plutôt qu'une signature électronique ?</a></li>
    </ol>
@@ -61,7 +62,7 @@ L'attestation reprend l'ensemble des données délivrées par l'API :
 
 Seules les sections couvertes par l'habilitation de la structure apparaissent : sans le scope adresse, par exemple, l'attestation ne contient pas de section adresse. Les champs vides sont omis.
 
-Le pied de page porte le **QR code**, également cliquable, le **code de vérification** et, à titre de traçabilité, le **SIRET de la structure** pour le compte de laquelle l'attestation a été émise, avec son numéro d'habilitation. Les documents produits en environnement de test portent le bandeau « Données de test — document sans valeur ».
+L'en-tête indique la source des données : la caisse qui a répondu, CNAF ou MSA. Le pied de page porte le **QR code**, également cliquable, le **code de vérification** et, à titre de traçabilité, le **SIRET de la structure** pour le compte de laquelle l'attestation a été émise, avec son numéro d'habilitation. Les documents produits en environnement de test portent le bandeau « Données de test — document sans valeur », et leur source est « origine non communiquée », faute de caisse réelle.
 
 <div class="fr-container--fluid">
  <div class="fr-grid-row fr-grid-row--gutters">
@@ -77,13 +78,44 @@ Le pied de page porte le **QR code**, également cliquable, le **code de vérifi
 <div class="fr-download fr-mt-4w fr-mb-1v fr-ml-2w">
  <p>
   <a href="/files/exemple-cnaf-attestation-participation-familiale-eaje.pdf" download class="fr-download__link">Télécharger l'attestation d'exemple (données de test)
-   <span class="fr-download__detail">PDF – 18 ko</span>
+   <span class="fr-download__detail">PDF – 17 ko</span>
   </a>
  </p>
 </div>
 
 {:.fr-highlight}
 Le **jeu de champs de l'attestation est figé pour une version d'API donnée**. Ajouter, retirer ou renommer un champ passe par une nouvelle version de l'API : deux attestations émises avec la même version ne peuvent pas présenter des champs différents. Seule la mise en page peut évoluer.
+
+{:.fr-mt-6w}
+### <a name="sans-resultat"></a>Attester une consultation sans résultat
+
+L'absence de résultat se justifie aussi : en cas de contrôle, la structure doit pouvoir montrer qu'elle a bien consulté la situation de la famille, même quand aucun dossier n'ouvre droit. Avec le même en-tête, les réponses `404` portent donc elles aussi une preuve :
+
+- une **attestation de consultation sans résultat**, quand l'allocataire n'est référencé auprès d'aucune caisse ou que son dossier est absent auprès de la CNAF ou de la MSA ;
+- une **attestation de consultation : dossier non éligible**, quand le dossier a été trouvé mais n'ouvre pas droit.
+
+Il n'y a pas de dossier à citer, seulement la question posée et la réponse obtenue : le document reprend l'erreur, l'organisme qui a répondu (RNCPS, CNAF ou MSA, ou « origine non communiquée » s'il est inconnu), la date et l'heure de l'appel, et l'identité de l'usager telle que le logiciel l'a transmise. La page de vérification n'en affiche qu'une version minimisée, comme pour un dossier trouvé.
+
+Les autres erreurs (`400`, `422`, `502`…) ne portent pas de preuve : elles ne disent rien de la situation de la famille.
+
+<div class="fr-container--fluid">
+ <div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-md-6 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-sans-resultat.png') %>" class="fr-responsive-img" alt="Attestation de consultation sans résultat de test : résultat de la consultation (erreur, détail, origine CNAF, date et heure de l'appel), identité transmise, QR code et code de vérification"/>
+  </div>
+  <div class="fr-col-md-6 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-sans-resultat.png') %>" class="fr-responsive-img" alt="Page de vérification de l'attestation sans résultat : code, SIRET, dates, résultat de la consultation et identité minimisée"/>
+  </div>
+ </div>
+</div>
+
+<div class="fr-download fr-mt-4w fr-mb-1v fr-ml-2w">
+ <p>
+  <a href="/files/exemple-cnaf-attestation-consultation-sans-resultat.pdf" download class="fr-download__link">Télécharger l'attestation de consultation sans résultat d'exemple (données de test)
+   <span class="fr-download__detail">PDF – 19 ko</span>
+  </a>
+ </p>
+</div>
 
 {:.fr-mt-6w}
 ### <a name="securite"></a>Sécurité et données personnelles
@@ -130,9 +162,9 @@ L'attestation est **optionnelle** et se demande par un en-tête HTTP sur l'appel
 |-------------------------|----------------------------------------|
 | *(absent)* | Rien, la réponse est identique à l'appel habituel. |
 | `proof-only` | `meta.verification_url` : le lien de la page de vérification<br/>`meta.verification_code` : le code de vérification, 10 caractères au format `XXXX-XXXX-XX` |
-| `pdf` | Les deux clés ci-dessus, plus :<br/>`links.attestation_pdf` : le lien de téléchargement du PDF<br/>`meta.attestation_pdf_url_expires_at` : l'expiration de ce lien (timestamp Unix, en secondes) |
+| `pdf` | Les deux clés ci-dessus, plus :<br/>`links.attestation_pdf` : le lien de téléchargement du PDF<br/>`meta.attestation_pdf_url_expires_in` : le nombre de secondes avant l'expiration de ce lien |
 
-Toute autre valeur de l'en-tête renvoie une erreur `400`.
+Toute autre valeur de l'en-tête renvoie une erreur `400`. Sur une réponse `404` qui [s'atteste](#sans-resultat), les mêmes clés s'ajoutent à côté du bloc `errors`.
 
 {:.fr-h5}
 #### Exemple d'appel
@@ -158,12 +190,12 @@ Le bloc `data` est identique à l'appel habituel, seuls `links` et `meta` s'enri
 {
   "data": { "...": "identique à l'appel sans en-tête" },
   "links": {
-    "attestation_pdf": "https://particulier.api.gouv.fr/api/attestations/gG6jYUuN…zT_Zvc6A.pdf"
+    "attestation_pdf": "https://particulier.api.gouv.fr/api/attestations/LHFbA4hy…dJcW3x9k.pdf"
   },
   "meta": {
-    "verification_url": "https://particulier.api.gouv.fr/attestations/verification/ziNgXNNf…z8GkJg",
-    "verification_code": "0FB6-AAF0-EE",
-    "attestation_pdf_url_expires_at": 1789722067
+    "verification_url": "https://particulier.api.gouv.fr/attestations/verification/KHZsu6mg…Od_7Mg",
+    "verification_code": "6A90-D68F-E7",
+    "attestation_pdf_url_expires_in": 300
   }
 }
 ```
@@ -181,7 +213,7 @@ Il suffit de suivre `links.attestation_pdf`, **sans jeton d'accès** : le lien p
 
 {:.fr-highlight}
 > **À savoir pour votre intégration**
-> - **Chaque appel avec l'en-tête interroge la CNAF en direct** : le cache de réponses d'API Particulier n'est pas utilisé, pour que l'attestation reflète les données au moment de son émission. Chaque appel compte dans votre volumétrie et produit une nouvelle preuve, avec son propre code.
+> - **Chaque appel avec l'en-tête interroge les caisses en direct** : le cache de réponses d'API Particulier n'est pas utilisé, pour que l'attestation reflète les données au moment de son émission. Chaque appel compte dans votre volumétrie et produit une nouvelle preuve, avec son propre code.
 > - **Les liens sont longs** : de l'ordre de 800 caractères pour le lien de vérification (davantage pour une famille nombreuse), plus de 2 000 pour le lien de téléchargement. Prévoyez un champ texte sans limite de taille (pas de `VARCHAR(255)`) pour stocker `verification_url`.
 > - **Le téléchargement est limité à 60 requêtes par minute et par IP**, ce qui laisse de la marge pour un traitement par lot.
 > - L'attestation n'est disponible que pour l'appel par identité pivot, pas pour l'appel via FranceConnect.
@@ -247,6 +279,8 @@ curl -H "Authorization: Bearer $TOKEN" \
 curl -o attestation.pdf "$(jq -r '.links.attestation_pdf' reponse.json)"
 ```
 
-L'attestation d'exemple présentée dans cet article a été produite de cette manière. Sa page de vérification reste consultable jusqu'au 18/09/2031 : [ouvrir la page de vérification de l'exemple](https://staging.particulier.api.gouv.fr/attestations/verification/ziNgXNNf0LilP2LWameqeocSYfWVUuHEG7B7WC4NGtx8w6ZA2_9rCEtmPl0CVh66pUcG1zzL2Ugq71FrueTfcnx1XilNTSEIjvQ_6ufbKX-oN2iWFt_kLJnPGEcWC_snzS8iyp2xTKbEfODJIlZVPP2s3Oljz9QrOSQPJDzBuF0N30O2Kc_6YaVnMwyFuyvyX1HHbwhA2EHDDTLaKHOoOfJnkim75UFxI2zeL3y0Kl7od0yBwzQSQ5MZnZvE4x6A2YIRKpX7q5MSo4N65iGt5lkMXnLHWdPJhB5BXw8YpXtx6r5X96TNLfv_IVDwJHaLi4rK0UOGIfs4yi8VTfOjjw-kKRe1bBuNbcGEIsxOGmmy5Ndz7XV9UvyYRFb_SzY2mQnIAbKOaqfdslfrj0AW14bvy7pwprx282jcCT0piEDXHMd24Sl7zEQtDT2vaVgaK_HhfS6E7MitAzD-PUJe9o2rqKfS-Ofd3ov4f3hK7sUYiROs_2Ygc_5fo0QR7dA6mjLzAf0RE5M_pSjiwTCpJXGrR3vFFgzDUHQH0SUvJqkeCbM0f3JSdUGENixjmM9HQNlMnrQSLsP_KCS6BKOy_ukyuPmfjW3QNT16C1aYGD5jEeXwWjWD78g8oyvA5rrygO1G-g6sXkYma89ZpfHx--20aFrRvj4GcDWVhy--iM_Zqsn4RaLFqQA_z8GkJg){:target="_blank"}. Vous pouvez aussi scanner le QR code du PDF d'exemple.
+L'attestation d'exemple présentée dans cet article a été produite de cette manière. Sa page de vérification reste consultable jusqu'au 27/10/2031 : [ouvrir la page de vérification de l'exemple](https://staging.particulier.api.gouv.fr/attestations/verification/KHZsu6mgquCrMfH4XkC9X0WOTZXlgQgBpPYLWxhEfgaAF6R_8KsSl9BYU4_vatrdrZv8ypAAwGJzKnsjyZ9DVj4ZdT2CMSl3QMYCX5X193lX7UWBcznshFTImxkRpDYGTwpzfpqbOWsNEYJGWnlyiDm_aXH8dz1j9yXII3MYT5s9qSXJT2DnbADzwjza0v6MCS0i_nfCJwsvteKAo-WlPesCTxDnsij8GMPidm6XhAWH98EEbxVZNoGX5NWnnev9BOqpV5kgzvQIoAgkikSMykanCF_8teyPooi0JQORB0omWaye5Xx9zxeghJ3NJb3m5yBBT875Ev5DY4MwTQR-T1n3cyBOUuM4hd2dPWIvs1ABq2nXZS8wxxu9JuVPcu2M1E73YkayHfLO6-C7HNezK8gt8njPZAtgUP86Rs24hwUUxIMQB3ZsdRWWJOYz7m58Zdt_IWuNpCzZP2MirhGCcpSyF_4X6wDpsQJiYP6ZvSUp0gKODL84SsHUJPKRwX1OFcd6ESYed0Cv-WYYLRtRDH0RtaCt7cVtZCig0Zau1scUdH78mD0js2wrVz5duJ0xL7eVWvkPL_nwgFNHliy3sUJuGU1gBKrmsrnB1fjCBjiHHtWkqLQOPN1qDaY_ETaubwuFP_uzHa-NG2DAWMLN--Qo_50pQgX4mktBca--qUUJfxtW5ITdn4vwOd_7Mg){:target="_blank"}. Vous pouvez aussi scanner le QR code du PDF d'exemple.
+
+Pour obtenir une attestation de consultation sans résultat, relancez le même appel avec `codeCogInseeCommuneNaissance=08404` : l'environnement de test renvoie alors une `404` « Dossier allocataire absent CNAF », attestée comme en production.
 
 Pour le détail des paramètres et des réponses, consultez [la fiche de l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>).
