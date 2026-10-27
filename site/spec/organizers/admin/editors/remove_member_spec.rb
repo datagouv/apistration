@@ -25,6 +25,14 @@ RSpec.describe Admin::Editors::RemoveMember, type: :organizer do
         after_attributes: { 'email' => user.email, 'editor_id' => nil }
       )
     end
+
+    it 'emits an editor membership change detaching the user' do
+      expect { result }.to emit_security_event('access.editor_membership.changed').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: user.id },
+        details: { previous_editor_id: editor.id }
+      )
+    end
   end
 
   context 'with a user not in the editor' do

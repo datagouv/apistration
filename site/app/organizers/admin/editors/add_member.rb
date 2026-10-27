@@ -7,5 +7,6 @@ class Admin::Editors::AddMember < ApplicationOrganizer
   organize Admin::Editors::FindFutureMember,
     Admin::Editors::CaptureMemberAttributes,
     Admin::Editors::AttachMember,
+    User::TrackEditorMembershipChange,
     Admin::TrackActivity
 end

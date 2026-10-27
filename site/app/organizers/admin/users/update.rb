@@ -6,5 +6,6 @@ class Admin::Users::Update < ApplicationOrganizer
   end
 
   organize Admin::Users::UpdateModel,
+    User::TrackEditorMembershipChange,
     Admin::TrackActivity
 end
