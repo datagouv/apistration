@@ -60,6 +60,14 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
         )
       end
 
+      it 'emits the ban and the replacement token even when the ban email cannot be enqueued' do
+        allow(APIEntreprise::TokenMailer).to receive(:banned).and_raise(RedisClient::CannotConnectError)
+
+        events = SecurityEventRecorder.new.record { expect { subject }.to raise_error(RedisClient::CannotConnectError) }
+
+        expect(events.pluck(:event)).to contain_exactly('token.api_token.banned', 'token.api_token.created')
+      end
+
       it 'records an admin activity' do
         expect { subject }.to change(AdminActivity, :count).by(1)
 

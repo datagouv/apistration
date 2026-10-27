@@ -1,4 +1,7 @@
 class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationOrganizer
-  organize DatapassWebhook::FindOrCreateAuthorizationRequestModel,
-    DatapassWebhook::TrackRoleChanges
+  include SecurityEvent::StepTracking
+
+  tracks_with DatapassWebhook::TrackRoleChanges
+
+  organize DatapassWebhook::FindOrCreateAuthorizationRequestModel
 end

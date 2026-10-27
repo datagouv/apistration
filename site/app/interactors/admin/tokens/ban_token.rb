@@ -6,7 +6,7 @@ class Admin::Tokens::BanToken < ApplicationInteractor
       fail!('Token already blacklisted', :warning)
     else
       context.blacklisted_at ||= 1.month.from_now
-      token.update(blacklisted_at: context.blacklisted_at)
+      context.token_banned = token.update(blacklisted_at: context.blacklisted_at)
     end
   end
 

@@ -84,6 +84,12 @@ depuis un contrôleur ni un modèle.
 - Un flux qui porte plusieurs events (webhook DataPass, ban avec
   nouveau token) organise un organizer de tracking par event : chacun
   pose ses réglages pour sa seule exécution, l'imbrication est sûre.
+- Quand une étape fait une action puis du travail qui peut échouer
+  (sauvegarde suivante, mail, appel externe), ses organizers de tracking
+  passent par `tracks_with` (`SecurityEvent::StepTracking`) : ils
+  tournent même si l'étape échoue ou lève, pour qu'une action déjà
+  écrite en base ne perde pas son event. Chacun n'émet que si son action
+  a eu lieu (`only_if:`).
 - L'acteur par défaut est l'utilisateur de la requête (posé dans
   `ApplicationController`) ; `actor:` prend un lambda sinon.
 - Garde-fou : `spec/lib/security_event/catalog_spec.rb` échoue si un event

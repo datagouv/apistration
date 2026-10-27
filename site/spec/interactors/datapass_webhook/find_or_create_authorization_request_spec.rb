@@ -95,6 +95,15 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
           }.to change { authorization_request.reload.demandeur }
         end
 
+        it 'still emits the demandeur role change when a later contact makes the step crash' do
+          contact_metier['email'] = ['metier@example.com']
+
+          events = SecurityEventRecorder.new.record { expect { subject }.to raise_error(NoMethodError) }
+
+          expect(events.select { |event| event.dig(:details, :role) == 'demandeur' }.pluck(:event))
+            .to contain_exactly('access.role.granted', 'access.role.revoked')
+        end
+
         it 'emits the demandeur role granted to the new user and revoked from the previous one' do
           previous_demandeur = authorization_request.demandeur
 
