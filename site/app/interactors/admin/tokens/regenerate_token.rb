@@ -2,7 +2,7 @@ class Admin::Tokens::RegenerateToken < ApplicationInteractor
   def call
     return unless generate_new_token?
 
-    context.new_token = create_new_token
+    context.new_token = context.created_token = create_new_token
   end
 
   def generate_new_token?

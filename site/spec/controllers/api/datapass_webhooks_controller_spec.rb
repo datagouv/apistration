@@ -42,6 +42,23 @@ RSpec.describe API::DatapassWebhooksController do
       end
     end
 
+    context 'with a valid hub signature approving an authorization request' do
+      subject do
+        post :api_entreprise, params: build(:datapass_webhook, event: 'approve')
+      end
+
+      before do
+        allow_any_instance_of(HubSignature).to receive(:valid?).and_return(true) # rubocop:todo RSpec/AnyInstance
+        allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+      end
+
+      it 'emits the token creation with DataPass as actor' do
+        expect { subject }.to emit_security_event('token.api_token.created').with(
+          actor: { email: nil, role: 'datapass' }
+        )
+      end
+    end
+
     context 'with a valid hub signature' do
       let(:token_id) { 'token id' }
       let(:success) { true }

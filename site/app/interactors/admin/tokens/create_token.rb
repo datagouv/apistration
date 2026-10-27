@@ -1,6 +1,6 @@
 class Admin::Tokens::CreateToken < ApplicationInteractor
   def call
-    context.token = authorization_request.tokens.create!(
+    context.token = context.created_token = authorization_request.tokens.create!(
       Token.default_create_params.merge(
         exp: context.exp,
         scopes: authorization_request.scopes
