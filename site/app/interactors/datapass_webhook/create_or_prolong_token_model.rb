@@ -26,7 +26,7 @@ class DatapassWebhook::CreateOrProlongTokenModel < ApplicationInteractor
       prolong_token!
       context.authorization_request.token
     else
-      create_token
+      context.created_token = create_token
     end
   end
 

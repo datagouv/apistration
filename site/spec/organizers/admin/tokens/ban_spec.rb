@@ -52,6 +52,14 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
         )
       end
 
+      it 'emits the creation of the replacement token' do
+        expect { subject }.to emit_security_event('token.api_token.created').with(
+          actor: { email: admin.email, role: 'admin' },
+          target: { type: 'token', id: satisfy { |id| id.present? && id != token.id } },
+          details: hash_including(source: 'admin_ban', datapass_id: authorization_request.external_id)
+        )
+      end
+
       it 'records an admin activity' do
         expect { subject }.to change(AdminActivity, :count).by(1)
 
@@ -114,6 +122,10 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
         it 'does not create a new token' do
           expect { subject }.not_to change(Token, :count)
+        end
+
+        it 'emits no token creation' do
+          expect { subject }.not_to emit_security_event('token.api_token.created')
         end
 
         it 'blacklists the original token' do
