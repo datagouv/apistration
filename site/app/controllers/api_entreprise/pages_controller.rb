@@ -32,6 +32,11 @@ class APIEntreprise::PagesController < APIEntrepriseController
     render 'shared/pages/accessibility'
   end
 
+  def sitemap
+    @sitemap_sections = YAML.load_file(Rails.root.join('config/sitemap.yml'))['api_entreprise']
+    render 'shared/pages/sitemap'
+  end
+
   def redoc
     render 'shared/pages/redoc'
   end
