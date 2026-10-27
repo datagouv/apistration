@@ -4,6 +4,7 @@ class DatapassWebhook::RevokeCurrentTokenModel < ApplicationInteractor
     return unless token_already_exists?
 
     context.authorization_request.revoke!
+    context.revoked_token = context.authorization_request.token&.reload
   end
 
   private
