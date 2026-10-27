@@ -130,3 +130,12 @@ events:
     target_type: editor_delegation
     details: [source, editor_id, datapass_id]
     since: 2026-11
+
+  token.api_token.shared_link_accessed:
+    criticality: critical
+    services: [site]
+    description: Ouverture de la page publique d'un lien magique, qui affiche le token sans authentification et reste réutilisable jusqu'à son expiration (4 h pour un partage). Acteur anonymous sauf si le visiteur est connecté. outcome denied avec reason unknown (lien inexistant), expired ou missing (token supprimé). expires_at est l'expiration du lien, datapass_id l'id de la demande DataPass
+    actor_types: [anonymous, user]
+    target_type: token
+    details: [datapass_id, expires_at, reason]
+    since: 2026-11
