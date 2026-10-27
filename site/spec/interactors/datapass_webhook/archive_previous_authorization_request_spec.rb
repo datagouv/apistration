@@ -23,6 +23,15 @@ RSpec.describe DatapassWebhook::ArchivePreviousAuthorizationRequest, type: :inte
           subject
         }.to change { AuthorizationRequest.where(status: 'archived').count }
       end
+
+      it 'emits the end of the delegations of the previous authorization request' do
+        delegation = create(:editor_delegation, authorization_request: AuthorizationRequest.find_by(external_id: previous_external_id))
+
+        expect { subject }.to emit_security_event('delegation.editor.revoked').with(
+          target: { type: 'editor_delegation', id: delegation.id },
+          details: hash_including(source: 'datapass_archive', datapass_id: previous_external_id)
+        )
+      end
     end
 
     context 'when authorization request has no previous external id' do
