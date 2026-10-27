@@ -4,6 +4,7 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
 
   def call # rubocop:disable Metrics/AbcSize
     context.authorization_request = AuthorizationRequest.find_or_initialize_by(external_id: context.data['pass']['id'])
+    context.role_changes = []
 
     set_reopening_event_flag
 
@@ -58,9 +59,17 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
 
       next unless user.valid?
 
-      user_authorization_request_role = context.authorization_request.user_authorization_request_roles.find_or_initialize_by(role:)
-      user_authorization_request_role.update!(user:) if user_authorization_request_role.user != user
+      assign_role(role, user)
     end
+  end
+
+  def assign_role(role, user)
+    user_authorization_request_role = context.authorization_request.user_authorization_request_roles.find_or_initialize_by(role:)
+    previous_user = user_authorization_request_role.user
+    return if previous_user == user
+
+    user_authorization_request_role.update!(user:)
+    context.role_changes << { role:, user:, previous_user: }
   end
 
   def extract_user_from_contact_payload(contact_payload)
