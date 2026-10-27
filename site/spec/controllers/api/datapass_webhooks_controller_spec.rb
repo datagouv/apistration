@@ -32,6 +32,25 @@ RSpec.describe API::DatapassWebhooksController do
         subject
       end
 
+      it 'still answers 401 to a payload with a malformed firing date' do
+        post :api_entreprise, params: params.merge('fired_at' => [1])
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+
+      it 'bounds what an unsigned caller writes into the event' do
+        expect { post :api_entreprise, params: params.merge('event' => 'x' * 10_000) }.to emit_security_event('integration.datapass_webhook.received').with(
+          details: hash_including(webhook_event: 'x' * 64)
+        )
+      end
+
+      it 'emits a denied webhook reception from an anonymous sender' do
+        expect { subject }.to emit_security_event('integration.datapass_webhook.received').with(
+          actor: { email: nil, role: 'anonymous' },
+          details: hash_including(webhook_event: 'refused', datapass_id: '9001', reason: 'invalid_signature', outcome: 'denied')
+        )
+      end
+
       it 'renders 401 with an error message as json' do
         subject
 
@@ -50,6 +69,14 @@ RSpec.describe API::DatapassWebhooksController do
       before do
         allow_any_instance_of(HubSignature).to receive(:valid?).and_return(true) # rubocop:todo RSpec/AnyInstance
         allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+      end
+
+      it 'emits the webhook reception by DataPass' do
+        expect { subject }.to emit_security_event('integration.datapass_webhook.received').with(
+          actor: { email: nil, role: 'datapass' },
+          target: { type: 'authorization_request', id: nil },
+          details: hash_including(webhook_event: 'approve', fired_at: kind_of(ActiveSupport::TimeWithZone))
+        )
       end
 
       it 'emits the token creation with DataPass as actor' do

@@ -228,3 +228,12 @@ events:
     target_type: editor_delegation
     details: [source, editor_id, datapass_id]
     since: 2026-11
+
+  integration.datapass_webhook.received:
+    criticality: notable
+    services: [site]
+    description: Webhook DataPass reçu, avant traitement. outcome denied avec reason invalid_signature si la signature HMAC est absente ou fausse (acteur anonymous), sinon acteur datapass. webhook_event est l'événement DataPass (approve, revoke...), fired_at sa date d'émission côté DataPass, datapass_id l'id de la demande DataPass
+    actor_types: [datapass, anonymous]
+    target_type: authorization_request
+    details: [webhook_event, fired_at, datapass_id, reason]
+    since: 2026-11
