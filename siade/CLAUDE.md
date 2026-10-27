@@ -37,6 +37,13 @@
 - Maintenance: Configure provider maintenance in config/maintenances.yml
 - File Endings: Every file should end with a newline
 
+## Security events (CISRT)
+
+- Events sent to the CISRT are declared in `config/security_events.yml`, a link to `commons/security_events.yml` shared with site, under `services: [siade]`. As in site, an organizer includes `SecurityEvent::Tracking`, declares `tracks_security_event` and ends with `SecurityEvent::Track`; never call `SecurityEvent.emit` directly.
+- The actor is always the API client (`role: api_client`); `target_id:` gives the token jti, `computed_details:` the details.
+- Outside a controller (Rack::Attack), the event goes on a dedicated logstash line without top-level `path` nor `request_id`. fluentd still sends it to `access_logs`: the insert fails on those NOT NULL columns, the chunk is replayed row by row and the line dropped with a warning. A fluentd filter on the `security_event` tag would spare that work.
+- Safety net: `spec/lib/security_event/catalog_spec.rb` (every event declared for siade is tracked, detail keys are not masked by siade filters).
+
 ## Sentry / Production Errors
 
 Pour accéder aux erreurs de production ou si l'utilisateur mentionne Sentry, utiliser les scripts à la racine du repo : `../bin/sentry/` (voir `../bin/sentry/README.md`). Projet par défaut : `siade-backend`.
