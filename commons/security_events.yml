@@ -94,3 +94,21 @@ events:
     target_type: token
     details: [datapass_id, previous_scopes, scopes, added_scopes, removed_scopes]
     since: 2026-11
+
+  access.role.granted:
+    criticality: notable
+    services: [site]
+    description: Un utilisateur reçoit un rôle (demandeur, contact_metier, contact_technique) sur une habilitation via le webhook DataPass. Le demandeur et le contact technique voient le token. replaced_user_id est l'utilisateur qui avait ce rôle avant (absent pour une nouvelle habilitation), datapass_id l'id de la demande DataPass
+    actor_types: [datapass]
+    target_type: user
+    details: [role, datapass_id, replaced_user_id]
+    since: 2026-11
+
+  access.role.revoked:
+    criticality: info
+    services: [site]
+    description: Un utilisateur perd un rôle sur une habilitation, remplacé par un autre via le webhook DataPass. replacement_user_id est l'utilisateur qui reçoit le rôle (voir access.role.granted), datapass_id l'id de la demande DataPass
+    actor_types: [datapass]
+    target_type: user
+    details: [role, datapass_id, replacement_user_id]
+    since: 2026-11
