@@ -31,6 +31,26 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
         entity: user
       )
     end
+
+    it 'records the impersonation stop on the impersonated user' do
+      impersonate
+
+      expect { click_on 'stop_impersonate' }.to change(AdminActivity, :count).by(1)
+
+      expect(AdminActivity.find_by(name: 'impersonation_stopped')).to have_attributes(
+        admin:,
+        namespace: 'entreprise',
+        entity: user
+      )
+    end
+
+    it 'records nothing and redirects to the users list when the admin impersonates nobody' do
+      visit admin_users_path
+
+      expect { page.driver.post(stop_impersonating_admin_users_path) }.not_to change(AdminActivity, :count)
+
+      expect(page.driver.response.location).to eq(admin_users_url(host: page.driver.request.host))
+    end
   end
 
   describe 'search' do
