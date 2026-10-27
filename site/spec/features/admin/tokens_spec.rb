@@ -67,6 +67,29 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
     end
   end
 
+  describe 'acting on tokens while impersonating a user' do
+    let!(:impersonated_user) { create(:user) }
+
+    before do
+      visit admin_users_path
+      click_on dom_id(impersonated_user, :impersonate)
+    end
+
+    it 'records the token creation as done by the admin' do
+      authorization_request.update!(validated_at: Time.zone.now)
+
+      page.driver.post(admin_user_tokens_path(user), authorization_request_id: authorization_request.id)
+
+      expect(AdminActivity.where(name: 'token_created').sole.admin).to eq(admin)
+    end
+
+    it 'records the ban as done by the admin' do
+      page.driver.post(admin_user_token_ban_path(user, token))
+
+      expect(AdminActivity.where(name: 'token_banned').sole.admin).to eq(admin)
+    end
+  end
+
   describe 'banning a token', :js do
     subject(:ban_token) do
       visit admin_user_tokens_path(user)
