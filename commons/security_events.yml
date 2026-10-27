@@ -28,7 +28,7 @@ events:
     criticality: notable
     services: [site]
     description: Tentative de connexion à l'espace usagers ou admin. details.outcome denied si provider invalide, données ProConnect absentes ou MFA manquante, reason unexpected_error si une erreur inattendue interrompt la connexion
-    actor_types: [user, anonymous]
+    actor_types: [user, editor, admin, anonymous]
     target_type: user
     details: [method, idp, mfa, acr, reason]
     since: 2026-10
@@ -37,7 +37,7 @@ events:
     criticality: info
     services: [site]
     description: Déconnexion, ou expiration de session par inactivité ou durée maximale atteinte
-    actor_types: [user]
+    actor_types: [user, editor, admin]
     target_type: user
     details: [reason]
     since: 2026-10
@@ -81,7 +81,7 @@ events:
     criticality: notable
     services: [site]
     description: Prolongation d'un token existant, sans nouveau secret. source applicant quand le demandeur confirme sa demande sur le site, datapass_revalidation quand DataPass revalide la demande (acteur datapass). expires_at est la nouvelle expiration, datapass_id l'id de la demande DataPass
-    actor_types: [user, datapass]
+    actor_types: [user, editor, admin, datapass]
     target_type: token
     details: [source, datapass_id, expires_at]
     since: 2026-11
@@ -126,7 +126,7 @@ events:
     criticality: notable
     services: [site]
     description: Une habilitation est déléguée à un éditeur, dont les tokens éditeurs y accèdent alors. source applicant quand le demandeur délègue depuis le site, datapass_webhook quand la démarche DataPass est rattachée à un éditeur (acteur datapass). datapass_id est l'id de la demande DataPass
-    actor_types: [user, datapass]
+    actor_types: [user, editor, admin, datapass]
     target_type: editor_delegation
     details: [source, editor_id, datapass_id]
     since: 2026-11
@@ -135,7 +135,7 @@ events:
     criticality: critical
     services: [site]
     description: Ouverture de la page publique d'un lien magique, qui affiche le token sans authentification et reste réutilisable jusqu'à son expiration (4 h pour un partage). Acteur anonymous sauf si le visiteur est connecté. outcome denied avec reason unknown (lien inexistant), expired ou missing (token supprimé). expires_at est l'expiration du lien, datapass_id l'id de la demande DataPass
-    actor_types: [anonymous, user]
+    actor_types: [anonymous, user, editor, admin]
     target_type: token
     details: [datapass_id, expires_at, reason]
     since: 2026-11
@@ -144,7 +144,7 @@ events:
     criticality: critical
     services: [site]
     description: Un demandeur envoie un lien magique qui affiche le token à une adresse email quelconque, réutilisable 4 h. recipient_email_domain est le domaine du destinataire, recipient_webmail vrai pour un webmail grand public, recipient_outside_organization vrai si aucun contact de l'habilitation n'a ce domaine. expires_at est l'expiration du lien, datapass_id l'id de la demande DataPass
-    actor_types: [user]
+    actor_types: [user, editor, admin]
     target_type: token
     details: [recipient_email_domain, recipient_webmail, recipient_outside_organization, expires_at, datapass_id]
     since: 2026-11
@@ -153,7 +153,7 @@ events:
     criticality: notable
     services: [site]
     description: Un token est affiché en clair, prêt à être copié. surface user quand un demandeur ouvre son token (cible ce token, datapass_id l'id de la demande DataPass), editor_list quand un membre d'un éditeur avec copie des tokens ouvre la liste de ses habilitations, qui embarque tous les tokens de la page (cible sans id, jtis la liste des tokens, count leur nombre, editor_id l'éditeur). Rien n'est émis pendant une impersonation, le token n'étant alors pas affiché
-    actor_types: [user, editor]
+    actor_types: [user, editor, admin]
     target_type: token
     details: [surface, datapass_id, jtis, count, editor_id]
     since: 2026-11
