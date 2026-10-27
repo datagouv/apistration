@@ -197,6 +197,30 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           end
         end
 
+        response '502', 'Erreur du fournisseur' do
+          # rubocop:disable-next RSpec/ContextWording
+          context 'Calcul du quotient familial impossible par la MSA' do
+            before do
+              stub_cnav_400('quotient_familial_v2', error_code: 40_000, error: 'RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE', provider_label: 'MSA')
+            end
+
+            build_rswag_example(MSAError.new(:qf_calculation_impossible, provider_error_code: 40_000, provider_error_message: 'RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE'), :qf_calculation_impossible)
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test! do |response|
+              error = JSON.parse(response.body)['errors'].first
+
+              expect(error['code']).to eq('10501')
+              expect(error['meta']).to eq(
+                'provider' => 'MSA',
+                'provider_error_code' => 40_000,
+                'provider_error_message' => 'RESSOURCE INCONNUE, CALCUL QF IMPOSSIBLE'
+              )
+            end
+          end
+        end
+
         response '502', 'Erreur du fournisseur', document: false do
           # rubocop:disable-next RSpec/ContextWording
           context 'Erreur inattendue' do

@@ -103,12 +103,14 @@ module ProviderStubs::CNAV
     )
   end
 
-  def stub_cnav_400(api, error_code:, error:)
+  def stub_cnav_400(api, error_code:, error:, provider_label: nil)
     stub_request(:get, cnav_url(api)).with(
       query: hash_including({})
     ).to_return(
       status: 400,
-      headers: {},
+      headers: {
+        'X-APISECU-FD' => CNAV::RetrieverOrganizer::REGIME_CODE_FROM_LABEL[provider_label]
+      }.compact,
       body: { errorCode: error_code, error: }.to_json
     )
   end

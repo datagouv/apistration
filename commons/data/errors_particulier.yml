@@ -2763,6 +2763,13 @@ endpoints:
           provider: RNCPS
           origin: RNCPS
       '502':
+      - code: '10501'
+        title: Calcul du quotient familial impossible par la MSA
+        detail: La MSA n'a pas pu calculer le quotient familial pour la période demandée.
+          Cela pourrait être dû à des ressources non déclarées ou à des données manquantes
+          pour ce mois ; une autre période pourrait aboutir.
+        meta:
+          provider: MSA
       - code: '35000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
@@ -2913,6 +2920,13 @@ endpoints:
           provider: RNCPS
           origin: RNCPS
       '502':
+      - code: '10501'
+        title: Calcul du quotient familial impossible par la MSA
+        detail: La MSA n'a pas pu calculer le quotient familial pour la période demandée.
+          Cela pourrait être dû à des ressources non déclarées ou à des données manquantes
+          pour ce mois ; une autre période pourrait aboutir.
+        meta:
+          provider: MSA
       - code: '35000'
         title: Erreur interne du fournisseur de données
         detail: La réponse retournée par le fournisseur de données est invalide et
