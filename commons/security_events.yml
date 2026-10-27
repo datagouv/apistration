@@ -139,3 +139,12 @@ events:
     target_type: token
     details: [datapass_id, expires_at, reason]
     since: 2026-11
+
+  token.api_token.shared:
+    criticality: critical
+    services: [site]
+    description: Un demandeur envoie un lien magique qui affiche le token à une adresse email quelconque, réutilisable 4 h. recipient_email_domain est le domaine du destinataire, recipient_webmail vrai pour un webmail grand public, recipient_outside_organization vrai si aucun contact de l'habilitation n'a ce domaine. expires_at est l'expiration du lien, datapass_id l'id de la demande DataPass
+    actor_types: [user]
+    target_type: token
+    details: [recipient_email_domain, recipient_webmail, recipient_outside_organization, expires_at, datapass_id]
+    since: 2026-11
