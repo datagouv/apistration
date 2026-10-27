@@ -8,20 +8,23 @@ module SecurityEvent::Tracking
     security_event_actor
     security_event_details
     security_event_detail_keys
+    security_event_condition
     security_event_denial_reason
   ].freeze
 
   class_methods do
     attr_reader :security_event_name
 
-    def tracks_security_event(name, target:, actor: nil, details: {}, details_from_context: [])
+    def tracks_security_event(name, target:, **options)
+      options.assert_valid_keys(:actor, :details, :details_from_context, :only_if)
       @security_event_name = name
       @security_event_settings = {
         security_event_name: name,
         security_event_target_key: target,
-        security_event_actor: actor,
-        security_event_details: details,
-        security_event_detail_keys: details_from_context,
+        security_event_actor: options[:actor],
+        security_event_details: options.fetch(:details, {}),
+        security_event_detail_keys: options.fetch(:details_from_context, []),
+        security_event_condition: options[:only_if],
         security_event_denial_reason: nil
       }
 
