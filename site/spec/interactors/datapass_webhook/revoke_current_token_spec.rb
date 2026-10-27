@@ -18,6 +18,10 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
         subject
       }.not_to change { Token.where.not(blacklisted_at: nil).count }
     end
+
+    it 'emits no token revocation' do
+      expect { subject }.not_to emit_security_event('token.api_token.revoked')
+    end
   end
 
   context "when event is 'revoke'" do
@@ -29,6 +33,13 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
       expect {
         subject
       }.to change { Token.where.not(blacklisted_at: nil).count }
+    end
+
+    it 'emits a token revocation effective now' do
+      expect { subject }.to emit_security_event('token.api_token.revoked').with(
+        target: { type: 'token', id: token.id },
+        details: { datapass_id: authorization_request.external_id, blacklisted_at: be_within(1.minute).of(Time.zone.now) }
+      )
     end
 
     it 'does update the authorization request status' do
