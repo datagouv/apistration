@@ -48,3 +48,12 @@ events:
     actor_types: [admin]
     target_type: user
     since: 2026-11
+
+  access.editor_membership.changed:
+    criticality: critical
+    services: [site]
+    description: Un admin rattache un utilisateur à un éditeur, l'en détache ou le déplace vers un autre. editor_id est le nouvel éditeur (absent si détaché), previous_editor_id l'ancien (absent si rattaché)
+    actor_types: [admin]
+    target_type: user
+    details: [editor_id, previous_editor_id]
+    since: 2026-11
