@@ -21,7 +21,7 @@ module DelegationsManagement
   end
 
   def destroy
-    result = EditorDelegation::Revoke.call(
+    result = EditorDelegation::Withdraw.call(
       authorization_request: @authorization_request,
       delegation_id: params[:id]
     )

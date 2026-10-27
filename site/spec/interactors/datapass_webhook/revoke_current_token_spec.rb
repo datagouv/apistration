@@ -42,6 +42,24 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
       )
     end
 
+    it 'emits the end of each active delegation of the authorization request' do
+      delegation = create(:editor_delegation, authorization_request:)
+
+      expect { subject }.to emit_security_event('delegation.editor.revoked').with(
+        target: { type: 'editor_delegation', id: delegation.id },
+        details: { source: 'datapass_revoke', editor_id: delegation.editor_id, datapass_id: authorization_request.external_id }
+      )
+    end
+
+    it 'emits no delegation end when the revocation rolls back' do
+      create(:editor_delegation, authorization_request:)
+      allow(authorization_request).to receive(:update!).and_raise(ActiveRecord::StatementInvalid)
+
+      events = SecurityEventRecorder.new.record { expect { subject }.to raise_error(ActiveRecord::StatementInvalid) }
+
+      expect(events.pluck(:event)).not_to include('delegation.editor.revoked')
+    end
+
     it 'does update the authorization request status' do
       expect {
         subject

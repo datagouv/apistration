@@ -219,3 +219,12 @@ events:
     target_type: token
     details: [datapass_id, blacklisted_at]
     since: 2026-11
+
+  delegation.editor.revoked:
+    criticality: info
+    services: [site]
+    description: Fin d'une délégation d'habilitation à un éditeur. source applicant quand le demandeur la retire depuis le site, datapass_revoke ou datapass_archive quand DataPass révoque ou archive l'habilitation (acteur datapass). datapass_id est l'id de la demande DataPass. La configuration de l'éditeur (form_uids) peut encore lui montrer l'habilitation
+    actor_types: [user, editor, admin, datapass]
+    target_type: editor_delegation
+    details: [source, editor_id, datapass_id]
+    since: 2026-11
