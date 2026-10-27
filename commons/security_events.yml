@@ -57,3 +57,12 @@ events:
     target_type: user
     details: [editor_id, previous_editor_id]
     since: 2026-11
+
+  token.api_token.banned:
+    criticality: notable
+    services: [site]
+    description: Un admin bannit un token. blacklisted_at est la date à partir de laquelle siade le refuse, un mois plus tard par défaut pour laisser le temps de basculer sur un nouveau token. datapass_id est l'id de la demande DataPass
+    actor_types: [admin]
+    target_type: token
+    details: [blacklisted_at, datapass_id]
+    since: 2026-11
