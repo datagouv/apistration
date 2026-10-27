@@ -76,3 +76,12 @@ events:
     target_type: token
     details: [source, datapass_id, expires_at, scopes]
     since: 2026-11
+
+  token.api_token.prolonged:
+    criticality: notable
+    services: [site]
+    description: Prolongation d'un token existant, sans nouveau secret. source applicant quand le demandeur confirme sa demande sur le site, datapass_revalidation quand DataPass revalide la demande (acteur datapass). expires_at est la nouvelle expiration, datapass_id l'id de la demande DataPass
+    actor_types: [user, datapass]
+    target_type: token
+    details: [source, datapass_id, expires_at]
+    since: 2026-11
