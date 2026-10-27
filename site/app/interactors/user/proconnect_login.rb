@@ -4,7 +4,7 @@ class User::ProconnectLogin < ApplicationInteractor
     context.user.assign_attributes(
       user_create_params
     )
-    context.user.save
+    context.fail!(message: 'invalid_identity') unless context.user.save || context.user.persisted?
   end
 
   private
