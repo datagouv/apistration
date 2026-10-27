@@ -6,6 +6,7 @@ class AdminActivity < ApplicationRecord
     token_created
     editor_token_created
     user_updated
+    editor_created
     editor_updated
     editor_member_added
     editor_member_removed
