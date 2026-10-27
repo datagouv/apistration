@@ -57,6 +57,10 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
       expect(authorization_request.reload.scopes.sort).to eq(%w[associations entreprises])
     end
 
+    it 'emits no prolongation' do
+      expect { subject }.not_to emit_security_event('token.api_token.prolonged')
+    end
+
     it 'emits a token creation from the DataPass webhook' do
       expect { subject }.to emit_security_event('token.api_token.created').with(
         target: { type: 'token', id: kind_of(String) },
@@ -100,6 +104,23 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
 
       it 'emits no token creation' do
         expect { subject }.not_to emit_security_event('token.api_token.created')
+      end
+
+      it 'emits no prolongation when DataPass revalidates twice within the same second' do
+        described_class.call(datapass_webhook_params.merge(authorization_request:))
+
+        expect { subject }.not_to emit_security_event('token.api_token.prolonged')
+      end
+
+      it 'emits a prolongation from the DataPass revalidation' do
+        expect { subject }.to emit_security_event('token.api_token.prolonged').with(
+          target: { type: 'token', id: token.id },
+          details: {
+            source: 'datapass_revalidation',
+            datapass_id: authorization_request.external_id,
+            expires_at: Time.zone.at(18.months.from_now.to_i)
+          }
+        )
       end
     end
 
