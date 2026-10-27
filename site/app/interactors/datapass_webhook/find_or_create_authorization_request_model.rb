@@ -1,5 +1,5 @@
 # TODO: can be factorized better with previous interactor
-class DatapassWebhook::FindOrCreateAuthorizationRequest < ApplicationInteractor
+class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationInteractor
   include DatapassWebhook::PassScopes
 
   def call # rubocop:disable Metrics/AbcSize
