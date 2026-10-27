@@ -16,6 +16,7 @@ actor_roles:
   - editor
   - user
   - datapass
+  - api_client
   - anonymous
 
 common_details:
@@ -236,4 +237,13 @@ events:
     actor_types: [datapass, anonymous]
     target_type: authorization_request
     details: [webhook_event, fired_at, datapass_id, reason]
+    since: 2026-11
+
+  api.request.blocked:
+    criticality: notable
+    services: [siade]
+    description: Appel API refusé par Rack::Attack avant le contrôleur, donc absent des logs d'appels. reason blacklisted (token banni ou révoqué, 401 00105), ip_not_allowed (IP hors de la liste du token, 403 00107) ou throttled (429), rule le nom de la règle Rack::Attack. jti, credential_type (token, editor_token, france_connect), authorization_request_id, editor_id et delegation_id identifient le token quand il a pu être lu. ip, method, path (sans query string) et user_agent décrivent la requête
+    actor_types: [api_client]
+    target_type: token
+    details: [reason, rule, jti, credential_type, authorization_request_id, editor_id, delegation_id, ip, method, path, user_agent]
     since: 2026-11
