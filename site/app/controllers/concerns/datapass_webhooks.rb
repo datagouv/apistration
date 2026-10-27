@@ -3,7 +3,7 @@ module DatapassWebhooks
 
   included do
     before_action :track_payload_through_sentry
-    before_action :verify_hub_signature!
+    before_action :receive_webhook!
     before_action :set_security_event_actor
   end
 
@@ -77,12 +77,16 @@ module DatapassWebhooks
     SecurityEvent.assign_request_actor(SecurityEvent::DATAPASS_ACTOR)
   end
 
-  def verify_hub_signature!
-    unauthorized unless hub_signature_valid?
-  end
+  def receive_webhook!
+    result = DatapassWebhook::Receive.call(
+      signature: hub_signature,
+      body: request.raw_post,
+      webhook_event: event,
+      fired_at: params[:fired_at],
+      datapass_id:
+    )
 
-  def hub_signature_valid?
-    HubSignature.new(hub_signature, request.raw_post).valid?
+    unauthorized if result.failure?
   end
 
   def hub_signature
