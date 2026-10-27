@@ -172,6 +172,31 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(AdminActivity.last.after_attributes).to include('apis' => %w[entreprise])
     end
 
+    it 'emits an editor config change with the settings before and after' do
+      visit edit_admin_editor_path(editor)
+
+      fill_in 'editor_form_uids', with: 'new_form1, new_form2'
+      check 'editor_copy_token'
+
+      expect { click_on 'Sauvegarder' }.to emit_security_event('access.editor_config.changed').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'editor', id: editor.id },
+        details: {
+          changed_settings: match_array(%w[form_uids copy_jwt]),
+          before: { 'form_uids' => editor.form_uids, 'copy_jwt' => false },
+          after: { 'form_uids' => %w[new_form1 new_form2], 'copy_jwt' => true }
+        }
+      )
+    end
+
+    it 'emits no editor config change when only the description changes' do
+      visit edit_admin_editor_path(editor)
+
+      fill_in 'editor_description', with: 'Une autre description'
+
+      expect { click_on 'Sauvegarder' }.not_to emit_security_event('access.editor_config.changed')
+    end
+
     it 'allows toggling editor_tokens_enabled' do
       visit edit_admin_editor_path(editor)
 
