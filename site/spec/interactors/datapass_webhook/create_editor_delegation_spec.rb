@@ -14,6 +14,13 @@ RSpec.describe DatapassWebhook::CreateEditorDelegation do
     expect(result.delegation.authorization_request).to eq(authorization_request)
   end
 
+  it 'emits a delegation granted by the DataPass webhook' do
+    expect { result }.to emit_security_event('delegation.editor.granted').with(
+      target: { type: 'editor_delegation', id: kind_of(String) },
+      details: { source: 'datapass_webhook', editor_id: editor.id, datapass_id: authorization_request.external_id }
+    )
+  end
+
   context 'when the event is not a validation' do
     let(:event) { 'refuse' }
 
@@ -38,6 +45,10 @@ RSpec.describe DatapassWebhook::CreateEditorDelegation do
     it 'does not create a duplicate' do
       expect { result }.not_to change(EditorDelegation, :count)
       expect(result).to be_success
+    end
+
+    it 'emits no delegation granted' do
+      expect { result }.not_to emit_security_event('delegation.editor.granted')
     end
   end
 end

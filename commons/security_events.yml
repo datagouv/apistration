@@ -121,3 +121,12 @@ events:
     target_type: editor_token
     details: [source, editor_id]
     since: 2026-11
+
+  delegation.editor.granted:
+    criticality: notable
+    services: [site]
+    description: Une habilitation est déléguée à un éditeur, dont les tokens éditeurs y accèdent alors. source applicant quand le demandeur délègue depuis le site, datapass_webhook quand la démarche DataPass est rattachée à un éditeur (acteur datapass). datapass_id est l'id de la demande DataPass
+    actor_types: [user, datapass]
+    target_type: editor_delegation
+    details: [source, editor_id, datapass_id]
+    since: 2026-11

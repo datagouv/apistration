@@ -1,3 +1,8 @@
 class DatapassWebhook::CreateEditorDelegation < ApplicationOrganizer
-  organize DatapassWebhook::CreateEditorDelegationModel
+  before do
+    context.delegation_source = 'datapass_webhook'
+  end
+
+  organize DatapassWebhook::CreateEditorDelegationModel,
+    EditorDelegation::TrackGrant
 end
