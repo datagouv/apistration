@@ -44,6 +44,14 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
         )
       end
 
+      it 'emits a ban effective in a month, with the DataPass id' do
+        expect { subject }.to emit_security_event('token.api_token.banned').with(
+          actor: { email: admin.email, role: 'admin' },
+          target: { type: 'token', id: token.id },
+          details: { blacklisted_at: be_within(1.minute).of(1.month.from_now), datapass_id: authorization_request.external_id }
+        )
+      end
+
       it 'records an admin activity' do
         expect { subject }.to change(AdminActivity, :count).by(1)
 
@@ -135,6 +143,10 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
       it 'does not send emails' do
         expect { subject }.not_to have_enqueued_job(ActionMailer::MailDeliveryJob)
+      end
+
+      it 'emits no ban' do
+        expect { subject }.not_to emit_security_event('token.api_token.banned')
       end
     end
 
