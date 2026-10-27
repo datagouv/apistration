@@ -38,9 +38,9 @@ RSpec.describe 'Provider: habilitations status filter', app: :api_entreprise do
 
   it 'keeps filtering when toggling the select repeatedly', :js do
     visit provider_dashboard_path(provider_uid: 'insee')
-    page.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+    scroll_until_frame_loaded('dashboard_habilitations')
 
-    expect(page).to have_text('Demande refusée', wait: 10)
+    expect(page).to have_text('Demande refusée')
     expect(page).to have_text('Demande validée')
 
     select 'Refusée', from: 'filter[statuses][]'
@@ -54,5 +54,18 @@ RSpec.describe 'Provider: habilitations status filter', app: :api_entreprise do
     select 'Tous les statuts', from: 'filter[statuses][]'
     expect(page).to have_text('Demande validée', wait: 10)
     expect(page).to have_text('Demande refusée', wait: 10)
+  end
+
+  def scroll_until_frame_loaded(frame_id)
+    page.document.synchronize(10) do
+      loaded = page.evaluate_script(<<~JS)
+        (() => {
+          const frame = document.getElementById('#{frame_id}')
+          frame.scrollIntoView()
+          return frame.hasAttribute('complete')
+        })()
+      JS
+      raise Capybara::ExpectationNotMet, "#{frame_id} frame not loaded" unless loaded
+    end
   end
 end
