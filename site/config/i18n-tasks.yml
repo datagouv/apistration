@@ -111,7 +111,6 @@ ignore_unused:
   - 'datetime.*'
   - 'api_entreprise.missing_endpoints.*'
   - '*.sessions.create_from_oauth.*'
-  - '*.sessions.create_from_magic_link.*'
   - '*.sessions.failure.*'
   - '*.sessions.after_logout.*'
   - 'api_{entreprise,particulier}.fiches_pratiques_entries.*'

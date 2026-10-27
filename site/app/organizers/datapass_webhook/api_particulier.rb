@@ -22,7 +22,6 @@ module DatapassWebhook
       ::DatapassWebhook::RevokeCurrentToken,
       ::DatapassWebhook::UpdateMailjetContacts,
       ::DatapassWebhook::ScheduleCreateFormulaireQFResourcesJob,
-      ::DatapassWebhook::ExtractMailjetVariables,
       ::DatapassWebhook::ScheduleAuthorizationRequestEmails,
       ::DatapassWebhook::APIParticulier::NotifyReporters
   end

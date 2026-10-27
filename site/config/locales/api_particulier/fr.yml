@@ -485,8 +485,6 @@ fr:
     sessions:
       new:
         page_title: Se connecter
-      create_from_magic_link:
-        page_title: ""
       dev_login:
         page_title: ""
       create_from_oauth:

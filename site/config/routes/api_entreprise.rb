@@ -23,7 +23,6 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/auth/failure', to: 'sessions#failure'
 
     get '/compte/se-connecter', to: 'sessions#new', as: :login
-    get '/compte/se-connecter/lien-magique', to: 'sessions#create_from_magic_link', as: :login_magic_link
     get '/compte/dev-login', to: 'sessions#dev_login', as: :dev_login
     get '/compte/deconnexion', to: 'sessions#destroy', as: :logout
     get '/compte/apres-deconnexion', to: 'sessions#after_logout', as: :after_logout
@@ -51,7 +50,6 @@ constraints(APIEntrepriseDomainConstraint.new) do
     patch '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
     put '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
 
-    post 'public/magic_link/create', to: 'public_token_magic_links#create'
     get 'public/jetons/:access_token', to: 'public_token_magic_links#show', as: :token_show_magic_link
 
     get '/catalogue', as: :endpoints, to: 'endpoints#index'
