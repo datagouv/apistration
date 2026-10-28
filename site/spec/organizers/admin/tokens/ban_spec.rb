@@ -7,40 +7,30 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
     subject { described_class.call(token:, admin:, comment:, namespace: 'entreprise') }
 
     let(:admin) { create(:user, :admin) }
-    let(:authorization_request) { create(:authorization_request, :with_demandeur, :with_contact_technique, api: 'entreprise') }
+    let(:authorization_request) { create(:authorization_request, :with_all_contacts, api: 'entreprise') }
     let!(:token) { create(:token, authorization_request:) }
     let(:comment) { nil }
 
     context 'when token is valid and active' do
       it { is_expected.to be_a_success }
 
-      it 'creates a new token' do
-        expect { subject }.to change(Token, :count).by(1)
+      it 'does not create a new token: contacts create one themselves' do
+        expect { subject }.not_to change(Token, :count)
       end
 
-      it 'blacklists the original token in 30 days' do
+      it 'blacklists the token in 30 days' do
         subject
         expect(token.reload.blacklisted_at).to be_within(1.minute).of(1.month.from_now)
       end
 
-      it 'sets the new token iat to current time' do
-        subject
-        new_token = Token.where.not(id: token.id).order(created_at: :desc).first
-        expect(new_token.iat).to be_within(5).of(Time.zone.now.to_i)
-      end
-
-      it 'does not blacklist the newly generated token' do
-        subject
-        new_token = Token.where.not(id: token.id).order(created_at: :desc).first
-        expect(new_token.blacklisted_at).to be_nil
-      end
-
-      it 'delivers the ban email to the demandeur and the contact technique' do
+      it 'delivers a single ban email to every contact of the demande' do
         perform_enqueued_jobs { subject }
 
-        expect(ActionMailer::Base.deliveries.map(&:to)).to contain_exactly(
-          [authorization_request.demandeur.email],
-          [authorization_request.contact_technique.email]
+        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(ActionMailer::Base.deliveries.last.to).to contain_exactly(
+          authorization_request.demandeur.email,
+          authorization_request.contact_technique.email,
+          authorization_request.contact_metier.email
         )
       end
 
@@ -58,25 +48,17 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
       it 'stores the ban details in the activity' do
         subject
 
-        new_token = Token.where.not(id: token.id).order(created_at: :desc).first
-
         expect(AdminActivity.last.before_attributes).to eq('blacklisted_at' => nil)
-        expect(AdminActivity.last.after_attributes).to include(
-          'generate_new_token' => true,
-          'new_token_id' => new_token.id
-        )
+        expect(AdminActivity.last.after_attributes).to include('comment' => nil)
       end
 
       context 'when comment is provided' do
         let(:comment) { 'Token was compromised' }
 
-        it { is_expected.to be_a_success }
-
-        it 'delivers the ban email with the admin comment to each recipient' do
+        it 'delivers the ban email with the admin comment' do
           perform_enqueued_jobs { subject }
 
-          expect(ActionMailer::Base.deliveries.size).to eq(2)
-          expect(ActionMailer::Base.deliveries.map { |mail| mail.html_part.decoded }).to all(include('Token was compromised'))
+          expect(ActionMailer::Base.deliveries.last.html_part.decoded).to include('Token was compromised')
         end
 
         it 'stores the comment in the activity' do
@@ -91,34 +73,31 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
         let(:blacklisted_at) { 7.days.from_now }
 
-        it { is_expected.to be_a_success }
-
         it 'blacklists the token at the specified date' do
           subject
           expect(token.reload.blacklisted_at).to be_within(1.second).of(blacklisted_at)
         end
       end
+    end
 
-      context 'when generate_new_token is false' do
-        subject { described_class.call(token:, admin:, comment:, generate_new_token: false, namespace: 'entreprise') }
+    context 'when a contact revoked the token after the admin opened it' do
+      it 'does not reactivate it with a later ban date' do
+        stale_token = Token.find(token.id)
+        token.revoke!
+        revoked_at = token.reload.blacklisted_at
 
-        it { is_expected.to be_a_success }
+        expect(described_class.call(token: stale_token, admin:, comment:, namespace: 'entreprise')).to be_a_failure
+        expect(token.reload.blacklisted_at).to eq(revoked_at)
+      end
+    end
 
-        it 'does not create a new token' do
-          expect { subject }.not_to change(Token, :count)
-        end
+    context 'when an earlier ban is already scheduled' do
+      before { token.update!(blacklisted_at: 3.days.from_now) }
 
-        it 'blacklists the original token' do
-          subject
-          expect(token.reload.blacklisted_at).to be_within(1.minute).of(1.month.from_now)
-        end
+      it 'keeps the earlier date' do
+        subject
 
-        it 'delivers the ban email without announcing a new token' do
-          perform_enqueued_jobs { subject }
-
-          expect(ActionMailer::Base.deliveries.size).to eq(2)
-          expect(ActionMailer::Base.deliveries.map { |mail| mail.html_part.decoded }.join).not_to include('Un nouveau token')
-        end
+        expect(token.reload.blacklisted_at).to be_within(1.second).of(3.days.from_now)
       end
     end
 
@@ -126,12 +105,6 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
       let!(:token) { create(:token, :blacklisted, authorization_request:) }
 
       it { is_expected.to be_a_failure }
-
-      it 'does not create a new token' do
-        initial_count = Token.count
-        subject
-        expect(Token.count).to eq(initial_count)
-      end
 
       it 'does not send emails' do
         expect { subject }.not_to have_enqueued_job(ActionMailer::MailDeliveryJob)
@@ -143,26 +116,8 @@ RSpec.describe Admin::Tokens::Ban, type: :organizer do
 
       it { is_expected.to be_a_failure }
 
-      it 'does not create a new token' do
-        initial_count = Token.count
-        subject
-        expect(Token.count).to eq(initial_count)
-      end
-
       it 'does not send emails' do
         expect { subject }.not_to have_enqueued_job(ActionMailer::MailDeliveryJob)
-      end
-    end
-
-    context 'when authorization request has no contact_technique' do
-      let(:authorization_request) { create(:authorization_request, :with_demandeur, api: 'entreprise') }
-
-      it { is_expected.to be_a_success }
-
-      it 'delivers the ban email only to the demandeur' do
-        perform_enqueued_jobs { subject }
-
-        expect(ActionMailer::Base.deliveries.map(&:to)).to contain_exactly([authorization_request.demandeur.email])
       end
     end
   end

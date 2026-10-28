@@ -63,36 +63,25 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
   end
 
   describe '#banned' do
-    subject(:mailer) do
-      described_class.banned(
-        token: new_token,
-        old_token: banned_token,
-        email:,
-        comment:
-      )
-    end
+    subject(:mailer) { described_class.with(token:, recipients:, comment:).banned }
 
-    let(:new_token) { token }
-    let(:banned_token) do
-      old_token = token.dup
-      old_token.blacklisted_at = 1.month.from_now
-      old_token
-    end
-    let(:email) { 'user@example.com' }
+    let(:recipients) { ['user@example.com', 'other@example.com'] }
     let(:banned_subject) { api == 'entreprise' ? 'Votre token d\'accès API Entreprise a été banni' : 'Votre token d\'accès API Particulier a été banni' }
+
+    before { token.update!(blacklisted_at: 1.month.from_now) }
 
     context 'without comment' do
       let(:comment) { nil }
 
       its(:subject) { is_expected.to eq("🔑⚠️ #{banned_subject}") }
-      its(:to) { is_expected.to contain_exactly(email) }
+      its(:to) { is_expected.to match_array(recipients) }
 
       it 'includes the intitule' do
         expect(subject.html_part.decoded).to include(authorization_request.intitule)
       end
 
       it 'includes the blacklist date' do
-        blacklisted_date = Time.at(banned_token.blacklisted_at).in_time_zone.strftime('%d/%m/%Y')
+        blacklisted_date = token.blacklisted_at.in_time_zone.strftime('%d/%m/%Y')
         expect(subject.html_part.decoded).to include(blacklisted_date)
       end
 
@@ -104,30 +93,10 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
     context 'with comment' do
       let(:comment) { 'Token was compromised' }
 
-      its(:subject) { is_expected.to eq("🔑⚠️ #{banned_subject}") }
-      its(:to) { is_expected.to contain_exactly(email) }
-
       it 'includes the comment' do
         expect(subject.html_part.decoded).to include('Commentaire de l\'administrateur')
         expect(subject.html_part.decoded).to include('Token was compromised')
         expect(subject.text_part.decoded).to include('Token was compromised')
-      end
-    end
-
-    context 'with new token' do
-      let(:comment) { nil }
-
-      it 'includes new token generated message' do
-        expect(subject.html_part.decoded).to include('Un nouveau token a été automatiquement généré')
-      end
-    end
-
-    context 'without new token' do
-      let(:new_token) { nil }
-      let(:comment) { nil }
-
-      it 'does not include new token generated message' do
-        expect(subject.html_part.decoded).not_to include('Un nouveau token a été automatiquement généré')
       end
     end
   end
