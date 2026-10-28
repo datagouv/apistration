@@ -28,8 +28,10 @@ class AdminAPIToken
   end
 
   def production_token
-    Token.joins(:authorization_request)
-      .find_by!(authorization_requests: { external_id: DATAPASS_IDS.fetch(api) })
+    Token.active.joins(:authorization_request)
+      .where(authorization_requests: { external_id: DATAPASS_IDS.fetch(api) })
+      .order(created_at: :desc)
+      .first!
       .rehash
   end
 end
