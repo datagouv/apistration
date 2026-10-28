@@ -9,35 +9,31 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
   let(:host) { api == 'entreprise' ? 'entreprise.api.gouv.fr' : 'particulier.api.gouv.fr' }
   let(:magic_link_subject) { api == 'entreprise' ? "Lien d'accès temporaire au jeton API Entreprise" : "Lien d'accès temporaire au jeton API Particulier" }
 
-  %w[
-    expiration_notice_90J
-    expiration_notice_60J
-    expiration_notice_30J
-    expiration_notice_15J
-    expiration_notice_7J
-    expiration_notice_0J
-  ].each do |method|
-    describe "##{method}" do
-      subject(:generate_email) { described_class.send(method, { token: }) }
+  describe '#expiration_notice' do
+    before { token.update!(name: 'Production') }
 
-      it 'generates an email' do
-        expect { generate_email }.not_to raise_error
-      end
+    [30, 7, 0].each do |days|
+      context "#{days} days before expiration" do
+        subject(:generate_email) { described_class.with(token:, days:).expiration_notice }
 
-      its(:to) { is_expected.to contain_exactly(authorization_request.demandeur.email) }
+        it 'is sent to every contact of the demande' do
+          expect(generate_email.to).to contain_exactly(
+            authorization_request.demandeur.email,
+            authorization_request.contact_technique.email,
+            authorization_request.contact_metier.email
+          )
+        end
 
-      it 'display demandeur full name' do
-        expect(subject.html_part.decoded).to include(authorization_request.demandeur.full_name)
-      end
+        it 'names the token in the subject and the body' do
+          expect(generate_email.subject).to include('« Production »')
+          expect(generate_email.text_part.decoded).to include('« Production »')
+        end
 
-      it 'has a link to datapass authorization_request copy' do
-        path = send(prolong_path_method, id: authorization_request.id)
-        expect(subject.html_part.decoded).to include(path)
-      end
-
-      it 'has a text part with the link to the prolongation' do
-        path = send(prolong_path_method, id: authorization_request.id)
-        expect(subject.text_part.decoded).to include(path)
+        it 'links to the page of the demande' do
+          path = send(prolong_path_method, id: authorization_request.id)
+          expect(generate_email.html_part.decoded).to include(path)
+          expect(generate_email.text_part.decoded).to include(path)
+        end
       end
     end
   end

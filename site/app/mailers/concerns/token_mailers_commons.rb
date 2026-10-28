@@ -6,25 +6,14 @@ module TokenMailersCommons
   include FriendlyDateHelper
   include Rails.application.routes.url_helpers
 
-  %w[
-    expiration_notice_90J
-    expiration_notice_60J
-    expiration_notice_30J
-    expiration_notice_15J
-    expiration_notice_7J
-    expiration_notice_0J
-  ].each do |method|
-    send('define_method', method) do |args|
-      token = args[:token]
-      @authorization_request = token.authorization_request
+  def expiration_notice
+    assign_expiring_token(params[:token])
+    @expired = params[:days].zero?
 
-      @prolong_token_url = authorization_request_url(id: @authorization_request.id)
-      @expiration_date = Time.at(token.exp).in_time_zone.strftime('%d/%m/%Y')
-      @full_name = @authorization_request.demandeur.full_name
-      @intitule = token.intitule
-
-      mail(to: token.demandeur.email, subject: t("mailers.token_mailer.#{method}.subject", api_name: api_full_name))
-    end
+    mail(
+      to: @authorization_request.users.map(&:email).compact_blank.uniq,
+      subject: t("mailers.token_mailer.expiration_notice.subject_#{params[:days]}", name: @token.name, external_id: @authorization_request.external_id)
+    )
   end
 
   def magic_link(magic_link, host)
@@ -56,6 +45,13 @@ module TokenMailersCommons
   end
 
   private
+
+  def assign_expiring_token(token)
+    @token = token
+    @authorization_request = token.authorization_request
+    @authorization_request_url = authorization_request_url(id: @authorization_request.id)
+    @expiration_date = Time.at(token.exp).in_time_zone.strftime('%d/%m/%Y')
+  end
 
   def contact_token_email(event)
     @token = params[:token]
