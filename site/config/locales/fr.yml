@@ -442,6 +442,10 @@ fr:
           option:
             one: "%{count} mois"
             other: "%{count} mois"
+        allowed_ips:
+          label: "IP autorisées (facultatif)"
+          hint: "Une IP ou plage CIDR par ligne, fixées à la création du jeton. Laissez vide pour accepter les appels de toute adresse autorisée par la demande."
+          envelope: "Elles doivent être incluses dans les plages autorisées de la demande : %{ranges}."
         notice: "Le jeton porte tous les droits de la demande. Les autres contacts de la demande sont prévenus par mail."
         submit: "Créer le jeton"
         cancel: "Annuler"
@@ -534,6 +538,8 @@ fr:
       token_card:
         created_by: "Créé le %{date} par %{name}"
         created: "Créé le %{date}"
+        allowed_ips: "IP :"
+        no_allowed_ips: "IP : aucune restriction propre"
         transfer: "Transmettre"
         stats: "Statistiques"
         revoke: "Révoquer"
