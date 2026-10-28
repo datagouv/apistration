@@ -62,7 +62,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
     subject(:mailer) { described_class.with(token:, recipients:, comment:).banned }
 
     let(:recipients) { ['user@example.com', 'other@example.com'] }
-    let(:banned_subject) { api == 'entreprise' ? 'Votre token d\'accès API Entreprise a été banni' : 'Votre token d\'accès API Particulier a été banni' }
+    let(:banned_subject) { "Le jeton « #{token.name} » de la demande n°#{authorization_request.external_id} sera révoqué le #{token.blacklisted_at.strftime('%d/%m/%Y')}" }
 
     before { token.update!(blacklisted_at: 1.month.from_now) }
 
@@ -82,7 +82,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
       end
 
       it 'does not include comment section' do
-        expect(subject.html_part.decoded).not_to include('Commentaire de l\'administrateur')
+        expect(subject.html_part.decoded).not_to include('Commentaire de l\'équipe')
       end
     end
 
@@ -90,7 +90,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
       let(:comment) { 'Token was compromised' }
 
       it 'includes the comment' do
-        expect(subject.html_part.decoded).to include('Commentaire de l\'administrateur')
+        expect(subject.html_part.decoded).to include('Commentaire de l\'équipe')
         expect(subject.html_part.decoded).to include('Token was compromised')
         expect(subject.text_part.decoded).to include('Token was compromised')
       end
