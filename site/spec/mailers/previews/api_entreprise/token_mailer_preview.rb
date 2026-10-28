@@ -25,6 +25,14 @@ class APIEntreprise::TokenMailerPreview < ActionMailer::Preview
     )
   end
 
+  def created
+    APIEntreprise::TokenMailer.with(token:, actor: token.authorization_request.demandeur, recipients: [to]).created
+  end
+
+  def revoked
+    APIEntreprise::TokenMailer.with(token:, actor: token.authorization_request.demandeur, recipients: [to]).revoked
+  end
+
   private
 
   def to
