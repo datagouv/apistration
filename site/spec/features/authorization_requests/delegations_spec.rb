@@ -17,6 +17,21 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
       expect(page).to have_css('#habilitation_delegations')
     end
 
+    context 'when the demande has been revoked' do
+      before { authorization_request.revoke! }
+
+      it 'neither offers nor accepts a new delegation' do
+        visit authorization_request_path(authorization_request)
+
+        expect(page).to have_css('h1', text: authorization_request.intitule)
+        expect(page).to have_no_css('#habilitation_delegations')
+
+        page.driver.post authorization_request_delegations_path(authorization_request), editor_id: delegable_editor.id
+
+        expect(authorization_request.editor_delegations.active).to be_empty
+      end
+    end
+
     it 'allows adding a delegation' do
       visit authorization_request_path(authorization_request)
 
