@@ -1,0 +1,21 @@
+<mj-section mj-class="section-block">
+  <mj-column>
+    <mj-text mj-class="block-blue">
+      <h3>
+        🔔 Lettres d'informations et notifications
+      </h3>
+      <p>
+        Pour être informé des maintenances et des incidents de l'<%= api_full_name %>, abonnez-vous depuis notre page d'état des API&nbsp;:
+        <a target="_blank" href="https://<%= api_status_host %>/">
+          <b><u><%= api_status_host %></u></b>
+        </a>
+      </p>
+      <p>
+        Pour recevoir chaque lundi le récapitulatif des nouveautés techniques, inscrivez-vous à notre newsletter hebdomadaire automatique sur
+        <a target="_blank" href="<%= api_url(:changelogs) %>">
+          <b><u>la page des nouveautés</u></b>
+        </a>.
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>

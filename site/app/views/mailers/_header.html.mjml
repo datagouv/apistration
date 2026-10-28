@@ -1,0 +1,16 @@
+<mj-section background-color="#ffffff">
+  <mj-column vertical-align="top" width="33%">
+    <mj-image
+      alt="Logo officiel de la Direction Interministérielle du Numérique"
+      href="<%= api_root_url %>"
+      src="<%= attachments['logo-dinum.png'].url %>"
+      target="_blank" />
+  </mj-column>
+  <mj-column vertical-align="top" width="67%">
+    <mj-image
+      alt="<%= api_specific(:logo_alt) %>"
+      href="<%= api_root_url %>"
+      src="<%= attachments['logo-api.png'].url %>"
+      target="_blank" />
+  </mj-column>
+</mj-section>

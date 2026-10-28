@@ -1,0 +1,8 @@
+<mj-text mj-class="section-block">
+  <p>
+    🔔 Abonnez-vous dès maintenant aux
+    <b>notifications de maintenance et d'incidents</b>
+    depuis notre page d'état des API :
+    <a target="_blank" href="https://<%= api_status_host %>/"><%= api_status_host %></a>
+  </p>
+</mj-text>

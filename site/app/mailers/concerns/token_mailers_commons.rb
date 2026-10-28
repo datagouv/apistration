@@ -23,7 +23,7 @@ module TokenMailersCommons
       @full_name = @authorization_request.demandeur.full_name
       @intitule = token.intitule
 
-      mail(to: token.demandeur.email, subject: t('.subject')) { |format| format.html }
+      mail(to: token.demandeur.email, subject: t("mailers.token_mailer.#{method}.subject", api_name: api_full_name))
     end
   end
 
@@ -32,7 +32,7 @@ module TokenMailersCommons
     @host = host
 
     to = magic_link.email
-    subject = t('.subject')
+    subject = t('mailers.token_mailer.magic_link.subject', api_name: api_full_name)
 
     mail(to:, subject:)
   end
@@ -46,7 +46,7 @@ module TokenMailersCommons
     @blacklisted_at = Time.at(@old_token.blacklisted_at).in_time_zone.strftime('%d/%m/%Y')
 
     to = args[:email]
-    subject = t('.subject')
+    subject = t('mailers.token_mailer.banned.subject', api_name: api_full_name)
 
     mail(to:, subject:)
   end
