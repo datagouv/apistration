@@ -14,6 +14,7 @@ class Admin::Tokens::RegenerateToken < ApplicationInteractor
   def create_new_token
     copy = token.dup
     copy.blacklisted_at = nil
+    copy.used = false
     copy.iat = Time.zone.now.to_i
     copy.save
     copy
