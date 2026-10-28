@@ -1,0 +1,16 @@
+<% content_for :page_title, t('.page_title') %>
+<turbo-frame id="main-modal-content">
+  <div class="single-page">
+    <%= form_with url: token_revoke_path(id: @token.id), method: :post, id: dom_id(@token, :revocation), data: { turbo: false } do |form| %>
+      <%= render 'shared/modal_title', id: dom_id(@token, :revocation_title), icon: 'fr-icon-close-circle-line', title: t('.title') %>
+
+      <p><%= t('.description', name: @token.name) %></p>
+
+      <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+        <p><%= t('.cache_notice') %></p>
+      </div>
+
+      <%= render 'shared/modal_form_actions', form:, submit: t('.submit'), cancel: t('.cancel') %>
+    <% end %>
+  </div>
+</turbo-frame>

@@ -1,0 +1,25 @@
+<% content_for :page_title, t('.page_title') %>
+<turbo-frame id="main-modal-content">
+  <div class="single-page">
+    <%= form_with model: @token, url: authorization_request_tokens_path(authorization_request_id: @authorization_request.id), method: :post, id: :new_self_service_token, data: { turbo: false } do |form| %>
+      <%= render 'shared/modal_title', id: 'new_self_service_token_title', icon: 'fr-icon-add-circle-line', title: t('.title') %>
+
+      <div class="fr-input-group">
+        <%= render 'shared/label_with_hint', form:, field: :name, label: t('.name.label'), hint: t('.name.hint') %>
+        <%= form.text_field :name, class: 'fr-input', required: true, maxlength: Token::NAME_MAX_LENGTH, autocomplete: 'off' %>
+      </div>
+
+      <div class="fr-select-group">
+        <%= render 'shared/label_with_hint', form:, field: :lifetime_in_months, label: t('.lifetime.label'), hint: t('.lifetime.hint') %>
+        <%= form.select :lifetime_in_months,
+          Token::LIFETIMES_IN_MONTHS.map { |months| [t('.lifetime.option', count: months), months] },
+          { selected: Token::LIFETIMES_IN_MONTHS.max },
+          class: 'fr-select' %>
+      </div>
+
+      <p class="fr-text--sm"><%= t('.notice') %></p>
+
+      <%= render 'shared/modal_form_actions', form:, submit: t('.submit'), cancel: t('.cancel') %>
+    <% end %>
+  </div>
+</turbo-frame>
