@@ -9,13 +9,7 @@
         <%= form.text_field :name, class: 'fr-input', required: true, maxlength: Token::NAME_MAX_LENGTH, autocomplete: 'off' %>
       </div>
 
-      <div class="fr-select-group">
-        <%= render 'shared/label_with_hint', form:, field: :lifetime_in_months, label: t('.lifetime.label'), hint: t('.lifetime.hint') %>
-        <%= form.select :lifetime_in_months,
-          Token::LIFETIMES_IN_MONTHS.map { |months| [t('.lifetime.option', count: months), months] },
-          { selected: Token::LIFETIMES_IN_MONTHS.max },
-          class: 'fr-select' %>
-      </div>
+      <%= render 'shared/token_lifetime_field', form:, label: t('.lifetime.label'), hint: t('.lifetime.hint') %>
 
       <div class="fr-input-group">
         <%= form.label :allowed_ips_text, class: 'fr-label' do %>

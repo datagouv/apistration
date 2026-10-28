@@ -1,0 +1,21 @@
+<% content_for :page_title, t('.page_title') %>
+<turbo-frame id="main-modal-content">
+  <div class="single-page">
+    <%= form_with model: @token, url: token_extend_path(id: @token.id), method: :post, id: dom_id(@token, :extension), data: { turbo: false } do |form| %>
+      <%= render 'shared/modal_title', id: dom_id(@token, :extension_title), icon: 'fr-icon-time-line', title: t('.title', name: @token.name) %>
+
+      <p><%= t('.description', date: friendly_format_from_timestamp(@token.exp)) %></p>
+
+      <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+        <p>
+          <%= t('.check_authorization_request') %>
+          <%= external_link_to t('.datapass_link', external_id: @token.authorization_request.external_id), datapass_authorization_request_url(@token.authorization_request), class: 'fr-link' %>
+        </p>
+      </div>
+
+      <%= render 'shared/token_lifetime_field', form:, label: t('.lifetime.label'), hint: t('.lifetime.hint', date: friendly_format_from_timestamp(@token.exp)) %>
+
+      <%= render 'shared/modal_form_actions', form:, submit: t('.submit'), cancel: t('.cancel') %>
+    <% end %>
+  </div>
+</turbo-frame>
