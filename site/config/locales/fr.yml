@@ -18,6 +18,8 @@ fr:
       create:
         success:
           title: Délégation ajoutée
+        error:
+          closed: Cette demande n'est pas ou plus validée, elle ne peut pas être déléguée.
       destroy:
         success:
           title: Délégation révoquée

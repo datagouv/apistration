@@ -86,7 +86,7 @@
         <% end %>
       </section>
 
-      <% if @active_delegations.any? || @available_editors.any? %>
+      <% if @active_delegations.any? || (@available_editors.any? && @authorization_request.eligible_for_token_creation?) %>
         <section id="habilitation_delegations" class="fr-mb-6w">
           <h2 class="fr-h3"><%= t('.delegations.title').html_safe %></h2>
           <p class="fr-mb-2w"><%= t('.delegations.description') %></p>
@@ -125,7 +125,7 @@
             </div>
           <% end %>
 
-          <% if @available_editors.any? %>
+          <% if @available_editors.any? && @authorization_request.eligible_for_token_creation? %>
             <%= form_with url: authorization_request_delegations_path(@authorization_request), method: :post, class: 'fr-mt-2w' do |f| %>
               <div class="fr-select-group">
                 <%= f.label :editor_id, t('.delegations.add_label'), class: 'fr-label' %>
