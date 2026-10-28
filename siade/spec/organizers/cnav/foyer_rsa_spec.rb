@@ -17,7 +17,7 @@ RSpec.describe CNAV::FoyerRSA, type: :retriever_organizer do
 
   let(:nom_naissance) { 'Dupont' }
   let(:prenoms) { %w[jean charlie] }
-  let(:annee_date_naissance) { 2008 }
+  let(:annee_date_naissance) { 1980 }
   let(:mois_date_naissance) { 1 }
   let(:jour_date_naissance) { 1 }
   let(:code_cog_insee_commune_naissance) { nil }

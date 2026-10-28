@@ -24,14 +24,14 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Foyer RSA avec un allocataire et une personne à charge,"{""nomNaissance"":""Dupont"",""prenoms"":[""jean"",""charlie""],""anneeDateNaissance"":2008,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+,Foyer RSA avec un allocataire et une personne à charge,"{""nomNaissance"":""Dupont"",""prenoms"":[""jean"",""charlie""],""anneeDateNaissance"":1980,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
     ""beneficiaires"": [
       {
         ""nom_naissance"": ""DUPONT"",
         ""nom_usage"": null,
         ""prenoms"": ""Jean Charlie"",
-        ""date_naissance"": ""2008-01-01"",
+        ""date_naissance"": ""1980-01-01"",
         ""sexe"": ""M"",
         ""qualite"": ""allocataire""
       }
@@ -49,7 +49,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Dossier allocataire non trouvé,"{""nomNaissance"":""Lefebvre"",""prenoms"":[""claire""],""anneeDateNaissance"":2008,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100""}",404,"{
+,Dossier allocataire non trouvé,"{""nomNaissance"":""Lefebvre"",""prenoms"":[""claire""],""anneeDateNaissance"":1980,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100""}",404,"{
   ""errors"": [
     {
       ""code"": ""37003"",

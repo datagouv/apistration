@@ -86,7 +86,7 @@
       "jean",
       "charlie"
     ],
-    "anneeDateNaissance": 2008,
+    "anneeDateNaissance": 1980,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
     "sexeEtatCivil": "M",
@@ -108,7 +108,7 @@
           "nom_naissance": "DUPONT",
           "nom_usage": null,
           "prenoms": "Jean Charlie",
-          "date_naissance": "2008-01-01",
+          "date_naissance": "1980-01-01",
           "sexe": "M",
           "qualite": "allocataire"
         }
@@ -136,7 +136,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=jean' -d 'prenoms[]=charlie' -d 'anneeDateNaissance=2008' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Dupont' -d 'prenoms[]=jean' -d 'prenoms[]=charlie' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/foyer_rsa/identite"
   ```
 
@@ -157,7 +157,7 @@
     "prenoms": [
       "claire"
     ],
-    "anneeDateNaissance": 2008,
+    "anneeDateNaissance": 1980,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
     "sexeEtatCivil": "M",
@@ -195,7 +195,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lefebvre' -d 'prenoms[]=claire' -d 'anneeDateNaissance=2008' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Lefebvre' -d 'prenoms[]=claire' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseePaysNaissance=99100' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/foyer_rsa/identite"
   ```
 

@@ -35,7 +35,7 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with civility', api: :particulie
 
       let(:nomNaissance) { 'Dupont' }
       let(:'prenoms[]') { %w[jean charlie] }
-      let(:anneeDateNaissance) { 2008 }
+      let(:anneeDateNaissance) { 1980 }
       let(:moisDateNaissance) { 1 }
       let(:jourDateNaissance) { 1 }
       let(:codeCogInseePaysNaissance) { '99100' }
