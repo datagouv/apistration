@@ -346,11 +346,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.uuid "authorization_request_model_id", null: false
     t.datetime "blacklisted_at"
     t.datetime "created_at", precision: nil, null: false
+    t.uuid "creator_id"
     t.jsonb "days_left_notification_sent", default: [], null: false
     t.integer "exp", null: false
     t.jsonb "extra_info", default: {}
     t.integer "iat"
     t.boolean "mcp", default: false, null: false
+    t.string "name", default: "Jeton principal", null: false
     t.jsonb "scopes", default: [], null: false
     t.string "temp_use_case"
     t.datetime "updated_at", precision: nil, null: false

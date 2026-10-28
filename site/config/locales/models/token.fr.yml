@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    models:
+      token:
+        one: "Jeton"
+        other: "Jetons"
+    attributes:
+      token:
+        name: "Nom du jeton"
+        lifetime_in_months: "Durée de validité"
+    errors:
+      models:
+        token:
+          attributes:
+            name:
+              taken: "est déjà utilisé par un autre jeton actif de cette demande"
+          authorization_request_closed: "Cette demande n'est pas ou plus validée : il n'est pas possible d'y créer de jeton."
+          active_tokens_limit_reached: "Cette demande a déjà %{count} jetons actifs : révoquez-en un avant d'en créer un nouveau."
