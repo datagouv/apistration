@@ -121,8 +121,8 @@ class AuthorizationRequest < ApplicationRecord
   end
 
   def revoke!
-    transaction do
-      token&.update!(blacklisted_at: Time.zone.now)
+    with_lock do
+      tokens.not_blacklisted.find_each(&:revoke!)
 
       update!(status: 'revoked')
 
