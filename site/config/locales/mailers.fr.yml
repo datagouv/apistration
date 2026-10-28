@@ -1,39 +1,19 @@
 fr:
   mailers:
     authorization_request_mailer:
-      embarquement_demande_refusee:
-        subject: 🚫 Votre demande d'accès est refusée.
-      embarquement_modifications_demandees:
-        subject: ✒️ Votre demande requiert des modifications.
-      embarquement_valide_to_editeur:
-        subject:  ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_is_tech:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_is_tech_is_metier:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_seulement:
-        subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
-      embarquement_valide_to_metier_cc_demandeur_tech:
-        subject: ✅ Vous avez été désigné contact métier d'une habilitation à l'%{api_name}.
-      embarquement_valide_to_demandeur_is_metier_not_tech:
-        subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
-      embarquement_valide_to_demandeur_is_tech_not_metier:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_tech_cc_demandeur:
-        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'%{api_name}. Récupérez maintenant la clé d'accès 🔑 !
-      embarquement_valide_to_tech_cc_demandeur_metier:
-        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'%{api_name}. Récupérez maintenant la clé d'accès 🔑 !
       demande_recue:
         subject: 📬 Votre demande d'accès à l'%{api_name} a bien été reçue par nos services.
-
-      update_embarquement_demande_refusee:
-        subject: 🚫 Votre demande de mise à jour est refusée.
-      update_embarquement_modifications_demandees:
-        subject: ✒️ Votre demande de mise à jour requiert des modifications.
-      update_embarquement_valide_to_demandeur:
-        subject: ✅ Demande de mise à jour validée
-      update_demande_recue:
-        subject: 📬 Votre demande de mise à jour de votre accès à l'%{api_name} a bien été reçue par nos services.
+        update_subject: 📬 Votre demande de mise à jour de votre accès à l'%{api_name} a bien été reçue par nos services.
+      embarquement_modifications_demandees:
+        subject: ✒️ Votre demande requiert des modifications.
+        update_subject: ✒️ Votre demande de mise à jour requiert des modifications.
+      embarquement_demande_refusee:
+        subject: 🚫 Votre demande d'accès est refusée.
+        update_subject: 🚫 Votre demande de mise à jour est refusée.
+      demande_validee:
+        subject: "✅ Demande validée : créez votre jeton %{api_name}"
+        delegated_subject: ✅ Demande validée
+        update_subject: ✅ Mise à jour de la demande validée
 
     token_mailer:
       expiration_notice:
