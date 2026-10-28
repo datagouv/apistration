@@ -1,9 +1,0 @@
-<%= render partial: "greetings", locals: { entity: "demandeur" } -%>
-
-Votre demande de mise à jour de l'habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a été refusée par notre service juridique.
-
-Pour connaître les raisons de ce refus, lisez les commentaires de l'instructeur sur votre demande : <%= @authorization_request_datapass_url %>
-
-Votre habilitation n°<%= @authorization_request.external_id %> reste valide dans les termes validés initialement.
-
-<%= render partial: "signature" %>

@@ -1,7 +1,0 @@
-<%= render partial: "greetings", locals: { entity: "demandeur" } -%>
-
-Votre demande de mise à jour de l'habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a été traitée par notre service juridique. Il nous manque cependant certaines informations pour rendre un avis.
-
-Répondez à notre instructeur et complétez votre demande de mise à jour : <%= @authorization_request_datapass_url %>
-
-<%= render partial: "signature" %>
