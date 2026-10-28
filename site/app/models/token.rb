@@ -90,6 +90,10 @@ class Token < ApplicationRecord
     update!(exp: 18.months.from_now.to_i, days_left_notification_sent: [])
   end
 
+  def revoke!
+    update!(blacklisted_at: Time.zone.now)
+  end
+
   private
 
   def jwt_data
