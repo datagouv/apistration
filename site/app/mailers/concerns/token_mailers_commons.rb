@@ -50,4 +50,25 @@ module TokenMailersCommons
 
     mail(to:, subject:)
   end
+
+  def created
+    contact_token_email(:created)
+  end
+
+  def revoked
+    contact_token_email(:revoked)
+  end
+
+  private
+
+  def contact_token_email(event)
+    @token = params[:token]
+    @actor = params[:actor]
+    @authorization_request = @token.authorization_request
+
+    mail(
+      to: params[:recipients],
+      subject: t("mailers.token_mailer.#{event}.subject", name: @token.name, external_id: @authorization_request.external_id)
+    )
+  end
 end

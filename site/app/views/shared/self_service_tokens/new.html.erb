@@ -1,0 +1,37 @@
+<% content_for :page_title, t('.page_title') %>
+<turbo-frame id="main-modal-content">
+  <div class="single-page">
+    <%= form_with model: @token, url: authorization_request_tokens_path(authorization_request_id: @authorization_request.id), method: :post, id: :new_self_service_token, data: { turbo: false } do |form| %>
+      <h1 id="new_self_service_token_title" class="fr-modal__title">
+        <span class="fr-icon-add-circle-line fr-icon--lg" aria-hidden="true"></span>
+        <%= t('.title') %>
+      </h1>
+
+      <div class="fr-input-group">
+        <%= form.label :name, class: 'fr-label' do %>
+          <%= t('.name.label') %>
+          <span class="fr-hint-text"><%= t('.name.hint') %></span>
+        <% end %>
+        <%= form.text_field :name, class: 'fr-input', required: true, maxlength: Token::NAME_MAX_LENGTH, autocomplete: 'off' %>
+      </div>
+
+      <div class="fr-select-group">
+        <%= form.label :lifetime_in_months, class: 'fr-label' do %>
+          <%= t('.lifetime.label') %>
+          <span class="fr-hint-text"><%= t('.lifetime.hint') %></span>
+        <% end %>
+        <%= form.select :lifetime_in_months,
+          Token::LIFETIMES_IN_MONTHS.map { |months| [t('.lifetime.option', count: months), months] },
+          { selected: Token::LIFETIMES_IN_MONTHS.max },
+          class: 'fr-select' %>
+      </div>
+
+      <p class="fr-text--sm"><%= t('.notice') %></p>
+
+      <ul class="fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-lg">
+        <li><%= form.button t('.submit'), class: 'fr-btn' %></li>
+        <li><button type="button" class="fr-btn fr-btn--secondary" aria-controls="main-modal"><%= t('.cancel') %></button></li>
+      </ul>
+    <% end %>
+  </div>
+</turbo-frame>
