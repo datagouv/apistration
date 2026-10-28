@@ -10,13 +10,16 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with civility', api: :particulie
       parameters_identite_pivot(
         params: %w[
           nomNaissance
+          nomUsage
           prenoms
           anneeDateNaissance
           moisDateNaissance
           jourDateNaissance
           sexeEtatCivil
-          codeCogInseeCommuneNaissance
           codeCogInseePaysNaissance
+          codeCogInseeCommuneNaissance
+          nomCommuneNaissance
+          codeCogInseeDepartementNaissance
         ],
         required: %w[
           nomNaissance
@@ -26,7 +29,8 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with civility', api: :particulie
           jourDateNaissance
           sexeEtatCivil
           codeCogInseePaysNaissance
-        ]
+        ],
+        api: 'cnav'
       )
 
       let(:nomNaissance) { 'Dupont' }
@@ -36,6 +40,9 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with civility', api: :particulie
       let(:jourDateNaissance) { 1 }
       let(:codeCogInseePaysNaissance) { '99100' }
       let(:sexeEtatCivil) { 'M' }
+      let(:codeCogInseeCommuneNaissance) { nil }
+      let(:nomCommuneNaissance) { nil }
+      let(:codeCogInseeDepartementNaissance) { nil }
 
       unauthorized_request
 

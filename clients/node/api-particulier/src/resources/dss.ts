@@ -165,7 +165,7 @@ export class Dss {
   }
 
   /** [Identité] Composition du foyer RSA */
-  async foyer_rsa_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil: string; code_cog_insee_commune_naissance?: string; code_cog_insee_pays_naissance: string }) {
+  async foyer_rsa_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; nom_usage?: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil: string; code_cog_insee_pays_naissance: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -175,7 +175,7 @@ export class Dss {
           throw new Error(`version ${resolvedVersion} not available for /dss/foyer_rsa/identite; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance, 'sexeEtatCivil': options.sexe_etat_civil, 'codeCogInseeCommuneNaissance': options.code_cog_insee_commune_naissance, 'codeCogInseePaysNaissance': options.code_cog_insee_pays_naissance } });
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'nomUsage': options.nom_usage, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance, 'sexeEtatCivil': options.sexe_etat_civil, 'codeCogInseePaysNaissance': options.code_cog_insee_pays_naissance, 'codeCogInseeCommuneNaissance': options.code_cog_insee_commune_naissance, 'nomCommuneNaissance': options.nom_commune_naissance, 'codeCogInseeDepartementNaissance': options.code_cog_insee_departement_naissance } });
   }
 
   /** [FranceConnect] Participation familiale EAJE */
