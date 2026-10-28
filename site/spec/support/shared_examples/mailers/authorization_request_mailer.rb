@@ -46,6 +46,17 @@ RSpec.shared_examples 'an authorization request mailer' do
       end
     end
 
+    context 'when the editor of the form generates and copies the token from its space' do
+      before { create(:editor, name: 'Logiciel Mairie', copy_token: true, form_uids: [authorization_request.demarche]) }
+
+      let(:authorization_request) { create(:authorization_request, :with_all_contacts, demarche: 'logiciel-mairie') }
+
+      it 'says the editor generates the token, without asking the contacts for one' do
+        expect(mail.text_part.decoded).to include("L'éditeur Logiciel Mairie génère et récupère le jeton")
+        expect(mail.text_part.decoded).not_to include('créer votre jeton')
+      end
+    end
+
     context 'when the software editor of the form lets the client manage the token' do
       before { create(:editor, name: 'Logiciel Mairie', role: 'client_manages_token', form_uids: [authorization_request.demarche]) }
 

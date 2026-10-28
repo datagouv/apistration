@@ -37,13 +37,16 @@ module AuthorizationRequestMailersCommons
   end
 
   def assign_editors(authorization_request)
+    form_editors = Editor.for_demarche(authorization_request.demarche).to_a
+
     @delegated_editor = authorization_request.editor_delegations.active.map(&:editor).find(&:editor_tokens_enabled?)
-    @client_software_editor = Editor.for_demarche(authorization_request.demarche).find(&:client_manages_token?)
+    @token_generating_editor = form_editors.find(&:copy_token?) unless @delegated_editor
+    @client_software_editor = form_editors.find(&:client_manages_token?)
   end
 
   def subject_key
     return 'update_subject' if @update
-    return 'delegated_subject' if action_name == 'demande_validee' && @delegated_editor
+    return 'delegated_subject' if action_name == 'demande_validee' && (@delegated_editor || @token_generating_editor)
 
     'subject'
   end

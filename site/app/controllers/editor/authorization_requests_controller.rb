@@ -17,7 +17,7 @@ class Editor::AuthorizationRequestsController < EditorController
   def build_search_query
     current_editor
       .authorization_requests(api: namespace)
-      .includes(:active_token, :demandeur, :organization)
+      .includes(:latest_active_token, :demandeur, :organization)
       .where(status: 'validated')
       .ransack(params[:q])
   end
@@ -47,7 +47,7 @@ class Editor::AuthorizationRequestsController < EditorController
       authorization_request.external_id,
       datapass_v2_public_authorization_request_url(authorization_request),
       authorization_request.intitule,
-      authorization_request.token&.exp.present? ? Time.zone.at(authorization_request.token.exp).to_datetime : nil,
+      authorization_request.latest_active_token&.exp.present? ? Time.zone.at(authorization_request.latest_active_token.exp).to_datetime : nil,
       authorization_request.siret,
       authorization_request.demandeur&.email
     ]

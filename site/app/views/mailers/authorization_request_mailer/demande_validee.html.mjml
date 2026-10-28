@@ -14,6 +14,12 @@
           Elle est déléguée à l'éditeur <b><%= @delegated_editor.name %></b>, qui appelle l'API pour votre compte avec ses propres accès :
           vous n'avez rien d'autre à faire.
         </p>
+      <% elsif @token_generating_editor %>
+        <p>
+          Votre demande n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée.
+          L'éditeur <b><%= @token_generating_editor.name %></b> génère et récupère le jeton depuis son espace éditeur :
+          vous n'avez rien d'autre à faire.
+        </p>
       <% else %>
         <p>
           Votre demande n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée.
@@ -28,7 +34,7 @@
       <% end %>
     </mj-text>
     <mj-button href="<%= @authorization_request_url %>">
-      <%= @update || @delegated_editor ? 'Voir la demande' : 'Créer mon jeton' %>
+      <%= @update || @delegated_editor || @token_generating_editor ? 'Voir la demande' : 'Créer mon jeton' %>
     </mj-button>
     <mj-text>
       <p><b>L'équipe <%= api_full_name %></b></p>

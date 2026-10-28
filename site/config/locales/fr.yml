@@ -536,6 +536,16 @@ fr:
       button: "S'abonner"
 
   editor:
+    authorization_requests:
+      index:
+        generate_token: Générer un jeton
+    authorization_request_tokens:
+      create:
+        success:
+          title: "Jeton généré pour la demande « %{intitule} »"
+        error:
+          title: "Le jeton n'a pas pu être généré"
+          not_allowed: "Cette demande a déjà un jeton actif, ou votre espace ne permet pas de générer de jeton."
     tokens:
       index:
         title: Jetons éditeurs
