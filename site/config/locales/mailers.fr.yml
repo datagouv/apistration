@@ -36,18 +36,10 @@ fr:
         subject: 📬 Votre demande de mise à jour de votre accès à l'%{api_name} a bien été reçue par nos services.
 
     token_mailer:
-      expiration_notice_90J:
-        subject: 🔑 Prolongez votre jeton %{api_name}
-      expiration_notice_60J:
-        subject: 🔑 Prolongez votre jeton %{api_name}, il expire dans 2 mois
-      expiration_notice_30J:
-        subject: 🔑⚠️ Expiration dans 30 jours de votre accès %{api_name}
-      expiration_notice_15J:
-        subject: 🔑🚨 Expiration dans 15 jours de votre accès %{api_name}
-      expiration_notice_7J:
-        subject: 🔑🚨⚠️ Expiration dans 7 jours de votre accès %{api_name}
-      expiration_notice_0J:
-        subject: "🔒⚠️ Rupture de service : votre accès à l'%{api_name} a expiré."
+      expiration_notice:
+        subject_30: 🔑 Le jeton « %{name} » de la demande n°%{external_id} expire dans 30 jours
+        subject_7: 🔑⚠️ Le jeton « %{name} » de la demande n°%{external_id} expire dans 7 jours
+        subject_0: 🔒 Le jeton « %{name} » de la demande n°%{external_id} a expiré
       magic_link:
         subject: 🔑 Lien d'accès temporaire au jeton %{api_name}
         signature: L'équipe %{api_name}
