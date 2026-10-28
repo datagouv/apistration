@@ -23,6 +23,8 @@ module Datagouv
       }
     }.freeze
 
+    ACCESS_TYPE = 'restricted'.freeze
+
     BASE_TAGS = {
       'api_entreprise' => %w[api-entreprise administration administration-et-legislation],
       'api_particulier' => %w[api-particulier administration administration-et-legislation]
@@ -54,7 +56,7 @@ module Datagouv
 
     def base_payload
       {
-        access_type: access_type,
+        access_type: ACCESS_TYPE,
         base_api_url: config[:base_api_url],
         business_documentation_url: business_documentation_url,
         technical_documentation_url: technical_documentation_url,
@@ -72,14 +74,6 @@ module Datagouv
 
     def url_host
       @url_host ||= URI(config[:base_api_url]).host
-    end
-
-    def access_type
-      endpoint.opening == 'public' ? 'open' : 'restricted'
-    end
-
-    def restricted?
-      access_type == 'restricted'
     end
 
     def technical_documentation_url
@@ -106,7 +100,7 @@ module Datagouv
 
         ➡️ **Cette API fait partie du bouquet [API #{config[:display_name]}](#{config[:base_api_url]}/catalogue)** opéré par la direction interministérielle du numérique (DINUM). Ces données et l'API source proviennent de #{providers_name}.
 
-        - #{restricted? ? '🔐' : '✅'} **#{restricted? ? 'Uniquement accessible aux administrations et collectivités' : 'Accessible à tous'}**.
+        - 🔐 **Uniquement accessible aux administrations et collectivités**.
         - ☎️ **Modalité d'appel** : #{call_id_text}.
         - 📖 **[Documentation métier](#{business_documentation_url})**
         - 📟 **[Documentation technique (swagger)](#{technical_documentation_url})**
