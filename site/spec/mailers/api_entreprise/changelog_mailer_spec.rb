@@ -18,7 +18,7 @@ RSpec.describe APIEntreprise::ChangelogMailer do
     end
 
     it 'has the localized subject' do
-      expect(mail.subject).to eq(I18n.t('api_entreprise.changelog_mailer.weekly.subject'))
+      expect(mail.subject).to eq('📰 Les nouveautés API Entreprise de la semaine')
     end
 
     it 'renders the entries' do

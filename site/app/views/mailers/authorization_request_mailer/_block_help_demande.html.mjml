@@ -1,0 +1,36 @@
+<mj-section mj-class="section-block">
+  <mj-column>
+    <mj-text mj-class="block-beige">
+      <h3 style="margin-top: 10px">ℹ️ Des repères pour compléter votre demande</h3>
+      <p>
+        <i>Vous avez quelques doutes sur la façon de remplir votre demande d’habilitation ?</i>
+      </p>
+      <p>
+        <b>Voici une liste des contenus utiles à consulter :</b>
+      </p>
+      <p>
+        ☑️ Vérifier votre éligibilité, en consultant notre rubrique
+        <a target="_blank" href="<%= api_url(:faq_index) %>/#conditions-d-utilisation-de-l-api-<%= namespace %>">
+          Un accès sous habilitation et conditions
+        </a>.
+      </p>
+      <p>
+        ☑️ Consulter le déroulé des étapes d’une demande, détaillé dans la rubrique
+        <a target="_blank" href="<%= api_url(:faq_index) %>/#<%= api_specific(:faq_informations_anchor) %>">
+          “Demande d'habilitation - Quelles informations me seront demandées ?”
+        </a>
+      </p>
+      <p>
+        ☑️ Identifier les données dont vous avez besoin, en parcourant le 
+        <a target="_blank" href="<%= api_url(:endpoints) %>/">catalogue des API</a>.
+      </p>
+      <p>
+        ☑️ Se rattacher à un 
+        <a target="_blank" href="<%= api_url(:cas_usages) %>">
+          cas d’usage
+        </a> et utiliser son formulaire pré-rempli dans
+        votre demande d'habilitation.
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>
