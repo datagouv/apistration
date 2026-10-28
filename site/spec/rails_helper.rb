@@ -82,6 +82,7 @@ RSpec.configure do |config|
 
   # Include helpers / support accurately for each spec type
   config.include SpecsHelper
+  config.include JobRetriesHelpers, type: :job
   config.include FeatureHelper, type: :feature
   config.include ExternalUrlHelper, type: :feature
   config.include INSEESireneAPIMocks

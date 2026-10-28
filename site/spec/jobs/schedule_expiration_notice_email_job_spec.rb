@@ -24,8 +24,8 @@ RSpec.describe ScheduleExpirationNoticeEmailJob do
     context 'when expires_in has no template' do
       let(:expires_in) { 9001 }
 
-      it 'fails loudly' do
-        expect { subject }.to raise_error(NoMethodError, /expiration_notice_9001J/)
+      it 'fails loudly once its retries are exhausted' do
+        expect { perform_with_retries(described_class, token_id, expires_in) }.to raise_error(NoMethodError, /expiration_notice_9001J/)
       end
     end
 
