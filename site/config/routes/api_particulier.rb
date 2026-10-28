@@ -64,21 +64,14 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/compte/jetons/:id/revoquer', to: 'self_service_tokens#revocation', as: :token_revocation
     post '/compte/jetons/:id/revoquer', to: 'self_service_tokens#revoke', as: :token_revoke
 
-    get '/compte/jetons/:id/prolonger', to: 'tokens#prolong', as: :token_prolong
     get '/compte/jetons/:id/partager', to: 'transfer_tokens#new', as: :token_transfer
     get '/compte/jetons/:id', to: 'tokens#show', as: :token
-    get '/compte/jetons/:id/demande-prolongation', to: 'tokens#ask_for_prolongation', as: :token_ask_for_prolongation
+    get '/compte/jetons/:id/renew', to: 'tokens#legacy_prolongation'
+    get '/compte/jetons/:id/demande-prolongation', to: 'tokens#legacy_prolongation'
+    get '/compte/jetons/:token_id/demarche_prolongation(/*step)', to: 'tokens#legacy_prolongation'
     get '/compte/jetons/:id/stats', to: 'tokens#stats', as: :token_stats
     get '/compte/jetons/:id/stats/last_requests', to: 'tokens#last_requests', as: :token_last_requests
     get '/compte/jetons/:id/stats/:period', to: 'tokens#stats_period', as: :token_stats_period, constraints: { period: /last_10_minutes|last_30_hours|last_8_days/ }
-    get '/compte/jetons/:id/renew', to: 'tokens#renew', as: :token_renew
-
-
-    get '/compte/jetons/:token_id/demarche_prolongation/finished', to: 'prolong_token_wizard#finished', as: :token_prolong_finished
-    get '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#show', as: :token_prolong_build
-    get '/compte/jetons/:token_id/demarche_prolongation', to: 'prolong_token_wizard#start', as: :token_prolong_start
-    patch '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
-    put '/compte/jetons/:token_id/demarche_prolongation/:id', to: 'prolong_token_wizard#update'
 
     post '/compte/jetons/:id/partager', to: 'transfer_tokens#create', as: :token_create_magic_link
 

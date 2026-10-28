@@ -140,11 +140,6 @@ class AuthorizationRequest < ApplicationRecord
     end
   end
 
-  def prolong_token_expecting_updates?
-    token&.last_prolong_token_wizard.present? &&
-      token.last_prolong_token_wizard.requires_update?
-  end
-
   private
 
   def revoke_editor_delegations!

@@ -11,7 +11,6 @@ module DatapassWebhook
       ::DatapassWebhook::CreateEditorDelegation,
       ::DatapassWebhook::ArchivePreviousAuthorizationRequest,
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
-      ::DatapassWebhook::RefuseCurrentAuthorizationRequest,
       ::DatapassWebhook::RevokeCurrentToken,
       ::DatapassWebhook::UpdateMailjetContacts,
       ::DatapassWebhook::ScheduleAuthorizationRequestEmails

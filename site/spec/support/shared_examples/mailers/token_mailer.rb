@@ -31,12 +31,12 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
       end
 
       it 'has a link to datapass authorization_request copy' do
-        path = send(prolong_path_method, token_id: token.id)
+        path = send(prolong_path_method, id: authorization_request.id)
         expect(subject.html_part.decoded).to include(path)
       end
 
       it 'has a text part with the link to the prolongation' do
-        path = send(prolong_path_method, token_id: token.id)
+        path = send(prolong_path_method, id: authorization_request.id)
         expect(subject.text_part.decoded).to include(path)
       end
     end

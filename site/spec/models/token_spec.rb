@@ -246,4 +246,18 @@ RSpec.describe Token do
       end
     end
   end
+
+  describe 'destruction' do
+    let(:token) { create(:token) }
+
+    before do
+      ActiveRecord::Base.connection.execute(
+        "INSERT INTO prolong_token_wizards (token_id, status, created_at, updated_at) VALUES ('#{token.id}', 200, NOW(), NOW())"
+      )
+    end
+
+    it 'is not blocked by a prolongation wizard kept for history' do
+      expect { token.destroy! }.not_to raise_error
+    end
+  end
 end
