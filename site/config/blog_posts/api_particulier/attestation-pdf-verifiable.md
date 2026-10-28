@@ -16,7 +16,7 @@ Les gestionnaires d'établissements d'accueil du jeune enfant (EAJE) qui récup�
     <li><a class="fr-summary__link fr-text--md" href="#contenu-pdf">Contenu de l'attestation PDF</a></li>
     <li><a class="fr-summary__link fr-text--md" href="#sans-resultat">Attester une consultation sans résultat</a></li>
     <li><a class="fr-summary__link fr-text--md" href="#securite">Sécurité et données personnelles</a></li>
-    <li><a class="fr-summary__link fr-text--md" href="#pourquoi-qr-code">Choix de conception : pourquoi un QR code plutôt qu'une signature électronique ?</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#pourquoi-qr-code">Choix de conception : un QR code plutôt qu'une signature électronique</a></li>
    </ol>
   </li>
   <li>
@@ -34,11 +34,11 @@ Les gestionnaires d'établissements d'accueil du jeune enfant (EAJE) qui récup�
 
 ## <a name="contexte"></a>Contexte : pourquoi ajouter une attestation vérifiable ?
 
-Le montant de la prestation de service unique (PSU) versée par la CNAF à un EAJE dépend de la participation facturée aux familles, elle-même calculée selon un barème à partir de la base de ressources du foyer et du nombre d'enfants à charge. La CAF contrôle régulièrement que le tarif appliqué correspond bien à ce barème, y compris sur les exercices passés.
+Le montant de la prestation de service unique (PSU) versée par la CNAF à un EAJE dépend de la participation facturée aux familles, elle-même calculée selon un barème à partir de la base de ressources du foyer et du nombre d'enfants à charge. La caisse d'allocations familiales (CAF) contrôle régulièrement que le tarif appliqué correspond bien à ce barème, y compris sur les exercices passés.
 
 Jusqu'ici, pour calculer le tarif appliqué, les gestionnaires d'EAJE consultaient les données de la famille sur l'espace partenaire de la CAF. Puis, pour conserver un justificatif en cas de contrôle, ils faisaient une capture d'écran de cet espace, qu'ils imprimaient ou archivaient.
 
-Avec l'utilisation de [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>), les données arrivent directement dans le logiciel de gestion. Cela permet le calcul rapide, fiable et mis à jour du tarif appliqué. En revanche, il n'y avait plus la possibilité de faire une capture d'écran pour justifier d'un tarif passé. Il fallait donc un justificatif auquel le contrôleur puisse se fier **sans avoir accès au logiciel de la structure**, et qu'il puisse vérifier plusieurs années après son émission.
+Avec l'utilisation de [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>), les données arrivent directement dans le logiciel de gestion. Cela permet le calcul rapide, fiable et mis à jour du tarif appliqué. En revanche, il n'y a plus la possibilité de faire une capture d'écran pour justifier d'un tarif passé. Il faut donc un justificatif auquel le contrôleur CAF puisse se fier **sans avoir accès au logiciel de la structure** et qu'il puisse vérifier plusieurs années après son émission.
 
 <br/>
 
@@ -46,10 +46,10 @@ Avec l'utilisation de [l'API Participation familiale EAJE](<%= endpoint_path(uid
 
 ### <a name="en-bref"></a>Scénario d'usage
 
-1. Le logiciel de gestion appelle l'API en ajoutant l'en-tête `X-Generate-Proof: pdf`.
-2. La réponse contient les données habituelles, plus un **lien de vérification**, un **code de vérification** et un **lien de téléchargement de l'attestation PDF**.
-3. Le logiciel télécharge le PDF et l'archive dans le dossier de la famille.
-4. Lors d'un contrôle, l'agent scanne le QR code du PDF, arrive sur une page hébergée par `particulier.api.gouv.fr`, et compare le code et les données affichés avec ceux du document.
+1. Pour récupérer les informations nécessaires au calcul de la participation familiale, le logiciel de gestion de l'EAJE appelle [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) **en ajoutant l'en-tête `X-Generate-Proof: pdf`**.
+2. La réponse contient les données habituelles, ainsi qu'un **lien de vérification**, un **code de vérification** et un **lien de téléchargement de l'attestation PDF**.
+3. Le logiciel de gestion récupère les informations au format JSON pour calculer automatiquement la participation familiale de la famille. En parallèle, il télécharge l'attestation en PDF et l'archive dans le dossier de la famille.
+4. Lors d'un contrôle, l'EAJE présente l'attestation à l'agent de la CAF. Pour s'assurer de l'authenticité du document, l'agent scanne le QR code du PDF, arrive sur une page hébergée par `particulier.api.gouv.fr`, et compare le code et les données affichés avec ceux du document.
 
 {:.fr-mt-6w}
 ### <a name="contenu-pdf"></a>Contenu de l'attestation PDF
@@ -60,9 +60,12 @@ L'attestation reprend l'ensemble des données délivrées par l'API :
 - **Adresse** ;
 - **Paramètres de calcul de la participation familiale** : nombre d'enfants à charge, nombre d'enfants bénéficiaires de l'AEEH, base de ressources annuelles et année de calcul.
 
-Seules les sections couvertes par l'habilitation de la structure apparaissent : sans le scope adresse, par exemple, l'attestation ne contient pas de section adresse. Les champs vides sont omis.
+Seules les informations couvertes par l'habilitation de la structure apparaissent. Par exemple, si l'EAJE n'a pas obtenu les droits requis pour l'information « adresse », l'attestation ne contient pas l'adresse. Un champ que la caisse ne renseigne pas, comme un nom d'usage absent, n'apparaît pas non plus.
 
-L'en-tête indique la source des données : la caisse qui a répondu, CNAF ou MSA. Le pied de page porte le **QR code**, également cliquable, le **code de vérification** et, à titre de traçabilité, le **SIRET de la structure** pour le compte de laquelle l'attestation a été émise, avec son numéro d'habilitation. Les documents produits en environnement de test portent le bandeau « Données de test — document sans valeur », et leur source est « origine non communiquée », faute de caisse réelle.
+L'en-tête indique la source des données : la caisse qui a répondu, CNAF ou MSA. Le pied de page porte le **QR code**, également cliquable, le **code de vérification** et, à titre de traçabilité, le **SIRET de la structure** pour le compte de laquelle l'attestation a été émise, avec son numéro d'habilitation. Les documents produits en environnement de test, comme l'exemple présenté ci-dessous, portent le bandeau « Données de test — document sans valeur », et leur source est « origine non communiquée », faute de caisse réelle.
+
+{:.fr-highlight}
+**Évolution de l'attestation.** La **liste des champs prévus sur l'attestation est figée pour une version d'API donnée**. L'ajout, le retrait ou le renommage d'un champ sur l'attestation s'effectue uniquement via une montée de version de l'API. Deux attestations émises avec la même version ne peuvent pas présenter des champs différents. Seule la mise en page peut évoluer.
 
 <div class="fr-container--fluid">
  <div class="fr-grid-row fr-grid-row--gutters">
@@ -83,18 +86,17 @@ L'en-tête indique la source des données : la caisse qui a répondu, CNAF ou MS
  </p>
 </div>
 
-{:.fr-highlight}
-Le **jeu de champs de l'attestation est figé pour une version d'API donnée**. Ajouter, retirer ou renommer un champ passe par une nouvelle version de l'API : deux attestations émises avec la même version ne peuvent pas présenter des champs différents. Seule la mise en page peut évoluer.
-
 {:.fr-mt-6w}
 ### <a name="sans-resultat"></a>Attester une consultation sans résultat
 
-L'absence de résultat se justifie aussi : en cas de contrôle, la structure doit pouvoir montrer qu'elle a bien consulté la situation de la famille, même quand aucun dossier n'ouvre droit. Avec le même en-tête, les réponses `404` portent donc elles aussi une preuve :
+L'absence de résultat est aussi attestée : en cas de contrôle, la structure doit pouvoir montrer qu'elle a bien consulté la situation de la famille, même quand aucun dossier n'ouvre droit. Avec le même en-tête, les réponses `404` portent donc, elles aussi, une preuve :
 
 - une **attestation de consultation sans résultat**, quand l'allocataire n'est référencé auprès d'aucune caisse ou que son dossier est absent auprès de la CNAF ou de la MSA ;
-- une **attestation de consultation : dossier non éligible**, quand le dossier a été trouvé mais n'ouvre pas droit.
+- une **attestation de consultation : dossier non éligible**, quand le dossier a été trouvé mais n'ouvre pas de droit.
 
-Il n'y a pas de dossier à citer, seulement la question posée et la réponse obtenue : le document reprend l'erreur, l'organisme qui a répondu (RNCPS, CNAF ou MSA, ou « origine non communiquée » s'il est inconnu), la date et l'heure de l'appel, et l'identité de l'usager telle que le logiciel l'a transmise. La page de vérification n'en affiche qu'une version minimisée, comme pour un dossier trouvé.
+Le document indique le résultat de l'appel avec l'erreur renvoyée par l'API, l'organisme qui a répondu (RNCPS, CNAF ou MSA, ou « origine non communiquée » s'il est inconnu), la date et l'heure de l'appel, ainsi que l'identité de l'usager telle que le logiciel l'a transmise.
+
+Sur la page de vérification, l'identité de l'usager est partiellement masquée.
 
 Les autres erreurs (`400`, `422`, `502`…) ne portent pas de preuve : elles ne disent rien de la situation de la famille.
 
@@ -102,9 +104,6 @@ Les autres erreurs (`400`, `422`, `502`…) ne portent pas de preuve : elles ne 
  <div class="fr-grid-row fr-grid-row--gutters">
   <div class="fr-col-md-6 fr-col-12">
    <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-sans-resultat.png') %>" class="fr-responsive-img" alt="Attestation de consultation sans résultat de test : résultat de la consultation (erreur, détail, origine CNAF, date et heure de l'appel), identité transmise, QR code et code de vérification"/>
-  </div>
-  <div class="fr-col-md-6 fr-col-12">
-   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-sans-resultat.png') %>" class="fr-responsive-img" alt="Page de vérification de l'attestation sans résultat : code, SIRET, dates, résultat de la consultation et identité minimisée"/>
   </div>
  </div>
 </div>
@@ -138,7 +137,7 @@ La page de vérification ne dépose aucun cookie, ne charge aucun traceur, n'est
 - **Une page imitant la nôtre sur un autre domaine** peut afficher n'importe quoi : c'est pourquoi l'adresse de la page doit toujours être contrôlée.
 
 {:.fr-mt-6w}
-### <a name="pourquoi-qr-code"></a>Choix de conception : pourquoi un QR code plutôt qu'une signature électronique ?
+### <a name="pourquoi-qr-code"></a>Choix de conception : un QR code plutôt qu'une signature électronique
 
 Nous avons étudié plusieurs solutions avant de retenir celle-ci :
 
@@ -234,10 +233,13 @@ L'attestation reste vérifiable **5 ans** après son émission, pour couvrir les
 
 <div class="fr-container--fluid">
  <div class="fr-grid-row fr-grid-row--gutters">
-  <div class="fr-col-md-6 fr-col-12">
+  <div class="fr-col-md-4 fr-col-12">
    <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-valide.png') %>" class="fr-responsive-img" alt="Page de vérification d'une attestation valide : code de vérification, SIRET, dates, données minimisées des allocataires, nombre d'enfants et paramètres de calcul"/>
   </div>
-  <div class="fr-col-md-6 fr-col-12">
+  <div class="fr-col-md-4 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-sans-resultat.png') %>" class="fr-responsive-img" alt="Page de vérification de l'attestation sans résultat : code, SIRET, dates, résultat de la consultation et identité minimisée"/>
+  </div>
+  <div class="fr-col-md-4 fr-col-12">
    <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-invalide.png') %>" class="fr-responsive-img" alt="Page de vérification d'un lien altéré : message « Lien de vérification invalide ou expiré »"/>
   </div>
  </div>
