@@ -57,6 +57,14 @@ RSpec.describe JwtTokenService do
             expect(subject.scopes).to eq(['valid'])
           end
 
+          its(:token_allowed_ips) { is_expected.to eq([]) }
+
+          context 'when the token is restricted to some IPs' do
+            before { token.update!(allowed_ips: ['203.0.113.0/28', '198.51.100.12']) }
+
+            its(:token_allowed_ips) { is_expected.to eq(['203.0.113.0/28', '198.51.100.12/32']) }
+          end
+
           it 'takes expiration from db, not token' do
             expect(subject.exp).to eq(expiration_date)
           end
