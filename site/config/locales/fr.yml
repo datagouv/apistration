@@ -391,6 +391,8 @@ fr:
             revoked: ayant été revoquée
             archived: ayant été archivée
             submitted: ayant été soumise
+            changes_requested: faisant l'objet d'une demande de modifications
+            refused: ayant été refusée
         expiration_date: "Expire le : <strong>%{expiration_date}</strong>"
         status:
           color:
@@ -470,12 +472,16 @@ fr:
           archived: no-specific-color
           validated: green-emeraude
           submitted: yellow-canari
+          draft: yellow-canari
+          changes_requested: yellow-canari
         label:
           refused: 📃 Demande refusée
           revoked: 📃 Habilitation révoquée
           archived: 📃 Habilitation archivée
           validated: 📃 Habilitation active
           submitted: 🕐 Habilitation en cours d'instruction
+          draft: ✏️ Mise à jour de l'habilitation en cours
+          changes_requested: ✏️ Modifications demandées sur l'habilitation
       header:
         delivered_at: "Délivré le : %{humanized_date}"
       show:
