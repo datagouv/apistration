@@ -25,15 +25,6 @@ RSpec.shared_examples 'a datapass webhook organizer' do |api_name, mailjet_list_
     expect(subject.authorization_request.api).to eq(api_name)
   end
 
-  it 'creates token for API' do
-    expect {
-      subject
-    }.to change(Token, :count).by(1)
-
-    token = Token.find(subject.token_id)
-    expect(token.api).to eq(api_name)
-  end
-
   describe 'Mailjet adding contacts' do
     it "adds contacts to #{api_name.capitalize} mailjet list" do
       expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(

@@ -33,14 +33,6 @@ RSpec.describe DatapassWebhook::V2::APIParticulier, type: :interactor do
     }.not_to change(UserAuthorizationRequestRole.where(role: 'contact_metier'), :count)
   end
 
-  it 'creates token for API Particulier' do
-    subject
-
-    last_token = Token.last
-
-    expect(last_token.api).to eq('particulier')
-  end
-
   context 'when modalities does no include params' do
     before do
       datapass_webhook_params['data']['data']['modalities'] = ['formulaire_qf']
