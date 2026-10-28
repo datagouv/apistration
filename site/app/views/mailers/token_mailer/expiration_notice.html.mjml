@@ -1,0 +1,28 @@
+<%= render partial: "mailers/header" %>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <p>Bonjour,</p>
+      <% if @expired %>
+        <p>
+          Le jeton <b>« <%= @token.name %> »</b> de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>)
+          a expiré le <%= @expiration_date %> : les appels à l'<%= api_full_name %> avec ce jeton sont refusés.
+          Créez un nouveau jeton depuis la page de la demande.
+        </p>
+      <% else %>
+        <p>
+          Le jeton <b>« <%= @token.name %> »</b> de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>)
+          expire le <%= @expiration_date %>. Pour continuer d'appeler l'<%= api_full_name %>, prolongez-le depuis la page de la demande,
+          ou créez un nouveau jeton, mettez à jour votre logiciel, puis révoquez l'ancien.
+        </p>
+      <% end %>
+    </mj-text>
+    <mj-button href="<%= @authorization_request_url %>">
+      Voir les jetons de la demande
+    </mj-button>
+    <mj-text>
+      <p><b>L'équipe <%= api_full_name %></b></p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "mailers/footer" %>
