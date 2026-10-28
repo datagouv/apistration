@@ -16,7 +16,7 @@ RSpec.describe HyperpingAPI, type: :service do
             'Authorization' => "Bearer #{AdminApientreprise.credentials[:hyperping_api_key]}"
           }
         )
-        .to_return(status:, body: { monitors: [monitor_response] }.to_json, headers: {})
+        .to_return(status:, body: [monitor_response].to_json, headers: {})
     end
 
     let(:status) { 201 }
@@ -28,7 +28,7 @@ RSpec.describe HyperpingAPI, type: :service do
     end
 
     it 'returns an array' do
-      expect(subject).to eq({ 'monitors' => [monitor_response] })
+      expect(subject).to eq([monitor_response])
     end
 
     context 'when it is not a success status' do
