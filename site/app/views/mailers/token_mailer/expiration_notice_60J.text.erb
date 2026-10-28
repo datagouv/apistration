@@ -1,0 +1,12 @@
+Bonjour <%= @full_name %>,
+
+Votre jeton d'accès rattaché à l'habilitation <%= api_full_name %> "<%= @intitule %>" a été délivré il y a 16 mois. Chaque clé d'accès <%= api_full_name %> a une durée de vie de 18 mois, qui peut être prolongée facilement en effectuant une demande de prolongation.
+
+Ce jeton expire le <%= @expiration_date %>, votre accès à l'<%= api_full_name %> sera donc coupé à partir de cette date.
+
+Demandez la prolongation du jeton d'accès : <%= @prolong_token_url %>
+
+Tous les jetons <%= api_full_name %> ont une durée de vie de 18 mois, prolongeable de 18 mois en effectuant une demande de prolongation. Pour mieux comprendre les étapes, consultez la FAQ : <%= api_url(:faq_index) %>/#comment-prolonger-mon-jeton-arrivant-a-expiration
+
+À bientôt,
+L'équipe <%= api_full_name %>

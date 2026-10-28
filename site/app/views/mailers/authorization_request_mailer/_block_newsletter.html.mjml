@@ -1,0 +1,15 @@
+<mj-section mj-class="section-block">
+  <mj-column>
+    <mj-text mj-class="block-blue">
+      <p>
+        🔔
+        <b>
+          Pour connaître l'ensemble des lettres d'informations et notifications d'<%= api_full_name %>, vous pouvez consulter
+        </b>
+        <a target="_blank" href="<%= api_url(:newsletter) %>">
+          <b>cette rubrique.</b>
+        </a>
+      </p>
+    </mj-text>
+  </mj-column>
+</mj-section>

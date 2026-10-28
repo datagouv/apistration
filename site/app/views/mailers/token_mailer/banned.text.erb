@@ -1,0 +1,14 @@
+Bonjour,
+
+Votre token d'accès concernant la demande "<%= @intitule %>" a été banni par un administrateur. L'ancien token sera définitivement banni le <%= @blacklisted_at %>.
+<% if @token.present? -%>
+
+Un nouveau token a été automatiquement généré pour vous. Veuillez mettre à jour votre application avec le nouveau token dès que possible.
+<% end -%>
+<% if @comment.present? -%>
+
+Commentaire de l'administrateur :
+<%= @comment %>
+<% end -%>
+
+L'équipe <%= api_full_name %>

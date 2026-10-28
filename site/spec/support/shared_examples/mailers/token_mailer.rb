@@ -34,6 +34,11 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
         path = send(prolong_path_method, token_id: token.id)
         expect(subject.html_part.decoded).to include(path)
       end
+
+      it 'has a text part with the link to the prolongation' do
+        path = send(prolong_path_method, token_id: token.id)
+        expect(subject.text_part.decoded).to include(path)
+      end
     end
   end
 
@@ -41,7 +46,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
     subject(:mailer) { described_class.magic_link(magic_link, host) }
 
     let(:magic_link) { create(:magic_link, email:) }
-    let(:magic_link_url) { '' }
+    let(:magic_link_url) { token_show_magic_link_url(host:, access_token: magic_link.access_token) }
     let(:email) { 'muchemail@wow.com' }
 
     its(:subject) { is_expected.to eq("🔑 #{magic_link_subject}") }
@@ -50,6 +55,10 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
     it 'contains the magic link to the token' do
       expect(subject.html_part.decoded).to include(magic_link_url)
       expect(subject.text_part.decoded).to include(magic_link_url)
+    end
+
+    it 'has a text part without HTML' do
+      expect(subject.text_part.decoded).not_to include('<a ', '&nbsp;')
     end
   end
 
@@ -101,6 +110,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
       it 'includes the comment' do
         expect(subject.html_part.decoded).to include('Commentaire de l\'administrateur')
         expect(subject.html_part.decoded).to include('Token was compromised')
+        expect(subject.text_part.decoded).to include('Token was compromised')
       end
     end
 

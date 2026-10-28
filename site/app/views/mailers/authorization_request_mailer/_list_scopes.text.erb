@@ -1,0 +1,7 @@
+<% if @authorization_request_scopes -%>
+Cette habilitation donne accès aux API suivantes :
+<% @all_scopes.each do |scope_key, scope_label| -%>
+<% next unless @authorization_request_scopes.include?(scope_key) -%>
+- <%= scope_label %>
+<% end -%>
+<% end -%>

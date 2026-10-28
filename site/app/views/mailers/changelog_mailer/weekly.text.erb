@@ -1,0 +1,13 @@
+Bonjour,
+
+Voici le récapitulatif des nouveautés publiées la semaine dernière sur <%= api_full_name %> :
+<% @entries.each do |entry| -%>
+
+<%= entry.title %> (<%= l(entry.date, format: :long) %>)
+
+<%= changelog_entry_as_text(entry.description) %>
+<% end -%>
+
+Voir toutes les nouveautés : <%= api_url(:changelogs) %>
+
+Vous recevez cet email car vous êtes inscrit à la newsletter hebdomadaire des nouveautés d'<%= api_full_name %>. Se désinscrire : <%= api_url(:changelog_unsubscribe_token, token: @subscription.unsubscribe_token) %>
