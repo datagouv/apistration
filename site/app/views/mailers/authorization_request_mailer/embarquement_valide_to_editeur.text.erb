@@ -1,0 +1,14 @@
+<%= render partial: "greetings", locals: { entity: "demandeur" } -%>
+
+Votre demande d'habilitation n°<%= @authorization_request.external_id %> a bien été validée par notre service juridique !
+
+Attention, vous êtes désormais connecté à l'<%= api_full_name %> en tant que prestataire d'une organisation publique habilitée à utiliser les données. Vous ne devez en aucun cas être destinataire des données issues de l'<%= api_full_name %>. Si votre logiciel éditeur s'adresse aussi à des utilisateurs non éligibles, tels que des acteurs privés, vous devez vous assurer que les données de l'<%= api_full_name %> seront accessibles uniquement à des utilisateurs habilités.
+
+Commencez dès maintenant à intégrer l'<%= api_full_name %> en récupérant votre jeton d'accès.
+
+<%= render partial: "button_login" -%>
+
+Vous avez besoin de transmettre le jeton dans le cadre de l'intégration ? Une fois connecté, utilisez le bouton « Transmettre le jeton à mon équipe technique ». Ce jeton ne doit jamais être relayé autrement que par cette fonctionnalité.
+
+<%= render partial: "list_scopes" %>
+<%= render partial: "signature" %>

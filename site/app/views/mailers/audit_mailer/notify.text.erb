@@ -1,0 +1,22 @@
+Bonjour,
+
+Dans le cadre du dispositif automatisé de contrôle d'usage d'<%= api_full_name %>, nous avons détecté des appels non conformes associés à votre habilitation DataPass n°<%= @authorization_request.external_id %> "<%= @authorization_request.intitule %>" (<%= datapass_authorization_request_url(@authorization_request) %>) appartenant à l'organisation <%= @authorization_request.organization.denomination %> (numéro SIRET <%= @authorization_request.organization.siret %>).
+
+Vous recevez cet e-mail parce que vous figurez comme contact déclaratif (demandeur, contact technique ou contact métier) dans cette habilitation.
+
+Détail de l'anomalie détectée :
+<%= @audit_notification.reason %>
+
+Détails des 10 derniers appels non conformes détectés :
+<% @logs.each do |log| -%>
+- ID de requête : <%= log.request_id %>, chemin d'accès : <%= log.path %>, date et heure : <%= log.timestamp.strftime("%d/%m/%Y à %H:%M:%S") %>
+<% end -%>
+<% if @audit_notification.approximate_volume -%>
+
+Le volume approximatif détecté est de <%= @audit_notification.approximate_volume.round(-1) %> appels.
+<% end -%>
+
+Si vous pensez que cette détection est erronée ou rencontrez des difficultés pour corriger le problème, répondez directement à cet e-mail ; l'équipe d'<%= api_full_name %> reviendra vers vous. Pour rappel, veuillez ne jamais partager vos identifiants de connexion ou vos clés d'API par e-mail.
+
+Cordialement,
+L'équipe <%= api_full_name %>

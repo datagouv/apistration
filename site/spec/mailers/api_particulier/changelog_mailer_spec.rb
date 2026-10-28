@@ -27,6 +27,7 @@ RSpec.describe APIParticulier::ChangelogMailer do
 
     it 'includes the unsubscribe token link' do
       expect(mail.html_part.body.decoded).to include(subscription.unsubscribe_token)
+      expect(mail.text_part.body.decoded).to include(subscription.unsubscribe_token)
     end
   end
 end

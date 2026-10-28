@@ -1,0 +1,12 @@
+<%= render partial: "greetings", locals: { entity: "demandeur" } -%>
+
+Votre demande d'habilitation n°<%= @authorization_request.external_id %> a bien été validée par notre service juridique !
+
+Votre équipe technique peut commencer à intégrer l'<%= api_full_name %> :
+- le contact technique indiqué dans votre habilitation a accès au compte <%= api_full_name %>, il peut récupérer le jeton en toute autonomie ;
+- vous avez également accès à cet espace, avec la possibilité de transmettre votre jeton si cela est nécessaire pour l'intégration, via le bouton « Transmettre le jeton à mon équipe technique ». Ce jeton ne doit jamais être relayé autrement que par cette fonctionnalité.
+
+<%= render partial: "button_login" -%>
+
+<%= render partial: "list_scopes" %>
+<%= render partial: "signature" %>

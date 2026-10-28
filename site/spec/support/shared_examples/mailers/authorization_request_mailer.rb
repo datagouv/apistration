@@ -20,6 +20,10 @@ RSpec.shared_examples 'an authorization request mailer' do |options = {}|
       it 'display authorization_request external id' do
         expect(subject.html_part.decoded).to include(authorization_request.external_id)
       end
+
+      it 'has a text part mentioning the authorization_request external id' do
+        expect(subject.text_part.decoded).to include(authorization_request.external_id)
+      end
     end
   end
 

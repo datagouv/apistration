@@ -1,0 +1,7 @@
+<%= render partial: "greetings", locals: { entity: "demandeur" } -%>
+
+Votre demande d'habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a bien été enregistrée. Notre service juridique va en prendre connaissance dans les meilleurs délais.
+
+Vous pouvez continuer à consulter et modifier votre demande à tout moment : <%= @authorization_request_datapass_url %>
+
+<%= render partial: "signature" %>
