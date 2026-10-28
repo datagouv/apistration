@@ -32,6 +32,23 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
 
       expect(response).not_to have_http_status(:forbidden)
     end
+
+    it 'logs no recipient that is not a SIRET, whatever the caller sends' do
+      allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+      get url, params: { recipient: { token: 'secret' } }, headers: headers_params
+
+      expect(LogStasher).to have_received(:build_logstash_event).with(hash_including(ip_restricted: false), anything)
+      expect(LogStasher).not_to have_received(:build_logstash_event).with(hash_including(:recipient), anything)
+    end
+
+    it 'logs the call as made with a token without IP restriction' do
+      allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+      get url, headers: headers_params
+
+      expect(LogStasher).to have_received(:build_logstash_event).with(hash_including(ip_restricted: false), anything)
+    end
   end
 
   context 'with IP whitelist configured' do
@@ -48,6 +65,14 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
 
         expect(response).not_to have_http_status(:forbidden)
       end
+
+      it 'logs the call as made with an IP restricted token' do
+        allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+        get url, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.50' }
+
+        expect(LogStasher).to have_received(:build_logstash_event).with(hash_including(ip_restricted: true), anything)
+      end
     end
 
     context 'when request comes from non-whitelisted IP' do
@@ -57,6 +82,19 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
         get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip }
 
         expect(response).to have_http_status(:forbidden)
+      end
+
+      it 'emits a request blocked outside the allowed IPs, naming the token' do
+        expect { get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip } }.to emit_security_event('api.request.blocked').with(
+          target: { type: 'token', id: token_record.id },
+          details: hash_including(
+            reason: 'ip_not_allowed',
+            jti: token_record.id,
+            credential_type: 'token',
+            authorization_request_id: authorization_request.id,
+            ip: non_whitelisted_ip
+          )
+        )
       end
 
       it 'returns error code 00107' do

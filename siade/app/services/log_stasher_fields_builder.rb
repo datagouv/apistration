@@ -13,6 +13,8 @@ class LogStasherFieldsBuilder
     uptime
   ].freeze
 
+  SIRET_FORMAT = /\A\d{14}\z/
+
   delegate :bearer_token_from_headers,
     :request,
     :cached_retriever,
@@ -26,6 +28,8 @@ class LogStasherFieldsBuilder
   end
 
   def perform
+    add_credential_fields
+
     if mcp?
       handle_mcp
     else
@@ -69,6 +73,25 @@ class LogStasherFieldsBuilder
 
   def add_should_be_stored_in_database_flag
     fields[:should_be_stored_in_database] = should_be_stored_in_database?
+  end
+
+  def add_credential_fields
+    fields.merge!({ recipient:, **credential_fields }.compact)
+  end
+
+  def recipient
+    params[:recipient] if params[:recipient].to_s.match?(SIRET_FORMAT)
+  end
+
+  def credential_fields
+    user = request.env[UserResolutionMiddleware::USER_ENV_KEY]
+    return {} if user.nil?
+
+    {
+      editor_id: user.editor_id,
+      delegation_id: request.env[UserResolutionMiddleware::DELEGATION_ENV_KEY]&.id,
+      ip_restricted: user.ip_restricted?
+    }
   end
 
   def should_be_stored_in_database?
