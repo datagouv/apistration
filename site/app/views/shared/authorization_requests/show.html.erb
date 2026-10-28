@@ -8,10 +8,8 @@
         <%= render partial: 'shared/authorization_requests/header', locals: { authorization_request: @authorization_request } %>
 
         <div class="fr-mt-3w">
-          <%= link_to datapass_authorization_request_url(@authorization_request),
-            class: %w(fr-btn fr-btn--lg fr-icon-external-link-line fr-btn--icon-right),
-            target: '_blank',
-            rel: 'noopener' do %>
+          <%= external_link_to datapass_authorization_request_url(@authorization_request),
+            class: %w(fr-btn fr-btn--lg fr-icon-external-link-line fr-btn--icon-right) do %>
             <%= t('.datapass_cta', external_id: @authorization_request.external_id) %>
           <% end %>
         </div>
