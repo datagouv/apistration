@@ -488,6 +488,7 @@ fr:
             display_cta: Relancer le demandeur pour prolonger le jeton
         main_token:
           title: "Jeton principal&nbsp;:"
+          none: Aucun jeton n'est associé à cette habilitation.
         other_tokens:
           title: Voir les autres jetons
           table:

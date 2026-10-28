@@ -41,6 +41,13 @@
               </div>
                <ul class="fr-btns-group--right fr-btns-group--inline-sm fr-btns-group--inline-reverse fr-btns-group--icon-right">
               <li>
+                <% if @main_token.nil? %>
+                <%= external_link_to t('.modal.renew.display_cta'),
+                  datapass_reopen_authorization_request_url(@authorization_request),
+                  id: 'renew-authorization-request-link',
+                  class: %w(fr-link fr-icon-external-link-line fr-btn--icon-right)
+                %>
+                <% else %>
                 <a
                   href="<%= token_renew_path(id: @main_token.id) %>"
                   id="renew-token-modal-link"
@@ -51,6 +58,7 @@
                 >
                   <%= t('.modal.renew.display_cta') %>
                 </a>
+                <% end %>
               </li>
             </ul>
             </div>
@@ -61,6 +69,11 @@
           <h2 class="fr-h3 fr-mb-n-1v">
             <%= t('.main_token.title').html_safe %>
           </h2>
+          <% if @main_token.nil? %>
+            <p id="habilitation_no_token" class="fr-mt-4v">
+              <%= t('.main_token.none') %>
+            </p>
+          <% else %>
           <div>
             <%= render partial: 'shared/tokens/detail',
               locals: {
@@ -111,8 +124,10 @@
               <% end %>
             </ul>
           </div>
+          <% end %>
         </section>
 
+        <% if @main_token %>
         <section id="habilitation_other_tokens_infos" class="fr-accordion fr-mb-8v">
           <h2 class="fr-h5 fr-accordion__title">
             <button id="other_tokens_accordion_button" class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-106">
@@ -150,6 +165,7 @@
             </table>
           </div>
         </section>
+        <% end %>
 
         <section id="habilitation_contacts_infos" class="fr-pb-8v">
           <h2 class="fr-h3 fr-mb-n-1v">
