@@ -30,8 +30,9 @@ module AllowedIpsField
   def allowed_ips_within_envelope
     return if errors[:allowed_ips].present?
 
+    return if allowed_ips_envelope.blank?
+
     ranges = allowed_ips_envelope_ranges
-    return if ranges.empty?
 
     allowed_ips.reject { |ip| ranges.any? { |range| range.include?(ip) } }
       .each { |ip| errors.add(:allowed_ips, allowed_ips_envelope_error, entry: ip.cidr) }
