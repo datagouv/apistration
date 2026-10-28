@@ -4,7 +4,7 @@ params:
   nomNaissance: 'Lefebvre'
   prenoms:
     - claire
-  anneeDateNaissance: 2008
+  anneeDateNaissance: 1980
   moisDateNaissance: 1
   jourDateNaissance: 1
   sexeEtatCivil: 'M'

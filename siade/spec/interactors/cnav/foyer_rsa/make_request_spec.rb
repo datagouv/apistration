@@ -6,7 +6,7 @@ RSpec.describe CNAV::FoyerRSA::MakeRequest, type: :make_request do
       {
         nom_naissance: 'Dupont',
         prenoms: %w[jean charlie],
-        annee_date_naissance: 2008,
+        annee_date_naissance: 1980,
         mois_date_naissance: 1,
         jour_date_naissance: 1,
         code_cog_insee_pays_naissance: '99100',
