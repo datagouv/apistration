@@ -10,6 +10,8 @@ fr:
       embarquement_demande_refusee:
         subject: 🚫 Votre demande d'accès est refusée.
         update_subject: 🚫 Votre demande de mise à jour est refusée.
+      jeton_disponible:
+        subject: "✅ Demande validée : votre jeton %{api_name} est disponible"
       demande_validee:
         subject: "✅ Demande validée : créez votre jeton %{api_name}"
         delegated_subject: ✅ Demande validée
