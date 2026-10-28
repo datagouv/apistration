@@ -331,13 +331,6 @@ fr:
           internal_error: Erreur interne d'API Entreprise
           provider_error: Erreur du fournisseur de données
           other: Autre
-      cannot_show:
-        title: Utiliser le jeton
-        description_html: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
-          Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette demande :"
-        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
-        contact_technique_html: "<strong>Contact technique</strong> : %{contact_technique}"
-        authorization_request_link: "<strong>Lien de la demande à transmettre :</strong>"
       ask_for_prolongation:
         title: Relancer le demandeur
         description_html: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
