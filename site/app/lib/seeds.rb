@@ -43,10 +43,8 @@ class Seeds
   def create_data_for_api_entreprise
     @scopes_entreprise = create_scopes('entreprise')
 
-    token = create_api_entreprise_token_valid
-
-    another_token = token.dup
-    another_token.save!
+    create_api_entreprise_token_valid
+    create_api_entreprise_recette_token
 
     create_api_entreprise_token_blacklisted
     create_api_entreprise_token_expired
@@ -191,7 +189,7 @@ class Seeds
     create_token(
       %w[open_data unites_legales_etablissements_insee attestation_sociale_urssaf attestation_fiscale_dgfip],
       'entreprise',
-      token_params: { id: '00000000-0000-0000-0000-000000000000' },
+      token_params: { id: '00000000-0000-0000-0000-000000000000', name: 'Production', creator: @user },
       demandeur: @user,
       contact_technique: @contact,
       contact_metier: @contact_metier,
@@ -205,6 +203,20 @@ class Seeds
         demarche: 'api-entreprise-mgdis',
         siret: '12000101100010'
       }
+    )
+  end
+
+  def create_api_entreprise_recette_token
+    authorization_request = AuthorizationRequest.find_by!(external_id: 102)
+
+    authorization_request.tokens.create!(
+      Token.default_create_params.merge(
+        name: 'Recette',
+        creator: @contact,
+        exp: 20.days.from_now.to_i,
+        scopes: authorization_request.scopes,
+        allowed_ips: ['203.0.113.0/28']
+      )
     )
   end
 
