@@ -41,7 +41,13 @@
                   <code class="fr-text--sm"><%= delegation.id %></code>
                 </td>
                 <td>
-                  <%= external_link_to "DataPass ##{ar.external_id}", datapass_v2_public_authorization_request_url(ar) %>
+                  <% if ar.public_id.present? %>
+                    <%= external_link_to "DataPass ##{ar.external_id}", datapass_v2_public_authorization_request_url(ar) %>
+                  <% elsif ar.external_id.present? %>
+                    <%= "DataPass ##{ar.external_id}" %>
+                  <% else %>
+                    <%= t('shared.links.not_on_datapass_yet') %>
+                  <% end %>
                 </td>
                 <td><%= ar.intitule %></td>
                 <td>

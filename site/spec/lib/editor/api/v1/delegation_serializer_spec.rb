@@ -32,6 +32,13 @@ RSpec.describe Editor::API::V1::DelegationSerializer do
       expect(described_class.new(delegation).as_json).to include(statut: 'revoked')
     end
 
+    it 'returns a null authorization_request_id while the AR is a draft not yet filed on DataPass' do
+      ar_without_datapass = create(:authorization_request, :without_external_id, status: 'draft', api: 'entreprise')
+      delegation = create(:editor_delegation, authorization_request: ar_without_datapass)
+
+      expect(described_class.new(delegation).as_json).to include(authorization_request_id: nil)
+    end
+
     it 'returns an empty array when the AR has no scopes' do
       ar_without_scopes = create(:authorization_request, :validated,
         api: 'entreprise', external_id: '5000', scopes: [])

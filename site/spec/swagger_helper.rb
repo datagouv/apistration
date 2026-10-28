@@ -41,7 +41,8 @@ RSpec.configure do |config|
               },
               authorization_request_id: {
                 type: :integer,
-                description: 'Identifiant DataPass de la demande d’habilitation associée.',
+                nullable: true,
+                description: 'Identifiant DataPass de la demande d’habilitation associée. `null` tant que la demande n’a pas encore été déposée sur DataPass : `siret` et `id` suffisent alors à l’intégration.',
                 example: 1234
               },
               siret: {

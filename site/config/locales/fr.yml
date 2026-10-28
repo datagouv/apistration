@@ -160,6 +160,7 @@ fr:
           description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
     links:
       to_datapass_html: "N<sup>o</sup>%{external_id}"
+      not_on_datapass_yet: pas encore sur DataPass
     transfer_tokens:
       create:
         success:

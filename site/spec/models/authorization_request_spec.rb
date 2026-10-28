@@ -5,6 +5,44 @@ RSpec.describe AuthorizationRequest do
     expect(build(:authorization_request)).to be_valid
   end
 
+  describe 'DataPass id' do
+    it 'may be missing while the request is a draft' do
+      expect(build(:authorization_request, :without_external_id, status: 'draft')).to be_valid
+    end
+
+    %w[submitted changes_requested validated refused revoked archived].each do |status|
+      it "is required once the request is #{status}" do
+        expect(build(:authorization_request, :without_external_id, status:)).not_to be_valid
+      end
+    end
+
+    it 'is required when the request has no status' do
+      expect(build(:authorization_request, :without_external_id, status: nil)).not_to be_valid
+    end
+
+    it 'cannot be blank outside draft' do
+      expect(build(:authorization_request, external_id: ' ', status: 'validated')).not_to be_valid
+    end
+
+    it 'is required by the database outside draft' do
+      authorization_request = create(:authorization_request, status: 'validated')
+
+      expect { authorization_request.update_column(:external_id, nil) }.to raise_error(ActiveRecord::StatementInvalid, /external_id_required_outside_draft/)
+    end
+
+    it 'cannot be blank in the database outside draft' do
+      authorization_request = create(:authorization_request, status: 'validated')
+
+      expect { authorization_request.update_column(:external_id, ' ') }.to raise_error(ActiveRecord::StatementInvalid, /external_id_required_outside_draft/)
+    end
+
+    it 'is required by the database when the request has no status' do
+      authorization_request = create(:authorization_request, status: 'validated')
+
+      expect { authorization_request.update_columns(status: nil, external_id: nil) }.to raise_error(ActiveRecord::StatementInvalid, /external_id_required_outside_draft/)
+    end
+  end
+
   describe 'destroy' do
     subject(:destroy) { authorization_request.destroy }
 

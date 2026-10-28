@@ -142,6 +142,18 @@ RSpec.describe 'Editor::API::V1::Delegations' do
         )
       end
 
+      it 'still answers when one delegation targets a draft not yet filed on DataPass' do
+        create(:editor_delegation, editor:,
+          authorization_request: create(:authorization_request, :without_external_id, status: 'draft', api: 'entreprise'))
+
+        get endpoint, headers: headers
+
+        expect(response).to have_http_status(:ok)
+        entries = response.parsed_body.fetch('data')
+        expect(entries.size).to eq(4)
+        expect(entries.pluck('authorization_request_id')).to include(nil, 1001)
+      end
+
       it 'does not leak delegations from other editors' do
         get endpoint, headers: headers
 

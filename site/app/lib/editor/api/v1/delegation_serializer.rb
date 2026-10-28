@@ -7,7 +7,7 @@ class Editor::API::V1::DelegationSerializer
   def as_json
     {
       id: @delegation.id,
-      authorization_request_id: Integer(@authorization_request.external_id),
+      authorization_request_id: @authorization_request.external_id&.to_i,
       siret: @authorization_request.siret,
       intitule: @authorization_request.intitule,
       scopes: @authorization_request.scopes,

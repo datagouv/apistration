@@ -38,6 +38,7 @@ FactoryBot.define do
   factory :datapass_webhook_pass_model, class: Hash do
     initialize_with { attributes.stringify_keys }
 
+    sequence(:id) { |n| 9000 + n }
     intitule { 'intitule from webhook' }
     description { 'description from webhook' }
     demarche { nil }
