@@ -181,6 +181,10 @@ fiche:
 
           C'est une exigence documentaire, pas technique : l'attestation est une pièce justificative, deux documents portant la même version d'API ne peuvent pas présenter des jeux de champs différents — ni pour vous, ni pour la CNAF, ni pour l'agent qui contrôle le document.
 
+          Pour une présentation complète du dispositif (fonctionnement, vérification, sécurité, exemple d'attestation), consultez la publication suivante :
+          {:.fr-icon-arrow-right-line .fr-link--icon-right}
+          [✒️ **Participation familiale EAJE : une attestation PDF vérifiable pour les contrôles CAF** - Lire la publication du 27/10/2026](https://particulier.api.gouv.fr/blog/attestation-pdf-verifiable){:target="_blank"}
+
       - q: <a name="origine-erreur-404"></a> Comment savoir quel organisme a répondu en cas de 404 ?
         a: |+
           Chaque erreur `404` _(allocataire non référencé, dossier allocataire absent, allocataire non éligible)_ indique dans `meta.origin` l'organisme qui a répondu : `RNCPS` quand l'allocataire n'est référencé auprès d'aucune caisse éligible, `CNAF` ou `MSA` selon la caisse de rattachement de l'allocataire. Pour un allocataire non éligible, `meta.origin` est absent quand la passerelle de la CNAV ne nomme pas la caisse qui a répondu.
@@ -192,6 +196,6 @@ fiche:
 
       Avec l'en-tête `X-Generate-Proof`, les réponses `404` portent elles aussi une preuve d'attestation : attestation de consultation sans résultat, ou dossier non éligible. Les erreurs `404` précisent désormais dans `meta.origin` l'organisme qui a répondu (RNCPS, CNAF ou MSA) : [en savoir plus](#origine-erreur-404). La source de l'attestation d'un dossier trouvé est désormais la caisse qui a répondu (CNAF ou MSA) et non plus toujours la CNAF. [En savoir plus](#attestation-pdf-verifiable).
 
-      **29/07/2026 — Preuve d'attestation vérifiable**
+      **11/09/2026 — Preuve d'attestation vérifiable**
 
       Ajout de l'en-tête `X-Generate-Proof` sur `/v3/dss/participation_familiale_eaje/identite` : lien et code de vérification dans `meta`, lien de téléchargement de l'attestation PDF dans `links`. [En savoir plus](#attestation-pdf-verifiable).

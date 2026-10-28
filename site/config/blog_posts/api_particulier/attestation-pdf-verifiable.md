@@ -1,0 +1,296 @@
+Mardi 27 octobre 2026 - Publication
+
+# Participation familiale EAJE : une attestation PDF vérifiable pour les contrôles CAF
+
+{:.fr-text--lead}
+Les gestionnaires d'établissements d'accueil du jeune enfant (EAJE) qui récupèrent les données de participation familiale via API Particulier peuvent désormais obtenir, dans le même appel, **une attestation PDF vérifiable**. Elle remplace la capture d'écran qu'ils faisaient de l'espace partenaire CAF et peut être contrôlée en quelques secondes par n'importe quel agent, avec un simple navigateur.
+
+<nav class="fr-summary" role="navigation" aria-labelledby="fr-summary-title">
+ <p class="fr-summary__title" id="fr-summary-title">Sommaire</p>
+ <ol class="fr-summary__list">
+  <li><a class="fr-summary__link fr-text--lg" href="#contexte">Contexte : pourquoi ajouter une attestation vérifiable ?</a></li>
+  <li>
+   <a class="fr-summary__link fr-text--lg" href="#solution">Solution proposée</a>
+   <ol>
+    <li><a class="fr-summary__link fr-text--md" href="#en-bref">Scénario d'usage</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#contenu-pdf">Contenu de l'attestation PDF</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#sans-resultat">Attester une consultation sans résultat</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#securite">Sécurité et données personnelles</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#pourquoi-qr-code">Choix de conception : un QR code plutôt qu'une signature électronique</a></li>
+   </ol>
+  </li>
+  <li>
+   <a class="fr-summary__link fr-text--lg" href="#utiliser">Utiliser la solution</a>
+   <ol>
+    <li><a class="fr-summary__link fr-text--md" href="#demander-une-attestation">Appel API avec l'en-tête X-Generate-Proof</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#verifier">Procédure de vérification d'une attestation</a></li>
+    <li><a class="fr-summary__link fr-text--md" href="#tester">Environnement de test</a></li>
+   </ol>
+  </li>
+ </ol>
+</nav>
+
+<br/>
+
+## <a name="contexte"></a>Contexte : pourquoi ajouter une attestation vérifiable ?
+
+Le montant de la prestation de service unique (PSU) versée par la CNAF à un EAJE dépend de la participation facturée aux familles, elle-même calculée selon un barème à partir de la base de ressources du foyer et du nombre d'enfants à charge. La caisse d'allocations familiales (CAF) contrôle régulièrement que le tarif appliqué correspond bien à ce barème, y compris sur les exercices passés.
+
+Jusqu'ici, pour calculer le tarif appliqué, les gestionnaires d'EAJE consultaient les données de la famille sur l'espace partenaire de la CAF. Puis, pour conserver un justificatif en cas de contrôle, ils faisaient une capture d'écran de cet espace, qu'ils imprimaient ou archivaient.
+
+Avec l'utilisation de [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>), les données arrivent directement dans le logiciel de gestion. Cela permet le calcul rapide, fiable et mis à jour du tarif appliqué. En revanche, il n'y a plus la possibilité de faire une capture d'écran pour justifier d'un tarif passé. Il faut donc un justificatif auquel le contrôleur CAF puisse se fier **sans avoir accès au logiciel de la structure** et qu'il puisse vérifier plusieurs années après son émission.
+
+<br/>
+
+## <a name="solution"></a>Solution proposée
+
+### <a name="en-bref"></a>Scénario d'usage
+
+1. Pour récupérer les informations nécessaires au calcul de la participation familiale, le logiciel de gestion de l'EAJE appelle [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) **en ajoutant l'en-tête `X-Generate-Proof: pdf`**.
+2. La réponse contient les données habituelles, ainsi qu'un **lien de vérification**, un **code de vérification** et un **lien de téléchargement de l'attestation PDF**.
+3. Le logiciel de gestion récupère les informations au format JSON pour calculer automatiquement la participation familiale de la famille. En parallèle, il télécharge l'attestation en PDF et l'archive dans le dossier de la famille.
+4. Lors d'un contrôle, l'EAJE présente l'attestation à l'agent de la CAF. Pour s'assurer de l'authenticité du document, l'agent scanne le QR code du PDF, arrive sur une page hébergée par `particulier.api.gouv.fr`, et compare le code et les données affichés avec ceux du document.
+
+{:.fr-mt-6w}
+### <a name="contenu-pdf"></a>Contenu de l'attestation PDF
+
+L'attestation reprend l'ensemble des données délivrées par l'API :
+
+- **Allocataires** et **enfants** : nom de naissance, nom d'usage, prénoms, date de naissance, sexe, code INSEE de la commune de naissance ;
+- **Adresse** ;
+- **Paramètres de calcul de la participation familiale** : nombre d'enfants à charge, nombre d'enfants bénéficiaires de l'AEEH, base de ressources annuelles et année de calcul.
+
+Seules les informations couvertes par l'habilitation de la structure apparaissent. Par exemple, si l'EAJE n'a pas obtenu les droits requis pour l'information « adresse », l'attestation ne contient pas l'adresse. Un champ que la caisse ne renseigne pas, comme un nom d'usage absent, n'apparaît pas non plus.
+
+L'en-tête indique la source des données : la caisse qui a répondu, CNAF ou MSA. Le pied de page porte le **QR code**, également cliquable, le **code de vérification** et, à titre de traçabilité, le **SIRET de la structure** pour le compte de laquelle l'attestation a été émise, avec son numéro d'habilitation. Les documents produits en environnement de test, comme l'exemple présenté ci-dessous, portent le bandeau « Données de test — document sans valeur », et leur source est « origine non communiquée », faute de caisse réelle.
+
+{:.fr-highlight}
+**Évolution de l'attestation.** La **liste des champs prévus sur l'attestation est figée pour une version d'API donnée**. L'ajout, le retrait ou le renommage d'un champ sur l'attestation s'effectue uniquement via une montée de version de l'API. Deux attestations émises avec la même version ne peuvent pas présenter des champs différents. Seule la mise en page peut évoluer.
+
+<div class="fr-container--fluid">
+ <div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-md-6 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-page-1.png') %>" class="fr-responsive-img" alt="Première page d'une attestation de test : en-tête République française, titre, code de vérification, sections allocataires, enfants et adresse"/>
+  </div>
+  <div class="fr-col-md-6 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-page-2.png') %>" class="fr-responsive-img" alt="Seconde page de l'attestation de test : paramètres de calcul, puis QR code, code de vérification et SIRET du demandeur en pied de page"/>
+  </div>
+ </div>
+</div>
+
+<div class="fr-download fr-mt-4w fr-mb-1v fr-ml-2w">
+ <p>
+  <a href="/files/exemple-cnaf-attestation-participation-familiale-eaje.pdf" download class="fr-download__link">Télécharger l'attestation d'exemple (données de test)
+   <span class="fr-download__detail">PDF – 17 ko</span>
+  </a>
+ </p>
+</div>
+
+{:.fr-mt-6w}
+### <a name="sans-resultat"></a>Attester une consultation sans résultat
+
+L'absence de résultat est aussi attestée : en cas de contrôle, la structure doit pouvoir montrer qu'elle a bien consulté la situation de la famille, même quand aucun dossier n'ouvre droit. Avec le même en-tête, les réponses `404` portent donc, elles aussi, une preuve :
+
+- une **attestation de consultation sans résultat**, quand l'allocataire n'est référencé auprès d'aucune caisse ou que son dossier est absent auprès de la CNAF ou de la MSA ;
+- une **attestation de consultation : dossier non éligible**, quand le dossier a été trouvé mais n'ouvre pas de droit.
+
+Le document indique le résultat de l'appel avec l'erreur renvoyée par l'API, l'organisme qui a répondu (RNCPS, CNAF ou MSA, ou « origine non communiquée » s'il est inconnu), la date et l'heure de l'appel, ainsi que l'identité de l'usager telle que le logiciel l'a transmise.
+
+Sur la page de vérification, l'identité de l'usager est partiellement masquée.
+
+Les autres erreurs (`400`, `422`, `502`…) ne portent pas de preuve : elles ne disent rien de la situation de la famille.
+
+<div class="fr-container--fluid">
+ <div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-md-6 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-sans-resultat.png') %>" class="fr-responsive-img" alt="Attestation de consultation sans résultat de test : résultat de la consultation (erreur, détail, origine CNAF, date et heure de l'appel), identité transmise, QR code et code de vérification"/>
+  </div>
+ </div>
+</div>
+
+<div class="fr-download fr-mt-4w fr-mb-1v fr-ml-2w">
+ <p>
+  <a href="/files/exemple-cnaf-attestation-consultation-sans-resultat.pdf" download class="fr-download__link">Télécharger l'attestation de consultation sans résultat d'exemple (données de test)
+   <span class="fr-download__detail">PDF – 19 ko</span>
+  </a>
+ </p>
+</div>
+
+{:.fr-mt-6w}
+### <a name="securite"></a>Sécurité et données personnelles
+
+**API Particulier ne stocke ni les attestations, ni les données qu'elles contiennent.** Le lien de téléchargement du PDF comme le lien de vérification transportent leur contenu dans un jeton chiffré et authentifié (AES-256-GCM). Le serveur le déchiffre à la volée pour produire le PDF ou afficher la page de vérification. La moindre modification d'un lien le rend invalide, et sans la clé détenue par API Particulier, il est impossible de lire son contenu ou d'en fabriquer un faux.
+
+Les deux liens n'ont pas le même profil de risque, et ne transportent donc pas les mêmes données :
+
+- le **lien de téléchargement** contient toutes les données, mais n'est valable que 5 minutes ;
+- le **lien de vérification** reste valable 5 ans, mais ne contient que des données partiellement masquées : les 3 premières lettres du nom de naissance, le mois et l'année de naissance, le nombre d'enfants et les paramètres de calcul ([détail des règles](#minimisation)).
+
+La page de vérification ne dépose aucun cookie, ne charge aucun traceur, n'est ni indexée par les moteurs de recherche ni mise en cache, et est limitée à 5 consultations par minute et par IP.
+
+{:.fr-h5}
+#### Limites
+
+- **Ce n'est pas une signature électronique** au sens du [règlement européen eIDAS](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0910){:target="_blank"} (*electronic IDentification, Authentication and trust Services*), qui encadre l'identification électronique et les services de confiance : l'authenticité s'établit en comparant le document avec la page de vérification, pas dans un lecteur PDF.
+- **La vérification se fait en ligne**, sur `particulier.api.gouv.fr`.
+- **Le lien de vérification donne accès aux données partiellement masquées pendant 5 ans** à quiconque le possède : comme le PDF, il ne doit être communiqué qu'aux personnes chargées du contrôle, et jamais publié ni transmis à d'autres destinataires.
+- **Une page frauduleuse imitant celle de `particulier.api.gouv.fr` sur un autre domaine** pourrait afficher n'importe quoi : après avoir scanné le QR code, l'agent de la CAF doit donc toujours vérifier que la page de vérification est bien sur `particulier.api.gouv.fr`.
+
+{:.fr-mt-6w}
+### <a name="pourquoi-qr-code"></a>Choix de conception : un QR code plutôt qu'une signature électronique
+
+L'équipe d'API Particulier a étudié plusieurs solutions avant de retenir celle-ci :
+
+- **Une signature électronique du PDF avec un certificat qualifié** : elle suppose un certificat, une infrastructure de gestion de clés et leur renouvellement. Surtout, elle est rarement vérifiée en pratique par les destinataires, et disparaît dès que le document est imprimé.
+- **Une signature des données sans chiffrement** : plus simple, mais les données personnelles seraient lisibles en clair dans l'URL, donc dans les historiques de navigation et les journaux des serveurs traversés.
+
+Le QR code avec un jeton chiffré combine les avantages recherchés : une vérification en moins de 30 secondes avec un simple navigateur, qui fonctionne aussi sur papier, sans infrastructure supplémentaire ni stockage de données personnelles.
+
+<br/>
+
+## <a name="utiliser"></a>Utiliser la solution
+
+Cette partie s'adresse aux éditeurs de logiciels de gestion d'EAJE. Elle explique :
+
+- comment appeler [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) pour obtenir les informations et l'attestation ;
+- comment démontrer l'authenticité de l'attestation, avec la procédure de vérification que suivra l'agent CAF chargé du contrôle, à relayer aux structures qui utilisent votre logiciel ;
+- comment démarrer dès maintenant avec l'environnement de test.
+
+### <a name="demander-une-attestation"></a>Appel API avec l'en-tête X-Generate-Proof
+
+L'attestation est **optionnelle** et se demande par un en-tête HTTP sur l'appel habituel `GET /v3/dss/participation_familiale_eaje/identite`. Les paramètres d'appel et l'habilitation sont les mêmes, aucun scope supplémentaire n'est nécessaire. Sans l'en-tête, la réponse est strictement inchangée.
+
+{:.fr-table}
+| **Valeur de l'en-tête** | **Ce que la réponse contient en plus** |
+|-------------------------|----------------------------------------|
+| *(absent)* | Rien, la réponse est identique à l'appel habituel. |
+| `proof-only` | `meta.verification_url` : le lien de la page de vérification<br/>`meta.verification_code` : le code de vérification, 10 caractères au format `XXXX-XXXX-XX` |
+| `pdf` | Les deux clés ci-dessus, plus :<br/>`links.attestation_pdf` : le lien de téléchargement du PDF<br/>`meta.attestation_pdf_url_expires_in` : le nombre de secondes avant l'expiration de ce lien |
+
+Toute autre valeur de l'en-tête renvoie une erreur `400`. Pour une réponse `404` qui [donne lieu à attestation](#sans-resultat), les mêmes clés s'ajoutent à côté du bloc `errors`.
+
+{:.fr-h5}
+#### Quel mode choisir ?
+
+- **`proof-only`** suffit si vous voulez seulement archiver la preuve dans votre base : le lien et le code de vérification forment à eux seuls un justificatif, contrôlable pendant 5 ans. Aucun PDF n'est produit.
+- **`pdf`** si vous avez besoin du document mis en forme, pour l'imprimer, le joindre à un dossier ou le transmettre. Ce mode délivre aussi le lien et le code de vérification.
+
+{:.fr-h5}
+#### Exemple d'appel
+
+```sh
+curl -H "Authorization: Bearer $TOKEN" \
+  -H "X-Generate-Proof: pdf" \
+  -G "https://particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite" \
+  --data-urlencode "nomNaissance=LEFEBVRE" \
+  --data-urlencode "prenoms[]=ALEXIS" \
+  --data-urlencode "sexeEtatCivil=F" \
+  --data-urlencode "anneeDateNaissance=1982" \
+  --data-urlencode "moisDateNaissance=12" \
+  --data-urlencode "jourDateNaissance=27" \
+  --data-urlencode "codeCogInseePaysNaissance=99100" \
+  --data-urlencode "codeCogInseeCommuneNaissance=08480" \
+  --data-urlencode "recipient=13002526500013"
+```
+
+Le bloc `data` est identique à l'appel habituel, seuls `links` et `meta` s'enrichissent (jetons raccourcis) :
+
+```json
+{
+  "data": { "...": "identique à l'appel sans en-tête" },
+  "links": {
+    "attestation_pdf": "https://particulier.api.gouv.fr/api/attestations/LHFbA4hy…dJcW3x9k.pdf"
+  },
+  "meta": {
+    "verification_url": "https://particulier.api.gouv.fr/attestations/verification/KHZsu6mg…Od_7Mg",
+    "verification_code": "6A90-D68F-E7",
+    "attestation_pdf_url_expires_in": 300
+  }
+}
+```
+
+{:.fr-h5}
+#### Télécharger le PDF
+
+Il suffit de suivre `links.attestation_pdf`, **sans jeton d'accès** : le lien porte sa propre autorisation. Il est valable **5 minutes** et peut être téléchargé plusieurs fois pendant ce délai. Passé ce délai, il renvoie `410 Gone` : relancez simplement l'appel pour en obtenir un nouveau.
+
+{:.fr-highlight.fr-highlight--caution}
+> ⚠️ Ne transmettez ce lien qu'à des personnes habilitées à voir les données. Ne le stockez pas.
+
+{:.fr-h5}
+#### À savoir pour votre intégration
+
+- **Chaque appel avec l'en-tête interroge les caisses en direct** : le cache de réponses d'API Particulier n'est pas utilisé, pour que l'attestation reflète les données au moment de son émission. Chaque appel compte dans votre volumétrie et produit une nouvelle preuve, avec son propre code.
+- **Les liens sont longs** : de l'ordre de 800 caractères pour le lien de vérification (davantage pour une famille nombreuse), plus de 2 000 pour le lien de téléchargement. Prévoyez un champ texte sans limite de taille (pas de `VARCHAR(255)`) pour stocker `verification_url`.
+- **Le téléchargement est limité à 60 requêtes par minute et par IP**, ce qui laisse de la marge pour un traitement par lot.
+- L'attestation n'est disponible que pour l'appel par identité pivot, pas pour l'appel via FranceConnect.
+
+{:.fr-mt-6w}
+### <a name="verifier"></a>Procédure de vérification d'une attestation
+
+La vérification ne demande aucune application ni aucun compte. Pour vérifier l'authenticité de l'attestation qu'il consulte, l'agent chargé du contrôle :
+
+1. **scanne le QR code** avec un smartphone, ou clique dessus s'il consulte le PDF sur un ordinateur ;
+2. **vérifie que l'adresse de la page est bien `particulier.api.gouv.fr`** (et s'assure ainsi qu'il n'est pas sur un site frauduleux) ;
+3. **lit le statut de l'attestation** : la page doit indiquer « Attestation authentique et valide ». Elle affiche aussi le SIRET du demandeur et les dates d'émission et de fin de validité, à titre d'information ;
+4. **compare le code affiché avec celui imprimé sur le PDF**, puis les données : `LEF•••` avec `LEFEBVRE`, `12/1982` avec `27/12/1982`, et la base de ressources à l'identique.
+
+Si le code ou les données ne correspondent pas, le document a été modifié. Si la page indique « Lien de vérification invalide ou expiré », le QR code a été altéré ou l'attestation a dépassé sa durée de validité.
+
+L'attestation reste vérifiable **5 ans** après son émission, pour couvrir les contrôles de la CAF, qui peuvent porter sur plusieurs exercices passés. Cette durée ne peut pas être prolongée : au-delà, il faut émettre une nouvelle attestation.
+
+<div class="fr-container--fluid">
+ <div class="fr-grid-row fr-grid-row--gutters">
+  <div class="fr-col-md-4 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-valide.png') %>" class="fr-responsive-img" alt="Page de vérification d'une attestation valide : code de vérification, SIRET, dates, données minimisées des allocataires, nombre d'enfants et paramètres de calcul"/>
+  </div>
+  <div class="fr-col-md-4 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-sans-resultat.png') %>" class="fr-responsive-img" alt="Page de vérification de l'attestation sans résultat : code, SIRET, dates, résultat de la consultation et identité minimisée"/>
+  </div>
+  <div class="fr-col-md-4 fr-col-12">
+   <img src="<%= image_path('api_particulier/blog/attestation-pdf-verifiable-verification-invalide.png') %>" class="fr-responsive-img" alt="Page de vérification d'un lien altéré : message « Lien de vérification invalide ou expiré »"/>
+  </div>
+ </div>
+</div>
+
+{:.fr-h5}
+#### <a name="minimisation"></a>Pourquoi la page n'affiche-t-elle pas tout ?
+
+La page de vérification n'affiche volontairement qu'une **version minimisée** des données, suffisante pour comparer avec le PDF mais insuffisante pour reconstituer l'identité d'une personne :
+
+- pour les allocataires, les **3 premières lettres du nom de naissance** et le **mois et l'année de naissance** ;
+- pour les enfants, **leur nombre** uniquement ;
+- ni prénoms, ni adresse ;
+- les **paramètres de calcul en entier**, puisque ce sont précisément les données que le contrôle porte à vérifier.
+
+Le PDF, lui, contient toutes les données.
+
+{:.fr-mt-6w}
+### <a name="tester"></a>Environnement de test
+
+L'[environnement de test](<%= developers_path(anchor: 'tester-api-preproduction') %>) renvoie des données fictives et permet de tester la génération de bout en bout, avec le jeton de test public :
+
+```sh
+TOKEN=$(curl -s https://raw.githubusercontent.com/datagouv/apistration/develop/mocks/tokens/default)
+
+curl -H "Authorization: Bearer $TOKEN" \
+  -H "X-Generate-Proof: pdf" \
+  -G "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/identite" \
+  --data-urlencode "nomNaissance=LEFEBVRE" \
+  --data-urlencode "prenoms[]=ALEXIS" \
+  --data-urlencode "sexeEtatCivil=F" \
+  --data-urlencode "anneeDateNaissance=1982" \
+  --data-urlencode "moisDateNaissance=12" \
+  --data-urlencode "jourDateNaissance=27" \
+  --data-urlencode "codeCogInseePaysNaissance=99100" \
+  --data-urlencode "codeCogInseeCommuneNaissance=08480" \
+  --data-urlencode "recipient=13002526500013" > reponse.json
+
+curl -o attestation.pdf "$(jq -r '.links.attestation_pdf' reponse.json)"
+```
+
+L'attestation d'exemple présentée dans cet article a été produite de cette manière. Sa page de vérification reste consultable jusqu'au 27/10/2031 : [ouvrir la page de vérification de l'exemple](https://staging.particulier.api.gouv.fr/attestations/verification/KHZsu6mgquCrMfH4XkC9X0WOTZXlgQgBpPYLWxhEfgaAF6R_8KsSl9BYU4_vatrdrZv8ypAAwGJzKnsjyZ9DVj4ZdT2CMSl3QMYCX5X193lX7UWBcznshFTImxkRpDYGTwpzfpqbOWsNEYJGWnlyiDm_aXH8dz1j9yXII3MYT5s9qSXJT2DnbADzwjza0v6MCS0i_nfCJwsvteKAo-WlPesCTxDnsij8GMPidm6XhAWH98EEbxVZNoGX5NWnnev9BOqpV5kgzvQIoAgkikSMykanCF_8teyPooi0JQORB0omWaye5Xx9zxeghJ3NJb3m5yBBT875Ev5DY4MwTQR-T1n3cyBOUuM4hd2dPWIvs1ABq2nXZS8wxxu9JuVPcu2M1E73YkayHfLO6-C7HNezK8gt8njPZAtgUP86Rs24hwUUxIMQB3ZsdRWWJOYz7m58Zdt_IWuNpCzZP2MirhGCcpSyF_4X6wDpsQJiYP6ZvSUp0gKODL84SsHUJPKRwX1OFcd6ESYed0Cv-WYYLRtRDH0RtaCt7cVtZCig0Zau1scUdH78mD0js2wrVz5duJ0xL7eVWvkPL_nwgFNHliy3sUJuGU1gBKrmsrnB1fjCBjiHHtWkqLQOPN1qDaY_ETaubwuFP_uzHa-NG2DAWMLN--Qo_50pQgX4mktBca--qUUJfxtW5ITdn4vwOd_7Mg){:target="_blank"}. Vous pouvez aussi scanner le QR code du PDF d'exemple.
+
+Pour obtenir une attestation de consultation sans résultat, relancez le même appel avec `codeCogInseeCommuneNaissance=08404` : l'environnement de test renvoie alors une `404` « Dossier allocataire absent CNAF », attestée comme en production.
+
+Pour le détail des paramètres et des réponses, consultez [la fiche de l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>).
