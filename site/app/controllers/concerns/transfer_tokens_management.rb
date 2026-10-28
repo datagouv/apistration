@@ -1,6 +1,6 @@
 module TransferTokensManagement
   def new
-    @token = Token.find(params.expect(:id))
+    @token = authorize(current_user.tokens.find(params.expect(:id)), :transfer?)
 
     render 'shared/transfer_tokens/new'
   end
@@ -8,7 +8,7 @@ module TransferTokensManagement
   def create
     @token = Token.find(params.expect(:id))
 
-    if access_allowed_for_current_user?
+    if transfer_allowed?
       if organizer.success?
         success_message(title: t('shared.transfer_tokens.create.success.title', target_email:))
       else
@@ -23,6 +23,10 @@ module TransferTokensManagement
 
   private
 
+  def transfer_allowed?
+    TokenPolicy.new(current_user, @token).transfer?
+  end
+
   def organizer
     @organizer ||= Token::DeliverMagicLinkToEmail.call(
       email: target_email,
@@ -34,9 +38,5 @@ module TransferTokensManagement
 
   def target_email
     params[:email]
-  end
-
-  def access_allowed_for_current_user?
-    @token.demandeurs.include?(current_user)
   end
 end

@@ -21,8 +21,6 @@ module TokensManagement
     authorize @token
 
     render 'shared/tokens/show'
-  rescue Pundit::NotAuthorizedError
-    render 'shared/tokens/cannot_show'
   end
 
   def stats
