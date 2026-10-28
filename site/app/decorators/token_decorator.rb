@@ -23,6 +23,19 @@ class TokenDecorator < ApplicationDecorator
     'active'
   end
 
+  def card_end_timestamp
+    %w[revoked revoked_later].include?(card_status) ? blacklisted_at.to_i : exp
+  end
+
+  def card_status
+    return 'expired' if expired?
+    return 'revoked' if blacklisted?
+    return 'revoked_later' if blacklisted_later?
+    return 'expiring_soon' if day_left < 30
+
+    'active'
+  end
+
   def progress_bar_color
     if day_left < 30
       'red'
