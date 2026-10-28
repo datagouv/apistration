@@ -3,8 +3,8 @@ module AuthorizationRequestsManagement
 
   def show
     @authorization_request = extract_authorization_request
-    @main_token = @authorization_request.token.decorate
-    @other_tokens = @authorization_request.tokens.where.not(id: @main_token.id).decorate
+    @main_token = @authorization_request.token&.decorate
+    @other_tokens = @authorization_request.tokens.where.not(id: @main_token&.id).decorate
     load_delegations_data
 
     render 'shared/authorization_requests/show'
