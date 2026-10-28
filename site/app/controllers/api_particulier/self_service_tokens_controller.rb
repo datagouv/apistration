@@ -1,0 +1,3 @@
+class APIParticulier::SelfServiceTokensController < APIParticulier::AuthenticatedUsersController
+  include SelfServiceTokensManagement
+end
