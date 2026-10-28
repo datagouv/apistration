@@ -22,6 +22,9 @@ deployed: &deployed
   weekly_changelog_digest:
     cron: '0 2 * * 1'
     class: 'WeeklyChangelogDigestJob'
+  token_first_use:
+    cron: '*/10 * * * *'
+    class: 'TokenFirstUseJob'
 
 production:
   <<: *deployed
