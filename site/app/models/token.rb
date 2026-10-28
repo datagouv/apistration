@@ -3,6 +3,7 @@ class Token < ApplicationRecord
 
   LIFETIMES_IN_MONTHS = [3, 6, 12, 18].freeze
   NAME_MAX_LENGTH = 50
+  EXTENSION_WINDOW = 90.days
 
   self.ignored_columns += %w[authorization_request_id]
 
@@ -40,10 +41,11 @@ class Token < ApplicationRecord
   attribute :lifetime_in_months, :integer, default: -> { LIFETIMES_IN_MONTHS.max }
 
   validates :name, presence: true, length: { maximum: NAME_MAX_LENGTH }
-  validates :lifetime_in_months, inclusion: { in: LIFETIMES_IN_MONTHS }, on: :self_service
+  validates :lifetime_in_months, inclusion: { in: LIFETIMES_IN_MONTHS }, on: %i[self_service extension]
   validate :name_unique_among_active_tokens, on: :self_service
   validate :active_tokens_limit_not_reached, on: :self_service
   validate :authorization_request_open_to_token_creation, on: :self_service
+  validate :extension_lengthens_validity, on: :extension
 
   def self.build_for_self_service(authorization_request, creator:, name:, lifetime_in_months:)
     authorization_request.tokens.new(
@@ -107,6 +109,13 @@ class Token < ApplicationRecord
     update!(blacklisted_at: Time.zone.now)
   end
 
+  def extend_by!(lifetime_in_months)
+    self.lifetime_in_months = lifetime_in_months
+    self.exp = lifetime_in_months.to_i.months.from_now.to_i
+    self.days_left_notification_sent = []
+    save!(context: :extension)
+  end
+
   private
 
   def name_unique_among_active_tokens
@@ -114,6 +123,12 @@ class Token < ApplicationRecord
     return unless authorization_request.tokens.active.where.not(id:).exists?(name:)
 
     errors.add(:name, :taken)
+  end
+
+  def extension_lengthens_validity
+    return if exp_in_database.nil? || exp > exp_in_database
+
+    errors.add(:lifetime_in_months, :shorter_than_current_validity)
   end
 
   def authorization_request_open_to_token_creation
