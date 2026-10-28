@@ -1,0 +1,7 @@
+Bonjour,
+
+<%= @actor.full_name %> a prolongé le jeton « <%= @token.name %> » de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>) jusqu'au <%= @expiration_date %>.
+
+Voir les jetons de la demande : <%= api_url(:authorization_request, id: @authorization_request.id) %>
+
+L'équipe <%= api_full_name %>

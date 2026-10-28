@@ -116,7 +116,7 @@ class AuthorizationRequest < ApplicationRecord
   end
 
   def archive!
-    transaction do
+    with_lock do
       update!(status: 'archived')
 
       revoke_editor_delegations!

@@ -28,6 +28,8 @@ fr:
         subject: 🔑⚠️ Le jeton « %{name} » de la demande n°%{external_id} sera révoqué le %{date}
       created:
         subject: 🔑 Jeton "%{name}" créé sur votre demande n°%{external_id}
+      extended:
+        subject: 🔑 Jeton "%{name}" prolongé sur votre demande n°%{external_id}
       revoked:
         subject: 🔑 Jeton "%{name}" révoqué sur votre demande n°%{external_id}
 
