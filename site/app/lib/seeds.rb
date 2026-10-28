@@ -214,7 +214,8 @@ class Seeds
         name: 'Recette',
         creator: @contact,
         exp: 20.days.from_now.to_i,
-        scopes: authorization_request.scopes
+        scopes: authorization_request.scopes,
+        allowed_ips: ['203.0.113.0/28']
       )
     )
   end

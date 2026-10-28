@@ -16,7 +16,8 @@ class Token::TrackCreation < ApplicationOrganizer
       source: context.token_creation_source,
       datapass_id: token.authorization_request.external_id,
       expires_at: Time.zone.at(token.exp),
-      scopes: token.scopes
+      scopes: token.scopes,
+      allowed_ips: token.allowed_ips_as_strings.presence
     }
   end
 end
