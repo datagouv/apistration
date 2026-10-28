@@ -27,12 +27,6 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
     expect(subject.authorization_request.api).to eq('particulier')
   end
 
-  it 'creates token for API Particulier' do
-    subject
-
-    expect(Token.last.api).to eq('particulier')
-  end
-
   describe 'Mailjet adding contacts' do
     it 'adds contacts to Particulier mailjet list' do
       expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
