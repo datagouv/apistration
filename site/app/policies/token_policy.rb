@@ -9,6 +9,10 @@ class TokenPolicy < ApplicationPolicy
     contact?
   end
 
+  def revoke?
+    contact? && token.active?
+  end
+
   def transfer?
     contact? && token.active?
   end
