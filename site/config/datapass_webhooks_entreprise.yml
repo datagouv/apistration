@@ -25,9 +25,12 @@ development: &development
 
   approve: &approve
     emails:
-      - template: 'embarquement_valide_to_editeur'
+      - template: 'demande_validee'
+        on_update: true
         to:
           - 'authorization_request.demandeur'
+          - 'authorization_request.contact_technique'
+          - 'authorization_request.contact_metier'
 
   create: {}
   update: *updated
@@ -61,69 +64,12 @@ production: &production
 
   approve: &approve
     emails:
-      - template: 'embarquement_valide_to_editeur'
-        condition_on_authorization: 'editor_authorization_request?'
+      - template: 'demande_validee'
+        on_update: true
         to:
           - 'authorization_request.demandeur'
-        cc:
           - 'authorization_request.contact_technique'
           - 'authorization_request.contact_metier'
-
-      - template: 'update_embarquement_valide_to_demandeur'
-        only_on_update: true
-        condition_on_authorization: 'not_editor_authorization_request?'
-        to:
-          - 'authorization_request.contact_metier'
-        cc:
-          - 'authorization_request.contact_technique'
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_demandeur_is_tech_is_metier'
-        condition_on_authorization: 'not_editor_and_all_contacts_have_the_same_email?'
-
-      - template: 'embarquement_valide_to_demandeur_seulement'
-        condition_on_authorization: 'not_editor_and_demandeur_different_to_other_contacts?'
-        to:
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_tech_cc_demandeur_metier'
-        condition_on_authorization: 'not_editor_and_demandeur_different_to_other_contacts?'
-        to:
-          - 'authorization_request.contact_technique'
-        cc:
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_metier_cc_demandeur_tech'
-        condition_on_authorization: 'not_editor_and_demandeur_different_to_other_contacts?'
-        to:
-          - 'authorization_request.contact_metier'
-        cc:
-          - 'authorization_request.demandeur'
-          - 'authorization_request.contact_technique'
-
-      - template: 'embarquement_valide_to_metier_cc_demandeur_tech'
-        condition_on_authorization: 'not_editor_and_user_is_contact_technique_and_not_contact_metier?'
-        to:
-          - 'authorization_request.contact_metier'
-        cc:
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_demandeur_is_metier_not_tech'
-        condition_on_authorization: 'not_editor_and_user_is_contact_metier_and_not_contact_technique?'
-        to:
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_tech_cc_demandeur_metier'
-        condition_on_authorization: 'not_editor_and_user_is_contact_metier_and_not_contact_technique?'
-        to:
-          - 'authorization_request.contact_technique'
-        cc:
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_demandeur_is_tech_not_metier'
-        condition_on_authorization: 'not_editor_and_user_is_contact_technique_and_not_contact_metier?'
-        to:
-          - 'authorization_request.demandeur'
 
   update: *updated
   team_member_update: *team_member_updated

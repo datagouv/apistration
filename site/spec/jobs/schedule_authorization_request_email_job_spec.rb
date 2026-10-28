@@ -94,5 +94,31 @@ RSpec.describe ScheduleAuthorizationRequestEmailJob do
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
+
+    context 'when the job was enqueued before the switch with a removed template' do
+      let(:authorization_request_status) { 'validated' }
+
+      before { allow(APIEntreprise::AuthorizationRequestMailer).to receive(:demande_validee).and_call_original }
+
+      context 'with a former validation variant' do
+        let(:template_name) { 'embarquement_valide_to_demandeur_seulement' }
+
+        it 'sends the validation mail' do
+          subject
+
+          expect(APIEntreprise::AuthorizationRequestMailer).to have_received(:demande_validee).with(hash_including(update: false))
+        end
+      end
+
+      context 'with a former update variant' do
+        let(:template_name) { 'update_demande_recue' }
+
+        it 'sends the base mail with the update flag' do
+          subject
+
+          expect(APIEntreprise::AuthorizationRequestMailer).to have_received(:demande_recue).with(hash_including(update: true))
+        end
+      end
+    end
   end
 end

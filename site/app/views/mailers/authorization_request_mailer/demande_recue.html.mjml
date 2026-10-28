@@ -4,7 +4,7 @@
     <mj-divider />
     <mj-text>
       <h1>
-        Votre demande d'accès <b>a bien été reçue par nos services</b>&nbsp;📬
+        <%= @update ? 'Votre demande de mise à jour' : "Votre demande d'accès" %> <b>a bien été reçue par nos services</b>&nbsp;📬
       </h1>
     </mj-text>
   </mj-column>
@@ -15,13 +15,17 @@
       <%= render partial: "greetings", locals: { entity: "demandeur" } %>
       <p>
         <b>
-          Votre demande d’habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a bien été
-          enregistrée.
+          <% if @update %>
+            Votre demande de mise à jour de l'habilitation n°<%= @authorization_request.external_id %> a bien été reçue.
+          <% else %>
+            Votre demande d’habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a bien été
+            enregistrée.
+          <% end %>
         </b>
         Notre service juridique va en prendre connaissance dans les meilleurs délais.&nbsp;
       </p>
       <p>
-        📝 Vous pouvez continuer à consulter et modifier votre demande à tout moment en suivant le lien suivant&nbsp;:
+        📝 Vous pouvez continuer à consulter et modifier votre demande<%= ' de mise à jour' if @update %> à tout moment en suivant le lien suivant&nbsp;:
         <a target="_blank" href="<%= @authorization_request_datapass_url %>">
           <%= @authorization_request_datapass_url %>
         </a>
@@ -34,6 +38,8 @@
     </mj-text>
   </mj-column>
 </mj-section>
-<%= render partial: "block_accelerer_demande" %>
-<%= render partial: "block_newsletter" %>
+<% unless @update %>
+  <%= render partial: "block_accelerer_demande" %>
+  <%= render partial: "block_newsletter" %>
+<% end %>
 <%= render partial: "mailers/footer" %>

@@ -56,29 +56,12 @@ production: &production
 
   approve: &approve
     emails:
-      - template: 'update_embarquement_valide_to_demandeur'
-        only_on_update: true
-        condition_on_authorization: 'not_editor_authorization_request?'
+      - template: 'demande_validee'
+        on_update: true
         to:
+          - 'authorization_request.demandeur'
+          - 'authorization_request.contact_technique'
           - 'authorization_request.contact_metier'
-        cc:
-          - 'authorization_request.contact_technique'
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_demandeur_is_tech'
-        condition_on_authorization: 'not_editor_and_all_contacts_have_the_same_email?'
-
-      - template: 'embarquement_valide_to_demandeur_seulement'
-        condition_on_authorization: 'not_editor_and_demandeur_different_to_other_contacts?'
-        to:
-          - 'authorization_request.demandeur'
-
-      - template: 'embarquement_valide_to_tech_cc_demandeur'
-        condition_on_authorization: 'not_editor_and_demandeur_different_to_other_contacts?'
-        to:
-          - 'authorization_request.contact_technique'
-        cc:
-          - 'authorization_request.demandeur'
 
   update: *updated
   team_member_update: *team_member_updated
