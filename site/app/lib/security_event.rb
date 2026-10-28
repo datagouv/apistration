@@ -3,6 +3,7 @@ module SecurityEvent
   CATALOG_PATH = Rails.root.join('config/security_events.yml')
   ANONYMOUS_ACTOR = { email: nil, role: 'anonymous' }.freeze
   DATAPASS_ACTOR = { email: nil, role: 'datapass' }.freeze
+  API_CLIENT_ACTOR = { email: nil, role: 'api_client' }.freeze
 
   class UndeclaredError < StandardError; end
 

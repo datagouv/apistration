@@ -78,6 +78,15 @@ events:
     details: [source, datapass_id, expires_at, scopes]
     since: 2026-11
 
+  token.api_token.first_used:
+    criticality: notable
+    services: [site]
+    description: Premier appel à l'API avec un token, même refusé par l'API (les appels bloqués en amont, déjà dans api.request.blocked, ne comptent pas), émis une seule fois par token par une tâche du site qui lit les logs d'appels toutes les 10 minutes. first_used_at est l'horodatage de ce premier appel. datapass_id est l'id de la demande DataPass, à corréler avec token.api_token.created
+    actor_types: [api_client]
+    target_type: token
+    details: [first_used_at, datapass_id]
+    since: 2026-11
+
   token.api_token.prolonged:
     criticality: notable
     services: [site]

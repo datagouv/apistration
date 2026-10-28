@@ -13,6 +13,16 @@ class Token < ApplicationRecord
   scope :blacklisted_later, -> { where('blacklisted_at > ?', Time.zone.now) }
 
   scope :inactive, -> { blacklisted.or(expired) }
+  scope :called, lambda {
+    joins(<<~SQL.squish)
+      CROSS JOIN LATERAL (
+        SELECT 1 FROM access_logs
+        WHERE access_logs.token_id = tokens.id
+          AND access_logs.timestamp >= tokens.created_at AT TIME ZONE 'UTC'
+        LIMIT 1
+      ) first_call
+    SQL
+  }
   scope :active_for, ->(api) { distinct.active.joins(:authorization_request).where(authorization_request: { api: }).reorder(created_at: :desc) }
 
   has_many :users, through: :authorization_request
@@ -31,9 +41,7 @@ class Token < ApplicationRecord
   def used?
     return true if used
 
-    result = !access_logs.where(timestamp: 30.days.ago..).limit(1).empty? || !access_logs.limit(1).empty?
-    update(used: true) if result
-    result
+    !access_logs.where(timestamp: 30.days.ago..).limit(1).empty? || !access_logs.limit(1).empty?
   end
 
   delegate :api, to: :authorization_request
