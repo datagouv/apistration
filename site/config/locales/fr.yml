@@ -505,14 +505,19 @@ fr:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         tokens:
           title: "Jetons"
-          table:
-            identifier: "Identifiant"
-            status: "Statut"
-            created_at: "Date de délivrance"
-            exp: "Date d'expiration"
-            actions: "Actions"
-            stats: "Statistiques"
-            transfer: "Transmettre"
+          count: "(%{count} actifs sur %{max})"
+          none: "Aucun jeton actif : créez-en un pour appeler l'API."
+          limit_reached: "Cette demande a atteint le plafond de %{max} jetons actifs. Révoquez un jeton pour en créer un nouveau."
+          inactive:
+            one: "Jeton révoqué ou expiré (%{count})"
+            other: "Jetons révoqués ou expirés (%{count})"
+          create:
+            title: "Créer un jeton"
+            detail: "Nom et durée de 3 à 18 mois"
+          creation_closed:
+            revoked: "Cette demande a été révoquée sur DataPass : ses jetons sont révoqués et il n'est plus possible d'en créer."
+            archived: "Cette demande est archivée : il n'est plus possible d'y créer de jeton."
+            default: "Il n'est pas possible de créer de jeton sur cette demande tant qu'elle n'est pas validée."
         delegations:
           title: "Délégations&nbsp;:"
           description: "Vous pouvez déléguer votre demande à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
@@ -524,6 +529,31 @@ fr:
           add_label: Ajouter une délégation
           select_prompt: Sélectionner un éditeur
           add_submit: Ajouter
+      token_card:
+        created_by: "Créé le %{date} par %{name}"
+        created: "Créé le %{date}"
+        transfer: "Transmettre"
+        stats: "Statistiques"
+        revoke: "Révoquer"
+        end_date:
+          active: "Expire le %{date}"
+          expiring_soon: "Expire le %{date}"
+          revoked_later: "Révocation programmée le %{date}"
+          revoked: "Révoqué le %{date}"
+          expired: "Expiré le %{date}"
+        status:
+          color:
+            active: success
+            expiring_soon: warning
+            revoked_later: warning
+            revoked: error
+            expired: info
+          label:
+            active: Actif
+            expiring_soon: Expire bientôt
+            revoked_later: Révocation programmée
+            revoked: Révoqué
+            expired: Expiré
     pages:
       redoc:
         title: "Swagger 📟"

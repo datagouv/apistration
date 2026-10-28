@@ -73,4 +73,20 @@ RSpec.describe TokenDecorator do
       it { is_expected.to eq('active') }
     end
   end
+
+  describe '#card_end_timestamp' do
+    it 'shows the expiry date of an expired token whose ban was scheduled later' do
+      token = create(:token, exp: 1.day.ago.to_i, blacklisted_at: 1.day.from_now).decorate
+
+      expect(token.card_status).to eq('expired')
+      expect(token.card_end_timestamp).to eq(token.exp)
+    end
+
+    it 'shows the ban date of a revoked token' do
+      blacklisted_at = 2.days.ago.change(usec: 0)
+      token = create(:token, exp: 1.year.from_now.to_i, blacklisted_at:).decorate
+
+      expect(token.card_end_timestamp).to eq(blacklisted_at.to_i)
+    end
+  end
 end
