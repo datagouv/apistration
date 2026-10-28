@@ -68,7 +68,7 @@ Fichier : `app/services/rate_limiting_service.rb`
 Pur lecteur de `request.env` — ne fait aucune requête DB.
 
 - `whitelisted_access?` → compare `env['siade.token']` à `jwt_whitelist`
-- `ip_forbidden_access?` → lit `user.allowed_ips` (habilitation, déjà enrichi par le middleware) `user.editor_token_allowed_ips` (jeton éditeur) et `user.editor_allowed_ips` (plage déclarée de l'éditeur) : l'IP doit être autorisée par chaque liste non vide
+- `ip_forbidden_access?` → lit `user.allowed_ips` (habilitation, déjà enrichi par le middleware), `user.token_allowed_ips` (IP fixées par le contact à la création du jeton), `user.editor_token_allowed_ips` (jeton éditeur) et `user.editor_allowed_ips` (plage déclarée de l'éditeur) : l'IP doit être autorisée par chaque liste non vide
 - `custom_rate_limit_for` → lit `user.rate_limit_per_minute`
 - `authorization_request_discriminator` → lit `user.authorization_request_id`
 - Fallback pour tokens classiques sans AR : `"token:<token_id>"`
