@@ -3,8 +3,8 @@
   <mj-column>
     <mj-text>
       <h1>
-        Votre demande d'accès à l'<%= api_full_name %>
-        <b>a été refusée 🚫</b>
+        <%= @update ? "Votre demande de mise à jour #{api_full_name}" : "Votre demande d'accès à l'#{api_full_name}" %>
+        <b>a été refusée <%= @update ? '✒️' : '🚫' %></b>
       </h1>
     </mj-text>
   </mj-column>
@@ -14,7 +14,7 @@
     <mj-text>
       <%= render partial: "greetings", locals: { entity: "demandeur" } %>
       <p>
-        Votre demande d’habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a été
+        <%= @update ? "Votre demande de mise à jour de l'habilitation" : 'Votre demande d’habilitation' %> <%= api_full_name %> n°<%= @authorization_request.external_id %> a été
         <b>refusée par notre service juridique</b>
         .
       </p>
@@ -30,12 +30,16 @@
     </mj-button>
     <mj-text>
       <p>
-        Bonne continuation,
+        <% if @update %>
+          Votre habilitation n°<a target="_blank" href="<%= @authorization_request_datapass_url %>"><%= @authorization_request.external_id %></a> <b>reste valide dans les termes validés initialement</b>.
+        <% else %>
+          Bonne continuation,
+        <% end %>
         <br />
         <b><%= api_full_name %></b>
       </p>
     </mj-text>
   </mj-column>
 </mj-section>
-<%= render partial: "block_refusal_might_be_error" %>
+<%= render partial: "block_refusal_might_be_error" unless @update %>
 <%= render partial: "mailers/footer" %>

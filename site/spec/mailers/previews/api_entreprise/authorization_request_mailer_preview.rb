@@ -1,22 +1,16 @@
 class APIEntreprise::AuthorizationRequestMailerPreview < ActionMailer::Preview
   %w[
-    embarquement_demande_refusee
-    update_embarquement_demande_refusee
-    embarquement_modifications_demandees
-    update_embarquement_modifications_demandees
-    embarquement_valide_to_editeur
-    embarquement_valide_to_demandeur_is_tech_is_metier
-    embarquement_valide_to_demandeur_seulement
-    embarquement_valide_to_metier_cc_demandeur_tech
-    embarquement_valide_to_demandeur_is_metier_not_tech
-    embarquement_valide_to_demandeur_is_tech_not_metier
-    embarquement_valide_to_tech_cc_demandeur_metier
-    update_embarquement_valide_to_demandeur
     demande_recue
-    update_demande_recue
+    embarquement_modifications_demandees
+    embarquement_demande_refusee
+    demande_validee
   ].each do |method|
-    send('define_method', method) do
-      APIEntreprise::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request: })
+    define_method(method) do
+      APIEntreprise::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request:, update: false })
+    end
+
+    define_method("update_#{method}") do
+      APIEntreprise::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request:, update: true })
     end
   end
 

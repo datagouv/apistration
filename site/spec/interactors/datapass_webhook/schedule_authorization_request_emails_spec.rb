@@ -48,7 +48,8 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
         'send_application',
         hash_including(
           to: [authorization_request.demandeur.email]
-        )
+        ),
+        update: false
       )
     end
   end
@@ -90,7 +91,8 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
           'review_application',
           hash_including(
             to: [authorization_request.demandeur.email]
-          )
+          ),
+          update: false
         )
       end
     end
@@ -115,7 +117,8 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
             'review_application',
             hash_including(
               to: [authorization_request.demandeur.email]
-            )
+            ),
+            update: false
           )
 
           expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.exactly(:once).with(
@@ -125,7 +128,8 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
             hash_including(
               to: [authorization_request.contact_metier.email],
               cc: [authorization_request.contact_technique.email, authorization_request.demandeur.email]
-            )
+            ),
+            update: false
           )
         end
 
@@ -159,7 +163,8 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
             'review_application',
             hash_including(
               to: [authorization_request.demandeur.email]
-            )
+            ),
+            update: false
           )
 
           expect(ScheduleAuthorizationRequestEmailJob).to have_been_enqueued.exactly(:once).with(
@@ -168,7 +173,8 @@ RSpec.describe DatapassWebhook::ScheduleAuthorizationRequestEmails, type: :inter
             'review_application_2',
             hash_including(
               to: [authorization_request.contact_technique.email]
-            )
+            ),
+            update: false
           )
         end
       end

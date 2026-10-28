@@ -1,0 +1,21 @@
+Bonjour,
+
+<% if @update -%>
+La mise à jour de votre demande n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » a été validée. Vos jetons restent valables.
+
+Voir la demande : <%= @authorization_request_url %>
+<% elsif @delegated_editor -%>
+Votre demande n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée. Elle est déléguée à l'éditeur <%= @delegated_editor.name %>, qui appelle l'API pour votre compte avec ses propres accès : vous n'avez rien d'autre à faire.
+
+Voir la demande : <%= @authorization_request_url %>
+<% else -%>
+Votre demande n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée. Vous pouvez créer votre jeton d'accès depuis la page de la demande.
+<% if @client_software_editor -%>
+
+Une fois le jeton créé, saisissez-le dans le logiciel <%= @client_software_editor.name %>, ou transmettez-le à votre prestataire avec le bouton « Transmettre ».
+<% end -%>
+
+Créer mon jeton : <%= @authorization_request_url %>
+<% end -%>
+
+L'équipe <%= api_full_name %>
