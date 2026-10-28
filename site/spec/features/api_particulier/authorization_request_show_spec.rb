@@ -77,6 +77,10 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
         it 'redirects to the profile' do
           expect(page).to have_current_path(api_particulier_authorization_requests_path, ignore_query: true)
         end
+
+        it 'tells the user the authorization request is not accessible' do
+          expect(page).to have_text("Le jeton n'est pas accessible")
+        end
       end
 
       describe 'when authorization_request is from api_entreprise' do
