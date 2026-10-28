@@ -1,3 +1,6 @@
+require:
+  - ./config/rubocop/lazy_lookup_in_shared_handler.rb
+
 plugins:
   - rubocop-rspec
   - rubocop-rails
@@ -240,3 +243,7 @@ Rails/FindEach:
 Rails/RedundantActiveRecordAllMethod:
   Exclude:
       - "spec/**/*"
+
+Custom/LazyLookupInSharedHandler:
+  Include:
+    - 'app/**/*.rb'
