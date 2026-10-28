@@ -1,7 +1,7 @@
 class DatapassWebhook::RevokeCurrentToken < ApplicationOrganizer
   include SecurityEvent::StepTracking
 
-  tracks_with Token::TrackRevocation,
+  tracks_with Token::TrackRevocations,
     EditorDelegation::TrackRevocations
 
   before do
