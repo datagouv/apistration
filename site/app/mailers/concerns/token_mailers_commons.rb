@@ -27,13 +27,12 @@ module TokenMailersCommons
   end
 
   def banned
-    @token = params[:token]
-    @authorization_request = @token.authorization_request
+    assign_expiring_token(params[:token])
     @comment = params[:comment]
     @intitule = @authorization_request.intitule
     @blacklisted_at = Time.at(@token.blacklisted_at).in_time_zone.strftime('%d/%m/%Y')
 
-    mail(to: params[:recipients], subject: t('mailers.token_mailer.banned.subject', api_name: api_full_name))
+    mail(to: params[:recipients], subject: t('mailers.token_mailer.banned.subject', name: @token.name, external_id: @authorization_request.external_id, date: @blacklisted_at))
   end
 
   def created
@@ -42,6 +41,11 @@ module TokenMailersCommons
 
   def revoked
     contact_token_email(:revoked)
+  end
+
+  def extended
+    @expiration_date = Time.at(params[:token].exp).in_time_zone.strftime('%d/%m/%Y')
+    contact_token_email(:extended)
   end
 
   private
