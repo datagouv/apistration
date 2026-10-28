@@ -85,7 +85,9 @@ Exemples :
 
 ## Fiche metier
 
-Modifier les champs sous `fiche:` (hors `swagger:`). Valider :
+Modifier les champs sous `fiche:` (hors `swagger:`). Pour la redaction
+(perimetre, mises a jour, FAQ, historique), suivre le skill
+`write-content`. Valider :
 
 ```bash
 cd site && bundle exec rspec spec/stores/
