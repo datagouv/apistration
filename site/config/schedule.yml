@@ -28,6 +28,9 @@ production:
   insee_password_rotation:
     cron: '5 0 * * * Europe/Paris'
     class: 'INSEEPasswordRotationJob'
+  hyperping_monitors_sync:
+    cron: '0 * * * *'
+    class: 'HyperpingMonitorsSyncJob'
 
 staging: *deployed
 sandbox: *deployed
