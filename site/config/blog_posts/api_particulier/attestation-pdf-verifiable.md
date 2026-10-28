@@ -119,27 +119,27 @@ Les autres erreurs (`400`, `422`, `502`…) ne portent pas de preuve : elles ne 
 {:.fr-mt-6w}
 ### <a name="securite"></a>Sécurité et données personnelles
 
-**API Particulier ne stocke ni les attestations, ni les données qu'elles contiennent.** Le lien de téléchargement du PDF comme le lien de vérification transportent leur contenu dans un jeton chiffré et authentifié (AES-256-GCM) : le serveur le déchiffre à la volée pour produire le PDF ou afficher la page de vérification. La moindre modification d'un lien le rend invalide, et sans la clé détenue par la plateforme, il est impossible de lire son contenu ou d'en fabriquer un faux.
+**API Particulier ne stocke ni les attestations, ni les données qu'elles contiennent.** Le lien de téléchargement du PDF comme le lien de vérification transportent leur contenu dans un jeton chiffré et authentifié (AES-256-GCM). Le serveur le déchiffre à la volée pour produire le PDF ou afficher la page de vérification. La moindre modification d'un lien le rend invalide, et sans la clé détenue par API Particulier, il est impossible de lire son contenu ou d'en fabriquer un faux.
 
 Les deux liens n'ont pas le même profil de risque, et ne transportent donc pas les mêmes données :
 
 - le **lien de téléchargement** contient toutes les données, mais n'est valable que 5 minutes ;
-- le **lien de vérification** reste valable 5 ans, mais ne contient que des données minimisées.
+- le **lien de vérification** reste valable 5 ans, mais ne contient que des données partiellement masquées : les 3 premières lettres du nom de naissance, le mois et l'année de naissance, le nombre d'enfants et les paramètres de calcul ([détail des règles](#minimisation)).
 
 La page de vérification ne dépose aucun cookie, ne charge aucun traceur, n'est ni indexée par les moteurs de recherche ni mise en cache, et est limitée à 5 consultations par minute et par IP.
 
 {:.fr-h5}
 #### Limites
 
-- **Ce n'est pas une signature électronique** au sens du règlement eIDAS : l'authenticité s'établit en comparant le document avec la page de vérification, pas dans un lecteur PDF.
+- **Ce n'est pas une signature électronique** au sens du [règlement européen eIDAS](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32014R0910){:target="_blank"} (*electronic IDentification, Authentication and trust Services*), qui encadre l'identification électronique et les services de confiance : l'authenticité s'établit en comparant le document avec la page de vérification, pas dans un lecteur PDF.
 - **La vérification se fait en ligne**, sur `particulier.api.gouv.fr`.
-- **Le lien de vérification donne accès aux données minimisées pendant 5 ans** à quiconque le possède : il doit être traité avec le même soin que le document lui-même.
-- **Une page imitant la nôtre sur un autre domaine** peut afficher n'importe quoi : c'est pourquoi l'adresse de la page doit toujours être contrôlée.
+- **Le lien de vérification donne accès aux données partiellement masquées pendant 5 ans** à quiconque le possède : comme le PDF, il ne doit être communiqué qu'aux personnes chargées du contrôle, et jamais publié ni transmis à d'autres destinataires.
+- **Une page frauduleuse imitant celle de `particulier.api.gouv.fr` sur un autre domaine** pourrait afficher n'importe quoi : après avoir scanné le QR code, l'agent de la CAF doit donc toujours vérifier que la page de vérification est bien sur `particulier.api.gouv.fr`.
 
 {:.fr-mt-6w}
 ### <a name="pourquoi-qr-code"></a>Choix de conception : un QR code plutôt qu'une signature électronique
 
-Nous avons étudié plusieurs solutions avant de retenir celle-ci :
+L'équipe d'API Particulier a étudié plusieurs solutions avant de retenir celle-ci :
 
 - **Une signature électronique du PDF avec un certificat qualifié** : elle suppose un certificat, une infrastructure de gestion de clés et leur renouvellement. Surtout, elle est rarement vérifiée en pratique par les destinataires, et disparaît dès que le document est imprimé.
 - **Une signature des données sans chiffrement** : plus simple, mais les données personnelles seraient lisibles en clair dans l'URL, donc dans les historiques de navigation et les journaux des serveurs traversés.
@@ -150,7 +150,11 @@ Le QR code avec un jeton chiffré combine les avantages recherchés : une vérif
 
 ## <a name="utiliser"></a>Utiliser la solution
 
-Cette partie s'adresse aux éditeurs de logiciels de gestion. La procédure de vérification décrit ce que fait l'agent chargé du contrôle : vous pouvez la relayer aux structures qui utilisent votre logiciel.
+Cette partie s'adresse aux éditeurs de logiciels de gestion d'EAJE. Elle explique :
+
+- comment appeler [l'API Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>) pour obtenir les informations et l'attestation ;
+- comment démontrer l'authenticité de l'attestation, avec la procédure de vérification que suivra l'agent CAF chargé du contrôle, à relayer aux structures qui utilisent votre logiciel ;
+- comment démarrer dès maintenant avec l'environnement de test.
 
 ### <a name="demander-une-attestation"></a>Appel API avec l'en-tête X-Generate-Proof
 
@@ -163,7 +167,13 @@ L'attestation est **optionnelle** et se demande par un en-tête HTTP sur l'appel
 | `proof-only` | `meta.verification_url` : le lien de la page de vérification<br/>`meta.verification_code` : le code de vérification, 10 caractères au format `XXXX-XXXX-XX` |
 | `pdf` | Les deux clés ci-dessus, plus :<br/>`links.attestation_pdf` : le lien de téléchargement du PDF<br/>`meta.attestation_pdf_url_expires_in` : le nombre de secondes avant l'expiration de ce lien |
 
-Toute autre valeur de l'en-tête renvoie une erreur `400`. Sur une réponse `404` qui [s'atteste](#sans-resultat), les mêmes clés s'ajoutent à côté du bloc `errors`.
+Toute autre valeur de l'en-tête renvoie une erreur `400`. Pour une réponse `404` qui [donne lieu à attestation](#sans-resultat), les mêmes clés s'ajoutent à côté du bloc `errors`.
+
+{:.fr-h5}
+#### Quel mode choisir ?
+
+- **`proof-only`** suffit si vous voulez seulement archiver la preuve dans votre base : le lien et le code de vérification forment à eux seuls un justificatif, contrôlable pendant 5 ans. Aucun PDF n'est produit.
+- **`pdf`** si vous avez besoin du document mis en forme, pour l'imprimer, le joindre à un dossier ou le transmettre. Ce mode délivre aussi le lien et le code de vérification.
 
 {:.fr-h5}
 #### Exemple d'appel
@@ -200,31 +210,29 @@ Le bloc `data` est identique à l'appel habituel, seuls `links` et `meta` s'enri
 ```
 
 {:.fr-h5}
-#### Quel mode choisir ?
-
-- **`proof-only`** suffit si vous voulez seulement archiver la preuve dans votre base : le lien et le code de vérification forment à eux seuls un justificatif, contrôlable pendant 5 ans. Aucun PDF n'est produit.
-- **`pdf`** si vous avez besoin du document mis en forme, pour l'imprimer, le joindre à un dossier ou le transmettre.
-
-{:.fr-h5}
 #### Télécharger le PDF
 
-Il suffit de suivre `links.attestation_pdf`, **sans jeton d'accès** : le lien porte sa propre autorisation. Il est valable **5 minutes** et peut être téléchargé plusieurs fois pendant ce délai. Passé ce délai, il renvoie `410 Gone` : relancez simplement l'appel pour en obtenir un nouveau. Ne transmettez ce lien qu'à des personnes habilitées à voir les données, et ne le stockez pas.
+Il suffit de suivre `links.attestation_pdf`, **sans jeton d'accès** : le lien porte sa propre autorisation. Il est valable **5 minutes** et peut être téléchargé plusieurs fois pendant ce délai. Passé ce délai, il renvoie `410 Gone` : relancez simplement l'appel pour en obtenir un nouveau.
 
-{:.fr-highlight}
-> **À savoir pour votre intégration**
-> - **Chaque appel avec l'en-tête interroge les caisses en direct** : le cache de réponses d'API Particulier n'est pas utilisé, pour que l'attestation reflète les données au moment de son émission. Chaque appel compte dans votre volumétrie et produit une nouvelle preuve, avec son propre code.
-> - **Les liens sont longs** : de l'ordre de 800 caractères pour le lien de vérification (davantage pour une famille nombreuse), plus de 2 000 pour le lien de téléchargement. Prévoyez un champ texte sans limite de taille (pas de `VARCHAR(255)`) pour stocker `verification_url`.
-> - **Le téléchargement est limité à 60 requêtes par minute et par IP**, ce qui laisse de la marge pour un traitement par lot.
-> - L'attestation n'est disponible que pour l'appel par identité pivot, pas pour l'appel via FranceConnect.
+{:.fr-highlight.fr-highlight--caution}
+> ⚠️ Ne transmettez ce lien qu'à des personnes habilitées à voir les données. Ne le stockez pas.
+
+{:.fr-h5}
+#### À savoir pour votre intégration
+
+- **Chaque appel avec l'en-tête interroge les caisses en direct** : le cache de réponses d'API Particulier n'est pas utilisé, pour que l'attestation reflète les données au moment de son émission. Chaque appel compte dans votre volumétrie et produit une nouvelle preuve, avec son propre code.
+- **Les liens sont longs** : de l'ordre de 800 caractères pour le lien de vérification (davantage pour une famille nombreuse), plus de 2 000 pour le lien de téléchargement. Prévoyez un champ texte sans limite de taille (pas de `VARCHAR(255)`) pour stocker `verification_url`.
+- **Le téléchargement est limité à 60 requêtes par minute et par IP**, ce qui laisse de la marge pour un traitement par lot.
+- L'attestation n'est disponible que pour l'appel par identité pivot, pas pour l'appel via FranceConnect.
 
 {:.fr-mt-6w}
 ### <a name="verifier"></a>Procédure de vérification d'une attestation
 
-La vérification ne demande aucune application ni aucun compte. L'agent chargé du contrôle :
+La vérification ne demande aucune application ni aucun compte. Pour vérifier l'authenticité de l'attestation qu'il consulte, l'agent chargé du contrôle :
 
 1. **scanne le QR code** avec un smartphone, ou clique dessus s'il consulte le PDF sur un ordinateur ;
-2. **vérifie que l'adresse de la page est bien `particulier.api.gouv.fr`** ;
-3. lit sur la page « Attestation authentique et valide », le code de vérification, le SIRET du demandeur, les dates d'émission et de fin de validité, et une partie des données ;
+2. **vérifie que l'adresse de la page est bien `particulier.api.gouv.fr`** (et s'assure ainsi qu'il n'est pas sur un site frauduleux) ;
+3. **lit le statut de l'attestation** : la page doit indiquer « Attestation authentique et valide ». Elle affiche aussi le SIRET du demandeur et les dates d'émission et de fin de validité, à titre d'information ;
 4. **compare le code affiché avec celui imprimé sur le PDF**, puis les données : `LEF•••` avec `LEFEBVRE`, `12/1982` avec `27/12/1982`, et la base de ressources à l'identique.
 
 Si le code ou les données ne correspondent pas, le document a été modifié. Si la page indique « Lien de vérification invalide ou expiré », le QR code a été altéré ou l'attestation a dépassé sa durée de validité.
@@ -246,7 +254,7 @@ L'attestation reste vérifiable **5 ans** après son émission, pour couvrir les
 </div>
 
 {:.fr-h5}
-#### Pourquoi la page n'affiche-t-elle pas tout ?
+#### <a name="minimisation"></a>Pourquoi la page n'affiche-t-elle pas tout ?
 
 La page de vérification n'affiche volontairement qu'une **version minimisée** des données, suffisante pour comparer avec le PDF mais insuffisante pour reconstituer l'identité d'une personne :
 
