@@ -13,7 +13,6 @@ module DatapassWebhook::V2
       ::DatapassWebhook::UpdateScopes,
       ::DatapassWebhook::CreateEditorDelegation,
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
-      ::DatapassWebhook::RefuseCurrentAuthorizationRequest,
       ::DatapassWebhook::RevokeCurrentToken,
       ::DatapassWebhook::UpdateMailjetContacts
   end
