@@ -46,6 +46,23 @@ RSpec.describe UpdateOrganizationINSEEPayloadJob do
         end
       end
 
+      [
+        INSEEAPIAuthentication::AuthenticationError,
+        Faraday::UnauthorizedError
+      ].each do |refusal|
+        context "when INSEE refuses the authentication (#{refusal})" do
+          before do
+            allow(insee_sirene_api_client).to receive(:etablissement).and_raise(refusal)
+          end
+
+          it 'fails at once instead of spending more password attempts on INSEE' do
+            expect { perform_with_retries(described_class, organization_id) }.to raise_error(refusal)
+
+            expect(insee_sirene_api_client).to have_received(:etablissement).once
+          end
+        end
+      end
+
       context 'when INSEE answers something else than a JSON payload' do
         before do
           allow(insee_sirene_api_client).to receive(:etablissement)

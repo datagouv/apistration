@@ -63,6 +63,20 @@ RSpec.describe WeeklyChangelogDigestJob do
       }.not_to change(enqueued_jobs, :size)
     end
 
+    it 'fails without sending the digest again to the subscribers already served' do
+      stub_entries(
+        api_entreprise: [build_entry('api_entreprise', previous_monday)],
+        api_particulier: [build_entry('api_particulier', previous_sunday)]
+      )
+      allow(APIParticulier::ChangelogMailer).to receive(:weekly).and_raise(ActiveRecord::ConnectionNotEstablished)
+
+      expect {
+        described_class.perform_now(reference_date:)
+      }.to raise_error(ActiveRecord::ConnectionNotEstablished)
+
+      expect(enqueued_jobs.count { |job| job[:job] == ActionMailer::MailDeliveryJob }).to eq(1)
+    end
+
     it 'ignores entries outside the previous ISO week' do
       stub_entries(
         api_entreprise: [build_entry('api_entreprise', reference_date)],

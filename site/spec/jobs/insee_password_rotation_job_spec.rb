@@ -99,4 +99,24 @@ RSpec.describe INSEEPasswordRotationJob do
       )
     end
   end
+
+  context 'when the rotation fails unexpectedly' do
+    before { allow(rotation).to receive(:rotate!).and_raise(RuntimeError, 'unexpected') }
+
+    it 'fails at once without authenticating against INSEE again, so the next daily run is the retry' do
+      expect { perform_with_retries(described_class) }.to raise_error(RuntimeError, 'unexpected')
+
+      expect(rotation).to have_received(:rotate!).once
+    end
+  end
+
+  context 'when another rotation is already running' do
+    it 'waits for it instead of failing' do
+      job = described_class.new
+
+      job.rescue_with_handler(GoodJob::ActiveJobExtensions::Concurrency::ConcurrencyExceededError.new)
+
+      expect(described_class).to have_been_enqueued
+    end
+  end
 end
