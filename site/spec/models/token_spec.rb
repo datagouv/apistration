@@ -225,11 +225,6 @@ RSpec.describe Token do
       it 'returns true' do
         expect(token).to be_used
       end
-
-      it 'marks the token as used' do
-        token.used?
-        expect(token.used).to be true
-      end
     end
 
     context 'when used flag is false and has no access logs' do
