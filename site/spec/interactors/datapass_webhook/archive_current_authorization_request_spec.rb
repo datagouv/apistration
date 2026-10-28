@@ -30,5 +30,15 @@ RSpec.describe DatapassWebhook::ArchiveCurrentAuthorizationRequest, type: :inter
         subject
       }.to change { AuthorizationRequest.where(status: 'archived').count }
     end
+
+    context 'when the demande has no token yet' do
+      let(:authorization_request) { create(:authorization_request, status: 'validated', validated_at: 1.day.ago) }
+
+      it 'archives the demande, so that no token can be created on it' do
+        subject
+
+        expect(authorization_request.reload.status).to eq('archived')
+      end
+    end
   end
 end
