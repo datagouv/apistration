@@ -324,6 +324,23 @@ fr:
             expired: ☠️  Expiré
             active: 🔑 Actif
             new_token: 🔑 Nouveau jeton à utiliser
+    token_extensions:
+      new:
+        page_title: "Prolonger un jeton"
+        title: "Prolonger le jeton « %{name} »"
+        description: "Ce jeton expire le %{date}. Le jeton déjà installé dans votre logiciel reste valable : vous n'avez rien à y changer."
+        check_authorization_request: "Avant de prolonger, vérifiez que votre demande est toujours à jour (cadre d'utilisation, contacts, données) :"
+        datapass_link: "voir la demande n°%{external_id} sur DataPass"
+        lifetime:
+          label: "Nouvelle durée de validité, à partir d'aujourd'hui"
+          hint: "Le jeton expirera au bout de cette durée comptée depuis aujourd'hui, et non depuis sa date d'expiration actuelle (%{date}). Une durée qui raccourcirait sa validité est refusée."
+        submit: "Prolonger le jeton"
+        cancel: "Annuler"
+      create:
+        success:
+          title: "Le jeton « %{name} » est prolongé jusqu'au %{date}"
+        error:
+          title: "Le jeton « %{name} » n'a pas pu être prolongé"
     self_service_tokens:
       new:
         page_title: "Créer un jeton"
@@ -333,7 +350,7 @@ fr:
           hint: "Pour le reconnaître parmi les autres jetons de la demande, par exemple « Production » ou « Recette »."
         lifetime:
           label: "Durée de validité"
-          hint: "18 mois maximum. Pour renouveler un jeton, créez-en un nouveau puis révoquez l'ancien."
+          hint: "18 mois maximum. Un jeton qui expire dans moins de 90 jours peut être prolongé ; vous pouvez aussi en créer un nouveau puis révoquer l'ancien."
           option:
             one: "%{count} mois"
             other: "%{count} mois"
@@ -427,6 +444,7 @@ fr:
         transfer: "Transmettre"
         stats: "Statistiques"
         revoke: "Révoquer"
+        extend: "Prolonger"
         end_date:
           active: "Expire le %{date}"
           expiring_soon: "Expire le %{date}"

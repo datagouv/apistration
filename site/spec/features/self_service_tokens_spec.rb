@@ -217,6 +217,60 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     end
   end
 
+  describe 'extension of a token expiring within 90 days' do
+    let!(:token) { create(:token, authorization_request:, name: 'Production', exp: 20.days.from_now.to_i, days_left_notification_sent: [30]) }
+
+    before { login_as(contact_metier) }
+
+    def extend_token(lifetime)
+      visit authorization_request_path(authorization_request)
+      find("##{dom_id(token, :extension_link)}").click
+      select lifetime, from: "Nouvelle durée de validité, à partir d'aujourd'hui"
+      perform_enqueued_jobs { click_on 'Prolonger le jeton' }
+    end
+
+    it 'reminds to check the demande on DataPass' do
+      visit authorization_request_path(authorization_request)
+      find("##{dom_id(token, :extension_link)}").click
+
+      expect(page).to have_text('vérifiez que votre demande est toujours à jour')
+      expect(page).to have_link(href: datapass_authorization_request_url(authorization_request))
+    end
+
+    it 'extends the same token for the chosen lifetime and resets its expiration notices' do
+      extend_token('6 mois')
+
+      expect(Time.zone.at(token.reload.exp)).to be_within(1.minute).of(6.months.from_now)
+      expect(token.days_left_notification_sent).to be_empty
+      expect(page).to have_css('.fr-alert--success', text: 'Le jeton « Production » est prolongé')
+    end
+
+    it 'tells the other contacts' do
+      extend_token('18 mois')
+
+      mail = ActionMailer::Base.deliveries.last
+      expect(mail.to).to contain_exactly('demandeur@example.org', 'technique@example.org')
+      expect(mail.text_part.decoded).to include("#{contact_metier.full_name} a prolongé le jeton « Production »")
+    end
+
+    it 'is not offered for a token expiring in more than 90 days' do
+      token.update!(exp: 100.days.from_now.to_i)
+
+      visit authorization_request_path(authorization_request)
+
+      expect(page).to have_css("##{dom_id(token)}")
+      expect(page).to have_no_css("##{dom_id(token, :extension_link)}")
+    end
+
+    it 'is refused on an archived demande' do
+      authorization_request.archive!
+
+      page.driver.post token_extend_path(id: token.id), token: { lifetime_in_months: 18 }
+
+      expect(token.reload.exp).to be < 30.days.from_now.to_i
+    end
+  end
+
   describe 'a demande where tokens cannot be created' do
     before { login_as(demandeur) }
 

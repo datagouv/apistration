@@ -1,0 +1,19 @@
+<%= render partial: "mailers/header" %>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <p>Bonjour,</p>
+      <p>
+        <%= @actor.full_name %> a prolongé le jeton <b>« <%= @token.name %> »</b>
+        de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>) jusqu'au <%= @expiration_date %>.
+      </p>
+    </mj-text>
+    <mj-button href="<%= api_url(:authorization_request, id: @authorization_request.id) %>">
+      Voir les jetons de la demande
+    </mj-button>
+    <mj-text>
+      <p><b>L'équipe <%= api_full_name %></b></p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "mailers/footer" %>

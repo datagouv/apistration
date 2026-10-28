@@ -63,6 +63,8 @@ constraints(APIParticulierDomainConstraint.new) do
     post '/compte/demandes/:authorization_request_id/jetons', to: 'self_service_tokens#create', as: :authorization_request_tokens
     get '/compte/jetons/:id/revoquer', to: 'self_service_tokens#revocation', as: :token_revocation
     post '/compte/jetons/:id/revoquer', to: 'self_service_tokens#revoke', as: :token_revoke
+    get '/compte/jetons/:id/prolonger', to: 'token_extensions#new', as: :token_extension
+    post '/compte/jetons/:id/prolonger', to: 'token_extensions#create', as: :token_extend
 
     get '/compte/jetons/:id/partager', to: 'transfer_tokens#new', as: :token_transfer
     get '/compte/jetons/:id', to: 'tokens#show', as: :token
