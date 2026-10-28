@@ -6,5 +6,6 @@ class Admin::Editors::Update < ApplicationOrganizer
   end
 
   organize Admin::Editors::UpdateModel,
+    Editor::TrackConfigChange,
     Admin::TrackActivity
 end

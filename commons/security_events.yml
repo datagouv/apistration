@@ -157,3 +157,83 @@ events:
     target_type: token
     details: [surface, datapass_id, jtis, count, editor_id]
     since: 2026-11
+
+  auth.impersonation.stopped:
+    criticality: info
+    services: [site]
+    description: Un admin rend l'identité qu'il avait prise. L'acteur est l'admin, la cible l'utilisateur dont il avait pris l'identité
+    actor_types: [admin]
+    target_type: user
+    since: 2026-11
+
+  access.provider_membership.changed:
+    criticality: notable
+    services: [site]
+    description: Un admin modifie les fournisseurs de données rattachés à un utilisateur, qui voit alors leurs tableaux de bord de consommation. provider_uids est la liste après modification, previous_provider_uids la liste avant
+    actor_types: [admin]
+    target_type: user
+    details: [provider_uids, previous_provider_uids]
+    since: 2026-11
+
+  access.editor_config.changed:
+    criticality: critical
+    services: [site]
+    description: Un admin modifie un réglage d'accès d'un éditeur. form_uids sont les démarches DataPass dont l'éditeur voit les habilitations, allowed_ips les plages d'IP autorisées pour ses tokens éditeurs, copy_jwt la copie des tokens depuis sa liste d'habilitations, editor_jwt_enabled l'accès aux tokens éditeurs. changed_settings liste les réglages modifiés, before et after leurs valeurs avant et après
+    actor_types: [admin]
+    target_type: editor
+    details: [changed_settings, before, after]
+    since: 2026-11
+
+  token.editor_token.rotated:
+    criticality: notable
+    services: [site]
+    description: Un membre d'un éditeur renouvelle un token éditeur. L'ancien token (cible) est révoqué, replacement_id est le nouveau token, qui reprend les mêmes IP autorisées
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [editor_id, replacement_id]
+    since: 2026-11
+
+  token.editor_token.revoked:
+    criticality: notable
+    services: [site]
+    description: Un membre d'un éditeur révoque un token éditeur, refusé par siade dès lors
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [editor_id]
+    since: 2026-11
+
+  token.ip_allowlist.changed:
+    criticality: critical
+    services: [site]
+    description: Un membre d'un éditeur modifie les IP autorisées d'un token éditeur. Une liste vide signifie que seules les plages de l'éditeur s'appliquent. previous_allowed_ips et allowed_ips sont les listes CIDR avant et après, added_allowed_ips les entrées ajoutées. Vider allowed_ips élargit aussi l'accès sans rien ajouter, puisque la restriction propre au token disparaît
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [editor_id, previous_allowed_ips, allowed_ips, added_allowed_ips]
+    since: 2026-11
+
+  token.api_token.revoked:
+    criticality: notable
+    services: [site]
+    description: DataPass révoque une habilitation via le webhook, son token est refusé par siade dès lors (blacklisted_at). datapass_id est l'id de la demande DataPass. Un appel réussi après cette date signale une révocation inopérante
+    actor_types: [datapass]
+    target_type: token
+    details: [datapass_id, blacklisted_at]
+    since: 2026-11
+
+  delegation.editor.revoked:
+    criticality: info
+    services: [site]
+    description: Fin d'une délégation d'habilitation à un éditeur. source applicant quand le demandeur la retire depuis le site, datapass_revoke ou datapass_archive quand DataPass révoque ou archive l'habilitation (acteur datapass). datapass_id est l'id de la demande DataPass. La configuration de l'éditeur (form_uids) peut encore lui montrer l'habilitation
+    actor_types: [user, editor, admin, datapass]
+    target_type: editor_delegation
+    details: [source, editor_id, datapass_id]
+    since: 2026-11
+
+  integration.datapass_webhook.received:
+    criticality: notable
+    services: [site]
+    description: Webhook DataPass reçu, avant traitement. outcome denied avec reason invalid_signature si la signature HMAC est absente ou fausse (acteur anonymous), sinon acteur datapass. webhook_event est l'événement DataPass (approve, revoke...), fired_at sa date d'émission côté DataPass, datapass_id l'id de la demande DataPass
+    actor_types: [datapass, anonymous]
+    target_type: authorization_request
+    details: [webhook_event, fired_at, datapass_id, reason]
+    since: 2026-11

@@ -25,4 +25,26 @@ RSpec.describe Admin::Users::Update, type: :organizer do
       expect { result }.not_to emit_security_event('access.editor_membership.changed')
     end
   end
+
+  context 'when the admin gives the user another provider' do
+    let(:user) { create(:user, provider_uids: %w[dgfip]) }
+    let(:user_params) { { editor_id: nil, provider_uids: %w[dgfip insee] } }
+
+    it 'emits a provider membership change with both lists' do
+      expect { result }.to emit_security_event('access.provider_membership.changed').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: user.id },
+        details: { provider_uids: %w[dgfip insee], previous_provider_uids: %w[dgfip] }
+      )
+    end
+  end
+
+  context 'when the admin keeps the providers of the user' do
+    let(:user) { create(:user, provider_uids: %w[dgfip]) }
+    let(:user_params) { { editor_id: nil, provider_uids: %w[dgfip] } }
+
+    it 'emits no provider membership change' do
+      expect { result }.not_to emit_security_event('access.provider_membership.changed')
+    end
+  end
 end
