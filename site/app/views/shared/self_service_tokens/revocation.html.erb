@@ -1,0 +1,22 @@
+<% content_for :page_title, t('.page_title') %>
+<turbo-frame id="main-modal-content">
+  <div class="single-page">
+    <%= form_with url: token_revoke_path(id: @token.id), method: :post, id: dom_id(@token, :revocation), data: { turbo: false } do |form| %>
+      <h1 id="<%= dom_id(@token, :revocation_title) %>" class="fr-modal__title">
+        <span class="fr-icon-close-circle-line fr-icon--lg" aria-hidden="true"></span>
+        <%= t('.title') %>
+      </h1>
+
+      <p><%= t('.description', name: @token.name) %></p>
+
+      <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+        <p><%= t('.cache_notice') %></p>
+      </div>
+
+      <ul class="fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-lg">
+        <li><%= form.button t('.submit'), class: 'fr-btn' %></li>
+        <li><button type="button" class="fr-btn fr-btn--secondary" aria-controls="main-modal"><%= t('.cancel') %></button></li>
+      </ul>
+    <% end %>
+  </div>
+</turbo-frame>

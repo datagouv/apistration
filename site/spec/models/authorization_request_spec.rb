@@ -211,6 +211,26 @@ RSpec.describe AuthorizationRequest do
       expect { revoke! }.to change { authorization_request.token.reload.blacklisted_at }.from(nil)
     end
 
+    context 'with several active tokens' do
+      let!(:other_token) { create(:token, authorization_request:, name: 'Recette') }
+
+      it 'blacklists every token of the authorization request' do
+        revoke!
+
+        expect(authorization_request.tokens.reload).to all(be_blacklisted)
+      end
+    end
+
+    context 'with an expired token' do
+      let!(:expired_token) { create(:token, authorization_request:, name: 'Ancien', exp: 1.day.ago.to_i) }
+
+      it 'blacklists it too, so it can never be extended again' do
+        revoke!
+
+        expect(expired_token.reload.blacklisted_at).to be_present
+      end
+    end
+
     it 'revokes the active delegations' do
       expect { revoke! }.to change { delegation.reload.revoked_at }.from(nil)
     end

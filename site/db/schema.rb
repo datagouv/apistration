@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_19_072757) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_28_100001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -344,11 +344,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_19_072757) do
     t.uuid "authorization_request_model_id", null: false
     t.datetime "blacklisted_at"
     t.datetime "created_at", precision: nil, null: false
+    t.uuid "creator_id"
     t.jsonb "days_left_notification_sent", default: [], null: false
     t.integer "exp", null: false
     t.jsonb "extra_info", default: {}
     t.integer "iat"
     t.boolean "mcp", default: false, null: false
+    t.string "name", default: "Jeton principal", null: false
     t.jsonb "scopes", default: [], null: false
     t.string "temp_use_case"
     t.datetime "updated_at", precision: nil, null: false

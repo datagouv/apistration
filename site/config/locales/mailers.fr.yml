@@ -54,6 +54,10 @@ fr:
         link_description: Un lien vers un jeton d'accès %{api_name} vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
       banned:
         subject: 🔑⚠️ Votre token d'accès %{api_name} a été banni
+      created:
+        subject: 🔑 Jeton "%{name}" créé sur votre demande n°%{external_id}
+      revoked:
+        subject: 🔑 Jeton "%{name}" révoqué sur votre demande n°%{external_id}
 
     changelog_mailer:
       weekly:

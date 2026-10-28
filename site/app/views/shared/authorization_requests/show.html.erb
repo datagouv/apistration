@@ -15,64 +15,78 @@
         </div>
       </header>
 
-      <% if @tokens.any? %>
-        <section class="fr-mb-6w">
-          <h2 class="fr-h3"><%= t('.tokens.title') %></h2>
-          <div class="fr-table fr-table--stretch">
-            <div class="fr-table__wrapper">
-              <div class="fr-table__container">
-                <div class="fr-table__content">
-                  <table>
-                    <caption class="fr-sr-only"><%= t('.tokens.title') %></caption>
-                    <thead>
-                      <tr>
-                        <th scope="col"><%= t('.tokens.table.identifier') %></th>
-                        <th scope="col"><%= t('.tokens.table.status') %></th>
-                        <th scope="col"><%= t('.tokens.table.created_at') %></th>
-                        <th scope="col"><%= t('.tokens.table.exp') %></th>
-                        <th scope="col"><%= t('.tokens.table.actions') %></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% @tokens.each do |token| %>
-                        <tr id="<%= dom_id(token) %>">
-                          <td><%= token.id %></td>
-                          <td><%= t("shared.tokens.show.status.label.#{token.status}") %></td>
-                          <td><%= friendly_date_from_timestamp(token.created_at) %></td>
-                          <td><%= friendly_date_from_timestamp(token.exp) %></td>
-                          <td>
-                            <% if token.active? %>
-                              <ul class="fr-btns-group fr-btns-group--sm fr-btns-group--inline fr-btns-group--icon-left">
-                                <li>
-                                  <%= render partial: 'shared/tokens/reveal_token_button', locals: { token: token, extra_classes: 'fr-btn--sm' } %>
-                                </li>
-                                <li>
-                                  <%= link_to t('.tokens.table.transfer'),
-                                    token_transfer_path(id: token.id),
-                                    class: 'fr-btn fr-btn--sm fr-btn--tertiary fr-icon-send-plane-line fr-btn--icon-left',
-                                    aria: { controls: 'main-modal' },
-                                    data: { fr_opened: false, turbo_frame: 'main-modal-content' } %>
-                                </li>
-                                <li>
-                                  <%= link_to t('.tokens.table.stats'),
-                                    token_stats_path(id: token.id),
-                                    class: 'fr-btn fr-btn--sm fr-btn--tertiary fr-icon-line-chart-line fr-btn--icon-left' %>
-                                </li>
-                              </ul>
-                            <% end %>
-                          </td>
-                        </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
+      <% active_tokens, inactive_tokens = @tokens.partition(&:active?) %>
+      <section id="authorization_request_tokens" class="fr-mb-6w">
+        <h2 class="fr-h3">
+          <%= t('.tokens.title') %>
+          <span class="fr-text--md fr-text-mention--grey"><%= t('.tokens.count', count: active_tokens.size, max: AuthorizationRequest::MAX_ACTIVE_TOKENS) %></span>
+        </h2>
+
+        <% unless @authorization_request.eligible_for_token_creation? %>
+          <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+            <p><%= t(".tokens.creation_closed.#{@authorization_request.status}", default: t('.tokens.creation_closed.default')) %></p>
+          </div>
+        <% end %>
+
+        <div class="fr-grid-row fr-grid-row--gutters">
+          <% active_tokens.each do |token| %>
+            <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
+              <%= render partial: 'shared/authorization_requests/token_card', locals: { token: } %>
+            </div>
+          <% end %>
+
+          <% if policy(@authorization_request).create_token? %>
+            <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
+              <div class="fr-tile fr-tile--horizontal fr-enlarge-link" id="new_token_tile">
+                <div class="fr-tile__body">
+                  <div class="fr-tile__content">
+                    <h3 class="fr-tile__title">
+                      <%= link_to t('.tokens.create.title'),
+                        new_authorization_request_token_path(authorization_request_id: @authorization_request.id),
+                        id: :new_token_link,
+                        aria: { controls: 'main-modal' },
+                        data: { fr_opened: false, turbo_frame: 'main-modal-content' } %>
+                    </h3>
+                    <p class="fr-tile__detail"><%= t('.tokens.create.detail') %></p>
+                  </div>
+                </div>
+                <div class="fr-tile__header">
+                  <span class="fr-icon-add-circle-line fr-icon--lg" aria-hidden="true"></span>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      <% end %>
+          <% end %>
+        </div>
 
-      <% if @active_delegations.any? || @available_editors.any? %>
+        <% if @authorization_request.eligible_for_token_creation? && @authorization_request.active_tokens_limit_reached? %>
+          <p id="active_tokens_limit_reached" class="fr-mt-2w fr-text--sm"><%= t('.tokens.limit_reached', max: AuthorizationRequest::MAX_ACTIVE_TOKENS) %></p>
+        <% end %>
+
+        <% if active_tokens.empty? && @authorization_request.eligible_for_token_creation? %>
+          <p class="fr-mt-2w"><%= t('.tokens.none') %></p>
+        <% end %>
+
+        <% if inactive_tokens.any? %>
+          <section class="fr-accordion fr-mt-3w" id="inactive_tokens">
+            <h3 class="fr-accordion__title">
+              <button type="button" class="fr-accordion__btn" aria-expanded="false" aria-controls="inactive_tokens_content">
+                <%= t('.tokens.inactive', count: inactive_tokens.size) %>
+              </button>
+            </h3>
+            <div class="fr-collapse" id="inactive_tokens_content">
+              <div class="fr-grid-row fr-grid-row--gutters">
+                <% inactive_tokens.each do |token| %>
+                  <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
+                    <%= render partial: 'shared/authorization_requests/token_card', locals: { token: } %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </section>
+        <% end %>
+      </section>
+
+      <% if @active_delegations.any? || (@available_editors.any? && @authorization_request.eligible_for_token_creation?) %>
         <section id="habilitation_delegations" class="fr-mb-6w">
           <h2 class="fr-h3"><%= t('.delegations.title').html_safe %></h2>
           <p class="fr-mb-2w"><%= t('.delegations.description') %></p>
@@ -111,7 +125,7 @@
             </div>
           <% end %>
 
-          <% if @available_editors.any? %>
+          <% if @available_editors.any? && @authorization_request.eligible_for_token_creation? %>
             <%= form_with url: authorization_request_delegations_path(@authorization_request), method: :post, class: 'fr-mt-2w' do |f| %>
               <div class="fr-select-group">
                 <%= f.label :editor_id, t('.delegations.add_label'), class: 'fr-label' %>

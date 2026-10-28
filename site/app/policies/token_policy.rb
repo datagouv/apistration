@@ -6,7 +6,15 @@ class TokenPolicy < ApplicationPolicy
   end
 
   def show?
-    demandeur? || contact_technique?
+    contact?
+  end
+
+  def revoke?
+    contact? && token.active?
+  end
+
+  def transfer?
+    contact? && token.active?
   end
 
   def prolong?
@@ -15,16 +23,12 @@ class TokenPolicy < ApplicationPolicy
 
   private
 
+  def contact?
+    authorization_request.users.include?(user)
+  end
+
   def demandeur?
     authorization_request.demandeur == user
-  end
-
-  def contact_technique?
-    authorization_request.contact_technique == user
-  end
-
-  def contact_metier?
-    authorization_request.contact_metier == user
   end
 
   def authorization_request

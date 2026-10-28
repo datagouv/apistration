@@ -18,6 +18,8 @@ fr:
       create:
         success:
           title: Délégation ajoutée
+        error:
+          closed: Cette demande n'est pas ou plus validée, elle ne peut pas être déléguée.
       destroy:
         success:
           title: Délégation révoquée
@@ -331,13 +333,6 @@ fr:
           internal_error: Erreur interne d'API Entreprise
           provider_error: Erreur du fournisseur de données
           other: Autre
-      cannot_show:
-        title: Utiliser le jeton
-        description_html: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
-          Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette demande :"
-        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
-        contact_technique_html: "<strong>Contact technique</strong> : %{contact_technique}"
-        authorization_request_link: "<strong>Lien de la demande à transmettre :</strong>"
       ask_for_prolongation:
         title: Relancer le demandeur
         description_html: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
@@ -434,6 +429,39 @@ fr:
             expired: ☠️  Expiré
             active: 🔑 Actif
             new_token: 🔑 Nouveau jeton à utiliser
+    self_service_tokens:
+      new:
+        page_title: "Créer un jeton"
+        title: "Créer un jeton"
+        name:
+          label: "Nom du jeton"
+          hint: "Pour le reconnaître parmi les autres jetons de la demande, par exemple « Production » ou « Recette »."
+        lifetime:
+          label: "Durée de validité"
+          hint: "18 mois maximum. Pour renouveler un jeton, créez-en un nouveau puis révoquez l'ancien."
+          option:
+            one: "%{count} mois"
+            other: "%{count} mois"
+        notice: "Le jeton porte tous les droits de la demande. Les autres contacts de la demande sont prévenus par mail."
+        submit: "Créer le jeton"
+        cancel: "Annuler"
+      create:
+        success:
+          title: "Le jeton « %{name} » a été créé"
+        error:
+          title: "Le jeton n'a pas pu être créé"
+      revocation:
+        page_title: "Révoquer un jeton"
+        title: "Révoquer ce jeton ?"
+        description: "Le jeton « %{name} » sera révoqué immédiatement et ne pourra pas être réactivé."
+        cache_notice: "Par effet de cache, des appels avec ce jeton peuvent encore être acceptés pendant 1 heure au plus."
+        submit: "Révoquer le jeton"
+        cancel: "Annuler"
+      revoke:
+        success:
+          title: "Le jeton « %{name} » a été révoqué"
+        error:
+          title: "Le jeton « %{name} » n'a pas pu être révoqué : il n'est plus actif"
     authorization_requests:
       index:
         modal:
@@ -479,14 +507,19 @@ fr:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         tokens:
           title: "Jetons"
-          table:
-            identifier: "Identifiant"
-            status: "Statut"
-            created_at: "Date de délivrance"
-            exp: "Date d'expiration"
-            actions: "Actions"
-            stats: "Statistiques"
-            transfer: "Transmettre"
+          count: "(%{count} actifs sur %{max})"
+          none: "Aucun jeton actif : créez-en un pour appeler l'API."
+          limit_reached: "Cette demande a atteint le plafond de %{max} jetons actifs. Révoquez un jeton pour en créer un nouveau."
+          inactive:
+            one: "Jeton révoqué ou expiré (%{count})"
+            other: "Jetons révoqués ou expirés (%{count})"
+          create:
+            title: "Créer un jeton"
+            detail: "Nom et durée de 3 à 18 mois"
+          creation_closed:
+            revoked: "Cette demande a été révoquée sur DataPass : ses jetons sont révoqués et il n'est plus possible d'en créer."
+            archived: "Cette demande est archivée : il n'est plus possible d'y créer de jeton."
+            default: "Il n'est pas possible de créer de jeton sur cette demande tant qu'elle n'est pas validée."
         delegations:
           title: "Délégations&nbsp;:"
           description: "Vous pouvez déléguer votre demande à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
@@ -498,6 +531,31 @@ fr:
           add_label: Ajouter une délégation
           select_prompt: Sélectionner un éditeur
           add_submit: Ajouter
+      token_card:
+        created_by: "Créé le %{date} par %{name}"
+        created: "Créé le %{date}"
+        transfer: "Transmettre"
+        stats: "Statistiques"
+        revoke: "Révoquer"
+        end_date:
+          active: "Expire le %{date}"
+          expiring_soon: "Expire le %{date}"
+          revoked_later: "Révocation programmée le %{date}"
+          revoked: "Révoqué le %{date}"
+          expired: "Expiré le %{date}"
+        status:
+          color:
+            active: success
+            expiring_soon: warning
+            revoked_later: warning
+            revoked: error
+            expired: info
+          label:
+            active: Actif
+            expiring_soon: Expire bientôt
+            revoked_later: Révocation programmée
+            revoked: Révoqué
+            expired: Expiré
     pages:
       redoc:
         title: "Swagger 📟"

@@ -1,4 +1,6 @@
 class AuthorizationRequest < ApplicationRecord
+  MAX_ACTIVE_TOKENS = 5
+
   belongs_to :organization,
     primary_key: :siret,
     foreign_key: :siret,
@@ -120,9 +122,17 @@ class AuthorizationRequest < ApplicationRecord
     end
   end
 
+  def eligible_for_token_creation?
+    validated_at.present? && %w[archived revoked].exclude?(status)
+  end
+
+  def active_tokens_limit_reached?
+    tokens.active.count >= MAX_ACTIVE_TOKENS
+  end
+
   def revoke!
-    transaction do
-      token&.update!(blacklisted_at: Time.zone.now)
+    with_lock do
+      tokens.not_blacklisted.find_each(&:revoke!)
 
       update!(status: 'revoked')
 

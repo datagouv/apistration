@@ -59,6 +59,11 @@ constraints(APIParticulierDomainConstraint.new) do
     post '/compte/demandes/:authorization_request_id/delegations', to: 'delegations#create', as: :authorization_request_delegations
     delete '/compte/demandes/:authorization_request_id/delegations/:id', to: 'delegations#destroy', as: :authorization_request_delegation
 
+    get '/compte/demandes/:authorization_request_id/jetons/nouveau', to: 'self_service_tokens#new', as: :new_authorization_request_token
+    post '/compte/demandes/:authorization_request_id/jetons', to: 'self_service_tokens#create', as: :authorization_request_tokens
+    get '/compte/jetons/:id/revoquer', to: 'self_service_tokens#revocation', as: :token_revocation
+    post '/compte/jetons/:id/revoquer', to: 'self_service_tokens#revoke', as: :token_revoke
+
     get '/compte/jetons/:id/prolonger', to: 'tokens#prolong', as: :token_prolong
     get '/compte/jetons/:id/partager', to: 'transfer_tokens#new', as: :token_transfer
     get '/compte/jetons/:id', to: 'tokens#show', as: :token
