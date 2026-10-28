@@ -20,11 +20,12 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     )
   end
 
-  def create_token(name:, lifetime: nil)
+  def create_token(name:, lifetime: nil, allowed_ips: nil)
     visit authorization_request_path(authorization_request)
     click_on 'Créer un jeton'
     fill_in 'Nom du jeton', with: name
     select lifetime, from: 'Durée de validité' if lifetime
+    fill_in 'IP autorisées (facultatif)', with: allowed_ips if allowed_ips
     perform_enqueued_jobs { click_on 'Créer le jeton' }
   end
 
@@ -134,6 +135,36 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
         authorization_request.tokens.find_by!(name: 'Jeton 5').revoke!
 
         expect { create_token(name: 'Remplaçant') }.to change(Token, :count).by(1)
+      end
+    end
+  end
+
+  describe 'allowed IPs' do
+    before { login_as(demandeur) }
+
+    it 'saves the IPs of the token, fixed at its creation' do
+      create_token(name: 'Production', allowed_ips: "203.0.113.10\n198.51.100.0/24")
+
+      token = authorization_request.tokens.find_by!(name: 'Production')
+      expect(token.allowed_ips_as_strings).to contain_exactly('203.0.113.10/32', '198.51.100.0/24')
+      expect(page).to have_css("##{dom_id(token, :allowed_ips)}", text: '198.51.100.0/24')
+    end
+
+    context 'when the admin restricted the demande to some ranges' do
+      before { create(:authorization_request_security_settings, authorization_request:, allowed_ips: ['203.0.113.0/24']) }
+
+      it 'refuses an IP outside these ranges' do
+        expect { create_token(name: 'Production', allowed_ips: '198.51.100.12') }.not_to change(Token, :count)
+
+        expect(page).to have_css('.fr-alert--error', text: 'IP autorisées doit être incluse dans les adresses IP autorisées de la demande : 198.51.100.12')
+      end
+
+      it 'accepts an IP inside these ranges' do
+        expect { create_token(name: 'Production', allowed_ips: '203.0.113.10') }.to change(Token, :count).by(1)
+      end
+
+      it 'accepts a token without IPs, bound by the ranges of the demande only' do
+        expect { create_token(name: 'Production') }.to change(Token, :count).by(1)
       end
     end
   end
