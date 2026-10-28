@@ -42,12 +42,12 @@ RSpec.describe Datagouv::FichePayloadBuilder do
   context 'with a public API Entreprise endpoint' do
     let(:endpoint) { APIEntreprise::Endpoint.find('dgfip/numero_tva') }
 
-    it 'maps opening: public to access_type: open' do
-      expect(payload[:access_type]).to eq('open')
+    it 'stays restricted, since opening: public only means included by default and a token is still required' do
+      expect(payload[:access_type]).to eq('restricted')
     end
 
-    it 'renders the open access line in the description' do
-      expect(payload[:description]).to include('- ✅ **Accessible à tous**.')
+    it 'renders the restricted access line in the description' do
+      expect(payload[:description]).to include('- 🔐 **Uniquement accessible aux administrations et collectivités**.')
     end
 
     it 'includes a rate_limiting derived from the throttle entry' do
@@ -110,7 +110,6 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         APIEntreprise::Endpoint,
         uid: 'test/uid',
         api: 'api_entreprise',
-        opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
         description: 'Description de test.',
@@ -135,7 +134,6 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         APIEntreprise::Endpoint,
         uid: 'test/uid',
         api: 'api_entreprise',
-        opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
         description: 'Description de test.',
