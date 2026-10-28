@@ -3,6 +3,8 @@ class HyperpingMonitorsSyncJob < ApplicationJob
 
   class SyncError < StandardError; end
 
+  retry_on SyncError, HyperpingAPI::Error, wait: :polynomially_longer, attempts: 5
+
   good_job_concurrency_rule(label: 'hyperping_monitors_sync', apply_label: true, total_limit: 1)
 
   DEFAULT_PARAMS = {

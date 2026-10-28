@@ -106,10 +106,14 @@ RSpec.describe HyperpingMonitorsSyncJob do
         allow(hyperping_api).to receive(:update_monitor).and_raise(HyperpingAPI::Error.new('429', 'Rate limit'))
       end
 
-      it 'still syncs the monitors after it, then reports the failure' do
-        expect { sync }.to raise_error(described_class::SyncError, /1 monitors failed.*api_particulier existing/)
+      it 'still syncs the monitors after it' do
+        sync
 
         expect(hyperping_api).to have_received(:create_monitor).with(hash_including(name: 'Paused'))
+      end
+
+      it 'retries the whole sync later' do
+        expect { sync }.to have_enqueued_job(described_class)
       end
     end
 
@@ -118,8 +122,8 @@ RSpec.describe HyperpingMonitorsSyncJob do
         allow(hyperping_api).to receive(:get_monitors).and_raise(HyperpingAPI::Error.new('401', 'Unauthorized'))
       end
 
-      it 'fails once without trying to write anything' do
-        expect { sync }.to raise_error(HyperpingAPI::Error)
+      it 'tries once without writing anything, then retries later' do
+        expect { sync }.to have_enqueued_job(described_class)
 
         expect(hyperping_api).to have_received(:get_monitors).once
         expect(hyperping_api).not_to have_received(:create_monitor)
