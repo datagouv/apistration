@@ -7,6 +7,7 @@ fr:
       forbidden_ip: "contient une plage privée ou réservée : %{entry}"
       outside_editor_range: "doit être incluse dans les adresses IP autorisées de l'éditeur : %{entry}"
       must_be_after_date_from: "doit être postérieure à la date de début"
+      outside_authorization_request_range: "doit être incluse dans les adresses IP autorisées de la demande : %{entry}"
     show:
       not_found:
         title: "Oups, cette page n'existe pas"

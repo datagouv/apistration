@@ -50,7 +50,8 @@ module SelfServiceTokensManagement
       authorization_request:,
       user: current_user,
       name: token_params[:name],
-      lifetime_in_months: token_params[:lifetime_in_months]
+      lifetime_in_months: token_params[:lifetime_in_months],
+      allowed_ips_text: token_params[:allowed_ips_text]
     )
   end
 
@@ -67,7 +68,7 @@ module SelfServiceTokensManagement
   end
 
   def token_params
-    params.expect(token: %i[name lifetime_in_months])
+    params.expect(token: %i[name lifetime_in_months allowed_ips_text])
   end
 
   def api
