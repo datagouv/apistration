@@ -99,7 +99,7 @@ events:
   token.api_token.scopes_changed:
     criticality: critical
     services: [site]
-    description: Les scopes d'un token existant changent lors d'une revalidation DataPass, sans nouveau secret. added_scopes vide signifie une réduction de droits. previous_scopes et scopes sont les listes complètes avant et après, datapass_id l'id de la demande DataPass
+    description: Les scopes d'un token actif changent quand DataPass valide ou revalide sa demande, sans nouveau secret, un event par token actif de la demande. added_scopes vide signifie une réduction de droits. previous_scopes et scopes sont les listes complètes avant et après, datapass_id l'id de la demande DataPass
     actor_types: [datapass]
     target_type: token
     details: [datapass_id, previous_scopes, scopes, added_scopes, removed_scopes]
