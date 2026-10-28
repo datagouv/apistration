@@ -90,15 +90,8 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
         end
 
         describe 'contacts section' do
-          it 'displays the demandeur' do
-            expect(page).to have_text(authorization_request.demandeur.full_name)
-            expect(page).to have_text(authorization_request.demandeur.email)
-          end
-
-          describe 'when the user is the demandeur' do
-            it 'shows the "its me" indicator' do
-              expect(page).to have_text('c\'est moi')
-            end
+          it 'is not displayed' do
+            expect(page).to have_no_text(authorization_request.demandeur.email)
           end
 
           describe 'when the user is contact technique' do
@@ -114,8 +107,8 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
               )
             end
 
-            it 'displays contact technique info' do
-              expect(page).to have_text(authenticated_user.full_name)
+            it 'displays the authorization request' do
+              expect(page).to have_text(authorization_request.intitule)
             end
           end
         end

@@ -60,7 +60,7 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
     it 'does not display the delegations section' do
       visit authorization_request_path(authorization_request)
 
-      expect(page).to have_css('#habilitation_contacts_infos')
+      expect(page).to have_css('h1', text: authorization_request.intitule)
       expect(page).to have_no_css('#habilitation_delegations')
     end
   end

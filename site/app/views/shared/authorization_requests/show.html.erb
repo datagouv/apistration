@@ -72,31 +72,6 @@
         </section>
       <% end %>
 
-      <section id="habilitation_contacts_infos" class="fr-mb-6w">
-        <h2 class="fr-h3"><%= t('.contacts.title').html_safe %></h2>
-        <p class="fr-mb-2w">
-          <%= t('.contacts.description') %>
-          <%= link_to t('.contacts.datapass_link'),
-            datapass_authorization_request_url(@authorization_request),
-            class: 'fr-link',
-            target: '_blank',
-            rel: 'noopener' %>
-        </p>
-        <ul class="fr-list">
-          <% [
-            [:demandeur, @authorization_request.demandeur],
-            [:contact_metier, @authorization_request.contact_metier],
-            [:contact_technique, @authorization_request.contact_technique],
-          ].each do |role, contact| %>
-            <% next if contact.blank? %>
-            <li>
-              <strong><%= t(".contacts.#{role}.title").html_safe %></strong>
-              <%= contact.full_name %> (<%= contact.email %>)<%= " — #{t('.contacts.its_me')}" if contact == current_user %>
-            </li>
-          <% end %>
-        </ul>
-      </section>
-
       <% if @active_delegations.any? || @available_editors.any? %>
         <section id="habilitation_delegations" class="fr-mb-6w">
           <h2 class="fr-h3"><%= t('.delegations.title').html_safe %></h2>

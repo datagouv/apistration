@@ -487,17 +487,6 @@ fr:
             actions: "Actions"
             stats: "Statistiques"
             transfer: "Transmettre"
-        contacts:
-          title: "Contacts associés&nbsp;:"
-          description: "Vous pouvez modifier ces contacts en amendant votre demande sur DataPass :"
-          datapass_link: "modifier sur DataPass"
-          demandeur:
-            title: "Demandeur :"
-          contact_technique:
-            title: "Contact technique :"
-          contact_metier:
-            title: "Contact métier :"
-          its_me: "c'est moi"
         delegations:
           title: "Délégations&nbsp;:"
           description: "Vous pouvez déléguer votre demande à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
