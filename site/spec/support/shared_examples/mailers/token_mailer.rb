@@ -34,6 +34,11 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
         path = send(prolong_path_method, token_id: token.id)
         expect(subject.html_part.decoded).to include(path)
       end
+
+      it 'has a text part with the link to the prolongation' do
+        path = send(prolong_path_method, token_id: token.id)
+        expect(subject.text_part.decoded).to include(path)
+      end
     end
   end
 
@@ -101,6 +106,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
       it 'includes the comment' do
         expect(subject.html_part.decoded).to include('Commentaire de l\'administrateur')
         expect(subject.html_part.decoded).to include('Token was compromised')
+        expect(subject.text_part.decoded).to include('Token was compromised')
       end
     end
 

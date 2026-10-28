@@ -27,6 +27,19 @@ RSpec.describe APIEntreprise::ChangelogMailer do
 
     it 'includes the unsubscribe token link' do
       expect(mail.html_part.body.decoded).to include(subscription.unsubscribe_token)
+      expect(mail.text_part.body.decoded).to include(subscription.unsubscribe_token)
+    end
+
+    context 'when an entry links to a page of the site' do
+      let(:entries) do
+        [
+          { date: Date.new(2026, 5, 5), scope: 'api_entreprise', title: 'Nouvelle fiche', description: 'Voir le [catalogue](<%= endpoints_path %>)' }
+        ]
+      end
+
+      it 'renders the link as an absolute URL in the text part' do
+        expect(mail.text_part.body.decoded).to include("[catalogue](http://#{ActionMailer::Base.default_url_options[:host]}/catalogue)")
+      end
     end
   end
 end
