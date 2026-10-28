@@ -66,6 +66,7 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     it 'sends a single mail to the other contacts, naming the author and the token' do
       create_token(name: 'Production')
 
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
       mail = ActionMailer::Base.deliveries.last
       expect(mail.to).to contain_exactly('demandeur@example.org', 'technique@example.org')
       expect(mail.subject).to eq("🔑 Jeton \"Production\" créé sur votre demande n°#{authorization_request.external_id}")
@@ -211,6 +212,7 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     it 'sends a single mail to the other contacts' do
       revoke_token(token)
 
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
       mail = ActionMailer::Base.deliveries.last
       expect(mail.to).to contain_exactly('demandeur@example.org', 'technique@example.org')
       expect(mail.text_part.decoded).to include("#{contact_metier.full_name} a révoqué le jeton « Recette »")
@@ -248,6 +250,7 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     it 'tells the other contacts' do
       extend_token('18 mois')
 
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
       mail = ActionMailer::Base.deliveries.last
       expect(mail.to).to contain_exactly('demandeur@example.org', 'technique@example.org')
       expect(mail.text_part.decoded).to include("#{contact_metier.full_name} a prolongé le jeton « Production »")
@@ -304,6 +307,29 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
 
       expect(authorization_request.tokens.count).to eq(1)
       expect(token.reload).not_to be_blacklisted
+    end
+  end
+
+  describe 'on API Particulier', app: :api_particulier do
+    let!(:authorization_request) do
+      create(:authorization_request, :with_demandeur, :with_contact_technique, demandeur:, contact_technique:, api: 'particulier', status: 'validated', validated_at: 1.month.ago, scopes: %w[cnaf_quotient_familial])
+    end
+
+    before { login_as(contact_technique) }
+
+    it 'lets a contact create, then revoke, a named token' do
+      visit api_particulier_authorization_request_path(id: authorization_request.id)
+      click_on 'Créer un jeton'
+      fill_in 'Nom du jeton', with: 'Production'
+      perform_enqueued_jobs { click_on 'Créer le jeton' }
+
+      token = authorization_request.tokens.find_by!(name: 'Production')
+      expect(ActionMailer::Base.deliveries.last.html_part.decoded).to include('particulier')
+
+      find("##{dom_id(token, :revocation_link)}").click
+      click_on 'Révoquer le jeton'
+
+      expect(token.reload).to be_blacklisted
     end
   end
 end
