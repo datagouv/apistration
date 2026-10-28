@@ -19,8 +19,8 @@ RSpec.shared_examples 'datapass webhooks' do |version|
     expect { subject }.to change(AuthorizationRequest, :count).by(1)
   end
 
-  it 'creates a token' do
-    expect { subject }.to change(Token, :count).by(1)
+  it 'creates no token: contacts create theirs from the demande page' do
+    expect { subject }.not_to change(Token, :count)
   end
 
   describe 'when all contacts are the same' do

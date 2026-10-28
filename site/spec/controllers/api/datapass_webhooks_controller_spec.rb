@@ -43,7 +43,6 @@ RSpec.describe API::DatapassWebhooksController do
     end
 
     context 'with a valid hub signature' do
-      let(:token_id) { 'token id' }
       let(:success) { true }
 
       before do
@@ -51,7 +50,6 @@ RSpec.describe API::DatapassWebhooksController do
 
         allow(DatapassWebhook::APIEntreprise).to receive(:call).and_return(
           OpenStruct.new(
-            token_id:,
             success?: success
           )
         )
@@ -98,10 +96,10 @@ RSpec.describe API::DatapassWebhooksController do
         context 'when event is approve' do
           let(:event) { 'approve' }
 
-          it 'renders a json with a token id' do
+          it 'renders an empty json: no token is created on validation' do
             subject
 
-            expect(response.parsed_body['token_id']).to eq(token_id)
+            expect(response.parsed_body).to eq({})
           end
         end
 
@@ -135,7 +133,6 @@ RSpec.describe API::DatapassWebhooksController do
 
     describe 'happy path, on validation' do
       let(:event) { 'approve' }
-      let(:token_id) { 'token id' }
       let(:success) { true }
 
       before do
@@ -143,7 +140,6 @@ RSpec.describe API::DatapassWebhooksController do
 
         allow(DatapassWebhook::APIParticulier).to receive(:call).and_return(
           OpenStruct.new(
-            token_id:,
             success?: true
           )
         )
@@ -158,10 +154,10 @@ RSpec.describe API::DatapassWebhooksController do
       context 'when event is approve' do
         let(:event) { 'approve' }
 
-        it 'renders a json with a token id' do
+        it 'renders an empty json: no token is created on validation' do
           subject
 
-          expect(response.parsed_body['token_id']).to eq(token_id)
+          expect(response.parsed_body).to eq({})
         end
       end
     end
