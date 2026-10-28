@@ -12,6 +12,24 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,"Cas de test avec l'identité pivot du jeton FranceConnect « all_fc » du bac à sable
+d'intégration (Thomas DELATOUR).","{""nomNaissance"":""DELATOUR"",""prenoms"":[""Thomas""],""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""codeCogInseeCommuneNaissance"":""75111"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",200,"{
+  ""data"": {
+    ""beneficiaires"": [
+      {
+        ""nom_naissance"": ""DELATOUR"",
+        ""nom_usage"": null,
+        ""prenoms"": ""Thomas"",
+        ""date_naissance"": ""1994-04-16"",
+        ""sexe"": ""M"",
+        ""qualite"": ""allocataire""
+      }
+    ],
+    ""personnes_a_charge"": []
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,"Cas de test avec l'identité pivot FranceConnect par défaut du bac à sable
 d'intégration (Angela DUBOIS).","{""nomNaissance"":""DUBOIS"",""prenoms"":[""Angela"",""Claire"",""Louise""],""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""codeCogInseeCommuneNaissance"":""75107"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",200,"{
   ""data"": {

@@ -1,0 +1,33 @@
+---
+description: |-
+  Cas de test avec l'identité pivot du jeton FranceConnect « all_fc » du bac à sable
+  d'intégration (Thomas DELATOUR).
+params:
+  nomNaissance: 'DELATOUR'
+  prenoms:
+  - 'Thomas'
+  anneeDateNaissance: 1994
+  moisDateNaissance: 4
+  jourDateNaissance: 16
+  codeCogInseeCommuneNaissance: '75111'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "beneficiaires": [
+        {
+          "nom_naissance": "DELATOUR",
+          "nom_usage": null,
+          "prenoms": "Thomas",
+          "date_naissance": "1994-04-16",
+          "sexe": "M",
+          "qualite": "allocataire"
+        }
+      ],
+      "personnes_a_charge": []
+    },
+    "links": {},
+    "meta": {}
+  }
