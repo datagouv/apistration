@@ -33,6 +33,16 @@ RSpec.describe AdminAPIToken do
         decoded = AccessToken.decode(token)
         expect(decoded[:uid]).to eq(db_token.id)
       end
+
+      context 'when the token was replaced by a new one and revoked' do
+        let!(:replacement) { create(:token, authorization_request:, name: 'Remplaçant') }
+
+        before { db_token.revoke! }
+
+        it 'uses the active replacement' do
+          expect(AccessToken.decode(token)[:uid]).to eq(replacement.id)
+        end
+      end
     end
 
     context 'when in non-production environment without env var' do
