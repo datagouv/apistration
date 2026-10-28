@@ -25,7 +25,7 @@ fr:
         signature: L'équipe %{api_name}
         link_description: Un lien vers un jeton d'accès %{api_name} vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
       banned:
-        subject: 🔑⚠️ Votre token d'accès %{api_name} a été banni
+        subject: 🔑⚠️ Le jeton « %{name} » de la demande n°%{external_id} sera révoqué le %{date}
       created:
         subject: 🔑 Jeton "%{name}" créé sur votre demande n°%{external_id}
       revoked:
