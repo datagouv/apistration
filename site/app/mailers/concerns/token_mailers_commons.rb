@@ -37,18 +37,14 @@ module TokenMailersCommons
     mail(to:, subject:)
   end
 
-  def banned(args)
-    @token = args[:token]
-    @old_token = args[:old_token]
-    @authorization_request = @old_token.authorization_request
-    @comment = args[:comment]
+  def banned
+    @token = params[:token]
+    @authorization_request = @token.authorization_request
+    @comment = params[:comment]
     @intitule = @authorization_request.intitule
-    @blacklisted_at = Time.at(@old_token.blacklisted_at).in_time_zone.strftime('%d/%m/%Y')
+    @blacklisted_at = Time.at(@token.blacklisted_at).in_time_zone.strftime('%d/%m/%Y')
 
-    to = args[:email]
-    subject = t('mailers.token_mailer.banned.subject', api_name: api_full_name)
-
-    mail(to:, subject:)
+    mail(to: params[:recipients], subject: t('mailers.token_mailer.banned.subject', api_name: api_full_name))
   end
 
   def created
