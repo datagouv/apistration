@@ -401,7 +401,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
-  add_foreign_key "prolong_token_wizards", "tokens"
   add_foreign_key "user_authorization_request_roles", "authorization_requests"
   add_foreign_key "user_authorization_request_roles", "users"
 
