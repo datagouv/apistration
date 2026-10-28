@@ -8,6 +8,7 @@ fr:
       token:
         name: "Nom du jeton"
         lifetime_in_months: "Durée de validité"
+        allowed_ips: "IP autorisées"
     errors:
       models:
         token:

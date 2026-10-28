@@ -23,7 +23,8 @@ CREATE TABLE public.tokens (
     authorization_request_model_id uuid NOT NULL,
     extra_info json,
     scopes jsonb DEFAULT '[]'::jsonb NOT NULL,
-    mcp boolean DEFAULT false
+    mcp boolean DEFAULT false,
+    allowed_ips cidr[] DEFAULT '{}'::cidr[] NOT NULL
 );
 
 ALTER TABLE ONLY public.tokens ADD CONSTRAINT tokens_pkey PRIMARY KEY (id);

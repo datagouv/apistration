@@ -131,6 +131,41 @@ RSpec.describe JwtUser do
       end
     end
 
+    context 'with token_allowed_ips only' do
+      let(:jwt_user) { described_class.new(**jwt_payload, token_allowed_ips: ['203.0.113.0/28']) }
+
+      it 'refuses a call from an IP outside the token list' do
+        expect(jwt_user.ip_allowed?('8.8.8.8')).to be false
+      end
+
+      it 'accepts a call from an IP of the token list' do
+        expect(jwt_user.ip_allowed?('203.0.113.5')).to be true
+      end
+    end
+
+    context 'with both allowed_ips and token_allowed_ips' do
+      let(:jwt_user) do
+        described_class.new(**jwt_payload, allowed_ips: ['203.0.113.0/24'], token_allowed_ips: ['203.0.113.0/28'])
+      end
+
+      it 'accepts an IP allowed by both the token and the authorization request' do
+        expect(jwt_user.ip_allowed?('203.0.113.5')).to be true
+      end
+
+      it 'refuses an IP allowed by the authorization request only' do
+        expect(jwt_user.ip_allowed?('203.0.113.200')).to be false
+      end
+    end
+
+    context 'with allowed_ips and a token without IPs' do
+      let(:jwt_user) { described_class.new(**jwt_payload, allowed_ips: ['203.0.113.0/24'], token_allowed_ips: []) }
+
+      it 'applies the authorization request list only' do
+        expect(jwt_user.ip_allowed?('203.0.113.200')).to be true
+        expect(jwt_user.ip_allowed?('8.8.8.8')).to be false
+      end
+    end
+
     context 'with both allowed_ips and editor_token_allowed_ips' do
       let(:jwt_user) do
         described_class.new(**jwt_payload, allowed_ips: ['10.0.0.0/24', '192.168.1.0/25'], editor_token_allowed_ips: ['192.168.1.0/24'])

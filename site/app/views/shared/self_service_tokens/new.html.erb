@@ -26,6 +26,19 @@
           class: 'fr-select' %>
       </div>
 
+      <div class="fr-input-group">
+        <%= form.label :allowed_ips_text, class: 'fr-label' do %>
+          <%= t('.allowed_ips.label') %>
+          <span class="fr-hint-text">
+            <%= t('.allowed_ips.hint') %>
+            <% if @authorization_request.security_settings&.allowed_ips.present? %>
+              <%= t('.allowed_ips.envelope', ranges: @authorization_request.security_settings.allowed_ips.join(', ')) %>
+            <% end %>
+          </span>
+        <% end %>
+        <%= form.text_area :allowed_ips_text, class: 'fr-input', rows: 3 %>
+      </div>
+
       <p class="fr-text--sm"><%= t('.notice') %></p>
 
       <ul class="fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-lg">
