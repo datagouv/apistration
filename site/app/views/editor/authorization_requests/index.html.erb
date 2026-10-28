@@ -57,16 +57,22 @@
             <%= authorization_request.intitule %>
           </td>
           <td class="authorization_request-token">
-            <% if authorization_request.token %>
-              <%= render partial: 'shared/tokens/detail_short', locals: { token: authorization_request.token.decorate, hide_reveal_token: true } %>
+            <% token = authorization_request.latest_active_token %>
+            <% if token %>
+              <%= render partial: 'shared/tokens/detail_short', locals: { token: token.decorate, hide_reveal_token: true } %>
             <% end %>
-            <% if current_editor.copy_token? && authorization_request.token %>
+            <% if current_editor.copy_token? && token %>
               <div class="copy-token" data-controller="clipboard" data-clipboard-alert-message-value="Jeton copié">
-                <%= button_tag 'Copier le jeton', class: 'fr-btn fr-btn--sm fr-icon-window-fill fr-btn--icon-right', id: dom_id(authorization_request.token, :copy_token_button), data: { action: 'click->clipboard#copy' } %>
+                <%= button_tag 'Copier le jeton', class: 'fr-btn fr-btn--sm fr-icon-window-fill fr-btn--icon-right', id: dom_id(token, :copy_token_button), data: { action: 'click->clipboard#copy' } %>
 
-                <% hashed_value = true_user == current_user ? authorization_request.token.rehash : 'NotAValidValue' %>
-                <input id="<%= dom_id(authorization_request.token, :token_hash) %>" class="fr-input" style="position: absolute; left: -9999px" type="text" data-clipboard-target="source" readonly value="<%= hashed_value %>" />
+                <% hashed_value = true_user == current_user ? token.rehash : 'NotAValidValue' %>
+                <input id="<%= dom_id(token, :token_hash) %>" class="fr-input" style="position: absolute; left: -9999px" type="text" data-clipboard-target="source" readonly value="<%= hashed_value %>" />
               </div>
+            <% elsif current_editor.copy_token? && authorization_request.eligible_for_token_creation? %>
+              <%= button_to t('editor.authorization_requests.index.generate_token'),
+                editor_authorization_request_token_path(authorization_request),
+                id: dom_id(authorization_request, :generate_token_button),
+                class: 'fr-btn fr-btn--sm fr-btn--secondary fr-icon-add-circle-line fr-btn--icon-left' %>
             <% end %>
           </td>
           <td class="authorization_request-siret">
