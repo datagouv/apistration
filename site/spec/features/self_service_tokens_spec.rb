@@ -163,6 +163,12 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
         expect { create_token(name: 'Production', allowed_ips: '203.0.113.10') }.to change(Token, :count).by(1)
       end
 
+      it 'refuses any IP when none of the ranges of the demande is valid' do
+        AuthorizationRequestSecuritySettings.find_by!(authorization_request:).update_column(:allowed_ips, ['not-an-ip'])
+
+        expect { create_token(name: 'Production', allowed_ips: '203.0.113.10') }.not_to change(Token, :count)
+      end
+
       it 'accepts a token without IPs, bound by the ranges of the demande only' do
         expect { create_token(name: 'Production') }.to change(Token, :count).by(1)
       end
