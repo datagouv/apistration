@@ -29,6 +29,12 @@ class AuthorizationRequest < ApplicationRecord
     foreign_key: 'authorization_request_model_id',
     dependent: :destroy
 
+  has_one :latest_active_token, -> { active.order(created_at: :desc) },
+    class_name: 'Token',
+    inverse_of: :authorization_request,
+    foreign_key: 'authorization_request_model_id',
+    dependent: nil
+
   has_one :security_settings,
     class_name: 'AuthorizationRequestSecuritySettings',
     dependent: :destroy
