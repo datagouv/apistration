@@ -25,7 +25,6 @@ class Admin::Tokens::BansController < AdminController
       token: @token,
       comment: params[:comment],
       blacklisted_at: parse_blacklisted_at,
-      generate_new_token: params[:generate_new_token] == '1',
       namespace:,
       admin: true_user
     }

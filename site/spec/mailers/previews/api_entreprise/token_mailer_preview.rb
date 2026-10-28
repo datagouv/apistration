@@ -17,12 +17,7 @@ class APIEntreprise::TokenMailerPreview < ActionMailer::Preview
   end
 
   def banned
-    APIEntreprise::TokenMailer.banned(
-      token: new_token,
-      old_token: banned_token,
-      email: 'example@fake.com',
-      comment: 'Token was compromised due to suspicious activity'
-    )
+    APIEntreprise::TokenMailer.with(token: banned_token, recipients: [to], comment: 'Token was compromised due to suspicious activity').banned
   end
 
   def created
@@ -43,10 +38,6 @@ class APIEntreprise::TokenMailerPreview < ActionMailer::Preview
 
   def token
     AuthorizationRequest.with_tokens_for('entreprise').first.token
-  end
-
-  def new_token
-    Token.active_for('entreprise').first || token
   end
 
   def banned_token
