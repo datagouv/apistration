@@ -41,7 +41,7 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
       it 'allows revoking a delegation' do
         visit authorization_request_path(authorization_request)
 
-        click_on 'Révoquer'
+        within('#habilitation_delegations') { click_on 'Révoquer' }
 
         expect(page).to have_css('.fr-alert--success', text: 'Délégation révoquée')
         expect(delegation.reload.revoked_at).to be_present
