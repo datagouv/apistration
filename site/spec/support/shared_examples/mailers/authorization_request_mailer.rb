@@ -24,6 +24,16 @@ RSpec.shared_examples 'an authorization request mailer' do
     end
   end
 
+  describe '#jeton_disponible' do
+    subject(:mail) { described_class.jeton_disponible({ to: [to], authorization_request: }) }
+
+    it 'tells the contacts their token is available, in both parts' do
+      expect(mail.subject).to include('votre jeton')
+      expect(mail.text_part.decoded).to include('Son jeton d\'accès est disponible')
+      expect(mail.html_part.decoded).to include('Voir mon jeton')
+    end
+  end
+
   describe '#demande_validee' do
     subject(:mail) { described_class.demande_validee({ to: [to], authorization_request:, update: false }) }
 

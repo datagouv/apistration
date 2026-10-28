@@ -12,6 +12,7 @@ module AuthorizationRequestMailersCommons
     embarquement_modifications_demandees
     embarquement_demande_refusee
     demande_validee
+    jeton_disponible
   ].each do |method|
     define_method(method) { |args| authorization_request_email(args) }
   end

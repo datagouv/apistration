@@ -14,6 +14,10 @@ class APIParticulier::AuthorizationRequestMailerPreview < ActionMailer::Preview
     end
   end
 
+  def jeton_disponible
+    APIParticulier::AuthorizationRequestMailer.jeton_disponible({ to:, cc:, authorization_request: })
+  end
+
   private
 
   def to
