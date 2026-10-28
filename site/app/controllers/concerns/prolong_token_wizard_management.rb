@@ -23,7 +23,7 @@ module ProlongTokenWizardManagement
   end
 
   def finished
-    @prolong_token_wizard.finish!
+    Token::FinishProlongWizard.call(prolong_token_wizard: @prolong_token_wizard)
 
     if @prolong_token_wizard.prolonged?
       render 'shared/prolong_token_wizard/prolonged'

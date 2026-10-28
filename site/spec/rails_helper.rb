@@ -100,6 +100,10 @@ RSpec.configure do |config|
   config.before do
     Rails.cache.clear
   end
+
+  config.after do
+    Rails.event.clear_context
+  end
 end
 
 Shoulda::Matchers.configure do |config|

@@ -88,6 +88,20 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
 
       expect(AdminActivity.where(name: 'token_banned').sole.admin).to eq(admin)
     end
+
+    it 'emits the token creation with the admin as actor' do
+      authorization_request.update!(validated_at: Time.zone.now)
+
+      expect {
+        page.driver.post(admin_user_tokens_path(user), authorization_request_id: authorization_request.id)
+      }.to emit_security_event('token.api_token.created').with(actor: { email: admin.email, role: 'admin' })
+    end
+
+    it 'emits the ban with the admin as actor' do
+      expect {
+        page.driver.post(admin_user_token_ban_path(user, token))
+      }.to emit_security_event('token.api_token.banned').with(actor: { email: admin.email, role: 'admin' })
+    end
   end
 
   describe 'banning a token', :js do

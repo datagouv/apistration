@@ -36,6 +36,54 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
       end, SecurityEvent::Track)
     end)
 
+    stub_const('CrashingSignIn', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.login.attempted', target: :user, details: { method: 'proconnect' }
+
+      tracks_security_event_failures
+
+      organize(Class.new(ApplicationInteractor) do
+        def call
+          fail ArgumentError, 'boom'
+        end
+      end, SecurityEvent::Track)
+    end)
+
+    stub_const('NestedSessionClose', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.session.closed', target: :user, details_from_context: %i[reason]
+
+      organize SecurityEvent::Track
+    end)
+
+    stub_const('SignInClosingASession', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.login.attempted', target: :user, details: { method: 'proconnect' }
+
+      organize NestedSessionClose, SecurityEvent::Track
+    end)
+
+    stub_const('ConditionalSessionClose', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.session.closed', target: :user, only_if: ->(context) { context.closed }
+
+      organize SecurityEvent::Track
+    end)
+
+    stub_const('ComputedSessionClose', Class.new(ApplicationOrganizer) do
+      include SecurityEvent::Tracking
+
+      tracks_security_event 'auth.session.closed',
+        target: :user,
+        computed_details: ->(context) { { reason: context.user.email.split('@').last } }
+
+      organize SecurityEvent::Track
+    end)
+
     stub_const('UntrackedFailure', Class.new(ApplicationOrganizer) do
       include SecurityEvent::Tracking
 
@@ -93,12 +141,42 @@ RSpec.describe SecurityEvent::Track, type: :interactor do
     it 'still fails' do
       expect(DeniedSignIn.call(email: 'attempt@example.com')).to be_a_failure
     end
+
+    it 'emits a denied event when a step raises instead of failing' do
+      expect { suppress(ArgumentError) { CrashingSignIn.call } }.to emit_security_event('auth.login.attempted').with(
+        details: { method: 'proconnect', reason: 'unexpected_error', outcome: 'denied' }
+      )
+    end
+
+    it 'lets the exception through' do
+      expect { CrashingSignIn.call }.to raise_error(ArgumentError, 'boom')
+    end
   end
 
   context 'when the organizer does not track its failures' do
     it 'emits nothing on failure' do
       expect { UntrackedFailure.call(user:) }.not_to emit_security_event('auth.session.closed')
     end
+  end
+
+  it 'adds the details computed from the context' do
+    expect { ComputedSessionClose.call(user:) }.to emit_security_event('auth.session.closed').with(
+      details: { reason: user.email.split('@').last }
+    )
+  end
+
+  it 'emits only when the declared condition holds' do
+    expect { ConditionalSessionClose.call(user:, closed: true) }.to emit_security_event('auth.session.closed')
+    expect { ConditionalSessionClose.call(user:, closed: false) }.not_to emit_security_event('auth.session.closed')
+  end
+
+  it 'lets a tracking organizer run inside another one' do
+    events = SecurityEventRecorder.new.record { SignInClosingASession.call(user:, reason: 'logout') }
+
+    expect(events).to match([
+      hash_including(event: 'auth.session.closed', details: { reason: 'logout' }),
+      hash_including(event: 'auth.login.attempted', details: { method: 'proconnect' })
+    ])
   end
 
   it 'exposes the event declared by each organizer' do

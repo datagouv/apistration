@@ -80,6 +80,12 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
             subject
           }.not_to change { authorization_request.reload.demandeur }
         end
+
+        it 'emits no role change for the demandeur' do
+          events = SecurityEventRecorder.new.record { subject }
+
+          expect(events.select { |event| event.dig(:details, :role) == 'demandeur' }).to be_empty
+        end
       end
 
       context 'when it is not the same demandeur' do
@@ -87,6 +93,35 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
           expect {
             subject
           }.to change { authorization_request.reload.demandeur }
+        end
+
+        it 'still emits the demandeur role change when a later contact makes the step crash' do
+          contact_metier['email'] = ['metier@example.com']
+
+          events = SecurityEventRecorder.new.record { expect { subject }.to raise_error(NoMethodError) }
+
+          expect(events.select { |event| event.dig(:details, :role) == 'demandeur' }.pluck(:event))
+            .to contain_exactly('access.role.granted', 'access.role.revoked')
+        end
+
+        it 'emits the demandeur role granted to the new user and revoked from the previous one' do
+          previous_demandeur = authorization_request.demandeur
+
+          events = SecurityEventRecorder.new.record { subject }
+          new_demandeur = authorization_request.reload.demandeur
+
+          expect(events.select { |event| event.dig(:details, :role) == 'demandeur' }).to contain_exactly(
+            hash_including(
+              event: 'access.role.granted',
+              target: { type: 'user', id: new_demandeur.id },
+              details: { role: 'demandeur', datapass_id: authorization_id, replaced_user_id: previous_demandeur.id }
+            ),
+            hash_including(
+              event: 'access.role.revoked',
+              target: { type: 'user', id: previous_demandeur.id },
+              details: { role: 'demandeur', datapass_id: authorization_id, replacement_user_id: new_demandeur.id }
+            )
+          )
         end
       end
     end
@@ -174,6 +209,16 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
 
     it { is_expected.to be_a_success }
     it { expect(subject.authorization_request).to an_instance_of(AuthorizationRequest) }
+
+    it 'emits a role granted to each contact, and no revocation' do
+      events = SecurityEventRecorder.new.record { subject }
+
+      expect(events).to contain_exactly(
+        hash_including(event: 'access.role.granted', details: { role: 'demandeur', datapass_id: authorization_id }),
+        hash_including(event: 'access.role.granted', details: { role: 'contact_metier', datapass_id: authorization_id }),
+        hash_including(event: 'access.role.granted', details: { role: 'contact_technique', datapass_id: authorization_id })
+      )
+    end
 
     it 'creates a new authorization request with attributes (including siret) and contacts' do
       expect {

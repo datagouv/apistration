@@ -15,6 +15,7 @@ actor_roles:
   - admin
   - editor
   - user
+  - datapass
   - anonymous
 
 common_details:
@@ -26,7 +27,7 @@ events:
   auth.login.attempted:
     criticality: notable
     services: [site]
-    description: Tentative de connexion à l'espace usagers ou admin. details.outcome denied si provider invalide, données ProConnect absentes ou MFA manquante
+    description: Tentative de connexion à l'espace usagers ou admin. details.outcome denied si provider invalide, données ProConnect absentes ou MFA manquante, reason unexpected_error si une erreur inattendue interrompt la connexion
     actor_types: [user, anonymous]
     target_type: user
     details: [method, idp, mfa, acr, reason]
@@ -40,3 +41,92 @@ events:
     target_type: user
     details: [reason]
     since: 2026-10
+
+  auth.impersonation.started:
+    criticality: critical
+    services: [site]
+    description: Un admin prend l'identité d'un utilisateur. L'acteur est l'admin, la cible l'utilisateur dont il prend l'identité
+    actor_types: [admin]
+    target_type: user
+    since: 2026-11
+
+  access.editor_membership.changed:
+    criticality: critical
+    services: [site]
+    description: Un admin rattache un utilisateur à un éditeur, l'en détache ou le déplace vers un autre. editor_id est le nouvel éditeur (absent si détaché), previous_editor_id l'ancien (absent si rattaché)
+    actor_types: [admin]
+    target_type: user
+    details: [editor_id, previous_editor_id]
+    since: 2026-11
+
+  token.api_token.banned:
+    criticality: notable
+    services: [site]
+    description: Un admin bannit un token. blacklisted_at est la date à partir de laquelle siade le refuse, un mois plus tard par défaut pour laisser le temps de basculer sur un nouveau token. datapass_id est l'id de la demande DataPass
+    actor_types: [admin]
+    target_type: token
+    details: [blacklisted_at, datapass_id]
+    since: 2026-11
+
+  token.api_token.created:
+    criticality: notable
+    services: [site]
+    description: Création d'un token d'habilitation. source datapass_webhook à la validation d'une demande DataPass (acteur datapass), admin pour une création manuelle, admin_ban pour le token de remplacement d'un ban. datapass_id est l'id de la demande DataPass, à corréler avec integration.datapass_webhook.received
+    actor_types: [admin, datapass]
+    target_type: token
+    details: [source, datapass_id, expires_at, scopes]
+    since: 2026-11
+
+  token.api_token.prolonged:
+    criticality: notable
+    services: [site]
+    description: Prolongation d'un token existant, sans nouveau secret. source applicant quand le demandeur confirme sa demande sur le site, datapass_revalidation quand DataPass revalide la demande (acteur datapass). expires_at est la nouvelle expiration, datapass_id l'id de la demande DataPass
+    actor_types: [user, datapass]
+    target_type: token
+    details: [source, datapass_id, expires_at]
+    since: 2026-11
+
+  token.api_token.scopes_changed:
+    criticality: critical
+    services: [site]
+    description: Les scopes d'un token existant changent lors d'une revalidation DataPass, sans nouveau secret. added_scopes vide signifie une réduction de droits. previous_scopes et scopes sont les listes complètes avant et après, datapass_id l'id de la demande DataPass
+    actor_types: [datapass]
+    target_type: token
+    details: [datapass_id, previous_scopes, scopes, added_scopes, removed_scopes]
+    since: 2026-11
+
+  access.role.granted:
+    criticality: notable
+    services: [site]
+    description: Un utilisateur reçoit un rôle (demandeur, contact_metier, contact_technique) sur une habilitation via le webhook DataPass. Le demandeur et le contact technique voient le token. replaced_user_id est l'utilisateur qui avait ce rôle avant (absent pour une nouvelle habilitation), datapass_id l'id de la demande DataPass
+    actor_types: [datapass]
+    target_type: user
+    details: [role, datapass_id, replaced_user_id]
+    since: 2026-11
+
+  access.role.revoked:
+    criticality: info
+    services: [site]
+    description: Un utilisateur perd un rôle sur une habilitation, remplacé par un autre via le webhook DataPass. replacement_user_id est l'utilisateur qui reçoit le rôle (voir access.role.granted), datapass_id l'id de la demande DataPass
+    actor_types: [datapass]
+    target_type: user
+    details: [role, datapass_id, replacement_user_id]
+    since: 2026-11
+
+  token.editor_token.created:
+    criticality: notable
+    services: [site]
+    description: Création d'un token éditeur, qui donne accès à toutes les habilitations déléguées à l'éditeur. source editor quand un membre de l'éditeur le génère dans son espace, admin quand un admin le génère
+    actor_types: [editor, admin]
+    target_type: editor_token
+    details: [source, editor_id]
+    since: 2026-11
+
+  delegation.editor.granted:
+    criticality: notable
+    services: [site]
+    description: Une habilitation est déléguée à un éditeur, dont les tokens éditeurs y accèdent alors. source applicant quand le demandeur délègue depuis le site, datapass_webhook quand la démarche DataPass est rattachée à un éditeur (acteur datapass). datapass_id est l'id de la demande DataPass
+    actor_types: [user, datapass]
+    target_type: editor_delegation
+    details: [source, editor_id, datapass_id]
+    since: 2026-11

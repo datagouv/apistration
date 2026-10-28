@@ -48,4 +48,15 @@ RSpec.describe SecurityEvent, '.catalog' do
       expect(%w[critical notable info]).to include(declaration['criticality']), name
     end
   end
+
+  it 'names details so that the parameter filters let them through' do
+    parameter_filter = ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+    detail_keys = catalog['events'].values.flat_map { |declaration| declaration.fetch('details', []) } + catalog['common_details']
+
+    masked_keys = detail_keys.uniq.reject do |key|
+      parameter_filter.filter(details: { key => 'value' }) == { details: { key => 'value' } }
+    end
+
+    expect(masked_keys).to be_empty
+  end
 end

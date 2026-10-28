@@ -2,6 +2,7 @@ module SecurityEvent
   NOTIFICATION_NAME = 'security_event'.freeze
   CATALOG_PATH = Rails.root.join('config/security_events.yml')
   ANONYMOUS_ACTOR = { email: nil, role: 'anonymous' }.freeze
+  DATAPASS_ACTOR = { email: nil, role: 'datapass' }.freeze
 
   class UndeclaredError < StandardError; end
 
@@ -19,6 +20,10 @@ module SecurityEvent
         security_event_actor: actor_for(user),
         security_event_impersonated_by: impersonator_email(user, true_user)
       )
+    end
+
+    def assign_request_actor(actor)
+      Rails.event.set_context(security_event_actor: actor)
     end
 
     def actor_for(user)
