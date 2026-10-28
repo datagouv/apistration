@@ -2028,6 +2028,9 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
@@ -2126,6 +2129,9 @@ endpoints:
     provider: Sécurité sociale
     errors:
       '422':
+      - code: '00317'
+        title: Entité non traitable
+        detail: Le nom de la commune de naissance est manquant
       - code: '00363'
         title: Entité non traitable
         detail: La date de naissance n'est pas correctement formatté
