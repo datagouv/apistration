@@ -20,6 +20,14 @@ RSpec.shared_examples 'a show token from magic link feature' do |magic_link_path
       subject
       expect(page).to have_current_path(login_path)
     end
+
+    it 'emits a denied access to an unknown shared link' do
+      expect { subject }.to emit_security_event('token.api_token.shared_link_accessed').with(
+        actor: { email: nil, role: 'anonymous' },
+        target: { type: 'token', id: nil },
+        details: { reason: 'unknown', outcome: 'denied' }
+      )
+    end
   end
 
   context 'when the magic link token exists' do
@@ -30,6 +38,14 @@ RSpec.shared_examples 'a show token from magic link feature' do |magic_link_path
       it 'shows the token details' do
         subject
         expect(page).to have_css("input[value='#{token.rehash}']")
+      end
+
+      it 'emits an anonymous access to the shared token' do
+        expect { subject }.to emit_security_event('token.api_token.shared_link_accessed').with(
+          actor: { email: nil, role: 'anonymous' },
+          target: { type: 'token', id: token.id },
+          details: { datapass_id: token.authorization_request.external_id, expires_at: magic_link.expires_at }
+        )
       end
 
       it 'has a button to copy the token hash' do
@@ -67,6 +83,13 @@ RSpec.shared_examples 'a show token from magic link feature' do |magic_link_path
       it 'redirects to the login page' do
         subject
         expect(page).to have_current_path(login_path)
+      end
+
+      it 'emits a denied access to an expired shared link' do
+        expect { subject }.to emit_security_event('token.api_token.shared_link_accessed').with(
+          target: { type: 'token', id: token.id },
+          details: hash_including(reason: 'expired', outcome: 'denied')
+        )
       end
     end
   end

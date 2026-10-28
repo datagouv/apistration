@@ -5,6 +5,7 @@ class Token::CreateMagicLink < ApplicationInteractor
       token_id: context.token_id,
       expires_at:
     )
+    context.token = context.magic_link.token
   end
 
   private

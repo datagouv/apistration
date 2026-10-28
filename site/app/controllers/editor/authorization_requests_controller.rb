@@ -7,12 +7,24 @@ class Editor::AuthorizationRequestsController < EditorController
     @q = build_search_query
 
     respond_to do |format|
-      format.html { @authorization_requests = @q.result(distinct: true).page(params[:page]) }
+      format.html do
+        @authorization_requests = @q.result(distinct: true).page(params[:page])
+        render :index
+        reveal_copied_tokens
+      end
       format.csv { send_csv_data }
     end
   end
 
   private
+
+  def reveal_copied_tokens
+    Token::RevealEditorList.call(
+      editor: current_editor,
+      tokens: @authorization_requests.filter_map(&:token),
+      impersonating: true_user != current_user
+    )
+  end
 
   def build_search_query
     current_editor

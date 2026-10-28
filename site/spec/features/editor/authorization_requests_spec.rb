@@ -63,6 +63,10 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
           expect(page).to have_no_css('.copy-token')
           expect(page.html).not_to include(valid_authorization_requests.first.token.rehash)
         end
+
+        it 'emits no token reveal' do
+          expect { visit editor_authorization_requests_path }.not_to emit_security_event('token.api_token.revealed')
+        end
       end
 
       context 'when editor can copy token' do
@@ -82,6 +86,19 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
 
           expect(page).to have_css('.authorization-request', count: 3)
           expect(page).to have_css('.copy-token', count: 2)
+        end
+
+        it 'emits one reveal of every token listed on the page' do
+          expect { visit editor_authorization_requests_path }.to emit_security_event('token.api_token.revealed').with(
+            actor: { email: user.email, role: 'editor' },
+            target: { type: 'token', id: nil },
+            details: {
+              surface: 'editor_list',
+              jtis: match_array(valid_authorization_requests.map { |authorization_request| authorization_request.token.id }),
+              count: 2,
+              editor_id: editor.id
+            }
+          )
         end
       end
     end

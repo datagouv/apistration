@@ -59,4 +59,18 @@ RSpec.describe SecurityEvent, '.catalog' do
 
     expect(masked_keys).to be_empty
   end
+
+  it 'declares actor types among the agreed roles' do
+    catalog['events'].each do |name, declaration|
+      expect(catalog['actor_roles']).to include(*declaration['actor_types']), name
+    end
+  end
+
+  it 'declares every account role for events a signed-in user can trigger' do
+    catalog['events'].each do |name, declaration|
+      next if declaration['actor_types'].exclude?('user')
+
+      expect(declaration['actor_types']).to include('editor', 'admin'), name
+    end
+  end
 end
