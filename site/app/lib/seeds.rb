@@ -23,8 +23,6 @@ class Seeds
 
     load_all_models!
 
-    ProlongTokenWizard.destroy_all
-
     ActiveRecord::Base.connection.transaction do
       MagicLink.delete_all
       views = ActiveRecord::Base.connection.views
