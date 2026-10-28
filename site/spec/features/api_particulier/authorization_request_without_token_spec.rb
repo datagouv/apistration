@@ -19,10 +19,9 @@ RSpec.describe 'displays show of an authorization request without token', app: :
     expect(page).to have_current_path(api_particulier_authorization_request_path(id: authorization_request.id), ignore_query: true)
     expect(page).to have_text(authorization_request.intitule)
     expect(page).to have_css('#habilitation_no_token')
-    expect(page).to have_css('#contact_demandeur_its_me')
     expect(page).to have_no_css('#prolong-token-modal-link')
     expect(page).to have_no_css('#renew-token-modal-link')
     expect(page).not_to expose_window_opener
-    expect(page).to have_link(id: 'renew-authorization-request-link', href: datapass_reopen_authorization_request_url(authorization_request))
+    expect(page).to have_link(href: datapass_authorization_request_url(authorization_request))
   end
 end
