@@ -7,6 +7,10 @@ class Token < ApplicationRecord
     authorization_request.try(:siret)
   end
 
+  def allowed_ips_as_strings
+    allowed_ips.map(&:cidr)
+  end
+
   def blacklisted?
     blacklisted_at.present? &&
       blacklisted_at < Time.zone.now

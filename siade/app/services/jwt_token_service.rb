@@ -80,6 +80,8 @@ class JwtTokenService
   end
 
   def enrich_with_security_settings(jwt_data, token)
+    jwt_data[:token_allowed_ips] = token.allowed_ips_as_strings
+
     security_settings = token.authorization_request&.security_settings
     return unless security_settings
 
