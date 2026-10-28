@@ -247,12 +247,6 @@ fr:
         page_title: ""
       stats:
         page_title: Statistiques d'utilisation
-      renew:
-        page_title: ""
-      prolong:
-        page_title: Prolonger mon jeton
-      ask_for_prolongation:
-        page_title: ""
       token:
         scope:
           cnaf_quotient_familial:
@@ -529,13 +523,6 @@ fr:
         page_title: Article
     transfer_tokens:
       new:
-        page_title: ""
-    prolong_token_wizard:
-      start:
-        page_title: ""
-      show:
-        page_title: ""
-      finished:
         page_title: ""
     public_token_magic_links:
       show:
