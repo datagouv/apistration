@@ -160,8 +160,6 @@ fr:
         modalite_formulaire_qf:
           title: "Formulaire QF"
           description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
-    links:
-      to_datapass_html: "N<sup>o</sup>%{external_id}"
     transfer_tokens:
       create:
         success:
@@ -181,79 +179,6 @@ fr:
               placeholder: jean@dupont.fr
             cta: Envoyer le lien d'accès au jeton
             confirm: Êtes-vous sûr de vouloir transférer votre jeton à cette adresse ?
-    wizard:
-      next_step: "Étape suivante :"
-    prolong_token_wizard:
-      display_cta: Prolonger le jeton
-      requires_update_cta: Terminer la mise à jour pour prolonger votre jeton
-      updates_requested_cta: Demande de mise à jour en attente d'instruction
-      header:
-        title: Prolonger le jeton
-        description: Votre jeton expire le %{humanize_date}. Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions indiquées dans votre demande %{link_to_datapass} ont évolué.
-          Veuillez répondre aux questions suivantes, ce formulaire vous engage en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU d'%{api_name}</a>
-      steps:
-        owner: Responsable de la demande
-        project_purpose: Vérification du projet
-        contacts: Vérification des contacts
-        summary: Bilan et confirmation
-      prolonged:
-        title: Votre jeton a été prolongé jusqu'au %{humanized_date}
-        description: Merci ! Suite à vos réponses, les conditions de votre demande à l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
-        link:
-          authorization_request: Revenir à votre demande
-      summary:
-        prolonged:
-          owner_not_in_charge: "Suite aux réponses indiquées, vous déclarez que le contact principal a changé. Bien que cela ne soit pas bloquant pour
-            poursuivre la prolongation de votre jeton, l'équipe support vous contactera rapidement afin de procéder au transfert de vos demandes. Vous pouvez démarrer cette démarche en autonomie
-            via votre <a href='https://%{api}.api.gouv.fr/compte'>espace personnel</a>."
-          description: Suite aux réponses indiquées, vous déclarez qu'aucune des informations indiquées dans votre demande n<sup>o</sup>%{external_id} n'a évolué.
-          cgu: ⚠️  Vos réponses vous engagent en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU</a>
-          finished: Confirmer
-        requires_update:
-          description: "Suite aux réponses indiquées, vous déclarez que des changements ont eu lieu au niveau&nbsp;:"
-          owner: du contact principal
-          project_purpose: de la nature du projet (titre et description)
-          contact_metier: du contact métier
-          contact_technique: du contact technique
-          finished: Confirmer et apporter les modifications
-        previous: Précédent
-      contact:
-        first_name: Prénom :&nbsp;
-        last_name: Nom :&nbsp;
-        email: E-mail :&nbsp;
-        contact_metier:
-          no_contact: Vous n'avez aucun contact métier renseigné
-        contact_technique:
-          no_contact: Vous n'avez aucun contact métier renseigné
-      contacts:
-        contact_metier:
-          label: "Contact métier :"
-        contact_technique:
-          label: "Contact technique :"
-        subtitle: "Vérifier si les contacts sont bien les mêmes et que leurs coordonnées n'ont pas changé :"
-        radio:
-          contact_technique: Valide
-          contact_metier: Valide
-          change_contact_technique: A changé
-          change_contact_metier: A changé
-      project_purpose:
-        label: "Cette demande a été attribuée pour la finalité suivante :"
-        no_description: Vous n'avez pas renseigné de description pour cette demande.
-        radio:
-          project_purpose: Oui, le projet bénéficiant de cette demande a toujours la même finalité.
-          change_project_purpose: Non, le projet a changé.
-      owner:
-        label: Êtes-vous toujours en charge de la demande %{link_to_datapass} ?
-        radio:
-          still_in_charge: Oui, je suis toujours en charge
-          will_change_soon: Oui, je suis toujours en charge mais pourrais passer la main d'ici quelques mois
-          not_in_charge: Non, je ne suis plus en charge de cette demande %{api}
-        not_in_charge_alert:
-          text: Si vous n'êtes plus en charge de cette demande, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank" rel="noopener noreferrer">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
-      build:
-        wizard_buttons:
-          previous: Précédent
-          next: Suivant
     users:
       user:
         links:
@@ -293,15 +218,6 @@ fr:
     tokens:
       reveal_token_button:
         cta: Afficher le jeton
-      renew:
-        title: Demander l'accès à d'autres API
-        description: |+
-          Vous souhaitez demander de nouvelles API pour le même cas d'usage ? Cette fonctionnalité vous permet de <strong>demander une mise à jour de votre demande, dans laquelle vous pourrez cocher de nouvelles API</strong>.
-          <br>
-          <strong>En cliquant sur "Continuer" vous serez transféré sur le site DataPass</strong>.
-          <br>
-          Pour en savoir plus, consultez <a href='https://%{api}.api.gouv.fr/faq#comment-elargir-le-perimetre-des-api-disponibles-avec-mon-jeton-obtenir-de-nouvelles-donnees' target='_blank' rel='noopener noreferrer'>cette rubrique de notre FAQ</a>.
-        continue: ⬜ Continuer
       stats:
         title: "Cas d'usage du jeton : %{title}"
         tabs:
@@ -333,13 +249,6 @@ fr:
           internal_error: Erreur interne d'API Entreprise
           provider_error: Erreur du fournisseur de données
           other: Autre
-      ask_for_prolongation:
-        title: Relancer le demandeur
-        description_html: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
-          celui-ci expirera dans %{remaining_time}. Seul le demandeur peut prolonger le jeton.
-          <strong>Écrivez-lui en lui transmettant le lien vers le formulaire de prolongation :</strong>"
-        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
-        ask_for_token_prolongation_description: "<strong>Lien du questionnaire de prolongation</strong> :"
       show:
         title: Utiliser le jeton
         warning: "Vous ne devez <strong> jamais copier-coller un token
@@ -364,20 +273,6 @@ fr:
         modal:
           transfer:
             display_cta: 'Transmettre le jeton en sécurité'
-      prolong:
-        title: Prolonger le jeton
-        description:
-          future_html: "Votre jeton expire dans %{remaining_time}.
-            Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
-            indiquées dans votre demande %{link_to_datapass}
-            ont évolué."
-          past_html: "Votre jeton a expiré il y a %{remaining_time}.
-            Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
-            indiquées dans votre demande %{link_to_datapass}
-            ont évolué."
-        warning_description: "Pour prolonger votre jeton, veuillez compléter le formulaire suivant :"
-        warning: ⚠️ Vos réponses au formulaire <strong>vous engagent</strong> en regard des CGU d'%{api_name}.
-        cta: Compléter le formulaire de prolongation
       detail_short:
         no_token:
           title: Aucun jeton actif
@@ -429,6 +324,23 @@ fr:
             expired: ☠️  Expiré
             active: 🔑 Actif
             new_token: 🔑 Nouveau jeton à utiliser
+    token_extensions:
+      new:
+        page_title: "Prolonger un jeton"
+        title: "Prolonger le jeton « %{name} »"
+        description: "Ce jeton expire le %{date}. Le jeton déjà installé dans votre logiciel reste valable : vous n'avez rien à y changer."
+        check_authorization_request: "Avant de prolonger, vérifiez que votre demande est toujours à jour (cadre d'utilisation, contacts, données) :"
+        datapass_link: "voir la demande n°%{external_id} sur DataPass"
+        lifetime:
+          label: "Nouvelle durée de validité, à partir d'aujourd'hui"
+          hint: "Le jeton expirera au bout de cette durée comptée depuis aujourd'hui, et non depuis sa date d'expiration actuelle (%{date}). Une durée qui raccourcirait sa validité est refusée."
+        submit: "Prolonger le jeton"
+        cancel: "Annuler"
+      create:
+        success:
+          title: "Le jeton « %{name} » est prolongé jusqu'au %{date}"
+        error:
+          title: "Le jeton « %{name} » n'a pas pu être prolongé"
     self_service_tokens:
       new:
         page_title: "Créer un jeton"
@@ -438,7 +350,7 @@ fr:
           hint: "Pour le reconnaître parmi les autres jetons de la demande, par exemple « Production » ou « Recette »."
         lifetime:
           label: "Durée de validité"
-          hint: "18 mois maximum. Pour renouveler un jeton, créez-en un nouveau puis révoquez l'ancien."
+          hint: "18 mois maximum. Un jeton qui expire dans moins de 90 jours peut être prolongé ; vous pouvez aussi en créer un nouveau puis révoquer l'ancien."
           option:
             one: "%{count} mois"
             other: "%{count} mois"
@@ -468,27 +380,16 @@ fr:
           title: "Le jeton « %{name} » n'a pas pu être révoqué : il n'est plus actif"
     authorization_requests:
       index:
-        modal:
-          show:
-            display_cta_replace_legacy: "Remplacer votre ancien jeton avec le nouveau jeton"
-            display_cta_new_token: "Utiliser le nouveau jeton"
-            display_cta_replace: "Remplacer le jeton banni par le nouveau jeton"
         no_authorization_requests: "Vous n'avez aucune demande"
         title_html: "Demandes %{api_label}"
         entreprise_html: API&nbsp;Entreprise
         particulier_html: API&nbsp;Particulier
-        no_action: Aucune action attendue
         links:
           to_datapass_html: "Datapass n°%{external_id}"
           profile: Vos informations
       breadcrumb:
         index: Demandes
         current_page: Demande n°%{datapass_id}
-      summary:
-        access: Droits d'accès
-        active_tokens: Jetons
-        contacts: Contacts
-        delegations: Délégations
       status:
         color:
           refused: pink-tuile
@@ -543,6 +444,7 @@ fr:
         transfer: "Transmettre"
         stats: "Statistiques"
         revoke: "Révoquer"
+        extend: "Prolonger"
         end_date:
           active: "Expire le %{date}"
           expiring_soon: "Expire le %{date}"
@@ -634,6 +536,16 @@ fr:
       button: "S'abonner"
 
   editor:
+    authorization_requests:
+      index:
+        generate_token: Générer un jeton
+    authorization_request_tokens:
+      create:
+        success:
+          title: "Jeton généré pour la demande « %{intitule} »"
+        error:
+          title: "Le jeton n'a pas pu être généré"
+          not_allowed: "Cette demande a déjà un jeton actif, ou votre espace ne permet pas de générer de jeton."
     tokens:
       index:
         title: Jetons éditeurs

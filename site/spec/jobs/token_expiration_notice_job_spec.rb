@@ -18,10 +18,7 @@ RSpec.describe TokenExpirationNoticeJob do
 
   it_behaves_like 'sending expiration notices', 0
   it_behaves_like 'sending expiration notices', 7
-  it_behaves_like 'sending expiration notices', 15
   it_behaves_like 'sending expiration notices', 30
-  it_behaves_like 'sending expiration notices', 60
-  it_behaves_like 'sending expiration notices', 90
 
   describe 'when there is a token with an expiration date in 7 days' do
     let!(:token) { create(:token, exp: 7.days.from_now, days_left_notification_sent:) }
@@ -77,18 +74,18 @@ RSpec.describe TokenExpirationNoticeJob do
       expect(notices_sent_to(token)).to eq([30])
     end
 
-    it 'sends each notice once over the life of a token' do
-      token = create(:token, exp: 91.days.from_now.to_i)
+    it 'sends the 30, 7 and 0 days notices once over the life of a token' do
+      token = create(:token, exp: 31.days.from_now.to_i)
 
-      (0..(93 * 6)).each do |run|
+      (0..(33 * 6)).each do |run|
         Timecop.travel((run * 4).hours.from_now) { described_class.perform_now }
       end
 
-      expect(notices_sent_to(token)).to eq([90, 60, 30, 15, 7, 0])
+      expect(notices_sent_to(token)).to eq([30, 7, 0])
     end
 
     it 'sends the 0-day notice on the day of expiration' do
-      token = create(:token, exp: 1.hour.ago.to_i, days_left_notification_sent: [90, 60, 30, 15, 7])
+      token = create(:token, exp: 1.hour.ago.to_i, days_left_notification_sent: [30, 7])
 
       subject
 

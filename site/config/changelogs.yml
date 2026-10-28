@@ -1,3 +1,9 @@
+- date: 2026-10-28
+  scope: both
+  title: "Espace compte : gérez vos jetons vous-mêmes"
+  description: |
+    Tous les contacts d'une demande (demandeur, contact technique et contact métier) peuvent créer jusqu'à 5 jetons nommés, d'une durée de 3 à 18 mois, éventuellement limités à des adresses IP, et les révoquer depuis la page de la demande dans votre [espace compte](<%= authorization_requests_path %>). Un jeton qui expire dans moins de 90 jours se prolonge en un clic, sans questionnaire. Les jetons existants restent valables jusqu'à leur date d'expiration. Le détail est dans la [FAQ](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>).
+
 - date: 2026-10-21
   scope: api_particulier
   title: "Participation familiale EAJE : attestation PDF vérifiable des données délivrées"

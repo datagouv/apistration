@@ -1,14 +1,7 @@
 class APIParticulier::TokenMailerPreview < ActionMailer::Preview
-  %w[
-    expiration_notice_90J
-    expiration_notice_60J
-    expiration_notice_30J
-    expiration_notice_15J
-    expiration_notice_7J
-    expiration_notice_0J
-  ].each do |method|
-    send('define_method', method) do
-      APIParticulier::TokenMailer.send(method, { to:, cc:, token: })
+  [30, 7, 0].each do |days|
+    define_method("expiration_notice_#{days}_days") do
+      APIParticulier::TokenMailer.with(token:, days:).expiration_notice
     end
   end
 
@@ -17,16 +10,15 @@ class APIParticulier::TokenMailerPreview < ActionMailer::Preview
   end
 
   def banned
-    APIParticulier::TokenMailer.banned(
-      token: new_token,
-      old_token: banned_token,
-      email: 'example@fake.com',
-      comment: 'Token was compromised due to suspicious activity'
-    )
+    APIParticulier::TokenMailer.with(token: banned_token, recipients: [to], comment: 'Token was compromised due to suspicious activity').banned
   end
 
   def created
     APIParticulier::TokenMailer.with(token:, actor: token.authorization_request.demandeur, recipients: [to]).created
+  end
+
+  def extended
+    APIParticulier::TokenMailer.with(token:, actor: token.authorization_request.demandeur, recipients: [to]).extended
   end
 
   def revoked
@@ -43,10 +35,6 @@ class APIParticulier::TokenMailerPreview < ActionMailer::Preview
 
   def token
     AuthorizationRequest.with_tokens_for('particulier').first.token
-  end
-
-  def new_token
-    Token.active_for('particulier').first || token
   end
 
   def banned_token

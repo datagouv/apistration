@@ -124,23 +124,6 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
             }.not_to change { authorization_request.reload.last_update.to_i }
           end
         end
-
-        context 'when there is a token wizard expecting updates' do
-          let!(:token) { create(:token, authorization_request: authorization_request) }
-          let!(:last_prolong_token_wizard) { create(:prolong_token_wizard, :requires_update, token:) }
-
-          it 'doest not update the authorization request' do
-            expect {
-              subject
-            }.not_to change { authorization_request.reload.last_update.to_i }
-          end
-
-          it 'updates the prolong_token_wizard status' do
-            expect {
-              subject
-            }.to change { authorization_request.token.last_prolong_token_wizard.status }
-          end
-        end
       end
 
       context 'when event is validate' do

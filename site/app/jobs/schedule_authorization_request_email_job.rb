@@ -3,19 +3,24 @@ class ScheduleAuthorizationRequestEmailJob < ApplicationJob
 
   attr_reader :authorization_request
 
-  def perform(authorization_request_id, authorization_request_status, template_name, recipients)
+  def perform(authorization_request_id, authorization_request_status, template_name, recipients, update: false)
     @authorization_request = AuthorizationRequest.find_by(id: authorization_request_id)
 
     return if authorization_request.blank?
     return if authorization_request_status_changed?(authorization_request_status)
 
     mailer_klass.public_send(
-      template_name,
-      build_mailer_params(recipients)
+      current_template_name(template_name),
+      build_mailer_params(recipients).merge(update: update || template_name.start_with?('update_'))
     ).deliver_later
   end
 
   private
+
+  def current_template_name(template_name)
+    name = template_name.delete_prefix('update_')
+    name.start_with?('embarquement_valide') ? 'demande_validee' : name
+  end
 
   def build_mailer_params(recipients)
     {

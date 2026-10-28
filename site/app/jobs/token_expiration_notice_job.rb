@@ -14,13 +14,6 @@ class TokenExpirationNoticeJob < ApplicationJob
   end
 
   def number_of_days_before_expiration
-    [
-      0,
-      7,
-      15,
-      30,
-      60,
-      90
-    ]
+    ScheduleExpirationNoticeEmailJob::NOTICE_DAYS
   end
 end

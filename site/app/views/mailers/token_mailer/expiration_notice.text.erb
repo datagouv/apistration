@@ -1,0 +1,11 @@
+Bonjour,
+
+<% if @expired -%>
+Le jeton « <%= @token.name %> » de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>) a expiré le <%= @expiration_date %> : les appels à l'<%= api_full_name %> avec ce jeton sont refusés. Créez un nouveau jeton depuis la page de la demande.
+<% else -%>
+Le jeton « <%= @token.name %> » de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>) expire le <%= @expiration_date %>. Pour continuer d'appeler l'<%= api_full_name %>, prolongez-le depuis la page de la demande, ou créez un nouveau jeton, mettez à jour votre logiciel, puis révoquez l'ancien.
+<% end -%>
+
+Voir les jetons de la demande : <%= @authorization_request_url %>
+
+L'équipe <%= api_full_name %>

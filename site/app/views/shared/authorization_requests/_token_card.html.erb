@@ -50,6 +50,16 @@
             id: dom_id(token, :stats_link),
             class: 'fr-btn fr-btn--sm fr-btn--tertiary fr-icon-line-chart-line' %>
         </li>
+        <% if policy(token.object).extend? %>
+          <li>
+            <%= link_to t('shared.authorization_requests.token_card.extend'),
+              token_extension_path(id: token.id),
+              id: dom_id(token, :extension_link),
+              class: 'fr-btn fr-btn--sm fr-btn--secondary fr-icon-time-line',
+              aria: { controls: 'main-modal' },
+              data: { fr_opened: false, turbo_frame: 'main-modal-content' } %>
+          </li>
+        <% end %>
         <% if token.active? %>
           <li>
             <%= link_to t('shared.authorization_requests.token_card.revoke'),

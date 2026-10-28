@@ -9,35 +9,31 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
   let(:host) { api == 'entreprise' ? 'entreprise.api.gouv.fr' : 'particulier.api.gouv.fr' }
   let(:magic_link_subject) { api == 'entreprise' ? "Lien d'accès temporaire au jeton API Entreprise" : "Lien d'accès temporaire au jeton API Particulier" }
 
-  %w[
-    expiration_notice_90J
-    expiration_notice_60J
-    expiration_notice_30J
-    expiration_notice_15J
-    expiration_notice_7J
-    expiration_notice_0J
-  ].each do |method|
-    describe "##{method}" do
-      subject(:generate_email) { described_class.send(method, { token: }) }
+  describe '#expiration_notice' do
+    before { token.update!(name: 'Production') }
 
-      it 'generates an email' do
-        expect { generate_email }.not_to raise_error
-      end
+    [30, 7, 0].each do |days|
+      context "#{days} days before expiration" do
+        subject(:generate_email) { described_class.with(token:, days:).expiration_notice }
 
-      its(:to) { is_expected.to contain_exactly(authorization_request.demandeur.email) }
+        it 'is sent to every contact of the demande' do
+          expect(generate_email.to).to contain_exactly(
+            authorization_request.demandeur.email,
+            authorization_request.contact_technique.email,
+            authorization_request.contact_metier.email
+          )
+        end
 
-      it 'display demandeur full name' do
-        expect(subject.html_part.decoded).to include(authorization_request.demandeur.full_name)
-      end
+        it 'names the token in the subject and the body' do
+          expect(generate_email.subject).to include('« Production »')
+          expect(generate_email.text_part.decoded).to include('« Production »')
+        end
 
-      it 'has a link to datapass authorization_request copy' do
-        path = send(prolong_path_method, token_id: token.id)
-        expect(subject.html_part.decoded).to include(path)
-      end
-
-      it 'has a text part with the link to the prolongation' do
-        path = send(prolong_path_method, token_id: token.id)
-        expect(subject.text_part.decoded).to include(path)
+        it 'links to the page of the demande' do
+          path = send(prolong_path_method, id: authorization_request.id)
+          expect(generate_email.html_part.decoded).to include(path)
+          expect(generate_email.text_part.decoded).to include(path)
+        end
       end
     end
   end
@@ -63,71 +59,40 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
   end
 
   describe '#banned' do
-    subject(:mailer) do
-      described_class.banned(
-        token: new_token,
-        old_token: banned_token,
-        email:,
-        comment:
-      )
-    end
+    subject(:mailer) { described_class.with(token:, recipients:, comment:).banned }
 
-    let(:new_token) { token }
-    let(:banned_token) do
-      old_token = token.dup
-      old_token.blacklisted_at = 1.month.from_now
-      old_token
-    end
-    let(:email) { 'user@example.com' }
-    let(:banned_subject) { api == 'entreprise' ? 'Votre token d\'accès API Entreprise a été banni' : 'Votre token d\'accès API Particulier a été banni' }
+    let(:recipients) { ['user@example.com', 'other@example.com'] }
+    let(:banned_subject) { "Le jeton « #{token.name} » de la demande n°#{authorization_request.external_id} sera révoqué le #{token.blacklisted_at.strftime('%d/%m/%Y')}" }
+
+    before { token.update!(blacklisted_at: 1.month.from_now) }
 
     context 'without comment' do
       let(:comment) { nil }
 
       its(:subject) { is_expected.to eq("🔑⚠️ #{banned_subject}") }
-      its(:to) { is_expected.to contain_exactly(email) }
+      its(:to) { is_expected.to match_array(recipients) }
 
       it 'includes the intitule' do
         expect(subject.html_part.decoded).to include(authorization_request.intitule)
       end
 
       it 'includes the blacklist date' do
-        blacklisted_date = Time.at(banned_token.blacklisted_at).in_time_zone.strftime('%d/%m/%Y')
+        blacklisted_date = token.blacklisted_at.in_time_zone.strftime('%d/%m/%Y')
         expect(subject.html_part.decoded).to include(blacklisted_date)
       end
 
       it 'does not include comment section' do
-        expect(subject.html_part.decoded).not_to include('Commentaire de l\'administrateur')
+        expect(subject.html_part.decoded).not_to include('Commentaire de l\'équipe')
       end
     end
 
     context 'with comment' do
       let(:comment) { 'Token was compromised' }
 
-      its(:subject) { is_expected.to eq("🔑⚠️ #{banned_subject}") }
-      its(:to) { is_expected.to contain_exactly(email) }
-
       it 'includes the comment' do
-        expect(subject.html_part.decoded).to include('Commentaire de l\'administrateur')
+        expect(subject.html_part.decoded).to include('Commentaire de l\'équipe')
         expect(subject.html_part.decoded).to include('Token was compromised')
         expect(subject.text_part.decoded).to include('Token was compromised')
-      end
-    end
-
-    context 'with new token' do
-      let(:comment) { nil }
-
-      it 'includes new token generated message' do
-        expect(subject.html_part.decoded).to include('Un nouveau token a été automatiquement généré')
-      end
-    end
-
-    context 'without new token' do
-      let(:new_token) { nil }
-      let(:comment) { nil }
-
-      it 'does not include new token generated message' do
-        expect(subject.html_part.decoded).not_to include('Un nouveau token a été automatiquement généré')
       end
     end
   end

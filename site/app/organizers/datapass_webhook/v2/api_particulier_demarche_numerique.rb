@@ -10,10 +10,10 @@ module DatapassWebhook::V2
       ::DatapassWebhook::FindOrCreateUser,
       ::DatapassWebhook::FindOrCreateAuthorizationRequest,
       ::DatapassWebhook::FindOrCreateOrganization,
-      ::DatapassWebhook::CreateOrProlongToken,
+      ::DatapassWebhook::UpdateScopes,
+      ::DatapassWebhook::CreateTokenOnValidation,
       ::DatapassWebhook::CreateEditorDelegation,
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
-      ::DatapassWebhook::RefuseCurrentAuthorizationRequest,
       ::DatapassWebhook::RevokeCurrentToken,
       ::DatapassWebhook::UpdateMailjetContacts
   end

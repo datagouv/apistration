@@ -1,61 +1,37 @@
 fr:
   mailers:
     authorization_request_mailer:
-      embarquement_demande_refusee:
-        subject: 🚫 Votre demande d'accès est refusée.
-      embarquement_modifications_demandees:
-        subject: ✒️ Votre demande requiert des modifications.
-      embarquement_valide_to_editeur:
-        subject:  ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_is_tech:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_is_tech_is_metier:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_seulement:
-        subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
-      embarquement_valide_to_metier_cc_demandeur_tech:
-        subject: ✅ Vous avez été désigné contact métier d'une habilitation à l'%{api_name}.
-      embarquement_valide_to_demandeur_is_metier_not_tech:
-        subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
-      embarquement_valide_to_demandeur_is_tech_not_metier:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_tech_cc_demandeur:
-        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'%{api_name}. Récupérez maintenant la clé d'accès 🔑 !
-      embarquement_valide_to_tech_cc_demandeur_metier:
-        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'%{api_name}. Récupérez maintenant la clé d'accès 🔑 !
       demande_recue:
         subject: 📬 Votre demande d'accès à l'%{api_name} a bien été reçue par nos services.
-
-      update_embarquement_demande_refusee:
-        subject: 🚫 Votre demande de mise à jour est refusée.
-      update_embarquement_modifications_demandees:
-        subject: ✒️ Votre demande de mise à jour requiert des modifications.
-      update_embarquement_valide_to_demandeur:
-        subject: ✅ Demande de mise à jour validée
-      update_demande_recue:
-        subject: 📬 Votre demande de mise à jour de votre accès à l'%{api_name} a bien été reçue par nos services.
+        update_subject: 📬 Votre demande de mise à jour de votre accès à l'%{api_name} a bien été reçue par nos services.
+      embarquement_modifications_demandees:
+        subject: ✒️ Votre demande requiert des modifications.
+        update_subject: ✒️ Votre demande de mise à jour requiert des modifications.
+      embarquement_demande_refusee:
+        subject: 🚫 Votre demande d'accès est refusée.
+        update_subject: 🚫 Votre demande de mise à jour est refusée.
+      jeton_disponible:
+        subject: "✅ Demande validée : votre jeton %{api_name} est disponible"
+      demande_validee:
+        subject: "✅ Demande validée : créez votre jeton %{api_name}"
+        delegated_subject: ✅ Demande validée
+        update_subject: ✅ Mise à jour de la demande validée
 
     token_mailer:
-      expiration_notice_90J:
-        subject: 🔑 Prolongez votre jeton %{api_name}
-      expiration_notice_60J:
-        subject: 🔑 Prolongez votre jeton %{api_name}, il expire dans 2 mois
-      expiration_notice_30J:
-        subject: 🔑⚠️ Expiration dans 30 jours de votre accès %{api_name}
-      expiration_notice_15J:
-        subject: 🔑🚨 Expiration dans 15 jours de votre accès %{api_name}
-      expiration_notice_7J:
-        subject: 🔑🚨⚠️ Expiration dans 7 jours de votre accès %{api_name}
-      expiration_notice_0J:
-        subject: "🔒⚠️ Rupture de service : votre accès à l'%{api_name} a expiré."
+      expiration_notice:
+        subject_30: 🔑 Le jeton « %{name} » de la demande n°%{external_id} expire dans 30 jours
+        subject_7: 🔑⚠️ Le jeton « %{name} » de la demande n°%{external_id} expire dans 7 jours
+        subject_0: 🔒 Le jeton « %{name} » de la demande n°%{external_id} a expiré
       magic_link:
         subject: 🔑 Lien d'accès temporaire au jeton %{api_name}
         signature: L'équipe %{api_name}
         link_description: Un lien vers un jeton d'accès %{api_name} vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
       banned:
-        subject: 🔑⚠️ Votre token d'accès %{api_name} a été banni
+        subject: 🔑⚠️ Le jeton « %{name} » de la demande n°%{external_id} sera révoqué le %{date}
       created:
         subject: 🔑 Jeton "%{name}" créé sur votre demande n°%{external_id}
+      extended:
+        subject: 🔑 Jeton "%{name}" prolongé sur votre demande n°%{external_id}
       revoked:
         subject: 🔑 Jeton "%{name}" révoqué sur votre demande n°%{external_id}
 

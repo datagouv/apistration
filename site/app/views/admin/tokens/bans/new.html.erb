@@ -6,7 +6,7 @@
     </h1>
     <p>
       Cette action ne peut pas être annulée.
-      Le demandeur et le responsable technique seront notifiés par email.
+      Tous les contacts de la demande seront notifiés par email, et pourront créer un nouveau jeton.
     </p>
 
     <%= form_with url: admin_user_token_ban_path(@user, @token), method: :post, id: dom_id(@token, :ban_form), data: { controller: 'datetime-now' } do |form| %>
@@ -36,12 +36,6 @@
           <span class="fr-hint-text">Ce commentaire sera inclus dans l'email envoyé à l'utilisateur</span>
         <% end %>
         <%= form.text_area :comment, class: 'fr-input', rows: 3 %>
-      </div>
-
-      <div class="fr-checkbox-group fr-mb-4w">
-        <input type="hidden" name="generate_new_token" value="0" autocomplete="off">
-        <input type="checkbox" id="generate_new_token" name="generate_new_token" value="1" checked>
-        <label class="fr-label" for="generate_new_token">Générer un nouveau token</label>
       </div>
     <% end %>
   </div>

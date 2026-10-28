@@ -14,15 +14,10 @@ class DatapassWebhook::ScheduleAuthorizationRequestEmails < ApplicationInteracto
     ScheduleAuthorizationRequestEmailJob.perform_later(
       context.authorization_request.id,
       context.authorization_request.status,
-      template_name(email_config),
-      recipients_payload(email_config)
+      email_config['template'],
+      recipients_payload(email_config),
+      update: context.reopening.present?
     )
-  end
-
-  def template_name(email_config)
-    return "update_#{email_config['template']}" if context.reopening
-
-    email_config['template']
   end
 
   def condition_on_update_met?(email_config)

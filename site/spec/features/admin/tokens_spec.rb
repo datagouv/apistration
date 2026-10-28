@@ -99,15 +99,15 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
       end
     end
 
-    it 'bans the token and creates a new one', :aggregate_failures do
+    it 'bans the token', :aggregate_failures do
       expect { ban_token }.to change { token.reload.blacklisted_at }.from(nil)
 
       expect(page).to have_css('.fr-alert.fr-alert--success')
       expect(page).to have_current_path(admin_user_tokens_path(user))
     end
 
-    it 'sends email to demandeur and contact technique' do
-      expect { ban_token }.to have_enqueued_job(ActionMailer::MailDeliveryJob).at_least(2).times
+    it 'sends a single email to every contact of the demande' do
+      expect { ban_token }.to have_enqueued_job(ActionMailer::MailDeliveryJob).once
     end
 
     it 'allows setting a custom blacklist date' do
@@ -123,18 +123,8 @@ RSpec.describe 'Admin: tokens', app: :api_entreprise do
       expect(token.reload.blacklisted_at).to be_within(1.minute).of(custom_date)
     end
 
-    it 'does not generate new token when unchecked' do
-      visit admin_user_tokens_path(user)
-      click_on dom_id(token, :ban)
-
-      within('#main-modal-content') do
-        checkbox = find_by_id('generate_new_token', visible: :all)
-        checkbox.execute_script('this.click()')
-        click_button 'Bannir le token'
-      end
-
-      expect(page).to have_css('.fr-alert.fr-alert--success')
-      expect(user.tokens.count).to eq(1)
+    it 'does not generate a new token' do
+      expect { ban_token }.not_to change(Token, :count)
     end
   end
 
