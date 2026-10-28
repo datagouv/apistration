@@ -1,14 +1,7 @@
 class APIEntreprise::TokenMailerPreview < ActionMailer::Preview
-  %w[
-    expiration_notice_90J
-    expiration_notice_60J
-    expiration_notice_30J
-    expiration_notice_15J
-    expiration_notice_7J
-    expiration_notice_0J
-  ].each do |method|
-    send('define_method', method) do
-      APIEntreprise::TokenMailer.send(method, { to:, cc:, token: })
+  [30, 7, 0].each do |days|
+    define_method("expiration_notice_#{days}_days") do
+      APIEntreprise::TokenMailer.with(token:, days:).expiration_notice
     end
   end
 
