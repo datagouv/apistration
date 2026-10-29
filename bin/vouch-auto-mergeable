@@ -31,6 +31,8 @@ review_rules="$(git rev-parse --show-toplevel)/REVIEW.md"
 
 grep -qF "\`${label}\`" "$review_rules" || fail "no rule ${label} in REVIEW.md"
 [ "${#proof}" -le 140 ] || fail "proof is ${#proof} characters long, GitHub keeps 140"
+git fetch --quiet origin develop || fail "cannot fetch origin/develop to check the Contract"
+git diff --quiet origin/develop...HEAD -- ':(top)*/contract/**' || fail "the pull request touches the exhale Contract: normal review"
 
 local_head=$(git rev-parse HEAD)
 read -r number author pushed_head < <(gh pr view --json number,author,headRefOid --jq '"\(.number) \(.author.login) \(.headRefOid)"')
