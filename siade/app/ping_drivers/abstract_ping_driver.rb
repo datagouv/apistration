@@ -38,9 +38,17 @@ class AbstractPingDriver < ApplicationPingDriver
   def error_ratio_too_high?
     total, errors = counts
 
-    return false if total.nil? || total.zero?
+    return false if total.nil? || total < minimum_calls
 
-    errors.to_f / total >= ERROR_RATIO_THRESHOLD
+    errors.to_f / total >= error_ratio_threshold
+  end
+
+  def error_ratio_threshold
+    ERROR_RATIO_THRESHOLD
+  end
+
+  def minimum_calls
+    1
   end
 
   def counts
