@@ -1,0 +1,20 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="fr-container fr-my-6w">
+  <h1><%= t('.title') %></h1>
+
+  <p class="fr-text--lead"><%= t('.lead', api_name:) %></p>
+
+  <p>
+    <%= t('.automation_html', developers_link: link_to(t('.developers_link'), developers_path(anchor: 'surveillance-etat-fournisseurs'))) %>
+    <%= t('.status_page_html', status_page_link: external_link_to(t('.status_page_link'), provider_ping_status_page_url)) %>
+  </p>
+
+  <% if @pings.nil? %>
+    <%= render 'shared/provider_pings/unavailable' %>
+  <% else %>
+    <turbo-frame id="provider_pings" src="<%= url_for(action: :statuses) %>">
+      <%= render 'shared/provider_pings/table', pings: @pings, checks: {} %>
+    </turbo-frame>
+  <% end %>
+</div>

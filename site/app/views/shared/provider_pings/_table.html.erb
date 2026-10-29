@@ -1,0 +1,39 @@
+<div class="fr-table fr-table--bordered">
+  <div class="fr-table__wrapper">
+    <div class="fr-table__container">
+      <div class="fr-table__content">
+        <table>
+          <caption><%= t('shared.provider_pings.table.caption', count: pings.size) %></caption>
+          <thead>
+            <tr>
+              <% [t('shared.provider_pings.table.provider'), t('shared.provider_pings.table.status'), t('shared.provider_pings.table.checked_at'), t('shared.provider_pings.table.ping')].each do |header| %>
+                <th scope="col"><%= header %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% provider_pings_failing_first(pings, checks).each do |ping| %>
+              <% check = checks[ping.url] %>
+              <tr class="provider-ping">
+                <th scope="row"><%= ping.name %></th>
+                <td>
+                  <%= provider_ping_badge(check) %>
+                  <% if check&.status == :ko && check.last_ok_at %>
+                    <p class="fr-text--xs fr-mb-0 fr-mt-1v"><%= t('shared.provider_pings.table.last_ok_at', date: l(check.last_ok_at.in_time_zone, format: :compact_with_hours)) %></p>
+                  <% end %>
+                </td>
+                <td><%= l(check.checked_at.in_time_zone, format: :compact_with_hours) if check %></td>
+                <td>
+                  <%= external_link_to ping.url, class: 'fr-link fr-text--sm' do %>
+                    <span class="fr-sr-only"><%= t('shared.provider_pings.table.ping_label', name: ping.name) %></span>
+                    <%= URI(ping.url).path %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ module APIEntreprise
              end
 
   ERRORS_NOMENCLATURE_URL = "#{BASE_URL}/v3/errors".freeze
+  PINGS_URL = "#{BASE_URL}/pings".freeze
 end
 
 module APIParticulier
@@ -20,4 +21,5 @@ module APIParticulier
              end
 
   ERRORS_NOMENCLATURE_URL = "#{BASE_URL}/api/errors".freeze
+  PINGS_URL = "#{BASE_URL}/api/pings".freeze
 end

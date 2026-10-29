@@ -60,6 +60,8 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/faq', to: 'faq#index', as: :faq_index
     get '/developpeurs', to: 'documentation#developers', as: :developers
     get '/developpeurs/openapi', to: 'pages#redoc', as: :developers_openapi
+    get '/developpeurs/etat-des-fournisseurs', to: 'provider_pings#index', as: :provider_pings
+    get '/developpeurs/etat-des-fournisseurs/statuts', to: 'provider_pings#statuses', as: :provider_pings_statuses
     get '/editeur/openapi', to: 'pages#redoc_editor', as: :editor_openapi
     get '/editeur/open-api.yml', to: ->(_env) { [200, { 'content-type' => 'text/yaml' }, [Rails.root.join('swagger/v1/openapi-editor.yaml').read]] }, as: :editor_openapi_definition
     get '/fiches', to: 'cas_usages#index', as: :cas_usages

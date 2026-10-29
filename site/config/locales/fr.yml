@@ -36,6 +36,33 @@ fr:
           error:
             title: Vous n'avez pas les droits pour accéder à cette page.
   shared:
+    provider_pings:
+      index:
+        title: État des fournisseurs de données
+        lead: "Disponibilité en temps réel des fournisseurs de données de l'%{api_name}, vérifiée par nos routes de ping."
+        automation_html: "Pour surveiller les fournisseurs depuis vos outils, appelez directement les %{developers_link}."
+        developers_link: routes de ping
+        status_page_html: "L'historique des incidents et les maintenances planifiées sont sur la %{status_page_link}."
+        status_page_link: page de statut
+      statuses:
+        pending: En cours de vérification
+        ok: Disponible
+        maintenance: En maintenance
+        unknown: Statut inconnu
+        ko: Indisponible
+      table:
+        caption:
+          one: "%{count} fournisseur"
+          other: "%{count} fournisseurs"
+        provider: Fournisseur
+        status: Statut
+        checked_at: Dernière vérification
+        last_ok_at: "Dernier statut disponible le %{date}"
+        ping: Route de ping
+        ping_label: "Route de ping %{name} :"
+      unavailable:
+        title: Liste des fournisseurs indisponible
+        description: La liste des routes de ping n'a pas pu être récupérée. Réessayez dans quelques minutes.
     stats:
       index:
         title: "Statistiques %{name}"
