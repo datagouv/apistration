@@ -338,7 +338,6 @@ fr:
       newsletter:
         page_title: Lettres d'information
         main:
-          title: Abonnez-vous à nos lettres d'infos&nbsp;!
           newsletter_title: 💌 Actualités et guides pratiques&nbsp;:&nbsp;
           newsletter_description: Restez informé des dernières API disponibles, des nouvelles fonctionnalités et en cas de rupture de service majeure&nbsp;:&nbsp;
           operations_title: 🚧 Maintenance & incidents&nbsp;:&nbsp;
@@ -391,17 +390,10 @@ fr:
           cgu_description: Votre administration est-elle éligible ? Quels sont les prérequis techniques ? Quels sont vos engagements ?
           annuaire_data_link: Vous n’êtes pas une administration ?
           annuaire_data_description: Retrouvez certaines informations sur les entreprises et les associations sur un autre site&nbsp;:&nbsp;l’Annuaire des entreprises.
-          access_account_title: Accéder à mon compte et aux jetons 🔑
-          access_account_description: Votre demande d’accès à l’API Entreprise a été acceptée par notre pôle juridique, connectez-vous pour&nbsp;:&nbsp;
-          access_account_list_token: Récupérer et prolonger les <strong>jetons d’accès</strong> ;
-          access_account_list_stats: Consulter les <strong>statistiques d’utilisation</strong> ;
-          access_account_list_content: <strong>Personnaliser le contenu du site</strong> API Entreprise en fonction de vos habilitations.
-          connect: Se connecter
         section_partners:
           title: Ils partagent les données au travers d’API Entreprise&nbsp;:&nbsp;
           subtitle: Découvrez les API de chaque fournisseur de données.
           link_endpoints: Consulter toutes les API
-          link_new_api: Proposer une nouvelle API
         section_endpoints:
           title: De nombreuses données sur les entreprises et associations&nbsp;:&nbsp;
           link_endpoints: Consulter le catalogue des données
