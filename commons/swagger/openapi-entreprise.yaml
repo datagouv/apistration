@@ -7030,41 +7030,41 @@ paths:
                                     numero:
                                       title: Numéro
                                       description: 'Numéro de l''adresse (nref personne
-                                        morale: 304862 | 304872)'
+                                        morale: 304862, 304872)'
                                       type: string
                                       example: '0057'
                                       nullable: true
                                     voie:
                                       title: Voie
                                       description: 'Voie de l''adresse (nref personne
-                                        morale: 304863 | personne physique: 304873)'
+                                        morale: 304863, personne physique: 304873)'
                                       type: string
                                       example: RUE DE VARENNE
                                       nullable: true
                                     lieu_dit_hameau:
                                       title: Lieu-dit / Hameau
                                       description: 'Lieu-dit ou hameau (nref personne
-                                        morale: 304864 | personne physique: 304874)'
+                                        morale: 304864, personne physique: 304874)'
                                       type: string
                                       nullable: true
                                     code_postal:
                                       title: Code postal
                                       description: 'Code postal (nref personne morale:
-                                        304865 | personne physique: 304875)'
+                                        304865, personne physique: 304875)'
                                       type: string
                                       example: '75007'
                                       nullable: true
                                     ville:
                                       title: Ville
-                                      description: 'Ville (nref personne morale: 304866
-                                        | personne physique: 304876)'
+                                      description: 'Ville (nref personne morale: 304866,
+                                        personne physique: 304876)'
                                       type: string
                                       example: PARIS
                                       nullable: true
                                     pays:
                                       title: Pays
                                       description: 'Pays, code iso 3166 (nref personne
-                                        morale: 304867 | personne physique: 304877)'
+                                        morale: 304867, personne physique: 304877)'
                                       type: string
                                       example: FR
                                       nullable: true
@@ -18476,11 +18476,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -19838,11 +19839,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -21257,11 +21259,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -22679,11 +22682,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -24156,11 +24160,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -25555,11 +25560,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -27012,11 +27018,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -28364,11 +28371,12 @@ paths:
                               dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
                               \n \n L'effectif mensuel exact de l'établissement est
                               disponible au travers de l'[API Effectifs - URSSAF Caisse
-                              nationale](TODO). Si votre jeton contient ce droit d'accès,
-                              nous vous recommandons d'utiliser cette API. Ces données
-                              étant protégées, leur cadre d'utilisation est différent
-                              de la tranche effectif fournie par l'Insee, qui elle
-                              est une donnée publique."
+                              nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement).
+                              Si votre jeton contient ce droit d'accès, nous vous
+                              recommandons d'utiliser cette API. Ces données étant
+                              protégées, leur cadre d'utilisation est différent de
+                              la tranche effectif fournie par l'Insee, qui elle est
+                              une donnée publique."
                             enum:
                             - NN
                             - '00'
