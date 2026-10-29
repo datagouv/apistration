@@ -6,7 +6,7 @@ RSpec.describe 'Ping routes' do
   shared_context 'with ping driver mocks' do |ping_config|
     before do
       case ping_config[:kind]
-      when 'retriever', 'retriever_payload'
+      when 'retriever', 'retriever_payload', 'retriever_document'
         allow(ping_driver.send(:retriever)).to receive(:call).and_return(
           Interactor::Context.new
         )

@@ -556,6 +556,18 @@ shared:
         params:
           id: 'W131015526'
 
+    mi/documents_associations:
+      kind: 'retriever_document'
+      cache: <%= 2.minutes %>
+      provider: 'MI'
+      status_page:
+        name: 'Documents Associations'
+        alerts_wait: 3
+      driver_params:
+        retriever: 'MI::Associations::Documents'
+        params:
+          id: '42135938100033'
+
     banque_de_france/bilans:
       kind: 'retriever'
       cache: <%= 10.minutes %>
