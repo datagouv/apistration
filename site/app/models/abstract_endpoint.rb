@@ -246,19 +246,9 @@ class AbstractEndpoint
   private
 
   def probe_api_status
-    uri = URI(ping_url)
+    response = PingProbe.new(ping_url, open_timeout: PING_OPEN_TIMEOUT, read_timeout: PING_READ_TIMEOUT).perform
 
-    response = Net::HTTP.start(
-      uri.host,
-      uri.port,
-      use_ssl: uri.scheme == 'https',
-      open_timeout: PING_OPEN_TIMEOUT,
-      read_timeout: PING_READ_TIMEOUT
-    ) { |http| http.get(uri.request_uri) }
-
-    response.code == '200' ? 'up' : 'down'
-  rescue Timeout::Error, SystemCallError, SocketError, OpenSSL::SSL::SSLError, IOError
-    'down'
+    response&.code == '200' ? 'up' : 'down'
   end
 
   def errors_nomenclature
