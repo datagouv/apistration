@@ -92,7 +92,6 @@ fr:
           title: Ils partagent les données au travers d’API Particulier&nbsp;:&nbsp;
           subtitle: Découvrez les API de chaque fournisseur de données.
           link_endpoints: Consulter toutes les API
-          link_new_api: Proposer une nouvelle API
         section_developers:
           title: Un espace développeur 🛠 <br>pour intégrer et maintenir l’API
           description: Une documentation technique précise dédiée aux équipes d’intégration.
