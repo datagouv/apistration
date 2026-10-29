@@ -62,6 +62,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'bullet'
   gem 'colorize'
+  gem 'exhale', require: false
   gem 'factory_bot_rails'
   gem 'guard-rspec'
   gem 'i18n-tasks'

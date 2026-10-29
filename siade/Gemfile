@@ -101,6 +101,7 @@ end
 group :development, :test do
   gem 'colorize'
   gem 'dotenv-rails'
+  gem 'exhale', require: false
 
   gem 'guard'
   gem 'guard-rspec', require: false
