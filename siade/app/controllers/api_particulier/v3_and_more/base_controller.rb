@@ -13,6 +13,15 @@ class APIParticulier::V3AndMore::BaseController < APIController
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
 
+  def show
+    if organizer.success?
+      render json: serialize_data,
+        status: extract_http_code(organizer)
+    else
+      render_errors(organizer)
+    end
+  end
+
   protected
 
   def cache_key

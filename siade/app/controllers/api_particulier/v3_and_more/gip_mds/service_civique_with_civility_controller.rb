@@ -3,15 +3,6 @@ class APIParticulier::V3AndMore::GIPMDS::ServiceCiviqueWithCivilityController < 
 
   nomenclature organizers: { 3 => ::GIPMDS::ServiceCivique }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   private
 
   def organizer_params

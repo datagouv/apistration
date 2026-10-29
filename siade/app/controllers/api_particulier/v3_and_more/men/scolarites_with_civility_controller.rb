@@ -3,15 +3,6 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIPart
 
   nomenclature organizers: { 3 => ::MEN::Scolarites, 4 => ::MEN::Scolarites, 5 => ::MEN::Scolarites }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   private
 
   def organizer_params
