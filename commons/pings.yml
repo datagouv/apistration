@@ -128,6 +128,12 @@ test:
           - 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect#show'
           - 'api_particulier/v2/cnav/complementaire_sante_solidaire#show'
 
+    with_documents_proxy:
+      kind: 'documents_proxy'
+      driver_params:
+        routes:
+          - 'api_entreprise/proxied_files#show'
+
 shared:
   api_particulier:
     ants:
@@ -544,6 +550,15 @@ shared:
         params:
           siren: '542065479'
           inpi_rne_account_pool: 'ping'
+
+    documents_proxy:
+      kind: 'documents_proxy'
+      status_page:
+        name: 'Documents proxy'
+        alerts_wait: 30
+      driver_params:
+        routes:
+          - 'api_entreprise/proxied_files#show'
 
     djepva/api-association:
       kind: 'retriever'
