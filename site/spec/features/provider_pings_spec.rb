@@ -48,6 +48,21 @@ RSpec.describe 'Provider pings page', :js do
       expect(all('tbody th').map(&:text)).to eq(['Down provider', 'Maintenance provider', 'Up provider'])
     end
 
+    it 'sums up failing and maintenance providers above the list' do
+      visit '/developpeurs/etat-des-fournisseurs'
+
+      expect(page).to have_css('.fr-alert--error', text: '1 fournisseur indisponible et 1 fournisseur en maintenance')
+    end
+
+    it 'tells the user when every provider works' do
+      stub_request(:get, down_url).to_return(status: 200, body: { status: 'ok' }.to_json)
+      stub_request(:get, maintenance_url).to_return(status: 200, body: { status: 'ok' }.to_json)
+
+      visit '/developpeurs/etat-des-fournisseurs'
+
+      expect(page).to have_css('.fr-alert--success', text: 'Tous les fournisseurs fonctionnent normalement.')
+    end
+
     it 'reports a provider as unavailable when its ping does not answer' do
       stub_request(:get, up_url).to_timeout
 
@@ -85,6 +100,8 @@ RSpec.describe 'Provider pings page', :js do
       within('tr', text: 'Maintenance provider') do
         expect(page).to have_css('.fr-badge', text: /\AStatut inconnu\z/i)
       end
+
+      expect(page).to have_css('.fr-alert--error', text: '1 fournisseur indisponible et 2 fournisseurs au statut inconnu')
     end
 
     it 'still checks providers when the cache cannot be written' do

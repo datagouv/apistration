@@ -2,6 +2,7 @@
   <% if @pings.nil? %>
     <%= render 'shared/provider_pings/unavailable' %>
   <% else %>
+    <%= render 'shared/provider_pings/summary', pings: @pings, checks: @checks %>
     <%= render 'shared/provider_pings/table', pings: @pings, checks: @checks %>
   <% end %>
 </turbo-frame>

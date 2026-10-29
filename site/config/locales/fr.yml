@@ -60,6 +60,20 @@ fr:
         last_ok_at: "Dernier statut disponible le %{date}"
         ping: Route de ping
         ping_label: "Route de ping %{name} :"
+      summary:
+        all_ok: Tous les fournisseurs fonctionnent normalement.
+        ko:
+          one: "%{count} fournisseur indisponible"
+          other: "%{count} fournisseurs indisponibles"
+        maintenance:
+          one: "%{count} fournisseur en maintenance"
+          other: "%{count} fournisseurs en maintenance"
+        unknown:
+          one: "%{count} fournisseur au statut inconnu"
+          other: "%{count} fournisseurs au statut inconnu"
+        pending:
+          one: "%{count} fournisseur en cours de vérification"
+          other: "%{count} fournisseurs en cours de vérification"
       unavailable:
         title: Liste des fournisseurs indisponible
         description: La liste des routes de ping n'a pas pu être récupérée. Réessayez dans quelques minutes.
