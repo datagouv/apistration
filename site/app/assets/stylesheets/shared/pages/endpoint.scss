@@ -12,6 +12,11 @@ $endpoint-show-main-padding: 40px;
 article.endpoint {
   background-color: var(--w);
   padding: $endpoint-show-main-padding;
+  overflow-wrap: break-word;
+
+  .attribute .fr-badge {
+    overflow-wrap: anywhere;
+  }
 
   .providers {
     background-color: var(--g300);
@@ -78,6 +83,11 @@ article.endpoint {
 
 @media (max-width: 576px) {
   article.endpoint {
+    table {
+      display: block;
+      overflow-x: auto;
+    }
+
     .use-cases, .details {
       width: calc(100% + #{2*$endpoint-show-main-padding + 1px});
       margin-left: -1*$endpoint-show-main-padding;
