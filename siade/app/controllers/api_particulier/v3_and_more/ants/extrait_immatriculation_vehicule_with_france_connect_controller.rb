@@ -4,15 +4,6 @@ class APIParticulier::V3AndMore::ANTS::ExtraitImmatriculationVehiculeWithFranceC
 
   nomenclature organizers: { 3 => ::ANTS::ExtraitImmatriculationVehicule }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   private
 
   def organizer_params

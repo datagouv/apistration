@@ -1,14 +1,6 @@
 class APIParticulier::V3AndMore::FranceTravail::IndemnitesWithIdentifiantController < APIParticulier::V3AndMore::BaseController
   nomenclature organizers: { 3 => ::FranceTravail::Indemnites }
 
-  def show
-    if organizer.success?
-      render json: serialize_data, status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   private
 
   def organizer_params

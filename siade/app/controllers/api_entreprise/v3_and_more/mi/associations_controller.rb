@@ -1,15 +1,6 @@
 class APIEntreprise::V3AndMore::MI::AssociationsController < APIEntreprise::V3AndMore::BaseController
   nomenclature organizers: { 3 => ::MI::Associations }
 
-  def show
-    if organizer.success?
-      render json:   serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params

@@ -1,15 +1,6 @@
 class APIEntreprise::V3AndMore::Qualifelec::CertificatsController < APIEntreprise::V3AndMore::BaseController
   nomenclature organizers: { 3 => ::Qualifelec::Certificats }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params

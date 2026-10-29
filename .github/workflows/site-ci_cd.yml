@@ -50,6 +50,31 @@ jobs:
     - name: Run RuboCop
       run: bundle exec rubocop --parallel
 
+  quality:
+    name: Duplication and complexity
+    runs-on: ubuntu-latest
+    env:
+      EXHALE_BASE: ${{ github.ref == 'refs/heads/develop' && github.event.before || 'origin/develop' }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v7.0.1
+      with:
+        fetch-depth: 0
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1.334.0
+      with:
+        bundler-cache: true
+        cache-version: 347
+        working-directory: site
+
+    - name: Duplication
+      run: bin/exhale dry --introduced-only --base "$EXHALE_BASE"
+
+    - name: Complexity
+      if: ${{ success() || failure() }}
+      run: bin/exhale complexity --base "$EXHALE_BASE"
+
   check-swagger:
     name: Check Swagger generation
     runs-on: ubuntu-latest

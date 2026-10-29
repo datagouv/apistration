@@ -2,15 +2,6 @@ class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource
   include API<%= api.classify %>::FranceConnectable
   include API<%= api.classify %>::CivilityParameters
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   private
 
   def organizer_params

@@ -67,7 +67,7 @@ gem 'gpgme'
 
 gem 'mcp'
 
-gem 'bigdecimal'
+gem 'bigdecimal', '~> 3.1'
 
 group :test do
   gem 'rswag-specs'
@@ -101,6 +101,7 @@ end
 group :development, :test do
   gem 'colorize'
   gem 'dotenv-rails'
+  gem 'exhale', require: false
 
   gem 'guard'
   gem 'guard-rspec', require: false

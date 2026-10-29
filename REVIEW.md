@@ -61,6 +61,9 @@ pull request that creates or modifies any file or code relevant to:
 - what specs do not protect: dependencies (`Gemfile*`, `package*.json`),
   CI (`.github/`), on which every rule relies to be green, and
   configuration under `config/`, except what a rule names;
+- the exhale Contract (`siade/contract/`, `site/contract/`): a clause
+  lets the duplication or complexity gate pass, so a pull request that
+  adds or loosens one would vouch for its own exemption;
 - `REVIEW.md` and `bin/vouch-auto-mergeable` themselves.
 
 A log statement that changes no behaviour is the only line accepted in
@@ -85,7 +88,7 @@ git diff --shortstat origin/develop...HEAD -- . ':!*/spec/*'
 Out of the rule, whatever the change: `commons/endpoints/`
 (documentation displayed on the site, mixed with parameters and
 versions), `commons/swagger/`, and any other `*.md` (README, CLAUDE.md,
-REVIEW.md, skills).
+REVIEW.md, skills, the exhale Contract).
 
 ### `auto-mergeable:fix-observability` — logs and monitoring
 

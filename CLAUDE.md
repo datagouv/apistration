@@ -104,6 +104,28 @@ locale (la branche distante est conservée) et toutes ses bases Postgres.
   modifie ce fichier doit être signalée au CISRT, qui écrit ses règles
   de détection à partir de lui.
 
+## Duplication et complexité (exhale)
+
+La CI de `siade/` et `site/` lance [exhale](https://github.com/tools4imps/exhale-ruby)
+contre la merge base avec `develop`, depuis l'app :
+
+```bash
+bin/exhale dry --introduced-only --base origin/develop
+bin/exhale complexity --base origin/develop
+```
+
+- Un finding `INTRODUCED` ou `SHIFTED` de `dry` : replier la copie dans
+  l'original nommé par le `hint` (méthode, base class, concern, partial).
+  Les findings `ALREADY THERE` ne bloquent pas (`--introduced-only`) mais
+  se replient de préférence dans des PR à part.
+- Un échec de `complexity` : découper la méthode qui dépasse le floor (8).
+- Une copie qui doit rester se déclare dans le Contract de l'app
+  (`siade/contract/`, `site/contract/`), sous un titre qui en donne la
+  raison ; jamais via un flag ou un seuil. Une PR qui touche au Contract
+  sort de toutes les règles de `REVIEW.md` : review normale.
+
+Détails (règles de matching, pièges Herb) dans le `CLAUDE.md` de l'app.
+
 ## Outils partagés
 
 ### Sentry / Production Errors

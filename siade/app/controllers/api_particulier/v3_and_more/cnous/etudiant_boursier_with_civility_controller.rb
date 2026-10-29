@@ -3,15 +3,6 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
 
   nomenclature organizers: { 3 => ::CNOUS::StudentScholarshipWithCivility, 4 => ::CNOUS::StudentScholarshipWithCivility, 5 => ::CNOUS::StudentScholarshipWithCivility }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   private
 
   def organizer_params

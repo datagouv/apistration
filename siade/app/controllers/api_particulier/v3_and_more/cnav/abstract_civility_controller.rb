@@ -1,15 +1,6 @@
 class APIParticulier::V3AndMore::CNAV::AbstractCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
   protected
 
   def cache_key

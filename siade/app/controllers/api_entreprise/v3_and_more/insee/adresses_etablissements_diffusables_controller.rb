@@ -1,15 +1,6 @@
 class APIEntreprise::V3AndMore::INSEE::AdressesEtablissementsDiffusablesController < APIEntreprise::V3AndMore::INSEE::BaseController
   nomenclature organizers: { 3 => ::INSEE::AdresseEtablissementDiffusable }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params

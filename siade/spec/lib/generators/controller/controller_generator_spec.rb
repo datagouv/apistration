@@ -6,13 +6,13 @@ RSpec.describe ControllerGenerator, type: :generator do
 
     shared_examples 'a valid Controller' do
       it { is_expected.to have_correct_syntax }
-      it { is_expected.to have_method 'show' }
     end
 
     context 'without options' do
       before { run_generator [resource_name] }
 
       it_behaves_like 'a valid Controller'
+      it { is_expected.not_to have_method 'show' }
       it { is_expected.to contain(/class APIEntreprise::V3AndMore::#{resource_name}Controller < APIEntreprise::V3AndMore::BaseController/) }
     end
 
@@ -20,6 +20,7 @@ RSpec.describe ControllerGenerator, type: :generator do
       before { run_generator [resource_name, '--prochainement', 'true'] }
 
       it_behaves_like 'a valid Controller'
+      it { is_expected.to have_method 'show' }
     end
   end
 end
