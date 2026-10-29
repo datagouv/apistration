@@ -63,7 +63,7 @@ GEM
       version_gem (~> 1.1, >= 1.1.14)
     base64 (0.3.0)
     benchmark-ips (2.14.0)
-    bigdecimal (4.1.3)
+    bigdecimal (3.3.1)
     brakeman (8.1.0)
       racc
     builder (3.3.0)
@@ -519,7 +519,7 @@ DEPENDENCIES
   activerecord (~> 8.1)
   activesupport (~> 8.1)
   ammeter
-  bigdecimal
+  bigdecimal (~> 3.1)
   brakeman
   colorize
   connection_pool (< 4.0)
