@@ -1,5 +1,5 @@
 class APIParticulier::PagesController < APIParticulierController
-  after_action :skip_newsletter_banner!, only: %i[home newsletter]
+  after_action :skip_newsletter_banner!, only: %i[newsletter]
 
   layout :page_layout
 

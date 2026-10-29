@@ -29,6 +29,14 @@ RSpec.describe 'Simple pages', app: :api_entreprise do
     end
   end
 
+  context 'with the follow band on the home page' do
+    before { visit root_path }
+
+    it 'sends the subscribe button to the newsletter page' do
+      expect(page).to have_css('.fr-follow a[href="/infolettre"]', text: "S'abonner")
+    end
+  end
+
   context 'with the footer brand block' do
     before { visit root_path }
 
