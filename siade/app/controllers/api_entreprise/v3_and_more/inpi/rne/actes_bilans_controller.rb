@@ -1,15 +1,6 @@
 class APIEntreprise::V3AndMore::INPI::RNE::ActesBilansController < APIEntreprise::V3AndMore::BaseController
   nomenclature organizers: { 3 => ::INPI::RNE::ActesBilans }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params

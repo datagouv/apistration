@@ -3,15 +3,6 @@ class APIEntreprise::V3AndMore::DGFIP::AttestationsFiscalesController < APIEntre
 
   nomenclature organizers: { 3 => ::DGFIP::AttestationFiscale, 4 => ::DGFIP::AttestationFiscale }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params

@@ -1,15 +1,6 @@
 class APIEntreprise::V3AndMore::INSEE::UnitesLegalesDiffusablesController < APIEntreprise::V3AndMore::INSEE::BaseController
   nomenclature organizers: { 3 => ::INSEE::UniteLegaleDiffusable, 4 => ::INSEE::UniteLegaleDiffusable }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params

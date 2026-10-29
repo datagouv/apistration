@@ -3,15 +3,6 @@ class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntrepris
 
   nomenclature organizers: { 3 => ::DGFIP::ChiffresAffaires }
 
-  def show
-    if organizer.success?
-      render json: serialize_data,
-        status: extract_http_code(organizer)
-    else
-      render_errors
-    end
-  end
-
   private
 
   def organizer_params
