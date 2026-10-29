@@ -37,7 +37,7 @@ fiche:
     new_endpoint_uids: *mi_rna_new_endpoint_uids
     path: '/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents'
     controller: 'api_entreprise/v3_and_more/mi/documents_associations'
-    ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/mi/documents_associations'
     position: 155
     perimeter:
       entity_type_description: |+

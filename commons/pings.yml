@@ -24,6 +24,14 @@ test:
         key_to_dig: 'a.b.c'
         method_to_test_on_payload: 'any?'
 
+    with_retriever_document:
+      kind: 'retriever_document'
+      provider: 'whatever'
+      driver_params:
+        retriever: 'MI::Associations::Documents'
+        params:
+          id: '42135938100033'
+
     with_retriever_and_maintenance:
       kind: 'retriever'
       provider: 'provider_which_has_a_window_within_same_day'
@@ -547,6 +555,18 @@ shared:
         retriever: 'DJEPVA::UniteLegale'
         params:
           id: 'W131015526'
+
+    mi/documents_associations:
+      kind: 'retriever_document'
+      cache: <%= 2.minutes %>
+      provider: 'MI'
+      status_page:
+        name: 'Documents Associations'
+        alerts_wait: 3
+      driver_params:
+        retriever: 'MI::Associations::Documents'
+        params:
+          id: '42135938100033'
 
     banque_de_france/bilans:
       kind: 'retriever'

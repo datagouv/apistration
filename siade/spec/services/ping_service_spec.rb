@@ -119,6 +119,12 @@ RSpec.describe PingService, type: :service do
               json: json_payload
             })
           end
+
+          it 'runs the driver only once' do
+            make_ping
+
+            expect(RetrieverPingDriver).to have_received(:new).once
+          end
         end
 
         describe 'with cache' do
