@@ -30,9 +30,17 @@ class RetrieverDocumentPingDriver < RetrieverPingDriver
   end
 
   def document_urls_by_kind
-    @document_urls_by_kind ||= retriever_call.bundled_data.data
-      .filter_map(&:url)
-      .uniq { |url| File.dirname(URI.parse(url).path) }
+    @document_urls_by_kind ||= documents_by_kind.map { |documents| documents.first.url }
+  end
+
+  def documents_by_kind
+    newest_first(retriever_call.bundled_data.data.select(&:url))
+      .group_by { |document| File.dirname(URI.parse(document.url).path) }
+      .values
+  end
+
+  def newest_first(documents)
+    documents.sort_by.with_index { |document, index| [-document.timestamp.to_i, index] }
   end
 
   def log_failure(subject, reason)
