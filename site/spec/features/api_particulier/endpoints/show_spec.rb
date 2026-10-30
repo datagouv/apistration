@@ -20,6 +20,17 @@ RSpec.describe 'Endpoints show', app: :api_particulier do
     expect(page).to have_css('#property_attribute_allocataires')
   end
 
+  describe 'attribute description written in Markdown' do
+    let(:uid) { 'education_nationale/statut_eleve_scolarise' }
+
+    it 'renders its named link' do
+      within('#property_etablissement_code_uai') do
+        expect(page).to have_link('API “Annuaire de l’éducation nationale”', href: 'https://api.gouv.fr/les-api/api-annuaire-education')
+        expect(page).to have_no_text('](')
+      end
+    end
+  end
+
   describe 'alert' do
     let(:uid) { 'cnav/psu' }
 

@@ -501,36 +501,36 @@ tableaux de la liasse fiscale'
                   properties:
                     numero:
                       title: "Numéro"
-                      description: "Numéro de l'adresse (nref personne morale: 304862 | 304872)"
+                      description: "Numéro de l'adresse (nref personne morale: 304862, 304872)"
                       type: "string"
                       example: "0057"
                       nullable: true
                     voie:
                       title: "Voie"
-                      description: "Voie de l'adresse (nref personne morale: 304863 | personne physique: 304873)"
+                      description: "Voie de l'adresse (nref personne morale: 304863, personne physique: 304873)"
                       type: "string"
                       example: "RUE DE VARENNE"
                       nullable: true
                     lieu_dit_hameau:
                       title: "Lieu-dit / Hameau"
-                      description: "Lieu-dit ou hameau (nref personne morale: 304864 | personne physique: 304874)"
+                      description: "Lieu-dit ou hameau (nref personne morale: 304864, personne physique: 304874)"
                       type: "string"
                       nullable: true
                     code_postal:
                       title: "Code postal"
-                      description: "Code postal (nref personne morale: 304865 | personne physique: 304875)"
+                      description: "Code postal (nref personne morale: 304865, personne physique: 304875)"
                       type: "string"
                       example: "75007"
                       nullable: true
                     ville:
                       title: "Ville"
-                      description: "Ville (nref personne morale: 304866 | personne physique: 304876)"
+                      description: "Ville (nref personne morale: 304866, personne physique: 304876)"
                       type: "string"
                       example: "PARIS"
                       nullable: true
                     pays:
                       title: "Pays"
-                      description: "Pays, code iso 3166 (nref personne morale: 304867 | personne physique: 304877)"
+                      description: "Pays, code iso 3166 (nref personne morale: 304867, personne physique: 304877)"
                       type: "string"
                       example: "FR"
                       nullable: true

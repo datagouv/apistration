@@ -1,3 +1,9 @@
+- date: 2026-10-29
+  scope: both
+  title: "Fiches : les descriptions des données distribuées sont mises en forme"
+  description: |
+    Dans la section « Données distribuées » des fiches du [catalogue](<%= endpoints_path %>), les descriptions des données s'affichent désormais mises en forme, comme le reste de la fiche : les listes apparaissent en listes et les liens portent leur nom, au lieu de laisser visibles les astérisques, crochets et parenthèses qui servent à les écrire.
+
 - date: 2026-10-21
   scope: api_particulier
   title: "Participation familiale EAJE : attestation PDF vérifiable des données délivrées"

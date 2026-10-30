@@ -912,7 +912,7 @@ insee:
             Plus d'informations dans la documentation Insee de l'API Sirene : https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=754efef5-1e50-41d3-8efe-f51e5071d320#trancheeffectifsetablissement.
             \n
             \n
-            L'effectif mensuel exact de l'établissement est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
+            L'effectif mensuel exact de l'établissement est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
           enum:
           - "NN"
           - "00"

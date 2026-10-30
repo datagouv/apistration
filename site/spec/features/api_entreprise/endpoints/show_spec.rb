@@ -20,7 +20,39 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
     expect(page).to have_css('#property_attribute_type')
 
     within('#property_attribute_type') do
-      expect(page).to have_text(endpoint.attributes['type']['description'])
+      expect(page).to have_text('Indique si l’unité légale est une personne morale ou une personne physique.')
+    end
+  end
+
+  describe 'attribute description written in Markdown' do
+    let(:uid) { 'insee/etablissements' }
+
+    it 'renders its list and named link, and still links its bare URLs' do
+      within('#property_unite_legale_economie_sociale_et_solidaire') do
+        expect(page).to have_css('li', text: 'poursuivre un but social')
+        expect(page).to have_no_text('* poursuivre')
+        expect(page).to have_link('Article 1 de la loi n° 2014-856 du 31 juillet 2014', href: 'https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926')
+        expect(page).to have_link(href: 'https://portail-api.insee.fr/catalog/api/2ba0e549-5587-3ef1-9082-99cd865de66f/doc?page=2ed989b6-001c-4b22-9989-b6001c6b224e#economiesocialesolidaireunitelegale')
+      end
+    end
+  end
+
+  describe 'attribute description holding a pipe' do
+    let(:uid) { 'dgfip/liens_capitalistiques' }
+
+    it 'reads as a sentence, not as a table' do
+      expect(page).to have_text('Numéro de l’adresse (nref personne morale: 304862, 304872)')
+      expect(page).to have_no_css('.description table')
+    end
+  end
+
+  describe 'attribute description linking another API' do
+    let(:uid) { 'insee/etablissements' }
+
+    it 'links to its catalogue sheet' do
+      within(first('#property_tranche_effectif_salarie_code')) do
+        expect(page).to have_link('API Effectifs - URSSAF Caisse nationale', href: 'https://entreprise.api.gouv.fr/catalogue/gip_mds/effectifs_mensuels_etablissement')
+      end
     end
   end
 
