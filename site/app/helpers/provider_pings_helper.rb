@@ -37,6 +37,10 @@ module ProviderPingsHelper
     { color: SUMMARY_COLORS.fetch(statuses.first), text: provider_pings_summary_text(statuses, counts) }
   end
 
+  def provider_pings_pending?(pings, checks)
+    pings.any? { |ping| checks[ping.url].nil? }
+  end
+
   def provider_ping_status_page_url
     "https://status.#{namespace.delete_prefix('api_')}.api.gouv.fr"
   end

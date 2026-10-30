@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Provider pings page', :js do
-  shared_examples 'a provider pings page' do |pings_url, ping_url_prefix|
+  shared_examples 'a provider pings page' do |namespace, pings_url, ping_url_prefix|
+    let(:provider_pings) { ProviderPings.new(namespace) }
     let(:up_url) { "#{ping_url_prefix}/up" }
     let(:down_url) { "#{ping_url_prefix}/down" }
     let(:maintenance_url) { "#{ping_url_prefix}/maintenance" }
@@ -146,6 +147,66 @@ RSpec.describe 'Provider pings page', :js do
       expect(slow_ping).to have_been_requested.once
     end
 
+    def while_another_visitor_checks_up_provider
+      probe_started = Queue.new
+      release_probe = Queue.new
+      hold_up_provider_probe(probe_started, release_probe)
+      other_visitor = Thread.new { provider_pings.checks }
+      raise 'the other visitor never probed the provider' unless probe_started.pop(timeout: 5)
+
+      yield lambda {
+        release_probe << true
+        other_visitor.join
+      }
+    ensure
+      release_probe << true
+      other_visitor&.join(10)
+    end
+
+    def hold_up_provider_probe(probe_started, release_probe)
+      stub_request(:get, up_url).to_return(lambda { |_request|
+        probe_started << true
+        release_probe.pop(timeout: 10)
+        { status: 200, body: { status: 'ok' }.to_json }
+      })
+    end
+
+    it 'shows the status of a provider that another visitor was checking, once checked' do
+      while_another_visitor_checks_up_provider do |end_other_visitor_check|
+        visit '/developpeurs/etat-des-fournisseurs'
+
+        expect(page).to have_css('[role=status] .fr-alert', text: '1 fournisseur en cours de vérification')
+
+        end_other_visitor_check.call
+
+        within('tr', text: 'Up provider') do
+          using_wait_time(6) { expect(page).to have_css('.fr-badge--success', text: /\ADisponible\z/i) }
+        end
+      end
+    end
+
+    it 'checks again a provider whose reload failed on the network' do
+      while_another_visitor_checks_up_provider do |end_other_visitor_check|
+        visit '/developpeurs/etat-des-fournisseurs'
+        expect(page).to have_css('[role=status] .fr-alert', text: '1 fournisseur en cours de vérification')
+
+        page.execute_script(<<~JS)
+          const originalFetch = window.fetch;
+          window.fetch = () => {
+            window.fetch = originalFetch;
+            window.reloadFailed = true;
+            return Promise.reject(new TypeError('network down'));
+          };
+        JS
+        Timeout.timeout(6) { sleep 0.1 until page.evaluate_script('window.reloadFailed') }
+        end_other_visitor_check.call
+
+        within('tr', text: 'Up provider') do
+          using_wait_time(8) { expect(page).to have_css('.fr-badge--success', text: /\ADisponible\z/i) }
+        end
+      end
+    end
+
     it 'tells the user when the list of pings is not a list of pings' do
       stub_request(:get, pings_url).to_return(status: 200, body: 'null')
 
@@ -175,10 +236,10 @@ RSpec.describe 'Provider pings page', :js do
   end
 
   context 'with API Entreprise', app: :api_entreprise do
-    it_behaves_like 'a provider pings page', APIEntreprise::PINGS_URL, "#{APIEntreprise::BASE_URL}/ping"
+    it_behaves_like 'a provider pings page', 'api_entreprise', APIEntreprise::PINGS_URL, "#{APIEntreprise::BASE_URL}/ping"
   end
 
   context 'with API Particulier', app: :api_particulier do
-    it_behaves_like 'a provider pings page', APIParticulier::PINGS_URL, "#{APIParticulier::BASE_URL}/api"
+    it_behaves_like 'a provider pings page', 'api_particulier', APIParticulier::PINGS_URL, "#{APIParticulier::BASE_URL}/api"
   end
 end
