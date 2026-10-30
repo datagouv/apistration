@@ -74,6 +74,26 @@ RSpec.describe RetrieverDocumentPingDriver, type: :ping_driver do
         end
       end
 
+      context 'when the newest document of a kind is no longer served' do
+        before do
+          stub_document(piece_url, status: 404)
+          stub_document(other_piece_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+          stub_document(recepisse_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+        end
+
+        it { is_expected.to eq(:ok) }
+      end
+
+      context 'when no document of a kind is served anymore' do
+        before do
+          stub_document(piece_url, status: 404)
+          stub_document(other_piece_url, status: 404)
+          stub_document(recepisse_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+        end
+
+        it { is_expected.to eq(:bad_gateway) }
+      end
+
       context 'when the provider fails to serve one kind of document' do
         before do
           stub_document(piece_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
