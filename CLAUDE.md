@@ -30,12 +30,16 @@ avec les conventions spécifiques :
 ## Règles de review
 
 `REVIEW.md` liste les PR à faible risque mergeables sans relecture
-détaillée, sur la caution de leur auteur. Après avoir fait relire une PR,
-vérifier si elle relève d'une de ces règles ; si toutes ses conditions
-tiennent, lancer `bin/vouch-auto-mergeable <règle> "<preuve>"`, qui pose
-le statut et le label. La PR peut alors être mergée sans approbation
-avec `gh pr merge <numéro> --merge --admin`, une fois la CI verte ;
-jamais `--admin` sur une PR sans label ni statut sur son head.
+détaillée, sur la caution de leur auteur. **Avant d'annoncer une PR
+prête** (à l'utilisateur, dans un rapport, sur le ticket) : une fois la
+PR relue, corrigée et la CI verte, la confronter à chaque règle de
+`REVIEW.md`. Si toutes les conditions d'une règle tiennent, lancer
+`bin/vouch-auto-mergeable <règle> "<preuve>"`, qui pose le statut et le
+label ; sinon, dire dans l'annonce qu'aucune règle ne s'applique, avec la
+condition qui manque à la règle la plus proche. Une fois vouchée, la PR
+peut être mergée sans approbation avec
+`gh pr merge <numéro> --merge --admin` ; jamais `--admin` sur une PR sans
+label ni statut sur son head.
 
 ## Worktrees
 
