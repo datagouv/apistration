@@ -68,12 +68,23 @@ pull request that creates or modifies any file or code relevant to:
 
 A log statement that changes no behaviour is the only line accepted in
 these files, under `fix-observability`. `fix-spec` changes no code and
-ignores these zones: its own conditions keep the specs from weakening. Sizes count added plus deleted
-lines outside specs:
+ignores these zones: its own conditions keep the specs from weakening.
+
+Sizes count added plus deleted lines outside specs, ignoring changes in
+the amount of whitespace: a fix that unwraps a block and re-indents its
+content counts only the lines it really changes.
 
 ```bash
-git diff --shortstat origin/develop...HEAD -- . ':!*/spec/*'
+git diff -b --shortstat origin/develop...HEAD -- . ':!*/spec/*'
 ```
+
+Only whitespace that means nothing is ignored. A pull request is
+measured without `-b` when its whitespace changes reach beyond the
+blocks the fix touches, or alter what is parsed, stored or shown: YAML,
+Markdown, heredocs, string literals, `<pre>` or any output that keeps
+its spaces. When both sizes differ, the proof gives them (`2 lines, 82
+with indentation`), and the merger compares `git diff` with
+`git diff -b`.
 
 ## Rules
 
