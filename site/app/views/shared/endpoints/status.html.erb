@@ -1,12 +1,16 @@
 <turbo-frame id="endpoint_status">
   <% if @endpoint.ping_url %>
+    <% status_label = t("shared.provider_pings.statuses.#{@endpoint.api_status}") %>
     <div class="fr-pb-1w">
       <%= t('.real_time') %> :
       <a href="<%= @endpoint.ping_url %>" target="_blank" rel="noopener noreferrer"
-         aria-label="Statut temps réel : <%= @endpoint.api_status %> (nouvelle fenêtre)">
+         aria-label="Statut temps réel : <%= status_label %> (nouvelle fenêtre)">
         <span class="api-status api-status-<%= @endpoint.api_status %>" aria-hidden="true"></span>
-        <span class="fr-sr-only"><%= @endpoint.api_status %></span>
+        <span class="fr-sr-only"><%= status_label %></span>
       </a>
     </div>
+    <% if @endpoint.api_status == :pending %>
+      <div data-controller="frame-reload"></div>
+    <% end %>
   <% end %>
 </turbo-frame>

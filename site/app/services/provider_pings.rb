@@ -24,13 +24,21 @@ class ProviderPings
   end
 
   def checks
-    stored = all.to_a.to_h { |ping| [ping.url, Rails.cache.read(check_key(ping.url))] }
+    checks_for(all.to_a.map(&:url))
+  end
+
+  def check(url)
+    checks_for([url])[url]
+  end
+
+  private
+
+  def checks_for(urls)
+    stored = urls.index_with { |url| Rails.cache.read(check_key(url)) }
     locks = stored.filter_map { |url, check| [url, take_probe_lock(url)] if stale?(check) }
 
     stored.compact.merge(probe_in_parallel(locks))
   end
-
-  private
 
   def cached_list
     list = Rails.cache.read(list_key)

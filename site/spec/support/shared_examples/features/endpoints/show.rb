@@ -4,9 +4,10 @@ RSpec.shared_examples 'an endpoints show feature' do |api_module, default_uid, e
   let(:endpoint) { api_module::Endpoint.find(uid) }
   let(:uid) { default_uid }
   let(:api_status) { 200 }
+  let(:ping_status) { 'ok' }
 
   before do
-    stub_request(:get, endpoint.ping_url).to_return(status: api_status) if endpoint.ping_url
+    stub_request(:get, endpoint.ping_url).to_return(status: api_status, body: { status: ping_status }.to_json) if endpoint.ping_url
 
     visit endpoint_path(uid:)
   end
@@ -24,7 +25,15 @@ RSpec.shared_examples 'an endpoints show feature' do |api_module, default_uid, e
       let(:api_status) { 200 }
 
       it 'displays UP status' do
-        expect(page).to have_css('.api-status-up')
+        expect(page).to have_css('.api-status-ok')
+      end
+    end
+
+    context 'when the provider is under maintenance' do
+      let(:ping_status) { 'maintenance' }
+
+      it 'displays MAINTENANCE status, as the provider pings page does' do
+        expect(page).to have_css('.api-status-maintenance')
       end
     end
 
@@ -32,7 +41,7 @@ RSpec.shared_examples 'an endpoints show feature' do |api_module, default_uid, e
       let(:api_status) { 502 }
 
       it 'displays DOWN status' do
-        expect(page).to have_css('.api-status-down')
+        expect(page).to have_css('.api-status-ko')
       end
     end
   end

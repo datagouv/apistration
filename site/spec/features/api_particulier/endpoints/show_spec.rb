@@ -5,12 +5,13 @@ require_relative '../../../support/shared_examples/features/endpoints/show'
 
 RSpec.describe 'Endpoints show', app: :api_particulier do
   let(:api_status) { 200 }
+  let(:ping_status) { 'ok' }
   let(:uid) { 'cnav/quotient_familial' }
   # API Particulier specific tests
   let(:endpoint) { APIParticulier::Endpoint.find(uid) }
 
   before do
-    stub_request(:get, endpoint.ping_url).to_return(status: api_status) if endpoint.ping_url
+    stub_request(:get, endpoint.ping_url).to_return(status: api_status, body: { status: ping_status }.to_json) if endpoint.ping_url
     visit endpoint_path(uid:)
   end
 
