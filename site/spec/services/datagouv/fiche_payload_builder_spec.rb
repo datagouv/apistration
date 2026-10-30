@@ -9,6 +9,11 @@ RSpec.describe Datagouv::FichePayloadBuilder do
     it 'builds the full payload' do
       expect(payload).to eq(
         access_type: 'restricted',
+        access_audiences: [
+          { 'role' => 'local_authority_and_administration', 'condition' => 'under_condition' },
+          { 'role' => 'company_and_association', 'condition' => 'no' },
+          { 'role' => 'private', 'condition' => 'no' }
+        ],
         base_api_url: 'https://entreprise.api.gouv.fr',
         business_documentation_url: 'https://entreprise.api.gouv.fr/catalogue/inpi/rne/beneficiaires_effectifs',
         technical_documentation_url: 'https://entreprise.api.gouv.fr/developpeurs/openapi#tag/Informations-generales/paths/~1v3~1inpi~1rne~1unites_legales~1%7Bsiren%7D~1beneficiaires_effectifs/get',
@@ -44,6 +49,16 @@ RSpec.describe Datagouv::FichePayloadBuilder do
 
     it 'stays restricted, since opening: public only means included by default and a token is still required' do
       expect(payload[:access_type]).to eq('restricted')
+    end
+
+    it 'opens the access to administrations without condition' do
+      expect(payload[:access_audiences]).to eq(
+        [
+          { 'role' => 'local_authority_and_administration', 'condition' => 'yes' },
+          { 'role' => 'company_and_association', 'condition' => 'no' },
+          { 'role' => 'private', 'condition' => 'no' }
+        ]
+      )
     end
 
     it 'renders the restricted access line in the description' do
@@ -110,6 +125,7 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         APIEntreprise::Endpoint,
         uid: 'test/uid',
         api: 'api_entreprise',
+        opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
         description: 'Description de test.',
@@ -134,6 +150,7 @@ RSpec.describe Datagouv::FichePayloadBuilder do
         APIEntreprise::Endpoint,
         uid: 'test/uid',
         api: 'api_entreprise',
+        opening: 'protected',
         redoc_anchor: 'tag/Test/paths/~1v3~1test/get',
         title: 'Test',
         description: 'Description de test.',
