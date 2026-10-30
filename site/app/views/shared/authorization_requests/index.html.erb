@@ -16,26 +16,29 @@
   <div class="fr-row">
     <div class="fr-col-12">
       <div class="fr-container fr-container--bordered fr-p-0">
-        <div class="fr-grid-row fr-p-4v fr-grid-row--middle fr-grid-row--gutters">
-          <div class="fr-col-12 fr-col-sm-3">
-            <strong><%= t('.table.head.authorization_request') %></strong>
-          </div>
-          <div class="fr-col-12 fr-col-sm-2">
-            <strong><%= t('.table.head.organization') %></strong>
-          </div>
-          <div class="fr-col-12 fr-col-sm-3">
-            <strong><%= t('.table.head.token') %></strong>
-          </div>
-          <div class="fr-col-12 fr-col-sm">
+        <div class="fr-hidden fr-unhidden-sm">
+          <div class="fr-grid-row fr-p-4v fr-grid-row--middle fr-grid-row--gutters fr-background-contrast--grey">
+            <div class="fr-col-sm-3">
+              <strong><%= t('.table.head.authorization_request') %></strong>
+            </div>
+            <div class="fr-col-sm-2">
+              <strong><%= t('.table.head.organization') %></strong>
+            </div>
+            <div class="fr-col-sm-3">
+              <strong><%= t('.table.head.token') %></strong>
+            </div>
+            <div class="fr-col-sm">
               <strong><%= t('.table.head.actions') %></strong>
-          </div>
-          <div class="fr-col-12 fr-col-sm">
+            </div>
+            <div class="fr-col-sm">
               <strong><%= t('.table.head.detail') %></strong>
+            </div>
           </div>
         </div>
         <% @authorization_requests.each do |authorization_request| %>
           <div id="<%= dom_id(authorization_request) %>" class="fr-grid-row fr-grid-row--gutters fr-grid-row--middle fr-p-4v">
             <div class="fr-col-12 fr-col-sm-3">
+              <p class="fr-hidden-sm fr-mb-1v"><strong><%= t('.table.head.authorization_request') %></strong></p>
               <h2 class="fr-h6 fr-mb-0"><%= authorization_request.intitule %></h2>
               <%= authorization_request_status_badge(authorization_request) %>
               <span class="fr-hint-text">
@@ -55,9 +58,11 @@
               </span>
             </div>
             <div class="fr-col-12 fr-col-sm-2 authorization_request-siret">
+              <p class="fr-hidden-sm fr-mb-1v"><strong><%= t('.table.head.organization') %></strong></p>
               <%= render partial: 'shared/authorization_requests/organization', locals: { authorization_request: } %>
             </div>
             <div class="fr-col-12 fr-col-sm-3">
+              <p class="fr-hidden-sm fr-mb-1v"><strong><%= t('.table.head.token') %></strong></p>
               <% displayed_tokens = authorization_request.tokens.active.to_a %>
               <% displayed_tokens = [authorization_request.token].compact if displayed_tokens.empty? %>
               <% displayed_tokens.each_with_index do |token, index| %>
@@ -67,11 +72,13 @@
               <% end %>
             </div>
             <div class="fr-col-12 fr-col-sm">
+              <p class="fr-hidden-sm fr-mb-1v"><strong><%= t('.table.head.actions') %></strong></p>
               <% authorization_request_expected_actions(authorization_request, current_user).each do |action| %>
                 <%= render partial: "shared/authorization_requests/actions/#{action[:action]}", locals: { label: action[:label], authorization_request:, to_datapass_reopen: action[:to_datapass_reopen] } %>
               <% end %>
             </div>
             <div class="fr-col-12 fr-col-sm">
+              <p class="fr-hidden-sm fr-mb-1v"><strong><%= t('.table.head.detail') %></strong></p>
               <%= link_to "Plus d'informations", authorization_request_path(authorization_request), class: %w[fr-btn fr-btn--tertiary center] %>
             </div>
           </div>

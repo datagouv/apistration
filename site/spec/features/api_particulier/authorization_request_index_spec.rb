@@ -172,6 +172,18 @@ RSpec.describe 'displays authorization requests', app: :api_particulier do
         end
       end
 
+      it 'names each cell after its column on small screens, where the header row is hidden' do
+        go_to_authorization_requests_index
+
+        expect(page).to have_css('.fr-hidden.fr-unhidden-sm > .fr-grid-row.fr-background-contrast--grey', text: 'Jeton principal')
+
+        within('#' << dom_id(authorization_request_active)) do
+          ['Habilitation', 'Organisation', 'Jeton principal', 'Actions attendues', 'Page détaillée'].each do |label|
+            expect(page).to have_css('.fr-hidden-sm', exact_text: label)
+          end
+        end
+      end
+
       it 'displays the button to view the token details' do
         go_to_authorization_requests_index
 
