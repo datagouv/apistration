@@ -6,6 +6,8 @@ class UpdateOrganizationINSEEPayloadJob < ApplicationJob
   retry_on INSEEAPIAuthentication::TemporaryError, wait: :polynomially_longer, attempts: 10
   retry_on INSEESireneAPIClient::InvalidPayloadError, wait: :polynomially_longer, attempts: 10
 
+  without_retry INSEEAPIAuthentication::AuthenticationError, Faraday::UnauthorizedError
+
   def perform(organization_id)
     @organization = Organization.find(organization_id)
 

@@ -89,8 +89,8 @@ RSpec.describe Simplifions::RefreshCasUsagesJob do
         send(stub_failure)
       end
 
-      it 'raises so the failure reaches Sentry' do
-        expect { refresh }.to raise_error(StandardError)
+      it 'raises once its retries are exhausted so the failure reaches Sentry' do
+        expect { perform_with_retries(described_class) }.to raise_error(StandardError)
       end
 
       it 'keeps serving the previously refreshed cas usages' do

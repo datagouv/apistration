@@ -1,6 +1,8 @@
 class WeeklyChangelogDigestJob < ApplicationJob
   queue_as :default
 
+  without_retry
+
   MAILERS = {
     'api_entreprise' => APIEntreprise::ChangelogMailer,
     'api_particulier' => APIParticulier::ChangelogMailer

@@ -1,4 +1,6 @@
 class INSEEPasswordRotationJob < ApplicationJob
+  without_retry
+
   include GoodJob::ActiveJobExtensions::Concurrency
 
   CONCURRENCY_KEY = 'insee_password_rotation'.freeze
