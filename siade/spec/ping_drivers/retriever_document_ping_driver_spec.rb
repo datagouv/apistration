@@ -10,10 +10,18 @@ RSpec.describe RetrieverDocumentPingDriver, type: :ping_driver do
     let(:other_piece_url) { 'https://associations.gouv.fr/api/documents/PJ/00000000-0000-0000-0000-000000000002' }
     let(:recepisse_url) { 'https://associations.gouv.fr/api/documents/RC/00000000-0000-0000-0000-000000000003' }
 
+    let(:listed_documents) do
+      [
+        { 'url' => piece_url },
+        { 'url' => other_piece_url },
+        { 'url' => recepisse_url }
+      ]
+    end
+
     let(:association_payload) do
       payload = JSON.parse(File.read(open_payload_file('mi/association-77567227238579.json')))
       template = Array.wrap(payload['documents']['document_rna']).first
-      documents = [piece_url, other_piece_url, recepisse_url].map { |url| template.merge('url' => url) }
+      documents = listed_documents.map { |document| template.merge(document) }
       payload['documents'].merge!('nbDocRna' => documents.count.to_s, 'document_rna' => documents)
       payload.to_json
     end
@@ -40,6 +48,50 @@ RSpec.describe RetrieverDocumentPingDriver, type: :ping_driver do
 
           expect(a_request(:get, other_piece_url)).not_to have_been_made
         end
+      end
+
+      context 'when the provider still lists an undated document it no longer serves before a dated one' do
+        let(:listed_documents) do
+          [
+            { 'url' => piece_url, 'time' => nil },
+            { 'url' => other_piece_url, 'time' => '1604185200' },
+            { 'url' => recepisse_url, 'time' => '1604185200' }
+          ]
+        end
+
+        before do
+          stub_document(piece_url, status: 404)
+          stub_document(other_piece_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+          stub_document(recepisse_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+        end
+
+        it { is_expected.to eq(:ok) }
+
+        it 'downloads the dated document before the undated one' do
+          make_ping
+
+          expect(a_request(:get, piece_url)).not_to have_been_made
+        end
+      end
+
+      context 'when the newest document of a kind is no longer served' do
+        before do
+          stub_document(piece_url, status: 404)
+          stub_document(other_piece_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+          stub_document(recepisse_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+        end
+
+        it { is_expected.to eq(:ok) }
+      end
+
+      context 'when no document of a kind is served anymore' do
+        before do
+          stub_document(piece_url, status: 404)
+          stub_document(other_piece_url, status: 404)
+          stub_document(recepisse_url, status: 200, body: open_payload_file('pdf/dummy.pdf'))
+        end
+
+        it { is_expected.to eq(:bad_gateway) }
       end
 
       context 'when the provider fails to serve one kind of document' do
