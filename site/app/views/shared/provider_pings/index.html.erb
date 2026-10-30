@@ -13,6 +13,7 @@
   <% if @pings.nil? %>
     <%= render 'shared/provider_pings/unavailable' %>
   <% else %>
+    <div id="provider_pings_summary" role="status"></div>
     <turbo-frame id="provider_pings" src="<%= url_for(action: :statuses) %>">
       <%= render 'shared/provider_pings/table', pings: @pings, checks: {} %>
     </turbo-frame>

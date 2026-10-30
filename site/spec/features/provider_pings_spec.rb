@@ -64,6 +64,13 @@ RSpec.describe 'Provider pings page', :js do
       expect(page).to have_css('.fr-alert--success', text: 'Tous les fournisseurs fonctionnent normalement.')
     end
 
+    it 'announces the summary in a status region present before the checks end' do
+      visit '/developpeurs/etat-des-fournisseurs'
+
+      expect(page).to have_css('[role=status] .fr-alert--error', text: '1 fournisseur indisponible')
+      expect(page).to have_no_css('turbo-frame [role=status]')
+    end
+
     it 'reports a provider as unavailable when its ping does not answer' do
       stub_request(:get, up_url).to_timeout
 
@@ -204,6 +211,19 @@ RSpec.describe 'Provider pings page', :js do
         within('tr', text: 'Up provider') do
           using_wait_time(8) { expect(page).to have_css('.fr-badge--success', text: /\ADisponible\z/i) }
         end
+      end
+    end
+
+    it 'clears the summary when the list of pings becomes unavailable' do
+      while_another_visitor_checks_up_provider do
+        visit '/developpeurs/etat-des-fournisseurs'
+        expect(page).to have_css('[role=status] .fr-alert', text: '1 fournisseur en cours de vérification')
+
+        Rails.cache.clear
+        stub_request(:get, pings_url).to_return(status: 500)
+
+        using_wait_time(6) { expect(page).to have_text('Liste des fournisseurs indisponible') }
+        expect(page).to have_no_css('[role=status] .fr-alert')
       end
     end
 

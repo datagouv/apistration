@@ -1,8 +1,9 @@
 <turbo-frame id="provider_pings">
   <% if @pings.nil? %>
+    <%= turbo_stream.update 'provider_pings_summary', '' %>
     <%= render 'shared/provider_pings/unavailable' %>
   <% else %>
-    <%= render 'shared/provider_pings/summary', pings: @pings, checks: @checks %>
+    <%= turbo_stream.update 'provider_pings_summary', partial: 'shared/provider_pings/summary', locals: { pings: @pings, checks: @checks } %>
     <%= render 'shared/provider_pings/table', pings: @pings, checks: @checks %>
     <% if provider_pings_pending?(@pings, @checks) %>
       <div data-controller="frame-reload"></div>
