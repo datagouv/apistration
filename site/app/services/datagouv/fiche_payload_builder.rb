@@ -25,6 +25,13 @@ module Datagouv
 
     ACCESS_TYPE = 'restricted'.freeze
 
+    ADMINISTRATION_CONDITIONS = {
+      'public' => 'yes',
+      'protected' => 'under_condition'
+    }.freeze
+
+    NO_ACCESS_ROLES = %w[company_and_association private].freeze
+
     BASE_TAGS = {
       'api_entreprise' => %w[api-entreprise administration administration-et-legislation],
       'api_particulier' => %w[api-particulier administration administration-et-legislation]
@@ -57,6 +64,7 @@ module Datagouv
     def base_payload
       {
         access_type: ACCESS_TYPE,
+        access_audiences: access_audiences,
         base_api_url: config[:base_api_url],
         business_documentation_url: business_documentation_url,
         technical_documentation_url: technical_documentation_url,
@@ -74,6 +82,11 @@ module Datagouv
 
     def url_host
       @url_host ||= URI(config[:base_api_url]).host
+    end
+
+    def access_audiences
+      [{ 'role' => 'local_authority_and_administration', 'condition' => ADMINISTRATION_CONDITIONS.fetch(endpoint.opening) }] +
+        NO_ACCESS_ROLES.map { |role| { 'role' => role, 'condition' => 'no' } }
     end
 
     def technical_documentation_url
