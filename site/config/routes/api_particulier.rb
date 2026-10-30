@@ -37,6 +37,8 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/faq', to: 'faq#index', as: :faq_index
     get '/developpeurs', to: 'documentation#developers', as: :developers
     get '/developpeurs/openapi', to: 'pages#redoc', as: :developers_openapi
+    get '/developpeurs/etat-des-fournisseurs', to: 'provider_pings#index', as: :provider_pings
+    get '/developpeurs/etat-des-fournisseurs/statuts', to: 'provider_pings#statuses', as: :provider_pings_statuses
     get '/developpeurs/openapi-v2', to: 'pages#redoc_v2', as: :developers_openapi_v2
     get '/developpeurs/openapi-v3', to: 'pages#redoc_v3', as: :developers_openapi_v3
     get '/editeur/openapi', to: 'pages#redoc_editor', as: :editor_openapi

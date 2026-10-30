@@ -8,7 +8,7 @@
   }
 }
 
-.api-status-up {
+.api-status-ok {
   &::before {
     content: 'UP';
   }
@@ -16,10 +16,34 @@
   background-color: var(--success);
 }
 
-.api-status-down {
+.api-status-ko {
   &::before {
     content: 'DOWN';
   }
 
   background-color: var(--error);
+}
+
+.api-status-maintenance {
+  &::before {
+    content: 'MAINTENANCE';
+  }
+
+  background-color: var(--text-default-warning);
+}
+
+.api-status-unknown {
+  &::before {
+    content: 'UNKNOWN';
+  }
+
+  background-color: var(--text-mention-grey);
+}
+
+.api-status-pending {
+  &::before {
+    content: '…';
+  }
+
+  background-color: var(--info);
 }

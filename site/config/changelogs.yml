@@ -1,3 +1,9 @@
+- date: 2026-10-30
+  scope: both
+  title: "Nouvelle page : état des fournisseurs de données"
+  description: |
+    La page [état des fournisseurs de données](<%= provider_pings_path %>) affiche, pour chaque fournisseur surveillé, son statut en temps réel (disponible, en maintenance ou indisponible), la date de la dernière vérification et un lien vers sa route de ping. Les fournisseurs indisponibles apparaissent en premier. Pour une surveillance automatisée, les [routes de ping](<%= developers_path(anchor: 'surveillance-etat-fournisseurs') %>) restent le point d'entrée recommandé.
+
 - date: 2026-10-29
   scope: both
   title: "Fiches : les descriptions des données distribuées sont mises en forme"

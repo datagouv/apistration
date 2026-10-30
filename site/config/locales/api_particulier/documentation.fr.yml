@@ -492,6 +492,7 @@ fr:
                 content: |+
                   API Particulier met à disposition un ensemble de routes de "pings" permettant de récupérer l'état des services fournis par les différents fournisseurs de données.
                   L'ensemble des routes est disponible à l'adresse suivante : [Routes de pings (format JSON)](https://particulier.api.gouv.fr/api/pings).
+                  L'état courant de chaque fournisseur est consultable sur la page [état des fournisseurs de données](<%= api_particulier_provider_pings_path %>).
 
                   {:.fr-highlight}
                   > **Privilégiez les routes de ping** plutôt que des appels récurrents sur les véritables endpoints pour surveiller la disponibilité des fournisseurs. Les routes de ping sont spécifiquement conçues pour le monitoring, sans limitation d'appels, et ne consomment pas vos quotas.

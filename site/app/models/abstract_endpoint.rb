@@ -99,19 +99,10 @@ class AbstractEndpoint
     sync_with_datagouv.nil? || sync_with_datagouv
   end
 
-  PING_CACHE_TTL = 1.minute
-  PING_RACE_CONDITION_TTL = 10.seconds
-  PING_OPEN_TIMEOUT = 2
-  PING_READ_TIMEOUT = 3
-
   def api_status
     return if ping_url.blank?
 
-    @api_status ||= Rails.cache.fetch(
-      "endpoint_api_status/#{ping_url}",
-      expires_in: PING_CACHE_TTL,
-      race_condition_ttl: PING_RACE_CONDITION_TTL
-    ) { probe_api_status }
+    @api_status ||= ProviderPings.new(api).check(ping_url)&.status || :pending
   end
 
   def pending_status
@@ -244,22 +235,6 @@ class AbstractEndpoint
   end
 
   private
-
-  def probe_api_status
-    uri = URI(ping_url)
-
-    response = Net::HTTP.start(
-      uri.host,
-      uri.port,
-      use_ssl: uri.scheme == 'https',
-      open_timeout: PING_OPEN_TIMEOUT,
-      read_timeout: PING_READ_TIMEOUT
-    ) { |http| http.get(uri.request_uri) }
-
-    response.code == '200' ? 'up' : 'down'
-  rescue Timeout::Error, SystemCallError, SocketError, OpenSSL::SSL::SSLError, IOError
-    'down'
-  end
 
   def errors_nomenclature
     Kernel.const_get(api.classify)::ErrorsNomenclature
