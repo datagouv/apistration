@@ -79,6 +79,25 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       end
     end
 
+    context 'when controller is the documents proxy watched by its ping' do
+      before do
+        routes.draw { get 'index' => 'api_entreprise/proxied_files#index' }
+      end
+
+      define_dummy_controller(APIEntreprise::ProxiedFilesController)
+
+      it 'sets should_be_stored_in_database to true' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            should_be_stored_in_database: true
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+
     context 'when controller is not in CONTROLLER_NOT_TO_STORE_IN_DATABASE list' do
       before do
         routes.draw { get 'index' => 'api#index' }

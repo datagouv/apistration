@@ -36,7 +36,7 @@ RSpec.describe 'Ping routes' do
         allow(AccessLogPingView).to receive(:where).and_return(
           AccessLogPingView.none
         )
-      when 'cnav'
+      when 'cnav', 'documents_proxy'
         allow(AccessLogPingView).to receive(:where).and_return(
           AccessLogPingView.none
         )
