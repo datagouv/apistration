@@ -303,7 +303,7 @@ tableaux de la liasse fiscale'
     attributes:
       numero_tva:
         title: "Numéro de TVA intracommunautaire français"
-        description: "Numéro de TVA français, préfixé par FR, suivi de la clé de contrôle sur 2 caractères puis du SIREN sur 9 chiffres."
+        description: "Numéro de TVA français, préfixé par FR, suivi de la clé de contrôle sur 2 caractères (chiffres, ou chiffres et lettres) puis du SIREN sur 9 chiffres. Si l'unité légale a plusieurs numéros, un seul est délivré : le numéro calculé avec la clé numérique s'il existe, sinon le plus récemment attribué."
         type: "string"
         example: "FR72217500016"
     meta:

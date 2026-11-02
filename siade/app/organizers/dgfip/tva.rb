@@ -3,6 +3,7 @@ class DGFIP::TVA < RetrieverOrganizer
     DGFIP::TVA::BuildTVANumberFromSiren,
     DGFIP::TVA::MakeRequest,
     DGFIP::TVA::ValidateResponse,
+    DGFIP::TVA::SelectTVANumber,
     DGFIP::TVA::FetchRefreshDate,
     DGFIP::TVA::BuildResource
 

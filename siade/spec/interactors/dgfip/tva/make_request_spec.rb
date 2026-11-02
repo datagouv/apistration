@@ -1,9 +1,9 @@
 RSpec.describe DGFIP::TVA::MakeRequest, type: :make_request do
   describe '.call' do
-    subject(:make_call) { described_class.call(params:, tva_number:) }
+    subject(:make_call) { described_class.call(params:, tva_number_candidates:) }
 
     let(:params) { { siren: '217500016' } }
-    let(:tva_number) { 'FR72217500016' }
+    let(:tva_number_candidates) { %w[FR72217500016 FR0A217500016] }
     let(:issued_date_greater) do
       hourly_bucket = Time.now.to_i / described_class::CACHE_BUSTING_PERIOD_IN_SECONDS
 
@@ -13,7 +13,11 @@ RSpec.describe DGFIP::TVA::MakeRequest, type: :make_request do
       Timecop.freeze(Time.utc(2026, 6, 26))
 
       stub_request(:get, "#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/#{DGFIP::TVA::MakeRequest::RESOURCE_ID}/data/")
-        .with(query: { 'vat_no__exact' => '72217500016', 'issued_date__greater' => issued_date_greater })
+        .with(query: {
+          'vat_no__in' => '72217500016,0A217500016',
+          'page_size' => '2',
+          'issued_date__greater' => issued_date_greater
+        })
         .to_return(status: 200, body: { data: [{ vat_no: '72217500016' }], meta: { total: 1 } }.to_json)
     end
 
@@ -25,7 +29,7 @@ RSpec.describe DGFIP::TVA::MakeRequest, type: :make_request do
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
 
-    it 'calls the tabular API with the exact TVA number' do
+    it 'calls the tabular API with every candidate TVA number in a single page' do
       make_call
 
       expect(stubbed_request).to have_been_requested
