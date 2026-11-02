@@ -36,8 +36,8 @@ fr:
           developer: "<strong>Espace développeur</strong><br> & spécifications techniques"
           ask_access: "<strong>Demander un accès</strong><br>🔑 Vérifier votre éligibilité"
           banner:
-            default: "<strong>Bureau ouvert</strong> <a href='https://visio.numerique.gouv.fr/shn-vmzq-afy'>en visio</a> le %{date} à 10 heures. <a href='/faq#quand-et-pourquoi-un-bureau-ouvert'>En savoir plus ➜</a>"
-            tech: "<strong>Une question ?</strong> Un tech et un métier vous répondent au bureau ouvert <a href='https://visio.numerique.gouv.fr/shn-vmzq-afy'>en visio</a> le %{date} à 10 heures. <a href='/faq#quand-et-pourquoi-un-bureau-ouvert'>En savoir plus ➜</a>"
+            default: "<strong>Bureau ouvert</strong> <a href='https://visio.numerique.gouv.fr/shn-vmzq-afy'>en visio</a> le %{date} à 10 heures. <a href='https://grist.numerique.gouv.fr/o/docs/forms/h4F1HENZYjAf7ch4Df88M1/4'>S'inscrire au prochain bureau ouvert ➜</a><br><a href='/faq#quand-et-pourquoi-un-bureau-ouvert'>En savoir plus ➜</a>"
+            tech: "<strong>Une question ?</strong> Un tech et un métier vous répondent au bureau ouvert <a href='https://visio.numerique.gouv.fr/shn-vmzq-afy'>en visio</a> le %{date} à 10 heures. <a href='https://grist.numerique.gouv.fr/o/docs/forms/h4F1HENZYjAf7ch4Df88M1/4'>S'inscrire au prochain bureau ouvert ➜</a><br><a href='/faq#quand-et-pourquoi-un-bureau-ouvert'>En savoir plus ➜</a>"
       footer:
         tagline: API Entreprise, un <strong>service de l'écosystème des API et de la circulation des données</strong> au sein des administrations.
         external_links:
