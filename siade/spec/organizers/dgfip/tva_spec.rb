@@ -6,22 +6,14 @@ RSpec.describe DGFIP::TVA, type: :retriever_organizer do
     %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/}
   end
 
-  describe 'happy path' do
+  describe 'when the SIREN only has the number computed with the numeric key' do
     let(:siren) { '217500016' }
 
-    before do
-      stub_request(:get, tabular_api_endpoint)
-        .with(query: hash_including('vat_no__exact' => '72217500016'))
-        .to_return(status: 200, body: {
-          data: [{ vat_no: '72217500016' }],
-          meta: { total: 1 }
-        }.to_json)
-      mock_dgfip_tva_refresh_date
-    end
+    before { mock_valid_dgfip_numero_tva(siren, rows: [{ vat_no: '72217500016', issued_date: '2004-01-05' }]) }
 
     it { is_expected.to be_a_success }
 
-    it 'returns the TVA number for the SIREN' do
+    it 'returns the computed number' do
       expect(call.bundled_data.data.numero_tva).to eq('FR72217500016')
     end
 
@@ -30,16 +22,69 @@ RSpec.describe DGFIP::TVA, type: :retriever_organizer do
     end
   end
 
-  describe 'with no matching VAT number (TVA not in DGFIP extract)' do
-    let(:siren) { '217500016' }
+  describe 'when the SIREN only has a number with an alphanumeric key' do
+    let(:siren) { '391196425' }
+
+    before { mock_valid_dgfip_numero_tva(siren, rows: [{ vat_no: '0F391196425', issued_date: '2004-01-05' }]) }
+
+    it 'returns this number' do
+      expect(call.bundled_data.data.numero_tva).to eq('FR0F391196425')
+    end
+  end
+
+  describe 'when the SIREN has several numbers including the computed one' do
+    let(:siren) { '200071900' }
 
     before do
-      stub_request(:get, tabular_api_endpoint)
-        .to_return(status: 200, body: { data: [], meta: { total: 0 } }.to_json)
+      mock_valid_dgfip_numero_tva(siren, rows: [
+        { vat_no: '82200071900', issued_date: '2017-01-01' },
+        { vat_no: '8K200071900', issued_date: '2017-10-01' },
+        { vat_no: 'AM200071900', issued_date: '2020-01-01' }
+      ])
     end
+
+    it 'returns the computed number, even if another one was issued more recently' do
+      expect(call.bundled_data.data.numero_tva).to eq('FR82200071900')
+    end
+  end
+
+  describe 'when the SIREN has several numbers without the computed one' do
+    let(:siren) { '200071900' }
+
+    before do
+      mock_valid_dgfip_numero_tva(siren, rows: [
+        { vat_no: '8K200071900', issued_date: '2017-10-01' },
+        { vat_no: 'AM200071900', issued_date: '2020-01-01' },
+        { vat_no: '4W200071900', issued_date: '2017-01-01' }
+      ])
+    end
+
+    it 'returns the most recently issued number' do
+      expect(call.bundled_data.data.numero_tva).to eq('FRAM200071900')
+    end
+  end
+
+  describe 'when the SIREN is absent from the DGFIP dataset' do
+    let(:siren) { '217500016' }
+
+    before { mock_dgfip_numero_tva_not_found(siren) }
 
     it { is_expected.to be_a_failure }
     its(:errors) { is_expected.to include(an_instance_of(NotFoundError)) }
+  end
+
+  describe 'in sandbox, for the SIREN of the alphanumeric key mock' do
+    subject(:call) { described_class.call(params:, operation_id: 'api_entreprise_v3_dgfip_tva', recipient: '13002526500013') }
+
+    let(:siren) { '391196425' }
+
+    before { allow(Rails.env).to receive(:staging?).and_return(true) }
+
+    it { is_expected.to be_a_success }
+
+    it 'renders the mocked number' do
+      expect(call.mocked_data[:payload].dig('data', 'numero_tva')).to eq('FR0F391196425')
+    end
   end
 
   describe 'with an invalid SIREN' do

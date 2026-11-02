@@ -66,16 +66,8 @@ module ProviderStubs::DGFIP
     )
   end
 
-  def mock_valid_dgfip_numero_tva(siren, vat_no: nil)
-    tva = TVAIntracommunautaire.new(siren)
-    computed_vat_no = vat_no || "#{tva.cle}#{siren}"
-    body = {
-      data: [{ vat_no: computed_vat_no }],
-      meta: { total: 1 }
-    }
-    stub_request(:get, %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/})
-      .with(query: hash_including('vat_no__exact' => computed_vat_no))
-      .to_return(status: 200, body: body.to_json)
+  def mock_valid_dgfip_numero_tva(siren, rows: [{ vat_no: "#{TVAIntracommunautaire.new(siren).cle}#{siren}", issued_date: '2004-01-05' }])
+    stub_dgfip_numero_tva_rows(siren, rows)
     mock_dgfip_tva_refresh_date
   end
 
@@ -90,15 +82,15 @@ module ProviderStubs::DGFIP
   end
 
   def mock_dgfip_numero_tva_not_found(siren)
-    tva = TVAIntracommunautaire.new(siren)
-    computed_vat_no = "#{tva.cle}#{siren}"
-    body = {
-      data: [],
-      meta: { total: 0 }
-    }
+    stub_dgfip_numero_tva_rows(siren, [])
+  end
+
+  def stub_dgfip_numero_tva_rows(siren, rows)
+    candidates = TVAIntracommunautaire.new(siren).candidates.map { |candidate| candidate.delete_prefix('FR') }
+
     stub_request(:get, %r{#{DGFIP::TVA::MakeRequest::BASE_URL}/api/resources/.+/data/})
-      .with(query: hash_including('vat_no__exact' => computed_vat_no))
-      .to_return(status: 200, body: body.to_json)
+      .with(query: hash_including('vat_no__in' => candidates.join(',')))
+      .to_return(status: 200, body: { data: rows, meta: { total: rows.size } }.to_json)
   end
 
   def mock_valid_dgfip_dictionnaire(year)

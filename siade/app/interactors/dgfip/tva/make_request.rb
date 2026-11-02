@@ -17,15 +17,16 @@ class DGFIP::TVA::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      vat_no__exact: tva_number_without_fr,
+      vat_no__in: candidates_without_fr.join(','),
+      page_size: candidates_without_fr.size,
       issued_date__greater: cache_busting_date
     }
   end
 
   private
 
-  def tva_number_without_fr
-    context.tva_number[2..]
+  def candidates_without_fr
+    context.tva_number_candidates.map { |candidate| candidate.delete_prefix('FR') }
   end
 
   def cache_busting_date

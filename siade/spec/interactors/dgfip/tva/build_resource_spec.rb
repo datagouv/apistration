@@ -1,7 +1,7 @@
 RSpec.describe DGFIP::TVA::BuildResource, type: :build_resource do
-  subject(:result) { described_class.call(tva_number:, date_derniere_mise_a_jour:) }
+  subject(:result) { described_class.call(numero_tva:, date_derniere_mise_a_jour:) }
 
-  let(:tva_number) { 'FR72217500016' }
+  let(:numero_tva) { 'FR72217500016' }
   let(:date_derniere_mise_a_jour) { '2026-06-11' }
 
   it { is_expected.to be_a_success }
