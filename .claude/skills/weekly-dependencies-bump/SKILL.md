@@ -36,6 +36,14 @@ gh pr diff <pr> | grep -E "^[+-] +[a-z0-9_-]+ \([0-9]" | sort -k2
 gh pr diff <pr> | grep -E "^[+-]gem |^\+\+\+ .*Gemfile$"   # empty = no pin touched
 ```
 
+For an npm PR (`clients/node/*`), the `package-lock.json` diff lists each
+package as a `"node_modules/<name>"` line followed by its `"version"`, so
+this prints each name with its old and new version:
+
+```bash
+gh pr diff <pr> | grep -B1 -E '^[+-] +"version": ' | grep -v '^--$'
+```
+
 `gh pr diff` takes no pathspec, hence the grep. The second output shows the
 `Gemfile` lines Dependabot rewrote: a `<` ceiling or an exact pin moving to a
 new major is rule 5, a floor raised inside the same major is not.
@@ -220,12 +228,49 @@ apps for a rubocop bump, and run the specs covering the bumped gem. The
 superseded PRs close themselves once it merges, which is how the week ends with
 zero open Dependabot PR.
 
+## Mocks and SDK bumps
+
+Besides `/siade` and `/site`, Dependabot watches:
+
+- `/mocks` (bundler): test tooling of the provider mocks, never shipped.
+  Merging it touches `mocks/**`, which deploys staging
+  (`api-deploy-on-mocks-change.yml`, production skipped): expected, harmless.
+- `/clients/ruby/{commons,api_entreprise,api_particulier}` (bundler, majors
+  ignored): the lockfiles are not published, users resolve the gemspec.
+  A bump only changes what the SDK CI tests against; merge it like any green
+  minor, no SDK release needed. A PR touching a `*.gemspec` changes the
+  public contract: never merge it on your own.
+- `/clients/node`, `/clients/node/{commons,api-entreprise,api-particulier}`
+  (npm, devDependencies only, no workspace): a single
+  `development-dependencies` PR across the four lockfiles. The branch CI
+  runs `npm test` on Node 18, 20 and 22, never `npm run build`: the build
+  only runs on a release tag. A bump of tsup, typescript or esbuild is
+  therefore not covered by a green CI; build the two published packages
+  from the PR branch before merging (`commons` is private and vendored
+  into them, it has no build of its own):
+
+  ```bash
+  (cd clients/node/api-entreprise && npm ci && npm run build) &&
+    (cd clients/node/api-particulier && npm ci && npm run build) &&
+    echo BUILD OK
+  ```
+
+  A tool that drops Node 18 (the packages declare `engines: >=18`) breaks
+  the users' minimum only if it ends up in `dist`, which no devDependency
+  does; vitest dropping it turns the Node 18 job red. No release is
+  needed for such a bump: the next one ships it.
+
+The SDK CIs (`Clients Ruby`, `Clients Node`) run on `push` and only for
+their paths: on those PRs, the siade and site jobs are absent, not missing.
+
 ## Key facts (do not relearn)
 
 - The Dependabot author filter is `app/dependabot`, not `dependabot[bot]`.
 - Dependabot groups are configured per app: `rubocop`,
-  `development-dependencies`, `production-dependencies`. The group name is in
-  the PR title and tells you the blast radius.
+  `development-dependencies`, `production-dependencies` (no `rubocop` for
+  mocks and the Ruby SDKs, only `development-dependencies` for npm). A
+  multi-directory entry opens one PR per group across all its directories
+  (`... group across 3 directories`). The group name is in the PR title and tells you the blast radius.
 - The commit message for a lint repair is exactly `Linting`.
 - `json` is no longer pinned: the `< 3` pins of `siade/Gemfile` and
   `site/Gemfile` were dropped once Rails 8.1.4 shipped (7cfcc88496). json 3
