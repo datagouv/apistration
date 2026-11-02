@@ -45,6 +45,13 @@ fiche:
       description: |+
         Cette API **indique si un étudiant est boursier et permet de connaître le montant de la bourse** perçue grâce à l'échelon et la durée de versement. 
 
+        > **⚠️ Période de versement des bourses nationales**
+        > **Pour les boursiers nationaux, la période de versement est actuellement renseignée à « 12 » par défaut, indépendamment de la période de versement effective du bénéficiaire.**
+        >
+        > **Le fournisseur de données travaille actuellement à la fiabilisation de cette donnée.**
+        >
+        > **Il convient donc de ne pas interpréter cette valeur comme reflétant nécessairement la situation réelle du bénéficiaire.**
+
         _Uniquement pour les bourses sur critères sociaux des filières sanitaires et sociales, en région,_ il est indiqué si l'échelon de bourse est définitif ou provisoire.
     provider_uids:
       - 'cnous'
