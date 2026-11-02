@@ -35,11 +35,11 @@ jobs:
 
       - name: api-entreprise
         working-directory: clients/node/api-entreprise
-        run: npm ci && npm test
+        run: npm ci && npm test && npm run build
 
       - name: api-particulier
         working-directory: clients/node/api-particulier
-        run: npm ci && npm test
+        run: npm ci && npm test && npm run build
 
   freshness:
     name: sync-commons & scaffold-resources freshness
