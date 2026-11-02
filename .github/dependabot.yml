@@ -36,6 +36,53 @@ updates:
       interval: "weekly"
     cooldown:
       default-days: 7
+  - package-ecosystem: "bundler"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
+    directory: "/mocks"
+    schedule:
+      day: "monday"
+      time: "05:00"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "bundler"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
+    directories:
+      - "/clients/ruby/commons"
+      - "/clients/ruby/api_entreprise"
+      - "/clients/ruby/api_particulier"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    schedule:
+      day: "monday"
+      time: "05:00"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "npm"
+    groups:
+      development-dependencies:
+        dependency-type: "development"
+    directories:
+      - "/clients/node"
+      - "/clients/node/commons"
+      - "/clients/node/api-entreprise"
+      - "/clients/node/api-particulier"
+    schedule:
+      day: "monday"
+      time: "05:00"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
