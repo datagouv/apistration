@@ -1,13 +1,14 @@
 ---
 name: weekly-dependencies-bump
-description: Triage, validate and merge the open Dependabot pull requests on datagouv/apistration. Handles the green minor/patch bumps end to end, flags major bumps for a human decision — including the ones hiding in a lockfile behind a dev-only title — and repairs the rubocop bumps whose new cops break the Lint job. Triggers — "check les PRs dependabot", "merge les dependabot", "bump hebdo des dépendances", "weekly dependencies", "les PRs de mise à jour de gems", "rubocop bump rouge".
+description: Triage, validate and merge the open Dependabot pull requests on datagouv/apistration, and bump the gems listed by the open bundler-audit issue. Handles the green minor/patch bumps end to end, flags major bumps for a human decision — including the ones hiding in a lockfile behind a dev-only title — and repairs the rubocop bumps whose new cops break the Lint job. Triggers — "check les PRs dependabot", "merge les dependabot", "bump hebdo des dépendances", "weekly dependencies", "les PRs de mise à jour de gems", "rubocop bump rouge".
 ---
 
 # Weekly Dependencies Bump
 
-Routine pass over the open Dependabot PRs. The goal is zero open Dependabot PR
-at the end, or an explicit question to the user for the ones that cannot be
-decided alone.
+Routine pass over the open Dependabot PRs and the open `bundler-audit`
+issue. The goal is zero open Dependabot PR and a bump PR for every gem the
+issue lists at the end, or an explicit question to the user for the ones
+that cannot be decided alone.
 
 ## Decision rules
 
@@ -76,6 +77,32 @@ For a grouped or major bump, read the changelog Dependabot embeds in the body:
 ```bash
 gh pr view <pr> --json body --jq .body
 ```
+
+## Advisories Dependabot does not see
+
+Dependabot only reads the GitHub Advisory Database, which can lag days
+behind rubysec/ruby-advisory-db (addressable 2.9.0, fixed by hand in #607,
+never got an alert). The daily `Bundler audit` workflow
+(`.github/workflows/bundler-audit.yml`) runs bundler-audit on the six Ruby
+lockfiles and keeps a single issue labelled `bundler-audit` open while
+anything is found. Check it on every pass:
+
+```bash
+gh issue list --label bundler-audit --state open --json number,title,url
+gh issue view <issue> --json body --jq .body
+```
+
+Each section names a lockfile, the gem, the advisory and the fixed
+version. No Dependabot PR will come for it: bump the gem yourself in a PR
+of your own (`bundle update --conservative <gem>` in each listed app, as
+#607 did), with the advisory ids in the commit message. The workflow
+closes the issue on the first clean scan after the merge; run it at once
+with `gh workflow run bundler-audit.yml --ref develop`. A section marked
+`scan failed` is a broken scan, not a vulnerability: read the run log.
+
+A false positive (advisory on a code path the app never uses, no fixed
+version yet) is ignored in a `.bundler-audit.yml` next to the lockfile,
+never by dropping the lockfile from the workflow: ask the user first.
 
 ## Merging
 
