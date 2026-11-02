@@ -103,7 +103,7 @@ GEM
     brakeman (8.1.0)
       racc
     builder (3.3.0)
-    bullet (8.3.0)
+    bullet (8.3.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (13.0.0)
@@ -252,7 +252,7 @@ GEM
       terminal-table (>= 1.5.1)
     interactor (3.2.0)
       ostruct
-    io-console (0.9.4)
+    io-console (0.9.5)
     ip_anonymizer (0.4.0)
     irb (1.18.0)
       pp (>= 0.6.0)
@@ -415,7 +415,7 @@ GEM
       actionpack (>= 7.2)
     prettyprint (0.2.1)
     prism (1.9.0)
-    pry (0.16.0)
+    pry (0.16.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
       reline (>= 0.6.0)
