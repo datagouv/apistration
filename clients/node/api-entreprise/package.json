@@ -38,9 +38,9 @@
     "siren"
   ],
   "devDependencies": {
-    "@types/node": "^25.8.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^3.0.0"
+    "@types/node": "^26.6.5",
+    "tsup": "^9.0.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
   }
 }
