@@ -8,7 +8,7 @@ Official Node.js client for [API Particulier v3](https://particulier.api.gouv.fr
 npm install @api-gouv-dinum/api-particulier
 ```
 
-Requires Node.js >= 18.0.0 (uses native `fetch`).
+Requires Node.js >= 22.0.0 (uses native `fetch`).
 
 ## Configuration
 

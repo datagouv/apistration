@@ -77,6 +77,9 @@ updates:
       - "/clients/node/commons"
       - "/clients/node/api-entreprise"
       - "/clients/node/api-particulier"
+    ignore:
+      - dependency-name: "typescript"
+        versions: [">=7"]
     schedule:
       day: "monday"
       time: "05:00"

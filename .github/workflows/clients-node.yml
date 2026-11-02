@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: ['18', '20', '22']
+        node: ['22', '24', '26']
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: actions/setup-node@v7
@@ -35,11 +35,11 @@ jobs:
 
       - name: api-entreprise
         working-directory: clients/node/api-entreprise
-        run: npm ci && npm test
+        run: npm ci && npm test && npm run build
 
       - name: api-particulier
         working-directory: clients/node/api-particulier
-        run: npm ci && npm test
+        run: npm ci && npm test && npm run build
 
   freshness:
     name: sync-commons & scaffold-resources freshness
@@ -60,6 +60,16 @@ jobs:
 
       - name: Verify scaffolded resources are up to date
         run: npx tsx clients/node/bin/scaffold-resources.ts --api all --check
+
+      - name: Verify VERSION matches package.json
+        run: |
+          for dir in clients/node/api-entreprise clients/node/api-particulier; do
+            pkg_version=$(node -p "require('./$dir/package.json').version")
+            if ! grep -Fqx "export const VERSION = '$pkg_version';" "$dir/src/version.ts"; then
+              echo "$dir/src/version.ts does not match package.json version $pkg_version" >&2
+              exit 1
+            fi
+          done
 
   release:
     name: Build & publish to npm

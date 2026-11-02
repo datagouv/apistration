@@ -8,7 +8,7 @@ Official Node.js client for [API Entreprise v3](https://entreprise.api.gouv.fr).
 npm install @api-gouv-dinum/api-entreprise
 ```
 
-Requires Node.js >= 18.0.0 (uses native `fetch`).
+Requires Node.js >= 22.0.0 (uses native `fetch`).
 
 ## Configuration
 

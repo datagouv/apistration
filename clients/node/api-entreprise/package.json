@@ -1,6 +1,6 @@
 {
   "name": "@api-gouv-dinum/api-entreprise",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Official Node.js client for API Entreprise v3",
   "type": "module",
   "main": "dist/index.cjs",
@@ -22,7 +22,7 @@
     "test:watch": "vitest"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "license": "MIT",
   "repository": {
@@ -38,9 +38,9 @@
     "siren"
   ],
   "devDependencies": {
-    "@types/node": "^25.8.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^3.0.0"
+    "@types/node": "^26.6.6",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
   }
 }
