@@ -61,6 +61,16 @@ jobs:
       - name: Verify scaffolded resources are up to date
         run: npx tsx clients/node/bin/scaffold-resources.ts --api all --check
 
+      - name: Verify VERSION matches package.json
+        run: |
+          for dir in clients/node/api-entreprise clients/node/api-particulier; do
+            pkg_version=$(node -p "require('./$dir/package.json').version")
+            if ! grep -Fqx "export const VERSION = '$pkg_version';" "$dir/src/version.ts"; then
+              echo "$dir/src/version.ts does not match package.json version $pkg_version" >&2
+              exit 1
+            fi
+          done
+
   release:
     name: Build & publish to npm
     if: github.ref_type == 'tag'
