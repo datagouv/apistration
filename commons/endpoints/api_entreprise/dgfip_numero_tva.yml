@@ -35,7 +35,9 @@ fiche:
       - Donnée structurée JSON
     data:
       description: |+
-        Cette API **génère le numéro de TVA** d'une unité légale à partir de son numéro de SIREN et **vérifie** auprès des extractions publiées par la DGFIP sur data.gouv.fr que celui-ci est valide.
+        Cette API **recherche le numéro de TVA** d'une unité légale à partir de son numéro de SIREN dans les extractions publiées par la DGFIP sur data.gouv.fr. Elle couvre les numéros dont la clé de contrôle est numérique (ex. `FR72217500016`) comme ceux dont la clé est alphanumérique (ex. `FR0F391196425`).
+
+        L'API délivre **un seul numéro de TVA**. Si l'unité légale en a plusieurs, la règle de choix est décrite dans la FAQ.
 
         **⚠️ Si l'API ne retourne pas de numéro de TVA**, cela ne veut pas dire que l'unité légale n'a pas de numéro de TVA. En effet, celle-ci peut avoir un numéro de TVA non français, ou son enregistrement peut ne pas encore figurer dans l'extraction du jour (fraîcheur J+1).
     opening: public
@@ -44,7 +46,7 @@ fiche:
     faq:
       - q: "Pourquoi l'API renvoie une erreur alors que j'ai pu récupérer un numéro de TVA sur un site tiers ?"
         a: |+
-          Dans la majorité des cas, il est assez simple de déduire le numéro de TVA à partir du numéro de SIREN. C'est pourquoi, beaucoup de sites tiers effectuent ce calcul et **affichent le potentiel numéro de TVA, sans effectuer de vérification**. De fait, dans certains cas, le numéro de TVA que ces sites tiers proposent est faux.
+          Dans la majorité des cas, il est assez simple de déduire le numéro de TVA à partir du numéro de SIREN. C'est pourquoi, beaucoup de sites tiers effectuent ce calcul et **affichent le potentiel numéro de TVA, sans effectuer de vérification**. De fait, dans certains cas, le numéro de TVA que ces sites tiers proposent est faux : la DGFIP attribue aussi des numéros dont la clé est alphanumérique (ex. `FR0F391196425`), qu'un calcul depuis le SIREN ne peut pas deviner.
 
           Dans le cas où l'API Entreprise ne délivre pas de numéro de TVA (erreur de type 404 - entité non-trouvée) pour un SIREN dont vous avez obtenu le numéro de TVA par un site tiers, **il est fort probable que ce numéro de TVA est invalide** : il ne figure pas dans les extractions de la DGFIP.
 
@@ -60,10 +62,18 @@ fiche:
         a: |+
           L'ancien endpoint [Commission Européenne VIES](/catalogue/api_entreprise/endpoints/commission_europeenne_numero_tva) vérifiait le numéro de TVA en temps réel auprès du service VIES de la Commission Européenne.
 
-          Ce nouvel endpoint s'appuie sur les **extractions quotidiennes publiées par la DGFIP** sur data.gouv.fr. La stratégie de vérification est identique (calcul du numéro de TVA à partir du SIREN, vérification auprès d'une source officielle), mais la fraîcheur des données est de **J+1** au lieu du temps réel.
+          Ce nouvel endpoint s'appuie sur les **extractions quotidiennes publiées par la DGFIP** sur data.gouv.fr. Il ne se limite pas au numéro calculé à partir du SIREN : il retrouve aussi les numéros à clé alphanumérique. La fraîcheur des données est de **J+1** au lieu du temps réel.
       - q: "Une entreprise peut-elle avoir plusieurs numéros de TVA intracommunautaire ?"
         a: |+
           Une entreprise assujettie à la TVA peut posséder un numéro de TVA pour chacun de ses codes d'activité (NAF/APE). Les numéros de TVA affichés sur l'Annuaire des Entreprises sont les numéros actifs à la date d'extraction des données.
+
+          L'API ne délivre qu'**un seul numéro**, choisi ainsi parmi ceux de l'extraction DGFIP :
+
+          1. le numéro calculé à partir du SIREN (clé numérique), s'il figure dans l'extraction ;
+          2. sinon, le seul numéro trouvé ;
+          3. sinon, le numéro attribué le plus récemment ; en cas d'égalité de date d'attribution, le premier dans l'ordre alphanumérique décroissant.
+
+          Pour obtenir tous les numéros d'une entreprise, utilisez le [fichier publié par la DGFIP sur data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-entreprises-beneficiaires-du-traitement-tva/){:target="_blank"}.
       - q: "Quelles sont les entreprises disposant d'un numéro de TVA intracommunautaire ?"
         a: |+
           Toute entreprise domiciliée dans l'Union Européenne (UE) et qui est redevable de la TVA doit disposer d'un numéro de TVA intracommunautaire.
