@@ -25,6 +25,8 @@
 - Error handling: Create specific error classes in app/errors/ and use the config/errors.yml configuration
 - Error codes nomenclature: declare every error an interactor can raise (`raises`, `delegates_to`) and regenerate with `bin/generate_swagger.sh`; design and guards in `../docs/nomenclature_erreurs.md`
 - Swagger: one rswag `response` block per error cause, so each cause shows its own example and status.
+- Attestation proofs: which errors earn a proof is declared on each error (`attests:` next to its `raises`), never decided by a `case` or a table on error classes in a caller. An HTTP status is not a type: one 404 means « not referenced » or « found, not eligible », so a rule keyed on the status is misplaced.
+- Unknown provider: a provider or data source the response does not name is written as unknown (`origine non communiquée`), never as the most common provider.
 - API responses: Follow REST/JSON:API format with data/links/meta structure
 - Tests: RSpec with manually stubbed requests using WebMock. VCR is legacy - do NOT use VCR for new implementations, always use manual stubs
 - Model specs: Do NOT test ActiveRecord associations (belongs_to, has_many, etc.) — that's testing the framework. Only test custom behavior (scopes, methods, validations). Ensure factories are valid instead.
