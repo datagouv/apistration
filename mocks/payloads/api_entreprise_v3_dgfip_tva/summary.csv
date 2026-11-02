@@ -1,4 +1,13 @@
 Titre,Description,Paramètres,Status,Réponse
+,Numéro de TVA à clé alphanumérique trouvé pour le SIREN,"{""siren"":""391196425""}",200,"{
+  ""data"": {
+    ""numero_tva"": ""FR0F391196425""
+  },
+  ""links"": {},
+  ""meta"": {
+    ""date_derniere_mise_a_jour"": ""2026-11-02""
+  }
+}"
 ,Numéro de TVA trouvé pour le SIREN,"{""siren"":""217500016""}",200,"{
   ""data"": {
     ""numero_tva"": ""FR72217500016""

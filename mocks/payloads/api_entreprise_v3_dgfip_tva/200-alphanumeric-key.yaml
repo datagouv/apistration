@@ -1,0 +1,15 @@
+---
+description: 'Numéro de TVA à clé alphanumérique trouvé pour le SIREN'
+params:
+  siren: '391196425'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_tva": "FR0F391196425"
+    },
+    "links": {},
+    "meta": {
+      "date_derniere_mise_a_jour": "2026-11-02"
+    }
+  }
