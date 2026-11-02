@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0
+
+### Changed
+- **Breaking**: requires Node.js >= 22 (`engines.node`), Node.js 18 and 20
+  being end-of-life. The build now targets `node22`. No change to the
+  public API.
+
 ## 0.5.0
 
 ### Added

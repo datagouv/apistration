@@ -1,6 +1,6 @@
 {
   "name": "@api-gouv-dinum/api-particulier",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Official Node.js client for API Particulier v3",
   "type": "module",
   "main": "dist/index.cjs",
@@ -22,7 +22,7 @@
     "test:watch": "vitest"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "license": "MIT",
   "repository": {
