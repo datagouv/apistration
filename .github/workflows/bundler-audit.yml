@@ -1,0 +1,127 @@
+name: "Bundler audit"
+
+on:
+  schedule:
+    - cron: '7 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: bundler-audit
+  cancel-in-progress: false
+
+env:
+  ISSUE_LABEL: bundler-audit
+  ISSUE_TITLE: "bundler-audit: vulnerable gems in Gemfile.lock"
+
+jobs:
+  audit:
+    name: Audit lockfiles
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1.335.0
+        with:
+          ruby-version: '4.0'
+
+      - name: Install bundler-audit
+        run: |
+          gem install bundler-audit --no-document
+          bundle-audit update
+
+      - name: Scan lockfiles
+        id: scan
+        run: |
+          report="$RUNNER_TEMP/report.md"
+          : > "$report"
+          errored=false
+          for dir in siade site mocks clients/ruby/commons clients/ruby/api_entreprise clients/ruby/api_particulier; do
+            set +e
+            output=$(cd "$dir" && bundle-audit check --no-update 2>&1)
+            status=$?
+            set -e
+            echo "::group::$dir"
+            stop_token=$(openssl rand -hex 16)
+            echo "::stop-commands::$stop_token"
+            echo "$output"
+            echo "::$stop_token::"
+            echo "::endgroup::"
+            if [ "$status" -eq 0 ]; then
+              continue
+            fi
+            heading="### \`$dir/Gemfile.lock\`"
+            if ! grep -q '^Vulnerabilities found!' <<< "$output"; then
+              echo "::error::bundle-audit failed on $dir/Gemfile.lock"
+              errored=true
+              heading="$heading: scan failed"
+              output=$(head -n 5 <<< "$output")
+            fi
+            fence='```'
+            while grep -qF "$fence" <<< "$output"; do
+              fence="$fence\`"
+            done
+            {
+              echo "$heading"
+              echo
+              echo "$fence"
+              echo "$output"
+              echo "$fence"
+              echo
+            } >> "$report"
+          done
+          echo "report=$report" >> "$GITHUB_OUTPUT"
+          echo "errored=$errored" >> "$GITHUB_OUTPUT"
+
+      - name: Open, update or close the issue
+        if: github.ref == 'refs/heads/develop'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPORT: ${{ steps.scan.outputs.report }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/workflows/bundler-audit.yml
+        run: |
+          issue=$(gh api -X GET "repos/$GITHUB_REPOSITORY/issues" -f labels="$ISSUE_LABEL" -f state=open -f creator='github-actions[bot]' -f sort=created -f direction=asc --jq '[.[] | select(.pull_request == null)] | first | .number // empty')
+
+          if [ ! -s "$REPORT" ]; then
+            if [ -n "$issue" ]; then
+              gh issue close "$issue" --comment "Every lockfile is clean again: $RUN_URL"
+            fi
+            exit 0
+          fi
+
+          fingerprint="<!-- report-sha256: $(sha256sum "$REPORT" | cut -d' ' -f1) -->"
+          body="$RUNNER_TEMP/body.md"
+          {
+            echo "$fingerprint"
+            echo "[bundler-audit](https://github.com/rubysec/bundler-audit) checks the Ruby lockfiles against [ruby-advisory-db](https://github.com/rubysec/ruby-advisory-db), which often lists advisories before the GitHub Advisory Database that Dependabot reads. This issue is updated by the daily \`Bundler audit\` workflow and closed once every lockfile is clean."
+            echo
+            if [ "$(wc -c < "$REPORT")" -le 60000 ]; then
+              cat "$REPORT"
+            else
+              echo "The report is too long for an issue: read it in the [latest run]($WORKFLOW_URL). Lockfiles concerned:"
+              echo
+              grep '^### ' "$REPORT" | sed 's/^### /- /'
+            fi
+          } > "$body"
+
+          if [ -z "$issue" ]; then
+            gh label create "$ISSUE_LABEL" --color B60205 --description "Vulnerable gems found by the daily bundler-audit scan" --force
+            gh issue create --title "$ISSUE_TITLE" --label "$ISSUE_LABEL" --body-file "$body"
+            exit 0
+          fi
+
+          current_body=$(gh issue view "$issue" --json body --jq .body)
+          if [[ "$current_body" != *"$fingerprint"* ]]; then
+            gh issue comment "$issue" --body "Findings changed, issue description updated: $RUN_URL"
+            gh issue edit "$issue" --body-file "$body"
+          fi
+
+      - name: Fail when a scan failed
+        if: steps.scan.outputs.errored == 'true'
+        run: exit 1
