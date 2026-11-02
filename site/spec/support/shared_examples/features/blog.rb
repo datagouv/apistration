@@ -29,6 +29,12 @@ RSpec.shared_examples 'a blog feature' do
 
         expect(page).to have_current_path(root_path, ignore_query: true)
       end
+
+      it 'tells the visitor the article cannot be found' do
+        show_blog_post
+
+        expect(page).to have_text("L'élément auquel vous essayez d'accéder est introuvable")
+      end
     end
   end
 end

@@ -27,12 +27,12 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from Pundit::NotAuthorizedError do |_|
-    error_message(title: t('.error.unauthorize'))
+    error_message(title: t('application_controller.error.unauthorize'))
     redirect_current_user_to_homepage
   end
 
   rescue_from ActiveRecord::RecordNotFound do |_|
-    error_message(title: t('.error.record_not_found'))
+    error_message(title: t('application_controller.error.record_not_found'))
     if user_signed_in?
       redirect_current_user_to_homepage
     else
