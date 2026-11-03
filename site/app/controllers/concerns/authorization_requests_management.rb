@@ -3,7 +3,7 @@ module AuthorizationRequestsManagement
 
   def show
     @authorization_request = extract_authorization_request
-    @tokens = @authorization_request.tokens.order(created_at: :desc).decorate
+    @tokens = @authorization_request.tokens.includes(:creator).order(created_at: :desc).decorate
     load_delegations_data
 
     render 'shared/authorization_requests/show'

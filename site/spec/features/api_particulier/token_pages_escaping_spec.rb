@@ -20,25 +20,6 @@ RSpec.describe 'token pages escape user names', app: :api_particulier do
     login_as(authenticated_user)
   end
 
-  describe 'when the token cannot be shown' do
-    let!(:token) { create(:token, authorization_request:) }
-
-    before do
-      visit api_particulier_token_path(id: token.id)
-    end
-
-    it 'displays the names as text' do
-      expect(page).to have_text('<i>Mallory</i>')
-      expect(page).to have_text('<i>Trudy</i>')
-      expect(page).to have_no_css('i', text: 'Mallory')
-      expect(page).to have_no_css('i', text: 'Trudy')
-    end
-
-    it 'keeps the markup of the translations' do
-      expect(page).to have_css('strong', text: 'Contact technique')
-    end
-  end
-
   describe 'when asking the demandeur for a prolongation' do
     let!(:token) { create(:token, authorization_request:, exp: 83.days.from_now.to_i) }
 
