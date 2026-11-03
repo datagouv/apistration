@@ -18,7 +18,7 @@ Lecture obligatoire selon la tâche :
 ## Releaser un SDK
 
 Skill dédié : `release-new-version`
-([`/.claude/skills/release-new-version/SKILL.md`](.claude/skills/release-new-version/SKILL.md)).
+([`clients/.claude/skills/release-new-version/SKILL.md`](.claude/skills/release-new-version/SKILL.md)).
 Couvre bump version, CHANGELOG, PR vers develop, tag sur le commit de
 merge, workflow CI.
 

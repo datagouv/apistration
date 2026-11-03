@@ -117,6 +117,9 @@ depuis un contrôleur ni un modèle.
 - API Entreprise: http://entreprise.api.localtest.me:5000/
 - API Particulier: http://particulier.api.localtest.me:5000/
 
+Le port 5000 est celui du checkout principal ; dans un worktree, c'est le
+`PORT` de `.env.local` (`2NNNN`, cf. `CLAUDE.md` racine § Worktrees).
+
 ## Local Login (dev only)
 Bypass ProConnect via: `/compte/dev-login?email=user@yopmail.com`
 
