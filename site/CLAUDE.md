@@ -108,7 +108,7 @@ depuis un contrôleur ni un modèle.
 
 ## Code Style Guidelines
 
-- **Testing**: RSpec, feature tests with Capybara. Do NOT test ActiveRecord associations — only test custom behavior. Ensure factories are valid instead.
+- **Testing**: RSpec, feature tests with Capybara.
 - **Database**: Follow Rails conventions, use strong_migrations for safe changes
 - **Indent Style**: 2 spaces, consistent indentation for multiline
 - **Comments**: DO NOT use comments
