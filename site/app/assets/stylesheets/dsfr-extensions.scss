@@ -97,6 +97,21 @@
   }
 }
 
+.fr-table--stretch {
+  .fr-table__content {
+    overflow-x: auto;
+  }
+
+  table {
+    display: table;
+    width: 100%;
+  }
+
+  td, th {
+    overflow: visible;
+  }
+}
+
 .fr-table--large {
   width: 1200px !important;
 }
@@ -169,3 +184,9 @@
   color: var(--text-default-grey);
 }
 
+
+.fr-enlarge-link .fr-card__detail a,
+.fr-enlarge-link .fr-card__footer a {
+  position: relative;
+  z-index: 2;
+}
