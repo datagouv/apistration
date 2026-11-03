@@ -12,12 +12,9 @@
 - **YAML Payloads**: Use standard format with `params`, `status`, and `payload` keys
 - **Directory Naming**: Follow `api_[entreprise|particulier]_version_endpointname` format
 - **Testing**: Use RSpec and follow the project's test organization
-- **Error Handling**: Create appropriate HTTP status error files (404, 503, etc.)
 - **Documentation**: Maintain README files in each endpoint directory
-- **Data Structure**: Validate payloads against OpenAPI specifications
 - **Best Practice**: Create summary.csv for each endpoint directory
-- **File Format**: All files must end with a newline
 
 IMPORTANT! Every payload file in a given folder must have a unique set of parameters. Duplicate parameter sets across files in the same folder are not allowed.
 
-IMPORTANT! FranceConnect-derived fixtures (`fake_france_connect_*.y*ml`, `france_connect_*.y*ml`) must never include a `nomUsage` param. FranceConnect's "identité pivot" only ever supplies `family_name`/`given_name`/`gender`/`birthdate`/`birthplace`/`birthcountry` (see `identity` in `siade/app/interactors/france_connect/data_fetcher_through_access_token/build_service_user_identity.rb`) — `nom_usage` is hardcoded to `nil` for every FranceConnect-driven request (`siade/app/interactors/france_connect/data_fetcher_through_access_token/build_service_user_identity.rb`), so a `nomUsage` key in a fixture's `params` can never be matched by a real request; it silently 404s instead. `nomUsage` is only valid in `*_with_civility` fixtures, where the caller supplies it directly as a query param.
+IMPORTANT! FranceConnect-derived fixtures (`fake_france_connect_*.y*ml`, `france_connect_*.y*ml`) never include a `nomUsage` param: FranceConnect never supplies it (the identity built in `build_service_user_identity.rb` has no usage name), so such a fixture is never matched and silently 404s. `nomUsage` belongs only in `*_with_civility` fixtures, where the caller passes it as a query param.

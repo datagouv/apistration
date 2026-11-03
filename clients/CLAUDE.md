@@ -18,7 +18,7 @@ Lecture obligatoire selon la tâche :
 ## Releaser un SDK
 
 Skill dédié : `release-new-version`
-([`/.claude/skills/release-new-version/SKILL.md`](.claude/skills/release-new-version/SKILL.md)).
+([`clients/.claude/skills/release-new-version/SKILL.md`](.claude/skills/release-new-version/SKILL.md)).
 Couvre bump version, CHANGELOG, PR vers develop, tag sur le commit de
 merge, workflow CI.
 
@@ -47,6 +47,5 @@ Oublier ces étapes = le SDK existe mais personne ne le sait.
 
 ## Conventions
 
-- Messages de commit en anglais (cf. `CLAUDE.md` racine).
 - Une release = un gem/package = un tag. Ne jamais coupler `api_entreprise`
   et `api_particulier` dans la même release.

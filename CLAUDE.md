@@ -16,6 +16,9 @@ avec les conventions spécifiques :
   scout, nouveau hook dans une classe de base, renommage) va dans son propre
   commit, avant celui qui l'utilise : mélangé à la feature, il se lit comme
   un changement requis.
+- Specs Rails : tester le comportement propre (scopes, méthodes,
+  validations) et la validité des factories, jamais les associations
+  ActiveRecord (`belongs_to`, `has_many`…) : ce serait tester le framework.
 - **Toute itération sur une signature d'API publique** (nouveau endpoint,
   nouvelle version, paramètre ajouté/supprimé/renommé/rendu optionnel,
   changement de format de réponse, dépréciation) doit s'accompagner d'une
@@ -36,10 +39,8 @@ PR relue, corrigée et la CI verte, la confronter à chaque règle de
 `REVIEW.md`. Si toutes les conditions d'une règle tiennent, lancer
 `bin/vouch-auto-mergeable <règle> "<preuve>"`, qui pose le statut et le
 label ; sinon, dire dans l'annonce qu'aucune règle ne s'applique, avec la
-condition qui manque à la règle la plus proche. Une fois vouchée, la PR
-peut être mergée sans approbation avec
-`gh pr merge <numéro> --merge --admin` ; jamais `--admin` sur une PR sans
-label ni statut sur son head.
+condition qui manque à la règle la plus proche. Le merge d'une PR
+vouchée suit `REVIEW.md` § Merging.
 
 ## Worktrees
 
@@ -155,6 +156,5 @@ committer. Hors périmètre : la matrice de `.github/workflows/clients-ruby.yml`
 (compatibilité des utilisateurs du SDK, sujet distinct). Un spec qui n'échoue
 que sous la nouvelle version est souvent une course révélée par un changement
 de vitesse : le comparer à froid (`rm -rf tmp/cache/bootsnap tmp/cache/assets`)
-sous les deux versions (`RBENV_VERSION=...`) avant de soupçonner Ruby (cas
-vécu dans #543 : `src` d'une frame Turbo réécrit en URL absolue). Une PR de
+sous les deux versions (`RBENV_VERSION=...`) avant de soupçonner Ruby. Une PR de
 bump Ruby ne relève d'aucune règle de `REVIEW.md` : review normale.
