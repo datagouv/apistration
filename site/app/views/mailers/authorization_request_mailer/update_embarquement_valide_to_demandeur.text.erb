@@ -1,0 +1,7 @@
+<%= render partial: "greetings", locals: { entity: "demandeur" } -%>
+
+Votre demande de mise à jour de l'habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> a bien été validée par notre service juridique : <%= @authorization_request_datapass_url %>
+
+Suite à cette mise à jour, la durée de vie de votre jeton d'accès a été prolongée de 18 mois.
+
+<%= render partial: "signature" %>

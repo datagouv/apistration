@@ -1,5 +1,5 @@
 fr:
-  api_entreprise:
+  mailers:
     authorization_request_mailer:
       embarquement_demande_refusee:
         subject: 🚫 Votre demande d'accès est refusée.
@@ -7,20 +7,24 @@ fr:
         subject: ✒️ Votre demande requiert des modifications.
       embarquement_valide_to_editeur:
         subject:  ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
+      embarquement_valide_to_demandeur_is_tech:
+        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
       embarquement_valide_to_demandeur_is_tech_is_metier:
         subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
       embarquement_valide_to_demandeur_seulement:
         subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
       embarquement_valide_to_metier_cc_demandeur_tech:
-        subject: ✅ Vous avez été désigné contact métier d'une habilitation à l'API Entreprise.
+        subject: ✅ Vous avez été désigné contact métier d'une habilitation à l'%{api_name}.
       embarquement_valide_to_demandeur_is_metier_not_tech:
         subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
       embarquement_valide_to_demandeur_is_tech_not_metier:
         subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
+      embarquement_valide_to_tech_cc_demandeur:
+        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'%{api_name}. Récupérez maintenant la clé d'accès 🔑 !
       embarquement_valide_to_tech_cc_demandeur_metier:
-        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'API Entreprise. Récupérez maintenant la clé d'accès 🔑 !
+        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'%{api_name}. Récupérez maintenant la clé d'accès 🔑 !
       demande_recue:
-        subject: 📬 Votre demande d'accès à l'API Entreprise a bien été reçue par nos services.
+        subject: 📬 Votre demande d'accès à l'%{api_name} a bien été reçue par nos services.
 
       update_embarquement_demande_refusee:
         subject: 🚫 Votre demande de mise à jour est refusée.
@@ -29,86 +33,39 @@ fr:
       update_embarquement_valide_to_demandeur:
         subject: ✅ Demande de mise à jour validée
       update_demande_recue:
-        subject: 📬 Votre demande de mise à jour de votre accès à l'API Entreprise a bien été reçue par nos services.
+        subject: 📬 Votre demande de mise à jour de votre accès à l'%{api_name} a bien été reçue par nos services.
 
     token_mailer:
       expiration_notice_90J:
-        subject: 🔑 Prolongez votre jeton API Entreprise
+        subject: 🔑 Prolongez votre jeton %{api_name}
       expiration_notice_60J:
-        subject: 🔑 Prolongez votre jeton API Entreprise, il expire dans 2 mois
+        subject: 🔑 Prolongez votre jeton %{api_name}, il expire dans 2 mois
       expiration_notice_30J:
-        subject: 🔑⚠️ Expiration dans 30 jours de votre accès API Entreprise
+        subject: 🔑⚠️ Expiration dans 30 jours de votre accès %{api_name}
       expiration_notice_15J:
-        subject: 🔑🚨 Expiration dans 15 jours de votre accès API Entreprise
+        subject: 🔑🚨 Expiration dans 15 jours de votre accès %{api_name}
       expiration_notice_7J:
-        subject: 🔑🚨⚠️ Expiration dans 7 jours de votre accès API Entreprise
+        subject: 🔑🚨⚠️ Expiration dans 7 jours de votre accès %{api_name}
       expiration_notice_0J:
-        subject: "🔒⚠️ Rupture de service : votre accès à l'API Entreprise a expiré."
+        subject: "🔒⚠️ Rupture de service : votre accès à l'%{api_name} a expiré."
       magic_link:
-        subject: 🔑 Lien d'accès temporaire au jeton API Entreprise
-        signature: L'équipe API Entreprise
-        link_description: Un lien vers un jeton d'accès API Entreprise vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
+        subject: 🔑 Lien d'accès temporaire au jeton %{api_name}
+        signature: L'équipe %{api_name}
+        link_description: Un lien vers un jeton d'accès %{api_name} vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
       banned:
-        subject: 🔑⚠️ Votre token d'accès API Entreprise a été banni
+        subject: 🔑⚠️ Votre token d'accès %{api_name} a été banni
+
     changelog_mailer:
       weekly:
-        subject: 📰 Les nouveautés API Entreprise de la semaine
+        subject: 📰 Les nouveautés %{api_name} de la semaine
+
+    audit_mailer:
+      notify:
+        subject: "🔍 Anomalie détectée sur votre habilitation DataPass n°%{id}"
 
   api_particulier:
-    authorization_request_mailer:
-      demande_recue:
-        subject: 📬 Votre demande d'accès à l'API Particulier a bien été reçue par nos services.
-      update_demande_recue:
-        subject: 📬 Votre demande de mise à jour de votre accès à l'API Particulier a bien été reçue par nos services.
-
-      embarquement_demande_refusee:
-        subject: 🚫 Votre demande d'accès est refusée.
-      embarquement_modifications_demandees:
-        subject: ✒️ Votre demande requiert des modifications.
-      update_embarquement_demande_refusee:
-        subject: 🚫 Votre demande de mise à jour est refusée.
-      update_embarquement_modifications_demandees:
-        subject: ✒️ Votre demande de mise à jour requiert des modifications.
-
-      embarquement_valide_to_demandeur_is_tech:
-        subject: ✅ Demande validée ! Récupérez maintenant votre clé d'accès 🔑 !
-      embarquement_valide_to_demandeur_seulement:
-        subject: ✅ Demande validée ! Transmettez maintenant votre clé d'accès 🔑 à l'équipe technique !
-      embarquement_valide_to_tech_cc_demandeur:
-        subject: ✅ Vous avez été désigné contact technique d'une habilitation à l'API Particulier. Récupérez maintenant la clé d'accès 🔑 !
-      update_embarquement_valide_to_demandeur:
-        subject: ✅ Demande de mise à jour validée
-
-    token_mailer:
-      expiration_notice_90J:
-        subject: 🔑 Prolongez votre jeton API Particulier
-      expiration_notice_60J:
-        subject: 🔑 Prolongez votre jeton API Particulier, il expire dans 2 mois
-      expiration_notice_30J:
-        subject: 🔑⚠️ Expiration dans 30 jours de votre accès API Particulier
-      expiration_notice_15J:
-        subject: 🔑🚨 Expiration dans 15 jours de votre accès API Particulier
-      expiration_notice_7J:
-        subject: 🔑🚨⚠️ Expiration dans 7 jours de votre accès API Particulier
-      expiration_notice_0J:
-        subject: "🔒⚠️ Rupture de service : votre accès à l'API Particulier a expiré."
-      magic_link:
-        subject: 🔑 Lien d'accès temporaire au jeton API Particulier
-        signature: L'équipe API Particulier
-        link_description: Un lien vers un jeton d'accès API Particulier vient d'être généré à votre intention. Vous pouvez accéder à ce jeton via le lien
-      banned:
-        subject: 🔑⚠️ Votre token d'accès API Particulier a été banni
-
     reporters_mailer:
       submit:
         subject: Une nouvelle demande a été déposée pour API Particulier
       approve:
         subject: Une nouvelle demande a été validée pour API Particulier
-
-    changelog_mailer:
-      weekly:
-        subject: 📰 Les nouveautés API Particulier de la semaine
-  shared:
-    audit_mailer:
-      notify:
-        subject: "🔍 Anomalie détectée sur votre habilitation DataPass n°%{id}"

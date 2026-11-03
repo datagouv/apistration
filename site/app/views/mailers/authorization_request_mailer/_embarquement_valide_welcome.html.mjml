@@ -1,0 +1,9 @@
+<mj-text mj-class="section-block">
+  <p>
+    <b>Bienvenue</b>
+    et à bientôt 🤝
+  </p>
+  <p>
+    <b><%= api_full_name %></b>
+  </p>
+</mj-text>

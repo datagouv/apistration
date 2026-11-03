@@ -18,7 +18,7 @@ RSpec.describe APIParticulier::ChangelogMailer do
     end
 
     it 'has the localized subject' do
-      expect(mail.subject).to eq(I18n.t('api_particulier.changelog_mailer.weekly.subject'))
+      expect(mail.subject).to eq('📰 Les nouveautés API Particulier de la semaine')
     end
 
     it 'renders the entries' do
@@ -27,6 +27,7 @@ RSpec.describe APIParticulier::ChangelogMailer do
 
     it 'includes the unsubscribe token link' do
       expect(mail.html_part.body.decoded).to include(subscription.unsubscribe_token)
+      expect(mail.text_part.body.decoded).to include(subscription.unsubscribe_token)
     end
   end
 end
