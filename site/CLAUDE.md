@@ -39,8 +39,12 @@ After each iteration:
      change, tout suit.
 
    Pas d'entrée pour les commits internes (refacto, tests, bumps de
-   dépendances, fix de pings fournisseur, etc.) — uniquement ce qui
-   change l'expérience d'un consommateur d'API.
+   dépendances, fix de pings fournisseur, etc.) ni pour un correctif qui
+   ramène l'API à ce que sa documentation promettait déjà (même format de
+   réponse, rien à changer côté appelant), même visible et même s'il
+   précise la fiche ou la FAQ. Un correctif qui change ce que reçoit un
+   appelant bien écrit (nouveau code d'erreur, nouveau refus, nouvelle
+   contrainte sur un paramètre) a son entrée.
 
 ## Traçabilité des actions admin
 
