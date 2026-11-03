@@ -5,7 +5,6 @@ class Admin::Tokens::Ban < ApplicationOrganizer
   end
 
   organize Admin::Tokens::BanToken,
-    Admin::Tokens::RegenerateToken,
     Admin::Tokens::SendBanEmail,
     Admin::Tokens::CaptureBanAttributes,
     Admin::TrackActivity

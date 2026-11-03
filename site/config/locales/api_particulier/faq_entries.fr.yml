@@ -232,18 +232,18 @@ fr:
           entries:
             - question: "Comment récupérer son jeton après validation de la demande d'habilitation ?"
               answer: |+
-                  1. Une fois la demande d'habilitation validée, un e-mail est envoyé au demandeur et au contact technique avec un lien vers leur [compte utilisateur](<%= user_profile_path %>).
+                  1. Une fois la demande d'habilitation validée, un e-mail est envoyé à tous les contacts de la demande avec un lien vers la page de la demande dans leur [compte utilisateur](<%= user_profile_path %>).
 
-                  2. Une fenêtre de connexion ProConnect s'ouvre. Le demandeur doit renseigner les identifiants utilisés lors du dépôt de la demande d'habilitation ; le contact technique, ceux indiqués dans la demande.
+                  2. Une fenêtre de connexion ProConnect s'ouvre. Chaque contact se connecte avec l'adresse e-mail indiquée dans la demande d'habilitation.
 
-                  3. Le jeton est disponible depuis le [compte utilisateur](<%= user_profile_path %>) et peut-être copié.
+                  3. Depuis la page de la demande, cliquez sur « Créer un jeton » : choisissez un nom et une durée de validité (de 3 à 18 mois), et éventuellement les adresses IP autorisées. Une demande peut avoir jusqu'à 5 jetons actifs, par exemple un pour la production et un pour la recette.
 
                   {:.fr-highlight.fr-highlight--caution}
                   > ⚠️ Le token vous est propre, il ne faut pas le diffuser. Vous ne devez jamais copier-coller un token dans un moteur de recherche ou dans un e-mail. L’usage de votre token se fait uniquement dans votre logiciel métier sécurisé utilisé pour réaliser vos appels.
 
                   **Vous devez transmettre ce jeton à votre éditeur ? Ou à votre équipe technique ?** Utilisez la [fonctionnalité prévue à cet effet](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-tout-securite') %>).
 
-                  **Le jeton est valable 18 mois, il devra ensuite être prolongé par le demandeur tous les 18 mois, avant sa date d'expiration**. Autrement, vous ne pourrez plus accéder aux API tant que la prolongation n'aura pas été effectuée. Pour en savoir plus sur la procédure de prolongation, veuillez lire [cette rubrique](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>).
+                  **Le jeton est valable jusqu'à 18 mois.** Avant son expiration, prolongez-le ou créez-en un nouveau : [en savoir plus](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>).
 
             - question: "Comment transmettre le jeton d’accès en tout sécurité ?"
               answer: |+
@@ -262,52 +262,32 @@ fr:
 
             - question: "Comment prolonger mon jeton arrivant à expiration ?"
               answer: |+
-                Tous les jetons API Particulier ont une durée de vie de 18 mois ⌛️. Cette durée de vie peut être prolongée de 18 mois en effectuant la démarche de demande de prolongation suivante :
+                Un jeton a une durée de validité de 3 à 18 mois, choisie à sa création. Tous les contacts de la demande (demandeur, contact technique, contact métier) reçoivent un rappel par e-mail 30 jours et 7 jours avant son expiration, puis le jour de son expiration. Si aucun rappel n'est arrivé, vérifiez vos "spams" 🗑.
 
-                #### Se rendre sur le formulaire de prolongation
+                Depuis la page de la demande, dans votre [compte utilisateur](<%= user_profile_path %>), deux possibilités :
 
-                Trois mois avant l’arrivée à terme d’un jeton, le demandeur **reçoit des notifications automatiques** l'informant de l’expiration à venir de votre jeton ainsi qu’**une invitation à le prolonger**.
-                Les notifications sont envoyées régulièrement jusqu’à l'expiration (90 jours avant la date d’expiration, puis 60 jours avant, puis 30, 15, …). Le contact technique est en copie de ces e-mails, mais il ne peut pas compléter le formulaire. Seul le demandeur peut le faire.
+                - **Prolonger le jeton**, quand il expire dans moins de 90 jours : le jeton déjà installé dans votre logiciel reste valable, et vous choisissez une nouvelle durée de 3 à 18 mois.
+                - **Créer un nouveau jeton**, mettre à jour votre logiciel, puis révoquer l'ancien.
 
-                Si le jeton expire dans moins de 90 jours et qu'aucune notification n'a été reçue, veuillez vérifier si celle-ci n’est pas arrivée dans vos "spams" 🗑.
-
-                Le demandeur peut également accéder au formulaire de prolongation **depuis son [compte utilisateur](<%= user_profile_path %>)**. Trois mois avant l'expiration, un bouton _“Prolonger le jeton”_ apparaîtra en page d'accueil, au niveau de la liste de vos habilitations, dans la colonne des actions attendues. Ce bouton sera également visible à côté du jeton d’accès. Il mène directement vers le formulaire pré-rempli.
-
-                #### Remplir le formulaire de prolongation
-
-                Le formulaire de prolongation permet au demandeur d'indiquer si des changements sont intervenus depuis la dernière demande d'habilitation à l'API Particulier :
-
-                - **Si des changements sont intervenus**, ce formulaire permet de déposer rapidement une demande de modification de l'habilitation. Cette demande sera traitée en priorité par les services instructeurs. Après validation, le jeton sera prolongé de 18 mois.
-
-                - **Si aucun changement n'est intervenu**, le jeton sera prolongé de 18 mois à la suite de l'envoi du formulaire de prolongation.
+                Avant de prolonger, vérifiez que votre demande est toujours à jour sur DataPass.
 
                 {:.fr-h6}
-                ##### Qu'est-ce qu'API Particulier entend par «&nbsp;changements intervenus depuis la signature de l'habilitation&nbsp;» ?
+                ##### Qu'est-ce qu'API Particulier entend par «&nbsp;demande à jour&nbsp;» ?
 
-                L'accès de votre organisation à l'API Particulier a été concrétisé suite à une demande d'habilitation instruite et validée par l'API Particulier.
+                Dans votre demande d'habilitation, le demandeur a spécifié un projet, un cas d'usage et son cadre juridique, des contacts, parfois un éditeur de logiciel, ainsi que les responsables des données et de leur traitement. L'utilisation d'un jeton doit rester cohérente avec l'habilitation obtenue, comme le stipulent les [CGU](<%= cgu_path %>). Si ces éléments évoluent, faites une demande de modification depuis votre espace DataPass.
 
-                Dans cette demande, le demandeur a spécifié :
-                - un projet, un cas d'usage et son cadre juridique ;
-                - un contact technique ;
-                - parfois un éditeur de logiciel ;
-                - des responsables des données et de leur traitement.
-
-                Ces éléments, importants pour justifier de l'accès aux données et pour assurer une bonne gestion de l'API, sont au coeur du contrat avec l'API Particulier. L'utilisation d'un jeton doit donc être en cohérence avec l'habilitation obtenue, comme le stipulent les [CGU](<%= cgu_path %>) signées au moment de la demande. Si ces éléments évoluent, ce qui arrive fréquemment, vous êtes tenus de les mettre à jour. La prolongation du jeton est une bonne occasion. Vous pouvez toutefois faire une demande de modification à tout moment depuis votre espace Datapass.
-
-                Dans le cas d'une évolution majeure, il est possible que le service instructeur vous demande d'ouvrir une nouvelle demande.
-                La demande d'habilitation obtenue initialement ne sera pas supprimée, et continuera d'être valide à partir du moment où son contenu est respecté.
             - question: "Qui peut prolonger un jeton et demander de nouvelles données ?"
               answer: |+
-                Seul le demandeur est habilité à compléter le formulaire de prolongation du jeton, modifier une habilitation et/ou demander l'ajout de données supplémentaires.
+                Tous les contacts de la demande (demandeur, contact technique et contact métier) peuvent créer, prolonger et révoquer ses jetons ; les autres contacts sont prévenus par e-mail.
 
-                Le contact technique et l'éditeur ne sont pas habilités à effectuer ces démarches.
+                Seul le demandeur peut modifier l'habilitation ou demander l'ajout de données supplémentaires, sur DataPass.
             - question: "Comment élargir le périmètre des API disponibles avec mon jeton / obtenir de nouvelles données ?"
               answer: |+
                 Pour élargir le périmètre des données auxquelles vous avez accès, vous devez effectuer une **demande de mise à jour de votre habilitation**&nbsp;:
 
                 1. Connectez-vous à votre [compte utilisateur API Entreprise](<%= user_profile_path %>) ;
-                2. Depuis la page "Habilitations", cliquez sur la flèche de l'habilitation dont vous souhaitez étendre les droits pour accéder à sa page détaillée  ;
-                3. Dans la première partie de cette page "Vos droits d'accès", cliquez sur le lien "Demander l'accès à d'autres API". Une fenêtre s'ouvre et vous indique la suite de la démarche. Vous allez en effet être redirigé sur le site Datapass, sur lequel vous aviez fait votre demande d'habilitation. Sur Datapass, une demande de mise à jour de votre habilitation est alors ouverte.
+                2. Depuis la page "Demandes", ouvrez la demande dont vous souhaitez étendre les droits ;
+                3. Cliquez sur le lien vers DataPass, le site sur lequel vous aviez fait votre demande d'habilitation, et ouvrez-y une demande de mise à jour.
                 4. Sélectionnez les données dont votre service à besoin.
                 5. Soumettez la demande. API Particulier va instruire votre demande notamment pour s'assurer que les nouvelles données demandées correspondent au cas d'usage de votre habilitation.
 
@@ -316,9 +296,9 @@ fr:
 
             - question: "Pourquoi mon jeton a une date d’expiration ?"
               answer: |+
-                Pour des **raisons de sécurité**, tous les jetons émis sont valables pour une **durée de 18 mois**. Au delà de ce délai, ils ne fonctionnent plus, et votre accès à l’API Particulier est donc totalement arrêté.
+                Pour des **raisons de sécurité**, tous les jetons sont valables pour une **durée de 3 à 18 mois**, choisie à leur création. Au delà de ce délai, ils ne fonctionnent plus : les appels faits avec un jeton expiré sont refusés.
 
-                En réalité, cette situation n’est pas censée arriver car API Particulier a mis en place une [procédure simple de prolongation de token](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>).
+                En réalité, cette situation n’est pas censée arriver car vous pouvez simplement [prolonger le jeton ou en créer un nouveau](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>).
 
         - name: "Rupture de service et anomalies"
           entries:
@@ -403,8 +383,8 @@ fr:
                 _Dans certains cas spécifiques comme le départ du demandeur, un changement de poste, etc.,_ un transfert des habilitations par le demandeur à un tiers peut être nécessaire. Cette opération nécessite l’accord explicite du demandeur et est instruite manuellement par nos services. [En savoir plus.](#comment-transferer-mes-habilitations-a-une-autre-personne)
 
                 **Le compte utilisateur vous permet de :**
-                - copier/coller le jeton d'accès à l'API, en [respectant les règles indispensables de sécurité](#qu-est-ce-qu-un-token-ou-jeton) ;
-                - [prolonger votre jeton d'accès arrivé à expiration](#comment-prolonger-mon-jeton-arrivant-a-expiration),  _fonctionnalité actuellement seulement disponible pour le contact demandeur_ ;
+                - copier/coller un jeton d'accès à l'API, en [respectant les règles indispensables de sécurité](#qu-est-ce-qu-un-token-ou-jeton) ;
+                - créer, prolonger et révoquer les jetons de vos demandes ([en savoir plus](#comment-prolonger-mon-jeton-arrivant-a-expiration)) ;
                 - [étendre/modifier vos droits d'accès](#comment-elargir-le-perimetre-des-api-disponibles-avec-mon-jeton-obtenir-de-nouvelles-donnees), _fonctionnalité actuellement seulement disponible pour le contact demandeur_ ;
                 - consulter les statistiques d'utilisation de votre jeton ;
                 - consulter la liste de vos habilitations à API Particulier.
@@ -415,7 +395,7 @@ fr:
 
                 #### Vous êtes contact métier et/ou contact technique de l'habilitation :
 
-                Si vous n'êtes pas le demandeur de l'habilitation, vous devez demander à celui-ci d'effectuer la modification. Pour retrouver le demandeur en charge de vos habilitations, rendez-vous sur [votre espace usager](<%= user_profile_path %>), le demandeur est indiqué dans la liste des contacts.
+                Si vous n'êtes pas le demandeur de l'habilitation, vous devez demander à celui-ci d'effectuer la modification. Pour retrouver le demandeur en charge de vos habilitations, consultez la demande sur DataPass, accessible depuis la page de la demande dans [votre espace usager](<%= user_profile_path %>).
 
                 Le demandeur (contact principal à l'origine de la demande d'habilitation) est la seule personne qui peut demander une modification de l'habilitation. Le changement d'un contact métier ou technique est très rapide si le nouveau contact est dans la même organisation.
 

@@ -4,7 +4,7 @@ RSpec.describe Admin::Tokens::Create, type: :organizer do
   subject { described_class.call(authorization_request:, exp_date: nil, admin:, namespace: 'entreprise') }
 
   let(:admin) { create(:user, :admin) }
-  let(:authorization_request) { create(:authorization_request, :with_demandeur, api: 'entreprise') }
+  let(:authorization_request) { create(:authorization_request, :with_demandeur, status: 'validated', validated_at: 1.day.ago, api: 'entreprise') }
 
   it { is_expected.to be_a_success }
 
@@ -30,5 +30,14 @@ RSpec.describe Admin::Tokens::Create, type: :organizer do
       'exp' => Token.last.exp,
       'scopes' => Token.last.scopes
     )
+  end
+
+  context 'when the demande was revoked after the admin opened the form' do
+    before { authorization_request.revoke! }
+
+    it 'creates no token' do
+      expect { subject }.not_to change(Token, :count)
+      expect(subject).to be_a_failure
+    end
   end
 end

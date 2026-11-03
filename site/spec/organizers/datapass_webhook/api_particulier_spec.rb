@@ -55,12 +55,5 @@ RSpec.describe DatapassWebhook::APIParticulier, type: :interactor do
         subject
       }.not_to change(UserAuthorizationRequestRole.where(role: 'contact_metier'), :count)
     end
-
-    it 'creates token with legacy token id in extra infos' do
-      subject
-      last_token = Token.last
-      expect(last_token.extra_info).to have_key('legacy_token_id')
-      expect(last_token.extra_info['legacy_token_id']).to eq(legacy_token_id)
-    end
   end
 end

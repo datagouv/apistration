@@ -1,21 +1,21 @@
 class APIParticulier::AuthorizationRequestMailerPreview < ActionMailer::Preview
   %w[
     demande_recue
-    update_demande_recue
-
-    embarquement_demande_refusee
     embarquement_modifications_demandees
-    update_embarquement_demande_refusee
-    update_embarquement_modifications_demandees
-
-    embarquement_valide_to_demandeur_is_tech
-    embarquement_valide_to_demandeur_seulement
-    embarquement_valide_to_tech_cc_demandeur
-    update_embarquement_valide_to_demandeur
+    embarquement_demande_refusee
+    demande_validee
   ].each do |method|
-    send('define_method', method) do
-      APIParticulier::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request: })
+    define_method(method) do
+      APIParticulier::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request:, update: false })
     end
+
+    define_method("update_#{method}") do
+      APIParticulier::AuthorizationRequestMailer.send(method, { to:, cc:, authorization_request:, update: true })
+    end
+  end
+
+  def jeton_disponible
+    APIParticulier::AuthorizationRequestMailer.jeton_disponible({ to:, cc:, authorization_request: })
   end
 
   private

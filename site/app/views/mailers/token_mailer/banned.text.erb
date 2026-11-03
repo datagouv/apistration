@@ -1,14 +1,12 @@
 Bonjour,
 
-Votre token d'accès concernant la demande "<%= @intitule %>" a été banni par un administrateur. L'ancien token sera définitivement banni le <%= @blacklisted_at %>.
-<% if @token.present? -%>
-
-Un nouveau token a été automatiquement généré pour vous. Veuillez mettre à jour votre application avec le nouveau token dès que possible.
-<% end -%>
+L'équipe <%= api_full_name %> a programmé la révocation du jeton « <%= @token.name %> » de la demande n°<%= @authorization_request.external_id %> (<%= @intitule %>) le <%= @blacklisted_at %>. Créez un nouveau jeton d'ici là depuis la page de la demande et mettez à jour votre logiciel.
 <% if @comment.present? -%>
 
-Commentaire de l'administrateur :
+Commentaire de l'équipe <%= api_full_name %> :
 <%= @comment %>
 <% end -%>
+
+Créer un nouveau jeton : <%= @authorization_request_url %>
 
 L'équipe <%= api_full_name %>

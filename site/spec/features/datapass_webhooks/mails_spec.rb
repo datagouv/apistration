@@ -33,10 +33,11 @@ RSpec.describe 'datapass webhook trigger mails', type: :request do
 
     it { is_expected.to eq(200) }
 
-    it 'delivers an email' do
+    it 'delivers a single validation email to every contact' do
       perform_enqueued_jobs do
         expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        expect(email.to).to eq([demandeur['email']])
+        contacts = datapass_webhook_params['data']['pass']['team_members'].select { |member| %w[demandeur responsable_technique contact_metier].include?(member['type']) }
+        expect(email.to).to match_array(contacts.pluck('email'))
       end
     end
   end

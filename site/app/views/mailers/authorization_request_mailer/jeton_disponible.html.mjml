@@ -1,0 +1,19 @@
+<%= render partial: "mailers/header" %>
+<mj-section mj-class="section-main">
+  <mj-column>
+    <mj-text>
+      <p>Bonjour,</p>
+      <p>
+        Votre demande n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée.
+        Son jeton d'accès est disponible depuis la page de la demande.
+      </p>
+    </mj-text>
+    <mj-button href="<%= @authorization_request_url %>">
+      Voir mon jeton
+    </mj-button>
+    <mj-text>
+      <p><b>L'équipe <%= api_full_name %></b></p>
+    </mj-text>
+  </mj-column>
+</mj-section>
+<%= render partial: "mailers/footer" %>

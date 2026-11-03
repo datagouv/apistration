@@ -36,5 +36,16 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
         subject
       }.to change { AuthorizationRequest.where(status: 'revoked').count }
     end
+
+    context 'when the demande has no token yet' do
+      let(:authorization_request) { create(:authorization_request, status: 'validated', validated_at: 1.day.ago) }
+
+      it 'revokes the demande, so that no token can be created on it' do
+        subject
+
+        expect(authorization_request.reload.status).to eq('revoked')
+        expect(authorization_request).not_to be_eligible_for_token_creation
+      end
+    end
   end
 end
