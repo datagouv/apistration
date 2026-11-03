@@ -108,16 +108,10 @@ depuis un contrôleur ni un modèle.
 
 ## Code Style Guidelines
 
-- **Ruby Style**: Follow RuboCop configuration in `.rubocop.yml`
-- **String Literals**: Single quotes for regular strings, double quotes for interpolation
-- **Method Length**: Keep under 15 lines when possible
-- **Naming**: Use snake_case for methods and variables, CamelCase for classes
 - **Testing**: RSpec, feature tests with Capybara. Do NOT test ActiveRecord associations — only test custom behavior. Ensure factories are valid instead.
-- **Error Handling**: Use explicit error classes and meaningful error messages
 - **Database**: Follow Rails conventions, use strong_migrations for safe changes
 - **Indent Style**: 2 spaces, consistent indentation for multiline
 - **Comments**: DO NOT use comments
-- **File Endings**: Every file should end with a newline
 
 ## Access URLs
 - API Entreprise: http://entreprise.api.localtest.me:5000/

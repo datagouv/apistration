@@ -18,9 +18,6 @@
 
 ## Code Style Guidelines
 
-- Style: Follow the Ruby style guide as configured in .rubocop.yml
-- Strings: Use single quotes unless interpolation is needed
-- Naming: Snake_case for methods/variables, CamelCase for classes
 - Class names: before naming a new or moved class, look at how the other classes of its role are named (builders, interactors, serializers…) and stay consistent. A `BuildX` interactor turned into a plain object producing an artifact is `XBuilder`, not bare `X`.
 - Error handling: Create specific error classes in app/errors/ and use the config/errors.yml configuration
 - Error codes nomenclature: declare every error an interactor can raise (`raises`, `delegates_to`) and regenerate with `bin/generate_swagger.sh`; design and guards in `../docs/nomenclature_erreurs.md`
@@ -35,7 +32,6 @@
 - Sandbox: `organizer.mocked_data[:payload]` is rendered as is, without the serializer, so without scope filtering. Never drop a guard because « the serializer already does it » without checking that path.
 - Scopes: Define API access scopes in commons/data/authorizations.yml (repo root, shared with mocks)
 - Maintenance: Configure provider maintenance in config/maintenances.yml
-- File Endings: Every file should end with a newline
 
 ## Duplication and complexity (exhale)
 

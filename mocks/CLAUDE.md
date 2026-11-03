@@ -12,11 +12,8 @@
 - **YAML Payloads**: Use standard format with `params`, `status`, and `payload` keys
 - **Directory Naming**: Follow `api_[entreprise|particulier]_version_endpointname` format
 - **Testing**: Use RSpec and follow the project's test organization
-- **Error Handling**: Create appropriate HTTP status error files (404, 503, etc.)
 - **Documentation**: Maintain README files in each endpoint directory
-- **Data Structure**: Validate payloads against OpenAPI specifications
 - **Best Practice**: Create summary.csv for each endpoint directory
-- **File Format**: All files must end with a newline
 
 IMPORTANT! Every payload file in a given folder must have a unique set of parameters. Duplicate parameter sets across files in the same folder are not allowed.
 
