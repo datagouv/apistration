@@ -14,7 +14,8 @@ class Token::SaveSelfServiceToken < ApplicationInteractor
       context.authorization_request,
       creator: context.user,
       name: context.name,
-      lifetime_in_months: context.lifetime_in_months
+      lifetime_in_months: context.lifetime_in_months,
+      allowed_ips_text: context.allowed_ips_text
     )
   end
 end

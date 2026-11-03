@@ -1,5 +1,6 @@
 class Token < ApplicationRecord
   include JwtTokenLifecycle
+  include AllowedIpsField
 
   LIFETIMES_IN_MONTHS = [3, 6, 12, 18].freeze
   NAME_MAX_LENGTH = 50
@@ -36,9 +37,10 @@ class Token < ApplicationRecord
   validate :active_tokens_limit_not_reached, on: :self_service
   validate :authorization_request_open_to_token_creation, on: :self_service
 
-  def self.build_for_self_service(authorization_request, creator:, name:, lifetime_in_months:)
+  def self.build_for_self_service(authorization_request, creator:, name:, lifetime_in_months:, allowed_ips_text: nil)
     authorization_request.tokens.new(
       default_create_params.merge(
+        allowed_ips_text:,
         creator:,
         name: name.to_s.strip,
         lifetime_in_months:,
@@ -119,6 +121,14 @@ class Token < ApplicationRecord
   end
 
   private
+
+  def allowed_ips_envelope
+    Array(authorization_request&.security_settings&.allowed_ips)
+  end
+
+  def allowed_ips_envelope_error
+    :outside_authorization_request_range
+  end
 
   def name_unique_among_active_tokens
     return if authorization_request.nil? || name.blank?

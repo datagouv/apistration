@@ -75,6 +75,34 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
     end
   end
 
+  context 'with IPs set on the token' do
+    before { token_record.update!(allowed_ips: ['192.168.1.0/28']) }
+
+    it 'allows a request from an IP of the token' do
+      get url, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.5' }
+
+      expect(response).not_to have_http_status(:forbidden)
+    end
+
+    it 'refuses a request from an IP outside the token list' do
+      get url, headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' }
+
+      expect(response).to have_http_status(:forbidden)
+    end
+
+    context 'when the authorization request also has ranges' do
+      before do
+        AuthorizationRequestSecuritySettings.create!(authorization_request:, allowed_ips: ['192.168.1.0/30'])
+      end
+
+      it 'refuses an IP allowed by the token but not by the authorization request' do
+        get url, headers: headers_params, env: { 'REMOTE_ADDR' => '192.168.1.10' }
+
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+  end
+
   context 'when the request comes through the local reverse proxy' do
     let(:proxy_env) { { 'REMOTE_ADDR' => '127.0.0.1' } }
 
