@@ -234,3 +234,45 @@ bin/vouch-auto-mergeable fix-site-ui "1 view, 2 lines: clipboard controller on c
 ```bash
 bin/vouch-auto-mergeable fix-spec "1 spec, DST: clock frozen on the failing date, no assertion loosened; red on 3f92246 under faketime, green on head; CI green"
 ```
+
+## What failure looks like here
+
+Every review checks these, whatever the rule. Where a `CLAUDE.md`
+holds the rule, the check points there: read it before judging.
+
+- **A 500 « No valid HTTP status ».** `extract_http_code`
+  (`siade/app/controllers/concerns/organizers_methods_helpers.rb`)
+  returns the status of the first kind of
+  `Errors::HTTPStatusForKind::KIND_TO_STATUS` present in the organizer's
+  errors, and raises when none is. The order is a precedence:
+  `ValidateParamsOrganizer` runs its steps with `wait_to_fail`, so one
+  request can carry several kinds. Check: a new kind gets an entry at a
+  deliberate rank, and a request spec combines it with `wrong_parameter`
+  and asserts the status.
+- **A mock fixture no request matches.** `MockDataBackend` serves a
+  fixture of `mocks/payloads/` only when its `params` equal, downcased,
+  the `mocking_params` siade builds for the request; otherwise it falls
+  back to `404.yaml` (API Particulier) or a schema-generated example (API
+  Entreprise), and no spec fails. Check: each new or changed fixture's
+  `params` are exactly the keys and values that provider's
+  `mocking_params` produces; the FranceConnect case is in
+  `mocks/CLAUDE.md`, guarded by
+  `mocks/spec/acceptances/france_connect_derived_params_spec.rb`.
+- **A spec that never runs.** An RSpec `if:` on an environment variable
+  CI never sets drops the group without marking it pending, as the
+  throttle isolation group of
+  `siade/spec/requests/rack_attack_for_api_particulier_v2_spec.rb`
+  (`WITH_FLAKY_TESTS`). Check: a spec the pull request relies on runs in
+  CI, with no such `if:`, `skip` or `pending`.
+- **A render-after-POST Turbo drops.** Under Turbo, a form whose action
+  renders a 200 instead of redirecting performs its effect and shows
+  nothing; feature specs run on rack_test, without Turbo, and pass.
+  Check: such a form carries `data: { turbo: false }` (as
+  `site/app/views/admin/api_requests/index.html.erb`), proved by a
+  `js: true` feature spec or in a real browser.
+- **An SDK that lies.** Check: a change to a public API signature
+  regenerates the scaffolding of both SDKs, by the rule of the root
+  `CLAUDE.md`, § Conventions transverses.
+- **A changelog that misleads.** Check: `site/config/changelogs.yml`
+  gains an entry when, and only when, the rule of `site/CLAUDE.md`,
+  § Workflow, asks for one.
