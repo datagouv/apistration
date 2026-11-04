@@ -1,3 +1,11 @@
+- date: 2026-11-03
+  scope: api_particulier
+  title: "Statut étudiant : attestation PDF vérifiable des données délivrées"
+  description: |
+    L'API [Statut étudiant](<%= endpoint_path(uid: 'mesri/statut_etudiant') %>) peut désormais fournir une **preuve d'attestation vérifiable** des données délivrées, comme la [Participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu') %>). Il suffit d'ajouter l'en-tête `X-Generate-Proof` à l'appel par identité pivot, avec les mêmes paramètres et habilitations ; le bloc `data` reste identique.
+
+    Avec `X-Generate-Proof: proof-only`, `meta` contient un lien public de vérification (`verification_url`) et un code de vérification de 10 caractères (`verification_code`), valables 5 ans. Avec `X-Generate-Proof: pdf`, `links.attestation_pdf` donne en plus un lien de téléchargement de l'**attestation de statut étudiant**, sans authentification, valable environ 5 minutes (durée restante dans `meta.attestation_pdf_url_expires_in`). Le PDF reprend l'identité de l'étudiant et chacune de ses admissions, le code de vérification et un QR code menant à la page de vérification hébergée par API Particulier, qui n'affiche que des données minimisées. Le détail est dans la [FAQ de la fiche](<%= endpoint_path(uid: 'mesri/statut_etudiant', anchor: 'attestation-pdf-verifiable') %>).
+
 - date: 2026-10-30
   scope: both
   title: "Nouvelle page : état des fournisseurs de données"

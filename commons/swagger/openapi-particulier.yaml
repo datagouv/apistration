@@ -18838,6 +18838,19 @@ paths:
           et permet de retrouver le code COG avec le paramètre 'anneeDateNaissance'.\n\nNe
           pas remplir si la personne est née à l'étranger."
         required: false
+      - name: X-Generate-Proof
+        in: header
+        required: false
+        schema:
+          type: string
+          enum:
+          - proof-only
+          - pdf
+        description: 'Demande une preuve d''attestation : `proof-only` ajoute `meta.verification_url`
+          et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf`
+          (téléchargement sans authentification, expiration dans `meta.attestation_pdf_url_expires_in`,
+          en secondes). Le PDF est l''attestation de statut étudiant, portant un QR
+          code vers la page publique de vérification.'
       security:
       - jwt_bearer_token: []
       description: Admissions et inscriptions d'un étudiant aux établissements d'enseignement
@@ -19092,6 +19105,26 @@ paths:
                 - data
                 - links
                 - meta
+        '400':
+          description: |-
+            Valeur d'en-tête X-Generate-Proof inconnue
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/mesri/statut_etudiant#erreurs.
+          content:
+            application/json:
+              examples:
+                mauvaise_requete_00401:
+                  value:
+                    errors:
+                    - code: '00401'
+                      title: Mauvaise requête
+                      detail: Votre requête est invalide
+                      source:
+                      meta: {}
+                  summary: Mauvaise requête
+                  description: Votre requête est invalide
+              schema:
+                "$ref": "#/components/schemas/Error"
         '404':
           description: |-
             Étudiant non identifié
@@ -19227,26 +19260,6 @@ paths:
                         provider: MESRI
                   summary: Maintenance du fournisseur de données
                   description: Le fournisseur de données semble être en maintenance
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '400':
-          description: |-
-            Mauvaise requête
-
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_mesri_statut_etudiant_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/mesri/statut_etudiant#erreurs.
-          content:
-            application/json:
-              examples:
-                error_00401:
-                  value:
-                    errors:
-                    - code: '00401'
-                      title: Mauvaise requête
-                      detail: Votre requête est invalide
-                      source:
-                      meta: {}
-                  summary: Mauvaise requête
-                  description: Votre requête est invalide
               schema:
                 "$ref": "#/components/schemas/Error"
   "/v3/mesri/statut_etudiant/france_connect":
