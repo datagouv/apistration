@@ -1,13 +1,16 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithINEController < APIParticulier::V3AndMore::BaseController
+  include APIParticulier::GeneratesAttestationProof
+
   nomenclature organizers: { 3 => ::MESRI::StudentStatus::WithINE }
 
   private
 
+  def api_params
+    { ine: params[:ine] }
+  end
+
   def organizer_params
-    {
-      ine: params[:ine],
-      token_id: current_user.token_id
-    }
+    api_params.merge({ token_id: current_user.token_id })
   end
 
   def serializer_module
