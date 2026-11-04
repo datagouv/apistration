@@ -25,7 +25,7 @@ export class Mesri {
   }
 
   /** [Identité] Statut étudiant */
-  async statut_etudiant_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string }) {
+  async statut_etudiant_identite(options: { version?: number; recipient?: string; delegation_id?: string; nom_naissance: string; prenoms: string[]; annee_date_naissance: string; mois_date_naissance: string; jour_date_naissance: string; sexe_etat_civil: string; code_cog_insee_commune_naissance?: string; nom_commune_naissance?: string; code_cog_insee_departement_naissance?: string; generate_proof?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -35,11 +35,12 @@ export class Mesri {
           throw new Error(`version ${resolvedVersion} not available for /mesri/statut_etudiant/identite; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance, 'sexeEtatCivil': options.sexe_etat_civil, 'codeCogInseeCommuneNaissance': options.code_cog_insee_commune_naissance, 'nomCommuneNaissance': options.nom_commune_naissance, 'codeCogInseeDepartementNaissance': options.code_cog_insee_departement_naissance } });
+    const headers = Object.fromEntries(Object.entries({ 'X-Generate-Proof': options.generate_proof }).filter(([, v]) => v !== undefined)) as Record<string, string>;
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'nomNaissance': options.nom_naissance, 'prenoms': options.prenoms, 'anneeDateNaissance': options.annee_date_naissance, 'moisDateNaissance': options.mois_date_naissance, 'jourDateNaissance': options.jour_date_naissance, 'sexeEtatCivil': options.sexe_etat_civil, 'codeCogInseeCommuneNaissance': options.code_cog_insee_commune_naissance, 'nomCommuneNaissance': options.nom_commune_naissance, 'codeCogInseeDepartementNaissance': options.code_cog_insee_departement_naissance }, headers });
   }
 
   /** [INE] Statut étudiant */
-  async ine(options: { version?: number; recipient?: string; delegation_id?: string; ine: string }) {
+  async ine(options: { version?: number; recipient?: string; delegation_id?: string; ine: string; generate_proof?: string }) {
     const resolvedVersion = options.version ?? 3;
     const path = (() => {
       switch (resolvedVersion) {
@@ -49,6 +50,7 @@ export class Mesri {
           throw new Error(`version ${resolvedVersion} not available for /mesri/statut_etudiant/ine; supported: [3]`);
       }
     })();
-    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'ine': options.ine } });
+    const headers = Object.fromEntries(Object.entries({ 'X-Generate-Proof': options.generate_proof }).filter(([, v]) => v !== undefined)) as Record<string, string>;
+    return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'ine': options.ine }, headers });
   }
 }
