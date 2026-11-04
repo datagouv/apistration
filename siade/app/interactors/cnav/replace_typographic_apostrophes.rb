@@ -12,6 +12,6 @@ class CNAV::ReplaceTypographicApostrophes < ApplicationInteractor
   def replace_typographic_apostrophes(value)
     return value.map { |item| replace_typographic_apostrophes(item) } if [*value] == value
 
-    value&.tr('’', "'")
+    String.try_convert(value)&.tr('’', "'") || value
   end
 end
