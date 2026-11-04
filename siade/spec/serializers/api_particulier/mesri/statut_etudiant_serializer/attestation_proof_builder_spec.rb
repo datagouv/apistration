@@ -113,6 +113,17 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::AttestationProof
       end
     end
 
+    context 'when the provider sent an empty date rather than none' do
+      let(:data) do
+        super().merge('admissions' => [super()['admissions'].first.merge('date_debut' => '')])
+      end
+
+      it 'takes it as unknown — an empty bound would attest a period that is not one' do
+        expect(verification_payload['sections'].second['entrees'].first.map(&:first))
+          .not_to include("Période d'études couverte", "Dernier établissement d'études")
+      end
+    end
+
     context 'when no admission has been turned into an enrolment' do
       let(:data) { super().merge('admissions' => [super()['admissions'].second]) }
 
@@ -197,8 +208,7 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::AttestationProof
     )
   end
 
-  # Each admission differs from the others — identical ones would be squeezed
-  # out by the deflate of AttestationToken and measure nothing.
+  # Distinct admissions: identical ones would be squeezed out by the token's deflate and measure nothing.
   def curriculum(size)
     data.merge('admissions' => Array.new(size) { |index| distinct_admission(index) })
   end

@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-# L'endpoint par INE partage le sérialiseur, donc le builder, de celui par
-# identité pivot : ce que l'attestation contient est couvert par
-# statut_etudiant_attestation_proof_spec.rb. Ici on couvre le branchement.
+# Même sérialiseur, donc même builder : le contenu est couvert par statut_etudiant_attestation_proof_spec.rb.
 RSpec.describe 'API Particulier MESRI: Statut étudiant by INE, attestation proof', api: :particulier do
   subject(:call_endpoint) do
     get endpoint_path, params:, headers: { 'Authorization' => "Bearer #{token}", 'X-Generate-Proof' => generate_proof }.compact
