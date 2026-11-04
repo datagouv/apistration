@@ -29,6 +29,7 @@ fiche:
         En cas d’exercice à cheval, la date limite de dépôt est positionnée exactement trois mois après la date de clôture de l’exercice déclaré.
       entities:
         - entreprises
+        - associations
     call_id: &dgfip_liasses_call_id "SIREN"
     provider_uids: &dgfip_liasses_provider_uids
       - "dgfip"
