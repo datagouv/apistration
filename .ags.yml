@@ -1,0 +1,19 @@
+version: 1
+
+jobs:
+  weekly-dependencies-bump:
+    schedule: "0 9 * * 1"
+    catch_up: "12h"
+    precheck: |
+      count=$(gh pr list --author app/dependabot --state open --json number --jq length)
+      case "$count" in
+        ''|*[!0-9]*) echo "cannot list Dependabot PRs: '$count'"; exit 2 ;;
+      esac
+      echo "$count open Dependabot PRs"
+      test "$count" -gt 0
+    prompt: |
+      Run the weekly-dependencies-bump project skill on the open
+      Dependabot PRs. Merge what its rules allow without asking. Leave
+      every PR that needs a decision open and end with one question per
+      PR, with what was checked.
+      If there is no open Dependabot PR, say so and stop.
