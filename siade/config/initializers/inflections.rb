@@ -42,6 +42,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'CNAF'
   inflect.acronym 'CNAV'
   inflect.acronym 'EAJE'
+  inflect.acronym 'RSA'
   inflect.acronym 'CNETP'
   inflect.acronym 'CNOUS'
   inflect.acronym 'DGDDI'
