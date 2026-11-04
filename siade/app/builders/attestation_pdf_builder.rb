@@ -148,7 +148,8 @@ class AttestationPDFBuilder
 
     canvas.font('Helvetica', size: 8)
     canvas.fill_color('888888')
-    canvas.text("Émis pour le compte du SIRET #{@siret}#{" (habilitation #{@habilitation})" if @habilitation}, le #{format_date(@emise_le)}.", at: [left, MARGIN + 8])
+    canvas.text("Émis pour le compte du SIRET #{@siret}, le #{format_date(@emise_le)}.", at: [left, MARGIN + 20])
+    canvas.text("Habilitation #{@habilitation}.", at: [left, MARGIN + 8]) if @habilitation
   end
 
   def draw_footer_frame(canvas)
