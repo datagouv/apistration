@@ -4,6 +4,7 @@ class AttestationPDFBuilder
   QR_SIZE = 140
   MARGIN = 40
   SECTION_HEADER_HEIGHT = 40
+  ENTRY_MARGIN = 8
 
   def initialize(payload:, visual_code:, verification_url:, test: false)
     @payload = payload
@@ -54,21 +55,30 @@ class AttestationPDFBuilder
   end
 
   def compose_sections
-    @sections.each do |section|
-      entry_rows = section.fetch('entrees')
+    @sections.each { |section| compose_section(section) }
+  end
 
-      break_page_unless_room_for(entry_rows)
-      composer.text(section.fetch('titre').upcase, style: :section)
-      rule(color: '000091', height: 2, margin: [0, 0, 8, 0])
-      entry_rows.each { |rows| compose_entry(rows) }
+  def compose_section(section)
+    entries = section.fetch('entrees')
+
+    break_page_unless_room_for(SECTION_HEADER_HEIGHT + entries.take(1).sum { |rows| entry_height(rows) })
+    composer.text(section.fetch('titre').upcase, style: :section)
+    rule(color: '000091', height: 2, margin: [0, 0, ENTRY_MARGIN, 0])
+
+    entries.each_with_index do |rows, index|
+      break_page_unless_room_for(entry_height(rows)) unless index.zero?
+      compose_entry(rows)
     end
   end
 
-  def break_page_unless_room_for(entry_rows)
-    height = SECTION_HEADER_HEIGHT + entry_rows.sum { |rows| measure_entry(rows) + 8 }
+  def break_page_unless_room_for(height)
     available = composer.frame.available_height
 
     composer.new_page if height > available && available < composer.frame.height
+  end
+
+  def entry_height(rows)
+    measure_entry(rows) + ENTRY_MARGIN
   end
 
   def measure_entry(rows)
@@ -80,7 +90,7 @@ class AttestationPDFBuilder
 
   def compose_entry(rows)
     composer.table(build_cells(rows), column_widths: [190, -1],
-      style: { margin: [0, 0, 8, 0] },
+      style: { margin: [0, 0, ENTRY_MARGIN, 0] },
       cell_style: { border: { width: 0 }, padding: [2, 0] })
   end
 
