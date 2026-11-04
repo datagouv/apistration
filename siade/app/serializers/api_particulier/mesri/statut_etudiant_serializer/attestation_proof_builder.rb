@@ -73,10 +73,6 @@ class APIParticulier::MESRI::StatutEtudiantSerializer::AttestationProofBuilder <
     end
   end
 
-  # Un résumé n'atteste que ce que le fournisseur a dit de toutes les
-  # admissions : une donnée absente d'une seule d'entre elles — champ hors
-  # habilitation, date manquante — retire la ligne, plutôt que de signer un
-  # compte ou une période fausse pour cinq ans.
   def admissions_resume
     {
       'nombre' => admissions.size,
@@ -87,25 +83,25 @@ class APIParticulier::MESRI::StatutEtudiantSerializer::AttestationProofBuilder <
   end
 
   def nombre_inscriptions
-    return unless admissions.all? { |admission| admission.key?('est_inscrit') }
+    return unless connu_pour_toutes?('est_inscrit')
 
     admissions.count { |admission| admission['est_inscrit'] }
   end
 
   def periode_etudes
-    return unless toutes_datees?('date_debut') && toutes_datees?('date_fin')
+    return unless connu_pour_toutes?('date_debut') && connu_pour_toutes?('date_fin')
 
     "#{format_date(dates('date_debut').min)} – #{format_date(dates('date_fin').max)}"
   end
 
   def dernier_etablissement
-    return unless toutes_datees?('date_debut')
+    return unless connu_pour_toutes?('date_debut')
 
     admissions.max_by { |admission| admission['date_debut'] }.dig('etablissement_etudes', 'nom')
   end
 
-  def toutes_datees?(key)
-    dates(key).all?(&:present?)
+  def connu_pour_toutes?(key)
+    admissions.none? { |admission| admission[key].nil? || admission[key] == '' }
   end
 
   def dates(key)
