@@ -1,0 +1,256 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'fileutils'
+require 'json'
+require 'net/http'
+require 'open3'
+require 'openssl'
+require 'time'
+
+class SentryWatchPrecheck
+  API_URL = 'https://errors.data.gouv.fr/api/0'
+  ORGANIZATION = 'sentry'
+  PROJECTS = %w[siade-backend siade-site].freeze
+  LEVELS = '[error,fatal]'
+  READ_TOKEN_FILE = '.sentry_token'
+  WRITE_TOKEN_FILE = '.sentry_write_token'
+  CLAIM_NOTE = 'Triage claimed by the ags job sentry-watch'
+  CLAIM_SETTLING = 3
+  LOOKBACK_BEFORE_FIRST_SUCCESS = 6 * 3600
+  AUTHENTICATION_STATUSES = %w[401 403].freeze
+  OUTAGE_TOLERANCE = 30 * 60
+  OUTAGE_INTERRUPTION = 15 * 60
+
+  class UnavailableAPI < StandardError; end
+
+  Candidate = Struct.new(:project, :issue, :regressed_at) do
+    def id
+      issue['id']
+    end
+
+    def short_id
+      issue['shortId']
+    end
+
+    def claimable_since
+      regressed_at || Time.at(0)
+    end
+  end
+
+  def run
+    exit_code = report(*claim(PROJECTS.flat_map { |project| candidates(project) }))
+    FileUtils.rm_f(outage_file)
+    exit_code
+  rescue UnavailableAPI => e
+    tolerate_outage(e.message)
+  end
+
+  private
+
+  def report(claimed, held)
+    return skip('no new or regressed issue') if claimed.empty? && held.empty?
+    return skip("every new or regressed issue is claimed by a teammate: #{held.map(&:short_id).join(', ')}") if claimed.empty?
+
+    puts JSON.pretty_generate(claimed.map { |candidate| summarize(candidate) })
+    0
+  end
+
+  def candidates(project)
+    (regressed_issues(project) + new_issues(project)).uniq(&:id)
+  end
+
+  def new_issues(project)
+    search(project, "is:unresolved level:#{LEVELS} firstSeen:>=#{since_in_query}")
+      .map { |issue| Candidate.new(project, issue, nil) }
+  end
+
+  def regressed_issues(project)
+    search(project, "is:unresolved is:regressed level:#{LEVELS}").filter_map do |issue|
+      regressed_at = last_regression_at(issue['id'])
+      Candidate.new(project, issue, regressed_at) if regressed_at && regressed_at >= since
+    end
+  end
+
+  def claim(candidates)
+    existing = candidates.to_h { |candidate| [candidate.id, first_claim(candidate)] }
+    posted = candidates.reject { |candidate| existing[candidate.id] }.to_h { |candidate| [candidate.id, post_claim(candidate)] }
+    Kernel.sleep(CLAIM_SETTLING) unless posted.empty?
+    candidates.partition do |candidate|
+      posted.key?(candidate.id) ? won?(candidate, posted[candidate.id]) : existing[candidate.id].dig('user', 'id') == me
+    end
+  end
+
+  def post_claim(candidate)
+    parse(call(Net::HTTP::Post, "/issues/#{candidate.id}/comments/", body: { text: CLAIM_NOTE }, token: write_token))
+  end
+
+  def won?(candidate, mine)
+    claims = claims(candidate)
+    raise "own claim #{mine['id']} not found on issue #{candidate.id}" unless claims.any? { |claim| claim['id'] == mine['id'] }
+    return true if claims.first['id'] == mine['id']
+
+    call(Net::HTTP::Delete, "/issues/#{candidate.id}/comments/#{mine['id']}/", token: write_token)
+    false
+  end
+
+  def first_claim(candidate)
+    claims(candidate).first
+  end
+
+  def claims(candidate)
+    activities(candidate.id)
+      .select { |activity| activity['type'] == 'note' && activity.dig('data', 'text') == CLAIM_NOTE }
+      .select { |activity| Time.iso8601(activity['dateCreated']) >= candidate.claimable_since }
+      .sort_by { |activity| [Time.iso8601(activity['dateCreated']), activity['id'].to_i] }
+  end
+
+  def me
+    @me ||= get('/', token: write_token).fetch('user').fetch('id')
+  end
+
+  def last_regression_at(issue_id)
+    activities(issue_id)
+      .select { |activity| activity['type'] == 'set_regression' }
+      .map { |activity| Time.iso8601(activity['dateCreated']) }
+      .max
+  end
+
+  def activities(issue_id)
+    get("/issues/#{issue_id}/activities/").fetch('activity')
+  end
+
+  def search(project, query, cursor: nil)
+    params = { query:, statsPeriod: '14d', cursor: }.compact
+    response = call(Net::HTTP::Get, "/projects/#{ORGANIZATION}/#{project}/issues/", params:)
+    next_cursor = response['Link'].to_s[/rel="next"; results="true"; cursor="([^"]+)"/, 1]
+    issues = parse(response)
+    next_cursor ? issues + search(project, query, cursor: next_cursor) : issues
+  end
+
+  def since_in_query
+    since.utc.strftime('%Y-%m-%dT%H:%M:%S')
+  end
+
+  def tolerate_outage(reason)
+    now = Time.now.utc
+    started_at = ongoing_outage_started_at(now) || now
+    File.write(outage_file, JSON.generate(started_at: started_at.iso8601, last_failure_at: now.iso8601))
+    raise "#{reason} since #{started_at.iso8601}" if now - started_at >= OUTAGE_TOLERANCE
+
+    skip("Sentry API unavailable, retried on next run: #{reason}")
+  end
+
+  def ongoing_outage_started_at(now)
+    outage = JSON.parse(File.read(outage_file))
+    return if now - Time.iso8601(outage.fetch('last_failure_at')) > OUTAGE_INTERRUPTION
+
+    Time.iso8601(outage.fetch('started_at'))
+  rescue Errno::ENOENT, JSON::ParserError, KeyError, ArgumentError, TypeError
+    nil
+  end
+
+  def outage_file
+    File.join(ENV.fetch('AGS_JOB_STATE_DIR'), 'sentry-outage.json')
+  end
+
+  def since
+    @since ||= begin
+      last_success_at = ENV.fetch('AGS_LAST_SUCCESS_AT', '')
+      last_success_at.empty? ? Time.now - LOOKBACK_BEFORE_FIRST_SUCCESS : Time.iso8601(last_success_at)
+    end
+  end
+
+  def skip(reason)
+    puts reason
+    1
+  end
+
+  def get(path, token: read_token)
+    parse(call(Net::HTTP::Get, path, token:))
+  end
+
+  def call(verb, path, params: {}, body: nil, token: read_token)
+    response = transmit(build_request(verb, path, params, body, token))
+    ensure_available(response)
+    raise "Sentry API error #{response.code}: #{response.body.to_s[0, 200]}" unless response.code.start_with?('2')
+
+    response
+  end
+
+  def build_request(verb, path, params, body, token)
+    uri = URI("#{API_URL}#{path}")
+    uri.query = URI.encode_www_form(params) unless params.empty?
+    request = verb.new(uri)
+    request['Authorization'] = "Bearer #{token}"
+    return request unless body
+
+    request['Content-Type'] = 'application/json'
+    request.body = JSON.generate(body)
+    request
+  end
+
+  def transmit(request)
+    Net::HTTP.start(request.uri.host, request.uri.port, use_ssl: true, read_timeout: 30) { |http| http.request(request) }
+  rescue Timeout::Error, SocketError, SystemCallError, EOFError, IOError, OpenSSL::SSL::SSLError, Net::HTTPBadResponse => e
+    raise UnavailableAPI, "Sentry API unreachable: #{e.class}"
+  end
+
+  def parse(response)
+    JSON.parse(response.body)
+  rescue JSON::ParserError
+    raise UnavailableAPI, 'Sentry API answered unparsable JSON'
+  end
+
+  def ensure_available(response)
+    raise "Sentry API rejected the access token: HTTP #{response.code}" if AUTHENTICATION_STATUSES.include?(response.code)
+    return unless response.code == '429' || response.code.start_with?('5') || html?(response)
+
+    raise UnavailableAPI, "Sentry API answered HTTP #{response.code}"
+  end
+
+  def html?(response)
+    response.content_type == 'text/html' || response.body.to_s.lstrip.start_with?('<')
+  end
+
+  def read_token
+    @read_token ||= File.read(token_file(READ_TOKEN_FILE)).strip
+  end
+
+  def write_token
+    @write_token ||= File.read(token_file(WRITE_TOKEN_FILE)).strip
+  end
+
+  def token_file(name)
+    return name if File.exist?(name)
+
+    common_dir, = Open3.capture2('git', 'rev-parse', '--path-format=absolute', '--git-common-dir')
+    File.join(File.dirname(common_dir.strip), name)
+  end
+
+  def summarize(candidate)
+    issue = candidate.issue
+    {
+      project: candidate.project,
+      id: issue['id'],
+      short_id: issue['shortId'],
+      title: issue['title'].to_s[0, 200],
+      level: issue['level'],
+      count: issue['count'].to_i,
+      first_seen: issue['firstSeen'],
+      last_seen: issue['lastSeen'],
+      regressed: !candidate.regressed_at.nil?,
+      regressed_at: candidate.regressed_at&.utc&.iso8601,
+      url: issue['permalink'],
+    }
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  begin
+    exit SentryWatchPrecheck.new.run
+  rescue StandardError => e
+    puts "precheck error: #{e.message}"
+    exit 2
+  end
+end

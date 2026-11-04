@@ -83,3 +83,8 @@ jobs:
       you handed off: your assignment says who must answer.
 
       {precheck.output}
+
+  sentry-watch:
+    schedule: "*/5 * * * *"
+    precheck: bin/sentry/watch-precheck
+    prompt_file: .ags/sentry-watch.md
