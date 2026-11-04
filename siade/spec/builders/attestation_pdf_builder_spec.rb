@@ -1,6 +1,8 @@
 RSpec.describe AttestationPDFBuilder do
   subject(:text) { reader.pages.map(&:text).join(' ').squish }
 
+  A4_WIDTH = 595.28
+
   let(:reader) { PDF::Reader.new(StringIO.new(pdf)) }
 
   let(:pdf) do
@@ -82,6 +84,22 @@ RSpec.describe AttestationPDFBuilder do
     it 'offers the click alternative with the target domain spelled out' do
       expect(text).to include('ou cliquez ici')
       expect(text).to include('sur particulier.api.gouv.fr')
+    end
+
+    context 'with the habilitation the proof was issued under' do
+      let(:payload) { super().merge('habilitation' => 'a11b0000-0000-0000-0000-000000000042') }
+
+      it 'gives it its own line, the SIRET line being already as wide as the footer takes' do
+        expect(text).to include('Émis pour le compte du SIRET 13002526500013, le 23/07/2026.')
+        expect(text).to include('Habilitation a11b0000-0000-0000-0000-000000000042.')
+      end
+
+      it 'keeps every line inside the printable width' do
+        printable = A4_WIDTH - AttestationPDFBuilder::MARGIN
+        overflowing = reader.page(1).runs.select { |run| run.x + run.width > printable + 0.1 }
+
+        expect(overflowing.map(&:text)).to be_empty
+      end
     end
 
     it 'links the footer to the verification page for digital readers' do
