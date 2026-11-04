@@ -15,14 +15,14 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::ValidateResponse, type: :valida
 
       its(:errors) { is_expected.to be_empty }
 
-      its(:origin) { is_expected.to be_nil }
+      its(:regime) { is_expected.to be_nil }
 
       context 'when the MSA answered' do
         let(:response) do
           instance_double(Net::HTTPOK, code: 200, body:, header: { 'X-APISECU-FD' => '00171001' })
         end
 
-        its(:origin) { is_expected.to eq('MSA') }
+        its(:regime) { is_expected.to eq('MSA') }
       end
     end
 

@@ -28,11 +28,6 @@ class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder 
     ['annee_calcul', 'Année de calcul']
   ].freeze
 
-  def initialize(body, origin:, **)
-    super(body, **)
-    @origin = origin
-  end
-
   protected
 
   def document
@@ -41,10 +36,6 @@ class APIParticulier::CNAV::ParticipationFamilialeEAJE::AttestationProofBuilder 
 
   def title
     'ATTESTATION DE PARTICIPATION FAMILIALE (EAJE)'
-  end
-
-  def source
-    @origin || ORIGINE_NON_COMMUNIQUEE
   end
 
   def verification_sections

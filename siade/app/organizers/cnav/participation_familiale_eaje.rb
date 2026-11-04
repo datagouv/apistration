@@ -9,6 +9,10 @@ class CNAV::ParticipationFamilialeEAJE < CNAV::RetrieverOrganizer
     'Sécurité sociale'
   end
 
+  def data_source
+    context.regime
+  end
+
   def dss_prestation_name
     'participation_familiale_eaje'
   end
