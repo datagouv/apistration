@@ -5,15 +5,81 @@ jobs:
     schedule: "0 9 * * 1"
     catch_up: "12h"
     precheck: |
-      count=$(gh pr list --author app/dependabot --state open --json number --jq length)
-      case "$count" in
-        ''|*[!0-9]*) echo "cannot list Dependabot PRs: '$count'"; exit 2 ;;
-      esac
-      echo "$count open Dependabot PRs"
-      test "$count" -gt 0
+      fields='__typename id number
+        assignees(first: 20) { nodes { login } }
+        assignedTimeline: timelineItems(itemTypes: [ASSIGNED_EVENT], last: 50) {
+          nodes { ... on AssignedEvent { createdAt assignee { ... on User { login } } } }
+        }'
+      query="query(\$owner: String!, \$repo: String!) {
+        viewer { id login }
+        repository(owner: \$owner, name: \$repo) {
+          pullRequests(states: OPEN, first: 100) { nodes { $fields author { login } } }
+          issues(states: OPEN, labels: [\"bundler-audit\"], first: 10) { nodes { $fields } }
+        }
+      }"
+      lines='(now - 86400 | todate) as $cutoff
+        | .data.viewer as $me
+        | .data.repository as $repo
+        | "me \($me.id)",
+          ( ([$repo.pullRequests.nodes[] | select(.author.login == "dependabot")] + $repo.issues.nodes)[]
+            | . as $item
+            | "item \($item.__typename) \($item.id) #\($item.number) \([$item.assignees.nodes[].login] | index($me.login) != null)",
+              ( $item.assignees.nodes[].login
+                | select(. != $me.login)
+                | . as $login
+                | select(([$item.assignedTimeline.nodes[] | select(.assignee.login == $login) | .createdAt] | max // "") >= $cutoff)
+                | "held \($item.number) \($login)" ) )'
+      scan() {
+        gh api graphql -F owner='{owner}' -F repo='{repo}' -f query="$query" --jq "$lines"
+      }
+      assignments() {
+        mutation=$1
+        shift
+        calls=""
+        n=0
+        for id in "$@"; do
+          n=$((n + 1))
+          calls="$calls a$n: $mutation(input: {assignableId: \"$id\", assigneeIds: [\"$me\"]}) { clientMutationId }"
+        done
+        gh api graphql -f query="mutation { $calls }" --silent
+      }
+      field() {
+        printf '%s\n' "$state" | awk "$1"
+      }
+
+      sleep $(($(od -An -N2 -tu2 /dev/urandom) % 40))
+      state=$(scan) || exit 2
+      me=$(field '$1 == "me" { print $2 }')
+      prs=$(field '$1 == "item" && $2 == "PullRequest"' | wc -l | tr -d ' ')
+      echo "$prs open Dependabot PRs"
+      test "$prs" -gt 0 || exit 1
+      held=$(field '$1 == "held" { print "#" $2 " assigned to " $3 " less than 24h ago" }')
+      if [ -n "$held" ]; then echo "$held"; exit 1; fi
+
+      items=$(field '$1 == "item" { print $3 }')
+      mine=$(field '$1 == "item" && $5 == "true" { print $3 }')
+      if [ -n "$mine" ]; then assignments removeAssigneesFromAssignable $mine || exit 2; fi
+      assignments addAssigneesToAssignable $items || exit 2
+      sleep 3
+
+      state=$(scan) || exit 2
+      held=$(field '$1 == "held" { print "#" $2 " assigned to " $3 " meanwhile" }')
+      if [ -n "$held" ]; then
+        assignments removeAssigneesFromAssignable $items || exit 2
+        echo "$held"
+        exit 1
+      fi
+      echo "Claimed: $(field '$1 == "item" { print $4 }' | tr '\n' ' ')"
     prompt: |
-      Run the weekly-dependencies-bump project skill on the open
-      Dependabot PRs. Merge what its rules allow without asking. Leave
-      every PR that needs a decision open and end with one question per
-      PR, with what was checked.
-      If there is no open Dependabot PR, say so and stop.
+      Run the weekly-dependencies-bump project skill. Teammates run this
+      same job: the precheck locked the work by assigning you to the
+      open Dependabot PRs and the bundler-audit issue listed below.
+      Work only on those.
+      Merge what the skill's rules allow without asking. Leave every PR
+      that needs a decision open and end with one question per PR, with
+      what was checked.
+      Before ending, unassign yourself from every listed PR or issue
+      still open, except those waiting on a human decision or on work
+      you handed off: your assignment says who must answer.
+
+      {precheck.output}
