@@ -8,7 +8,7 @@ class Civility::ValidateNomNaissance < ValidateAttributePresence
   private
 
   def valid_characters?
-    param(:nom_naissance).match?(valid_chars)
+    String.try_convert(param(:nom_naissance))&.match?(valid_chars)
   end
 
   def valid_chars
