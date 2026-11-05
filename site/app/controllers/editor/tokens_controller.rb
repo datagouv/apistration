@@ -14,9 +14,10 @@ class Editor::TokensController < EditorController
   def create
     authorize EditorToken
 
-    @editor_token = current_editor.tokens.new
+    result = EditorToken::Create.call(editor: current_editor)
+    @editor_token = result.editor_token
 
-    if @editor_token.save
+    if result.success?
       render :created
     else
       redirect_with_errors(@editor_token)
@@ -26,7 +27,9 @@ class Editor::TokensController < EditorController
   def update
     @editor_token = authorize(token, :update?)
 
-    if @editor_token.update(params.expect(editor_token: [:allowed_ips_text]))
+    result = EditorToken::UpdateAllowedIps.call(editor_token: @editor_token, allowed_ips_text: allowed_ips_params[:allowed_ips_text])
+
+    if result.success?
       redirect_to editor_tokens_path
     else
       render :edit, status: :unprocessable_content
@@ -34,9 +37,10 @@ class Editor::TokensController < EditorController
   end
 
   def rotate
-    @editor_token = authorize(token, :rotate?).rotate
+    result = EditorToken::Rotate.call(editor_token: authorize(token, :rotate?))
+    @editor_token = result.replacement
 
-    if @editor_token.persisted?
+    if result.success?
       render :created
     else
       redirect_with_errors(@editor_token)
@@ -44,12 +48,16 @@ class Editor::TokensController < EditorController
   end
 
   def revoke
-    authorize(token, :revoke?).revoke!
+    EditorToken::Revoke.call(editor_token: authorize(token, :revoke?))
 
     redirect_to editor_tokens_path
   end
 
   private
+
+  def allowed_ips_params
+    params.expect(editor_token: [:allowed_ips_text])
+  end
 
   def redirect_with_errors(editor_token)
     error_message(

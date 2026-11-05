@@ -12,6 +12,14 @@ RSpec.describe Admin::Tokens::Create, type: :organizer do
     expect { subject }.to change(Token, :count).by(1)
   end
 
+  it 'emits a token creation by the admin' do
+    expect { subject }.to emit_security_event('token.api_token.created').with(
+      actor: { email: admin.email, role: 'admin' },
+      target: { type: 'token', id: kind_of(String) },
+      details: hash_including(source: 'admin', datapass_id: authorization_request.external_id)
+    )
+  end
+
   it 'records an admin activity' do
     expect { subject }.to change(AdminActivity, :count).by(1)
 

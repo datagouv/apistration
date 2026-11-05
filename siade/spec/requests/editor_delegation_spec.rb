@@ -38,8 +38,17 @@ RSpec.describe 'Editor delegation', api: :entreprise do
   let(:params) { { recipient: recipient_siret, context: 'test', object: 'test' } }
 
   context 'with active delegation' do
-    before do
-      EditorDelegation.create!(editor:, authorization_request:)
+    let!(:delegation) { EditorDelegation.create!(editor:, authorization_request:) }
+
+    it 'logs the call with the editor, the delegation and the recipient at the top level' do
+      allow(LogStasher).to receive(:build_logstash_event).and_call_original
+
+      get url, params:, headers: headers_params
+
+      expect(LogStasher).to have_received(:build_logstash_event).with(
+        hash_including(editor_id: editor.id, delegation_id: delegation.id, recipient: recipient_siret, ip_restricted: false),
+        anything
+      )
     end
 
     it 'allows querying a third-party SIREN on behalf of the delegated recipient' do
@@ -218,6 +227,15 @@ RSpec.describe 'Editor delegation', api: :entreprise do
       get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' }
 
       expect_ip_denied
+    end
+
+    it 'emits a blocked request targeting the editor token, with the DataPass id of the delegated authorization request' do
+      authorization_request.update!(external_id: '4242')
+
+      expect { get url, params:, headers: headers_params, env: { 'REMOTE_ADDR' => '8.8.8.8' } }.to emit_security_event('api.request.blocked').with(
+        target: { type: 'editor_token', id: editor_token_record.id },
+        details: hash_including(reason: 'ip_not_allowed', credential_type: 'editor_token', editor_id: editor.id, datapass_id: '4242')
+      )
     end
 
     it 'denies a request from another IP even without a recipient to delegate to' do

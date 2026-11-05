@@ -1,4 +1,4 @@
-class DatapassWebhook::CreateOrProlongToken < ApplicationInteractor
+class DatapassWebhook::CreateOrProlongTokenModel < ApplicationInteractor
   include DatapassWebhook::PassScopes
 
   before do
@@ -23,20 +23,20 @@ class DatapassWebhook::CreateOrProlongToken < ApplicationInteractor
 
   def create_or_prolong_token
     if token_already_exists?
-      prolong_token!
-      context.authorization_request.token
+      context.prolonged_token = prolong_token!(context.authorization_request.token)
     else
-      create_token
+      context.created_token = create_token
     end
   end
 
-  def prolong_token!
-    token = context.authorization_request.token
-
+  def prolong_token!(token)
     ActiveRecord::Base.transaction do
       token.last_prolong_token_wizard&.close!
       token.prolong!
     end
+    context.token_prolonged = token.saved_change_to_exp?
+
+    token
   end
 
   def create_token

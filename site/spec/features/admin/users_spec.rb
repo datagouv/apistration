@@ -51,6 +51,39 @@ RSpec.describe 'Admin: users', app: :api_entreprise do
 
       expect(page.driver.response.location).to eq(admin_users_url(host: page.driver.request.host))
     end
+
+    it 'names the admin as actor when switching from another impersonation' do
+      other_user = create(:user)
+      impersonate
+      visit admin_users_path
+
+      expect { click_on dom_id(other_user, :impersonate) }.to emit_security_event('auth.impersonation.started').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: other_user.id }
+      )
+    end
+
+    it 'emits an impersonation stopped by the admin, not by the impersonated user' do
+      impersonate
+
+      expect { click_on 'stop_impersonate' }.to emit_security_event('auth.impersonation.stopped').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: user.id }
+      )
+    end
+
+    it 'emits no impersonation stopped when the admin impersonates nobody' do
+      visit admin_users_path
+
+      expect { page.driver.post(stop_impersonating_admin_users_path) }.not_to emit_security_event('auth.impersonation.stopped')
+    end
+
+    it 'emits an impersonation started by the admin on the user' do
+      expect { impersonate }.to emit_security_event('auth.impersonation.started').with(
+        actor: { email: admin.email, role: 'admin' },
+        target: { type: 'user', id: user.id }
+      )
+    end
   end
 
   describe 'search' do

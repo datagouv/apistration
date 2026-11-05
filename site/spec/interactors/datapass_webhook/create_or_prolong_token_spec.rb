@@ -57,6 +57,26 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
       expect(authorization_request.reload.scopes.sort).to eq(%w[associations entreprises])
     end
 
+    it 'emits no prolongation' do
+      expect { subject }.not_to emit_security_event('token.api_token.prolonged')
+    end
+
+    it 'emits no scopes change' do
+      expect { subject }.not_to emit_security_event('token.api_token.scopes_changed')
+    end
+
+    it 'emits a token creation from the DataPass webhook' do
+      expect { subject }.to emit_security_event('token.api_token.created').with(
+        target: { type: 'token', id: kind_of(String) },
+        details: {
+          source: 'datapass_webhook',
+          datapass_id: authorization_request.external_id,
+          expires_at: Time.zone.at(18.months.from_now.to_i),
+          scopes: match_array(%w[associations entreprises])
+        }
+      )
+    end
+
     context 'when there is some scopes starting with open_data_' do
       let(:scopes) do
         {
@@ -84,6 +104,48 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
 
         expect(token.reload.exp).to eq(18.months.from_now.to_i)
         expect(token.days_left_notification_sent).to be_empty
+      end
+
+      it 'emits no token creation' do
+        expect { subject }.not_to emit_security_event('token.api_token.created')
+      end
+
+      it 'emits no scopes change when DataPass sends the same scopes' do
+        token.update!(scopes: %w[entreprises associations])
+
+        expect { subject }.not_to emit_security_event('token.api_token.scopes_changed')
+      end
+
+      it 'emits a scopes change when DataPass sends other scopes' do
+        token.update!(scopes: %w[entreprises attestations_fiscales])
+
+        expect { subject }.to emit_security_event('token.api_token.scopes_changed').with(
+          target: { type: 'token', id: token.id },
+          details: {
+            datapass_id: authorization_request.external_id,
+            previous_scopes: %w[entreprises attestations_fiscales],
+            scopes: match_array(%w[associations entreprises]),
+            added_scopes: %w[associations],
+            removed_scopes: %w[attestations_fiscales]
+          }
+        )
+      end
+
+      it 'emits no prolongation when DataPass revalidates twice within the same second' do
+        described_class.call(datapass_webhook_params.merge(authorization_request:))
+
+        expect { subject }.not_to emit_security_event('token.api_token.prolonged')
+      end
+
+      it 'emits a prolongation from the DataPass revalidation' do
+        expect { subject }.to emit_security_event('token.api_token.prolonged').with(
+          target: { type: 'token', id: token.id },
+          details: {
+            source: 'datapass_revalidation',
+            datapass_id: authorization_request.external_id,
+            expires_at: Time.zone.at(18.months.from_now.to_i)
+          }
+        )
       end
     end
 

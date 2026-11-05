@@ -21,6 +21,7 @@ module TokensManagement
     authorize @token
 
     render 'shared/tokens/show'
+    Token::Reveal.call(token: @token, impersonating: true_user != current_user)
   rescue Pundit::NotAuthorizedError
     render 'shared/tokens/cannot_show'
   end

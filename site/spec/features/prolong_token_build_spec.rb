@@ -111,6 +111,27 @@ RSpec.describe 'follows the prolong token wizard' do
             expect(token.reload.exp).to eq(18.months.from_now.to_i)
             expect(token.reload.days_left_notification_sent).to be_empty
           end
+
+          it 'emits a prolongation by the applicant' do
+            fill_wizard
+
+            expect { click_link('finished_prolong_token_wizard') }.to emit_security_event('token.api_token.prolonged').with(
+              actor: { email: authenticated_user.email, role: 'user' },
+              target: { type: 'token', id: token.id },
+              details: {
+                source: 'applicant',
+                datapass_id: authorization_request.external_id,
+                expires_at: Time.zone.at(18.months.from_now.to_i)
+              }
+            )
+          end
+
+          it 'emits no prolongation when the applicant comes back to the last step' do
+            fill_wizard
+            click_link('finished_prolong_token_wizard')
+
+            expect { visit token_prolong_finished_path(token_id: token.id) }.not_to emit_security_event('token.api_token.prolonged')
+          end
         end
 
         context 'when at least one field has to be changed' do

@@ -6,7 +6,7 @@ module DelegationsManagement
   end
 
   def create
-    result = EditorDelegation::Create.call(
+    result = EditorDelegation::Grant.call(
       authorization_request: @authorization_request,
       editor_id: params[:editor_id]
     )
@@ -21,7 +21,7 @@ module DelegationsManagement
   end
 
   def destroy
-    result = EditorDelegation::Revoke.call(
+    result = EditorDelegation::Withdraw.call(
       authorization_request: @authorization_request,
       delegation_id: params[:id]
     )

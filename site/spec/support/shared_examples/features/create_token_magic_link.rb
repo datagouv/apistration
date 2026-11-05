@@ -66,6 +66,31 @@ RSpec.shared_examples 'a token magic link creation feature' do |options = {}|
 
           expect(new_magic_link.token).to eq(token)
         end
+
+        it 'emits a token sharing by the demandeur, flagging an address outside the organization' do
+          expect { subject }.to emit_security_event('token.api_token.shared').with(
+            actor: { email: user.email, role: 'user' },
+            target: { type: 'token', id: token.id },
+            details: {
+              recipient_email_domain: 'email.com',
+              recipient_webmail: false,
+              recipient_outside_organization: true,
+              expires_at: be_within(1.minute).of(4.hours.from_now),
+              datapass_id: authorization_request.external_id
+            }
+          )
+        end
+      end
+
+      context 'when the email address is a webmail within the organization' do
+        let(:user) { create(:user, email: 'demandeur@gmail.com') }
+        let(:email) { 'colleague@GMAIL.com' }
+
+        it 'emits a token sharing to a webmail address' do
+          expect { subject }.to emit_security_event('token.api_token.shared').with(
+            details: hash_including(recipient_email_domain: 'gmail.com', recipient_webmail: true, recipient_outside_organization: false)
+          )
+        end
       end
 
       context 'when the email address is invalid' do
@@ -73,6 +98,10 @@ RSpec.shared_examples 'a token magic link creation feature' do |options = {}|
 
         it_behaves_like 'it aborts magic link', mailer_class
         it_behaves_like 'display alert', :error
+
+        it 'emits no token sharing' do
+          expect { subject }.not_to emit_security_event('token.api_token.shared')
+        end
       end
     end
 

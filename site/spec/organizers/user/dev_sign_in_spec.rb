@@ -31,4 +31,15 @@ RSpec.describe User::DevSignIn, type: :organizer do
       )
     end
   end
+
+  context 'when the email is not a string' do
+    let(:email) { ['test@example.com'] }
+
+    it 'emits a denied dev login attempt before raising' do
+      expect { suppress(NoMethodError) { sign_in } }.to emit_security_event('auth.login.attempted').with(
+        actor: { email: nil, role: 'anonymous' },
+        details: { method: 'dev_login', reason: 'unexpected_error', outcome: 'denied' }
+      )
+    end
+  end
 end
