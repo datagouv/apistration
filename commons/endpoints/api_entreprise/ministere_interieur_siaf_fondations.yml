@@ -35,6 +35,8 @@ fiche:
       - 'FRUP'
       - 'fonds de dotation'
       - 'fondation entreprise'
+      - 'dirigeants'
+      - 'bénéficiaires effectifs'
       - 'utilité publique'
       - 'mécénat'
       - 'philanthropie'
@@ -47,12 +49,20 @@ fiche:
         - **l'identité de la fondation** : identifiant RNF, SIREN/SIRET, type juridique (FRUP, FE, FDD), nom, état, dates de création et de terme, clôture de l'exercice, adresse du siège, courriel et téléphone ;
         - **ses activités** : objet, domaines d'intérêt général, activité internationale prévue par les statuts ;
         - **sa filiation** : organismes dont la fondation est issue (transformation d'une association ou d'un fonds de dotation) ;
+        - **ses dirigeants en fonction** : nom, prénom, fonction et qualité ;
         - **les années pendant lesquelles elle a déclaré avoir reçu des subventions publiques**.
 
+        Selon les données cochées dans la demande d'habilitation, la réponse sert en plus :
+
+        - **les bénéficiaires effectifs** (marchés publics et lutte contre la fraude) : identité complète de toutes les personnes siégeant ou dirigeant la fondation, y compris celles sorties de leurs fonctions ;
+        - **les données de contrôle** (lutte contre la fraude) : années d'appel à la générosité publique et de financements étrangers.
+
+        Un bloc auquel le jeton n'a pas droit est absent de la réponse.
+
         {:.fr-highlight}
-        > Les dirigeants, les pièces justificatives et les données comptables ne sont
-        > pas servis par cette API : ils feront l'objet d'API dédiées, ouvertes selon
-        > les cas d'usage autorisés par le Ministère de l'Intérieur.
+        > Les pièces justificatives et les données comptables ne sont pas encore
+        > servies : elles seront ajoutées selon les cas d'usage autorisés par le
+        > Ministère de l'Intérieur.
     opening: protected
     parameters:
       - Numéro de SIREN ou de SIRET de la fondation, ou son identifiant RNF
@@ -82,6 +92,26 @@ fiche:
           dédiés irrévocablement à une cause d'intérêt général, à but non lucratif.
           Une fondation n'a pas de membres. Pour les associations, consulter
           l'[API Données association](/catalogue/djepva/associations).
+      - q: "Pourquoi la liste des dirigeants est-elle parfois vide ?"
+        a: |+
+          Une fondation peut demander la confidentialité des données de ses
+          dirigeants. L'API ne sert alors aucune personne, ni dans les dirigeants
+          ni dans les bénéficiaires effectifs. C'est le cas d'environ 7 % des
+          fondations.
+      - q: "Quelle différence entre dirigeants et bénéficiaires effectifs ?"
+        a: |+
+          Ce sont les mêmes personnes : pour une fondation, toute personne exerçant
+          des fonctions d'administration, de surveillance ou de direction est
+          regardée comme bénéficiaire effectif (article R561-3 du code monétaire et
+          financier). Seules les données communicables changent selon le cas
+          d'usage : nom, prénom, fonction et qualité des dirigeants en fonction pour
+          tous, identité complète et historique des fonctions pour les marchés
+          publics et la lutte contre la fraude.
+      - q: "L'environnement de test applique-t-il les scopes ?"
+        a: |+
+          Non : l'environnement de test sert toujours la réponse complète, avec des
+          données fictives. En production, les blocs auxquels votre jeton n'a pas
+          droit sont absents de la réponse.
       - q: "Pourquoi la liste des années de subventions publiques est-elle souvent vide ?"
         a: |+
           Les années de subventions publiques sont **déclaratives** : elles ne sont
@@ -92,20 +122,24 @@ fiche:
           subvention.
     historique: |+
       **Ce qui change par rapport à la version proposée en environnement de test :**
-      La version de production ne sert que les données ouvertes à tous les cas
-      d'usage protégés par le Ministère de l'Intérieur. Ont été retirés :
-      - les dirigeants (`dirigeants`) : ce sont à la fois les représentants légaux
-        et les bénéficiaires effectifs de la fondation, et les informations
-        diffusables à leur sujet dépendent du cas d'usage ;
+      La réponse dépend désormais des scopes du jeton :
+      - `dirigeants` ne garde que les dirigeants en fonction, avec leur nom,
+        prénom, fonction et qualité ; leur identité complète, dirigeants sortis
+        compris, est servie dans `beneficiaires_effectifs`, réservé aux marchés
+        publics et à la lutte contre la fraude, avec une adresse de domiciliation
+        réduite à l'adresse complète et au pays ; la personne morale représentée
+        (`personne_morale`) n'est plus servie ;
+      - les années d'appel à la générosité publique et de financements étrangers
+        (`situation_financiere.annees_appel_generosite_publique`,
+        `situation_financiere.annees_financements_etrangers`) sont réservées à la
+        lutte contre la fraude.
+
+      Ont été retirés :
       - les pièces justificatives (`documents`) : les pièces diffusables dépendent
         de leur type et du cas d'usage ;
       - la conformité comptable (`conformite_comptable`) : l'état de transmission
         des comptes et les exercices transmis ne reflètent à ce jour que les dépôts
         faits depuis la nouvelle démarche en ligne ;
-      - les années d'appel à la générosité publique et de financements étrangers
-        (`situation_financiere.annees_appel_generosite_publique`,
-        `situation_financiere.annees_financements_etrangers`), réservées à la
-        lutte contre la fraude ;
       - les champs d'adresse `type_voie`, `complement` et `distribution`, que le
         référentiel ne sert pas : le type de voie est inclus dans `libelle_voie`.
 
