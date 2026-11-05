@@ -6,6 +6,16 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-03
+
+### Added
+- Statut étudiant (MESRI) : `generate_proof:` sur
+  `mesri.statut_etudiant_identite` et `mesri.statut_etudiant_ine` — en-tête
+  `X-Generate-Proof`, qui ajoute à la réponse la preuve d'attestation du
+  statut étudiant délivré (`meta.verification_url`,
+  `meta.verification_code` et, en mode `pdf`, `links.attestation_pdf`),
+  comme la participation familiale EAJE le fait déjà.
+
 ## [0.5.0] - 2026-10-13
 
 ### Added

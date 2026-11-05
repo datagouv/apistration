@@ -10,7 +10,7 @@ class CNAV::ParticipationFamilialeEAJE::ValidateResponse < CNAV::ValidateRespons
 
     no_kids_under_7_error! unless kids_under_7?
 
-    context.origin = regime
+    context.regime = regime
   end
 
   private
