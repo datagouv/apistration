@@ -1,7 +1,8 @@
 class ANTS::ExtraitImmatriculationVehicule < RetrieverOrganizer
   organize ANTS::ExtraitImmatriculationVehicule::ValidateParams,
+    ANTS::Authenticate,
     ANTS::ExtraitImmatriculationVehicule::MakeRequest,
-    ANTS::ExtraitImmatriculationVehicule::ValidateResponse,
+    ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse,
     ANTS::ExtraitImmatriculationVehicule::BuildResource
 
   def provider_name

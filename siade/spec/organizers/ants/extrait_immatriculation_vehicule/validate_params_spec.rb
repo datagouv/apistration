@@ -53,29 +53,23 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateParams, type: :vali
     it { is_expected.to be_a_failure }
   end
 
-  context 'with invalid date de naissance' do
+  describe 'date de naissance is no longer validated (unused by SIV2)' do
     context 'with invalid year' do
       let(:annee_date_naissance) { -1988 }
 
-      it { is_expected.to be_a_failure }
-
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      it { is_expected.to be_a_success }
     end
 
     context 'with invalid month' do
       let(:mois_date_naissance) { 30 }
 
-      it { is_expected.to be_a_failure }
-
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      it { is_expected.to be_a_success }
     end
 
     context 'with invalid day' do
       let(:jour_date_naissance) { 300 }
 
-      it { is_expected.to be_a_failure }
-
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      it { is_expected.to be_a_success }
     end
   end
 
