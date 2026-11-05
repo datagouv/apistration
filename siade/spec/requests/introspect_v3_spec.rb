@@ -44,7 +44,7 @@ RSpec.describe 'Introspection v3' do
         authorization_request:,
         rate_limit_per_minute: 200,
         allowed_ips: ['127.0.0.1'],
-        throttle_overrides: { 'insee' => 10 }
+        throttle_overrides: { 'json_resources_entreprise' => { 'limit' => 10, 'period' => 60 } }
       )
 
       get(path, headers:)

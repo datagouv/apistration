@@ -7,9 +7,22 @@ class ThrottleStore
     instance.index[operation_id]
   end
 
+  def self.period_for_throttle(throttle_name)
+    instance.throttle_periods[throttle_name]
+  end
+
+  def self.throttle_names
+    instance.throttle_periods.keys
+  end
+
   def index
     load_index if Rails.env.development?
     @index
+  end
+
+  def throttle_periods
+    load_index if Rails.env.development?
+    @throttle_periods
   end
 
   private
@@ -20,10 +33,14 @@ class ThrottleStore
   end
 
   def load_index
-    @index = {}
+    shared = YAML.safe_load_file(Rails.root.join('config/throttle.yml'), aliases: true)['shared']
 
-    config = YAML.safe_load_file(Rails.root.join('config/throttle.yml'), aliases: true)
-    shared = config['shared']
+    load_operation_ids(shared)
+    load_throttle_periods(shared)
+  end
+
+  def load_operation_ids(shared)
+    @index = {}
 
     shared.each_value do |group|
       endpoints = group['endpoints'] || []
@@ -35,6 +52,24 @@ class ThrottleStore
           throttle_type: group['throttle_type']
         }
       end
+    end
+  end
+
+  def load_throttle_periods(shared)
+    @throttle_periods = {}
+
+    shared.each do |group_name, group|
+      throttle_names_of(group_name, group).each do |throttle_name|
+        @throttle_periods[throttle_name] = group['period']
+      end
+    end
+  end
+
+  def throttle_names_of(group_name, group)
+    if group['throttle_type'] == 'by_single_endpoint'
+      group['endpoints'] || []
+    else
+      [group_name]
     end
   end
 end

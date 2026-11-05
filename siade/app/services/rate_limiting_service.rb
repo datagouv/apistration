@@ -46,7 +46,11 @@ class RateLimitingService
   end
 
   def throttle_limit_for(req, throttle_name, default_limit)
-    resolved_user(req)&.throttle_override_for(throttle_name.to_s) || default_limit
+    throttle_override_for(req, throttle_name).fetch('limit', default_limit)
+  end
+
+  def throttle_period_for(req, throttle_name, default_period)
+    throttle_override_for(req, throttle_name).fetch('period', default_period)
   end
 
   def authorization_request_discriminator(req)
@@ -116,6 +120,10 @@ class RateLimitingService
 
   def france_connectable_controllers
     @france_connectable_controllers ||= Concurrent::Map.new
+  end
+
+  def throttle_override_for(req, throttle_name)
+    resolved_user(req)&.throttle_override_for(throttle_name.to_s) || {}
   end
 
   def resolved_user(req)
