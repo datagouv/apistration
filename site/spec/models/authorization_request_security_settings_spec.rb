@@ -79,38 +79,54 @@ RSpec.describe AuthorizationRequestSecuritySettings do
     end
 
     describe 'throttle_overrides' do
-      it 'allows empty hash' do
-        settings = build(:authorization_request_security_settings, throttle_overrides: {})
-        expect(settings).to be_valid
+      def settings_with(throttle_overrides)
+        build(:authorization_request_security_settings, throttle_overrides:)
       end
 
-      it 'allows positive integer limits' do
-        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => 200 })
-        expect(settings).to be_valid
+      it 'allows no override' do
+        expect(settings_with({})).to be_valid
       end
 
-      it 'rejects zero limit' do
-        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => 0 })
+      it 'allows a group override carrying its own limit and period' do
+        expect(settings_with('gip_mds' => { 'limit' => 100, 'period' => 60 })).to be_valid
+      end
+
+      it 'allows an override on a single endpoint throttle' do
+        expect(settings_with('api_entreprise_v3_dgfip_attestations_fiscales' => { 'limit' => 10, 'period' => 60 })).to be_valid
+      end
+
+      it 'rejects a bare limit, whose period would silently follow the group' do
+        expect(settings_with('gip_mds' => 100)).not_to be_valid
+      end
+
+      it 'rejects an override without period' do
+        expect(settings_with('gip_mds' => { 'limit' => 100 })).not_to be_valid
+      end
+
+      it 'rejects an override without limit' do
+        expect(settings_with('gip_mds' => { 'period' => 60 })).not_to be_valid
+      end
+
+      it 'rejects an override with an unknown key' do
+        expect(settings_with('gip_mds' => { 'limit' => 100, 'period' => 60, 'burst' => 10 })).not_to be_valid
+      end
+
+      it 'rejects a throttle name absent from throttle.yml' do
+        settings = settings_with('unknown_group' => { 'limit' => 100, 'period' => 60 })
+
         expect(settings).not_to be_valid
-        expect(settings.errors[:throttle_overrides]).to be_present
+        expect(settings.errors[:throttle_overrides]).to include('"unknown_group" is not a throttle of throttle.yml')
       end
 
-      it 'rejects negative limit' do
-        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => -1 })
-        expect(settings).not_to be_valid
-        expect(settings.errors[:throttle_overrides]).to be_present
+      it 'rejects a group name whose throttles are declared per endpoint' do
+        expect(settings_with('high_latency_documents' => { 'limit' => 10, 'period' => 60 })).not_to be_valid
       end
 
-      it 'rejects non-integer limit' do
-        settings = build(:authorization_request_security_settings, throttle_overrides: { 'gip_mds' => 'lots' })
-        expect(settings).not_to be_valid
-        expect(settings.errors[:throttle_overrides]).to be_present
-      end
-
-      it 'rejects blank throttle name' do
-        settings = build(:authorization_request_security_settings, throttle_overrides: { '' => 200 })
-        expect(settings).not_to be_valid
-        expect(settings.errors[:throttle_overrides]).to be_present
+      [0, -1, 1.5, 60.0, '60', nil].each do |invalid|
+        it "rejects #{invalid.inspect} as limit or period" do
+          expect(settings_with('gip_mds' => { 'limit' => invalid, 'period' => 60 })).not_to be_valid
+          expect(settings_with('gip_mds' => { 'limit' => 100, 'period' => invalid })).not_to be_valid
+        end
       end
     end
   end
