@@ -57,3 +57,10 @@ pourrait pas être sérialisée en JSON.
 
 Ce header n'est pas documenté publiquement : sans le jeton du back-office il
 n'a aucun effet.
+
+En local, les seeds créent un jeton du back-office restreint à `127.0.0.1` et
+`::1` ; le site l'utilise via `ADMIN_API_TOKEN` :
+
+```bash
+bundle exec ruby bin/generate_jwt_token.rb development $(bin/rails runner 'print Seeds.new.back_office_jwt_id')
+```

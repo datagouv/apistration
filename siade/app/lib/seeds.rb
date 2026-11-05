@@ -7,10 +7,15 @@ class Seeds
     create_token(id: blacklisted_jwt_id, blacklisted_at: 1.month.ago)
     create_token(id: expired_jwt_id, exp: 1.day.ago.to_i)
     create_editor_with_delegation
+    create_back_office_token
   end
 
   def yes_jwt_id
     'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'
+  end
+
+  def back_office_jwt_id
+    'b0ff1ce0-0000-4000-8000-000000093423'
   end
 
   def expired_jwt_id
@@ -24,7 +29,7 @@ class Seeds
   def create_token(params = {})
     token = Token.find_or_initialize_by(id: params[:id])
 
-    token.assign_attributes(default_token_attributes.merge(params))
+    token.assign_attributes(default_token_attributes.merge(params.except(:authorization_request)))
     token.authorization_request = create_authorization_request(scopes: params[:scopes] || Scope.all, **params[:authorization_request] || {})
 
     token.save!
@@ -32,12 +37,13 @@ class Seeds
     token
   end
 
-  def create_authorization_request(authorization_request_id: nil, siret: generate_siret, scopes: Scope.all)
+  def create_authorization_request(authorization_request_id: nil, siret: generate_siret, scopes: Scope.all, external_id: nil)
     authorization_request = AuthorizationRequest.find_or_initialize_by(id: authorization_request_id)
 
     authorization_request.assign_attributes(
       siret:,
-      scopes:
+      scopes:,
+      external_id:
     )
 
     authorization_request.save!
@@ -46,6 +52,15 @@ class Seeds
   end
 
   private
+
+  def create_back_office_token
+    external_id = BackOfficeAuthorizationRequests.datapass_ids.first
+    authorization_request_id = AuthorizationRequest.find_by(external_id:)&.id
+    token = create_token(id: back_office_jwt_id, authorization_request: { authorization_request_id:, external_id: })
+
+    security_settings = AuthorizationRequestSecuritySettings.find_or_initialize_by(authorization_request_id: token.authorization_request_model_id)
+    security_settings.update!(allowed_ips: ['127.0.0.1', '::1'])
+  end
 
   def default_token_attributes
     {
