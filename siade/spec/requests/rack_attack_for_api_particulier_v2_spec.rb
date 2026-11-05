@@ -35,10 +35,29 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     before { freeze_time }
 
     it 'throttles a token sent as query param like one sent in X-Api-Key' do
-      21.times { get '/api/v2/etudiants', params: { token: yes_jwt } }
+      61.times { get '/api/v2/etudiants', params: { token: yes_jwt } }
 
       expect(response).to have_http_status(:too_many_requests)
       expect(response.request.env['rack.attack.matched']).to eq('API Particulier V2 global limit')
+    end
+
+    it 'lets a token make 60 requests within a minute and refuses the 61st' do
+      60.times { get '/api/v2/etudiants', params: { token: yes_jwt } }
+
+      expect(response).not_to have_http_status(:too_many_requests)
+
+      get '/api/v2/etudiants', params: { token: yes_jwt }
+
+      expect(response).to have_http_status(:too_many_requests)
+    end
+
+    it 'lets the token call again in the next minute' do
+      61.times { get '/api/v2/etudiants', params: { token: yes_jwt } }
+
+      travel 1.minute
+      get '/api/v2/etudiants', params: { token: yes_jwt }
+
+      expect(response).not_to have_http_status(:too_many_requests)
     end
   end
 
@@ -54,7 +73,7 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     end
 
     it 'throttles V2 requests with API key on particulier host' do
-      21.times do
+      61.times do
         get v2_path, headers: { 'HTTP_X_API_KEY' => api_key, 'HTTP_HOST' => particulier_host }
       end
 
@@ -62,7 +81,7 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     end
 
     it 'does not throttle V3 requests with API key on particulier host' do
-      21.times do
+      61.times do
         get v3_path, headers: { 'HTTP_X_API_KEY' => api_key, 'HTTP_HOST' => particulier_host }
       end
 
@@ -70,7 +89,7 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     end
 
     it 'does not throttle V2 requests without API key' do
-      21.times do
+      61.times do
         get v2_path, headers: { 'HTTP_HOST' => particulier_host }
       end
 
@@ -78,7 +97,7 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     end
 
     it 'does not throttle V2 requests on non-particulier host' do
-      21.times do
+      61.times do
         get v2_path, headers: { 'HTTP_X_API_KEY' => api_key, 'HTTP_HOST' => entreprise_host }
       end
 
@@ -86,7 +105,7 @@ RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier d
     end
 
     it 'prevents duplicate throttling on V3 endpoints with API key' do
-      21.times do
+      61.times do
         get v3_path, headers: { 'HTTP_X_API_KEY' => api_key, 'HTTP_HOST' => particulier_host }
       end
 

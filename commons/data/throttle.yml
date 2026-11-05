@@ -91,8 +91,8 @@ shared:
       - api_particulier_v3_sdh_statut_sportif_with_identifiant
       - api_particulier_v3_gip_mds_service_civique_with_civility
       - api_particulier_v3_gip_mds_service_civique_with_france_connect
-    limit: 20
-    period: 1
+    limit: 250
+    period: 60
 
   inpi_rne:
     throttle_type: 'by_single_endpoint'
