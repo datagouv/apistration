@@ -64,6 +64,6 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule, type: :retriever_organizer 
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    its(:errors) { is_expected.to include(instance_of(ANTSError)) }
   end
 end

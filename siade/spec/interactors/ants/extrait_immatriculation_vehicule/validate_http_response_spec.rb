@@ -23,7 +23,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse, type:
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      its(:errors) { is_expected.to include(instance_of(ANTSError)) }
     end
 
     describe 'when response has an unrecognized code' do
