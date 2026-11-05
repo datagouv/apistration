@@ -72,11 +72,16 @@ class JwtTokenService
     jwt_data[:blacklisted] = token.blacklisted?
     jwt_data[:exp] = token.exp
     jwt_data[:mcp] = jwt_data[:mcp] || token.mcp
-    jwt_data[:authorization_request_id] = token.authorization_request_model_id
 
+    enrich_with_authorization_request(jwt_data, token)
     enrich_with_security_settings(jwt_data, token)
 
     jwt_data
+  end
+
+  def enrich_with_authorization_request(jwt_data, token)
+    jwt_data[:authorization_request_id] = token.authorization_request_model_id
+    jwt_data[:datapass_id] = token.authorization_request&.external_id
   end
 
   def enrich_with_security_settings(jwt_data, token)

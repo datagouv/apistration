@@ -1,8 +1,5 @@
 class AdminAPIToken
-  DATAPASS_IDS = {
-    'api_entreprise' => '93423',
-    'api_particulier' => '93444'
-  }.freeze
+  DATAPASS_IDS = YAML.load_file(Rails.root.join('config/back_office_authorization_requests.yml')).freeze
 
   def self.for(api)
     new(api).token

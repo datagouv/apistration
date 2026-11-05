@@ -55,8 +55,7 @@ RSpec.describe APIController, 'expose provider response' do
 
   let(:header_name) { ProviderResponseDebuggingService::HEADER_NAME }
   let(:header_value) { 'true' }
-  let(:token) { yes_jwt }
-  let(:whitelisted_token_ids) { [JwtUser.debugger_id] }
+  let(:token) { back_office_jwt }
   let(:expected_provider_response) do
     {
       'status' => 418,
@@ -65,15 +64,7 @@ RSpec.describe APIController, 'expose provider response' do
     }
   end
 
-  before do
-    Siade.credentials[ProviderResponseDebuggingService::CREDENTIALS_KEY] = whitelisted_token_ids
-  end
-
-  after do
-    Siade.credentials.delete(ProviderResponseDebuggingService::CREDENTIALS_KEY)
-  end
-
-  context 'when the token is whitelisted and the header is sent' do
+  context 'when the IP-restricted back-office token sends the header' do
     it 'exposes the raw provider response in meta' do
       expect(payload['meta']['provider_response']).to eq(expected_provider_response)
     end
@@ -92,8 +83,8 @@ RSpec.describe APIController, 'expose provider response' do
     end
   end
 
-  context 'when the token is not whitelisted' do
-    let(:whitelisted_token_ids) { ['f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'] }
+  context 'when the token is not the back-office one' do
+    let(:token) { yes_jwt }
 
     it 'does not expose the raw provider response' do
       expect(payload['meta']).to eq({ 'existing_meta' => true })

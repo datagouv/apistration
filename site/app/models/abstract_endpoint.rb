@@ -39,6 +39,12 @@ class AbstractEndpoint
     new(available_endpoint)
   end
 
+  def self.at_path(path)
+    available_endpoint = endpoints_store_class.all.find { |endpoint| endpoint['path'] == path }
+
+    new(available_endpoint) if available_endpoint
+  end
+
   def self.not_found(uid)
     ActiveRecord::RecordNotFound.new("uid '#{uid}' does not exist in #{endpoints_store_class}", self, :uid, uid)
   end
