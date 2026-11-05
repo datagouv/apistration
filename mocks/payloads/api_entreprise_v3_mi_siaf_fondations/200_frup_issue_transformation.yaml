@@ -53,10 +53,39 @@ payload: |-
           "identifiant": "W751000001"
         }
       ],
+      "dirigeants": [
+        {
+          "nom": "LEROY",
+          "prenom": "Anne",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "LEROY",
+          "prenom": "Anne",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1959-12-01",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Médecin",
+          "date_entree_fonction": "2020-09-15",
+          "date_sortie_fonction": null,
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "3 Place Exemple 75004 Paris",
+            "pays": "France"
+          }
+        }
+      ],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2025
-        ]
+        ],
+        "annees_appel_generosite_publique": [],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},

@@ -60,6 +60,35 @@
         "oneLine": "20 Rue Exemple 75001 Paris",
         "dsAddress": null
       }
+    },
+    {
+      "lastName": "MARTIN",
+      "firstName": "Paul",
+      "profession": "Banquier",
+      "nationality": "Belgique",
+      "bornAt": "1960-01-30T00:00:00.000Z",
+      "isFounder": true,
+      "quality": "Personne exerçant des fonctions de direction",
+      "residenceCountry": "Suisse",
+      "entryAt": "2010-03-01T00:00:00.000Z",
+      "exitAt": "2021-12-31T00:00:00.000Z",
+      "jobPosition": null,
+      "legalEntity": {
+        "type": "Entreprise",
+        "publicId": "98765432100012",
+        "name": "ENTREPRISE EXEMPLE",
+        "country": null,
+        "address": {
+          "oneLine": "1 Place Exemple 69001 Lyon",
+          "dsAddress": null
+        }
+      },
+      "address": {
+        "oneLine": "3  Chemin Exemple 1200 Genève ",
+        "dsAddress": {
+          "countryName": "Suisse"
+        }
+      }
     }
   ],
   "dueDate": null,

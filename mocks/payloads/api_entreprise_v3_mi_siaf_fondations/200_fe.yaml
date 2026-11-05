@@ -48,8 +48,60 @@ payload: |-
         "activite_internationale_prevue_par_statuts": true
       },
       "filiation": [],
+      "dirigeants": [
+        {
+          "nom": "PETIT",
+          "prenom": "Jean",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        },
+        {
+          "nom": "ROUX",
+          "prenom": "Sophie",
+          "fonction": null,
+          "qualite": "Personne exerçant des fonctions de direction"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "PETIT",
+          "prenom": "Jean",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1968-09-05",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Dirigeant d'entreprise",
+          "date_entree_fonction": "2021-02-01",
+          "date_sortie_fonction": null,
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "1 Rue Exemple 75001 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "ROUX",
+          "prenom": "Sophie",
+          "fonction": null,
+          "qualite": "Personne exerçant des fonctions de direction",
+          "date_naissance": "1981-04-18",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Directrice de fondation",
+          "date_entree_fonction": "2021-02-01",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "5 Rue Exemple 69002 Lyon",
+            "pays": "France"
+          }
+        }
+      ],
       "situation_financiere": {
-        "annees_subventions_publiques": []
+        "annees_subventions_publiques": [],
+        "annees_appel_generosite_publique": [],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},
