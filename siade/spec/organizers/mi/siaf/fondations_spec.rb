@@ -16,9 +16,44 @@ RSpec.describe MI::SIAF::Fondations, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    it 'serves only the socle commun blocks, never directors, documents, accounts nor fraud-only financing years' do
-      expect(fondation.to_h.keys).to eq(%i[identifiants identite activites filiation situation_financiere])
-      expect(fondation.situation_financiere).to eq(annees_subventions_publiques: [2024, 2025])
+    it 'never serves documents nor accounts' do
+      expect(fondation.to_h.keys).to eq(%i[identifiants identite activites filiation dirigeants beneficiaires_effectifs situation_financiere])
+    end
+
+    it 'serves only the directors still in office, with name, first name, function and quality' do
+      expect(fondation.dirigeants).to eq(
+        [
+          { nom: 'DUPONT', prenom: 'Marie', fonction: 'Président', qualite: "Membre du conseil d'administration" }
+        ]
+      )
+    end
+
+    it 'serves the full identity of every beneficial owner, including those who left office, without the legal entity they represent' do
+      expect(fondation.beneficiaires_effectifs).to contain_exactly(
+        include(nom: 'DUPONT', date_sortie_fonction: nil),
+        {
+          nom: 'MARTIN',
+          prenom: 'Paul',
+          fonction: nil,
+          qualite: 'Personne exerçant des fonctions de direction',
+          date_naissance: Date.new(1960, 1, 30),
+          nationalite: 'Belgique',
+          pays_residence: 'Suisse',
+          profession: 'Banquier',
+          date_entree_fonction: Date.new(2010, 3, 1),
+          date_sortie_fonction: Date.new(2021, 12, 31),
+          fondateur: true,
+          adresse_domiciliation: { adresse_complete: '3 Chemin Exemple 1200 Genève', pays: 'Suisse' }
+        }
+      )
+    end
+
+    it 'serves the public subsidies, public generosity and foreign financing years' do
+      expect(fondation.situation_financiere).to eq(
+        annees_subventions_publiques: [2024, 2025],
+        annees_appel_generosite_publique: [2024],
+        annees_financements_etrangers: [2023]
+      )
     end
 
     it 'deduces the siren from the siret' do
@@ -84,6 +119,40 @@ RSpec.describe MI::SIAF::Fondations, type: :retriever_organizer do
 
     it 'serves an empty filiation' do
       expect(fondation.filiation).to eq([])
+    end
+  end
+
+  describe 'with directors whose term starts or ends in the future' do
+    let(:fondation) { subject.bundled_data.data }
+
+    before do
+      payload = JSON.parse(read_payload_file('mi/siaf/fondations/valid.json'))
+      payload['persons'][0]['exitAt'] = 1.year.from_now.iso8601
+      payload['persons'][1].merge!('entryAt' => 1.month.from_now.iso8601, 'exitAt' => nil)
+
+      stub_siaf_fondation(body: payload.to_json)
+    end
+
+    it 'keeps a director until the departure date and leaves out one not yet in office' do
+      expect(fondation.dirigeants.pluck(:nom)).to eq(%w[DUPONT])
+    end
+  end
+
+  [true, nil].each do |is_person_data_private|
+    describe "with a fondation whose persons confidentiality flag is #{is_person_data_private.inspect}" do
+      let(:fondation) { subject.bundled_data.data }
+
+      before do
+        payload = JSON.parse(read_payload_file('mi/siaf/fondations/valid.json'))
+        payload['isPersonDataPrivate'] = is_person_data_private
+
+        stub_siaf_fondation(body: payload.to_json)
+      end
+
+      it 'serves no person at all' do
+        expect(fondation.dirigeants).to eq([])
+        expect(fondation.beneficiaires_effectifs).to eq([])
+      end
     end
   end
 

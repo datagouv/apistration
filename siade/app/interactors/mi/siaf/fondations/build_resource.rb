@@ -26,6 +26,8 @@ class MI::SIAF::Fondations::BuildResource < BuildResource
       identite:,
       activites:,
       filiation:,
+      dirigeants:,
+      beneficiaires_effectifs:,
       situation_financiere:
     }
   end
@@ -118,9 +120,63 @@ class MI::SIAF::Fondations::BuildResource < BuildResource
     end
   end
 
+  def dirigeants
+    personnes_diffusables
+      .select { |personne| en_fonction?(personne) }
+      .map { |personne| dirigeant(personne) }
+  end
+
+  def en_fonction?(personne)
+    entree = date(personne['entryAt'])
+    sortie = date(personne['exitAt'])
+
+    (entree.nil? || entree <= Date.current) && (sortie.nil? || sortie > Date.current)
+  end
+
+  def beneficiaires_effectifs
+    personnes_diffusables.map do |personne|
+      dirigeant(personne).merge(
+        date_naissance: date(personne['bornAt']),
+        nationalite: personne['nationality'],
+        pays_residence: personne['residenceCountry'],
+        profession: personne['profession'],
+        date_entree_fonction: date(personne['entryAt']),
+        date_sortie_fonction: date(personne['exitAt']),
+        fondateur: personne['isFounder'],
+        adresse_domiciliation: adresse_domiciliation(personne)
+      )
+    end
+  end
+
+  def dirigeant(personne)
+    {
+      nom: personne['lastName'],
+      prenom: personne['firstName'],
+      fonction: personne['jobPosition'],
+      qualite: personne['quality']
+    }
+  end
+
+  def adresse_domiciliation(personne)
+    address = personne['address'] || {}
+
+    {
+      adresse_complete: address['oneLine']&.squish,
+      pays: address.dig('dsAddress', 'countryName')
+    }
+  end
+
+  def personnes_diffusables
+    return [] unless fondation['isPersonDataPrivate'] == false
+
+    fondation['persons'] || []
+  end
+
   def situation_financiere
     {
-      annees_subventions_publiques: fondation['publicSubsidyYears'] || []
+      annees_subventions_publiques: fondation['publicSubsidyYears'] || [],
+      annees_appel_generosite_publique: fondation['publicGenerosityYears'] || [],
+      annees_financements_etrangers: fondation['foreignFinancingYears'] || []
     }
   end
 

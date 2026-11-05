@@ -156,6 +156,8 @@ shared:
     - associations_djepva
   api_entreprise/v3_and_more/mi/siaf/fondations:
     - fondations_mi_siaf
+    - fondations_mi_siaf_beneficiaires_effectifs
+    - fondations_mi_siaf_controle
   api_entreprise/v3_and_more/mi/siaf/associations:
     - associations_mi_siaf
   api_entreprise/v3_and_more/mi/siaf/associations_open_data:

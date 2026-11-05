@@ -1,5 +1,5 @@
 ---
-description: 'Fonds de dotation (FDD) sans SIRET, accessible uniquement par identifiant RNF'
+description: 'Fonds de dotation (FDD) sans SIRET, accessible uniquement par identifiant RNF, dont les dirigeants sont confidentiels'
 params:
   siren_or_siret_or_rnf: '075-fdd-00700-07'
 status: 200
@@ -49,8 +49,17 @@ payload: |-
         "activite_internationale_prevue_par_statuts": false
       },
       "filiation": [],
+      "dirigeants": [],
+      "beneficiaires_effectifs": [],
       "situation_financiere": {
-        "annees_subventions_publiques": []
+        "annees_subventions_publiques": [],
+        "annees_appel_generosite_publique": [
+          2023,
+          2024
+        ],
+        "annees_financements_etrangers": [
+          2024
+        ]
       }
     },
     "links": {},

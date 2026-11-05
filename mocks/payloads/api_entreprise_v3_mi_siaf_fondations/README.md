@@ -3,7 +3,7 @@
 
   Status `200`
 
-  Fonds de dotation (FDD) sans SIRET, accessible uniquement par identifiant RNF
+  Fonds de dotation (FDD) sans SIRET, accessible uniquement par identifiant RNF, dont les dirigeants sont confidentiels
 
   <details><summary>Paramètres</summary>
   <p>
@@ -66,8 +66,17 @@
         "activite_internationale_prevue_par_statuts": false
       },
       "filiation": [],
+      "dirigeants": [],
+      "beneficiaires_effectifs": [],
       "situation_financiere": {
-        "annees_subventions_publiques": []
+        "annees_subventions_publiques": [],
+        "annees_appel_generosite_publique": [
+          2023,
+          2024
+        ],
+        "annees_financements_etrangers": [
+          2024
+        ]
       }
     },
     "links": {},
@@ -155,8 +164,60 @@
         "activite_internationale_prevue_par_statuts": true
       },
       "filiation": [],
+      "dirigeants": [
+        {
+          "nom": "PETIT",
+          "prenom": "Jean",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        },
+        {
+          "nom": "ROUX",
+          "prenom": "Sophie",
+          "fonction": null,
+          "qualite": "Personne exerçant des fonctions de direction"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "PETIT",
+          "prenom": "Jean",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1968-09-05",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Dirigeant d'entreprise",
+          "date_entree_fonction": "2021-02-01",
+          "date_sortie_fonction": null,
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "1 Rue Exemple 75001 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "ROUX",
+          "prenom": "Sophie",
+          "fonction": null,
+          "qualite": "Personne exerçant des fonctions de direction",
+          "date_naissance": "1981-04-18",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Directrice de fondation",
+          "date_entree_fonction": "2021-02-01",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "5 Rue Exemple 69002 Lyon",
+            "pays": "France"
+          }
+        }
+      ],
       "situation_financiere": {
-        "annees_subventions_publiques": []
+        "annees_subventions_publiques": [],
+        "annees_appel_generosite_publique": [],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},
@@ -243,11 +304,82 @@
         "activite_internationale_prevue_par_statuts": false
       },
       "filiation": [],
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Trésorier",
+          "qualite": "Membre du conseil d'administration"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1962-03-14",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Cadre",
+          "date_entree_fonction": "2019-06-20",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "1 Rue Exemple 75001 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Trésorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1970-11-02",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Expert-comptable",
+          "date_entree_fonction": "2019-06-20",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 Avenue Exemple 75015 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "BERNARD",
+          "prenom": "Claire",
+          "fonction": "Administrateur",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1955-07-21",
+          "nationalite": "Belgique",
+          "pays_residence": "Belgique",
+          "profession": "Chimiste",
+          "date_entree_fonction": "2012-01-10",
+          "date_sortie_fonction": "2022-12-31",
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "12 Rue Exemple 1000 Bruxelles",
+            "pays": "Belgique"
+          }
+        }
+      ],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
           2025
-        ]
+        ],
+        "annees_appel_generosite_publique": [
+          2024
+        ],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},
@@ -334,11 +466,82 @@
         "activite_internationale_prevue_par_statuts": false
       },
       "filiation": [],
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Trésorier",
+          "qualite": "Membre du conseil d'administration"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1962-03-14",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Cadre",
+          "date_entree_fonction": "2019-06-20",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "1 Rue Exemple 75001 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Trésorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1970-11-02",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Expert-comptable",
+          "date_entree_fonction": "2019-06-20",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 Avenue Exemple 75015 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "BERNARD",
+          "prenom": "Claire",
+          "fonction": "Administrateur",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1955-07-21",
+          "nationalite": "Belgique",
+          "pays_residence": "Belgique",
+          "profession": "Chimiste",
+          "date_entree_fonction": "2012-01-10",
+          "date_sortie_fonction": "2022-12-31",
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "12 Rue Exemple 1000 Bruxelles",
+            "pays": "Belgique"
+          }
+        }
+      ],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
           2025
-        ]
+        ],
+        "annees_appel_generosite_publique": [
+          2024
+        ],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},
@@ -425,11 +628,82 @@
         "activite_internationale_prevue_par_statuts": false
       },
       "filiation": [],
+      "dirigeants": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Trésorier",
+          "qualite": "Membre du conseil d'administration"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "DUPONT",
+          "prenom": "Marie",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1962-03-14",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Cadre",
+          "date_entree_fonction": "2019-06-20",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "1 Rue Exemple 75001 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "MARTIN",
+          "prenom": "Paul",
+          "fonction": "Trésorier",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1970-11-02",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Expert-comptable",
+          "date_entree_fonction": "2019-06-20",
+          "date_sortie_fonction": null,
+          "fondateur": false,
+          "adresse_domiciliation": {
+            "adresse_complete": "8 Avenue Exemple 75015 Paris",
+            "pays": "France"
+          }
+        },
+        {
+          "nom": "BERNARD",
+          "prenom": "Claire",
+          "fonction": "Administrateur",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1955-07-21",
+          "nationalite": "Belgique",
+          "pays_residence": "Belgique",
+          "profession": "Chimiste",
+          "date_entree_fonction": "2012-01-10",
+          "date_sortie_fonction": "2022-12-31",
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "12 Rue Exemple 1000 Bruxelles",
+            "pays": "Belgique"
+          }
+        }
+      ],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2024,
           2025
-        ]
+        ],
+        "annees_appel_generosite_publique": [
+          2024
+        ],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},
@@ -522,10 +796,39 @@
           "identifiant": "W751000001"
         }
       ],
+      "dirigeants": [
+        {
+          "nom": "LEROY",
+          "prenom": "Anne",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration"
+        }
+      ],
+      "beneficiaires_effectifs": [
+        {
+          "nom": "LEROY",
+          "prenom": "Anne",
+          "fonction": "Président",
+          "qualite": "Membre du conseil d'administration",
+          "date_naissance": "1959-12-01",
+          "nationalite": "France",
+          "pays_residence": "France",
+          "profession": "Médecin",
+          "date_entree_fonction": "2020-09-15",
+          "date_sortie_fonction": null,
+          "fondateur": true,
+          "adresse_domiciliation": {
+            "adresse_complete": "3 Place Exemple 75004 Paris",
+            "pays": "France"
+          }
+        }
+      ],
       "situation_financiere": {
         "annees_subventions_publiques": [
           2025
-        ]
+        ],
+        "annees_appel_generosite_publique": [],
+        "annees_financements_etrangers": []
       }
     },
     "links": {},
