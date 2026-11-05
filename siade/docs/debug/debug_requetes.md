@@ -16,15 +16,26 @@ clients (401, 403, 422)
 
 ## Réponse fournisseur dans la payload
 
-Pour les jetons que nous détenons (le back-office du site notamment), la
-réponse brute du fournisseur peut être renvoyée dans la payload plutôt que
-d'être seulement écrite dans les logs.
+Pour le jeton du back-office du site, la réponse brute du fournisseur peut
+être renvoyée dans la payload plutôt que d'être seulement écrite dans les logs.
+C'est voulu : les admins du back-office voient les données brutes du
+fournisseur, au-delà des scopes du jeton.
 
-Deux conditions cumulatives :
+Trois conditions cumulatives (`ProviderResponseDebuggingService`) :
 
-* le jeton (`jti`) est listé dans le credential
-    `debug_provider_response_token_ids` ;
+* le jeton est celui d'une habilitation du back-office (`JwtUser#back_office?`) :
+    l'`external_id` de son habilitation figure dans
+    `commons/data/back_office_authorization_requests.yml`, la même liste que
+    celle où le site (`AdminAPIToken`) cherche son jeton ;
+* ce jeton est restreint par IP (`JwtUser#ip_restricted?`) : retirer la liste
+    d'IP de l'habilitation coupe l'exposition ;
 * l'appel porte le header `X-Debug-Provider-Response`.
+
+Aucun autre jeton (jeton interne, jeton éditeur, autre habilitation, quels que
+soient ses scopes) n'obtient la réponse brute. Le contrat est couvert par
+`spec/requests/provider_response_exposure_spec.rb`. Côté site, chaque
+affichage de la réponse brute émet le security event
+`admin.provider_response.revealed`, avec l'admin comme acteur.
 
 La payload est alors enrichie d'un `meta.provider_response` contenant le
 `status`, les `headers` et le `body` de la réponse du fournisseur, que l'appel
@@ -44,9 +55,5 @@ Deux cas ne peuvent pas être renvoyés tels quels :
 Le reste est nettoyé de ses octets invalides en UTF-8, sans quoi la payload ne
 pourrait pas être sérialisée en JSON.
 
-Ce header n'est pas documenté publiquement : il est réservé à nos propres
-jetons, et sans entrée dans le credential il n'a aucun effet.
-
-Le credential attend une liste d'ids de jetons (colonne `tokens.id`) : en
-production et staging via `very_ansible`, en développement via
-`config/credentials.yml` (non versionné).
+Ce header n'est pas documenté publiquement : sans le jeton du back-office il
+n'a aucun effet.

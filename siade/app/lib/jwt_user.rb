@@ -1,7 +1,7 @@
 class JwtUser
   attr_reader :id, :jti, :scopes, :iat, :siret, :exp, :mcp,
     :rate_limit_per_minute, :allowed_ips, :editor_token_allowed_ips, :editor_allowed_ips, :editor_id,
-    :authorization_request_id, :throttle_overrides
+    :authorization_request_id, :datapass_id, :throttle_overrides
 
   def self.debugger_id
     '00000000-0000-0000-0000-000000000000'
@@ -13,7 +13,7 @@ class JwtUser
 
   def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil, mcp: false,
                  rate_limit_per_minute: nil, allowed_ips: nil, editor_token_allowed_ips: nil, editor_allowed_ips: nil,
-                 editor_id: nil, authorization_request_id: nil, throttle_overrides: nil)
+                 editor_id: nil, authorization_request_id: nil, datapass_id: nil, throttle_overrides: nil)
     @id = uid
     @scopes = scopes
     @jti = jti
@@ -23,16 +23,19 @@ class JwtUser
     @siret = siret
     @mcp = mcp
     @rate_limit_per_minute = rate_limit_per_minute
-    @allowed_ips = allowed_ips
-    @editor_token_allowed_ips = editor_token_allowed_ips
-    @editor_allowed_ips = editor_allowed_ips
+    @throttle_overrides = throttle_overrides || {}
     @editor_id = editor_id
     @authorization_request_id = authorization_request_id
-    @throttle_overrides = throttle_overrides || {}
+    @datapass_id = datapass_id
+    assign_ip_allowlists(allowed_ips:, editor_token_allowed_ips:, editor_allowed_ips:)
   end
 
   def editor?
     @editor_id.present?
+  end
+
+  def back_office?
+    BackOfficeAuthorizationRequests.include?(datapass_id)
   end
 
   def token_type
@@ -134,6 +137,12 @@ class JwtUser
       editor_token_allowed_ips:,
       editor_allowed_ips:
     }
+  end
+
+  def assign_ip_allowlists(allowed_ips:, editor_token_allowed_ips:, editor_allowed_ips:)
+    @allowed_ips = allowed_ips
+    @editor_token_allowed_ips = editor_token_allowed_ips
+    @editor_allowed_ips = editor_allowed_ips
   end
 
   def ip_allowlists
