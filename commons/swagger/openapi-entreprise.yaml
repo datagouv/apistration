@@ -36394,7 +36394,9 @@ paths:
       description: 'Données de référence d''une fondation (FRUP, fondation d''entreprise
         ou fonds de dotation) issues du Répertoire National des Fondations (RNF),
         opéré par le Ministère de l''Intérieur via le SIAF : identité, activités,
-        filiation et années de subventions publiques.'
+        filiation, dirigeants et années de subventions publiques. Selon les scopes
+        du jeton, la réponse sert en plus les bénéficiaires effectifs et les données
+        de contrôle (années d''appel à la générosité publique et de financements étrangers).'
       responses:
         '401':
           description: |-
@@ -36746,6 +36748,143 @@ paths:
                               type: string
                               nullable: true
                               example: W751000001
+                      dirigeants:
+                        title: Dirigeants en fonction
+                        description: 'Personnes siégeant dans les organes de gouvernance
+                          ou exerçant des fonctions de direction, encore en fonction.
+                          Le référentiel ne distingue pas dirigeants, représentants
+                          légaux et bénéficiaires effectifs : ce sont les mêmes personnes,
+                          dont seuls les champs communicables varient selon le cas
+                          d''usage. La liste est vide lorsque la fondation a demandé
+                          la confidentialité des données de ses dirigeants.'
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom
+                              type: string
+                              nullable: true
+                              example: DUPONT
+                            prenom:
+                              title: Prénom
+                              type: string
+                              nullable: true
+                              example: Marie
+                            fonction:
+                              title: Fonction exercée
+                              description: 'Valeurs servies à ce jour : Président,
+                                Vice président, Trésorier, Secrétaire, Administrateur.
+                                Null pour les personnes exerçant des fonctions de
+                                direction, dont la qualité suffit à décrire le rôle.'
+                              type: string
+                              nullable: true
+                              example: Président
+                            qualite:
+                              title: Qualité au titre de laquelle la personne siège
+                              description: 'Valeurs servies à ce jour : Membre du
+                                conseil d''administration, Membre du conseil de surveillance,
+                                Membre du directoire, Personne exerçant des fonctions
+                                de direction.'
+                              type: string
+                              nullable: true
+                              example: Membre du conseil d'administration
+                      beneficiaires_effectifs:
+                        title: Bénéficiaires effectifs
+                        description: Identité complète des personnes siégeant dans
+                          les organes de gouvernance ou exerçant des fonctions de
+                          direction, y compris celles sorties de leurs fonctions.
+                          Au sens de l'article R561-3 du code monétaire et financier,
+                          toutes ces personnes sont regardées comme bénéficiaires
+                          effectifs d'une fondation. La liste est vide lorsque la
+                          fondation a demandé la confidentialité des données de ses
+                          dirigeants.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom
+                              type: string
+                              nullable: true
+                              example: DUPONT
+                            prenom:
+                              title: Prénom
+                              type: string
+                              nullable: true
+                              example: Marie
+                            fonction:
+                              title: Fonction exercée
+                              description: 'Valeurs servies à ce jour : Président,
+                                Vice président, Trésorier, Secrétaire, Administrateur.
+                                Null pour les personnes exerçant des fonctions de
+                                direction, dont la qualité suffit à décrire le rôle.'
+                              type: string
+                              nullable: true
+                              example: Président
+                            qualite:
+                              title: Qualité au titre de laquelle la personne siège
+                              description: 'Valeurs servies à ce jour : Membre du
+                                conseil d''administration, Membre du conseil de surveillance,
+                                Membre du directoire, Personne exerçant des fonctions
+                                de direction.'
+                              type: string
+                              nullable: true
+                              example: Membre du conseil d'administration
+                            date_naissance:
+                              title: Date de naissance
+                              type: string
+                              format: date
+                              nullable: true
+                              example: '1975-04-12'
+                            nationalite:
+                              title: Nationalité
+                              type: string
+                              nullable: true
+                              example: France
+                            pays_residence:
+                              title: Pays de résidence
+                              type: string
+                              nullable: true
+                              example: France
+                            profession:
+                              title: Profession
+                              type: string
+                              nullable: true
+                              example: Juriste
+                            date_entree_fonction:
+                              title: Date d'entrée dans les fonctions
+                              type: string
+                              format: date
+                              nullable: true
+                              example: '2018-06-23'
+                            date_sortie_fonction:
+                              title: Date de sortie des fonctions
+                              description: Null tant que la personne est en fonction.
+                              type: string
+                              format: date
+                              nullable: true
+                              example:
+                            fondateur:
+                              title: Statut de fondateur
+                              type: boolean
+                              nullable: true
+                              example: false
+                            adresse_domiciliation:
+                              title: Adresse de domiciliation
+                              type: object
+                              properties:
+                                adresse_complete:
+                                  title: Adresse complète sur une ligne
+                                  type: string
+                                  nullable: true
+                                  example: 20 Rue Exemple 75001 Paris
+                                pays:
+                                  title: Pays
+                                  type: string
+                                  nullable: true
+                                  example: France
+                        x-scope: fondations_mi_siaf_beneficiaires_effectifs
                       situation_financiere:
                         title: Situation financière déclarative
                         description: 'Données déclarées par la fondation via des démarches
@@ -36762,13 +36901,34 @@ paths:
                             example:
                             - 2024
                             - 2025
+                          annees_appel_generosite_publique:
+                            title: Années pendant lesquelles la fondation a fait appel
+                              à la générosité publique
+                            type: array
+                            items:
+                              type: integer
+                            example:
+                            - 2024
+                            x-scope: fondations_mi_siaf_controle
+                          annees_financements_etrangers:
+                            title: Années pendant lesquelles la fondation a reçu un
+                              financement étranger
+                            type: array
+                            items:
+                              type: integer
+                            example: []
+                            x-scope: fondations_mi_siaf_controle
                         required:
                         - annees_subventions_publiques
+                        - annees_appel_generosite_publique
+                        - annees_financements_etrangers
                     required:
                     - identifiants
                     - identite
                     - activites
                     - filiation
+                    - dirigeants
+                    - beneficiaires_effectifs
                     - situation_financiere
                     additionalProperties: false
                   links:
