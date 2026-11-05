@@ -10,6 +10,30 @@ issue. The goal is zero open Dependabot PR and a bump PR for every gem the
 issue lists at the end, or an explicit question to the user for the ones
 that cannot be decided alone.
 
+## Lock: assignment
+
+Several people run this pass, scheduled by `.ags.yml`, whose precheck
+claims the work before the agent starts. The lock is the GitHub
+assignment of the open Dependabot PRs and of the `bundler-audit` issue,
+all of them at once: one item assigned to someone else less than 24h ago
+means another pass is running or waits on a decision, so leave the whole
+pass. Older assignments are leftovers of a crashed run or of last week's
+questions: ignore them, the pass re-triages those PRs.
+
+Run by hand, claim the same way before writing anything (push, PR,
+approval, merge):
+
+```bash
+gh api "repos/{owner}/{repo}/issues/<number>/timeline" --paginate \
+  --jq '.[] | select(.event == "assigned") | "\(.created_at) \(.assignee.login)"'
+gh pr edit <number> --add-assignee @me       # gh issue edit for the issue
+```
+
+On an item you already hold from an earlier pass, remove then add
+yourself, so its date is today's. At the end, unassign yourself from every
+item still open, except those waiting on a human decision or on work you
+handed off.
+
 ## Decision rules
 
 1. **Green + no major bump** → approve and merge, no questions asked.
