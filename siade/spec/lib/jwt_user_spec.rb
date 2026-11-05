@@ -222,15 +222,23 @@ RSpec.describe JwtUser do
   end
 
   describe '#throttle_override_for' do
-    context 'with an override for the throttle' do
-      let(:jwt_user) { described_class.new(**jwt_payload, throttle_overrides: { 'gip_mds' => 200 }) }
+    context 'with an override carrying its limit and period' do
+      let(:jwt_user) { described_class.new(**jwt_payload, throttle_overrides: { 'gip_mds' => { 'limit' => 100, 'period' => 60 } }) }
 
-      it 'returns the overridden limit' do
-        expect(jwt_user.throttle_override_for('gip_mds')).to eq(200)
+      it 'returns the override' do
+        expect(jwt_user.throttle_override_for('gip_mds')).to eq('limit' => 100, 'period' => 60)
       end
 
       it 'returns nil for another throttle' do
         expect(jwt_user.throttle_override_for('inpi_rne')).to be_nil
+      end
+    end
+
+    context 'with a legacy bare limit, as cached before the format change' do
+      let(:jwt_user) { described_class.new(**jwt_payload, throttle_overrides: { 'gip_mds' => 100 }) }
+
+      it 'returns the limit alone, leaving the period to the group' do
+        expect(jwt_user.throttle_override_for('gip_mds')).to eq('limit' => 100)
       end
     end
 
@@ -278,10 +286,10 @@ RSpec.describe JwtUser do
         scopes: %w[scope_1],
         allowed_ips: [],
         rate_limit_per_minute: nil,
-        throttle_overrides: { 'gip_mds' => 200 }
+        throttle_overrides: { 'gip_mds' => { 'limit' => 200, 'period' => 60 } }
       )
 
-      expect(delegated.throttle_override_for('gip_mds')).to eq(200)
+      expect(delegated.throttle_override_for('gip_mds')).to eq('limit' => 200, 'period' => 60)
     end
 
     it 'keeps the editor token allowed IPs alongside those of the delegated authorization request' do

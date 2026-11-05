@@ -66,7 +66,10 @@ class JwtUser
   end
 
   def throttle_override_for(throttle_name)
-    throttle_overrides[throttle_name]
+    override = throttle_overrides[throttle_name]
+    return if override.nil?
+
+    Hash.try_convert(override) || { 'limit' => override }
   end
 
   def has_access?(scope)

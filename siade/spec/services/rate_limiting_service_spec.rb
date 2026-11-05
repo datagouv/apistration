@@ -294,41 +294,37 @@ RSpec.describe RateLimitingService do
     end
   end
 
-  describe '#throttle_limit_for' do
-    subject { described_class.new.throttle_limit_for(req, throttle_name, 50) }
+  describe 'throttle overrides' do
+    subject(:service) { described_class.new }
 
-    let(:throttle_name) { :gip_mds }
-
-    context 'when no user is resolved' do
-      it { is_expected.to eq(50) }
+    def user_with(throttle_overrides)
+      JwtUser.new(uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i, throttle_overrides:)
     end
 
-    context 'with a resolved user without a matching override' do
-      let(:user) do
-        JwtUser.new(
-          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
-          throttle_overrides: { 'inpi_rne' => 30 }
-        )
-      end
-
-      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
-
-      it('falls back to the default limit') { is_expected.to eq(50) }
+    def limit_and_period
+      [service.throttle_limit_for(req, :gip_mds, 50), service.throttle_period_for(req, :gip_mds, 1)]
     end
 
-    context 'with a resolved user overriding the throttle' do
-      let(:user) do
-        JwtUser.new(
-          uid: SecureRandom.uuid, jti: SecureRandom.uuid, scopes: [], iat: 1.day.ago.to_i,
-          throttle_overrides: { 'gip_mds' => 200 }
-        )
-      end
+    it 'uses the group limit and period when no user is resolved' do
+      expect(limit_and_period).to eq([50, 1])
+    end
 
-      before { env[UserResolutionMiddleware::USER_ENV_KEY] = user }
+    it 'uses the group limit and period when the user overrides another throttle' do
+      env[UserResolutionMiddleware::USER_ENV_KEY] = user_with('inpi_rne' => { 'limit' => 30, 'period' => 60 })
 
-      it 'returns the overridden limit regardless of the symbol/string key' do
-        expect(subject).to eq(200)
-      end
+      expect(limit_and_period).to eq([50, 1])
+    end
+
+    it 'uses the limit and period of the override, whatever the group period' do
+      env[UserResolutionMiddleware::USER_ENV_KEY] = user_with('gip_mds' => { 'limit' => 100, 'period' => 60 })
+
+      expect(limit_and_period).to eq([100, 60])
+    end
+
+    it 'keeps the group period for a legacy bare limit' do
+      env[UserResolutionMiddleware::USER_ENV_KEY] = user_with('gip_mds' => 100)
+
+      expect(limit_and_period).to eq([100, 1])
     end
   end
 
