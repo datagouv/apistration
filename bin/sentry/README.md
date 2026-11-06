@@ -72,6 +72,39 @@ Note : sur `siade-backend`, sans `--full`, `http_body` sera vide. Utiliser
 `--full` pour récupérer les `http_response_body` des Provider errors
 (fetch chaque event).
 
+### watch-precheck - Précheck du job ags `sentry-watch`
+
+Liste en JSON les issues unresolved de niveau error/fatal des deux projets,
+apparues ou régressées depuis `AGS_LAST_SUCCESS_AT` (6 h avant le premier
+succès), dédupliquées. Exit 1 si rien de neuf. Une API en panne (429,
+5xx, page HTML) fait sauter le run ; elle devient une erreur après 30 min
+de panne continue (état dans `AGS_JOB_STATE_DIR`). 401/403 : erreur
+immédiate. Prompt du job : `.ags/sentry-watch.md`.
+
+Le job est partagé dans `.ags.yml` : chaque collègue qui l'a ajouté le
+lance toutes les 5 min. Pour qu'une issue ne soit triée qu'une fois, le
+précheck la revendique en postant sur Sentry la note `Triage claimed by
+the ags job sentry-watch`, avec le token d'écriture, puis relit 3 s plus
+tard. La première note gagne (date et id attribués par Sentry), comptée
+depuis la régression pour une issue régressée, depuis toujours pour une
+nouvelle ; le perdant retire la sienne et ne transmet pas
+l'issue. Une issue déjà revendiquée par soi lors d'un run échoué est
+retransmise.
+
+```bash
+AGS_JOB_STATE_DIR=tmp AGS_LAST_SUCCESS_AT=2026-11-03T00:00:00Z bin/sentry/watch-precheck
+ruby bin/sentry/test/watch_precheck_test.rb  # Ruby stdlib, HTTP stubbé
+```
+
+### resolve - Résoudre une issue
+
+```bash
+bin/sentry/resolve 123456  # id numérique, pas le short id
+```
+
+Token d'écriture distinct dans `.sentry_write_token` (scope `event:write`),
+cherché comme `.sentry_token`.
+
 ## Spécificités siade-backend
 
 Les filtres et extractions liés aux erreurs fournisseurs ne s'appliquent

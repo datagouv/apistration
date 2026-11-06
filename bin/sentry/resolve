@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'json'
+require 'net/http'
+require 'open3'
+
+class SentryResolve
+  ISSUE_URL_PREFIX = 'https://errors.data.gouv.fr/api/0/issues/'
+  TOKEN_FILE = '.sentry_write_token'
+
+  def initialize(issue_id)
+    raise ArgumentError, 'usage: bin/sentry/resolve <numeric issue id, not short id>' unless issue_id.to_s.match?(/\A[1-9]\d*\z/)
+
+    @issue_id = Integer(issue_id, 10)
+  end
+
+  def run
+    response = put(status: 'resolved')
+    raise "Sentry refused: HTTP #{response.code} #{response.body.to_s[0, 200]}" unless response.code == '200'
+
+    status = JSON.parse(response.body)['status']
+    raise "issue #{@issue_id} is #{status.inspect}, not resolved" unless status == 'resolved'
+
+    puts "issue #{@issue_id} resolved"
+  end
+
+  private
+
+  def put(body)
+    uri = URI("#{ISSUE_URL_PREFIX}#{@issue_id}/")
+    request = Net::HTTP::Put.new(uri)
+    request['Authorization'] = "Bearer #{File.read(token_file).strip}"
+    request['Content-Type'] = 'application/json'
+    request.body = JSON.generate(body)
+    Net::HTTP.start(uri.host, uri.port, use_ssl: true, read_timeout: 30) { |http| http.request(request) }
+  end
+
+  def token_file
+    return TOKEN_FILE if File.exist?(TOKEN_FILE)
+
+    common_dir, = Open3.capture2('git', 'rev-parse', '--path-format=absolute', '--git-common-dir')
+    File.join(File.dirname(common_dir.strip), TOKEN_FILE)
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  begin
+    SentryResolve.new(ARGV.first).run
+  rescue StandardError => e
+    warn "sentry-resolve: #{e.message}"
+    exit 1
+  end
+end
