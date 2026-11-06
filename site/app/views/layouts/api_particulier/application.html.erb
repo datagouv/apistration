@@ -44,7 +44,7 @@
       <% end %>
     </main>
 
-    <% unless @no_newsletter_banner %>
+    <% unless content_for?(:no_newsletter_banner) %>
       <%= render partial: 'shared/newsletter_banner' %>
     <% end %>
 

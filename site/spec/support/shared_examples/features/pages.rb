@@ -21,6 +21,20 @@ RSpec.shared_examples 'static pages feature' do |options = {}|
     end
   end
 
+  describe 'newsletter banner' do
+    it 'is hidden on the newsletter page, which already offers the subscription' do
+      visit newsletter_path
+
+      expect(page).to have_no_text('Abonnez-vous à nos lettres d’information')
+    end
+
+    it 'is shown on the home page' do
+      visit root_path
+
+      expect(page).to have_text('Abonnez-vous à nos lettres d’information')
+    end
+  end
+
   # Configure API-specific content checks
   if options[:check_newsletter_content]
     describe 'infolettre content' do
