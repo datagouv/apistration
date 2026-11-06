@@ -1,6 +1,4 @@
 class APIEntreprise::PagesController < APIEntrepriseController
-  after_action :skip_newsletter_banner!, only: %i[home newsletter]
-
   layout :page_layout
 
   def current_status
@@ -47,9 +45,5 @@ class APIEntreprise::PagesController < APIEntrepriseController
     when 'home', 'newsletter', 'redoc_editor'
       'api_entreprise/no_container'
     end
-  end
-
-  def skip_newsletter_banner!
-    @no_newsletter_banner = true
   end
 end
