@@ -14,7 +14,7 @@ class FranceTravail::Indemnites::ValidateResponse < ValidateResponse
   private
 
   def france_travail_timeout?
-    http_code == 500 && json_body['messageLog']&.include?('java.util.concurrent.TimeoutException')
+    http_code == 500 && valid_json? && json_body['messageLog']&.include?('java.util.concurrent.TimeoutException')
   end
 
   def handle_timeout!
