@@ -22,7 +22,9 @@ the new head without status: check the rule again and rerun it. Running
 it engages the author like an approval would.
 
 If a condition does not hold, do not run it: the pull request goes
-through the normal review.
+through the normal review. Post a comment on the pull request, in
+French, naming the closest rule and each condition that fails, so the
+team knows the check ran.
 
 ## Merging
 
