@@ -38,9 +38,9 @@ prête** (à l'utilisateur, dans un rapport, sur le ticket) : une fois la
 PR relue, corrigée et la CI verte, la confronter à chaque règle de
 `REVIEW.md`. Si toutes les conditions d'une règle tiennent, lancer
 `bin/vouch-auto-mergeable <règle> "<preuve>"`, qui pose le statut et le
-label ; sinon, dire dans l'annonce qu'aucune règle ne s'applique, avec la
-condition qui manque à la règle la plus proche. Le merge d'une PR
-vouchée suit `REVIEW.md` § Merging.
+label ; sinon, dire qu'aucune règle ne s'applique, dans l'annonce et en
+commentaire sur la PR, comme le décrit `REVIEW.md` § Author side. Le
+merge d'une PR vouchée suit `REVIEW.md` § Merging.
 
 ## Worktrees
 
