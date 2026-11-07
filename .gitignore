@@ -9,3 +9,4 @@ site/node_modules/
 .notes
 worktrees/*
 !worktrees/.gitkeep
+**/.claude/settings.local.json
