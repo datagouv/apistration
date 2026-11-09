@@ -136,7 +136,8 @@ RSpec.describe DatapassAPIClient do
         form_uid: 'api-entreprise-marches-publics',
         applicant: { email: 'demandeur@example.com', given_name: 'Jean', family_name: 'Dupont' },
         organization: { siret: '13002526500013' },
-        data: { intitule: 'Marchés publics' }
+        data: { intitule: 'Marchés publics' },
+        metadata: { campagne: 'migration-editeur-x', lot: 3, prioritaire: true }
       }
     end
 
@@ -164,19 +165,39 @@ RSpec.describe DatapassAPIClient do
   end
 
   describe '#update_demande' do
-    subject(:update_demande) { client.update_demande(123, data) }
+    subject(:update_demande) { client.update_demande(123, attributes) }
 
-    let(:data) { { intitule: 'Nouvel intitulé' } }
+    let(:attributes) { { data: { intitule: 'Nouvel intitulé' } } }
 
     context 'when DataPass accepts the update' do
       let!(:update_request) do
         stub_datapass(:patch, 'demandes/123')
-          .with(body: { demande: { data: } }.to_json)
+          .with(body: { demande: attributes }.to_json)
       end
 
-      it 'returns the updated demande' do
+      it 'returns the updated demande and leaves absent metadata untouched' do
         expect(update_demande).to eq(demande)
         expect(update_request).to have_been_requested
+      end
+
+      context 'with metadata replacing the existing ones' do
+        let(:attributes) { { data: { intitule: 'Nouvel intitulé' }, metadata: { campagne: 'relance' } } }
+
+        it 'sends them' do
+          update_demande
+
+          expect(update_request).to have_been_requested
+        end
+      end
+
+      context 'with null metadata to erase the existing ones' do
+        let(:attributes) { { metadata: nil } }
+
+        it 'sends an explicit null' do
+          update_demande
+
+          expect(a_request(:patch, "#{url}/demandes/123").with(body: '{"demande":{"metadata":null}}')).to have_been_made
+        end
       end
     end
 

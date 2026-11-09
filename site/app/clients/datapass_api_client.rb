@@ -24,8 +24,8 @@ class DatapassAPIClient
     request { http_connection.get("demandes/#{id}") }
   end
 
-  def update_demande(id, data)
-    request { http_connection.patch("demandes/#{id}", { demande: { data: } }) }
+  def update_demande(id, attributes)
+    request { http_connection.patch("demandes/#{id}", { demande: attributes }) }
   end
 
   def list_demandes(siret: nil, state: nil, limit: nil, offset: nil)
