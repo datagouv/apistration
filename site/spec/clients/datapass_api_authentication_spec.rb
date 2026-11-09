@@ -5,6 +5,7 @@ RSpec.describe DatapassAPIAuthentication do
 
   let(:url) { 'https://datapass.example.test/api/v1' }
   let(:token_url) { "#{url}/oauth/token" }
+  let(:scopes) { 'read_authorizations write_authorizations submit_authorizations validate_authorizations' }
 
   before do
     stub_credential(:datapass_api, url:, client_id: 'datapass_client_id', client_secret: 'datapass_client_secret')
@@ -17,13 +18,13 @@ RSpec.describe DatapassAPIAuthentication do
           grant_type: 'client_credentials',
           client_id: 'datapass_client_id',
           client_secret: 'datapass_client_secret',
-          scope: 'read_authorizations'
+          scope: scopes
         }
       )
       .to_return(
         status: 200,
         headers: { 'Content-Type' => 'application/json' },
-        body: { access_token:, token_type: 'Bearer', expires_in:, created_at: 1_613_749_329, scope: 'read_authorizations' }.to_json
+        body: { access_token:, token_type: 'Bearer', expires_in:, created_at: 1_613_749_329, scope: scopes }.to_json
       )
   end
 
@@ -81,9 +82,9 @@ RSpec.describe DatapassAPIAuthentication do
     let!(:token_request) { stub_token_request }
 
     it 'forces the next call to request a new token' do
-      described_class.new.access_token
+      authentication.access_token
       described_class.invalidate_token_cache!
-      described_class.new.access_token
+      authentication.access_token
 
       expect(token_request).to have_been_requested.twice
     end

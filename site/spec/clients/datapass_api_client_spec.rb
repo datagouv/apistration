@@ -8,7 +8,12 @@ RSpec.describe DatapassAPIClient do
 
   before do
     stub_credential(:datapass_api, url:, client_id: 'datapass_client_id', client_secret: 'datapass_client_secret')
-    allow(DatapassAPIAuthentication).to receive(:new).and_return(instance_double(DatapassAPIAuthentication, access_token:))
+    stub_token_endpoint
+  end
+
+  def stub_token_endpoint
+    stub_request(:post, "#{url}/oauth/token")
+      .to_return(status: 200, headers: json_headers, body: { access_token:, token_type: 'Bearer', expires_in: 7200 }.to_json)
   end
 
   def stub_datapass(method, path, status: 200, body: demande)
@@ -52,14 +57,12 @@ RSpec.describe DatapassAPIClient do
     end
 
     context 'when the token is rejected' do
-      before do
-        allow(DatapassAPIAuthentication).to receive(:invalidate_token_cache!)
-        stub_datapass(:get, 'demandes/123', status: 401, body: { errors: [] })
-      end
+      before { stub_datapass(:get, 'demandes/123', status: 401, body: { errors: [] }) }
 
-      it 'raises an unauthorized error and forgets the cached token' do
-        expect { get_demande }.to raise_error(described_class::Unauthorized)
-        expect(DatapassAPIAuthentication).to have_received(:invalidate_token_cache!)
+      it 'raises an unauthorized error and asks for a new token on the next call' do
+        2.times { expect { client.get_demande(123) }.to raise_error(described_class::Unauthorized) }
+
+        expect(a_request(:post, "#{url}/oauth/token")).to have_been_made.twice
       end
     end
 
@@ -137,7 +140,7 @@ RSpec.describe DatapassAPIClient do
     context 'when DataPass accepts the demande' do
       let!(:create_request) do
         stub_datapass(:post, 'demandes', status: 201)
-          .with(body: { demande: attributes }.to_json, headers: json_headers)
+          .with(body: { demande: attributes }.to_json, headers: json_headers.merge('Authorization' => "Bearer #{access_token}"))
       end
 
       it 'returns the created demande' do
