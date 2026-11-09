@@ -557,7 +557,7 @@ GEM
       json-schema (>= 2.2, < 7.0)
       railties (>= 5.2, < 8.2)
       rspec-core (>= 2.14)
-    rubocop (1.92.1)
+    rubocop (1.92.2)
       json (>= 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
