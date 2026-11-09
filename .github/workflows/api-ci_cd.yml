@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.335.0
+        uses: ruby/setup-ruby@v1.336.0
         with:
           working-directory: siade
 
@@ -41,7 +41,7 @@ jobs:
       uses: actions/checkout@v7.0.1
 
     - name: Set up Ruby
-      uses: ruby/setup-ruby@v1.335.0
+      uses: ruby/setup-ruby@v1.336.0
       with:
         bundler-cache: true
         cache-version: 347
@@ -62,7 +62,7 @@ jobs:
         fetch-depth: 0
 
     - name: Set up Ruby
-      uses: ruby/setup-ruby@v1.335.0
+      uses: ruby/setup-ruby@v1.336.0
       with:
         bundler-cache: true
         cache-version: 347
@@ -102,7 +102,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Setup ruby
-        uses: ruby/setup-ruby@v1.335.0
+        uses: ruby/setup-ruby@v1.336.0
         with:
           bundler-cache: true
           cache-version: 322
@@ -122,7 +122,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Setup ruby
-        uses: ruby/setup-ruby@v1.335.0
+        uses: ruby/setup-ruby@v1.336.0
         with:
           bundler-cache: true
           cache-version: 322
@@ -169,7 +169,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Setup ruby
-        uses: ruby/setup-ruby@v1.335.0
+        uses: ruby/setup-ruby@v1.336.0
         with:
           bundler-cache: true
           cache-version: 322
