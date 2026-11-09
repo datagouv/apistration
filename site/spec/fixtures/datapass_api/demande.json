@@ -15,6 +15,7 @@
   "last_validated_at": null,
   "reopening": false,
   "reopened_at": null,
+  "metadata": {},
   "organisation": {
     "id": 51,
     "siret": "13002526500013",
@@ -22,11 +23,14 @@
   },
   "applicant": {
     "id": 42,
+    "uid": "5f2a9c1e-7b3d-4e8a-9a41-0c6d2f7b8e13",
     "email": "utilisateur@gouv.fr",
     "given_name": "Jean",
     "family_name": "Dupont",
-    "phone_number": "0612345678"
+    "phone_number": "0612345678",
+    "job_title": "Responsable informatique"
   },
+  "service_provider": null,
   "habilitations": [],
   "events": []
 }
