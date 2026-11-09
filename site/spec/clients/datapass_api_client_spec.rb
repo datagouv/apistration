@@ -233,28 +233,69 @@ RSpec.describe DatapassAPIClient do
   end
 
   describe '#submit_demande' do
-    subject(:submit_demande) { client.submit_demande(123) }
+    subject(:submit_demande) { client.submit_demande(123, consentement:) }
 
+    let(:consentement) { { terms_of_service_accepted: true, cgu_alternative_franceconnect: false } }
     let(:submitted_demande) { demande.merge('state' => 'submitted') }
 
     context 'when the demande is complete' do
       let!(:submit_request) do
-        stub_datapass(:post, 'demandes/123/submit', body: submitted_demande)
-          .with(body: { terms_of_service_accepted: true, data_protection_officer_informed: true }.to_json)
+        stub_datapass(:post, 'demandes/123/soumettre', body: submitted_demande)
+          .with(body: { consentement: }.to_json)
       end
 
-      it 'returns the submitted demande' do
+      it 'returns the submitted demande, sending only the consents' do
         expect(submit_demande).to eq(submitted_demande)
         expect(submit_request).to have_been_requested
       end
     end
 
-    context 'when the demande is incomplete' do
-      before { stub_datapass(:post, 'demandes/123/submit', status: 422, body: validation_errors) }
+    context 'when the caller declares verified emails and disables mandatory notifications' do
+      subject(:submit_demande) { client.submit_demande(123, consentement:, verified_email: true, notifications: false) }
 
-      it 'raises an unprocessable entity error exposing the validation errors' do
+      let(:warning) { { 'title' => 'Notifications obligatoires', 'detail' => 'Le paramètre `notifications` a été ignoré.' } }
+
+      before do
+        stub_datapass(:post, 'demandes/123/soumettre', body: submitted_demande.merge('meta' => { 'warnings' => [warning] }))
+          .with(body: { consentement:, verified_email: true, notifications: false }.to_json)
+      end
+
+      it 'sends both flags and exposes the warning' do
+        expect(submit_demande.dig('meta', 'warnings')).to eq([warning])
+      end
+    end
+
+    context 'when the demande is incomplete' do
+      let(:missing_field) do
+        {
+          'errors' => [
+            {
+              'status' => '422',
+              'title' => 'Demande invalide',
+              'detail' => 'Nom de famille du délégué à la protection des données doit être rempli(e)',
+              'source' => { 'pointer' => '/data/delegue_protection_donnees_family_name' }
+            }
+          ]
+        }
+      end
+
+      before { stub_datapass(:post, 'demandes/123/soumettre', status: 422, body: missing_field) }
+
+      it 'raises an unprocessable entity error exposing title and pointer' do
         expect { submit_demande }.to raise_error(described_class::UnprocessableEntity) do |error|
-          expect(error.errors).to eq(validation_errors['errors'])
+          expect(error.errors).to eq(missing_field['errors'])
+        end
+      end
+    end
+
+    context 'when the demande was not created through the API' do
+      let(:not_created_by_api) { { 'errors' => [{ 'status' => '403', 'title' => 'Demande non créée par API', 'detail' => 'Demande réservée à son demandeur.' }] } }
+
+      before { stub_datapass(:post, 'demandes/123/soumettre', status: 403, body: not_created_by_api) }
+
+      it 'raises a forbidden error exposing the reason' do
+        expect { submit_demande }.to raise_error(described_class::Forbidden) do |error|
+          expect(error.errors).to eq(not_created_by_api['errors'])
         end
       end
     end
