@@ -61,6 +61,22 @@ RSpec.describe DatapassAPIAuthentication do
       end
     end
 
+    context 'when the application was not granted the requested scope' do
+      before do
+        stub_request(:post, token_url).to_return(
+          status: 400,
+          headers: { 'Content-Type' => 'application/json' },
+          body: { error: 'invalid_scope' }.to_json
+        )
+      end
+
+      it 'raises a forbidden error' do
+        expect { authentication.access_token }.to raise_error(DatapassAPIClient::Forbidden) do |error|
+          expect(error.status).to eq(400)
+        end
+      end
+    end
+
     context 'when DataPass rejects the client credentials' do
       before do
         stub_request(:post, token_url).to_return(

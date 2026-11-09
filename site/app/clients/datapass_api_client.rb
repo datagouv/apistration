@@ -12,6 +12,7 @@ class DatapassAPIClient
   end
 
   class Unauthorized < Error; end
+  class Forbidden < Error; end
   class NotFound < Error; end
   class UnprocessableEntity < Error; end
 
@@ -51,7 +52,7 @@ class DatapassAPIClient
     DatapassAPIAuthentication.invalidate_token_cache!
     raise build_error(Unauthorized, e)
   rescue Faraday::ForbiddenError => e
-    raise build_error(Unauthorized, e)
+    raise build_error(Forbidden, e)
   rescue Faraday::ResourceNotFound => e
     raise build_error(NotFound, e)
   rescue Faraday::UnprocessableEntityError => e

@@ -66,12 +66,15 @@ RSpec.describe DatapassAPIClient do
       end
     end
 
-    context 'when the token lacks the required scope' do
-      before { stub_datapass(:get, 'demandes/123', status: 403, body: { errors: [] }) }
+    context 'when the API right is missing' do
+      let(:missing_right) { { 'errors' => [{ 'status' => '403', 'title' => 'Droit API manquant', 'detail' => 'Droit de soumission absent.' }] } }
 
-      it 'raises an unauthorized error' do
-        expect { get_demande }.to raise_error(described_class::Unauthorized) do |error|
+      before { stub_datapass(:get, 'demandes/123', status: 403, body: missing_right) }
+
+      it 'raises a forbidden error exposing the reason' do
+        expect { get_demande }.to raise_error(described_class::Forbidden) do |error|
           expect(error.status).to eq(403)
+          expect(error.errors).to eq(missing_right['errors'])
         end
       end
     end

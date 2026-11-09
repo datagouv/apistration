@@ -32,6 +32,8 @@ class DatapassAPIAuthentication
       client_secret: credentials[:client_secret],
       scope: SCOPES
     ).body
+  rescue Faraday::BadRequestError => e
+    raise DatapassAPIClient::Forbidden.new(e.message, status: e.response_status)
   rescue Faraday::ClientError => e
     raise DatapassAPIClient::Unauthorized.new(e.message, status: e.response_status)
   end
