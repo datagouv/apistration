@@ -1,8 +1,8 @@
 require 'faraday'
 
 class DatapassAPIAuthentication
-  CACHE_KEY = 'datapass_api_access_token'.freeze
-  SCOPES = 'read_authorizations'.freeze
+  SCOPES = 'read_authorizations write_authorizations submit_authorizations validate_authorizations'.freeze
+  CACHE_KEY = "datapass_api_access_token:#{SCOPES}".freeze
   EXPIRATION_MARGIN = 60.seconds
 
   def self.invalidate_token_cache!
@@ -32,6 +32,8 @@ class DatapassAPIAuthentication
       client_secret: credentials[:client_secret],
       scope: SCOPES
     ).body
+  rescue Faraday::BadRequestError => e
+    raise DatapassAPIClient::Forbidden.new(e.message, status: e.response_status)
   rescue Faraday::ClientError => e
     raise DatapassAPIClient::Unauthorized.new(e.message, status: e.response_status)
   end

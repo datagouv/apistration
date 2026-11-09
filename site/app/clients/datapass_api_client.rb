@@ -12,6 +12,7 @@ class DatapassAPIClient
   end
 
   class Unauthorized < Error; end
+  class Forbidden < Error; end
   class NotFound < Error; end
   class UnprocessableEntity < Error; end
 
@@ -23,8 +24,8 @@ class DatapassAPIClient
     request { http_connection.get("demandes/#{id}") }
   end
 
-  def update_demande(id, data)
-    request { http_connection.patch("demandes/#{id}", { demande: { data: } }) }
+  def update_demande(id, attributes)
+    request { http_connection.patch("demandes/#{id}", { demande: attributes }) }
   end
 
   def list_demandes(siret: nil, state: nil, limit: nil, offset: nil)
@@ -35,12 +36,12 @@ class DatapassAPIClient
     request { http_connection.get("definitions/#{definition_id}/formulaires") }
   end
 
-  def submit_demande(id)
-    request { http_connection.post("demandes/#{id}/submit", { terms_of_service_accepted: true, data_protection_officer_informed: true }) }
+  def submit_demande(id, consentement:, verified_email: nil, notifications: nil)
+    request { http_connection.post("demandes/#{id}/soumettre", { consentement:, verified_email:, notifications: }.compact) }
   end
 
-  def validate_demande(id, comment:)
-    request { http_connection.post("demandes/#{id}/validate", { comment: }) }
+  def validate_demande(id, instructeur_email:, message: nil, notifications: nil)
+    request { http_connection.post("demandes/#{id}/valider", { instructeur: { email: instructeur_email }, message:, notifications: }.compact) }
   end
 
   private
@@ -51,7 +52,7 @@ class DatapassAPIClient
     DatapassAPIAuthentication.invalidate_token_cache!
     raise build_error(Unauthorized, e)
   rescue Faraday::ForbiddenError => e
-    raise build_error(Unauthorized, e)
+    raise build_error(Forbidden, e)
   rescue Faraday::ResourceNotFound => e
     raise build_error(NotFound, e)
   rescue Faraday::UnprocessableEntityError => e
