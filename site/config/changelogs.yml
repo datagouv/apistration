@@ -1,3 +1,9 @@
+- date: 2026-11-09
+  scope: both
+  title: "Les fiches du catalogue signalent les SDKs officiels"
+  description: |
+    Les fiches du [catalogue](<%= endpoints_path %>) indiquent désormais que l'API peut être appelée avec les [SDKs officiels](<%= developers_path(anchor: 'sdks-officiels') %>) Ruby et Node.js, avec un lien vers leur code source. L'encart apparaît sur les fiches des API en service couvertes par les SDKs.
+
 - date: 2026-11-03
   scope: api_particulier
   title: "Volumétrie : 250 requêtes/minute par habilitation, 60 sur l'API v2"

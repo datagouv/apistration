@@ -614,6 +614,12 @@ fr:
         ine:
           title: "Modalité INE"
           description: "En appelant cet endpoint avec l'Identifiant National Étudiant (INE), les erreurs suivantes s'ajoutent aux précédentes."
+      official_sdks:
+        title: "SDKs officiels"
+        description: "Appelez cette API depuis votre code avec nos SDKs Ruby et Node.js."
+        documentation: "Découvrir les SDKs"
+        ruby: "Code source Ruby"
+        node: "Code source Node.js"
       show:
         beta:
           title: "Cette API est en bêta test"

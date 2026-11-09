@@ -1,0 +1,11 @@
+<% if endpoint.official_sdks_available? %>
+  <div class="fr-callout fr-mt-4w fr-mb-0">
+    <h3 class="fr-callout__title"><%= t('.title') %></h3>
+    <p class="fr-callout__text fr-text--sm"><%= t('.description') %></p>
+    <ul class="fr-raw-list">
+      <li><%= link_to t('.documentation'), developers_path(anchor: 'sdks-officiels'), class: 'fr-link fr-text--sm' %></li>
+      <li><%= external_link_to t('.ruby'), endpoint.ruby_sdk_external_url, class: 'fr-link fr-text--sm' %></li>
+      <li><%= external_link_to t('.node'), endpoint.node_sdk_external_url, class: 'fr-link fr-text--sm' %></li>
+    </ul>
+  </div>
+<% end %>

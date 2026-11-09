@@ -230,6 +230,18 @@ class AbstractEndpoint
     "https://github.com/datagouv/apistration/tree/develop/mocks/payloads/#{operation_id}"
   end
 
+  def official_sdks_available?
+    implemented? && !deprecated? && !incoming? && !from_v2?
+  end
+
+  def ruby_sdk_external_url
+    "https://github.com/datagouv/apistration/tree/develop/clients/ruby/#{api}"
+  end
+
+  def node_sdk_external_url
+    "https://github.com/datagouv/apistration/tree/develop/clients/node/#{api.dasherize}"
+  end
+
   def operation_id
     open_api_definition.dig('responses', '200', 'x-operationId')
   end

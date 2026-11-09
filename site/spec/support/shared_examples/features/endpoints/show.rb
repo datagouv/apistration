@@ -20,6 +20,14 @@ RSpec.shared_examples 'an endpoints show feature' do |api_module, default_uid, e
     expect(page).to have_link(I18n.t("#{api_module.name.underscore}.endpoints.details.test_cases").to_s, href: endpoint.test_cases_external_url)
   end
 
+  it 'points to the official SDKs of this API' do
+    gem_name = api_module.name.underscore
+
+    expect(page).to have_link('Découvrir les SDKs', href: '/developpeurs#sdks-officiels')
+    expect(page).to have_link('Code source Ruby', href: "https://github.com/datagouv/apistration/tree/develop/clients/ruby/#{gem_name}")
+    expect(page).to have_link('Code source Node.js', href: "https://github.com/datagouv/apistration/tree/develop/clients/node/#{gem_name.dasherize}")
+  end
+
   describe 'real time status', :js do
     context 'when endpoint is up' do
       let(:api_status) { 200 }
