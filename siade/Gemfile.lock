@@ -504,7 +504,7 @@ GEM
     utf8-cleaner (2.0.1)
       activesupport
       rack (~> 3.0)
-    vcr (6.4.0)
+    vcr (6.4.1)
     version_gem (1.1.17)
     webmock (3.34.0)
       addressable (>= 2.8.0)
