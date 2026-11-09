@@ -40,8 +40,8 @@ class DatapassAPIClient
     request { http_connection.post("demandes/#{id}/soumettre", { consentement:, verified_email:, notifications: }.compact) }
   end
 
-  def validate_demande(id, comment:)
-    request { http_connection.post("demandes/#{id}/validate", { comment: }) }
+  def validate_demande(id, instructeur_email:, message: nil, notifications: nil)
+    request { http_connection.post("demandes/#{id}/valider", { instructeur: { email: instructeur_email }, message:, notifications: }.compact) }
   end
 
   private

@@ -302,27 +302,46 @@ RSpec.describe DatapassAPIClient do
   end
 
   describe '#validate_demande' do
-    subject(:validate_demande) { client.validate_demande(123, comment: 'Migration Omnikles') }
+    subject(:validate_demande) { client.validate_demande(123, instructeur_email: 'instructeur@example.com') }
 
     let(:validated_demande) { demande.merge('state' => 'validated') }
 
     context 'when the demande can be validated' do
       let!(:validate_request) do
-        stub_datapass(:post, 'demandes/123/validate', body: validated_demande)
-          .with(body: { comment: 'Migration Omnikles' }.to_json)
+        stub_datapass(:post, 'demandes/123/valider', body: validated_demande)
+          .with(body: { instructeur: { email: 'instructeur@example.com' } }.to_json)
       end
 
-      it 'returns the validated demande' do
+      it 'returns the validated demande, sending only the instructeur' do
         expect(validate_demande).to eq(validated_demande)
         expect(validate_request).to have_been_requested
       end
     end
 
+    context 'with a message and notifications disabled' do
+      subject(:validate_demande) { client.validate_demande(123, instructeur_email: 'instructeur@example.com', message: 'Migration Omnikles', notifications: false) }
+
+      let!(:validate_request) do
+        stub_datapass(:post, 'demandes/123/valider', body: validated_demande)
+          .with(body: { instructeur: { email: 'instructeur@example.com' }, message: 'Migration Omnikles', notifications: false }.to_json)
+      end
+
+      it 'sends them' do
+        validate_demande
+
+        expect(validate_request).to have_been_requested
+      end
+    end
+
     context 'when the demande state does not allow validation' do
-      before { stub_datapass(:post, 'demandes/123/validate', status: 422, body: validation_errors) }
+      let(:wrong_state) { { 'errors' => [{ 'status' => '422', 'title' => 'État non modifiable', 'detail' => "La demande ne peut pas être modifiée dans l'état actuel." }] } }
+
+      before { stub_datapass(:post, 'demandes/123/valider', status: 422, body: wrong_state) }
 
       it 'raises an unprocessable entity error' do
-        expect { validate_demande }.to raise_error(described_class::UnprocessableEntity)
+        expect { validate_demande }.to raise_error(described_class::UnprocessableEntity) do |error|
+          expect(error.errors).to eq(wrong_state['errors'])
+        end
       end
     end
   end
