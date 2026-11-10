@@ -60,9 +60,8 @@
       <% csv_path = controller_path == 'admin/provider_dashboards' \
            ? habilitations_export_admin_provider_dashboard_path(id: @filter.provider.uid, filter: filter_params) \
            : provider_habilitations_csv_path(provider_uid: @filter.provider.uid, filter: filter_params) %>
-      <%= link_to csv_path, class: 'fr-link fr-link--download', data: { turbo: false } do %>
-        Télécharger la liste complète
-        <span class="fr-link__detail">CSV</span>
+      <%= link_to csv_path, class: 'fr-link fr-icon-download-line fr-link--icon-right', data: { turbo: false } do %>
+        Télécharger la liste complète CSV
       <% end %>
     </p>
   </section>
