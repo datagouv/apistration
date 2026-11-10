@@ -400,7 +400,7 @@ fr:
                 Configurez votre mot de passe ou utilisez le mode de connexion par lien magique.
 
                 {:.fr-highlight}
-                _Dans certains cas spécifiques comme le départ du demandeur, un changement de poste, etc.,_ un transfert des habilitations par le demandeur à un tiers peut être nécessaire. Cette opération nécessite l’accord explicite du demandeur et est instruite manuellement par nos services. [En savoir plus.](#comment-transferer-mes-habilitations-a-une-autre-personne)
+                _Dans certains cas spécifiques comme le départ du demandeur, un changement de poste, etc.,_ un transfert des habilitations par le demandeur à un tiers peut être nécessaire. Cette opération nécessite l’accord explicite du demandeur et est instruite manuellement par nos services. [En savoir plus.](#comment-transferer-mes-habilitations-a-une-autre-personne) Si le demandeur a quitté l'organisation, vous pouvez [devenir vous-même demandeur](#comment-devenir-demandeur-d-une-habilitation-de-mon-organisation).
 
                 **Le compte utilisateur vous permet de :**
                 - copier/coller le jeton d'accès à l'API, en [respectant les règles indispensables de sécurité](#qu-est-ce-qu-un-token-ou-jeton) ;
@@ -412,6 +412,8 @@ fr:
             - question: "Comment transférer mes habilitations à une autre personne ?"
               answer: |+
                 _Votre équipe évolue ? Vous quittez votre service ?_ Vous pouvez léguer vos habilitations à une autre personne de la même organisation.
+
+                _Le demandeur n'est plus là pour effectuer le transfert ?_ Vous pouvez [devenir vous-même demandeur](#comment-devenir-demandeur-d-une-habilitation-de-mon-organisation).
 
                 #### Vous êtes contact métier et/ou contact technique de l'habilitation :
 
@@ -435,6 +437,27 @@ fr:
                 > ⚠️ Vous êtes responsable de vos habilitations et de vos jetons au titre des engagements pris au moment de votre demande d'accès en signant nos [CGU](<%= cgu_path %>). L'utilisation de la fonctionnalité "Transférer habilitations" a pour objectif de permettre la continuité de l'habilitation de votre organisation. Vous ne devez pas transmettre votre habilitation à une personne qui n'est pas en mesure de prendre le relais des responsabilités qui vous engagent.
 
                 Si vous avez débuté le transfert de votre habilitation par erreur, écrivez rapidement à <a href="mailto:support@particulier.api.gouv.fr">support@particulier.api.gouv.fr</a>.
+
+            - question: "Comment devenir demandeur d'une habilitation de mon organisation ?"
+              answer: |+
+                _Le demandeur initial a quitté votre organisation ou ne peut plus effectuer le transfert ?_ Vous pouvez devenir vous-même demandeur d'une habilitation active de votre organisation, directement depuis DataPass et sans son intervention.
+
+                Votre compte ProConnect doit être **rattaché au SIRET de l'organisation titulaire de l'habilitation**. Si vous appartenez à plusieurs organisations, sélectionnez la bonne avec le bouton « Changer d'organisation » de la page « Demandes et habilitations ».
+
+                **Pour vous transférer une habilitation :**
+
+                1. Connectez-vous sur [DataPass](<%= datapass_base_url %>/tableau-de-bord){:target="_blank"}, puis ouvrez l'onglet « Les habilitations délivrées » de la page « Demandes et habilitations ». Pour une demande déjà soumise et pas encore validée, ouvrez l'onglet « Les demandes en cours ».
+                2. Si le filtre « Filtrer par demandeur » est affiché, sélectionnez « Toutes les demandes de l'organisation ».
+                3. Cliquez sur « Consulter » pour ouvrir l'habilitation concernée.
+                4. En haut de la page, cliquez sur « Transférer », puis sur « Valider le transfert vers mon compte ».
+
+                {:.fr-highlight}
+                Vous ne pouvez vous transférer que les habilitations actives et les demandes déjà soumises de votre organisation. Ce transfert ne passe pas par une validation de nos services.
+
+                {:.fr-highlight.fr-highlight--caution}
+                > ⚠️ En devenant demandeur, vous prenez le relais des responsabilités attachées à l'habilitation au titre de nos [CGU](<%= cgu_path %>).
+
+                Si l'habilitation n'apparaît pas, si DataPass indique ne pas avoir pu vérifier votre lien avec l'organisation ou si le bouton « Transférer » est absent d'une habilitation active, écrivez à <a href="mailto:support@particulier.api.gouv.fr">support@particulier.api.gouv.fr</a>.
 
         - name: "Autre"
           entries:
