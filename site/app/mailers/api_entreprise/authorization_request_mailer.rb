@@ -17,6 +17,17 @@ class APIEntreprise::AuthorizationRequestMailer < APIEntrepriseMailer
       update_embarquement_valide_to_demandeur
       demande_recue
       update_demande_recue
+      delegation_editeur_demande_recue
+      delegation_editeur_demande_validee
+      delegation_editeur_demande_refusee
     ]
   )
+
+  private
+
+  def assign_authorization_request(authorization_request)
+    super
+
+    @editor = authorization_request.editor_delegation_request&.editor
+  end
 end

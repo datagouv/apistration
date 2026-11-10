@@ -1,7 +1,7 @@
 class DatapassWebhook::ArchiveCurrentAuthorizationRequestModel < ApplicationInteractor
   def call
     return unless context.event == 'archive'
-    return unless token_already_exists?
+    return unless token_already_exists? || context.authorization_request.editor_delegation_request?
 
     active_delegations = context.authorization_request.editor_delegations.active.to_a
     context.authorization_request.archive!

@@ -1,0 +1,13 @@
+<% errors = form.object.errors[attribute] %>
+<div class="fr-input-group <%= 'fr-input-group--error' if errors.any? %>">
+  <%= form.label attribute, class: 'fr-label' do %>
+    <%= label %>
+    <% if local_assigns[:hint] %>
+      <span class="fr-hint-text"><%= hint %></span>
+    <% end %>
+  <% end %>
+  <%= form.text_field attribute, class: 'fr-input', type: local_assigns.fetch(:type, 'text'), autocomplete: local_assigns[:autocomplete] %>
+  <% if errors.any? %>
+    <p class="fr-error-text"><%= errors.first %></p>
+  <% end %>
+</div>
