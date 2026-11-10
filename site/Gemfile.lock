@@ -150,6 +150,7 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     drb (2.2.3)
+    dsfr-assets (1.15.4)
     erb (6.0.7)
     erubi (1.13.1)
     et-orbi (1.4.2)
@@ -710,6 +711,7 @@ DEPENDENCIES
   cuprite
   dotenv-rails
   draper
+  dsfr-assets (~> 1.15)
   exhale
   factory_bot_rails
   faker
