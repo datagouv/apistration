@@ -31,6 +31,8 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [[FranceConnect] Statut allocation de soutien familial (ASF)](api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect) (`/v3/dss/allocation_soutien_familial/france_connect`)
 * [[Identité] Statut complémentaire santé solidaire (C2S)](api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility) (`/v3/dss/complementaire_sante_solidaire/identite`)
 * [[FranceConnect] Statut complémentaire santé solidaire (C2S)](api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect) (`/v3/dss/complementaire_sante_solidaire/france_connect`)
+* [[Identité] Composition du foyer RSA](api_particulier_v3_cnav_foyer_rsa_with_civility) (`/v3/dss/foyer_rsa/identite`)
+* [[FranceConnect] Composition du foyer RSA](api_particulier_v3_cnav_foyer_rsa_with_france_connect) (`/v3/dss/foyer_rsa/france_connect`)
 * [[Identité] Participation familiale EAJE](api_particulier_v3_cnav_participation_familiale_eaje_with_civility) (`/v3/dss/participation_familiale_eaje/identite`)
 * [[FranceConnect] Participation familiale EAJE](api_particulier_v3_cnav_participation_familiale_eaje_with_france_connect) (`/v3/dss/participation_familiale_eaje/france_connect`)
 * [[Identité] Statut prime d'activité](api_particulier_v3_cnav_prime_activite_with_civility) (`/v3/dss/prime_activite/identite`)
