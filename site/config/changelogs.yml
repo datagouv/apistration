@@ -1,3 +1,9 @@
+- date: 2026-11-10
+  scope: both
+  title: "FAQ : devenir demandeur d'une habilitation de son organisation"
+  description: |
+    La [FAQ](<%= faq_index_path(anchor: 'comment-devenir-demandeur-d-une-habilitation-de-mon-organisation') %>) explique désormais comment devenir vous-même demandeur d'une habilitation de votre organisation depuis DataPass, par exemple lorsque le demandeur initial a quitté la structure.
+
 - date: 2026-11-03
   scope: api_particulier
   title: "Volumétrie : 250 requêtes/minute par habilitation, 60 sur l'API v2"
