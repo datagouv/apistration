@@ -22,7 +22,7 @@
 
   <div class="fr-pl-2w">
     <% if properties['description'] %>
-      <div class="description fr-highlight--beige-gris-galet fr-text--sm fr-pl-2w">
+      <div class="description fr-highlight fr-highlight--beige-gris-galet fr-text--sm fr-pl-2w">
         <%= auto_link(markdown_to_html(properties['description']), target: '_blank', rel: 'noopener noreferrer') { |url| "#{url}<span class=\"fr-sr-only\">(nouvelle fenêtre)</span>".html_safe }.html_safe %>
       </div>
     <% end %>
