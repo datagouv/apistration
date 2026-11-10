@@ -9,24 +9,24 @@
     <nav class="fr-nav" id="navigation-header-menu" aria-label="Menu principal" tabindex="-1">
       <ul class="fr-nav__list">
         <li class="fr-nav__item">
-          <a class="fr-nav__link center" href="<%= endpoints_path %>" target="_self" <%= active_link_attribute('catalogue', request.url) %>>
+          <a class="fr-nav__link center nav-link-two-lines" href="<%= endpoints_path %>" target="_self" <%= active_link_attribute('catalogue', request.url) %>>
             <%= t('.catalogue').html_safe %>
           </a>
         </li>
         <li class="fr-nav__item">
-          <a class="fr-nav__link center" href="<%= cas_usages_path %>" target="_self" <%= active_link_attribute('cas_usages', request.url) %>>
+          <a class="fr-nav__link center nav-link-two-lines" href="<%= cas_usages_path %>" target="_self" <%= active_link_attribute('cas_usages', request.url) %>>
             <%= t('.usages').html_safe %>
           </a>
         </li>
         <li class="fr-nav__item">
-          <a class="fr-nav__link center" href="<%= developers_path %>" target="_self" <%= active_link_attribute('developer', request.url) %>>
+          <a class="fr-nav__link center nav-link-two-lines" href="<%= developers_path %>" target="_self" <%= active_link_attribute('developer', request.url) %>>
             <%= t('.developer').html_safe %>
           </a>
         </li>
 
         <% if user_signed_in? && current_user.admin? %>
           <li class="fr-nav__item">
-            <a class="fr-nav__link center" href="<%= admin_path %>" target="_self">
+            <a class="fr-nav__link center nav-link-two-lines" href="<%= admin_path %>" target="_self">
               <strong>Espace admin</strong>
               <br />
               La puissance est par là
@@ -36,7 +36,7 @@
 
         <% if user_signed_in? && current_user.editor&.serves_api?('particulier') %>
           <li class="fr-nav__item">
-            <a class="fr-nav__link center" href="<%= editor_path %>" target="_self">
+            <a class="fr-nav__link center nav-link-two-lines" href="<%= editor_path %>" target="_self">
               <strong>Espace éditeurs</strong>
               <br />
               Gestion clients
@@ -46,7 +46,7 @@
 
         <% if user_signed_in? && current_user.provider? %>
           <li class="fr-nav__item">
-            <a class="fr-nav__link center" href="<%= provider_path %>" target="_self">
+            <a class="fr-nav__link center nav-link-two-lines" href="<%= provider_path %>" target="_self">
               <strong>Espace fournisseur de données</strong>
               <br />
               Statistiques
@@ -56,7 +56,7 @@
 
 
         <li class="ask-access-link fr-nav__item">
-          <%= external_link_to 'https://datapass.api.gouv.fr/api-particulier', class: 'fr-nav__link center' do %>
+          <%= external_link_to 'https://datapass.api.gouv.fr/api-particulier', class: 'fr-nav__link center nav-link-two-lines' do %>
             <%= t('.ask_access').html_safe %>
           <% end %>
         </li>
