@@ -44,16 +44,3 @@
     }
   }
 }
-
-#cas-usage {
-  table.fr-table,
-  .fr-table > table {
-    border-collapse: collapse;
-
-    th,
-    td {
-      border: 1px solid var(--border-contrast-grey);
-      padding: 0.5rem 0.75rem;
-    }
-  }
-}
