@@ -37,14 +37,8 @@
     <p><%= t('.description') %></p>
     <%= render 'provider/dashboard/consumers_table', consumers: consumers %>
     <%= paginate consumers %>
-    <p class="fr-mt-1w">
-      <% csv_path = controller_path == 'admin/provider_dashboards' \
-           ? consumers_export_admin_provider_dashboard_path(id: @filter.provider.uid, filter: filter_params) \
-           : provider_consumers_csv_path(provider_uid: @filter.provider.uid, filter: filter_params) %>
-      <%= link_to csv_path, class: 'fr-link fr-link--download', data: { turbo: false } do %>
-        Télécharger la liste complète
-        <span class="fr-link__detail">CSV</span>
-      <% end %>
-    </p>
+    <%= render 'provider/dashboard/csv_download_link',
+      admin_path: consumers_export_admin_provider_dashboard_path(id: @filter.provider.uid, filter: filter_params),
+      provider_path: provider_consumers_csv_path(provider_uid: @filter.provider.uid, filter: filter_params) %>
   </section>
 <% end %>

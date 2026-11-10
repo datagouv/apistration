@@ -1,0 +1,12 @@
+/*
+ *= require dsfr.min
+ *= require dsfr-extensions
+ *= require utility/dsfr-utility.min
+ *= require dsfr-corrections
+ *= require commons
+ *= require_tree ./vendor
+ *= require_self
+ *= require_tree ./components
+ *= require_tree ./shared/pages
+ *= require_tree ./api_particulier/pages
+ */

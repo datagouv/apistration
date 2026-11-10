@@ -1,0 +1,11 @@
+<%# locals: (title:, downloadable:) -%>
+<div style="display: flex; justify-content: space-between; align-items: baseline;">
+  <figcaption class="fr-text--lead"><%= title %></figcaption>
+  <% if downloadable %>
+    <a href="#" role="button"
+       class="fr-link fr-link--sm fr-icon-download-line fr-link--icon-right"
+       data-action="chart-download#download">
+      Télécharger CSV
+    </a>
+  <% end %>
+</div>

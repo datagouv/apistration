@@ -1,4 +1,4 @@
-<turbo-frame id="current_status">
+<turbo-frame id="<%= turbo_frame_request_id.presence || 'current_status' %>">
   <%= external_link_to "https://status.#{namespace == 'api_entreprise' ? 'entreprise' : 'particulier'}.api.gouv.fr", class: 'fr-link', title: "API #{namespace.humanize} Status Page" do %>
     <span class="circle circle-<%= status_to_color(@current_status) %> fr-mr-1w" aria-hidden="true"></span>
     <span class="fr-sr-only"><%= @current_status %> — </span>

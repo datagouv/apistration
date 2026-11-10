@@ -11,12 +11,12 @@ Rails.application.config.assets.version = '1.0'
 # folder are already added.
 
 Rails.application.config.assets.precompile += %w(
-  api_entreprise.scss
+  api_entreprise.css
   api_entreprise.js
 
-  api_particulier.scss
+  api_particulier.css
   api_particulier.js
 
-  admin.scss
+  admin.css
   admin.js
 )

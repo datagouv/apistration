@@ -11,29 +11,16 @@ fonctionne assez bien (grid, button etc etc .. tout ça fonctionne)
 Pour les icônes, la librairie [Remix Icon](https://remixicon.com/) sur laquelle
 le DSFR s'est inspirée, a été ajoutée.
 
-### Installation de la dernière version du DSFr
+### Montée de version du DSFR
 
-Avant toute chose, [téléchargez la dernière version
-disponible](https://github.com/GouvernementFR/dsfr/releases)
+Le DSFR (CSS, JS, polices, icônes) est fourni par la gem `dsfr-assets`.
 
-Il y a quelques manipulations à respecter pour que cela fonctionne:
-
-Concernant le CSS:
-
-1. Remplacer le fichier `app/assets/stylesheets/dsfr.css` par le fichier du même nom dans `dist/dsfr`
-2. Chercher l'ensemble des déclarations des font-face de Marianne et Spectral
-   dans le fichier, et le supprimer. En effet c'est le fichier
-   `app/assets/stylesheets/dsfr-fonts.scss` qui s'occupe de déclarer les fonts
-
-Concernant le js:
-
-1. Remplacer le fichier `app/assets/javascripts/dsfr.module.js` par le fichier
-   du même nom dans `dist/dsfr`
-
-Concernant les icônes:
-
-1. Remplacer le fichier `app/assets/stylesheets/dsfr-utility.css` par le fichier `dist/utility/utility.css`
-2. Remplacer le dossier `app/assets/icons` par le dossier `dist/icons`
+1. Mettre à jour la gem : `bundle update dsfr-assets`
+2. Si les conditions d'utilisation ont changé, relire les nouvelles et mettre à
+   jour `Dsfr::Assets.accepted_license_version` dans
+   `config/initializers/dsfr_assets.rb`
+3. Contrôler le rendu des pages : aucune spec ne le couvre, et une version
+   mineure peut retirer des classes ou changer le balisage attendu
 
 ## Règles
 
