@@ -13,10 +13,19 @@ RSpec.describe MarkdownInterpolator do
     end
   end
 
+  context 'with a DSFR Markdown table carrying another class' do
+    let(:content) { "{:.fr-table .fr-table--large}\n| A | B |\n| - | - |\n| 1 | 2 |\n" }
+
+    it 'keeps that class on the DSFR block' do
+      expect(html).to include('<div class="fr-table fr-table--large fr-table--bordered fr-table--multiline">')
+    end
+  end
+
   context 'with an untagged Markdown table' do
     let(:content) { "| A | B |\n| - | - |\n| 1 | 2 |\n" }
 
     it 'leaves the table as it is' do
+      expect(html).to include('<table>')
       expect(html).not_to include('fr-table')
     end
   end

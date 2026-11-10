@@ -14,14 +14,16 @@ class NewTabSafeHtmlConverter < Kramdown::Converter::Html
   def convert_table(element, indent)
     return super unless dsfr_table?(element)
 
-    element.attr.delete('class')
+    classes = element.attr.delete('class')
+    table = super
+    element.attr['class'] = classes
 
     <<~HTML
-      <div class="fr-table fr-table--bordered fr-table--multiline">
+      <div class="#{escape_html(classes, :attribute)} fr-table--bordered fr-table--multiline">
         <div class="fr-table__wrapper">
           <div class="fr-table__container">
             <div class="fr-table__content">
-              #{super}
+              #{table}
             </div>
           </div>
         </div>
