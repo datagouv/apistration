@@ -60,6 +60,15 @@ RSpec.describe 'Admin: API requests' do
         ).to have_been_made
       end
 
+      it 'records no raw response reveal when siade sends none' do
+        visit admin_api_requests_path(endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}')
+        fill_in 'siren', with: '130025265'
+
+        expect { click_on 'Envoyer la requête' }.not_to emit_security_event('admin.provider_response.revealed')
+        expect(page).to have_text('130025265')
+        expect(a_request(:get, %r{#{siade_entreprise_url}/v3/insee/sirene/unites_legales/130025265})).to have_been_made
+      end
+
       it 'forces object to true_user id even if a forged object is posted' do
         page.driver.submit(
           :post,
@@ -132,6 +141,22 @@ RSpec.describe 'Admin: API requests' do
         expect(page).to have_text('content-type')
         expect(page).to have_text('SIREN inconnu')
         expect(page).to have_no_text('provider_response')
+      end
+
+      it 'records that the admin obtained the raw provider response, without its body nor the requested entity' do
+        visit admin_api_requests_path(endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}')
+        fill_in 'siren', with: '130025265'
+
+        expect { click_on 'Envoyer la requête' }.to emit_security_event('admin.provider_response.revealed').with(
+          actor: { email: admin.email, role: 'admin' },
+          target: { type: 'endpoint', id: 'insee_unites_legales_v3' },
+          details: {
+            endpoint_uid: 'insee/unites_legales_v3',
+            endpoint_path: '/v3/insee/sirene/unites_legales/{siren}',
+            provider_uids: ['insee'],
+            provider_status: 404
+          }
+        )
       end
 
       context 'when the provider body is not JSON' do

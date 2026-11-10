@@ -17,3 +17,4 @@ commons/endpoints/api_particulier:config/endpoints/api_particulier
 mocks/payloads:config/mock_payloads
 commons/pings.yml:config/pings.yml
 commons/security_events.yml:config/security_events.yml
+commons/data/back_office_authorization_requests.yml:config/back_office_authorization_requests.yml

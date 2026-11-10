@@ -9,6 +9,7 @@ module Admin
 
     def create
       @result = @facade.execute_request(request_params)
+      track_provider_response_reveal
       render :index
     end
 
@@ -34,6 +35,15 @@ module Admin
       endpoint_params.merge(
         'context' => @context_value,
         'object' => @object_value
+      )
+    end
+
+    def track_provider_response_reveal
+      ProviderResponse::Reveal.call(
+        admin: true_user,
+        api: @facade.api_identifier,
+        endpoint_path: @facade.selected_endpoint&.path,
+        provider_response: @result&.dig(:provider_response)
       )
     end
 

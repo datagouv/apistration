@@ -256,3 +256,12 @@ events:
     target_type: token
     details: [reason, rule, jti, credential_type, datapass_id, editor_id, delegation_id, ip, method, path, user_agent]
     since: 2026-11
+
+  admin.provider_response.revealed:
+    criticality: notable
+    services: [site]
+    description: Un admin obtient la réponse brute d'un fournisseur de données depuis les requêtes manuelles du back-office. Siade ne la renvoie qu'au jeton du back-office restreint par IP, dans meta.provider_response, au-delà des scopes de ce jeton (voir siade/docs/debug/debug_requetes.md). L'acteur est l'admin, la cible l'endpoint appelé (id de sa fiche, absent si l'endpoint n'a pas de fiche). endpoint_uid est l'uid de la fiche, endpoint_path le chemin de l'endpoint avant substitution des paramètres, provider_uids les fournisseurs de la fiche, provider_status le statut HTTP de la réponse du fournisseur. Ni le corps de la réponse ni l'identifiant de l'entité demandée ne sont émis
+    actor_types: [admin]
+    target_type: endpoint
+    details: [endpoint_uid, endpoint_path, provider_uids, provider_status]
+    since: 2026-11

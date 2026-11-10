@@ -16,3 +16,4 @@ commons/endpoints/template.entreprise.yml.example:config/endpoints/template.entr
 commons/endpoints/template.particulier.yml.example:config/endpoints/template.particulier.yml.example
 commons/security_events.yml:config/security_events.yml
 commons/pings.yml:config/pings.yml
+commons/data/back_office_authorization_requests.yml:config/back_office_authorization_requests.yml

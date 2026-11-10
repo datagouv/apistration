@@ -1,6 +1,5 @@
 class ProviderResponseDebuggingService
   HEADER_NAME = 'X-Debug-Provider-Response'.freeze
-  CREDENTIALS_KEY = :debug_provider_response_token_ids
 
   def initialize(user, request)
     @user = user
@@ -8,7 +7,7 @@ class ProviderResponseDebuggingService
   end
 
   def enable?
-    asked_by_header? && whitelisted_token?
+    asked_by_header? && ip_restricted_back_office_token?
   end
 
   private
@@ -19,12 +18,9 @@ class ProviderResponseDebuggingService
     request.headers[HEADER_NAME].present?
   end
 
-  def whitelisted_token?
+  def ip_restricted_back_office_token?
     user.present? &&
-      whitelisted_token_ids.include?(user.token_id)
-  end
-
-  def whitelisted_token_ids
-    Array(Siade.credentials.fetch(CREDENTIALS_KEY, [])).map(&:to_s)
+      user.back_office? &&
+      user.ip_restricted?
   end
 end
