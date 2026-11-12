@@ -17,9 +17,10 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   # card 552
   def per_endpoint
-    @per_endpoint ||= merge_by_endpoint(
+    @per_endpoint ||= merge_rows(
       per_api(coalesce_sum(:appels_totaux), coalesce_sum(:appels_uniques), coalesce_sum(:appels_cache))
         .map { |row| { endpoint: endpoint_title(row[0]), total: row[1].to_i, unique: row[2].to_i, cached: row[3].to_i } },
+      key: :endpoint,
       sum_keys: %i[total unique cached]
     )
   end
@@ -36,24 +37,20 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   # cards 555..560
   def success_breakdown
-    @success_breakdown ||= begin
-      counts = scoped.pick(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur)) || [0, 0, 0]
-      success, not_found, errors = counts.map(&:to_i)
-      { success:, not_found:, errors:, total: success + not_found + errors }
-    end
+    @success_breakdown ||= success_counts(*scoped.pick(*success_aggregates))
   end
 
   # card 561
   def evolution_success
-    @evolution_success ||= time_series(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur))
+    @evolution_success ||= time_series(*success_aggregates)
       .map { |row| { bucket: row[0], success: row[1].to_i, not_found: row[2].to_i, errors: row[3].to_i } }
   end
 
   # card 562
   def success_per_endpoint
-    @success_per_endpoint ||= merge_by_endpoint(
-      per_api(coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur))
-        .map { |row| { endpoint: endpoint_title(row[0]), success: row[1].to_i, not_found: row[2].to_i, errors: row[3].to_i } },
+    @success_per_endpoint ||= merge_rows(
+      success_per_controller.map { |row| row.merge(endpoint: endpoint_title(row[:controller])) },
+      key: :endpoint,
       sum_keys: %i[success not_found errors]
     )
   end
@@ -289,6 +286,21 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     scoped.group(:api).pluck(:api, *sql_aggregates)
   end
 
+  def success_per_controller
+    @success_per_controller ||= per_api(*success_aggregates)
+      .map { |controller, *counts| success_counts(*counts).merge(controller:) }
+  end
+
+  def success_aggregates
+    [coalesce_sum(:appels_succes), coalesce_sum(:appels_echecs), coalesce_sum(:appels_erreurs_fournisseur)]
+  end
+
+  def success_counts(*counts)
+    success, not_found, errors = counts.map(&:to_i)
+
+    { success:, not_found:, errors:, total: success + not_found + errors }
+  end
+
   def per_endpoint_time_series(aggregate_sql)
     scoped
       .group(endpoint_title_sql, date_trunc_sql)
@@ -366,9 +378,9 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     "date_trunc('#{filter.pg_interval_unit}', date)"
   end
 
-  def merge_by_endpoint(rows, sum_keys:)
-    rows.group_by { |r| r[:endpoint] }.map do |endpoint, grouped|
-      sum_keys.each_with_object({ endpoint: }) { |k, h| h[k] = grouped.sum { |r| r[k] } }
+  def merge_rows(rows, key:, sum_keys:)
+    rows.group_by { |r| r[key] }.map do |value, grouped|
+      sum_keys.each_with_object({ key => value }) { |k, h| h[k] = grouped.sum { |r| r[k] } }
     end
   end
 
