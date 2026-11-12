@@ -11,6 +11,10 @@ class RouteScopesStore
     controllers.flat_map { |controller| scopes_for(controller) }.uniq
   end
 
+  def self.controllers
+    instance.index.keys
+  end
+
   def index
     load_index if Rails.env.development?
     @index

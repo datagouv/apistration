@@ -383,6 +383,51 @@ RSpec.describe Provider::DashboardQuery do
     end
   end
 
+  describe 'endpoint callable through several modalities' do
+    let(:provider) { APIParticulier::Provider.find('cnous') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+    let(:with_civility) { 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility' }
+    let(:with_ine) { 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine' }
+    let(:with_france_connect) { 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect' }
+
+    before do
+      create(:access_log, controller: with_civility, status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: with_ine, status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: with_ine, status: '404', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: with_france_connect, status: '502', api_version: 'v3', cached: false, duration: '100')
+    end
+
+    it 'counts the calls made by INE and FranceConnect, not only by identity' do
+      expect(query.total_calls).to eq(4)
+    end
+
+    it 'keeps the calls of every modality when filtering on the fiche' do
+      narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: [with_civility])
+
+      expect(described_class.new(provider, narrow).total_calls).to eq(4)
+    end
+
+    it 'gathers the calls of every modality under the fiche title' do
+      expect(query.per_endpoint).to contain_exactly(include(endpoint: 'Statut étudiant boursier', total: 4))
+    end
+
+    it 'splits success, not found and provider errors over every modality' do
+      expect(query.success_breakdown).to include(success: 2, not_found: 1, errors: 1)
+    end
+
+    it 'counts once per endpoint a consumer calling by identity and by INE' do
+      token = create(:token)
+      create(:access_log, controller: with_civility, status: '200', api_version: 'v3', cached: false, duration: '100', token:)
+      create(:access_log, controller: with_ine, status: '200', api_version: 'v3', cached: false, duration: '100', token:)
+
+      expect(query.consumers_evolution_per_endpoint).to contain_exactly(include(endpoint: 'Statut étudiant boursier', value: 5))
+    end
+
+    it 'counts the endpoint once, whatever its number of modalities' do
+      expect(query.multiple_endpoints?).to be false
+    end
+  end
+
   describe 'excluded controllers' do
     it 'ignores ping/uptime traffic' do
       create(:access_log, controller: 'uptime', status: '200', api_version: 'v3', cached: false, duration: '10')

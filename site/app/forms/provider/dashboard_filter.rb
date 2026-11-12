@@ -82,7 +82,7 @@ class Provider::DashboardFilter
     @controllers_by_endpoint ||= provider_endpoints.each_with_object({}) do |endpoint, map|
       next if endpoint.controller.blank?
 
-      map[endpoint.controller] = [endpoint.controller, *legacy_controllers(endpoint)].uniq
+      map[endpoint.controller] = [endpoint.controller, *endpoint.modality_controllers, *legacy_controllers(endpoint)].uniq
     end
   end
 

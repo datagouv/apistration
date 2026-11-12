@@ -150,6 +150,10 @@ class AbstractEndpoint
     @scopes ||= RouteScopesStore.scopes_for(controller)
   end
 
+  def modality_controllers
+    @modality_controllers ||= RouteScopesStore.controllers.select { |known| known.start_with?(modality_controllers_prefix) }
+  end
+
   def redoc_anchor
     @redoc_anchor ||= "tag/#{tag_for_redoc}/paths/#{path_for_redoc}/get"
   end
@@ -244,6 +248,10 @@ class AbstractEndpoint
 
   def errors_nomenclature
     Kernel.const_get(api.classify)::ErrorsNomenclature
+  end
+
+  def modality_controllers_prefix
+    "#{controller.to_s.sub(/_with_\w+\z/, '')}_with_"
   end
 
   def sibling_operation_id(modality)
