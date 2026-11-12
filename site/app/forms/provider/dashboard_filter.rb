@@ -78,12 +78,19 @@ class Provider::DashboardFilter
       .sort_by(&:second)
   end
 
-  def controllers_with_legacy
-    @controllers_with_legacy ||= provider_endpoints.each_with_object({}) do |endpoint, map|
+  def controllers_by_endpoint
+    @controllers_by_endpoint ||= provider_endpoints.each_with_object({}) do |endpoint, map|
       next if endpoint.controller.blank?
 
-      map[endpoint.controller] = [endpoint.controller, *legacy_controllers(endpoint)].uniq
+      map[endpoint.controller] = [endpoint.controller, *endpoint.modality_controllers, *legacy_controllers(endpoint)].uniq
     end
+  end
+
+  def modalities_by_controller
+    @modalities_by_controller ||= provider_endpoints
+      .map(&:modalities_by_controller)
+      .select(&:many?)
+      .reduce({}, :merge)
   end
 
   def provider_endpoints

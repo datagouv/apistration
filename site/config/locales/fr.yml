@@ -708,6 +708,26 @@ fr:
         charts:
           evolution_success: Évolution nombre d'appels (succès, non trouvé, erreur fournisseur)
           success_per_endpoint: Nombre d'appels par endpoint (succès, non trouvé, erreur fournisseur)
+      modalities:
+        title: Par modalité d'appel
+        description: Compare les modalités d'appel des endpoints qui en proposent plusieurs. Seuls les appels transmis au fournisseur de données sont comptés ; ceux de l'API v2, dont la modalité n'est pas connue, sont exclus.
+        names:
+          civility: Identité
+          ine: INE
+          france_connect: FranceConnect
+        metrics:
+          success: Succès
+          not_found: Non trouvés
+          errors: Erreurs fournisseur
+        captions:
+          per_modality: Appels par modalité d'appel
+          per_endpoint: Appels par endpoint et modalité d'appel
+        charts:
+          share_per_modality: Répartition des appels par modalité d'appel (succès, non trouvé, erreur fournisseur), en %
+      modalities_table:
+        endpoint: Endpoint
+        modality: Modalité d'appel
+        calls: Appels
       section_duration:
         title: Temps moyens
         description: Inclut uniquement les appels en succès et non-trouvés.
