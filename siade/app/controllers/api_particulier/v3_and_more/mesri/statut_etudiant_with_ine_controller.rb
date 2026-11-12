@@ -5,10 +5,6 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithINEController < APIPar
 
   private
 
-  def attestation_proof_enabled?
-    !Rails.env.production?
-  end
-
   def api_params
     { ine: params[:ine] }
   end
