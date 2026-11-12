@@ -340,7 +340,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def expand_routes(routes)
-    routes.flat_map { |r| filter.controllers_with_legacy.fetch(r, [r]) }.uniq
+    routes.flat_map { |r| filter.controllers_by_endpoint.fetch(r, [r]) }.uniq
   end
 
   def weighted_duration_sum_sql
@@ -359,7 +359,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def provider_controllers
-    @provider_controllers ||= filter.controllers_with_legacy.values.flatten.uniq
+    @provider_controllers ||= filter.controllers_by_endpoint.values.flatten.uniq
   end
 
   def date_trunc_sql
@@ -390,7 +390,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def build_endpoint_titles
-    filter.controllers_with_legacy.each_with_object({}) do |(controller, all_controllers), map|
+    filter.controllers_by_endpoint.each_with_object({}) do |(controller, all_controllers), map|
       title = filter.provider_endpoints.find { |e| e.controller == controller }&.title || controller
       all_controllers.each { |c| map[c] ||= title }
     end
