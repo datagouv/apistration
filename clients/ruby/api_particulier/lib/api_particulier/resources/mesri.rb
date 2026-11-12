@@ -27,7 +27,7 @@ module ApiParticulier
       # [Identité] Statut étudiant
       # Logical endpoint: /mesri/statut_etudiant/identite
       # Versions available: [3] — default: 3
-      def statut_etudiant_identite(version: nil, recipient: nil, delegation_id: nil, nom_naissance:, prenoms:, annee_date_naissance:, mois_date_naissance:, jour_date_naissance:, sexe_etat_civil:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil)
+      def statut_etudiant_identite(version: nil, recipient: nil, delegation_id: nil, nom_naissance:, prenoms:, annee_date_naissance:, mois_date_naissance:, jour_date_naissance:, sexe_etat_civil:, code_cog_insee_commune_naissance: nil, nom_commune_naissance: nil, code_cog_insee_departement_naissance: nil, generate_proof: nil)
         path =
           case version || 3
           when 3
@@ -35,13 +35,13 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /mesri/statut_etudiant/identite; supported: [3]"
           end
-        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "nomNaissance" => nom_naissance, "prenoms" => prenoms, "anneeDateNaissance" => annee_date_naissance, "moisDateNaissance" => mois_date_naissance, "jourDateNaissance" => jour_date_naissance, "sexeEtatCivil" => sexe_etat_civil, "codeCogInseeCommuneNaissance" => code_cog_insee_commune_naissance, "nomCommuneNaissance" => nom_commune_naissance, "codeCogInseeDepartementNaissance" => code_cog_insee_departement_naissance }.compact)
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "nomNaissance" => nom_naissance, "prenoms" => prenoms, "anneeDateNaissance" => annee_date_naissance, "moisDateNaissance" => mois_date_naissance, "jourDateNaissance" => jour_date_naissance, "sexeEtatCivil" => sexe_etat_civil, "codeCogInseeCommuneNaissance" => code_cog_insee_commune_naissance, "nomCommuneNaissance" => nom_commune_naissance, "codeCogInseeDepartementNaissance" => code_cog_insee_departement_naissance }.compact, headers: { "X-Generate-Proof" => generate_proof }.compact)
       end
 
       # [INE] Statut étudiant
       # Logical endpoint: /mesri/statut_etudiant/ine
       # Versions available: [3] — default: 3
-      def ine(version: nil, recipient: nil, delegation_id: nil, ine:)
+      def ine(version: nil, recipient: nil, delegation_id: nil, ine:, generate_proof: nil)
         path =
           case version || 3
           when 3
@@ -49,7 +49,7 @@ module ApiParticulier
           else
             raise ArgumentError, "version #{version.inspect} not available for /mesri/statut_etudiant/ine; supported: [3]"
           end
-        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "ine" => ine }.compact)
+        @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "ine" => ine }.compact, headers: { "X-Generate-Proof" => generate_proof }.compact)
       end
     end
   end

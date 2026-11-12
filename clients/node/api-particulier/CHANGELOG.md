@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0
+
+### Added
+- Statut étudiant (MESRI): `generate_proof` on
+  `mesri.statut_etudiant_identite` and `mesri.ine` — the
+  `X-Generate-Proof` header, which adds the attestation proof of the
+  delivered student status to the response (`meta.verification_url`,
+  `meta.verification_code` and, in `pdf` mode, `links.attestation_pdf`), as
+  the EAJE family contribution endpoint already does.
+
 ## 0.6.0
 
 ### Changed
