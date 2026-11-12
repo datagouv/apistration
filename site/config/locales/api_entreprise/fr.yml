@@ -96,10 +96,6 @@ fr:
               - open data
           effectifs_urssaf:
             label: GIP-MDS || API Effectifs unité légale et établissement
-          conventions_collectives:
-            label: FabNum des ministères sociaux || API Conventions Collectives
-            tags:
-              - open data
           eori_douanes:
             label: Douanes || API Immatriculation EORI
             tags:

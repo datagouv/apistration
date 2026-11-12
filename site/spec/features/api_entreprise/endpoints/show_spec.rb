@@ -111,11 +111,11 @@ RSpec.describe 'Endpoints show', app: :api_entreprise do
     end
 
     context 'with an endpoint whose provider has no specific error' do
-      let(:uid) { 'fabrique_numerique_ministeres_sociaux/conventions_collectives' }
+      let(:uid) { 'ademe/certifications_rge' }
 
       it 'still lists the errors common to every endpoint' do
         expect(page).to have_css('#erreurs')
-        expect(page).to have_text('14003')
+        expect(page).to have_text('19003')
       end
     end
   end
