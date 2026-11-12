@@ -331,6 +331,12 @@ RSpec.describe Provider::DashboardQuery do
       create(:access_log, controller: legacy_qf, status: '200', api_version: 'v2', cached: false, duration: '200')
     end
 
+    it 'counts a fiche and its legacy version as a single endpoint' do
+      narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: [current_qf])
+
+      expect(described_class.new(provider, narrow).multiple_endpoints?).to be false
+    end
+
     it 'includes v2 calls when filtering on the v3 controller' do
       narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: [current_qf])
       expect(described_class.new(provider, narrow).total_calls).to eq(2)

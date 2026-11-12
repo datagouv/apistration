@@ -109,7 +109,7 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
   end
 
   def multiple_endpoints?
-    requested_controllers.nil? || requested_controllers.size > 1
+    requested_controllers.nil? || requested_controllers.map { |controller| endpoint_title(controller) }.uniq.many?
   end
 
   def consumers_cumulative_evolution
