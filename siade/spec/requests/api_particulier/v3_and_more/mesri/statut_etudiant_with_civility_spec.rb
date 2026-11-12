@@ -30,6 +30,12 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
         api: 'statut_etudiant'
       )
 
+      parameter name: 'X-Generate-Proof',
+        in: :header,
+        required: false,
+        schema: { type: :string, enum: %w[proof-only pdf] },
+        description: "Demande une preuve d'attestation : `proof-only` ajoute `meta.verification_url` et `meta.verification_code` ; `pdf` ajoute en plus `links.attestation_pdf` (téléchargement sans authentification, expiration dans `meta.attestation_pdf_url_expires_in`, en secondes). Le PDF est l'attestation de statut étudiant, portant un QR code vers la page publique de vérification."
+
       let(:nomNaissance) { 'Dupont' }
       let(:'prenoms[]') { %w[Jean] }
       let(:anneeDateNaissance) { '2000' }
@@ -39,6 +45,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
       let(:sexeEtatCivil) { 'm' }
       let(:codeCogInseeDepartementNaissance) { nil }
       let(:nomCommuneNaissance) { nil }
+      let(:'X-Generate-Proof') { nil }
 
       unauthorized_request
 
@@ -60,6 +67,28 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
             schema build_rswag_response(
               attributes: SwaggerData.get('mesri.commons.attributes')
             )
+
+            run_test!
+
+            context 'with X-Generate-Proof: pdf' do
+              let(:'X-Generate-Proof') { 'pdf' }
+
+              run_test! do |response|
+                json = JSON.parse(response.body)
+
+                expect(json['meta'].keys)
+                  .to contain_exactly('verification_url', 'verification_code', 'attestation_pdf_url_expires_in')
+                expect(json['links'].keys).to contain_exactly('attestation_pdf')
+              end
+            end
+          end
+
+          response '400', "Valeur d'en-tête X-Generate-Proof inconnue" do
+            let(:'X-Generate-Proof') { 'banana' }
+
+            build_rswag_example(BadRequestError.new)
+
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end
