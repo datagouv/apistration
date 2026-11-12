@@ -80,6 +80,10 @@ fr:
             label: Djepva || API Données association
           fondations_mi_siaf:
             label: SIAF || API Données fondations
+          fondations_mi_siaf_beneficiaires_effectifs:
+            label: SIAF || API Données fondations - bénéficiaires effectifs
+          fondations_mi_siaf_controle:
+            label: SIAF || API Données fondations - données de contrôle
           associations_mi_siaf:
             label: SIAF || API Données associations
           associations_djepva:
