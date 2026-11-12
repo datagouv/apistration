@@ -462,7 +462,7 @@ client.dss.allocation_adulte_handicape_identite(prenoms: ['Jean', 'Paul'], …)
 ### 9.5 Request-header parameters
 
 Operations may declare `in: header` parameters (e.g. `X-Generate-Proof` on the
-EAJE identity endpoint). Generated methods MUST expose each one as an optional
+EAJE and statut étudiant endpoints). Generated methods MUST expose each one as an optional
 kwarg named after the header — lowercased, dashes to underscores, leading `x_`
 stripped (`X-Generate-Proof` → `generate_proof`) — and send the value verbatim
 as a request header when provided. `Cache-Control` is transport-level and MUST
