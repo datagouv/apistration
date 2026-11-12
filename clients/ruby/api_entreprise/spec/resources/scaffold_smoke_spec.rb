@@ -48,7 +48,7 @@ RSpec.describe 'Generated resources smoke test' do
 
   providers = %i[
     ademe banque_de_france carif_oref cibtp cma_france cnetp data_subvention dgfip
-    douanes european_commission fabrique_numerique_ministeres_sociaux fntp gip_mds
+    douanes european_commission fntp gip_mds
     infogreffe inpi insee ministere_interieur msa opqibi probtp qualibat qualifelec
     token urssaf
   ]

@@ -46,7 +46,7 @@ describe('scaffold smoke: every resource method callable with valid params', () 
   const providers = [
     'ademe', 'banque_de_france', 'carif_oref', 'cibtp', 'cma_france',
     'cnetp', 'data_subvention', 'dgfip', 'djepva', 'douanes',
-    'european_commission', 'fabrique_numerique_ministeres_sociaux', 'fntp',
+    'european_commission', 'fntp',
     'gip_mds', 'infogreffe', 'inpi', 'insee', 'ministere_interieur',
     'msa', 'opqibi', 'probtp', 'qualibat', 'qualifelec', 'token', 'urssaf',
   ];

@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- **Breaking**: `fabrique_numerique_ministeres_sociaux.conventions_collectives(siret)`
+  and the `fabrique_numerique_ministeres_sociaux` resource. The endpoint
+  `/v3/fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives`,
+  deprecated since October 2024, is removed from API Entreprise: the
+  provider's API no longer exists.
+
 ## [0.6.0] - 2026-10-13
 
 ### Added
