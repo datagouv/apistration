@@ -25,7 +25,6 @@ staging:
     - 'api_entreprise_v4_mi_unites_legales'
     - 'api_entreprise_v4_mi_unites_legales_open_data'
     - 'api_entreprise_v3_european_commission_vies'
-    - 'api_entreprise_v3_fabrique_numerique_ministeres_sociaux_conventions_collectives'
     - 'api_entreprise_v3_fntp_carte_professionnelle_travaux_publics'
     - 'api_entreprise_v3_infogreffe_extraits_rcs'
     - 'api_entreprise_v3_infogreffe_mandataires_sociaux'

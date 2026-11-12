@@ -59,7 +59,6 @@ class ErrorsBackend
       '10' => 'MSA',
       '11' => 'OPQIBI',
       '12' => 'FNTP',
-      '14' => 'Fabrique numérique des Ministères Sociaux',
       '15' => 'CMA France',
       '16' => 'DGDDI',
       '17' => 'Banque de France',

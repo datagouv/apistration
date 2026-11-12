@@ -40,7 +40,7 @@ Liste non-exhaustive (la liste se trouve dans [`ErrorsBackend`](app/services/err
 - `10` = MSA
 - `11` = OPQIBI
 - `12` = FNTP
-- `14` = Fabrique numérique des Ministères Sociaux
+- `14` = retiré (Fabrique numérique des Ministères Sociaux), ne pas réattribuer
 - `15` = CMA France
 - `16` = DGDDI
 - `17` = Banque de France

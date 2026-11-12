@@ -16,7 +16,6 @@ def valid_siret(sample_type = nil)
     insee_etablissement: '55203253400646',
     insee_etablissement_legacy: '41816609600069',
     insee_etablissement_with_enseigne: '52909916000028',
-    conventions_collectives: '82161143100015',
     dgfip: '78951073200017',
     exercice: '55203253400646',
     recipient: '91978102100010',
@@ -61,7 +60,6 @@ def not_found_siret(sample_type = nil)
     insee_entreprise: '17830254300000',
     insee_etablissement_legacy: '41816609600077', # Valid format built from siren octo and compatible yet inexistent nic
     extrait_rcs: '43226899300032',
-    conventions_collectives: '82525962500028',
     inpi: '43226899300032',
     rnm_cma: '87786242500015'
   }

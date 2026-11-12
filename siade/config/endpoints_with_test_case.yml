@@ -128,10 +128,6 @@
   api: 'entreprise'
   path: '/v3/probtp/etablissements/45309127400036/conformite_cotisations_retraite'
 
-- name: 'FNMS Conventions collectives'
-  api: 'entreprise'
-  path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/89337342300019/conventions_collectives'
-
 - name: 'RNM Entreprises'
   api: 'entreprise'
   path: '/v3/cma_france/rnm/unites_legales/301123626'

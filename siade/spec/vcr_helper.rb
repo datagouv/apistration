@@ -96,7 +96,6 @@ VCR.configure do |c|
   c.filter_sensitive_data('<INPI_RNE_URL>') { Siade.credentials[:inpi_rne_url].to_s }
 
   c.filter_sensitive_data('<EUROPEAN_COMMISSION_VIES_URL>') { Siade.credentials[:european_commission_vies_url].to_s }
-  c.filter_sensitive_data('<FABRIQUE_NUMERIQUE_CONVENTIONS_COLLECTIVES_URL>') { Siade.credentials[:fabrique_numerique_conventions_collectives_url].to_s }
   c.filter_sensitive_data('<MSA_CONFORMITES_COTISATIONS_URL>') { Siade.credentials[:msa_conformites_cotisations_url].to_s }
 
   c.register_request_matcher :body_sanitized do |r_1, r_2|

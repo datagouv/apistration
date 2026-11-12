@@ -671,16 +671,6 @@ shared:
         params:
           siren: '552032534'
           year: '2024'
-    fabrique_numerique_ministeres_sociaux/conventions_collectives:
-      kind: 'retriever'
-      cache: <%= 1.minute %>
-      provider: 'Fabrique Numérique des Ministères Sociaux'
-      status_page:
-        name: "Fabrique Numérique des Ministères Sociaux - Conventions collectives"
-      driver_params:
-        retriever: 'FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives'
-        params:
-          siret: '89337342300019'
     douanes/immatriculations_eori:
       kind: 'retriever'
       cache: <%= 5.minutes %>
