@@ -1,5 +1,7 @@
 # CLAUDE.md - SIADE Project Guide
 
+Before designing or changing an endpoint, read the strict design rules in `docs/development/regles_de_conception.md`.
+
 ## Build/Test/Lint Commands
 
 - Install dependencies: `./bin/install.sh`

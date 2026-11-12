@@ -1,5 +1,8 @@
 # Intégration d'une nouvelle API
 
+Avant de concevoir l'endpoint, lire les
+[règles de conception](regles_de_conception.md).
+
 ## Génération des fichiers
 
 Afin de faciliter la création d'une nouvelle API dans la philosophie 'v3'
