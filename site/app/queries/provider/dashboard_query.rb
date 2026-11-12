@@ -266,6 +266,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def all_provider? = provider.uid == 'all'
 
+  UNTITLED_ENDPOINT_SQL = Arel.sql("regexp_replace(api, '^.*/', '')") # rubocop:disable Lint/UselessConstantScoping
+
   ENDPOINT_METRIC_COLUMNS = { # rubocop:disable Lint/UselessConstantScoping
     total: 'appels_totaux',
     unique: 'appels_uniques',
@@ -287,14 +289,12 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     scoped.group(:api).pluck(:api, *sql_aggregates)
   end
 
-  def per_endpoint_time_series(aggregate_sql) # rubocop:disable Metrics/AbcSize
+  def per_endpoint_time_series(aggregate_sql)
     scoped
-      .group(:api, date_trunc_sql)
+      .group(endpoint_title_sql, date_trunc_sql)
       .order(Arel.sql(date_trunc_sql))
-      .pluck(:api, Arel.sql(date_trunc_sql), aggregate_sql)
-      .map { |row| { endpoint: endpoint_title(row[0]), bucket: row[1], value: row[2].to_i } }
-      .group_by { |r| [r[:endpoint], r[:bucket]] }
-      .map { |(endpoint, bucket), rows| { endpoint:, bucket:, value: rows.sum { |r| r[:value] } } }
+      .pluck(endpoint_title_sql, Arel.sql(date_trunc_sql), aggregate_sql)
+      .map { |endpoint, bucket, value| { endpoint:, bucket:, value: value.to_i } }
   end
 
   def build_series(rows)
@@ -387,6 +387,16 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def endpoint_titles
     @endpoint_titles ||= build_endpoint_titles
+  end
+
+  def endpoint_title_sql
+    @endpoint_title_sql ||= endpoint_titles.empty? ? UNTITLED_ENDPOINT_SQL : titled_endpoint_sql
+  end
+
+  def titled_endpoint_sql
+    endpoint_titles
+      .reduce(Arel::Nodes::Case.new(ConsumptionSummary.arel_table[:api])) { |titles, (controller, title)| titles.when(controller).then(title) }
+      .else(UNTITLED_ENDPOINT_SQL)
   end
 
   def build_endpoint_titles

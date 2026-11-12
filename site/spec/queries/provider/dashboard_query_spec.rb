@@ -331,6 +331,16 @@ RSpec.describe Provider::DashboardQuery do
       create(:access_log, controller: legacy_qf, status: '200', api_version: 'v2', cached: false, duration: '200')
     end
 
+    it 'counts once per endpoint a consumer calling both versions of a fiche' do
+      token = create(:token)
+      create(:access_log, controller: current_qf, status: '200', api_version: 'v3', cached: false, duration: '100', token:)
+      create(:access_log, controller: legacy_qf, status: '200', api_version: 'v2', cached: false, duration: '100', token:)
+
+      rows = query.consumers_evolution_per_endpoint.select { |r| r[:endpoint].include?('Quotient familial') }
+
+      expect(rows.sum { |r| r[:value] }).to eq(3)
+    end
+
     it 'counts a fiche and its legacy version as a single endpoint' do
       narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: [current_qf])
 
