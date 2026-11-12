@@ -151,7 +151,13 @@ class AbstractEndpoint
   end
 
   def modality_controllers
-    @modality_controllers ||= RouteScopesStore.controllers.select { |known| known.start_with?(modality_controllers_prefix) }
+    modalities_by_controller.keys
+  end
+
+  def modalities_by_controller
+    @modalities_by_controller ||= RouteScopesStore.controllers
+      .select { |known| known.start_with?(modality_controllers_prefix) }
+      .index_with { |known| known.delete_prefix(modality_controllers_prefix) }
   end
 
   def redoc_anchor

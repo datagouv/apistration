@@ -1,0 +1,28 @@
+<%# locals: (per_modality:, per_endpoint:) -%>
+<% metrics = %i[success not_found errors] %>
+<h3 class="fr-mt-4w"><%= t('.title') %></h3>
+<p><%= t('.description') %></p>
+
+<%= render 'provider/dashboard/modalities_table',
+  caption: t('.captions.per_modality'),
+  rows: per_modality,
+  metrics: metrics %>
+
+<%= render 'shared/dsfr_chart/bar',
+  title: t('.charts.share_per_modality'),
+  categories: per_modality.map { |row| dashboard_modality_label(row[:modality]) },
+  series: metrics.map { |k|
+    { label: t("provider.dashboard.modalities.metrics.#{k}"),
+      values: per_modality.map { |row| dashboard_share(row[k], row[:total]) } }
+  },
+  unit: '%',
+  stacked: true,
+  palette: 'divergentAscending' %>
+
+<% if per_endpoint.uniq { |row| row[:endpoint] }.many? %>
+  <%= render 'provider/dashboard/modalities_table',
+    caption: t('.captions.per_endpoint'),
+    rows: per_endpoint,
+    metrics: metrics,
+    with_endpoint: true %>
+<% end %>

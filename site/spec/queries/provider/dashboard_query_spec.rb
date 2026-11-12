@@ -426,6 +426,76 @@ RSpec.describe Provider::DashboardQuery do
     it 'counts the endpoint once, whatever its number of modalities' do
       expect(query.multiple_endpoints?).to be false
     end
+
+    it 'compares the modalities, identity first, on the calls that reached the provider' do
+      create(:access_log, controller: with_ine, status: '422', api_version: 'v3', cached: false, duration: '100')
+
+      expect(query.success_per_modality).to match([
+        include(modality: 'civility', total: 1, success: 1, not_found: 0, errors: 0),
+        include(modality: 'ine', total: 2, success: 1, not_found: 1, errors: 0),
+        include(modality: 'france_connect', total: 1, success: 0, not_found: 0, errors: 1)
+      ])
+    end
+
+    it 'leaves the API v2 calls, which carry no modality, out of the comparison' do
+      create(:access_log, controller: 'api_particulier/v2/cnous/student_scholarship', status: '200', api_version: 'v2', cached: false, duration: '100')
+
+      expect(query.total_calls).to eq(5)
+      expect(query.success_per_modality.sum { |row| row[:total] }).to eq(4)
+    end
+  end
+
+  describe 'comparison of modalities over several endpoints' do
+    let(:provider) { APIParticulier::Provider.find('cnav') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+    let(:quotient_familial) { 'api_particulier/v3_and_more/cnav/quotient_familial' }
+    let(:prime_activite) { 'api_particulier/v3_and_more/cnav/prime_activite' }
+
+    before do
+      create(:access_log, controller: "#{quotient_familial}_with_civility", status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: "#{quotient_familial}_with_france_connect", status: '404', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: "#{prime_activite}_with_civility", status: '404', api_version: 'v3', cached: false, duration: '100')
+    end
+
+    it 'sums each modality over the endpoints' do
+      expect(query.success_per_modality).to match([
+        include(modality: 'civility', total: 2, success: 1, not_found: 1),
+        include(modality: 'france_connect', total: 1, success: 0, not_found: 1)
+      ])
+    end
+
+    it 'details each modality of each endpoint, even without any call' do
+      rows = query.success_per_endpoint_and_modality.map { |row| row.values_at(:endpoint, :modality, :total) }
+
+      expect(rows).to include(
+        ['Quotient familial CAF & MSA', 'civility', 1],
+        ['Quotient familial CAF & MSA', 'france_connect', 1],
+        ["Statut prime d'activité", 'civility', 1],
+        ["Statut prime d'activité", 'france_connect', 0]
+      )
+      expect(rows).to eq(rows.sort_by { |endpoint, modality, _| [endpoint, %w[civility france_connect].index(modality)] })
+    end
+
+    it 'keeps to the endpoints selected in the filter' do
+      narrow = Provider::DashboardFilter.new(provider, 'particulier', routes: ["#{prime_activite}_with_civility"])
+
+      expect(described_class.new(provider, narrow).success_per_endpoint_and_modality.map { |row| row.values_at(:endpoint, :modality, :total) }).to eq([
+        ["Statut prime d'activité", 'civility', 1],
+        ["Statut prime d'activité", 'france_connect', 0]
+      ])
+    end
+  end
+
+  describe 'provider whose endpoints have a single modality' do
+    let(:provider) { APIParticulier::Provider.find('education_nationale') }
+    let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }
+
+    it 'has no modality to compare' do
+      create(:access_log, controller: 'api_particulier/v3_and_more/men/scolarites_with_civility', status: '200', api_version: 'v3', cached: false, duration: '100')
+
+      expect(query.total_calls).to eq(1)
+      expect(query.success_per_modality).to be_empty
+    end
   end
 
   describe 'excluded controllers' do

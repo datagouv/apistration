@@ -55,6 +55,17 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     )
   end
 
+  def success_per_modality
+    @success_per_modality ||= merge_rows(success_per_endpoint_and_modality, key: :modality, sum_keys: %i[success not_found errors total])
+      .sort_by { |row| modality_rank(row) }
+  end
+
+  def success_per_endpoint_and_modality
+    @success_per_endpoint_and_modality ||= filter.modalities_by_controller.slice(*requested_controllers)
+      .map { |controller, modality| success_of(controller).merge(endpoint: endpoint_title(controller), modality:) }
+      .sort_by { |row| [row[:endpoint], modality_rank(row)] }
+  end
+
   # card 563
   def avg_duration
     @avg_duration ||= weighted_avg(scoped.pick(weighted_duration_sum_sql, weighted_duration_weight_sql))
@@ -263,6 +274,8 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
 
   def all_provider? = provider.uid == 'all'
 
+  MODALITIES = %w[civility ine france_connect].freeze # rubocop:disable Lint/UselessConstantScoping
+
   UNTITLED_ENDPOINT_SQL = Arel.sql("regexp_replace(api, '^.*/', '')") # rubocop:disable Lint/UselessConstantScoping
 
   ENDPOINT_METRIC_COLUMNS = { # rubocop:disable Lint/UselessConstantScoping
@@ -299,6 +312,14 @@ class Provider::DashboardQuery # rubocop:disable Metrics/ClassLength
     success, not_found, errors = counts.map(&:to_i)
 
     { success:, not_found:, errors:, total: success + not_found + errors }
+  end
+
+  def success_of(controller)
+    success_per_controller.find { |row| row[:controller] == controller } || success_counts(0, 0, 0)
+  end
+
+  def modality_rank(row)
+    MODALITIES.index(row[:modality]) || MODALITIES.size
   end
 
   def per_endpoint_time_series(aggregate_sql)

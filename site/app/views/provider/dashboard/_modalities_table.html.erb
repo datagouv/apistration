@@ -1,0 +1,38 @@
+<%# locals: (caption:, rows:, metrics:, with_endpoint: false) -%>
+<div class="fr-table fr-table--bordered">
+  <div class="fr-table__wrapper">
+    <div class="fr-table__container">
+      <div class="fr-table__content">
+        <table>
+          <caption><%= caption %></caption>
+          <thead>
+            <tr>
+              <% if with_endpoint %>
+                <th scope="col"><%= t('.endpoint') %></th>
+              <% end %>
+              <th scope="col"><%= t('.modality') %></th>
+              <th scope="col" class="fr-cell--right"><%= t('.calls') %></th>
+              <% metrics.each do |k| %>
+                <th scope="col" class="fr-cell--right"><%= t("provider.dashboard.modalities.metrics.#{k}") %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% rows.each do |row| %>
+              <tr>
+                <% if with_endpoint %>
+                  <th scope="row"><%= row[:endpoint] %></th>
+                <% end %>
+                <th scope="row"><%= dashboard_modality_label(row[:modality]) %></th>
+                <td class="fr-cell--right"><%= number_with_delimiter(row[:total]) %></td>
+                <% metrics.each do |k| %>
+                  <td class="fr-cell--right"><%= number_to_percentage(dashboard_share(row[k], row[:total]), precision: 2) if row[:total].positive? %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

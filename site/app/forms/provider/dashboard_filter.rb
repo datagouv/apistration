@@ -86,6 +86,13 @@ class Provider::DashboardFilter
     end
   end
 
+  def modalities_by_controller
+    @modalities_by_controller ||= provider_endpoints
+      .map(&:modalities_by_controller)
+      .select(&:many?)
+      .reduce({}, :merge)
+  end
+
   def provider_endpoints
     @provider_endpoints ||= begin
       all = endpoint_klass.all

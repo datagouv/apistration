@@ -43,5 +43,11 @@
       },
       stacked: true,
       palette: 'divergentAscending' %>
+
+    <% if @query.success_per_modality.any? %>
+      <%= render 'provider/dashboard/modalities',
+        per_modality: @query.success_per_modality,
+        per_endpoint: @query.success_per_endpoint_and_modality %>
+    <% end %>
   </section>
 <% end %>
