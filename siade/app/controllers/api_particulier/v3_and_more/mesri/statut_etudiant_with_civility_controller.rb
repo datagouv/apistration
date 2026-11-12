@@ -6,6 +6,10 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
 
   private
 
+  def attestation_proof_enabled?
+    !Rails.env.production?
+  end
+
   def api_params
     civility_parameters
   end

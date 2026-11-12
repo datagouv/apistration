@@ -77,6 +77,12 @@ module APIParticulier::GeneratesAttestationProof
   end
 
   def generate_proof_mode
+    return unless attestation_proof_enabled?
+
     request.headers['X-Generate-Proof'].presence
+  end
+
+  def attestation_proof_enabled?
+    true
   end
 end
