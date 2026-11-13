@@ -30,7 +30,16 @@ fiche:
         **Ne sont pas couverts par cette API :**
         - ❌ les données des étudiants ayant des bourses étrangères.
       updating_rules_description: |+
-        Les données sont **mises à jour tout au long de l'année**. Une bascule d'année s'effectue à la fin de l'année scolaire, les données concernant la rentrée suivante sont alors disponibles (et remplacent l'année en cours) à partir du mois de : 
+        Le rythme de mise à jour des données dépend du type de bourse :
+        - **Bourses nationales** : les données sont mises à jour **une fois par semaine, le samedi**. Un étudiant dont la bourse vient d'être attribuée peut donc ne pas apparaître immédiatement dans l'API ;
+        - **Bourses régionales** : seules les données de la région **Île-de-France sont mises à jour en temps réel**. Pour les autres régions, les données sont transmises par fichier et **les délais de mise à jour varient**.
+
+        > **⚠️ Un étudiant absent de l'API n'est pas forcément non boursier**
+        > Si un étudiant boursier d'une région autre que l'Île-de-France présente un justificatif de bourse, il est préférable de **se fier à ce justificatif plutôt qu'à la réponse de l'API**.
+        >
+        > Une évolution est en cours pour une mise à jour en temps réel des données des bourses nationales et des bourses régionales.
+
+        Une bascule d'année s'effectue à la fin de l'année scolaire, les données concernant la rentrée suivante sont alors disponibles (et remplacent l'année en cours) à partir du mois de :
         - mai pour les bourses régionales ;
         - juillet pour les bourses nationales. La base contient environ 85% des boursiers en octobre et est considérée comme complète en fin novembre. 
     parameters_details:
