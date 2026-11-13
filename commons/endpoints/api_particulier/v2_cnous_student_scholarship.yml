@@ -19,7 +19,13 @@ fiche:
       geographical_scope_description:  |+
         **L'API couvre :**
         - ✅ **pour les bourses d'État** : la France hexagonale, la Corse, les DROM (sauf Mayotte), la Polynésie française et la Nouvelle-Calédonie ; 
-        - ✅ **pour les bourses des filières sanitaires et sociales** : les régions Auvergne-Rhône-Alpe, Bourgogne-Franche-Comté, Bretagne, Grand Est, Ile-de-France, Normandie et Occitanie. _D'autres régions devraient être couvertes à l'avenir._
+        - ✅ **pour les bourses des filières sanitaires et sociales** : les régions adhérentes, selon les données qu'elles ont transmises pour chaque année scolaire.
+
+        **Bourses régionales 2026-2027 : régions ayant transmis leurs données**
+        - ✅ Auvergne-Rhône-Alpes, Bourgogne-Franche-Comté, Bretagne, Hauts-de-France, Île-de-France, Nouvelle-Aquitaine, Occitanie et Provence-Alpes-Côte d'Azur ;
+        - ⏳ La Réunion : transmission prévue courant novembre 2026 ;
+        - ❌ Corse, Grand Est et Pays de la Loire : aucune donnée transmise à ce jour ;
+        - ❓ Normandie : couverte les années précédentes, absente de l'état des lieux 2026-2027 transmis par le Cnous, couverture à confirmer.
 
         **Ne sont pas couverts par cette API :**
         - ❌ les données des étudiants ayant des bourses étrangères.
