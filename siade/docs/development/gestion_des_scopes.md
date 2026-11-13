@@ -18,7 +18,10 @@ endpoint_path_without_controller:
 ```
 
 Pour API Particulier, les scopes sont également utilisés dans le
-serializer pour granuler la distribution de la donnée.
+serializer pour granuler la distribution de la donnée : toute clé racine
+est derrière un scope, et une nouvelle clé derrière un nouveau scope
+impose une nouvelle version de l'endpoint (règles 1 et 2 de
+[`regles_de_conception.md`](regles_de_conception.md)).
 
 ### FranceConnect
 
