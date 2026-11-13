@@ -10,10 +10,11 @@ class APIParticulier::AttestationProofBuilder
     ['date_naissance', 'Date de naissance', ->(date) { "#{date[5, 2]}/#{date[0, 4]}" }]
   ].freeze
 
-  def initialize(body, recipient:, habilitation:)
+  def initialize(body, recipient:, habilitation:, source: nil)
     @body = body
     @recipient = recipient
     @habilitation = habilitation
+    @source = source
   end
 
   def verification_url
@@ -47,7 +48,7 @@ class APIParticulier::AttestationProofBuilder
   end
 
   def source
-    raise NotImplementedError
+    @source || ORIGINE_NON_COMMUNIQUEE
   end
 
   def verification_sections

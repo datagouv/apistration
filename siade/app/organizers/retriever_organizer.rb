@@ -16,6 +16,10 @@ class RetrieverOrganizer < ApplicationOrganizer
         context.cacheable = false
         provider_in_maintenance! if in_maintenance?
       end
+
+      after do
+        context.data_source = data_source
+      end
     end
   end
 
@@ -35,6 +39,10 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   def provider_name
     fail NotImplementedError
+  end
+
+  def data_source
+    provider_name
   end
 
   private

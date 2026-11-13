@@ -25,7 +25,7 @@ module APIParticulier::GeneratesAttestationProof
     body = super.deep_stringify_keys
     return attest_error(body, organizer.mocked_data[:declared_error]&.attestation) if mocked_error?
 
-    with_proof(body, serializer_module::AttestationProofBuilder.new(body, origin: organizer.origin, **proof_recipient))
+    with_proof(body, serializer_module::AttestationProofBuilder.new(body, source: organizer.data_source, **proof_recipient))
   end
 
   def serialize_errors(organizer)
@@ -77,6 +77,12 @@ module APIParticulier::GeneratesAttestationProof
   end
 
   def generate_proof_mode
+    return unless attestation_proof_enabled?
+
     request.headers['X-Generate-Proof'].presence
+  end
+
+  def attestation_proof_enabled?
+    true
   end
 end

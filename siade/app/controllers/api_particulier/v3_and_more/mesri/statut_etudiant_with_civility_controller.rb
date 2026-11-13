@@ -1,12 +1,21 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
+  include APIParticulier::GeneratesAttestationProof
 
   nomenclature organizers: { 3 => ::MESRI::StudentStatus::WithCivility }
 
   private
 
-  def organizer_params
+  def attestation_proof_enabled?
+    !Rails.env.production?
+  end
+
+  def api_params
     civility_parameters
+  end
+
+  def organizer_params
+    api_params
       .merge({ token_id: current_user.token_id })
   end
 
