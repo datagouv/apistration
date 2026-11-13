@@ -1,28 +1,39 @@
 RSpec.describe ANTS::ExtraitImmatriculationVehicule::MakeRequest, type: :make_request do
   describe '.call' do
-    subject { described_class.call(params:) }
+    subject { described_class.call(params:, token:) }
 
-    let(:params) { { immatriculation:, request_id: } }
-    let(:body) do
-      ANTSDossierImmatriculationSoapBuilder.new(
-        immatriculation:,
-        ants_request_id: "req_#{request_id}",
-        certificate:,
-        private_key:
-      ).render
+    let(:token) { 'test_token' }
+    let(:params) do
+      {
+        immatriculation: 'nm-257-nz',
+        nom_naissance: 'Dupont',
+        prenoms: ['Martin'],
+        request_id: 'req-123'
+      }
     end
+
     let!(:stubbed_request) do
-      stub_request(:post, Siade.credentials[:ants_siv_url]).with { |request|
-        request.body.include?('<ns1:num_immat>AA-123-AA</ns1:num_immat>') &&
-          request.body.include?('<saml:AttributeValue>ants_siv_code_concentrateur</saml:AttributeValue>') &&
-          request.body.include?('req_')
-      }.to_return(
-        status: 200,
-        body: '<soap:Envelope><soap:Body>Success</soap:Body></soap:Envelope>'
-      )
+      stub_request(:post, Siade.credentials[:ants_siv2_url])
+        .with(
+          headers: {
+            'Content-Type' => 'application/json',
+            'X-Http-Method-Override' => 'GET',
+            'Authorization' => 'Bearer test_token'
+          },
+          body: {
+            informations: {
+              numImmat: 'NM-257-NZ',
+              nomNaiss: 'Dupont',
+              prenom: 'Martin',
+              numeroDemande: 'req-123'
+            }
+          }
+        )
+        .to_return(
+          status: 200,
+          body: { code: 0, libelle: 'Succès', listeDossiers: [] }.to_json
+        )
     end
-    let(:immatriculation) { 'AA-123-AA' }
-    let(:request_id) { SecureRandom.uuid }
 
     it { is_expected.to be_a_success }
 
