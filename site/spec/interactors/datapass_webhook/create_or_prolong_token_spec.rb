@@ -96,6 +96,37 @@ RSpec.describe DatapassWebhook::CreateOrProlongToken, type: :interactor do
       end
     end
 
+    context 'when DataPass grants EAJE scopes without the dossier allocataire' do
+      let(:scopes) do
+        {
+          'cnav_participation_familiale_eaje_allocataires' => true,
+          'cnav_participation_familiale_eaje_enfants' => true
+        }
+      end
+
+      it 'grants the dossier allocataire to the token and its authorization request' do
+        subject
+
+        expect(Token.last.scopes).to include('cnav_participation_familiale_eaje_dossier_allocataire')
+        expect(authorization_request.reload.scopes).to include('cnav_participation_familiale_eaje_dossier_allocataire')
+      end
+    end
+
+    context 'when DataPass already grants the dossier allocataire' do
+      let(:scopes) do
+        {
+          'cnav_participation_familiale_eaje_allocataires' => true,
+          'cnav_participation_familiale_eaje_dossier_allocataire' => true
+        }
+      end
+
+      it 'keeps it once' do
+        subject
+
+        expect(Token.last.scopes.count('cnav_participation_familiale_eaje_dossier_allocataire')).to eq(1)
+      end
+    end
+
     context 'when token already exists' do
       let!(:token) { create(:token, authorization_request:, exp: Time.zone.local(2024, 1, 1), days_left_notification_sent: [30]) }
 
