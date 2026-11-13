@@ -56,6 +56,7 @@ fiche:
     data:
       description: |+
         **Cette API délivre** :
+        - **le dossier allocataire CAF** : matricule CAF et code de la CAF de rattachement du dossier. ⚠️ La MSA ne renvoie pas ces données : pour un allocataire MSA, les deux champs valent `null` ;
         - **la composition familiale** du particulier : identités de l'allocataire et de son conjoint, identités des enfants au sens des prestations familiales, [en savoir plus](#faq_entry_answer_2_api_particulier_endpoint_cnav_prestation_de_service_unique) ;
         - **l'adresse** du particulier au format de La Poste. ⚠️ Cette adresse est déclarative. Si l'usager a changé d'adresse et n'a pas actualisé son adresse auprès de la CAF ou de la MSA, l'information sera donc obsolète ;
         - **les différents paramètres de calcul de la participation familiale** : le nombre d'enfants à charge au sens des prestations familiales, le nombre d’ouverture au droit à l’allocation d'éducation de l'enfant handicapé (AEEH), la base ressource prestation de service unique (PSU) : montant et la date de calcul.
@@ -192,6 +193,10 @@ fiche:
           `meta.origin` et `meta.provider` coexistent car ils ne disent pas la même chose : `meta.provider` reste l'émetteur du code d'erreur dans la nomenclature des erreurs, qui ne désigne pas toujours l'organisme qui a répondu (un allocataire non référencé porte par exemple le fournisseur `CNAF & MSA` et l'origine `RNCPS`).
 
     historique: |+
+      **17/11/2026 — Matricule CAF et code organisme**
+
+      Ajout de l'objet `dossier_allocataire` (`matricule_caf`, `code_organisme_caf`) dans la réponse v3, sous le nouveau scope `cnav_participation_familiale_eaje_dossier_allocataire`, ajouté d'office aux jetons déjà habilités. Ces données ne sont renvoyées que pour les allocataires CAF : pour un allocataire MSA, les deux champs valent `null`.
+
       **13/10/2026 — Preuve d'une consultation sans résultat**
 
       Avec l'en-tête `X-Generate-Proof`, les réponses `404` portent elles aussi une preuve d'attestation : attestation de consultation sans résultat, ou dossier non éligible. Les erreurs `404` précisent désormais dans `meta.origin` l'organisme qui a répondu (RNCPS, CNAF ou MSA) : [en savoir plus](#origine-erreur-404). La source de l'attestation d'un dossier trouvé est désormais la caisse qui a répondu (CNAF ou MSA) et non plus toujours la CNAF. [En savoir plus](#attestation-pdf-verifiable).

@@ -25,6 +25,10 @@ status: 200
 payload: |-
   {
     "data": {
+      "dossier_allocataire": {
+        "matricule_caf": "1863617",
+        "code_organisme_caf": "061"
+      },
       "allocataires": [
         {
           "nom_naissance": "LEFEBVRE",

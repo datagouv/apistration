@@ -55,7 +55,7 @@ RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility
 
       too_many_requests(CNAV::ParticipationFamilialeEAJE)
 
-      let(:scopes) { %i[cnav_participation_familiale_eaje_allocataires cnav_participation_familiale_eaje_enfants cnav_participation_familiale_eaje_adresse cnav_participation_familiale_eaje_parametres_calcul] }
+      let(:scopes) { %i[cnav_participation_familiale_eaje_dossier_allocataire cnav_participation_familiale_eaje_allocataires cnav_participation_familiale_eaje_enfants cnav_participation_familiale_eaje_adresse cnav_participation_familiale_eaje_parametres_calcul] }
 
       before do
         stub_cnav_authenticate('participation_familiale_eaje')

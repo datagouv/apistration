@@ -14,6 +14,10 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildResource, type: :build_res
     it 'builds resource with all attributes' do
       expect(subject).to eq(
         {
+          dossier_allocataire: {
+            matricule_caf: '1863617',
+            code_organisme_caf: '061'
+          },
           allocataires: [
             {
               nom_naissance: 'DUPOND',
@@ -56,6 +60,14 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildResource, type: :build_res
     end
   end
 
+  context 'when matriculeCaf is an integer, as the CNAV interface document types it' do
+    let(:body) { read_payload_file('cnav/participation_familiale_eaje/make_request_valid.json').gsub('"matriculeCaf": "1863617"', '"matriculeCaf": 1863617') }
+
+    it 'renders matricule_caf as a string' do
+      expect(instance.bundled_data.data.to_h.dig(:dossier_allocataire, :matricule_caf)).to eq('1863617')
+    end
+  end
+
   context 'when annee is provided as a string' do
     let(:body) { read_payload_file('cnav/participation_familiale_eaje/make_request_valid.json').gsub('"annee": 2024', '"annee": "2024"') }
 
@@ -77,6 +89,10 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE::BuildResource, type: :build_res
       it 'builds resource with null cogNaissance values' do
         expect(subject).to eq(
           {
+            dossier_allocataire: {
+              matricule_caf: nil,
+              code_organisme_caf: nil
+            },
             allocataires: [
               {
                 nom_naissance: 'DUPOND',

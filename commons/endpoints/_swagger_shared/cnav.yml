@@ -7,6 +7,24 @@ cnav:
     tags:
       - Participation familiale EAJE
     attributes:
+      dossier_allocataire:
+        title: "Dossier allocataire CAF"
+        scope: cnav_participation_familiale_eaje_dossier_allocataire
+        type: object
+        description: "Identifiants du dossier de la famille à la CAF. Ces données ne sont renvoyées que pour les allocataires CAF : pour un allocataire MSA, l'objet est présent et ses deux champs valent `null`."
+        properties:
+          matricule_caf:
+            title: Matricule CAF
+            type: string
+            description: "Numéro d'allocataire du foyer à la CAF. `null` pour un allocataire MSA."
+            example: "1863617"
+            nullable: true
+          code_organisme_caf:
+            title: Code organisme CAF
+            type: string
+            description: "Code à 3 chiffres de la CAF de rattachement du dossier. `null` pour un allocataire MSA."
+            example: "061"
+            nullable: true
       allocataires:
         title: "Données d'identité de l'allocataire et du conjoint"
         scope: cnav_participation_familiale_eaje_allocataires

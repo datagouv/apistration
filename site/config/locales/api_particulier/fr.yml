@@ -306,6 +306,8 @@ fr:
             label: CNAF & MSA || API Revenu solidarite active || Revenu solidarite active majoration
           dsnj_statut_service_national:
             label: DSNJ || API Service national || Statut service national
+          cnav_participation_familiale_eaje_dossier_allocataire:
+            label: CNAV || API Participation familiale Eaje || Dossier allocataire CAF
           cnav_participation_familiale_eaje_allocataires:
             label: CNAV || API Participation familiale Eaje || Identités allocataires
           cnav_participation_familiale_eaje_enfants:

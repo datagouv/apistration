@@ -9,7 +9,7 @@ RSpec.describe 'API Particulier: CNAV: Participation familial EAJE with FranceCo
 
       cacheable_request
 
-      let(:scopes) { %i[cnav_participation_familiale_eaje_allocataires cnav_participation_familiale_eaje_enfants cnav_participation_familiale_eaje_adresse cnav_participation_familiale_eaje_parametres_calcul] }
+      let(:scopes) { %i[cnav_participation_familiale_eaje_dossier_allocataire cnav_participation_familiale_eaje_allocataires cnav_participation_familiale_eaje_enfants cnav_participation_familiale_eaje_adresse cnav_participation_familiale_eaje_parametres_calcul] }
 
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }
