@@ -1,3 +1,9 @@
+- date: 2026-11-13
+  scope: api_particulier
+  title: "Étudiant boursier : rythme de mise à jour et régions couvertes en 2026-2027"
+  description: |
+    La fiche de l'API [étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>) précise désormais le rythme de mise à jour des données : une fois par semaine, le samedi, pour les bourses nationales ; en temps réel pour les seules bourses régionales d'Île-de-France, avec des délais variables pour les autres régions. Un étudiant absent de l'API n'est donc pas forcément non boursier : pour un boursier régional hors Île-de-France qui présente un justificatif de bourse, fiez-vous à ce justificatif. La fiche liste aussi les régions ayant transmis leurs données pour 2026-2027.
+
 - date: 2026-11-12
   scope: api_entreprise
   title: "Suppression de l'API Conventions collectives"
