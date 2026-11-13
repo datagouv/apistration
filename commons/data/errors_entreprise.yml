@@ -13,7 +13,6 @@ providers:
   '10': MSA
   '11': OPQIBI
   '12': FNTP
-  '14': Fabrique numérique des Ministères Sociaux
   '15': CMA France
   '16': DGDDI
   '17': Banque de France
@@ -1332,77 +1331,6 @@ endpoints:
         detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
         meta:
           provider: Commission Européenne
-  api_entreprise_v3_fabrique_numerique_ministeres_sociaux_conventions_collectives:
-    provider: Fabrique numérique des Ministères Sociaux
-    errors:
-      '422':
-      - code: '00302'
-        title: Entité non traitable
-        detail: Le numéro de siret n'est pas correctement formatté
-      '404':
-      - code: '14003'
-        title: Entité non trouvée
-        detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont pas connus,
-          ou ne comportent aucune information pour cet appel. Veuillez vérifier que
-          votre recherche est couverte par le périmètre de l'API.
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      '502':
-      - code: '14000'
-        title: Erreur interne du fournisseur de données
-        detail: La réponse retournée par le fournisseur de données est invalide et
-          a été identifié comme étant une erreur interne. Si le problème persiste,
-          consultez la page de status ou contactez nous sur le support.
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      - code: '14001'
-        title: Service non disponible
-        detail: Service du fournisseur de données temporairement indisponible ou en
-          maintenance.
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      - code: '14004'
-        title: Erreur de résolution DNS
-        detail: Problème de résolution DNS de l'adresse du serveur
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      - code: '14008'
-        title: 'Erreur auprès du fournisseur de données : trop de requêtes'
-        detail: 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez
-          réessayer plus tard.'
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      - code: '14009'
-        title: Erreur de connexion sécurisée (TLS) avec le fournisseur de données
-        detail: 'La connexion sécurisée avec le fournisseur de données n''a pas pu
-          être établie : certificat invalide ou expiré, ou échec de la négociation
-          TLS. L''équipe technique a été notifiée de cette erreur pour investigation.'
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      - code: '14011'
-        title: Erreur temporaire du fournisseur de données
-        detail: Merci de réessayer dans quelques instants
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      - code: '14999'
-        title: Erreur inconnue du fournisseur de données
-        detail: La réponse retournée par le fournisseur de données est invalide et
-          inconnue de notre service. L'équipe technique a été notifiée de cette erreur
-          pour investigation.
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      '503':
-      - code: '14020'
-        title: Maintenance du fournisseur de données
-        detail: Le fournisseur de données semble être en maintenance
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
-      '504':
-      - code: '14002'
-        title: Intermédiaire hors-délai
-        detail: Temps d’attente d’une réponse du fournisseur de données écoulé.
-        meta:
-          provider: Fabrique numérique des Ministères Sociaux
   api_entreprise_v3_fntp_carte_professionnelle_travaux_publics:
     provider: FNTP
     errors:

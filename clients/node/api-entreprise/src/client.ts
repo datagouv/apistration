@@ -15,7 +15,6 @@ import { Dgfip } from './resources/dgfip.js';
 import { Djepva } from './resources/djepva.js';
 import { Douanes } from './resources/douanes.js';
 import { EuropeanCommission } from './resources/european_commission.js';
-import { FabriqueNumeriqueMinisteresSociaux } from './resources/fabrique_numerique_ministeres_sociaux.js';
 import { Fntp } from './resources/fntp.js';
 import { GipMds } from './resources/gip_mds.js';
 import { Infogreffe } from './resources/infogreffe.js';
@@ -100,7 +99,6 @@ export class Client extends ClientBase {
   private _djepva?: Djepva;
   private _douanes?: Douanes;
   private _european_commission?: EuropeanCommission;
-  private _fabrique_numerique_ministeres_sociaux?: FabriqueNumeriqueMinisteresSociaux;
   private _fntp?: Fntp;
   private _gip_mds?: GipMds;
   private _infogreffe?: Infogreffe;
@@ -160,10 +158,6 @@ export class Client extends ClientBase {
   get european_commission(): EuropeanCommission {
     if (!this._european_commission) this._european_commission = new EuropeanCommission(this);
     return this._european_commission;
-  }
-  get fabrique_numerique_ministeres_sociaux(): FabriqueNumeriqueMinisteresSociaux {
-    if (!this._fabrique_numerique_ministeres_sociaux) this._fabrique_numerique_ministeres_sociaux = new FabriqueNumeriqueMinisteresSociaux(this);
-    return this._fabrique_numerique_ministeres_sociaux;
   }
   get fntp(): Fntp {
     if (!this._fntp) this._fntp = new Fntp(this);

@@ -44,10 +44,6 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
     get 'unites_legales/:siren/numero_tva' => '/api_entreprise/v3_and_more/dgfip/tva#show'
   end
 
-  namespace :fabrique_numerique_ministeres_sociaux do
-    get 'etablissements/:siret/conventions_collectives' => '/api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives#show'
-  end
-
   namespace :fntp do
     get 'unites_legales/:siren/carte_professionnelle_travaux_publics' => '/api_entreprise/v3_and_more/fntp/carte_professionnelle_travaux_publics#show'
   end

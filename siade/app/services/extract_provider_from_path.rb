@@ -14,7 +14,6 @@ class ExtractProviderFromPath
     'msa' => 'MSA',
     'opqibi' => 'OPQIBI',
     'fntp' => 'FNTP',
-    'fabrique_numerique_ministeres_sociaux' => 'Fabrique numérique des Ministères Sociaux',
     'cma' => 'CMA France',
     'douanes' => 'DGDDI',
     'bdf' => 'Banque de France',

@@ -1,3 +1,9 @@
+- date: 2026-11-12
+  scope: api_entreprise
+  title: "Suppression de l'API Conventions collectives"
+  description: |
+    L'API Conventions collectives de la Fabrique numérique des ministères sociaux, dépréciée depuis octobre 2024, est supprimée : l'API du fournisseur n'existe plus. La route `/v3/fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives` et sa fiche du [catalogue](<%= endpoints_path %>) sont retirées.
+
 - date: 2026-11-10
   scope: both
   title: "FAQ : devenir demandeur d'une habilitation de son organisation"

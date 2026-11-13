@@ -99,14 +99,6 @@ fr:
         scopes:
           - open_data
           - open_data_certifications_rge_ademe
-      - uid: 'fabsocial'
-        name: 'Fabrique Numérique MS'
-        routes_or_uid_to_match:
-          - 'fabrique_numerique_ministeres_sociaux'
-        external_link: 'https://www.fabrique.social.gouv.fr/'
-        scopes:
-          - open_data
-          - open_data_conventions_collectives_fabnum
       - uid: 'cma'
         name: 'CMA France'
         external_link: 'https://cma-france.fr/'

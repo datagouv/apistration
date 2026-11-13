@@ -9,7 +9,6 @@ export { Dgfip } from './dgfip.js';
 export { Djepva } from './djepva.js';
 export { Douanes } from './douanes.js';
 export { EuropeanCommission } from './european_commission.js';
-export { FabriqueNumeriqueMinisteresSociaux } from './fabrique_numerique_ministeres_sociaux.js';
 export { Fntp } from './fntp.js';
 export { GipMds } from './gip_mds.js';
 export { Infogreffe } from './infogreffe.js';

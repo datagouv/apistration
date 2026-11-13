@@ -12,7 +12,6 @@ require_relative 'resources/dgfip'
 require_relative 'resources/djepva'
 require_relative 'resources/douanes'
 require_relative 'resources/european_commission'
-require_relative 'resources/fabrique_numerique_ministeres_sociaux'
 require_relative 'resources/fntp'
 require_relative 'resources/gip_mds'
 require_relative 'resources/infogreffe'
@@ -108,9 +107,6 @@ module ApiEntreprise
     end
     def european_commission
       @european_commission ||= Resources::EuropeanCommission.new(self)
-    end
-    def fabrique_numerique_ministeres_sociaux
-      @fabrique_numerique_ministeres_sociaux ||= Resources::FabriqueNumeriqueMinisteresSociaux.new(self)
     end
     def fntp
       @fntp ||= Resources::Fntp.new(self)
