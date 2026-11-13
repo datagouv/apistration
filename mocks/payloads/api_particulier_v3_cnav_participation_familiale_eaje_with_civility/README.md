@@ -44,6 +44,10 @@ d'erreur selon les informations que vous fournirez.
   ```json
   {
     "data": {
+      "dossier_allocataire": {
+        "matricule_caf": "1863617",
+        "code_organisme_caf": "061"
+      },
       "allocataires": [
         {
           "nom_naissance": "LEFEBVRE",
@@ -143,6 +147,10 @@ d'erreur selon les informations que vous fournirez.
   ```json
   {
     "data": {
+      "dossier_allocataire": {
+        "matricule_caf": "1863617",
+        "code_organisme_caf": "061"
+      },
       "allocataires": [
         {
           "nom_naissance": "LEFEBVRE",

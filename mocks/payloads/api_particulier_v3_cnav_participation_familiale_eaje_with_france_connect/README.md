@@ -87,6 +87,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   ```json
   {
     "data": {
+      "dossier_allocataire": {
+        "matricule_caf": "1863617",
+        "code_organisme_caf": "061"
+      },
       "allocataires": [
         {
           "nom_naissance": "CNAF",
@@ -185,6 +189,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   ```json
   {
     "data": {
+      "dossier_allocataire": {
+        "matricule_caf": "1863617",
+        "code_organisme_caf": "061"
+      },
       "allocataires": [
         {
           "nom_naissance": "CNAF",
@@ -285,6 +293,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   ```json
   {
     "data": {
+      "dossier_allocataire": {
+        "matricule_caf": "1863617",
+        "code_organisme_caf": "061"
+      },
       "allocataires": [
         {
           "nom_naissance": "DUBOIS",

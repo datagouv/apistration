@@ -3,6 +3,7 @@ class CNAV::ParticipationFamilialeEAJE::BuildResource < BuildResource
 
   def resource_attributes
     {
+      dossier_allocataire: build_dossier_allocataire,
       allocataires: build_allocataires,
       enfants: build_enfants,
       adresse: build_adresse,
@@ -11,6 +12,13 @@ class CNAV::ParticipationFamilialeEAJE::BuildResource < BuildResource
   end
 
   private
+
+  def build_dossier_allocataire
+    {
+      matricule_caf: json_body['matriculeCaf']&.to_s,
+      code_organisme_caf: json_body['codeOrganismeCaf']
+    }
+  end
 
   def build_allocataires
     json_body['allocataires']&.map do |allocataire|

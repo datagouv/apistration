@@ -13,6 +13,10 @@ pour les parents lors d'un appel à l'API Particulier EAJE (Identité).
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
 d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
   ""data"": {
+    ""dossier_allocataire"": {
+      ""matricule_caf"": ""1863617"",
+      ""code_organisme_caf"": ""061""
+    },
     ""allocataires"": [
       {
         ""nom_naissance"": ""LEFEBVRE"",
@@ -63,6 +67,10 @@ et la réponse lorsque celui ci est trouvé.
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
 d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
   ""data"": {
+    ""dossier_allocataire"": {
+      ""matricule_caf"": ""1863617"",
+      ""code_organisme_caf"": ""061""
+    },
     ""allocataires"": [
       {
         ""nom_naissance"": ""LEFEBVRE"",

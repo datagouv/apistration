@@ -17,6 +17,10 @@ Titre,Description,Paramètres,Status,Réponse
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
+    ""dossier_allocataire"": {
+      ""matricule_caf"": ""1863617"",
+      ""code_organisme_caf"": ""061""
+    },
     ""allocataires"": [
       {
         ""nom_naissance"": ""CNAF"",
@@ -70,6 +74,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Thomas""],""nomNaissance"":""Delatour"",""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75111"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
+    ""dossier_allocataire"": {
+      ""matricule_caf"": ""1863617"",
+      ""code_organisme_caf"": ""061""
+    },
     ""allocataires"": [
       {
         ""nom_naissance"": ""CNAF"",
@@ -123,6 +131,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
 Les données proviennent des jetons de l'environnement de test FranceConnect.
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75107"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
+    ""dossier_allocataire"": {
+      ""matricule_caf"": ""1863617"",
+      ""code_organisme_caf"": ""061""
+    },
     ""allocataires"": [
       {
         ""nom_naissance"": ""DUBOIS"",

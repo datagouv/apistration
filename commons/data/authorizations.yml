@@ -366,11 +366,13 @@ shared:
   api_particulier/v3_and_more/dsnj/service_national_with_france_connect:
     - dsnj_statut_service_national
   api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility:
+    - cnav_participation_familiale_eaje_dossier_allocataire
     - cnav_participation_familiale_eaje_allocataires
     - cnav_participation_familiale_eaje_enfants
     - cnav_participation_familiale_eaje_adresse
     - cnav_participation_familiale_eaje_parametres_calcul
   api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect:
+    - cnav_participation_familiale_eaje_dossier_allocataire
     - cnav_participation_familiale_eaje_allocataires
     - cnav_participation_familiale_eaje_enfants
     - cnav_participation_familiale_eaje_adresse
