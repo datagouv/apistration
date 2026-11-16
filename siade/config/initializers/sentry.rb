@@ -13,7 +13,7 @@ Sentry.init do |config|
                  event.message
     cache_key = "sentry:#{event_kind}"
 
-    if Rails.cache.increment(cache_key, 1, expires_in: 1.hour) > 5_000
+    if Rails.cache.increment(cache_key, 1, expires_in: 1.hour).to_i > 5_000
       next nil
     end
 

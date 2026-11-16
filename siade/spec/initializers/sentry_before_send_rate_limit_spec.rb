@@ -38,4 +38,10 @@ RSpec.describe Sentry, '#before_send rate limit' do
 
     expect(send_event(client.event_from_message('Internal server error'))).to be_present
   end
+
+  it 'keeps sending events when the counter store is unavailable' do
+    allow(Rails.cache).to receive(:increment).and_return(nil)
+
+    expect(send_event(exception_event(ArgumentError))).to be_present
+  end
 end
