@@ -8,9 +8,12 @@ Sentry.init do |config|
   config.traces_sample_rate = 1.0
 
   config.before_send = lambda do |event, _hint|
-    cache_key = "sentry:#{event.fingerprint&.join(':') || event.exception&.values&.first&.type}"
+    event_kind = event.fingerprint.presence&.join(':') ||
+                 event.exception&.values&.first&.type ||
+                 event.message
+    cache_key = "sentry:#{event_kind}"
 
-    if Rails.cache.increment(cache_key, 1, expires_in: 1.hour) > 5_000
+    if Rails.cache.increment(cache_key, 1, expires_in: 1.hour).to_i > 5_000
       next nil
     end
 
