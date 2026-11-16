@@ -164,6 +164,8 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
   end
 
   context 'with 500 http code response' do
+    subject { described_class.call(response:, provider_name: 'Sécurité sociale', dss_prestation_name: 'allocation_adulte_handicape') }
+
     let(:response) do
       instance_double(Net::HTTPInternalServerError, code: 500, body: '{"error":"Erreur technique non spécifiée","errorCode":50001}', header: { 'X-APISECU-FD' => '99430000' })
     end
@@ -182,11 +184,12 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       subject
     end
 
-    it 'tracks warning with response context and encrypted params' do
+    it 'tracks warning with response context and encrypted params, fingerprinted by prestation and provider error code' do
       expect(MonitoringService.instance).to receive(:track_with_added_context).with(
         'warning',
         '[Sécurité sociale] Internal server error (50001)',
-        hash_including(:http_response_code, :http_response_body, :encrypted_params)
+        hash_including(:http_response_code, :http_response_body, :encrypted_params),
+        fingerprint: %w[cnav-internal-server-error allocation_adulte_handicape 50001]
       )
 
       subject
