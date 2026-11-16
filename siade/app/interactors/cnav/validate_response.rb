@@ -123,7 +123,8 @@ class CNAV::ValidateResponse < ValidateResponse
     MonitoringService.instance.track_with_added_context(
       'warning',
       "[#{context.provider_name}] Internal server error (#{error_code_from_body})",
-      provider_error_context
+      provider_error_context,
+      fingerprint: ['cnav-internal-server-error', context.dss_prestation_name.to_s, error_code_from_body.to_s]
     )
 
     internal_server_error!
