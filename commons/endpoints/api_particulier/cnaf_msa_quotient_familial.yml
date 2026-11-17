@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/quotient_familial'
+    production_date: '2024-09-02'
     datagouv_uid: '672cf982fcc8065be6e66f54'
     opening: protected
     old_endpoint_uids:

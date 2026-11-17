@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/v2/allocation_soutien_familial'
+    production_date: '2024-06-24'
     opening: protected
     new_endpoint_uids:
       - 'cnav/allocation_soutien_familial'

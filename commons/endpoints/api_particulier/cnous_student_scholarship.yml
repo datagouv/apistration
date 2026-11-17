@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnous/statut_etudiant_boursier'
+    production_date: '2026-07-22'
     datagouv_uid: '672cf6900a2a1df94c9cc37c'
     opening: protected
     new_version: true
@@ -104,6 +105,7 @@ fiche:
           Cette API vous permet de connaître le montant exact perçu par l'étudiant car elle délivre l'échelon de la bourse et la durée de versement en mois."
 
   - uid: 'cnous/statut_etudiant_boursier_v4'
+    production_date: '2026-02-18'
     opening: protected
     new_endpoint_uids:
       - 'cnous/statut_etudiant_boursier'
@@ -129,6 +131,7 @@ fiche:
       Tout le reste est identique (identité, période de versement, échelon, établissement, email).
 
   - uid: 'cnous/statut_etudiant_boursier_v3'
+    production_date: '2024-09-16'
     opening: protected
     new_endpoint_uids:
       - 'cnous/statut_etudiant_boursier_v4'

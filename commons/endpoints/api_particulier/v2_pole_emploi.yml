@@ -83,6 +83,7 @@ fiche:
           | 8          | Personnes non immédiatement à la recherche d'un autre emploi, à durée déterminée, temporaire ou saisonnier, y compris de très courte durée, tenues d'accomplir des actes positifs de recherche d'emploi.  |  ❌  |
 
   - uid: 'pole_emploi/v2/indemnites'
+    production_date: '2023-07-27'
     opening: protected
     new_endpoint_uids: 
       - 'pole_emploi/indemnites'

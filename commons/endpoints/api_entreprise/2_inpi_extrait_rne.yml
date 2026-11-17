@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'inpi/rne/attestation_immatriculation'
+    production_date: '2025-08-24'
     datagouv_uid: '69416bbbead846ef062cd142'
     socle_de_base:
       comment: |-

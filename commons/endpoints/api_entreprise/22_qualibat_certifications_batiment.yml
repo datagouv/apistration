@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'qualibat/v3/certifications_batiment'
+    production_date: '2022-03-23'
+    first_version_production_date: '2015-05-13'
     datagouv_uid: '672cf6b522535e70b5584c0e'
     sync_with_datagouv: false
     path: '/v3/qualibat/etablissements/{siret}/certification_batiment'
@@ -187,6 +189,8 @@ fiche:
                       format: date
                       example: '2022-03-03'
   - uid: 'qualibat/certifications_batiment'
+    production_date: '2023-11-23'
+    first_version_production_date: '2015-05-13'
     datagouv_uid: '672cf6b522535e70b5584c0e'
     socle_de_base:
       comment: |-

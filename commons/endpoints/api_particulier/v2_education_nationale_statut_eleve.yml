@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'education_nationale/v2/statut_eleve_scolarise'
+    production_date: '2023-05-26'
     opening: protected
     new_endpoint_uids:
       - 'education_nationale/statut_eleve_scolarise'

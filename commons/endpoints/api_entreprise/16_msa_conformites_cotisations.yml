@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'msa/conformites_cotisations'
+    production_date: '2022-02-01'
+    first_version_production_date: '2015-09-14'
     datagouv_uid: '672cf6b36a8456f417812b10'
     ping_url: 'https://entreprise.api.gouv.fr/ping/msa/conformite_cotisations'
     path: '/v3/msa/etablissements/{siret}/conformite_cotisations'

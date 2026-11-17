@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'sport_data_hub/statut_sportif'
+    production_date: '2025-09-16'
     datagouv_uid: '688c7ea9e4a690abc0d3aeec'
     opening: protected
     novelty: true

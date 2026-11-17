@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'cnav/revenu_solidarite_active'
+    production_date: '2024-08-29'
+    first_version_production_date: '2024-06-24'
     datagouv_uid: '672cf6acf1ebb86a67488d05'
     opening: protected
     old_endpoint_uids:

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/v2/prime_activite'
+    production_date: '2024-06-24'
     opening: protected
     new_endpoint_uids:
       - 'cnav/prime_activite'

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'qualifelec/certificats'
+    production_date: '2023-09-15'
     datagouv_uid: '672cf6baa316ad54c9a7f19b'
     socle_de_base:
       comment: |-

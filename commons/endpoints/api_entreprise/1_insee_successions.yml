@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: "insee/successions"
+    production_date: '2024-05-06'
+    first_version_production_date: '2016-09-19'
     datagouv_uid: '686d1bc04ebf5642dc5651c2'
     socle_de_base:
       comment: |-

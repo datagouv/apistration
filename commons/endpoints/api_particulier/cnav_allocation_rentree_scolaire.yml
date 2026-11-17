@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/allocation_rentree_scolaire'
+    production_date: '2026-07-07'
     opening: protected
     path: '/v3/dss/allocation_rentree_scolaire/identite'
     controller: 'api_particulier/v3_and_more/cnav/allocation_rentree_scolaire_with_civility'
