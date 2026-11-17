@@ -318,7 +318,7 @@
   scope: api_entreprise
   title: "Attestation fiscale : périmètre associations clarifié"
   description: |
-    La documentation de la fiche [attestation fiscale DGFiP](<%= endpoint_path(uid: 'dgfip/attestation_fiscale') %>) précise désormais le périmètre applicable aux **associations** et inclut une section Q&R dédiée.
+    La documentation de la fiche [attestation fiscale DGFiP](<%= endpoint_path(uid: 'dgfip/attestations_fiscales') %>) précise désormais le périmètre applicable aux **associations** et inclut une section Q&R dédiée.
 
 - date: 2025-06-30
   scope: api_entreprise
