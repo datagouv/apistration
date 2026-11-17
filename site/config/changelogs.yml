@@ -150,6 +150,20 @@
   description: |
     Nouvelle version v5 de la fiche [étudiant boursier CNOUS](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier') %>) : un nouveau champ `ine`, couvert par le nouveau scope « Identifiant National des Élèves », est renvoyé pour les appels effectués avec les données d'identité ou via FranceConnect. La [v4](<%= endpoint_path(uid: 'cnous/statut_etudiant_boursier_v4') %>) reste accessible.
 
+- date: 2026-07-07
+  scope: api_particulier
+  title: "Nouvelle API : Allocation de rentrée scolaire (ARS)"
+  description: |
+    Mise en service de la fiche [allocation de rentrée scolaire](<%= endpoint_path(uid: 'cnav/allocation_rentree_scolaire') %>), qui indique si le particulier est bénéficiaire de l'ARS auprès de la CNAV, avec la date d'ouverture du droit. Elle s'appelle avec FranceConnect ou avec l'identité pivot.
+
+- date: 2026-06-15
+  scope: api_entreprise
+  title: "Nouvelle API : numéro de TVA intracommunautaire (DGFiP)"
+  description: |
+    Mise en service de la fiche [numéro de TVA intracommunautaire DGFiP](<%= endpoint_path(uid: 'dgfip/numero_tva') %>), qui recherche le numéro de TVA français d'une unité légale à partir de son SIREN dans les extractions quotidiennes publiées par la DGFiP (fraîcheur J+1). Elle couvre aussi les numéros à clé alphanumérique, qu'un calcul depuis le SIREN ne peut pas deviner.
+
+    L'API [numéro de TVA de la Commission européenne (VIES)](<%= endpoint_path(uid: 'commission_europeenne/numero_tva') %>) est **dépréciée** : pensez à migrer vers l'API DGFiP.
+
 - date: 2026-06-04
   scope: api_particulier
   title: "Fiches API Particulier : le scope est affiché sur chaque donnée"
@@ -304,13 +318,25 @@
   scope: api_entreprise
   title: "Attestation fiscale : périmètre associations clarifié"
   description: |
-    La documentation de la fiche [attestation fiscale DGFiP](<%= endpoint_path(uid: 'dgfip/attestation_fiscale') %>) précise désormais le périmètre applicable aux **associations** et inclut une section Q&R dédiée.
+    La documentation de la fiche [attestation fiscale DGFiP](<%= endpoint_path(uid: 'dgfip/attestations_fiscales') %>) précise désormais le périmètre applicable aux **associations** et inclut une section Q&R dédiée.
 
 - date: 2025-06-30
   scope: api_entreprise
   title: "Nouvelle API : liens capitalistiques (DGFiP)"
   description: |
     Mise en service de la fiche [liens capitalistiques](<%= endpoint_path(uid: 'dgfip/liens_capitalistiques') %>), qui expose les liens de détention capitalistique entre unités légales tels que connus par la DGFiP.
+
+- date: 2025-06-26
+  scope: api_entreprise
+  title: "Nouvelle API : subventions des associations (Data Subvention)"
+  description: |
+    Mise en service, en bêta, de la fiche [subventions des associations](<%= endpoint_path(uid: 'data_subvention/subventions') %>), qui délivre les demandes de subventions déposées par une association depuis 2018, l'instruction de chaque dossier avec les montants accordés et, parfois, les paiements.
+
+- date: 2025-04-23
+  scope: api_particulier
+  title: "Nouvelle API : statut au regard du Service national (DSNJ)"
+  description: |
+    Mise en service de la fiche [Service national](<%= endpoint_path(uid: 'dsnj/service_national') %>), qui indique si un jeune de 16 à 25 ans, de nationalité française, est en règle de ses obligations de Service national (recensement, Journée défense et citoyenneté) auprès de la Direction du Service national et de la jeunesse.
 
 - date: 2025-02-19
   scope: api_particulier
