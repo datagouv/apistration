@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'infogreffe/rcs/extrait'
+    production_date: '2022-05-16'
+    first_version_production_date: '2015-11-27'
     datagouv_uid: '672cf6b622535e70b5584c0f'
     socle_de_base:
       comment: |-

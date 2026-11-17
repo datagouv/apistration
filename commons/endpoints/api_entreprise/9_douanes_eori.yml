@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'douanes/immatriculation_eori'
+    production_date: '2021-11'
+    first_version_production_date: '2021-02-12'
     datagouv_uid: '672cf6b81092eab5f92dfaad'
     socle_de_base:
       comment: |-

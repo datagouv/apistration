@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'cnav/v2/quotient_familial_v2'
+    production_date: '2023-08-29'
+    first_version_production_date: '2020-05'
     opening: protected
     new_endpoint_uids: 
       - 'cnav/quotient_familial'

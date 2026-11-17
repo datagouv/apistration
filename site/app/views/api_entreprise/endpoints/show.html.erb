@@ -280,96 +280,12 @@
           <% end %>
         </div>
 
-        <% if @endpoint.provider_errors.any? %>
-          <%= render 'shared/endpoints/provider_errors', endpoint: @endpoint %>
-        <% end %>
+        <%= render 'shared/endpoints/reference_sections', endpoint: @endpoint %>
 
-        <% if @endpoint.faq.any? %>
-          <h2 id="faq" class="fr-mt-md-5w fr-mt-8w">
-            <%= t('.faq.title') %>
-          </h2>
-
-          <div class="fr-accordions-group">
-            <% @endpoint.faq.each_with_index do |faq_entry, index| %>
-              <section class="fr-accordion faq-entry" id="<%= dom_id(@endpoint, "faq_entry_#{index}") %>">
-                <h3 class="fr-accordion__title">
-                  <button class="fr-accordion__btn" aria-expanded="false" aria-controls="<%= dom_id(@endpoint, "faq_entry_answer_#{index}") %>">
-                    <div>
-                      <%= raw faq_entry['question'] %>
-                    </div>
-                  </button>
-                </h3>
-
-                <div class="fr-collapse" id="<%= dom_id(@endpoint, "faq_entry_answer_#{index}") %>">
-                  <%= raw faq_entry['answer'] %>
-                </div>
-              </section>
-            <% end %>
-          </div>
-        <% end %>
-
-        <% if @endpoint.historicized? %>
-          <h2 id="historique" class="fr-mt-md-5w fr-mt-8w">
-            <%= t('.historique.title') %>
-          </h2>
-          <%= markdown_to_html(@endpoint.historique) %>
-          <% if @endpoint.old_endpoints.any? %>
-            <p class="fr-text--bold fr-mb-1v fr-mt-4w"><%= t('.historique.old_endpoints.description') %></p>
-            <ul>
-              <% @endpoint.old_endpoints.each do |endpoint| %>
-                <li>
-                  <%= link_to endpoint.uid, endpoint_path(uid: endpoint.uid) %>
-                </li>
-              <% end %>
-            </ul>
-            <p class="fr-text--sm fr-mt-4w"><%= t('.historique.old_endpoints.link_documentation').html_safe %></p>
-          <% end %>
-        <% end %>
-
-        <h2 id="cgu" class="fr-mt-md-5w fr-mt-8w">
-          <%= t('.cgu.title') %>
-        </h2>
-
-        <h3 class="fr-h6 fr-mb-1w fr-mt-3w">
-          <%= t('.cgu.main_title_opening') %>
-        </h3>
-
-        <div>
+        <%= render layout: 'shared/endpoints/cgu', locals: { endpoint: @endpoint } do %>
           <%= icon(t("endpoint.opening.#{@endpoint.opening}.icon", raise: true)) rescue nil %>
           <%= t("endpoint.opening.#{@endpoint.opening}.name", raise: true) %><br/>
-        </div>
-
-        <% if @endpoint.api_cgu.present? %>
-          <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="api_cgu">
-            <%= t('.cgu.api_cgu_title') %>
-          </h3>
-          <div>
-            <%= markdown_to_html(@endpoint.api_cgu['description']) %>
-          </div>
         <% end %>
-
-        <h3 class="fr-h6 fr-mb-1w fr-mt-3w">
-          <%= t('.cgu.main_title') %>
-        </h3>
-
-        <p>
-          Cette API et l'utilisation de ses données est soumise aux CGU générales d'API Entreprise, dont voici les principaux éléments auxquels vous vous engagez :
-        </p>
-        <ul>
-          <li>
-            <strong>ne demander que les données strictement nécessaires</strong> ;
-          </li>
-          <li>
-            <strong>ne pas utiliser votre jeton d'accès pour une démarche différente</strong> de celle indiquée lors de votre demande (le cas échéant le jeton sera révoqué) ;
-          </li>
-          <li>
-            <strong>présenter les données obtenues uniquement aux seuls agents habilités</strong> et à tracer l'accès de ces agents aux données ;
-          </li>
-          <li>
-            <strong>ne pas commercialiser les données</strong> reçues et à ne pas les communiquer à des tiers en dehors des cas prévus par la loi.
-          </li>
-        </ul>
-        <p>L'ensemble des conditions sont consultables et téléchargeables ci-dessous :</p>
         <%= link_to t('.cgu.cta'), cgu_path, id: 'cgu_link', class: %w(fr-btn fr-btn--secondary fr-btn--icon-right fr-icon-eye-line fr-mt-2w), data: { turbo_frame: 'main-modal-content', 'fr-opened': 'false' }, 'aria-controls': 'main-modal' %>
       <% end %>
     </div>

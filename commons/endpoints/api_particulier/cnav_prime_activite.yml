@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'cnav/prime_activite'
+    production_date: '2024-08-30'
+    first_version_production_date: '2024-06-24'
     datagouv_uid: '672cf6acc34230c996aab5a5'
     opening: protected
     old_endpoint_uids:

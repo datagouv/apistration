@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'ademe/certifications_rge'
+    production_date: '2022-05-11'
+    first_version_production_date: '2019-06-18'
     datagouv_uid: '672cf6b9f8b5d52b762633a1'
     socle_de_base:
       comment: |-

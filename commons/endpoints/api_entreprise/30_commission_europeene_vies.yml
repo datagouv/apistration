@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'commission_europeenne/numero_tva'
+    production_date: '2022-10-19'
     datagouv_uid: '672cf6b61092eab5f92dfaac'
     socle_de_base:
       comment: |-

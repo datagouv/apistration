@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'cnetp/attestations_cotisations_conges_payes_chomage_intemperies'
+    production_date: '2022-01-12'
+    first_version_production_date: '2016-03-22'
     datagouv_uid: '672cf6b5a474f2d73502b5d5'
     ping_url: 'https://entreprise.api.gouv.fr/ping/cnetp/attestation_cotisations_conges_payes_chomage_intemperies'
     path: '/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies'

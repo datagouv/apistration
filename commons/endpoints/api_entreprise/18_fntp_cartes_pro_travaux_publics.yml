@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'fntp/carte_professionnelle_travaux_public'
+    production_date: '2022-01-12'
+    first_version_production_date: '2015-09-15'
     datagouv_uid: '672cf6b8f8b5d52b762633a0'
     socle_de_base:
       comment: |-

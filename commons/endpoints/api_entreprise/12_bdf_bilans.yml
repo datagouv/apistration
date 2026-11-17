@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'banque_de_france/bilans'
+    production_date: '2022-11-21'
+    first_version_production_date: '2018-05-22'
     datagouv_uid: '672cf6b1c3488a0c533f709a'
     path: '/v3/banque_de_france/unites_legales/{siren}/bilans'
     controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise'

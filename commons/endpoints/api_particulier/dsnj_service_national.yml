@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'dsnj/service_national'
+    production_date: '2025-04-23'
     datagouv_uid: '688c7cbf284f92bdeff43a73'
     opening: protected
     novelty: true

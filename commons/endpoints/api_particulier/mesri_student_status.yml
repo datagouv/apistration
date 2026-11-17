@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'mesri/statut_etudiant'
+    production_date: '2024-08-28'
+    first_version_production_date: '2021-08'
     datagouv_uid: '672cf667c3488a0c533f7092'
     opening: protected
     old_endpoint_uids:

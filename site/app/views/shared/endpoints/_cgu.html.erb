@@ -1,0 +1,43 @@
+<h2 id="cgu" class="fr-mt-md-5w fr-mt-8w">
+  <%= t('shared.endpoints.cgu.title') %>
+</h2>
+
+<h3 class="fr-h6 fr-mb-1w fr-mt-3w">
+  <%= t("#{endpoint.api}.endpoints.show.cgu.main_title_opening") %>
+</h3>
+
+<div>
+  <%= yield %>
+</div>
+
+<% if endpoint.api_cgu.present? %>
+  <h3 class="fr-h6 fr-mb-1w fr-mt-3w" id="api_cgu">
+    <%= t('shared.endpoints.cgu.api_cgu_title') %>
+  </h3>
+  <div>
+    <%= markdown_to_html(endpoint.api_cgu['description']) %>
+  </div>
+<% end %>
+
+<h3 class="fr-h6 fr-mb-1w fr-mt-3w">
+  <%= t('shared.endpoints.cgu.main_title') %>
+</h3>
+
+<p>
+  <%= t("#{endpoint.api}.endpoints.show.cgu.general_conditions_intro") %>
+</p>
+<ul>
+  <li>
+    <strong>ne demander que les données strictement nécessaires</strong> ;
+  </li>
+  <li>
+    <strong>ne pas utiliser votre jeton d'accès pour une démarche différente</strong> de celle indiquée lors de votre demande (le cas échéant le jeton sera révoqué) ;
+  </li>
+  <li>
+    <strong>présenter les données obtenues uniquement aux seuls agents habilités</strong> et à tracer l'accès de ces agents aux données ;
+  </li>
+  <li>
+    <strong>ne pas commercialiser les données</strong> reçues et à ne pas les communiquer à des tiers en dehors des cas prévus par la loi.
+  </li>
+</ul>
+<p><%= t('shared.endpoints.cgu.all_conditions') %></p>

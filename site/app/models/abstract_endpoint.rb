@@ -23,7 +23,7 @@ class AbstractEndpoint
     :socle_de_base,
     :sync_with_datagouv
 
-  attr_writer :new_endpoint_uids, :old_endpoint_uids
+  attr_writer :new_endpoint_uids, :old_endpoint_uids, :production_date, :first_version_production_date
 
   def self.all
     endpoints_store_class.all.map do |endpoint|
@@ -134,8 +134,16 @@ class AbstractEndpoint
     end
   end
 
+  def production_date
+    @production_date.presence
+  end
+
+  def first_version_production_date
+    @first_version_production_date.presence
+  end
+
   def historicized?
-    historique.present? || old_endpoints.any?
+    historique.present? || old_endpoints.any? || production_date.present?
   end
 
   def implemented?

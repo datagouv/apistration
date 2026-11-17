@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/aeeh'
+    production_date: '2026-03-06'
     datagouv_uid: '69b03e90b9b9fcfa5cd686b7'
     opening: protected
     path: '/v3/dss/allocation_enfant_handicape/identite'

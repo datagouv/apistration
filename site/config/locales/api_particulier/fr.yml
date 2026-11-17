@@ -164,19 +164,13 @@ fr:
         scopes:
           title: Les scopes
           intro_html: "Les champs de la réponse signalés par une étiquette violette ne sont retournés que si votre jeton porte le scope correspondant. <a href='/developpeurs#scopes-et-perimetres'>En savoir plus sur le mécanisme des scopes</a>."
-        faq:
-          title: "Questions & réponses"
         historique:
-          title: "Historique"
           old_endpoints:
-            description: "Documentations des anciennes API :"
-            link_documentation: |-
+            link_documentation_html: |-
               Plus d'informations sur la gestion de version API&nbsp;Particulier dans cette <a href='/developpeurs#gerer-les-evolutions-de-version' target='_blank' rel='noopener noreferrer'>documentation</a>.
         cgu:
-          title: "Conditions d'utilisation des données"
           main_title_opening: "Ouverture de la donnée :"
-          api_cgu_title: "Conditions spécifiques à cette API :"
-          main_title: "Conditions générales :"
+          general_conditions_intro: "Cette API et l'utilisation de ses données sont soumises aux CGU générales d'API Particulier, dont voici les principaux éléments auxquels vous vous engagez :"
           cta: "CGU API Particulier"
       details:
         title: "Spécifications de l'API"

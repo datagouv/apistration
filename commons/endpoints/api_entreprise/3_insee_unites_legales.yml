@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'insee/unites_legales'
+    production_date: '2026-01-07'
+    first_version_production_date: '2021-10'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:
@@ -168,6 +170,8 @@ fiche:
           **Une [API spécifique est maintenant disponible en V.3](<%= endpoint_path(uid: 'commission_europeenne/numero_tva') %>)** et permet de connaître le numéro intracommunautaire français d'une unité légale. Cette API effectue une vérification auprès du service compétent de la Commission européenne.
 
   - uid: 'insee/unites_legales_diffusibles'
+    production_date: '2026-01-07'
+    first_version_production_date: '2021-10'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:
@@ -234,6 +238,7 @@ fiche:
         a: *insee_unites_legales_faq_a6
 
   - uid: 'insee/unites_legales_v3'
+    production_date: '2021-10'
     path: '/v3/insee/sirene/unites_legales/{siren}'
     controller: 'api_entreprise/v3_and_more/insee/unites_legales'
     position: 125
@@ -262,6 +267,7 @@ fiche:
     faq: *insee_unites_legales_faq
 
   - uid: 'insee/unites_legales_diffusibles_v3'
+    production_date: '2021-10'
     path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}'
     controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables'
     position: 120

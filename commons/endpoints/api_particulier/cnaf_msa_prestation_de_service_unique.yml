@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnav/psu'
+    production_date: '2026-02-17'
     datagouv_uid: '688c833e18a96f3fcd04d82e'
     opening: protected
     beta: true

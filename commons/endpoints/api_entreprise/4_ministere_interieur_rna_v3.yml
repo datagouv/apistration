@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'ministere_interieur/rna'
+    production_date: '2021-09'
+    first_version_production_date: '2015-08-31'
     path: '/v3/ministere_interieur/rna/associations/{siret_or_rna}'
     controller: 'api_entreprise/v3_and_more/mi/associations'
     ping_url: 'https://entreprise.api.gouv.fr/ping/djepva/api-association'
@@ -34,6 +36,8 @@ fiche:
     parameters:
       - Numéro de SIRET ou numéro RNA de l’association
   - uid: 'ministere_interieur/documents_associations'
+    production_date: '2022-05-02'
+    first_version_production_date: '2017-08-08'
     new_endpoint_uids: *mi_rna_new_endpoint_uids
     path: '/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents'
     controller: 'api_entreprise/v3_and_more/mi/documents_associations'

@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'data_subvention/subventions'
+    production_date: '2025-06-20'
     datagouv_uid: '688c8481c61a585172d3d42c'
     socle_de_base:
       comment: |-

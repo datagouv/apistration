@@ -1,6 +1,8 @@
 ---
 fiche:
   - uid: 'inpi/rne/actes_bilans'
+    production_date: '2024-07-03'
+    first_version_production_date: '2019-09-22'
     datagouv_uid: '686d1e51e64f536714765532'
     socle_de_base:
       comment: |-
