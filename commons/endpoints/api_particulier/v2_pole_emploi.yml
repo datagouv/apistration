@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'pole_emploi/v2/situation'
+    production_date: '2021-08'
     opening: protected
     new_endpoint_uids: 
       - 'pole_emploi/situation'

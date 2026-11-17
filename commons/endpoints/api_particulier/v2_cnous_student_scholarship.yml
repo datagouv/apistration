@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'cnous/v2/statut_etudiant_boursier'
+    production_date: '2022-02'
     opening: protected
     new_endpoint_uids:
       - 'cnous/statut_etudiant_boursier'

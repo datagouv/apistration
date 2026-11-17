@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'mesri/v2/statut_etudiant'
+    production_date: '2021-08'
     opening: protected
     new_endpoint_uids: 
       - 'mesri/statut_etudiant'

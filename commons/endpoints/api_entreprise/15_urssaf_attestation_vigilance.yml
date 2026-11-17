@@ -245,6 +245,7 @@ fiche:
             nullable: true
             example: 86400
   - uid: 'urssaf/v3/attestation_vigilance'
+    production_date: '2021-07'
     datagouv_uid: '672cf6b36452c7d61849433f'
     sync_with_datagouv: false
     position: 9001

@@ -2,6 +2,7 @@
 fiche:
   - uid: 'pole_emploi/situation'
     production_date: '2024-09-10'
+    first_version_production_date: '2021-08'
     datagouv_uid: '672cf6aba316ad54c9a7f19a'
     opening: protected
     old_endpoint_uids:

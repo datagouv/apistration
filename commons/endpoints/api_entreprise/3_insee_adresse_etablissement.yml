@@ -1,6 +1,7 @@
 ---
 fiche:
   - uid: 'insee/adresse_etablissements'
+    production_date: '2021-11'
     datagouv_uid: '672cf6aece89cb14e31f0fba'
     sync_with_datagouv: false
     socle_de_base:

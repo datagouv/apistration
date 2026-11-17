@@ -2,6 +2,7 @@
 fiche:
   - uid: 'cnous/statut_etudiant_boursier'
     production_date: '2026-07-22'
+    first_version_production_date: '2022-02'
     datagouv_uid: '672cf6900a2a1df94c9cc37c'
     opening: protected
     new_version: true
@@ -106,6 +107,7 @@ fiche:
 
   - uid: 'cnous/statut_etudiant_boursier_v4'
     production_date: '2026-02-18'
+    first_version_production_date: '2022-02'
     opening: protected
     new_endpoint_uids:
       - 'cnous/statut_etudiant_boursier'
@@ -132,6 +134,7 @@ fiche:
 
   - uid: 'cnous/statut_etudiant_boursier_v3'
     production_date: '2024-09-16'
+    first_version_production_date: '2022-02'
     opening: protected
     new_endpoint_uids:
       - 'cnous/statut_etudiant_boursier_v4'
