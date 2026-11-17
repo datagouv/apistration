@@ -1,0 +1,11 @@
+<% if endpoint.provider_errors.any? %>
+  <%= render 'shared/endpoints/provider_errors', endpoint: endpoint %>
+<% end %>
+
+<% if endpoint.faq.any? %>
+  <%= render 'shared/endpoints/faq', endpoint: endpoint %>
+<% end %>
+
+<% if endpoint.historicized? %>
+  <%= render 'shared/endpoints/historique', endpoint: endpoint %>
+<% end %>

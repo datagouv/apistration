@@ -268,19 +268,13 @@ fr:
         root_meta:
           title: "Métadonnées racine :"
           description: "Les métadonnées sont des données généralement liées au contexte de la ressource : mise à jour chez le fournisseurs, informations système, etc..."
-        faq:
-          title: "Questions & réponses"
         historique:
-          title: "Historique"
           old_endpoints:
-            description: "Documentations des anciennes API :"
-            link_documentation: |-
+            link_documentation_html: |-
               Plus d'informations sur la gestion de version API&nbsp;Entreprise dans cette <a href='https://entreprise.api.gouv.fr/developpeurs#gerer-les-evolutions-de-version' target='_blank' rel='noopener noreferrer'>documentation</a>.
         cgu:
-          title: "Conditions d'utilisation des données"
           main_title_opening: "Utilisation possible de la donnée :"
-          api_cgu_title: "Conditions spécifiques à cette API :"
-          main_title: "Conditions générales :"
+          general_conditions_intro: "Cette API et l'utilisation de ses données est soumise aux CGU générales d'API Entreprise, dont voici les principaux éléments auxquels vous vous engagez :"
           cta: "CGU API Entreprise"
       details:
         title: "Détails de l'API"
