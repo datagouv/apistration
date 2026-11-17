@@ -599,6 +599,8 @@ fr:
         title: "Questions & réponses"
       historique:
         title: "Historique"
+        first_version_production_date: "Mise en production de la première version : %{date}"
+        version_production_date: "Mise en production de cette version : %{date}"
         old_endpoints:
           description: "Documentations des anciennes API :"
       provider_errors:

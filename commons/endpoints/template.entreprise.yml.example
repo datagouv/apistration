@@ -30,6 +30,12 @@ fiche:
     # Format : 'api_entreprise/v3_and_more/<provider>/<controller_class>'
     # Cherchez la route dans siade/config/routes/api_entreprise.rb pour la valeur exacte.
     controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales'
+    # Date de mise en production de cette version de l'API, au format 'AAAA-MM-JJ' (entre quotes)
+    # Facultatif : affichée dans la partie Historique de la fiche
+    production_date: '2026-07-07'
+    # Date de mise en production de la première version de l'API, quand une version antérieure existait
+    # Facultatif : à ne renseigner que si elle est antérieure à production_date
+    first_version_production_date: '2019-03-12'
     # Position au sein de l'index
     # Ce chiffre détermine l'ordre d'affichage dans le catalogue : La fiche avec position 1 sera avant la fiche 2
     position: 501
