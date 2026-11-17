@@ -1,0 +1,75 @@
+api_entreprise:
+  - section: Découvrir
+    pages:
+      - route: root
+        title: Accueil
+      - route: endpoints
+        title: Catalogue des API
+      - route: cas_usages
+        title: Cas d'usages
+      - route: faq_index
+        title: FAQ & contact
+      - route: changelogs
+        title: Nouveautés
+      - route: developers
+        title: Espace développeur
+      - route: current_status
+        title: Statut des API
+      - route: newsletter
+        title: Lettre d'information
+      - route: stats
+        title: Statistiques
+  - section: Mon espace
+    pages:
+      - route: login
+        title: Se connecter
+  - section: Informations légales
+    pages:
+      - route: accessibilite
+        title: Accessibilité
+      - route: cgu
+        title: Conditions générales d'utilisation
+      - route: mentions
+        title: Mentions légales
+      - route: donnees_personnelles
+        title: Données personnelles
+      - route: sitemap
+        title: Plan du site
+
+api_particulier:
+  - section: Découvrir
+    pages:
+      - route: api_particulier
+        title: Accueil
+      - route: api_particulier_endpoints
+        title: Catalogue des API
+      - route: api_particulier_cas_usages
+        title: Cas d'usages & modalités d'appel
+      - route: api_particulier_faq_index
+        title: FAQ & contact
+      - route: api_particulier_changelogs
+        title: Nouveautés
+      - route: api_particulier_developers
+        title: Espace développeur
+      - route: api_particulier_current_status
+        title: Statut des API
+      - route: api_particulier_newsletter
+        title: Lettre d'information
+      - route: api_particulier_stats
+        title: Statistiques
+  - section: Mon espace
+    pages:
+      - route: api_particulier_login
+        title: Se connecter
+  - section: Informations légales
+    pages:
+      - route: api_particulier_accessibilite
+        title: Accessibilité
+      - route: api_particulier_cgu
+        title: Conditions générales d'utilisation
+      - route: api_particulier_mentions
+        title: Mentions légales
+      - route: api_particulier_donnees_personnelles
+        title: Données personnelles
+      - route: api_particulier_sitemap
+        title: Plan du site
