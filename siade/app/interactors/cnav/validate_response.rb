@@ -53,6 +53,7 @@ class CNAV::ValidateResponse < ValidateResponse
   protected
 
   def resource_not_found!
+    return unknown_provider_response! unless valid_json?
     return sub_provider_error! if sub_provider_error?
 
     return regime_not_found_error(regime) if regime.present?
