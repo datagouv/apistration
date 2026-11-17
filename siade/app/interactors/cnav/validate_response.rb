@@ -53,6 +53,7 @@ class CNAV::ValidateResponse < ValidateResponse
   protected
 
   def resource_not_found!
+    return unknown_provider_response! unless valid_json?
     return sub_provider_error! if sub_provider_error?
 
     return regime_not_found_error(regime) if regime.present?
@@ -83,6 +84,7 @@ class CNAV::ValidateResponse < ValidateResponse
   def bad_request_error!
     track_bad_request!
 
+    return unknown_provider_response! unless valid_json?
     return family_provider_failure! if family_provider_failure?
 
     rejected_civility!

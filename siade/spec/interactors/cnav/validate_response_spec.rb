@@ -161,6 +161,32 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         expect(subject.errors.first.detail).to include('Une erreur inattendue est survenue lors de la collecte des données')
       end
     end
+
+    context 'with an HTML error page from the gateway instead of JSON' do
+      let(:body) { '<html><head><title>Error</title></head><body>Not Found</body></html>' }
+
+      context 'without regime header' do
+        let(:response) do
+          instance_double(Net::HTTPNotFound, code: 404, body:, header: {})
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
+
+      context 'with a regime header' do
+        let(:response) do
+          instance_double(Net::HTTPNotFound, code: 404, body:, header: { 'X-APISECU-FD' => '00810011' })
+        end
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+        it 'does not attest the absence of the file' do
+          expect(subject.errors.first.attestation).to be_nil
+        end
+      end
+    end
   end
 
   context 'with 500 http code response' do
@@ -306,6 +332,14 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         )
 
         subject
+      end
+    end
+
+    context 'with an HTML error page from the gateway instead of JSON' do
+      let(:body) { '<html><head><title>Error</title></head><body>Bad Request</body></html>' }
+
+      it 'reports an unknown provider response instead of rejecting the civility' do
+        expect(subject.errors).to include(instance_of(ProviderUnknownError))
       end
     end
 
