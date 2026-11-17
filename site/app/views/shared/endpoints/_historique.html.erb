@@ -2,10 +2,10 @@
   <%= t('shared.endpoints.historique.title') %>
 </h2>
 <% if endpoint.first_version_production_date %>
-  <p class="fr-mb-1v"><%= t('shared.endpoints.historique.first_version_production_date', date: l(endpoint.first_version_production_date, format: :long)) %></p>
+  <p class="fr-mb-1v"><%= t('shared.endpoints.historique.first_version_production_date', date: production_date_label(endpoint.first_version_production_date)) %></p>
 <% end %>
 <% if endpoint.production_date %>
-  <p><%= t('shared.endpoints.historique.version_production_date', date: l(endpoint.production_date, format: :long)) %></p>
+  <p><%= t('shared.endpoints.historique.version_production_date', date: production_date_label(endpoint.production_date)) %></p>
 <% end %>
 <%= markdown_to_html(endpoint.historique) %>
 <% if endpoint.old_endpoints.any? %>

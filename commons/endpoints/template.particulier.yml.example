@@ -46,7 +46,7 @@ fiche:
     # La route complète vers l'endpoint avec /ping à la fin
     # En cas de doute consulter la sonde hyperping si elle a été ajoutée
     ping_url: 'https://particulier.api.gouv.fr/api/v2/paiements-pole-emploi/ping'
-    # Date de mise en production de cette version de l'API, au format 'AAAA-MM-JJ' (entre quotes)
+    # Date de mise en production de cette version de l'API, au format 'AAAA-MM-JJ' (entre quotes), ou 'AAAA-MM' quand seul le mois est connu (affiché « octobre 2021 »)
     # Facultatif : affichée dans la partie Historique de la fiche
     production_date: '2026-07-07'
     # Date de mise en production de la première version de l'API, quand une version antérieure existait

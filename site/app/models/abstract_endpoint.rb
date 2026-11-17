@@ -135,11 +135,11 @@ class AbstractEndpoint
   end
 
   def production_date
-    Date.iso8601(@production_date) if @production_date.present?
+    @production_date.presence
   end
 
   def first_version_production_date
-    Date.iso8601(@first_version_production_date) if @first_version_production_date.present?
+    @first_version_production_date.presence
   end
 
   def historicized?

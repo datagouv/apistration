@@ -16,6 +16,11 @@ module EndpointHelper
     extract_attribute_keys(endpoint.attributes)
   end
 
+  def production_date_label(iso_date)
+    format = iso_date.match?(/\A\d{4}-\d{2}\z/) ? '%B %Y' : :long
+    l(Date.iso8601(iso_date), format:)
+  end
+
   private
 
   def extract_attribute_keys(attributes, path_keys = [], path_titles = [])
