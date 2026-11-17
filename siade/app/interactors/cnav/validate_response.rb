@@ -84,6 +84,7 @@ class CNAV::ValidateResponse < ValidateResponse
   def bad_request_error!
     track_bad_request!
 
+    return unknown_provider_response! unless valid_json?
     return family_provider_failure! if family_provider_failure?
 
     rejected_civility!

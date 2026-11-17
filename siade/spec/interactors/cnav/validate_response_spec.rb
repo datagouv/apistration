@@ -335,6 +335,14 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       end
     end
 
+    context 'with an HTML error page from the gateway instead of JSON' do
+      let(:body) { '<html><head><title>Error</title></head><body>Bad Request</body></html>' }
+
+      it 'reports an unknown provider response instead of rejecting the civility' do
+        expect(subject.errors).to include(instance_of(ProviderUnknownError))
+      end
+    end
+
     context 'with a code out of the CNAV error table' do
       let(:body) { '{"errorCode":40099,"error":"?"}' }
 
