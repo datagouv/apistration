@@ -14,7 +14,7 @@ module AuthenticatedUserManagement
 
     store_return_to_location
 
-    error_message(title: t('concerns.sessions_management.unauthorized.signed_out.error.title'))
+    flash_sign_in_required
 
     redirect_to login_path
   end
