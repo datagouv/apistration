@@ -5668,8 +5668,10 @@ paths:
         required: false
       security:
       - jwt_bearer_token: []
-      description: 'Composition du foyer au sens de la prestation de revenu de solidarité
-        active (RSA) : bénéficiaires du foyer et personnes à charge.'
+      description: "Composition du foyer au sens de la prestation de revenu de solidarité
+        active (RSA) : bénéficiaires du foyer et personnes à charge. \n L'appel peut
+        être effectué avec l'identité de n'importe quel membre du foyer (allocataire,
+        conjoint, ouvrant droit), pas uniquement de l'allocataire."
       responses:
         '401':
           description: |-
@@ -6059,8 +6061,10 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'Composition du foyer au sens de la prestation de revenu de solidarité
-        active (RSA) : bénéficiaires du foyer et personnes à charge.'
+      description: "Composition du foyer au sens de la prestation de revenu de solidarité
+        active (RSA) : bénéficiaires du foyer et personnes à charge. \n L'appel peut
+        être effectué avec l'identité de n'importe quel membre du foyer (allocataire,
+        conjoint, ouvrant droit), pas uniquement de l'allocataire."
       responses:
         '403':
           description: |-
