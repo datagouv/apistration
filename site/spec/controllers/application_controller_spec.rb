@@ -57,10 +57,10 @@ RSpec.describe ApplicationController do
     context 'when idle for longer than the inactivity window' do
       before { session[:last_seen_at] = 13.hours.ago.to_i }
 
-      it 'invalidates the session and redirects to login' do
+      it 'invalidates the session and still serves the page' do
         get :index
 
-        expect(response).to redirect_to('/compte/se-connecter')
+        expect(response).to have_http_status(:ok)
         expect(session[:current_user_id]).to be_nil
       end
 
@@ -85,10 +85,10 @@ RSpec.describe ApplicationController do
         session[:absolute_expires_at] = 1.minute.ago.to_i
       end
 
-      it 'invalidates the session and redirects to login' do
+      it 'invalidates the session and still serves the page' do
         get :index
 
-        expect(response).to redirect_to('/compte/se-connecter')
+        expect(response).to have_http_status(:ok)
         expect(session[:current_user_id]).to be_nil
       end
 
@@ -129,9 +129,58 @@ RSpec.describe ApplicationController do
         travel_to(login_time + 24.hours + 30.minutes) do
           get :index
 
-          expect(response).to redirect_to('/compte/se-connecter')
+          expect(response).to have_http_status(:ok)
           expect(session[:current_user_id]).to be_nil
         end
+      end
+    end
+
+    context 'when the expired visitor hits a public page that redirects' do
+      controller do
+        def index
+          redirect_to '/catalogue'
+        end
+      end
+
+      before { session[:last_seen_at] = 13.hours.ago.to_i }
+
+      it 'carries the expiration message to the next page' do
+        get :index
+
+        expect(flash.to_session_value['flashes']).to have_key('info')
+      end
+    end
+
+    context 'when the expired visitor hits a public page that renders' do
+      before { session[:last_seen_at] = 13.hours.ago.to_i }
+
+      it 'shows the expiration message on this page only' do
+        get :index
+
+        expect(flash[:info]).to be_present
+        expect(flash.to_session_value).to be_nil
+      end
+    end
+
+    context 'when an admin impersonating a user lets the session expire' do
+      controller do
+        def index
+          render plain: current_user.inspect
+        end
+      end
+
+      let(:impersonated_user) { create(:user) }
+
+      before do
+        session[:impersonated_user_id] = impersonated_user.id
+        session[:last_seen_at] = 13.hours.ago.to_i
+      end
+
+      it 'serves the page to an anonymous visitor' do
+        get :index
+
+        expect(response.body).to eq('nil')
+        expect(session[:impersonated_user_id]).to be_nil
       end
     end
 
@@ -141,10 +190,10 @@ RSpec.describe ApplicationController do
         session.delete(:absolute_expires_at)
       end
 
-      it 'invalidates the session and redirects to login' do
+      it 'invalidates the session and still serves the page' do
         get :index
 
-        expect(response).to redirect_to('/compte/se-connecter')
+        expect(response).to have_http_status(:ok)
         expect(session[:current_user_id]).to be_nil
       end
     end

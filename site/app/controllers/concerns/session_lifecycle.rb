@@ -12,6 +12,7 @@ module SessionLifecycle
 
   included do
     before_action :enforce_session_timeouts
+    after_action :show_expiry_notice_once
   end
 
   private
@@ -63,8 +64,25 @@ module SessionLifecycle
   def expire_session(reason)
     User::CloseSession.call(user: current_user, reason: "#{reason}_timeout")
     reset_session
+    forget_expired_user
     info_message(title: t("concerns.sessions_management.session_expired.#{reason}", hours: timeout_hours(reason)))
-    redirect_to login_path
+  end
+
+  def forget_expired_user
+    @session_expired = true
+    @current_user = nil
+    stop_impersonating_user
+    SecurityEvent.set_request_context(user: nil, true_user: nil)
+  end
+
+  def show_expiry_notice_once
+    flash.discard(:info) if @session_expired && !response.redirect?
+  end
+
+  def flash_sign_in_required
+    return if @session_expired
+
+    error_message(title: t('concerns.sessions_management.unauthorized.signed_out.error.title'))
   end
 
   def timeout_hours(reason)

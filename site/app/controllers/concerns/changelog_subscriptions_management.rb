@@ -40,7 +40,7 @@ module ChangelogSubscriptionsManagement
   def authenticate_user!
     return if user_signed_in?
 
-    error_message(title: t('concerns.sessions_management.unauthorized.signed_out.error.title'))
+    flash_sign_in_required
 
     redirect_to login_path
   end
