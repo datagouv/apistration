@@ -95,7 +95,11 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   def family_provider_failure!
-    fail_with_error!(build_error(::ProviderInternalServerError).add_meta(provider_error_meta))
+    provider_internal_server_error!(provider_error_meta)
+  end
+
+  def provider_internal_server_error!(meta)
+    fail_with_error!(build_error(::ProviderInternalServerError).add_meta(meta))
   end
 
   def rejected_civility!
