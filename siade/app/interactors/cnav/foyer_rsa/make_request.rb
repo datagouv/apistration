@@ -1,4 +1,6 @@
 class CNAV::FoyerRSA::MakeRequest < MockedInteractor
+  include CivilityMockingParams
+
   FILE_NOT_FOUND = raises ::NotFoundError,
     provider: 'CNAV',
     title: 'Dossier non trouvé',
@@ -14,21 +16,6 @@ class CNAV::FoyerRSA::MakeRequest < MockedInteractor
   end
 
   protected
-
-  # rubocop:disable-next Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-  def mocking_params
-    {
-      nomNaissance: context.params[:nom_naissance]&.downcase,
-      nomUsage: context.params[:nom_usage]&.downcase,
-      prenoms: context.params[:prenoms]&.map(&:downcase),
-      anneeDateNaissance: context.params[:annee_date_naissance]&.to_i,
-      moisDateNaissance: context.params[:mois_date_naissance]&.to_i,
-      jourDateNaissance: context.params[:jour_date_naissance]&.to_i,
-      sexeEtatCivil: context.params[:sexe_etat_civil]&.downcase,
-      codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
-      codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
-    }.compact
-  end
 
   def request_uri
     fail NotImplementedError
