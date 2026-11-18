@@ -220,6 +220,62 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
       subject
     end
+
+    it 'carries the DSS error code in the error meta, without its free-form message' do
+      expect(subject.errors.first.meta).to eq(
+        provider: 'Sécurité sociale',
+        provider_error_code: 50_001
+      )
+    end
+
+    it 'logs the DSS error code in the access logs' do
+      RenderedError.capture(subject.errors)
+
+      expect(RenderedError.log_fields).to include(provider_error_code: '50001')
+    end
+
+    context 'when the gateway fails on a connection reset, without DSS error code' do
+      let(:response) do
+        instance_double(Net::HTTPInternalServerError, code: 500, body: '{"Exception":"API Gateway encountered an error. Error Message - java.net.SocketException: Connection reset. Service - API_Prestations, Operation - /AEEH/details"}', header: {})
+      end
+
+      it 'carries the connection reset cause in the error meta, without the raw exception' do
+        expect(subject.errors.first.meta).to eq(
+          provider: 'Sécurité sociale',
+          provider_error_code: 'http_500_connection_reset'
+        )
+      end
+
+      it 'logs the connection reset cause in the access logs' do
+        RenderedError.capture(subject.errors)
+
+        expect(RenderedError.log_fields).to include(provider_error_code: 'http_500_connection_reset')
+      end
+    end
+
+    context 'when the gateway fails on another exception, without DSS error code' do
+      let(:response) do
+        instance_double(Net::HTTPInternalServerError, code: 500, body: '{"Exception":"API Gateway encountered an error. Error Message - java.net.SocketTimeoutException: Read timed out"}', header: {})
+      end
+
+      it 'carries a generic gateway exception cause in the error meta' do
+        expect(subject.errors.first.meta).to include(provider_error_code: 'http_500_gateway_exception')
+      end
+    end
+
+    context 'when DSS answers with an HTML page' do
+      let(:response) do
+        instance_double(Net::HTTPInternalServerError, code: 500, body: '<html><body><h1>Internal Server Error</h1></body></html>', header: {})
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'logs the HTTP status as provider error code in the access logs' do
+        RenderedError.capture(subject.errors)
+
+        expect(RenderedError.log_fields).to include(provider_error_code: 'http_500')
+      end
+    end
   end
 
   context 'with random http code response' do

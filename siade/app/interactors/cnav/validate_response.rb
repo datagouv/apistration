@@ -5,6 +5,10 @@ class CNAV::ValidateResponse < ValidateResponse
 
   FAMILY_PROVIDER_FAILURE_ERROR_CODES = [40_000, 40_024].freeze
 
+  INTERNAL_SERVER_ERROR_FALLBACK_CODE = 'http_500'.freeze
+  GATEWAY_CONNECTION_RESET_CODE = 'http_500_connection_reset'.freeze
+  GATEWAY_EXCEPTION_CODE = 'http_500_gateway_exception'.freeze
+
   raises ProviderUnprocessableEntityError, reason: :unidentified_person
   raises ProviderUnprocessableEntityError, reason: :rejected_civility
 
@@ -133,7 +137,22 @@ class CNAV::ValidateResponse < ValidateResponse
       fingerprint: ['cnav-internal-server-error', context.dss_prestation_name.to_s, error_code_from_body.to_s]
     )
 
-    internal_server_error!
+    provider_internal_server_error!(internal_server_error_meta)
+  end
+
+  def internal_server_error_meta
+    { provider_error_code: json_body['errorCode'].presence || gateway_error_code }
+  rescue JSON::ParserError
+    { provider_error_code: INTERNAL_SERVER_ERROR_FALLBACK_CODE }
+  end
+
+  def gateway_error_code
+    gateway_exception = json_body['Exception'].to_s
+
+    return INTERNAL_SERVER_ERROR_FALLBACK_CODE if gateway_exception.blank?
+    return GATEWAY_CONNECTION_RESET_CODE if gateway_exception.include?('Connection reset')
+
+    GATEWAY_EXCEPTION_CODE
   end
 
   private
