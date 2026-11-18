@@ -261,6 +261,17 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       it 'carries a generic gateway exception cause in the error meta' do
         expect(subject.errors.first.meta).to include(provider_error_code: 'http_500_gateway_exception')
       end
+
+      it 'names the fallback cause in the tracked message' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'warning',
+          '[Sécurité sociale] Internal server error (http_500_gateway_exception)',
+          anything,
+          anything
+        )
+
+        subject
+      end
     end
 
     context 'when DSS answers with an HTML page' do
