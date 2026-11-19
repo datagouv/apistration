@@ -31,17 +31,42 @@ if [ "$(pwd -P)" = "$WORKTREE_PATH" ] || [[ "$(pwd -P)" == "$WORKTREE_PATH/"* ]]
   exit 1
 fi
 
+listener_pids() {
+  local port="$1"
+
+  if command -v lsof >/dev/null; then
+    lsof -nP -iTCP:"$port" -sTCP:LISTEN -t 2>/dev/null || true
+  elif command -v fuser >/dev/null; then
+    fuser -n tcp "$port" 2>/dev/null || true
+  else
+    echo "Warning: neither lsof nor fuser found, cannot stop the server on port $port" >&2
+  fi
+}
+
 stop_server() {
   local env_file="$1"
-  local port pids
+  local port pids pid alive
 
   [ -f "$env_file" ] || return 0
   port="$(sed -n 's/^PORT=//p' "$env_file")"
   [ -n "$port" ] || return 0
-  pids="$(lsof -nP -iTCP:"$port" -sTCP:LISTEN -t 2>/dev/null || true)"
+  pids="$(listener_pids "$port")"
   [ -n "$pids" ] || return 0
-  echo "$pids" | xargs kill
-  echo "Stopped server on port $port"
+  echo "$pids" | xargs kill 2>/dev/null || true
+  for _ in $(seq 20); do
+    alive=""
+    for pid in $pids; do
+      kill -0 "$pid" 2>/dev/null && alive=1
+    done
+    [ -n "$alive" ] || break
+    sleep 0.5
+  done
+  if [ -n "$alive" ]; then
+    echo "$pids" | xargs kill -KILL 2>/dev/null || true
+    echo "Killed server on port $port, still running 10s after SIGTERM" >&2
+  else
+    echo "Stopped server on port $port"
+  fi
 }
 
 if [ -d "$WORKTREE_PATH" ]; then
@@ -63,7 +88,7 @@ for db_prefix in siade admin_apientreprise; do
   for env in development test; do
     db="${db_prefix}_${env}_${SLUG}"
     if psql -X -Atc "SELECT 1 FROM pg_database WHERE datname = '$db'" postgres | grep -q 1; then
-      dropdb "$db"
+      dropdb --force "$db"
       echo "Dropped database $db"
     fi
   done
