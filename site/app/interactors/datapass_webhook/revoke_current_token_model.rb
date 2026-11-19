@@ -4,9 +4,8 @@ class DatapassWebhook::RevokeCurrentTokenModel < ApplicationInteractor
     return unless token_already_exists?
 
     active_delegations = authorization_request.editor_delegations.active.to_a
-    authorization_request.revoke!
+    context.revoked_tokens = authorization_request.revoke!
     context.revoked_delegations = active_delegations
-    context.revoked_token = authorization_request.token&.reload
   end
 
   private

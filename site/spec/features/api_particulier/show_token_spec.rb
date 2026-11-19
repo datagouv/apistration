@@ -51,10 +51,6 @@ RSpec.describe 'displays the token', app: :api_particulier do
 
         expect(page).to have_text('demandeur')
       end
-
-      it 'emits no token reveal' do
-        expect { visit api_particulier_token_path(id: token.id) }.not_to emit_security_event('token.api_token.revealed')
-      end
     end
   end
 

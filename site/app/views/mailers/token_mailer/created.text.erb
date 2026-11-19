@@ -1,0 +1,7 @@
+Bonjour,
+
+<%= @actor.full_name %> a créé le jeton « <%= @token.name %> » de la demande n°<%= @authorization_request.external_id %> (<%= @authorization_request.intitule %>).
+
+Voir les jetons de la demande : <%= api_url(:authorization_request, id: @authorization_request.id) %>
+
+L'équipe <%= api_full_name %>
