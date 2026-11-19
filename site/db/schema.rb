@@ -342,6 +342,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
   end
 
   create_table "tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.cidr "allowed_ips", default: [], null: false, array: true
     t.string "authorization_request_id"
     t.uuid "authorization_request_model_id", null: false
     t.datetime "blacklisted_at"

@@ -13,6 +13,14 @@
       </div>
       <div class="fr-card__desc">
         <p class="fr-mb-1v"><%= t("shared.authorization_requests.token_card.end_date.#{token.card_status}", date: friendly_date_from_timestamp(token.card_end_timestamp)) %></p>
+        <p class="fr-mb-1v fr-text--sm" id="<%= dom_id(token, :allowed_ips) %>">
+          <% if token.allowed_ips.any? %>
+            <%= t('shared.authorization_requests.token_card.allowed_ips') %>
+            <% token.allowed_ips_as_strings.each do |ip| %><code><%= ip %></code> <% end %>
+          <% else %>
+            <span class="fr-text-mention--grey"><%= t('shared.authorization_requests.token_card.no_allowed_ips') %></span>
+          <% end %>
+        </p>
         <p class="fr-mb-0 fr-text--xs">
           <% if token.creator %>
             <%= t('shared.authorization_requests.token_card.created_by', date: friendly_date_from_timestamp(token.created_at), name: token.creator.full_name) %>
