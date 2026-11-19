@@ -530,12 +530,14 @@ paths:
                         type: string
                         description: Le statut du demandeur du dossier d'immatriculation.
                           Si le véhicule est en location longue durée (LLD, LCB, LCL),
-                          alors il s'agit du locataire. Dans les autres cas, c'est
-                          'titulaire' ou 'cotitulaire'.
+                          alors il s'agit du locataire. Si le demandeur vient d'acquérir
+                          le véhicule, il s'agit de l'acquéreur. Dans les autres cas,
+                          c'est 'titulaire' ou 'cotitulaire'.
                         enum:
                         - locataire
                         - titulaire
                         - cotitulaire
+                        - acquereur
                         example: titulaire
                         x-scope: ants_extrait_immatriculation_vehicule_statut_rattachement
                       donnees_immatriculation_vehicule:
@@ -885,6 +887,17 @@ paths:
                     sont pas connus, ou ne comportent aucune information pour cet
                     appel. Veuillez vérifier que votre recherche est couverte par
                     le périmètre de l'API.
+                identite_non_trouvee_42404:
+                  value:
+                    errors:
+                    - code: '42404'
+                      title: Identité non trouvée
+                      detail: Immatriculation trouvée mais aucune identité ne correspond
+                      source:
+                      meta:
+                        provider: ANTS
+                  summary: Identité non trouvée
+                  description: Immatriculation trouvée mais aucune identité ne correspond
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':
