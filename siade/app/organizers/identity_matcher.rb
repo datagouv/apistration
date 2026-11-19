@@ -1,6 +1,6 @@
 class IdentityMatcher < ApplicationOrganizer
   organize MatchIdentity::FamilyName,
     MatchIdentity::GivenName,
-    MatchIdentity::MatchBirthdate,
+    MatchIdentity::Birthdate,
     MatchIdentity::DeduceMatch
 end

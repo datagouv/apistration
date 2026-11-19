@@ -51,7 +51,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::SelectRequesterHolder, type
 
     its(:matches) { is_expected.to be(true) }
 
-    its(:matchings) { is_expected.to include('matchbirthdate' => true) }
+    its(:matchings) { is_expected.to include('birthdate' => true) }
   end
 
   context 'when the birth date differs but the names match' do
@@ -60,7 +60,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::SelectRequesterHolder, type
 
     its(:holder) { is_expected.to eq(titulaire) }
 
-    its(:matchings) { is_expected.to include('matchbirthdate' => false) }
+    its(:matchings) { is_expected.to include('birthdate' => false) }
   end
 
   context 'when another holder is listed before the requester' do

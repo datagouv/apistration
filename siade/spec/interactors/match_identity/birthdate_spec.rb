@@ -1,4 +1,4 @@
-RSpec.describe MatchIdentity::MatchBirthdate do
+RSpec.describe MatchIdentity::Birthdate do
   subject { described_class.call(candidate_identity: identite, reference_identity: identite_pivot) }
 
   let(:identite) do
@@ -19,8 +19,8 @@ RSpec.describe MatchIdentity::MatchBirthdate do
   describe 'when birthdate matches completely' do
     it { is_expected.to be_a_success }
 
-    it 'sets matchbirthdate matching to true' do
-      expect(subject.matchings['matchbirthdate']).to be true
+    it 'sets birthdate matching to true' do
+      expect(subject.matchings['birthdate']).to be true
     end
   end
 
@@ -35,8 +35,8 @@ RSpec.describe MatchIdentity::MatchBirthdate do
 
     it { is_expected.to be_a_success }
 
-    it 'sets matchbirthdate matching to false' do
-      expect(subject.matchings['matchbirthdate']).to be false
+    it 'sets birthdate matching to false' do
+      expect(subject.matchings['birthdate']).to be false
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe MatchIdentity::MatchBirthdate do
     end
 
     it 'matches string numbers with integers' do
-      expect(subject.matchings['matchbirthdate']).to be true
+      expect(subject.matchings['birthdate']).to be true
     end
   end
 end

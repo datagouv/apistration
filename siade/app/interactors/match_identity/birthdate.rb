@@ -1,4 +1,4 @@
-class MatchIdentity::MatchBirthdate < MatchIdentity::Base
+class MatchIdentity::Birthdate < MatchIdentity::Base
   protected
 
   def match?

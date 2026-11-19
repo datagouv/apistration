@@ -4,7 +4,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
   let(:response) { instance_double(Net::HTTPOK, body:) }
   let(:body) { read_payload_file('ants/found.json') }
   let(:holder) { JSON.parse(body)['listeDossiers'][0]['personne']['qualiteType'][0] }
-  let(:matchings) { { 'familyname' => true, 'givenname' => true, 'matchbirthdate' => true } }
+  let(:matchings) { { 'familyname' => true, 'givenname' => true, 'birthdate' => true } }
   let(:matches) { true }
 
   it { is_expected.to be_a_success }
@@ -72,7 +72,7 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
           matchings: {
             'familyname' => true,
             'givenname' => true,
-            'matchbirthdate' => true
+            'birthdate' => true
           },
           matches: true
         }
