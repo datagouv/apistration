@@ -215,7 +215,7 @@ fr:
             description: Cette fonctionnalité vous permet d'envoyer un e-mail contenant un lien d'accès au jeton. L'URL transmise a une durée limitée de 4 heures.
               <br>
               <br>
-              Attention, nos <a href="https://entreprise.api.gouv.fr/cgu/">CGU</a> vous engagent ! Vous ne devez pas divulguer cet accès à des tiers non-habilités. Pour en savoir plus, consultez <a href='https://entreprise.api.gouv.fr/faq#comment-transmettre-le-jeton-d-acces-en-tout-securite' target='_blank' rel='noopener noreferrer'>cette rubrique de notre FAQ</a>.
+              Attention, nos <a href="https://entreprise.api.gouv.fr/cgu/">CGU</a> vous engagent ! Vous ne devez pas divulguer cet accès à des tiers non-habilités. Pour en savoir plus, consultez <a href='https://entreprise.api.gouv.fr/faq#comment-transmettre-le-jeton-d-acces-en-toute-securite' target='_blank' rel='noopener noreferrer'>cette rubrique de notre FAQ</a>.
             email:
               label: Adresse e-mail du destinataire
               placeholder: jean@dupont.fr

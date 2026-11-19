@@ -24,7 +24,7 @@ fr:
                 {:.fr-highlight.fr-highlight--caution}
                 > ⚠️ Vous ne devez **jamais copier-coller un token dans un moteur de recherche ou dans un e-mail**. L’usage de votre token se fait uniquement dans votre logiciel métier sécurisé utilisé pour réaliser vos appels.
 
-                Pour transmettre votre jeton en toute sécurité, consultez cette autre [question de la FAQ](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-tout-securite') %>).
+                Pour transmettre votre jeton en toute sécurité, consultez cette autre [question de la FAQ](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-toute-securite') %>).
 
             - question: "Qu’est-ce qu’une API ?"
               answer: |+
@@ -76,7 +76,7 @@ fr:
                 Il faut également être techniquement en mesure d’intégrer l’API Particulier, le détail des prérequis techniques est listé dans la [rubrique de l'espace développeur](<%= developers_path(anchor: 'prerequis-techniques') %>)
                 **Pour vérifier votre éligibilité et faire une demande d’habilitation le cas échéant, suivez le lien suivant :**
 
-                [Vérifier son éligibilité](https://datapass.api.gouv.fr/demandes/api-entreprise/nouveau}{:target="_blank"}){:.fr-btn fr-btn--secondary}
+                [Vérifier son éligibilité](<%= datapass_base_url %>/api-particulier){:target="_blank"}{:.fr-btn fr-btn--secondary}
 
                 L’accès à l’API Particulier est modéré et régulé par la DINUM, qui attribue des autorisations de récupération d’informations selon la nature des démarches à traiter ([cas d’usages](<%= cas_usages_path %>)).
 
@@ -140,7 +140,7 @@ fr:
                   > ℹ️ Si vous êtes **éditeur de logiciel, c'est à votre client public, collectivité ou administration, de faire sa demande d'habilitation auprès de l'API Particulier**.
 
                   Vous pouvez nous demander de vous référencer sur un cas d'usage afin de proposer un formulaire pré-rempli qui simplifiera l'expérience de vos clients. Voici la procédure à suivre :
-                  - Répérer les données dont vos clients publics ont besoin pour un [cas d'usage](<%= cas_usages_path %>) précis qui seront proposées dans votre solution logicielle ;
+                  - Repérer les données dont vos clients publics ont besoin pour un [cas d'usage](<%= cas_usages_path %>) précis qui seront proposées dans votre solution logicielle ;
                   - Consulter l'[espace développeurs](<%= developers_path %>), et utiliser le [bac à sable](<%= developers_path(anchor: 'kit-de-mise-en-production') %>) pour tester les appels d'API ;
                   - Écrire à [support@particulier.api.gouv.fr](mailto:support@particulier.api.gouv.fr) pour être référencé sur le cas d'usage associé et remplissez ce [questionnaire pour avoir un formulaire pré-rempli](https://form.typeform.com/to/OJ4rkf5Z){:target='_blank'} à disposition de vos clients. 
 
@@ -160,7 +160,7 @@ fr:
 
                 En tant qu'administration, vous souhaitez obtenir un accès à l'API Particulier que vous allez intégrer par vous même dans votre système d'information : 
                 - **Si vous avez un cas d'usage précis**, vous pouvez utiliser le formulaire pré-rempli associé à ce cas d'usage. Vous retrouverez le formulaire en bas de chaque fiche cas d'usage présente sur [cette page](<%= cas_usages_path %>).
-                - **Si votre service ne correpond à aucun cas d'usage défini [à cette page](<%= cas_usages_path %>)**, vous pouvez utiliser le formulaire de demande libre. ⚠️ Les demandes libres sont plus longues à traiter car elles nécessitent une instruction plus approfondie.
+                - **Si votre service ne correspond à aucun cas d'usage défini [à cette page](<%= cas_usages_path %>)**, vous pouvez utiliser le formulaire de demande libre. ⚠️ Les demandes libres sont plus longues à traiter car elles nécessitent une instruction plus approfondie.
             - question: "Quelles informations sont demandées ?"
               answer: |+
                 Les informations que vous aurez à compléter lors de votre demande d'habilitation varient selon le formulaire que vous allez choisir. En effet, les champs de certains formulaires sont déjà pré-remplis. C'est par exemple le cas des formulaires associés à un éditeur de logiciel, ou encore des formulaires conçus pour un cas d'usage prédéfini.
@@ -241,11 +241,11 @@ fr:
                   {:.fr-highlight.fr-highlight--caution}
                   > ⚠️ Le token vous est propre, il ne faut pas le diffuser. Vous ne devez jamais copier-coller un token dans un moteur de recherche ou dans un e-mail. L’usage de votre token se fait uniquement dans votre logiciel métier sécurisé utilisé pour réaliser vos appels.
 
-                  **Vous devez transmettre ce jeton à votre éditeur ? Ou à votre équipe technique ?** Utilisez la [fonctionnalité prévue à cet effet](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-tout-securite') %>).
+                  **Vous devez transmettre ce jeton à votre éditeur ? Ou à votre équipe technique ?** Utilisez la [fonctionnalité prévue à cet effet](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-toute-securite') %>).
 
                   **Le jeton est valable 18 mois, il devra ensuite être prolongé par le demandeur tous les 18 mois, avant sa date d'expiration**. Autrement, vous ne pourrez plus accéder aux API tant que la prolongation n'aura pas été effectuée. Pour en savoir plus sur la procédure de prolongation, veuillez lire [cette rubrique](<%= faq_index_path(anchor: 'comment-prolonger-mon-jeton-arrivant-a-expiration') %>).
 
-            - question: "Comment transmettre le jeton d’accès en tout sécurité ?"
+            - question: "Comment transmettre le jeton d’accès en toute sécurité ?"
               answer: |+
                 Dans le cadre de l'intégration de l’API, il peut arriver qu'il y ait besoin ponctuellement de transmettre le jeton à une personne qui n'a pas accès au [compte utilisateur](<%= user_profile_path %>).
                 ⚠️ Comme expliqué [ici](<%= faq_index_path(anchor: 'qu-est-ce-qu-un-token-ou-jeton') %>), votre token vous est propre, il ne faut surtout pas le copier/coller dans un e-mail.
@@ -305,7 +305,7 @@ fr:
               answer: |+
                 Pour élargir le périmètre des données auxquelles vous avez accès, vous devez effectuer une **demande de mise à jour de votre habilitation**&nbsp;:
 
-                1. Connectez-vous à votre [compte utilisateur API Entreprise](<%= user_profile_path %>) ;
+                1. Connectez-vous à votre [compte utilisateur API Particulier](<%= user_profile_path %>) ;
                 2. Depuis la page "Habilitations", cliquez sur la flèche de l'habilitation dont vous souhaitez étendre les droits pour accéder à sa page détaillée  ;
                 3. Dans la première partie de cette page "Vos droits d'accès", cliquez sur le lien "Demander l'accès à d'autres API". Une fenêtre s'ouvre et vous indique la suite de la démarche. Vous allez en effet être redirigé sur le site Datapass, sur lequel vous aviez fait votre demande d'habilitation. Sur Datapass, une demande de mise à jour de votre habilitation est alors ouverte.
                 4. Sélectionnez les données dont votre service à besoin.
