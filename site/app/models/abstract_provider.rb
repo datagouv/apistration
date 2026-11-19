@@ -17,6 +17,14 @@ class AbstractProvider
     provider_i18n_backend.map { |entry| new(entry) }
   end
 
+  def self.users_by_uid(uids)
+    users = User.where('provider_uids && ARRAY[?]::varchar[]', uids).to_a
+
+    uids.index_with do |uid|
+      users.select { |user| user.provider_uids.include?(uid) }
+    end
+  end
+
   def self.filter_by_uid(uids)
     all.select do |provider|
       uids.include?(provider.uid)
