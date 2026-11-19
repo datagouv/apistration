@@ -301,7 +301,7 @@ payloads automatiquement, sans étape de rechargement séparée.
 
 #### Dépendances
 
-- ruby 4.0.9
+- ruby 4.0.10
 
 ```sh
 bundle install
