@@ -21,14 +21,14 @@ class SentryWatchPrecheckTest < Minitest::Test
     def initialize(issues, regressions, notes, racing_teammate)
       @issues = issues
       @regressions = regressions
-      @notes = notes.transform_values { |claims| claims.map { |user, at| note(user, at) } }
+      @notes = notes.transform_values { |claims| claims.map { |user, at, text = SentryWatchPrecheck::CLAIM_NOTE| note(user, at, text) } }
       @racing_teammate = racing_teammate
     end
 
     def request(request)
       path, query_string = request.path.split('?', 2)
       return json({ 'user' => { 'id' => ME } }) if path == '/api/0/'
-      return claim(Regexp.last_match(1)) if request.method == 'POST' && path =~ %r{/issues/(\d+)/comments/\z}
+      return claim(Regexp.last_match(1), JSON.parse(request.body).fetch('text')) if request.method == 'POST' && path =~ %r{/issues/(\d+)/comments/\z}
       return withdraw(Regexp.last_match(1), Regexp.last_match(2)) if request.method == 'DELETE' && path =~ %r{/issues/(\d+)/comments/(\d+)/\z}
       return activities(Regexp.last_match(1)) if path =~ %r{/issues/(\d+)/activities/}
 
@@ -48,13 +48,15 @@ class SentryWatchPrecheckTest < Minitest::Test
 
     private
 
-    def claim(issue_id)
+    def claim(issue_id, text)
+      return FakeResponse.new('400', JSON.generate({ 'detail' => 'You have already posted that comment.' }), 'application/json') if posted?(issue_id, text)
+
       if @racing_teammate
         earlier = note(@racing_teammate, Time.now - 1)
         @committing = -> { notes_of(issue_id).unshift(earlier) }
         @racing_teammate = nil
       end
-      notes_of(issue_id) << note(ME, Time.now)
+      notes_of(issue_id) << note(ME, Time.now, text)
       FakeResponse.new('201', JSON.generate(notes_of(issue_id).last), 'application/json')
     end
 
@@ -67,9 +69,13 @@ class SentryWatchPrecheckTest < Minitest::Test
       @notes[issue_id] ||= []
     end
 
-    def note(user, at)
+    def posted?(issue_id, text)
+      notes_of(issue_id).any? { |claim| claim.dig('user', 'id') == ME && claim.dig('data', 'text') == text }
+    end
+
+    def note(user, at, text = SentryWatchPrecheck::CLAIM_NOTE)
       @next_note_id = @next_note_id.to_i + 1
-      { 'id' => @next_note_id.to_s, 'type' => 'note', 'user' => { 'id' => user }, 'data' => { 'text' => SentryWatchPrecheck::CLAIM_NOTE }, 'dateCreated' => at.iso8601(6) }
+      { 'id' => @next_note_id.to_s, 'type' => 'note', 'user' => { 'id' => user }, 'data' => { 'text' => text }, 'dateCreated' => at.iso8601(6) }
     end
 
     def activities(issue_id)
@@ -222,6 +228,38 @@ class SentryWatchPrecheckTest < Minitest::Test
     end
   end
 
+  def test_an_issue_the_job_claimed_before_it_regressed_is_claimed_again_and_handed
+    issues = [issue('1', first_seen: LAST_SUCCESS_AT - 86_400, last_seen: LAST_SUCCESS_AT + 60)]
+    with_sentry(issues:, regressions: { '1' => LAST_SUCCESS_AT + 60 }, notes: { '1' => [[FakeSentry::ME, LAST_SUCCESS_AT - 3600]] }) do |sentry|
+      exit_code, handed = run_precheck_and_parse
+
+      assert_equal 0, exit_code
+      assert_equal [['1', true]], handed.map { |i| [i['id'], i['regressed']] }
+      assert_equal [SentryWatchPrecheck::CLAIM_NOTE, "#{SentryWatchPrecheck::CLAIM_NOTE} since its regression of #{(LAST_SUCCESS_AT + 60).iso8601(6)}"],
+                   sentry.notes['1'].map { |claim| claim.dig('data', 'text') }
+    end
+  end
+
+  def test_a_teammate_claim_naming_the_regression_holds_the_regressed_issue
+    issues = [issue('1', first_seen: LAST_SUCCESS_AT - 86_400, last_seen: LAST_SUCCESS_AT + 60)]
+    regressed_at = LAST_SUCCESS_AT + 60
+    reclaim = "#{SentryWatchPrecheck::CLAIM_NOTE} since its regression of #{regressed_at.utc.iso8601(6)}"
+    with_sentry(issues:, regressions: { '1' => regressed_at }, notes: { '1' => [[TEAMMATE, LAST_SUCCESS_AT - 3600], [TEAMMATE, LAST_SUCCESS_AT + 120, reclaim]] }) do |sentry|
+      assert_equal [1, "every new or regressed issue is claimed by a teammate: SIADE-BACKEND-1\n", ''], run_precheck
+      assert_empty sentry.claims_by(FakeSentry::ME)
+    end
+  end
+
+  def test_a_comment_merely_quoting_the_claim_note_does_not_hold_the_issue
+    issues = [issue('1', first_seen: LAST_SUCCESS_AT + 60)]
+    quote = "#{SentryWatchPrecheck::CLAIM_NOTE} is stale, this issue still needs triage"
+    with_sentry(issues:, notes: { '1' => [[TEAMMATE, LAST_SUCCESS_AT + 120, quote]] }) do |sentry|
+      _, handed = run_precheck_and_parse
+
+      assert_equal ['1'], handed.map { |i| i['id'] }
+      assert_equal({ '1' => 1 }, sentry.claims_by(FakeSentry::ME))
+    end
+  end
 
   def test_nothing_new_skips_the_run_without_error
     with_sentry do

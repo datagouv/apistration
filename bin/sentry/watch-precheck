@@ -16,6 +16,7 @@ class SentryWatchPrecheck
   READ_TOKEN_FILE = '.sentry_token'
   WRITE_TOKEN_FILE = '.sentry_write_token'
   CLAIM_NOTE = 'Triage claimed by the ags job sentry-watch'
+  REGRESSION_CLAIM_NOTE = /\A#{Regexp.escape(CLAIM_NOTE)} since its regression of \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}Z\z/
   CLAIM_SETTLING = 3
   LOOKBACK_BEFORE_FIRST_SUCCESS = 6 * 3600
   AUTHENTICATION_STATUSES = %w[401 403].freeze
@@ -82,7 +83,13 @@ class SentryWatchPrecheck
   end
 
   def post_claim(candidate)
-    parse(call(Net::HTTP::Post, "/issues/#{candidate.id}/comments/", body: { text: CLAIM_NOTE }, token: write_token))
+    parse(call(Net::HTTP::Post, "/issues/#{candidate.id}/comments/", body: { text: claim_note(candidate) }, token: write_token))
+  end
+
+  def claim_note(candidate)
+    return CLAIM_NOTE unless claim_notes(candidate).any? { |note| note.dig('data', 'text') == CLAIM_NOTE && note.dig('user', 'id') == me }
+
+    "#{CLAIM_NOTE} since its regression of #{candidate.claimable_since.utc.iso8601(6)}"
   end
 
   def won?(candidate, mine)
@@ -99,10 +106,16 @@ class SentryWatchPrecheck
   end
 
   def claims(candidate)
-    activities(candidate.id)
-      .select { |activity| activity['type'] == 'note' && activity.dig('data', 'text') == CLAIM_NOTE }
-      .select { |activity| Time.iso8601(activity['dateCreated']) >= candidate.claimable_since }
-      .sort_by { |activity| [Time.iso8601(activity['dateCreated']), activity['id'].to_i] }
+    claim_notes(candidate)
+      .select { |note| Time.iso8601(note['dateCreated']) >= candidate.claimable_since }
+      .sort_by { |note| [Time.iso8601(note['dateCreated']), note['id'].to_i] }
+  end
+
+  def claim_notes(candidate)
+    activities(candidate.id).select do |activity|
+      text = activity.dig('data', 'text').to_s
+      activity['type'] == 'note' && (text == CLAIM_NOTE || REGRESSION_CLAIM_NOTE.match?(text))
+    end
   end
 
   def me
