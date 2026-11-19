@@ -563,7 +563,7 @@ fr:
                   Il permet, à l'aide d'un token d'authentification valide 🔑, d'effectuer directement depuis le navigateur des tests de l'API. Les données confidentielles restent bien protégées. Vous y trouverez aussi la spécification technique téléchargeable sous format YAML afin de pouvoir accélérer le développement de vos outils d'interfaçage avec API&nbsp;Entreprise.
 
                   {:.fr-highlight.fr-highlight--caution}
-                  > ⚠️ Attention, pour rappel, vous ne devez jamais copier-coller un token dans la barre de recherche classique d'un moteur de recherche ou dans un e-mail. Pour récupérer votre jeton de façon sécurisée, consultez cette [rubrique](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-tout-securite') %>){:target="_blank"}.
+                  > ⚠️ Attention, pour rappel, vous ne devez jamais copier-coller un token dans la barre de recherche classique d'un moteur de recherche ou dans un e-mail. Pour récupérer votre jeton de façon sécurisée, consultez cette [rubrique](<%= faq_index_path(anchor: 'comment-transmettre-le-jeton-d-acces-en-toute-securite') %>){:target="_blank"}.
 
 
                   #### Éléments constitutifs de la requête HTTP d'API&nbsp;Entreprise

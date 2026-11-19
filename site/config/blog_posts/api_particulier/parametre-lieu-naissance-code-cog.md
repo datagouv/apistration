@@ -53,7 +53,7 @@ Il faut éviter de proposer un champ "Code COG" brut, sans explication. Ce champ
 
 Ce n'est pas anodin pour votre démarche car cela peut avoir les conséquences suivantes :
 - L'usager fait demi-tour car l'interface ne fonctionne pas ;
-- L'usager renseigne un autre code COG, et ces informations correpondent à l'identité d'un autre individu. Même si, bien sûr, ce cas est peu probable et que votre interface ne divulgue en aucun cas les informations de l'API sans que l'identification de l'usager n'ait été certifiée, cela est susceptible d'entrainer une confusion auprès des agents habilités qui traiteront le dossier.
+- L'usager renseigne un autre code COG, et ces informations correspondent à l'identité d'un autre individu. Même si, bien sûr, ce cas est peu probable et que votre interface ne divulgue en aucun cas les informations de l'API sans que l'identification de l'usager n'ait été certifiée, cela est susceptible d'entrainer une confusion auprès des agents habilités qui traiteront le dossier.
 
 **Dans ce guide, nous vous proposons donc deux parcours différents conçus pour faciliter le renseignement de ce paramètre d'appel** :
 - **[Le parcours 1](#option-1)** nécessite peu de développement informatique, l'expérience usager est correcte, même si elle fait reposer sur l'usager la contrainte de retrouver son code COG ;
