@@ -14,6 +14,31 @@ RSpec.describe 'Admin: provider dashboards', app: :api_entreprise do
       expect(page).to have_text('INSEE')
       expect(page).to have_no_text('France Travail')
     end
+
+    it 'lists each provider users, loaded in a single query' do
+      create(:user, email: 'insee-agent@example.gouv.fr', provider_uids: %w[insee])
+      create(:user, email: 'dgfip-agent@example.gouv.fr', provider_uids: %w[dgfip])
+      create(:user, email: 'no-provider@example.gouv.fr')
+
+      provider_users_queries = []
+      track_provider_users_queries = lambda do |*, payload|
+        provider_users_queries << payload[:sql] if payload[:sql].match?(/WHERE.*provider_uids/)
+      end
+
+      ActiveSupport::Notifications.subscribed(track_provider_users_queries, 'sql.active_record') do
+        visit admin_provider_dashboards_path
+      end
+
+      expect(provider_users_queries.size).to eq(1)
+      expect(provider_row('INSEE')).to have_text('insee-agent@example.gouv.fr')
+      expect(provider_row('INSEE')).to have_no_text('dgfip-agent@example.gouv.fr')
+      expect(provider_row('DGFIP')).to have_text('dgfip-agent@example.gouv.fr')
+      expect(page).to have_no_text('no-provider@example.gouv.fr')
+    end
+  end
+
+  def provider_row(name)
+    find('tbody tr', text: name, match: :first)
   end
 
   describe 'show page' do

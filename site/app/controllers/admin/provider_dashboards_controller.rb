@@ -6,6 +6,7 @@ class Admin::ProviderDashboardsController < AdminController
 
   def index
     @providers = provider_klass.all
+    @users_by_provider_uid = provider_klass.users_by_uid(@providers.map(&:uid))
   end
 
   def show
