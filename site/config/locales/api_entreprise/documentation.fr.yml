@@ -559,7 +559,7 @@ fr:
 
                   Après avoir récupéré votre jeton, vous pouvez faire un premier appel de test.
 
-                  Utilisez l'[environnement de production documenté (_Swagger_)](https://api.gouv.fr/documentation/api-entreprise}{:target="_blank"}), disponible sur api.gouv.fr.
+                  Utilisez l'[environnement de production documenté (_Swagger_)](https://api.gouv.fr/documentation/api-entreprise){:target="_blank"}, disponible sur api.gouv.fr.
                   Il permet, à l'aide d'un token d'authentification valide 🔑, d'effectuer directement depuis le navigateur des tests de l'API. Les données confidentielles restent bien protégées. Vous y trouverez aussi la spécification technique téléchargeable sous format YAML afin de pouvoir accélérer le développement de vos outils d'interfaçage avec API&nbsp;Entreprise.
 
                   {:.fr-highlight.fr-highlight--caution}
