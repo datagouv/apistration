@@ -12,6 +12,8 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
 
   SEXE_ETAT_CIVIL_BY_SIV2_CODE = { 'H' => 'M', 'F' => 'F' }.freeze
 
+  STATUTS_RATTACHEMENT = %w[titulaire cotitulaire locataire acquereur].freeze
+
   def self.categorie_vehicule_labels
     load_yaml_data('ants/categorie_vehicule_labels.yml')
   end
@@ -103,7 +105,17 @@ class ANTS::ExtraitImmatriculationVehicule::BuildResource < BuildResource
   end
 
   def statut_rattachement
-    I18n.transliterate(qualite['libelle'].to_s).downcase.presence
+    normalized_libelle.presence_in(STATUTS_RATTACHEMENT) || track_unknown_statut
+  end
+
+  def normalized_libelle
+    I18n.transliterate(qualite['libelle'].to_s).downcase.gsub(/[^a-z]/, '')
+  end
+
+  def track_unknown_statut
+    MonitoringService.instance.track('warning', "[ANTS] Unknown qualite libelle: #{qualite['libelle'].inspect} (code #{qualite['code'].inspect})")
+
+    nil
   end
 
   def donnees_immatriculation_vehicule

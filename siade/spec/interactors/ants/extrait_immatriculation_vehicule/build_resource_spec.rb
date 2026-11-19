@@ -79,4 +79,34 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
       )
     end
   end
+
+  describe 'statut_rattachement' do
+    subject { instance.bundled_data.data.statut_rattachement }
+
+    let(:body) do
+      payload = JSON.parse(read_payload_file('ants/found.json'))
+      payload['listeDossiers'][0]['personne']['qualiteType'][0]['libelle'] = libelle
+      payload.to_json
+    end
+
+    {
+      'Titulaire' => 'titulaire',
+      'Co-titulaire' => 'cotitulaire',
+      'Cotitulaire' => 'cotitulaire',
+      'Locataire' => 'locataire',
+      'Acquéreur' => 'acquereur'
+    }.each do |libelle, expected|
+      context "with libelle #{libelle}" do
+        let(:libelle) { libelle }
+
+        it { is_expected.to eq(expected) }
+      end
+    end
+
+    context 'with a libelle outside the documented values' do
+      let(:libelle) { 'Mandataire' }
+
+      it { is_expected.to be_nil }
+    end
+  end
 end
