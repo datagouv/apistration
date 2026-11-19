@@ -1,54 +1,10 @@
 RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build_resource do
-  subject(:instance) { described_class.call(response:, params:, matched_identity:, matchings:, matches:) }
+  subject(:instance) { described_class.call(response:, holder:, matchings:, matches:) }
 
   let(:response) { instance_double(Net::HTTPOK, body:) }
-  let(:body) { read_payload_file('ants/found_siv.xml') }
-  let(:params) do
-    {
-      nom_naissance: 'DUPONT',
-      prenoms: ['JEAN'],
-      sexe_etat_civil: 'M',
-      annee_date_naissance: 1955,
-      mois_date_naissance: 12,
-      jour_date_naissance: 8,
-      code_cog_insee_commune_naissance: '59350'
-    }
-  end
-
-  let(:matched_identity) do
-    {
-      libelle_type_personne: 'titulaire',
-      identite_from_ants: {
-        nom_naissance: 'DUPONT',
-        prenoms: ['JEAN'],
-        sexe_etat_civil: 'M',
-        annee_date_naissance: 2000,
-        mois_date_naissance: 1,
-        jour_date_naissance: 1,
-        code_departement_naissance: '75'
-      },
-      address_from_ants: {
-        complement_information: nil,
-        num_voie: '12',
-        type_voie: 'AVENUE',
-        libelle_voie: 'DES CHAMPS',
-        code_postal_ville: '59000',
-        libelle_commune: 'LILLE',
-        lieu_dit: nil,
-        etage_escalier_appartement: nil,
-        extension: nil,
-        pays: 'FRANCE'
-      }
-    }
-  end
-
-  let(:matchings) do
-    {
-      'familyname' => true,
-      'givenname' => true
-    }
-  end
-
+  let(:body) { read_payload_file('ants/found.json') }
+  let(:holder) { JSON.parse(body)['listeDossiers'][0]['personne']['qualiteType'][0] }
+  let(:matchings) { { 'familyname' => true, 'givenname' => true, 'matchbirthdate' => true } }
   let(:matches) { true }
 
   it { is_expected.to be_a_success }
@@ -63,22 +19,22 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
             nom: 'DUPONT',
             prenom: 'JEAN',
             sexe_etat_civil: 'M',
-            annee_date_naissance: 2000,
-            mois_date_naissance: 1,
-            jour_date_naissance: 1,
-            code_departement_naissance: '75'
+            annee_date_naissance: 1980,
+            mois_date_naissance: 4,
+            jour_date_naissance: 12,
+            code_departement_naissance: '59'
           },
           adresse_particulier: {
             complement_information: nil,
             num_voie: '12',
-            type_voie: 'AVENUE',
+            type_voie: 'AV',
             libelle_voie: 'DES CHAMPS',
             code_postal_ville: '59000',
             libelle_commune: 'LILLE',
             lieu_dit: nil,
             etage_escalier_appartement: nil,
             extension: nil,
-            pays: 'FRANCE'
+            pays: nil
           },
           statut_rattachement: 'titulaire',
           donnees_immatriculation_vehicule: {
@@ -110,24 +66,17 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::BuildResource, type: :build
             taux_co2: 194,
             classe_environnementale: {
               code: 'Euro 4',
-              label: 'Norme européenne d\'émission Euro 4'
+              label: "Norme européenne d'émission Euro 4"
             }
           },
           matchings: {
             'familyname' => true,
-            'givenname' => true
+            'givenname' => true,
+            'matchbirthdate' => true
           },
           matches: true
         }
       )
-    end
-
-    describe 'when raw_code is nil' do
-      let(:body) { read_payload_file('ants/found_siv_no_raw_code.xml') }
-
-      it 'doesnt error' do
-        expect { subject }.not_to raise_error
-      end
     end
   end
 end

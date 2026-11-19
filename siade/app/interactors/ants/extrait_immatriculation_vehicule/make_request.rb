@@ -1,6 +1,8 @@
 class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   include UseANTSIssuedSSLCertificate
 
+  MODE_APPEL = 'L'.freeze
+
   private
 
   def http_options
@@ -8,8 +10,9 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   end
 
   def extra_headers(request)
-    request['Content-Type'] = 'application/soap+xml; charset=utf-8'
-    request['SOAPAction'] = ''
+    request['Content-Type'] = 'application/json'
+    request['X-Http-Method-Override'] = 'GET'
+    request['Authorization'] = "Bearer #{context.token}"
   end
 
   def mocking_params
@@ -19,7 +22,7 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   end
 
   def request_uri
-    URI(Siade.credentials[:ants_siv_url])
+    URI(Siade.credentials[:ants_siv2_url])
   end
 
   def request_params
@@ -27,15 +30,9 @@ class ANTS::ExtraitImmatriculationVehicule::MakeRequest < MakeRequest::Post
   end
 
   def build_request_body
-    ANTSDossierImmatriculationSoapBuilder.new(
-      immatriculation: context.params[:immatriculation].upcase,
-      ants_request_id:,
-      certificate: cert,
-      private_key: key
-    ).render
-  end
-
-  def ants_request_id
-    context.params[:request_id] ? "req_#{context.params[:request_id]}" : "rnd_#{SecureRandom.uuid}"
+    {
+      modeAppel: MODE_APPEL,
+      informations: { numImmat: context.params[:immatriculation]&.upcase }
+    }.to_json
   end
 end
