@@ -40,7 +40,9 @@ Rails.application.routes.draw do
 
   namespace :editor, path: 'editeur' do
     resource :settings, only: %i[show update], path: 'parametres'
-    resources :authorization_requests, only: %i[index], path: 'habilitations'
+    resources :authorization_requests, only: %i[index], path: 'habilitations' do
+      resource :token, only: %i[create], path: 'jeton', controller: 'authorization_request_tokens'
+    end
     resources :delegations, only: %i[index], path: 'delegations'
     resources :tokens, only: %i[index create edit update] do
       member do

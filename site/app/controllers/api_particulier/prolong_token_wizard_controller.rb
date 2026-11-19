@@ -1,3 +1,0 @@
-class APIParticulier::ProlongTokenWizardController < APIParticulier::AuthenticatedUsersController
-  include ProlongTokenWizardManagement
-end

@@ -45,10 +45,10 @@ RSpec.describe TokenFirstUseJob do
     )
   end
 
-  it 'emits the first use of the token that replaces a banned token already used' do
+  it 'emits the first use of the token a contact created to replace a banned token already used' do
     banned_token = create(:token, used: true, created_at: 2.months.ago)
     Admin::Tokens::Ban.call(token: banned_token, admin: create(:user, :admin), namespace: 'entreprise')
-    replacement_token = Token.where.not(id: banned_token.id).sole
+    replacement_token = create(:token, authorization_request: banned_token.authorization_request)
     create(:access_log, token: replacement_token, timestamp: 1.minute.from_now)
 
     expect { perform }.to emit_security_event('token.api_token.first_used').with(
