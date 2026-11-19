@@ -383,6 +383,32 @@ RSpec.describe Provider::DashboardQuery do
     end
   end
 
+  describe 'legacy endpoint of another provider' do
+    let(:dgfip_tva) { 'api_entreprise/v3_and_more/dgfip/tva' }
+    let(:vies) { 'api_entreprise/v3_and_more/european_commission/vies' }
+    let(:vies_title) { APIEntreprise::Endpoint.find('commission_europeenne/numero_tva').title }
+
+    before do
+      create(:access_log, controller: dgfip_tva, status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: vies, status: '200', api_version: 'v3', cached: false, duration: '100')
+      create(:access_log, controller: vies, status: '200', api_version: 'v3', cached: false, duration: '100')
+    end
+
+    it 'does not show the European Commission VIES traffic on the DGFiP TVA number' do
+      provider = APIEntreprise::Provider.find('dgfip')
+      narrow = Provider::DashboardFilter.new(provider, 'entreprise', routes: [dgfip_tva])
+
+      expect(described_class.new(provider, narrow).total_calls).to eq(1)
+    end
+
+    it 'keeps the VIES traffic under its own endpoint on the all providers dashboard' do
+      provider = Provider::All.new('entreprise')
+      rows = described_class.new(provider, Provider::DashboardFilter.new(provider, 'entreprise')).per_endpoint
+
+      expect(rows.find { |row| row[:endpoint] == vies_title }[:total]).to eq(2)
+    end
+  end
+
   describe 'endpoint callable through several modalities' do
     let(:provider) { APIParticulier::Provider.find('cnous') }
     let(:filter) { Provider::DashboardFilter.new(provider, 'particulier') }

@@ -104,10 +104,14 @@ class Provider::DashboardFilter
 
   def legacy_controllers(endpoint)
     endpoint.old_endpoints.filter_map do |old|
-      next old.controller if old.controller.present? && old.controller != 'Inline'
+      next old.controller if old.controller.present? && old.controller != 'Inline' && same_provider?(endpoint, old)
 
       nil
     end
+  end
+
+  def same_provider?(endpoint, old_endpoint)
+    endpoint.provider_uids.to_a.intersect?(old_endpoint.provider_uids.to_a)
   end
 
   def endpoint_klass
