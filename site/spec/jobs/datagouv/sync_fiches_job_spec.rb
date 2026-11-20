@@ -1,6 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe Datagouv::SyncFichesJob do
+  describe '.enqueue_at_boot, as the GoodJob worker boots in production' do
+    subject(:enqueue_at_boot) { described_class.enqueue_at_boot }
+
+    around do |example|
+      GoodJob::CLI.within_exe = true
+      example.run
+    ensure
+      GoodJob::CLI.within_exe = false
+    end
+
+    before { allow(Rails.env).to receive(:production?).and_return(true) }
+
+    it 'enqueues a sync of the fiches' do
+      expect { enqueue_at_boot }.to have_enqueued_job(described_class)
+    end
+
+    context 'when the good_jobs table does not exist yet' do
+      before do
+        allow(described_class).to receive(:queue_adapter).and_return(GoodJob::Adapter.new(execution_mode: :external))
+        ActiveRecord::Base.connection.drop_table(:good_jobs)
+      end
+
+      it 'lets the worker boot' do
+        expect { enqueue_at_boot }.not_to raise_error
+      end
+    end
+  end
+
   describe '#perform' do
     subject(:perform) { described_class.new.perform }
 
