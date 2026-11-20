@@ -1,3 +1,5 @@
 Rails.application.config.after_initialize do
-  Datagouv::SyncFichesJob.perform_later if Rails.env.production? || Rails.env.sandbox?
+  next unless (Rails.env.production? || Rails.env.sandbox?) && GoodJob::CLI.within_exe?
+
+  Datagouv::SyncFichesJob.perform_later
 end
