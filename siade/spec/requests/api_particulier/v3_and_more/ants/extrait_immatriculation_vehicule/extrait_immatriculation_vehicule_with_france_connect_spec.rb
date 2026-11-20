@@ -62,6 +62,18 @@ RSpec.describe 'ANTS: ExtraitImmatriculationVehicule With FranceConnect', api: :
           end
         end
 
+        describe 'when the identity does not match the immatriculation' do
+          before { stub_ants_extrait_immatriculation_vehicule_identity_mismatch }
+
+          response '404', 'Immatriculation non trouvée ou identité non trouvée pour cette immatriculation' do
+            build_rswag_example(ANTSError.new(:no_matching_identity))
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+        end
+
         # TODO: Waiting FCv2 to be merge to provide error examples
       end
     end
