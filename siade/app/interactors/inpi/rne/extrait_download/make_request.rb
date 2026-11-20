@@ -1,4 +1,4 @@
-class INPI::RNE::ExtraitDownload::MakeRequest < INPI::RNE::MakeRequest
+class INPI::RNE::ExtraitDownload::MakeRequest < INPI::RNE::Download::MakeRequest
   def request_uri
     URI("https://data.inpi.fr/export/companies?format=pdf&ids=[\"#{siren}\"]")
   end

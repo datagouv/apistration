@@ -75,5 +75,40 @@ RSpec.describe APIEntreprise::INPIProxyController do
 
       it { is_expected.to have_http_status(:not_found) }
     end
+
+    describe 'in staging, where providers are mocked' do
+      let(:sample_document_url) { 'https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_inpi_rne_actes_bilans/exemple-bilan-inpi.pdf' }
+
+      before do
+        allow(Rails.env).to receive(:staging?).and_return(true)
+      end
+
+      %w[actes bilans].each do |document_target|
+        context "when the link targets #{document_target}" do
+          let(:target) { document_target }
+
+          it 'returns the sample document without calling INPI' do
+            expect(subject).to have_http_status(:ok)
+            expect(subject.parsed_body[:data]).to eq({ document_url: sample_document_url, expires_in: 1.day.to_i }.as_json)
+          end
+        end
+      end
+
+      context 'when the link targets the RNE extract of a siren' do
+        let(:target) { 'extrait' }
+        let(:document_id) { '130025265' }
+
+        it 'returns the sample document without calling INPI' do
+          expect(subject).to have_http_status(:ok)
+          expect(subject.parsed_body[:data]).to eq({ document_url: sample_document_url, expires_in: 1.day.to_i }.as_json)
+        end
+      end
+
+      context 'when the document id is invalid' do
+        let(:document_id) { 'not-a-document-id' }
+
+        it { is_expected.to have_http_status(:unprocessable_content) }
+      end
+    end
   end
 end

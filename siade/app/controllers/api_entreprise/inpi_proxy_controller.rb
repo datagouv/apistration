@@ -8,13 +8,21 @@ class APIEntreprise::INPIProxyController < APIController
 
   def show
     if organizer.success?
-      render json: serializer.new(organizer.bundled_data, current_user).serializable_hash, status: :ok
+      render json: serialize_data, status: :ok
     else
       render_errors(organizer)
     end
   end
 
   private
+
+  def serialize_data
+    if organizer.mocked_data.present?
+      organizer.mocked_data[:payload]
+    else
+      serializer.new(organizer.bundled_data, current_user).serializable_hash
+    end
+  end
 
   def render_errors(organizer)
     render content_type: content_type_header,
