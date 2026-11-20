@@ -62,4 +62,19 @@ RSpec.describe 'Health checks' do
     end
   end
 
+  describe 'over plain HTTP with the production SSL enforcement' do
+    let(:ssl_enforced_app) { Rack::MockRequest.new(ActionDispatch::SSL.new(Rails.application, **Rails.application.config.ssl_options)) }
+
+    it 'answers the probes without redirecting to HTTPS' do
+      expect(ssl_enforced_app.get('http://10.0.0.12/healthz', 'HTTP_HOST' => '10.0.0.12').status).to eq(200)
+      expect(ssl_enforced_app.get('http://10.0.0.12/healthz/database', 'HTTP_HOST' => '10.0.0.12').status).to eq(200)
+    end
+
+    it 'keeps redirecting every other path to HTTPS' do
+      response = ssl_enforced_app.get('http://entreprise.api.localtest.me/compte/se-connecter')
+
+      expect(response.status).to eq(301)
+      expect(response.location).to eq('https://entreprise.api.localtest.me/compte/se-connecter')
+    end
+  end
 end

@@ -49,6 +49,7 @@ module AdminApientreprise
     config.assets.css_compressor = nil
 
     config.silence_healthcheck_path = HEALTH_CHECK_PATH
+    config.ssl_options = { redirect: { exclude: ->(request) { HEALTH_CHECK_PATH.match?(request.path) } } }
 
     config.cache_store = :redis_cache_store, config_for(:cache_redis).merge(
       namespace: "admin_api_entreprise_cache_#{Rails.env}_#{Time.now.to_i}",
