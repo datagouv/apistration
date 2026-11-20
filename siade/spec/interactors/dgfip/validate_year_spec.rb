@@ -52,15 +52,27 @@ RSpec.describe DGFIP::ValidateYear, type: :validate_param_interactor do
       end
     end
 
-    context 'when it is in the future' do
+    context 'when it is the current year, for liasses already filed by companies with a non calendar fiscal year' do
+      let(:year) { Time.zone.today.year.to_s }
+
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is 2006, the first year served by the DGFIP' do
+      let(:year) { '2006' }
+
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is before 2006' do
       it_behaves_like 'year out of range' do
-        let(:year) { (Time.zone.today.year + 1).to_s }
+        let(:year) { '2005' }
       end
     end
 
-    context 'when it is too far in the past' do
+    context 'when it is next year' do
       it_behaves_like 'year out of range' do
-        let(:year) { '1969' }
+        let(:year) { (Time.zone.today.year + 1).to_s }
       end
     end
   end
