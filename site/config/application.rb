@@ -19,6 +19,8 @@ Bundler.require(*Rails.groups)
 
 module AdminApientreprise
   class Application < Rails::Application
+    HEALTH_CHECK_PATH = %r{\A/healthz(/|\z)}
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
@@ -45,6 +47,8 @@ module AdminApientreprise
     config.assets.prefix = '/assets'
     config.assets.version = 'v3'
     config.assets.css_compressor = nil
+
+    config.silence_healthcheck_path = HEALTH_CHECK_PATH
 
     config.cache_store = :redis_cache_store, config_for(:cache_redis).merge(
       namespace: "admin_api_entreprise_cache_#{Rails.env}_#{Time.now.to_i}",
