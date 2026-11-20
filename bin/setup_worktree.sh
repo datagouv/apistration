@@ -108,7 +108,7 @@ else
   git -C "$PRIMARY_ROOT" worktree add --no-track -b "$BRANCH" "$WORKTREE_PATH" origin/develop
 fi
 
-for local_file in .sentry_token .metabase .metabase_token .hyperping_token; do
+for local_file in .sentry_token .hyperping_token; do
   [ -e "$PRIMARY_ROOT/$local_file" ] && cp "$PRIMARY_ROOT/$local_file" "$WORKTREE_PATH/$local_file"
 done
 
