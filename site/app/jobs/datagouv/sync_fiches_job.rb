@@ -4,6 +4,15 @@ module Datagouv
 
     retry_on StandardError, wait: :polynomially_longer, attempts: 5
 
+    def self.enqueue_at_boot
+      return unless (Rails.env.production? || Rails.env.sandbox?) && GoodJob::CLI.within_exe?
+
+      perform_later
+    rescue ActiveRecord::ActiveRecordError => e
+      Rails.logger.warn("Datagouv::SyncFichesJob not enqueued at boot - #{e.class}: #{e.message}")
+      Sentry.capture_exception(e)
+    end
+
     def perform
       unless acquire_lock!
         logger.info('lock already held, skipping this run')

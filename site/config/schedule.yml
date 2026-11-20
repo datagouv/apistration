@@ -26,11 +26,17 @@ deployed: &deployed
     cron: '*/10 * * * *'
     class: 'TokenFirstUseJob'
 
+datagouv_sync: &datagouv_sync
+  datagouv_sync_fiches:
+    cron: '30 3 * * * Europe/Paris'
+    class: 'Datagouv::SyncFichesJob'
+
 production:
-  <<: *deployed
+  <<: [*deployed, *datagouv_sync]
   insee_password_rotation:
     cron: '5 0 * * * Europe/Paris'
     class: 'INSEEPasswordRotationJob'
 
 staging: *deployed
-sandbox: *deployed
+sandbox:
+  <<: [*deployed, *datagouv_sync]
