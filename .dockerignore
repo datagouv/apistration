@@ -1,0 +1,57 @@
+# Fichiers que Docker n'envoie jamais au moteur de construction.
+#
+# Les images se construisent depuis la racine du dépôt (elles ont besoin de
+# commons/ et de mocks/) : sans cette liste, tout le dépôt serait envoyé à
+# chaque construction, y compris des fichiers sensibles ou très lourds.
+# Syntaxe : un motif par ligne, « ** » veut dire « dans n'importe quel dossier ».
+
+# ─── Secrets et configuration locale : ne doivent jamais entrer dans une image ─
+**/config/credentials
+**/config/credentials.yml*
+**/config/master.key
+**/.env*
+**/.token*
+**/.*_token
+**/.deploy_token
+**/token_export
+
+# ─── Historique git et outillage du dépôt ────────────────────────────────
+.git
+**/.git
+.github
+.claude
+**/.claude
+**/.agents
+**/AGENTS.md
+.ags
+.ags.yml
+.agent-vm.runtime.sh
+runtime.example.sh
+worktrees
+
+# ─── Parties du dépôt dont aucune image n'a besoin ───────────────────────
+clients
+docs
+local-e2e
+sandbox
+**/sandbox
+
+# ─── Fichiers produits en local (logs, cache, tests, dumps de base) ──────
+**/log/*
+**/tmp/*
+**/coverage
+**/spec
+**/dumps
+**/*.dump
+**/storage/*
+**/node_modules
+**/vendor/bundle
+
+# ─── Fichiers régénérés pendant la construction de l'image ───────────────
+site/public/assets
+site/public/sitemaps
+
+# ─── Fichiers d'éditeurs et de système ───────────────────────────────────
+**/.DS_Store
+**/.idea
+**/*.swp

@@ -1,2 +1,2 @@
 shared:
-  url: 'redis://localhost:6379/10'
+  url: <%= ENV.fetch('CACHE_REDIS_URL') { 'redis://localhost:6379/10' } %>

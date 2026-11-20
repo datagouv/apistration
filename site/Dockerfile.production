@@ -1,0 +1,125 @@
+# ─── base ─────────────────────────────
+#
+# Image officielle Ruby, variante « slim » (Debian minimal) sur Debian 13.
+# Même image que siade, figée par la même empreinte.
+FROM ruby:4.0.9-slim-trixie@sha256:d8cb2c0714bdaba0f318af897a01d2dbde3cfa8e62d47e99cea55feb13c0e90d AS base
+
+#   BUNDLE_DEPLOYMENT : mode strict, le Gemfile.lock doit être respecté à la lettre
+#   BUNDLE_PATH       : les gems vont dans un dossier à part, hors du code
+#   BUNDLE_WITHOUT    : les gems de développement et de test ne sont pas installées
+ENV BUNDLE_DEPLOYMENT=1 \
+    BUNDLE_PATH=/usr/local/bundle \
+    BUNDLE_WITHOUT=development:test
+
+WORKDIR /app
+
+# ─── build ──────────────────────────────
+FROM base AS build
+
+# Outils nécessaires seulement pour compiler les gems qui contiennent du C :
+#   build-essential : compilateurs C/C++ (gcc, g++, make…), dont sassc
+#                     (feuilles de style), longue à compiler
+#   zlib1g-dev      : fichiers de zlib nécessaires pour compiler la gem zlib
+#                     (version plus récente que celle de Ruby, demandée par faraday-gzip)
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends build-essential zlib1g-dev \
+ && rm -rf /var/lib/apt/lists/*
+
+# On copie la liste des gems
+COPY site/Gemfile site/Gemfile.lock ./
+
+# La version de Bundler avec laquelle le Gemfile.lock a été produit (lue à la
+# fin du fichier, ligne « BUNDLED WITH »)
+RUN gem install bundler --no-document \
+      -v "$(awk '/^BUNDLED WITH/ { getline; print $1 }' Gemfile.lock)"
+
+# Installation des gems, puis ménage des archives téléchargées
+RUN bundle install \
+ && rm -rf "$BUNDLE_PATH"/cache "$BUNDLE_PATH"/ruby/*/cache
+
+# Le code du site. Copié après les gems
+COPY site/ ./
+
+# Les fichiers partagés vers lesquels pointent les liens symboliques du site,
+# posés à part dans /tmp/repo, avec la même organisation que le dépôt.
+COPY commons/ /tmp/repo/commons/
+COPY bin/expand_shared_paths /tmp/repo/bin/
+
+# Chaque lien listé dans .expand est remplacé par une vraie copie, puis ménage :
+# les fichiers partagés ne servent plus, et le lien « commons » (vers tout le
+# dossier commons/ du dépôt) n'est utile qu'en développement.
+# Garde-fou : la construction échoue s'il reste un lien cassé dans l'image.
+RUN /tmp/repo/bin/expand_shared_paths /tmp/repo . \
+ && rm -rf /tmp/repo commons \
+ && if find . -xtype l | grep .; then echo "Liens symboliques cassés" >&2; exit 1; fi
+
+# Précompilation des assets (CSS, JS, images) dans public/assets.
+# En « staging » et pas en « production » : en production, Rails exige tous
+# les credentials au démarrage et met une tâche en file d'attente dans
+# PostgreSQL (config/initializers/sync_fiches_with_datagouv.rb), deux choses
+# impossibles pendant la construction. Le résultat est identique : la
+# configuration des assets est la même dans les deux environnements.
+RUN RAILS_ENV=staging bundle exec rails assets:precompile
+
+# Génération des sitemaps (liste des pages pour les moteurs de recherche) dans
+# public/sitemaps. Ils ne dépendent que de fichiers du code (articles, fiches,
+# endpoints, swagger) : ni base ni réseau. « create » et pas « refresh », qui
+# préviendrait en plus les moteurs de recherche par le réseau.
+# Puis ménage : cache de compilation des assets et journaux, inutiles dans
+# l'image livrée.
+RUN RAILS_ENV=staging bundle exec rails sitemap:create \
+ && rm -rf tmp/* log/*
+
+# ─── runtime : l'image livrée ────────────────────────────
+FROM base AS runtime
+
+# Fuseaux horaires (config.time_zone = 'Europe/Paris')
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends tzdata \
+ && rm -rf /var/lib/apt/lists/*
+
+# Utilisateur sans privilèges qui fera tourner l'application. L'identifiant
+# numérique (1000) permet à Kubernetes de vérifier qu'il ne s'agit pas de root.
+RUN groupadd --system --gid 1000 rails \
+ && useradd --system --uid 1000 --gid rails --home-dir /app/tmp/home --shell /usr/sbin/nologin rails
+
+# Les gems compilées, le code, les assets et les sitemaps, récupérés depuis
+# l'atelier. Ils appartiennent à root : l'application peut les lire, jamais
+# les modifier.
+COPY --from=build /usr/local/bundle /usr/local/bundle
+COPY --from=build /app /app
+
+# Les seuls dossiers où l'application a le droit d'écrire. Dans Kubernetes,
+# des volumes temporaires (emptyDir) y seront montés.
+RUN mkdir -p tmp log \
+ && chown rails:rails tmp log
+
+# Réglages par défaut, que Kubernetes peut remplacer :
+#   RAILS_ENV                : environnement Rails (sandbox et staging le remplacent)
+#   RAILS_LOG_TO_STDOUT      : le journal de Rails part sur la sortie standard (Loki)
+#   RAILS_SERVE_STATIC_FILES : Rails sert lui-même assets, sitemaps et fichiers de
+#                              public/ (sur les serveurs, c'est nginx qui le fait)
+#   HOME                     : dossier personnel de rails (Bundler y écrit), dans le volume tmp/
+#   TMPDIR                   : fichiers temporaires de Ruby, au lieu de /tmp en lecture seule
+#   MALLOC_ARENA_MAX         : limite la consommation mémoire de Ruby avec plusieurs threads
+# HOME et TMPDIR sont des sous-dossiers créés au démarrage par
+# bin/docker-entrypoint : ils appartiennent à rails, contrairement au volume
+# lui-même, que Ruby refuse comme dossier temporaire s'il est ouvert à tous.
+ENV RAILS_ENV=production \
+    RAILS_LOG_TO_STDOUT=1 \
+    RAILS_SERVE_STATIC_FILES=1 \
+    HOME=/app/tmp/home \
+    TMPDIR=/app/tmp/files \
+    MALLOC_ARENA_MAX=2
+
+USER 1000:1000
+
+# Port d'écoute de Puma (cf. config/puma.rb). Simple indication : c'est le
+# Service Kubernetes qui décide de ce qui est réellement exposé.
+EXPOSE 3000
+
+# Au démarrage : le script prépare les dossiers de travail, puis lance la
+# commande par défaut ci-dessous. Le worker GoodJob utilise la même image avec
+# une autre commande : « bundle exec good_job start ».
+ENTRYPOINT ["/app/bin/docker-entrypoint"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

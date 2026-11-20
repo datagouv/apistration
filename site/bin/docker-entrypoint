@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Script de démarrage de l'image Docker du site : prépare les dossiers de
+# travail, puis lance la commande demandée (Puma par défaut, cf. CMD dans
+# Dockerfile.production ; « bundle exec good_job start » pour le worker).
+
+# Arrêt immédiat à la première erreur : le conteneur s'arrête avec une erreur
+# visible plutôt que de lancer l'application dans un état bancal.
+set -euo pipefail
+
+# Recrée les sous-dossiers de travail : dans Kubernetes, tmp/ est un volume
+# temporaire qui arrive vide à chaque démarrage et masque ceux de l'image.
+# HOME (Bundler) et TMPDIR (fichiers temporaires de Ruby) pointent vers des
+# sous-dossiers de tmp/, cf. Dockerfile.production.
+mkdir -p tmp/pids tmp/cache "$HOME" "$TMPDIR"
+
+# Remplace ce script par la commande demandée : elle devient le processus
+# principal du conteneur et reçoit directement le signal d'arrêt de Kubernetes.
+exec "$@"

@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+#
+# Remplace les liens symboliques d'une application par de vraies copies des
+# fichiers partagés (commons/, mocks/…), en suivant son fichier .expand.
+#
+# Même logique que le script de déploiement Ansible
+# (very_ansible : roles/rails_app/templates/deploy_script.sh.j2), pour que
+# l'image Docker contienne exactement ce que contient un serveur déployé.
+#
+# Usage : bin/expand_shared_paths <racine_du_depot> <dossier_de_l_application>
+#   ex. : bin/expand_shared_paths /tmp/repo /app
+#
+# Format de .expand : une ligne « source:destination » par lien, source relative
+# à la racine du dépôt, destination relative au dossier de l'application. Sans
+# « :destination », la destination est la même que la source. Les lignes vides
+# et celles qui commencent par « # » sont ignorées.
+
+# Arrêt immédiat à la première erreur, sur une variable non définie, ou si une
+# commande échoue au milieu d'un enchaînement « | ».
+set -euo pipefail
+
+if [ "$#" -ne 2 ]; then
+  echo "Usage : $0 <racine_du_depot> <dossier_de_l_application>" >&2
+  exit 1
+fi
+
+# Chemin absolu de la racine du dépôt : il doit rester valable après le
+# « cd » vers l'application, plus bas.
+repo_root="$(cd "$1" && pwd)"
+app_dir="$2"
+expand_file="$app_dir/.expand"
+
+# Une application sans .expand n'a rien à remplacer.
+if [ ! -f "$expand_file" ]; then
+  echo "Pas de fichier .expand dans $app_dir : rien à faire."
+  exit 0
+fi
+
+cd "$app_dir"
+
+# Lecture ligne par ligne. Le « || [ -n "$entry" ] » traite aussi une dernière
+# ligne qui ne se terminerait pas par un retour à la ligne.
+while IFS= read -r entry || [ -n "$entry" ]; do
+  # Retire un éventuel « \r » de fin de ligne (fichier édité sous Windows).
+  entry="${entry%$'\r'}"
+
+  # Ignore les lignes vides et les commentaires.
+  case "$entry" in
+    '' | \#*) continue ;;
+  esac
+
+  # Sépare la source et la destination autour du premier « : ».
+  case "$entry" in
+    *:*)
+      src="${entry%%:*}"
+      dst="${entry#*:}"
+      ;;
+    *)
+      src="$entry"
+      dst="$entry"
+      ;;
+  esac
+
+  # Une source absente est une erreur : mieux vaut arrêter la construction que
+  # livrer une image à laquelle il manque un fichier.
+  if [ ! -e "$repo_root/$src" ]; then
+    echo "Erreur : la source « $src » de .expand est introuvable dans $repo_root" >&2
+    exit 1
+  fi
+
+  echo "expand : $src  ->  $dst"
+
+  # Si un des dossiers parents de la destination est lui-même un lien
+  # symbolique, on le supprime : sinon la copie atterrirait à l'endroit où
+  # pointe ce lien, au lieu de rester dans l'application.
+  parent="$(dirname "$dst")"
+  p="$parent"
+  while [ "$p" != "." ] && [ "$p" != "/" ]; do
+    if [ -L "$p" ]; then
+      rm -f "$p"
+    fi
+    p="$(dirname "$p")"
+  done
+
+  # Supprime le lien (ou une ancienne copie), recrée le dossier parent si
+  # besoin, puis copie le vrai contenu à sa place.
+  rm -rf "$dst"
+  mkdir -p "$parent"
+  cp -R "$repo_root/$src" "$dst"
+done < "$expand_file"
