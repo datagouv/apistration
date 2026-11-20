@@ -148,6 +148,16 @@ Les filtres spécifiques aux erreurs fournisseurs (`http_response_code`,
 `http_response_body`, `provider`, controller/action) ne s'appliquent qu'à
 `siade-backend`.
 
+### Bases de production (outis)
+
+Un agent interroge les bases de prod uniquement par le MCP outis (skill
+`outis`), source `apientreprise/dashboard` : `access_logs`, tokens,
+habilitations et vues `admin_apientreprise_production_*`. Les données personnelles, le texte
+libre et le JSON (`params`) reviennent en tags. Jamais le skill
+`metabase`, l'API Metabase, un fichier `.metabase` ni `psql`. Une
+colonne qui manque en clair est une décision humaine de classification,
+pas un contournement à chercher.
+
 ### Bump de Ruby
 
 `bin/bump_ruby <version>` prépare l'arbre de travail (vérifications CI et
