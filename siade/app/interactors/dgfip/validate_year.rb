@@ -13,10 +13,6 @@ class DGFIP::ValidateYear < ValidateYear
     2006
   end
 
-  def end_year
-    current_year - 1
-  end
-
   private
 
   def well_formatted?

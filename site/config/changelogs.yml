@@ -1,3 +1,9 @@
+- date: 2026-11-20
+  scope: api_entreprise
+  title: "Liasses fiscales : l'année en cours peut être demandée"
+  description: |
+    Les API [liasses fiscales](<%= endpoint_path(uid: 'dgfip/liasses_fiscales') %>) et [liens capitalistiques](<%= endpoint_path(uid: 'dgfip/liens_capitalistiques') %>) acceptent désormais l'année en cours, jusqu'ici refusée avec une erreur `422` (code `00315`). Les liasses étant rattachées à l'année de clôture de l'exercice, celles des entreprises à exercice décalé, clos par exemple au 30 juin, sont disponibles dès leur mise à disposition par la DGFIP, un à trois jours après leur dépôt, sans attendre l'année suivante. Tant qu'aucune liasse n'a été déposée pour l'année demandée, l'API renvoie une erreur `404`.
+
 - date: 2026-11-13
   scope: api_particulier
   title: "Étudiant boursier : rythme de mise à jour et régions couvertes en 2026-2027"

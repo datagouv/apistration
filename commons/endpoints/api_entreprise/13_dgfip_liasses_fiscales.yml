@@ -29,6 +29,8 @@ fiche:
         La date limite de dépôt des déclarations de résultat est fixée au 2ème jour ouvré après le 1er mai pour les entreprises qui clôturent à la fin de l’année civile.
 
         En cas d’exercice à cheval, la date limite de dépôt est positionnée exactement trois mois après la date de clôture de l’exercice déclaré.
+
+        **Les liasses sont rattachées à l'année de clôture de l'exercice.** L'année en cours peut être demandée : pour un exercice décalé, clos par exemple au 30 juin, la liasse est disponible dès sa mise à disposition par la DGFIP (J+1 ou J+3 après son dépôt, cf. ci-dessus), sans attendre l'année suivante. Tant qu'aucune liasse n'a été déposée pour l'année demandée, l'API renvoie une erreur 404 : c'est le cas, pour l'année en cours, de toutes les entreprises qui clôturent au 31 décembre.
       entities:
         - entreprises
         - associations
@@ -84,7 +86,7 @@ fiche:
       - Donnée structurée JSON
     parameters: &dgfip_liasses_parameters
       - Numéro de SIREN de l'entreprise
-      - "Année (fiscale) correspondant à l'exercice visé (de 2006 à l'année précédente)"
+      - "Année de clôture de l'exercice visé (de 2006 à l'année en cours)"
     faq: &dgfip_liasses_faq
       - q: <a name="liste-imprimes"></a>Quels sont les imprimés renvoyés par cette API ? Pourquoi certains imprimés ne sont pas renvoyés ?
         a: |+

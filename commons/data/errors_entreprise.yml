@@ -1035,7 +1035,7 @@ endpoints:
       - code: '00315'
         title: Entité non traitable
         detail: 'L''année n''est pas valide : elle doit être comprise entre 2006 et
-          l''année précédente'
+          l''année en cours'
       - code: '00405'
         title: Entité non traitable
         detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
@@ -1120,7 +1120,7 @@ endpoints:
       - code: '00315'
         title: Entité non traitable
         detail: 'L''année n''est pas valide : elle doit être comprise entre 2006 et
-          l''année précédente'
+          l''année en cours'
       - code: '00405'
         title: Entité non traitable
         detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
@@ -3806,7 +3806,7 @@ endpoints:
       - code: '00315'
         title: Entité non traitable
         detail: 'L''année n''est pas valide : elle doit être comprise entre 2006 et
-          l''année précédente'
+          l''année en cours'
       - code: '00405'
         title: Entité non traitable
         detail: 'Le request_id n''est pas correctement formaté : l''en-tête X-Request-Id,
