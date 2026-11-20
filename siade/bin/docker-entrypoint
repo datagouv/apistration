@@ -10,7 +10,9 @@ set -euo pipefail
 
 # Recrée les sous-dossiers de travail : dans Kubernetes, tmp/ est un volume
 # temporaire qui arrive vide à chaque démarrage et masque ceux de l'image.
-mkdir -p tmp/pids tmp/cache "$GNUPGHOME"
+# HOME (Bundler), TMPDIR (fichiers temporaires de Ruby) et GNUPGHOME (GPG)
+# pointent vers des sous-dossiers de tmp/, cf. le Dockerfile.
+mkdir -p tmp/pids tmp/cache "$HOME" "$TMPDIR" "$GNUPGHOME"
 
 # GPG refuse un trousseau de clés lisible par d'autres que son propriétaire.
 chmod 700 "$GNUPGHOME"

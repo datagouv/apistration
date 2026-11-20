@@ -60,9 +60,6 @@ RUN /tmp/repo/bin/expand_shared_paths /tmp/repo . \
  && if find . -xtype l | grep .; then echo "Liens symboliques cassés" >&2; exit 1; fi
 
 # ─── runtime : l'image livrée ────────────────────────────
-#
-# Repart de « base » (Ruby seul) : les compilateurs et fichiers de l'atelier
-# n'arrivent pas dans l'image livrée, seul ce qu'on copie avec --from=build.
 FROM base AS runtime
 
 # Bibliothèques nécessaires à l'exécution, sans leurs fichiers de compilation :
@@ -76,7 +73,7 @@ RUN apt-get update \
 # Utilisateur sans privilèges qui fera tourner l'application. L'identifiant
 # numérique (1000) permet à Kubernetes de vérifier qu'il ne s'agit pas de root.
 RUN groupadd --system --gid 1000 rails \
- && useradd --system --uid 1000 --gid rails --home-dir /app --shell /usr/sbin/nologin rails
+ && useradd --system --uid 1000 --gid rails --home-dir /app/tmp/home --shell /usr/sbin/nologin rails
 
 # Les gems compilées et le code, récupérés depuis l'atelier. Ils appartiennent
 # à root : l'application peut les lire, jamais les modifier.
@@ -91,10 +88,17 @@ RUN mkdir -p tmp log \
 # Réglages par défaut, que Kubernetes peut remplacer :
 #   RAILS_ENV           : environnement Rails (sandbox et staging le remplacent)
 #   RAILS_LOG_TO_STDOUT : le journal de Rails part sur la sortie standard (Loki)
+#   HOME                : dossier personnel de rails (Bundler y écrit), dans le volume tmp/
+#   TMPDIR              : fichiers temporaires de Ruby, au lieu de /tmp en lecture seule
 #   GNUPGHOME           : trousseau de clés GPG, dans un dossier où l'on peut écrire
 #   MALLOC_ARENA_MAX    : limite la consommation mémoire de Ruby avec plusieurs threads
+# HOME, TMPDIR et GNUPGHOME sont des sous-dossiers créés au démarrage par
+# bin/docker-entrypoint : ils appartiennent à rails, contrairement au volume
+# lui-même, que Ruby refuse comme dossier temporaire s'il est ouvert à tous.
 ENV RAILS_ENV=production \
     RAILS_LOG_TO_STDOUT=1 \
+    HOME=/app/tmp/home \
+    TMPDIR=/app/tmp/files \
     GNUPGHOME=/app/tmp/gnupg \
     MALLOC_ARENA_MAX=2
 
