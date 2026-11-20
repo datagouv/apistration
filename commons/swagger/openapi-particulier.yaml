@@ -15468,6 +15468,16 @@ paths:
           content:
             application/json:
               examples:
+                entite_non_traitable_00365:
+                  value:
+                    errors:
+                    - code: '00365'
+                      title: Entité non traitable
+                      detail: Le lieu de naissance n'est pas correctement formaté
+                      source:
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le lieu de naissance n'est pas correctement formaté
                 unprocessable_content_error:
                   value:
                     errors:
