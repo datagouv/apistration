@@ -3,6 +3,6 @@ class DSNJ::ServiceNational::ValidateParams < ValidateParamsOrganizer
     DSNJ::ServiceNational::ValidateNomNaissance,
     DSNJ::ServiceNational::ValidateDateNaissance,
     Civility::ValidateSexeEtatCivil,
-    Civility::ValidateCodeCogINSEECommuneNaissance,
+    Civility::ValidateCodeCogINSEECommuneNaissanceRequiredInFrance,
     Civility::ValidateCodeCogINSEEPaysNaissance
 end

@@ -34,6 +34,7 @@ RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: 
       let(:anneeDateNaissance) { 2008 }
       let(:moisDateNaissance) { 1 }
       let(:jourDateNaissance) { 1 }
+      let(:codeCogInseeCommuneNaissance) { '75056' }
       let(:codeCogInseePaysNaissance) { '99100' }
       let(:sexeEtatCivil) { 'M' }
 
@@ -71,6 +72,23 @@ RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: 
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!
+          end
+        end
+
+        describe 'when a person born in France gives no birth commune' do
+          response '422', 'Commune de naissance manquante pour une naissance en France' do
+            before { stub_dsnj_service_national_valid }
+
+            let(:codeCogInseeCommuneNaissance) { nil }
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(UnprocessableEntityError.new(:birth_place))
+
+            run_test! do
+              expect(response_json[:errors].pluck(:code)).to eq([UnprocessableEntityError.new(:birth_place).code])
+              expect(a_request(:post, Siade.credentials[:dsnj_service_national_url])).not_to have_been_made
+            end
           end
         end
 

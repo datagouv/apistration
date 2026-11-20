@@ -1,4 +1,4 @@
-class CNAV::ValidateCodeCogINSEECommuneNaissance < Civility::ValidateCodeCogINSEECommuneNaissance
+class Civility::ValidateCodeCogINSEECommuneNaissanceRequiredInFrance < Civility::ValidateCodeCogINSEECommuneNaissance
   def call
     return invalid_param!(:birth_place) if born_in_france_without_commune?
 
