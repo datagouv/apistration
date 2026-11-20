@@ -20,7 +20,7 @@ _Ce projet est bilingue : les issues et pull requests peuvent être rédigées e
 3. Make your changes with tests. Keep commits atomic; commit messages should explain the _why_, not just the _what_.
 4. Sign off every commit (`git commit -s`).
 5. Push and open a pull request. Fill the description with context, rationale, and any manual test steps.
-6. Wait for CI to be fully green, then request a maintainer review.
+6. Wait for CI to be fully green, then request a review from the maintainers team, `@datagouv/tech-apistration`.
 7. Address review feedback with new commits (avoid force-push during review so reviewers can see incremental changes).
 8. A maintainer merges once approved.
 
