@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  constraints(DirectPodRequestConstraint.new) do
+    get '/healthz', to: 'health#show'
+    get '/healthz/database', to: 'health#database'
+  end
+
   draw(:api_entreprise)
   draw(:api_particulier)
 

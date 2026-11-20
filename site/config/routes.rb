@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  constraints(DirectPodRequestConstraint.new) do
+    get '/healthz', to: 'health#show'
+    get '/healthz/database', to: 'health#database'
+  end
+
   GoodJob::Engine.middleware.use(Rack::Auth::Basic) do |username, password|
     ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(AdminApientreprise.credentials[:workers_ui_username])) &
       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(AdminApientreprise.credentials[:workers_ui_password]))

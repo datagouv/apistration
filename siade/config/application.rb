@@ -21,6 +21,8 @@ Bundler.require(*Rails.groups)
 
 module Siade
   class Application < Rails::Application
+    HEALTH_CHECK_PATH = %r{\A/healthz(/|\z)}
+
     config.load_defaults 8.0
 
     # Time.parse / ma_date.to_time
@@ -52,6 +54,8 @@ module Siade
     config.throttle = config_for(:throttle)
     config.jwt_whitelist = config_for(:jwt_whitelist)
     config.requests_debugging = config_for(:requests_debugging)
+
+    config.silence_healthcheck_path = HEALTH_CHECK_PATH
 
     config.cache_store = :redis_cache_store, config_for(:cache_redis).merge(
       namespace: "siade_cache_#{Rails.env}_#{Time.now.to_i}",
