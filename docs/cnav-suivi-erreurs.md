@@ -24,14 +24,14 @@ suffit seule.
 | Source | Contenu | Rétention | Sert à |
 |---|---|---|---|
 | Réponse à l'appelant | code DINUM (`561`, `565`, `000`, `404`…), caisse dans `meta.provider`, code et libellé du guichet dans `meta.provider_error_code` / `provider_error_message` | — | l'appelant, le support |
-| `access_logs` (Metabase) | statut HTTP, `error_code` / `error_subcode` (notre code), `provider_error_code` (celui du guichet), `recipient`, `token_id`, `annee` / `mois`, `hashed_params` (identité hachée) | 30 jours et plus | volumes, qui appelle, depuis quand, déterminisme par identité |
+| `access_logs` (source outis `apientreprise/dashboard`) | statut HTTP, `error_code` / `error_subcode` (notre code), `provider_error_code` (celui du guichet), `recipient`, `token_id`, `annee` / `mois`, `hashed_params` (identité hachée) | 30 jours et plus | volumes, qui appelle, depuis quand, déterminisme par identité |
 | Sentry `siade-backend` | une issue par code fournisseur (fingerprint `cnav-bad-request` / code), tags `cnav_error_code`, `regime`, `recipient` ; contexte : corps de la réponse, régime, forme des paramètres, paramètres chiffrés | 14 jours | détection, diagnostic d'un cas |
 | Back-office | réponse brute du fournisseur sur une requête (`X-Debug-Provider-Response`, tokens autorisés) | à la demande | reproduire un cas avec un appelant |
 
-Sentry détecte, Metabase compte, la réponse explique. Une question de
-volume (« combien de 40013 par jour chez la Direction des sports ? »)
-se pose à Metabase, jamais à Sentry : 14 jours, 100 events par page,
-pas de recipient sur la v2.
+Sentry détecte, `access_logs` compte, la réponse explique. Une question
+de volume (« combien de 40013 par jour chez la Direction des sports ? »)
+se pose à `access_logs`, jamais à Sentry : 14 jours, 100 events par
+page, pas de recipient sur la v2.
 
 ## Lire un event Sentry
 
@@ -41,7 +41,7 @@ Le niveau dit qui possède le problème, pas sa gravité technique :
 |---|---|---|---|
 | `error` | code absent de la table CNAV, corps illisible, code que nos validateurs rendent impossible (40002 nom absent, 40026 année, 40029 période désormais bornée en amont…) | quelque chose a changé, chez eux ou chez nous | qualifier le jour même |
 | `warning` | 40000, 40024, les 500 | défaillance derrière le guichet, à la CAF ou à la MSA | surveiller le volume ; prévenir la CNAV en cas de rafale |
-| `info` | contrôles de saisie du guichet : 40003 nom, 40013 commune, 40014 sexe, 40019 département, 40011, 40015, 40016, 40031 | l'appelant peut corriger | ne pas surveiller à la main ; un recipient qui explose se voit dans Metabase |
+| `info` | contrôles de saisie du guichet : 40003 nom, 40013 commune, 40014 sexe, 40019 département, 40011, 40015, 40016, 40031 | l'appelant peut corriger | ne pas surveiller à la main ; un recipient qui explose se voit dans `access_logs` |
 
 Ensuite, trois questions dans l'ordre :
 
@@ -70,6 +70,27 @@ paramètre.
 
 ## Requêtes de référence
 
+Un agent les lance par le MCP outis (skill `outis`), source
+`apientreprise/dashboard`, jamais par le skill `metabase` ni l'API
+Metabase. outis masque toute colonne de texte libre ou JSON : ce qui
+sort de `params` (code fournisseur, recipient, `hashed_params`) revient
+sous forme de tags (`<TEXT_…>`). Un même tag désigne une même valeur :
+les regroupements et comptages restent justes, et un tag obtenu dans un
+résultat se réutilise tel quel dans un `where`.
+
+Pour compter un code connu, le comparer au littéral : la comparaison
+revient en clair.
+
+```sql
+select date_trunc('day', timestamp) as jour,
+       count(*) filter (where params->>'provider_error_code' = '40013') as n_40013
+from access_logs
+where controller like 'api_particulier/%cnav/%'
+  and timestamp > now() - interval '30 days'
+group by 1
+order by 1;
+```
+
 Volumes par code, appelant et jour :
 
 ```sql
@@ -91,7 +112,7 @@ Historique d'une identité :
 select status, params->>'error_code', params->>'annee', params->>'mois',
        controller, count(*), min(timestamp), max(timestamp)
 from access_logs
-where params->>'hashed_params' = '<hash>'
+where params->>'hashed_params' = '<TEXT_…>'
   and timestamp > now() - interval '30 days'
 group by 1, 2, 3, 4, 5;
 ```
