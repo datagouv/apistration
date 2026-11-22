@@ -1,15 +1,11 @@
 class RetrieverPayloadPingDriver < RetrieverPingDriver
   attr_reader :key_to_dig, :method_to_test_on_payload
 
-  def perform
-    if success? && payload_passes_test?
-      :ok
-    else
-      :bad_gateway
-    end
-  end
-
   private
+
+  def healthy?
+    success? && payload_passes_test?
+  end
 
   def payload_passes_test?
     resource_hash.dig(*key_to_dig.split('.')).public_send(method_to_test_on_payload)

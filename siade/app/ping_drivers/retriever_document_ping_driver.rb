@@ -3,15 +3,11 @@ require 'open-uri'
 class RetrieverDocumentPingDriver < RetrieverPingDriver
   MAX_DOCUMENTS_TRIED_PER_KIND = 3
 
-  def perform
-    if success? && documents_downloadable?
-      :ok
-    else
-      :bad_gateway
-    end
-  end
-
   private
+
+  def healthy?
+    success? && documents_downloadable?
+  end
 
   def documents_downloadable?
     documents_by_kind.any? &&
