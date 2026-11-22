@@ -57,10 +57,10 @@ class PingService
   end
 
   def driver_status
-    Timeout.timeout(5) { ping_driver.new(ping_config.fetch(:driver_params)).perform }
+    ping_driver.new(ping_config.fetch(:driver_params)).perform
   rescue KeyError
     :not_found
-  rescue Timeout::Error
+  rescue Timeout::Error, ActiveRecord::QueryCanceled
     :bad_gateway
   end
 

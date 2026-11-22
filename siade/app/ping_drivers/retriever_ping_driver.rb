@@ -2,7 +2,7 @@ class RetrieverPingDriver < ApplicationPingDriver
   attr_reader :retriever, :retriever_params, :operation_id
 
   def perform
-    if healthy?
+    if within_provider_timeout { healthy? }
       :ok
     else
       :bad_gateway
