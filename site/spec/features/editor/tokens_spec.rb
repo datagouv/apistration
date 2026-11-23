@@ -57,20 +57,15 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
   end
 
-  describe 'when editor tokens are disabled' do
+  describe 'when the editor is not marked ready yet' do
     let(:editor) { create(:editor) }
 
-    it 'keeps the nav entry but shows a contact message instead of the tokens' do
-      visit editor_authorization_requests_path
-      within('nav.fr-nav') do
-        expect(page).to have_link('Vos jetons éditeur', href: editor_tokens_path)
-      end
-
+    it 'still lets the editor generate its editor tokens' do
       visit editor_tokens_path
+      click_button 'Générer un nouveau jeton éditeur'
 
-      expect(page).to have_current_path(editor_tokens_path, ignore_query: true)
-      expect(page).to have_text("L'option n'a pas été activée, merci de contacter l'équipe")
-      expect(page).to have_no_button('Générer un nouveau jeton éditeur')
+      expect(page).to have_text('Copiez ce jeton maintenant')
+      expect(editor.tokens.count).to eq(1)
     end
   end
 
