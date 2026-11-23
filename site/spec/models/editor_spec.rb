@@ -59,12 +59,12 @@ RSpec.describe Editor do
     it { expect(editor.serves_api?('particulier')).to be(false) }
   end
 
-  describe '.delegable' do
-    let!(:delegable_editor) { create(:editor, :delegable) }
-    let!(:non_delegable_editor) { create(:editor) }
+  describe '.editor_tokens_ready' do
+    let!(:ready_editor) { create(:editor, :editor_tokens_ready) }
+    let!(:editor_not_ready) { create(:editor) }
 
-    it 'returns only editors with editor_tokens_enabled' do
-      expect(described_class.delegable).to contain_exactly(delegable_editor)
+    it 'returns only editors with editor_tokens_ready' do
+      expect(described_class.editor_tokens_ready).to contain_exactly(ready_editor)
     end
   end
 

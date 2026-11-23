@@ -3,7 +3,7 @@ RSpec.describe EditorDelegation::Grant, type: :organizer do
 
   let(:applicant) { create(:user) }
   let(:authorization_request) { create(:authorization_request, :with_demandeur, demandeur: applicant, status: 'validated') }
-  let(:editor) { create(:editor, :delegable) }
+  let(:editor) { create(:editor, :editor_tokens_ready) }
 
   before { SecurityEvent.set_request_context(user: applicant, true_user: applicant) }
 

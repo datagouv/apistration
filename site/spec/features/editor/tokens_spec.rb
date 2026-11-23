@@ -1,5 +1,5 @@
 RSpec.describe 'Editor: tokens', app: :api_entreprise do
-  let(:editor) { create(:editor, :delegable) }
+  let(:editor) { create(:editor, :editor_tokens_ready) }
   let(:user) { create(:user, editor:) }
 
   before do
@@ -103,7 +103,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
     end
 
     context 'when the editor declares allowed IPs' do
-      let(:editor) { create(:editor, :delegable, allowed_ips: ['203.0.113.0/24', '198.51.100.5']) }
+      let(:editor) { create(:editor, :editor_tokens_ready, allowed_ips: ['203.0.113.0/24', '198.51.100.5']) }
 
       it 'leaves the token list empty, the editor range applying on its own' do
         expect(editor.tokens.sole.allowed_ips).to be_empty
@@ -213,7 +213,7 @@ RSpec.describe 'Editor: tokens', app: :api_entreprise do
 
   describe 'delegations page' do
     let!(:editor_token) { create(:editor_token, editor:) }
-    let(:editor) { create(:editor, :delegable) }
+    let(:editor) { create(:editor, :editor_tokens_ready) }
 
     it 'no longer exposes the JWT' do
       visit editor_delegations_path

@@ -7,7 +7,7 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
 
   describe 'index' do
     context 'when delegations are enabled' do
-      let(:editor) { create(:editor, :delegable) }
+      let(:editor) { create(:editor, :editor_tokens_ready) }
       let!(:active_delegation) do
         create(:editor_delegation, editor:,
           authorization_request: create(:authorization_request, :validated, :with_demandeur,
@@ -104,7 +104,7 @@ RSpec.describe 'Editor: delegations', app: :api_entreprise do
     end
 
     context 'when the editor does not serve the current api' do
-      let(:editor) { create(:editor, :delegable, apis: %w[particulier]) }
+      let(:editor) { create(:editor, :editor_tokens_ready, apis: %w[particulier]) }
 
       it 'denies access to the editor space' do
         visit editor_delegations_path

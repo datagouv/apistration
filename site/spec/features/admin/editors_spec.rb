@@ -197,13 +197,13 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect { click_on 'Sauvegarder' }.not_to emit_security_event('access.editor_config.changed')
     end
 
-    it 'allows toggling editor_tokens_enabled' do
+    it 'allows toggling editor_tokens_ready' do
       visit edit_admin_editor_path(editor)
 
-      check 'editor_editor_tokens_enabled'
+      check 'editor_editor_tokens_ready'
       click_on 'Sauvegarder'
 
-      expect(editor.reload.editor_tokens_enabled).to be true
+      expect(editor.reload.editor_tokens_ready).to be true
       expect(page).to have_css('.fr-alert.fr-alert--success')
     end
 

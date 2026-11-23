@@ -256,7 +256,7 @@ RSpec.describe AuthorizationRequest do
     subject { authorization_request.available_editors_for_delegation }
 
     let(:authorization_request) { create(:authorization_request) }
-    let!(:delegable_editor) { create(:editor, :delegable) }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready) }
     let!(:non_delegable_editor) { create(:editor) }
 
     context 'without any delegation' do

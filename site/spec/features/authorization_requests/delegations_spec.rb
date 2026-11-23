@@ -9,7 +9,7 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
   end
 
   context 'when delegable editors exist' do
-    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready, name: 'UMAD Corp') }
 
     it 'displays the delegations section' do
       visit authorization_request_path(authorization_request)
@@ -81,8 +81,8 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
   end
 
   context 'when a delegable editor only serves API Particulier' do
-    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
-    let!(:particulier_editor) { create(:editor, :delegable, name: 'Particulier Corp', apis: %w[particulier]) }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready, name: 'UMAD Corp') }
+    let!(:particulier_editor) { create(:editor, :editor_tokens_ready, name: 'Particulier Corp', apis: %w[particulier]) }
 
     it 'does not propose it for an API Entreprise authorization request' do
       visit authorization_request_path(authorization_request)
@@ -94,8 +94,8 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
 
   describe 'on API Particulier', app: :api_particulier do
     let(:authorization_request) { create(:authorization_request, :validated, api: 'particulier') }
-    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
-    let!(:entreprise_editor) { create(:editor, :delegable, name: 'Entreprise Corp', apis: %w[entreprise]) }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready, name: 'UMAD Corp') }
+    let!(:entreprise_editor) { create(:editor, :editor_tokens_ready, name: 'Entreprise Corp', apis: %w[entreprise]) }
 
     it 'does not propose an editor which only serves API Entreprise' do
       visit authorization_request_path(authorization_request)

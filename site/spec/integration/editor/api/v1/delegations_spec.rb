@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Délégations éditeur' do
-  let(:editor) { create(:editor, :delegable) }
+  let(:editor) { create(:editor, :editor_tokens_ready) }
   let(:editor_token) { create(:editor_token, editor:) }
 
   before { host! 'entreprise.api.gouv.fr' }

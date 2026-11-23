@@ -19,7 +19,7 @@ class EditorDelegation::Create < ApplicationInteractor
   end
 
   def find_editor
-    Editor.delegable.find(context.editor_id)
+    Editor.editor_tokens_ready.find(context.editor_id)
   end
 
   def create_delegation

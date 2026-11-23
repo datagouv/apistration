@@ -8,8 +8,8 @@ FactoryBot.define do
       ]
     end
 
-    trait :delegable do
-      editor_tokens_enabled { true }
+    trait :editor_tokens_ready do
+      editor_tokens_ready { true }
     end
 
     trait :full do
