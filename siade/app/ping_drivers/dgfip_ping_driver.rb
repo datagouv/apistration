@@ -9,12 +9,14 @@ class DGFIPPingDriver < AbstractPingDriver
   private
 
   def health_check_ok?
-    interactor = DGFIP::ADELIE::Ping::MakeRequest.call(
-      params: PING_PARAMS,
-      token:,
-      recipient: JwtTokenService::DINUM_SIRET
-    )
-    interactor.response&.code == '200'
+    within_provider_timeout do
+      interactor = DGFIP::ADELIE::Ping::MakeRequest.call(
+        params: PING_PARAMS,
+        token:,
+        recipient: JwtTokenService::DINUM_SIRET
+      )
+      interactor.response&.code == '200'
+    end
   end
 
   def provider

@@ -21,11 +21,13 @@ class AccessLogPingDriver < ApplicationPingDriver
   private
 
   def latest_authenticated_and_valid_params_logs_statuses
-    @latest_authenticated_and_valid_params_logs_statuses ||= AccessLogPingView.where(
-      route: routes
-    ).where.not(
-      status: %w[401 403 422].concat(excluded_statuses)
-    ).pluck(:status)
+    @latest_authenticated_and_valid_params_logs_statuses ||= within_statement_timeout do
+      AccessLogPingView.where(
+        route: routes
+      ).where.not(
+        status: %w[401 403 422].concat(excluded_statuses)
+      ).pluck(:status)
+    end
   end
 
   def build_context(driver_params)

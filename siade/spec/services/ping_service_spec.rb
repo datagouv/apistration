@@ -203,5 +203,27 @@ RSpec.describe PingService, type: :service do
         end
       end
     end
+
+    context 'when the access logs database is too slow to answer a passive ping' do
+      let(:identifier) { 'with_cnav' }
+      let(:blocking_connection) { PG.connect(ApplicationRecord.connection_db_config.configuration_hash.slice(:host, :port, :username, :password, :database, :gssencmode).transform_keys(username: :user, database: :dbname)) }
+
+      before do
+        stub_const('ApplicationPingDriver::STATEMENT_TIMEOUT', '100ms')
+        blocking_connection.exec("SET idle_in_transaction_session_timeout = '20s'")
+        blocking_connection.exec('BEGIN')
+        blocking_connection.exec("REFRESH MATERIALIZED VIEW #{AccessLogPingView.table_name}")
+      end
+
+      after do
+        blocking_connection.close
+      end
+
+      it 'answers bad gateway without leaving its query running on the connection' do
+        expect(make_ping[:status]).to eq(:bad_gateway)
+        expect(ApplicationRecord.connection.raw_connection.transaction_status).not_to eq(PG::PQTRANS_ACTIVE)
+        expect(blocking_connection.exec("SELECT count(*) FROM pg_stat_activity WHERE datname = current_database() AND wait_event_type = 'Lock'").getvalue(0, 0).to_i).to eq(0)
+      end
+    end
   end
 end

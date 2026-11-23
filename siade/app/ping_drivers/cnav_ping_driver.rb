@@ -56,13 +56,19 @@ class CNAVPingDriver < AbstractPingDriver
   end
 
   def rate_limit_snapshot
-    @rate_limit_snapshot ||= AccessLog
-      .where(route: routes, timestamp: 10.minutes.ago..)
-      .pick(
-        Arel.star.count,
-        errors_count_where(error_subcode.is_not_distinct_from(RATE_LIMIT_SUBCODE)),
-        errors_count_where(error_subcode.is_distinct_from(RATE_LIMIT_SUBCODE))
-      ) || [0, 0, 0]
+    @rate_limit_snapshot ||= recent_access_logs_counts || [0, 0, 0]
+  end
+
+  def recent_access_logs_counts
+    within_statement_timeout do
+      AccessLog
+        .where(route: routes, timestamp: 10.minutes.ago..)
+        .pick(
+          Arel.star.count,
+          errors_count_where(error_subcode.is_not_distinct_from(RATE_LIMIT_SUBCODE)),
+          errors_count_where(error_subcode.is_distinct_from(RATE_LIMIT_SUBCODE))
+        )
+    end
   end
 
   def errors_count_where(subcode_condition)

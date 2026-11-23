@@ -52,9 +52,11 @@ class AbstractPingDriver < ApplicationPingDriver
   end
 
   def counts
-    AccessLogPingView
-      .where(route: routes)
-      .pick(Arel.star.count, Arel.star.count.filter(error_status_in(AccessLogPingView)))
+    within_statement_timeout do
+      AccessLogPingView
+        .where(route: routes)
+        .pick(Arel.star.count, Arel.star.count.filter(error_status_in(AccessLogPingView)))
+    end
   end
 
   def error_status_in(model)

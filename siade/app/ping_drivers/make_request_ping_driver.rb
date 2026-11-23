@@ -2,7 +2,7 @@ class MakeRequestPingDriver < ApplicationPingDriver
   attr_reader :make_request_params, :make_request, :status_to_check, :token_interactor, :organizer_params
 
   def perform
-    interactor = make_request.call(make_request_arguments)
+    interactor = within_provider_timeout { make_request.call(make_request_arguments) }
 
     if status_to_check == interactor.response&.code
       :ok
