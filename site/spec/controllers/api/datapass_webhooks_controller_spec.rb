@@ -79,12 +79,21 @@ RSpec.describe API::DatapassWebhooksController do
         )
       end
 
-      it 'emits no token creation: contacts create their tokens themselves' do
-        expect { subject }.not_to emit_security_event('token.api_token.created')
+      it 'emits the token creation with DataPass as actor' do
+        expect { subject }.to emit_security_event('token.api_token.created').with(
+          actor: { email: nil, role: 'datapass' }
+        )
+      end
+
+      it 'answers with the id of the created token' do
+        subject
+
+        expect(response.parsed_body['token_id']).to eq(Token.sole.id)
       end
     end
 
     context 'with a valid hub signature' do
+      let(:token_id) { 'token id' }
       let(:success) { true }
 
       before do
@@ -92,6 +101,7 @@ RSpec.describe API::DatapassWebhooksController do
 
         allow(DatapassWebhook::APIEntreprise).to receive(:call).and_return(
           OpenStruct.new(
+            token_id:,
             success?: success
           )
         )
@@ -138,10 +148,10 @@ RSpec.describe API::DatapassWebhooksController do
         context 'when event is approve' do
           let(:event) { 'approve' }
 
-          it 'renders an empty json: no token is created on validation' do
+          it 'renders a json with a token id' do
             subject
 
-            expect(response.parsed_body).to eq({})
+            expect(response.parsed_body['token_id']).to eq(token_id)
           end
         end
 
@@ -182,6 +192,7 @@ RSpec.describe API::DatapassWebhooksController do
 
         allow(DatapassWebhook::APIParticulier).to receive(:call).and_return(
           OpenStruct.new(
+            token_id: 'token id',
             success?: true
           )
         )
@@ -196,10 +207,10 @@ RSpec.describe API::DatapassWebhooksController do
       context 'when event is approve' do
         let(:event) { 'approve' }
 
-        it 'renders an empty json: no token is created on validation' do
+        it 'renders a json with a token id' do
           subject
 
-          expect(response.parsed_body).to eq({})
+          expect(response.parsed_body['token_id']).to eq('token id')
         end
       end
     end

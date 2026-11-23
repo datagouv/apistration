@@ -39,9 +39,19 @@ module DatapassWebhooks
     result = extract_organizer(kind).call(**datapass_webhook_params)
 
     if result.success?
-      render json: {}
+      handle_success(result)
     else
       render json: {}, status: :unprocessable_content
+    end
+  end
+
+  def handle_success(result)
+    if event == 'approve'
+      render json: {
+        token_id: result.token_id
+      }.compact
+    else
+      render json: {}
     end
   end
 

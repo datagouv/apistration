@@ -64,6 +64,18 @@ RSpec.shared_examples 'an authorization request mailer' do
       end
     end
 
+    context 'when a token was created on validation' do
+      before { create(:token, authorization_request:) }
+
+      it 'announces the token, available on the demande page' do
+        expect(mail.subject).to include('votre jeton')
+        expect(mail.subject).to include('est disponible')
+        expect(mail.text_part.decoded).to include("un jeton d'accès a été créé automatiquement")
+        expect(mail.text_part.decoded).not_to include('Vous pouvez créer votre jeton')
+        expect(mail.html_part.decoded).to include('Voir mon jeton')
+      end
+    end
+
     context 'when the demande is delegated to an editor using its own tokens' do
       let(:editor) { create(:editor, :delegable, name: 'Marchés Online') }
 
@@ -85,6 +97,14 @@ RSpec.shared_examples 'an authorization request mailer' do
         expect(mail.text_part.decoded).to include("L'éditeur Logiciel Mairie génère et récupère le jeton")
         expect(mail.text_part.decoded).not_to include('créer votre jeton')
       end
+
+      context 'when a token was created on validation' do
+        before { create(:token, authorization_request:) }
+
+        it 'says the editor fetches the created token from its space' do
+          expect(mail.text_part.decoded).to include("un jeton d'accès a été créé. L'éditeur Logiciel Mairie le récupère depuis son espace éditeur")
+        end
+      end
     end
 
     context 'when the software editor of the form lets the client manage the token' do
@@ -94,6 +114,15 @@ RSpec.shared_examples 'an authorization request mailer' do
 
       it 'asks to paste the token in the software' do
         expect(mail.text_part.decoded).to include('saisissez-le dans le logiciel Logiciel Mairie')
+      end
+
+      context 'when a token was created on validation' do
+        before { create(:token, authorization_request:) }
+
+        it 'asks to paste the created token in the software' do
+          expect(mail.text_part.decoded).to include("un jeton d'accès a été créé automatiquement")
+          expect(mail.text_part.decoded).to include('Saisissez-le dans le logiciel Logiciel Mairie')
+        end
       end
     end
 
