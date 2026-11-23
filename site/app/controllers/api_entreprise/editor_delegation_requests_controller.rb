@@ -2,11 +2,10 @@ class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseControlle
   layout 'api_entreprise/minimal'
 
   before_action :load_editor_delegation_batch
-  before_action :redirect_to_show, unless: :signatory?, except: %i[show simulate_datapass_webhook]
+  before_action :redirect_to_show, unless: :signatory?, except: :show
   before_action :redirect_to_confirmation, if: -> { @batch.pending_requests.empty? }, only: %i[update_data_protection_officer verification sign organizations edit_organization update_organization]
   before_action :ensure_single_request!, only: %i[update_data_protection_officer verification]
   before_action :load_organization, only: %i[edit_organization update_organization]
-  before_action :ensure_datapass_webhook_simulation_allowed!, only: :simulate_datapass_webhook
 
   rescue_from DatapassAPIClient::Error, DatapassFormulaire::NotFound, with: :datapass_unavailable
 
@@ -64,18 +63,6 @@ class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseControlle
     end
   end
 
-  def simulate_datapass_webhook
-    result = DatapassWebhook::V2::APIEntreprise.call(**SimulatedDatapassWebhook.new(@editor_delegation_request, params[:event]).payload)
-
-    if result.success?
-      success_message(title: "Webhook DataPass « #{params[:event]} » simulé")
-    else
-      error_message(title: "Échec du webhook DataPass « #{params[:event]} » simulé", description: result.message)
-    end
-
-    redirect_to_confirmation
-  end
-
   private
 
   def render_pending_requests
@@ -88,10 +75,6 @@ class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseControlle
       @signature = EditorDelegationBatch::Signature.new(batch: @batch, user: current_user)
       render :signature
     end
-  end
-
-  def ensure_datapass_webhook_simulation_allowed!
-    raise ActionController::RoutingError, 'Not Found' if Rails.env.production? || !@editor_delegation_request.submitted?
   end
 
   def load_editor_delegation_batch

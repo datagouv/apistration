@@ -56,11 +56,5 @@
         </tbody>
       </table>
     </div>
-
-    <% unless Rails.env.production? %>
-      <% @submitted_requests.each do |request| %>
-        <%= render 'datapass_webhook_simulation', editor_delegation_request: request %>
-      <% end %>
-    <% end %>
   </div>
 </div>
