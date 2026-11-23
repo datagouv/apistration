@@ -3,7 +3,5 @@
   <%= link_to t("shared.authorization_requests.token_card.#{label_key}"),
     public_send("token_#{action}_path", id: token.id),
     id: dom_id(token, :"#{action}_link"),
-    class: "fr-btn fr-btn--sm #{classes}",
-    aria: { controls: 'main-modal' },
-    data: { fr_opened: false, turbo_frame: 'main-modal-content' } %>
+    class: "fr-btn fr-btn--sm #{classes}" %>
 </li>

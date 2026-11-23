@@ -1,0 +1,16 @@
+<%= form_with model: token, url: authorization_request_tokens_path(authorization_request_id: authorization_request.id), method: :post, id: :new_self_service_token, data: { turbo_frame: '_top' } do |form| %>
+  <h3 class="fr-h5"><%= t('.title') %></h3>
+
+  <%= render 'shared/form_errors', record: token, title: t('shared.self_service_tokens.create.error.title') %>
+
+  <div class="fr-input-group<%= ' fr-input-group--error' if token.errors[:name].any? %>">
+    <%= render 'shared/label_with_hint', form:, field: :name, label: t('.name.label'), hint: t('.name.hint') %>
+    <%= form.text_field :name, class: 'fr-input', required: true, maxlength: Token::NAME_MAX_LENGTH, autocomplete: 'off' %>
+  </div>
+
+  <%= render 'shared/token_lifetime_field', form:, label: t('.lifetime.label'), hint: t('.lifetime.hint') %>
+
+  <p class="fr-text--sm"><%= t('.notice') %></p>
+
+  <%= render 'shared/panel_form_actions', form:, submit: t('.submit'), cancel: t('.cancel'), cancel_path: authorization_request_path(id: authorization_request.id) %>
+<% end %>
