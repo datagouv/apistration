@@ -1,0 +1,18 @@
+<%# locals: (signature:, several_organizations:) -%>
+<% { terms_of_service_accepted: "J'ai pris connaissance des #{external_link_to('conditions générales d’utilisation', cgu_path)} et je les valide.",
+     data_protection_officer_informed: "Je confirme que le délégué à la protection des données #{several_organizations ? 'de mes organisations' : 'de mon organisation'} est informé de ma demande." }.each do |attribute, label| %>
+  <% errors = signature.errors[attribute] %>
+  <div class="fr-checkbox-group fr-mb-2w <%= 'fr-checkbox-group--error' if errors.any? %>">
+    <%= hidden_field_tag "signature[#{attribute}]", '0', id: nil %>
+    <%= check_box_tag "signature[#{attribute}]", '1', signature.public_send(attribute), id: attribute %>
+    <%= label_tag attribute, tag.span(sanitize(label, tags: %w[a span], attributes: %w[href target rel class])), class: 'fr-label' %>
+    <% if errors.any? %>
+      <p class="fr-error-text">Vous devez cocher cette case pour signer.</p>
+    <% end %>
+  </div>
+<% end %>
+
+<p class="fr-text--sm">
+  En signant, vous acceptez que votre identité ProConnect, la date et l'heure soient consignées comme preuve de
+  votre accord.
+</p>

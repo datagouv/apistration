@@ -35,7 +35,7 @@ class EditorDelegationRequest < ApplicationRecord
   validates(*DATA_PROTECTION_OFFICER_ATTRIBUTES, presence: true, on: %i[data_protection_officer submission])
   validates :delegue_protection_donnees_email, format: { with: URI::MailTo::EMAIL_REGEXP }, on: %i[data_protection_officer submission]
   validates :terms_of_service_accepted, :data_protection_officer_informed, acceptance: { accept: true, allow_nil: false }, on: :submission
-  validates :submitted_at, :submitted_by_user, presence: true, on: :submission
+  validates :submitted_at, :submitted_by_user_id, presence: true, on: :submission
 
   DATA_PROTECTION_OFFICER_ATTRIBUTES.each do |attribute|
     define_method(:"#{attribute}=") do |value|
@@ -58,14 +58,9 @@ class EditorDelegationRequest < ApplicationRecord
     editor.name.parameterize
   end
 
-  def other_pending_requests_of_contact
-    return EditorDelegationRequest.none if contact_email.blank?
-
-    EditorDelegationRequest
-      .where(contact_email:, submitted_at: nil)
-      .where.not(id:)
-      .includes(editor_delegation_campaign: :editor)
-      .order(:siret)
+  def data_protection_officer_complete?
+    DATA_PROTECTION_OFFICER_ATTRIBUTES.all? { |attribute| public_send(attribute).present? } &&
+      URI::MailTo::EMAIL_REGEXP.match?(delegue_protection_donnees_email)
   end
 
   def submitted?

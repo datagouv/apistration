@@ -1,0 +1,25 @@
+<% lead_request = @organization.lead_request %>
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: "Signez la demande de #{@organization.name}" %>
+    <p>
+      Identifié(e) en tant que <%= current_user.full_name %> (<%= current_user.email %>)
+      · SIRET <%= lead_request.siret %>
+    </p>
+
+    <%= dsfr_stepper(current_step: 'Votre délégué à la protection des données', steps: ['Votre délégué à la protection des données', 'Vérifier et signer']) %>
+
+    <p>
+      Il est le point de contact sur le traitement des données personnelles rendu possible par cette habilitation.
+      Il doit être informé de votre demande.
+    </p>
+
+    <%= form_with(model: lead_request, url: editor_delegation_request_data_protection_officer_path, method: :patch) do |f| %>
+      <%= render 'data_protection_officer_fields', form: f %>
+
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li><%= f.button 'Continuer', class: 'fr-btn' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

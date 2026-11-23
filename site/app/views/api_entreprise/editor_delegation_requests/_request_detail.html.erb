@@ -1,0 +1,37 @@
+<% data = @batch.datapass_data %>
+<% scopes = DatapassScopes.normalize(Array(data['scopes'])) %>
+<% if data.values_at('intitule', 'description', 'destinataire_donnees_caractere_personnel', 'duree_conservation_donnees_caractere_personnel').any?(&:present?) %>
+  <%= render layout: 'section', locals: { title: 'Le projet' } do %>
+    <%= render 'value', label: 'Nom du projet', value: data['intitule'] %>
+    <%= render 'value', label: 'Description du projet', value: data['description'] %>
+    <%= render 'value', label: 'Destinataires des données', value: data['destinataire_donnees_caractere_personnel'] %>
+    <%= render 'value', label: 'Durée de conservation des données en mois', value: data['duree_conservation_donnees_caractere_personnel'] %>
+  <% end %>
+<% end %>
+
+<% if data.values_at('cadre_juridique_nature', 'cadre_juridique_url').any?(&:present?) %>
+  <%= render layout: 'section', locals: { title: 'Le cadre juridique' } do %>
+    <%= render 'value', label: 'Nature et références du texte vous autorisant à traiter les données', value: data['cadre_juridique_nature'] %>
+    <% if data['cadre_juridique_url'].present? %>
+      <p class="fr-text--bold fr-mb-1v">Lien relatif au traitement</p>
+      <p><%= external_link_to data['cadre_juridique_url'], data['cadre_juridique_url'] %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if scopes.any? %>
+  <%= render layout: 'section', locals: { title: 'Les données' } do %>
+    <ul>
+      <% scopes.each do |scope| %>
+        <li><%= scope_with_provider(scope) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= render layout: 'section', locals: { title: "Les contacts #{of_editor(@batch.editor)}" } do %>
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <%= render 'contact', data:, kind: 'contact_metier', label: 'Contact métier' %>
+    <%= render 'contact', data:, kind: 'contact_technique', label: 'Contact technique' %>
+  </div>
+<% end %>

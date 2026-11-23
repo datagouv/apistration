@@ -1,0 +1,15 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: "Le délégué à la protection des données de #{@organization.name}" %>
+    <p>
+      SIREN <%= @organization.siren %> · <%= pluralize(@organization.requests.size, 'établissement', plural: 'établissements') %>.
+      Ce délégué ne vaut que pour cette organisation.
+    </p>
+
+    <%= form_with(model: @organization.lead_request, url: editor_delegation_request_organization_path(siren: @organization.siren), method: :patch) do |f| %>
+      <%= render 'data_protection_officer_fields', form: f %>
+
+      <%= render 'form_actions', form: f, submit: 'Enregistrer', back: 'Annuler', back_path: editor_delegation_request_organizations_path %>
+    <% end %>
+  </div>
+</div>

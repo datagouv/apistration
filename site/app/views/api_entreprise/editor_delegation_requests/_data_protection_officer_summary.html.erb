@@ -1,0 +1,23 @@
+<% common = @batch.common_data_protection_officer %>
+<% missing = @batch.organizations_without_data_protection_officer %>
+<%= render layout: 'section', locals: { title: 'Délégué à la protection des données' } do %>
+  <% if common %>
+    <p class="fr-mb-1v">
+      <%= common.values_at('delegue_protection_donnees_given_name', 'delegue_protection_donnees_family_name').join(' ') %>
+      · <%= common['delegue_protection_donnees_email'] %>, pour vos <%= @batch.organizations.size %> organisations
+    </p>
+  <% else %>
+    <p class="fr-mb-1v">
+      Renseigné pour <%= @batch.organizations.size - missing.size %> organisations sur <%= @batch.organizations.size %>.
+    </p>
+  <% end %>
+  <% if missing.any? %>
+    <p class="fr-error-text fr-mb-1v">À renseigner avant de signer&nbsp;:</p>
+    <ul>
+      <% missing.each do |organization| %>
+        <li><%= link_to organization.name, editor_delegation_request_organization_path(siren: organization.siren) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p class="fr-mb-0"><%= link_to 'Modifier pour une ou plusieurs organisations', editor_delegation_request_organizations_path, class: 'fr-link' %></p>
+<% end %>

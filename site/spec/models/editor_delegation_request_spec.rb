@@ -100,7 +100,7 @@ RSpec.describe EditorDelegationRequest do
 
   describe 'submission' do
     subject(:editor_delegation_request) do
-      build(:editor_delegation_request, :with_dpo, submitted_at: Time.zone.now, submitted_by_user: build(:user), terms_of_service_accepted: '1', data_protection_officer_informed: '1')
+      build(:editor_delegation_request, :with_dpo, submitted_at: Time.zone.now, submitted_by_user: create(:user), terms_of_service_accepted: '1', data_protection_officer_informed: '1')
     end
 
     it 'is valid once both boxes are checked by an agent' do
@@ -119,24 +119,6 @@ RSpec.describe EditorDelegationRequest do
       editor_delegation_request.delegue_protection_donnees_email = nil
 
       expect(editor_delegation_request).not_to be_valid(:submission)
-    end
-  end
-
-  describe '#other_pending_requests_of_contact' do
-    let(:editor_delegation_request) { create(:editor_delegation_request, contact_email: 'achats@saint-exemple.fr') }
-    let!(:pending) { create(:editor_delegation_request, contact_email: 'achats@saint-exemple.fr') }
-
-    before do
-      create(:editor_delegation_request, :submitted, contact_email: 'achats@saint-exemple.fr')
-      create(:editor_delegation_request, contact_email: 'other@exemple.fr')
-    end
-
-    it 'lists the requests left to submit by the same contact' do
-      expect(editor_delegation_request.other_pending_requests_of_contact).to contain_exactly(pending)
-    end
-
-    it 'is empty without contact' do
-      expect(build(:editor_delegation_request, contact_email: nil).other_pending_requests_of_contact).to be_empty
     end
   end
 

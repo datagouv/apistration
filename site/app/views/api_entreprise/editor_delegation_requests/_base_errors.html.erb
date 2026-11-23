@@ -1,0 +1,8 @@
+<%# locals: (record:) -%>
+<% if record.errors[:base].any? %>
+  <div class="fr-alert fr-alert--error fr-mb-4w">
+    <% record.errors[:base].each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,53 @@
+<% count = @batch.pending_requests.size %>
+<% organizations_count = @batch.organizations.size %>
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-lg-10">
+    <%= render 'header', title: "Signer vos #{count} demandes" %>
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">
+      <%= render 'figure', value: count, label: 'établissements' %>
+      <%= render 'figure', value: organizations_count, label: 'organisations' %>
+      <%= render 'figure', value: "#{organizations_count - @batch.organizations_without_data_protection_officer.size} / #{organizations_count}", label: 'délégués à la protection des données renseignés' %>
+    </div>
+
+    <%= render 'what_you_sign', requests_count: count %>
+
+    <%= form_with(model: @signature, scope: :signature, url: editor_delegation_request_signature_path, method: :post, data: { controller: 'batch-selection' }) do |f| %>
+
+      <% if @batch.data_protection_officer_shared_form? %>
+        <h2 class="fr-h4"><%= organizations_count > 1 ? "Le délégué à la protection des données de vos #{organizations_count} organisations" : 'Votre délégué à la protection des données' %></h2>
+        <p>
+          Il est le point de contact sur le traitement des données personnelles rendu possible par cette habilitation.
+          Il doit être informé de votre demande.
+        </p>
+        <%= f.fields_for :data_protection_officer, @signature.data_protection_officer_form do |officer| %>
+          <%= render 'data_protection_officer_fields', form: officer %>
+        <% end %>
+        <% if organizations_count > 1 %>
+          <p><%= link_to 'Renseigner un délégué différent selon l’organisation', editor_delegation_request_organizations_path, class: 'fr-link' %></p>
+        <% end %>
+      <% else %>
+        <%= render 'data_protection_officer_summary' %>
+      <% end %>
+
+      <div class="fr-accordions-group fr-mt-4w fr-mb-4w">
+        <%= render layout: 'accordion', locals: { id: 'establishments', title: @batch.small? ? "Vos #{count} établissements" : 'Exclure des établissements', expanded: @batch.small? } do %>
+          <%= render 'establishments' %>
+        <% end %>
+      </div>
+
+      <% if @signature.errors[:included_ids].any? %>
+        <p class="fr-error-text fr-mb-2w">Cochez au moins un établissement pour signer.</p>
+      <% end %>
+
+      <%= render 'base_errors', record: @signature %>
+
+      <%= render 'consents', signature: @signature, several_organizations: organizations_count > 1 %>
+
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li>
+          <%= f.button "Signer les #{count} demandes", class: 'fr-btn', data: { batch_selection_target: 'submit' } %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>

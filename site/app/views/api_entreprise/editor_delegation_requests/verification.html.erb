@@ -1,0 +1,33 @@
+<% organization = @batch.organizations.first %>
+<% lead_request = organization.lead_request %>
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: "Signez la demande de #{organization.name}" %>
+    <p>
+      Identifié(e) en tant que <%= current_user.full_name %> (<%= current_user.email %>)
+      · SIRET <%= lead_request.siret %>
+    </p>
+
+    <%= dsfr_stepper(current_step: 'Vérifier et signer', steps: ['Votre délégué à la protection des données', 'Vérifier et signer']) %>
+
+    <%= render 'what_you_sign', requests_count: 1 %>
+
+    <%= render layout: 'section', locals: { title: 'Votre délégué à la protection des données' } do %>
+      <p class="fr-mb-1v">
+        <%= lead_request.delegue_protection_donnees_given_name %> <%= lead_request.delegue_protection_donnees_family_name %>,
+        <%= lead_request.delegue_protection_donnees_job_title %>
+      </p>
+      <p class="fr-mb-1v"><%= lead_request.delegue_protection_donnees_email %> · <%= lead_request.delegue_protection_donnees_phone_number %></p>
+      <p class="fr-mb-0"><%= link_to 'Modifier le délégué', editor_delegation_request_path, class: 'fr-link' %></p>
+    <% end %>
+
+    <%= form_with(model: @signature, scope: :signature, url: editor_delegation_request_signature_path, method: :post) do |f| %>
+
+      <%= render 'base_errors', record: @signature %>
+
+      <%= render 'consents', signature: @signature, several_organizations: false %>
+
+      <%= render 'form_actions', form: f, submit: 'Signer la demande', back: 'Revenir', back_path: editor_delegation_request_path %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">
+  <div class="fr-col-12 fr-col-md-6">
+    <%= render 'field', form:, attribute: :delegue_protection_donnees_given_name, label: 'Prénom', autocomplete: 'off' %>
+  </div>
+  <div class="fr-col-12 fr-col-md-6">
+    <%= render 'field', form:, attribute: :delegue_protection_donnees_family_name, label: 'Nom', autocomplete: 'off' %>
+  </div>
+</div>
+<%= render 'field', form:, attribute: :delegue_protection_donnees_email, label: 'Adresse électronique', hint: 'Elle peut être générique, par exemple dpo@…', type: 'email', autocomplete: 'off' %>
+<%= render 'field', form:, attribute: :delegue_protection_donnees_phone_number, label: 'Téléphone', type: 'tel', autocomplete: 'off' %>
+<%= render 'field', form:, attribute: :delegue_protection_donnees_job_title, label: 'Fonction', hint: 'Par exemple : délégué à la protection des données', autocomplete: 'off' %>

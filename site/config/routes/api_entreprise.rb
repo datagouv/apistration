@@ -36,10 +36,13 @@ constraints(APIEntrepriseDomainConstraint.new) do
 
     scope '/editeurs/:editor_slug/habilitation/:token', controller: :editor_delegation_requests, as: :editor_delegation_request do
       get '/', action: :show
-      get '/delegue-protection-donnees', action: :edit, as: :data_protection_officer
-      patch '/delegue-protection-donnees', action: :update
-      get '/verification', action: :summary, as: :summary
-      post '/soumission', action: :submit, as: :submission
+      patch '/delegue-protection-donnees', action: :update_data_protection_officer, as: :data_protection_officer
+      get '/verification', action: :verification, as: :verification
+      post '/signature', action: :sign, as: :signature
+      get '/confirmation', action: :confirmation, as: :confirmation
+      get '/organisations', action: :organizations, as: :organizations
+      get '/organisations/:siren', action: :edit_organization, as: :organization, constraints: { siren: /\d{9}/ }
+      patch '/organisations/:siren', action: :update_organization, constraints: { siren: /\d{9}/ }
       post '/simulation/:event', action: :simulate_datapass_webhook, as: :datapass_webhook_simulation, constraints: { event: Regexp.union(SimulatedDatapassWebhook::EVENTS) }
     end
 

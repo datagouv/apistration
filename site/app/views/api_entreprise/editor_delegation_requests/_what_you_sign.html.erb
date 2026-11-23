@@ -1,0 +1,12 @@
+<%# locals: (requests_count:) -%>
+<h2 class="fr-h4">Ce que vous signez</h2>
+<p>
+  <% if requests_count > 1 %>
+    <strong><%= requests_count %> demandes d’habilitation</strong> à API Entreprise, une par établissement,
+  <% else %>
+    <strong>Une demande d’habilitation</strong> à API Entreprise
+  <% end %>
+  au profit <%= of_editor(@batch.editor) %>, qui interrogera l’API pour le compte de
+  <%= requests_count > 1 ? 'vos organisations' : 'votre organisation' %> dans le cadre suivant&nbsp;:
+</p>
+<%= render 'request_detail' %>
