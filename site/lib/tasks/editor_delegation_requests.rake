@@ -1,7 +1,7 @@
 require 'csv'
 
 namespace :editor_delegation_requests do
-  desc 'Import editor delegation requests from a CSV of SIRET and contact emails, and write their invitation links'
+  desc 'Import editor delegation requests from a CSV of SIRET, contact emails and optional delegue_protection_donnees_* columns, and write their invitation links'
   task :import, %i[editor_use_case_id csv_path output_path] => :environment do |_, args|
     editor_use_case = EditorUseCase.find(args[:editor_use_case_id])
     output_path = args[:output_path] || args[:csv_path].sub(/(\.csv)?\z/, '-links.csv')

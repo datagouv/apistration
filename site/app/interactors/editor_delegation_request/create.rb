@@ -41,7 +41,8 @@ class EditorDelegationRequest::Create < ApplicationInteractor
       editor_use_case:,
       siret:,
       contact_email: context.contact_email,
-      authorization_request: context.authorization_request
+      authorization_request: context.authorization_request,
+      **context.data_protection_officer.to_h
     )
   end
 

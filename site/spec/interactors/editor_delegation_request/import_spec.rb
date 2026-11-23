@@ -25,6 +25,29 @@ RSpec.describe EditorDelegationRequest::Import do
     expect(result.created.map(&:contact_email)).to contain_exactly('achats@saint-exemple.fr', nil)
   end
 
+  context 'when the editor provides the data protection officer' do
+    let(:rows) do
+      [
+        {
+          'siret' => '21340172201787',
+          'contact_email' => 'achats@saint-exemple.fr',
+          'delegue_protection_donnees_given_name' => 'Dominique',
+          'delegue_protection_donnees_family_name' => 'Leroy',
+          'delegue_protection_donnees_email' => ' DPO@saint-exemple.fr ',
+          'delegue_protection_donnees_phone_number' => '0123456789',
+          'delegue_protection_donnees_job_title' => 'DPO'
+        },
+        { 'siret' => '21340172201795', 'contact_email' => 'achats@saint-exemple.fr', 'delegue_protection_donnees_email' => '' }
+      ]
+    end
+
+    it 'prefills it on the request, so that the signatory only checks it' do
+      expect(result.created.first).to be_valid(:data_protection_officer)
+      expect(result.created.first.delegue_protection_donnees_email).to eq('dpo@saint-exemple.fr')
+      expect(result.created.last.data).to be_empty
+    end
+  end
+
   it 'gives the requests the scopes of the DataPass formulaire merged with the editor data' do
     expect(result.created.map { |request| request.authorization_request.scopes }).to all(eq(%w[entreprises etablissements]))
     expect(result.created.map { |request| request.authorization_request.intitule }).to all(eq('Dématérialisation des marchés publics'))
