@@ -1,0 +1,10 @@
+<%# locals: (organization:, current_step:) -%>
+<%= render 'header', title: "Signez la demande de #{organization.name}" %>
+<p>
+  Identifié(e) en tant que <%= current_user.full_name %> (<%= current_user.email %>)
+  · SIRET <%= organization.lead_request.siret %>
+</p>
+
+<%= render 'datapass_refusals' %>
+
+<%= dsfr_stepper(current_step:, steps: ['Votre délégué à la protection des données', 'Vérifier et signer']) %>

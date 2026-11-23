@@ -1,13 +1,7 @@
 <% lead_request = @organization.lead_request %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-md-8">
-    <%= render 'header', title: "Signez la demande de #{@organization.name}" %>
-    <p>
-      Identifié(e) en tant que <%= current_user.full_name %> (<%= current_user.email %>)
-      · SIRET <%= lead_request.siret %>
-    </p>
-
-    <%= dsfr_stepper(current_step: 'Votre délégué à la protection des données', steps: ['Votre délégué à la protection des données', 'Vérifier et signer']) %>
+    <%= render 'single_request_header', organization: @organization, current_step: 'Votre délégué à la protection des données' %>
 
     <p>
       Il est le point de contact sur le traitement des données personnelles rendu possible par cette habilitation.

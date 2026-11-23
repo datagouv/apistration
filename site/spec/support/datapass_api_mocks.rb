@@ -4,8 +4,11 @@ module DatapassAPIMocks
   end
 
   def stub_datapass_formulaires(formulaires = datapass_formulaires_payload)
-    allow(DatapassAPIClient).to receive(:new).and_return(
-      instance_double(DatapassAPIClient, list_formulaires: formulaires)
-    )
+    demande_ids = (1001..).each
+
+    instance_double(DatapassAPIClient, list_formulaires: formulaires, update_demande: {}, submit_demande: {}).tap do |client|
+      allow(client).to receive(:create_demande) { { 'id' => demande_ids.next } }
+      allow(DatapassAPIClient).to receive(:new).and_return(client)
+    end
   end
 end

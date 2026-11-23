@@ -42,12 +42,13 @@ class EditorDelegationBatch::Signature
     apply_shared_data_protection_officer
     return false if invalid?
 
-    EditorDelegationRequest.transaction do
-      still_pending_ids = EditorDelegationRequest.where(id: batch.pending_requests.map(&:id), submitted_at: nil).lock.ids
-
-      save_data_protection_officers(still_pending_ids)
-      submit_included_requests(still_pending_ids)
+    still_pending_ids = EditorDelegationRequest.transaction do
+      EditorDelegationRequest.where(id: batch.pending_requests.map(&:id), submitted_at: nil).lock.ids.tap do |ids|
+        save_data_protection_officers(ids)
+      end
     end
+
+    submit_included_requests(still_pending_ids)
   end
 
   def submitted_at
@@ -69,10 +70,17 @@ class EditorDelegationBatch::Signature
   end
 
   def submit_included_requests(still_pending_ids)
-    included_requests.select { |request| still_pending_ids.include?(request.id) }.each do |request|
-      request.assign_attributes(submitted_at:, submitted_by_user_id: user.id, terms_of_service_accepted:, data_protection_officer_informed:)
-      request.save!(context: :submission)
-    end
+    included_requests.select { |request| still_pending_ids.include?(request.id) }.each { |request| submit(request) }
+  end
+
+  def submit(request)
+    request.assign_attributes(submitted_at:, submitted_by_user_id: user.id, terms_of_service_accepted:, data_protection_officer_informed:, datapass_error: nil)
+    request.save!(context: :submission)
+    SubmitEditorDelegationRequestToDatapassJob.perform_later(request.id, consents)
+  end
+
+  def consents
+    { terms_of_service_accepted:, data_protection_officer_informed: }
   end
 
   def some_establishment_included

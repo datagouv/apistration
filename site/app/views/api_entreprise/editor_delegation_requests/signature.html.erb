@@ -3,6 +3,7 @@
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-lg-10">
     <%= render 'header', title: "Signer vos #{count} demandes" %>
+    <%= render 'datapass_refusals' %>
     <div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">
       <%= render 'figure', value: count, label: 'établissements' %>
       <%= render 'figure', value: organizations_count, label: 'organisations' %>

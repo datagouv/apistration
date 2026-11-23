@@ -66,4 +66,12 @@ class EditorDelegationRequest < ApplicationRecord
   def submitted?
     submitted_at.present?
   end
+
+  def transmitted_to_datapass?
+    authorization_request&.first_submitted_at.present?
+  end
+
+  def refused_by_datapass!(reason)
+    update!(submitted_at: nil, submitted_by_user: nil, datapass_error: reason)
+  end
 end

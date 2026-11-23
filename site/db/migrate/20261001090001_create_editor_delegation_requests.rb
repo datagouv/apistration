@@ -8,6 +8,7 @@ class CreateEditorDelegationRequests < ActiveRecord::Migration[8.1]
       t.jsonb :data, null: false, default: {}
       t.datetime :submitted_at
       t.references :submitted_by_user, type: :uuid, foreign_key: { to_table: :users }
+      t.text :datapass_error
       t.timestamps
     end
 

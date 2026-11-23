@@ -129,6 +129,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.jsonb "data", default: {}, null: false
     t.datetime "submitted_at"
     t.uuid "submitted_by_user_id"
+    t.text "datapass_error"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["authorization_request_id"], name: "index_editor_delegation_requests_on_authorization_request_id", unique: true

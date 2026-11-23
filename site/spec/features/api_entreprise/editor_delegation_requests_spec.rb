@@ -1,4 +1,6 @@
 RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
+  include ActiveJob::TestHelper
+
   let(:editor) { create(:editor, name: 'Omnikles ') }
   let(:editor_delegation_campaign) { create(:editor_delegation_campaign, editor:) }
   let(:editor_delegation_request) do
@@ -6,7 +8,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
   end
   let(:user) { create(:user, :with_full_name, email: 'achats@saint-exemple.fr') }
 
-  before { stub_datapass_formulaires }
+  let!(:datapass) { stub_datapass_formulaires }
 
   def fill_in_data_protection_officer(email: 'dpo@saint-exemple.fr')
     fill_in 'Prénom', with: 'Dominique'
@@ -126,6 +128,54 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       expect(editor_delegation_request.reload).to be_submitted
       expect(editor_delegation_request.submitted_by_user).to eq(user)
       expect(editor_delegation_request.delegue_protection_donnees_email).to eq('dpo@saint-exemple.fr')
+    end
+
+    it 'creates the request in DataPass for the signatory in the background, then submits it with the consents given' do
+      visit editor_delegation_request.invitation_path
+      fill_in_data_protection_officer
+      click_on 'Continuer'
+      consent
+      perform_enqueued_jobs { click_on 'Signer la demande' }
+
+      expect(datapass).to have_received(:create_demande).with(
+        hash_including(
+          form_uid: editor_delegation_campaign.datapass_form_uid,
+          organization: { siret: '21340172201787' },
+          applicant: hash_including(email: 'achats@saint-exemple.fr'),
+          data: hash_including('delegue_protection_donnees_email' => 'dpo@saint-exemple.fr')
+        )
+      )
+      expect(datapass).to have_received(:submit_demande).with('1001', consentement: { terms_of_service_accepted: true, data_protection_officer_informed: true })
+      expect(editor_delegation_request.authorization_request.reload.external_id).to eq('1001')
+    end
+
+    it 'puts the request back to sign, with the reason, when DataPass refuses it' do
+      allow(datapass).to receive(:submit_demande).and_raise(
+        DatapassAPIClient::UnprocessableEntity.new('422', status: 422, errors: [{ 'detail' => 'Email du délégué à la protection des données n\'est pas délivrable' }])
+      )
+
+      visit editor_delegation_request.invitation_path
+      fill_in_data_protection_officer
+      click_on 'Continuer'
+      consent
+      perform_enqueued_jobs { click_on 'Signer la demande' }
+
+      expect(editor_delegation_request.reload).not_to be_submitted
+
+      visit editor_delegation_request.invitation_path
+
+      expect(page).to have_text('DataPass a refusé une demande')
+      expect(page).to have_text('n\'est pas délivrable')
+
+      allow(datapass).to receive(:submit_demande).and_return({})
+      click_on 'Continuer'
+      consent
+      perform_enqueued_jobs { click_on 'Signer la demande' }
+
+      expect(page).to have_text('Votre demande d’habilitation est signée')
+      expect(editor_delegation_request.reload.datapass_error).to be_nil
+      expect(datapass).to have_received(:create_demande).once
+      expect(datapass).to have_received(:update_demande).with('1001', hash_including(:data))
     end
   end
 

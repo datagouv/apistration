@@ -41,6 +41,7 @@
             <th scope="col">Établissement</th>
             <th scope="col">SIRET</th>
             <th scope="col">Signée le</th>
+            <th scope="col">DataPass</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@
               <td><%= @batch.establishment(request.siret)&.denomination %></td>
               <td><%= request.siret %></td>
               <td><%= l(request.submitted_at, format: :long) %></td>
+              <td><%= request.transmitted_to_datapass? ? 'Transmise' : 'En cours de transmission' %></td>
             </tr>
           <% end %>
         </tbody>

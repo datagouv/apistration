@@ -1,0 +1,12 @@
+<% refused = @batch.pending_requests.select { |request| request.datapass_error.present? } %>
+<% if refused.any? %>
+  <div class="fr-alert fr-alert--error fr-mb-4w">
+    <h2 class="fr-alert__title">DataPass a refusé <%= refused.one? ? 'une demande' : "#{refused.size} demandes" %></h2>
+    <p>Corrigez ce qui est indiqué, puis signez à nouveau&nbsp;:</p>
+    <ul>
+      <% refused.each do |request| %>
+        <li><%= @batch.establishment(request.siret)&.denomination || "SIRET #{request.siret}" %> (SIRET <%= request.siret %>)&nbsp;: <%= request.datapass_error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
