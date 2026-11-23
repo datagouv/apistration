@@ -15,6 +15,7 @@ fr:
       demande_validee:
         subject: "✅ Demande validée : créez votre jeton %{api_name}"
         delegated_subject: ✅ Demande validée
+        token_created_subject: "✅ Demande validée : votre jeton %{api_name} est disponible"
         update_subject: ✅ Mise à jour de la demande validée
 
     token_mailer:

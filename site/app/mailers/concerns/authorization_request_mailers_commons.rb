@@ -5,6 +5,8 @@ module AuthorizationRequestMailersCommons
     before_action :attach_logos
 
     include ExternalUrlHelper
+
+    helper_method :validation_button_label
   end
 
   %w[
@@ -43,11 +45,20 @@ module AuthorizationRequestMailersCommons
     @delegated_editor = authorization_request.editor_delegations.active.map(&:editor).find(&:editor_tokens_enabled?)
     @token_generating_editor = form_editors.find(&:copy_token?) unless @delegated_editor
     @client_software_editor = form_editors.find(&:client_manages_token?)
+    @token_created = !@delegated_editor && authorization_request.tokens.active.exists?
+  end
+
+  def validation_button_label
+    return 'Voir la demande' if @update || @delegated_editor || @token_generating_editor
+    return 'Voir mon jeton' if @token_created
+
+    'Créer mon jeton'
   end
 
   def subject_key
     return 'update_subject' if @update
     return 'delegated_subject' if action_name == 'demande_validee' && (@delegated_editor || @token_generating_editor)
+    return 'token_created_subject' if action_name == 'demande_validee' && @token_created
 
     'subject'
   end

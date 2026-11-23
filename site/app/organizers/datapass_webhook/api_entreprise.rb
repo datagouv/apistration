@@ -9,6 +9,7 @@ module DatapassWebhook
       ::DatapassWebhook::FindOrCreateOrganization,
       ::DatapassWebhook::UpdateScopes,
       ::DatapassWebhook::CreateEditorDelegation,
+      ::DatapassWebhook::CreateTokenOnValidation,
       ::DatapassWebhook::ArchivePreviousAuthorizationRequest,
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
       ::DatapassWebhook::RevokeCurrentToken,

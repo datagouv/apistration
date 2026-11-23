@@ -21,7 +21,7 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
     allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
   end
 
-  it_behaves_like 'datapass webhooks', 'v2', creates_token: true
+  it_behaves_like 'datapass webhooks', 'v2'
 
   it 'creates an authorization request with particulier api' do
     expect(subject.authorization_request.api).to eq('particulier')
@@ -72,6 +72,24 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
 
     it 'schedules no email' do
       expect { subject }.not_to have_enqueued_job(ScheduleAuthorizationRequestEmailJob)
+    end
+  end
+
+  context 'when DataPass replays a first validation whose token could not be created' do
+    before do
+      datapass_webhook_params['data']['state'] = 'validated'
+      allow(ScheduleAuthorizationRequestEmailJob).to receive(:perform_later).and_raise(ActiveRecord::ConnectionTimeoutError)
+      begin
+        described_class.call(datapass_webhook_params.deep_dup)
+      rescue ActiveRecord::ConnectionTimeoutError
+        nil
+      end
+      allow(ScheduleAuthorizationRequestEmailJob).to receive(:perform_later).and_call_original
+    end
+
+    it 'creates the token and schedules its email on the replay' do
+      expect { subject }.to change(Token, :count).by(1)
+        .and have_enqueued_job(ScheduleAuthorizationRequestEmailJob).with(anything, anything, 'jeton_disponible', anything)
     end
   end
 
