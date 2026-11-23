@@ -1,0 +1,7 @@
+<% content_for :minimal_header, true %>
+<% content_for :no_newsletter_banner, true %>
+<% content_for :head do %>
+  <style>.fr-header__navbar { display: none; }</style>
+<% end %>
+
+<%= render template: "layouts/api_entreprise/application" %>
