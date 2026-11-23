@@ -1,3 +1,9 @@
+- date: 2026-11-23
+  scope: api_particulier
+  title: "Participation familiale EAJE : mêmes données que CDAP pour les allocataires Caf"
+  description: |
+    La fiche de l'API [participation familiale EAJE](<%= endpoint_path(uid: 'cnav/psu', anchor: 'donnees-a-jour-comme-cdap') %>) précise que, pour un allocataire Caf, l'API et CDAP lisent le même dossier allocataire, actualisé au même moment : une modification du dossier apparaît dans l'API en même temps que dans CDAP, et une vérification dans CDAP est inutile. L'actualisation couvre aussi un changement de situation de l'allocataire lui-même, en plus de celui du conjoint ou des enfants à charge.
+
 - date: 2026-11-20
   scope: api_entreprise
   title: "Liasses fiscales : l'année en cours peut être demandée"

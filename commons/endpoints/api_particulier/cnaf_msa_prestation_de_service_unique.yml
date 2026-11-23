@@ -48,7 +48,7 @@ fiche:
       updating_rules_description: |+
         Les données sont actualisées :
         - **une fois par an, au mois de janvier,** pour la base ressource ;
-        - **lorsqu'il y a un changement de situation pour les enfants à charge et le conjoint** ;
+        - **lorsqu'il y a un changement de situation pour l'allocataire, le conjoint ou les enfants à charge** ;
         - **tous les 2, 3 ou 5 ans** pour le nombre d'ouverture de droit à l'allocatation d'éducation de l'enfant handicapé (selon le taux d'incapacité).
 
         Cette API opérée par la Caisse nationale d'assurance vieillesse (CNAV) est reliée au système d'information de la Caisse nationale des allocations familiales (CNAF) et à celui de la mutualité sociale agricole (MSA).
@@ -192,6 +192,18 @@ fiche:
           Chaque erreur `404` _(allocataire non référencé, dossier allocataire absent, allocataire non éligible)_ indique dans `meta.origin` l'organisme qui a répondu : `RNCPS` quand l'allocataire n'est référencé auprès d'aucune caisse éligible, `CNAF` ou `MSA` selon la caisse de rattachement de l'allocataire. Pour un allocataire non éligible, `meta.origin` est absent quand la passerelle de la CNAV ne nomme pas la caisse qui a répondu.
 
           `meta.origin` et `meta.provider` coexistent car ils ne disent pas la même chose : `meta.provider` reste l'émetteur du code d'erreur dans la nomenclature des erreurs, qui ne désigne pas toujours l'organisme qui a répondu (un allocataire non référencé porte par exemple le fournisseur `CNAF & MSA` et l'origine `RNCPS`).
+
+      - q: <a name="donnees-a-jour-comme-cdap"></a> Les données de l'API sont-elles aussi à jour que celles de CDAP ?
+        a: |+
+          Oui. L'API et CDAP s'appuient sur la même source de données : le dossier de l'allocataire géré par la Caf. Leur actualisation est synchrone : une modification apparaît au même moment dans l'API et dans CDAP.
+
+      - q: <a name="changement-ressources-en-cours-d-annee"></a> Si les ressources d'une famille changent en cours d'année, l'API en tient-elle compte ?
+        a: |+
+          Oui. Dès que le changement apparaît dans le dossier de l'allocataire, une nouvelle interrogation de l'API renvoie les données à jour.
+
+      - q: <a name="verifier-dans-cdap"></a> Faut-il vérifier les données de l'API dans CDAP ?
+        a: |+
+          Non. Les deux outils affichent les mêmes données, au même moment. Une double consultation est inutile.
 
     historique: |+
       **17/11/2026 — Matricule CAF et code organisme**
