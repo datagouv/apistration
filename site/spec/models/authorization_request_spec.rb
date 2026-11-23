@@ -257,11 +257,11 @@ RSpec.describe AuthorizationRequest do
 
     let(:authorization_request) { create(:authorization_request) }
     let!(:delegable_editor) { create(:editor, :editor_tokens_ready) }
-    let!(:non_delegable_editor) { create(:editor) }
+    let!(:editor_not_ready) { create(:editor) }
 
     context 'without any delegation' do
-      it 'returns all delegable editors' do
-        expect(subject).to contain_exactly(delegable_editor)
+      it 'returns every editor of the API, ready for editor tokens or not' do
+        expect(subject).to contain_exactly(delegable_editor, editor_not_ready)
       end
     end
 
@@ -269,7 +269,7 @@ RSpec.describe AuthorizationRequest do
       before { create(:editor_delegation, editor: delegable_editor, authorization_request:) }
 
       it 'excludes the already delegated editor' do
-        expect(subject).to be_empty
+        expect(subject).to contain_exactly(editor_not_ready)
       end
     end
 
@@ -277,7 +277,7 @@ RSpec.describe AuthorizationRequest do
       before { create(:editor_delegation, editor: delegable_editor, authorization_request:, revoked_at: 1.day.ago) }
 
       it 'includes the editor again' do
-        expect(subject).to contain_exactly(delegable_editor)
+        expect(subject).to contain_exactly(delegable_editor, editor_not_ready)
       end
     end
   end

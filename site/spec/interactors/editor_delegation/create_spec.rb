@@ -25,12 +25,13 @@ RSpec.describe EditorDelegation::Create do
     end
   end
 
-  context 'with a non-delegable editor' do
+  context 'with an editor not ready for editor tokens' do
     let(:editor) { create(:editor) }
     let(:editor_id) { editor.id }
 
-    it 'fails' do
-      expect(result).to be_failure
+    it 'creates a delegation: any editor can be delegated to' do
+      expect(result).to be_success
+      expect(result.delegation.editor).to eq(editor)
     end
   end
 

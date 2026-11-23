@@ -15,8 +15,8 @@ RSpec.describe EditorDelegation::Grant, type: :organizer do
     )
   end
 
-  context 'when the editor does not accept delegations' do
-    let(:editor) { create(:editor) }
+  context 'when the demande is revoked' do
+    before { authorization_request.revoke! }
 
     it 'emits no delegation granted' do
       expect { grant }.not_to emit_security_event('delegation.editor.granted')
