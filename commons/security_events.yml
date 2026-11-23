@@ -72,7 +72,7 @@ events:
   token.api_token.created:
     criticality: notable
     services: [site]
-    description: Création d'un token d'habilitation. source datapass_webhook à la validation d'une demande API Particulier Démarche Numérique sans token actif (acteur datapass), contact quand un contact de la demande le crée depuis son espace, editor quand un membre d'un éditeur qui copie les tokens le génère pour une demande sans token actif, admin pour une création manuelle. datapass_id est l'id de la demande DataPass, à corréler avec integration.datapass_webhook.received
+    description: Création d'un token d'habilitation. source datapass_webhook à la validation d'une demande sans token actif, sauf si elle est déléguée à un éditeur prêt, qui appelle l'API avec ses tokens éditeurs (acteur datapass), contact quand un contact de la demande le crée depuis son espace, editor quand un membre d'un éditeur qui copie les tokens le génère pour une demande sans token actif, admin pour une création manuelle. datapass_id est l'id de la demande DataPass, à corréler avec integration.datapass_webhook.received
     actor_types: [user, editor, admin, datapass]
     target_type: token
     details: [source, datapass_id, expires_at, scopes]
