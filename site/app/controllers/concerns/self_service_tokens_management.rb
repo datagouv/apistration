@@ -1,11 +1,12 @@
 module SelfServiceTokensManagement
   extend ActiveSupport::Concern
+  include AuthorizationRequestPage
 
   def new
-    @authorization_request = authorize(extract_authorization_request, :create_token?)
-    @token = @authorization_request.tokens.new(name: nil)
+    authorization_request = authorize(extract_authorization_request, :create_token?)
+    @token = authorization_request.tokens.new(name: nil)
 
-    render 'shared/self_service_tokens/new'
+    render_authorization_request_page(authorization_request, panel: :new)
   end
 
   def create
@@ -14,17 +15,16 @@ module SelfServiceTokensManagement
 
     if result.success?
       success_message(title: t('shared.self_service_tokens.create.success.title', name: result.token.name))
+      redirect_to authorization_request_path(id: authorization_request.id, jeton: result.token.id)
     else
-      error_message(title: t('shared.self_service_tokens.create.error.title'), description: result.message)
+      render_creation_failure(authorization_request, result)
     end
-
-    redirect_to authorization_request_path(id: authorization_request.id)
   end
 
   def revocation
     @token = authorize(extract_token, :revoke?)
 
-    render 'shared/self_service_tokens/revocation'
+    render_authorization_request_page(@token.authorization_request, panel: :revocation, selected_token: @token)
   end
 
   def revoke
@@ -32,10 +32,17 @@ module SelfServiceTokensManagement
 
     flash_revocation_outcome(Token::RevokeByContact.call(token:, user: current_user), token)
 
-    redirect_to authorization_request_path(id: token.authorization_request.id)
+    redirect_to authorization_request_path(id: token.authorization_request.id, jeton: token.id)
   end
 
   private
+
+  def render_creation_failure(authorization_request, result)
+    @token = result.token
+    @token.errors.add(:base, result.message) if @token.errors.empty?
+
+    render_authorization_request_page(authorization_request, panel: :new, status: :unprocessable_content)
+  end
 
   def flash_revocation_outcome(result, token)
     if result.success? || token.reload.blacklisted?
@@ -63,7 +70,7 @@ module SelfServiceTokensManagement
   end
 
   def extract_token
-    current_user.tokens.where(authorization_requests: { api: }).find(params.expect(:id))
+    current_user.tokens.where(authorization_requests: { api: }).merge(AuthorizationRequest.viewable_by_users).find(params.expect(:id))
   end
 
   def token_params
