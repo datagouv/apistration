@@ -18,6 +18,14 @@ RSpec.describe Token::CreateByContact do
     )
   end
 
+  it 'emits the IPs the token is restricted to with its creation' do
+    restricted_creation = -> { described_class.call(authorization_request:, user: demandeur, name: 'Production', lifetime_in_months: 18, allowed_ips_text: "203.0.113.10\n198.51.100.0/24") }
+
+    expect(&restricted_creation).to emit_security_event('token.api_token.created').with(
+      details: hash_including(allowed_ips: contain_exactly('203.0.113.10/32', '198.51.100.0/24'))
+    )
+  end
+
   it 'refuses a creation once the demande has been revoked, even if it was allowed when the page was shown' do
     authorization_request.revoke!
 

@@ -2,6 +2,12 @@ class AllowedIpsValidator < ActiveModel::EachValidator
   MAX_ENTRIES = 10
   MIN_IPV4_PREFIX = 24
 
+  def self.parse(entry)
+    entry.is_a?(IPAddr) ? entry : IPAddr.new(entry.to_s)
+  rescue IPAddr::Error
+    nil
+  end
+
   def validate_each(record, attribute, value)
     return if value.blank?
 
@@ -20,18 +26,12 @@ class AllowedIpsValidator < ActiveModel::EachValidator
   end
 
   def validate_entry(record, attribute, entry)
-    ip = parse(entry)
+    ip = self.class.parse(entry)
 
     return record.errors.add(attribute, :invalid_ip, entry:) if ip.nil?
     return record.errors.add(attribute, :ip_range_too_wide, entry:) if too_wide?(ip)
 
     record.errors.add(attribute, :forbidden_ip, entry:) if forbidden?(ip)
-  end
-
-  def parse(entry)
-    entry.is_a?(IPAddr) ? entry : IPAddr.new(entry.to_s)
-  rescue IPAddr::Error
-    nil
   end
 
   def too_wide?(addr)
