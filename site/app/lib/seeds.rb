@@ -174,21 +174,77 @@ class Seeds
   end
 
   def create_editor_delegation_requests
+    create_omnikles_delegation_requests
+    create_hoptis_delegation_requests
+  end
+
+  def create_omnikles_delegation_requests
     editor = Editor.create!(name: 'Omnikles', apis: %w[entreprise], editor_tokens_enabled: true, siret: '44973625500018')
     use_case = EditorUseCase.create!(editor:, datapass_form_uid: 'api-entreprise-marches-publics', data: omnikles_use_case_data)
 
-    %w[21340172201787 21310555400017 21330075900015].each do |siret|
-      create_editor_delegation_request(use_case, siret)
+    create_user(email: 'achats@yopmail.com', first_name: 'Camille', last_name: 'Martin')
+    %w[21340172201787 21340172200011 21310555400017 21330075900015].each do |siret|
+      find_or_create_organization(siret, denomination: 'COMMUNE DE MONTPELLIER')
+      create_editor_delegation_request(use_case, siret, 'achats@yopmail.com')
+    end
+
+    create_user(email: 'mairie@yopmail.com', first_name: 'Claude', last_name: 'Bernard')
+    create_editor_delegation_request(use_case, '21590350200014', 'mairie@yopmail.com')
+  end
+
+  def create_hoptis_delegation_requests
+    editor = Editor.create!(name: 'Hoptis', apis: %w[entreprise], editor_tokens_enabled: true, siret: '80295478500028')
+    use_case = EditorUseCase.create!(editor:, datapass_form_uid: 'api-entreprise', data: hoptis_use_case_data)
+
+    create_user(email: 'creches@yopmail.com', first_name: 'Dominique', last_name: 'Petit')
+    hoptis_establishments.each do |siret, denomination|
+      find_or_create_organization(siret, denomination:)
+      dpo = siret.start_with?('834567893') ? {} : hoptis_data_protection_officer
+      create_editor_delegation_request(use_case, siret, 'creches@yopmail.com', **dpo)
     end
   end
 
-  def create_editor_delegation_request(use_case, siret)
+  def hoptis_establishments
+    {
+      'CRÈCHE LES LUCIOLES' => %w[00015 00023 00031],
+      'CRÈCHE PETITS PAS' => %w[00011],
+      'MICRO-CRÈCHE ARC-EN-CIEL' => %w[00018],
+      'CRÈCHE LA RONDE' => %w[00014 00022],
+      'CRÈCHE LES PETITS LOUPS' => %w[00017 00025 00033],
+      'CRÈCHE PIROUETTE' => %w[00016 00024]
+    }.each_with_index.flat_map do |(denomination, nics), index|
+      nics.map { |nic| ["#{812_345_671 + (index * 11_111_111)}#{nic}", denomination] }
+    end
+  end
+
+  def hoptis_data_protection_officer
+    {
+      delegue_protection_donnees_given_name: 'Sacha',
+      delegue_protection_donnees_family_name: 'Moreau',
+      delegue_protection_donnees_email: 'dpo@groupe-creches.yopmail.com',
+      delegue_protection_donnees_phone_number: '0102030405',
+      delegue_protection_donnees_job_title: 'Délégué à la protection des données'
+    }
+  end
+
+  def hoptis_use_case_data
+    {
+      'intitule' => 'Gestion des inscriptions en crèche',
+      'description' => 'Vérification des structures partenaires des crèches du groupe',
+      'destinataire_donnees_caractere_personnel' => 'Directions des crèches',
+      'duree_conservation_donnees_caractere_personnel' => '12',
+      'contact_metier_email' => 'metier-hoptis@yopmail.com',
+      'contact_technique_email' => 'technique-hoptis@yopmail.com'
+    }
+  end
+
+  def create_editor_delegation_request(use_case, siret, contact_email, **data_protection_officer)
     authorization_request = create_authorization_request(
       api: 'entreprise', demarche: use_case.datapass_form_uid, siret:, status: 'draft',
       intitule: use_case.data['intitule'], description: use_case.data['description'], scopes: %w[unites_legales_etablissements_insee attestations_fiscales]
     )
     EditorDelegation.create!(editor: use_case.editor, authorization_request:, created_via: 'editor_delegation_request')
-    EditorDelegationRequest.create!(editor_use_case: use_case, siret:, contact_email: 'achats@yopmail.com', authorization_request:)
+    EditorDelegationRequest.create!(editor_use_case: use_case, siret:, contact_email:, authorization_request:, **data_protection_officer)
   end
 
   def omnikles_use_case_data
@@ -372,15 +428,15 @@ class Seeds
     AuthorizationRequest.create!(params)
   end
 
-  def find_or_create_organization(siret)
-    organization = Organization.find_by(siret:)
+  def find_or_create_organization(siret, denomination: nil)
+    Organization.find_by(siret:) || Organization.create!(siret:, insee_payload: insee_payload(siret, denomination))
+  end
 
-    return organization if organization
+  def insee_payload(siret, denomination)
+    fixture = Rails.root.join("spec/fixtures/insee/#{siret}.json")
+    return JSON.parse(fixture.read) if fixture.exist?
 
-    Organization.create!(
-      siret:,
-      insee_payload: JSON.parse(Rails.root.join("spec/fixtures/insee/#{siret}.json").read)
-    )
+    { 'etablissement' => { 'uniteLegale' => { 'denominationUniteLegale' => denomination || "ORGANISATION #{siret.first(9)}" } } }
   end
 
   def create_user_authorization_request_role(params = {})
