@@ -16,6 +16,10 @@ RSpec.describe EditorDelegationRequest do
     expect(build(:editor_delegation_request, siret: existing.siret)).to be_valid
   end
 
+  it 'stores the contact email trimmed and downcased, so that it matches the ProConnect email of the signatory' do
+    expect(build(:editor_delegation_request, contact_email: ' Achats@Saint-Exemple.fr ').contact_email).to eq('achats@saint-exemple.fr')
+  end
+
   describe 'invitation token' do
     let(:editor_delegation_request) { create(:editor_delegation_request) }
 

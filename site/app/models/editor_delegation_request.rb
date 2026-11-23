@@ -23,6 +23,8 @@ class EditorDelegationRequest < ApplicationRecord
 
   store_accessor :data, *DATA_PROTECTION_OFFICER_ATTRIBUTES
 
+  normalizes :contact_email, with: ->(email) { email.strip.downcase.presence }
+
   attribute :terms_of_service_accepted, :boolean
   attribute :data_protection_officer_informed, :boolean
 
