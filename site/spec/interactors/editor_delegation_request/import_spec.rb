@@ -2,12 +2,13 @@ RSpec.describe EditorDelegationRequest::Import do
   subject(:result) { described_class.call(editor_delegation_campaign:, rows:) }
 
   let(:editor_delegation_campaign) { create(:editor_delegation_campaign) }
-  let!(:already_imported) { create(:editor_delegation_request, editor_delegation_campaign:, siret: '21030190500018', contact_email: 'mairie@exemple.fr') }
+  let!(:already_imported) { create(:editor_delegation_request, editor_delegation_campaign:, siret: '21030190500019', contact_email: 'mairie@exemple.fr') }
   let(:rows) do
     [
       { 'siret' => '21340172201787', 'contact_email' => ' achats@saint-exemple.fr ' },
       { 'siret' => '213 401 722 01795', 'contact_email' => nil },
       { 'siret' => '213401722', 'contact_email' => 'siren@exemple.fr' },
+      { 'siret' => '21340172201788', 'contact_email' => 'luhn@exemple.fr' },
       { 'siret' => '21340172201787', 'contact_email' => 'doublon@exemple.fr' },
       { 'siret' => already_imported.siret, 'contact_email' => 'autre@exemple.fr' }
     ]
@@ -53,8 +54,8 @@ RSpec.describe EditorDelegationRequest::Import do
     expect(result.created.map { |request| request.authorization_request.intitule }).to all(eq('Dématérialisation des marchés publics'))
   end
 
-  it 'reports invalid SIRET, duplicates and already imported requests' do
-    expect(result.invalid_sirets).to eq(%w[213401722])
+  it 'reports SIRET that DataPass would refuse, duplicates and already imported requests' do
+    expect(result.invalid_sirets).to eq(%w[213401722 21340172201788])
     expect(result.duplicates).to eq(%w[21340172201787])
     expect(result.already_imported).to eq([already_imported])
   end

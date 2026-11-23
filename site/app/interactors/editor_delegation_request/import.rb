@@ -1,5 +1,6 @@
 class EditorDelegationRequest::Import < ApplicationInteractor
   SIRET_FORMAT = /\A\d{14}\z/
+  LA_POSTE_SIREN = '356000000'.freeze
 
   before do
     context.created = []
@@ -20,10 +21,22 @@ class EditorDelegationRequest::Import < ApplicationInteractor
   def import_row(row)
     siret = normalize_siret(row['siret'])
 
-    return context.invalid_sirets << row['siret'] unless SIRET_FORMAT.match?(siret)
+    return context.invalid_sirets << row['siret'] unless valid_siret?(siret)
     return context.duplicates << siret unless imported_sirets.add?(siret)
 
     import(siret, row)
+  end
+
+  def valid_siret?(siret)
+    SIRET_FORMAT.match?(siret) && (luhn_valid?(siret) || la_poste?(siret))
+  end
+
+  def luhn_valid?(siret)
+    (siret.chars.reverse.each_with_index.sum { |digit, index| index.odd? ? (digit.to_i * 2).digits.sum : digit.to_i } % 10).zero?
+  end
+
+  def la_poste?(siret)
+    siret.start_with?(LA_POSTE_SIREN) && (siret.chars.sum(&:to_i) % 5).zero?
   end
 
   def import(siret, row)
