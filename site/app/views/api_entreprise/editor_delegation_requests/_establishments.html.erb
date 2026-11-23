@@ -1,0 +1,30 @@
+<p>Toutes les demandes sont cochées. Décochez les établissements que vous ne souhaitez pas engager maintenant&nbsp;: leur demande reste en attente.</p>
+<%= hidden_field_tag 'signature[included_ids][]', '', id: nil %>
+<div class="fr-table fr-mb-2w">
+  <table>
+    <caption><%= @batch.pending_requests.size %> établissements</caption>
+    <thead>
+      <tr>
+        <th scope="col"><span class="fr-sr-only">Signer</span></th>
+        <th scope="col">SIRET</th>
+        <th scope="col">Organisation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @batch.organizations.each do |organization| %>
+        <% organization.requests.each do |request| %>
+          <tr>
+            <td>
+              <div class="fr-checkbox-group fr-checkbox-group--sm">
+                <%= check_box_tag 'signature[included_ids][]', request.id, @signature.included?(request), id: "included_#{request.id}", data: { batch_selection_target: 'checkbox', action: 'batch-selection#update' } %>
+                <label class="fr-label" for="included_<%= request.id %>"><span class="fr-sr-only">Signer pour le SIRET <%= request.siret %></span></label>
+              </div>
+            </td>
+            <td><%= request.siret %></td>
+            <td><%= @batch.establishment(request.siret)&.denomination || organization.name %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

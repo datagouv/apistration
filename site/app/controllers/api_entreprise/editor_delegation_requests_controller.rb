@@ -1,54 +1,52 @@
 class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseController
   layout 'api_entreprise/minimal'
 
-  before_action :load_editor_delegation_request
-  before_action :redirect_to_show, if: -> { @editor_delegation_request.submitted? }, except: %i[show simulate_datapass_webhook]
-  before_action :redirect_to_show, unless: :agent_of_the_organization?, except: %i[show simulate_datapass_webhook]
+  before_action :load_editor_delegation_batch
+  before_action :redirect_to_show, unless: :signatory?, except: %i[show simulate_datapass_webhook]
+  before_action :redirect_to_confirmation, if: -> { @batch.pending_requests.empty? }, only: %i[sign organizations edit_organization update_organization]
+  before_action :load_organization, only: %i[edit_organization update_organization]
   before_action :ensure_datapass_webhook_simulation_allowed!, only: :simulate_datapass_webhook
 
   rescue_from DatapassAPIClient::Error, DatapassFormulaire::NotFound, with: :datapass_unavailable
 
   def show
-    if @editor_delegation_request.submitted?
-      render :submitted
-    elsif !identified_for_an_organization?
+    if !user_signed_in?
       session[:return_to] = request.fullpath
       render :identification
-    elsif agent_of_the_organization?
-      redirect_to editor_delegation_request_data_protection_officer_path
+    elsif !signatory?
+      render :account_mismatch, status: :forbidden
+    elsif @batch.pending_requests.empty?
+      redirect_to_confirmation
     else
-      render :organization_mismatch, status: :forbidden
+      @signature = EditorDelegationBatch::Signature.new(batch: @batch, user: current_user)
+      render :signature
     end
   end
 
-  def edit; end
+  def sign
+    @signature = EditorDelegationBatch::Signature.new(batch: @batch, user: current_user, **signature_params)
 
-  def update
-    @editor_delegation_request.assign_attributes(data_protection_officer_params)
-
-    if params[:draft].present?
-      save_draft
-    elsif @editor_delegation_request.save(context: :data_protection_officer)
-      redirect_to editor_delegation_request_summary_path
+    if @signature.save
+      redirect_to_confirmation
     else
-      render :edit, status: :unprocessable_content
+      render :signature, status: :unprocessable_content
     end
   end
 
-  def summary
-    return redirect_to editor_delegation_request_data_protection_officer_path unless @editor_delegation_request.valid?(:data_protection_officer)
-
-    @datapass_data = @editor_delegation_request.datapass_data
+  def confirmation
+    @submitted_requests = @batch.submitted_requests.to_a
   end
 
-  def submit
-    @editor_delegation_request.assign_attributes(submission_params.merge(submitted_at: Time.zone.now, submitted_by_user: current_user))
+  def organizations; end
 
-    if @editor_delegation_request.save(context: :submission)
-      redirect_to editor_delegation_request_path
+  def edit_organization; end
+
+  def update_organization
+    if @organization.update_data_protection_officer(data_protection_officer_params)
+      success_message(title: "Le délégué à la protection des données de #{@organization.name} est enregistré.")
+      redirect_to editor_delegation_request_organizations_path
     else
-      @datapass_data = @editor_delegation_request.datapass_data
-      render :summary, status: :unprocessable_content
+      render :edit_organization, status: :unprocessable_content
     end
   end
 
@@ -70,43 +68,42 @@ class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseControlle
     raise ActionController::RoutingError, 'Not Found' if Rails.env.production? || !@editor_delegation_request.submitted?
   end
 
-  def load_editor_delegation_request
+  def load_editor_delegation_batch
     @editor_delegation_request = EditorDelegationRequest.find_by_token_for(:invitation, params[:token])
 
     raise ActionController::RoutingError, 'Not Found' if @editor_delegation_request.nil? || @editor_delegation_request.editor_slug != params[:editor_slug]
 
-    @organization = Organization.find_by(siret: @editor_delegation_request.siret)
+    @batch = EditorDelegationBatch.of(@editor_delegation_request)
   end
 
-  def save_draft
-    @editor_delegation_request.save!
+  def load_organization
+    @organization = @batch.organization(params[:siren])
 
-    success_message(title: 'Votre saisie est enregistrée, vous pourrez la reprendre plus tard depuis le même lien.')
-    redirect_to editor_delegation_request_data_protection_officer_path
+    raise ActionController::RoutingError, 'Not Found' if @organization.nil?
   end
 
-  def identified_for_an_organization?
-    user_signed_in? && session[:current_user_siret].present?
-  end
-
-  def agent_of_the_organization?
-    identified_for_an_organization? &&
-      session[:current_user_siret].first(9) == @editor_delegation_request.siret.first(9)
+  def signatory?
+    @batch.signatory?(current_user)
   end
 
   def redirect_to_show
     redirect_to editor_delegation_request_path
   end
 
+  def redirect_to_confirmation
+    redirect_to editor_delegation_request_confirmation_path
+  end
+
   def datapass_unavailable
     render :datapass_unavailable, status: :service_unavailable
   end
 
-  def data_protection_officer_params
-    params.expect(editor_delegation_request: EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES)
+  def signature_params
+    params.expect(signature: [:terms_of_service_accepted, :data_protection_officer_informed, { included_ids: [], data_protection_officer: EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES }])
+      .to_h.symbolize_keys
   end
 
-  def submission_params
-    params.permit(:terms_of_service_accepted, :data_protection_officer_informed)
+  def data_protection_officer_params
+    params.expect(editor_delegation_request: EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES)
   end
 end

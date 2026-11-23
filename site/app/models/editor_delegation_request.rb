@@ -58,14 +58,9 @@ class EditorDelegationRequest < ApplicationRecord
     editor.name.parameterize
   end
 
-  def other_pending_requests_of_contact
-    return EditorDelegationRequest.none if contact_email.blank?
-
-    EditorDelegationRequest
-      .where(contact_email:, submitted_at: nil)
-      .where.not(id:)
-      .includes(editor_use_case: :editor)
-      .order(:siret)
+  def data_protection_officer_complete?
+    DATA_PROTECTION_OFFICER_ATTRIBUTES.all? { |attribute| public_send(attribute).present? } &&
+      URI::MailTo::EMAIL_REGEXP.match?(delegue_protection_donnees_email)
   end
 
   def submitted?

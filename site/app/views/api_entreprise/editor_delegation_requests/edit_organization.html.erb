@@ -1,0 +1,18 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: "Le délégué à la protection des données de #{@organization.name}" %>
+    <p>
+      SIREN <%= @organization.siren %> · <%= pluralize(@organization.requests.size, 'établissement') %>.
+      Ce délégué ne vaut que pour cette organisation.
+    </p>
+
+    <%= form_with(model: @organization.lead_request, url: editor_delegation_request_organization_path(siren: @organization.siren), method: :patch) do |f| %>
+      <%= render 'data_protection_officer_fields', form: f %>
+
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li><%= link_to 'Annuler', editor_delegation_request_organizations_path, class: %w(fr-btn fr-btn--secondary) %></li>
+        <li><%= f.button 'Enregistrer', class: 'fr-btn' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

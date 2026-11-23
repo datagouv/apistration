@@ -122,24 +122,6 @@ RSpec.describe EditorDelegationRequest do
     end
   end
 
-  describe '#other_pending_requests_of_contact' do
-    let(:editor_delegation_request) { create(:editor_delegation_request, contact_email: 'achats@saint-exemple.fr') }
-    let!(:pending) { create(:editor_delegation_request, contact_email: 'achats@saint-exemple.fr') }
-
-    before do
-      create(:editor_delegation_request, :submitted, contact_email: 'achats@saint-exemple.fr')
-      create(:editor_delegation_request, contact_email: 'other@exemple.fr')
-    end
-
-    it 'lists the requests left to submit by the same contact' do
-      expect(editor_delegation_request.other_pending_requests_of_contact).to contain_exactly(pending)
-    end
-
-    it 'is empty without contact' do
-      expect(build(:editor_delegation_request, contact_email: nil).other_pending_requests_of_contact).to be_empty
-    end
-  end
-
   describe '#submitted?' do
     it { expect(build(:editor_delegation_request)).not_to be_submitted }
     it { expect(build(:editor_delegation_request, :submitted)).to be_submitted }

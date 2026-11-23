@@ -1,0 +1,62 @@
+<% signed_count = @submitted_requests.size %>
+<% last_signature = @submitted_requests.max_by(&:submitted_at) %>
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: signed_count > 1 ? 'Vos demandes d’habilitation sont signées' : 'Votre demande d’habilitation est signée' %>
+
+    <p>
+      Vous avez signé <strong><%= signed_count > 1 ? "#{signed_count} demandes" : 'la demande' %></strong> préparée<%= 's' if signed_count > 1 %>
+      par <%= @batch.editor.name.strip %>. <%= signed_count > 1 ? 'Elles partent' : 'Elle part' %> en instruction chez API Entreprise,
+      qui délivrera, ou non, <%= signed_count > 1 ? 'les habilitations' : 'l’habilitation' %>.
+    </p>
+
+    <% if @batch.pending_requests.any? %>
+      <div class="fr-alert fr-alert--info fr-mb-4w">
+        <p>
+          <%= @batch.pending_requests.size %> établissement(s) restent en attente de signature.
+          <%= link_to 'Les signer maintenant', editor_delegation_request_path %>
+        </p>
+      </div>
+    <% end %>
+
+    <h2 class="fr-h4">Et ensuite ?</h2>
+    <ul>
+      <li>Nous instruisons <%= signed_count > 1 ? 'vos demandes' : 'votre demande' %>. Vous n'avez rien à faire.</li>
+      <li>Vous êtes informé(e) par courriel de la décision.</li>
+      <li><%= @batch.editor.name.strip %> continue de récupérer les données pour le compte de <%= signed_count > 1 ? 'vos organisations' : 'votre organisation' %>.</li>
+    </ul>
+
+    <% if last_signature %>
+      <p class="fr-text--sm">
+        Dernière signature le <%= l(last_signature.submitted_at, format: :long) %> par
+        <%= last_signature.submitted_by_user.full_name %>, identifié(e) par ProConnect.
+      </p>
+    <% end %>
+
+    <div class="fr-table">
+      <table>
+        <caption>Établissements signés</caption>
+        <thead>
+          <tr>
+            <th scope="col">SIRET</th>
+            <th scope="col">Signée le</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @submitted_requests.each do |request| %>
+            <tr>
+              <td><%= request.siret %></td>
+              <td><%= l(request.submitted_at, format: :long) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% unless Rails.env.production? %>
+      <% @submitted_requests.each do |request| %>
+        <%= render 'datapass_webhook_simulation', editor_delegation_request: request %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
