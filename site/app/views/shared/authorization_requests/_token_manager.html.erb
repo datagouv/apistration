@@ -1,0 +1,66 @@
+<% active_tokens, inactive_tokens = tokens.partition(&:active?) %>
+<%= turbo_frame_tag :token_manager, data: { turbo_action: 'advance' } do %>
+  <section id="authorization_request_tokens" class="fr-mb-6w" aria-labelledby="authorization_request_tokens_title">
+    <div class="token-manager__header">
+      <h2 id="authorization_request_tokens_title" class="fr-h3 fr-mb-0">
+        <%= t('.title') %>
+        <span class="fr-text--md fr-text-mention--grey"><%= t('.count', count: active_tokens.size, max: AuthorizationRequest::MAX_ACTIVE_TOKENS) %></span>
+      </h2>
+
+      <% if authorization_request.eligible_for_token_creation? %>
+        <% if policy(authorization_request).create_token? %>
+          <%= link_to t('.create'),
+            new_authorization_request_token_path(authorization_request_id: authorization_request.id),
+            id: :new_token_link,
+            class: 'fr-btn fr-btn--secondary fr-icon-add-line fr-btn--icon-left' %>
+        <% else %>
+          <button type="button" class="fr-btn fr-btn--secondary fr-icon-add-line fr-btn--icon-left" disabled><%= t('.create') %></button>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if !authorization_request.eligible_for_token_creation? %>
+      <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+        <p><%= t(".creation_closed.#{authorization_request.status}", default: t('.creation_closed.default')) %></p>
+      </div>
+    <% elsif authorization_request.active_tokens_limit_reached? %>
+      <div id="active_tokens_limit_reached" class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+        <p><%= t('.limit_reached', max: AuthorizationRequest::MAX_ACTIVE_TOKENS) %></p>
+      </div>
+    <% end %>
+
+    <% if tokens.empty? && @panel == :token %>
+      <% if authorization_request.eligible_for_token_creation? %>
+        <p id="habilitation_no_token"><%= t('.none') %></p>
+      <% end %>
+    <% else %>
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <div class="fr-col-12 fr-col-md-5">
+          <% if active_tokens.any? %>
+            <%= render 'shared/authorization_requests/token_list', authorization_request:, tokens: active_tokens %>
+          <% elsif authorization_request.eligible_for_token_creation? %>
+            <p id="habilitation_no_token"><%= t('.none') %></p>
+          <% end %>
+
+          <% if inactive_tokens.any? %>
+            <% inactive_selected = inactive_tokens.include?(@selected_token) %>
+            <section class="fr-accordion fr-mt-3w" id="inactive_tokens">
+              <h3 class="fr-accordion__title">
+                <button type="button" class="fr-accordion__btn" aria-expanded="<%= inactive_selected %>" aria-controls="inactive_tokens_content">
+                  <%= t('.inactive', count: inactive_tokens.size) %>
+                </button>
+              </h3>
+              <div class="fr-collapse<%= ' fr-collapse--expanded' if inactive_selected %>" id="inactive_tokens_content">
+                <%= render 'shared/authorization_requests/token_list', authorization_request:, tokens: inactive_tokens %>
+              </div>
+            </section>
+          <% end %>
+        </div>
+
+        <div class="fr-col-12 fr-col-md-7">
+          <%= render 'shared/authorization_requests/token_panel', authorization_request: %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+<% end %>

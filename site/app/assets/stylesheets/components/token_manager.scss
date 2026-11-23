@@ -1,0 +1,63 @@
+.token-manager__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.token-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border-default-grey);
+  background-color: var(--background-default-grey);
+}
+
+.token-list > li {
+  padding: 0;
+}
+
+.token-list > li + li {
+  border-top: 1px solid var(--border-default-grey);
+}
+
+.token-list__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 1rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background-image: none;
+  color: var(--text-default-grey);
+}
+
+.token-list__item[aria-current="true"] {
+  background-color: var(--background-alt-blue-france);
+  box-shadow: inset 0.25rem 0 0 0 var(--border-active-blue-france);
+}
+
+.token-list__name {
+  font-weight: 700;
+}
+
+.token-list__date {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--text-mention-grey);
+}
+
+.token-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--border-default-grey);
+  background-color: var(--background-default-grey);
+}
+
+.token-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+}

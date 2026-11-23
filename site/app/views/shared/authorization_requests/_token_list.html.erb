@@ -1,0 +1,14 @@
+<ul class="token-list">
+  <% tokens.each do |token| %>
+    <li>
+      <%= link_to authorization_request_path(id: authorization_request.id, jeton: token.id),
+        id: dom_id(token),
+        class: 'token-list__item',
+        aria: { current: token == @selected_token ? 'true' : nil } do %>
+        <span class="token-list__name"><%= token.name %></span>
+        <%= render 'shared/authorization_requests/token_status_badge', token: %>
+        <span class="token-list__date"><%= t("shared.authorization_requests.token_card.end_date.#{token.card_status}", date: friendly_date_from_timestamp(token.card_end_timestamp)) %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

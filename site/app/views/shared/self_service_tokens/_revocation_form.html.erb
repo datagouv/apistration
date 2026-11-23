@@ -1,0 +1,9 @@
+<%= form_with url: token_revoke_path(id: token.id), method: :post, id: dom_id(token, :revocation), data: { turbo_frame: '_top' } do |form| %>
+  <h3 class="fr-h5"><%= t('.title', name: token.name) %></h3>
+
+  <p><%= t('.description', name: token.name) %></p>
+
+  <p class="fr-text--sm"><%= t('.notice') %></p>
+
+  <%= render 'shared/panel_form_actions', form:, submit: t('.submit'), cancel: t('.cancel'), cancel_path: authorization_request_path(id: authorization_request.id, jeton: token.id) %>
+<% end %>

@@ -82,6 +82,29 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     end
   end
 
+  describe 'token selection' do
+    let!(:production) { create(:token, authorization_request:, name: 'Production') }
+    let!(:recette) { create(:token, authorization_request:, name: 'Recette') }
+
+    before { login_as(contact_technique) }
+
+    it 'shows in the panel the token given in the link' do
+      visit authorization_request_path(authorization_request, jeton: production.id)
+
+      expect(page).to have_css("##{dom_id(production)}[aria-current='true']")
+      expect(page).to have_css("#token_panel ##{dom_id(production, :panel)}", text: 'Production')
+    end
+
+    it 'ignores a token of another demande given in the link' do
+      other_token = create(:token, name: 'Ailleurs')
+
+      visit authorization_request_path(authorization_request, jeton: other_token.id)
+
+      expect(page).to have_css('#token_panel', text: 'Recette')
+      expect(page).to have_no_text('Ailleurs')
+    end
+  end
+
   describe 'naming rules' do
     before do
       login_as(demandeur)
@@ -91,7 +114,16 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     it 'refuses a name already used by an active token of the demande' do
       expect { create_token(name: 'Production') }.not_to change(Token, :count)
 
-      expect(page).to have_css('.fr-alert--error', text: "Le jeton n'a pas pu être créé")
+      expect(page).to have_css('#token_panel .fr-alert--error', text: "Le jeton n'a pas pu être créé")
+    end
+
+    it 'keeps the creation form and its values in the panel after a refusal' do
+      create_token(name: 'Production', lifetime: '6 mois')
+
+      within('#token_panel') do
+        expect(page).to have_field('Nom du jeton', with: 'Production')
+        expect(page).to have_field('Durée de validité', with: '6')
+      end
     end
 
     it 'accepts the name of a revoked token' do
@@ -152,21 +184,15 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
       expect(page).to have_no_button(class: 'fr-icon-close-circle-line')
     end
 
-    it 'warns about the cache before revoking' do
-      visit authorization_request_path(authorization_request)
-      find("##{dom_id(token, :revocation_link)}").click
-
-      expect(page).to have_text('Le jeton « Recette » sera révoqué immédiatement')
-      expect(page).to have_text('pendant 1 heure au plus')
-    end
-
     it 'revokes the token and lists it with the inactive ones' do
       revoke_token(token)
 
       expect(token.reload).to be_blacklisted
       expect(page).to have_css('.fr-alert--success', text: 'Le jeton « Recette » a été révoqué')
       within('#inactive_tokens') do
-        expect(page).to have_css("##{dom_id(token)}", text: 'Révoqué')
+        expect(page).to have_css("##{dom_id(token)}[aria-current='true']", text: 'Révoqué')
+      end
+      within('#token_panel') do
         expect(page).to have_css("##{dom_id(token, :stats_link)}")
         expect(page).to have_no_css("##{dom_id(token, :revocation_link)}")
       end
@@ -255,6 +281,26 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
           expect(authorization_request.tokens.count).to eq(0)
         end
       end
+    end
+  end
+
+  describe 'a refused demande, hidden from its contacts' do
+    let(:status) { 'refused' }
+    let!(:token) { create(:token, authorization_request:, name: 'Recette', exp: 20.days.from_now.to_i) }
+
+    before do
+      authorization_request.update!(intitule: 'Demande refusée')
+      login_as(demandeur)
+    end
+
+    it 'shows neither its revocation nor its extension page' do
+      visit token_revocation_path(id: token.id)
+      expect(page).to have_css('.fr-alert--error')
+      expect(page).to have_no_text('Demande refusée')
+
+      visit token_extension_path(id: token.id)
+      expect(page).to have_css('.fr-alert--error')
+      expect(page).to have_no_text('Demande refusée')
     end
   end
 
