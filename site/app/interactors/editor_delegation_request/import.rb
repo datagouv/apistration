@@ -23,21 +23,25 @@ class EditorDelegationRequest::Import < ApplicationInteractor
     return context.invalid_sirets << row['siret'] unless SIRET_FORMAT.match?(siret)
     return context.duplicates << siret unless imported_sirets.add?(siret)
 
-    import(siret, row['contact_email'].presence&.strip)
+    import(siret, row)
   end
 
-  def import(siret, contact_email)
+  def import(siret, row)
     existing = editor_delegation_campaign.editor_delegation_requests.find_by(siret:)
     return context.already_imported << existing if existing
 
-    create(siret, contact_email)
+    create(siret, row)
   end
 
-  def create(siret, contact_email)
-    creation = EditorDelegationRequest::Create.call(editor_delegation_campaign:, datapass_data:, siret:, contact_email:)
+  def create(siret, row)
+    creation = EditorDelegationRequest::Create.call(editor_delegation_campaign:, datapass_data:, siret:, contact_email: row['contact_email'], data_protection_officer: data_protection_officer(row))
     return context.failures << [siret, creation.message] if creation.failure?
 
     context.created << creation.editor_delegation_request
+  end
+
+  def data_protection_officer(row)
+    row.slice(*EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES).compact_blank
   end
 
   def normalize_siret(siret)
