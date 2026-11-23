@@ -1,4 +1,6 @@
 class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseController
+  layout 'api_entreprise/minimal'
+
   before_action :load_editor_delegation_request
   before_action :redirect_to_show, if: -> { @editor_delegation_request.submitted? }, except: %i[show simulate_datapass_webhook]
   before_action :redirect_to_show, unless: :agent_of_the_organization?, except: %i[show simulate_datapass_webhook]
