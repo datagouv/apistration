@@ -5,9 +5,9 @@ module UserSessionsHelper
     authorization_request.demandeur == current_user
   end
 
-  def sign_in_and_redirect(user, siret: nil)
+  def sign_in_and_redirect(user)
     return_to = sanitized_return_to_location
-    start_user_session(user, siret:)
+    start_user_session(user)
 
     if return_to
       redirect_to return_to

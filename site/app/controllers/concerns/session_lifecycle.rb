@@ -29,18 +29,16 @@ module SessionLifecycle
     end
   end
 
-  def start_user_session(user, siret: nil)
+  def start_user_session(user)
     rotate_session
 
     session[:current_user_id] = user.id
-    session[:current_user_siret] = siret
     session[:last_seen_at] = Time.current.to_i
     session[:absolute_expires_at] = SESSION_ABSOLUTE_TIMEOUT.from_now.to_i
   end
 
   def clear_user_session
     session[:current_user_id] = nil
-    session[:current_user_siret] = nil
     session[:last_seen_at] = nil
     session[:absolute_expires_at] = nil
   end
