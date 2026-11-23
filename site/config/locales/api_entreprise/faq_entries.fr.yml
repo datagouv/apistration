@@ -254,11 +254,11 @@ fr:
           entries:
             - question: "Comment récupérer son jeton après validation de la demande d'habilitation ?"
               answer: |+
-                  1. Une fois la demande d'habilitation validée, un e-mail est envoyé à tous les contacts de la demande avec un lien vers la page de la demande dans leur [compte utilisateur](<%= user_profile_path %>).
+                  1. Une fois la demande d'habilitation validée, un premier jeton est créé automatiquement, sauf si la demande est déléguée à un éditeur qui appelle l'API avec ses propres accès. Un e-mail est envoyé à tous les contacts de la demande avec un lien vers la page de la demande dans leur [compte utilisateur](<%= user_profile_path %>).
 
                   2. Une fenêtre de connexion ProConnect s'ouvre. Chaque contact se connecte avec l'adresse e-mail indiquée dans la demande d'habilitation.
 
-                  3. Depuis la page de la demande, cliquez sur « Créer un jeton » : choisissez un nom et une durée de validité (de 3 à 18 mois), et éventuellement les adresses IP autorisées. Une demande peut avoir jusqu'à 5 jetons actifs, par exemple un pour la production et un pour la recette.
+                  3. Le jeton est affiché sur la page de la demande. Pour en ajouter un, cliquez sur « Créer un jeton » : choisissez un nom et une durée de validité (de 3 à 18 mois). Une demande peut avoir jusqu'à 5 jetons actifs, par exemple un pour la production et un pour la recette.
 
                   {:.fr-highlight.fr-highlight--caution}
                   > ⚠️ Le token vous est propre, il ne faut pas le diffuser. Vous ne devez jamais copier-coller un token dans un moteur de recherche ou dans un e-mail. L’usage de votre token se fait uniquement dans votre logiciel métier sécurisé utilisé pour réaliser vos appels.

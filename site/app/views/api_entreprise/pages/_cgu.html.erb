@@ -112,7 +112,7 @@ l’<%= external_link_to "https://www.legifrance.gouv.fr/codes/article_lc/LEGIAR
 </p>
 
 <p>
-  Le jeton est créé par un contact de l'habilitation depuis son compte, avec une durée de vie choisie entre 3 et 18 mois ;
+  Un premier jeton est créé à la validation de l'habilitation, pour 18 mois ; les contacts de l'habilitation peuvent ensuite en créer d'autres depuis leur compte, avec une durée de vie choisie entre 3 et 18 mois ;
   son expiration est programmée à cette date sauf en cas de révocation précoce. Dans les 90 jours qui précèdent son expiration,
   un contact peut le prolonger, pour une nouvelle durée de 3 à 18 mois, après avoir vérifié que l'habilitation est toujours à jour ;
   il peut aussi créer un nouveau jeton et révoquer l'ancien. L’API Entreprise envoie aux contacts de l'habilitation des notifications
