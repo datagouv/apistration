@@ -28,7 +28,7 @@ class DatapassWebhook::CreateTokenOnValidationModel < ApplicationInteractor
   end
 
   def delegated_to_ready_editor?
-    authorization_request.editor_delegations.active.joins(:editor).merge(Editor.delegable).exists?
+    authorization_request.editor_delegations.active.joins(:editor).merge(Editor.editor_tokens_ready).exists?
   end
 
   def create_token

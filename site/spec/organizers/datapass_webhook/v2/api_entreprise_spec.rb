@@ -58,7 +58,7 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
     end
 
     context 'when the editor is ready with its editor tokens' do
-      let!(:editor) { create(:editor, :delegable, form_uids: ['api-entreprise']) }
+      let!(:editor) { create(:editor, :editor_tokens_ready, form_uids: ['api-entreprise']) }
 
       it 'creates no token: the editor calls the API with its own tokens' do
         expect { subject }.not_to change(Token, :count)

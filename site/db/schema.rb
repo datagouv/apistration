@@ -132,7 +132,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_23_100000) do
     t.string "deployment_type"
     t.text "description"
     t.string "domain"
-    t.boolean "editor_tokens_enabled", default: false, null: false
+    t.boolean "editor_tokens_ready", default: false, null: false
     t.string "form_uids", default: [], array: true
     t.string "languages"
     t.string "name", null: false

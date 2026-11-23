@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Editor::API::V1::Delegations' do
   let(:endpoint) { '/editeur/api/v1/delegations' }
-  let(:editor) { create(:editor, :delegable) }
+  let(:editor) { create(:editor, :editor_tokens_ready) }
   let(:editor_token) { create(:editor_token, editor:) }
   let(:headers) { { 'Authorization' => "Bearer #{editor_token.rehash}" } }
 
@@ -126,7 +126,7 @@ RSpec.describe 'Editor::API::V1::Delegations' do
       end
       let!(:other_editor_delegation) do
         create(:editor_delegation,
-          editor: create(:editor, :delegable, name: 'Other Editor'),
+          editor: create(:editor, :editor_tokens_ready, name: 'Other Editor'),
           authorization_request: create(:authorization_request, :validated,
             api: 'entreprise',
             external_id: '777'))

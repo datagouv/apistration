@@ -77,7 +77,7 @@ RSpec.shared_examples 'an authorization request mailer' do
     end
 
     context 'when the demande is delegated to an editor using its own tokens' do
-      let(:editor) { create(:editor, :delegable, name: 'Marchés Online') }
+      let(:editor) { create(:editor, :editor_tokens_ready, name: 'Marchés Online') }
 
       before { create(:editor_delegation, editor:, authorization_request:) }
 

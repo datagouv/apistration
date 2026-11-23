@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Editor API host routing' do
   let(:endpoint) { '/editeur/api/v1/delegations' }
-  let(:editor) { create(:editor, :delegable) }
+  let(:editor) { create(:editor, :editor_tokens_ready) }
   let(:editor_token) { create(:editor_token, editor:) }
   let(:headers) { { 'Authorization' => "Bearer #{editor_token.rehash}" } }
 

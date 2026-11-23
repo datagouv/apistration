@@ -4,7 +4,7 @@ RSpec.describe EditorDelegation::Create do
   let(:authorization_request) { create(:authorization_request, :validated) }
 
   context 'with a delegable editor' do
-    let(:editor) { create(:editor, :delegable) }
+    let(:editor) { create(:editor, :editor_tokens_ready) }
     let(:editor_id) { editor.id }
 
     it 'creates a delegation' do
@@ -16,7 +16,7 @@ RSpec.describe EditorDelegation::Create do
   end
 
   context 'when the demande is revoked' do
-    let(:editor_id) { create(:editor, :delegable).id }
+    let(:editor_id) { create(:editor, :editor_tokens_ready).id }
 
     before { authorization_request.revoke! }
 
@@ -43,7 +43,7 @@ RSpec.describe EditorDelegation::Create do
   end
 
   context 'when delegation already exists' do
-    let(:editor) { create(:editor, :delegable) }
+    let(:editor) { create(:editor, :editor_tokens_ready) }
     let(:editor_id) { editor.id }
 
     before { create(:editor_delegation, editor:, authorization_request:) }
@@ -55,7 +55,7 @@ RSpec.describe EditorDelegation::Create do
 
   context 'with an API Particulier editor on an API Entreprise authorization request' do
     let(:authorization_request) { create(:authorization_request, :validated, api: 'entreprise') }
-    let(:editor_id) { create(:editor, :delegable, apis: %w[particulier]).id }
+    let(:editor_id) { create(:editor, :editor_tokens_ready, apis: %w[particulier]).id }
 
     it 'fails without creating a delegation' do
       expect(result).to be_failure
@@ -65,7 +65,7 @@ RSpec.describe EditorDelegation::Create do
 
   context 'with an API Entreprise editor on an API Particulier authorization request' do
     let(:authorization_request) { create(:authorization_request, :validated, api: 'particulier') }
-    let(:editor_id) { create(:editor, :delegable, apis: %w[entreprise]).id }
+    let(:editor_id) { create(:editor, :editor_tokens_ready, apis: %w[entreprise]).id }
 
     it 'fails without creating a delegation' do
       expect(result).to be_failure

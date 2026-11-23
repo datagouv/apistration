@@ -42,7 +42,7 @@ module AuthorizationRequestMailersCommons
   def assign_editors(authorization_request)
     form_editors = Editor.for_demarche(authorization_request.demarche).to_a
 
-    @delegated_editor = authorization_request.editor_delegations.active.map(&:editor).find(&:editor_tokens_enabled?)
+    @delegated_editor = authorization_request.editor_delegations.active.map(&:editor).find(&:editor_tokens_ready?)
     @token_generating_editor = form_editors.find(&:copy_token?) unless @delegated_editor
     @client_software_editor = form_editors.find(&:client_manages_token?)
     @token_created = !@delegated_editor && authorization_request.tokens.active.exists?
