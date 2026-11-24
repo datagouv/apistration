@@ -198,6 +198,14 @@ RSpec.describe 'Rack::Attack acceptance' do
         {
           controller: 'api_particulier/errors_nomenclature',
           action: 'index'
+        },
+        {
+          controller: 'health',
+          action: 'show'
+        },
+        {
+          controller: 'health',
+          action: 'database'
         }
       ]
     end
