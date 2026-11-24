@@ -1,0 +1,16 @@
+<% use_cases = DatapassUseCase.for_apis(editor.apis) %>
+<% picker_path = use_case.persisted? ? editor_profile_edit_use_case_path(editor, use_case, admin:) : editor_profile_new_use_case_path(editor, admin:) %>
+
+<% if use_cases.any? %>
+  <%= form_with(url: picker_path, method: :get) do |f| %>
+    <div class="fr-select-group">
+      <%= f.label :use_case, "Cas d'usage DataPass", class: 'fr-label' %>
+      <%= f.select :use_case, grouped_options_for_select(use_cases.group_by { |candidate| "API #{candidate.api.capitalize}" }.transform_values { |candidates| candidates.map { |candidate| [candidate.label, candidate.key] } }), {}, class: 'fr-select' %>
+    </div>
+    <%= f.submit 'Continuer', class: 'fr-btn', name: nil %>
+  <% end %>
+<% else %>
+  <div class="fr-alert fr-alert--info">
+    <p>La liste des cas d'usage DataPass n'est pas disponible pour le moment. Réessayez plus tard.</p>
+  </div>
+<% end %>

@@ -3,6 +3,30 @@ module EditorProfileHelper
     admin ? admin_editor_path(editor, onglet: section_key) : editor_settings_path(onglet: section_key)
   end
 
+  def editor_profile_use_cases_path(editor, admin:)
+    admin ? admin_editor_use_cases_path(editor) : editor_use_cases_path
+  end
+
+  def editor_profile_use_case_path(editor, use_case, admin:)
+    admin ? admin_editor_use_case_path(editor, use_case) : editor_use_case_path(use_case)
+  end
+
+  def editor_profile_new_use_case_path(editor, admin:, **)
+    admin ? new_admin_editor_use_case_path(editor, **) : new_editor_use_case_path(**)
+  end
+
+  def editor_profile_edit_use_case_path(editor, use_case, admin:, **)
+    admin ? edit_admin_editor_use_case_path(editor, use_case, **) : edit_editor_use_case_path(use_case, **)
+  end
+
+  def editor_use_case_scope_groups(use_case)
+    catalogue = use_case.scope_catalogue.to_a
+    groups = catalogue.group_by(&:group).transform_values { |scopes| scopes.map { |scope| [scope.label, scope.value] } }
+    unknown_scopes = use_case.scopes - catalogue.map(&:value)
+
+    unknown_scopes.any? ? groups.merge('Autres scopes' => unknown_scopes.map { |scope| [scope, scope] }) : groups
+  end
+
   def editor_profile_contacts_path(editor, admin:)
     admin ? admin_editor_contacts_path(editor) : editor_contacts_path
   end
@@ -45,18 +69,26 @@ module EditorProfileHelper
   def editor_profile_choices(form, attribute, legend, options, multiple: false)
     errors = form.object.errors[attribute]
 
-    content_tag(:fieldset, class: ['fr-fieldset', ('fr-fieldset--error' if errors.any?)], id: "editor-#{attribute.to_s.dasherize}") do
+    content_tag(:fieldset, class: ['fr-fieldset', ('fr-fieldset--error' if errors.any?)], id: "#{form.object_name}-#{attribute}-#{legend.parameterize}".dasherize) do
       safe_join([
         content_tag(:legend, legend, class: 'fr-fieldset__legend fr-fieldset__legend--regular'),
         (hidden_field_tag("#{form.object_name}[#{attribute}][]", '', id: nil) if multiple),
         *options.map { |label, value| editor_profile_choice(form, attribute, label, value, multiple:) },
-        *errors.map { |message| content_tag(:p, message, class: 'fr-error-text fr-fieldset__element') }
+        *editor_profile_errors(errors)
       ].compact)
     end
   end
 
+  def editor_profile_errors(errors)
+    errors.map { |message| content_tag(:p, message, class: 'fr-error-text fr-fieldset__element') }
+  end
+
+  def editor_profile_remove_button(path, confirmation)
+    button_to 'Retirer', path, method: :delete, class: 'fr-btn fr-btn--sm fr-btn--tertiary', data: { turbo_confirm: confirmation }
+  end
+
   def editor_profile_choice(form, attribute, label, value, multiple:)
-    input_id = "editor_#{attribute}_#{value}"
+    input_id = "#{form.object_name}_#{attribute}_#{value}"
     input = if multiple
               check_box_tag("#{form.object_name}[#{attribute}][]", value, form.object.public_send(attribute).include?(value), id: input_id)
             else

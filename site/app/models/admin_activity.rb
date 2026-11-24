@@ -12,6 +12,9 @@ class AdminActivity < ApplicationRecord
     editor_member_removed
     editor_contact_added
     editor_contact_removed
+    editor_use_case_created
+    editor_use_case_updated
+    editor_use_case_removed
     audit_notification_created
   ].freeze
 
