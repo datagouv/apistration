@@ -8,6 +8,7 @@ class CNAV::ValidateResponse < ValidateResponse
   INTERNAL_SERVER_ERROR_FALLBACK_CODE = 'http_500'.freeze
   GATEWAY_CONNECTION_RESET_CODE = 'http_500_connection_reset'.freeze
   GATEWAY_EXCEPTION_CODE = 'http_500_gateway_exception'.freeze
+  GATEWAY_BAD_REQUEST_CODE = 'http_400_gateway_exception'.freeze
 
   raises ProviderUnprocessableEntityError, reason: :unidentified_person
   raises ProviderUnprocessableEntityError, reason: :rejected_civility
@@ -89,6 +90,7 @@ class CNAV::ValidateResponse < ValidateResponse
     track_bad_request!
 
     return unknown_provider_response! unless valid_json?
+    return unknown_provider_response! if error_code_from_body.blank?
     return family_provider_failure! if family_provider_failure?
 
     rejected_civility!
@@ -176,10 +178,14 @@ class CNAV::ValidateResponse < ValidateResponse
 
     MonitoringService.instance.track_with_added_context(
       bad_request_tracking_level,
-      "[#{context.provider_name}] Bad request (#{error_code_from_body})",
+      "[#{context.provider_name}] Bad request (#{bad_request_error_code})",
       provider_error_context,
-      fingerprint: ['cnav-bad-request', error_code_from_body.to_s]
+      fingerprint: ['cnav-bad-request', bad_request_error_code.to_s]
     )
+  end
+
+  def bad_request_error_code
+    error_code_from_body.presence || GATEWAY_BAD_REQUEST_CODE
   end
 
   def provider_error_context
