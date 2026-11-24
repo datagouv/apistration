@@ -1,0 +1,88 @@
+{
+  "code": 0,
+  "libelle": "Succès",
+  "listeDossiers": [
+    {
+      "immatriculation": {
+        "numImmat": "TT-939-WA",
+        "datePremImmat": "2009-02-18",
+        "dateAttImmat": "2009-02-18",
+        "typeImmat": {
+          "code": "N",
+          "libelle": "Normale"
+        },
+        "typeLocation": null,
+        "dateAnnulation": null
+      },
+      "vehicule": {
+        "caracteristiquesTechniques": {
+          "marque": "PEUGEOT",
+          "tvv": "4H5FTF",
+          "denominationCommerciale": "308",
+          "vin": "VF3XXXXXXXXXXXXXX",
+          "ptac": 2145,
+          "categorieCe": "M1",
+          "genreNational": "VP",
+          "carrosserieCe": "AF",
+          "carrosserieNationale": "CI",
+          "cylindree": 1598.0,
+          "codeEnergie": "ES",
+          "puissanceCv": 7,
+          "nbPlacesAssises": 5,
+          "nbPlacesDebout": null,
+          "vitesse": 3750,
+          "co2": 194,
+          "classeEnvironnementCe": "70/220*2003/76EURO4",
+          "couleur": {
+            "code": "08",
+            "libelle": "GRIS CLAIR"
+          }
+        }
+      },
+      "personne": {
+        "qualiteType": [
+          {
+            "code": "TIT",
+            "libelle": "Titulaire",
+            "identite": {
+              "estPhysique": true,
+              "nomNaiss": "MARTIN",
+              "nomUsage": null,
+              "prenom": "PAUL",
+              "raisonSociale": null,
+              "siren": null,
+              "siret": null,
+              "sexe": "H",
+              "naissance": {
+                "date": "1980-04-12",
+                "annee": null,
+                "lieu": "LILLE",
+                "pays": null,
+                "departement": {
+                  "code": "59",
+                  "libelle": "Nord"
+                }
+              }
+            },
+            "adresse": {
+              "pointRemise": null,
+              "complAdresse": null,
+              "numVoie": "12",
+              "extension": null,
+              "typeVoie": "AV",
+              "libelleVoie": "DES CHAMPS",
+              "lieuditOuBp": null,
+              "codePostal": "59000",
+              "codeInsee": "59350",
+              "commune": "LILLE",
+              "cedex": null,
+              "mentionDistrib": null,
+              "pays": null
+            }
+          }
+        ],
+        "nbCoTitulaires": 0
+      }
+    }
+  ]
+}

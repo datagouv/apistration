@@ -8,9 +8,9 @@ class APIParticulier::ANTS::ExtraitImmatriculationVehiculeSerializer::V3 < APIPa
   meta do |ctx|
     {
       identity_matching: {
-        family_name: ctx.matchings&.try('familyname') ? 1.0 : 0.0,
-        given_name: ctx.matchings&.try('givenname') ? 1.0 : 0.0,
-        birth_date: ctx.matchings&.try('birthdate') ? 1.0 : 0.0,
+        family_name: ctx.matchings&.[]('familyname') ? 1.0 : 0.0,
+        given_name: ctx.matchings&.[]('givenname') ? 1.0 : 0.0,
+        birth_date: ctx.matchings&.[]('birthdate') ? 1.0 : 0.0,
         overall_match: ctx.matches || false
       }
     }
