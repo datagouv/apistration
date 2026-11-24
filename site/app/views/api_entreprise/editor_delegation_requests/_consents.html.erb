@@ -7,12 +7,12 @@
     <%= check_box_tag "signature[#{attribute}]", '1', signature.public_send(attribute), id: attribute %>
     <%= label_tag attribute, tag.span(sanitize(label, tags: %w[a span], attributes: %w[href target rel class])), class: 'fr-label' %>
     <% if errors.any? %>
-      <p class="fr-error-text">Vous devez cocher cette case pour signer.</p>
+      <p class="fr-error-text">Vous devez cocher cette case pour soumettre.</p>
     <% end %>
   </div>
 <% end %>
 
 <p class="fr-text--sm">
-  En signant, vous acceptez que votre identité ProConnect, la date et l'heure soient consignées comme preuve de
+  En soumettant, vous acceptez que votre identité ProConnect, la date et l'heure soient consignées comme preuve de
   votre accord.
 </p>

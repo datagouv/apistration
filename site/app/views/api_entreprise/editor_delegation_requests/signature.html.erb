@@ -2,7 +2,7 @@
 <% organizations_count = @batch.organizations.size %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-lg-10">
-    <%= render 'header', title: "Signer vos #{count} demandes" %>
+    <%= render 'header', title: "Soumettre vos #{count} demandes" %>
     <%= render 'datapass_refusals' %>
     <div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">
       <%= render 'figure', value: count, label: 'établissements' %>
@@ -37,7 +37,7 @@
       </div>
 
       <% if @signature.errors[:included_ids].any? %>
-        <p class="fr-error-text fr-mb-2w">Cochez au moins un établissement pour signer.</p>
+        <p class="fr-error-text fr-mb-2w">Cochez au moins un établissement pour soumettre.</p>
       <% end %>
 
       <%= render 'base_errors', record: @signature %>
@@ -46,7 +46,7 @@
 
       <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
         <li>
-          <%= f.button "Signer les #{count} demandes", class: 'fr-btn', data: { batch_selection_target: 'submit' } %>
+          <%= f.button "Soumettre les #{count} demandes", class: 'fr-btn', data: { batch_selection_target: 'submit' } %>
         </li>
       </ul>
     <% end %>

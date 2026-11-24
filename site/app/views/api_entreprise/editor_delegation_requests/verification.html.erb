@@ -2,7 +2,7 @@
 <% lead_request = organization.lead_request %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-md-8">
-    <%= render 'single_request_header', organization: organization, current_step: 'Vérifier et signer' %>
+    <%= render 'single_request_header', organization: organization, current_step: 'Vérifier et soumettre' %>
 
     <%= render 'what_you_sign', requests_count: 1 %>
 
@@ -21,7 +21,7 @@
 
       <%= render 'consents', signature: @signature, several_organizations: false %>
 
-      <%= render 'form_actions', form: f, submit: 'Signer la demande', back: 'Revenir', back_path: editor_delegation_request_path %>
+      <%= render 'form_actions', form: f, submit: 'Soumettre la demande', back: 'Revenir', back_path: editor_delegation_request_path %>
     <% end %>
   </div>
 </div>

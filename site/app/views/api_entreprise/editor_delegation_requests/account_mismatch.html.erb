@@ -8,7 +8,7 @@
         <% if @batch.contact_email.present? %>
           Ces demandes ont été préparées pour <%= @batch.masked_contact_email %>.
         <% else %>
-          <%= @batch.editor.name.strip %> ne nous a pas transmis l'adresse électronique du signataire de ces demandes.
+          <%= @batch.editor.name.strip %> ne nous a pas transmis l'adresse électronique du demandeur de ces demandes.
         <% end %>
         Identifiez-vous avec ce compte, ou demandez à <%= @batch.editor.name.strip %> de corriger l'adresse.
       </p>

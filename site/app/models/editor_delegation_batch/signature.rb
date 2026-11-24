@@ -101,6 +101,6 @@ class EditorDelegationBatch::Signature
 
     missing = batch.organizations_without_data_protection_officer.select { |organization| organization.requests.any? { |request| included?(request) } }
 
-    errors.add(:base, "Renseignez le délégué à la protection des données de #{missing.map(&:name).to_sentence} avant de signer.") if missing.any?
+    errors.add(:base, "Renseignez le délégué à la protection des données de #{missing.map(&:name).to_sentence} avant de soumettre.") if missing.any?
   end
 end

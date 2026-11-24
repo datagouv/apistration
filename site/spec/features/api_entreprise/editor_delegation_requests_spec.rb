@@ -56,14 +56,14 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
     it 'presents the batch without its establishments, then brings the signatory back to it after ProConnect, whatever the SIRET chosen' do
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('2 demandes d\'habilitation à signer')
+      expect(page).to have_text('2 demandes d\'habilitation à soumettre')
       expect(page).to have_text('Omnikles')
       expect(page).to have_text('a***@saint-exemple.fr')
       expect(page).to have_no_text('21340172201787')
 
       click_on 'login_pro_connect'
 
-      expect(page).to have_text('Signer vos 2 demandes')
+      expect(page).to have_text('Soumettre vos 2 demandes')
       expect(page).to have_text('21340172201787')
     end
 
@@ -78,7 +78,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
         expect(page).to have_text('autre.personne@saint-exemple.fr')
         expect(page).to have_no_text('21340172201787')
         expect(page).to have_no_text('21340172200011')
-        expect(page).to have_no_button('Signer les 2 demandes')
+        expect(page).to have_no_button('Soumettre les 2 demandes')
       end
     end
   end
@@ -111,20 +111,20 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       fill_in_data_protection_officer
       click_on 'Continuer'
 
-      expect(page).to have_css('.fr-stepper__title', text: 'Vérifier et signer')
-      expect(page).to have_text('Ce que vous signez')
+      expect(page).to have_css('.fr-stepper__title', text: 'Vérifier et soumettre')
+      expect(page).to have_text('Ce que vous soumettez')
       expect(page).to have_text('Dématérialisation des marchés publics')
       expect(page).to have_text('dpo@saint-exemple.fr')
 
-      click_on 'Signer la demande'
+      click_on 'Soumettre la demande'
 
       expect(page).to have_css('.fr-error-text')
       expect(editor_delegation_request.reload).not_to be_submitted
 
       consent
-      click_on 'Signer la demande'
+      click_on 'Soumettre la demande'
 
-      expect(page).to have_text('Votre demande d’habilitation est signée')
+      expect(page).to have_text('Votre demande d’habilitation est soumise')
       expect(editor_delegation_request.reload).to be_submitted
       expect(editor_delegation_request.submitted_by_user).to eq(user)
       expect(editor_delegation_request.delegue_protection_donnees_email).to eq('dpo@saint-exemple.fr')
@@ -135,7 +135,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       fill_in_data_protection_officer
       click_on 'Continuer'
       consent
-      perform_enqueued_jobs { click_on 'Signer la demande' }
+      perform_enqueued_jobs { click_on 'Soumettre la demande' }
 
       expect(datapass).to have_received(:create_demande).with(
         hash_including(
@@ -158,7 +158,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       fill_in_data_protection_officer
       click_on 'Continuer'
       consent
-      perform_enqueued_jobs { click_on 'Signer la demande' }
+      perform_enqueued_jobs { click_on 'Soumettre la demande' }
 
       expect(editor_delegation_request.reload).not_to be_submitted
 
@@ -170,9 +170,9 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       allow(datapass).to receive(:submit_demande).and_return({})
       click_on 'Continuer'
       consent
-      perform_enqueued_jobs { click_on 'Signer la demande' }
+      perform_enqueued_jobs { click_on 'Soumettre la demande' }
 
-      expect(page).to have_text('Votre demande d’habilitation est signée')
+      expect(page).to have_text('Votre demande d’habilitation est soumise')
       expect(editor_delegation_request.reload.datapass_error).to be_nil
       expect(datapass).to have_received(:create_demande).once
       expect(datapass).to have_received(:update_demande).with('1001', hash_including(:data))
@@ -193,15 +193,15 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
     it 'signs every request at once, with a data protection officer common to the organizations' do
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('Signer vos 3 demandes')
+      expect(page).to have_text('Soumettre vos 3 demandes')
       expect(page).to have_no_text('21030190500026')
       expect(page).to have_no_text('21030190500034')
 
       fill_in_data_protection_officer
       consent
-      click_on 'Signer les 3 demandes'
+      click_on 'Soumettre les 3 demandes'
 
-      expect(page).to have_text('Vos demandes d’habilitation sont signées')
+      expect(page).to have_text('Vos demandes d’habilitation sont soumises')
       expect([editor_delegation_request, same_organization, other_organization].map(&:reload)).to all(be_submitted)
       expect([editor_delegation_request, same_organization, other_organization].map(&:delegue_protection_donnees_email)).to all(eq('dpo@saint-exemple.fr'))
       expect(already_submitted.reload.submitted_by_user).not_to eq(user)
@@ -212,19 +212,19 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       visit editor_delegation_request.invitation_path
 
       fill_in_data_protection_officer
-      uncheck 'Signer pour le SIRET 21340172200011'
+      uncheck 'Soumettre pour le SIRET 21340172200011'
       consent
-      click_on 'Signer les 3 demandes'
+      click_on 'Soumettre les 3 demandes'
 
-      expect(page).to have_text('Vos demandes d’habilitation sont signées')
-      expect(page).to have_text('1 établissement reste en attente de signature')
+      expect(page).to have_text('Vos demandes d’habilitation sont soumises')
+      expect(page).to have_text('1 demande reste en attente de soumission')
       expect(editor_delegation_request.reload).to be_submitted
       expect(other_organization.reload).to be_submitted
       expect(same_organization.reload).not_to be_submitted
 
-      click_on 'Le signer maintenant'
+      click_on 'La soumettre maintenant'
 
-      expect(page).to have_text('Signez la demande')
+      expect(page).to have_text('Soumettez la demande')
       expect(page).to have_field('Adresse électronique', with: 'dpo@saint-exemple.fr')
     end
 
@@ -234,10 +234,10 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       it 'refuses to sign until every organization has its data protection officer' do
         visit editor_delegation_request.invitation_path
 
-        expect(page).to have_text('À renseigner avant de signer')
+        expect(page).to have_text('À renseigner avant de soumettre')
 
         consent
-        click_on 'Signer les 3 demandes'
+        click_on 'Soumettre les 3 demandes'
 
         expect(page).to have_text('Renseignez le délégué à la protection des données')
         expect(editor_delegation_request.reload).not_to be_submitted
@@ -245,12 +245,12 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
         click_on 'SIREN 213401722'
         fill_in_data_protection_officer(email: 'dpo@commune.fr')
         click_on 'Enregistrer'
-        click_on 'Revenir à la signature'
+        click_on 'Revenir aux demandes'
 
         consent
-        click_on 'Signer les 3 demandes'
+        click_on 'Soumettre les 3 demandes'
 
-        expect(page).to have_text('Vos demandes d’habilitation sont signées')
+        expect(page).to have_text('Vos demandes d’habilitation sont soumises')
         expect(same_organization.reload.delegue_protection_donnees_email).to eq('dpo@commune.fr')
         expect(other_organization.reload.delegue_protection_donnees_email).to eq('dpo@saint-exemple.fr')
       end
@@ -306,8 +306,8 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       login_as(user)
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('Votre demande d’habilitation est signée')
-      expect(page).to have_no_button('Signer la demande')
+      expect(page).to have_text('Votre demande d’habilitation est soumise')
+      expect(page).to have_no_button('Soumettre la demande')
     end
   end
 
@@ -317,7 +317,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
     it 'offers no identification, since nobody could sign' do
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('ne nous a pas transmis l\'adresse électronique du signataire')
+      expect(page).to have_text('ne nous a pas transmis l\'adresse électronique du demandeur')
       expect(page).to have_no_button('login_pro_connect')
     end
   end

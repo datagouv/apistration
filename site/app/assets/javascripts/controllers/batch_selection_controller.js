@@ -7,7 +7,7 @@ document.addEventListener("turbo:load", function () {
       update() {
         const count = this.checkboxTargets.filter((checkbox) => checkbox.checked).length;
 
-        this.submitTarget.textContent = count === 1 ? "Signer la demande" : `Signer les ${count} demandes`;
+        this.submitTarget.textContent = count === 1 ? "Soumettre la demande" : `Soumettre les ${count} demandes`;
         this.submitTarget.disabled = count === 0;
       }
     },

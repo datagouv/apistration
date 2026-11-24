@@ -16,7 +16,7 @@
             <td>
               <div class="fr-checkbox-group fr-checkbox-group--sm">
                 <%= check_box_tag 'signature[included_ids][]', request.id, @signature.included?(request), id: "included_#{request.id}", data: { batch_selection_target: 'checkbox', action: 'batch-selection#update' } %>
-                <label class="fr-label fr-text--sm fr-mb-0" for="included_<%= request.id %>"><span class="fr-sr-only">Signer pour le SIRET </span><%= request.siret %></label>
+                <label class="fr-label fr-text--sm fr-mb-0" for="included_<%= request.id %>"><span class="fr-sr-only">Soumettre pour le SIRET </span><%= request.siret %></label>
               </div>
             </td>
             <td><%= @batch.establishment(request.siret)&.denomination || organization.name %></td>

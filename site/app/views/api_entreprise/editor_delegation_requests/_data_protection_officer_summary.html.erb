@@ -12,7 +12,7 @@
     </p>
   <% end %>
   <% if missing.any? %>
-    <p class="fr-error-text fr-mb-1v">À renseigner avant de signer&nbsp;:</p>
+    <p class="fr-error-text fr-mb-1v">À renseigner avant de soumettre&nbsp;:</p>
     <ul>
       <% missing.each do |organization| %>
         <li><%= link_to organization.name, editor_delegation_request_organization_path(siren: organization.siren) %></li>

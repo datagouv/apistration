@@ -2,10 +2,10 @@
 <% last_signature = @submitted_requests.max_by(&:submitted_at) %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-md-8">
-    <%= render 'header', title: signed_count > 1 ? 'Vos demandes d’habilitation sont signées' : 'Votre demande d’habilitation est signée' %>
+    <%= render 'header', title: signed_count > 1 ? 'Vos demandes d’habilitation sont soumises' : 'Votre demande d’habilitation est soumise' %>
 
     <p>
-      Vous avez signé <strong><%= signed_count > 1 ? "#{signed_count} demandes" : 'la demande' %></strong> préparée<%= 's' if signed_count > 1 %>
+      Vous avez soumis <strong><%= signed_count > 1 ? "#{signed_count} demandes" : 'la demande' %></strong> préparée<%= 's' if signed_count > 1 %>
       par <%= @batch.editor.name.strip %>. <%= signed_count > 1 ? 'Elles partent' : 'Elle part' %> en instruction chez API Entreprise,
       qui délivrera, ou non, <%= signed_count > 1 ? 'les habilitations' : 'l’habilitation' %>.
     </p>
@@ -13,8 +13,8 @@
     <% if @batch.pending_requests.any? %>
       <div class="fr-alert fr-alert--info fr-mb-4w">
         <p>
-          <%= pending_count = @batch.pending_requests.size %> <%= pending_count > 1 ? 'établissements restent' : 'établissement reste' %> en attente de signature.
-          <%= link_to pending_count > 1 ? 'Les signer maintenant' : 'Le signer maintenant', editor_delegation_request_path %>
+          <%= pending_count = @batch.pending_requests.size %> <%= pending_count > 1 ? 'demandes restent' : 'demande reste' %> en attente de soumission.
+          <%= link_to pending_count > 1 ? 'Les soumettre maintenant' : 'La soumettre maintenant', editor_delegation_request_path %>
         </p>
       </div>
     <% end %>
@@ -28,19 +28,19 @@
 
     <% if last_signature %>
       <p class="fr-text--sm">
-        Dernière signature le <%= l(last_signature.submitted_at, format: :long) %> par
+        Dernière soumission le <%= l(last_signature.submitted_at, format: :long) %> par
         <%= last_signature.submitted_by_user.full_name %>, identifié(e) par ProConnect.
       </p>
     <% end %>
 
     <div class="fr-table">
       <table>
-        <caption>Établissements signés</caption>
+        <caption>Demandes soumises</caption>
         <thead>
           <tr>
             <th scope="col">Établissement</th>
             <th scope="col">SIRET</th>
-            <th scope="col">Signée le</th>
+            <th scope="col">Soumise le</th>
             <th scope="col">DataPass</th>
           </tr>
         </thead>
