@@ -17,6 +17,14 @@ RSpec.describe OPQIBI::CertificationsIngenierie::ValidateResponse, type: :valida
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'when OPQIBI answers a 500 with an HTML page' do
+    let(:response) { instance_double(Net::HTTPInternalServerError, code: '500', body: '<html><title>500 Internal Server Error</title></html>') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
 

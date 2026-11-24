@@ -6,6 +6,8 @@ class OPQIBI::CertificationsIngenierie::ValidateResponse < ValidateResponse
 
     resource_not_found!(:siren) if http_not_found?
 
+    internal_server_error! if http_internal_error?
+
     unknown_provider_response!
   end
 end
