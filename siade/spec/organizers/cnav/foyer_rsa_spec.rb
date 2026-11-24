@@ -74,7 +74,7 @@ RSpec.describe CNAV::FoyerRSA, type: :retriever_organizer do
     before do
       stub_request(:get, cnav_url('foyer_rsa')).with(query: hash_including({})).to_return(
         status: 200,
-        body: { beneficiaire: [] }.to_json
+        body: { foyer: { beneficiaire: [] } }.to_json
       )
     end
 

@@ -3,12 +3,16 @@ class CNAV::FoyerRSA::BuildResource < BuildResource
 
   def resource_attributes
     {
-      beneficiaires: json_body['beneficiaire'].map { |beneficiaire| build_beneficiaire(beneficiaire) },
-      personnes_a_charge: Array(json_body['personneaCharge']).map { |personne| build_personne(personne) }
+      beneficiaires: foyer['beneficiaire'].map { |beneficiaire| build_beneficiaire(beneficiaire) },
+      personnes_a_charge: Array(foyer['personnesaCharge']).map { |personne| build_personne(personne) }
     }
   end
 
   private
+
+  def foyer
+    json_body['foyer']
+  end
 
   def build_beneficiaire(beneficiaire)
     build_personne(beneficiaire).merge(qualite: beneficiaire['qualite']&.downcase)
