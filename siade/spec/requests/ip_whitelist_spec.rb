@@ -97,6 +97,17 @@ RSpec.describe 'IP Whitelist', api: :entreprise do
         )
       end
 
+      it 'rejects a token already known without querying the database' do
+        get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip }
+
+        queries = []
+        subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') { |*, payload| queries << payload[:sql] }
+        get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip }
+        ActiveSupport::Notifications.unsubscribe(subscriber)
+
+        expect(queries).to be_empty
+      end
+
       it 'returns error code 00107' do
         get url, headers: headers_params, env: { 'REMOTE_ADDR' => non_whitelisted_ip }
 

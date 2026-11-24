@@ -42,16 +42,10 @@ class RackAttack::TrackBlockedRequest < ApplicationOrganizer
     {
       jti: user.jti,
       credential_type: user.token_type || 'token',
-      datapass_id: datapass_id(user.authorization_request_id),
+      datapass_id: delegation ? delegation.authorization_request.external_id : user.datapass_id,
       editor_id: user.editor_id,
       delegation_id: delegation&.id
     }
-  end
-
-  def self.datapass_id(authorization_request_id)
-    return if authorization_request_id.nil?
-
-    AuthorizationRequest.where(id: authorization_request_id).pick(:external_id)
   end
 
   def self.resolved_user(request)
