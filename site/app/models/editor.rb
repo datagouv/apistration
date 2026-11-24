@@ -16,6 +16,7 @@ class Editor < ApplicationRecord
   normalizes :contact_phone, with: ->(phone) { Rails.env.staging? ? PersonalDataAnonymizer.phone(phone) : phone }
 
   validates :name, presence: true
+  validates :apis, presence: true
   validates :siret, format: { with: /\A\d{14}\z/ }, allow_blank: true
   validates :role, inclusion: { in: ROLES }, allow_nil: true
   validates :deployment_type, inclusion: { in: DEPLOYMENT_TYPES }, allow_nil: true

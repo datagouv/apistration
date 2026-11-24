@@ -91,6 +91,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       fill_in 'editor_siret', with: '12345678901234'
       select 'Gère le jeton', from: 'editor_role'
       fill_in 'editor_contact_email', with: 'test@editor.com'
+      check 'editor_apis_entreprise'
 
       click_on "Créer l'éditeur"
 

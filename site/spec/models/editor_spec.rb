@@ -10,7 +10,7 @@ RSpec.describe Editor do
 
   describe 'apis validation' do
     it { expect(build(:editor, apis: %w[entreprise particulier])).to be_valid }
-    it { expect(build(:editor, apis: [])).to be_valid }
+    it { expect(build(:editor, apis: [])).not_to be_valid }
     it { expect(build(:editor, apis: %w[entreprise wrong])).not_to be_valid }
   end
 
