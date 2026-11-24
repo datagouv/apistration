@@ -1,6 +1,6 @@
 RSpec.describe DatapassFormulaire do
   describe '.find' do
-    subject(:formulaire) { described_class.find(uid) }
+    subject(:formulaire) { described_class.find(uid, api: 'entreprise') }
 
     let(:uid) { 'api-entreprise-marches-publics' }
 
@@ -15,7 +15,7 @@ RSpec.describe DatapassFormulaire do
     end
 
     it 'reads the formulaires of the API Entreprise definition once' do
-      2.times { described_class.find(uid) }
+      2.times { described_class.find(uid, api: 'entreprise') }
 
       expect(DatapassAPIClient.new).to have_received(:list_formulaires).with('api_entreprise').once
     end

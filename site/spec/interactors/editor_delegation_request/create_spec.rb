@@ -26,6 +26,14 @@ RSpec.describe EditorDelegationRequest::Create do
     )
   end
 
+  context 'when the campaign belongs to API Particulier' do
+    let(:editor_delegation_campaign) { create(:editor_delegation_campaign, api: 'particulier', datapass_form_uid: 'api-particulier-tarification-eaje') }
+
+    it 'creates the draft on API Particulier, so that its DataPass webhooks and the delegation reach this API' do
+      expect(result.authorization_request).to have_attributes(api: 'particulier', demarche: 'api-particulier-tarification-eaje')
+    end
+  end
+
   it 'opens an active delegation to the editor right away' do
     delegation = result.authorization_request.editor_delegations.sole
 

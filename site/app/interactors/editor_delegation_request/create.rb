@@ -18,7 +18,7 @@ class EditorDelegationRequest::Create < ApplicationInteractor
 
   def authorization_request_attributes
     {
-      api: 'entreprise',
+      api: editor_delegation_campaign.api,
       demarche: editor_delegation_campaign.datapass_form_uid,
       siret:,
       status: 'draft',

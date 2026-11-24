@@ -6,7 +6,7 @@
 
     <p>
       Vous avez soumis <strong><%= signed_count > 1 ? "#{signed_count} demandes" : 'la demande' %></strong> préparée<%= 's' if signed_count > 1 %>
-      par <%= @batch.editor.name.strip %>. <%= signed_count > 1 ? 'Elles partent' : 'Elle part' %> en instruction chez API Entreprise,
+      par <%= @batch.editor.name.strip %>. <%= signed_count > 1 ? 'Elles partent' : 'Elle part' %> en instruction chez <%= delegation_api_name(@batch) %>,
       qui délivrera, ou non, <%= signed_count > 1 ? 'les habilitations' : 'l’habilitation' %>.
     </p>
 

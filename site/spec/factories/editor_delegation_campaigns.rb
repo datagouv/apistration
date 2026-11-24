@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :editor_delegation_campaign do
     editor
+    api { 'entreprise' }
     datapass_form_uid { 'api-entreprise-marches-publics' }
     data do
       {

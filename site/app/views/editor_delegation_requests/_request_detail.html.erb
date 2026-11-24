@@ -1,5 +1,5 @@
 <% data = @batch.datapass_data %>
-<% scopes = DatapassScopes.normalize(Array(data['scopes'])) %>
+<% scopes_by_group = @batch.datapass_definition.scopes_by_group(Array(data['scopes'])) %>
 <% if data.values_at('intitule', 'description', 'destinataire_donnees_caractere_personnel', 'duree_conservation_donnees_caractere_personnel').any?(&:present?) %>
   <%= render layout: 'section', locals: { title: 'Le projet' } do %>
     <%= render 'value', label: 'Nom du projet', value: data['intitule'] %>
@@ -19,13 +19,16 @@
   <% end %>
 <% end %>
 
-<% if scopes.any? %>
+<% if scopes_by_group.any? %>
   <%= render layout: 'section', locals: { title: 'Les données' } do %>
-    <ul>
-      <% scopes.each do |scope| %>
-        <li><%= scope_with_provider(scope) %></li>
-      <% end %>
-    </ul>
+    <% scopes_by_group.each do |group, names| %>
+      <p class="fr-text--bold fr-mb-1v"><%= group %></p>
+      <ul>
+        <% names.each do |name| %>
+          <li><%= name %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
 <% end %>
 

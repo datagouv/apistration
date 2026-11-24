@@ -20,6 +20,17 @@ constraints(APIParticulierDomainConstraint.new) do
 
     get '/attestations/verification/:token', to: 'attestations#show', as: :attestation_verification
 
+    scope '/editeurs/:editor_slug/habilitation/:token', controller: :editor_delegation_requests, as: :editor_delegation_request do
+      get '/', action: :show
+      patch '/delegue-protection-donnees', action: :update_data_protection_officer, as: :data_protection_officer
+      get '/verification', action: :verification, as: :verification
+      post '/signature', action: :sign, as: :signature
+      get '/confirmation', action: :confirmation, as: :confirmation
+      get '/organisations', action: :organizations, as: :organizations
+      get '/organisations/:siren', action: :edit_organization, as: :organization, constraints: { siren: /\d{9}/ }
+      patch '/organisations/:siren', action: :update_organization, constraints: { siren: /\d{9}/ }
+    end
+
     get '/stats', to: 'stats#index'
     get '/stats/:period', to: 'stats#section', as: :stats_section, constraints: { period: /week|month/ }
     get '/stats/:period/:indicator', to: 'stats#indicator', as: :stats_indicator, constraints: { period: /week|month/ }

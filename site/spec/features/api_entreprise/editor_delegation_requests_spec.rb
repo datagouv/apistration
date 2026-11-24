@@ -114,6 +114,8 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       expect(page).to have_css('.fr-stepper__title', text: 'Vérifier et soumettre')
       expect(page).to have_text('Ce que vous soumettez')
       expect(page).to have_text('Dématérialisation des marchés publics')
+      expect(page).to have_text('Informations générales')
+      expect(page).to have_text('Données des établissements')
       expect(page).to have_text('dpo@saint-exemple.fr')
 
       click_on 'Soumettre la demande'

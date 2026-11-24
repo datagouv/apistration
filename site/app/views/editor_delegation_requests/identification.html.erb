@@ -4,16 +4,16 @@
     <% if count > 1 %>
       <%= render 'header', title: "#{count} demandes d'habilitation à soumettre" %>
       <p>
-        Vos administrations utilisent la solution <%= @batch.editor.name.strip %>, qui interroge l'API Entreprise pour
-        récupérer à leur place des données sur les entreprises. Leur consultation suppose une habilitation&nbsp;: nous
+        Vos administrations utilisent la solution <%= @batch.editor.name.strip %>, qui interroge l'<%= delegation_api_name(@batch) %> pour
+        récupérer à leur place <%= delegation_data_subject(@batch) %>. Leur consultation suppose une habilitation&nbsp;: nous
         avons préparé une demande pour chacun de vos <strong><%= count %> établissements</strong>. Vous pouvez toutes les
         soumettre en une seule fois.
       </p>
     <% else %>
       <%= render 'header', title: 'Une habilitation pour votre administration' %>
       <p>
-        Votre administration utilise la solution <%= @batch.editor.name.strip %>, qui interroge l'API Entreprise pour
-        récupérer à votre place des données sur les entreprises. Leur consultation suppose une habilitation délivrée à
+        Votre administration utilise la solution <%= @batch.editor.name.strip %>, qui interroge l'<%= delegation_api_name(@batch) %> pour
+        récupérer à votre place <%= delegation_data_subject(@batch) %>. Leur consultation suppose une habilitation délivrée à
         votre administration&nbsp;: nous avons préparé la demande, il vous reste à la soumettre.
       </p>
     <% end %>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="fr-connect-group">
-        <%= form_with(url: login_proconnect_entreprise_path, method: :post, data: { turbo: false }) do |f| %>
+        <%= form_with(url: proconnect_login_path(@batch), method: :post, data: { turbo: false }) do |f| %>
           <%= f.button class: %w(fr-connect fr-connect-proconnect), id: 'login_pro_connect' do %>
             <span class="fr-connect__login">S’identifier avec</span>
             <span class="fr-connect__brand">ProConnect</span>

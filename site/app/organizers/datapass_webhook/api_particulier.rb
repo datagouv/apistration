@@ -19,6 +19,7 @@ module DatapassWebhook
       ::DatapassWebhook::CreateEditorDelegation,
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
       ::DatapassWebhook::RefuseCurrentAuthorizationRequest,
+      ::DatapassWebhook::ArchiveRefusedEditorDelegationRequest,
       ::DatapassWebhook::RevokeCurrentToken,
       ::DatapassWebhook::UpdateBrevoContacts,
       ::DatapassWebhook::ScheduleCreateFormulaireQFResourcesJob,

@@ -3,7 +3,7 @@ class EditorDelegationBatch
 
   attr_reader :editor_delegation_campaign, :contact_email
 
-  delegate :editor, to: :editor_delegation_campaign
+  delegate :editor, :api, :datapass_definition, to: :editor_delegation_campaign
 
   def self.of(editor_delegation_request)
     new(editor_delegation_request.editor_delegation_campaign, editor_delegation_request.contact_email)

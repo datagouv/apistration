@@ -1,6 +1,6 @@
 # Check https://github.com/betagouv/signup-back/tree/master/docs/webhooks.md for all events and their details
 ---
-development: &development
+test: &development
   created: {}
   updated: &updated {}
   team_member_updated: &team_member_updated {}
@@ -32,7 +32,6 @@ development: &development
   refuse: *refuse_application
   validate: *approve
 
-test: *development
 
 production: &production
   created: {}
@@ -41,7 +40,11 @@ production: &production
   send_application: &send_application
     emails:
       - template: 'demande_recue'
+        condition_on_authorization: 'not_editor_delegation_request?'
         on_update: true
+
+      - template: 'delegation_editeur_demande_recue'
+        condition_on_authorization: 'editor_delegation_request?'
 
   notify: &notify {}
   review_application: &review_application
@@ -52,10 +55,17 @@ production: &production
   refuse_application: &refuse_application
     emails:
       - template: 'embarquement_demande_refusee'
+        condition_on_authorization: 'not_editor_delegation_request?'
         on_update: true
+
+      - template: 'delegation_editeur_demande_refusee'
+        condition_on_authorization: 'editor_delegation_request?'
 
   approve: &approve
     emails:
+      - template: 'delegation_editeur_demande_validee'
+        condition_on_authorization: 'editor_delegation_request?'
+
       - template: 'update_embarquement_valide_to_demandeur'
         only_on_update: true
         condition_on_authorization: 'not_editor_authorization_request?'
@@ -89,3 +99,4 @@ production: &production
 
 sandbox: *production
 staging: *production
+development: *production

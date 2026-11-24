@@ -14,11 +14,11 @@
     <mj-text>
       <%= render partial: "greetings", locals: { entity: "demandeur" } %>
       <p>
-        La demande d’habilitation API Entreprise n°<%= @authorization_request.external_id %> de votre organisation
+        La demande d’habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> de votre organisation
         (SIRET <%= @authorization_request.siret %>) <b>a été validée</b> par notre service juridique.
       </p>
       <p>
-        <%= @editor.name.strip %> est habilité à interroger l’API Entreprise pour le compte de votre organisation.
+        <%= @editor.name.strip %> est habilité à interroger l’<%= api_full_name %> pour le compte de votre organisation.
         Vous n’avez rien à faire.
       </p>
     </mj-text>
@@ -27,7 +27,7 @@
       <p>
         À bientôt 👋
         <br />
-        <b>API Entreprise</b>
+        <b><%= api_full_name %></b>
       </p>
     </mj-text>
   </mj-column>

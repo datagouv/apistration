@@ -114,6 +114,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
 
   create_table "editor_delegation_campaigns", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "editor_id", null: false
+    t.string "api", null: false
     t.string "datapass_form_uid", null: false
     t.jsonb "data", default: {}, null: false
     t.datetime "created_at", null: false

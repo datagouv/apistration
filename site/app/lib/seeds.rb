@@ -240,26 +240,24 @@ class Seeds
   end
 
   def create_editor_delegation_campaign(name)
-    siret, datapass_form_uid, *data = editor_delegation_campaigns.fetch(name)
-    editor = Editor.create!(name:, apis: %w[entreprise], editor_tokens_enabled: true, siret:)
-    EditorDelegationCampaign.create!(editor:, datapass_form_uid:, data: editor_delegation_campaign_data(name.downcase, *data).merge(editor_legal_frameworks.fetch(name, {})))
+    siret, api, datapass_form_uid, *data = editor_delegation_campaigns.fetch(name)
+    editor = Editor.create!(name:, apis: [api], editor_tokens_enabled: true, siret:)
+    EditorDelegationCampaign.create!(editor:, api:, datapass_form_uid:, data: editor_delegation_campaign_data(name.downcase, *data).merge(editor_legal_frameworks.fetch(name, {})))
   end
 
   def editor_delegation_campaigns
     {
-      'Omnikles' => ['44973625500018', 'api-entreprise-marches-publics', "Dématérialisation des appels d'offres des marchés publics",
+      'Omnikles' => ['44973625500018', 'entreprise', 'api-entreprise-marches-publics', "Dématérialisation des appels d'offres des marchés publics",
                      'Récupération des pièces justificatives des entreprises candidates aux marchés publics', 'Acheteurs publics', '36'],
-      'Hoptis' => ['80295478500027', 'api-entreprise', 'Gestion des inscriptions en crèche',
-                   'Vérification des structures partenaires des crèches du groupe', 'Directions des crèches', '12']
+      'Hoptis' => ['80295478500027', 'particulier', 'api-particulier-hoptis-petite-enfance', 'Tarification des crèches du groupe',
+                   'Calcul de la participation familiale des crèches bénéficiant de la PSU', 'Directions des crèches', '12']
     }
   end
 
   def editor_legal_frameworks
     {
       'Hoptis' => {
-        'cadre_juridique_nature' => 'Article R. 2324-17 du code de la santé publique',
-        'cadre_juridique_url' => 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048436553',
-        'scopes' => %w[unites_legales_etablissements_insee associations_djepva]
+        'cadre_juridique_url' => 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048436553'
       }
     }
   end
@@ -287,11 +285,18 @@ class Seeds
 
   def create_editor_delegation_request(use_case, siret, contact_email, **data_protection_officer)
     authorization_request = create_authorization_request(
-      api: 'entreprise', demarche: use_case.datapass_form_uid, siret:, status: 'draft',
-      intitule: use_case.data['intitule'], description: use_case.data['description'], scopes: %w[unites_legales_etablissements_insee attestations_fiscales]
+      api: use_case.api, demarche: use_case.datapass_form_uid, siret:, status: 'draft',
+      intitule: use_case.data['intitule'], description: use_case.data['description'], scopes: editor_delegation_scopes.fetch(use_case.api)
     )
     EditorDelegation.create!(editor: use_case.editor, authorization_request:, created_via: 'editor_delegation_request')
     EditorDelegationRequest.create!(editor_delegation_campaign: use_case, siret:, contact_email:, authorization_request:, **data_protection_officer)
+  end
+
+  def editor_delegation_scopes
+    {
+      'entreprise' => %w[unites_legales_etablissements_insee attestations_fiscales],
+      'particulier' => %w[cnav_participation_familiale_eaje_allocataires cnav_participation_familiale_eaje_enfants]
+    }
   end
 
   def create_editor_token

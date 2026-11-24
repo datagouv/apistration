@@ -54,6 +54,10 @@ class EditorDelegationRequest < ApplicationRecord
     Rails.application.routes.url_helpers.editor_delegation_request_path(editor_slug:, token: generate_token_for(:invitation))
   end
 
+  def invited_on?(editor_slug:, api:)
+    self.editor_slug == editor_slug && editor_delegation_campaign.api == api
+  end
+
   def editor_slug
     editor.name.parameterize
   end

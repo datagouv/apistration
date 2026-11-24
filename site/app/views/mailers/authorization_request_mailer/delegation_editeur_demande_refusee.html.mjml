@@ -3,7 +3,7 @@
   <mj-column>
     <mj-text>
       <h1>
-        Votre demande d'habilitation à l'API Entreprise
+        Votre demande d'habilitation à l'<%= api_full_name %>
         <b>a été refusée 🚫</b>
       </h1>
     </mj-text>
@@ -14,11 +14,11 @@
     <mj-text>
       <%= render partial: "greetings", locals: { entity: "demandeur" } %>
       <p>
-        La demande d’habilitation API Entreprise n°<%= @authorization_request.external_id %> de votre organisation
+        La demande d’habilitation <%= api_full_name %> n°<%= @authorization_request.external_id %> de votre organisation
         (SIRET <%= @authorization_request.siret %>) <b>a été refusée</b> par notre service juridique.
       </p>
       <p>
-        <%= @editor.name.strip %> ne peut plus interroger l’API Entreprise pour le compte de votre organisation.
+        <%= @editor.name.strip %> ne peut plus interroger l’<%= api_full_name %> pour le compte de votre organisation.
       </p>
       <p>
         Pour connaître les raisons de ce refus, veuillez consulter votre demande sur
@@ -29,7 +29,7 @@
       <p>
         Bonne continuation,
         <br />
-        <b>API Entreprise</b>
+        <b><%= api_full_name %></b>
       </p>
     </mj-text>
   </mj-column>

@@ -18,7 +18,7 @@ namespace :editor_delegation_requests do
         csv << [
           editor_delegation_request.siret,
           editor_delegation_request.contact_email,
-          "#{ProConnectConfig.host('entreprise')}#{editor_delegation_request.invitation_path}"
+          "#{ProConnectConfig.host(editor_delegation_campaign.api)}#{editor_delegation_request.invitation_path}"
         ]
       end
     end

@@ -32,6 +32,7 @@ module AuthorizationRequestMailersCommons
     @full_name_demandeur = authorization_request.demandeur.full_name
     @full_name_contact_technique = authorization_request.contact_technique&.full_name
     @full_name_contact_metier = authorization_request.contact_metier&.full_name
+    @editor = authorization_request.editor_delegation_request&.editor
   end
 
   def scope_labels

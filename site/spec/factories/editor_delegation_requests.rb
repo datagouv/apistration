@@ -5,7 +5,7 @@ FactoryBot.define do
     contact_email { generate(:email) }
 
     trait :with_authorization_request do
-      authorization_request { association :authorization_request, :without_external_id, siret:, demarche: editor_delegation_campaign.datapass_form_uid }
+      authorization_request { association :authorization_request, :without_external_id, api: editor_delegation_campaign.api, siret:, demarche: editor_delegation_campaign.datapass_form_uid }
     end
 
     trait :with_dpo do

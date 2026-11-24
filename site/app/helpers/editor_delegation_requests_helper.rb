@@ -1,13 +1,24 @@
 module EditorDelegationRequestsHelper
+  DATA_SUBJECTS = {
+    'entreprise' => 'des données sur les entreprises',
+    'particulier' => 'des données sur les particuliers'
+  }.freeze
+
   def of_editor(editor)
     name = editor.name.strip
 
     name.match?(/\A[aeiouyhâàéèêëîïôûù]/i) ? "d’#{name}" : "de #{name}"
   end
 
-  def scope_with_provider(scope)
-    provider, api = humanize_scope(scope, 'entreprise').split('||').map(&:strip)
+  def delegation_api_name(batch)
+    "API #{batch.api.capitalize}"
+  end
 
-    api ? "#{api} (#{provider})" : provider
+  def delegation_data_subject(batch)
+    DATA_SUBJECTS.fetch(batch.api)
+  end
+
+  def proconnect_login_path(batch)
+    public_send(:"login_proconnect_#{batch.api}_path")
   end
 end
