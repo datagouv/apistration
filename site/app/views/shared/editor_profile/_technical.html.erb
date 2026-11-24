@@ -26,6 +26,17 @@
 <% end %>
 
 <% if admin %>
+  <% observed_ips = EditorObservedIpsQuery.new(editor).count %>
+  <h3 class="fr-h5 fr-mt-4w">IP observées</h3>
+  <p class="fr-text--sm">
+    <% if observed_ips %>
+      <strong><%= pluralize(observed_ips, 'adresse IP distincte', plural: 'adresses IP distinctes') %></strong> sur 7 jours dans les appels des habilitations de l'éditeur.
+      Une ou deux IP évoquent un déploiement SaaS, une IP par client un déploiement on-premise.
+    <% else %>
+      Indice indisponible : le décompte des IP a dépassé le délai imparti.
+    <% end %>
+  </p>
+
   <%= render 'admin/editors/editor_tokens', editor: %>
 <% elsif editor.editor_tokens_enabled? %>
   <%= link_to 'Gérer vos jetons éditeur', editor_tokens_path, class: 'fr-link fr-icon-arrow-right-line fr-link--icon-right' %>
