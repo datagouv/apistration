@@ -1,4 +1,3 @@
-<% lead_request = @organization.lead_request %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-md-8">
     <%= render 'single_request_header', organization: @organization, current_step: 'Votre délégué à la protection des données' %>
@@ -8,7 +7,9 @@
       Il doit être informé de votre demande.
     </p>
 
-    <%= form_with(model: lead_request, url: editor_delegation_request_data_protection_officer_path, method: :patch) do |f| %>
+    <%= render 'data_protection_officer_suggestion' if @organization.data_protection_officer_suggested? %>
+
+    <%= form_with(model: @organization.data_protection_officer_form, url: editor_delegation_request_data_protection_officer_path, method: :patch) do |f| %>
       <%= render 'data_protection_officer_fields', form: f %>
 
       <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">

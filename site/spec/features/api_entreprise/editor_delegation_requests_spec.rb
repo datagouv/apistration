@@ -10,6 +10,8 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
 
   let!(:datapass) { stub_datapass_formulaires }
 
+  before { stub_cnil_data_protection_officers }
+
   def fill_in_data_protection_officer(email: 'dpo@saint-exemple.fr')
     fill_in 'Prénom', with: 'Dominique'
     fill_in 'Nom', with: 'Leroy'
@@ -130,6 +132,26 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       expect(editor_delegation_request.reload).to be_submitted
       expect(editor_delegation_request.submitted_by_user).to eq(user)
       expect(editor_delegation_request.delegue_protection_donnees_email).to eq('dpo@saint-exemple.fr')
+    end
+
+    it 'prefills the data protection officer contact declared to the CNIL, which the client completes' do
+      stub_cnil_data_protection_officers([{ 'Moyen contact DPO email' => 'dpo@montpellier.fr', 'Moyen contact DPO téléphone' => '467000000' }])
+
+      visit editor_delegation_request.invitation_path
+
+      expect(page).to have_text('déclarés à la CNIL')
+      expect(page).to have_field('Adresse électronique', with: 'dpo@montpellier.fr')
+      expect(page).to have_field('Téléphone', with: '0467000000')
+      expect(find_field('Prénom').value).to be_blank
+    end
+
+    it 'leaves the data protection officer empty when the CNIL list cannot be reached' do
+      stub_request(:get, /tabular-api.data.gouv.fr/).to_timeout
+
+      visit editor_delegation_request.invitation_path
+
+      expect(find_field('Adresse électronique').value).to be_blank
+      expect(page).to have_no_text('déclarés à la CNIL')
     end
 
     it 'creates the request in DataPass for the signatory in the background, then submits it with the consents given' do

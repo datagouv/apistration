@@ -91,6 +91,7 @@ RSpec.configure do |config|
   config.include BrevoAPIMocks
   config.include DatapassReferentialMocks
   config.include DatapassAPIMocks
+  config.include CnilDataProtectionOfficersMocks
 
   config.around(:each, :js) do |example|
     example.run_with_retry retry: example.metadata[:retry] || 3

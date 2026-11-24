@@ -6,7 +6,9 @@
       Ce délégué ne vaut que pour cette organisation.
     </p>
 
-    <%= form_with(model: @organization.lead_request, url: editor_delegation_request_organization_path(siren: @organization.siren), method: :patch) do |f| %>
+    <%= render 'data_protection_officer_suggestion' if @organization.data_protection_officer_suggested? %>
+
+    <%= form_with(model: @organization.data_protection_officer_form, url: editor_delegation_request_organization_path(siren: @organization.siren), method: :patch) do |f| %>
       <%= render 'data_protection_officer_fields', form: f %>
 
       <%= render 'form_actions', form: f, submit: 'Enregistrer', back: 'Annuler', back_path: editor_delegation_request_organizations_path %>

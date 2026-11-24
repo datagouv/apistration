@@ -20,6 +20,7 @@
           Il est le point de contact sur le traitement des données personnelles rendu possible par cette habilitation.
           Il doit être informé de votre demande.
         </p>
+        <%= render 'data_protection_officer_suggestion' if @signature.data_protection_officer_suggested? %>
         <%= f.fields_for :data_protection_officer, @signature.data_protection_officer_form do |officer| %>
           <%= render 'data_protection_officer_fields', form: officer %>
         <% end %>

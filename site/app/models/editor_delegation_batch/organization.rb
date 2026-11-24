@@ -27,10 +27,26 @@ class EditorDelegationBatch::Organization
     requests.first
   end
 
+  def data_protection_officer_form
+    return lead_request unless data_protection_officer_suggested?
+
+    lead_request.dup.tap { |form| form.assign_attributes(data_protection_officer_suggestion) }
+  end
+
+  def data_protection_officer_suggested?
+    !data_protection_officer? && lead_request.errors.none? && data_protection_officer_suggestion.any?
+  end
+
   def update_data_protection_officer(attributes)
     requests.each { |request| request.assign_attributes(attributes) }
     return false unless lead_request.valid?(:data_protection_officer)
 
     EditorDelegationRequest.transaction { requests.each(&:save!) }
+  end
+
+  private
+
+  def data_protection_officer_suggestion
+    @data_protection_officer_suggestion ||= DataProtectionOfficerDirectory.find(siren)
   end
 end

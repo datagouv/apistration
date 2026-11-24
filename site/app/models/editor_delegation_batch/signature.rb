@@ -25,7 +25,7 @@ class EditorDelegationBatch::Signature
   end
 
   def data_protection_officer_form
-    @data_protection_officer_form ||= batch.organizations.first.lead_request.dup.tap do |form|
+    @data_protection_officer_form ||= data_protection_officer_form_base.dup.tap do |form|
       form.assign_attributes(data_protection_officer.to_h)
     end
   end
@@ -55,7 +55,17 @@ class EditorDelegationBatch::Signature
     @submitted_at ||= Time.zone.now
   end
 
+  def data_protection_officer_suggested?
+    batch.organizations.one? && batch.organizations.first.data_protection_officer_suggested?
+  end
+
   private
+
+  def data_protection_officer_form_base
+    organization = batch.organizations.first
+
+    batch.organizations.one? ? organization.data_protection_officer_form : organization.lead_request
+  end
 
   def apply_shared_data_protection_officer
     return unless batch.data_protection_officer_shared_form? && data_protection_officer

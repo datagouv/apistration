@@ -11,7 +11,10 @@ RSpec.describe 'Editor delegation request journey on API Particulier', app: :api
 
   let!(:datapass) { stub_datapass_formulaires }
 
-  before { login_as(user) }
+  before do
+    stub_cnil_data_protection_officers
+    login_as(user)
+  end
 
   it 'submits an API Particulier request, described with the labels of its DataPass definition' do
     visit editor_delegation_request.invitation_path
