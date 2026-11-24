@@ -95,6 +95,21 @@ RSpec.describe CNAV::FoyerRSA, type: :retriever_organizer do
     end
   end
 
+  context 'when the person has no RSA right' do
+    before do
+      stub_request(:get, cnav_url('foyer_rsa')).with(query: hash_including({})).to_return(
+        status: 404,
+        body: { errorCode: '40440', error: 'Absence de droit' }.to_json
+      )
+    end
+
+    it { is_expected.to be_a_failure }
+
+    it 'returns the absence de droit au RSA error' do
+      expect(organizer.errors.first.to_h).to include(code: '37003', title: 'Absence de droit au RSA')
+    end
+  end
+
   context 'when the CNAV rejects the civility' do
     before { stub_cnav_400('foyer_rsa', error_code: 40_003, error: "Format du nom de naissance ou du nom d'usage erroné") }
 

@@ -49,6 +49,19 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,Personne identifiée sans droit au RSA,"{""nomNaissance"":""Bernard"",""prenoms"":[""lucie""],""anneeDateNaissance"":1990,""moisDateNaissance"":3,""jourDateNaissance"":14,""sexeEtatCivil"":""F"",""codeCogInseePaysNaissance"":""99100""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Absence de droit au RSA"",
+      ""detail"": ""La personne a été identifiée mais aucun droit au revenu de solidarité active n'a été trouvé pour son foyer."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
 ,Dossier allocataire non trouvé,"{""nomNaissance"":""Lefebvre"",""prenoms"":[""claire""],""anneeDateNaissance"":1980,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseePaysNaissance"":""99100""}",404,"{
   ""errors"": [
     {

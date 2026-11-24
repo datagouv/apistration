@@ -2094,6 +2094,12 @@ endpoints:
         meta:
           provider: CNAF & MSA
           origin: RNCPS
+      - code: '37003'
+        title: Absence de droit au RSA
+        detail: La personne a été identifiée mais aucun droit au revenu de solidarité
+          active n'a été trouvé pour son foyer.
+        meta:
+          provider: CNAV
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
@@ -2232,6 +2238,12 @@ endpoints:
         meta:
           provider: CNAF & MSA
           origin: RNCPS
+      - code: '37003'
+        title: Absence de droit au RSA
+        detail: La personne a été identifiée mais aucun droit au revenu de solidarité
+          active n'a été trouvé pour son foyer.
+        meta:
+          provider: CNAV
       - code: '40003'
         title: Dossier allocataire absent RNCPS
         detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.

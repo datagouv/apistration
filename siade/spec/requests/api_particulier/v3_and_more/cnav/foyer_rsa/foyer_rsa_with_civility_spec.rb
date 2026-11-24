@@ -116,6 +116,27 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with civility', api: :particulie
           end
         end
 
+        context 'when the person has no RSA right' do
+          before do
+            stub_request(:get, cnav_url('foyer_rsa')).with(query: hash_including({})).to_return(
+              status: 404,
+              body: { errorCode: '40440', error: 'Absence de droit' }.to_json
+            )
+          end
+
+          response '404', 'Absence de droit au RSA' do
+            build_rswag_example(
+              NotFoundError.new('CNAV', "La personne a été identifiée mais aucun droit au revenu de solidarité active n'a été trouvé pour son foyer.", title: 'Absence de droit au RSA', with_identifiant_message: false)
+            )
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test! do |response|
+              expect(JSON.parse(response.body).dig('errors', 0, 'title')).to eq('Absence de droit au RSA')
+            end
+          end
+        end
+
         describe 'server errors' do
           unprocessable_content_error_request(:sexe_etat_civil) do
             let(:sexeEtatCivil) { 'lol' }

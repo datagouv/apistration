@@ -5896,7 +5896,7 @@ paths:
                 - meta
         '404':
           description: |-
-            Dossier non trouvé
+            Absence de droit au RSA
 
             L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
           content:
@@ -5916,6 +5916,19 @@ paths:
                   summary: Dossier allocataire absent CNAF
                   description: Le dossier allocataire n'a pas été trouvé auprès de
                     la CNAF.
+                absence_de_droit_au_rsa_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Absence de droit au RSA
+                      detail: La personne a été identifiée mais aucun droit au revenu
+                        de solidarité active n'a été trouvé pour son foyer.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Absence de droit au RSA
+                  description: La personne a été identifiée mais aucun droit au revenu
+                    de solidarité active n'a été trouvé pour son foyer.
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':

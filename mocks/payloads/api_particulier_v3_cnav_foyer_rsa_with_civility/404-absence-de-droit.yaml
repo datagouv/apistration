@@ -1,0 +1,27 @@
+---
+description: 'Personne identifiée sans droit au RSA'
+params:
+  nomNaissance: 'Bernard'
+  prenoms:
+    - lucie
+  anneeDateNaissance: 1990
+  moisDateNaissance: 3
+  jourDateNaissance: 14
+  sexeEtatCivil: 'F'
+  codeCogInseePaysNaissance: '99100'
+status: 404
+declared_error: CNAV::FoyerRSA::ValidateResponse::NO_RSA_RIGHT
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Absence de droit au RSA",
+        "detail": "La personne a été identifiée mais aucun droit au revenu de solidarité active n'a été trouvé pour son foyer.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
