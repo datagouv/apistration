@@ -226,10 +226,14 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   def sub_provider_error_from_sngi?
-    [40_409].include?(json_body['errorCode'])
+    [40_409].include?(error_code_number)
   end
 
   def sub_provider_error_from_rncps?
-    [40_406, 40_412].include?(json_body['errorCode'])
+    [40_406, 40_412].include?(error_code_number)
+  end
+
+  def error_code_number
+    Integer(json_body['errorCode'].to_s, exception: false)
   end
 end
