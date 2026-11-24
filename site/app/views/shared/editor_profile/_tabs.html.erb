@@ -1,0 +1,16 @@
+<div class="fr-tabs fr-mt-4w">
+  <ul class="fr-tabs__list" role="tablist" aria-label="Fiche éditeur">
+    <% EditorProfileSection.all.each do |section| %>
+      <li role="presentation">
+        <button id="editor-profile-<%= section.key %>" class="fr-tabs__tab" tabindex="<%= section == current_section ? '0' : '-1' %>" role="tab" aria-selected="<%= section == current_section %>" aria-controls="editor-profile-<%= section.key %>-panel">
+          <%= section.label %>
+        </button>
+      </li>
+    <% end %>
+  </ul>
+  <% EditorProfileSection.all.each do |section| %>
+    <div id="editor-profile-<%= section.key %>-panel" class="fr-tabs__panel <%= 'fr-tabs__panel--selected' if section == current_section %>" role="tabpanel" aria-labelledby="editor-profile-<%= section.key %>" tabindex="0">
+      <%= render "shared/editor_profile/#{section.key}", editor:, section:, admin: %>
+    </div>
+  <% end %>
+</div>

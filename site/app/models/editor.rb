@@ -59,6 +59,10 @@ class Editor < ApplicationRecord
     use_cases.with_form.order(:form_uid).pluck(:form_uid)
   end
 
+  def organization
+    Organization.find_by(siret:) if siret.present?
+  end
+
   def serves_api?(api)
     apis.include?(api.to_s)
   end

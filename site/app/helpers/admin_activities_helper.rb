@@ -12,7 +12,7 @@ module AdminActivitiesHelper
     when 'User'
       link_to(label, edit_admin_user_path(activity.entity_id))
     when 'Editor'
-      link_to(label, edit_admin_editor_path(activity.entity_id))
+      link_to(label, admin_editor_path(activity.entity_id))
     else
       label
     end

@@ -1,0 +1,83 @@
+<% organization = editor.organization %>
+<%= form_with(model: editor, url: editor.new_record? ? admin_editors_path : editor_profile_path_for(editor, section.key, admin:), method: editor.new_record? ? :post : :patch) do |f| %>
+  <h2 class="fr-h4">Identité</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_input_group(f, :name, 'Nom') do %>
+        <%= f.text_field :name, class: 'fr-input', placeholder: 'Raison sociale ou nom commercial' %>
+      <% end %>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <% if admin %>
+        <%= editor_profile_input_group(f, :siret, 'SIRET', hint: '14 chiffres') do %>
+          <%= f.text_field :siret, class: 'fr-input', maxlength: 14 %>
+        <% end %>
+      <% else %>
+        <%= editor_profile_readonly('SIRET', editor.siret) %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= editor_profile_input_group(f, :description, 'Description', hint: 'Visible par les usagers (collectivités, CCAS)') do %>
+    <%= f.text_area :description, class: 'fr-input', rows: 3 %>
+  <% end %>
+
+  <%= editor_profile_input_group(f, :domain, 'Site internet', hint: 'Nom de domaine, par exemple exemple.fr') do %>
+    <%= f.text_field :domain, class: 'fr-input' %>
+  <% end %>
+
+  <% if admin %>
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <div class="fr-col-12 fr-col-md-6">
+        <fieldset class="fr-fieldset <%= 'fr-fieldset--error' if editor.errors[:apis].any? %>" id="editor-apis">
+          <legend class="fr-fieldset__legend fr-text--regular">APIs</legend>
+          <%= f.collection_check_boxes :apis, Editor::APIS, :itself, :itself do |b| %>
+            <div class="fr-fieldset__element fr-fieldset__element--inline">
+              <div class="fr-checkbox-group">
+                <%= b.check_box(class: 'fr-checkbox') %>
+                <%= b.label(class: 'fr-label') { b.value.capitalize } %>
+              </div>
+            </div>
+          <% end %>
+          <% editor.errors[:apis].each do |message| %>
+            <p class="fr-error-text"><%= message %></p>
+          <% end %>
+        </fieldset>
+      </div>
+      <div class="fr-col-12 fr-col-md-6">
+        <div class="fr-select-group">
+          <%= f.label :role, 'Rôle', class: 'fr-label' %>
+          <%= f.select :role, options_for_select(Editor.role_options, editor.role), {}, class: 'fr-select' %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <div class="fr-col-12 fr-col-md-6">
+        <%= editor_profile_readonly('APIs', editor.apis.map(&:capitalize).to_sentence) %>
+      </div>
+      <div class="fr-col-12 fr-col-md-6">
+        <%= editor_profile_readonly('Rôle', editor.decorate.role_label) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.submit editor.new_record? ? "Créer l'éditeur" : 'Enregistrer', class: 'fr-btn' %>
+<% end %>
+
+<% if editor.persisted? %>
+<h2 class="fr-h4 fr-mt-6w">Données INSEE</h2>
+<% if editor.siret.present? %>
+  <p class="fr-text--sm"><%= external_link_to "Voir #{editor.siret} sur l'Annuaire des Entreprises", "https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}", class: 'fr-link' %></p>
+<% end %>
+<% if organization&.denomination %>
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-4"><%= editor_profile_readonly('Raison sociale', organization.denomination) %></div>
+    <div class="fr-col-12 fr-col-md-5"><%= editor_profile_readonly('Adresse', organization.address) %></div>
+    <div class="fr-col-12 fr-col-md-3"><%= editor_profile_readonly('Code NAF', organization.naf_code) %></div>
+  </div>
+<% else %>
+  <p class="fr-text--sm fr-text-mention--grey">Aucune donnée INSEE connue pour ce SIRET.</p>
+<% end %>
+<% end %>

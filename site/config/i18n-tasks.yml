@@ -117,6 +117,8 @@ ignore_unused:
   - 'api_{entreprise,particulier}.endpoints.show.error.record_not_found'
   - 'editors.roles.*'
   - 'editors.deployment_types.*'
+  - 'editor_use_cases.integration_statuses.*'
+  - 'editor_profile.sections.*'
   - 'datapass_use_cases.*'
   - 'api_particulier.reporters_mailer.*'
   - '*.page_title'

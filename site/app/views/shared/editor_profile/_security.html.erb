@@ -1,0 +1,28 @@
+<%= form_with(model: editor, url: editor_profile_path_for(editor, section.key, admin:), method: :patch) do |f| %>
+  <h2 class="fr-h4">Hébergement</h2>
+
+  <div class="fr-select-group">
+    <%= f.label :deployment_type, 'Type de déploiement', class: 'fr-label' %>
+    <%= f.select :deployment_type, options_for_select(Editor.deployment_type_options, editor.deployment_type), {}, class: 'fr-select' %>
+  </div>
+
+  <h2 class="fr-h4 fr-mt-4w">Adresses IP autorisées</h2>
+  <% if admin %>
+    <%= editor_profile_input_group(f, :allowed_ips, 'IPs autorisées', hint: 'Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24') do %>
+      <%= f.text_area :allowed_ips, value: editor.allowed_ips.join(', '), class: 'fr-input', rows: 3 %>
+    <% end %>
+  <% else %>
+    <p class="fr-text--sm">Appels acceptés uniquement depuis ces adresses. Pour les modifier, écrivez à <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Modification des adresses IP autorisées">support@<%= namespace %>.api.gouv.fr</a>.</p>
+    <% if editor.allowed_ips.any? %>
+      <ul class="fr-tags-group fr-mb-3w">
+        <% editor.allowed_ips.each do |ip| %>
+          <li><p class="fr-tag"><%= ip %></p></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="fr-text--sm fr-text-mention--grey">Aucune restriction d'adresse IP configurée.</p>
+    <% end %>
+  <% end %>
+
+  <%= f.submit 'Enregistrer', class: 'fr-btn' %>
+<% end %>

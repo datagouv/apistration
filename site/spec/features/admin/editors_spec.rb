@@ -55,11 +55,10 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
 
     it 'displays editor details' do
-      expect(page).to have_text(editor.name)
-      expect(page).to have_text(editor.siret)
-      expect(page).to have_text(editor.contact_email)
-      expect(page).to have_text(editor.domain)
-      expect(page).to have_text(editor.description)
+      expect(page).to have_field('Nom', with: editor.name)
+      expect(page).to have_field('editor_siret', with: editor.siret)
+      expect(page).to have_field('editor_domain', with: editor.domain)
+      expect(page).to have_field('editor_description', with: editor.description)
     end
 
     it 'opens no new tab exposing window.opener' do
@@ -75,12 +74,6 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     it 'displays members' do
       expect(page).to have_text(editor_user.email)
     end
-
-    it 'displays form_uids as tags' do
-      editor.form_uids.each do |form_uid|
-        expect(page).to have_text(form_uid)
-      end
-    end
   end
 
   describe 'create' do
@@ -90,14 +83,13 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       fill_in 'editor_name', with: 'New Editor'
       fill_in 'editor_siret', with: '12345678901234'
       select 'Gère le jeton', from: 'editor_role'
-      fill_in 'editor_contact_email', with: 'test@editor.com'
       check 'editor_apis_entreprise'
 
       click_on "Créer l'éditeur"
 
       expect(page).to have_css('.fr-alert.fr-alert--success')
-      expect(page).to have_text('New Editor')
-      expect(page).to have_text('12345678901234')
+      expect(page).to have_field('Nom', with: 'New Editor')
+      expect(page).to have_field('editor_siret', with: '12345678901234')
     end
 
     it 'records the creation activity with the created editor' do
@@ -143,22 +135,28 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
   describe 'update' do
     let(:editor) { create(:editor) }
 
-    it 'updates editor fields' do
-      visit edit_admin_editor_path(editor)
+    def within_tab(key, &)
+      within("#editor-profile-#{key}-panel", &)
+    end
 
-      fill_in 'editor_name', with: 'Renamed editor'
-      click_on 'Sauvegarder'
+    before { visit admin_editor_path(editor) }
 
-      expect(editor.reload.name).to eq('Renamed editor')
+    it 'updates the general information, SIRET and role included' do
+      within_tab('general') do
+        fill_in 'Nom', with: 'Renamed editor'
+        fill_in 'editor_siret', with: '98765432109876'
+        select 'Gère le jeton', from: 'editor_role'
+        click_on 'Enregistrer'
+      end
+
       expect(page).to have_css('.fr-alert.fr-alert--success')
+      expect(editor.reload).to have_attributes(name: 'Renamed editor', siret: '98765432109876', role: 'manages_token')
     end
 
     it 'records the update activity' do
-      visit edit_admin_editor_path(editor)
+      within_tab('general') { uncheck 'editor_apis_particulier' }
 
-      uncheck 'editor_apis_particulier'
-
-      expect { click_on 'Sauvegarder' }.to change(AdminActivity, :count).by(1)
+      expect { within_tab('general') { click_on 'Enregistrer' } }.to change(AdminActivity, :count).by(1)
 
       expect(AdminActivity.last).to have_attributes(
         name: 'editor_updated',
@@ -171,11 +169,9 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
 
     it 'emits an editor config change with the settings before and after' do
-      visit edit_admin_editor_path(editor)
+      within_tab('technical') { check 'editor_copy_token' }
 
-      check 'editor_copy_token'
-
-      expect { click_on 'Sauvegarder' }.to emit_security_event('access.editor_config.changed').with(
+      expect { within_tab('technical') { click_on 'Enregistrer' } }.to emit_security_event('access.editor_config.changed').with(
         actor: { email: admin.email, role: 'admin' },
         target: { type: 'editor', id: editor.id },
         details: {
@@ -187,54 +183,49 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
 
     it 'emits no editor config change when only the description changes' do
-      visit edit_admin_editor_path(editor)
+      within_tab('general') { fill_in 'editor_description', with: 'Une autre description' }
 
-      fill_in 'editor_description', with: 'Une autre description'
-
-      expect { click_on 'Sauvegarder' }.not_to emit_security_event('access.editor_config.changed')
+      expect { within_tab('general') { click_on 'Enregistrer' } }.not_to emit_security_event('access.editor_config.changed')
     end
 
     it 'allows toggling editor_tokens_enabled' do
-      visit edit_admin_editor_path(editor)
-
-      check 'editor_editor_tokens_enabled'
-      click_on 'Sauvegarder'
+      within_tab('technical') do
+        check 'editor_editor_tokens_enabled'
+        click_on 'Enregistrer'
+      end
 
       expect(editor.reload.editor_tokens_enabled).to be true
       expect(page).to have_css('.fr-alert.fr-alert--success')
     end
 
     it 'refuses allowed IPs the editor tokens could never accept' do
-      visit edit_admin_editor_path(editor)
-
-      fill_in 'editor_allowed_ips', with: '192.168.1.1'
-      click_on 'Sauvegarder'
+      within_tab('security') do
+        fill_in 'editor_allowed_ips', with: '192.168.1.1'
+        click_on 'Enregistrer'
+      end
 
       expect(editor.reload.allowed_ips).to be_empty
       expect(page).to have_text('plage privée ou réservée')
     end
 
     it 'accepts public allowed IPs' do
-      visit edit_admin_editor_path(editor)
-
-      fill_in 'editor_allowed_ips', with: '203.0.113.0/24, 198.51.100.5'
-      click_on 'Sauvegarder'
+      within_tab('security') do
+        fill_in 'editor_allowed_ips', with: '203.0.113.0/24, 198.51.100.5'
+        click_on 'Enregistrer'
+      end
 
       expect(editor.reload.allowed_ips).to eq(['203.0.113.0/24', '198.51.100.5'])
     end
 
-    it 'updates new fields' do
-      visit edit_admin_editor_path(editor)
+    it 'comes back to the tab of the saved form' do
+      within_tab('security') do
+        select 'SaaS', from: 'editor_deployment_type'
+        click_on 'Enregistrer'
+      end
 
-      fill_in 'editor_siret', with: '98765432109876'
-      select 'SaaS', from: 'editor_deployment_type'
-      fill_in 'editor_contact_email', with: 'new@editor.com'
-      click_on 'Sauvegarder'
-
-      editor.reload
-      expect(editor.siret).to eq('98765432109876')
-      expect(editor.deployment_type).to eq('saas')
-      expect(editor.contact_email).to eq('new@editor.com')
+      expect(page).to have_current_path(admin_editor_path(editor, onglet: 'security'))
+      expect(page).to have_css('#editor-profile-security[aria-selected="true"]')
+      expect(editor.reload.deployment_type).to eq('saas')
     end
   end
 

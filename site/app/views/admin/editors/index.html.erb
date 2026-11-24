@@ -48,7 +48,6 @@
           <td><%= @users_counts.fetch(editor.id, 0) %></td>
           <td>
             <%= link_to 'Voir', admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--tertiary' %>
-            <%= link_to 'Modifier', edit_admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--secondary' %>
           </td>
         </tr>
       <% end %>

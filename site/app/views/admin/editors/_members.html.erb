@@ -1,0 +1,45 @@
+<h2 class="fr-h4 fr-mt-6w">Membres de l'espace éditeur (<%= editor.users.count %>)</h2>
+
+<% if editor.users.any? %>
+  <div class="fr-table fr-table--bordered fr-table--no-caption fr-table--layout-fixed">
+    <table>
+      <caption>Membres de l'éditeur</caption>
+      <thead>
+        <tr>
+          <th scope="col">Email</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% editor.users.order(:email).each do |user| %>
+          <tr>
+            <td><%= link_to user.email, edit_admin_user_path(user), class: 'fr-link' %></td>
+            <td><%= [user.first_name, user.last_name].compact.join(' ') %></td>
+            <td>
+              <%= button_to 'Retirer',
+                    admin_editor_member_path(editor, user),
+                    method: :delete,
+                    class: 'fr-btn fr-btn--sm fr-btn--tertiary',
+                    data: { turbo_confirm: "Retirer #{user.email} de l'éditeur ?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<%= form_with url: admin_editor_members_path(editor), method: :post, class: 'fr-mb-4w' do |f| %>
+  <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--bottom">
+    <div class="fr-col-8">
+      <div class="fr-input-group">
+        <%= f.label :email, 'Ajouter un membre par email', class: 'fr-label' %>
+        <%= f.email_field :email, class: 'fr-input', placeholder: 'utilisateur@exemple.fr' %>
+      </div>
+    </div>
+    <div class="fr-col-4">
+      <%= f.submit 'Ajouter', class: 'fr-btn fr-btn--secondary' %>
+    </div>
+  </div>
+<% end %>
