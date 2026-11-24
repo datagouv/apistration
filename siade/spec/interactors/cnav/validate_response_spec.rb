@@ -410,6 +410,25 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       end
     end
 
+    context 'with a gateway exception, without DSS error code' do
+      let(:body) { '{"Exception":"API Gateway encountered an error. Error Message:  Native service provider error. Code : 400. Request Details: Service - API_Prestations, Operation - /AAH/details"}' }
+
+      it 'reports an unknown provider response instead of rejecting the civility' do
+        expect(subject.errors).to contain_exactly(instance_of(ProviderUnknownError))
+      end
+
+      it 'names the gateway exception in the tracked message and fingerprint' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'error',
+          '[Sécurité sociale] Bad request (http_400_gateway_exception)',
+          anything,
+          fingerprint: %w[cnav-bad-request http_400_gateway_exception]
+        )
+
+        subject
+      end
+    end
+
     context 'with a code out of the CNAV error table' do
       let(:body) { '{"errorCode":40099,"error":"?"}' }
 
