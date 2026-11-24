@@ -1,0 +1,21 @@
+{
+  "beneficiaire": [
+    {
+      "nomNaissance": "DUPONT",
+      "nomUsage": "DURANT",
+      "listePrenoms": "Jeanne",
+      "dateNaissance": "1970-11-25",
+      "genre": "F",
+      "qualite": "ALLOCATAIRE"
+    }
+  ],
+  "personneaCharge": [
+    {
+      "nomNaissance": "DUPONT",
+      "nomUsage": "",
+      "listePrenoms": "Clotaire Kevin",
+      "dateNaissance": "2007-06-16",
+      "genre": "M"
+    }
+  ]
+}

@@ -1,45 +1,112 @@
 RSpec.describe CNAV::FoyerRSA, type: :retriever_organizer do
-  subject { described_class.call(params:, operation_id: 'api_particulier_v3_cnav_foyer_rsa_with_civility', recipient: '13002526500013') }
+  subject(:organizer) { described_class.call(params:, recipient:) }
 
+  let(:recipient) { valid_siret }
   let(:params) do
     {
-      nom_naissance:,
-      prenoms:,
-      annee_date_naissance:,
-      mois_date_naissance:,
-      jour_date_naissance:,
-      code_cog_insee_commune_naissance:,
-      code_cog_insee_pays_naissance:,
-      sexe_etat_civil:,
+      nom_naissance: 'CHAMPION',
+      prenoms: ['JEAN-PASCAL'],
+      annee_date_naissance: 1980,
+      mois_date_naissance: 6,
+      jour_date_naissance: 12,
+      sexe_etat_civil: 'M',
+      code_cog_insee_pays_naissance: '99100',
+      code_cog_insee_commune_naissance: '17300',
       request_id: SecureRandom.uuid
     }
   end
 
-  let(:nom_naissance) { 'Dupont' }
-  let(:prenoms) { %w[jean charlie] }
-  let(:annee_date_naissance) { 1980 }
-  let(:mois_date_naissance) { 1 }
-  let(:jour_date_naissance) { 1 }
-  let(:code_cog_insee_commune_naissance) { nil }
-  let(:code_cog_insee_pays_naissance) { '99100' }
-  let(:sexe_etat_civil) { 'M' }
+  before do
+    stub_cnav_authenticate('foyer_rsa')
+  end
 
-  describe 'valid params' do
-    before do
-      allow(Rails.env).to receive(:staging?).and_return(true)
-    end
+  context 'when the CNAV returns a foyer with a beneficiary and a dependant' do
+    before { stub_cnav_valid('foyer_rsa') }
 
     it { is_expected.to be_a_success }
 
-    it 'retrieves the mocked foyer' do
-      resource = subject.mocked_data[:payload]
+    it 'maps the foyer to the API Particulier signature' do
+      expect(organizer.bundled_data.data.to_h).to eq(
+        beneficiaires: [
+          {
+            nom_naissance: 'DUPONT',
+            nom_usage: 'DURANT',
+            prenoms: 'Jeanne',
+            date_naissance: '1970-11-25',
+            sexe: 'F',
+            qualite: 'allocataire'
+          }
+        ],
+        personnes_a_charge: [
+          {
+            nom_naissance: 'DUPONT',
+            nom_usage: nil,
+            prenoms: 'Clotaire Kevin',
+            date_naissance: '2007-06-16',
+            sexe: 'M'
+          }
+        ]
+      )
+    end
 
-      expect(resource.dig('data', 'beneficiaires')).to be_present
+    it 'takes the regime as data source' do
+      expect(organizer.data_source).to eq('CNAF')
     end
   end
 
-  describe 'invalid params' do
-    let(:sexe_etat_civil) { 'invalid' }
+  context 'when the foyer is a couple without dependants' do
+    before do
+      stub_request(:get, cnav_url('foyer_rsa')).with(query: hash_including({})).to_return(
+        status: 200,
+        body: read_payload_file('cnav/foyer_rsa/make_request_couple_without_dependants.json')
+      )
+    end
+
+    it 'returns both beneficiaries and an empty list of dependants' do
+      data = organizer.bundled_data.data.to_h
+
+      expect(data[:beneficiaires].pluck(:qualite)).to eq(%w[allocataire conjoint])
+      expect(data[:personnes_a_charge]).to eq([])
+    end
+  end
+
+  context 'when the CNAV answers 200 without any beneficiary' do
+    before do
+      stub_request(:get, cnav_url('foyer_rsa')).with(query: hash_including({})).to_return(
+        status: 200,
+        body: { beneficiaire: [] }.to_json
+      )
+    end
+
+    it { is_expected.to be_a_failure }
+
+    it 'reports an unknown provider response' do
+      expect(organizer.errors).to include(instance_of(ProviderUnknownError))
+    end
+  end
+
+  context 'when the person is not found' do
+    before { stub_cnav_404('foyer_rsa', 'CNAF') }
+
+    it { is_expected.to be_a_failure }
+
+    it 'returns the CNAF not found error of the regime' do
+      expect(organizer.errors.first.code).to eq('23003')
+    end
+  end
+
+  context 'when the CNAV rejects the civility' do
+    before { stub_cnav_400('foyer_rsa', error_code: 40_003, error: "Format du nom de naissance ou du nom d'usage erroné") }
+
+    it { is_expected.to be_a_failure }
+
+    it 'returns the rejected civility error' do
+      expect(organizer.errors.first).to be_a(ProviderUnprocessableEntityError)
+    end
+  end
+
+  context 'with invalid params' do
+    let(:params) { super().merge(sexe_etat_civil: 'invalid') }
 
     it { is_expected.to be_a_failure }
   end

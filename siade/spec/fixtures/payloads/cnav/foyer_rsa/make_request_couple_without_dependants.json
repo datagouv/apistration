@@ -1,0 +1,19 @@
+{
+  "beneficiaire": [
+    {
+      "nomNaissance": "DUPONT",
+      "nomUsage": "DURANT",
+      "listePrenoms": "Jeanne",
+      "dateNaissance": "1970-11-25",
+      "genre": "F",
+      "qualite": "ALLOCATAIRE"
+    },
+    {
+      "nomNaissance": "DURANT",
+      "listePrenoms": "Marc",
+      "dateNaissance": "1968-04-02",
+      "genre": "M",
+      "qualite": "CONJOINT"
+    }
+  ]
+}

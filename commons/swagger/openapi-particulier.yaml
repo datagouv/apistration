@@ -5520,6 +5520,13 @@ paths:
         required: false
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: nomNaissance
         in: query
         description: "**Nom de naissance, également appelé nom de famille**. \n\nLe
@@ -5740,6 +5747,22 @@ paths:
         '200':
           description: Foyer trouvé
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -5873,29 +5896,26 @@ paths:
                 - meta
         '404':
           description: |-
-            Non trouvé
+            Dossier non trouvé
 
             L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                dossier_allocataire_absent_cnaf_23003:
                   value:
                     errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
-                        pas connus, ou ne comportent aucune information pour cet appel.
-                        Veuillez vérifier que votre recherche est couverte par le
-                        périmètre de l'API.
+                    - code: '23003'
+                      title: Dossier allocataire absent CNAF
+                      detail: Le dossier allocataire n'a pas été trouvé auprès de
+                        la CNAF.
                       source:
                       meta:
-                        provider: CNAV
-                  summary: Entité non trouvée
-                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
-                    sont pas connus, ou ne comportent aucune information pour cet
-                    appel. Veuillez vérifier que votre recherche est couverte par
-                    le périmètre de l'API.
+                        provider: CNAF
+                        origin: CNAF
+                  summary: Dossier allocataire absent CNAF
+                  description: Le dossier allocataire n'a pas été trouvé auprès de
+                    la CNAF.
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':
@@ -6059,6 +6079,13 @@ paths:
         required: false
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
       description: "Composition du foyer au sens de la prestation de revenu de solidarité
@@ -6089,26 +6116,50 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: |-
+            Non autorisé
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_france_connect.
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '51504'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta:
+                        provider: FranceConnect
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Foyer trouvé
           headers:
-            RateLimit-Limit:
+            X-Response-Cached:
               schema:
-                type: integer
-              description: La limite concernant l’endpoint appelé, soit le nombre
-                de requête/minute.
-              example: 50
-            RateLimit-Remaining:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
               schema:
-                type: integer
-              description: Le nombre d’appels restants durant la période courante
-                d’une minute.
-              example: 47
-            RateLimit-Reset:
-              schema:
-                type: integer
-              description: La fin de la période courante (en format timestamp)
-              example: 1637223155
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
           x-operationId: api_particulier_v3_cnav_foyer_rsa_with_france_connect
           content:
             application/json:
@@ -6225,50 +6276,26 @@ paths:
                 - meta
         '404':
           description: |-
-            Non trouvé
+            Dossier non trouvé
 
             L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_france_connect.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                dossier_allocataire_absent_cnaf_23003:
                   value:
                     errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
-                        pas connus, ou ne comportent aucune information pour cet appel.
-                        Veuillez vérifier que votre recherche est couverte par le
-                        périmètre de l'API.
+                    - code: '23003'
+                      title: Dossier allocataire absent CNAF
+                      detail: Le dossier allocataire n'a pas été trouvé auprès de
+                        la CNAF.
                       source:
                       meta:
-                        provider: CNAV
-                  summary: Entité non trouvée
-                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
-                    sont pas connus, ou ne comportent aucune information pour cet
-                    appel. Veuillez vérifier que votre recherche est couverte par
-                    le périmètre de l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: |-
-            Non autorisé
-
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_france_connect.
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide
+                        provider: CNAF
+                        origin: CNAF
+                  summary: Dossier allocataire absent CNAF
+                  description: Le dossier allocataire n'a pas été trouvé auprès de
+                    la CNAF.
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':

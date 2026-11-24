@@ -175,12 +175,13 @@
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier non trouvé",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF",
+          "origin": "CNAF"
         }
       }
     ]
