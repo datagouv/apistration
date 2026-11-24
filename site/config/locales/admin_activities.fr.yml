@@ -11,6 +11,8 @@ fr:
       editor_updated: "Modification d'éditeur"
       editor_member_added: "Ajout d'un membre à un éditeur"
       editor_member_removed: "Retrait d'un membre d'un éditeur"
+      editor_contact_added: "Ajout d'un contact à un éditeur"
+      editor_contact_removed: "Retrait d'un contact d'un éditeur"
       audit_notification_created: "Notification d'audit"
   admin:
     admin_activities:

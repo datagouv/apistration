@@ -19,7 +19,19 @@ module AdminActivitiesHelper
   end
 
   def admin_activity_details(activity)
-    rows = activity.after_attributes.map do |key, after_value|
+    rows = activity.after_attributes.empty? ? admin_activity_removed_rows(activity) : admin_activity_changed_rows(activity)
+
+    return '—' if rows.empty?
+
+    safe_join(rows.map { |row| content_tag(:div, row, class: 'fr-text--sm') })
+  end
+
+  def admin_activity_removed_rows(activity)
+    activity.before_attributes.map { |key, before_value| "#{key} : #{format_admin_activity_value(before_value)} → ∅" }
+  end
+
+  def admin_activity_changed_rows(activity)
+    activity.after_attributes.map do |key, after_value|
       before_value = activity.before_attributes[key]
 
       if activity.before_attributes.key?(key) && before_value != after_value
@@ -28,10 +40,6 @@ module AdminActivitiesHelper
         "#{key} : #{format_admin_activity_value(after_value)}"
       end
     end
-
-    return '—' if rows.empty?
-
-    safe_join(rows.map { |row| content_tag(:div, row, class: 'fr-text--sm') })
   end
 
   def format_admin_activity_value(value)

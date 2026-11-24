@@ -97,8 +97,6 @@ class Seeds
       editor_tokens_enabled: true,
       siret: '32816124500027',
       role: 'manages_token',
-      contact_email: 'contact-mgdis@yopmail.com',
-      contact_phone: '0299000000',
       deployment_type: 'saas',
       domain: 'mgdis.fr',
       languages: 'Java',
@@ -123,7 +121,6 @@ class Seeds
       apis: %w[entreprise],
       siret: '44090956200033',
       role: 'manages_token',
-      contact_email: 'contact-atexo@yopmail.com',
       deployment_type: 'saas',
       domain: 'atexo.com',
       languages: 'Java, JavaScript',
@@ -140,6 +137,10 @@ class Seeds
       domain: 'aiga.fr',
       description: 'Éditeur de logiciels pour la petite enfance et les services périscolaires'
     )
+
+    @editor.contacts.create!(role: 'technical', full_name: 'Paul Martin', email: 'contact-mgdis@yopmail.com', phone: '0299000000')
+    @editor.contacts.create!(role: 'dpo', full_name: 'Claire Petit', email: 'dpo-mgdis@yopmail.com')
+    atexo.contacts.create!(role: 'technical', email: 'contact-atexo@yopmail.com')
 
     create_editor_use_cases(@editor, 'api-entreprise-mgdis')
     create_editor_use_cases(atexo, 'api-entreprise-atexo')

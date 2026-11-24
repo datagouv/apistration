@@ -3,7 +3,7 @@ class Editor < ApplicationRecord
   ROLES = %w[manages_token client_manages_token both].freeze
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
 
-  self.ignored_columns += %w[form_uids]
+  self.ignored_columns += %w[form_uids contact_email contact_phone]
 
   has_many :users,
     dependent: :nullify
@@ -12,20 +12,20 @@ class Editor < ApplicationRecord
   has_many :tokens,
     class_name: 'EditorToken',
     dependent: :destroy
+  has_many :contacts,
+    class_name: 'EditorContact',
+    dependent: :destroy
   has_many :use_cases,
     class_name: 'EditorUseCase',
     dependent: :destroy
 
   normalizes :deployment_type, with: ->(value) { value.presence }
-  normalizes :contact_email, with: ->(email) { Rails.env.staging? ? PersonalDataAnonymizer.email(email) : email }
-  normalizes :contact_phone, with: ->(phone) { Rails.env.staging? ? PersonalDataAnonymizer.phone(phone) : phone }
 
   validates :name, presence: true
   validates :apis, presence: true
   validates :siret, format: { with: /\A\d{14}\z/ }, allow_blank: true
   validates :role, inclusion: { in: ROLES }, allow_nil: true
   validates :deployment_type, inclusion: { in: DEPLOYMENT_TYPES }, allow_nil: true
-  validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
   validate :apis_included_in_list
 

@@ -229,6 +229,52 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
   end
 
+  describe 'contacts' do
+    let!(:editor) { create(:editor) }
+
+    before { visit admin_editor_path(editor, onglet: 'contacts') }
+
+    it 'adds a contact and records it in the activity log' do
+      within('#editor-profile-contacts-panel') do
+        select 'Sécurité', from: 'Rôle'
+        fill_in 'Email', with: 'rssi@editor.com'
+      end
+
+      expect { click_on 'Ajouter le contact' }.to change(AdminActivity, :count).by(1)
+
+      expect(editor.contacts.pluck(:role, :email)).to eq([%w[security rssi@editor.com]])
+      expect(AdminActivity.last).to have_attributes(name: 'editor_contact_added', entity: editor, before_attributes: {})
+      expect(AdminActivity.last.after_attributes).to include('role' => 'security', 'email' => 'rssi@editor.com')
+    end
+
+    it 'removes a contact and records it in the activity log' do
+      create(:editor_contact, editor:, email: 'old@editor.com')
+      visit admin_editor_path(editor, onglet: 'contacts')
+
+      expect { within('#editor-profile-contacts-panel table') { click_on 'Retirer' } }.to change(AdminActivity, :count).by(1)
+
+      expect(editor.contacts.reload).to be_empty
+      expect(AdminActivity.last).to have_attributes(name: 'editor_contact_removed', entity: editor, after_attributes: {})
+      expect(AdminActivity.last.before_attributes).to include('email' => 'old@editor.com')
+    end
+
+    it 'shows the removed contact in the activity log' do
+      create(:editor_contact, editor:, email: 'old@editor.com')
+      visit admin_editor_path(editor, onglet: 'contacts')
+      within('#editor-profile-contacts-panel table') { click_on 'Retirer' }
+
+      visit admin_admin_activities_path
+
+      expect(page).to have_text('email : old@editor.com → ∅')
+    end
+
+    it 'shows why a contact cannot be added' do
+      click_on 'Ajouter le contact'
+
+      expect(page).to have_css('.fr-alert.fr-alert--error', text: 'Renseignez un email ou un téléphone')
+    end
+  end
+
   describe 'members' do
     let!(:editor) { create(:editor) }
     let!(:user_to_add) { create(:user, email: 'newmember@test.com') }

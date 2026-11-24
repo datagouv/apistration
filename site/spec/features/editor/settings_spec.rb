@@ -105,6 +105,53 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     end
   end
 
+  describe 'contacts' do
+    before { visit editor_settings_path(onglet: 'contacts') }
+
+    it 'lists the former contact email and phone of the editor as its technical contact' do
+      require Rails.root.join('db/migrate/20261125093100_move_editor_contact_to_technical_contacts').to_s
+      editor.contacts.delete_all
+      Editor.where(id: editor.id).update_all("contact_email = 'legacy@editor.com', contact_phone = '0611111111'")
+      ActiveRecord::Migration.suppress_messages { MoveEditorContactToTechnicalContacts.new.up }
+
+      visit editor_settings_path(onglet: 'contacts')
+
+      within_tab('contacts') do
+        expect(page).to have_css('tr', text: /Technique.*legacy@editor\.com.*0611111111/)
+      end
+    end
+
+    it 'adds several contacts for the same role' do
+      within_tab('contacts') do
+        select 'Délégué à la protection des données (DPO)', from: 'Rôle'
+        fill_in 'Nom', with: 'Alice DPO'
+        fill_in 'Email', with: 'dpo@editor.com'
+        click_button 'Ajouter le contact'
+      end
+      within_tab('contacts') do
+        select 'Délégué à la protection des données (DPO)', from: 'Rôle'
+        fill_in 'Email', with: 'dpo-suppleant@editor.com'
+        click_button 'Ajouter le contact'
+      end
+
+      expect(editor.contacts.where(role: 'dpo').pluck(:email)).to contain_exactly('dpo@editor.com', 'dpo-suppleant@editor.com')
+    end
+
+    it 'removes a contact' do
+      within_tab('contacts') { click_button 'Retirer' }
+
+      expect(editor.contacts.reload).to be_empty
+    end
+
+    it 'cannot remove the contact of another editor' do
+      other_contact = create(:editor_contact, editor: create(:editor))
+
+      page.driver.submit :delete, editor_contact_path(other_contact), {}
+
+      expect(other_contact.reload).to be_persisted
+    end
+  end
+
   context 'when the user is not an editor' do
     let(:user) { create(:user) }
 

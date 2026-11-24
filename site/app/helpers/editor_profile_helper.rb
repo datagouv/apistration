@@ -3,6 +3,14 @@ module EditorProfileHelper
     admin ? admin_editor_path(editor, onglet: section_key) : editor_settings_path(onglet: section_key)
   end
 
+  def editor_profile_contacts_path(editor, admin:)
+    admin ? admin_editor_contacts_path(editor) : editor_contacts_path
+  end
+
+  def editor_profile_contact_path(editor, contact, admin:)
+    admin ? admin_editor_contact_path(editor, contact) : editor_contact_path(contact)
+  end
+
   def editor_profile_input_group(form, attribute, label, hint: nil, &)
     errors = form.object.errors[attribute]
 

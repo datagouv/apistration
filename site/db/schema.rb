@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_25_092100) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_093100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -125,6 +125,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_092100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["api", "value"], name: "index_datapass_scopes_on_api_and_value", unique: true
+  end
+
+  create_table "editor_contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_id", null: false
+    t.string "role", null: false
+    t.string "full_name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editor_id"], name: "index_editor_contacts_on_editor_id"
   end
 
   create_table "editor_delegations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -433,6 +444,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_092100) do
   add_foreign_key "admin_activities", "users", column: "admin_id"
   add_foreign_key "authorization_request_security_settings", "authorization_requests"
   add_foreign_key "changelog_subscriptions", "users", validate: false
+  add_foreign_key "editor_contacts", "editors"
   add_foreign_key "editor_delegations", "authorization_requests"
   add_foreign_key "editor_delegations", "editors"
   add_foreign_key "editor_use_cases", "editors"

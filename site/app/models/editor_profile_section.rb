@@ -2,7 +2,7 @@ EditorProfileSection = Data.define(:key, :editor_attributes, :admin_attributes) 
   def self.all
     [
       new(key: 'general', editor_attributes: %i[name description domain], admin_attributes: [:siret, :role, { apis: [] }]),
-      new(key: 'contacts', editor_attributes: %i[contact_email contact_phone], admin_attributes: []),
+      new(key: 'contacts', editor_attributes: [], admin_attributes: []),
       new(key: 'security', editor_attributes: %i[deployment_type], admin_attributes: %i[allowed_ips]),
       new(key: 'technical', editor_attributes: %i[languages setup_instructions], admin_attributes: %i[copy_token editor_tokens_enabled])
     ]
