@@ -108,6 +108,18 @@ RSpec.describe DatapassWebhook::V2::APIParticulier, type: :interactor do
     end
   end
 
+  describe 'when the form is the DataPass form of a use case of an editor' do
+    let!(:editor) { create(:editor) }
+
+    before { create(:editor_use_case, editor:, form_uid: 'api-entreprise') }
+
+    it 'creates an editor delegation for that editor' do
+      expect { subject }.to change(EditorDelegation, :count).by(1)
+
+      expect(EditorDelegation.last.editor).to eq(editor)
+    end
+  end
+
   describe 'Brevo adding contacts' do
     it 'adds each contact to the API Particulier list with its roles' do
       subject

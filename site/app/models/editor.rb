@@ -3,12 +3,17 @@ class Editor < ApplicationRecord
   ROLES = %w[manages_token client_manages_token both].freeze
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
 
+  self.ignored_columns += %w[form_uids]
+
   has_many :users,
     dependent: :nullify
   has_many :editor_delegations,
     dependent: :destroy
   has_many :tokens,
     class_name: 'EditorToken',
+    dependent: :destroy
+  has_many :use_cases,
+    class_name: 'EditorUseCase',
     dependent: :destroy
 
   normalizes :deployment_type, with: ->(value) { value.presence }
@@ -26,7 +31,7 @@ class Editor < ApplicationRecord
 
   scope :delegable, -> { where(editor_tokens_enabled: true) }
   scope :for_api, ->(api) { where('ARRAY[:api]::varchar[] <@ apis', api:) }
-  scope :for_demarche, ->(demarche) { where(':demarche = ANY(form_uids)', demarche:) }
+  scope :for_demarche, ->(demarche) { where(id: EditorUseCase.where(form_uid: demarche).select(:editor_id)) }
   scope :search_by_name_or_siret, lambda { |query|
     where('name ILIKE :q OR siret ILIKE :q', q: "%#{query}%")
   }
@@ -47,7 +52,11 @@ class Editor < ApplicationRecord
   def authorization_requests(api:)
     AuthorizationRequest
       .where(api:)
-      .where(demarche: form_uids)
+      .where(demarche: use_cases.with_form.select(:form_uid))
+  end
+
+  def form_uids
+    use_cases.with_form.order(:form_uid).pluck(:form_uid)
   end
 
   def serves_api?(api)

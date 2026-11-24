@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_25_091001) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_092100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -147,6 +147,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_091001) do
     t.jsonb "scopes", default: [], null: false
     t.datetime "updated_at", null: false
     t.index ["scopes"], name: "index_editor_tokens_on_scopes", using: :gin
+  end
+
+  create_table "editor_use_cases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_id", null: false
+    t.string "use_case"
+    t.string "software"
+    t.string "scopes", default: [], null: false, array: true
+    t.integer "data_retention_months"
+    t.text "data_recipients"
+    t.string "integration_status"
+    t.string "form_uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editor_id"], name: "index_editor_use_cases_on_editor_id"
+    t.index ["form_uid"], name: "index_editor_use_cases_on_form_uid", unique: true, where: "(form_uid IS NOT NULL)"
   end
 
   create_table "editors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -420,6 +435,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_091001) do
   add_foreign_key "changelog_subscriptions", "users", validate: false
   add_foreign_key "editor_delegations", "authorization_requests"
   add_foreign_key "editor_delegations", "editors"
+  add_foreign_key "editor_use_cases", "editors"
   add_foreign_key "magic_links", "tokens"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"

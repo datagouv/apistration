@@ -2,10 +2,12 @@ FactoryBot.define do
   factory :editor do
     name { 'UMAD Editor' }
     apis { %w[entreprise particulier] }
-    form_uids do
-      [
-        'umad-editor'
-      ]
+    transient do
+      form_uids { [] }
+    end
+
+    after(:create) do |editor, evaluator|
+      evaluator.form_uids.each { |form_uid| create(:editor_use_case, editor:, form_uid:) }
     end
 
     trait :delegable do

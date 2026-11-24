@@ -70,4 +70,40 @@ RSpec.describe Datapass::SyncReferentialJob do
       expect(DatapassForm.find_by(uid: 'api-particulier-abelium')).to be_present
     end
   end
+
+  describe 'use cases backfilled from the DataPass forms of editors' do
+    let(:editor) { create(:editor, name: 'Abelium', apis: %w[particulier]) }
+
+    before do
+      require Rails.root.join('db/migrate/20261125092100_backfill_editor_use_cases_from_form_uids')
+
+      Editor.where(id: editor.id).update_all("form_uids = ARRAY['api-particulier-abelium', 'api-particulier-abelium-petite-enfance']::varchar[]")
+      ActiveRecord::Migration.suppress_messages { BackfillEditorUseCasesFromFormUids.new.up }
+    end
+
+    it 'keeps every DataPass form of the editor, even before DataPass answers' do
+      expect(editor.reload.form_uids).to eq(%w[api-particulier-abelium api-particulier-abelium-petite-enfance])
+    end
+
+    it 'gives each form its DataPass use case once synchronized' do
+      sync
+
+      expect(editor.use_cases.pluck(:form_uid, :use_case)).to contain_exactly(
+        %w[api-particulier-abelium tarification_municipale_enfance],
+        %w[api-particulier-abelium-petite-enfance tarification_eaje]
+      )
+    end
+
+    it 'pre-fills the use case with the scopes and personal data answers of its form, and the editor name as software' do
+      sync
+
+      expect(editor.use_cases.find_by(form_uid: 'api-particulier-abelium')).to have_attributes(
+        software: 'Abelium',
+        scopes: %w[cnaf_quotient_familial],
+        data_retention_months: 36,
+        data_recipients: 'Agents du service enfance',
+        integration_status: 'production'
+      )
+    end
+  end
 end

@@ -8,6 +8,7 @@ module Datapass
 
     def perform
       Editor::APIS.each { |api| sync(api) }
+      EditorUseCase.awaiting_datapass_completion.includes(:editor).find_each(&:complete_from_datapass_form!)
     end
 
     private

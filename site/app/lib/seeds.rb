@@ -92,7 +92,6 @@ class Seeds
   def create_editor
     @editor = Editor.create!(
       name: 'MGDIS',
-      form_uids: %w[api-entreprise-mgdis],
       apis: %w[entreprise],
       copy_token: true,
       editor_tokens_enabled: true,
@@ -119,9 +118,8 @@ class Seeds
       editor: @editor
     )
 
-    Editor.create!(
+    atexo = Editor.create!(
       name: 'Atexo',
-      form_uids: %w[api-entreprise-atexo],
       apis: %w[entreprise],
       siret: '44090956200033',
       role: 'manages_token',
@@ -133,9 +131,8 @@ class Seeds
       allowed_ips: ['203.0.113.20', '203.0.113.21']
     )
 
-    Editor.create!(
+    aiga = Editor.create!(
       name: 'Aiga',
-      form_uids: %w[api-particulier-aiga api-particulier-aiga-petite-enfance],
       apis: %w[particulier],
       siret: '39825361700045',
       role: 'client_manages_token',
@@ -143,6 +140,22 @@ class Seeds
       domain: 'aiga.fr',
       description: 'Éditeur de logiciels pour la petite enfance et les services périscolaires'
     )
+
+    create_editor_use_cases(@editor, 'api-entreprise-mgdis')
+    create_editor_use_cases(atexo, 'api-entreprise-atexo')
+    create_editor_use_cases(aiga, 'api-particulier-aiga', 'api-particulier-aiga-petite-enfance')
+  end
+
+  def create_editor_use_cases(editor, *form_uids)
+    DatapassForm.where(uid: form_uids).find_each do |form|
+      editor.use_cases.create!(
+        form_uid: form.uid,
+        use_case: form.use_case,
+        software: editor.name,
+        scopes: form.scopes,
+        integration_status: 'production'
+      )
+    end
   end
 
   def create_provider_user

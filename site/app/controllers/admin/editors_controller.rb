@@ -4,6 +4,7 @@ class Admin::EditorsController < AdminController
   def index
     @editors = Editor.for_api(namespace).filtered(params).order(:name).page(params[:page])
     @users_counts = User.where(editor_id: @editors.map(&:id)).group(:editor_id).count
+    @form_counts = EditorUseCase.with_form.where(editor: @editors).group(:editor_id).count
   end
 
   def show; end
@@ -58,7 +59,6 @@ class Admin::EditorsController < AdminController
         :domain,
         :languages,
         :description,
-        :form_uids,
         :allowed_ips,
         :copy_token,
         :editor_tokens_enabled,
@@ -68,7 +68,6 @@ class Admin::EditorsController < AdminController
   end
 
   def normalize_editor_params(whitelisted)
-    whitelisted[:form_uids] = parse_comma_separated(whitelisted[:form_uids])
     whitelisted[:allowed_ips] = parse_comma_separated(whitelisted[:allowed_ips])
     whitelisted[:apis] = (whitelisted[:apis] || []).compact_blank
     whitelisted[:role] = nil if whitelisted[:role].blank?

@@ -47,7 +47,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
   end
 
   describe 'show' do
-    let!(:editor) { create(:editor, :full) }
+    let!(:editor) { create(:editor, :full, form_uids: %w[api-particulier-abelium]) }
     let!(:editor_user) { create(:user, editor:) }
 
     before do
@@ -106,7 +106,6 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       fill_in 'editor_name', with: 'New Editor'
       fill_in 'editor_siret', with: '12345678901234'
       check 'editor_apis_particulier'
-      fill_in 'editor_form_uids', with: 'form1, form2'
 
       expect { click_on "Créer l'éditeur" }.to change(AdminActivity, :count).by(1)
 
@@ -120,8 +119,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(AdminActivity.last.after_attributes).to include(
         'name' => 'New Editor',
         'siret' => '12345678901234',
-        'apis' => %w[particulier],
-        'form_uids' => %w[form1 form2]
+        'apis' => %w[particulier]
       )
     end
 
@@ -148,17 +146,16 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     it 'updates editor fields' do
       visit edit_admin_editor_path(editor)
 
-      fill_in 'editor_form_uids', with: 'new_form1, new_form2'
+      fill_in 'editor_name', with: 'Renamed editor'
       click_on 'Sauvegarder'
 
-      expect(editor.reload.form_uids).to eq(%w[new_form1 new_form2])
+      expect(editor.reload.name).to eq('Renamed editor')
       expect(page).to have_css('.fr-alert.fr-alert--success')
     end
 
     it 'records the update activity' do
       visit edit_admin_editor_path(editor)
 
-      fill_in 'editor_form_uids', with: 'new_form1, new_form2'
       uncheck 'editor_apis_particulier'
 
       expect { click_on 'Sauvegarder' }.to change(AdminActivity, :count).by(1)
@@ -176,16 +173,15 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     it 'emits an editor config change with the settings before and after' do
       visit edit_admin_editor_path(editor)
 
-      fill_in 'editor_form_uids', with: 'new_form1, new_form2'
       check 'editor_copy_token'
 
       expect { click_on 'Sauvegarder' }.to emit_security_event('access.editor_config.changed').with(
         actor: { email: admin.email, role: 'admin' },
         target: { type: 'editor', id: editor.id },
         details: {
-          changed_settings: match_array(%w[form_uids copy_jwt]),
-          before: { 'form_uids' => editor.form_uids, 'copy_jwt' => false },
-          after: { 'form_uids' => %w[new_form1 new_form2], 'copy_jwt' => true }
+          changed_settings: %w[copy_jwt],
+          before: { 'copy_jwt' => false },
+          after: { 'copy_jwt' => true }
         }
       )
     end
