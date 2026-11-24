@@ -398,6 +398,7 @@ fr:
       revocation_form:
         title: "Révoquer « %{name} » ?"
         description: "Le jeton « %{name} » sera révoqué immédiatement et ne pourra pas être réactivé."
+        replace_first: "La révocation ne crée pas de nouveau jeton. Pour éviter une coupure de service, créez d'abord un nouveau jeton et installez-le à la place de celui-ci, puis revenez le révoquer."
         notice: "Les autres contacts de la demande seront prévenus par mail."
         submit: "Révoquer le jeton"
         cancel: "Annuler"

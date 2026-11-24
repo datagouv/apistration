@@ -3,6 +3,10 @@
 
   <p><%= t('.description', name: token.name) %></p>
 
+  <div class="fr-alert fr-alert--warning fr-alert--sm fr-mb-2w">
+    <p><%= t('.replace_first') %></p>
+  </div>
+
   <p class="fr-text--sm"><%= t('.notice') %></p>
 
   <%= render 'shared/panel_form_actions', form:, submit: t('.submit'), cancel: t('.cancel'), cancel_path: authorization_request_path(id: authorization_request.id, jeton: token.id) %>
