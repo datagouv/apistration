@@ -25,6 +25,9 @@ deployed: &deployed
   token_first_use:
     cron: '*/10 * * * *'
     class: 'TokenFirstUseJob'
+  datapass_sync_referential:
+    cron: '15 * * * *'
+    class: 'Datapass::SyncReferentialJob'
 
 datagouv_sync: &datagouv_sync
   datagouv_sync_fiches:

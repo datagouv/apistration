@@ -1,0 +1,18 @@
+fr:
+  datapass_use_cases:
+    tarification_municipale_enfance: Tarification sociale des services municipaux à l’enfance
+    ccas: Aides sociales des CCAS
+    stationnement_residentiel: Tarification du stationnement résidentiel
+    aides_facultatives: Aides facultatives des régions et départements
+    cantines-colleges-lycees-tarification: Tarification des cantines de collèges et lycées
+    tarification_transports: Tarification des transports
+    tarification_eaje: Tarification d’accueil du jeune enfant (EAJE, PSU)
+    gestion_rh_secteur_public: Gestion RH du secteur public
+    inscription_administrative_etudiant: Inscription administrative d’un étudiant
+    socle_de_base: Socle de base DLNUF
+    marches_publics: Marchés publics
+    aides_publiques: Aides publiques
+    subventions_associations: Subventions des associations
+    detection_fraude: Détection de la fraude
+    portail_gru_preremplissage: Portail GRU, pré-remplissage
+    portail_gru_instruction: Portail GRU, pré-remplissage et instruction

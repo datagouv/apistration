@@ -3,6 +3,7 @@ class Seeds
     @user = create_main_user
     @contact = create_contact
 
+    create_datapass_referential
     create_editor
     create_provider_user
     create_api_entreprise_admin
@@ -78,6 +79,14 @@ class Seeds
       first_name: 'Justine',
       last_name: 'Martin'
     )
+  end
+
+  def create_datapass_referential
+    referential = JSON.parse(Rails.root.join('db/seeds/datapass_referential.json').read)
+    synced_at = Time.current
+
+    referential['forms'].each { |form| DatapassForm.create!(form.merge('scopes' => form['data']['scopes'], synced_at:)) }
+    referential['scopes'].each { |scope| DatapassScope.create!(scope.merge(synced_at:)) }
   end
 
   def create_editor
