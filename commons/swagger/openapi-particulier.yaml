@@ -5675,16 +5675,16 @@ paths:
         required: false
       security:
       - jwt_bearer_token: []
-      description: "Composition du foyer au sens de la prestation de revenu de solidarité
-        active (RSA) : bénéficiaires du foyer et personnes à charge. \n L'appel peut
-        être effectué avec l'identité de n'importe quel membre du foyer (allocataire,
-        conjoint, ouvrant droit), pas uniquement de l'allocataire."
+      description: "Composition familiale du foyer RSA d'un allocataire bénéficiaire
+        du revenu de solidarité active, telle que connue par la CAF. \n L'appel peut
+        être effectué avec l'identité de l'allocataire ou celle du conjoint référencé
+        dans le dossier."
       responses:
         '401':
           description: |-
             Non autorisé
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5705,7 +5705,7 @@ paths:
           description: |-
             Accès interdit
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5728,7 +5728,7 @@ paths:
           description: |-
             Trop de requêtes
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5833,9 +5833,9 @@ paths:
                               type: string
                               description: "Qualité du bénéficiaire au sein du foyer
                                 RSA : \n - 'allocataire' : bénéficiaire principal
-                                du RSA ; - 'ouvrant_droit' : personne dont la situation
-                                ouvre droit au RSA sans en être l'allocataire ; -
-                                'conjoint' : conjoint de l'allocataire."
+                                du RSA ; - 'ouvrant_droit' : enfant ou autre personne
+                                à charge de moins de 25 ans ; - 'conjoint' : conjoint
+                                de l'allocataire."
                               example: allocataire
                               enum:
                               - allocataire
@@ -5898,7 +5898,7 @@ paths:
           description: |-
             Absence de droit au RSA
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5935,7 +5935,7 @@ paths:
           description: |-
             Paramètre(s) invalide(s)
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5955,7 +5955,7 @@ paths:
           description: |-
             Erreur du fournisseur
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5980,7 +5980,7 @@ paths:
           description: |-
             Erreur d'intermédiaire
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -6003,7 +6003,7 @@ paths:
           description: |-
             Conflit
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -6027,7 +6027,7 @@ paths:
           description: |-
             Fournisseur de données en maintenance
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -6048,7 +6048,7 @@ paths:
           description: |-
             Mauvaise requête
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -6101,10 +6101,10 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: "Composition du foyer au sens de la prestation de revenu de solidarité
-        active (RSA) : bénéficiaires du foyer et personnes à charge. \n L'appel peut
-        être effectué avec l'identité de n'importe quel membre du foyer (allocataire,
-        conjoint, ouvrant droit), pas uniquement de l'allocataire."
+      description: "Composition familiale du foyer RSA d'un allocataire bénéficiaire
+        du revenu de solidarité active, telle que connue par la CAF. \n L'appel peut
+        être effectué avec l'identité de l'allocataire ou celle du conjoint référencé
+        dans le dossier."
       responses:
         '403':
           description: |-
@@ -6226,9 +6226,9 @@ paths:
                               type: string
                               description: "Qualité du bénéficiaire au sein du foyer
                                 RSA : \n - 'allocataire' : bénéficiaire principal
-                                du RSA ; - 'ouvrant_droit' : personne dont la situation
-                                ouvre droit au RSA sans en être l'allocataire ; -
-                                'conjoint' : conjoint de l'allocataire."
+                                du RSA ; - 'ouvrant_droit' : enfant ou autre personne
+                                à charge de moins de 25 ans ; - 'conjoint' : conjoint
+                                de l'allocataire."
                               example: allocataire
                               enum:
                               - allocataire

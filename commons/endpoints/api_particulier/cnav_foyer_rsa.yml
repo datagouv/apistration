@@ -1,0 +1,83 @@
+---
+fiche:
+  - uid: 'cnav/foyer_rsa'
+    opening: protected
+    path: '/v3/dss/foyer_rsa/identite'
+    controller: 'api_particulier/v3_and_more/cnav/foyer_rsa_with_civility'
+    position: 601
+    perimeter:
+      entity_type_description: |+
+        {:.fr-highlight}
+        > ℹ️ **Couverture actuelle : allocataires CAF uniquement.** L'API renvoie aujourd'hui la composition familiale du foyer RSA des allocataires CAF. Les allocataires MSA seront ajoutés en décembre 2026. D'ici là, aucune donnée n'est renvoyée pour eux.
+
+        ✅ L'API couvre tous les bénéficiaires du revenu de solidarité active (RSA) des allocataires CAF.
+
+        Elle restitue la composition du foyer RSA :
+        - les **bénéficiaires** : allocataire et conjoint ;
+        - les **personnes à charge** au sens du RSA.
+      geographical_scope_description: |+
+        - ✅ France métropolitaine
+        - ✅ Départements et régions d'outre-mer
+        - ✅ Allocataires de nationalité étrangère résidant en France
+        - ❌ Les collectivités d'outre-mer, qui ont un autre système de sécurité sociale, ne sont pas concernées par cette API.
+      updating_rules_description: |+
+        Les données sont **mises à jour en temps réel** et issues des organismes débiteurs, à savoir la CNAF pour les allocataires du régime général.
+    parameters_details:
+      description: |+
+        **L'API est appelable avec l'identité de l'allocataire ou avec celle du conjoint référencé dans le dossier.**
+
+        <p class="fr-badge fr-badge--brown-cafe-creme">Identité pivot</p>
+        **Avec les données d'identité** :
+
+          {:.fr-mb-0}
+          - Nom de famille (nom de naissance)<sup>1</sup>, nom d'usage, prénoms<sup>3</sup>, sexe<sup>4</sup>, date de naissance<sup>2</sup>, code COG du pays de naissance<sup>1</sup>&nbsp;;
+          - Commune de naissance&nbsp;: peut être renseignée de deux façons différentes :
+              - {:.fr-text--sm .fr-mb-0} Option 1 : Code COG de la commune de naissance si le lieu de naissance est en France&nbsp;;
+              - {:.fr-text--sm .fr-mb-0} Option 2 : Nom de la commune de naissance et code du département de naissance. Pour cette option, la date de naissance est obligatoire.
+
+        <span class="fr-text--xs fr-m-0">
+        <sup>1</sup> Obligatoire<br>
+        <sup>2</sup> Obligatoire pour l'option 2 du lieu de naissance.<br>
+        <sup>3</sup> Fournir plusieurs prénoms permet de limiter les risques d'homonymie mais un seul prénom peut fonctionner. Attention, l'usager doit compléter chaque prénom dans un champ distinct.<br>
+        <sup>4</sup> Fortement recommandé pour optimiser l'identification du particulier.
+        </span>
+    data:
+      description: |+
+        Cette API restitue la **composition du foyer RSA** de l'allocataire :
+
+        - **l'identité des bénéficiaires** (au moins un bénéficiaire) : nom de naissance, nom d'usage, prénoms, date de naissance, sexe et qualité du bénéficiaire. La qualité peut prendre les valeurs suivantes :
+          - `allocataire` : responsable du dossier ;
+          - `conjoint` : conjoint référencé au dossier ;
+          - `ouvrant_droit` : enfant ou autre personne à charge de moins de 25 ans ;
+        - **l'identité des personnes à charge** (de zéro à plusieurs) : nom de naissance, nom d'usage, prénoms, date de naissance, sexe. Il s'agit des enfants et autres personnes à charge au sens du RSA, jusqu'à 25 ans. [En savoir plus](#composition-foyer-rsa).
+
+        {:.fr-highlight}
+        > L'API ne restitue ni le montant du RSA, ni la date d'ouverture du droit. Pour savoir si une personne est bénéficiaire du RSA et depuis quand, utilisez l'[API RSA](<%= endpoint_path(uid: 'cnav/revenu_solidarite_active') %>).
+    provider_uids:
+      - 'cnav'
+    keywords:
+      - rsa
+      - revenu de solidarité active
+      - foyer
+      - composition familiale
+      - personnes à charge
+      - allocataire
+      - conjoint
+    call_id:
+      - Identité pivot
+    parameters:
+      - Identité pivot
+    faq:
+      - q: <a name="composition-foyer-rsa"></a> Comment est composé un foyer RSA ?
+        a: |+
+          Le foyer RSA est défini par le Code de l'action sociale et des familles (articles L262-2 et R262-3). Il comprend :
+
+          - **l'allocataire**, c'est-à-dire la personne qui demande le RSA et en est titulaire ;
+          - **son conjoint**, son partenaire de PACS ou son concubin, le cas échéant ;
+          - **les personnes à charge**, à savoir :
+            - les enfants qui ouvrent droit aux prestations familiales ;
+            - les autres enfants et personnes de **moins de 25 ans** à la charge effective et permanente de l'allocataire.
+
+          Une personne de 25 ans ou plus n'est donc pas considérée comme à charge au sens du RSA, même si elle vit sous le même toit. Elle n'apparaîtra pas dans les personnes à charge restituées par l'API.
+
+          Le foyer RSA ne correspond donc pas forcément au foyer fiscal ni au foyer pour les prestations familiales. Un même enfant peut être à charge au sens du RSA sans figurer sur la déclaration de revenus de ses parents, et inversement.
