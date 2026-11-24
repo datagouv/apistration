@@ -5498,7 +5498,6 @@ paths:
       tags:
       - Composition Foyer RSA
       - Revenu de solidarité active
-      - Prochainement
       parameters:
       - name: recipient
         in: query
@@ -6070,7 +6069,6 @@ paths:
       tags:
       - Composition Foyer RSA
       - Revenu de solidarité active
-      - Prochainement
       parameters:
       - name: recipient
         in: query

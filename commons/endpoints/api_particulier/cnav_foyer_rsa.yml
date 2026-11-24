@@ -2,6 +2,7 @@
 fiche:
   - uid: 'cnav/foyer_rsa'
     opening: protected
+    beta: true
     path: '/v3/dss/foyer_rsa/identite'
     controller: 'api_particulier/v3_and_more/cnav/foyer_rsa_with_civility'
     position: 601
