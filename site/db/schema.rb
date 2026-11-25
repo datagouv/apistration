@@ -101,33 +101,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.index ["user_id", "scope"], name: "index_changelog_subscriptions_on_user_id_and_scope_active", unique: true, where: "(disabled_at IS NULL)"
   end
 
-  create_table "datapass_forms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "uid", null: false
-    t.string "api", null: false
-    t.string "use_case"
-    t.string "name"
-    t.text "description"
-    t.string "scopes", default: [], null: false, array: true
-    t.jsonb "data", default: {}, null: false
-    t.datetime "synced_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["api", "use_case"], name: "index_datapass_forms_on_api_and_use_case"
-    t.index ["uid"], name: "index_datapass_forms_on_uid", unique: true
-  end
-
-  create_table "datapass_scopes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "api", null: false
-    t.string "value", null: false
-    t.string "name"
-    t.string "group"
-    t.boolean "deprecated", default: false, null: false
-    t.datetime "synced_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["api", "value"], name: "index_datapass_scopes_on_api_and_value", unique: true
-  end
-
   create_table "editor_contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "editor_id", null: false
     t.string "role", null: false

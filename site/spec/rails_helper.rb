@@ -89,6 +89,7 @@ RSpec.configure do |config|
   config.include HubEEAPIMocks
   config.include SimplifionsMocks
   config.include BrevoAPIMocks
+  config.include DatapassReferentialMocks
 
   config.around(:each, :js) do |example|
     example.run_with_retry retry: example.metadata[:retry] || 3

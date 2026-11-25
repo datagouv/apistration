@@ -15,11 +15,12 @@ class EditorUseCase < ApplicationRecord
   validates :form_uid, uniqueness: true, allow_nil: true
   validate :use_case_in_referential, if: :use_case_changed?
 
+  before_update :mark_as_edited
+
   scope :with_form, -> { where.not(form_uid: nil) }
-  scope :awaiting_datapass_completion, -> { with_form.where(use_case: nil) }
 
   def self.prefill(use_case, key)
-    return use_case if key.blank? || use_case.use_case.present?
+    return use_case.prefill_from_datapass_form if key.blank? || use_case.use_case.present?
 
     use_case.assign_attributes(use_case: key, scopes: DatapassUseCase.find(key)&.default_scopes || [])
     use_case
@@ -34,7 +35,7 @@ class EditorUseCase < ApplicationRecord
   end
 
   def datapass_form
-    DatapassForm.find_by(uid: form_uid) if form_uid
+    DatapassReferential.new(api).form(form_uid) if form_uid && api
   end
 
   def label
@@ -46,25 +47,32 @@ class EditorUseCase < ApplicationRecord
   end
 
   def scope_catalogue
-    DatapassScope.for_api(api).current.order(:group, :name) if api
+    DatapassReferential.new(api).scopes&.reject(&:deprecated) if api
   end
 
-  def complete_from_datapass_form!
-    form = datapass_form
-    return if form&.use_case.nil?
+  def prefill_from_datapass_form
+    form = datapass_form if scopes.empty? && never_edited?
+    return self unless form
 
-    update!(
-      use_case: form.use_case,
-      software: editor.name,
+    assign_attributes(
       scopes: form.scopes,
-      data_retention_months: form.data_retention_months,
-      data_recipients: form.data_recipients
+      data_retention_months: data_retention_months || form.data_retention_months,
+      data_recipients: data_recipients.presence || form.data_recipients
     )
+    self
   end
 
   private
 
+  def mark_as_edited
+    self.updated_at = Time.current
+  end
+
+  def never_edited?
+    persisted? && updated_at == created_at
+  end
+
   def use_case_in_referential
-    errors.add(:use_case, :inclusion) if use_case && !DatapassForm.exists?(use_case:)
+    errors.add(:use_case, :inclusion) if use_case && !DatapassUseCase.find(use_case)
   end
 end

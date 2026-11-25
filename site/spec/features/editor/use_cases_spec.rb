@@ -4,15 +4,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
   let(:quotient_familial_scopes) { %w[cnaf_adresse cnaf_allocataires cnaf_enfants cnaf_quotient_familial] }
 
   before do
-    create(:datapass_form, uid: 'api-particulier-tarification-municipale-enfance', use_case: 'tarification_municipale_enfance', scopes: quotient_familial_scopes)
-    create(:datapass_form, uid: 'api-particulier-abelium', use_case: 'tarification_municipale_enfance', scopes: %w[cnaf_quotient_familial], data: { 'description' => 'Abelium' })
-    create(:datapass_form, uid: 'api-particulier-tarification-eaje', use_case: 'tarification_eaje', scopes: %w[cnav_participation_familiale_eaje_enfants])
-    %w[ccas stationnement_residentiel tarification_transports].each do |use_case|
-      create(:datapass_form, uid: "api-particulier-#{use_case.dasherize}", use_case:, scopes: [])
-    end
-    quotient_familial_scopes.each { |value| create(:datapass_scope, value:, group: 'Quotient familial') }
-    create(:datapass_scope, value: 'cnav_participation_familiale_eaje_enfants', group: 'EAJE')
-
+    stub_datapass_referential
     login_as(user)
   end
 
@@ -56,6 +48,51 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
       data_recipients: 'Service restauration scolaire',
       form_uid: nil
     )
+  end
+
+  it 'keeps the scopes of a use case when DataPass does not answer' do
+    use_case = create(:editor_use_case, editor:, scopes: %w[cnaf_quotient_familial])
+    stub_datapass_unavailable('api_particulier')
+
+    visit edit_editor_use_case_path(use_case)
+    fill_in 'Logiciel', with: 'Cantine Soft 2'
+    click_on 'Enregistrer'
+
+    expect(use_case.reload).to have_attributes(software: 'Cantine Soft 2', scopes: %w[cnaf_quotient_familial])
+  end
+
+  it 'does not keep an unexpected DataPass answer once DataPass answers again' do
+    use_case = create(:editor_use_case, editor:, scopes: %w[cnaf_quotient_familial])
+    stub_datapass_definition('api_particulier', forms: [], definition: { 'scopes' => 'unexpected' })
+
+    visit edit_editor_use_case_path(use_case)
+    expect(page).to have_checked_field('editor_use_case_scopes_cnaf_quotient_familial')
+    expect(page).to have_no_field('editor_use_case_scopes_cnaf_enfants')
+
+    stub_datapass_referential
+    visit edit_editor_use_case_path(use_case)
+    expect(page).to have_unchecked_field('editor_use_case_scopes_cnaf_enfants')
+  end
+
+  it 'does not bring back the scopes of the DataPass form once the editor has unchecked them all' do
+    stub_datapass_referential(particulier_forms: [{ 'uid' => 'api-particulier-abelium', 'data' => { 'scopes' => %w[cnaf_quotient_familial] } }])
+    use_case = create(:editor_use_case, editor:, form_uid: 'api-particulier-abelium', scopes: [])
+
+    visit edit_editor_use_case_path(use_case)
+    uncheck 'editor_use_case_scopes_cnaf_quotient_familial'
+    click_on 'Enregistrer'
+    visit edit_editor_use_case_path(use_case)
+
+    expect(page).to have_unchecked_field('editor_use_case_scopes_cnaf_quotient_familial')
+  end
+
+  it 'pre-fills a use case backfilled from a DataPass form with the scopes of that form' do
+    use_case = create(:editor_use_case, editor:, form_uid: 'api-particulier-abelium', scopes: [])
+
+    visit edit_editor_use_case_path(use_case)
+
+    expect(page).to have_checked_field('editor_use_case_scopes_cnaf_quotient_familial')
+    expect(page).to have_unchecked_field('editor_use_case_scopes_cnaf_enfants')
   end
 
   it 'only shows the use cases of the editor, even when another editor shares its SIRET' do

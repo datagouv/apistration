@@ -1,15 +1,14 @@
 class DatapassUseCase
-  EXCLUDED_KEYS = %w[specific_editeurs].freeze
+  attr_reader :api, :key, :form_uids
 
-  attr_reader :api, :key, :forms
+  def self.all
+    @all ||= YAML.load_file(Rails.root.join('config/datapass_use_cases.yml')).flat_map do |api, use_cases|
+      use_cases.map { |key, form_uids| new(api:, key:, form_uids:) }
+    end
+  end
 
   def self.for_api(api)
-    DatapassForm.for_api(api)
-      .where.not(use_case: [nil, *EXCLUDED_KEYS])
-      .order(:uid)
-      .group_by(&:use_case)
-      .map { |key, forms| new(api:, key:, forms:) }
-      .sort_by(&:label)
+    all.select { |use_case| use_case.api == api }.sort_by(&:label)
   end
 
   def self.for_apis(apis)
@@ -17,31 +16,38 @@ class DatapassUseCase
   end
 
   def self.find(key)
-    forms = DatapassForm.where(use_case: key).order(:uid).to_a
-    new(api: forms.first.api, key:, forms:) if forms.any?
+    all.find { |use_case| use_case.key == key }
   end
 
-  def initialize(api:, key:, forms:)
-    @api = api
-    @key = key
-    @forms = forms
-  end
-
-  def label
-    self.class.label_for(key)
+  def self.for_form(form_uid)
+    all.find { |use_case| use_case.form_uids.include?(form_uid) }
   end
 
   def self.label_for(key)
     I18n.t(key, scope: 'datapass_use_cases', default: key.to_s.tr('_-', ' ').capitalize)
   end
 
-  def default_scopes
-    generic_forms = forms.reject(&:editor_specific?).presence || forms
+  def initialize(api:, key:, form_uids:)
+    @api = api
+    @key = key
+    @form_uids = form_uids
+  end
 
-    generic_forms
-      .map { |form| form.scopes.sort }
-      .tally
-      .max_by { |scopes, count| [count, -scopes.size] }
-      .first
+  def label
+    self.class.label_for(key)
+  end
+
+  def default_scopes
+    most_common_scopes = generic_forms.map { |form| form.scopes.sort }.tally.max_by { |scopes, count| [count, -scopes.size] }
+
+    most_common_scopes ? most_common_scopes.first : []
+  end
+
+  private
+
+  def generic_forms
+    forms = DatapassReferential.new(api).forms.select { |form| form_uids.include?(form.uid) }
+
+    forms.reject(&:editor_specific?).presence || forms
   end
 end

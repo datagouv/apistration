@@ -3,7 +3,6 @@ class Seeds
     @user = create_main_user
     @contact = create_contact
 
-    create_datapass_referential
     create_editor
     create_provider_user
     create_api_entreprise_admin
@@ -81,14 +80,6 @@ class Seeds
     )
   end
 
-  def create_datapass_referential
-    referential = JSON.parse(Rails.root.join('db/seeds/datapass_referential.json').read)
-    synced_at = Time.current
-
-    referential['forms'].each { |form| DatapassForm.create!(form.merge('scopes' => form['data']['scopes'], synced_at:)) }
-    referential['scopes'].each { |scope| DatapassScope.create!(scope.merge(synced_at:)) }
-  end
-
   def create_editor
     @editor = Editor.create!(
       name: 'MGDIS',
@@ -148,12 +139,14 @@ class Seeds
   end
 
   def create_editor_use_cases(editor, *form_uids)
-    DatapassForm.where(uid: form_uids).find_each do |form|
+    form_uids.each do |form_uid|
+      use_case = DatapassUseCase.for_form(form_uid)
+
       editor.use_cases.create!(
-        form_uid: form.uid,
-        use_case: form.use_case,
+        form_uid:,
+        use_case: use_case.key,
         software: editor.name,
-        scopes: form.scopes,
+        scopes: DatapassReferential.new(use_case.api).form(form_uid).scopes,
         integration_status: 'production'
       )
     end

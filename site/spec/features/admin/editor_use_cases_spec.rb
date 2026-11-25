@@ -3,8 +3,7 @@ RSpec.describe 'Admin: editor use cases', app: :api_particulier do
   let(:editor) { create(:editor, apis: %w[particulier]) }
 
   before do
-    create(:datapass_form, uid: 'api-particulier-tarification-municipale-enfance', use_case: 'tarification_municipale_enfance', scopes: %w[cnaf_quotient_familial])
-    create(:datapass_scope, value: 'cnaf_quotient_familial')
+    stub_datapass_referential
     login_as(admin)
   end
 
