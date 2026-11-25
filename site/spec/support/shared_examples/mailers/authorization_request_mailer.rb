@@ -82,7 +82,7 @@ RSpec.shared_examples 'an authorization request mailer' do
       before { create(:editor_delegation, editor:, authorization_request:) }
 
       it 'says the editor handles everything, without asking for a token' do
-        expect(mail.subject).to end_with('✅ Demande validée ')
+        expect(mail.subject).to end_with('✅ Habilitation validée ')
         expect(mail.text_part.decoded).to include("déléguée à l'éditeur Marchés Online")
         expect(mail.text_part.decoded).not_to include('créer votre jeton')
       end

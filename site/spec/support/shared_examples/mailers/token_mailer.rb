@@ -62,7 +62,7 @@ RSpec.shared_examples 'a token mailer' do |api_name, prolong_path_method|
     subject(:mailer) { described_class.with(token:, recipients:, comment:).banned }
 
     let(:recipients) { ['user@example.com', 'other@example.com'] }
-    let(:banned_subject) { "Le jeton « #{token.name} » de la demande n°#{authorization_request.external_id} sera révoqué le #{token.blacklisted_at.strftime('%d/%m/%Y')}" }
+    let(:banned_subject) { "Le jeton « #{token.name} » de l'habilitation DataPass n°#{authorization_request.external_id} sera révoqué le #{token.blacklisted_at.strftime('%d/%m/%Y')}" }
 
     before { token.update!(blacklisted_at: 1.month.from_now) }
 

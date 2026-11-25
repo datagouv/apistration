@@ -49,7 +49,7 @@ module AuthorizationRequestMailersCommons
   end
 
   def validation_button_label
-    return 'Voir la demande' if @update || @delegated_editor || @token_generating_editor
+    return "Voir l'habilitation" if @update || @delegated_editor || @token_generating_editor
     return 'Voir mon jeton' if @token_created
 
     'Créer mon jeton'
