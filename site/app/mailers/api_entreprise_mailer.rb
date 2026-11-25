@@ -8,7 +8,7 @@ class APIEntrepriseMailer < ApplicationMailer
   end
 
   def extract_host
-    ActionMailer::Base.default_url_options[:host] = valid_host('api_entreprise')
+    ActionMailer::Base.default_url_options[:host] = SiteHost.for('api_entreprise')
   end
 
   def namespace
