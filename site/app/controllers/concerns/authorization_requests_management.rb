@@ -1,13 +1,9 @@
 module AuthorizationRequestsManagement
   extend ActiveSupport::Concern
+  include AuthorizationRequestPage
 
   def show
-    @authorization_request = extract_authorization_request
-    @main_token = @authorization_request.token&.decorate
-    @other_tokens = @authorization_request.tokens.where.not(id: @main_token&.id).decorate
-    load_delegations_data
-
-    render 'shared/authorization_requests/show'
+    render_authorization_request_page(extract_authorization_request)
   rescue ActiveRecord::RecordNotFound
     error_message(title: t('concerns.authorization_requests_management.show.error.title'))
 
@@ -22,17 +18,12 @@ module AuthorizationRequestsManagement
       .viewable_by_users
       .order(
         first_submitted_at: :desc
-      ).includes(:active_token, :organization)
+      ).includes(:user_authorization_request_roles, :organization)
 
     render 'shared/authorization_requests/index'
   end
 
   private
-
-  def load_delegations_data
-    @active_delegations = @authorization_request.editor_delegations.active.includes(:editor)
-    @available_editors = @authorization_request.available_editors_for_delegation
-  end
 
   def extract_authorization_request
     current_user

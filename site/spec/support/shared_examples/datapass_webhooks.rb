@@ -19,7 +19,7 @@ RSpec.shared_examples 'datapass webhooks' do |version|
     expect { subject }.to change(AuthorizationRequest, :count).by(1)
   end
 
-  it 'creates a token' do
+  it 'creates a token on the first validation' do
     expect { subject }.to change(Token, :count).by(1)
   end
 

@@ -160,36 +160,6 @@ RSpec.describe AuthorizationRequest do
     end
   end
 
-  describe '.prolong_token_expecting_updates' do
-    subject { authorization_request.prolong_token_expecting_updates? }
-
-    let!(:authorization_request) { create(:authorization_request) }
-
-    context 'when there is no token' do
-      it { is_expected.to be_falsey }
-    end
-
-    context 'when there is a token' do
-      let!(:token) { create(:token, authorization_request:) }
-
-      context 'when there is no last prolong token wizard' do
-        it { is_expected.to be_falsey }
-      end
-
-      context 'when the last prolong token wizard requires update' do
-        let!(:prolong_token_wizard) { create(:prolong_token_wizard, :requires_update, token:) }
-
-        it { is_expected.to be_truthy }
-      end
-
-      context 'when the last prolong token wizard does not require update' do
-        let(:last_prolong_token_wizard) { create(:prolong_token_wizard, token:, status: 'owner') }
-
-        it { is_expected.to be_falsey }
-      end
-    end
-  end
-
   describe 'scopes' do
     let!(:authorization_request) { create(:authorization_request) }
     let!(:archived_authorization_request) { create(:authorization_request, status: 'archived', api: 'particulier') }
@@ -249,6 +219,26 @@ RSpec.describe AuthorizationRequest do
       expect { revoke! }.to change { authorization_request.token.reload.blacklisted_at }.from(nil)
     end
 
+    context 'with several active tokens' do
+      let!(:other_token) { create(:token, authorization_request:) }
+
+      it 'blacklists every token of the authorization request' do
+        revoke!
+
+        expect(authorization_request.tokens.reload).to all(be_blacklisted)
+      end
+    end
+
+    context 'with an expired token' do
+      let!(:expired_token) { create(:token, authorization_request:, exp: 1.day.ago.to_i) }
+
+      it 'blacklists it too, so it can never be extended again' do
+        revoke!
+
+        expect(expired_token.reload.blacklisted_at).to be_present
+      end
+    end
+
     it 'revokes the active delegations' do
       expect { revoke! }.to change { delegation.reload.revoked_at }.from(nil)
     end
@@ -266,12 +256,12 @@ RSpec.describe AuthorizationRequest do
     subject { authorization_request.available_editors_for_delegation }
 
     let(:authorization_request) { create(:authorization_request) }
-    let!(:delegable_editor) { create(:editor, :delegable) }
-    let!(:non_delegable_editor) { create(:editor) }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready) }
+    let!(:editor_not_ready) { create(:editor) }
 
     context 'without any delegation' do
-      it 'returns all delegable editors' do
-        expect(subject).to contain_exactly(delegable_editor)
+      it 'returns every editor of the API, ready for editor tokens or not' do
+        expect(subject).to contain_exactly(delegable_editor, editor_not_ready)
       end
     end
 
@@ -279,7 +269,7 @@ RSpec.describe AuthorizationRequest do
       before { create(:editor_delegation, editor: delegable_editor, authorization_request:) }
 
       it 'excludes the already delegated editor' do
-        expect(subject).to be_empty
+        expect(subject).to contain_exactly(editor_not_ready)
       end
     end
 
@@ -287,7 +277,7 @@ RSpec.describe AuthorizationRequest do
       before { create(:editor_delegation, editor: delegable_editor, authorization_request:, revoked_at: 1.day.ago) }
 
       it 'includes the editor again' do
-        expect(subject).to contain_exactly(delegable_editor)
+        expect(subject).to contain_exactly(delegable_editor, editor_not_ready)
       end
     end
   end

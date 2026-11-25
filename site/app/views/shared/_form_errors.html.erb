@@ -1,0 +1,6 @@
+<% if record.errors.any? %>
+  <div class="fr-alert fr-alert--error fr-alert--sm fr-mb-2w" role="alert">
+    <h4 class="fr-alert__title"><%= title %></h4>
+    <p><%= record.errors.full_messages.to_sentence %></p>
+  </div>
+<% end %>

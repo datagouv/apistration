@@ -1,0 +1,37 @@
+Bonjour,
+
+<% if @update -%>
+La mise à jour de votre habilitation DataPass n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » a été validée. Vos jetons restent valables.
+
+Voir l'habilitation : <%= @authorization_request_url %>
+<% elsif @delegated_editor -%>
+Votre habilitation DataPass n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée. Elle est déléguée à l'éditeur <%= @delegated_editor.name %>, qui appelle l'API pour votre compte avec ses propres accès : vous n'avez rien d'autre à faire.
+
+Voir l'habilitation : <%= @authorization_request_url %>
+<% elsif @token_generating_editor && @token_created -%>
+Votre habilitation DataPass n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée et un jeton d'accès a été créé. L'éditeur <%= @token_generating_editor.name %> le récupère depuis son espace éditeur : vous n'avez rien d'autre à faire.
+
+Voir l'habilitation : <%= @authorization_request_url %>
+<% elsif @token_generating_editor -%>
+Votre habilitation DataPass n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée. L'éditeur <%= @token_generating_editor.name %> génère et récupère le jeton depuis son espace éditeur : vous n'avez rien d'autre à faire.
+
+Voir l'habilitation : <%= @authorization_request_url %>
+<% elsif @token_created -%>
+Votre habilitation DataPass n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée et un jeton d'accès a été créé automatiquement. Il est disponible sur la page de l'habilitation, où vous pouvez aussi en créer d'autres.
+<% if @client_software_editor -%>
+
+Saisissez-le dans le logiciel <%= @client_software_editor.name %>, ou transmettez-le à votre prestataire avec le bouton « Transmettre ».
+<% end -%>
+
+Voir mon jeton : <%= @authorization_request_url %>
+<% else -%>
+Votre habilitation DataPass n°<%= @authorization_request.external_id %> « <%= @authorization_request.intitule %> » à l'<%= api_full_name %> a été validée. Vous pouvez créer votre jeton d'accès depuis la page de l'habilitation.
+<% if @client_software_editor -%>
+
+Une fois le jeton créé, saisissez-le dans le logiciel <%= @client_software_editor.name %>, ou transmettez-le à votre prestataire avec le bouton « Transmettre ».
+<% end -%>
+
+Créer mon jeton : <%= @authorization_request_url %>
+<% end -%>
+
+L'équipe <%= api_full_name %>

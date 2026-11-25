@@ -5,7 +5,7 @@ class Editor::TrackConfigChange < ApplicationOrganizer
     'form_uids' => 'form_uids',
     'allowed_ips' => 'allowed_ips',
     'copy_token' => 'copy_jwt',
-    'editor_tokens_enabled' => 'editor_jwt_enabled'
+    'editor_tokens_ready' => 'editor_jwt_enabled'
   }.freeze
 
   tracks_security_event 'access.editor_config.changed',

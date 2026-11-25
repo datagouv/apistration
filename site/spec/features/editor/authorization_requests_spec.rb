@@ -101,6 +101,18 @@ RSpec.describe 'Editor: authorization requests', app: :api_entreprise do
             }
           )
         end
+
+        it 'emits the reveal of the token the page copies, the most recent active one, none for a demande without active token' do
+          authorization_request = valid_authorization_requests.second
+          recent_token = create(:token, authorization_request:, name: 'Récent', created_at: 1.minute.from_now)
+          create(:authorization_request, :validated, api: 'entreprise', demarche: 'form1', tokens: [create(:token, :blacklisted)])
+
+          events = SecurityEventRecorder.new.record { visit editor_authorization_requests_path }
+          reveal = events.find { |event| event[:event] == 'token.api_token.revealed' }
+
+          expect(reveal[:details][:jtis]).to include(recent_token.id)
+          expect(reveal[:details][:count]).to eq(2)
+        end
       end
     end
 

@@ -1,0 +1,15 @@
+.token-card {
+  height: 100%;
+}
+
+.token-card .fr-card__footer .fr-btns-group {
+  margin-bottom: 0;
+}
+
+.token-manager__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}

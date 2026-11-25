@@ -63,7 +63,7 @@ events:
   token.api_token.banned:
     criticality: notable
     services: [site]
-    description: Un admin bannit un token. blacklisted_at est la date à partir de laquelle siade le refuse, un mois plus tard par défaut pour laisser le temps de basculer sur un nouveau token. datapass_id est l'id de la demande DataPass
+    description: Un admin bannit un token, sans en créer de nouveau. blacklisted_at est la date à partir de laquelle siade le refuse, un mois plus tard par défaut pour laisser aux contacts le temps de créer un nouveau token et d'y basculer. datapass_id est l'id de la demande DataPass
     actor_types: [admin]
     target_type: token
     details: [blacklisted_at, datapass_id]
@@ -72,8 +72,8 @@ events:
   token.api_token.created:
     criticality: notable
     services: [site]
-    description: Création d'un token d'habilitation. source datapass_webhook à la validation d'une demande DataPass (acteur datapass), admin pour une création manuelle, admin_ban pour le token de remplacement d'un ban. datapass_id est l'id de la demande DataPass, à corréler avec integration.datapass_webhook.received
-    actor_types: [admin, datapass]
+    description: Création d'un token d'habilitation. source datapass_webhook à la validation d'une demande sans token actif, sauf si elle est déléguée à un éditeur prêt, qui appelle l'API avec ses tokens éditeurs (acteur datapass), contact quand un contact de la demande le crée depuis son espace, editor quand un membre d'un éditeur qui copie les tokens le génère pour une demande sans token actif, admin pour une création manuelle. datapass_id est l'id de la demande DataPass, à corréler avec integration.datapass_webhook.received
+    actor_types: [user, editor, admin, datapass]
     target_type: token
     details: [source, datapass_id, expires_at, scopes]
     since: 2026-11
@@ -90,8 +90,8 @@ events:
   token.api_token.prolonged:
     criticality: notable
     services: [site]
-    description: Prolongation d'un token existant, sans nouveau secret. source applicant quand le demandeur confirme sa demande sur le site, datapass_revalidation quand DataPass revalide la demande (acteur datapass). expires_at est la nouvelle expiration, datapass_id l'id de la demande DataPass
-    actor_types: [user, editor, admin, datapass]
+    description: Prolongation d'un token existant, sans nouveau secret. source contact quand un contact de la demande prolonge depuis son espace un token qui expire dans moins de 90 jours. expires_at est la nouvelle expiration, datapass_id l'id de la demande DataPass
+    actor_types: [user, editor, admin]
     target_type: token
     details: [source, datapass_id, expires_at]
     since: 2026-11
@@ -99,7 +99,7 @@ events:
   token.api_token.scopes_changed:
     criticality: critical
     services: [site]
-    description: Les scopes d'un token existant changent lors d'une revalidation DataPass, sans nouveau secret. added_scopes vide signifie une réduction de droits. previous_scopes et scopes sont les listes complètes avant et après, datapass_id l'id de la demande DataPass
+    description: Les scopes d'un token actif changent quand DataPass valide ou revalide sa demande, sans nouveau secret, un event par token actif de la demande. added_scopes vide signifie une réduction de droits. previous_scopes et scopes sont les listes complètes avant et après, datapass_id l'id de la demande DataPass
     actor_types: [datapass]
     target_type: token
     details: [datapass_id, previous_scopes, scopes, added_scopes, removed_scopes]
@@ -224,8 +224,8 @@ events:
   token.api_token.revoked:
     criticality: notable
     services: [site]
-    description: DataPass révoque une habilitation via le webhook, son token est refusé par siade dès lors (blacklisted_at). datapass_id est l'id de la demande DataPass. Un appel réussi après cette date signale une révocation inopérante
-    actor_types: [datapass]
+    description: Un token est refusé par siade dès lors (blacklisted_at). Un contact de la demande le révoque depuis son espace, ou DataPass révoque l'habilitation via le webhook (acteur datapass), un event par token. datapass_id est l'id de la demande DataPass. Un appel réussi après cette date signale une révocation inopérante
+    actor_types: [user, editor, admin, datapass]
     target_type: token
     details: [datapass_id, blacklisted_at]
     since: 2026-11

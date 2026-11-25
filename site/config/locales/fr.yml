@@ -18,6 +18,8 @@ fr:
       create:
         success:
           title: Délégation ajoutée
+        error:
+          closed: Cette habilitation n'est pas ou plus validée, elle ne peut pas être déléguée.
       destroy:
         success:
           title: Délégation révoquée
@@ -200,7 +202,6 @@ fr:
           title: "Formulaire QF"
           description: "Collectez facilement le quotient familial CAF ou MSA de vos usagers"
     links:
-      to_datapass_html: "N<sup>o</sup>%{external_id}"
       not_on_datapass_yet: pas encore sur DataPass
     transfer_tokens:
       create:
@@ -221,79 +222,6 @@ fr:
               placeholder: jean@dupont.fr
             cta: Envoyer le lien d'accès au jeton
             confirm: Êtes-vous sûr de vouloir transférer votre jeton à cette adresse ?
-    wizard:
-      next_step: "Étape suivante :"
-    prolong_token_wizard:
-      display_cta: Prolonger le jeton
-      requires_update_cta: Terminer la mise à jour pour prolonger votre jeton
-      updates_requested_cta: Demande de mise à jour de l'habilitation en attente d'instruction
-      header:
-        title: Prolonger le jeton
-        description: Votre jeton expire le %{humanize_date}. Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions indiquées dans votre habilitation %{link_to_datapass} ont évolué.
-          Veuillez répondre aux questions suivantes, ce formulaire vous engage en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU d'%{api_name}</a>
-      steps:
-        owner: Responsable de la demande
-        project_purpose: Vérification du projet
-        contacts: Vérification des contacts
-        summary: Bilan et confirmation
-      prolonged:
-        title: Votre jeton a été prolongé jusqu'au %{humanized_date}
-        description: Merci ! Suite à vos réponses, les conditions de votre habilitation à l'%{api_name} n'ayant pas évolué, votre jeton a été prolongé de 18 mois.
-        link:
-          authorization_request: Revenir à votre demande d'habilitation
-      summary:
-        prolonged:
-          owner_not_in_charge: "Suite aux réponses indiquées, vous déclarez que le contact principal a changé. Bien que cela ne soit pas bloquant pour
-            poursuivre la prolongation de votre jeton, l'équipe support vous contactera rapidement afin de procéder au transfert de vos habilitations. Vous pouvez démarrer cette démarche en autonomie
-            via votre <a href='https://%{api}.api.gouv.fr/compte'>espace personnel</a>."
-          description: Suite aux réponses indiquées, vous déclarez qu'aucune des informations indiquées dans votre habilitation n<sup>o</sup>%{external_id} n'a évolué.
-          cgu: ⚠️  Vos réponses vous engagent en regard des <a href="https://%{api}.api.gouv.fr/cgu/">CGU</a>
-          finished: Confirmer
-        requires_update:
-          description: "Suite aux réponses indiquées, vous déclarez que des changements ont eu lieu au niveau&nbsp;:"
-          owner: du contact principal
-          project_purpose: de la nature du projet (titre et description)
-          contact_metier: du contact métier
-          contact_technique: du contact technique
-          finished: Confirmer et apporter les modifications
-        previous: Précédent
-      contact:
-        first_name: Prénom :&nbsp;
-        last_name: Nom :&nbsp;
-        email: E-mail :&nbsp;
-        contact_metier:
-          no_contact: Vous n'avez aucun contact métier renseigné
-        contact_technique:
-          no_contact: Vous n'avez aucun contact métier renseigné
-      contacts:
-        contact_metier:
-          label: "Contact métier :"
-        contact_technique:
-          label: "Contact technique :"
-        subtitle: "Vérifier si les contacts sont bien les mêmes et que leurs coordonnées n'ont pas changé :"
-        radio:
-          contact_technique: Valide
-          contact_metier: Valide
-          change_contact_technique: A changé
-          change_contact_metier: A changé
-      project_purpose:
-        label: "Cette habilitation a été attribuée pour la finalité suivante :"
-        no_description: Vous n'avez pas renseigné de description pour cette habilitation.
-        radio:
-          project_purpose: Oui, le projet bénéficiant de cette habilitation a toujours la même finalité.
-          change_project_purpose: Non, le projet a changé.
-      owner:
-        label: Êtes-vous toujours en charge de la demande %{link_to_datapass} ?
-        radio:
-          still_in_charge: Oui, je suis toujours en charge
-          will_change_soon: Oui, je suis toujours en charge mais pourrais passer la main d'ici quelques mois
-          not_in_charge: Non, je ne suis plus en charge de cette habilitation %{api}
-        not_in_charge_alert:
-          text: Si vous n'êtes plus en charge de cette habilitation, vous devez la transférer à une autre personne de votre organisation depuis le site de <a href="https://%{api}.v2.datapass.api.gouv.fr" target="_blank" rel="noopener noreferrer">DataPass</a>.<br/><br/>Cette démarche prend 2 minutes. La nouvelle personne en charge devra alors effectuer la prolongation du jeton.
-      build:
-        wizard_buttons:
-          previous: Précédent
-          next: Suivant
     users:
       user:
         links:
@@ -321,15 +249,8 @@ fr:
           title: Durée de validité du lien
           description: Cette page contient votre jeton d'accès à %{api_name} et ne doit en aucun cas être partagée avec un tiers non habilité ! Ce lien expirera dans %{expiration_time}.
     tokens:
-      renew:
-        title: Demander l'accès à d'autres API
-        description: |+
-          Vous souhaitez demander de nouvelles API pour le même cas d'usage ? Cette fonctionnalité vous permet de <strong>demander une mise à jour de votre habilitation, dans laquelle vous pourrez cocher de nouvelles API</strong>.
-          <br>
-          <strong>En cliquant sur "Continuer" vous serez transféré sur le site DataPass</strong>.
-          <br>
-          Pour en savoir plus, consultez <a href='https://%{api}.api.gouv.fr/faq#comment-elargir-le-perimetre-des-api-disponibles-avec-mon-jeton-obtenir-de-nouvelles-donnees' target='_blank' rel='noopener noreferrer'>cette rubrique de notre FAQ</a>.
-        continue: ⬜ Continuer
+      reveal_token_button:
+        cta: Afficher le jeton
       stats:
         title: "Cas d'usage du jeton : %{title}"
         tabs:
@@ -337,7 +258,7 @@ fr:
           last_30_hours: 30 dernières heures
           last_8_days: 8 derniers jours
         links:
-          user_tokens: Retour à l'habilitation N<sup>o</sup>%{external_id}
+          user_tokens: Retour à l'habilitation DataPass n<sup>o</sup>%{external_id}
         details:
           internal_id: "Identifiant technique du jeton : %{id}"
         requests_details:
@@ -361,20 +282,6 @@ fr:
           internal_error: Erreur interne d'API Entreprise
           provider_error: Erreur du fournisseur de données
           other: Autre
-      cannot_show:
-        title: Utiliser le jeton
-        description_html: "En tant que contact métier, <strong>vous n'avez pas l'autorisation d'utiliser la clé d'accès.</strong>
-          Si le jeton arrive à expiration ou nécessite une action, veuillez contacter le demandeur et le contact technique de cette habilitation :"
-        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
-        contact_technique_html: "<strong>Contact technique</strong> : %{contact_technique}"
-        authorization_request_link: "<strong>Lien de l'habilitation à transmettre :</strong>"
-      ask_for_prolongation:
-        title: Relancer le demandeur
-        description_html: "Malgré nos nombreuses relances, %{demandeur} n'a pas prolongé le jeton ID : %{token_id},
-          celui-ci expirera dans %{remaining_time}. Seul le demandeur peut prolonger le jeton.
-          <strong>Écrivez-lui en lui transmettant le lien vers le formulaire de prolongation :</strong>"
-        demandeur_html: "<strong>demandeur</strong> : %{demandeur}"
-        ask_for_token_prolongation_description: "<strong>Lien du questionnaire de prolongation</strong> :"
       show:
         title: Utiliser le jeton
         warning: "Vous ne devez <strong> jamais copier-coller un token
@@ -399,20 +306,6 @@ fr:
         modal:
           transfer:
             display_cta: 'Transmettre le jeton en sécurité'
-      prolong:
-        title: Prolonger le jeton
-        description:
-          future_html: "Votre jeton expire dans %{remaining_time}.
-            Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
-            indiquées dans votre habilitation %{link_to_datapass}
-            ont évolué."
-          past_html: "Votre jeton a expiré il y a %{remaining_time}.
-            Avant de prolonger votre jeton, nous avons besoin de savoir si les conditions
-            indiquées dans votre habilitation %{link_to_datapass}
-            ont évolué."
-        warning_description: "Pour prolonger votre jeton, veuillez compléter le formulaire suivant :"
-        warning: ⚠️ Vos réponses au formulaire <strong>vous engagent</strong> en regard des CGU d'%{api_name}.
-        cta: Compléter le formulaire de prolongation
       detail_short:
         no_token:
           title: Aucun jeton actif
@@ -466,36 +359,67 @@ fr:
             expired: ☠️  Expiré
             active: 🔑 Actif
             new_token: 🔑 Nouveau jeton à utiliser
+    token_extensions:
+      form:
+        title: "Prolonger le jeton « %{name} »"
+        description: "Ce jeton expire le %{date}. Le jeton déjà installé dans votre logiciel reste valable : vous n'avez rien à y changer."
+        check_authorization_request: "Avant de prolonger, vérifiez que votre habilitation est toujours à jour (cadre d'utilisation, contacts, données) :"
+        datapass_link: "voir l'habilitation n°%{external_id} sur DataPass"
+        lifetime:
+          label: "Nouvelle durée de validité, à partir d'aujourd'hui"
+          hint: "Le jeton expirera au bout de cette durée comptée depuis aujourd'hui, et non depuis sa date d'expiration actuelle (%{date}). Une durée qui raccourcirait sa validité est refusée."
+        submit: "Prolonger le jeton"
+        cancel: "Annuler"
+      create:
+        success:
+          title: "Le jeton « %{name} » est prolongé jusqu'au %{date}"
+        error:
+          title: "Le jeton « %{name} » n'a pas pu être prolongé"
+    self_service_tokens:
+      form:
+        title: "Nouveau jeton"
+        name:
+          label: "Nom du jeton"
+          hint: "Pour le reconnaître parmi les autres jetons de l'habilitation, par exemple « Production » ou « Recette »."
+        lifetime:
+          label: "Durée de validité"
+          hint: "18 mois maximum. Un jeton qui expire dans moins de 90 jours peut être prolongé ; vous pouvez aussi en créer un nouveau puis révoquer l'ancien."
+          option:
+            one: "%{count} mois"
+            other: "%{count} mois"
+        notice: "Le jeton porte tous les droits de l'habilitation. Les autres contacts de l'habilitation sont prévenus par mail."
+        submit: "Créer le jeton"
+        cancel: "Annuler"
+      create:
+        success:
+          title: "Le jeton « %{name} » a été créé"
+        error:
+          title: "Le jeton n'a pas pu être créé"
+      revocation_form:
+        title: "Révoquer « %{name} » ?"
+        description: "Le jeton « %{name} » sera révoqué immédiatement et ne pourra pas être réactivé."
+        replace_first: "La révocation ne crée pas de nouveau jeton. Pour éviter une coupure de service, créez d'abord un nouveau jeton et installez-le à la place de celui-ci, puis revenez le révoquer."
+        cache_notice: "Par effet de cache, des appels avec ce jeton peuvent encore être acceptés pendant 1 heure au plus."
+        notice: "Les autres contacts de l'habilitation seront prévenus par mail."
+        submit: "Révoquer le jeton"
+        cancel: "Annuler"
+      revoke:
+        success:
+          title: "Le jeton « %{name} » a été révoqué"
+        error:
+          title: "Le jeton « %{name} » n'a pas pu être révoqué : il n'est plus actif"
     authorization_requests:
       index:
-        modal:
-          show:
-            display_cta_replace_legacy: "Remplacer votre ancien jeton avec le nouveau jeton"
-            display_cta_new_token: "Utiliser le nouveau jeton"
-            display_cta_replace: "Remplacer le jeton banni par le nouveau jeton"
         no_authorization_requests: "Vous n'avez aucune habilitation"
-        title_html: "Habilitations %{api_label} (%{count})"
+        title_html: "Habilitations %{api_label}"
         entreprise_html: API&nbsp;Entreprise
         particulier_html: API&nbsp;Particulier
-        no_action: Aucune action attendue
         links:
-          to_datapass_html: "Datapass n°%{external_id}"
+          to_datapass_html: "DataPass n°%{external_id}"
           profile: Vos informations
-        table:
-          head:
-            authorization_request: "Habilitation"
-            organization: Organisation
-            token: Jeton principal
-            actions: Actions attendues
-            detail: Page détaillée
       breadcrumb:
         index: Habilitations
-        current_page: Habilitation n°%{datapass_id}
-      summary:
-        access: Droits d'accès
-        active_tokens: Jetons
-        contacts: Contacts
-        delegations: Délégations
+        current_page: DataPass n°%{datapass_id}
       status:
         color:
           refused: pink-tuile
@@ -506,47 +430,27 @@ fr:
           draft: yellow-canari
           changes_requested: yellow-canari
         label:
-          refused: 📃 Demande refusée
+          refused: 📃 Habilitation refusée
           revoked: 📃 Habilitation révoquée
           archived: 📃 Habilitation archivée
           validated: 📃 Habilitation active
           submitted: 🕐 Habilitation en cours d'instruction
           draft: ✏️ Mise à jour de l'habilitation en cours
           changes_requested: ✏️ Modifications demandées sur l'habilitation
+      contacts:
+        demandeur_html: "<strong>Demandeur :</strong>"
+        contact_technique_html: "<strong>Contact technique :</strong>"
+        contact_metier_html: "<strong>Contact métier :</strong>"
+        hint: "Ces contacts ont accès à cet espace. Pour en changer, mettez à jour l'habilitation sur DataPass."
       header:
-        delivered_at: "Délivré le : %{humanized_date}"
+        organization_html: "<strong>Organisation :</strong>"
+        request_number_html: "<strong>DataPass n° :</strong> %{external_id}"
+        delivered_at_html: "<strong>Délivré le :</strong> %{humanized_date}"
       show:
-        access: "Vos droits d'accès&nbsp;:"
-        modal:
-          renew:
-            display_cta: Demander l'accès à d'autres API
-          show:
-            display_cta: "Voir le jeton"
-          ask_for_prolongation:
-            display_cta: Relancer le demandeur pour prolonger le jeton
-        main_token:
-          title: "Jeton principal&nbsp;:"
-          none: Aucun jeton n'est associé à cette habilitation.
-        other_tokens:
-          title: Voir les autres jetons
-          table:
-            identifier: "Identifiant du jeton"
-            status: "Statut"
-            created_at: "Date de délivrance"
-            exp: "Date d'expiration"
-            see_more: "Voir plus"
-        contacts:
-          title: "Contacts associés&nbsp;:"
-          demandeur:
-            title: "Demandeur&nbsp;:"
-          contact_technique:
-            title: "Contact technique&nbsp;:"
-          contact_metier:
-            title: "Contact metier&nbsp;:"
-          its_me: "✋ C'est moi !"
+        datapass_cta: "Voir sur DataPass n°%{external_id}"
         delegations:
           title: "Délégations&nbsp;:"
-          description: "Vous pouvez déléguer votre habilitation à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
+          description: "Vous pouvez déléguer la gestion technique de votre habilitation à un éditeur de logiciel. Il appellera l'API pour votre compte, avec ses propres accès et dans le cadre de votre habilitation : vous restez responsable de l'usage des données. Choisissez uniquement l'éditeur avec lequel vous avez un contrat ; en cas d'erreur, retirez la délégation, l'accès de l'éditeur est coupé aussitôt."
           editor: Éditeur
           status: Statut
           actions: Actions
@@ -555,6 +459,57 @@ fr:
           add_label: Ajouter une délégation
           select_prompt: Sélectionner un éditeur
           add_submit: Ajouter
+      token_manager:
+        title: "Jetons"
+        count:
+          one: "(%{count} actif sur %{max})"
+          other: "(%{count} actifs sur %{max})"
+        create: "Créer un jeton"
+        none: "Aucun jeton actif : créez-en un pour appeler l'API."
+        limit_reached: "Cette habilitation a atteint le plafond de %{max} jetons actifs. Révoquez un jeton pour en créer un nouveau."
+        creation_closed:
+          revoked: "Cette habilitation a été révoquée sur DataPass : ses jetons sont révoqués et il n'est plus possible d'en créer."
+          archived: "Cette habilitation est archivée : il n'est plus possible d'y créer de jeton."
+          default: "Il n'est pas possible de créer de jeton sur cette habilitation tant qu'elle n'est pas validée."
+      token_modal_denial:
+        title: "Cette action n'est plus possible"
+        description: "Le jeton ou l'habilitation a changé depuis l'ouverture de la page, par exemple dans un autre onglet. Rechargez la page pour voir leur état actuel."
+        reload: "Recharger la page"
+      inactive_tokens:
+        title:
+          one: "Jeton révoqué ou expiré (%{count})"
+          other: "Jetons révoqués ou expirés (%{count})"
+        columns:
+          name: Nom
+          status: Statut
+          end_date: Date
+          stats: Statistiques
+      token_card:
+        created_by: "Créé le %{date} par %{name}"
+        created: "Créé le %{date}"
+        transfer: "Transmettre"
+        stats: "Statistiques"
+        revoke: "Révoquer"
+        extend: "Prolonger"
+        end_date:
+          active: "Expire le %{date}"
+          expiring_soon: "Expire le %{date}"
+          revoked_later: "Révocation programmée le %{date}"
+          revoked: "Révoqué le %{date}"
+          expired: "Expiré le %{date}"
+        status:
+          color:
+            active: success
+            expiring_soon: warning
+            revoked_later: warning
+            revoked: error
+            expired: info
+          label:
+            active: Actif
+            expiring_soon: Expire bientôt
+            revoked_later: Révocation programmée
+            revoked: Révoqué
+            expired: Expiré
     pages:
       redoc:
         title: "Swagger 📟"
@@ -640,6 +595,16 @@ fr:
       button: "S'abonner"
 
   editor:
+    authorization_requests:
+      index:
+        generate_token: Générer un jeton
+    authorization_request_tokens:
+      create:
+        success:
+          title: "Jeton généré pour la demande « %{intitule} »"
+        error:
+          title: "Le jeton n'a pas pu être généré"
+          not_allowed: "Cette demande a déjà un jeton actif, ou votre espace ne permet pas de générer de jeton."
     tokens:
       index:
         title: Jetons éditeurs

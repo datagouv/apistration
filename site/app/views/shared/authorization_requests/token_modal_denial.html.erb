@@ -1,0 +1,9 @@
+<turbo-frame id="main-modal-content">
+  <div class="fr-modal__content fr-pb-4w" id="token_modal_denial">
+    <div class="fr-alert fr-alert--error fr-mb-3w">
+      <h2 class="fr-alert__title"><%= t('.title') %></h2>
+      <p><%= t('.description') %></p>
+    </div>
+    <%= link_to t('.reload'), back_path, class: 'fr-btn', data: { turbo_frame: '_top' } %>
+  </div>
+</turbo-frame>

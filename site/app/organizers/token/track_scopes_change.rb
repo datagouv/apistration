@@ -2,9 +2,9 @@ class Token::TrackScopesChange < ApplicationOrganizer
   include SecurityEvent::Tracking
 
   tracks_security_event 'token.api_token.scopes_changed',
-    target: :prolonged_token,
-    computed_details: ->(context) { scopes_change(context.prolonged_token) },
-    only_if: ->(context) { scopes_changed?(context.prolonged_token) }
+    target: :token,
+    computed_details: ->(context) { scopes_change(context.token) },
+    only_if: ->(context) { scopes_changed?(context.token) }
 
   organize SecurityEvent::Track
 

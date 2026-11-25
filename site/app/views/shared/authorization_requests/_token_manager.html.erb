@@ -1,0 +1,42 @@
+<% active_tokens, inactive_tokens = tokens.partition(&:active?) %>
+<section id="authorization_request_tokens" class="fr-mb-6w" aria-labelledby="authorization_request_tokens_title">
+  <% can_create = authorization_request.eligible_for_token_creation? && !authorization_request.active_tokens_limit_reached? && policy(authorization_request).create_token? %>
+  <div class="token-manager__header fr-mb-3w">
+    <h2 id="authorization_request_tokens_title" class="fr-h3 fr-mb-0">
+      <%= t('.title') %>
+      <span class="fr-text--md fr-text-mention--grey"><%= t('.count', count: active_tokens.size, max: AuthorizationRequest::MAX_ACTIVE_TOKENS) %></span>
+    </h2>
+    <% if can_create %>
+      <%= link_to t('.create'),
+        new_authorization_request_token_path(authorization_request_id: authorization_request.id),
+        id: :new_token_link,
+        class: 'fr-btn fr-btn--icon-left fr-icon-add-line',
+        aria: { controls: 'main-modal' },
+        data: { fr_opened: false, turbo_frame: 'main-modal-content', turbo_prefetch: false } %>
+    <% end %>
+  </div>
+
+  <% if !authorization_request.eligible_for_token_creation? %>
+    <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+      <p><%= t(".creation_closed.#{authorization_request.status}", default: t('.creation_closed.default')) %></p>
+    </div>
+  <% elsif authorization_request.active_tokens_limit_reached? %>
+    <div id="active_tokens_limit_reached" class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+      <p><%= t('.limit_reached', max: AuthorizationRequest::MAX_ACTIVE_TOKENS) %></p>
+    </div>
+  <% elsif active_tokens.empty? %>
+    <p id="habilitation_no_token"><%= t('.none') %></p>
+  <% end %>
+
+  <% if active_tokens.any? %>
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <% active_tokens.each do |token| %>
+        <%= render 'shared/authorization_requests/token_card', token: %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if inactive_tokens.any? %>
+    <%= render 'shared/authorization_requests/inactive_tokens', tokens: inactive_tokens %>
+  <% end %>
+</section>

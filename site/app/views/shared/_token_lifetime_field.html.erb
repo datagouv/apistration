@@ -1,0 +1,7 @@
+<div class="fr-select-group">
+  <%= render 'shared/label_with_hint', form:, field: :lifetime_in_months, label:, hint: %>
+  <%= form.select :lifetime_in_months,
+    Token::LIFETIMES_IN_MONTHS.map { |months| [t('shared.self_service_tokens.form.lifetime.option', count: months), months] },
+    { selected: form.object.lifetime_in_months },
+    class: 'fr-select' %>
+</div>

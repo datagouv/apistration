@@ -23,7 +23,7 @@ class Editor < ApplicationRecord
   validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
   validate :apis_included_in_list
 
-  scope :delegable, -> { where(editor_tokens_enabled: true) }
+  scope :editor_tokens_ready, -> { where(editor_tokens_ready: true) }
   scope :for_api, ->(api) { where('ARRAY[:api]::varchar[] <@ apis', api:) }
   scope :for_demarche, ->(demarche) { where(':demarche = ANY(form_uids)', demarche:) }
   scope :search_by_name_or_siret, lambda { |query|

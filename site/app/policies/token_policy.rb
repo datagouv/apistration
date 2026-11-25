@@ -1,37 +1,32 @@
 class TokenPolicy < ApplicationPolicy
   alias token record
 
-  def ask_for_prolongation?
-    !demandeur? && day_left < 90
-  end
-
   def show?
-    demandeur? || contact_technique?
+    contact?
   end
 
-  def prolong?
-    demandeur? && day_left < 90 && !token.blacklisted?
+  def revoke?
+    contact? && token.active?
+  end
+
+  def transfer?
+    contact? && token.active?
+  end
+
+  def extend?
+    contact? &&
+      token.active? &&
+      token.exp <= Token::EXTENSION_WINDOW.from_now.to_i &&
+      authorization_request.eligible_for_token_creation?
   end
 
   private
 
-  def demandeur?
-    authorization_request.demandeur == user
-  end
-
-  def contact_technique?
-    authorization_request.contact_technique == user
-  end
-
-  def contact_metier?
-    authorization_request.contact_metier == user
+  def contact?
+    authorization_request.users.include?(user)
   end
 
   def authorization_request
     @authorization_request ||= token.authorization_request
-  end
-
-  def day_left
-    (token.end_timestamp - Time.zone.now.to_i) / 1.day
   end
 end

@@ -61,7 +61,7 @@ class Admin::EditorsController < AdminController
         :form_uids,
         :allowed_ips,
         :copy_token,
-        :editor_tokens_enabled,
+        :editor_tokens_ready,
         { apis: [] }
       ]
     ).tap { |whitelisted| normalize_editor_params(whitelisted) }

@@ -2,6 +2,7 @@ class Seeds
   def perform
     @user = create_main_user
     @contact = create_contact
+    @contact_metier = create_contact_metier
 
     create_editor
     create_provider_user
@@ -21,8 +22,6 @@ class Seeds
     raise 'Not in production!' if Rails.env.production?
 
     load_all_models!
-
-    ProlongTokenWizard.destroy_all
 
     ActiveRecord::Base.connection.transaction do
       MagicLink.delete_all
@@ -44,14 +43,13 @@ class Seeds
   def create_data_for_api_entreprise
     @scopes_entreprise = create_scopes('entreprise')
 
-    token = create_api_entreprise_token_valid
-
-    another_token = token.dup
-    another_token.save!
+    create_api_entreprise_token_valid
+    create_api_entreprise_recette_token
 
     create_api_entreprise_token_blacklisted
     create_api_entreprise_token_expired
     create_api_entreprise_authorization_refused
+    create_api_entreprise_contact_technique_only
   end
 
   def create_data_for_api_particulier
@@ -80,13 +78,21 @@ class Seeds
     )
   end
 
+  def create_contact_metier
+    create_user(
+      email: 'contact_metier@yopmail.com',
+      first_name: 'Camille',
+      last_name: 'Bernard'
+    )
+  end
+
   def create_editor
     @editor = Editor.create!(
       name: 'MGDIS',
       form_uids: %w[api-entreprise-mgdis],
       apis: %w[entreprise],
       copy_token: true,
-      editor_tokens_enabled: true,
+      editor_tokens_ready: true,
       siret: '32816124500027',
       role: 'manages_token',
       contact_email: 'contact-mgdis@yopmail.com',
@@ -183,11 +189,13 @@ class Seeds
     create_token(
       %w[open_data unites_legales_etablissements_insee attestation_sociale_urssaf attestation_fiscale_dgfip],
       'entreprise',
-      token_params: { id: '00000000-0000-0000-0000-000000000000' },
+      token_params: { id: '00000000-0000-0000-0000-000000000000', name: 'Production', creator: @user },
       demandeur: @user,
       contact_technique: @contact,
+      contact_metier: @contact_metier,
       authorization_request_params: {
         intitule: 'Mairie de Lyon 2',
+        description: 'Récupération automatique des informations légales et financières des entreprises pour l\'instruction des demandes de subventions par les agents habilités.',
         external_id: 102,
         status: :validated,
         validated_at: 2.weeks.ago,
@@ -195,6 +203,19 @@ class Seeds
         demarche: 'api-entreprise-mgdis',
         siret: '12000101100010'
       }
+    )
+  end
+
+  def create_api_entreprise_recette_token
+    authorization_request = AuthorizationRequest.find_by!(external_id: 102)
+
+    authorization_request.tokens.create!(
+      Token.default_create_params.merge(
+        name: 'Recette',
+        creator: @contact,
+        exp: 20.days.from_now.to_i,
+        scopes: authorization_request.scopes
+      )
     )
   end
 
@@ -224,6 +245,7 @@ class Seeds
       demandeur: @user,
       authorization_request_params: {
         intitule: 'Mairie de Paris',
+        description: 'Récupération automatique des pièces justificatives des entreprises candidates dans le cadre de la passation des marchés publics.',
         external_id: 104,
         status: :validated,
         validated_at: 1.week.ago,
@@ -241,6 +263,7 @@ class Seeds
       demandeur: @user,
       authorization_request_params: {
         intitule: 'Mairie de Montpellier',
+        description: 'Préremplissage des informations des entreprises et associations pour les démarches en ligne des usagers de la collectivité.',
         external_id: 105,
         status: :validated,
         api: 'entreprise',
@@ -257,6 +280,7 @@ class Seeds
       authorization_request: create_authorization_request(
         api: 'entreprise',
         intitule: 'Mairie de Bruges',
+        description: 'Accès aux données ouvertes permettant aux usagers de pré-remplir les informations liées à leur entreprise.',
         status: :refused,
         external_id: 106,
         first_submitted_at: 2.years.ago,
@@ -264,6 +288,23 @@ class Seeds
         siret: '21330075900015'
       ),
       role: 'demandeur'
+    )
+  end
+
+  def create_api_entreprise_contact_technique_only
+    create_token(
+      @scopes_entreprise.sample(3),
+      'entreprise',
+      demandeur: @contact,
+      contact_technique: @user,
+      authorization_request_params: {
+        intitule: 'Mairie de Nantes',
+        description: 'Contrôle de la validité du SIRET et récupération des informations des entreprises candidates aux marchés publics.',
+        external_id: 107,
+        status: :validated,
+        validated_at: 1.month.ago,
+        first_submitted_at: 1.month.ago
+      }
     )
   end
 
@@ -276,6 +317,7 @@ class Seeds
       contact_technique: @contact,
       authorization_request_params: {
         intitule: 'Mairie de Bordeaux',
+        description: 'Gestion de la tarification des services périscolaires et de restauration scolaire sur la base du quotient familial par des agents habilités.',
         external_id: 201,
         status: :validated,
         validated_at: 2.weeks.ago,
@@ -392,7 +434,7 @@ class Seeds
       { name: 'user_updated', admin:, namespace: 'entreprise', entity: @user,
         before_attributes: { 'provider_uids' => [] }, after_attributes: { 'provider_uids' => %w[insee] }, created_at: 30.hours.ago },
       { name: 'editor_updated', admin:, namespace: 'entreprise', entity: @editor,
-        before_attributes: { 'editor_tokens_enabled' => false }, after_attributes: { 'editor_tokens_enabled' => true }, created_at: 26.hours.ago },
+        before_attributes: { 'editor_tokens_ready' => false }, after_attributes: { 'editor_tokens_ready' => true }, created_at: 26.hours.ago },
       { name: 'token_banned', admin:, namespace: 'entreprise', entity: token,
         before_attributes: { 'blacklisted_at' => nil },
         after_attributes: { 'blacklisted_at' => 1.month.from_now, 'comment' => 'Jeton compromis', 'generate_new_token' => true, 'new_token_id' => Token.where.not(id: token&.id).first&.id }, created_at: 20.hours.ago },

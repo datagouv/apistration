@@ -1,0 +1,21 @@
+<div class="fr-table <%= local_assigns[:classes] %>">
+  <div class="fr-table__wrapper">
+    <div class="fr-table__container">
+      <div class="fr-table__content">
+        <table>
+          <caption class="<%= local_assigns[:caption_classes] %>"><%= caption %></caption>
+          <thead>
+            <tr>
+              <% headers.each do |header| %>
+                <th scope="col"><%= header %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <%= yield %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

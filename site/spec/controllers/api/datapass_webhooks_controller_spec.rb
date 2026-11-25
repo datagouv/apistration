@@ -84,6 +84,12 @@ RSpec.describe API::DatapassWebhooksController do
           actor: { email: nil, role: 'datapass' }
         )
       end
+
+      it 'answers with the id of the created token' do
+        subject
+
+        expect(response.parsed_body['token_id']).to eq(Token.sole.id)
+      end
     end
 
     context 'with a valid hub signature' do
@@ -179,7 +185,6 @@ RSpec.describe API::DatapassWebhooksController do
 
     describe 'happy path, on validation' do
       let(:event) { 'approve' }
-      let(:token_id) { 'token id' }
       let(:success) { true }
 
       before do
@@ -187,7 +192,7 @@ RSpec.describe API::DatapassWebhooksController do
 
         allow(DatapassWebhook::APIParticulier).to receive(:call).and_return(
           OpenStruct.new(
-            token_id:,
+            token_id: 'token id',
             success?: true
           )
         )
@@ -205,7 +210,7 @@ RSpec.describe API::DatapassWebhooksController do
         it 'renders a json with a token id' do
           subject
 
-          expect(response.parsed_body['token_id']).to eq(token_id)
+          expect(response.parsed_body['token_id']).to eq('token id')
         end
       end
     end

@@ -1,4 +1,6 @@
 class AuthorizationRequest < ApplicationRecord
+  MAX_ACTIVE_TOKENS = 5
+
   belongs_to :organization,
     primary_key: :siret,
     foreign_key: :siret,
@@ -27,6 +29,12 @@ class AuthorizationRequest < ApplicationRecord
     foreign_key: 'authorization_request_model_id',
     dependent: :destroy
 
+  has_one :latest_active_token, -> { active.order(created_at: :desc) },
+    class_name: 'Token',
+    inverse_of: :authorization_request,
+    foreign_key: 'authorization_request_model_id',
+    dependent: nil
+
   has_one :security_settings,
     class_name: 'AuthorizationRequestSecuritySettings',
     dependent: :destroy
@@ -37,7 +45,7 @@ class AuthorizationRequest < ApplicationRecord
     through: :editor_delegations
 
   def available_editors_for_delegation
-    Editor.delegable.for_api(api).where.not(id: editor_delegations.active.select(:editor_id))
+    Editor.for_api(api).where.not(id: editor_delegations.active.select(:editor_id))
   end
 
   validates :external_id, uniqueness: true, allow_blank: true
@@ -66,7 +74,7 @@ class AuthorizationRequest < ApplicationRecord
   scope :archived, -> { where(status: 'archived') }
   scope :eligible_for_token_creation, -> { where.not(validated_at: nil).where.not(status: %w[archived revoked]) }
   scope :for_api, ->(api) { where(api:) }
-  scope :viewable_by_users, -> { where('status in (?) or validated_at is not null', %w[archived revoked validated]) }
+  scope :viewable_by_users, -> { where('(status in (?) or validated_at is not null) and status is distinct from ?', %w[archived revoked validated], 'refused') }
 
   def token
     active_token || most_recent_token
@@ -114,26 +122,30 @@ class AuthorizationRequest < ApplicationRecord
   end
 
   def archive!
-    transaction do
+    with_lock do
       update!(status: 'archived')
 
       revoke_editor_delegations!
     end
   end
 
+  def eligible_for_token_creation?
+    validated_at.present? && %w[archived revoked].exclude?(status)
+  end
+
+  def active_tokens_limit_reached?
+    tokens.active.count >= MAX_ACTIVE_TOKENS
+  end
+
   def revoke!
-    transaction do
-      token&.update!(blacklisted_at: Time.zone.now)
+    with_lock do
+      revoked_tokens = tokens.not_blacklisted.to_a.each(&:revoke!)
 
       update!(status: 'revoked')
 
       revoke_editor_delegations!
+      revoked_tokens
     end
-  end
-
-  def prolong_token_expecting_updates?
-    token&.last_prolong_token_wizard.present? &&
-      token.last_prolong_token_wizard.requires_update?
   end
 
   private

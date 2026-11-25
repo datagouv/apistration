@@ -27,12 +27,6 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
     expect(subject.authorization_request.api).to eq('particulier')
   end
 
-  it 'creates token for API Particulier' do
-    subject
-
-    expect(Token.last.api).to eq('particulier')
-  end
-
   describe 'Mailjet adding contacts' do
     it 'adds contacts to Particulier mailjet list' do
       expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
@@ -44,8 +38,59 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
     end
   end
 
-  it 'does not schedule any authorization request email' do
-    expect { subject }.not_to have_enqueued_job(ScheduleAuthorizationRequestEmailJob)
+  it 'creates a token carrying the scopes of the demande' do
+    expect(subject.token.scopes).to eq(['cnaf_quotient_familial'])
+    expect(subject.token.api).to eq('particulier')
+  end
+
+  it 'emits the creation of the token by DataPass' do
+    expect { subject }.to emit_security_event('token.api_token.created').with(
+      target: { type: 'token', id: kind_of(String) },
+      details: hash_including(source: 'datapass_webhook', scopes: ['cnaf_quotient_familial'])
+    )
+  end
+
+  it 'schedules only the token available email, to every contact' do
+    expect { subject }.to have_enqueued_job(ScheduleAuthorizationRequestEmailJob).exactly(:once).with(
+      anything,
+      anything,
+      'jeton_disponible',
+      hash_including(to: match_array(%w[applicant@gouv.fr tech@gouv.fr]))
+    )
+  end
+
+  context 'when the approval is replayed on a demande that already has its token' do
+    before { described_class.call(datapass_webhook_params.deep_dup) }
+
+    it 'creates no other token' do
+      expect { subject }.not_to(change(Token, :count))
+    end
+
+    it 'emits no token creation' do
+      expect { subject }.not_to emit_security_event('token.api_token.created')
+    end
+
+    it 'schedules no email' do
+      expect { subject }.not_to have_enqueued_job(ScheduleAuthorizationRequestEmailJob)
+    end
+  end
+
+  context 'when DataPass replays a first validation whose token could not be created' do
+    before do
+      datapass_webhook_params['data']['state'] = 'validated'
+      allow(ScheduleAuthorizationRequestEmailJob).to receive(:perform_later).and_raise(ActiveRecord::ConnectionTimeoutError)
+      begin
+        described_class.call(datapass_webhook_params.deep_dup)
+      rescue ActiveRecord::ConnectionTimeoutError
+        nil
+      end
+      allow(ScheduleAuthorizationRequestEmailJob).to receive(:perform_later).and_call_original
+    end
+
+    it 'creates the token and schedules its email on the replay' do
+      expect { subject }.to change(Token, :count).by(1)
+        .and have_enqueued_job(ScheduleAuthorizationRequestEmailJob).with(anything, anything, 'jeton_disponible', anything)
+    end
   end
 
   it 'does not schedule a formulaire qf resources job' do

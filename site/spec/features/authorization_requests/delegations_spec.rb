@@ -9,12 +9,27 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
   end
 
   context 'when delegable editors exist' do
-    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready, name: 'UMAD Corp') }
 
     it 'displays the delegations section' do
       visit authorization_request_path(authorization_request)
 
       expect(page).to have_css('#habilitation_delegations')
+    end
+
+    context 'when the demande has been revoked' do
+      before { authorization_request.revoke! }
+
+      it 'neither offers nor accepts a new delegation' do
+        visit authorization_request_path(authorization_request)
+
+        expect(page).to have_css('h1', text: authorization_request.intitule)
+        expect(page).to have_no_css('#habilitation_delegations')
+
+        page.driver.post authorization_request_delegations_path(authorization_request), editor_id: delegable_editor.id
+
+        expect(authorization_request.editor_delegations.active).to be_empty
+      end
     end
 
     it 'allows adding a delegation' do
@@ -41,7 +56,7 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
       it 'allows revoking a delegation' do
         visit authorization_request_path(authorization_request)
 
-        click_on 'Révoquer'
+        within('#habilitation_delegations') { click_on 'Révoquer' }
 
         expect(page).to have_css('.fr-alert--success', text: 'Délégation révoquée')
         expect(delegation.reload.revoked_at).to be_present
@@ -60,14 +75,14 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
     it 'does not display the delegations section' do
       visit authorization_request_path(authorization_request)
 
-      expect(page).to have_css('#habilitation_contacts_infos')
+      expect(page).to have_css('h1', text: authorization_request.intitule)
       expect(page).to have_no_css('#habilitation_delegations')
     end
   end
 
   context 'when a delegable editor only serves API Particulier' do
-    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
-    let!(:particulier_editor) { create(:editor, :delegable, name: 'Particulier Corp', apis: %w[particulier]) }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready, name: 'UMAD Corp') }
+    let!(:particulier_editor) { create(:editor, :editor_tokens_ready, name: 'Particulier Corp', apis: %w[particulier]) }
 
     it 'does not propose it for an API Entreprise authorization request' do
       visit authorization_request_path(authorization_request)
@@ -79,8 +94,8 @@ RSpec.describe 'Authorization requests: delegations', app: :api_entreprise do
 
   describe 'on API Particulier', app: :api_particulier do
     let(:authorization_request) { create(:authorization_request, :validated, api: 'particulier') }
-    let!(:delegable_editor) { create(:editor, :delegable, name: 'UMAD Corp') }
-    let!(:entreprise_editor) { create(:editor, :delegable, name: 'Entreprise Corp', apis: %w[entreprise]) }
+    let!(:delegable_editor) { create(:editor, :editor_tokens_ready, name: 'UMAD Corp') }
+    let!(:entreprise_editor) { create(:editor, :editor_tokens_ready, name: 'Entreprise Corp', apis: %w[entreprise]) }
 
     it 'does not propose an editor which only serves API Entreprise' do
       visit authorization_request_path(authorization_request)

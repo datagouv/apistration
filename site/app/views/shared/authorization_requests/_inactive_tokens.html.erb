@@ -1,0 +1,24 @@
+<section class="fr-accordion fr-mt-4w" id="inactive_tokens">
+  <h3 class="fr-accordion__title">
+    <button type="button" class="fr-accordion__btn" aria-expanded="false" aria-controls="inactive_tokens_content">
+      <%= t('.title', count: tokens.size) %>
+    </button>
+  </h3>
+  <div class="fr-collapse" id="inactive_tokens_content">
+    <%= render layout: 'shared/dsfr_table', locals: {
+      classes: 'fr-table--sm fr-mb-0',
+      caption_classes: 'fr-sr-only',
+      caption: t('.title', count: tokens.size),
+      headers: %w(name status end_date stats).map { |column| t(".columns.#{column}") }
+    } do %>
+      <% tokens.each do |token| %>
+        <tr id="<%= dom_id(token) %>">
+          <td><%= token.name %></td>
+          <td><%= render 'shared/authorization_requests/token_status_badge', token: %></td>
+          <td><%= friendly_date_from_timestamp(token.card_end_timestamp) %></td>
+          <td><%= link_to t('shared.authorization_requests.token_card.stats'), token_stats_path(id: token.id), id: dom_id(token, :stats_link), class: 'fr-link fr-text--sm' %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </div>
+</section>

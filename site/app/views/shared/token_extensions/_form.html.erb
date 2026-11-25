@@ -1,0 +1,23 @@
+<%= form_with model: form_token, url: token_extend_path(id: token.id), method: :post, id: dom_id(token, :extension), data: { turbo_frame: '_top' } do |form| %>
+  <h2 class="fr-h4"><%= t('.title', name: token.name) %></h2>
+
+  <% if error %>
+    <div class="fr-alert fr-alert--error fr-alert--sm fr-mb-2w">
+      <h3 class="fr-alert__title"><%= t('shared.token_extensions.create.error.title', name: token.name) %></h3>
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <p><%= t('.description', date: friendly_format_from_timestamp(token.exp)) %></p>
+
+  <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
+    <p>
+      <%= t('.check_authorization_request') %>
+      <%= external_link_to t('.datapass_link', external_id: authorization_request.external_id), datapass_authorization_request_url(authorization_request), class: 'fr-link' %>
+    </p>
+  </div>
+
+  <%= render 'shared/token_lifetime_field', form:, label: t('.lifetime.label'), hint: t('.lifetime.hint', date: friendly_format_from_timestamp(token.exp)) %>
+
+  <%= render('shared/panel_form_actions', form:, submit: t('.submit'), cancel: t('.cancel'), cancel_path: authorization_request_path(id: authorization_request.id), modal:) %>
+<% end %>

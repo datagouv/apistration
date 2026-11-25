@@ -42,6 +42,18 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
       )
     end
 
+    context 'when the demande has several tokens' do
+      let(:other_token) { create(:token) }
+      let(:already_revoked_token) { create(:token, blacklisted_at: 1.day.ago) }
+      let(:authorization_request) { create(:authorization_request, tokens: [token, other_token, already_revoked_token]) }
+
+      it 'emits a revocation for each token it revokes, none for a token revoked before' do
+        events = SecurityEventRecorder.new.record { subject }.select { |event| event[:event] == 'token.api_token.revoked' }
+
+        expect(events.map { |event| event[:target][:id] }).to contain_exactly(token.id, other_token.id)
+      end
+    end
+
     it 'emits the end of each active delegation of the authorization request' do
       delegation = create(:editor_delegation, authorization_request:)
 
@@ -64,6 +76,17 @@ RSpec.describe DatapassWebhook::RevokeCurrentToken, type: :interactor do
       expect {
         subject
       }.to change { AuthorizationRequest.where(status: 'revoked').count }
+    end
+
+    context 'when the demande has no token yet' do
+      let(:authorization_request) { create(:authorization_request, status: 'validated', validated_at: 1.day.ago) }
+
+      it 'revokes the demande, so that no token can be created on it' do
+        subject
+
+        expect(authorization_request.reload.status).to eq('revoked')
+        expect(authorization_request).not_to be_eligible_for_token_creation
+      end
     end
   end
 end
