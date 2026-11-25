@@ -5,6 +5,6 @@ class Admin::EditorTokensController < AdminController
     Admin::EditorTokens::Create.call(editor: @editor, admin: true_user, namespace:)
 
     success_message(title: 'Jeton éditeur créé avec succès')
-    redirect_to admin_editor_path(@editor, onglet: 'technical')
+    redirect_to admin_editor_path(@editor, onglet: 'general')
   end
 end

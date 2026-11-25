@@ -87,10 +87,10 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     it 'does not let the editor tamper with its allowed IPs nor its token settings' do
       expect {
         page.driver.submit :patch, editor_settings_path(onglet: 'security'), editor: { deployment_type: 'on_premise', allowed_ips: '9.9.9.9' }
-        page.driver.submit :patch, editor_settings_path(onglet: 'technical'), editor: { languages: 'Go', copy_token: '1', editor_tokens_enabled: '1' }
+        page.driver.submit :patch, editor_settings_path(onglet: 'general'), editor: { description: 'Logiciel enfance', copy_token: '1', editor_tokens_enabled: '1' }
       }.not_to(change { editor.reload.slice(:allowed_ips, :copy_token, :editor_tokens_enabled) })
 
-      expect(editor).to have_attributes(deployment_type: 'on_premise', languages: 'Go')
+      expect(editor).to have_attributes(deployment_type: 'on_premise', description: 'Logiciel enfance')
     end
   end
 

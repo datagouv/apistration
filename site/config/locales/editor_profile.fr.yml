@@ -4,7 +4,6 @@ fr:
       general: Infos générales
       contacts: Contacts
       security: Sécurité & hébergement
-      technical: Infos techniques
       use_cases: Cas d'usage
   editor_use_cases:
     unknown_use_case: Cas d'usage à préciser

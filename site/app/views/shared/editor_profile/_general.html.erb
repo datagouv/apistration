@@ -28,6 +28,11 @@
         <%= editor_profile_select(f, :role, 'Rôle', Editor.role_options) %>
       </div>
     </div>
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">
+      <% { copy_token: 'Peut copier les jetons de ses clients', editor_tokens_enabled: 'Jetons éditeurs activés' }.each do |attribute, label| %>
+        <div class="fr-col-12 fr-col-md-6"><%= editor_profile_checkbox(f, attribute, label) %></div>
+      <% end %>
+    </div>
   <% else %>
     <div class="fr-grid-row fr-grid-row--gutters">
       <div class="fr-col-12 fr-col-md-6">
@@ -56,4 +61,8 @@
 <% else %>
   <p class="fr-text--sm fr-text-mention--grey">Aucune donnée INSEE connue pour ce SIRET.</p>
 <% end %>
+<% end %>
+
+<% if admin && editor.persisted? %>
+  <%= render 'admin/editors/editor_tokens', editor: %>
 <% end %>

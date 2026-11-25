@@ -196,9 +196,9 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
 
     it 'emits an editor config change with the settings before and after' do
-      within_tab('technical') { check 'editor_copy_token' }
+      within_tab('general') { check 'editor_copy_token' }
 
-      expect { within_tab('technical') { click_on 'Enregistrer' } }.to emit_security_event('access.editor_config.changed').with(
+      expect { within_tab('general') { click_on 'Enregistrer' } }.to emit_security_event('access.editor_config.changed').with(
         actor: { email: admin.email, role: 'admin' },
         target: { type: 'editor', id: editor.id },
         details: {
@@ -216,7 +216,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
 
     it 'allows toggling editor_tokens_enabled' do
-      within_tab('technical') do
+      within_tab('general') do
         check 'editor_editor_tokens_enabled'
         click_on 'Enregistrer'
       end
@@ -267,7 +267,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
 
     it 'counts the distinct IPs calling with the habilitations of the editor over the last 7 days' do
-      visit admin_editor_path(editor, onglet: 'technical')
+      visit admin_editor_path(editor, onglet: 'security')
 
       expect(page).to have_text('3 adresses IP distinctes sur 7 jours')
     end
@@ -276,7 +276,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       editor_token = create(:editor_token, editor:)
       create(:access_log, token: nil, token_id: editor_token.id, ip: '192.0.2.7', timestamp: 1.day.ago)
 
-      visit admin_editor_path(editor, onglet: 'technical')
+      visit admin_editor_path(editor, onglet: 'security')
 
       expect(page).to have_text('4 adresses IP distinctes sur 7 jours')
     end
