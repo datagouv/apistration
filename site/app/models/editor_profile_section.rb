@@ -11,7 +11,7 @@ EditorProfileSection = Data.define(:key, :editor_attributes, :admin_attributes) 
   def self.security_attributes
     [
       :deployment_type, :hosting_provider, :hosting_country,
-      :two_factor_status, :two_factor_deadline, { two_factor_methods: [] }
+      :two_factor_status, :two_factor_deadline, :credentials_management, { two_factor_methods: [], certifications: [] }
     ]
   end
 

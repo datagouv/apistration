@@ -178,6 +178,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.string "two_factor_methods", default: [], null: false, array: true
     t.string "hosting_provider"
     t.string "hosting_country"
+    t.string "certifications", default: [], null: false, array: true
+    t.text "credentials_management"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

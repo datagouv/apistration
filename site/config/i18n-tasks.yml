@@ -118,6 +118,7 @@ ignore_unused:
   - 'editors.roles.*'
   - 'editors.deployment_types.*'
   - 'editors.two_factor_{statuses,methods}.*'
+  - 'editors.certifications.*'
   - 'editor_contacts.roles.*'
   - 'editor_profile.sections.*'
   - 'datapass_use_cases.*'

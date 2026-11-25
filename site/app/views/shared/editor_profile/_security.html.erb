@@ -25,6 +25,16 @@
     <%= editor_profile_field(f, :text_field, :hosting_country, "Pays d'hébergement", hint: 'Par exemple France') %>
   <% end %>
 
+  <h2 class="fr-h4 fr-mt-6w">Certifications</h2>
+
+  <%= editor_profile_choices(f, :certifications, 'Certifications de votre logiciel ou de son hébergement', Editor::CERTIFICATIONS.map { |certification| [t(certification, scope: 'editors.certifications'), certification] }, multiple: true) %>
+
+  <h2 class="fr-h4 fr-mt-6w">Gestion des jetons</h2>
+
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_area, :credentials_management, 'Comment gérez-vous les jetons d’accès à nos API ?', hint: 'Jetons de vos clients comme jeton éditeur : où ils sont stockés (coffre-fort de secrets, base chiffrée, variables d’environnement, fichier de configuration…), qui y a accès, comment ils sont renouvelés, et ce que vous faites si l’un d’eux est compromis', rows: 5) %>
+  <% end %>
+
   <%= render 'shared/editor_profile/security_contacts', editor:, admin: %>
 
   <h2 class="fr-h4 fr-mt-6w">Adresses IP autorisées</h2>

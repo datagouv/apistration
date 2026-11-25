@@ -4,6 +4,7 @@ class Editor < ApplicationRecord
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
   TWO_FACTOR_STATUSES = %w[yes in_progress no].freeze
   TWO_FACTOR_METHODS = %w[totp sms email_otp hardware_key other].freeze
+  CERTIFICATIONS = %w[iso_27001 hds secnumcloud iso_9001 other].freeze
 
   self.ignored_columns += %w[form_uids contact_email contact_phone setup_instructions]
 
@@ -22,7 +23,7 @@ class Editor < ApplicationRecord
     dependent: :destroy
 
   normalizes :deployment_type, :two_factor_status, :hosting_provider, :hosting_country, with: ->(value) { value.strip.presence }
-  normalizes :two_factor_methods, with: ->(methods) { methods.compact_blank.uniq }
+  normalizes :two_factor_methods, :certifications, with: ->(values) { values.compact_blank.uniq }
 
   validates :name, presence: true
   validates :apis, presence: true
@@ -33,6 +34,7 @@ class Editor < ApplicationRecord
   validates :two_factor_status, inclusion: { in: TWO_FACTOR_STATUSES }, allow_nil: true
   validates :two_factor_deadline, presence: true, if: :two_factor_in_progress?
   validate :two_factor_methods_included_in_list
+  validate :certifications_included_in_list
   validate :apis_included_in_list
 
   scope :delegable, -> { where(editor_tokens_enabled: true) }
@@ -113,6 +115,10 @@ class Editor < ApplicationRecord
 
   def two_factor_methods_included_in_list
     errors.add(:two_factor_methods, :inclusion) unless (two_factor_methods - TWO_FACTOR_METHODS).empty?
+  end
+
+  def certifications_included_in_list
+    errors.add(:certifications, :inclusion) unless (certifications - CERTIFICATIONS).empty?
   end
 
   def apis_included_in_list

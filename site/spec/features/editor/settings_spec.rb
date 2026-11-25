@@ -97,7 +97,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
   describe 'security and hosting' do
     before { visit editor_settings_path(onglet: 'security') }
 
-    it 'declares a two-factor authentication in progress with its deadline and methods' do
+    it 'declares a two-factor authentication in progress, its certifications and how it handles API tokens' do
       within_tab('security') do
         choose 'En cours'
         fill_in 'Échéance de mise en place', with: '2027-03-31'
@@ -105,6 +105,9 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
         check 'Clé matérielle'
         fill_in 'Hébergeur', with: 'OVHcloud'
         fill_in "Pays d'hébergement", with: 'France'
+        check 'ISO 27001'
+        check 'SecNumCloud'
+        fill_in 'Comment gérez-vous les jetons d’accès à nos API ?', with: 'Coffre-fort de secrets, rotation annuelle'
         click_button 'Enregistrer'
       end
 
@@ -113,7 +116,9 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
         two_factor_deadline: Date.new(2027, 3, 31),
         two_factor_methods: %w[totp hardware_key],
         hosting_provider: 'OVHcloud',
-        hosting_country: 'France'
+        hosting_country: 'France',
+        certifications: %w[iso_27001 secnumcloud],
+        credentials_management: 'Coffre-fort de secrets, rotation annuelle'
       )
     end
 
@@ -139,13 +144,13 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     it 'lists the missing information and links each to its tab, until it is given' do
       visit editor_settings_path
 
-      expect(page).to have_text('Votre fiche est à compléter : 4 informations manquantes')
+      expect(page).to have_text('Votre fiche est à compléter : 5 informations manquantes')
       expect(page).to have_link('Un contact Sécurité (RSSI)', href: editor_settings_path(onglet: 'contacts'))
       expect(page).to have_link('Au moins une démarche', href: editor_settings_path(onglet: 'use_cases'))
 
       create(:editor_contact, editor:, role: 'technical')
       create(:editor_contact, editor:, role: 'security')
-      editor.update!(two_factor_status: 'yes')
+      editor.update!(two_factor_status: 'yes', credentials_management: 'Coffre-fort de secrets')
       create(:editor_use_case, editor:)
       visit editor_settings_path
 

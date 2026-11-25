@@ -10,6 +10,7 @@ fr:
         deployment_type: "Type de déploiement"
         two_factor_deadline: "Échéance de la double authentification"
         two_factor_methods: "Méthodes de double authentification"
+        certifications: "Certifications"
   editors:
     roles:
       blank: "Inconnu"
@@ -26,6 +27,12 @@ fr:
       sms: "SMS"
       email_otp: "Code par email"
       hardware_key: "Clé matérielle"
+      other: "Autre"
+    certifications:
+      iso_27001: "ISO 27001"
+      hds: "HDS (hébergeur de données de santé)"
+      secnumcloud: "SecNumCloud"
+      iso_9001: "ISO 9001"
       other: "Autre"
     deployment_types:
       blank: "Inconnu"

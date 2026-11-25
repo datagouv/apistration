@@ -48,7 +48,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
       create(:editor_contact, editor:, role: 'technical')
       create(:editor_contact, editor:, role: 'security')
-      editor.update!(two_factor_status: 'yes')
+      editor.update!(two_factor_status: 'yes', credentials_management: 'Coffre-fort de secrets')
       visit admin_editors_path
 
       expect(page).to have_css("##{ActionView::RecordIdentifier.dom_id(editor)} .fr-badge--success", text: 'Complète')

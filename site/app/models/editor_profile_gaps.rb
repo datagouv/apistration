@@ -29,9 +29,10 @@ class EditorProfileGaps
   end
 
   def security_gaps
-    return [] unless editor.two_factor_status.nil?
-
-    [Gap.new(section_key: 'security', label: 'la double authentification de vos usagers')]
+    {
+      'la double authentification de vos usagers' => editor.two_factor_status.nil?,
+      'la gestion des jetons' => editor.credentials_management.blank?
+    }.select { |_label, missing| missing }.map { |label, _missing| Gap.new(section_key: 'security', label:) }
   end
 
   def use_case_gaps
