@@ -25,16 +25,7 @@ class EditorDelegationResolver
   def enriched_user
     return @user unless @delegation
 
-    authorization_request = @delegation.authorization_request
-    security_settings = authorization_request.security_settings
-
-    @user.with_delegation(
-      authorization_request_id: authorization_request.id,
-      scopes: authorization_request.scopes,
-      allowed_ips: security_settings&.allowed_ips,
-      rate_limit_per_minute: security_settings&.rate_limit_per_minute,
-      throttle_overrides: security_settings&.throttle_overrides
-    )
+    @user.delegated_to(@delegation.authorization_request)
   end
 
   private

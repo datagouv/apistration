@@ -56,6 +56,18 @@ class JwtUser
     )
   end
 
+  def delegated_to(authorization_request)
+    security_settings = authorization_request.security_settings
+
+    with_delegation(
+      authorization_request_id: authorization_request.id,
+      scopes: authorization_request.scopes,
+      allowed_ips: security_settings&.allowed_ips,
+      rate_limit_per_minute: security_settings&.rate_limit_per_minute,
+      throttle_overrides: security_settings&.throttle_overrides
+    )
+  end
+
   def ip_restricted?
     ip_allowlists.any?(&:present?)
   end
