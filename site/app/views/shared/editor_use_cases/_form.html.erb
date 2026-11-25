@@ -1,4 +1,4 @@
-<% scope_groups = editor_use_case_scope_groups(use_case) %>
+<% scope_groups = use_case.scope_groups %>
 <%= form_with(model: use_case, url: use_case.persisted? ? editor_profile_use_case_path(editor, use_case, admin:) : editor_profile_use_cases_path(editor, admin:), method: use_case.persisted? ? :patch : :post) do |f| %>
   <%= f.hidden_field :use_case %>
   <%= editor_profile_readonly("Cas d'usage DataPass", use_case.label) %>
@@ -15,28 +15,40 @@
     </div>
   </div>
 
-  <h2 class="fr-h5 fr-mt-2w">Données utilisées</h2>
-  <p class="fr-text--sm">Les scopes pré-cochés sont ceux du formulaire DataPass de ce cas d'usage : décochez ceux que votre logiciel n'utilise pas.</p>
+  <h2 class="fr-h5 fr-mt-4w">Données utilisées</h2>
+  <p class="fr-text--sm">Les données pré-cochées sont celles du formulaire DataPass de ce cas d'usage : décochez celles que votre logiciel n'utilise pas.</p>
   <% if scope_groups.any? %>
+    <%= hidden_field_tag 'editor_use_case[scopes][]', '', id: nil %>
     <% scope_groups.each do |group, options| %>
-      <%= editor_profile_choices(f, :scopes, group, options, multiple: true) %>
+      <fieldset class="editor-scopes-group fr-mb-3w">
+        <legend class="editor-scopes-group__title"><%= group %></legend>
+        <div class="editor-scopes-group__grid">
+          <% options.each do |label, value| %>
+            <% input_id = "editor_use_case_scopes_#{value}" %>
+            <div class="fr-checkbox-group">
+              <%= check_box_tag 'editor_use_case[scopes][]', value, use_case.scopes.include?(value), id: input_id %>
+              <%= label_tag input_id, label, class: 'fr-label' %>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
     <% end %>
   <% else %>
     <% use_case.scopes.each do |scope| %>
       <%= hidden_field_tag 'editor_use_case[scopes][]', scope, id: nil %>
     <% end %>
-    <p class="fr-text--sm fr-text-mention--grey">Le catalogue des scopes DataPass n'est pas disponible pour le moment.</p>
+    <div class="fr-alert fr-alert--warning fr-alert--sm fr-mb-3w">
+      <p>La liste des données DataPass n'est pas disponible pour le moment : les données déjà cochées sont conservées.</p>
+    </div>
   <% end %>
 
-  <h2 class="fr-h5 fr-mt-2w">Données personnelles</h2>
-  <div class="fr-grid-row fr-grid-row--gutters">
-    <div class="fr-col-12 fr-col-md-4">
-      <%= editor_profile_field(f, :number_field, :data_retention_months, 'Durée de conservation (mois)', min: 1) %>
-    </div>
-    <div class="fr-col-12 fr-col-md-8">
-      <%= editor_profile_field(f, :text_area, :data_recipients, 'Destinataires des données', rows: 2) %>
-    </div>
-  </div>
+  <h2 class="fr-h5 fr-mt-4w">Données personnelles</h2>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_field, :data_recipients, 'Destinataires des données', hint: 'Par exemple : agents du service enfance de la collectivité') %>
+  <% end %>
+  <%= editor_profile_row(width: 3) do %>
+    <%= editor_profile_field(f, :number_field, :data_retention_months, 'Durée de conservation', hint: 'En mois, par exemple 36', min: 1) %>
+  <% end %>
 
   <h2 class="fr-h5 fr-mt-4w">Configuration du jeton</h2>
   <%= editor_profile_row do %>
@@ -44,7 +56,10 @@
   <% end %>
 
   <% if admin %>
-    <%= editor_profile_field(f, :text_field, :form_uid, 'Formulaire DataPass', hint: "Identifiant du formulaire. Les habilitations validées avec ce formulaire sont déléguées automatiquement à l'éditeur.") %>
+    <h2 class="fr-h5 fr-mt-4w">Rattachement DataPass</h2>
+    <%= editor_profile_row do %>
+      <%= editor_profile_field(f, :text_field, :form_uid, 'Formulaire DataPass', hint: "Identifiant du formulaire. Les habilitations validées avec ce formulaire sont déléguées automatiquement à l'éditeur.") %>
+    <% end %>
   <% elsif use_case.form_uid %>
     <%= editor_profile_readonly('Formulaire DataPass', tag.code(use_case.form_uid)) %>
   <% end %>

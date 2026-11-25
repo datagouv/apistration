@@ -50,6 +50,12 @@ class EditorUseCase < ApplicationRecord
     DatapassReferential.new(api).scopes&.reject(&:deprecated) if api
   end
 
+  def scope_groups
+    checked_groups, other_groups = scope_options_by_group.partition { |_group, options| options.any? { |_label, value| scopes.include?(value) } }
+
+    (checked_groups + other_groups).to_h
+  end
+
   def prefill_from_datapass_form
     form = datapass_form if scopes.empty? && never_edited?
     return self unless form
@@ -70,6 +76,17 @@ class EditorUseCase < ApplicationRecord
 
   def never_edited?
     persisted? && updated_at == created_at
+  end
+
+  def scope_options_by_group
+    catalogue = scope_catalogue.to_a
+    groups = catalogue.group_by(&:group).transform_values { |group_scopes| group_scopes.map { |scope| [scope.label, scope.value] } }
+
+    groups.merge('Autres données' => unknown_scope_options(catalogue)) { |_group, known, unknown| known + unknown }.compact_blank
+  end
+
+  def unknown_scope_options(catalogue)
+    (scopes - catalogue.map(&:value)).map { |scope| [scope, scope] }
   end
 
   def use_case_in_referential

@@ -172,3 +172,33 @@
 .nav-link-two-lines {
   display: block;
 }
+
+.editor-scopes-group {
+  border: 1px solid var(--border-default-grey);
+  padding: 0 1rem 1rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.editor-scopes-group__title {
+  float: left;
+  width: 100%;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-default-grey);
+  color: var(--text-action-high-blue-france);
+  font-weight: bold;
+}
+
+.editor-scopes-group__grid {
+  clear: both;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 3rem;
+  padding-top: 1rem;
+}
+
+@media (max-width: 48em) {
+  .editor-scopes-group__grid {
+    grid-template-columns: 1fr;
+  }
+}
