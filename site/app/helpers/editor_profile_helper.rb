@@ -51,8 +51,18 @@ module EditorProfileHelper
     errors.map { |message| content_tag(:p, message, class: 'fr-error-text fr-fieldset__element') }
   end
 
-  def editor_profile_remove_button(path, confirmation)
-    button_to 'Retirer', path, method: :delete, class: 'fr-btn fr-btn--sm fr-btn--tertiary', data: { turbo_confirm: confirmation }
+  def editor_profile_remove_button(path, subject, confirmation)
+    button_to path, method: :delete, class: 'fr-btn fr-btn--sm fr-btn--tertiary', data: { turbo_confirm: confirmation } do
+      editor_profile_action_label('Retirer', subject)
+    end
+  end
+
+  def editor_profile_edit_link(path, subject)
+    link_to editor_profile_action_label('Modifier', subject), path, class: 'fr-btn fr-btn--sm fr-btn--tertiary'
+  end
+
+  def editor_profile_action_label(action, subject)
+    safe_join([action, content_tag(:span, " #{subject}", class: 'fr-sr-only')])
   end
 
   def editor_profile_choice(form, attribute, (label, value), multiple: false, input_data: {})

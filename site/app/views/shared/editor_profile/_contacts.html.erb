@@ -26,7 +26,7 @@
                   <td><%= contact.email ? mail_to(contact.email, class: 'fr-link') : editor_profile_blank %></td>
                   <td><%= contact.phone.presence || editor_profile_blank %></td>
                   <td>
-                    <%= editor_profile_remove_button(editor_profile_contact_path(editor, contact, admin:), 'Retirer ce contact ?') %>
+                    <%= editor_profile_remove_button(editor_profile_contact_path(editor, contact, admin:), "le contact #{contact.role_label} #{contact.full_name || contact.email || contact.phone}", 'Retirer ce contact ?') %>
                   </td>
                 </tr>
               <% end %>

@@ -34,9 +34,9 @@
                   <td><%= use_case.form_uid ? tag.code(use_case.form_uid) : editor_profile_blank %></td>
                   <td>
                     <div class="fr-btns-group fr-btns-group--inline fr-btns-group--sm">
-                      <%= link_to 'Modifier', editor_profile_edit_use_case_path(editor, use_case, admin:), class: 'fr-btn fr-btn--sm fr-btn--tertiary' %>
+                      <%= editor_profile_edit_link(editor_profile_edit_use_case_path(editor, use_case, admin:), "le cas d'usage #{use_case.label}, #{use_case.software}") %>
                       <% if admin || use_case.form_uid.nil? %>
-                        <%= editor_profile_remove_button(editor_profile_use_case_path(editor, use_case, admin:), "Retirer ce cas d'usage ?") %>
+                        <%= editor_profile_remove_button(editor_profile_use_case_path(editor, use_case, admin:), "le cas d'usage #{use_case.label}, #{use_case.software}", "Retirer ce cas d'usage ?") %>
                       <% end %>
                     </div>
                   </td>
