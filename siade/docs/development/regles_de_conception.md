@@ -78,6 +78,20 @@ la prochaine revalidation DataPass retire le scope : le webhook remplace
 les scopes du jeton par ceux de l'habilitation DataPass
 (`site/app/interactors/datapass_webhook/create_or_prolong_token_model.rb`).
 
+**Exception sans jeton existant** : quand aucune habilitation de
+production ne porte encore le scope socle de l'endpoint, la version
+peut s'enrichir sans migration, puisqu'aucun consommateur ne voit sa
+réponse changer. Les nouveaux scopes sont accordés par DataPass aux
+habilitations à venir. Cas réel, pièces jointes des fondations :
+`documents`, filtré par type de pièce entre le scope socle
+`fondations_mi_siaf`, le nouveau `fondations_mi_siaf_comptes` et
+`fondations_mi_siaf_controle`, ajouté à la v3 de
+`/v3/ministere_interieur/siaf/fondations` sans v4. La v3 venait d'être
+mise en production sans les pièces servies en environnement de test,
+retrait annoncé sur la fiche comme provisoire, et aucune habilitation de
+production ne portait `fondations_mi_siaf` ; le produit a choisi de
+rendre les pièces dans la même version.
+
 Toute nouvelle version s'accompagne d'une itération sur les SDKs
 (`clients/`, cf. `CLAUDE.md` racine).
 
