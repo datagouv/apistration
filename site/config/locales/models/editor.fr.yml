@@ -10,6 +10,17 @@ fr:
         deployment_type: "Type de déploiement"
         two_factor_deadline: "Échéance de la double authentification"
         two_factor_methods: "Méthodes de double authentification"
+        security_accreditation_begin_date: "Date de début de l'homologation"
+        security_accreditation_end_date: "Date de fin de l'homologation"
+        mon_service_securise_url: "Lien vers l'homologation MonServiceSécurisé"
+    errors:
+      models:
+        editor:
+          attributes:
+            security_accreditation_end_date:
+              greater_than: "doit être postérieure à la date de début"
+            mon_service_securise_url:
+              invalid: "doit être une adresse web commençant par https://"
   editors:
     roles:
       blank: "Inconnu"

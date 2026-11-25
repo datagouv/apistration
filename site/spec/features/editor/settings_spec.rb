@@ -111,12 +111,11 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     it 'declares a two-factor authentication in progress with its deadline and methods' do
       within_tab('security') do
         choose 'En cours'
-        fill_in 'Échéance si en cours', with: '2027-03-31'
+        fill_in 'Échéance de mise en place', with: '2027-03-31'
         check 'Application TOTP'
         check 'ProConnect'
         fill_in 'Hébergeur', with: 'OVHcloud'
         fill_in "Pays d'hébergement", with: 'France'
-        choose 'editor_has_designated_rssi_true'
         click_button 'Enregistrer'
       end
 
@@ -125,9 +124,83 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
         two_factor_deadline: Date.new(2027, 3, 31),
         two_factor_methods: %w[totp proconnect],
         hosting_provider: 'OVHcloud',
-        hosting_country: 'France',
-        has_designated_rssi: true
+        hosting_country: 'France'
       )
+    end
+
+    it 'declares a security accreditation with its validity period and its MonServiceSécurisé link' do
+      within_tab('security') do
+        choose 'editor_security_accreditation_true'
+        fill_in 'Date de début', with: '2026-01-01'
+        fill_in 'Date de fin', with: '2029-01-01'
+        fill_in 'Lien vers l’homologation MonServiceSécurisé', with: 'https://monservicesecurise.cyber.gouv.fr/service/42'
+        click_button 'Enregistrer'
+      end
+
+      expect(editor.reload).to have_attributes(
+        security_accreditation: true,
+        security_accreditation_begin_date: Date.new(2026, 1, 1),
+        security_accreditation_end_date: Date.new(2029, 1, 1),
+        mon_service_securise_url: 'https://monservicesecurise.cyber.gouv.fr/service/42'
+      )
+    end
+
+    it 'refuses an accreditation ending before it begins' do
+      within_tab('security') do
+        choose 'editor_security_accreditation_true'
+        fill_in 'Date de début', with: '2029-01-01'
+        fill_in 'Date de fin', with: '2026-01-01'
+        click_button 'Enregistrer'
+      end
+
+      expect(editor.reload.security_accreditation).to be_nil
+      expect(page).to have_text('doit être postérieure à la date de début')
+    end
+
+    it 'refuses a MonServiceSécurisé link that is not a web address' do
+      within_tab('security') do
+        fill_in 'Lien vers l’homologation MonServiceSécurisé', with: 'https:///missing-host'
+        click_button 'Enregistrer'
+      end
+
+      expect(editor.reload.mon_service_securise_url).to be_nil
+      expect(page).to have_text('doit être une adresse web commençant par https://')
+    end
+
+    it 'shows the accreditation dates only once the editor answers it has one, and keeps the tab in the URL', :js do
+      find_by_id('editor-profile-contacts').click
+      expect(page).to have_current_path(editor_settings_path(onglet: 'contacts'))
+      find_by_id('editor-profile-security').click
+      expect(page).to have_current_path(editor_settings_path(onglet: 'security'))
+
+      within_tab('security') do
+        expect(page).to have_no_field('Date de début')
+        choose 'editor_security_accreditation_true', allow_label_click: true
+        expect(page).to have_field('Date de début')
+        choose 'editor_security_accreditation_false', allow_label_click: true
+        expect(page).to have_no_field('Date de début')
+      end
+    end
+
+    it 'forgets the accreditation period once the editor answers it has none' do
+      editor.update!(security_accreditation: true, security_accreditation_begin_date: Date.new(2026, 1, 1), security_accreditation_end_date: Date.new(2029, 1, 1))
+      visit editor_settings_path(onglet: 'security')
+
+      within_tab('security') do
+        choose 'editor_security_accreditation_false'
+        click_button 'Enregistrer'
+      end
+
+      expect(editor.reload).to have_attributes(security_accreditation: false, security_accreditation_begin_date: nil, security_accreditation_end_date: nil)
+    end
+
+    it 'tells whether a CISO is designated from the security contacts' do
+      within_tab('security') { expect(page).to have_text('Ajoutez un contact « Sécurité (RSSI) »') }
+
+      create(:editor_contact, editor:, role: 'security', full_name: 'Rita RSSI')
+      visit editor_settings_path(onglet: 'security')
+
+      within_tab('security') { expect(page).to have_text('Rita RSSI') }
     end
 
     it 'asks for the deadline of a two-factor authentication in progress' do

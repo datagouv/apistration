@@ -66,17 +66,21 @@ module EditorProfileHelper
     end
   end
 
-  def editor_profile_choices(form, attribute, legend, options, multiple: false)
+  def editor_profile_choices(form, attribute, legend, options, **choice_options)
     errors = form.object.errors[attribute]
 
-    content_tag(:fieldset, class: ['fr-fieldset', ('fr-fieldset--error' if errors.any?)], id: "#{form.object_name}-#{attribute}-#{legend.parameterize}".dasherize) do
+    content_tag(:fieldset, class: ['fr-fieldset', ('fr-fieldset--error' if errors.any?)], id: editor_profile_fieldset_id(form, attribute, legend)) do
       safe_join([
         content_tag(:legend, legend, class: 'fr-fieldset__legend fr-fieldset__legend--regular'),
-        (hidden_field_tag("#{form.object_name}[#{attribute}][]", '', id: nil) if multiple),
-        *options.map { |label, value| editor_profile_choice(form, attribute, label, value, multiple:) },
+        (hidden_field_tag("#{form.object_name}[#{attribute}][]", '', id: nil) if choice_options[:multiple]),
+        *options.map { |choice| editor_profile_choice(form, attribute, choice, **choice_options) },
         *editor_profile_errors(errors)
       ].compact)
     end
+  end
+
+  def editor_profile_fieldset_id(form, attribute, legend)
+    "#{form.object_name}-#{attribute}-#{legend.parameterize}".dasherize
   end
 
   def editor_profile_errors(errors)
@@ -87,12 +91,12 @@ module EditorProfileHelper
     button_to 'Retirer', path, method: :delete, class: 'fr-btn fr-btn--sm fr-btn--tertiary', data: { turbo_confirm: confirmation }
   end
 
-  def editor_profile_choice(form, attribute, label, value, multiple:)
+  def editor_profile_choice(form, attribute, (label, value), multiple: false, input_data: {})
     input_id = "#{form.object_name}_#{attribute}_#{value}"
     input = if multiple
-              check_box_tag("#{form.object_name}[#{attribute}][]", value, form.object.public_send(attribute).include?(value), id: input_id)
+              check_box_tag("#{form.object_name}[#{attribute}][]", value, form.object.public_send(attribute).include?(value), id: input_id, data: input_data)
             else
-              form.radio_button(attribute, value, id: input_id)
+              form.radio_button(attribute, value, id: input_id, data: input_data)
             end
 
     content_tag(:div, class: 'fr-fieldset__element fr-fieldset__element--inline') do
@@ -102,8 +106,22 @@ module EditorProfileHelper
     end
   end
 
-  def editor_profile_yes_no(form, attribute, legend)
-    editor_profile_choices(form, attribute, legend, [['Oui', true], ['Non', false]])
+  def editor_profile_yes_no(form, attribute, legend, **)
+    editor_profile_choices(form, attribute, legend, [['Oui', true], ['Non', false]], **)
+  end
+
+  def editor_profile_conditional(form, attribute, &)
+    content_tag(:div, data: { controller: 'conditional-fields', conditional_fields_name_value: "#{form.object_name}[#{attribute}]" }, &)
+  end
+
+  def editor_profile_shown_when(*values, &)
+    content_tag(:div, data: { conditional_fields_target: 'field', show_when: values.join(' ') }, &)
+  end
+
+  def editor_profile_row(width: 8, &)
+    content_tag(:div, class: 'fr-grid-row fr-mb-3w') do
+      content_tag(:div, class: "fr-col-12 fr-col-md-#{width}", &)
+    end
   end
 
   def editor_profile_readonly(label, value)

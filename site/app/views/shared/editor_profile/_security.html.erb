@@ -1,45 +1,61 @@
+<% toggle = { action: 'change->conditional-fields#toggle' } %>
 <%= form_with(model: editor, url: editor_profile_path_for(editor, section.key, admin:), method: :patch) do |f| %>
   <h2 class="fr-h4">Double authentification de vos usagers</h2>
   <p class="fr-text--sm">Vos usagers (agents des collectivités, CCAS…) se connectent-ils à votre logiciel avec un second facteur ?</p>
 
-  <%= editor_profile_choices(f, :two_factor_status, 'Double authentification', Editor::TWO_FACTOR_STATUSES.map { |status| [t(status, scope: 'editors.two_factor_statuses'), status] }) %>
+  <%= editor_profile_conditional(f, :two_factor_status) do %>
+    <%= editor_profile_choices(f, :two_factor_status, 'Double authentification', Editor::TWO_FACTOR_STATUSES.map { |status| [t(status, scope: 'editors.two_factor_statuses'), status] }, input_data: toggle) %>
 
-  <div class="fr-grid-row fr-grid-row--gutters">
-    <div class="fr-col-12 fr-col-md-4">
-      <%= editor_profile_field(f, :date_field, :two_factor_deadline, 'Échéance si en cours', hint: 'Date prévue de mise en place') %>
-    </div>
-  </div>
+    <%= editor_profile_shown_when('in_progress') do %>
+      <%= editor_profile_row(width: 4) do %>
+        <%= editor_profile_field(f, :date_field, :two_factor_deadline, 'Échéance de mise en place') %>
+      <% end %>
+    <% end %>
 
-  <%= editor_profile_choices(f, :two_factor_methods, 'Méthodes proposées', Editor::TWO_FACTOR_METHODS.map { |method| [t(method, scope: 'editors.two_factor_methods'), method] }, multiple: true) %>
+    <%= editor_profile_shown_when('yes', 'in_progress') do %>
+      <%= editor_profile_choices(f, :two_factor_methods, 'Méthodes proposées', Editor::TWO_FACTOR_METHODS.map { |method| [t(method, scope: 'editors.two_factor_methods'), method] }, multiple: true) %>
+    <% end %>
+  <% end %>
 
-  <h2 class="fr-h4 fr-mt-4w">Hébergement</h2>
+  <h2 class="fr-h4 fr-mt-6w">Hébergement</h2>
 
-  <div class="fr-grid-row fr-grid-row--gutters">
-    <div class="fr-col-12 fr-col-md-4">
-      <%= editor_profile_select(f, :deployment_type, 'Type de déploiement', Editor.deployment_type_options) %>
-    </div>
-    <div class="fr-col-12 fr-col-md-4">
-      <%= editor_profile_field(f, :text_field, :hosting_provider, 'Hébergeur', hint: 'Par exemple OVHcloud, Scaleway, vos serveurs') %>
-    </div>
-    <div class="fr-col-12 fr-col-md-4">
-      <%= editor_profile_field(f, :text_field, :hosting_country, "Pays d'hébergement") %>
-    </div>
-  </div>
+  <%= editor_profile_row do %>
+    <%= editor_profile_select(f, :deployment_type, 'Type de déploiement', Editor.deployment_type_options) %>
+    <%= editor_profile_field(f, :text_field, :hosting_provider, 'Hébergeur', hint: 'Par exemple OVHcloud, Scaleway, vos propres serveurs') %>
+    <%= editor_profile_field(f, :text_field, :hosting_country, "Pays d'hébergement", hint: 'Par exemple France') %>
+  <% end %>
 
-  <h2 class="fr-h4 fr-mt-4w">Conformité</h2>
+  <h2 class="fr-h4 fr-mt-6w">Conformité</h2>
 
-  <div class="fr-grid-row fr-grid-row--gutters">
-    <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_yes_no(f, :security_accreditation, 'Homologation de sécurité') %>
-    </div>
-    <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_field(f, :date_field, :security_accreditation_date, "Date d'homologation") %>
-    </div>
-  </div>
-  <%= editor_profile_yes_no(f, :uses_mon_service_securise, 'Utilisation de MonServiceSécurisé') %>
-  <%= editor_profile_yes_no(f, :has_designated_rssi, 'RSSI désigné') %>
+  <%= editor_profile_conditional(f, :security_accreditation) do %>
+    <%= editor_profile_yes_no(f, :security_accreditation, 'Votre logiciel dispose-t-il d’une homologation de sécurité ?', input_data: toggle) %>
 
-  <h2 class="fr-h4 fr-mt-4w">Adresses IP autorisées</h2>
+    <%= editor_profile_shown_when('true') do %>
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <div class="fr-col-12 fr-col-md-4">
+          <%= editor_profile_field(f, :date_field, :security_accreditation_begin_date, 'Date de début') %>
+        </div>
+        <div class="fr-col-12 fr-col-md-4">
+          <%= editor_profile_field(f, :date_field, :security_accreditation_end_date, 'Date de fin') %>
+        </div>
+      </div>
+      <div class="fr-grid-row fr-mt-2w fr-mb-4w">
+        <div class="fr-col-12 fr-col-md-8">
+          <div class="fr-alert fr-alert--info fr-alert--sm">
+            <p>Envoyez-nous la décision d’homologation par email à <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Décision d’homologation de sécurité">support@<%= namespace %>.api.gouv.fr</a>.</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :url_field, :mon_service_securise_url, 'Lien vers l’homologation MonServiceSécurisé', hint: 'Si votre service est suivi sur MonServiceSécurisé, par exemple https://monservicesecurise.cyber.gouv.fr/…', placeholder: 'https://') %>
+  <% end %>
+
+  <%= render 'shared/editor_profile/security_contacts', editor:, admin: %>
+
+  <h2 class="fr-h4 fr-mt-6w">Adresses IP autorisées</h2>
   <% if admin %>
     <%= editor_profile_field(f, :text_area, :allowed_ips, 'IPs autorisées', hint: 'Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24', value: editor.allowed_ips.join(', '), rows: 3) %>
   <% else %>

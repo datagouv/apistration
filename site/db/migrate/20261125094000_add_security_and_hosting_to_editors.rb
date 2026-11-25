@@ -6,8 +6,8 @@ class AddSecurityAndHostingToEditors < ActiveRecord::Migration[8.1]
     add_column :editors, :hosting_provider, :string
     add_column :editors, :hosting_country, :string
     add_column :editors, :security_accreditation, :boolean
-    add_column :editors, :security_accreditation_date, :date
-    add_column :editors, :uses_mon_service_securise, :boolean
-    add_column :editors, :has_designated_rssi, :boolean
+    add_column :editors, :security_accreditation_begin_date, :date
+    add_column :editors, :security_accreditation_end_date, :date
+    add_column :editors, :mon_service_securise_url, :string
   end
 end

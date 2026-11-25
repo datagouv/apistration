@@ -1,0 +1,15 @@
+<% security_contacts = editor.security_contacts %>
+<div class="fr-mt-4w fr-mb-3w">
+  <p class="fr-text--bold fr-mb-1v">RSSI désigné</p>
+  <% if security_contacts.any? %>
+    <p class="fr-mb-0">
+      <span class="fr-badge fr-badge--success fr-badge--sm fr-mr-1w">Oui</span>
+      <%= safe_join(security_contacts.map { |contact| contact.full_name.presence || contact.email || contact.phone }, ', ') %>
+    </p>
+  <% else %>
+    <p class="fr-mb-0">
+      <span class="fr-badge fr-badge--warning fr-badge--sm fr-mr-1w">Non</span>
+      Ajoutez un contact « Sécurité (RSSI) » dans l’onglet <%= link_to 'Contacts', editor_profile_path_for(editor, 'contacts', admin:), class: 'fr-link' %>.
+    </p>
+  <% end %>
+</div>

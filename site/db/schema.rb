@@ -200,9 +200,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.string "hosting_provider"
     t.string "hosting_country"
     t.boolean "security_accreditation"
-    t.date "security_accreditation_date"
-    t.boolean "uses_mon_service_securise"
-    t.boolean "has_designated_rssi"
+    t.date "security_accreditation_begin_date"
+    t.date "security_accreditation_end_date"
+    t.string "mon_service_securise_url"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

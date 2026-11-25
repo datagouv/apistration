@@ -269,7 +269,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
     it 'adds a contact and records it in the activity log' do
       within('#editor-profile-contacts-panel') do
-        select 'Sécurité', from: 'Rôle'
+        select 'Sécurité (RSSI)', from: 'Rôle'
         fill_in 'Email', with: 'rssi@editor.com'
       end
 
