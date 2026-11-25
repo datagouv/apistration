@@ -43,6 +43,10 @@ class DatapassUseCase
     most_common_scopes ? most_common_scopes.first : []
   end
 
+  def scope_values
+    generic_forms.flat_map(&:scopes).uniq
+  end
+
   private
 
   def generic_forms

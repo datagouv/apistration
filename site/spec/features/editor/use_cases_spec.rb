@@ -52,6 +52,16 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
     )
   end
 
+  it 'folds the data of the API that the DataPass forms of the use case never ask for' do
+    visit new_editor_use_case_path(use_case: 'tarification_eaje')
+
+    expect(page).to have_checked_field('editor_use_case_scopes_cnav_participation_familiale_eaje_allocataires')
+    within('#editor-use-case-other-scopes') do
+      expect(page).to have_css('.editor-scopes-group--muted', text: 'Quotient familial')
+      expect(page).to have_unchecked_field('editor_use_case_scopes_cnaf_quotient_familial')
+    end
+  end
+
   it 'keeps the scopes of a use case when DataPass does not answer' do
     use_case = create(:editor_use_case, editor:, scopes: %w[cnaf_quotient_familial])
     stub_datapass_unavailable('api_particulier')

@@ -197,6 +197,15 @@
   padding-top: 1rem;
 }
 
+.editor-scopes-group--muted {
+  background-color: var(--background-alt-grey);
+}
+
+.editor-scopes-group--muted .editor-scopes-group__title,
+.editor-scopes-group--muted .fr-label {
+  color: var(--text-mention-grey);
+}
+
 @media (max-width: 48em) {
   .editor-scopes-group__grid {
     grid-template-columns: 1fr;

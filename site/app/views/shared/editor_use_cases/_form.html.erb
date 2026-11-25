@@ -17,21 +17,25 @@
 
   <h2 class="fr-h5 fr-mt-4w">Données utilisées</h2>
   <p class="fr-text--sm">Les données pré-cochées sont celles du formulaire DataPass de ce cas d'usage : décochez celles que votre logiciel n'utilise pas.</p>
-  <% if scope_groups.any? %>
+  <% if scope_groups.any? || use_case.other_scope_groups.any? %>
     <%= hidden_field_tag 'editor_use_case[scopes][]', '', id: nil %>
     <% scope_groups.each do |group, options| %>
-      <fieldset class="editor-scopes-group fr-mb-3w">
-        <legend class="editor-scopes-group__title"><%= group %></legend>
-        <div class="editor-scopes-group__grid">
-          <% options.each do |label, value| %>
-            <% input_id = "editor_use_case_scopes_#{value}" %>
-            <div class="fr-checkbox-group">
-              <%= check_box_tag 'editor_use_case[scopes][]', value, use_case.scopes.include?(value), id: input_id %>
-              <%= label_tag input_id, label, class: 'fr-label' %>
-            </div>
+      <%= render 'shared/editor_use_cases/scope_group', use_case:, group:, options:, muted: false %>
+    <% end %>
+    <% other_groups = use_case.other_scope_groups %>
+    <% if other_groups.any? %>
+      <section class="fr-accordion fr-mb-3w">
+        <h3 class="fr-accordion__title">
+          <button type="button" class="fr-accordion__btn" aria-expanded="false" aria-controls="editor-use-case-other-scopes">
+            Autres données de l'API, hors de ce cas d'usage (<%= pluralize(other_groups.size, 'groupe', plural: 'groupes') %>)
+          </button>
+        </h3>
+        <div class="fr-collapse" id="editor-use-case-other-scopes">
+          <% other_groups.each do |group, options| %>
+            <%= render 'shared/editor_use_cases/scope_group', use_case:, group:, options:, muted: true %>
           <% end %>
         </div>
-      </fieldset>
+      </section>
     <% end %>
   <% else %>
     <% use_case.scopes.each do |scope| %>

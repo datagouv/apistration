@@ -51,9 +51,11 @@ class EditorUseCase < ApplicationRecord
   end
 
   def scope_groups
-    checked_groups, other_groups = scope_options_by_group.partition { |_group, options| options.any? { |_label, value| scopes.include?(value) } }
+    split_scope_groups.first
+  end
 
-    (checked_groups + other_groups).to_h
+  def other_scope_groups
+    split_scope_groups.last
   end
 
   def prefill_from_datapass_form
@@ -76,6 +78,19 @@ class EditorUseCase < ApplicationRecord
 
   def never_edited?
     persisted? && updated_at == created_at
+  end
+
+  def split_scope_groups
+    @split_scope_groups ||= begin
+      expected_scopes = scopes | datapass_use_case&.scope_values.to_a
+      groups = scope_options_by_group
+
+      expected_scopes.any? ? partition_scope_groups(groups, expected_scopes) : [groups, {}]
+    end
+  end
+
+  def partition_scope_groups(groups, expected_scopes)
+    groups.partition { |_group, options| options.any? { |_label, value| expected_scopes.include?(value) } }.map(&:to_h)
   end
 
   def scope_options_by_group
