@@ -2,6 +2,8 @@
 
 Before designing or changing an endpoint, read the strict design rules in `docs/development/regles_de_conception.md`.
 
+Before reviewing a prochainement endpoint, read `docs/development/integration_nouvelle_api.md` § État du mode prochainement: the specs it leaves `pending` (at least the 200 and 404 responses, sometimes more) are pending by design.
+
 ## Build/Test/Lint Commands
 
 - Install dependencies: `./bin/install.sh`
