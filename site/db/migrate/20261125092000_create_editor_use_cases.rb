@@ -7,6 +7,7 @@ class CreateEditorUseCases < ActiveRecord::Migration[8.1]
       t.string :scopes, array: true, default: [], null: false
       t.integer :data_retention_months
       t.text :data_recipients
+      t.text :setup_instructions
       t.string :integration_status
       t.string :form_uid, index: { unique: true, where: 'form_uid IS NOT NULL' }
       t.timestamps

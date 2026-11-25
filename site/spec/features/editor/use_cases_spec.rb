@@ -39,6 +39,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
       (quotient_familial_scopes - %w[cnaf_quotient_familial]).each { |scope| uncheck "editor_use_case_scopes_#{scope}" }
       fill_in 'Durée de conservation (mois)', with: '24'
       fill_in 'Destinataires des données', with: 'Service restauration scolaire'
+      fill_in 'Instructions de configuration du jeton', with: 'Menu Paramètres > API'
     end
 
     expect(page).to have_css('#editor-profile-use_cases[aria-selected="true"]')
@@ -46,6 +47,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
       scopes: %w[cnaf_quotient_familial],
       data_retention_months: 24,
       data_recipients: 'Service restauration scolaire',
+      setup_instructions: 'Menu Paramètres > API',
       form_uid: nil
     )
   end

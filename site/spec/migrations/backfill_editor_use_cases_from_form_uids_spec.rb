@@ -7,7 +7,8 @@ RSpec.describe BackfillEditorUseCasesFromFormUids do
 
   before do
     Editor.where(id: editor.id).update_all(
-      "form_uids = ARRAY['api-particulier-abelium', 'api-particulier-abelium-petite-enfance', 'api-particulier-unknown']::varchar[]"
+      "form_uids = ARRAY['api-particulier-abelium', 'api-particulier-abelium-petite-enfance', 'api-particulier-unknown']::varchar[], " \
+      "setup_instructions = 'Menu Paramètres > API'"
     )
   end
 
@@ -27,9 +28,9 @@ RSpec.describe BackfillEditorUseCasesFromFormUids do
     )
   end
 
-  it 'names the software after the editor' do
+  it 'carries the editor name as software and its token setup instructions to each use case' do
     backfill
 
-    expect(editor.use_cases.pluck(:software, :integration_status).uniq).to eq([%w[Abelium production]])
+    expect(editor.use_cases.pluck(:software, :setup_instructions, :integration_status).uniq).to eq([['Abelium', 'Menu Paramètres > API', 'production']])
   end
 end

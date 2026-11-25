@@ -91,8 +91,7 @@ class Seeds
       deployment_type: 'saas',
       domain: 'mgdis.fr',
       languages: 'Java',
-      description: 'Éditeur de solutions de gestion financière pour le secteur public',
-      setup_instructions: "1. Se connecter au portail MGDIS\n2. Administration > Connecteurs API\n3. Renseigner le jeton API Entreprise"
+      description: 'Éditeur de solutions de gestion financière pour le secteur public'
     )
     create_user(
       email: 'editeur@yopmail.com',
@@ -133,12 +132,12 @@ class Seeds
     @editor.contacts.create!(role: 'dpo', full_name: 'Claire Petit', email: 'dpo-mgdis@yopmail.com')
     atexo.contacts.create!(role: 'technical', email: 'contact-atexo@yopmail.com')
 
-    create_editor_use_cases(@editor, 'api-entreprise-mgdis')
+    create_editor_use_cases(@editor, 'api-entreprise-mgdis', setup_instructions: "1. Se connecter au portail MGDIS\n2. Administration > Connecteurs API\n3. Renseigner le jeton API Entreprise")
     create_editor_use_cases(atexo, 'api-entreprise-atexo')
     create_editor_use_cases(aiga, 'api-particulier-aiga', 'api-particulier-aiga-petite-enfance')
   end
 
-  def create_editor_use_cases(editor, *form_uids)
+  def create_editor_use_cases(editor, *form_uids, **attributes)
     form_uids.each do |form_uid|
       use_case = DatapassUseCase.for_form(form_uid)
 
@@ -147,7 +146,8 @@ class Seeds
         use_case: use_case.key,
         software: editor.name,
         scopes: DatapassReferential.new(use_case.api).form(form_uid).scopes,
-        integration_status: 'production'
+        integration_status: 'production',
+        **attributes
       )
     end
   end

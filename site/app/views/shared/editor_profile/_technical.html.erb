@@ -1,7 +1,7 @@
 <%= form_with(model: editor, url: editor_profile_path_for(editor, section.key, admin:), method: :patch) do |f| %>
-  <%= editor_profile_field(f, :text_field, :languages, 'Langages utilisés', hint: 'Pour adapter notre documentation technique') %>
-
-  <%= editor_profile_field(f, :text_area, :setup_instructions, 'Instructions de configuration du jeton', hint: 'Comment vos clients renseignent leur jeton dans votre logiciel', rows: 5) %>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_field, :languages, 'Langages utilisés', hint: 'Pour adapter notre documentation technique') %>
+  <% end %>
 
   <% if admin %>
     <div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">

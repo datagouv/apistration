@@ -141,6 +141,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.string "scopes", default: [], null: false, array: true
     t.integer "data_retention_months"
     t.text "data_recipients"
+    t.text "setup_instructions"
     t.string "integration_status"
     t.string "form_uid"
     t.datetime "created_at", null: false

@@ -1,6 +1,6 @@
 class EditorUseCase < ApplicationRecord
   INTEGRATION_STATUSES = %w[production recette development prospection].freeze
-  EDITABLE_ATTRIBUTES = [:use_case, :software, :integration_status, :data_retention_months, :data_recipients, { scopes: [] }].freeze
+  EDITABLE_ATTRIBUTES = [:use_case, :software, :integration_status, :data_retention_months, :data_recipients, :setup_instructions, { scopes: [] }].freeze
   ADMIN_ATTRIBUTES = [:form_uid].freeze
 
   belongs_to :editor

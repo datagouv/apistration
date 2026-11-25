@@ -38,6 +38,11 @@
     </div>
   </div>
 
+  <h2 class="fr-h5 fr-mt-4w">Configuration du jeton</h2>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_area, :setup_instructions, 'Instructions de configuration du jeton', hint: 'Comment vos clients renseignent leur jeton dans ce logiciel', rows: 5) %>
+  <% end %>
+
   <% if admin %>
     <%= editor_profile_field(f, :text_field, :form_uid, 'Formulaire DataPass', hint: "Identifiant du formulaire. Les habilitations validées avec ce formulaire sont déléguées automatiquement à l'éditeur.") %>
   <% elsif use_case.form_uid %>

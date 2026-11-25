@@ -22,7 +22,6 @@ FactoryBot.define do
       languages { 'Ruby, Python' }
       description { 'Un éditeur de test' }
       allowed_ips { ['1.2.3.4', '5.6.7.8'] }
-      setup_instructions { 'Configurer le jeton via le dashboard' }
 
       after(:create) do |editor|
         create(:editor_contact, editor:)

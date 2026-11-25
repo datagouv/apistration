@@ -18,7 +18,6 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     it 'prefills the editable profile fields' do
       expect(page).to have_field('Nom', with: editor.name)
       expect(page).to have_field('Site internet', with: editor.domain)
-      expect(page).to have_field('Instructions de configuration du jeton', with: editor.setup_instructions)
     end
 
     it 'shows the fields only an admin can change without letting the editor edit them' do
@@ -65,16 +64,6 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
       expect(page).to have_current_path(editor_settings_path(onglet: 'general'))
       expect(page).to have_text('Informations mises à jour')
       expect(editor.reload.name).to eq('Nouveau nom éditeur')
-    end
-
-    it 'lets the editor write the setup instructions of its token' do
-      within_tab('technical') do
-        fill_in 'Instructions de configuration du jeton', with: 'Menu Paramètres > API'
-        click_button 'Enregistrer'
-      end
-
-      expect(page).to have_css('#editor-profile-technical[aria-selected="true"]')
-      expect(editor.reload.setup_instructions).to eq('Menu Paramètres > API')
     end
 
     it 'shows the error on the tab of the invalid form' do

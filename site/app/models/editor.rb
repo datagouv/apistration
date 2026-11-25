@@ -5,7 +5,7 @@ class Editor < ApplicationRecord
   TWO_FACTOR_STATUSES = %w[yes in_progress no].freeze
   TWO_FACTOR_METHODS = %w[totp sms email_otp proconnect hardware_key other].freeze
 
-  self.ignored_columns += %w[form_uids contact_email contact_phone]
+  self.ignored_columns += %w[form_uids contact_email contact_phone setup_instructions]
 
   has_many :users,
     dependent: :nullify
