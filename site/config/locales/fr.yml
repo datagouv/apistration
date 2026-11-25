@@ -117,6 +117,24 @@ fr:
           heading: "Vous êtes inscrit à la newsletter"
           description: "Vous recevez chaque lundi à 2h un récapitulatif automatique des nouveautés de la semaine précédente."
           submit: "Se désinscrire"
+    newsletter_subscriptions:
+      form:
+        legend: "Inscription à la lettre d'information"
+        email_label: "Adresse électronique"
+        email_hint: "Format attendu : nom@domaine.fr"
+        honeypot_label: "Ne pas remplir ce champ"
+        submit: "S'abonner"
+      create:
+        success:
+          title: "Demande d'inscription enregistrée"
+          description: "Si l'adresse est valide, vous allez recevoir un e-mail pour confirmer votre inscription."
+        error:
+          invalid_email: "L'adresse électronique n'est pas valide."
+          brevo_error: "L'inscription n'a pas pu aboutir, merci de réessayer plus tard."
+          too_many_requests: "Trop de demandes d'inscription, merci de réessayer dans une minute."
+      confirmed:
+        title: "Inscription confirmée"
+        description: "Vous recevrez désormais notre lettre d'information."
     changelog_subscriptions:
       create:
         success:

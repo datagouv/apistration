@@ -15,6 +15,13 @@ class BrevoAPIClient
     )
   end
 
+  def subscribe_with_double_optin(email:, list_ids:, template_id:, redirection_url:)
+    http_connection.post(
+      "#{BASE_URL}/contacts/doubleOptinConfirmation",
+      { email:, includeListIds: list_ids, templateId: template_id, redirectionUrl: redirection_url }.to_json
+    )
+  end
+
   private
 
   def http_connection
