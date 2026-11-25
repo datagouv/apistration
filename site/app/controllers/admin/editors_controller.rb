@@ -3,9 +3,8 @@ class Admin::EditorsController < AdminController
   before_action :set_section, only: %i[show update]
 
   def index
-    @editors = Editor.for_api(namespace).filtered(params).order(:name).page(params[:page])
+    @editors = Editor.for_api(namespace).filtered(params).includes(:contacts, :use_cases).order(:name).page(params[:page])
     @users_counts = User.where(editor_id: @editors.map(&:id)).group(:editor_id).count
-    @form_counts = EditorUseCase.with_form.where(editor: @editors).group(:editor_id).count
   end
 
   def show; end

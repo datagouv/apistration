@@ -36,6 +36,24 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_text('En cours (échéance 31/03/2027)')
     end
 
+    it 'tells how complete the profile of each editor is and how many démarches it declares' do
+      create(:editor_use_case, editor:, form_uid: 'api-entreprise-umad')
+      create(:editor_use_case, editor:)
+      visit admin_editors_path
+
+      within("##{ActionView::RecordIdentifier.dom_id(editor)}") do
+        expect(page).to have_css("a.fr-badge--warning[href='#{admin_editor_path(editor)}']", text: /\d+ informations? manquantes?/)
+        expect(page).to have_text('dont 1 avec formulaire DataPass')
+      end
+
+      create(:editor_contact, editor:, role: 'technical')
+      create(:editor_contact, editor:, role: 'security')
+      editor.update!(two_factor_status: 'yes')
+      visit admin_editors_path
+
+      expect(page).to have_css("##{ActionView::RecordIdentifier.dom_id(editor)} .fr-badge--success", text: 'Complète')
+    end
+
     it 'filters by name' do
       create(:editor, name: 'Other Corp')
       visit admin_editors_path(search: 'UMAD')
