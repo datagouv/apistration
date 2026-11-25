@@ -264,6 +264,35 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     end
   end
 
+  describe 'what is left to fill in' do
+    let(:editor) { create(:editor) }
+
+    it 'lists the missing information and links each to its tab, until it is given' do
+      visit editor_settings_path
+
+      expect(page).to have_text('Votre fiche est à compléter : 5 informations manquantes')
+      expect(page).to have_link('Un contact Sécurité (RSSI)', href: editor_settings_path(onglet: 'contacts'))
+      expect(page).to have_link("Au moins un cas d'usage", href: editor_settings_path(onglet: 'use_cases'))
+
+      create(:editor_contact, editor:, role: 'technical')
+      create(:editor_contact, editor:, role: 'security')
+      editor.update!(two_factor_status: 'yes', security_accreditation: false)
+      create(:editor_use_case, editor:)
+      visit editor_settings_path
+
+      expect(page).to have_css('h1', text: 'Vos informations éditeur')
+      expect(page).to have_no_text('Votre fiche est à compléter')
+    end
+
+    it 'counts the use cases still to complete, such as one backfilled without its DataPass use case' do
+      create(:editor_use_case, editor:)
+      create(:editor_use_case, editor:, form_uid: 'api-entreprise-unknown').update_columns(use_case: nil, scopes: [])
+      visit editor_settings_path
+
+      expect(page).to have_link("1 cas d'usage à compléter")
+    end
+  end
+
   context 'when the user is not an editor' do
     let(:user) { create(:user) }
 
