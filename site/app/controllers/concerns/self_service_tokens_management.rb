@@ -1,12 +1,13 @@
 module SelfServiceTokensManagement
   extend ActiveSupport::Concern
   include AuthorizationRequestPage
+  include TokenModalDenial
 
   def new
     authorization_request = authorize(extract_authorization_request, :create_token?)
-    @token = authorization_request.tokens.new(name: nil)
+    token = authorization_request.tokens.new(name: nil)
 
-    render_authorization_request_page(authorization_request, panel: :new)
+    render_token_form(authorization_request, 'shared/self_service_tokens/form', token:)
   end
 
   def create
@@ -15,16 +16,16 @@ module SelfServiceTokensManagement
 
     if result.success?
       success_message(title: t('shared.self_service_tokens.create.success.title', name: result.token.name))
-      redirect_to authorization_request_path(id: authorization_request.id, jeton: result.token.id)
+      redirect_to authorization_request_path(id: authorization_request.id)
     else
       render_creation_failure(authorization_request, result)
     end
   end
 
   def revocation
-    @token = authorize(extract_token, :revoke?)
+    token = authorize(extract_token, :revoke?)
 
-    render_authorization_request_page(@token.authorization_request, panel: :revocation, selected_token: @token)
+    render_token_form(token.authorization_request, 'shared/self_service_tokens/revocation_form', token:)
   end
 
   def revoke
@@ -32,16 +33,16 @@ module SelfServiceTokensManagement
 
     flash_revocation_outcome(Token::RevokeByContact.call(token:, user: current_user), token)
 
-    redirect_to authorization_request_path(id: token.authorization_request.id, jeton: token.id)
+    redirect_to authorization_request_path(id: token.authorization_request.id)
   end
 
   private
 
   def render_creation_failure(authorization_request, result)
-    @token = result.token
-    @token.errors.add(:base, result.message) if @token.errors.empty?
+    token = result.token
+    token.errors.add(:base, result.message) if token.errors.empty?
 
-    render_authorization_request_page(authorization_request, panel: :new, status: :unprocessable_content)
+    render_token_form(authorization_request, 'shared/self_service_tokens/form', token:, status: :unprocessable_content)
   end
 
   def flash_revocation_outcome(result, token)

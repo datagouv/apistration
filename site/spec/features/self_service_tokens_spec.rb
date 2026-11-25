@@ -1,5 +1,6 @@
 RSpec.describe 'Self-service tokens', app: :api_entreprise do
   include ActiveJob::TestHelper
+  include ActiveSupport::Testing::TimeHelpers
 
   let(:demandeur) { create(:user, email: 'demandeur@example.org') }
   let(:contact_technique) { create(:user, email: 'technique@example.org') }
@@ -82,26 +83,21 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     end
   end
 
-  describe 'token selection' do
+  describe 'token cards' do
     let!(:production) { create(:token, authorization_request:, name: 'Production') }
     let!(:recette) { create(:token, authorization_request:, name: 'Recette') }
 
     before { login_as(contact_technique) }
 
-    it 'shows in the panel the token given in the link' do
-      visit authorization_request_path(authorization_request, jeton: production.id)
+    it 'shows each active token in its own card, with its actions' do
+      visit authorization_request_path(authorization_request)
 
-      expect(page).to have_css("##{dom_id(production)}[aria-current='true']")
-      expect(page).to have_css("#token_panel ##{dom_id(production, :panel)}", text: 'Production')
-    end
-
-    it 'ignores a token of another demande given in the link' do
-      other_token = create(:token, name: 'Ailleurs')
-
-      visit authorization_request_path(authorization_request, jeton: other_token.id)
-
-      expect(page).to have_css('#token_panel', text: 'Recette')
-      expect(page).to have_no_text('Ailleurs')
+      [production, recette].each do |token|
+        within(".token-card##{dom_id(token)}") do
+          expect(page).to have_css("##{dom_id(token, :show)}")
+          expect(page).to have_css("##{dom_id(token, :revocation_link)}")
+        end
+      end
     end
   end
 
@@ -114,13 +110,13 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
     it 'refuses a name already used by an active token of the demande' do
       expect { create_token(name: 'Production') }.not_to change(Token, :count)
 
-      expect(page).to have_css('#token_panel .fr-alert--error', text: "Le jeton n'a pas pu être créé")
+      expect(page).to have_css('#new_self_service_token .fr-alert--error', text: "Le jeton n'a pas pu être créé")
     end
 
-    it 'keeps the creation form and its values in the panel after a refusal' do
+    it 'keeps the creation form and its values after a refusal' do
       create_token(name: 'Production', lifetime: '6 mois')
 
-      within('#token_panel') do
+      within('#new_self_service_token') do
         expect(page).to have_field('Nom du jeton', with: 'Production')
         expect(page).to have_field('Durée de validité', with: '6')
       end
@@ -176,6 +172,23 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
 
     before { login_as(contact_metier) }
 
+    it 'opens the confirmation in the modal, without the page around it' do
+      page.driver.header('Turbo-Frame', 'main-modal-content')
+      visit token_revocation_path(id: token.id)
+
+      expect(page).to have_css("turbo-frame#main-modal-content form##{dom_id(token, :revocation)}")
+      expect(page).to have_no_css('footer')
+    end
+
+    it 'says so in the modal when the token was revoked since the page was opened' do
+      token.revoke!
+      page.driver.header('Turbo-Frame', 'main-modal-content')
+      visit token_revocation_path(id: token.id)
+
+      expect(page).to have_css('turbo-frame#main-modal-content #token_modal_denial', text: "Cette action n'est plus possible")
+      expect(page).to have_no_css('footer')
+    end
+
     it 'labels the confirmation button' do
       visit authorization_request_path(authorization_request)
       find("##{dom_id(token, :revocation_link)}").click
@@ -189,12 +202,10 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
 
       expect(token.reload).to be_blacklisted
       expect(page).to have_css('.fr-alert--success', text: 'Le jeton « Recette » a été révoqué')
-      within('#inactive_tokens') do
-        expect(page).to have_css("##{dom_id(token)}[aria-current='true']", text: 'Révoqué')
-      end
-      within('#token_panel') do
+      expect(page).to have_no_css(".token-card##{dom_id(token)}")
+      within("#inactive_tokens tr##{dom_id(token)}") do
+        expect(page).to have_text('Révoqué')
         expect(page).to have_css("##{dom_id(token, :stats_link)}")
-        expect(page).to have_no_css("##{dom_id(token, :revocation_link)}")
       end
     end
 
@@ -252,6 +263,19 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
 
       expect(page).to have_css("##{dom_id(token)}")
       expect(page).to have_no_css("##{dom_id(token, :extension_link)}")
+    end
+
+    it 'keeps showing the current expiration when the chosen lifetime would shorten it' do
+      travel_to(Time.zone.local(2027, 1, 31, 12)) do
+        token.update!(exp: Time.zone.local(2027, 4, 30, 18).to_i)
+
+        login_as(contact_metier)
+        extend_token('3 mois')
+
+        expect(page).to have_text("Le jeton « Production » n'a pas pu être prolongé")
+        expect(page).to have_text('Ce jeton expire le 30/04/2027 à 18h00')
+        expect(token.reload.exp).to eq(Time.zone.local(2027, 4, 30, 18).to_i)
+      end
     end
 
     it 'is refused on an archived demande' do

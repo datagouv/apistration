@@ -1,20 +1,27 @@
 module AuthorizationRequestPage
   extend ActiveSupport::Concern
 
+  MODAL_FRAME = 'main-modal-content'.freeze
+
   private
 
-  def render_authorization_request_page(authorization_request, panel: :token, selected_token: nil, status: :ok)
+  def render_authorization_request_page(authorization_request, status: :ok)
     @authorization_request = authorization_request
     @tokens = authorization_request.tokens.includes(:creator).order(created_at: :desc).decorate
-    @panel = panel
-    @selected_token = select_token(selected_token&.id || params[:jeton]) unless panel == :new
     load_delegations_data
 
     render 'shared/authorization_requests/show', status:
   end
 
-  def select_token(token_id)
-    @tokens.find { |token| token.id == token_id } || @tokens.find(&:active?) || @tokens.first
+  def render_token_form(authorization_request, form, status: :ok, **locals)
+    @authorization_request = authorization_request
+    locals = { form:, form_locals: locals.merge(authorization_request:) }
+
+    if turbo_frame_request_id == MODAL_FRAME
+      render 'shared/authorization_requests/token_form_modal', locals:, status:, layout: false
+    else
+      render 'shared/authorization_requests/token_form_page', locals:, status:
+    end
   end
 
   def load_delegations_data

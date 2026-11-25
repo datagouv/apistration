@@ -1,0 +1,10 @@
+<% content_for :page_title, @authorization_request.intitule %>
+<div class="fr-container fr-mb-6w">
+  <%= render partial: 'shared/authorization_requests/breadcrumb', locals: { authorization_request: @authorization_request } %>
+
+  <div class="fr-grid-row">
+    <div class="fr-col-12 fr-col-md-8">
+      <%= render partial: form, locals: form_locals.merge(modal: false) %>
+    </div>
+  </div>
+</div>
