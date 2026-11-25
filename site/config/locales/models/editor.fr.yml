@@ -36,7 +36,6 @@ fr:
       totp: "Application TOTP"
       sms: "SMS"
       email_otp: "Code par email"
-      proconnect: "ProConnect"
       hardware_key: "Clé matérielle"
       other: "Autre"
     deployment_types:

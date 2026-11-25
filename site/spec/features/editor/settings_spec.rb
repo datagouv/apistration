@@ -102,7 +102,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
         choose 'En cours'
         fill_in 'Échéance de mise en place', with: '2027-03-31'
         check 'Application TOTP'
-        check 'ProConnect'
+        check 'Clé matérielle'
         fill_in 'Hébergeur', with: 'OVHcloud'
         fill_in "Pays d'hébergement", with: 'France'
         click_button 'Enregistrer'
@@ -111,7 +111,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
       expect(editor.reload).to have_attributes(
         two_factor_status: 'in_progress',
         two_factor_deadline: Date.new(2027, 3, 31),
-        two_factor_methods: %w[totp proconnect],
+        two_factor_methods: %w[totp hardware_key],
         hosting_provider: 'OVHcloud',
         hosting_country: 'France'
       )

@@ -3,7 +3,7 @@ class Editor < ApplicationRecord
   ROLES = %w[manages_token client_manages_token both].freeze
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
   TWO_FACTOR_STATUSES = %w[yes in_progress no].freeze
-  TWO_FACTOR_METHODS = %w[totp sms email_otp proconnect hardware_key other].freeze
+  TWO_FACTOR_METHODS = %w[totp sms email_otp hardware_key other].freeze
 
   self.ignored_columns += %w[form_uids contact_email contact_phone setup_instructions]
 
