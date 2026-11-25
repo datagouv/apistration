@@ -5,6 +5,7 @@ fr:
         security_accreditation_begin_date: "Date de début de l'homologation"
         security_accreditation_end_date: "Date de fin de l'homologation"
         mon_service_securise_url: "Lien vers l'homologation MonServiceSécurisé"
+        software_url: "Page de présentation du logiciel"
     errors:
       models:
         editor_use_case:
@@ -12,4 +13,6 @@ fr:
             security_accreditation_end_date:
               greater_than: "doit être postérieure à la date de début"
             mon_service_securise_url:
+              invalid: "doit être une adresse web commençant par https://"
+            software_url:
               invalid: "doit être une adresse web commençant par https://"

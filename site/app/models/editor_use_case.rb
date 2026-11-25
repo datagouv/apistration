@@ -1,7 +1,7 @@
 class EditorUseCase < ApplicationRecord
   INTEGRATION_STATUSES = %w[production recette development prospection].freeze
   EDITABLE_ATTRIBUTES = [
-    :use_case, :software, :integration_status, :data_retention_months, :data_recipients, :setup_instructions,
+    :use_case, :software, :software_description, :software_url, :integration_status, :data_retention_months, :data_recipients, :setup_instructions,
     :security_accreditation, :security_accreditation_begin_date, :security_accreditation_end_date, :mon_service_securise_url,
     { scopes: [] }
   ].freeze
@@ -11,7 +11,7 @@ class EditorUseCase < ApplicationRecord
 
   normalizes :form_uid, with: ->(value) { value.strip.presence }
   normalizes :scopes, with: ->(scopes) { scopes.compact_blank.uniq.sort }
-  normalizes :mon_service_securise_url, with: ->(url) { url.strip.presence }
+  normalizes :mon_service_securise_url, :software_url, with: ->(url) { url.strip.presence }
 
   before_validation :clear_security_accreditation_dates, unless: :security_accreditation?
 
@@ -22,7 +22,7 @@ class EditorUseCase < ApplicationRecord
   validates :form_uid, uniqueness: true, allow_nil: true
   validates :security_accreditation_begin_date, :security_accreditation_end_date, presence: true, if: :security_accreditation?
   validates :security_accreditation_end_date, comparison: { greater_than: :security_accreditation_begin_date }, if: -> { security_accreditation_begin_date && security_accreditation_end_date }
-  validates :mon_service_securise_url, web_address: true
+  validates :mon_service_securise_url, :software_url, web_address: true
   validate :use_case_in_referential, if: :use_case_changed?
 
   before_update :mark_as_edited

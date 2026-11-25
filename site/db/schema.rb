@@ -138,6 +138,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.uuid "editor_id", null: false
     t.string "use_case"
     t.string "software"
+    t.text "software_description"
+    t.string "software_url"
     t.string "scopes", default: [], null: false, array: true
     t.integer "data_retention_months"
     t.text "data_recipients"

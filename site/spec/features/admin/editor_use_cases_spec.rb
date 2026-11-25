@@ -9,7 +9,7 @@ RSpec.describe 'Admin: editor use cases', app: :api_particulier do
 
   it 'attaches a DataPass form to a new use case, records it and warns the CISRT' do
     visit new_admin_editor_use_case_path(editor, use_case: 'tarification_municipale_enfance')
-    fill_in 'Logiciel', with: 'Logiciel enfance'
+    fill_in 'Nom du logiciel', with: 'Logiciel enfance'
     fill_in 'Formulaire DataPass', with: 'api-particulier-umad'
 
     expect { click_on 'Enregistrer' }.to emit_security_event('access.editor_config.changed').with(
@@ -50,7 +50,7 @@ RSpec.describe 'Admin: editor use cases', app: :api_particulier do
 
     it 'does not warn the CISRT when the form stays the same' do
       visit edit_admin_editor_use_case_path(editor, use_case)
-      fill_in 'Logiciel', with: 'Nouveau nom'
+      fill_in 'Nom du logiciel', with: 'Nouveau nom'
 
       expect { click_on 'Enregistrer' }.not_to emit_security_event('access.editor_config.changed')
       expect(use_case.reload.software).to eq('Nouveau nom')

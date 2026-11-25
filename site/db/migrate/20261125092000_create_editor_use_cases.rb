@@ -4,6 +4,8 @@ class CreateEditorUseCases < ActiveRecord::Migration[8.1]
       t.references :editor, type: :uuid, null: false, foreign_key: true
       t.string :use_case
       t.string :software
+      t.text :software_description
+      t.string :software_url
       t.string :scopes, array: true, default: [], null: false
       t.integer :data_retention_months
       t.text :data_recipients

@@ -12,7 +12,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
     visit new_editor_use_case_path
     select label, from: "Cas d'usage DataPass"
     click_on 'Continuer'
-    fill_in 'Logiciel', with: software
+    fill_in 'Nom du logiciel', with: software
     yield if block_given?
     click_on 'Enregistrer'
   end
@@ -52,6 +52,23 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
     )
   end
 
+  it 'describes the software with its presentation page, which must be a web address' do
+    add_use_case('Tarification des transports', software: 'Cantine Soft') do
+      fill_in 'Description du logiciel', with: 'Gestion des abonnements de transport'
+      fill_in 'Page de présentation du logiciel', with: 'exemple.fr/logiciel'
+    end
+
+    expect(page).to have_text('doit être une adresse web commençant par https://')
+
+    fill_in 'Page de présentation du logiciel', with: 'https://exemple.fr/logiciel'
+    click_on 'Enregistrer'
+
+    expect(editor.use_cases.sole).to have_attributes(
+      software_description: 'Gestion des abonnements de transport',
+      software_url: 'https://exemple.fr/logiciel'
+    )
+  end
+
   it 'folds the data of the API that the DataPass forms of the use case never ask for' do
     visit new_editor_use_case_path(use_case: 'tarification_eaje')
 
@@ -67,7 +84,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
     stub_datapass_unavailable('api_particulier')
 
     visit edit_editor_use_case_path(use_case)
-    fill_in 'Logiciel', with: 'Cantine Soft 2'
+    fill_in 'Nom du logiciel', with: 'Cantine Soft 2'
     click_on 'Enregistrer'
 
     expect(use_case.reload).to have_attributes(software: 'Cantine Soft 2', scopes: %w[cnaf_quotient_familial])

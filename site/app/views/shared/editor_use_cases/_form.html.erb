@@ -6,14 +6,21 @@
     <p class="fr-text--sm"><%= link_to "Choisir un autre cas d'usage", editor_profile_new_use_case_path(editor, admin:), class: 'fr-link' %></p>
   <% end %>
 
+  <h2 class="fr-h5 fr-mt-4w">Logiciel</h2>
   <div class="fr-grid-row fr-grid-row--gutters">
     <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_field(f, :text_field, :software, 'Logiciel', hint: 'Le logiciel qui implémente ce cas d’usage') %>
+      <%= editor_profile_field(f, :text_field, :software, 'Nom du logiciel', hint: 'Le logiciel qui implémente ce cas d’usage') %>
     </div>
     <div class="fr-col-12 fr-col-md-6">
       <%= editor_profile_select(f, :integration_status, "Statut d'intégration", EditorUseCase.integration_status_options) %>
     </div>
   </div>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_area, :software_description, 'Description du logiciel', hint: 'En quelques phrases, ce que fait le logiciel', rows: 3) %>
+  <% end %>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :url_field, :software_url, 'Page de présentation du logiciel', hint: 'La page de votre site qui présente ce logiciel, par exemple https://exemple.fr/logiciel', placeholder: 'https://') %>
+  <% end %>
 
   <h2 class="fr-h5 fr-mt-4w">Données utilisées</h2>
   <p class="fr-text--sm">Les données pré-cochées sont celles du formulaire DataPass de ce cas d'usage : décochez celles que votre logiciel n'utilise pas.</p>
