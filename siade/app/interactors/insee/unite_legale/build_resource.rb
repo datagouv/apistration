@@ -127,16 +127,17 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   end
 
   def activite_principale_naf2025
-    @activite_principale_naf2025 ||= Referentials::ActivitePrincipale.new(
-      code: unite_legale['activitePrincipaleNAF25UniteLegale'],
-      nomenclature: 'NAF2025'
+    @activite_principale_naf2025 ||= activite_principale_naf2025_from(
+      code: unite_legale['activitePrincipaleUniteLegale'],
+      nomenclature: unite_legale['nomenclatureActivitePrincipaleUniteLegale'],
+      naf2025_code: unite_legale['activitePrincipaleNAF25UniteLegale']
     )
   end
 
   def activite_principale_naf_rev2
-    @activite_principale_naf_rev2 ||= Referentials::ActivitePrincipale.new(
+    @activite_principale_naf_rev2 ||= activite_principale_naf_rev2_from(
       code: unite_legale['activitePrincipaleUniteLegale'],
-      nomenclature: 'NAFRev2'
+      nomenclature: unite_legale['nomenclatureActivitePrincipaleUniteLegale']
     )
   end
 end

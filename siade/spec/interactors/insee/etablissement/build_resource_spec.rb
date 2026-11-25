@@ -165,4 +165,68 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       end
     end
   end
+
+  describe 'activite principale around the NAF 2025 switch announced by Insee for January 2027' do
+    subject(:resource) { organizer.bundled_data.data }
+
+    let(:body) { payload.to_json }
+    let(:payload) do
+      JSON.parse(open_payload_file('insee/partially_diffusible_etablissement_personne_morale.json').read).tap do |payload_before_switch|
+        payload_before_switch['etablissement']['activitePrincipaleNAF25Etablissement'] = '42.99Y'
+      end
+    end
+    let(:current_periode) { payload['etablissement']['periodesEtablissement'].find { |periode| periode['dateFin'].nil? } }
+
+    context 'when Insee still sends, before the switch, both the NAF rev. 2 code and the NAF 2025 one' do
+      it 'exposes each code under its own nomenclature' do
+        expect(resource.activite_principale[:code]).to eq('42.99Y')
+        expect(resource.activite_principale_naf_rev2[:code]).to eq('42.99Z')
+      end
+    end
+
+    context 'when Insee codes the etablissement in NAF 2025 in activitePrincipaleEtablissement and drops activitePrincipaleNAF25Etablissement' do
+      before do
+        payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
+        current_periode['activitePrincipaleEtablissement'] = '84.11Y'
+        current_periode['nomenclatureActivitePrincipaleEtablissement'] = 'NAF25'
+      end
+
+      it 'keeps exposing the NAF 2025 activity' do
+        expect(resource.activite_principale).to eq(
+          code: '84.11Y',
+          libelle: 'Activités d’administration publique générale',
+          nomenclature: 'NAF2025'
+        )
+      end
+
+      it 'never exposes a NAF 2025 code as a NAF rev. 2 one' do
+        expect(resource.activite_principale_naf_rev2[:code]).to be_nil
+      end
+    end
+
+    context 'when Insee sends a NAF 2025 code without the NAF25 nomenclature' do
+      before do
+        payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
+        current_periode['activitePrincipaleEtablissement'] = '84.11Y'
+        current_periode['nomenclatureActivitePrincipaleEtablissement'] = 'NAF2025'
+      end
+
+      it 'recognizes the code as NAF 2025 from the referential' do
+        expect(resource.activite_principale[:code]).to eq('84.11Y')
+        expect(resource.activite_principale_naf_rev2[:code]).to be_nil
+      end
+    end
+
+    context 'when the etablissement keeps a NAF rev. 2 code after the switch, as closed ones do' do
+      before do
+        payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
+        current_periode['etatAdministratifEtablissement'] = 'F'
+      end
+
+      it 'exposes the NAF rev. 2 code and no NAF 2025 code' do
+        expect(resource.activite_principale_naf_rev2[:code]).to eq('42.99Z')
+        expect(resource.activite_principale[:code]).to be_nil
+      end
+    end
+  end
 end

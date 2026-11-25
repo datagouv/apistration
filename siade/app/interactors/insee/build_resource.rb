@@ -24,4 +24,24 @@ class INSEE::BuildResource < BuildResource
   def referential(name, params)
     Referentials.const_get(name.classify).new(**params).as_json
   end
+
+  def activite_principale_naf2025_from(code:, nomenclature:, naf2025_code:)
+    Referentials::ActivitePrincipale.new(
+      code: naf2025_code || (code if naf2025_code?(code:, nomenclature:)),
+      nomenclature: 'NAF2025'
+    )
+  end
+
+  def activite_principale_naf_rev2_from(code:, nomenclature:)
+    Referentials::ActivitePrincipale.new(
+      code: (code unless naf2025_code?(code:, nomenclature:)),
+      nomenclature: 'NAFRev2'
+    )
+  end
+
+  private
+
+  def naf2025_code?(code:, nomenclature:)
+    nomenclature == 'NAF25' || Referentials::ActivitePrincipale.naf2025.key?(code)
+  end
 end

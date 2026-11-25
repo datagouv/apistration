@@ -220,4 +220,56 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
 
     it { is_expected.to be_a_success }
   end
+
+  describe 'activite principale around the NAF 2025 switch announced by Insee for January 2027' do
+    subject(:resource) { organizer.bundled_data.data }
+
+    let(:organizer) { described_class.call(response:) }
+    let(:response) { instance_double(Net::HTTPOK, body: payload.to_json) }
+    let(:payload) do
+      JSON.parse(open_payload_file('insee/partially_diffusible_unite_legale_personne_morale.json').read).tap do |payload_before_switch|
+        payload_before_switch['uniteLegale']['activitePrincipaleNAF25UniteLegale'] = '84.11Y'
+      end
+    end
+    let(:current_periode) { payload['uniteLegale']['periodesUniteLegale'].find { |periode| periode['dateFin'].nil? } }
+
+    context 'when Insee still sends, before the switch, both the NAF rev. 2 code and the NAF 2025 one' do
+      it 'exposes each code under its own nomenclature' do
+        expect(resource.activite_principale[:code]).to eq('84.11Y')
+        expect(resource.activite_principale_naf_rev2[:code]).to eq('84.11Z')
+      end
+    end
+
+    context 'when Insee codes the unite legale in NAF 2025 in activitePrincipaleUniteLegale and drops activitePrincipaleNAF25UniteLegale' do
+      before do
+        payload['uniteLegale'].delete('activitePrincipaleNAF25UniteLegale')
+        current_periode['activitePrincipaleUniteLegale'] = '84.11Y'
+        current_periode['nomenclatureActivitePrincipaleUniteLegale'] = 'NAF25'
+      end
+
+      it 'keeps exposing the NAF 2025 activity' do
+        expect(resource.activite_principale).to eq(
+          code: '84.11Y',
+          libelle: 'Activités d’administration publique générale',
+          nomenclature: 'NAF2025'
+        )
+      end
+
+      it 'never exposes a NAF 2025 code as a NAF rev. 2 one' do
+        expect(resource.activite_principale_naf_rev2[:code]).to be_nil
+      end
+    end
+
+    context 'when the unite legale keeps a NAF rev. 2 code after the switch, as ceased ones do' do
+      before do
+        payload['uniteLegale'].delete('activitePrincipaleNAF25UniteLegale')
+        current_periode['etatAdministratifUniteLegale'] = 'C'
+      end
+
+      it 'exposes the NAF rev. 2 code and no NAF 2025 code' do
+        expect(resource.activite_principale_naf_rev2[:code]).to eq('84.11Z')
+        expect(resource.activite_principale[:code]).to be_nil
+      end
+    end
+  end
 end
