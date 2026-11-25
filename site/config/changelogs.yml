@@ -18,6 +18,16 @@
 
     **Si vous appelez encore la v3 de ces API, migrez vers la v4** : elle expose dans `activite_principale` le code NAF 2025 diffusé par l'Insee. En v3, l'activité principale est la seule donnée d'activité et sera vide pour une partie des unités après la bascule. À version égale, le format des réponses ne change pas et aucun champ n'est retiré.
 
+- date: 2026-11-25
+  scope: api_entreprise
+  title: "Nouvelle API : Données fondations (SIAF)"
+  description: |
+    Mise en service en production de l'API [Données fondations](<%= endpoint_path(uid: 'siaf/fondations') %>), qui expose les données du **Répertoire National des Fondations (RNF)** tenu par le Ministère de l'Intérieur : identité, activité, dirigeants et situation financière déclarative des fondations reconnues d'utilité publique, des fondations d'entreprise et des fonds de dotation. Elle s'appelle avec un SIREN, un SIRET ou un identifiant RNF.
+
+    Elle sert aussi les pièces jointes déposées par la fondation, chacune avec un lien de téléchargement valable une heure, filtrées selon leur type et les scopes de votre habilitation : statuts, règlement intérieur d'une fondation reconnue d'utilité publique et rapport d'activité d'une fondation pour tous, comptes et rapport d'activité d'un fonds de dotation avec le nouveau scope `fondations_mi_siaf_comptes` (subventions, marchés publics, lutte contre la fraude), toutes les autres pièces pour la lutte contre la fraude seulement.
+
+    Les données servies dépendent des scopes de votre habilitation ; la fiche détaille ce qui a changé par rapport à la version proposée en environnement de test.
+
 - date: 2026-11-23
   scope: api_particulier
   title: "Participation familiale EAJE : mêmes données que CDAP pour les allocataires Caf"
