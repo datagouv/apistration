@@ -42,6 +42,11 @@ label ; sinon, dire dans l'annonce qu'aucune règle ne s'applique, avec la
 condition qui manque à la règle la plus proche. Le merge d'une PR
 vouchée suit `REVIEW.md` § Merging.
 
+Avant de redemander une review, chaque fil ouvert par un humain a une
+réponse dans le fil, qui nomme le commit qui le traite quand il y en a
+un : sinon le relecteur relit la PR pour retrouver son point encore
+ouvert.
+
 ## Worktrees
 
 Par défaut, tout développement démarre dans un worktree dédié sous
