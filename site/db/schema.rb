@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_25_093100) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_094000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -193,6 +193,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_093100) do
     t.text "setup_instructions"
     t.string "siret"
     t.datetime "updated_at", null: false
+    t.string "two_factor_status"
+    t.date "two_factor_deadline"
+    t.string "two_factor_methods", default: [], null: false, array: true
+    t.string "hosting_provider"
+    t.string "hosting_country"
+    t.boolean "security_accreditation"
+    t.date "security_accreditation_date"
+    t.boolean "uses_mon_service_securise"
+    t.boolean "has_designated_rssi"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -26,11 +26,9 @@
     <caption>Éditeurs (<%= @editors.total_count %>)</caption>
     <thead>
       <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">SIRET</th>
-        <th scope="col">Formulaires</th>
-        <th scope="col">Membres</th>
-        <th scope="col">Actions</th>
+        <% ['Nom', 'SIRET', 'Formulaires', 'Membres', 'Double authentification', 'Actions'].each do |header| %>
+          <th scope="col"><%= header %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +44,7 @@
           </td>
           <td><%= @form_counts.fetch(editor.id, 0) %></td>
           <td><%= @users_counts.fetch(editor.id, 0) %></td>
+          <td><%= editor.decorate.two_factor_label %></td>
           <td>
             <%= link_to 'Voir', admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--tertiary' %>
           </td>

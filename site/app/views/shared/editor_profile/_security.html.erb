@@ -1,16 +1,47 @@
 <%= form_with(model: editor, url: editor_profile_path_for(editor, section.key, admin:), method: :patch) do |f| %>
-  <h2 class="fr-h4">Hébergement</h2>
+  <h2 class="fr-h4">Double authentification de vos usagers</h2>
+  <p class="fr-text--sm">Vos usagers (agents des collectivités, CCAS…) se connectent-ils à votre logiciel avec un second facteur ?</p>
 
-  <div class="fr-select-group">
-    <%= f.label :deployment_type, 'Type de déploiement', class: 'fr-label' %>
-    <%= f.select :deployment_type, options_for_select(Editor.deployment_type_options, editor.deployment_type), {}, class: 'fr-select' %>
+  <%= editor_profile_choices(f, :two_factor_status, 'Double authentification', Editor::TWO_FACTOR_STATUSES.map { |status| [t(status, scope: 'editors.two_factor_statuses'), status] }) %>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-4">
+      <%= editor_profile_field(f, :date_field, :two_factor_deadline, 'Échéance si en cours', hint: 'Date prévue de mise en place') %>
+    </div>
   </div>
+
+  <%= editor_profile_choices(f, :two_factor_methods, 'Méthodes proposées', Editor::TWO_FACTOR_METHODS.map { |method| [t(method, scope: 'editors.two_factor_methods'), method] }, multiple: true) %>
+
+  <h2 class="fr-h4 fr-mt-4w">Hébergement</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-4">
+      <%= editor_profile_select(f, :deployment_type, 'Type de déploiement', Editor.deployment_type_options) %>
+    </div>
+    <div class="fr-col-12 fr-col-md-4">
+      <%= editor_profile_field(f, :text_field, :hosting_provider, 'Hébergeur', hint: 'Par exemple OVHcloud, Scaleway, vos serveurs') %>
+    </div>
+    <div class="fr-col-12 fr-col-md-4">
+      <%= editor_profile_field(f, :text_field, :hosting_country, "Pays d'hébergement") %>
+    </div>
+  </div>
+
+  <h2 class="fr-h4 fr-mt-4w">Conformité</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_yes_no(f, :security_accreditation, 'Homologation de sécurité') %>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_field(f, :date_field, :security_accreditation_date, "Date d'homologation") %>
+    </div>
+  </div>
+  <%= editor_profile_yes_no(f, :uses_mon_service_securise, 'Utilisation de MonServiceSécurisé') %>
+  <%= editor_profile_yes_no(f, :has_designated_rssi, 'RSSI désigné') %>
 
   <h2 class="fr-h4 fr-mt-4w">Adresses IP autorisées</h2>
   <% if admin %>
-    <%= editor_profile_input_group(f, :allowed_ips, 'IPs autorisées', hint: 'Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24') do %>
-      <%= f.text_area :allowed_ips, value: editor.allowed_ips.join(', '), class: 'fr-input', rows: 3 %>
-    <% end %>
+    <%= editor_profile_field(f, :text_area, :allowed_ips, 'IPs autorisées', hint: 'Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24', value: editor.allowed_ips.join(', '), rows: 3) %>
   <% else %>
     <p class="fr-text--sm">Appels acceptés uniquement depuis ces adresses. Pour les modifier, écrivez à <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Modification des adresses IP autorisées">support@<%= namespace %>.api.gouv.fr</a>.</p>
     <% if editor.allowed_ips.any? %>

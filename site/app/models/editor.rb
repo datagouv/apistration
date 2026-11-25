@@ -2,6 +2,8 @@ class Editor < ApplicationRecord
   APIS = %w[entreprise particulier].freeze
   ROLES = %w[manages_token client_manages_token both].freeze
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
+  TWO_FACTOR_STATUSES = %w[yes in_progress no].freeze
+  TWO_FACTOR_METHODS = %w[totp sms email_otp proconnect hardware_key other].freeze
 
   self.ignored_columns += %w[form_uids contact_email contact_phone]
 
@@ -19,7 +21,8 @@ class Editor < ApplicationRecord
     class_name: 'EditorUseCase',
     dependent: :destroy
 
-  normalizes :deployment_type, with: ->(value) { value.presence }
+  normalizes :deployment_type, :two_factor_status, :hosting_provider, :hosting_country, with: ->(value) { value.strip.presence }
+  normalizes :two_factor_methods, with: ->(methods) { methods.compact_blank.uniq }
 
   validates :name, presence: true
   validates :apis, presence: true
@@ -27,6 +30,9 @@ class Editor < ApplicationRecord
   validates :role, inclusion: { in: ROLES }, allow_nil: true
   validates :deployment_type, inclusion: { in: DEPLOYMENT_TYPES }, allow_nil: true
   validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
+  validates :two_factor_status, inclusion: { in: TWO_FACTOR_STATUSES }, allow_nil: true
+  validates :two_factor_deadline, presence: true, if: :two_factor_in_progress?
+  validate :two_factor_methods_included_in_list
   validate :apis_included_in_list
 
   scope :delegable, -> { where(editor_tokens_enabled: true) }
@@ -79,6 +85,10 @@ class Editor < ApplicationRecord
     role == 'both'
   end
 
+  def two_factor_in_progress?
+    two_factor_status == 'in_progress'
+  end
+
   def saas?
     deployment_type == 'saas'
   end
@@ -96,6 +106,10 @@ class Editor < ApplicationRecord
   end
 
   private
+
+  def two_factor_methods_included_in_list
+    errors.add(:two_factor_methods, :inclusion) unless (two_factor_methods - TWO_FACTOR_METHODS).empty?
+  end
 
   def apis_included_in_list
     return if apis.all? { |api| APIS.include?(api) }

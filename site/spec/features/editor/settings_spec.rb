@@ -105,6 +105,42 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     end
   end
 
+  describe 'security and hosting' do
+    before { visit editor_settings_path(onglet: 'security') }
+
+    it 'declares a two-factor authentication in progress with its deadline and methods' do
+      within_tab('security') do
+        choose 'En cours'
+        fill_in 'Échéance si en cours', with: '2027-03-31'
+        check 'Application TOTP'
+        check 'ProConnect'
+        fill_in 'Hébergeur', with: 'OVHcloud'
+        fill_in "Pays d'hébergement", with: 'France'
+        choose 'editor_has_designated_rssi_true'
+        click_button 'Enregistrer'
+      end
+
+      expect(editor.reload).to have_attributes(
+        two_factor_status: 'in_progress',
+        two_factor_deadline: Date.new(2027, 3, 31),
+        two_factor_methods: %w[totp proconnect],
+        hosting_provider: 'OVHcloud',
+        hosting_country: 'France',
+        has_designated_rssi: true
+      )
+    end
+
+    it 'asks for the deadline of a two-factor authentication in progress' do
+      within_tab('security') do
+        choose 'En cours'
+        click_button 'Enregistrer'
+      end
+
+      expect(editor.reload.two_factor_status).to be_nil
+      expect(page).to have_css('#editor-profile-security-panel .fr-input-group--error')
+    end
+  end
+
   describe 'contacts' do
     before { visit editor_settings_path(onglet: 'contacts') }
 

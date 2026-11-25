@@ -3,8 +3,16 @@ EditorProfileSection = Data.define(:key, :editor_attributes, :admin_attributes) 
     [
       new(key: 'general', editor_attributes: %i[name description domain], admin_attributes: [:siret, :role, { apis: [] }]),
       new(key: 'contacts', editor_attributes: [], admin_attributes: []),
-      new(key: 'security', editor_attributes: %i[deployment_type], admin_attributes: %i[allowed_ips]),
+      new(key: 'security', editor_attributes: security_attributes, admin_attributes: %i[allowed_ips]),
       new(key: 'technical', editor_attributes: %i[languages setup_instructions], admin_attributes: %i[copy_token editor_tokens_enabled])
+    ]
+  end
+
+  def self.security_attributes
+    [
+      :deployment_type, :hosting_provider, :hosting_country,
+      :two_factor_status, :two_factor_deadline, { two_factor_methods: [] },
+      :security_accreditation, :security_accreditation_date, :uses_mon_service_securise, :has_designated_rssi
     ]
   end
 

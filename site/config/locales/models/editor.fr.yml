@@ -8,6 +8,8 @@ fr:
       editor:
         role: "Rôle"
         deployment_type: "Type de déploiement"
+        two_factor_deadline: "Échéance de la double authentification"
+        two_factor_methods: "Méthodes de double authentification"
   editors:
     roles:
       blank: "Inconnu"
@@ -15,6 +17,17 @@ fr:
       manages_token: "Gère le jeton"
       client_manages_token: "Client gère le jeton"
       both: "Les deux"
+    two_factor_statuses:
+      "yes": "Oui"
+      in_progress: "En cours"
+      "no": "Non"
+    two_factor_methods:
+      totp: "Application TOTP"
+      sms: "SMS"
+      email_otp: "Code par email"
+      proconnect: "ProConnect"
+      hardware_key: "Clé matérielle"
+      other: "Autre"
     deployment_types:
       blank: "Inconnu"
       unknown: "Déploiement inconnu"

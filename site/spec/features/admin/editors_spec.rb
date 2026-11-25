@@ -29,6 +29,13 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       )
     end
 
+    it 'lists the two-factor authentication status of each editor' do
+      editor.update!(two_factor_status: 'in_progress', two_factor_deadline: Date.new(2027, 3, 31))
+      visit admin_editors_path
+
+      expect(page).to have_text('En cours (échéance 31/03/2027)')
+    end
+
     it 'filters by name' do
       create(:editor, name: 'Other Corp')
       visit admin_editors_path(search: 'UMAD')
