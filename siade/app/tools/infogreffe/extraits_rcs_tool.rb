@@ -11,6 +11,6 @@ class Infogreffe::ExtraitsRCSTool < ApplicationTool
   )
 
   def self.organizer_class
-    Infogreffe::ExtraitsRCS
+    Infogreffe::ExtraitsRCSSchema14
   end
 end

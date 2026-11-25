@@ -9,7 +9,7 @@ shared:
     url_path: '/v3/insee/sirene/unites_legales/diffusibles/{siren}'
     documentation_url: 'https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles'
   infogreffe.extraits_rcs:
-    url_path: '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
+    url_path: '/v4/infogreffe/rcs/unites_legales/{siren}/extrait_kbis'
     documentation_url: 'https://entreprise.api.gouv.fr/catalogue/infogreffe/rcs/extrait'
   qualibat.certifications_batiment:
     url_path: '/v4/qualibat/etablissements/{siret}/certification_batiment'

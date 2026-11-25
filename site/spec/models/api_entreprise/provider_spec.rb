@@ -6,6 +6,7 @@ RSpec.describe APIEntreprise::Provider do
     routes_test: true,
     expected_routes: [
       '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis',
+      '/v4/infogreffe/rcs/unites_legales/{siren}/extrait_kbis',
       '/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux'
     ]
 end

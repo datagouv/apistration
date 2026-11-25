@@ -2,8 +2,10 @@ require 'swagger_helper'
 
 RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swagger] do
   path '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis' do
-    get SwaggerData.get('infogreffe.extraits_rcs.title') do
-      tags(*SwaggerData.get('infogreffe.extraits_rcs.tags'))
+    get SwaggerData.get('infogreffe.extraits_rcs.v3.title') do
+      deprecated true
+
+      tags(*SwaggerData.get('infogreffe.extraits_rcs.v3.tags'))
 
       common_action_attributes
 
@@ -29,26 +31,28 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
         end
 
         response '200', 'Entreprise trouvée (personne morale)' do
-          description SwaggerData.get('infogreffe.extraits_rcs.description')
+          description SwaggerData.get('infogreffe.extraits_rcs.v3.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
+            attributes: SwaggerData.get('infogreffe.extraits_rcs.v3.attributes')
           )
 
-          run_test!
+          run_test! do |response|
+            expect(JSON.parse(response.body)['data']).not_to have_key('euid')
+          end
         end
 
         response '200', 'Entreprise trouvée (personne physique)' do
           let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
 
-          description SwaggerData.get('infogreffe.extraits_rcs.description')
+          description SwaggerData.get('infogreffe.extraits_rcs.v3.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
+            attributes: SwaggerData.get('infogreffe.extraits_rcs.v3.attributes')
           )
 
           run_test!

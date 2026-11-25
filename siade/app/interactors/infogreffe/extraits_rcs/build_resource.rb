@@ -7,6 +7,7 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
   def resource_attributes
     {
       siren: context.params[:siren],
+      euid:,
       date_extrait: dossier['date_extrait'],
       date_radiation:,
       date_immatriculation: dossier['dateISO_immat'],
@@ -23,6 +24,10 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
   end
 
   private
+
+  def euid
+    dossier.at_css('entreprise euid')&.text.presence
+  end
 
   def date_radiation
     date_radiation_node = infos.xpath('//radiation/date_radiation/@dateISO')
