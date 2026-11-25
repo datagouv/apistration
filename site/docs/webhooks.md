@@ -32,8 +32,7 @@ Celui-ci effectue les tâches suivantes de manière séquentielle:
 1. Trouve ou crée la demande, en affectant les dernières valeurs (intitule,
    contacts etc...)
 1. Si l'événement est une validation, crée le jeton associé
-1. Mets à jour les contacts (demandeur, technique et métier) sur Mailjet
-1. Construit la liste des variables Mailjet
+1. Mets à jour les contacts (demandeur, technique et métier) sur Brevo
 1. Planifie l'ensemble des emails associés à la demande, en fonction de
    l'événement
 
@@ -42,9 +41,13 @@ ci-dessous.
 
 ## Fichier de configuration
 
-Le fichier de configuration se situe dans
-[`config/datapass_webhooks.yml`](./config/datapass_webhooks.yml) et permet de
-planifier les emails aux divers contacts associés à la demande.
+Les fichiers de configuration
+[`config/datapass_webhooks_entreprise.yml`](../config/datapass_webhooks_entreprise.yml)
+et
+[`config/datapass_webhooks_particulier.yml`](../config/datapass_webhooks_particulier.yml)
+planifient les emails aux divers contacts associés à la demande. Les emails
+sont des vues Rails (MJML) de `APIEntreprise::AuthorizationRequestMailer` et
+`APIParticulier::AuthorizationRequestMailer`, envoyées en SMTP par Brevo.
 
 Ci-dessous un exemple avec les explications de chaque entrée:
 
@@ -56,33 +59,22 @@ production:
   created: {}
   send_application:
     emails:
-      # Chaque entrée correspond à un email. Le champ 'id' correspond à l'ID technique d'un template transactionnel sur Mailjet, et doit être présent (il s'agit du seul champ obligatoire)
-      - id: "11"
-      - id: "12"
-        # La clé 'when' permet de planifier un email dans le future, dans le cadre des relances. Point iportant: si la demande a changé d'état au moment de l'envoi, l'email n'est pas envoyé.
-        # Par défaut l'email est envoyé sans délai.
-        when: "in 14 days"
-  review_application:
-    emails:
-      - id: "22"
+      # Chaque entrée correspond à un email. Le champ 'template' est le nom de la méthode du mailer, donc de la vue, et doit être présent (il s'agit du seul champ obligatoire)
+      - template: 'send_application'
   refuse_application:
     emails:
-      - id: "32"
-  validate_application:
-    emails:
-      - id: "51"
+      - template: 'review_application'
         # La clé 'condition_on_authorization' permet d'appliquer une condition sur l'envoi de l'email. Cette condition est évaluée au moment de la réception du webhook et non lors de l'envoi. Cette condition doit être une méthode définie sur la classe AuthorizationRequestConditionFacade
         # Par défaut condition est évalué à true
-        condition_on_authorization: "all_contacts_have_the_same_email?"
-      - id: "52"
-        condition_on_authorization: "all_contacts_have_different_emails?"
+        condition_on_authorization: 'demandeur_first_name_is_run?'
+      - template: 'review_application_2'
         # Tableau des destinataires, doit être soit un modèle User soit un modèle Contact
         to:
-          - "authorization_request.contact_metier"
+          - 'authorization_request.contact_metier'
         # Tableau des destinataires en copie
         cc:
-          - "authorization_request.contact_technique"
-          - "authorization_request.demandeur"
+          - 'authorization_request.contact_technique'
+          - 'authorization_request.demandeur'
 ```
 
 Un test d'acceptance vérifie le format du fichier: si il y a une typo les tests
@@ -91,50 +83,21 @@ ne passeront pas.
 Pour les conditions évaluées, vous trouverez le fichier ici:
 [AuthorizationRequestConditionFacade](../app/lib/authorization_request_condition_facade.rb)
 
-## Variables d'environnement disponibles lors de l'envoi via Mailjet
-
-Les variables ci-dessous sont disponibles quelque soit l'état de la demande:
-
-1. `authorization_request_id`, `integer`, l'ID de la demande DataPass
-1. `authorization_request_intitule`, `string`, l'intitulé de la demande DataPass
-1. `authorization_request_description`, `string`, la description de la demande DataPass
-1. `demandeur_first_name`, `string`, le prénom du demandeur
-1. `demandeur_last_name`, `string`, le nom du demandeur
-1. `demandeur_email`, `string`, l'email du demandeur
-1. `contact_metier_first_name`, `string`, le prénom du contact métier
-1. `contact_metier_last_name`, `string`, le nom du contact métier
-1. `contact_metier_email`, `string`, l'email du contact métier
-1. `contact_technique_first_name`, `string`, le prénom du contact technique
-1. `contact_technique_last_name`, `string`, le nom du contact technique
-1. `contact_technique_email`, `string`, l'email du contact technique
-
-A noter que les variables associées aux contacts peuvent être vides.
-
-Si l'événement est initié par un instructeur (`refuse_application`,
-`review_application`, `validate_application`, `review`), les variables suivantes
-sont disponibles:
-
-1. `instructor_first_name`, `string`, prénom de l'instructeur
-1. `instructor_last_name`, `string`, nom de l'instructeur
-
-A noter qu'il s'agit de variables d'environnements. Les attributs des contacts
-sont mis à jour avant l'envoi des emails, et décrit ci-dessous.
-
-Si un jeton est associé à la demande (théoriquement seulement dans le cas de la
-validation), les variables suivantes sont disponibles:
-
-1. `token_role_ROLE`, `boolean`, détermine si ROLE est associé au jeton. La
-   liste des rôles est celle en base de données.
-
 ## Mise à jour des attributs des contacts
 
-A chaque réception d'un webhook, les informations de contacts sont mis à jour
-sur Mailjet. Les contacts regroupent le demandeur, le contact technique et le
-contact métier. Les informations mises à jour sont les suivantes:
+A chaque réception d'un webhook, les contacts (demandeur, contact technique et
+contact métier, dédoublonnés par email) sont ajoutés à la liste Brevo de l'API
+(`BrevoSettings`, `config/initializers/brevo.rb`) et leurs attributs
+mis à jour. Le statut de blocklist n'est jamais envoyé : qu'un contact
+blocklisté le reste est à vérifier en staging (cf. [brevo.md](./brevo.md),
+étape 7). Les attributs, à créer au préalable dans Brevo, sont les suivants:
 
-1. `prénom`, `string`, le prénom du contact
-1. `nom`, `string`, le nom du contact
-1. `contact_demandeur`, `boolean`, indique si le contact est le demandeur
-1. `contact_métier`, `boolean`, indique si le contact est le contact métier
-1. `contact_technique`, `boolean`, indique si le contact est le contact
+1. `PRENOM`, `string`, le prénom du contact
+1. `NOM`, `string`, le nom du contact
+1. `CONTACT_DEMANDEUR`, `boolean`, indique si le contact est le demandeur
+1. `CONTACT_METIER`, `boolean`, indique si le contact est le contact métier
+   (API Entreprise seulement)
+1. `CONTACT_TECHNIQUE`, `boolean`, indique si le contact est le contact
    technique
+
+Une erreur de l'API Brevo fait échouer le webhook.
