@@ -90,16 +90,17 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
   end
 
   def activite_principale_naf2025
-    @activite_principale_naf2025 ||= Referentials::ActivitePrincipale.new(
-      code: etablissement['activitePrincipaleNAF25Etablissement'],
-      nomenclature: 'NAF2025'
+    @activite_principale_naf2025 ||= activite_principale_naf2025_from(
+      code: latest_info_on_etablissement['activitePrincipaleEtablissement'],
+      nomenclature: latest_info_on_etablissement['nomenclatureActivitePrincipaleEtablissement'],
+      naf2025_code: etablissement['activitePrincipaleNAF25Etablissement']
     )
   end
 
   def activite_principale_naf_rev2
-    @activite_principale_naf_rev2 ||= Referentials::ActivitePrincipale.new(
+    @activite_principale_naf_rev2 ||= activite_principale_naf_rev2_from(
       code: latest_info_on_etablissement['activitePrincipaleEtablissement'],
-      nomenclature: 'NAFRev2'
+      nomenclature: latest_info_on_etablissement['nomenclatureActivitePrincipaleEtablissement']
     )
   end
 end

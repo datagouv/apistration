@@ -45,6 +45,19 @@ class Referentials::ActivitePrincipale
     end
   end
 
+  def self.unambiguous_nafrev2_for_naf2025
+    AppConfig.fetch(:referentials_activite_principale_unambiguous_nafrev2_for_naf2025) do
+      CSV.read(
+        Rails.root.join('lib/referentials/files/NAF2025_vers_NAFRev2.csv'),
+        headers: true
+      ).group_by { |row| row['NAF2025'] }
+        .transform_values { |rows| rows.map { |row| row['NAFRev2'] } }
+        .select { |_naf2025, nafrev2_codes| nafrev2_codes.one? }
+        .transform_values(&:first)
+        .freeze
+    end
+  end
+
   private
 
   def libelle

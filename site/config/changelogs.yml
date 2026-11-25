@@ -1,3 +1,13 @@
+- date: 2026-11-25
+  scope: api_entreprise
+  title: "Sirene : bascule du code APE en NAF 2025 le 6 janvier 2027, migrez vers la v4"
+  description: |
+    Les 5 et 6 janvier 2027, l'Insee fait passer le code APE de toutes les unités actives du répertoire Sirene en nomenclature NAF 2025 et cesse de diffuser leur code en NAF rév. 2. Les unités cessées gardent leur ancien code. Cela concerne les API [Sirene établissements](<%= endpoint_path(uid: 'insee/etablissements') %>), [unités légales](<%= endpoint_path(uid: 'insee/unites_legales') %>) et [siège social](<%= endpoint_path(uid: 'insee/siege_social') %>), en v3 comme en v4, diffusibles comprises.
+
+    À partir de cette date, le code NAF rév. 2 (`activite_principale_naf_rev2` en v4, `activite_principale` en v3) sera reconstruit à partir de la [table de passage de l'Insee](https://www.insee.fr/fr/information/8617910) lorsque le code NAF 2025 n'a qu'un seul antécédent en NAF rév. 2, ce qui est le cas de 515 codes sur 746. Sinon, il vaudra `null`. Ce champ est déprécié.
+
+    **Si vous appelez encore la v3 de ces API, migrez vers la v4** : elle expose dans `activite_principale` le code NAF 2025 diffusé par l'Insee. En v3, l'activité principale est la seule donnée d'activité et sera vide pour une partie des unités après la bascule. À version égale, le format des réponses ne change pas et aucun champ n'est retiré.
+
 - date: 2026-11-23
   scope: api_particulier
   title: "Participation familiale EAJE : mêmes données que CDAP pour les allocataires Caf"
