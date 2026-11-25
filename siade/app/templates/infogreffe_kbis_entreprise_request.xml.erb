@@ -4,6 +4,9 @@
     <urn:getProduitsWebServicesXML soapenv:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'>
       <arg0 xsi:type='xsd:string'>
         <demande>
+          <% if version_schema %>
+          <version_schema><%= version_schema %></version_schema>
+          <% end %>
           <emetteur>
             <code_abonne><%= infogreffe_code_abonne %></code_abonne>
             <mot_passe><%= infogreffe_mot_passe %></mot_passe>
