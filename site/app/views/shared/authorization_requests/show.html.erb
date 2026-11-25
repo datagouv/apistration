@@ -6,6 +6,7 @@
     <div class="fr-col-12">
       <header class="fr-mb-4w">
         <%= render partial: 'shared/authorization_requests/header', locals: { authorization_request: @authorization_request } %>
+        <%= render partial: 'shared/authorization_requests/contacts', locals: { authorization_request: @authorization_request } %>
 
         <div class="fr-mt-3w">
           <%= external_link_to datapass_authorization_request_url(@authorization_request),

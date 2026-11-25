@@ -128,8 +128,11 @@ RSpec.describe 'displays show of authorization request', app: :api_particulier d
         end
 
         describe 'contacts section' do
-          it 'is not displayed' do
-            expect(page).to have_no_text(authorization_request.demandeur.email)
+          it 'lists who can access this space and where to change them' do
+            within('#habilitation_contacts') do
+              expect(page).to have_text("Demandeur : #{authorization_request.demandeur.email}")
+              expect(page).to have_text('mettez à jour l\'habilitation sur DataPass')
+            end
           end
 
           describe 'when the user is contact technique' do
