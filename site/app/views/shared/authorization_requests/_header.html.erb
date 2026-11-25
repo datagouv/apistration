@@ -9,8 +9,4 @@
 
 <p class="fr-text--sm fr-mb-1v"><%= t('.request_number_html', external_id: authorization_request.external_id) %></p>
 
-<% if authorization_request.demarche.present? %>
-  <p class="fr-text--sm fr-mb-1v"><%= t('.form_used_html', name: authorization_request.demarche) %></p>
-<% end %>
-
 <p class="fr-text--sm fr-mb-0"><%= t('.delivered_at_html', humanized_date: friendly_format_from_timestamp(authorization_request.created_at)) %></p>
