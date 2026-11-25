@@ -68,7 +68,7 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
       expect(ActionMailer::Base.deliveries.size).to eq(1)
       mail = ActionMailer::Base.deliveries.last
       expect(mail.to).to contain_exactly('demandeur@example.org', 'technique@example.org')
-      expect(mail.subject).to eq("🔑 Jeton \"Production\" créé sur votre demande n°#{authorization_request.external_id}")
+      expect(mail.subject).to eq("🔑 Jeton \"Production\" créé sur votre habilitation DataPass n°#{authorization_request.external_id}")
       expect(mail.text_part.decoded).to include("#{contact_metier.full_name} a créé le jeton « Production »")
     end
 
@@ -232,7 +232,7 @@ RSpec.describe 'Self-service tokens', app: :api_entreprise do
       visit authorization_request_path(authorization_request)
       find("##{dom_id(token, :extension_link)}").click
 
-      expect(page).to have_text('vérifiez que votre demande est toujours à jour')
+      expect(page).to have_text('vérifiez que votre habilitation est toujours à jour')
       expect(page).to have_link(href: datapass_authorization_request_url(authorization_request))
     end
 

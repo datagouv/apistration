@@ -5,8 +5,8 @@
       <p>Bonjour,</p>
       <p>
         L'équipe <%= api_full_name %> a programmé la révocation du jeton <b>« <%= @token.name %> »</b>
-        de la demande n°<%= @authorization_request.external_id %> (<%= @intitule %>) le <b><%= @blacklisted_at %></b>.
-        Créez un nouveau jeton d'ici là depuis la page de la demande et mettez à jour votre logiciel.
+        de l'habilitation DataPass n°<%= @authorization_request.external_id %> (<%= @intitule %>) le <b><%= @blacklisted_at %></b>.
+        Créez un nouveau jeton d'ici là depuis la page de l'habilitation et mettez à jour votre logiciel.
       </p>
       <% if @comment.present? %>
         <p>
