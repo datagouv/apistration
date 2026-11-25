@@ -16,7 +16,7 @@ fiche:
     position: 134
     historique: &insee_v4_siege_social_historique |+
       **Ce que change cette nouvelle version de l'API par rapport à la précédente :**
-      Cette version utilise la nomenclature **NAF Rév.2025** pour l'activité principale. L'ancienne nomenclature NAF Rév.2 reste disponible dans la clé `activite_principale_naf_rev2`.
+      Cette version utilise la nomenclature **NAF Rév.2025** pour l'activité principale. L'ancienne nomenclature NAF Rév.2 reste disponible dans la clé `activite_principale_naf_rev2`, dépréciée : à partir de la bascule de l'Insee en NAF 2025 le 6 janvier 2027, l'Insee ne diffusera plus le code NAF Rév.2 des unités actives. Il sera reconstruit à partir de la table de passage de l'Insee lorsque le code NAF 2025 n'a qu'un seul antécédent en NAF Rév.2, et vaudra `null` sinon.
       
       **Ce qui ne change pas :**
       Tout le reste est identique.

@@ -13077,9 +13077,9 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
                               Des tables de correspondance seront fournies par l'Insee."
                             example: 6420Z
                         required:
@@ -17987,10 +17987,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -18404,11 +18410,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -19350,10 +19361,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -19767,11 +19784,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -19949,9 +19971,15 @@ paths:
                               NAFRev2
                             type: object
                             additionalProperties: false
-                            description: Ce champ permet de retrouver le code APE
-                              dans l'ancienne nomenclature NAFRev2 pour assurer la
-                              rétro-compatibilité.
+                            description: 'Déprécié. Ce champ permet de retrouver le
+                              code APE dans l''ancienne nomenclature NAFRev2 pour
+                              assurer la rétro-compatibilité. À partir de la bascule
+                              de l''Insee en NAF 2025 le 6 janvier 2027, l''Insee
+                              ne diffusera plus le code NAFRev2 des unités actives
+                              : il sera reconstruit à partir de la table de passage
+                              de l''Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n''a qu''un seul antécédent
+                              en NAFRev2, et le code vaudra null sinon.'
                             properties:
                               code:
                                 title: Code de l'activité principale (APE) en NAFRev2
@@ -20276,8 +20304,14 @@ paths:
                           NAFRev2
                         type: object
                         additionalProperties: false
-                        description: Ce champ permet de retrouver le code APE dans
-                          l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité.
+                        description: 'Déprécié. Ce champ permet de retrouver le code
+                          APE dans l''ancienne nomenclature NAFRev2 pour assurer la
+                          rétro-compatibilité. À partir de la bascule de l''Insee
+                          en NAF 2025 le 6 janvier 2027, l''Insee ne diffusera plus
+                          le code NAFRev2 des unités actives : il sera reconstruit
+                          à partir de la table de passage de l''Insee (https://www.insee.fr/fr/information/8617910)
+                          lorsque le code NAF 2025 n''a qu''un seul antécédent en
+                          NAFRev2, et le code vaudra null sinon.'
                         properties:
                           code:
                             title: Code de l'activité principale (APE) en NAFRev2
@@ -20770,10 +20804,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -21207,11 +21247,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -22193,10 +22238,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -22630,11 +22681,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -22812,9 +22868,15 @@ paths:
                               NAFRev2
                             type: object
                             additionalProperties: false
-                            description: Ce champ permet de retrouver le code APE
-                              dans l'ancienne nomenclature NAFRev2 pour assurer la
-                              rétro-compatibilité.
+                            description: 'Déprécié. Ce champ permet de retrouver le
+                              code APE dans l''ancienne nomenclature NAFRev2 pour
+                              assurer la rétro-compatibilité. À partir de la bascule
+                              de l''Insee en NAF 2025 le 6 janvier 2027, l''Insee
+                              ne diffusera plus le code NAFRev2 des unités actives
+                              : il sera reconstruit à partir de la table de passage
+                              de l''Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n''a qu''un seul antécédent
+                              en NAFRev2, et le code vaudra null sinon.'
                             properties:
                               code:
                                 title: Code de l'activité principale (APE) en NAFRev2
@@ -23167,8 +23229,14 @@ paths:
                           NAFRev2
                         type: object
                         additionalProperties: false
-                        description: Ce champ permet de retrouver le code APE dans
-                          l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité.
+                        description: 'Déprécié. Ce champ permet de retrouver le code
+                          APE dans l''ancienne nomenclature NAFRev2 pour assurer la
+                          rétro-compatibilité. À partir de la bascule de l''Insee
+                          en NAF 2025 le 6 janvier 2027, l''Insee ne diffusera plus
+                          le code NAFRev2 des unités actives : il sera reconstruit
+                          à partir de la table de passage de l''Insee (https://www.insee.fr/fr/information/8617910)
+                          lorsque le code NAF 2025 n''a qu''un seul antécédent en
+                          NAFRev2, et le code vaudra null sinon.'
                         properties:
                           code:
                             title: Code de l'activité principale (APE) en NAFRev2
@@ -23671,10 +23739,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -24108,11 +24182,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -25071,10 +25150,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -25508,11 +25593,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -25690,9 +25780,15 @@ paths:
                               NAFRev2
                             type: object
                             additionalProperties: false
-                            description: Ce champ permet de retrouver le code APE
-                              dans l'ancienne nomenclature NAFRev2 pour assurer la
-                              rétro-compatibilité.
+                            description: 'Déprécié. Ce champ permet de retrouver le
+                              code APE dans l''ancienne nomenclature NAFRev2 pour
+                              assurer la rétro-compatibilité. À partir de la bascule
+                              de l''Insee en NAF 2025 le 6 janvier 2027, l''Insee
+                              ne diffusera plus le code NAFRev2 des unités actives
+                              : il sera reconstruit à partir de la table de passage
+                              de l''Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n''a qu''un seul antécédent
+                              en NAFRev2, et le code vaudra null sinon.'
                             properties:
                               code:
                                 title: Code de l'activité principale (APE) en NAFRev2
@@ -26045,8 +26141,14 @@ paths:
                           NAFRev2
                         type: object
                         additionalProperties: false
-                        description: Ce champ permet de retrouver le code APE dans
-                          l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité.
+                        description: 'Déprécié. Ce champ permet de retrouver le code
+                          APE dans l''ancienne nomenclature NAFRev2 pour assurer la
+                          rétro-compatibilité. À partir de la bascule de l''Insee
+                          en NAF 2025 le 6 janvier 2027, l''Insee ne diffusera plus
+                          le code NAFRev2 des unités actives : il sera reconstruit
+                          à partir de la table de passage de l''Insee (https://www.insee.fr/fr/information/8617910)
+                          lorsque le code NAF 2025 n''a qu''un seul antécédent en
+                          NAFRev2, et le code vaudra null sinon.'
                         properties:
                           code:
                             title: Code de l'activité principale (APE) en NAFRev2
@@ -26529,10 +26631,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -26946,11 +27054,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -27882,10 +27995,16 @@ paths:
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -28299,11 +28418,16 @@ paths:
                                   d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875.
-                                  \n \n ⚠️ À partir de janvier 2026, le code APE utilisera
-                                  la nouvelle nomenclature NAF 2025, tel qu'explicité
-                                  dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                                  Des tables de correspondance seront fournies par
-                                  l'Insee."
+                                  \n \n ⚠️ À partir du 6 janvier 2027, le code APE
+                                  utilisera la nouvelle nomenclature NAF 2025, tel
+                                  qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                                  En version 4, ce champ porte le code NAF 2025. En
+                                  version 3, il porte le code NAF rév. 2 : l'Insee
+                                  ne le diffusant plus pour les unités actives à partir
+                                  de cette date, il sera reconstruit à partir de la
+                                  table de passage de l'Insee (https://www.insee.fr/fr/information/8617910)
+                                  lorsque le code NAF 2025 n'a qu'un seul antécédent
+                                  en NAF rév. 2, et vaudra null sinon."
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
@@ -28481,9 +28605,15 @@ paths:
                               NAFRev2
                             type: object
                             additionalProperties: false
-                            description: Ce champ permet de retrouver le code APE
-                              dans l'ancienne nomenclature NAFRev2 pour assurer la
-                              rétro-compatibilité.
+                            description: 'Déprécié. Ce champ permet de retrouver le
+                              code APE dans l''ancienne nomenclature NAFRev2 pour
+                              assurer la rétro-compatibilité. À partir de la bascule
+                              de l''Insee en NAF 2025 le 6 janvier 2027, l''Insee
+                              ne diffusera plus le code NAFRev2 des unités actives
+                              : il sera reconstruit à partir de la table de passage
+                              de l''Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n''a qu''un seul antécédent
+                              en NAFRev2, et le code vaudra null sinon.'
                             properties:
                               code:
                                 title: Code de l'activité principale (APE) en NAFRev2
@@ -28808,8 +28938,14 @@ paths:
                           NAFRev2
                         type: object
                         additionalProperties: false
-                        description: Ce champ permet de retrouver le code APE dans
-                          l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité.
+                        description: 'Déprécié. Ce champ permet de retrouver le code
+                          APE dans l''ancienne nomenclature NAFRev2 pour assurer la
+                          rétro-compatibilité. À partir de la bascule de l''Insee
+                          en NAF 2025 le 6 janvier 2027, l''Insee ne diffusera plus
+                          le code NAFRev2 des unités actives : il sera reconstruit
+                          à partir de la table de passage de l''Insee (https://www.insee.fr/fr/information/8617910)
+                          lorsque le code NAF 2025 n''a qu''un seul antécédent en
+                          NAFRev2, et le code vaudra null sinon.'
                         properties:
                           code:
                             title: Code de l'activité principale (APE) en NAFRev2
@@ -29903,10 +30039,16 @@ paths:
                               \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -30746,10 +30888,16 @@ paths:
                               \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -30920,8 +31068,14 @@ paths:
                           NAFRev2
                         type: object
                         additionalProperties: false
-                        description: Ce champ permet de retrouver le code APE dans
-                          l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité.
+                        description: 'Déprécié. Ce champ permet de retrouver le code
+                          APE dans l''ancienne nomenclature NAFRev2 pour assurer la
+                          rétro-compatibilité. À partir de la bascule de l''Insee
+                          en NAF 2025 le 6 janvier 2027, l''Insee ne diffusera plus
+                          le code NAFRev2 des unités actives : il sera reconstruit
+                          à partir de la table de passage de l''Insee (https://www.insee.fr/fr/information/8617910)
+                          lorsque le code NAF 2025 n''a qu''un seul antécédent en
+                          NAFRev2, et le code vaudra null sinon.'
                         properties:
                           code:
                             title: Code de l'activité principale (APE) en NAFRev2
@@ -31635,10 +31789,16 @@ paths:
                               \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -32496,10 +32656,16 @@ paths:
                               \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875. \n \n
-                              ⚠️ À partir de janvier 2026, le code APE utilisera la
-                              nouvelle nomenclature NAF 2025, tel qu'explicité dans
-                              ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
-                              Des tables de correspondance seront fournies par l'Insee."
+                              ⚠️ À partir du 6 janvier 2027, le code APE utilisera
+                              la nouvelle nomenclature NAF 2025, tel qu'explicité
+                              dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067.
+                              En version 4, ce champ porte le code NAF 2025. En version
+                              3, il porte le code NAF rév. 2 : l'Insee ne le diffusant
+                              plus pour les unités actives à partir de cette date,
+                              il sera reconstruit à partir de la table de passage
+                              de l'Insee (https://www.insee.fr/fr/information/8617910)
+                              lorsque le code NAF 2025 n'a qu'un seul antécédent en
+                              NAF rév. 2, et vaudra null sinon."
                           libelle:
                             title: Libellé associé au code APE
                             type: string
@@ -32670,8 +32836,14 @@ paths:
                           NAFRev2
                         type: object
                         additionalProperties: false
-                        description: Ce champ permet de retrouver le code APE dans
-                          l'ancienne nomenclature NAFRev2 pour assurer la rétro-compatibilité.
+                        description: 'Déprécié. Ce champ permet de retrouver le code
+                          APE dans l''ancienne nomenclature NAFRev2 pour assurer la
+                          rétro-compatibilité. À partir de la bascule de l''Insee
+                          en NAF 2025 le 6 janvier 2027, l''Insee ne diffusera plus
+                          le code NAFRev2 des unités actives : il sera reconstruit
+                          à partir de la table de passage de l''Insee (https://www.insee.fr/fr/information/8617910)
+                          lorsque le code NAF 2025 n''a qu''un seul antécédent en
+                          NAFRev2, et le code vaudra null sinon.'
                         properties:
                           code:
                             title: Code de l'activité principale (APE) en NAFRev2
