@@ -228,6 +228,33 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
       expect(editor.contacts.reload).to be_empty
     end
 
+    it 'changes the phone of a contact' do
+      contact = editor.contacts.sole
+      within_tab('contacts') { click_on "Modifier le contact #{contact.role_label} #{contact.full_name}" }
+      fill_in 'Téléphone', with: '0611223344'
+      click_button 'Enregistrer'
+
+      expect(page).to have_css('#editor-profile-contacts[aria-selected="true"]')
+      expect(contact.reload).to have_attributes(phone: '0611223344', email: contact.email)
+    end
+
+    it 'names the contact each action button acts on, for screen readers' do
+      contact = editor.contacts.sole
+
+      within_tab('contacts') do
+        expect(page).to have_button("Retirer le contact #{contact.role_label} #{contact.full_name}")
+        expect(page).to have_link("Modifier le contact #{contact.role_label} #{contact.full_name}")
+      end
+    end
+
+    it 'cannot change the contact of another editor' do
+      other_contact = create(:editor_contact, editor: create(:editor), phone: '0100000000')
+
+      page.driver.submit :patch, editor_contact_path(other_contact), editor_contact: { phone: '0699999999' }
+
+      expect(other_contact.reload.phone).to eq('0100000000')
+    end
+
     it 'cannot remove the contact of another editor' do
       other_contact = create(:editor_contact, editor: create(:editor))
 

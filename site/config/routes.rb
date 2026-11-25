@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :editors, only: %i[index show new create update] do
       resources :editor_tokens, only: %i[create]
       resources :members, only: %i[create destroy], controller: 'editor_members'
-      resources :contacts, only: %i[create destroy], controller: 'editor_contacts'
+      resources :contacts, only: %i[create edit update destroy], controller: 'editor_contacts'
       resources :use_cases, only: %i[new create edit update destroy], controller: 'editor_use_cases'
     end
     resources :provider_dashboards, only: %i[index show], path: 'providers' do
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   namespace :editor, path: 'editeur' do
     resource :settings, only: %i[show update], path: 'parametres'
-    resources :contacts, only: %i[create destroy], path: 'parametres/contacts'
+    resources :contacts, only: %i[create edit update destroy], path: 'parametres/contacts', path_names: { edit: 'modifier' }
     resources :use_cases, only: %i[new create edit update destroy], path: 'parametres/cas-usage', path_names: { new: 'nouveau', edit: 'modifier' }
     resources :authorization_requests, only: %i[index], path: 'habilitations'
     resources :delegations, only: %i[index], path: 'delegations'

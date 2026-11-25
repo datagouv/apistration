@@ -26,7 +26,11 @@
                   <td><%= contact.email ? mail_to(contact.email, class: 'fr-link') : editor_profile_blank %></td>
                   <td><%= contact.phone.presence || editor_profile_blank %></td>
                   <td>
-                    <%= editor_profile_remove_button(editor_profile_contact_path(editor, contact, admin:), "le contact #{contact.role_label} #{contact.full_name || contact.email || contact.phone}", 'Retirer ce contact ?') %>
+                    <% subject = "le contact #{contact.role_label} #{contact.full_name || contact.email || contact.phone}" %>
+                    <div class="fr-btns-group fr-btns-group--inline fr-btns-group--sm">
+                      <%= editor_profile_edit_link(editor_profile_edit_contact_path(editor, contact, admin:), subject) %>
+                      <%= editor_profile_remove_button(editor_profile_contact_path(editor, contact, admin:), subject, 'Retirer ce contact ?') %>
+                    </div>
                   </td>
                 </tr>
               <% end %>
@@ -41,24 +45,7 @@
 <% end %>
 
 <h3 class="fr-h5 fr-mt-4w">Ajouter un contact</h3>
-<%= form_with(model: EditorContact.new, url: editor_profile_contacts_path(editor, admin:), method: :post) do |f| %>
-  <div class="fr-grid-row fr-grid-row--gutters">
-    <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_select(f, :role, 'Rôle', EditorContact.role_options) %>
-    </div>
-    <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_field(f, :text_field, :full_name, 'Nom') %>
-    </div>
-    <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_field(f, :email_field, :email, 'Email') %>
-    </div>
-    <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_field(f, :telephone_field, :phone, 'Téléphone') %>
-    </div>
-  </div>
-
-  <%= f.submit 'Ajouter le contact', class: 'fr-btn fr-btn--secondary' %>
-<% end %>
+<%= render 'shared/editor_contacts/form', editor:, contact: EditorContact.new, admin: %>
 
 <% if admin %>
   <%= render 'admin/editors/members', editor: %>

@@ -1,0 +1,5 @@
+<%= link_to 'Retour aux contacts', editor_profile_path_for(editor, 'contacts', admin:), class: 'fr-link fr-icon-arrow-left-line fr-link--icon-left' %>
+
+<h1 class="fr-mt-2w">Modifier un contact</h1>
+
+<%= render 'shared/editor_contacts/form', editor:, contact:, admin: %>

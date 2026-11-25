@@ -1,9 +1,24 @@
 class Admin::EditorContactsController < AdminController
   before_action :set_editor
 
+  def edit
+    @contact = @editor.contacts.find(params.expect(:id))
+  end
+
   def create
     result = Admin::EditorContacts::Create.call(editor: @editor, record_params: contact_params, admin: true_user, namespace:)
     flash_result(result, 'Contact ajouté')
+  end
+
+  def update
+    result = Admin::EditorContacts::Update.call(editor: @editor, record_id: params.expect(:id), record_params: contact_params, admin: true_user, namespace:)
+    @contact = result.record
+
+    if result.success? || @contact.nil?
+      flash_result(result, 'Contact mis à jour')
+    else
+      render 'edit', status: :unprocessable_content
+    end
   end
 
   def destroy

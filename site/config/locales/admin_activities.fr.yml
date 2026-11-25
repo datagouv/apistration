@@ -12,6 +12,7 @@ fr:
       editor_member_added: "Ajout d'un membre à un éditeur"
       editor_member_removed: "Retrait d'un membre d'un éditeur"
       editor_contact_added: "Ajout d'un contact à un éditeur"
+      editor_contact_updated: "Modification d'un contact d'un éditeur"
       editor_contact_removed: "Retrait d'un contact d'un éditeur"
       editor_use_case_created: "Ajout d'un cas d'usage à un éditeur"
       editor_use_case_updated: "Modification d'un cas d'usage d'un éditeur"

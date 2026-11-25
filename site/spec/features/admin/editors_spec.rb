@@ -311,6 +311,20 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(AdminActivity.last.before_attributes).to include('email' => 'old@editor.com')
     end
 
+    it 'changes a contact and records it in the activity log' do
+      contact = create(:editor_contact, editor:, email: 'old@editor.com')
+      visit admin_editor_path(editor, onglet: 'contacts')
+      within('#editor-profile-contacts-panel table') { click_on 'Modifier' }
+      fill_in 'Email', with: 'new@editor.com'
+
+      expect { click_on 'Enregistrer' }.to change(AdminActivity, :count).by(1)
+
+      expect(contact.reload.email).to eq('new@editor.com')
+      expect(AdminActivity.last).to have_attributes(name: 'editor_contact_updated', entity: editor)
+      expect(AdminActivity.last.before_attributes).to include('email' => 'old@editor.com')
+      expect(AdminActivity.last.after_attributes).to include('email' => 'new@editor.com')
+    end
+
     it 'shows the removed contact in the activity log' do
       create(:editor_contact, editor:, email: 'old@editor.com')
       visit admin_editor_path(editor, onglet: 'contacts')

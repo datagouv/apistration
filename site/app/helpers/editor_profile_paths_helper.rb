@@ -23,6 +23,10 @@ module EditorProfilePathsHelper
     admin ? admin_editor_contacts_path(editor) : editor_contacts_path
   end
 
+  def editor_profile_edit_contact_path(editor, contact, admin:)
+    admin ? edit_admin_editor_contact_path(editor, contact) : edit_editor_contact_path(contact)
+  end
+
   def editor_profile_contact_path(editor, contact, admin:)
     admin ? admin_editor_contact_path(editor, contact) : editor_contact_path(contact)
   end

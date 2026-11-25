@@ -1,0 +1,29 @@
+<%= form_with(model: contact, url: contact.persisted? ? editor_profile_contact_path(editor, contact, admin:) : editor_profile_contacts_path(editor, admin:), method: contact.persisted? ? :patch : :post) do |f| %>
+  <% if contact.errors[:base].any? %>
+    <div class="fr-alert fr-alert--error fr-alert--sm fr-mb-3w">
+      <p><%= contact.errors[:base].to_sentence %></p>
+    </div>
+  <% end %>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_select(f, :role, 'Rôle', EditorContact.role_options) %>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_field(f, :text_field, :full_name, 'Nom', hint: 'Prénom et nom, ou nom du service') %>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_field(f, :email_field, :email, 'Email', hint: 'Email ou téléphone, au moins l’un des deux') %>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_field(f, :telephone_field, :phone, 'Téléphone', hint: 'Par exemple 01 23 45 67 89') %>
+    </div>
+  </div>
+
+  <div class="fr-btns-group fr-btns-group--inline fr-mt-2w">
+    <%= f.submit contact.persisted? ? 'Enregistrer' : 'Ajouter le contact', class: contact.persisted? ? 'fr-btn' : 'fr-btn fr-btn--secondary' %>
+    <% if contact.persisted? %>
+      <%= link_to 'Annuler', editor_profile_path_for(editor, 'contacts', admin:), class: 'fr-btn fr-btn--secondary' %>
+    <% end %>
+  </div>
+<% end %>
