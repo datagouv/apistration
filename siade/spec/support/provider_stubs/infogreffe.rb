@@ -1,17 +1,12 @@
 require_relative '../provider_stubs'
-require 'erb'
 
 module ProviderStubs::Infogreffe
-  def infogreffe_payload(siren, kind)
-    template = extract_infogreffe_payload_template_path(kind)
-    ERB.new(template).result(binding)
-  end
-
-  private
-
-  def extract_infogreffe_payload_template_path(kind)
-    Rails.root.join(
-        "spec/fixtures/payloads/infogreffe_#{kind}.xml.erb"
-      ).read
+  def stub_infogreffe_extrait_rcs(siren:, payload:)
+    stub_request(:post, Siade.credentials[:infogreffe_url_extrait_rcs])
+      .with(body: %r{<num_siren>#{siren}</num_siren>})
+      .to_return(
+        status: 200,
+        body: open_payload_file("infogreffe/#{payload}.xml").read
+      )
   end
 end
