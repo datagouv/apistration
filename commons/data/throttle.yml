@@ -8,6 +8,7 @@ shared:
       - api_entreprise_v3_qualibat_certifications_batiment
       - api_entreprise_v3_mi_documents_associations
       - api_entreprise_inpi_proxy
+      - api_entreprise_siaf_fondations_proxy
     limit: 50
     period: 60
   high_latency_documents:

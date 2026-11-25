@@ -12,6 +12,35 @@ class MI::SIAF::Fondations::BuildResource < BuildResource
     'Sportif'
   ].freeze
 
+  FONDATION_RECONNUE_UTILITE_PUBLIQUE = 'FRUP'.freeze
+  FONDATION_ENTREPRISE = 'FE'.freeze
+  FONDS_DE_DOTATION = 'FDD'.freeze
+
+  SCOPE_SOCLE = 'fondations_mi_siaf'.freeze
+  SCOPE_COMPTES = 'fondations_mi_siaf_comptes'.freeze
+  SCOPE_FRAUDE = 'fondations_mi_siaf_controle'.freeze
+
+  SCOPE_PAR_TYPE_DE_PIECE_ET_DE_FONDATION = {
+    'Statuts' => {
+      FONDATION_RECONNUE_UTILITE_PUBLIQUE => SCOPE_SOCLE,
+      FONDATION_ENTREPRISE => SCOPE_SOCLE,
+      FONDS_DE_DOTATION => SCOPE_SOCLE
+    },
+    'Règlement intérieur' => {
+      FONDATION_RECONNUE_UTILITE_PUBLIQUE => SCOPE_SOCLE
+    },
+    "Rapport d'activité" => {
+      FONDATION_RECONNUE_UTILITE_PUBLIQUE => SCOPE_SOCLE,
+      FONDATION_ENTREPRISE => SCOPE_SOCLE,
+      FONDS_DE_DOTATION => SCOPE_COMPTES
+    },
+    'Comptes' => {
+      FONDATION_RECONNUE_UTILITE_PUBLIQUE => SCOPE_COMPTES,
+      FONDATION_ENTREPRISE => SCOPE_COMPTES,
+      FONDS_DE_DOTATION => SCOPE_COMPTES
+    }
+  }.freeze
+
   DOMAINE_INTERET_GENERAL_PATTERN = /\s*((?:#{Regexp.union(DOMAINES_INTERET_GENERAL).source})(?=\s*(?:,|\z))|[^,]+)/
 
   def self.departements
@@ -28,7 +57,8 @@ class MI::SIAF::Fondations::BuildResource < BuildResource
       filiation:,
       dirigeants:,
       beneficiaires_effectifs:,
-      situation_financiere:
+      situation_financiere:,
+      documents:
     }
   end
 
@@ -176,6 +206,25 @@ class MI::SIAF::Fondations::BuildResource < BuildResource
       annees_appel_generosite_publique: fondation['publicGenerosityYears'] || [],
       annees_financements_etrangers: fondation['foreignFinancingYears'] || []
     }
+  end
+
+  def documents
+    (fondation['files'] || []).map do |file|
+      {
+        id: file['id'],
+        type: file['typeFile'],
+        nom_original: file['originalName'],
+        type_mime: file['mimeType'],
+        taille: file['byteSize'],
+        date_effet: date(file['effectiveAt']),
+        date_depot: date(file['uploadedAt']),
+        scope: scope_document(file['typeFile'])
+      }
+    end
+  end
+
+  def scope_document(type_file)
+    SCOPE_PAR_TYPE_DE_PIECE_ET_DE_FONDATION.dig(type_file, fondation['foundationType']) || SCOPE_FRAUDE
   end
 
   def date(iso8601_timestamp)

@@ -94,6 +94,7 @@ RSpec.describe 'Rack::Attack acceptance' do
       let(:non_swagger_operation_ids) do
         %w[
           api_entreprise_inpi_proxy
+          api_entreprise_siaf_fondations_proxy
           api_entreprise_proxied_files
           api_entreprise_v3_inpi_rne_beneficiaires_effectifs_open_data
           mcp
