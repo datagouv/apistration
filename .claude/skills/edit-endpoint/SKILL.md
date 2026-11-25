@@ -83,6 +83,14 @@ Exemples :
 - `api_particulier/v3_and_more/cnav/quotient_familial`     (particulier v3+)
 - `api_particulier/v2/cnav/quotient_familial`              (particulier v2 legacy)
 
+## Definitions de champs
+
+Une definition de champ ou une valeur d'enum, dans la fiche comme dans le
+swagger, vient d'un document du fournisseur (swagger, contrat d'interface,
+documentation). Quand le fournisseur n'en donne pas, poser la question au
+PO et attendre sa reponse avant d'ecrire la definition : une definition
+ecrite par nous devient un contrat envers nos utilisateurs.
+
 ## Fiche metier
 
 Modifier les champs sous `fiche:` (hors `swagger:`). Valider :
