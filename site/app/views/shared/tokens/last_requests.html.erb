@@ -2,33 +2,19 @@
   <% if @requests.empty? %>
     <p class="fr-py-2w"><%= t('shared.tokens.stats.no_calls') %></p>
   <% else %>
-    <div class="fr-table fr-table--no-caption">
-      <div class="fr-table__wrapper">
-        <div class="fr-table__container">
-          <div class="fr-table__content">
-            <table>
-              <caption><%= t('shared.tokens.stats.requests_details.caption') %></caption>
-              <thead>
-                <tr>
-                  <% %i[timestamp path params status].each do |column| %>
-                    <th scope="col"><%= t("shared.tokens.stats.requests_details.columns.#{column}") %></th>
-                  <% end %>
-                </tr>
-              </thead>
-              <tbody>
-                <% @requests.each do |request| %>
-                  <tr>
-                    <td><%= l(request.timestamp, format: :compact_with_hours) %></td>
-                    <td><code><%= request.path %></code></td>
-                    <td class="token-stats-params"><code><%= request.params.to_json %></code></td>
-                    <td><%= request.status %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render layout: 'shared/dsfr_table', locals: {
+      classes: 'fr-table--no-caption',
+      caption: t('shared.tokens.stats.requests_details.caption'),
+      headers: %i[timestamp path params status].map { |column| t("shared.tokens.stats.requests_details.columns.#{column}") }
+    } do %>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= l(request.timestamp, format: :compact_with_hours) %></td>
+          <td><code><%= request.path %></code></td>
+          <td class="token-stats-params"><code><%= request.params.to_json %></code></td>
+          <td><%= request.status %></td>
+        </tr>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
