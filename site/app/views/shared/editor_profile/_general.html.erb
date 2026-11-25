@@ -4,52 +4,28 @@
 
   <div class="fr-grid-row fr-grid-row--gutters">
     <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_input_group(f, :name, 'Nom') do %>
-        <%= f.text_field :name, class: 'fr-input', placeholder: 'Raison sociale ou nom commercial' %>
-      <% end %>
+      <%= editor_profile_field(f, :text_field, :name, 'Nom', placeholder: 'Raison sociale ou nom commercial') %>
     </div>
     <div class="fr-col-12 fr-col-md-6">
       <% if admin %>
-        <%= editor_profile_input_group(f, :siret, 'SIRET', hint: '14 chiffres') do %>
-          <%= f.text_field :siret, class: 'fr-input', maxlength: 14 %>
-        <% end %>
+        <%= editor_profile_field(f, :text_field, :siret, 'SIRET', hint: '14 chiffres', maxlength: 14) %>
       <% else %>
         <%= editor_profile_readonly('SIRET', editor.siret) %>
       <% end %>
     </div>
   </div>
 
-  <%= editor_profile_input_group(f, :description, 'Description', hint: 'Visible par les usagers (collectivités, CCAS)') do %>
-    <%= f.text_area :description, class: 'fr-input', rows: 3 %>
-  <% end %>
+  <%= editor_profile_field(f, :text_area, :description, 'Description', hint: 'Visible par les usagers (collectivités, CCAS)', rows: 3) %>
 
-  <%= editor_profile_input_group(f, :domain, 'Site internet', hint: 'Nom de domaine, par exemple exemple.fr') do %>
-    <%= f.text_field :domain, class: 'fr-input' %>
-  <% end %>
+  <%= editor_profile_field(f, :text_field, :domain, 'Site internet', hint: 'Nom de domaine, par exemple exemple.fr') %>
 
   <% if admin %>
     <div class="fr-grid-row fr-grid-row--gutters">
       <div class="fr-col-12 fr-col-md-6">
-        <fieldset class="fr-fieldset <%= 'fr-fieldset--error' if editor.errors[:apis].any? %>" id="editor-apis">
-          <legend class="fr-fieldset__legend fr-text--regular">APIs</legend>
-          <%= f.collection_check_boxes :apis, Editor::APIS, :itself, :itself do |b| %>
-            <div class="fr-fieldset__element fr-fieldset__element--inline">
-              <div class="fr-checkbox-group">
-                <%= b.check_box(class: 'fr-checkbox') %>
-                <%= b.label(class: 'fr-label') { b.value.capitalize } %>
-              </div>
-            </div>
-          <% end %>
-          <% editor.errors[:apis].each do |message| %>
-            <p class="fr-error-text"><%= message %></p>
-          <% end %>
-        </fieldset>
+        <%= editor_profile_choices(f, :apis, 'APIs', Editor::APIS.map { |api| [api.capitalize, api] }, multiple: true) %>
       </div>
       <div class="fr-col-12 fr-col-md-6">
-        <div class="fr-select-group">
-          <%= f.label :role, 'Rôle', class: 'fr-label' %>
-          <%= f.select :role, options_for_select(Editor.role_options, editor.role), {}, class: 'fr-select' %>
-        </div>
+        <%= editor_profile_select(f, :role, 'Rôle', Editor.role_options) %>
       </div>
     </div>
   <% else %>

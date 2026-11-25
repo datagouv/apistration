@@ -11,6 +11,12 @@ module EditorProfileHelper
     admin ? admin_editor_contact_path(editor, contact) : editor_contact_path(contact)
   end
 
+  def editor_profile_field(form, type, attribute, label, **options)
+    editor_profile_input_group(form, attribute, label, hint: options.delete(:hint)) do
+      form.public_send(type, attribute, class: 'fr-input', **options)
+    end
+  end
+
   def editor_profile_input_group(form, attribute, label, hint: nil, &)
     errors = form.object.errors[attribute]
 
@@ -23,10 +29,49 @@ module EditorProfileHelper
     end
   end
 
+  def editor_profile_select(form, attribute, label, options)
+    content_tag(:div, class: 'fr-select-group') do
+      form.label(attribute, label, class: 'fr-label') +
+        form.select(attribute, options_for_select(options, form.object.public_send(attribute)), {}, class: 'fr-select')
+    end
+  end
+
   def editor_profile_checkbox(form, attribute, label)
     content_tag(:div, class: 'fr-checkbox-group') do
       form.check_box(attribute, class: 'fr-checkbox') + form.label(attribute, label, class: 'fr-label')
     end
+  end
+
+  def editor_profile_choices(form, attribute, legend, options, multiple: false)
+    errors = form.object.errors[attribute]
+
+    content_tag(:fieldset, class: ['fr-fieldset', ('fr-fieldset--error' if errors.any?)], id: "editor-#{attribute.to_s.dasherize}") do
+      safe_join([
+        content_tag(:legend, legend, class: 'fr-fieldset__legend fr-fieldset__legend--regular'),
+        (hidden_field_tag("#{form.object_name}[#{attribute}][]", '', id: nil) if multiple),
+        *options.map { |label, value| editor_profile_choice(form, attribute, label, value, multiple:) },
+        *errors.map { |message| content_tag(:p, message, class: 'fr-error-text fr-fieldset__element') }
+      ].compact)
+    end
+  end
+
+  def editor_profile_choice(form, attribute, label, value, multiple:)
+    input_id = "editor_#{attribute}_#{value}"
+    input = if multiple
+              check_box_tag("#{form.object_name}[#{attribute}][]", value, form.object.public_send(attribute).include?(value), id: input_id)
+            else
+              form.radio_button(attribute, value, id: input_id)
+            end
+
+    content_tag(:div, class: 'fr-fieldset__element fr-fieldset__element--inline') do
+      content_tag(:div, class: multiple ? 'fr-checkbox-group' : 'fr-radio-group') do
+        input + label_tag(input_id, label, class: 'fr-label')
+      end
+    end
+  end
+
+  def editor_profile_yes_no(form, attribute, legend)
+    editor_profile_choices(form, attribute, legend, [['Oui', true], ['Non', false]])
   end
 
   def editor_profile_readonly(label, value)

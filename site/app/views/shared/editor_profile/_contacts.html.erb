@@ -47,25 +47,16 @@
 <%= form_with(model: EditorContact.new, url: editor_profile_contacts_path(editor, admin:), method: :post) do |f| %>
   <div class="fr-grid-row fr-grid-row--gutters">
     <div class="fr-col-12 fr-col-md-3">
-      <div class="fr-select-group">
-        <%= f.label :role, 'Rôle', class: 'fr-label' %>
-        <%= f.select :role, EditorContact.role_options, {}, class: 'fr-select' %>
-      </div>
+      <%= editor_profile_select(f, :role, 'Rôle', EditorContact.role_options) %>
     </div>
     <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_input_group(f, :full_name, 'Nom') do %>
-        <%= f.text_field :full_name, class: 'fr-input' %>
-      <% end %>
+      <%= editor_profile_field(f, :text_field, :full_name, 'Nom') %>
     </div>
     <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_input_group(f, :email, 'Email') do %>
-        <%= f.email_field :email, class: 'fr-input' %>
-      <% end %>
+      <%= editor_profile_field(f, :email_field, :email, 'Email') %>
     </div>
     <div class="fr-col-12 fr-col-md-3">
-      <%= editor_profile_input_group(f, :phone, 'Téléphone') do %>
-        <%= f.telephone_field :phone, class: 'fr-input' %>
-      <% end %>
+      <%= editor_profile_field(f, :telephone_field, :phone, 'Téléphone') %>
     </div>
   </div>
 
