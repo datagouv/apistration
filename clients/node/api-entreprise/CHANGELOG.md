@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Changed
+- `infogreffe.extrait_kbis(siren)` calls `/v4/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`
+  by default: v4 adds `euid`, the European Unique Identifier sent by
+  Infogreffe. `{ version: 3 }` still reaches v3, now deprecated, with a
+  `DeprecationWarning`.
+
 ### Removed
 - **Breaking**: `fabrique_numerique_ministeres_sociaux.conventions_collectives(siret)`
   and the `FabriqueNumeriqueMinisteresSociaux` resource. The endpoint
