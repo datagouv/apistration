@@ -60,7 +60,7 @@ RSpec.describe EditorProfileBackfillService do
     end
 
     it 'carries the editor name as software and its token setup instructions to each use case' do
-      expect(editor.use_cases.pluck(:software, :setup_instructions, :integration_status).uniq).to eq([['Abelium', 'Menu Paramètres > API', 'production']])
+      expect(editor.use_cases.pluck(:software, :setup_instructions).uniq).to eq([['Abelium', 'Menu Paramètres > API']])
     end
   end
 

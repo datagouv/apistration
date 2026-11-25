@@ -1,7 +1,6 @@
 class EditorUseCase < ApplicationRecord
-  INTEGRATION_STATUSES = %w[production recette development prospection].freeze
   EDITABLE_ATTRIBUTES = [
-    :use_case, :software, :software_description, :software_url, :integration_status, :data_retention_months, :data_recipients, :setup_instructions,
+    :use_case, :software, :software_description, :software_url, :data_retention_months, :data_recipients, :setup_instructions,
     :security_accreditation, :security_accreditation_begin_date, :security_accreditation_end_date, :mon_service_securise_url,
     { scopes: [] }
   ].freeze
@@ -17,7 +16,6 @@ class EditorUseCase < ApplicationRecord
 
   validates :use_case, presence: true
   validates :software, presence: true
-  validates :integration_status, inclusion: { in: INTEGRATION_STATUSES }
   validates :data_retention_months, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :form_uid, uniqueness: true, allow_nil: true
   validates :security_accreditation_begin_date, :security_accreditation_end_date, presence: true, if: :security_accreditation?
@@ -34,10 +32,6 @@ class EditorUseCase < ApplicationRecord
 
     use_case.assign_attributes(use_case: key, scopes: DatapassUseCase.find(key)&.default_scopes || [])
     use_case
-  end
-
-  def self.integration_status_options
-    INTEGRATION_STATUSES.map { |status| [I18n.t(status, scope: 'editor_use_cases.integration_statuses'), status] }
   end
 
   def datapass_use_case

@@ -7,8 +7,3 @@ fr:
       use_cases: Démarches
   editor_use_cases:
     unknown_use_case: Démarche à préciser
-    integration_statuses:
-      production: En production
-      recette: En recette
-      development: En développement
-      prospection: En prospection

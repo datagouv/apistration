@@ -144,7 +144,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.integer "data_retention_months"
     t.text "data_recipients"
     t.text "setup_instructions"
-    t.string "integration_status"
     t.string "form_uid"
     t.boolean "security_accreditation"
     t.date "security_accreditation_begin_date"

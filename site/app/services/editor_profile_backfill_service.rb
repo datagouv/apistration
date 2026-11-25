@@ -39,8 +39,8 @@ class EditorProfileBackfillService
 
   def create_use_cases_from_form_uids
     execute(<<~SQL.squish)
-      INSERT INTO editor_use_cases (editor_id, form_uid, use_case, software, setup_instructions, integration_status, created_at, updated_at)
-      SELECT editors.id, form_uid, use_cases.use_case, editors.name, editors.setup_instructions, 'production', now(), now()
+      INSERT INTO editor_use_cases (editor_id, form_uid, use_case, software, setup_instructions, created_at, updated_at)
+      SELECT editors.id, form_uid, use_cases.use_case, editors.name, editors.setup_instructions, now(), now()
       FROM editors
       CROSS JOIN unnest(editors.form_uids) AS form_uid
       LEFT JOIN (VALUES #{use_case_by_form_uid}) AS use_cases (form_uid, use_case) USING (form_uid)

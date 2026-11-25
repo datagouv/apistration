@@ -18,7 +18,7 @@
             <caption>Démarches de l'éditeur</caption>
             <thead>
               <tr>
-                <% ['Démarche', 'Logiciel', 'Statut', 'Scopes', 'Formulaire DataPass'].each do |header| %>
+                <% ['Démarche', 'Logiciel', 'Scopes', 'Formulaire DataPass'].each do |header| %>
                   <th scope="col"><%= header %></th>
                 <% end %>
                 <th scope="col"><span class="fr-sr-only">Actions</span></th>
@@ -29,7 +29,6 @@
                 <tr id="<%= dom_id(use_case) %>">
                   <td><%= use_case.label %></td>
                   <td><%= use_case.software.presence || editor_profile_blank %></td>
-                  <td><%= use_case.integration_status ? t(use_case.integration_status, scope: 'editor_use_cases.integration_statuses') : editor_profile_blank %></td>
                   <td><%= pluralize(use_case.scopes.size, 'scope', plural: 'scopes') %></td>
                   <td><%= use_case.form_uid ? tag.code(use_case.form_uid) : editor_profile_blank %></td>
                   <td>

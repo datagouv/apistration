@@ -119,7 +119,6 @@ ignore_unused:
   - 'editors.deployment_types.*'
   - 'editors.two_factor_{statuses,methods}.*'
   - 'editor_contacts.roles.*'
-  - 'editor_use_cases.integration_statuses.*'
   - 'editor_profile.sections.*'
   - 'datapass_use_cases.*'
   - 'api_particulier.reporters_mailer.*'

@@ -2,7 +2,7 @@ class Editor::UseCasesController < EditorController
   before_action :set_use_case, only: %i[edit update destroy]
 
   def new
-    @use_case = EditorUseCase.prefill(current_editor.use_cases.build(integration_status: 'production'), params.fetch(:use_case, nil))
+    @use_case = EditorUseCase.prefill(current_editor.use_cases.build, params.fetch(:use_case, nil))
   end
 
   def edit

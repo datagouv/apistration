@@ -146,7 +146,6 @@ class Seeds
         use_case: use_case.key,
         software: editor.name,
         scopes: DatapassReferential.new(use_case.api).form(form_uid).scopes,
-        integration_status: 'production',
         **attributes
       )
     end

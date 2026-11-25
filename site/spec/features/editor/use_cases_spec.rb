@@ -143,7 +143,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
 
     it 'cannot be set by the editor when adding a use case' do
       page.driver.submit :post, editor_use_cases_path, editor_use_case: {
-        use_case: 'tarification_eaje', software: 'Cantine Soft', integration_status: 'production', form_uid: 'api-particulier-abelium'
+        use_case: 'tarification_eaje', software: 'Cantine Soft', form_uid: 'api-particulier-abelium'
       }
 
       expect(editor.use_cases.find_by(use_case: 'tarification_eaje').form_uid).to be_nil

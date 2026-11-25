@@ -2,7 +2,7 @@ class Admin::EditorUseCasesController < AdminController
   before_action :set_editor
 
   def new
-    @use_case = EditorUseCase.prefill(@editor.use_cases.build(integration_status: 'production'), params.fetch(:use_case, nil))
+    @use_case = EditorUseCase.prefill(@editor.use_cases.build, params.fetch(:use_case, nil))
   end
 
   def edit

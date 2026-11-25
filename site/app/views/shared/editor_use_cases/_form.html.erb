@@ -7,14 +7,9 @@
   <% end %>
 
   <h2 class="fr-h5 fr-mt-4w">Logiciel</h2>
-  <div class="fr-grid-row fr-grid-row--gutters">
-    <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_field(f, :text_field, :software, 'Nom du logiciel', hint: 'Le logiciel qui implémente cette démarche') %>
-    </div>
-    <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_select(f, :integration_status, "Statut d'intégration", EditorUseCase.integration_status_options) %>
-    </div>
-  </div>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_field, :software, 'Nom du logiciel', hint: 'Le logiciel qui implémente cette démarche') %>
+  <% end %>
   <%= editor_profile_row do %>
     <%= editor_profile_field(f, :text_area, :software_description, 'Description du logiciel', hint: 'En quelques phrases, ce que fait le logiciel', rows: 3) %>
   <% end %>
