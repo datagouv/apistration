@@ -27,6 +27,8 @@ Exemple de generation pour un endpoint API Particulier en mode prochainement, av
 
 En mode prochainement, vous pouvez déjà développer la validation des paramètres, les controllers, les fichier RSwag de test de requête (à l'exception d'au moins la réponse 200 et 404 qu'il faudra laisser en `pending`, possiblement davantage de cas selon le provider).
 
+La signature de l'endpoint (paramètres, format de réponse) ne se fige qu'à partir du swagger ou du contrat d'interface du fournisseur. Sans l'un ni l'autre, la description de la PR indique que la signature est provisoire, et le PO décide avant qu'elle soit figée : une signature figée sans source se corrige ensuite par une nouvelle version.
+
 Le serializer peut être développé si vous connaissez déjà la réponse attendue de l'endpoint (et que les scopes sont définis dans le cas d'API Particulier)
 
 Selon la documentation disponible du provider, et si l'analyse de l'API provider a été déjà effectuée, vous pouvez aussi possiblement développer aussi les interactors MakeRequest, BuildResource, ValidateResponse.
