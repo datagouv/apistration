@@ -72,6 +72,12 @@ ajouté à la v3 de la participation familiale EAJE sans v4. Les éditeurs
 attendaient la donnée depuis des mois, jamais une montée de version, et
 une migration avant janvier n'était pas souhaitable.
 
+Dans les deux cas, le scope est d'abord ajouté aux habilitations côté
+DataPass, en production, avant que la migration `site/` ne tourne. Sinon
+la prochaine revalidation DataPass retire le scope : le webhook remplace
+les scopes du jeton par ceux de l'habilitation DataPass
+(`site/app/interactors/datapass_webhook/create_or_prolong_token_model.rb`).
+
 Toute nouvelle version s'accompagne d'une itération sur les SDKs
 (`clients/`, cf. `CLAUDE.md` racine).
 

@@ -123,7 +123,11 @@ depuis un contrôleur ni un modèle.
 ## Code Style Guidelines
 
 - **Testing**: RSpec, feature tests with Capybara.
-- **Database**: Follow Rails conventions, use strong_migrations for safe changes
+- **Database**: Follow Rails conventions, use strong_migrations for safe changes.
+  A data migration has no spec: its logic goes in a service the migration
+  calls (as `ScopeBackfillService`), and the spec tests the service. A
+  migration runs once, so its spec is dead weight after; the service and
+  its spec serve the next migration.
 - **Indent Style**: 2 spaces, consistent indentation for multiline
 - **Comments**: DO NOT use comments
 
