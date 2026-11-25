@@ -1,0 +1,8 @@
+<div id="habilitation_contacts" class="fr-mt-2w">
+  <% %i[demandeur contact_technique contact_metier].each do |role| %>
+    <% contact = authorization_request.public_send(role) %>
+    <% next if contact.blank? %>
+    <p class="fr-text--sm fr-mb-1v"><%= t(".#{role}_html") %> <%= contact.full_name.present? ? "#{contact.full_name} (#{contact.email})" : contact.email %></p>
+  <% end %>
+  <p class="fr-text--xs fr-text-mention--grey fr-mb-0"><%= t('.hint') %></p>
+</div>

@@ -22,6 +22,12 @@ RSpec.describe 'show token from magic link', app: :api_entreprise do
 
             expect(page).to have_css("##{dom_id(token_linked)}")
           end
+
+          it 'does not disclose the contacts of the habilitation to the link holder' do
+            subject
+
+            expect(page).to have_no_css('#habilitation_contacts')
+          end
         end
 
         it_behaves_like 'display alert', :info
