@@ -34,6 +34,12 @@
 
     Les données servies dépendent des scopes de votre habilitation ; la fiche détaille ce qui a changé par rapport à la version proposée en environnement de test.
 
+- date: 2026-11-25
+  scope: both
+  title: "Espace éditeur : une fiche complète, avec vos contacts et vos démarches"
+  description: |
+    La page [Vos informations éditeur](<%= editor_settings_path %>) devient une fiche à onglets : informations générales (avec les données INSEE de votre SIRET), contacts, sécurité et hébergement, démarches. Vous y déclarez plusieurs contacts par rôle (technique, métier, DPO, sécurité), la double authentification proposée à vos usagers et votre hébergement, ainsi que les démarches d'habilitation que vos clients déposent avec votre logiciel : le logiciel et sa page de présentation, les données qu'il exploite déjà, leur durée de conservation et leurs destinataires, son homologation de sécurité et les instructions de configuration du jeton à partager avec vos clients. Le SIRET, les API, le rôle et le formulaire DataPass d'une démarche restent modifiables par notre équipe uniquement : écrivez au support pour les changer.
+
 - date: 2026-11-23
   scope: api_particulier
   title: "Participation familiale EAJE : mêmes données que CDAP pour les allocataires Caf"
