@@ -199,7 +199,36 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
         )
       end
 
-      it 'never exposes a NAF 2025 code as a NAF rev. 2 one' do
+      it 'rebuilds the NAF rev. 2 code from the Insee correspondence table when it has a single antecedent' do
+        expect(resource.activite_principale_naf_rev2).to eq(
+          code: '84.11Z',
+          libelle: 'Administration publique générale',
+          nomenclature: 'NAFRev2'
+        )
+      end
+    end
+
+    context 'when Insee flags as NAF25 a code missing from our NAF 2025 referential' do
+      before do
+        payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
+        current_periode['activitePrincipaleEtablissement'] = '99.99Y'
+        current_periode['nomenclatureActivitePrincipaleEtablissement'] = 'NAF25'
+      end
+
+      it 'trusts the Insee nomenclature and exposes the code as NAF 2025, never as NAF rev. 2' do
+        expect(resource.activite_principale[:code]).to eq('99.99Y')
+        expect(resource.activite_principale_naf_rev2[:code]).to be_nil
+      end
+    end
+
+    context 'when the NAF 2025 code has several NAF rev. 2 antecedents in the Insee correspondence table' do
+      before do
+        payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
+        current_periode['activitePrincipaleEtablissement'] = '01.13Y'
+        current_periode['nomenclatureActivitePrincipaleEtablissement'] = 'NAF25'
+      end
+
+      it 'leaves the NAF rev. 2 code empty rather than guessing' do
         expect(resource.activite_principale_naf_rev2[:code]).to be_nil
       end
     end
@@ -213,7 +242,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
 
       it 'recognizes the code as NAF 2025 from the referential' do
         expect(resource.activite_principale[:code]).to eq('84.11Y')
-        expect(resource.activite_principale_naf_rev2[:code]).to be_nil
+        expect(resource.activite_principale_naf_rev2[:code]).to eq('84.11Z')
       end
     end
 

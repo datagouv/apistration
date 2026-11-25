@@ -34,12 +34,18 @@ class INSEE::BuildResource < BuildResource
 
   def activite_principale_naf_rev2_from(code:, nomenclature:)
     Referentials::ActivitePrincipale.new(
-      code: (code unless naf2025_code?(code:, nomenclature:)),
+      code: nafrev2_code(code:, nomenclature:),
       nomenclature: 'NAFRev2'
     )
   end
 
   private
+
+  def nafrev2_code(code:, nomenclature:)
+    return code unless naf2025_code?(code:, nomenclature:)
+
+    Referentials::ActivitePrincipale.unambiguous_nafrev2_for_naf2025[code]
+  end
 
   def naf2025_code?(code:, nomenclature:)
     nomenclature == 'NAF25' || Referentials::ActivitePrincipale.naf2025.key?(code)
