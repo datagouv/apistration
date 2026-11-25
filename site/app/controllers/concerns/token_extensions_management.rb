@@ -1,6 +1,7 @@
 module TokenExtensionsManagement
   extend ActiveSupport::Concern
   include AuthorizationRequestPage
+  include TokenModalDenial
 
   def new
     @token = authorize(extract_token, :extend?)
@@ -14,7 +15,7 @@ module TokenExtensionsManagement
 
     if result.success?
       flash_extension_success
-      redirect_to authorization_request_path(id: @token.authorization_request.id, jeton: @token.id)
+      redirect_to authorization_request_path(id: @token.authorization_request.id)
     else
       @extension_error = result.message
       render_extension_panel(status: :unprocessable_content)
@@ -28,7 +29,7 @@ module TokenExtensionsManagement
   end
 
   def render_extension_panel(status: :ok)
-    render_authorization_request_page(@token.authorization_request, panel: :extension, selected_token: @token, status:)
+    render_token_form(@token.authorization_request, 'shared/token_extensions/form', token: Token.find(@token.id), form_token: @token, error: @extension_error, status:)
   end
 
   def extend_token(token)
