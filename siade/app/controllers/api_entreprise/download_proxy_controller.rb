@@ -48,7 +48,10 @@ class APIEntreprise::DownloadProxyController < APIController
 
   def authenticate_user!
     user = JwtUser.new(**token_model.find(token_id).to_jwt_user_attributes)
-    @current_user = enrich_with_delegation(user)
+
+    raise NotValidTokenError if user.blacklisted?
+
+    @current_user = enrich_with_delegation(user.not_expired!)
   rescue ActiveRecord::RecordNotFound
     handle_params_error!([TokenNotFoundError.new], :unauthorized)
   end
@@ -56,7 +59,13 @@ class APIEntreprise::DownloadProxyController < APIController
   def enrich_with_delegation(user)
     return user unless authorization_request_id
 
-    user.delegated_to(AuthorizationRequest.find(authorization_request_id))
+    user.delegated_to(authorization_requests_usable_by(user).find(authorization_request_id))
+  end
+
+  def authorization_requests_usable_by(user)
+    return AuthorizationRequest unless user.editor?
+
+    AuthorizationRequest.not_archived_nor_revoked.where(id: EditorDelegation.active.where(editor_id: user.editor_id).select(:authorization_request_id))
   end
 
   def organizer

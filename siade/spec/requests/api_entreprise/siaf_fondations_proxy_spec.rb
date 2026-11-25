@@ -6,12 +6,13 @@ RSpec.describe 'MI - SIAF : Fondations, download of an attachment', api: :entrep
   let(:authorization_request) { AuthorizationRequest.create!(scopes:) }
   let(:token) { Token.create!(authorization_request:, iat: 1.day.ago.to_i, exp: 1.day.from_now.to_i) }
   let(:scopes) { %w[fondations_mi_siaf fondations_mi_siaf_comptes] }
+  let(:bearer) { TokenFactory.new(scopes).valid(uid: token.id) }
   let(:attachment_content) { "%PDF-1.4\n1 0 obj<<>>endobj\ntrailer<<>>\n%%EOF" }
 
   let(:link) do
     get "/v3/ministere_interieur/siaf/fondations/#{valid_rnf_id}",
       params: { recipient: valid_siret, context: 'test', object: 'test' },
-      headers: { 'Authorization' => "Bearer #{TokenFactory.new(scopes).valid(uid: token.id)}" }
+      headers: { 'Authorization' => "Bearer #{bearer}" }
 
     response_json[:data][:documents].find { |document| document[:type] == 'Comptes' }[:url]
   end
@@ -45,6 +46,65 @@ RSpec.describe 'MI - SIAF : Fondations, download of an attachment', api: :entrep
       download
 
       expect(response).to have_http_status(:forbidden)
+      expect(siaf_attachment).not_to have_been_requested
+    end
+  end
+
+  context 'when the token was blacklisted after getting the link' do
+    it 'refuses the download without calling the SIAF' do
+      link
+      token.update!(blacklisted_at: 1.minute.ago)
+
+      download
+
+      expect(response).to have_http_status(:unauthorized)
+      expect(siaf_attachment).not_to have_been_requested
+    end
+  end
+
+  context 'when DataPass archived the authorization request after a new version, the token staying valid' do
+    it 'still downloads, as the main call still serves the link' do
+      link
+      authorization_request.update!(status: 'archived')
+
+      download
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  context 'when the token expired after getting the link' do
+    it 'refuses the download without calling the SIAF' do
+      link
+      token.update!(exp: 1.minute.ago.to_i)
+
+      download
+
+      expect(response).to have_http_status(:unauthorized)
+      expect(siaf_attachment).not_to have_been_requested
+    end
+  end
+
+  context 'with an editor token acting for a delegating organisation' do
+    let(:authorization_request) { AuthorizationRequest.create!(scopes:, siret: valid_siret) }
+    let(:editor) { Editor.create!(name: 'Éditeur') }
+    let(:editor_token) { EditorToken.create!(editor:, iat: 1.day.ago.to_i, exp: 1.day.from_now.to_i) }
+    let(:bearer) { TokenFactory.new([]).editor_valid(uid: editor_token.id) }
+    let!(:delegation) { EditorDelegation.create!(editor:, authorization_request:) }
+
+    it 'downloads with the scopes of the delegation' do
+      download
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'refuses the download once the delegation is revoked, without calling the SIAF' do
+      link
+      delegation.update!(revoked_at: 1.minute.ago)
+
+      download
+
+      expect(response).to have_http_status(:unauthorized)
       expect(siaf_attachment).not_to have_been_requested
     end
   end
