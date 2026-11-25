@@ -29,6 +29,10 @@ avec les conventions spécifiques :
 
   puis release SemVer-correcte (cf. skill `release-new-version`). Un
   changement serveur sans mise à jour client = SDK qui ment à ses utilisateurs.
+  Exception pour un endpoint encore en mode prochainement, la release
+  n'étant « pas pour un prochainement » : le scaffolding des deux SDKs est
+  régénéré comme ci-dessus, mais l'endpoint n'appelle pas à lui seul une
+  release ; sa release vient quand il sort du mode prochainement.
 
 ## Règles de review
 
