@@ -24,10 +24,7 @@ RSpec.describe 'datapass webhook trigger mails', type: :request do
     before do
       allow_any_instance_of(HubSignature).to receive(:valid?).and_return(true) # rubocop:todo RSpec/AnyInstance
 
-      stub_request(:post, 'https://api.mailjet.com/v3/REST/contactslist/9001/managemanycontacts')
-        .to_return(status: 200, body: '', headers: {})
-
-      allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+      stub_brevo_contacts_upsert
       allow(UpdateOrganizationINSEEPayloadJob).to receive(:perform_later)
     end
 

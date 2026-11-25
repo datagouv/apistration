@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'a datapass webhook organizer' do |api_name, mailjet_list_id|
+RSpec.shared_examples 'a datapass webhook organizer' do |api_name, brevo_list_id|
   subject { described_class.call(datapass_webhook_params) }
 
   let(:datapass_webhook_params) do
@@ -15,7 +15,7 @@ RSpec.shared_examples 'a datapass webhook organizer' do |api_name, mailjet_list_
   let(:token) { create(:token) }
 
   before do
-    allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+    stub_brevo_contacts_upsert
     # No yield here - specific setups should be in the specs
   end
 
@@ -34,14 +34,13 @@ RSpec.shared_examples 'a datapass webhook organizer' do |api_name, mailjet_list_
     expect(token.api).to eq(api_name)
   end
 
-  describe 'Mailjet adding contacts' do
-    it "adds contacts to #{api_name.capitalize} mailjet list" do
-      expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
-        hash_including(id: AdminApientreprise.credentials[mailjet_list_id]),
-        any_args
-      )
-
+  describe 'Brevo adding contacts' do
+    it "adds contacts to the API #{api_name.capitalize} list" do
       subject
+
+      expect(
+        a_request(:post, BrevoAPIMocks::BREVO_CONTACTS_URL).with(body: hash_including(listIds: [brevo_list_id]))
+      ).to have_been_made.at_least_once
     end
   end
 end

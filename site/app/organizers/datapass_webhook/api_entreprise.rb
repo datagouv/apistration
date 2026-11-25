@@ -13,7 +13,7 @@ module DatapassWebhook
       ::DatapassWebhook::ArchiveCurrentAuthorizationRequest,
       ::DatapassWebhook::RefuseCurrentAuthorizationRequest,
       ::DatapassWebhook::RevokeCurrentToken,
-      ::DatapassWebhook::UpdateMailjetContacts,
+      ::DatapassWebhook::UpdateBrevoContacts,
       ::DatapassWebhook::ScheduleAuthorizationRequestEmails
   end
 end
