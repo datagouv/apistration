@@ -1,8 +1,8 @@
-<div class="fr-tabs fr-mt-4w">
+<div class="fr-tabs fr-mt-4w" data-controller="permalink-tabs" data-permalink-tabs-param-value="onglet">
   <ul class="fr-tabs__list" role="tablist" aria-label="Fiche éditeur">
     <% EditorProfileSection.all.each do |section| %>
       <li role="presentation">
-        <button id="editor-profile-<%= section.key %>" class="fr-tabs__tab" tabindex="<%= section == current_section ? '0' : '-1' %>" role="tab" aria-selected="<%= section == current_section %>" aria-controls="editor-profile-<%= section.key %>-panel">
+        <button id="editor-profile-<%= section.key %>" class="fr-tabs__tab" tabindex="<%= section == current_section ? '0' : '-1' %>" role="tab" aria-selected="<%= section == current_section %>" aria-controls="editor-profile-<%= section.key %>-panel" data-tab-key="<%= section.key %>" data-action="click->permalink-tabs#select">
           <%= section.label %>
         </button>
       </li>
