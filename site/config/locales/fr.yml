@@ -444,7 +444,7 @@ fr:
         datapass_cta: "Voir sur DataPass n°%{external_id}"
         delegations:
           title: "Délégations&nbsp;:"
-          description: "Vous pouvez déléguer votre demande à un éditeur de logiciel. Celui-ci pourra alors interagir avec l'API au travers de votre demande en utilisant ses propres accès."
+          description: "Vous pouvez déléguer la gestion technique de votre habilitation à un éditeur de logiciel. Il appellera l'API pour votre compte, avec ses propres accès et dans le cadre de votre habilitation : vous restez responsable de l'usage des données. Choisissez uniquement l'éditeur avec lequel vous avez un contrat ; en cas d'erreur, retirez la délégation, l'accès de l'éditeur est coupé aussitôt."
           editor: Éditeur
           status: Statut
           actions: Actions
